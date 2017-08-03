@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_crypto_macsec_secy_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_crypto_macsec_secy_oper {
 
 Macsec::Macsec()
@@ -29,7 +31,7 @@ bool Macsec::has_data() const
 
 bool Macsec::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (secy !=  nullptr && secy->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::get_children() const
     return children;
 }
 
-void Macsec::set_value(const std::string & value_path, std::string value)
+void Macsec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Macsec::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,6 +115,18 @@ augment_capabilities_function Macsec::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Macsec::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Macsec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secy")
+        return true;
+    return false;
+}
+
 Macsec::Secy::Secy()
     :
     interfaces(std::make_shared<Macsec::Secy::Interfaces>())
@@ -129,7 +147,7 @@ bool Macsec::Secy::has_data() const
 
 bool Macsec::Secy::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
@@ -188,8 +206,19 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::get_children() cons
     return children;
 }
 
-void Macsec::Secy::set_value(const std::string & value_path, std::string value)
+void Macsec::Secy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Macsec::Secy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Macsec::Secy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces")
+        return true;
+    return false;
 }
 
 Macsec::Secy::Interfaces::Interfaces()
@@ -218,7 +247,7 @@ bool Macsec::Secy::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Macsec::Secy::Interfaces::get_segment_path() const
@@ -283,8 +312,19 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::get_chi
     return children;
 }
 
-void Macsec::Secy::Interfaces::set_value(const std::string & value_path, std::string value)
+void Macsec::Secy::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Macsec::Secy::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Macsec::Secy::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Macsec::Secy::Interfaces::Interface::Interface()
@@ -310,8 +350,8 @@ bool Macsec::Secy::Interfaces::Interface::has_data() const
 
 bool Macsec::Secy::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (stats !=  nullptr && stats->has_operation());
 }
 
@@ -338,7 +378,7 @@ const EntityPath Macsec::Secy::Interfaces::Interface::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -371,12 +411,29 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interfa
     return children;
 }
 
-void Macsec::Secy::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Macsec::Secy::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Macsec::Secy::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Secy::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "stats" || name == "name")
+        return true;
+    return false;
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::Stats()
@@ -413,7 +470,7 @@ bool Macsec::Secy::Interfaces::Interface::Stats::has_operation() const
         if(rx_sc_stats[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (intf_stats !=  nullptr && intf_stats->has_operation())
 	|| (tx_sc_stats !=  nullptr && tx_sc_stats->has_operation());
 }
@@ -508,8 +565,19 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interfa
     return children;
 }
 
-void Macsec::Secy::Interfaces::Interface::Stats::set_value(const std::string & value_path, std::string value)
+void Macsec::Secy::Interfaces::Interface::Stats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "intf-stats" || name == "rx-sc-stats" || name == "tx-sc-stats")
+        return true;
+    return false;
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::IntfStats::IntfStats()
@@ -552,19 +620,19 @@ bool Macsec::Secy::Interfaces::Interface::Stats::IntfStats::has_data() const
 
 bool Macsec::Secy::Interfaces::Interface::Stats::IntfStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_octets_decrypted.operation)
-	|| is_set(in_octets_validated.operation)
-	|| is_set(in_pkts_bad_tag.operation)
-	|| is_set(in_pkts_no_sci.operation)
-	|| is_set(in_pkts_no_tag.operation)
-	|| is_set(in_pkts_overrun.operation)
-	|| is_set(in_pkts_unknown_sci.operation)
-	|| is_set(in_pkts_untagged.operation)
-	|| is_set(out_octets_encrypted.operation)
-	|| is_set(out_octets_protected.operation)
-	|| is_set(out_pkts_too_long.operation)
-	|| is_set(out_pkts_untagged.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(in_octets_decrypted.yfilter)
+	|| ydk::is_set(in_octets_validated.yfilter)
+	|| ydk::is_set(in_pkts_bad_tag.yfilter)
+	|| ydk::is_set(in_pkts_no_sci.yfilter)
+	|| ydk::is_set(in_pkts_no_tag.yfilter)
+	|| ydk::is_set(in_pkts_overrun.yfilter)
+	|| ydk::is_set(in_pkts_unknown_sci.yfilter)
+	|| ydk::is_set(in_pkts_untagged.yfilter)
+	|| ydk::is_set(out_octets_encrypted.yfilter)
+	|| ydk::is_set(out_octets_protected.yfilter)
+	|| ydk::is_set(out_pkts_too_long.yfilter)
+	|| ydk::is_set(out_pkts_untagged.yfilter);
 }
 
 std::string Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_segment_path() const
@@ -590,18 +658,18 @@ const EntityPath Macsec::Secy::Interfaces::Interface::Stats::IntfStats::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_octets_decrypted.is_set || is_set(in_octets_decrypted.operation)) leaf_name_data.push_back(in_octets_decrypted.get_name_leafdata());
-    if (in_octets_validated.is_set || is_set(in_octets_validated.operation)) leaf_name_data.push_back(in_octets_validated.get_name_leafdata());
-    if (in_pkts_bad_tag.is_set || is_set(in_pkts_bad_tag.operation)) leaf_name_data.push_back(in_pkts_bad_tag.get_name_leafdata());
-    if (in_pkts_no_sci.is_set || is_set(in_pkts_no_sci.operation)) leaf_name_data.push_back(in_pkts_no_sci.get_name_leafdata());
-    if (in_pkts_no_tag.is_set || is_set(in_pkts_no_tag.operation)) leaf_name_data.push_back(in_pkts_no_tag.get_name_leafdata());
-    if (in_pkts_overrun.is_set || is_set(in_pkts_overrun.operation)) leaf_name_data.push_back(in_pkts_overrun.get_name_leafdata());
-    if (in_pkts_unknown_sci.is_set || is_set(in_pkts_unknown_sci.operation)) leaf_name_data.push_back(in_pkts_unknown_sci.get_name_leafdata());
-    if (in_pkts_untagged.is_set || is_set(in_pkts_untagged.operation)) leaf_name_data.push_back(in_pkts_untagged.get_name_leafdata());
-    if (out_octets_encrypted.is_set || is_set(out_octets_encrypted.operation)) leaf_name_data.push_back(out_octets_encrypted.get_name_leafdata());
-    if (out_octets_protected.is_set || is_set(out_octets_protected.operation)) leaf_name_data.push_back(out_octets_protected.get_name_leafdata());
-    if (out_pkts_too_long.is_set || is_set(out_pkts_too_long.operation)) leaf_name_data.push_back(out_pkts_too_long.get_name_leafdata());
-    if (out_pkts_untagged.is_set || is_set(out_pkts_untagged.operation)) leaf_name_data.push_back(out_pkts_untagged.get_name_leafdata());
+    if (in_octets_decrypted.is_set || is_set(in_octets_decrypted.yfilter)) leaf_name_data.push_back(in_octets_decrypted.get_name_leafdata());
+    if (in_octets_validated.is_set || is_set(in_octets_validated.yfilter)) leaf_name_data.push_back(in_octets_validated.get_name_leafdata());
+    if (in_pkts_bad_tag.is_set || is_set(in_pkts_bad_tag.yfilter)) leaf_name_data.push_back(in_pkts_bad_tag.get_name_leafdata());
+    if (in_pkts_no_sci.is_set || is_set(in_pkts_no_sci.yfilter)) leaf_name_data.push_back(in_pkts_no_sci.get_name_leafdata());
+    if (in_pkts_no_tag.is_set || is_set(in_pkts_no_tag.yfilter)) leaf_name_data.push_back(in_pkts_no_tag.get_name_leafdata());
+    if (in_pkts_overrun.is_set || is_set(in_pkts_overrun.yfilter)) leaf_name_data.push_back(in_pkts_overrun.get_name_leafdata());
+    if (in_pkts_unknown_sci.is_set || is_set(in_pkts_unknown_sci.yfilter)) leaf_name_data.push_back(in_pkts_unknown_sci.get_name_leafdata());
+    if (in_pkts_untagged.is_set || is_set(in_pkts_untagged.yfilter)) leaf_name_data.push_back(in_pkts_untagged.get_name_leafdata());
+    if (out_octets_encrypted.is_set || is_set(out_octets_encrypted.yfilter)) leaf_name_data.push_back(out_octets_encrypted.get_name_leafdata());
+    if (out_octets_protected.is_set || is_set(out_octets_protected.yfilter)) leaf_name_data.push_back(out_octets_protected.get_name_leafdata());
+    if (out_pkts_too_long.is_set || is_set(out_pkts_too_long.yfilter)) leaf_name_data.push_back(out_pkts_too_long.get_name_leafdata());
+    if (out_pkts_untagged.is_set || is_set(out_pkts_untagged.yfilter)) leaf_name_data.push_back(out_pkts_untagged.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -620,56 +688,139 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interfa
     return children;
 }
 
-void Macsec::Secy::Interfaces::Interface::Stats::IntfStats::set_value(const std::string & value_path, std::string value)
+void Macsec::Secy::Interfaces::Interface::Stats::IntfStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-octets-decrypted")
     {
         in_octets_decrypted = value;
+        in_octets_decrypted.value_namespace = name_space;
+        in_octets_decrypted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-octets-validated")
     {
         in_octets_validated = value;
+        in_octets_validated.value_namespace = name_space;
+        in_octets_validated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-bad-tag")
     {
         in_pkts_bad_tag = value;
+        in_pkts_bad_tag.value_namespace = name_space;
+        in_pkts_bad_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-no-sci")
     {
         in_pkts_no_sci = value;
+        in_pkts_no_sci.value_namespace = name_space;
+        in_pkts_no_sci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-no-tag")
     {
         in_pkts_no_tag = value;
+        in_pkts_no_tag.value_namespace = name_space;
+        in_pkts_no_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-overrun")
     {
         in_pkts_overrun = value;
+        in_pkts_overrun.value_namespace = name_space;
+        in_pkts_overrun.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-unknown-sci")
     {
         in_pkts_unknown_sci = value;
+        in_pkts_unknown_sci.value_namespace = name_space;
+        in_pkts_unknown_sci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-untagged")
     {
         in_pkts_untagged = value;
+        in_pkts_untagged.value_namespace = name_space;
+        in_pkts_untagged.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-octets-encrypted")
     {
         out_octets_encrypted = value;
+        out_octets_encrypted.value_namespace = name_space;
+        out_octets_encrypted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-octets-protected")
     {
         out_octets_protected = value;
+        out_octets_protected.value_namespace = name_space;
+        out_octets_protected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-pkts-too-long")
     {
         out_pkts_too_long = value;
+        out_pkts_too_long.value_namespace = name_space;
+        out_pkts_too_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-pkts-untagged")
     {
         out_pkts_untagged = value;
+        out_pkts_untagged.value_namespace = name_space;
+        out_pkts_untagged.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::IntfStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-octets-decrypted")
+    {
+        in_octets_decrypted.yfilter = yfilter;
+    }
+    if(value_path == "in-octets-validated")
+    {
+        in_octets_validated.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-bad-tag")
+    {
+        in_pkts_bad_tag.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-no-sci")
+    {
+        in_pkts_no_sci.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-no-tag")
+    {
+        in_pkts_no_tag.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-overrun")
+    {
+        in_pkts_overrun.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-unknown-sci")
+    {
+        in_pkts_unknown_sci.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-untagged")
+    {
+        in_pkts_untagged.yfilter = yfilter;
+    }
+    if(value_path == "out-octets-encrypted")
+    {
+        out_octets_encrypted.yfilter = yfilter;
+    }
+    if(value_path == "out-octets-protected")
+    {
+        out_octets_protected.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-too-long")
+    {
+        out_pkts_too_long.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-untagged")
+    {
+        out_pkts_untagged.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::IntfStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-octets-decrypted" || name == "in-octets-validated" || name == "in-pkts-bad-tag" || name == "in-pkts-no-sci" || name == "in-pkts-no-tag" || name == "in-pkts-overrun" || name == "in-pkts-unknown-sci" || name == "in-pkts-untagged" || name == "out-octets-encrypted" || name == "out-octets-protected" || name == "out-pkts-too-long" || name == "out-pkts-untagged")
+        return true;
+    return false;
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxScStats()
@@ -690,6 +841,11 @@ Macsec::Secy::Interfaces::Interface::Stats::TxScStats::~TxScStats()
 
 bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_data() const
 {
+    for (std::size_t index=0; index<txsa_stat.size(); index++)
+    {
+        if(txsa_stat[index]->has_data())
+            return true;
+    }
     return out_octets_encrypted.is_set
 	|| out_octets_protected.is_set
 	|| out_pkts_encrypted.is_set
@@ -700,13 +856,18 @@ bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_data() const
 
 bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(out_octets_encrypted.operation)
-	|| is_set(out_octets_protected.operation)
-	|| is_set(out_pkts_encrypted.operation)
-	|| is_set(out_pkts_protected.operation)
-	|| is_set(out_pkts_too_long.operation)
-	|| is_set(tx_sci.operation);
+    for (std::size_t index=0; index<txsa_stat.size(); index++)
+    {
+        if(txsa_stat[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(out_octets_encrypted.yfilter)
+	|| ydk::is_set(out_octets_protected.yfilter)
+	|| ydk::is_set(out_pkts_encrypted.yfilter)
+	|| ydk::is_set(out_pkts_protected.yfilter)
+	|| ydk::is_set(out_pkts_too_long.yfilter)
+	|| ydk::is_set(tx_sci.yfilter);
 }
 
 std::string Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_segment_path() const
@@ -732,12 +893,12 @@ const EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (out_octets_encrypted.is_set || is_set(out_octets_encrypted.operation)) leaf_name_data.push_back(out_octets_encrypted.get_name_leafdata());
-    if (out_octets_protected.is_set || is_set(out_octets_protected.operation)) leaf_name_data.push_back(out_octets_protected.get_name_leafdata());
-    if (out_pkts_encrypted.is_set || is_set(out_pkts_encrypted.operation)) leaf_name_data.push_back(out_pkts_encrypted.get_name_leafdata());
-    if (out_pkts_protected.is_set || is_set(out_pkts_protected.operation)) leaf_name_data.push_back(out_pkts_protected.get_name_leafdata());
-    if (out_pkts_too_long.is_set || is_set(out_pkts_too_long.operation)) leaf_name_data.push_back(out_pkts_too_long.get_name_leafdata());
-    if (tx_sci.is_set || is_set(tx_sci.operation)) leaf_name_data.push_back(tx_sci.get_name_leafdata());
+    if (out_octets_encrypted.is_set || is_set(out_octets_encrypted.yfilter)) leaf_name_data.push_back(out_octets_encrypted.get_name_leafdata());
+    if (out_octets_protected.is_set || is_set(out_octets_protected.yfilter)) leaf_name_data.push_back(out_octets_protected.get_name_leafdata());
+    if (out_pkts_encrypted.is_set || is_set(out_pkts_encrypted.yfilter)) leaf_name_data.push_back(out_pkts_encrypted.get_name_leafdata());
+    if (out_pkts_protected.is_set || is_set(out_pkts_protected.yfilter)) leaf_name_data.push_back(out_pkts_protected.get_name_leafdata());
+    if (out_pkts_too_long.is_set || is_set(out_pkts_too_long.yfilter)) leaf_name_data.push_back(out_pkts_too_long.get_name_leafdata());
+    if (tx_sci.is_set || is_set(tx_sci.yfilter)) leaf_name_data.push_back(tx_sci.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -747,41 +908,226 @@ const EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_enti
 
 std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "txsa-stat")
+    {
+        for(auto const & c : txsa_stat)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat>();
+        c->parent = this;
+        txsa_stat.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : txsa_stat)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     return children;
 }
 
-void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::set_value(const std::string & value_path, std::string value)
+void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "out-octets-encrypted")
     {
         out_octets_encrypted = value;
+        out_octets_encrypted.value_namespace = name_space;
+        out_octets_encrypted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-octets-protected")
     {
         out_octets_protected = value;
+        out_octets_protected.value_namespace = name_space;
+        out_octets_protected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-pkts-encrypted")
     {
         out_pkts_encrypted = value;
+        out_pkts_encrypted.value_namespace = name_space;
+        out_pkts_encrypted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-pkts-protected")
     {
         out_pkts_protected = value;
+        out_pkts_protected.value_namespace = name_space;
+        out_pkts_protected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-pkts-too-long")
     {
         out_pkts_too_long = value;
+        out_pkts_too_long.value_namespace = name_space;
+        out_pkts_too_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-sci")
     {
         tx_sci = value;
+        tx_sci.value_namespace = name_space;
+        tx_sci.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "out-octets-encrypted")
+    {
+        out_octets_encrypted.yfilter = yfilter;
+    }
+    if(value_path == "out-octets-protected")
+    {
+        out_octets_protected.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-encrypted")
+    {
+        out_pkts_encrypted.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-protected")
+    {
+        out_pkts_protected.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-too-long")
+    {
+        out_pkts_too_long.yfilter = yfilter;
+    }
+    if(value_path == "tx-sci")
+    {
+        tx_sci.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "txsa-stat" || name == "out-octets-encrypted" || name == "out-octets-protected" || name == "out-pkts-encrypted" || name == "out-pkts-protected" || name == "out-pkts-too-long" || name == "tx-sci")
+        return true;
+    return false;
+}
+
+Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::TxsaStat()
+    :
+    next_pn{YType::uint64, "next-pn"},
+    out_pkts_encrypted{YType::uint64, "out-pkts-encrypted"},
+    out_pkts_protected{YType::uint64, "out-pkts-protected"}
+{
+    yang_name = "txsa-stat"; yang_parent_name = "tx-sc-stats";
+}
+
+Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::~TxsaStat()
+{
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_data() const
+{
+    return next_pn.is_set
+	|| out_pkts_encrypted.is_set
+	|| out_pkts_protected.is_set;
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(next_pn.yfilter)
+	|| ydk::is_set(out_pkts_encrypted.yfilter)
+	|| ydk::is_set(out_pkts_protected.yfilter);
+}
+
+std::string Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "txsa-stat";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'TxsaStat' in Cisco_IOS_XR_crypto_macsec_secy_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (next_pn.is_set || is_set(next_pn.yfilter)) leaf_name_data.push_back(next_pn.get_name_leafdata());
+    if (out_pkts_encrypted.is_set || is_set(out_pkts_encrypted.yfilter)) leaf_name_data.push_back(out_pkts_encrypted.get_name_leafdata());
+    if (out_pkts_protected.is_set || is_set(out_pkts_protected.yfilter)) leaf_name_data.push_back(out_pkts_protected.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "next-pn")
+    {
+        next_pn = value;
+        next_pn.value_namespace = name_space;
+        next_pn.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pkts-encrypted")
+    {
+        out_pkts_encrypted = value;
+        out_pkts_encrypted.value_namespace = name_space;
+        out_pkts_encrypted.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-pkts-protected")
+    {
+        out_pkts_protected = value;
+        out_pkts_protected.value_namespace = name_space;
+        out_pkts_protected.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-pn")
+    {
+        next_pn.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-encrypted")
+    {
+        out_pkts_encrypted.yfilter = yfilter;
+    }
+    if(value_path == "out-pkts-protected")
+    {
+        out_pkts_protected.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-pn" || name == "out-pkts-encrypted" || name == "out-pkts-protected")
+        return true;
+    return false;
 }
 
 Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxScStats()
@@ -808,6 +1154,11 @@ Macsec::Secy::Interfaces::Interface::Stats::RxScStats::~RxScStats()
 
 bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::has_data() const
 {
+    for (std::size_t index=0; index<rxsa_stat.size(); index++)
+    {
+        if(rxsa_stat[index]->has_data())
+            return true;
+    }
     return in_octets_decrypted.is_set
 	|| in_octets_validated.is_set
 	|| in_pkts_delayed.is_set
@@ -824,19 +1175,24 @@ bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::has_data() const
 
 bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_octets_decrypted.operation)
-	|| is_set(in_octets_validated.operation)
-	|| is_set(in_pkts_delayed.operation)
-	|| is_set(in_pkts_invalid.operation)
-	|| is_set(in_pkts_late.operation)
-	|| is_set(in_pkts_not_using_sa.operation)
-	|| is_set(in_pkts_not_valid.operation)
-	|| is_set(in_pkts_ok.operation)
-	|| is_set(in_pkts_unchecked.operation)
-	|| is_set(in_pkts_untagged_hit.operation)
-	|| is_set(in_pkts_unused_sa.operation)
-	|| is_set(rx_sci.operation);
+    for (std::size_t index=0; index<rxsa_stat.size(); index++)
+    {
+        if(rxsa_stat[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(in_octets_decrypted.yfilter)
+	|| ydk::is_set(in_octets_validated.yfilter)
+	|| ydk::is_set(in_pkts_delayed.yfilter)
+	|| ydk::is_set(in_pkts_invalid.yfilter)
+	|| ydk::is_set(in_pkts_late.yfilter)
+	|| ydk::is_set(in_pkts_not_using_sa.yfilter)
+	|| ydk::is_set(in_pkts_not_valid.yfilter)
+	|| ydk::is_set(in_pkts_ok.yfilter)
+	|| ydk::is_set(in_pkts_unchecked.yfilter)
+	|| ydk::is_set(in_pkts_untagged_hit.yfilter)
+	|| ydk::is_set(in_pkts_unused_sa.yfilter)
+	|| ydk::is_set(rx_sci.yfilter);
 }
 
 std::string Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_segment_path() const
@@ -862,18 +1218,18 @@ const EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_octets_decrypted.is_set || is_set(in_octets_decrypted.operation)) leaf_name_data.push_back(in_octets_decrypted.get_name_leafdata());
-    if (in_octets_validated.is_set || is_set(in_octets_validated.operation)) leaf_name_data.push_back(in_octets_validated.get_name_leafdata());
-    if (in_pkts_delayed.is_set || is_set(in_pkts_delayed.operation)) leaf_name_data.push_back(in_pkts_delayed.get_name_leafdata());
-    if (in_pkts_invalid.is_set || is_set(in_pkts_invalid.operation)) leaf_name_data.push_back(in_pkts_invalid.get_name_leafdata());
-    if (in_pkts_late.is_set || is_set(in_pkts_late.operation)) leaf_name_data.push_back(in_pkts_late.get_name_leafdata());
-    if (in_pkts_not_using_sa.is_set || is_set(in_pkts_not_using_sa.operation)) leaf_name_data.push_back(in_pkts_not_using_sa.get_name_leafdata());
-    if (in_pkts_not_valid.is_set || is_set(in_pkts_not_valid.operation)) leaf_name_data.push_back(in_pkts_not_valid.get_name_leafdata());
-    if (in_pkts_ok.is_set || is_set(in_pkts_ok.operation)) leaf_name_data.push_back(in_pkts_ok.get_name_leafdata());
-    if (in_pkts_unchecked.is_set || is_set(in_pkts_unchecked.operation)) leaf_name_data.push_back(in_pkts_unchecked.get_name_leafdata());
-    if (in_pkts_untagged_hit.is_set || is_set(in_pkts_untagged_hit.operation)) leaf_name_data.push_back(in_pkts_untagged_hit.get_name_leafdata());
-    if (in_pkts_unused_sa.is_set || is_set(in_pkts_unused_sa.operation)) leaf_name_data.push_back(in_pkts_unused_sa.get_name_leafdata());
-    if (rx_sci.is_set || is_set(rx_sci.operation)) leaf_name_data.push_back(rx_sci.get_name_leafdata());
+    if (in_octets_decrypted.is_set || is_set(in_octets_decrypted.yfilter)) leaf_name_data.push_back(in_octets_decrypted.get_name_leafdata());
+    if (in_octets_validated.is_set || is_set(in_octets_validated.yfilter)) leaf_name_data.push_back(in_octets_validated.get_name_leafdata());
+    if (in_pkts_delayed.is_set || is_set(in_pkts_delayed.yfilter)) leaf_name_data.push_back(in_pkts_delayed.get_name_leafdata());
+    if (in_pkts_invalid.is_set || is_set(in_pkts_invalid.yfilter)) leaf_name_data.push_back(in_pkts_invalid.get_name_leafdata());
+    if (in_pkts_late.is_set || is_set(in_pkts_late.yfilter)) leaf_name_data.push_back(in_pkts_late.get_name_leafdata());
+    if (in_pkts_not_using_sa.is_set || is_set(in_pkts_not_using_sa.yfilter)) leaf_name_data.push_back(in_pkts_not_using_sa.get_name_leafdata());
+    if (in_pkts_not_valid.is_set || is_set(in_pkts_not_valid.yfilter)) leaf_name_data.push_back(in_pkts_not_valid.get_name_leafdata());
+    if (in_pkts_ok.is_set || is_set(in_pkts_ok.yfilter)) leaf_name_data.push_back(in_pkts_ok.get_name_leafdata());
+    if (in_pkts_unchecked.is_set || is_set(in_pkts_unchecked.yfilter)) leaf_name_data.push_back(in_pkts_unchecked.get_name_leafdata());
+    if (in_pkts_untagged_hit.is_set || is_set(in_pkts_untagged_hit.yfilter)) leaf_name_data.push_back(in_pkts_untagged_hit.get_name_leafdata());
+    if (in_pkts_unused_sa.is_set || is_set(in_pkts_unused_sa.yfilter)) leaf_name_data.push_back(in_pkts_unused_sa.get_name_leafdata());
+    if (rx_sci.is_set || is_set(rx_sci.yfilter)) leaf_name_data.push_back(rx_sci.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -883,65 +1239,328 @@ const EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_enti
 
 std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "rxsa-stat")
+    {
+        for(auto const & c : rxsa_stat)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat>();
+        c->parent = this;
+        rxsa_stat.push_back(c);
+        return c;
+    }
+
     return nullptr;
 }
 
 std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : rxsa_stat)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
     return children;
 }
 
-void Macsec::Secy::Interfaces::Interface::Stats::RxScStats::set_value(const std::string & value_path, std::string value)
+void Macsec::Secy::Interfaces::Interface::Stats::RxScStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-octets-decrypted")
     {
         in_octets_decrypted = value;
+        in_octets_decrypted.value_namespace = name_space;
+        in_octets_decrypted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-octets-validated")
     {
         in_octets_validated = value;
+        in_octets_validated.value_namespace = name_space;
+        in_octets_validated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-delayed")
     {
         in_pkts_delayed = value;
+        in_pkts_delayed.value_namespace = name_space;
+        in_pkts_delayed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-invalid")
     {
         in_pkts_invalid = value;
+        in_pkts_invalid.value_namespace = name_space;
+        in_pkts_invalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-late")
     {
         in_pkts_late = value;
+        in_pkts_late.value_namespace = name_space;
+        in_pkts_late.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-not-using-sa")
     {
         in_pkts_not_using_sa = value;
+        in_pkts_not_using_sa.value_namespace = name_space;
+        in_pkts_not_using_sa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-not-valid")
     {
         in_pkts_not_valid = value;
+        in_pkts_not_valid.value_namespace = name_space;
+        in_pkts_not_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-ok")
     {
         in_pkts_ok = value;
+        in_pkts_ok.value_namespace = name_space;
+        in_pkts_ok.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-unchecked")
     {
         in_pkts_unchecked = value;
+        in_pkts_unchecked.value_namespace = name_space;
+        in_pkts_unchecked.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-untagged-hit")
     {
         in_pkts_untagged_hit = value;
+        in_pkts_untagged_hit.value_namespace = name_space;
+        in_pkts_untagged_hit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-pkts-unused-sa")
     {
         in_pkts_unused_sa = value;
+        in_pkts_unused_sa.value_namespace = name_space;
+        in_pkts_unused_sa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-sci")
     {
         rx_sci = value;
+        rx_sci.value_namespace = name_space;
+        rx_sci.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::RxScStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-octets-decrypted")
+    {
+        in_octets_decrypted.yfilter = yfilter;
+    }
+    if(value_path == "in-octets-validated")
+    {
+        in_octets_validated.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-delayed")
+    {
+        in_pkts_delayed.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-invalid")
+    {
+        in_pkts_invalid.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-late")
+    {
+        in_pkts_late.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-not-using-sa")
+    {
+        in_pkts_not_using_sa.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-not-valid")
+    {
+        in_pkts_not_valid.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-ok")
+    {
+        in_pkts_ok.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-unchecked")
+    {
+        in_pkts_unchecked.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-untagged-hit")
+    {
+        in_pkts_untagged_hit.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-unused-sa")
+    {
+        in_pkts_unused_sa.yfilter = yfilter;
+    }
+    if(value_path == "rx-sci")
+    {
+        rx_sci.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rxsa-stat" || name == "in-octets-decrypted" || name == "in-octets-validated" || name == "in-pkts-delayed" || name == "in-pkts-invalid" || name == "in-pkts-late" || name == "in-pkts-not-using-sa" || name == "in-pkts-not-valid" || name == "in-pkts-ok" || name == "in-pkts-unchecked" || name == "in-pkts-untagged-hit" || name == "in-pkts-unused-sa" || name == "rx-sci")
+        return true;
+    return false;
+}
+
+Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::RxsaStat()
+    :
+    in_pkts_invalid{YType::uint64, "in-pkts-invalid"},
+    in_pkts_not_using_sa{YType::uint64, "in-pkts-not-using-sa"},
+    in_pkts_not_valid{YType::uint64, "in-pkts-not-valid"},
+    in_pkts_ok{YType::uint64, "in-pkts-ok"},
+    in_pkts_unused_sa{YType::uint64, "in-pkts-unused-sa"},
+    next_pn{YType::uint64, "next-pn"}
+{
+    yang_name = "rxsa-stat"; yang_parent_name = "rx-sc-stats";
+}
+
+Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::~RxsaStat()
+{
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::has_data() const
+{
+    return in_pkts_invalid.is_set
+	|| in_pkts_not_using_sa.is_set
+	|| in_pkts_not_valid.is_set
+	|| in_pkts_ok.is_set
+	|| in_pkts_unused_sa.is_set
+	|| next_pn.is_set;
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(in_pkts_invalid.yfilter)
+	|| ydk::is_set(in_pkts_not_using_sa.yfilter)
+	|| ydk::is_set(in_pkts_not_valid.yfilter)
+	|| ydk::is_set(in_pkts_ok.yfilter)
+	|| ydk::is_set(in_pkts_unused_sa.yfilter)
+	|| ydk::is_set(next_pn.yfilter);
+}
+
+std::string Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rxsa-stat";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'RxsaStat' in Cisco_IOS_XR_crypto_macsec_secy_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (in_pkts_invalid.is_set || is_set(in_pkts_invalid.yfilter)) leaf_name_data.push_back(in_pkts_invalid.get_name_leafdata());
+    if (in_pkts_not_using_sa.is_set || is_set(in_pkts_not_using_sa.yfilter)) leaf_name_data.push_back(in_pkts_not_using_sa.get_name_leafdata());
+    if (in_pkts_not_valid.is_set || is_set(in_pkts_not_valid.yfilter)) leaf_name_data.push_back(in_pkts_not_valid.get_name_leafdata());
+    if (in_pkts_ok.is_set || is_set(in_pkts_ok.yfilter)) leaf_name_data.push_back(in_pkts_ok.get_name_leafdata());
+    if (in_pkts_unused_sa.is_set || is_set(in_pkts_unused_sa.yfilter)) leaf_name_data.push_back(in_pkts_unused_sa.get_name_leafdata());
+    if (next_pn.is_set || is_set(next_pn.yfilter)) leaf_name_data.push_back(next_pn.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "in-pkts-invalid")
+    {
+        in_pkts_invalid = value;
+        in_pkts_invalid.value_namespace = name_space;
+        in_pkts_invalid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-pkts-not-using-sa")
+    {
+        in_pkts_not_using_sa = value;
+        in_pkts_not_using_sa.value_namespace = name_space;
+        in_pkts_not_using_sa.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-pkts-not-valid")
+    {
+        in_pkts_not_valid = value;
+        in_pkts_not_valid.value_namespace = name_space;
+        in_pkts_not_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-pkts-ok")
+    {
+        in_pkts_ok = value;
+        in_pkts_ok.value_namespace = name_space;
+        in_pkts_ok.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-pkts-unused-sa")
+    {
+        in_pkts_unused_sa = value;
+        in_pkts_unused_sa.value_namespace = name_space;
+        in_pkts_unused_sa.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-pn")
+    {
+        next_pn = value;
+        next_pn.value_namespace = name_space;
+        next_pn.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-pkts-invalid")
+    {
+        in_pkts_invalid.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-not-using-sa")
+    {
+        in_pkts_not_using_sa.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-not-valid")
+    {
+        in_pkts_not_valid.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-ok")
+    {
+        in_pkts_ok.yfilter = yfilter;
+    }
+    if(value_path == "in-pkts-unused-sa")
+    {
+        in_pkts_unused_sa.yfilter = yfilter;
+    }
+    if(value_path == "next-pn")
+    {
+        next_pn.yfilter = yfilter;
+    }
+}
+
+bool Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-pkts-invalid" || name == "in-pkts-not-using-sa" || name == "in-pkts-not-valid" || name == "in-pkts-ok" || name == "in-pkts-unused-sa" || name == "next-pn")
+        return true;
+    return false;
 }
 
 

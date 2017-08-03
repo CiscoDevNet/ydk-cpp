@@ -9,198 +9,198 @@
 
 #include "ietf_routing.hpp"
 
-namespace ydk {
+namespace ietf {
 namespace ietf_ospf {
 
-class IfLinkTypeIdentity : public virtual Identity
+class Ospf : public ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        IfLinkTypeIdentity();
-        ~IfLinkTypeIdentity();
+        Ospf();
+        ~Ospf();
 
 
-}; // IfLinkTypeIdentity
+}; // Ospf
 
-class AreaTypeIdentity : public virtual Identity
+class OperationMode : public virtual ydk::Identity
 {
     public:
-        AreaTypeIdentity();
-        ~AreaTypeIdentity();
+        OperationMode();
+        ~OperationMode();
 
 
-}; // AreaTypeIdentity
+}; // OperationMode
 
-class Ospfv3Identity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class IfLinkType : public virtual ydk::Identity
 {
     public:
-        Ospfv3Identity();
-        ~Ospfv3Identity();
+        IfLinkType();
+        ~IfLinkType();
 
 
-}; // Ospfv3Identity
+}; // IfLinkType
 
-class Ospfv2Identity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class AreaType : public virtual ydk::Identity
 {
     public:
-        Ospfv2Identity();
-        ~Ospfv2Identity();
+        AreaType();
+        ~AreaType();
 
 
-}; // Ospfv2Identity
+}; // AreaType
 
-class OperationModeIdentity : public virtual Identity
+class Ospfv2 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        OperationModeIdentity();
-        ~OperationModeIdentity();
+        Ospfv2();
+        ~Ospfv2();
 
 
-}; // OperationModeIdentity
+}; // Ospfv2
 
-class OspfIdentity : public ietf_routing::RoutingProtocolIdentity, virtual Identity
+class Ospfv3 : public ietf_routing::RoutingProtocol, virtual ydk::Identity
 {
     public:
-        OspfIdentity();
-        ~OspfIdentity();
+        Ospfv3();
+        ~Ospfv3();
 
 
-}; // OspfIdentity
+}; // Ospfv3
 
-class NormalIdentity : public ietf_ospf::AreaTypeIdentity, virtual Identity
+class Stub : public ietf_ospf::AreaType, virtual ydk::Identity
 {
     public:
-        NormalIdentity();
-        ~NormalIdentity();
+        Stub();
+        ~Stub();
 
 
-}; // NormalIdentity
+}; // Stub
 
-class NssaIdentity : public ietf_ospf::AreaTypeIdentity, virtual Identity
+class IfLinkTypeNormal : public ietf_ospf::IfLinkType, virtual ydk::Identity
 {
     public:
-        NssaIdentity();
-        ~NssaIdentity();
+        IfLinkTypeNormal();
+        ~IfLinkTypeNormal();
 
 
-}; // NssaIdentity
+}; // IfLinkTypeNormal
 
-class ShipsInTheNightIdentity : public ietf_ospf::OperationModeIdentity, virtual Identity
+class Nssa : public ietf_ospf::AreaType, virtual ydk::Identity
 {
     public:
-        ShipsInTheNightIdentity();
-        ~ShipsInTheNightIdentity();
+        Nssa();
+        ~Nssa();
 
 
-}; // ShipsInTheNightIdentity
+}; // Nssa
 
-class StubIdentity : public ietf_ospf::AreaTypeIdentity, virtual Identity
+class IfLinkTypeVirtualLink : public ietf_ospf::IfLinkType, virtual ydk::Identity
 {
     public:
-        StubIdentity();
-        ~StubIdentity();
+        IfLinkTypeVirtualLink();
+        ~IfLinkTypeVirtualLink();
 
 
-}; // StubIdentity
+}; // IfLinkTypeVirtualLink
 
-class IfLinkTypeVirtualLinkIdentity : public ietf_ospf::IfLinkTypeIdentity, virtual Identity
+class Normal : public ietf_ospf::AreaType, virtual ydk::Identity
 {
     public:
-        IfLinkTypeVirtualLinkIdentity();
-        ~IfLinkTypeVirtualLinkIdentity();
+        Normal();
+        ~Normal();
 
 
-}; // IfLinkTypeVirtualLinkIdentity
+}; // Normal
 
-class IfLinkTypeNormalIdentity : public ietf_ospf::IfLinkTypeIdentity, virtual Identity
+class ShipsInTheNight : public ietf_ospf::OperationMode, virtual ydk::Identity
 {
     public:
-        IfLinkTypeNormalIdentity();
-        ~IfLinkTypeNormalIdentity();
+        ShipsInTheNight();
+        ~ShipsInTheNight();
 
 
-}; // IfLinkTypeNormalIdentity
+}; // ShipsInTheNight
 
-class IfLinkTypeShamLinkIdentity : public ietf_ospf::IfLinkTypeIdentity, virtual Identity
+class IfLinkTypeShamLink : public ietf_ospf::IfLinkType, virtual ydk::Identity
 {
     public:
-        IfLinkTypeShamLinkIdentity();
-        ~IfLinkTypeShamLinkIdentity();
+        IfLinkTypeShamLink();
+        ~IfLinkTypeShamLink();
 
 
-}; // IfLinkTypeShamLinkIdentity
+}; // IfLinkTypeShamLink
 
-class NbrStateTypeEnum : public Enum
+class NssaTranslatorStateType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Down;
-        static const Enum::YLeaf Attempt;
-        static const Enum::YLeaf Init;
-        static const Enum::YLeaf Y_2_Way;
-        static const Enum::YLeaf ExStart;
-        static const Enum::YLeaf Exchange;
-        static const Enum::YLeaf Loading;
-        static const Enum::YLeaf Full;
+        static const ydk::Enum::YLeaf Enabled;
+        static const ydk::Enum::YLeaf Elected;
+        static const ydk::Enum::YLeaf Disabled;
 
 };
 
-class IfStateTypeEnum : public Enum
+class RestartStatusType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Down;
-        static const Enum::YLeaf Loopback;
-        static const Enum::YLeaf Waiting;
-        static const Enum::YLeaf Point_to_Point;
-        static const Enum::YLeaf DR;
-        static const Enum::YLeaf BDR;
-        static const Enum::YLeaf DR_Other;
+        static const ydk::Enum::YLeaf Not_Restarting;
+        static const ydk::Enum::YLeaf Planned_Restart;
+        static const ydk::Enum::YLeaf Unplanned_Restart;
 
 };
 
-class PacketTypeEnum : public Enum
+class IfStateType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Hello;
-        static const Enum::YLeaf Database_Descripton;
-        static const Enum::YLeaf Link_State_Request;
-        static const Enum::YLeaf Link_State_Update;
-        static const Enum::YLeaf Link_State_Ack;
+        static const ydk::Enum::YLeaf Down;
+        static const ydk::Enum::YLeaf Loopback;
+        static const ydk::Enum::YLeaf Waiting;
+        static const ydk::Enum::YLeaf Point_to_Point;
+        static const ydk::Enum::YLeaf DR;
+        static const ydk::Enum::YLeaf BDR;
+        static const ydk::Enum::YLeaf DR_Other;
 
 };
 
-class RestartExitReasonTypeEnum : public Enum
+class NbrStateType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf None;
-        static const Enum::YLeaf InProgress;
-        static const Enum::YLeaf Completed;
-        static const Enum::YLeaf TimedOut;
-        static const Enum::YLeaf TopologyChanged;
+        static const ydk::Enum::YLeaf Down;
+        static const ydk::Enum::YLeaf Attempt;
+        static const ydk::Enum::YLeaf Init;
+        static const ydk::Enum::YLeaf Y_2_Way;
+        static const ydk::Enum::YLeaf ExStart;
+        static const ydk::Enum::YLeaf Exchange;
+        static const ydk::Enum::YLeaf Loading;
+        static const ydk::Enum::YLeaf Full;
 
 };
 
-class NssaTranslatorStateTypeEnum : public Enum
+class RestartExitReasonType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Enabled;
-        static const Enum::YLeaf Elected;
-        static const Enum::YLeaf Disabled;
+        static const ydk::Enum::YLeaf None;
+        static const ydk::Enum::YLeaf InProgress;
+        static const ydk::Enum::YLeaf Completed;
+        static const ydk::Enum::YLeaf TimedOut;
+        static const ydk::Enum::YLeaf TopologyChanged;
 
 };
 
-class RestartHelperStatusTypeEnum : public Enum
+class PacketType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Not_Helping;
-        static const Enum::YLeaf Helping;
+        static const ydk::Enum::YLeaf Hello;
+        static const ydk::Enum::YLeaf Database_Descripton;
+        static const ydk::Enum::YLeaf Link_State_Request;
+        static const ydk::Enum::YLeaf Link_State_Update;
+        static const ydk::Enum::YLeaf Link_State_Ack;
 
 };
 
-class RestartStatusTypeEnum : public Enum
+class RestartHelperStatusType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Not_Restarting;
-        static const Enum::YLeaf Planned_Restart;
-        static const Enum::YLeaf Unplanned_Restart;
+        static const ydk::Enum::YLeaf Not_Helping;
+        static const ydk::Enum::YLeaf Helping;
 
 };
 

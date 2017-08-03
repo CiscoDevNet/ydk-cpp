@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_bundlemgr_oper {
 
-class LacpBundles : public Entity
+class LacpBundles : public ydk::Entity
 {
     public:
         LacpBundles();
@@ -18,15 +18,18 @@ class LacpBundles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Bundles; //type: LacpBundles::Bundles
 
@@ -35,7 +38,7 @@ class LacpBundles : public Entity
 }; // LacpBundles
 
 
-class LacpBundles::Bundles : public Entity
+class LacpBundles::Bundles : public ydk::Entity
 {
     public:
         Bundles();
@@ -43,11 +46,13 @@ class LacpBundles::Bundles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Bundle; //type: LacpBundles::Bundles::Bundle
 
@@ -56,7 +61,7 @@ class LacpBundles::Bundles : public Entity
 }; // LacpBundles::Bundles
 
 
-class LacpBundles::Bundles::Bundle : public Entity
+class LacpBundles::Bundles::Bundle : public ydk::Entity
 {
     public:
         Bundle();
@@ -64,13 +69,15 @@ class LacpBundles::Bundles::Bundle : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface; //type: string
+        ydk::YLeaf bundle_interface; //type: string
         class Data; //type: LacpBundles::Bundles::Bundle::Data
         class Members; //type: LacpBundles::Bundles::Bundle::Members
 
@@ -80,7 +87,7 @@ class LacpBundles::Bundles::Bundle : public Entity
 }; // LacpBundles::Bundles::Bundle
 
 
-class LacpBundles::Bundles::Bundle::Data : public Entity
+class LacpBundles::Bundles::Bundle::Data : public ydk::Entity
 {
     public:
         Data();
@@ -88,16 +95,18 @@ class LacpBundles::Bundles::Bundle::Data : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf actor_operational_key; //type: uint16
-        YLeaf partner_system_priority; //type: uint16
-        YLeaf partner_system_mac_address; //type: string
-        YLeaf partner_operational_key; //type: uint16
+        ydk::YLeaf actor_operational_key; //type: uint16
+        ydk::YLeaf partner_system_priority; //type: uint16
+        ydk::YLeaf partner_system_mac_address; //type: string
+        ydk::YLeaf partner_operational_key; //type: uint16
         class ActorBundleData; //type: LacpBundles::Bundles::Bundle::Data::ActorBundleData
         class BundleSystemId; //type: LacpBundles::Bundles::Bundle::Data::BundleSystemId
 
@@ -107,7 +116,7 @@ class LacpBundles::Bundles::Bundle::Data : public Entity
 }; // LacpBundles::Bundles::Bundle::Data
 
 
-class LacpBundles::Bundles::Bundle::Data::ActorBundleData : public Entity
+class LacpBundles::Bundles::Bundle::Data::ActorBundleData : public ydk::Entity
 {
     public:
         ActorBundleData();
@@ -115,50 +124,52 @@ class LacpBundles::Bundles::Bundle::Data::ActorBundleData : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface_name; //type: string
-        YLeaf available_bandwidth; //type: uint32
-        YLeaf effective_bandwidth; //type: uint32
-        YLeaf configured_bandwidth; //type: uint32
-        YLeaf minimum_active_links; //type: uint8
-        YLeaf maximum_active_links; //type: uint8
-        YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
-        YLeaf minimum_bandwidth; //type: uint32
-        YLeaf primary_member; //type: string
-        YLeaf bundle_status; //type: BmBdlStateEnum
-        YLeaf active_member_count; //type: uint16
-        YLeaf standby_member_count; //type: uint16
-        YLeaf configured_member_count; //type: uint16
-        YLeaf mac_source; //type: BmBdlMacSourceEnum
-        YLeaf mac_source_member; //type: string
-        YLeaf inter_chassis; //type: boolean
-        YLeaf is_active; //type: boolean
-        YLeaf lacp_status; //type: BmFeatureStatusEnum
-        YLeaf mlacp_status; //type: BmFeatureStatusEnum
-        YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
-        YLeaf link_order_status; //type: BmFeatureStatusEnum
-        YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
-        YLeaf load_balance_hash_type; //type: string
-        YLeaf load_balance_locality_threshold; //type: uint16
-        YLeaf suppression_timer; //type: uint16
-        YLeaf wait_while_timer; //type: uint16
-        YLeaf collector_max_delay; //type: uint16
-        YLeaf cisco_extensions; //type: boolean
-        YLeaf lacp_nonrevertive; //type: boolean
-        YLeaf iccp_group_id; //type: uint32
-        YLeaf active_foreign_member_count; //type: uint16
-        YLeaf configured_foreign_member_count; //type: uint16
-        YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
-        YLeaf maximize_threshold_value_links; //type: uint32
-        YLeaf maximize_threshold_value_band_width; //type: uint32
-        YLeaf mlacp_mode; //type: BundleMlacpModeEnum
-        YLeaf recovery_delay; //type: uint16
-        YLeaf singleton; //type: boolean
+        ydk::YLeaf bundle_interface_name; //type: string
+        ydk::YLeaf available_bandwidth; //type: uint32
+        ydk::YLeaf effective_bandwidth; //type: uint32
+        ydk::YLeaf configured_bandwidth; //type: uint32
+        ydk::YLeaf minimum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links_source; //type: BmWhichSystem
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf primary_member; //type: string
+        ydk::YLeaf bundle_status; //type: BmBdlState
+        ydk::YLeaf active_member_count; //type: uint16
+        ydk::YLeaf standby_member_count; //type: uint16
+        ydk::YLeaf configured_member_count; //type: uint16
+        ydk::YLeaf mac_source; //type: BmBdlMacSource
+        ydk::YLeaf mac_source_member; //type: string
+        ydk::YLeaf inter_chassis; //type: boolean
+        ydk::YLeaf is_active; //type: boolean
+        ydk::YLeaf lacp_status; //type: BmFeatureStatus
+        ydk::YLeaf mlacp_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv4bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf link_order_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv6bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf load_balance_hash_type; //type: string
+        ydk::YLeaf load_balance_locality_threshold; //type: uint16
+        ydk::YLeaf suppression_timer; //type: uint16
+        ydk::YLeaf wait_while_timer; //type: uint16
+        ydk::YLeaf collector_max_delay; //type: uint16
+        ydk::YLeaf cisco_extensions; //type: boolean
+        ydk::YLeaf lacp_nonrevertive; //type: boolean
+        ydk::YLeaf iccp_group_id; //type: uint32
+        ydk::YLeaf active_foreign_member_count; //type: uint16
+        ydk::YLeaf configured_foreign_member_count; //type: uint16
+        ydk::YLeaf switchover_type; //type: BmdMlacpSwitchover
+        ydk::YLeaf maximize_threshold_value_links; //type: uint32
+        ydk::YLeaf maximize_threshold_value_band_width; //type: uint32
+        ydk::YLeaf mlacp_mode; //type: BundleMlacpMode
+        ydk::YLeaf recovery_delay; //type: uint16
+        ydk::YLeaf singleton; //type: boolean
         class MacAddress; //type: LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress
         class BfdConfig; //type: LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig
 
@@ -168,7 +179,7 @@ class LacpBundles::Bundles::Bundle::Data::ActorBundleData : public Entity
 }; // LacpBundles::Bundles::Bundle::Data::ActorBundleData
 
 
-class LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress : public Entity
+class LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -176,18 +187,20 @@ class LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // LacpBundles::Bundles::Bundle::Data::ActorBundleData::MacAddress
 
 
-class LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig : public Entity
+class LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig : public ydk::Entity
 {
     public:
         BfdConfig();
@@ -195,20 +208,22 @@ class LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_status; //type: BmdBfdBdlStateEnum
-        YLeaf start_timer; //type: uint32
-        YLeaf nbr_unconfig_timer; //type: uint32
-        YLeaf pref_multiplier; //type: uint16
-        YLeaf pref_min_interval; //type: uint32
-        YLeaf pref_echo_min_interval; //type: uint32
-        YLeaf fast_detect; //type: boolean
-        YLeaf mode_info; //type: uint32
+        ydk::YLeaf bundle_status; //type: BmdBfdBdlState
+        ydk::YLeaf start_timer; //type: uint32
+        ydk::YLeaf nbr_unconfig_timer; //type: uint32
+        ydk::YLeaf pref_multiplier; //type: uint16
+        ydk::YLeaf pref_min_interval; //type: uint32
+        ydk::YLeaf pref_echo_min_interval; //type: uint32
+        ydk::YLeaf fast_detect; //type: boolean
+        ydk::YLeaf mode_info; //type: uint32
         class DestinationAddress; //type: LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress> destination_address;
@@ -216,7 +231,7 @@ class LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig : public En
 }; // LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig
 
 
-class LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress : public Entity
+class LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress : public ydk::Entity
 {
     public:
         DestinationAddress();
@@ -224,20 +239,22 @@ class LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::Destinatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: BmAfIdEnum
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf af; //type: BmAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::DestinationAddress
 
 
-class LacpBundles::Bundles::Bundle::Data::BundleSystemId : public Entity
+class LacpBundles::Bundles::Bundle::Data::BundleSystemId : public ydk::Entity
 {
     public:
         BundleSystemId();
@@ -245,13 +262,15 @@ class LacpBundles::Bundles::Bundle::Data::BundleSystemId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf system_prio; //type: uint16
+        ydk::YLeaf system_prio; //type: uint16
         class SystemMacAddr; //type: LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr> system_mac_addr;
@@ -259,7 +278,7 @@ class LacpBundles::Bundles::Bundle::Data::BundleSystemId : public Entity
 }; // LacpBundles::Bundles::Bundle::Data::BundleSystemId
 
 
-class LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr : public Entity
+class LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr : public ydk::Entity
 {
     public:
         SystemMacAddr();
@@ -267,18 +286,20 @@ class LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf macaddr; //type: string
+        ydk::YLeaf macaddr; //type: string
 
 }; // LacpBundles::Bundles::Bundle::Data::BundleSystemId::SystemMacAddr
 
 
-class LacpBundles::Bundles::Bundle::Members : public Entity
+class LacpBundles::Bundles::Bundle::Members : public ydk::Entity
 {
     public:
         Members();
@@ -286,11 +307,13 @@ class LacpBundles::Bundles::Bundle::Members : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Member; //type: LacpBundles::Bundles::Bundle::Members::Member
 
@@ -299,7 +322,7 @@ class LacpBundles::Bundles::Bundle::Members : public Entity
 }; // LacpBundles::Bundles::Bundle::Members
 
 
-class LacpBundles::Bundles::Bundle::Members::Member : public Entity
+class LacpBundles::Bundles::Bundle::Members::Member : public ydk::Entity
 {
     public:
         Member();
@@ -307,22 +330,24 @@ class LacpBundles::Bundles::Bundle::Members::Member : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_interface; //type: string
-        YLeaf bandwidth; //type: uint32
-        YLeaf port_priority; //type: uint16
-        YLeaf port_number; //type: uint16
-        YLeaf underlying_link_id; //type: uint16
-        YLeaf link_order_number; //type: uint16
-        YLeaf interface_name; //type: string
-        YLeaf iccp_node; //type: uint32
-        YLeaf member_type; //type: BmdMemberTypeEnumEnum
-        YLeaf member_name; //type: string
+        ydk::YLeaf member_interface; //type: string
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf port_priority; //type: uint16
+        ydk::YLeaf port_number; //type: uint16
+        ydk::YLeaf underlying_link_id; //type: uint16
+        ydk::YLeaf link_order_number; //type: uint16
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf iccp_node; //type: uint32
+        ydk::YLeaf member_type; //type: BmdMemberTypeEnum
+        ydk::YLeaf member_name; //type: string
         class Counters; //type: LacpBundles::Bundles::Bundle::Members::Member::Counters
         class LinkData; //type: LacpBundles::Bundles::Bundle::Members::Member::LinkData
         class MemberMuxData; //type: LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData
@@ -336,7 +361,7 @@ class LacpBundles::Bundles::Bundle::Members::Member : public Entity
 }; // LacpBundles::Bundles::Bundle::Members::Member
 
 
-class LacpBundles::Bundles::Bundle::Members::Member::Counters : public Entity
+class LacpBundles::Bundles::Bundle::Members::Member::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -344,28 +369,30 @@ class LacpBundles::Bundles::Bundle::Members::Member::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lacpd_us_received; //type: uint32
-        YLeaf lacpd_us_transmitted; //type: uint32
-        YLeaf marker_packets_received; //type: uint32
-        YLeaf marker_responses_transmitted; //type: uint32
-        YLeaf illegal_packets_received; //type: uint32
-        YLeaf excess_lacpd_us_received; //type: uint32
-        YLeaf excess_marker_packets_received; //type: uint32
-        YLeaf defaulted; //type: uint32
-        YLeaf expired; //type: uint32
-        YLeaf last_cleared_sec; //type: uint32
-        YLeaf last_cleared_nsec; //type: uint32
+        ydk::YLeaf lacpd_us_received; //type: uint32
+        ydk::YLeaf lacpd_us_transmitted; //type: uint32
+        ydk::YLeaf marker_packets_received; //type: uint32
+        ydk::YLeaf marker_responses_transmitted; //type: uint32
+        ydk::YLeaf illegal_packets_received; //type: uint32
+        ydk::YLeaf excess_lacpd_us_received; //type: uint32
+        ydk::YLeaf excess_marker_packets_received; //type: uint32
+        ydk::YLeaf defaulted; //type: uint32
+        ydk::YLeaf expired; //type: uint32
+        ydk::YLeaf last_cleared_sec; //type: uint32
+        ydk::YLeaf last_cleared_nsec; //type: uint32
 
 }; // LacpBundles::Bundles::Bundle::Members::Member::Counters
 
 
-class LacpBundles::Bundles::Bundle::Members::Member::LinkData : public Entity
+class LacpBundles::Bundles::Bundle::Members::Member::LinkData : public ydk::Entity
 {
     public:
         LinkData();
@@ -373,32 +400,34 @@ class LacpBundles::Bundles::Bundle::Members::Member::LinkData : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
-        YLeaf actor_system_priority; //type: uint16
-        YLeaf actor_system_mac_address; //type: string
-        YLeaf actor_operational_key; //type: uint16
-        YLeaf partner_system_priority; //type: uint16
-        YLeaf partner_system_mac_address; //type: string
-        YLeaf partner_operational_key; //type: uint16
-        YLeaf selected_aggregator_id; //type: uint32
-        YLeaf attached_aggregator_id; //type: uint32
-        YLeaf actor_port_id; //type: uint16
-        YLeaf actor_port_priority; //type: uint16
-        YLeaf partner_port_id; //type: uint16
-        YLeaf partner_port_priority; //type: uint16
-        YLeaf actor_port_state; //type: uint8
-        YLeaf partner_port_state; //type: uint8
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf actor_system_priority; //type: uint16
+        ydk::YLeaf actor_system_mac_address; //type: string
+        ydk::YLeaf actor_operational_key; //type: uint16
+        ydk::YLeaf partner_system_priority; //type: uint16
+        ydk::YLeaf partner_system_mac_address; //type: string
+        ydk::YLeaf partner_operational_key; //type: uint16
+        ydk::YLeaf selected_aggregator_id; //type: uint32
+        ydk::YLeaf attached_aggregator_id; //type: uint32
+        ydk::YLeaf actor_port_id; //type: uint16
+        ydk::YLeaf actor_port_priority; //type: uint16
+        ydk::YLeaf partner_port_id; //type: uint16
+        ydk::YLeaf partner_port_priority; //type: uint16
+        ydk::YLeaf actor_port_state; //type: uint8
+        ydk::YLeaf partner_port_state; //type: uint8
 
 }; // LacpBundles::Bundles::Bundle::Members::Member::LinkData
 
 
-class LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData : public Entity
+class LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData : public ydk::Entity
 {
     public:
         MemberMuxData();
@@ -406,17 +435,19 @@ class LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mux_state; //type: BmMuxstateEnum
-        YLeaf error; //type: uint32
-        YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
-        YLeaf member_state; //type: BmdMemberStateEnum
-        YLeaf mux_state_reason; //type: BmMuxreasonEnum
+        ydk::YLeaf mux_state; //type: BmMuxstate
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf member_mux_state_reason; //type: BmMbrStateReason
+        ydk::YLeaf member_state; //type: BmdMemberState
+        ydk::YLeaf mux_state_reason; //type: BmMuxreason
         class MemberMuxStateReasonData; //type: LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
@@ -424,7 +455,7 @@ class LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData : public Enti
 }; // LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData
 
 
-class LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData : public Entity
+class LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData : public ydk::Entity
 {
     public:
         MemberMuxStateReasonData();
@@ -432,19 +463,21 @@ class LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxSta
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reason_type; //type: BmStateReasonTargetEnum
-        YLeaf severity; //type: BmSeverityEnum
+        ydk::YLeaf reason_type; //type: BmStateReasonTarget
+        ydk::YLeaf severity; //type: BmSeverity
 
 }; // LacpBundles::Bundles::Bundle::Members::Member::MemberMuxData::MemberMuxStateReasonData
 
 
-class LacpBundles::Bundles::Bundle::Members::Member::MacAddress : public Entity
+class LacpBundles::Bundles::Bundle::Members::Member::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -452,17 +485,19 @@ class LacpBundles::Bundles::Bundle::Members::Member::MacAddress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // LacpBundles::Bundles::Bundle::Members::Member::MacAddress
 
-class BundleInformation : public Entity
+class BundleInformation : public ydk::Entity
 {
     public:
         BundleInformation();
@@ -470,15 +505,18 @@ class BundleInformation : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class BfdCounters; //type: BundleInformation::BfdCounters
         class ScheduledActions; //type: BundleInformation::ScheduledActions
@@ -519,7 +557,7 @@ class BundleInformation : public Entity
 }; // BundleInformation
 
 
-class BundleInformation::BfdCounters : public Entity
+class BundleInformation::BfdCounters : public ydk::Entity
 {
     public:
         BfdCounters();
@@ -527,11 +565,13 @@ class BundleInformation::BfdCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BfdCountersBundles; //type: BundleInformation::BfdCounters::BfdCountersBundles
         class BfdCountersMembers; //type: BundleInformation::BfdCounters::BfdCountersMembers
@@ -542,7 +582,7 @@ class BundleInformation::BfdCounters : public Entity
 }; // BundleInformation::BfdCounters
 
 
-class BundleInformation::BfdCounters::BfdCountersBundles : public Entity
+class BundleInformation::BfdCounters::BfdCountersBundles : public ydk::Entity
 {
     public:
         BfdCountersBundles();
@@ -550,11 +590,13 @@ class BundleInformation::BfdCounters::BfdCountersBundles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BfdCountersBundle; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
@@ -563,7 +605,7 @@ class BundleInformation::BfdCounters::BfdCountersBundles : public Entity
 }; // BundleInformation::BfdCounters::BfdCountersBundles
 
 
-class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle : public Entity
+class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle : public ydk::Entity
 {
     public:
         BfdCountersBundle();
@@ -571,13 +613,15 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface; //type: string
+        ydk::YLeaf bundle_interface; //type: string
         class BfdCountersBundleDescendant; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant
         class BfdCountersBundleChildrenMembers; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers
         class BfdCountersBundleItem; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem
@@ -589,7 +633,7 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle : pu
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle
 
 
-class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant : public Entity
+class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant : public ydk::Entity
 {
     public:
         BfdCountersBundleDescendant();
@@ -597,11 +641,13 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BundleName; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName
         class BfdCounter; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter
@@ -612,7 +658,7 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant
 
 
-class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName : public Entity
+class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName : public ydk::Entity
 {
     public:
         BundleName();
@@ -620,18 +666,20 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf item_name; //type: string
+        ydk::YLeaf item_name; //type: string
 
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BundleName
 
 
-class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter : public Entity
+class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter : public ydk::Entity
 {
     public:
         BfdCounter();
@@ -639,26 +687,28 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_name; //type: string
-        YLeaf last_time_cleared; //type: uint64
-        YLeaf starting; //type: uint32
-        YLeaf up; //type: uint32
-        YLeaf down; //type: uint32
-        YLeaf neighbor_unconfigured; //type: uint32
-        YLeaf start_timeouts; //type: uint32
-        YLeaf neighbor_unconfigured_timeouts; //type: uint32
-        YLeaf time_since_cleared; //type: uint64
+        ydk::YLeaf member_name; //type: string
+        ydk::YLeaf last_time_cleared; //type: uint64
+        ydk::YLeaf starting; //type: uint32
+        ydk::YLeaf up; //type: uint32
+        ydk::YLeaf down; //type: uint32
+        ydk::YLeaf neighbor_unconfigured; //type: uint32
+        ydk::YLeaf start_timeouts; //type: uint32
+        ydk::YLeaf neighbor_unconfigured_timeouts; //type: uint32
+        ydk::YLeaf time_since_cleared; //type: uint64
 
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleDescendant::BfdCounter
 
 
-class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers : public Entity
+class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers : public ydk::Entity
 {
     public:
         BfdCountersBundleChildrenMembers();
@@ -666,11 +716,13 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BfdCountersBundleChildrenMember; //type: BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember
 
@@ -679,7 +731,7 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers
 
 
-class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember : public Entity
+class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember : public ydk::Entity
 {
     public:
         BfdCountersBundleChildrenMember();
@@ -687,27 +739,29 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_interface; //type: string
-        YLeaf member_name; //type: string
-        YLeaf last_time_cleared; //type: uint64
-        YLeaf starting; //type: uint32
-        YLeaf up; //type: uint32
-        YLeaf down; //type: uint32
-        YLeaf neighbor_unconfigured; //type: uint32
-        YLeaf start_timeouts; //type: uint32
-        YLeaf neighbor_unconfigured_timeouts; //type: uint32
-        YLeaf time_since_cleared; //type: uint64
+        ydk::YLeaf member_interface; //type: string
+        ydk::YLeaf member_name; //type: string
+        ydk::YLeaf last_time_cleared; //type: uint64
+        ydk::YLeaf starting; //type: uint32
+        ydk::YLeaf up; //type: uint32
+        ydk::YLeaf down; //type: uint32
+        ydk::YLeaf neighbor_unconfigured; //type: uint32
+        ydk::YLeaf start_timeouts; //type: uint32
+        ydk::YLeaf neighbor_unconfigured_timeouts; //type: uint32
+        ydk::YLeaf time_since_cleared; //type: uint64
 
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleChildrenMembers::BfdCountersBundleChildrenMember
 
 
-class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem : public Entity
+class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem : public ydk::Entity
 {
     public:
         BfdCountersBundleItem();
@@ -715,18 +769,20 @@ class BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::Bfd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf item_name; //type: string
+        ydk::YLeaf item_name; //type: string
 
 }; // BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundle::BfdCountersBundleItem
 
 
-class BundleInformation::BfdCounters::BfdCountersMembers : public Entity
+class BundleInformation::BfdCounters::BfdCountersMembers : public ydk::Entity
 {
     public:
         BfdCountersMembers();
@@ -734,11 +790,13 @@ class BundleInformation::BfdCounters::BfdCountersMembers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BfdCountersMember; //type: BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember
 
@@ -747,7 +805,7 @@ class BundleInformation::BfdCounters::BfdCountersMembers : public Entity
 }; // BundleInformation::BfdCounters::BfdCountersMembers
 
 
-class BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember : public Entity
+class BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember : public ydk::Entity
 {
     public:
         BfdCountersMember();
@@ -755,13 +813,15 @@ class BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_interface; //type: string
+        ydk::YLeaf member_interface; //type: string
         class BfdCountersMemberItem; //type: BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem> bfd_counters_member_item;
@@ -769,7 +829,7 @@ class BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember : pu
 }; // BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember
 
 
-class BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem : public Entity
+class BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem : public ydk::Entity
 {
     public:
         BfdCountersMemberItem();
@@ -777,26 +837,28 @@ class BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::Bfd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_name; //type: string
-        YLeaf last_time_cleared; //type: uint64
-        YLeaf starting; //type: uint32
-        YLeaf up; //type: uint32
-        YLeaf down; //type: uint32
-        YLeaf neighbor_unconfigured; //type: uint32
-        YLeaf start_timeouts; //type: uint32
-        YLeaf neighbor_unconfigured_timeouts; //type: uint32
-        YLeaf time_since_cleared; //type: uint64
+        ydk::YLeaf member_name; //type: string
+        ydk::YLeaf last_time_cleared; //type: uint64
+        ydk::YLeaf starting; //type: uint32
+        ydk::YLeaf up; //type: uint32
+        ydk::YLeaf down; //type: uint32
+        ydk::YLeaf neighbor_unconfigured; //type: uint32
+        ydk::YLeaf start_timeouts; //type: uint32
+        ydk::YLeaf neighbor_unconfigured_timeouts; //type: uint32
+        ydk::YLeaf time_since_cleared; //type: uint64
 
 }; // BundleInformation::BfdCounters::BfdCountersMembers::BfdCountersMember::BfdCountersMemberItem
 
 
-class BundleInformation::ScheduledActions : public Entity
+class BundleInformation::ScheduledActions : public ydk::Entity
 {
     public:
         ScheduledActions();
@@ -804,11 +866,13 @@ class BundleInformation::ScheduledActions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ScheduledActionsBundles; //type: BundleInformation::ScheduledActions::ScheduledActionsBundles
 
@@ -817,7 +881,7 @@ class BundleInformation::ScheduledActions : public Entity
 }; // BundleInformation::ScheduledActions
 
 
-class BundleInformation::ScheduledActions::ScheduledActionsBundles : public Entity
+class BundleInformation::ScheduledActions::ScheduledActionsBundles : public ydk::Entity
 {
     public:
         ScheduledActionsBundles();
@@ -825,11 +889,13 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ScheduledActionsBundle; //type: BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle
 
@@ -838,7 +904,7 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles : public Enti
 }; // BundleInformation::ScheduledActions::ScheduledActionsBundles
 
 
-class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle : public Entity
+class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle : public ydk::Entity
 {
     public:
         ScheduledActionsBundle();
@@ -846,13 +912,15 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledAct
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface; //type: string
+        ydk::YLeaf bundle_interface; //type: string
         class ScheduledActionsBundleItem; //type: BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem> scheduled_actions_bundle_item;
@@ -860,7 +928,7 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledAct
 }; // BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle
 
 
-class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem : public Entity
+class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem : public ydk::Entity
 {
     public:
         ScheduledActionsBundleItem();
@@ -868,13 +936,15 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledAct
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_name; //type: string
+        ydk::YLeaf bundle_name; //type: string
         class ScheduledAction; //type: BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction> > scheduled_action;
@@ -882,7 +952,7 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledAct
 }; // BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem
 
 
-class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction : public Entity
+class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction : public ydk::Entity
 {
     public:
         ScheduledAction();
@@ -890,20 +960,22 @@ class BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledAct
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mlacp_action; //type: BmdBagMlacpSchActionItemEnum
-        YLeaf time_remaining; //type: uint64
-        YLeaf action_state; //type: BmdSwitchReasonEnum
+        ydk::YLeaf mlacp_action; //type: BmdBagMlacpSchActionItem
+        ydk::YLeaf time_remaining; //type: uint64
+        ydk::YLeaf action_state; //type: BmdSwitchReason
 
 }; // BundleInformation::ScheduledActions::ScheduledActionsBundles::ScheduledActionsBundle::ScheduledActionsBundleItem::ScheduledAction
 
 
-class BundleInformation::Bundle : public Entity
+class BundleInformation::Bundle : public ydk::Entity
 {
     public:
         Bundle();
@@ -911,11 +983,13 @@ class BundleInformation::Bundle : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BundleBundles; //type: BundleInformation::Bundle::BundleBundles
         class BundleMembers; //type: BundleInformation::Bundle::BundleMembers
@@ -926,7 +1000,7 @@ class BundleInformation::Bundle : public Entity
 }; // BundleInformation::Bundle
 
 
-class BundleInformation::Bundle::BundleBundles : public Entity
+class BundleInformation::Bundle::BundleBundles : public ydk::Entity
 {
     public:
         BundleBundles();
@@ -934,11 +1008,13 @@ class BundleInformation::Bundle::BundleBundles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BundleBundle; //type: BundleInformation::Bundle::BundleBundles::BundleBundle
 
@@ -947,7 +1023,7 @@ class BundleInformation::Bundle::BundleBundles : public Entity
 }; // BundleInformation::Bundle::BundleBundles
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle : public ydk::Entity
 {
     public:
         BundleBundle();
@@ -955,13 +1031,15 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface; //type: string
+        ydk::YLeaf bundle_interface; //type: string
         class BundleBundleDescendant; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant
         class BundleBundleChildrenMembers; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers
         class BundleBundleItem; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem
@@ -973,7 +1051,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle : public Entity
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant : public ydk::Entity
 {
     public:
         BundleBundleDescendant();
@@ -981,11 +1059,13 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BundleData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData
         class MemberData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData
@@ -996,7 +1076,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData : public ydk::Entity
 {
     public:
         BundleData();
@@ -1004,50 +1084,52 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface_name; //type: string
-        YLeaf available_bandwidth; //type: uint32
-        YLeaf effective_bandwidth; //type: uint32
-        YLeaf configured_bandwidth; //type: uint32
-        YLeaf minimum_active_links; //type: uint8
-        YLeaf maximum_active_links; //type: uint8
-        YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
-        YLeaf minimum_bandwidth; //type: uint32
-        YLeaf primary_member; //type: string
-        YLeaf bundle_status; //type: BmBdlStateEnum
-        YLeaf active_member_count; //type: uint16
-        YLeaf standby_member_count; //type: uint16
-        YLeaf configured_member_count; //type: uint16
-        YLeaf mac_source; //type: BmBdlMacSourceEnum
-        YLeaf mac_source_member; //type: string
-        YLeaf inter_chassis; //type: boolean
-        YLeaf is_active; //type: boolean
-        YLeaf lacp_status; //type: BmFeatureStatusEnum
-        YLeaf mlacp_status; //type: BmFeatureStatusEnum
-        YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
-        YLeaf link_order_status; //type: BmFeatureStatusEnum
-        YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
-        YLeaf load_balance_hash_type; //type: string
-        YLeaf load_balance_locality_threshold; //type: uint16
-        YLeaf suppression_timer; //type: uint16
-        YLeaf wait_while_timer; //type: uint16
-        YLeaf collector_max_delay; //type: uint16
-        YLeaf cisco_extensions; //type: boolean
-        YLeaf lacp_nonrevertive; //type: boolean
-        YLeaf iccp_group_id; //type: uint32
-        YLeaf active_foreign_member_count; //type: uint16
-        YLeaf configured_foreign_member_count; //type: uint16
-        YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
-        YLeaf maximize_threshold_value_links; //type: uint32
-        YLeaf maximize_threshold_value_band_width; //type: uint32
-        YLeaf mlacp_mode; //type: BundleMlacpModeEnum
-        YLeaf recovery_delay; //type: uint16
-        YLeaf singleton; //type: boolean
+        ydk::YLeaf bundle_interface_name; //type: string
+        ydk::YLeaf available_bandwidth; //type: uint32
+        ydk::YLeaf effective_bandwidth; //type: uint32
+        ydk::YLeaf configured_bandwidth; //type: uint32
+        ydk::YLeaf minimum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links_source; //type: BmWhichSystem
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf primary_member; //type: string
+        ydk::YLeaf bundle_status; //type: BmBdlState
+        ydk::YLeaf active_member_count; //type: uint16
+        ydk::YLeaf standby_member_count; //type: uint16
+        ydk::YLeaf configured_member_count; //type: uint16
+        ydk::YLeaf mac_source; //type: BmBdlMacSource
+        ydk::YLeaf mac_source_member; //type: string
+        ydk::YLeaf inter_chassis; //type: boolean
+        ydk::YLeaf is_active; //type: boolean
+        ydk::YLeaf lacp_status; //type: BmFeatureStatus
+        ydk::YLeaf mlacp_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv4bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf link_order_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv6bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf load_balance_hash_type; //type: string
+        ydk::YLeaf load_balance_locality_threshold; //type: uint16
+        ydk::YLeaf suppression_timer; //type: uint16
+        ydk::YLeaf wait_while_timer; //type: uint16
+        ydk::YLeaf collector_max_delay; //type: uint16
+        ydk::YLeaf cisco_extensions; //type: boolean
+        ydk::YLeaf lacp_nonrevertive; //type: boolean
+        ydk::YLeaf iccp_group_id; //type: uint32
+        ydk::YLeaf active_foreign_member_count; //type: uint16
+        ydk::YLeaf configured_foreign_member_count; //type: uint16
+        ydk::YLeaf switchover_type; //type: BmdMlacpSwitchover
+        ydk::YLeaf maximize_threshold_value_links; //type: uint32
+        ydk::YLeaf maximize_threshold_value_band_width; //type: uint32
+        ydk::YLeaf mlacp_mode; //type: BundleMlacpMode
+        ydk::YLeaf recovery_delay; //type: uint16
+        ydk::YLeaf singleton; //type: boolean
         class MacAddress; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress
         class BfdConfig; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig
 
@@ -1057,7 +1139,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -1065,18 +1147,20 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::MacAddress
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig : public ydk::Entity
 {
     public:
         BfdConfig();
@@ -1084,20 +1168,22 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_status; //type: BmdBfdBdlStateEnum
-        YLeaf start_timer; //type: uint32
-        YLeaf nbr_unconfig_timer; //type: uint32
-        YLeaf pref_multiplier; //type: uint16
-        YLeaf pref_min_interval; //type: uint32
-        YLeaf pref_echo_min_interval; //type: uint32
-        YLeaf fast_detect; //type: boolean
-        YLeaf mode_info; //type: uint32
+        ydk::YLeaf bundle_status; //type: BmdBfdBdlState
+        ydk::YLeaf start_timer; //type: uint32
+        ydk::YLeaf nbr_unconfig_timer; //type: uint32
+        ydk::YLeaf pref_multiplier; //type: uint16
+        ydk::YLeaf pref_min_interval; //type: uint32
+        ydk::YLeaf pref_echo_min_interval; //type: uint32
+        ydk::YLeaf fast_detect; //type: boolean
+        ydk::YLeaf mode_info; //type: uint32
         class DestinationAddress; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress> destination_address;
@@ -1105,7 +1191,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress : public ydk::Entity
 {
     public:
         DestinationAddress();
@@ -1113,20 +1199,22 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: BmAfIdEnum
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf af; //type: BmAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::BundleData::BfdConfig::DestinationAddress
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData : public ydk::Entity
 {
     public:
         MemberData();
@@ -1134,21 +1222,23 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bandwidth; //type: uint32
-        YLeaf port_priority; //type: uint16
-        YLeaf port_number; //type: uint16
-        YLeaf underlying_link_id; //type: uint16
-        YLeaf link_order_number; //type: uint16
-        YLeaf interface_name; //type: string
-        YLeaf iccp_node; //type: uint32
-        YLeaf member_type; //type: BmdMemberTypeEnumEnum
-        YLeaf member_name; //type: string
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf port_priority; //type: uint16
+        ydk::YLeaf port_number; //type: uint16
+        ydk::YLeaf underlying_link_id; //type: uint16
+        ydk::YLeaf link_order_number; //type: uint16
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf iccp_node; //type: uint32
+        ydk::YLeaf member_type; //type: BmdMemberTypeEnum
+        ydk::YLeaf member_name; //type: string
         class Counters; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters
         class LinkData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData
         class MemberMuxData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData
@@ -1162,7 +1252,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -1170,28 +1260,30 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lacpd_us_received; //type: uint32
-        YLeaf lacpd_us_transmitted; //type: uint32
-        YLeaf marker_packets_received; //type: uint32
-        YLeaf marker_responses_transmitted; //type: uint32
-        YLeaf illegal_packets_received; //type: uint32
-        YLeaf excess_lacpd_us_received; //type: uint32
-        YLeaf excess_marker_packets_received; //type: uint32
-        YLeaf defaulted; //type: uint32
-        YLeaf expired; //type: uint32
-        YLeaf last_cleared_sec; //type: uint32
-        YLeaf last_cleared_nsec; //type: uint32
+        ydk::YLeaf lacpd_us_received; //type: uint32
+        ydk::YLeaf lacpd_us_transmitted; //type: uint32
+        ydk::YLeaf marker_packets_received; //type: uint32
+        ydk::YLeaf marker_responses_transmitted; //type: uint32
+        ydk::YLeaf illegal_packets_received; //type: uint32
+        ydk::YLeaf excess_lacpd_us_received; //type: uint32
+        ydk::YLeaf excess_marker_packets_received; //type: uint32
+        ydk::YLeaf defaulted; //type: uint32
+        ydk::YLeaf expired; //type: uint32
+        ydk::YLeaf last_cleared_sec; //type: uint32
+        ydk::YLeaf last_cleared_nsec; //type: uint32
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData : public ydk::Entity
 {
     public:
         LinkData();
@@ -1199,32 +1291,34 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
-        YLeaf actor_system_priority; //type: uint16
-        YLeaf actor_system_mac_address; //type: string
-        YLeaf actor_operational_key; //type: uint16
-        YLeaf partner_system_priority; //type: uint16
-        YLeaf partner_system_mac_address; //type: string
-        YLeaf partner_operational_key; //type: uint16
-        YLeaf selected_aggregator_id; //type: uint32
-        YLeaf attached_aggregator_id; //type: uint32
-        YLeaf actor_port_id; //type: uint16
-        YLeaf actor_port_priority; //type: uint16
-        YLeaf partner_port_id; //type: uint16
-        YLeaf partner_port_priority; //type: uint16
-        YLeaf actor_port_state; //type: uint8
-        YLeaf partner_port_state; //type: uint8
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf actor_system_priority; //type: uint16
+        ydk::YLeaf actor_system_mac_address; //type: string
+        ydk::YLeaf actor_operational_key; //type: uint16
+        ydk::YLeaf partner_system_priority; //type: uint16
+        ydk::YLeaf partner_system_mac_address; //type: string
+        ydk::YLeaf partner_operational_key; //type: uint16
+        ydk::YLeaf selected_aggregator_id; //type: uint32
+        ydk::YLeaf attached_aggregator_id; //type: uint32
+        ydk::YLeaf actor_port_id; //type: uint16
+        ydk::YLeaf actor_port_priority; //type: uint16
+        ydk::YLeaf partner_port_id; //type: uint16
+        ydk::YLeaf partner_port_priority; //type: uint16
+        ydk::YLeaf actor_port_state; //type: uint8
+        ydk::YLeaf partner_port_state; //type: uint8
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData : public ydk::Entity
 {
     public:
         MemberMuxData();
@@ -1232,17 +1326,19 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mux_state; //type: BmMuxstateEnum
-        YLeaf error; //type: uint32
-        YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
-        YLeaf member_state; //type: BmdMemberStateEnum
-        YLeaf mux_state_reason; //type: BmMuxreasonEnum
+        ydk::YLeaf mux_state; //type: BmMuxstate
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf member_mux_state_reason; //type: BmMbrStateReason
+        ydk::YLeaf member_state; //type: BmdMemberState
+        ydk::YLeaf mux_state_reason; //type: BmMuxreason
         class MemberMuxStateReasonData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
@@ -1250,7 +1346,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData : public ydk::Entity
 {
     public:
         MemberMuxStateReasonData();
@@ -1258,19 +1354,21 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reason_type; //type: BmStateReasonTargetEnum
-        YLeaf severity; //type: BmSeverityEnum
+        ydk::YLeaf reason_type; //type: BmStateReasonTarget
+        ydk::YLeaf severity; //type: BmSeverity
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MemberMuxData::MemberMuxStateReasonData
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -1278,18 +1376,20 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::MacAddress
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers : public ydk::Entity
 {
     public:
         BundleBundleChildrenMembers();
@@ -1297,11 +1397,13 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BundleBundleChildrenMember; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember
 
@@ -1310,7 +1412,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember : public ydk::Entity
 {
     public:
         BundleBundleChildrenMember();
@@ -1318,22 +1420,24 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_interface; //type: string
-        YLeaf bandwidth; //type: uint32
-        YLeaf port_priority; //type: uint16
-        YLeaf port_number; //type: uint16
-        YLeaf underlying_link_id; //type: uint16
-        YLeaf link_order_number; //type: uint16
-        YLeaf interface_name; //type: string
-        YLeaf iccp_node; //type: uint32
-        YLeaf member_type; //type: BmdMemberTypeEnumEnum
-        YLeaf member_name; //type: string
+        ydk::YLeaf member_interface; //type: string
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf port_priority; //type: uint16
+        ydk::YLeaf port_number; //type: uint16
+        ydk::YLeaf underlying_link_id; //type: uint16
+        ydk::YLeaf link_order_number; //type: uint16
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf iccp_node; //type: uint32
+        ydk::YLeaf member_type; //type: BmdMemberTypeEnum
+        ydk::YLeaf member_name; //type: string
         class Counters; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters
         class LinkData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData
         class MemberMuxData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData
@@ -1347,7 +1451,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -1355,28 +1459,30 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lacpd_us_received; //type: uint32
-        YLeaf lacpd_us_transmitted; //type: uint32
-        YLeaf marker_packets_received; //type: uint32
-        YLeaf marker_responses_transmitted; //type: uint32
-        YLeaf illegal_packets_received; //type: uint32
-        YLeaf excess_lacpd_us_received; //type: uint32
-        YLeaf excess_marker_packets_received; //type: uint32
-        YLeaf defaulted; //type: uint32
-        YLeaf expired; //type: uint32
-        YLeaf last_cleared_sec; //type: uint32
-        YLeaf last_cleared_nsec; //type: uint32
+        ydk::YLeaf lacpd_us_received; //type: uint32
+        ydk::YLeaf lacpd_us_transmitted; //type: uint32
+        ydk::YLeaf marker_packets_received; //type: uint32
+        ydk::YLeaf marker_responses_transmitted; //type: uint32
+        ydk::YLeaf illegal_packets_received; //type: uint32
+        ydk::YLeaf excess_lacpd_us_received; //type: uint32
+        ydk::YLeaf excess_marker_packets_received; //type: uint32
+        ydk::YLeaf defaulted; //type: uint32
+        ydk::YLeaf expired; //type: uint32
+        ydk::YLeaf last_cleared_sec; //type: uint32
+        ydk::YLeaf last_cleared_nsec; //type: uint32
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData : public ydk::Entity
 {
     public:
         LinkData();
@@ -1384,32 +1490,34 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
-        YLeaf actor_system_priority; //type: uint16
-        YLeaf actor_system_mac_address; //type: string
-        YLeaf actor_operational_key; //type: uint16
-        YLeaf partner_system_priority; //type: uint16
-        YLeaf partner_system_mac_address; //type: string
-        YLeaf partner_operational_key; //type: uint16
-        YLeaf selected_aggregator_id; //type: uint32
-        YLeaf attached_aggregator_id; //type: uint32
-        YLeaf actor_port_id; //type: uint16
-        YLeaf actor_port_priority; //type: uint16
-        YLeaf partner_port_id; //type: uint16
-        YLeaf partner_port_priority; //type: uint16
-        YLeaf actor_port_state; //type: uint8
-        YLeaf partner_port_state; //type: uint8
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf actor_system_priority; //type: uint16
+        ydk::YLeaf actor_system_mac_address; //type: string
+        ydk::YLeaf actor_operational_key; //type: uint16
+        ydk::YLeaf partner_system_priority; //type: uint16
+        ydk::YLeaf partner_system_mac_address; //type: string
+        ydk::YLeaf partner_operational_key; //type: uint16
+        ydk::YLeaf selected_aggregator_id; //type: uint32
+        ydk::YLeaf attached_aggregator_id; //type: uint32
+        ydk::YLeaf actor_port_id; //type: uint16
+        ydk::YLeaf actor_port_priority; //type: uint16
+        ydk::YLeaf partner_port_id; //type: uint16
+        ydk::YLeaf partner_port_priority; //type: uint16
+        ydk::YLeaf actor_port_state; //type: uint8
+        ydk::YLeaf partner_port_state; //type: uint8
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData : public ydk::Entity
 {
     public:
         MemberMuxData();
@@ -1417,17 +1525,19 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mux_state; //type: BmMuxstateEnum
-        YLeaf error; //type: uint32
-        YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
-        YLeaf member_state; //type: BmdMemberStateEnum
-        YLeaf mux_state_reason; //type: BmMuxreasonEnum
+        ydk::YLeaf mux_state; //type: BmMuxstate
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf member_mux_state_reason; //type: BmMbrStateReason
+        ydk::YLeaf member_state; //type: BmdMemberState
+        ydk::YLeaf mux_state_reason; //type: BmMuxreason
         class MemberMuxStateReasonData; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
@@ -1435,7 +1545,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData : public ydk::Entity
 {
     public:
         MemberMuxStateReasonData();
@@ -1443,19 +1553,21 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reason_type; //type: BmStateReasonTargetEnum
-        YLeaf severity; //type: BmSeverityEnum
+        ydk::YLeaf reason_type; //type: BmStateReasonTarget
+        ydk::YLeaf severity; //type: BmSeverity
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MemberMuxData::MemberMuxStateReasonData
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -1463,18 +1575,20 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::MacAddress
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem : public ydk::Entity
 {
     public:
         BundleBundleItem();
@@ -1482,50 +1596,52 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface_name; //type: string
-        YLeaf available_bandwidth; //type: uint32
-        YLeaf effective_bandwidth; //type: uint32
-        YLeaf configured_bandwidth; //type: uint32
-        YLeaf minimum_active_links; //type: uint8
-        YLeaf maximum_active_links; //type: uint8
-        YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
-        YLeaf minimum_bandwidth; //type: uint32
-        YLeaf primary_member; //type: string
-        YLeaf bundle_status; //type: BmBdlStateEnum
-        YLeaf active_member_count; //type: uint16
-        YLeaf standby_member_count; //type: uint16
-        YLeaf configured_member_count; //type: uint16
-        YLeaf mac_source; //type: BmBdlMacSourceEnum
-        YLeaf mac_source_member; //type: string
-        YLeaf inter_chassis; //type: boolean
-        YLeaf is_active; //type: boolean
-        YLeaf lacp_status; //type: BmFeatureStatusEnum
-        YLeaf mlacp_status; //type: BmFeatureStatusEnum
-        YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
-        YLeaf link_order_status; //type: BmFeatureStatusEnum
-        YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
-        YLeaf load_balance_hash_type; //type: string
-        YLeaf load_balance_locality_threshold; //type: uint16
-        YLeaf suppression_timer; //type: uint16
-        YLeaf wait_while_timer; //type: uint16
-        YLeaf collector_max_delay; //type: uint16
-        YLeaf cisco_extensions; //type: boolean
-        YLeaf lacp_nonrevertive; //type: boolean
-        YLeaf iccp_group_id; //type: uint32
-        YLeaf active_foreign_member_count; //type: uint16
-        YLeaf configured_foreign_member_count; //type: uint16
-        YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
-        YLeaf maximize_threshold_value_links; //type: uint32
-        YLeaf maximize_threshold_value_band_width; //type: uint32
-        YLeaf mlacp_mode; //type: BundleMlacpModeEnum
-        YLeaf recovery_delay; //type: uint16
-        YLeaf singleton; //type: boolean
+        ydk::YLeaf bundle_interface_name; //type: string
+        ydk::YLeaf available_bandwidth; //type: uint32
+        ydk::YLeaf effective_bandwidth; //type: uint32
+        ydk::YLeaf configured_bandwidth; //type: uint32
+        ydk::YLeaf minimum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links_source; //type: BmWhichSystem
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf primary_member; //type: string
+        ydk::YLeaf bundle_status; //type: BmBdlState
+        ydk::YLeaf active_member_count; //type: uint16
+        ydk::YLeaf standby_member_count; //type: uint16
+        ydk::YLeaf configured_member_count; //type: uint16
+        ydk::YLeaf mac_source; //type: BmBdlMacSource
+        ydk::YLeaf mac_source_member; //type: string
+        ydk::YLeaf inter_chassis; //type: boolean
+        ydk::YLeaf is_active; //type: boolean
+        ydk::YLeaf lacp_status; //type: BmFeatureStatus
+        ydk::YLeaf mlacp_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv4bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf link_order_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv6bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf load_balance_hash_type; //type: string
+        ydk::YLeaf load_balance_locality_threshold; //type: uint16
+        ydk::YLeaf suppression_timer; //type: uint16
+        ydk::YLeaf wait_while_timer; //type: uint16
+        ydk::YLeaf collector_max_delay; //type: uint16
+        ydk::YLeaf cisco_extensions; //type: boolean
+        ydk::YLeaf lacp_nonrevertive; //type: boolean
+        ydk::YLeaf iccp_group_id; //type: uint32
+        ydk::YLeaf active_foreign_member_count; //type: uint16
+        ydk::YLeaf configured_foreign_member_count; //type: uint16
+        ydk::YLeaf switchover_type; //type: BmdMlacpSwitchover
+        ydk::YLeaf maximize_threshold_value_links; //type: uint32
+        ydk::YLeaf maximize_threshold_value_band_width; //type: uint32
+        ydk::YLeaf mlacp_mode; //type: BundleMlacpMode
+        ydk::YLeaf recovery_delay; //type: uint16
+        ydk::YLeaf singleton; //type: boolean
         class MacAddress; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress
         class BfdConfig; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig
 
@@ -1535,7 +1651,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem :
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -1543,18 +1659,20 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::MacAddress
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig : public ydk::Entity
 {
     public:
         BfdConfig();
@@ -1562,20 +1680,22 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_status; //type: BmdBfdBdlStateEnum
-        YLeaf start_timer; //type: uint32
-        YLeaf nbr_unconfig_timer; //type: uint32
-        YLeaf pref_multiplier; //type: uint16
-        YLeaf pref_min_interval; //type: uint32
-        YLeaf pref_echo_min_interval; //type: uint32
-        YLeaf fast_detect; //type: boolean
-        YLeaf mode_info; //type: uint32
+        ydk::YLeaf bundle_status; //type: BmdBfdBdlState
+        ydk::YLeaf start_timer; //type: uint32
+        ydk::YLeaf nbr_unconfig_timer; //type: uint32
+        ydk::YLeaf pref_multiplier; //type: uint16
+        ydk::YLeaf pref_min_interval; //type: uint32
+        ydk::YLeaf pref_echo_min_interval; //type: uint32
+        ydk::YLeaf fast_detect; //type: boolean
+        ydk::YLeaf mode_info; //type: uint32
         class DestinationAddress; //type: BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress> destination_address;
@@ -1583,7 +1703,7 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig
 
 
-class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress : public Entity
+class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress : public ydk::Entity
 {
     public:
         DestinationAddress();
@@ -1591,20 +1711,22 @@ class BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: BmAfIdEnum
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf af; //type: BmAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleItem::BfdConfig::DestinationAddress
 
 
-class BundleInformation::Bundle::BundleMembers : public Entity
+class BundleInformation::Bundle::BundleMembers : public ydk::Entity
 {
     public:
         BundleMembers();
@@ -1612,11 +1734,13 @@ class BundleInformation::Bundle::BundleMembers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BundleMember; //type: BundleInformation::Bundle::BundleMembers::BundleMember
 
@@ -1625,7 +1749,7 @@ class BundleInformation::Bundle::BundleMembers : public Entity
 }; // BundleInformation::Bundle::BundleMembers
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember : public ydk::Entity
 {
     public:
         BundleMember();
@@ -1633,13 +1757,15 @@ class BundleInformation::Bundle::BundleMembers::BundleMember : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_interface; //type: string
+        ydk::YLeaf member_interface; //type: string
         class BundleMemberAncestor; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor
         class BundleMemberItem; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem
 
@@ -1649,7 +1775,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember : public Entity
 }; // BundleInformation::Bundle::BundleMembers::BundleMember
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor : public ydk::Entity
 {
     public:
         BundleMemberAncestor();
@@ -1657,11 +1783,13 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BundleData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData
         class MemberData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData
@@ -1672,7 +1800,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData : public ydk::Entity
 {
     public:
         BundleData();
@@ -1680,50 +1808,52 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface_name; //type: string
-        YLeaf available_bandwidth; //type: uint32
-        YLeaf effective_bandwidth; //type: uint32
-        YLeaf configured_bandwidth; //type: uint32
-        YLeaf minimum_active_links; //type: uint8
-        YLeaf maximum_active_links; //type: uint8
-        YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
-        YLeaf minimum_bandwidth; //type: uint32
-        YLeaf primary_member; //type: string
-        YLeaf bundle_status; //type: BmBdlStateEnum
-        YLeaf active_member_count; //type: uint16
-        YLeaf standby_member_count; //type: uint16
-        YLeaf configured_member_count; //type: uint16
-        YLeaf mac_source; //type: BmBdlMacSourceEnum
-        YLeaf mac_source_member; //type: string
-        YLeaf inter_chassis; //type: boolean
-        YLeaf is_active; //type: boolean
-        YLeaf lacp_status; //type: BmFeatureStatusEnum
-        YLeaf mlacp_status; //type: BmFeatureStatusEnum
-        YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
-        YLeaf link_order_status; //type: BmFeatureStatusEnum
-        YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
-        YLeaf load_balance_hash_type; //type: string
-        YLeaf load_balance_locality_threshold; //type: uint16
-        YLeaf suppression_timer; //type: uint16
-        YLeaf wait_while_timer; //type: uint16
-        YLeaf collector_max_delay; //type: uint16
-        YLeaf cisco_extensions; //type: boolean
-        YLeaf lacp_nonrevertive; //type: boolean
-        YLeaf iccp_group_id; //type: uint32
-        YLeaf active_foreign_member_count; //type: uint16
-        YLeaf configured_foreign_member_count; //type: uint16
-        YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
-        YLeaf maximize_threshold_value_links; //type: uint32
-        YLeaf maximize_threshold_value_band_width; //type: uint32
-        YLeaf mlacp_mode; //type: BundleMlacpModeEnum
-        YLeaf recovery_delay; //type: uint16
-        YLeaf singleton; //type: boolean
+        ydk::YLeaf bundle_interface_name; //type: string
+        ydk::YLeaf available_bandwidth; //type: uint32
+        ydk::YLeaf effective_bandwidth; //type: uint32
+        ydk::YLeaf configured_bandwidth; //type: uint32
+        ydk::YLeaf minimum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links_source; //type: BmWhichSystem
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf primary_member; //type: string
+        ydk::YLeaf bundle_status; //type: BmBdlState
+        ydk::YLeaf active_member_count; //type: uint16
+        ydk::YLeaf standby_member_count; //type: uint16
+        ydk::YLeaf configured_member_count; //type: uint16
+        ydk::YLeaf mac_source; //type: BmBdlMacSource
+        ydk::YLeaf mac_source_member; //type: string
+        ydk::YLeaf inter_chassis; //type: boolean
+        ydk::YLeaf is_active; //type: boolean
+        ydk::YLeaf lacp_status; //type: BmFeatureStatus
+        ydk::YLeaf mlacp_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv4bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf link_order_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv6bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf load_balance_hash_type; //type: string
+        ydk::YLeaf load_balance_locality_threshold; //type: uint16
+        ydk::YLeaf suppression_timer; //type: uint16
+        ydk::YLeaf wait_while_timer; //type: uint16
+        ydk::YLeaf collector_max_delay; //type: uint16
+        ydk::YLeaf cisco_extensions; //type: boolean
+        ydk::YLeaf lacp_nonrevertive; //type: boolean
+        ydk::YLeaf iccp_group_id; //type: uint32
+        ydk::YLeaf active_foreign_member_count; //type: uint16
+        ydk::YLeaf configured_foreign_member_count; //type: uint16
+        ydk::YLeaf switchover_type; //type: BmdMlacpSwitchover
+        ydk::YLeaf maximize_threshold_value_links; //type: uint32
+        ydk::YLeaf maximize_threshold_value_band_width; //type: uint32
+        ydk::YLeaf mlacp_mode; //type: BundleMlacpMode
+        ydk::YLeaf recovery_delay; //type: uint16
+        ydk::YLeaf singleton; //type: boolean
         class MacAddress; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress
         class BfdConfig; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig
 
@@ -1733,7 +1863,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -1741,18 +1871,20 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::MacAddress
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig : public ydk::Entity
 {
     public:
         BfdConfig();
@@ -1760,20 +1892,22 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_status; //type: BmdBfdBdlStateEnum
-        YLeaf start_timer; //type: uint32
-        YLeaf nbr_unconfig_timer; //type: uint32
-        YLeaf pref_multiplier; //type: uint16
-        YLeaf pref_min_interval; //type: uint32
-        YLeaf pref_echo_min_interval; //type: uint32
-        YLeaf fast_detect; //type: boolean
-        YLeaf mode_info; //type: uint32
+        ydk::YLeaf bundle_status; //type: BmdBfdBdlState
+        ydk::YLeaf start_timer; //type: uint32
+        ydk::YLeaf nbr_unconfig_timer; //type: uint32
+        ydk::YLeaf pref_multiplier; //type: uint16
+        ydk::YLeaf pref_min_interval; //type: uint32
+        ydk::YLeaf pref_echo_min_interval; //type: uint32
+        ydk::YLeaf fast_detect; //type: boolean
+        ydk::YLeaf mode_info; //type: uint32
         class DestinationAddress; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress> destination_address;
@@ -1781,7 +1915,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress : public ydk::Entity
 {
     public:
         DestinationAddress();
@@ -1789,20 +1923,22 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: BmAfIdEnum
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf af; //type: BmAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::BundleData::BfdConfig::DestinationAddress
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData : public ydk::Entity
 {
     public:
         MemberData();
@@ -1810,21 +1946,23 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bandwidth; //type: uint32
-        YLeaf port_priority; //type: uint16
-        YLeaf port_number; //type: uint16
-        YLeaf underlying_link_id; //type: uint16
-        YLeaf link_order_number; //type: uint16
-        YLeaf interface_name; //type: string
-        YLeaf iccp_node; //type: uint32
-        YLeaf member_type; //type: BmdMemberTypeEnumEnum
-        YLeaf member_name; //type: string
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf port_priority; //type: uint16
+        ydk::YLeaf port_number; //type: uint16
+        ydk::YLeaf underlying_link_id; //type: uint16
+        ydk::YLeaf link_order_number; //type: uint16
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf iccp_node; //type: uint32
+        ydk::YLeaf member_type; //type: BmdMemberTypeEnum
+        ydk::YLeaf member_name; //type: string
         class Counters; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters
         class LinkData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData
         class MemberMuxData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData
@@ -1838,7 +1976,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -1846,28 +1984,30 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lacpd_us_received; //type: uint32
-        YLeaf lacpd_us_transmitted; //type: uint32
-        YLeaf marker_packets_received; //type: uint32
-        YLeaf marker_responses_transmitted; //type: uint32
-        YLeaf illegal_packets_received; //type: uint32
-        YLeaf excess_lacpd_us_received; //type: uint32
-        YLeaf excess_marker_packets_received; //type: uint32
-        YLeaf defaulted; //type: uint32
-        YLeaf expired; //type: uint32
-        YLeaf last_cleared_sec; //type: uint32
-        YLeaf last_cleared_nsec; //type: uint32
+        ydk::YLeaf lacpd_us_received; //type: uint32
+        ydk::YLeaf lacpd_us_transmitted; //type: uint32
+        ydk::YLeaf marker_packets_received; //type: uint32
+        ydk::YLeaf marker_responses_transmitted; //type: uint32
+        ydk::YLeaf illegal_packets_received; //type: uint32
+        ydk::YLeaf excess_lacpd_us_received; //type: uint32
+        ydk::YLeaf excess_marker_packets_received; //type: uint32
+        ydk::YLeaf defaulted; //type: uint32
+        ydk::YLeaf expired; //type: uint32
+        ydk::YLeaf last_cleared_sec; //type: uint32
+        ydk::YLeaf last_cleared_nsec; //type: uint32
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData : public ydk::Entity
 {
     public:
         LinkData();
@@ -1875,32 +2015,34 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
-        YLeaf actor_system_priority; //type: uint16
-        YLeaf actor_system_mac_address; //type: string
-        YLeaf actor_operational_key; //type: uint16
-        YLeaf partner_system_priority; //type: uint16
-        YLeaf partner_system_mac_address; //type: string
-        YLeaf partner_operational_key; //type: uint16
-        YLeaf selected_aggregator_id; //type: uint32
-        YLeaf attached_aggregator_id; //type: uint32
-        YLeaf actor_port_id; //type: uint16
-        YLeaf actor_port_priority; //type: uint16
-        YLeaf partner_port_id; //type: uint16
-        YLeaf partner_port_priority; //type: uint16
-        YLeaf actor_port_state; //type: uint8
-        YLeaf partner_port_state; //type: uint8
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf actor_system_priority; //type: uint16
+        ydk::YLeaf actor_system_mac_address; //type: string
+        ydk::YLeaf actor_operational_key; //type: uint16
+        ydk::YLeaf partner_system_priority; //type: uint16
+        ydk::YLeaf partner_system_mac_address; //type: string
+        ydk::YLeaf partner_operational_key; //type: uint16
+        ydk::YLeaf selected_aggregator_id; //type: uint32
+        ydk::YLeaf attached_aggregator_id; //type: uint32
+        ydk::YLeaf actor_port_id; //type: uint16
+        ydk::YLeaf actor_port_priority; //type: uint16
+        ydk::YLeaf partner_port_id; //type: uint16
+        ydk::YLeaf partner_port_priority; //type: uint16
+        ydk::YLeaf actor_port_state; //type: uint8
+        ydk::YLeaf partner_port_state; //type: uint8
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData : public ydk::Entity
 {
     public:
         MemberMuxData();
@@ -1908,17 +2050,19 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mux_state; //type: BmMuxstateEnum
-        YLeaf error; //type: uint32
-        YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
-        YLeaf member_state; //type: BmdMemberStateEnum
-        YLeaf mux_state_reason; //type: BmMuxreasonEnum
+        ydk::YLeaf mux_state; //type: BmMuxstate
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf member_mux_state_reason; //type: BmMbrStateReason
+        ydk::YLeaf member_state; //type: BmdMemberState
+        ydk::YLeaf mux_state_reason; //type: BmMuxreason
         class MemberMuxStateReasonData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
@@ -1926,7 +2070,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData : public ydk::Entity
 {
     public:
         MemberMuxStateReasonData();
@@ -1934,19 +2078,21 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reason_type; //type: BmStateReasonTargetEnum
-        YLeaf severity; //type: BmSeverityEnum
+        ydk::YLeaf reason_type; //type: BmStateReasonTarget
+        ydk::YLeaf severity; //type: BmSeverity
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MemberMuxData::MemberMuxStateReasonData
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -1954,18 +2100,20 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::MacAddress
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem : public ydk::Entity
 {
     public:
         BundleMemberItem();
@@ -1973,21 +2121,23 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bandwidth; //type: uint32
-        YLeaf port_priority; //type: uint16
-        YLeaf port_number; //type: uint16
-        YLeaf underlying_link_id; //type: uint16
-        YLeaf link_order_number; //type: uint16
-        YLeaf interface_name; //type: string
-        YLeaf iccp_node; //type: uint32
-        YLeaf member_type; //type: BmdMemberTypeEnumEnum
-        YLeaf member_name; //type: string
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf port_priority; //type: uint16
+        ydk::YLeaf port_number; //type: uint16
+        ydk::YLeaf underlying_link_id; //type: uint16
+        ydk::YLeaf link_order_number; //type: uint16
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf iccp_node; //type: uint32
+        ydk::YLeaf member_type; //type: BmdMemberTypeEnum
+        ydk::YLeaf member_name; //type: string
         class Counters; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters
         class LinkData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData
         class MemberMuxData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData
@@ -2001,7 +2151,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem :
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -2009,28 +2159,30 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lacpd_us_received; //type: uint32
-        YLeaf lacpd_us_transmitted; //type: uint32
-        YLeaf marker_packets_received; //type: uint32
-        YLeaf marker_responses_transmitted; //type: uint32
-        YLeaf illegal_packets_received; //type: uint32
-        YLeaf excess_lacpd_us_received; //type: uint32
-        YLeaf excess_marker_packets_received; //type: uint32
-        YLeaf defaulted; //type: uint32
-        YLeaf expired; //type: uint32
-        YLeaf last_cleared_sec; //type: uint32
-        YLeaf last_cleared_nsec; //type: uint32
+        ydk::YLeaf lacpd_us_received; //type: uint32
+        ydk::YLeaf lacpd_us_transmitted; //type: uint32
+        ydk::YLeaf marker_packets_received; //type: uint32
+        ydk::YLeaf marker_responses_transmitted; //type: uint32
+        ydk::YLeaf illegal_packets_received; //type: uint32
+        ydk::YLeaf excess_lacpd_us_received; //type: uint32
+        ydk::YLeaf excess_marker_packets_received; //type: uint32
+        ydk::YLeaf defaulted; //type: uint32
+        ydk::YLeaf expired; //type: uint32
+        ydk::YLeaf last_cleared_sec; //type: uint32
+        ydk::YLeaf last_cleared_nsec; //type: uint32
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData : public ydk::Entity
 {
     public:
         LinkData();
@@ -2038,32 +2190,34 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
-        YLeaf actor_system_priority; //type: uint16
-        YLeaf actor_system_mac_address; //type: string
-        YLeaf actor_operational_key; //type: uint16
-        YLeaf partner_system_priority; //type: uint16
-        YLeaf partner_system_mac_address; //type: string
-        YLeaf partner_operational_key; //type: uint16
-        YLeaf selected_aggregator_id; //type: uint32
-        YLeaf attached_aggregator_id; //type: uint32
-        YLeaf actor_port_id; //type: uint16
-        YLeaf actor_port_priority; //type: uint16
-        YLeaf partner_port_id; //type: uint16
-        YLeaf partner_port_priority; //type: uint16
-        YLeaf actor_port_state; //type: uint8
-        YLeaf partner_port_state; //type: uint8
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf actor_system_priority; //type: uint16
+        ydk::YLeaf actor_system_mac_address; //type: string
+        ydk::YLeaf actor_operational_key; //type: uint16
+        ydk::YLeaf partner_system_priority; //type: uint16
+        ydk::YLeaf partner_system_mac_address; //type: string
+        ydk::YLeaf partner_operational_key; //type: uint16
+        ydk::YLeaf selected_aggregator_id; //type: uint32
+        ydk::YLeaf attached_aggregator_id; //type: uint32
+        ydk::YLeaf actor_port_id; //type: uint16
+        ydk::YLeaf actor_port_priority; //type: uint16
+        ydk::YLeaf partner_port_id; //type: uint16
+        ydk::YLeaf partner_port_priority; //type: uint16
+        ydk::YLeaf actor_port_state; //type: uint8
+        ydk::YLeaf partner_port_state; //type: uint8
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData : public ydk::Entity
 {
     public:
         MemberMuxData();
@@ -2071,17 +2225,19 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mux_state; //type: BmMuxstateEnum
-        YLeaf error; //type: uint32
-        YLeaf member_mux_state_reason; //type: BmMbrStateReasonEnum
-        YLeaf member_state; //type: BmdMemberStateEnum
-        YLeaf mux_state_reason; //type: BmMuxreasonEnum
+        ydk::YLeaf mux_state; //type: BmMuxstate
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf member_mux_state_reason; //type: BmMbrStateReason
+        ydk::YLeaf member_state; //type: BmdMemberState
+        ydk::YLeaf mux_state_reason; //type: BmMuxreason
         class MemberMuxStateReasonData; //type: BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData> member_mux_state_reason_data;
@@ -2089,7 +2245,7 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData : public ydk::Entity
 {
     public:
         MemberMuxStateReasonData();
@@ -2097,19 +2253,21 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reason_type; //type: BmStateReasonTargetEnum
-        YLeaf severity; //type: BmSeverityEnum
+        ydk::YLeaf reason_type; //type: BmStateReasonTarget
+        ydk::YLeaf severity; //type: BmSeverity
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MemberMuxData::MemberMuxStateReasonData
 
 
-class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress : public Entity
+class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -2117,18 +2275,20 @@ class BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::MacAddress
 
 
-class BundleInformation::EventsRg : public Entity
+class BundleInformation::EventsRg : public ydk::Entity
 {
     public:
         EventsRg();
@@ -2136,11 +2296,13 @@ class BundleInformation::EventsRg : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EventsRgMembers; //type: BundleInformation::EventsRg::EventsRgMembers
         class EventsRgIccpGroups; //type: BundleInformation::EventsRg::EventsRgIccpGroups
@@ -2153,7 +2315,7 @@ class BundleInformation::EventsRg : public Entity
 }; // BundleInformation::EventsRg
 
 
-class BundleInformation::EventsRg::EventsRgMembers : public Entity
+class BundleInformation::EventsRg::EventsRgMembers : public ydk::Entity
 {
     public:
         EventsRgMembers();
@@ -2161,11 +2323,13 @@ class BundleInformation::EventsRg::EventsRgMembers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EventsRgMember; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember
 
@@ -2174,7 +2338,7 @@ class BundleInformation::EventsRg::EventsRgMembers : public Entity
 }; // BundleInformation::EventsRg::EventsRgMembers
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember : public ydk::Entity
 {
     public:
         EventsRgMember();
@@ -2182,13 +2346,15 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_interface; //type: string
+        ydk::YLeaf member_interface; //type: string
         class EventsRgMemberAncestor; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor> events_rg_member_ancestor;
@@ -2196,7 +2362,7 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember : public Enti
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor : public ydk::Entity
 {
     public:
         EventsRgMemberAncestor();
@@ -2204,13 +2370,15 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf item_name; //type: string
+        ydk::YLeaf item_name; //type: string
         class Items; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items> > items;
@@ -2218,7 +2386,7 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items : public ydk::Entity
 {
     public:
         Items();
@@ -2226,13 +2394,15 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_type; //type: BmdBagTargetEnum
+        ydk::YLeaf event_type; //type: BmdBagTarget
         class MemberEvtInfo; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo
         class BundleEvtInfo; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo
         class RgEvtInfo; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo
@@ -2244,7 +2414,7 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo : public ydk::Entity
 {
     public:
         MemberEvtInfo();
@@ -2252,14 +2422,16 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf member_event_type; //type: BmdBagEventMbrItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data> data;
@@ -2267,7 +2439,7 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2275,21 +2447,23 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::MemberEvtInfo::Data
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo : public ydk::Entity
 {
     public:
         BundleEvtInfo();
@@ -2297,14 +2471,16 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf bundle_event_type; //type: BmdBagEventBdlItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data> data;
@@ -2312,7 +2488,7 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2320,21 +2496,23 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::BundleEvtInfo::Data
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo : public ydk::Entity
 {
     public:
         RgEvtInfo();
@@ -2342,14 +2520,16 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf rg_event_type; //type: BmdBagEventRgItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data> data;
@@ -2357,7 +2537,7 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2365,21 +2545,23 @@ class BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::EventsRgMemberAncestor::Items::RgEvtInfo::Data
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups : public ydk::Entity
 {
     public:
         EventsRgIccpGroups();
@@ -2387,11 +2569,13 @@ class BundleInformation::EventsRg::EventsRgIccpGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EventsRgIccpGroup; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup
 
@@ -2400,7 +2584,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups : public Entity
 }; // BundleInformation::EventsRg::EventsRgIccpGroups
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup : public ydk::Entity
 {
     public:
         EventsRgIccpGroup();
@@ -2408,13 +2592,15 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf iccp_group; //type: uint32
+        ydk::YLeaf iccp_group; //type: uint32
         class EventsRgBundleItemIccpGroup; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup> events_rg_bundle_item_iccp_group;
@@ -2422,7 +2608,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup : publi
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup : public ydk::Entity
 {
     public:
         EventsRgBundleItemIccpGroup();
@@ -2430,13 +2616,15 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf item_name; //type: string
+        ydk::YLeaf item_name; //type: string
         class Items; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items> > items;
@@ -2444,7 +2632,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items : public ydk::Entity
 {
     public:
         Items();
@@ -2452,13 +2640,15 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_type; //type: BmdBagTargetEnum
+        ydk::YLeaf event_type; //type: BmdBagTarget
         class MemberEvtInfo; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo
         class BundleEvtInfo; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo
         class RgEvtInfo; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo
@@ -2470,7 +2660,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo : public ydk::Entity
 {
     public:
         MemberEvtInfo();
@@ -2478,14 +2668,16 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf member_event_type; //type: BmdBagEventMbrItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data> data;
@@ -2493,7 +2685,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2501,21 +2693,23 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::MemberEvtInfo::Data
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo : public ydk::Entity
 {
     public:
         BundleEvtInfo();
@@ -2523,14 +2717,16 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf bundle_event_type; //type: BmdBagEventBdlItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data> data;
@@ -2538,7 +2734,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2546,21 +2742,23 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::BundleEvtInfo::Data
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo : public ydk::Entity
 {
     public:
         RgEvtInfo();
@@ -2568,14 +2766,16 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf rg_event_type; //type: BmdBagEventRgItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data> data;
@@ -2583,7 +2783,7 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2591,21 +2791,23 @@ class BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::Events
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::EventsRgBundleItemIccpGroup::Items::RgEvtInfo::Data
 
 
-class BundleInformation::EventsRg::EventsRgBundles : public Entity
+class BundleInformation::EventsRg::EventsRgBundles : public ydk::Entity
 {
     public:
         EventsRgBundles();
@@ -2613,11 +2815,13 @@ class BundleInformation::EventsRg::EventsRgBundles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EventsRgBundle; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle
 
@@ -2626,7 +2830,7 @@ class BundleInformation::EventsRg::EventsRgBundles : public Entity
 }; // BundleInformation::EventsRg::EventsRgBundles
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle : public ydk::Entity
 {
     public:
         EventsRgBundle();
@@ -2634,13 +2838,15 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface; //type: string
+        ydk::YLeaf bundle_interface; //type: string
         class EventsRgBundleAncestor; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor> events_rg_bundle_ancestor;
@@ -2648,7 +2854,7 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle : public Enti
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor : public ydk::Entity
 {
     public:
         EventsRgBundleAncestor();
@@ -2656,13 +2862,15 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf item_name; //type: string
+        ydk::YLeaf item_name; //type: string
         class Items; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items> > items;
@@ -2670,7 +2878,7 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items : public ydk::Entity
 {
     public:
         Items();
@@ -2678,13 +2886,15 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_type; //type: BmdBagTargetEnum
+        ydk::YLeaf event_type; //type: BmdBagTarget
         class MemberEvtInfo; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo
         class BundleEvtInfo; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo
         class RgEvtInfo; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo
@@ -2696,7 +2906,7 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo : public ydk::Entity
 {
     public:
         MemberEvtInfo();
@@ -2704,14 +2914,16 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_event_type; //type: BmdBagEventMbrItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf member_event_type; //type: BmdBagEventMbrItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data> data;
@@ -2719,7 +2931,7 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2727,21 +2939,23 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::MemberEvtInfo::Data
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo : public ydk::Entity
 {
     public:
         BundleEvtInfo();
@@ -2749,14 +2963,16 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_event_type; //type: BmdBagEventBdlItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf bundle_event_type; //type: BmdBagEventBdlItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data> data;
@@ -2764,7 +2980,7 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2772,21 +2988,23 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::BundleEvtInfo::Data
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo : public ydk::Entity
 {
     public:
         RgEvtInfo();
@@ -2794,14 +3012,16 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rg_event_type; //type: BmdBagEventRgItemEnum
-        YLeaf time_stamp; //type: uint64
+        ydk::YLeaf rg_event_type; //type: BmdBagEventRgItem
+        ydk::YLeaf time_stamp; //type: uint64
         class Data; //type: BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data> data;
@@ -2809,7 +3029,7 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo
 
 
-class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data : public Entity
+class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data : public ydk::Entity
 {
     public:
         Data();
@@ -2817,21 +3037,23 @@ class BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBund
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data_type; //type: BmdBagEventDataEnum
-        YLeaf no_data; //type: uint8
-        YLeaf error; //type: uint32
-        YLeaf string_data; //type: string
+        ydk::YLeaf data_type; //type: BmdBagEventData
+        ydk::YLeaf no_data; //type: uint8
+        ydk::YLeaf error; //type: uint32
+        ydk::YLeaf string_data; //type: string
 
 }; // BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::EventsRgBundleAncestor::Items::RgEvtInfo::Data
 
 
-class BundleInformation::Lacp : public Entity
+class BundleInformation::Lacp : public ydk::Entity
 {
     public:
         Lacp();
@@ -2839,11 +3061,13 @@ class BundleInformation::Lacp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LacpBundles; //type: BundleInformation::Lacp::LacpBundles
         class LacpMembers; //type: BundleInformation::Lacp::LacpMembers
@@ -2854,7 +3078,7 @@ class BundleInformation::Lacp : public Entity
 }; // BundleInformation::Lacp
 
 
-class BundleInformation::Lacp::LacpBundles : public Entity
+class BundleInformation::Lacp::LacpBundles : public ydk::Entity
 {
     public:
         LacpBundles();
@@ -2862,11 +3086,13 @@ class BundleInformation::Lacp::LacpBundles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LacpBundle; //type: BundleInformation::Lacp::LacpBundles::LacpBundle
 
@@ -2875,7 +3101,7 @@ class BundleInformation::Lacp::LacpBundles : public Entity
 }; // BundleInformation::Lacp::LacpBundles
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle : public ydk::Entity
 {
     public:
         LacpBundle();
@@ -2883,13 +3109,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface; //type: string
+        ydk::YLeaf bundle_interface; //type: string
         class LacpBundleItem; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem
         class LacpBundleDescendant; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant
         class LacpBundleChildrenMembers; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
@@ -2901,7 +3129,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle : public Entity
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem : public ydk::Entity
 {
     public:
         LacpBundleItem();
@@ -2909,16 +3137,18 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf actor_operational_key; //type: uint16
-        YLeaf partner_system_priority; //type: uint16
-        YLeaf partner_system_mac_address; //type: string
-        YLeaf partner_operational_key; //type: uint16
+        ydk::YLeaf actor_operational_key; //type: uint16
+        ydk::YLeaf partner_system_priority; //type: uint16
+        ydk::YLeaf partner_system_mac_address; //type: string
+        ydk::YLeaf partner_operational_key; //type: uint16
         class ActorBundleData; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData
         class BundleSystemId; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId
 
@@ -2928,7 +3158,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem : public 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData : public ydk::Entity
 {
     public:
         ActorBundleData();
@@ -2936,50 +3166,52 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBun
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface_name; //type: string
-        YLeaf available_bandwidth; //type: uint32
-        YLeaf effective_bandwidth; //type: uint32
-        YLeaf configured_bandwidth; //type: uint32
-        YLeaf minimum_active_links; //type: uint8
-        YLeaf maximum_active_links; //type: uint8
-        YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
-        YLeaf minimum_bandwidth; //type: uint32
-        YLeaf primary_member; //type: string
-        YLeaf bundle_status; //type: BmBdlStateEnum
-        YLeaf active_member_count; //type: uint16
-        YLeaf standby_member_count; //type: uint16
-        YLeaf configured_member_count; //type: uint16
-        YLeaf mac_source; //type: BmBdlMacSourceEnum
-        YLeaf mac_source_member; //type: string
-        YLeaf inter_chassis; //type: boolean
-        YLeaf is_active; //type: boolean
-        YLeaf lacp_status; //type: BmFeatureStatusEnum
-        YLeaf mlacp_status; //type: BmFeatureStatusEnum
-        YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
-        YLeaf link_order_status; //type: BmFeatureStatusEnum
-        YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
-        YLeaf load_balance_hash_type; //type: string
-        YLeaf load_balance_locality_threshold; //type: uint16
-        YLeaf suppression_timer; //type: uint16
-        YLeaf wait_while_timer; //type: uint16
-        YLeaf collector_max_delay; //type: uint16
-        YLeaf cisco_extensions; //type: boolean
-        YLeaf lacp_nonrevertive; //type: boolean
-        YLeaf iccp_group_id; //type: uint32
-        YLeaf active_foreign_member_count; //type: uint16
-        YLeaf configured_foreign_member_count; //type: uint16
-        YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
-        YLeaf maximize_threshold_value_links; //type: uint32
-        YLeaf maximize_threshold_value_band_width; //type: uint32
-        YLeaf mlacp_mode; //type: BundleMlacpModeEnum
-        YLeaf recovery_delay; //type: uint16
-        YLeaf singleton; //type: boolean
+        ydk::YLeaf bundle_interface_name; //type: string
+        ydk::YLeaf available_bandwidth; //type: uint32
+        ydk::YLeaf effective_bandwidth; //type: uint32
+        ydk::YLeaf configured_bandwidth; //type: uint32
+        ydk::YLeaf minimum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links_source; //type: BmWhichSystem
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf primary_member; //type: string
+        ydk::YLeaf bundle_status; //type: BmBdlState
+        ydk::YLeaf active_member_count; //type: uint16
+        ydk::YLeaf standby_member_count; //type: uint16
+        ydk::YLeaf configured_member_count; //type: uint16
+        ydk::YLeaf mac_source; //type: BmBdlMacSource
+        ydk::YLeaf mac_source_member; //type: string
+        ydk::YLeaf inter_chassis; //type: boolean
+        ydk::YLeaf is_active; //type: boolean
+        ydk::YLeaf lacp_status; //type: BmFeatureStatus
+        ydk::YLeaf mlacp_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv4bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf link_order_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv6bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf load_balance_hash_type; //type: string
+        ydk::YLeaf load_balance_locality_threshold; //type: uint16
+        ydk::YLeaf suppression_timer; //type: uint16
+        ydk::YLeaf wait_while_timer; //type: uint16
+        ydk::YLeaf collector_max_delay; //type: uint16
+        ydk::YLeaf cisco_extensions; //type: boolean
+        ydk::YLeaf lacp_nonrevertive; //type: boolean
+        ydk::YLeaf iccp_group_id; //type: uint32
+        ydk::YLeaf active_foreign_member_count; //type: uint16
+        ydk::YLeaf configured_foreign_member_count; //type: uint16
+        ydk::YLeaf switchover_type; //type: BmdMlacpSwitchover
+        ydk::YLeaf maximize_threshold_value_links; //type: uint32
+        ydk::YLeaf maximize_threshold_value_band_width; //type: uint32
+        ydk::YLeaf mlacp_mode; //type: BundleMlacpMode
+        ydk::YLeaf recovery_delay; //type: uint16
+        ydk::YLeaf singleton; //type: boolean
         class MacAddress; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress
         class BfdConfig; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig
 
@@ -2989,7 +3221,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBun
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -2997,18 +3229,20 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBun
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::MacAddress
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig : public ydk::Entity
 {
     public:
         BfdConfig();
@@ -3016,20 +3250,22 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBun
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_status; //type: BmdBfdBdlStateEnum
-        YLeaf start_timer; //type: uint32
-        YLeaf nbr_unconfig_timer; //type: uint32
-        YLeaf pref_multiplier; //type: uint16
-        YLeaf pref_min_interval; //type: uint32
-        YLeaf pref_echo_min_interval; //type: uint32
-        YLeaf fast_detect; //type: boolean
-        YLeaf mode_info; //type: uint32
+        ydk::YLeaf bundle_status; //type: BmdBfdBdlState
+        ydk::YLeaf start_timer; //type: uint32
+        ydk::YLeaf nbr_unconfig_timer; //type: uint32
+        ydk::YLeaf pref_multiplier; //type: uint16
+        ydk::YLeaf pref_min_interval; //type: uint32
+        ydk::YLeaf pref_echo_min_interval; //type: uint32
+        ydk::YLeaf fast_detect; //type: boolean
+        ydk::YLeaf mode_info; //type: uint32
         class DestinationAddress; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress> destination_address;
@@ -3037,7 +3273,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBun
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress : public ydk::Entity
 {
     public:
         DestinationAddress();
@@ -3045,20 +3281,22 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBun
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: BmAfIdEnum
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf af; //type: BmAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData::BfdConfig::DestinationAddress
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId : public ydk::Entity
 {
     public:
         BundleSystemId();
@@ -3066,13 +3304,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSy
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf system_prio; //type: uint16
+        ydk::YLeaf system_prio; //type: uint16
         class SystemMacAddr; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr> system_mac_addr;
@@ -3080,7 +3320,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSy
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr : public ydk::Entity
 {
     public:
         SystemMacAddr();
@@ -3088,18 +3328,20 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSy
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf macaddr; //type: string
+        ydk::YLeaf macaddr; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId::SystemMacAddr
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant : public ydk::Entity
 {
     public:
         LacpBundleDescendant();
@@ -3107,11 +3349,13 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BundleData; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData
         class MemberData; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData
@@ -3122,7 +3366,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant : p
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData : public ydk::Entity
 {
     public:
         BundleData();
@@ -3130,16 +3374,18 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf actor_operational_key; //type: uint16
-        YLeaf partner_system_priority; //type: uint16
-        YLeaf partner_system_mac_address; //type: string
-        YLeaf partner_operational_key; //type: uint16
+        ydk::YLeaf actor_operational_key; //type: uint16
+        ydk::YLeaf partner_system_priority; //type: uint16
+        ydk::YLeaf partner_system_mac_address; //type: string
+        ydk::YLeaf partner_operational_key; //type: uint16
         class ActorBundleData; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData
         class BundleSystemId; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId
 
@@ -3149,7 +3395,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData : public ydk::Entity
 {
     public:
         ActorBundleData();
@@ -3157,50 +3403,52 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_interface_name; //type: string
-        YLeaf available_bandwidth; //type: uint32
-        YLeaf effective_bandwidth; //type: uint32
-        YLeaf configured_bandwidth; //type: uint32
-        YLeaf minimum_active_links; //type: uint8
-        YLeaf maximum_active_links; //type: uint8
-        YLeaf maximum_active_links_source; //type: BmWhichSystemEnum
-        YLeaf minimum_bandwidth; //type: uint32
-        YLeaf primary_member; //type: string
-        YLeaf bundle_status; //type: BmBdlStateEnum
-        YLeaf active_member_count; //type: uint16
-        YLeaf standby_member_count; //type: uint16
-        YLeaf configured_member_count; //type: uint16
-        YLeaf mac_source; //type: BmBdlMacSourceEnum
-        YLeaf mac_source_member; //type: string
-        YLeaf inter_chassis; //type: boolean
-        YLeaf is_active; //type: boolean
-        YLeaf lacp_status; //type: BmFeatureStatusEnum
-        YLeaf mlacp_status; //type: BmFeatureStatusEnum
-        YLeaf ipv4bfd_status; //type: BmFeatureStatusEnum
-        YLeaf link_order_status; //type: BmFeatureStatusEnum
-        YLeaf ipv6bfd_status; //type: BmFeatureStatusEnum
-        YLeaf load_balance_hash_type; //type: string
-        YLeaf load_balance_locality_threshold; //type: uint16
-        YLeaf suppression_timer; //type: uint16
-        YLeaf wait_while_timer; //type: uint16
-        YLeaf collector_max_delay; //type: uint16
-        YLeaf cisco_extensions; //type: boolean
-        YLeaf lacp_nonrevertive; //type: boolean
-        YLeaf iccp_group_id; //type: uint32
-        YLeaf active_foreign_member_count; //type: uint16
-        YLeaf configured_foreign_member_count; //type: uint16
-        YLeaf switchover_type; //type: BmdMlacpSwitchoverEnum
-        YLeaf maximize_threshold_value_links; //type: uint32
-        YLeaf maximize_threshold_value_band_width; //type: uint32
-        YLeaf mlacp_mode; //type: BundleMlacpModeEnum
-        YLeaf recovery_delay; //type: uint16
-        YLeaf singleton; //type: boolean
+        ydk::YLeaf bundle_interface_name; //type: string
+        ydk::YLeaf available_bandwidth; //type: uint32
+        ydk::YLeaf effective_bandwidth; //type: uint32
+        ydk::YLeaf configured_bandwidth; //type: uint32
+        ydk::YLeaf minimum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links; //type: uint8
+        ydk::YLeaf maximum_active_links_source; //type: BmWhichSystem
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+        ydk::YLeaf primary_member; //type: string
+        ydk::YLeaf bundle_status; //type: BmBdlState
+        ydk::YLeaf active_member_count; //type: uint16
+        ydk::YLeaf standby_member_count; //type: uint16
+        ydk::YLeaf configured_member_count; //type: uint16
+        ydk::YLeaf mac_source; //type: BmBdlMacSource
+        ydk::YLeaf mac_source_member; //type: string
+        ydk::YLeaf inter_chassis; //type: boolean
+        ydk::YLeaf is_active; //type: boolean
+        ydk::YLeaf lacp_status; //type: BmFeatureStatus
+        ydk::YLeaf mlacp_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv4bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf link_order_status; //type: BmFeatureStatus
+        ydk::YLeaf ipv6bfd_status; //type: BmFeatureStatus
+        ydk::YLeaf load_balance_hash_type; //type: string
+        ydk::YLeaf load_balance_locality_threshold; //type: uint16
+        ydk::YLeaf suppression_timer; //type: uint16
+        ydk::YLeaf wait_while_timer; //type: uint16
+        ydk::YLeaf collector_max_delay; //type: uint16
+        ydk::YLeaf cisco_extensions; //type: boolean
+        ydk::YLeaf lacp_nonrevertive; //type: boolean
+        ydk::YLeaf iccp_group_id; //type: uint32
+        ydk::YLeaf active_foreign_member_count; //type: uint16
+        ydk::YLeaf configured_foreign_member_count; //type: uint16
+        ydk::YLeaf switchover_type; //type: BmdMlacpSwitchover
+        ydk::YLeaf maximize_threshold_value_links; //type: uint32
+        ydk::YLeaf maximize_threshold_value_band_width; //type: uint32
+        ydk::YLeaf mlacp_mode; //type: BundleMlacpMode
+        ydk::YLeaf recovery_delay; //type: uint16
+        ydk::YLeaf singleton; //type: boolean
         class MacAddress; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress
         class BfdConfig; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig
 
@@ -3210,7 +3458,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress : public ydk::Entity
 {
     public:
         MacAddress();
@@ -3218,18 +3466,20 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
+        ydk::YLeaf address; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::MacAddress
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig : public ydk::Entity
 {
     public:
         BfdConfig();
@@ -3237,20 +3487,22 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bundle_status; //type: BmdBfdBdlStateEnum
-        YLeaf start_timer; //type: uint32
-        YLeaf nbr_unconfig_timer; //type: uint32
-        YLeaf pref_multiplier; //type: uint16
-        YLeaf pref_min_interval; //type: uint32
-        YLeaf pref_echo_min_interval; //type: uint32
-        YLeaf fast_detect; //type: boolean
-        YLeaf mode_info; //type: uint32
+        ydk::YLeaf bundle_status; //type: BmdBfdBdlState
+        ydk::YLeaf start_timer; //type: uint32
+        ydk::YLeaf nbr_unconfig_timer; //type: uint32
+        ydk::YLeaf pref_multiplier; //type: uint16
+        ydk::YLeaf pref_min_interval; //type: uint32
+        ydk::YLeaf pref_echo_min_interval; //type: uint32
+        ydk::YLeaf fast_detect; //type: boolean
+        ydk::YLeaf mode_info; //type: uint32
         class DestinationAddress; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress> destination_address;
@@ -3258,7 +3510,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress : public ydk::Entity
 {
     public:
         DestinationAddress();
@@ -3266,20 +3518,22 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af; //type: BmAfIdEnum
-        YLeaf ipv4; //type: string
-        YLeaf ipv6; //type: string
+        ydk::YLeaf af; //type: BmAfId
+        ydk::YLeaf ipv4; //type: string
+        ydk::YLeaf ipv6; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData::BfdConfig::DestinationAddress
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId : public ydk::Entity
 {
     public:
         BundleSystemId();
@@ -3287,13 +3541,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf system_prio; //type: uint16
+        ydk::YLeaf system_prio; //type: uint16
         class SystemMacAddr; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr> system_mac_addr;
@@ -3301,7 +3557,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr : public ydk::Entity
 {
     public:
         SystemMacAddr();
@@ -3309,18 +3565,20 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf macaddr; //type: string
+        ydk::YLeaf macaddr; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId::SystemMacAddr
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData : public ydk::Entity
 {
     public:
         MemberData();
@@ -3328,21 +3586,23 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf selected_aggregator_id; //type: uint32
-        YLeaf attached_aggregator_id; //type: uint32
-        YLeaf selection_state; //type: LacpSelStateEnum
-        YLeaf period_state; //type: LacpPeriodStateEnum
-        YLeaf receive_machine_state; //type: RxstatesEnum
-        YLeaf mux_state; //type: BmMuxstateEnum
-        YLeaf actor_churn_state; //type: LacpChurnstatesEnum
-        YLeaf partner_churn_state; //type: LacpChurnstatesEnum
-        YLeaf iccp_group_id; //type: uint32
+        ydk::YLeaf selected_aggregator_id; //type: uint32
+        ydk::YLeaf attached_aggregator_id; //type: uint32
+        ydk::YLeaf selection_state; //type: LacpSelState
+        ydk::YLeaf period_state; //type: LacpPeriodState
+        ydk::YLeaf receive_machine_state; //type: Rxstates
+        ydk::YLeaf mux_state; //type: BmMuxstate
+        ydk::YLeaf actor_churn_state; //type: LacpChurnstates
+        ydk::YLeaf partner_churn_state; //type: LacpChurnstates
+        ydk::YLeaf iccp_group_id; //type: uint32
         class ActorInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo
         class PartnerInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo
         class AdditionalInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo
@@ -3354,7 +3614,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo : public ydk::Entity
 {
     public:
         ActorInfo();
@@ -3362,13 +3622,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tx_period; //type: uint32
+        ydk::YLeaf tx_period; //type: uint32
         class PortInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo> port_info;
@@ -3376,7 +3638,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo : public ydk::Entity
 {
     public:
         PortInfo();
@@ -3384,14 +3646,16 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf key; //type: uint16
-        YLeaf state; //type: uint8
+        ydk::YLeaf key; //type: uint16
+        ydk::YLeaf state; //type: uint8
         class System; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System
         class Port; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port
 
@@ -3401,7 +3665,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System : public ydk::Entity
 {
     public:
         System();
@@ -3409,13 +3673,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf system_prio; //type: uint16
+        ydk::YLeaf system_prio; //type: uint16
         class SystemMacAddr; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr> system_mac_addr;
@@ -3423,7 +3689,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr : public ydk::Entity
 {
     public:
         SystemMacAddr();
@@ -3431,18 +3697,20 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf macaddr; //type: string
+        ydk::YLeaf macaddr; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::System::SystemMacAddr
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port : public ydk::Entity
 {
     public:
         Port();
@@ -3450,19 +3718,21 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_priority; //type: uint16
-        YLeaf link_number; //type: uint16
+        ydk::YLeaf link_priority; //type: uint16
+        ydk::YLeaf link_number; //type: uint16
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::ActorInfo::PortInfo::Port
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo : public ydk::Entity
 {
     public:
         PartnerInfo();
@@ -3470,13 +3740,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tx_period; //type: uint32
+        ydk::YLeaf tx_period; //type: uint32
         class PortInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo> port_info;
@@ -3484,7 +3756,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo : public ydk::Entity
 {
     public:
         PortInfo();
@@ -3492,14 +3764,16 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf key; //type: uint16
-        YLeaf state; //type: uint8
+        ydk::YLeaf key; //type: uint16
+        ydk::YLeaf state; //type: uint8
         class System; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System
         class Port; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port
 
@@ -3509,7 +3783,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System : public ydk::Entity
 {
     public:
         System();
@@ -3517,13 +3791,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf system_prio; //type: uint16
+        ydk::YLeaf system_prio; //type: uint16
         class SystemMacAddr; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr> system_mac_addr;
@@ -3531,7 +3807,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr : public ydk::Entity
 {
     public:
         SystemMacAddr();
@@ -3539,18 +3815,20 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf macaddr; //type: string
+        ydk::YLeaf macaddr; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::System::SystemMacAddr
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port : public ydk::Entity
 {
     public:
         Port();
@@ -3558,19 +3836,21 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_priority; //type: uint16
-        YLeaf link_number; //type: uint16
+        ydk::YLeaf link_priority; //type: uint16
+        ydk::YLeaf link_number; //type: uint16
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::PartnerInfo::PortInfo::Port
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo : public ydk::Entity
 {
     public:
         AdditionalInfo();
@@ -3578,13 +3858,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mbr_type; //type: BmdMemberTypeEnumEnum
+        ydk::YLeaf mbr_type; //type: BmdMemberTypeEnum
         class Local; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local
         class Foreign; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign
 
@@ -3594,7 +3876,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local : public ydk::Entity
 {
     public:
         Local();
@@ -3602,18 +3884,20 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
+        ydk::YLeaf interface_handle; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Local
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign : public ydk::Entity
 {
     public:
         Foreign();
@@ -3621,19 +3905,21 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Me
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf peer_address; //type: string
-        YLeaf member_name; //type: string
+        ydk::YLeaf peer_address; //type: string
+        ydk::YLeaf member_name; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::MemberData::AdditionalInfo::Foreign
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers : public ydk::Entity
 {
     public:
         LacpBundleChildrenMembers();
@@ -3641,11 +3927,13 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LacpBundleChildrenMember; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember
 
@@ -3654,7 +3942,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember : public ydk::Entity
 {
     public:
         LacpBundleChildrenMember();
@@ -3662,22 +3950,24 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf member_interface; //type: string
-        YLeaf selected_aggregator_id; //type: uint32
-        YLeaf attached_aggregator_id; //type: uint32
-        YLeaf selection_state; //type: LacpSelStateEnum
-        YLeaf period_state; //type: LacpPeriodStateEnum
-        YLeaf receive_machine_state; //type: RxstatesEnum
-        YLeaf mux_state; //type: BmMuxstateEnum
-        YLeaf actor_churn_state; //type: LacpChurnstatesEnum
-        YLeaf partner_churn_state; //type: LacpChurnstatesEnum
-        YLeaf iccp_group_id; //type: uint32
+        ydk::YLeaf member_interface; //type: string
+        ydk::YLeaf selected_aggregator_id; //type: uint32
+        ydk::YLeaf attached_aggregator_id; //type: uint32
+        ydk::YLeaf selection_state; //type: LacpSelState
+        ydk::YLeaf period_state; //type: LacpPeriodState
+        ydk::YLeaf receive_machine_state; //type: Rxstates
+        ydk::YLeaf mux_state; //type: BmMuxstate
+        ydk::YLeaf actor_churn_state; //type: LacpChurnstates
+        ydk::YLeaf partner_churn_state; //type: LacpChurnstates
+        ydk::YLeaf iccp_group_id; //type: uint32
         class ActorInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo
         class PartnerInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo
         class AdditionalInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::AdditionalInfo
@@ -3689,7 +3979,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo : public ydk::Entity
 {
     public:
         ActorInfo();
@@ -3697,13 +3987,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tx_period; //type: uint32
+        ydk::YLeaf tx_period; //type: uint32
         class PortInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo> port_info;
@@ -3711,7 +4003,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo : public ydk::Entity
 {
     public:
         PortInfo();
@@ -3719,14 +4011,16 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf key; //type: uint16
-        YLeaf state; //type: uint8
+        ydk::YLeaf key; //type: uint16
+        ydk::YLeaf state; //type: uint8
         class System; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System
         class Port; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port
 
@@ -3736,7 +4030,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System : public ydk::Entity
 {
     public:
         System();
@@ -3744,13 +4038,15 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf system_prio; //type: uint16
+        ydk::YLeaf system_prio; //type: uint16
         class SystemMacAddr; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr> system_mac_addr;
@@ -3758,7 +4054,7 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr : public ydk::Entity
 {
     public:
         SystemMacAddr();
@@ -3766,18 +4062,20 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf macaddr; //type: string
+        ydk::YLeaf macaddr; //type: string
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::System::SystemMacAddr
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port : public ydk::Entity
 {
     public:
         Port();
@@ -3785,19 +4083,21 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_priority; //type: uint16
-        YLeaf link_number; //type: uint16
+        ydk::YLeaf link_priority; //type: uint16
+        ydk::YLeaf link_number; //type: uint16
 
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::ActorInfo::PortInfo::Port
 
 
-class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo : public Entity
+class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo : public ydk::Entity
 {
     public:
         PartnerInfo();
@@ -3805,487 +4105,489 @@ class BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tx_period; //type: uint32
+        ydk::YLeaf tx_period; //type: uint32
         class PortInfo; //type: BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo
 
         std::shared_ptr<Cisco_IOS_XR_bundlemgr_oper::BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo::PortInfo> port_info;
         
 }; // BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers::LacpBundleChildrenMember::PartnerInfo
 
-class BmdMlacpSwitchoverEnum : public Enum
+class BmSeverity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bmd_mlacp_switchover_nonrevertive;
-        static const Enum::YLeaf bmd_mlacp_switchover_brute_force;
-        static const Enum::YLeaf bmd_mlacp_switchover_revertive;
-        static const Enum::YLeaf bmd_mlacp_switchover_count;
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf misconfiguration;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf error;
 
 };
 
-class LoadBalanceEnum : public Enum
+class BmFeatureStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf default_;
-        static const Enum::YLeaf auto_;
-        static const Enum::YLeaf value_;
-        static const Enum::YLeaf source_ip;
-        static const Enum::YLeaf destination_ip;
-        static const Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf bm_feature_not_configured;
+        static const ydk::Enum::YLeaf bm_feature_not_operational;
+        static const ydk::Enum::YLeaf bm_feature_operational;
 
 };
 
-class BmBdlStateEnum : public Enum
+class LoadBalance : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_bdl_state_admin_down;
-        static const Enum::YLeaf bm_bdl_state_down;
-        static const Enum::YLeaf bm_bdl_state_client_down;
-        static const Enum::YLeaf bm_bdl_state_ptnr_down;
-        static const Enum::YLeaf bm_bdl_state_bundle_shutdown;
-        static const Enum::YLeaf bm_bdl_state_pe_isolated;
-        static const Enum::YLeaf bm_bdl_state_nak;
-        static const Enum::YLeaf bm_bdl_state_up_active;
-        static const Enum::YLeaf bm_bdl_state_mlacp_hot_standby;
-        static const Enum::YLeaf bm_bdl_state_mlacp_cold_standby;
-        static const Enum::YLeaf bm_bdl_state_unknown;
-        static const Enum::YLeaf bm_bdl_state_cold_standby;
-        static const Enum::YLeaf bm_bdl_state_error_disabled;
-        static const Enum::YLeaf bm_bdl_state_efd_disabled;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf source_ip;
+        static const ydk::Enum::YLeaf destination_ip;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
-class LacpPeriodStateEnum : public Enum
+class LacpSelState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf period_s_low;
-        static const Enum::YLeaf period_fast;
-        static const Enum::YLeaf period_none;
+        static const ydk::Enum::YLeaf unselected;
+        static const ydk::Enum::YLeaf standby;
+        static const ydk::Enum::YLeaf selected;
 
 };
 
-class BundleMediaEnum : public Enum
+class BmdMlacpNodeSyncEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bundle_media_ethernet;
-        static const Enum::YLeaf bundle_media_pos;
-        static const Enum::YLeaf bundle_media_count;
+        static const ydk::Enum::YLeaf node_sync_req;
+        static const ydk::Enum::YLeaf node_sync_done;
+        static const ydk::Enum::YLeaf node_sync_start;
+        static const ydk::Enum::YLeaf node_sync_init;
+        static const ydk::Enum::YLeaf node_sync_singleton;
 
 };
 
-class BmdMlacpBdlStateEnumEnum : public Enum
+class BundleMlacpMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bdl_state_nak;
-        static const Enum::YLeaf bdl_state_unknown;
-        static const Enum::YLeaf bdl_state_no_sync;
-        static const Enum::YLeaf bdl_state_rec_delay;
-        static const Enum::YLeaf bdl_state_up;
-        static const Enum::YLeaf bdl_state_down;
-        static const Enum::YLeaf bdl_state_admin_down;
-        static const Enum::YLeaf bdl_state_test;
-        static const Enum::YLeaf bdl_state_error;
+        static const ydk::Enum::YLeaf bundle_mlacp_mode_standby;
+        static const ydk::Enum::YLeaf bundle_mlacp_mode_active;
+        static const ydk::Enum::YLeaf bundle_mlacp_mode_count;
 
 };
 
-class BundleMedia1Enum : public Enum
+class BmdBagMlacpSchActionItem : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ethernet;
-        static const Enum::YLeaf pos;
+        static const ydk::Enum::YLeaf switchover;
+        static const ydk::Enum::YLeaf switchback;
 
 };
 
-class RxstatesEnum : public Enum
+class BmdSwitchReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf current_rx;
-        static const Enum::YLeaf expired;
-        static const Enum::YLeaf defaulted;
-        static const Enum::YLeaf initialize;
-        static const Enum::YLeaf lacp_disabled;
-        static const Enum::YLeaf port_disabled;
+        static const ydk::Enum::YLeaf bm_switch_reason_none;
+        static const ydk::Enum::YLeaf bm_switch_reason_noop;
+        static const ydk::Enum::YLeaf bm_switch_reason_not_mlacp;
+        static const ydk::Enum::YLeaf bm_switch_reason_revertive;
+        static const ydk::Enum::YLeaf bm_switch_reason_bdl_down;
+        static const ydk::Enum::YLeaf bm_switch_reason_recovery;
+        static const ydk::Enum::YLeaf bm_switch_reason_preceding_error;
+        static const ydk::Enum::YLeaf bm_switch_reason_wrong_order;
+        static const ydk::Enum::YLeaf bm_switch_reason_singleton;
 
 };
 
-class LacpChurnstatesEnum : public Enum
+class BmAfId : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf no_churn;
-        static const Enum::YLeaf churn;
-        static const Enum::YLeaf churn_monitor;
+        static const ydk::Enum::YLeaf bm_af_id_ipv4;
+        static const ydk::Enum::YLeaf bm_af_id_ipv6;
 
 };
 
-class BmdBagEventMbrItemEnum : public Enum
+class BmdBagEventBdlItem : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bmd_event_mbr_idb_create;
-        static const Enum::YLeaf bmd_event_mbr_bdl_add;
-        static const Enum::YLeaf bmd_event_mbr_im_state;
-        static const Enum::YLeaf bmd_event_mbr_sel_logic;
-        static const Enum::YLeaf bmd_event_mbr_mux;
-        static const Enum::YLeaf bmd_event_mbr_bfd;
-        static const Enum::YLeaf bmd_event_mbr_expired;
-        static const Enum::YLeaf bmd_event_mbr_defaulted;
-        static const Enum::YLeaf bmd_event_mbr_first_retry;
-        static const Enum::YLeaf bmd_event_mbr_msg;
-        static const Enum::YLeaf bmd_event_mbr_error;
-        static const Enum::YLeaf bmd_event_mbr_mlacp_tlv;
-        static const Enum::YLeaf bmd_event_mbr_redundancy_role;
-        static const Enum::YLeaf bmd_event_mbr_count;
+        static const ydk::Enum::YLeaf bmd_event_bdl_idb_create;
+        static const ydk::Enum::YLeaf bmd_event_bdl_configured;
+        static const ydk::Enum::YLeaf bmd_event_bdl_im_state;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_added;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mbr_deleted;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mac_addr;
+        static const ydk::Enum::YLeaf bmd_event_bdl_first_retry;
+        static const ydk::Enum::YLeaf bmd_event_bdl_user_config;
+        static const ydk::Enum::YLeaf bmd_event_bdl_error;
+        static const ydk::Enum::YLeaf bmd_event_bdl_mlacp_tlv;
+        static const ydk::Enum::YLeaf bmd_event_bdl_redundancy_role;
+        static const ydk::Enum::YLeaf bdl_bfd_state_change;
+        static const ydk::Enum::YLeaf bmd_event_bdl_icl;
+        static const ydk::Enum::YLeaf bmd_event_bdl_count;
 
 };
 
-class BmdBagEventDataEnum : public Enum
+class BmMuxreason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bmd_bag_evt_data_none;
-        static const Enum::YLeaf bmd_bag_evt_data_error;
-        static const Enum::YLeaf bmd_bag_evt_data_string;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_reason;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_down;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_deleted;
+        static const ydk::Enum::YLeaf bm_mux_reason_duplex;
+        static const ydk::Enum::YLeaf bm_mux_reason_bandwidth;
+        static const ydk::Enum::YLeaf bm_mux_reason_loop_back;
+        static const ydk::Enum::YLeaf bm_mux_reason_activity_type;
+        static const ydk::Enum::YLeaf bm_mux_reason_link_limit;
+        static const ydk::Enum::YLeaf bm_mux_reason_shared;
+        static const ydk::Enum::YLeaf bm_mux_reason_lagid;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_bundle;
+        static const ydk::Enum::YLeaf bm_mux_reason_no_primary;
+        static const ydk::Enum::YLeaf bm_mux_reason_bundle_down;
+        static const ydk::Enum::YLeaf bm_mux_reason_individual;
+        static const ydk::Enum::YLeaf bm_mux_reason_defaulted;
+        static const ydk::Enum::YLeaf bm_mux_reason_in_sync;
+        static const ydk::Enum::YLeaf bm_mux_reason_collecting;
+        static const ydk::Enum::YLeaf bm_mux_reason_active_link_limit;
+        static const ydk::Enum::YLeaf bm_mux_reason_distributing;
+        static const ydk::Enum::YLeaf bm_mux_reason_count;
 
 };
 
-class BmdSwitchReasonEnum : public Enum
+class BmdMlacpMbrStateEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_switch_reason_none;
-        static const Enum::YLeaf bm_switch_reason_noop;
-        static const Enum::YLeaf bm_switch_reason_not_mlacp;
-        static const Enum::YLeaf bm_switch_reason_revertive;
-        static const Enum::YLeaf bm_switch_reason_bdl_down;
-        static const Enum::YLeaf bm_switch_reason_recovery;
-        static const Enum::YLeaf bm_switch_reason_preceding_error;
-        static const Enum::YLeaf bm_switch_reason_wrong_order;
-        static const Enum::YLeaf bm_switch_reason_singleton;
+        static const ydk::Enum::YLeaf mbr_state_nak;
+        static const ydk::Enum::YLeaf mbr_state_unknown;
+        static const ydk::Enum::YLeaf mbr_state_up;
+        static const ydk::Enum::YLeaf mbr_state_down;
+        static const ydk::Enum::YLeaf mbr_state_admin_down;
+        static const ydk::Enum::YLeaf mbr_state_test;
+        static const ydk::Enum::YLeaf mbr_state_error;
 
 };
 
-class BmdMemberTypeEnumEnum : public Enum
+class BmdMemberTypeEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bmd_mbr_local;
-        static const Enum::YLeaf bmd_mbr_foreign;
-        static const Enum::YLeaf bmd_mbr_unknown;
+        static const ydk::Enum::YLeaf bmd_mbr_local;
+        static const ydk::Enum::YLeaf bmd_mbr_foreign;
+        static const ydk::Enum::YLeaf bmd_mbr_unknown;
 
 };
 
-class BmAfIdEnum : public Enum
+class BmBdlMacSource : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_af_id_ipv4;
-        static const Enum::YLeaf bm_af_id_ipv6;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_unknown;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_chassis;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_configured;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_member;
+        static const ydk::Enum::YLeaf bm_bdl_mac_source_peer;
 
 };
 
-class BmMbrStateReasonEnum : public Enum
+class LacpChurnstates : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_mbr_state_reason_unknown;
-        static const Enum::YLeaf bm_mbr_state_reason_unselectable_unknown;
-        static const Enum::YLeaf bm_mbr_state_reason_link_down;
-        static const Enum::YLeaf bm_mbr_state_reason_link_deleting;
-        static const Enum::YLeaf bm_mbr_state_reason_creating;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_creating;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_deleting;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_admin_down;
-        static const Enum::YLeaf bm_mbr_state_reason_replicating;
-        static const Enum::YLeaf bm_mbr_state_reason_bandwidth;
-        static const Enum::YLeaf bm_mbr_state_reason_loop_back;
-        static const Enum::YLeaf bm_mbr_state_reason_activity_type;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_shutdown;
-        static const Enum::YLeaf bm_mbr_state_reason_min_selected;
-        static const Enum::YLeaf bm_mbr_state_reason_max_selected;
-        static const Enum::YLeaf bm_mbr_state_reason_link_limit;
-        static const Enum::YLeaf bm_mbr_state_reason_active_limit;
-        static const Enum::YLeaf bm_mbr_state_reason_standby_unknown;
-        static const Enum::YLeaf bm_mbr_state_reason_expired;
-        static const Enum::YLeaf bm_mbr_state_reason_defaulted;
-        static const Enum::YLeaf bm_mbr_state_reason_act_or_not_agg;
-        static const Enum::YLeaf bm_mbr_state_reason_partner_not_agg;
-        static const Enum::YLeaf bm_mbr_state_reason_lagid;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_not_cfgd;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_not_ready;
-        static const Enum::YLeaf bm_mbr_state_reason_partner_ood;
-        static const Enum::YLeaf bm_mbr_state_reason_partner_not_in_sync;
-        static const Enum::YLeaf bm_mbr_state_reason_foreign_partner_oos;
-        static const Enum::YLeaf bm_mbr_state_reason_attach_unknown;
-        static const Enum::YLeaf bm_mbr_state_reason_partner_not_collecting;
-        static const Enum::YLeaf bm_mbr_state_reason_collect_unknown;
-        static const Enum::YLeaf bm_mbr_state_reason_standby_foreign;
-        static const Enum::YLeaf bm_mbr_state_reason_bfd_starting;
-        static const Enum::YLeaf bm_mbr_state_reason_bfd_down;
-        static const Enum::YLeaf bm_mbr_state_reason_bfd_nbr_unconfig;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp;
-        static const Enum::YLeaf bm_mbr_state_reason_pe_isolated;
-        static const Enum::YLeaf bm_mbr_state_reason_forced_switchover;
-        static const Enum::YLeaf bm_mbr_state_reason_errdis_unknown;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_no_mbr_state_info;
-        static const Enum::YLeaf bm_mbr_state_reason_active;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_state_info;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_config_info;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_sync;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_bdl_has_no_peer;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_nak;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_transport_unavailable;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_not_configured;
-        static const Enum::YLeaf bm_mbr_state_reason_recovery_timer;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_standby;
-        static const Enum::YLeaf bm_mbr_state_reason_maximized_out;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_peer_selected;
-        static const Enum::YLeaf bm_mbr_state_reason_mlacp_connect_timer_running;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_not_mlacp;
-        static const Enum::YLeaf bm_mbr_state_reason_no_lon;
-        static const Enum::YLeaf bm_mbr_state_reason_cumul_rel_bw_limit;
-        static const Enum::YLeaf bm_mbr_state_reason_no_mac;
-        static const Enum::YLeaf bm_mbr_state_reason_no_system_id;
-        static const Enum::YLeaf bm_mbr_state_reason_link_shutdown;
-        static const Enum::YLeaf bm_mbr_state_reason_activity_mlacp;
-        static const Enum::YLeaf bm_mbr_state_reason_activity_iccp;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_icpe_mlacp;
-        static const Enum::YLeaf bm_mbr_state_reason_no_link_num;
-        static const Enum::YLeaf bm_mbr_state_reason_standby_peer_higher_prio;
-        static const Enum::YLeaf bm_mbr_state_reason_red_state_standby;
-        static const Enum::YLeaf bm_mbr_state_reason_other_red_state_standby;
-        static const Enum::YLeaf bm_mbr_state_reason_hold_ing;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_error_disabled;
-        static const Enum::YLeaf bm_mbr_state_reason_bundle_efd_disabled;
-        static const Enum::YLeaf bm_mbr_state_reason_singleton_pe_isolated;
-        static const Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_starting;
-        static const Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_down;
-        static const Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_nbr_unconfig;
-        static const Enum::YLeaf bm_mbr_state_reason_timer_running;
-        static const Enum::YLeaf bm_mbr_state_reason_client_bundle_ctrl;
-        static const Enum::YLeaf bm_mbr_state_reason_count;
+        static const ydk::Enum::YLeaf no_churn;
+        static const ydk::Enum::YLeaf churn;
+        static const ydk::Enum::YLeaf churn_monitor;
 
 };
 
-class BmdBagEventBdlItemEnum : public Enum
+class BmdMlacpNodeStateEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bmd_event_bdl_idb_create;
-        static const Enum::YLeaf bmd_event_bdl_configured;
-        static const Enum::YLeaf bmd_event_bdl_im_state;
-        static const Enum::YLeaf bmd_event_bdl_mbr_added;
-        static const Enum::YLeaf bmd_event_bdl_mbr_deleted;
-        static const Enum::YLeaf bmd_event_bdl_mac_addr;
-        static const Enum::YLeaf bmd_event_bdl_first_retry;
-        static const Enum::YLeaf bmd_event_bdl_user_config;
-        static const Enum::YLeaf bmd_event_bdl_error;
-        static const Enum::YLeaf bmd_event_bdl_mlacp_tlv;
-        static const Enum::YLeaf bmd_event_bdl_redundancy_role;
-        static const Enum::YLeaf bdl_bfd_state_change;
-        static const Enum::YLeaf bmd_event_bdl_icl;
-        static const Enum::YLeaf bmd_event_bdl_count;
+        static const ydk::Enum::YLeaf node_state_incomplete;
+        static const ydk::Enum::YLeaf node_state_conn_rejected;
+        static const ydk::Enum::YLeaf node_state_connect_sent;
+        static const ydk::Enum::YLeaf node_state_unconfigured;
+        static const ydk::Enum::YLeaf node_state_unreachable;
+        static const ydk::Enum::YLeaf node_state_iccp_down;
+        static const ydk::Enum::YLeaf node_state_nak;
+        static const ydk::Enum::YLeaf node_state_unknown;
+        static const ydk::Enum::YLeaf node_state_mlacp_down;
+        static const ydk::Enum::YLeaf node_state_admin_down;
+        static const ydk::Enum::YLeaf node_state_pe_isolated;
+        static const ydk::Enum::YLeaf node_state_error;
+        static const ydk::Enum::YLeaf node_state_test;
+        static const ydk::Enum::YLeaf node_state_up;
 
 };
 
-class BmdMlacpNodeStateEnumEnum : public Enum
+class BmdBagEventMbrItem : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf node_state_incomplete;
-        static const Enum::YLeaf node_state_conn_rejected;
-        static const Enum::YLeaf node_state_connect_sent;
-        static const Enum::YLeaf node_state_unconfigured;
-        static const Enum::YLeaf node_state_unreachable;
-        static const Enum::YLeaf node_state_iccp_down;
-        static const Enum::YLeaf node_state_nak;
-        static const Enum::YLeaf node_state_unknown;
-        static const Enum::YLeaf node_state_mlacp_down;
-        static const Enum::YLeaf node_state_admin_down;
-        static const Enum::YLeaf node_state_pe_isolated;
-        static const Enum::YLeaf node_state_error;
-        static const Enum::YLeaf node_state_test;
-        static const Enum::YLeaf node_state_up;
+        static const ydk::Enum::YLeaf bmd_event_mbr_idb_create;
+        static const ydk::Enum::YLeaf bmd_event_mbr_bdl_add;
+        static const ydk::Enum::YLeaf bmd_event_mbr_im_state;
+        static const ydk::Enum::YLeaf bmd_event_mbr_sel_logic;
+        static const ydk::Enum::YLeaf bmd_event_mbr_mux;
+        static const ydk::Enum::YLeaf bmd_event_mbr_bfd;
+        static const ydk::Enum::YLeaf bmd_event_mbr_expired;
+        static const ydk::Enum::YLeaf bmd_event_mbr_defaulted;
+        static const ydk::Enum::YLeaf bmd_event_mbr_first_retry;
+        static const ydk::Enum::YLeaf bmd_event_mbr_msg;
+        static const ydk::Enum::YLeaf bmd_event_mbr_error;
+        static const ydk::Enum::YLeaf bmd_event_mbr_mlacp_tlv;
+        static const ydk::Enum::YLeaf bmd_event_mbr_redundancy_role;
+        static const ydk::Enum::YLeaf bmd_event_mbr_count;
 
 };
 
-class BmdBagEventRgItemEnum : public Enum
+class BmWhichSystem : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bmd_event_rg_idb_create;
-        static const Enum::YLeaf bmd_event_rg_configured;
-        static const Enum::YLeaf bmd_event_rg_user_config;
-        static const Enum::YLeaf bmd_event_rg_connect_ion;
-        static const Enum::YLeaf bmd_event_rg_data;
-        static const Enum::YLeaf bmd_event_rg_sync;
-        static const Enum::YLeaf bmd_event_rg_first_retry;
-        static const Enum::YLeaf bmd_event_rg_error;
-        static const Enum::YLeaf bmd_event_rg_mlacp_tlv;
-        static const Enum::YLeaf bmd_event_rg_iccp_event;
-        static const Enum::YLeaf bmd_event_rg_count;
+        static const ydk::Enum::YLeaf bm_which_system_actr;
+        static const ydk::Enum::YLeaf bm_which_system_ptnr;
 
 };
 
-class BmWhichSystemEnum : public Enum
+class Rxstates : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_which_system_actr;
-        static const Enum::YLeaf bm_which_system_ptnr;
+        static const ydk::Enum::YLeaf current_rx;
+        static const ydk::Enum::YLeaf expired;
+        static const ydk::Enum::YLeaf defaulted;
+        static const ydk::Enum::YLeaf initialize;
+        static const ydk::Enum::YLeaf lacp_disabled;
+        static const ydk::Enum::YLeaf port_disabled;
 
 };
 
-class BmdBfdBdlStateEnum : public Enum
+class BundleMedia : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bmd_bfd_bdl_down;
-        static const Enum::YLeaf bmd_bfd_bdl_unknown;
-        static const Enum::YLeaf bmd_bfd_bdl_up;
-        static const Enum::YLeaf bmd_bfd_bdl_count;
+        static const ydk::Enum::YLeaf bundle_media_ethernet;
+        static const ydk::Enum::YLeaf bundle_media_pos;
+        static const ydk::Enum::YLeaf bundle_media_count;
 
 };
 
-class BmdMlacpMbrStateEnumEnum : public Enum
+class BmdBagTarget : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mbr_state_nak;
-        static const Enum::YLeaf mbr_state_unknown;
-        static const Enum::YLeaf mbr_state_up;
-        static const Enum::YLeaf mbr_state_down;
-        static const Enum::YLeaf mbr_state_admin_down;
-        static const Enum::YLeaf mbr_state_test;
-        static const Enum::YLeaf mbr_state_error;
+        static const ydk::Enum::YLeaf bm_bag_target_mbr;
+        static const ydk::Enum::YLeaf bm_bag_target_bdl;
+        static const ydk::Enum::YLeaf bm_bag_target_node;
+        static const ydk::Enum::YLeaf bm_bag_target_rg;
 
 };
 
-class BmdBagTargetEnum : public Enum
+class BmdBagEventData : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_bag_target_mbr;
-        static const Enum::YLeaf bm_bag_target_bdl;
-        static const Enum::YLeaf bm_bag_target_node;
-        static const Enum::YLeaf bm_bag_target_rg;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_none;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_error;
+        static const ydk::Enum::YLeaf bmd_bag_evt_data_string;
 
 };
 
-class BmMuxstateEnum : public Enum
+class LacpPeriodState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf detached;
-        static const Enum::YLeaf waiting;
-        static const Enum::YLeaf attached;
-        static const Enum::YLeaf collecting;
-        static const Enum::YLeaf distributing;
-        static const Enum::YLeaf collecting_distributing;
+        static const ydk::Enum::YLeaf period_s_low;
+        static const ydk::Enum::YLeaf period_fast;
+        static const ydk::Enum::YLeaf period_none;
 
 };
 
-class LacpSelStateEnum : public Enum
+class BmBdlState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unselected;
-        static const Enum::YLeaf standby;
-        static const Enum::YLeaf selected;
+        static const ydk::Enum::YLeaf bm_bdl_state_admin_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_client_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_ptnr_down;
+        static const ydk::Enum::YLeaf bm_bdl_state_bundle_shutdown;
+        static const ydk::Enum::YLeaf bm_bdl_state_pe_isolated;
+        static const ydk::Enum::YLeaf bm_bdl_state_nak;
+        static const ydk::Enum::YLeaf bm_bdl_state_up_active;
+        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_hot_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_mlacp_cold_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_unknown;
+        static const ydk::Enum::YLeaf bm_bdl_state_cold_standby;
+        static const ydk::Enum::YLeaf bm_bdl_state_error_disabled;
+        static const ydk::Enum::YLeaf bm_bdl_state_efd_disabled;
 
 };
 
-class BmdMemberStateEnum : public Enum
+class BmdMlacpBdlStateEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bmd_mbr_state_configured;
-        static const Enum::YLeaf bmd_mbr_state_standby;
-        static const Enum::YLeaf bmd_mbr_state_hot_standby;
-        static const Enum::YLeaf bmd_mbr_state_negotiating;
-        static const Enum::YLeaf bmd_mbr_state_bfd_running;
-        static const Enum::YLeaf bmd_mbr_state_active;
+        static const ydk::Enum::YLeaf bdl_state_nak;
+        static const ydk::Enum::YLeaf bdl_state_unknown;
+        static const ydk::Enum::YLeaf bdl_state_no_sync;
+        static const ydk::Enum::YLeaf bdl_state_rec_delay;
+        static const ydk::Enum::YLeaf bdl_state_up;
+        static const ydk::Enum::YLeaf bdl_state_down;
+        static const ydk::Enum::YLeaf bdl_state_admin_down;
+        static const ydk::Enum::YLeaf bdl_state_test;
+        static const ydk::Enum::YLeaf bdl_state_error;
 
 };
 
-class BmMuxreasonEnum : public Enum
+class BmdBagEventRgItem : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_mux_reason_no_reason;
-        static const Enum::YLeaf bm_mux_reason_link_down;
-        static const Enum::YLeaf bm_mux_reason_link_deleted;
-        static const Enum::YLeaf bm_mux_reason_duplex;
-        static const Enum::YLeaf bm_mux_reason_bandwidth;
-        static const Enum::YLeaf bm_mux_reason_loop_back;
-        static const Enum::YLeaf bm_mux_reason_activity_type;
-        static const Enum::YLeaf bm_mux_reason_link_limit;
-        static const Enum::YLeaf bm_mux_reason_shared;
-        static const Enum::YLeaf bm_mux_reason_lagid;
-        static const Enum::YLeaf bm_mux_reason_no_bundle;
-        static const Enum::YLeaf bm_mux_reason_no_primary;
-        static const Enum::YLeaf bm_mux_reason_bundle_down;
-        static const Enum::YLeaf bm_mux_reason_individual;
-        static const Enum::YLeaf bm_mux_reason_defaulted;
-        static const Enum::YLeaf bm_mux_reason_in_sync;
-        static const Enum::YLeaf bm_mux_reason_collecting;
-        static const Enum::YLeaf bm_mux_reason_active_link_limit;
-        static const Enum::YLeaf bm_mux_reason_distributing;
-        static const Enum::YLeaf bm_mux_reason_count;
+        static const ydk::Enum::YLeaf bmd_event_rg_idb_create;
+        static const ydk::Enum::YLeaf bmd_event_rg_configured;
+        static const ydk::Enum::YLeaf bmd_event_rg_user_config;
+        static const ydk::Enum::YLeaf bmd_event_rg_connect_ion;
+        static const ydk::Enum::YLeaf bmd_event_rg_data;
+        static const ydk::Enum::YLeaf bmd_event_rg_sync;
+        static const ydk::Enum::YLeaf bmd_event_rg_first_retry;
+        static const ydk::Enum::YLeaf bmd_event_rg_error;
+        static const ydk::Enum::YLeaf bmd_event_rg_mlacp_tlv;
+        static const ydk::Enum::YLeaf bmd_event_rg_iccp_event;
+        static const ydk::Enum::YLeaf bmd_event_rg_count;
 
 };
 
-class BmFeatureStatusEnum : public Enum
+class BundleMedia1 : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_feature_not_configured;
-        static const Enum::YLeaf bm_feature_not_operational;
-        static const Enum::YLeaf bm_feature_operational;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf pos;
 
 };
 
-class BmSeverityEnum : public Enum
+class BmdMlacpSwitchover : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ok;
-        static const Enum::YLeaf information;
-        static const Enum::YLeaf misconfiguration;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf error;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_nonrevertive;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_brute_force;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_revertive;
+        static const ydk::Enum::YLeaf bmd_mlacp_switchover_count;
 
 };
 
-class BundleMlacpModeEnum : public Enum
+class BmMbrStateReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bundle_mlacp_mode_standby;
-        static const Enum::YLeaf bundle_mlacp_mode_active;
-        static const Enum::YLeaf bundle_mlacp_mode_count;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_unknown;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_unselectable_unknown;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_link_down;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_link_deleting;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_creating;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_creating;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_deleting;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_admin_down;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_replicating;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bandwidth;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_loop_back;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_activity_type;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_shutdown;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_min_selected;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_max_selected;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_link_limit;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_active_limit;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_standby_unknown;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_expired;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_defaulted;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_act_or_not_agg;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_partner_not_agg;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_lagid;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_not_cfgd;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_not_ready;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_partner_ood;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_partner_not_in_sync;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_foreign_partner_oos;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_attach_unknown;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_partner_not_collecting;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_collect_unknown;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_standby_foreign;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bfd_starting;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bfd_down;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bfd_nbr_unconfig;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_pe_isolated;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_forced_switchover;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_errdis_unknown;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_no_mbr_state_info;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_active;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_state_info;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_config_info;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_no_bdl_sync;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_bdl_has_no_peer;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_nak;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_transport_unavailable;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_not_configured;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_recovery_timer;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_standby;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_maximized_out;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_peer_selected;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_mlacp_connect_timer_running;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_not_mlacp;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_no_lon;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_cumul_rel_bw_limit;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_no_mac;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_no_system_id;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_link_shutdown;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_activity_mlacp;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_activity_iccp;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_icpe_mlacp;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_no_link_num;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_standby_peer_higher_prio;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_red_state_standby;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_other_red_state_standby;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_hold_ing;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_error_disabled;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bundle_efd_disabled;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_singleton_pe_isolated;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_starting;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_down;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_bfd_ipv6_nbr_unconfig;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_timer_running;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_client_bundle_ctrl;
+        static const ydk::Enum::YLeaf bm_mbr_state_reason_count;
 
 };
 
-class BmdBagMlacpSchActionItemEnum : public Enum
+class BmStateReasonTarget : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf switchover;
-        static const Enum::YLeaf switchback;
+        static const ydk::Enum::YLeaf member_reason;
+        static const ydk::Enum::YLeaf bundle_reason;
 
 };
 
-class BmStateReasonTargetEnum : public Enum
+class BmdBfdBdlState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf member_reason;
-        static const Enum::YLeaf bundle_reason;
+        static const ydk::Enum::YLeaf bmd_bfd_bdl_down;
+        static const ydk::Enum::YLeaf bmd_bfd_bdl_unknown;
+        static const ydk::Enum::YLeaf bmd_bfd_bdl_up;
+        static const ydk::Enum::YLeaf bmd_bfd_bdl_count;
 
 };
 
-class BmdMlacpNodeSyncEnumEnum : public Enum
+class BmMuxstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf node_sync_req;
-        static const Enum::YLeaf node_sync_done;
-        static const Enum::YLeaf node_sync_start;
-        static const Enum::YLeaf node_sync_init;
-        static const Enum::YLeaf node_sync_singleton;
+        static const ydk::Enum::YLeaf detached;
+        static const ydk::Enum::YLeaf waiting;
+        static const ydk::Enum::YLeaf attached;
+        static const ydk::Enum::YLeaf collecting;
+        static const ydk::Enum::YLeaf distributing;
+        static const ydk::Enum::YLeaf collecting_distributing;
 
 };
 
-class BmBdlMacSourceEnum : public Enum
+class BmdMemberState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf bm_bdl_mac_source_unknown;
-        static const Enum::YLeaf bm_bdl_mac_source_chassis;
-        static const Enum::YLeaf bm_bdl_mac_source_configured;
-        static const Enum::YLeaf bm_bdl_mac_source_member;
-        static const Enum::YLeaf bm_bdl_mac_source_peer;
+        static const ydk::Enum::YLeaf bmd_mbr_state_configured;
+        static const ydk::Enum::YLeaf bmd_mbr_state_standby;
+        static const ydk::Enum::YLeaf bmd_mbr_state_hot_standby;
+        static const ydk::Enum::YLeaf bmd_mbr_state_negotiating;
+        static const ydk::Enum::YLeaf bmd_mbr_state_bfd_running;
+        static const ydk::Enum::YLeaf bmd_mbr_state_active;
 
 };
 

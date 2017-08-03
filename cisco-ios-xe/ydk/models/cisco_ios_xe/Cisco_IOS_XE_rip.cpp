@@ -6,11 +6,13 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_rip.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_rip {
 
-const Enum::YLeaf OffsetListInOutTypeEnum::in {0, "in"};
-const Enum::YLeaf OffsetListInOutTypeEnum::out {1, "out"};
+const Enum::YLeaf OffsetListInOutType::in {0, "in"};
+const Enum::YLeaf OffsetListInOutType::out {1, "out"};
 
 
 }

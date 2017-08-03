@@ -6,51 +6,53 @@
 #include "generated_entity_lookup.hpp"
 #include "cisco_routing_ext.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace cisco_routing_ext {
 
-BgpIdentity::BgpIdentity()
-     : Identity("cisco-routing-ext:bgp")
+Bgp::Bgp()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:bgp")
 {
 }
 
-BgpIdentity::~BgpIdentity()
+Bgp::~Bgp()
 {
 }
 
-MobileIdentity::MobileIdentity()
-     : Identity("cisco-routing-ext:mobile")
+Rip::Rip()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:rip")
 {
 }
 
-MobileIdentity::~MobileIdentity()
+Rip::~Rip()
 {
 }
 
-EigrpIdentity::EigrpIdentity()
-     : Identity("cisco-routing-ext:eigrp")
+Eigrp::Eigrp()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:eigrp")
 {
 }
 
-EigrpIdentity::~EigrpIdentity()
+Eigrp::~Eigrp()
 {
 }
 
-IsIsIdentity::IsIsIdentity()
-     : Identity("cisco-routing-ext:is-is")
+IsIs::IsIs()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:is-is")
 {
 }
 
-IsIsIdentity::~IsIsIdentity()
+IsIs::~IsIs()
 {
 }
 
-RipIdentity::RipIdentity()
-     : Identity("cisco-routing-ext:rip")
+Mobile::Mobile()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:mobile")
 {
 }
 
-RipIdentity::~RipIdentity()
+Mobile::~Mobile()
 {
 }
 

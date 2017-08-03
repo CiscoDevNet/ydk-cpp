@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_bundlemgr_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_bundlemgr_cfg {
 
 Lacp::Lacp()
@@ -29,9 +31,9 @@ bool Lacp::has_data() const
 
 bool Lacp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(system_mac.operation)
-	|| is_set(system_priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(system_mac.yfilter)
+	|| ydk::is_set(system_priority.yfilter);
 }
 
 std::string Lacp::get_segment_path() const
@@ -54,8 +56,8 @@ const EntityPath Lacp::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (system_mac.is_set || is_set(system_mac.operation)) leaf_name_data.push_back(system_mac.get_name_leafdata());
-    if (system_priority.is_set || is_set(system_priority.operation)) leaf_name_data.push_back(system_priority.get_name_leafdata());
+    if (system_mac.is_set || is_set(system_mac.yfilter)) leaf_name_data.push_back(system_mac.get_name_leafdata());
+    if (system_priority.is_set || is_set(system_priority.yfilter)) leaf_name_data.push_back(system_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -74,15 +76,31 @@ std::map<std::string, std::shared_ptr<Entity>> Lacp::get_children() const
     return children;
 }
 
-void Lacp::set_value(const std::string & value_path, std::string value)
+void Lacp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "system-mac")
     {
         system_mac = value;
+        system_mac.value_namespace = name_space;
+        system_mac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-priority")
     {
         system_priority = value;
+        system_priority.value_namespace = name_space;
+        system_priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lacp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "system-mac")
+    {
+        system_mac.yfilter = yfilter;
+    }
+    if(value_path == "system-priority")
+    {
+        system_priority.yfilter = yfilter;
     }
 }
 
@@ -106,49 +124,61 @@ augment_capabilities_function Lacp::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-const Enum::YLeaf BundleMaximumActiveLinksModeEnum::default_ {0, "default"};
-const Enum::YLeaf BundleMaximumActiveLinksModeEnum::hot_standby {1, "hot-standby"};
+std::map<std::pair<std::string, std::string>, std::string> Lacp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
 
-const Enum::YLeaf BundleCiscoExtTypesEnum::lon_signaling_off {0, "lon-signaling-off"};
-const Enum::YLeaf BundleCiscoExtTypesEnum::lon_signaling_on {1, "lon-signaling-on"};
+bool Lacp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "system-mac" || name == "system-priority")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf BundleModeEnum::on {0, "on"};
-const Enum::YLeaf BundleModeEnum::active {1, "active"};
-const Enum::YLeaf BundleModeEnum::passive {2, "passive"};
+const Enum::YLeaf MlacpMaximizeParameter::links {1, "links"};
+const Enum::YLeaf MlacpMaximizeParameter::bandwidth {2, "bandwidth"};
 
-const Enum::YLeaf BundleLoadBalanceEnum::default_ {0, "default"};
-const Enum::YLeaf BundleLoadBalanceEnum::efp_auto {1, "efp-auto"};
-const Enum::YLeaf BundleLoadBalanceEnum::efp_value {2, "efp-value"};
-const Enum::YLeaf BundleLoadBalanceEnum::source_ip {3, "source-ip"};
-const Enum::YLeaf BundleLoadBalanceEnum::destination_ip {4, "destination-ip"};
+const Enum::YLeaf BundleMinimumBandwidthRange::none {0, "none"};
+const Enum::YLeaf BundleMinimumBandwidthRange::kbps {1, "kbps"};
+const Enum::YLeaf BundleMinimumBandwidthRange::mbps {2, "mbps"};
+const Enum::YLeaf BundleMinimumBandwidthRange::gbps {3, "gbps"};
 
-const Enum::YLeaf ChurnLoggingEnum::actor {1, "actor"};
-const Enum::YLeaf ChurnLoggingEnum::partner {2, "partner"};
-const Enum::YLeaf ChurnLoggingEnum::both {3, "both"};
+const Enum::YLeaf BundleMaximumActiveLinksMode::default_ {0, "default"};
+const Enum::YLeaf BundleMaximumActiveLinksMode::hot_standby {1, "hot-standby"};
 
-const Enum::YLeaf MlacpSwitchoverEnum::brute_force {1, "brute-force"};
-const Enum::YLeaf MlacpSwitchoverEnum::revertive {2, "revertive"};
+const Enum::YLeaf BundleCiscoExtTypes::lon_signaling_off {0, "lon-signaling-off"};
+const Enum::YLeaf BundleCiscoExtTypes::lon_signaling_on {1, "lon-signaling-on"};
 
-const Enum::YLeaf MlacpMaximizeParameterEnum::links {1, "links"};
-const Enum::YLeaf MlacpMaximizeParameterEnum::bandwidth {2, "bandwidth"};
+const Enum::YLeaf ChurnLogging::actor {1, "actor"};
+const Enum::YLeaf ChurnLogging::partner {2, "partner"};
+const Enum::YLeaf ChurnLogging::both {3, "both"};
 
-const Enum::YLeaf BfdModeEnum::no_cfg {0, "no-cfg"};
-const Enum::YLeaf BfdModeEnum::cisco {1, "cisco"};
-const Enum::YLeaf BfdModeEnum::ietf {2, "ietf"};
+const Enum::YLeaf BundlePeriod::true_ {1, "true"};
 
-const Enum::YLeaf PeriodShortEnumEnum::true_ {1, "true"};
+const Enum::YLeaf PeriodShortEnum::true_ {1, "true"};
 
-const Enum::YLeaf BundleMinimumBandwidthRangeEnum::none {0, "none"};
-const Enum::YLeaf BundleMinimumBandwidthRangeEnum::kbps {1, "kbps"};
-const Enum::YLeaf BundleMinimumBandwidthRangeEnum::mbps {2, "mbps"};
-const Enum::YLeaf BundleMinimumBandwidthRangeEnum::gbps {3, "gbps"};
+const Enum::YLeaf BundleLoadBalance::default_ {0, "default"};
+const Enum::YLeaf BundleLoadBalance::efp_auto {1, "efp-auto"};
+const Enum::YLeaf BundleLoadBalance::efp_value {2, "efp-value"};
+const Enum::YLeaf BundleLoadBalance::source_ip {3, "source-ip"};
+const Enum::YLeaf BundleLoadBalance::destination_ip {4, "destination-ip"};
 
-const Enum::YLeaf BundlePeriodEnum::true_ {1, "true"};
+const Enum::YLeaf BundleMode::on {0, "on"};
+const Enum::YLeaf BundleMode::active {1, "active"};
+const Enum::YLeaf BundleMode::passive {2, "passive"};
 
-const Enum::YLeaf BundlePortActivityEnum::on {1, "on"};
-const Enum::YLeaf BundlePortActivityEnum::active {2, "active"};
-const Enum::YLeaf BundlePortActivityEnum::passive {3, "passive"};
-const Enum::YLeaf BundlePortActivityEnum::inherit {4, "inherit"};
+const Enum::YLeaf BfdMode::no_cfg {0, "no-cfg"};
+const Enum::YLeaf BfdMode::cisco {1, "cisco"};
+const Enum::YLeaf BfdMode::ietf {2, "ietf"};
+
+const Enum::YLeaf MlacpSwitchover::brute_force {1, "brute-force"};
+const Enum::YLeaf MlacpSwitchover::revertive {2, "revertive"};
+
+const Enum::YLeaf BundlePortActivity::on {1, "on"};
+const Enum::YLeaf BundlePortActivity::active {2, "active"};
+const Enum::YLeaf BundlePortActivity::passive {3, "passive"};
+const Enum::YLeaf BundlePortActivity::inherit {4, "inherit"};
 
 
 }

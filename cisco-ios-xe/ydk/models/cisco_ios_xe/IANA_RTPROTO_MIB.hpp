@@ -7,47 +7,47 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace IANA_RTPROTO_MIB {
 
-class IanaipmrouteprotocolEnum : public Enum
+class Ianaiprouteprotocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf local;
-        static const Enum::YLeaf netmgmt;
-        static const Enum::YLeaf dvmrp;
-        static const Enum::YLeaf mospf;
-        static const Enum::YLeaf pimSparseDense;
-        static const Enum::YLeaf cbt;
-        static const Enum::YLeaf pimSparseMode;
-        static const Enum::YLeaf pimDenseMode;
-        static const Enum::YLeaf igmpOnly;
-        static const Enum::YLeaf bgmp;
-        static const Enum::YLeaf msdp;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf netmgmt;
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf egp;
+        static const ydk::Enum::YLeaf ggp;
+        static const ydk::Enum::YLeaf hello;
+        static const ydk::Enum::YLeaf rip;
+        static const ydk::Enum::YLeaf isIs;
+        static const ydk::Enum::YLeaf esIs;
+        static const ydk::Enum::YLeaf ciscoIgrp;
+        static const ydk::Enum::YLeaf bbnSpfIgp;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf idpr;
+        static const ydk::Enum::YLeaf ciscoEigrp;
+        static const ydk::Enum::YLeaf dvmrp;
 
 };
 
-class IanaiprouteprotocolEnum : public Enum
+class Ianaipmrouteprotocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf local;
-        static const Enum::YLeaf netmgmt;
-        static const Enum::YLeaf icmp;
-        static const Enum::YLeaf egp;
-        static const Enum::YLeaf ggp;
-        static const Enum::YLeaf hello;
-        static const Enum::YLeaf rip;
-        static const Enum::YLeaf isIs;
-        static const Enum::YLeaf esIs;
-        static const Enum::YLeaf ciscoIgrp;
-        static const Enum::YLeaf bbnSpfIgp;
-        static const Enum::YLeaf ospf;
-        static const Enum::YLeaf bgp;
-        static const Enum::YLeaf idpr;
-        static const Enum::YLeaf ciscoEigrp;
-        static const Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf netmgmt;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf mospf;
+        static const ydk::Enum::YLeaf pimSparseDense;
+        static const ydk::Enum::YLeaf cbt;
+        static const ydk::Enum::YLeaf pimSparseMode;
+        static const ydk::Enum::YLeaf pimDenseMode;
+        static const ydk::Enum::YLeaf igmpOnly;
+        static const ydk::Enum::YLeaf bgmp;
+        static const ydk::Enum::YLeaf msdp;
 
 };
 

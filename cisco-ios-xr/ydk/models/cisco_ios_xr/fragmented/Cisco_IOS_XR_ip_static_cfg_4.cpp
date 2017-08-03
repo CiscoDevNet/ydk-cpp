@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_static_cfg_4.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_static_cfg {
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::VrfNextHopNextHopAddress()
@@ -51,20 +53,20 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::get_segment_path() const
@@ -90,19 +92,19 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -121,60 +123,149 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop-address" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
@@ -221,21 +312,21 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
@@ -261,20 +352,20 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -293,64 +384,159 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop-address" || name == "explicit-path-name" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::VrfNextHopExplicitPathName()
@@ -395,20 +581,20 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::get_segment_path() const
@@ -434,19 +620,19 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -465,60 +651,149 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRoute::VrfNextHopTable::VrfNextHopExplicitPathName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-path-name" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoutes()
@@ -547,7 +822,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
         if(vrf_recurse_route[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::get_segment_path() const
@@ -612,8 +887,19 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-recurse-route")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecurseRoute()
@@ -639,8 +925,8 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (vrf_recursive_next_hop_table !=  nullptr && vrf_recursive_next_hop_table->has_operation());
 }
 
@@ -667,7 +953,7 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -700,12 +986,29 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-recursive-next-hop-table" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfRecursiveNextHopTable()
@@ -774,7 +1077,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
         if(vrf_next_hop_next_hop_address_explicit_path_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::get_segment_path() const
@@ -923,8 +1226,19 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-next-hop-explicit-path-name" || name == "vrf-next-hop-interface-name" || name == "vrf-next-hop-interface-name-next-hop-address" || name == "vrf-next-hop-next-hop-address" || name == "vrf-next-hop-next-hop-address-explicit-path-name")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::VrfNextHopInterfaceName()
@@ -969,20 +1283,20 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::get_segment_path() const
@@ -1008,19 +1322,19 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1039,60 +1353,149 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::VrfNextHopInterfaceNameNextHopAddress()
@@ -1139,21 +1542,21 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_segment_path() const
@@ -1179,20 +1582,20 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1211,64 +1614,159 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopInterfaceNameNextHopAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "next-hop-address" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::VrfNextHopNextHopAddress()
@@ -1313,20 +1811,20 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::get_segment_path() const
@@ -1352,19 +1850,19 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1383,60 +1881,149 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop-address" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
@@ -1483,21 +2070,21 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
@@ -1523,20 +2110,20 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1555,64 +2142,159 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop-address" || name == "explicit-path-name" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::VrfNextHopExplicitPathName()
@@ -1657,20 +2339,20 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::get_segment_path() const
@@ -1696,19 +2378,19 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1727,60 +2409,149 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfRecurseRoutes::VrfRecurseRoute::VrfRecursiveNextHopTable::VrfNextHopExplicitPathName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-path-name" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::VrfSegRoute()
@@ -1803,7 +2574,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (segment_route_next_hop_table !=  nullptr && segment_route_next_hop_table->has_operation());
 }
 
@@ -1862,8 +2633,19 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment-route-next-hop-table")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::SegmentRouteNextHopTable()
@@ -1932,7 +2714,7 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
         if(vrf_next_hop_next_hop_address_explicit_path_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::get_segment_path() const
@@ -2081,8 +2863,19 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-next-hop-explicit-path-name" || name == "vrf-next-hop-interface-name" || name == "vrf-next-hop-interface-name-next-hop-address" || name == "vrf-next-hop-next-hop-address" || name == "vrf-next-hop-next-hop-address-explicit-path-name")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::VrfNextHopInterfaceName()
@@ -2127,20 +2920,20 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::get_segment_path() const
@@ -2166,19 +2959,19 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2197,60 +2990,149 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::VrfNextHopInterfaceNameNextHopAddress()
@@ -2297,21 +3179,21 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::get_segment_path() const
@@ -2337,20 +3219,20 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2369,64 +3251,159 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopInterfaceNameNextHopAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "next-hop-address" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::VrfNextHopNextHopAddress()
@@ -2471,20 +3448,20 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::get_segment_path() const
@@ -2510,19 +3487,19 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2541,60 +3518,149 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop-address" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::VrfNextHopNextHopAddressExplicitPathName()
@@ -2641,21 +3707,21 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::get_segment_path() const
@@ -2681,20 +3747,20 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2713,64 +3779,159 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopNextHopAddressExplicitPathName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop-address" || name == "explicit-path-name" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::VrfNextHopExplicitPathName()
@@ -2815,20 +3976,20 @@ bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopo
 
 bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(bfd_fast_detect.operation)
-	|| is_set(description.operation)
-	|| is_set(detect_multiplier.operation)
-	|| is_set(index_.operation)
-	|| is_set(load_metric.operation)
-	|| is_set(metric.operation)
-	|| is_set(minimum_interval.operation)
-	|| is_set(object_name.operation)
-	|| is_set(permanent.operation)
-	|| is_set(tag.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(vrf_lable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(bfd_fast_detect.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(detect_multiplier.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(object_name.yfilter)
+	|| ydk::is_set(permanent.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(vrf_lable.yfilter);
 }
 
 std::string RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::get_segment_path() const
@@ -2854,19 +4015,19 @@ const EntityPath RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.operation)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (detect_multiplier.is_set || is_set(detect_multiplier.operation)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (load_metric.is_set || is_set(load_metric.operation)) leaf_name_data.push_back(load_metric.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (minimum_interval.is_set || is_set(minimum_interval.operation)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (object_name.is_set || is_set(object_name.operation)) leaf_name_data.push_back(object_name.get_name_leafdata());
-    if (permanent.is_set || is_set(permanent.operation)) leaf_name_data.push_back(permanent.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (vrf_lable.is_set || is_set(vrf_lable.operation)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (bfd_fast_detect.is_set || is_set(bfd_fast_detect.yfilter)) leaf_name_data.push_back(bfd_fast_detect.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (detect_multiplier.is_set || is_set(detect_multiplier.yfilter)) leaf_name_data.push_back(detect_multiplier.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (object_name.is_set || is_set(object_name.yfilter)) leaf_name_data.push_back(object_name.get_name_leafdata());
+    if (permanent.is_set || is_set(permanent.yfilter)) leaf_name_data.push_back(permanent.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (vrf_lable.is_set || is_set(vrf_lable.yfilter)) leaf_name_data.push_back(vrf_lable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2885,60 +4046,149 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::DefaultVrf::Address
     return children;
 }
 
-void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::set_value(const std::string & value_path, std::string value)
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-fast-detect")
     {
         bfd_fast_detect = value;
+        bfd_fast_detect.value_namespace = name_space;
+        bfd_fast_detect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detect-multiplier")
     {
         detect_multiplier = value;
+        detect_multiplier.value_namespace = name_space;
+        detect_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-metric")
     {
         load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-interval")
     {
         minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "object-name")
     {
         object_name = value;
+        object_name.value_namespace = name_space;
+        object_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "permanent")
     {
         permanent = value;
+        permanent.value_namespace = name_space;
+        permanent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-lable")
     {
         vrf_lable = value;
+        vrf_lable.value_namespace = name_space;
+        vrf_lable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "bfd-fast-detect")
+    {
+        bfd_fast_detect.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "detect-multiplier")
+    {
+        detect_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "object-name")
+    {
+        object_name.yfilter = yfilter;
+    }
+    if(value_path == "permanent")
+    {
+        permanent.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "vrf-lable")
+    {
+        vrf_lable.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::DefaultVrf::AddressFamily::Vrfipv6::VrfMulticast::DefaultTopology::VrfPrefixTopologies::VrfPrefixTopology::VrfSegRoute::SegmentRouteNextHopTable::VrfNextHopExplicitPathName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-path-name" || name == "bfd-fast-detect" || name == "description" || name == "detect-multiplier" || name == "index" || name == "load-metric" || name == "metric" || name == "minimum-interval" || name == "object-name" || name == "permanent" || name == "tag" || name == "tunnel-id" || name == "vrf-lable")
+        return true;
+    return false;
 }
 
 RouterStatic::MaximumRoutes::MaximumRoutes()
@@ -2961,9 +4211,9 @@ bool RouterStatic::MaximumRoutes::has_data() const
 
 bool RouterStatic::MaximumRoutes::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_routes.operation)
-	|| is_set(ipv6_routes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_routes.yfilter)
+	|| ydk::is_set(ipv6_routes.yfilter);
 }
 
 std::string RouterStatic::MaximumRoutes::get_segment_path() const
@@ -2989,8 +4239,8 @@ const EntityPath RouterStatic::MaximumRoutes::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_routes.is_set || is_set(ipv4_routes.operation)) leaf_name_data.push_back(ipv4_routes.get_name_leafdata());
-    if (ipv6_routes.is_set || is_set(ipv6_routes.operation)) leaf_name_data.push_back(ipv6_routes.get_name_leafdata());
+    if (ipv4_routes.is_set || is_set(ipv4_routes.yfilter)) leaf_name_data.push_back(ipv4_routes.get_name_leafdata());
+    if (ipv6_routes.is_set || is_set(ipv6_routes.yfilter)) leaf_name_data.push_back(ipv6_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3009,16 +4259,39 @@ std::map<std::string, std::shared_ptr<Entity>> RouterStatic::MaximumRoutes::get_
     return children;
 }
 
-void RouterStatic::MaximumRoutes::set_value(const std::string & value_path, std::string value)
+void RouterStatic::MaximumRoutes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-routes")
     {
         ipv4_routes = value;
+        ipv4_routes.value_namespace = name_space;
+        ipv4_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-routes")
     {
         ipv6_routes = value;
+        ipv6_routes.value_namespace = name_space;
+        ipv6_routes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RouterStatic::MaximumRoutes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-routes")
+    {
+        ipv4_routes.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-routes")
+    {
+        ipv6_routes.yfilter = yfilter;
+    }
+}
+
+bool RouterStatic::MaximumRoutes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-routes" || name == "ipv6-routes")
+        return true;
+    return false;
 }
 
 

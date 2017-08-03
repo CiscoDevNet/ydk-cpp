@@ -30,21 +30,21 @@ namespace ydk
 {
 class OpenDaylightCapabilitiesJsonParser
 {
-	public:
-		OpenDaylightCapabilitiesJsonParser();
-		~OpenDaylightCapabilitiesJsonParser();
+    public:
+        OpenDaylightCapabilitiesJsonParser();
+        ~OpenDaylightCapabilitiesJsonParser();
 
-		std::map<std::string, std::unique_ptr<network_topology::NetworkTopology::Topology::Node> > parse(const std::string & capabilities_xml);
+        std::map<std::string, std::unique_ptr<opendaylight::network_topology::NetworkTopology::Topology::Node> > parse(const std::string & capabilities_xml);
 
 };
 
 class OpenDaylightCapabilitiesParser : public CapabilitiesParser
 {
-	public:
-		OpenDaylightCapabilitiesParser();
-		~OpenDaylightCapabilitiesParser();
+    public:
+        OpenDaylightCapabilitiesParser();
+        ~OpenDaylightCapabilitiesParser();
 
-		std::vector<path::Capability> parse(std::vector<std::string> & capabilities) const;
+        std::vector<path::Capability> parse(std::vector<std::string> & capabilities) const;
 };
 
 }

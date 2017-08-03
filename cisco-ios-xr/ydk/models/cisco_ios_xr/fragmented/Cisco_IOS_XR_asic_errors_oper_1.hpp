@@ -9,11 +9,11 @@
 
 #include "Cisco_IOS_XR_asic_errors_oper_0.hpp"
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asic_errors_oper {
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error : public ydk::Entity
 {
     public:
         Error();
@@ -21,24 +21,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr
 
@@ -48,7 +50,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -56,20 +58,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -77,22 +81,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorResetSoft::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors : public ydk::Entity
 {
     public:
         BackPressureSoftErrors();
@@ -100,11 +106,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error
 
@@ -113,7 +121,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -121,24 +129,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr
 
@@ -148,7 +158,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -156,20 +166,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -177,22 +189,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::BackPressureSoftErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors : public ydk::Entity
 {
     public:
         GenericSoftErrors();
@@ -200,11 +214,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error
 
@@ -213,7 +229,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -221,24 +237,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr
 
@@ -248,7 +266,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -256,20 +274,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -277,22 +297,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::GenericSoftErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors : public ydk::Entity
 {
     public:
         LinkSoftErrors();
@@ -300,11 +322,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error
 
@@ -313,7 +337,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -321,24 +345,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr
 
@@ -348,7 +374,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -356,20 +382,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -377,22 +405,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::LinkSoftErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors : public ydk::Entity
 {
     public:
         ConfigurationSoftErrors();
@@ -400,11 +430,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error
 
@@ -413,7 +445,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -421,24 +453,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr
 
@@ -448,7 +482,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -456,20 +490,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -477,22 +513,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ConfigurationSoftErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors : public ydk::Entity
 {
     public:
         MultipleBitHardErrors();
@@ -500,11 +538,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error
 
@@ -513,7 +553,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -521,24 +561,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr
 
@@ -548,7 +590,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -556,20 +598,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -577,22 +621,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::MultipleBitHardErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors : public ydk::Entity
 {
     public:
         UnexpectedSoftErrors();
@@ -600,11 +646,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error
 
@@ -613,7 +661,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -621,24 +669,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr
 
@@ -648,7 +698,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -656,20 +706,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -677,22 +729,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UnexpectedSoftErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard : public ydk::Entity
 {
     public:
         OutofResourceHard();
@@ -700,11 +754,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error
 
@@ -713,7 +769,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error : public ydk::Entity
 {
     public:
         Error();
@@ -721,24 +777,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr
 
@@ -748,7 +806,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -756,20 +814,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -777,22 +837,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::OutofResourceHard::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors : public ydk::Entity
 {
     public:
         HardwareHardErrors();
@@ -800,11 +862,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error
 
@@ -813,7 +877,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -821,24 +885,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr
 
@@ -848,7 +914,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -856,20 +922,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -877,22 +945,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::HardwareHardErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors : public ydk::Entity
 {
     public:
         ParitySoftErrors();
@@ -900,11 +970,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error
 
@@ -913,7 +985,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -921,24 +993,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr
 
@@ -948,7 +1022,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -956,20 +1030,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -977,22 +1053,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ParitySoftErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors : public ydk::Entity
 {
     public:
         DescriptorSoftErrors();
@@ -1000,11 +1078,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error
 
@@ -1013,7 +1093,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -1021,24 +1101,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr
 
@@ -1048,7 +1130,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -1056,20 +1138,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -1077,22 +1161,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::DescriptorSoftErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors : public ydk::Entity
 {
     public:
         InterfaceSoftErrors();
@@ -1100,11 +1186,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error
 
@@ -1113,7 +1201,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -1121,24 +1209,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr
 
@@ -1148,7 +1238,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -1156,20 +1246,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -1177,22 +1269,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::InterfaceSoftErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors : public ydk::Entity
 {
     public:
         IoHardErrors();
@@ -1200,11 +1294,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error
 
@@ -1213,7 +1309,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -1221,24 +1317,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr
 
@@ -1248,7 +1346,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -1256,20 +1354,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -1277,22 +1377,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::IoHardErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors : public ydk::Entity
 {
     public:
         ResetHardErrors();
@@ -1300,11 +1402,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error
 
@@ -1313,7 +1417,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -1321,24 +1425,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr
 
@@ -1348,7 +1454,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -1356,20 +1462,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -1377,22 +1485,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::ResetHardErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors : public ydk::Entity
 {
     public:
         UcodeHardErrors();
@@ -1400,11 +1510,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error
 
@@ -1413,7 +1525,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error : public ydk::Entity
 {
     public:
         Error();
@@ -1421,24 +1533,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr
 
@@ -1448,7 +1562,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -1456,20 +1570,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -1477,22 +1593,24 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::UcodeHardErrors::Error::LastErr
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard : public ydk::Entity
 {
     public:
         AsicErrorMbeHard();
@@ -1500,11 +1618,13 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Error; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error
 
@@ -1513,7 +1633,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error : public ydk::Entity
 {
     public:
         Error();
@@ -1521,24 +1641,26 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf asic_info; //type: string
-        YLeaf node_key; //type: uint32
-        YLeaf alarm_on; //type: boolean
-        YLeaf thresh_hi; //type: uint32
-        YLeaf period_hi; //type: uint32
-        YLeaf thresh_lo; //type: uint32
-        YLeaf period_lo; //type: uint32
-        YLeaf count; //type: uint32
-        YLeaf intr_type; //type: uint32
-        YLeaf leaf_id; //type: uint32
-        YLeaf last_cleared; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf asic_info; //type: string
+        ydk::YLeaf node_key; //type: uint32
+        ydk::YLeaf alarm_on; //type: boolean
+        ydk::YLeaf thresh_hi; //type: uint32
+        ydk::YLeaf period_hi; //type: uint32
+        ydk::YLeaf thresh_lo; //type: uint32
+        ydk::YLeaf period_lo; //type: uint32
+        ydk::YLeaf count; //type: uint32
+        ydk::YLeaf intr_type; //type: uint32
+        ydk::YLeaf leaf_id; //type: uint32
+        ydk::YLeaf last_cleared; //type: uint64
         class CsrsInfo; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::CsrsInfo
         class LastErr; //type: AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr
 
@@ -1548,7 +1670,7 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::CsrsInfo : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::CsrsInfo : public ydk::Entity
 {
     public:
         CsrsInfo();
@@ -1556,20 +1678,22 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf address; //type: uint64
-        YLeaf width; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf address; //type: uint64
+        ydk::YLeaf width; //type: uint32
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::CsrsInfo
 
 
-class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr : public Entity
+class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr : public ydk::Entity
 {
     public:
         LastErr();
@@ -1577,17 +1701,19 @@ class AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf at_time; //type: uint64
-        YLeaf at_time_nsec; //type: uint64
-        YLeaf counter_val; //type: uint32
-        YLeaf error_desc; //type: string
-        YLeafList error_regval; //type: list of  uint8
+        ydk::YLeaf at_time; //type: uint64
+        ydk::YLeaf at_time_nsec; //type: uint64
+        ydk::YLeaf counter_val; //type: uint32
+        ydk::YLeaf error_desc; //type: string
+        ydk::YLeafList error_regval; //type: list of  uint8
 
 }; // AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::ErrorPath::AsicErrorMbeHard::Error::LastErr
 

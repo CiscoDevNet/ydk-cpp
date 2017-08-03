@@ -6,17 +6,19 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_FTP_CLIENT_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_FTP_CLIENT_MIB {
 
 CiscoFtpClientMib::CiscoFtpClientMib()
     :
-    cfcrequest_(std::make_shared<CiscoFtpClientMib::Cfcrequest>())
-	,cfcrequesttable_(std::make_shared<CiscoFtpClientMib::Cfcrequesttable>())
+    cfcrequest(std::make_shared<CiscoFtpClientMib::Cfcrequest>())
+	,cfcrequesttable(std::make_shared<CiscoFtpClientMib::Cfcrequesttable>())
 {
-    cfcrequest_->parent = this;
+    cfcrequest->parent = this;
 
-    cfcrequesttable_->parent = this;
+    cfcrequesttable->parent = this;
 
     yang_name = "CISCO-FTP-CLIENT-MIB"; yang_parent_name = "CISCO-FTP-CLIENT-MIB";
 }
@@ -27,15 +29,15 @@ CiscoFtpClientMib::~CiscoFtpClientMib()
 
 bool CiscoFtpClientMib::has_data() const
 {
-    return (cfcrequest_ !=  nullptr && cfcrequest_->has_data())
-	|| (cfcrequesttable_ !=  nullptr && cfcrequesttable_->has_data());
+    return (cfcrequest !=  nullptr && cfcrequest->has_data())
+	|| (cfcrequesttable !=  nullptr && cfcrequesttable->has_data());
 }
 
 bool CiscoFtpClientMib::has_operation() const
 {
-    return is_set(operation)
-	|| (cfcrequest_ !=  nullptr && cfcrequest_->has_operation())
-	|| (cfcrequesttable_ !=  nullptr && cfcrequesttable_->has_operation());
+    return is_set(yfilter)
+	|| (cfcrequest !=  nullptr && cfcrequest->has_operation())
+	|| (cfcrequesttable !=  nullptr && cfcrequesttable->has_operation());
 }
 
 std::string CiscoFtpClientMib::get_segment_path() const
@@ -69,20 +71,20 @@ std::shared_ptr<Entity> CiscoFtpClientMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "cfcRequest")
     {
-        if(cfcrequest_ == nullptr)
+        if(cfcrequest == nullptr)
         {
-            cfcrequest_ = std::make_shared<CiscoFtpClientMib::Cfcrequest>();
+            cfcrequest = std::make_shared<CiscoFtpClientMib::Cfcrequest>();
         }
-        return cfcrequest_;
+        return cfcrequest;
     }
 
     if(child_yang_name == "cfcRequestTable")
     {
-        if(cfcrequesttable_ == nullptr)
+        if(cfcrequesttable == nullptr)
         {
-            cfcrequesttable_ = std::make_shared<CiscoFtpClientMib::Cfcrequesttable>();
+            cfcrequesttable = std::make_shared<CiscoFtpClientMib::Cfcrequesttable>();
         }
-        return cfcrequesttable_;
+        return cfcrequesttable;
     }
 
     return nullptr;
@@ -91,20 +93,24 @@ std::shared_ptr<Entity> CiscoFtpClientMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoFtpClientMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cfcrequest_ != nullptr)
+    if(cfcrequest != nullptr)
     {
-        children["cfcRequest"] = cfcrequest_;
+        children["cfcRequest"] = cfcrequest;
     }
 
-    if(cfcrequesttable_ != nullptr)
+    if(cfcrequesttable != nullptr)
     {
-        children["cfcRequestTable"] = cfcrequesttable_;
+        children["cfcRequestTable"] = cfcrequesttable;
     }
 
     return children;
 }
 
-void CiscoFtpClientMib::set_value(const std::string & value_path, std::string value)
+void CiscoFtpClientMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoFtpClientMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string CiscoFtpClientMib::get_bundle_name() const
 augment_capabilities_function CiscoFtpClientMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CiscoFtpClientMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoFtpClientMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cfcRequest" || name == "cfcRequestTable")
+        return true;
+    return false;
 }
 
 CiscoFtpClientMib::Cfcrequest::Cfcrequest()
@@ -152,11 +170,11 @@ bool CiscoFtpClientMib::Cfcrequest::has_data() const
 
 bool CiscoFtpClientMib::Cfcrequest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cfcrequestmaximum.operation)
-	|| is_set(cfcrequests.operation)
-	|| is_set(cfcrequestsbumped.operation)
-	|| is_set(cfcrequestshigh.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cfcrequestmaximum.yfilter)
+	|| ydk::is_set(cfcrequests.yfilter)
+	|| ydk::is_set(cfcrequestsbumped.yfilter)
+	|| ydk::is_set(cfcrequestshigh.yfilter);
 }
 
 std::string CiscoFtpClientMib::Cfcrequest::get_segment_path() const
@@ -182,10 +200,10 @@ const EntityPath CiscoFtpClientMib::Cfcrequest::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cfcrequestmaximum.is_set || is_set(cfcrequestmaximum.operation)) leaf_name_data.push_back(cfcrequestmaximum.get_name_leafdata());
-    if (cfcrequests.is_set || is_set(cfcrequests.operation)) leaf_name_data.push_back(cfcrequests.get_name_leafdata());
-    if (cfcrequestsbumped.is_set || is_set(cfcrequestsbumped.operation)) leaf_name_data.push_back(cfcrequestsbumped.get_name_leafdata());
-    if (cfcrequestshigh.is_set || is_set(cfcrequestshigh.operation)) leaf_name_data.push_back(cfcrequestshigh.get_name_leafdata());
+    if (cfcrequestmaximum.is_set || is_set(cfcrequestmaximum.yfilter)) leaf_name_data.push_back(cfcrequestmaximum.get_name_leafdata());
+    if (cfcrequests.is_set || is_set(cfcrequests.yfilter)) leaf_name_data.push_back(cfcrequests.get_name_leafdata());
+    if (cfcrequestsbumped.is_set || is_set(cfcrequestsbumped.yfilter)) leaf_name_data.push_back(cfcrequestsbumped.get_name_leafdata());
+    if (cfcrequestshigh.is_set || is_set(cfcrequestshigh.yfilter)) leaf_name_data.push_back(cfcrequestshigh.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -204,24 +222,59 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFtpClientMib::Cfcrequest::ge
     return children;
 }
 
-void CiscoFtpClientMib::Cfcrequest::set_value(const std::string & value_path, std::string value)
+void CiscoFtpClientMib::Cfcrequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cfcRequestMaximum")
     {
         cfcrequestmaximum = value;
+        cfcrequestmaximum.value_namespace = name_space;
+        cfcrequestmaximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequests")
     {
         cfcrequests = value;
+        cfcrequests.value_namespace = name_space;
+        cfcrequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestsBumped")
     {
         cfcrequestsbumped = value;
+        cfcrequestsbumped.value_namespace = name_space;
+        cfcrequestsbumped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestsHigh")
     {
         cfcrequestshigh = value;
+        cfcrequestshigh.value_namespace = name_space;
+        cfcrequestshigh.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoFtpClientMib::Cfcrequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cfcRequestMaximum")
+    {
+        cfcrequestmaximum.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequests")
+    {
+        cfcrequests.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestsBumped")
+    {
+        cfcrequestsbumped.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestsHigh")
+    {
+        cfcrequestshigh.yfilter = yfilter;
+    }
+}
+
+bool CiscoFtpClientMib::Cfcrequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cfcRequestMaximum" || name == "cfcRequests" || name == "cfcRequestsBumped" || name == "cfcRequestsHigh")
+        return true;
+    return false;
 }
 
 CiscoFtpClientMib::Cfcrequesttable::Cfcrequesttable()
@@ -235,9 +288,9 @@ CiscoFtpClientMib::Cfcrequesttable::~Cfcrequesttable()
 
 bool CiscoFtpClientMib::Cfcrequesttable::has_data() const
 {
-    for (std::size_t index=0; index<cfcrequestentry_.size(); index++)
+    for (std::size_t index=0; index<cfcrequestentry.size(); index++)
     {
-        if(cfcrequestentry_[index]->has_data())
+        if(cfcrequestentry[index]->has_data())
             return true;
     }
     return false;
@@ -245,12 +298,12 @@ bool CiscoFtpClientMib::Cfcrequesttable::has_data() const
 
 bool CiscoFtpClientMib::Cfcrequesttable::has_operation() const
 {
-    for (std::size_t index=0; index<cfcrequestentry_.size(); index++)
+    for (std::size_t index=0; index<cfcrequestentry.size(); index++)
     {
-        if(cfcrequestentry_[index]->has_operation())
+        if(cfcrequestentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoFtpClientMib::Cfcrequesttable::get_segment_path() const
@@ -287,7 +340,7 @@ std::shared_ptr<Entity> CiscoFtpClientMib::Cfcrequesttable::get_child_by_name(co
 {
     if(child_yang_name == "cfcRequestEntry")
     {
-        for(auto const & c : cfcrequestentry_)
+        for(auto const & c : cfcrequestentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -297,7 +350,7 @@ std::shared_ptr<Entity> CiscoFtpClientMib::Cfcrequesttable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry>();
         c->parent = this;
-        cfcrequestentry_.push_back(c);
+        cfcrequestentry.push_back(c);
         return c;
     }
 
@@ -307,7 +360,7 @@ std::shared_ptr<Entity> CiscoFtpClientMib::Cfcrequesttable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoFtpClientMib::Cfcrequesttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cfcrequestentry_)
+    for (auto const & c : cfcrequestentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -315,8 +368,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFtpClientMib::Cfcrequesttabl
     return children;
 }
 
-void CiscoFtpClientMib::Cfcrequesttable::set_value(const std::string & value_path, std::string value)
+void CiscoFtpClientMib::Cfcrequesttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoFtpClientMib::Cfcrequesttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoFtpClientMib::Cfcrequesttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cfcRequestEntry")
+        return true;
+    return false;
 }
 
 CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestentry()
@@ -359,19 +423,19 @@ bool CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::has_data() const
 
 bool CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cfcrequestindex.operation)
-	|| is_set(cfcrequestcompletiontime.operation)
-	|| is_set(cfcrequestentrystatus.operation)
-	|| is_set(cfcrequestlocalfile.operation)
-	|| is_set(cfcrequestoperation.operation)
-	|| is_set(cfcrequestoperationstate.operation)
-	|| is_set(cfcrequestpassword.operation)
-	|| is_set(cfcrequestremotefile.operation)
-	|| is_set(cfcrequestresult.operation)
-	|| is_set(cfcrequestserver.operation)
-	|| is_set(cfcrequeststop.operation)
-	|| is_set(cfcrequestuser.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cfcrequestindex.yfilter)
+	|| ydk::is_set(cfcrequestcompletiontime.yfilter)
+	|| ydk::is_set(cfcrequestentrystatus.yfilter)
+	|| ydk::is_set(cfcrequestlocalfile.yfilter)
+	|| ydk::is_set(cfcrequestoperation.yfilter)
+	|| ydk::is_set(cfcrequestoperationstate.yfilter)
+	|| ydk::is_set(cfcrequestpassword.yfilter)
+	|| ydk::is_set(cfcrequestremotefile.yfilter)
+	|| ydk::is_set(cfcrequestresult.yfilter)
+	|| ydk::is_set(cfcrequestserver.yfilter)
+	|| ydk::is_set(cfcrequeststop.yfilter)
+	|| ydk::is_set(cfcrequestuser.yfilter);
 }
 
 std::string CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::get_segment_path() const
@@ -397,18 +461,18 @@ const EntityPath CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cfcrequestindex.is_set || is_set(cfcrequestindex.operation)) leaf_name_data.push_back(cfcrequestindex.get_name_leafdata());
-    if (cfcrequestcompletiontime.is_set || is_set(cfcrequestcompletiontime.operation)) leaf_name_data.push_back(cfcrequestcompletiontime.get_name_leafdata());
-    if (cfcrequestentrystatus.is_set || is_set(cfcrequestentrystatus.operation)) leaf_name_data.push_back(cfcrequestentrystatus.get_name_leafdata());
-    if (cfcrequestlocalfile.is_set || is_set(cfcrequestlocalfile.operation)) leaf_name_data.push_back(cfcrequestlocalfile.get_name_leafdata());
-    if (cfcrequestoperation.is_set || is_set(cfcrequestoperation.operation)) leaf_name_data.push_back(cfcrequestoperation.get_name_leafdata());
-    if (cfcrequestoperationstate.is_set || is_set(cfcrequestoperationstate.operation)) leaf_name_data.push_back(cfcrequestoperationstate.get_name_leafdata());
-    if (cfcrequestpassword.is_set || is_set(cfcrequestpassword.operation)) leaf_name_data.push_back(cfcrequestpassword.get_name_leafdata());
-    if (cfcrequestremotefile.is_set || is_set(cfcrequestremotefile.operation)) leaf_name_data.push_back(cfcrequestremotefile.get_name_leafdata());
-    if (cfcrequestresult.is_set || is_set(cfcrequestresult.operation)) leaf_name_data.push_back(cfcrequestresult.get_name_leafdata());
-    if (cfcrequestserver.is_set || is_set(cfcrequestserver.operation)) leaf_name_data.push_back(cfcrequestserver.get_name_leafdata());
-    if (cfcrequeststop.is_set || is_set(cfcrequeststop.operation)) leaf_name_data.push_back(cfcrequeststop.get_name_leafdata());
-    if (cfcrequestuser.is_set || is_set(cfcrequestuser.operation)) leaf_name_data.push_back(cfcrequestuser.get_name_leafdata());
+    if (cfcrequestindex.is_set || is_set(cfcrequestindex.yfilter)) leaf_name_data.push_back(cfcrequestindex.get_name_leafdata());
+    if (cfcrequestcompletiontime.is_set || is_set(cfcrequestcompletiontime.yfilter)) leaf_name_data.push_back(cfcrequestcompletiontime.get_name_leafdata());
+    if (cfcrequestentrystatus.is_set || is_set(cfcrequestentrystatus.yfilter)) leaf_name_data.push_back(cfcrequestentrystatus.get_name_leafdata());
+    if (cfcrequestlocalfile.is_set || is_set(cfcrequestlocalfile.yfilter)) leaf_name_data.push_back(cfcrequestlocalfile.get_name_leafdata());
+    if (cfcrequestoperation.is_set || is_set(cfcrequestoperation.yfilter)) leaf_name_data.push_back(cfcrequestoperation.get_name_leafdata());
+    if (cfcrequestoperationstate.is_set || is_set(cfcrequestoperationstate.yfilter)) leaf_name_data.push_back(cfcrequestoperationstate.get_name_leafdata());
+    if (cfcrequestpassword.is_set || is_set(cfcrequestpassword.yfilter)) leaf_name_data.push_back(cfcrequestpassword.get_name_leafdata());
+    if (cfcrequestremotefile.is_set || is_set(cfcrequestremotefile.yfilter)) leaf_name_data.push_back(cfcrequestremotefile.get_name_leafdata());
+    if (cfcrequestresult.is_set || is_set(cfcrequestresult.yfilter)) leaf_name_data.push_back(cfcrequestresult.get_name_leafdata());
+    if (cfcrequestserver.is_set || is_set(cfcrequestserver.yfilter)) leaf_name_data.push_back(cfcrequestserver.get_name_leafdata());
+    if (cfcrequeststop.is_set || is_set(cfcrequeststop.yfilter)) leaf_name_data.push_back(cfcrequeststop.get_name_leafdata());
+    if (cfcrequestuser.is_set || is_set(cfcrequestuser.yfilter)) leaf_name_data.push_back(cfcrequestuser.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -427,78 +491,161 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoFtpClientMib::Cfcrequesttabl
     return children;
 }
 
-void CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::set_value(const std::string & value_path, std::string value)
+void CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cfcRequestIndex")
     {
         cfcrequestindex = value;
+        cfcrequestindex.value_namespace = name_space;
+        cfcrequestindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestCompletionTime")
     {
         cfcrequestcompletiontime = value;
+        cfcrequestcompletiontime.value_namespace = name_space;
+        cfcrequestcompletiontime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestEntryStatus")
     {
         cfcrequestentrystatus = value;
+        cfcrequestentrystatus.value_namespace = name_space;
+        cfcrequestentrystatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestLocalFile")
     {
         cfcrequestlocalfile = value;
+        cfcrequestlocalfile.value_namespace = name_space;
+        cfcrequestlocalfile.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestOperation")
     {
         cfcrequestoperation = value;
+        cfcrequestoperation.value_namespace = name_space;
+        cfcrequestoperation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestOperationState")
     {
         cfcrequestoperationstate = value;
+        cfcrequestoperationstate.value_namespace = name_space;
+        cfcrequestoperationstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestPassword")
     {
         cfcrequestpassword = value;
+        cfcrequestpassword.value_namespace = name_space;
+        cfcrequestpassword.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestRemoteFile")
     {
         cfcrequestremotefile = value;
+        cfcrequestremotefile.value_namespace = name_space;
+        cfcrequestremotefile.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestResult")
     {
         cfcrequestresult = value;
+        cfcrequestresult.value_namespace = name_space;
+        cfcrequestresult.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestServer")
     {
         cfcrequestserver = value;
+        cfcrequestserver.value_namespace = name_space;
+        cfcrequestserver.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestStop")
     {
         cfcrequeststop = value;
+        cfcrequeststop.value_namespace = name_space;
+        cfcrequeststop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cfcRequestUser")
     {
         cfcrequestuser = value;
+        cfcrequestuser.value_namespace = name_space;
+        cfcrequestuser.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestoperationEnum::putBinary {1, "putBinary"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestoperationEnum::putASCII {2, "putASCII"};
+void CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cfcRequestIndex")
+    {
+        cfcrequestindex.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestCompletionTime")
+    {
+        cfcrequestcompletiontime.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestEntryStatus")
+    {
+        cfcrequestentrystatus.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestLocalFile")
+    {
+        cfcrequestlocalfile.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestOperation")
+    {
+        cfcrequestoperation.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestOperationState")
+    {
+        cfcrequestoperationstate.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestPassword")
+    {
+        cfcrequestpassword.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestRemoteFile")
+    {
+        cfcrequestremotefile.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestResult")
+    {
+        cfcrequestresult.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestServer")
+    {
+        cfcrequestserver.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestStop")
+    {
+        cfcrequeststop.yfilter = yfilter;
+    }
+    if(value_path == "cfcRequestUser")
+    {
+        cfcrequestuser.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::pending {1, "pending"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::success {2, "success"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::aborted {3, "aborted"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::fileOpenFailLocal {4, "fileOpenFailLocal"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::fileOpenFailRemote {5, "fileOpenFailRemote"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::badDomainName {6, "badDomainName"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::unreachableIpAddress {7, "unreachableIpAddress"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::linkFailed {8, "linkFailed"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::fileReadFailed {9, "fileReadFailed"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestresultEnum::fileWriteFailed {10, "fileWriteFailed"};
+bool CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cfcRequestIndex" || name == "cfcRequestCompletionTime" || name == "cfcRequestEntryStatus" || name == "cfcRequestLocalFile" || name == "cfcRequestOperation" || name == "cfcRequestOperationState" || name == "cfcRequestPassword" || name == "cfcRequestRemoteFile" || name == "cfcRequestResult" || name == "cfcRequestServer" || name == "cfcRequestStop" || name == "cfcRequestUser")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequeststopEnum::ready {1, "ready"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequeststopEnum::stop {2, "stop"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation::putBinary {1, "putBinary"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation::putASCII {2, "putASCII"};
 
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestoperationstateEnum::running {1, "running"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestoperationstateEnum::stopping {2, "stopping"};
-const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::CfcrequestoperationstateEnum::stopped {3, "stopped"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::pending {1, "pending"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::success {2, "success"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::aborted {3, "aborted"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::fileOpenFailLocal {4, "fileOpenFailLocal"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::fileOpenFailRemote {5, "fileOpenFailRemote"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::badDomainName {6, "badDomainName"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::unreachableIpAddress {7, "unreachableIpAddress"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::linkFailed {8, "linkFailed"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::fileReadFailed {9, "fileReadFailed"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::fileWriteFailed {10, "fileWriteFailed"};
+
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop::ready {1, "ready"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop::stop {2, "stop"};
+
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate::running {1, "running"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate::stopping {2, "stopping"};
+const Enum::YLeaf CiscoFtpClientMib::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate::stopped {3, "stopped"};
 
 
 }

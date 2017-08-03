@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_UBE_MIB {
 
-class CiscoUbeMib : public Entity
+class CiscoUbeMib : public ydk::Entity
 {
     public:
         CiscoUbeMib();
@@ -18,24 +18,27 @@ class CiscoUbeMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Ciscoubemibobjects; //type: CiscoUbeMib::Ciscoubemibobjects
 
-        std::shared_ptr<CISCO_UBE_MIB::CiscoUbeMib::Ciscoubemibobjects> ciscoubemibobjects_;
+        std::shared_ptr<CISCO_UBE_MIB::CiscoUbeMib::Ciscoubemibobjects> ciscoubemibobjects;
         
 }; // CiscoUbeMib
 
 
-class CiscoUbeMib::Ciscoubemibobjects : public Entity
+class CiscoUbeMib::Ciscoubemibobjects : public ydk::Entity
 {
     public:
         Ciscoubemibobjects();
@@ -43,15 +46,17 @@ class CiscoUbeMib::Ciscoubemibobjects : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cubeenabled; //type: boolean
-        YLeaf cubeversion; //type: string
-        YLeaf cubetotalsessionallowed; //type: uint32
+        ydk::YLeaf cubeenabled; //type: boolean
+        ydk::YLeaf cubeversion; //type: string
+        ydk::YLeaf cubetotalsessionallowed; //type: uint32
 
 }; // CiscoUbeMib::Ciscoubemibobjects
 

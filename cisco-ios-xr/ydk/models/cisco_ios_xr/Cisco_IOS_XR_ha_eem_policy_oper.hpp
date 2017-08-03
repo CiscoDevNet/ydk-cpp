@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ha_eem_policy_oper {
 
-class Eem : public Entity
+class Eem : public ydk::Entity
 {
     public:
         Eem();
@@ -18,15 +18,18 @@ class Eem : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class DirUser; //type: Eem::DirUser
         class EnvVariables; //type: Eem::EnvVariables
@@ -43,7 +46,7 @@ class Eem : public Entity
 }; // Eem
 
 
-class Eem::DirUser : public Entity
+class Eem::DirUser : public ydk::Entity
 {
     public:
         DirUser();
@@ -51,11 +54,13 @@ class Eem::DirUser : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Library; //type: Eem::DirUser::Library
         class Policy; //type: Eem::DirUser::Policy
@@ -66,7 +71,7 @@ class Eem::DirUser : public Entity
 }; // Eem::DirUser
 
 
-class Eem::DirUser::Library : public Entity
+class Eem::DirUser::Library : public ydk::Entity
 {
     public:
         Library();
@@ -74,19 +79,21 @@ class Eem::DirUser::Library : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy; //type: string
-        YLeaf library; //type: string
+        ydk::YLeaf policy; //type: string
+        ydk::YLeaf library; //type: string
 
 }; // Eem::DirUser::Library
 
 
-class Eem::DirUser::Policy : public Entity
+class Eem::DirUser::Policy : public ydk::Entity
 {
     public:
         Policy();
@@ -94,19 +101,21 @@ class Eem::DirUser::Policy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy; //type: string
-        YLeaf library; //type: string
+        ydk::YLeaf policy; //type: string
+        ydk::YLeaf library; //type: string
 
 }; // Eem::DirUser::Policy
 
 
-class Eem::EnvVariables : public Entity
+class Eem::EnvVariables : public ydk::Entity
 {
     public:
         EnvVariables();
@@ -114,11 +123,13 @@ class Eem::EnvVariables : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class EnvVariable; //type: Eem::EnvVariables::EnvVariable
 
@@ -127,7 +138,7 @@ class Eem::EnvVariables : public Entity
 }; // Eem::EnvVariables
 
 
-class Eem::EnvVariables::EnvVariable : public Entity
+class Eem::EnvVariables::EnvVariable : public ydk::Entity
 {
     public:
         EnvVariable();
@@ -135,20 +146,22 @@ class Eem::EnvVariables::EnvVariable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf name_xr; //type: string
-        YLeaf value_; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf name_xr; //type: string
+        ydk::YLeaf value_; //type: string
 
 }; // Eem::EnvVariables::EnvVariable
 
 
-class Eem::RefreshTime : public Entity
+class Eem::RefreshTime : public ydk::Entity
 {
     public:
         RefreshTime();
@@ -156,18 +169,20 @@ class Eem::RefreshTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf refreshtime; //type: uint32
+        ydk::YLeaf refreshtime; //type: uint32
 
 }; // Eem::RefreshTime
 
 
-class Eem::RegPolicies : public Entity
+class Eem::RegPolicies : public ydk::Entity
 {
     public:
         RegPolicies();
@@ -175,11 +190,13 @@ class Eem::RegPolicies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RegPolicy; //type: Eem::RegPolicies::RegPolicy
 
@@ -188,7 +205,7 @@ class Eem::RegPolicies : public Entity
 }; // Eem::RegPolicies
 
 
-class Eem::RegPolicies::RegPolicy : public Entity
+class Eem::RegPolicies::RegPolicy : public ydk::Entity
 {
     public:
         RegPolicy();
@@ -196,27 +213,29 @@ class Eem::RegPolicies::RegPolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf type; //type: string
-        YLeaf time_created; //type: string
-        YLeaf policy_name; //type: string
-        YLeaf class_; //type: string
-        YLeaf event_type; //type: string
-        YLeaf trap; //type: string
-        YLeaf persist_time; //type: uint32
-        YLeaf username; //type: string
-        YLeaf description; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf type; //type: string
+        ydk::YLeaf time_created; //type: string
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf class_; //type: string
+        ydk::YLeaf event_type; //type: string
+        ydk::YLeaf trap; //type: string
+        ydk::YLeaf persist_time; //type: uint32
+        ydk::YLeaf username; //type: string
+        ydk::YLeaf description; //type: string
 
 }; // Eem::RegPolicies::RegPolicy
 
 
-class Eem::AvlPolicies : public Entity
+class Eem::AvlPolicies : public ydk::Entity
 {
     public:
         AvlPolicies();
@@ -224,11 +243,13 @@ class Eem::AvlPolicies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AvlPolicy; //type: Eem::AvlPolicies::AvlPolicy
 
@@ -237,7 +258,7 @@ class Eem::AvlPolicies : public Entity
 }; // Eem::AvlPolicies
 
 
-class Eem::AvlPolicies::AvlPolicy : public Entity
+class Eem::AvlPolicies::AvlPolicy : public ydk::Entity
 {
     public:
         AvlPolicy();
@@ -245,16 +266,18 @@ class Eem::AvlPolicies::AvlPolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf type; //type: string
-        YLeaf time_created; //type: string
-        YLeaf policy_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf type; //type: string
+        ydk::YLeaf time_created; //type: string
+        ydk::YLeaf policy_name; //type: string
 
 }; // Eem::AvlPolicies::AvlPolicy
 

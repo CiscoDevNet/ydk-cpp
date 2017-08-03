@@ -7,17 +7,17 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace ietf {
 namespace ietf_yang_smiv2 {
 
-class ObjectIdentityIdentity : public virtual Identity
+class ObjectIdentity : public virtual ydk::Identity
 {
     public:
-        ObjectIdentityIdentity();
-        ~ObjectIdentityIdentity();
+        ObjectIdentity();
+        ~ObjectIdentity();
 
 
-}; // ObjectIdentityIdentity
+}; // ObjectIdentity
 
 
 }

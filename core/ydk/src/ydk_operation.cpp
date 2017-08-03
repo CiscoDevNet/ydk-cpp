@@ -29,17 +29,18 @@
 
 namespace ydk
 {
-std::string to_string(EditOperation operation)
+std::string to_string(YFilter yfilter)
 {
-    #define TOSTR(a) case EditOperation::a: return #a;
-    switch(operation)
+    #define TOSTR(a) case YFilter::a: return #a;
+    switch(yfilter)
     {
         TOSTR(merge)
         TOSTR(create)
         TOSTR(remove)
         TOSTR(replace)
         TOSTR(not_set)
-        case EditOperation::delete_:
+        TOSTR(read)
+        case YFilter::delete_:
             return "delete";
     }
     #undef TOSTR

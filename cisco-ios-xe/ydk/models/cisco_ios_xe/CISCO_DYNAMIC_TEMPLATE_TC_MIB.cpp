@@ -6,18 +6,20 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_DYNAMIC_TEMPLATE_TC_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_DYNAMIC_TEMPLATE_TC_MIB {
 
-const Enum::YLeaf DynamictemplatetargettypeEnum::other {1, "other"};
-const Enum::YLeaf DynamictemplatetargettypeEnum::interface {2, "interface"};
+const Enum::YLeaf Dynamictemplatetype::other {1, "other"};
+const Enum::YLeaf Dynamictemplatetype::derived {2, "derived"};
+const Enum::YLeaf Dynamictemplatetype::ppp {3, "ppp"};
+const Enum::YLeaf Dynamictemplatetype::ethernet {4, "ethernet"};
+const Enum::YLeaf Dynamictemplatetype::ipSubscriber {5, "ipSubscriber"};
+const Enum::YLeaf Dynamictemplatetype::service {6, "service"};
 
-const Enum::YLeaf DynamictemplatetypeEnum::other {1, "other"};
-const Enum::YLeaf DynamictemplatetypeEnum::derived {2, "derived"};
-const Enum::YLeaf DynamictemplatetypeEnum::ppp {3, "ppp"};
-const Enum::YLeaf DynamictemplatetypeEnum::ethernet {4, "ethernet"};
-const Enum::YLeaf DynamictemplatetypeEnum::ipSubscriber {5, "ipSubscriber"};
-const Enum::YLeaf DynamictemplatetypeEnum::service {6, "service"};
+const Enum::YLeaf Dynamictemplatetargettype::other {1, "other"};
+const Enum::YLeaf Dynamictemplatetargettype::interface {2, "interface"};
 
 
 }

@@ -7,39 +7,39 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace cisco_ospf {
 
-class OspfLogAdjEnum : public Enum
+class PrefixApplicability : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enable;
-        static const Enum::YLeaf detail;
-        static const Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf protected_;
+        static const ydk::Enum::YLeaf all;
 
 };
 
-class PrefixApplicabilityEnum : public Enum
+class AccessListInOutType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf protected_;
-        static const Enum::YLeaf all;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
 
 };
 
-class AccessListInOutTypeEnum : public Enum
+class OspfExternalType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf in;
-        static const Enum::YLeaf out;
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
 
 };
 
-class OspfExternalTypeEnum : public Enum
+class OspfLogAdj : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_1;
-        static const Enum::YLeaf Y_2;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf detail;
+        static const ydk::Enum::YLeaf disable;
 
 };
 

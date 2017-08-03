@@ -7,28 +7,28 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_atm_vcm_cfg {
 
-class AtmVpiBitsModeEnum : public Enum
+class AtmPvcTestMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf twelve;
+        static const ydk::Enum::YLeaf loop;
+        static const ydk::Enum::YLeaf reserved;
 
 };
 
-class AtmPvcTestModeEnum : public Enum
+class AtmPvpTestMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf loop;
-        static const Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf loop;
 
 };
 
-class AtmPvpTestModeEnum : public Enum
+class AtmVpiBitsMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf loop;
+        static const ydk::Enum::YLeaf twelve;
 
 };
 

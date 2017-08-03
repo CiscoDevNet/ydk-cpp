@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 2.8.9)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_ietf VERSION 0.1.2 LANGUAGES C CXX)
+project(ydk_ietf VERSION 0.1.3 LANGUAGES C CXX)
 
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk-ietf")
 set (CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
 set (CPACK_PACKAGE_RELEASE "1")
-set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "YDK Core Library")
+set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "YDK Bundle Library")
 # set (CPACK_PACKAGE_DESCRIPTION_SUMMARY ${YDK_DESCRIPTION})
 
 # CPack Static Settings
@@ -34,7 +34,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         OUTPUT_VARIABLE LSB_RELEASE_ID_SHORT
         OUTPUT_STRIP_TRAILING_WHITESPACE
     )
-    
+
     set (CMAKE_BUILD_TYPE "Release")
     set (CMAKE_C_COMPILER "/usr/bin/clang")
     set (CMAKE_CXX_COMPILER "/usr/bin/clang++")
@@ -99,23 +99,23 @@ include(CPack)
 # include custom Modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 
-set(YDK_YANG_ARCHIVE ietf\@0.1.2)
+set(YDK_YANG_ARCHIVE ietf\@0.1.3)
 
 if(NOT LIB_INSTALL_DIR)
-	set(LIB_INSTALL_DIR lib)
+    set(LIB_INSTALL_DIR lib)
 endif()
 
 if(NOT INCLUDE_INSTALL_DIR)
-	set(INCLUDE_INSTALL_DIR include/ydk_ietf)
+    set(INCLUDE_INSTALL_DIR include/ydk_ietf)
 endif()
 
 if(NOT YANG_INSTALL_DIR)
-    set(YANG_INSTALL_DIR share/ietf\@0.1.2)
+    set(YANG_INSTALL_DIR share/ietf\@0.1.3)
 endif()
 
 # set default build type if not specified by user
 if(NOT CMAKE_BUILD_TYPE)
-	set(CMAKE_BUILD_TYPE release)
+    set(CMAKE_BUILD_TYPE release)
 endif()
 
 if(SHOW_WARNINGS)
@@ -128,13 +128,13 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Os -DNDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG   "-g -O0")
 
 
-set(libydk_ietf_src ydk/models/ietf/generated_entity_lookup.cpp ydk/models/ietf/ietf_diffserv_classifier.cpp ydk/models/ietf/ietf_ospf.cpp ydk/models/ietf/ietf_system.cpp ydk/models/ietf/ietf_ipv6_unicast_routing.cpp ydk/models/ietf/ietf_interfaces.cpp ydk/models/ietf/ietf_ip.cpp ydk/models/ietf/ietf_yang_library.cpp ydk/models/ietf/ietf_inet_types.cpp ydk/models/ietf/ietf_diffserv_policy.cpp ydk/models/ietf/ietf_syslog_types.cpp ydk/models/ietf/ietf_key_chain.cpp ydk/models/ietf/ietf_netconf_monitoring.cpp ydk/models/ietf/ietf_netconf_with_defaults.cpp ydk/models/ietf/iana_if_type.cpp ydk/models/ietf/ietf_diffserv_target.cpp ydk/models/ietf/ietf_netconf.cpp ydk/models/ietf/ietf_ipv4_unicast_routing.cpp ydk/models/ietf/ietf_routing.cpp ydk/models/ietf/ietf_yang_smiv2.cpp ydk/models/ietf/ietf_restconf_monitoring.cpp ydk/models/ietf/ietf_netconf_acm.cpp)
+set(libydk_ietf_src ydk/models/ietf/generated_entity_lookup.cpp ydk/models/ietf/iana_if_type.cpp ydk/models/ietf/ietf_diffserv_action.cpp ydk/models/ietf/ietf_diffserv_classifier.cpp ydk/models/ietf/ietf_diffserv_policy.cpp ydk/models/ietf/ietf_diffserv_target.cpp ydk/models/ietf/ietf_event_notifications.cpp ydk/models/ietf/ietf_inet_types.cpp ydk/models/ietf/ietf_interfaces.cpp ydk/models/ietf/ietf_ip.cpp ydk/models/ietf/ietf_ipv4_unicast_routing.cpp ydk/models/ietf/ietf_ipv6_unicast_routing.cpp ydk/models/ietf/ietf_key_chain.cpp ydk/models/ietf/ietf_netconf.cpp ydk/models/ietf/ietf_netconf_monitoring.cpp ydk/models/ietf/ietf_netconf_with_defaults.cpp ydk/models/ietf/ietf_ospf.cpp ydk/models/ietf/ietf_restconf_monitoring.cpp ydk/models/ietf/ietf_routing.cpp ydk/models/ietf/ietf_syslog_types.cpp ydk/models/ietf/ietf_yang_library.cpp ydk/models/ietf/ietf_yang_push.cpp ydk/models/ietf/ietf_yang_smiv2.cpp ydk/models/ietf/policy_types.cpp)
 
-set(libydk_ietf_headers ydk/models/ietf/bundle_info.hpp ydk/models/ietf/ietf_diffserv_classifier.hpp ydk/models/ietf/ietf_ospf.hpp ydk/models/ietf/ietf_system.hpp ydk/models/ietf/ietf_ipv6_unicast_routing.hpp ydk/models/ietf/ietf_interfaces.hpp ydk/models/ietf/ietf_ip.hpp ydk/models/ietf/ietf_yang_library.hpp ydk/models/ietf/ietf_inet_types.hpp ydk/models/ietf/ietf_diffserv_policy.hpp ydk/models/ietf/ietf_syslog_types.hpp ydk/models/ietf/ietf_key_chain.hpp ydk/models/ietf/ietf_netconf_monitoring.hpp ydk/models/ietf/ietf_netconf_with_defaults.hpp ydk/models/ietf/iana_if_type.hpp ydk/models/ietf/ietf_diffserv_target.hpp ydk/models/ietf/ietf_netconf.hpp ydk/models/ietf/ietf_ipv4_unicast_routing.hpp ydk/models/ietf/ietf_routing.hpp ydk/models/ietf/ietf_yang_smiv2.hpp ydk/models/ietf/ietf_restconf_monitoring.hpp ydk/models/ietf/ietf_netconf_acm.hpp)
+set(libydk_ietf_headers ydk/models/ietf/bundle_info.hpp ydk/models/ietf/iana_if_type.hpp ydk/models/ietf/ietf_diffserv_action.hpp ydk/models/ietf/ietf_diffserv_classifier.hpp ydk/models/ietf/ietf_diffserv_policy.hpp ydk/models/ietf/ietf_diffserv_target.hpp ydk/models/ietf/ietf_event_notifications.hpp ydk/models/ietf/ietf_inet_types.hpp ydk/models/ietf/ietf_interfaces.hpp ydk/models/ietf/ietf_ip.hpp ydk/models/ietf/ietf_ipv4_unicast_routing.hpp ydk/models/ietf/ietf_ipv6_unicast_routing.hpp ydk/models/ietf/ietf_key_chain.hpp ydk/models/ietf/ietf_netconf.hpp ydk/models/ietf/ietf_netconf_monitoring.hpp ydk/models/ietf/ietf_netconf_with_defaults.hpp ydk/models/ietf/ietf_ospf.hpp ydk/models/ietf/ietf_restconf_monitoring.hpp ydk/models/ietf/ietf_routing.hpp ydk/models/ietf/ietf_syslog_types.hpp ydk/models/ietf/ietf_yang_library.hpp ydk/models/ietf/ietf_yang_push.hpp ydk/models/ietf/ietf_yang_smiv2.hpp ydk/models/ietf/policy_types.hpp)
 
-set(libydk_ietf_yang iana-crypt-hash.yang iana-if-type.yang ietf-diffserv-classifier.yang ietf-diffserv-policy.yang ietf-diffserv-target.yang ietf-inet-types.yang ietf-interfaces-ext.yang ietf-interfaces.yang ietf-ip.yang ietf-ipv4-unicast-routing.yang ietf-ipv6-unicast-routing.yang ietf-key-chain.yang ietf-netconf-acm.yang ietf-netconf-monitoring.yang ietf-netconf-notifications.yang ietf-netconf-with-defaults.yang ietf-netconf.yang ietf-ospf.yang ietf-restconf-monitoring.yang ietf-routing.yang ietf-syslog-types.yang ietf-system@2014-08-06.yang ietf-yang-library.yang ietf-yang-smiv2.yang ietf-yang-types.yang ydk@2016-02-26.yang)
+set(libydk_ietf_yang iana-crypt-hash.yang iana-if-type.yang ietf-diffserv-action.yang ietf-diffserv-classifier.yang ietf-diffserv-policy.yang ietf-diffserv-target.yang ietf-event-notifications.yang ietf-inet-types.yang ietf-interfaces-ext.yang ietf-interfaces.yang ietf-ip.yang ietf-ipv4-unicast-routing.yang ietf-ipv6-unicast-routing.yang ietf-key-chain.yang ietf-netconf-monitoring.yang ietf-netconf-notifications.yang ietf-netconf-with-defaults.yang ietf-netconf.yang ietf-ospf.yang ietf-restconf-monitoring.yang ietf-routing.yang ietf-syslog-types.yang ietf-yang-library.yang ietf-yang-push.yang ietf-yang-smiv2.yang ietf-yang-types.yang policy-types.yang ydk@2016-02-26.yang)
 
-set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/ietf\@0.1.2)
+set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/ietf\@0.1.3)
 
 list(APPEND libydk_YANG_FILES "")
 foreach(yang_file IN LISTS libydk_ietf_yang)
@@ -181,19 +181,19 @@ install(FILES ${libydk_YANG_FILES} DESTINATION ${YANG_INSTALL_DIR})
 # generate doxygen documentation for ydk_core API
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
-	set(DOXYGEN_SKIP_DOT TRUE)
-	add_custom_target(doc
-			COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
-			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-	configure_file(Doxyfile.in Doxyfile)
+    set(DOXYGEN_SKIP_DOT TRUE)
+    add_custom_target(doc
+            COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    configure_file(Doxyfile.in Doxyfile)
 endif()
 
 
 # clean cmake cache
 add_custom_target(cclean
-		COMMAND make clean
-		COMMAND find . -iname '*cmake*' -not -name CMakeLists.txt -not -path './CMakeModules*' -exec rm -rf {} +
-		COMMAND rm -rf Makefile Doxyfile
-		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+        COMMAND make clean
+        COMMAND find . -iname '*cmake*' -not -name CMakeLists.txt -not -path './CMakeModules*' -exec rm -rf {} +
+        COMMAND rm -rf Makefile Doxyfile
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 

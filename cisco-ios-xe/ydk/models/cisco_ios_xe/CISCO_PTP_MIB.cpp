@@ -6,56 +6,58 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_PTP_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_PTP_MIB {
 
 CiscoPtpMib::CiscoPtpMib()
     :
-    ciscoptpmibsysteminfo_(std::make_shared<CiscoPtpMib::Ciscoptpmibsysteminfo>())
-	,cptpclockcurrentdstable_(std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable>())
-	,cptpclockdefaultdstable_(std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable>())
-	,cptpclocknodetable_(std::make_shared<CiscoPtpMib::Cptpclocknodetable>())
-	,cptpclockparentdstable_(std::make_shared<CiscoPtpMib::Cptpclockparentdstable>())
-	,cptpclockportassociatetable_(std::make_shared<CiscoPtpMib::Cptpclockportassociatetable>())
-	,cptpclockportdstable_(std::make_shared<CiscoPtpMib::Cptpclockportdstable>())
-	,cptpclockportrunningtable_(std::make_shared<CiscoPtpMib::Cptpclockportrunningtable>())
-	,cptpclockporttable_(std::make_shared<CiscoPtpMib::Cptpclockporttable>())
-	,cptpclockporttransdstable_(std::make_shared<CiscoPtpMib::Cptpclockporttransdstable>())
-	,cptpclockrunningtable_(std::make_shared<CiscoPtpMib::Cptpclockrunningtable>())
-	,cptpclocktimepropertiesdstable_(std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable>())
-	,cptpclocktransdefaultdstable_(std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable>())
-	,cptpsystemdomaintable_(std::make_shared<CiscoPtpMib::Cptpsystemdomaintable>())
-	,cptpsystemtable_(std::make_shared<CiscoPtpMib::Cptpsystemtable>())
+    ciscoptpmibsysteminfo(std::make_shared<CiscoPtpMib::Ciscoptpmibsysteminfo>())
+	,cptpclockcurrentdstable(std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable>())
+	,cptpclockdefaultdstable(std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable>())
+	,cptpclocknodetable(std::make_shared<CiscoPtpMib::Cptpclocknodetable>())
+	,cptpclockparentdstable(std::make_shared<CiscoPtpMib::Cptpclockparentdstable>())
+	,cptpclockportassociatetable(std::make_shared<CiscoPtpMib::Cptpclockportassociatetable>())
+	,cptpclockportdstable(std::make_shared<CiscoPtpMib::Cptpclockportdstable>())
+	,cptpclockportrunningtable(std::make_shared<CiscoPtpMib::Cptpclockportrunningtable>())
+	,cptpclockporttable(std::make_shared<CiscoPtpMib::Cptpclockporttable>())
+	,cptpclockporttransdstable(std::make_shared<CiscoPtpMib::Cptpclockporttransdstable>())
+	,cptpclockrunningtable(std::make_shared<CiscoPtpMib::Cptpclockrunningtable>())
+	,cptpclocktimepropertiesdstable(std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable>())
+	,cptpclocktransdefaultdstable(std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable>())
+	,cptpsystemdomaintable(std::make_shared<CiscoPtpMib::Cptpsystemdomaintable>())
+	,cptpsystemtable(std::make_shared<CiscoPtpMib::Cptpsystemtable>())
 {
-    ciscoptpmibsysteminfo_->parent = this;
+    ciscoptpmibsysteminfo->parent = this;
 
-    cptpclockcurrentdstable_->parent = this;
+    cptpclockcurrentdstable->parent = this;
 
-    cptpclockdefaultdstable_->parent = this;
+    cptpclockdefaultdstable->parent = this;
 
-    cptpclocknodetable_->parent = this;
+    cptpclocknodetable->parent = this;
 
-    cptpclockparentdstable_->parent = this;
+    cptpclockparentdstable->parent = this;
 
-    cptpclockportassociatetable_->parent = this;
+    cptpclockportassociatetable->parent = this;
 
-    cptpclockportdstable_->parent = this;
+    cptpclockportdstable->parent = this;
 
-    cptpclockportrunningtable_->parent = this;
+    cptpclockportrunningtable->parent = this;
 
-    cptpclockporttable_->parent = this;
+    cptpclockporttable->parent = this;
 
-    cptpclockporttransdstable_->parent = this;
+    cptpclockporttransdstable->parent = this;
 
-    cptpclockrunningtable_->parent = this;
+    cptpclockrunningtable->parent = this;
 
-    cptpclocktimepropertiesdstable_->parent = this;
+    cptpclocktimepropertiesdstable->parent = this;
 
-    cptpclocktransdefaultdstable_->parent = this;
+    cptpclocktransdefaultdstable->parent = this;
 
-    cptpsystemdomaintable_->parent = this;
+    cptpsystemdomaintable->parent = this;
 
-    cptpsystemtable_->parent = this;
+    cptpsystemtable->parent = this;
 
     yang_name = "CISCO-PTP-MIB"; yang_parent_name = "CISCO-PTP-MIB";
 }
@@ -66,41 +68,41 @@ CiscoPtpMib::~CiscoPtpMib()
 
 bool CiscoPtpMib::has_data() const
 {
-    return (ciscoptpmibsysteminfo_ !=  nullptr && ciscoptpmibsysteminfo_->has_data())
-	|| (cptpclockcurrentdstable_ !=  nullptr && cptpclockcurrentdstable_->has_data())
-	|| (cptpclockdefaultdstable_ !=  nullptr && cptpclockdefaultdstable_->has_data())
-	|| (cptpclocknodetable_ !=  nullptr && cptpclocknodetable_->has_data())
-	|| (cptpclockparentdstable_ !=  nullptr && cptpclockparentdstable_->has_data())
-	|| (cptpclockportassociatetable_ !=  nullptr && cptpclockportassociatetable_->has_data())
-	|| (cptpclockportdstable_ !=  nullptr && cptpclockportdstable_->has_data())
-	|| (cptpclockportrunningtable_ !=  nullptr && cptpclockportrunningtable_->has_data())
-	|| (cptpclockporttable_ !=  nullptr && cptpclockporttable_->has_data())
-	|| (cptpclockporttransdstable_ !=  nullptr && cptpclockporttransdstable_->has_data())
-	|| (cptpclockrunningtable_ !=  nullptr && cptpclockrunningtable_->has_data())
-	|| (cptpclocktimepropertiesdstable_ !=  nullptr && cptpclocktimepropertiesdstable_->has_data())
-	|| (cptpclocktransdefaultdstable_ !=  nullptr && cptpclocktransdefaultdstable_->has_data())
-	|| (cptpsystemdomaintable_ !=  nullptr && cptpsystemdomaintable_->has_data())
-	|| (cptpsystemtable_ !=  nullptr && cptpsystemtable_->has_data());
+    return (ciscoptpmibsysteminfo !=  nullptr && ciscoptpmibsysteminfo->has_data())
+	|| (cptpclockcurrentdstable !=  nullptr && cptpclockcurrentdstable->has_data())
+	|| (cptpclockdefaultdstable !=  nullptr && cptpclockdefaultdstable->has_data())
+	|| (cptpclocknodetable !=  nullptr && cptpclocknodetable->has_data())
+	|| (cptpclockparentdstable !=  nullptr && cptpclockparentdstable->has_data())
+	|| (cptpclockportassociatetable !=  nullptr && cptpclockportassociatetable->has_data())
+	|| (cptpclockportdstable !=  nullptr && cptpclockportdstable->has_data())
+	|| (cptpclockportrunningtable !=  nullptr && cptpclockportrunningtable->has_data())
+	|| (cptpclockporttable !=  nullptr && cptpclockporttable->has_data())
+	|| (cptpclockporttransdstable !=  nullptr && cptpclockporttransdstable->has_data())
+	|| (cptpclockrunningtable !=  nullptr && cptpclockrunningtable->has_data())
+	|| (cptpclocktimepropertiesdstable !=  nullptr && cptpclocktimepropertiesdstable->has_data())
+	|| (cptpclocktransdefaultdstable !=  nullptr && cptpclocktransdefaultdstable->has_data())
+	|| (cptpsystemdomaintable !=  nullptr && cptpsystemdomaintable->has_data())
+	|| (cptpsystemtable !=  nullptr && cptpsystemtable->has_data());
 }
 
 bool CiscoPtpMib::has_operation() const
 {
-    return is_set(operation)
-	|| (ciscoptpmibsysteminfo_ !=  nullptr && ciscoptpmibsysteminfo_->has_operation())
-	|| (cptpclockcurrentdstable_ !=  nullptr && cptpclockcurrentdstable_->has_operation())
-	|| (cptpclockdefaultdstable_ !=  nullptr && cptpclockdefaultdstable_->has_operation())
-	|| (cptpclocknodetable_ !=  nullptr && cptpclocknodetable_->has_operation())
-	|| (cptpclockparentdstable_ !=  nullptr && cptpclockparentdstable_->has_operation())
-	|| (cptpclockportassociatetable_ !=  nullptr && cptpclockportassociatetable_->has_operation())
-	|| (cptpclockportdstable_ !=  nullptr && cptpclockportdstable_->has_operation())
-	|| (cptpclockportrunningtable_ !=  nullptr && cptpclockportrunningtable_->has_operation())
-	|| (cptpclockporttable_ !=  nullptr && cptpclockporttable_->has_operation())
-	|| (cptpclockporttransdstable_ !=  nullptr && cptpclockporttransdstable_->has_operation())
-	|| (cptpclockrunningtable_ !=  nullptr && cptpclockrunningtable_->has_operation())
-	|| (cptpclocktimepropertiesdstable_ !=  nullptr && cptpclocktimepropertiesdstable_->has_operation())
-	|| (cptpclocktransdefaultdstable_ !=  nullptr && cptpclocktransdefaultdstable_->has_operation())
-	|| (cptpsystemdomaintable_ !=  nullptr && cptpsystemdomaintable_->has_operation())
-	|| (cptpsystemtable_ !=  nullptr && cptpsystemtable_->has_operation());
+    return is_set(yfilter)
+	|| (ciscoptpmibsysteminfo !=  nullptr && ciscoptpmibsysteminfo->has_operation())
+	|| (cptpclockcurrentdstable !=  nullptr && cptpclockcurrentdstable->has_operation())
+	|| (cptpclockdefaultdstable !=  nullptr && cptpclockdefaultdstable->has_operation())
+	|| (cptpclocknodetable !=  nullptr && cptpclocknodetable->has_operation())
+	|| (cptpclockparentdstable !=  nullptr && cptpclockparentdstable->has_operation())
+	|| (cptpclockportassociatetable !=  nullptr && cptpclockportassociatetable->has_operation())
+	|| (cptpclockportdstable !=  nullptr && cptpclockportdstable->has_operation())
+	|| (cptpclockportrunningtable !=  nullptr && cptpclockportrunningtable->has_operation())
+	|| (cptpclockporttable !=  nullptr && cptpclockporttable->has_operation())
+	|| (cptpclockporttransdstable !=  nullptr && cptpclockporttransdstable->has_operation())
+	|| (cptpclockrunningtable !=  nullptr && cptpclockrunningtable->has_operation())
+	|| (cptpclocktimepropertiesdstable !=  nullptr && cptpclocktimepropertiesdstable->has_operation())
+	|| (cptpclocktransdefaultdstable !=  nullptr && cptpclocktransdefaultdstable->has_operation())
+	|| (cptpsystemdomaintable !=  nullptr && cptpsystemdomaintable->has_operation())
+	|| (cptpsystemtable !=  nullptr && cptpsystemtable->has_operation());
 }
 
 std::string CiscoPtpMib::get_segment_path() const
@@ -134,137 +136,137 @@ std::shared_ptr<Entity> CiscoPtpMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "ciscoPtpMIBSystemInfo")
     {
-        if(ciscoptpmibsysteminfo_ == nullptr)
+        if(ciscoptpmibsysteminfo == nullptr)
         {
-            ciscoptpmibsysteminfo_ = std::make_shared<CiscoPtpMib::Ciscoptpmibsysteminfo>();
+            ciscoptpmibsysteminfo = std::make_shared<CiscoPtpMib::Ciscoptpmibsysteminfo>();
         }
-        return ciscoptpmibsysteminfo_;
+        return ciscoptpmibsysteminfo;
     }
 
     if(child_yang_name == "cPtpClockCurrentDSTable")
     {
-        if(cptpclockcurrentdstable_ == nullptr)
+        if(cptpclockcurrentdstable == nullptr)
         {
-            cptpclockcurrentdstable_ = std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable>();
+            cptpclockcurrentdstable = std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable>();
         }
-        return cptpclockcurrentdstable_;
+        return cptpclockcurrentdstable;
     }
 
     if(child_yang_name == "cPtpClockDefaultDSTable")
     {
-        if(cptpclockdefaultdstable_ == nullptr)
+        if(cptpclockdefaultdstable == nullptr)
         {
-            cptpclockdefaultdstable_ = std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable>();
+            cptpclockdefaultdstable = std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable>();
         }
-        return cptpclockdefaultdstable_;
+        return cptpclockdefaultdstable;
     }
 
     if(child_yang_name == "cPtpClockNodeTable")
     {
-        if(cptpclocknodetable_ == nullptr)
+        if(cptpclocknodetable == nullptr)
         {
-            cptpclocknodetable_ = std::make_shared<CiscoPtpMib::Cptpclocknodetable>();
+            cptpclocknodetable = std::make_shared<CiscoPtpMib::Cptpclocknodetable>();
         }
-        return cptpclocknodetable_;
+        return cptpclocknodetable;
     }
 
     if(child_yang_name == "cPtpClockParentDSTable")
     {
-        if(cptpclockparentdstable_ == nullptr)
+        if(cptpclockparentdstable == nullptr)
         {
-            cptpclockparentdstable_ = std::make_shared<CiscoPtpMib::Cptpclockparentdstable>();
+            cptpclockparentdstable = std::make_shared<CiscoPtpMib::Cptpclockparentdstable>();
         }
-        return cptpclockparentdstable_;
+        return cptpclockparentdstable;
     }
 
     if(child_yang_name == "cPtpClockPortAssociateTable")
     {
-        if(cptpclockportassociatetable_ == nullptr)
+        if(cptpclockportassociatetable == nullptr)
         {
-            cptpclockportassociatetable_ = std::make_shared<CiscoPtpMib::Cptpclockportassociatetable>();
+            cptpclockportassociatetable = std::make_shared<CiscoPtpMib::Cptpclockportassociatetable>();
         }
-        return cptpclockportassociatetable_;
+        return cptpclockportassociatetable;
     }
 
     if(child_yang_name == "cPtpClockPortDSTable")
     {
-        if(cptpclockportdstable_ == nullptr)
+        if(cptpclockportdstable == nullptr)
         {
-            cptpclockportdstable_ = std::make_shared<CiscoPtpMib::Cptpclockportdstable>();
+            cptpclockportdstable = std::make_shared<CiscoPtpMib::Cptpclockportdstable>();
         }
-        return cptpclockportdstable_;
+        return cptpclockportdstable;
     }
 
     if(child_yang_name == "cPtpClockPortRunningTable")
     {
-        if(cptpclockportrunningtable_ == nullptr)
+        if(cptpclockportrunningtable == nullptr)
         {
-            cptpclockportrunningtable_ = std::make_shared<CiscoPtpMib::Cptpclockportrunningtable>();
+            cptpclockportrunningtable = std::make_shared<CiscoPtpMib::Cptpclockportrunningtable>();
         }
-        return cptpclockportrunningtable_;
+        return cptpclockportrunningtable;
     }
 
     if(child_yang_name == "cPtpClockPortTable")
     {
-        if(cptpclockporttable_ == nullptr)
+        if(cptpclockporttable == nullptr)
         {
-            cptpclockporttable_ = std::make_shared<CiscoPtpMib::Cptpclockporttable>();
+            cptpclockporttable = std::make_shared<CiscoPtpMib::Cptpclockporttable>();
         }
-        return cptpclockporttable_;
+        return cptpclockporttable;
     }
 
     if(child_yang_name == "cPtpClockPortTransDSTable")
     {
-        if(cptpclockporttransdstable_ == nullptr)
+        if(cptpclockporttransdstable == nullptr)
         {
-            cptpclockporttransdstable_ = std::make_shared<CiscoPtpMib::Cptpclockporttransdstable>();
+            cptpclockporttransdstable = std::make_shared<CiscoPtpMib::Cptpclockporttransdstable>();
         }
-        return cptpclockporttransdstable_;
+        return cptpclockporttransdstable;
     }
 
     if(child_yang_name == "cPtpClockRunningTable")
     {
-        if(cptpclockrunningtable_ == nullptr)
+        if(cptpclockrunningtable == nullptr)
         {
-            cptpclockrunningtable_ = std::make_shared<CiscoPtpMib::Cptpclockrunningtable>();
+            cptpclockrunningtable = std::make_shared<CiscoPtpMib::Cptpclockrunningtable>();
         }
-        return cptpclockrunningtable_;
+        return cptpclockrunningtable;
     }
 
     if(child_yang_name == "cPtpClockTimePropertiesDSTable")
     {
-        if(cptpclocktimepropertiesdstable_ == nullptr)
+        if(cptpclocktimepropertiesdstable == nullptr)
         {
-            cptpclocktimepropertiesdstable_ = std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable>();
+            cptpclocktimepropertiesdstable = std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable>();
         }
-        return cptpclocktimepropertiesdstable_;
+        return cptpclocktimepropertiesdstable;
     }
 
     if(child_yang_name == "cPtpClockTransDefaultDSTable")
     {
-        if(cptpclocktransdefaultdstable_ == nullptr)
+        if(cptpclocktransdefaultdstable == nullptr)
         {
-            cptpclocktransdefaultdstable_ = std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable>();
+            cptpclocktransdefaultdstable = std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable>();
         }
-        return cptpclocktransdefaultdstable_;
+        return cptpclocktransdefaultdstable;
     }
 
     if(child_yang_name == "cPtpSystemDomainTable")
     {
-        if(cptpsystemdomaintable_ == nullptr)
+        if(cptpsystemdomaintable == nullptr)
         {
-            cptpsystemdomaintable_ = std::make_shared<CiscoPtpMib::Cptpsystemdomaintable>();
+            cptpsystemdomaintable = std::make_shared<CiscoPtpMib::Cptpsystemdomaintable>();
         }
-        return cptpsystemdomaintable_;
+        return cptpsystemdomaintable;
     }
 
     if(child_yang_name == "cPtpSystemTable")
     {
-        if(cptpsystemtable_ == nullptr)
+        if(cptpsystemtable == nullptr)
         {
-            cptpsystemtable_ = std::make_shared<CiscoPtpMib::Cptpsystemtable>();
+            cptpsystemtable = std::make_shared<CiscoPtpMib::Cptpsystemtable>();
         }
-        return cptpsystemtable_;
+        return cptpsystemtable;
     }
 
     return nullptr;
@@ -273,85 +275,89 @@ std::shared_ptr<Entity> CiscoPtpMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ciscoptpmibsysteminfo_ != nullptr)
+    if(ciscoptpmibsysteminfo != nullptr)
     {
-        children["ciscoPtpMIBSystemInfo"] = ciscoptpmibsysteminfo_;
+        children["ciscoPtpMIBSystemInfo"] = ciscoptpmibsysteminfo;
     }
 
-    if(cptpclockcurrentdstable_ != nullptr)
+    if(cptpclockcurrentdstable != nullptr)
     {
-        children["cPtpClockCurrentDSTable"] = cptpclockcurrentdstable_;
+        children["cPtpClockCurrentDSTable"] = cptpclockcurrentdstable;
     }
 
-    if(cptpclockdefaultdstable_ != nullptr)
+    if(cptpclockdefaultdstable != nullptr)
     {
-        children["cPtpClockDefaultDSTable"] = cptpclockdefaultdstable_;
+        children["cPtpClockDefaultDSTable"] = cptpclockdefaultdstable;
     }
 
-    if(cptpclocknodetable_ != nullptr)
+    if(cptpclocknodetable != nullptr)
     {
-        children["cPtpClockNodeTable"] = cptpclocknodetable_;
+        children["cPtpClockNodeTable"] = cptpclocknodetable;
     }
 
-    if(cptpclockparentdstable_ != nullptr)
+    if(cptpclockparentdstable != nullptr)
     {
-        children["cPtpClockParentDSTable"] = cptpclockparentdstable_;
+        children["cPtpClockParentDSTable"] = cptpclockparentdstable;
     }
 
-    if(cptpclockportassociatetable_ != nullptr)
+    if(cptpclockportassociatetable != nullptr)
     {
-        children["cPtpClockPortAssociateTable"] = cptpclockportassociatetable_;
+        children["cPtpClockPortAssociateTable"] = cptpclockportassociatetable;
     }
 
-    if(cptpclockportdstable_ != nullptr)
+    if(cptpclockportdstable != nullptr)
     {
-        children["cPtpClockPortDSTable"] = cptpclockportdstable_;
+        children["cPtpClockPortDSTable"] = cptpclockportdstable;
     }
 
-    if(cptpclockportrunningtable_ != nullptr)
+    if(cptpclockportrunningtable != nullptr)
     {
-        children["cPtpClockPortRunningTable"] = cptpclockportrunningtable_;
+        children["cPtpClockPortRunningTable"] = cptpclockportrunningtable;
     }
 
-    if(cptpclockporttable_ != nullptr)
+    if(cptpclockporttable != nullptr)
     {
-        children["cPtpClockPortTable"] = cptpclockporttable_;
+        children["cPtpClockPortTable"] = cptpclockporttable;
     }
 
-    if(cptpclockporttransdstable_ != nullptr)
+    if(cptpclockporttransdstable != nullptr)
     {
-        children["cPtpClockPortTransDSTable"] = cptpclockporttransdstable_;
+        children["cPtpClockPortTransDSTable"] = cptpclockporttransdstable;
     }
 
-    if(cptpclockrunningtable_ != nullptr)
+    if(cptpclockrunningtable != nullptr)
     {
-        children["cPtpClockRunningTable"] = cptpclockrunningtable_;
+        children["cPtpClockRunningTable"] = cptpclockrunningtable;
     }
 
-    if(cptpclocktimepropertiesdstable_ != nullptr)
+    if(cptpclocktimepropertiesdstable != nullptr)
     {
-        children["cPtpClockTimePropertiesDSTable"] = cptpclocktimepropertiesdstable_;
+        children["cPtpClockTimePropertiesDSTable"] = cptpclocktimepropertiesdstable;
     }
 
-    if(cptpclocktransdefaultdstable_ != nullptr)
+    if(cptpclocktransdefaultdstable != nullptr)
     {
-        children["cPtpClockTransDefaultDSTable"] = cptpclocktransdefaultdstable_;
+        children["cPtpClockTransDefaultDSTable"] = cptpclocktransdefaultdstable;
     }
 
-    if(cptpsystemdomaintable_ != nullptr)
+    if(cptpsystemdomaintable != nullptr)
     {
-        children["cPtpSystemDomainTable"] = cptpsystemdomaintable_;
+        children["cPtpSystemDomainTable"] = cptpsystemdomaintable;
     }
 
-    if(cptpsystemtable_ != nullptr)
+    if(cptpsystemtable != nullptr)
     {
-        children["cPtpSystemTable"] = cptpsystemtable_;
+        children["cPtpSystemTable"] = cptpsystemtable;
     }
 
     return children;
 }
 
-void CiscoPtpMib::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoPtpMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -375,6 +381,18 @@ augment_capabilities_function CiscoPtpMib::get_augment_capabilities_function() c
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoPtpMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoPtpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ciscoPtpMIBSystemInfo" || name == "cPtpClockCurrentDSTable" || name == "cPtpClockDefaultDSTable" || name == "cPtpClockNodeTable" || name == "cPtpClockParentDSTable" || name == "cPtpClockPortAssociateTable" || name == "cPtpClockPortDSTable" || name == "cPtpClockPortRunningTable" || name == "cPtpClockPortTable" || name == "cPtpClockPortTransDSTable" || name == "cPtpClockRunningTable" || name == "cPtpClockTimePropertiesDSTable" || name == "cPtpClockTransDefaultDSTable" || name == "cPtpSystemDomainTable" || name == "cPtpSystemTable")
+        return true;
+    return false;
+}
+
 CiscoPtpMib::Ciscoptpmibsysteminfo::Ciscoptpmibsysteminfo()
     :
     cptpsystemprofile{YType::enumeration, "cPtpSystemProfile"}
@@ -393,8 +411,8 @@ bool CiscoPtpMib::Ciscoptpmibsysteminfo::has_data() const
 
 bool CiscoPtpMib::Ciscoptpmibsysteminfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpsystemprofile.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpsystemprofile.yfilter);
 }
 
 std::string CiscoPtpMib::Ciscoptpmibsysteminfo::get_segment_path() const
@@ -420,7 +438,7 @@ const EntityPath CiscoPtpMib::Ciscoptpmibsysteminfo::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpsystemprofile.is_set || is_set(cptpsystemprofile.operation)) leaf_name_data.push_back(cptpsystemprofile.get_name_leafdata());
+    if (cptpsystemprofile.is_set || is_set(cptpsystemprofile.yfilter)) leaf_name_data.push_back(cptpsystemprofile.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -439,12 +457,29 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Ciscoptpmibsysteminf
     return children;
 }
 
-void CiscoPtpMib::Ciscoptpmibsysteminfo::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Ciscoptpmibsysteminfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpSystemProfile")
     {
         cptpsystemprofile = value;
+        cptpsystemprofile.value_namespace = name_space;
+        cptpsystemprofile.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Ciscoptpmibsysteminfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpSystemProfile")
+    {
+        cptpsystemprofile.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Ciscoptpmibsysteminfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpSystemProfile")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpsystemtable::Cptpsystemtable()
@@ -458,9 +493,9 @@ CiscoPtpMib::Cptpsystemtable::~Cptpsystemtable()
 
 bool CiscoPtpMib::Cptpsystemtable::has_data() const
 {
-    for (std::size_t index=0; index<cptpsystementry_.size(); index++)
+    for (std::size_t index=0; index<cptpsystementry.size(); index++)
     {
-        if(cptpsystementry_[index]->has_data())
+        if(cptpsystementry[index]->has_data())
             return true;
     }
     return false;
@@ -468,12 +503,12 @@ bool CiscoPtpMib::Cptpsystemtable::has_data() const
 
 bool CiscoPtpMib::Cptpsystemtable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpsystementry_.size(); index++)
+    for (std::size_t index=0; index<cptpsystementry.size(); index++)
     {
-        if(cptpsystementry_[index]->has_operation())
+        if(cptpsystementry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpsystemtable::get_segment_path() const
@@ -510,7 +545,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemtable::get_child_by_name(const st
 {
     if(child_yang_name == "cPtpSystemEntry")
     {
-        for(auto const & c : cptpsystementry_)
+        for(auto const & c : cptpsystementry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -520,7 +555,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemtable::get_child_by_name(const st
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpsystemtable::Cptpsystementry>();
         c->parent = this;
-        cptpsystementry_.push_back(c);
+        cptpsystementry.push_back(c);
         return c;
     }
 
@@ -530,7 +565,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpsystemtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpsystementry_)
+    for (auto const & c : cptpsystementry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -538,8 +573,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpsystemtable::get
     return children;
 }
 
-void CiscoPtpMib::Cptpsystemtable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpsystemtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpsystemtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpsystemtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpSystemEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpsystemtable::Cptpsystementry::Cptpsystementry()
@@ -566,11 +612,11 @@ bool CiscoPtpMib::Cptpsystemtable::Cptpsystementry::has_data() const
 
 bool CiscoPtpMib::Cptpsystemtable::Cptpsystementry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpdomainindex.operation)
-	|| is_set(cptpinstanceindex.operation)
-	|| is_set(cptpdomainclockportphysicalinterfacestotal.operation)
-	|| is_set(cptpdomainclockportstotal.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpdomainindex.yfilter)
+	|| ydk::is_set(cptpinstanceindex.yfilter)
+	|| ydk::is_set(cptpdomainclockportphysicalinterfacestotal.yfilter)
+	|| ydk::is_set(cptpdomainclockportstotal.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpsystemtable::Cptpsystementry::get_segment_path() const
@@ -596,10 +642,10 @@ const EntityPath CiscoPtpMib::Cptpsystemtable::Cptpsystementry::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpdomainindex.is_set || is_set(cptpdomainindex.operation)) leaf_name_data.push_back(cptpdomainindex.get_name_leafdata());
-    if (cptpinstanceindex.is_set || is_set(cptpinstanceindex.operation)) leaf_name_data.push_back(cptpinstanceindex.get_name_leafdata());
-    if (cptpdomainclockportphysicalinterfacestotal.is_set || is_set(cptpdomainclockportphysicalinterfacestotal.operation)) leaf_name_data.push_back(cptpdomainclockportphysicalinterfacestotal.get_name_leafdata());
-    if (cptpdomainclockportstotal.is_set || is_set(cptpdomainclockportstotal.operation)) leaf_name_data.push_back(cptpdomainclockportstotal.get_name_leafdata());
+    if (cptpdomainindex.is_set || is_set(cptpdomainindex.yfilter)) leaf_name_data.push_back(cptpdomainindex.get_name_leafdata());
+    if (cptpinstanceindex.is_set || is_set(cptpinstanceindex.yfilter)) leaf_name_data.push_back(cptpinstanceindex.get_name_leafdata());
+    if (cptpdomainclockportphysicalinterfacestotal.is_set || is_set(cptpdomainclockportphysicalinterfacestotal.yfilter)) leaf_name_data.push_back(cptpdomainclockportphysicalinterfacestotal.get_name_leafdata());
+    if (cptpdomainclockportstotal.is_set || is_set(cptpdomainclockportstotal.yfilter)) leaf_name_data.push_back(cptpdomainclockportstotal.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -618,24 +664,59 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpsystemtable::Cpt
     return children;
 }
 
-void CiscoPtpMib::Cptpsystemtable::Cptpsystementry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpsystemtable::Cptpsystementry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpDomainIndex")
     {
         cptpdomainindex = value;
+        cptpdomainindex.value_namespace = name_space;
+        cptpdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpInstanceIndex")
     {
         cptpinstanceindex = value;
+        cptpinstanceindex.value_namespace = name_space;
+        cptpinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpDomainClockPortPhysicalInterfacesTotal")
     {
         cptpdomainclockportphysicalinterfacestotal = value;
+        cptpdomainclockportphysicalinterfacestotal.value_namespace = name_space;
+        cptpdomainclockportphysicalinterfacestotal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpDomainClockPortsTotal")
     {
         cptpdomainclockportstotal = value;
+        cptpdomainclockportstotal.value_namespace = name_space;
+        cptpdomainclockportstotal.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpsystemtable::Cptpsystementry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpDomainIndex")
+    {
+        cptpdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpInstanceIndex")
+    {
+        cptpinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpDomainClockPortPhysicalInterfacesTotal")
+    {
+        cptpdomainclockportphysicalinterfacestotal.yfilter = yfilter;
+    }
+    if(value_path == "cPtpDomainClockPortsTotal")
+    {
+        cptpdomainclockportstotal.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpsystemtable::Cptpsystementry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpDomainIndex" || name == "cPtpInstanceIndex" || name == "cPtpDomainClockPortPhysicalInterfacesTotal" || name == "cPtpDomainClockPortsTotal")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomaintable()
@@ -649,9 +730,9 @@ CiscoPtpMib::Cptpsystemdomaintable::~Cptpsystemdomaintable()
 
 bool CiscoPtpMib::Cptpsystemdomaintable::has_data() const
 {
-    for (std::size_t index=0; index<cptpsystemdomainentry_.size(); index++)
+    for (std::size_t index=0; index<cptpsystemdomainentry.size(); index++)
     {
-        if(cptpsystemdomainentry_[index]->has_data())
+        if(cptpsystemdomainentry[index]->has_data())
             return true;
     }
     return false;
@@ -659,12 +740,12 @@ bool CiscoPtpMib::Cptpsystemdomaintable::has_data() const
 
 bool CiscoPtpMib::Cptpsystemdomaintable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpsystemdomainentry_.size(); index++)
+    for (std::size_t index=0; index<cptpsystemdomainentry.size(); index++)
     {
-        if(cptpsystemdomainentry_[index]->has_operation())
+        if(cptpsystemdomainentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpsystemdomaintable::get_segment_path() const
@@ -701,7 +782,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemdomaintable::get_child_by_name(co
 {
     if(child_yang_name == "cPtpSystemDomainEntry")
     {
-        for(auto const & c : cptpsystemdomainentry_)
+        for(auto const & c : cptpsystemdomainentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -711,7 +792,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemdomaintable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry>();
         c->parent = this;
-        cptpsystemdomainentry_.push_back(c);
+        cptpsystemdomainentry.push_back(c);
         return c;
     }
 
@@ -721,7 +802,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpsystemdomaintable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpsystemdomaintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpsystemdomainentry_)
+    for (auto const & c : cptpsystemdomainentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -729,8 +810,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpsystemdomaintabl
     return children;
 }
 
-void CiscoPtpMib::Cptpsystemdomaintable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpsystemdomaintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpsystemdomaintable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpsystemdomaintable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpSystemDomainEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::Cptpsystemdomainentry()
@@ -753,9 +845,9 @@ bool CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::has_data() const
 
 bool CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpsystemdomainclocktypeindex.operation)
-	|| is_set(cptpsystemdomaintotals.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpsystemdomainclocktypeindex.yfilter)
+	|| ydk::is_set(cptpsystemdomaintotals.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::get_segment_path() const
@@ -781,8 +873,8 @@ const EntityPath CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpsystemdomainclocktypeindex.is_set || is_set(cptpsystemdomainclocktypeindex.operation)) leaf_name_data.push_back(cptpsystemdomainclocktypeindex.get_name_leafdata());
-    if (cptpsystemdomaintotals.is_set || is_set(cptpsystemdomaintotals.operation)) leaf_name_data.push_back(cptpsystemdomaintotals.get_name_leafdata());
+    if (cptpsystemdomainclocktypeindex.is_set || is_set(cptpsystemdomainclocktypeindex.yfilter)) leaf_name_data.push_back(cptpsystemdomainclocktypeindex.get_name_leafdata());
+    if (cptpsystemdomaintotals.is_set || is_set(cptpsystemdomaintotals.yfilter)) leaf_name_data.push_back(cptpsystemdomaintotals.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -801,16 +893,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpsystemdomaintabl
     return children;
 }
 
-void CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpSystemDomainClockTypeIndex")
     {
         cptpsystemdomainclocktypeindex = value;
+        cptpsystemdomainclocktypeindex.value_namespace = name_space;
+        cptpsystemdomainclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpSystemDomainTotals")
     {
         cptpsystemdomaintotals = value;
+        cptpsystemdomaintotals.value_namespace = name_space;
+        cptpsystemdomaintotals.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpSystemDomainClockTypeIndex")
+    {
+        cptpsystemdomainclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpSystemDomainTotals")
+    {
+        cptpsystemdomaintotals.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpsystemdomaintable::Cptpsystemdomainentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpSystemDomainClockTypeIndex" || name == "cPtpSystemDomainTotals")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclocknodetable::Cptpclocknodetable()
@@ -824,9 +939,9 @@ CiscoPtpMib::Cptpclocknodetable::~Cptpclocknodetable()
 
 bool CiscoPtpMib::Cptpclocknodetable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocknodeentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclocknodeentry.size(); index++)
     {
-        if(cptpclocknodeentry_[index]->has_data())
+        if(cptpclocknodeentry[index]->has_data())
             return true;
     }
     return false;
@@ -834,12 +949,12 @@ bool CiscoPtpMib::Cptpclocknodetable::has_data() const
 
 bool CiscoPtpMib::Cptpclocknodetable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocknodeentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclocknodeentry.size(); index++)
     {
-        if(cptpclocknodeentry_[index]->has_operation())
+        if(cptpclocknodeentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclocknodetable::get_segment_path() const
@@ -876,7 +991,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocknodetable::get_child_by_name(const
 {
     if(child_yang_name == "cPtpClockNodeEntry")
     {
-        for(auto const & c : cptpclocknodeentry_)
+        for(auto const & c : cptpclocknodeentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -886,7 +1001,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocknodetable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry>();
         c->parent = this;
-        cptpclocknodeentry_.push_back(c);
+        cptpclocknodeentry.push_back(c);
         return c;
     }
 
@@ -896,7 +1011,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocknodetable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocknodetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclocknodeentry_)
+    for (auto const & c : cptpclocknodeentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -904,8 +1019,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocknodetable::
     return children;
 }
 
-void CiscoPtpMib::Cptpclocknodetable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclocknodetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclocknodetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclocknodetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockNodeEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::Cptpclocknodeentry()
@@ -950,20 +1076,20 @@ bool CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::has_data() const
 
 bool CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockdomainindex.operation)
-	|| is_set(cptpclocktypeindex.operation)
-	|| is_set(cptpclockinstanceindex.operation)
-	|| is_set(cptpclockinput1ppsenabled.operation)
-	|| is_set(cptpclockinput1ppsinterface.operation)
-	|| is_set(cptpclockinputfrequencyenabled.operation)
-	|| is_set(cptpclockoutput1ppsenabled.operation)
-	|| is_set(cptpclockoutput1ppsinterface.operation)
-	|| is_set(cptpclockoutput1ppsoffsetenabled.operation)
-	|| is_set(cptpclockoutput1ppsoffsetnegative.operation)
-	|| is_set(cptpclockoutput1ppsoffsetvalue.operation)
-	|| is_set(cptpclocktodenabled.operation)
-	|| is_set(cptpclocktodinterface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockdomainindex.yfilter)
+	|| ydk::is_set(cptpclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockinput1ppsenabled.yfilter)
+	|| ydk::is_set(cptpclockinput1ppsinterface.yfilter)
+	|| ydk::is_set(cptpclockinputfrequencyenabled.yfilter)
+	|| ydk::is_set(cptpclockoutput1ppsenabled.yfilter)
+	|| ydk::is_set(cptpclockoutput1ppsinterface.yfilter)
+	|| ydk::is_set(cptpclockoutput1ppsoffsetenabled.yfilter)
+	|| ydk::is_set(cptpclockoutput1ppsoffsetnegative.yfilter)
+	|| ydk::is_set(cptpclockoutput1ppsoffsetvalue.yfilter)
+	|| ydk::is_set(cptpclocktodenabled.yfilter)
+	|| ydk::is_set(cptpclocktodinterface.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::get_segment_path() const
@@ -989,19 +1115,19 @@ const EntityPath CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockdomainindex.is_set || is_set(cptpclockdomainindex.operation)) leaf_name_data.push_back(cptpclockdomainindex.get_name_leafdata());
-    if (cptpclocktypeindex.is_set || is_set(cptpclocktypeindex.operation)) leaf_name_data.push_back(cptpclocktypeindex.get_name_leafdata());
-    if (cptpclockinstanceindex.is_set || is_set(cptpclockinstanceindex.operation)) leaf_name_data.push_back(cptpclockinstanceindex.get_name_leafdata());
-    if (cptpclockinput1ppsenabled.is_set || is_set(cptpclockinput1ppsenabled.operation)) leaf_name_data.push_back(cptpclockinput1ppsenabled.get_name_leafdata());
-    if (cptpclockinput1ppsinterface.is_set || is_set(cptpclockinput1ppsinterface.operation)) leaf_name_data.push_back(cptpclockinput1ppsinterface.get_name_leafdata());
-    if (cptpclockinputfrequencyenabled.is_set || is_set(cptpclockinputfrequencyenabled.operation)) leaf_name_data.push_back(cptpclockinputfrequencyenabled.get_name_leafdata());
-    if (cptpclockoutput1ppsenabled.is_set || is_set(cptpclockoutput1ppsenabled.operation)) leaf_name_data.push_back(cptpclockoutput1ppsenabled.get_name_leafdata());
-    if (cptpclockoutput1ppsinterface.is_set || is_set(cptpclockoutput1ppsinterface.operation)) leaf_name_data.push_back(cptpclockoutput1ppsinterface.get_name_leafdata());
-    if (cptpclockoutput1ppsoffsetenabled.is_set || is_set(cptpclockoutput1ppsoffsetenabled.operation)) leaf_name_data.push_back(cptpclockoutput1ppsoffsetenabled.get_name_leafdata());
-    if (cptpclockoutput1ppsoffsetnegative.is_set || is_set(cptpclockoutput1ppsoffsetnegative.operation)) leaf_name_data.push_back(cptpclockoutput1ppsoffsetnegative.get_name_leafdata());
-    if (cptpclockoutput1ppsoffsetvalue.is_set || is_set(cptpclockoutput1ppsoffsetvalue.operation)) leaf_name_data.push_back(cptpclockoutput1ppsoffsetvalue.get_name_leafdata());
-    if (cptpclocktodenabled.is_set || is_set(cptpclocktodenabled.operation)) leaf_name_data.push_back(cptpclocktodenabled.get_name_leafdata());
-    if (cptpclocktodinterface.is_set || is_set(cptpclocktodinterface.operation)) leaf_name_data.push_back(cptpclocktodinterface.get_name_leafdata());
+    if (cptpclockdomainindex.is_set || is_set(cptpclockdomainindex.yfilter)) leaf_name_data.push_back(cptpclockdomainindex.get_name_leafdata());
+    if (cptpclocktypeindex.is_set || is_set(cptpclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclocktypeindex.get_name_leafdata());
+    if (cptpclockinstanceindex.is_set || is_set(cptpclockinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockinstanceindex.get_name_leafdata());
+    if (cptpclockinput1ppsenabled.is_set || is_set(cptpclockinput1ppsenabled.yfilter)) leaf_name_data.push_back(cptpclockinput1ppsenabled.get_name_leafdata());
+    if (cptpclockinput1ppsinterface.is_set || is_set(cptpclockinput1ppsinterface.yfilter)) leaf_name_data.push_back(cptpclockinput1ppsinterface.get_name_leafdata());
+    if (cptpclockinputfrequencyenabled.is_set || is_set(cptpclockinputfrequencyenabled.yfilter)) leaf_name_data.push_back(cptpclockinputfrequencyenabled.get_name_leafdata());
+    if (cptpclockoutput1ppsenabled.is_set || is_set(cptpclockoutput1ppsenabled.yfilter)) leaf_name_data.push_back(cptpclockoutput1ppsenabled.get_name_leafdata());
+    if (cptpclockoutput1ppsinterface.is_set || is_set(cptpclockoutput1ppsinterface.yfilter)) leaf_name_data.push_back(cptpclockoutput1ppsinterface.get_name_leafdata());
+    if (cptpclockoutput1ppsoffsetenabled.is_set || is_set(cptpclockoutput1ppsoffsetenabled.yfilter)) leaf_name_data.push_back(cptpclockoutput1ppsoffsetenabled.get_name_leafdata());
+    if (cptpclockoutput1ppsoffsetnegative.is_set || is_set(cptpclockoutput1ppsoffsetnegative.yfilter)) leaf_name_data.push_back(cptpclockoutput1ppsoffsetnegative.get_name_leafdata());
+    if (cptpclockoutput1ppsoffsetvalue.is_set || is_set(cptpclockoutput1ppsoffsetvalue.yfilter)) leaf_name_data.push_back(cptpclockoutput1ppsoffsetvalue.get_name_leafdata());
+    if (cptpclocktodenabled.is_set || is_set(cptpclocktodenabled.yfilter)) leaf_name_data.push_back(cptpclocktodenabled.get_name_leafdata());
+    if (cptpclocktodinterface.is_set || is_set(cptpclocktodinterface.yfilter)) leaf_name_data.push_back(cptpclocktodinterface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1020,60 +1146,149 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocknodetable::
     return children;
 }
 
-void CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockDomainIndex")
     {
         cptpclockdomainindex = value;
+        cptpclockdomainindex.value_namespace = name_space;
+        cptpclockdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTypeIndex")
     {
         cptpclocktypeindex = value;
+        cptpclocktypeindex.value_namespace = name_space;
+        cptpclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockInstanceIndex")
     {
         cptpclockinstanceindex = value;
+        cptpclockinstanceindex.value_namespace = name_space;
+        cptpclockinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockInput1ppsEnabled")
     {
         cptpclockinput1ppsenabled = value;
+        cptpclockinput1ppsenabled.value_namespace = name_space;
+        cptpclockinput1ppsenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockInput1ppsInterface")
     {
         cptpclockinput1ppsinterface = value;
+        cptpclockinput1ppsinterface.value_namespace = name_space;
+        cptpclockinput1ppsinterface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockInputFrequencyEnabled")
     {
         cptpclockinputfrequencyenabled = value;
+        cptpclockinputfrequencyenabled.value_namespace = name_space;
+        cptpclockinputfrequencyenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockOutput1ppsEnabled")
     {
         cptpclockoutput1ppsenabled = value;
+        cptpclockoutput1ppsenabled.value_namespace = name_space;
+        cptpclockoutput1ppsenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockOutput1ppsInterface")
     {
         cptpclockoutput1ppsinterface = value;
+        cptpclockoutput1ppsinterface.value_namespace = name_space;
+        cptpclockoutput1ppsinterface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockOutput1ppsOffsetEnabled")
     {
         cptpclockoutput1ppsoffsetenabled = value;
+        cptpclockoutput1ppsoffsetenabled.value_namespace = name_space;
+        cptpclockoutput1ppsoffsetenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockOutput1ppsOffsetNegative")
     {
         cptpclockoutput1ppsoffsetnegative = value;
+        cptpclockoutput1ppsoffsetnegative.value_namespace = name_space;
+        cptpclockoutput1ppsoffsetnegative.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockOutput1ppsOffsetValue")
     {
         cptpclockoutput1ppsoffsetvalue = value;
+        cptpclockoutput1ppsoffsetvalue.value_namespace = name_space;
+        cptpclockoutput1ppsoffsetvalue.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTODEnabled")
     {
         cptpclocktodenabled = value;
+        cptpclocktodenabled.value_namespace = name_space;
+        cptpclocktodenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTODInterface")
     {
         cptpclocktodinterface = value;
+        cptpclocktodinterface.value_namespace = name_space;
+        cptpclocktodinterface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockDomainIndex")
+    {
+        cptpclockdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTypeIndex")
+    {
+        cptpclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockInstanceIndex")
+    {
+        cptpclockinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockInput1ppsEnabled")
+    {
+        cptpclockinput1ppsenabled.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockInput1ppsInterface")
+    {
+        cptpclockinput1ppsinterface.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockInputFrequencyEnabled")
+    {
+        cptpclockinputfrequencyenabled.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockOutput1ppsEnabled")
+    {
+        cptpclockoutput1ppsenabled.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockOutput1ppsInterface")
+    {
+        cptpclockoutput1ppsinterface.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockOutput1ppsOffsetEnabled")
+    {
+        cptpclockoutput1ppsoffsetenabled.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockOutput1ppsOffsetNegative")
+    {
+        cptpclockoutput1ppsoffsetnegative.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockOutput1ppsOffsetValue")
+    {
+        cptpclockoutput1ppsoffsetvalue.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTODEnabled")
+    {
+        cptpclocktodenabled.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTODInterface")
+    {
+        cptpclocktodinterface.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclocknodetable::Cptpclocknodeentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockDomainIndex" || name == "cPtpClockTypeIndex" || name == "cPtpClockInstanceIndex" || name == "cPtpClockInput1ppsEnabled" || name == "cPtpClockInput1ppsInterface" || name == "cPtpClockInputFrequencyEnabled" || name == "cPtpClockOutput1ppsEnabled" || name == "cPtpClockOutput1ppsInterface" || name == "cPtpClockOutput1ppsOffsetEnabled" || name == "cPtpClockOutput1ppsOffsetNegative" || name == "cPtpClockOutput1ppsOffsetValue" || name == "cPtpClockTODEnabled" || name == "cPtpClockTODInterface")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdstable()
@@ -1087,9 +1302,9 @@ CiscoPtpMib::Cptpclockcurrentdstable::~Cptpclockcurrentdstable()
 
 bool CiscoPtpMib::Cptpclockcurrentdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockcurrentdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockcurrentdsentry.size(); index++)
     {
-        if(cptpclockcurrentdsentry_[index]->has_data())
+        if(cptpclockcurrentdsentry[index]->has_data())
             return true;
     }
     return false;
@@ -1097,12 +1312,12 @@ bool CiscoPtpMib::Cptpclockcurrentdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockcurrentdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockcurrentdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockcurrentdsentry.size(); index++)
     {
-        if(cptpclockcurrentdsentry_[index]->has_operation())
+        if(cptpclockcurrentdsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockcurrentdstable::get_segment_path() const
@@ -1139,7 +1354,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockcurrentdstable::get_child_by_name(
 {
     if(child_yang_name == "cPtpClockCurrentDSEntry")
     {
-        for(auto const & c : cptpclockcurrentdsentry_)
+        for(auto const & c : cptpclockcurrentdsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1149,7 +1364,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockcurrentdstable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry>();
         c->parent = this;
-        cptpclockcurrentdsentry_.push_back(c);
+        cptpclockcurrentdsentry.push_back(c);
         return c;
     }
 
@@ -1159,7 +1374,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockcurrentdstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockcurrentdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockcurrentdsentry_)
+    for (auto const & c : cptpclockcurrentdsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1167,8 +1382,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockcurrentdsta
     return children;
 }
 
-void CiscoPtpMib::Cptpclockcurrentdstable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockcurrentdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockcurrentdstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockcurrentdstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockCurrentDSEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::Cptpclockcurrentdsentry()
@@ -1199,13 +1425,13 @@ bool CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::has_data() c
 
 bool CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockcurrentdsdomainindex.operation)
-	|| is_set(cptpclockcurrentdsclocktypeindex.operation)
-	|| is_set(cptpclockcurrentdsinstanceindex.operation)
-	|| is_set(cptpclockcurrentdsmeanpathdelay.operation)
-	|| is_set(cptpclockcurrentdsoffsetfrommaster.operation)
-	|| is_set(cptpclockcurrentdsstepsremoved.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockcurrentdsdomainindex.yfilter)
+	|| ydk::is_set(cptpclockcurrentdsclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockcurrentdsinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockcurrentdsmeanpathdelay.yfilter)
+	|| ydk::is_set(cptpclockcurrentdsoffsetfrommaster.yfilter)
+	|| ydk::is_set(cptpclockcurrentdsstepsremoved.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::get_segment_path() const
@@ -1231,12 +1457,12 @@ const EntityPath CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockcurrentdsdomainindex.is_set || is_set(cptpclockcurrentdsdomainindex.operation)) leaf_name_data.push_back(cptpclockcurrentdsdomainindex.get_name_leafdata());
-    if (cptpclockcurrentdsclocktypeindex.is_set || is_set(cptpclockcurrentdsclocktypeindex.operation)) leaf_name_data.push_back(cptpclockcurrentdsclocktypeindex.get_name_leafdata());
-    if (cptpclockcurrentdsinstanceindex.is_set || is_set(cptpclockcurrentdsinstanceindex.operation)) leaf_name_data.push_back(cptpclockcurrentdsinstanceindex.get_name_leafdata());
-    if (cptpclockcurrentdsmeanpathdelay.is_set || is_set(cptpclockcurrentdsmeanpathdelay.operation)) leaf_name_data.push_back(cptpclockcurrentdsmeanpathdelay.get_name_leafdata());
-    if (cptpclockcurrentdsoffsetfrommaster.is_set || is_set(cptpclockcurrentdsoffsetfrommaster.operation)) leaf_name_data.push_back(cptpclockcurrentdsoffsetfrommaster.get_name_leafdata());
-    if (cptpclockcurrentdsstepsremoved.is_set || is_set(cptpclockcurrentdsstepsremoved.operation)) leaf_name_data.push_back(cptpclockcurrentdsstepsremoved.get_name_leafdata());
+    if (cptpclockcurrentdsdomainindex.is_set || is_set(cptpclockcurrentdsdomainindex.yfilter)) leaf_name_data.push_back(cptpclockcurrentdsdomainindex.get_name_leafdata());
+    if (cptpclockcurrentdsclocktypeindex.is_set || is_set(cptpclockcurrentdsclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclockcurrentdsclocktypeindex.get_name_leafdata());
+    if (cptpclockcurrentdsinstanceindex.is_set || is_set(cptpclockcurrentdsinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockcurrentdsinstanceindex.get_name_leafdata());
+    if (cptpclockcurrentdsmeanpathdelay.is_set || is_set(cptpclockcurrentdsmeanpathdelay.yfilter)) leaf_name_data.push_back(cptpclockcurrentdsmeanpathdelay.get_name_leafdata());
+    if (cptpclockcurrentdsoffsetfrommaster.is_set || is_set(cptpclockcurrentdsoffsetfrommaster.yfilter)) leaf_name_data.push_back(cptpclockcurrentdsoffsetfrommaster.get_name_leafdata());
+    if (cptpclockcurrentdsstepsremoved.is_set || is_set(cptpclockcurrentdsstepsremoved.yfilter)) leaf_name_data.push_back(cptpclockcurrentdsstepsremoved.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1255,32 +1481,79 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockcurrentdsta
     return children;
 }
 
-void CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockCurrentDSDomainIndex")
     {
         cptpclockcurrentdsdomainindex = value;
+        cptpclockcurrentdsdomainindex.value_namespace = name_space;
+        cptpclockcurrentdsdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockCurrentDSClockTypeIndex")
     {
         cptpclockcurrentdsclocktypeindex = value;
+        cptpclockcurrentdsclocktypeindex.value_namespace = name_space;
+        cptpclockcurrentdsclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockCurrentDSInstanceIndex")
     {
         cptpclockcurrentdsinstanceindex = value;
+        cptpclockcurrentdsinstanceindex.value_namespace = name_space;
+        cptpclockcurrentdsinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockCurrentDSMeanPathDelay")
     {
         cptpclockcurrentdsmeanpathdelay = value;
+        cptpclockcurrentdsmeanpathdelay.value_namespace = name_space;
+        cptpclockcurrentdsmeanpathdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockCurrentDSOffsetFromMaster")
     {
         cptpclockcurrentdsoffsetfrommaster = value;
+        cptpclockcurrentdsoffsetfrommaster.value_namespace = name_space;
+        cptpclockcurrentdsoffsetfrommaster.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockCurrentDSStepsRemoved")
     {
         cptpclockcurrentdsstepsremoved = value;
+        cptpclockcurrentdsstepsremoved.value_namespace = name_space;
+        cptpclockcurrentdsstepsremoved.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockCurrentDSDomainIndex")
+    {
+        cptpclockcurrentdsdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockCurrentDSClockTypeIndex")
+    {
+        cptpclockcurrentdsclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockCurrentDSInstanceIndex")
+    {
+        cptpclockcurrentdsinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockCurrentDSMeanPathDelay")
+    {
+        cptpclockcurrentdsmeanpathdelay.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockCurrentDSOffsetFromMaster")
+    {
+        cptpclockcurrentdsoffsetfrommaster.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockCurrentDSStepsRemoved")
+    {
+        cptpclockcurrentdsstepsremoved.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclockcurrentdstable::Cptpclockcurrentdsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockCurrentDSDomainIndex" || name == "cPtpClockCurrentDSClockTypeIndex" || name == "cPtpClockCurrentDSInstanceIndex" || name == "cPtpClockCurrentDSMeanPathDelay" || name == "cPtpClockCurrentDSOffsetFromMaster" || name == "cPtpClockCurrentDSStepsRemoved")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdstable()
@@ -1294,9 +1567,9 @@ CiscoPtpMib::Cptpclockparentdstable::~Cptpclockparentdstable()
 
 bool CiscoPtpMib::Cptpclockparentdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockparentdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockparentdsentry.size(); index++)
     {
-        if(cptpclockparentdsentry_[index]->has_data())
+        if(cptpclockparentdsentry[index]->has_data())
             return true;
     }
     return false;
@@ -1304,12 +1577,12 @@ bool CiscoPtpMib::Cptpclockparentdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockparentdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockparentdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockparentdsentry.size(); index++)
     {
-        if(cptpclockparentdsentry_[index]->has_operation())
+        if(cptpclockparentdsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockparentdstable::get_segment_path() const
@@ -1346,7 +1619,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockparentdstable::get_child_by_name(c
 {
     if(child_yang_name == "cPtpClockParentDSEntry")
     {
-        for(auto const & c : cptpclockparentdsentry_)
+        for(auto const & c : cptpclockparentdsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1356,7 +1629,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockparentdstable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry>();
         c->parent = this;
-        cptpclockparentdsentry_.push_back(c);
+        cptpclockparentdsentry.push_back(c);
         return c;
     }
 
@@ -1366,7 +1639,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockparentdstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockparentdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockparentdsentry_)
+    for (auto const & c : cptpclockparentdsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1374,8 +1647,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockparentdstab
     return children;
 }
 
-void CiscoPtpMib::Cptpclockparentdstable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockparentdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockparentdstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockparentdstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockParentDSEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::Cptpclockparentdsentry()
@@ -1420,20 +1704,20 @@ bool CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::has_data() con
 
 bool CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockparentdsdomainindex.operation)
-	|| is_set(cptpclockparentdsclocktypeindex.operation)
-	|| is_set(cptpclockparentdsinstanceindex.operation)
-	|| is_set(cptpclockparentdsclockphchrate.operation)
-	|| is_set(cptpclockparentdsgmclockidentity.operation)
-	|| is_set(cptpclockparentdsgmclockpriority1.operation)
-	|| is_set(cptpclockparentdsgmclockpriority2.operation)
-	|| is_set(cptpclockparentdsgmclockqualityaccuracy.operation)
-	|| is_set(cptpclockparentdsgmclockqualityclass.operation)
-	|| is_set(cptpclockparentdsgmclockqualityoffset.operation)
-	|| is_set(cptpclockparentdsoffset.operation)
-	|| is_set(cptpclockparentdsparentportidentity.operation)
-	|| is_set(cptpclockparentdsparentstats.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockparentdsdomainindex.yfilter)
+	|| ydk::is_set(cptpclockparentdsclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockparentdsinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockparentdsclockphchrate.yfilter)
+	|| ydk::is_set(cptpclockparentdsgmclockidentity.yfilter)
+	|| ydk::is_set(cptpclockparentdsgmclockpriority1.yfilter)
+	|| ydk::is_set(cptpclockparentdsgmclockpriority2.yfilter)
+	|| ydk::is_set(cptpclockparentdsgmclockqualityaccuracy.yfilter)
+	|| ydk::is_set(cptpclockparentdsgmclockqualityclass.yfilter)
+	|| ydk::is_set(cptpclockparentdsgmclockqualityoffset.yfilter)
+	|| ydk::is_set(cptpclockparentdsoffset.yfilter)
+	|| ydk::is_set(cptpclockparentdsparentportidentity.yfilter)
+	|| ydk::is_set(cptpclockparentdsparentstats.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::get_segment_path() const
@@ -1459,19 +1743,19 @@ const EntityPath CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockparentdsdomainindex.is_set || is_set(cptpclockparentdsdomainindex.operation)) leaf_name_data.push_back(cptpclockparentdsdomainindex.get_name_leafdata());
-    if (cptpclockparentdsclocktypeindex.is_set || is_set(cptpclockparentdsclocktypeindex.operation)) leaf_name_data.push_back(cptpclockparentdsclocktypeindex.get_name_leafdata());
-    if (cptpclockparentdsinstanceindex.is_set || is_set(cptpclockparentdsinstanceindex.operation)) leaf_name_data.push_back(cptpclockparentdsinstanceindex.get_name_leafdata());
-    if (cptpclockparentdsclockphchrate.is_set || is_set(cptpclockparentdsclockphchrate.operation)) leaf_name_data.push_back(cptpclockparentdsclockphchrate.get_name_leafdata());
-    if (cptpclockparentdsgmclockidentity.is_set || is_set(cptpclockparentdsgmclockidentity.operation)) leaf_name_data.push_back(cptpclockparentdsgmclockidentity.get_name_leafdata());
-    if (cptpclockparentdsgmclockpriority1.is_set || is_set(cptpclockparentdsgmclockpriority1.operation)) leaf_name_data.push_back(cptpclockparentdsgmclockpriority1.get_name_leafdata());
-    if (cptpclockparentdsgmclockpriority2.is_set || is_set(cptpclockparentdsgmclockpriority2.operation)) leaf_name_data.push_back(cptpclockparentdsgmclockpriority2.get_name_leafdata());
-    if (cptpclockparentdsgmclockqualityaccuracy.is_set || is_set(cptpclockparentdsgmclockqualityaccuracy.operation)) leaf_name_data.push_back(cptpclockparentdsgmclockqualityaccuracy.get_name_leafdata());
-    if (cptpclockparentdsgmclockqualityclass.is_set || is_set(cptpclockparentdsgmclockqualityclass.operation)) leaf_name_data.push_back(cptpclockparentdsgmclockqualityclass.get_name_leafdata());
-    if (cptpclockparentdsgmclockqualityoffset.is_set || is_set(cptpclockparentdsgmclockqualityoffset.operation)) leaf_name_data.push_back(cptpclockparentdsgmclockqualityoffset.get_name_leafdata());
-    if (cptpclockparentdsoffset.is_set || is_set(cptpclockparentdsoffset.operation)) leaf_name_data.push_back(cptpclockparentdsoffset.get_name_leafdata());
-    if (cptpclockparentdsparentportidentity.is_set || is_set(cptpclockparentdsparentportidentity.operation)) leaf_name_data.push_back(cptpclockparentdsparentportidentity.get_name_leafdata());
-    if (cptpclockparentdsparentstats.is_set || is_set(cptpclockparentdsparentstats.operation)) leaf_name_data.push_back(cptpclockparentdsparentstats.get_name_leafdata());
+    if (cptpclockparentdsdomainindex.is_set || is_set(cptpclockparentdsdomainindex.yfilter)) leaf_name_data.push_back(cptpclockparentdsdomainindex.get_name_leafdata());
+    if (cptpclockparentdsclocktypeindex.is_set || is_set(cptpclockparentdsclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclockparentdsclocktypeindex.get_name_leafdata());
+    if (cptpclockparentdsinstanceindex.is_set || is_set(cptpclockparentdsinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockparentdsinstanceindex.get_name_leafdata());
+    if (cptpclockparentdsclockphchrate.is_set || is_set(cptpclockparentdsclockphchrate.yfilter)) leaf_name_data.push_back(cptpclockparentdsclockphchrate.get_name_leafdata());
+    if (cptpclockparentdsgmclockidentity.is_set || is_set(cptpclockparentdsgmclockidentity.yfilter)) leaf_name_data.push_back(cptpclockparentdsgmclockidentity.get_name_leafdata());
+    if (cptpclockparentdsgmclockpriority1.is_set || is_set(cptpclockparentdsgmclockpriority1.yfilter)) leaf_name_data.push_back(cptpclockparentdsgmclockpriority1.get_name_leafdata());
+    if (cptpclockparentdsgmclockpriority2.is_set || is_set(cptpclockparentdsgmclockpriority2.yfilter)) leaf_name_data.push_back(cptpclockparentdsgmclockpriority2.get_name_leafdata());
+    if (cptpclockparentdsgmclockqualityaccuracy.is_set || is_set(cptpclockparentdsgmclockqualityaccuracy.yfilter)) leaf_name_data.push_back(cptpclockparentdsgmclockqualityaccuracy.get_name_leafdata());
+    if (cptpclockparentdsgmclockqualityclass.is_set || is_set(cptpclockparentdsgmclockqualityclass.yfilter)) leaf_name_data.push_back(cptpclockparentdsgmclockqualityclass.get_name_leafdata());
+    if (cptpclockparentdsgmclockqualityoffset.is_set || is_set(cptpclockparentdsgmclockqualityoffset.yfilter)) leaf_name_data.push_back(cptpclockparentdsgmclockqualityoffset.get_name_leafdata());
+    if (cptpclockparentdsoffset.is_set || is_set(cptpclockparentdsoffset.yfilter)) leaf_name_data.push_back(cptpclockparentdsoffset.get_name_leafdata());
+    if (cptpclockparentdsparentportidentity.is_set || is_set(cptpclockparentdsparentportidentity.yfilter)) leaf_name_data.push_back(cptpclockparentdsparentportidentity.get_name_leafdata());
+    if (cptpclockparentdsparentstats.is_set || is_set(cptpclockparentdsparentstats.yfilter)) leaf_name_data.push_back(cptpclockparentdsparentstats.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1490,60 +1774,149 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockparentdstab
     return children;
 }
 
-void CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockParentDSDomainIndex")
     {
         cptpclockparentdsdomainindex = value;
+        cptpclockparentdsdomainindex.value_namespace = name_space;
+        cptpclockparentdsdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSClockTypeIndex")
     {
         cptpclockparentdsclocktypeindex = value;
+        cptpclockparentdsclocktypeindex.value_namespace = name_space;
+        cptpclockparentdsclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSInstanceIndex")
     {
         cptpclockparentdsinstanceindex = value;
+        cptpclockparentdsinstanceindex.value_namespace = name_space;
+        cptpclockparentdsinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSClockPhChRate")
     {
         cptpclockparentdsclockphchrate = value;
+        cptpclockparentdsclockphchrate.value_namespace = name_space;
+        cptpclockparentdsclockphchrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSGMClockIdentity")
     {
         cptpclockparentdsgmclockidentity = value;
+        cptpclockparentdsgmclockidentity.value_namespace = name_space;
+        cptpclockparentdsgmclockidentity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSGMClockPriority1")
     {
         cptpclockparentdsgmclockpriority1 = value;
+        cptpclockparentdsgmclockpriority1.value_namespace = name_space;
+        cptpclockparentdsgmclockpriority1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSGMClockPriority2")
     {
         cptpclockparentdsgmclockpriority2 = value;
+        cptpclockparentdsgmclockpriority2.value_namespace = name_space;
+        cptpclockparentdsgmclockpriority2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSGMClockQualityAccuracy")
     {
         cptpclockparentdsgmclockqualityaccuracy = value;
+        cptpclockparentdsgmclockqualityaccuracy.value_namespace = name_space;
+        cptpclockparentdsgmclockqualityaccuracy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSGMClockQualityClass")
     {
         cptpclockparentdsgmclockqualityclass = value;
+        cptpclockparentdsgmclockqualityclass.value_namespace = name_space;
+        cptpclockparentdsgmclockqualityclass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSGMClockQualityOffset")
     {
         cptpclockparentdsgmclockqualityoffset = value;
+        cptpclockparentdsgmclockqualityoffset.value_namespace = name_space;
+        cptpclockparentdsgmclockqualityoffset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSOffset")
     {
         cptpclockparentdsoffset = value;
+        cptpclockparentdsoffset.value_namespace = name_space;
+        cptpclockparentdsoffset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSParentPortIdentity")
     {
         cptpclockparentdsparentportidentity = value;
+        cptpclockparentdsparentportidentity.value_namespace = name_space;
+        cptpclockparentdsparentportidentity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockParentDSParentStats")
     {
         cptpclockparentdsparentstats = value;
+        cptpclockparentdsparentstats.value_namespace = name_space;
+        cptpclockparentdsparentstats.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockParentDSDomainIndex")
+    {
+        cptpclockparentdsdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSClockTypeIndex")
+    {
+        cptpclockparentdsclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSInstanceIndex")
+    {
+        cptpclockparentdsinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSClockPhChRate")
+    {
+        cptpclockparentdsclockphchrate.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSGMClockIdentity")
+    {
+        cptpclockparentdsgmclockidentity.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSGMClockPriority1")
+    {
+        cptpclockparentdsgmclockpriority1.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSGMClockPriority2")
+    {
+        cptpclockparentdsgmclockpriority2.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSGMClockQualityAccuracy")
+    {
+        cptpclockparentdsgmclockqualityaccuracy.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSGMClockQualityClass")
+    {
+        cptpclockparentdsgmclockqualityclass.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSGMClockQualityOffset")
+    {
+        cptpclockparentdsgmclockqualityoffset.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSOffset")
+    {
+        cptpclockparentdsoffset.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSParentPortIdentity")
+    {
+        cptpclockparentdsparentportidentity.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockParentDSParentStats")
+    {
+        cptpclockparentdsparentstats.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclockparentdstable::Cptpclockparentdsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockParentDSDomainIndex" || name == "cPtpClockParentDSClockTypeIndex" || name == "cPtpClockParentDSInstanceIndex" || name == "cPtpClockParentDSClockPhChRate" || name == "cPtpClockParentDSGMClockIdentity" || name == "cPtpClockParentDSGMClockPriority1" || name == "cPtpClockParentDSGMClockPriority2" || name == "cPtpClockParentDSGMClockQualityAccuracy" || name == "cPtpClockParentDSGMClockQualityClass" || name == "cPtpClockParentDSGMClockQualityOffset" || name == "cPtpClockParentDSOffset" || name == "cPtpClockParentDSParentPortIdentity" || name == "cPtpClockParentDSParentStats")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdstable()
@@ -1557,9 +1930,9 @@ CiscoPtpMib::Cptpclockdefaultdstable::~Cptpclockdefaultdstable()
 
 bool CiscoPtpMib::Cptpclockdefaultdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockdefaultdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockdefaultdsentry.size(); index++)
     {
-        if(cptpclockdefaultdsentry_[index]->has_data())
+        if(cptpclockdefaultdsentry[index]->has_data())
             return true;
     }
     return false;
@@ -1567,12 +1940,12 @@ bool CiscoPtpMib::Cptpclockdefaultdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockdefaultdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockdefaultdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockdefaultdsentry.size(); index++)
     {
-        if(cptpclockdefaultdsentry_[index]->has_operation())
+        if(cptpclockdefaultdsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockdefaultdstable::get_segment_path() const
@@ -1609,7 +1982,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockdefaultdstable::get_child_by_name(
 {
     if(child_yang_name == "cPtpClockDefaultDSEntry")
     {
-        for(auto const & c : cptpclockdefaultdsentry_)
+        for(auto const & c : cptpclockdefaultdsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1619,7 +1992,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockdefaultdstable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry>();
         c->parent = this;
-        cptpclockdefaultdsentry_.push_back(c);
+        cptpclockdefaultdsentry.push_back(c);
         return c;
     }
 
@@ -1629,7 +2002,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockdefaultdstable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockdefaultdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockdefaultdsentry_)
+    for (auto const & c : cptpclockdefaultdsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1637,8 +2010,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockdefaultdsta
     return children;
 }
 
-void CiscoPtpMib::Cptpclockdefaultdstable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockdefaultdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockdefaultdstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockdefaultdstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockDefaultDSEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::Cptpclockdefaultdsentry()
@@ -1679,18 +2063,18 @@ bool CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::has_data() c
 
 bool CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockdefaultdsdomainindex.operation)
-	|| is_set(cptpclockdefaultdsclocktypeindex.operation)
-	|| is_set(cptpclockdefaultdsinstanceindex.operation)
-	|| is_set(cptpclockdefaultdsclockidentity.operation)
-	|| is_set(cptpclockdefaultdspriority1.operation)
-	|| is_set(cptpclockdefaultdspriority2.operation)
-	|| is_set(cptpclockdefaultdsqualityaccuracy.operation)
-	|| is_set(cptpclockdefaultdsqualityclass.operation)
-	|| is_set(cptpclockdefaultdsqualityoffset.operation)
-	|| is_set(cptpclockdefaultdsslaveonly.operation)
-	|| is_set(cptpclockdefaultdstwostepflag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockdefaultdsdomainindex.yfilter)
+	|| ydk::is_set(cptpclockdefaultdsclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockdefaultdsinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockdefaultdsclockidentity.yfilter)
+	|| ydk::is_set(cptpclockdefaultdspriority1.yfilter)
+	|| ydk::is_set(cptpclockdefaultdspriority2.yfilter)
+	|| ydk::is_set(cptpclockdefaultdsqualityaccuracy.yfilter)
+	|| ydk::is_set(cptpclockdefaultdsqualityclass.yfilter)
+	|| ydk::is_set(cptpclockdefaultdsqualityoffset.yfilter)
+	|| ydk::is_set(cptpclockdefaultdsslaveonly.yfilter)
+	|| ydk::is_set(cptpclockdefaultdstwostepflag.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::get_segment_path() const
@@ -1716,17 +2100,17 @@ const EntityPath CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockdefaultdsdomainindex.is_set || is_set(cptpclockdefaultdsdomainindex.operation)) leaf_name_data.push_back(cptpclockdefaultdsdomainindex.get_name_leafdata());
-    if (cptpclockdefaultdsclocktypeindex.is_set || is_set(cptpclockdefaultdsclocktypeindex.operation)) leaf_name_data.push_back(cptpclockdefaultdsclocktypeindex.get_name_leafdata());
-    if (cptpclockdefaultdsinstanceindex.is_set || is_set(cptpclockdefaultdsinstanceindex.operation)) leaf_name_data.push_back(cptpclockdefaultdsinstanceindex.get_name_leafdata());
-    if (cptpclockdefaultdsclockidentity.is_set || is_set(cptpclockdefaultdsclockidentity.operation)) leaf_name_data.push_back(cptpclockdefaultdsclockidentity.get_name_leafdata());
-    if (cptpclockdefaultdspriority1.is_set || is_set(cptpclockdefaultdspriority1.operation)) leaf_name_data.push_back(cptpclockdefaultdspriority1.get_name_leafdata());
-    if (cptpclockdefaultdspriority2.is_set || is_set(cptpclockdefaultdspriority2.operation)) leaf_name_data.push_back(cptpclockdefaultdspriority2.get_name_leafdata());
-    if (cptpclockdefaultdsqualityaccuracy.is_set || is_set(cptpclockdefaultdsqualityaccuracy.operation)) leaf_name_data.push_back(cptpclockdefaultdsqualityaccuracy.get_name_leafdata());
-    if (cptpclockdefaultdsqualityclass.is_set || is_set(cptpclockdefaultdsqualityclass.operation)) leaf_name_data.push_back(cptpclockdefaultdsqualityclass.get_name_leafdata());
-    if (cptpclockdefaultdsqualityoffset.is_set || is_set(cptpclockdefaultdsqualityoffset.operation)) leaf_name_data.push_back(cptpclockdefaultdsqualityoffset.get_name_leafdata());
-    if (cptpclockdefaultdsslaveonly.is_set || is_set(cptpclockdefaultdsslaveonly.operation)) leaf_name_data.push_back(cptpclockdefaultdsslaveonly.get_name_leafdata());
-    if (cptpclockdefaultdstwostepflag.is_set || is_set(cptpclockdefaultdstwostepflag.operation)) leaf_name_data.push_back(cptpclockdefaultdstwostepflag.get_name_leafdata());
+    if (cptpclockdefaultdsdomainindex.is_set || is_set(cptpclockdefaultdsdomainindex.yfilter)) leaf_name_data.push_back(cptpclockdefaultdsdomainindex.get_name_leafdata());
+    if (cptpclockdefaultdsclocktypeindex.is_set || is_set(cptpclockdefaultdsclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclockdefaultdsclocktypeindex.get_name_leafdata());
+    if (cptpclockdefaultdsinstanceindex.is_set || is_set(cptpclockdefaultdsinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockdefaultdsinstanceindex.get_name_leafdata());
+    if (cptpclockdefaultdsclockidentity.is_set || is_set(cptpclockdefaultdsclockidentity.yfilter)) leaf_name_data.push_back(cptpclockdefaultdsclockidentity.get_name_leafdata());
+    if (cptpclockdefaultdspriority1.is_set || is_set(cptpclockdefaultdspriority1.yfilter)) leaf_name_data.push_back(cptpclockdefaultdspriority1.get_name_leafdata());
+    if (cptpclockdefaultdspriority2.is_set || is_set(cptpclockdefaultdspriority2.yfilter)) leaf_name_data.push_back(cptpclockdefaultdspriority2.get_name_leafdata());
+    if (cptpclockdefaultdsqualityaccuracy.is_set || is_set(cptpclockdefaultdsqualityaccuracy.yfilter)) leaf_name_data.push_back(cptpclockdefaultdsqualityaccuracy.get_name_leafdata());
+    if (cptpclockdefaultdsqualityclass.is_set || is_set(cptpclockdefaultdsqualityclass.yfilter)) leaf_name_data.push_back(cptpclockdefaultdsqualityclass.get_name_leafdata());
+    if (cptpclockdefaultdsqualityoffset.is_set || is_set(cptpclockdefaultdsqualityoffset.yfilter)) leaf_name_data.push_back(cptpclockdefaultdsqualityoffset.get_name_leafdata());
+    if (cptpclockdefaultdsslaveonly.is_set || is_set(cptpclockdefaultdsslaveonly.yfilter)) leaf_name_data.push_back(cptpclockdefaultdsslaveonly.get_name_leafdata());
+    if (cptpclockdefaultdstwostepflag.is_set || is_set(cptpclockdefaultdstwostepflag.yfilter)) leaf_name_data.push_back(cptpclockdefaultdstwostepflag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1745,52 +2129,129 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockdefaultdsta
     return children;
 }
 
-void CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockDefaultDSDomainIndex")
     {
         cptpclockdefaultdsdomainindex = value;
+        cptpclockdefaultdsdomainindex.value_namespace = name_space;
+        cptpclockdefaultdsdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSClockTypeIndex")
     {
         cptpclockdefaultdsclocktypeindex = value;
+        cptpclockdefaultdsclocktypeindex.value_namespace = name_space;
+        cptpclockdefaultdsclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSInstanceIndex")
     {
         cptpclockdefaultdsinstanceindex = value;
+        cptpclockdefaultdsinstanceindex.value_namespace = name_space;
+        cptpclockdefaultdsinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSClockIdentity")
     {
         cptpclockdefaultdsclockidentity = value;
+        cptpclockdefaultdsclockidentity.value_namespace = name_space;
+        cptpclockdefaultdsclockidentity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSPriority1")
     {
         cptpclockdefaultdspriority1 = value;
+        cptpclockdefaultdspriority1.value_namespace = name_space;
+        cptpclockdefaultdspriority1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSPriority2")
     {
         cptpclockdefaultdspriority2 = value;
+        cptpclockdefaultdspriority2.value_namespace = name_space;
+        cptpclockdefaultdspriority2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSQualityAccuracy")
     {
         cptpclockdefaultdsqualityaccuracy = value;
+        cptpclockdefaultdsqualityaccuracy.value_namespace = name_space;
+        cptpclockdefaultdsqualityaccuracy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSQualityClass")
     {
         cptpclockdefaultdsqualityclass = value;
+        cptpclockdefaultdsqualityclass.value_namespace = name_space;
+        cptpclockdefaultdsqualityclass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSQualityOffset")
     {
         cptpclockdefaultdsqualityoffset = value;
+        cptpclockdefaultdsqualityoffset.value_namespace = name_space;
+        cptpclockdefaultdsqualityoffset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSSlaveOnly")
     {
         cptpclockdefaultdsslaveonly = value;
+        cptpclockdefaultdsslaveonly.value_namespace = name_space;
+        cptpclockdefaultdsslaveonly.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockDefaultDSTwoStepFlag")
     {
         cptpclockdefaultdstwostepflag = value;
+        cptpclockdefaultdstwostepflag.value_namespace = name_space;
+        cptpclockdefaultdstwostepflag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockDefaultDSDomainIndex")
+    {
+        cptpclockdefaultdsdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSClockTypeIndex")
+    {
+        cptpclockdefaultdsclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSInstanceIndex")
+    {
+        cptpclockdefaultdsinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSClockIdentity")
+    {
+        cptpclockdefaultdsclockidentity.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSPriority1")
+    {
+        cptpclockdefaultdspriority1.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSPriority2")
+    {
+        cptpclockdefaultdspriority2.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSQualityAccuracy")
+    {
+        cptpclockdefaultdsqualityaccuracy.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSQualityClass")
+    {
+        cptpclockdefaultdsqualityclass.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSQualityOffset")
+    {
+        cptpclockdefaultdsqualityoffset.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSSlaveOnly")
+    {
+        cptpclockdefaultdsslaveonly.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockDefaultDSTwoStepFlag")
+    {
+        cptpclockdefaultdstwostepflag.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclockdefaultdstable::Cptpclockdefaultdsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockDefaultDSDomainIndex" || name == "cPtpClockDefaultDSClockTypeIndex" || name == "cPtpClockDefaultDSInstanceIndex" || name == "cPtpClockDefaultDSClockIdentity" || name == "cPtpClockDefaultDSPriority1" || name == "cPtpClockDefaultDSPriority2" || name == "cPtpClockDefaultDSQualityAccuracy" || name == "cPtpClockDefaultDSQualityClass" || name == "cPtpClockDefaultDSQualityOffset" || name == "cPtpClockDefaultDSSlaveOnly" || name == "cPtpClockDefaultDSTwoStepFlag")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningtable()
@@ -1804,9 +2265,9 @@ CiscoPtpMib::Cptpclockrunningtable::~Cptpclockrunningtable()
 
 bool CiscoPtpMib::Cptpclockrunningtable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockrunningentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockrunningentry.size(); index++)
     {
-        if(cptpclockrunningentry_[index]->has_data())
+        if(cptpclockrunningentry[index]->has_data())
             return true;
     }
     return false;
@@ -1814,12 +2275,12 @@ bool CiscoPtpMib::Cptpclockrunningtable::has_data() const
 
 bool CiscoPtpMib::Cptpclockrunningtable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockrunningentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockrunningentry.size(); index++)
     {
-        if(cptpclockrunningentry_[index]->has_operation())
+        if(cptpclockrunningentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockrunningtable::get_segment_path() const
@@ -1856,7 +2317,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockrunningtable::get_child_by_name(co
 {
     if(child_yang_name == "cPtpClockRunningEntry")
     {
-        for(auto const & c : cptpclockrunningentry_)
+        for(auto const & c : cptpclockrunningentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1866,7 +2327,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockrunningtable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry>();
         c->parent = this;
-        cptpclockrunningentry_.push_back(c);
+        cptpclockrunningentry.push_back(c);
         return c;
     }
 
@@ -1876,7 +2337,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockrunningtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockrunningtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockrunningentry_)
+    for (auto const & c : cptpclockrunningentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1884,8 +2345,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockrunningtabl
     return children;
 }
 
-void CiscoPtpMib::Cptpclockrunningtable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockrunningtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockrunningtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockrunningtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockRunningEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::Cptpclockrunningentry()
@@ -1916,13 +2388,13 @@ bool CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::has_data() const
 
 bool CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockrunningdomainindex.operation)
-	|| is_set(cptpclockrunningclocktypeindex.operation)
-	|| is_set(cptpclockrunninginstanceindex.operation)
-	|| is_set(cptpclockrunningpacketsreceived.operation)
-	|| is_set(cptpclockrunningpacketssent.operation)
-	|| is_set(cptpclockrunningstate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockrunningdomainindex.yfilter)
+	|| ydk::is_set(cptpclockrunningclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockrunninginstanceindex.yfilter)
+	|| ydk::is_set(cptpclockrunningpacketsreceived.yfilter)
+	|| ydk::is_set(cptpclockrunningpacketssent.yfilter)
+	|| ydk::is_set(cptpclockrunningstate.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::get_segment_path() const
@@ -1948,12 +2420,12 @@ const EntityPath CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockrunningdomainindex.is_set || is_set(cptpclockrunningdomainindex.operation)) leaf_name_data.push_back(cptpclockrunningdomainindex.get_name_leafdata());
-    if (cptpclockrunningclocktypeindex.is_set || is_set(cptpclockrunningclocktypeindex.operation)) leaf_name_data.push_back(cptpclockrunningclocktypeindex.get_name_leafdata());
-    if (cptpclockrunninginstanceindex.is_set || is_set(cptpclockrunninginstanceindex.operation)) leaf_name_data.push_back(cptpclockrunninginstanceindex.get_name_leafdata());
-    if (cptpclockrunningpacketsreceived.is_set || is_set(cptpclockrunningpacketsreceived.operation)) leaf_name_data.push_back(cptpclockrunningpacketsreceived.get_name_leafdata());
-    if (cptpclockrunningpacketssent.is_set || is_set(cptpclockrunningpacketssent.operation)) leaf_name_data.push_back(cptpclockrunningpacketssent.get_name_leafdata());
-    if (cptpclockrunningstate.is_set || is_set(cptpclockrunningstate.operation)) leaf_name_data.push_back(cptpclockrunningstate.get_name_leafdata());
+    if (cptpclockrunningdomainindex.is_set || is_set(cptpclockrunningdomainindex.yfilter)) leaf_name_data.push_back(cptpclockrunningdomainindex.get_name_leafdata());
+    if (cptpclockrunningclocktypeindex.is_set || is_set(cptpclockrunningclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclockrunningclocktypeindex.get_name_leafdata());
+    if (cptpclockrunninginstanceindex.is_set || is_set(cptpclockrunninginstanceindex.yfilter)) leaf_name_data.push_back(cptpclockrunninginstanceindex.get_name_leafdata());
+    if (cptpclockrunningpacketsreceived.is_set || is_set(cptpclockrunningpacketsreceived.yfilter)) leaf_name_data.push_back(cptpclockrunningpacketsreceived.get_name_leafdata());
+    if (cptpclockrunningpacketssent.is_set || is_set(cptpclockrunningpacketssent.yfilter)) leaf_name_data.push_back(cptpclockrunningpacketssent.get_name_leafdata());
+    if (cptpclockrunningstate.is_set || is_set(cptpclockrunningstate.yfilter)) leaf_name_data.push_back(cptpclockrunningstate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1972,32 +2444,79 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockrunningtabl
     return children;
 }
 
-void CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockRunningDomainIndex")
     {
         cptpclockrunningdomainindex = value;
+        cptpclockrunningdomainindex.value_namespace = name_space;
+        cptpclockrunningdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockRunningClockTypeIndex")
     {
         cptpclockrunningclocktypeindex = value;
+        cptpclockrunningclocktypeindex.value_namespace = name_space;
+        cptpclockrunningclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockRunningInstanceIndex")
     {
         cptpclockrunninginstanceindex = value;
+        cptpclockrunninginstanceindex.value_namespace = name_space;
+        cptpclockrunninginstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockRunningPacketsReceived")
     {
         cptpclockrunningpacketsreceived = value;
+        cptpclockrunningpacketsreceived.value_namespace = name_space;
+        cptpclockrunningpacketsreceived.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockRunningPacketsSent")
     {
         cptpclockrunningpacketssent = value;
+        cptpclockrunningpacketssent.value_namespace = name_space;
+        cptpclockrunningpacketssent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockRunningState")
     {
         cptpclockrunningstate = value;
+        cptpclockrunningstate.value_namespace = name_space;
+        cptpclockrunningstate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockRunningDomainIndex")
+    {
+        cptpclockrunningdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockRunningClockTypeIndex")
+    {
+        cptpclockrunningclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockRunningInstanceIndex")
+    {
+        cptpclockrunninginstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockRunningPacketsReceived")
+    {
+        cptpclockrunningpacketsreceived.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockRunningPacketsSent")
+    {
+        cptpclockrunningpacketssent.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockRunningState")
+    {
+        cptpclockrunningstate.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclockrunningtable::Cptpclockrunningentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockRunningDomainIndex" || name == "cPtpClockRunningClockTypeIndex" || name == "cPtpClockRunningInstanceIndex" || name == "cPtpClockRunningPacketsReceived" || name == "cPtpClockRunningPacketsSent" || name == "cPtpClockRunningState")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdstable()
@@ -2011,9 +2530,9 @@ CiscoPtpMib::Cptpclocktimepropertiesdstable::~Cptpclocktimepropertiesdstable()
 
 bool CiscoPtpMib::Cptpclocktimepropertiesdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry.size(); index++)
     {
-        if(cptpclocktimepropertiesdsentry_[index]->has_data())
+        if(cptpclocktimepropertiesdsentry[index]->has_data())
             return true;
     }
     return false;
@@ -2021,12 +2540,12 @@ bool CiscoPtpMib::Cptpclocktimepropertiesdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclocktimepropertiesdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclocktimepropertiesdsentry.size(); index++)
     {
-        if(cptpclocktimepropertiesdsentry_[index]->has_operation())
+        if(cptpclocktimepropertiesdsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclocktimepropertiesdstable::get_segment_path() const
@@ -2063,7 +2582,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktimepropertiesdstable::get_child_b
 {
     if(child_yang_name == "cPtpClockTimePropertiesDSEntry")
     {
-        for(auto const & c : cptpclocktimepropertiesdsentry_)
+        for(auto const & c : cptpclocktimepropertiesdsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2073,7 +2592,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktimepropertiesdstable::get_child_b
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry>();
         c->parent = this;
-        cptpclocktimepropertiesdsentry_.push_back(c);
+        cptpclocktimepropertiesdsentry.push_back(c);
         return c;
     }
 
@@ -2083,7 +2602,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktimepropertiesdstable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocktimepropertiesdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclocktimepropertiesdsentry_)
+    for (auto const & c : cptpclocktimepropertiesdsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2091,8 +2610,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocktimepropert
     return children;
 }
 
-void CiscoPtpMib::Cptpclocktimepropertiesdstable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclocktimepropertiesdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclocktimepropertiesdstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclocktimepropertiesdstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockTimePropertiesDSEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::Cptpclocktimepropertiesdsentry()
@@ -2133,18 +2663,18 @@ bool CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry
 
 bool CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclocktimepropertiesdsdomainindex.operation)
-	|| is_set(cptpclocktimepropertiesdsclocktypeindex.operation)
-	|| is_set(cptpclocktimepropertiesdsinstanceindex.operation)
-	|| is_set(cptpclocktimepropertiesdscurrentutcoffset.operation)
-	|| is_set(cptpclocktimepropertiesdscurrentutcoffsetvalid.operation)
-	|| is_set(cptpclocktimepropertiesdsfreqtraceable.operation)
-	|| is_set(cptpclocktimepropertiesdsleap59.operation)
-	|| is_set(cptpclocktimepropertiesdsleap61.operation)
-	|| is_set(cptpclocktimepropertiesdsptptimescale.operation)
-	|| is_set(cptpclocktimepropertiesdssource.operation)
-	|| is_set(cptpclocktimepropertiesdstimetraceable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdsdomainindex.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdsclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdsinstanceindex.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdscurrentutcoffset.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdscurrentutcoffsetvalid.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdsfreqtraceable.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdsleap59.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdsleap61.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdsptptimescale.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdssource.yfilter)
+	|| ydk::is_set(cptpclocktimepropertiesdstimetraceable.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::get_segment_path() const
@@ -2170,17 +2700,17 @@ const EntityPath CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimeprope
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclocktimepropertiesdsdomainindex.is_set || is_set(cptpclocktimepropertiesdsdomainindex.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdsdomainindex.get_name_leafdata());
-    if (cptpclocktimepropertiesdsclocktypeindex.is_set || is_set(cptpclocktimepropertiesdsclocktypeindex.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdsclocktypeindex.get_name_leafdata());
-    if (cptpclocktimepropertiesdsinstanceindex.is_set || is_set(cptpclocktimepropertiesdsinstanceindex.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdsinstanceindex.get_name_leafdata());
-    if (cptpclocktimepropertiesdscurrentutcoffset.is_set || is_set(cptpclocktimepropertiesdscurrentutcoffset.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdscurrentutcoffset.get_name_leafdata());
-    if (cptpclocktimepropertiesdscurrentutcoffsetvalid.is_set || is_set(cptpclocktimepropertiesdscurrentutcoffsetvalid.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdscurrentutcoffsetvalid.get_name_leafdata());
-    if (cptpclocktimepropertiesdsfreqtraceable.is_set || is_set(cptpclocktimepropertiesdsfreqtraceable.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdsfreqtraceable.get_name_leafdata());
-    if (cptpclocktimepropertiesdsleap59.is_set || is_set(cptpclocktimepropertiesdsleap59.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdsleap59.get_name_leafdata());
-    if (cptpclocktimepropertiesdsleap61.is_set || is_set(cptpclocktimepropertiesdsleap61.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdsleap61.get_name_leafdata());
-    if (cptpclocktimepropertiesdsptptimescale.is_set || is_set(cptpclocktimepropertiesdsptptimescale.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdsptptimescale.get_name_leafdata());
-    if (cptpclocktimepropertiesdssource.is_set || is_set(cptpclocktimepropertiesdssource.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdssource.get_name_leafdata());
-    if (cptpclocktimepropertiesdstimetraceable.is_set || is_set(cptpclocktimepropertiesdstimetraceable.operation)) leaf_name_data.push_back(cptpclocktimepropertiesdstimetraceable.get_name_leafdata());
+    if (cptpclocktimepropertiesdsdomainindex.is_set || is_set(cptpclocktimepropertiesdsdomainindex.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdsdomainindex.get_name_leafdata());
+    if (cptpclocktimepropertiesdsclocktypeindex.is_set || is_set(cptpclocktimepropertiesdsclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdsclocktypeindex.get_name_leafdata());
+    if (cptpclocktimepropertiesdsinstanceindex.is_set || is_set(cptpclocktimepropertiesdsinstanceindex.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdsinstanceindex.get_name_leafdata());
+    if (cptpclocktimepropertiesdscurrentutcoffset.is_set || is_set(cptpclocktimepropertiesdscurrentutcoffset.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdscurrentutcoffset.get_name_leafdata());
+    if (cptpclocktimepropertiesdscurrentutcoffsetvalid.is_set || is_set(cptpclocktimepropertiesdscurrentutcoffsetvalid.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdscurrentutcoffsetvalid.get_name_leafdata());
+    if (cptpclocktimepropertiesdsfreqtraceable.is_set || is_set(cptpclocktimepropertiesdsfreqtraceable.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdsfreqtraceable.get_name_leafdata());
+    if (cptpclocktimepropertiesdsleap59.is_set || is_set(cptpclocktimepropertiesdsleap59.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdsleap59.get_name_leafdata());
+    if (cptpclocktimepropertiesdsleap61.is_set || is_set(cptpclocktimepropertiesdsleap61.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdsleap61.get_name_leafdata());
+    if (cptpclocktimepropertiesdsptptimescale.is_set || is_set(cptpclocktimepropertiesdsptptimescale.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdsptptimescale.get_name_leafdata());
+    if (cptpclocktimepropertiesdssource.is_set || is_set(cptpclocktimepropertiesdssource.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdssource.get_name_leafdata());
+    if (cptpclocktimepropertiesdstimetraceable.is_set || is_set(cptpclocktimepropertiesdstimetraceable.yfilter)) leaf_name_data.push_back(cptpclocktimepropertiesdstimetraceable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2199,52 +2729,129 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocktimepropert
     return children;
 }
 
-void CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockTimePropertiesDSDomainIndex")
     {
         cptpclocktimepropertiesdsdomainindex = value;
+        cptpclocktimepropertiesdsdomainindex.value_namespace = name_space;
+        cptpclocktimepropertiesdsdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSClockTypeIndex")
     {
         cptpclocktimepropertiesdsclocktypeindex = value;
+        cptpclocktimepropertiesdsclocktypeindex.value_namespace = name_space;
+        cptpclocktimepropertiesdsclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSInstanceIndex")
     {
         cptpclocktimepropertiesdsinstanceindex = value;
+        cptpclocktimepropertiesdsinstanceindex.value_namespace = name_space;
+        cptpclocktimepropertiesdsinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSCurrentUTCOffset")
     {
         cptpclocktimepropertiesdscurrentutcoffset = value;
+        cptpclocktimepropertiesdscurrentutcoffset.value_namespace = name_space;
+        cptpclocktimepropertiesdscurrentutcoffset.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSCurrentUTCOffsetValid")
     {
         cptpclocktimepropertiesdscurrentutcoffsetvalid = value;
+        cptpclocktimepropertiesdscurrentutcoffsetvalid.value_namespace = name_space;
+        cptpclocktimepropertiesdscurrentutcoffsetvalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSFreqTraceable")
     {
         cptpclocktimepropertiesdsfreqtraceable = value;
+        cptpclocktimepropertiesdsfreqtraceable.value_namespace = name_space;
+        cptpclocktimepropertiesdsfreqtraceable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSLeap59")
     {
         cptpclocktimepropertiesdsleap59 = value;
+        cptpclocktimepropertiesdsleap59.value_namespace = name_space;
+        cptpclocktimepropertiesdsleap59.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSLeap61")
     {
         cptpclocktimepropertiesdsleap61 = value;
+        cptpclocktimepropertiesdsleap61.value_namespace = name_space;
+        cptpclocktimepropertiesdsleap61.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSPTPTimescale")
     {
         cptpclocktimepropertiesdsptptimescale = value;
+        cptpclocktimepropertiesdsptptimescale.value_namespace = name_space;
+        cptpclocktimepropertiesdsptptimescale.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSSource")
     {
         cptpclocktimepropertiesdssource = value;
+        cptpclocktimepropertiesdssource.value_namespace = name_space;
+        cptpclocktimepropertiesdssource.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTimePropertiesDSTimeTraceable")
     {
         cptpclocktimepropertiesdstimetraceable = value;
+        cptpclocktimepropertiesdstimetraceable.value_namespace = name_space;
+        cptpclocktimepropertiesdstimetraceable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockTimePropertiesDSDomainIndex")
+    {
+        cptpclocktimepropertiesdsdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSClockTypeIndex")
+    {
+        cptpclocktimepropertiesdsclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSInstanceIndex")
+    {
+        cptpclocktimepropertiesdsinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSCurrentUTCOffset")
+    {
+        cptpclocktimepropertiesdscurrentutcoffset.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSCurrentUTCOffsetValid")
+    {
+        cptpclocktimepropertiesdscurrentutcoffsetvalid.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSFreqTraceable")
+    {
+        cptpclocktimepropertiesdsfreqtraceable.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSLeap59")
+    {
+        cptpclocktimepropertiesdsleap59.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSLeap61")
+    {
+        cptpclocktimepropertiesdsleap61.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSPTPTimescale")
+    {
+        cptpclocktimepropertiesdsptptimescale.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSSource")
+    {
+        cptpclocktimepropertiesdssource.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTimePropertiesDSTimeTraceable")
+    {
+        cptpclocktimepropertiesdstimetraceable.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclocktimepropertiesdstable::Cptpclocktimepropertiesdsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockTimePropertiesDSDomainIndex" || name == "cPtpClockTimePropertiesDSClockTypeIndex" || name == "cPtpClockTimePropertiesDSInstanceIndex" || name == "cPtpClockTimePropertiesDSCurrentUTCOffset" || name == "cPtpClockTimePropertiesDSCurrentUTCOffsetValid" || name == "cPtpClockTimePropertiesDSFreqTraceable" || name == "cPtpClockTimePropertiesDSLeap59" || name == "cPtpClockTimePropertiesDSLeap61" || name == "cPtpClockTimePropertiesDSPTPTimescale" || name == "cPtpClockTimePropertiesDSSource" || name == "cPtpClockTimePropertiesDSTimeTraceable")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdstable()
@@ -2258,9 +2865,9 @@ CiscoPtpMib::Cptpclocktransdefaultdstable::~Cptpclocktransdefaultdstable()
 
 bool CiscoPtpMib::Cptpclocktransdefaultdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclocktransdefaultdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclocktransdefaultdsentry.size(); index++)
     {
-        if(cptpclocktransdefaultdsentry_[index]->has_data())
+        if(cptpclocktransdefaultdsentry[index]->has_data())
             return true;
     }
     return false;
@@ -2268,12 +2875,12 @@ bool CiscoPtpMib::Cptpclocktransdefaultdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclocktransdefaultdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclocktransdefaultdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclocktransdefaultdsentry.size(); index++)
     {
-        if(cptpclocktransdefaultdsentry_[index]->has_operation())
+        if(cptpclocktransdefaultdsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclocktransdefaultdstable::get_segment_path() const
@@ -2310,7 +2917,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktransdefaultdstable::get_child_by_
 {
     if(child_yang_name == "cPtpClockTransDefaultDSEntry")
     {
-        for(auto const & c : cptpclocktransdefaultdsentry_)
+        for(auto const & c : cptpclocktransdefaultdsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2320,7 +2927,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktransdefaultdstable::get_child_by_
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry>();
         c->parent = this;
-        cptpclocktransdefaultdsentry_.push_back(c);
+        cptpclocktransdefaultdsentry.push_back(c);
         return c;
     }
 
@@ -2330,7 +2937,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclocktransdefaultdstable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocktransdefaultdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclocktransdefaultdsentry_)
+    for (auto const & c : cptpclocktransdefaultdsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2338,8 +2945,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocktransdefaul
     return children;
 }
 
-void CiscoPtpMib::Cptpclocktransdefaultdstable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclocktransdefaultdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclocktransdefaultdstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclocktransdefaultdstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockTransDefaultDSEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::Cptpclocktransdefaultdsentry()
@@ -2370,13 +2988,13 @@ bool CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::ha
 
 bool CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclocktransdefaultdsdomainindex.operation)
-	|| is_set(cptpclocktransdefaultdsinstanceindex.operation)
-	|| is_set(cptpclocktransdefaultdsclockidentity.operation)
-	|| is_set(cptpclocktransdefaultdsdelay.operation)
-	|| is_set(cptpclocktransdefaultdsnumofports.operation)
-	|| is_set(cptpclocktransdefaultdsprimarydomain.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclocktransdefaultdsdomainindex.yfilter)
+	|| ydk::is_set(cptpclocktransdefaultdsinstanceindex.yfilter)
+	|| ydk::is_set(cptpclocktransdefaultdsclockidentity.yfilter)
+	|| ydk::is_set(cptpclocktransdefaultdsdelay.yfilter)
+	|| ydk::is_set(cptpclocktransdefaultdsnumofports.yfilter)
+	|| ydk::is_set(cptpclocktransdefaultdsprimarydomain.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::get_segment_path() const
@@ -2402,12 +3020,12 @@ const EntityPath CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaul
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclocktransdefaultdsdomainindex.is_set || is_set(cptpclocktransdefaultdsdomainindex.operation)) leaf_name_data.push_back(cptpclocktransdefaultdsdomainindex.get_name_leafdata());
-    if (cptpclocktransdefaultdsinstanceindex.is_set || is_set(cptpclocktransdefaultdsinstanceindex.operation)) leaf_name_data.push_back(cptpclocktransdefaultdsinstanceindex.get_name_leafdata());
-    if (cptpclocktransdefaultdsclockidentity.is_set || is_set(cptpclocktransdefaultdsclockidentity.operation)) leaf_name_data.push_back(cptpclocktransdefaultdsclockidentity.get_name_leafdata());
-    if (cptpclocktransdefaultdsdelay.is_set || is_set(cptpclocktransdefaultdsdelay.operation)) leaf_name_data.push_back(cptpclocktransdefaultdsdelay.get_name_leafdata());
-    if (cptpclocktransdefaultdsnumofports.is_set || is_set(cptpclocktransdefaultdsnumofports.operation)) leaf_name_data.push_back(cptpclocktransdefaultdsnumofports.get_name_leafdata());
-    if (cptpclocktransdefaultdsprimarydomain.is_set || is_set(cptpclocktransdefaultdsprimarydomain.operation)) leaf_name_data.push_back(cptpclocktransdefaultdsprimarydomain.get_name_leafdata());
+    if (cptpclocktransdefaultdsdomainindex.is_set || is_set(cptpclocktransdefaultdsdomainindex.yfilter)) leaf_name_data.push_back(cptpclocktransdefaultdsdomainindex.get_name_leafdata());
+    if (cptpclocktransdefaultdsinstanceindex.is_set || is_set(cptpclocktransdefaultdsinstanceindex.yfilter)) leaf_name_data.push_back(cptpclocktransdefaultdsinstanceindex.get_name_leafdata());
+    if (cptpclocktransdefaultdsclockidentity.is_set || is_set(cptpclocktransdefaultdsclockidentity.yfilter)) leaf_name_data.push_back(cptpclocktransdefaultdsclockidentity.get_name_leafdata());
+    if (cptpclocktransdefaultdsdelay.is_set || is_set(cptpclocktransdefaultdsdelay.yfilter)) leaf_name_data.push_back(cptpclocktransdefaultdsdelay.get_name_leafdata());
+    if (cptpclocktransdefaultdsnumofports.is_set || is_set(cptpclocktransdefaultdsnumofports.yfilter)) leaf_name_data.push_back(cptpclocktransdefaultdsnumofports.get_name_leafdata());
+    if (cptpclocktransdefaultdsprimarydomain.is_set || is_set(cptpclocktransdefaultdsprimarydomain.yfilter)) leaf_name_data.push_back(cptpclocktransdefaultdsprimarydomain.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2426,32 +3044,79 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclocktransdefaul
     return children;
 }
 
-void CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockTransDefaultDSDomainIndex")
     {
         cptpclocktransdefaultdsdomainindex = value;
+        cptpclocktransdefaultdsdomainindex.value_namespace = name_space;
+        cptpclocktransdefaultdsdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTransDefaultDSInstanceIndex")
     {
         cptpclocktransdefaultdsinstanceindex = value;
+        cptpclocktransdefaultdsinstanceindex.value_namespace = name_space;
+        cptpclocktransdefaultdsinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTransDefaultDSClockIdentity")
     {
         cptpclocktransdefaultdsclockidentity = value;
+        cptpclocktransdefaultdsclockidentity.value_namespace = name_space;
+        cptpclocktransdefaultdsclockidentity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTransDefaultDSDelay")
     {
         cptpclocktransdefaultdsdelay = value;
+        cptpclocktransdefaultdsdelay.value_namespace = name_space;
+        cptpclocktransdefaultdsdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTransDefaultDSNumOfPorts")
     {
         cptpclocktransdefaultdsnumofports = value;
+        cptpclocktransdefaultdsnumofports.value_namespace = name_space;
+        cptpclocktransdefaultdsnumofports.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockTransDefaultDSPrimaryDomain")
     {
         cptpclocktransdefaultdsprimarydomain = value;
+        cptpclocktransdefaultdsprimarydomain.value_namespace = name_space;
+        cptpclocktransdefaultdsprimarydomain.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockTransDefaultDSDomainIndex")
+    {
+        cptpclocktransdefaultdsdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTransDefaultDSInstanceIndex")
+    {
+        cptpclocktransdefaultdsinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTransDefaultDSClockIdentity")
+    {
+        cptpclocktransdefaultdsclockidentity.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTransDefaultDSDelay")
+    {
+        cptpclocktransdefaultdsdelay.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTransDefaultDSNumOfPorts")
+    {
+        cptpclocktransdefaultdsnumofports.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockTransDefaultDSPrimaryDomain")
+    {
+        cptpclocktransdefaultdsprimarydomain.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclocktransdefaultdstable::Cptpclocktransdefaultdsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockTransDefaultDSDomainIndex" || name == "cPtpClockTransDefaultDSInstanceIndex" || name == "cPtpClockTransDefaultDSClockIdentity" || name == "cPtpClockTransDefaultDSDelay" || name == "cPtpClockTransDefaultDSNumOfPorts" || name == "cPtpClockTransDefaultDSPrimaryDomain")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockporttable::Cptpclockporttable()
@@ -2465,9 +3130,9 @@ CiscoPtpMib::Cptpclockporttable::~Cptpclockporttable()
 
 bool CiscoPtpMib::Cptpclockporttable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockportentry.size(); index++)
     {
-        if(cptpclockportentry_[index]->has_data())
+        if(cptpclockportentry[index]->has_data())
             return true;
     }
     return false;
@@ -2475,12 +3140,12 @@ bool CiscoPtpMib::Cptpclockporttable::has_data() const
 
 bool CiscoPtpMib::Cptpclockporttable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockportentry.size(); index++)
     {
-        if(cptpclockportentry_[index]->has_operation())
+        if(cptpclockportentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockporttable::get_segment_path() const
@@ -2517,7 +3182,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttable::get_child_by_name(const
 {
     if(child_yang_name == "cPtpClockPortEntry")
     {
-        for(auto const & c : cptpclockportentry_)
+        for(auto const & c : cptpclockportentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2527,7 +3192,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockporttable::Cptpclockportentry>();
         c->parent = this;
-        cptpclockportentry_.push_back(c);
+        cptpclockportentry.push_back(c);
         return c;
     }
 
@@ -2537,7 +3202,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockportentry_)
+    for (auto const & c : cptpclockportentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2545,8 +3210,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockporttable::
     return children;
 }
 
-void CiscoPtpMib::Cptpclockporttable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockporttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockporttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::Cptpclockportentry()
@@ -2585,17 +3261,17 @@ bool CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::has_data() const
 
 bool CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockportdomainindex.operation)
-	|| is_set(cptpclockportclocktypeindex.operation)
-	|| is_set(cptpclockportclockinstanceindex.operation)
-	|| is_set(cptpclockporttableportnumberindex.operation)
-	|| is_set(cptpclockportcurrentpeeraddress.operation)
-	|| is_set(cptpclockportcurrentpeeraddresstype.operation)
-	|| is_set(cptpclockportname.operation)
-	|| is_set(cptpclockportnumofassociatedports.operation)
-	|| is_set(cptpclockportrole.operation)
-	|| is_set(cptpclockportsynconestep.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockportdomainindex.yfilter)
+	|| ydk::is_set(cptpclockportclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockportclockinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockporttableportnumberindex.yfilter)
+	|| ydk::is_set(cptpclockportcurrentpeeraddress.yfilter)
+	|| ydk::is_set(cptpclockportcurrentpeeraddresstype.yfilter)
+	|| ydk::is_set(cptpclockportname.yfilter)
+	|| ydk::is_set(cptpclockportnumofassociatedports.yfilter)
+	|| ydk::is_set(cptpclockportrole.yfilter)
+	|| ydk::is_set(cptpclockportsynconestep.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::get_segment_path() const
@@ -2621,16 +3297,16 @@ const EntityPath CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockportdomainindex.is_set || is_set(cptpclockportdomainindex.operation)) leaf_name_data.push_back(cptpclockportdomainindex.get_name_leafdata());
-    if (cptpclockportclocktypeindex.is_set || is_set(cptpclockportclocktypeindex.operation)) leaf_name_data.push_back(cptpclockportclocktypeindex.get_name_leafdata());
-    if (cptpclockportclockinstanceindex.is_set || is_set(cptpclockportclockinstanceindex.operation)) leaf_name_data.push_back(cptpclockportclockinstanceindex.get_name_leafdata());
-    if (cptpclockporttableportnumberindex.is_set || is_set(cptpclockporttableportnumberindex.operation)) leaf_name_data.push_back(cptpclockporttableportnumberindex.get_name_leafdata());
-    if (cptpclockportcurrentpeeraddress.is_set || is_set(cptpclockportcurrentpeeraddress.operation)) leaf_name_data.push_back(cptpclockportcurrentpeeraddress.get_name_leafdata());
-    if (cptpclockportcurrentpeeraddresstype.is_set || is_set(cptpclockportcurrentpeeraddresstype.operation)) leaf_name_data.push_back(cptpclockportcurrentpeeraddresstype.get_name_leafdata());
-    if (cptpclockportname.is_set || is_set(cptpclockportname.operation)) leaf_name_data.push_back(cptpclockportname.get_name_leafdata());
-    if (cptpclockportnumofassociatedports.is_set || is_set(cptpclockportnumofassociatedports.operation)) leaf_name_data.push_back(cptpclockportnumofassociatedports.get_name_leafdata());
-    if (cptpclockportrole.is_set || is_set(cptpclockportrole.operation)) leaf_name_data.push_back(cptpclockportrole.get_name_leafdata());
-    if (cptpclockportsynconestep.is_set || is_set(cptpclockportsynconestep.operation)) leaf_name_data.push_back(cptpclockportsynconestep.get_name_leafdata());
+    if (cptpclockportdomainindex.is_set || is_set(cptpclockportdomainindex.yfilter)) leaf_name_data.push_back(cptpclockportdomainindex.get_name_leafdata());
+    if (cptpclockportclocktypeindex.is_set || is_set(cptpclockportclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclockportclocktypeindex.get_name_leafdata());
+    if (cptpclockportclockinstanceindex.is_set || is_set(cptpclockportclockinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockportclockinstanceindex.get_name_leafdata());
+    if (cptpclockporttableportnumberindex.is_set || is_set(cptpclockporttableportnumberindex.yfilter)) leaf_name_data.push_back(cptpclockporttableportnumberindex.get_name_leafdata());
+    if (cptpclockportcurrentpeeraddress.is_set || is_set(cptpclockportcurrentpeeraddress.yfilter)) leaf_name_data.push_back(cptpclockportcurrentpeeraddress.get_name_leafdata());
+    if (cptpclockportcurrentpeeraddresstype.is_set || is_set(cptpclockportcurrentpeeraddresstype.yfilter)) leaf_name_data.push_back(cptpclockportcurrentpeeraddresstype.get_name_leafdata());
+    if (cptpclockportname.is_set || is_set(cptpclockportname.yfilter)) leaf_name_data.push_back(cptpclockportname.get_name_leafdata());
+    if (cptpclockportnumofassociatedports.is_set || is_set(cptpclockportnumofassociatedports.yfilter)) leaf_name_data.push_back(cptpclockportnumofassociatedports.get_name_leafdata());
+    if (cptpclockportrole.is_set || is_set(cptpclockportrole.yfilter)) leaf_name_data.push_back(cptpclockportrole.get_name_leafdata());
+    if (cptpclockportsynconestep.is_set || is_set(cptpclockportsynconestep.yfilter)) leaf_name_data.push_back(cptpclockportsynconestep.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2649,48 +3325,119 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockporttable::
     return children;
 }
 
-void CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortDomainIndex")
     {
         cptpclockportdomainindex = value;
+        cptpclockportdomainindex.value_namespace = name_space;
+        cptpclockportdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortClockTypeIndex")
     {
         cptpclockportclocktypeindex = value;
+        cptpclockportclocktypeindex.value_namespace = name_space;
+        cptpclockportclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortClockInstanceIndex")
     {
         cptpclockportclockinstanceindex = value;
+        cptpclockportclockinstanceindex.value_namespace = name_space;
+        cptpclockportclockinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortTablePortNumberIndex")
     {
         cptpclockporttableportnumberindex = value;
+        cptpclockporttableportnumberindex.value_namespace = name_space;
+        cptpclockporttableportnumberindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortCurrentPeerAddress")
     {
         cptpclockportcurrentpeeraddress = value;
+        cptpclockportcurrentpeeraddress.value_namespace = name_space;
+        cptpclockportcurrentpeeraddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortCurrentPeerAddressType")
     {
         cptpclockportcurrentpeeraddresstype = value;
+        cptpclockportcurrentpeeraddresstype.value_namespace = name_space;
+        cptpclockportcurrentpeeraddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortName")
     {
         cptpclockportname = value;
+        cptpclockportname.value_namespace = name_space;
+        cptpclockportname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortNumOfAssociatedPorts")
     {
         cptpclockportnumofassociatedports = value;
+        cptpclockportnumofassociatedports.value_namespace = name_space;
+        cptpclockportnumofassociatedports.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRole")
     {
         cptpclockportrole = value;
+        cptpclockportrole.value_namespace = name_space;
+        cptpclockportrole.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortSyncOneStep")
     {
         cptpclockportsynconestep = value;
+        cptpclockportsynconestep.value_namespace = name_space;
+        cptpclockportsynconestep.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockPortDomainIndex")
+    {
+        cptpclockportdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortClockTypeIndex")
+    {
+        cptpclockportclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortClockInstanceIndex")
+    {
+        cptpclockportclockinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortTablePortNumberIndex")
+    {
+        cptpclockporttableportnumberindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortCurrentPeerAddress")
+    {
+        cptpclockportcurrentpeeraddress.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortCurrentPeerAddressType")
+    {
+        cptpclockportcurrentpeeraddresstype.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortName")
+    {
+        cptpclockportname.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortNumOfAssociatedPorts")
+    {
+        cptpclockportnumofassociatedports.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRole")
+    {
+        cptpclockportrole.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortSyncOneStep")
+    {
+        cptpclockportsynconestep.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclockporttable::Cptpclockportentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortDomainIndex" || name == "cPtpClockPortClockTypeIndex" || name == "cPtpClockPortClockInstanceIndex" || name == "cPtpClockPortTablePortNumberIndex" || name == "cPtpClockPortCurrentPeerAddress" || name == "cPtpClockPortCurrentPeerAddressType" || name == "cPtpClockPortName" || name == "cPtpClockPortNumOfAssociatedPorts" || name == "cPtpClockPortRole" || name == "cPtpClockPortSyncOneStep")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockportdstable::Cptpclockportdstable()
@@ -2704,9 +3451,9 @@ CiscoPtpMib::Cptpclockportdstable::~Cptpclockportdstable()
 
 bool CiscoPtpMib::Cptpclockportdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockportdsentry.size(); index++)
     {
-        if(cptpclockportdsentry_[index]->has_data())
+        if(cptpclockportdsentry[index]->has_data())
             return true;
     }
     return false;
@@ -2714,12 +3461,12 @@ bool CiscoPtpMib::Cptpclockportdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockportdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockportdsentry.size(); index++)
     {
-        if(cptpclockportdsentry_[index]->has_operation())
+        if(cptpclockportdsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockportdstable::get_segment_path() const
@@ -2756,7 +3503,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportdstable::get_child_by_name(con
 {
     if(child_yang_name == "cPtpClockPortDSEntry")
     {
-        for(auto const & c : cptpclockportdsentry_)
+        for(auto const & c : cptpclockportdsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2766,7 +3513,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportdstable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry>();
         c->parent = this;
-        cptpclockportdsentry_.push_back(c);
+        cptpclockportdsentry.push_back(c);
         return c;
     }
 
@@ -2776,7 +3523,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportdstable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockportdsentry_)
+    for (auto const & c : cptpclockportdsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2784,8 +3531,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportdstable
     return children;
 }
 
-void CiscoPtpMib::Cptpclockportdstable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockportdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockportdstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockportdstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortDSEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::Cptpclockportdsentry()
@@ -2834,22 +3592,22 @@ bool CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::has_data() const
 
 bool CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockportdsdomainindex.operation)
-	|| is_set(cptpclockportdsclocktypeindex.operation)
-	|| is_set(cptpclockportdsclockinstanceindex.operation)
-	|| is_set(cptpclockportdsportnumberindex.operation)
-	|| is_set(cptpclockportdsannouncementinterval.operation)
-	|| is_set(cptpclockportdsannouncercttimeout.operation)
-	|| is_set(cptpclockportdsdelaymech.operation)
-	|| is_set(cptpclockportdsgrantduration.operation)
-	|| is_set(cptpclockportdsmindelayreqinterval.operation)
-	|| is_set(cptpclockportdsname.operation)
-	|| is_set(cptpclockportdspeerdelayreqinterval.operation)
-	|| is_set(cptpclockportdspeermeanpathdelay.operation)
-	|| is_set(cptpclockportdsportidentity.operation)
-	|| is_set(cptpclockportdsptpversion.operation)
-	|| is_set(cptpclockportdssyncinterval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockportdsdomainindex.yfilter)
+	|| ydk::is_set(cptpclockportdsclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockportdsclockinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockportdsportnumberindex.yfilter)
+	|| ydk::is_set(cptpclockportdsannouncementinterval.yfilter)
+	|| ydk::is_set(cptpclockportdsannouncercttimeout.yfilter)
+	|| ydk::is_set(cptpclockportdsdelaymech.yfilter)
+	|| ydk::is_set(cptpclockportdsgrantduration.yfilter)
+	|| ydk::is_set(cptpclockportdsmindelayreqinterval.yfilter)
+	|| ydk::is_set(cptpclockportdsname.yfilter)
+	|| ydk::is_set(cptpclockportdspeerdelayreqinterval.yfilter)
+	|| ydk::is_set(cptpclockportdspeermeanpathdelay.yfilter)
+	|| ydk::is_set(cptpclockportdsportidentity.yfilter)
+	|| ydk::is_set(cptpclockportdsptpversion.yfilter)
+	|| ydk::is_set(cptpclockportdssyncinterval.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::get_segment_path() const
@@ -2875,21 +3633,21 @@ const EntityPath CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockportdsdomainindex.is_set || is_set(cptpclockportdsdomainindex.operation)) leaf_name_data.push_back(cptpclockportdsdomainindex.get_name_leafdata());
-    if (cptpclockportdsclocktypeindex.is_set || is_set(cptpclockportdsclocktypeindex.operation)) leaf_name_data.push_back(cptpclockportdsclocktypeindex.get_name_leafdata());
-    if (cptpclockportdsclockinstanceindex.is_set || is_set(cptpclockportdsclockinstanceindex.operation)) leaf_name_data.push_back(cptpclockportdsclockinstanceindex.get_name_leafdata());
-    if (cptpclockportdsportnumberindex.is_set || is_set(cptpclockportdsportnumberindex.operation)) leaf_name_data.push_back(cptpclockportdsportnumberindex.get_name_leafdata());
-    if (cptpclockportdsannouncementinterval.is_set || is_set(cptpclockportdsannouncementinterval.operation)) leaf_name_data.push_back(cptpclockportdsannouncementinterval.get_name_leafdata());
-    if (cptpclockportdsannouncercttimeout.is_set || is_set(cptpclockportdsannouncercttimeout.operation)) leaf_name_data.push_back(cptpclockportdsannouncercttimeout.get_name_leafdata());
-    if (cptpclockportdsdelaymech.is_set || is_set(cptpclockportdsdelaymech.operation)) leaf_name_data.push_back(cptpclockportdsdelaymech.get_name_leafdata());
-    if (cptpclockportdsgrantduration.is_set || is_set(cptpclockportdsgrantduration.operation)) leaf_name_data.push_back(cptpclockportdsgrantduration.get_name_leafdata());
-    if (cptpclockportdsmindelayreqinterval.is_set || is_set(cptpclockportdsmindelayreqinterval.operation)) leaf_name_data.push_back(cptpclockportdsmindelayreqinterval.get_name_leafdata());
-    if (cptpclockportdsname.is_set || is_set(cptpclockportdsname.operation)) leaf_name_data.push_back(cptpclockportdsname.get_name_leafdata());
-    if (cptpclockportdspeerdelayreqinterval.is_set || is_set(cptpclockportdspeerdelayreqinterval.operation)) leaf_name_data.push_back(cptpclockportdspeerdelayreqinterval.get_name_leafdata());
-    if (cptpclockportdspeermeanpathdelay.is_set || is_set(cptpclockportdspeermeanpathdelay.operation)) leaf_name_data.push_back(cptpclockportdspeermeanpathdelay.get_name_leafdata());
-    if (cptpclockportdsportidentity.is_set || is_set(cptpclockportdsportidentity.operation)) leaf_name_data.push_back(cptpclockportdsportidentity.get_name_leafdata());
-    if (cptpclockportdsptpversion.is_set || is_set(cptpclockportdsptpversion.operation)) leaf_name_data.push_back(cptpclockportdsptpversion.get_name_leafdata());
-    if (cptpclockportdssyncinterval.is_set || is_set(cptpclockportdssyncinterval.operation)) leaf_name_data.push_back(cptpclockportdssyncinterval.get_name_leafdata());
+    if (cptpclockportdsdomainindex.is_set || is_set(cptpclockportdsdomainindex.yfilter)) leaf_name_data.push_back(cptpclockportdsdomainindex.get_name_leafdata());
+    if (cptpclockportdsclocktypeindex.is_set || is_set(cptpclockportdsclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclockportdsclocktypeindex.get_name_leafdata());
+    if (cptpclockportdsclockinstanceindex.is_set || is_set(cptpclockportdsclockinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockportdsclockinstanceindex.get_name_leafdata());
+    if (cptpclockportdsportnumberindex.is_set || is_set(cptpclockportdsportnumberindex.yfilter)) leaf_name_data.push_back(cptpclockportdsportnumberindex.get_name_leafdata());
+    if (cptpclockportdsannouncementinterval.is_set || is_set(cptpclockportdsannouncementinterval.yfilter)) leaf_name_data.push_back(cptpclockportdsannouncementinterval.get_name_leafdata());
+    if (cptpclockportdsannouncercttimeout.is_set || is_set(cptpclockportdsannouncercttimeout.yfilter)) leaf_name_data.push_back(cptpclockportdsannouncercttimeout.get_name_leafdata());
+    if (cptpclockportdsdelaymech.is_set || is_set(cptpclockportdsdelaymech.yfilter)) leaf_name_data.push_back(cptpclockportdsdelaymech.get_name_leafdata());
+    if (cptpclockportdsgrantduration.is_set || is_set(cptpclockportdsgrantduration.yfilter)) leaf_name_data.push_back(cptpclockportdsgrantduration.get_name_leafdata());
+    if (cptpclockportdsmindelayreqinterval.is_set || is_set(cptpclockportdsmindelayreqinterval.yfilter)) leaf_name_data.push_back(cptpclockportdsmindelayreqinterval.get_name_leafdata());
+    if (cptpclockportdsname.is_set || is_set(cptpclockportdsname.yfilter)) leaf_name_data.push_back(cptpclockportdsname.get_name_leafdata());
+    if (cptpclockportdspeerdelayreqinterval.is_set || is_set(cptpclockportdspeerdelayreqinterval.yfilter)) leaf_name_data.push_back(cptpclockportdspeerdelayreqinterval.get_name_leafdata());
+    if (cptpclockportdspeermeanpathdelay.is_set || is_set(cptpclockportdspeermeanpathdelay.yfilter)) leaf_name_data.push_back(cptpclockportdspeermeanpathdelay.get_name_leafdata());
+    if (cptpclockportdsportidentity.is_set || is_set(cptpclockportdsportidentity.yfilter)) leaf_name_data.push_back(cptpclockportdsportidentity.get_name_leafdata());
+    if (cptpclockportdsptpversion.is_set || is_set(cptpclockportdsptpversion.yfilter)) leaf_name_data.push_back(cptpclockportdsptpversion.get_name_leafdata());
+    if (cptpclockportdssyncinterval.is_set || is_set(cptpclockportdssyncinterval.yfilter)) leaf_name_data.push_back(cptpclockportdssyncinterval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2908,68 +3666,169 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportdstable
     return children;
 }
 
-void CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortDSDomainIndex")
     {
         cptpclockportdsdomainindex = value;
+        cptpclockportdsdomainindex.value_namespace = name_space;
+        cptpclockportdsdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSClockTypeIndex")
     {
         cptpclockportdsclocktypeindex = value;
+        cptpclockportdsclocktypeindex.value_namespace = name_space;
+        cptpclockportdsclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSClockInstanceIndex")
     {
         cptpclockportdsclockinstanceindex = value;
+        cptpclockportdsclockinstanceindex.value_namespace = name_space;
+        cptpclockportdsclockinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSPortNumberIndex")
     {
         cptpclockportdsportnumberindex = value;
+        cptpclockportdsportnumberindex.value_namespace = name_space;
+        cptpclockportdsportnumberindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSAnnouncementInterval")
     {
         cptpclockportdsannouncementinterval = value;
+        cptpclockportdsannouncementinterval.value_namespace = name_space;
+        cptpclockportdsannouncementinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSAnnounceRctTimeout")
     {
         cptpclockportdsannouncercttimeout = value;
+        cptpclockportdsannouncercttimeout.value_namespace = name_space;
+        cptpclockportdsannouncercttimeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSDelayMech")
     {
         cptpclockportdsdelaymech = value;
+        cptpclockportdsdelaymech.value_namespace = name_space;
+        cptpclockportdsdelaymech.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSGrantDuration")
     {
         cptpclockportdsgrantduration = value;
+        cptpclockportdsgrantduration.value_namespace = name_space;
+        cptpclockportdsgrantduration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSMinDelayReqInterval")
     {
         cptpclockportdsmindelayreqinterval = value;
+        cptpclockportdsmindelayreqinterval.value_namespace = name_space;
+        cptpclockportdsmindelayreqinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSName")
     {
         cptpclockportdsname = value;
+        cptpclockportdsname.value_namespace = name_space;
+        cptpclockportdsname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSPeerDelayReqInterval")
     {
         cptpclockportdspeerdelayreqinterval = value;
+        cptpclockportdspeerdelayreqinterval.value_namespace = name_space;
+        cptpclockportdspeerdelayreqinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSPeerMeanPathDelay")
     {
         cptpclockportdspeermeanpathdelay = value;
+        cptpclockportdspeermeanpathdelay.value_namespace = name_space;
+        cptpclockportdspeermeanpathdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSPortIdentity")
     {
         cptpclockportdsportidentity = value;
+        cptpclockportdsportidentity.value_namespace = name_space;
+        cptpclockportdsportidentity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSPTPVersion")
     {
         cptpclockportdsptpversion = value;
+        cptpclockportdsptpversion.value_namespace = name_space;
+        cptpclockportdsptpversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortDSSyncInterval")
     {
         cptpclockportdssyncinterval = value;
+        cptpclockportdssyncinterval.value_namespace = name_space;
+        cptpclockportdssyncinterval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockPortDSDomainIndex")
+    {
+        cptpclockportdsdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSClockTypeIndex")
+    {
+        cptpclockportdsclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSClockInstanceIndex")
+    {
+        cptpclockportdsclockinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSPortNumberIndex")
+    {
+        cptpclockportdsportnumberindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSAnnouncementInterval")
+    {
+        cptpclockportdsannouncementinterval.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSAnnounceRctTimeout")
+    {
+        cptpclockportdsannouncercttimeout.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSDelayMech")
+    {
+        cptpclockportdsdelaymech.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSGrantDuration")
+    {
+        cptpclockportdsgrantduration.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSMinDelayReqInterval")
+    {
+        cptpclockportdsmindelayreqinterval.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSName")
+    {
+        cptpclockportdsname.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSPeerDelayReqInterval")
+    {
+        cptpclockportdspeerdelayreqinterval.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSPeerMeanPathDelay")
+    {
+        cptpclockportdspeermeanpathdelay.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSPortIdentity")
+    {
+        cptpclockportdsportidentity.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSPTPVersion")
+    {
+        cptpclockportdsptpversion.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortDSSyncInterval")
+    {
+        cptpclockportdssyncinterval.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclockportdstable::Cptpclockportdsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortDSDomainIndex" || name == "cPtpClockPortDSClockTypeIndex" || name == "cPtpClockPortDSClockInstanceIndex" || name == "cPtpClockPortDSPortNumberIndex" || name == "cPtpClockPortDSAnnouncementInterval" || name == "cPtpClockPortDSAnnounceRctTimeout" || name == "cPtpClockPortDSDelayMech" || name == "cPtpClockPortDSGrantDuration" || name == "cPtpClockPortDSMinDelayReqInterval" || name == "cPtpClockPortDSName" || name == "cPtpClockPortDSPeerDelayReqInterval" || name == "cPtpClockPortDSPeerMeanPathDelay" || name == "cPtpClockPortDSPortIdentity" || name == "cPtpClockPortDSPTPVersion" || name == "cPtpClockPortDSSyncInterval")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningtable()
@@ -2983,9 +3842,9 @@ CiscoPtpMib::Cptpclockportrunningtable::~Cptpclockportrunningtable()
 
 bool CiscoPtpMib::Cptpclockportrunningtable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportrunningentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockportrunningentry.size(); index++)
     {
-        if(cptpclockportrunningentry_[index]->has_data())
+        if(cptpclockportrunningentry[index]->has_data())
             return true;
     }
     return false;
@@ -2993,12 +3852,12 @@ bool CiscoPtpMib::Cptpclockportrunningtable::has_data() const
 
 bool CiscoPtpMib::Cptpclockportrunningtable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportrunningentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockportrunningentry.size(); index++)
     {
-        if(cptpclockportrunningentry_[index]->has_operation())
+        if(cptpclockportrunningentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockportrunningtable::get_segment_path() const
@@ -3035,7 +3894,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportrunningtable::get_child_by_nam
 {
     if(child_yang_name == "cPtpClockPortRunningEntry")
     {
-        for(auto const & c : cptpclockportrunningentry_)
+        for(auto const & c : cptpclockportrunningentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3045,7 +3904,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportrunningtable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry>();
         c->parent = this;
-        cptpclockportrunningentry_.push_back(c);
+        cptpclockportrunningentry.push_back(c);
         return c;
     }
 
@@ -3055,7 +3914,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportrunningtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportrunningtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockportrunningentry_)
+    for (auto const & c : cptpclockportrunningentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3063,8 +3922,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportrunning
     return children;
 }
 
-void CiscoPtpMib::Cptpclockportrunningtable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockportrunningtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockportrunningtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockportrunningtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortRunningEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry::Cptpclockportrunningentry()
@@ -3111,21 +3981,21 @@ bool CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry::has_data
 
 bool CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockportrunningdomainindex.operation)
-	|| is_set(cptpclockportrunningclocktypeindex.operation)
-	|| is_set(cptpclockportrunningclockinstanceindex.operation)
-	|| is_set(cptpclockportrunningportnumberindex.operation)
-	|| is_set(cptpclockportrunningencapsulationtype.operation)
-	|| is_set(cptpclockportrunninginterfaceindex.operation)
-	|| is_set(cptpclockportrunningipversion.operation)
-	|| is_set(cptpclockportrunningname.operation)
-	|| is_set(cptpclockportrunningpacketsreceived.operation)
-	|| is_set(cptpclockportrunningpacketssent.operation)
-	|| is_set(cptpclockportrunningrole.operation)
-	|| is_set(cptpclockportrunningrxmode.operation)
-	|| is_set(cptpclockportrunningstate.operation)
-	|| is_set(cptpclockportrunningtxmode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockportrunningdomainindex.yfilter)
+	|| ydk::is_set(cptpclockportrunningclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockportrunningclockinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockportrunningportnumberindex.yfilter)
+	|| ydk::is_set(cptpclockportrunningencapsulationtype.yfilter)
+	|| ydk::is_set(cptpclockportrunninginterfaceindex.yfilter)
+	|| ydk::is_set(cptpclockportrunningipversion.yfilter)
+	|| ydk::is_set(cptpclockportrunningname.yfilter)
+	|| ydk::is_set(cptpclockportrunningpacketsreceived.yfilter)
+	|| ydk::is_set(cptpclockportrunningpacketssent.yfilter)
+	|| ydk::is_set(cptpclockportrunningrole.yfilter)
+	|| ydk::is_set(cptpclockportrunningrxmode.yfilter)
+	|| ydk::is_set(cptpclockportrunningstate.yfilter)
+	|| ydk::is_set(cptpclockportrunningtxmode.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry::get_segment_path() const
@@ -3151,20 +4021,20 @@ const EntityPath CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockportrunningdomainindex.is_set || is_set(cptpclockportrunningdomainindex.operation)) leaf_name_data.push_back(cptpclockportrunningdomainindex.get_name_leafdata());
-    if (cptpclockportrunningclocktypeindex.is_set || is_set(cptpclockportrunningclocktypeindex.operation)) leaf_name_data.push_back(cptpclockportrunningclocktypeindex.get_name_leafdata());
-    if (cptpclockportrunningclockinstanceindex.is_set || is_set(cptpclockportrunningclockinstanceindex.operation)) leaf_name_data.push_back(cptpclockportrunningclockinstanceindex.get_name_leafdata());
-    if (cptpclockportrunningportnumberindex.is_set || is_set(cptpclockportrunningportnumberindex.operation)) leaf_name_data.push_back(cptpclockportrunningportnumberindex.get_name_leafdata());
-    if (cptpclockportrunningencapsulationtype.is_set || is_set(cptpclockportrunningencapsulationtype.operation)) leaf_name_data.push_back(cptpclockportrunningencapsulationtype.get_name_leafdata());
-    if (cptpclockportrunninginterfaceindex.is_set || is_set(cptpclockportrunninginterfaceindex.operation)) leaf_name_data.push_back(cptpclockportrunninginterfaceindex.get_name_leafdata());
-    if (cptpclockportrunningipversion.is_set || is_set(cptpclockportrunningipversion.operation)) leaf_name_data.push_back(cptpclockportrunningipversion.get_name_leafdata());
-    if (cptpclockportrunningname.is_set || is_set(cptpclockportrunningname.operation)) leaf_name_data.push_back(cptpclockportrunningname.get_name_leafdata());
-    if (cptpclockportrunningpacketsreceived.is_set || is_set(cptpclockportrunningpacketsreceived.operation)) leaf_name_data.push_back(cptpclockportrunningpacketsreceived.get_name_leafdata());
-    if (cptpclockportrunningpacketssent.is_set || is_set(cptpclockportrunningpacketssent.operation)) leaf_name_data.push_back(cptpclockportrunningpacketssent.get_name_leafdata());
-    if (cptpclockportrunningrole.is_set || is_set(cptpclockportrunningrole.operation)) leaf_name_data.push_back(cptpclockportrunningrole.get_name_leafdata());
-    if (cptpclockportrunningrxmode.is_set || is_set(cptpclockportrunningrxmode.operation)) leaf_name_data.push_back(cptpclockportrunningrxmode.get_name_leafdata());
-    if (cptpclockportrunningstate.is_set || is_set(cptpclockportrunningstate.operation)) leaf_name_data.push_back(cptpclockportrunningstate.get_name_leafdata());
-    if (cptpclockportrunningtxmode.is_set || is_set(cptpclockportrunningtxmode.operation)) leaf_name_data.push_back(cptpclockportrunningtxmode.get_name_leafdata());
+    if (cptpclockportrunningdomainindex.is_set || is_set(cptpclockportrunningdomainindex.yfilter)) leaf_name_data.push_back(cptpclockportrunningdomainindex.get_name_leafdata());
+    if (cptpclockportrunningclocktypeindex.is_set || is_set(cptpclockportrunningclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclockportrunningclocktypeindex.get_name_leafdata());
+    if (cptpclockportrunningclockinstanceindex.is_set || is_set(cptpclockportrunningclockinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockportrunningclockinstanceindex.get_name_leafdata());
+    if (cptpclockportrunningportnumberindex.is_set || is_set(cptpclockportrunningportnumberindex.yfilter)) leaf_name_data.push_back(cptpclockportrunningportnumberindex.get_name_leafdata());
+    if (cptpclockportrunningencapsulationtype.is_set || is_set(cptpclockportrunningencapsulationtype.yfilter)) leaf_name_data.push_back(cptpclockportrunningencapsulationtype.get_name_leafdata());
+    if (cptpclockportrunninginterfaceindex.is_set || is_set(cptpclockportrunninginterfaceindex.yfilter)) leaf_name_data.push_back(cptpclockportrunninginterfaceindex.get_name_leafdata());
+    if (cptpclockportrunningipversion.is_set || is_set(cptpclockportrunningipversion.yfilter)) leaf_name_data.push_back(cptpclockportrunningipversion.get_name_leafdata());
+    if (cptpclockportrunningname.is_set || is_set(cptpclockportrunningname.yfilter)) leaf_name_data.push_back(cptpclockportrunningname.get_name_leafdata());
+    if (cptpclockportrunningpacketsreceived.is_set || is_set(cptpclockportrunningpacketsreceived.yfilter)) leaf_name_data.push_back(cptpclockportrunningpacketsreceived.get_name_leafdata());
+    if (cptpclockportrunningpacketssent.is_set || is_set(cptpclockportrunningpacketssent.yfilter)) leaf_name_data.push_back(cptpclockportrunningpacketssent.get_name_leafdata());
+    if (cptpclockportrunningrole.is_set || is_set(cptpclockportrunningrole.yfilter)) leaf_name_data.push_back(cptpclockportrunningrole.get_name_leafdata());
+    if (cptpclockportrunningrxmode.is_set || is_set(cptpclockportrunningrxmode.yfilter)) leaf_name_data.push_back(cptpclockportrunningrxmode.get_name_leafdata());
+    if (cptpclockportrunningstate.is_set || is_set(cptpclockportrunningstate.yfilter)) leaf_name_data.push_back(cptpclockportrunningstate.get_name_leafdata());
+    if (cptpclockportrunningtxmode.is_set || is_set(cptpclockportrunningtxmode.yfilter)) leaf_name_data.push_back(cptpclockportrunningtxmode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3183,64 +4053,159 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportrunning
     return children;
 }
 
-void CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortRunningDomainIndex")
     {
         cptpclockportrunningdomainindex = value;
+        cptpclockportrunningdomainindex.value_namespace = name_space;
+        cptpclockportrunningdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningClockTypeIndex")
     {
         cptpclockportrunningclocktypeindex = value;
+        cptpclockportrunningclocktypeindex.value_namespace = name_space;
+        cptpclockportrunningclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningClockInstanceIndex")
     {
         cptpclockportrunningclockinstanceindex = value;
+        cptpclockportrunningclockinstanceindex.value_namespace = name_space;
+        cptpclockportrunningclockinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningPortNumberIndex")
     {
         cptpclockportrunningportnumberindex = value;
+        cptpclockportrunningportnumberindex.value_namespace = name_space;
+        cptpclockportrunningportnumberindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningEncapsulationType")
     {
         cptpclockportrunningencapsulationtype = value;
+        cptpclockportrunningencapsulationtype.value_namespace = name_space;
+        cptpclockportrunningencapsulationtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningInterfaceIndex")
     {
         cptpclockportrunninginterfaceindex = value;
+        cptpclockportrunninginterfaceindex.value_namespace = name_space;
+        cptpclockportrunninginterfaceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningIPversion")
     {
         cptpclockportrunningipversion = value;
+        cptpclockportrunningipversion.value_namespace = name_space;
+        cptpclockportrunningipversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningName")
     {
         cptpclockportrunningname = value;
+        cptpclockportrunningname.value_namespace = name_space;
+        cptpclockportrunningname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningPacketsReceived")
     {
         cptpclockportrunningpacketsreceived = value;
+        cptpclockportrunningpacketsreceived.value_namespace = name_space;
+        cptpclockportrunningpacketsreceived.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningPacketsSent")
     {
         cptpclockportrunningpacketssent = value;
+        cptpclockportrunningpacketssent.value_namespace = name_space;
+        cptpclockportrunningpacketssent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningRole")
     {
         cptpclockportrunningrole = value;
+        cptpclockportrunningrole.value_namespace = name_space;
+        cptpclockportrunningrole.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningRxMode")
     {
         cptpclockportrunningrxmode = value;
+        cptpclockportrunningrxmode.value_namespace = name_space;
+        cptpclockportrunningrxmode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningState")
     {
         cptpclockportrunningstate = value;
+        cptpclockportrunningstate.value_namespace = name_space;
+        cptpclockportrunningstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortRunningTxMode")
     {
         cptpclockportrunningtxmode = value;
+        cptpclockportrunningtxmode.value_namespace = name_space;
+        cptpclockportrunningtxmode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockPortRunningDomainIndex")
+    {
+        cptpclockportrunningdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningClockTypeIndex")
+    {
+        cptpclockportrunningclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningClockInstanceIndex")
+    {
+        cptpclockportrunningclockinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningPortNumberIndex")
+    {
+        cptpclockportrunningportnumberindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningEncapsulationType")
+    {
+        cptpclockportrunningencapsulationtype.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningInterfaceIndex")
+    {
+        cptpclockportrunninginterfaceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningIPversion")
+    {
+        cptpclockportrunningipversion.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningName")
+    {
+        cptpclockportrunningname.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningPacketsReceived")
+    {
+        cptpclockportrunningpacketsreceived.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningPacketsSent")
+    {
+        cptpclockportrunningpacketssent.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningRole")
+    {
+        cptpclockportrunningrole.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningRxMode")
+    {
+        cptpclockportrunningrxmode.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningState")
+    {
+        cptpclockportrunningstate.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortRunningTxMode")
+    {
+        cptpclockportrunningtxmode.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclockportrunningtable::Cptpclockportrunningentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortRunningDomainIndex" || name == "cPtpClockPortRunningClockTypeIndex" || name == "cPtpClockPortRunningClockInstanceIndex" || name == "cPtpClockPortRunningPortNumberIndex" || name == "cPtpClockPortRunningEncapsulationType" || name == "cPtpClockPortRunningInterfaceIndex" || name == "cPtpClockPortRunningIPversion" || name == "cPtpClockPortRunningName" || name == "cPtpClockPortRunningPacketsReceived" || name == "cPtpClockPortRunningPacketsSent" || name == "cPtpClockPortRunningRole" || name == "cPtpClockPortRunningRxMode" || name == "cPtpClockPortRunningState" || name == "cPtpClockPortRunningTxMode")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdstable()
@@ -3254,9 +4219,9 @@ CiscoPtpMib::Cptpclockporttransdstable::~Cptpclockporttransdstable()
 
 bool CiscoPtpMib::Cptpclockporttransdstable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockporttransdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockporttransdsentry.size(); index++)
     {
-        if(cptpclockporttransdsentry_[index]->has_data())
+        if(cptpclockporttransdsentry[index]->has_data())
             return true;
     }
     return false;
@@ -3264,12 +4229,12 @@ bool CiscoPtpMib::Cptpclockporttransdstable::has_data() const
 
 bool CiscoPtpMib::Cptpclockporttransdstable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockporttransdsentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockporttransdsentry.size(); index++)
     {
-        if(cptpclockporttransdsentry_[index]->has_operation())
+        if(cptpclockporttransdsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockporttransdstable::get_segment_path() const
@@ -3306,7 +4271,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttransdstable::get_child_by_nam
 {
     if(child_yang_name == "cPtpClockPortTransDSEntry")
     {
-        for(auto const & c : cptpclockporttransdsentry_)
+        for(auto const & c : cptpclockporttransdsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3316,7 +4281,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttransdstable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry>();
         c->parent = this;
-        cptpclockporttransdsentry_.push_back(c);
+        cptpclockporttransdsentry.push_back(c);
         return c;
     }
 
@@ -3326,7 +4291,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockporttransdstable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockporttransdstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockporttransdsentry_)
+    for (auto const & c : cptpclockporttransdsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3334,8 +4299,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockporttransds
     return children;
 }
 
-void CiscoPtpMib::Cptpclockporttransdstable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockporttransdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockporttransdstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockporttransdstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortTransDSEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry::Cptpclockporttransdsentry()
@@ -3368,14 +4344,14 @@ bool CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry::has_data
 
 bool CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockporttransdsdomainindex.operation)
-	|| is_set(cptpclockporttransdsinstanceindex.operation)
-	|| is_set(cptpclockporttransdsportnumberindex.operation)
-	|| is_set(cptpclockporttransdsfaultyflag.operation)
-	|| is_set(cptpclockporttransdslogminpdelayreqint.operation)
-	|| is_set(cptpclockporttransdspeermeanpathdelay.operation)
-	|| is_set(cptpclockporttransdsportidentity.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockporttransdsdomainindex.yfilter)
+	|| ydk::is_set(cptpclockporttransdsinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockporttransdsportnumberindex.yfilter)
+	|| ydk::is_set(cptpclockporttransdsfaultyflag.yfilter)
+	|| ydk::is_set(cptpclockporttransdslogminpdelayreqint.yfilter)
+	|| ydk::is_set(cptpclockporttransdspeermeanpathdelay.yfilter)
+	|| ydk::is_set(cptpclockporttransdsportidentity.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry::get_segment_path() const
@@ -3401,13 +4377,13 @@ const EntityPath CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockporttransdsdomainindex.is_set || is_set(cptpclockporttransdsdomainindex.operation)) leaf_name_data.push_back(cptpclockporttransdsdomainindex.get_name_leafdata());
-    if (cptpclockporttransdsinstanceindex.is_set || is_set(cptpclockporttransdsinstanceindex.operation)) leaf_name_data.push_back(cptpclockporttransdsinstanceindex.get_name_leafdata());
-    if (cptpclockporttransdsportnumberindex.is_set || is_set(cptpclockporttransdsportnumberindex.operation)) leaf_name_data.push_back(cptpclockporttransdsportnumberindex.get_name_leafdata());
-    if (cptpclockporttransdsfaultyflag.is_set || is_set(cptpclockporttransdsfaultyflag.operation)) leaf_name_data.push_back(cptpclockporttransdsfaultyflag.get_name_leafdata());
-    if (cptpclockporttransdslogminpdelayreqint.is_set || is_set(cptpclockporttransdslogminpdelayreqint.operation)) leaf_name_data.push_back(cptpclockporttransdslogminpdelayreqint.get_name_leafdata());
-    if (cptpclockporttransdspeermeanpathdelay.is_set || is_set(cptpclockporttransdspeermeanpathdelay.operation)) leaf_name_data.push_back(cptpclockporttransdspeermeanpathdelay.get_name_leafdata());
-    if (cptpclockporttransdsportidentity.is_set || is_set(cptpclockporttransdsportidentity.operation)) leaf_name_data.push_back(cptpclockporttransdsportidentity.get_name_leafdata());
+    if (cptpclockporttransdsdomainindex.is_set || is_set(cptpclockporttransdsdomainindex.yfilter)) leaf_name_data.push_back(cptpclockporttransdsdomainindex.get_name_leafdata());
+    if (cptpclockporttransdsinstanceindex.is_set || is_set(cptpclockporttransdsinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockporttransdsinstanceindex.get_name_leafdata());
+    if (cptpclockporttransdsportnumberindex.is_set || is_set(cptpclockporttransdsportnumberindex.yfilter)) leaf_name_data.push_back(cptpclockporttransdsportnumberindex.get_name_leafdata());
+    if (cptpclockporttransdsfaultyflag.is_set || is_set(cptpclockporttransdsfaultyflag.yfilter)) leaf_name_data.push_back(cptpclockporttransdsfaultyflag.get_name_leafdata());
+    if (cptpclockporttransdslogminpdelayreqint.is_set || is_set(cptpclockporttransdslogminpdelayreqint.yfilter)) leaf_name_data.push_back(cptpclockporttransdslogminpdelayreqint.get_name_leafdata());
+    if (cptpclockporttransdspeermeanpathdelay.is_set || is_set(cptpclockporttransdspeermeanpathdelay.yfilter)) leaf_name_data.push_back(cptpclockporttransdspeermeanpathdelay.get_name_leafdata());
+    if (cptpclockporttransdsportidentity.is_set || is_set(cptpclockporttransdsportidentity.yfilter)) leaf_name_data.push_back(cptpclockporttransdsportidentity.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3426,36 +4402,89 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockporttransds
     return children;
 }
 
-void CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortTransDSDomainIndex")
     {
         cptpclockporttransdsdomainindex = value;
+        cptpclockporttransdsdomainindex.value_namespace = name_space;
+        cptpclockporttransdsdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortTransDSInstanceIndex")
     {
         cptpclockporttransdsinstanceindex = value;
+        cptpclockporttransdsinstanceindex.value_namespace = name_space;
+        cptpclockporttransdsinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortTransDSPortNumberIndex")
     {
         cptpclockporttransdsportnumberindex = value;
+        cptpclockporttransdsportnumberindex.value_namespace = name_space;
+        cptpclockporttransdsportnumberindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortTransDSFaultyFlag")
     {
         cptpclockporttransdsfaultyflag = value;
+        cptpclockporttransdsfaultyflag.value_namespace = name_space;
+        cptpclockporttransdsfaultyflag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortTransDSlogMinPdelayReqInt")
     {
         cptpclockporttransdslogminpdelayreqint = value;
+        cptpclockporttransdslogminpdelayreqint.value_namespace = name_space;
+        cptpclockporttransdslogminpdelayreqint.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortTransDSPeerMeanPathDelay")
     {
         cptpclockporttransdspeermeanpathdelay = value;
+        cptpclockporttransdspeermeanpathdelay.value_namespace = name_space;
+        cptpclockporttransdspeermeanpathdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortTransDSPortIdentity")
     {
         cptpclockporttransdsportidentity = value;
+        cptpclockporttransdsportidentity.value_namespace = name_space;
+        cptpclockporttransdsportidentity.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockPortTransDSDomainIndex")
+    {
+        cptpclockporttransdsdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortTransDSInstanceIndex")
+    {
+        cptpclockporttransdsinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortTransDSPortNumberIndex")
+    {
+        cptpclockporttransdsportnumberindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortTransDSFaultyFlag")
+    {
+        cptpclockporttransdsfaultyflag.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortTransDSlogMinPdelayReqInt")
+    {
+        cptpclockporttransdslogminpdelayreqint.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortTransDSPeerMeanPathDelay")
+    {
+        cptpclockporttransdspeermeanpathdelay.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortTransDSPortIdentity")
+    {
+        cptpclockporttransdsportidentity.yfilter = yfilter;
+    }
+}
+
+bool CiscoPtpMib::Cptpclockporttransdstable::Cptpclockporttransdsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortTransDSDomainIndex" || name == "cPtpClockPortTransDSInstanceIndex" || name == "cPtpClockPortTransDSPortNumberIndex" || name == "cPtpClockPortTransDSFaultyFlag" || name == "cPtpClockPortTransDSlogMinPdelayReqInt" || name == "cPtpClockPortTransDSPeerMeanPathDelay" || name == "cPtpClockPortTransDSPortIdentity")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociatetable()
@@ -3469,9 +4498,9 @@ CiscoPtpMib::Cptpclockportassociatetable::~Cptpclockportassociatetable()
 
 bool CiscoPtpMib::Cptpclockportassociatetable::has_data() const
 {
-    for (std::size_t index=0; index<cptpclockportassociateentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockportassociateentry.size(); index++)
     {
-        if(cptpclockportassociateentry_[index]->has_data())
+        if(cptpclockportassociateentry[index]->has_data())
             return true;
     }
     return false;
@@ -3479,12 +4508,12 @@ bool CiscoPtpMib::Cptpclockportassociatetable::has_data() const
 
 bool CiscoPtpMib::Cptpclockportassociatetable::has_operation() const
 {
-    for (std::size_t index=0; index<cptpclockportassociateentry_.size(); index++)
+    for (std::size_t index=0; index<cptpclockportassociateentry.size(); index++)
     {
-        if(cptpclockportassociateentry_[index]->has_operation())
+        if(cptpclockportassociateentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockportassociatetable::get_segment_path() const
@@ -3521,7 +4550,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportassociatetable::get_child_by_n
 {
     if(child_yang_name == "cPtpClockPortAssociateEntry")
     {
-        for(auto const & c : cptpclockportassociateentry_)
+        for(auto const & c : cptpclockportassociateentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3531,7 +4560,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportassociatetable::get_child_by_n
         }
         auto c = std::make_shared<CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry>();
         c->parent = this;
-        cptpclockportassociateentry_.push_back(c);
+        cptpclockportassociateentry.push_back(c);
         return c;
     }
 
@@ -3541,7 +4570,7 @@ std::shared_ptr<Entity> CiscoPtpMib::Cptpclockportassociatetable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportassociatetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cptpclockportassociateentry_)
+    for (auto const & c : cptpclockportassociateentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3549,8 +4578,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportassocia
     return children;
 }
 
-void CiscoPtpMib::Cptpclockportassociatetable::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockportassociatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoPtpMib::Cptpclockportassociatetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoPtpMib::Cptpclockportassociatetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortAssociateEntry")
+        return true;
+    return false;
 }
 
 CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry::Cptpclockportassociateentry()
@@ -3591,18 +4631,18 @@ bool CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry::has_
 
 bool CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cptpclockportcurrentdomainindex.operation)
-	|| is_set(cptpclockportcurrentclocktypeindex.operation)
-	|| is_set(cptpclockportcurrentclockinstanceindex.operation)
-	|| is_set(cptpclockportcurrentportnumberindex.operation)
-	|| is_set(cptpclockportassociateportindex.operation)
-	|| is_set(cptpclockportassociateaddress.operation)
-	|| is_set(cptpclockportassociateaddresstype.operation)
-	|| is_set(cptpclockportassociateinerrors.operation)
-	|| is_set(cptpclockportassociateouterrors.operation)
-	|| is_set(cptpclockportassociatepacketsreceived.operation)
-	|| is_set(cptpclockportassociatepacketssent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cptpclockportcurrentdomainindex.yfilter)
+	|| ydk::is_set(cptpclockportcurrentclocktypeindex.yfilter)
+	|| ydk::is_set(cptpclockportcurrentclockinstanceindex.yfilter)
+	|| ydk::is_set(cptpclockportcurrentportnumberindex.yfilter)
+	|| ydk::is_set(cptpclockportassociateportindex.yfilter)
+	|| ydk::is_set(cptpclockportassociateaddress.yfilter)
+	|| ydk::is_set(cptpclockportassociateaddresstype.yfilter)
+	|| ydk::is_set(cptpclockportassociateinerrors.yfilter)
+	|| ydk::is_set(cptpclockportassociateouterrors.yfilter)
+	|| ydk::is_set(cptpclockportassociatepacketsreceived.yfilter)
+	|| ydk::is_set(cptpclockportassociatepacketssent.yfilter);
 }
 
 std::string CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry::get_segment_path() const
@@ -3628,17 +4668,17 @@ const EntityPath CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cptpclockportcurrentdomainindex.is_set || is_set(cptpclockportcurrentdomainindex.operation)) leaf_name_data.push_back(cptpclockportcurrentdomainindex.get_name_leafdata());
-    if (cptpclockportcurrentclocktypeindex.is_set || is_set(cptpclockportcurrentclocktypeindex.operation)) leaf_name_data.push_back(cptpclockportcurrentclocktypeindex.get_name_leafdata());
-    if (cptpclockportcurrentclockinstanceindex.is_set || is_set(cptpclockportcurrentclockinstanceindex.operation)) leaf_name_data.push_back(cptpclockportcurrentclockinstanceindex.get_name_leafdata());
-    if (cptpclockportcurrentportnumberindex.is_set || is_set(cptpclockportcurrentportnumberindex.operation)) leaf_name_data.push_back(cptpclockportcurrentportnumberindex.get_name_leafdata());
-    if (cptpclockportassociateportindex.is_set || is_set(cptpclockportassociateportindex.operation)) leaf_name_data.push_back(cptpclockportassociateportindex.get_name_leafdata());
-    if (cptpclockportassociateaddress.is_set || is_set(cptpclockportassociateaddress.operation)) leaf_name_data.push_back(cptpclockportassociateaddress.get_name_leafdata());
-    if (cptpclockportassociateaddresstype.is_set || is_set(cptpclockportassociateaddresstype.operation)) leaf_name_data.push_back(cptpclockportassociateaddresstype.get_name_leafdata());
-    if (cptpclockportassociateinerrors.is_set || is_set(cptpclockportassociateinerrors.operation)) leaf_name_data.push_back(cptpclockportassociateinerrors.get_name_leafdata());
-    if (cptpclockportassociateouterrors.is_set || is_set(cptpclockportassociateouterrors.operation)) leaf_name_data.push_back(cptpclockportassociateouterrors.get_name_leafdata());
-    if (cptpclockportassociatepacketsreceived.is_set || is_set(cptpclockportassociatepacketsreceived.operation)) leaf_name_data.push_back(cptpclockportassociatepacketsreceived.get_name_leafdata());
-    if (cptpclockportassociatepacketssent.is_set || is_set(cptpclockportassociatepacketssent.operation)) leaf_name_data.push_back(cptpclockportassociatepacketssent.get_name_leafdata());
+    if (cptpclockportcurrentdomainindex.is_set || is_set(cptpclockportcurrentdomainindex.yfilter)) leaf_name_data.push_back(cptpclockportcurrentdomainindex.get_name_leafdata());
+    if (cptpclockportcurrentclocktypeindex.is_set || is_set(cptpclockportcurrentclocktypeindex.yfilter)) leaf_name_data.push_back(cptpclockportcurrentclocktypeindex.get_name_leafdata());
+    if (cptpclockportcurrentclockinstanceindex.is_set || is_set(cptpclockportcurrentclockinstanceindex.yfilter)) leaf_name_data.push_back(cptpclockportcurrentclockinstanceindex.get_name_leafdata());
+    if (cptpclockportcurrentportnumberindex.is_set || is_set(cptpclockportcurrentportnumberindex.yfilter)) leaf_name_data.push_back(cptpclockportcurrentportnumberindex.get_name_leafdata());
+    if (cptpclockportassociateportindex.is_set || is_set(cptpclockportassociateportindex.yfilter)) leaf_name_data.push_back(cptpclockportassociateportindex.get_name_leafdata());
+    if (cptpclockportassociateaddress.is_set || is_set(cptpclockportassociateaddress.yfilter)) leaf_name_data.push_back(cptpclockportassociateaddress.get_name_leafdata());
+    if (cptpclockportassociateaddresstype.is_set || is_set(cptpclockportassociateaddresstype.yfilter)) leaf_name_data.push_back(cptpclockportassociateaddresstype.get_name_leafdata());
+    if (cptpclockportassociateinerrors.is_set || is_set(cptpclockportassociateinerrors.yfilter)) leaf_name_data.push_back(cptpclockportassociateinerrors.get_name_leafdata());
+    if (cptpclockportassociateouterrors.is_set || is_set(cptpclockportassociateouterrors.yfilter)) leaf_name_data.push_back(cptpclockportassociateouterrors.get_name_leafdata());
+    if (cptpclockportassociatepacketsreceived.is_set || is_set(cptpclockportassociatepacketsreceived.yfilter)) leaf_name_data.push_back(cptpclockportassociatepacketsreceived.get_name_leafdata());
+    if (cptpclockportassociatepacketssent.is_set || is_set(cptpclockportassociatepacketssent.yfilter)) leaf_name_data.push_back(cptpclockportassociatepacketssent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3657,120 +4697,197 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoPtpMib::Cptpclockportassocia
     return children;
 }
 
-void CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry::set_value(const std::string & value_path, std::string value)
+void CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cPtpClockPortCurrentDomainIndex")
     {
         cptpclockportcurrentdomainindex = value;
+        cptpclockportcurrentdomainindex.value_namespace = name_space;
+        cptpclockportcurrentdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortCurrentClockTypeIndex")
     {
         cptpclockportcurrentclocktypeindex = value;
+        cptpclockportcurrentclocktypeindex.value_namespace = name_space;
+        cptpclockportcurrentclocktypeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortCurrentClockInstanceIndex")
     {
         cptpclockportcurrentclockinstanceindex = value;
+        cptpclockportcurrentclockinstanceindex.value_namespace = name_space;
+        cptpclockportcurrentclockinstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortCurrentPortNumberIndex")
     {
         cptpclockportcurrentportnumberindex = value;
+        cptpclockportcurrentportnumberindex.value_namespace = name_space;
+        cptpclockportcurrentportnumberindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortAssociatePortIndex")
     {
         cptpclockportassociateportindex = value;
+        cptpclockportassociateportindex.value_namespace = name_space;
+        cptpclockportassociateportindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortAssociateAddress")
     {
         cptpclockportassociateaddress = value;
+        cptpclockportassociateaddress.value_namespace = name_space;
+        cptpclockportassociateaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortAssociateAddressType")
     {
         cptpclockportassociateaddresstype = value;
+        cptpclockportassociateaddresstype.value_namespace = name_space;
+        cptpclockportassociateaddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortAssociateInErrors")
     {
         cptpclockportassociateinerrors = value;
+        cptpclockportassociateinerrors.value_namespace = name_space;
+        cptpclockportassociateinerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortAssociateOutErrors")
     {
         cptpclockportassociateouterrors = value;
+        cptpclockportassociateouterrors.value_namespace = name_space;
+        cptpclockportassociateouterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortAssociatePacketsReceived")
     {
         cptpclockportassociatepacketsreceived = value;
+        cptpclockportassociatepacketsreceived.value_namespace = name_space;
+        cptpclockportassociatepacketsreceived.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cPtpClockPortAssociatePacketsSent")
     {
         cptpclockportassociatepacketssent = value;
+        cptpclockportassociatepacketssent.value_namespace = name_space;
+        cptpclockportassociatepacketssent.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf ClockmechanismtypeEnum::e2e {1, "e2e"};
-const Enum::YLeaf ClockmechanismtypeEnum::p2p {2, "p2p"};
-const Enum::YLeaf ClockmechanismtypeEnum::disabled {254, "disabled"};
+void CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cPtpClockPortCurrentDomainIndex")
+    {
+        cptpclockportcurrentdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortCurrentClockTypeIndex")
+    {
+        cptpclockportcurrentclocktypeindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortCurrentClockInstanceIndex")
+    {
+        cptpclockportcurrentclockinstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortCurrentPortNumberIndex")
+    {
+        cptpclockportcurrentportnumberindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortAssociatePortIndex")
+    {
+        cptpclockportassociateportindex.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortAssociateAddress")
+    {
+        cptpclockportassociateaddress.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortAssociateAddressType")
+    {
+        cptpclockportassociateaddresstype.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortAssociateInErrors")
+    {
+        cptpclockportassociateinerrors.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortAssociateOutErrors")
+    {
+        cptpclockportassociateouterrors.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortAssociatePacketsReceived")
+    {
+        cptpclockportassociatepacketsreceived.yfilter = yfilter;
+    }
+    if(value_path == "cPtpClockPortAssociatePacketsSent")
+    {
+        cptpclockportassociatepacketssent.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf ClockportstateEnum::initializing {1, "initializing"};
-const Enum::YLeaf ClockportstateEnum::faulty {2, "faulty"};
-const Enum::YLeaf ClockportstateEnum::disabled {3, "disabled"};
-const Enum::YLeaf ClockportstateEnum::listening {4, "listening"};
-const Enum::YLeaf ClockportstateEnum::preMaster {5, "preMaster"};
-const Enum::YLeaf ClockportstateEnum::master {6, "master"};
-const Enum::YLeaf ClockportstateEnum::passive {7, "passive"};
-const Enum::YLeaf ClockportstateEnum::uncalibrated {8, "uncalibrated"};
-const Enum::YLeaf ClockportstateEnum::slave {9, "slave"};
+bool CiscoPtpMib::Cptpclockportassociatetable::Cptpclockportassociateentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cPtpClockPortCurrentDomainIndex" || name == "cPtpClockPortCurrentClockTypeIndex" || name == "cPtpClockPortCurrentClockInstanceIndex" || name == "cPtpClockPortCurrentPortNumberIndex" || name == "cPtpClockPortAssociatePortIndex" || name == "cPtpClockPortAssociateAddress" || name == "cPtpClockPortAssociateAddressType" || name == "cPtpClockPortAssociateInErrors" || name == "cPtpClockPortAssociateOutErrors" || name == "cPtpClockPortAssociatePacketsReceived" || name == "cPtpClockPortAssociatePacketsSent")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf ClocktimesourcetypeEnum::atomicClock {16, "atomicClock"};
-const Enum::YLeaf ClocktimesourcetypeEnum::gps {32, "gps"};
-const Enum::YLeaf ClocktimesourcetypeEnum::terrestrialRadio {48, "terrestrialRadio"};
-const Enum::YLeaf ClocktimesourcetypeEnum::ptp {64, "ptp"};
-const Enum::YLeaf ClocktimesourcetypeEnum::ntp {80, "ntp"};
-const Enum::YLeaf ClocktimesourcetypeEnum::handSet {96, "handSet"};
-const Enum::YLeaf ClocktimesourcetypeEnum::other {144, "other"};
-const Enum::YLeaf ClocktimesourcetypeEnum::internalOsillator {160, "internalOsillator"};
+const Enum::YLeaf Clockmechanismtype::e2e {1, "e2e"};
+const Enum::YLeaf Clockmechanismtype::p2p {2, "p2p"};
+const Enum::YLeaf Clockmechanismtype::disabled {254, "disabled"};
 
-const Enum::YLeaf ClockprofiletypeEnum::default_ {1, "default"};
-const Enum::YLeaf ClockprofiletypeEnum::telecom {2, "telecom"};
-const Enum::YLeaf ClockprofiletypeEnum::vendorspecific {3, "vendorspecific"};
+const Enum::YLeaf Clockroletype::master {1, "master"};
+const Enum::YLeaf Clockroletype::slave {2, "slave"};
 
-const Enum::YLeaf ClockroletypeEnum::master {1, "master"};
-const Enum::YLeaf ClockroletypeEnum::slave {2, "slave"};
+const Enum::YLeaf Clocktype::ordinaryClock {1, "ordinaryClock"};
+const Enum::YLeaf Clocktype::boundaryClock {2, "boundaryClock"};
+const Enum::YLeaf Clocktype::transparentClock {3, "transparentClock"};
+const Enum::YLeaf Clocktype::boundaryNode {4, "boundaryNode"};
 
-const Enum::YLeaf ClocktypeEnum::ordinaryClock {1, "ordinaryClock"};
-const Enum::YLeaf ClocktypeEnum::boundaryClock {2, "boundaryClock"};
-const Enum::YLeaf ClocktypeEnum::transparentClock {3, "transparentClock"};
-const Enum::YLeaf ClocktypeEnum::boundaryNode {4, "boundaryNode"};
+const Enum::YLeaf Clocktxmodetype::unicast {1, "unicast"};
+const Enum::YLeaf Clocktxmodetype::multicast {2, "multicast"};
+const Enum::YLeaf Clocktxmodetype::multicastmix {3, "multicastmix"};
 
-const Enum::YLeaf ClocktxmodetypeEnum::unicast {1, "unicast"};
-const Enum::YLeaf ClocktxmodetypeEnum::multicast {2, "multicast"};
-const Enum::YLeaf ClocktxmodetypeEnum::multicastmix {3, "multicastmix"};
+const Enum::YLeaf Clockportstate::initializing {1, "initializing"};
+const Enum::YLeaf Clockportstate::faulty {2, "faulty"};
+const Enum::YLeaf Clockportstate::disabled {3, "disabled"};
+const Enum::YLeaf Clockportstate::listening {4, "listening"};
+const Enum::YLeaf Clockportstate::preMaster {5, "preMaster"};
+const Enum::YLeaf Clockportstate::master {6, "master"};
+const Enum::YLeaf Clockportstate::passive {7, "passive"};
+const Enum::YLeaf Clockportstate::uncalibrated {8, "uncalibrated"};
+const Enum::YLeaf Clockportstate::slave {9, "slave"};
 
-const Enum::YLeaf ClockqualityaccuracytypeEnum::reserved00 {1, "reserved00"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::nanoSecond25 {32, "nanoSecond25"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::nanoSecond100 {33, "nanoSecond100"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::nanoSecond250 {34, "nanoSecond250"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::microSec1 {35, "microSec1"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::microSec2dot5 {36, "microSec2dot5"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::microSec10 {37, "microSec10"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::microSec25 {38, "microSec25"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::microSec100 {39, "microSec100"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::microSec250 {40, "microSec250"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::milliSec1 {41, "milliSec1"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::milliSec2dot5 {42, "milliSec2dot5"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::milliSec10 {43, "milliSec10"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::milliSec25 {44, "milliSec25"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::milliSec100 {45, "milliSec100"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::milliSec250 {46, "milliSec250"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::second1 {47, "second1"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::second10 {48, "second10"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::secondGreater10 {49, "secondGreater10"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::unknown {254, "unknown"};
-const Enum::YLeaf ClockqualityaccuracytypeEnum::reserved255 {255, "reserved255"};
+const Enum::YLeaf Clockstatetype::freerun {1, "freerun"};
+const Enum::YLeaf Clockstatetype::holdover {2, "holdover"};
+const Enum::YLeaf Clockstatetype::acquiring {3, "acquiring"};
+const Enum::YLeaf Clockstatetype::frequencyLocked {4, "frequencyLocked"};
+const Enum::YLeaf Clockstatetype::phaseAligned {5, "phaseAligned"};
 
-const Enum::YLeaf ClockstatetypeEnum::freerun {1, "freerun"};
-const Enum::YLeaf ClockstatetypeEnum::holdover {2, "holdover"};
-const Enum::YLeaf ClockstatetypeEnum::acquiring {3, "acquiring"};
-const Enum::YLeaf ClockstatetypeEnum::frequencyLocked {4, "frequencyLocked"};
-const Enum::YLeaf ClockstatetypeEnum::phaseAligned {5, "phaseAligned"};
+const Enum::YLeaf Clocktimesourcetype::atomicClock {16, "atomicClock"};
+const Enum::YLeaf Clocktimesourcetype::gps {32, "gps"};
+const Enum::YLeaf Clocktimesourcetype::terrestrialRadio {48, "terrestrialRadio"};
+const Enum::YLeaf Clocktimesourcetype::ptp {64, "ptp"};
+const Enum::YLeaf Clocktimesourcetype::ntp {80, "ntp"};
+const Enum::YLeaf Clocktimesourcetype::handSet {96, "handSet"};
+const Enum::YLeaf Clocktimesourcetype::other {144, "other"};
+const Enum::YLeaf Clocktimesourcetype::internalOsillator {160, "internalOsillator"};
+
+const Enum::YLeaf Clockqualityaccuracytype::reserved00 {1, "reserved00"};
+const Enum::YLeaf Clockqualityaccuracytype::nanoSecond25 {32, "nanoSecond25"};
+const Enum::YLeaf Clockqualityaccuracytype::nanoSecond100 {33, "nanoSecond100"};
+const Enum::YLeaf Clockqualityaccuracytype::nanoSecond250 {34, "nanoSecond250"};
+const Enum::YLeaf Clockqualityaccuracytype::microSec1 {35, "microSec1"};
+const Enum::YLeaf Clockqualityaccuracytype::microSec2dot5 {36, "microSec2dot5"};
+const Enum::YLeaf Clockqualityaccuracytype::microSec10 {37, "microSec10"};
+const Enum::YLeaf Clockqualityaccuracytype::microSec25 {38, "microSec25"};
+const Enum::YLeaf Clockqualityaccuracytype::microSec100 {39, "microSec100"};
+const Enum::YLeaf Clockqualityaccuracytype::microSec250 {40, "microSec250"};
+const Enum::YLeaf Clockqualityaccuracytype::milliSec1 {41, "milliSec1"};
+const Enum::YLeaf Clockqualityaccuracytype::milliSec2dot5 {42, "milliSec2dot5"};
+const Enum::YLeaf Clockqualityaccuracytype::milliSec10 {43, "milliSec10"};
+const Enum::YLeaf Clockqualityaccuracytype::milliSec25 {44, "milliSec25"};
+const Enum::YLeaf Clockqualityaccuracytype::milliSec100 {45, "milliSec100"};
+const Enum::YLeaf Clockqualityaccuracytype::milliSec250 {46, "milliSec250"};
+const Enum::YLeaf Clockqualityaccuracytype::second1 {47, "second1"};
+const Enum::YLeaf Clockqualityaccuracytype::second10 {48, "second10"};
+const Enum::YLeaf Clockqualityaccuracytype::secondGreater10 {49, "secondGreater10"};
+const Enum::YLeaf Clockqualityaccuracytype::unknown {254, "unknown"};
+const Enum::YLeaf Clockqualityaccuracytype::reserved255 {255, "reserved255"};
+
+const Enum::YLeaf Clockprofiletype::default_ {1, "default"};
+const Enum::YLeaf Clockprofiletype::telecom {2, "telecom"};
+const Enum::YLeaf Clockprofiletype::vendorspecific {3, "vendorspecific"};
 
 
 }

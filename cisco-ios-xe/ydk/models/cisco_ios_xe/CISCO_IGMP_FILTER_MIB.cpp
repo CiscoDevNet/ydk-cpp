@@ -6,23 +6,25 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_IGMP_FILTER_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_IGMP_FILTER_MIB {
 
 CiscoIgmpFilterMib::CiscoIgmpFilterMib()
     :
-    cigmpfiltereditor_(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltereditor>())
-	,cigmpfiltergeneral_(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltergeneral>())
-	,cigmpfilterinterfacetable_(std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable>())
-	,cigmpfiltertable_(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable>())
+    cigmpfiltereditor(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltereditor>())
+	,cigmpfiltergeneral(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltergeneral>())
+	,cigmpfilterinterfacetable(std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable>())
+	,cigmpfiltertable(std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable>())
 {
-    cigmpfiltereditor_->parent = this;
+    cigmpfiltereditor->parent = this;
 
-    cigmpfiltergeneral_->parent = this;
+    cigmpfiltergeneral->parent = this;
 
-    cigmpfilterinterfacetable_->parent = this;
+    cigmpfilterinterfacetable->parent = this;
 
-    cigmpfiltertable_->parent = this;
+    cigmpfiltertable->parent = this;
 
     yang_name = "CISCO-IGMP-FILTER-MIB"; yang_parent_name = "CISCO-IGMP-FILTER-MIB";
 }
@@ -33,19 +35,19 @@ CiscoIgmpFilterMib::~CiscoIgmpFilterMib()
 
 bool CiscoIgmpFilterMib::has_data() const
 {
-    return (cigmpfiltereditor_ !=  nullptr && cigmpfiltereditor_->has_data())
-	|| (cigmpfiltergeneral_ !=  nullptr && cigmpfiltergeneral_->has_data())
-	|| (cigmpfilterinterfacetable_ !=  nullptr && cigmpfilterinterfacetable_->has_data())
-	|| (cigmpfiltertable_ !=  nullptr && cigmpfiltertable_->has_data());
+    return (cigmpfiltereditor !=  nullptr && cigmpfiltereditor->has_data())
+	|| (cigmpfiltergeneral !=  nullptr && cigmpfiltergeneral->has_data())
+	|| (cigmpfilterinterfacetable !=  nullptr && cigmpfilterinterfacetable->has_data())
+	|| (cigmpfiltertable !=  nullptr && cigmpfiltertable->has_data());
 }
 
 bool CiscoIgmpFilterMib::has_operation() const
 {
-    return is_set(operation)
-	|| (cigmpfiltereditor_ !=  nullptr && cigmpfiltereditor_->has_operation())
-	|| (cigmpfiltergeneral_ !=  nullptr && cigmpfiltergeneral_->has_operation())
-	|| (cigmpfilterinterfacetable_ !=  nullptr && cigmpfilterinterfacetable_->has_operation())
-	|| (cigmpfiltertable_ !=  nullptr && cigmpfiltertable_->has_operation());
+    return is_set(yfilter)
+	|| (cigmpfiltereditor !=  nullptr && cigmpfiltereditor->has_operation())
+	|| (cigmpfiltergeneral !=  nullptr && cigmpfiltergeneral->has_operation())
+	|| (cigmpfilterinterfacetable !=  nullptr && cigmpfilterinterfacetable->has_operation())
+	|| (cigmpfiltertable !=  nullptr && cigmpfiltertable->has_operation());
 }
 
 std::string CiscoIgmpFilterMib::get_segment_path() const
@@ -79,38 +81,38 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::get_child_by_name(const std::string 
 {
     if(child_yang_name == "cIgmpFilterEditor")
     {
-        if(cigmpfiltereditor_ == nullptr)
+        if(cigmpfiltereditor == nullptr)
         {
-            cigmpfiltereditor_ = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltereditor>();
+            cigmpfiltereditor = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltereditor>();
         }
-        return cigmpfiltereditor_;
+        return cigmpfiltereditor;
     }
 
     if(child_yang_name == "cIgmpFilterGeneral")
     {
-        if(cigmpfiltergeneral_ == nullptr)
+        if(cigmpfiltergeneral == nullptr)
         {
-            cigmpfiltergeneral_ = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltergeneral>();
+            cigmpfiltergeneral = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltergeneral>();
         }
-        return cigmpfiltergeneral_;
+        return cigmpfiltergeneral;
     }
 
     if(child_yang_name == "cIgmpFilterInterfaceTable")
     {
-        if(cigmpfilterinterfacetable_ == nullptr)
+        if(cigmpfilterinterfacetable == nullptr)
         {
-            cigmpfilterinterfacetable_ = std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable>();
+            cigmpfilterinterfacetable = std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable>();
         }
-        return cigmpfilterinterfacetable_;
+        return cigmpfilterinterfacetable;
     }
 
     if(child_yang_name == "cIgmpFilterTable")
     {
-        if(cigmpfiltertable_ == nullptr)
+        if(cigmpfiltertable == nullptr)
         {
-            cigmpfiltertable_ = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable>();
+            cigmpfiltertable = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable>();
         }
-        return cigmpfiltertable_;
+        return cigmpfiltertable;
     }
 
     return nullptr;
@@ -119,30 +121,34 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::get_child_by_name(const std::string 
 std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cigmpfiltereditor_ != nullptr)
+    if(cigmpfiltereditor != nullptr)
     {
-        children["cIgmpFilterEditor"] = cigmpfiltereditor_;
+        children["cIgmpFilterEditor"] = cigmpfiltereditor;
     }
 
-    if(cigmpfiltergeneral_ != nullptr)
+    if(cigmpfiltergeneral != nullptr)
     {
-        children["cIgmpFilterGeneral"] = cigmpfiltergeneral_;
+        children["cIgmpFilterGeneral"] = cigmpfiltergeneral;
     }
 
-    if(cigmpfilterinterfacetable_ != nullptr)
+    if(cigmpfilterinterfacetable != nullptr)
     {
-        children["cIgmpFilterInterfaceTable"] = cigmpfilterinterfacetable_;
+        children["cIgmpFilterInterfaceTable"] = cigmpfilterinterfacetable;
     }
 
-    if(cigmpfiltertable_ != nullptr)
+    if(cigmpfiltertable != nullptr)
     {
-        children["cIgmpFilterTable"] = cigmpfiltertable_;
+        children["cIgmpFilterTable"] = cigmpfiltertable;
     }
 
     return children;
 }
 
-void CiscoIgmpFilterMib::set_value(const std::string & value_path, std::string value)
+void CiscoIgmpFilterMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoIgmpFilterMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -166,6 +172,18 @@ augment_capabilities_function CiscoIgmpFilterMib::get_augment_capabilities_funct
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoIgmpFilterMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoIgmpFilterMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cIgmpFilterEditor" || name == "cIgmpFilterGeneral" || name == "cIgmpFilterInterfaceTable" || name == "cIgmpFilterTable")
+        return true;
+    return false;
+}
+
 CiscoIgmpFilterMib::Cigmpfiltergeneral::Cigmpfiltergeneral()
     :
     cigmpfilterenable{YType::boolean, "cIgmpFilterEnable"},
@@ -186,9 +204,9 @@ bool CiscoIgmpFilterMib::Cigmpfiltergeneral::has_data() const
 
 bool CiscoIgmpFilterMib::Cigmpfiltergeneral::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cigmpfilterenable.operation)
-	|| is_set(cigmpfiltermaxprofiles.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cigmpfilterenable.yfilter)
+	|| ydk::is_set(cigmpfiltermaxprofiles.yfilter);
 }
 
 std::string CiscoIgmpFilterMib::Cigmpfiltergeneral::get_segment_path() const
@@ -214,8 +232,8 @@ const EntityPath CiscoIgmpFilterMib::Cigmpfiltergeneral::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cigmpfilterenable.is_set || is_set(cigmpfilterenable.operation)) leaf_name_data.push_back(cigmpfilterenable.get_name_leafdata());
-    if (cigmpfiltermaxprofiles.is_set || is_set(cigmpfiltermaxprofiles.operation)) leaf_name_data.push_back(cigmpfiltermaxprofiles.get_name_leafdata());
+    if (cigmpfilterenable.is_set || is_set(cigmpfilterenable.yfilter)) leaf_name_data.push_back(cigmpfilterenable.get_name_leafdata());
+    if (cigmpfiltermaxprofiles.is_set || is_set(cigmpfiltermaxprofiles.yfilter)) leaf_name_data.push_back(cigmpfiltermaxprofiles.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -234,16 +252,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfilterge
     return children;
 }
 
-void CiscoIgmpFilterMib::Cigmpfiltergeneral::set_value(const std::string & value_path, std::string value)
+void CiscoIgmpFilterMib::Cigmpfiltergeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cIgmpFilterEnable")
     {
         cigmpfilterenable = value;
+        cigmpfilterenable.value_namespace = name_space;
+        cigmpfilterenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterMaxProfiles")
     {
         cigmpfiltermaxprofiles = value;
+        cigmpfiltermaxprofiles.value_namespace = name_space;
+        cigmpfiltermaxprofiles.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoIgmpFilterMib::Cigmpfiltergeneral::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cIgmpFilterEnable")
+    {
+        cigmpfilterenable.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterMaxProfiles")
+    {
+        cigmpfiltermaxprofiles.yfilter = yfilter;
+    }
+}
+
+bool CiscoIgmpFilterMib::Cigmpfiltergeneral::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cIgmpFilterEnable" || name == "cIgmpFilterMaxProfiles")
+        return true;
+    return false;
 }
 
 CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfiltereditor()
@@ -280,16 +321,16 @@ bool CiscoIgmpFilterMib::Cigmpfiltereditor::has_data() const
 
 bool CiscoIgmpFilterMib::Cigmpfiltereditor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cigmpfilterapplystatus.operation)
-	|| is_set(cigmpfiltereditendaddress.operation)
-	|| is_set(cigmpfiltereditendaddresstype.operation)
-	|| is_set(cigmpfiltereditoperation.operation)
-	|| is_set(cigmpfiltereditprofileaction.operation)
-	|| is_set(cigmpfiltereditprofileindex.operation)
-	|| is_set(cigmpfiltereditspinlock.operation)
-	|| is_set(cigmpfiltereditstartaddress.operation)
-	|| is_set(cigmpfiltereditstartaddresstype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cigmpfilterapplystatus.yfilter)
+	|| ydk::is_set(cigmpfiltereditendaddress.yfilter)
+	|| ydk::is_set(cigmpfiltereditendaddresstype.yfilter)
+	|| ydk::is_set(cigmpfiltereditoperation.yfilter)
+	|| ydk::is_set(cigmpfiltereditprofileaction.yfilter)
+	|| ydk::is_set(cigmpfiltereditprofileindex.yfilter)
+	|| ydk::is_set(cigmpfiltereditspinlock.yfilter)
+	|| ydk::is_set(cigmpfiltereditstartaddress.yfilter)
+	|| ydk::is_set(cigmpfiltereditstartaddresstype.yfilter);
 }
 
 std::string CiscoIgmpFilterMib::Cigmpfiltereditor::get_segment_path() const
@@ -315,15 +356,15 @@ const EntityPath CiscoIgmpFilterMib::Cigmpfiltereditor::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cigmpfilterapplystatus.is_set || is_set(cigmpfilterapplystatus.operation)) leaf_name_data.push_back(cigmpfilterapplystatus.get_name_leafdata());
-    if (cigmpfiltereditendaddress.is_set || is_set(cigmpfiltereditendaddress.operation)) leaf_name_data.push_back(cigmpfiltereditendaddress.get_name_leafdata());
-    if (cigmpfiltereditendaddresstype.is_set || is_set(cigmpfiltereditendaddresstype.operation)) leaf_name_data.push_back(cigmpfiltereditendaddresstype.get_name_leafdata());
-    if (cigmpfiltereditoperation.is_set || is_set(cigmpfiltereditoperation.operation)) leaf_name_data.push_back(cigmpfiltereditoperation.get_name_leafdata());
-    if (cigmpfiltereditprofileaction.is_set || is_set(cigmpfiltereditprofileaction.operation)) leaf_name_data.push_back(cigmpfiltereditprofileaction.get_name_leafdata());
-    if (cigmpfiltereditprofileindex.is_set || is_set(cigmpfiltereditprofileindex.operation)) leaf_name_data.push_back(cigmpfiltereditprofileindex.get_name_leafdata());
-    if (cigmpfiltereditspinlock.is_set || is_set(cigmpfiltereditspinlock.operation)) leaf_name_data.push_back(cigmpfiltereditspinlock.get_name_leafdata());
-    if (cigmpfiltereditstartaddress.is_set || is_set(cigmpfiltereditstartaddress.operation)) leaf_name_data.push_back(cigmpfiltereditstartaddress.get_name_leafdata());
-    if (cigmpfiltereditstartaddresstype.is_set || is_set(cigmpfiltereditstartaddresstype.operation)) leaf_name_data.push_back(cigmpfiltereditstartaddresstype.get_name_leafdata());
+    if (cigmpfilterapplystatus.is_set || is_set(cigmpfilterapplystatus.yfilter)) leaf_name_data.push_back(cigmpfilterapplystatus.get_name_leafdata());
+    if (cigmpfiltereditendaddress.is_set || is_set(cigmpfiltereditendaddress.yfilter)) leaf_name_data.push_back(cigmpfiltereditendaddress.get_name_leafdata());
+    if (cigmpfiltereditendaddresstype.is_set || is_set(cigmpfiltereditendaddresstype.yfilter)) leaf_name_data.push_back(cigmpfiltereditendaddresstype.get_name_leafdata());
+    if (cigmpfiltereditoperation.is_set || is_set(cigmpfiltereditoperation.yfilter)) leaf_name_data.push_back(cigmpfiltereditoperation.get_name_leafdata());
+    if (cigmpfiltereditprofileaction.is_set || is_set(cigmpfiltereditprofileaction.yfilter)) leaf_name_data.push_back(cigmpfiltereditprofileaction.get_name_leafdata());
+    if (cigmpfiltereditprofileindex.is_set || is_set(cigmpfiltereditprofileindex.yfilter)) leaf_name_data.push_back(cigmpfiltereditprofileindex.get_name_leafdata());
+    if (cigmpfiltereditspinlock.is_set || is_set(cigmpfiltereditspinlock.yfilter)) leaf_name_data.push_back(cigmpfiltereditspinlock.get_name_leafdata());
+    if (cigmpfiltereditstartaddress.is_set || is_set(cigmpfiltereditstartaddress.yfilter)) leaf_name_data.push_back(cigmpfiltereditstartaddress.get_name_leafdata());
+    if (cigmpfiltereditstartaddresstype.is_set || is_set(cigmpfiltereditstartaddresstype.yfilter)) leaf_name_data.push_back(cigmpfiltereditstartaddresstype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -342,44 +383,109 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfiltered
     return children;
 }
 
-void CiscoIgmpFilterMib::Cigmpfiltereditor::set_value(const std::string & value_path, std::string value)
+void CiscoIgmpFilterMib::Cigmpfiltereditor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cIgmpFilterApplyStatus")
     {
         cigmpfilterapplystatus = value;
+        cigmpfilterapplystatus.value_namespace = name_space;
+        cigmpfilterapplystatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEditEndAddress")
     {
         cigmpfiltereditendaddress = value;
+        cigmpfiltereditendaddress.value_namespace = name_space;
+        cigmpfiltereditendaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEditEndAddressType")
     {
         cigmpfiltereditendaddresstype = value;
+        cigmpfiltereditendaddresstype.value_namespace = name_space;
+        cigmpfiltereditendaddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEditOperation")
     {
         cigmpfiltereditoperation = value;
+        cigmpfiltereditoperation.value_namespace = name_space;
+        cigmpfiltereditoperation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEditProfileAction")
     {
         cigmpfiltereditprofileaction = value;
+        cigmpfiltereditprofileaction.value_namespace = name_space;
+        cigmpfiltereditprofileaction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEditProfileIndex")
     {
         cigmpfiltereditprofileindex = value;
+        cigmpfiltereditprofileindex.value_namespace = name_space;
+        cigmpfiltereditprofileindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEditSpinLock")
     {
         cigmpfiltereditspinlock = value;
+        cigmpfiltereditspinlock.value_namespace = name_space;
+        cigmpfiltereditspinlock.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEditStartAddress")
     {
         cigmpfiltereditstartaddress = value;
+        cigmpfiltereditstartaddress.value_namespace = name_space;
+        cigmpfiltereditstartaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEditStartAddressType")
     {
         cigmpfiltereditstartaddresstype = value;
+        cigmpfiltereditstartaddresstype.value_namespace = name_space;
+        cigmpfiltereditstartaddresstype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoIgmpFilterMib::Cigmpfiltereditor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cIgmpFilterApplyStatus")
+    {
+        cigmpfilterapplystatus.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEditEndAddress")
+    {
+        cigmpfiltereditendaddress.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEditEndAddressType")
+    {
+        cigmpfiltereditendaddresstype.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEditOperation")
+    {
+        cigmpfiltereditoperation.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEditProfileAction")
+    {
+        cigmpfiltereditprofileaction.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEditProfileIndex")
+    {
+        cigmpfiltereditprofileindex.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEditSpinLock")
+    {
+        cigmpfiltereditspinlock.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEditStartAddress")
+    {
+        cigmpfiltereditstartaddress.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEditStartAddressType")
+    {
+        cigmpfiltereditstartaddresstype.yfilter = yfilter;
+    }
+}
+
+bool CiscoIgmpFilterMib::Cigmpfiltereditor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cIgmpFilterApplyStatus" || name == "cIgmpFilterEditEndAddress" || name == "cIgmpFilterEditEndAddressType" || name == "cIgmpFilterEditOperation" || name == "cIgmpFilterEditProfileAction" || name == "cIgmpFilterEditProfileIndex" || name == "cIgmpFilterEditSpinLock" || name == "cIgmpFilterEditStartAddress" || name == "cIgmpFilterEditStartAddressType")
+        return true;
+    return false;
 }
 
 CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfiltertable()
@@ -393,9 +499,9 @@ CiscoIgmpFilterMib::Cigmpfiltertable::~Cigmpfiltertable()
 
 bool CiscoIgmpFilterMib::Cigmpfiltertable::has_data() const
 {
-    for (std::size_t index=0; index<cigmpfilterentry_.size(); index++)
+    for (std::size_t index=0; index<cigmpfilterentry.size(); index++)
     {
-        if(cigmpfilterentry_[index]->has_data())
+        if(cigmpfilterentry[index]->has_data())
             return true;
     }
     return false;
@@ -403,12 +509,12 @@ bool CiscoIgmpFilterMib::Cigmpfiltertable::has_data() const
 
 bool CiscoIgmpFilterMib::Cigmpfiltertable::has_operation() const
 {
-    for (std::size_t index=0; index<cigmpfilterentry_.size(); index++)
+    for (std::size_t index=0; index<cigmpfilterentry.size(); index++)
     {
-        if(cigmpfilterentry_[index]->has_operation())
+        if(cigmpfilterentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoIgmpFilterMib::Cigmpfiltertable::get_segment_path() const
@@ -445,7 +551,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfiltertable::get_child_by_name(
 {
     if(child_yang_name == "cIgmpFilterEntry")
     {
-        for(auto const & c : cigmpfilterentry_)
+        for(auto const & c : cigmpfilterentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -455,7 +561,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfiltertable::get_child_by_name(
         }
         auto c = std::make_shared<CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry>();
         c->parent = this;
-        cigmpfilterentry_.push_back(c);
+        cigmpfilterentry.push_back(c);
         return c;
     }
 
@@ -465,7 +571,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfiltertable::get_child_by_name(
 std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfiltertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cigmpfilterentry_)
+    for (auto const & c : cigmpfilterentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -473,8 +579,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfilterta
     return children;
 }
 
-void CiscoIgmpFilterMib::Cigmpfiltertable::set_value(const std::string & value_path, std::string value)
+void CiscoIgmpFilterMib::Cigmpfiltertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoIgmpFilterMib::Cigmpfiltertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoIgmpFilterMib::Cigmpfiltertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cIgmpFilterEntry")
+        return true;
+    return false;
 }
 
 CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::Cigmpfilterentry()
@@ -505,13 +622,13 @@ bool CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::has_data() const
 
 bool CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cigmpfilterprofileindex.operation)
-	|| is_set(cigmpfilterstartaddresstype.operation)
-	|| is_set(cigmpfilterstartaddress.operation)
-	|| is_set(cigmpfilterendaddress.operation)
-	|| is_set(cigmpfilterendaddresstype.operation)
-	|| is_set(cigmpfilterprofileaction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cigmpfilterprofileindex.yfilter)
+	|| ydk::is_set(cigmpfilterstartaddresstype.yfilter)
+	|| ydk::is_set(cigmpfilterstartaddress.yfilter)
+	|| ydk::is_set(cigmpfilterendaddress.yfilter)
+	|| ydk::is_set(cigmpfilterendaddresstype.yfilter)
+	|| ydk::is_set(cigmpfilterprofileaction.yfilter);
 }
 
 std::string CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::get_segment_path() const
@@ -537,12 +654,12 @@ const EntityPath CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cigmpfilterprofileindex.is_set || is_set(cigmpfilterprofileindex.operation)) leaf_name_data.push_back(cigmpfilterprofileindex.get_name_leafdata());
-    if (cigmpfilterstartaddresstype.is_set || is_set(cigmpfilterstartaddresstype.operation)) leaf_name_data.push_back(cigmpfilterstartaddresstype.get_name_leafdata());
-    if (cigmpfilterstartaddress.is_set || is_set(cigmpfilterstartaddress.operation)) leaf_name_data.push_back(cigmpfilterstartaddress.get_name_leafdata());
-    if (cigmpfilterendaddress.is_set || is_set(cigmpfilterendaddress.operation)) leaf_name_data.push_back(cigmpfilterendaddress.get_name_leafdata());
-    if (cigmpfilterendaddresstype.is_set || is_set(cigmpfilterendaddresstype.operation)) leaf_name_data.push_back(cigmpfilterendaddresstype.get_name_leafdata());
-    if (cigmpfilterprofileaction.is_set || is_set(cigmpfilterprofileaction.operation)) leaf_name_data.push_back(cigmpfilterprofileaction.get_name_leafdata());
+    if (cigmpfilterprofileindex.is_set || is_set(cigmpfilterprofileindex.yfilter)) leaf_name_data.push_back(cigmpfilterprofileindex.get_name_leafdata());
+    if (cigmpfilterstartaddresstype.is_set || is_set(cigmpfilterstartaddresstype.yfilter)) leaf_name_data.push_back(cigmpfilterstartaddresstype.get_name_leafdata());
+    if (cigmpfilterstartaddress.is_set || is_set(cigmpfilterstartaddress.yfilter)) leaf_name_data.push_back(cigmpfilterstartaddress.get_name_leafdata());
+    if (cigmpfilterendaddress.is_set || is_set(cigmpfilterendaddress.yfilter)) leaf_name_data.push_back(cigmpfilterendaddress.get_name_leafdata());
+    if (cigmpfilterendaddresstype.is_set || is_set(cigmpfilterendaddresstype.yfilter)) leaf_name_data.push_back(cigmpfilterendaddresstype.get_name_leafdata());
+    if (cigmpfilterprofileaction.is_set || is_set(cigmpfilterprofileaction.yfilter)) leaf_name_data.push_back(cigmpfilterprofileaction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -561,32 +678,79 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfilterta
     return children;
 }
 
-void CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::set_value(const std::string & value_path, std::string value)
+void CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cIgmpFilterProfileIndex")
     {
         cigmpfilterprofileindex = value;
+        cigmpfilterprofileindex.value_namespace = name_space;
+        cigmpfilterprofileindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterStartAddressType")
     {
         cigmpfilterstartaddresstype = value;
+        cigmpfilterstartaddresstype.value_namespace = name_space;
+        cigmpfilterstartaddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterStartAddress")
     {
         cigmpfilterstartaddress = value;
+        cigmpfilterstartaddress.value_namespace = name_space;
+        cigmpfilterstartaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEndAddress")
     {
         cigmpfilterendaddress = value;
+        cigmpfilterendaddress.value_namespace = name_space;
+        cigmpfilterendaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterEndAddressType")
     {
         cigmpfilterendaddresstype = value;
+        cigmpfilterendaddresstype.value_namespace = name_space;
+        cigmpfilterendaddresstype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterProfileAction")
     {
         cigmpfilterprofileaction = value;
+        cigmpfilterprofileaction.value_namespace = name_space;
+        cigmpfilterprofileaction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cIgmpFilterProfileIndex")
+    {
+        cigmpfilterprofileindex.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterStartAddressType")
+    {
+        cigmpfilterstartaddresstype.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterStartAddress")
+    {
+        cigmpfilterstartaddress.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEndAddress")
+    {
+        cigmpfilterendaddress.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterEndAddressType")
+    {
+        cigmpfilterendaddresstype.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterProfileAction")
+    {
+        cigmpfilterprofileaction.yfilter = yfilter;
+    }
+}
+
+bool CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cIgmpFilterProfileIndex" || name == "cIgmpFilterStartAddressType" || name == "cIgmpFilterStartAddress" || name == "cIgmpFilterEndAddress" || name == "cIgmpFilterEndAddressType" || name == "cIgmpFilterProfileAction")
+        return true;
+    return false;
 }
 
 CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfacetable()
@@ -600,9 +764,9 @@ CiscoIgmpFilterMib::Cigmpfilterinterfacetable::~Cigmpfilterinterfacetable()
 
 bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::has_data() const
 {
-    for (std::size_t index=0; index<cigmpfilterinterfaceentry_.size(); index++)
+    for (std::size_t index=0; index<cigmpfilterinterfaceentry.size(); index++)
     {
-        if(cigmpfilterinterfaceentry_[index]->has_data())
+        if(cigmpfilterinterfaceentry[index]->has_data())
             return true;
     }
     return false;
@@ -610,12 +774,12 @@ bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::has_data() const
 
 bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::has_operation() const
 {
-    for (std::size_t index=0; index<cigmpfilterinterfaceentry_.size(); index++)
+    for (std::size_t index=0; index<cigmpfilterinterfaceentry.size(); index++)
     {
-        if(cigmpfilterinterfaceentry_[index]->has_operation())
+        if(cigmpfilterinterfaceentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_segment_path() const
@@ -652,7 +816,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_child
 {
     if(child_yang_name == "cIgmpFilterInterfaceEntry")
     {
-        for(auto const & c : cigmpfilterinterfaceentry_)
+        for(auto const & c : cigmpfilterinterfaceentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -662,7 +826,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_child
         }
         auto c = std::make_shared<CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry>();
         c->parent = this;
-        cigmpfilterinterfaceentry_.push_back(c);
+        cigmpfilterinterfaceentry.push_back(c);
         return c;
     }
 
@@ -672,7 +836,7 @@ std::shared_ptr<Entity> CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfilterinterfacetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cigmpfilterinterfaceentry_)
+    for (auto const & c : cigmpfilterinterfaceentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -680,8 +844,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfilterin
     return children;
 }
 
-void CiscoIgmpFilterMib::Cigmpfilterinterfacetable::set_value(const std::string & value_path, std::string value)
+void CiscoIgmpFilterMib::Cigmpfilterinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoIgmpFilterMib::Cigmpfilterinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cIgmpFilterInterfaceEntry")
+        return true;
+    return false;
 }
 
 CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::Cigmpfilterinterfaceentry()
@@ -704,9 +879,9 @@ bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::h
 
 bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(cigmpfilterinterfaceprofileindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cigmpfilterinterfaceprofileindex.yfilter);
 }
 
 std::string CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::get_segment_path() const
@@ -732,8 +907,8 @@ const EntityPath CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinter
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cigmpfilterinterfaceprofileindex.is_set || is_set(cigmpfilterinterfaceprofileindex.operation)) leaf_name_data.push_back(cigmpfilterinterfaceprofileindex.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cigmpfilterinterfaceprofileindex.is_set || is_set(cigmpfilterinterfaceprofileindex.yfilter)) leaf_name_data.push_back(cigmpfilterinterfaceprofileindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -752,35 +927,58 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoIgmpFilterMib::Cigmpfilterin
     return children;
 }
 
-void CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::set_value(const std::string & value_path, std::string value)
+void CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cIgmpFilterInterfaceProfileIndex")
     {
         cigmpfilterinterfaceprofileindex = value;
+        cigmpfilterinterfaceprofileindex.value_namespace = name_space;
+        cigmpfilterinterfaceprofileindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfiltereditprofileactionEnum::unSpecified {0, "unSpecified"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfiltereditprofileactionEnum::permit {1, "permit"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfiltereditprofileactionEnum::deny {2, "deny"};
+void CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "cIgmpFilterInterfaceProfileIndex")
+    {
+        cigmpfilterinterfaceprofileindex.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfiltereditoperationEnum::none {1, "none"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfiltereditoperationEnum::add {2, "add"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfiltereditoperationEnum::delete_ {3, "delete"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfiltereditoperationEnum::modify {4, "modify"};
+bool CiscoIgmpFilterMib::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "cIgmpFilterInterfaceProfileIndex")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfilterapplystatusEnum::someOtherError {1, "someOtherError"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfilterapplystatusEnum::succeeded {2, "succeeded"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfilterapplystatusEnum::inconsistentEdit {3, "inconsistentEdit"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfilterapplystatusEnum::entryPresentError {4, "entryPresentError"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::CigmpfilterapplystatusEnum::entryNotPresentError {5, "entryNotPresentError"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfiltereditprofileaction::unSpecified {0, "unSpecified"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfiltereditprofileaction::permit {1, "permit"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfiltereditprofileaction::deny {2, "deny"};
 
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::CigmpfilterprofileactionEnum::permit {1, "permit"};
-const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::CigmpfilterprofileactionEnum::deny {2, "deny"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfiltereditoperation::none {1, "none"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfiltereditoperation::add {2, "add"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfiltereditoperation::delete_ {3, "delete"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfiltereditoperation::modify {4, "modify"};
+
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfilterapplystatus::someOtherError {1, "someOtherError"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfilterapplystatus::succeeded {2, "succeeded"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfilterapplystatus::inconsistentEdit {3, "inconsistentEdit"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfilterapplystatus::entryPresentError {4, "entryPresentError"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltereditor::Cigmpfilterapplystatus::entryNotPresentError {5, "entryNotPresentError"};
+
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::Cigmpfilterprofileaction::permit {1, "permit"};
+const Enum::YLeaf CiscoIgmpFilterMib::Cigmpfiltertable::Cigmpfilterentry::Cigmpfilterprofileaction::deny {2, "deny"};
 
 
 }

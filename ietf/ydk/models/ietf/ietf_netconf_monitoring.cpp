@@ -6,24 +6,26 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_netconf_monitoring.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_netconf_monitoring {
 
-SchemaFormatIdentity::SchemaFormatIdentity()
-     : Identity("ietf-netconf-monitoring:schema-format")
+SchemaFormat::SchemaFormat()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:schema-format")
 {
 }
 
-SchemaFormatIdentity::~SchemaFormatIdentity()
+SchemaFormat::~SchemaFormat()
 {
 }
 
-TransportIdentity::TransportIdentity()
-     : Identity("ietf-netconf-monitoring:transport")
+Transport::Transport()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:transport")
 {
 }
 
-TransportIdentity::~TransportIdentity()
+Transport::~Transport()
 {
 }
 
@@ -63,7 +65,7 @@ bool NetconfState::has_data() const
 
 bool NetconfState::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (capabilities !=  nullptr && capabilities->has_operation())
 	|| (datastores !=  nullptr && datastores->has_operation())
 	|| (schemas !=  nullptr && schemas->has_operation())
@@ -179,7 +181,11 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::get_children() cons
     return children;
 }
 
-void NetconfState::set_value(const std::string & value_path, std::string value)
+void NetconfState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NetconfState::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -201,6 +207,18 @@ std::string NetconfState::get_bundle_name() const
 augment_capabilities_function NetconfState::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> NetconfState::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool NetconfState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capabilities" || name == "datastores" || name == "schemas" || name == "sessions" || name == "statistics")
+        return true;
+    return false;
 }
 
 NetconfState::Capabilities::Capabilities()
@@ -228,11 +246,11 @@ bool NetconfState::Capabilities::has_operation() const
 {
     for (auto const & leaf : capability.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(capability.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(capability.yfilter);
 }
 
 std::string NetconfState::Capabilities::get_segment_path() const
@@ -278,12 +296,27 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Capabilities::get_c
     return children;
 }
 
-void NetconfState::Capabilities::set_value(const std::string & value_path, std::string value)
+void NetconfState::Capabilities::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "capability")
     {
         capability.append(value);
     }
+}
+
+void NetconfState::Capabilities::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capability")
+    {
+        capability.yfilter = yfilter;
+    }
+}
+
+bool NetconfState::Capabilities::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capability")
+        return true;
+    return false;
 }
 
 NetconfState::Datastores::Datastores()
@@ -312,7 +345,7 @@ bool NetconfState::Datastores::has_operation() const
         if(datastore[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string NetconfState::Datastores::get_segment_path() const
@@ -377,8 +410,19 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::get_chi
     return children;
 }
 
-void NetconfState::Datastores::set_value(const std::string & value_path, std::string value)
+void NetconfState::Datastores::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void NetconfState::Datastores::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetconfState::Datastores::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "datastore")
+        return true;
+    return false;
 }
 
 NetconfState::Datastores::Datastore::Datastore()
@@ -402,8 +446,8 @@ bool NetconfState::Datastores::Datastore::has_data() const
 
 bool NetconfState::Datastores::Datastore::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (locks !=  nullptr && locks->has_operation());
 }
 
@@ -430,7 +474,7 @@ const EntityPath NetconfState::Datastores::Datastore::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -463,12 +507,29 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datasto
     return children;
 }
 
-void NetconfState::Datastores::Datastore::set_value(const std::string & value_path, std::string value)
+void NetconfState::Datastores::Datastore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NetconfState::Datastores::Datastore::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool NetconfState::Datastores::Datastore::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "locks" || name == "name")
+        return true;
+    return false;
 }
 
 NetconfState::Datastores::Datastore::Locks::Locks()
@@ -501,7 +562,7 @@ bool NetconfState::Datastores::Datastore::Locks::has_operation() const
         if(partial_lock[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global_lock !=  nullptr && global_lock->has_operation());
 }
 
@@ -581,8 +642,19 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datasto
     return children;
 }
 
-void NetconfState::Datastores::Datastore::Locks::set_value(const std::string & value_path, std::string value)
+void NetconfState::Datastores::Datastore::Locks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void NetconfState::Datastores::Datastore::Locks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetconfState::Datastores::Datastore::Locks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-lock" || name == "partial-lock")
+        return true;
+    return false;
 }
 
 NetconfState::Datastores::Datastore::Locks::GlobalLock::GlobalLock()
@@ -605,9 +677,9 @@ bool NetconfState::Datastores::Datastore::Locks::GlobalLock::has_data() const
 
 bool NetconfState::Datastores::Datastore::Locks::GlobalLock::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(locked_by_session.operation)
-	|| is_set(locked_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(locked_by_session.yfilter)
+	|| ydk::is_set(locked_time.yfilter);
 }
 
 std::string NetconfState::Datastores::Datastore::Locks::GlobalLock::get_segment_path() const
@@ -633,8 +705,8 @@ const EntityPath NetconfState::Datastores::Datastore::Locks::GlobalLock::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (locked_by_session.is_set || is_set(locked_by_session.operation)) leaf_name_data.push_back(locked_by_session.get_name_leafdata());
-    if (locked_time.is_set || is_set(locked_time.operation)) leaf_name_data.push_back(locked_time.get_name_leafdata());
+    if (locked_by_session.is_set || is_set(locked_by_session.yfilter)) leaf_name_data.push_back(locked_by_session.get_name_leafdata());
+    if (locked_time.is_set || is_set(locked_time.yfilter)) leaf_name_data.push_back(locked_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -653,16 +725,39 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datasto
     return children;
 }
 
-void NetconfState::Datastores::Datastore::Locks::GlobalLock::set_value(const std::string & value_path, std::string value)
+void NetconfState::Datastores::Datastore::Locks::GlobalLock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "locked-by-session")
     {
         locked_by_session = value;
+        locked_by_session.value_namespace = name_space;
+        locked_by_session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "locked-time")
     {
         locked_time = value;
+        locked_time.value_namespace = name_space;
+        locked_time.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NetconfState::Datastores::Datastore::Locks::GlobalLock::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "locked-by-session")
+    {
+        locked_by_session.yfilter = yfilter;
+    }
+    if(value_path == "locked-time")
+    {
+        locked_time.yfilter = yfilter;
+    }
+}
+
+bool NetconfState::Datastores::Datastore::Locks::GlobalLock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "locked-by-session" || name == "locked-time")
+        return true;
+    return false;
 }
 
 NetconfState::Datastores::Datastore::Locks::PartialLock::PartialLock()
@@ -701,20 +796,20 @@ bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_operation() co
 {
     for (auto const & leaf : locked_node.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : select.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(lock_id.operation)
-	|| is_set(locked_by_session.operation)
-	|| is_set(locked_node.operation)
-	|| is_set(locked_time.operation)
-	|| is_set(select.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lock_id.yfilter)
+	|| ydk::is_set(locked_by_session.yfilter)
+	|| ydk::is_set(locked_node.yfilter)
+	|| ydk::is_set(locked_time.yfilter)
+	|| ydk::is_set(select.yfilter);
 }
 
 std::string NetconfState::Datastores::Datastore::Locks::PartialLock::get_segment_path() const
@@ -740,9 +835,9 @@ const EntityPath NetconfState::Datastores::Datastore::Locks::PartialLock::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lock_id.is_set || is_set(lock_id.operation)) leaf_name_data.push_back(lock_id.get_name_leafdata());
-    if (locked_by_session.is_set || is_set(locked_by_session.operation)) leaf_name_data.push_back(locked_by_session.get_name_leafdata());
-    if (locked_time.is_set || is_set(locked_time.operation)) leaf_name_data.push_back(locked_time.get_name_leafdata());
+    if (lock_id.is_set || is_set(lock_id.yfilter)) leaf_name_data.push_back(lock_id.get_name_leafdata());
+    if (locked_by_session.is_set || is_set(locked_by_session.yfilter)) leaf_name_data.push_back(locked_by_session.get_name_leafdata());
+    if (locked_time.is_set || is_set(locked_time.yfilter)) leaf_name_data.push_back(locked_time.get_name_leafdata());
 
     auto locked_node_name_datas = locked_node.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), locked_node_name_datas.begin(), locked_node_name_datas.end());
@@ -765,15 +860,19 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Datastores::Datasto
     return children;
 }
 
-void NetconfState::Datastores::Datastore::Locks::PartialLock::set_value(const std::string & value_path, std::string value)
+void NetconfState::Datastores::Datastore::Locks::PartialLock::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lock-id")
     {
         lock_id = value;
+        lock_id.value_namespace = name_space;
+        lock_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "locked-by-session")
     {
         locked_by_session = value;
+        locked_by_session.value_namespace = name_space;
+        locked_by_session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "locked-node")
     {
@@ -782,11 +881,44 @@ void NetconfState::Datastores::Datastore::Locks::PartialLock::set_value(const st
     if(value_path == "locked-time")
     {
         locked_time = value;
+        locked_time.value_namespace = name_space;
+        locked_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "select")
     {
         select.append(value);
     }
+}
+
+void NetconfState::Datastores::Datastore::Locks::PartialLock::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lock-id")
+    {
+        lock_id.yfilter = yfilter;
+    }
+    if(value_path == "locked-by-session")
+    {
+        locked_by_session.yfilter = yfilter;
+    }
+    if(value_path == "locked-node")
+    {
+        locked_node.yfilter = yfilter;
+    }
+    if(value_path == "locked-time")
+    {
+        locked_time.yfilter = yfilter;
+    }
+    if(value_path == "select")
+    {
+        select.yfilter = yfilter;
+    }
+}
+
+bool NetconfState::Datastores::Datastore::Locks::PartialLock::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lock-id" || name == "locked-by-session" || name == "locked-node" || name == "locked-time" || name == "select")
+        return true;
+    return false;
 }
 
 NetconfState::Schemas::Schemas()
@@ -815,7 +947,7 @@ bool NetconfState::Schemas::has_operation() const
         if(schema[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string NetconfState::Schemas::get_segment_path() const
@@ -880,8 +1012,19 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::get_childr
     return children;
 }
 
-void NetconfState::Schemas::set_value(const std::string & value_path, std::string value)
+void NetconfState::Schemas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void NetconfState::Schemas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetconfState::Schemas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "schema")
+        return true;
+    return false;
 }
 
 NetconfState::Schemas::Schema::Schema()
@@ -916,15 +1059,15 @@ bool NetconfState::Schemas::Schema::has_operation() const
 {
     for (auto const & leaf : location.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(identifier.operation)
-	|| is_set(version.operation)
-	|| is_set(format.operation)
-	|| is_set(location.operation)
-	|| is_set(namespace_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(format.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(namespace_.yfilter);
 }
 
 std::string NetconfState::Schemas::Schema::get_segment_path() const
@@ -950,10 +1093,10 @@ const EntityPath NetconfState::Schemas::Schema::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
-    if (namespace_.is_set || is_set(namespace_.operation)) leaf_name_data.push_back(namespace_.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (namespace_.is_set || is_set(namespace_.yfilter)) leaf_name_data.push_back(namespace_.get_name_leafdata());
 
     auto location_name_datas = location.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), location_name_datas.begin(), location_name_datas.end());
@@ -974,19 +1117,25 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Schemas::Schema::ge
     return children;
 }
 
-void NetconfState::Schemas::Schema::set_value(const std::string & value_path, std::string value)
+void NetconfState::Schemas::Schema::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "identifier")
     {
         identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
@@ -995,7 +1144,40 @@ void NetconfState::Schemas::Schema::set_value(const std::string & value_path, st
     if(value_path == "namespace")
     {
         namespace_ = value;
+        namespace_.value_namespace = name_space;
+        namespace_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NetconfState::Schemas::Schema::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "namespace")
+    {
+        namespace_.yfilter = yfilter;
+    }
+}
+
+bool NetconfState::Schemas::Schema::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identifier" || name == "version" || name == "format" || name == "location" || name == "namespace")
+        return true;
+    return false;
 }
 
 NetconfState::Sessions::Sessions()
@@ -1024,7 +1206,7 @@ bool NetconfState::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string NetconfState::Sessions::get_segment_path() const
@@ -1089,8 +1271,19 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::get_child
     return children;
 }
 
-void NetconfState::Sessions::set_value(const std::string & value_path, std::string value)
+void NetconfState::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void NetconfState::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetconfState::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 NetconfState::Sessions::Session::Session()
@@ -1127,16 +1320,16 @@ bool NetconfState::Sessions::Session::has_data() const
 
 bool NetconfState::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(in_bad_rpcs.operation)
-	|| is_set(in_rpcs.operation)
-	|| is_set(login_time.operation)
-	|| is_set(out_notifications.operation)
-	|| is_set(out_rpc_errors.operation)
-	|| is_set(source_host.operation)
-	|| is_set(transport.operation)
-	|| is_set(username.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(in_bad_rpcs.yfilter)
+	|| ydk::is_set(in_rpcs.yfilter)
+	|| ydk::is_set(login_time.yfilter)
+	|| ydk::is_set(out_notifications.yfilter)
+	|| ydk::is_set(out_rpc_errors.yfilter)
+	|| ydk::is_set(source_host.yfilter)
+	|| ydk::is_set(transport.yfilter)
+	|| ydk::is_set(username.yfilter);
 }
 
 std::string NetconfState::Sessions::Session::get_segment_path() const
@@ -1162,15 +1355,15 @@ const EntityPath NetconfState::Sessions::Session::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (in_bad_rpcs.is_set || is_set(in_bad_rpcs.operation)) leaf_name_data.push_back(in_bad_rpcs.get_name_leafdata());
-    if (in_rpcs.is_set || is_set(in_rpcs.operation)) leaf_name_data.push_back(in_rpcs.get_name_leafdata());
-    if (login_time.is_set || is_set(login_time.operation)) leaf_name_data.push_back(login_time.get_name_leafdata());
-    if (out_notifications.is_set || is_set(out_notifications.operation)) leaf_name_data.push_back(out_notifications.get_name_leafdata());
-    if (out_rpc_errors.is_set || is_set(out_rpc_errors.operation)) leaf_name_data.push_back(out_rpc_errors.get_name_leafdata());
-    if (source_host.is_set || is_set(source_host.operation)) leaf_name_data.push_back(source_host.get_name_leafdata());
-    if (transport.is_set || is_set(transport.operation)) leaf_name_data.push_back(transport.get_name_leafdata());
-    if (username.is_set || is_set(username.operation)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (in_bad_rpcs.is_set || is_set(in_bad_rpcs.yfilter)) leaf_name_data.push_back(in_bad_rpcs.get_name_leafdata());
+    if (in_rpcs.is_set || is_set(in_rpcs.yfilter)) leaf_name_data.push_back(in_rpcs.get_name_leafdata());
+    if (login_time.is_set || is_set(login_time.yfilter)) leaf_name_data.push_back(login_time.get_name_leafdata());
+    if (out_notifications.is_set || is_set(out_notifications.yfilter)) leaf_name_data.push_back(out_notifications.get_name_leafdata());
+    if (out_rpc_errors.is_set || is_set(out_rpc_errors.yfilter)) leaf_name_data.push_back(out_rpc_errors.get_name_leafdata());
+    if (source_host.is_set || is_set(source_host.yfilter)) leaf_name_data.push_back(source_host.get_name_leafdata());
+    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1189,44 +1382,109 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Sessions::Session::
     return children;
 }
 
-void NetconfState::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void NetconfState::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-bad-rpcs")
     {
         in_bad_rpcs = value;
+        in_bad_rpcs.value_namespace = name_space;
+        in_bad_rpcs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-rpcs")
     {
         in_rpcs = value;
+        in_rpcs.value_namespace = name_space;
+        in_rpcs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "login-time")
     {
         login_time = value;
+        login_time.value_namespace = name_space;
+        login_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-notifications")
     {
         out_notifications = value;
+        out_notifications.value_namespace = name_space;
+        out_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-rpc-errors")
     {
         out_rpc_errors = value;
+        out_rpc_errors.value_namespace = name_space;
+        out_rpc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-host")
     {
         source_host = value;
+        source_host.value_namespace = name_space;
+        source_host.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport")
     {
         transport = value;
+        transport.value_namespace = name_space;
+        transport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "username")
     {
         username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NetconfState::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "in-bad-rpcs")
+    {
+        in_bad_rpcs.yfilter = yfilter;
+    }
+    if(value_path == "in-rpcs")
+    {
+        in_rpcs.yfilter = yfilter;
+    }
+    if(value_path == "login-time")
+    {
+        login_time.yfilter = yfilter;
+    }
+    if(value_path == "out-notifications")
+    {
+        out_notifications.yfilter = yfilter;
+    }
+    if(value_path == "out-rpc-errors")
+    {
+        out_rpc_errors.yfilter = yfilter;
+    }
+    if(value_path == "source-host")
+    {
+        source_host.yfilter = yfilter;
+    }
+    if(value_path == "transport")
+    {
+        transport.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool NetconfState::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "in-bad-rpcs" || name == "in-rpcs" || name == "login-time" || name == "out-notifications" || name == "out-rpc-errors" || name == "source-host" || name == "transport" || name == "username")
+        return true;
+    return false;
 }
 
 NetconfState::Statistics::Statistics()
@@ -1261,15 +1519,15 @@ bool NetconfState::Statistics::has_data() const
 
 bool NetconfState::Statistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dropped_sessions.operation)
-	|| is_set(in_bad_hellos.operation)
-	|| is_set(in_bad_rpcs.operation)
-	|| is_set(in_rpcs.operation)
-	|| is_set(in_sessions.operation)
-	|| is_set(netconf_start_time.operation)
-	|| is_set(out_notifications.operation)
-	|| is_set(out_rpc_errors.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dropped_sessions.yfilter)
+	|| ydk::is_set(in_bad_hellos.yfilter)
+	|| ydk::is_set(in_bad_rpcs.yfilter)
+	|| ydk::is_set(in_rpcs.yfilter)
+	|| ydk::is_set(in_sessions.yfilter)
+	|| ydk::is_set(netconf_start_time.yfilter)
+	|| ydk::is_set(out_notifications.yfilter)
+	|| ydk::is_set(out_rpc_errors.yfilter);
 }
 
 std::string NetconfState::Statistics::get_segment_path() const
@@ -1295,14 +1553,14 @@ const EntityPath NetconfState::Statistics::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dropped_sessions.is_set || is_set(dropped_sessions.operation)) leaf_name_data.push_back(dropped_sessions.get_name_leafdata());
-    if (in_bad_hellos.is_set || is_set(in_bad_hellos.operation)) leaf_name_data.push_back(in_bad_hellos.get_name_leafdata());
-    if (in_bad_rpcs.is_set || is_set(in_bad_rpcs.operation)) leaf_name_data.push_back(in_bad_rpcs.get_name_leafdata());
-    if (in_rpcs.is_set || is_set(in_rpcs.operation)) leaf_name_data.push_back(in_rpcs.get_name_leafdata());
-    if (in_sessions.is_set || is_set(in_sessions.operation)) leaf_name_data.push_back(in_sessions.get_name_leafdata());
-    if (netconf_start_time.is_set || is_set(netconf_start_time.operation)) leaf_name_data.push_back(netconf_start_time.get_name_leafdata());
-    if (out_notifications.is_set || is_set(out_notifications.operation)) leaf_name_data.push_back(out_notifications.get_name_leafdata());
-    if (out_rpc_errors.is_set || is_set(out_rpc_errors.operation)) leaf_name_data.push_back(out_rpc_errors.get_name_leafdata());
+    if (dropped_sessions.is_set || is_set(dropped_sessions.yfilter)) leaf_name_data.push_back(dropped_sessions.get_name_leafdata());
+    if (in_bad_hellos.is_set || is_set(in_bad_hellos.yfilter)) leaf_name_data.push_back(in_bad_hellos.get_name_leafdata());
+    if (in_bad_rpcs.is_set || is_set(in_bad_rpcs.yfilter)) leaf_name_data.push_back(in_bad_rpcs.get_name_leafdata());
+    if (in_rpcs.is_set || is_set(in_rpcs.yfilter)) leaf_name_data.push_back(in_rpcs.get_name_leafdata());
+    if (in_sessions.is_set || is_set(in_sessions.yfilter)) leaf_name_data.push_back(in_sessions.get_name_leafdata());
+    if (netconf_start_time.is_set || is_set(netconf_start_time.yfilter)) leaf_name_data.push_back(netconf_start_time.get_name_leafdata());
+    if (out_notifications.is_set || is_set(out_notifications.yfilter)) leaf_name_data.push_back(out_notifications.get_name_leafdata());
+    if (out_rpc_errors.is_set || is_set(out_rpc_errors.yfilter)) leaf_name_data.push_back(out_rpc_errors.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1321,46 +1579,105 @@ std::map<std::string, std::shared_ptr<Entity>> NetconfState::Statistics::get_chi
     return children;
 }
 
-void NetconfState::Statistics::set_value(const std::string & value_path, std::string value)
+void NetconfState::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dropped-sessions")
     {
         dropped_sessions = value;
+        dropped_sessions.value_namespace = name_space;
+        dropped_sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-bad-hellos")
     {
         in_bad_hellos = value;
+        in_bad_hellos.value_namespace = name_space;
+        in_bad_hellos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-bad-rpcs")
     {
         in_bad_rpcs = value;
+        in_bad_rpcs.value_namespace = name_space;
+        in_bad_rpcs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-rpcs")
     {
         in_rpcs = value;
+        in_rpcs.value_namespace = name_space;
+        in_rpcs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-sessions")
     {
         in_sessions = value;
+        in_sessions.value_namespace = name_space;
+        in_sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netconf-start-time")
     {
         netconf_start_time = value;
+        netconf_start_time.value_namespace = name_space;
+        netconf_start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-notifications")
     {
         out_notifications = value;
+        out_notifications.value_namespace = name_space;
+        out_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-rpc-errors")
     {
         out_rpc_errors = value;
+        out_rpc_errors.value_namespace = name_space;
+        out_rpc_errors.value_namespace_prefix = name_space_prefix;
     }
 }
 
-GetSchemaRpc::GetSchemaRpc()
+void NetconfState::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dropped-sessions")
+    {
+        dropped_sessions.yfilter = yfilter;
+    }
+    if(value_path == "in-bad-hellos")
+    {
+        in_bad_hellos.yfilter = yfilter;
+    }
+    if(value_path == "in-bad-rpcs")
+    {
+        in_bad_rpcs.yfilter = yfilter;
+    }
+    if(value_path == "in-rpcs")
+    {
+        in_rpcs.yfilter = yfilter;
+    }
+    if(value_path == "in-sessions")
+    {
+        in_sessions.yfilter = yfilter;
+    }
+    if(value_path == "netconf-start-time")
+    {
+        netconf_start_time.yfilter = yfilter;
+    }
+    if(value_path == "out-notifications")
+    {
+        out_notifications.yfilter = yfilter;
+    }
+    if(value_path == "out-rpc-errors")
+    {
+        out_rpc_errors.yfilter = yfilter;
+    }
+}
+
+bool NetconfState::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dropped-sessions" || name == "in-bad-hellos" || name == "in-bad-rpcs" || name == "in-rpcs" || name == "in-sessions" || name == "netconf-start-time" || name == "out-notifications" || name == "out-rpc-errors")
+        return true;
+    return false;
+}
+
+GetSchema::GetSchema()
     :
-    input(std::make_shared<GetSchemaRpc::Input>())
-	,output(std::make_shared<GetSchemaRpc::Output>())
+    input(std::make_shared<GetSchema::Input>())
+	,output(std::make_shared<GetSchema::Output>())
 {
     input->parent = this;
 
@@ -1369,24 +1686,24 @@ GetSchemaRpc::GetSchemaRpc()
     yang_name = "get-schema"; yang_parent_name = "ietf-netconf-monitoring";
 }
 
-GetSchemaRpc::~GetSchemaRpc()
+GetSchema::~GetSchema()
 {
 }
 
-bool GetSchemaRpc::has_data() const
+bool GetSchema::has_data() const
 {
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
 
-bool GetSchemaRpc::has_operation() const
+bool GetSchema::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string GetSchemaRpc::get_segment_path() const
+std::string GetSchema::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ietf-netconf-monitoring:get-schema";
@@ -1395,7 +1712,7 @@ std::string GetSchemaRpc::get_segment_path() const
 
 }
 
-const EntityPath GetSchemaRpc::get_entity_path(Entity* ancestor) const
+const EntityPath GetSchema::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1413,13 +1730,13 @@ const EntityPath GetSchemaRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetSchemaRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetSchema::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<GetSchemaRpc::Input>();
+            input = std::make_shared<GetSchema::Input>();
         }
         return input;
     }
@@ -1428,7 +1745,7 @@ std::shared_ptr<Entity> GetSchemaRpc::get_child_by_name(const std::string & chil
     {
         if(output == nullptr)
         {
-            output = std::make_shared<GetSchemaRpc::Output>();
+            output = std::make_shared<GetSchema::Output>();
         }
         return output;
     }
@@ -1436,7 +1753,7 @@ std::shared_ptr<Entity> GetSchemaRpc::get_child_by_name(const std::string & chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSchemaRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -1452,31 +1769,47 @@ std::map<std::string, std::shared_ptr<Entity>> GetSchemaRpc::get_children() cons
     return children;
 }
 
-void GetSchemaRpc::set_value(const std::string & value_path, std::string value)
+void GetSchema::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> GetSchemaRpc::clone_ptr() const
+void GetSchema::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<GetSchemaRpc>();
 }
 
-std::string GetSchemaRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> GetSchema::clone_ptr() const
+{
+    return std::make_shared<GetSchema>();
+}
+
+std::string GetSchema::get_bundle_yang_models_location() const
 {
     return ydk_ietf_models_path;
 }
 
-std::string GetSchemaRpc::get_bundle_name() const
+std::string GetSchema::get_bundle_name() const
 {
     return "ietf";
 }
 
-augment_capabilities_function GetSchemaRpc::get_augment_capabilities_function() const
+augment_capabilities_function GetSchema::get_augment_capabilities_function() const
 {
     return ietf_augment_lookup_tables;
 }
 
-GetSchemaRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> GetSchema::get_namespace_identity_lookup() const
+{
+    return ietf_namespace_identity_lookup;
+}
+
+bool GetSchema::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+GetSchema::Input::Input()
     :
     format{YType::identityref, "format"},
     identifier{YType::str, "identifier"},
@@ -1485,26 +1818,26 @@ GetSchemaRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "get-schema";
 }
 
-GetSchemaRpc::Input::~Input()
+GetSchema::Input::~Input()
 {
 }
 
-bool GetSchemaRpc::Input::has_data() const
+bool GetSchema::Input::has_data() const
 {
     return format.is_set
 	|| identifier.is_set
 	|| version.is_set;
 }
 
-bool GetSchemaRpc::Input::has_operation() const
+bool GetSchema::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(format.operation)
-	|| is_set(identifier.operation)
-	|| is_set(version.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(format.yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(version.yfilter);
 }
 
-std::string GetSchemaRpc::Input::get_segment_path() const
+std::string GetSchema::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -1513,7 +1846,7 @@ std::string GetSchemaRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath GetSchemaRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath GetSchema::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1527,9 +1860,9 @@ const EntityPath GetSchemaRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1537,56 +1870,85 @@ const EntityPath GetSchemaRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetSchemaRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetSchema::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSchemaRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void GetSchemaRpc::Input::set_value(const std::string & value_path, std::string value)
+void GetSchema::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "identifier")
     {
         identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
 }
 
-GetSchemaRpc::Output::Output()
+void GetSchema::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool GetSchema::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "format" || name == "identifier" || name == "version")
+        return true;
+    return false;
+}
+
+GetSchema::Output::Output()
     :
     data{YType::str, "data"}
 {
     yang_name = "output"; yang_parent_name = "get-schema";
 }
 
-GetSchemaRpc::Output::~Output()
+GetSchema::Output::~Output()
 {
 }
 
-bool GetSchemaRpc::Output::has_data() const
+bool GetSchema::Output::has_data() const
 {
     return data.is_set;
 }
 
-bool GetSchemaRpc::Output::has_operation() const
+bool GetSchema::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(data.yfilter);
 }
 
-std::string GetSchemaRpc::Output::get_segment_path() const
+std::string GetSchema::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -1595,7 +1957,7 @@ std::string GetSchemaRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath GetSchemaRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath GetSchema::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1609,7 +1971,7 @@ const EntityPath GetSchemaRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data.is_set || is_set(data.operation)) leaf_name_data.push_back(data.get_name_leafdata());
+    if (data.is_set || is_set(data.yfilter)) leaf_name_data.push_back(data.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1617,120 +1979,137 @@ const EntityPath GetSchemaRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> GetSchemaRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> GetSchema::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> GetSchemaRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> GetSchema::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void GetSchemaRpc::Output::set_value(const std::string & value_path, std::string value)
+void GetSchema::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data")
     {
         data = value;
+        data.value_namespace = name_space;
+        data.value_namespace_prefix = name_space_prefix;
     }
 }
 
-NetconfBeepIdentity::NetconfBeepIdentity()
-     : Identity("ietf-netconf-monitoring:netconf-beep")
+void GetSchema::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data")
+    {
+        data.yfilter = yfilter;
+    }
+}
+
+bool GetSchema::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data")
+        return true;
+    return false;
+}
+
+Rnc::Rnc()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rnc")
 {
 }
 
-NetconfBeepIdentity::~NetconfBeepIdentity()
+Rnc::~Rnc()
 {
 }
 
-NetconfSshIdentity::NetconfSshIdentity()
-     : Identity("ietf-netconf-monitoring:netconf-ssh")
+Yang::Yang()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yang")
 {
 }
 
-NetconfSshIdentity::~NetconfSshIdentity()
+Yang::~Yang()
 {
 }
 
-RncIdentity::RncIdentity()
-     : Identity("ietf-netconf-monitoring:rnc")
+NetconfBeep::NetconfBeep()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-beep")
 {
 }
 
-RncIdentity::~RncIdentity()
+NetconfBeep::~NetconfBeep()
 {
 }
 
-YinIdentity::YinIdentity()
-     : Identity("ietf-netconf-monitoring:yin")
+NetconfSoapOverBeep::NetconfSoapOverBeep()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-beep")
 {
 }
 
-YinIdentity::~YinIdentity()
+NetconfSoapOverBeep::~NetconfSoapOverBeep()
 {
 }
 
-RngIdentity::RngIdentity()
-     : Identity("ietf-netconf-monitoring:rng")
+NetconfSsh::NetconfSsh()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-ssh")
 {
 }
 
-RngIdentity::~RngIdentity()
+NetconfSsh::~NetconfSsh()
 {
 }
 
-XsdIdentity::XsdIdentity()
-     : Identity("ietf-netconf-monitoring:xsd")
+NetconfSoapOverHttps::NetconfSoapOverHttps()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-https")
 {
 }
 
-XsdIdentity::~XsdIdentity()
+NetconfSoapOverHttps::~NetconfSoapOverHttps()
 {
 }
 
-NetconfSoapOverBeepIdentity::NetconfSoapOverBeepIdentity()
-     : Identity("ietf-netconf-monitoring:netconf-soap-over-beep")
+Rng::Rng()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rng")
 {
 }
 
-NetconfSoapOverBeepIdentity::~NetconfSoapOverBeepIdentity()
+Rng::~Rng()
 {
 }
 
-NetconfTlsIdentity::NetconfTlsIdentity()
-     : Identity("ietf-netconf-monitoring:netconf-tls")
+NetconfTls::NetconfTls()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-tls")
 {
 }
 
-NetconfTlsIdentity::~NetconfTlsIdentity()
+NetconfTls::~NetconfTls()
 {
 }
 
-YangIdentity::YangIdentity()
-     : Identity("ietf-netconf-monitoring:yang")
+Yin::Yin()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yin")
 {
 }
 
-YangIdentity::~YangIdentity()
+Yin::~Yin()
 {
 }
 
-NetconfSoapOverHttpsIdentity::NetconfSoapOverHttpsIdentity()
-     : Identity("ietf-netconf-monitoring:netconf-soap-over-https")
+Xsd::Xsd()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:xsd")
 {
 }
 
-NetconfSoapOverHttpsIdentity::~NetconfSoapOverHttpsIdentity()
+Xsd::~Xsd()
 {
 }
 
-const Enum::YLeaf NetconfDatastoreTypeEnum::running {0, "running"};
-const Enum::YLeaf NetconfDatastoreTypeEnum::candidate {1, "candidate"};
-const Enum::YLeaf NetconfDatastoreTypeEnum::startup {2, "startup"};
+const Enum::YLeaf NetconfDatastoreType::running {0, "running"};
+const Enum::YLeaf NetconfDatastoreType::candidate {1, "candidate"};
+const Enum::YLeaf NetconfDatastoreType::startup {2, "startup"};
 
-const Enum::YLeaf NetconfState::Schemas::Schema::LocationEnum::NETCONF {0, "NETCONF"};
+const Enum::YLeaf NetconfState::Schemas::Schema::Location::NETCONF {0, "NETCONF"};
 
 
 }

@@ -7,8 +7,2171 @@
 #include "Cisco_IOS_XR_l2vpn_oper_23.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_24.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::DispositionP2MpStats()
+    :
+    byte_counts{YType::uint64, "byte-counts"},
+    packet_counts{YType::uint64, "packet-counts"}
+{
+    yang_name = "disposition-p2mp-stats"; yang_parent_name = "dispostion-stats";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::~DispositionP2MpStats()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::has_data() const
+{
+    return byte_counts.is_set
+	|| packet_counts.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disposition-p2mp-stats";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'DispositionP2MpStats' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::KnownUnicast()
+    :
+    byte_counts{YType::uint64, "byte-counts"},
+    packet_counts{YType::uint64, "packet-counts"}
+{
+    yang_name = "known-unicast"; yang_parent_name = "dispostion-stats";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::~KnownUnicast()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::has_data() const
+{
+    return byte_counts.is_set
+	|| packet_counts.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "known-unicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'KnownUnicast' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::MacMove()
+    :
+    byte_counts{YType::uint64, "byte-counts"},
+    packet_counts{YType::uint64, "packet-counts"}
+{
+    yang_name = "mac-move"; yang_parent_name = "dispostion-stats";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::~MacMove()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::has_data() const
+{
+    return byte_counts.is_set
+	|| packet_counts.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-move";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'MacMove' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::DispostionStats::MacMove::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::SequenceNumber()
+    :
+    bypassed_inbound_sequence_packet{YType::uint64, "bypassed-inbound-sequence-packet"},
+    bypassed_out_sequence_packet{YType::uint64, "bypassed-out-sequence-packet"},
+    sequence_number_expected{YType::uint32, "sequence-number-expected"},
+    sequence_number_sent{YType::uint32, "sequence-number-sent"}
+{
+    yang_name = "sequence-number"; yang_parent_name = "statistics";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::~SequenceNumber()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::has_data() const
+{
+    return bypassed_inbound_sequence_packet.is_set
+	|| bypassed_out_sequence_packet.is_set
+	|| sequence_number_expected.is_set
+	|| sequence_number_sent.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bypassed_inbound_sequence_packet.yfilter)
+	|| ydk::is_set(bypassed_out_sequence_packet.yfilter)
+	|| ydk::is_set(sequence_number_expected.yfilter)
+	|| ydk::is_set(sequence_number_sent.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sequence-number";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'SequenceNumber' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bypassed_inbound_sequence_packet.is_set || is_set(bypassed_inbound_sequence_packet.yfilter)) leaf_name_data.push_back(bypassed_inbound_sequence_packet.get_name_leafdata());
+    if (bypassed_out_sequence_packet.is_set || is_set(bypassed_out_sequence_packet.yfilter)) leaf_name_data.push_back(bypassed_out_sequence_packet.get_name_leafdata());
+    if (sequence_number_expected.is_set || is_set(sequence_number_expected.yfilter)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
+    if (sequence_number_sent.is_set || is_set(sequence_number_sent.yfilter)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bypassed-inbound-sequence-packet")
+    {
+        bypassed_inbound_sequence_packet = value;
+        bypassed_inbound_sequence_packet.value_namespace = name_space;
+        bypassed_inbound_sequence_packet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bypassed-out-sequence-packet")
+    {
+        bypassed_out_sequence_packet = value;
+        bypassed_out_sequence_packet.value_namespace = name_space;
+        bypassed_out_sequence_packet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sequence-number-expected")
+    {
+        sequence_number_expected = value;
+        sequence_number_expected.value_namespace = name_space;
+        sequence_number_expected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sequence-number-sent")
+    {
+        sequence_number_sent = value;
+        sequence_number_sent.value_namespace = name_space;
+        sequence_number_sent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bypassed-inbound-sequence-packet")
+    {
+        bypassed_inbound_sequence_packet.yfilter = yfilter;
+    }
+    if(value_path == "bypassed-out-sequence-packet")
+    {
+        bypassed_out_sequence_packet.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-expected")
+    {
+        sequence_number_expected.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-sent")
+    {
+        sequence_number_sent.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::Statistics::SequenceNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bypassed-inbound-sequence-packet" || name == "bypassed-out-sequence-packet" || name == "sequence-number-expected" || name == "sequence-number-sent")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::P2MpPw()
+    :
+    local_available{YType::boolean, "local-available"},
+    local_extended_tunnel_id{YType::str, "local-extended-tunnel-id"},
+    local_flags{YType::uint8, "local-flags"},
+    local_label{YType::uint32, "local-label"},
+    local_p2mp_id{YType::uint32, "local-p2mp-id"},
+    local_ptree_type{YType::enumeration, "local-ptree-type"},
+    local_tunnel_id{YType::uint32, "local-tunnel-id"},
+    remote_available{YType::boolean, "remote-available"},
+    remote_extended_tunnel_id{YType::str, "remote-extended-tunnel-id"},
+    remote_flags{YType::uint8, "remote-flags"},
+    remote_label{YType::uint32, "remote-label"},
+    remote_p2mp_id{YType::uint32, "remote-p2mp-id"},
+    remote_ptree_type{YType::enumeration, "remote-ptree-type"},
+    remote_tunnel_id{YType::uint32, "remote-tunnel-id"}
+{
+    yang_name = "p2mp-pw"; yang_parent_name = "pseudo-wire";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::~P2MpPw()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::has_data() const
+{
+    return local_available.is_set
+	|| local_extended_tunnel_id.is_set
+	|| local_flags.is_set
+	|| local_label.is_set
+	|| local_p2mp_id.is_set
+	|| local_ptree_type.is_set
+	|| local_tunnel_id.is_set
+	|| remote_available.is_set
+	|| remote_extended_tunnel_id.is_set
+	|| remote_flags.is_set
+	|| remote_label.is_set
+	|| remote_p2mp_id.is_set
+	|| remote_ptree_type.is_set
+	|| remote_tunnel_id.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(local_available.yfilter)
+	|| ydk::is_set(local_extended_tunnel_id.yfilter)
+	|| ydk::is_set(local_flags.yfilter)
+	|| ydk::is_set(local_label.yfilter)
+	|| ydk::is_set(local_p2mp_id.yfilter)
+	|| ydk::is_set(local_ptree_type.yfilter)
+	|| ydk::is_set(local_tunnel_id.yfilter)
+	|| ydk::is_set(remote_available.yfilter)
+	|| ydk::is_set(remote_extended_tunnel_id.yfilter)
+	|| ydk::is_set(remote_flags.yfilter)
+	|| ydk::is_set(remote_label.yfilter)
+	|| ydk::is_set(remote_p2mp_id.yfilter)
+	|| ydk::is_set(remote_ptree_type.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "p2mp-pw";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'P2MpPw' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (local_available.is_set || is_set(local_available.yfilter)) leaf_name_data.push_back(local_available.get_name_leafdata());
+    if (local_extended_tunnel_id.is_set || is_set(local_extended_tunnel_id.yfilter)) leaf_name_data.push_back(local_extended_tunnel_id.get_name_leafdata());
+    if (local_flags.is_set || is_set(local_flags.yfilter)) leaf_name_data.push_back(local_flags.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
+    if (local_p2mp_id.is_set || is_set(local_p2mp_id.yfilter)) leaf_name_data.push_back(local_p2mp_id.get_name_leafdata());
+    if (local_ptree_type.is_set || is_set(local_ptree_type.yfilter)) leaf_name_data.push_back(local_ptree_type.get_name_leafdata());
+    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (remote_available.is_set || is_set(remote_available.yfilter)) leaf_name_data.push_back(remote_available.get_name_leafdata());
+    if (remote_extended_tunnel_id.is_set || is_set(remote_extended_tunnel_id.yfilter)) leaf_name_data.push_back(remote_extended_tunnel_id.get_name_leafdata());
+    if (remote_flags.is_set || is_set(remote_flags.yfilter)) leaf_name_data.push_back(remote_flags.get_name_leafdata());
+    if (remote_label.is_set || is_set(remote_label.yfilter)) leaf_name_data.push_back(remote_label.get_name_leafdata());
+    if (remote_p2mp_id.is_set || is_set(remote_p2mp_id.yfilter)) leaf_name_data.push_back(remote_p2mp_id.get_name_leafdata());
+    if (remote_ptree_type.is_set || is_set(remote_ptree_type.yfilter)) leaf_name_data.push_back(remote_ptree_type.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "local-available")
+    {
+        local_available = value;
+        local_available.value_namespace = name_space;
+        local_available.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-extended-tunnel-id")
+    {
+        local_extended_tunnel_id = value;
+        local_extended_tunnel_id.value_namespace = name_space;
+        local_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-flags")
+    {
+        local_flags = value;
+        local_flags.value_namespace = name_space;
+        local_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-label")
+    {
+        local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-p2mp-id")
+    {
+        local_p2mp_id = value;
+        local_p2mp_id.value_namespace = name_space;
+        local_p2mp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-ptree-type")
+    {
+        local_ptree_type = value;
+        local_ptree_type.value_namespace = name_space;
+        local_ptree_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id = value;
+        local_tunnel_id.value_namespace = name_space;
+        local_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-available")
+    {
+        remote_available = value;
+        remote_available.value_namespace = name_space;
+        remote_available.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-extended-tunnel-id")
+    {
+        remote_extended_tunnel_id = value;
+        remote_extended_tunnel_id.value_namespace = name_space;
+        remote_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-flags")
+    {
+        remote_flags = value;
+        remote_flags.value_namespace = name_space;
+        remote_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-label")
+    {
+        remote_label = value;
+        remote_label.value_namespace = name_space;
+        remote_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-p2mp-id")
+    {
+        remote_p2mp_id = value;
+        remote_p2mp_id.value_namespace = name_space;
+        remote_p2mp_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-ptree-type")
+    {
+        remote_ptree_type = value;
+        remote_ptree_type.value_namespace = name_space;
+        remote_ptree_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-available")
+    {
+        local_available.yfilter = yfilter;
+    }
+    if(value_path == "local-extended-tunnel-id")
+    {
+        local_extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "local-flags")
+    {
+        local_flags.yfilter = yfilter;
+    }
+    if(value_path == "local-label")
+    {
+        local_label.yfilter = yfilter;
+    }
+    if(value_path == "local-p2mp-id")
+    {
+        local_p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "local-ptree-type")
+    {
+        local_ptree_type.yfilter = yfilter;
+    }
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-available")
+    {
+        remote_available.yfilter = yfilter;
+    }
+    if(value_path == "remote-extended-tunnel-id")
+    {
+        remote_extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-flags")
+    {
+        remote_flags.yfilter = yfilter;
+    }
+    if(value_path == "remote-label")
+    {
+        remote_label.yfilter = yfilter;
+    }
+    if(value_path == "remote-p2mp-id")
+    {
+        remote_p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-ptree-type")
+    {
+        remote_ptree_type.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Segment2::PseudoWire::P2MpPw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-available" || name == "local-extended-tunnel-id" || name == "local-flags" || name == "local-label" || name == "local-p2mp-id" || name == "local-ptree-type" || name == "local-tunnel-id" || name == "remote-available" || name == "remote-extended-tunnel-id" || name == "remote-flags" || name == "remote-label" || name == "remote-p2mp-id" || name == "remote-ptree-type" || name == "remote-tunnel-id")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::Ce2Ce()
+    :
+    ce_added{YType::boolean, "ce-added"},
+    local_customer_edge_id{YType::uint16, "local-customer-edge-id"},
+    remote_customer_edge_id{YType::uint16, "remote-customer-edge-id"}
+{
+    yang_name = "ce2ce"; yang_parent_name = "xconnect";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::~Ce2Ce()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::has_data() const
+{
+    return ce_added.is_set
+	|| local_customer_edge_id.is_set
+	|| remote_customer_edge_id.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ce_added.yfilter)
+	|| ydk::is_set(local_customer_edge_id.yfilter)
+	|| ydk::is_set(remote_customer_edge_id.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ce2ce";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ce2Ce' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ce_added.is_set || is_set(ce_added.yfilter)) leaf_name_data.push_back(ce_added.get_name_leafdata());
+    if (local_customer_edge_id.is_set || is_set(local_customer_edge_id.yfilter)) leaf_name_data.push_back(local_customer_edge_id.get_name_leafdata());
+    if (remote_customer_edge_id.is_set || is_set(remote_customer_edge_id.yfilter)) leaf_name_data.push_back(remote_customer_edge_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ce-added")
+    {
+        ce_added = value;
+        ce_added.value_namespace = name_space;
+        ce_added.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-customer-edge-id")
+    {
+        local_customer_edge_id = value;
+        local_customer_edge_id.value_namespace = name_space;
+        local_customer_edge_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remote-customer-edge-id")
+    {
+        remote_customer_edge_id = value;
+        remote_customer_edge_id.value_namespace = name_space;
+        remote_customer_edge_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ce-added")
+    {
+        ce_added.yfilter = yfilter;
+    }
+    if(value_path == "local-customer-edge-id")
+    {
+        local_customer_edge_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-customer-edge-id")
+    {
+        remote_customer_edge_id.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::Ce2Ce::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ce-added" || name == "local-customer-edge-id" || name == "remote-customer-edge-id")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::BackupSegment()
+    :
+    segment_type{YType::enumeration, "segment-type"}
+    	,
+    attachment_circuit(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit>())
+	,pseudo_wire(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire>())
+{
+    attachment_circuit->parent = this;
+
+    pseudo_wire->parent = this;
+
+    yang_name = "backup-segment"; yang_parent_name = "xconnect";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::~BackupSegment()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::has_data() const
+{
+    return segment_type.is_set
+	|| (attachment_circuit !=  nullptr && attachment_circuit->has_data())
+	|| (pseudo_wire !=  nullptr && pseudo_wire->has_data());
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(segment_type.yfilter)
+	|| (attachment_circuit !=  nullptr && attachment_circuit->has_operation())
+	|| (pseudo_wire !=  nullptr && pseudo_wire->has_operation());
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-segment";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'BackupSegment' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (segment_type.is_set || is_set(segment_type.yfilter)) leaf_name_data.push_back(segment_type.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "attachment-circuit")
+    {
+        if(attachment_circuit == nullptr)
+        {
+            attachment_circuit = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit>();
+        }
+        return attachment_circuit;
+    }
+
+    if(child_yang_name == "pseudo-wire")
+    {
+        if(pseudo_wire == nullptr)
+        {
+            pseudo_wire = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire>();
+        }
+        return pseudo_wire;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(attachment_circuit != nullptr)
+    {
+        children["attachment-circuit"] = attachment_circuit;
+    }
+
+    if(pseudo_wire != nullptr)
+    {
+        children["pseudo-wire"] = pseudo_wire;
+    }
+
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "segment-type")
+    {
+        segment_type = value;
+        segment_type.value_namespace = name_space;
+        segment_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "segment-type")
+    {
+        segment_type.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attachment-circuit" || name == "pseudo-wire" || name == "segment-type")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::AttachmentCircuit()
+    :
+    bvi_mac_conflict{YType::boolean, "bvi-mac-conflict"},
+    bvi_no_port_up{YType::boolean, "bvi-no-port-up"},
+    control_word_mismatched{YType::boolean, "control-word-mismatched"},
+    encapsulation_error{YType::str, "encapsulation-error"},
+    encapsulation_mismatched{YType::boolean, "encapsulation-mismatched"},
+    evpn_internal_label{YType::uint32, "evpn-internal-label"},
+    interface_handle{YType::str, "interface-handle"},
+    internal_ms_ti{YType::str, "internal-ms-ti"},
+    interworking{YType::enumeration, "interworking"},
+    is_ac_partially_programmed{YType::boolean, "is-ac-partially-programmed"},
+    mac_limit_oper_down{YType::boolean, "mac-limit-oper-down"},
+    ms_ti_mismatch{YType::boolean, "ms-ti-mismatch"},
+    msti{YType::str, "msti"},
+    msti_mismatch_down{YType::boolean, "msti-mismatch-down"},
+    mtu_mismatched{YType::boolean, "mtu-mismatched"},
+    node_id{YType::str, "node-id"},
+    out_of_memory_state{YType::uint32, "out-of-memory-state"},
+    redundancy_group_id{YType::uint32, "redundancy-group-id"},
+    redundancy_group_state{YType::enumeration, "redundancy-group-state"},
+    redundancy_object_id{YType::uint64, "redundancy-object-id"},
+    state{YType::enumeration, "state"},
+    tdm_media_mismatched{YType::boolean, "tdm-media-mismatched"},
+    xconnect_id{YType::uint32, "xconnect-id"}
+    	,
+    interface(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface>())
+	,l2vpn_protection(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection>())
+	,statistics(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics>())
+{
+    interface->parent = this;
+
+    l2vpn_protection->parent = this;
+
+    statistics->parent = this;
+
+    yang_name = "attachment-circuit"; yang_parent_name = "backup-segment";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::~AttachmentCircuit()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::has_data() const
+{
+    return bvi_mac_conflict.is_set
+	|| bvi_no_port_up.is_set
+	|| control_word_mismatched.is_set
+	|| encapsulation_error.is_set
+	|| encapsulation_mismatched.is_set
+	|| evpn_internal_label.is_set
+	|| interface_handle.is_set
+	|| internal_ms_ti.is_set
+	|| interworking.is_set
+	|| is_ac_partially_programmed.is_set
+	|| mac_limit_oper_down.is_set
+	|| ms_ti_mismatch.is_set
+	|| msti.is_set
+	|| msti_mismatch_down.is_set
+	|| mtu_mismatched.is_set
+	|| node_id.is_set
+	|| out_of_memory_state.is_set
+	|| redundancy_group_id.is_set
+	|| redundancy_group_state.is_set
+	|| redundancy_object_id.is_set
+	|| state.is_set
+	|| tdm_media_mismatched.is_set
+	|| xconnect_id.is_set
+	|| (interface !=  nullptr && interface->has_data())
+	|| (l2vpn_protection !=  nullptr && l2vpn_protection->has_data())
+	|| (statistics !=  nullptr && statistics->has_data());
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(bvi_mac_conflict.yfilter)
+	|| ydk::is_set(bvi_no_port_up.yfilter)
+	|| ydk::is_set(control_word_mismatched.yfilter)
+	|| ydk::is_set(encapsulation_error.yfilter)
+	|| ydk::is_set(encapsulation_mismatched.yfilter)
+	|| ydk::is_set(evpn_internal_label.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(internal_ms_ti.yfilter)
+	|| ydk::is_set(interworking.yfilter)
+	|| ydk::is_set(is_ac_partially_programmed.yfilter)
+	|| ydk::is_set(mac_limit_oper_down.yfilter)
+	|| ydk::is_set(ms_ti_mismatch.yfilter)
+	|| ydk::is_set(msti.yfilter)
+	|| ydk::is_set(msti_mismatch_down.yfilter)
+	|| ydk::is_set(mtu_mismatched.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(out_of_memory_state.yfilter)
+	|| ydk::is_set(redundancy_group_id.yfilter)
+	|| ydk::is_set(redundancy_group_state.yfilter)
+	|| ydk::is_set(redundancy_object_id.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(tdm_media_mismatched.yfilter)
+	|| ydk::is_set(xconnect_id.yfilter)
+	|| (interface !=  nullptr && interface->has_operation())
+	|| (l2vpn_protection !=  nullptr && l2vpn_protection->has_operation())
+	|| (statistics !=  nullptr && statistics->has_operation());
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "attachment-circuit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'AttachmentCircuit' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (bvi_mac_conflict.is_set || is_set(bvi_mac_conflict.yfilter)) leaf_name_data.push_back(bvi_mac_conflict.get_name_leafdata());
+    if (bvi_no_port_up.is_set || is_set(bvi_no_port_up.yfilter)) leaf_name_data.push_back(bvi_no_port_up.get_name_leafdata());
+    if (control_word_mismatched.is_set || is_set(control_word_mismatched.yfilter)) leaf_name_data.push_back(control_word_mismatched.get_name_leafdata());
+    if (encapsulation_error.is_set || is_set(encapsulation_error.yfilter)) leaf_name_data.push_back(encapsulation_error.get_name_leafdata());
+    if (encapsulation_mismatched.is_set || is_set(encapsulation_mismatched.yfilter)) leaf_name_data.push_back(encapsulation_mismatched.get_name_leafdata());
+    if (evpn_internal_label.is_set || is_set(evpn_internal_label.yfilter)) leaf_name_data.push_back(evpn_internal_label.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (internal_ms_ti.is_set || is_set(internal_ms_ti.yfilter)) leaf_name_data.push_back(internal_ms_ti.get_name_leafdata());
+    if (interworking.is_set || is_set(interworking.yfilter)) leaf_name_data.push_back(interworking.get_name_leafdata());
+    if (is_ac_partially_programmed.is_set || is_set(is_ac_partially_programmed.yfilter)) leaf_name_data.push_back(is_ac_partially_programmed.get_name_leafdata());
+    if (mac_limit_oper_down.is_set || is_set(mac_limit_oper_down.yfilter)) leaf_name_data.push_back(mac_limit_oper_down.get_name_leafdata());
+    if (ms_ti_mismatch.is_set || is_set(ms_ti_mismatch.yfilter)) leaf_name_data.push_back(ms_ti_mismatch.get_name_leafdata());
+    if (msti.is_set || is_set(msti.yfilter)) leaf_name_data.push_back(msti.get_name_leafdata());
+    if (msti_mismatch_down.is_set || is_set(msti_mismatch_down.yfilter)) leaf_name_data.push_back(msti_mismatch_down.get_name_leafdata());
+    if (mtu_mismatched.is_set || is_set(mtu_mismatched.yfilter)) leaf_name_data.push_back(mtu_mismatched.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (out_of_memory_state.is_set || is_set(out_of_memory_state.yfilter)) leaf_name_data.push_back(out_of_memory_state.get_name_leafdata());
+    if (redundancy_group_id.is_set || is_set(redundancy_group_id.yfilter)) leaf_name_data.push_back(redundancy_group_id.get_name_leafdata());
+    if (redundancy_group_state.is_set || is_set(redundancy_group_state.yfilter)) leaf_name_data.push_back(redundancy_group_state.get_name_leafdata());
+    if (redundancy_object_id.is_set || is_set(redundancy_object_id.yfilter)) leaf_name_data.push_back(redundancy_object_id.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (tdm_media_mismatched.is_set || is_set(tdm_media_mismatched.yfilter)) leaf_name_data.push_back(tdm_media_mismatched.get_name_leafdata());
+    if (xconnect_id.is_set || is_set(xconnect_id.yfilter)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface")
+    {
+        if(interface == nullptr)
+        {
+            interface = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface>();
+        }
+        return interface;
+    }
+
+    if(child_yang_name == "l2vpn-protection")
+    {
+        if(l2vpn_protection == nullptr)
+        {
+            l2vpn_protection = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection>();
+        }
+        return l2vpn_protection;
+    }
+
+    if(child_yang_name == "statistics")
+    {
+        if(statistics == nullptr)
+        {
+            statistics = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics>();
+        }
+        return statistics;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(interface != nullptr)
+    {
+        children["interface"] = interface;
+    }
+
+    if(l2vpn_protection != nullptr)
+    {
+        children["l2vpn-protection"] = l2vpn_protection;
+    }
+
+    if(statistics != nullptr)
+    {
+        children["statistics"] = statistics;
+    }
+
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bvi-mac-conflict")
+    {
+        bvi_mac_conflict = value;
+        bvi_mac_conflict.value_namespace = name_space;
+        bvi_mac_conflict.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bvi-no-port-up")
+    {
+        bvi_no_port_up = value;
+        bvi_no_port_up.value_namespace = name_space;
+        bvi_no_port_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "control-word-mismatched")
+    {
+        control_word_mismatched = value;
+        control_word_mismatched.value_namespace = name_space;
+        control_word_mismatched.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encapsulation-error")
+    {
+        encapsulation_error = value;
+        encapsulation_error.value_namespace = name_space;
+        encapsulation_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encapsulation-mismatched")
+    {
+        encapsulation_mismatched = value;
+        encapsulation_mismatched.value_namespace = name_space;
+        encapsulation_mismatched.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "evpn-internal-label")
+    {
+        evpn_internal_label = value;
+        evpn_internal_label.value_namespace = name_space;
+        evpn_internal_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-ms-ti")
+    {
+        internal_ms_ti = value;
+        internal_ms_ti.value_namespace = name_space;
+        internal_ms_ti.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interworking")
+    {
+        interworking = value;
+        interworking.value_namespace = name_space;
+        interworking.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-ac-partially-programmed")
+    {
+        is_ac_partially_programmed = value;
+        is_ac_partially_programmed.value_namespace = name_space;
+        is_ac_partially_programmed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mac-limit-oper-down")
+    {
+        mac_limit_oper_down = value;
+        mac_limit_oper_down.value_namespace = name_space;
+        mac_limit_oper_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ms-ti-mismatch")
+    {
+        ms_ti_mismatch = value;
+        ms_ti_mismatch.value_namespace = name_space;
+        ms_ti_mismatch.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msti")
+    {
+        msti = value;
+        msti.value_namespace = name_space;
+        msti.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msti-mismatch-down")
+    {
+        msti_mismatch_down = value;
+        msti_mismatch_down.value_namespace = name_space;
+        msti_mismatch_down.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu-mismatched")
+    {
+        mtu_mismatched = value;
+        mtu_mismatched.value_namespace = name_space;
+        mtu_mismatched.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-id")
+    {
+        node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-of-memory-state")
+    {
+        out_of_memory_state = value;
+        out_of_memory_state.value_namespace = name_space;
+        out_of_memory_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-group-id")
+    {
+        redundancy_group_id = value;
+        redundancy_group_id.value_namespace = name_space;
+        redundancy_group_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-group-state")
+    {
+        redundancy_group_state = value;
+        redundancy_group_state.value_namespace = name_space;
+        redundancy_group_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "redundancy-object-id")
+    {
+        redundancy_object_id = value;
+        redundancy_object_id.value_namespace = name_space;
+        redundancy_object_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tdm-media-mismatched")
+    {
+        tdm_media_mismatched = value;
+        tdm_media_mismatched.value_namespace = name_space;
+        tdm_media_mismatched.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xconnect-id")
+    {
+        xconnect_id = value;
+        xconnect_id.value_namespace = name_space;
+        xconnect_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bvi-mac-conflict")
+    {
+        bvi_mac_conflict.yfilter = yfilter;
+    }
+    if(value_path == "bvi-no-port-up")
+    {
+        bvi_no_port_up.yfilter = yfilter;
+    }
+    if(value_path == "control-word-mismatched")
+    {
+        control_word_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation-error")
+    {
+        encapsulation_error.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation-mismatched")
+    {
+        encapsulation_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "evpn-internal-label")
+    {
+        evpn_internal_label.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "internal-ms-ti")
+    {
+        internal_ms_ti.yfilter = yfilter;
+    }
+    if(value_path == "interworking")
+    {
+        interworking.yfilter = yfilter;
+    }
+    if(value_path == "is-ac-partially-programmed")
+    {
+        is_ac_partially_programmed.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit-oper-down")
+    {
+        mac_limit_oper_down.yfilter = yfilter;
+    }
+    if(value_path == "ms-ti-mismatch")
+    {
+        ms_ti_mismatch.yfilter = yfilter;
+    }
+    if(value_path == "msti")
+    {
+        msti.yfilter = yfilter;
+    }
+    if(value_path == "msti-mismatch-down")
+    {
+        msti_mismatch_down.yfilter = yfilter;
+    }
+    if(value_path == "mtu-mismatched")
+    {
+        mtu_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "out-of-memory-state")
+    {
+        out_of_memory_state.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-group-id")
+    {
+        redundancy_group_id.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-group-state")
+    {
+        redundancy_group_state.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-object-id")
+    {
+        redundancy_object_id.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "tdm-media-mismatched")
+    {
+        tdm_media_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-id")
+    {
+        xconnect_id.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "l2vpn-protection" || name == "statistics" || name == "bvi-mac-conflict" || name == "bvi-no-port-up" || name == "control-word-mismatched" || name == "encapsulation-error" || name == "encapsulation-mismatched" || name == "evpn-internal-label" || name == "interface-handle" || name == "internal-ms-ti" || name == "interworking" || name == "is-ac-partially-programmed" || name == "mac-limit-oper-down" || name == "ms-ti-mismatch" || name == "msti" || name == "msti-mismatch-down" || name == "mtu-mismatched" || name == "node-id" || name == "out-of-memory-state" || name == "redundancy-group-id" || name == "redundancy-group-state" || name == "redundancy-object-id" || name == "state" || name == "tdm-media-mismatched" || name == "xconnect-id")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Interface()
+    :
+    mtu{YType::uint32, "mtu"},
+    name{YType::str, "name"},
+    payload_bytes{YType::uint16, "payload-bytes"}
+    	,
+    parameters(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters>())
+{
+    parameters->parent = this;
+
+    yang_name = "interface"; yang_parent_name = "attachment-circuit";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::~Interface()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::has_data() const
+{
+    return mtu.is_set
+	|| name.is_set
+	|| payload_bytes.is_set
+	|| (parameters !=  nullptr && parameters->has_data());
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
+	|| (parameters !=  nullptr && parameters->has_operation());
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Interface' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "parameters")
+    {
+        if(parameters == nullptr)
+        {
+            parameters = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters>();
+        }
+        return parameters;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(parameters != nullptr)
+    {
+        children["parameters"] = parameters;
+    }
+
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parameters" || name == "mtu" || name == "name" || name == "payload-bytes")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Parameters()
+    :
+    type{YType::enumeration, "type"}
+    	,
+    atm(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm>())
+	,ethernet(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet>())
+	,fr(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr>())
+	,pseudowire_ether(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther>())
+	,pseudowire_iw(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw>())
+	,tdm(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm>())
+	,vlan(std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan>())
+{
+    atm->parent = this;
+
+    ethernet->parent = this;
+
+    fr->parent = this;
+
+    pseudowire_ether->parent = this;
+
+    pseudowire_iw->parent = this;
+
+    tdm->parent = this;
+
+    vlan->parent = this;
+
+    yang_name = "parameters"; yang_parent_name = "interface";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::~Parameters()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::has_data() const
+{
+    return type.is_set
+	|| (atm !=  nullptr && atm->has_data())
+	|| (ethernet !=  nullptr && ethernet->has_data())
+	|| (fr !=  nullptr && fr->has_data())
+	|| (pseudowire_ether !=  nullptr && pseudowire_ether->has_data())
+	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_data())
+	|| (tdm !=  nullptr && tdm->has_data())
+	|| (vlan !=  nullptr && vlan->has_data());
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| (atm !=  nullptr && atm->has_operation())
+	|| (ethernet !=  nullptr && ethernet->has_operation())
+	|| (fr !=  nullptr && fr->has_operation())
+	|| (pseudowire_ether !=  nullptr && pseudowire_ether->has_operation())
+	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_operation())
+	|| (tdm !=  nullptr && tdm->has_operation())
+	|| (vlan !=  nullptr && vlan->has_operation());
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parameters";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Parameters' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "atm")
+    {
+        if(atm == nullptr)
+        {
+            atm = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm>();
+        }
+        return atm;
+    }
+
+    if(child_yang_name == "ethernet")
+    {
+        if(ethernet == nullptr)
+        {
+            ethernet = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet>();
+        }
+        return ethernet;
+    }
+
+    if(child_yang_name == "fr")
+    {
+        if(fr == nullptr)
+        {
+            fr = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr>();
+        }
+        return fr;
+    }
+
+    if(child_yang_name == "pseudowire-ether")
+    {
+        if(pseudowire_ether == nullptr)
+        {
+            pseudowire_ether = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther>();
+        }
+        return pseudowire_ether;
+    }
+
+    if(child_yang_name == "pseudowire-iw")
+    {
+        if(pseudowire_iw == nullptr)
+        {
+            pseudowire_iw = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw>();
+        }
+        return pseudowire_iw;
+    }
+
+    if(child_yang_name == "tdm")
+    {
+        if(tdm == nullptr)
+        {
+            tdm = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm>();
+        }
+        return tdm;
+    }
+
+    if(child_yang_name == "vlan")
+    {
+        if(vlan == nullptr)
+        {
+            vlan = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan>();
+        }
+        return vlan;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(atm != nullptr)
+    {
+        children["atm"] = atm;
+    }
+
+    if(ethernet != nullptr)
+    {
+        children["ethernet"] = ethernet;
+    }
+
+    if(fr != nullptr)
+    {
+        children["fr"] = fr;
+    }
+
+    if(pseudowire_ether != nullptr)
+    {
+        children["pseudowire-ether"] = pseudowire_ether;
+    }
+
+    if(pseudowire_iw != nullptr)
+    {
+        children["pseudowire-iw"] = pseudowire_iw;
+    }
+
+    if(tdm != nullptr)
+    {
+        children["tdm"] = tdm;
+    }
+
+    if(vlan != nullptr)
+    {
+        children["vlan"] = vlan;
+    }
+
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atm" || name == "ethernet" || name == "fr" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "tdm" || name == "vlan" || name == "type")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::Ethernet()
+    :
+    xconnect_tags{YType::uint8, "xconnect-tags"}
+{
+    yang_name = "ethernet"; yang_parent_name = "parameters";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::~Ethernet()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::has_data() const
+{
+    return xconnect_tags.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ethernet' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xconnect-tags")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::Vlan()
+    :
+    encapsulation_type{YType::uint8, "encapsulation-type"},
+    outer_tag{YType::uint16, "outer-tag"},
+    rewrite_tag{YType::uint16, "rewrite-tag"},
+    simple_efp{YType::uint8, "simple-efp"},
+    vlan_rewrite_tag{YType::uint16, "vlan-rewrite-tag"},
+    xconnect_tags{YType::uint8, "xconnect-tags"}
+{
+    yang_name = "vlan"; yang_parent_name = "parameters";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::~Vlan()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::has_data() const
+{
+    for (std::size_t index=0; index<vlan_range.size(); index++)
+    {
+        if(vlan_range[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : rewrite_tag.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return encapsulation_type.is_set
+	|| outer_tag.is_set
+	|| simple_efp.is_set
+	|| vlan_rewrite_tag.is_set
+	|| xconnect_tags.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::has_operation() const
+{
+    for (std::size_t index=0; index<vlan_range.size(); index++)
+    {
+        if(vlan_range[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : rewrite_tag.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(encapsulation_type.yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(rewrite_tag.yfilter)
+	|| ydk::is_set(simple_efp.yfilter)
+	|| ydk::is_set(vlan_rewrite_tag.yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Vlan' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (encapsulation_type.is_set || is_set(encapsulation_type.yfilter)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (simple_efp.is_set || is_set(simple_efp.yfilter)) leaf_name_data.push_back(simple_efp.get_name_leafdata());
+    if (vlan_rewrite_tag.is_set || is_set(vlan_rewrite_tag.yfilter)) leaf_name_data.push_back(vlan_rewrite_tag.get_name_leafdata());
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+
+    auto rewrite_tag_name_datas = rewrite_tag.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), rewrite_tag_name_datas.begin(), rewrite_tag_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vlan-range")
+    {
+        for(auto const & c : vlan_range)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange>();
+        c->parent = this;
+        vlan_range.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : vlan_range)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type = value;
+        encapsulation_type.value_namespace = name_space;
+        encapsulation_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rewrite-tag")
+    {
+        rewrite_tag.append(value);
+    }
+    if(value_path == "simple-efp")
+    {
+        simple_efp = value;
+        simple_efp.value_namespace = name_space;
+        simple_efp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-rewrite-tag")
+    {
+        vlan_rewrite_tag = value;
+        vlan_rewrite_tag.value_namespace = name_space;
+        vlan_rewrite_tag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type.yfilter = yfilter;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "rewrite-tag")
+    {
+        rewrite_tag.yfilter = yfilter;
+    }
+    if(value_path == "simple-efp")
+    {
+        simple_efp.yfilter = yfilter;
+    }
+    if(value_path == "vlan-rewrite-tag")
+    {
+        vlan_rewrite_tag.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-range" || name == "encapsulation-type" || name == "outer-tag" || name == "rewrite-tag" || name == "simple-efp" || name == "vlan-rewrite-tag" || name == "xconnect-tags")
+        return true;
+    return false;
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::VlanRange()
+    :
+    lower{YType::uint16, "lower"},
+    upper{YType::uint16, "upper"}
+{
+    yang_name = "vlan-range"; yang_parent_name = "vlan";
+}
+
+L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::~VlanRange()
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_data() const
+{
+    return lower.is_set
+	|| upper.is_set;
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lower.yfilter)
+	|| ydk::is_set(upper.yfilter);
+}
+
+std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-range";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'VlanRange' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
+    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "lower")
+    {
+        lower = value;
+        lower.value_namespace = name_space;
+        lower.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "upper")
+    {
+        upper = value;
+        upper.value_namespace = name_space;
+        upper.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower")
+    {
+        lower.yfilter = yfilter;
+    }
+    if(value_path == "upper")
+    {
+        upper.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Vlan::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower" || name == "upper")
+        return true;
+    return false;
+}
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::Tdm()
     :
@@ -37,10 +2200,10 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tdm_mode.operation)
-	|| is_set(timeslot_group.operation)
-	|| is_set(timeslot_rate.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tdm_mode.yfilter)
+	|| ydk::is_set(timeslot_group.yfilter)
+	|| ydk::is_set(timeslot_rate.yfilter)
 	|| (tdm_options !=  nullptr && tdm_options->has_operation());
 }
 
@@ -67,9 +2230,9 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tdm_mode.is_set || is_set(tdm_mode.operation)) leaf_name_data.push_back(tdm_mode.get_name_leafdata());
-    if (timeslot_group.is_set || is_set(timeslot_group.operation)) leaf_name_data.push_back(timeslot_group.get_name_leafdata());
-    if (timeslot_rate.is_set || is_set(timeslot_rate.operation)) leaf_name_data.push_back(timeslot_rate.get_name_leafdata());
+    if (tdm_mode.is_set || is_set(tdm_mode.yfilter)) leaf_name_data.push_back(tdm_mode.get_name_leafdata());
+    if (timeslot_group.is_set || is_set(timeslot_group.yfilter)) leaf_name_data.push_back(timeslot_group.get_name_leafdata());
+    if (timeslot_rate.is_set || is_set(timeslot_rate.yfilter)) leaf_name_data.push_back(timeslot_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -102,20 +2265,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tdm-mode")
     {
         tdm_mode = value;
+        tdm_mode.value_namespace = name_space;
+        tdm_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeslot-group")
     {
         timeslot_group = value;
+        timeslot_group.value_namespace = name_space;
+        timeslot_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeslot-rate")
     {
         timeslot_rate = value;
+        timeslot_rate.value_namespace = name_space;
+        timeslot_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tdm-mode")
+    {
+        tdm_mode.yfilter = yfilter;
+    }
+    if(value_path == "timeslot-group")
+    {
+        timeslot_group.yfilter = yfilter;
+    }
+    if(value_path == "timeslot-rate")
+    {
+        timeslot_rate.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tdm-options" || name == "tdm-mode" || name == "timeslot-group" || name == "timeslot-rate")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::TdmOptions()
@@ -152,16 +2344,16 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bit_rate.operation)
-	|| is_set(cas.operation)
-	|| is_set(payload_bytes.operation)
-	|| is_set(rtp.operation)
-	|| is_set(rtp_header_payload_type.operation)
-	|| is_set(signalling_packets.operation)
-	|| is_set(ssrc.operation)
-	|| is_set(timestamp_clock_freq.operation)
-	|| is_set(timestamp_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bit_rate.yfilter)
+	|| ydk::is_set(cas.yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
+	|| ydk::is_set(rtp.yfilter)
+	|| ydk::is_set(rtp_header_payload_type.yfilter)
+	|| ydk::is_set(signalling_packets.yfilter)
+	|| ydk::is_set(ssrc.yfilter)
+	|| ydk::is_set(timestamp_clock_freq.yfilter)
+	|| ydk::is_set(timestamp_mode.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::get_segment_path() const
@@ -187,15 +2379,15 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bit_rate.is_set || is_set(bit_rate.operation)) leaf_name_data.push_back(bit_rate.get_name_leafdata());
-    if (cas.is_set || is_set(cas.operation)) leaf_name_data.push_back(cas.get_name_leafdata());
-    if (payload_bytes.is_set || is_set(payload_bytes.operation)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
-    if (rtp.is_set || is_set(rtp.operation)) leaf_name_data.push_back(rtp.get_name_leafdata());
-    if (rtp_header_payload_type.is_set || is_set(rtp_header_payload_type.operation)) leaf_name_data.push_back(rtp_header_payload_type.get_name_leafdata());
-    if (signalling_packets.is_set || is_set(signalling_packets.operation)) leaf_name_data.push_back(signalling_packets.get_name_leafdata());
-    if (ssrc.is_set || is_set(ssrc.operation)) leaf_name_data.push_back(ssrc.get_name_leafdata());
-    if (timestamp_clock_freq.is_set || is_set(timestamp_clock_freq.operation)) leaf_name_data.push_back(timestamp_clock_freq.get_name_leafdata());
-    if (timestamp_mode.is_set || is_set(timestamp_mode.operation)) leaf_name_data.push_back(timestamp_mode.get_name_leafdata());
+    if (bit_rate.is_set || is_set(bit_rate.yfilter)) leaf_name_data.push_back(bit_rate.get_name_leafdata());
+    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+    if (rtp.is_set || is_set(rtp.yfilter)) leaf_name_data.push_back(rtp.get_name_leafdata());
+    if (rtp_header_payload_type.is_set || is_set(rtp_header_payload_type.yfilter)) leaf_name_data.push_back(rtp_header_payload_type.get_name_leafdata());
+    if (signalling_packets.is_set || is_set(signalling_packets.yfilter)) leaf_name_data.push_back(signalling_packets.get_name_leafdata());
+    if (ssrc.is_set || is_set(ssrc.yfilter)) leaf_name_data.push_back(ssrc.get_name_leafdata());
+    if (timestamp_clock_freq.is_set || is_set(timestamp_clock_freq.yfilter)) leaf_name_data.push_back(timestamp_clock_freq.get_name_leafdata());
+    if (timestamp_mode.is_set || is_set(timestamp_mode.yfilter)) leaf_name_data.push_back(timestamp_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -214,44 +2406,109 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bit-rate")
     {
         bit_rate = value;
+        bit_rate.value_namespace = name_space;
+        bit_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cas")
     {
         cas = value;
+        cas.value_namespace = name_space;
+        cas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-bytes")
     {
         payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp")
     {
         rtp = value;
+        rtp.value_namespace = name_space;
+        rtp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp-header-payload-type")
     {
         rtp_header_payload_type = value;
+        rtp_header_payload_type.value_namespace = name_space;
+        rtp_header_payload_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signalling-packets")
     {
         signalling_packets = value;
+        signalling_packets.value_namespace = name_space;
+        signalling_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssrc")
     {
         ssrc = value;
+        ssrc.value_namespace = name_space;
+        ssrc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-clock-freq")
     {
         timestamp_clock_freq = value;
+        timestamp_clock_freq.value_namespace = name_space;
+        timestamp_clock_freq.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-mode")
     {
         timestamp_mode = value;
+        timestamp_mode.value_namespace = name_space;
+        timestamp_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bit-rate")
+    {
+        bit_rate.yfilter = yfilter;
+    }
+    if(value_path == "cas")
+    {
+        cas.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rtp")
+    {
+        rtp.yfilter = yfilter;
+    }
+    if(value_path == "rtp-header-payload-type")
+    {
+        rtp_header_payload_type.yfilter = yfilter;
+    }
+    if(value_path == "signalling-packets")
+    {
+        signalling_packets.yfilter = yfilter;
+    }
+    if(value_path == "ssrc")
+    {
+        ssrc.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-clock-freq")
+    {
+        timestamp_clock_freq.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-mode")
+    {
+        timestamp_mode.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Tdm::TdmOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bit-rate" || name == "cas" || name == "payload-bytes" || name == "rtp" || name == "rtp-header-payload-type" || name == "signalling-packets" || name == "ssrc" || name == "timestamp-clock-freq" || name == "timestamp-mode")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm::Atm()
@@ -280,12 +2537,12 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(atm_mode.operation)
-	|| is_set(maximum_number_cells_packed.operation)
-	|| is_set(maximum_number_cells_un_packed.operation)
-	|| is_set(vci.operation)
-	|| is_set(vpi.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(atm_mode.yfilter)
+	|| ydk::is_set(maximum_number_cells_packed.yfilter)
+	|| ydk::is_set(maximum_number_cells_un_packed.yfilter)
+	|| ydk::is_set(vci.yfilter)
+	|| ydk::is_set(vpi.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm::get_segment_path() const
@@ -311,11 +2568,11 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (atm_mode.is_set || is_set(atm_mode.operation)) leaf_name_data.push_back(atm_mode.get_name_leafdata());
-    if (maximum_number_cells_packed.is_set || is_set(maximum_number_cells_packed.operation)) leaf_name_data.push_back(maximum_number_cells_packed.get_name_leafdata());
-    if (maximum_number_cells_un_packed.is_set || is_set(maximum_number_cells_un_packed.operation)) leaf_name_data.push_back(maximum_number_cells_un_packed.get_name_leafdata());
-    if (vci.is_set || is_set(vci.operation)) leaf_name_data.push_back(vci.get_name_leafdata());
-    if (vpi.is_set || is_set(vpi.operation)) leaf_name_data.push_back(vpi.get_name_leafdata());
+    if (atm_mode.is_set || is_set(atm_mode.yfilter)) leaf_name_data.push_back(atm_mode.get_name_leafdata());
+    if (maximum_number_cells_packed.is_set || is_set(maximum_number_cells_packed.yfilter)) leaf_name_data.push_back(maximum_number_cells_packed.get_name_leafdata());
+    if (maximum_number_cells_un_packed.is_set || is_set(maximum_number_cells_un_packed.yfilter)) leaf_name_data.push_back(maximum_number_cells_un_packed.get_name_leafdata());
+    if (vci.is_set || is_set(vci.yfilter)) leaf_name_data.push_back(vci.get_name_leafdata());
+    if (vpi.is_set || is_set(vpi.yfilter)) leaf_name_data.push_back(vpi.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -334,28 +2591,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atm-mode")
     {
         atm_mode = value;
+        atm_mode.value_namespace = name_space;
+        atm_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-number-cells-packed")
     {
         maximum_number_cells_packed = value;
+        maximum_number_cells_packed.value_namespace = name_space;
+        maximum_number_cells_packed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-number-cells-un-packed")
     {
         maximum_number_cells_un_packed = value;
+        maximum_number_cells_un_packed.value_namespace = name_space;
+        maximum_number_cells_un_packed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vci")
     {
         vci = value;
+        vci.value_namespace = name_space;
+        vci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpi")
     {
         vpi = value;
+        vpi.value_namespace = name_space;
+        vpi.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "atm-mode")
+    {
+        atm_mode.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-cells-packed")
+    {
+        maximum_number_cells_packed.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-cells-un-packed")
+    {
+        maximum_number_cells_un_packed.yfilter = yfilter;
+    }
+    if(value_path == "vci")
+    {
+        vci.yfilter = yfilter;
+    }
+    if(value_path == "vpi")
+    {
+        vpi.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Atm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atm-mode" || name == "maximum-number-cells-packed" || name == "maximum-number-cells-un-packed" || name == "vci" || name == "vpi")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr::Fr()
@@ -378,9 +2676,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dlci.operation)
-	|| is_set(fr_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dlci.yfilter)
+	|| ydk::is_set(fr_mode.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr::get_segment_path() const
@@ -406,8 +2704,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dlci.is_set || is_set(dlci.operation)) leaf_name_data.push_back(dlci.get_name_leafdata());
-    if (fr_mode.is_set || is_set(fr_mode.operation)) leaf_name_data.push_back(fr_mode.get_name_leafdata());
+    if (dlci.is_set || is_set(dlci.yfilter)) leaf_name_data.push_back(dlci.get_name_leafdata());
+    if (fr_mode.is_set || is_set(fr_mode.yfilter)) leaf_name_data.push_back(fr_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -426,16 +2724,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dlci")
     {
         dlci = value;
+        dlci.value_namespace = name_space;
+        dlci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fr-mode")
     {
         fr_mode = value;
+        fr_mode.value_namespace = name_space;
+        fr_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dlci")
+    {
+        dlci.yfilter = yfilter;
+    }
+    if(value_path == "fr-mode")
+    {
+        fr_mode.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::Fr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dlci" || name == "fr-mode")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::PseudowireEther()
@@ -463,9 +2784,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(internal_label.operation)
-	|| is_set(is_valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
 	|| (interface_list !=  nullptr && interface_list->has_operation());
 }
 
@@ -492,8 +2813,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -526,16 +2847,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "internal-label" || name == "is-valid")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::InterfaceList()
@@ -568,9 +2912,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_list_id.operation)
-	|| is_set(interface_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_list_id.yfilter)
+	|| ydk::is_set(interface_list_name.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::get_segment_path() const
@@ -596,8 +2940,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_list_id.is_set || is_set(interface_list_id.operation)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
-    if (interface_list_name.is_set || is_set(interface_list_name.operation)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
+    if (interface_list_id.is_set || is_set(interface_list_id.yfilter)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
+    if (interface_list_name.is_set || is_set(interface_list_name.yfilter)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -637,16 +2981,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-id")
     {
         interface_list_id = value;
+        interface_list_id.value_namespace = name_space;
+        interface_list_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-list-name")
     {
         interface_list_name = value;
+        interface_list_name.value_namespace = name_space;
+        interface_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-list-id" || name == "interface-list-name")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::Interface_()
@@ -669,9 +3036,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(replicate_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(replicate_status.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::get_segment_path() const
@@ -697,8 +3064,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (replicate_status.is_set || is_set(replicate_status.operation)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (replicate_status.is_set || is_set(replicate_status.yfilter)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -717,16 +3084,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replicate-status")
     {
         replicate_status = value;
+        replicate_status.value_namespace = name_space;
+        replicate_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireEther::InterfaceList::Interface_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "replicate-status")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::PseudowireIw()
@@ -754,9 +3144,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(internal_label.operation)
-	|| is_set(is_valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
 	|| (interface_list !=  nullptr && interface_list->has_operation());
 }
 
@@ -783,8 +3173,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -817,16 +3207,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "internal-label" || name == "is-valid")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::InterfaceList()
@@ -859,9 +3272,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_list_id.operation)
-	|| is_set(interface_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_list_id.yfilter)
+	|| ydk::is_set(interface_list_name.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::get_segment_path() const
@@ -887,8 +3300,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_list_id.is_set || is_set(interface_list_id.operation)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
-    if (interface_list_name.is_set || is_set(interface_list_name.operation)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
+    if (interface_list_id.is_set || is_set(interface_list_id.yfilter)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
+    if (interface_list_name.is_set || is_set(interface_list_name.yfilter)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -928,16 +3341,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-id")
     {
         interface_list_id = value;
+        interface_list_id.value_namespace = name_space;
+        interface_list_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-list-name")
     {
         interface_list_name = value;
+        interface_list_name.value_namespace = name_space;
+        interface_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-list-id" || name == "interface-list-name")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::Interface_()
@@ -960,9 +3396,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(replicate_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(replicate_status.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::get_segment_path() const
@@ -988,8 +3424,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (replicate_status.is_set || is_set(replicate_status.operation)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (replicate_status.is_set || is_set(replicate_status.yfilter)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1008,16 +3444,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replicate-status")
     {
         replicate_status = value;
+        replicate_status.value_namespace = name_space;
+        replicate_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Interface::Parameters::PseudowireIw::InterfaceList::Interface_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "replicate-status")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::Statistics()
@@ -1048,7 +3507,7 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dispostion_stats !=  nullptr && dispostion_stats->has_operation())
 	|| (impostion_stats !=  nullptr && impostion_stats->has_operation())
 	|| (sequence_number !=  nullptr && sequence_number->has_operation());
@@ -1137,8 +3596,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dispostion-stats" || name == "impostion-stats" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpostionStats()
@@ -1189,7 +3659,7 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (broadcast !=  nullptr && broadcast->has_operation())
 	|| (imposition_mtu_drop !=  nullptr && imposition_mtu_drop->has_operation())
 	|| (imposition_stat !=  nullptr && imposition_stat->has_operation())
@@ -1353,8 +3823,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast" || name == "imposition-mtu-drop" || name == "imposition-stat" || name == "impostion-tail-drop" || name == "known-unicast" || name == "l2fsbi-drop" || name == "multicast" || name == "unknown-unicast")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::ImpositionStat()
@@ -1377,9 +3858,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::get_segment_path() const
@@ -1405,8 +3886,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1425,16 +3906,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::ImpositionMtuDrop()
@@ -1457,9 +3961,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::get_segment_path() const
@@ -1485,8 +3989,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1505,16 +4009,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::ImpostionTailDrop()
@@ -1537,9 +4064,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::get_segment_path() const
@@ -1565,8 +4092,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1585,16 +4112,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::L2FsbiDrop()
@@ -1617,9 +4167,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::get_segment_path() const
@@ -1645,8 +4195,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1665,16 +4215,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::L2FsbiDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Multicast::Multicast()
@@ -1697,9 +4270,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Multicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Multicast::get_segment_path() const
@@ -1725,8 +4298,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1745,16 +4318,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::Broadcast()
@@ -1777,9 +4373,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::get_segment_path() const
@@ -1805,8 +4401,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1825,16 +4421,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::KnownUnicast()
@@ -1857,9 +4476,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::get_segment_path() const
@@ -1885,8 +4504,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1905,16 +4524,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::UnknownUnicast()
@@ -1937,9 +4579,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::get_segment_path() const
@@ -1965,8 +4607,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1985,16 +4627,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::ImpostionStats::UnknownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispostionStats()
@@ -2065,7 +4730,7 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (broadcast_drop !=  nullptr && broadcast_drop->has_operation())
 	|| (dai_drop !=  nullptr && dai_drop->has_operation())
 	|| (disposition_mtu_drop !=  nullptr && disposition_mtu_drop->has_operation())
@@ -2304,8 +4969,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast-drop" || name == "dai-drop" || name == "disposition-mtu-drop" || name == "disposition-oo-o-drops" || name == "disposition-p2mp-stats" || name == "disposition-stat" || name == "disposition-tail-drop" || name == "ipsg-drop" || name == "known-unicast" || name == "mac-move" || name == "multicast-drop" || name == "received-drops" || name == "unicast-drop")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::DispositionStat()
@@ -2328,9 +5004,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::get_segment_path() const
@@ -2356,8 +5032,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2376,16 +5052,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::DispositionMtuDrop()
@@ -2408,9 +5107,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::get_segment_path() const
@@ -2436,8 +5135,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2456,16 +5155,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionMtuDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::DispositionTailDrop()
@@ -2488,9 +5210,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::get_segment_path() const
@@ -2516,8 +5238,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2536,16 +5258,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::MulticastDrop()
@@ -2568,9 +5313,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::get_segment_path() const
@@ -2596,8 +5341,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2616,16 +5361,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MulticastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::UnicastDrop()
@@ -2648,9 +5416,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::get_segment_path() const
@@ -2676,8 +5444,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2696,16 +5464,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::UnicastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::BroadcastDrop()
@@ -2728,9 +5519,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::get_segment_path() const
@@ -2756,8 +5547,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2776,16 +5567,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::BroadcastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::ReceivedDrops()
@@ -2808,9 +5622,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::get_segment_path() const
@@ -2836,8 +5650,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2856,16 +5670,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::ReceivedDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::DaiDrop()
@@ -2888,9 +5725,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::get_segment_path() const
@@ -2916,8 +5753,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2936,16 +5773,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DaiDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::IpsgDrop()
@@ -2968,9 +5828,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::get_segment_path() const
@@ -2996,8 +5856,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3016,16 +5876,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::IpsgDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::DispositionOoODrops()
@@ -3048,9 +5931,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::get_segment_path() const
@@ -3076,8 +5959,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3096,16 +5979,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionOoODrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::DispositionP2MpStats()
@@ -3128,9 +6034,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::get_segment_path() const
@@ -3156,8 +6062,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3176,16 +6082,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::DispositionP2MpStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::KnownUnicast()
@@ -3208,9 +6137,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::get_segment_path() const
@@ -3236,8 +6165,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3256,16 +6185,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MacMove::MacMove()
@@ -3288,9 +6240,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MacMove::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MacMove::get_segment_path() const
@@ -3316,8 +6268,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3336,16 +6288,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MacMove::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::DispostionStats::MacMove::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::SequenceNumber::SequenceNumber()
@@ -3372,11 +6347,11 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::SequenceNumber::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bypassed_inbound_sequence_packet.operation)
-	|| is_set(bypassed_out_sequence_packet.operation)
-	|| is_set(sequence_number_expected.operation)
-	|| is_set(sequence_number_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bypassed_inbound_sequence_packet.yfilter)
+	|| ydk::is_set(bypassed_out_sequence_packet.yfilter)
+	|| ydk::is_set(sequence_number_expected.yfilter)
+	|| ydk::is_set(sequence_number_sent.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::SequenceNumber::get_segment_path() const
@@ -3402,10 +6377,10 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bypassed_inbound_sequence_packet.is_set || is_set(bypassed_inbound_sequence_packet.operation)) leaf_name_data.push_back(bypassed_inbound_sequence_packet.get_name_leafdata());
-    if (bypassed_out_sequence_packet.is_set || is_set(bypassed_out_sequence_packet.operation)) leaf_name_data.push_back(bypassed_out_sequence_packet.get_name_leafdata());
-    if (sequence_number_expected.is_set || is_set(sequence_number_expected.operation)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
-    if (sequence_number_sent.is_set || is_set(sequence_number_sent.operation)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
+    if (bypassed_inbound_sequence_packet.is_set || is_set(bypassed_inbound_sequence_packet.yfilter)) leaf_name_data.push_back(bypassed_inbound_sequence_packet.get_name_leafdata());
+    if (bypassed_out_sequence_packet.is_set || is_set(bypassed_out_sequence_packet.yfilter)) leaf_name_data.push_back(bypassed_out_sequence_packet.get_name_leafdata());
+    if (sequence_number_expected.is_set || is_set(sequence_number_expected.yfilter)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
+    if (sequence_number_sent.is_set || is_set(sequence_number_sent.yfilter)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3424,24 +6399,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::SequenceNumber::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::SequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bypassed-inbound-sequence-packet")
     {
         bypassed_inbound_sequence_packet = value;
+        bypassed_inbound_sequence_packet.value_namespace = name_space;
+        bypassed_inbound_sequence_packet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bypassed-out-sequence-packet")
     {
         bypassed_out_sequence_packet = value;
+        bypassed_out_sequence_packet.value_namespace = name_space;
+        bypassed_out_sequence_packet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number-expected")
     {
         sequence_number_expected = value;
+        sequence_number_expected.value_namespace = name_space;
+        sequence_number_expected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number-sent")
     {
         sequence_number_sent = value;
+        sequence_number_sent.value_namespace = name_space;
+        sequence_number_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::SequenceNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bypassed-inbound-sequence-packet")
+    {
+        bypassed_inbound_sequence_packet.yfilter = yfilter;
+    }
+    if(value_path == "bypassed-out-sequence-packet")
+    {
+        bypassed_out_sequence_packet.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-expected")
+    {
+        sequence_number_expected.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-sent")
+    {
+        sequence_number_sent.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::Statistics::SequenceNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bypassed-inbound-sequence-packet" || name == "bypassed-out-sequence-packet" || name == "sequence-number-expected" || name == "sequence-number-sent")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection::L2VpnProtection()
@@ -3470,12 +6480,12 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active.operation)
-	|| is_set(protected_name.operation)
-	|| is_set(protection_configured.operation)
-	|| is_set(protection_name.operation)
-	|| is_set(protection_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(protected_name.yfilter)
+	|| ydk::is_set(protection_configured.yfilter)
+	|| ydk::is_set(protection_name.yfilter)
+	|| ydk::is_set(protection_type.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection::get_segment_path() const
@@ -3501,11 +6511,11 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (protected_name.is_set || is_set(protected_name.operation)) leaf_name_data.push_back(protected_name.get_name_leafdata());
-    if (protection_configured.is_set || is_set(protection_configured.operation)) leaf_name_data.push_back(protection_configured.get_name_leafdata());
-    if (protection_name.is_set || is_set(protection_name.operation)) leaf_name_data.push_back(protection_name.get_name_leafdata());
-    if (protection_type.is_set || is_set(protection_type.operation)) leaf_name_data.push_back(protection_type.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (protected_name.is_set || is_set(protected_name.yfilter)) leaf_name_data.push_back(protected_name.get_name_leafdata());
+    if (protection_configured.is_set || is_set(protection_configured.yfilter)) leaf_name_data.push_back(protection_configured.get_name_leafdata());
+    if (protection_name.is_set || is_set(protection_name.yfilter)) leaf_name_data.push_back(protection_name.get_name_leafdata());
+    if (protection_type.is_set || is_set(protection_type.yfilter)) leaf_name_data.push_back(protection_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3524,28 +6534,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protected-name")
     {
         protected_name = value;
+        protected_name.value_namespace = name_space;
+        protected_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protection-configured")
     {
         protection_configured = value;
+        protection_configured.value_namespace = name_space;
+        protection_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protection-name")
     {
         protection_name = value;
+        protection_name.value_namespace = name_space;
+        protection_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protection-type")
     {
         protection_type = value;
+        protection_type.value_namespace = name_space;
+        protection_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "protected-name")
+    {
+        protected_name.yfilter = yfilter;
+    }
+    if(value_path == "protection-configured")
+    {
+        protection_configured.yfilter = yfilter;
+    }
+    if(value_path == "protection-name")
+    {
+        protection_name.yfilter = yfilter;
+    }
+    if(value_path == "protection-type")
+    {
+        protection_type.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::AttachmentCircuit::L2VpnProtection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "protected-name" || name == "protection-configured" || name == "protection-name" || name == "protection-type")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PseudoWire()
@@ -3759,86 +6810,86 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::has_d
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ad_method.operation)
-	|| is_set(ad_remote_down.operation)
-	|| is_set(admited_bw.operation)
-	|| is_set(auto_discovery.operation)
-	|| is_set(backup_active.operation)
-	|| is_set(backup_force_active.operation)
-	|| is_set(backup_pw.operation)
-	|| is_set(bitrate_mismatched.operation)
-	|| is_set(bridge_pw_type_mismatch.operation)
-	|| is_set(cas_mismatched.operation)
-	|| is_set(diff_ts_mismatched.operation)
-	|| is_set(disable_delay.operation)
-	|| is_set(disable_never.operation)
-	|| is_set(evpn_src_acid.operation)
-	|| is_set(fe_ctype.operation)
-	|| is_set(forward_class.operation)
-	|| is_set(freq_mismatched.operation)
-	|| is_set(illegal_control_word.operation)
-	|| is_set(imposed_vlan_id.operation)
-	|| is_set(interworking.operation)
-	|| is_set(ipv6_local_source_address.operation)
-	|| is_set(is_evpnvpws_type.operation)
-	|| is_set(is_flow_label_static.operation)
-	|| is_set(is_multi_segment_pseudowire.operation)
-	|| is_set(is_partially_programmed.operation)
-	|| is_set(is_pwr_type.operation)
-	|| is_set(is_vfi.operation)
-	|| is_set(last_time_status_changed.operation)
-	|| is_set(last_time_status_down.operation)
-	|| is_set(ldp_label_advertise_failed.operation)
-	|| is_set(load_balance.operation)
-	|| is_set(local_control_word.operation)
-	|| is_set(local_label_failed.operation)
-	|| is_set(local_pseudo_wire_type.operation)
-	|| is_set(local_source_address.operation)
-	|| is_set(mac_limit_oper_down.operation)
-	|| is_set(mtu_mismatched.operation)
-	|| is_set(not_supported_qinq.operation)
-	|| is_set(num_ma_cwithdraw_msg_received.operation)
-	|| is_set(number_ma_cwithdraw_message_sent.operation)
-	|| is_set(out_of_memory_state.operation)
-	|| is_set(payload_bytes_mismatched.operation)
-	|| is_set(payload_type_mismatched.operation)
-	|| is_set(preferred_path_disable_fallback.operation)
-	|| is_set(primary_peer_id.operation)
-	|| is_set(primary_pseudo_wire_id.operation)
-	|| is_set(primary_pw.operation)
-	|| is_set(protocol.operation)
-	|| is_set(pseudo_wire_id.operation)
-	|| is_set(pseudo_wire_state.operation)
-	|| is_set(pseudo_wire_type_mismatched.operation)
-	|| is_set(pw_class_name.operation)
-	|| is_set(pw_flow_label_code17_disabled.operation)
-	|| is_set(pw_flow_label_type.operation)
-	|| is_set(pw_flow_label_type_cfg.operation)
-	|| is_set(pw_redundancy_initial_delay.operation)
-	|| is_set(pw_redundancy_one_way.operation)
-	|| is_set(pw_status_use.operation)
-	|| is_set(pwlsd_rewrite_failed.operation)
-	|| is_set(remote_control_word.operation)
-	|| is_set(remote_label_failed.operation)
-	|| is_set(remote_pseudo_wire_type.operation)
-	|| is_set(required_bw.operation)
-	|| is_set(resync_enabled.operation)
-	|| is_set(resync_threshold.operation)
-	|| is_set(rtp_mismatched.operation)
-	|| is_set(sequencing_type.operation)
-	|| is_set(shutdown.operation)
-	|| is_set(sig_pkts_mismatched.operation)
-	|| is_set(ssrc_mismatched.operation)
-	|| is_set(state.operation)
-	|| is_set(table_policy_name.operation)
-	|| is_set(tag_rewrite.operation)
-	|| is_set(time_created.operation)
-	|| is_set(time_elapsed_creation.operation)
-	|| is_set(time_elapsed_status_changed.operation)
-	|| is_set(time_elapsed_status_down.operation)
-	|| is_set(transport_lsp_down.operation)
-	|| is_set(xconnect_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ad_method.yfilter)
+	|| ydk::is_set(ad_remote_down.yfilter)
+	|| ydk::is_set(admited_bw.yfilter)
+	|| ydk::is_set(auto_discovery.yfilter)
+	|| ydk::is_set(backup_active.yfilter)
+	|| ydk::is_set(backup_force_active.yfilter)
+	|| ydk::is_set(backup_pw.yfilter)
+	|| ydk::is_set(bitrate_mismatched.yfilter)
+	|| ydk::is_set(bridge_pw_type_mismatch.yfilter)
+	|| ydk::is_set(cas_mismatched.yfilter)
+	|| ydk::is_set(diff_ts_mismatched.yfilter)
+	|| ydk::is_set(disable_delay.yfilter)
+	|| ydk::is_set(disable_never.yfilter)
+	|| ydk::is_set(evpn_src_acid.yfilter)
+	|| ydk::is_set(fe_ctype.yfilter)
+	|| ydk::is_set(forward_class.yfilter)
+	|| ydk::is_set(freq_mismatched.yfilter)
+	|| ydk::is_set(illegal_control_word.yfilter)
+	|| ydk::is_set(imposed_vlan_id.yfilter)
+	|| ydk::is_set(interworking.yfilter)
+	|| ydk::is_set(ipv6_local_source_address.yfilter)
+	|| ydk::is_set(is_evpnvpws_type.yfilter)
+	|| ydk::is_set(is_flow_label_static.yfilter)
+	|| ydk::is_set(is_multi_segment_pseudowire.yfilter)
+	|| ydk::is_set(is_partially_programmed.yfilter)
+	|| ydk::is_set(is_pwr_type.yfilter)
+	|| ydk::is_set(is_vfi.yfilter)
+	|| ydk::is_set(last_time_status_changed.yfilter)
+	|| ydk::is_set(last_time_status_down.yfilter)
+	|| ydk::is_set(ldp_label_advertise_failed.yfilter)
+	|| ydk::is_set(load_balance.yfilter)
+	|| ydk::is_set(local_control_word.yfilter)
+	|| ydk::is_set(local_label_failed.yfilter)
+	|| ydk::is_set(local_pseudo_wire_type.yfilter)
+	|| ydk::is_set(local_source_address.yfilter)
+	|| ydk::is_set(mac_limit_oper_down.yfilter)
+	|| ydk::is_set(mtu_mismatched.yfilter)
+	|| ydk::is_set(not_supported_qinq.yfilter)
+	|| ydk::is_set(num_ma_cwithdraw_msg_received.yfilter)
+	|| ydk::is_set(number_ma_cwithdraw_message_sent.yfilter)
+	|| ydk::is_set(out_of_memory_state.yfilter)
+	|| ydk::is_set(payload_bytes_mismatched.yfilter)
+	|| ydk::is_set(payload_type_mismatched.yfilter)
+	|| ydk::is_set(preferred_path_disable_fallback.yfilter)
+	|| ydk::is_set(primary_peer_id.yfilter)
+	|| ydk::is_set(primary_pseudo_wire_id.yfilter)
+	|| ydk::is_set(primary_pw.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(pseudo_wire_id.yfilter)
+	|| ydk::is_set(pseudo_wire_state.yfilter)
+	|| ydk::is_set(pseudo_wire_type_mismatched.yfilter)
+	|| ydk::is_set(pw_class_name.yfilter)
+	|| ydk::is_set(pw_flow_label_code17_disabled.yfilter)
+	|| ydk::is_set(pw_flow_label_type.yfilter)
+	|| ydk::is_set(pw_flow_label_type_cfg.yfilter)
+	|| ydk::is_set(pw_redundancy_initial_delay.yfilter)
+	|| ydk::is_set(pw_redundancy_one_way.yfilter)
+	|| ydk::is_set(pw_status_use.yfilter)
+	|| ydk::is_set(pwlsd_rewrite_failed.yfilter)
+	|| ydk::is_set(remote_control_word.yfilter)
+	|| ydk::is_set(remote_label_failed.yfilter)
+	|| ydk::is_set(remote_pseudo_wire_type.yfilter)
+	|| ydk::is_set(required_bw.yfilter)
+	|| ydk::is_set(resync_enabled.yfilter)
+	|| ydk::is_set(resync_threshold.yfilter)
+	|| ydk::is_set(rtp_mismatched.yfilter)
+	|| ydk::is_set(sequencing_type.yfilter)
+	|| ydk::is_set(shutdown.yfilter)
+	|| ydk::is_set(sig_pkts_mismatched.yfilter)
+	|| ydk::is_set(ssrc_mismatched.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(table_policy_name.yfilter)
+	|| ydk::is_set(tag_rewrite.yfilter)
+	|| ydk::is_set(time_created.yfilter)
+	|| ydk::is_set(time_elapsed_creation.yfilter)
+	|| ydk::is_set(time_elapsed_status_changed.yfilter)
+	|| ydk::is_set(time_elapsed_status_down.yfilter)
+	|| ydk::is_set(transport_lsp_down.yfilter)
+	|| ydk::is_set(xconnect_id.yfilter)
 	|| (encapsulation_info !=  nullptr && encapsulation_info->has_operation())
 	|| (local_interface !=  nullptr && local_interface->has_operation())
 	|| (local_signalling !=  nullptr && local_signalling->has_operation())
@@ -3873,85 +6924,85 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ad_method.is_set || is_set(ad_method.operation)) leaf_name_data.push_back(ad_method.get_name_leafdata());
-    if (ad_remote_down.is_set || is_set(ad_remote_down.operation)) leaf_name_data.push_back(ad_remote_down.get_name_leafdata());
-    if (admited_bw.is_set || is_set(admited_bw.operation)) leaf_name_data.push_back(admited_bw.get_name_leafdata());
-    if (auto_discovery.is_set || is_set(auto_discovery.operation)) leaf_name_data.push_back(auto_discovery.get_name_leafdata());
-    if (backup_active.is_set || is_set(backup_active.operation)) leaf_name_data.push_back(backup_active.get_name_leafdata());
-    if (backup_force_active.is_set || is_set(backup_force_active.operation)) leaf_name_data.push_back(backup_force_active.get_name_leafdata());
-    if (backup_pw.is_set || is_set(backup_pw.operation)) leaf_name_data.push_back(backup_pw.get_name_leafdata());
-    if (bitrate_mismatched.is_set || is_set(bitrate_mismatched.operation)) leaf_name_data.push_back(bitrate_mismatched.get_name_leafdata());
-    if (bridge_pw_type_mismatch.is_set || is_set(bridge_pw_type_mismatch.operation)) leaf_name_data.push_back(bridge_pw_type_mismatch.get_name_leafdata());
-    if (cas_mismatched.is_set || is_set(cas_mismatched.operation)) leaf_name_data.push_back(cas_mismatched.get_name_leafdata());
-    if (diff_ts_mismatched.is_set || is_set(diff_ts_mismatched.operation)) leaf_name_data.push_back(diff_ts_mismatched.get_name_leafdata());
-    if (disable_delay.is_set || is_set(disable_delay.operation)) leaf_name_data.push_back(disable_delay.get_name_leafdata());
-    if (disable_never.is_set || is_set(disable_never.operation)) leaf_name_data.push_back(disable_never.get_name_leafdata());
-    if (evpn_src_acid.is_set || is_set(evpn_src_acid.operation)) leaf_name_data.push_back(evpn_src_acid.get_name_leafdata());
-    if (fe_ctype.is_set || is_set(fe_ctype.operation)) leaf_name_data.push_back(fe_ctype.get_name_leafdata());
-    if (forward_class.is_set || is_set(forward_class.operation)) leaf_name_data.push_back(forward_class.get_name_leafdata());
-    if (freq_mismatched.is_set || is_set(freq_mismatched.operation)) leaf_name_data.push_back(freq_mismatched.get_name_leafdata());
-    if (illegal_control_word.is_set || is_set(illegal_control_word.operation)) leaf_name_data.push_back(illegal_control_word.get_name_leafdata());
-    if (imposed_vlan_id.is_set || is_set(imposed_vlan_id.operation)) leaf_name_data.push_back(imposed_vlan_id.get_name_leafdata());
-    if (interworking.is_set || is_set(interworking.operation)) leaf_name_data.push_back(interworking.get_name_leafdata());
-    if (ipv6_local_source_address.is_set || is_set(ipv6_local_source_address.operation)) leaf_name_data.push_back(ipv6_local_source_address.get_name_leafdata());
-    if (is_evpnvpws_type.is_set || is_set(is_evpnvpws_type.operation)) leaf_name_data.push_back(is_evpnvpws_type.get_name_leafdata());
-    if (is_flow_label_static.is_set || is_set(is_flow_label_static.operation)) leaf_name_data.push_back(is_flow_label_static.get_name_leafdata());
-    if (is_multi_segment_pseudowire.is_set || is_set(is_multi_segment_pseudowire.operation)) leaf_name_data.push_back(is_multi_segment_pseudowire.get_name_leafdata());
-    if (is_partially_programmed.is_set || is_set(is_partially_programmed.operation)) leaf_name_data.push_back(is_partially_programmed.get_name_leafdata());
-    if (is_pwr_type.is_set || is_set(is_pwr_type.operation)) leaf_name_data.push_back(is_pwr_type.get_name_leafdata());
-    if (is_vfi.is_set || is_set(is_vfi.operation)) leaf_name_data.push_back(is_vfi.get_name_leafdata());
-    if (last_time_status_changed.is_set || is_set(last_time_status_changed.operation)) leaf_name_data.push_back(last_time_status_changed.get_name_leafdata());
-    if (last_time_status_down.is_set || is_set(last_time_status_down.operation)) leaf_name_data.push_back(last_time_status_down.get_name_leafdata());
-    if (ldp_label_advertise_failed.is_set || is_set(ldp_label_advertise_failed.operation)) leaf_name_data.push_back(ldp_label_advertise_failed.get_name_leafdata());
-    if (load_balance.is_set || is_set(load_balance.operation)) leaf_name_data.push_back(load_balance.get_name_leafdata());
-    if (local_control_word.is_set || is_set(local_control_word.operation)) leaf_name_data.push_back(local_control_word.get_name_leafdata());
-    if (local_label_failed.is_set || is_set(local_label_failed.operation)) leaf_name_data.push_back(local_label_failed.get_name_leafdata());
-    if (local_pseudo_wire_type.is_set || is_set(local_pseudo_wire_type.operation)) leaf_name_data.push_back(local_pseudo_wire_type.get_name_leafdata());
-    if (local_source_address.is_set || is_set(local_source_address.operation)) leaf_name_data.push_back(local_source_address.get_name_leafdata());
-    if (mac_limit_oper_down.is_set || is_set(mac_limit_oper_down.operation)) leaf_name_data.push_back(mac_limit_oper_down.get_name_leafdata());
-    if (mtu_mismatched.is_set || is_set(mtu_mismatched.operation)) leaf_name_data.push_back(mtu_mismatched.get_name_leafdata());
-    if (not_supported_qinq.is_set || is_set(not_supported_qinq.operation)) leaf_name_data.push_back(not_supported_qinq.get_name_leafdata());
-    if (num_ma_cwithdraw_msg_received.is_set || is_set(num_ma_cwithdraw_msg_received.operation)) leaf_name_data.push_back(num_ma_cwithdraw_msg_received.get_name_leafdata());
-    if (number_ma_cwithdraw_message_sent.is_set || is_set(number_ma_cwithdraw_message_sent.operation)) leaf_name_data.push_back(number_ma_cwithdraw_message_sent.get_name_leafdata());
-    if (out_of_memory_state.is_set || is_set(out_of_memory_state.operation)) leaf_name_data.push_back(out_of_memory_state.get_name_leafdata());
-    if (payload_bytes_mismatched.is_set || is_set(payload_bytes_mismatched.operation)) leaf_name_data.push_back(payload_bytes_mismatched.get_name_leafdata());
-    if (payload_type_mismatched.is_set || is_set(payload_type_mismatched.operation)) leaf_name_data.push_back(payload_type_mismatched.get_name_leafdata());
-    if (preferred_path_disable_fallback.is_set || is_set(preferred_path_disable_fallback.operation)) leaf_name_data.push_back(preferred_path_disable_fallback.get_name_leafdata());
-    if (primary_peer_id.is_set || is_set(primary_peer_id.operation)) leaf_name_data.push_back(primary_peer_id.get_name_leafdata());
-    if (primary_pseudo_wire_id.is_set || is_set(primary_pseudo_wire_id.operation)) leaf_name_data.push_back(primary_pseudo_wire_id.get_name_leafdata());
-    if (primary_pw.is_set || is_set(primary_pw.operation)) leaf_name_data.push_back(primary_pw.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (pseudo_wire_id.is_set || is_set(pseudo_wire_id.operation)) leaf_name_data.push_back(pseudo_wire_id.get_name_leafdata());
-    if (pseudo_wire_state.is_set || is_set(pseudo_wire_state.operation)) leaf_name_data.push_back(pseudo_wire_state.get_name_leafdata());
-    if (pseudo_wire_type_mismatched.is_set || is_set(pseudo_wire_type_mismatched.operation)) leaf_name_data.push_back(pseudo_wire_type_mismatched.get_name_leafdata());
-    if (pw_class_name.is_set || is_set(pw_class_name.operation)) leaf_name_data.push_back(pw_class_name.get_name_leafdata());
-    if (pw_flow_label_code17_disabled.is_set || is_set(pw_flow_label_code17_disabled.operation)) leaf_name_data.push_back(pw_flow_label_code17_disabled.get_name_leafdata());
-    if (pw_flow_label_type.is_set || is_set(pw_flow_label_type.operation)) leaf_name_data.push_back(pw_flow_label_type.get_name_leafdata());
-    if (pw_flow_label_type_cfg.is_set || is_set(pw_flow_label_type_cfg.operation)) leaf_name_data.push_back(pw_flow_label_type_cfg.get_name_leafdata());
-    if (pw_redundancy_initial_delay.is_set || is_set(pw_redundancy_initial_delay.operation)) leaf_name_data.push_back(pw_redundancy_initial_delay.get_name_leafdata());
-    if (pw_redundancy_one_way.is_set || is_set(pw_redundancy_one_way.operation)) leaf_name_data.push_back(pw_redundancy_one_way.get_name_leafdata());
-    if (pw_status_use.is_set || is_set(pw_status_use.operation)) leaf_name_data.push_back(pw_status_use.get_name_leafdata());
-    if (pwlsd_rewrite_failed.is_set || is_set(pwlsd_rewrite_failed.operation)) leaf_name_data.push_back(pwlsd_rewrite_failed.get_name_leafdata());
-    if (remote_control_word.is_set || is_set(remote_control_word.operation)) leaf_name_data.push_back(remote_control_word.get_name_leafdata());
-    if (remote_label_failed.is_set || is_set(remote_label_failed.operation)) leaf_name_data.push_back(remote_label_failed.get_name_leafdata());
-    if (remote_pseudo_wire_type.is_set || is_set(remote_pseudo_wire_type.operation)) leaf_name_data.push_back(remote_pseudo_wire_type.get_name_leafdata());
-    if (required_bw.is_set || is_set(required_bw.operation)) leaf_name_data.push_back(required_bw.get_name_leafdata());
-    if (resync_enabled.is_set || is_set(resync_enabled.operation)) leaf_name_data.push_back(resync_enabled.get_name_leafdata());
-    if (resync_threshold.is_set || is_set(resync_threshold.operation)) leaf_name_data.push_back(resync_threshold.get_name_leafdata());
-    if (rtp_mismatched.is_set || is_set(rtp_mismatched.operation)) leaf_name_data.push_back(rtp_mismatched.get_name_leafdata());
-    if (sequencing_type.is_set || is_set(sequencing_type.operation)) leaf_name_data.push_back(sequencing_type.get_name_leafdata());
-    if (shutdown.is_set || is_set(shutdown.operation)) leaf_name_data.push_back(shutdown.get_name_leafdata());
-    if (sig_pkts_mismatched.is_set || is_set(sig_pkts_mismatched.operation)) leaf_name_data.push_back(sig_pkts_mismatched.get_name_leafdata());
-    if (ssrc_mismatched.is_set || is_set(ssrc_mismatched.operation)) leaf_name_data.push_back(ssrc_mismatched.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (table_policy_name.is_set || is_set(table_policy_name.operation)) leaf_name_data.push_back(table_policy_name.get_name_leafdata());
-    if (tag_rewrite.is_set || is_set(tag_rewrite.operation)) leaf_name_data.push_back(tag_rewrite.get_name_leafdata());
-    if (time_created.is_set || is_set(time_created.operation)) leaf_name_data.push_back(time_created.get_name_leafdata());
-    if (time_elapsed_creation.is_set || is_set(time_elapsed_creation.operation)) leaf_name_data.push_back(time_elapsed_creation.get_name_leafdata());
-    if (time_elapsed_status_changed.is_set || is_set(time_elapsed_status_changed.operation)) leaf_name_data.push_back(time_elapsed_status_changed.get_name_leafdata());
-    if (time_elapsed_status_down.is_set || is_set(time_elapsed_status_down.operation)) leaf_name_data.push_back(time_elapsed_status_down.get_name_leafdata());
-    if (transport_lsp_down.is_set || is_set(transport_lsp_down.operation)) leaf_name_data.push_back(transport_lsp_down.get_name_leafdata());
-    if (xconnect_id.is_set || is_set(xconnect_id.operation)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
+    if (ad_method.is_set || is_set(ad_method.yfilter)) leaf_name_data.push_back(ad_method.get_name_leafdata());
+    if (ad_remote_down.is_set || is_set(ad_remote_down.yfilter)) leaf_name_data.push_back(ad_remote_down.get_name_leafdata());
+    if (admited_bw.is_set || is_set(admited_bw.yfilter)) leaf_name_data.push_back(admited_bw.get_name_leafdata());
+    if (auto_discovery.is_set || is_set(auto_discovery.yfilter)) leaf_name_data.push_back(auto_discovery.get_name_leafdata());
+    if (backup_active.is_set || is_set(backup_active.yfilter)) leaf_name_data.push_back(backup_active.get_name_leafdata());
+    if (backup_force_active.is_set || is_set(backup_force_active.yfilter)) leaf_name_data.push_back(backup_force_active.get_name_leafdata());
+    if (backup_pw.is_set || is_set(backup_pw.yfilter)) leaf_name_data.push_back(backup_pw.get_name_leafdata());
+    if (bitrate_mismatched.is_set || is_set(bitrate_mismatched.yfilter)) leaf_name_data.push_back(bitrate_mismatched.get_name_leafdata());
+    if (bridge_pw_type_mismatch.is_set || is_set(bridge_pw_type_mismatch.yfilter)) leaf_name_data.push_back(bridge_pw_type_mismatch.get_name_leafdata());
+    if (cas_mismatched.is_set || is_set(cas_mismatched.yfilter)) leaf_name_data.push_back(cas_mismatched.get_name_leafdata());
+    if (diff_ts_mismatched.is_set || is_set(diff_ts_mismatched.yfilter)) leaf_name_data.push_back(diff_ts_mismatched.get_name_leafdata());
+    if (disable_delay.is_set || is_set(disable_delay.yfilter)) leaf_name_data.push_back(disable_delay.get_name_leafdata());
+    if (disable_never.is_set || is_set(disable_never.yfilter)) leaf_name_data.push_back(disable_never.get_name_leafdata());
+    if (evpn_src_acid.is_set || is_set(evpn_src_acid.yfilter)) leaf_name_data.push_back(evpn_src_acid.get_name_leafdata());
+    if (fe_ctype.is_set || is_set(fe_ctype.yfilter)) leaf_name_data.push_back(fe_ctype.get_name_leafdata());
+    if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
+    if (freq_mismatched.is_set || is_set(freq_mismatched.yfilter)) leaf_name_data.push_back(freq_mismatched.get_name_leafdata());
+    if (illegal_control_word.is_set || is_set(illegal_control_word.yfilter)) leaf_name_data.push_back(illegal_control_word.get_name_leafdata());
+    if (imposed_vlan_id.is_set || is_set(imposed_vlan_id.yfilter)) leaf_name_data.push_back(imposed_vlan_id.get_name_leafdata());
+    if (interworking.is_set || is_set(interworking.yfilter)) leaf_name_data.push_back(interworking.get_name_leafdata());
+    if (ipv6_local_source_address.is_set || is_set(ipv6_local_source_address.yfilter)) leaf_name_data.push_back(ipv6_local_source_address.get_name_leafdata());
+    if (is_evpnvpws_type.is_set || is_set(is_evpnvpws_type.yfilter)) leaf_name_data.push_back(is_evpnvpws_type.get_name_leafdata());
+    if (is_flow_label_static.is_set || is_set(is_flow_label_static.yfilter)) leaf_name_data.push_back(is_flow_label_static.get_name_leafdata());
+    if (is_multi_segment_pseudowire.is_set || is_set(is_multi_segment_pseudowire.yfilter)) leaf_name_data.push_back(is_multi_segment_pseudowire.get_name_leafdata());
+    if (is_partially_programmed.is_set || is_set(is_partially_programmed.yfilter)) leaf_name_data.push_back(is_partially_programmed.get_name_leafdata());
+    if (is_pwr_type.is_set || is_set(is_pwr_type.yfilter)) leaf_name_data.push_back(is_pwr_type.get_name_leafdata());
+    if (is_vfi.is_set || is_set(is_vfi.yfilter)) leaf_name_data.push_back(is_vfi.get_name_leafdata());
+    if (last_time_status_changed.is_set || is_set(last_time_status_changed.yfilter)) leaf_name_data.push_back(last_time_status_changed.get_name_leafdata());
+    if (last_time_status_down.is_set || is_set(last_time_status_down.yfilter)) leaf_name_data.push_back(last_time_status_down.get_name_leafdata());
+    if (ldp_label_advertise_failed.is_set || is_set(ldp_label_advertise_failed.yfilter)) leaf_name_data.push_back(ldp_label_advertise_failed.get_name_leafdata());
+    if (load_balance.is_set || is_set(load_balance.yfilter)) leaf_name_data.push_back(load_balance.get_name_leafdata());
+    if (local_control_word.is_set || is_set(local_control_word.yfilter)) leaf_name_data.push_back(local_control_word.get_name_leafdata());
+    if (local_label_failed.is_set || is_set(local_label_failed.yfilter)) leaf_name_data.push_back(local_label_failed.get_name_leafdata());
+    if (local_pseudo_wire_type.is_set || is_set(local_pseudo_wire_type.yfilter)) leaf_name_data.push_back(local_pseudo_wire_type.get_name_leafdata());
+    if (local_source_address.is_set || is_set(local_source_address.yfilter)) leaf_name_data.push_back(local_source_address.get_name_leafdata());
+    if (mac_limit_oper_down.is_set || is_set(mac_limit_oper_down.yfilter)) leaf_name_data.push_back(mac_limit_oper_down.get_name_leafdata());
+    if (mtu_mismatched.is_set || is_set(mtu_mismatched.yfilter)) leaf_name_data.push_back(mtu_mismatched.get_name_leafdata());
+    if (not_supported_qinq.is_set || is_set(not_supported_qinq.yfilter)) leaf_name_data.push_back(not_supported_qinq.get_name_leafdata());
+    if (num_ma_cwithdraw_msg_received.is_set || is_set(num_ma_cwithdraw_msg_received.yfilter)) leaf_name_data.push_back(num_ma_cwithdraw_msg_received.get_name_leafdata());
+    if (number_ma_cwithdraw_message_sent.is_set || is_set(number_ma_cwithdraw_message_sent.yfilter)) leaf_name_data.push_back(number_ma_cwithdraw_message_sent.get_name_leafdata());
+    if (out_of_memory_state.is_set || is_set(out_of_memory_state.yfilter)) leaf_name_data.push_back(out_of_memory_state.get_name_leafdata());
+    if (payload_bytes_mismatched.is_set || is_set(payload_bytes_mismatched.yfilter)) leaf_name_data.push_back(payload_bytes_mismatched.get_name_leafdata());
+    if (payload_type_mismatched.is_set || is_set(payload_type_mismatched.yfilter)) leaf_name_data.push_back(payload_type_mismatched.get_name_leafdata());
+    if (preferred_path_disable_fallback.is_set || is_set(preferred_path_disable_fallback.yfilter)) leaf_name_data.push_back(preferred_path_disable_fallback.get_name_leafdata());
+    if (primary_peer_id.is_set || is_set(primary_peer_id.yfilter)) leaf_name_data.push_back(primary_peer_id.get_name_leafdata());
+    if (primary_pseudo_wire_id.is_set || is_set(primary_pseudo_wire_id.yfilter)) leaf_name_data.push_back(primary_pseudo_wire_id.get_name_leafdata());
+    if (primary_pw.is_set || is_set(primary_pw.yfilter)) leaf_name_data.push_back(primary_pw.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (pseudo_wire_id.is_set || is_set(pseudo_wire_id.yfilter)) leaf_name_data.push_back(pseudo_wire_id.get_name_leafdata());
+    if (pseudo_wire_state.is_set || is_set(pseudo_wire_state.yfilter)) leaf_name_data.push_back(pseudo_wire_state.get_name_leafdata());
+    if (pseudo_wire_type_mismatched.is_set || is_set(pseudo_wire_type_mismatched.yfilter)) leaf_name_data.push_back(pseudo_wire_type_mismatched.get_name_leafdata());
+    if (pw_class_name.is_set || is_set(pw_class_name.yfilter)) leaf_name_data.push_back(pw_class_name.get_name_leafdata());
+    if (pw_flow_label_code17_disabled.is_set || is_set(pw_flow_label_code17_disabled.yfilter)) leaf_name_data.push_back(pw_flow_label_code17_disabled.get_name_leafdata());
+    if (pw_flow_label_type.is_set || is_set(pw_flow_label_type.yfilter)) leaf_name_data.push_back(pw_flow_label_type.get_name_leafdata());
+    if (pw_flow_label_type_cfg.is_set || is_set(pw_flow_label_type_cfg.yfilter)) leaf_name_data.push_back(pw_flow_label_type_cfg.get_name_leafdata());
+    if (pw_redundancy_initial_delay.is_set || is_set(pw_redundancy_initial_delay.yfilter)) leaf_name_data.push_back(pw_redundancy_initial_delay.get_name_leafdata());
+    if (pw_redundancy_one_way.is_set || is_set(pw_redundancy_one_way.yfilter)) leaf_name_data.push_back(pw_redundancy_one_way.get_name_leafdata());
+    if (pw_status_use.is_set || is_set(pw_status_use.yfilter)) leaf_name_data.push_back(pw_status_use.get_name_leafdata());
+    if (pwlsd_rewrite_failed.is_set || is_set(pwlsd_rewrite_failed.yfilter)) leaf_name_data.push_back(pwlsd_rewrite_failed.get_name_leafdata());
+    if (remote_control_word.is_set || is_set(remote_control_word.yfilter)) leaf_name_data.push_back(remote_control_word.get_name_leafdata());
+    if (remote_label_failed.is_set || is_set(remote_label_failed.yfilter)) leaf_name_data.push_back(remote_label_failed.get_name_leafdata());
+    if (remote_pseudo_wire_type.is_set || is_set(remote_pseudo_wire_type.yfilter)) leaf_name_data.push_back(remote_pseudo_wire_type.get_name_leafdata());
+    if (required_bw.is_set || is_set(required_bw.yfilter)) leaf_name_data.push_back(required_bw.get_name_leafdata());
+    if (resync_enabled.is_set || is_set(resync_enabled.yfilter)) leaf_name_data.push_back(resync_enabled.get_name_leafdata());
+    if (resync_threshold.is_set || is_set(resync_threshold.yfilter)) leaf_name_data.push_back(resync_threshold.get_name_leafdata());
+    if (rtp_mismatched.is_set || is_set(rtp_mismatched.yfilter)) leaf_name_data.push_back(rtp_mismatched.get_name_leafdata());
+    if (sequencing_type.is_set || is_set(sequencing_type.yfilter)) leaf_name_data.push_back(sequencing_type.get_name_leafdata());
+    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
+    if (sig_pkts_mismatched.is_set || is_set(sig_pkts_mismatched.yfilter)) leaf_name_data.push_back(sig_pkts_mismatched.get_name_leafdata());
+    if (ssrc_mismatched.is_set || is_set(ssrc_mismatched.yfilter)) leaf_name_data.push_back(ssrc_mismatched.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (table_policy_name.is_set || is_set(table_policy_name.yfilter)) leaf_name_data.push_back(table_policy_name.get_name_leafdata());
+    if (tag_rewrite.is_set || is_set(tag_rewrite.yfilter)) leaf_name_data.push_back(tag_rewrite.get_name_leafdata());
+    if (time_created.is_set || is_set(time_created.yfilter)) leaf_name_data.push_back(time_created.get_name_leafdata());
+    if (time_elapsed_creation.is_set || is_set(time_elapsed_creation.yfilter)) leaf_name_data.push_back(time_elapsed_creation.get_name_leafdata());
+    if (time_elapsed_status_changed.is_set || is_set(time_elapsed_status_changed.yfilter)) leaf_name_data.push_back(time_elapsed_status_changed.get_name_leafdata());
+    if (time_elapsed_status_down.is_set || is_set(time_elapsed_status_down.yfilter)) leaf_name_data.push_back(time_elapsed_status_down.get_name_leafdata());
+    if (transport_lsp_down.is_set || is_set(transport_lsp_down.yfilter)) leaf_name_data.push_back(transport_lsp_down.get_name_leafdata());
+    if (xconnect_id.is_set || is_set(xconnect_id.yfilter)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4096,324 +7147,809 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ad-method")
     {
         ad_method = value;
+        ad_method.value_namespace = name_space;
+        ad_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ad-remote-down")
     {
         ad_remote_down = value;
+        ad_remote_down.value_namespace = name_space;
+        ad_remote_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admited-bw")
     {
         admited_bw = value;
+        admited_bw.value_namespace = name_space;
+        admited_bw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-discovery")
     {
         auto_discovery = value;
+        auto_discovery.value_namespace = name_space;
+        auto_discovery.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-active")
     {
         backup_active = value;
+        backup_active.value_namespace = name_space;
+        backup_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-force-active")
     {
         backup_force_active = value;
+        backup_force_active.value_namespace = name_space;
+        backup_force_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-pw")
     {
         backup_pw = value;
+        backup_pw.value_namespace = name_space;
+        backup_pw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bitrate-mismatched")
     {
         bitrate_mismatched = value;
+        bitrate_mismatched.value_namespace = name_space;
+        bitrate_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-pw-type-mismatch")
     {
         bridge_pw_type_mismatch = value;
+        bridge_pw_type_mismatch.value_namespace = name_space;
+        bridge_pw_type_mismatch.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cas-mismatched")
     {
         cas_mismatched = value;
+        cas_mismatched.value_namespace = name_space;
+        cas_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "diff-ts-mismatched")
     {
         diff_ts_mismatched = value;
+        diff_ts_mismatched.value_namespace = name_space;
+        diff_ts_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-delay")
     {
         disable_delay = value;
+        disable_delay.value_namespace = name_space;
+        disable_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disable-never")
     {
         disable_never = value;
+        disable_never.value_namespace = name_space;
+        disable_never.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evpn-src-acid")
     {
         evpn_src_acid = value;
+        evpn_src_acid.value_namespace = name_space;
+        evpn_src_acid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fe-ctype")
     {
         fe_ctype = value;
+        fe_ctype.value_namespace = name_space;
+        fe_ctype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-class")
     {
         forward_class = value;
+        forward_class.value_namespace = name_space;
+        forward_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "freq-mismatched")
     {
         freq_mismatched = value;
+        freq_mismatched.value_namespace = name_space;
+        freq_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "illegal-control-word")
     {
         illegal_control_word = value;
+        illegal_control_word.value_namespace = name_space;
+        illegal_control_word.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "imposed-vlan-id")
     {
         imposed_vlan_id = value;
+        imposed_vlan_id.value_namespace = name_space;
+        imposed_vlan_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interworking")
     {
         interworking = value;
+        interworking.value_namespace = name_space;
+        interworking.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-local-source-address")
     {
         ipv6_local_source_address = value;
+        ipv6_local_source_address.value_namespace = name_space;
+        ipv6_local_source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-evpnvpws-type")
     {
         is_evpnvpws_type = value;
+        is_evpnvpws_type.value_namespace = name_space;
+        is_evpnvpws_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-flow-label-static")
     {
         is_flow_label_static = value;
+        is_flow_label_static.value_namespace = name_space;
+        is_flow_label_static.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-multi-segment-pseudowire")
     {
         is_multi_segment_pseudowire = value;
+        is_multi_segment_pseudowire.value_namespace = name_space;
+        is_multi_segment_pseudowire.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-partially-programmed")
     {
         is_partially_programmed = value;
+        is_partially_programmed.value_namespace = name_space;
+        is_partially_programmed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-pwr-type")
     {
         is_pwr_type = value;
+        is_pwr_type.value_namespace = name_space;
+        is_pwr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-vfi")
     {
         is_vfi = value;
+        is_vfi.value_namespace = name_space;
+        is_vfi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-time-status-changed")
     {
         last_time_status_changed = value;
+        last_time_status_changed.value_namespace = name_space;
+        last_time_status_changed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-time-status-down")
     {
         last_time_status_down = value;
+        last_time_status_down.value_namespace = name_space;
+        last_time_status_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ldp-label-advertise-failed")
     {
         ldp_label_advertise_failed = value;
+        ldp_label_advertise_failed.value_namespace = name_space;
+        ldp_label_advertise_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance")
     {
         load_balance = value;
+        load_balance.value_namespace = name_space;
+        load_balance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-control-word")
     {
         local_control_word = value;
+        local_control_word.value_namespace = name_space;
+        local_control_word.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-label-failed")
     {
         local_label_failed = value;
+        local_label_failed.value_namespace = name_space;
+        local_label_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-pseudo-wire-type")
     {
         local_pseudo_wire_type = value;
+        local_pseudo_wire_type.value_namespace = name_space;
+        local_pseudo_wire_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-source-address")
     {
         local_source_address = value;
+        local_source_address.value_namespace = name_space;
+        local_source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-limit-oper-down")
     {
         mac_limit_oper_down = value;
+        mac_limit_oper_down.value_namespace = name_space;
+        mac_limit_oper_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu-mismatched")
     {
         mtu_mismatched = value;
+        mtu_mismatched.value_namespace = name_space;
+        mtu_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "not-supported-qinq")
     {
         not_supported_qinq = value;
+        not_supported_qinq.value_namespace = name_space;
+        not_supported_qinq.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-ma-cwithdraw-msg-received")
     {
         num_ma_cwithdraw_msg_received = value;
+        num_ma_cwithdraw_msg_received.value_namespace = name_space;
+        num_ma_cwithdraw_msg_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-ma-cwithdraw-message-sent")
     {
         number_ma_cwithdraw_message_sent = value;
+        number_ma_cwithdraw_message_sent.value_namespace = name_space;
+        number_ma_cwithdraw_message_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-memory-state")
     {
         out_of_memory_state = value;
+        out_of_memory_state.value_namespace = name_space;
+        out_of_memory_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-bytes-mismatched")
     {
         payload_bytes_mismatched = value;
+        payload_bytes_mismatched.value_namespace = name_space;
+        payload_bytes_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-type-mismatched")
     {
         payload_type_mismatched = value;
+        payload_type_mismatched.value_namespace = name_space;
+        payload_type_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preferred-path-disable-fallback")
     {
         preferred_path_disable_fallback = value;
+        preferred_path_disable_fallback.value_namespace = name_space;
+        preferred_path_disable_fallback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-peer-id")
     {
         primary_peer_id = value;
+        primary_peer_id.value_namespace = name_space;
+        primary_peer_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-pseudo-wire-id")
     {
         primary_pseudo_wire_id = value;
+        primary_pseudo_wire_id.value_namespace = name_space;
+        primary_pseudo_wire_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-pw")
     {
         primary_pw = value;
+        primary_pw.value_namespace = name_space;
+        primary_pw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-id")
     {
         pseudo_wire_id = value;
+        pseudo_wire_id.value_namespace = name_space;
+        pseudo_wire_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-state")
     {
         pseudo_wire_state = value;
+        pseudo_wire_state.value_namespace = name_space;
+        pseudo_wire_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-type-mismatched")
     {
         pseudo_wire_type_mismatched = value;
+        pseudo_wire_type_mismatched.value_namespace = name_space;
+        pseudo_wire_type_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-class-name")
     {
         pw_class_name = value;
+        pw_class_name.value_namespace = name_space;
+        pw_class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-flow-label-code17-disabled")
     {
         pw_flow_label_code17_disabled = value;
+        pw_flow_label_code17_disabled.value_namespace = name_space;
+        pw_flow_label_code17_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-flow-label-type")
     {
         pw_flow_label_type = value;
+        pw_flow_label_type.value_namespace = name_space;
+        pw_flow_label_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-flow-label-type-cfg")
     {
         pw_flow_label_type_cfg = value;
+        pw_flow_label_type_cfg.value_namespace = name_space;
+        pw_flow_label_type_cfg.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-redundancy-initial-delay")
     {
         pw_redundancy_initial_delay = value;
+        pw_redundancy_initial_delay.value_namespace = name_space;
+        pw_redundancy_initial_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-redundancy-one-way")
     {
         pw_redundancy_one_way = value;
+        pw_redundancy_one_way.value_namespace = name_space;
+        pw_redundancy_one_way.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-status-use")
     {
         pw_status_use = value;
+        pw_status_use.value_namespace = name_space;
+        pw_status_use.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pwlsd-rewrite-failed")
     {
         pwlsd_rewrite_failed = value;
+        pwlsd_rewrite_failed.value_namespace = name_space;
+        pwlsd_rewrite_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-control-word")
     {
         remote_control_word = value;
+        remote_control_word.value_namespace = name_space;
+        remote_control_word.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-label-failed")
     {
         remote_label_failed = value;
+        remote_label_failed.value_namespace = name_space;
+        remote_label_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-pseudo-wire-type")
     {
         remote_pseudo_wire_type = value;
+        remote_pseudo_wire_type.value_namespace = name_space;
+        remote_pseudo_wire_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "required-bw")
     {
         required_bw = value;
+        required_bw.value_namespace = name_space;
+        required_bw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resync-enabled")
     {
         resync_enabled = value;
+        resync_enabled.value_namespace = name_space;
+        resync_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resync-threshold")
     {
         resync_threshold = value;
+        resync_threshold.value_namespace = name_space;
+        resync_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp-mismatched")
     {
         rtp_mismatched = value;
+        rtp_mismatched.value_namespace = name_space;
+        rtp_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequencing-type")
     {
         sequencing_type = value;
+        sequencing_type.value_namespace = name_space;
+        sequencing_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "shutdown")
     {
         shutdown = value;
+        shutdown.value_namespace = name_space;
+        shutdown.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sig-pkts-mismatched")
     {
         sig_pkts_mismatched = value;
+        sig_pkts_mismatched.value_namespace = name_space;
+        sig_pkts_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssrc-mismatched")
     {
         ssrc_mismatched = value;
+        ssrc_mismatched.value_namespace = name_space;
+        ssrc_mismatched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "table-policy-name")
     {
         table_policy_name = value;
+        table_policy_name.value_namespace = name_space;
+        table_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag-rewrite")
     {
         tag_rewrite = value;
+        tag_rewrite.value_namespace = name_space;
+        tag_rewrite.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-created")
     {
         time_created = value;
+        time_created.value_namespace = name_space;
+        time_created.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-elapsed-creation")
     {
         time_elapsed_creation = value;
+        time_elapsed_creation.value_namespace = name_space;
+        time_elapsed_creation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-elapsed-status-changed")
     {
         time_elapsed_status_changed = value;
+        time_elapsed_status_changed.value_namespace = name_space;
+        time_elapsed_status_changed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-elapsed-status-down")
     {
         time_elapsed_status_down = value;
+        time_elapsed_status_down.value_namespace = name_space;
+        time_elapsed_status_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport-lsp-down")
     {
         transport_lsp_down = value;
+        transport_lsp_down.value_namespace = name_space;
+        transport_lsp_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-id")
     {
         xconnect_id = value;
+        xconnect_id.value_namespace = name_space;
+        xconnect_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ad-method")
+    {
+        ad_method.yfilter = yfilter;
+    }
+    if(value_path == "ad-remote-down")
+    {
+        ad_remote_down.yfilter = yfilter;
+    }
+    if(value_path == "admited-bw")
+    {
+        admited_bw.yfilter = yfilter;
+    }
+    if(value_path == "auto-discovery")
+    {
+        auto_discovery.yfilter = yfilter;
+    }
+    if(value_path == "backup-active")
+    {
+        backup_active.yfilter = yfilter;
+    }
+    if(value_path == "backup-force-active")
+    {
+        backup_force_active.yfilter = yfilter;
+    }
+    if(value_path == "backup-pw")
+    {
+        backup_pw.yfilter = yfilter;
+    }
+    if(value_path == "bitrate-mismatched")
+    {
+        bitrate_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "bridge-pw-type-mismatch")
+    {
+        bridge_pw_type_mismatch.yfilter = yfilter;
+    }
+    if(value_path == "cas-mismatched")
+    {
+        cas_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "diff-ts-mismatched")
+    {
+        diff_ts_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "disable-delay")
+    {
+        disable_delay.yfilter = yfilter;
+    }
+    if(value_path == "disable-never")
+    {
+        disable_never.yfilter = yfilter;
+    }
+    if(value_path == "evpn-src-acid")
+    {
+        evpn_src_acid.yfilter = yfilter;
+    }
+    if(value_path == "fe-ctype")
+    {
+        fe_ctype.yfilter = yfilter;
+    }
+    if(value_path == "forward-class")
+    {
+        forward_class.yfilter = yfilter;
+    }
+    if(value_path == "freq-mismatched")
+    {
+        freq_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "illegal-control-word")
+    {
+        illegal_control_word.yfilter = yfilter;
+    }
+    if(value_path == "imposed-vlan-id")
+    {
+        imposed_vlan_id.yfilter = yfilter;
+    }
+    if(value_path == "interworking")
+    {
+        interworking.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-local-source-address")
+    {
+        ipv6_local_source_address.yfilter = yfilter;
+    }
+    if(value_path == "is-evpnvpws-type")
+    {
+        is_evpnvpws_type.yfilter = yfilter;
+    }
+    if(value_path == "is-flow-label-static")
+    {
+        is_flow_label_static.yfilter = yfilter;
+    }
+    if(value_path == "is-multi-segment-pseudowire")
+    {
+        is_multi_segment_pseudowire.yfilter = yfilter;
+    }
+    if(value_path == "is-partially-programmed")
+    {
+        is_partially_programmed.yfilter = yfilter;
+    }
+    if(value_path == "is-pwr-type")
+    {
+        is_pwr_type.yfilter = yfilter;
+    }
+    if(value_path == "is-vfi")
+    {
+        is_vfi.yfilter = yfilter;
+    }
+    if(value_path == "last-time-status-changed")
+    {
+        last_time_status_changed.yfilter = yfilter;
+    }
+    if(value_path == "last-time-status-down")
+    {
+        last_time_status_down.yfilter = yfilter;
+    }
+    if(value_path == "ldp-label-advertise-failed")
+    {
+        ldp_label_advertise_failed.yfilter = yfilter;
+    }
+    if(value_path == "load-balance")
+    {
+        load_balance.yfilter = yfilter;
+    }
+    if(value_path == "local-control-word")
+    {
+        local_control_word.yfilter = yfilter;
+    }
+    if(value_path == "local-label-failed")
+    {
+        local_label_failed.yfilter = yfilter;
+    }
+    if(value_path == "local-pseudo-wire-type")
+    {
+        local_pseudo_wire_type.yfilter = yfilter;
+    }
+    if(value_path == "local-source-address")
+    {
+        local_source_address.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit-oper-down")
+    {
+        mac_limit_oper_down.yfilter = yfilter;
+    }
+    if(value_path == "mtu-mismatched")
+    {
+        mtu_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "not-supported-qinq")
+    {
+        not_supported_qinq.yfilter = yfilter;
+    }
+    if(value_path == "num-ma-cwithdraw-msg-received")
+    {
+        num_ma_cwithdraw_msg_received.yfilter = yfilter;
+    }
+    if(value_path == "number-ma-cwithdraw-message-sent")
+    {
+        number_ma_cwithdraw_message_sent.yfilter = yfilter;
+    }
+    if(value_path == "out-of-memory-state")
+    {
+        out_of_memory_state.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes-mismatched")
+    {
+        payload_bytes_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "payload-type-mismatched")
+    {
+        payload_type_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "preferred-path-disable-fallback")
+    {
+        preferred_path_disable_fallback.yfilter = yfilter;
+    }
+    if(value_path == "primary-peer-id")
+    {
+        primary_peer_id.yfilter = yfilter;
+    }
+    if(value_path == "primary-pseudo-wire-id")
+    {
+        primary_pseudo_wire_id.yfilter = yfilter;
+    }
+    if(value_path == "primary-pw")
+    {
+        primary_pw.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "pseudo-wire-id")
+    {
+        pseudo_wire_id.yfilter = yfilter;
+    }
+    if(value_path == "pseudo-wire-state")
+    {
+        pseudo_wire_state.yfilter = yfilter;
+    }
+    if(value_path == "pseudo-wire-type-mismatched")
+    {
+        pseudo_wire_type_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "pw-class-name")
+    {
+        pw_class_name.yfilter = yfilter;
+    }
+    if(value_path == "pw-flow-label-code17-disabled")
+    {
+        pw_flow_label_code17_disabled.yfilter = yfilter;
+    }
+    if(value_path == "pw-flow-label-type")
+    {
+        pw_flow_label_type.yfilter = yfilter;
+    }
+    if(value_path == "pw-flow-label-type-cfg")
+    {
+        pw_flow_label_type_cfg.yfilter = yfilter;
+    }
+    if(value_path == "pw-redundancy-initial-delay")
+    {
+        pw_redundancy_initial_delay.yfilter = yfilter;
+    }
+    if(value_path == "pw-redundancy-one-way")
+    {
+        pw_redundancy_one_way.yfilter = yfilter;
+    }
+    if(value_path == "pw-status-use")
+    {
+        pw_status_use.yfilter = yfilter;
+    }
+    if(value_path == "pwlsd-rewrite-failed")
+    {
+        pwlsd_rewrite_failed.yfilter = yfilter;
+    }
+    if(value_path == "remote-control-word")
+    {
+        remote_control_word.yfilter = yfilter;
+    }
+    if(value_path == "remote-label-failed")
+    {
+        remote_label_failed.yfilter = yfilter;
+    }
+    if(value_path == "remote-pseudo-wire-type")
+    {
+        remote_pseudo_wire_type.yfilter = yfilter;
+    }
+    if(value_path == "required-bw")
+    {
+        required_bw.yfilter = yfilter;
+    }
+    if(value_path == "resync-enabled")
+    {
+        resync_enabled.yfilter = yfilter;
+    }
+    if(value_path == "resync-threshold")
+    {
+        resync_threshold.yfilter = yfilter;
+    }
+    if(value_path == "rtp-mismatched")
+    {
+        rtp_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "sequencing-type")
+    {
+        sequencing_type.yfilter = yfilter;
+    }
+    if(value_path == "shutdown")
+    {
+        shutdown.yfilter = yfilter;
+    }
+    if(value_path == "sig-pkts-mismatched")
+    {
+        sig_pkts_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "ssrc-mismatched")
+    {
+        ssrc_mismatched.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "table-policy-name")
+    {
+        table_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "tag-rewrite")
+    {
+        tag_rewrite.yfilter = yfilter;
+    }
+    if(value_path == "time-created")
+    {
+        time_created.yfilter = yfilter;
+    }
+    if(value_path == "time-elapsed-creation")
+    {
+        time_elapsed_creation.yfilter = yfilter;
+    }
+    if(value_path == "time-elapsed-status-changed")
+    {
+        time_elapsed_status_changed.yfilter = yfilter;
+    }
+    if(value_path == "time-elapsed-status-down")
+    {
+        time_elapsed_status_down.yfilter = yfilter;
+    }
+    if(value_path == "transport-lsp-down")
+    {
+        transport_lsp_down.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-id")
+    {
+        xconnect_id.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "encapsulation-info" || name == "local-interface" || name == "local-signalling" || name == "p2mp-pw" || name == "peer-id" || name == "preferred-path" || name == "remote-interface" || name == "remote-signalling" || name == "statistics" || name == "ad-method" || name == "ad-remote-down" || name == "admited-bw" || name == "auto-discovery" || name == "backup-active" || name == "backup-force-active" || name == "backup-pw" || name == "bitrate-mismatched" || name == "bridge-pw-type-mismatch" || name == "cas-mismatched" || name == "diff-ts-mismatched" || name == "disable-delay" || name == "disable-never" || name == "evpn-src-acid" || name == "fe-ctype" || name == "forward-class" || name == "freq-mismatched" || name == "illegal-control-word" || name == "imposed-vlan-id" || name == "interworking" || name == "ipv6-local-source-address" || name == "is-evpnvpws-type" || name == "is-flow-label-static" || name == "is-multi-segment-pseudowire" || name == "is-partially-programmed" || name == "is-pwr-type" || name == "is-vfi" || name == "last-time-status-changed" || name == "last-time-status-down" || name == "ldp-label-advertise-failed" || name == "load-balance" || name == "local-control-word" || name == "local-label-failed" || name == "local-pseudo-wire-type" || name == "local-source-address" || name == "mac-limit-oper-down" || name == "mtu-mismatched" || name == "not-supported-qinq" || name == "num-ma-cwithdraw-msg-received" || name == "number-ma-cwithdraw-message-sent" || name == "out-of-memory-state" || name == "payload-bytes-mismatched" || name == "payload-type-mismatched" || name == "preferred-path-disable-fallback" || name == "primary-peer-id" || name == "primary-pseudo-wire-id" || name == "primary-pw" || name == "protocol" || name == "pseudo-wire-id" || name == "pseudo-wire-state" || name == "pseudo-wire-type-mismatched" || name == "pw-class-name" || name == "pw-flow-label-code17-disabled" || name == "pw-flow-label-type" || name == "pw-flow-label-type-cfg" || name == "pw-redundancy-initial-delay" || name == "pw-redundancy-one-way" || name == "pw-status-use" || name == "pwlsd-rewrite-failed" || name == "remote-control-word" || name == "remote-label-failed" || name == "remote-pseudo-wire-type" || name == "required-bw" || name == "resync-enabled" || name == "resync-threshold" || name == "rtp-mismatched" || name == "sequencing-type" || name == "shutdown" || name == "sig-pkts-mismatched" || name == "ssrc-mismatched" || name == "state" || name == "table-policy-name" || name == "tag-rewrite" || name == "time-created" || name == "time-elapsed-creation" || name == "time-elapsed-status-changed" || name == "time-elapsed-status-down" || name == "transport-lsp-down" || name == "xconnect-id")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PeerId::PeerId()
@@ -4440,11 +7976,11 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PeerI
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PeerId::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(internal_label.operation)
-	|| is_set(ipv4_peer_id.operation)
-	|| is_set(ipv6_peer_id.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(ipv4_peer_id.yfilter)
+	|| ydk::is_set(ipv6_peer_id.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PeerId::get_segment_path() const
@@ -4470,10 +8006,10 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (ipv4_peer_id.is_set || is_set(ipv4_peer_id.operation)) leaf_name_data.push_back(ipv4_peer_id.get_name_leafdata());
-    if (ipv6_peer_id.is_set || is_set(ipv6_peer_id.operation)) leaf_name_data.push_back(ipv6_peer_id.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (ipv4_peer_id.is_set || is_set(ipv4_peer_id.yfilter)) leaf_name_data.push_back(ipv4_peer_id.get_name_leafdata());
+    if (ipv6_peer_id.is_set || is_set(ipv6_peer_id.yfilter)) leaf_name_data.push_back(ipv6_peer_id.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4492,24 +8028,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PeerId::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PeerId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-peer-id")
     {
         ipv4_peer_id = value;
+        ipv4_peer_id.value_namespace = name_space;
+        ipv4_peer_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-peer-id")
     {
         ipv6_peer_id = value;
+        ipv6_peer_id.value_namespace = name_space;
+        ipv6_peer_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PeerId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-peer-id")
+    {
+        ipv4_peer_id.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-peer-id")
+    {
+        ipv6_peer_id.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PeerId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "internal-label" || name == "ipv4-peer-id" || name == "ipv6-peer-id" || name == "type")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::EncapsulationInfo()
@@ -4539,8 +8110,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(encapsulation.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(encapsulation.yfilter)
 	|| (atom !=  nullptr && atom->has_operation())
 	|| (l2tpv3 !=  nullptr && l2tpv3->has_operation());
 }
@@ -4568,7 +8139,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (encapsulation.is_set || is_set(encapsulation.operation)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
+    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4615,12 +8186,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encapsulation")
     {
         encapsulation = value;
+        encapsulation.value_namespace = name_space;
+        encapsulation.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encapsulation")
+    {
+        encapsulation.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atom" || name == "l2tpv3" || name == "encapsulation")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::Atom()
@@ -4718,40 +8306,40 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_pseudowire_headend.operation)
-	|| is_set(is_sai_itype2.operation)
-	|| is_set(is_tai_itype2.operation)
-	|| is_set(ldp_label_advertisment_failed.operation)
-	|| is_set(local_c_ctype.operation)
-	|| is_set(local_ceid.operation)
-	|| is_set(local_cv_type.operation)
-	|| is_set(local_group_id.operation)
-	|| is_set(local_label.operation)
-	|| is_set(local_ldp_id.operation)
-	|| is_set(local_saii_gbl_id.operation)
-	|| is_set(local_saiiac_id.operation)
-	|| is_set(local_taii_gbl_id.operation)
-	|| is_set(local_taiiac_id.operation)
-	|| is_set(local_veid.operation)
-	|| is_set(lsd_rewrite_failed.operation)
-	|| is_set(rem_saii.operation)
-	|| is_set(rem_saii_gbl_id.operation)
-	|| is_set(rem_saiiac_id.operation)
-	|| is_set(rem_taii.operation)
-	|| is_set(rem_taii_gbl_id.operation)
-	|| is_set(rem_taiiac_id.operation)
-	|| is_set(remote_c_ctype.operation)
-	|| is_set(remote_ceid.operation)
-	|| is_set(remote_cv_type.operation)
-	|| is_set(remote_group_id.operation)
-	|| is_set(remote_label.operation)
-	|| is_set(remote_ldp_id.operation)
-	|| is_set(remote_source_address.operation)
-	|| is_set(remote_veid.operation)
-	|| is_set(saii.operation)
-	|| is_set(source_address.operation)
-	|| is_set(taii.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(is_pseudowire_headend.yfilter)
+	|| ydk::is_set(is_sai_itype2.yfilter)
+	|| ydk::is_set(is_tai_itype2.yfilter)
+	|| ydk::is_set(ldp_label_advertisment_failed.yfilter)
+	|| ydk::is_set(local_c_ctype.yfilter)
+	|| ydk::is_set(local_ceid.yfilter)
+	|| ydk::is_set(local_cv_type.yfilter)
+	|| ydk::is_set(local_group_id.yfilter)
+	|| ydk::is_set(local_label.yfilter)
+	|| ydk::is_set(local_ldp_id.yfilter)
+	|| ydk::is_set(local_saii_gbl_id.yfilter)
+	|| ydk::is_set(local_saiiac_id.yfilter)
+	|| ydk::is_set(local_taii_gbl_id.yfilter)
+	|| ydk::is_set(local_taiiac_id.yfilter)
+	|| ydk::is_set(local_veid.yfilter)
+	|| ydk::is_set(lsd_rewrite_failed.yfilter)
+	|| ydk::is_set(rem_saii.yfilter)
+	|| ydk::is_set(rem_saii_gbl_id.yfilter)
+	|| ydk::is_set(rem_saiiac_id.yfilter)
+	|| ydk::is_set(rem_taii.yfilter)
+	|| ydk::is_set(rem_taii_gbl_id.yfilter)
+	|| ydk::is_set(rem_taiiac_id.yfilter)
+	|| ydk::is_set(remote_c_ctype.yfilter)
+	|| ydk::is_set(remote_ceid.yfilter)
+	|| ydk::is_set(remote_cv_type.yfilter)
+	|| ydk::is_set(remote_group_id.yfilter)
+	|| ydk::is_set(remote_label.yfilter)
+	|| ydk::is_set(remote_ldp_id.yfilter)
+	|| ydk::is_set(remote_source_address.yfilter)
+	|| ydk::is_set(remote_veid.yfilter)
+	|| ydk::is_set(saii.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(taii.yfilter)
 	|| (local_agi !=  nullptr && local_agi->has_operation())
 	|| (multi_segment_pseudowire_stats !=  nullptr && multi_segment_pseudowire_stats->has_operation())
 	|| (remote_agi !=  nullptr && remote_agi->has_operation());
@@ -4780,39 +8368,39 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_pseudowire_headend.is_set || is_set(is_pseudowire_headend.operation)) leaf_name_data.push_back(is_pseudowire_headend.get_name_leafdata());
-    if (is_sai_itype2.is_set || is_set(is_sai_itype2.operation)) leaf_name_data.push_back(is_sai_itype2.get_name_leafdata());
-    if (is_tai_itype2.is_set || is_set(is_tai_itype2.operation)) leaf_name_data.push_back(is_tai_itype2.get_name_leafdata());
-    if (ldp_label_advertisment_failed.is_set || is_set(ldp_label_advertisment_failed.operation)) leaf_name_data.push_back(ldp_label_advertisment_failed.get_name_leafdata());
-    if (local_c_ctype.is_set || is_set(local_c_ctype.operation)) leaf_name_data.push_back(local_c_ctype.get_name_leafdata());
-    if (local_ceid.is_set || is_set(local_ceid.operation)) leaf_name_data.push_back(local_ceid.get_name_leafdata());
-    if (local_cv_type.is_set || is_set(local_cv_type.operation)) leaf_name_data.push_back(local_cv_type.get_name_leafdata());
-    if (local_group_id.is_set || is_set(local_group_id.operation)) leaf_name_data.push_back(local_group_id.get_name_leafdata());
-    if (local_label.is_set || is_set(local_label.operation)) leaf_name_data.push_back(local_label.get_name_leafdata());
-    if (local_ldp_id.is_set || is_set(local_ldp_id.operation)) leaf_name_data.push_back(local_ldp_id.get_name_leafdata());
-    if (local_saii_gbl_id.is_set || is_set(local_saii_gbl_id.operation)) leaf_name_data.push_back(local_saii_gbl_id.get_name_leafdata());
-    if (local_saiiac_id.is_set || is_set(local_saiiac_id.operation)) leaf_name_data.push_back(local_saiiac_id.get_name_leafdata());
-    if (local_taii_gbl_id.is_set || is_set(local_taii_gbl_id.operation)) leaf_name_data.push_back(local_taii_gbl_id.get_name_leafdata());
-    if (local_taiiac_id.is_set || is_set(local_taiiac_id.operation)) leaf_name_data.push_back(local_taiiac_id.get_name_leafdata());
-    if (local_veid.is_set || is_set(local_veid.operation)) leaf_name_data.push_back(local_veid.get_name_leafdata());
-    if (lsd_rewrite_failed.is_set || is_set(lsd_rewrite_failed.operation)) leaf_name_data.push_back(lsd_rewrite_failed.get_name_leafdata());
-    if (rem_saii.is_set || is_set(rem_saii.operation)) leaf_name_data.push_back(rem_saii.get_name_leafdata());
-    if (rem_saii_gbl_id.is_set || is_set(rem_saii_gbl_id.operation)) leaf_name_data.push_back(rem_saii_gbl_id.get_name_leafdata());
-    if (rem_saiiac_id.is_set || is_set(rem_saiiac_id.operation)) leaf_name_data.push_back(rem_saiiac_id.get_name_leafdata());
-    if (rem_taii.is_set || is_set(rem_taii.operation)) leaf_name_data.push_back(rem_taii.get_name_leafdata());
-    if (rem_taii_gbl_id.is_set || is_set(rem_taii_gbl_id.operation)) leaf_name_data.push_back(rem_taii_gbl_id.get_name_leafdata());
-    if (rem_taiiac_id.is_set || is_set(rem_taiiac_id.operation)) leaf_name_data.push_back(rem_taiiac_id.get_name_leafdata());
-    if (remote_c_ctype.is_set || is_set(remote_c_ctype.operation)) leaf_name_data.push_back(remote_c_ctype.get_name_leafdata());
-    if (remote_ceid.is_set || is_set(remote_ceid.operation)) leaf_name_data.push_back(remote_ceid.get_name_leafdata());
-    if (remote_cv_type.is_set || is_set(remote_cv_type.operation)) leaf_name_data.push_back(remote_cv_type.get_name_leafdata());
-    if (remote_group_id.is_set || is_set(remote_group_id.operation)) leaf_name_data.push_back(remote_group_id.get_name_leafdata());
-    if (remote_label.is_set || is_set(remote_label.operation)) leaf_name_data.push_back(remote_label.get_name_leafdata());
-    if (remote_ldp_id.is_set || is_set(remote_ldp_id.operation)) leaf_name_data.push_back(remote_ldp_id.get_name_leafdata());
-    if (remote_source_address.is_set || is_set(remote_source_address.operation)) leaf_name_data.push_back(remote_source_address.get_name_leafdata());
-    if (remote_veid.is_set || is_set(remote_veid.operation)) leaf_name_data.push_back(remote_veid.get_name_leafdata());
-    if (saii.is_set || is_set(saii.operation)) leaf_name_data.push_back(saii.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (taii.is_set || is_set(taii.operation)) leaf_name_data.push_back(taii.get_name_leafdata());
+    if (is_pseudowire_headend.is_set || is_set(is_pseudowire_headend.yfilter)) leaf_name_data.push_back(is_pseudowire_headend.get_name_leafdata());
+    if (is_sai_itype2.is_set || is_set(is_sai_itype2.yfilter)) leaf_name_data.push_back(is_sai_itype2.get_name_leafdata());
+    if (is_tai_itype2.is_set || is_set(is_tai_itype2.yfilter)) leaf_name_data.push_back(is_tai_itype2.get_name_leafdata());
+    if (ldp_label_advertisment_failed.is_set || is_set(ldp_label_advertisment_failed.yfilter)) leaf_name_data.push_back(ldp_label_advertisment_failed.get_name_leafdata());
+    if (local_c_ctype.is_set || is_set(local_c_ctype.yfilter)) leaf_name_data.push_back(local_c_ctype.get_name_leafdata());
+    if (local_ceid.is_set || is_set(local_ceid.yfilter)) leaf_name_data.push_back(local_ceid.get_name_leafdata());
+    if (local_cv_type.is_set || is_set(local_cv_type.yfilter)) leaf_name_data.push_back(local_cv_type.get_name_leafdata());
+    if (local_group_id.is_set || is_set(local_group_id.yfilter)) leaf_name_data.push_back(local_group_id.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
+    if (local_ldp_id.is_set || is_set(local_ldp_id.yfilter)) leaf_name_data.push_back(local_ldp_id.get_name_leafdata());
+    if (local_saii_gbl_id.is_set || is_set(local_saii_gbl_id.yfilter)) leaf_name_data.push_back(local_saii_gbl_id.get_name_leafdata());
+    if (local_saiiac_id.is_set || is_set(local_saiiac_id.yfilter)) leaf_name_data.push_back(local_saiiac_id.get_name_leafdata());
+    if (local_taii_gbl_id.is_set || is_set(local_taii_gbl_id.yfilter)) leaf_name_data.push_back(local_taii_gbl_id.get_name_leafdata());
+    if (local_taiiac_id.is_set || is_set(local_taiiac_id.yfilter)) leaf_name_data.push_back(local_taiiac_id.get_name_leafdata());
+    if (local_veid.is_set || is_set(local_veid.yfilter)) leaf_name_data.push_back(local_veid.get_name_leafdata());
+    if (lsd_rewrite_failed.is_set || is_set(lsd_rewrite_failed.yfilter)) leaf_name_data.push_back(lsd_rewrite_failed.get_name_leafdata());
+    if (rem_saii.is_set || is_set(rem_saii.yfilter)) leaf_name_data.push_back(rem_saii.get_name_leafdata());
+    if (rem_saii_gbl_id.is_set || is_set(rem_saii_gbl_id.yfilter)) leaf_name_data.push_back(rem_saii_gbl_id.get_name_leafdata());
+    if (rem_saiiac_id.is_set || is_set(rem_saiiac_id.yfilter)) leaf_name_data.push_back(rem_saiiac_id.get_name_leafdata());
+    if (rem_taii.is_set || is_set(rem_taii.yfilter)) leaf_name_data.push_back(rem_taii.get_name_leafdata());
+    if (rem_taii_gbl_id.is_set || is_set(rem_taii_gbl_id.yfilter)) leaf_name_data.push_back(rem_taii_gbl_id.get_name_leafdata());
+    if (rem_taiiac_id.is_set || is_set(rem_taiiac_id.yfilter)) leaf_name_data.push_back(rem_taiiac_id.get_name_leafdata());
+    if (remote_c_ctype.is_set || is_set(remote_c_ctype.yfilter)) leaf_name_data.push_back(remote_c_ctype.get_name_leafdata());
+    if (remote_ceid.is_set || is_set(remote_ceid.yfilter)) leaf_name_data.push_back(remote_ceid.get_name_leafdata());
+    if (remote_cv_type.is_set || is_set(remote_cv_type.yfilter)) leaf_name_data.push_back(remote_cv_type.get_name_leafdata());
+    if (remote_group_id.is_set || is_set(remote_group_id.yfilter)) leaf_name_data.push_back(remote_group_id.get_name_leafdata());
+    if (remote_label.is_set || is_set(remote_label.yfilter)) leaf_name_data.push_back(remote_label.get_name_leafdata());
+    if (remote_ldp_id.is_set || is_set(remote_ldp_id.yfilter)) leaf_name_data.push_back(remote_ldp_id.get_name_leafdata());
+    if (remote_source_address.is_set || is_set(remote_source_address.yfilter)) leaf_name_data.push_back(remote_source_address.get_name_leafdata());
+    if (remote_veid.is_set || is_set(remote_veid.yfilter)) leaf_name_data.push_back(remote_veid.get_name_leafdata());
+    if (saii.is_set || is_set(saii.yfilter)) leaf_name_data.push_back(saii.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (taii.is_set || is_set(taii.yfilter)) leaf_name_data.push_back(taii.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4873,140 +8461,349 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-pseudowire-headend")
     {
         is_pseudowire_headend = value;
+        is_pseudowire_headend.value_namespace = name_space;
+        is_pseudowire_headend.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sai-itype2")
     {
         is_sai_itype2 = value;
+        is_sai_itype2.value_namespace = name_space;
+        is_sai_itype2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-tai-itype2")
     {
         is_tai_itype2 = value;
+        is_tai_itype2.value_namespace = name_space;
+        is_tai_itype2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ldp-label-advertisment-failed")
     {
         ldp_label_advertisment_failed = value;
+        ldp_label_advertisment_failed.value_namespace = name_space;
+        ldp_label_advertisment_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-c-ctype")
     {
         local_c_ctype = value;
+        local_c_ctype.value_namespace = name_space;
+        local_c_ctype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-ceid")
     {
         local_ceid = value;
+        local_ceid.value_namespace = name_space;
+        local_ceid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-cv-type")
     {
         local_cv_type = value;
+        local_cv_type.value_namespace = name_space;
+        local_cv_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-group-id")
     {
         local_group_id = value;
+        local_group_id.value_namespace = name_space;
+        local_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-label")
     {
         local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-ldp-id")
     {
         local_ldp_id = value;
+        local_ldp_id.value_namespace = name_space;
+        local_ldp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-saii-gbl-id")
     {
         local_saii_gbl_id = value;
+        local_saii_gbl_id.value_namespace = name_space;
+        local_saii_gbl_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-saiiac-id")
     {
         local_saiiac_id = value;
+        local_saiiac_id.value_namespace = name_space;
+        local_saiiac_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-taii-gbl-id")
     {
         local_taii_gbl_id = value;
+        local_taii_gbl_id.value_namespace = name_space;
+        local_taii_gbl_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-taiiac-id")
     {
         local_taiiac_id = value;
+        local_taiiac_id.value_namespace = name_space;
+        local_taiiac_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-veid")
     {
         local_veid = value;
+        local_veid.value_namespace = name_space;
+        local_veid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lsd-rewrite-failed")
     {
         lsd_rewrite_failed = value;
+        lsd_rewrite_failed.value_namespace = name_space;
+        lsd_rewrite_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-saii")
     {
         rem_saii = value;
+        rem_saii.value_namespace = name_space;
+        rem_saii.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-saii-gbl-id")
     {
         rem_saii_gbl_id = value;
+        rem_saii_gbl_id.value_namespace = name_space;
+        rem_saii_gbl_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-saiiac-id")
     {
         rem_saiiac_id = value;
+        rem_saiiac_id.value_namespace = name_space;
+        rem_saiiac_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-taii")
     {
         rem_taii = value;
+        rem_taii.value_namespace = name_space;
+        rem_taii.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-taii-gbl-id")
     {
         rem_taii_gbl_id = value;
+        rem_taii_gbl_id.value_namespace = name_space;
+        rem_taii_gbl_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-taiiac-id")
     {
         rem_taiiac_id = value;
+        rem_taiiac_id.value_namespace = name_space;
+        rem_taiiac_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-c-ctype")
     {
         remote_c_ctype = value;
+        remote_c_ctype.value_namespace = name_space;
+        remote_c_ctype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-ceid")
     {
         remote_ceid = value;
+        remote_ceid.value_namespace = name_space;
+        remote_ceid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-cv-type")
     {
         remote_cv_type = value;
+        remote_cv_type.value_namespace = name_space;
+        remote_cv_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-group-id")
     {
         remote_group_id = value;
+        remote_group_id.value_namespace = name_space;
+        remote_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-label")
     {
         remote_label = value;
+        remote_label.value_namespace = name_space;
+        remote_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-ldp-id")
     {
         remote_ldp_id = value;
+        remote_ldp_id.value_namespace = name_space;
+        remote_ldp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-source-address")
     {
         remote_source_address = value;
+        remote_source_address.value_namespace = name_space;
+        remote_source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-veid")
     {
         remote_veid = value;
+        remote_veid.value_namespace = name_space;
+        remote_veid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saii")
     {
         saii = value;
+        saii.value_namespace = name_space;
+        saii.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "taii")
     {
         taii = value;
+        taii.value_namespace = name_space;
+        taii.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-pseudowire-headend")
+    {
+        is_pseudowire_headend.yfilter = yfilter;
+    }
+    if(value_path == "is-sai-itype2")
+    {
+        is_sai_itype2.yfilter = yfilter;
+    }
+    if(value_path == "is-tai-itype2")
+    {
+        is_tai_itype2.yfilter = yfilter;
+    }
+    if(value_path == "ldp-label-advertisment-failed")
+    {
+        ldp_label_advertisment_failed.yfilter = yfilter;
+    }
+    if(value_path == "local-c-ctype")
+    {
+        local_c_ctype.yfilter = yfilter;
+    }
+    if(value_path == "local-ceid")
+    {
+        local_ceid.yfilter = yfilter;
+    }
+    if(value_path == "local-cv-type")
+    {
+        local_cv_type.yfilter = yfilter;
+    }
+    if(value_path == "local-group-id")
+    {
+        local_group_id.yfilter = yfilter;
+    }
+    if(value_path == "local-label")
+    {
+        local_label.yfilter = yfilter;
+    }
+    if(value_path == "local-ldp-id")
+    {
+        local_ldp_id.yfilter = yfilter;
+    }
+    if(value_path == "local-saii-gbl-id")
+    {
+        local_saii_gbl_id.yfilter = yfilter;
+    }
+    if(value_path == "local-saiiac-id")
+    {
+        local_saiiac_id.yfilter = yfilter;
+    }
+    if(value_path == "local-taii-gbl-id")
+    {
+        local_taii_gbl_id.yfilter = yfilter;
+    }
+    if(value_path == "local-taiiac-id")
+    {
+        local_taiiac_id.yfilter = yfilter;
+    }
+    if(value_path == "local-veid")
+    {
+        local_veid.yfilter = yfilter;
+    }
+    if(value_path == "lsd-rewrite-failed")
+    {
+        lsd_rewrite_failed.yfilter = yfilter;
+    }
+    if(value_path == "rem-saii")
+    {
+        rem_saii.yfilter = yfilter;
+    }
+    if(value_path == "rem-saii-gbl-id")
+    {
+        rem_saii_gbl_id.yfilter = yfilter;
+    }
+    if(value_path == "rem-saiiac-id")
+    {
+        rem_saiiac_id.yfilter = yfilter;
+    }
+    if(value_path == "rem-taii")
+    {
+        rem_taii.yfilter = yfilter;
+    }
+    if(value_path == "rem-taii-gbl-id")
+    {
+        rem_taii_gbl_id.yfilter = yfilter;
+    }
+    if(value_path == "rem-taiiac-id")
+    {
+        rem_taiiac_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-c-ctype")
+    {
+        remote_c_ctype.yfilter = yfilter;
+    }
+    if(value_path == "remote-ceid")
+    {
+        remote_ceid.yfilter = yfilter;
+    }
+    if(value_path == "remote-cv-type")
+    {
+        remote_cv_type.yfilter = yfilter;
+    }
+    if(value_path == "remote-group-id")
+    {
+        remote_group_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-label")
+    {
+        remote_label.yfilter = yfilter;
+    }
+    if(value_path == "remote-ldp-id")
+    {
+        remote_ldp_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-source-address")
+    {
+        remote_source_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-veid")
+    {
+        remote_veid.yfilter = yfilter;
+    }
+    if(value_path == "saii")
+    {
+        saii.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "taii")
+    {
+        taii.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-agi" || name == "multi-segment-pseudowire-stats" || name == "remote-agi" || name == "is-pseudowire-headend" || name == "is-sai-itype2" || name == "is-tai-itype2" || name == "ldp-label-advertisment-failed" || name == "local-c-ctype" || name == "local-ceid" || name == "local-cv-type" || name == "local-group-id" || name == "local-label" || name == "local-ldp-id" || name == "local-saii-gbl-id" || name == "local-saiiac-id" || name == "local-taii-gbl-id" || name == "local-taiiac-id" || name == "local-veid" || name == "lsd-rewrite-failed" || name == "rem-saii" || name == "rem-saii-gbl-id" || name == "rem-saiiac-id" || name == "rem-taii" || name == "rem-taii-gbl-id" || name == "rem-taiiac-id" || name == "remote-c-ctype" || name == "remote-ceid" || name == "remote-cv-type" || name == "remote-group-id" || name == "remote-label" || name == "remote-ldp-id" || name == "remote-source-address" || name == "remote-veid" || name == "saii" || name == "source-address" || name == "taii")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::LocalAgi()
@@ -5040,8 +8837,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vpls_id_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vpls_id_type.yfilter)
 	|| (auto_ !=  nullptr && auto_->has_operation())
 	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
 	|| (v4_addr !=  nullptr && v4_addr->has_operation());
@@ -5070,7 +8867,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vpls_id_type.is_set || is_set(vpls_id_type.operation)) leaf_name_data.push_back(vpls_id_type.get_name_leafdata());
+    if (vpls_id_type.is_set || is_set(vpls_id_type.yfilter)) leaf_name_data.push_back(vpls_id_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5131,12 +8928,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vpls-id-type")
     {
         vpls_id_type = value;
+        vpls_id_type.value_namespace = name_space;
+        vpls_id_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vpls-id-type")
+    {
+        vpls_id_type.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto" || name == "two-byte-as" || name == "v4-addr" || name == "vpls-id-type")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_::Auto_()
@@ -5159,9 +8973,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asn.operation)
-	|| is_set(vpn_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(asn.yfilter)
+	|| ydk::is_set(vpn_id.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_::get_segment_path() const
@@ -5187,8 +9001,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asn.is_set || is_set(asn.operation)) leaf_name_data.push_back(asn.get_name_leafdata());
-    if (vpn_id.is_set || is_set(vpn_id.operation)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
+    if (asn.is_set || is_set(asn.yfilter)) leaf_name_data.push_back(asn.get_name_leafdata());
+    if (vpn_id.is_set || is_set(vpn_id.yfilter)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5207,16 +9021,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asn")
     {
         asn = value;
+        asn.value_namespace = name_space;
+        asn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpn-id")
     {
         vpn_id = value;
+        vpn_id.value_namespace = name_space;
+        vpn_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asn")
+    {
+        asn.yfilter = yfilter;
+    }
+    if(value_path == "vpn-id")
+    {
+        vpn_id.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::Auto_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asn" || name == "vpn-id")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::TwoByteAs()
@@ -5239,9 +9076,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(four_byte_index.operation)
-	|| is_set(two_byte_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(four_byte_index.yfilter)
+	|| ydk::is_set(two_byte_as.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::get_segment_path() const
@@ -5267,8 +9104,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (four_byte_index.is_set || is_set(four_byte_index.operation)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-    if (two_byte_as.is_set || is_set(two_byte_as.operation)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
+    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
+    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5287,16 +9124,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "four-byte-index")
     {
         four_byte_index = value;
+        four_byte_index.value_namespace = name_space;
+        four_byte_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-as")
     {
         two_byte_as = value;
+        two_byte_as.value_namespace = name_space;
+        two_byte_as.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "four-byte-index" || name == "two-byte-as")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::V4Addr()
@@ -5319,9 +9179,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(two_byte_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::get_segment_path() const
@@ -5347,8 +9207,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5367,16 +9227,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-index")
     {
         two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::LocalAgi::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "two-byte-index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::RemoteAgi()
@@ -5410,8 +9293,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vpls_id_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vpls_id_type.yfilter)
 	|| (auto_ !=  nullptr && auto_->has_operation())
 	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
 	|| (v4_addr !=  nullptr && v4_addr->has_operation());
@@ -5440,7 +9323,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vpls_id_type.is_set || is_set(vpls_id_type.operation)) leaf_name_data.push_back(vpls_id_type.get_name_leafdata());
+    if (vpls_id_type.is_set || is_set(vpls_id_type.yfilter)) leaf_name_data.push_back(vpls_id_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5501,12 +9384,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vpls-id-type")
     {
         vpls_id_type = value;
+        vpls_id_type.value_namespace = name_space;
+        vpls_id_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vpls-id-type")
+    {
+        vpls_id_type.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto" || name == "two-byte-as" || name == "v4-addr" || name == "vpls-id-type")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_::Auto_()
@@ -5529,9 +9429,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asn.operation)
-	|| is_set(vpn_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(asn.yfilter)
+	|| ydk::is_set(vpn_id.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_::get_segment_path() const
@@ -5557,8 +9457,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asn.is_set || is_set(asn.operation)) leaf_name_data.push_back(asn.get_name_leafdata());
-    if (vpn_id.is_set || is_set(vpn_id.operation)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
+    if (asn.is_set || is_set(asn.yfilter)) leaf_name_data.push_back(asn.get_name_leafdata());
+    if (vpn_id.is_set || is_set(vpn_id.yfilter)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5577,16 +9477,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asn")
     {
         asn = value;
+        asn.value_namespace = name_space;
+        asn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpn-id")
     {
         vpn_id = value;
+        vpn_id.value_namespace = name_space;
+        vpn_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asn")
+    {
+        asn.yfilter = yfilter;
+    }
+    if(value_path == "vpn-id")
+    {
+        vpn_id.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::Auto_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asn" || name == "vpn-id")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::TwoByteAs()
@@ -5609,9 +9532,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(four_byte_index.operation)
-	|| is_set(two_byte_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(four_byte_index.yfilter)
+	|| ydk::is_set(two_byte_as.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::get_segment_path() const
@@ -5637,8 +9560,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (four_byte_index.is_set || is_set(four_byte_index.operation)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-    if (two_byte_as.is_set || is_set(two_byte_as.operation)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
+    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
+    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5657,16 +9580,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "four-byte-index")
     {
         four_byte_index = value;
+        four_byte_index.value_namespace = name_space;
+        four_byte_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-as")
     {
         two_byte_as = value;
+        two_byte_as.value_namespace = name_space;
+        two_byte_as.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "four-byte-index" || name == "two-byte-as")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::V4Addr()
@@ -5689,9 +9635,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(two_byte_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::get_segment_path() const
@@ -5717,8 +9663,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5737,16 +9683,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-index")
     {
         two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "two-byte-index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::MultiSegmentPseudowireStats()
@@ -5769,9 +9738,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(received_bytes.operation)
-	|| is_set(received_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(received_bytes.yfilter)
+	|| ydk::is_set(received_packets.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_segment_path() const
@@ -5797,8 +9766,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (received_bytes.is_set || is_set(received_bytes.operation)) leaf_name_data.push_back(received_bytes.get_name_leafdata());
-    if (received_packets.is_set || is_set(received_packets.operation)) leaf_name_data.push_back(received_packets.get_name_leafdata());
+    if (received_bytes.is_set || is_set(received_bytes.yfilter)) leaf_name_data.push_back(received_bytes.get_name_leafdata());
+    if (received_packets.is_set || is_set(received_packets.yfilter)) leaf_name_data.push_back(received_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5817,16 +9786,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "received-bytes")
     {
         received_bytes = value;
+        received_bytes.value_namespace = name_space;
+        received_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-packets")
     {
         received_packets = value;
+        received_packets.value_namespace = name_space;
+        received_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "received-bytes")
+    {
+        received_bytes.yfilter = yfilter;
+    }
+    if(value_path == "received-packets")
+    {
+        received_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "received-bytes" || name == "received-packets")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::L2Tpv3::L2Tpv3()
@@ -5889,29 +9881,29 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Encap
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::L2Tpv3::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dont_fragment_bit.operation)
-	|| is_set(ipv4_source_address.operation)
-	|| is_set(ipv6_source_address.operation)
-	|| is_set(l2tp_class_name.operation)
-	|| is_set(local_cookie_high_value.operation)
-	|| is_set(local_cookie_low_value.operation)
-	|| is_set(local_cookie_size.operation)
-	|| is_set(local_secondary_cookie_high_value.operation)
-	|| is_set(local_secondary_cookie_low_value.operation)
-	|| is_set(local_secondary_cookie_size.operation)
-	|| is_set(local_session_id.operation)
-	|| is_set(path_mtu_enabled.operation)
-	|| is_set(path_mtu_max_value.operation)
-	|| is_set(remote_circuit_status_up.operation)
-	|| is_set(remote_cookie_high_value.operation)
-	|| is_set(remote_cookie_low_value.operation)
-	|| is_set(remote_cookie_size.operation)
-	|| is_set(remote_session_id.operation)
-	|| is_set(tos.operation)
-	|| is_set(tos_mode.operation)
-	|| is_set(ttl.operation)
-	|| is_set(tunnel_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dont_fragment_bit.yfilter)
+	|| ydk::is_set(ipv4_source_address.yfilter)
+	|| ydk::is_set(ipv6_source_address.yfilter)
+	|| ydk::is_set(l2tp_class_name.yfilter)
+	|| ydk::is_set(local_cookie_high_value.yfilter)
+	|| ydk::is_set(local_cookie_low_value.yfilter)
+	|| ydk::is_set(local_cookie_size.yfilter)
+	|| ydk::is_set(local_secondary_cookie_high_value.yfilter)
+	|| ydk::is_set(local_secondary_cookie_low_value.yfilter)
+	|| ydk::is_set(local_secondary_cookie_size.yfilter)
+	|| ydk::is_set(local_session_id.yfilter)
+	|| ydk::is_set(path_mtu_enabled.yfilter)
+	|| ydk::is_set(path_mtu_max_value.yfilter)
+	|| ydk::is_set(remote_circuit_status_up.yfilter)
+	|| ydk::is_set(remote_cookie_high_value.yfilter)
+	|| ydk::is_set(remote_cookie_low_value.yfilter)
+	|| ydk::is_set(remote_cookie_size.yfilter)
+	|| ydk::is_set(remote_session_id.yfilter)
+	|| ydk::is_set(tos.yfilter)
+	|| ydk::is_set(tos_mode.yfilter)
+	|| ydk::is_set(ttl.yfilter)
+	|| ydk::is_set(tunnel_state.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::L2Tpv3::get_segment_path() const
@@ -5937,28 +9929,28 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dont_fragment_bit.is_set || is_set(dont_fragment_bit.operation)) leaf_name_data.push_back(dont_fragment_bit.get_name_leafdata());
-    if (ipv4_source_address.is_set || is_set(ipv4_source_address.operation)) leaf_name_data.push_back(ipv4_source_address.get_name_leafdata());
-    if (ipv6_source_address.is_set || is_set(ipv6_source_address.operation)) leaf_name_data.push_back(ipv6_source_address.get_name_leafdata());
-    if (l2tp_class_name.is_set || is_set(l2tp_class_name.operation)) leaf_name_data.push_back(l2tp_class_name.get_name_leafdata());
-    if (local_cookie_high_value.is_set || is_set(local_cookie_high_value.operation)) leaf_name_data.push_back(local_cookie_high_value.get_name_leafdata());
-    if (local_cookie_low_value.is_set || is_set(local_cookie_low_value.operation)) leaf_name_data.push_back(local_cookie_low_value.get_name_leafdata());
-    if (local_cookie_size.is_set || is_set(local_cookie_size.operation)) leaf_name_data.push_back(local_cookie_size.get_name_leafdata());
-    if (local_secondary_cookie_high_value.is_set || is_set(local_secondary_cookie_high_value.operation)) leaf_name_data.push_back(local_secondary_cookie_high_value.get_name_leafdata());
-    if (local_secondary_cookie_low_value.is_set || is_set(local_secondary_cookie_low_value.operation)) leaf_name_data.push_back(local_secondary_cookie_low_value.get_name_leafdata());
-    if (local_secondary_cookie_size.is_set || is_set(local_secondary_cookie_size.operation)) leaf_name_data.push_back(local_secondary_cookie_size.get_name_leafdata());
-    if (local_session_id.is_set || is_set(local_session_id.operation)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
-    if (path_mtu_enabled.is_set || is_set(path_mtu_enabled.operation)) leaf_name_data.push_back(path_mtu_enabled.get_name_leafdata());
-    if (path_mtu_max_value.is_set || is_set(path_mtu_max_value.operation)) leaf_name_data.push_back(path_mtu_max_value.get_name_leafdata());
-    if (remote_circuit_status_up.is_set || is_set(remote_circuit_status_up.operation)) leaf_name_data.push_back(remote_circuit_status_up.get_name_leafdata());
-    if (remote_cookie_high_value.is_set || is_set(remote_cookie_high_value.operation)) leaf_name_data.push_back(remote_cookie_high_value.get_name_leafdata());
-    if (remote_cookie_low_value.is_set || is_set(remote_cookie_low_value.operation)) leaf_name_data.push_back(remote_cookie_low_value.get_name_leafdata());
-    if (remote_cookie_size.is_set || is_set(remote_cookie_size.operation)) leaf_name_data.push_back(remote_cookie_size.get_name_leafdata());
-    if (remote_session_id.is_set || is_set(remote_session_id.operation)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
-    if (tos.is_set || is_set(tos.operation)) leaf_name_data.push_back(tos.get_name_leafdata());
-    if (tos_mode.is_set || is_set(tos_mode.operation)) leaf_name_data.push_back(tos_mode.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
-    if (tunnel_state.is_set || is_set(tunnel_state.operation)) leaf_name_data.push_back(tunnel_state.get_name_leafdata());
+    if (dont_fragment_bit.is_set || is_set(dont_fragment_bit.yfilter)) leaf_name_data.push_back(dont_fragment_bit.get_name_leafdata());
+    if (ipv4_source_address.is_set || is_set(ipv4_source_address.yfilter)) leaf_name_data.push_back(ipv4_source_address.get_name_leafdata());
+    if (ipv6_source_address.is_set || is_set(ipv6_source_address.yfilter)) leaf_name_data.push_back(ipv6_source_address.get_name_leafdata());
+    if (l2tp_class_name.is_set || is_set(l2tp_class_name.yfilter)) leaf_name_data.push_back(l2tp_class_name.get_name_leafdata());
+    if (local_cookie_high_value.is_set || is_set(local_cookie_high_value.yfilter)) leaf_name_data.push_back(local_cookie_high_value.get_name_leafdata());
+    if (local_cookie_low_value.is_set || is_set(local_cookie_low_value.yfilter)) leaf_name_data.push_back(local_cookie_low_value.get_name_leafdata());
+    if (local_cookie_size.is_set || is_set(local_cookie_size.yfilter)) leaf_name_data.push_back(local_cookie_size.get_name_leafdata());
+    if (local_secondary_cookie_high_value.is_set || is_set(local_secondary_cookie_high_value.yfilter)) leaf_name_data.push_back(local_secondary_cookie_high_value.get_name_leafdata());
+    if (local_secondary_cookie_low_value.is_set || is_set(local_secondary_cookie_low_value.yfilter)) leaf_name_data.push_back(local_secondary_cookie_low_value.get_name_leafdata());
+    if (local_secondary_cookie_size.is_set || is_set(local_secondary_cookie_size.yfilter)) leaf_name_data.push_back(local_secondary_cookie_size.get_name_leafdata());
+    if (local_session_id.is_set || is_set(local_session_id.yfilter)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
+    if (path_mtu_enabled.is_set || is_set(path_mtu_enabled.yfilter)) leaf_name_data.push_back(path_mtu_enabled.get_name_leafdata());
+    if (path_mtu_max_value.is_set || is_set(path_mtu_max_value.yfilter)) leaf_name_data.push_back(path_mtu_max_value.get_name_leafdata());
+    if (remote_circuit_status_up.is_set || is_set(remote_circuit_status_up.yfilter)) leaf_name_data.push_back(remote_circuit_status_up.get_name_leafdata());
+    if (remote_cookie_high_value.is_set || is_set(remote_cookie_high_value.yfilter)) leaf_name_data.push_back(remote_cookie_high_value.get_name_leafdata());
+    if (remote_cookie_low_value.is_set || is_set(remote_cookie_low_value.yfilter)) leaf_name_data.push_back(remote_cookie_low_value.get_name_leafdata());
+    if (remote_cookie_size.is_set || is_set(remote_cookie_size.yfilter)) leaf_name_data.push_back(remote_cookie_size.get_name_leafdata());
+    if (remote_session_id.is_set || is_set(remote_session_id.yfilter)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
+    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
+    if (tos_mode.is_set || is_set(tos_mode.yfilter)) leaf_name_data.push_back(tos_mode.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (tunnel_state.is_set || is_set(tunnel_state.yfilter)) leaf_name_data.push_back(tunnel_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5977,96 +9969,239 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::L2Tpv3::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::L2Tpv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dont-fragment-bit")
     {
         dont_fragment_bit = value;
+        dont_fragment_bit.value_namespace = name_space;
+        dont_fragment_bit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-source-address")
     {
         ipv4_source_address = value;
+        ipv4_source_address.value_namespace = name_space;
+        ipv4_source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-source-address")
     {
         ipv6_source_address = value;
+        ipv6_source_address.value_namespace = name_space;
+        ipv6_source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-class-name")
     {
         l2tp_class_name = value;
+        l2tp_class_name.value_namespace = name_space;
+        l2tp_class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-cookie-high-value")
     {
         local_cookie_high_value = value;
+        local_cookie_high_value.value_namespace = name_space;
+        local_cookie_high_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-cookie-low-value")
     {
         local_cookie_low_value = value;
+        local_cookie_low_value.value_namespace = name_space;
+        local_cookie_low_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-cookie-size")
     {
         local_cookie_size = value;
+        local_cookie_size.value_namespace = name_space;
+        local_cookie_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-secondary-cookie-high-value")
     {
         local_secondary_cookie_high_value = value;
+        local_secondary_cookie_high_value.value_namespace = name_space;
+        local_secondary_cookie_high_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-secondary-cookie-low-value")
     {
         local_secondary_cookie_low_value = value;
+        local_secondary_cookie_low_value.value_namespace = name_space;
+        local_secondary_cookie_low_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-secondary-cookie-size")
     {
         local_secondary_cookie_size = value;
+        local_secondary_cookie_size.value_namespace = name_space;
+        local_secondary_cookie_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-session-id")
     {
         local_session_id = value;
+        local_session_id.value_namespace = name_space;
+        local_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-mtu-enabled")
     {
         path_mtu_enabled = value;
+        path_mtu_enabled.value_namespace = name_space;
+        path_mtu_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-mtu-max-value")
     {
         path_mtu_max_value = value;
+        path_mtu_max_value.value_namespace = name_space;
+        path_mtu_max_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-circuit-status-up")
     {
         remote_circuit_status_up = value;
+        remote_circuit_status_up.value_namespace = name_space;
+        remote_circuit_status_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-cookie-high-value")
     {
         remote_cookie_high_value = value;
+        remote_cookie_high_value.value_namespace = name_space;
+        remote_cookie_high_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-cookie-low-value")
     {
         remote_cookie_low_value = value;
+        remote_cookie_low_value.value_namespace = name_space;
+        remote_cookie_low_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-cookie-size")
     {
         remote_cookie_size = value;
+        remote_cookie_size.value_namespace = name_space;
+        remote_cookie_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-session-id")
     {
         remote_session_id = value;
+        remote_session_id.value_namespace = name_space;
+        remote_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos")
     {
         tos = value;
+        tos.value_namespace = name_space;
+        tos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos-mode")
     {
         tos_mode = value;
+        tos_mode.value_namespace = name_space;
+        tos_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-state")
     {
         tunnel_state = value;
+        tunnel_state.value_namespace = name_space;
+        tunnel_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::L2Tpv3::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dont-fragment-bit")
+    {
+        dont_fragment_bit.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-source-address")
+    {
+        ipv4_source_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-source-address")
+    {
+        ipv6_source_address.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-class-name")
+    {
+        l2tp_class_name.yfilter = yfilter;
+    }
+    if(value_path == "local-cookie-high-value")
+    {
+        local_cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "local-cookie-low-value")
+    {
+        local_cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "local-cookie-size")
+    {
+        local_cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "local-secondary-cookie-high-value")
+    {
+        local_secondary_cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "local-secondary-cookie-low-value")
+    {
+        local_secondary_cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "local-secondary-cookie-size")
+    {
+        local_secondary_cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "local-session-id")
+    {
+        local_session_id.yfilter = yfilter;
+    }
+    if(value_path == "path-mtu-enabled")
+    {
+        path_mtu_enabled.yfilter = yfilter;
+    }
+    if(value_path == "path-mtu-max-value")
+    {
+        path_mtu_max_value.yfilter = yfilter;
+    }
+    if(value_path == "remote-circuit-status-up")
+    {
+        remote_circuit_status_up.yfilter = yfilter;
+    }
+    if(value_path == "remote-cookie-high-value")
+    {
+        remote_cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "remote-cookie-low-value")
+    {
+        remote_cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "remote-cookie-size")
+    {
+        remote_cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "remote-session-id")
+    {
+        remote_session_id.yfilter = yfilter;
+    }
+    if(value_path == "tos")
+    {
+        tos.yfilter = yfilter;
+    }
+    if(value_path == "tos-mode")
+    {
+        tos_mode.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-state")
+    {
+        tunnel_state.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::EncapsulationInfo::L2Tpv3::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dont-fragment-bit" || name == "ipv4-source-address" || name == "ipv6-source-address" || name == "l2tp-class-name" || name == "local-cookie-high-value" || name == "local-cookie-low-value" || name == "local-cookie-size" || name == "local-secondary-cookie-high-value" || name == "local-secondary-cookie-low-value" || name == "local-secondary-cookie-size" || name == "local-session-id" || name == "path-mtu-enabled" || name == "path-mtu-max-value" || name == "remote-circuit-status-up" || name == "remote-cookie-high-value" || name == "remote-cookie-low-value" || name == "remote-cookie-size" || name == "remote-session-id" || name == "tos" || name == "tos-mode" || name == "ttl" || name == "tunnel-state")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::LocalInterface()
@@ -6096,10 +10231,10 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mtu.operation)
-	|| is_set(name.operation)
-	|| is_set(payload_bytes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
 	|| (parameters !=  nullptr && parameters->has_operation());
 }
 
@@ -6126,9 +10261,9 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (payload_bytes.is_set || is_set(payload_bytes.operation)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6161,20 +10296,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-bytes")
     {
         payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parameters" || name == "mtu" || name == "name" || name == "payload-bytes")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Parameters()
@@ -6224,8 +10388,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (atm !=  nullptr && atm->has_operation())
 	|| (ethernet !=  nullptr && ethernet->has_operation())
 	|| (fr !=  nullptr && fr->has_operation())
@@ -6258,7 +10422,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6375,12 +10539,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atm" || name == "ethernet" || name == "fr" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "tdm" || name == "vlan" || name == "type")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Ethernet::Ethernet()
@@ -6401,8 +10582,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Ethernet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(xconnect_tags.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Ethernet::get_segment_path() const
@@ -6428,7 +10609,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (xconnect_tags.is_set || is_set(xconnect_tags.operation)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6447,12 +10628,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Ethernet::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xconnect-tags")
     {
         xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xconnect-tags")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::Vlan()
@@ -6499,16 +10697,16 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
     }
     for (auto const & leaf : rewrite_tag.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(encapsulation_type.operation)
-	|| is_set(outer_tag.operation)
-	|| is_set(rewrite_tag.operation)
-	|| is_set(simple_efp.operation)
-	|| is_set(vlan_rewrite_tag.operation)
-	|| is_set(xconnect_tags.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(encapsulation_type.yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(rewrite_tag.yfilter)
+	|| ydk::is_set(simple_efp.yfilter)
+	|| ydk::is_set(vlan_rewrite_tag.yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::get_segment_path() const
@@ -6534,11 +10732,11 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (encapsulation_type.is_set || is_set(encapsulation_type.operation)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
-    if (outer_tag.is_set || is_set(outer_tag.operation)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
-    if (simple_efp.is_set || is_set(simple_efp.operation)) leaf_name_data.push_back(simple_efp.get_name_leafdata());
-    if (vlan_rewrite_tag.is_set || is_set(vlan_rewrite_tag.operation)) leaf_name_data.push_back(vlan_rewrite_tag.get_name_leafdata());
-    if (xconnect_tags.is_set || is_set(xconnect_tags.operation)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+    if (encapsulation_type.is_set || is_set(encapsulation_type.yfilter)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (simple_efp.is_set || is_set(simple_efp.yfilter)) leaf_name_data.push_back(simple_efp.get_name_leafdata());
+    if (vlan_rewrite_tag.is_set || is_set(vlan_rewrite_tag.yfilter)) leaf_name_data.push_back(vlan_rewrite_tag.get_name_leafdata());
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
 
     auto rewrite_tag_name_datas = rewrite_tag.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), rewrite_tag_name_datas.begin(), rewrite_tag_name_datas.end());
@@ -6580,15 +10778,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encapsulation-type")
     {
         encapsulation_type = value;
+        encapsulation_type.value_namespace = name_space;
+        encapsulation_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outer-tag")
     {
         outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rewrite-tag")
     {
@@ -6597,15 +10799,56 @@ void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
     if(value_path == "simple-efp")
     {
         simple_efp = value;
+        simple_efp.value_namespace = name_space;
+        simple_efp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-rewrite-tag")
     {
         vlan_rewrite_tag = value;
+        vlan_rewrite_tag.value_namespace = name_space;
+        vlan_rewrite_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-tags")
     {
         xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type.yfilter = yfilter;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "rewrite-tag")
+    {
+        rewrite_tag.yfilter = yfilter;
+    }
+    if(value_path == "simple-efp")
+    {
+        simple_efp.yfilter = yfilter;
+    }
+    if(value_path == "vlan-rewrite-tag")
+    {
+        vlan_rewrite_tag.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-range" || name == "encapsulation-type" || name == "outer-tag" || name == "rewrite-tag" || name == "simple-efp" || name == "vlan-rewrite-tag" || name == "xconnect-tags")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::VlanRange()
@@ -6628,9 +10871,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lower.operation)
-	|| is_set(upper.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lower.yfilter)
+	|| ydk::is_set(upper.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::get_segment_path() const
@@ -6656,8 +10899,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lower.is_set || is_set(lower.operation)) leaf_name_data.push_back(lower.get_name_leafdata());
-    if (upper.is_set || is_set(upper.operation)) leaf_name_data.push_back(upper.get_name_leafdata());
+    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
+    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6676,16 +10919,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lower")
     {
         lower = value;
+        lower.value_namespace = name_space;
+        lower.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper")
     {
         upper = value;
+        upper.value_namespace = name_space;
+        upper.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower")
+    {
+        lower.yfilter = yfilter;
+    }
+    if(value_path == "upper")
+    {
+        upper.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Vlan::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower" || name == "upper")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::Tdm()
@@ -6715,10 +10981,10 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tdm_mode.operation)
-	|| is_set(timeslot_group.operation)
-	|| is_set(timeslot_rate.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tdm_mode.yfilter)
+	|| ydk::is_set(timeslot_group.yfilter)
+	|| ydk::is_set(timeslot_rate.yfilter)
 	|| (tdm_options !=  nullptr && tdm_options->has_operation());
 }
 
@@ -6745,9 +11011,9 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tdm_mode.is_set || is_set(tdm_mode.operation)) leaf_name_data.push_back(tdm_mode.get_name_leafdata());
-    if (timeslot_group.is_set || is_set(timeslot_group.operation)) leaf_name_data.push_back(timeslot_group.get_name_leafdata());
-    if (timeslot_rate.is_set || is_set(timeslot_rate.operation)) leaf_name_data.push_back(timeslot_rate.get_name_leafdata());
+    if (tdm_mode.is_set || is_set(tdm_mode.yfilter)) leaf_name_data.push_back(tdm_mode.get_name_leafdata());
+    if (timeslot_group.is_set || is_set(timeslot_group.yfilter)) leaf_name_data.push_back(timeslot_group.get_name_leafdata());
+    if (timeslot_rate.is_set || is_set(timeslot_rate.yfilter)) leaf_name_data.push_back(timeslot_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6780,20 +11046,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tdm-mode")
     {
         tdm_mode = value;
+        tdm_mode.value_namespace = name_space;
+        tdm_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeslot-group")
     {
         timeslot_group = value;
+        timeslot_group.value_namespace = name_space;
+        timeslot_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeslot-rate")
     {
         timeslot_rate = value;
+        timeslot_rate.value_namespace = name_space;
+        timeslot_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tdm-mode")
+    {
+        tdm_mode.yfilter = yfilter;
+    }
+    if(value_path == "timeslot-group")
+    {
+        timeslot_group.yfilter = yfilter;
+    }
+    if(value_path == "timeslot-rate")
+    {
+        timeslot_rate.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tdm-options" || name == "tdm-mode" || name == "timeslot-group" || name == "timeslot-rate")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::TdmOptions()
@@ -6830,16 +11125,16 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bit_rate.operation)
-	|| is_set(cas.operation)
-	|| is_set(payload_bytes.operation)
-	|| is_set(rtp.operation)
-	|| is_set(rtp_header_payload_type.operation)
-	|| is_set(signalling_packets.operation)
-	|| is_set(ssrc.operation)
-	|| is_set(timestamp_clock_freq.operation)
-	|| is_set(timestamp_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bit_rate.yfilter)
+	|| ydk::is_set(cas.yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
+	|| ydk::is_set(rtp.yfilter)
+	|| ydk::is_set(rtp_header_payload_type.yfilter)
+	|| ydk::is_set(signalling_packets.yfilter)
+	|| ydk::is_set(ssrc.yfilter)
+	|| ydk::is_set(timestamp_clock_freq.yfilter)
+	|| ydk::is_set(timestamp_mode.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::get_segment_path() const
@@ -6865,15 +11160,15 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bit_rate.is_set || is_set(bit_rate.operation)) leaf_name_data.push_back(bit_rate.get_name_leafdata());
-    if (cas.is_set || is_set(cas.operation)) leaf_name_data.push_back(cas.get_name_leafdata());
-    if (payload_bytes.is_set || is_set(payload_bytes.operation)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
-    if (rtp.is_set || is_set(rtp.operation)) leaf_name_data.push_back(rtp.get_name_leafdata());
-    if (rtp_header_payload_type.is_set || is_set(rtp_header_payload_type.operation)) leaf_name_data.push_back(rtp_header_payload_type.get_name_leafdata());
-    if (signalling_packets.is_set || is_set(signalling_packets.operation)) leaf_name_data.push_back(signalling_packets.get_name_leafdata());
-    if (ssrc.is_set || is_set(ssrc.operation)) leaf_name_data.push_back(ssrc.get_name_leafdata());
-    if (timestamp_clock_freq.is_set || is_set(timestamp_clock_freq.operation)) leaf_name_data.push_back(timestamp_clock_freq.get_name_leafdata());
-    if (timestamp_mode.is_set || is_set(timestamp_mode.operation)) leaf_name_data.push_back(timestamp_mode.get_name_leafdata());
+    if (bit_rate.is_set || is_set(bit_rate.yfilter)) leaf_name_data.push_back(bit_rate.get_name_leafdata());
+    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+    if (rtp.is_set || is_set(rtp.yfilter)) leaf_name_data.push_back(rtp.get_name_leafdata());
+    if (rtp_header_payload_type.is_set || is_set(rtp_header_payload_type.yfilter)) leaf_name_data.push_back(rtp_header_payload_type.get_name_leafdata());
+    if (signalling_packets.is_set || is_set(signalling_packets.yfilter)) leaf_name_data.push_back(signalling_packets.get_name_leafdata());
+    if (ssrc.is_set || is_set(ssrc.yfilter)) leaf_name_data.push_back(ssrc.get_name_leafdata());
+    if (timestamp_clock_freq.is_set || is_set(timestamp_clock_freq.yfilter)) leaf_name_data.push_back(timestamp_clock_freq.get_name_leafdata());
+    if (timestamp_mode.is_set || is_set(timestamp_mode.yfilter)) leaf_name_data.push_back(timestamp_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6892,44 +11187,109 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bit-rate")
     {
         bit_rate = value;
+        bit_rate.value_namespace = name_space;
+        bit_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cas")
     {
         cas = value;
+        cas.value_namespace = name_space;
+        cas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-bytes")
     {
         payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp")
     {
         rtp = value;
+        rtp.value_namespace = name_space;
+        rtp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp-header-payload-type")
     {
         rtp_header_payload_type = value;
+        rtp_header_payload_type.value_namespace = name_space;
+        rtp_header_payload_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signalling-packets")
     {
         signalling_packets = value;
+        signalling_packets.value_namespace = name_space;
+        signalling_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssrc")
     {
         ssrc = value;
+        ssrc.value_namespace = name_space;
+        ssrc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-clock-freq")
     {
         timestamp_clock_freq = value;
+        timestamp_clock_freq.value_namespace = name_space;
+        timestamp_clock_freq.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-mode")
     {
         timestamp_mode = value;
+        timestamp_mode.value_namespace = name_space;
+        timestamp_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bit-rate")
+    {
+        bit_rate.yfilter = yfilter;
+    }
+    if(value_path == "cas")
+    {
+        cas.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rtp")
+    {
+        rtp.yfilter = yfilter;
+    }
+    if(value_path == "rtp-header-payload-type")
+    {
+        rtp_header_payload_type.yfilter = yfilter;
+    }
+    if(value_path == "signalling-packets")
+    {
+        signalling_packets.yfilter = yfilter;
+    }
+    if(value_path == "ssrc")
+    {
+        ssrc.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-clock-freq")
+    {
+        timestamp_clock_freq.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-mode")
+    {
+        timestamp_mode.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bit-rate" || name == "cas" || name == "payload-bytes" || name == "rtp" || name == "rtp-header-payload-type" || name == "signalling-packets" || name == "ssrc" || name == "timestamp-clock-freq" || name == "timestamp-mode")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm::Atm()
@@ -6958,12 +11318,12 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(atm_mode.operation)
-	|| is_set(maximum_number_cells_packed.operation)
-	|| is_set(maximum_number_cells_un_packed.operation)
-	|| is_set(vci.operation)
-	|| is_set(vpi.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(atm_mode.yfilter)
+	|| ydk::is_set(maximum_number_cells_packed.yfilter)
+	|| ydk::is_set(maximum_number_cells_un_packed.yfilter)
+	|| ydk::is_set(vci.yfilter)
+	|| ydk::is_set(vpi.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm::get_segment_path() const
@@ -6989,11 +11349,11 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (atm_mode.is_set || is_set(atm_mode.operation)) leaf_name_data.push_back(atm_mode.get_name_leafdata());
-    if (maximum_number_cells_packed.is_set || is_set(maximum_number_cells_packed.operation)) leaf_name_data.push_back(maximum_number_cells_packed.get_name_leafdata());
-    if (maximum_number_cells_un_packed.is_set || is_set(maximum_number_cells_un_packed.operation)) leaf_name_data.push_back(maximum_number_cells_un_packed.get_name_leafdata());
-    if (vci.is_set || is_set(vci.operation)) leaf_name_data.push_back(vci.get_name_leafdata());
-    if (vpi.is_set || is_set(vpi.operation)) leaf_name_data.push_back(vpi.get_name_leafdata());
+    if (atm_mode.is_set || is_set(atm_mode.yfilter)) leaf_name_data.push_back(atm_mode.get_name_leafdata());
+    if (maximum_number_cells_packed.is_set || is_set(maximum_number_cells_packed.yfilter)) leaf_name_data.push_back(maximum_number_cells_packed.get_name_leafdata());
+    if (maximum_number_cells_un_packed.is_set || is_set(maximum_number_cells_un_packed.yfilter)) leaf_name_data.push_back(maximum_number_cells_un_packed.get_name_leafdata());
+    if (vci.is_set || is_set(vci.yfilter)) leaf_name_data.push_back(vci.get_name_leafdata());
+    if (vpi.is_set || is_set(vpi.yfilter)) leaf_name_data.push_back(vpi.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7012,28 +11372,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atm-mode")
     {
         atm_mode = value;
+        atm_mode.value_namespace = name_space;
+        atm_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-number-cells-packed")
     {
         maximum_number_cells_packed = value;
+        maximum_number_cells_packed.value_namespace = name_space;
+        maximum_number_cells_packed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-number-cells-un-packed")
     {
         maximum_number_cells_un_packed = value;
+        maximum_number_cells_un_packed.value_namespace = name_space;
+        maximum_number_cells_un_packed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vci")
     {
         vci = value;
+        vci.value_namespace = name_space;
+        vci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpi")
     {
         vpi = value;
+        vpi.value_namespace = name_space;
+        vpi.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "atm-mode")
+    {
+        atm_mode.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-cells-packed")
+    {
+        maximum_number_cells_packed.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-cells-un-packed")
+    {
+        maximum_number_cells_un_packed.yfilter = yfilter;
+    }
+    if(value_path == "vci")
+    {
+        vci.yfilter = yfilter;
+    }
+    if(value_path == "vpi")
+    {
+        vpi.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atm-mode" || name == "maximum-number-cells-packed" || name == "maximum-number-cells-un-packed" || name == "vci" || name == "vpi")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr::Fr()
@@ -7056,9 +11457,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dlci.operation)
-	|| is_set(fr_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dlci.yfilter)
+	|| ydk::is_set(fr_mode.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr::get_segment_path() const
@@ -7084,8 +11485,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dlci.is_set || is_set(dlci.operation)) leaf_name_data.push_back(dlci.get_name_leafdata());
-    if (fr_mode.is_set || is_set(fr_mode.operation)) leaf_name_data.push_back(fr_mode.get_name_leafdata());
+    if (dlci.is_set || is_set(dlci.yfilter)) leaf_name_data.push_back(dlci.get_name_leafdata());
+    if (fr_mode.is_set || is_set(fr_mode.yfilter)) leaf_name_data.push_back(fr_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7104,16 +11505,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dlci")
     {
         dlci = value;
+        dlci.value_namespace = name_space;
+        dlci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fr-mode")
     {
         fr_mode = value;
+        fr_mode.value_namespace = name_space;
+        fr_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dlci")
+    {
+        dlci.yfilter = yfilter;
+    }
+    if(value_path == "fr-mode")
+    {
+        fr_mode.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dlci" || name == "fr-mode")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::PseudowireEther()
@@ -7141,9 +11565,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(internal_label.operation)
-	|| is_set(is_valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
 	|| (interface_list !=  nullptr && interface_list->has_operation());
 }
 
@@ -7170,8 +11594,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7204,16 +11628,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "internal-label" || name == "is-valid")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::InterfaceList()
@@ -7246,9 +11693,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_list_id.operation)
-	|| is_set(interface_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_list_id.yfilter)
+	|| ydk::is_set(interface_list_name.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::get_segment_path() const
@@ -7274,8 +11721,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_list_id.is_set || is_set(interface_list_id.operation)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
-    if (interface_list_name.is_set || is_set(interface_list_name.operation)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
+    if (interface_list_id.is_set || is_set(interface_list_id.yfilter)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
+    if (interface_list_name.is_set || is_set(interface_list_name.yfilter)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7315,16 +11762,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-id")
     {
         interface_list_id = value;
+        interface_list_id.value_namespace = name_space;
+        interface_list_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-list-name")
     {
         interface_list_name = value;
+        interface_list_name.value_namespace = name_space;
+        interface_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-list-id" || name == "interface-list-name")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::Interface()
@@ -7347,9 +11817,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(replicate_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(replicate_status.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_segment_path() const
@@ -7375,8 +11845,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (replicate_status.is_set || is_set(replicate_status.operation)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (replicate_status.is_set || is_set(replicate_status.yfilter)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7395,16 +11865,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replicate-status")
     {
         replicate_status = value;
+        replicate_status.value_namespace = name_space;
+        replicate_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "replicate-status")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::PseudowireIw()
@@ -7432,9 +11925,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(internal_label.operation)
-	|| is_set(is_valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
 	|| (interface_list !=  nullptr && interface_list->has_operation());
 }
 
@@ -7461,8 +11954,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7495,16 +11988,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "internal-label" || name == "is-valid")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::InterfaceList()
@@ -7537,9 +12053,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_list_id.operation)
-	|| is_set(interface_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_list_id.yfilter)
+	|| ydk::is_set(interface_list_name.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::get_segment_path() const
@@ -7565,8 +12081,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_list_id.is_set || is_set(interface_list_id.operation)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
-    if (interface_list_name.is_set || is_set(interface_list_name.operation)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
+    if (interface_list_id.is_set || is_set(interface_list_id.yfilter)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
+    if (interface_list_name.is_set || is_set(interface_list_name.yfilter)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7606,16 +12122,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-id")
     {
         interface_list_id = value;
+        interface_list_id.value_namespace = name_space;
+        interface_list_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-list-name")
     {
         interface_list_name = value;
+        interface_list_name.value_namespace = name_space;
+        interface_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-list-id" || name == "interface-list-name")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::Interface()
@@ -7638,9 +12177,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(replicate_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(replicate_status.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_segment_path() const
@@ -7666,8 +12205,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (replicate_status.is_set || is_set(replicate_status.operation)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (replicate_status.is_set || is_set(replicate_status.yfilter)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7686,16 +12225,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replicate-status")
     {
         replicate_status = value;
+        replicate_status.value_namespace = name_space;
+        replicate_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "replicate-status")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::RemoteInterface()
@@ -7725,10 +12287,10 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mtu.operation)
-	|| is_set(name.operation)
-	|| is_set(payload_bytes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
 	|| (parameters !=  nullptr && parameters->has_operation());
 }
 
@@ -7755,9 +12317,9 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (payload_bytes.is_set || is_set(payload_bytes.operation)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7790,20 +12352,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-bytes")
     {
         payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parameters" || name == "mtu" || name == "name" || name == "payload-bytes")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Parameters()
@@ -7853,8 +12444,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (atm !=  nullptr && atm->has_operation())
 	|| (ethernet !=  nullptr && ethernet->has_operation())
 	|| (fr !=  nullptr && fr->has_operation())
@@ -7887,7 +12478,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8004,12 +12595,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atm" || name == "ethernet" || name == "fr" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "tdm" || name == "vlan" || name == "type")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet::Ethernet()
@@ -8030,8 +12638,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(xconnect_tags.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet::get_segment_path() const
@@ -8057,7 +12665,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (xconnect_tags.is_set || is_set(xconnect_tags.operation)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8076,12 +12684,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xconnect-tags")
     {
         xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xconnect-tags")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::Vlan()
@@ -8128,16 +12753,16 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
     }
     for (auto const & leaf : rewrite_tag.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(encapsulation_type.operation)
-	|| is_set(outer_tag.operation)
-	|| is_set(rewrite_tag.operation)
-	|| is_set(simple_efp.operation)
-	|| is_set(vlan_rewrite_tag.operation)
-	|| is_set(xconnect_tags.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(encapsulation_type.yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(rewrite_tag.yfilter)
+	|| ydk::is_set(simple_efp.yfilter)
+	|| ydk::is_set(vlan_rewrite_tag.yfilter)
+	|| ydk::is_set(xconnect_tags.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::get_segment_path() const
@@ -8163,11 +12788,11 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (encapsulation_type.is_set || is_set(encapsulation_type.operation)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
-    if (outer_tag.is_set || is_set(outer_tag.operation)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
-    if (simple_efp.is_set || is_set(simple_efp.operation)) leaf_name_data.push_back(simple_efp.get_name_leafdata());
-    if (vlan_rewrite_tag.is_set || is_set(vlan_rewrite_tag.operation)) leaf_name_data.push_back(vlan_rewrite_tag.get_name_leafdata());
-    if (xconnect_tags.is_set || is_set(xconnect_tags.operation)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
+    if (encapsulation_type.is_set || is_set(encapsulation_type.yfilter)) leaf_name_data.push_back(encapsulation_type.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (simple_efp.is_set || is_set(simple_efp.yfilter)) leaf_name_data.push_back(simple_efp.get_name_leafdata());
+    if (vlan_rewrite_tag.is_set || is_set(vlan_rewrite_tag.yfilter)) leaf_name_data.push_back(vlan_rewrite_tag.get_name_leafdata());
+    if (xconnect_tags.is_set || is_set(xconnect_tags.yfilter)) leaf_name_data.push_back(xconnect_tags.get_name_leafdata());
 
     auto rewrite_tag_name_datas = rewrite_tag.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), rewrite_tag_name_datas.begin(), rewrite_tag_name_datas.end());
@@ -8209,15 +12834,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "encapsulation-type")
     {
         encapsulation_type = value;
+        encapsulation_type.value_namespace = name_space;
+        encapsulation_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outer-tag")
     {
         outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rewrite-tag")
     {
@@ -8226,15 +12855,56 @@ void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
     if(value_path == "simple-efp")
     {
         simple_efp = value;
+        simple_efp.value_namespace = name_space;
+        simple_efp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-rewrite-tag")
     {
         vlan_rewrite_tag = value;
+        vlan_rewrite_tag.value_namespace = name_space;
+        vlan_rewrite_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-tags")
     {
         xconnect_tags = value;
+        xconnect_tags.value_namespace = name_space;
+        xconnect_tags.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encapsulation-type")
+    {
+        encapsulation_type.yfilter = yfilter;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "rewrite-tag")
+    {
+        rewrite_tag.yfilter = yfilter;
+    }
+    if(value_path == "simple-efp")
+    {
+        simple_efp.yfilter = yfilter;
+    }
+    if(value_path == "vlan-rewrite-tag")
+    {
+        vlan_rewrite_tag.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-tags")
+    {
+        xconnect_tags.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-range" || name == "encapsulation-type" || name == "outer-tag" || name == "rewrite-tag" || name == "simple-efp" || name == "vlan-rewrite-tag" || name == "xconnect-tags")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::VlanRange()
@@ -8257,9 +12927,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lower.operation)
-	|| is_set(upper.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lower.yfilter)
+	|| ydk::is_set(upper.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::get_segment_path() const
@@ -8285,8 +12955,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lower.is_set || is_set(lower.operation)) leaf_name_data.push_back(lower.get_name_leafdata());
-    if (upper.is_set || is_set(upper.operation)) leaf_name_data.push_back(upper.get_name_leafdata());
+    if (lower.is_set || is_set(lower.yfilter)) leaf_name_data.push_back(lower.get_name_leafdata());
+    if (upper.is_set || is_set(upper.yfilter)) leaf_name_data.push_back(upper.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8305,16 +12975,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lower")
     {
         lower = value;
+        lower.value_namespace = name_space;
+        lower.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper")
     {
         upper = value;
+        upper.value_namespace = name_space;
+        upper.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower")
+    {
+        lower.yfilter = yfilter;
+    }
+    if(value_path == "upper")
+    {
+        upper.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower" || name == "upper")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::Tdm()
@@ -8344,10 +13037,10 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tdm_mode.operation)
-	|| is_set(timeslot_group.operation)
-	|| is_set(timeslot_rate.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tdm_mode.yfilter)
+	|| ydk::is_set(timeslot_group.yfilter)
+	|| ydk::is_set(timeslot_rate.yfilter)
 	|| (tdm_options !=  nullptr && tdm_options->has_operation());
 }
 
@@ -8374,9 +13067,9 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tdm_mode.is_set || is_set(tdm_mode.operation)) leaf_name_data.push_back(tdm_mode.get_name_leafdata());
-    if (timeslot_group.is_set || is_set(timeslot_group.operation)) leaf_name_data.push_back(timeslot_group.get_name_leafdata());
-    if (timeslot_rate.is_set || is_set(timeslot_rate.operation)) leaf_name_data.push_back(timeslot_rate.get_name_leafdata());
+    if (tdm_mode.is_set || is_set(tdm_mode.yfilter)) leaf_name_data.push_back(tdm_mode.get_name_leafdata());
+    if (timeslot_group.is_set || is_set(timeslot_group.yfilter)) leaf_name_data.push_back(timeslot_group.get_name_leafdata());
+    if (timeslot_rate.is_set || is_set(timeslot_rate.yfilter)) leaf_name_data.push_back(timeslot_rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8409,20 +13102,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tdm-mode")
     {
         tdm_mode = value;
+        tdm_mode.value_namespace = name_space;
+        tdm_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeslot-group")
     {
         timeslot_group = value;
+        timeslot_group.value_namespace = name_space;
+        timeslot_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeslot-rate")
     {
         timeslot_rate = value;
+        timeslot_rate.value_namespace = name_space;
+        timeslot_rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tdm-mode")
+    {
+        tdm_mode.yfilter = yfilter;
+    }
+    if(value_path == "timeslot-group")
+    {
+        timeslot_group.yfilter = yfilter;
+    }
+    if(value_path == "timeslot-rate")
+    {
+        timeslot_rate.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tdm-options" || name == "tdm-mode" || name == "timeslot-group" || name == "timeslot-rate")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::TdmOptions()
@@ -8459,16 +13181,16 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bit_rate.operation)
-	|| is_set(cas.operation)
-	|| is_set(payload_bytes.operation)
-	|| is_set(rtp.operation)
-	|| is_set(rtp_header_payload_type.operation)
-	|| is_set(signalling_packets.operation)
-	|| is_set(ssrc.operation)
-	|| is_set(timestamp_clock_freq.operation)
-	|| is_set(timestamp_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bit_rate.yfilter)
+	|| ydk::is_set(cas.yfilter)
+	|| ydk::is_set(payload_bytes.yfilter)
+	|| ydk::is_set(rtp.yfilter)
+	|| ydk::is_set(rtp_header_payload_type.yfilter)
+	|| ydk::is_set(signalling_packets.yfilter)
+	|| ydk::is_set(ssrc.yfilter)
+	|| ydk::is_set(timestamp_clock_freq.yfilter)
+	|| ydk::is_set(timestamp_mode.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::get_segment_path() const
@@ -8494,15 +13216,15 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bit_rate.is_set || is_set(bit_rate.operation)) leaf_name_data.push_back(bit_rate.get_name_leafdata());
-    if (cas.is_set || is_set(cas.operation)) leaf_name_data.push_back(cas.get_name_leafdata());
-    if (payload_bytes.is_set || is_set(payload_bytes.operation)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
-    if (rtp.is_set || is_set(rtp.operation)) leaf_name_data.push_back(rtp.get_name_leafdata());
-    if (rtp_header_payload_type.is_set || is_set(rtp_header_payload_type.operation)) leaf_name_data.push_back(rtp_header_payload_type.get_name_leafdata());
-    if (signalling_packets.is_set || is_set(signalling_packets.operation)) leaf_name_data.push_back(signalling_packets.get_name_leafdata());
-    if (ssrc.is_set || is_set(ssrc.operation)) leaf_name_data.push_back(ssrc.get_name_leafdata());
-    if (timestamp_clock_freq.is_set || is_set(timestamp_clock_freq.operation)) leaf_name_data.push_back(timestamp_clock_freq.get_name_leafdata());
-    if (timestamp_mode.is_set || is_set(timestamp_mode.operation)) leaf_name_data.push_back(timestamp_mode.get_name_leafdata());
+    if (bit_rate.is_set || is_set(bit_rate.yfilter)) leaf_name_data.push_back(bit_rate.get_name_leafdata());
+    if (cas.is_set || is_set(cas.yfilter)) leaf_name_data.push_back(cas.get_name_leafdata());
+    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
+    if (rtp.is_set || is_set(rtp.yfilter)) leaf_name_data.push_back(rtp.get_name_leafdata());
+    if (rtp_header_payload_type.is_set || is_set(rtp_header_payload_type.yfilter)) leaf_name_data.push_back(rtp_header_payload_type.get_name_leafdata());
+    if (signalling_packets.is_set || is_set(signalling_packets.yfilter)) leaf_name_data.push_back(signalling_packets.get_name_leafdata());
+    if (ssrc.is_set || is_set(ssrc.yfilter)) leaf_name_data.push_back(ssrc.get_name_leafdata());
+    if (timestamp_clock_freq.is_set || is_set(timestamp_clock_freq.yfilter)) leaf_name_data.push_back(timestamp_clock_freq.get_name_leafdata());
+    if (timestamp_mode.is_set || is_set(timestamp_mode.yfilter)) leaf_name_data.push_back(timestamp_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8521,44 +13243,109 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bit-rate")
     {
         bit_rate = value;
+        bit_rate.value_namespace = name_space;
+        bit_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cas")
     {
         cas = value;
+        cas.value_namespace = name_space;
+        cas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-bytes")
     {
         payload_bytes = value;
+        payload_bytes.value_namespace = name_space;
+        payload_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp")
     {
         rtp = value;
+        rtp.value_namespace = name_space;
+        rtp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp-header-payload-type")
     {
         rtp_header_payload_type = value;
+        rtp_header_payload_type.value_namespace = name_space;
+        rtp_header_payload_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signalling-packets")
     {
         signalling_packets = value;
+        signalling_packets.value_namespace = name_space;
+        signalling_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssrc")
     {
         ssrc = value;
+        ssrc.value_namespace = name_space;
+        ssrc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-clock-freq")
     {
         timestamp_clock_freq = value;
+        timestamp_clock_freq.value_namespace = name_space;
+        timestamp_clock_freq.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp-mode")
     {
         timestamp_mode = value;
+        timestamp_mode.value_namespace = name_space;
+        timestamp_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bit-rate")
+    {
+        bit_rate.yfilter = yfilter;
+    }
+    if(value_path == "cas")
+    {
+        cas.yfilter = yfilter;
+    }
+    if(value_path == "payload-bytes")
+    {
+        payload_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rtp")
+    {
+        rtp.yfilter = yfilter;
+    }
+    if(value_path == "rtp-header-payload-type")
+    {
+        rtp_header_payload_type.yfilter = yfilter;
+    }
+    if(value_path == "signalling-packets")
+    {
+        signalling_packets.yfilter = yfilter;
+    }
+    if(value_path == "ssrc")
+    {
+        ssrc.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-clock-freq")
+    {
+        timestamp_clock_freq.yfilter = yfilter;
+    }
+    if(value_path == "timestamp-mode")
+    {
+        timestamp_mode.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bit-rate" || name == "cas" || name == "payload-bytes" || name == "rtp" || name == "rtp-header-payload-type" || name == "signalling-packets" || name == "ssrc" || name == "timestamp-clock-freq" || name == "timestamp-mode")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm::Atm()
@@ -8587,12 +13374,12 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(atm_mode.operation)
-	|| is_set(maximum_number_cells_packed.operation)
-	|| is_set(maximum_number_cells_un_packed.operation)
-	|| is_set(vci.operation)
-	|| is_set(vpi.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(atm_mode.yfilter)
+	|| ydk::is_set(maximum_number_cells_packed.yfilter)
+	|| ydk::is_set(maximum_number_cells_un_packed.yfilter)
+	|| ydk::is_set(vci.yfilter)
+	|| ydk::is_set(vpi.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm::get_segment_path() const
@@ -8618,11 +13405,11 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (atm_mode.is_set || is_set(atm_mode.operation)) leaf_name_data.push_back(atm_mode.get_name_leafdata());
-    if (maximum_number_cells_packed.is_set || is_set(maximum_number_cells_packed.operation)) leaf_name_data.push_back(maximum_number_cells_packed.get_name_leafdata());
-    if (maximum_number_cells_un_packed.is_set || is_set(maximum_number_cells_un_packed.operation)) leaf_name_data.push_back(maximum_number_cells_un_packed.get_name_leafdata());
-    if (vci.is_set || is_set(vci.operation)) leaf_name_data.push_back(vci.get_name_leafdata());
-    if (vpi.is_set || is_set(vpi.operation)) leaf_name_data.push_back(vpi.get_name_leafdata());
+    if (atm_mode.is_set || is_set(atm_mode.yfilter)) leaf_name_data.push_back(atm_mode.get_name_leafdata());
+    if (maximum_number_cells_packed.is_set || is_set(maximum_number_cells_packed.yfilter)) leaf_name_data.push_back(maximum_number_cells_packed.get_name_leafdata());
+    if (maximum_number_cells_un_packed.is_set || is_set(maximum_number_cells_un_packed.yfilter)) leaf_name_data.push_back(maximum_number_cells_un_packed.get_name_leafdata());
+    if (vci.is_set || is_set(vci.yfilter)) leaf_name_data.push_back(vci.get_name_leafdata());
+    if (vpi.is_set || is_set(vpi.yfilter)) leaf_name_data.push_back(vpi.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8641,28 +13428,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atm-mode")
     {
         atm_mode = value;
+        atm_mode.value_namespace = name_space;
+        atm_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-number-cells-packed")
     {
         maximum_number_cells_packed = value;
+        maximum_number_cells_packed.value_namespace = name_space;
+        maximum_number_cells_packed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-number-cells-un-packed")
     {
         maximum_number_cells_un_packed = value;
+        maximum_number_cells_un_packed.value_namespace = name_space;
+        maximum_number_cells_un_packed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vci")
     {
         vci = value;
+        vci.value_namespace = name_space;
+        vci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpi")
     {
         vpi = value;
+        vpi.value_namespace = name_space;
+        vpi.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "atm-mode")
+    {
+        atm_mode.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-cells-packed")
+    {
+        maximum_number_cells_packed.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-cells-un-packed")
+    {
+        maximum_number_cells_un_packed.yfilter = yfilter;
+    }
+    if(value_path == "vci")
+    {
+        vci.yfilter = yfilter;
+    }
+    if(value_path == "vpi")
+    {
+        vpi.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atm-mode" || name == "maximum-number-cells-packed" || name == "maximum-number-cells-un-packed" || name == "vci" || name == "vpi")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr::Fr()
@@ -8685,9 +13513,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dlci.operation)
-	|| is_set(fr_mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dlci.yfilter)
+	|| ydk::is_set(fr_mode.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr::get_segment_path() const
@@ -8713,8 +13541,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dlci.is_set || is_set(dlci.operation)) leaf_name_data.push_back(dlci.get_name_leafdata());
-    if (fr_mode.is_set || is_set(fr_mode.operation)) leaf_name_data.push_back(fr_mode.get_name_leafdata());
+    if (dlci.is_set || is_set(dlci.yfilter)) leaf_name_data.push_back(dlci.get_name_leafdata());
+    if (fr_mode.is_set || is_set(fr_mode.yfilter)) leaf_name_data.push_back(fr_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8733,16 +13561,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dlci")
     {
         dlci = value;
+        dlci.value_namespace = name_space;
+        dlci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fr-mode")
     {
         fr_mode = value;
+        fr_mode.value_namespace = name_space;
+        fr_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dlci")
+    {
+        dlci.yfilter = yfilter;
+    }
+    if(value_path == "fr-mode")
+    {
+        fr_mode.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dlci" || name == "fr-mode")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::PseudowireEther()
@@ -8770,9 +13621,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(internal_label.operation)
-	|| is_set(is_valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
 	|| (interface_list !=  nullptr && interface_list->has_operation());
 }
 
@@ -8799,8 +13650,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8833,16 +13684,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "internal-label" || name == "is-valid")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::InterfaceList()
@@ -8875,9 +13749,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_list_id.operation)
-	|| is_set(interface_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_list_id.yfilter)
+	|| ydk::is_set(interface_list_name.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::get_segment_path() const
@@ -8903,8 +13777,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_list_id.is_set || is_set(interface_list_id.operation)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
-    if (interface_list_name.is_set || is_set(interface_list_name.operation)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
+    if (interface_list_id.is_set || is_set(interface_list_id.yfilter)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
+    if (interface_list_name.is_set || is_set(interface_list_name.yfilter)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8944,16 +13818,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-id")
     {
         interface_list_id = value;
+        interface_list_id.value_namespace = name_space;
+        interface_list_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-list-name")
     {
         interface_list_name = value;
+        interface_list_name.value_namespace = name_space;
+        interface_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-list-id" || name == "interface-list-name")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::Interface()
@@ -8976,9 +13873,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(replicate_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(replicate_status.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::get_segment_path() const
@@ -9004,8 +13901,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (replicate_status.is_set || is_set(replicate_status.operation)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (replicate_status.is_set || is_set(replicate_status.yfilter)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9024,16 +13921,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replicate-status")
     {
         replicate_status = value;
+        replicate_status.value_namespace = name_space;
+        replicate_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "replicate-status")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::PseudowireIw()
@@ -9061,9 +13981,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(internal_label.operation)
-	|| is_set(is_valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(internal_label.yfilter)
+	|| ydk::is_set(is_valid.yfilter)
 	|| (interface_list !=  nullptr && interface_list->has_operation());
 }
 
@@ -9090,8 +14010,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (internal_label.is_set || is_set(internal_label.operation)) leaf_name_data.push_back(internal_label.get_name_leafdata());
-    if (is_valid.is_set || is_set(is_valid.operation)) leaf_name_data.push_back(is_valid.get_name_leafdata());
+    if (internal_label.is_set || is_set(internal_label.yfilter)) leaf_name_data.push_back(internal_label.get_name_leafdata());
+    if (is_valid.is_set || is_set(is_valid.yfilter)) leaf_name_data.push_back(is_valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9124,16 +14044,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "internal-label")
     {
         internal_label = value;
+        internal_label.value_namespace = name_space;
+        internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-valid")
     {
         is_valid = value;
+        is_valid.value_namespace = name_space;
+        is_valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "internal-label")
+    {
+        internal_label.yfilter = yfilter;
+    }
+    if(value_path == "is-valid")
+    {
+        is_valid.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-list" || name == "internal-label" || name == "is-valid")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::InterfaceList()
@@ -9166,9 +14109,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_list_id.operation)
-	|| is_set(interface_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_list_id.yfilter)
+	|| ydk::is_set(interface_list_name.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::get_segment_path() const
@@ -9194,8 +14137,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_list_id.is_set || is_set(interface_list_id.operation)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
-    if (interface_list_name.is_set || is_set(interface_list_name.operation)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
+    if (interface_list_id.is_set || is_set(interface_list_id.yfilter)) leaf_name_data.push_back(interface_list_id.get_name_leafdata());
+    if (interface_list_name.is_set || is_set(interface_list_name.yfilter)) leaf_name_data.push_back(interface_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9235,16 +14178,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-list-id")
     {
         interface_list_id = value;
+        interface_list_id.value_namespace = name_space;
+        interface_list_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-list-name")
     {
         interface_list_name = value;
+        interface_list_name.value_namespace = name_space;
+        interface_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-list-id")
+    {
+        interface_list_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-list-name")
+    {
+        interface_list_name.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "interface-list-id" || name == "interface-list-name")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::Interface()
@@ -9267,9 +14233,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(replicate_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(replicate_status.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::get_segment_path() const
@@ -9295,8 +14261,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (replicate_status.is_set || is_set(replicate_status.operation)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (replicate_status.is_set || is_set(replicate_status.yfilter)) leaf_name_data.push_back(replicate_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9315,16 +14281,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replicate-status")
     {
         replicate_status = value;
+        replicate_status.value_namespace = name_space;
+        replicate_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "replicate-status")
+    {
+        replicate_status.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "replicate-status")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::PreferredPath()
@@ -9353,12 +14342,12 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Prefe
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_tunnel_interface_number.operation)
-	|| is_set(next_hop_ip.operation)
-	|| is_set(option.operation)
-	|| is_set(te_tunnel_interface_number.operation)
-	|| is_set(tp_tunnel_interface_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_tunnel_interface_number.yfilter)
+	|| ydk::is_set(next_hop_ip.yfilter)
+	|| ydk::is_set(option.yfilter)
+	|| ydk::is_set(te_tunnel_interface_number.yfilter)
+	|| ydk::is_set(tp_tunnel_interface_number.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::get_segment_path() const
@@ -9384,11 +14373,11 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_tunnel_interface_number.is_set || is_set(ip_tunnel_interface_number.operation)) leaf_name_data.push_back(ip_tunnel_interface_number.get_name_leafdata());
-    if (next_hop_ip.is_set || is_set(next_hop_ip.operation)) leaf_name_data.push_back(next_hop_ip.get_name_leafdata());
-    if (option.is_set || is_set(option.operation)) leaf_name_data.push_back(option.get_name_leafdata());
-    if (te_tunnel_interface_number.is_set || is_set(te_tunnel_interface_number.operation)) leaf_name_data.push_back(te_tunnel_interface_number.get_name_leafdata());
-    if (tp_tunnel_interface_number.is_set || is_set(tp_tunnel_interface_number.operation)) leaf_name_data.push_back(tp_tunnel_interface_number.get_name_leafdata());
+    if (ip_tunnel_interface_number.is_set || is_set(ip_tunnel_interface_number.yfilter)) leaf_name_data.push_back(ip_tunnel_interface_number.get_name_leafdata());
+    if (next_hop_ip.is_set || is_set(next_hop_ip.yfilter)) leaf_name_data.push_back(next_hop_ip.get_name_leafdata());
+    if (option.is_set || is_set(option.yfilter)) leaf_name_data.push_back(option.get_name_leafdata());
+    if (te_tunnel_interface_number.is_set || is_set(te_tunnel_interface_number.yfilter)) leaf_name_data.push_back(te_tunnel_interface_number.get_name_leafdata());
+    if (tp_tunnel_interface_number.is_set || is_set(tp_tunnel_interface_number.yfilter)) leaf_name_data.push_back(tp_tunnel_interface_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9407,28 +14396,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-tunnel-interface-number")
     {
         ip_tunnel_interface_number = value;
+        ip_tunnel_interface_number.value_namespace = name_space;
+        ip_tunnel_interface_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-ip")
     {
         next_hop_ip = value;
+        next_hop_ip.value_namespace = name_space;
+        next_hop_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "option")
     {
         option = value;
+        option.value_namespace = name_space;
+        option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "te-tunnel-interface-number")
     {
         te_tunnel_interface_number = value;
+        te_tunnel_interface_number.value_namespace = name_space;
+        te_tunnel_interface_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tp-tunnel-interface-number")
     {
         tp_tunnel_interface_number = value;
+        tp_tunnel_interface_number.value_namespace = name_space;
+        tp_tunnel_interface_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-tunnel-interface-number")
+    {
+        ip_tunnel_interface_number.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-ip")
+    {
+        next_hop_ip.yfilter = yfilter;
+    }
+    if(value_path == "option")
+    {
+        option.yfilter = yfilter;
+    }
+    if(value_path == "te-tunnel-interface-number")
+    {
+        te_tunnel_interface_number.yfilter = yfilter;
+    }
+    if(value_path == "tp-tunnel-interface-number")
+    {
+        tp_tunnel_interface_number.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-tunnel-interface-number" || name == "next-hop-ip" || name == "option" || name == "te-tunnel-interface-number" || name == "tp-tunnel-interface-number")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::LocalSignalling()
@@ -9464,8 +14494,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
         if(tlv[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(pw_status.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(pw_status.yfilter)
 	|| (status_tlv !=  nullptr && status_tlv->has_operation());
 }
 
@@ -9492,7 +14522,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pw_status.is_set || is_set(pw_status.operation)) leaf_name_data.push_back(pw_status.get_name_leafdata());
+    if (pw_status.is_set || is_set(pw_status.yfilter)) leaf_name_data.push_back(pw_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9546,12 +14576,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-status")
     {
         pw_status = value;
+        pw_status.value_namespace = name_space;
+        pw_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pw-status")
+    {
+        pw_status.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "status-tlv" || name == "tlv" || name == "pw-status")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv::StatusTlv()
@@ -9578,11 +14625,11 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(local_address.operation)
-	|| is_set(pw_id.operation)
-	|| is_set(remote_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(pw_id.yfilter)
+	|| ydk::is_set(remote_address.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv::get_segment_path() const
@@ -9608,10 +14655,10 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (pw_id.is_set || is_set(pw_id.operation)) leaf_name_data.push_back(pw_id.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9630,24 +14677,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-id")
     {
         pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "local-address" || name == "pw-id" || name == "remote-address")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv::Tlv()
@@ -9674,11 +14756,11 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Local
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(local_address.operation)
-	|| is_set(pw_id.operation)
-	|| is_set(remote_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(pw_id.yfilter)
+	|| ydk::is_set(remote_address.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv::get_segment_path() const
@@ -9704,10 +14786,10 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (pw_id.is_set || is_set(pw_id.operation)) leaf_name_data.push_back(pw_id.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9726,24 +14808,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-id")
     {
         pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "local-address" || name == "pw-id" || name == "remote-address")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::RemoteSignalling()
@@ -9779,8 +14896,8 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
         if(tlv[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(pw_status.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(pw_status.yfilter)
 	|| (status_tlv !=  nullptr && status_tlv->has_operation());
 }
 
@@ -9807,7 +14924,7 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pw_status.is_set || is_set(pw_status.operation)) leaf_name_data.push_back(pw_status.get_name_leafdata());
+    if (pw_status.is_set || is_set(pw_status.yfilter)) leaf_name_data.push_back(pw_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9861,12 +14978,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-status")
     {
         pw_status = value;
+        pw_status.value_namespace = name_space;
+        pw_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pw-status")
+    {
+        pw_status.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "status-tlv" || name == "tlv" || name == "pw-status")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv::StatusTlv()
@@ -9893,11 +15027,11 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(local_address.operation)
-	|| is_set(pw_id.operation)
-	|| is_set(remote_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(pw_id.yfilter)
+	|| ydk::is_set(remote_address.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv::get_segment_path() const
@@ -9923,10 +15057,10 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (pw_id.is_set || is_set(pw_id.operation)) leaf_name_data.push_back(pw_id.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9945,24 +15079,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-id")
     {
         pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "local-address" || name == "pw-id" || name == "remote-address")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv::Tlv()
@@ -9989,11 +15158,11 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Remot
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(local_address.operation)
-	|| is_set(pw_id.operation)
-	|| is_set(remote_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(pw_id.yfilter)
+	|| ydk::is_set(remote_address.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv::get_segment_path() const
@@ -10019,10 +15188,10 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (pw_id.is_set || is_set(pw_id.operation)) leaf_name_data.push_back(pw_id.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10041,24 +15210,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-id")
     {
         pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "local-address" || name == "pw-id" || name == "remote-address")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::Statistics()
@@ -10089,7 +15293,7 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dispostion_stats !=  nullptr && dispostion_stats->has_operation())
 	|| (impostion_stats !=  nullptr && impostion_stats->has_operation())
 	|| (sequence_number !=  nullptr && sequence_number->has_operation());
@@ -10178,8 +15382,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dispostion-stats" || name == "impostion-stats" || name == "sequence-number")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionStats()
@@ -10230,7 +15445,7 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (broadcast !=  nullptr && broadcast->has_operation())
 	|| (imposition_mtu_drop !=  nullptr && imposition_mtu_drop->has_operation())
 	|| (imposition_stat !=  nullptr && imposition_stat->has_operation())
@@ -10394,8 +15609,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast" || name == "imposition-mtu-drop" || name == "imposition-stat" || name == "impostion-tail-drop" || name == "known-unicast" || name == "l2fsbi-drop" || name == "multicast" || name == "unknown-unicast")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat::ImpositionStat()
@@ -10418,9 +15644,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat::get_segment_path() const
@@ -10446,8 +15672,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10466,16 +15692,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::ImpositionMtuDrop()
@@ -10498,9 +15747,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::get_segment_path() const
@@ -10526,8 +15775,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10546,16 +15795,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::ImpostionTailDrop()
@@ -10578,9 +15850,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::get_segment_path() const
@@ -10606,8 +15878,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10626,16 +15898,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop::L2FsbiDrop()
@@ -10658,9 +15953,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop::get_segment_path() const
@@ -10686,8 +15981,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10706,16 +16001,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::Multicast()
@@ -10738,9 +16056,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::get_segment_path() const
@@ -10766,8 +16084,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10786,16 +16104,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::Broadcast()
@@ -10818,9 +16159,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::get_segment_path() const
@@ -10846,8 +16187,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10866,16 +16207,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast::KnownUnicast()
@@ -10898,9 +16262,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast::get_segment_path() const
@@ -10926,8 +16290,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10946,16 +16310,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::UnknownUnicast()
@@ -10978,9 +16365,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::get_segment_path() const
@@ -11006,8 +16393,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11026,16 +16413,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispostionStats()
@@ -11106,7 +16516,7 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (broadcast_drop !=  nullptr && broadcast_drop->has_operation())
 	|| (dai_drop !=  nullptr && dai_drop->has_operation())
 	|| (disposition_mtu_drop !=  nullptr && disposition_mtu_drop->has_operation())
@@ -11345,8 +16755,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast-drop" || name == "dai-drop" || name == "disposition-mtu-drop" || name == "disposition-oo-o-drops" || name == "disposition-p2mp-stats" || name == "disposition-stat" || name == "disposition-tail-drop" || name == "ipsg-drop" || name == "known-unicast" || name == "mac-move" || name == "multicast-drop" || name == "received-drops" || name == "unicast-drop")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat::DispositionStat()
@@ -11369,9 +16790,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat::get_segment_path() const
@@ -11397,8 +16818,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11417,16 +16838,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::DispositionMtuDrop()
@@ -11449,9 +16893,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::get_segment_path() const
@@ -11477,8 +16921,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11497,16 +16941,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::DispositionTailDrop()
@@ -11529,9 +16996,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::get_segment_path() const
@@ -11557,8 +17024,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11577,16 +17044,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop::MulticastDrop()
@@ -11609,9 +17099,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop::get_segment_path() const
@@ -11637,8 +17127,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11657,16 +17147,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop::UnicastDrop()
@@ -11689,9 +17202,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop::get_segment_path() const
@@ -11717,8 +17230,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11737,16 +17250,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop::BroadcastDrop()
@@ -11769,9 +17305,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop::get_segment_path() const
@@ -11797,8 +17333,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11817,16 +17353,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops::ReceivedDrops()
@@ -11849,9 +17408,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops::get_segment_path() const
@@ -11877,8 +17436,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11897,16 +17456,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop::DaiDrop()
@@ -11929,9 +17511,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop::get_segment_path() const
@@ -11957,8 +17539,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11977,16 +17559,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop::IpsgDrop()
@@ -12009,9 +17614,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop::get_segment_path() const
@@ -12037,8 +17642,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12057,16 +17662,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::DispositionOoODrops()
@@ -12089,9 +17717,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::get_segment_path() const
@@ -12117,8 +17745,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12137,16 +17765,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::DispositionP2MpStats()
@@ -12169,9 +17820,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::get_segment_path() const
@@ -12197,8 +17848,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12217,16 +17868,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast::KnownUnicast()
@@ -12249,9 +17923,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast::get_segment_path() const
@@ -12277,8 +17951,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12297,16 +17971,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove::MacMove()
@@ -12329,9 +18026,9 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(byte_counts.operation)
-	|| is_set(packet_counts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(byte_counts.yfilter)
+	|| ydk::is_set(packet_counts.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove::get_segment_path() const
@@ -12357,8 +18054,8 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (byte_counts.is_set || is_set(byte_counts.operation)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
-    if (packet_counts.is_set || is_set(packet_counts.operation)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
+    if (byte_counts.is_set || is_set(byte_counts.yfilter)) leaf_name_data.push_back(byte_counts.get_name_leafdata());
+    if (packet_counts.is_set || is_set(packet_counts.yfilter)) leaf_name_data.push_back(packet_counts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12377,16 +18074,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "byte-counts")
     {
         byte_counts = value;
+        byte_counts.value_namespace = name_space;
+        byte_counts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-counts")
     {
         packet_counts = value;
+        packet_counts.value_namespace = name_space;
+        packet_counts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "byte-counts")
+    {
+        byte_counts.yfilter = yfilter;
+    }
+    if(value_path == "packet-counts")
+    {
+        packet_counts.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "byte-counts" || name == "packet-counts")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber::SequenceNumber()
@@ -12413,11 +18133,11 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Stati
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bypassed_inbound_sequence_packet.operation)
-	|| is_set(bypassed_out_sequence_packet.operation)
-	|| is_set(sequence_number_expected.operation)
-	|| is_set(sequence_number_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bypassed_inbound_sequence_packet.yfilter)
+	|| ydk::is_set(bypassed_out_sequence_packet.yfilter)
+	|| ydk::is_set(sequence_number_expected.yfilter)
+	|| ydk::is_set(sequence_number_sent.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber::get_segment_path() const
@@ -12443,10 +18163,10 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bypassed_inbound_sequence_packet.is_set || is_set(bypassed_inbound_sequence_packet.operation)) leaf_name_data.push_back(bypassed_inbound_sequence_packet.get_name_leafdata());
-    if (bypassed_out_sequence_packet.is_set || is_set(bypassed_out_sequence_packet.operation)) leaf_name_data.push_back(bypassed_out_sequence_packet.get_name_leafdata());
-    if (sequence_number_expected.is_set || is_set(sequence_number_expected.operation)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
-    if (sequence_number_sent.is_set || is_set(sequence_number_sent.operation)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
+    if (bypassed_inbound_sequence_packet.is_set || is_set(bypassed_inbound_sequence_packet.yfilter)) leaf_name_data.push_back(bypassed_inbound_sequence_packet.get_name_leafdata());
+    if (bypassed_out_sequence_packet.is_set || is_set(bypassed_out_sequence_packet.yfilter)) leaf_name_data.push_back(bypassed_out_sequence_packet.get_name_leafdata());
+    if (sequence_number_expected.is_set || is_set(sequence_number_expected.yfilter)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
+    if (sequence_number_sent.is_set || is_set(sequence_number_sent.yfilter)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12465,24 +18185,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bypassed-inbound-sequence-packet")
     {
         bypassed_inbound_sequence_packet = value;
+        bypassed_inbound_sequence_packet.value_namespace = name_space;
+        bypassed_inbound_sequence_packet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bypassed-out-sequence-packet")
     {
         bypassed_out_sequence_packet = value;
+        bypassed_out_sequence_packet.value_namespace = name_space;
+        bypassed_out_sequence_packet.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number-expected")
     {
         sequence_number_expected = value;
+        sequence_number_expected.value_namespace = name_space;
+        sequence_number_expected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number-sent")
     {
         sequence_number_sent = value;
+        sequence_number_sent.value_namespace = name_space;
+        sequence_number_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bypassed-inbound-sequence-packet")
+    {
+        bypassed_inbound_sequence_packet.yfilter = yfilter;
+    }
+    if(value_path == "bypassed-out-sequence-packet")
+    {
+        bypassed_out_sequence_packet.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-expected")
+    {
+        sequence_number_expected.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-sent")
+    {
+        sequence_number_sent.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bypassed-inbound-sequence-packet" || name == "bypassed-out-sequence-packet" || name == "sequence-number-expected" || name == "sequence-number-sent")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw::P2MpPw()
@@ -12529,21 +18284,21 @@ bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpP
 
 bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_available.operation)
-	|| is_set(local_extended_tunnel_id.operation)
-	|| is_set(local_flags.operation)
-	|| is_set(local_label.operation)
-	|| is_set(local_p2mp_id.operation)
-	|| is_set(local_ptree_type.operation)
-	|| is_set(local_tunnel_id.operation)
-	|| is_set(remote_available.operation)
-	|| is_set(remote_extended_tunnel_id.operation)
-	|| is_set(remote_flags.operation)
-	|| is_set(remote_label.operation)
-	|| is_set(remote_p2mp_id.operation)
-	|| is_set(remote_ptree_type.operation)
-	|| is_set(remote_tunnel_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_available.yfilter)
+	|| ydk::is_set(local_extended_tunnel_id.yfilter)
+	|| ydk::is_set(local_flags.yfilter)
+	|| ydk::is_set(local_label.yfilter)
+	|| ydk::is_set(local_p2mp_id.yfilter)
+	|| ydk::is_set(local_ptree_type.yfilter)
+	|| ydk::is_set(local_tunnel_id.yfilter)
+	|| ydk::is_set(remote_available.yfilter)
+	|| ydk::is_set(remote_extended_tunnel_id.yfilter)
+	|| ydk::is_set(remote_flags.yfilter)
+	|| ydk::is_set(remote_label.yfilter)
+	|| ydk::is_set(remote_p2mp_id.yfilter)
+	|| ydk::is_set(remote_ptree_type.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw::get_segment_path() const
@@ -12569,20 +18324,20 @@ const EntityPath L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::Pseud
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_available.is_set || is_set(local_available.operation)) leaf_name_data.push_back(local_available.get_name_leafdata());
-    if (local_extended_tunnel_id.is_set || is_set(local_extended_tunnel_id.operation)) leaf_name_data.push_back(local_extended_tunnel_id.get_name_leafdata());
-    if (local_flags.is_set || is_set(local_flags.operation)) leaf_name_data.push_back(local_flags.get_name_leafdata());
-    if (local_label.is_set || is_set(local_label.operation)) leaf_name_data.push_back(local_label.get_name_leafdata());
-    if (local_p2mp_id.is_set || is_set(local_p2mp_id.operation)) leaf_name_data.push_back(local_p2mp_id.get_name_leafdata());
-    if (local_ptree_type.is_set || is_set(local_ptree_type.operation)) leaf_name_data.push_back(local_ptree_type.get_name_leafdata());
-    if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
-    if (remote_available.is_set || is_set(remote_available.operation)) leaf_name_data.push_back(remote_available.get_name_leafdata());
-    if (remote_extended_tunnel_id.is_set || is_set(remote_extended_tunnel_id.operation)) leaf_name_data.push_back(remote_extended_tunnel_id.get_name_leafdata());
-    if (remote_flags.is_set || is_set(remote_flags.operation)) leaf_name_data.push_back(remote_flags.get_name_leafdata());
-    if (remote_label.is_set || is_set(remote_label.operation)) leaf_name_data.push_back(remote_label.get_name_leafdata());
-    if (remote_p2mp_id.is_set || is_set(remote_p2mp_id.operation)) leaf_name_data.push_back(remote_p2mp_id.get_name_leafdata());
-    if (remote_ptree_type.is_set || is_set(remote_ptree_type.operation)) leaf_name_data.push_back(remote_ptree_type.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (local_available.is_set || is_set(local_available.yfilter)) leaf_name_data.push_back(local_available.get_name_leafdata());
+    if (local_extended_tunnel_id.is_set || is_set(local_extended_tunnel_id.yfilter)) leaf_name_data.push_back(local_extended_tunnel_id.get_name_leafdata());
+    if (local_flags.is_set || is_set(local_flags.yfilter)) leaf_name_data.push_back(local_flags.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
+    if (local_p2mp_id.is_set || is_set(local_p2mp_id.yfilter)) leaf_name_data.push_back(local_p2mp_id.get_name_leafdata());
+    if (local_ptree_type.is_set || is_set(local_ptree_type.yfilter)) leaf_name_data.push_back(local_ptree_type.get_name_leafdata());
+    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (remote_available.is_set || is_set(remote_available.yfilter)) leaf_name_data.push_back(remote_available.get_name_leafdata());
+    if (remote_extended_tunnel_id.is_set || is_set(remote_extended_tunnel_id.yfilter)) leaf_name_data.push_back(remote_extended_tunnel_id.get_name_leafdata());
+    if (remote_flags.is_set || is_set(remote_flags.yfilter)) leaf_name_data.push_back(remote_flags.get_name_leafdata());
+    if (remote_label.is_set || is_set(remote_label.yfilter)) leaf_name_data.push_back(remote_label.get_name_leafdata());
+    if (remote_p2mp_id.is_set || is_set(remote_p2mp_id.yfilter)) leaf_name_data.push_back(remote_p2mp_id.get_name_leafdata());
+    if (remote_ptree_type.is_set || is_set(remote_ptree_type.yfilter)) leaf_name_data.push_back(remote_ptree_type.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12601,64 +18356,159 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Xconnects::
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-available")
     {
         local_available = value;
+        local_available.value_namespace = name_space;
+        local_available.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-extended-tunnel-id")
     {
         local_extended_tunnel_id = value;
+        local_extended_tunnel_id.value_namespace = name_space;
+        local_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-flags")
     {
         local_flags = value;
+        local_flags.value_namespace = name_space;
+        local_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-label")
     {
         local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-p2mp-id")
     {
         local_p2mp_id = value;
+        local_p2mp_id.value_namespace = name_space;
+        local_p2mp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-ptree-type")
     {
         local_ptree_type = value;
+        local_ptree_type.value_namespace = name_space;
+        local_ptree_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+        local_tunnel_id.value_namespace = name_space;
+        local_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-available")
     {
         remote_available = value;
+        remote_available.value_namespace = name_space;
+        remote_available.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-extended-tunnel-id")
     {
         remote_extended_tunnel_id = value;
+        remote_extended_tunnel_id.value_namespace = name_space;
+        remote_extended_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-flags")
     {
         remote_flags = value;
+        remote_flags.value_namespace = name_space;
+        remote_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-label")
     {
         remote_label = value;
+        remote_label.value_namespace = name_space;
+        remote_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-p2mp-id")
     {
         remote_p2mp_id = value;
+        remote_p2mp_id.value_namespace = name_space;
+        remote_p2mp_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-ptree-type")
     {
         remote_ptree_type = value;
+        remote_ptree_type.value_namespace = name_space;
+        remote_ptree_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-available")
+    {
+        local_available.yfilter = yfilter;
+    }
+    if(value_path == "local-extended-tunnel-id")
+    {
+        local_extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "local-flags")
+    {
+        local_flags.yfilter = yfilter;
+    }
+    if(value_path == "local-label")
+    {
+        local_label.yfilter = yfilter;
+    }
+    if(value_path == "local-p2mp-id")
+    {
+        local_p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "local-ptree-type")
+    {
+        local_ptree_type.yfilter = yfilter;
+    }
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-available")
+    {
+        remote_available.yfilter = yfilter;
+    }
+    if(value_path == "remote-extended-tunnel-id")
+    {
+        remote_extended_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-flags")
+    {
+        remote_flags.yfilter = yfilter;
+    }
+    if(value_path == "remote-label")
+    {
+        remote_label.yfilter = yfilter;
+    }
+    if(value_path == "remote-p2mp-id")
+    {
+        remote_p2mp_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-ptree-type")
+    {
+        remote_ptree_type.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-available" || name == "local-extended-tunnel-id" || name == "local-flags" || name == "local-label" || name == "local-p2mp-id" || name == "local-ptree-type" || name == "local-tunnel-id" || name == "remote-available" || name == "remote-extended-tunnel-id" || name == "remote-flags" || name == "remote-label" || name == "remote-p2mp-id" || name == "remote-ptree-type" || name == "remote-tunnel-id")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroups()
@@ -12687,7 +18537,7 @@ bool L2Vpnv2::Nodes::Node::XconnectGroups::has_operation() const
         if(xconnect_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectGroups::get_segment_path() const
@@ -12752,8 +18602,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectGro
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectGroups::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::XconnectGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xconnect-group")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::XconnectGroup()
@@ -12778,10 +18639,10 @@ bool L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::has_data() const
 
 bool L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_name.operation)
-	|| is_set(group_name_xr.operation)
-	|| is_set(number_xconnects.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(group_name_xr.yfilter)
+	|| ydk::is_set(number_xconnects.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::get_segment_path() const
@@ -12807,9 +18668,9 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (group_name_xr.is_set || is_set(group_name_xr.operation)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
-    if (number_xconnects.is_set || is_set(number_xconnects.operation)) leaf_name_data.push_back(number_xconnects.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (group_name_xr.is_set || is_set(group_name_xr.yfilter)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
+    if (number_xconnects.is_set || is_set(number_xconnects.yfilter)) leaf_name_data.push_back(number_xconnects.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12828,20 +18689,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectGro
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name-xr")
     {
         group_name_xr = value;
+        group_name_xr.value_namespace = name_space;
+        group_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects")
     {
         number_xconnects = value;
+        number_xconnects.value_namespace = name_space;
+        number_xconnects.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "group-name-xr")
+    {
+        group_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects")
+    {
+        number_xconnects.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectGroups::XconnectGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-name" || name == "group-name-xr" || name == "number-xconnects")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mps()
@@ -12870,7 +18760,7 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::has_operation() const
         if(xconnect_mp2mp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::get_segment_path() const
@@ -12935,8 +18825,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xconnect-mp2mp")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::XconnectMp2Mp()
@@ -12978,16 +18879,16 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::has_data() const
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_name.operation)
-	|| is_set(group_name_xr.operation)
-	|| is_set(l2_encapsulation.operation)
-	|| is_set(mp2_mp_name.operation)
-	|| is_set(mp2mp_name.operation)
-	|| is_set(mp2mpid.operation)
-	|| is_set(vpn_id.operation)
-	|| is_set(vpn_mtu.operation)
-	|| is_set(xconnect_shutdown.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(group_name_xr.yfilter)
+	|| ydk::is_set(l2_encapsulation.yfilter)
+	|| ydk::is_set(mp2_mp_name.yfilter)
+	|| ydk::is_set(mp2mp_name.yfilter)
+	|| ydk::is_set(mp2mpid.yfilter)
+	|| ydk::is_set(vpn_id.yfilter)
+	|| ydk::is_set(vpn_mtu.yfilter)
+	|| ydk::is_set(xconnect_shutdown.yfilter)
 	|| (discovery !=  nullptr && discovery->has_operation());
 }
 
@@ -13014,15 +18915,15 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (group_name_xr.is_set || is_set(group_name_xr.operation)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
-    if (l2_encapsulation.is_set || is_set(l2_encapsulation.operation)) leaf_name_data.push_back(l2_encapsulation.get_name_leafdata());
-    if (mp2_mp_name.is_set || is_set(mp2_mp_name.operation)) leaf_name_data.push_back(mp2_mp_name.get_name_leafdata());
-    if (mp2mp_name.is_set || is_set(mp2mp_name.operation)) leaf_name_data.push_back(mp2mp_name.get_name_leafdata());
-    if (mp2mpid.is_set || is_set(mp2mpid.operation)) leaf_name_data.push_back(mp2mpid.get_name_leafdata());
-    if (vpn_id.is_set || is_set(vpn_id.operation)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
-    if (vpn_mtu.is_set || is_set(vpn_mtu.operation)) leaf_name_data.push_back(vpn_mtu.get_name_leafdata());
-    if (xconnect_shutdown.is_set || is_set(xconnect_shutdown.operation)) leaf_name_data.push_back(xconnect_shutdown.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (group_name_xr.is_set || is_set(group_name_xr.yfilter)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
+    if (l2_encapsulation.is_set || is_set(l2_encapsulation.yfilter)) leaf_name_data.push_back(l2_encapsulation.get_name_leafdata());
+    if (mp2_mp_name.is_set || is_set(mp2_mp_name.yfilter)) leaf_name_data.push_back(mp2_mp_name.get_name_leafdata());
+    if (mp2mp_name.is_set || is_set(mp2mp_name.yfilter)) leaf_name_data.push_back(mp2mp_name.get_name_leafdata());
+    if (mp2mpid.is_set || is_set(mp2mpid.yfilter)) leaf_name_data.push_back(mp2mpid.get_name_leafdata());
+    if (vpn_id.is_set || is_set(vpn_id.yfilter)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
+    if (vpn_mtu.is_set || is_set(vpn_mtu.yfilter)) leaf_name_data.push_back(vpn_mtu.get_name_leafdata());
+    if (xconnect_shutdown.is_set || is_set(xconnect_shutdown.yfilter)) leaf_name_data.push_back(xconnect_shutdown.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13055,44 +18956,109 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name-xr")
     {
         group_name_xr = value;
+        group_name_xr.value_namespace = name_space;
+        group_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2-encapsulation")
     {
         l2_encapsulation = value;
+        l2_encapsulation.value_namespace = name_space;
+        l2_encapsulation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mp2-mp-name")
     {
         mp2_mp_name = value;
+        mp2_mp_name.value_namespace = name_space;
+        mp2_mp_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mp2mp-name")
     {
         mp2mp_name = value;
+        mp2mp_name.value_namespace = name_space;
+        mp2mp_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mp2mpid")
     {
         mp2mpid = value;
+        mp2mpid.value_namespace = name_space;
+        mp2mpid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpn-id")
     {
         vpn_id = value;
+        vpn_id.value_namespace = name_space;
+        vpn_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpn-mtu")
     {
         vpn_mtu = value;
+        vpn_mtu.value_namespace = name_space;
+        vpn_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-shutdown")
     {
         xconnect_shutdown = value;
+        xconnect_shutdown.value_namespace = name_space;
+        xconnect_shutdown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "group-name-xr")
+    {
+        group_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "l2-encapsulation")
+    {
+        l2_encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "mp2-mp-name")
+    {
+        mp2_mp_name.yfilter = yfilter;
+    }
+    if(value_path == "mp2mp-name")
+    {
+        mp2mp_name.yfilter = yfilter;
+    }
+    if(value_path == "mp2mpid")
+    {
+        mp2mpid.yfilter = yfilter;
+    }
+    if(value_path == "vpn-id")
+    {
+        vpn_id.yfilter = yfilter;
+    }
+    if(value_path == "vpn-mtu")
+    {
+        vpn_mtu.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-shutdown")
+    {
+        xconnect_shutdown.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery" || name == "group-name" || name == "group-name-xr" || name == "l2-encapsulation" || name == "mp2-mp-name" || name == "mp2mp-name" || name == "mp2mpid" || name == "vpn-id" || name == "vpn-mtu" || name == "xconnect-shutdown")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::Discovery()
@@ -13160,19 +19126,19 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::has_operati
         if(import_rt[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(ad_method.operation)
-	|| is_set(ad_service_connected.operation)
-	|| is_set(ad_signalling_method.operation)
-	|| is_set(ce_range.operation)
-	|| is_set(export_route_policy.operation)
-	|| is_set(number_a_cs.operation)
-	|| is_set(number_a_cs_up.operation)
-	|| is_set(number_ce2c_es.operation)
-	|| is_set(number_ce2ce_advertised.operation)
-	|| is_set(number_p_ws_up.operation)
-	|| is_set(number_pseudowires.operation)
-	|| is_set(vpn_added.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ad_method.yfilter)
+	|| ydk::is_set(ad_service_connected.yfilter)
+	|| ydk::is_set(ad_signalling_method.yfilter)
+	|| ydk::is_set(ce_range.yfilter)
+	|| ydk::is_set(export_route_policy.yfilter)
+	|| ydk::is_set(number_a_cs.yfilter)
+	|| ydk::is_set(number_a_cs_up.yfilter)
+	|| ydk::is_set(number_ce2c_es.yfilter)
+	|| ydk::is_set(number_ce2ce_advertised.yfilter)
+	|| ydk::is_set(number_p_ws_up.yfilter)
+	|| ydk::is_set(number_pseudowires.yfilter)
+	|| ydk::is_set(vpn_added.yfilter)
 	|| (rd_value !=  nullptr && rd_value->has_operation());
 }
 
@@ -13199,18 +19165,18 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ad_method.is_set || is_set(ad_method.operation)) leaf_name_data.push_back(ad_method.get_name_leafdata());
-    if (ad_service_connected.is_set || is_set(ad_service_connected.operation)) leaf_name_data.push_back(ad_service_connected.get_name_leafdata());
-    if (ad_signalling_method.is_set || is_set(ad_signalling_method.operation)) leaf_name_data.push_back(ad_signalling_method.get_name_leafdata());
-    if (ce_range.is_set || is_set(ce_range.operation)) leaf_name_data.push_back(ce_range.get_name_leafdata());
-    if (export_route_policy.is_set || is_set(export_route_policy.operation)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
-    if (number_a_cs.is_set || is_set(number_a_cs.operation)) leaf_name_data.push_back(number_a_cs.get_name_leafdata());
-    if (number_a_cs_up.is_set || is_set(number_a_cs_up.operation)) leaf_name_data.push_back(number_a_cs_up.get_name_leafdata());
-    if (number_ce2c_es.is_set || is_set(number_ce2c_es.operation)) leaf_name_data.push_back(number_ce2c_es.get_name_leafdata());
-    if (number_ce2ce_advertised.is_set || is_set(number_ce2ce_advertised.operation)) leaf_name_data.push_back(number_ce2ce_advertised.get_name_leafdata());
-    if (number_p_ws_up.is_set || is_set(number_p_ws_up.operation)) leaf_name_data.push_back(number_p_ws_up.get_name_leafdata());
-    if (number_pseudowires.is_set || is_set(number_pseudowires.operation)) leaf_name_data.push_back(number_pseudowires.get_name_leafdata());
-    if (vpn_added.is_set || is_set(vpn_added.operation)) leaf_name_data.push_back(vpn_added.get_name_leafdata());
+    if (ad_method.is_set || is_set(ad_method.yfilter)) leaf_name_data.push_back(ad_method.get_name_leafdata());
+    if (ad_service_connected.is_set || is_set(ad_service_connected.yfilter)) leaf_name_data.push_back(ad_service_connected.get_name_leafdata());
+    if (ad_signalling_method.is_set || is_set(ad_signalling_method.yfilter)) leaf_name_data.push_back(ad_signalling_method.get_name_leafdata());
+    if (ce_range.is_set || is_set(ce_range.yfilter)) leaf_name_data.push_back(ce_range.get_name_leafdata());
+    if (export_route_policy.is_set || is_set(export_route_policy.yfilter)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
+    if (number_a_cs.is_set || is_set(number_a_cs.yfilter)) leaf_name_data.push_back(number_a_cs.get_name_leafdata());
+    if (number_a_cs_up.is_set || is_set(number_a_cs_up.yfilter)) leaf_name_data.push_back(number_a_cs_up.get_name_leafdata());
+    if (number_ce2c_es.is_set || is_set(number_ce2c_es.yfilter)) leaf_name_data.push_back(number_ce2c_es.get_name_leafdata());
+    if (number_ce2ce_advertised.is_set || is_set(number_ce2ce_advertised.yfilter)) leaf_name_data.push_back(number_ce2ce_advertised.get_name_leafdata());
+    if (number_p_ws_up.is_set || is_set(number_p_ws_up.yfilter)) leaf_name_data.push_back(number_p_ws_up.get_name_leafdata());
+    if (number_pseudowires.is_set || is_set(number_pseudowires.yfilter)) leaf_name_data.push_back(number_pseudowires.get_name_leafdata());
+    if (vpn_added.is_set || is_set(vpn_added.yfilter)) leaf_name_data.push_back(vpn_added.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13285,56 +19251,139 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ad-method")
     {
         ad_method = value;
+        ad_method.value_namespace = name_space;
+        ad_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ad-service-connected")
     {
         ad_service_connected = value;
+        ad_service_connected.value_namespace = name_space;
+        ad_service_connected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ad-signalling-method")
     {
         ad_signalling_method = value;
+        ad_signalling_method.value_namespace = name_space;
+        ad_signalling_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ce-range")
     {
         ce_range = value;
+        ce_range.value_namespace = name_space;
+        ce_range.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "export-route-policy")
     {
         export_route_policy = value;
+        export_route_policy.value_namespace = name_space;
+        export_route_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-a-cs")
     {
         number_a_cs = value;
+        number_a_cs.value_namespace = name_space;
+        number_a_cs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-a-cs-up")
     {
         number_a_cs_up = value;
+        number_a_cs_up.value_namespace = name_space;
+        number_a_cs_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-ce2c-es")
     {
         number_ce2c_es = value;
+        number_ce2c_es.value_namespace = name_space;
+        number_ce2c_es.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-ce2ce-advertised")
     {
         number_ce2ce_advertised = value;
+        number_ce2ce_advertised.value_namespace = name_space;
+        number_ce2ce_advertised.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-p-ws-up")
     {
         number_p_ws_up = value;
+        number_p_ws_up.value_namespace = name_space;
+        number_p_ws_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-pseudowires")
     {
         number_pseudowires = value;
+        number_pseudowires.value_namespace = name_space;
+        number_pseudowires.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpn-added")
     {
         vpn_added = value;
+        vpn_added.value_namespace = name_space;
+        vpn_added.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ad-method")
+    {
+        ad_method.yfilter = yfilter;
+    }
+    if(value_path == "ad-service-connected")
+    {
+        ad_service_connected.yfilter = yfilter;
+    }
+    if(value_path == "ad-signalling-method")
+    {
+        ad_signalling_method.yfilter = yfilter;
+    }
+    if(value_path == "ce-range")
+    {
+        ce_range.yfilter = yfilter;
+    }
+    if(value_path == "export-route-policy")
+    {
+        export_route_policy.yfilter = yfilter;
+    }
+    if(value_path == "number-a-cs")
+    {
+        number_a_cs.yfilter = yfilter;
+    }
+    if(value_path == "number-a-cs-up")
+    {
+        number_a_cs_up.yfilter = yfilter;
+    }
+    if(value_path == "number-ce2c-es")
+    {
+        number_ce2c_es.yfilter = yfilter;
+    }
+    if(value_path == "number-ce2ce-advertised")
+    {
+        number_ce2ce_advertised.yfilter = yfilter;
+    }
+    if(value_path == "number-p-ws-up")
+    {
+        number_p_ws_up.yfilter = yfilter;
+    }
+    if(value_path == "number-pseudowires")
+    {
+        number_pseudowires.yfilter = yfilter;
+    }
+    if(value_path == "vpn-added")
+    {
+        vpn_added.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "export-rt" || name == "import-rt" || name == "rd-value" || name == "ad-method" || name == "ad-service-connected" || name == "ad-signalling-method" || name == "ce-range" || name == "export-route-policy" || name == "number-a-cs" || name == "number-a-cs-up" || name == "number-ce2c-es" || name == "number-ce2ce-advertised" || name == "number-p-ws-up" || name == "number-pseudowires" || name == "vpn-added")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::RdValue()
@@ -13372,8 +19421,8 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::ha
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rd.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rd.yfilter)
 	|| (auto_ !=  nullptr && auto_->has_operation())
 	|| (four_byte_as !=  nullptr && four_byte_as->has_operation())
 	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
@@ -13403,7 +19452,7 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rd.is_set || is_set(rd.operation)) leaf_name_data.push_back(rd.get_name_leafdata());
+    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13478,12 +19527,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rd")
     {
         rd = value;
+        rd.value_namespace = name_space;
+        rd.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rd")
+    {
+        rd.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto" || name == "four-byte-as" || name == "two-byte-as" || name == "v4-addr" || name == "rd")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_::Auto_()
@@ -13506,9 +19572,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Au
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_index.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(auto_index.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_::get_segment_path() const
@@ -13534,8 +19600,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_index.is_set || is_set(auto_index.operation)) leaf_name_data.push_back(auto_index.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (auto_index.is_set || is_set(auto_index.yfilter)) leaf_name_data.push_back(auto_index.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13554,16 +19620,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-index")
     {
         auto_index = value;
+        auto_index.value_namespace = name_space;
+        auto_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-index")
+    {
+        auto_index.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-index" || name == "router-id")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs::TwoByteAs()
@@ -13586,9 +19675,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Tw
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(four_byte_index.operation)
-	|| is_set(two_byte_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(four_byte_index.yfilter)
+	|| ydk::is_set(two_byte_as.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs::get_segment_path() const
@@ -13614,8 +19703,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (four_byte_index.is_set || is_set(four_byte_index.operation)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-    if (two_byte_as.is_set || is_set(two_byte_as.operation)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
+    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
+    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13634,16 +19723,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "four-byte-index")
     {
         four_byte_index = value;
+        four_byte_index.value_namespace = name_space;
+        four_byte_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-as")
     {
         two_byte_as = value;
+        two_byte_as.value_namespace = name_space;
+        two_byte_as.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "four-byte-index" || name == "two-byte-as")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs::FourByteAs()
@@ -13666,9 +19778,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Fo
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(four_byte_as.operation)
-	|| is_set(two_byte_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(four_byte_as.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs::get_segment_path() const
@@ -13694,8 +19806,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (four_byte_as.is_set || is_set(four_byte_as.operation)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+    if (four_byte_as.is_set || is_set(four_byte_as.yfilter)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13714,16 +19826,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "four-byte-as")
     {
         four_byte_as = value;
+        four_byte_as.value_namespace = name_space;
+        four_byte_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-index")
     {
         two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "four-byte-as")
+    {
+        four_byte_as.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "four-byte-as" || name == "two-byte-index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr::V4Addr()
@@ -13746,9 +19881,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(two_byte_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr::get_segment_path() const
@@ -13774,8 +19909,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13794,16 +19929,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-index")
     {
         two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "two-byte-index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::ImportRt()
@@ -13841,8 +19999,8 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::h
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rt.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rt.yfilter)
 	|| (es_import !=  nullptr && es_import->has_operation())
 	|| (four_byte_as !=  nullptr && four_byte_as->has_operation())
 	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
@@ -13872,7 +20030,7 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rt.is_set || is_set(rt.operation)) leaf_name_data.push_back(rt.get_name_leafdata());
+    if (rt.is_set || is_set(rt.yfilter)) leaf_name_data.push_back(rt.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13947,12 +20105,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rt")
     {
         rt = value;
+        rt.value_namespace = name_space;
+        rt.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rt")
+    {
+        rt.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "es-import" || name == "four-byte-as" || name == "two-byte-as" || name == "v4-addr" || name == "rt")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs::TwoByteAs()
@@ -13975,9 +20150,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::T
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(four_byte_index.operation)
-	|| is_set(two_byte_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(four_byte_index.yfilter)
+	|| ydk::is_set(two_byte_as.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs::get_segment_path() const
@@ -14003,8 +20178,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (four_byte_index.is_set || is_set(four_byte_index.operation)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-    if (two_byte_as.is_set || is_set(two_byte_as.operation)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
+    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
+    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14023,16 +20198,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "four-byte-index")
     {
         four_byte_index = value;
+        four_byte_index.value_namespace = name_space;
+        four_byte_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-as")
     {
         two_byte_as = value;
+        two_byte_as.value_namespace = name_space;
+        two_byte_as.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "four-byte-index" || name == "two-byte-as")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs::FourByteAs()
@@ -14055,9 +20253,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::F
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(four_byte_as.operation)
-	|| is_set(two_byte_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(four_byte_as.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs::get_segment_path() const
@@ -14083,8 +20281,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (four_byte_as.is_set || is_set(four_byte_as.operation)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+    if (four_byte_as.is_set || is_set(four_byte_as.yfilter)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14103,16 +20301,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "four-byte-as")
     {
         four_byte_as = value;
+        four_byte_as.value_namespace = name_space;
+        four_byte_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-index")
     {
         two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "four-byte-as")
+    {
+        four_byte_as.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "four-byte-as" || name == "two-byte-index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr::V4Addr()
@@ -14135,9 +20356,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(two_byte_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr::get_segment_path() const
@@ -14163,8 +20384,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14183,16 +20404,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-index")
     {
         two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "two-byte-index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport::EsImport()
@@ -14215,9 +20459,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::E
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(high_bytes.operation)
-	|| is_set(low_bytes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(high_bytes.yfilter)
+	|| ydk::is_set(low_bytes.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport::get_segment_path() const
@@ -14243,8 +20487,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (high_bytes.is_set || is_set(high_bytes.operation)) leaf_name_data.push_back(high_bytes.get_name_leafdata());
-    if (low_bytes.is_set || is_set(low_bytes.operation)) leaf_name_data.push_back(low_bytes.get_name_leafdata());
+    if (high_bytes.is_set || is_set(high_bytes.yfilter)) leaf_name_data.push_back(high_bytes.get_name_leafdata());
+    if (low_bytes.is_set || is_set(low_bytes.yfilter)) leaf_name_data.push_back(low_bytes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14263,16 +20507,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "high-bytes")
     {
         high_bytes = value;
+        high_bytes.value_namespace = name_space;
+        high_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "low-bytes")
     {
         low_bytes = value;
+        low_bytes.value_namespace = name_space;
+        low_bytes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "high-bytes")
+    {
+        high_bytes.yfilter = yfilter;
+    }
+    if(value_path == "low-bytes")
+    {
+        low_bytes.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high-bytes" || name == "low-bytes")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::ExportRt()
@@ -14310,8 +20577,8 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::h
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rt.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rt.yfilter)
 	|| (es_import !=  nullptr && es_import->has_operation())
 	|| (four_byte_as !=  nullptr && four_byte_as->has_operation())
 	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
@@ -14341,7 +20608,7 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rt.is_set || is_set(rt.operation)) leaf_name_data.push_back(rt.get_name_leafdata());
+    if (rt.is_set || is_set(rt.yfilter)) leaf_name_data.push_back(rt.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14416,12 +20683,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rt")
     {
         rt = value;
+        rt.value_namespace = name_space;
+        rt.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rt")
+    {
+        rt.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "es-import" || name == "four-byte-as" || name == "two-byte-as" || name == "v4-addr" || name == "rt")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs::TwoByteAs()
@@ -14444,9 +20728,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::T
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(four_byte_index.operation)
-	|| is_set(two_byte_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(four_byte_index.yfilter)
+	|| ydk::is_set(two_byte_as.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs::get_segment_path() const
@@ -14472,8 +20756,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (four_byte_index.is_set || is_set(four_byte_index.operation)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-    if (two_byte_as.is_set || is_set(two_byte_as.operation)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
+    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
+    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14492,16 +20776,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "four-byte-index")
     {
         four_byte_index = value;
+        four_byte_index.value_namespace = name_space;
+        four_byte_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-as")
     {
         two_byte_as = value;
+        two_byte_as.value_namespace = name_space;
+        two_byte_as.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "four-byte-index" || name == "two-byte-as")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs::FourByteAs()
@@ -14524,9 +20831,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::F
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(four_byte_as.operation)
-	|| is_set(two_byte_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(four_byte_as.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs::get_segment_path() const
@@ -14552,8 +20859,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (four_byte_as.is_set || is_set(four_byte_as.operation)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+    if (four_byte_as.is_set || is_set(four_byte_as.yfilter)) leaf_name_data.push_back(four_byte_as.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14572,16 +20879,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "four-byte-as")
     {
         four_byte_as = value;
+        four_byte_as.value_namespace = name_space;
+        four_byte_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-index")
     {
         two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "four-byte-as")
+    {
+        four_byte_as.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "four-byte-as" || name == "two-byte-index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr::V4Addr()
@@ -14604,9 +20934,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(two_byte_index.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(two_byte_index.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr::get_segment_path() const
@@ -14632,8 +20962,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (two_byte_index.is_set || is_set(two_byte_index.yfilter)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14652,16 +20982,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "two-byte-index")
     {
         two_byte_index = value;
+        two_byte_index.value_namespace = name_space;
+        two_byte_index.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "two-byte-index")
+    {
+        two_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "two-byte-index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport::EsImport()
@@ -14684,9 +21037,9 @@ bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::E
 
 bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(high_bytes.operation)
-	|| is_set(low_bytes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(high_bytes.yfilter)
+	|| ydk::is_set(low_bytes.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport::get_segment_path() const
@@ -14712,8 +21065,8 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (high_bytes.is_set || is_set(high_bytes.operation)) leaf_name_data.push_back(high_bytes.get_name_leafdata());
-    if (low_bytes.is_set || is_set(low_bytes.operation)) leaf_name_data.push_back(low_bytes.get_name_leafdata());
+    if (high_bytes.is_set || is_set(high_bytes.yfilter)) leaf_name_data.push_back(high_bytes.get_name_leafdata());
+    if (low_bytes.is_set || is_set(low_bytes.yfilter)) leaf_name_data.push_back(low_bytes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14732,16 +21085,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectMp2
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "high-bytes")
     {
         high_bytes = value;
+        high_bytes.value_namespace = name_space;
+        high_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "low-bytes")
     {
         low_bytes = value;
+        low_bytes.value_namespace = name_space;
+        low_bytes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "high-bytes")
+    {
+        high_bytes.yfilter = yfilter;
+    }
+    if(value_path == "low-bytes")
+    {
+        low_bytes.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high-bytes" || name == "low-bytes")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Indexes::Indexes()
@@ -14770,7 +21146,7 @@ bool L2Vpnv2::Nodes::Node::Indexes::has_operation() const
         if(index_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Indexes::get_segment_path() const
@@ -14835,8 +21211,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Indexes::ge
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Indexes::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Indexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Nodes::Node::Indexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Nodes::Node::Indexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::Indexes::Index_::Index_()
@@ -14871,15 +21258,15 @@ bool L2Vpnv2::Nodes::Node::Indexes::Index_::has_data() const
 
 bool L2Vpnv2::Nodes::Node::Indexes::Index_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pool_id.operation)
-	|| is_set(allocated_ids.operation)
-	|| is_set(application_type.operation)
-	|| is_set(max_num_id_mgr.operation)
-	|| is_set(num_id_mgr_in_use.operation)
-	|| is_set(pool_id_xr.operation)
-	|| is_set(pool_size.operation)
-	|| is_set(zombied_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pool_id.yfilter)
+	|| ydk::is_set(allocated_ids.yfilter)
+	|| ydk::is_set(application_type.yfilter)
+	|| ydk::is_set(max_num_id_mgr.yfilter)
+	|| ydk::is_set(num_id_mgr_in_use.yfilter)
+	|| ydk::is_set(pool_id_xr.yfilter)
+	|| ydk::is_set(pool_size.yfilter)
+	|| ydk::is_set(zombied_ids.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::Indexes::Index_::get_segment_path() const
@@ -14905,14 +21292,14 @@ const EntityPath L2Vpnv2::Nodes::Node::Indexes::Index_::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pool_id.is_set || is_set(pool_id.operation)) leaf_name_data.push_back(pool_id.get_name_leafdata());
-    if (allocated_ids.is_set || is_set(allocated_ids.operation)) leaf_name_data.push_back(allocated_ids.get_name_leafdata());
-    if (application_type.is_set || is_set(application_type.operation)) leaf_name_data.push_back(application_type.get_name_leafdata());
-    if (max_num_id_mgr.is_set || is_set(max_num_id_mgr.operation)) leaf_name_data.push_back(max_num_id_mgr.get_name_leafdata());
-    if (num_id_mgr_in_use.is_set || is_set(num_id_mgr_in_use.operation)) leaf_name_data.push_back(num_id_mgr_in_use.get_name_leafdata());
-    if (pool_id_xr.is_set || is_set(pool_id_xr.operation)) leaf_name_data.push_back(pool_id_xr.get_name_leafdata());
-    if (pool_size.is_set || is_set(pool_size.operation)) leaf_name_data.push_back(pool_size.get_name_leafdata());
-    if (zombied_ids.is_set || is_set(zombied_ids.operation)) leaf_name_data.push_back(zombied_ids.get_name_leafdata());
+    if (pool_id.is_set || is_set(pool_id.yfilter)) leaf_name_data.push_back(pool_id.get_name_leafdata());
+    if (allocated_ids.is_set || is_set(allocated_ids.yfilter)) leaf_name_data.push_back(allocated_ids.get_name_leafdata());
+    if (application_type.is_set || is_set(application_type.yfilter)) leaf_name_data.push_back(application_type.get_name_leafdata());
+    if (max_num_id_mgr.is_set || is_set(max_num_id_mgr.yfilter)) leaf_name_data.push_back(max_num_id_mgr.get_name_leafdata());
+    if (num_id_mgr_in_use.is_set || is_set(num_id_mgr_in_use.yfilter)) leaf_name_data.push_back(num_id_mgr_in_use.get_name_leafdata());
+    if (pool_id_xr.is_set || is_set(pool_id_xr.yfilter)) leaf_name_data.push_back(pool_id_xr.get_name_leafdata());
+    if (pool_size.is_set || is_set(pool_size.yfilter)) leaf_name_data.push_back(pool_size.get_name_leafdata());
+    if (zombied_ids.is_set || is_set(zombied_ids.yfilter)) leaf_name_data.push_back(zombied_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14931,40 +21318,99 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::Indexes::In
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::Indexes::Index_::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::Indexes::Index_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pool-id")
     {
         pool_id = value;
+        pool_id.value_namespace = name_space;
+        pool_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "allocated-ids")
     {
         allocated_ids = value;
+        allocated_ids.value_namespace = name_space;
+        allocated_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "application-type")
     {
         application_type = value;
+        application_type.value_namespace = name_space;
+        application_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-num-id-mgr")
     {
         max_num_id_mgr = value;
+        max_num_id_mgr.value_namespace = name_space;
+        max_num_id_mgr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-id-mgr-in-use")
     {
         num_id_mgr_in_use = value;
+        num_id_mgr_in_use.value_namespace = name_space;
+        num_id_mgr_in_use.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-id-xr")
     {
         pool_id_xr = value;
+        pool_id_xr.value_namespace = name_space;
+        pool_id_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-size")
     {
         pool_size = value;
+        pool_size.value_namespace = name_space;
+        pool_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zombied-ids")
     {
         zombied_ids = value;
+        zombied_ids.value_namespace = name_space;
+        zombied_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::Indexes::Index_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pool-id")
+    {
+        pool_id.yfilter = yfilter;
+    }
+    if(value_path == "allocated-ids")
+    {
+        allocated_ids.yfilter = yfilter;
+    }
+    if(value_path == "application-type")
+    {
+        application_type.yfilter = yfilter;
+    }
+    if(value_path == "max-num-id-mgr")
+    {
+        max_num_id_mgr.yfilter = yfilter;
+    }
+    if(value_path == "num-id-mgr-in-use")
+    {
+        num_id_mgr_in_use.yfilter = yfilter;
+    }
+    if(value_path == "pool-id-xr")
+    {
+        pool_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "pool-size")
+    {
+        pool_size.yfilter = yfilter;
+    }
+    if(value_path == "zombied-ids")
+    {
+        zombied_ids.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::Indexes::Index_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pool-id" || name == "allocated-ids" || name == "application-type" || name == "max-num-id-mgr" || name == "num-id-mgr-in-use" || name == "pool-id-xr" || name == "pool-size" || name == "zombied-ids")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::XconnectSummary::XconnectSummary()
@@ -15049,40 +21495,40 @@ bool L2Vpnv2::Nodes::Node::XconnectSummary::has_data() const
 
 bool L2Vpnv2::Nodes::Node::XconnectSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_down_backup_interface_xconnects.operation)
-	|| is_set(admin_down_backup_xconnects.operation)
-	|| is_set(down_backup_interface_xconnects.operation)
-	|| is_set(down_backup_xconnects.operation)
-	|| is_set(number_ce2_ceconnections.operation)
-	|| is_set(number_ce2ce_advertized.operation)
-	|| is_set(number_ce2ce_not_advertized.operation)
-	|| is_set(number_groups.operation)
-	|| is_set(number_mp2mp_xconnects.operation)
-	|| is_set(number_mp2mp_xconnects_advertised.operation)
-	|| is_set(number_mp2mp_xconnects_down.operation)
-	|| is_set(number_mp2mp_xconnects_up.operation)
-	|| is_set(number_mp2mp_xconnectss_not_advertised.operation)
-	|| is_set(number_xconnects.operation)
-	|| is_set(number_xconnects_administratively_down.operation)
-	|| is_set(number_xconnects_currently_using_backup.operation)
-	|| is_set(number_xconnects_currently_using_backup_interface.operation)
-	|| is_set(number_xconnects_down.operation)
-	|| is_set(number_xconnects_locally_switched.operation)
-	|| is_set(number_xconnects_type_attachment_circuit_to_pseudo_wire.operation)
-	|| is_set(number_xconnects_type_monitor_session_to_pseudo_wire.operation)
-	|| is_set(number_xconnects_type_pseudo_wire_to_pseudo_wire.operation)
-	|| is_set(number_xconnects_unresolved.operation)
-	|| is_set(number_xconnects_up.operation)
-	|| is_set(number_xconnects_with_backup_interface.operation)
-	|| is_set(number_xconnects_with_backup_pw.operation)
-	|| is_set(out_of_memory_state.operation)
-	|| is_set(partially_programmed_xconnects.operation)
-	|| is_set(standby_backup_interface_xconnects.operation)
-	|| is_set(standby_backup_xconnects.operation)
-	|| is_set(standby_ready_backup_xconnects.operation)
-	|| is_set(unresolved_backup_interface_xconnects.operation)
-	|| is_set(unresolved_backup_xconnects.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_down_backup_interface_xconnects.yfilter)
+	|| ydk::is_set(admin_down_backup_xconnects.yfilter)
+	|| ydk::is_set(down_backup_interface_xconnects.yfilter)
+	|| ydk::is_set(down_backup_xconnects.yfilter)
+	|| ydk::is_set(number_ce2_ceconnections.yfilter)
+	|| ydk::is_set(number_ce2ce_advertized.yfilter)
+	|| ydk::is_set(number_ce2ce_not_advertized.yfilter)
+	|| ydk::is_set(number_groups.yfilter)
+	|| ydk::is_set(number_mp2mp_xconnects.yfilter)
+	|| ydk::is_set(number_mp2mp_xconnects_advertised.yfilter)
+	|| ydk::is_set(number_mp2mp_xconnects_down.yfilter)
+	|| ydk::is_set(number_mp2mp_xconnects_up.yfilter)
+	|| ydk::is_set(number_mp2mp_xconnectss_not_advertised.yfilter)
+	|| ydk::is_set(number_xconnects.yfilter)
+	|| ydk::is_set(number_xconnects_administratively_down.yfilter)
+	|| ydk::is_set(number_xconnects_currently_using_backup.yfilter)
+	|| ydk::is_set(number_xconnects_currently_using_backup_interface.yfilter)
+	|| ydk::is_set(number_xconnects_down.yfilter)
+	|| ydk::is_set(number_xconnects_locally_switched.yfilter)
+	|| ydk::is_set(number_xconnects_type_attachment_circuit_to_pseudo_wire.yfilter)
+	|| ydk::is_set(number_xconnects_type_monitor_session_to_pseudo_wire.yfilter)
+	|| ydk::is_set(number_xconnects_type_pseudo_wire_to_pseudo_wire.yfilter)
+	|| ydk::is_set(number_xconnects_unresolved.yfilter)
+	|| ydk::is_set(number_xconnects_up.yfilter)
+	|| ydk::is_set(number_xconnects_with_backup_interface.yfilter)
+	|| ydk::is_set(number_xconnects_with_backup_pw.yfilter)
+	|| ydk::is_set(out_of_memory_state.yfilter)
+	|| ydk::is_set(partially_programmed_xconnects.yfilter)
+	|| ydk::is_set(standby_backup_interface_xconnects.yfilter)
+	|| ydk::is_set(standby_backup_xconnects.yfilter)
+	|| ydk::is_set(standby_ready_backup_xconnects.yfilter)
+	|| ydk::is_set(unresolved_backup_interface_xconnects.yfilter)
+	|| ydk::is_set(unresolved_backup_xconnects.yfilter);
 }
 
 std::string L2Vpnv2::Nodes::Node::XconnectSummary::get_segment_path() const
@@ -15108,39 +21554,39 @@ const EntityPath L2Vpnv2::Nodes::Node::XconnectSummary::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_down_backup_interface_xconnects.is_set || is_set(admin_down_backup_interface_xconnects.operation)) leaf_name_data.push_back(admin_down_backup_interface_xconnects.get_name_leafdata());
-    if (admin_down_backup_xconnects.is_set || is_set(admin_down_backup_xconnects.operation)) leaf_name_data.push_back(admin_down_backup_xconnects.get_name_leafdata());
-    if (down_backup_interface_xconnects.is_set || is_set(down_backup_interface_xconnects.operation)) leaf_name_data.push_back(down_backup_interface_xconnects.get_name_leafdata());
-    if (down_backup_xconnects.is_set || is_set(down_backup_xconnects.operation)) leaf_name_data.push_back(down_backup_xconnects.get_name_leafdata());
-    if (number_ce2_ceconnections.is_set || is_set(number_ce2_ceconnections.operation)) leaf_name_data.push_back(number_ce2_ceconnections.get_name_leafdata());
-    if (number_ce2ce_advertized.is_set || is_set(number_ce2ce_advertized.operation)) leaf_name_data.push_back(number_ce2ce_advertized.get_name_leafdata());
-    if (number_ce2ce_not_advertized.is_set || is_set(number_ce2ce_not_advertized.operation)) leaf_name_data.push_back(number_ce2ce_not_advertized.get_name_leafdata());
-    if (number_groups.is_set || is_set(number_groups.operation)) leaf_name_data.push_back(number_groups.get_name_leafdata());
-    if (number_mp2mp_xconnects.is_set || is_set(number_mp2mp_xconnects.operation)) leaf_name_data.push_back(number_mp2mp_xconnects.get_name_leafdata());
-    if (number_mp2mp_xconnects_advertised.is_set || is_set(number_mp2mp_xconnects_advertised.operation)) leaf_name_data.push_back(number_mp2mp_xconnects_advertised.get_name_leafdata());
-    if (number_mp2mp_xconnects_down.is_set || is_set(number_mp2mp_xconnects_down.operation)) leaf_name_data.push_back(number_mp2mp_xconnects_down.get_name_leafdata());
-    if (number_mp2mp_xconnects_up.is_set || is_set(number_mp2mp_xconnects_up.operation)) leaf_name_data.push_back(number_mp2mp_xconnects_up.get_name_leafdata());
-    if (number_mp2mp_xconnectss_not_advertised.is_set || is_set(number_mp2mp_xconnectss_not_advertised.operation)) leaf_name_data.push_back(number_mp2mp_xconnectss_not_advertised.get_name_leafdata());
-    if (number_xconnects.is_set || is_set(number_xconnects.operation)) leaf_name_data.push_back(number_xconnects.get_name_leafdata());
-    if (number_xconnects_administratively_down.is_set || is_set(number_xconnects_administratively_down.operation)) leaf_name_data.push_back(number_xconnects_administratively_down.get_name_leafdata());
-    if (number_xconnects_currently_using_backup.is_set || is_set(number_xconnects_currently_using_backup.operation)) leaf_name_data.push_back(number_xconnects_currently_using_backup.get_name_leafdata());
-    if (number_xconnects_currently_using_backup_interface.is_set || is_set(number_xconnects_currently_using_backup_interface.operation)) leaf_name_data.push_back(number_xconnects_currently_using_backup_interface.get_name_leafdata());
-    if (number_xconnects_down.is_set || is_set(number_xconnects_down.operation)) leaf_name_data.push_back(number_xconnects_down.get_name_leafdata());
-    if (number_xconnects_locally_switched.is_set || is_set(number_xconnects_locally_switched.operation)) leaf_name_data.push_back(number_xconnects_locally_switched.get_name_leafdata());
-    if (number_xconnects_type_attachment_circuit_to_pseudo_wire.is_set || is_set(number_xconnects_type_attachment_circuit_to_pseudo_wire.operation)) leaf_name_data.push_back(number_xconnects_type_attachment_circuit_to_pseudo_wire.get_name_leafdata());
-    if (number_xconnects_type_monitor_session_to_pseudo_wire.is_set || is_set(number_xconnects_type_monitor_session_to_pseudo_wire.operation)) leaf_name_data.push_back(number_xconnects_type_monitor_session_to_pseudo_wire.get_name_leafdata());
-    if (number_xconnects_type_pseudo_wire_to_pseudo_wire.is_set || is_set(number_xconnects_type_pseudo_wire_to_pseudo_wire.operation)) leaf_name_data.push_back(number_xconnects_type_pseudo_wire_to_pseudo_wire.get_name_leafdata());
-    if (number_xconnects_unresolved.is_set || is_set(number_xconnects_unresolved.operation)) leaf_name_data.push_back(number_xconnects_unresolved.get_name_leafdata());
-    if (number_xconnects_up.is_set || is_set(number_xconnects_up.operation)) leaf_name_data.push_back(number_xconnects_up.get_name_leafdata());
-    if (number_xconnects_with_backup_interface.is_set || is_set(number_xconnects_with_backup_interface.operation)) leaf_name_data.push_back(number_xconnects_with_backup_interface.get_name_leafdata());
-    if (number_xconnects_with_backup_pw.is_set || is_set(number_xconnects_with_backup_pw.operation)) leaf_name_data.push_back(number_xconnects_with_backup_pw.get_name_leafdata());
-    if (out_of_memory_state.is_set || is_set(out_of_memory_state.operation)) leaf_name_data.push_back(out_of_memory_state.get_name_leafdata());
-    if (partially_programmed_xconnects.is_set || is_set(partially_programmed_xconnects.operation)) leaf_name_data.push_back(partially_programmed_xconnects.get_name_leafdata());
-    if (standby_backup_interface_xconnects.is_set || is_set(standby_backup_interface_xconnects.operation)) leaf_name_data.push_back(standby_backup_interface_xconnects.get_name_leafdata());
-    if (standby_backup_xconnects.is_set || is_set(standby_backup_xconnects.operation)) leaf_name_data.push_back(standby_backup_xconnects.get_name_leafdata());
-    if (standby_ready_backup_xconnects.is_set || is_set(standby_ready_backup_xconnects.operation)) leaf_name_data.push_back(standby_ready_backup_xconnects.get_name_leafdata());
-    if (unresolved_backup_interface_xconnects.is_set || is_set(unresolved_backup_interface_xconnects.operation)) leaf_name_data.push_back(unresolved_backup_interface_xconnects.get_name_leafdata());
-    if (unresolved_backup_xconnects.is_set || is_set(unresolved_backup_xconnects.operation)) leaf_name_data.push_back(unresolved_backup_xconnects.get_name_leafdata());
+    if (admin_down_backup_interface_xconnects.is_set || is_set(admin_down_backup_interface_xconnects.yfilter)) leaf_name_data.push_back(admin_down_backup_interface_xconnects.get_name_leafdata());
+    if (admin_down_backup_xconnects.is_set || is_set(admin_down_backup_xconnects.yfilter)) leaf_name_data.push_back(admin_down_backup_xconnects.get_name_leafdata());
+    if (down_backup_interface_xconnects.is_set || is_set(down_backup_interface_xconnects.yfilter)) leaf_name_data.push_back(down_backup_interface_xconnects.get_name_leafdata());
+    if (down_backup_xconnects.is_set || is_set(down_backup_xconnects.yfilter)) leaf_name_data.push_back(down_backup_xconnects.get_name_leafdata());
+    if (number_ce2_ceconnections.is_set || is_set(number_ce2_ceconnections.yfilter)) leaf_name_data.push_back(number_ce2_ceconnections.get_name_leafdata());
+    if (number_ce2ce_advertized.is_set || is_set(number_ce2ce_advertized.yfilter)) leaf_name_data.push_back(number_ce2ce_advertized.get_name_leafdata());
+    if (number_ce2ce_not_advertized.is_set || is_set(number_ce2ce_not_advertized.yfilter)) leaf_name_data.push_back(number_ce2ce_not_advertized.get_name_leafdata());
+    if (number_groups.is_set || is_set(number_groups.yfilter)) leaf_name_data.push_back(number_groups.get_name_leafdata());
+    if (number_mp2mp_xconnects.is_set || is_set(number_mp2mp_xconnects.yfilter)) leaf_name_data.push_back(number_mp2mp_xconnects.get_name_leafdata());
+    if (number_mp2mp_xconnects_advertised.is_set || is_set(number_mp2mp_xconnects_advertised.yfilter)) leaf_name_data.push_back(number_mp2mp_xconnects_advertised.get_name_leafdata());
+    if (number_mp2mp_xconnects_down.is_set || is_set(number_mp2mp_xconnects_down.yfilter)) leaf_name_data.push_back(number_mp2mp_xconnects_down.get_name_leafdata());
+    if (number_mp2mp_xconnects_up.is_set || is_set(number_mp2mp_xconnects_up.yfilter)) leaf_name_data.push_back(number_mp2mp_xconnects_up.get_name_leafdata());
+    if (number_mp2mp_xconnectss_not_advertised.is_set || is_set(number_mp2mp_xconnectss_not_advertised.yfilter)) leaf_name_data.push_back(number_mp2mp_xconnectss_not_advertised.get_name_leafdata());
+    if (number_xconnects.is_set || is_set(number_xconnects.yfilter)) leaf_name_data.push_back(number_xconnects.get_name_leafdata());
+    if (number_xconnects_administratively_down.is_set || is_set(number_xconnects_administratively_down.yfilter)) leaf_name_data.push_back(number_xconnects_administratively_down.get_name_leafdata());
+    if (number_xconnects_currently_using_backup.is_set || is_set(number_xconnects_currently_using_backup.yfilter)) leaf_name_data.push_back(number_xconnects_currently_using_backup.get_name_leafdata());
+    if (number_xconnects_currently_using_backup_interface.is_set || is_set(number_xconnects_currently_using_backup_interface.yfilter)) leaf_name_data.push_back(number_xconnects_currently_using_backup_interface.get_name_leafdata());
+    if (number_xconnects_down.is_set || is_set(number_xconnects_down.yfilter)) leaf_name_data.push_back(number_xconnects_down.get_name_leafdata());
+    if (number_xconnects_locally_switched.is_set || is_set(number_xconnects_locally_switched.yfilter)) leaf_name_data.push_back(number_xconnects_locally_switched.get_name_leafdata());
+    if (number_xconnects_type_attachment_circuit_to_pseudo_wire.is_set || is_set(number_xconnects_type_attachment_circuit_to_pseudo_wire.yfilter)) leaf_name_data.push_back(number_xconnects_type_attachment_circuit_to_pseudo_wire.get_name_leafdata());
+    if (number_xconnects_type_monitor_session_to_pseudo_wire.is_set || is_set(number_xconnects_type_monitor_session_to_pseudo_wire.yfilter)) leaf_name_data.push_back(number_xconnects_type_monitor_session_to_pseudo_wire.get_name_leafdata());
+    if (number_xconnects_type_pseudo_wire_to_pseudo_wire.is_set || is_set(number_xconnects_type_pseudo_wire_to_pseudo_wire.yfilter)) leaf_name_data.push_back(number_xconnects_type_pseudo_wire_to_pseudo_wire.get_name_leafdata());
+    if (number_xconnects_unresolved.is_set || is_set(number_xconnects_unresolved.yfilter)) leaf_name_data.push_back(number_xconnects_unresolved.get_name_leafdata());
+    if (number_xconnects_up.is_set || is_set(number_xconnects_up.yfilter)) leaf_name_data.push_back(number_xconnects_up.get_name_leafdata());
+    if (number_xconnects_with_backup_interface.is_set || is_set(number_xconnects_with_backup_interface.yfilter)) leaf_name_data.push_back(number_xconnects_with_backup_interface.get_name_leafdata());
+    if (number_xconnects_with_backup_pw.is_set || is_set(number_xconnects_with_backup_pw.yfilter)) leaf_name_data.push_back(number_xconnects_with_backup_pw.get_name_leafdata());
+    if (out_of_memory_state.is_set || is_set(out_of_memory_state.yfilter)) leaf_name_data.push_back(out_of_memory_state.get_name_leafdata());
+    if (partially_programmed_xconnects.is_set || is_set(partially_programmed_xconnects.yfilter)) leaf_name_data.push_back(partially_programmed_xconnects.get_name_leafdata());
+    if (standby_backup_interface_xconnects.is_set || is_set(standby_backup_interface_xconnects.yfilter)) leaf_name_data.push_back(standby_backup_interface_xconnects.get_name_leafdata());
+    if (standby_backup_xconnects.is_set || is_set(standby_backup_xconnects.yfilter)) leaf_name_data.push_back(standby_backup_xconnects.get_name_leafdata());
+    if (standby_ready_backup_xconnects.is_set || is_set(standby_ready_backup_xconnects.yfilter)) leaf_name_data.push_back(standby_ready_backup_xconnects.get_name_leafdata());
+    if (unresolved_backup_interface_xconnects.is_set || is_set(unresolved_backup_interface_xconnects.yfilter)) leaf_name_data.push_back(unresolved_backup_interface_xconnects.get_name_leafdata());
+    if (unresolved_backup_xconnects.is_set || is_set(unresolved_backup_xconnects.yfilter)) leaf_name_data.push_back(unresolved_backup_xconnects.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15159,140 +21605,349 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::XconnectSum
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::XconnectSummary::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::XconnectSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-down-backup-interface-xconnects")
     {
         admin_down_backup_interface_xconnects = value;
+        admin_down_backup_interface_xconnects.value_namespace = name_space;
+        admin_down_backup_interface_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "admin-down-backup-xconnects")
     {
         admin_down_backup_xconnects = value;
+        admin_down_backup_xconnects.value_namespace = name_space;
+        admin_down_backup_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down-backup-interface-xconnects")
     {
         down_backup_interface_xconnects = value;
+        down_backup_interface_xconnects.value_namespace = name_space;
+        down_backup_interface_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down-backup-xconnects")
     {
         down_backup_xconnects = value;
+        down_backup_xconnects.value_namespace = name_space;
+        down_backup_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-ce2-ceconnections")
     {
         number_ce2_ceconnections = value;
+        number_ce2_ceconnections.value_namespace = name_space;
+        number_ce2_ceconnections.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-ce2ce-advertized")
     {
         number_ce2ce_advertized = value;
+        number_ce2ce_advertized.value_namespace = name_space;
+        number_ce2ce_advertized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-ce2ce-not-advertized")
     {
         number_ce2ce_not_advertized = value;
+        number_ce2ce_not_advertized.value_namespace = name_space;
+        number_ce2ce_not_advertized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-groups")
     {
         number_groups = value;
+        number_groups.value_namespace = name_space;
+        number_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-mp2mp-xconnects")
     {
         number_mp2mp_xconnects = value;
+        number_mp2mp_xconnects.value_namespace = name_space;
+        number_mp2mp_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-mp2mp-xconnects-advertised")
     {
         number_mp2mp_xconnects_advertised = value;
+        number_mp2mp_xconnects_advertised.value_namespace = name_space;
+        number_mp2mp_xconnects_advertised.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-mp2mp-xconnects-down")
     {
         number_mp2mp_xconnects_down = value;
+        number_mp2mp_xconnects_down.value_namespace = name_space;
+        number_mp2mp_xconnects_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-mp2mp-xconnects-up")
     {
         number_mp2mp_xconnects_up = value;
+        number_mp2mp_xconnects_up.value_namespace = name_space;
+        number_mp2mp_xconnects_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-mp2mp-xconnectss-not-advertised")
     {
         number_mp2mp_xconnectss_not_advertised = value;
+        number_mp2mp_xconnectss_not_advertised.value_namespace = name_space;
+        number_mp2mp_xconnectss_not_advertised.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects")
     {
         number_xconnects = value;
+        number_xconnects.value_namespace = name_space;
+        number_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-administratively-down")
     {
         number_xconnects_administratively_down = value;
+        number_xconnects_administratively_down.value_namespace = name_space;
+        number_xconnects_administratively_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-currently-using-backup")
     {
         number_xconnects_currently_using_backup = value;
+        number_xconnects_currently_using_backup.value_namespace = name_space;
+        number_xconnects_currently_using_backup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-currently-using-backup-interface")
     {
         number_xconnects_currently_using_backup_interface = value;
+        number_xconnects_currently_using_backup_interface.value_namespace = name_space;
+        number_xconnects_currently_using_backup_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-down")
     {
         number_xconnects_down = value;
+        number_xconnects_down.value_namespace = name_space;
+        number_xconnects_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-locally-switched")
     {
         number_xconnects_locally_switched = value;
+        number_xconnects_locally_switched.value_namespace = name_space;
+        number_xconnects_locally_switched.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-type-attachment-circuit-to-pseudo-wire")
     {
         number_xconnects_type_attachment_circuit_to_pseudo_wire = value;
+        number_xconnects_type_attachment_circuit_to_pseudo_wire.value_namespace = name_space;
+        number_xconnects_type_attachment_circuit_to_pseudo_wire.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-type-monitor-session-to-pseudo-wire")
     {
         number_xconnects_type_monitor_session_to_pseudo_wire = value;
+        number_xconnects_type_monitor_session_to_pseudo_wire.value_namespace = name_space;
+        number_xconnects_type_monitor_session_to_pseudo_wire.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-type-pseudo-wire-to-pseudo-wire")
     {
         number_xconnects_type_pseudo_wire_to_pseudo_wire = value;
+        number_xconnects_type_pseudo_wire_to_pseudo_wire.value_namespace = name_space;
+        number_xconnects_type_pseudo_wire_to_pseudo_wire.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-unresolved")
     {
         number_xconnects_unresolved = value;
+        number_xconnects_unresolved.value_namespace = name_space;
+        number_xconnects_unresolved.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-up")
     {
         number_xconnects_up = value;
+        number_xconnects_up.value_namespace = name_space;
+        number_xconnects_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-with-backup-interface")
     {
         number_xconnects_with_backup_interface = value;
+        number_xconnects_with_backup_interface.value_namespace = name_space;
+        number_xconnects_with_backup_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-xconnects-with-backup-pw")
     {
         number_xconnects_with_backup_pw = value;
+        number_xconnects_with_backup_pw.value_namespace = name_space;
+        number_xconnects_with_backup_pw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-memory-state")
     {
         out_of_memory_state = value;
+        out_of_memory_state.value_namespace = name_space;
+        out_of_memory_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partially-programmed-xconnects")
     {
         partially_programmed_xconnects = value;
+        partially_programmed_xconnects.value_namespace = name_space;
+        partially_programmed_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-backup-interface-xconnects")
     {
         standby_backup_interface_xconnects = value;
+        standby_backup_interface_xconnects.value_namespace = name_space;
+        standby_backup_interface_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-backup-xconnects")
     {
         standby_backup_xconnects = value;
+        standby_backup_xconnects.value_namespace = name_space;
+        standby_backup_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-ready-backup-xconnects")
     {
         standby_ready_backup_xconnects = value;
+        standby_ready_backup_xconnects.value_namespace = name_space;
+        standby_ready_backup_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unresolved-backup-interface-xconnects")
     {
         unresolved_backup_interface_xconnects = value;
+        unresolved_backup_interface_xconnects.value_namespace = name_space;
+        unresolved_backup_interface_xconnects.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unresolved-backup-xconnects")
     {
         unresolved_backup_xconnects = value;
+        unresolved_backup_xconnects.value_namespace = name_space;
+        unresolved_backup_xconnects.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Vpnv2::Nodes::Node::XconnectSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-down-backup-interface-xconnects")
+    {
+        admin_down_backup_interface_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "admin-down-backup-xconnects")
+    {
+        admin_down_backup_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "down-backup-interface-xconnects")
+    {
+        down_backup_interface_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "down-backup-xconnects")
+    {
+        down_backup_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "number-ce2-ceconnections")
+    {
+        number_ce2_ceconnections.yfilter = yfilter;
+    }
+    if(value_path == "number-ce2ce-advertized")
+    {
+        number_ce2ce_advertized.yfilter = yfilter;
+    }
+    if(value_path == "number-ce2ce-not-advertized")
+    {
+        number_ce2ce_not_advertized.yfilter = yfilter;
+    }
+    if(value_path == "number-groups")
+    {
+        number_groups.yfilter = yfilter;
+    }
+    if(value_path == "number-mp2mp-xconnects")
+    {
+        number_mp2mp_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "number-mp2mp-xconnects-advertised")
+    {
+        number_mp2mp_xconnects_advertised.yfilter = yfilter;
+    }
+    if(value_path == "number-mp2mp-xconnects-down")
+    {
+        number_mp2mp_xconnects_down.yfilter = yfilter;
+    }
+    if(value_path == "number-mp2mp-xconnects-up")
+    {
+        number_mp2mp_xconnects_up.yfilter = yfilter;
+    }
+    if(value_path == "number-mp2mp-xconnectss-not-advertised")
+    {
+        number_mp2mp_xconnectss_not_advertised.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects")
+    {
+        number_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-administratively-down")
+    {
+        number_xconnects_administratively_down.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-currently-using-backup")
+    {
+        number_xconnects_currently_using_backup.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-currently-using-backup-interface")
+    {
+        number_xconnects_currently_using_backup_interface.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-down")
+    {
+        number_xconnects_down.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-locally-switched")
+    {
+        number_xconnects_locally_switched.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-type-attachment-circuit-to-pseudo-wire")
+    {
+        number_xconnects_type_attachment_circuit_to_pseudo_wire.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-type-monitor-session-to-pseudo-wire")
+    {
+        number_xconnects_type_monitor_session_to_pseudo_wire.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-type-pseudo-wire-to-pseudo-wire")
+    {
+        number_xconnects_type_pseudo_wire_to_pseudo_wire.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-unresolved")
+    {
+        number_xconnects_unresolved.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-up")
+    {
+        number_xconnects_up.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-with-backup-interface")
+    {
+        number_xconnects_with_backup_interface.yfilter = yfilter;
+    }
+    if(value_path == "number-xconnects-with-backup-pw")
+    {
+        number_xconnects_with_backup_pw.yfilter = yfilter;
+    }
+    if(value_path == "out-of-memory-state")
+    {
+        out_of_memory_state.yfilter = yfilter;
+    }
+    if(value_path == "partially-programmed-xconnects")
+    {
+        partially_programmed_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "standby-backup-interface-xconnects")
+    {
+        standby_backup_interface_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "standby-backup-xconnects")
+    {
+        standby_backup_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "standby-ready-backup-xconnects")
+    {
+        standby_ready_backup_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "unresolved-backup-interface-xconnects")
+    {
+        unresolved_backup_interface_xconnects.yfilter = yfilter;
+    }
+    if(value_path == "unresolved-backup-xconnects")
+    {
+        unresolved_backup_xconnects.yfilter = yfilter;
+    }
+}
+
+bool L2Vpnv2::Nodes::Node::XconnectSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-down-backup-interface-xconnects" || name == "admin-down-backup-xconnects" || name == "down-backup-interface-xconnects" || name == "down-backup-xconnects" || name == "number-ce2-ceconnections" || name == "number-ce2ce-advertized" || name == "number-ce2ce-not-advertized" || name == "number-groups" || name == "number-mp2mp-xconnects" || name == "number-mp2mp-xconnects-advertised" || name == "number-mp2mp-xconnects-down" || name == "number-mp2mp-xconnects-up" || name == "number-mp2mp-xconnectss-not-advertised" || name == "number-xconnects" || name == "number-xconnects-administratively-down" || name == "number-xconnects-currently-using-backup" || name == "number-xconnects-currently-using-backup-interface" || name == "number-xconnects-down" || name == "number-xconnects-locally-switched" || name == "number-xconnects-type-attachment-circuit-to-pseudo-wire" || name == "number-xconnects-type-monitor-session-to-pseudo-wire" || name == "number-xconnects-type-pseudo-wire-to-pseudo-wire" || name == "number-xconnects-unresolved" || name == "number-xconnects-up" || name == "number-xconnects-with-backup-interface" || name == "number-xconnects-with-backup-pw" || name == "out-of-memory-state" || name == "partially-programmed-xconnects" || name == "standby-backup-interface-xconnects" || name == "standby-backup-xconnects" || name == "standby-ready-backup-xconnects" || name == "unresolved-backup-interface-xconnects" || name == "unresolved-backup-xconnects")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Nodes::Node::ProcFsm::ProcFsm()
@@ -15370,15 +22025,15 @@ bool L2Vpnv2::Nodes::Node::ProcFsm::has_operation() const
     }
     for (auto const & leaf : state_transition_time.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(process_role.operation)
-	|| is_set(process_state.operation)
-	|| is_set(state_transition_time.operation)
-	|| is_set(sw_install_in_progress.operation)
-	|| is_set(sync_flags.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(process_role.yfilter)
+	|| ydk::is_set(process_state.yfilter)
+	|| ydk::is_set(state_transition_time.yfilter)
+	|| ydk::is_set(sw_install_in_progress.yfilter)
+	|| ydk::is_set(sync_flags.yfilter)
 	|| (failover_status !=  nullptr && failover_status->has_operation())
 	|| (issu_status !=  nullptr && issu_status->has_operation())
 	|| (nsr_status !=  nullptr && nsr_status->has_operation());
@@ -15407,10 +22062,10 @@ const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process_role.is_set || is_set(process_role.operation)) leaf_name_data.push_back(process_role.get_name_leafdata());
-    if (process_state.is_set || is_set(process_state.operation)) leaf_name_data.push_back(process_state.get_name_leafdata());
-    if (sw_install_in_progress.is_set || is_set(sw_install_in_progress.operation)) leaf_name_data.push_back(sw_install_in_progress.get_name_leafdata());
-    if (sync_flags.is_set || is_set(sync_flags.operation)) leaf_name_data.push_back(sync_flags.get_name_leafdata());
+    if (process_role.is_set || is_set(process_role.yfilter)) leaf_name_data.push_back(process_role.get_name_leafdata());
+    if (process_state.is_set || is_set(process_state.yfilter)) leaf_name_data.push_back(process_state.get_name_leafdata());
+    if (sw_install_in_progress.is_set || is_set(sw_install_in_progress.yfilter)) leaf_name_data.push_back(sw_install_in_progress.get_name_leafdata());
+    if (sync_flags.is_set || is_set(sync_flags.yfilter)) leaf_name_data.push_back(sync_flags.get_name_leafdata());
 
     auto state_transition_time_name_datas = state_transition_time.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), state_transition_time_name_datas.begin(), state_transition_time_name_datas.end());
@@ -15536,15 +22191,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::ge
     return children;
 }
 
-void L2Vpnv2::Nodes::Node::ProcFsm::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Nodes::Node::ProcFsm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "process-role")
     {
         process_role = value;
+        process_role.value_namespace = name_space;
+        process_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-state")
     {
         process_state = value;
+        process_state.value_namespace = name_space;
+        process_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state-transition-time")
     {
@@ -15553,1454 +22212,46 @@ void L2Vpnv2::Nodes::Node::ProcFsm::set_value(const std::string & value_path, st
     if(value_path == "sw-install-in-progress")
     {
         sw_install_in_progress = value;
+        sw_install_in_progress.value_namespace = name_space;
+        sw_install_in_progress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sync-flags")
     {
         sync_flags = value;
+        sync_flags.value_namespace = name_space;
+        sync_flags.value_namespace_prefix = name_space_prefix;
     }
 }
 
-L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::FailoverStatus()
-    :
-    master_time{YType::uint32, "master-time"},
-    start_time{YType::uint32, "start-time"},
-    triggered_time{YType::uint32, "triggered-time"}
+void L2Vpnv2::Nodes::Node::ProcFsm::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "failover-status"; yang_parent_name = "proc-fsm";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::~FailoverStatus()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::has_data() const
-{
-    return master_time.is_set
-	|| start_time.is_set
-	|| triggered_time.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(master_time.operation)
-	|| is_set(start_time.operation)
-	|| is_set(triggered_time.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "failover-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'FailoverStatus' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (master_time.is_set || is_set(master_time.operation)) leaf_name_data.push_back(master_time.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (triggered_time.is_set || is_set(triggered_time.operation)) leaf_name_data.push_back(triggered_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::FailoverStatus::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "master-time")
-    {
-        master_time = value;
-    }
-    if(value_path == "start-time")
-    {
-        start_time = value;
-    }
-    if(value_path == "triggered-time")
-    {
-        triggered_time = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::NsrStatus()
-    :
-    role{YType::enumeration, "role"}
-    	,
-    idt_status(std::make_shared<L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus>())
-	,previ_ous_idt_status(std::make_shared<L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus>())
-{
-    idt_status->parent = this;
-
-    previ_ous_idt_status->parent = this;
-
-    yang_name = "nsr-status"; yang_parent_name = "proc-fsm";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::~NsrStatus()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::has_data() const
-{
-    return role.is_set
-	|| (idt_status !=  nullptr && idt_status->has_data())
-	|| (previ_ous_idt_status !=  nullptr && previ_ous_idt_status->has_data());
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && idt_status->has_operation())
-	|| (previ_ous_idt_status !=  nullptr && previ_ous_idt_status->has_operation());
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "nsr-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'NsrStatus' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (role.is_set || is_set(role.operation)) leaf_name_data.push_back(role.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "idt-status")
-    {
-        if(idt_status == nullptr)
-        {
-            idt_status = std::make_shared<L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus>();
-        }
-        return idt_status;
-    }
-
-    if(child_yang_name == "previ-ous-idt-status")
-    {
-        if(previ_ous_idt_status == nullptr)
-        {
-            previ_ous_idt_status = std::make_shared<L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus>();
-        }
-        return previ_ous_idt_status;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(idt_status != nullptr)
-    {
-        children["idt-status"] = idt_status;
-    }
-
-    if(previ_ous_idt_status != nullptr)
-    {
-        children["previ-ous-idt-status"] = previ_ous_idt_status;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "role")
-    {
-        role = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::IdtStatus()
-    :
-    declare_time{YType::uint32, "declare-time"},
-    idt_end_time{YType::uint32, "idt-end-time"},
-    idt_start_time{YType::uint32, "idt-start-time"},
-    not_ready_reason{YType::enumeration, "not-ready-reason"},
-    sync_status{YType::enumeration, "sync-status"},
-    withdraw_time{YType::uint32, "withdraw-time"}
-{
-    yang_name = "idt-status"; yang_parent_name = "nsr-status";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::~IdtStatus()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::has_data() const
-{
-    return declare_time.is_set
-	|| idt_end_time.is_set
-	|| idt_start_time.is_set
-	|| not_ready_reason.is_set
-	|| sync_status.is_set
-	|| withdraw_time.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(declare_time.operation)
-	|| is_set(idt_end_time.operation)
-	|| is_set(idt_start_time.operation)
-	|| is_set(not_ready_reason.operation)
-	|| is_set(sync_status.operation)
-	|| is_set(withdraw_time.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idt-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IdtStatus' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (declare_time.is_set || is_set(declare_time.operation)) leaf_name_data.push_back(declare_time.get_name_leafdata());
-    if (idt_end_time.is_set || is_set(idt_end_time.operation)) leaf_name_data.push_back(idt_end_time.get_name_leafdata());
-    if (idt_start_time.is_set || is_set(idt_start_time.operation)) leaf_name_data.push_back(idt_start_time.get_name_leafdata());
-    if (not_ready_reason.is_set || is_set(not_ready_reason.operation)) leaf_name_data.push_back(not_ready_reason.get_name_leafdata());
-    if (sync_status.is_set || is_set(sync_status.operation)) leaf_name_data.push_back(sync_status.get_name_leafdata());
-    if (withdraw_time.is_set || is_set(withdraw_time.operation)) leaf_name_data.push_back(withdraw_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::IdtStatus::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "declare-time")
-    {
-        declare_time = value;
-    }
-    if(value_path == "idt-end-time")
-    {
-        idt_end_time = value;
-    }
-    if(value_path == "idt-start-time")
-    {
-        idt_start_time = value;
-    }
-    if(value_path == "not-ready-reason")
-    {
-        not_ready_reason = value;
-    }
-    if(value_path == "sync-status")
-    {
-        sync_status = value;
-    }
-    if(value_path == "withdraw-time")
-    {
-        withdraw_time = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::PreviOusIdtStatus()
-    :
-    declare_time{YType::uint32, "declare-time"},
-    idt_end_time{YType::uint32, "idt-end-time"},
-    idt_start_time{YType::uint32, "idt-start-time"},
-    not_ready_reason{YType::enumeration, "not-ready-reason"},
-    sync_status{YType::enumeration, "sync-status"},
-    withdraw_time{YType::uint32, "withdraw-time"}
-{
-    yang_name = "previ-ous-idt-status"; yang_parent_name = "nsr-status";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::~PreviOusIdtStatus()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::has_data() const
-{
-    return declare_time.is_set
-	|| idt_end_time.is_set
-	|| idt_start_time.is_set
-	|| not_ready_reason.is_set
-	|| sync_status.is_set
-	|| withdraw_time.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(declare_time.operation)
-	|| is_set(idt_end_time.operation)
-	|| is_set(idt_start_time.operation)
-	|| is_set(not_ready_reason.operation)
-	|| is_set(sync_status.operation)
-	|| is_set(withdraw_time.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "previ-ous-idt-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PreviOusIdtStatus' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (declare_time.is_set || is_set(declare_time.operation)) leaf_name_data.push_back(declare_time.get_name_leafdata());
-    if (idt_end_time.is_set || is_set(idt_end_time.operation)) leaf_name_data.push_back(idt_end_time.get_name_leafdata());
-    if (idt_start_time.is_set || is_set(idt_start_time.operation)) leaf_name_data.push_back(idt_start_time.get_name_leafdata());
-    if (not_ready_reason.is_set || is_set(not_ready_reason.operation)) leaf_name_data.push_back(not_ready_reason.get_name_leafdata());
-    if (sync_status.is_set || is_set(sync_status.operation)) leaf_name_data.push_back(sync_status.get_name_leafdata());
-    if (withdraw_time.is_set || is_set(withdraw_time.operation)) leaf_name_data.push_back(withdraw_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::NsrStatus::PreviOusIdtStatus::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "declare-time")
-    {
-        declare_time = value;
-    }
-    if(value_path == "idt-end-time")
-    {
-        idt_end_time = value;
-    }
-    if(value_path == "idt-start-time")
-    {
-        idt_start_time = value;
-    }
-    if(value_path == "not-ready-reason")
-    {
-        not_ready_reason = value;
-    }
-    if(value_path == "sync-status")
-    {
-        sync_status = value;
-    }
-    if(value_path == "withdraw-time")
-    {
-        withdraw_time = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IssuStatus()
-    :
-    role{YType::enumeration, "role"}
-    	,
-    idt_status(std::make_shared<L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus>())
-	,previ_ous_idt_status(std::make_shared<L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus>())
-{
-    idt_status->parent = this;
-
-    previ_ous_idt_status->parent = this;
-
-    yang_name = "issu-status"; yang_parent_name = "proc-fsm";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::~IssuStatus()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::has_data() const
-{
-    return role.is_set
-	|| (idt_status !=  nullptr && idt_status->has_data())
-	|| (previ_ous_idt_status !=  nullptr && previ_ous_idt_status->has_data());
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(role.operation)
-	|| (idt_status !=  nullptr && idt_status->has_operation())
-	|| (previ_ous_idt_status !=  nullptr && previ_ous_idt_status->has_operation());
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "issu-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IssuStatus' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (role.is_set || is_set(role.operation)) leaf_name_data.push_back(role.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "idt-status")
-    {
-        if(idt_status == nullptr)
-        {
-            idt_status = std::make_shared<L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus>();
-        }
-        return idt_status;
-    }
-
-    if(child_yang_name == "previ-ous-idt-status")
-    {
-        if(previ_ous_idt_status == nullptr)
-        {
-            previ_ous_idt_status = std::make_shared<L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus>();
-        }
-        return previ_ous_idt_status;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(idt_status != nullptr)
-    {
-        children["idt-status"] = idt_status;
-    }
-
-    if(previ_ous_idt_status != nullptr)
-    {
-        children["previ-ous-idt-status"] = previ_ous_idt_status;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "role")
-    {
-        role = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::IdtStatus()
-    :
-    declare_time{YType::uint32, "declare-time"},
-    idt_end_time{YType::uint32, "idt-end-time"},
-    idt_start_time{YType::uint32, "idt-start-time"},
-    not_ready_reason{YType::enumeration, "not-ready-reason"},
-    sync_status{YType::enumeration, "sync-status"},
-    withdraw_time{YType::uint32, "withdraw-time"}
-{
-    yang_name = "idt-status"; yang_parent_name = "issu-status";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::~IdtStatus()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::has_data() const
-{
-    return declare_time.is_set
-	|| idt_end_time.is_set
-	|| idt_start_time.is_set
-	|| not_ready_reason.is_set
-	|| sync_status.is_set
-	|| withdraw_time.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(declare_time.operation)
-	|| is_set(idt_end_time.operation)
-	|| is_set(idt_start_time.operation)
-	|| is_set(not_ready_reason.operation)
-	|| is_set(sync_status.operation)
-	|| is_set(withdraw_time.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idt-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'IdtStatus' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (declare_time.is_set || is_set(declare_time.operation)) leaf_name_data.push_back(declare_time.get_name_leafdata());
-    if (idt_end_time.is_set || is_set(idt_end_time.operation)) leaf_name_data.push_back(idt_end_time.get_name_leafdata());
-    if (idt_start_time.is_set || is_set(idt_start_time.operation)) leaf_name_data.push_back(idt_start_time.get_name_leafdata());
-    if (not_ready_reason.is_set || is_set(not_ready_reason.operation)) leaf_name_data.push_back(not_ready_reason.get_name_leafdata());
-    if (sync_status.is_set || is_set(sync_status.operation)) leaf_name_data.push_back(sync_status.get_name_leafdata());
-    if (withdraw_time.is_set || is_set(withdraw_time.operation)) leaf_name_data.push_back(withdraw_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::IdtStatus::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "declare-time")
-    {
-        declare_time = value;
-    }
-    if(value_path == "idt-end-time")
-    {
-        idt_end_time = value;
-    }
-    if(value_path == "idt-start-time")
-    {
-        idt_start_time = value;
-    }
-    if(value_path == "not-ready-reason")
-    {
-        not_ready_reason = value;
-    }
-    if(value_path == "sync-status")
-    {
-        sync_status = value;
-    }
-    if(value_path == "withdraw-time")
-    {
-        withdraw_time = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::PreviOusIdtStatus()
-    :
-    declare_time{YType::uint32, "declare-time"},
-    idt_end_time{YType::uint32, "idt-end-time"},
-    idt_start_time{YType::uint32, "idt-start-time"},
-    not_ready_reason{YType::enumeration, "not-ready-reason"},
-    sync_status{YType::enumeration, "sync-status"},
-    withdraw_time{YType::uint32, "withdraw-time"}
-{
-    yang_name = "previ-ous-idt-status"; yang_parent_name = "issu-status";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::~PreviOusIdtStatus()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::has_data() const
-{
-    return declare_time.is_set
-	|| idt_end_time.is_set
-	|| idt_start_time.is_set
-	|| not_ready_reason.is_set
-	|| sync_status.is_set
-	|| withdraw_time.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(declare_time.operation)
-	|| is_set(idt_end_time.operation)
-	|| is_set(idt_start_time.operation)
-	|| is_set(not_ready_reason.operation)
-	|| is_set(sync_status.operation)
-	|| is_set(withdraw_time.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "previ-ous-idt-status";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PreviOusIdtStatus' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (declare_time.is_set || is_set(declare_time.operation)) leaf_name_data.push_back(declare_time.get_name_leafdata());
-    if (idt_end_time.is_set || is_set(idt_end_time.operation)) leaf_name_data.push_back(idt_end_time.get_name_leafdata());
-    if (idt_start_time.is_set || is_set(idt_start_time.operation)) leaf_name_data.push_back(idt_start_time.get_name_leafdata());
-    if (not_ready_reason.is_set || is_set(not_ready_reason.operation)) leaf_name_data.push_back(not_ready_reason.get_name_leafdata());
-    if (sync_status.is_set || is_set(sync_status.operation)) leaf_name_data.push_back(sync_status.get_name_leafdata());
-    if (withdraw_time.is_set || is_set(withdraw_time.operation)) leaf_name_data.push_back(withdraw_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::IssuStatus::PreviOusIdtStatus::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "declare-time")
-    {
-        declare_time = value;
-    }
-    if(value_path == "idt-end-time")
-    {
-        idt_end_time = value;
-    }
-    if(value_path == "idt-start-time")
-    {
-        idt_start_time = value;
-    }
-    if(value_path == "not-ready-reason")
-    {
-        not_ready_reason = value;
-    }
-    if(value_path == "sync-status")
-    {
-        sync_status = value;
-    }
-    if(value_path == "withdraw-time")
-    {
-        withdraw_time = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::XidInfo()
-    :
-    app_type{YType::enumeration, "app-type"},
-    sent_ids{YType::uint32, "sent-ids"}
-{
-    yang_name = "xid-info"; yang_parent_name = "proc-fsm";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::~XidInfo()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::has_data() const
-{
-    return app_type.is_set
-	|| sent_ids.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(app_type.operation)
-	|| is_set(sent_ids.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "xid-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'XidInfo' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (app_type.is_set || is_set(app_type.operation)) leaf_name_data.push_back(app_type.get_name_leafdata());
-    if (sent_ids.is_set || is_set(sent_ids.operation)) leaf_name_data.push_back(sent_ids.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::XidInfo::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "app-type")
-    {
-        app_type = value;
-    }
-    if(value_path == "sent-ids")
-    {
-        sent_ids = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::ReportCard()
-    :
-    collaborator_idt_done{YType::boolean, "collaborator-idt-done"},
-    collaborator_is_connected{YType::boolean, "collaborator-is-connected"},
-    collaborator_skipped{YType::boolean, "collaborator-skipped"},
-    connection_change_time{YType::uint32, "connection-change-time"},
-    idt_time{YType::uint32, "idt-time"}
-{
-    yang_name = "report-card"; yang_parent_name = "proc-fsm";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::~ReportCard()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::has_data() const
-{
-    return collaborator_idt_done.is_set
-	|| collaborator_is_connected.is_set
-	|| collaborator_skipped.is_set
-	|| connection_change_time.is_set
-	|| idt_time.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(collaborator_idt_done.operation)
-	|| is_set(collaborator_is_connected.operation)
-	|| is_set(collaborator_skipped.operation)
-	|| is_set(connection_change_time.operation)
-	|| is_set(idt_time.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "report-card";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ReportCard' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (collaborator_idt_done.is_set || is_set(collaborator_idt_done.operation)) leaf_name_data.push_back(collaborator_idt_done.get_name_leafdata());
-    if (collaborator_is_connected.is_set || is_set(collaborator_is_connected.operation)) leaf_name_data.push_back(collaborator_is_connected.get_name_leafdata());
-    if (collaborator_skipped.is_set || is_set(collaborator_skipped.operation)) leaf_name_data.push_back(collaborator_skipped.get_name_leafdata());
-    if (connection_change_time.is_set || is_set(connection_change_time.operation)) leaf_name_data.push_back(connection_change_time.get_name_leafdata());
-    if (idt_time.is_set || is_set(idt_time.operation)) leaf_name_data.push_back(idt_time.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::ReportCard::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "collaborator-idt-done")
-    {
-        collaborator_idt_done = value;
-    }
-    if(value_path == "collaborator-is-connected")
-    {
-        collaborator_is_connected = value;
-    }
-    if(value_path == "collaborator-skipped")
-    {
-        collaborator_skipped = value;
-    }
-    if(value_path == "connection-change-time")
-    {
-        connection_change_time = value;
-    }
-    if(value_path == "idt-time")
-    {
-        idt_time = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::EventHistory()
-    :
-    event_timestamp{YType::uint32, "event-timestamp"},
-    new_state{YType::uint8, "new-state"},
-    previous_state{YType::uint8, "previous-state"},
-    process_collaborator{YType::uint16, "process-collaborator"},
-    process_event{YType::uint16, "process-event"}
-{
-    yang_name = "event-history"; yang_parent_name = "proc-fsm";
-}
-
-L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::~EventHistory()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::has_data() const
-{
-    return event_timestamp.is_set
-	|| new_state.is_set
-	|| previous_state.is_set
-	|| process_collaborator.is_set
-	|| process_event.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(event_timestamp.operation)
-	|| is_set(new_state.operation)
-	|| is_set(previous_state.operation)
-	|| is_set(process_collaborator.operation)
-	|| is_set(process_event.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "event-history";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'EventHistory' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (event_timestamp.is_set || is_set(event_timestamp.operation)) leaf_name_data.push_back(event_timestamp.get_name_leafdata());
-    if (new_state.is_set || is_set(new_state.operation)) leaf_name_data.push_back(new_state.get_name_leafdata());
-    if (previous_state.is_set || is_set(previous_state.operation)) leaf_name_data.push_back(previous_state.get_name_leafdata());
-    if (process_collaborator.is_set || is_set(process_collaborator.operation)) leaf_name_data.push_back(process_collaborator.get_name_leafdata());
-    if (process_event.is_set || is_set(process_event.operation)) leaf_name_data.push_back(process_event.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::ProcFsm::EventHistory::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "event-timestamp")
+    if(value_path == "process-role")
     {
-        event_timestamp = value;
+        process_role.yfilter = yfilter;
     }
-    if(value_path == "new-state")
+    if(value_path == "process-state")
     {
-        new_state = value;
+        process_state.yfilter = yfilter;
     }
-    if(value_path == "previous-state")
+    if(value_path == "state-transition-time")
     {
-        previous_state = value;
+        state_transition_time.yfilter = yfilter;
     }
-    if(value_path == "process-collaborator")
+    if(value_path == "sw-install-in-progress")
     {
-        process_collaborator = value;
+        sw_install_in_progress.yfilter = yfilter;
     }
-    if(value_path == "process-event")
+    if(value_path == "sync-flags")
     {
-        process_event = value;
+        sync_flags.yfilter = yfilter;
     }
 }
 
-L2Vpnv2::Nodes::Node::MstpPorts::MstpPorts()
+bool L2Vpnv2::Nodes::Node::ProcFsm::has_leaf_or_child_of_name(const std::string & name) const
 {
-    yang_name = "mstp-ports"; yang_parent_name = "node";
-}
-
-L2Vpnv2::Nodes::Node::MstpPorts::~MstpPorts()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::MstpPorts::has_data() const
-{
-    for (std::size_t index=0; index<mstp_port.size(); index++)
-    {
-        if(mstp_port[index]->has_data())
-            return true;
-    }
+    if(name == "event-history" || name == "failover-status" || name == "issu-status" || name == "nsr-status" || name == "report-card" || name == "xid-info" || name == "process-role" || name == "process-state" || name == "state-transition-time" || name == "sw-install-in-progress" || name == "sync-flags")
+        return true;
     return false;
-}
-
-bool L2Vpnv2::Nodes::Node::MstpPorts::has_operation() const
-{
-    for (std::size_t index=0; index<mstp_port.size(); index++)
-    {
-        if(mstp_port[index]->has_operation())
-            return true;
-    }
-    return is_set(operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::MstpPorts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mstp-ports";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::MstpPorts::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MstpPorts' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::MstpPorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mstp-port")
-    {
-        for(auto const & c : mstp_port)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<L2Vpnv2::Nodes::Node::MstpPorts::MstpPort>();
-        c->parent = this;
-        mstp_port.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::MstpPorts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : mstp_port)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::MstpPorts::set_value(const std::string & value_path, std::string value)
-{
-}
-
-L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstpPort()
-    :
-    interface{YType::str, "interface"},
-    interface_name{YType::str, "interface-name"},
-    mstp_interface_handle{YType::str, "mstp-interface-handle"},
-    protected_{YType::boolean, "protected"},
-    reference_count{YType::uint32, "reference-count"}
-{
-    yang_name = "mstp-port"; yang_parent_name = "mstp-ports";
-}
-
-L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::~MstpPort()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::has_data() const
-{
-    for (std::size_t index=0; index<msti_entry.size(); index++)
-    {
-        if(msti_entry[index]->has_data())
-            return true;
-    }
-    return interface.is_set
-	|| interface_name.is_set
-	|| mstp_interface_handle.is_set
-	|| protected_.is_set
-	|| reference_count.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::has_operation() const
-{
-    for (std::size_t index=0; index<msti_entry.size(); index++)
-    {
-        if(msti_entry[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(mstp_interface_handle.operation)
-	|| is_set(protected_.operation)
-	|| is_set(reference_count.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mstp-port" <<"[interface='" <<interface <<"']";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MstpPort' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (mstp_interface_handle.is_set || is_set(mstp_interface_handle.operation)) leaf_name_data.push_back(mstp_interface_handle.get_name_leafdata());
-    if (protected_.is_set || is_set(protected_.operation)) leaf_name_data.push_back(protected_.get_name_leafdata());
-    if (reference_count.is_set || is_set(reference_count.operation)) leaf_name_data.push_back(reference_count.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "msti-entry")
-    {
-        for(auto const & c : msti_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry>();
-        c->parent = this;
-        msti_entry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : msti_entry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "interface")
-    {
-        interface = value;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-    }
-    if(value_path == "mstp-interface-handle")
-    {
-        mstp_interface_handle = value;
-    }
-    if(value_path == "protected")
-    {
-        protected_ = value;
-    }
-    if(value_path == "reference-count")
-    {
-        reference_count = value;
-    }
-}
-
-L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::MstiEntry()
-    :
-    ack_count{YType::uint32, "ack-count"},
-    bd_count{YType::uint32, "bd-count"},
-    cfg_ms_ti{YType::uint32, "cfg-ms-ti"},
-    flush_count{YType::uint32, "flush-count"},
-    interface_count{YType::uint32, "interface-count"},
-    msti_flags{YType::uint32, "msti-flags"},
-    msti_state{YType::enumeration, "msti-state"},
-    nack_count{YType::uint32, "nack-count"},
-    rcv_count{YType::uint32, "rcv-count"}
-{
-    yang_name = "msti-entry"; yang_parent_name = "mstp-port";
-}
-
-L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::~MstiEntry()
-{
-}
-
-bool L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::has_data() const
-{
-    for (std::size_t index=0; index<bd_entry.size(); index++)
-    {
-        if(bd_entry[index]->has_data())
-            return true;
-    }
-    return ack_count.is_set
-	|| bd_count.is_set
-	|| cfg_ms_ti.is_set
-	|| flush_count.is_set
-	|| interface_count.is_set
-	|| msti_flags.is_set
-	|| msti_state.is_set
-	|| nack_count.is_set
-	|| rcv_count.is_set;
-}
-
-bool L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::has_operation() const
-{
-    for (std::size_t index=0; index<bd_entry.size(); index++)
-    {
-        if(bd_entry[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(ack_count.operation)
-	|| is_set(bd_count.operation)
-	|| is_set(cfg_ms_ti.operation)
-	|| is_set(flush_count.operation)
-	|| is_set(interface_count.operation)
-	|| is_set(msti_flags.operation)
-	|| is_set(msti_state.operation)
-	|| is_set(nack_count.operation)
-	|| is_set(rcv_count.operation);
-}
-
-std::string L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "msti-entry";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'MstiEntry' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ack_count.is_set || is_set(ack_count.operation)) leaf_name_data.push_back(ack_count.get_name_leafdata());
-    if (bd_count.is_set || is_set(bd_count.operation)) leaf_name_data.push_back(bd_count.get_name_leafdata());
-    if (cfg_ms_ti.is_set || is_set(cfg_ms_ti.operation)) leaf_name_data.push_back(cfg_ms_ti.get_name_leafdata());
-    if (flush_count.is_set || is_set(flush_count.operation)) leaf_name_data.push_back(flush_count.get_name_leafdata());
-    if (interface_count.is_set || is_set(interface_count.operation)) leaf_name_data.push_back(interface_count.get_name_leafdata());
-    if (msti_flags.is_set || is_set(msti_flags.operation)) leaf_name_data.push_back(msti_flags.get_name_leafdata());
-    if (msti_state.is_set || is_set(msti_state.operation)) leaf_name_data.push_back(msti_state.get_name_leafdata());
-    if (nack_count.is_set || is_set(nack_count.operation)) leaf_name_data.push_back(nack_count.get_name_leafdata());
-    if (rcv_count.is_set || is_set(rcv_count.operation)) leaf_name_data.push_back(rcv_count.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bd-entry")
-    {
-        for(auto const & c : bd_entry)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::BdEntry>();
-        c->parent = this;
-        bd_entry.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bd_entry)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Nodes::Node::MstpPorts::MstpPort::MstiEntry::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "ack-count")
-    {
-        ack_count = value;
-    }
-    if(value_path == "bd-count")
-    {
-        bd_count = value;
-    }
-    if(value_path == "cfg-ms-ti")
-    {
-        cfg_ms_ti = value;
-    }
-    if(value_path == "flush-count")
-    {
-        flush_count = value;
-    }
-    if(value_path == "interface-count")
-    {
-        interface_count = value;
-    }
-    if(value_path == "msti-flags")
-    {
-        msti_flags = value;
-    }
-    if(value_path == "msti-state")
-    {
-        msti_state = value;
-    }
-    if(value_path == "nack-count")
-    {
-        nack_count = value;
-    }
-    if(value_path == "rcv-count")
-    {
-        rcv_count = value;
-    }
 }
 
 

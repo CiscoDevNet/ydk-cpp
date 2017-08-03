@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_tty_server_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_server_cfg {
 
 Tty::Tty()
@@ -29,7 +31,7 @@ bool Tty::has_data() const
 
 bool Tty::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tty_lines !=  nullptr && tty_lines->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::get_children() const
     return children;
 }
 
-void Tty::set_value(const std::string & value_path, std::string value)
+void Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Tty::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Tty::get_bundle_name() const
 augment_capabilities_function Tty::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Tty::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Tty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tty-lines")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLines()
@@ -135,7 +153,7 @@ bool Tty::TtyLines::has_operation() const
         if(tty_line[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Tty::TtyLines::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::get_children() con
     return children;
 }
 
-void Tty::TtyLines::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::TtyLines::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::TtyLines::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tty-line")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::TtyLine()
@@ -247,8 +276,8 @@ bool Tty::TtyLines::TtyLine::has_data() const
 
 bool Tty::TtyLines::TtyLine::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (aaa !=  nullptr && aaa->has_operation())
 	|| (connection !=  nullptr && connection->has_operation())
 	|| (exec !=  nullptr && exec->has_operation())
@@ -280,7 +309,7 @@ const EntityPath Tty::TtyLines::TtyLine::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -383,12 +412,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::get_child
     return children;
 }
 
-void Tty::TtyLines::TtyLine::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa" || name == "connection" || name == "exec" || name == "exec-mode" || name == "general" || name == "telnet" || name == "name")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::General::General()
@@ -413,10 +459,10 @@ bool Tty::TtyLines::TtyLine::General::has_data() const
 
 bool Tty::TtyLines::TtyLine::General::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(absolute_timeout.operation)
-	|| is_set(length.operation)
-	|| is_set(width.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(absolute_timeout.yfilter)
+	|| ydk::is_set(length.yfilter)
+	|| ydk::is_set(width.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::General::get_segment_path() const
@@ -442,9 +488,9 @@ const EntityPath Tty::TtyLines::TtyLine::General::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (absolute_timeout.is_set || is_set(absolute_timeout.operation)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
-    if (length.is_set || is_set(length.operation)) leaf_name_data.push_back(length.get_name_leafdata());
-    if (width.is_set || is_set(width.operation)) leaf_name_data.push_back(width.get_name_leafdata());
+    if (absolute_timeout.is_set || is_set(absolute_timeout.yfilter)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
+    if (length.is_set || is_set(length.yfilter)) leaf_name_data.push_back(length.get_name_leafdata());
+    if (width.is_set || is_set(width.yfilter)) leaf_name_data.push_back(width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -463,20 +509,49 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::General::
     return children;
 }
 
-void Tty::TtyLines::TtyLine::General::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "absolute-timeout")
     {
         absolute_timeout = value;
+        absolute_timeout.value_namespace = name_space;
+        absolute_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "length")
     {
         length = value;
+        length.value_namespace = name_space;
+        length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "width")
     {
         width = value;
+        width.value_namespace = name_space;
+        width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::General::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "absolute-timeout")
+    {
+        absolute_timeout.yfilter = yfilter;
+    }
+    if(value_path == "length")
+    {
+        length.yfilter = yfilter;
+    }
+    if(value_path == "width")
+    {
+        width.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::General::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "absolute-timeout" || name == "length" || name == "width")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Telnet::Telnet()
@@ -497,8 +572,8 @@ bool Tty::TtyLines::TtyLine::Telnet::has_data() const
 
 bool Tty::TtyLines::TtyLine::Telnet::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(transparent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(transparent.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Telnet::get_segment_path() const
@@ -524,7 +599,7 @@ const EntityPath Tty::TtyLines::TtyLine::Telnet::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (transparent.is_set || is_set(transparent.operation)) leaf_name_data.push_back(transparent.get_name_leafdata());
+    if (transparent.is_set || is_set(transparent.yfilter)) leaf_name_data.push_back(transparent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -543,12 +618,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Telnet::g
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Telnet::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "transparent")
     {
         transparent = value;
+        transparent.value_namespace = name_space;
+        transparent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Telnet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transparent")
+    {
+        transparent.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Telnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transparent")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Aaa::Aaa()
@@ -590,10 +682,10 @@ bool Tty::TtyLines::TtyLine::Aaa::has_data() const
 
 bool Tty::TtyLines::TtyLine::Aaa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(login_timeout.operation)
-	|| is_set(password.operation)
-	|| is_set(secret.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(login_timeout.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(secret.yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (authorization !=  nullptr && authorization->has_operation())
@@ -623,9 +715,9 @@ const EntityPath Tty::TtyLines::TtyLine::Aaa::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (login_timeout.is_set || is_set(login_timeout.operation)) leaf_name_data.push_back(login_timeout.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (secret.is_set || is_set(secret.operation)) leaf_name_data.push_back(secret.get_name_leafdata());
+    if (login_timeout.is_set || is_set(login_timeout.yfilter)) leaf_name_data.push_back(login_timeout.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (secret.is_set || is_set(secret.yfilter)) leaf_name_data.push_back(secret.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -700,20 +792,49 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::get_
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Aaa::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "login-timeout")
     {
         login_timeout = value;
+        login_timeout.value_namespace = name_space;
+        login_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secret")
     {
         secret = value;
+        secret.value_namespace = name_space;
+        secret.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Aaa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "login-timeout")
+    {
+        login_timeout.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "secret")
+    {
+        secret.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Aaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting" || name == "authentication" || name == "authorization" || name == "user-groups" || name == "login-timeout" || name == "password" || name == "secret")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroups()
@@ -742,7 +863,7 @@ bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_operation() const
         if(user_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::get_segment_path() const
@@ -807,8 +928,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::User
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Aaa::UserGroups::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Aaa::UserGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::TtyLines::TtyLine::Aaa::UserGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user-group")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::UserGroup()
@@ -831,9 +963,9 @@ bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_data() const
 
 bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(category.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(category.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_segment_path() const
@@ -859,8 +991,8 @@ const EntityPath Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (category.is_set || is_set(category.operation)) leaf_name_data.push_back(category.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (category.is_set || is_set(category.yfilter)) leaf_name_data.push_back(category.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -879,16 +1011,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::User
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "category")
     {
         category = value;
+        category.value_namespace = name_space;
+        category.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "category")
+    {
+        category.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "category")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Aaa::Authorization::Authorization()
@@ -913,10 +1068,10 @@ bool Tty::TtyLines::TtyLine::Aaa::Authorization::has_data() const
 
 bool Tty::TtyLines::TtyLine::Aaa::Authorization::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(commands.operation)
-	|| is_set(event_manager.operation)
-	|| is_set(exec.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(commands.yfilter)
+	|| ydk::is_set(event_manager.yfilter)
+	|| ydk::is_set(exec.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Aaa::Authorization::get_segment_path() const
@@ -942,9 +1097,9 @@ const EntityPath Tty::TtyLines::TtyLine::Aaa::Authorization::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (commands.is_set || is_set(commands.operation)) leaf_name_data.push_back(commands.get_name_leafdata());
-    if (event_manager.is_set || is_set(event_manager.operation)) leaf_name_data.push_back(event_manager.get_name_leafdata());
-    if (exec.is_set || is_set(exec.operation)) leaf_name_data.push_back(exec.get_name_leafdata());
+    if (commands.is_set || is_set(commands.yfilter)) leaf_name_data.push_back(commands.get_name_leafdata());
+    if (event_manager.is_set || is_set(event_manager.yfilter)) leaf_name_data.push_back(event_manager.get_name_leafdata());
+    if (exec.is_set || is_set(exec.yfilter)) leaf_name_data.push_back(exec.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -963,20 +1118,49 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Auth
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Aaa::Authorization::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Aaa::Authorization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "commands")
     {
         commands = value;
+        commands.value_namespace = name_space;
+        commands.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-manager")
     {
         event_manager = value;
+        event_manager.value_namespace = name_space;
+        event_manager.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "exec")
     {
         exec = value;
+        exec.value_namespace = name_space;
+        exec.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Aaa::Authorization::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "commands")
+    {
+        commands.yfilter = yfilter;
+    }
+    if(value_path == "event-manager")
+    {
+        event_manager.yfilter = yfilter;
+    }
+    if(value_path == "exec")
+    {
+        exec.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Aaa::Authorization::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commands" || name == "event-manager" || name == "exec")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Aaa::Authentication::Authentication()
@@ -997,8 +1181,8 @@ bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_data() const
 
 bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(login.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(login.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Aaa::Authentication::get_segment_path() const
@@ -1024,7 +1208,7 @@ const EntityPath Tty::TtyLines::TtyLine::Aaa::Authentication::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (login.is_set || is_set(login.operation)) leaf_name_data.push_back(login.get_name_leafdata());
+    if (login.is_set || is_set(login.yfilter)) leaf_name_data.push_back(login.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1043,12 +1227,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Auth
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Aaa::Authentication::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Aaa::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "login")
     {
         login = value;
+        login.value_namespace = name_space;
+        login.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Aaa::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "login")
+    {
+        login.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "login")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Aaa::Accounting::Accounting()
@@ -1071,9 +1272,9 @@ bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_data() const
 
 bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(commands.operation)
-	|| is_set(exec.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(commands.yfilter)
+	|| ydk::is_set(exec.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Aaa::Accounting::get_segment_path() const
@@ -1099,8 +1300,8 @@ const EntityPath Tty::TtyLines::TtyLine::Aaa::Accounting::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (commands.is_set || is_set(commands.operation)) leaf_name_data.push_back(commands.get_name_leafdata());
-    if (exec.is_set || is_set(exec.operation)) leaf_name_data.push_back(exec.get_name_leafdata());
+    if (commands.is_set || is_set(commands.yfilter)) leaf_name_data.push_back(commands.get_name_leafdata());
+    if (exec.is_set || is_set(exec.yfilter)) leaf_name_data.push_back(exec.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1119,16 +1320,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::Acco
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Aaa::Accounting::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Aaa::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "commands")
     {
         commands = value;
+        commands.value_namespace = name_space;
+        commands.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "exec")
     {
         exec = value;
+        exec.value_namespace = name_space;
+        exec.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Aaa::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "commands")
+    {
+        commands.yfilter = yfilter;
+    }
+    if(value_path == "exec")
+    {
+        exec.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commands" || name == "exec")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Exec::Exec()
@@ -1152,8 +1376,8 @@ bool Tty::TtyLines::TtyLine::Exec::has_data() const
 
 bool Tty::TtyLines::TtyLine::Exec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_stamp.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(time_stamp.yfilter)
 	|| (timeout !=  nullptr && timeout->has_operation());
 }
 
@@ -1180,7 +1404,7 @@ const EntityPath Tty::TtyLines::TtyLine::Exec::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_stamp.is_set || is_set(time_stamp.operation)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
+    if (time_stamp.is_set || is_set(time_stamp.yfilter)) leaf_name_data.push_back(time_stamp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1213,12 +1437,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::get
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Exec::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-stamp")
     {
         time_stamp = value;
+        time_stamp.value_namespace = name_space;
+        time_stamp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Exec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-stamp")
+    {
+        time_stamp.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Exec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout" || name == "time-stamp")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Exec::Timeout::Timeout()
@@ -1241,9 +1482,9 @@ bool Tty::TtyLines::TtyLine::Exec::Timeout::has_data() const
 
 bool Tty::TtyLines::TtyLine::Exec::Timeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(minutes.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Exec::Timeout::get_segment_path() const
@@ -1269,8 +1510,8 @@ const EntityPath Tty::TtyLines::TtyLine::Exec::Timeout::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (minutes.is_set || is_set(minutes.operation)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1289,16 +1530,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Exec::Tim
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Exec::Timeout::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Exec::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minutes")
     {
         minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Exec::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minutes")
+    {
+        minutes.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Exec::Timeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minutes" || name == "seconds")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Connection::Connection()
@@ -1340,14 +1604,14 @@ bool Tty::TtyLines::TtyLine::Connection::has_data() const
 
 bool Tty::TtyLines::TtyLine::Connection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acl_in.operation)
-	|| is_set(acl_out.operation)
-	|| is_set(cli_white_space_completion.operation)
-	|| is_set(disconnect_character.operation)
-	|| is_set(escape_character.operation)
-	|| is_set(session_limit.operation)
-	|| is_set(transport_preferred.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(acl_in.yfilter)
+	|| ydk::is_set(acl_out.yfilter)
+	|| ydk::is_set(cli_white_space_completion.yfilter)
+	|| ydk::is_set(disconnect_character.yfilter)
+	|| ydk::is_set(escape_character.yfilter)
+	|| ydk::is_set(session_limit.yfilter)
+	|| ydk::is_set(transport_preferred.yfilter)
 	|| (session_timeout !=  nullptr && session_timeout->has_operation())
 	|| (transport_input !=  nullptr && transport_input->has_operation())
 	|| (transport_output !=  nullptr && transport_output->has_operation());
@@ -1376,13 +1640,13 @@ const EntityPath Tty::TtyLines::TtyLine::Connection::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acl_in.is_set || is_set(acl_in.operation)) leaf_name_data.push_back(acl_in.get_name_leafdata());
-    if (acl_out.is_set || is_set(acl_out.operation)) leaf_name_data.push_back(acl_out.get_name_leafdata());
-    if (cli_white_space_completion.is_set || is_set(cli_white_space_completion.operation)) leaf_name_data.push_back(cli_white_space_completion.get_name_leafdata());
-    if (disconnect_character.is_set || is_set(disconnect_character.operation)) leaf_name_data.push_back(disconnect_character.get_name_leafdata());
-    if (escape_character.is_set || is_set(escape_character.operation)) leaf_name_data.push_back(escape_character.get_name_leafdata());
-    if (session_limit.is_set || is_set(session_limit.operation)) leaf_name_data.push_back(session_limit.get_name_leafdata());
-    if (transport_preferred.is_set || is_set(transport_preferred.operation)) leaf_name_data.push_back(transport_preferred.get_name_leafdata());
+    if (acl_in.is_set || is_set(acl_in.yfilter)) leaf_name_data.push_back(acl_in.get_name_leafdata());
+    if (acl_out.is_set || is_set(acl_out.yfilter)) leaf_name_data.push_back(acl_out.get_name_leafdata());
+    if (cli_white_space_completion.is_set || is_set(cli_white_space_completion.yfilter)) leaf_name_data.push_back(cli_white_space_completion.get_name_leafdata());
+    if (disconnect_character.is_set || is_set(disconnect_character.yfilter)) leaf_name_data.push_back(disconnect_character.get_name_leafdata());
+    if (escape_character.is_set || is_set(escape_character.yfilter)) leaf_name_data.push_back(escape_character.get_name_leafdata());
+    if (session_limit.is_set || is_set(session_limit.yfilter)) leaf_name_data.push_back(session_limit.get_name_leafdata());
+    if (transport_preferred.is_set || is_set(transport_preferred.yfilter)) leaf_name_data.push_back(transport_preferred.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1443,36 +1707,89 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connectio
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Connection::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Connection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-in")
     {
         acl_in = value;
+        acl_in.value_namespace = name_space;
+        acl_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl-out")
     {
         acl_out = value;
+        acl_out.value_namespace = name_space;
+        acl_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cli-white-space-completion")
     {
         cli_white_space_completion = value;
+        cli_white_space_completion.value_namespace = name_space;
+        cli_white_space_completion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnect-character")
     {
         disconnect_character = value;
+        disconnect_character.value_namespace = name_space;
+        disconnect_character.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "escape-character")
     {
         escape_character = value;
+        escape_character.value_namespace = name_space;
+        escape_character.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-limit")
     {
         session_limit = value;
+        session_limit.value_namespace = name_space;
+        session_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport-preferred")
     {
         transport_preferred = value;
+        transport_preferred.value_namespace = name_space;
+        transport_preferred.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Connection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acl-in")
+    {
+        acl_in.yfilter = yfilter;
+    }
+    if(value_path == "acl-out")
+    {
+        acl_out.yfilter = yfilter;
+    }
+    if(value_path == "cli-white-space-completion")
+    {
+        cli_white_space_completion.yfilter = yfilter;
+    }
+    if(value_path == "disconnect-character")
+    {
+        disconnect_character.yfilter = yfilter;
+    }
+    if(value_path == "escape-character")
+    {
+        escape_character.yfilter = yfilter;
+    }
+    if(value_path == "session-limit")
+    {
+        session_limit.yfilter = yfilter;
+    }
+    if(value_path == "transport-preferred")
+    {
+        transport_preferred.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Connection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-timeout" || name == "transport-input" || name == "transport-output" || name == "acl-in" || name == "acl-out" || name == "cli-white-space-completion" || name == "disconnect-character" || name == "escape-character" || name == "session-limit" || name == "transport-preferred")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Connection::TransportInput::TransportInput()
@@ -1499,11 +1816,11 @@ bool Tty::TtyLines::TtyLine::Connection::TransportInput::has_data() const
 
 bool Tty::TtyLines::TtyLine::Connection::TransportInput::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(none.operation)
-	|| is_set(protocol1.operation)
-	|| is_set(protocol2.operation)
-	|| is_set(select.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(none.yfilter)
+	|| ydk::is_set(protocol1.yfilter)
+	|| ydk::is_set(protocol2.yfilter)
+	|| ydk::is_set(select.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Connection::TransportInput::get_segment_path() const
@@ -1529,10 +1846,10 @@ const EntityPath Tty::TtyLines::TtyLine::Connection::TransportInput::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (none.is_set || is_set(none.operation)) leaf_name_data.push_back(none.get_name_leafdata());
-    if (protocol1.is_set || is_set(protocol1.operation)) leaf_name_data.push_back(protocol1.get_name_leafdata());
-    if (protocol2.is_set || is_set(protocol2.operation)) leaf_name_data.push_back(protocol2.get_name_leafdata());
-    if (select.is_set || is_set(select.operation)) leaf_name_data.push_back(select.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+    if (protocol1.is_set || is_set(protocol1.yfilter)) leaf_name_data.push_back(protocol1.get_name_leafdata());
+    if (protocol2.is_set || is_set(protocol2.yfilter)) leaf_name_data.push_back(protocol2.get_name_leafdata());
+    if (select.is_set || is_set(select.yfilter)) leaf_name_data.push_back(select.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1551,24 +1868,59 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connectio
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Connection::TransportInput::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Connection::TransportInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "none")
     {
         none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol1")
     {
         protocol1 = value;
+        protocol1.value_namespace = name_space;
+        protocol1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol2")
     {
         protocol2 = value;
+        protocol2.value_namespace = name_space;
+        protocol2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "select")
     {
         select = value;
+        select.value_namespace = name_space;
+        select.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Connection::TransportInput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+    if(value_path == "protocol1")
+    {
+        protocol1.yfilter = yfilter;
+    }
+    if(value_path == "protocol2")
+    {
+        protocol2.yfilter = yfilter;
+    }
+    if(value_path == "select")
+    {
+        select.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Connection::TransportInput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "none" || name == "protocol1" || name == "protocol2" || name == "select")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Connection::TransportOutput::TransportOutput()
@@ -1595,11 +1947,11 @@ bool Tty::TtyLines::TtyLine::Connection::TransportOutput::has_data() const
 
 bool Tty::TtyLines::TtyLine::Connection::TransportOutput::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(none.operation)
-	|| is_set(protocol1.operation)
-	|| is_set(protocol2.operation)
-	|| is_set(select.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(none.yfilter)
+	|| ydk::is_set(protocol1.yfilter)
+	|| ydk::is_set(protocol2.yfilter)
+	|| ydk::is_set(select.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Connection::TransportOutput::get_segment_path() const
@@ -1625,10 +1977,10 @@ const EntityPath Tty::TtyLines::TtyLine::Connection::TransportOutput::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (none.is_set || is_set(none.operation)) leaf_name_data.push_back(none.get_name_leafdata());
-    if (protocol1.is_set || is_set(protocol1.operation)) leaf_name_data.push_back(protocol1.get_name_leafdata());
-    if (protocol2.is_set || is_set(protocol2.operation)) leaf_name_data.push_back(protocol2.get_name_leafdata());
-    if (select.is_set || is_set(select.operation)) leaf_name_data.push_back(select.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+    if (protocol1.is_set || is_set(protocol1.yfilter)) leaf_name_data.push_back(protocol1.get_name_leafdata());
+    if (protocol2.is_set || is_set(protocol2.yfilter)) leaf_name_data.push_back(protocol2.get_name_leafdata());
+    if (select.is_set || is_set(select.yfilter)) leaf_name_data.push_back(select.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1647,24 +1999,59 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connectio
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Connection::TransportOutput::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Connection::TransportOutput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "none")
     {
         none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol1")
     {
         protocol1 = value;
+        protocol1.value_namespace = name_space;
+        protocol1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol2")
     {
         protocol2 = value;
+        protocol2.value_namespace = name_space;
+        protocol2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "select")
     {
         select = value;
+        select.value_namespace = name_space;
+        select.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Connection::TransportOutput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+    if(value_path == "protocol1")
+    {
+        protocol1.yfilter = yfilter;
+    }
+    if(value_path == "protocol2")
+    {
+        protocol2.yfilter = yfilter;
+    }
+    if(value_path == "select")
+    {
+        select.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Connection::TransportOutput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "none" || name == "protocol1" || name == "protocol2" || name == "select")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::Connection::SessionTimeout::SessionTimeout()
@@ -1687,9 +2074,9 @@ bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_data() const
 
 bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(direction.operation)
-	|| is_set(timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_segment_path() const
@@ -1715,8 +2102,8 @@ const EntityPath Tty::TtyLines::TtyLine::Connection::SessionTimeout::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1735,16 +2122,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Connectio
     return children;
 }
 
-void Tty::TtyLines::TtyLine::Connection::SessionTimeout::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::Connection::SessionTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::Connection::SessionTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "timeout")
+        return true;
+    return false;
 }
 
 Tty::TtyLines::TtyLine::ExecMode::ExecMode()
@@ -1765,8 +2175,8 @@ bool Tty::TtyLines::TtyLine::ExecMode::has_data() const
 
 bool Tty::TtyLines::TtyLine::ExecMode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pager.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pager.yfilter);
 }
 
 std::string Tty::TtyLines::TtyLine::ExecMode::get_segment_path() const
@@ -1792,7 +2202,7 @@ const EntityPath Tty::TtyLines::TtyLine::ExecMode::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pager.is_set || is_set(pager.operation)) leaf_name_data.push_back(pager.get_name_leafdata());
+    if (pager.is_set || is_set(pager.yfilter)) leaf_name_data.push_back(pager.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1811,12 +2221,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::ExecMode:
     return children;
 }
 
-void Tty::TtyLines::TtyLine::ExecMode::set_value(const std::string & value_path, std::string value)
+void Tty::TtyLines::TtyLine::ExecMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pager")
     {
         pager = value;
+        pager.value_namespace = name_space;
+        pager.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::TtyLines::TtyLine::ExecMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pager")
+    {
+        pager.yfilter = yfilter;
+    }
+}
+
+bool Tty::TtyLines::TtyLine::ExecMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pager")
+        return true;
+    return false;
 }
 
 

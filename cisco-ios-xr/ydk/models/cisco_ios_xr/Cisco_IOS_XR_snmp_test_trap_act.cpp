@@ -6,29 +6,31 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_snmp_test_trap_act.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_snmp_test_trap_act {
 
-SnmpColdStartRpc::SnmpColdStartRpc()
+SnmpColdStart::SnmpColdStart()
 {
     yang_name = "snmp-cold-start"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-SnmpColdStartRpc::~SnmpColdStartRpc()
+SnmpColdStart::~SnmpColdStart()
 {
 }
 
-bool SnmpColdStartRpc::has_data() const
+bool SnmpColdStart::has_data() const
 {
     return false;
 }
 
-bool SnmpColdStartRpc::has_operation() const
+bool SnmpColdStart::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string SnmpColdStartRpc::get_segment_path() const
+std::string SnmpColdStart::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:snmp-cold-start";
@@ -37,7 +39,7 @@ std::string SnmpColdStartRpc::get_segment_path() const
 
 }
 
-const EntityPath SnmpColdStartRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SnmpColdStart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -55,61 +57,75 @@ const EntityPath SnmpColdStartRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SnmpColdStartRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SnmpColdStart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SnmpColdStartRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SnmpColdStart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SnmpColdStartRpc::set_value(const std::string & value_path, std::string value)
+void SnmpColdStart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> SnmpColdStartRpc::clone_ptr() const
+void SnmpColdStart::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<SnmpColdStartRpc>();
 }
 
-std::string SnmpColdStartRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> SnmpColdStart::clone_ptr() const
+{
+    return std::make_shared<SnmpColdStart>();
+}
+
+std::string SnmpColdStart::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string SnmpColdStartRpc::get_bundle_name() const
+std::string SnmpColdStart::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function SnmpColdStartRpc::get_augment_capabilities_function() const
+augment_capabilities_function SnmpColdStart::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-SnmpWarmStartRpc::SnmpWarmStartRpc()
+std::map<std::pair<std::string, std::string>, std::string> SnmpColdStart::get_namespace_identity_lookup() const
 {
-    yang_name = "snmp-warm-start"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
+    return cisco_ios_xr_namespace_identity_lookup;
 }
 
-SnmpWarmStartRpc::~SnmpWarmStartRpc()
-{
-}
-
-bool SnmpWarmStartRpc::has_data() const
+bool SnmpColdStart::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-bool SnmpWarmStartRpc::has_operation() const
+SnmpWarmStart::SnmpWarmStart()
 {
-    return is_set(operation);
+    yang_name = "snmp-warm-start"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-std::string SnmpWarmStartRpc::get_segment_path() const
+SnmpWarmStart::~SnmpWarmStart()
+{
+}
+
+bool SnmpWarmStart::has_data() const
+{
+    return false;
+}
+
+bool SnmpWarmStart::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string SnmpWarmStart::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:snmp-warm-start";
@@ -118,7 +134,7 @@ std::string SnmpWarmStartRpc::get_segment_path() const
 
 }
 
-const EntityPath SnmpWarmStartRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SnmpWarmStart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -136,66 +152,80 @@ const EntityPath SnmpWarmStartRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SnmpWarmStartRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SnmpWarmStart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SnmpWarmStartRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SnmpWarmStart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SnmpWarmStartRpc::set_value(const std::string & value_path, std::string value)
+void SnmpWarmStart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> SnmpWarmStartRpc::clone_ptr() const
+void SnmpWarmStart::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<SnmpWarmStartRpc>();
 }
 
-std::string SnmpWarmStartRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> SnmpWarmStart::clone_ptr() const
+{
+    return std::make_shared<SnmpWarmStart>();
+}
+
+std::string SnmpWarmStart::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string SnmpWarmStartRpc::get_bundle_name() const
+std::string SnmpWarmStart::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function SnmpWarmStartRpc::get_augment_capabilities_function() const
+augment_capabilities_function SnmpWarmStart::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InterfaceLinkUpRpc::InterfaceLinkUpRpc()
+std::map<std::pair<std::string, std::string>, std::string> SnmpWarmStart::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SnmpWarmStart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+InterfaceLinkUp::InterfaceLinkUp()
     :
-    input(std::make_shared<InterfaceLinkUpRpc::Input>())
+    input(std::make_shared<InterfaceLinkUp::Input>())
 {
     input->parent = this;
 
     yang_name = "interface-link-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-InterfaceLinkUpRpc::~InterfaceLinkUpRpc()
+InterfaceLinkUp::~InterfaceLinkUp()
 {
 }
 
-bool InterfaceLinkUpRpc::has_data() const
+bool InterfaceLinkUp::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool InterfaceLinkUpRpc::has_operation() const
+bool InterfaceLinkUp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string InterfaceLinkUpRpc::get_segment_path() const
+std::string InterfaceLinkUp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:interface-link-up";
@@ -204,7 +234,7 @@ std::string InterfaceLinkUpRpc::get_segment_path() const
 
 }
 
-const EntityPath InterfaceLinkUpRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceLinkUp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -222,13 +252,13 @@ const EntityPath InterfaceLinkUpRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> InterfaceLinkUpRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceLinkUp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<InterfaceLinkUpRpc::Input>();
+            input = std::make_shared<InterfaceLinkUp::Input>();
         }
         return input;
     }
@@ -236,7 +266,7 @@ std::shared_ptr<Entity> InterfaceLinkUpRpc::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkUpRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkUp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -247,53 +277,69 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkUpRpc::get_children(
     return children;
 }
 
-void InterfaceLinkUpRpc::set_value(const std::string & value_path, std::string value)
+void InterfaceLinkUp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InterfaceLinkUpRpc::clone_ptr() const
+void InterfaceLinkUp::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InterfaceLinkUpRpc>();
 }
 
-std::string InterfaceLinkUpRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InterfaceLinkUp::clone_ptr() const
+{
+    return std::make_shared<InterfaceLinkUp>();
+}
+
+std::string InterfaceLinkUp::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InterfaceLinkUpRpc::get_bundle_name() const
+std::string InterfaceLinkUp::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InterfaceLinkUpRpc::get_augment_capabilities_function() const
+augment_capabilities_function InterfaceLinkUp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InterfaceLinkUpRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> InterfaceLinkUp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool InterfaceLinkUp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InterfaceLinkUp::Input::Input()
     :
     ifindex{YType::uint32, "ifindex"}
 {
     yang_name = "input"; yang_parent_name = "interface-link-up";
 }
 
-InterfaceLinkUpRpc::Input::~Input()
+InterfaceLinkUp::Input::~Input()
 {
 }
 
-bool InterfaceLinkUpRpc::Input::has_data() const
+bool InterfaceLinkUp::Input::has_data() const
 {
     return ifindex.is_set;
 }
 
-bool InterfaceLinkUpRpc::Input::has_operation() const
+bool InterfaceLinkUp::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter);
 }
 
-std::string InterfaceLinkUpRpc::Input::get_segment_path() const
+std::string InterfaceLinkUp::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -302,7 +348,7 @@ std::string InterfaceLinkUpRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath InterfaceLinkUpRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceLinkUp::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -316,7 +362,7 @@ const EntityPath InterfaceLinkUpRpc::Input::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -324,50 +370,67 @@ const EntityPath InterfaceLinkUpRpc::Input::get_entity_path(Entity* ancestor) co
 
 }
 
-std::shared_ptr<Entity> InterfaceLinkUpRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceLinkUp::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkUpRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkUp::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InterfaceLinkUpRpc::Input::set_value(const std::string & value_path, std::string value)
+void InterfaceLinkUp::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifindex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-InterfaceLinkDownRpc::InterfaceLinkDownRpc()
+void InterfaceLinkUp::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifindex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+}
+
+bool InterfaceLinkUp::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifindex")
+        return true;
+    return false;
+}
+
+InterfaceLinkDown::InterfaceLinkDown()
     :
-    input(std::make_shared<InterfaceLinkDownRpc::Input>())
+    input(std::make_shared<InterfaceLinkDown::Input>())
 {
     input->parent = this;
 
     yang_name = "interface-link-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-InterfaceLinkDownRpc::~InterfaceLinkDownRpc()
+InterfaceLinkDown::~InterfaceLinkDown()
 {
 }
 
-bool InterfaceLinkDownRpc::has_data() const
+bool InterfaceLinkDown::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool InterfaceLinkDownRpc::has_operation() const
+bool InterfaceLinkDown::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string InterfaceLinkDownRpc::get_segment_path() const
+std::string InterfaceLinkDown::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:interface-link-down";
@@ -376,7 +439,7 @@ std::string InterfaceLinkDownRpc::get_segment_path() const
 
 }
 
-const EntityPath InterfaceLinkDownRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceLinkDown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -394,13 +457,13 @@ const EntityPath InterfaceLinkDownRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> InterfaceLinkDownRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceLinkDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<InterfaceLinkDownRpc::Input>();
+            input = std::make_shared<InterfaceLinkDown::Input>();
         }
         return input;
     }
@@ -408,7 +471,7 @@ std::shared_ptr<Entity> InterfaceLinkDownRpc::get_child_by_name(const std::strin
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkDownRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -419,53 +482,69 @@ std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkDownRpc::get_childre
     return children;
 }
 
-void InterfaceLinkDownRpc::set_value(const std::string & value_path, std::string value)
+void InterfaceLinkDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InterfaceLinkDownRpc::clone_ptr() const
+void InterfaceLinkDown::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InterfaceLinkDownRpc>();
 }
 
-std::string InterfaceLinkDownRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InterfaceLinkDown::clone_ptr() const
+{
+    return std::make_shared<InterfaceLinkDown>();
+}
+
+std::string InterfaceLinkDown::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InterfaceLinkDownRpc::get_bundle_name() const
+std::string InterfaceLinkDown::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InterfaceLinkDownRpc::get_augment_capabilities_function() const
+augment_capabilities_function InterfaceLinkDown::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InterfaceLinkDownRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> InterfaceLinkDown::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool InterfaceLinkDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InterfaceLinkDown::Input::Input()
     :
     ifindex{YType::uint32, "ifindex"}
 {
     yang_name = "input"; yang_parent_name = "interface-link-down";
 }
 
-InterfaceLinkDownRpc::Input::~Input()
+InterfaceLinkDown::Input::~Input()
 {
 }
 
-bool InterfaceLinkDownRpc::Input::has_data() const
+bool InterfaceLinkDown::Input::has_data() const
 {
     return ifindex.is_set;
 }
 
-bool InterfaceLinkDownRpc::Input::has_operation() const
+bool InterfaceLinkDown::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter);
 }
 
-std::string InterfaceLinkDownRpc::Input::get_segment_path() const
+std::string InterfaceLinkDown::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -474,7 +553,7 @@ std::string InterfaceLinkDownRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath InterfaceLinkDownRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath InterfaceLinkDown::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -488,7 +567,7 @@ const EntityPath InterfaceLinkDownRpc::Input::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -496,50 +575,67 @@ const EntityPath InterfaceLinkDownRpc::Input::get_entity_path(Entity* ancestor) 
 
 }
 
-std::shared_ptr<Entity> InterfaceLinkDownRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InterfaceLinkDown::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkDownRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InterfaceLinkDown::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InterfaceLinkDownRpc::Input::set_value(const std::string & value_path, std::string value)
+void InterfaceLinkDown::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifindex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-SonetSectionStatusRpc::SonetSectionStatusRpc()
+void InterfaceLinkDown::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifindex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+}
+
+bool InterfaceLinkDown::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifindex")
+        return true;
+    return false;
+}
+
+SonetSectionStatus::SonetSectionStatus()
     :
-    input(std::make_shared<SonetSectionStatusRpc::Input>())
+    input(std::make_shared<SonetSectionStatus::Input>())
 {
     input->parent = this;
 
     yang_name = "sonet-section-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-SonetSectionStatusRpc::~SonetSectionStatusRpc()
+SonetSectionStatus::~SonetSectionStatus()
 {
 }
 
-bool SonetSectionStatusRpc::has_data() const
+bool SonetSectionStatus::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool SonetSectionStatusRpc::has_operation() const
+bool SonetSectionStatus::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string SonetSectionStatusRpc::get_segment_path() const
+std::string SonetSectionStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:sonet-section-status";
@@ -548,7 +644,7 @@ std::string SonetSectionStatusRpc::get_segment_path() const
 
 }
 
-const EntityPath SonetSectionStatusRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SonetSectionStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -566,13 +662,13 @@ const EntityPath SonetSectionStatusRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SonetSectionStatusRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SonetSectionStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<SonetSectionStatusRpc::Input>();
+            input = std::make_shared<SonetSectionStatus::Input>();
         }
         return input;
     }
@@ -580,7 +676,7 @@ std::shared_ptr<Entity> SonetSectionStatusRpc::get_child_by_name(const std::stri
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SonetSectionStatusRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SonetSectionStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -591,53 +687,69 @@ std::map<std::string, std::shared_ptr<Entity>> SonetSectionStatusRpc::get_childr
     return children;
 }
 
-void SonetSectionStatusRpc::set_value(const std::string & value_path, std::string value)
+void SonetSectionStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> SonetSectionStatusRpc::clone_ptr() const
+void SonetSectionStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<SonetSectionStatusRpc>();
 }
 
-std::string SonetSectionStatusRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> SonetSectionStatus::clone_ptr() const
+{
+    return std::make_shared<SonetSectionStatus>();
+}
+
+std::string SonetSectionStatus::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string SonetSectionStatusRpc::get_bundle_name() const
+std::string SonetSectionStatus::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function SonetSectionStatusRpc::get_augment_capabilities_function() const
+augment_capabilities_function SonetSectionStatus::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-SonetSectionStatusRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> SonetSectionStatus::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SonetSectionStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+SonetSectionStatus::Input::Input()
     :
     ifindex{YType::uint32, "ifindex"}
 {
     yang_name = "input"; yang_parent_name = "sonet-section-status";
 }
 
-SonetSectionStatusRpc::Input::~Input()
+SonetSectionStatus::Input::~Input()
 {
 }
 
-bool SonetSectionStatusRpc::Input::has_data() const
+bool SonetSectionStatus::Input::has_data() const
 {
     return ifindex.is_set;
 }
 
-bool SonetSectionStatusRpc::Input::has_operation() const
+bool SonetSectionStatus::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter);
 }
 
-std::string SonetSectionStatusRpc::Input::get_segment_path() const
+std::string SonetSectionStatus::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -646,7 +758,7 @@ std::string SonetSectionStatusRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath SonetSectionStatusRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath SonetSectionStatus::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -660,7 +772,7 @@ const EntityPath SonetSectionStatusRpc::Input::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -668,50 +780,67 @@ const EntityPath SonetSectionStatusRpc::Input::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> SonetSectionStatusRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SonetSectionStatus::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SonetSectionStatusRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SonetSectionStatus::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SonetSectionStatusRpc::Input::set_value(const std::string & value_path, std::string value)
+void SonetSectionStatus::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifindex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-SonetLineStatusRpc::SonetLineStatusRpc()
+void SonetSectionStatus::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifindex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+}
+
+bool SonetSectionStatus::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifindex")
+        return true;
+    return false;
+}
+
+SonetLineStatus::SonetLineStatus()
     :
-    input(std::make_shared<SonetLineStatusRpc::Input>())
+    input(std::make_shared<SonetLineStatus::Input>())
 {
     input->parent = this;
 
     yang_name = "sonet-line-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-SonetLineStatusRpc::~SonetLineStatusRpc()
+SonetLineStatus::~SonetLineStatus()
 {
 }
 
-bool SonetLineStatusRpc::has_data() const
+bool SonetLineStatus::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool SonetLineStatusRpc::has_operation() const
+bool SonetLineStatus::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string SonetLineStatusRpc::get_segment_path() const
+std::string SonetLineStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:sonet-line-status";
@@ -720,7 +849,7 @@ std::string SonetLineStatusRpc::get_segment_path() const
 
 }
 
-const EntityPath SonetLineStatusRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SonetLineStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -738,13 +867,13 @@ const EntityPath SonetLineStatusRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SonetLineStatusRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SonetLineStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<SonetLineStatusRpc::Input>();
+            input = std::make_shared<SonetLineStatus::Input>();
         }
         return input;
     }
@@ -752,7 +881,7 @@ std::shared_ptr<Entity> SonetLineStatusRpc::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SonetLineStatusRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SonetLineStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -763,53 +892,69 @@ std::map<std::string, std::shared_ptr<Entity>> SonetLineStatusRpc::get_children(
     return children;
 }
 
-void SonetLineStatusRpc::set_value(const std::string & value_path, std::string value)
+void SonetLineStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> SonetLineStatusRpc::clone_ptr() const
+void SonetLineStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<SonetLineStatusRpc>();
 }
 
-std::string SonetLineStatusRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> SonetLineStatus::clone_ptr() const
+{
+    return std::make_shared<SonetLineStatus>();
+}
+
+std::string SonetLineStatus::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string SonetLineStatusRpc::get_bundle_name() const
+std::string SonetLineStatus::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function SonetLineStatusRpc::get_augment_capabilities_function() const
+augment_capabilities_function SonetLineStatus::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-SonetLineStatusRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> SonetLineStatus::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SonetLineStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+SonetLineStatus::Input::Input()
     :
     ifindex{YType::uint32, "ifindex"}
 {
     yang_name = "input"; yang_parent_name = "sonet-line-status";
 }
 
-SonetLineStatusRpc::Input::~Input()
+SonetLineStatus::Input::~Input()
 {
 }
 
-bool SonetLineStatusRpc::Input::has_data() const
+bool SonetLineStatus::Input::has_data() const
 {
     return ifindex.is_set;
 }
 
-bool SonetLineStatusRpc::Input::has_operation() const
+bool SonetLineStatus::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter);
 }
 
-std::string SonetLineStatusRpc::Input::get_segment_path() const
+std::string SonetLineStatus::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -818,7 +963,7 @@ std::string SonetLineStatusRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath SonetLineStatusRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath SonetLineStatus::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -832,7 +977,7 @@ const EntityPath SonetLineStatusRpc::Input::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -840,50 +985,67 @@ const EntityPath SonetLineStatusRpc::Input::get_entity_path(Entity* ancestor) co
 
 }
 
-std::shared_ptr<Entity> SonetLineStatusRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SonetLineStatus::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SonetLineStatusRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SonetLineStatus::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SonetLineStatusRpc::Input::set_value(const std::string & value_path, std::string value)
+void SonetLineStatus::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifindex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-SonetPathStatusRpc::SonetPathStatusRpc()
+void SonetLineStatus::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifindex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+}
+
+bool SonetLineStatus::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifindex")
+        return true;
+    return false;
+}
+
+SonetPathStatus::SonetPathStatus()
     :
-    input(std::make_shared<SonetPathStatusRpc::Input>())
+    input(std::make_shared<SonetPathStatus::Input>())
 {
     input->parent = this;
 
     yang_name = "sonet-path-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-SonetPathStatusRpc::~SonetPathStatusRpc()
+SonetPathStatus::~SonetPathStatus()
 {
 }
 
-bool SonetPathStatusRpc::has_data() const
+bool SonetPathStatus::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool SonetPathStatusRpc::has_operation() const
+bool SonetPathStatus::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string SonetPathStatusRpc::get_segment_path() const
+std::string SonetPathStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:sonet-path-status";
@@ -892,7 +1054,7 @@ std::string SonetPathStatusRpc::get_segment_path() const
 
 }
 
-const EntityPath SonetPathStatusRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SonetPathStatus::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -910,13 +1072,13 @@ const EntityPath SonetPathStatusRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SonetPathStatusRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SonetPathStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<SonetPathStatusRpc::Input>();
+            input = std::make_shared<SonetPathStatus::Input>();
         }
         return input;
     }
@@ -924,7 +1086,7 @@ std::shared_ptr<Entity> SonetPathStatusRpc::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SonetPathStatusRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SonetPathStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -935,53 +1097,69 @@ std::map<std::string, std::shared_ptr<Entity>> SonetPathStatusRpc::get_children(
     return children;
 }
 
-void SonetPathStatusRpc::set_value(const std::string & value_path, std::string value)
+void SonetPathStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> SonetPathStatusRpc::clone_ptr() const
+void SonetPathStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<SonetPathStatusRpc>();
 }
 
-std::string SonetPathStatusRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> SonetPathStatus::clone_ptr() const
+{
+    return std::make_shared<SonetPathStatus>();
+}
+
+std::string SonetPathStatus::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string SonetPathStatusRpc::get_bundle_name() const
+std::string SonetPathStatus::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function SonetPathStatusRpc::get_augment_capabilities_function() const
+augment_capabilities_function SonetPathStatus::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-SonetPathStatusRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> SonetPathStatus::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SonetPathStatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+SonetPathStatus::Input::Input()
     :
     ifindex{YType::uint32, "ifindex"}
 {
     yang_name = "input"; yang_parent_name = "sonet-path-status";
 }
 
-SonetPathStatusRpc::Input::~Input()
+SonetPathStatus::Input::~Input()
 {
 }
 
-bool SonetPathStatusRpc::Input::has_data() const
+bool SonetPathStatus::Input::has_data() const
 {
     return ifindex.is_set;
 }
 
-bool SonetPathStatusRpc::Input::has_operation() const
+bool SonetPathStatus::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter);
 }
 
-std::string SonetPathStatusRpc::Input::get_segment_path() const
+std::string SonetPathStatus::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -990,7 +1168,7 @@ std::string SonetPathStatusRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath SonetPathStatusRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath SonetPathStatus::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1004,7 +1182,7 @@ const EntityPath SonetPathStatusRpc::Input::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1012,45 +1190,62 @@ const EntityPath SonetPathStatusRpc::Input::get_entity_path(Entity* ancestor) co
 
 }
 
-std::shared_ptr<Entity> SonetPathStatusRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SonetPathStatus::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SonetPathStatusRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SonetPathStatus::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SonetPathStatusRpc::Input::set_value(const std::string & value_path, std::string value)
+void SonetPathStatus::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifindex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-InfraSyslogMessageGeneratedRpc::InfraSyslogMessageGeneratedRpc()
+void SonetPathStatus::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifindex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+}
+
+bool SonetPathStatus::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifindex")
+        return true;
+    return false;
+}
+
+InfraSyslogMessageGenerated::InfraSyslogMessageGenerated()
 {
     yang_name = "infra-syslog-message-generated"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-InfraSyslogMessageGeneratedRpc::~InfraSyslogMessageGeneratedRpc()
+InfraSyslogMessageGenerated::~InfraSyslogMessageGenerated()
 {
 }
 
-bool InfraSyslogMessageGeneratedRpc::has_data() const
+bool InfraSyslogMessageGenerated::has_data() const
 {
     return false;
 }
 
-bool InfraSyslogMessageGeneratedRpc::has_operation() const
+bool InfraSyslogMessageGenerated::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string InfraSyslogMessageGeneratedRpc::get_segment_path() const
+std::string InfraSyslogMessageGenerated::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:infra-syslog-message-generated";
@@ -1059,7 +1254,7 @@ std::string InfraSyslogMessageGeneratedRpc::get_segment_path() const
 
 }
 
-const EntityPath InfraSyslogMessageGeneratedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InfraSyslogMessageGenerated::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1077,61 +1272,75 @@ const EntityPath InfraSyslogMessageGeneratedRpc::get_entity_path(Entity* ancesto
 
 }
 
-std::shared_ptr<Entity> InfraSyslogMessageGeneratedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InfraSyslogMessageGenerated::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InfraSyslogMessageGeneratedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InfraSyslogMessageGenerated::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InfraSyslogMessageGeneratedRpc::set_value(const std::string & value_path, std::string value)
+void InfraSyslogMessageGenerated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InfraSyslogMessageGeneratedRpc::clone_ptr() const
+void InfraSyslogMessageGenerated::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InfraSyslogMessageGeneratedRpc>();
 }
 
-std::string InfraSyslogMessageGeneratedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InfraSyslogMessageGenerated::clone_ptr() const
+{
+    return std::make_shared<InfraSyslogMessageGenerated>();
+}
+
+std::string InfraSyslogMessageGenerated::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InfraSyslogMessageGeneratedRpc::get_bundle_name() const
+std::string InfraSyslogMessageGenerated::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InfraSyslogMessageGeneratedRpc::get_augment_capabilities_function() const
+augment_capabilities_function InfraSyslogMessageGenerated::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InfraFlashDeviceInsertedRpc::InfraFlashDeviceInsertedRpc()
+std::map<std::pair<std::string, std::string>, std::string> InfraSyslogMessageGenerated::get_namespace_identity_lookup() const
 {
-    yang_name = "infra-flash-device-inserted"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
+    return cisco_ios_xr_namespace_identity_lookup;
 }
 
-InfraFlashDeviceInsertedRpc::~InfraFlashDeviceInsertedRpc()
-{
-}
-
-bool InfraFlashDeviceInsertedRpc::has_data() const
+bool InfraSyslogMessageGenerated::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-bool InfraFlashDeviceInsertedRpc::has_operation() const
+InfraFlashDeviceInserted::InfraFlashDeviceInserted()
 {
-    return is_set(operation);
+    yang_name = "infra-flash-device-inserted"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-std::string InfraFlashDeviceInsertedRpc::get_segment_path() const
+InfraFlashDeviceInserted::~InfraFlashDeviceInserted()
+{
+}
+
+bool InfraFlashDeviceInserted::has_data() const
+{
+    return false;
+}
+
+bool InfraFlashDeviceInserted::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string InfraFlashDeviceInserted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:infra-flash-device-inserted";
@@ -1140,7 +1349,7 @@ std::string InfraFlashDeviceInsertedRpc::get_segment_path() const
 
 }
 
-const EntityPath InfraFlashDeviceInsertedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InfraFlashDeviceInserted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1158,61 +1367,75 @@ const EntityPath InfraFlashDeviceInsertedRpc::get_entity_path(Entity* ancestor) 
 
 }
 
-std::shared_ptr<Entity> InfraFlashDeviceInsertedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InfraFlashDeviceInserted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InfraFlashDeviceInsertedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InfraFlashDeviceInserted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InfraFlashDeviceInsertedRpc::set_value(const std::string & value_path, std::string value)
+void InfraFlashDeviceInserted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InfraFlashDeviceInsertedRpc::clone_ptr() const
+void InfraFlashDeviceInserted::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InfraFlashDeviceInsertedRpc>();
 }
 
-std::string InfraFlashDeviceInsertedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InfraFlashDeviceInserted::clone_ptr() const
+{
+    return std::make_shared<InfraFlashDeviceInserted>();
+}
+
+std::string InfraFlashDeviceInserted::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InfraFlashDeviceInsertedRpc::get_bundle_name() const
+std::string InfraFlashDeviceInserted::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InfraFlashDeviceInsertedRpc::get_augment_capabilities_function() const
+augment_capabilities_function InfraFlashDeviceInserted::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InfraFlashDeviceRemovedRpc::InfraFlashDeviceRemovedRpc()
+std::map<std::pair<std::string, std::string>, std::string> InfraFlashDeviceInserted::get_namespace_identity_lookup() const
 {
-    yang_name = "infra-flash-device-removed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
+    return cisco_ios_xr_namespace_identity_lookup;
 }
 
-InfraFlashDeviceRemovedRpc::~InfraFlashDeviceRemovedRpc()
-{
-}
-
-bool InfraFlashDeviceRemovedRpc::has_data() const
+bool InfraFlashDeviceInserted::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-bool InfraFlashDeviceRemovedRpc::has_operation() const
+InfraFlashDeviceRemoved::InfraFlashDeviceRemoved()
 {
-    return is_set(operation);
+    yang_name = "infra-flash-device-removed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-std::string InfraFlashDeviceRemovedRpc::get_segment_path() const
+InfraFlashDeviceRemoved::~InfraFlashDeviceRemoved()
+{
+}
+
+bool InfraFlashDeviceRemoved::has_data() const
+{
+    return false;
+}
+
+bool InfraFlashDeviceRemoved::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string InfraFlashDeviceRemoved::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:infra-flash-device-removed";
@@ -1221,7 +1444,7 @@ std::string InfraFlashDeviceRemovedRpc::get_segment_path() const
 
 }
 
-const EntityPath InfraFlashDeviceRemovedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InfraFlashDeviceRemoved::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1239,61 +1462,75 @@ const EntityPath InfraFlashDeviceRemovedRpc::get_entity_path(Entity* ancestor) c
 
 }
 
-std::shared_ptr<Entity> InfraFlashDeviceRemovedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InfraFlashDeviceRemoved::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InfraFlashDeviceRemovedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InfraFlashDeviceRemoved::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InfraFlashDeviceRemovedRpc::set_value(const std::string & value_path, std::string value)
+void InfraFlashDeviceRemoved::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InfraFlashDeviceRemovedRpc::clone_ptr() const
+void InfraFlashDeviceRemoved::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InfraFlashDeviceRemovedRpc>();
 }
 
-std::string InfraFlashDeviceRemovedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InfraFlashDeviceRemoved::clone_ptr() const
+{
+    return std::make_shared<InfraFlashDeviceRemoved>();
+}
+
+std::string InfraFlashDeviceRemoved::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InfraFlashDeviceRemovedRpc::get_bundle_name() const
+std::string InfraFlashDeviceRemoved::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InfraFlashDeviceRemovedRpc::get_augment_capabilities_function() const
+augment_capabilities_function InfraFlashDeviceRemoved::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InfraRedundancyProgressionRpc::InfraRedundancyProgressionRpc()
+std::map<std::pair<std::string, std::string>, std::string> InfraFlashDeviceRemoved::get_namespace_identity_lookup() const
 {
-    yang_name = "infra-redundancy-progression"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
+    return cisco_ios_xr_namespace_identity_lookup;
 }
 
-InfraRedundancyProgressionRpc::~InfraRedundancyProgressionRpc()
-{
-}
-
-bool InfraRedundancyProgressionRpc::has_data() const
+bool InfraFlashDeviceRemoved::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-bool InfraRedundancyProgressionRpc::has_operation() const
+InfraRedundancyProgression::InfraRedundancyProgression()
 {
-    return is_set(operation);
+    yang_name = "infra-redundancy-progression"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-std::string InfraRedundancyProgressionRpc::get_segment_path() const
+InfraRedundancyProgression::~InfraRedundancyProgression()
+{
+}
+
+bool InfraRedundancyProgression::has_data() const
+{
+    return false;
+}
+
+bool InfraRedundancyProgression::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string InfraRedundancyProgression::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:infra-redundancy-progression";
@@ -1302,7 +1539,7 @@ std::string InfraRedundancyProgressionRpc::get_segment_path() const
 
 }
 
-const EntityPath InfraRedundancyProgressionRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InfraRedundancyProgression::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1320,61 +1557,75 @@ const EntityPath InfraRedundancyProgressionRpc::get_entity_path(Entity* ancestor
 
 }
 
-std::shared_ptr<Entity> InfraRedundancyProgressionRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InfraRedundancyProgression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InfraRedundancyProgressionRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InfraRedundancyProgression::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InfraRedundancyProgressionRpc::set_value(const std::string & value_path, std::string value)
+void InfraRedundancyProgression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InfraRedundancyProgressionRpc::clone_ptr() const
+void InfraRedundancyProgression::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InfraRedundancyProgressionRpc>();
 }
 
-std::string InfraRedundancyProgressionRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InfraRedundancyProgression::clone_ptr() const
+{
+    return std::make_shared<InfraRedundancyProgression>();
+}
+
+std::string InfraRedundancyProgression::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InfraRedundancyProgressionRpc::get_bundle_name() const
+std::string InfraRedundancyProgression::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InfraRedundancyProgressionRpc::get_augment_capabilities_function() const
+augment_capabilities_function InfraRedundancyProgression::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InfraRedundancySwitchRpc::InfraRedundancySwitchRpc()
+std::map<std::pair<std::string, std::string>, std::string> InfraRedundancyProgression::get_namespace_identity_lookup() const
 {
-    yang_name = "infra-redundancy-switch"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
+    return cisco_ios_xr_namespace_identity_lookup;
 }
 
-InfraRedundancySwitchRpc::~InfraRedundancySwitchRpc()
-{
-}
-
-bool InfraRedundancySwitchRpc::has_data() const
+bool InfraRedundancyProgression::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-bool InfraRedundancySwitchRpc::has_operation() const
+InfraRedundancySwitch::InfraRedundancySwitch()
 {
-    return is_set(operation);
+    yang_name = "infra-redundancy-switch"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-std::string InfraRedundancySwitchRpc::get_segment_path() const
+InfraRedundancySwitch::~InfraRedundancySwitch()
+{
+}
+
+bool InfraRedundancySwitch::has_data() const
+{
+    return false;
+}
+
+bool InfraRedundancySwitch::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string InfraRedundancySwitch::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:infra-redundancy-switch";
@@ -1383,7 +1634,7 @@ std::string InfraRedundancySwitchRpc::get_segment_path() const
 
 }
 
-const EntityPath InfraRedundancySwitchRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InfraRedundancySwitch::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1401,61 +1652,75 @@ const EntityPath InfraRedundancySwitchRpc::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> InfraRedundancySwitchRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InfraRedundancySwitch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InfraRedundancySwitchRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InfraRedundancySwitch::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InfraRedundancySwitchRpc::set_value(const std::string & value_path, std::string value)
+void InfraRedundancySwitch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InfraRedundancySwitchRpc::clone_ptr() const
+void InfraRedundancySwitch::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InfraRedundancySwitchRpc>();
 }
 
-std::string InfraRedundancySwitchRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InfraRedundancySwitch::clone_ptr() const
+{
+    return std::make_shared<InfraRedundancySwitch>();
+}
+
+std::string InfraRedundancySwitch::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InfraRedundancySwitchRpc::get_bundle_name() const
+std::string InfraRedundancySwitch::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InfraRedundancySwitchRpc::get_augment_capabilities_function() const
+augment_capabilities_function InfraRedundancySwitch::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InfraBridgeNewRootRpc::InfraBridgeNewRootRpc()
+std::map<std::pair<std::string, std::string>, std::string> InfraRedundancySwitch::get_namespace_identity_lookup() const
 {
-    yang_name = "infra-bridge-new-root"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
+    return cisco_ios_xr_namespace_identity_lookup;
 }
 
-InfraBridgeNewRootRpc::~InfraBridgeNewRootRpc()
-{
-}
-
-bool InfraBridgeNewRootRpc::has_data() const
+bool InfraRedundancySwitch::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-bool InfraBridgeNewRootRpc::has_operation() const
+InfraBridgeNewRoot::InfraBridgeNewRoot()
 {
-    return is_set(operation);
+    yang_name = "infra-bridge-new-root"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-std::string InfraBridgeNewRootRpc::get_segment_path() const
+InfraBridgeNewRoot::~InfraBridgeNewRoot()
+{
+}
+
+bool InfraBridgeNewRoot::has_data() const
+{
+    return false;
+}
+
+bool InfraBridgeNewRoot::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string InfraBridgeNewRoot::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:infra-bridge-new-root";
@@ -1464,7 +1729,7 @@ std::string InfraBridgeNewRootRpc::get_segment_path() const
 
 }
 
-const EntityPath InfraBridgeNewRootRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InfraBridgeNewRoot::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1482,61 +1747,75 @@ const EntityPath InfraBridgeNewRootRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> InfraBridgeNewRootRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InfraBridgeNewRoot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InfraBridgeNewRootRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InfraBridgeNewRoot::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InfraBridgeNewRootRpc::set_value(const std::string & value_path, std::string value)
+void InfraBridgeNewRoot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InfraBridgeNewRootRpc::clone_ptr() const
+void InfraBridgeNewRoot::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InfraBridgeNewRootRpc>();
 }
 
-std::string InfraBridgeNewRootRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InfraBridgeNewRoot::clone_ptr() const
+{
+    return std::make_shared<InfraBridgeNewRoot>();
+}
+
+std::string InfraBridgeNewRoot::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InfraBridgeNewRootRpc::get_bundle_name() const
+std::string InfraBridgeNewRoot::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InfraBridgeNewRootRpc::get_augment_capabilities_function() const
+augment_capabilities_function InfraBridgeNewRoot::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InfraBridgeTopologyChangeRpc::InfraBridgeTopologyChangeRpc()
+std::map<std::pair<std::string, std::string>, std::string> InfraBridgeNewRoot::get_namespace_identity_lookup() const
 {
-    yang_name = "infra-bridge-topology-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
+    return cisco_ios_xr_namespace_identity_lookup;
 }
 
-InfraBridgeTopologyChangeRpc::~InfraBridgeTopologyChangeRpc()
-{
-}
-
-bool InfraBridgeTopologyChangeRpc::has_data() const
+bool InfraBridgeNewRoot::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-bool InfraBridgeTopologyChangeRpc::has_operation() const
+InfraBridgeTopologyChange::InfraBridgeTopologyChange()
 {
-    return is_set(operation);
+    yang_name = "infra-bridge-topology-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-std::string InfraBridgeTopologyChangeRpc::get_segment_path() const
+InfraBridgeTopologyChange::~InfraBridgeTopologyChange()
+{
+}
+
+bool InfraBridgeTopologyChange::has_data() const
+{
+    return false;
+}
+
+bool InfraBridgeTopologyChange::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string InfraBridgeTopologyChange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:infra-bridge-topology-change";
@@ -1545,7 +1824,7 @@ std::string InfraBridgeTopologyChangeRpc::get_segment_path() const
 
 }
 
-const EntityPath InfraBridgeTopologyChangeRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InfraBridgeTopologyChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1563,61 +1842,75 @@ const EntityPath InfraBridgeTopologyChangeRpc::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> InfraBridgeTopologyChangeRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InfraBridgeTopologyChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InfraBridgeTopologyChangeRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InfraBridgeTopologyChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InfraBridgeTopologyChangeRpc::set_value(const std::string & value_path, std::string value)
+void InfraBridgeTopologyChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InfraBridgeTopologyChangeRpc::clone_ptr() const
+void InfraBridgeTopologyChange::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InfraBridgeTopologyChangeRpc>();
 }
 
-std::string InfraBridgeTopologyChangeRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InfraBridgeTopologyChange::clone_ptr() const
+{
+    return std::make_shared<InfraBridgeTopologyChange>();
+}
+
+std::string InfraBridgeTopologyChange::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InfraBridgeTopologyChangeRpc::get_bundle_name() const
+std::string InfraBridgeTopologyChange::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InfraBridgeTopologyChangeRpc::get_augment_capabilities_function() const
+augment_capabilities_function InfraBridgeTopologyChange::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-InfraConfigEventRpc::InfraConfigEventRpc()
+std::map<std::pair<std::string, std::string>, std::string> InfraBridgeTopologyChange::get_namespace_identity_lookup() const
 {
-    yang_name = "infra-config-event"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
+    return cisco_ios_xr_namespace_identity_lookup;
 }
 
-InfraConfigEventRpc::~InfraConfigEventRpc()
-{
-}
-
-bool InfraConfigEventRpc::has_data() const
+bool InfraBridgeTopologyChange::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-bool InfraConfigEventRpc::has_operation() const
+InfraConfigEvent::InfraConfigEvent()
 {
-    return is_set(operation);
+    yang_name = "infra-config-event"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-std::string InfraConfigEventRpc::get_segment_path() const
+InfraConfigEvent::~InfraConfigEvent()
+{
+}
+
+bool InfraConfigEvent::has_data() const
+{
+    return false;
+}
+
+bool InfraConfigEvent::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string InfraConfigEvent::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:infra-config-event";
@@ -1626,7 +1919,7 @@ std::string InfraConfigEventRpc::get_segment_path() const
 
 }
 
-const EntityPath InfraConfigEventRpc::get_entity_path(Entity* ancestor) const
+const EntityPath InfraConfigEvent::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1644,66 +1937,80 @@ const EntityPath InfraConfigEventRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> InfraConfigEventRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> InfraConfigEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> InfraConfigEventRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> InfraConfigEvent::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void InfraConfigEventRpc::set_value(const std::string & value_path, std::string value)
+void InfraConfigEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> InfraConfigEventRpc::clone_ptr() const
+void InfraConfigEvent::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<InfraConfigEventRpc>();
 }
 
-std::string InfraConfigEventRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> InfraConfigEvent::clone_ptr() const
+{
+    return std::make_shared<InfraConfigEvent>();
+}
+
+std::string InfraConfigEvent::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string InfraConfigEventRpc::get_bundle_name() const
+std::string InfraConfigEvent::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function InfraConfigEventRpc::get_augment_capabilities_function() const
+augment_capabilities_function InfraConfigEvent::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-EntitySensorThresholdNotificationRpc::EntitySensorThresholdNotificationRpc()
+std::map<std::pair<std::string, std::string>, std::string> InfraConfigEvent::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool InfraConfigEvent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+EntitySensorThresholdNotification::EntitySensorThresholdNotification()
     :
-    input(std::make_shared<EntitySensorThresholdNotificationRpc::Input>())
+    input(std::make_shared<EntitySensorThresholdNotification::Input>())
 {
     input->parent = this;
 
     yang_name = "entity-sensor-threshold-notification"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-EntitySensorThresholdNotificationRpc::~EntitySensorThresholdNotificationRpc()
+EntitySensorThresholdNotification::~EntitySensorThresholdNotification()
 {
 }
 
-bool EntitySensorThresholdNotificationRpc::has_data() const
+bool EntitySensorThresholdNotification::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool EntitySensorThresholdNotificationRpc::has_operation() const
+bool EntitySensorThresholdNotification::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string EntitySensorThresholdNotificationRpc::get_segment_path() const
+std::string EntitySensorThresholdNotification::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:entity-sensor-threshold-notification";
@@ -1712,7 +2019,7 @@ std::string EntitySensorThresholdNotificationRpc::get_segment_path() const
 
 }
 
-const EntityPath EntitySensorThresholdNotificationRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EntitySensorThresholdNotification::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1730,13 +2037,13 @@ const EntityPath EntitySensorThresholdNotificationRpc::get_entity_path(Entity* a
 
 }
 
-std::shared_ptr<Entity> EntitySensorThresholdNotificationRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntitySensorThresholdNotification::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<EntitySensorThresholdNotificationRpc::Input>();
+            input = std::make_shared<EntitySensorThresholdNotification::Input>();
         }
         return input;
     }
@@ -1744,7 +2051,7 @@ std::shared_ptr<Entity> EntitySensorThresholdNotificationRpc::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntitySensorThresholdNotificationRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntitySensorThresholdNotification::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -1755,53 +2062,69 @@ std::map<std::string, std::shared_ptr<Entity>> EntitySensorThresholdNotification
     return children;
 }
 
-void EntitySensorThresholdNotificationRpc::set_value(const std::string & value_path, std::string value)
+void EntitySensorThresholdNotification::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> EntitySensorThresholdNotificationRpc::clone_ptr() const
+void EntitySensorThresholdNotification::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<EntitySensorThresholdNotificationRpc>();
 }
 
-std::string EntitySensorThresholdNotificationRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> EntitySensorThresholdNotification::clone_ptr() const
+{
+    return std::make_shared<EntitySensorThresholdNotification>();
+}
+
+std::string EntitySensorThresholdNotification::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string EntitySensorThresholdNotificationRpc::get_bundle_name() const
+std::string EntitySensorThresholdNotification::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function EntitySensorThresholdNotificationRpc::get_augment_capabilities_function() const
+augment_capabilities_function EntitySensorThresholdNotification::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-EntitySensorThresholdNotificationRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> EntitySensorThresholdNotification::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EntitySensorThresholdNotification::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+EntitySensorThresholdNotification::Input::Input()
     :
     entindex{YType::uint32, "entindex"}
 {
     yang_name = "input"; yang_parent_name = "entity-sensor-threshold-notification";
 }
 
-EntitySensorThresholdNotificationRpc::Input::~Input()
+EntitySensorThresholdNotification::Input::~Input()
 {
 }
 
-bool EntitySensorThresholdNotificationRpc::Input::has_data() const
+bool EntitySensorThresholdNotification::Input::has_data() const
 {
     return entindex.is_set;
 }
 
-bool EntitySensorThresholdNotificationRpc::Input::has_operation() const
+bool EntitySensorThresholdNotification::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entindex.yfilter);
 }
 
-std::string EntitySensorThresholdNotificationRpc::Input::get_segment_path() const
+std::string EntitySensorThresholdNotification::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -1810,7 +2133,7 @@ std::string EntitySensorThresholdNotificationRpc::Input::get_segment_path() cons
 
 }
 
-const EntityPath EntitySensorThresholdNotificationRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath EntitySensorThresholdNotification::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1824,7 +2147,7 @@ const EntityPath EntitySensorThresholdNotificationRpc::Input::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entindex.is_set || is_set(entindex.operation)) leaf_name_data.push_back(entindex.get_name_leafdata());
+    if (entindex.is_set || is_set(entindex.yfilter)) leaf_name_data.push_back(entindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1832,50 +2155,67 @@ const EntityPath EntitySensorThresholdNotificationRpc::Input::get_entity_path(En
 
 }
 
-std::shared_ptr<Entity> EntitySensorThresholdNotificationRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntitySensorThresholdNotification::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntitySensorThresholdNotificationRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntitySensorThresholdNotification::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EntitySensorThresholdNotificationRpc::Input::set_value(const std::string & value_path, std::string value)
+void EntitySensorThresholdNotification::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entindex")
     {
         entindex = value;
+        entindex.value_namespace = name_space;
+        entindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-EntityFruPowerStatusChangeFailedRpc::EntityFruPowerStatusChangeFailedRpc()
+void EntitySensorThresholdNotification::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entindex")
+    {
+        entindex.yfilter = yfilter;
+    }
+}
+
+bool EntitySensorThresholdNotification::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entindex")
+        return true;
+    return false;
+}
+
+EntityFruPowerStatusChangeFailed::EntityFruPowerStatusChangeFailed()
     :
-    input(std::make_shared<EntityFruPowerStatusChangeFailedRpc::Input>())
+    input(std::make_shared<EntityFruPowerStatusChangeFailed::Input>())
 {
     input->parent = this;
 
     yang_name = "entity-fru-power-status-change-failed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-EntityFruPowerStatusChangeFailedRpc::~EntityFruPowerStatusChangeFailedRpc()
+EntityFruPowerStatusChangeFailed::~EntityFruPowerStatusChangeFailed()
 {
 }
 
-bool EntityFruPowerStatusChangeFailedRpc::has_data() const
+bool EntityFruPowerStatusChangeFailed::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool EntityFruPowerStatusChangeFailedRpc::has_operation() const
+bool EntityFruPowerStatusChangeFailed::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string EntityFruPowerStatusChangeFailedRpc::get_segment_path() const
+std::string EntityFruPowerStatusChangeFailed::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:entity-fru-power-status-change-failed";
@@ -1884,7 +2224,7 @@ std::string EntityFruPowerStatusChangeFailedRpc::get_segment_path() const
 
 }
 
-const EntityPath EntityFruPowerStatusChangeFailedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruPowerStatusChangeFailed::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -1902,13 +2242,13 @@ const EntityPath EntityFruPowerStatusChangeFailedRpc::get_entity_path(Entity* an
 
 }
 
-std::shared_ptr<Entity> EntityFruPowerStatusChangeFailedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruPowerStatusChangeFailed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<EntityFruPowerStatusChangeFailedRpc::Input>();
+            input = std::make_shared<EntityFruPowerStatusChangeFailed::Input>();
         }
         return input;
     }
@@ -1916,7 +2256,7 @@ std::shared_ptr<Entity> EntityFruPowerStatusChangeFailedRpc::get_child_by_name(c
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruPowerStatusChangeFailedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruPowerStatusChangeFailed::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -1927,53 +2267,69 @@ std::map<std::string, std::shared_ptr<Entity>> EntityFruPowerStatusChangeFailedR
     return children;
 }
 
-void EntityFruPowerStatusChangeFailedRpc::set_value(const std::string & value_path, std::string value)
+void EntityFruPowerStatusChangeFailed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> EntityFruPowerStatusChangeFailedRpc::clone_ptr() const
+void EntityFruPowerStatusChangeFailed::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<EntityFruPowerStatusChangeFailedRpc>();
 }
 
-std::string EntityFruPowerStatusChangeFailedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> EntityFruPowerStatusChangeFailed::clone_ptr() const
+{
+    return std::make_shared<EntityFruPowerStatusChangeFailed>();
+}
+
+std::string EntityFruPowerStatusChangeFailed::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string EntityFruPowerStatusChangeFailedRpc::get_bundle_name() const
+std::string EntityFruPowerStatusChangeFailed::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function EntityFruPowerStatusChangeFailedRpc::get_augment_capabilities_function() const
+augment_capabilities_function EntityFruPowerStatusChangeFailed::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-EntityFruPowerStatusChangeFailedRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> EntityFruPowerStatusChangeFailed::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EntityFruPowerStatusChangeFailed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+EntityFruPowerStatusChangeFailed::Input::Input()
     :
     entindex{YType::uint32, "entindex"}
 {
     yang_name = "input"; yang_parent_name = "entity-fru-power-status-change-failed";
 }
 
-EntityFruPowerStatusChangeFailedRpc::Input::~Input()
+EntityFruPowerStatusChangeFailed::Input::~Input()
 {
 }
 
-bool EntityFruPowerStatusChangeFailedRpc::Input::has_data() const
+bool EntityFruPowerStatusChangeFailed::Input::has_data() const
 {
     return entindex.is_set;
 }
 
-bool EntityFruPowerStatusChangeFailedRpc::Input::has_operation() const
+bool EntityFruPowerStatusChangeFailed::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entindex.yfilter);
 }
 
-std::string EntityFruPowerStatusChangeFailedRpc::Input::get_segment_path() const
+std::string EntityFruPowerStatusChangeFailed::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -1982,7 +2338,7 @@ std::string EntityFruPowerStatusChangeFailedRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath EntityFruPowerStatusChangeFailedRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruPowerStatusChangeFailed::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1996,7 +2352,7 @@ const EntityPath EntityFruPowerStatusChangeFailedRpc::Input::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entindex.is_set || is_set(entindex.operation)) leaf_name_data.push_back(entindex.get_name_leafdata());
+    if (entindex.is_set || is_set(entindex.yfilter)) leaf_name_data.push_back(entindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2004,50 +2360,67 @@ const EntityPath EntityFruPowerStatusChangeFailedRpc::Input::get_entity_path(Ent
 
 }
 
-std::shared_ptr<Entity> EntityFruPowerStatusChangeFailedRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruPowerStatusChangeFailed::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruPowerStatusChangeFailedRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruPowerStatusChangeFailed::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EntityFruPowerStatusChangeFailedRpc::Input::set_value(const std::string & value_path, std::string value)
+void EntityFruPowerStatusChangeFailed::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entindex")
     {
         entindex = value;
+        entindex.value_namespace = name_space;
+        entindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-EntityFruModuleStatusChangeUpRpc::EntityFruModuleStatusChangeUpRpc()
+void EntityFruPowerStatusChangeFailed::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entindex")
+    {
+        entindex.yfilter = yfilter;
+    }
+}
+
+bool EntityFruPowerStatusChangeFailed::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entindex")
+        return true;
+    return false;
+}
+
+EntityFruModuleStatusChangeUp::EntityFruModuleStatusChangeUp()
     :
-    input(std::make_shared<EntityFruModuleStatusChangeUpRpc::Input>())
+    input(std::make_shared<EntityFruModuleStatusChangeUp::Input>())
 {
     input->parent = this;
 
     yang_name = "entity-fru-module-status-change-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-EntityFruModuleStatusChangeUpRpc::~EntityFruModuleStatusChangeUpRpc()
+EntityFruModuleStatusChangeUp::~EntityFruModuleStatusChangeUp()
 {
 }
 
-bool EntityFruModuleStatusChangeUpRpc::has_data() const
+bool EntityFruModuleStatusChangeUp::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool EntityFruModuleStatusChangeUpRpc::has_operation() const
+bool EntityFruModuleStatusChangeUp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string EntityFruModuleStatusChangeUpRpc::get_segment_path() const
+std::string EntityFruModuleStatusChangeUp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:entity-fru-module-status-change-up";
@@ -2056,7 +2429,7 @@ std::string EntityFruModuleStatusChangeUpRpc::get_segment_path() const
 
 }
 
-const EntityPath EntityFruModuleStatusChangeUpRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruModuleStatusChangeUp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2074,13 +2447,13 @@ const EntityPath EntityFruModuleStatusChangeUpRpc::get_entity_path(Entity* ances
 
 }
 
-std::shared_ptr<Entity> EntityFruModuleStatusChangeUpRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruModuleStatusChangeUp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<EntityFruModuleStatusChangeUpRpc::Input>();
+            input = std::make_shared<EntityFruModuleStatusChangeUp::Input>();
         }
         return input;
     }
@@ -2088,7 +2461,7 @@ std::shared_ptr<Entity> EntityFruModuleStatusChangeUpRpc::get_child_by_name(cons
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeUpRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeUp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2099,53 +2472,69 @@ std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeUpRpc:
     return children;
 }
 
-void EntityFruModuleStatusChangeUpRpc::set_value(const std::string & value_path, std::string value)
+void EntityFruModuleStatusChangeUp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> EntityFruModuleStatusChangeUpRpc::clone_ptr() const
+void EntityFruModuleStatusChangeUp::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<EntityFruModuleStatusChangeUpRpc>();
 }
 
-std::string EntityFruModuleStatusChangeUpRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> EntityFruModuleStatusChangeUp::clone_ptr() const
+{
+    return std::make_shared<EntityFruModuleStatusChangeUp>();
+}
+
+std::string EntityFruModuleStatusChangeUp::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string EntityFruModuleStatusChangeUpRpc::get_bundle_name() const
+std::string EntityFruModuleStatusChangeUp::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function EntityFruModuleStatusChangeUpRpc::get_augment_capabilities_function() const
+augment_capabilities_function EntityFruModuleStatusChangeUp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-EntityFruModuleStatusChangeUpRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> EntityFruModuleStatusChangeUp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EntityFruModuleStatusChangeUp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+EntityFruModuleStatusChangeUp::Input::Input()
     :
     entindex{YType::uint32, "entindex"}
 {
     yang_name = "input"; yang_parent_name = "entity-fru-module-status-change-up";
 }
 
-EntityFruModuleStatusChangeUpRpc::Input::~Input()
+EntityFruModuleStatusChangeUp::Input::~Input()
 {
 }
 
-bool EntityFruModuleStatusChangeUpRpc::Input::has_data() const
+bool EntityFruModuleStatusChangeUp::Input::has_data() const
 {
     return entindex.is_set;
 }
 
-bool EntityFruModuleStatusChangeUpRpc::Input::has_operation() const
+bool EntityFruModuleStatusChangeUp::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entindex.yfilter);
 }
 
-std::string EntityFruModuleStatusChangeUpRpc::Input::get_segment_path() const
+std::string EntityFruModuleStatusChangeUp::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2154,7 +2543,7 @@ std::string EntityFruModuleStatusChangeUpRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath EntityFruModuleStatusChangeUpRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruModuleStatusChangeUp::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2168,7 +2557,7 @@ const EntityPath EntityFruModuleStatusChangeUpRpc::Input::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entindex.is_set || is_set(entindex.operation)) leaf_name_data.push_back(entindex.get_name_leafdata());
+    if (entindex.is_set || is_set(entindex.yfilter)) leaf_name_data.push_back(entindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2176,50 +2565,67 @@ const EntityPath EntityFruModuleStatusChangeUpRpc::Input::get_entity_path(Entity
 
 }
 
-std::shared_ptr<Entity> EntityFruModuleStatusChangeUpRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruModuleStatusChangeUp::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeUpRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeUp::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EntityFruModuleStatusChangeUpRpc::Input::set_value(const std::string & value_path, std::string value)
+void EntityFruModuleStatusChangeUp::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entindex")
     {
         entindex = value;
+        entindex.value_namespace = name_space;
+        entindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-EntityFruModuleStatusChangeDownRpc::EntityFruModuleStatusChangeDownRpc()
+void EntityFruModuleStatusChangeUp::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entindex")
+    {
+        entindex.yfilter = yfilter;
+    }
+}
+
+bool EntityFruModuleStatusChangeUp::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entindex")
+        return true;
+    return false;
+}
+
+EntityFruModuleStatusChangeDown::EntityFruModuleStatusChangeDown()
     :
-    input(std::make_shared<EntityFruModuleStatusChangeDownRpc::Input>())
+    input(std::make_shared<EntityFruModuleStatusChangeDown::Input>())
 {
     input->parent = this;
 
     yang_name = "entity-fru-module-status-change-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-EntityFruModuleStatusChangeDownRpc::~EntityFruModuleStatusChangeDownRpc()
+EntityFruModuleStatusChangeDown::~EntityFruModuleStatusChangeDown()
 {
 }
 
-bool EntityFruModuleStatusChangeDownRpc::has_data() const
+bool EntityFruModuleStatusChangeDown::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool EntityFruModuleStatusChangeDownRpc::has_operation() const
+bool EntityFruModuleStatusChangeDown::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string EntityFruModuleStatusChangeDownRpc::get_segment_path() const
+std::string EntityFruModuleStatusChangeDown::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:entity-fru-module-status-change-down";
@@ -2228,7 +2634,7 @@ std::string EntityFruModuleStatusChangeDownRpc::get_segment_path() const
 
 }
 
-const EntityPath EntityFruModuleStatusChangeDownRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruModuleStatusChangeDown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2246,13 +2652,13 @@ const EntityPath EntityFruModuleStatusChangeDownRpc::get_entity_path(Entity* anc
 
 }
 
-std::shared_ptr<Entity> EntityFruModuleStatusChangeDownRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruModuleStatusChangeDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<EntityFruModuleStatusChangeDownRpc::Input>();
+            input = std::make_shared<EntityFruModuleStatusChangeDown::Input>();
         }
         return input;
     }
@@ -2260,7 +2666,7 @@ std::shared_ptr<Entity> EntityFruModuleStatusChangeDownRpc::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeDownRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2271,53 +2677,69 @@ std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeDownRp
     return children;
 }
 
-void EntityFruModuleStatusChangeDownRpc::set_value(const std::string & value_path, std::string value)
+void EntityFruModuleStatusChangeDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> EntityFruModuleStatusChangeDownRpc::clone_ptr() const
+void EntityFruModuleStatusChangeDown::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<EntityFruModuleStatusChangeDownRpc>();
 }
 
-std::string EntityFruModuleStatusChangeDownRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> EntityFruModuleStatusChangeDown::clone_ptr() const
+{
+    return std::make_shared<EntityFruModuleStatusChangeDown>();
+}
+
+std::string EntityFruModuleStatusChangeDown::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string EntityFruModuleStatusChangeDownRpc::get_bundle_name() const
+std::string EntityFruModuleStatusChangeDown::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function EntityFruModuleStatusChangeDownRpc::get_augment_capabilities_function() const
+augment_capabilities_function EntityFruModuleStatusChangeDown::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-EntityFruModuleStatusChangeDownRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> EntityFruModuleStatusChangeDown::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EntityFruModuleStatusChangeDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+EntityFruModuleStatusChangeDown::Input::Input()
     :
     entindex{YType::uint32, "entindex"}
 {
     yang_name = "input"; yang_parent_name = "entity-fru-module-status-change-down";
 }
 
-EntityFruModuleStatusChangeDownRpc::Input::~Input()
+EntityFruModuleStatusChangeDown::Input::~Input()
 {
 }
 
-bool EntityFruModuleStatusChangeDownRpc::Input::has_data() const
+bool EntityFruModuleStatusChangeDown::Input::has_data() const
 {
     return entindex.is_set;
 }
 
-bool EntityFruModuleStatusChangeDownRpc::Input::has_operation() const
+bool EntityFruModuleStatusChangeDown::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entindex.yfilter);
 }
 
-std::string EntityFruModuleStatusChangeDownRpc::Input::get_segment_path() const
+std::string EntityFruModuleStatusChangeDown::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2326,7 +2748,7 @@ std::string EntityFruModuleStatusChangeDownRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath EntityFruModuleStatusChangeDownRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruModuleStatusChangeDown::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2340,7 +2762,7 @@ const EntityPath EntityFruModuleStatusChangeDownRpc::Input::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entindex.is_set || is_set(entindex.operation)) leaf_name_data.push_back(entindex.get_name_leafdata());
+    if (entindex.is_set || is_set(entindex.yfilter)) leaf_name_data.push_back(entindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2348,50 +2770,67 @@ const EntityPath EntityFruModuleStatusChangeDownRpc::Input::get_entity_path(Enti
 
 }
 
-std::shared_ptr<Entity> EntityFruModuleStatusChangeDownRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruModuleStatusChangeDown::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeDownRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruModuleStatusChangeDown::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EntityFruModuleStatusChangeDownRpc::Input::set_value(const std::string & value_path, std::string value)
+void EntityFruModuleStatusChangeDown::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entindex")
     {
         entindex = value;
+        entindex.value_namespace = name_space;
+        entindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-EntityFruFanTrayOperStatusUpRpc::EntityFruFanTrayOperStatusUpRpc()
+void EntityFruModuleStatusChangeDown::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entindex")
+    {
+        entindex.yfilter = yfilter;
+    }
+}
+
+bool EntityFruModuleStatusChangeDown::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entindex")
+        return true;
+    return false;
+}
+
+EntityFruFanTrayOperStatusUp::EntityFruFanTrayOperStatusUp()
     :
-    input(std::make_shared<EntityFruFanTrayOperStatusUpRpc::Input>())
+    input(std::make_shared<EntityFruFanTrayOperStatusUp::Input>())
 {
     input->parent = this;
 
     yang_name = "entity-fru-fan-tray-oper-status-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-EntityFruFanTrayOperStatusUpRpc::~EntityFruFanTrayOperStatusUpRpc()
+EntityFruFanTrayOperStatusUp::~EntityFruFanTrayOperStatusUp()
 {
 }
 
-bool EntityFruFanTrayOperStatusUpRpc::has_data() const
+bool EntityFruFanTrayOperStatusUp::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool EntityFruFanTrayOperStatusUpRpc::has_operation() const
+bool EntityFruFanTrayOperStatusUp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string EntityFruFanTrayOperStatusUpRpc::get_segment_path() const
+std::string EntityFruFanTrayOperStatusUp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:entity-fru-fan-tray-oper-status-up";
@@ -2400,7 +2839,7 @@ std::string EntityFruFanTrayOperStatusUpRpc::get_segment_path() const
 
 }
 
-const EntityPath EntityFruFanTrayOperStatusUpRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruFanTrayOperStatusUp::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2418,13 +2857,13 @@ const EntityPath EntityFruFanTrayOperStatusUpRpc::get_entity_path(Entity* ancest
 
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayOperStatusUpRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruFanTrayOperStatusUp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<EntityFruFanTrayOperStatusUpRpc::Input>();
+            input = std::make_shared<EntityFruFanTrayOperStatusUp::Input>();
         }
         return input;
     }
@@ -2432,7 +2871,7 @@ std::shared_ptr<Entity> EntityFruFanTrayOperStatusUpRpc::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayOperStatusUpRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayOperStatusUp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2443,53 +2882,69 @@ std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayOperStatusUpRpc::
     return children;
 }
 
-void EntityFruFanTrayOperStatusUpRpc::set_value(const std::string & value_path, std::string value)
+void EntityFruFanTrayOperStatusUp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayOperStatusUpRpc::clone_ptr() const
+void EntityFruFanTrayOperStatusUp::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<EntityFruFanTrayOperStatusUpRpc>();
 }
 
-std::string EntityFruFanTrayOperStatusUpRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> EntityFruFanTrayOperStatusUp::clone_ptr() const
+{
+    return std::make_shared<EntityFruFanTrayOperStatusUp>();
+}
+
+std::string EntityFruFanTrayOperStatusUp::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string EntityFruFanTrayOperStatusUpRpc::get_bundle_name() const
+std::string EntityFruFanTrayOperStatusUp::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function EntityFruFanTrayOperStatusUpRpc::get_augment_capabilities_function() const
+augment_capabilities_function EntityFruFanTrayOperStatusUp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-EntityFruFanTrayOperStatusUpRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> EntityFruFanTrayOperStatusUp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EntityFruFanTrayOperStatusUp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+EntityFruFanTrayOperStatusUp::Input::Input()
     :
     entindex{YType::uint32, "entindex"}
 {
     yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-oper-status-up";
 }
 
-EntityFruFanTrayOperStatusUpRpc::Input::~Input()
+EntityFruFanTrayOperStatusUp::Input::~Input()
 {
 }
 
-bool EntityFruFanTrayOperStatusUpRpc::Input::has_data() const
+bool EntityFruFanTrayOperStatusUp::Input::has_data() const
 {
     return entindex.is_set;
 }
 
-bool EntityFruFanTrayOperStatusUpRpc::Input::has_operation() const
+bool EntityFruFanTrayOperStatusUp::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entindex.yfilter);
 }
 
-std::string EntityFruFanTrayOperStatusUpRpc::Input::get_segment_path() const
+std::string EntityFruFanTrayOperStatusUp::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2498,7 +2953,7 @@ std::string EntityFruFanTrayOperStatusUpRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath EntityFruFanTrayOperStatusUpRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruFanTrayOperStatusUp::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2512,7 +2967,7 @@ const EntityPath EntityFruFanTrayOperStatusUpRpc::Input::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entindex.is_set || is_set(entindex.operation)) leaf_name_data.push_back(entindex.get_name_leafdata());
+    if (entindex.is_set || is_set(entindex.yfilter)) leaf_name_data.push_back(entindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2520,50 +2975,67 @@ const EntityPath EntityFruFanTrayOperStatusUpRpc::Input::get_entity_path(Entity*
 
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayOperStatusUpRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruFanTrayOperStatusUp::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayOperStatusUpRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayOperStatusUp::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EntityFruFanTrayOperStatusUpRpc::Input::set_value(const std::string & value_path, std::string value)
+void EntityFruFanTrayOperStatusUp::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entindex")
     {
         entindex = value;
+        entindex.value_namespace = name_space;
+        entindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-EntityFruFanTrayInsertedRpc::EntityFruFanTrayInsertedRpc()
+void EntityFruFanTrayOperStatusUp::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entindex")
+    {
+        entindex.yfilter = yfilter;
+    }
+}
+
+bool EntityFruFanTrayOperStatusUp::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entindex")
+        return true;
+    return false;
+}
+
+EntityFruFanTrayInserted::EntityFruFanTrayInserted()
     :
-    input(std::make_shared<EntityFruFanTrayInsertedRpc::Input>())
+    input(std::make_shared<EntityFruFanTrayInserted::Input>())
 {
     input->parent = this;
 
     yang_name = "entity-fru-fan-tray-inserted"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-EntityFruFanTrayInsertedRpc::~EntityFruFanTrayInsertedRpc()
+EntityFruFanTrayInserted::~EntityFruFanTrayInserted()
 {
 }
 
-bool EntityFruFanTrayInsertedRpc::has_data() const
+bool EntityFruFanTrayInserted::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool EntityFruFanTrayInsertedRpc::has_operation() const
+bool EntityFruFanTrayInserted::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string EntityFruFanTrayInsertedRpc::get_segment_path() const
+std::string EntityFruFanTrayInserted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:entity-fru-fan-tray-inserted";
@@ -2572,7 +3044,7 @@ std::string EntityFruFanTrayInsertedRpc::get_segment_path() const
 
 }
 
-const EntityPath EntityFruFanTrayInsertedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruFanTrayInserted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2590,13 +3062,13 @@ const EntityPath EntityFruFanTrayInsertedRpc::get_entity_path(Entity* ancestor) 
 
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayInsertedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruFanTrayInserted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<EntityFruFanTrayInsertedRpc::Input>();
+            input = std::make_shared<EntityFruFanTrayInserted::Input>();
         }
         return input;
     }
@@ -2604,7 +3076,7 @@ std::shared_ptr<Entity> EntityFruFanTrayInsertedRpc::get_child_by_name(const std
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayInsertedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayInserted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2615,53 +3087,69 @@ std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayInsertedRpc::get_
     return children;
 }
 
-void EntityFruFanTrayInsertedRpc::set_value(const std::string & value_path, std::string value)
+void EntityFruFanTrayInserted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayInsertedRpc::clone_ptr() const
+void EntityFruFanTrayInserted::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<EntityFruFanTrayInsertedRpc>();
 }
 
-std::string EntityFruFanTrayInsertedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> EntityFruFanTrayInserted::clone_ptr() const
+{
+    return std::make_shared<EntityFruFanTrayInserted>();
+}
+
+std::string EntityFruFanTrayInserted::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string EntityFruFanTrayInsertedRpc::get_bundle_name() const
+std::string EntityFruFanTrayInserted::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function EntityFruFanTrayInsertedRpc::get_augment_capabilities_function() const
+augment_capabilities_function EntityFruFanTrayInserted::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-EntityFruFanTrayInsertedRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> EntityFruFanTrayInserted::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EntityFruFanTrayInserted::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+EntityFruFanTrayInserted::Input::Input()
     :
     entindex{YType::uint32, "entindex"}
 {
     yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-inserted";
 }
 
-EntityFruFanTrayInsertedRpc::Input::~Input()
+EntityFruFanTrayInserted::Input::~Input()
 {
 }
 
-bool EntityFruFanTrayInsertedRpc::Input::has_data() const
+bool EntityFruFanTrayInserted::Input::has_data() const
 {
     return entindex.is_set;
 }
 
-bool EntityFruFanTrayInsertedRpc::Input::has_operation() const
+bool EntityFruFanTrayInserted::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entindex.yfilter);
 }
 
-std::string EntityFruFanTrayInsertedRpc::Input::get_segment_path() const
+std::string EntityFruFanTrayInserted::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2670,7 +3158,7 @@ std::string EntityFruFanTrayInsertedRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath EntityFruFanTrayInsertedRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruFanTrayInserted::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2684,7 +3172,7 @@ const EntityPath EntityFruFanTrayInsertedRpc::Input::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entindex.is_set || is_set(entindex.operation)) leaf_name_data.push_back(entindex.get_name_leafdata());
+    if (entindex.is_set || is_set(entindex.yfilter)) leaf_name_data.push_back(entindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2692,50 +3180,67 @@ const EntityPath EntityFruFanTrayInsertedRpc::Input::get_entity_path(Entity* anc
 
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayInsertedRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruFanTrayInserted::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayInsertedRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayInserted::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EntityFruFanTrayInsertedRpc::Input::set_value(const std::string & value_path, std::string value)
+void EntityFruFanTrayInserted::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entindex")
     {
         entindex = value;
+        entindex.value_namespace = name_space;
+        entindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-EntityFruFanTrayRemovedRpc::EntityFruFanTrayRemovedRpc()
+void EntityFruFanTrayInserted::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entindex")
+    {
+        entindex.yfilter = yfilter;
+    }
+}
+
+bool EntityFruFanTrayInserted::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entindex")
+        return true;
+    return false;
+}
+
+EntityFruFanTrayRemoved::EntityFruFanTrayRemoved()
     :
-    input(std::make_shared<EntityFruFanTrayRemovedRpc::Input>())
+    input(std::make_shared<EntityFruFanTrayRemoved::Input>())
 {
     input->parent = this;
 
     yang_name = "entity-fru-fan-tray-removed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-EntityFruFanTrayRemovedRpc::~EntityFruFanTrayRemovedRpc()
+EntityFruFanTrayRemoved::~EntityFruFanTrayRemoved()
 {
 }
 
-bool EntityFruFanTrayRemovedRpc::has_data() const
+bool EntityFruFanTrayRemoved::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool EntityFruFanTrayRemovedRpc::has_operation() const
+bool EntityFruFanTrayRemoved::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string EntityFruFanTrayRemovedRpc::get_segment_path() const
+std::string EntityFruFanTrayRemoved::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:entity-fru-fan-tray-removed";
@@ -2744,7 +3249,7 @@ std::string EntityFruFanTrayRemovedRpc::get_segment_path() const
 
 }
 
-const EntityPath EntityFruFanTrayRemovedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruFanTrayRemoved::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2762,13 +3267,13 @@ const EntityPath EntityFruFanTrayRemovedRpc::get_entity_path(Entity* ancestor) c
 
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayRemovedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruFanTrayRemoved::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<EntityFruFanTrayRemovedRpc::Input>();
+            input = std::make_shared<EntityFruFanTrayRemoved::Input>();
         }
         return input;
     }
@@ -2776,7 +3281,7 @@ std::shared_ptr<Entity> EntityFruFanTrayRemovedRpc::get_child_by_name(const std:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayRemovedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayRemoved::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2787,53 +3292,69 @@ std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayRemovedRpc::get_c
     return children;
 }
 
-void EntityFruFanTrayRemovedRpc::set_value(const std::string & value_path, std::string value)
+void EntityFruFanTrayRemoved::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayRemovedRpc::clone_ptr() const
+void EntityFruFanTrayRemoved::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<EntityFruFanTrayRemovedRpc>();
 }
 
-std::string EntityFruFanTrayRemovedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> EntityFruFanTrayRemoved::clone_ptr() const
+{
+    return std::make_shared<EntityFruFanTrayRemoved>();
+}
+
+std::string EntityFruFanTrayRemoved::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string EntityFruFanTrayRemovedRpc::get_bundle_name() const
+std::string EntityFruFanTrayRemoved::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function EntityFruFanTrayRemovedRpc::get_augment_capabilities_function() const
+augment_capabilities_function EntityFruFanTrayRemoved::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-EntityFruFanTrayRemovedRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> EntityFruFanTrayRemoved::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EntityFruFanTrayRemoved::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+EntityFruFanTrayRemoved::Input::Input()
     :
     entindex{YType::uint32, "entindex"}
 {
     yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-removed";
 }
 
-EntityFruFanTrayRemovedRpc::Input::~Input()
+EntityFruFanTrayRemoved::Input::~Input()
 {
 }
 
-bool EntityFruFanTrayRemovedRpc::Input::has_data() const
+bool EntityFruFanTrayRemoved::Input::has_data() const
 {
     return entindex.is_set;
 }
 
-bool EntityFruFanTrayRemovedRpc::Input::has_operation() const
+bool EntityFruFanTrayRemoved::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entindex.yfilter);
 }
 
-std::string EntityFruFanTrayRemovedRpc::Input::get_segment_path() const
+std::string EntityFruFanTrayRemoved::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -2842,7 +3363,7 @@ std::string EntityFruFanTrayRemovedRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath EntityFruFanTrayRemovedRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath EntityFruFanTrayRemoved::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2856,7 +3377,7 @@ const EntityPath EntityFruFanTrayRemovedRpc::Input::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entindex.is_set || is_set(entindex.operation)) leaf_name_data.push_back(entindex.get_name_leafdata());
+    if (entindex.is_set || is_set(entindex.yfilter)) leaf_name_data.push_back(entindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2864,50 +3385,67 @@ const EntityPath EntityFruFanTrayRemovedRpc::Input::get_entity_path(Entity* ance
 
 }
 
-std::shared_ptr<Entity> EntityFruFanTrayRemovedRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EntityFruFanTrayRemoved::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayRemovedRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EntityFruFanTrayRemoved::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void EntityFruFanTrayRemovedRpc::Input::set_value(const std::string & value_path, std::string value)
+void EntityFruFanTrayRemoved::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entindex")
     {
         entindex = value;
+        entindex.value_namespace = name_space;
+        entindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-PlatformHfrBundleDownedLinkRpc::PlatformHfrBundleDownedLinkRpc()
+void EntityFruFanTrayRemoved::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entindex")
+    {
+        entindex.yfilter = yfilter;
+    }
+}
+
+bool EntityFruFanTrayRemoved::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entindex")
+        return true;
+    return false;
+}
+
+PlatformHfrBundleDownedLink::PlatformHfrBundleDownedLink()
     :
-    input(std::make_shared<PlatformHfrBundleDownedLinkRpc::Input>())
+    input(std::make_shared<PlatformHfrBundleDownedLink::Input>())
 {
     input->parent = this;
 
     yang_name = "platform-hfr-bundle-downed-link"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-PlatformHfrBundleDownedLinkRpc::~PlatformHfrBundleDownedLinkRpc()
+PlatformHfrBundleDownedLink::~PlatformHfrBundleDownedLink()
 {
 }
 
-bool PlatformHfrBundleDownedLinkRpc::has_data() const
+bool PlatformHfrBundleDownedLink::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool PlatformHfrBundleDownedLinkRpc::has_operation() const
+bool PlatformHfrBundleDownedLink::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string PlatformHfrBundleDownedLinkRpc::get_segment_path() const
+std::string PlatformHfrBundleDownedLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:platform-hfr-bundle-downed-link";
@@ -2916,7 +3454,7 @@ std::string PlatformHfrBundleDownedLinkRpc::get_segment_path() const
 
 }
 
-const EntityPath PlatformHfrBundleDownedLinkRpc::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformHfrBundleDownedLink::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -2934,13 +3472,13 @@ const EntityPath PlatformHfrBundleDownedLinkRpc::get_entity_path(Entity* ancesto
 
 }
 
-std::shared_ptr<Entity> PlatformHfrBundleDownedLinkRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformHfrBundleDownedLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<PlatformHfrBundleDownedLinkRpc::Input>();
+            input = std::make_shared<PlatformHfrBundleDownedLink::Input>();
         }
         return input;
     }
@@ -2948,7 +3486,7 @@ std::shared_ptr<Entity> PlatformHfrBundleDownedLinkRpc::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleDownedLinkRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleDownedLink::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -2959,53 +3497,69 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleDownedLinkRpc::g
     return children;
 }
 
-void PlatformHfrBundleDownedLinkRpc::set_value(const std::string & value_path, std::string value)
+void PlatformHfrBundleDownedLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> PlatformHfrBundleDownedLinkRpc::clone_ptr() const
+void PlatformHfrBundleDownedLink::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<PlatformHfrBundleDownedLinkRpc>();
 }
 
-std::string PlatformHfrBundleDownedLinkRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> PlatformHfrBundleDownedLink::clone_ptr() const
+{
+    return std::make_shared<PlatformHfrBundleDownedLink>();
+}
+
+std::string PlatformHfrBundleDownedLink::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string PlatformHfrBundleDownedLinkRpc::get_bundle_name() const
+std::string PlatformHfrBundleDownedLink::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function PlatformHfrBundleDownedLinkRpc::get_augment_capabilities_function() const
+augment_capabilities_function PlatformHfrBundleDownedLink::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-PlatformHfrBundleDownedLinkRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> PlatformHfrBundleDownedLink::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PlatformHfrBundleDownedLink::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+PlatformHfrBundleDownedLink::Input::Input()
     :
     bundle_name{YType::str, "bundle-name"}
 {
     yang_name = "input"; yang_parent_name = "platform-hfr-bundle-downed-link";
 }
 
-PlatformHfrBundleDownedLinkRpc::Input::~Input()
+PlatformHfrBundleDownedLink::Input::~Input()
 {
 }
 
-bool PlatformHfrBundleDownedLinkRpc::Input::has_data() const
+bool PlatformHfrBundleDownedLink::Input::has_data() const
 {
     return bundle_name.is_set;
 }
 
-bool PlatformHfrBundleDownedLinkRpc::Input::has_operation() const
+bool PlatformHfrBundleDownedLink::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_name.yfilter);
 }
 
-std::string PlatformHfrBundleDownedLinkRpc::Input::get_segment_path() const
+std::string PlatformHfrBundleDownedLink::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -3014,7 +3568,7 @@ std::string PlatformHfrBundleDownedLinkRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath PlatformHfrBundleDownedLinkRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformHfrBundleDownedLink::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3028,7 +3582,7 @@ const EntityPath PlatformHfrBundleDownedLinkRpc::Input::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_name.is_set || is_set(bundle_name.operation)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
+    if (bundle_name.is_set || is_set(bundle_name.yfilter)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3036,50 +3590,67 @@ const EntityPath PlatformHfrBundleDownedLinkRpc::Input::get_entity_path(Entity* 
 
 }
 
-std::shared_ptr<Entity> PlatformHfrBundleDownedLinkRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformHfrBundleDownedLink::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleDownedLinkRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleDownedLink::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformHfrBundleDownedLinkRpc::Input::set_value(const std::string & value_path, std::string value)
+void PlatformHfrBundleDownedLink::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-name")
     {
         bundle_name = value;
+        bundle_name.value_namespace = name_space;
+        bundle_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-PlatformHfrBundleStateRpc::PlatformHfrBundleStateRpc()
+void PlatformHfrBundleDownedLink::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-name")
+    {
+        bundle_name.yfilter = yfilter;
+    }
+}
+
+bool PlatformHfrBundleDownedLink::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-name")
+        return true;
+    return false;
+}
+
+PlatformHfrBundleState::PlatformHfrBundleState()
     :
-    input(std::make_shared<PlatformHfrBundleStateRpc::Input>())
+    input(std::make_shared<PlatformHfrBundleState::Input>())
 {
     input->parent = this;
 
     yang_name = "platform-hfr-bundle-state"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-PlatformHfrBundleStateRpc::~PlatformHfrBundleStateRpc()
+PlatformHfrBundleState::~PlatformHfrBundleState()
 {
 }
 
-bool PlatformHfrBundleStateRpc::has_data() const
+bool PlatformHfrBundleState::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool PlatformHfrBundleStateRpc::has_operation() const
+bool PlatformHfrBundleState::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string PlatformHfrBundleStateRpc::get_segment_path() const
+std::string PlatformHfrBundleState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:platform-hfr-bundle-state";
@@ -3088,7 +3659,7 @@ std::string PlatformHfrBundleStateRpc::get_segment_path() const
 
 }
 
-const EntityPath PlatformHfrBundleStateRpc::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformHfrBundleState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -3106,13 +3677,13 @@ const EntityPath PlatformHfrBundleStateRpc::get_entity_path(Entity* ancestor) co
 
 }
 
-std::shared_ptr<Entity> PlatformHfrBundleStateRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformHfrBundleState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<PlatformHfrBundleStateRpc::Input>();
+            input = std::make_shared<PlatformHfrBundleState::Input>();
         }
         return input;
     }
@@ -3120,7 +3691,7 @@ std::shared_ptr<Entity> PlatformHfrBundleStateRpc::get_child_by_name(const std::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleStateRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -3131,53 +3702,69 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleStateRpc::get_ch
     return children;
 }
 
-void PlatformHfrBundleStateRpc::set_value(const std::string & value_path, std::string value)
+void PlatformHfrBundleState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> PlatformHfrBundleStateRpc::clone_ptr() const
+void PlatformHfrBundleState::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<PlatformHfrBundleStateRpc>();
 }
 
-std::string PlatformHfrBundleStateRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> PlatformHfrBundleState::clone_ptr() const
+{
+    return std::make_shared<PlatformHfrBundleState>();
+}
+
+std::string PlatformHfrBundleState::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string PlatformHfrBundleStateRpc::get_bundle_name() const
+std::string PlatformHfrBundleState::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function PlatformHfrBundleStateRpc::get_augment_capabilities_function() const
+augment_capabilities_function PlatformHfrBundleState::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-PlatformHfrBundleStateRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> PlatformHfrBundleState::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PlatformHfrBundleState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+PlatformHfrBundleState::Input::Input()
     :
     bundle_name{YType::str, "bundle-name"}
 {
     yang_name = "input"; yang_parent_name = "platform-hfr-bundle-state";
 }
 
-PlatformHfrBundleStateRpc::Input::~Input()
+PlatformHfrBundleState::Input::~Input()
 {
 }
 
-bool PlatformHfrBundleStateRpc::Input::has_data() const
+bool PlatformHfrBundleState::Input::has_data() const
 {
     return bundle_name.is_set;
 }
 
-bool PlatformHfrBundleStateRpc::Input::has_operation() const
+bool PlatformHfrBundleState::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_name.yfilter);
 }
 
-std::string PlatformHfrBundleStateRpc::Input::get_segment_path() const
+std::string PlatformHfrBundleState::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -3186,7 +3773,7 @@ std::string PlatformHfrBundleStateRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath PlatformHfrBundleStateRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformHfrBundleState::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3200,7 +3787,7 @@ const EntityPath PlatformHfrBundleStateRpc::Input::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_name.is_set || is_set(bundle_name.operation)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
+    if (bundle_name.is_set || is_set(bundle_name.yfilter)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3208,50 +3795,67 @@ const EntityPath PlatformHfrBundleStateRpc::Input::get_entity_path(Entity* ances
 
 }
 
-std::shared_ptr<Entity> PlatformHfrBundleStateRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformHfrBundleState::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleStateRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformHfrBundleState::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformHfrBundleStateRpc::Input::set_value(const std::string & value_path, std::string value)
+void PlatformHfrBundleState::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-name")
     {
         bundle_name = value;
+        bundle_name.value_namespace = name_space;
+        bundle_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-PlatformHfrPlaneStateRpc::PlatformHfrPlaneStateRpc()
+void PlatformHfrBundleState::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-name")
+    {
+        bundle_name.yfilter = yfilter;
+    }
+}
+
+bool PlatformHfrBundleState::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-name")
+        return true;
+    return false;
+}
+
+PlatformHfrPlaneState::PlatformHfrPlaneState()
     :
-    input(std::make_shared<PlatformHfrPlaneStateRpc::Input>())
+    input(std::make_shared<PlatformHfrPlaneState::Input>())
 {
     input->parent = this;
 
     yang_name = "platform-hfr-plane-state"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-PlatformHfrPlaneStateRpc::~PlatformHfrPlaneStateRpc()
+PlatformHfrPlaneState::~PlatformHfrPlaneState()
 {
 }
 
-bool PlatformHfrPlaneStateRpc::has_data() const
+bool PlatformHfrPlaneState::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool PlatformHfrPlaneStateRpc::has_operation() const
+bool PlatformHfrPlaneState::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string PlatformHfrPlaneStateRpc::get_segment_path() const
+std::string PlatformHfrPlaneState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:platform-hfr-plane-state";
@@ -3260,7 +3864,7 @@ std::string PlatformHfrPlaneStateRpc::get_segment_path() const
 
 }
 
-const EntityPath PlatformHfrPlaneStateRpc::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformHfrPlaneState::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -3278,13 +3882,13 @@ const EntityPath PlatformHfrPlaneStateRpc::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> PlatformHfrPlaneStateRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformHfrPlaneState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<PlatformHfrPlaneStateRpc::Input>();
+            input = std::make_shared<PlatformHfrPlaneState::Input>();
         }
         return input;
     }
@@ -3292,7 +3896,7 @@ std::shared_ptr<Entity> PlatformHfrPlaneStateRpc::get_child_by_name(const std::s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformHfrPlaneStateRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformHfrPlaneState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -3303,53 +3907,69 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformHfrPlaneStateRpc::get_chi
     return children;
 }
 
-void PlatformHfrPlaneStateRpc::set_value(const std::string & value_path, std::string value)
+void PlatformHfrPlaneState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> PlatformHfrPlaneStateRpc::clone_ptr() const
+void PlatformHfrPlaneState::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<PlatformHfrPlaneStateRpc>();
 }
 
-std::string PlatformHfrPlaneStateRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> PlatformHfrPlaneState::clone_ptr() const
+{
+    return std::make_shared<PlatformHfrPlaneState>();
+}
+
+std::string PlatformHfrPlaneState::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string PlatformHfrPlaneStateRpc::get_bundle_name() const
+std::string PlatformHfrPlaneState::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function PlatformHfrPlaneStateRpc::get_augment_capabilities_function() const
+augment_capabilities_function PlatformHfrPlaneState::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-PlatformHfrPlaneStateRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> PlatformHfrPlaneState::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PlatformHfrPlaneState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+PlatformHfrPlaneState::Input::Input()
     :
     plane_id{YType::uint32, "plane-id"}
 {
     yang_name = "input"; yang_parent_name = "platform-hfr-plane-state";
 }
 
-PlatformHfrPlaneStateRpc::Input::~Input()
+PlatformHfrPlaneState::Input::~Input()
 {
 }
 
-bool PlatformHfrPlaneStateRpc::Input::has_data() const
+bool PlatformHfrPlaneState::Input::has_data() const
 {
     return plane_id.is_set;
 }
 
-bool PlatformHfrPlaneStateRpc::Input::has_operation() const
+bool PlatformHfrPlaneState::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(plane_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(plane_id.yfilter);
 }
 
-std::string PlatformHfrPlaneStateRpc::Input::get_segment_path() const
+std::string PlatformHfrPlaneState::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -3358,7 +3978,7 @@ std::string PlatformHfrPlaneStateRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath PlatformHfrPlaneStateRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath PlatformHfrPlaneState::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3372,7 +3992,7 @@ const EntityPath PlatformHfrPlaneStateRpc::Input::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (plane_id.is_set || is_set(plane_id.operation)) leaf_name_data.push_back(plane_id.get_name_leafdata());
+    if (plane_id.is_set || is_set(plane_id.yfilter)) leaf_name_data.push_back(plane_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3380,45 +4000,62 @@ const EntityPath PlatformHfrPlaneStateRpc::Input::get_entity_path(Entity* ancest
 
 }
 
-std::shared_ptr<Entity> PlatformHfrPlaneStateRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PlatformHfrPlaneState::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PlatformHfrPlaneStateRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PlatformHfrPlaneState::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void PlatformHfrPlaneStateRpc::Input::set_value(const std::string & value_path, std::string value)
+void PlatformHfrPlaneState::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "plane-id")
     {
         plane_id = value;
+        plane_id.value_namespace = name_space;
+        plane_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RoutingBgpEstablishedRpc::RoutingBgpEstablishedRpc()
+void PlatformHfrPlaneState::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "plane-id")
+    {
+        plane_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformHfrPlaneState::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "plane-id")
+        return true;
+    return false;
+}
+
+RoutingBgpEstablished::RoutingBgpEstablished()
 {
     yang_name = "routing-bgp-established"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingBgpEstablishedRpc::~RoutingBgpEstablishedRpc()
+RoutingBgpEstablished::~RoutingBgpEstablished()
 {
 }
 
-bool RoutingBgpEstablishedRpc::has_data() const
+bool RoutingBgpEstablished::has_data() const
 {
     return false;
 }
 
-bool RoutingBgpEstablishedRpc::has_operation() const
+bool RoutingBgpEstablished::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string RoutingBgpEstablishedRpc::get_segment_path() const
+std::string RoutingBgpEstablished::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-bgp-established";
@@ -3427,7 +4064,7 @@ std::string RoutingBgpEstablishedRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingBgpEstablishedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingBgpEstablished::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -3445,66 +4082,80 @@ const EntityPath RoutingBgpEstablishedRpc::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> RoutingBgpEstablishedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingBgpEstablished::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablishedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablished::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingBgpEstablishedRpc::set_value(const std::string & value_path, std::string value)
+void RoutingBgpEstablished::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingBgpEstablishedRpc::clone_ptr() const
+void RoutingBgpEstablished::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingBgpEstablishedRpc>();
 }
 
-std::string RoutingBgpEstablishedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingBgpEstablished::clone_ptr() const
+{
+    return std::make_shared<RoutingBgpEstablished>();
+}
+
+std::string RoutingBgpEstablished::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingBgpEstablishedRpc::get_bundle_name() const
+std::string RoutingBgpEstablished::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingBgpEstablishedRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingBgpEstablished::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingBgpEstablishedRemotePeerRpc::RoutingBgpEstablishedRemotePeerRpc()
+std::map<std::pair<std::string, std::string>, std::string> RoutingBgpEstablished::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingBgpEstablished::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+RoutingBgpEstablishedRemotePeer::RoutingBgpEstablishedRemotePeer()
     :
-    input(std::make_shared<RoutingBgpEstablishedRemotePeerRpc::Input>())
+    input(std::make_shared<RoutingBgpEstablishedRemotePeer::Input>())
 {
     input->parent = this;
 
     yang_name = "routing-bgp-established-remote-peer"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingBgpEstablishedRemotePeerRpc::~RoutingBgpEstablishedRemotePeerRpc()
+RoutingBgpEstablishedRemotePeer::~RoutingBgpEstablishedRemotePeer()
 {
 }
 
-bool RoutingBgpEstablishedRemotePeerRpc::has_data() const
+bool RoutingBgpEstablishedRemotePeer::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RoutingBgpEstablishedRemotePeerRpc::has_operation() const
+bool RoutingBgpEstablishedRemotePeer::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RoutingBgpEstablishedRemotePeerRpc::get_segment_path() const
+std::string RoutingBgpEstablishedRemotePeer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-bgp-established-remote-peer";
@@ -3513,7 +4164,7 @@ std::string RoutingBgpEstablishedRemotePeerRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingBgpEstablishedRemotePeerRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingBgpEstablishedRemotePeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -3531,13 +4182,13 @@ const EntityPath RoutingBgpEstablishedRemotePeerRpc::get_entity_path(Entity* anc
 
 }
 
-std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeerRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RoutingBgpEstablishedRemotePeerRpc::Input>();
+            input = std::make_shared<RoutingBgpEstablishedRemotePeer::Input>();
         }
         return input;
     }
@@ -3545,7 +4196,7 @@ std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeerRpc::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablishedRemotePeerRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablishedRemotePeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -3556,53 +4207,69 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablishedRemotePeerRp
     return children;
 }
 
-void RoutingBgpEstablishedRemotePeerRpc::set_value(const std::string & value_path, std::string value)
+void RoutingBgpEstablishedRemotePeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeerRpc::clone_ptr() const
+void RoutingBgpEstablishedRemotePeer::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingBgpEstablishedRemotePeerRpc>();
 }
 
-std::string RoutingBgpEstablishedRemotePeerRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeer::clone_ptr() const
+{
+    return std::make_shared<RoutingBgpEstablishedRemotePeer>();
+}
+
+std::string RoutingBgpEstablishedRemotePeer::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingBgpEstablishedRemotePeerRpc::get_bundle_name() const
+std::string RoutingBgpEstablishedRemotePeer::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingBgpEstablishedRemotePeerRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingBgpEstablishedRemotePeer::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingBgpEstablishedRemotePeerRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RoutingBgpEstablishedRemotePeer::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingBgpEstablishedRemotePeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RoutingBgpEstablishedRemotePeer::Input::Input()
     :
     address{YType::str, "address"}
 {
     yang_name = "input"; yang_parent_name = "routing-bgp-established-remote-peer";
 }
 
-RoutingBgpEstablishedRemotePeerRpc::Input::~Input()
+RoutingBgpEstablishedRemotePeer::Input::~Input()
 {
 }
 
-bool RoutingBgpEstablishedRemotePeerRpc::Input::has_data() const
+bool RoutingBgpEstablishedRemotePeer::Input::has_data() const
 {
     return address.is_set;
 }
 
-bool RoutingBgpEstablishedRemotePeerRpc::Input::has_operation() const
+bool RoutingBgpEstablishedRemotePeer::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
-std::string RoutingBgpEstablishedRemotePeerRpc::Input::get_segment_path() const
+std::string RoutingBgpEstablishedRemotePeer::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -3611,7 +4278,7 @@ std::string RoutingBgpEstablishedRemotePeerRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RoutingBgpEstablishedRemotePeerRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingBgpEstablishedRemotePeer::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3625,7 +4292,7 @@ const EntityPath RoutingBgpEstablishedRemotePeerRpc::Input::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3633,45 +4300,62 @@ const EntityPath RoutingBgpEstablishedRemotePeerRpc::Input::get_entity_path(Enti
 
 }
 
-std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeerRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingBgpEstablishedRemotePeer::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablishedRemotePeerRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingBgpEstablishedRemotePeer::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingBgpEstablishedRemotePeerRpc::Input::set_value(const std::string & value_path, std::string value)
+void RoutingBgpEstablishedRemotePeer::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RoutingBgpStateChangeRpc::RoutingBgpStateChangeRpc()
+void RoutingBgpEstablishedRemotePeer::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool RoutingBgpEstablishedRemotePeer::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+RoutingBgpStateChange::RoutingBgpStateChange()
 {
     yang_name = "routing-bgp-state-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingBgpStateChangeRpc::~RoutingBgpStateChangeRpc()
+RoutingBgpStateChange::~RoutingBgpStateChange()
 {
 }
 
-bool RoutingBgpStateChangeRpc::has_data() const
+bool RoutingBgpStateChange::has_data() const
 {
     return false;
 }
 
-bool RoutingBgpStateChangeRpc::has_operation() const
+bool RoutingBgpStateChange::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string RoutingBgpStateChangeRpc::get_segment_path() const
+std::string RoutingBgpStateChange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-bgp-state-change";
@@ -3680,7 +4364,7 @@ std::string RoutingBgpStateChangeRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingBgpStateChangeRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingBgpStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -3698,66 +4382,80 @@ const EntityPath RoutingBgpStateChangeRpc::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> RoutingBgpStateChangeRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingBgpStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChangeRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingBgpStateChangeRpc::set_value(const std::string & value_path, std::string value)
+void RoutingBgpStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingBgpStateChangeRpc::clone_ptr() const
+void RoutingBgpStateChange::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingBgpStateChangeRpc>();
 }
 
-std::string RoutingBgpStateChangeRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingBgpStateChange::clone_ptr() const
+{
+    return std::make_shared<RoutingBgpStateChange>();
+}
+
+std::string RoutingBgpStateChange::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingBgpStateChangeRpc::get_bundle_name() const
+std::string RoutingBgpStateChange::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingBgpStateChangeRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingBgpStateChange::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingBgpStateChangeRemotePeerRpc::RoutingBgpStateChangeRemotePeerRpc()
+std::map<std::pair<std::string, std::string>, std::string> RoutingBgpStateChange::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingBgpStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+RoutingBgpStateChangeRemotePeer::RoutingBgpStateChangeRemotePeer()
     :
-    input(std::make_shared<RoutingBgpStateChangeRemotePeerRpc::Input>())
+    input(std::make_shared<RoutingBgpStateChangeRemotePeer::Input>())
 {
     input->parent = this;
 
     yang_name = "routing-bgp-state-change-remote-peer"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingBgpStateChangeRemotePeerRpc::~RoutingBgpStateChangeRemotePeerRpc()
+RoutingBgpStateChangeRemotePeer::~RoutingBgpStateChangeRemotePeer()
 {
 }
 
-bool RoutingBgpStateChangeRemotePeerRpc::has_data() const
+bool RoutingBgpStateChangeRemotePeer::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RoutingBgpStateChangeRemotePeerRpc::has_operation() const
+bool RoutingBgpStateChangeRemotePeer::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RoutingBgpStateChangeRemotePeerRpc::get_segment_path() const
+std::string RoutingBgpStateChangeRemotePeer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-bgp-state-change-remote-peer";
@@ -3766,7 +4464,7 @@ std::string RoutingBgpStateChangeRemotePeerRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingBgpStateChangeRemotePeerRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingBgpStateChangeRemotePeer::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -3784,13 +4482,13 @@ const EntityPath RoutingBgpStateChangeRemotePeerRpc::get_entity_path(Entity* anc
 
 }
 
-std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeerRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RoutingBgpStateChangeRemotePeerRpc::Input>();
+            input = std::make_shared<RoutingBgpStateChangeRemotePeer::Input>();
         }
         return input;
     }
@@ -3798,7 +4496,7 @@ std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeerRpc::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChangeRemotePeerRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChangeRemotePeer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -3809,53 +4507,69 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChangeRemotePeerRp
     return children;
 }
 
-void RoutingBgpStateChangeRemotePeerRpc::set_value(const std::string & value_path, std::string value)
+void RoutingBgpStateChangeRemotePeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeerRpc::clone_ptr() const
+void RoutingBgpStateChangeRemotePeer::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingBgpStateChangeRemotePeerRpc>();
 }
 
-std::string RoutingBgpStateChangeRemotePeerRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeer::clone_ptr() const
+{
+    return std::make_shared<RoutingBgpStateChangeRemotePeer>();
+}
+
+std::string RoutingBgpStateChangeRemotePeer::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingBgpStateChangeRemotePeerRpc::get_bundle_name() const
+std::string RoutingBgpStateChangeRemotePeer::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingBgpStateChangeRemotePeerRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingBgpStateChangeRemotePeer::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingBgpStateChangeRemotePeerRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RoutingBgpStateChangeRemotePeer::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingBgpStateChangeRemotePeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RoutingBgpStateChangeRemotePeer::Input::Input()
     :
     address{YType::str, "address"}
 {
     yang_name = "input"; yang_parent_name = "routing-bgp-state-change-remote-peer";
 }
 
-RoutingBgpStateChangeRemotePeerRpc::Input::~Input()
+RoutingBgpStateChangeRemotePeer::Input::~Input()
 {
 }
 
-bool RoutingBgpStateChangeRemotePeerRpc::Input::has_data() const
+bool RoutingBgpStateChangeRemotePeer::Input::has_data() const
 {
     return address.is_set;
 }
 
-bool RoutingBgpStateChangeRemotePeerRpc::Input::has_operation() const
+bool RoutingBgpStateChangeRemotePeer::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
 }
 
-std::string RoutingBgpStateChangeRemotePeerRpc::Input::get_segment_path() const
+std::string RoutingBgpStateChangeRemotePeer::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -3864,7 +4578,7 @@ std::string RoutingBgpStateChangeRemotePeerRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RoutingBgpStateChangeRemotePeerRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingBgpStateChangeRemotePeer::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -3878,7 +4592,7 @@ const EntityPath RoutingBgpStateChangeRemotePeerRpc::Input::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3886,45 +4600,62 @@ const EntityPath RoutingBgpStateChangeRemotePeerRpc::Input::get_entity_path(Enti
 
 }
 
-std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeerRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingBgpStateChangeRemotePeer::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChangeRemotePeerRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingBgpStateChangeRemotePeer::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingBgpStateChangeRemotePeerRpc::Input::set_value(const std::string & value_path, std::string value)
+void RoutingBgpStateChangeRemotePeer::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RoutingOspfNeighborStateChangeRpc::RoutingOspfNeighborStateChangeRpc()
+void RoutingBgpStateChangeRemotePeer::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool RoutingBgpStateChangeRemotePeer::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
+        return true;
+    return false;
+}
+
+RoutingOspfNeighborStateChange::RoutingOspfNeighborStateChange()
 {
     yang_name = "routing-ospf-neighbor-state-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingOspfNeighborStateChangeRpc::~RoutingOspfNeighborStateChangeRpc()
+RoutingOspfNeighborStateChange::~RoutingOspfNeighborStateChange()
 {
 }
 
-bool RoutingOspfNeighborStateChangeRpc::has_data() const
+bool RoutingOspfNeighborStateChange::has_data() const
 {
     return false;
 }
 
-bool RoutingOspfNeighborStateChangeRpc::has_operation() const
+bool RoutingOspfNeighborStateChange::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string RoutingOspfNeighborStateChangeRpc::get_segment_path() const
+std::string RoutingOspfNeighborStateChange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-ospf-neighbor-state-change";
@@ -3933,7 +4664,7 @@ std::string RoutingOspfNeighborStateChangeRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingOspfNeighborStateChangeRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingOspfNeighborStateChange::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -3951,66 +4682,80 @@ const EntityPath RoutingOspfNeighborStateChangeRpc::get_entity_path(Entity* ance
 
 }
 
-std::shared_ptr<Entity> RoutingOspfNeighborStateChangeRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingOspfNeighborStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChangeRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingOspfNeighborStateChangeRpc::set_value(const std::string & value_path, std::string value)
+void RoutingOspfNeighborStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingOspfNeighborStateChangeRpc::clone_ptr() const
+void RoutingOspfNeighborStateChange::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingOspfNeighborStateChangeRpc>();
 }
 
-std::string RoutingOspfNeighborStateChangeRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingOspfNeighborStateChange::clone_ptr() const
+{
+    return std::make_shared<RoutingOspfNeighborStateChange>();
+}
+
+std::string RoutingOspfNeighborStateChange::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingOspfNeighborStateChangeRpc::get_bundle_name() const
+std::string RoutingOspfNeighborStateChange::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingOspfNeighborStateChangeRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingOspfNeighborStateChange::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingOspfNeighborStateChangeAddressRpc::RoutingOspfNeighborStateChangeAddressRpc()
+std::map<std::pair<std::string, std::string>, std::string> RoutingOspfNeighborStateChange::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingOspfNeighborStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+RoutingOspfNeighborStateChangeAddress::RoutingOspfNeighborStateChangeAddress()
     :
-    input(std::make_shared<RoutingOspfNeighborStateChangeAddressRpc::Input>())
+    input(std::make_shared<RoutingOspfNeighborStateChangeAddress::Input>())
 {
     input->parent = this;
 
     yang_name = "routing-ospf-neighbor-state-change-address"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingOspfNeighborStateChangeAddressRpc::~RoutingOspfNeighborStateChangeAddressRpc()
+RoutingOspfNeighborStateChangeAddress::~RoutingOspfNeighborStateChangeAddress()
 {
 }
 
-bool RoutingOspfNeighborStateChangeAddressRpc::has_data() const
+bool RoutingOspfNeighborStateChangeAddress::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RoutingOspfNeighborStateChangeAddressRpc::has_operation() const
+bool RoutingOspfNeighborStateChangeAddress::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RoutingOspfNeighborStateChangeAddressRpc::get_segment_path() const
+std::string RoutingOspfNeighborStateChangeAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-ospf-neighbor-state-change-address";
@@ -4019,7 +4764,7 @@ std::string RoutingOspfNeighborStateChangeAddressRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingOspfNeighborStateChangeAddressRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingOspfNeighborStateChangeAddress::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -4037,13 +4782,13 @@ const EntityPath RoutingOspfNeighborStateChangeAddressRpc::get_entity_path(Entit
 
 }
 
-std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddressRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RoutingOspfNeighborStateChangeAddressRpc::Input>();
+            input = std::make_shared<RoutingOspfNeighborStateChangeAddress::Input>();
         }
         return input;
     }
@@ -4051,7 +4796,7 @@ std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddressRpc::get_child_by_n
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChangeAddressRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChangeAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -4062,31 +4807,47 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChangeAdd
     return children;
 }
 
-void RoutingOspfNeighborStateChangeAddressRpc::set_value(const std::string & value_path, std::string value)
+void RoutingOspfNeighborStateChangeAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddressRpc::clone_ptr() const
+void RoutingOspfNeighborStateChangeAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingOspfNeighborStateChangeAddressRpc>();
 }
 
-std::string RoutingOspfNeighborStateChangeAddressRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddress::clone_ptr() const
+{
+    return std::make_shared<RoutingOspfNeighborStateChangeAddress>();
+}
+
+std::string RoutingOspfNeighborStateChangeAddress::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingOspfNeighborStateChangeAddressRpc::get_bundle_name() const
+std::string RoutingOspfNeighborStateChangeAddress::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingOspfNeighborStateChangeAddressRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingOspfNeighborStateChangeAddress::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingOspfNeighborStateChangeAddressRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RoutingOspfNeighborStateChangeAddress::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingOspfNeighborStateChangeAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RoutingOspfNeighborStateChangeAddress::Input::Input()
     :
     address{YType::str, "address"},
     ifindex{YType::uint32, "ifindex"}
@@ -4094,24 +4855,24 @@ RoutingOspfNeighborStateChangeAddressRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "routing-ospf-neighbor-state-change-address";
 }
 
-RoutingOspfNeighborStateChangeAddressRpc::Input::~Input()
+RoutingOspfNeighborStateChangeAddress::Input::~Input()
 {
 }
 
-bool RoutingOspfNeighborStateChangeAddressRpc::Input::has_data() const
+bool RoutingOspfNeighborStateChangeAddress::Input::has_data() const
 {
     return address.is_set
 	|| ifindex.is_set;
 }
 
-bool RoutingOspfNeighborStateChangeAddressRpc::Input::has_operation() const
+bool RoutingOspfNeighborStateChangeAddress::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(ifindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(ifindex.yfilter);
 }
 
-std::string RoutingOspfNeighborStateChangeAddressRpc::Input::get_segment_path() const
+std::string RoutingOspfNeighborStateChangeAddress::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -4120,7 +4881,7 @@ std::string RoutingOspfNeighborStateChangeAddressRpc::Input::get_segment_path() 
 
 }
 
-const EntityPath RoutingOspfNeighborStateChangeAddressRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingOspfNeighborStateChangeAddress::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4134,8 +4895,8 @@ const EntityPath RoutingOspfNeighborStateChangeAddressRpc::Input::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4143,49 +4904,72 @@ const EntityPath RoutingOspfNeighborStateChangeAddressRpc::Input::get_entity_pat
 
 }
 
-std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddressRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingOspfNeighborStateChangeAddress::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChangeAddressRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingOspfNeighborStateChangeAddress::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingOspfNeighborStateChangeAddressRpc::Input::set_value(const std::string & value_path, std::string value)
+void RoutingOspfNeighborStateChangeAddress::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ifindex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RoutingMplsLdpSessionDownRpc::RoutingMplsLdpSessionDownRpc()
+void RoutingOspfNeighborStateChangeAddress::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "ifindex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+}
+
+bool RoutingOspfNeighborStateChangeAddress::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "ifindex")
+        return true;
+    return false;
+}
+
+RoutingMplsLdpSessionDown::RoutingMplsLdpSessionDown()
 {
     yang_name = "routing-mpls-ldp-session-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingMplsLdpSessionDownRpc::~RoutingMplsLdpSessionDownRpc()
+RoutingMplsLdpSessionDown::~RoutingMplsLdpSessionDown()
 {
 }
 
-bool RoutingMplsLdpSessionDownRpc::has_data() const
+bool RoutingMplsLdpSessionDown::has_data() const
 {
     return false;
 }
 
-bool RoutingMplsLdpSessionDownRpc::has_operation() const
+bool RoutingMplsLdpSessionDown::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string RoutingMplsLdpSessionDownRpc::get_segment_path() const
+std::string RoutingMplsLdpSessionDown::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-mpls-ldp-session-down";
@@ -4194,7 +4978,7 @@ std::string RoutingMplsLdpSessionDownRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsLdpSessionDownRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsLdpSessionDown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -4212,66 +4996,80 @@ const EntityPath RoutingMplsLdpSessionDownRpc::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> RoutingMplsLdpSessionDownRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsLdpSessionDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDownRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingMplsLdpSessionDownRpc::set_value(const std::string & value_path, std::string value)
+void RoutingMplsLdpSessionDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingMplsLdpSessionDownRpc::clone_ptr() const
+void RoutingMplsLdpSessionDown::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingMplsLdpSessionDownRpc>();
 }
 
-std::string RoutingMplsLdpSessionDownRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingMplsLdpSessionDown::clone_ptr() const
+{
+    return std::make_shared<RoutingMplsLdpSessionDown>();
+}
+
+std::string RoutingMplsLdpSessionDown::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingMplsLdpSessionDownRpc::get_bundle_name() const
+std::string RoutingMplsLdpSessionDown::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingMplsLdpSessionDownRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingMplsLdpSessionDown::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingMplsLdpSessionDownEntityIdRpc::RoutingMplsLdpSessionDownEntityIdRpc()
+std::map<std::pair<std::string, std::string>, std::string> RoutingMplsLdpSessionDown::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingMplsLdpSessionDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+RoutingMplsLdpSessionDownEntityId::RoutingMplsLdpSessionDownEntityId()
     :
-    input(std::make_shared<RoutingMplsLdpSessionDownEntityIdRpc::Input>())
+    input(std::make_shared<RoutingMplsLdpSessionDownEntityId::Input>())
 {
     input->parent = this;
 
     yang_name = "routing-mpls-ldp-session-down-entity-id"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingMplsLdpSessionDownEntityIdRpc::~RoutingMplsLdpSessionDownEntityIdRpc()
+RoutingMplsLdpSessionDownEntityId::~RoutingMplsLdpSessionDownEntityId()
 {
 }
 
-bool RoutingMplsLdpSessionDownEntityIdRpc::has_data() const
+bool RoutingMplsLdpSessionDownEntityId::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RoutingMplsLdpSessionDownEntityIdRpc::has_operation() const
+bool RoutingMplsLdpSessionDownEntityId::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RoutingMplsLdpSessionDownEntityIdRpc::get_segment_path() const
+std::string RoutingMplsLdpSessionDownEntityId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-mpls-ldp-session-down-entity-id";
@@ -4280,7 +5078,7 @@ std::string RoutingMplsLdpSessionDownEntityIdRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsLdpSessionDownEntityIdRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsLdpSessionDownEntityId::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -4298,13 +5096,13 @@ const EntityPath RoutingMplsLdpSessionDownEntityIdRpc::get_entity_path(Entity* a
 
 }
 
-std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityIdRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RoutingMplsLdpSessionDownEntityIdRpc::Input>();
+            input = std::make_shared<RoutingMplsLdpSessionDownEntityId::Input>();
         }
         return input;
     }
@@ -4312,7 +5110,7 @@ std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityIdRpc::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDownEntityIdRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDownEntityId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -4323,31 +5121,47 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDownEntityId
     return children;
 }
 
-void RoutingMplsLdpSessionDownEntityIdRpc::set_value(const std::string & value_path, std::string value)
+void RoutingMplsLdpSessionDownEntityId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityIdRpc::clone_ptr() const
+void RoutingMplsLdpSessionDownEntityId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingMplsLdpSessionDownEntityIdRpc>();
 }
 
-std::string RoutingMplsLdpSessionDownEntityIdRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityId::clone_ptr() const
+{
+    return std::make_shared<RoutingMplsLdpSessionDownEntityId>();
+}
+
+std::string RoutingMplsLdpSessionDownEntityId::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingMplsLdpSessionDownEntityIdRpc::get_bundle_name() const
+std::string RoutingMplsLdpSessionDownEntityId::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingMplsLdpSessionDownEntityIdRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingMplsLdpSessionDownEntityId::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingMplsLdpSessionDownEntityIdRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RoutingMplsLdpSessionDownEntityId::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingMplsLdpSessionDownEntityId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RoutingMplsLdpSessionDownEntityId::Input::Input()
     :
     entity_id{YType::str, "entity-id"},
     entity_index{YType::uint32, "entity-index"},
@@ -4356,26 +5170,26 @@ RoutingMplsLdpSessionDownEntityIdRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "routing-mpls-ldp-session-down-entity-id";
 }
 
-RoutingMplsLdpSessionDownEntityIdRpc::Input::~Input()
+RoutingMplsLdpSessionDownEntityId::Input::~Input()
 {
 }
 
-bool RoutingMplsLdpSessionDownEntityIdRpc::Input::has_data() const
+bool RoutingMplsLdpSessionDownEntityId::Input::has_data() const
 {
     return entity_id.is_set
 	|| entity_index.is_set
 	|| peer_id.is_set;
 }
 
-bool RoutingMplsLdpSessionDownEntityIdRpc::Input::has_operation() const
+bool RoutingMplsLdpSessionDownEntityId::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entity_id.operation)
-	|| is_set(entity_index.operation)
-	|| is_set(peer_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entity_id.yfilter)
+	|| ydk::is_set(entity_index.yfilter)
+	|| ydk::is_set(peer_id.yfilter);
 }
 
-std::string RoutingMplsLdpSessionDownEntityIdRpc::Input::get_segment_path() const
+std::string RoutingMplsLdpSessionDownEntityId::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -4384,7 +5198,7 @@ std::string RoutingMplsLdpSessionDownEntityIdRpc::Input::get_segment_path() cons
 
 }
 
-const EntityPath RoutingMplsLdpSessionDownEntityIdRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsLdpSessionDownEntityId::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4398,9 +5212,9 @@ const EntityPath RoutingMplsLdpSessionDownEntityIdRpc::Input::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entity_id.is_set || is_set(entity_id.operation)) leaf_name_data.push_back(entity_id.get_name_leafdata());
-    if (entity_index.is_set || is_set(entity_index.operation)) leaf_name_data.push_back(entity_index.get_name_leafdata());
-    if (peer_id.is_set || is_set(peer_id.operation)) leaf_name_data.push_back(peer_id.get_name_leafdata());
+    if (entity_id.is_set || is_set(entity_id.yfilter)) leaf_name_data.push_back(entity_id.get_name_leafdata());
+    if (entity_index.is_set || is_set(entity_index.yfilter)) leaf_name_data.push_back(entity_index.get_name_leafdata());
+    if (peer_id.is_set || is_set(peer_id.yfilter)) leaf_name_data.push_back(peer_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4408,53 +5222,82 @@ const EntityPath RoutingMplsLdpSessionDownEntityIdRpc::Input::get_entity_path(En
 
 }
 
-std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityIdRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsLdpSessionDownEntityId::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDownEntityIdRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsLdpSessionDownEntityId::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingMplsLdpSessionDownEntityIdRpc::Input::set_value(const std::string & value_path, std::string value)
+void RoutingMplsLdpSessionDownEntityId::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entity-id")
     {
         entity_id = value;
+        entity_id.value_namespace = name_space;
+        entity_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entity-index")
     {
         entity_index = value;
+        entity_index.value_namespace = name_space;
+        entity_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-id")
     {
         peer_id = value;
+        peer_id.value_namespace = name_space;
+        peer_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RoutingMplsTunnelReRoutedRpc::RoutingMplsTunnelReRoutedRpc()
+void RoutingMplsLdpSessionDownEntityId::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entity-id")
+    {
+        entity_id.yfilter = yfilter;
+    }
+    if(value_path == "entity-index")
+    {
+        entity_index.yfilter = yfilter;
+    }
+    if(value_path == "peer-id")
+    {
+        peer_id.yfilter = yfilter;
+    }
+}
+
+bool RoutingMplsLdpSessionDownEntityId::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entity-id" || name == "entity-index" || name == "peer-id")
+        return true;
+    return false;
+}
+
+RoutingMplsTunnelReRouted::RoutingMplsTunnelReRouted()
 {
     yang_name = "routing-mpls-tunnel-re-routed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingMplsTunnelReRoutedRpc::~RoutingMplsTunnelReRoutedRpc()
+RoutingMplsTunnelReRouted::~RoutingMplsTunnelReRouted()
 {
 }
 
-bool RoutingMplsTunnelReRoutedRpc::has_data() const
+bool RoutingMplsTunnelReRouted::has_data() const
 {
     return false;
 }
 
-bool RoutingMplsTunnelReRoutedRpc::has_operation() const
+bool RoutingMplsTunnelReRouted::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string RoutingMplsTunnelReRoutedRpc::get_segment_path() const
+std::string RoutingMplsTunnelReRouted::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-mpls-tunnel-re-routed";
@@ -4463,7 +5306,7 @@ std::string RoutingMplsTunnelReRoutedRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsTunnelReRoutedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelReRouted::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -4481,66 +5324,80 @@ const EntityPath RoutingMplsTunnelReRoutedRpc::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReRoutedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelReRouted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRoutedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRouted::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingMplsTunnelReRoutedRpc::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelReRouted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReRoutedRpc::clone_ptr() const
+void RoutingMplsTunnelReRouted::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingMplsTunnelReRoutedRpc>();
 }
 
-std::string RoutingMplsTunnelReRoutedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingMplsTunnelReRouted::clone_ptr() const
+{
+    return std::make_shared<RoutingMplsTunnelReRouted>();
+}
+
+std::string RoutingMplsTunnelReRouted::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingMplsTunnelReRoutedRpc::get_bundle_name() const
+std::string RoutingMplsTunnelReRouted::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingMplsTunnelReRoutedRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingMplsTunnelReRouted::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingMplsTunnelReRoutedIndexRpc::RoutingMplsTunnelReRoutedIndexRpc()
+std::map<std::pair<std::string, std::string>, std::string> RoutingMplsTunnelReRouted::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingMplsTunnelReRouted::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+RoutingMplsTunnelReRoutedIndex::RoutingMplsTunnelReRoutedIndex()
     :
-    input(std::make_shared<RoutingMplsTunnelReRoutedIndexRpc::Input>())
+    input(std::make_shared<RoutingMplsTunnelReRoutedIndex::Input>())
 {
     input->parent = this;
 
     yang_name = "routing-mpls-tunnel-re-routed-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingMplsTunnelReRoutedIndexRpc::~RoutingMplsTunnelReRoutedIndexRpc()
+RoutingMplsTunnelReRoutedIndex::~RoutingMplsTunnelReRoutedIndex()
 {
 }
 
-bool RoutingMplsTunnelReRoutedIndexRpc::has_data() const
+bool RoutingMplsTunnelReRoutedIndex::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RoutingMplsTunnelReRoutedIndexRpc::has_operation() const
+bool RoutingMplsTunnelReRoutedIndex::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RoutingMplsTunnelReRoutedIndexRpc::get_segment_path() const
+std::string RoutingMplsTunnelReRoutedIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-mpls-tunnel-re-routed-index";
@@ -4549,7 +5406,7 @@ std::string RoutingMplsTunnelReRoutedIndexRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsTunnelReRoutedIndexRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelReRoutedIndex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -4567,13 +5424,13 @@ const EntityPath RoutingMplsTunnelReRoutedIndexRpc::get_entity_path(Entity* ance
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndexRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RoutingMplsTunnelReRoutedIndexRpc::Input>();
+            input = std::make_shared<RoutingMplsTunnelReRoutedIndex::Input>();
         }
         return input;
     }
@@ -4581,7 +5438,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndexRpc::get_child_by_name(con
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRoutedIndexRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRoutedIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -4592,31 +5449,47 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRoutedIndexRpc
     return children;
 }
 
-void RoutingMplsTunnelReRoutedIndexRpc::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelReRoutedIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndexRpc::clone_ptr() const
+void RoutingMplsTunnelReRoutedIndex::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingMplsTunnelReRoutedIndexRpc>();
 }
 
-std::string RoutingMplsTunnelReRoutedIndexRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndex::clone_ptr() const
+{
+    return std::make_shared<RoutingMplsTunnelReRoutedIndex>();
+}
+
+std::string RoutingMplsTunnelReRoutedIndex::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingMplsTunnelReRoutedIndexRpc::get_bundle_name() const
+std::string RoutingMplsTunnelReRoutedIndex::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingMplsTunnelReRoutedIndexRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingMplsTunnelReRoutedIndex::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingMplsTunnelReRoutedIndexRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RoutingMplsTunnelReRoutedIndex::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingMplsTunnelReRoutedIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RoutingMplsTunnelReRoutedIndex::Input::Input()
     :
     destination{YType::str, "destination"},
     index_{YType::uint32, "index"},
@@ -4626,11 +5499,11 @@ RoutingMplsTunnelReRoutedIndexRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-re-routed-index";
 }
 
-RoutingMplsTunnelReRoutedIndexRpc::Input::~Input()
+RoutingMplsTunnelReRoutedIndex::Input::~Input()
 {
 }
 
-bool RoutingMplsTunnelReRoutedIndexRpc::Input::has_data() const
+bool RoutingMplsTunnelReRoutedIndex::Input::has_data() const
 {
     return destination.is_set
 	|| index_.is_set
@@ -4638,16 +5511,16 @@ bool RoutingMplsTunnelReRoutedIndexRpc::Input::has_data() const
 	|| source.is_set;
 }
 
-bool RoutingMplsTunnelReRoutedIndexRpc::Input::has_operation() const
+bool RoutingMplsTunnelReRoutedIndex::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(index_.operation)
-	|| is_set(instance.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
-std::string RoutingMplsTunnelReRoutedIndexRpc::Input::get_segment_path() const
+std::string RoutingMplsTunnelReRoutedIndex::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -4656,7 +5529,7 @@ std::string RoutingMplsTunnelReRoutedIndexRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsTunnelReRoutedIndexRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelReRoutedIndex::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4670,10 +5543,10 @@ const EntityPath RoutingMplsTunnelReRoutedIndexRpc::Input::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4681,57 +5554,92 @@ const EntityPath RoutingMplsTunnelReRoutedIndexRpc::Input::get_entity_path(Entit
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndexRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelReRoutedIndex::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRoutedIndexRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReRoutedIndex::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingMplsTunnelReRoutedIndexRpc::Input::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelReRoutedIndex::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RoutingMplsTunnelReOptimizedRpc::RoutingMplsTunnelReOptimizedRpc()
+void RoutingMplsTunnelReRoutedIndex::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool RoutingMplsTunnelReRoutedIndex::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "index" || name == "instance" || name == "source")
+        return true;
+    return false;
+}
+
+RoutingMplsTunnelReOptimized::RoutingMplsTunnelReOptimized()
 {
     yang_name = "routing-mpls-tunnel-re-optimized"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingMplsTunnelReOptimizedRpc::~RoutingMplsTunnelReOptimizedRpc()
+RoutingMplsTunnelReOptimized::~RoutingMplsTunnelReOptimized()
 {
 }
 
-bool RoutingMplsTunnelReOptimizedRpc::has_data() const
+bool RoutingMplsTunnelReOptimized::has_data() const
 {
     return false;
 }
 
-bool RoutingMplsTunnelReOptimizedRpc::has_operation() const
+bool RoutingMplsTunnelReOptimized::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string RoutingMplsTunnelReOptimizedRpc::get_segment_path() const
+std::string RoutingMplsTunnelReOptimized::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-mpls-tunnel-re-optimized";
@@ -4740,7 +5648,7 @@ std::string RoutingMplsTunnelReOptimizedRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsTunnelReOptimizedRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelReOptimized::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -4758,66 +5666,80 @@ const EntityPath RoutingMplsTunnelReOptimizedRpc::get_entity_path(Entity* ancest
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelReOptimized::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimizedRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimized::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingMplsTunnelReOptimizedRpc::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelReOptimized::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedRpc::clone_ptr() const
+void RoutingMplsTunnelReOptimized::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingMplsTunnelReOptimizedRpc>();
 }
 
-std::string RoutingMplsTunnelReOptimizedRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingMplsTunnelReOptimized::clone_ptr() const
+{
+    return std::make_shared<RoutingMplsTunnelReOptimized>();
+}
+
+std::string RoutingMplsTunnelReOptimized::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingMplsTunnelReOptimizedRpc::get_bundle_name() const
+std::string RoutingMplsTunnelReOptimized::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingMplsTunnelReOptimizedRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingMplsTunnelReOptimized::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingMplsTunnelReOptimizedIndexRpc::RoutingMplsTunnelReOptimizedIndexRpc()
+std::map<std::pair<std::string, std::string>, std::string> RoutingMplsTunnelReOptimized::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingMplsTunnelReOptimized::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+RoutingMplsTunnelReOptimizedIndex::RoutingMplsTunnelReOptimizedIndex()
     :
-    input(std::make_shared<RoutingMplsTunnelReOptimizedIndexRpc::Input>())
+    input(std::make_shared<RoutingMplsTunnelReOptimizedIndex::Input>())
 {
     input->parent = this;
 
     yang_name = "routing-mpls-tunnel-re-optimized-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingMplsTunnelReOptimizedIndexRpc::~RoutingMplsTunnelReOptimizedIndexRpc()
+RoutingMplsTunnelReOptimizedIndex::~RoutingMplsTunnelReOptimizedIndex()
 {
 }
 
-bool RoutingMplsTunnelReOptimizedIndexRpc::has_data() const
+bool RoutingMplsTunnelReOptimizedIndex::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RoutingMplsTunnelReOptimizedIndexRpc::has_operation() const
+bool RoutingMplsTunnelReOptimizedIndex::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RoutingMplsTunnelReOptimizedIndexRpc::get_segment_path() const
+std::string RoutingMplsTunnelReOptimizedIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-mpls-tunnel-re-optimized-index";
@@ -4826,7 +5748,7 @@ std::string RoutingMplsTunnelReOptimizedIndexRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsTunnelReOptimizedIndexRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelReOptimizedIndex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -4844,13 +5766,13 @@ const EntityPath RoutingMplsTunnelReOptimizedIndexRpc::get_entity_path(Entity* a
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndexRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RoutingMplsTunnelReOptimizedIndexRpc::Input>();
+            input = std::make_shared<RoutingMplsTunnelReOptimizedIndex::Input>();
         }
         return input;
     }
@@ -4858,7 +5780,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndexRpc::get_child_by_name(
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimizedIndexRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimizedIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -4869,31 +5791,47 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimizedIndex
     return children;
 }
 
-void RoutingMplsTunnelReOptimizedIndexRpc::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelReOptimizedIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndexRpc::clone_ptr() const
+void RoutingMplsTunnelReOptimizedIndex::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingMplsTunnelReOptimizedIndexRpc>();
 }
 
-std::string RoutingMplsTunnelReOptimizedIndexRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndex::clone_ptr() const
+{
+    return std::make_shared<RoutingMplsTunnelReOptimizedIndex>();
+}
+
+std::string RoutingMplsTunnelReOptimizedIndex::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingMplsTunnelReOptimizedIndexRpc::get_bundle_name() const
+std::string RoutingMplsTunnelReOptimizedIndex::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingMplsTunnelReOptimizedIndexRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingMplsTunnelReOptimizedIndex::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingMplsTunnelReOptimizedIndexRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RoutingMplsTunnelReOptimizedIndex::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingMplsTunnelReOptimizedIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RoutingMplsTunnelReOptimizedIndex::Input::Input()
     :
     destination{YType::str, "destination"},
     index_{YType::uint32, "index"},
@@ -4903,11 +5841,11 @@ RoutingMplsTunnelReOptimizedIndexRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-re-optimized-index";
 }
 
-RoutingMplsTunnelReOptimizedIndexRpc::Input::~Input()
+RoutingMplsTunnelReOptimizedIndex::Input::~Input()
 {
 }
 
-bool RoutingMplsTunnelReOptimizedIndexRpc::Input::has_data() const
+bool RoutingMplsTunnelReOptimizedIndex::Input::has_data() const
 {
     return destination.is_set
 	|| index_.is_set
@@ -4915,16 +5853,16 @@ bool RoutingMplsTunnelReOptimizedIndexRpc::Input::has_data() const
 	|| source.is_set;
 }
 
-bool RoutingMplsTunnelReOptimizedIndexRpc::Input::has_operation() const
+bool RoutingMplsTunnelReOptimizedIndex::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(index_.operation)
-	|| is_set(instance.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
-std::string RoutingMplsTunnelReOptimizedIndexRpc::Input::get_segment_path() const
+std::string RoutingMplsTunnelReOptimizedIndex::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -4933,7 +5871,7 @@ std::string RoutingMplsTunnelReOptimizedIndexRpc::Input::get_segment_path() cons
 
 }
 
-const EntityPath RoutingMplsTunnelReOptimizedIndexRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelReOptimizedIndex::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -4947,10 +5885,10 @@ const EntityPath RoutingMplsTunnelReOptimizedIndexRpc::Input::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4958,57 +5896,92 @@ const EntityPath RoutingMplsTunnelReOptimizedIndexRpc::Input::get_entity_path(En
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndexRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelReOptimizedIndex::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimizedIndexRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelReOptimizedIndex::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingMplsTunnelReOptimizedIndexRpc::Input::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelReOptimizedIndex::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RoutingMplsTunnelDownRpc::RoutingMplsTunnelDownRpc()
+void RoutingMplsTunnelReOptimizedIndex::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool RoutingMplsTunnelReOptimizedIndex::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "index" || name == "instance" || name == "source")
+        return true;
+    return false;
+}
+
+RoutingMplsTunnelDown::RoutingMplsTunnelDown()
 {
     yang_name = "routing-mpls-tunnel-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingMplsTunnelDownRpc::~RoutingMplsTunnelDownRpc()
+RoutingMplsTunnelDown::~RoutingMplsTunnelDown()
 {
 }
 
-bool RoutingMplsTunnelDownRpc::has_data() const
+bool RoutingMplsTunnelDown::has_data() const
 {
     return false;
 }
 
-bool RoutingMplsTunnelDownRpc::has_operation() const
+bool RoutingMplsTunnelDown::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string RoutingMplsTunnelDownRpc::get_segment_path() const
+std::string RoutingMplsTunnelDown::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-mpls-tunnel-down";
@@ -5017,7 +5990,7 @@ std::string RoutingMplsTunnelDownRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsTunnelDownRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelDown::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -5035,66 +6008,80 @@ const EntityPath RoutingMplsTunnelDownRpc::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelDownRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelDown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDownRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDown::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingMplsTunnelDownRpc::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelDown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelDownRpc::clone_ptr() const
+void RoutingMplsTunnelDown::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingMplsTunnelDownRpc>();
 }
 
-std::string RoutingMplsTunnelDownRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingMplsTunnelDown::clone_ptr() const
+{
+    return std::make_shared<RoutingMplsTunnelDown>();
+}
+
+std::string RoutingMplsTunnelDown::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingMplsTunnelDownRpc::get_bundle_name() const
+std::string RoutingMplsTunnelDown::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingMplsTunnelDownRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingMplsTunnelDown::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingMplsTunnelDownIndexRpc::RoutingMplsTunnelDownIndexRpc()
+std::map<std::pair<std::string, std::string>, std::string> RoutingMplsTunnelDown::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingMplsTunnelDown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+RoutingMplsTunnelDownIndex::RoutingMplsTunnelDownIndex()
     :
-    input(std::make_shared<RoutingMplsTunnelDownIndexRpc::Input>())
+    input(std::make_shared<RoutingMplsTunnelDownIndex::Input>())
 {
     input->parent = this;
 
     yang_name = "routing-mpls-tunnel-down-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-RoutingMplsTunnelDownIndexRpc::~RoutingMplsTunnelDownIndexRpc()
+RoutingMplsTunnelDownIndex::~RoutingMplsTunnelDownIndex()
 {
 }
 
-bool RoutingMplsTunnelDownIndexRpc::has_data() const
+bool RoutingMplsTunnelDownIndex::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool RoutingMplsTunnelDownIndexRpc::has_operation() const
+bool RoutingMplsTunnelDownIndex::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string RoutingMplsTunnelDownIndexRpc::get_segment_path() const
+std::string RoutingMplsTunnelDownIndex::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:routing-mpls-tunnel-down-index";
@@ -5103,7 +6090,7 @@ std::string RoutingMplsTunnelDownIndexRpc::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsTunnelDownIndexRpc::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelDownIndex::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -5121,13 +6108,13 @@ const EntityPath RoutingMplsTunnelDownIndexRpc::get_entity_path(Entity* ancestor
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelDownIndexRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelDownIndex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<RoutingMplsTunnelDownIndexRpc::Input>();
+            input = std::make_shared<RoutingMplsTunnelDownIndex::Input>();
         }
         return input;
     }
@@ -5135,7 +6122,7 @@ std::shared_ptr<Entity> RoutingMplsTunnelDownIndexRpc::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDownIndexRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDownIndex::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -5146,31 +6133,47 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDownIndexRpc::ge
     return children;
 }
 
-void RoutingMplsTunnelDownIndexRpc::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelDownIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelDownIndexRpc::clone_ptr() const
+void RoutingMplsTunnelDownIndex::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RoutingMplsTunnelDownIndexRpc>();
 }
 
-std::string RoutingMplsTunnelDownIndexRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> RoutingMplsTunnelDownIndex::clone_ptr() const
+{
+    return std::make_shared<RoutingMplsTunnelDownIndex>();
+}
+
+std::string RoutingMplsTunnelDownIndex::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string RoutingMplsTunnelDownIndexRpc::get_bundle_name() const
+std::string RoutingMplsTunnelDownIndex::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function RoutingMplsTunnelDownIndexRpc::get_augment_capabilities_function() const
+augment_capabilities_function RoutingMplsTunnelDownIndex::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-RoutingMplsTunnelDownIndexRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> RoutingMplsTunnelDownIndex::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingMplsTunnelDownIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+RoutingMplsTunnelDownIndex::Input::Input()
     :
     destination{YType::str, "destination"},
     index_{YType::uint32, "index"},
@@ -5180,11 +6183,11 @@ RoutingMplsTunnelDownIndexRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-down-index";
 }
 
-RoutingMplsTunnelDownIndexRpc::Input::~Input()
+RoutingMplsTunnelDownIndex::Input::~Input()
 {
 }
 
-bool RoutingMplsTunnelDownIndexRpc::Input::has_data() const
+bool RoutingMplsTunnelDownIndex::Input::has_data() const
 {
     return destination.is_set
 	|| index_.is_set
@@ -5192,16 +6195,16 @@ bool RoutingMplsTunnelDownIndexRpc::Input::has_data() const
 	|| source.is_set;
 }
 
-bool RoutingMplsTunnelDownIndexRpc::Input::has_operation() const
+bool RoutingMplsTunnelDownIndex::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation)
-	|| is_set(index_.operation)
-	|| is_set(instance.operation)
-	|| is_set(source.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(source.yfilter);
 }
 
-std::string RoutingMplsTunnelDownIndexRpc::Input::get_segment_path() const
+std::string RoutingMplsTunnelDownIndex::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -5210,7 +6213,7 @@ std::string RoutingMplsTunnelDownIndexRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RoutingMplsTunnelDownIndexRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath RoutingMplsTunnelDownIndex::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -5224,10 +6227,10 @@ const EntityPath RoutingMplsTunnelDownIndexRpc::Input::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5235,57 +6238,92 @@ const EntityPath RoutingMplsTunnelDownIndexRpc::Input::get_entity_path(Entity* a
 
 }
 
-std::shared_ptr<Entity> RoutingMplsTunnelDownIndexRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RoutingMplsTunnelDownIndex::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDownIndexRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RoutingMplsTunnelDownIndex::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RoutingMplsTunnelDownIndexRpc::Input::set_value(const std::string & value_path, std::string value)
+void RoutingMplsTunnelDownIndex::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
 }
 
-AllRpc::AllRpc()
+void RoutingMplsTunnelDownIndex::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool RoutingMplsTunnelDownIndex::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "index" || name == "instance" || name == "source")
+        return true;
+    return false;
+}
+
+All::All()
 {
     yang_name = "all"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act";
 }
 
-AllRpc::~AllRpc()
+All::~All()
 {
 }
 
-bool AllRpc::has_data() const
+bool All::has_data() const
 {
     return false;
 }
 
-bool AllRpc::has_operation() const
+bool All::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
-std::string AllRpc::get_segment_path() const
+std::string All::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-snmp-test-trap-act:all";
@@ -5294,7 +6332,7 @@ std::string AllRpc::get_segment_path() const
 
 }
 
-const EntityPath AllRpc::get_entity_path(Entity* ancestor) const
+const EntityPath All::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -5312,39 +6350,53 @@ const EntityPath AllRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> AllRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AllRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> All::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void AllRpc::set_value(const std::string & value_path, std::string value)
+void All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> AllRpc::clone_ptr() const
+void All::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<AllRpc>();
 }
 
-std::string AllRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> All::clone_ptr() const
+{
+    return std::make_shared<All>();
+}
+
+std::string All::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string AllRpc::get_bundle_name() const
+std::string All::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function AllRpc::get_augment_capabilities_function() const
+augment_capabilities_function All::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> All::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool All::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 

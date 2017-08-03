@@ -7,28 +7,28 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace MPLS_TC_MIB {
 
-class MplsldplabeltypesEnum : public Enum
+class Mplsinitialcreationsource : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf generic;
-        static const Enum::YLeaf atm;
-        static const Enum::YLeaf frameRelay;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf snmp;
+        static const ydk::Enum::YLeaf ldp;
+        static const ydk::Enum::YLeaf rsvp;
+        static const ydk::Enum::YLeaf crldp;
+        static const ydk::Enum::YLeaf policyAgent;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
-class MplsinitialcreationsourceEnum : public Enum
+class Mplsldplabeltypes : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf snmp;
-        static const Enum::YLeaf ldp;
-        static const Enum::YLeaf rsvp;
-        static const Enum::YLeaf crldp;
-        static const Enum::YLeaf policyAgent;
-        static const Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf generic;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf frameRelay;
 
 };
 

@@ -40,51 +40,53 @@ using namespace std;
 namespace ydk
 {
 static std::shared_ptr<path::DataNode> handle_read_reply(const string & reply, path::RootSchemaNode & root_schema, EncodingFormat encoding);
-static path::SchemaNode* get_schema_for_operation(path::RootSchemaNode & root_schema, const string & operation);
+static path::SchemaNode* get_schema_for_operation(path::RootSchemaNode & root_schema, const string & yfilter);
 static string get_encoding_string(EncodingFormat encoding);
 
 RestconfServiceProvider::RestconfServiceProvider(path::Repository & repo, const string & address, const string & username,
-		const string & password, int port, EncodingFormat encoding, const string & config_url_root, const string & state_url_root)
+        const string & password, int port, EncodingFormat encoding, const string & config_url_root, const string & state_url_root)
     : client(make_unique<RestconfClient>(address, username, password, port, get_encoding_string(encoding))),
-	  encoding(encoding), config_url_root(config_url_root), state_url_root(state_url_root)
+      encoding(encoding), config_url_root(config_url_root), state_url_root(state_url_root)
 {
-	initialize(repo);
+    initialize(repo);
 }
 
 RestconfServiceProvider::RestconfServiceProvider(std::unique_ptr<RestconfClient> client,
-		std::shared_ptr<ydk::path::RootSchemaNode> root_schema, const std::string & edit_method,
-		const std::string & config_url_root, const std::string & state_url_root, EncodingFormat encoding)
-	: client(move(client)), root_schema(move(root_schema)), encoding(encoding), edit_method(edit_method),
-	  config_url_root(config_url_root), state_url_root(state_url_root)
+        std::shared_ptr<ydk::path::RootSchemaNode> root_schema, const std::string & edit_method,
+        const std::string & config_url_root, const std::string & state_url_root, EncodingFormat encoding)
+    : client(move(client)), root_schema(move(root_schema)), encoding(encoding), edit_method(edit_method),
+      config_url_root(config_url_root), state_url_root(state_url_root)
 {
 }
 
 void RestconfServiceProvider::initialize(path::Repository & repo)
 {
-	vector<path::Capability> capabilities;
-	IetfCapabilitiesParser capabilities_parser{};
-	IetfCapabilitiesXmlParser capabilities_xml_parser{};
-	edit_method = "PATCH";
-	server_capabilities = capabilities_xml_parser.parse
-					(
-					client->get_capabilities
-								(
-								state_url_root + default_capabilities_url, get_encoding_string(EncodingFormat::XML)
-								)
-					);
-	capabilities = capabilities_parser.parse(server_capabilities);
+    vector<path::Capability> capabilities;
+    IetfCapabilitiesParser capabilities_parser{};
+    IetfCapabilitiesXmlParser capabilities_xml_parser{};
+    edit_method = "PATCH";
+    server_capabilities = capabilities_xml_parser.parse
+                    (
+                    client->get_capabilities
+                                (
+                                state_url_root + default_capabilities_url, get_encoding_string(EncodingFormat::XML)
+                                )
+                    );
 
-	root_schema = repo.create_root_schema(capabilities);
+    auto lookup_tables = capabilities_parser.get_lookup_tables(server_capabilities);
+    capabilities = capabilities_parser.parse(server_capabilities);
+
+    root_schema = repo.create_root_schema(lookup_tables, capabilities);
 }
 
 RestconfServiceProvider::~RestconfServiceProvider()
 {
-	YLOG_INFO("Disconnected from device");
+    YLOG_INFO("Disconnected from device");
 }
 
 EncodingFormat RestconfServiceProvider::get_encoding() const
 {
-	return encoding;
+    return encoding;
 }
 
 path::RootSchemaNode& RestconfServiceProvider::get_root_schema() const
@@ -94,12 +96,12 @@ path::RootSchemaNode& RestconfServiceProvider::get_root_schema() const
 
 std::shared_ptr<path::DataNode> RestconfServiceProvider::invoke(path::Rpc& rpc) const
 {
-	path::SchemaNode* create_schema = get_schema_for_operation(*root_schema, "ydk:create");
-	path::SchemaNode* read_schema = get_schema_for_operation(*root_schema, "ydk:read");
-	path::SchemaNode* update_schema = get_schema_for_operation(*root_schema, "ydk:update");
-	path::SchemaNode* delete_schema = get_schema_for_operation(*root_schema, "ydk:delete");
+    path::SchemaNode* create_schema = get_schema_for_operation(*root_schema, "ydk:create");
+    path::SchemaNode* read_schema = get_schema_for_operation(*root_schema, "ydk:read");
+    path::SchemaNode* update_schema = get_schema_for_operation(*root_schema, "ydk:update");
+    path::SchemaNode* delete_schema = get_schema_for_operation(*root_schema, "ydk:delete");
 
-    path::SchemaNode* rpc_schema = &(rpc.schema());
+    path::SchemaNode* rpc_schema = &(rpc.get_schema_node());
     std::shared_ptr<path::DataNode> datanode = nullptr;
 
     if(rpc_schema == create_schema || rpc_schema == update_schema)
@@ -125,106 +127,106 @@ std::shared_ptr<path::DataNode> RestconfServiceProvider::invoke(path::Rpc& rpc) 
 
 static string get_module_url_path(const string & path)
 {
-	auto top = path.find_last_of("/");
-	auto t = path.substr(top+1, path.size()-top);
+    auto top = path.find_last_of("/");
+    auto t = path.substr(top+1, path.size()-top);
 
-	if(t.find(":") != string::npos)
-		return "/"+t;
+    if(t.find(":") != string::npos)
+        return "/"+t;
 
-	auto begin = path.find(":");
-	auto mod = path.substr(0,begin);
+    auto begin = path.find(":");
+    auto mod = path.substr(0,begin);
 
-	return mod+string(":")+t;
+    return mod+string(":")+t;
 }
 
 static bool is_config(path::Rpc & rpc)
 {
-	if(!rpc.input().find("only-config").empty())
-	{
-		return true;
-	}
-	return false;
+    if(!rpc.get_input_node().find("only-config").empty())
+    {
+        return true;
+    }
+    return false;
 }
 
 std::shared_ptr<path::DataNode> RestconfServiceProvider::handle_read(path::Rpc& rpc) const
 {
-    path::CodecService codec_service{};
+    path::Codec codec_service{};
 
-    auto filter = rpc.input().find("filter");
-	if(filter.empty()){
-		YLOG_ERROR("Failed to get entity node.");
-		throw(YCPPInvalidArgumentError{"Failed to get entity node"});
-	}
+    auto filter = rpc.get_input_node().find("filter");
+    if(filter.empty()){
+        YLOG_ERROR("Failed to get entity node.");
+        throw(YCPPInvalidArgumentError{"Failed to get entity node"});
+    }
 
-	path::DataNode* filter_node = filter[0].get();
-	string filter_instance = filter_node->get();
+    path::DataNode* filter_node = filter[0].get();
+    string filter_instance = filter_node->get_value();
 
     auto datanode = codec_service.decode(*root_schema, filter_instance, encoding);
 
-	string url;
-	if(is_config(rpc))
-	{
-		url = config_url_root + get_module_url_path(datanode->children()[0]->schema().path());
-	}
-	else
-	{
-		url = state_url_root + get_module_url_path(datanode->children()[0]->schema().path());
-	}
+    string url;
+    if(is_config(rpc))
+    {
+        url = config_url_root + get_module_url_path(datanode->get_children()[0]->get_schema_node().get_path());
+    }
+    else
+    {
+        url = state_url_root + get_module_url_path(datanode->get_children()[0]->get_schema_node().get_path());
+    }
 
     YLOG_INFO("Performing GET on URL {}", url);
     return handle_read_reply( client->execute("GET", url, ""), *root_schema, encoding);
 }
 
-std::shared_ptr<path::DataNode> RestconfServiceProvider::handle_edit(path::Rpc& rpc, const string & operation) const
+std::shared_ptr<path::DataNode> RestconfServiceProvider::handle_edit(path::Rpc& rpc, const string & yfilter) const
 {
-	path::CodecService codec_service{};
-    auto entity = rpc.input().find("entity");
-	if(entity.empty()){
-		YLOG_ERROR("Failed to get entity node");
-		throw(YCPPInvalidArgumentError{"Failed to get entity node"});
-	}
+    path::Codec codec_service{};
+    auto entity = rpc.get_input_node().find("entity");
+    if(entity.empty()){
+        YLOG_ERROR("Failed to get entity node");
+        throw(YCPPInvalidArgumentError{"Failed to get entity node"});
+    }
 
-	path::DataNode* entity_node = entity[0].get();
-	string header_data = entity_node->get();
+    path::DataNode* entity_node = entity[0].get();
+    string header_data = entity_node->get_value();
 
     auto datanode = codec_service.decode(*root_schema, header_data, encoding);
-	string url = config_url_root + get_module_url_path(datanode->children()[0]->schema().path());
+    string url = config_url_root + get_module_url_path(datanode->get_children()[0]->get_schema_node().get_path());
 
-    YLOG_INFO("Performing {} on URL {}. Payload: ", operation, url, header_data);
-    client->execute(operation, url, header_data);
+    YLOG_INFO("Performing {} on URL {}. Payload: {}", yfilter, url, header_data);
+    client->execute(yfilter, url, header_data);
 
     return nullptr;
 }
 
 static std::shared_ptr<path::DataNode> handle_read_reply(const string & reply, path::RootSchemaNode & root_schema, EncodingFormat encoding)
 {
-	path::CodecService codec_service{};
+    path::Codec codec_service{};
 
-	auto datanode = std::shared_ptr<path::DataNode>(codec_service.decode(root_schema, reply, encoding));
+    auto datanode = std::shared_ptr<path::DataNode>(codec_service.decode(root_schema, reply, encoding));
 
-	if(!datanode){
-		YLOG_INFO("Codec service failed to decode datanode");
-		throw(YCPPError{"Problems deserializing output"});
-	}
-	return datanode;
+    if(!datanode){
+        YLOG_INFO("Codec service failed to decode datanode");
+        throw(YCPPError{"Problems deserializing output"});
+    }
+    return datanode;
 }
 
-static path::SchemaNode* get_schema_for_operation(path::RootSchemaNode & root_schema, const string & operation)
+static path::SchemaNode* get_schema_for_operation(path::RootSchemaNode & root_schema, const string & yfilter)
 {
-	auto c = root_schema.find(operation);
-	if(c.empty())
-	{
-		YLOG_ERROR("{} rpc schema not found!", operation);
-		throw(YCPPIllegalStateError{operation + " rpc schema not found!"});
-	}
-	return c[0];
+    auto c = root_schema.find(yfilter);
+    if(c.empty())
+    {
+        YLOG_ERROR("{} rpc schema not found!", yfilter);
+        throw(YCPPIllegalStateError{yfilter + " rpc schema not found!"});
+    }
+    return c[0];
 }
 
 static string get_encoding_string(EncodingFormat encoding)
 {
-	return (encoding == EncodingFormat::XML)?
-		("application/yang-data+xml"):
-		("application/yang-data+json");
+    return (encoding == EncodingFormat::XML)?
+        ("application/yang-data+xml"):
+        ("application/yang-data+json");
 }
 
 }

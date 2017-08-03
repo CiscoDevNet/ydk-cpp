@@ -6,87 +6,89 @@
 #include "generated_entity_lookup.hpp"
 #include "tailf_netconf_monitoring.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace tailf_netconf_monitoring {
 
-RestHttpsIdentity::RestHttpsIdentity()
-     : Identity("tailf-netconf-monitoring:rest-https")
+RestHttp::RestHttp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:rest-http")
 {
 }
 
-RestHttpsIdentity::~RestHttpsIdentity()
+RestHttp::~RestHttp()
 {
 }
 
-CliSshIdentity::CliSshIdentity()
-     : Identity("tailf-netconf-monitoring:cli-ssh")
+NetconfTcp::NetconfTcp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:netconf-tcp")
 {
 }
 
-CliSshIdentity::~CliSshIdentity()
+NetconfTcp::~NetconfTcp()
 {
 }
 
-CliConsoleIdentity::CliConsoleIdentity()
-     : Identity("tailf-netconf-monitoring:cli-console")
+CliConsole::CliConsole()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-console")
 {
 }
 
-CliConsoleIdentity::~CliConsoleIdentity()
+CliConsole::~CliConsole()
 {
 }
 
-WebuiHttpsIdentity::WebuiHttpsIdentity()
-     : Identity("tailf-netconf-monitoring:webui-https")
+CliSsh::CliSsh()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-ssh")
 {
 }
 
-WebuiHttpsIdentity::~WebuiHttpsIdentity()
+CliSsh::~CliSsh()
 {
 }
 
-SnmpUdpIdentity::SnmpUdpIdentity()
-     : Identity("tailf-netconf-monitoring:snmp-udp")
+WebuiHttp::WebuiHttp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-http")
 {
 }
 
-SnmpUdpIdentity::~SnmpUdpIdentity()
+WebuiHttp::~WebuiHttp()
 {
 }
 
-WebuiHttpIdentity::WebuiHttpIdentity()
-     : Identity("tailf-netconf-monitoring:webui-http")
+SnmpUdp::SnmpUdp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:snmp-udp")
 {
 }
 
-WebuiHttpIdentity::~WebuiHttpIdentity()
+SnmpUdp::~SnmpUdp()
 {
 }
 
-RestHttpIdentity::RestHttpIdentity()
-     : Identity("tailf-netconf-monitoring:rest-http")
+WebuiHttps::WebuiHttps()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-https")
 {
 }
 
-RestHttpIdentity::~RestHttpIdentity()
+WebuiHttps::~WebuiHttps()
 {
 }
 
-NetconfTcpIdentity::NetconfTcpIdentity()
-     : Identity("tailf-netconf-monitoring:netconf-tcp")
+RestHttps::RestHttps()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:rest-https")
 {
 }
 
-NetconfTcpIdentity::~NetconfTcpIdentity()
+RestHttps::~RestHttps()
 {
 }
 
-CliTcpIdentity::CliTcpIdentity()
-     : Identity("tailf-netconf-monitoring:cli-tcp")
+CliTcp::CliTcp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-tcp")
 {
 }
 
-CliTcpIdentity::~CliTcpIdentity()
+CliTcp::~CliTcp()
 {
 }
 

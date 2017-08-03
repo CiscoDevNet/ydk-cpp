@@ -7,26 +7,26 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_ltrace_cfg {
 
-class InfraLtraceScaleEnum : public Enum
+class InfraLtraceMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_0;
-        static const Enum::YLeaf Y_1;
-        static const Enum::YLeaf Y_2;
-        static const Enum::YLeaf Y_4;
-        static const Enum::YLeaf Y_8;
-        static const Enum::YLeaf Y_16;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dynamic;
 
 };
 
-class InfraLtraceModeEnum : public Enum
+class InfraLtraceScale : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf static_;
-        static const Enum::YLeaf dynamic;
+        static const ydk::Enum::YLeaf Y_0;
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
+        static const ydk::Enum::YLeaf Y_4;
+        static const ydk::Enum::YLeaf Y_8;
+        static const ydk::Enum::YLeaf Y_16;
 
 };
 

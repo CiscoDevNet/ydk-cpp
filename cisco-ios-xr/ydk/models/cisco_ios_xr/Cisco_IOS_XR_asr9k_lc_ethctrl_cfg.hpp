@@ -7,29 +7,29 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_lc_ethctrl_cfg {
 
-class PermitPluggableEnum : public Enum
+class EtherCtrlTransportMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
+        static const ydk::Enum::YLeaf wan;
+        static const ydk::Enum::YLeaf otnopu1e;
+        static const ydk::Enum::YLeaf otnopu2e;
 
 };
 
-class EtherCtrlTransportModeEnum : public Enum
+class PermitPluggable : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf wan;
-        static const Enum::YLeaf otnopu1e;
-        static const Enum::YLeaf otnopu2e;
+        static const ydk::Enum::YLeaf all;
 
 };
 
-class PermitPluggablePidEnum : public Enum
+class PermitPluggablePid : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
+        static const ydk::Enum::YLeaf all;
 
 };
 

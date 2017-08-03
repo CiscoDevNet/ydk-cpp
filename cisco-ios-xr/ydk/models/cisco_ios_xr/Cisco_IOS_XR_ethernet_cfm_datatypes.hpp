@@ -7,43 +7,43 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ethernet_cfm_datatypes {
 
-class BandwidthNotificationStateEnum : public Enum
+class CfmMepDir : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ok;
-        static const Enum::YLeaf degraded;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
 
 };
 
-class CfmMepDirEnum : public Enum
+class CfmAisInterval : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf up;
-        static const Enum::YLeaf down;
+        static const ydk::Enum::YLeaf Y_1s;
+        static const ydk::Enum::YLeaf Y_1m;
 
 };
 
-class CfmCcmIntervalEnum : public Enum
+class CfmCcmInterval : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_3__DOT__3ms;
-        static const Enum::YLeaf Y_10ms;
-        static const Enum::YLeaf Y_100ms;
-        static const Enum::YLeaf Y_1s;
-        static const Enum::YLeaf Y_10s;
-        static const Enum::YLeaf Y_1m;
-        static const Enum::YLeaf Y_10m;
+        static const ydk::Enum::YLeaf Y_3__DOT__3ms;
+        static const ydk::Enum::YLeaf Y_10ms;
+        static const ydk::Enum::YLeaf Y_100ms;
+        static const ydk::Enum::YLeaf Y_1s;
+        static const ydk::Enum::YLeaf Y_10s;
+        static const ydk::Enum::YLeaf Y_1m;
+        static const ydk::Enum::YLeaf Y_10m;
 
 };
 
-class CfmAisIntervalEnum : public Enum
+class BandwidthNotificationState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_1s;
-        static const Enum::YLeaf Y_1m;
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf degraded;
 
 };
 

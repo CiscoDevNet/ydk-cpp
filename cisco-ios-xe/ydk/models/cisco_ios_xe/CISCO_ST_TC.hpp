@@ -7,146 +7,146 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_ST_TC {
 
-class FcaddresstypeEnum : public Enum
+class Fcifservicestatetype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf wwn;
-        static const Enum::YLeaf fcid;
+        static const ydk::Enum::YLeaf inService;
+        static const ydk::Enum::YLeaf outOfService;
 
 };
 
-class FcifservicestatetypeEnum : public Enum
+class Fcifsfpdiagleveltype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inService;
-        static const Enum::YLeaf outOfService;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf lowWarning;
+        static const ydk::Enum::YLeaf lowAlarm;
+        static const ydk::Enum::YLeaf highWarning;
+        static const ydk::Enum::YLeaf highAlarm;
 
 };
 
-class FcifsfpdiagleveltypeEnum : public Enum
+class Fcportmoduletypes : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf normal;
-        static const Enum::YLeaf lowWarning;
-        static const Enum::YLeaf lowAlarm;
-        static const Enum::YLeaf highWarning;
-        static const Enum::YLeaf highAlarm;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf gbic;
+        static const ydk::Enum::YLeaf embedded;
+        static const ydk::Enum::YLeaf glm;
+        static const ydk::Enum::YLeaf gbicWithSerialID;
+        static const ydk::Enum::YLeaf gbicWithoutSerialID;
+        static const ydk::Enum::YLeaf sfpWithSerialID;
+        static const ydk::Enum::YLeaf sfpWithoutSerialID;
+        static const ydk::Enum::YLeaf xfp;
+        static const ydk::Enum::YLeaf x2Short;
+        static const ydk::Enum::YLeaf x2Medium;
+        static const ydk::Enum::YLeaf x2Tall;
+        static const ydk::Enum::YLeaf xpakShort;
+        static const ydk::Enum::YLeaf xpakMedium;
+        static const ydk::Enum::YLeaf xpakTall;
+        static const ydk::Enum::YLeaf xenpak;
+        static const ydk::Enum::YLeaf sfpDwdm;
+        static const ydk::Enum::YLeaf qsfp;
+        static const ydk::Enum::YLeaf x2Dwdm;
 
 };
 
-class FcportmoduletypesEnum : public Enum
+class Fcporttypes : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf gbic;
-        static const Enum::YLeaf embedded;
-        static const Enum::YLeaf glm;
-        static const Enum::YLeaf gbicWithSerialID;
-        static const Enum::YLeaf gbicWithoutSerialID;
-        static const Enum::YLeaf sfpWithSerialID;
-        static const Enum::YLeaf sfpWithoutSerialID;
-        static const Enum::YLeaf xfp;
-        static const Enum::YLeaf x2Short;
-        static const Enum::YLeaf x2Medium;
-        static const Enum::YLeaf x2Tall;
-        static const Enum::YLeaf xpakShort;
-        static const Enum::YLeaf xpakMedium;
-        static const Enum::YLeaf xpakTall;
-        static const Enum::YLeaf xenpak;
-        static const Enum::YLeaf sfpDwdm;
-        static const Enum::YLeaf qsfp;
-        static const Enum::YLeaf x2Dwdm;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf fPort;
+        static const ydk::Enum::YLeaf flPort;
+        static const ydk::Enum::YLeaf ePort;
+        static const ydk::Enum::YLeaf bPort;
+        static const ydk::Enum::YLeaf fxPort;
+        static const ydk::Enum::YLeaf sdPort;
+        static const ydk::Enum::YLeaf tlPort;
+        static const ydk::Enum::YLeaf nPort;
+        static const ydk::Enum::YLeaf nlPort;
+        static const ydk::Enum::YLeaf nxPort;
+        static const ydk::Enum::YLeaf tePort;
+        static const ydk::Enum::YLeaf fvPort;
+        static const ydk::Enum::YLeaf portOperDown;
+        static const ydk::Enum::YLeaf stPort;
+        static const ydk::Enum::YLeaf npPort;
+        static const ydk::Enum::YLeaf tfPort;
+        static const ydk::Enum::YLeaf tnpPort;
 
 };
 
-class FcporttypesEnum : public Enum
+class Fcaddresstype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf auto_;
-        static const Enum::YLeaf fPort;
-        static const Enum::YLeaf flPort;
-        static const Enum::YLeaf ePort;
-        static const Enum::YLeaf bPort;
-        static const Enum::YLeaf fxPort;
-        static const Enum::YLeaf sdPort;
-        static const Enum::YLeaf tlPort;
-        static const Enum::YLeaf nPort;
-        static const Enum::YLeaf nlPort;
-        static const Enum::YLeaf nxPort;
-        static const Enum::YLeaf tePort;
-        static const Enum::YLeaf fvPort;
-        static const Enum::YLeaf portOperDown;
-        static const Enum::YLeaf stPort;
-        static const Enum::YLeaf npPort;
-        static const Enum::YLeaf tfPort;
-        static const Enum::YLeaf tnpPort;
+        static const ydk::Enum::YLeaf wwn;
+        static const ydk::Enum::YLeaf fcid;
 
 };
 
-class FcporttxtypesEnum : public Enum
+class Fcporttxtypes : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf longWaveLaser;
-        static const Enum::YLeaf shortWaveLaser;
-        static const Enum::YLeaf longWaveLaserCostReduced;
-        static const Enum::YLeaf electrical;
-        static const Enum::YLeaf tenGigBaseSr;
-        static const Enum::YLeaf tenGigBaseLr;
-        static const Enum::YLeaf tenGigBaseEr;
-        static const Enum::YLeaf tenGigBaseLx4;
-        static const Enum::YLeaf tenGigBaseSw;
-        static const Enum::YLeaf tenGigBaseLw;
-        static const Enum::YLeaf tenGigBaseEw;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf longWaveLaser;
+        static const ydk::Enum::YLeaf shortWaveLaser;
+        static const ydk::Enum::YLeaf longWaveLaserCostReduced;
+        static const ydk::Enum::YLeaf electrical;
+        static const ydk::Enum::YLeaf tenGigBaseSr;
+        static const ydk::Enum::YLeaf tenGigBaseLr;
+        static const ydk::Enum::YLeaf tenGigBaseEr;
+        static const ydk::Enum::YLeaf tenGigBaseLx4;
+        static const ydk::Enum::YLeaf tenGigBaseSw;
+        static const ydk::Enum::YLeaf tenGigBaseLw;
+        static const ydk::Enum::YLeaf tenGigBaseEw;
 
 };
 
-class FcifspeedEnum : public Enum
+class Fcifspeed : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf auto_;
-        static const Enum::YLeaf oneG;
-        static const Enum::YLeaf twoG;
-        static const Enum::YLeaf fourG;
-        static const Enum::YLeaf autoMaxTwoG;
-        static const Enum::YLeaf eightG;
-        static const Enum::YLeaf autoMaxFourG;
-        static const Enum::YLeaf tenG;
-        static const Enum::YLeaf autoMaxEightG;
-        static const Enum::YLeaf sixteenG;
-        static const Enum::YLeaf autoMaxSixteenG;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf oneG;
+        static const ydk::Enum::YLeaf twoG;
+        static const ydk::Enum::YLeaf fourG;
+        static const ydk::Enum::YLeaf autoMaxTwoG;
+        static const ydk::Enum::YLeaf eightG;
+        static const ydk::Enum::YLeaf autoMaxFourG;
+        static const ydk::Enum::YLeaf tenG;
+        static const ydk::Enum::YLeaf autoMaxEightG;
+        static const ydk::Enum::YLeaf sixteenG;
+        static const ydk::Enum::YLeaf autoMaxSixteenG;
 
 };
 
-class InterfaceopermodeEnum : public Enum
+class Interfaceopermode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf auto_;
-        static const Enum::YLeaf fPort;
-        static const Enum::YLeaf flPort;
-        static const Enum::YLeaf ePort;
-        static const Enum::YLeaf bPort;
-        static const Enum::YLeaf fxPort;
-        static const Enum::YLeaf sdPort;
-        static const Enum::YLeaf tlPort;
-        static const Enum::YLeaf nPort;
-        static const Enum::YLeaf nlPort;
-        static const Enum::YLeaf nxPort;
-        static const Enum::YLeaf tePort;
-        static const Enum::YLeaf fvPort;
-        static const Enum::YLeaf portOperDown;
-        static const Enum::YLeaf stPort;
-        static const Enum::YLeaf mgmtPort;
-        static const Enum::YLeaf ipsPort;
-        static const Enum::YLeaf evPort;
-        static const Enum::YLeaf npPort;
-        static const Enum::YLeaf tfPort;
-        static const Enum::YLeaf tnpPort;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf fPort;
+        static const ydk::Enum::YLeaf flPort;
+        static const ydk::Enum::YLeaf ePort;
+        static const ydk::Enum::YLeaf bPort;
+        static const ydk::Enum::YLeaf fxPort;
+        static const ydk::Enum::YLeaf sdPort;
+        static const ydk::Enum::YLeaf tlPort;
+        static const ydk::Enum::YLeaf nPort;
+        static const ydk::Enum::YLeaf nlPort;
+        static const ydk::Enum::YLeaf nxPort;
+        static const ydk::Enum::YLeaf tePort;
+        static const ydk::Enum::YLeaf fvPort;
+        static const ydk::Enum::YLeaf portOperDown;
+        static const ydk::Enum::YLeaf stPort;
+        static const ydk::Enum::YLeaf mgmtPort;
+        static const ydk::Enum::YLeaf ipsPort;
+        static const ydk::Enum::YLeaf evPort;
+        static const ydk::Enum::YLeaf npPort;
+        static const ydk::Enum::YLeaf tfPort;
+        static const ydk::Enum::YLeaf tnpPort;
 
 };
 

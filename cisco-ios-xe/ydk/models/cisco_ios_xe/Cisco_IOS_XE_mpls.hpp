@@ -7,13 +7,22 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_mpls {
 
-class LdpDiscoveryAddressTypeEnum : public Enum
+class LdpDiscoveryAddressType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf interface;
+
+};
+
+class MplsTeTiebreakerType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf max_fill;
+        static const ydk::Enum::YLeaf min_fill;
+        static const ydk::Enum::YLeaf random;
 
 };
 

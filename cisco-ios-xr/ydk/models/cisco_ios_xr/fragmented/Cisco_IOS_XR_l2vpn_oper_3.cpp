@@ -5,15 +5,1990 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_3.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_11.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_10.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_12.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_4.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_7.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_20.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_4.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_11.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_7.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_12.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_10.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::L2FibMainInterfaceInfo()
+    :
+    instance_id{YType::uint32, "instance-id"},
+    instances_provisioned{YType::boolean, "instances-provisioned"},
+    instances_state{YType::enumeration, "instances-state"},
+    main_if_type{YType::uint8, "main-if-type"},
+    main_interface{YType::str, "main-interface"},
+    virtual_if_name{YType::str, "virtual-if-name"}
+{
+    yang_name = "l2fib-main-interface-info"; yang_parent_name = "l2fib-main-interface";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::~L2FibMainInterfaceInfo()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::has_data() const
+{
+    for (auto const & leaf : instance_id.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instances_provisioned.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instances_state.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return main_if_type.is_set
+	|| main_interface.is_set
+	|| virtual_if_name.is_set;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::has_operation() const
+{
+    for (auto const & leaf : instance_id.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instances_provisioned.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instances_state.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(instance_id.yfilter)
+	|| ydk::is_set(instances_provisioned.yfilter)
+	|| ydk::is_set(instances_state.yfilter)
+	|| ydk::is_set(main_if_type.yfilter)
+	|| ydk::is_set(main_interface.yfilter)
+	|| ydk::is_set(virtual_if_name.yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2fib-main-interface-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2FibMainInterfaceInfo' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (main_if_type.is_set || is_set(main_if_type.yfilter)) leaf_name_data.push_back(main_if_type.get_name_leafdata());
+    if (main_interface.is_set || is_set(main_interface.yfilter)) leaf_name_data.push_back(main_interface.get_name_leafdata());
+    if (virtual_if_name.is_set || is_set(virtual_if_name.yfilter)) leaf_name_data.push_back(virtual_if_name.get_name_leafdata());
+
+    auto instance_id_name_datas = instance_id.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instance_id_name_datas.begin(), instance_id_name_datas.end());
+    auto instances_provisioned_name_datas = instances_provisioned.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instances_provisioned_name_datas.begin(), instances_provisioned_name_datas.end());
+    auto instances_state_name_datas = instances_state.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instances_state_name_datas.begin(), instances_state_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "instance-id")
+    {
+        instance_id.append(value);
+    }
+    if(value_path == "instances-provisioned")
+    {
+        instances_provisioned.append(value);
+    }
+    if(value_path == "instances-state")
+    {
+        instances_state.append(value);
+    }
+    if(value_path == "main-if-type")
+    {
+        main_if_type = value;
+        main_if_type.value_namespace = name_space;
+        main_if_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "main-interface")
+    {
+        main_interface = value;
+        main_interface.value_namespace = name_space;
+        main_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-if-name")
+    {
+        virtual_if_name = value;
+        virtual_if_name.value_namespace = name_space;
+        virtual_if_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instance-id")
+    {
+        instance_id.yfilter = yfilter;
+    }
+    if(value_path == "instances-provisioned")
+    {
+        instances_provisioned.yfilter = yfilter;
+    }
+    if(value_path == "instances-state")
+    {
+        instances_state.yfilter = yfilter;
+    }
+    if(value_path == "main-if-type")
+    {
+        main_if_type.yfilter = yfilter;
+    }
+    if(value_path == "main-interface")
+    {
+        main_interface.yfilter = yfilter;
+    }
+    if(value_path == "virtual-if-name")
+    {
+        virtual_if_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance-id" || name == "instances-provisioned" || name == "instances-state" || name == "main-if-type" || name == "main-interface" || name == "virtual-if-name")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::L2FibMainInterfaceDetailInfo()
+    :
+    bridge_port_count_instance{YType::uint32, "bridge-port-count-instance"},
+    esi_id{YType::uint16, "esi-id"},
+    ethernet_segment_identifier{YType::uint8, "ethernet-segment-identifier"},
+    evpn_shg_local_label{YType::uint32, "evpn-shg-local-label"},
+    instance_id{YType::uint32, "instance-id"},
+    instances_provisioned{YType::boolean, "instances-provisioned"},
+    instances_state{YType::enumeration, "instances-state"},
+    mac{YType::str, "mac"},
+    main_if_type{YType::uint8, "main-if-type"},
+    main_interface{YType::str, "main-interface"},
+    virtual_if_name{YType::str, "virtual-if-name"}
+{
+    yang_name = "l2fib-main-interface-detail-info"; yang_parent_name = "l2fib-main-interface";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::~L2FibMainInterfaceDetailInfo()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::has_data() const
+{
+    for (std::size_t index=0; index<evpn_shg_remote_info.size(); index++)
+    {
+        if(evpn_shg_remote_info[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : bridge_port_count_instance.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : ethernet_segment_identifier.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instance_id.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instances_provisioned.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instances_state.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return esi_id.is_set
+	|| evpn_shg_local_label.is_set
+	|| mac.is_set
+	|| main_if_type.is_set
+	|| main_interface.is_set
+	|| virtual_if_name.is_set;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::has_operation() const
+{
+    for (std::size_t index=0; index<evpn_shg_remote_info.size(); index++)
+    {
+        if(evpn_shg_remote_info[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : bridge_port_count_instance.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : ethernet_segment_identifier.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instance_id.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instances_provisioned.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instances_state.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(bridge_port_count_instance.yfilter)
+	|| ydk::is_set(esi_id.yfilter)
+	|| ydk::is_set(ethernet_segment_identifier.yfilter)
+	|| ydk::is_set(evpn_shg_local_label.yfilter)
+	|| ydk::is_set(instance_id.yfilter)
+	|| ydk::is_set(instances_provisioned.yfilter)
+	|| ydk::is_set(instances_state.yfilter)
+	|| ydk::is_set(mac.yfilter)
+	|| ydk::is_set(main_if_type.yfilter)
+	|| ydk::is_set(main_interface.yfilter)
+	|| ydk::is_set(virtual_if_name.yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2fib-main-interface-detail-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2FibMainInterfaceDetailInfo' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (esi_id.is_set || is_set(esi_id.yfilter)) leaf_name_data.push_back(esi_id.get_name_leafdata());
+    if (evpn_shg_local_label.is_set || is_set(evpn_shg_local_label.yfilter)) leaf_name_data.push_back(evpn_shg_local_label.get_name_leafdata());
+    if (mac.is_set || is_set(mac.yfilter)) leaf_name_data.push_back(mac.get_name_leafdata());
+    if (main_if_type.is_set || is_set(main_if_type.yfilter)) leaf_name_data.push_back(main_if_type.get_name_leafdata());
+    if (main_interface.is_set || is_set(main_interface.yfilter)) leaf_name_data.push_back(main_interface.get_name_leafdata());
+    if (virtual_if_name.is_set || is_set(virtual_if_name.yfilter)) leaf_name_data.push_back(virtual_if_name.get_name_leafdata());
+
+    auto bridge_port_count_instance_name_datas = bridge_port_count_instance.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), bridge_port_count_instance_name_datas.begin(), bridge_port_count_instance_name_datas.end());
+    auto ethernet_segment_identifier_name_datas = ethernet_segment_identifier.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), ethernet_segment_identifier_name_datas.begin(), ethernet_segment_identifier_name_datas.end());
+    auto instance_id_name_datas = instance_id.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instance_id_name_datas.begin(), instance_id_name_datas.end());
+    auto instances_provisioned_name_datas = instances_provisioned.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instances_provisioned_name_datas.begin(), instances_provisioned_name_datas.end());
+    auto instances_state_name_datas = instances_state.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instances_state_name_datas.begin(), instances_state_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "evpn-shg-remote-info")
+    {
+        for(auto const & c : evpn_shg_remote_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo>();
+        c->parent = this;
+        evpn_shg_remote_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : evpn_shg_remote_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bridge-port-count-instance")
+    {
+        bridge_port_count_instance.append(value);
+    }
+    if(value_path == "esi-id")
+    {
+        esi_id = value;
+        esi_id.value_namespace = name_space;
+        esi_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-segment-identifier")
+    {
+        ethernet_segment_identifier.append(value);
+    }
+    if(value_path == "evpn-shg-local-label")
+    {
+        evpn_shg_local_label = value;
+        evpn_shg_local_label.value_namespace = name_space;
+        evpn_shg_local_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "instance-id")
+    {
+        instance_id.append(value);
+    }
+    if(value_path == "instances-provisioned")
+    {
+        instances_provisioned.append(value);
+    }
+    if(value_path == "instances-state")
+    {
+        instances_state.append(value);
+    }
+    if(value_path == "mac")
+    {
+        mac = value;
+        mac.value_namespace = name_space;
+        mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "main-if-type")
+    {
+        main_if_type = value;
+        main_if_type.value_namespace = name_space;
+        main_if_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "main-interface")
+    {
+        main_interface = value;
+        main_interface.value_namespace = name_space;
+        main_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-if-name")
+    {
+        virtual_if_name = value;
+        virtual_if_name.value_namespace = name_space;
+        virtual_if_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bridge-port-count-instance")
+    {
+        bridge_port_count_instance.yfilter = yfilter;
+    }
+    if(value_path == "esi-id")
+    {
+        esi_id.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-segment-identifier")
+    {
+        ethernet_segment_identifier.yfilter = yfilter;
+    }
+    if(value_path == "evpn-shg-local-label")
+    {
+        evpn_shg_local_label.yfilter = yfilter;
+    }
+    if(value_path == "instance-id")
+    {
+        instance_id.yfilter = yfilter;
+    }
+    if(value_path == "instances-provisioned")
+    {
+        instances_provisioned.yfilter = yfilter;
+    }
+    if(value_path == "instances-state")
+    {
+        instances_state.yfilter = yfilter;
+    }
+    if(value_path == "mac")
+    {
+        mac.yfilter = yfilter;
+    }
+    if(value_path == "main-if-type")
+    {
+        main_if_type.yfilter = yfilter;
+    }
+    if(value_path == "main-interface")
+    {
+        main_interface.yfilter = yfilter;
+    }
+    if(value_path == "virtual-if-name")
+    {
+        virtual_if_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evpn-shg-remote-info" || name == "bridge-port-count-instance" || name == "esi-id" || name == "ethernet-segment-identifier" || name == "evpn-shg-local-label" || name == "instance-id" || name == "instances-provisioned" || name == "instances-state" || name == "mac" || name == "main-if-type" || name == "main-interface" || name == "virtual-if-name")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::EvpnShgRemoteInfo()
+    :
+    remote_split_horizon_group_label(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>())
+{
+    remote_split_horizon_group_label->parent = this;
+
+    yang_name = "evpn-shg-remote-info"; yang_parent_name = "l2fib-main-interface-detail-info";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::~EvpnShgRemoteInfo()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::has_data() const
+{
+    return (remote_split_horizon_group_label !=  nullptr && remote_split_horizon_group_label->has_data());
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| (remote_split_horizon_group_label !=  nullptr && remote_split_horizon_group_label->has_operation());
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evpn-shg-remote-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'EvpnShgRemoteInfo' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "remote-split-horizon-group-label")
+    {
+        if(remote_split_horizon_group_label == nullptr)
+        {
+            remote_split_horizon_group_label = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>();
+        }
+        return remote_split_horizon_group_label;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(remote_split_horizon_group_label != nullptr)
+    {
+        children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
+    }
+
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remote-split-horizon-group-label")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::RemoteSplitHorizonGroupLabel()
+    :
+    label{YType::uint32, "label"},
+    next_hop{YType::str, "next-hop"}
+{
+    yang_name = "remote-split-horizon-group-label"; yang_parent_name = "evpn-shg-remote-info";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::~RemoteSplitHorizonGroupLabel()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_data() const
+{
+    return label.is_set
+	|| next_hop.is_set;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-split-horizon-group-label";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'RemoteSplitHorizonGroupLabel' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label" || name == "next-hop")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::L2FibMainInterfaceHardwareIngressDetailInfo()
+    :
+    bridge_port_count_instance{YType::uint32, "bridge-port-count-instance"},
+    esi_id{YType::uint16, "esi-id"},
+    ethernet_segment_identifier{YType::uint8, "ethernet-segment-identifier"},
+    evpn_shg_local_label{YType::uint32, "evpn-shg-local-label"},
+    instance_id{YType::uint32, "instance-id"},
+    instances_provisioned{YType::boolean, "instances-provisioned"},
+    instances_state{YType::enumeration, "instances-state"},
+    mac{YType::str, "mac"},
+    main_if_type{YType::uint8, "main-if-type"},
+    main_interface{YType::str, "main-interface"},
+    virtual_if_name{YType::str, "virtual-if-name"}
+{
+    yang_name = "l2fib-main-interface-hardware-ingress-detail-info"; yang_parent_name = "l2fib-main-interface";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::~L2FibMainInterfaceHardwareIngressDetailInfo()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::has_data() const
+{
+    for (std::size_t index=0; index<evpn_shg_remote_info.size(); index++)
+    {
+        if(evpn_shg_remote_info[index]->has_data())
+            return true;
+    }
+    for (auto const & leaf : bridge_port_count_instance.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : ethernet_segment_identifier.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instance_id.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instances_provisioned.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instances_state.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return esi_id.is_set
+	|| evpn_shg_local_label.is_set
+	|| mac.is_set
+	|| main_if_type.is_set
+	|| main_interface.is_set
+	|| virtual_if_name.is_set;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::has_operation() const
+{
+    for (std::size_t index=0; index<evpn_shg_remote_info.size(); index++)
+    {
+        if(evpn_shg_remote_info[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : bridge_port_count_instance.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : ethernet_segment_identifier.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instance_id.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instances_provisioned.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instances_state.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(bridge_port_count_instance.yfilter)
+	|| ydk::is_set(esi_id.yfilter)
+	|| ydk::is_set(ethernet_segment_identifier.yfilter)
+	|| ydk::is_set(evpn_shg_local_label.yfilter)
+	|| ydk::is_set(instance_id.yfilter)
+	|| ydk::is_set(instances_provisioned.yfilter)
+	|| ydk::is_set(instances_state.yfilter)
+	|| ydk::is_set(mac.yfilter)
+	|| ydk::is_set(main_if_type.yfilter)
+	|| ydk::is_set(main_interface.yfilter)
+	|| ydk::is_set(virtual_if_name.yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2fib-main-interface-hardware-ingress-detail-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2FibMainInterfaceHardwareIngressDetailInfo' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (esi_id.is_set || is_set(esi_id.yfilter)) leaf_name_data.push_back(esi_id.get_name_leafdata());
+    if (evpn_shg_local_label.is_set || is_set(evpn_shg_local_label.yfilter)) leaf_name_data.push_back(evpn_shg_local_label.get_name_leafdata());
+    if (mac.is_set || is_set(mac.yfilter)) leaf_name_data.push_back(mac.get_name_leafdata());
+    if (main_if_type.is_set || is_set(main_if_type.yfilter)) leaf_name_data.push_back(main_if_type.get_name_leafdata());
+    if (main_interface.is_set || is_set(main_interface.yfilter)) leaf_name_data.push_back(main_interface.get_name_leafdata());
+    if (virtual_if_name.is_set || is_set(virtual_if_name.yfilter)) leaf_name_data.push_back(virtual_if_name.get_name_leafdata());
+
+    auto bridge_port_count_instance_name_datas = bridge_port_count_instance.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), bridge_port_count_instance_name_datas.begin(), bridge_port_count_instance_name_datas.end());
+    auto ethernet_segment_identifier_name_datas = ethernet_segment_identifier.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), ethernet_segment_identifier_name_datas.begin(), ethernet_segment_identifier_name_datas.end());
+    auto instance_id_name_datas = instance_id.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instance_id_name_datas.begin(), instance_id_name_datas.end());
+    auto instances_provisioned_name_datas = instances_provisioned.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instances_provisioned_name_datas.begin(), instances_provisioned_name_datas.end());
+    auto instances_state_name_datas = instances_state.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instances_state_name_datas.begin(), instances_state_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "evpn-shg-remote-info")
+    {
+        for(auto const & c : evpn_shg_remote_info)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo>();
+        c->parent = this;
+        evpn_shg_remote_info.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : evpn_shg_remote_info)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bridge-port-count-instance")
+    {
+        bridge_port_count_instance.append(value);
+    }
+    if(value_path == "esi-id")
+    {
+        esi_id = value;
+        esi_id.value_namespace = name_space;
+        esi_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ethernet-segment-identifier")
+    {
+        ethernet_segment_identifier.append(value);
+    }
+    if(value_path == "evpn-shg-local-label")
+    {
+        evpn_shg_local_label = value;
+        evpn_shg_local_label.value_namespace = name_space;
+        evpn_shg_local_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "instance-id")
+    {
+        instance_id.append(value);
+    }
+    if(value_path == "instances-provisioned")
+    {
+        instances_provisioned.append(value);
+    }
+    if(value_path == "instances-state")
+    {
+        instances_state.append(value);
+    }
+    if(value_path == "mac")
+    {
+        mac = value;
+        mac.value_namespace = name_space;
+        mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "main-if-type")
+    {
+        main_if_type = value;
+        main_if_type.value_namespace = name_space;
+        main_if_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "main-interface")
+    {
+        main_interface = value;
+        main_interface.value_namespace = name_space;
+        main_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-if-name")
+    {
+        virtual_if_name = value;
+        virtual_if_name.value_namespace = name_space;
+        virtual_if_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bridge-port-count-instance")
+    {
+        bridge_port_count_instance.yfilter = yfilter;
+    }
+    if(value_path == "esi-id")
+    {
+        esi_id.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-segment-identifier")
+    {
+        ethernet_segment_identifier.yfilter = yfilter;
+    }
+    if(value_path == "evpn-shg-local-label")
+    {
+        evpn_shg_local_label.yfilter = yfilter;
+    }
+    if(value_path == "instance-id")
+    {
+        instance_id.yfilter = yfilter;
+    }
+    if(value_path == "instances-provisioned")
+    {
+        instances_provisioned.yfilter = yfilter;
+    }
+    if(value_path == "instances-state")
+    {
+        instances_state.yfilter = yfilter;
+    }
+    if(value_path == "mac")
+    {
+        mac.yfilter = yfilter;
+    }
+    if(value_path == "main-if-type")
+    {
+        main_if_type.yfilter = yfilter;
+    }
+    if(value_path == "main-interface")
+    {
+        main_interface.yfilter = yfilter;
+    }
+    if(value_path == "virtual-if-name")
+    {
+        virtual_if_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "evpn-shg-remote-info" || name == "bridge-port-count-instance" || name == "esi-id" || name == "ethernet-segment-identifier" || name == "evpn-shg-local-label" || name == "instance-id" || name == "instances-provisioned" || name == "instances-state" || name == "mac" || name == "main-if-type" || name == "main-interface" || name == "virtual-if-name")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::EvpnShgRemoteInfo()
+    :
+    remote_split_horizon_group_label(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>())
+{
+    remote_split_horizon_group_label->parent = this;
+
+    yang_name = "evpn-shg-remote-info"; yang_parent_name = "l2fib-main-interface-hardware-ingress-detail-info";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::~EvpnShgRemoteInfo()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::has_data() const
+{
+    return (remote_split_horizon_group_label !=  nullptr && remote_split_horizon_group_label->has_data());
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| (remote_split_horizon_group_label !=  nullptr && remote_split_horizon_group_label->has_operation());
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "evpn-shg-remote-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'EvpnShgRemoteInfo' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "remote-split-horizon-group-label")
+    {
+        if(remote_split_horizon_group_label == nullptr)
+        {
+            remote_split_horizon_group_label = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>();
+        }
+        return remote_split_horizon_group_label;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(remote_split_horizon_group_label != nullptr)
+    {
+        children["remote-split-horizon-group-label"] = remote_split_horizon_group_label;
+    }
+
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "remote-split-horizon-group-label")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::RemoteSplitHorizonGroupLabel()
+    :
+    label{YType::uint32, "label"},
+    next_hop{YType::str, "next-hop"}
+{
+    yang_name = "remote-split-horizon-group-label"; yang_parent_name = "evpn-shg-remote-info";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::~RemoteSplitHorizonGroupLabel()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_data() const
+{
+    return label.is_set
+	|| next_hop.is_set;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(next_hop.yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-split-horizon-group-label";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'RemoteSplitHorizonGroupLabel' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label" || name == "next-hop")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::L2FibMainInterfaceHardwareIngressInfo()
+    :
+    instance_id{YType::uint32, "instance-id"},
+    instances_provisioned{YType::boolean, "instances-provisioned"},
+    instances_state{YType::enumeration, "instances-state"},
+    main_if_type{YType::uint8, "main-if-type"},
+    main_interface{YType::str, "main-interface"},
+    virtual_if_name{YType::str, "virtual-if-name"}
+{
+    yang_name = "l2fib-main-interface-hardware-ingress-info"; yang_parent_name = "l2fib-main-interface";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::~L2FibMainInterfaceHardwareIngressInfo()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::has_data() const
+{
+    for (auto const & leaf : instance_id.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instances_provisioned.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : instances_state.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return main_if_type.is_set
+	|| main_interface.is_set
+	|| virtual_if_name.is_set;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::has_operation() const
+{
+    for (auto const & leaf : instance_id.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instances_provisioned.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : instances_state.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(instance_id.yfilter)
+	|| ydk::is_set(instances_provisioned.yfilter)
+	|| ydk::is_set(instances_state.yfilter)
+	|| ydk::is_set(main_if_type.yfilter)
+	|| ydk::is_set(main_interface.yfilter)
+	|| ydk::is_set(virtual_if_name.yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2fib-main-interface-hardware-ingress-info";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2FibMainInterfaceHardwareIngressInfo' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (main_if_type.is_set || is_set(main_if_type.yfilter)) leaf_name_data.push_back(main_if_type.get_name_leafdata());
+    if (main_interface.is_set || is_set(main_interface.yfilter)) leaf_name_data.push_back(main_interface.get_name_leafdata());
+    if (virtual_if_name.is_set || is_set(virtual_if_name.yfilter)) leaf_name_data.push_back(virtual_if_name.get_name_leafdata());
+
+    auto instance_id_name_datas = instance_id.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instance_id_name_datas.begin(), instance_id_name_datas.end());
+    auto instances_provisioned_name_datas = instances_provisioned.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instances_provisioned_name_datas.begin(), instances_provisioned_name_datas.end());
+    auto instances_state_name_datas = instances_state.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), instances_state_name_datas.begin(), instances_state_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "instance-id")
+    {
+        instance_id.append(value);
+    }
+    if(value_path == "instances-provisioned")
+    {
+        instances_provisioned.append(value);
+    }
+    if(value_path == "instances-state")
+    {
+        instances_state.append(value);
+    }
+    if(value_path == "main-if-type")
+    {
+        main_if_type = value;
+        main_if_type.value_namespace = name_space;
+        main_if_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "main-interface")
+    {
+        main_interface = value;
+        main_interface.value_namespace = name_space;
+        main_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-if-name")
+    {
+        virtual_if_name = value;
+        virtual_if_name.value_namespace = name_space;
+        virtual_if_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instance-id")
+    {
+        instance_id.yfilter = yfilter;
+    }
+    if(value_path == "instances-provisioned")
+    {
+        instances_provisioned.yfilter = yfilter;
+    }
+    if(value_path == "instances-state")
+    {
+        instances_state.yfilter = yfilter;
+    }
+    if(value_path == "main-if-type")
+    {
+        main_if_type.yfilter = yfilter;
+    }
+    if(value_path == "main-interface")
+    {
+        main_interface.yfilter = yfilter;
+    }
+    if(value_path == "virtual-if-name")
+    {
+        virtual_if_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance-id" || name == "instances-provisioned" || name == "instances-state" || name == "main-if-type" || name == "main-interface" || name == "virtual-if-name")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetails()
+{
+    yang_name = "l2fib-mstp-details"; yang_parent_name = "node";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMstpDetails::~L2FibMstpDetails()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::has_data() const
+{
+    for (std::size_t index=0; index<l2fib_mstp_detail.size(); index++)
+    {
+        if(l2fib_mstp_detail[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::has_operation() const
+{
+    for (std::size_t index=0; index<l2fib_mstp_detail.size(); index++)
+    {
+        if(l2fib_mstp_detail[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2fib-mstp-details";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2FibMstpDetails' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2fib-mstp-detail")
+    {
+        for(auto const & c : l2fib_mstp_detail)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail>();
+        c->parent = this;
+        l2fib_mstp_detail.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : l2fib_mstp_detail)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMstpDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMstpDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-mstp-detail")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::L2FibMstpDetail()
+    :
+    bridge_port_array{YType::str, "bridge-port-array"},
+    internal_msti{YType::uint32, "internal-msti"},
+    learn_key{YType::uint8, "learn-key"},
+    msti{YType::int32, "msti"},
+    msti_xr{YType::uint32, "msti-xr"},
+    parent_interface{YType::str, "parent-interface"},
+    parent_interface_xr{YType::str, "parent-interface-xr"},
+    state{YType::uint32, "state"}
+    	,
+    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base>())
+{
+    base->parent = this;
+
+    yang_name = "l2fib-mstp-detail"; yang_parent_name = "l2fib-mstp-details";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::~L2FibMstpDetail()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::has_data() const
+{
+    for (auto const & leaf : bridge_port_array.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return internal_msti.is_set
+	|| learn_key.is_set
+	|| msti.is_set
+	|| msti_xr.is_set
+	|| parent_interface.is_set
+	|| parent_interface_xr.is_set
+	|| state.is_set
+	|| (base !=  nullptr && base->has_data());
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::has_operation() const
+{
+    for (auto const & leaf : bridge_port_array.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(bridge_port_array.yfilter)
+	|| ydk::is_set(internal_msti.yfilter)
+	|| ydk::is_set(learn_key.yfilter)
+	|| ydk::is_set(msti.yfilter)
+	|| ydk::is_set(msti_xr.yfilter)
+	|| ydk::is_set(parent_interface.yfilter)
+	|| ydk::is_set(parent_interface_xr.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| (base !=  nullptr && base->has_operation());
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2fib-mstp-detail";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2FibMstpDetail' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (internal_msti.is_set || is_set(internal_msti.yfilter)) leaf_name_data.push_back(internal_msti.get_name_leafdata());
+    if (learn_key.is_set || is_set(learn_key.yfilter)) leaf_name_data.push_back(learn_key.get_name_leafdata());
+    if (msti.is_set || is_set(msti.yfilter)) leaf_name_data.push_back(msti.get_name_leafdata());
+    if (msti_xr.is_set || is_set(msti_xr.yfilter)) leaf_name_data.push_back(msti_xr.get_name_leafdata());
+    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
+    if (parent_interface_xr.is_set || is_set(parent_interface_xr.yfilter)) leaf_name_data.push_back(parent_interface_xr.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    auto bridge_port_array_name_datas = bridge_port_array.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), bridge_port_array_name_datas.begin(), bridge_port_array_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "base")
+    {
+        if(base == nullptr)
+        {
+            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base>();
+        }
+        return base;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(base != nullptr)
+    {
+        children["base"] = base;
+    }
+
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "bridge-port-array")
+    {
+        bridge_port_array.append(value);
+    }
+    if(value_path == "internal-msti")
+    {
+        internal_msti = value;
+        internal_msti.value_namespace = name_space;
+        internal_msti.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "learn-key")
+    {
+        learn_key = value;
+        learn_key.value_namespace = name_space;
+        learn_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msti")
+    {
+        msti = value;
+        msti.value_namespace = name_space;
+        msti.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msti-xr")
+    {
+        msti_xr = value;
+        msti_xr.value_namespace = name_space;
+        msti_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface = value;
+        parent_interface.value_namespace = name_space;
+        parent_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "parent-interface-xr")
+    {
+        parent_interface_xr = value;
+        parent_interface_xr.value_namespace = name_space;
+        parent_interface_xr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bridge-port-array")
+    {
+        bridge_port_array.yfilter = yfilter;
+    }
+    if(value_path == "internal-msti")
+    {
+        internal_msti.yfilter = yfilter;
+    }
+    if(value_path == "learn-key")
+    {
+        learn_key.yfilter = yfilter;
+    }
+    if(value_path == "msti")
+    {
+        msti.yfilter = yfilter;
+    }
+    if(value_path == "msti-xr")
+    {
+        msti_xr.yfilter = yfilter;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "parent-interface-xr")
+    {
+        parent_interface_xr.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "bridge-port-array" || name == "internal-msti" || name == "learn-key" || name == "msti" || name == "msti-xr" || name == "parent-interface" || name == "parent-interface-xr" || name == "state")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::Base()
+{
+    yang_name = "base"; yang_parent_name = "l2fib-mstp-detail";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::~Base()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::has_data() const
+{
+    return false;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "base";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Base' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2FibL2Tp()
+    :
+    l2tpv2_sessions(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions>())
+	,l2tpv3_sessions(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions>())
+{
+    l2tpv2_sessions->parent = this;
+
+    l2tpv3_sessions->parent = this;
+
+    yang_name = "l2fib-l2tp"; yang_parent_name = "node";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibL2Tp::~L2FibL2Tp()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::has_data() const
+{
+    return (l2tpv2_sessions !=  nullptr && l2tpv2_sessions->has_data())
+	|| (l2tpv3_sessions !=  nullptr && l2tpv3_sessions->has_data());
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (l2tpv2_sessions !=  nullptr && l2tpv2_sessions->has_operation())
+	|| (l2tpv3_sessions !=  nullptr && l2tpv3_sessions->has_operation());
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2fib-l2tp";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2FibL2Tp' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2tpv2-sessions")
+    {
+        if(l2tpv2_sessions == nullptr)
+        {
+            l2tpv2_sessions = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions>();
+        }
+        return l2tpv2_sessions;
+    }
+
+    if(child_yang_name == "l2tpv3-sessions")
+    {
+        if(l2tpv3_sessions == nullptr)
+        {
+            l2tpv3_sessions = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions>();
+        }
+        return l2tpv3_sessions;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibL2Tp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(l2tpv2_sessions != nullptr)
+    {
+        children["l2tpv2-sessions"] = l2tpv2_sessions;
+    }
+
+    if(l2tpv3_sessions != nullptr)
+    {
+        children["l2tpv3-sessions"] = l2tpv3_sessions;
+    }
+
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2tpv2-sessions" || name == "l2tpv3-sessions")
+        return true;
+    return false;
+}
+
+L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Sessions()
+{
+    yang_name = "l2tpv3-sessions"; yang_parent_name = "l2fib-l2tp";
+}
+
+L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::~L2Tpv3Sessions()
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::has_data() const
+{
+    for (std::size_t index=0; index<l2tpv3_session.size(); index++)
+    {
+        if(l2tpv3_session[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::has_operation() const
+{
+    for (std::size_t index=0; index<l2tpv3_session.size(); index++)
+    {
+        if(l2tpv3_session[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2tpv3-sessions";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2Tpv3Sessions' in Cisco_IOS_XR_l2vpn_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2tpv3-session")
+    {
+        for(auto const & c : l2tpv3_session)
+        {
+            std::string segment = c->get_segment_path();
+            if(segment_path == segment)
+            {
+                return c;
+            }
+        }
+        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session>();
+        c->parent = this;
+        l2tpv3_session.push_back(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    for (auto const & c : l2tpv3_session)
+    {
+        children[c->get_segment_path()] = c;
+    }
+
+    return children;
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2tpv3-session")
+        return true;
+    return false;
+}
 
 L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::L2Tpv3Session()
     :
@@ -58,18 +2033,18 @@ bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::has
 
 bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(bound.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(ipv4_table_id.operation)
-	|| is_set(ipv6_table_id.operation)
-	|| is_set(nhop_ip_addr.operation)
-	|| is_set(session_id_xr.operation)
-	|| is_set(session_type.operation)
-	|| is_set(source_address.operation)
-	|| is_set(sub_interface_name.operation)
-	|| is_set(tunnel_id_xr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(bound.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(ipv4_table_id.yfilter)
+	|| ydk::is_set(ipv6_table_id.yfilter)
+	|| ydk::is_set(nhop_ip_addr.yfilter)
+	|| ydk::is_set(session_id_xr.yfilter)
+	|| ydk::is_set(session_type.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(sub_interface_name.yfilter)
+	|| ydk::is_set(tunnel_id_xr.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -96,17 +2071,17 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (bound.is_set || is_set(bound.operation)) leaf_name_data.push_back(bound.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (ipv4_table_id.is_set || is_set(ipv4_table_id.operation)) leaf_name_data.push_back(ipv4_table_id.get_name_leafdata());
-    if (ipv6_table_id.is_set || is_set(ipv6_table_id.operation)) leaf_name_data.push_back(ipv6_table_id.get_name_leafdata());
-    if (nhop_ip_addr.is_set || is_set(nhop_ip_addr.operation)) leaf_name_data.push_back(nhop_ip_addr.get_name_leafdata());
-    if (session_id_xr.is_set || is_set(session_id_xr.operation)) leaf_name_data.push_back(session_id_xr.get_name_leafdata());
-    if (session_type.is_set || is_set(session_type.operation)) leaf_name_data.push_back(session_type.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (sub_interface_name.is_set || is_set(sub_interface_name.operation)) leaf_name_data.push_back(sub_interface_name.get_name_leafdata());
-    if (tunnel_id_xr.is_set || is_set(tunnel_id_xr.operation)) leaf_name_data.push_back(tunnel_id_xr.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (bound.is_set || is_set(bound.yfilter)) leaf_name_data.push_back(bound.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (ipv4_table_id.is_set || is_set(ipv4_table_id.yfilter)) leaf_name_data.push_back(ipv4_table_id.get_name_leafdata());
+    if (ipv6_table_id.is_set || is_set(ipv6_table_id.yfilter)) leaf_name_data.push_back(ipv6_table_id.get_name_leafdata());
+    if (nhop_ip_addr.is_set || is_set(nhop_ip_addr.yfilter)) leaf_name_data.push_back(nhop_ip_addr.get_name_leafdata());
+    if (session_id_xr.is_set || is_set(session_id_xr.yfilter)) leaf_name_data.push_back(session_id_xr.get_name_leafdata());
+    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (sub_interface_name.is_set || is_set(sub_interface_name.yfilter)) leaf_name_data.push_back(sub_interface_name.get_name_leafdata());
+    if (tunnel_id_xr.is_set || is_set(tunnel_id_xr.yfilter)) leaf_name_data.push_back(tunnel_id_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -139,52 +2114,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bound")
     {
         bound = value;
+        bound.value_namespace = name_space;
+        bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-table-id")
     {
         ipv4_table_id = value;
+        ipv4_table_id.value_namespace = name_space;
+        ipv4_table_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-table-id")
     {
         ipv6_table_id = value;
+        ipv6_table_id.value_namespace = name_space;
+        ipv6_table_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nhop-ip-addr")
     {
         nhop_ip_addr = value;
+        nhop_ip_addr.value_namespace = name_space;
+        nhop_ip_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id-xr")
     {
         session_id_xr = value;
+        session_id_xr.value_namespace = name_space;
+        session_id_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-type")
     {
         session_type = value;
+        session_type.value_namespace = name_space;
+        session_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-name")
     {
         sub_interface_name = value;
+        sub_interface_name.value_namespace = name_space;
+        sub_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id-xr")
     {
         tunnel_id_xr = value;
+        tunnel_id_xr.value_namespace = name_space;
+        tunnel_id_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "bound")
+    {
+        bound.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-table-id")
+    {
+        ipv4_table_id.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-table-id")
+    {
+        ipv6_table_id.yfilter = yfilter;
+    }
+    if(value_path == "nhop-ip-addr")
+    {
+        nhop_ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "session-id-xr")
+    {
+        session_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "session-type")
+    {
+        session_type.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "sub-interface-name")
+    {
+        sub_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id-xr")
+    {
+        tunnel_id_xr.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "session-id" || name == "bound" || name == "interface-handle" || name == "ipv4-table-id" || name == "ipv6-table-id" || name == "nhop-ip-addr" || name == "session-id-xr" || name == "session-type" || name == "source-address" || name == "sub-interface-name" || name == "tunnel-id-xr")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base::Base()
@@ -203,7 +2255,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Bas
 
 bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base::get_segment_path() const
@@ -247,8 +2299,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Sessions()
@@ -277,7 +2338,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::has_operation() co
         if(l2tpv2_session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::get_segment_path() const
@@ -342,8 +2403,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2tpv2-session")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::L2Tpv2Session()
@@ -391,19 +2463,19 @@ bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::has
 
 bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(ipv4_table_id.operation)
-	|| is_set(ipv6_table_id.operation)
-	|| is_set(nhop_ip_addr.operation)
-	|| is_set(session_id.operation)
-	|| is_set(session_id_xr.operation)
-	|| is_set(session_type.operation)
-	|| is_set(source_address.operation)
-	|| is_set(sub_interface_name.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(tunnel_id_xr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bound.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(ipv4_table_id.yfilter)
+	|| ydk::is_set(ipv6_table_id.yfilter)
+	|| ydk::is_set(nhop_ip_addr.yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(session_id_xr.yfilter)
+	|| ydk::is_set(session_type.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(sub_interface_name.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(tunnel_id_xr.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -430,18 +2502,18 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound.is_set || is_set(bound.operation)) leaf_name_data.push_back(bound.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (ipv4_table_id.is_set || is_set(ipv4_table_id.operation)) leaf_name_data.push_back(ipv4_table_id.get_name_leafdata());
-    if (ipv6_table_id.is_set || is_set(ipv6_table_id.operation)) leaf_name_data.push_back(ipv6_table_id.get_name_leafdata());
-    if (nhop_ip_addr.is_set || is_set(nhop_ip_addr.operation)) leaf_name_data.push_back(nhop_ip_addr.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (session_id_xr.is_set || is_set(session_id_xr.operation)) leaf_name_data.push_back(session_id_xr.get_name_leafdata());
-    if (session_type.is_set || is_set(session_type.operation)) leaf_name_data.push_back(session_type.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (sub_interface_name.is_set || is_set(sub_interface_name.operation)) leaf_name_data.push_back(sub_interface_name.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (tunnel_id_xr.is_set || is_set(tunnel_id_xr.operation)) leaf_name_data.push_back(tunnel_id_xr.get_name_leafdata());
+    if (bound.is_set || is_set(bound.yfilter)) leaf_name_data.push_back(bound.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (ipv4_table_id.is_set || is_set(ipv4_table_id.yfilter)) leaf_name_data.push_back(ipv4_table_id.get_name_leafdata());
+    if (ipv6_table_id.is_set || is_set(ipv6_table_id.yfilter)) leaf_name_data.push_back(ipv6_table_id.get_name_leafdata());
+    if (nhop_ip_addr.is_set || is_set(nhop_ip_addr.yfilter)) leaf_name_data.push_back(nhop_ip_addr.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (session_id_xr.is_set || is_set(session_id_xr.yfilter)) leaf_name_data.push_back(session_id_xr.get_name_leafdata());
+    if (session_type.is_set || is_set(session_type.yfilter)) leaf_name_data.push_back(session_type.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (sub_interface_name.is_set || is_set(sub_interface_name.yfilter)) leaf_name_data.push_back(sub_interface_name.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (tunnel_id_xr.is_set || is_set(tunnel_id_xr.yfilter)) leaf_name_data.push_back(tunnel_id_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -474,56 +2546,139 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound")
     {
         bound = value;
+        bound.value_namespace = name_space;
+        bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-table-id")
     {
         ipv4_table_id = value;
+        ipv4_table_id.value_namespace = name_space;
+        ipv4_table_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-table-id")
     {
         ipv6_table_id = value;
+        ipv6_table_id.value_namespace = name_space;
+        ipv6_table_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nhop-ip-addr")
     {
         nhop_ip_addr = value;
+        nhop_ip_addr.value_namespace = name_space;
+        nhop_ip_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id-xr")
     {
         session_id_xr = value;
+        session_id_xr.value_namespace = name_space;
+        session_id_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-type")
     {
         session_type = value;
+        session_type.value_namespace = name_space;
+        session_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-name")
     {
         sub_interface_name = value;
+        sub_interface_name.value_namespace = name_space;
+        sub_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id-xr")
     {
         tunnel_id_xr = value;
+        tunnel_id_xr.value_namespace = name_space;
+        tunnel_id_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound")
+    {
+        bound.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-table-id")
+    {
+        ipv4_table_id.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-table-id")
+    {
+        ipv6_table_id.yfilter = yfilter;
+    }
+    if(value_path == "nhop-ip-addr")
+    {
+        nhop_ip_addr.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "session-id-xr")
+    {
+        session_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "session-type")
+    {
+        session_type.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "sub-interface-name")
+    {
+        sub_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id-xr")
+    {
+        tunnel_id_xr.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "bound" || name == "interface-handle" || name == "ipv4-table-id" || name == "ipv6-table-id" || name == "nhop-ip-addr" || name == "session-id" || name == "session-id-xr" || name == "session-type" || name == "source-address" || name == "sub-interface-name" || name == "tunnel-id" || name == "tunnel-id-xr")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base::Base()
@@ -542,7 +2697,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Bas
 
 bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base::get_segment_path() const
@@ -586,8 +2741,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032()
@@ -610,7 +2774,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibG8032::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (l2fib_g8032_rings !=  nullptr && l2fib_g8032_rings->has_operation());
 }
 
@@ -669,8 +2833,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-g8032-rings")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Rings()
@@ -699,7 +2874,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::has_operation() 
         if(l2fib_g8032_ring[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::get_segment_path() const
@@ -764,8 +2939,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-g8032-ring")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032Ring()
@@ -803,8 +2989,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::
 
 bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ring_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ring_name.yfilter)
 	|| (l2fib_g8032_ring_detail !=  nullptr && l2fib_g8032_ring_detail->has_operation())
 	|| (l2fib_g8032_ring_instance_details !=  nullptr && l2fib_g8032_ring_instance_details->has_operation())
 	|| (l2fib_g8032_ring_instance_summaries !=  nullptr && l2fib_g8032_ring_instance_summaries->has_operation())
@@ -834,7 +3020,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2Fi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ring_name.is_set || is_set(ring_name.operation)) leaf_name_data.push_back(ring_name.get_name_leafdata());
+    if (ring_name.is_set || is_set(ring_name.yfilter)) leaf_name_data.push_back(ring_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -909,12 +3095,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ring-name")
     {
         ring_name = value;
+        ring_name.value_namespace = name_space;
+        ring_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ring-name")
+    {
+        ring_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-g8032-ring-detail" || name == "l2fib-g8032-ring-instance-details" || name == "l2fib-g8032-ring-instance-summaries" || name == "l2fib-g8032-ring-summary" || name == "ring-name")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail::L2FibG8032RingDetail()
@@ -945,13 +3148,13 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::
 
 bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_open_ring.operation)
-	|| is_set(monitor0.operation)
-	|| is_set(monitor1.operation)
-	|| is_set(port0.operation)
-	|| is_set(port1.operation)
-	|| is_set(ring_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_open_ring.yfilter)
+	|| ydk::is_set(monitor0.yfilter)
+	|| ydk::is_set(monitor1.yfilter)
+	|| ydk::is_set(port0.yfilter)
+	|| ydk::is_set(port1.yfilter)
+	|| ydk::is_set(ring_name.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail::get_segment_path() const
@@ -977,12 +3180,12 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2Fi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_open_ring.is_set || is_set(is_open_ring.operation)) leaf_name_data.push_back(is_open_ring.get_name_leafdata());
-    if (monitor0.is_set || is_set(monitor0.operation)) leaf_name_data.push_back(monitor0.get_name_leafdata());
-    if (monitor1.is_set || is_set(monitor1.operation)) leaf_name_data.push_back(monitor1.get_name_leafdata());
-    if (port0.is_set || is_set(port0.operation)) leaf_name_data.push_back(port0.get_name_leafdata());
-    if (port1.is_set || is_set(port1.operation)) leaf_name_data.push_back(port1.get_name_leafdata());
-    if (ring_name.is_set || is_set(ring_name.operation)) leaf_name_data.push_back(ring_name.get_name_leafdata());
+    if (is_open_ring.is_set || is_set(is_open_ring.yfilter)) leaf_name_data.push_back(is_open_ring.get_name_leafdata());
+    if (monitor0.is_set || is_set(monitor0.yfilter)) leaf_name_data.push_back(monitor0.get_name_leafdata());
+    if (monitor1.is_set || is_set(monitor1.yfilter)) leaf_name_data.push_back(monitor1.get_name_leafdata());
+    if (port0.is_set || is_set(port0.yfilter)) leaf_name_data.push_back(port0.get_name_leafdata());
+    if (port1.is_set || is_set(port1.yfilter)) leaf_name_data.push_back(port1.get_name_leafdata());
+    if (ring_name.is_set || is_set(ring_name.yfilter)) leaf_name_data.push_back(ring_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1001,32 +3204,79 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-open-ring")
     {
         is_open_ring = value;
+        is_open_ring.value_namespace = name_space;
+        is_open_ring.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "monitor0")
     {
         monitor0 = value;
+        monitor0.value_namespace = name_space;
+        monitor0.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "monitor1")
     {
         monitor1 = value;
+        monitor1.value_namespace = name_space;
+        monitor1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port0")
     {
         port0 = value;
+        port0.value_namespace = name_space;
+        port0.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port1")
     {
         port1 = value;
+        port1.value_namespace = name_space;
+        port1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ring-name")
     {
         ring_name = value;
+        ring_name.value_namespace = name_space;
+        ring_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-open-ring")
+    {
+        is_open_ring.yfilter = yfilter;
+    }
+    if(value_path == "monitor0")
+    {
+        monitor0.yfilter = yfilter;
+    }
+    if(value_path == "monitor1")
+    {
+        monitor1.yfilter = yfilter;
+    }
+    if(value_path == "port0")
+    {
+        port0.yfilter = yfilter;
+    }
+    if(value_path == "port1")
+    {
+        port1.yfilter = yfilter;
+    }
+    if(value_path == "ring-name")
+    {
+        ring_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-open-ring" || name == "monitor0" || name == "monitor1" || name == "port0" || name == "port1" || name == "ring-name")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary::L2FibG8032RingSummary()
@@ -1051,10 +3301,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::
 
 bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(port0.operation)
-	|| is_set(port1.operation)
-	|| is_set(ring_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(port0.yfilter)
+	|| ydk::is_set(port1.yfilter)
+	|| ydk::is_set(ring_name.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary::get_segment_path() const
@@ -1080,9 +3330,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2Fi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (port0.is_set || is_set(port0.operation)) leaf_name_data.push_back(port0.get_name_leafdata());
-    if (port1.is_set || is_set(port1.operation)) leaf_name_data.push_back(port1.get_name_leafdata());
-    if (ring_name.is_set || is_set(ring_name.operation)) leaf_name_data.push_back(ring_name.get_name_leafdata());
+    if (port0.is_set || is_set(port0.yfilter)) leaf_name_data.push_back(port0.get_name_leafdata());
+    if (port1.is_set || is_set(port1.yfilter)) leaf_name_data.push_back(port1.get_name_leafdata());
+    if (ring_name.is_set || is_set(ring_name.yfilter)) leaf_name_data.push_back(ring_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1101,20 +3351,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "port0")
     {
         port0 = value;
+        port0.value_namespace = name_space;
+        port0.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port1")
     {
         port1 = value;
+        port1.value_namespace = name_space;
+        port1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ring-name")
     {
         ring_name = value;
+        ring_name.value_namespace = name_space;
+        ring_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "port0")
+    {
+        port0.yfilter = yfilter;
+    }
+    if(value_path == "port1")
+    {
+        port1.yfilter = yfilter;
+    }
+    if(value_path == "ring-name")
+    {
+        ring_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port0" || name == "port1" || name == "ring-name")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummaries()
@@ -1143,7 +3422,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::
         if(l2fib_g8032_ring_instance_summary[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::get_segment_path() const
@@ -1208,8 +3487,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-g8032-ring-instance-summary")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary::L2FibG8032RingInstanceSummary()
@@ -1236,11 +3526,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::
 
 bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(instance.operation)
-	|| is_set(aps_port0.operation)
-	|| is_set(aps_port1.operation)
-	|| is_set(ring_instance.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(aps_port0.yfilter)
+	|| ydk::is_set(aps_port1.yfilter)
+	|| ydk::is_set(ring_instance.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary::get_segment_path() const
@@ -1266,10 +3556,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2Fi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (aps_port0.is_set || is_set(aps_port0.operation)) leaf_name_data.push_back(aps_port0.get_name_leafdata());
-    if (aps_port1.is_set || is_set(aps_port1.operation)) leaf_name_data.push_back(aps_port1.get_name_leafdata());
-    if (ring_instance.is_set || is_set(ring_instance.operation)) leaf_name_data.push_back(ring_instance.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (aps_port0.is_set || is_set(aps_port0.yfilter)) leaf_name_data.push_back(aps_port0.get_name_leafdata());
+    if (aps_port1.is_set || is_set(aps_port1.yfilter)) leaf_name_data.push_back(aps_port1.get_name_leafdata());
+    if (ring_instance.is_set || is_set(ring_instance.yfilter)) leaf_name_data.push_back(ring_instance.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1288,24 +3578,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aps-port0")
     {
         aps_port0 = value;
+        aps_port0.value_namespace = name_space;
+        aps_port0.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aps-port1")
     {
         aps_port1 = value;
+        aps_port1.value_namespace = name_space;
+        aps_port1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ring-instance")
     {
         ring_instance = value;
+        ring_instance.value_namespace = name_space;
+        ring_instance.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "aps-port0")
+    {
+        aps_port0.yfilter = yfilter;
+    }
+    if(value_path == "aps-port1")
+    {
+        aps_port1.yfilter = yfilter;
+    }
+    if(value_path == "ring-instance")
+    {
+        ring_instance.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance" || name == "aps-port0" || name == "aps-port1" || name == "ring-instance")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetails()
@@ -1334,7 +3659,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::
         if(l2fib_g8032_ring_instance_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::get_segment_path() const
@@ -1399,8 +3724,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-g8032-ring-instance-detail")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail::L2FibG8032RingInstanceDetail()
@@ -1439,17 +3775,17 @@ bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::
 
 bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(instance.operation)
-	|| is_set(aps_channel_level.operation)
-	|| is_set(aps_port0.operation)
-	|| is_set(aps_port1.operation)
-	|| is_set(aps_port_status0.operation)
-	|| is_set(aps_port_status1.operation)
-	|| is_set(ring_instance.operation)
-	|| is_set(ring_profile.operation)
-	|| is_set(rpl.operation)
-	|| is_set(vlan_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(aps_channel_level.yfilter)
+	|| ydk::is_set(aps_port0.yfilter)
+	|| ydk::is_set(aps_port1.yfilter)
+	|| ydk::is_set(aps_port_status0.yfilter)
+	|| ydk::is_set(aps_port_status1.yfilter)
+	|| ydk::is_set(ring_instance.yfilter)
+	|| ydk::is_set(ring_profile.yfilter)
+	|| ydk::is_set(rpl.yfilter)
+	|| ydk::is_set(vlan_ids.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail::get_segment_path() const
@@ -1475,16 +3811,16 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2Fi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (aps_channel_level.is_set || is_set(aps_channel_level.operation)) leaf_name_data.push_back(aps_channel_level.get_name_leafdata());
-    if (aps_port0.is_set || is_set(aps_port0.operation)) leaf_name_data.push_back(aps_port0.get_name_leafdata());
-    if (aps_port1.is_set || is_set(aps_port1.operation)) leaf_name_data.push_back(aps_port1.get_name_leafdata());
-    if (aps_port_status0.is_set || is_set(aps_port_status0.operation)) leaf_name_data.push_back(aps_port_status0.get_name_leafdata());
-    if (aps_port_status1.is_set || is_set(aps_port_status1.operation)) leaf_name_data.push_back(aps_port_status1.get_name_leafdata());
-    if (ring_instance.is_set || is_set(ring_instance.operation)) leaf_name_data.push_back(ring_instance.get_name_leafdata());
-    if (ring_profile.is_set || is_set(ring_profile.operation)) leaf_name_data.push_back(ring_profile.get_name_leafdata());
-    if (rpl.is_set || is_set(rpl.operation)) leaf_name_data.push_back(rpl.get_name_leafdata());
-    if (vlan_ids.is_set || is_set(vlan_ids.operation)) leaf_name_data.push_back(vlan_ids.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (aps_channel_level.is_set || is_set(aps_channel_level.yfilter)) leaf_name_data.push_back(aps_channel_level.get_name_leafdata());
+    if (aps_port0.is_set || is_set(aps_port0.yfilter)) leaf_name_data.push_back(aps_port0.get_name_leafdata());
+    if (aps_port1.is_set || is_set(aps_port1.yfilter)) leaf_name_data.push_back(aps_port1.get_name_leafdata());
+    if (aps_port_status0.is_set || is_set(aps_port_status0.yfilter)) leaf_name_data.push_back(aps_port_status0.get_name_leafdata());
+    if (aps_port_status1.is_set || is_set(aps_port_status1.yfilter)) leaf_name_data.push_back(aps_port_status1.get_name_leafdata());
+    if (ring_instance.is_set || is_set(ring_instance.yfilter)) leaf_name_data.push_back(ring_instance.get_name_leafdata());
+    if (ring_profile.is_set || is_set(ring_profile.yfilter)) leaf_name_data.push_back(ring_profile.get_name_leafdata());
+    if (rpl.is_set || is_set(rpl.yfilter)) leaf_name_data.push_back(rpl.get_name_leafdata());
+    if (vlan_ids.is_set || is_set(vlan_ids.yfilter)) leaf_name_data.push_back(vlan_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1503,48 +3839,119 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aps-channel-level")
     {
         aps_channel_level = value;
+        aps_channel_level.value_namespace = name_space;
+        aps_channel_level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aps-port0")
     {
         aps_port0 = value;
+        aps_port0.value_namespace = name_space;
+        aps_port0.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aps-port1")
     {
         aps_port1 = value;
+        aps_port1.value_namespace = name_space;
+        aps_port1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aps-port-status0")
     {
         aps_port_status0 = value;
+        aps_port_status0.value_namespace = name_space;
+        aps_port_status0.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aps-port-status1")
     {
         aps_port_status1 = value;
+        aps_port_status1.value_namespace = name_space;
+        aps_port_status1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ring-instance")
     {
         ring_instance = value;
+        ring_instance.value_namespace = name_space;
+        ring_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ring-profile")
     {
         ring_profile = value;
+        ring_profile.value_namespace = name_space;
+        ring_profile.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rpl")
     {
         rpl = value;
+        rpl.value_namespace = name_space;
+        rpl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-ids")
     {
         vlan_ids = value;
+        vlan_ids.value_namespace = name_space;
+        vlan_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "aps-channel-level")
+    {
+        aps_channel_level.yfilter = yfilter;
+    }
+    if(value_path == "aps-port0")
+    {
+        aps_port0.yfilter = yfilter;
+    }
+    if(value_path == "aps-port1")
+    {
+        aps_port1.yfilter = yfilter;
+    }
+    if(value_path == "aps-port-status0")
+    {
+        aps_port_status0.yfilter = yfilter;
+    }
+    if(value_path == "aps-port-status1")
+    {
+        aps_port_status1.yfilter = yfilter;
+    }
+    if(value_path == "ring-instance")
+    {
+        ring_instance.yfilter = yfilter;
+    }
+    if(value_path == "ring-profile")
+    {
+        ring_profile.yfilter = yfilter;
+    }
+    if(value_path == "rpl")
+    {
+        rpl.yfilter = yfilter;
+    }
+    if(value_path == "vlan-ids")
+    {
+        vlan_ids.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance" || name == "aps-channel-level" || name == "aps-port0" || name == "aps-port1" || name == "aps-port-status0" || name == "aps-port-status1" || name == "ring-instance" || name == "ring-profile" || name == "rpl" || name == "vlan-ids")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePorts()
@@ -1573,7 +3980,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::has_operation() const
         if(l2fib_bridge_port[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::get_segment_path() const
@@ -1638,8 +4045,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-bridge-port")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::L2FibBridgePort()
@@ -1697,22 +4115,22 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::has_data()
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aging_time_out.operation)
-	|| is_set(bd_name.operation)
-	|| is_set(bridge_id.operation)
-	|| is_set(flooding_disabled.operation)
-	|| is_set(group_name.operation)
-	|| is_set(mac_learning_disabled.operation)
-	|| is_set(mac_limit.operation)
-	|| is_set(mac_limit_action.operation)
-	|| is_set(mac_port_down_flush_disabled.operation)
-	|| is_set(mtu.operation)
-	|| is_set(number_of_hw_mac.operation)
-	|| is_set(number_of_sw_mac.operation)
-	|| is_set(shg_id.operation)
-	|| is_set(xc_id.operation)
-	|| is_set(xc_uint_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(aging_time_out.yfilter)
+	|| ydk::is_set(bd_name.yfilter)
+	|| ydk::is_set(bridge_id.yfilter)
+	|| ydk::is_set(flooding_disabled.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(mac_learning_disabled.yfilter)
+	|| ydk::is_set(mac_limit.yfilter)
+	|| ydk::is_set(mac_limit_action.yfilter)
+	|| ydk::is_set(mac_port_down_flush_disabled.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(number_of_hw_mac.yfilter)
+	|| ydk::is_set(number_of_sw_mac.yfilter)
+	|| ydk::is_set(shg_id.yfilter)
+	|| ydk::is_set(xc_id.yfilter)
+	|| ydk::is_set(xc_uint_id.yfilter)
 	|| (bridge_port_operational_info !=  nullptr && bridge_port_operational_info->has_operation())
 	|| (segment !=  nullptr && segment->has_operation());
 }
@@ -1740,21 +4158,21 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aging_time_out.is_set || is_set(aging_time_out.operation)) leaf_name_data.push_back(aging_time_out.get_name_leafdata());
-    if (bd_name.is_set || is_set(bd_name.operation)) leaf_name_data.push_back(bd_name.get_name_leafdata());
-    if (bridge_id.is_set || is_set(bridge_id.operation)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
-    if (flooding_disabled.is_set || is_set(flooding_disabled.operation)) leaf_name_data.push_back(flooding_disabled.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (mac_learning_disabled.is_set || is_set(mac_learning_disabled.operation)) leaf_name_data.push_back(mac_learning_disabled.get_name_leafdata());
-    if (mac_limit.is_set || is_set(mac_limit.operation)) leaf_name_data.push_back(mac_limit.get_name_leafdata());
-    if (mac_limit_action.is_set || is_set(mac_limit_action.operation)) leaf_name_data.push_back(mac_limit_action.get_name_leafdata());
-    if (mac_port_down_flush_disabled.is_set || is_set(mac_port_down_flush_disabled.operation)) leaf_name_data.push_back(mac_port_down_flush_disabled.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (number_of_hw_mac.is_set || is_set(number_of_hw_mac.operation)) leaf_name_data.push_back(number_of_hw_mac.get_name_leafdata());
-    if (number_of_sw_mac.is_set || is_set(number_of_sw_mac.operation)) leaf_name_data.push_back(number_of_sw_mac.get_name_leafdata());
-    if (shg_id.is_set || is_set(shg_id.operation)) leaf_name_data.push_back(shg_id.get_name_leafdata());
-    if (xc_id.is_set || is_set(xc_id.operation)) leaf_name_data.push_back(xc_id.get_name_leafdata());
-    if (xc_uint_id.is_set || is_set(xc_uint_id.operation)) leaf_name_data.push_back(xc_uint_id.get_name_leafdata());
+    if (aging_time_out.is_set || is_set(aging_time_out.yfilter)) leaf_name_data.push_back(aging_time_out.get_name_leafdata());
+    if (bd_name.is_set || is_set(bd_name.yfilter)) leaf_name_data.push_back(bd_name.get_name_leafdata());
+    if (bridge_id.is_set || is_set(bridge_id.yfilter)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
+    if (flooding_disabled.is_set || is_set(flooding_disabled.yfilter)) leaf_name_data.push_back(flooding_disabled.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (mac_learning_disabled.is_set || is_set(mac_learning_disabled.yfilter)) leaf_name_data.push_back(mac_learning_disabled.get_name_leafdata());
+    if (mac_limit.is_set || is_set(mac_limit.yfilter)) leaf_name_data.push_back(mac_limit.get_name_leafdata());
+    if (mac_limit_action.is_set || is_set(mac_limit_action.yfilter)) leaf_name_data.push_back(mac_limit_action.get_name_leafdata());
+    if (mac_port_down_flush_disabled.is_set || is_set(mac_port_down_flush_disabled.yfilter)) leaf_name_data.push_back(mac_port_down_flush_disabled.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (number_of_hw_mac.is_set || is_set(number_of_hw_mac.yfilter)) leaf_name_data.push_back(number_of_hw_mac.get_name_leafdata());
+    if (number_of_sw_mac.is_set || is_set(number_of_sw_mac.yfilter)) leaf_name_data.push_back(number_of_sw_mac.get_name_leafdata());
+    if (shg_id.is_set || is_set(shg_id.yfilter)) leaf_name_data.push_back(shg_id.get_name_leafdata());
+    if (xc_id.is_set || is_set(xc_id.yfilter)) leaf_name_data.push_back(xc_id.get_name_leafdata());
+    if (xc_uint_id.is_set || is_set(xc_uint_id.yfilter)) leaf_name_data.push_back(xc_uint_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1801,68 +4219,169 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aging-time-out")
     {
         aging_time_out = value;
+        aging_time_out.value_namespace = name_space;
+        aging_time_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bd-name")
     {
         bd_name = value;
+        bd_name.value_namespace = name_space;
+        bd_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-id")
     {
         bridge_id = value;
+        bridge_id.value_namespace = name_space;
+        bridge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flooding-disabled")
     {
         flooding_disabled = value;
+        flooding_disabled.value_namespace = name_space;
+        flooding_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-learning-disabled")
     {
         mac_learning_disabled = value;
+        mac_learning_disabled.value_namespace = name_space;
+        mac_learning_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-limit")
     {
         mac_limit = value;
+        mac_limit.value_namespace = name_space;
+        mac_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-limit-action")
     {
         mac_limit_action = value;
+        mac_limit_action.value_namespace = name_space;
+        mac_limit_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-port-down-flush-disabled")
     {
         mac_port_down_flush_disabled = value;
+        mac_port_down_flush_disabled.value_namespace = name_space;
+        mac_port_down_flush_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-hw-mac")
     {
         number_of_hw_mac = value;
+        number_of_hw_mac.value_namespace = name_space;
+        number_of_hw_mac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-sw-mac")
     {
         number_of_sw_mac = value;
+        number_of_sw_mac.value_namespace = name_space;
+        number_of_sw_mac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "shg-id")
     {
         shg_id = value;
+        shg_id.value_namespace = name_space;
+        shg_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xc-id")
     {
         xc_id = value;
+        xc_id.value_namespace = name_space;
+        xc_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xc-uint-id")
     {
         xc_uint_id = value;
+        xc_uint_id.value_namespace = name_space;
+        xc_uint_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aging-time-out")
+    {
+        aging_time_out.yfilter = yfilter;
+    }
+    if(value_path == "bd-name")
+    {
+        bd_name.yfilter = yfilter;
+    }
+    if(value_path == "bridge-id")
+    {
+        bridge_id.yfilter = yfilter;
+    }
+    if(value_path == "flooding-disabled")
+    {
+        flooding_disabled.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-learning-disabled")
+    {
+        mac_learning_disabled.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit")
+    {
+        mac_limit.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit-action")
+    {
+        mac_limit_action.yfilter = yfilter;
+    }
+    if(value_path == "mac-port-down-flush-disabled")
+    {
+        mac_port_down_flush_disabled.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "number-of-hw-mac")
+    {
+        number_of_hw_mac.yfilter = yfilter;
+    }
+    if(value_path == "number-of-sw-mac")
+    {
+        number_of_sw_mac.yfilter = yfilter;
+    }
+    if(value_path == "shg-id")
+    {
+        shg_id.yfilter = yfilter;
+    }
+    if(value_path == "xc-id")
+    {
+        xc_id.yfilter = yfilter;
+    }
+    if(value_path == "xc-uint-id")
+    {
+        xc_uint_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bridge-port-operational-info" || name == "segment" || name == "aging-time-out" || name == "bd-name" || name == "bridge-id" || name == "flooding-disabled" || name == "group-name" || name == "mac-learning-disabled" || name == "mac-limit" || name == "mac-limit-action" || name == "mac-port-down-flush-disabled" || name == "mtu" || name == "number-of-hw-mac" || name == "number-of-sw-mac" || name == "shg-id" || name == "xc-id" || name == "xc-uint-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Segment()
@@ -1904,8 +4423,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::h
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
 	|| (ac !=  nullptr && ac->has_operation())
 	|| (evpn !=  nullptr && evpn->has_operation())
 	|| (pbb !=  nullptr && pbb->has_operation())
@@ -1936,7 +4455,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2025,12 +4544,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ac" || name == "evpn" || name == "pbb" || name == "pw" || name == "vni" || name == "data-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Ac()
@@ -2086,21 +4622,21 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::A
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(actype.operation)
-	|| is_set(adjacency_address.operation)
-	|| is_set(adjacency_valid.operation)
-	|| is_set(attachment_circuit_id.operation)
-	|| is_set(attachment_circuit_mtu.operation)
-	|| is_set(bound.operation)
-	|| is_set(evpn_internal_label.operation)
-	|| is_set(fxc_next_hop_valid.operation)
-	|| is_set(inter_working_mode.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(ip_inter_working_mac.operation)
-	|| is_set(redundancy_group_id.operation)
-	|| is_set(redundancy_object_id.operation)
-	|| is_set(sub_interface_handle.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(actype.yfilter)
+	|| ydk::is_set(adjacency_address.yfilter)
+	|| ydk::is_set(adjacency_valid.yfilter)
+	|| ydk::is_set(attachment_circuit_id.yfilter)
+	|| ydk::is_set(attachment_circuit_mtu.yfilter)
+	|| ydk::is_set(bound.yfilter)
+	|| ydk::is_set(evpn_internal_label.yfilter)
+	|| ydk::is_set(fxc_next_hop_valid.yfilter)
+	|| ydk::is_set(inter_working_mode.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(ip_inter_working_mac.yfilter)
+	|| ydk::is_set(redundancy_group_id.yfilter)
+	|| ydk::is_set(redundancy_object_id.yfilter)
+	|| ydk::is_set(sub_interface_handle.yfilter)
 	|| (base !=  nullptr && base->has_operation())
 	|| (fxc_next_hop !=  nullptr && fxc_next_hop->has_operation());
 }
@@ -2128,20 +4664,20 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (actype.is_set || is_set(actype.operation)) leaf_name_data.push_back(actype.get_name_leafdata());
-    if (adjacency_address.is_set || is_set(adjacency_address.operation)) leaf_name_data.push_back(adjacency_address.get_name_leafdata());
-    if (adjacency_valid.is_set || is_set(adjacency_valid.operation)) leaf_name_data.push_back(adjacency_valid.get_name_leafdata());
-    if (attachment_circuit_id.is_set || is_set(attachment_circuit_id.operation)) leaf_name_data.push_back(attachment_circuit_id.get_name_leafdata());
-    if (attachment_circuit_mtu.is_set || is_set(attachment_circuit_mtu.operation)) leaf_name_data.push_back(attachment_circuit_mtu.get_name_leafdata());
-    if (bound.is_set || is_set(bound.operation)) leaf_name_data.push_back(bound.get_name_leafdata());
-    if (evpn_internal_label.is_set || is_set(evpn_internal_label.operation)) leaf_name_data.push_back(evpn_internal_label.get_name_leafdata());
-    if (fxc_next_hop_valid.is_set || is_set(fxc_next_hop_valid.operation)) leaf_name_data.push_back(fxc_next_hop_valid.get_name_leafdata());
-    if (inter_working_mode.is_set || is_set(inter_working_mode.operation)) leaf_name_data.push_back(inter_working_mode.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (ip_inter_working_mac.is_set || is_set(ip_inter_working_mac.operation)) leaf_name_data.push_back(ip_inter_working_mac.get_name_leafdata());
-    if (redundancy_group_id.is_set || is_set(redundancy_group_id.operation)) leaf_name_data.push_back(redundancy_group_id.get_name_leafdata());
-    if (redundancy_object_id.is_set || is_set(redundancy_object_id.operation)) leaf_name_data.push_back(redundancy_object_id.get_name_leafdata());
-    if (sub_interface_handle.is_set || is_set(sub_interface_handle.operation)) leaf_name_data.push_back(sub_interface_handle.get_name_leafdata());
+    if (actype.is_set || is_set(actype.yfilter)) leaf_name_data.push_back(actype.get_name_leafdata());
+    if (adjacency_address.is_set || is_set(adjacency_address.yfilter)) leaf_name_data.push_back(adjacency_address.get_name_leafdata());
+    if (adjacency_valid.is_set || is_set(adjacency_valid.yfilter)) leaf_name_data.push_back(adjacency_valid.get_name_leafdata());
+    if (attachment_circuit_id.is_set || is_set(attachment_circuit_id.yfilter)) leaf_name_data.push_back(attachment_circuit_id.get_name_leafdata());
+    if (attachment_circuit_mtu.is_set || is_set(attachment_circuit_mtu.yfilter)) leaf_name_data.push_back(attachment_circuit_mtu.get_name_leafdata());
+    if (bound.is_set || is_set(bound.yfilter)) leaf_name_data.push_back(bound.get_name_leafdata());
+    if (evpn_internal_label.is_set || is_set(evpn_internal_label.yfilter)) leaf_name_data.push_back(evpn_internal_label.get_name_leafdata());
+    if (fxc_next_hop_valid.is_set || is_set(fxc_next_hop_valid.yfilter)) leaf_name_data.push_back(fxc_next_hop_valid.get_name_leafdata());
+    if (inter_working_mode.is_set || is_set(inter_working_mode.yfilter)) leaf_name_data.push_back(inter_working_mode.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (ip_inter_working_mac.is_set || is_set(ip_inter_working_mac.yfilter)) leaf_name_data.push_back(ip_inter_working_mac.get_name_leafdata());
+    if (redundancy_group_id.is_set || is_set(redundancy_group_id.yfilter)) leaf_name_data.push_back(redundancy_group_id.get_name_leafdata());
+    if (redundancy_object_id.is_set || is_set(redundancy_object_id.yfilter)) leaf_name_data.push_back(redundancy_object_id.get_name_leafdata());
+    if (sub_interface_handle.is_set || is_set(sub_interface_handle.yfilter)) leaf_name_data.push_back(sub_interface_handle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2188,64 +4724,159 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "actype")
     {
         actype = value;
+        actype.value_namespace = name_space;
+        actype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjacency-address")
     {
         adjacency_address = value;
+        adjacency_address.value_namespace = name_space;
+        adjacency_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjacency-valid")
     {
         adjacency_valid = value;
+        adjacency_valid.value_namespace = name_space;
+        adjacency_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attachment-circuit-id")
     {
         attachment_circuit_id = value;
+        attachment_circuit_id.value_namespace = name_space;
+        attachment_circuit_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attachment-circuit-mtu")
     {
         attachment_circuit_mtu = value;
+        attachment_circuit_mtu.value_namespace = name_space;
+        attachment_circuit_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bound")
     {
         bound = value;
+        bound.value_namespace = name_space;
+        bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evpn-internal-label")
     {
         evpn_internal_label = value;
+        evpn_internal_label.value_namespace = name_space;
+        evpn_internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fxc-next-hop-valid")
     {
         fxc_next_hop_valid = value;
+        fxc_next_hop_valid.value_namespace = name_space;
+        fxc_next_hop_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-working-mode")
     {
         inter_working_mode = value;
+        inter_working_mode.value_namespace = name_space;
+        inter_working_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-inter-working-mac")
     {
         ip_inter_working_mac = value;
+        ip_inter_working_mac.value_namespace = name_space;
+        ip_inter_working_mac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redundancy-group-id")
     {
         redundancy_group_id = value;
+        redundancy_group_id.value_namespace = name_space;
+        redundancy_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redundancy-object-id")
     {
         redundancy_object_id = value;
+        redundancy_object_id.value_namespace = name_space;
+        redundancy_object_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-handle")
     {
         sub_interface_handle = value;
+        sub_interface_handle.value_namespace = name_space;
+        sub_interface_handle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "actype")
+    {
+        actype.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-address")
+    {
+        adjacency_address.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-valid")
+    {
+        adjacency_valid.yfilter = yfilter;
+    }
+    if(value_path == "attachment-circuit-id")
+    {
+        attachment_circuit_id.yfilter = yfilter;
+    }
+    if(value_path == "attachment-circuit-mtu")
+    {
+        attachment_circuit_mtu.yfilter = yfilter;
+    }
+    if(value_path == "bound")
+    {
+        bound.yfilter = yfilter;
+    }
+    if(value_path == "evpn-internal-label")
+    {
+        evpn_internal_label.yfilter = yfilter;
+    }
+    if(value_path == "fxc-next-hop-valid")
+    {
+        fxc_next_hop_valid.yfilter = yfilter;
+    }
+    if(value_path == "inter-working-mode")
+    {
+        inter_working_mode.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "ip-inter-working-mac")
+    {
+        ip_inter_working_mac.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-group-id")
+    {
+        redundancy_group_id.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-object-id")
+    {
+        redundancy_object_id.yfilter = yfilter;
+    }
+    if(value_path == "sub-interface-handle")
+    {
+        sub_interface_handle.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "fxc-next-hop" || name == "actype" || name == "adjacency-address" || name == "adjacency-valid" || name == "attachment-circuit-id" || name == "attachment-circuit-mtu" || name == "bound" || name == "evpn-internal-label" || name == "fxc-next-hop-valid" || name == "inter-working-mode" || name == "interface-handle" || name == "ip-inter-working-mac" || name == "redundancy-group-id" || name == "redundancy-object-id" || name == "sub-interface-handle")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base::Base()
@@ -2264,7 +4895,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::A
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base::get_segment_path() const
@@ -2308,8 +4939,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::FxcNextHop()
@@ -2343,12 +4983,12 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::A
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(children_count.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_internal_label.operation)
-	|| is_set(plaformt_data_valid.operation)
-	|| is_set(platform_data_length.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(children_count.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_internal_label.yfilter)
+	|| ydk::is_set(plaformt_data_valid.yfilter)
+	|| ydk::is_set(platform_data_length.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -2375,11 +5015,11 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (children_count.is_set || is_set(children_count.operation)) leaf_name_data.push_back(children_count.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.operation)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
-    if (plaformt_data_valid.is_set || is_set(plaformt_data_valid.operation)) leaf_name_data.push_back(plaformt_data_valid.get_name_leafdata());
-    if (platform_data_length.is_set || is_set(platform_data_length.operation)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
+    if (children_count.is_set || is_set(children_count.yfilter)) leaf_name_data.push_back(children_count.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.yfilter)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
+    if (plaformt_data_valid.is_set || is_set(plaformt_data_valid.yfilter)) leaf_name_data.push_back(plaformt_data_valid.get_name_leafdata());
+    if (platform_data_length.is_set || is_set(platform_data_length.yfilter)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2412,28 +5052,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "children-count")
     {
         children_count = value;
+        children_count.value_namespace = name_space;
+        children_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-internal-label")
     {
         next_hop_internal_label = value;
+        next_hop_internal_label.value_namespace = name_space;
+        next_hop_internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "plaformt-data-valid")
     {
         plaformt_data_valid = value;
+        plaformt_data_valid.value_namespace = name_space;
+        plaformt_data_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-data-length")
     {
         platform_data_length = value;
+        platform_data_length.value_namespace = name_space;
+        platform_data_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "children-count")
+    {
+        children_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-internal-label")
+    {
+        next_hop_internal_label.yfilter = yfilter;
+    }
+    if(value_path == "plaformt-data-valid")
+    {
+        plaformt_data_valid.yfilter = yfilter;
+    }
+    if(value_path == "platform-data-length")
+    {
+        platform_data_length.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "children-count" || name == "next-hop-address" || name == "next-hop-internal-label" || name == "plaformt-data-valid" || name == "platform-data-length")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base::Base()
@@ -2452,7 +5133,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::A
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base::get_segment_path() const
@@ -2496,8 +5177,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Pbb()
@@ -2531,10 +5221,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound.operation)
-	|| is_set(core_pbb_evpn_enabled.operation)
-	|| is_set(forward_class.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bound.yfilter)
+	|| ydk::is_set(core_pbb_evpn_enabled.yfilter)
+	|| ydk::is_set(forward_class.yfilter)
 	|| (base !=  nullptr && base->has_operation())
 	|| (pbb_union !=  nullptr && pbb_union->has_operation());
 }
@@ -2562,9 +5252,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound.is_set || is_set(bound.operation)) leaf_name_data.push_back(bound.get_name_leafdata());
-    if (core_pbb_evpn_enabled.is_set || is_set(core_pbb_evpn_enabled.operation)) leaf_name_data.push_back(core_pbb_evpn_enabled.get_name_leafdata());
-    if (forward_class.is_set || is_set(forward_class.operation)) leaf_name_data.push_back(forward_class.get_name_leafdata());
+    if (bound.is_set || is_set(bound.yfilter)) leaf_name_data.push_back(bound.get_name_leafdata());
+    if (core_pbb_evpn_enabled.is_set || is_set(core_pbb_evpn_enabled.yfilter)) leaf_name_data.push_back(core_pbb_evpn_enabled.get_name_leafdata());
+    if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2611,20 +5301,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound")
     {
         bound = value;
+        bound.value_namespace = name_space;
+        bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "core-pbb-evpn-enabled")
     {
         core_pbb_evpn_enabled = value;
+        core_pbb_evpn_enabled.value_namespace = name_space;
+        core_pbb_evpn_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-class")
     {
         forward_class = value;
+        forward_class.value_namespace = name_space;
+        forward_class.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound")
+    {
+        bound.yfilter = yfilter;
+    }
+    if(value_path == "core-pbb-evpn-enabled")
+    {
+        core_pbb_evpn_enabled.yfilter = yfilter;
+    }
+    if(value_path == "forward-class")
+    {
+        forward_class.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "pbb-union" || name == "bound" || name == "core-pbb-evpn-enabled" || name == "forward-class")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base::Base()
@@ -2643,7 +5362,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base::get_segment_path() const
@@ -2687,8 +5406,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::PbbUnion()
@@ -2718,8 +5446,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pbb_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(pbb_type.yfilter)
 	|| (core !=  nullptr && core->has_operation())
 	|| (edge !=  nullptr && edge->has_operation());
 }
@@ -2747,7 +5475,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pbb_type.is_set || is_set(pbb_type.operation)) leaf_name_data.push_back(pbb_type.get_name_leafdata());
+    if (pbb_type.is_set || is_set(pbb_type.yfilter)) leaf_name_data.push_back(pbb_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2794,12 +5522,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pbb-type")
     {
         pbb_type = value;
+        pbb_type.value_namespace = name_space;
+        pbb_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pbb-type")
+    {
+        pbb_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "core" || name == "edge" || name == "pbb-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge::Edge()
@@ -2822,9 +5567,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mac.operation)
-	|| is_set(mac_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mac.yfilter)
+	|| ydk::is_set(mac_configured.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge::get_segment_path() const
@@ -2850,8 +5595,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mac.is_set || is_set(mac.operation)) leaf_name_data.push_back(mac.get_name_leafdata());
-    if (mac_configured.is_set || is_set(mac_configured.operation)) leaf_name_data.push_back(mac_configured.get_name_leafdata());
+    if (mac.is_set || is_set(mac.yfilter)) leaf_name_data.push_back(mac.get_name_leafdata());
+    if (mac_configured.is_set || is_set(mac_configured.yfilter)) leaf_name_data.push_back(mac_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2870,16 +5615,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac")
     {
         mac = value;
+        mac.value_namespace = name_space;
+        mac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-configured")
     {
         mac_configured = value;
+        mac_configured.value_namespace = name_space;
+        mac_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mac")
+    {
+        mac.yfilter = yfilter;
+    }
+    if(value_path == "mac-configured")
+    {
+        mac_configured.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac" || name == "mac-configured")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core::Core()
@@ -2900,8 +5668,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vlan_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core::get_segment_path() const
@@ -2927,7 +5695,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vlan_id.is_set || is_set(vlan_id.operation)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2946,12 +5714,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id")
     {
         vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Vni()
@@ -2995,17 +5780,17 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::V
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(any_cast_ip.operation)
-	|| is_set(anycast_mcast_ip.operation)
-	|| is_set(bound.operation)
-	|| is_set(encap.operation)
-	|| is_set(mcastip.operation)
-	|| is_set(parent_if.operation)
-	|| is_set(source_vtep_if.operation)
-	|| is_set(srcip.operation)
-	|| is_set(udp_port.operation)
-	|| is_set(vx_lan_mode.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(any_cast_ip.yfilter)
+	|| ydk::is_set(anycast_mcast_ip.yfilter)
+	|| ydk::is_set(bound.yfilter)
+	|| ydk::is_set(encap.yfilter)
+	|| ydk::is_set(mcastip.yfilter)
+	|| ydk::is_set(parent_if.yfilter)
+	|| ydk::is_set(source_vtep_if.yfilter)
+	|| ydk::is_set(srcip.yfilter)
+	|| ydk::is_set(udp_port.yfilter)
+	|| ydk::is_set(vx_lan_mode.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -3032,16 +5817,16 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (any_cast_ip.is_set || is_set(any_cast_ip.operation)) leaf_name_data.push_back(any_cast_ip.get_name_leafdata());
-    if (anycast_mcast_ip.is_set || is_set(anycast_mcast_ip.operation)) leaf_name_data.push_back(anycast_mcast_ip.get_name_leafdata());
-    if (bound.is_set || is_set(bound.operation)) leaf_name_data.push_back(bound.get_name_leafdata());
-    if (encap.is_set || is_set(encap.operation)) leaf_name_data.push_back(encap.get_name_leafdata());
-    if (mcastip.is_set || is_set(mcastip.operation)) leaf_name_data.push_back(mcastip.get_name_leafdata());
-    if (parent_if.is_set || is_set(parent_if.operation)) leaf_name_data.push_back(parent_if.get_name_leafdata());
-    if (source_vtep_if.is_set || is_set(source_vtep_if.operation)) leaf_name_data.push_back(source_vtep_if.get_name_leafdata());
-    if (srcip.is_set || is_set(srcip.operation)) leaf_name_data.push_back(srcip.get_name_leafdata());
-    if (udp_port.is_set || is_set(udp_port.operation)) leaf_name_data.push_back(udp_port.get_name_leafdata());
-    if (vx_lan_mode.is_set || is_set(vx_lan_mode.operation)) leaf_name_data.push_back(vx_lan_mode.get_name_leafdata());
+    if (any_cast_ip.is_set || is_set(any_cast_ip.yfilter)) leaf_name_data.push_back(any_cast_ip.get_name_leafdata());
+    if (anycast_mcast_ip.is_set || is_set(anycast_mcast_ip.yfilter)) leaf_name_data.push_back(anycast_mcast_ip.get_name_leafdata());
+    if (bound.is_set || is_set(bound.yfilter)) leaf_name_data.push_back(bound.get_name_leafdata());
+    if (encap.is_set || is_set(encap.yfilter)) leaf_name_data.push_back(encap.get_name_leafdata());
+    if (mcastip.is_set || is_set(mcastip.yfilter)) leaf_name_data.push_back(mcastip.get_name_leafdata());
+    if (parent_if.is_set || is_set(parent_if.yfilter)) leaf_name_data.push_back(parent_if.get_name_leafdata());
+    if (source_vtep_if.is_set || is_set(source_vtep_if.yfilter)) leaf_name_data.push_back(source_vtep_if.get_name_leafdata());
+    if (srcip.is_set || is_set(srcip.yfilter)) leaf_name_data.push_back(srcip.get_name_leafdata());
+    if (udp_port.is_set || is_set(udp_port.yfilter)) leaf_name_data.push_back(udp_port.get_name_leafdata());
+    if (vx_lan_mode.is_set || is_set(vx_lan_mode.yfilter)) leaf_name_data.push_back(vx_lan_mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3074,48 +5859,119 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "any-cast-ip")
     {
         any_cast_ip = value;
+        any_cast_ip.value_namespace = name_space;
+        any_cast_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "anycast-mcast-ip")
     {
         anycast_mcast_ip = value;
+        anycast_mcast_ip.value_namespace = name_space;
+        anycast_mcast_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bound")
     {
         bound = value;
+        bound.value_namespace = name_space;
+        bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encap")
     {
         encap = value;
+        encap.value_namespace = name_space;
+        encap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mcastip")
     {
         mcastip = value;
+        mcastip.value_namespace = name_space;
+        mcastip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parent-if")
     {
         parent_if = value;
+        parent_if.value_namespace = name_space;
+        parent_if.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-vtep-if")
     {
         source_vtep_if = value;
+        source_vtep_if.value_namespace = name_space;
+        source_vtep_if.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srcip")
     {
         srcip = value;
+        srcip.value_namespace = name_space;
+        srcip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udp-port")
     {
         udp_port = value;
+        udp_port.value_namespace = name_space;
+        udp_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vx-lan-mode")
     {
         vx_lan_mode = value;
+        vx_lan_mode.value_namespace = name_space;
+        vx_lan_mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "any-cast-ip")
+    {
+        any_cast_ip.yfilter = yfilter;
+    }
+    if(value_path == "anycast-mcast-ip")
+    {
+        anycast_mcast_ip.yfilter = yfilter;
+    }
+    if(value_path == "bound")
+    {
+        bound.yfilter = yfilter;
+    }
+    if(value_path == "encap")
+    {
+        encap.yfilter = yfilter;
+    }
+    if(value_path == "mcastip")
+    {
+        mcastip.yfilter = yfilter;
+    }
+    if(value_path == "parent-if")
+    {
+        parent_if.yfilter = yfilter;
+    }
+    if(value_path == "source-vtep-if")
+    {
+        source_vtep_if.yfilter = yfilter;
+    }
+    if(value_path == "srcip")
+    {
+        srcip.yfilter = yfilter;
+    }
+    if(value_path == "udp-port")
+    {
+        udp_port.yfilter = yfilter;
+    }
+    if(value_path == "vx-lan-mode")
+    {
+        vx_lan_mode.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "any-cast-ip" || name == "anycast-mcast-ip" || name == "bound" || name == "encap" || name == "mcastip" || name == "parent-if" || name == "source-vtep-if" || name == "srcip" || name == "udp-port" || name == "vx-lan-mode")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base::Base()
@@ -3134,7 +5990,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::V
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base::get_segment_path() const
@@ -3178,8 +6034,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Evpn()
@@ -3209,10 +6074,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::E
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound.operation)
-	|| is_set(evi.operation)
-	|| is_set(forward_class.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bound.yfilter)
+	|| ydk::is_set(evi.yfilter)
+	|| ydk::is_set(forward_class.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -3239,9 +6104,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound.is_set || is_set(bound.operation)) leaf_name_data.push_back(bound.get_name_leafdata());
-    if (evi.is_set || is_set(evi.operation)) leaf_name_data.push_back(evi.get_name_leafdata());
-    if (forward_class.is_set || is_set(forward_class.operation)) leaf_name_data.push_back(forward_class.get_name_leafdata());
+    if (bound.is_set || is_set(bound.yfilter)) leaf_name_data.push_back(bound.get_name_leafdata());
+    if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
+    if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3274,20 +6139,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound")
     {
         bound = value;
+        bound.value_namespace = name_space;
+        bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evi")
     {
         evi = value;
+        evi.value_namespace = name_space;
+        evi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-class")
     {
         forward_class = value;
+        forward_class.value_namespace = name_space;
+        forward_class.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound")
+    {
+        bound.yfilter = yfilter;
+    }
+    if(value_path == "evi")
+    {
+        evi.yfilter = yfilter;
+    }
+    if(value_path == "forward-class")
+    {
+        forward_class.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "bound" || name == "evi" || name == "forward-class")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base::Base()
@@ -3306,7 +6200,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::E
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base::get_segment_path() const
@@ -3350,8 +6244,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Pw()
@@ -3423,25 +6326,25 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ac_id.operation)
-	|| is_set(active.operation)
-	|| is_set(backup_configured.operation)
-	|| is_set(bound.operation)
-	|| is_set(context.operation)
-	|| is_set(forward_class.operation)
-	|| is_set(global_id.operation)
-	|| is_set(group_id.operation)
-	|| is_set(group_state.operation)
-	|| is_set(grouping_supported.operation)
-	|| is_set(next_hop_valid.operation)
-	|| is_set(pseudo_wire_id_type.operation)
-	|| is_set(pw_flow_label_tx.operation)
-	|| is_set(pw_id.operation)
-	|| is_set(pw_load_balance_type.operation)
-	|| is_set(redundancy_role.operation)
-	|| is_set(sequence_resync_threshold.operation)
-	|| is_set(signal_capability_flags.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ac_id.yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(backup_configured.yfilter)
+	|| ydk::is_set(bound.yfilter)
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(forward_class.yfilter)
+	|| ydk::is_set(global_id.yfilter)
+	|| ydk::is_set(group_id.yfilter)
+	|| ydk::is_set(group_state.yfilter)
+	|| ydk::is_set(grouping_supported.yfilter)
+	|| ydk::is_set(next_hop_valid.yfilter)
+	|| ydk::is_set(pseudo_wire_id_type.yfilter)
+	|| ydk::is_set(pw_flow_label_tx.yfilter)
+	|| ydk::is_set(pw_id.yfilter)
+	|| ydk::is_set(pw_load_balance_type.yfilter)
+	|| ydk::is_set(redundancy_role.yfilter)
+	|| ydk::is_set(sequence_resync_threshold.yfilter)
+	|| ydk::is_set(signal_capability_flags.yfilter)
 	|| (backup_pseudo_wire !=  nullptr && backup_pseudo_wire->has_operation())
 	|| (base !=  nullptr && base->has_operation())
 	|| (next_hop !=  nullptr && next_hop->has_operation())
@@ -3471,24 +6374,24 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ac_id.is_set || is_set(ac_id.operation)) leaf_name_data.push_back(ac_id.get_name_leafdata());
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (backup_configured.is_set || is_set(backup_configured.operation)) leaf_name_data.push_back(backup_configured.get_name_leafdata());
-    if (bound.is_set || is_set(bound.operation)) leaf_name_data.push_back(bound.get_name_leafdata());
-    if (context.is_set || is_set(context.operation)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (forward_class.is_set || is_set(forward_class.operation)) leaf_name_data.push_back(forward_class.get_name_leafdata());
-    if (global_id.is_set || is_set(global_id.operation)) leaf_name_data.push_back(global_id.get_name_leafdata());
-    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
-    if (group_state.is_set || is_set(group_state.operation)) leaf_name_data.push_back(group_state.get_name_leafdata());
-    if (grouping_supported.is_set || is_set(grouping_supported.operation)) leaf_name_data.push_back(grouping_supported.get_name_leafdata());
-    if (next_hop_valid.is_set || is_set(next_hop_valid.operation)) leaf_name_data.push_back(next_hop_valid.get_name_leafdata());
-    if (pseudo_wire_id_type.is_set || is_set(pseudo_wire_id_type.operation)) leaf_name_data.push_back(pseudo_wire_id_type.get_name_leafdata());
-    if (pw_flow_label_tx.is_set || is_set(pw_flow_label_tx.operation)) leaf_name_data.push_back(pw_flow_label_tx.get_name_leafdata());
-    if (pw_id.is_set || is_set(pw_id.operation)) leaf_name_data.push_back(pw_id.get_name_leafdata());
-    if (pw_load_balance_type.is_set || is_set(pw_load_balance_type.operation)) leaf_name_data.push_back(pw_load_balance_type.get_name_leafdata());
-    if (redundancy_role.is_set || is_set(redundancy_role.operation)) leaf_name_data.push_back(redundancy_role.get_name_leafdata());
-    if (sequence_resync_threshold.is_set || is_set(sequence_resync_threshold.operation)) leaf_name_data.push_back(sequence_resync_threshold.get_name_leafdata());
-    if (signal_capability_flags.is_set || is_set(signal_capability_flags.operation)) leaf_name_data.push_back(signal_capability_flags.get_name_leafdata());
+    if (ac_id.is_set || is_set(ac_id.yfilter)) leaf_name_data.push_back(ac_id.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (backup_configured.is_set || is_set(backup_configured.yfilter)) leaf_name_data.push_back(backup_configured.get_name_leafdata());
+    if (bound.is_set || is_set(bound.yfilter)) leaf_name_data.push_back(bound.get_name_leafdata());
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
+    if (global_id.is_set || is_set(global_id.yfilter)) leaf_name_data.push_back(global_id.get_name_leafdata());
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (group_state.is_set || is_set(group_state.yfilter)) leaf_name_data.push_back(group_state.get_name_leafdata());
+    if (grouping_supported.is_set || is_set(grouping_supported.yfilter)) leaf_name_data.push_back(grouping_supported.get_name_leafdata());
+    if (next_hop_valid.is_set || is_set(next_hop_valid.yfilter)) leaf_name_data.push_back(next_hop_valid.get_name_leafdata());
+    if (pseudo_wire_id_type.is_set || is_set(pseudo_wire_id_type.yfilter)) leaf_name_data.push_back(pseudo_wire_id_type.get_name_leafdata());
+    if (pw_flow_label_tx.is_set || is_set(pw_flow_label_tx.yfilter)) leaf_name_data.push_back(pw_flow_label_tx.get_name_leafdata());
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (pw_load_balance_type.is_set || is_set(pw_load_balance_type.yfilter)) leaf_name_data.push_back(pw_load_balance_type.get_name_leafdata());
+    if (redundancy_role.is_set || is_set(redundancy_role.yfilter)) leaf_name_data.push_back(redundancy_role.get_name_leafdata());
+    if (sequence_resync_threshold.is_set || is_set(sequence_resync_threshold.yfilter)) leaf_name_data.push_back(sequence_resync_threshold.get_name_leafdata());
+    if (signal_capability_flags.is_set || is_set(signal_capability_flags.yfilter)) leaf_name_data.push_back(signal_capability_flags.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3563,80 +6466,199 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ac-id")
     {
         ac_id = value;
+        ac_id.value_namespace = name_space;
+        ac_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-configured")
     {
         backup_configured = value;
+        backup_configured.value_namespace = name_space;
+        backup_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bound")
     {
         bound = value;
+        bound.value_namespace = name_space;
+        bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "context")
     {
         context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-class")
     {
         forward_class = value;
+        forward_class.value_namespace = name_space;
+        forward_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "global-id")
     {
         global_id = value;
+        global_id.value_namespace = name_space;
+        global_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-id")
     {
         group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-state")
     {
         group_state = value;
+        group_state.value_namespace = name_space;
+        group_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "grouping-supported")
     {
         grouping_supported = value;
+        grouping_supported.value_namespace = name_space;
+        grouping_supported.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-valid")
     {
         next_hop_valid = value;
+        next_hop_valid.value_namespace = name_space;
+        next_hop_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-id-type")
     {
         pseudo_wire_id_type = value;
+        pseudo_wire_id_type.value_namespace = name_space;
+        pseudo_wire_id_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-flow-label-tx")
     {
         pw_flow_label_tx = value;
+        pw_flow_label_tx.value_namespace = name_space;
+        pw_flow_label_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-id")
     {
         pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-load-balance-type")
     {
         pw_load_balance_type = value;
+        pw_load_balance_type.value_namespace = name_space;
+        pw_load_balance_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redundancy-role")
     {
         redundancy_role = value;
+        redundancy_role.value_namespace = name_space;
+        redundancy_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-resync-threshold")
     {
         sequence_resync_threshold = value;
+        sequence_resync_threshold.value_namespace = name_space;
+        sequence_resync_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signal-capability-flags")
     {
         signal_capability_flags = value;
+        signal_capability_flags.value_namespace = name_space;
+        signal_capability_flags.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ac-id")
+    {
+        ac_id.yfilter = yfilter;
+    }
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "backup-configured")
+    {
+        backup_configured.yfilter = yfilter;
+    }
+    if(value_path == "bound")
+    {
+        bound.yfilter = yfilter;
+    }
+    if(value_path == "context")
+    {
+        context.yfilter = yfilter;
+    }
+    if(value_path == "forward-class")
+    {
+        forward_class.yfilter = yfilter;
+    }
+    if(value_path == "global-id")
+    {
+        global_id.yfilter = yfilter;
+    }
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+    if(value_path == "group-state")
+    {
+        group_state.yfilter = yfilter;
+    }
+    if(value_path == "grouping-supported")
+    {
+        grouping_supported.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-valid")
+    {
+        next_hop_valid.yfilter = yfilter;
+    }
+    if(value_path == "pseudo-wire-id-type")
+    {
+        pseudo_wire_id_type.yfilter = yfilter;
+    }
+    if(value_path == "pw-flow-label-tx")
+    {
+        pw_flow_label_tx.yfilter = yfilter;
+    }
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+    if(value_path == "pw-load-balance-type")
+    {
+        pw_load_balance_type.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-role")
+    {
+        redundancy_role.yfilter = yfilter;
+    }
+    if(value_path == "sequence-resync-threshold")
+    {
+        sequence_resync_threshold.yfilter = yfilter;
+    }
+    if(value_path == "signal-capability-flags")
+    {
+        signal_capability_flags.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "backup-pseudo-wire" || name == "base" || name == "next-hop" || name == "pseudo-wire-union" || name == "ac-id" || name == "active" || name == "backup-configured" || name == "bound" || name == "context" || name == "forward-class" || name == "global-id" || name == "group-id" || name == "group-state" || name == "grouping-supported" || name == "next-hop-valid" || name == "pseudo-wire-id-type" || name == "pw-flow-label-tx" || name == "pw-id" || name == "pw-load-balance-type" || name == "redundancy-role" || name == "sequence-resync-threshold" || name == "signal-capability-flags")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base::Base()
@@ -3655,7 +6677,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base::get_segment_path() const
@@ -3699,8 +6721,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::NextHop()
@@ -3734,12 +6765,12 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(children_count.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_internal_label.operation)
-	|| is_set(plaformt_data_valid.operation)
-	|| is_set(platform_data_length.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(children_count.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_internal_label.yfilter)
+	|| ydk::is_set(plaformt_data_valid.yfilter)
+	|| ydk::is_set(platform_data_length.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -3766,11 +6797,11 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (children_count.is_set || is_set(children_count.operation)) leaf_name_data.push_back(children_count.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.operation)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
-    if (plaformt_data_valid.is_set || is_set(plaformt_data_valid.operation)) leaf_name_data.push_back(plaformt_data_valid.get_name_leafdata());
-    if (platform_data_length.is_set || is_set(platform_data_length.operation)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
+    if (children_count.is_set || is_set(children_count.yfilter)) leaf_name_data.push_back(children_count.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.yfilter)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
+    if (plaformt_data_valid.is_set || is_set(plaformt_data_valid.yfilter)) leaf_name_data.push_back(plaformt_data_valid.get_name_leafdata());
+    if (platform_data_length.is_set || is_set(platform_data_length.yfilter)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3803,28 +6834,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "children-count")
     {
         children_count = value;
+        children_count.value_namespace = name_space;
+        children_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-internal-label")
     {
         next_hop_internal_label = value;
+        next_hop_internal_label.value_namespace = name_space;
+        next_hop_internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "plaformt-data-valid")
     {
         plaformt_data_valid = value;
+        plaformt_data_valid.value_namespace = name_space;
+        plaformt_data_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-data-length")
     {
         platform_data_length = value;
+        platform_data_length.value_namespace = name_space;
+        platform_data_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "children-count")
+    {
+        children_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-internal-label")
+    {
+        next_hop_internal_label.yfilter = yfilter;
+    }
+    if(value_path == "plaformt-data-valid")
+    {
+        plaformt_data_valid.yfilter = yfilter;
+    }
+    if(value_path == "platform-data-length")
+    {
+        platform_data_length.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "children-count" || name == "next-hop-address" || name == "next-hop-internal-label" || name == "plaformt-data-valid" || name == "platform-data-length")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base::Base()
@@ -3843,7 +6915,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base::get_segment_path() const
@@ -3887,8 +6959,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::PseudoWireUnion()
@@ -3926,8 +7007,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
 	|| (l2tp !=  nullptr && l2tp->has_operation())
 	|| (l2tp_ipv6_ts !=  nullptr && l2tp_ipv6_ts->has_operation())
 	|| (l2tpv2 !=  nullptr && l2tpv2->has_operation())
@@ -3957,7 +7038,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4032,12 +7113,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2tp" || name == "l2tp-ipv6-ts" || name == "l2tpv2" || name == "mpls" || name == "data-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls::Mpls()
@@ -4064,11 +7162,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pw_label.operation)
-	|| is_set(pw_local_label.operation)
-	|| is_set(pw_tunnel_interface.operation)
-	|| is_set(pw_xcid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pw_label.yfilter)
+	|| ydk::is_set(pw_local_label.yfilter)
+	|| ydk::is_set(pw_tunnel_interface.yfilter)
+	|| ydk::is_set(pw_xcid.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls::get_segment_path() const
@@ -4094,10 +7192,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pw_label.is_set || is_set(pw_label.operation)) leaf_name_data.push_back(pw_label.get_name_leafdata());
-    if (pw_local_label.is_set || is_set(pw_local_label.operation)) leaf_name_data.push_back(pw_local_label.get_name_leafdata());
-    if (pw_tunnel_interface.is_set || is_set(pw_tunnel_interface.operation)) leaf_name_data.push_back(pw_tunnel_interface.get_name_leafdata());
-    if (pw_xcid.is_set || is_set(pw_xcid.operation)) leaf_name_data.push_back(pw_xcid.get_name_leafdata());
+    if (pw_label.is_set || is_set(pw_label.yfilter)) leaf_name_data.push_back(pw_label.get_name_leafdata());
+    if (pw_local_label.is_set || is_set(pw_local_label.yfilter)) leaf_name_data.push_back(pw_local_label.get_name_leafdata());
+    if (pw_tunnel_interface.is_set || is_set(pw_tunnel_interface.yfilter)) leaf_name_data.push_back(pw_tunnel_interface.get_name_leafdata());
+    if (pw_xcid.is_set || is_set(pw_xcid.yfilter)) leaf_name_data.push_back(pw_xcid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4116,24 +7214,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
         pw_label = value;
+        pw_label.value_namespace = name_space;
+        pw_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-local-label")
     {
         pw_local_label = value;
+        pw_local_label.value_namespace = name_space;
+        pw_local_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-tunnel-interface")
     {
         pw_tunnel_interface = value;
+        pw_tunnel_interface.value_namespace = name_space;
+        pw_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-xcid")
     {
         pw_xcid = value;
+        pw_xcid.value_namespace = name_space;
+        pw_xcid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pw-label")
+    {
+        pw_label.yfilter = yfilter;
+    }
+    if(value_path == "pw-local-label")
+    {
+        pw_local_label.yfilter = yfilter;
+    }
+    if(value_path == "pw-tunnel-interface")
+    {
+        pw_tunnel_interface.yfilter = yfilter;
+    }
+    if(value_path == "pw-xcid")
+    {
+        pw_xcid.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::L2Tp()
@@ -4171,12 +7304,12 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path_mtu.operation)
-	|| is_set(sequence_number_expected.operation)
-	|| is_set(sequence_number_sent.operation)
-	|| is_set(tos_val.operation)
-	|| is_set(ttl.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(path_mtu.yfilter)
+	|| ydk::is_set(sequence_number_expected.yfilter)
+	|| ydk::is_set(sequence_number_sent.yfilter)
+	|| ydk::is_set(tos_val.yfilter)
+	|| ydk::is_set(ttl.yfilter)
 	|| (local !=  nullptr && local->has_operation())
 	|| (remote !=  nullptr && remote->has_operation());
 }
@@ -4204,11 +7337,11 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_mtu.is_set || is_set(path_mtu.operation)) leaf_name_data.push_back(path_mtu.get_name_leafdata());
-    if (sequence_number_expected.is_set || is_set(sequence_number_expected.operation)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
-    if (sequence_number_sent.is_set || is_set(sequence_number_sent.operation)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
-    if (tos_val.is_set || is_set(tos_val.operation)) leaf_name_data.push_back(tos_val.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (path_mtu.is_set || is_set(path_mtu.yfilter)) leaf_name_data.push_back(path_mtu.get_name_leafdata());
+    if (sequence_number_expected.is_set || is_set(sequence_number_expected.yfilter)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
+    if (sequence_number_sent.is_set || is_set(sequence_number_sent.yfilter)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
+    if (tos_val.is_set || is_set(tos_val.yfilter)) leaf_name_data.push_back(tos_val.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4255,28 +7388,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-mtu")
     {
         path_mtu = value;
+        path_mtu.value_namespace = name_space;
+        path_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number-expected")
     {
         sequence_number_expected = value;
+        sequence_number_expected.value_namespace = name_space;
+        sequence_number_expected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number-sent")
     {
         sequence_number_sent = value;
+        sequence_number_sent.value_namespace = name_space;
+        sequence_number_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos-val")
     {
         tos_val = value;
+        tos_val.value_namespace = name_space;
+        tos_val.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-mtu")
+    {
+        path_mtu.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-expected")
+    {
+        sequence_number_expected.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-sent")
+    {
+        sequence_number_sent.yfilter = yfilter;
+    }
+    if(value_path == "tos-val")
+    {
+        tos_val.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local" || name == "remote" || name == "path-mtu" || name == "sequence-number-expected" || name == "sequence-number-sent" || name == "tos-val" || name == "ttl")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local::Local()
@@ -4303,11 +7477,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cookie_high_value.operation)
-	|| is_set(cookie_low_value.operation)
-	|| is_set(cookie_size.operation)
-	|| is_set(session_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cookie_high_value.yfilter)
+	|| ydk::is_set(cookie_low_value.yfilter)
+	|| ydk::is_set(cookie_size.yfilter)
+	|| ydk::is_set(session_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local::get_segment_path() const
@@ -4333,10 +7507,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cookie_high_value.is_set || is_set(cookie_high_value.operation)) leaf_name_data.push_back(cookie_high_value.get_name_leafdata());
-    if (cookie_low_value.is_set || is_set(cookie_low_value.operation)) leaf_name_data.push_back(cookie_low_value.get_name_leafdata());
-    if (cookie_size.is_set || is_set(cookie_size.operation)) leaf_name_data.push_back(cookie_size.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (cookie_high_value.is_set || is_set(cookie_high_value.yfilter)) leaf_name_data.push_back(cookie_high_value.get_name_leafdata());
+    if (cookie_low_value.is_set || is_set(cookie_low_value.yfilter)) leaf_name_data.push_back(cookie_low_value.get_name_leafdata());
+    if (cookie_size.is_set || is_set(cookie_size.yfilter)) leaf_name_data.push_back(cookie_size.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4355,24 +7529,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cookie-high-value")
     {
         cookie_high_value = value;
+        cookie_high_value.value_namespace = name_space;
+        cookie_high_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cookie-low-value")
     {
         cookie_low_value = value;
+        cookie_low_value.value_namespace = name_space;
+        cookie_low_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cookie-size")
     {
         cookie_size = value;
+        cookie_size.value_namespace = name_space;
+        cookie_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cookie-high-value")
+    {
+        cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "cookie-low-value")
+    {
+        cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "cookie-size")
+    {
+        cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cookie-high-value" || name == "cookie-low-value" || name == "cookie-size" || name == "session-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote::Remote()
@@ -4399,11 +7608,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cookie_high_value.operation)
-	|| is_set(cookie_low_value.operation)
-	|| is_set(cookie_size.operation)
-	|| is_set(session_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cookie_high_value.yfilter)
+	|| ydk::is_set(cookie_low_value.yfilter)
+	|| ydk::is_set(cookie_size.yfilter)
+	|| ydk::is_set(session_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote::get_segment_path() const
@@ -4429,10 +7638,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cookie_high_value.is_set || is_set(cookie_high_value.operation)) leaf_name_data.push_back(cookie_high_value.get_name_leafdata());
-    if (cookie_low_value.is_set || is_set(cookie_low_value.operation)) leaf_name_data.push_back(cookie_low_value.get_name_leafdata());
-    if (cookie_size.is_set || is_set(cookie_size.operation)) leaf_name_data.push_back(cookie_size.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (cookie_high_value.is_set || is_set(cookie_high_value.yfilter)) leaf_name_data.push_back(cookie_high_value.get_name_leafdata());
+    if (cookie_low_value.is_set || is_set(cookie_low_value.yfilter)) leaf_name_data.push_back(cookie_low_value.get_name_leafdata());
+    if (cookie_size.is_set || is_set(cookie_size.yfilter)) leaf_name_data.push_back(cookie_size.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4451,24 +7660,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cookie-high-value")
     {
         cookie_high_value = value;
+        cookie_high_value.value_namespace = name_space;
+        cookie_high_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cookie-low-value")
     {
         cookie_low_value = value;
+        cookie_low_value.value_namespace = name_space;
+        cookie_low_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cookie-size")
     {
         cookie_size = value;
+        cookie_size.value_namespace = name_space;
+        cookie_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cookie-high-value")
+    {
+        cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "cookie-low-value")
+    {
+        cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "cookie-size")
+    {
+        cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cookie-high-value" || name == "cookie-low-value" || name == "cookie-size" || name == "session-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::L2Tpv2()
@@ -4514,16 +7758,16 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(path_mtu.operation)
-	|| is_set(protocol.operation)
-	|| is_set(pw_flags.operation)
-	|| is_set(rem_udp_port.operation)
-	|| is_set(source_address.operation)
-	|| is_set(tos_val.operation)
-	|| is_set(ttl.operation)
-	|| is_set(xconnect_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(path_mtu.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(pw_flags.yfilter)
+	|| ydk::is_set(rem_udp_port.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(tos_val.yfilter)
+	|| ydk::is_set(ttl.yfilter)
+	|| ydk::is_set(xconnect_id.yfilter)
 	|| (local !=  nullptr && local->has_operation())
 	|| (remote !=  nullptr && remote->has_operation());
 }
@@ -4551,15 +7795,15 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (path_mtu.is_set || is_set(path_mtu.operation)) leaf_name_data.push_back(path_mtu.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (pw_flags.is_set || is_set(pw_flags.operation)) leaf_name_data.push_back(pw_flags.get_name_leafdata());
-    if (rem_udp_port.is_set || is_set(rem_udp_port.operation)) leaf_name_data.push_back(rem_udp_port.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (tos_val.is_set || is_set(tos_val.operation)) leaf_name_data.push_back(tos_val.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
-    if (xconnect_id.is_set || is_set(xconnect_id.operation)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (path_mtu.is_set || is_set(path_mtu.yfilter)) leaf_name_data.push_back(path_mtu.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (pw_flags.is_set || is_set(pw_flags.yfilter)) leaf_name_data.push_back(pw_flags.get_name_leafdata());
+    if (rem_udp_port.is_set || is_set(rem_udp_port.yfilter)) leaf_name_data.push_back(rem_udp_port.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (tos_val.is_set || is_set(tos_val.yfilter)) leaf_name_data.push_back(tos_val.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (xconnect_id.is_set || is_set(xconnect_id.yfilter)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4606,44 +7850,109 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-mtu")
     {
         path_mtu = value;
+        path_mtu.value_namespace = name_space;
+        path_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-flags")
     {
         pw_flags = value;
+        pw_flags.value_namespace = name_space;
+        pw_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rem-udp-port")
     {
         rem_udp_port = value;
+        rem_udp_port.value_namespace = name_space;
+        rem_udp_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos-val")
     {
         tos_val = value;
+        tos_val.value_namespace = name_space;
+        tos_val.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-id")
     {
         xconnect_id = value;
+        xconnect_id.value_namespace = name_space;
+        xconnect_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "path-mtu")
+    {
+        path_mtu.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "pw-flags")
+    {
+        pw_flags.yfilter = yfilter;
+    }
+    if(value_path == "rem-udp-port")
+    {
+        rem_udp_port.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "tos-val")
+    {
+        tos_val.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-id")
+    {
+        xconnect_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local" || name == "remote" || name == "next-hop-address" || name == "path-mtu" || name == "protocol" || name == "pw-flags" || name == "rem-udp-port" || name == "source-address" || name == "tos-val" || name == "ttl" || name == "xconnect-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local::Local()
@@ -4666,9 +7975,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(tunnel_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local::get_segment_path() const
@@ -4694,8 +8003,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4714,16 +8023,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "tunnel-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote::Remote()
@@ -4746,9 +8078,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(tunnel_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote::get_segment_path() const
@@ -4774,8 +8106,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4794,16 +8126,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "tunnel-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::L2TpIpv6Ts()
@@ -4845,14 +8200,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_address.operation)
-	|| is_set(path_mtu.operation)
-	|| is_set(remote_address.operation)
-	|| is_set(sequence_number_expected.operation)
-	|| is_set(sequence_number_sent.operation)
-	|| is_set(tos_val.operation)
-	|| is_set(ttl.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(path_mtu.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(sequence_number_expected.yfilter)
+	|| ydk::is_set(sequence_number_sent.yfilter)
+	|| ydk::is_set(tos_val.yfilter)
+	|| ydk::is_set(ttl.yfilter)
 	|| (local !=  nullptr && local->has_operation())
 	|| (remote !=  nullptr && remote->has_operation());
 }
@@ -4880,13 +8235,13 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (path_mtu.is_set || is_set(path_mtu.operation)) leaf_name_data.push_back(path_mtu.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
-    if (sequence_number_expected.is_set || is_set(sequence_number_expected.operation)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
-    if (sequence_number_sent.is_set || is_set(sequence_number_sent.operation)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
-    if (tos_val.is_set || is_set(tos_val.operation)) leaf_name_data.push_back(tos_val.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (path_mtu.is_set || is_set(path_mtu.yfilter)) leaf_name_data.push_back(path_mtu.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (sequence_number_expected.is_set || is_set(sequence_number_expected.yfilter)) leaf_name_data.push_back(sequence_number_expected.get_name_leafdata());
+    if (sequence_number_sent.is_set || is_set(sequence_number_sent.yfilter)) leaf_name_data.push_back(sequence_number_sent.get_name_leafdata());
+    if (tos_val.is_set || is_set(tos_val.yfilter)) leaf_name_data.push_back(tos_val.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4933,36 +8288,89 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-mtu")
     {
         path_mtu = value;
+        path_mtu.value_namespace = name_space;
+        path_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number-expected")
     {
         sequence_number_expected = value;
+        sequence_number_expected.value_namespace = name_space;
+        sequence_number_expected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-number-sent")
     {
         sequence_number_sent = value;
+        sequence_number_sent.value_namespace = name_space;
+        sequence_number_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tos-val")
     {
         tos_val = value;
+        tos_val.value_namespace = name_space;
+        tos_val.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "path-mtu")
+    {
+        path_mtu.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-expected")
+    {
+        sequence_number_expected.yfilter = yfilter;
+    }
+    if(value_path == "sequence-number-sent")
+    {
+        sequence_number_sent.yfilter = yfilter;
+    }
+    if(value_path == "tos-val")
+    {
+        tos_val.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local" || name == "remote" || name == "local-address" || name == "path-mtu" || name == "remote-address" || name == "sequence-number-expected" || name == "sequence-number-sent" || name == "tos-val" || name == "ttl")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::Local()
@@ -4995,14 +8403,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cookie_high_value.operation)
-	|| is_set(cookie_low_value.operation)
-	|| is_set(cookie_size.operation)
-	|| is_set(secondary_cookie_high_value.operation)
-	|| is_set(secondary_cookie_low_value.operation)
-	|| is_set(secondary_cookie_size.operation)
-	|| is_set(session_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cookie_high_value.yfilter)
+	|| ydk::is_set(cookie_low_value.yfilter)
+	|| ydk::is_set(cookie_size.yfilter)
+	|| ydk::is_set(secondary_cookie_high_value.yfilter)
+	|| ydk::is_set(secondary_cookie_low_value.yfilter)
+	|| ydk::is_set(secondary_cookie_size.yfilter)
+	|| ydk::is_set(session_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_segment_path() const
@@ -5028,13 +8436,13 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cookie_high_value.is_set || is_set(cookie_high_value.operation)) leaf_name_data.push_back(cookie_high_value.get_name_leafdata());
-    if (cookie_low_value.is_set || is_set(cookie_low_value.operation)) leaf_name_data.push_back(cookie_low_value.get_name_leafdata());
-    if (cookie_size.is_set || is_set(cookie_size.operation)) leaf_name_data.push_back(cookie_size.get_name_leafdata());
-    if (secondary_cookie_high_value.is_set || is_set(secondary_cookie_high_value.operation)) leaf_name_data.push_back(secondary_cookie_high_value.get_name_leafdata());
-    if (secondary_cookie_low_value.is_set || is_set(secondary_cookie_low_value.operation)) leaf_name_data.push_back(secondary_cookie_low_value.get_name_leafdata());
-    if (secondary_cookie_size.is_set || is_set(secondary_cookie_size.operation)) leaf_name_data.push_back(secondary_cookie_size.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (cookie_high_value.is_set || is_set(cookie_high_value.yfilter)) leaf_name_data.push_back(cookie_high_value.get_name_leafdata());
+    if (cookie_low_value.is_set || is_set(cookie_low_value.yfilter)) leaf_name_data.push_back(cookie_low_value.get_name_leafdata());
+    if (cookie_size.is_set || is_set(cookie_size.yfilter)) leaf_name_data.push_back(cookie_size.get_name_leafdata());
+    if (secondary_cookie_high_value.is_set || is_set(secondary_cookie_high_value.yfilter)) leaf_name_data.push_back(secondary_cookie_high_value.get_name_leafdata());
+    if (secondary_cookie_low_value.is_set || is_set(secondary_cookie_low_value.yfilter)) leaf_name_data.push_back(secondary_cookie_low_value.get_name_leafdata());
+    if (secondary_cookie_size.is_set || is_set(secondary_cookie_size.yfilter)) leaf_name_data.push_back(secondary_cookie_size.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5053,36 +8461,89 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cookie-high-value")
     {
         cookie_high_value = value;
+        cookie_high_value.value_namespace = name_space;
+        cookie_high_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cookie-low-value")
     {
         cookie_low_value = value;
+        cookie_low_value.value_namespace = name_space;
+        cookie_low_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cookie-size")
     {
         cookie_size = value;
+        cookie_size.value_namespace = name_space;
+        cookie_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-cookie-high-value")
     {
         secondary_cookie_high_value = value;
+        secondary_cookie_high_value.value_namespace = name_space;
+        secondary_cookie_high_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-cookie-low-value")
     {
         secondary_cookie_low_value = value;
+        secondary_cookie_low_value.value_namespace = name_space;
+        secondary_cookie_low_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-cookie-size")
     {
         secondary_cookie_size = value;
+        secondary_cookie_size.value_namespace = name_space;
+        secondary_cookie_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cookie-high-value")
+    {
+        cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "cookie-low-value")
+    {
+        cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "cookie-size")
+    {
+        cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "secondary-cookie-high-value")
+    {
+        secondary_cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "secondary-cookie-low-value")
+    {
+        secondary_cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "secondary-cookie-size")
+    {
+        secondary_cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cookie-high-value" || name == "cookie-low-value" || name == "cookie-size" || name == "secondary-cookie-high-value" || name == "secondary-cookie-low-value" || name == "secondary-cookie-size" || name == "session-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::Remote()
@@ -5109,11 +8570,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cookie_high_value.operation)
-	|| is_set(cookie_low_value.operation)
-	|| is_set(cookie_size.operation)
-	|| is_set(session_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cookie_high_value.yfilter)
+	|| ydk::is_set(cookie_low_value.yfilter)
+	|| ydk::is_set(cookie_size.yfilter)
+	|| ydk::is_set(session_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_segment_path() const
@@ -5139,10 +8600,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cookie_high_value.is_set || is_set(cookie_high_value.operation)) leaf_name_data.push_back(cookie_high_value.get_name_leafdata());
-    if (cookie_low_value.is_set || is_set(cookie_low_value.operation)) leaf_name_data.push_back(cookie_low_value.get_name_leafdata());
-    if (cookie_size.is_set || is_set(cookie_size.operation)) leaf_name_data.push_back(cookie_size.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (cookie_high_value.is_set || is_set(cookie_high_value.yfilter)) leaf_name_data.push_back(cookie_high_value.get_name_leafdata());
+    if (cookie_low_value.is_set || is_set(cookie_low_value.yfilter)) leaf_name_data.push_back(cookie_low_value.get_name_leafdata());
+    if (cookie_size.is_set || is_set(cookie_size.yfilter)) leaf_name_data.push_back(cookie_size.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5161,24 +8622,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cookie-high-value")
     {
         cookie_high_value = value;
+        cookie_high_value.value_namespace = name_space;
+        cookie_high_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cookie-low-value")
     {
         cookie_low_value = value;
+        cookie_low_value.value_namespace = name_space;
+        cookie_low_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cookie-size")
     {
         cookie_size = value;
+        cookie_size.value_namespace = name_space;
+        cookie_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cookie-high-value")
+    {
+        cookie_high_value.yfilter = yfilter;
+    }
+    if(value_path == "cookie-low-value")
+    {
+        cookie_low_value.yfilter = yfilter;
+    }
+    if(value_path == "cookie-size")
+    {
+        cookie_size.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cookie-high-value" || name == "cookie-low-value" || name == "cookie-size" || name == "session-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::BackupPseudoWire()
@@ -5222,17 +8718,17 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active.operation)
-	|| is_set(backup_next_hop.operation)
-	|| is_set(backup_pseudo_wire_id.operation)
-	|| is_set(backup_pseudo_wire_id_type.operation)
-	|| is_set(bound.operation)
-	|| is_set(group_id.operation)
-	|| is_set(group_state.operation)
-	|| is_set(grouping_supported.operation)
-	|| is_set(pw_flow_label_tx.operation)
-	|| is_set(redundancy_role.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(backup_next_hop.yfilter)
+	|| ydk::is_set(backup_pseudo_wire_id.yfilter)
+	|| ydk::is_set(backup_pseudo_wire_id_type.yfilter)
+	|| ydk::is_set(bound.yfilter)
+	|| ydk::is_set(group_id.yfilter)
+	|| ydk::is_set(group_state.yfilter)
+	|| ydk::is_set(grouping_supported.yfilter)
+	|| ydk::is_set(pw_flow_label_tx.yfilter)
+	|| ydk::is_set(redundancy_role.yfilter)
 	|| (atom !=  nullptr && atom->has_operation());
 }
 
@@ -5259,16 +8755,16 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (backup_next_hop.is_set || is_set(backup_next_hop.operation)) leaf_name_data.push_back(backup_next_hop.get_name_leafdata());
-    if (backup_pseudo_wire_id.is_set || is_set(backup_pseudo_wire_id.operation)) leaf_name_data.push_back(backup_pseudo_wire_id.get_name_leafdata());
-    if (backup_pseudo_wire_id_type.is_set || is_set(backup_pseudo_wire_id_type.operation)) leaf_name_data.push_back(backup_pseudo_wire_id_type.get_name_leafdata());
-    if (bound.is_set || is_set(bound.operation)) leaf_name_data.push_back(bound.get_name_leafdata());
-    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
-    if (group_state.is_set || is_set(group_state.operation)) leaf_name_data.push_back(group_state.get_name_leafdata());
-    if (grouping_supported.is_set || is_set(grouping_supported.operation)) leaf_name_data.push_back(grouping_supported.get_name_leafdata());
-    if (pw_flow_label_tx.is_set || is_set(pw_flow_label_tx.operation)) leaf_name_data.push_back(pw_flow_label_tx.get_name_leafdata());
-    if (redundancy_role.is_set || is_set(redundancy_role.operation)) leaf_name_data.push_back(redundancy_role.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (backup_next_hop.is_set || is_set(backup_next_hop.yfilter)) leaf_name_data.push_back(backup_next_hop.get_name_leafdata());
+    if (backup_pseudo_wire_id.is_set || is_set(backup_pseudo_wire_id.yfilter)) leaf_name_data.push_back(backup_pseudo_wire_id.get_name_leafdata());
+    if (backup_pseudo_wire_id_type.is_set || is_set(backup_pseudo_wire_id_type.yfilter)) leaf_name_data.push_back(backup_pseudo_wire_id_type.get_name_leafdata());
+    if (bound.is_set || is_set(bound.yfilter)) leaf_name_data.push_back(bound.get_name_leafdata());
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (group_state.is_set || is_set(group_state.yfilter)) leaf_name_data.push_back(group_state.get_name_leafdata());
+    if (grouping_supported.is_set || is_set(grouping_supported.yfilter)) leaf_name_data.push_back(grouping_supported.get_name_leafdata());
+    if (pw_flow_label_tx.is_set || is_set(pw_flow_label_tx.yfilter)) leaf_name_data.push_back(pw_flow_label_tx.get_name_leafdata());
+    if (redundancy_role.is_set || is_set(redundancy_role.yfilter)) leaf_name_data.push_back(redundancy_role.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5301,48 +8797,119 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-next-hop")
     {
         backup_next_hop = value;
+        backup_next_hop.value_namespace = name_space;
+        backup_next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-pseudo-wire-id")
     {
         backup_pseudo_wire_id = value;
+        backup_pseudo_wire_id.value_namespace = name_space;
+        backup_pseudo_wire_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "backup-pseudo-wire-id-type")
     {
         backup_pseudo_wire_id_type = value;
+        backup_pseudo_wire_id_type.value_namespace = name_space;
+        backup_pseudo_wire_id_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bound")
     {
         bound = value;
+        bound.value_namespace = name_space;
+        bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-id")
     {
         group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-state")
     {
         group_state = value;
+        group_state.value_namespace = name_space;
+        group_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "grouping-supported")
     {
         grouping_supported = value;
+        grouping_supported.value_namespace = name_space;
+        grouping_supported.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-flow-label-tx")
     {
         pw_flow_label_tx = value;
+        pw_flow_label_tx.value_namespace = name_space;
+        pw_flow_label_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "redundancy-role")
     {
         redundancy_role = value;
+        redundancy_role.value_namespace = name_space;
+        redundancy_role.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "backup-next-hop")
+    {
+        backup_next_hop.yfilter = yfilter;
+    }
+    if(value_path == "backup-pseudo-wire-id")
+    {
+        backup_pseudo_wire_id.yfilter = yfilter;
+    }
+    if(value_path == "backup-pseudo-wire-id-type")
+    {
+        backup_pseudo_wire_id_type.yfilter = yfilter;
+    }
+    if(value_path == "bound")
+    {
+        bound.yfilter = yfilter;
+    }
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+    if(value_path == "group-state")
+    {
+        group_state.yfilter = yfilter;
+    }
+    if(value_path == "grouping-supported")
+    {
+        grouping_supported.yfilter = yfilter;
+    }
+    if(value_path == "pw-flow-label-tx")
+    {
+        pw_flow_label_tx.yfilter = yfilter;
+    }
+    if(value_path == "redundancy-role")
+    {
+        redundancy_role.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atom" || name == "active" || name == "backup-next-hop" || name == "backup-pseudo-wire-id" || name == "backup-pseudo-wire-id-type" || name == "bound" || name == "group-id" || name == "group-state" || name == "grouping-supported" || name == "pw-flow-label-tx" || name == "redundancy-role")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom::Atom()
@@ -5369,11 +8936,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::P
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pw_label.operation)
-	|| is_set(pw_local_label.operation)
-	|| is_set(pw_tunnel_interface.operation)
-	|| is_set(pw_xcid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pw_label.yfilter)
+	|| ydk::is_set(pw_local_label.yfilter)
+	|| ydk::is_set(pw_tunnel_interface.yfilter)
+	|| ydk::is_set(pw_xcid.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom::get_segment_path() const
@@ -5399,10 +8966,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pw_label.is_set || is_set(pw_label.operation)) leaf_name_data.push_back(pw_label.get_name_leafdata());
-    if (pw_local_label.is_set || is_set(pw_local_label.operation)) leaf_name_data.push_back(pw_local_label.get_name_leafdata());
-    if (pw_tunnel_interface.is_set || is_set(pw_tunnel_interface.operation)) leaf_name_data.push_back(pw_tunnel_interface.get_name_leafdata());
-    if (pw_xcid.is_set || is_set(pw_xcid.operation)) leaf_name_data.push_back(pw_xcid.get_name_leafdata());
+    if (pw_label.is_set || is_set(pw_label.yfilter)) leaf_name_data.push_back(pw_label.get_name_leafdata());
+    if (pw_local_label.is_set || is_set(pw_local_label.yfilter)) leaf_name_data.push_back(pw_local_label.get_name_leafdata());
+    if (pw_tunnel_interface.is_set || is_set(pw_tunnel_interface.yfilter)) leaf_name_data.push_back(pw_tunnel_interface.get_name_leafdata());
+    if (pw_xcid.is_set || is_set(pw_xcid.yfilter)) leaf_name_data.push_back(pw_xcid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5421,24 +8988,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
         pw_label = value;
+        pw_label.value_namespace = name_space;
+        pw_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-local-label")
     {
         pw_local_label = value;
+        pw_local_label.value_namespace = name_space;
+        pw_local_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-tunnel-interface")
     {
         pw_tunnel_interface = value;
+        pw_tunnel_interface.value_namespace = name_space;
+        pw_tunnel_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-xcid")
     {
         pw_xcid = value;
+        pw_xcid.value_namespace = name_space;
+        pw_xcid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pw-label")
+    {
+        pw_label.yfilter = yfilter;
+    }
+    if(value_path == "pw-local-label")
+    {
+        pw_local_label.yfilter = yfilter;
+    }
+    if(value_path == "pw-tunnel-interface")
+    {
+        pw_tunnel_interface.yfilter = yfilter;
+    }
+    if(value_path == "pw-xcid")
+    {
+        pw_xcid.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::BridgePortOperationalInfo()
@@ -5474,13 +9076,13 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePort
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(broadcast_storm_control_kb_ps.operation)
-	|| is_set(broadcast_storm_control_pps.operation)
-	|| is_set(multicast_storm_control_kb_ps.operation)
-	|| is_set(multicast_storm_control_pps.operation)
-	|| is_set(unicast_storm_control_kb_ps.operation)
-	|| is_set(unicast_storm_control_pps.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(broadcast_storm_control_kb_ps.yfilter)
+	|| ydk::is_set(broadcast_storm_control_pps.yfilter)
+	|| ydk::is_set(multicast_storm_control_kb_ps.yfilter)
+	|| ydk::is_set(multicast_storm_control_pps.yfilter)
+	|| ydk::is_set(unicast_storm_control_kb_ps.yfilter)
+	|| ydk::is_set(unicast_storm_control_pps.yfilter)
 	|| (operational_information !=  nullptr && operational_information->has_operation());
 }
 
@@ -5507,12 +9109,12 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (broadcast_storm_control_kb_ps.is_set || is_set(broadcast_storm_control_kb_ps.operation)) leaf_name_data.push_back(broadcast_storm_control_kb_ps.get_name_leafdata());
-    if (broadcast_storm_control_pps.is_set || is_set(broadcast_storm_control_pps.operation)) leaf_name_data.push_back(broadcast_storm_control_pps.get_name_leafdata());
-    if (multicast_storm_control_kb_ps.is_set || is_set(multicast_storm_control_kb_ps.operation)) leaf_name_data.push_back(multicast_storm_control_kb_ps.get_name_leafdata());
-    if (multicast_storm_control_pps.is_set || is_set(multicast_storm_control_pps.operation)) leaf_name_data.push_back(multicast_storm_control_pps.get_name_leafdata());
-    if (unicast_storm_control_kb_ps.is_set || is_set(unicast_storm_control_kb_ps.operation)) leaf_name_data.push_back(unicast_storm_control_kb_ps.get_name_leafdata());
-    if (unicast_storm_control_pps.is_set || is_set(unicast_storm_control_pps.operation)) leaf_name_data.push_back(unicast_storm_control_pps.get_name_leafdata());
+    if (broadcast_storm_control_kb_ps.is_set || is_set(broadcast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(broadcast_storm_control_kb_ps.get_name_leafdata());
+    if (broadcast_storm_control_pps.is_set || is_set(broadcast_storm_control_pps.yfilter)) leaf_name_data.push_back(broadcast_storm_control_pps.get_name_leafdata());
+    if (multicast_storm_control_kb_ps.is_set || is_set(multicast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(multicast_storm_control_kb_ps.get_name_leafdata());
+    if (multicast_storm_control_pps.is_set || is_set(multicast_storm_control_pps.yfilter)) leaf_name_data.push_back(multicast_storm_control_pps.get_name_leafdata());
+    if (unicast_storm_control_kb_ps.is_set || is_set(unicast_storm_control_kb_ps.yfilter)) leaf_name_data.push_back(unicast_storm_control_kb_ps.get_name_leafdata());
+    if (unicast_storm_control_pps.is_set || is_set(unicast_storm_control_pps.yfilter)) leaf_name_data.push_back(unicast_storm_control_pps.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5545,32 +9147,79 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast-storm-control-kb-ps")
     {
         broadcast_storm_control_kb_ps = value;
+        broadcast_storm_control_kb_ps.value_namespace = name_space;
+        broadcast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-storm-control-pps")
     {
         broadcast_storm_control_pps = value;
+        broadcast_storm_control_pps.value_namespace = name_space;
+        broadcast_storm_control_pps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-storm-control-kb-ps")
     {
         multicast_storm_control_kb_ps = value;
+        multicast_storm_control_kb_ps.value_namespace = name_space;
+        multicast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-storm-control-pps")
     {
         multicast_storm_control_pps = value;
+        multicast_storm_control_pps.value_namespace = name_space;
+        multicast_storm_control_pps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unicast-storm-control-kb-ps")
     {
         unicast_storm_control_kb_ps = value;
+        unicast_storm_control_kb_ps.value_namespace = name_space;
+        unicast_storm_control_kb_ps.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unicast-storm-control-pps")
     {
         unicast_storm_control_pps = value;
+        unicast_storm_control_pps.value_namespace = name_space;
+        unicast_storm_control_pps.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "broadcast-storm-control-kb-ps")
+    {
+        broadcast_storm_control_kb_ps.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-storm-control-pps")
+    {
+        broadcast_storm_control_pps.yfilter = yfilter;
+    }
+    if(value_path == "multicast-storm-control-kb-ps")
+    {
+        multicast_storm_control_kb_ps.yfilter = yfilter;
+    }
+    if(value_path == "multicast-storm-control-pps")
+    {
+        multicast_storm_control_pps.yfilter = yfilter;
+    }
+    if(value_path == "unicast-storm-control-kb-ps")
+    {
+        unicast_storm_control_kb_ps.yfilter = yfilter;
+    }
+    if(value_path == "unicast-storm-control-pps")
+    {
+        unicast_storm_control_pps.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operational-information" || name == "broadcast-storm-control-kb-ps" || name == "broadcast-storm-control-pps" || name == "multicast-storm-control-kb-ps" || name == "multicast-storm-control-pps" || name == "unicast-storm-control-kb-ps" || name == "unicast-storm-control-pps")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::OperationalInformation()
@@ -5713,64 +9362,64 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePort
         if(feature[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(admin_disabled.operation)
-	|| is_set(bvi_configured.operation)
-	|| is_set(dhcp_enabled.operation)
-	|| is_set(dhcp_trusted.operation)
-	|| is_set(flood_unknown_unicast_enabled.operation)
-	|| is_set(flooding_disabled.operation)
-	|| is_set(host_routing_enabled.operation)
-	|| is_set(igmp_flood_forward_enabled.operation)
-	|| is_set(igmp_mroute_port_enabled.operation)
-	|| is_set(igmp_route_guard_enabled.operation)
-	|| is_set(igmp_snoop_enabled.operation)
-	|| is_set(igmp_snoop_profile_enabled.operation)
-	|| is_set(is_bvi_up.operation)
-	|| is_set(is_dai_addr_validation_destination_mac_enabled.operation)
-	|| is_set(is_dai_addr_validation_ipv4_enabled.operation)
-	|| is_set(is_dai_addr_validation_source_mac_enabled.operation)
-	|| is_set(is_dai_enabled.operation)
-	|| is_set(is_dai_logging_enabled.operation)
-	|| is_set(is_evpn_cw_disable.operation)
-	|| is_set(is_evpn_enabled.operation)
-	|| is_set(is_evpn_flow_label.operation)
-	|| is_set(is_igmp_snoop_enabled.operation)
-	|| is_set(is_ipsg_enabled.operation)
-	|| is_set(is_ipsg_logging_enabled.operation)
-	|| is_set(is_mac_secure_accept_shutdown.operation)
-	|| is_set(is_mac_secure_enabled.operation)
-	|| is_set(is_mac_secure_logging_enabled.operation)
-	|| is_set(is_p2mp_pw_enabled.operation)
-	|| is_set(is_pbbevpn_enabled.operation)
-	|| is_set(is_swmac_learning.operation)
-	|| is_set(is_vni_enabled.operation)
-	|| is_set(is_vpls_flood_optimization_enabled.operation)
-	|| is_set(mac_aging_time.operation)
-	|| is_set(mac_aging_type.operation)
-	|| is_set(mac_learning_disabled.operation)
-	|| is_set(mac_limit.operation)
-	|| is_set(mac_limit_action.operation)
-	|| is_set(mac_limit_notification_type.operation)
-	|| is_set(mac_port_down_flush_disabled.operation)
-	|| is_set(mac_secure_action.operation)
-	|| is_set(mld_flood_forward_enabled.operation)
-	|| is_set(mld_mroute_port_enabled.operation)
-	|| is_set(mld_route_guard_enabled.operation)
-	|| is_set(mld_snoop_enabled.operation)
-	|| is_set(mld_snoop_profile_enabled.operation)
-	|| is_set(msti.operation)
-	|| is_set(mtu.operation)
-	|| is_set(number_of_macs.operation)
-	|| is_set(nv_satellite_offload_ipv4_multicast_disabled.operation)
-	|| is_set(storm_control_broadcast_enabled.operation)
-	|| is_set(storm_control_broadcast_rate_unit.operation)
-	|| is_set(storm_control_multicast_enabled.operation)
-	|| is_set(storm_control_multicast_rate_unit.operation)
-	|| is_set(storm_control_unicast_enabled.operation)
-	|| is_set(storm_control_unicast_rate_unit.operation)
-	|| is_set(stp_participating.operation)
-	|| is_set(unknown_unicast_flooding_disabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_disabled.yfilter)
+	|| ydk::is_set(bvi_configured.yfilter)
+	|| ydk::is_set(dhcp_enabled.yfilter)
+	|| ydk::is_set(dhcp_trusted.yfilter)
+	|| ydk::is_set(flood_unknown_unicast_enabled.yfilter)
+	|| ydk::is_set(flooding_disabled.yfilter)
+	|| ydk::is_set(host_routing_enabled.yfilter)
+	|| ydk::is_set(igmp_flood_forward_enabled.yfilter)
+	|| ydk::is_set(igmp_mroute_port_enabled.yfilter)
+	|| ydk::is_set(igmp_route_guard_enabled.yfilter)
+	|| ydk::is_set(igmp_snoop_enabled.yfilter)
+	|| ydk::is_set(igmp_snoop_profile_enabled.yfilter)
+	|| ydk::is_set(is_bvi_up.yfilter)
+	|| ydk::is_set(is_dai_addr_validation_destination_mac_enabled.yfilter)
+	|| ydk::is_set(is_dai_addr_validation_ipv4_enabled.yfilter)
+	|| ydk::is_set(is_dai_addr_validation_source_mac_enabled.yfilter)
+	|| ydk::is_set(is_dai_enabled.yfilter)
+	|| ydk::is_set(is_dai_logging_enabled.yfilter)
+	|| ydk::is_set(is_evpn_cw_disable.yfilter)
+	|| ydk::is_set(is_evpn_enabled.yfilter)
+	|| ydk::is_set(is_evpn_flow_label.yfilter)
+	|| ydk::is_set(is_igmp_snoop_enabled.yfilter)
+	|| ydk::is_set(is_ipsg_enabled.yfilter)
+	|| ydk::is_set(is_ipsg_logging_enabled.yfilter)
+	|| ydk::is_set(is_mac_secure_accept_shutdown.yfilter)
+	|| ydk::is_set(is_mac_secure_enabled.yfilter)
+	|| ydk::is_set(is_mac_secure_logging_enabled.yfilter)
+	|| ydk::is_set(is_p2mp_pw_enabled.yfilter)
+	|| ydk::is_set(is_pbbevpn_enabled.yfilter)
+	|| ydk::is_set(is_swmac_learning.yfilter)
+	|| ydk::is_set(is_vni_enabled.yfilter)
+	|| ydk::is_set(is_vpls_flood_optimization_enabled.yfilter)
+	|| ydk::is_set(mac_aging_time.yfilter)
+	|| ydk::is_set(mac_aging_type.yfilter)
+	|| ydk::is_set(mac_learning_disabled.yfilter)
+	|| ydk::is_set(mac_limit.yfilter)
+	|| ydk::is_set(mac_limit_action.yfilter)
+	|| ydk::is_set(mac_limit_notification_type.yfilter)
+	|| ydk::is_set(mac_port_down_flush_disabled.yfilter)
+	|| ydk::is_set(mac_secure_action.yfilter)
+	|| ydk::is_set(mld_flood_forward_enabled.yfilter)
+	|| ydk::is_set(mld_mroute_port_enabled.yfilter)
+	|| ydk::is_set(mld_route_guard_enabled.yfilter)
+	|| ydk::is_set(mld_snoop_enabled.yfilter)
+	|| ydk::is_set(mld_snoop_profile_enabled.yfilter)
+	|| ydk::is_set(msti.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(number_of_macs.yfilter)
+	|| ydk::is_set(nv_satellite_offload_ipv4_multicast_disabled.yfilter)
+	|| ydk::is_set(storm_control_broadcast_enabled.yfilter)
+	|| ydk::is_set(storm_control_broadcast_rate_unit.yfilter)
+	|| ydk::is_set(storm_control_multicast_enabled.yfilter)
+	|| ydk::is_set(storm_control_multicast_rate_unit.yfilter)
+	|| ydk::is_set(storm_control_unicast_enabled.yfilter)
+	|| ydk::is_set(storm_control_unicast_rate_unit.yfilter)
+	|| ydk::is_set(stp_participating.yfilter)
+	|| ydk::is_set(unknown_unicast_flooding_disabled.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::get_segment_path() const
@@ -5796,63 +9445,63 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_disabled.is_set || is_set(admin_disabled.operation)) leaf_name_data.push_back(admin_disabled.get_name_leafdata());
-    if (bvi_configured.is_set || is_set(bvi_configured.operation)) leaf_name_data.push_back(bvi_configured.get_name_leafdata());
-    if (dhcp_enabled.is_set || is_set(dhcp_enabled.operation)) leaf_name_data.push_back(dhcp_enabled.get_name_leafdata());
-    if (dhcp_trusted.is_set || is_set(dhcp_trusted.operation)) leaf_name_data.push_back(dhcp_trusted.get_name_leafdata());
-    if (flood_unknown_unicast_enabled.is_set || is_set(flood_unknown_unicast_enabled.operation)) leaf_name_data.push_back(flood_unknown_unicast_enabled.get_name_leafdata());
-    if (flooding_disabled.is_set || is_set(flooding_disabled.operation)) leaf_name_data.push_back(flooding_disabled.get_name_leafdata());
-    if (host_routing_enabled.is_set || is_set(host_routing_enabled.operation)) leaf_name_data.push_back(host_routing_enabled.get_name_leafdata());
-    if (igmp_flood_forward_enabled.is_set || is_set(igmp_flood_forward_enabled.operation)) leaf_name_data.push_back(igmp_flood_forward_enabled.get_name_leafdata());
-    if (igmp_mroute_port_enabled.is_set || is_set(igmp_mroute_port_enabled.operation)) leaf_name_data.push_back(igmp_mroute_port_enabled.get_name_leafdata());
-    if (igmp_route_guard_enabled.is_set || is_set(igmp_route_guard_enabled.operation)) leaf_name_data.push_back(igmp_route_guard_enabled.get_name_leafdata());
-    if (igmp_snoop_enabled.is_set || is_set(igmp_snoop_enabled.operation)) leaf_name_data.push_back(igmp_snoop_enabled.get_name_leafdata());
-    if (igmp_snoop_profile_enabled.is_set || is_set(igmp_snoop_profile_enabled.operation)) leaf_name_data.push_back(igmp_snoop_profile_enabled.get_name_leafdata());
-    if (is_bvi_up.is_set || is_set(is_bvi_up.operation)) leaf_name_data.push_back(is_bvi_up.get_name_leafdata());
-    if (is_dai_addr_validation_destination_mac_enabled.is_set || is_set(is_dai_addr_validation_destination_mac_enabled.operation)) leaf_name_data.push_back(is_dai_addr_validation_destination_mac_enabled.get_name_leafdata());
-    if (is_dai_addr_validation_ipv4_enabled.is_set || is_set(is_dai_addr_validation_ipv4_enabled.operation)) leaf_name_data.push_back(is_dai_addr_validation_ipv4_enabled.get_name_leafdata());
-    if (is_dai_addr_validation_source_mac_enabled.is_set || is_set(is_dai_addr_validation_source_mac_enabled.operation)) leaf_name_data.push_back(is_dai_addr_validation_source_mac_enabled.get_name_leafdata());
-    if (is_dai_enabled.is_set || is_set(is_dai_enabled.operation)) leaf_name_data.push_back(is_dai_enabled.get_name_leafdata());
-    if (is_dai_logging_enabled.is_set || is_set(is_dai_logging_enabled.operation)) leaf_name_data.push_back(is_dai_logging_enabled.get_name_leafdata());
-    if (is_evpn_cw_disable.is_set || is_set(is_evpn_cw_disable.operation)) leaf_name_data.push_back(is_evpn_cw_disable.get_name_leafdata());
-    if (is_evpn_enabled.is_set || is_set(is_evpn_enabled.operation)) leaf_name_data.push_back(is_evpn_enabled.get_name_leafdata());
-    if (is_evpn_flow_label.is_set || is_set(is_evpn_flow_label.operation)) leaf_name_data.push_back(is_evpn_flow_label.get_name_leafdata());
-    if (is_igmp_snoop_enabled.is_set || is_set(is_igmp_snoop_enabled.operation)) leaf_name_data.push_back(is_igmp_snoop_enabled.get_name_leafdata());
-    if (is_ipsg_enabled.is_set || is_set(is_ipsg_enabled.operation)) leaf_name_data.push_back(is_ipsg_enabled.get_name_leafdata());
-    if (is_ipsg_logging_enabled.is_set || is_set(is_ipsg_logging_enabled.operation)) leaf_name_data.push_back(is_ipsg_logging_enabled.get_name_leafdata());
-    if (is_mac_secure_accept_shutdown.is_set || is_set(is_mac_secure_accept_shutdown.operation)) leaf_name_data.push_back(is_mac_secure_accept_shutdown.get_name_leafdata());
-    if (is_mac_secure_enabled.is_set || is_set(is_mac_secure_enabled.operation)) leaf_name_data.push_back(is_mac_secure_enabled.get_name_leafdata());
-    if (is_mac_secure_logging_enabled.is_set || is_set(is_mac_secure_logging_enabled.operation)) leaf_name_data.push_back(is_mac_secure_logging_enabled.get_name_leafdata());
-    if (is_p2mp_pw_enabled.is_set || is_set(is_p2mp_pw_enabled.operation)) leaf_name_data.push_back(is_p2mp_pw_enabled.get_name_leafdata());
-    if (is_pbbevpn_enabled.is_set || is_set(is_pbbevpn_enabled.operation)) leaf_name_data.push_back(is_pbbevpn_enabled.get_name_leafdata());
-    if (is_swmac_learning.is_set || is_set(is_swmac_learning.operation)) leaf_name_data.push_back(is_swmac_learning.get_name_leafdata());
-    if (is_vni_enabled.is_set || is_set(is_vni_enabled.operation)) leaf_name_data.push_back(is_vni_enabled.get_name_leafdata());
-    if (is_vpls_flood_optimization_enabled.is_set || is_set(is_vpls_flood_optimization_enabled.operation)) leaf_name_data.push_back(is_vpls_flood_optimization_enabled.get_name_leafdata());
-    if (mac_aging_time.is_set || is_set(mac_aging_time.operation)) leaf_name_data.push_back(mac_aging_time.get_name_leafdata());
-    if (mac_aging_type.is_set || is_set(mac_aging_type.operation)) leaf_name_data.push_back(mac_aging_type.get_name_leafdata());
-    if (mac_learning_disabled.is_set || is_set(mac_learning_disabled.operation)) leaf_name_data.push_back(mac_learning_disabled.get_name_leafdata());
-    if (mac_limit.is_set || is_set(mac_limit.operation)) leaf_name_data.push_back(mac_limit.get_name_leafdata());
-    if (mac_limit_action.is_set || is_set(mac_limit_action.operation)) leaf_name_data.push_back(mac_limit_action.get_name_leafdata());
-    if (mac_limit_notification_type.is_set || is_set(mac_limit_notification_type.operation)) leaf_name_data.push_back(mac_limit_notification_type.get_name_leafdata());
-    if (mac_port_down_flush_disabled.is_set || is_set(mac_port_down_flush_disabled.operation)) leaf_name_data.push_back(mac_port_down_flush_disabled.get_name_leafdata());
-    if (mac_secure_action.is_set || is_set(mac_secure_action.operation)) leaf_name_data.push_back(mac_secure_action.get_name_leafdata());
-    if (mld_flood_forward_enabled.is_set || is_set(mld_flood_forward_enabled.operation)) leaf_name_data.push_back(mld_flood_forward_enabled.get_name_leafdata());
-    if (mld_mroute_port_enabled.is_set || is_set(mld_mroute_port_enabled.operation)) leaf_name_data.push_back(mld_mroute_port_enabled.get_name_leafdata());
-    if (mld_route_guard_enabled.is_set || is_set(mld_route_guard_enabled.operation)) leaf_name_data.push_back(mld_route_guard_enabled.get_name_leafdata());
-    if (mld_snoop_enabled.is_set || is_set(mld_snoop_enabled.operation)) leaf_name_data.push_back(mld_snoop_enabled.get_name_leafdata());
-    if (mld_snoop_profile_enabled.is_set || is_set(mld_snoop_profile_enabled.operation)) leaf_name_data.push_back(mld_snoop_profile_enabled.get_name_leafdata());
-    if (msti.is_set || is_set(msti.operation)) leaf_name_data.push_back(msti.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (number_of_macs.is_set || is_set(number_of_macs.operation)) leaf_name_data.push_back(number_of_macs.get_name_leafdata());
-    if (nv_satellite_offload_ipv4_multicast_disabled.is_set || is_set(nv_satellite_offload_ipv4_multicast_disabled.operation)) leaf_name_data.push_back(nv_satellite_offload_ipv4_multicast_disabled.get_name_leafdata());
-    if (storm_control_broadcast_enabled.is_set || is_set(storm_control_broadcast_enabled.operation)) leaf_name_data.push_back(storm_control_broadcast_enabled.get_name_leafdata());
-    if (storm_control_broadcast_rate_unit.is_set || is_set(storm_control_broadcast_rate_unit.operation)) leaf_name_data.push_back(storm_control_broadcast_rate_unit.get_name_leafdata());
-    if (storm_control_multicast_enabled.is_set || is_set(storm_control_multicast_enabled.operation)) leaf_name_data.push_back(storm_control_multicast_enabled.get_name_leafdata());
-    if (storm_control_multicast_rate_unit.is_set || is_set(storm_control_multicast_rate_unit.operation)) leaf_name_data.push_back(storm_control_multicast_rate_unit.get_name_leafdata());
-    if (storm_control_unicast_enabled.is_set || is_set(storm_control_unicast_enabled.operation)) leaf_name_data.push_back(storm_control_unicast_enabled.get_name_leafdata());
-    if (storm_control_unicast_rate_unit.is_set || is_set(storm_control_unicast_rate_unit.operation)) leaf_name_data.push_back(storm_control_unicast_rate_unit.get_name_leafdata());
-    if (stp_participating.is_set || is_set(stp_participating.operation)) leaf_name_data.push_back(stp_participating.get_name_leafdata());
-    if (unknown_unicast_flooding_disabled.is_set || is_set(unknown_unicast_flooding_disabled.operation)) leaf_name_data.push_back(unknown_unicast_flooding_disabled.get_name_leafdata());
+    if (admin_disabled.is_set || is_set(admin_disabled.yfilter)) leaf_name_data.push_back(admin_disabled.get_name_leafdata());
+    if (bvi_configured.is_set || is_set(bvi_configured.yfilter)) leaf_name_data.push_back(bvi_configured.get_name_leafdata());
+    if (dhcp_enabled.is_set || is_set(dhcp_enabled.yfilter)) leaf_name_data.push_back(dhcp_enabled.get_name_leafdata());
+    if (dhcp_trusted.is_set || is_set(dhcp_trusted.yfilter)) leaf_name_data.push_back(dhcp_trusted.get_name_leafdata());
+    if (flood_unknown_unicast_enabled.is_set || is_set(flood_unknown_unicast_enabled.yfilter)) leaf_name_data.push_back(flood_unknown_unicast_enabled.get_name_leafdata());
+    if (flooding_disabled.is_set || is_set(flooding_disabled.yfilter)) leaf_name_data.push_back(flooding_disabled.get_name_leafdata());
+    if (host_routing_enabled.is_set || is_set(host_routing_enabled.yfilter)) leaf_name_data.push_back(host_routing_enabled.get_name_leafdata());
+    if (igmp_flood_forward_enabled.is_set || is_set(igmp_flood_forward_enabled.yfilter)) leaf_name_data.push_back(igmp_flood_forward_enabled.get_name_leafdata());
+    if (igmp_mroute_port_enabled.is_set || is_set(igmp_mroute_port_enabled.yfilter)) leaf_name_data.push_back(igmp_mroute_port_enabled.get_name_leafdata());
+    if (igmp_route_guard_enabled.is_set || is_set(igmp_route_guard_enabled.yfilter)) leaf_name_data.push_back(igmp_route_guard_enabled.get_name_leafdata());
+    if (igmp_snoop_enabled.is_set || is_set(igmp_snoop_enabled.yfilter)) leaf_name_data.push_back(igmp_snoop_enabled.get_name_leafdata());
+    if (igmp_snoop_profile_enabled.is_set || is_set(igmp_snoop_profile_enabled.yfilter)) leaf_name_data.push_back(igmp_snoop_profile_enabled.get_name_leafdata());
+    if (is_bvi_up.is_set || is_set(is_bvi_up.yfilter)) leaf_name_data.push_back(is_bvi_up.get_name_leafdata());
+    if (is_dai_addr_validation_destination_mac_enabled.is_set || is_set(is_dai_addr_validation_destination_mac_enabled.yfilter)) leaf_name_data.push_back(is_dai_addr_validation_destination_mac_enabled.get_name_leafdata());
+    if (is_dai_addr_validation_ipv4_enabled.is_set || is_set(is_dai_addr_validation_ipv4_enabled.yfilter)) leaf_name_data.push_back(is_dai_addr_validation_ipv4_enabled.get_name_leafdata());
+    if (is_dai_addr_validation_source_mac_enabled.is_set || is_set(is_dai_addr_validation_source_mac_enabled.yfilter)) leaf_name_data.push_back(is_dai_addr_validation_source_mac_enabled.get_name_leafdata());
+    if (is_dai_enabled.is_set || is_set(is_dai_enabled.yfilter)) leaf_name_data.push_back(is_dai_enabled.get_name_leafdata());
+    if (is_dai_logging_enabled.is_set || is_set(is_dai_logging_enabled.yfilter)) leaf_name_data.push_back(is_dai_logging_enabled.get_name_leafdata());
+    if (is_evpn_cw_disable.is_set || is_set(is_evpn_cw_disable.yfilter)) leaf_name_data.push_back(is_evpn_cw_disable.get_name_leafdata());
+    if (is_evpn_enabled.is_set || is_set(is_evpn_enabled.yfilter)) leaf_name_data.push_back(is_evpn_enabled.get_name_leafdata());
+    if (is_evpn_flow_label.is_set || is_set(is_evpn_flow_label.yfilter)) leaf_name_data.push_back(is_evpn_flow_label.get_name_leafdata());
+    if (is_igmp_snoop_enabled.is_set || is_set(is_igmp_snoop_enabled.yfilter)) leaf_name_data.push_back(is_igmp_snoop_enabled.get_name_leafdata());
+    if (is_ipsg_enabled.is_set || is_set(is_ipsg_enabled.yfilter)) leaf_name_data.push_back(is_ipsg_enabled.get_name_leafdata());
+    if (is_ipsg_logging_enabled.is_set || is_set(is_ipsg_logging_enabled.yfilter)) leaf_name_data.push_back(is_ipsg_logging_enabled.get_name_leafdata());
+    if (is_mac_secure_accept_shutdown.is_set || is_set(is_mac_secure_accept_shutdown.yfilter)) leaf_name_data.push_back(is_mac_secure_accept_shutdown.get_name_leafdata());
+    if (is_mac_secure_enabled.is_set || is_set(is_mac_secure_enabled.yfilter)) leaf_name_data.push_back(is_mac_secure_enabled.get_name_leafdata());
+    if (is_mac_secure_logging_enabled.is_set || is_set(is_mac_secure_logging_enabled.yfilter)) leaf_name_data.push_back(is_mac_secure_logging_enabled.get_name_leafdata());
+    if (is_p2mp_pw_enabled.is_set || is_set(is_p2mp_pw_enabled.yfilter)) leaf_name_data.push_back(is_p2mp_pw_enabled.get_name_leafdata());
+    if (is_pbbevpn_enabled.is_set || is_set(is_pbbevpn_enabled.yfilter)) leaf_name_data.push_back(is_pbbevpn_enabled.get_name_leafdata());
+    if (is_swmac_learning.is_set || is_set(is_swmac_learning.yfilter)) leaf_name_data.push_back(is_swmac_learning.get_name_leafdata());
+    if (is_vni_enabled.is_set || is_set(is_vni_enabled.yfilter)) leaf_name_data.push_back(is_vni_enabled.get_name_leafdata());
+    if (is_vpls_flood_optimization_enabled.is_set || is_set(is_vpls_flood_optimization_enabled.yfilter)) leaf_name_data.push_back(is_vpls_flood_optimization_enabled.get_name_leafdata());
+    if (mac_aging_time.is_set || is_set(mac_aging_time.yfilter)) leaf_name_data.push_back(mac_aging_time.get_name_leafdata());
+    if (mac_aging_type.is_set || is_set(mac_aging_type.yfilter)) leaf_name_data.push_back(mac_aging_type.get_name_leafdata());
+    if (mac_learning_disabled.is_set || is_set(mac_learning_disabled.yfilter)) leaf_name_data.push_back(mac_learning_disabled.get_name_leafdata());
+    if (mac_limit.is_set || is_set(mac_limit.yfilter)) leaf_name_data.push_back(mac_limit.get_name_leafdata());
+    if (mac_limit_action.is_set || is_set(mac_limit_action.yfilter)) leaf_name_data.push_back(mac_limit_action.get_name_leafdata());
+    if (mac_limit_notification_type.is_set || is_set(mac_limit_notification_type.yfilter)) leaf_name_data.push_back(mac_limit_notification_type.get_name_leafdata());
+    if (mac_port_down_flush_disabled.is_set || is_set(mac_port_down_flush_disabled.yfilter)) leaf_name_data.push_back(mac_port_down_flush_disabled.get_name_leafdata());
+    if (mac_secure_action.is_set || is_set(mac_secure_action.yfilter)) leaf_name_data.push_back(mac_secure_action.get_name_leafdata());
+    if (mld_flood_forward_enabled.is_set || is_set(mld_flood_forward_enabled.yfilter)) leaf_name_data.push_back(mld_flood_forward_enabled.get_name_leafdata());
+    if (mld_mroute_port_enabled.is_set || is_set(mld_mroute_port_enabled.yfilter)) leaf_name_data.push_back(mld_mroute_port_enabled.get_name_leafdata());
+    if (mld_route_guard_enabled.is_set || is_set(mld_route_guard_enabled.yfilter)) leaf_name_data.push_back(mld_route_guard_enabled.get_name_leafdata());
+    if (mld_snoop_enabled.is_set || is_set(mld_snoop_enabled.yfilter)) leaf_name_data.push_back(mld_snoop_enabled.get_name_leafdata());
+    if (mld_snoop_profile_enabled.is_set || is_set(mld_snoop_profile_enabled.yfilter)) leaf_name_data.push_back(mld_snoop_profile_enabled.get_name_leafdata());
+    if (msti.is_set || is_set(msti.yfilter)) leaf_name_data.push_back(msti.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (number_of_macs.is_set || is_set(number_of_macs.yfilter)) leaf_name_data.push_back(number_of_macs.get_name_leafdata());
+    if (nv_satellite_offload_ipv4_multicast_disabled.is_set || is_set(nv_satellite_offload_ipv4_multicast_disabled.yfilter)) leaf_name_data.push_back(nv_satellite_offload_ipv4_multicast_disabled.get_name_leafdata());
+    if (storm_control_broadcast_enabled.is_set || is_set(storm_control_broadcast_enabled.yfilter)) leaf_name_data.push_back(storm_control_broadcast_enabled.get_name_leafdata());
+    if (storm_control_broadcast_rate_unit.is_set || is_set(storm_control_broadcast_rate_unit.yfilter)) leaf_name_data.push_back(storm_control_broadcast_rate_unit.get_name_leafdata());
+    if (storm_control_multicast_enabled.is_set || is_set(storm_control_multicast_enabled.yfilter)) leaf_name_data.push_back(storm_control_multicast_enabled.get_name_leafdata());
+    if (storm_control_multicast_rate_unit.is_set || is_set(storm_control_multicast_rate_unit.yfilter)) leaf_name_data.push_back(storm_control_multicast_rate_unit.get_name_leafdata());
+    if (storm_control_unicast_enabled.is_set || is_set(storm_control_unicast_enabled.yfilter)) leaf_name_data.push_back(storm_control_unicast_enabled.get_name_leafdata());
+    if (storm_control_unicast_rate_unit.is_set || is_set(storm_control_unicast_rate_unit.yfilter)) leaf_name_data.push_back(storm_control_unicast_rate_unit.get_name_leafdata());
+    if (stp_participating.is_set || is_set(stp_participating.yfilter)) leaf_name_data.push_back(stp_participating.get_name_leafdata());
+    if (unknown_unicast_flooding_disabled.is_set || is_set(unknown_unicast_flooding_disabled.yfilter)) leaf_name_data.push_back(unknown_unicast_flooding_disabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5892,236 +9541,589 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-disabled")
     {
         admin_disabled = value;
+        admin_disabled.value_namespace = name_space;
+        admin_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bvi-configured")
     {
         bvi_configured = value;
+        bvi_configured.value_namespace = name_space;
+        bvi_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dhcp-enabled")
     {
         dhcp_enabled = value;
+        dhcp_enabled.value_namespace = name_space;
+        dhcp_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dhcp-trusted")
     {
         dhcp_trusted = value;
+        dhcp_trusted.value_namespace = name_space;
+        dhcp_trusted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flood-unknown-unicast-enabled")
     {
         flood_unknown_unicast_enabled = value;
+        flood_unknown_unicast_enabled.value_namespace = name_space;
+        flood_unknown_unicast_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flooding-disabled")
     {
         flooding_disabled = value;
+        flooding_disabled.value_namespace = name_space;
+        flooding_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-routing-enabled")
     {
         host_routing_enabled = value;
+        host_routing_enabled.value_namespace = name_space;
+        host_routing_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "igmp-flood-forward-enabled")
     {
         igmp_flood_forward_enabled = value;
+        igmp_flood_forward_enabled.value_namespace = name_space;
+        igmp_flood_forward_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "igmp-mroute-port-enabled")
     {
         igmp_mroute_port_enabled = value;
+        igmp_mroute_port_enabled.value_namespace = name_space;
+        igmp_mroute_port_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "igmp-route-guard-enabled")
     {
         igmp_route_guard_enabled = value;
+        igmp_route_guard_enabled.value_namespace = name_space;
+        igmp_route_guard_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "igmp-snoop-enabled")
     {
         igmp_snoop_enabled = value;
+        igmp_snoop_enabled.value_namespace = name_space;
+        igmp_snoop_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "igmp-snoop-profile-enabled")
     {
         igmp_snoop_profile_enabled = value;
+        igmp_snoop_profile_enabled.value_namespace = name_space;
+        igmp_snoop_profile_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-bvi-up")
     {
         is_bvi_up = value;
+        is_bvi_up.value_namespace = name_space;
+        is_bvi_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-dai-addr-validation-destination-mac-enabled")
     {
         is_dai_addr_validation_destination_mac_enabled = value;
+        is_dai_addr_validation_destination_mac_enabled.value_namespace = name_space;
+        is_dai_addr_validation_destination_mac_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-dai-addr-validation-ipv4-enabled")
     {
         is_dai_addr_validation_ipv4_enabled = value;
+        is_dai_addr_validation_ipv4_enabled.value_namespace = name_space;
+        is_dai_addr_validation_ipv4_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-dai-addr-validation-source-mac-enabled")
     {
         is_dai_addr_validation_source_mac_enabled = value;
+        is_dai_addr_validation_source_mac_enabled.value_namespace = name_space;
+        is_dai_addr_validation_source_mac_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-dai-enabled")
     {
         is_dai_enabled = value;
+        is_dai_enabled.value_namespace = name_space;
+        is_dai_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-dai-logging-enabled")
     {
         is_dai_logging_enabled = value;
+        is_dai_logging_enabled.value_namespace = name_space;
+        is_dai_logging_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-evpn-cw-disable")
     {
         is_evpn_cw_disable = value;
+        is_evpn_cw_disable.value_namespace = name_space;
+        is_evpn_cw_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-evpn-enabled")
     {
         is_evpn_enabled = value;
+        is_evpn_enabled.value_namespace = name_space;
+        is_evpn_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-evpn-flow-label")
     {
         is_evpn_flow_label = value;
+        is_evpn_flow_label.value_namespace = name_space;
+        is_evpn_flow_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-igmp-snoop-enabled")
     {
         is_igmp_snoop_enabled = value;
+        is_igmp_snoop_enabled.value_namespace = name_space;
+        is_igmp_snoop_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-ipsg-enabled")
     {
         is_ipsg_enabled = value;
+        is_ipsg_enabled.value_namespace = name_space;
+        is_ipsg_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-ipsg-logging-enabled")
     {
         is_ipsg_logging_enabled = value;
+        is_ipsg_logging_enabled.value_namespace = name_space;
+        is_ipsg_logging_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-mac-secure-accept-shutdown")
     {
         is_mac_secure_accept_shutdown = value;
+        is_mac_secure_accept_shutdown.value_namespace = name_space;
+        is_mac_secure_accept_shutdown.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-mac-secure-enabled")
     {
         is_mac_secure_enabled = value;
+        is_mac_secure_enabled.value_namespace = name_space;
+        is_mac_secure_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-mac-secure-logging-enabled")
     {
         is_mac_secure_logging_enabled = value;
+        is_mac_secure_logging_enabled.value_namespace = name_space;
+        is_mac_secure_logging_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-p2mp-pw-enabled")
     {
         is_p2mp_pw_enabled = value;
+        is_p2mp_pw_enabled.value_namespace = name_space;
+        is_p2mp_pw_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-pbbevpn-enabled")
     {
         is_pbbevpn_enabled = value;
+        is_pbbevpn_enabled.value_namespace = name_space;
+        is_pbbevpn_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-swmac-learning")
     {
         is_swmac_learning = value;
+        is_swmac_learning.value_namespace = name_space;
+        is_swmac_learning.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-vni-enabled")
     {
         is_vni_enabled = value;
+        is_vni_enabled.value_namespace = name_space;
+        is_vni_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-vpls-flood-optimization-enabled")
     {
         is_vpls_flood_optimization_enabled = value;
+        is_vpls_flood_optimization_enabled.value_namespace = name_space;
+        is_vpls_flood_optimization_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-aging-time")
     {
         mac_aging_time = value;
+        mac_aging_time.value_namespace = name_space;
+        mac_aging_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-aging-type")
     {
         mac_aging_type = value;
+        mac_aging_type.value_namespace = name_space;
+        mac_aging_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-learning-disabled")
     {
         mac_learning_disabled = value;
+        mac_learning_disabled.value_namespace = name_space;
+        mac_learning_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-limit")
     {
         mac_limit = value;
+        mac_limit.value_namespace = name_space;
+        mac_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-limit-action")
     {
         mac_limit_action = value;
+        mac_limit_action.value_namespace = name_space;
+        mac_limit_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-limit-notification-type")
     {
         mac_limit_notification_type = value;
+        mac_limit_notification_type.value_namespace = name_space;
+        mac_limit_notification_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-port-down-flush-disabled")
     {
         mac_port_down_flush_disabled = value;
+        mac_port_down_flush_disabled.value_namespace = name_space;
+        mac_port_down_flush_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-secure-action")
     {
         mac_secure_action = value;
+        mac_secure_action.value_namespace = name_space;
+        mac_secure_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mld-flood-forward-enabled")
     {
         mld_flood_forward_enabled = value;
+        mld_flood_forward_enabled.value_namespace = name_space;
+        mld_flood_forward_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mld-mroute-port-enabled")
     {
         mld_mroute_port_enabled = value;
+        mld_mroute_port_enabled.value_namespace = name_space;
+        mld_mroute_port_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mld-route-guard-enabled")
     {
         mld_route_guard_enabled = value;
+        mld_route_guard_enabled.value_namespace = name_space;
+        mld_route_guard_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mld-snoop-enabled")
     {
         mld_snoop_enabled = value;
+        mld_snoop_enabled.value_namespace = name_space;
+        mld_snoop_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mld-snoop-profile-enabled")
     {
         mld_snoop_profile_enabled = value;
+        mld_snoop_profile_enabled.value_namespace = name_space;
+        mld_snoop_profile_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msti")
     {
         msti = value;
+        msti.value_namespace = name_space;
+        msti.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-macs")
     {
         number_of_macs = value;
+        number_of_macs.value_namespace = name_space;
+        number_of_macs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nv-satellite-offload-ipv4-multicast-disabled")
     {
         nv_satellite_offload_ipv4_multicast_disabled = value;
+        nv_satellite_offload_ipv4_multicast_disabled.value_namespace = name_space;
+        nv_satellite_offload_ipv4_multicast_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "storm-control-broadcast-enabled")
     {
         storm_control_broadcast_enabled = value;
+        storm_control_broadcast_enabled.value_namespace = name_space;
+        storm_control_broadcast_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "storm-control-broadcast-rate-unit")
     {
         storm_control_broadcast_rate_unit = value;
+        storm_control_broadcast_rate_unit.value_namespace = name_space;
+        storm_control_broadcast_rate_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "storm-control-multicast-enabled")
     {
         storm_control_multicast_enabled = value;
+        storm_control_multicast_enabled.value_namespace = name_space;
+        storm_control_multicast_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "storm-control-multicast-rate-unit")
     {
         storm_control_multicast_rate_unit = value;
+        storm_control_multicast_rate_unit.value_namespace = name_space;
+        storm_control_multicast_rate_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "storm-control-unicast-enabled")
     {
         storm_control_unicast_enabled = value;
+        storm_control_unicast_enabled.value_namespace = name_space;
+        storm_control_unicast_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "storm-control-unicast-rate-unit")
     {
         storm_control_unicast_rate_unit = value;
+        storm_control_unicast_rate_unit.value_namespace = name_space;
+        storm_control_unicast_rate_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stp-participating")
     {
         stp_participating = value;
+        stp_participating.value_namespace = name_space;
+        stp_participating.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-unicast-flooding-disabled")
     {
         unknown_unicast_flooding_disabled = value;
+        unknown_unicast_flooding_disabled.value_namespace = name_space;
+        unknown_unicast_flooding_disabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-disabled")
+    {
+        admin_disabled.yfilter = yfilter;
+    }
+    if(value_path == "bvi-configured")
+    {
+        bvi_configured.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-enabled")
+    {
+        dhcp_enabled.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-trusted")
+    {
+        dhcp_trusted.yfilter = yfilter;
+    }
+    if(value_path == "flood-unknown-unicast-enabled")
+    {
+        flood_unknown_unicast_enabled.yfilter = yfilter;
+    }
+    if(value_path == "flooding-disabled")
+    {
+        flooding_disabled.yfilter = yfilter;
+    }
+    if(value_path == "host-routing-enabled")
+    {
+        host_routing_enabled.yfilter = yfilter;
+    }
+    if(value_path == "igmp-flood-forward-enabled")
+    {
+        igmp_flood_forward_enabled.yfilter = yfilter;
+    }
+    if(value_path == "igmp-mroute-port-enabled")
+    {
+        igmp_mroute_port_enabled.yfilter = yfilter;
+    }
+    if(value_path == "igmp-route-guard-enabled")
+    {
+        igmp_route_guard_enabled.yfilter = yfilter;
+    }
+    if(value_path == "igmp-snoop-enabled")
+    {
+        igmp_snoop_enabled.yfilter = yfilter;
+    }
+    if(value_path == "igmp-snoop-profile-enabled")
+    {
+        igmp_snoop_profile_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-bvi-up")
+    {
+        is_bvi_up.yfilter = yfilter;
+    }
+    if(value_path == "is-dai-addr-validation-destination-mac-enabled")
+    {
+        is_dai_addr_validation_destination_mac_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-dai-addr-validation-ipv4-enabled")
+    {
+        is_dai_addr_validation_ipv4_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-dai-addr-validation-source-mac-enabled")
+    {
+        is_dai_addr_validation_source_mac_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-dai-enabled")
+    {
+        is_dai_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-dai-logging-enabled")
+    {
+        is_dai_logging_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-evpn-cw-disable")
+    {
+        is_evpn_cw_disable.yfilter = yfilter;
+    }
+    if(value_path == "is-evpn-enabled")
+    {
+        is_evpn_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-evpn-flow-label")
+    {
+        is_evpn_flow_label.yfilter = yfilter;
+    }
+    if(value_path == "is-igmp-snoop-enabled")
+    {
+        is_igmp_snoop_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-ipsg-enabled")
+    {
+        is_ipsg_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-ipsg-logging-enabled")
+    {
+        is_ipsg_logging_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-mac-secure-accept-shutdown")
+    {
+        is_mac_secure_accept_shutdown.yfilter = yfilter;
+    }
+    if(value_path == "is-mac-secure-enabled")
+    {
+        is_mac_secure_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-mac-secure-logging-enabled")
+    {
+        is_mac_secure_logging_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-p2mp-pw-enabled")
+    {
+        is_p2mp_pw_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-pbbevpn-enabled")
+    {
+        is_pbbevpn_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-swmac-learning")
+    {
+        is_swmac_learning.yfilter = yfilter;
+    }
+    if(value_path == "is-vni-enabled")
+    {
+        is_vni_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-vpls-flood-optimization-enabled")
+    {
+        is_vpls_flood_optimization_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mac-aging-time")
+    {
+        mac_aging_time.yfilter = yfilter;
+    }
+    if(value_path == "mac-aging-type")
+    {
+        mac_aging_type.yfilter = yfilter;
+    }
+    if(value_path == "mac-learning-disabled")
+    {
+        mac_learning_disabled.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit")
+    {
+        mac_limit.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit-action")
+    {
+        mac_limit_action.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit-notification-type")
+    {
+        mac_limit_notification_type.yfilter = yfilter;
+    }
+    if(value_path == "mac-port-down-flush-disabled")
+    {
+        mac_port_down_flush_disabled.yfilter = yfilter;
+    }
+    if(value_path == "mac-secure-action")
+    {
+        mac_secure_action.yfilter = yfilter;
+    }
+    if(value_path == "mld-flood-forward-enabled")
+    {
+        mld_flood_forward_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mld-mroute-port-enabled")
+    {
+        mld_mroute_port_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mld-route-guard-enabled")
+    {
+        mld_route_guard_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mld-snoop-enabled")
+    {
+        mld_snoop_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mld-snoop-profile-enabled")
+    {
+        mld_snoop_profile_enabled.yfilter = yfilter;
+    }
+    if(value_path == "msti")
+    {
+        msti.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "number-of-macs")
+    {
+        number_of_macs.yfilter = yfilter;
+    }
+    if(value_path == "nv-satellite-offload-ipv4-multicast-disabled")
+    {
+        nv_satellite_offload_ipv4_multicast_disabled.yfilter = yfilter;
+    }
+    if(value_path == "storm-control-broadcast-enabled")
+    {
+        storm_control_broadcast_enabled.yfilter = yfilter;
+    }
+    if(value_path == "storm-control-broadcast-rate-unit")
+    {
+        storm_control_broadcast_rate_unit.yfilter = yfilter;
+    }
+    if(value_path == "storm-control-multicast-enabled")
+    {
+        storm_control_multicast_enabled.yfilter = yfilter;
+    }
+    if(value_path == "storm-control-multicast-rate-unit")
+    {
+        storm_control_multicast_rate_unit.yfilter = yfilter;
+    }
+    if(value_path == "storm-control-unicast-enabled")
+    {
+        storm_control_unicast_enabled.yfilter = yfilter;
+    }
+    if(value_path == "storm-control-unicast-rate-unit")
+    {
+        storm_control_unicast_rate_unit.yfilter = yfilter;
+    }
+    if(value_path == "stp-participating")
+    {
+        stp_participating.yfilter = yfilter;
+    }
+    if(value_path == "unknown-unicast-flooding-disabled")
+    {
+        unknown_unicast_flooding_disabled.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "feature" || name == "admin-disabled" || name == "bvi-configured" || name == "dhcp-enabled" || name == "dhcp-trusted" || name == "flood-unknown-unicast-enabled" || name == "flooding-disabled" || name == "host-routing-enabled" || name == "igmp-flood-forward-enabled" || name == "igmp-mroute-port-enabled" || name == "igmp-route-guard-enabled" || name == "igmp-snoop-enabled" || name == "igmp-snoop-profile-enabled" || name == "is-bvi-up" || name == "is-dai-addr-validation-destination-mac-enabled" || name == "is-dai-addr-validation-ipv4-enabled" || name == "is-dai-addr-validation-source-mac-enabled" || name == "is-dai-enabled" || name == "is-dai-logging-enabled" || name == "is-evpn-cw-disable" || name == "is-evpn-enabled" || name == "is-evpn-flow-label" || name == "is-igmp-snoop-enabled" || name == "is-ipsg-enabled" || name == "is-ipsg-logging-enabled" || name == "is-mac-secure-accept-shutdown" || name == "is-mac-secure-enabled" || name == "is-mac-secure-logging-enabled" || name == "is-p2mp-pw-enabled" || name == "is-pbbevpn-enabled" || name == "is-swmac-learning" || name == "is-vni-enabled" || name == "is-vpls-flood-optimization-enabled" || name == "mac-aging-time" || name == "mac-aging-type" || name == "mac-learning-disabled" || name == "mac-limit" || name == "mac-limit-action" || name == "mac-limit-notification-type" || name == "mac-port-down-flush-disabled" || name == "mac-secure-action" || name == "mld-flood-forward-enabled" || name == "mld-mroute-port-enabled" || name == "mld-route-guard-enabled" || name == "mld-snoop-enabled" || name == "mld-snoop-profile-enabled" || name == "msti" || name == "mtu" || name == "number-of-macs" || name == "nv-satellite-offload-ipv4-multicast-disabled" || name == "storm-control-broadcast-enabled" || name == "storm-control-broadcast-rate-unit" || name == "storm-control-multicast-enabled" || name == "storm-control-multicast-rate-unit" || name == "storm-control-unicast-enabled" || name == "storm-control-unicast-rate-unit" || name == "stp-participating" || name == "unknown-unicast-flooding-disabled")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Feature()
@@ -6155,8 +10157,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePort
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(feature_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(feature_type.yfilter)
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (mld !=  nullptr && mld->has_operation());
@@ -6185,7 +10187,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (feature_type.is_set || is_set(feature_type.operation)) leaf_name_data.push_back(feature_type.get_name_leafdata());
+    if (feature_type.is_set || is_set(feature_type.yfilter)) leaf_name_data.push_back(feature_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6246,12 +10248,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "feature-type")
     {
         feature_type = value;
+        feature_type.value_namespace = name_space;
+        feature_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "feature-type")
+    {
+        feature_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp" || name == "igmp" || name == "mld" || name == "feature-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp::Dhcp()
@@ -6272,8 +10291,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePort
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp::get_segment_path() const
@@ -6299,7 +10318,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6318,12 +10337,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp::Igmp()
@@ -6344,8 +10380,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePort
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp::get_segment_path() const
@@ -6371,7 +10407,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6390,12 +10426,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld::Mld()
@@ -6416,8 +10469,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePort
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld::get_segment_path() const
@@ -6443,7 +10496,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6462,12 +10515,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetails()
@@ -6496,7 +10566,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::has_operation() const
         if(l2fibmac_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::get_segment_path() const
@@ -6561,8 +10631,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fibmac-detail")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::L2FibmacDetail()
@@ -6628,22 +10709,22 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::has_data() c
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(bmac_configured.operation)
-	|| is_set(bridge_domain_name.operation)
-	|| is_set(bridge_id.operation)
-	|| is_set(flag_extension.operation)
-	|| is_set(group_name.operation)
-	|| is_set(l3_encapsulationvlan_id.operation)
-	|| is_set(name.operation)
-	|| is_set(next_hop_valid.operation)
-	|| is_set(node_id.operation)
-	|| is_set(pbb_bmac.operation)
-	|| is_set(peer_vtep_ip.operation)
-	|| is_set(platform_is_hw_learn.operation)
-	|| is_set(vni.operation)
-	|| is_set(vni_l3_flag.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(bmac_configured.yfilter)
+	|| ydk::is_set(bridge_domain_name.yfilter)
+	|| ydk::is_set(bridge_id.yfilter)
+	|| ydk::is_set(flag_extension.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(l3_encapsulationvlan_id.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(next_hop_valid.yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(pbb_bmac.yfilter)
+	|| ydk::is_set(peer_vtep_ip.yfilter)
+	|| ydk::is_set(platform_is_hw_learn.yfilter)
+	|| ydk::is_set(vni.yfilter)
+	|| ydk::is_set(vni_l3_flag.yfilter)
 	|| (base !=  nullptr && base->has_operation())
 	|| (evpn_ctx !=  nullptr && evpn_ctx->has_operation())
 	|| (next_hop !=  nullptr && next_hop->has_operation())
@@ -6673,21 +10754,21 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (bmac_configured.is_set || is_set(bmac_configured.operation)) leaf_name_data.push_back(bmac_configured.get_name_leafdata());
-    if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
-    if (bridge_id.is_set || is_set(bridge_id.operation)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
-    if (flag_extension.is_set || is_set(flag_extension.operation)) leaf_name_data.push_back(flag_extension.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (l3_encapsulationvlan_id.is_set || is_set(l3_encapsulationvlan_id.operation)) leaf_name_data.push_back(l3_encapsulationvlan_id.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (next_hop_valid.is_set || is_set(next_hop_valid.operation)) leaf_name_data.push_back(next_hop_valid.get_name_leafdata());
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (pbb_bmac.is_set || is_set(pbb_bmac.operation)) leaf_name_data.push_back(pbb_bmac.get_name_leafdata());
-    if (peer_vtep_ip.is_set || is_set(peer_vtep_ip.operation)) leaf_name_data.push_back(peer_vtep_ip.get_name_leafdata());
-    if (platform_is_hw_learn.is_set || is_set(platform_is_hw_learn.operation)) leaf_name_data.push_back(platform_is_hw_learn.get_name_leafdata());
-    if (vni.is_set || is_set(vni.operation)) leaf_name_data.push_back(vni.get_name_leafdata());
-    if (vni_l3_flag.is_set || is_set(vni_l3_flag.operation)) leaf_name_data.push_back(vni_l3_flag.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (bmac_configured.is_set || is_set(bmac_configured.yfilter)) leaf_name_data.push_back(bmac_configured.get_name_leafdata());
+    if (bridge_domain_name.is_set || is_set(bridge_domain_name.yfilter)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
+    if (bridge_id.is_set || is_set(bridge_id.yfilter)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
+    if (flag_extension.is_set || is_set(flag_extension.yfilter)) leaf_name_data.push_back(flag_extension.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (l3_encapsulationvlan_id.is_set || is_set(l3_encapsulationvlan_id.yfilter)) leaf_name_data.push_back(l3_encapsulationvlan_id.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (next_hop_valid.is_set || is_set(next_hop_valid.yfilter)) leaf_name_data.push_back(next_hop_valid.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (pbb_bmac.is_set || is_set(pbb_bmac.yfilter)) leaf_name_data.push_back(pbb_bmac.get_name_leafdata());
+    if (peer_vtep_ip.is_set || is_set(peer_vtep_ip.yfilter)) leaf_name_data.push_back(peer_vtep_ip.get_name_leafdata());
+    if (platform_is_hw_learn.is_set || is_set(platform_is_hw_learn.yfilter)) leaf_name_data.push_back(platform_is_hw_learn.get_name_leafdata());
+    if (vni.is_set || is_set(vni.yfilter)) leaf_name_data.push_back(vni.get_name_leafdata());
+    if (vni_l3_flag.is_set || is_set(vni_l3_flag.yfilter)) leaf_name_data.push_back(vni_l3_flag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6762,68 +10843,169 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bmac-configured")
     {
         bmac_configured = value;
+        bmac_configured.value_namespace = name_space;
+        bmac_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-domain-name")
     {
         bridge_domain_name = value;
+        bridge_domain_name.value_namespace = name_space;
+        bridge_domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-id")
     {
         bridge_id = value;
+        bridge_id.value_namespace = name_space;
+        bridge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flag-extension")
     {
         flag_extension = value;
+        flag_extension.value_namespace = name_space;
+        flag_extension.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l3-encapsulationvlan-id")
     {
         l3_encapsulationvlan_id = value;
+        l3_encapsulationvlan_id.value_namespace = name_space;
+        l3_encapsulationvlan_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-valid")
     {
         next_hop_valid = value;
+        next_hop_valid.value_namespace = name_space;
+        next_hop_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pbb-bmac")
     {
         pbb_bmac = value;
+        pbb_bmac.value_namespace = name_space;
+        pbb_bmac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-vtep-ip")
     {
         peer_vtep_ip = value;
+        peer_vtep_ip.value_namespace = name_space;
+        peer_vtep_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-is-hw-learn")
     {
         platform_is_hw_learn = value;
+        platform_is_hw_learn.value_namespace = name_space;
+        platform_is_hw_learn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vni")
     {
         vni = value;
+        vni.value_namespace = name_space;
+        vni.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vni-l3-flag")
     {
         vni_l3_flag = value;
+        vni_l3_flag.value_namespace = name_space;
+        vni_l3_flag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "bmac-configured")
+    {
+        bmac_configured.yfilter = yfilter;
+    }
+    if(value_path == "bridge-domain-name")
+    {
+        bridge_domain_name.yfilter = yfilter;
+    }
+    if(value_path == "bridge-id")
+    {
+        bridge_id.yfilter = yfilter;
+    }
+    if(value_path == "flag-extension")
+    {
+        flag_extension.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "l3-encapsulationvlan-id")
+    {
+        l3_encapsulationvlan_id.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-valid")
+    {
+        next_hop_valid.yfilter = yfilter;
+    }
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "pbb-bmac")
+    {
+        pbb_bmac.yfilter = yfilter;
+    }
+    if(value_path == "peer-vtep-ip")
+    {
+        peer_vtep_ip.yfilter = yfilter;
+    }
+    if(value_path == "platform-is-hw-learn")
+    {
+        platform_is_hw_learn.yfilter = yfilter;
+    }
+    if(value_path == "vni")
+    {
+        vni.yfilter = yfilter;
+    }
+    if(value_path == "vni-l3-flag")
+    {
+        vni_l3_flag.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "evpn-ctx" || name == "next-hop" || name == "segment" || name == "address" || name == "bmac-configured" || name == "bridge-domain-name" || name == "bridge-id" || name == "flag-extension" || name == "group-name" || name == "l3-encapsulationvlan-id" || name == "name" || name == "next-hop-valid" || name == "node-id" || name == "pbb-bmac" || name == "peer-vtep-ip" || name == "platform-is-hw-learn" || name == "vni" || name == "vni-l3-flag")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base::Base()
@@ -6842,7 +11024,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base::has_da
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base::get_segment_path() const
@@ -6886,8 +11068,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Segment()
@@ -6929,8 +11120,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::has
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
 	|| (ac !=  nullptr && ac->has_operation())
 	|| (evpn !=  nullptr && evpn->has_operation())
 	|| (pbb !=  nullptr && pbb->has_operation())
@@ -6961,7 +11152,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7050,12 +11241,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ac" || name == "evpn" || name == "pbb" || name == "pw" || name == "vni" || name == "data-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac::Ac()
@@ -7076,8 +11284,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac:
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_handle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_handle.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac::get_segment_path() const
@@ -7103,7 +11311,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7122,12 +11330,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-handle")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb::Pbb()
@@ -7148,8 +11373,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(xcid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(xcid.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb::get_segment_path() const
@@ -7175,7 +11400,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (xcid.is_set || is_set(xcid.operation)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7194,12 +11419,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xcid")
     {
         xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xcid")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni::Vni()
@@ -7222,9 +11464,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(parent_if.operation)
-	|| is_set(xcid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(parent_if.yfilter)
+	|| ydk::is_set(xcid.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni::get_segment_path() const
@@ -7250,8 +11492,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (parent_if.is_set || is_set(parent_if.operation)) leaf_name_data.push_back(parent_if.get_name_leafdata());
-    if (xcid.is_set || is_set(xcid.operation)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (parent_if.is_set || is_set(parent_if.yfilter)) leaf_name_data.push_back(parent_if.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7270,16 +11512,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "parent-if")
     {
         parent_if = value;
+        parent_if.value_namespace = name_space;
+        parent_if.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xcid")
     {
         xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "parent-if")
+    {
+        parent_if.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "parent-if" || name == "xcid")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn::Evpn()
@@ -7300,8 +11565,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evp
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(xcid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(xcid.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn::get_segment_path() const
@@ -7327,7 +11592,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (xcid.is_set || is_set(xcid.operation)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7346,12 +11611,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xcid")
     {
         xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "xcid")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw::Pw()
@@ -7376,10 +11658,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw:
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(pseudo_wire_id_type.operation)
-	|| is_set(pw_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(pseudo_wire_id_type.yfilter)
+	|| ydk::is_set(pw_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw::get_segment_path() const
@@ -7405,9 +11687,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (pseudo_wire_id_type.is_set || is_set(pseudo_wire_id_type.operation)) leaf_name_data.push_back(pseudo_wire_id_type.get_name_leafdata());
-    if (pw_id.is_set || is_set(pw_id.operation)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (pseudo_wire_id_type.is_set || is_set(pseudo_wire_id_type.yfilter)) leaf_name_data.push_back(pseudo_wire_id_type.get_name_leafdata());
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7426,20 +11708,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-id-type")
     {
         pseudo_wire_id_type = value;
+        pseudo_wire_id_type.value_namespace = name_space;
+        pseudo_wire_id_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-id")
     {
         pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "pseudo-wire-id-type")
+    {
+        pseudo_wire_id_type.yfilter = yfilter;
+    }
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop-address" || name == "pseudo-wire-id-type" || name == "pw-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::EvpnCtx()
@@ -7471,11 +11782,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::has
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bp_ifh.operation)
-	|| is_set(data_type.operation)
-	|| is_set(esi_id.operation)
-	|| is_set(local_label.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bp_ifh.yfilter)
+	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(esi_id.yfilter)
+	|| ydk::is_set(local_label.yfilter)
 	|| (mcast_ole !=  nullptr && mcast_ole->has_operation());
 }
 
@@ -7502,10 +11813,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bp_ifh.is_set || is_set(bp_ifh.operation)) leaf_name_data.push_back(bp_ifh.get_name_leafdata());
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
-    if (esi_id.is_set || is_set(esi_id.operation)) leaf_name_data.push_back(esi_id.get_name_leafdata());
-    if (local_label.is_set || is_set(local_label.operation)) leaf_name_data.push_back(local_label.get_name_leafdata());
+    if (bp_ifh.is_set || is_set(bp_ifh.yfilter)) leaf_name_data.push_back(bp_ifh.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (esi_id.is_set || is_set(esi_id.yfilter)) leaf_name_data.push_back(esi_id.get_name_leafdata());
+    if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7538,24 +11849,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bp-ifh")
     {
         bp_ifh = value;
+        bp_ifh.value_namespace = name_space;
+        bp_ifh.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "esi-id")
     {
         esi_id = value;
+        esi_id.value_namespace = name_space;
+        esi_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-label")
     {
         local_label = value;
+        local_label.value_namespace = name_space;
+        local_label.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bp-ifh")
+    {
+        bp_ifh.yfilter = yfilter;
+    }
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+    if(value_path == "esi-id")
+    {
+        esi_id.yfilter = yfilter;
+    }
+    if(value_path == "local-label")
+    {
+        local_label.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mcast-ole" || name == "bp-ifh" || name == "data-type" || name == "esi-id" || name == "local-label")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle::McastOle()
@@ -7578,9 +11924,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::Mca
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mcast_label.operation)
-	|| is_set(next_hop_ipv6_addr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mcast_label.yfilter)
+	|| ydk::is_set(next_hop_ipv6_addr.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle::get_segment_path() const
@@ -7606,8 +11952,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mcast_label.is_set || is_set(mcast_label.operation)) leaf_name_data.push_back(mcast_label.get_name_leafdata());
-    if (next_hop_ipv6_addr.is_set || is_set(next_hop_ipv6_addr.operation)) leaf_name_data.push_back(next_hop_ipv6_addr.get_name_leafdata());
+    if (mcast_label.is_set || is_set(mcast_label.yfilter)) leaf_name_data.push_back(mcast_label.get_name_leafdata());
+    if (next_hop_ipv6_addr.is_set || is_set(next_hop_ipv6_addr.yfilter)) leaf_name_data.push_back(next_hop_ipv6_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7626,16 +11972,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mcast-label")
     {
         mcast_label = value;
+        mcast_label.value_namespace = name_space;
+        mcast_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-ipv6-addr")
     {
         next_hop_ipv6_addr = value;
+        next_hop_ipv6_addr.value_namespace = name_space;
+        next_hop_ipv6_addr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mcast-label")
+    {
+        mcast_label.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-ipv6-addr")
+    {
+        next_hop_ipv6_addr.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mcast-label" || name == "next-hop-ipv6-addr")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::NextHop()
@@ -7669,12 +12038,12 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::has
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(children_count.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_internal_label.operation)
-	|| is_set(plaformt_data_valid.operation)
-	|| is_set(platform_data_length.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(children_count.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_internal_label.yfilter)
+	|| ydk::is_set(plaformt_data_valid.yfilter)
+	|| ydk::is_set(platform_data_length.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -7701,11 +12070,11 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (children_count.is_set || is_set(children_count.operation)) leaf_name_data.push_back(children_count.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.operation)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
-    if (plaformt_data_valid.is_set || is_set(plaformt_data_valid.operation)) leaf_name_data.push_back(plaformt_data_valid.get_name_leafdata());
-    if (platform_data_length.is_set || is_set(platform_data_length.operation)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
+    if (children_count.is_set || is_set(children_count.yfilter)) leaf_name_data.push_back(children_count.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.yfilter)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
+    if (plaformt_data_valid.is_set || is_set(plaformt_data_valid.yfilter)) leaf_name_data.push_back(plaformt_data_valid.get_name_leafdata());
+    if (platform_data_length.is_set || is_set(platform_data_length.yfilter)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7738,28 +12107,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "children-count")
     {
         children_count = value;
+        children_count.value_namespace = name_space;
+        children_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-internal-label")
     {
         next_hop_internal_label = value;
+        next_hop_internal_label.value_namespace = name_space;
+        next_hop_internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "plaformt-data-valid")
     {
         plaformt_data_valid = value;
+        plaformt_data_valid.value_namespace = name_space;
+        plaformt_data_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-data-length")
     {
         platform_data_length = value;
+        platform_data_length.value_namespace = name_space;
+        platform_data_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "children-count")
+    {
+        children_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-internal-label")
+    {
+        next_hop_internal_label.yfilter = yfilter;
+    }
+    if(value_path == "plaformt-data-valid")
+    {
+        plaformt_data_valid.yfilter = yfilter;
+    }
+    if(value_path == "platform-data-length")
+    {
+        platform_data_length.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "children-count" || name == "next-hop-address" || name == "next-hop-internal-label" || name == "plaformt-data-valid" || name == "platform-data-length")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base::Base()
@@ -7778,7 +12188,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Bas
 
 bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base::get_segment_path() const
@@ -7822,8 +12232,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainNames()
@@ -7852,7 +12271,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::has_operation() const
         if(l2fib_bridge_domain_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::get_segment_path() const
@@ -7917,8 +12336,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-bridge-domain-name")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName::L2FibBridgeDomainName()
@@ -7971,24 +12401,24 @@ bool L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName
 
 bool L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_disabled.operation)
-	|| is_set(aging_time_out.operation)
-	|| is_set(bd_group_name.operation)
-	|| is_set(bridge_id.operation)
-	|| is_set(bridge_name.operation)
-	|| is_set(bridge_port_count.operation)
-	|| is_set(flood_disabled.operation)
-	|| is_set(mac_learning_disabled.operation)
-	|| is_set(mac_limit.operation)
-	|| is_set(mac_limit_action.operation)
-	|| is_set(mac_port_down_flush_disabled.operation)
-	|| is_set(msti.operation)
-	|| is_set(mtu.operation)
-	|| is_set(name.operation)
-	|| is_set(number_of_hwmac.operation)
-	|| is_set(number_of_shg.operation)
-	|| is_set(number_of_swmac.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_disabled.yfilter)
+	|| ydk::is_set(aging_time_out.yfilter)
+	|| ydk::is_set(bd_group_name.yfilter)
+	|| ydk::is_set(bridge_id.yfilter)
+	|| ydk::is_set(bridge_name.yfilter)
+	|| ydk::is_set(bridge_port_count.yfilter)
+	|| ydk::is_set(flood_disabled.yfilter)
+	|| ydk::is_set(mac_learning_disabled.yfilter)
+	|| ydk::is_set(mac_limit.yfilter)
+	|| ydk::is_set(mac_limit_action.yfilter)
+	|| ydk::is_set(mac_port_down_flush_disabled.yfilter)
+	|| ydk::is_set(msti.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(number_of_hwmac.yfilter)
+	|| ydk::is_set(number_of_shg.yfilter)
+	|| ydk::is_set(number_of_swmac.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName::get_segment_path() const
@@ -8014,23 +12444,23 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBrid
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_disabled.is_set || is_set(admin_disabled.operation)) leaf_name_data.push_back(admin_disabled.get_name_leafdata());
-    if (aging_time_out.is_set || is_set(aging_time_out.operation)) leaf_name_data.push_back(aging_time_out.get_name_leafdata());
-    if (bd_group_name.is_set || is_set(bd_group_name.operation)) leaf_name_data.push_back(bd_group_name.get_name_leafdata());
-    if (bridge_id.is_set || is_set(bridge_id.operation)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
-    if (bridge_name.is_set || is_set(bridge_name.operation)) leaf_name_data.push_back(bridge_name.get_name_leafdata());
-    if (bridge_port_count.is_set || is_set(bridge_port_count.operation)) leaf_name_data.push_back(bridge_port_count.get_name_leafdata());
-    if (flood_disabled.is_set || is_set(flood_disabled.operation)) leaf_name_data.push_back(flood_disabled.get_name_leafdata());
-    if (mac_learning_disabled.is_set || is_set(mac_learning_disabled.operation)) leaf_name_data.push_back(mac_learning_disabled.get_name_leafdata());
-    if (mac_limit.is_set || is_set(mac_limit.operation)) leaf_name_data.push_back(mac_limit.get_name_leafdata());
-    if (mac_limit_action.is_set || is_set(mac_limit_action.operation)) leaf_name_data.push_back(mac_limit_action.get_name_leafdata());
-    if (mac_port_down_flush_disabled.is_set || is_set(mac_port_down_flush_disabled.operation)) leaf_name_data.push_back(mac_port_down_flush_disabled.get_name_leafdata());
-    if (msti.is_set || is_set(msti.operation)) leaf_name_data.push_back(msti.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (number_of_hwmac.is_set || is_set(number_of_hwmac.operation)) leaf_name_data.push_back(number_of_hwmac.get_name_leafdata());
-    if (number_of_shg.is_set || is_set(number_of_shg.operation)) leaf_name_data.push_back(number_of_shg.get_name_leafdata());
-    if (number_of_swmac.is_set || is_set(number_of_swmac.operation)) leaf_name_data.push_back(number_of_swmac.get_name_leafdata());
+    if (admin_disabled.is_set || is_set(admin_disabled.yfilter)) leaf_name_data.push_back(admin_disabled.get_name_leafdata());
+    if (aging_time_out.is_set || is_set(aging_time_out.yfilter)) leaf_name_data.push_back(aging_time_out.get_name_leafdata());
+    if (bd_group_name.is_set || is_set(bd_group_name.yfilter)) leaf_name_data.push_back(bd_group_name.get_name_leafdata());
+    if (bridge_id.is_set || is_set(bridge_id.yfilter)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
+    if (bridge_name.is_set || is_set(bridge_name.yfilter)) leaf_name_data.push_back(bridge_name.get_name_leafdata());
+    if (bridge_port_count.is_set || is_set(bridge_port_count.yfilter)) leaf_name_data.push_back(bridge_port_count.get_name_leafdata());
+    if (flood_disabled.is_set || is_set(flood_disabled.yfilter)) leaf_name_data.push_back(flood_disabled.get_name_leafdata());
+    if (mac_learning_disabled.is_set || is_set(mac_learning_disabled.yfilter)) leaf_name_data.push_back(mac_learning_disabled.get_name_leafdata());
+    if (mac_limit.is_set || is_set(mac_limit.yfilter)) leaf_name_data.push_back(mac_limit.get_name_leafdata());
+    if (mac_limit_action.is_set || is_set(mac_limit_action.yfilter)) leaf_name_data.push_back(mac_limit_action.get_name_leafdata());
+    if (mac_port_down_flush_disabled.is_set || is_set(mac_port_down_flush_disabled.yfilter)) leaf_name_data.push_back(mac_port_down_flush_disabled.get_name_leafdata());
+    if (msti.is_set || is_set(msti.yfilter)) leaf_name_data.push_back(msti.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (number_of_hwmac.is_set || is_set(number_of_hwmac.yfilter)) leaf_name_data.push_back(number_of_hwmac.get_name_leafdata());
+    if (number_of_shg.is_set || is_set(number_of_shg.yfilter)) leaf_name_data.push_back(number_of_shg.get_name_leafdata());
+    if (number_of_swmac.is_set || is_set(number_of_swmac.yfilter)) leaf_name_data.push_back(number_of_swmac.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8049,76 +12479,189 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-disabled")
     {
         admin_disabled = value;
+        admin_disabled.value_namespace = name_space;
+        admin_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aging-time-out")
     {
         aging_time_out = value;
+        aging_time_out.value_namespace = name_space;
+        aging_time_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bd-group-name")
     {
         bd_group_name = value;
+        bd_group_name.value_namespace = name_space;
+        bd_group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-id")
     {
         bridge_id = value;
+        bridge_id.value_namespace = name_space;
+        bridge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-name")
     {
         bridge_name = value;
+        bridge_name.value_namespace = name_space;
+        bridge_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-port-count")
     {
         bridge_port_count = value;
+        bridge_port_count.value_namespace = name_space;
+        bridge_port_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flood-disabled")
     {
         flood_disabled = value;
+        flood_disabled.value_namespace = name_space;
+        flood_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-learning-disabled")
     {
         mac_learning_disabled = value;
+        mac_learning_disabled.value_namespace = name_space;
+        mac_learning_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-limit")
     {
         mac_limit = value;
+        mac_limit.value_namespace = name_space;
+        mac_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-limit-action")
     {
         mac_limit_action = value;
+        mac_limit_action.value_namespace = name_space;
+        mac_limit_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-port-down-flush-disabled")
     {
         mac_port_down_flush_disabled = value;
+        mac_port_down_flush_disabled.value_namespace = name_space;
+        mac_port_down_flush_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msti")
     {
         msti = value;
+        msti.value_namespace = name_space;
+        msti.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-hwmac")
     {
         number_of_hwmac = value;
+        number_of_hwmac.value_namespace = name_space;
+        number_of_hwmac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-shg")
     {
         number_of_shg = value;
+        number_of_shg.value_namespace = name_space;
+        number_of_shg.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-of-swmac")
     {
         number_of_swmac = value;
+        number_of_swmac.value_namespace = name_space;
+        number_of_swmac.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-disabled")
+    {
+        admin_disabled.yfilter = yfilter;
+    }
+    if(value_path == "aging-time-out")
+    {
+        aging_time_out.yfilter = yfilter;
+    }
+    if(value_path == "bd-group-name")
+    {
+        bd_group_name.yfilter = yfilter;
+    }
+    if(value_path == "bridge-id")
+    {
+        bridge_id.yfilter = yfilter;
+    }
+    if(value_path == "bridge-name")
+    {
+        bridge_name.yfilter = yfilter;
+    }
+    if(value_path == "bridge-port-count")
+    {
+        bridge_port_count.yfilter = yfilter;
+    }
+    if(value_path == "flood-disabled")
+    {
+        flood_disabled.yfilter = yfilter;
+    }
+    if(value_path == "mac-learning-disabled")
+    {
+        mac_learning_disabled.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit")
+    {
+        mac_limit.yfilter = yfilter;
+    }
+    if(value_path == "mac-limit-action")
+    {
+        mac_limit_action.yfilter = yfilter;
+    }
+    if(value_path == "mac-port-down-flush-disabled")
+    {
+        mac_port_down_flush_disabled.yfilter = yfilter;
+    }
+    if(value_path == "msti")
+    {
+        msti.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "number-of-hwmac")
+    {
+        number_of_hwmac.yfilter = yfilter;
+    }
+    if(value_path == "number-of-shg")
+    {
+        number_of_shg.yfilter = yfilter;
+    }
+    if(value_path == "number-of-swmac")
+    {
+        number_of_swmac.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-disabled" || name == "aging-time-out" || name == "bd-group-name" || name == "bridge-id" || name == "bridge-name" || name == "bridge-port-count" || name == "flood-disabled" || name == "mac-learning-disabled" || name == "mac-limit" || name == "mac-limit-action" || name == "mac-port-down-flush-disabled" || name == "msti" || name == "mtu" || name == "name" || name == "number-of-hwmac" || name == "number-of-shg" || name == "number-of-swmac")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePorts()
@@ -8147,7 +12690,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::has_operation() const
         if(l2fib_mroute_port[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::get_segment_path() const
@@ -8212,8 +12755,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-mroute-port")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::L2FibMroutePort()
@@ -8279,22 +12833,22 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::has_data()
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ac_interface_handle.operation)
-	|| is_set(bd_name.operation)
-	|| is_set(bridge_id.operation)
-	|| is_set(csfl.operation)
-	|| is_set(group.operation)
-	|| is_set(is_ole_master.operation)
-	|| is_set(is_ole_offloaded.operation)
-	|| is_set(is_topo_hub_and_spoke.operation)
-	|| is_set(isid.operation)
-	|| is_set(leaf_pointer.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(pw_id.operation)
-	|| is_set(sat_id.operation)
-	|| is_set(source.operation)
-	|| is_set(xcid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ac_interface_handle.yfilter)
+	|| ydk::is_set(bd_name.yfilter)
+	|| ydk::is_set(bridge_id.yfilter)
+	|| ydk::is_set(csfl.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(is_ole_master.yfilter)
+	|| ydk::is_set(is_ole_offloaded.yfilter)
+	|| ydk::is_set(is_topo_hub_and_spoke.yfilter)
+	|| ydk::is_set(isid.yfilter)
+	|| ydk::is_set(leaf_pointer.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(pw_id.yfilter)
+	|| ydk::is_set(sat_id.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(xcid.yfilter)
 	|| (base_information !=  nullptr && base_information->has_operation())
 	|| (destination_prefix !=  nullptr && destination_prefix->has_operation())
 	|| (forward_stats !=  nullptr && forward_stats->has_operation())
@@ -8324,21 +12878,21 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ac_interface_handle.is_set || is_set(ac_interface_handle.operation)) leaf_name_data.push_back(ac_interface_handle.get_name_leafdata());
-    if (bd_name.is_set || is_set(bd_name.operation)) leaf_name_data.push_back(bd_name.get_name_leafdata());
-    if (bridge_id.is_set || is_set(bridge_id.operation)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
-    if (csfl.is_set || is_set(csfl.operation)) leaf_name_data.push_back(csfl.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (is_ole_master.is_set || is_set(is_ole_master.operation)) leaf_name_data.push_back(is_ole_master.get_name_leafdata());
-    if (is_ole_offloaded.is_set || is_set(is_ole_offloaded.operation)) leaf_name_data.push_back(is_ole_offloaded.get_name_leafdata());
-    if (is_topo_hub_and_spoke.is_set || is_set(is_topo_hub_and_spoke.operation)) leaf_name_data.push_back(is_topo_hub_and_spoke.get_name_leafdata());
-    if (isid.is_set || is_set(isid.operation)) leaf_name_data.push_back(isid.get_name_leafdata());
-    if (leaf_pointer.is_set || is_set(leaf_pointer.operation)) leaf_name_data.push_back(leaf_pointer.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (pw_id.is_set || is_set(pw_id.operation)) leaf_name_data.push_back(pw_id.get_name_leafdata());
-    if (sat_id.is_set || is_set(sat_id.operation)) leaf_name_data.push_back(sat_id.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (xcid.is_set || is_set(xcid.operation)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (ac_interface_handle.is_set || is_set(ac_interface_handle.yfilter)) leaf_name_data.push_back(ac_interface_handle.get_name_leafdata());
+    if (bd_name.is_set || is_set(bd_name.yfilter)) leaf_name_data.push_back(bd_name.get_name_leafdata());
+    if (bridge_id.is_set || is_set(bridge_id.yfilter)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
+    if (csfl.is_set || is_set(csfl.yfilter)) leaf_name_data.push_back(csfl.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (is_ole_master.is_set || is_set(is_ole_master.yfilter)) leaf_name_data.push_back(is_ole_master.get_name_leafdata());
+    if (is_ole_offloaded.is_set || is_set(is_ole_offloaded.yfilter)) leaf_name_data.push_back(is_ole_offloaded.get_name_leafdata());
+    if (is_topo_hub_and_spoke.is_set || is_set(is_topo_hub_and_spoke.yfilter)) leaf_name_data.push_back(is_topo_hub_and_spoke.get_name_leafdata());
+    if (isid.is_set || is_set(isid.yfilter)) leaf_name_data.push_back(isid.get_name_leafdata());
+    if (leaf_pointer.is_set || is_set(leaf_pointer.yfilter)) leaf_name_data.push_back(leaf_pointer.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (sat_id.is_set || is_set(sat_id.yfilter)) leaf_name_data.push_back(sat_id.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8413,68 +12967,169 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ac-interface-handle")
     {
         ac_interface_handle = value;
+        ac_interface_handle.value_namespace = name_space;
+        ac_interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bd-name")
     {
         bd_name = value;
+        bd_name.value_namespace = name_space;
+        bd_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-id")
     {
         bridge_id = value;
+        bridge_id.value_namespace = name_space;
+        bridge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "csfl")
     {
         csfl = value;
+        csfl.value_namespace = name_space;
+        csfl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-ole-master")
     {
         is_ole_master = value;
+        is_ole_master.value_namespace = name_space;
+        is_ole_master.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-ole-offloaded")
     {
         is_ole_offloaded = value;
+        is_ole_offloaded.value_namespace = name_space;
+        is_ole_offloaded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-topo-hub-and-spoke")
     {
         is_topo_hub_and_spoke = value;
+        is_topo_hub_and_spoke.value_namespace = name_space;
+        is_topo_hub_and_spoke.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "isid")
     {
         isid = value;
+        isid.value_namespace = name_space;
+        isid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "leaf-pointer")
     {
         leaf_pointer = value;
+        leaf_pointer.value_namespace = name_space;
+        leaf_pointer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-id")
     {
         pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sat-id")
     {
         sat_id = value;
+        sat_id.value_namespace = name_space;
+        sat_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xcid")
     {
         xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ac-interface-handle")
+    {
+        ac_interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "bd-name")
+    {
+        bd_name.yfilter = yfilter;
+    }
+    if(value_path == "bridge-id")
+    {
+        bridge_id.yfilter = yfilter;
+    }
+    if(value_path == "csfl")
+    {
+        csfl.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "is-ole-master")
+    {
+        is_ole_master.yfilter = yfilter;
+    }
+    if(value_path == "is-ole-offloaded")
+    {
+        is_ole_offloaded.yfilter = yfilter;
+    }
+    if(value_path == "is-topo-hub-and-spoke")
+    {
+        is_topo_hub_and_spoke.yfilter = yfilter;
+    }
+    if(value_path == "isid")
+    {
+        isid.yfilter = yfilter;
+    }
+    if(value_path == "leaf-pointer")
+    {
+        leaf_pointer.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+    if(value_path == "sat-id")
+    {
+        sat_id.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base-information" || name == "destination-prefix" || name == "forward-stats" || name == "source-prefix" || name == "ac-interface-handle" || name == "bd-name" || name == "bridge-id" || name == "csfl" || name == "group" || name == "is-ole-master" || name == "is-ole-offloaded" || name == "is-topo-hub-and-spoke" || name == "isid" || name == "leaf-pointer" || name == "next-hop-address" || name == "pw-id" || name == "sat-id" || name == "source" || name == "xcid")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation::BaseInformation()
@@ -8493,7 +13148,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInform
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation::get_segment_path() const
@@ -8537,8 +13192,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStats()
@@ -8561,7 +13225,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (forward_stat !=  nullptr && forward_stat->has_operation());
 }
 
@@ -8620,8 +13284,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "forward-stat")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::ForwardStat()
@@ -8647,8 +13322,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
 	|| (mulicast !=  nullptr && mulicast->has_operation());
 }
 
@@ -8675,7 +13350,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8708,12 +13383,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mulicast" || name == "data-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Mulicast()
@@ -8756,7 +13448,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (core_received_stat !=  nullptr && core_received_stat->has_operation())
 	|| (drop !=  nullptr && drop->has_operation())
 	|| (multicast_core_forward_stat !=  nullptr && multicast_core_forward_stat->has_operation())
@@ -8890,8 +13582,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "core-received-stat" || name == "drop" || name == "multicast-core-forward-stat" || name == "multicast-forward-stat" || name == "punt" || name == "received-stat")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::MulticastForwardStat()
@@ -8914,9 +13617,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::get_segment_path() const
@@ -8942,8 +13645,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8962,16 +13665,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat::ReceivedStat()
@@ -8994,9 +13720,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat::get_segment_path() const
@@ -9022,8 +13748,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9042,16 +13768,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt::Punt()
@@ -9074,9 +13823,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt::get_segment_path() const
@@ -9102,8 +13851,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9122,16 +13871,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop::Drop()
@@ -9154,9 +13926,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop::get_segment_path() const
@@ -9182,8 +13954,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9202,16 +13974,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::MulticastCoreForwardStat()
@@ -9234,9 +14029,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::get_segment_path() const
@@ -9262,8 +14057,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9282,16 +14077,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::CoreReceivedStat()
@@ -9314,9 +14132,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSta
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::get_segment_path() const
@@ -9342,8 +14160,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9362,16 +14180,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix::SourcePrefix()
@@ -9396,10 +14237,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePref
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(proto.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(proto.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix::get_segment_path() const
@@ -9425,9 +14266,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (proto.is_set || is_set(proto.operation)) leaf_name_data.push_back(proto.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (proto.is_set || is_set(proto.yfilter)) leaf_name_data.push_back(proto.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9446,20 +14287,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto")
     {
         proto = value;
+        proto.value_namespace = name_space;
+        proto.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "proto")
+    {
+        proto.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "proto")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix::DestinationPrefix()
@@ -9484,10 +14354,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::Destinatio
 
 bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(proto.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(proto.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix::get_segment_path() const
@@ -9513,9 +14383,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (proto.is_set || is_set(proto.operation)) leaf_name_data.push_back(proto.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (proto.is_set || is_set(proto.yfilter)) leaf_name_data.push_back(proto.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9534,20 +14404,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto")
     {
         proto = value;
+        proto.value_namespace = name_space;
+        proto.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "proto")
+    {
+        proto.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "proto")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::L2FibSummary()
@@ -9610,7 +14509,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bridge_domain_summary !=  nullptr && bridge_domain_summary->has_operation())
 	|| (evpn_summary !=  nullptr && evpn_summary->has_operation())
 	|| (global_cfg !=  nullptr && global_cfg->has_operation())
@@ -9819,8 +14718,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bridge-domain-summary" || name == "evpn-summary" || name == "global-cfg" || name == "l2tp-disposition-summary" || name == "mac-summary" || name == "next-hop-summary" || name == "ptree-summary" || name == "pw-group-summary" || name == "pwhe-mp-summary" || name == "queue-summary" || name == "xconnect-summary")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::XconnectSummary()
@@ -9909,42 +14819,42 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::has_data() con
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ac_down_count_aib.operation)
-	|| is_set(ac_down_count_l2vpn.operation)
-	|| is_set(ac_down_count_l3fib.operation)
-	|| is_set(ac_down_count_vpdn.operation)
-	|| is_set(ac_to_ac_count.operation)
-	|| is_set(ac_to_bp_count.operation)
-	|| is_set(ac_to_pw_count_l2tp.operation)
-	|| is_set(ac_to_pw_count_l2tp_ip_v6.operation)
-	|| is_set(ac_to_pw_count_l2tpv2.operation)
-	|| is_set(ac_to_pw_count_mpls.operation)
-	|| is_set(ac_to_unknown_count.operation)
-	|| is_set(bp_count.operation)
-	|| is_set(bundle_ac_max_exceeded_drop_cnt.operation)
-	|| is_set(evpn_invalid_xid_drop_count.operation)
-	|| is_set(evpn_to_bp_count.operation)
-	|| is_set(evpn_to_unknown_count.operation)
-	|| is_set(mon_sess_to_pw_count.operation)
-	|| is_set(mon_sess_to_unknown_count.operation)
-	|| is_set(p2p_count.operation)
-	|| is_set(pbb_invalid_xid_drop_count.operation)
-	|| is_set(pbb_to_bp_count.operation)
-	|| is_set(pbb_to_unknown_count.operation)
-	|| is_set(pw_to_bp_count.operation)
-	|| is_set(pw_to_unknown_count.operation)
-	|| is_set(pwhe_l2_if_count.operation)
-	|| is_set(virtual_ac_invalid_xid_drop_count.operation)
-	|| is_set(vni_invalid_xid_drop_count.operation)
-	|| is_set(vni_to_bp_count.operation)
-	|| is_set(vni_to_unknown_count.operation)
-	|| is_set(vpls_pw_invalid_xid_drop_count.operation)
-	|| is_set(vpls_pw_max_exceeded_drop_cnt.operation)
-	|| is_set(vpws_pw_invalid_xid_drop_count.operation)
-	|| is_set(xconnect_count.operation)
-	|| is_set(xconnect_down_count.operation)
-	|| is_set(xconnect_up_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ac_down_count_aib.yfilter)
+	|| ydk::is_set(ac_down_count_l2vpn.yfilter)
+	|| ydk::is_set(ac_down_count_l3fib.yfilter)
+	|| ydk::is_set(ac_down_count_vpdn.yfilter)
+	|| ydk::is_set(ac_to_ac_count.yfilter)
+	|| ydk::is_set(ac_to_bp_count.yfilter)
+	|| ydk::is_set(ac_to_pw_count_l2tp.yfilter)
+	|| ydk::is_set(ac_to_pw_count_l2tp_ip_v6.yfilter)
+	|| ydk::is_set(ac_to_pw_count_l2tpv2.yfilter)
+	|| ydk::is_set(ac_to_pw_count_mpls.yfilter)
+	|| ydk::is_set(ac_to_unknown_count.yfilter)
+	|| ydk::is_set(bp_count.yfilter)
+	|| ydk::is_set(bundle_ac_max_exceeded_drop_cnt.yfilter)
+	|| ydk::is_set(evpn_invalid_xid_drop_count.yfilter)
+	|| ydk::is_set(evpn_to_bp_count.yfilter)
+	|| ydk::is_set(evpn_to_unknown_count.yfilter)
+	|| ydk::is_set(mon_sess_to_pw_count.yfilter)
+	|| ydk::is_set(mon_sess_to_unknown_count.yfilter)
+	|| ydk::is_set(p2p_count.yfilter)
+	|| ydk::is_set(pbb_invalid_xid_drop_count.yfilter)
+	|| ydk::is_set(pbb_to_bp_count.yfilter)
+	|| ydk::is_set(pbb_to_unknown_count.yfilter)
+	|| ydk::is_set(pw_to_bp_count.yfilter)
+	|| ydk::is_set(pw_to_unknown_count.yfilter)
+	|| ydk::is_set(pwhe_l2_if_count.yfilter)
+	|| ydk::is_set(virtual_ac_invalid_xid_drop_count.yfilter)
+	|| ydk::is_set(vni_invalid_xid_drop_count.yfilter)
+	|| ydk::is_set(vni_to_bp_count.yfilter)
+	|| ydk::is_set(vni_to_unknown_count.yfilter)
+	|| ydk::is_set(vpls_pw_invalid_xid_drop_count.yfilter)
+	|| ydk::is_set(vpls_pw_max_exceeded_drop_cnt.yfilter)
+	|| ydk::is_set(vpws_pw_invalid_xid_drop_count.yfilter)
+	|| ydk::is_set(xconnect_count.yfilter)
+	|| ydk::is_set(xconnect_down_count.yfilter)
+	|| ydk::is_set(xconnect_up_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::get_segment_path() const
@@ -9970,41 +14880,41 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ac_down_count_aib.is_set || is_set(ac_down_count_aib.operation)) leaf_name_data.push_back(ac_down_count_aib.get_name_leafdata());
-    if (ac_down_count_l2vpn.is_set || is_set(ac_down_count_l2vpn.operation)) leaf_name_data.push_back(ac_down_count_l2vpn.get_name_leafdata());
-    if (ac_down_count_l3fib.is_set || is_set(ac_down_count_l3fib.operation)) leaf_name_data.push_back(ac_down_count_l3fib.get_name_leafdata());
-    if (ac_down_count_vpdn.is_set || is_set(ac_down_count_vpdn.operation)) leaf_name_data.push_back(ac_down_count_vpdn.get_name_leafdata());
-    if (ac_to_ac_count.is_set || is_set(ac_to_ac_count.operation)) leaf_name_data.push_back(ac_to_ac_count.get_name_leafdata());
-    if (ac_to_bp_count.is_set || is_set(ac_to_bp_count.operation)) leaf_name_data.push_back(ac_to_bp_count.get_name_leafdata());
-    if (ac_to_pw_count_l2tp.is_set || is_set(ac_to_pw_count_l2tp.operation)) leaf_name_data.push_back(ac_to_pw_count_l2tp.get_name_leafdata());
-    if (ac_to_pw_count_l2tp_ip_v6.is_set || is_set(ac_to_pw_count_l2tp_ip_v6.operation)) leaf_name_data.push_back(ac_to_pw_count_l2tp_ip_v6.get_name_leafdata());
-    if (ac_to_pw_count_l2tpv2.is_set || is_set(ac_to_pw_count_l2tpv2.operation)) leaf_name_data.push_back(ac_to_pw_count_l2tpv2.get_name_leafdata());
-    if (ac_to_pw_count_mpls.is_set || is_set(ac_to_pw_count_mpls.operation)) leaf_name_data.push_back(ac_to_pw_count_mpls.get_name_leafdata());
-    if (ac_to_unknown_count.is_set || is_set(ac_to_unknown_count.operation)) leaf_name_data.push_back(ac_to_unknown_count.get_name_leafdata());
-    if (bp_count.is_set || is_set(bp_count.operation)) leaf_name_data.push_back(bp_count.get_name_leafdata());
-    if (bundle_ac_max_exceeded_drop_cnt.is_set || is_set(bundle_ac_max_exceeded_drop_cnt.operation)) leaf_name_data.push_back(bundle_ac_max_exceeded_drop_cnt.get_name_leafdata());
-    if (evpn_invalid_xid_drop_count.is_set || is_set(evpn_invalid_xid_drop_count.operation)) leaf_name_data.push_back(evpn_invalid_xid_drop_count.get_name_leafdata());
-    if (evpn_to_bp_count.is_set || is_set(evpn_to_bp_count.operation)) leaf_name_data.push_back(evpn_to_bp_count.get_name_leafdata());
-    if (evpn_to_unknown_count.is_set || is_set(evpn_to_unknown_count.operation)) leaf_name_data.push_back(evpn_to_unknown_count.get_name_leafdata());
-    if (mon_sess_to_pw_count.is_set || is_set(mon_sess_to_pw_count.operation)) leaf_name_data.push_back(mon_sess_to_pw_count.get_name_leafdata());
-    if (mon_sess_to_unknown_count.is_set || is_set(mon_sess_to_unknown_count.operation)) leaf_name_data.push_back(mon_sess_to_unknown_count.get_name_leafdata());
-    if (p2p_count.is_set || is_set(p2p_count.operation)) leaf_name_data.push_back(p2p_count.get_name_leafdata());
-    if (pbb_invalid_xid_drop_count.is_set || is_set(pbb_invalid_xid_drop_count.operation)) leaf_name_data.push_back(pbb_invalid_xid_drop_count.get_name_leafdata());
-    if (pbb_to_bp_count.is_set || is_set(pbb_to_bp_count.operation)) leaf_name_data.push_back(pbb_to_bp_count.get_name_leafdata());
-    if (pbb_to_unknown_count.is_set || is_set(pbb_to_unknown_count.operation)) leaf_name_data.push_back(pbb_to_unknown_count.get_name_leafdata());
-    if (pw_to_bp_count.is_set || is_set(pw_to_bp_count.operation)) leaf_name_data.push_back(pw_to_bp_count.get_name_leafdata());
-    if (pw_to_unknown_count.is_set || is_set(pw_to_unknown_count.operation)) leaf_name_data.push_back(pw_to_unknown_count.get_name_leafdata());
-    if (pwhe_l2_if_count.is_set || is_set(pwhe_l2_if_count.operation)) leaf_name_data.push_back(pwhe_l2_if_count.get_name_leafdata());
-    if (virtual_ac_invalid_xid_drop_count.is_set || is_set(virtual_ac_invalid_xid_drop_count.operation)) leaf_name_data.push_back(virtual_ac_invalid_xid_drop_count.get_name_leafdata());
-    if (vni_invalid_xid_drop_count.is_set || is_set(vni_invalid_xid_drop_count.operation)) leaf_name_data.push_back(vni_invalid_xid_drop_count.get_name_leafdata());
-    if (vni_to_bp_count.is_set || is_set(vni_to_bp_count.operation)) leaf_name_data.push_back(vni_to_bp_count.get_name_leafdata());
-    if (vni_to_unknown_count.is_set || is_set(vni_to_unknown_count.operation)) leaf_name_data.push_back(vni_to_unknown_count.get_name_leafdata());
-    if (vpls_pw_invalid_xid_drop_count.is_set || is_set(vpls_pw_invalid_xid_drop_count.operation)) leaf_name_data.push_back(vpls_pw_invalid_xid_drop_count.get_name_leafdata());
-    if (vpls_pw_max_exceeded_drop_cnt.is_set || is_set(vpls_pw_max_exceeded_drop_cnt.operation)) leaf_name_data.push_back(vpls_pw_max_exceeded_drop_cnt.get_name_leafdata());
-    if (vpws_pw_invalid_xid_drop_count.is_set || is_set(vpws_pw_invalid_xid_drop_count.operation)) leaf_name_data.push_back(vpws_pw_invalid_xid_drop_count.get_name_leafdata());
-    if (xconnect_count.is_set || is_set(xconnect_count.operation)) leaf_name_data.push_back(xconnect_count.get_name_leafdata());
-    if (xconnect_down_count.is_set || is_set(xconnect_down_count.operation)) leaf_name_data.push_back(xconnect_down_count.get_name_leafdata());
-    if (xconnect_up_count.is_set || is_set(xconnect_up_count.operation)) leaf_name_data.push_back(xconnect_up_count.get_name_leafdata());
+    if (ac_down_count_aib.is_set || is_set(ac_down_count_aib.yfilter)) leaf_name_data.push_back(ac_down_count_aib.get_name_leafdata());
+    if (ac_down_count_l2vpn.is_set || is_set(ac_down_count_l2vpn.yfilter)) leaf_name_data.push_back(ac_down_count_l2vpn.get_name_leafdata());
+    if (ac_down_count_l3fib.is_set || is_set(ac_down_count_l3fib.yfilter)) leaf_name_data.push_back(ac_down_count_l3fib.get_name_leafdata());
+    if (ac_down_count_vpdn.is_set || is_set(ac_down_count_vpdn.yfilter)) leaf_name_data.push_back(ac_down_count_vpdn.get_name_leafdata());
+    if (ac_to_ac_count.is_set || is_set(ac_to_ac_count.yfilter)) leaf_name_data.push_back(ac_to_ac_count.get_name_leafdata());
+    if (ac_to_bp_count.is_set || is_set(ac_to_bp_count.yfilter)) leaf_name_data.push_back(ac_to_bp_count.get_name_leafdata());
+    if (ac_to_pw_count_l2tp.is_set || is_set(ac_to_pw_count_l2tp.yfilter)) leaf_name_data.push_back(ac_to_pw_count_l2tp.get_name_leafdata());
+    if (ac_to_pw_count_l2tp_ip_v6.is_set || is_set(ac_to_pw_count_l2tp_ip_v6.yfilter)) leaf_name_data.push_back(ac_to_pw_count_l2tp_ip_v6.get_name_leafdata());
+    if (ac_to_pw_count_l2tpv2.is_set || is_set(ac_to_pw_count_l2tpv2.yfilter)) leaf_name_data.push_back(ac_to_pw_count_l2tpv2.get_name_leafdata());
+    if (ac_to_pw_count_mpls.is_set || is_set(ac_to_pw_count_mpls.yfilter)) leaf_name_data.push_back(ac_to_pw_count_mpls.get_name_leafdata());
+    if (ac_to_unknown_count.is_set || is_set(ac_to_unknown_count.yfilter)) leaf_name_data.push_back(ac_to_unknown_count.get_name_leafdata());
+    if (bp_count.is_set || is_set(bp_count.yfilter)) leaf_name_data.push_back(bp_count.get_name_leafdata());
+    if (bundle_ac_max_exceeded_drop_cnt.is_set || is_set(bundle_ac_max_exceeded_drop_cnt.yfilter)) leaf_name_data.push_back(bundle_ac_max_exceeded_drop_cnt.get_name_leafdata());
+    if (evpn_invalid_xid_drop_count.is_set || is_set(evpn_invalid_xid_drop_count.yfilter)) leaf_name_data.push_back(evpn_invalid_xid_drop_count.get_name_leafdata());
+    if (evpn_to_bp_count.is_set || is_set(evpn_to_bp_count.yfilter)) leaf_name_data.push_back(evpn_to_bp_count.get_name_leafdata());
+    if (evpn_to_unknown_count.is_set || is_set(evpn_to_unknown_count.yfilter)) leaf_name_data.push_back(evpn_to_unknown_count.get_name_leafdata());
+    if (mon_sess_to_pw_count.is_set || is_set(mon_sess_to_pw_count.yfilter)) leaf_name_data.push_back(mon_sess_to_pw_count.get_name_leafdata());
+    if (mon_sess_to_unknown_count.is_set || is_set(mon_sess_to_unknown_count.yfilter)) leaf_name_data.push_back(mon_sess_to_unknown_count.get_name_leafdata());
+    if (p2p_count.is_set || is_set(p2p_count.yfilter)) leaf_name_data.push_back(p2p_count.get_name_leafdata());
+    if (pbb_invalid_xid_drop_count.is_set || is_set(pbb_invalid_xid_drop_count.yfilter)) leaf_name_data.push_back(pbb_invalid_xid_drop_count.get_name_leafdata());
+    if (pbb_to_bp_count.is_set || is_set(pbb_to_bp_count.yfilter)) leaf_name_data.push_back(pbb_to_bp_count.get_name_leafdata());
+    if (pbb_to_unknown_count.is_set || is_set(pbb_to_unknown_count.yfilter)) leaf_name_data.push_back(pbb_to_unknown_count.get_name_leafdata());
+    if (pw_to_bp_count.is_set || is_set(pw_to_bp_count.yfilter)) leaf_name_data.push_back(pw_to_bp_count.get_name_leafdata());
+    if (pw_to_unknown_count.is_set || is_set(pw_to_unknown_count.yfilter)) leaf_name_data.push_back(pw_to_unknown_count.get_name_leafdata());
+    if (pwhe_l2_if_count.is_set || is_set(pwhe_l2_if_count.yfilter)) leaf_name_data.push_back(pwhe_l2_if_count.get_name_leafdata());
+    if (virtual_ac_invalid_xid_drop_count.is_set || is_set(virtual_ac_invalid_xid_drop_count.yfilter)) leaf_name_data.push_back(virtual_ac_invalid_xid_drop_count.get_name_leafdata());
+    if (vni_invalid_xid_drop_count.is_set || is_set(vni_invalid_xid_drop_count.yfilter)) leaf_name_data.push_back(vni_invalid_xid_drop_count.get_name_leafdata());
+    if (vni_to_bp_count.is_set || is_set(vni_to_bp_count.yfilter)) leaf_name_data.push_back(vni_to_bp_count.get_name_leafdata());
+    if (vni_to_unknown_count.is_set || is_set(vni_to_unknown_count.yfilter)) leaf_name_data.push_back(vni_to_unknown_count.get_name_leafdata());
+    if (vpls_pw_invalid_xid_drop_count.is_set || is_set(vpls_pw_invalid_xid_drop_count.yfilter)) leaf_name_data.push_back(vpls_pw_invalid_xid_drop_count.get_name_leafdata());
+    if (vpls_pw_max_exceeded_drop_cnt.is_set || is_set(vpls_pw_max_exceeded_drop_cnt.yfilter)) leaf_name_data.push_back(vpls_pw_max_exceeded_drop_cnt.get_name_leafdata());
+    if (vpws_pw_invalid_xid_drop_count.is_set || is_set(vpws_pw_invalid_xid_drop_count.yfilter)) leaf_name_data.push_back(vpws_pw_invalid_xid_drop_count.get_name_leafdata());
+    if (xconnect_count.is_set || is_set(xconnect_count.yfilter)) leaf_name_data.push_back(xconnect_count.get_name_leafdata());
+    if (xconnect_down_count.is_set || is_set(xconnect_down_count.yfilter)) leaf_name_data.push_back(xconnect_down_count.get_name_leafdata());
+    if (xconnect_up_count.is_set || is_set(xconnect_up_count.yfilter)) leaf_name_data.push_back(xconnect_up_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10023,148 +14933,369 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ac-down-count-aib")
     {
         ac_down_count_aib = value;
+        ac_down_count_aib.value_namespace = name_space;
+        ac_down_count_aib.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-down-count-l2vpn")
     {
         ac_down_count_l2vpn = value;
+        ac_down_count_l2vpn.value_namespace = name_space;
+        ac_down_count_l2vpn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-down-count-l3fib")
     {
         ac_down_count_l3fib = value;
+        ac_down_count_l3fib.value_namespace = name_space;
+        ac_down_count_l3fib.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-down-count-vpdn")
     {
         ac_down_count_vpdn = value;
+        ac_down_count_vpdn.value_namespace = name_space;
+        ac_down_count_vpdn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-to-ac-count")
     {
         ac_to_ac_count = value;
+        ac_to_ac_count.value_namespace = name_space;
+        ac_to_ac_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-to-bp-count")
     {
         ac_to_bp_count = value;
+        ac_to_bp_count.value_namespace = name_space;
+        ac_to_bp_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-to-pw-count-l2tp")
     {
         ac_to_pw_count_l2tp = value;
+        ac_to_pw_count_l2tp.value_namespace = name_space;
+        ac_to_pw_count_l2tp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-to-pw-count-l2tp-ip-v6")
     {
         ac_to_pw_count_l2tp_ip_v6 = value;
+        ac_to_pw_count_l2tp_ip_v6.value_namespace = name_space;
+        ac_to_pw_count_l2tp_ip_v6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-to-pw-count-l2tpv2")
     {
         ac_to_pw_count_l2tpv2 = value;
+        ac_to_pw_count_l2tpv2.value_namespace = name_space;
+        ac_to_pw_count_l2tpv2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-to-pw-count-mpls")
     {
         ac_to_pw_count_mpls = value;
+        ac_to_pw_count_mpls.value_namespace = name_space;
+        ac_to_pw_count_mpls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ac-to-unknown-count")
     {
         ac_to_unknown_count = value;
+        ac_to_unknown_count.value_namespace = name_space;
+        ac_to_unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bp-count")
     {
         bp_count = value;
+        bp_count.value_namespace = name_space;
+        bp_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bundle-ac-max-exceeded-drop-cnt")
     {
         bundle_ac_max_exceeded_drop_cnt = value;
+        bundle_ac_max_exceeded_drop_cnt.value_namespace = name_space;
+        bundle_ac_max_exceeded_drop_cnt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evpn-invalid-xid-drop-count")
     {
         evpn_invalid_xid_drop_count = value;
+        evpn_invalid_xid_drop_count.value_namespace = name_space;
+        evpn_invalid_xid_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evpn-to-bp-count")
     {
         evpn_to_bp_count = value;
+        evpn_to_bp_count.value_namespace = name_space;
+        evpn_to_bp_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evpn-to-unknown-count")
     {
         evpn_to_unknown_count = value;
+        evpn_to_unknown_count.value_namespace = name_space;
+        evpn_to_unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mon-sess-to-pw-count")
     {
         mon_sess_to_pw_count = value;
+        mon_sess_to_pw_count.value_namespace = name_space;
+        mon_sess_to_pw_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mon-sess-to-unknown-count")
     {
         mon_sess_to_unknown_count = value;
+        mon_sess_to_unknown_count.value_namespace = name_space;
+        mon_sess_to_unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "p2p-count")
     {
         p2p_count = value;
+        p2p_count.value_namespace = name_space;
+        p2p_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pbb-invalid-xid-drop-count")
     {
         pbb_invalid_xid_drop_count = value;
+        pbb_invalid_xid_drop_count.value_namespace = name_space;
+        pbb_invalid_xid_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pbb-to-bp-count")
     {
         pbb_to_bp_count = value;
+        pbb_to_bp_count.value_namespace = name_space;
+        pbb_to_bp_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pbb-to-unknown-count")
     {
         pbb_to_unknown_count = value;
+        pbb_to_unknown_count.value_namespace = name_space;
+        pbb_to_unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-to-bp-count")
     {
         pw_to_bp_count = value;
+        pw_to_bp_count.value_namespace = name_space;
+        pw_to_bp_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-to-unknown-count")
     {
         pw_to_unknown_count = value;
+        pw_to_unknown_count.value_namespace = name_space;
+        pw_to_unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pwhe-l2-if-count")
     {
         pwhe_l2_if_count = value;
+        pwhe_l2_if_count.value_namespace = name_space;
+        pwhe_l2_if_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-ac-invalid-xid-drop-count")
     {
         virtual_ac_invalid_xid_drop_count = value;
+        virtual_ac_invalid_xid_drop_count.value_namespace = name_space;
+        virtual_ac_invalid_xid_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vni-invalid-xid-drop-count")
     {
         vni_invalid_xid_drop_count = value;
+        vni_invalid_xid_drop_count.value_namespace = name_space;
+        vni_invalid_xid_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vni-to-bp-count")
     {
         vni_to_bp_count = value;
+        vni_to_bp_count.value_namespace = name_space;
+        vni_to_bp_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vni-to-unknown-count")
     {
         vni_to_unknown_count = value;
+        vni_to_unknown_count.value_namespace = name_space;
+        vni_to_unknown_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-pw-invalid-xid-drop-count")
     {
         vpls_pw_invalid_xid_drop_count = value;
+        vpls_pw_invalid_xid_drop_count.value_namespace = name_space;
+        vpls_pw_invalid_xid_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-pw-max-exceeded-drop-cnt")
     {
         vpls_pw_max_exceeded_drop_cnt = value;
+        vpls_pw_max_exceeded_drop_cnt.value_namespace = name_space;
+        vpls_pw_max_exceeded_drop_cnt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpws-pw-invalid-xid-drop-count")
     {
         vpws_pw_invalid_xid_drop_count = value;
+        vpws_pw_invalid_xid_drop_count.value_namespace = name_space;
+        vpws_pw_invalid_xid_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-count")
     {
         xconnect_count = value;
+        xconnect_count.value_namespace = name_space;
+        xconnect_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-down-count")
     {
         xconnect_down_count = value;
+        xconnect_down_count.value_namespace = name_space;
+        xconnect_down_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-up-count")
     {
         xconnect_up_count = value;
+        xconnect_up_count.value_namespace = name_space;
+        xconnect_up_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ac-down-count-aib")
+    {
+        ac_down_count_aib.yfilter = yfilter;
+    }
+    if(value_path == "ac-down-count-l2vpn")
+    {
+        ac_down_count_l2vpn.yfilter = yfilter;
+    }
+    if(value_path == "ac-down-count-l3fib")
+    {
+        ac_down_count_l3fib.yfilter = yfilter;
+    }
+    if(value_path == "ac-down-count-vpdn")
+    {
+        ac_down_count_vpdn.yfilter = yfilter;
+    }
+    if(value_path == "ac-to-ac-count")
+    {
+        ac_to_ac_count.yfilter = yfilter;
+    }
+    if(value_path == "ac-to-bp-count")
+    {
+        ac_to_bp_count.yfilter = yfilter;
+    }
+    if(value_path == "ac-to-pw-count-l2tp")
+    {
+        ac_to_pw_count_l2tp.yfilter = yfilter;
+    }
+    if(value_path == "ac-to-pw-count-l2tp-ip-v6")
+    {
+        ac_to_pw_count_l2tp_ip_v6.yfilter = yfilter;
+    }
+    if(value_path == "ac-to-pw-count-l2tpv2")
+    {
+        ac_to_pw_count_l2tpv2.yfilter = yfilter;
+    }
+    if(value_path == "ac-to-pw-count-mpls")
+    {
+        ac_to_pw_count_mpls.yfilter = yfilter;
+    }
+    if(value_path == "ac-to-unknown-count")
+    {
+        ac_to_unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "bp-count")
+    {
+        bp_count.yfilter = yfilter;
+    }
+    if(value_path == "bundle-ac-max-exceeded-drop-cnt")
+    {
+        bundle_ac_max_exceeded_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "evpn-invalid-xid-drop-count")
+    {
+        evpn_invalid_xid_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "evpn-to-bp-count")
+    {
+        evpn_to_bp_count.yfilter = yfilter;
+    }
+    if(value_path == "evpn-to-unknown-count")
+    {
+        evpn_to_unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "mon-sess-to-pw-count")
+    {
+        mon_sess_to_pw_count.yfilter = yfilter;
+    }
+    if(value_path == "mon-sess-to-unknown-count")
+    {
+        mon_sess_to_unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "p2p-count")
+    {
+        p2p_count.yfilter = yfilter;
+    }
+    if(value_path == "pbb-invalid-xid-drop-count")
+    {
+        pbb_invalid_xid_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "pbb-to-bp-count")
+    {
+        pbb_to_bp_count.yfilter = yfilter;
+    }
+    if(value_path == "pbb-to-unknown-count")
+    {
+        pbb_to_unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "pw-to-bp-count")
+    {
+        pw_to_bp_count.yfilter = yfilter;
+    }
+    if(value_path == "pw-to-unknown-count")
+    {
+        pw_to_unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "pwhe-l2-if-count")
+    {
+        pwhe_l2_if_count.yfilter = yfilter;
+    }
+    if(value_path == "virtual-ac-invalid-xid-drop-count")
+    {
+        virtual_ac_invalid_xid_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "vni-invalid-xid-drop-count")
+    {
+        vni_invalid_xid_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "vni-to-bp-count")
+    {
+        vni_to_bp_count.yfilter = yfilter;
+    }
+    if(value_path == "vni-to-unknown-count")
+    {
+        vni_to_unknown_count.yfilter = yfilter;
+    }
+    if(value_path == "vpls-pw-invalid-xid-drop-count")
+    {
+        vpls_pw_invalid_xid_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "vpls-pw-max-exceeded-drop-cnt")
+    {
+        vpls_pw_max_exceeded_drop_cnt.yfilter = yfilter;
+    }
+    if(value_path == "vpws-pw-invalid-xid-drop-count")
+    {
+        vpws_pw_invalid_xid_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-count")
+    {
+        xconnect_count.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-down-count")
+    {
+        xconnect_down_count.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-up-count")
+    {
+        xconnect_up_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ac-down-count-aib" || name == "ac-down-count-l2vpn" || name == "ac-down-count-l3fib" || name == "ac-down-count-vpdn" || name == "ac-to-ac-count" || name == "ac-to-bp-count" || name == "ac-to-pw-count-l2tp" || name == "ac-to-pw-count-l2tp-ip-v6" || name == "ac-to-pw-count-l2tpv2" || name == "ac-to-pw-count-mpls" || name == "ac-to-unknown-count" || name == "bp-count" || name == "bundle-ac-max-exceeded-drop-cnt" || name == "evpn-invalid-xid-drop-count" || name == "evpn-to-bp-count" || name == "evpn-to-unknown-count" || name == "mon-sess-to-pw-count" || name == "mon-sess-to-unknown-count" || name == "p2p-count" || name == "pbb-invalid-xid-drop-count" || name == "pbb-to-bp-count" || name == "pbb-to-unknown-count" || name == "pw-to-bp-count" || name == "pw-to-unknown-count" || name == "pwhe-l2-if-count" || name == "virtual-ac-invalid-xid-drop-count" || name == "vni-invalid-xid-drop-count" || name == "vni-to-bp-count" || name == "vni-to-unknown-count" || name == "vpls-pw-invalid-xid-drop-count" || name == "vpls-pw-max-exceeded-drop-cnt" || name == "vpws-pw-invalid-xid-drop-count" || name == "xconnect-count" || name == "xconnect-down-count" || name == "xconnect-up-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::NextHopSummary()
@@ -10203,7 +15334,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::has_data() cons
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (l2tp !=  nullptr && l2tp->has_operation())
 	|| (lsm !=  nullptr && lsm->has_operation())
 	|| (mpls !=  nullptr && mpls->has_operation())
@@ -10322,8 +15453,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2tp" || name == "lsm" || name == "mpls" || name == "mpls-il" || name == "p2mp-tunnels")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl::MplsIl()
@@ -10350,11 +15492,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl::has_dat
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound_next_hop_count.operation)
-	|| is_set(next_hop_count.operation)
-	|| is_set(next_hop_pending_registration_count.operation)
-	|| is_set(unbound_next_hop_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bound_next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_pending_registration_count.yfilter)
+	|| ydk::is_set(unbound_next_hop_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl::get_segment_path() const
@@ -10380,10 +15522,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpl
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.operation)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
-    if (next_hop_count.is_set || is_set(next_hop_count.operation)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
-    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.operation)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
-    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.operation)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
+    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.yfilter)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
+    if (next_hop_count.is_set || is_set(next_hop_count.yfilter)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
+    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.yfilter)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
+    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.yfilter)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10402,24 +15544,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound-next-hop-count")
     {
         bound_next_hop_count = value;
+        bound_next_hop_count.value_namespace = name_space;
+        bound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-count")
     {
         next_hop_count = value;
+        next_hop_count.value_namespace = name_space;
+        next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-pending-registration-count")
     {
         next_hop_pending_registration_count = value;
+        next_hop_pending_registration_count.value_namespace = name_space;
+        next_hop_pending_registration_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unbound-next-hop-count")
     {
         unbound_next_hop_count = value;
+        unbound_next_hop_count.value_namespace = name_space;
+        unbound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound-next-hop-count")
+    {
+        bound_next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-count")
+    {
+        next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-pending-registration-count")
+    {
+        next_hop_pending_registration_count.yfilter = yfilter;
+    }
+    if(value_path == "unbound-next-hop-count")
+    {
+        unbound_next_hop_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bound-next-hop-count" || name == "next-hop-count" || name == "next-hop-pending-registration-count" || name == "unbound-next-hop-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls::Mpls()
@@ -10446,11 +15623,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls::has_data(
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound_next_hop_count.operation)
-	|| is_set(next_hop_count.operation)
-	|| is_set(next_hop_pending_registration_count.operation)
-	|| is_set(unbound_next_hop_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bound_next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_pending_registration_count.yfilter)
+	|| ydk::is_set(unbound_next_hop_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls::get_segment_path() const
@@ -10476,10 +15653,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpl
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.operation)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
-    if (next_hop_count.is_set || is_set(next_hop_count.operation)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
-    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.operation)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
-    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.operation)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
+    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.yfilter)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
+    if (next_hop_count.is_set || is_set(next_hop_count.yfilter)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
+    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.yfilter)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
+    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.yfilter)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10498,24 +15675,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound-next-hop-count")
     {
         bound_next_hop_count = value;
+        bound_next_hop_count.value_namespace = name_space;
+        bound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-count")
     {
         next_hop_count = value;
+        next_hop_count.value_namespace = name_space;
+        next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-pending-registration-count")
     {
         next_hop_pending_registration_count = value;
+        next_hop_pending_registration_count.value_namespace = name_space;
+        next_hop_pending_registration_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unbound-next-hop-count")
     {
         unbound_next_hop_count = value;
+        unbound_next_hop_count.value_namespace = name_space;
+        unbound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound-next-hop-count")
+    {
+        bound_next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-count")
+    {
+        next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-pending-registration-count")
+    {
+        next_hop_pending_registration_count.yfilter = yfilter;
+    }
+    if(value_path == "unbound-next-hop-count")
+    {
+        unbound_next_hop_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bound-next-hop-count" || name == "next-hop-count" || name == "next-hop-pending-registration-count" || name == "unbound-next-hop-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp::L2Tp()
@@ -10542,11 +15754,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp::has_data(
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound_next_hop_count.operation)
-	|| is_set(next_hop_count.operation)
-	|| is_set(next_hop_pending_registration_count.operation)
-	|| is_set(unbound_next_hop_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bound_next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_pending_registration_count.yfilter)
+	|| ydk::is_set(unbound_next_hop_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp::get_segment_path() const
@@ -10572,10 +15784,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2T
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.operation)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
-    if (next_hop_count.is_set || is_set(next_hop_count.operation)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
-    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.operation)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
-    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.operation)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
+    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.yfilter)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
+    if (next_hop_count.is_set || is_set(next_hop_count.yfilter)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
+    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.yfilter)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
+    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.yfilter)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10594,24 +15806,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound-next-hop-count")
     {
         bound_next_hop_count = value;
+        bound_next_hop_count.value_namespace = name_space;
+        bound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-count")
     {
         next_hop_count = value;
+        next_hop_count.value_namespace = name_space;
+        next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-pending-registration-count")
     {
         next_hop_pending_registration_count = value;
+        next_hop_pending_registration_count.value_namespace = name_space;
+        next_hop_pending_registration_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unbound-next-hop-count")
     {
         unbound_next_hop_count = value;
+        unbound_next_hop_count.value_namespace = name_space;
+        unbound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound-next-hop-count")
+    {
+        bound_next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-count")
+    {
+        next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-pending-registration-count")
+    {
+        next_hop_pending_registration_count.yfilter = yfilter;
+    }
+    if(value_path == "unbound-next-hop-count")
+    {
+        unbound_next_hop_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bound-next-hop-count" || name == "next-hop-count" || name == "next-hop-pending-registration-count" || name == "unbound-next-hop-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm::Lsm()
@@ -10638,11 +15885,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm::has_data()
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound_next_hop_count.operation)
-	|| is_set(next_hop_count.operation)
-	|| is_set(next_hop_pending_registration_count.operation)
-	|| is_set(unbound_next_hop_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bound_next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_pending_registration_count.yfilter)
+	|| ydk::is_set(unbound_next_hop_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm::get_segment_path() const
@@ -10668,10 +15915,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.operation)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
-    if (next_hop_count.is_set || is_set(next_hop_count.operation)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
-    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.operation)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
-    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.operation)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
+    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.yfilter)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
+    if (next_hop_count.is_set || is_set(next_hop_count.yfilter)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
+    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.yfilter)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
+    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.yfilter)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10690,24 +15937,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound-next-hop-count")
     {
         bound_next_hop_count = value;
+        bound_next_hop_count.value_namespace = name_space;
+        bound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-count")
     {
         next_hop_count = value;
+        next_hop_count.value_namespace = name_space;
+        next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-pending-registration-count")
     {
         next_hop_pending_registration_count = value;
+        next_hop_pending_registration_count.value_namespace = name_space;
+        next_hop_pending_registration_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unbound-next-hop-count")
     {
         unbound_next_hop_count = value;
+        unbound_next_hop_count.value_namespace = name_space;
+        unbound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound-next-hop-count")
+    {
+        bound_next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-count")
+    {
+        next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-pending-registration-count")
+    {
+        next_hop_pending_registration_count.yfilter = yfilter;
+    }
+    if(value_path == "unbound-next-hop-count")
+    {
+        unbound_next_hop_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bound-next-hop-count" || name == "next-hop-count" || name == "next-hop-pending-registration-count" || name == "unbound-next-hop-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels::P2MpTunnels()
@@ -10734,11 +16016,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels::ha
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound_next_hop_count.operation)
-	|| is_set(next_hop_count.operation)
-	|| is_set(next_hop_pending_registration_count.operation)
-	|| is_set(unbound_next_hop_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bound_next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_count.yfilter)
+	|| ydk::is_set(next_hop_pending_registration_count.yfilter)
+	|| ydk::is_set(unbound_next_hop_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels::get_segment_path() const
@@ -10764,10 +16046,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2M
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.operation)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
-    if (next_hop_count.is_set || is_set(next_hop_count.operation)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
-    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.operation)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
-    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.operation)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
+    if (bound_next_hop_count.is_set || is_set(bound_next_hop_count.yfilter)) leaf_name_data.push_back(bound_next_hop_count.get_name_leafdata());
+    if (next_hop_count.is_set || is_set(next_hop_count.yfilter)) leaf_name_data.push_back(next_hop_count.get_name_leafdata());
+    if (next_hop_pending_registration_count.is_set || is_set(next_hop_pending_registration_count.yfilter)) leaf_name_data.push_back(next_hop_pending_registration_count.get_name_leafdata());
+    if (unbound_next_hop_count.is_set || is_set(unbound_next_hop_count.yfilter)) leaf_name_data.push_back(unbound_next_hop_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10786,24 +16068,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound-next-hop-count")
     {
         bound_next_hop_count = value;
+        bound_next_hop_count.value_namespace = name_space;
+        bound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-count")
     {
         next_hop_count = value;
+        next_hop_count.value_namespace = name_space;
+        next_hop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-pending-registration-count")
     {
         next_hop_pending_registration_count = value;
+        next_hop_pending_registration_count.value_namespace = name_space;
+        next_hop_pending_registration_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unbound-next-hop-count")
     {
         unbound_next_hop_count = value;
+        unbound_next_hop_count.value_namespace = name_space;
+        unbound_next_hop_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound-next-hop-count")
+    {
+        bound_next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-count")
+    {
+        next_hop_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-pending-registration-count")
+    {
+        next_hop_pending_registration_count.yfilter = yfilter;
+    }
+    if(value_path == "unbound-next-hop-count")
+    {
+        unbound_next_hop_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bound-next-hop-count" || name == "next-hop-count" || name == "next-hop-pending-registration-count" || name == "unbound-next-hop-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary::L2TpDispositionSummary()
@@ -10828,10 +16145,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary::has_dat
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bound_l2tp_disposition_session_count.operation)
-	|| is_set(l2tp_disposition_session_count.operation)
-	|| is_set(unbound_l2tp_disposition_session_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bound_l2tp_disposition_session_count.yfilter)
+	|| ydk::is_set(l2tp_disposition_session_count.yfilter)
+	|| ydk::is_set(unbound_l2tp_disposition_session_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary::get_segment_path() const
@@ -10857,9 +16174,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSumm
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bound_l2tp_disposition_session_count.is_set || is_set(bound_l2tp_disposition_session_count.operation)) leaf_name_data.push_back(bound_l2tp_disposition_session_count.get_name_leafdata());
-    if (l2tp_disposition_session_count.is_set || is_set(l2tp_disposition_session_count.operation)) leaf_name_data.push_back(l2tp_disposition_session_count.get_name_leafdata());
-    if (unbound_l2tp_disposition_session_count.is_set || is_set(unbound_l2tp_disposition_session_count.operation)) leaf_name_data.push_back(unbound_l2tp_disposition_session_count.get_name_leafdata());
+    if (bound_l2tp_disposition_session_count.is_set || is_set(bound_l2tp_disposition_session_count.yfilter)) leaf_name_data.push_back(bound_l2tp_disposition_session_count.get_name_leafdata());
+    if (l2tp_disposition_session_count.is_set || is_set(l2tp_disposition_session_count.yfilter)) leaf_name_data.push_back(l2tp_disposition_session_count.get_name_leafdata());
+    if (unbound_l2tp_disposition_session_count.is_set || is_set(unbound_l2tp_disposition_session_count.yfilter)) leaf_name_data.push_back(unbound_l2tp_disposition_session_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10878,20 +16195,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound-l2tp-disposition-session-count")
     {
         bound_l2tp_disposition_session_count = value;
+        bound_l2tp_disposition_session_count.value_namespace = name_space;
+        bound_l2tp_disposition_session_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-disposition-session-count")
     {
         l2tp_disposition_session_count = value;
+        l2tp_disposition_session_count.value_namespace = name_space;
+        l2tp_disposition_session_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unbound-l2tp-disposition-session-count")
     {
         unbound_l2tp_disposition_session_count = value;
+        unbound_l2tp_disposition_session_count.value_namespace = name_space;
+        unbound_l2tp_disposition_session_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bound-l2tp-disposition-session-count")
+    {
+        bound_l2tp_disposition_session_count.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-disposition-session-count")
+    {
+        l2tp_disposition_session_count.yfilter = yfilter;
+    }
+    if(value_path == "unbound-l2tp-disposition-session-count")
+    {
+        unbound_l2tp_disposition_session_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bound-l2tp-disposition-session-count" || name == "l2tp-disposition-session-count" || name == "unbound-l2tp-disposition-session-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::BridgeDomainSummary()
@@ -10922,13 +16268,13 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::has_data()
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bridge_domain_count.operation)
-	|| is_set(bridge_domain_drop_count.operation)
-	|| is_set(bridge_domain_with_bvi_count.operation)
-	|| is_set(bridge_domain_with_evpn_enabled.operation)
-	|| is_set(bridge_domain_with_p2mp_enabled.operation)
-	|| is_set(bridge_domain_with_pbbevpn_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bridge_domain_count.yfilter)
+	|| ydk::is_set(bridge_domain_drop_count.yfilter)
+	|| ydk::is_set(bridge_domain_with_bvi_count.yfilter)
+	|| ydk::is_set(bridge_domain_with_evpn_enabled.yfilter)
+	|| ydk::is_set(bridge_domain_with_p2mp_enabled.yfilter)
+	|| ydk::is_set(bridge_domain_with_pbbevpn_enabled.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::get_segment_path() const
@@ -10954,12 +16300,12 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bridge_domain_count.is_set || is_set(bridge_domain_count.operation)) leaf_name_data.push_back(bridge_domain_count.get_name_leafdata());
-    if (bridge_domain_drop_count.is_set || is_set(bridge_domain_drop_count.operation)) leaf_name_data.push_back(bridge_domain_drop_count.get_name_leafdata());
-    if (bridge_domain_with_bvi_count.is_set || is_set(bridge_domain_with_bvi_count.operation)) leaf_name_data.push_back(bridge_domain_with_bvi_count.get_name_leafdata());
-    if (bridge_domain_with_evpn_enabled.is_set || is_set(bridge_domain_with_evpn_enabled.operation)) leaf_name_data.push_back(bridge_domain_with_evpn_enabled.get_name_leafdata());
-    if (bridge_domain_with_p2mp_enabled.is_set || is_set(bridge_domain_with_p2mp_enabled.operation)) leaf_name_data.push_back(bridge_domain_with_p2mp_enabled.get_name_leafdata());
-    if (bridge_domain_with_pbbevpn_enabled.is_set || is_set(bridge_domain_with_pbbevpn_enabled.operation)) leaf_name_data.push_back(bridge_domain_with_pbbevpn_enabled.get_name_leafdata());
+    if (bridge_domain_count.is_set || is_set(bridge_domain_count.yfilter)) leaf_name_data.push_back(bridge_domain_count.get_name_leafdata());
+    if (bridge_domain_drop_count.is_set || is_set(bridge_domain_drop_count.yfilter)) leaf_name_data.push_back(bridge_domain_drop_count.get_name_leafdata());
+    if (bridge_domain_with_bvi_count.is_set || is_set(bridge_domain_with_bvi_count.yfilter)) leaf_name_data.push_back(bridge_domain_with_bvi_count.get_name_leafdata());
+    if (bridge_domain_with_evpn_enabled.is_set || is_set(bridge_domain_with_evpn_enabled.yfilter)) leaf_name_data.push_back(bridge_domain_with_evpn_enabled.get_name_leafdata());
+    if (bridge_domain_with_p2mp_enabled.is_set || is_set(bridge_domain_with_p2mp_enabled.yfilter)) leaf_name_data.push_back(bridge_domain_with_p2mp_enabled.get_name_leafdata());
+    if (bridge_domain_with_pbbevpn_enabled.is_set || is_set(bridge_domain_with_pbbevpn_enabled.yfilter)) leaf_name_data.push_back(bridge_domain_with_pbbevpn_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10978,32 +16324,79 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bridge-domain-count")
     {
         bridge_domain_count = value;
+        bridge_domain_count.value_namespace = name_space;
+        bridge_domain_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-domain-drop-count")
     {
         bridge_domain_drop_count = value;
+        bridge_domain_drop_count.value_namespace = name_space;
+        bridge_domain_drop_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-domain-with-bvi-count")
     {
         bridge_domain_with_bvi_count = value;
+        bridge_domain_with_bvi_count.value_namespace = name_space;
+        bridge_domain_with_bvi_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-domain-with-evpn-enabled")
     {
         bridge_domain_with_evpn_enabled = value;
+        bridge_domain_with_evpn_enabled.value_namespace = name_space;
+        bridge_domain_with_evpn_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-domain-with-p2mp-enabled")
     {
         bridge_domain_with_p2mp_enabled = value;
+        bridge_domain_with_p2mp_enabled.value_namespace = name_space;
+        bridge_domain_with_p2mp_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-domain-with-pbbevpn-enabled")
     {
         bridge_domain_with_pbbevpn_enabled = value;
+        bridge_domain_with_pbbevpn_enabled.value_namespace = name_space;
+        bridge_domain_with_pbbevpn_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bridge-domain-count")
+    {
+        bridge_domain_count.yfilter = yfilter;
+    }
+    if(value_path == "bridge-domain-drop-count")
+    {
+        bridge_domain_drop_count.yfilter = yfilter;
+    }
+    if(value_path == "bridge-domain-with-bvi-count")
+    {
+        bridge_domain_with_bvi_count.yfilter = yfilter;
+    }
+    if(value_path == "bridge-domain-with-evpn-enabled")
+    {
+        bridge_domain_with_evpn_enabled.yfilter = yfilter;
+    }
+    if(value_path == "bridge-domain-with-p2mp-enabled")
+    {
+        bridge_domain_with_p2mp_enabled.yfilter = yfilter;
+    }
+    if(value_path == "bridge-domain-with-pbbevpn-enabled")
+    {
+        bridge_domain_with_pbbevpn_enabled.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bridge-domain-count" || name == "bridge-domain-drop-count" || name == "bridge-domain-with-bvi-count" || name == "bridge-domain-with-evpn-enabled" || name == "bridge-domain-with-p2mp-enabled" || name == "bridge-domain-with-pbbevpn-enabled")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::MacSummary()
@@ -11036,14 +16429,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bmac_count.operation)
-	|| is_set(local_mac_count.operation)
-	|| is_set(mac_count.operation)
-	|| is_set(remote_mac_count.operation)
-	|| is_set(routed_mac_count.operation)
-	|| is_set(sbmac_count.operation)
-	|| is_set(static_mac_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bmac_count.yfilter)
+	|| ydk::is_set(local_mac_count.yfilter)
+	|| ydk::is_set(mac_count.yfilter)
+	|| ydk::is_set(remote_mac_count.yfilter)
+	|| ydk::is_set(routed_mac_count.yfilter)
+	|| ydk::is_set(sbmac_count.yfilter)
+	|| ydk::is_set(static_mac_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::get_segment_path() const
@@ -11069,13 +16462,13 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bmac_count.is_set || is_set(bmac_count.operation)) leaf_name_data.push_back(bmac_count.get_name_leafdata());
-    if (local_mac_count.is_set || is_set(local_mac_count.operation)) leaf_name_data.push_back(local_mac_count.get_name_leafdata());
-    if (mac_count.is_set || is_set(mac_count.operation)) leaf_name_data.push_back(mac_count.get_name_leafdata());
-    if (remote_mac_count.is_set || is_set(remote_mac_count.operation)) leaf_name_data.push_back(remote_mac_count.get_name_leafdata());
-    if (routed_mac_count.is_set || is_set(routed_mac_count.operation)) leaf_name_data.push_back(routed_mac_count.get_name_leafdata());
-    if (sbmac_count.is_set || is_set(sbmac_count.operation)) leaf_name_data.push_back(sbmac_count.get_name_leafdata());
-    if (static_mac_count.is_set || is_set(static_mac_count.operation)) leaf_name_data.push_back(static_mac_count.get_name_leafdata());
+    if (bmac_count.is_set || is_set(bmac_count.yfilter)) leaf_name_data.push_back(bmac_count.get_name_leafdata());
+    if (local_mac_count.is_set || is_set(local_mac_count.yfilter)) leaf_name_data.push_back(local_mac_count.get_name_leafdata());
+    if (mac_count.is_set || is_set(mac_count.yfilter)) leaf_name_data.push_back(mac_count.get_name_leafdata());
+    if (remote_mac_count.is_set || is_set(remote_mac_count.yfilter)) leaf_name_data.push_back(remote_mac_count.get_name_leafdata());
+    if (routed_mac_count.is_set || is_set(routed_mac_count.yfilter)) leaf_name_data.push_back(routed_mac_count.get_name_leafdata());
+    if (sbmac_count.is_set || is_set(sbmac_count.yfilter)) leaf_name_data.push_back(sbmac_count.get_name_leafdata());
+    if (static_mac_count.is_set || is_set(static_mac_count.yfilter)) leaf_name_data.push_back(static_mac_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11094,36 +16487,89 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bmac-count")
     {
         bmac_count = value;
+        bmac_count.value_namespace = name_space;
+        bmac_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mac-count")
     {
         local_mac_count = value;
+        local_mac_count.value_namespace = name_space;
+        local_mac_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-count")
     {
         mac_count = value;
+        mac_count.value_namespace = name_space;
+        mac_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mac-count")
     {
         remote_mac_count = value;
+        remote_mac_count.value_namespace = name_space;
+        remote_mac_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "routed-mac-count")
     {
         routed_mac_count = value;
+        routed_mac_count.value_namespace = name_space;
+        routed_mac_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbmac-count")
     {
         sbmac_count = value;
+        sbmac_count.value_namespace = name_space;
+        sbmac_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "static-mac-count")
     {
         static_mac_count = value;
+        static_mac_count.value_namespace = name_space;
+        static_mac_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bmac-count")
+    {
+        bmac_count.yfilter = yfilter;
+    }
+    if(value_path == "local-mac-count")
+    {
+        local_mac_count.yfilter = yfilter;
+    }
+    if(value_path == "mac-count")
+    {
+        mac_count.yfilter = yfilter;
+    }
+    if(value_path == "remote-mac-count")
+    {
+        remote_mac_count.yfilter = yfilter;
+    }
+    if(value_path == "routed-mac-count")
+    {
+        routed_mac_count.yfilter = yfilter;
+    }
+    if(value_path == "sbmac-count")
+    {
+        sbmac_count.yfilter = yfilter;
+    }
+    if(value_path == "static-mac-count")
+    {
+        static_mac_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bmac-count" || name == "local-mac-count" || name == "mac-count" || name == "remote-mac-count" || name == "routed-mac-count" || name == "sbmac-count" || name == "static-mac-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::QueueSummary()
@@ -11150,11 +16596,11 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(del_cnt.operation)
-	|| is_set(inline_cnt.operation)
-	|| is_set(retry_cnt.operation)
-	|| is_set(update_cnt.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(del_cnt.yfilter)
+	|| ydk::is_set(inline_cnt.yfilter)
+	|| ydk::is_set(retry_cnt.yfilter)
+	|| ydk::is_set(update_cnt.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::get_segment_path() const
@@ -11180,10 +16626,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (del_cnt.is_set || is_set(del_cnt.operation)) leaf_name_data.push_back(del_cnt.get_name_leafdata());
-    if (inline_cnt.is_set || is_set(inline_cnt.operation)) leaf_name_data.push_back(inline_cnt.get_name_leafdata());
-    if (retry_cnt.is_set || is_set(retry_cnt.operation)) leaf_name_data.push_back(retry_cnt.get_name_leafdata());
-    if (update_cnt.is_set || is_set(update_cnt.operation)) leaf_name_data.push_back(update_cnt.get_name_leafdata());
+    if (del_cnt.is_set || is_set(del_cnt.yfilter)) leaf_name_data.push_back(del_cnt.get_name_leafdata());
+    if (inline_cnt.is_set || is_set(inline_cnt.yfilter)) leaf_name_data.push_back(inline_cnt.get_name_leafdata());
+    if (retry_cnt.is_set || is_set(retry_cnt.yfilter)) leaf_name_data.push_back(retry_cnt.get_name_leafdata());
+    if (update_cnt.is_set || is_set(update_cnt.yfilter)) leaf_name_data.push_back(update_cnt.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11202,24 +16648,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "del-cnt")
     {
         del_cnt = value;
+        del_cnt.value_namespace = name_space;
+        del_cnt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inline-cnt")
     {
         inline_cnt = value;
+        inline_cnt.value_namespace = name_space;
+        inline_cnt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-cnt")
     {
         retry_cnt = value;
+        retry_cnt.value_namespace = name_space;
+        retry_cnt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "update-cnt")
     {
         update_cnt = value;
+        update_cnt.value_namespace = name_space;
+        update_cnt.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "del-cnt")
+    {
+        del_cnt.yfilter = yfilter;
+    }
+    if(value_path == "inline-cnt")
+    {
+        inline_cnt.yfilter = yfilter;
+    }
+    if(value_path == "retry-cnt")
+    {
+        retry_cnt.yfilter = yfilter;
+    }
+    if(value_path == "update-cnt")
+    {
+        update_cnt.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "del-cnt" || name == "inline-cnt" || name == "retry-cnt" || name == "update-cnt")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::EvpnSummary()
@@ -11244,10 +16725,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(default_count.operation)
-	|| is_set(isid_count.operation)
-	|| is_set(total_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(default_count.yfilter)
+	|| ydk::is_set(isid_count.yfilter)
+	|| ydk::is_set(total_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::get_segment_path() const
@@ -11273,9 +16754,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_count.is_set || is_set(default_count.operation)) leaf_name_data.push_back(default_count.get_name_leafdata());
-    if (isid_count.is_set || is_set(isid_count.operation)) leaf_name_data.push_back(isid_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (default_count.is_set || is_set(default_count.yfilter)) leaf_name_data.push_back(default_count.get_name_leafdata());
+    if (isid_count.is_set || is_set(isid_count.yfilter)) leaf_name_data.push_back(isid_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11294,20 +16775,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default-count")
     {
         default_count = value;
+        default_count.value_namespace = name_space;
+        default_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "isid-count")
     {
         isid_count = value;
+        isid_count.value_namespace = name_space;
+        isid_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-count")
+    {
+        default_count.yfilter = yfilter;
+    }
+    if(value_path == "isid-count")
+    {
+        isid_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-count" || name == "isid-count" || name == "total-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::GlobalCfg()
@@ -11337,10 +16847,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(evpn_imc_label_block_base.operation)
-	|| is_set(evpn_imc_label_block_size.operation)
-	|| is_set(load_balance_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(evpn_imc_label_block_base.yfilter)
+	|| ydk::is_set(evpn_imc_label_block_size.yfilter)
+	|| ydk::is_set(load_balance_type.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -11367,9 +16877,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (evpn_imc_label_block_base.is_set || is_set(evpn_imc_label_block_base.operation)) leaf_name_data.push_back(evpn_imc_label_block_base.get_name_leafdata());
-    if (evpn_imc_label_block_size.is_set || is_set(evpn_imc_label_block_size.operation)) leaf_name_data.push_back(evpn_imc_label_block_size.get_name_leafdata());
-    if (load_balance_type.is_set || is_set(load_balance_type.operation)) leaf_name_data.push_back(load_balance_type.get_name_leafdata());
+    if (evpn_imc_label_block_base.is_set || is_set(evpn_imc_label_block_base.yfilter)) leaf_name_data.push_back(evpn_imc_label_block_base.get_name_leafdata());
+    if (evpn_imc_label_block_size.is_set || is_set(evpn_imc_label_block_size.yfilter)) leaf_name_data.push_back(evpn_imc_label_block_size.get_name_leafdata());
+    if (load_balance_type.is_set || is_set(load_balance_type.yfilter)) leaf_name_data.push_back(load_balance_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11402,20 +16912,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "evpn-imc-label-block-base")
     {
         evpn_imc_label_block_base = value;
+        evpn_imc_label_block_base.value_namespace = name_space;
+        evpn_imc_label_block_base.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evpn-imc-label-block-size")
     {
         evpn_imc_label_block_size = value;
+        evpn_imc_label_block_size.value_namespace = name_space;
+        evpn_imc_label_block_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-balance-type")
     {
         load_balance_type = value;
+        load_balance_type.value_namespace = name_space;
+        load_balance_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "evpn-imc-label-block-base")
+    {
+        evpn_imc_label_block_base.yfilter = yfilter;
+    }
+    if(value_path == "evpn-imc-label-block-size")
+    {
+        evpn_imc_label_block_size.yfilter = yfilter;
+    }
+    if(value_path == "load-balance-type")
+    {
+        load_balance_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "evpn-imc-label-block-base" || name == "evpn-imc-label-block-size" || name == "load-balance-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base::Base()
@@ -11434,7 +16973,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base::has_data() con
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base::get_segment_path() const
@@ -11478,8 +17017,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::PtreeSummary()
@@ -11508,12 +17056,12 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lmrib_mldp_ptree_count.operation)
-	|| is_set(lmrib_rsvp_te_ptree_count.operation)
-	|| is_set(mldp_enabled_ptree_count.operation)
-	|| is_set(rsvp_te_enabled_ptree_count.operation)
-	|| is_set(total_ptree_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lmrib_mldp_ptree_count.yfilter)
+	|| ydk::is_set(lmrib_rsvp_te_ptree_count.yfilter)
+	|| ydk::is_set(mldp_enabled_ptree_count.yfilter)
+	|| ydk::is_set(rsvp_te_enabled_ptree_count.yfilter)
+	|| ydk::is_set(total_ptree_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::get_segment_path() const
@@ -11539,11 +17087,11 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lmrib_mldp_ptree_count.is_set || is_set(lmrib_mldp_ptree_count.operation)) leaf_name_data.push_back(lmrib_mldp_ptree_count.get_name_leafdata());
-    if (lmrib_rsvp_te_ptree_count.is_set || is_set(lmrib_rsvp_te_ptree_count.operation)) leaf_name_data.push_back(lmrib_rsvp_te_ptree_count.get_name_leafdata());
-    if (mldp_enabled_ptree_count.is_set || is_set(mldp_enabled_ptree_count.operation)) leaf_name_data.push_back(mldp_enabled_ptree_count.get_name_leafdata());
-    if (rsvp_te_enabled_ptree_count.is_set || is_set(rsvp_te_enabled_ptree_count.operation)) leaf_name_data.push_back(rsvp_te_enabled_ptree_count.get_name_leafdata());
-    if (total_ptree_count.is_set || is_set(total_ptree_count.operation)) leaf_name_data.push_back(total_ptree_count.get_name_leafdata());
+    if (lmrib_mldp_ptree_count.is_set || is_set(lmrib_mldp_ptree_count.yfilter)) leaf_name_data.push_back(lmrib_mldp_ptree_count.get_name_leafdata());
+    if (lmrib_rsvp_te_ptree_count.is_set || is_set(lmrib_rsvp_te_ptree_count.yfilter)) leaf_name_data.push_back(lmrib_rsvp_te_ptree_count.get_name_leafdata());
+    if (mldp_enabled_ptree_count.is_set || is_set(mldp_enabled_ptree_count.yfilter)) leaf_name_data.push_back(mldp_enabled_ptree_count.get_name_leafdata());
+    if (rsvp_te_enabled_ptree_count.is_set || is_set(rsvp_te_enabled_ptree_count.yfilter)) leaf_name_data.push_back(rsvp_te_enabled_ptree_count.get_name_leafdata());
+    if (total_ptree_count.is_set || is_set(total_ptree_count.yfilter)) leaf_name_data.push_back(total_ptree_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11562,28 +17110,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lmrib-mldp-ptree-count")
     {
         lmrib_mldp_ptree_count = value;
+        lmrib_mldp_ptree_count.value_namespace = name_space;
+        lmrib_mldp_ptree_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lmrib-rsvp-te-ptree-count")
     {
         lmrib_rsvp_te_ptree_count = value;
+        lmrib_rsvp_te_ptree_count.value_namespace = name_space;
+        lmrib_rsvp_te_ptree_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mldp-enabled-ptree-count")
     {
         mldp_enabled_ptree_count = value;
+        mldp_enabled_ptree_count.value_namespace = name_space;
+        mldp_enabled_ptree_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rsvp-te-enabled-ptree-count")
     {
         rsvp_te_enabled_ptree_count = value;
+        rsvp_te_enabled_ptree_count.value_namespace = name_space;
+        rsvp_te_enabled_ptree_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-ptree-count")
     {
         total_ptree_count = value;
+        total_ptree_count.value_namespace = name_space;
+        total_ptree_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lmrib-mldp-ptree-count")
+    {
+        lmrib_mldp_ptree_count.yfilter = yfilter;
+    }
+    if(value_path == "lmrib-rsvp-te-ptree-count")
+    {
+        lmrib_rsvp_te_ptree_count.yfilter = yfilter;
+    }
+    if(value_path == "mldp-enabled-ptree-count")
+    {
+        mldp_enabled_ptree_count.yfilter = yfilter;
+    }
+    if(value_path == "rsvp-te-enabled-ptree-count")
+    {
+        rsvp_te_enabled_ptree_count.yfilter = yfilter;
+    }
+    if(value_path == "total-ptree-count")
+    {
+        total_ptree_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lmrib-mldp-ptree-count" || name == "lmrib-rsvp-te-ptree-count" || name == "mldp-enabled-ptree-count" || name == "rsvp-te-enabled-ptree-count" || name == "total-ptree-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::PwGroupSummary()
@@ -11608,10 +17197,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::has_data() cons
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(plat_grouping_supported.operation)
-	|| is_set(pw_groups_down.operation)
-	|| is_set(total_pw_groups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(plat_grouping_supported.yfilter)
+	|| ydk::is_set(pw_groups_down.yfilter)
+	|| ydk::is_set(total_pw_groups.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::get_segment_path() const
@@ -11637,9 +17226,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (plat_grouping_supported.is_set || is_set(plat_grouping_supported.operation)) leaf_name_data.push_back(plat_grouping_supported.get_name_leafdata());
-    if (pw_groups_down.is_set || is_set(pw_groups_down.operation)) leaf_name_data.push_back(pw_groups_down.get_name_leafdata());
-    if (total_pw_groups.is_set || is_set(total_pw_groups.operation)) leaf_name_data.push_back(total_pw_groups.get_name_leafdata());
+    if (plat_grouping_supported.is_set || is_set(plat_grouping_supported.yfilter)) leaf_name_data.push_back(plat_grouping_supported.get_name_leafdata());
+    if (pw_groups_down.is_set || is_set(pw_groups_down.yfilter)) leaf_name_data.push_back(pw_groups_down.get_name_leafdata());
+    if (total_pw_groups.is_set || is_set(total_pw_groups.yfilter)) leaf_name_data.push_back(total_pw_groups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11658,20 +17247,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "plat-grouping-supported")
     {
         plat_grouping_supported = value;
+        plat_grouping_supported.value_namespace = name_space;
+        plat_grouping_supported.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-groups-down")
     {
         pw_groups_down = value;
+        pw_groups_down.value_namespace = name_space;
+        pw_groups_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-pw-groups")
     {
         total_pw_groups = value;
+        total_pw_groups.value_namespace = name_space;
+        total_pw_groups.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "plat-grouping-supported")
+    {
+        plat_grouping_supported.yfilter = yfilter;
+    }
+    if(value_path == "pw-groups-down")
+    {
+        pw_groups_down.yfilter = yfilter;
+    }
+    if(value_path == "total-pw-groups")
+    {
+        total_pw_groups.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "plat-grouping-supported" || name == "pw-groups-down" || name == "total-pw-groups")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::PwheMpSummary()
@@ -11692,8 +17310,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(total_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(total_count.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::get_segment_path() const
@@ -11719,7 +17337,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11738,12 +17356,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "total-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeers()
@@ -11772,7 +17407,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibNvePeers::has_operation() const
         if(l2fib_nve_peer[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibNvePeers::get_segment_path() const
@@ -11837,8 +17472,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibNvePeers::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibNvePeers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibNvePeers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibNvePeers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-nve-peer")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::L2FibNvePeer()
@@ -11869,13 +17515,13 @@ bool L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nve_if.operation)
-	|| is_set(vn_iid.operation)
-	|| is_set(vniid.operation)
-	|| is_set(vte_pip.operation)
-	|| is_set(vtep_address.operation)
-	|| is_set(xc_uint_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nve_if.yfilter)
+	|| ydk::is_set(vn_iid.yfilter)
+	|| ydk::is_set(vniid.yfilter)
+	|| ydk::is_set(vte_pip.yfilter)
+	|| ydk::is_set(vtep_address.yfilter)
+	|| ydk::is_set(xc_uint_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::get_segment_path() const
@@ -11901,12 +17547,12 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nve_if.is_set || is_set(nve_if.operation)) leaf_name_data.push_back(nve_if.get_name_leafdata());
-    if (vn_iid.is_set || is_set(vn_iid.operation)) leaf_name_data.push_back(vn_iid.get_name_leafdata());
-    if (vniid.is_set || is_set(vniid.operation)) leaf_name_data.push_back(vniid.get_name_leafdata());
-    if (vte_pip.is_set || is_set(vte_pip.operation)) leaf_name_data.push_back(vte_pip.get_name_leafdata());
-    if (vtep_address.is_set || is_set(vtep_address.operation)) leaf_name_data.push_back(vtep_address.get_name_leafdata());
-    if (xc_uint_id.is_set || is_set(xc_uint_id.operation)) leaf_name_data.push_back(xc_uint_id.get_name_leafdata());
+    if (nve_if.is_set || is_set(nve_if.yfilter)) leaf_name_data.push_back(nve_if.get_name_leafdata());
+    if (vn_iid.is_set || is_set(vn_iid.yfilter)) leaf_name_data.push_back(vn_iid.get_name_leafdata());
+    if (vniid.is_set || is_set(vniid.yfilter)) leaf_name_data.push_back(vniid.get_name_leafdata());
+    if (vte_pip.is_set || is_set(vte_pip.yfilter)) leaf_name_data.push_back(vte_pip.get_name_leafdata());
+    if (vtep_address.is_set || is_set(vtep_address.yfilter)) leaf_name_data.push_back(vtep_address.get_name_leafdata());
+    if (xc_uint_id.is_set || is_set(xc_uint_id.yfilter)) leaf_name_data.push_back(xc_uint_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11925,32 +17571,79 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nve-if")
     {
         nve_if = value;
+        nve_if.value_namespace = name_space;
+        nve_if.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vn-iid")
     {
         vn_iid = value;
+        vn_iid.value_namespace = name_space;
+        vn_iid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vniid")
     {
         vniid = value;
+        vniid.value_namespace = name_space;
+        vniid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vte-pip")
     {
         vte_pip = value;
+        vte_pip.value_namespace = name_space;
+        vte_pip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtep-address")
     {
         vtep_address = value;
+        vtep_address.value_namespace = name_space;
+        vtep_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xc-uint-id")
     {
         xc_uint_id = value;
+        xc_uint_id.value_namespace = name_space;
+        xc_uint_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nve-if")
+    {
+        nve_if.yfilter = yfilter;
+    }
+    if(value_path == "vn-iid")
+    {
+        vn_iid.yfilter = yfilter;
+    }
+    if(value_path == "vniid")
+    {
+        vniid.yfilter = yfilter;
+    }
+    if(value_path == "vte-pip")
+    {
+        vte_pip.yfilter = yfilter;
+    }
+    if(value_path == "vtep-address")
+    {
+        vtep_address.yfilter = yfilter;
+    }
+    if(value_path == "xc-uint-id")
+    {
+        xc_uint_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nve-if" || name == "vn-iid" || name == "vniid" || name == "vte-pip" || name == "vtep-address" || name == "xc-uint-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrps()
@@ -11979,7 +17672,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::has_operation() const
         if(l2fib_mmrp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::get_segment_path() const
@@ -12044,8 +17737,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-mmrp")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::L2FibMmrp()
@@ -12105,17 +17809,17 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::has_data() const
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bd_group_name.operation)
-	|| is_set(bd_name.operation)
-	|| is_set(bridge_domain_name.operation)
-	|| is_set(bridge_id.operation)
-	|| is_set(group.operation)
-	|| is_set(hardware_information.operation)
-	|| is_set(platform_data.operation)
-	|| is_set(platform_data_length.operation)
-	|| is_set(source.operation)
-	|| is_set(xid_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bd_group_name.yfilter)
+	|| ydk::is_set(bd_name.yfilter)
+	|| ydk::is_set(bridge_domain_name.yfilter)
+	|| ydk::is_set(bridge_id.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(hardware_information.yfilter)
+	|| ydk::is_set(platform_data.yfilter)
+	|| ydk::is_set(platform_data_length.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(xid_count.yfilter)
 	|| (destination_prefix !=  nullptr && destination_prefix->has_operation())
 	|| (forward_stats !=  nullptr && forward_stats->has_operation())
 	|| (irb_info !=  nullptr && irb_info->has_operation())
@@ -12146,16 +17850,16 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bd_group_name.is_set || is_set(bd_group_name.operation)) leaf_name_data.push_back(bd_group_name.get_name_leafdata());
-    if (bd_name.is_set || is_set(bd_name.operation)) leaf_name_data.push_back(bd_name.get_name_leafdata());
-    if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
-    if (bridge_id.is_set || is_set(bridge_id.operation)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (hardware_information.is_set || is_set(hardware_information.operation)) leaf_name_data.push_back(hardware_information.get_name_leafdata());
-    if (platform_data.is_set || is_set(platform_data.operation)) leaf_name_data.push_back(platform_data.get_name_leafdata());
-    if (platform_data_length.is_set || is_set(platform_data_length.operation)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (xid_count.is_set || is_set(xid_count.operation)) leaf_name_data.push_back(xid_count.get_name_leafdata());
+    if (bd_group_name.is_set || is_set(bd_group_name.yfilter)) leaf_name_data.push_back(bd_group_name.get_name_leafdata());
+    if (bd_name.is_set || is_set(bd_name.yfilter)) leaf_name_data.push_back(bd_name.get_name_leafdata());
+    if (bridge_domain_name.is_set || is_set(bridge_domain_name.yfilter)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
+    if (bridge_id.is_set || is_set(bridge_id.yfilter)) leaf_name_data.push_back(bridge_id.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (hardware_information.is_set || is_set(hardware_information.yfilter)) leaf_name_data.push_back(hardware_information.get_name_leafdata());
+    if (platform_data.is_set || is_set(platform_data.yfilter)) leaf_name_data.push_back(platform_data.get_name_leafdata());
+    if (platform_data_length.is_set || is_set(platform_data_length.yfilter)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (xid_count.is_set || is_set(xid_count.yfilter)) leaf_name_data.push_back(xid_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12244,48 +17948,119 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bd-group-name")
     {
         bd_group_name = value;
+        bd_group_name.value_namespace = name_space;
+        bd_group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bd-name")
     {
         bd_name = value;
+        bd_name.value_namespace = name_space;
+        bd_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-domain-name")
     {
         bridge_domain_name = value;
+        bridge_domain_name.value_namespace = name_space;
+        bridge_domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-id")
     {
         bridge_id = value;
+        bridge_id.value_namespace = name_space;
+        bridge_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-information")
     {
         hardware_information = value;
+        hardware_information.value_namespace = name_space;
+        hardware_information.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-data")
     {
         platform_data = value;
+        platform_data.value_namespace = name_space;
+        platform_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-data-length")
     {
         platform_data_length = value;
+        platform_data_length.value_namespace = name_space;
+        platform_data_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xid-count")
     {
         xid_count = value;
+        xid_count.value_namespace = name_space;
+        xid_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bd-group-name")
+    {
+        bd_group_name.yfilter = yfilter;
+    }
+    if(value_path == "bd-name")
+    {
+        bd_name.yfilter = yfilter;
+    }
+    if(value_path == "bridge-domain-name")
+    {
+        bridge_domain_name.yfilter = yfilter;
+    }
+    if(value_path == "bridge-id")
+    {
+        bridge_id.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "hardware-information")
+    {
+        hardware_information.yfilter = yfilter;
+    }
+    if(value_path == "platform-data")
+    {
+        platform_data.yfilter = yfilter;
+    }
+    if(value_path == "platform-data-length")
+    {
+        platform_data_length.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "xid-count")
+    {
+        xid_count.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-prefix" || name == "forward-stats" || name == "irb-info" || name == "multicast-base-information" || name == "source-prefix" || name == "bd-group-name" || name == "bd-name" || name == "bridge-domain-name" || name == "bridge-id" || name == "group" || name == "hardware-information" || name == "platform-data" || name == "platform-data-length" || name == "source" || name == "xid-count")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation::MulticastBaseInformation()
@@ -12304,7 +18079,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformati
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation::get_segment_path() const
@@ -12348,8 +18123,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix::SourcePrefix()
@@ -12374,10 +18158,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix::has_data
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(proto.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(proto.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix::get_segment_path() const
@@ -12403,9 +18187,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePref
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (proto.is_set || is_set(proto.operation)) leaf_name_data.push_back(proto.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (proto.is_set || is_set(proto.yfilter)) leaf_name_data.push_back(proto.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12424,20 +18208,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto")
     {
         proto = value;
+        proto.value_namespace = name_space;
+        proto.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "proto")
+    {
+        proto.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "proto")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix::DestinationPrefix()
@@ -12462,10 +18275,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix::has
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(proto.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(proto.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix::get_segment_path() const
@@ -12491,9 +18304,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::Destinatio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (proto.is_set || is_set(proto.operation)) leaf_name_data.push_back(proto.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (proto.is_set || is_set(proto.yfilter)) leaf_name_data.push_back(proto.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12512,20 +18325,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto")
     {
         proto = value;
+        proto.value_namespace = name_space;
+        proto.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "proto")
+    {
+        proto.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "prefix-length" || name == "proto")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStats()
@@ -12548,7 +18390,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::has_data
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (forward_stat !=  nullptr && forward_stat->has_operation());
 }
 
@@ -12607,8 +18449,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "forward-stat")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::ForwardStat()
@@ -12634,8 +18487,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardS
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
 	|| (mulicast !=  nullptr && mulicast->has_operation());
 }
 
@@ -12662,7 +18515,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12695,12 +18548,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mulicast" || name == "data-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Mulicast()
@@ -12743,7 +18613,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardS
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (core_received_stat !=  nullptr && core_received_stat->has_operation())
 	|| (drop !=  nullptr && drop->has_operation())
 	|| (multicast_core_forward_stat !=  nullptr && multicast_core_forward_stat->has_operation())
@@ -12877,8 +18747,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "core-received-stat" || name == "drop" || name == "multicast-core-forward-stat" || name == "multicast-forward-stat" || name == "punt" || name == "received-stat")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::MulticastForwardStat()
@@ -12901,9 +18782,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardS
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::get_segment_path() const
@@ -12929,8 +18810,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12949,16 +18830,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::ReceivedStat()
@@ -12981,9 +18885,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardS
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::get_segment_path() const
@@ -13009,8 +18913,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13029,16 +18933,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::ReceivedStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::Punt()
@@ -13061,9 +18988,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardS
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::get_segment_path() const
@@ -13089,8 +19016,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13109,16 +19036,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Punt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::Drop()
@@ -13141,9 +19091,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardS
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::get_segment_path() const
@@ -13169,8 +19119,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13189,16 +19139,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::Drop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::MulticastCoreForwardStat()
@@ -13221,9 +19194,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardS
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::get_segment_path() const
@@ -13249,8 +19222,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13269,16 +19242,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::CoreReceivedStat()
@@ -13301,9 +19297,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardS
 
 bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::get_segment_path() const
@@ -13329,8 +19325,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13349,16 +19345,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::IrbInfo()
@@ -13393,15 +19412,15 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::has_operation
 {
     for (auto const & leaf : irb_plat_data.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(irb_plat_data.operation)
-	|| is_set(irb_plat_data_len.operation)
-	|| is_set(mxid_ac_interface_handle.operation)
-	|| is_set(mxid_next_hop_address.operation)
-	|| is_set(mxid_pw_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(irb_plat_data.yfilter)
+	|| ydk::is_set(irb_plat_data_len.yfilter)
+	|| ydk::is_set(mxid_ac_interface_handle.yfilter)
+	|| ydk::is_set(mxid_next_hop_address.yfilter)
+	|| ydk::is_set(mxid_pw_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::get_segment_path() const
@@ -13427,10 +19446,10 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (irb_plat_data_len.is_set || is_set(irb_plat_data_len.operation)) leaf_name_data.push_back(irb_plat_data_len.get_name_leafdata());
-    if (mxid_ac_interface_handle.is_set || is_set(mxid_ac_interface_handle.operation)) leaf_name_data.push_back(mxid_ac_interface_handle.get_name_leafdata());
-    if (mxid_next_hop_address.is_set || is_set(mxid_next_hop_address.operation)) leaf_name_data.push_back(mxid_next_hop_address.get_name_leafdata());
-    if (mxid_pw_id.is_set || is_set(mxid_pw_id.operation)) leaf_name_data.push_back(mxid_pw_id.get_name_leafdata());
+    if (irb_plat_data_len.is_set || is_set(irb_plat_data_len.yfilter)) leaf_name_data.push_back(irb_plat_data_len.get_name_leafdata());
+    if (mxid_ac_interface_handle.is_set || is_set(mxid_ac_interface_handle.yfilter)) leaf_name_data.push_back(mxid_ac_interface_handle.get_name_leafdata());
+    if (mxid_next_hop_address.is_set || is_set(mxid_next_hop_address.yfilter)) leaf_name_data.push_back(mxid_next_hop_address.get_name_leafdata());
+    if (mxid_pw_id.is_set || is_set(mxid_pw_id.yfilter)) leaf_name_data.push_back(mxid_pw_id.get_name_leafdata());
 
     auto irb_plat_data_name_datas = irb_plat_data.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), irb_plat_data_name_datas.begin(), irb_plat_data_name_datas.end());
@@ -13451,7 +19470,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "irb-plat-data")
     {
@@ -13460,19 +19479,58 @@ void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::set_value(con
     if(value_path == "irb-plat-data-len")
     {
         irb_plat_data_len = value;
+        irb_plat_data_len.value_namespace = name_space;
+        irb_plat_data_len.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mxid-ac-interface-handle")
     {
         mxid_ac_interface_handle = value;
+        mxid_ac_interface_handle.value_namespace = name_space;
+        mxid_ac_interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mxid-next-hop-address")
     {
         mxid_next_hop_address = value;
+        mxid_next_hop_address.value_namespace = name_space;
+        mxid_next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mxid-pw-id")
     {
         mxid_pw_id = value;
+        mxid_pw_id.value_namespace = name_space;
+        mxid_pw_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "irb-plat-data")
+    {
+        irb_plat_data.yfilter = yfilter;
+    }
+    if(value_path == "irb-plat-data-len")
+    {
+        irb_plat_data_len.yfilter = yfilter;
+    }
+    if(value_path == "mxid-ac-interface-handle")
+    {
+        mxid_ac_interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "mxid-next-hop-address")
+    {
+        mxid_next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "mxid-pw-id")
+    {
+        mxid_pw_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "irb-plat-data" || name == "irb-plat-data-len" || name == "mxid-ac-interface-handle" || name == "mxid-next-hop-address" || name == "mxid-pw-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Macs()
@@ -13501,7 +19559,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::has_operation() const
         if(l2fib_evpn_ip6mac[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::get_segment_path() const
@@ -13566,8 +19624,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-evpn-ip6mac")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::L2FibEvpnIp6Mac()
@@ -13611,17 +19680,17 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::has_data()
 
 bool L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(arp_nd_delete_pending.operation)
-	|| is_set(arp_nd_probe_pending.operation)
-	|| is_set(arp_nd_sync_pending.operation)
-	|| is_set(bdid.operation)
-	|| is_set(bdid_xr.operation)
-	|| is_set(ip_address.operation)
-	|| is_set(is_local.operation)
-	|| is_set(is_local_xr.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mac_address_xr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(arp_nd_delete_pending.yfilter)
+	|| ydk::is_set(arp_nd_probe_pending.yfilter)
+	|| ydk::is_set(arp_nd_sync_pending.yfilter)
+	|| ydk::is_set(bdid.yfilter)
+	|| ydk::is_set(bdid_xr.yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(is_local.yfilter)
+	|| ydk::is_set(is_local_xr.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mac_address_xr.yfilter)
 	|| (ip_address_xr !=  nullptr && ip_address_xr->has_operation());
 }
 
@@ -13648,16 +19717,16 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (arp_nd_delete_pending.is_set || is_set(arp_nd_delete_pending.operation)) leaf_name_data.push_back(arp_nd_delete_pending.get_name_leafdata());
-    if (arp_nd_probe_pending.is_set || is_set(arp_nd_probe_pending.operation)) leaf_name_data.push_back(arp_nd_probe_pending.get_name_leafdata());
-    if (arp_nd_sync_pending.is_set || is_set(arp_nd_sync_pending.operation)) leaf_name_data.push_back(arp_nd_sync_pending.get_name_leafdata());
-    if (bdid.is_set || is_set(bdid.operation)) leaf_name_data.push_back(bdid.get_name_leafdata());
-    if (bdid_xr.is_set || is_set(bdid_xr.operation)) leaf_name_data.push_back(bdid_xr.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (is_local.is_set || is_set(is_local.operation)) leaf_name_data.push_back(is_local.get_name_leafdata());
-    if (is_local_xr.is_set || is_set(is_local_xr.operation)) leaf_name_data.push_back(is_local_xr.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mac_address_xr.is_set || is_set(mac_address_xr.operation)) leaf_name_data.push_back(mac_address_xr.get_name_leafdata());
+    if (arp_nd_delete_pending.is_set || is_set(arp_nd_delete_pending.yfilter)) leaf_name_data.push_back(arp_nd_delete_pending.get_name_leafdata());
+    if (arp_nd_probe_pending.is_set || is_set(arp_nd_probe_pending.yfilter)) leaf_name_data.push_back(arp_nd_probe_pending.get_name_leafdata());
+    if (arp_nd_sync_pending.is_set || is_set(arp_nd_sync_pending.yfilter)) leaf_name_data.push_back(arp_nd_sync_pending.get_name_leafdata());
+    if (bdid.is_set || is_set(bdid.yfilter)) leaf_name_data.push_back(bdid.get_name_leafdata());
+    if (bdid_xr.is_set || is_set(bdid_xr.yfilter)) leaf_name_data.push_back(bdid_xr.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (is_local.is_set || is_set(is_local.yfilter)) leaf_name_data.push_back(is_local.get_name_leafdata());
+    if (is_local_xr.is_set || is_set(is_local_xr.yfilter)) leaf_name_data.push_back(is_local_xr.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mac_address_xr.is_set || is_set(mac_address_xr.yfilter)) leaf_name_data.push_back(mac_address_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13690,48 +19759,119 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "arp-nd-delete-pending")
     {
         arp_nd_delete_pending = value;
+        arp_nd_delete_pending.value_namespace = name_space;
+        arp_nd_delete_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arp-nd-probe-pending")
     {
         arp_nd_probe_pending = value;
+        arp_nd_probe_pending.value_namespace = name_space;
+        arp_nd_probe_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "arp-nd-sync-pending")
     {
         arp_nd_sync_pending = value;
+        arp_nd_sync_pending.value_namespace = name_space;
+        arp_nd_sync_pending.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bdid")
     {
         bdid = value;
+        bdid.value_namespace = name_space;
+        bdid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bdid-xr")
     {
         bdid_xr = value;
+        bdid_xr.value_namespace = name_space;
+        bdid_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-local")
     {
         is_local = value;
+        is_local.value_namespace = name_space;
+        is_local.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-local-xr")
     {
         is_local_xr = value;
+        is_local_xr.value_namespace = name_space;
+        is_local_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address-xr")
     {
         mac_address_xr = value;
+        mac_address_xr.value_namespace = name_space;
+        mac_address_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "arp-nd-delete-pending")
+    {
+        arp_nd_delete_pending.yfilter = yfilter;
+    }
+    if(value_path == "arp-nd-probe-pending")
+    {
+        arp_nd_probe_pending.yfilter = yfilter;
+    }
+    if(value_path == "arp-nd-sync-pending")
+    {
+        arp_nd_sync_pending.yfilter = yfilter;
+    }
+    if(value_path == "bdid")
+    {
+        bdid.yfilter = yfilter;
+    }
+    if(value_path == "bdid-xr")
+    {
+        bdid_xr.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "is-local")
+    {
+        is_local.yfilter = yfilter;
+    }
+    if(value_path == "is-local-xr")
+    {
+        is_local_xr.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mac-address-xr")
+    {
+        mac_address_xr.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-address-xr" || name == "arp-nd-delete-pending" || name == "arp-nd-probe-pending" || name == "arp-nd-sync-pending" || name == "bdid" || name == "bdid-xr" || name == "ip-address" || name == "is-local" || name == "is-local-xr" || name == "mac-address" || name == "mac-address-xr")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::IpAddressXr::IpAddressXr()
@@ -13754,9 +19894,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::IpAddressX
 
 bool L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::IpAddressXr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(addr_type.operation)
-	|| is_set(ip.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(addr_type.yfilter)
+	|| ydk::is_set(ip.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::IpAddressXr::get_segment_path() const
@@ -13782,8 +19922,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (addr_type.is_set || is_set(addr_type.operation)) leaf_name_data.push_back(addr_type.get_name_leafdata());
-    if (ip.is_set || is_set(ip.operation)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (addr_type.is_set || is_set(addr_type.yfilter)) leaf_name_data.push_back(addr_type.get_name_leafdata());
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13802,16 +19942,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::IpAddressXr::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::IpAddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "addr-type")
     {
         addr_type = value;
+        addr_type.value_namespace = name_space;
+        addr_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip")
     {
         ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::IpAddressXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "addr-type")
+    {
+        addr_type.yfilter = yfilter;
+    }
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnIp6Macs::L2FibEvpnIp6Mac::IpAddressXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "addr-type" || name == "ip")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummaries()
@@ -13840,7 +20003,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::has_operation() co
         if(l2fib_dhcp_binding_summary[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::get_segment_path() const
@@ -13905,8 +20068,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-dhcp-binding-summary")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::L2FibDhcpBindingSummary()
@@ -13934,9 +20108,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSu
 
 bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(xcid.operation)
-	|| is_set(bindings.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(xcid.yfilter)
+	|| ydk::is_set(bindings.yfilter)
 	|| (port !=  nullptr && port->has_operation());
 }
 
@@ -13963,8 +20137,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (xcid.is_set || is_set(xcid.operation)) leaf_name_data.push_back(xcid.get_name_leafdata());
-    if (bindings.is_set || is_set(bindings.operation)) leaf_name_data.push_back(bindings.get_name_leafdata());
+    if (xcid.is_set || is_set(xcid.yfilter)) leaf_name_data.push_back(xcid.get_name_leafdata());
+    if (bindings.is_set || is_set(bindings.yfilter)) leaf_name_data.push_back(bindings.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13997,16 +20171,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xcid")
     {
         xcid = value;
+        xcid.value_namespace = name_space;
+        xcid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bindings")
     {
         bindings = value;
+        bindings.value_namespace = name_space;
+        bindings.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "xcid")
+    {
+        xcid.yfilter = yfilter;
+    }
+    if(value_path == "bindings")
+    {
+        bindings.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port" || name == "xcid" || name == "bindings")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Port()
@@ -14036,8 +20233,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSu
 
 bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(data_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(data_type.yfilter)
 	|| (ac !=  nullptr && ac->has_operation())
 	|| (pw !=  nullptr && pw->has_operation());
 }
@@ -14065,7 +20262,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (data_type.is_set || is_set(data_type.operation)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14112,12 +20309,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
         data_type = value;
+        data_type.value_namespace = name_space;
+        data_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "data-type")
+    {
+        data_type.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ac" || name == "pw" || name == "data-type")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Ac::Ac()
@@ -14138,8 +20352,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSu
 
 bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Ac::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_handle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_handle.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Ac::get_segment_path() const
@@ -14165,7 +20379,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14184,12 +20398,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Ac::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Ac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Ac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-handle")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Pw::Pw()
@@ -14214,10 +20445,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSu
 
 bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Pw::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(pseudo_wire_id_type.operation)
-	|| is_set(pw_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(pseudo_wire_id_type.yfilter)
+	|| ydk::is_set(pw_id.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Pw::get_segment_path() const
@@ -14243,9 +20474,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (pseudo_wire_id_type.is_set || is_set(pseudo_wire_id_type.operation)) leaf_name_data.push_back(pseudo_wire_id_type.get_name_leafdata());
-    if (pw_id.is_set || is_set(pw_id.operation)) leaf_name_data.push_back(pw_id.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (pseudo_wire_id_type.is_set || is_set(pseudo_wire_id_type.yfilter)) leaf_name_data.push_back(pseudo_wire_id_type.get_name_leafdata());
+    if (pw_id.is_set || is_set(pw_id.yfilter)) leaf_name_data.push_back(pw_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14264,20 +20495,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Pw::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pseudo-wire-id-type")
     {
         pseudo_wire_id_type = value;
+        pseudo_wire_id_type.value_namespace = name_space;
+        pseudo_wire_id_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pw-id")
     {
         pw_id = value;
+        pw_id.value_namespace = name_space;
+        pw_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Pw::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "pseudo-wire-id-type")
+    {
+        pseudo_wire_id_type.yfilter = yfilter;
+    }
+    if(value_path == "pw-id")
+    {
+        pw_id.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingSummaries::L2FibDhcpBindingSummary::Port::Pw::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop-address" || name == "pseudo-wire-id-type" || name == "pw-id")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCasts()
@@ -14306,7 +20566,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::has_operation() const
         if(l2fib_evpn_incl_m_cast[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::get_segment_path() const
@@ -14371,8 +20631,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-evpn-incl-m-cast")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCast()
@@ -14402,8 +20673,8 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::has_
 
 bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bd_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bd_name.yfilter)
 	|| (l2fib_evpn_incl_m_cast_oles !=  nullptr && l2fib_evpn_incl_m_cast_oles->has_operation())
 	|| (mcast_replication_list !=  nullptr && mcast_replication_list->has_operation());
 }
@@ -14431,7 +20702,7 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bd_name.is_set || is_set(bd_name.operation)) leaf_name_data.push_back(bd_name.get_name_leafdata());
+    if (bd_name.is_set || is_set(bd_name.yfilter)) leaf_name_data.push_back(bd_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14478,12 +20749,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bd-name")
     {
         bd_name = value;
+        bd_name.value_namespace = name_space;
+        bd_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bd-name")
+    {
+        bd_name.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-evpn-incl-m-cast-oles" || name == "mcast-replication-list" || name == "bd-name")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::McastReplicationList::McastReplicationList()
@@ -14508,10 +20796,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::Mcas
 
 bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::McastReplicationList::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bridge_domain_id.operation)
-	|| is_set(bridge_domain_name.operation)
-	|| is_set(is_bound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bridge_domain_id.yfilter)
+	|| ydk::is_set(bridge_domain_name.yfilter)
+	|| ydk::is_set(is_bound.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::McastReplicationList::get_segment_path() const
@@ -14537,9 +20825,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bridge_domain_id.is_set || is_set(bridge_domain_id.operation)) leaf_name_data.push_back(bridge_domain_id.get_name_leafdata());
-    if (bridge_domain_name.is_set || is_set(bridge_domain_name.operation)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
-    if (is_bound.is_set || is_set(is_bound.operation)) leaf_name_data.push_back(is_bound.get_name_leafdata());
+    if (bridge_domain_id.is_set || is_set(bridge_domain_id.yfilter)) leaf_name_data.push_back(bridge_domain_id.get_name_leafdata());
+    if (bridge_domain_name.is_set || is_set(bridge_domain_name.yfilter)) leaf_name_data.push_back(bridge_domain_name.get_name_leafdata());
+    if (is_bound.is_set || is_set(is_bound.yfilter)) leaf_name_data.push_back(is_bound.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14558,20 +20846,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::McastReplicationList::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::McastReplicationList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bridge-domain-id")
     {
         bridge_domain_id = value;
+        bridge_domain_id.value_namespace = name_space;
+        bridge_domain_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bridge-domain-name")
     {
         bridge_domain_name = value;
+        bridge_domain_name.value_namespace = name_space;
+        bridge_domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-bound")
     {
         is_bound = value;
+        is_bound.value_namespace = name_space;
+        is_bound.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::McastReplicationList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bridge-domain-id")
+    {
+        bridge_domain_id.yfilter = yfilter;
+    }
+    if(value_path == "bridge-domain-name")
+    {
+        bridge_domain_name.yfilter = yfilter;
+    }
+    if(value_path == "is-bound")
+    {
+        is_bound.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::McastReplicationList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bridge-domain-id" || name == "bridge-domain-name" || name == "is-bound")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOles()
@@ -14600,7 +20917,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2Fi
         if(l2fib_evpn_incl_m_cast_ole[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::get_segment_path() const
@@ -14665,8 +20982,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2fib-evpn-incl-m-cast-ole")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::L2FibEvpnInclMCastOle()
@@ -14700,10 +21028,10 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2Fi
 
 bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(is_bound.operation)
-	|| is_set(next_hop_valid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(is_bound.yfilter)
+	|| ydk::is_set(next_hop_valid.yfilter)
 	|| (mcast_ole !=  nullptr && mcast_ole->has_operation())
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
@@ -14731,9 +21059,9 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (is_bound.is_set || is_set(is_bound.operation)) leaf_name_data.push_back(is_bound.get_name_leafdata());
-    if (next_hop_valid.is_set || is_set(next_hop_valid.operation)) leaf_name_data.push_back(next_hop_valid.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (is_bound.is_set || is_set(is_bound.yfilter)) leaf_name_data.push_back(is_bound.get_name_leafdata());
+    if (next_hop_valid.is_set || is_set(next_hop_valid.yfilter)) leaf_name_data.push_back(next_hop_valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14780,20 +21108,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-bound")
     {
         is_bound = value;
+        is_bound.value_namespace = name_space;
+        is_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-valid")
     {
         next_hop_valid = value;
+        next_hop_valid.value_namespace = name_space;
+        next_hop_valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "is-bound")
+    {
+        is_bound.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-valid")
+    {
+        next_hop_valid.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mcast-ole" || name == "next-hop" || name == "next-hop-address" || name == "is-bound" || name == "next-hop-valid")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::McastOle()
@@ -14816,9 +21173,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2Fi
 
 bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mcast_label.operation)
-	|| is_set(next_hop_ipv6_addr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mcast_label.yfilter)
+	|| ydk::is_set(next_hop_ipv6_addr.yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_segment_path() const
@@ -14844,8 +21201,8 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mcast_label.is_set || is_set(mcast_label.operation)) leaf_name_data.push_back(mcast_label.get_name_leafdata());
-    if (next_hop_ipv6_addr.is_set || is_set(next_hop_ipv6_addr.operation)) leaf_name_data.push_back(next_hop_ipv6_addr.get_name_leafdata());
+    if (mcast_label.is_set || is_set(mcast_label.yfilter)) leaf_name_data.push_back(mcast_label.get_name_leafdata());
+    if (next_hop_ipv6_addr.is_set || is_set(next_hop_ipv6_addr.yfilter)) leaf_name_data.push_back(next_hop_ipv6_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14864,16 +21221,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mcast-label")
     {
         mcast_label = value;
+        mcast_label.value_namespace = name_space;
+        mcast_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-ipv6-addr")
     {
         next_hop_ipv6_addr = value;
+        next_hop_ipv6_addr.value_namespace = name_space;
+        next_hop_ipv6_addr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mcast-label")
+    {
+        mcast_label.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-ipv6-addr")
+    {
+        next_hop_ipv6_addr.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mcast-label" || name == "next-hop-ipv6-addr")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::NextHop()
@@ -14907,12 +21287,12 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2Fi
 
 bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(children_count.operation)
-	|| is_set(next_hop_address.operation)
-	|| is_set(next_hop_internal_label.operation)
-	|| is_set(plaformt_data_valid.operation)
-	|| is_set(platform_data_length.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(children_count.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_internal_label.yfilter)
+	|| ydk::is_set(plaformt_data_valid.yfilter)
+	|| ydk::is_set(platform_data_length.yfilter)
 	|| (base !=  nullptr && base->has_operation());
 }
 
@@ -14939,11 +21319,11 @@ const EntityPath L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (children_count.is_set || is_set(children_count.operation)) leaf_name_data.push_back(children_count.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.operation)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.operation)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
-    if (plaformt_data_valid.is_set || is_set(plaformt_data_valid.operation)) leaf_name_data.push_back(plaformt_data_valid.get_name_leafdata());
-    if (platform_data_length.is_set || is_set(platform_data_length.operation)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
+    if (children_count.is_set || is_set(children_count.yfilter)) leaf_name_data.push_back(children_count.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+    if (next_hop_internal_label.is_set || is_set(next_hop_internal_label.yfilter)) leaf_name_data.push_back(next_hop_internal_label.get_name_leafdata());
+    if (plaformt_data_valid.is_set || is_set(plaformt_data_valid.yfilter)) leaf_name_data.push_back(plaformt_data_valid.get_name_leafdata());
+    if (platform_data_length.is_set || is_set(platform_data_length.yfilter)) leaf_name_data.push_back(platform_data_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14976,28 +21356,69 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "children-count")
     {
         children_count = value;
+        children_count.value_namespace = name_space;
+        children_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-address")
     {
         next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop-internal-label")
     {
         next_hop_internal_label = value;
+        next_hop_internal_label.value_namespace = name_space;
+        next_hop_internal_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "plaformt-data-valid")
     {
         plaformt_data_valid = value;
+        plaformt_data_valid.value_namespace = name_space;
+        plaformt_data_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-data-length")
     {
         platform_data_length = value;
+        platform_data_length.value_namespace = name_space;
+        platform_data_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "children-count")
+    {
+        children_count.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-internal-label")
+    {
+        next_hop_internal_label.yfilter = yfilter;
+    }
+    if(value_path == "plaformt-data-valid")
+    {
+        plaformt_data_valid.yfilter = yfilter;
+    }
+    if(value_path == "platform-data-length")
+    {
+        platform_data_length.yfilter = yfilter;
+    }
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "base" || name == "children-count" || name == "next-hop-address" || name == "next-hop-internal-label" || name == "plaformt-data-valid" || name == "platform-data-length")
+        return true;
+    return false;
 }
 
 L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::Base()
@@ -15016,7 +21437,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2Fi
 
 bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_segment_path() const
@@ -15060,8 +21481,17 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::set_value(const std::string & value_path, std::string value)
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCasts::L2FibEvpnInclMCast::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 L2Vpnv2::L2Vpnv2()
@@ -15092,7 +21522,7 @@ bool L2Vpnv2::has_data() const
 
 bool L2Vpnv2::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation())
 	|| (standby !=  nullptr && standby->has_operation());
@@ -15178,7 +21608,11 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::get_children() const
     return children;
 }
 
-void L2Vpnv2::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2Vpnv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -15200,6 +21634,18 @@ std::string L2Vpnv2::get_bundle_name() const
 augment_capabilities_function L2Vpnv2::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> L2Vpnv2::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool L2Vpnv2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "nodes" || name == "standby")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Standby::Standby()
@@ -15334,7 +21780,7 @@ bool L2Vpnv2::Standby::has_data() const
 
 bool L2Vpnv2::Standby::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bridge_domains !=  nullptr && bridge_domains->has_operation())
 	|| (bridge_summary !=  nullptr && bridge_summary->has_operation())
 	|| (discoveries !=  nullptr && discoveries->has_operation())
@@ -15813,8 +22259,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::get_children() 
     return children;
 }
 
-void L2Vpnv2::Standby::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Standby::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Standby::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Standby::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bridge-domains" || name == "bridge-summary" || name == "discoveries" || name == "discovery-summary" || name == "flexible-xconnect-service-summary" || name == "flexible-xconnect-services" || name == "g8032" || name == "generic-interface-list-details" || name == "generic-interfaces" || name == "global-settings" || name == "iccp-sm" || name == "indexes" || name == "l2vpn-collaborators" || name == "l2vpn-pbb-bsa" || name == "l2vpn-resource-state" || name == "main-interfaces" || name == "mstp-ports" || name == "mstp-vlans" || name == "mvrp" || name == "nsr" || name == "proc-fsm" || name == "pseudowire-classes" || name == "pwr" || name == "xconnect-brief" || name == "xconnect-groups" || name == "xconnect-mp2mp-ce2ces" || name == "xconnect-mp2mps" || name == "xconnect-summary" || name == "xconnects")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Standby::Discoveries::Discoveries()
@@ -15843,7 +22300,7 @@ bool L2Vpnv2::Standby::Discoveries::has_operation() const
         if(discovery[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Vpnv2::Standby::Discoveries::get_segment_path() const
@@ -15908,8 +22365,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::ge
     return children;
 }
 
-void L2Vpnv2::Standby::Discoveries::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Standby::Discoveries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Vpnv2::Standby::Discoveries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Vpnv2::Standby::Discoveries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery")
+        return true;
+    return false;
 }
 
 L2Vpnv2::Standby::Discoveries::Discovery::Discovery()
@@ -15953,17 +22421,17 @@ bool L2Vpnv2::Standby::Discoveries::Discovery::has_data() const
 
 bool L2Vpnv2::Standby::Discoveries::Discovery::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_name.operation)
-	|| is_set(group_name_xr.operation)
-	|| is_set(is_service_connected.operation)
-	|| is_set(mtu_mismatch_ignore.operation)
-	|| is_set(number_vpn.operation)
-	|| is_set(service_name.operation)
-	|| is_set(service_name_xr.operation)
-	|| is_set(vpn_id.operation)
-	|| is_set(vpn_name.operation)
-	|| is_set(vpn_name_xr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(group_name_xr.yfilter)
+	|| ydk::is_set(is_service_connected.yfilter)
+	|| ydk::is_set(mtu_mismatch_ignore.yfilter)
+	|| ydk::is_set(number_vpn.yfilter)
+	|| ydk::is_set(service_name.yfilter)
+	|| ydk::is_set(service_name_xr.yfilter)
+	|| ydk::is_set(vpn_id.yfilter)
+	|| ydk::is_set(vpn_name.yfilter)
+	|| ydk::is_set(vpn_name_xr.yfilter)
 	|| (signalling_info !=  nullptr && signalling_info->has_operation());
 }
 
@@ -15990,16 +22458,16 @@ const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (group_name_xr.is_set || is_set(group_name_xr.operation)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
-    if (is_service_connected.is_set || is_set(is_service_connected.operation)) leaf_name_data.push_back(is_service_connected.get_name_leafdata());
-    if (mtu_mismatch_ignore.is_set || is_set(mtu_mismatch_ignore.operation)) leaf_name_data.push_back(mtu_mismatch_ignore.get_name_leafdata());
-    if (number_vpn.is_set || is_set(number_vpn.operation)) leaf_name_data.push_back(number_vpn.get_name_leafdata());
-    if (service_name.is_set || is_set(service_name.operation)) leaf_name_data.push_back(service_name.get_name_leafdata());
-    if (service_name_xr.is_set || is_set(service_name_xr.operation)) leaf_name_data.push_back(service_name_xr.get_name_leafdata());
-    if (vpn_id.is_set || is_set(vpn_id.operation)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
-    if (vpn_name.is_set || is_set(vpn_name.operation)) leaf_name_data.push_back(vpn_name.get_name_leafdata());
-    if (vpn_name_xr.is_set || is_set(vpn_name_xr.operation)) leaf_name_data.push_back(vpn_name_xr.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (group_name_xr.is_set || is_set(group_name_xr.yfilter)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
+    if (is_service_connected.is_set || is_set(is_service_connected.yfilter)) leaf_name_data.push_back(is_service_connected.get_name_leafdata());
+    if (mtu_mismatch_ignore.is_set || is_set(mtu_mismatch_ignore.yfilter)) leaf_name_data.push_back(mtu_mismatch_ignore.get_name_leafdata());
+    if (number_vpn.is_set || is_set(number_vpn.yfilter)) leaf_name_data.push_back(number_vpn.get_name_leafdata());
+    if (service_name.is_set || is_set(service_name.yfilter)) leaf_name_data.push_back(service_name.get_name_leafdata());
+    if (service_name_xr.is_set || is_set(service_name_xr.yfilter)) leaf_name_data.push_back(service_name_xr.get_name_leafdata());
+    if (vpn_id.is_set || is_set(vpn_id.yfilter)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
+    if (vpn_name.is_set || is_set(vpn_name.yfilter)) leaf_name_data.push_back(vpn_name.get_name_leafdata());
+    if (vpn_name_xr.is_set || is_set(vpn_name_xr.yfilter)) leaf_name_data.push_back(vpn_name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16032,1484 +22500,119 @@ std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Di
     return children;
 }
 
-void L2Vpnv2::Standby::Discoveries::Discovery::set_value(const std::string & value_path, std::string value)
+void L2Vpnv2::Standby::Discoveries::Discovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name-xr")
     {
         group_name_xr = value;
+        group_name_xr.value_namespace = name_space;
+        group_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-service-connected")
     {
         is_service_connected = value;
+        is_service_connected.value_namespace = name_space;
+        is_service_connected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu-mismatch-ignore")
     {
         mtu_mismatch_ignore = value;
+        mtu_mismatch_ignore.value_namespace = name_space;
+        mtu_mismatch_ignore.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-vpn")
     {
         number_vpn = value;
+        number_vpn.value_namespace = name_space;
+        number_vpn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-name")
     {
         service_name = value;
+        service_name.value_namespace = name_space;
+        service_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-name-xr")
     {
         service_name_xr = value;
+        service_name_xr.value_namespace = name_space;
+        service_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpn-id")
     {
         vpn_id = value;
+        vpn_id.value_namespace = name_space;
+        vpn_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpn-name")
     {
         vpn_name = value;
+        vpn_name.value_namespace = name_space;
+        vpn_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpn-name-xr")
     {
         vpn_name_xr = value;
+        vpn_name_xr.value_namespace = name_space;
+        vpn_name_xr.value_namespace_prefix = name_space_prefix;
     }
 }
 
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::SignallingInfo()
-    :
-    ad_signalling_method{YType::enumeration, "ad-signalling-method"}
-    	,
-    bgp_sig_info(std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo>())
-	,ldp_sig_info(std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo>())
+void L2Vpnv2::Standby::Discoveries::Discovery::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    bgp_sig_info->parent = this;
-
-    ldp_sig_info->parent = this;
-
-    yang_name = "signalling-info"; yang_parent_name = "discovery";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::~SignallingInfo()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::has_data() const
-{
-    return ad_signalling_method.is_set
-	|| (bgp_sig_info !=  nullptr && bgp_sig_info->has_data())
-	|| (ldp_sig_info !=  nullptr && ldp_sig_info->has_data());
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(ad_signalling_method.operation)
-	|| (bgp_sig_info !=  nullptr && bgp_sig_info->has_operation())
-	|| (ldp_sig_info !=  nullptr && ldp_sig_info->has_operation());
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "signalling-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ad_signalling_method.is_set || is_set(ad_signalling_method.operation)) leaf_name_data.push_back(ad_signalling_method.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bgp-sig-info")
-    {
-        if(bgp_sig_info == nullptr)
-        {
-            bgp_sig_info = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo>();
-        }
-        return bgp_sig_info;
-    }
-
-    if(child_yang_name == "ldp-sig-info")
-    {
-        if(ldp_sig_info == nullptr)
-        {
-            ldp_sig_info = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo>();
-        }
-        return ldp_sig_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bgp_sig_info != nullptr)
-    {
-        children["bgp-sig-info"] = bgp_sig_info;
-    }
-
-    if(ldp_sig_info != nullptr)
-    {
-        children["ldp-sig-info"] = ldp_sig_info;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "ad-signalling-method")
-    {
-        ad_signalling_method = value;
-    }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::BgpSigInfo()
-    :
-    number_edges{YType::uint32, "number-edges"},
-    number_remote_edges{YType::uint32, "number-remote-edges"}
-{
-    yang_name = "bgp-sig-info"; yang_parent_name = "signalling-info";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::~BgpSigInfo()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::has_data() const
-{
-    for (std::size_t index=0; index<edge.size(); index++)
-    {
-        if(edge[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<redge.size(); index++)
-    {
-        if(redge[index]->has_data())
-            return true;
-    }
-    return number_edges.is_set
-	|| number_remote_edges.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::has_operation() const
-{
-    for (std::size_t index=0; index<edge.size(); index++)
-    {
-        if(edge[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<redge.size(); index++)
-    {
-        if(redge[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(number_edges.operation)
-	|| is_set(number_remote_edges.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bgp-sig-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number_edges.is_set || is_set(number_edges.operation)) leaf_name_data.push_back(number_edges.get_name_leafdata());
-    if (number_remote_edges.is_set || is_set(number_remote_edges.operation)) leaf_name_data.push_back(number_remote_edges.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "edge")
-    {
-        for(auto const & c : edge)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge>();
-        c->parent = this;
-        edge.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "redge")
-    {
-        for(auto const & c : redge)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge>();
-        c->parent = this;
-        redge.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : edge)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    for (auto const & c : redge)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "number-edges")
-    {
-        number_edges = value;
-    }
-    if(value_path == "number-remote-edges")
-    {
-        number_remote_edges = value;
-    }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::Edge()
-    :
-    edge_id{YType::uint32, "edge-id"},
-    label_count{YType::uint32, "label-count"}
-{
-    yang_name = "edge"; yang_parent_name = "bgp-sig-info";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::~Edge()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::has_data() const
-{
-    for (std::size_t index=0; index<label_block.size(); index++)
-    {
-        if(label_block[index]->has_data())
-            return true;
-    }
-    return edge_id.is_set
-	|| label_count.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::has_operation() const
-{
-    for (std::size_t index=0; index<label_block.size(); index++)
-    {
-        if(label_block[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(edge_id.operation)
-	|| is_set(label_count.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "edge";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/bgp-sig-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (edge_id.is_set || is_set(edge_id.operation)) leaf_name_data.push_back(edge_id.get_name_leafdata());
-    if (label_count.is_set || is_set(label_count.operation)) leaf_name_data.push_back(label_count.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "label-block")
-    {
-        for(auto const & c : label_block)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock>();
-        c->parent = this;
-        label_block.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : label_block)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "edge-id")
-    {
-        edge_id = value;
-    }
-    if(value_path == "label-count")
-    {
-        label_count = value;
-    }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::LabelBlock()
-    :
-    block_offset{YType::uint32, "block-offset"},
-    block_size{YType::uint32, "block-size"},
-    label_base{YType::uint32, "label-base"},
-    label_error{YType::enumeration, "label-error"},
-    label_time_created{YType::uint32, "label-time-created"},
-    local_edge_id{YType::uint32, "local-edge-id"},
-    next_hop{YType::str, "next-hop"},
-    status_vector{YType::uint8, "status-vector"}
-{
-    yang_name = "label-block"; yang_parent_name = "edge";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::~LabelBlock()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::has_data() const
-{
-    for (auto const & leaf : status_vector.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return block_offset.is_set
-	|| block_size.is_set
-	|| label_base.is_set
-	|| label_error.is_set
-	|| label_time_created.is_set
-	|| local_edge_id.is_set
-	|| next_hop.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::has_operation() const
-{
-    for (auto const & leaf : status_vector.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(block_offset.operation)
-	|| is_set(block_size.operation)
-	|| is_set(label_base.operation)
-	|| is_set(label_error.operation)
-	|| is_set(label_time_created.operation)
-	|| is_set(local_edge_id.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(status_vector.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "label-block";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/bgp-sig-info/edge/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (block_offset.is_set || is_set(block_offset.operation)) leaf_name_data.push_back(block_offset.get_name_leafdata());
-    if (block_size.is_set || is_set(block_size.operation)) leaf_name_data.push_back(block_size.get_name_leafdata());
-    if (label_base.is_set || is_set(label_base.operation)) leaf_name_data.push_back(label_base.get_name_leafdata());
-    if (label_error.is_set || is_set(label_error.operation)) leaf_name_data.push_back(label_error.get_name_leafdata());
-    if (label_time_created.is_set || is_set(label_time_created.operation)) leaf_name_data.push_back(label_time_created.get_name_leafdata());
-    if (local_edge_id.is_set || is_set(local_edge_id.operation)) leaf_name_data.push_back(local_edge_id.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-
-    auto status_vector_name_datas = status_vector.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), status_vector_name_datas.begin(), status_vector_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Edge::LabelBlock::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "block-offset")
-    {
-        block_offset = value;
-    }
-    if(value_path == "block-size")
-    {
-        block_size = value;
-    }
-    if(value_path == "label-base")
-    {
-        label_base = value;
-    }
-    if(value_path == "label-error")
-    {
-        label_error = value;
-    }
-    if(value_path == "label-time-created")
-    {
-        label_time_created = value;
-    }
-    if(value_path == "local-edge-id")
-    {
-        local_edge_id = value;
-    }
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-    }
-    if(value_path == "status-vector")
-    {
-        status_vector.append(value);
-    }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::Redge()
-    :
-    edge_id{YType::uint32, "edge-id"},
-    label_count{YType::uint32, "label-count"}
-{
-    yang_name = "redge"; yang_parent_name = "bgp-sig-info";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::~Redge()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::has_data() const
-{
-    for (std::size_t index=0; index<label_block.size(); index++)
-    {
-        if(label_block[index]->has_data())
-            return true;
-    }
-    return edge_id.is_set
-	|| label_count.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::has_operation() const
-{
-    for (std::size_t index=0; index<label_block.size(); index++)
-    {
-        if(label_block[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(edge_id.operation)
-	|| is_set(label_count.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "redge";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/bgp-sig-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (edge_id.is_set || is_set(edge_id.operation)) leaf_name_data.push_back(edge_id.get_name_leafdata());
-    if (label_count.is_set || is_set(label_count.operation)) leaf_name_data.push_back(label_count.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "label-block")
-    {
-        for(auto const & c : label_block)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock>();
-        c->parent = this;
-        label_block.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : label_block)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "edge-id")
-    {
-        edge_id = value;
-    }
-    if(value_path == "label-count")
-    {
-        label_count = value;
-    }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::LabelBlock()
-    :
-    block_offset{YType::uint32, "block-offset"},
-    block_size{YType::uint32, "block-size"},
-    label_base{YType::uint32, "label-base"},
-    label_error{YType::enumeration, "label-error"},
-    label_time_created{YType::uint32, "label-time-created"},
-    local_edge_id{YType::uint32, "local-edge-id"},
-    next_hop{YType::str, "next-hop"},
-    status_vector{YType::uint8, "status-vector"}
-{
-    yang_name = "label-block"; yang_parent_name = "redge";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::~LabelBlock()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::has_data() const
-{
-    for (auto const & leaf : status_vector.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return block_offset.is_set
-	|| block_size.is_set
-	|| label_base.is_set
-	|| label_error.is_set
-	|| label_time_created.is_set
-	|| local_edge_id.is_set
-	|| next_hop.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::has_operation() const
-{
-    for (auto const & leaf : status_vector.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(block_offset.operation)
-	|| is_set(block_size.operation)
-	|| is_set(label_base.operation)
-	|| is_set(label_error.operation)
-	|| is_set(label_time_created.operation)
-	|| is_set(local_edge_id.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(status_vector.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "label-block";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/bgp-sig-info/redge/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (block_offset.is_set || is_set(block_offset.operation)) leaf_name_data.push_back(block_offset.get_name_leafdata());
-    if (block_size.is_set || is_set(block_size.operation)) leaf_name_data.push_back(block_size.get_name_leafdata());
-    if (label_base.is_set || is_set(label_base.operation)) leaf_name_data.push_back(label_base.get_name_leafdata());
-    if (label_error.is_set || is_set(label_error.operation)) leaf_name_data.push_back(label_error.get_name_leafdata());
-    if (label_time_created.is_set || is_set(label_time_created.operation)) leaf_name_data.push_back(label_time_created.get_name_leafdata());
-    if (local_edge_id.is_set || is_set(local_edge_id.operation)) leaf_name_data.push_back(local_edge_id.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-
-    auto status_vector_name_datas = status_vector.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), status_vector_name_datas.begin(), status_vector_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::BgpSigInfo::Redge::LabelBlock::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "block-offset")
-    {
-        block_offset = value;
-    }
-    if(value_path == "block-size")
-    {
-        block_size = value;
-    }
-    if(value_path == "label-base")
-    {
-        label_base = value;
-    }
-    if(value_path == "label-error")
-    {
-        label_error = value;
-    }
-    if(value_path == "label-time-created")
-    {
-        label_time_created = value;
-    }
-    if(value_path == "local-edge-id")
-    {
-        local_edge_id = value;
-    }
-    if(value_path == "next-hop")
-    {
-        next_hop = value;
-    }
-    if(value_path == "status-vector")
-    {
-        status_vector.append(value);
-    }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LdpSigInfo()
-    :
-    local_l2_router_id{YType::str, "local-l2-router-id"},
-    number_remote_edges{YType::uint32, "number-remote-edges"}
-    	,
-    local_vpls_id(std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId>())
-{
-    local_vpls_id->parent = this;
-
-    yang_name = "ldp-sig-info"; yang_parent_name = "signalling-info";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::~LdpSigInfo()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::has_data() const
-{
-    for (std::size_t index=0; index<remote_nlri.size(); index++)
-    {
-        if(remote_nlri[index]->has_data())
-            return true;
-    }
-    return local_l2_router_id.is_set
-	|| number_remote_edges.is_set
-	|| (local_vpls_id !=  nullptr && local_vpls_id->has_data());
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::has_operation() const
-{
-    for (std::size_t index=0; index<remote_nlri.size(); index++)
-    {
-        if(remote_nlri[index]->has_operation())
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(local_l2_router_id.operation)
-	|| is_set(number_remote_edges.operation)
-	|| (local_vpls_id !=  nullptr && local_vpls_id->has_operation());
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ldp-sig-info";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (local_l2_router_id.is_set || is_set(local_l2_router_id.operation)) leaf_name_data.push_back(local_l2_router_id.get_name_leafdata());
-    if (number_remote_edges.is_set || is_set(number_remote_edges.operation)) leaf_name_data.push_back(number_remote_edges.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "local-vpls-id")
-    {
-        if(local_vpls_id == nullptr)
-        {
-            local_vpls_id = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId>();
-        }
-        return local_vpls_id;
-    }
-
-    if(child_yang_name == "remote-nlri")
-    {
-        for(auto const & c : remote_nlri)
-        {
-            std::string segment = c->get_segment_path();
-            if(segment_path == segment)
-            {
-                return c;
-            }
-        }
-        auto c = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri>();
-        c->parent = this;
-        remote_nlri.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(local_vpls_id != nullptr)
-    {
-        children["local-vpls-id"] = local_vpls_id;
-    }
-
-    for (auto const & c : remote_nlri)
-    {
-        children[c->get_segment_path()] = c;
-    }
-
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "local-l2-router-id")
-    {
-        local_l2_router_id = value;
-    }
-    if(value_path == "number-remote-edges")
-    {
-        number_remote_edges = value;
-    }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::LocalVplsId()
-    :
-    vpls_id_type{YType::enumeration, "vpls-id-type"}
-    	,
-    auto_(std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_>())
-	,two_byte_as(std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs>())
-	,v4_addr(std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr>())
-{
-    auto_->parent = this;
-
-    two_byte_as->parent = this;
-
-    v4_addr->parent = this;
-
-    yang_name = "local-vpls-id"; yang_parent_name = "ldp-sig-info";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::~LocalVplsId()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::has_data() const
-{
-    return vpls_id_type.is_set
-	|| (auto_ !=  nullptr && auto_->has_data())
-	|| (two_byte_as !=  nullptr && two_byte_as->has_data())
-	|| (v4_addr !=  nullptr && v4_addr->has_data());
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(vpls_id_type.operation)
-	|| (auto_ !=  nullptr && auto_->has_operation())
-	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
-	|| (v4_addr !=  nullptr && v4_addr->has_operation());
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "local-vpls-id";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/ldp-sig-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vpls_id_type.is_set || is_set(vpls_id_type.operation)) leaf_name_data.push_back(vpls_id_type.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "auto")
-    {
-        if(auto_ == nullptr)
-        {
-            auto_ = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_>();
-        }
-        return auto_;
-    }
-
-    if(child_yang_name == "two-byte-as")
-    {
-        if(two_byte_as == nullptr)
-        {
-            two_byte_as = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs>();
-        }
-        return two_byte_as;
-    }
-
-    if(child_yang_name == "v4-addr")
-    {
-        if(v4_addr == nullptr)
-        {
-            v4_addr = std::make_shared<L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr>();
-        }
-        return v4_addr;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(auto_ != nullptr)
+    if(value_path == "group-name")
     {
-        children["auto"] = auto_;
+        group_name.yfilter = yfilter;
     }
-
-    if(two_byte_as != nullptr)
+    if(value_path == "group-name-xr")
     {
-        children["two-byte-as"] = two_byte_as;
+        group_name_xr.yfilter = yfilter;
     }
-
-    if(v4_addr != nullptr)
+    if(value_path == "is-service-connected")
     {
-        children["v4-addr"] = v4_addr;
+        is_service_connected.yfilter = yfilter;
     }
-
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "vpls-id-type")
+    if(value_path == "mtu-mismatch-ignore")
     {
-        vpls_id_type = value;
+        mtu_mismatch_ignore.yfilter = yfilter;
     }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::Auto_()
-    :
-    asn{YType::uint16, "asn"},
-    vpn_id{YType::uint32, "vpn-id"}
-{
-    yang_name = "auto"; yang_parent_name = "local-vpls-id";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::~Auto_()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::has_data() const
-{
-    return asn.is_set
-	|| vpn_id.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(asn.operation)
-	|| is_set(vpn_id.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auto";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "number-vpn")
     {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/ldp-sig-info/local-vpls-id/" << get_segment_path();
+        number_vpn.yfilter = yfilter;
     }
-    else
+    if(value_path == "service-name")
     {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+        service_name.yfilter = yfilter;
     }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (asn.is_set || is_set(asn.operation)) leaf_name_data.push_back(asn.get_name_leafdata());
-    if (vpn_id.is_set || is_set(vpn_id.operation)) leaf_name_data.push_back(vpn_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::Auto_::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "asn")
+    if(value_path == "service-name-xr")
     {
-        asn = value;
+        service_name_xr.yfilter = yfilter;
     }
     if(value_path == "vpn-id")
     {
-        vpn_id = value;
+        vpn_id.yfilter = yfilter;
     }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::TwoByteAs()
-    :
-    four_byte_index{YType::uint32, "four-byte-index"},
-    two_byte_as{YType::uint16, "two-byte-as"}
-{
-    yang_name = "two-byte-as"; yang_parent_name = "local-vpls-id";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::~TwoByteAs()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::has_data() const
-{
-    return four_byte_index.is_set
-	|| two_byte_as.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(four_byte_index.operation)
-	|| is_set(two_byte_as.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "two-byte-as";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "vpn-name")
     {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/ldp-sig-info/local-vpls-id/" << get_segment_path();
+        vpn_name.yfilter = yfilter;
     }
-    else
+    if(value_path == "vpn-name-xr")
     {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (four_byte_index.is_set || is_set(four_byte_index.operation)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
-    if (two_byte_as.is_set || is_set(two_byte_as.operation)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::TwoByteAs::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "four-byte-index")
-    {
-        four_byte_index = value;
-    }
-    if(value_path == "two-byte-as")
-    {
-        two_byte_as = value;
+        vpn_name_xr.yfilter = yfilter;
     }
 }
 
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::V4Addr()
-    :
-    ipv4_address{YType::str, "ipv4-address"},
-    two_byte_index{YType::uint16, "two-byte-index"}
+bool L2Vpnv2::Standby::Discoveries::Discovery::has_leaf_or_child_of_name(const std::string & name) const
 {
-    yang_name = "v4-addr"; yang_parent_name = "local-vpls-id";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::~V4Addr()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::has_data() const
-{
-    return ipv4_address.is_set
-	|| two_byte_index.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(two_byte_index.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "v4-addr";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/ldp-sig-info/local-vpls-id/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (two_byte_index.is_set || is_set(two_byte_index.operation)) leaf_name_data.push_back(two_byte_index.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::LocalVplsId::V4Addr::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-    }
-    if(value_path == "two-byte-index")
-    {
-        two_byte_index = value;
-    }
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::RemoteNlri()
-    :
-    local_address{YType::str, "local-address"},
-    nlri_time_created{YType::uint32, "nlri-time-created"},
-    remote_address{YType::str, "remote-address"},
-    remote_l2_router_id{YType::str, "remote-l2-router-id"}
-{
-    yang_name = "remote-nlri"; yang_parent_name = "ldp-sig-info";
-}
-
-L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::~RemoteNlri()
-{
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::has_data() const
-{
-    return local_address.is_set
-	|| nlri_time_created.is_set
-	|| remote_address.is_set
-	|| remote_l2_router_id.is_set;
-}
-
-bool L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(local_address.operation)
-	|| is_set(nlri_time_created.operation)
-	|| is_set(remote_address.operation)
-	|| is_set(remote_l2_router_id.operation);
-}
-
-std::string L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-nlri";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/discoveries/discovery/signalling-info/ldp-sig-info/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (nlri_time_created.is_set || is_set(nlri_time_created.operation)) leaf_name_data.push_back(nlri_time_created.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
-    if (remote_l2_router_id.is_set || is_set(remote_l2_router_id.operation)) leaf_name_data.push_back(remote_l2_router_id.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Standby::Discoveries::Discovery::SignallingInfo::LdpSigInfo::RemoteNlri::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "local-address")
-    {
-        local_address = value;
-    }
-    if(value_path == "nlri-time-created")
-    {
-        nlri_time_created = value;
-    }
-    if(value_path == "remote-address")
-    {
-        remote_address = value;
-    }
-    if(value_path == "remote-l2-router-id")
-    {
-        remote_l2_router_id = value;
-    }
-}
-
-L2Vpnv2::Standby::FlexibleXconnectServiceSummary::FlexibleXconnectServiceSummary()
-    :
-    number_fxc{YType::uint32, "number-fxc"},
-    number_fxc_down{YType::uint32, "number-fxc-down"},
-    number_fxc_up{YType::uint32, "number-fxc-up"}
-{
-    yang_name = "flexible-xconnect-service-summary"; yang_parent_name = "standby";
-}
-
-L2Vpnv2::Standby::FlexibleXconnectServiceSummary::~FlexibleXconnectServiceSummary()
-{
-}
-
-bool L2Vpnv2::Standby::FlexibleXconnectServiceSummary::has_data() const
-{
-    return number_fxc.is_set
-	|| number_fxc_down.is_set
-	|| number_fxc_up.is_set;
-}
-
-bool L2Vpnv2::Standby::FlexibleXconnectServiceSummary::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(number_fxc.operation)
-	|| is_set(number_fxc_down.operation)
-	|| is_set(number_fxc_up.operation);
-}
-
-std::string L2Vpnv2::Standby::FlexibleXconnectServiceSummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flexible-xconnect-service-summary";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath L2Vpnv2::Standby::FlexibleXconnectServiceSummary::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "Cisco-IOS-XR-l2vpn-oper:l2vpnv2/standby/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number_fxc.is_set || is_set(number_fxc.operation)) leaf_name_data.push_back(number_fxc.get_name_leafdata());
-    if (number_fxc_down.is_set || is_set(number_fxc_down.operation)) leaf_name_data.push_back(number_fxc_down.get_name_leafdata());
-    if (number_fxc_up.is_set || is_set(number_fxc_up.operation)) leaf_name_data.push_back(number_fxc_up.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> L2Vpnv2::Standby::FlexibleXconnectServiceSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> L2Vpnv2::Standby::FlexibleXconnectServiceSummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void L2Vpnv2::Standby::FlexibleXconnectServiceSummary::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "number-fxc")
-    {
-        number_fxc = value;
-    }
-    if(value_path == "number-fxc-down")
-    {
-        number_fxc_down = value;
-    }
-    if(value_path == "number-fxc-up")
-    {
-        number_fxc_up = value;
-    }
+    if(name == "signalling-info" || name == "group-name" || name == "group-name-xr" || name == "is-service-connected" || name == "mtu-mismatch-ignore" || name == "number-vpn" || name == "service-name" || name == "service-name-xr" || name == "vpn-id" || name == "vpn-name" || name == "vpn-name-xr")
+        return true;
+    return false;
 }
 
 

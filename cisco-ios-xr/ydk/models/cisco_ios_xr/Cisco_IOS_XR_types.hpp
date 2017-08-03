@@ -7,15 +7,16 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_types {
 
-class EncryptionTypeEnum : public Enum
+class EncryptionType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf md5;
-        static const Enum::YLeaf proprietary;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf proprietary;
+        static const ydk::Enum::YLeaf type6;
 
 };
 

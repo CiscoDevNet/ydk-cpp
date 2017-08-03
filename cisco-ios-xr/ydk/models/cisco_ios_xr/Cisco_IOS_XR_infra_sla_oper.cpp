@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_sla_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_sla_oper {
 
 Sla::Sla()
@@ -29,7 +31,7 @@ bool Sla::has_data() const
 
 bool Sla::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (protocols !=  nullptr && protocols->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::get_children() const
     return children;
 }
 
-void Sla::set_value(const std::string & value_path, std::string value)
+void Sla::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Sla::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,6 +115,18 @@ augment_capabilities_function Sla::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Sla::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Sla::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocols")
+        return true;
+    return false;
+}
+
 Sla::Protocols::Protocols()
     :
     ethernet(std::make_shared<Sla::Protocols::Ethernet>())
@@ -129,7 +147,7 @@ bool Sla::Protocols::has_data() const
 
 bool Sla::Protocols::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ethernet !=  nullptr && ethernet->has_operation());
 }
 
@@ -188,8 +206,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::get_children() co
     return children;
 }
 
-void Sla::Protocols::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Ethernet()
@@ -236,7 +265,7 @@ bool Sla::Protocols::Ethernet::has_data() const
 
 bool Sla::Protocols::Ethernet::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config_errors !=  nullptr && config_errors->has_operation())
 	|| (on_demand_operations !=  nullptr && on_demand_operations->has_operation())
 	|| (operations !=  nullptr && operations->has_operation())
@@ -385,8 +414,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::get_chi
     return children;
 }
 
-void Sla::Protocols::Ethernet::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config-errors" || name == "on-demand-operations" || name == "operations" || name == "statistics-currents" || name == "statistics-historicals" || name == "statistics-on-demand-currents" || name == "statistics-on-demand-historicals")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrents()
@@ -415,7 +455,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::has_operation() const
         if(statistics_on_demand_current[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::get_segment_path() const
@@ -480,8 +520,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics-on-demand-current")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::StatisticsOnDemandCurrent()
@@ -537,16 +588,16 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
         if(operation_metric[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(display_long.operation)
-	|| is_set(display_short.operation)
-	|| is_set(domain_name.operation)
-	|| is_set(flr_calculation_interval.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mep_id.operation)
-	|| is_set(operation_id.operation)
-	|| is_set(probe_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(display_long.yfilter)
+	|| ydk::is_set(display_short.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(flr_calculation_interval.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mep_id.yfilter)
+	|| ydk::is_set(operation_id.yfilter)
+	|| ydk::is_set(probe_type.yfilter)
 	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
 	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
@@ -574,15 +625,15 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (display_long.is_set || is_set(display_long.operation)) leaf_name_data.push_back(display_long.get_name_leafdata());
-    if (display_short.is_set || is_set(display_short.operation)) leaf_name_data.push_back(display_short.get_name_leafdata());
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.operation)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
-    if (operation_id.is_set || is_set(operation_id.operation)) leaf_name_data.push_back(operation_id.get_name_leafdata());
-    if (probe_type.is_set || is_set(probe_type.operation)) leaf_name_data.push_back(probe_type.get_name_leafdata());
+    if (display_long.is_set || is_set(display_long.yfilter)) leaf_name_data.push_back(display_long.get_name_leafdata());
+    if (display_short.is_set || is_set(display_short.yfilter)) leaf_name_data.push_back(display_short.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.yfilter)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.yfilter)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (operation_id.is_set || is_set(operation_id.yfilter)) leaf_name_data.push_back(operation_id.get_name_leafdata());
+    if (probe_type.is_set || is_set(probe_type.yfilter)) leaf_name_data.push_back(probe_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -650,44 +701,109 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "display-long")
     {
         display_long = value;
+        display_long.value_namespace = name_space;
+        display_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "display-short")
     {
         display_short = value;
+        display_short.value_namespace = name_space;
+        display_short.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-name")
     {
         domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flr-calculation-interval")
     {
         flr_calculation_interval = value;
+        flr_calculation_interval.value_namespace = name_space;
+        flr_calculation_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
+        mep_id.value_namespace = name_space;
+        mep_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation-id")
     {
         operation_id = value;
+        operation_id.value_namespace = name_space;
+        operation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-type")
     {
         probe_type = value;
+        probe_type.value_namespace = name_space;
+        probe_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "display-long")
+    {
+        display_long.yfilter = yfilter;
+    }
+    if(value_path == "display-short")
+    {
+        display_short.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "flr-calculation-interval")
+    {
+        flr_calculation_interval.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mep-id")
+    {
+        mep_id.yfilter = yfilter;
+    }
+    if(value_path == "operation-id")
+    {
+        operation_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-type")
+    {
+        probe_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation-metric" || name == "operation-schedule" || name == "specific-options" || name == "display-long" || name == "display-short" || name == "domain-name" || name == "flr-calculation-interval" || name == "interface-name" || name == "mac-address" || name == "mep-id" || name == "operation-id" || name == "probe-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::SpecificOptions()
@@ -717,8 +833,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oper_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(oper_type.yfilter)
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
@@ -746,7 +862,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oper_type.is_set || is_set(oper_type.operation)) leaf_name_data.push_back(oper_type.get_name_leafdata());
+    if (oper_type.is_set || is_set(oper_type.yfilter)) leaf_name_data.push_back(oper_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -793,12 +909,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oper-type")
     {
         oper_type = value;
+        oper_type.value_namespace = name_space;
+        oper_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oper-type")
+    {
+        oper_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-operation-options" || name == "ondemand-operation-options" || name == "oper-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::ConfiguredOperationOptions()
@@ -819,8 +952,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::get_segment_path() const
@@ -846,7 +979,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -865,12 +998,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::OndemandOperationOptions()
@@ -893,9 +1043,9 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ondemand_operation_id.operation)
-	|| is_set(probe_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ondemand_operation_id.yfilter)
+	|| ydk::is_set(probe_count.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::get_segment_path() const
@@ -921,8 +1071,8 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.operation)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
-    if (probe_count.is_set || is_set(probe_count.operation)) leaf_name_data.push_back(probe_count.get_name_leafdata());
+    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.yfilter)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
+    if (probe_count.is_set || is_set(probe_count.yfilter)) leaf_name_data.push_back(probe_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -941,16 +1091,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ondemand-operation-id")
     {
         ondemand_operation_id = value;
+        ondemand_operation_id.value_namespace = name_space;
+        ondemand_operation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-count")
     {
         probe_count = value;
+        probe_count.value_namespace = name_space;
+        probe_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ondemand-operation-id")
+    {
+        ondemand_operation_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-count")
+    {
+        probe_count.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ondemand-operation-id" || name == "probe-count")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::OperationSchedule()
@@ -977,11 +1150,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(schedule_duration.operation)
-	|| is_set(schedule_interval.operation)
-	|| is_set(start_time.operation)
-	|| is_set(start_time_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(schedule_duration.yfilter)
+	|| ydk::is_set(schedule_interval.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(start_time_configured.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::get_segment_path() const
@@ -1007,10 +1180,10 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (schedule_duration.is_set || is_set(schedule_duration.operation)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
-    if (schedule_interval.is_set || is_set(schedule_interval.operation)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (start_time_configured.is_set || is_set(start_time_configured.operation)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
+    if (schedule_duration.is_set || is_set(schedule_duration.yfilter)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
+    if (schedule_interval.is_set || is_set(schedule_interval.yfilter)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (start_time_configured.is_set || is_set(start_time_configured.yfilter)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1029,24 +1202,59 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "schedule-duration")
     {
         schedule_duration = value;
+        schedule_duration.value_namespace = name_space;
+        schedule_duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "schedule-interval")
     {
         schedule_interval = value;
+        schedule_interval.value_namespace = name_space;
+        schedule_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time-configured")
     {
         start_time_configured = value;
+        start_time_configured.value_namespace = name_space;
+        start_time_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "schedule-duration")
+    {
+        schedule_duration.yfilter = yfilter;
+    }
+    if(value_path == "schedule-interval")
+    {
+        schedule_interval.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "start-time-configured")
+    {
+        start_time_configured.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "schedule-duration" || name == "schedule-interval" || name == "start-time" || name == "start-time-configured")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::OperationMetric()
@@ -1079,7 +1287,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
         if(bucket[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation());
 }
 
@@ -1159,8 +1367,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bucket" || name == "config")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::Config()
@@ -1191,13 +1410,13 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bins_count.operation)
-	|| is_set(bins_width.operation)
-	|| is_set(bucket_size.operation)
-	|| is_set(bucket_size_unit.operation)
-	|| is_set(buckets_archive.operation)
-	|| is_set(metric_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bins_count.yfilter)
+	|| ydk::is_set(bins_width.yfilter)
+	|| ydk::is_set(bucket_size.yfilter)
+	|| ydk::is_set(bucket_size_unit.yfilter)
+	|| ydk::is_set(buckets_archive.yfilter)
+	|| ydk::is_set(metric_type.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::get_segment_path() const
@@ -1223,12 +1442,12 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bins_count.is_set || is_set(bins_count.operation)) leaf_name_data.push_back(bins_count.get_name_leafdata());
-    if (bins_width.is_set || is_set(bins_width.operation)) leaf_name_data.push_back(bins_width.get_name_leafdata());
-    if (bucket_size.is_set || is_set(bucket_size.operation)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
-    if (bucket_size_unit.is_set || is_set(bucket_size_unit.operation)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
-    if (buckets_archive.is_set || is_set(buckets_archive.operation)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (bins_count.is_set || is_set(bins_count.yfilter)) leaf_name_data.push_back(bins_count.get_name_leafdata());
+    if (bins_width.is_set || is_set(bins_width.yfilter)) leaf_name_data.push_back(bins_width.get_name_leafdata());
+    if (bucket_size.is_set || is_set(bucket_size.yfilter)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
+    if (bucket_size_unit.is_set || is_set(bucket_size_unit.yfilter)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
+    if (buckets_archive.is_set || is_set(buckets_archive.yfilter)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1247,32 +1466,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bins-count")
     {
         bins_count = value;
+        bins_count.value_namespace = name_space;
+        bins_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bins-width")
     {
         bins_width = value;
+        bins_width.value_namespace = name_space;
+        bins_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size")
     {
         bucket_size = value;
+        bucket_size.value_namespace = name_space;
+        bucket_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size-unit")
     {
         bucket_size_unit = value;
+        bucket_size_unit.value_namespace = name_space;
+        bucket_size_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "buckets-archive")
     {
         buckets_archive = value;
+        buckets_archive.value_namespace = name_space;
+        buckets_archive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric-type")
     {
         metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bins-count")
+    {
+        bins_count.yfilter = yfilter;
+    }
+    if(value_path == "bins-width")
+    {
+        bins_width.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size")
+    {
+        bucket_size.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size-unit")
+    {
+        bucket_size_unit.yfilter = yfilter;
+    }
+    if(value_path == "buckets-archive")
+    {
+        buckets_archive.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins-count" || name == "bins-width" || name == "bucket-size" || name == "bucket-size-unit" || name == "buckets-archive" || name == "metric-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Bucket()
@@ -1358,38 +1624,38 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(corrupt.operation)
-	|| is_set(data_lost_count.operation)
-	|| is_set(data_sent_count.operation)
-	|| is_set(duplicates.operation)
-	|| is_set(duration.operation)
-	|| is_set(lost.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(out_of_order.operation)
-	|| is_set(overall_flr.operation)
-	|| is_set(premature_reason.operation)
-	|| is_set(premature_reason_string.operation)
-	|| is_set(result_count.operation)
-	|| is_set(sent.operation)
-	|| is_set(standard_deviation.operation)
-	|| is_set(start_at.operation)
-	|| is_set(suspect_cleared_mid_bucket.operation)
-	|| is_set(suspect_clock_drift.operation)
-	|| is_set(suspect_flr_low_packet_count.operation)
-	|| is_set(suspect_management_latency.operation)
-	|| is_set(suspect_memory_allocation_failed.operation)
-	|| is_set(suspect_misordering.operation)
-	|| is_set(suspect_multiple_buckets.operation)
-	|| is_set(suspect_premature_end.operation)
-	|| is_set(suspect_probe_restarted.operation)
-	|| is_set(suspect_schedule_latency.operation)
-	|| is_set(suspect_send_fail.operation)
-	|| is_set(suspect_start_mid_bucket.operation)
-	|| is_set(time_of_maximum.operation)
-	|| is_set(time_of_minimum.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(corrupt.yfilter)
+	|| ydk::is_set(data_lost_count.yfilter)
+	|| ydk::is_set(data_sent_count.yfilter)
+	|| ydk::is_set(duplicates.yfilter)
+	|| ydk::is_set(duration.yfilter)
+	|| ydk::is_set(lost.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(out_of_order.yfilter)
+	|| ydk::is_set(overall_flr.yfilter)
+	|| ydk::is_set(premature_reason.yfilter)
+	|| ydk::is_set(premature_reason_string.yfilter)
+	|| ydk::is_set(result_count.yfilter)
+	|| ydk::is_set(sent.yfilter)
+	|| ydk::is_set(standard_deviation.yfilter)
+	|| ydk::is_set(start_at.yfilter)
+	|| ydk::is_set(suspect_cleared_mid_bucket.yfilter)
+	|| ydk::is_set(suspect_clock_drift.yfilter)
+	|| ydk::is_set(suspect_flr_low_packet_count.yfilter)
+	|| ydk::is_set(suspect_management_latency.yfilter)
+	|| ydk::is_set(suspect_memory_allocation_failed.yfilter)
+	|| ydk::is_set(suspect_misordering.yfilter)
+	|| ydk::is_set(suspect_multiple_buckets.yfilter)
+	|| ydk::is_set(suspect_premature_end.yfilter)
+	|| ydk::is_set(suspect_probe_restarted.yfilter)
+	|| ydk::is_set(suspect_schedule_latency.yfilter)
+	|| ydk::is_set(suspect_send_fail.yfilter)
+	|| ydk::is_set(suspect_start_mid_bucket.yfilter)
+	|| ydk::is_set(time_of_maximum.yfilter)
+	|| ydk::is_set(time_of_minimum.yfilter)
 	|| (contents !=  nullptr && contents->has_operation());
 }
 
@@ -1416,37 +1682,37 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (corrupt.is_set || is_set(corrupt.operation)) leaf_name_data.push_back(corrupt.get_name_leafdata());
-    if (data_lost_count.is_set || is_set(data_lost_count.operation)) leaf_name_data.push_back(data_lost_count.get_name_leafdata());
-    if (data_sent_count.is_set || is_set(data_sent_count.operation)) leaf_name_data.push_back(data_sent_count.get_name_leafdata());
-    if (duplicates.is_set || is_set(duplicates.operation)) leaf_name_data.push_back(duplicates.get_name_leafdata());
-    if (duration.is_set || is_set(duration.operation)) leaf_name_data.push_back(duration.get_name_leafdata());
-    if (lost.is_set || is_set(lost.operation)) leaf_name_data.push_back(lost.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (out_of_order.is_set || is_set(out_of_order.operation)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
-    if (overall_flr.is_set || is_set(overall_flr.operation)) leaf_name_data.push_back(overall_flr.get_name_leafdata());
-    if (premature_reason.is_set || is_set(premature_reason.operation)) leaf_name_data.push_back(premature_reason.get_name_leafdata());
-    if (premature_reason_string.is_set || is_set(premature_reason_string.operation)) leaf_name_data.push_back(premature_reason_string.get_name_leafdata());
-    if (result_count.is_set || is_set(result_count.operation)) leaf_name_data.push_back(result_count.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-    if (standard_deviation.is_set || is_set(standard_deviation.operation)) leaf_name_data.push_back(standard_deviation.get_name_leafdata());
-    if (start_at.is_set || is_set(start_at.operation)) leaf_name_data.push_back(start_at.get_name_leafdata());
-    if (suspect_cleared_mid_bucket.is_set || is_set(suspect_cleared_mid_bucket.operation)) leaf_name_data.push_back(suspect_cleared_mid_bucket.get_name_leafdata());
-    if (suspect_clock_drift.is_set || is_set(suspect_clock_drift.operation)) leaf_name_data.push_back(suspect_clock_drift.get_name_leafdata());
-    if (suspect_flr_low_packet_count.is_set || is_set(suspect_flr_low_packet_count.operation)) leaf_name_data.push_back(suspect_flr_low_packet_count.get_name_leafdata());
-    if (suspect_management_latency.is_set || is_set(suspect_management_latency.operation)) leaf_name_data.push_back(suspect_management_latency.get_name_leafdata());
-    if (suspect_memory_allocation_failed.is_set || is_set(suspect_memory_allocation_failed.operation)) leaf_name_data.push_back(suspect_memory_allocation_failed.get_name_leafdata());
-    if (suspect_misordering.is_set || is_set(suspect_misordering.operation)) leaf_name_data.push_back(suspect_misordering.get_name_leafdata());
-    if (suspect_multiple_buckets.is_set || is_set(suspect_multiple_buckets.operation)) leaf_name_data.push_back(suspect_multiple_buckets.get_name_leafdata());
-    if (suspect_premature_end.is_set || is_set(suspect_premature_end.operation)) leaf_name_data.push_back(suspect_premature_end.get_name_leafdata());
-    if (suspect_probe_restarted.is_set || is_set(suspect_probe_restarted.operation)) leaf_name_data.push_back(suspect_probe_restarted.get_name_leafdata());
-    if (suspect_schedule_latency.is_set || is_set(suspect_schedule_latency.operation)) leaf_name_data.push_back(suspect_schedule_latency.get_name_leafdata());
-    if (suspect_send_fail.is_set || is_set(suspect_send_fail.operation)) leaf_name_data.push_back(suspect_send_fail.get_name_leafdata());
-    if (suspect_start_mid_bucket.is_set || is_set(suspect_start_mid_bucket.operation)) leaf_name_data.push_back(suspect_start_mid_bucket.get_name_leafdata());
-    if (time_of_maximum.is_set || is_set(time_of_maximum.operation)) leaf_name_data.push_back(time_of_maximum.get_name_leafdata());
-    if (time_of_minimum.is_set || is_set(time_of_minimum.operation)) leaf_name_data.push_back(time_of_minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (corrupt.is_set || is_set(corrupt.yfilter)) leaf_name_data.push_back(corrupt.get_name_leafdata());
+    if (data_lost_count.is_set || is_set(data_lost_count.yfilter)) leaf_name_data.push_back(data_lost_count.get_name_leafdata());
+    if (data_sent_count.is_set || is_set(data_sent_count.yfilter)) leaf_name_data.push_back(data_sent_count.get_name_leafdata());
+    if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
+    if (duration.is_set || is_set(duration.yfilter)) leaf_name_data.push_back(duration.get_name_leafdata());
+    if (lost.is_set || is_set(lost.yfilter)) leaf_name_data.push_back(lost.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (out_of_order.is_set || is_set(out_of_order.yfilter)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
+    if (overall_flr.is_set || is_set(overall_flr.yfilter)) leaf_name_data.push_back(overall_flr.get_name_leafdata());
+    if (premature_reason.is_set || is_set(premature_reason.yfilter)) leaf_name_data.push_back(premature_reason.get_name_leafdata());
+    if (premature_reason_string.is_set || is_set(premature_reason_string.yfilter)) leaf_name_data.push_back(premature_reason_string.get_name_leafdata());
+    if (result_count.is_set || is_set(result_count.yfilter)) leaf_name_data.push_back(result_count.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+    if (standard_deviation.is_set || is_set(standard_deviation.yfilter)) leaf_name_data.push_back(standard_deviation.get_name_leafdata());
+    if (start_at.is_set || is_set(start_at.yfilter)) leaf_name_data.push_back(start_at.get_name_leafdata());
+    if (suspect_cleared_mid_bucket.is_set || is_set(suspect_cleared_mid_bucket.yfilter)) leaf_name_data.push_back(suspect_cleared_mid_bucket.get_name_leafdata());
+    if (suspect_clock_drift.is_set || is_set(suspect_clock_drift.yfilter)) leaf_name_data.push_back(suspect_clock_drift.get_name_leafdata());
+    if (suspect_flr_low_packet_count.is_set || is_set(suspect_flr_low_packet_count.yfilter)) leaf_name_data.push_back(suspect_flr_low_packet_count.get_name_leafdata());
+    if (suspect_management_latency.is_set || is_set(suspect_management_latency.yfilter)) leaf_name_data.push_back(suspect_management_latency.get_name_leafdata());
+    if (suspect_memory_allocation_failed.is_set || is_set(suspect_memory_allocation_failed.yfilter)) leaf_name_data.push_back(suspect_memory_allocation_failed.get_name_leafdata());
+    if (suspect_misordering.is_set || is_set(suspect_misordering.yfilter)) leaf_name_data.push_back(suspect_misordering.get_name_leafdata());
+    if (suspect_multiple_buckets.is_set || is_set(suspect_multiple_buckets.yfilter)) leaf_name_data.push_back(suspect_multiple_buckets.get_name_leafdata());
+    if (suspect_premature_end.is_set || is_set(suspect_premature_end.yfilter)) leaf_name_data.push_back(suspect_premature_end.get_name_leafdata());
+    if (suspect_probe_restarted.is_set || is_set(suspect_probe_restarted.yfilter)) leaf_name_data.push_back(suspect_probe_restarted.get_name_leafdata());
+    if (suspect_schedule_latency.is_set || is_set(suspect_schedule_latency.yfilter)) leaf_name_data.push_back(suspect_schedule_latency.get_name_leafdata());
+    if (suspect_send_fail.is_set || is_set(suspect_send_fail.yfilter)) leaf_name_data.push_back(suspect_send_fail.get_name_leafdata());
+    if (suspect_start_mid_bucket.is_set || is_set(suspect_start_mid_bucket.yfilter)) leaf_name_data.push_back(suspect_start_mid_bucket.get_name_leafdata());
+    if (time_of_maximum.is_set || is_set(time_of_maximum.yfilter)) leaf_name_data.push_back(time_of_maximum.get_name_leafdata());
+    if (time_of_minimum.is_set || is_set(time_of_minimum.yfilter)) leaf_name_data.push_back(time_of_minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1479,132 +1745,329 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "corrupt")
     {
         corrupt = value;
+        corrupt.value_namespace = name_space;
+        corrupt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-lost-count")
     {
         data_lost_count = value;
+        data_lost_count.value_namespace = name_space;
+        data_lost_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-sent-count")
     {
         data_sent_count = value;
+        data_sent_count.value_namespace = name_space;
+        data_sent_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicates")
     {
         duplicates = value;
+        duplicates.value_namespace = name_space;
+        duplicates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duration")
     {
         duration = value;
+        duration.value_namespace = name_space;
+        duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lost")
     {
         lost = value;
+        lost.value_namespace = name_space;
+        lost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-order")
     {
         out_of_order = value;
+        out_of_order.value_namespace = name_space;
+        out_of_order.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overall-flr")
     {
         overall_flr = value;
+        overall_flr.value_namespace = name_space;
+        overall_flr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "premature-reason")
     {
         premature_reason = value;
+        premature_reason.value_namespace = name_space;
+        premature_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "premature-reason-string")
     {
         premature_reason_string = value;
+        premature_reason_string.value_namespace = name_space;
+        premature_reason_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "result-count")
     {
         result_count = value;
+        result_count.value_namespace = name_space;
+        result_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent")
     {
         sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standard-deviation")
     {
         standard_deviation = value;
+        standard_deviation.value_namespace = name_space;
+        standard_deviation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-at")
     {
         start_at = value;
+        start_at.value_namespace = name_space;
+        start_at.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-cleared-mid-bucket")
     {
         suspect_cleared_mid_bucket = value;
+        suspect_cleared_mid_bucket.value_namespace = name_space;
+        suspect_cleared_mid_bucket.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-clock-drift")
     {
         suspect_clock_drift = value;
+        suspect_clock_drift.value_namespace = name_space;
+        suspect_clock_drift.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-flr-low-packet-count")
     {
         suspect_flr_low_packet_count = value;
+        suspect_flr_low_packet_count.value_namespace = name_space;
+        suspect_flr_low_packet_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-management-latency")
     {
         suspect_management_latency = value;
+        suspect_management_latency.value_namespace = name_space;
+        suspect_management_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-memory-allocation-failed")
     {
         suspect_memory_allocation_failed = value;
+        suspect_memory_allocation_failed.value_namespace = name_space;
+        suspect_memory_allocation_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-misordering")
     {
         suspect_misordering = value;
+        suspect_misordering.value_namespace = name_space;
+        suspect_misordering.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-multiple-buckets")
     {
         suspect_multiple_buckets = value;
+        suspect_multiple_buckets.value_namespace = name_space;
+        suspect_multiple_buckets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-premature-end")
     {
         suspect_premature_end = value;
+        suspect_premature_end.value_namespace = name_space;
+        suspect_premature_end.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-probe-restarted")
     {
         suspect_probe_restarted = value;
+        suspect_probe_restarted.value_namespace = name_space;
+        suspect_probe_restarted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-schedule-latency")
     {
         suspect_schedule_latency = value;
+        suspect_schedule_latency.value_namespace = name_space;
+        suspect_schedule_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-send-fail")
     {
         suspect_send_fail = value;
+        suspect_send_fail.value_namespace = name_space;
+        suspect_send_fail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-start-mid-bucket")
     {
         suspect_start_mid_bucket = value;
+        suspect_start_mid_bucket.value_namespace = name_space;
+        suspect_start_mid_bucket.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-of-maximum")
     {
         time_of_maximum = value;
+        time_of_maximum.value_namespace = name_space;
+        time_of_maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-of-minimum")
     {
         time_of_minimum = value;
+        time_of_minimum.value_namespace = name_space;
+        time_of_minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "corrupt")
+    {
+        corrupt.yfilter = yfilter;
+    }
+    if(value_path == "data-lost-count")
+    {
+        data_lost_count.yfilter = yfilter;
+    }
+    if(value_path == "data-sent-count")
+    {
+        data_sent_count.yfilter = yfilter;
+    }
+    if(value_path == "duplicates")
+    {
+        duplicates.yfilter = yfilter;
+    }
+    if(value_path == "duration")
+    {
+        duration.yfilter = yfilter;
+    }
+    if(value_path == "lost")
+    {
+        lost.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "out-of-order")
+    {
+        out_of_order.yfilter = yfilter;
+    }
+    if(value_path == "overall-flr")
+    {
+        overall_flr.yfilter = yfilter;
+    }
+    if(value_path == "premature-reason")
+    {
+        premature_reason.yfilter = yfilter;
+    }
+    if(value_path == "premature-reason-string")
+    {
+        premature_reason_string.yfilter = yfilter;
+    }
+    if(value_path == "result-count")
+    {
+        result_count.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+    if(value_path == "standard-deviation")
+    {
+        standard_deviation.yfilter = yfilter;
+    }
+    if(value_path == "start-at")
+    {
+        start_at.yfilter = yfilter;
+    }
+    if(value_path == "suspect-cleared-mid-bucket")
+    {
+        suspect_cleared_mid_bucket.yfilter = yfilter;
+    }
+    if(value_path == "suspect-clock-drift")
+    {
+        suspect_clock_drift.yfilter = yfilter;
+    }
+    if(value_path == "suspect-flr-low-packet-count")
+    {
+        suspect_flr_low_packet_count.yfilter = yfilter;
+    }
+    if(value_path == "suspect-management-latency")
+    {
+        suspect_management_latency.yfilter = yfilter;
+    }
+    if(value_path == "suspect-memory-allocation-failed")
+    {
+        suspect_memory_allocation_failed.yfilter = yfilter;
+    }
+    if(value_path == "suspect-misordering")
+    {
+        suspect_misordering.yfilter = yfilter;
+    }
+    if(value_path == "suspect-multiple-buckets")
+    {
+        suspect_multiple_buckets.yfilter = yfilter;
+    }
+    if(value_path == "suspect-premature-end")
+    {
+        suspect_premature_end.yfilter = yfilter;
+    }
+    if(value_path == "suspect-probe-restarted")
+    {
+        suspect_probe_restarted.yfilter = yfilter;
+    }
+    if(value_path == "suspect-schedule-latency")
+    {
+        suspect_schedule_latency.yfilter = yfilter;
+    }
+    if(value_path == "suspect-send-fail")
+    {
+        suspect_send_fail.yfilter = yfilter;
+    }
+    if(value_path == "suspect-start-mid-bucket")
+    {
+        suspect_start_mid_bucket.yfilter = yfilter;
+    }
+    if(value_path == "time-of-maximum")
+    {
+        time_of_maximum.yfilter = yfilter;
+    }
+    if(value_path == "time-of-minimum")
+    {
+        time_of_minimum.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "contents" || name == "average" || name == "corrupt" || name == "data-lost-count" || name == "data-sent-count" || name == "duplicates" || name == "duration" || name == "lost" || name == "maximum" || name == "minimum" || name == "out-of-order" || name == "overall-flr" || name == "premature-reason" || name == "premature-reason-string" || name == "result-count" || name == "sent" || name == "standard-deviation" || name == "start-at" || name == "suspect-cleared-mid-bucket" || name == "suspect-clock-drift" || name == "suspect-flr-low-packet-count" || name == "suspect-management-latency" || name == "suspect-memory-allocation-failed" || name == "suspect-misordering" || name == "suspect-multiple-buckets" || name == "suspect-premature-end" || name == "suspect-probe-restarted" || name == "suspect-schedule-latency" || name == "suspect-send-fail" || name == "suspect-start-mid-bucket" || name == "time-of-maximum" || name == "time-of-minimum")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Contents()
@@ -1634,8 +2097,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bucket_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bucket_type.yfilter)
 	|| (aggregated !=  nullptr && aggregated->has_operation())
 	|| (unaggregated !=  nullptr && unaggregated->has_operation());
 }
@@ -1663,7 +2126,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bucket_type.is_set || is_set(bucket_type.operation)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
+    if (bucket_type.is_set || is_set(bucket_type.yfilter)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1710,12 +2173,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bucket-type")
     {
         bucket_type = value;
+        bucket_type.value_namespace = name_space;
+        bucket_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bucket-type")
+    {
+        bucket_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregated" || name == "unaggregated" || name == "bucket-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Aggregated()
@@ -1744,7 +2224,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
         if(bins[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::get_segment_path() const
@@ -1809,8 +2289,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::Bins()
@@ -1841,13 +2332,13 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(lower_bound.operation)
-	|| is_set(lower_bound_tenths.operation)
-	|| is_set(sum.operation)
-	|| is_set(upper_bound.operation)
-	|| is_set(upper_bound_tenths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(lower_bound_tenths.yfilter)
+	|| ydk::is_set(sum.yfilter)
+	|| ydk::is_set(upper_bound.yfilter)
+	|| ydk::is_set(upper_bound_tenths.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_segment_path() const
@@ -1873,12 +2364,12 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (lower_bound.is_set || is_set(lower_bound.operation)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (lower_bound_tenths.is_set || is_set(lower_bound_tenths.operation)) leaf_name_data.push_back(lower_bound_tenths.get_name_leafdata());
-    if (sum.is_set || is_set(sum.operation)) leaf_name_data.push_back(sum.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.operation)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
-    if (upper_bound_tenths.is_set || is_set(upper_bound_tenths.operation)) leaf_name_data.push_back(upper_bound_tenths.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (lower_bound_tenths.is_set || is_set(lower_bound_tenths.yfilter)) leaf_name_data.push_back(lower_bound_tenths.get_name_leafdata());
+    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+    if (upper_bound_tenths.is_set || is_set(upper_bound_tenths.yfilter)) leaf_name_data.push_back(upper_bound_tenths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1897,32 +2388,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound")
     {
         lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound-tenths")
     {
         lower_bound_tenths = value;
+        lower_bound_tenths.value_namespace = name_space;
+        lower_bound_tenths.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sum")
     {
         sum = value;
+        sum.value_namespace = name_space;
+        sum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound")
     {
         upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound-tenths")
     {
         upper_bound_tenths = value;
+        upper_bound_tenths.value_namespace = name_space;
+        upper_bound_tenths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound-tenths")
+    {
+        lower_bound_tenths.yfilter = yfilter;
+    }
+    if(value_path == "sum")
+    {
+        sum.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound-tenths")
+    {
+        upper_bound_tenths.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "lower-bound" || name == "lower-bound-tenths" || name == "sum" || name == "upper-bound" || name == "upper-bound-tenths")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Unaggregated()
@@ -1951,7 +2489,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
         if(sample[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_segment_path() const
@@ -2016,8 +2554,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sample")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::Sample()
@@ -2054,16 +2603,16 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(corrupt.operation)
-	|| is_set(frames_lost.operation)
-	|| is_set(frames_sent.operation)
-	|| is_set(no_data_packets.operation)
-	|| is_set(out_of_order.operation)
-	|| is_set(result.operation)
-	|| is_set(sent.operation)
-	|| is_set(sent_at.operation)
-	|| is_set(timed_out.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(corrupt.yfilter)
+	|| ydk::is_set(frames_lost.yfilter)
+	|| ydk::is_set(frames_sent.yfilter)
+	|| ydk::is_set(no_data_packets.yfilter)
+	|| ydk::is_set(out_of_order.yfilter)
+	|| ydk::is_set(result.yfilter)
+	|| ydk::is_set(sent.yfilter)
+	|| ydk::is_set(sent_at.yfilter)
+	|| ydk::is_set(timed_out.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_segment_path() const
@@ -2089,15 +2638,15 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::Statistic
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (corrupt.is_set || is_set(corrupt.operation)) leaf_name_data.push_back(corrupt.get_name_leafdata());
-    if (frames_lost.is_set || is_set(frames_lost.operation)) leaf_name_data.push_back(frames_lost.get_name_leafdata());
-    if (frames_sent.is_set || is_set(frames_sent.operation)) leaf_name_data.push_back(frames_sent.get_name_leafdata());
-    if (no_data_packets.is_set || is_set(no_data_packets.operation)) leaf_name_data.push_back(no_data_packets.get_name_leafdata());
-    if (out_of_order.is_set || is_set(out_of_order.operation)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-    if (sent_at.is_set || is_set(sent_at.operation)) leaf_name_data.push_back(sent_at.get_name_leafdata());
-    if (timed_out.is_set || is_set(timed_out.operation)) leaf_name_data.push_back(timed_out.get_name_leafdata());
+    if (corrupt.is_set || is_set(corrupt.yfilter)) leaf_name_data.push_back(corrupt.get_name_leafdata());
+    if (frames_lost.is_set || is_set(frames_lost.yfilter)) leaf_name_data.push_back(frames_lost.get_name_leafdata());
+    if (frames_sent.is_set || is_set(frames_sent.yfilter)) leaf_name_data.push_back(frames_sent.get_name_leafdata());
+    if (no_data_packets.is_set || is_set(no_data_packets.yfilter)) leaf_name_data.push_back(no_data_packets.get_name_leafdata());
+    if (out_of_order.is_set || is_set(out_of_order.yfilter)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+    if (sent_at.is_set || is_set(sent_at.yfilter)) leaf_name_data.push_back(sent_at.get_name_leafdata());
+    if (timed_out.is_set || is_set(timed_out.yfilter)) leaf_name_data.push_back(timed_out.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2116,44 +2665,109 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "corrupt")
     {
         corrupt = value;
+        corrupt.value_namespace = name_space;
+        corrupt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-lost")
     {
         frames_lost = value;
+        frames_lost.value_namespace = name_space;
+        frames_lost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-sent")
     {
         frames_sent = value;
+        frames_sent.value_namespace = name_space;
+        frames_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data-packets")
     {
         no_data_packets = value;
+        no_data_packets.value_namespace = name_space;
+        no_data_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-order")
     {
         out_of_order = value;
+        out_of_order.value_namespace = name_space;
+        out_of_order.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent")
     {
         sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent-at")
     {
         sent_at = value;
+        sent_at.value_namespace = name_space;
+        sent_at.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timed-out")
     {
         timed_out = value;
+        timed_out.value_namespace = name_space;
+        timed_out.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "corrupt")
+    {
+        corrupt.yfilter = yfilter;
+    }
+    if(value_path == "frames-lost")
+    {
+        frames_lost.yfilter = yfilter;
+    }
+    if(value_path == "frames-sent")
+    {
+        frames_sent.yfilter = yfilter;
+    }
+    if(value_path == "no-data-packets")
+    {
+        no_data_packets.yfilter = yfilter;
+    }
+    if(value_path == "out-of-order")
+    {
+        out_of_order.yfilter = yfilter;
+    }
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+    if(value_path == "sent-at")
+    {
+        sent_at.yfilter = yfilter;
+    }
+    if(value_path == "timed-out")
+    {
+        timed_out.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "corrupt" || name == "frames-lost" || name == "frames-sent" || name == "no-data-packets" || name == "out-of-order" || name == "result" || name == "sent" || name == "sent-at" || name == "timed-out")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operations()
@@ -2182,7 +2796,7 @@ bool Sla::Protocols::Ethernet::Operations::has_operation() const
         if(operation_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::Operations::get_segment_path() const
@@ -2247,8 +2861,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::Operations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::Operations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::Operation_()
@@ -2292,15 +2917,15 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::has_data() const
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(display_long.operation)
-	|| is_set(display_short.operation)
-	|| is_set(domain_name.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(last_run.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mep_id.operation)
-	|| is_set(profile_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(display_long.yfilter)
+	|| ydk::is_set(display_short.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(last_run.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mep_id.yfilter)
+	|| ydk::is_set(profile_name.yfilter)
 	|| (profile_options !=  nullptr && profile_options->has_operation())
 	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
@@ -2328,14 +2953,14 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (display_long.is_set || is_set(display_long.operation)) leaf_name_data.push_back(display_long.get_name_leafdata());
-    if (display_short.is_set || is_set(display_short.operation)) leaf_name_data.push_back(display_short.get_name_leafdata());
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (last_run.is_set || is_set(last_run.operation)) leaf_name_data.push_back(last_run.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (display_long.is_set || is_set(display_long.yfilter)) leaf_name_data.push_back(display_long.get_name_leafdata());
+    if (display_short.is_set || is_set(display_short.yfilter)) leaf_name_data.push_back(display_short.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (last_run.is_set || is_set(last_run.yfilter)) leaf_name_data.push_back(last_run.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.yfilter)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2382,40 +3007,99 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "display-long")
     {
         display_long = value;
+        display_long.value_namespace = name_space;
+        display_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "display-short")
     {
         display_short = value;
+        display_short.value_namespace = name_space;
+        display_short.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-name")
     {
         domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-run")
     {
         last_run = value;
+        last_run.value_namespace = name_space;
+        last_run.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
+        mep_id.value_namespace = name_space;
+        mep_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "display-long")
+    {
+        display_long.yfilter = yfilter;
+    }
+    if(value_path == "display-short")
+    {
+        display_short.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "last-run")
+    {
+        last_run.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mep-id")
+    {
+        mep_id.yfilter = yfilter;
+    }
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-options" || name == "specific-options" || name == "display-long" || name == "display-short" || name == "domain-name" || name == "interface-name" || name == "last-run" || name == "mac-address" || name == "mep-id" || name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::ProfileOptions()
@@ -2469,13 +3153,13 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::has_opera
         if(operation_metric[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(bursts_per_probe.operation)
-	|| is_set(flr_calculation_interval.operation)
-	|| is_set(inter_burst_interval.operation)
-	|| is_set(inter_packet_interval.operation)
-	|| is_set(packets_per_burst.operation)
-	|| is_set(probe_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bursts_per_probe.yfilter)
+	|| ydk::is_set(flr_calculation_interval.yfilter)
+	|| ydk::is_set(inter_burst_interval.yfilter)
+	|| ydk::is_set(inter_packet_interval.yfilter)
+	|| ydk::is_set(packets_per_burst.yfilter)
+	|| ydk::is_set(probe_type.yfilter)
 	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
 	|| (packet_padding !=  nullptr && packet_padding->has_operation())
 	|| (priority !=  nullptr && priority->has_operation());
@@ -2504,12 +3188,12 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::ProfileOption
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bursts_per_probe.is_set || is_set(bursts_per_probe.operation)) leaf_name_data.push_back(bursts_per_probe.get_name_leafdata());
-    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.operation)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
-    if (inter_burst_interval.is_set || is_set(inter_burst_interval.operation)) leaf_name_data.push_back(inter_burst_interval.get_name_leafdata());
-    if (inter_packet_interval.is_set || is_set(inter_packet_interval.operation)) leaf_name_data.push_back(inter_packet_interval.get_name_leafdata());
-    if (packets_per_burst.is_set || is_set(packets_per_burst.operation)) leaf_name_data.push_back(packets_per_burst.get_name_leafdata());
-    if (probe_type.is_set || is_set(probe_type.operation)) leaf_name_data.push_back(probe_type.get_name_leafdata());
+    if (bursts_per_probe.is_set || is_set(bursts_per_probe.yfilter)) leaf_name_data.push_back(bursts_per_probe.get_name_leafdata());
+    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.yfilter)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
+    if (inter_burst_interval.is_set || is_set(inter_burst_interval.yfilter)) leaf_name_data.push_back(inter_burst_interval.get_name_leafdata());
+    if (inter_packet_interval.is_set || is_set(inter_packet_interval.yfilter)) leaf_name_data.push_back(inter_packet_interval.get_name_leafdata());
+    if (packets_per_burst.is_set || is_set(packets_per_burst.yfilter)) leaf_name_data.push_back(packets_per_burst.get_name_leafdata());
+    if (probe_type.is_set || is_set(probe_type.yfilter)) leaf_name_data.push_back(probe_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2591,32 +3275,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bursts-per-probe")
     {
         bursts_per_probe = value;
+        bursts_per_probe.value_namespace = name_space;
+        bursts_per_probe.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flr-calculation-interval")
     {
         flr_calculation_interval = value;
+        flr_calculation_interval.value_namespace = name_space;
+        flr_calculation_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-burst-interval")
     {
         inter_burst_interval = value;
+        inter_burst_interval.value_namespace = name_space;
+        inter_burst_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-packet-interval")
     {
         inter_packet_interval = value;
+        inter_packet_interval.value_namespace = name_space;
+        inter_packet_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-per-burst")
     {
         packets_per_burst = value;
+        packets_per_burst.value_namespace = name_space;
+        packets_per_burst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-type")
     {
         probe_type = value;
+        probe_type.value_namespace = name_space;
+        probe_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bursts-per-probe")
+    {
+        bursts_per_probe.yfilter = yfilter;
+    }
+    if(value_path == "flr-calculation-interval")
+    {
+        flr_calculation_interval.yfilter = yfilter;
+    }
+    if(value_path == "inter-burst-interval")
+    {
+        inter_burst_interval.yfilter = yfilter;
+    }
+    if(value_path == "inter-packet-interval")
+    {
+        inter_packet_interval.yfilter = yfilter;
+    }
+    if(value_path == "packets-per-burst")
+    {
+        packets_per_burst.yfilter = yfilter;
+    }
+    if(value_path == "probe-type")
+    {
+        probe_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation-metric" || name == "operation-schedule" || name == "packet-padding" || name == "priority" || name == "bursts-per-probe" || name == "flr-calculation-interval" || name == "inter-burst-interval" || name == "inter-packet-interval" || name == "packets-per-burst" || name == "probe-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding::PacketPadding()
@@ -2641,10 +3372,10 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPad
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(packet_pad_size.operation)
-	|| is_set(test_pattern_pad_hex_string.operation)
-	|| is_set(test_pattern_pad_scheme.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(packet_pad_size.yfilter)
+	|| ydk::is_set(test_pattern_pad_hex_string.yfilter)
+	|| ydk::is_set(test_pattern_pad_scheme.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding::get_segment_path() const
@@ -2670,9 +3401,9 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::ProfileOption
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (packet_pad_size.is_set || is_set(packet_pad_size.operation)) leaf_name_data.push_back(packet_pad_size.get_name_leafdata());
-    if (test_pattern_pad_hex_string.is_set || is_set(test_pattern_pad_hex_string.operation)) leaf_name_data.push_back(test_pattern_pad_hex_string.get_name_leafdata());
-    if (test_pattern_pad_scheme.is_set || is_set(test_pattern_pad_scheme.operation)) leaf_name_data.push_back(test_pattern_pad_scheme.get_name_leafdata());
+    if (packet_pad_size.is_set || is_set(packet_pad_size.yfilter)) leaf_name_data.push_back(packet_pad_size.get_name_leafdata());
+    if (test_pattern_pad_hex_string.is_set || is_set(test_pattern_pad_hex_string.yfilter)) leaf_name_data.push_back(test_pattern_pad_hex_string.get_name_leafdata());
+    if (test_pattern_pad_scheme.is_set || is_set(test_pattern_pad_scheme.yfilter)) leaf_name_data.push_back(test_pattern_pad_scheme.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2691,20 +3422,49 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-pad-size")
     {
         packet_pad_size = value;
+        packet_pad_size.value_namespace = name_space;
+        packet_pad_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-pattern-pad-hex-string")
     {
         test_pattern_pad_hex_string = value;
+        test_pattern_pad_hex_string.value_namespace = name_space;
+        test_pattern_pad_hex_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-pattern-pad-scheme")
     {
         test_pattern_pad_scheme = value;
+        test_pattern_pad_scheme.value_namespace = name_space;
+        test_pattern_pad_scheme.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packet-pad-size")
+    {
+        packet_pad_size.yfilter = yfilter;
+    }
+    if(value_path == "test-pattern-pad-hex-string")
+    {
+        test_pattern_pad_hex_string.yfilter = yfilter;
+    }
+    if(value_path == "test-pattern-pad-scheme")
+    {
+        test_pattern_pad_scheme.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::PacketPadding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packet-pad-size" || name == "test-pattern-pad-hex-string" || name == "test-pattern-pad-scheme")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority::Priority()
@@ -2727,9 +3487,9 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority:
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cos.operation)
-	|| is_set(priority_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(priority_type.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority::get_segment_path() const
@@ -2755,8 +3515,8 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::ProfileOption
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (priority_type.is_set || is_set(priority_type.operation)) leaf_name_data.push_back(priority_type.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (priority_type.is_set || is_set(priority_type.yfilter)) leaf_name_data.push_back(priority_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2775,16 +3535,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-type")
     {
         priority_type = value;
+        priority_type.value_namespace = name_space;
+        priority_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "priority-type")
+    {
+        priority_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Priority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cos" || name == "priority-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule::OperationSchedule()
@@ -2811,11 +3594,11 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operation
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(schedule_duration.operation)
-	|| is_set(schedule_interval.operation)
-	|| is_set(start_time.operation)
-	|| is_set(start_time_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(schedule_duration.yfilter)
+	|| ydk::is_set(schedule_interval.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(start_time_configured.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule::get_segment_path() const
@@ -2841,10 +3624,10 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::ProfileOption
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (schedule_duration.is_set || is_set(schedule_duration.operation)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
-    if (schedule_interval.is_set || is_set(schedule_interval.operation)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (start_time_configured.is_set || is_set(start_time_configured.operation)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
+    if (schedule_duration.is_set || is_set(schedule_duration.yfilter)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
+    if (schedule_interval.is_set || is_set(schedule_interval.yfilter)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (start_time_configured.is_set || is_set(start_time_configured.yfilter)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2863,24 +3646,59 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "schedule-duration")
     {
         schedule_duration = value;
+        schedule_duration.value_namespace = name_space;
+        schedule_duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "schedule-interval")
     {
         schedule_interval = value;
+        schedule_interval.value_namespace = name_space;
+        schedule_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time-configured")
     {
         start_time_configured = value;
+        start_time_configured.value_namespace = name_space;
+        start_time_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "schedule-duration")
+    {
+        schedule_duration.yfilter = yfilter;
+    }
+    if(value_path == "schedule-interval")
+    {
+        schedule_interval.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "start-time-configured")
+    {
+        start_time_configured.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationSchedule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "schedule-duration" || name == "schedule-interval" || name == "start-time" || name == "start-time-configured")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::OperationMetric()
@@ -2906,8 +3724,8 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operation
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(current_buckets_archive.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(current_buckets_archive.yfilter)
 	|| (metric_config !=  nullptr && metric_config->has_operation());
 }
 
@@ -2934,7 +3752,7 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::ProfileOption
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (current_buckets_archive.is_set || is_set(current_buckets_archive.operation)) leaf_name_data.push_back(current_buckets_archive.get_name_leafdata());
+    if (current_buckets_archive.is_set || is_set(current_buckets_archive.yfilter)) leaf_name_data.push_back(current_buckets_archive.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2967,12 +3785,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "current-buckets-archive")
     {
         current_buckets_archive = value;
+        current_buckets_archive.value_namespace = name_space;
+        current_buckets_archive.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "current-buckets-archive")
+    {
+        current_buckets_archive.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric-config" || name == "current-buckets-archive")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig::MetricConfig()
@@ -3003,13 +3838,13 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::Operation
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bins_count.operation)
-	|| is_set(bins_width.operation)
-	|| is_set(bucket_size.operation)
-	|| is_set(bucket_size_unit.operation)
-	|| is_set(buckets_archive.operation)
-	|| is_set(metric_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bins_count.yfilter)
+	|| ydk::is_set(bins_width.yfilter)
+	|| ydk::is_set(bucket_size.yfilter)
+	|| ydk::is_set(bucket_size_unit.yfilter)
+	|| ydk::is_set(buckets_archive.yfilter)
+	|| ydk::is_set(metric_type.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig::get_segment_path() const
@@ -3035,12 +3870,12 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::ProfileOption
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bins_count.is_set || is_set(bins_count.operation)) leaf_name_data.push_back(bins_count.get_name_leafdata());
-    if (bins_width.is_set || is_set(bins_width.operation)) leaf_name_data.push_back(bins_width.get_name_leafdata());
-    if (bucket_size.is_set || is_set(bucket_size.operation)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
-    if (bucket_size_unit.is_set || is_set(bucket_size_unit.operation)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
-    if (buckets_archive.is_set || is_set(buckets_archive.operation)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (bins_count.is_set || is_set(bins_count.yfilter)) leaf_name_data.push_back(bins_count.get_name_leafdata());
+    if (bins_width.is_set || is_set(bins_width.yfilter)) leaf_name_data.push_back(bins_width.get_name_leafdata());
+    if (bucket_size.is_set || is_set(bucket_size.yfilter)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
+    if (bucket_size_unit.is_set || is_set(bucket_size_unit.yfilter)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
+    if (buckets_archive.is_set || is_set(buckets_archive.yfilter)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3059,32 +3894,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bins-count")
     {
         bins_count = value;
+        bins_count.value_namespace = name_space;
+        bins_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bins-width")
     {
         bins_width = value;
+        bins_width.value_namespace = name_space;
+        bins_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size")
     {
         bucket_size = value;
+        bucket_size.value_namespace = name_space;
+        bucket_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size-unit")
     {
         bucket_size_unit = value;
+        bucket_size_unit.value_namespace = name_space;
+        bucket_size_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "buckets-archive")
     {
         buckets_archive = value;
+        buckets_archive.value_namespace = name_space;
+        buckets_archive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric-type")
     {
         metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bins-count")
+    {
+        bins_count.yfilter = yfilter;
+    }
+    if(value_path == "bins-width")
+    {
+        bins_width.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size")
+    {
+        bucket_size.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size-unit")
+    {
+        bucket_size_unit.yfilter = yfilter;
+    }
+    if(value_path == "buckets-archive")
+    {
+        buckets_archive.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::ProfileOptions::OperationMetric::MetricConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins-count" || name == "bins-width" || name == "bucket-size" || name == "bucket-size-unit" || name == "buckets-archive" || name == "metric-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::SpecificOptions()
@@ -3114,8 +3996,8 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::has_data
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oper_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(oper_type.yfilter)
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
@@ -3143,7 +4025,7 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oper_type.is_set || is_set(oper_type.operation)) leaf_name_data.push_back(oper_type.get_name_leafdata());
+    if (oper_type.is_set || is_set(oper_type.yfilter)) leaf_name_data.push_back(oper_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3190,12 +4072,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oper-type")
     {
         oper_type = value;
+        oper_type.value_namespace = name_space;
+        oper_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oper-type")
+    {
+        oper_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-operation-options" || name == "ondemand-operation-options" || name == "oper-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions::ConfiguredOperationOptions()
@@ -3216,8 +4115,8 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::Configur
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions::get_segment_path() const
@@ -3243,7 +4142,7 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3262,12 +4161,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::ConfiguredOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions::OndemandOperationOptions()
@@ -3290,9 +4206,9 @@ bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::Ondemand
 
 bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ondemand_operation_id.operation)
-	|| is_set(probe_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ondemand_operation_id.yfilter)
+	|| ydk::is_set(probe_count.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions::get_segment_path() const
@@ -3318,8 +4234,8 @@ const EntityPath Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.operation)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
-    if (probe_count.is_set || is_set(probe_count.operation)) leaf_name_data.push_back(probe_count.get_name_leafdata());
+    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.yfilter)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
+    if (probe_count.is_set || is_set(probe_count.yfilter)) leaf_name_data.push_back(probe_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3338,16 +4254,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     return children;
 }
 
-void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ondemand-operation-id")
     {
         ondemand_operation_id = value;
+        ondemand_operation_id.value_namespace = name_space;
+        ondemand_operation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-count")
     {
         probe_count = value;
+        probe_count.value_namespace = name_space;
+        probe_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ondemand-operation-id")
+    {
+        ondemand_operation_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-count")
+    {
+        probe_count.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::Operations::Operation_::SpecificOptions::OndemandOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ondemand-operation-id" || name == "probe-count")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistoricals()
@@ -3376,7 +4315,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::has_operation() const
         if(statistics_historical[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::get_segment_path() const
@@ -3441,8 +4380,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics-historical")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::StatisticsHistorical()
@@ -3498,16 +4448,16 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::has_
         if(operation_metric[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(display_long.operation)
-	|| is_set(display_short.operation)
-	|| is_set(domain_name.operation)
-	|| is_set(flr_calculation_interval.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mep_id.operation)
-	|| is_set(probe_type.operation)
-	|| is_set(profile_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(display_long.yfilter)
+	|| ydk::is_set(display_short.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(flr_calculation_interval.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mep_id.yfilter)
+	|| ydk::is_set(probe_type.yfilter)
+	|| ydk::is_set(profile_name.yfilter)
 	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
 	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
@@ -3535,15 +4485,15 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (display_long.is_set || is_set(display_long.operation)) leaf_name_data.push_back(display_long.get_name_leafdata());
-    if (display_short.is_set || is_set(display_short.operation)) leaf_name_data.push_back(display_short.get_name_leafdata());
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.operation)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
-    if (probe_type.is_set || is_set(probe_type.operation)) leaf_name_data.push_back(probe_type.get_name_leafdata());
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (display_long.is_set || is_set(display_long.yfilter)) leaf_name_data.push_back(display_long.get_name_leafdata());
+    if (display_short.is_set || is_set(display_short.yfilter)) leaf_name_data.push_back(display_short.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.yfilter)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.yfilter)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (probe_type.is_set || is_set(probe_type.yfilter)) leaf_name_data.push_back(probe_type.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3611,44 +4561,109 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "display-long")
     {
         display_long = value;
+        display_long.value_namespace = name_space;
+        display_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "display-short")
     {
         display_short = value;
+        display_short.value_namespace = name_space;
+        display_short.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-name")
     {
         domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flr-calculation-interval")
     {
         flr_calculation_interval = value;
+        flr_calculation_interval.value_namespace = name_space;
+        flr_calculation_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
+        mep_id.value_namespace = name_space;
+        mep_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-type")
     {
         probe_type = value;
+        probe_type.value_namespace = name_space;
+        probe_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "display-long")
+    {
+        display_long.yfilter = yfilter;
+    }
+    if(value_path == "display-short")
+    {
+        display_short.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "flr-calculation-interval")
+    {
+        flr_calculation_interval.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mep-id")
+    {
+        mep_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-type")
+    {
+        probe_type.yfilter = yfilter;
+    }
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation-metric" || name == "operation-schedule" || name == "specific-options" || name == "display-long" || name == "display-short" || name == "domain-name" || name == "flr-calculation-interval" || name == "interface-name" || name == "mac-address" || name == "mep-id" || name == "probe-type" || name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::SpecificOptions()
@@ -3678,8 +4693,8 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Spec
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oper_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(oper_type.yfilter)
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
@@ -3707,7 +4722,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oper_type.is_set || is_set(oper_type.operation)) leaf_name_data.push_back(oper_type.get_name_leafdata());
+    if (oper_type.is_set || is_set(oper_type.yfilter)) leaf_name_data.push_back(oper_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3754,12 +4769,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oper-type")
     {
         oper_type = value;
+        oper_type.value_namespace = name_space;
+        oper_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oper-type")
+    {
+        oper_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-operation-options" || name == "ondemand-operation-options" || name == "oper-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::ConfiguredOperationOptions()
@@ -3780,8 +4812,8 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Spec
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::get_segment_path() const
@@ -3807,7 +4839,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3826,12 +4858,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::OndemandOperationOptions()
@@ -3854,9 +4903,9 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Spec
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ondemand_operation_id.operation)
-	|| is_set(probe_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ondemand_operation_id.yfilter)
+	|| ydk::is_set(probe_count.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::get_segment_path() const
@@ -3882,8 +4931,8 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.operation)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
-    if (probe_count.is_set || is_set(probe_count.operation)) leaf_name_data.push_back(probe_count.get_name_leafdata());
+    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.yfilter)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
+    if (probe_count.is_set || is_set(probe_count.yfilter)) leaf_name_data.push_back(probe_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3902,16 +4951,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ondemand-operation-id")
     {
         ondemand_operation_id = value;
+        ondemand_operation_id.value_namespace = name_space;
+        ondemand_operation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-count")
     {
         probe_count = value;
+        probe_count.value_namespace = name_space;
+        probe_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ondemand-operation-id")
+    {
+        ondemand_operation_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-count")
+    {
+        probe_count.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ondemand-operation-id" || name == "probe-count")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::OperationSchedule()
@@ -3938,11 +5010,11 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(schedule_duration.operation)
-	|| is_set(schedule_interval.operation)
-	|| is_set(start_time.operation)
-	|| is_set(start_time_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(schedule_duration.yfilter)
+	|| ydk::is_set(schedule_interval.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(start_time_configured.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::get_segment_path() const
@@ -3968,10 +5040,10 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (schedule_duration.is_set || is_set(schedule_duration.operation)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
-    if (schedule_interval.is_set || is_set(schedule_interval.operation)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (start_time_configured.is_set || is_set(start_time_configured.operation)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
+    if (schedule_duration.is_set || is_set(schedule_duration.yfilter)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
+    if (schedule_interval.is_set || is_set(schedule_interval.yfilter)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (start_time_configured.is_set || is_set(start_time_configured.yfilter)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3990,24 +5062,59 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "schedule-duration")
     {
         schedule_duration = value;
+        schedule_duration.value_namespace = name_space;
+        schedule_duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "schedule-interval")
     {
         schedule_interval = value;
+        schedule_interval.value_namespace = name_space;
+        schedule_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time-configured")
     {
         start_time_configured = value;
+        start_time_configured.value_namespace = name_space;
+        start_time_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "schedule-duration")
+    {
+        schedule_duration.yfilter = yfilter;
+    }
+    if(value_path == "schedule-interval")
+    {
+        schedule_interval.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "start-time-configured")
+    {
+        start_time_configured.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "schedule-duration" || name == "schedule-interval" || name == "start-time" || name == "start-time-configured")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::OperationMetric()
@@ -4040,7 +5147,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
         if(bucket[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation());
 }
 
@@ -4120,8 +5227,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bucket" || name == "config")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::Config()
@@ -4152,13 +5270,13 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bins_count.operation)
-	|| is_set(bins_width.operation)
-	|| is_set(bucket_size.operation)
-	|| is_set(bucket_size_unit.operation)
-	|| is_set(buckets_archive.operation)
-	|| is_set(metric_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bins_count.yfilter)
+	|| ydk::is_set(bins_width.yfilter)
+	|| ydk::is_set(bucket_size.yfilter)
+	|| ydk::is_set(bucket_size_unit.yfilter)
+	|| ydk::is_set(buckets_archive.yfilter)
+	|| ydk::is_set(metric_type.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::get_segment_path() const
@@ -4184,12 +5302,12 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bins_count.is_set || is_set(bins_count.operation)) leaf_name_data.push_back(bins_count.get_name_leafdata());
-    if (bins_width.is_set || is_set(bins_width.operation)) leaf_name_data.push_back(bins_width.get_name_leafdata());
-    if (bucket_size.is_set || is_set(bucket_size.operation)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
-    if (bucket_size_unit.is_set || is_set(bucket_size_unit.operation)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
-    if (buckets_archive.is_set || is_set(buckets_archive.operation)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (bins_count.is_set || is_set(bins_count.yfilter)) leaf_name_data.push_back(bins_count.get_name_leafdata());
+    if (bins_width.is_set || is_set(bins_width.yfilter)) leaf_name_data.push_back(bins_width.get_name_leafdata());
+    if (bucket_size.is_set || is_set(bucket_size.yfilter)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
+    if (bucket_size_unit.is_set || is_set(bucket_size_unit.yfilter)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
+    if (buckets_archive.is_set || is_set(buckets_archive.yfilter)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4208,32 +5326,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bins-count")
     {
         bins_count = value;
+        bins_count.value_namespace = name_space;
+        bins_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bins-width")
     {
         bins_width = value;
+        bins_width.value_namespace = name_space;
+        bins_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size")
     {
         bucket_size = value;
+        bucket_size.value_namespace = name_space;
+        bucket_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size-unit")
     {
         bucket_size_unit = value;
+        bucket_size_unit.value_namespace = name_space;
+        bucket_size_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "buckets-archive")
     {
         buckets_archive = value;
+        buckets_archive.value_namespace = name_space;
+        buckets_archive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric-type")
     {
         metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bins-count")
+    {
+        bins_count.yfilter = yfilter;
+    }
+    if(value_path == "bins-width")
+    {
+        bins_width.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size")
+    {
+        bucket_size.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size-unit")
+    {
+        bucket_size_unit.yfilter = yfilter;
+    }
+    if(value_path == "buckets-archive")
+    {
+        buckets_archive.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins-count" || name == "bins-width" || name == "bucket-size" || name == "bucket-size-unit" || name == "buckets-archive" || name == "metric-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Bucket()
@@ -4319,38 +5484,38 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(corrupt.operation)
-	|| is_set(data_lost_count.operation)
-	|| is_set(data_sent_count.operation)
-	|| is_set(duplicates.operation)
-	|| is_set(duration.operation)
-	|| is_set(lost.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(out_of_order.operation)
-	|| is_set(overall_flr.operation)
-	|| is_set(premature_reason.operation)
-	|| is_set(premature_reason_string.operation)
-	|| is_set(result_count.operation)
-	|| is_set(sent.operation)
-	|| is_set(standard_deviation.operation)
-	|| is_set(start_at.operation)
-	|| is_set(suspect_cleared_mid_bucket.operation)
-	|| is_set(suspect_clock_drift.operation)
-	|| is_set(suspect_flr_low_packet_count.operation)
-	|| is_set(suspect_management_latency.operation)
-	|| is_set(suspect_memory_allocation_failed.operation)
-	|| is_set(suspect_misordering.operation)
-	|| is_set(suspect_multiple_buckets.operation)
-	|| is_set(suspect_premature_end.operation)
-	|| is_set(suspect_probe_restarted.operation)
-	|| is_set(suspect_schedule_latency.operation)
-	|| is_set(suspect_send_fail.operation)
-	|| is_set(suspect_start_mid_bucket.operation)
-	|| is_set(time_of_maximum.operation)
-	|| is_set(time_of_minimum.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(corrupt.yfilter)
+	|| ydk::is_set(data_lost_count.yfilter)
+	|| ydk::is_set(data_sent_count.yfilter)
+	|| ydk::is_set(duplicates.yfilter)
+	|| ydk::is_set(duration.yfilter)
+	|| ydk::is_set(lost.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(out_of_order.yfilter)
+	|| ydk::is_set(overall_flr.yfilter)
+	|| ydk::is_set(premature_reason.yfilter)
+	|| ydk::is_set(premature_reason_string.yfilter)
+	|| ydk::is_set(result_count.yfilter)
+	|| ydk::is_set(sent.yfilter)
+	|| ydk::is_set(standard_deviation.yfilter)
+	|| ydk::is_set(start_at.yfilter)
+	|| ydk::is_set(suspect_cleared_mid_bucket.yfilter)
+	|| ydk::is_set(suspect_clock_drift.yfilter)
+	|| ydk::is_set(suspect_flr_low_packet_count.yfilter)
+	|| ydk::is_set(suspect_management_latency.yfilter)
+	|| ydk::is_set(suspect_memory_allocation_failed.yfilter)
+	|| ydk::is_set(suspect_misordering.yfilter)
+	|| ydk::is_set(suspect_multiple_buckets.yfilter)
+	|| ydk::is_set(suspect_premature_end.yfilter)
+	|| ydk::is_set(suspect_probe_restarted.yfilter)
+	|| ydk::is_set(suspect_schedule_latency.yfilter)
+	|| ydk::is_set(suspect_send_fail.yfilter)
+	|| ydk::is_set(suspect_start_mid_bucket.yfilter)
+	|| ydk::is_set(time_of_maximum.yfilter)
+	|| ydk::is_set(time_of_minimum.yfilter)
 	|| (contents !=  nullptr && contents->has_operation());
 }
 
@@ -4377,37 +5542,37 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (corrupt.is_set || is_set(corrupt.operation)) leaf_name_data.push_back(corrupt.get_name_leafdata());
-    if (data_lost_count.is_set || is_set(data_lost_count.operation)) leaf_name_data.push_back(data_lost_count.get_name_leafdata());
-    if (data_sent_count.is_set || is_set(data_sent_count.operation)) leaf_name_data.push_back(data_sent_count.get_name_leafdata());
-    if (duplicates.is_set || is_set(duplicates.operation)) leaf_name_data.push_back(duplicates.get_name_leafdata());
-    if (duration.is_set || is_set(duration.operation)) leaf_name_data.push_back(duration.get_name_leafdata());
-    if (lost.is_set || is_set(lost.operation)) leaf_name_data.push_back(lost.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (out_of_order.is_set || is_set(out_of_order.operation)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
-    if (overall_flr.is_set || is_set(overall_flr.operation)) leaf_name_data.push_back(overall_flr.get_name_leafdata());
-    if (premature_reason.is_set || is_set(premature_reason.operation)) leaf_name_data.push_back(premature_reason.get_name_leafdata());
-    if (premature_reason_string.is_set || is_set(premature_reason_string.operation)) leaf_name_data.push_back(premature_reason_string.get_name_leafdata());
-    if (result_count.is_set || is_set(result_count.operation)) leaf_name_data.push_back(result_count.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-    if (standard_deviation.is_set || is_set(standard_deviation.operation)) leaf_name_data.push_back(standard_deviation.get_name_leafdata());
-    if (start_at.is_set || is_set(start_at.operation)) leaf_name_data.push_back(start_at.get_name_leafdata());
-    if (suspect_cleared_mid_bucket.is_set || is_set(suspect_cleared_mid_bucket.operation)) leaf_name_data.push_back(suspect_cleared_mid_bucket.get_name_leafdata());
-    if (suspect_clock_drift.is_set || is_set(suspect_clock_drift.operation)) leaf_name_data.push_back(suspect_clock_drift.get_name_leafdata());
-    if (suspect_flr_low_packet_count.is_set || is_set(suspect_flr_low_packet_count.operation)) leaf_name_data.push_back(suspect_flr_low_packet_count.get_name_leafdata());
-    if (suspect_management_latency.is_set || is_set(suspect_management_latency.operation)) leaf_name_data.push_back(suspect_management_latency.get_name_leafdata());
-    if (suspect_memory_allocation_failed.is_set || is_set(suspect_memory_allocation_failed.operation)) leaf_name_data.push_back(suspect_memory_allocation_failed.get_name_leafdata());
-    if (suspect_misordering.is_set || is_set(suspect_misordering.operation)) leaf_name_data.push_back(suspect_misordering.get_name_leafdata());
-    if (suspect_multiple_buckets.is_set || is_set(suspect_multiple_buckets.operation)) leaf_name_data.push_back(suspect_multiple_buckets.get_name_leafdata());
-    if (suspect_premature_end.is_set || is_set(suspect_premature_end.operation)) leaf_name_data.push_back(suspect_premature_end.get_name_leafdata());
-    if (suspect_probe_restarted.is_set || is_set(suspect_probe_restarted.operation)) leaf_name_data.push_back(suspect_probe_restarted.get_name_leafdata());
-    if (suspect_schedule_latency.is_set || is_set(suspect_schedule_latency.operation)) leaf_name_data.push_back(suspect_schedule_latency.get_name_leafdata());
-    if (suspect_send_fail.is_set || is_set(suspect_send_fail.operation)) leaf_name_data.push_back(suspect_send_fail.get_name_leafdata());
-    if (suspect_start_mid_bucket.is_set || is_set(suspect_start_mid_bucket.operation)) leaf_name_data.push_back(suspect_start_mid_bucket.get_name_leafdata());
-    if (time_of_maximum.is_set || is_set(time_of_maximum.operation)) leaf_name_data.push_back(time_of_maximum.get_name_leafdata());
-    if (time_of_minimum.is_set || is_set(time_of_minimum.operation)) leaf_name_data.push_back(time_of_minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (corrupt.is_set || is_set(corrupt.yfilter)) leaf_name_data.push_back(corrupt.get_name_leafdata());
+    if (data_lost_count.is_set || is_set(data_lost_count.yfilter)) leaf_name_data.push_back(data_lost_count.get_name_leafdata());
+    if (data_sent_count.is_set || is_set(data_sent_count.yfilter)) leaf_name_data.push_back(data_sent_count.get_name_leafdata());
+    if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
+    if (duration.is_set || is_set(duration.yfilter)) leaf_name_data.push_back(duration.get_name_leafdata());
+    if (lost.is_set || is_set(lost.yfilter)) leaf_name_data.push_back(lost.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (out_of_order.is_set || is_set(out_of_order.yfilter)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
+    if (overall_flr.is_set || is_set(overall_flr.yfilter)) leaf_name_data.push_back(overall_flr.get_name_leafdata());
+    if (premature_reason.is_set || is_set(premature_reason.yfilter)) leaf_name_data.push_back(premature_reason.get_name_leafdata());
+    if (premature_reason_string.is_set || is_set(premature_reason_string.yfilter)) leaf_name_data.push_back(premature_reason_string.get_name_leafdata());
+    if (result_count.is_set || is_set(result_count.yfilter)) leaf_name_data.push_back(result_count.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+    if (standard_deviation.is_set || is_set(standard_deviation.yfilter)) leaf_name_data.push_back(standard_deviation.get_name_leafdata());
+    if (start_at.is_set || is_set(start_at.yfilter)) leaf_name_data.push_back(start_at.get_name_leafdata());
+    if (suspect_cleared_mid_bucket.is_set || is_set(suspect_cleared_mid_bucket.yfilter)) leaf_name_data.push_back(suspect_cleared_mid_bucket.get_name_leafdata());
+    if (suspect_clock_drift.is_set || is_set(suspect_clock_drift.yfilter)) leaf_name_data.push_back(suspect_clock_drift.get_name_leafdata());
+    if (suspect_flr_low_packet_count.is_set || is_set(suspect_flr_low_packet_count.yfilter)) leaf_name_data.push_back(suspect_flr_low_packet_count.get_name_leafdata());
+    if (suspect_management_latency.is_set || is_set(suspect_management_latency.yfilter)) leaf_name_data.push_back(suspect_management_latency.get_name_leafdata());
+    if (suspect_memory_allocation_failed.is_set || is_set(suspect_memory_allocation_failed.yfilter)) leaf_name_data.push_back(suspect_memory_allocation_failed.get_name_leafdata());
+    if (suspect_misordering.is_set || is_set(suspect_misordering.yfilter)) leaf_name_data.push_back(suspect_misordering.get_name_leafdata());
+    if (suspect_multiple_buckets.is_set || is_set(suspect_multiple_buckets.yfilter)) leaf_name_data.push_back(suspect_multiple_buckets.get_name_leafdata());
+    if (suspect_premature_end.is_set || is_set(suspect_premature_end.yfilter)) leaf_name_data.push_back(suspect_premature_end.get_name_leafdata());
+    if (suspect_probe_restarted.is_set || is_set(suspect_probe_restarted.yfilter)) leaf_name_data.push_back(suspect_probe_restarted.get_name_leafdata());
+    if (suspect_schedule_latency.is_set || is_set(suspect_schedule_latency.yfilter)) leaf_name_data.push_back(suspect_schedule_latency.get_name_leafdata());
+    if (suspect_send_fail.is_set || is_set(suspect_send_fail.yfilter)) leaf_name_data.push_back(suspect_send_fail.get_name_leafdata());
+    if (suspect_start_mid_bucket.is_set || is_set(suspect_start_mid_bucket.yfilter)) leaf_name_data.push_back(suspect_start_mid_bucket.get_name_leafdata());
+    if (time_of_maximum.is_set || is_set(time_of_maximum.yfilter)) leaf_name_data.push_back(time_of_maximum.get_name_leafdata());
+    if (time_of_minimum.is_set || is_set(time_of_minimum.yfilter)) leaf_name_data.push_back(time_of_minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4440,132 +5605,329 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "corrupt")
     {
         corrupt = value;
+        corrupt.value_namespace = name_space;
+        corrupt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-lost-count")
     {
         data_lost_count = value;
+        data_lost_count.value_namespace = name_space;
+        data_lost_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-sent-count")
     {
         data_sent_count = value;
+        data_sent_count.value_namespace = name_space;
+        data_sent_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicates")
     {
         duplicates = value;
+        duplicates.value_namespace = name_space;
+        duplicates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duration")
     {
         duration = value;
+        duration.value_namespace = name_space;
+        duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lost")
     {
         lost = value;
+        lost.value_namespace = name_space;
+        lost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-order")
     {
         out_of_order = value;
+        out_of_order.value_namespace = name_space;
+        out_of_order.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overall-flr")
     {
         overall_flr = value;
+        overall_flr.value_namespace = name_space;
+        overall_flr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "premature-reason")
     {
         premature_reason = value;
+        premature_reason.value_namespace = name_space;
+        premature_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "premature-reason-string")
     {
         premature_reason_string = value;
+        premature_reason_string.value_namespace = name_space;
+        premature_reason_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "result-count")
     {
         result_count = value;
+        result_count.value_namespace = name_space;
+        result_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent")
     {
         sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standard-deviation")
     {
         standard_deviation = value;
+        standard_deviation.value_namespace = name_space;
+        standard_deviation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-at")
     {
         start_at = value;
+        start_at.value_namespace = name_space;
+        start_at.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-cleared-mid-bucket")
     {
         suspect_cleared_mid_bucket = value;
+        suspect_cleared_mid_bucket.value_namespace = name_space;
+        suspect_cleared_mid_bucket.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-clock-drift")
     {
         suspect_clock_drift = value;
+        suspect_clock_drift.value_namespace = name_space;
+        suspect_clock_drift.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-flr-low-packet-count")
     {
         suspect_flr_low_packet_count = value;
+        suspect_flr_low_packet_count.value_namespace = name_space;
+        suspect_flr_low_packet_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-management-latency")
     {
         suspect_management_latency = value;
+        suspect_management_latency.value_namespace = name_space;
+        suspect_management_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-memory-allocation-failed")
     {
         suspect_memory_allocation_failed = value;
+        suspect_memory_allocation_failed.value_namespace = name_space;
+        suspect_memory_allocation_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-misordering")
     {
         suspect_misordering = value;
+        suspect_misordering.value_namespace = name_space;
+        suspect_misordering.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-multiple-buckets")
     {
         suspect_multiple_buckets = value;
+        suspect_multiple_buckets.value_namespace = name_space;
+        suspect_multiple_buckets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-premature-end")
     {
         suspect_premature_end = value;
+        suspect_premature_end.value_namespace = name_space;
+        suspect_premature_end.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-probe-restarted")
     {
         suspect_probe_restarted = value;
+        suspect_probe_restarted.value_namespace = name_space;
+        suspect_probe_restarted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-schedule-latency")
     {
         suspect_schedule_latency = value;
+        suspect_schedule_latency.value_namespace = name_space;
+        suspect_schedule_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-send-fail")
     {
         suspect_send_fail = value;
+        suspect_send_fail.value_namespace = name_space;
+        suspect_send_fail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-start-mid-bucket")
     {
         suspect_start_mid_bucket = value;
+        suspect_start_mid_bucket.value_namespace = name_space;
+        suspect_start_mid_bucket.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-of-maximum")
     {
         time_of_maximum = value;
+        time_of_maximum.value_namespace = name_space;
+        time_of_maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-of-minimum")
     {
         time_of_minimum = value;
+        time_of_minimum.value_namespace = name_space;
+        time_of_minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "corrupt")
+    {
+        corrupt.yfilter = yfilter;
+    }
+    if(value_path == "data-lost-count")
+    {
+        data_lost_count.yfilter = yfilter;
+    }
+    if(value_path == "data-sent-count")
+    {
+        data_sent_count.yfilter = yfilter;
+    }
+    if(value_path == "duplicates")
+    {
+        duplicates.yfilter = yfilter;
+    }
+    if(value_path == "duration")
+    {
+        duration.yfilter = yfilter;
+    }
+    if(value_path == "lost")
+    {
+        lost.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "out-of-order")
+    {
+        out_of_order.yfilter = yfilter;
+    }
+    if(value_path == "overall-flr")
+    {
+        overall_flr.yfilter = yfilter;
+    }
+    if(value_path == "premature-reason")
+    {
+        premature_reason.yfilter = yfilter;
+    }
+    if(value_path == "premature-reason-string")
+    {
+        premature_reason_string.yfilter = yfilter;
+    }
+    if(value_path == "result-count")
+    {
+        result_count.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+    if(value_path == "standard-deviation")
+    {
+        standard_deviation.yfilter = yfilter;
+    }
+    if(value_path == "start-at")
+    {
+        start_at.yfilter = yfilter;
+    }
+    if(value_path == "suspect-cleared-mid-bucket")
+    {
+        suspect_cleared_mid_bucket.yfilter = yfilter;
+    }
+    if(value_path == "suspect-clock-drift")
+    {
+        suspect_clock_drift.yfilter = yfilter;
+    }
+    if(value_path == "suspect-flr-low-packet-count")
+    {
+        suspect_flr_low_packet_count.yfilter = yfilter;
+    }
+    if(value_path == "suspect-management-latency")
+    {
+        suspect_management_latency.yfilter = yfilter;
+    }
+    if(value_path == "suspect-memory-allocation-failed")
+    {
+        suspect_memory_allocation_failed.yfilter = yfilter;
+    }
+    if(value_path == "suspect-misordering")
+    {
+        suspect_misordering.yfilter = yfilter;
+    }
+    if(value_path == "suspect-multiple-buckets")
+    {
+        suspect_multiple_buckets.yfilter = yfilter;
+    }
+    if(value_path == "suspect-premature-end")
+    {
+        suspect_premature_end.yfilter = yfilter;
+    }
+    if(value_path == "suspect-probe-restarted")
+    {
+        suspect_probe_restarted.yfilter = yfilter;
+    }
+    if(value_path == "suspect-schedule-latency")
+    {
+        suspect_schedule_latency.yfilter = yfilter;
+    }
+    if(value_path == "suspect-send-fail")
+    {
+        suspect_send_fail.yfilter = yfilter;
+    }
+    if(value_path == "suspect-start-mid-bucket")
+    {
+        suspect_start_mid_bucket.yfilter = yfilter;
+    }
+    if(value_path == "time-of-maximum")
+    {
+        time_of_maximum.yfilter = yfilter;
+    }
+    if(value_path == "time-of-minimum")
+    {
+        time_of_minimum.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "contents" || name == "average" || name == "corrupt" || name == "data-lost-count" || name == "data-sent-count" || name == "duplicates" || name == "duration" || name == "lost" || name == "maximum" || name == "minimum" || name == "out-of-order" || name == "overall-flr" || name == "premature-reason" || name == "premature-reason-string" || name == "result-count" || name == "sent" || name == "standard-deviation" || name == "start-at" || name == "suspect-cleared-mid-bucket" || name == "suspect-clock-drift" || name == "suspect-flr-low-packet-count" || name == "suspect-management-latency" || name == "suspect-memory-allocation-failed" || name == "suspect-misordering" || name == "suspect-multiple-buckets" || name == "suspect-premature-end" || name == "suspect-probe-restarted" || name == "suspect-schedule-latency" || name == "suspect-send-fail" || name == "suspect-start-mid-bucket" || name == "time-of-maximum" || name == "time-of-minimum")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Contents()
@@ -4595,8 +5957,8 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bucket_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bucket_type.yfilter)
 	|| (aggregated !=  nullptr && aggregated->has_operation())
 	|| (unaggregated !=  nullptr && unaggregated->has_operation());
 }
@@ -4624,7 +5986,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bucket_type.is_set || is_set(bucket_type.operation)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
+    if (bucket_type.is_set || is_set(bucket_type.yfilter)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4671,12 +6033,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bucket-type")
     {
         bucket_type = value;
+        bucket_type.value_namespace = name_space;
+        bucket_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bucket-type")
+    {
+        bucket_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregated" || name == "unaggregated" || name == "bucket-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Aggregated()
@@ -4705,7 +6084,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
         if(bins[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::get_segment_path() const
@@ -4770,8 +6149,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::Bins()
@@ -4802,13 +6192,13 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(lower_bound.operation)
-	|| is_set(lower_bound_tenths.operation)
-	|| is_set(sum.operation)
-	|| is_set(upper_bound.operation)
-	|| is_set(upper_bound_tenths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(lower_bound_tenths.yfilter)
+	|| ydk::is_set(sum.yfilter)
+	|| ydk::is_set(upper_bound.yfilter)
+	|| ydk::is_set(upper_bound_tenths.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_segment_path() const
@@ -4834,12 +6224,12 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (lower_bound.is_set || is_set(lower_bound.operation)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (lower_bound_tenths.is_set || is_set(lower_bound_tenths.operation)) leaf_name_data.push_back(lower_bound_tenths.get_name_leafdata());
-    if (sum.is_set || is_set(sum.operation)) leaf_name_data.push_back(sum.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.operation)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
-    if (upper_bound_tenths.is_set || is_set(upper_bound_tenths.operation)) leaf_name_data.push_back(upper_bound_tenths.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (lower_bound_tenths.is_set || is_set(lower_bound_tenths.yfilter)) leaf_name_data.push_back(lower_bound_tenths.get_name_leafdata());
+    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+    if (upper_bound_tenths.is_set || is_set(upper_bound_tenths.yfilter)) leaf_name_data.push_back(upper_bound_tenths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4858,32 +6248,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound")
     {
         lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound-tenths")
     {
         lower_bound_tenths = value;
+        lower_bound_tenths.value_namespace = name_space;
+        lower_bound_tenths.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sum")
     {
         sum = value;
+        sum.value_namespace = name_space;
+        sum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound")
     {
         upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound-tenths")
     {
         upper_bound_tenths = value;
+        upper_bound_tenths.value_namespace = name_space;
+        upper_bound_tenths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound-tenths")
+    {
+        lower_bound_tenths.yfilter = yfilter;
+    }
+    if(value_path == "sum")
+    {
+        sum.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound-tenths")
+    {
+        upper_bound_tenths.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "lower-bound" || name == "lower-bound-tenths" || name == "sum" || name == "upper-bound" || name == "upper-bound-tenths")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Unaggregated()
@@ -4912,7 +6349,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
         if(sample[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_segment_path() const
@@ -4977,8 +6414,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sample")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::Sample()
@@ -5015,16 +6463,16 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(corrupt.operation)
-	|| is_set(frames_lost.operation)
-	|| is_set(frames_sent.operation)
-	|| is_set(no_data_packets.operation)
-	|| is_set(out_of_order.operation)
-	|| is_set(result.operation)
-	|| is_set(sent.operation)
-	|| is_set(sent_at.operation)
-	|| is_set(timed_out.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(corrupt.yfilter)
+	|| ydk::is_set(frames_lost.yfilter)
+	|| ydk::is_set(frames_sent.yfilter)
+	|| ydk::is_set(no_data_packets.yfilter)
+	|| ydk::is_set(out_of_order.yfilter)
+	|| ydk::is_set(result.yfilter)
+	|| ydk::is_set(sent.yfilter)
+	|| ydk::is_set(sent_at.yfilter)
+	|| ydk::is_set(timed_out.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_segment_path() const
@@ -5050,15 +6498,15 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (corrupt.is_set || is_set(corrupt.operation)) leaf_name_data.push_back(corrupt.get_name_leafdata());
-    if (frames_lost.is_set || is_set(frames_lost.operation)) leaf_name_data.push_back(frames_lost.get_name_leafdata());
-    if (frames_sent.is_set || is_set(frames_sent.operation)) leaf_name_data.push_back(frames_sent.get_name_leafdata());
-    if (no_data_packets.is_set || is_set(no_data_packets.operation)) leaf_name_data.push_back(no_data_packets.get_name_leafdata());
-    if (out_of_order.is_set || is_set(out_of_order.operation)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-    if (sent_at.is_set || is_set(sent_at.operation)) leaf_name_data.push_back(sent_at.get_name_leafdata());
-    if (timed_out.is_set || is_set(timed_out.operation)) leaf_name_data.push_back(timed_out.get_name_leafdata());
+    if (corrupt.is_set || is_set(corrupt.yfilter)) leaf_name_data.push_back(corrupt.get_name_leafdata());
+    if (frames_lost.is_set || is_set(frames_lost.yfilter)) leaf_name_data.push_back(frames_lost.get_name_leafdata());
+    if (frames_sent.is_set || is_set(frames_sent.yfilter)) leaf_name_data.push_back(frames_sent.get_name_leafdata());
+    if (no_data_packets.is_set || is_set(no_data_packets.yfilter)) leaf_name_data.push_back(no_data_packets.get_name_leafdata());
+    if (out_of_order.is_set || is_set(out_of_order.yfilter)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+    if (sent_at.is_set || is_set(sent_at.yfilter)) leaf_name_data.push_back(sent_at.get_name_leafdata());
+    if (timed_out.is_set || is_set(timed_out.yfilter)) leaf_name_data.push_back(timed_out.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5077,44 +6525,109 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "corrupt")
     {
         corrupt = value;
+        corrupt.value_namespace = name_space;
+        corrupt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-lost")
     {
         frames_lost = value;
+        frames_lost.value_namespace = name_space;
+        frames_lost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-sent")
     {
         frames_sent = value;
+        frames_sent.value_namespace = name_space;
+        frames_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data-packets")
     {
         no_data_packets = value;
+        no_data_packets.value_namespace = name_space;
+        no_data_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-order")
     {
         out_of_order = value;
+        out_of_order.value_namespace = name_space;
+        out_of_order.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent")
     {
         sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent-at")
     {
         sent_at = value;
+        sent_at.value_namespace = name_space;
+        sent_at.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timed-out")
     {
         timed_out = value;
+        timed_out.value_namespace = name_space;
+        timed_out.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "corrupt")
+    {
+        corrupt.yfilter = yfilter;
+    }
+    if(value_path == "frames-lost")
+    {
+        frames_lost.yfilter = yfilter;
+    }
+    if(value_path == "frames-sent")
+    {
+        frames_sent.yfilter = yfilter;
+    }
+    if(value_path == "no-data-packets")
+    {
+        no_data_packets.yfilter = yfilter;
+    }
+    if(value_path == "out-of-order")
+    {
+        out_of_order.yfilter = yfilter;
+    }
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+    if(value_path == "sent-at")
+    {
+        sent_at.yfilter = yfilter;
+    }
+    if(value_path == "timed-out")
+    {
+        timed_out.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "corrupt" || name == "frames-lost" || name == "frames-sent" || name == "no-data-packets" || name == "out-of-order" || name == "result" || name == "sent" || name == "sent-at" || name == "timed-out")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistoricals()
@@ -5143,7 +6656,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::has_operation() co
         if(statistics_on_demand_historical[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::get_segment_path() const
@@ -5208,8 +6721,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics-on-demand-historical")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::StatisticsOnDemandHistorical()
@@ -5265,16 +6789,16 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
         if(operation_metric[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(display_long.operation)
-	|| is_set(display_short.operation)
-	|| is_set(domain_name.operation)
-	|| is_set(flr_calculation_interval.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mep_id.operation)
-	|| is_set(operation_id.operation)
-	|| is_set(probe_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(display_long.yfilter)
+	|| ydk::is_set(display_short.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(flr_calculation_interval.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mep_id.yfilter)
+	|| ydk::is_set(operation_id.yfilter)
+	|| ydk::is_set(probe_type.yfilter)
 	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
 	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
@@ -5302,15 +6826,15 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (display_long.is_set || is_set(display_long.operation)) leaf_name_data.push_back(display_long.get_name_leafdata());
-    if (display_short.is_set || is_set(display_short.operation)) leaf_name_data.push_back(display_short.get_name_leafdata());
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.operation)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
-    if (operation_id.is_set || is_set(operation_id.operation)) leaf_name_data.push_back(operation_id.get_name_leafdata());
-    if (probe_type.is_set || is_set(probe_type.operation)) leaf_name_data.push_back(probe_type.get_name_leafdata());
+    if (display_long.is_set || is_set(display_long.yfilter)) leaf_name_data.push_back(display_long.get_name_leafdata());
+    if (display_short.is_set || is_set(display_short.yfilter)) leaf_name_data.push_back(display_short.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.yfilter)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.yfilter)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (operation_id.is_set || is_set(operation_id.yfilter)) leaf_name_data.push_back(operation_id.get_name_leafdata());
+    if (probe_type.is_set || is_set(probe_type.yfilter)) leaf_name_data.push_back(probe_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5378,44 +6902,109 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "display-long")
     {
         display_long = value;
+        display_long.value_namespace = name_space;
+        display_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "display-short")
     {
         display_short = value;
+        display_short.value_namespace = name_space;
+        display_short.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-name")
     {
         domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flr-calculation-interval")
     {
         flr_calculation_interval = value;
+        flr_calculation_interval.value_namespace = name_space;
+        flr_calculation_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
+        mep_id.value_namespace = name_space;
+        mep_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation-id")
     {
         operation_id = value;
+        operation_id.value_namespace = name_space;
+        operation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-type")
     {
         probe_type = value;
+        probe_type.value_namespace = name_space;
+        probe_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "display-long")
+    {
+        display_long.yfilter = yfilter;
+    }
+    if(value_path == "display-short")
+    {
+        display_short.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "flr-calculation-interval")
+    {
+        flr_calculation_interval.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mep-id")
+    {
+        mep_id.yfilter = yfilter;
+    }
+    if(value_path == "operation-id")
+    {
+        operation_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-type")
+    {
+        probe_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation-metric" || name == "operation-schedule" || name == "specific-options" || name == "display-long" || name == "display-short" || name == "domain-name" || name == "flr-calculation-interval" || name == "interface-name" || name == "mac-address" || name == "mep-id" || name == "operation-id" || name == "probe-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::SpecificOptions()
@@ -5445,8 +7034,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oper_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(oper_type.yfilter)
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
@@ -5474,7 +7063,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oper_type.is_set || is_set(oper_type.operation)) leaf_name_data.push_back(oper_type.get_name_leafdata());
+    if (oper_type.is_set || is_set(oper_type.yfilter)) leaf_name_data.push_back(oper_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5521,12 +7110,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oper-type")
     {
         oper_type = value;
+        oper_type.value_namespace = name_space;
+        oper_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oper-type")
+    {
+        oper_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-operation-options" || name == "ondemand-operation-options" || name == "oper-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::ConfiguredOperationOptions()
@@ -5547,8 +7153,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::get_segment_path() const
@@ -5574,7 +7180,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5593,12 +7199,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::OndemandOperationOptions()
@@ -5621,9 +7244,9 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ondemand_operation_id.operation)
-	|| is_set(probe_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ondemand_operation_id.yfilter)
+	|| ydk::is_set(probe_count.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::get_segment_path() const
@@ -5649,8 +7272,8 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.operation)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
-    if (probe_count.is_set || is_set(probe_count.operation)) leaf_name_data.push_back(probe_count.get_name_leafdata());
+    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.yfilter)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
+    if (probe_count.is_set || is_set(probe_count.yfilter)) leaf_name_data.push_back(probe_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5669,16 +7292,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ondemand-operation-id")
     {
         ondemand_operation_id = value;
+        ondemand_operation_id.value_namespace = name_space;
+        ondemand_operation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-count")
     {
         probe_count = value;
+        probe_count.value_namespace = name_space;
+        probe_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ondemand-operation-id")
+    {
+        ondemand_operation_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-count")
+    {
+        probe_count.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ondemand-operation-id" || name == "probe-count")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::OperationSchedule()
@@ -5705,11 +7351,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(schedule_duration.operation)
-	|| is_set(schedule_interval.operation)
-	|| is_set(start_time.operation)
-	|| is_set(start_time_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(schedule_duration.yfilter)
+	|| ydk::is_set(schedule_interval.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(start_time_configured.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::get_segment_path() const
@@ -5735,10 +7381,10 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (schedule_duration.is_set || is_set(schedule_duration.operation)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
-    if (schedule_interval.is_set || is_set(schedule_interval.operation)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (start_time_configured.is_set || is_set(start_time_configured.operation)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
+    if (schedule_duration.is_set || is_set(schedule_duration.yfilter)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
+    if (schedule_interval.is_set || is_set(schedule_interval.yfilter)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (start_time_configured.is_set || is_set(start_time_configured.yfilter)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5757,24 +7403,59 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "schedule-duration")
     {
         schedule_duration = value;
+        schedule_duration.value_namespace = name_space;
+        schedule_duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "schedule-interval")
     {
         schedule_interval = value;
+        schedule_interval.value_namespace = name_space;
+        schedule_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time-configured")
     {
         start_time_configured = value;
+        start_time_configured.value_namespace = name_space;
+        start_time_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "schedule-duration")
+    {
+        schedule_duration.yfilter = yfilter;
+    }
+    if(value_path == "schedule-interval")
+    {
+        schedule_interval.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "start-time-configured")
+    {
+        start_time_configured.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "schedule-duration" || name == "schedule-interval" || name == "start-time" || name == "start-time-configured")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::OperationMetric()
@@ -5807,7 +7488,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
         if(bucket[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation());
 }
 
@@ -5887,8 +7568,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bucket" || name == "config")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::Config()
@@ -5919,13 +7611,13 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bins_count.operation)
-	|| is_set(bins_width.operation)
-	|| is_set(bucket_size.operation)
-	|| is_set(bucket_size_unit.operation)
-	|| is_set(buckets_archive.operation)
-	|| is_set(metric_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bins_count.yfilter)
+	|| ydk::is_set(bins_width.yfilter)
+	|| ydk::is_set(bucket_size.yfilter)
+	|| ydk::is_set(bucket_size_unit.yfilter)
+	|| ydk::is_set(buckets_archive.yfilter)
+	|| ydk::is_set(metric_type.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::get_segment_path() const
@@ -5951,12 +7643,12 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bins_count.is_set || is_set(bins_count.operation)) leaf_name_data.push_back(bins_count.get_name_leafdata());
-    if (bins_width.is_set || is_set(bins_width.operation)) leaf_name_data.push_back(bins_width.get_name_leafdata());
-    if (bucket_size.is_set || is_set(bucket_size.operation)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
-    if (bucket_size_unit.is_set || is_set(bucket_size_unit.operation)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
-    if (buckets_archive.is_set || is_set(buckets_archive.operation)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (bins_count.is_set || is_set(bins_count.yfilter)) leaf_name_data.push_back(bins_count.get_name_leafdata());
+    if (bins_width.is_set || is_set(bins_width.yfilter)) leaf_name_data.push_back(bins_width.get_name_leafdata());
+    if (bucket_size.is_set || is_set(bucket_size.yfilter)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
+    if (bucket_size_unit.is_set || is_set(bucket_size_unit.yfilter)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
+    if (buckets_archive.is_set || is_set(buckets_archive.yfilter)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5975,32 +7667,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bins-count")
     {
         bins_count = value;
+        bins_count.value_namespace = name_space;
+        bins_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bins-width")
     {
         bins_width = value;
+        bins_width.value_namespace = name_space;
+        bins_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size")
     {
         bucket_size = value;
+        bucket_size.value_namespace = name_space;
+        bucket_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size-unit")
     {
         bucket_size_unit = value;
+        bucket_size_unit.value_namespace = name_space;
+        bucket_size_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "buckets-archive")
     {
         buckets_archive = value;
+        buckets_archive.value_namespace = name_space;
+        buckets_archive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric-type")
     {
         metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bins-count")
+    {
+        bins_count.yfilter = yfilter;
+    }
+    if(value_path == "bins-width")
+    {
+        bins_width.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size")
+    {
+        bucket_size.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size-unit")
+    {
+        bucket_size_unit.yfilter = yfilter;
+    }
+    if(value_path == "buckets-archive")
+    {
+        buckets_archive.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins-count" || name == "bins-width" || name == "bucket-size" || name == "bucket-size-unit" || name == "buckets-archive" || name == "metric-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Bucket()
@@ -6086,38 +7825,38 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(corrupt.operation)
-	|| is_set(data_lost_count.operation)
-	|| is_set(data_sent_count.operation)
-	|| is_set(duplicates.operation)
-	|| is_set(duration.operation)
-	|| is_set(lost.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(out_of_order.operation)
-	|| is_set(overall_flr.operation)
-	|| is_set(premature_reason.operation)
-	|| is_set(premature_reason_string.operation)
-	|| is_set(result_count.operation)
-	|| is_set(sent.operation)
-	|| is_set(standard_deviation.operation)
-	|| is_set(start_at.operation)
-	|| is_set(suspect_cleared_mid_bucket.operation)
-	|| is_set(suspect_clock_drift.operation)
-	|| is_set(suspect_flr_low_packet_count.operation)
-	|| is_set(suspect_management_latency.operation)
-	|| is_set(suspect_memory_allocation_failed.operation)
-	|| is_set(suspect_misordering.operation)
-	|| is_set(suspect_multiple_buckets.operation)
-	|| is_set(suspect_premature_end.operation)
-	|| is_set(suspect_probe_restarted.operation)
-	|| is_set(suspect_schedule_latency.operation)
-	|| is_set(suspect_send_fail.operation)
-	|| is_set(suspect_start_mid_bucket.operation)
-	|| is_set(time_of_maximum.operation)
-	|| is_set(time_of_minimum.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(corrupt.yfilter)
+	|| ydk::is_set(data_lost_count.yfilter)
+	|| ydk::is_set(data_sent_count.yfilter)
+	|| ydk::is_set(duplicates.yfilter)
+	|| ydk::is_set(duration.yfilter)
+	|| ydk::is_set(lost.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(out_of_order.yfilter)
+	|| ydk::is_set(overall_flr.yfilter)
+	|| ydk::is_set(premature_reason.yfilter)
+	|| ydk::is_set(premature_reason_string.yfilter)
+	|| ydk::is_set(result_count.yfilter)
+	|| ydk::is_set(sent.yfilter)
+	|| ydk::is_set(standard_deviation.yfilter)
+	|| ydk::is_set(start_at.yfilter)
+	|| ydk::is_set(suspect_cleared_mid_bucket.yfilter)
+	|| ydk::is_set(suspect_clock_drift.yfilter)
+	|| ydk::is_set(suspect_flr_low_packet_count.yfilter)
+	|| ydk::is_set(suspect_management_latency.yfilter)
+	|| ydk::is_set(suspect_memory_allocation_failed.yfilter)
+	|| ydk::is_set(suspect_misordering.yfilter)
+	|| ydk::is_set(suspect_multiple_buckets.yfilter)
+	|| ydk::is_set(suspect_premature_end.yfilter)
+	|| ydk::is_set(suspect_probe_restarted.yfilter)
+	|| ydk::is_set(suspect_schedule_latency.yfilter)
+	|| ydk::is_set(suspect_send_fail.yfilter)
+	|| ydk::is_set(suspect_start_mid_bucket.yfilter)
+	|| ydk::is_set(time_of_maximum.yfilter)
+	|| ydk::is_set(time_of_minimum.yfilter)
 	|| (contents !=  nullptr && contents->has_operation());
 }
 
@@ -6144,37 +7883,37 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (corrupt.is_set || is_set(corrupt.operation)) leaf_name_data.push_back(corrupt.get_name_leafdata());
-    if (data_lost_count.is_set || is_set(data_lost_count.operation)) leaf_name_data.push_back(data_lost_count.get_name_leafdata());
-    if (data_sent_count.is_set || is_set(data_sent_count.operation)) leaf_name_data.push_back(data_sent_count.get_name_leafdata());
-    if (duplicates.is_set || is_set(duplicates.operation)) leaf_name_data.push_back(duplicates.get_name_leafdata());
-    if (duration.is_set || is_set(duration.operation)) leaf_name_data.push_back(duration.get_name_leafdata());
-    if (lost.is_set || is_set(lost.operation)) leaf_name_data.push_back(lost.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (out_of_order.is_set || is_set(out_of_order.operation)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
-    if (overall_flr.is_set || is_set(overall_flr.operation)) leaf_name_data.push_back(overall_flr.get_name_leafdata());
-    if (premature_reason.is_set || is_set(premature_reason.operation)) leaf_name_data.push_back(premature_reason.get_name_leafdata());
-    if (premature_reason_string.is_set || is_set(premature_reason_string.operation)) leaf_name_data.push_back(premature_reason_string.get_name_leafdata());
-    if (result_count.is_set || is_set(result_count.operation)) leaf_name_data.push_back(result_count.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-    if (standard_deviation.is_set || is_set(standard_deviation.operation)) leaf_name_data.push_back(standard_deviation.get_name_leafdata());
-    if (start_at.is_set || is_set(start_at.operation)) leaf_name_data.push_back(start_at.get_name_leafdata());
-    if (suspect_cleared_mid_bucket.is_set || is_set(suspect_cleared_mid_bucket.operation)) leaf_name_data.push_back(suspect_cleared_mid_bucket.get_name_leafdata());
-    if (suspect_clock_drift.is_set || is_set(suspect_clock_drift.operation)) leaf_name_data.push_back(suspect_clock_drift.get_name_leafdata());
-    if (suspect_flr_low_packet_count.is_set || is_set(suspect_flr_low_packet_count.operation)) leaf_name_data.push_back(suspect_flr_low_packet_count.get_name_leafdata());
-    if (suspect_management_latency.is_set || is_set(suspect_management_latency.operation)) leaf_name_data.push_back(suspect_management_latency.get_name_leafdata());
-    if (suspect_memory_allocation_failed.is_set || is_set(suspect_memory_allocation_failed.operation)) leaf_name_data.push_back(suspect_memory_allocation_failed.get_name_leafdata());
-    if (suspect_misordering.is_set || is_set(suspect_misordering.operation)) leaf_name_data.push_back(suspect_misordering.get_name_leafdata());
-    if (suspect_multiple_buckets.is_set || is_set(suspect_multiple_buckets.operation)) leaf_name_data.push_back(suspect_multiple_buckets.get_name_leafdata());
-    if (suspect_premature_end.is_set || is_set(suspect_premature_end.operation)) leaf_name_data.push_back(suspect_premature_end.get_name_leafdata());
-    if (suspect_probe_restarted.is_set || is_set(suspect_probe_restarted.operation)) leaf_name_data.push_back(suspect_probe_restarted.get_name_leafdata());
-    if (suspect_schedule_latency.is_set || is_set(suspect_schedule_latency.operation)) leaf_name_data.push_back(suspect_schedule_latency.get_name_leafdata());
-    if (suspect_send_fail.is_set || is_set(suspect_send_fail.operation)) leaf_name_data.push_back(suspect_send_fail.get_name_leafdata());
-    if (suspect_start_mid_bucket.is_set || is_set(suspect_start_mid_bucket.operation)) leaf_name_data.push_back(suspect_start_mid_bucket.get_name_leafdata());
-    if (time_of_maximum.is_set || is_set(time_of_maximum.operation)) leaf_name_data.push_back(time_of_maximum.get_name_leafdata());
-    if (time_of_minimum.is_set || is_set(time_of_minimum.operation)) leaf_name_data.push_back(time_of_minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (corrupt.is_set || is_set(corrupt.yfilter)) leaf_name_data.push_back(corrupt.get_name_leafdata());
+    if (data_lost_count.is_set || is_set(data_lost_count.yfilter)) leaf_name_data.push_back(data_lost_count.get_name_leafdata());
+    if (data_sent_count.is_set || is_set(data_sent_count.yfilter)) leaf_name_data.push_back(data_sent_count.get_name_leafdata());
+    if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
+    if (duration.is_set || is_set(duration.yfilter)) leaf_name_data.push_back(duration.get_name_leafdata());
+    if (lost.is_set || is_set(lost.yfilter)) leaf_name_data.push_back(lost.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (out_of_order.is_set || is_set(out_of_order.yfilter)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
+    if (overall_flr.is_set || is_set(overall_flr.yfilter)) leaf_name_data.push_back(overall_flr.get_name_leafdata());
+    if (premature_reason.is_set || is_set(premature_reason.yfilter)) leaf_name_data.push_back(premature_reason.get_name_leafdata());
+    if (premature_reason_string.is_set || is_set(premature_reason_string.yfilter)) leaf_name_data.push_back(premature_reason_string.get_name_leafdata());
+    if (result_count.is_set || is_set(result_count.yfilter)) leaf_name_data.push_back(result_count.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+    if (standard_deviation.is_set || is_set(standard_deviation.yfilter)) leaf_name_data.push_back(standard_deviation.get_name_leafdata());
+    if (start_at.is_set || is_set(start_at.yfilter)) leaf_name_data.push_back(start_at.get_name_leafdata());
+    if (suspect_cleared_mid_bucket.is_set || is_set(suspect_cleared_mid_bucket.yfilter)) leaf_name_data.push_back(suspect_cleared_mid_bucket.get_name_leafdata());
+    if (suspect_clock_drift.is_set || is_set(suspect_clock_drift.yfilter)) leaf_name_data.push_back(suspect_clock_drift.get_name_leafdata());
+    if (suspect_flr_low_packet_count.is_set || is_set(suspect_flr_low_packet_count.yfilter)) leaf_name_data.push_back(suspect_flr_low_packet_count.get_name_leafdata());
+    if (suspect_management_latency.is_set || is_set(suspect_management_latency.yfilter)) leaf_name_data.push_back(suspect_management_latency.get_name_leafdata());
+    if (suspect_memory_allocation_failed.is_set || is_set(suspect_memory_allocation_failed.yfilter)) leaf_name_data.push_back(suspect_memory_allocation_failed.get_name_leafdata());
+    if (suspect_misordering.is_set || is_set(suspect_misordering.yfilter)) leaf_name_data.push_back(suspect_misordering.get_name_leafdata());
+    if (suspect_multiple_buckets.is_set || is_set(suspect_multiple_buckets.yfilter)) leaf_name_data.push_back(suspect_multiple_buckets.get_name_leafdata());
+    if (suspect_premature_end.is_set || is_set(suspect_premature_end.yfilter)) leaf_name_data.push_back(suspect_premature_end.get_name_leafdata());
+    if (suspect_probe_restarted.is_set || is_set(suspect_probe_restarted.yfilter)) leaf_name_data.push_back(suspect_probe_restarted.get_name_leafdata());
+    if (suspect_schedule_latency.is_set || is_set(suspect_schedule_latency.yfilter)) leaf_name_data.push_back(suspect_schedule_latency.get_name_leafdata());
+    if (suspect_send_fail.is_set || is_set(suspect_send_fail.yfilter)) leaf_name_data.push_back(suspect_send_fail.get_name_leafdata());
+    if (suspect_start_mid_bucket.is_set || is_set(suspect_start_mid_bucket.yfilter)) leaf_name_data.push_back(suspect_start_mid_bucket.get_name_leafdata());
+    if (time_of_maximum.is_set || is_set(time_of_maximum.yfilter)) leaf_name_data.push_back(time_of_maximum.get_name_leafdata());
+    if (time_of_minimum.is_set || is_set(time_of_minimum.yfilter)) leaf_name_data.push_back(time_of_minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6207,132 +7946,329 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "corrupt")
     {
         corrupt = value;
+        corrupt.value_namespace = name_space;
+        corrupt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-lost-count")
     {
         data_lost_count = value;
+        data_lost_count.value_namespace = name_space;
+        data_lost_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-sent-count")
     {
         data_sent_count = value;
+        data_sent_count.value_namespace = name_space;
+        data_sent_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicates")
     {
         duplicates = value;
+        duplicates.value_namespace = name_space;
+        duplicates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duration")
     {
         duration = value;
+        duration.value_namespace = name_space;
+        duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lost")
     {
         lost = value;
+        lost.value_namespace = name_space;
+        lost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-order")
     {
         out_of_order = value;
+        out_of_order.value_namespace = name_space;
+        out_of_order.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overall-flr")
     {
         overall_flr = value;
+        overall_flr.value_namespace = name_space;
+        overall_flr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "premature-reason")
     {
         premature_reason = value;
+        premature_reason.value_namespace = name_space;
+        premature_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "premature-reason-string")
     {
         premature_reason_string = value;
+        premature_reason_string.value_namespace = name_space;
+        premature_reason_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "result-count")
     {
         result_count = value;
+        result_count.value_namespace = name_space;
+        result_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent")
     {
         sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standard-deviation")
     {
         standard_deviation = value;
+        standard_deviation.value_namespace = name_space;
+        standard_deviation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-at")
     {
         start_at = value;
+        start_at.value_namespace = name_space;
+        start_at.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-cleared-mid-bucket")
     {
         suspect_cleared_mid_bucket = value;
+        suspect_cleared_mid_bucket.value_namespace = name_space;
+        suspect_cleared_mid_bucket.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-clock-drift")
     {
         suspect_clock_drift = value;
+        suspect_clock_drift.value_namespace = name_space;
+        suspect_clock_drift.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-flr-low-packet-count")
     {
         suspect_flr_low_packet_count = value;
+        suspect_flr_low_packet_count.value_namespace = name_space;
+        suspect_flr_low_packet_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-management-latency")
     {
         suspect_management_latency = value;
+        suspect_management_latency.value_namespace = name_space;
+        suspect_management_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-memory-allocation-failed")
     {
         suspect_memory_allocation_failed = value;
+        suspect_memory_allocation_failed.value_namespace = name_space;
+        suspect_memory_allocation_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-misordering")
     {
         suspect_misordering = value;
+        suspect_misordering.value_namespace = name_space;
+        suspect_misordering.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-multiple-buckets")
     {
         suspect_multiple_buckets = value;
+        suspect_multiple_buckets.value_namespace = name_space;
+        suspect_multiple_buckets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-premature-end")
     {
         suspect_premature_end = value;
+        suspect_premature_end.value_namespace = name_space;
+        suspect_premature_end.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-probe-restarted")
     {
         suspect_probe_restarted = value;
+        suspect_probe_restarted.value_namespace = name_space;
+        suspect_probe_restarted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-schedule-latency")
     {
         suspect_schedule_latency = value;
+        suspect_schedule_latency.value_namespace = name_space;
+        suspect_schedule_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-send-fail")
     {
         suspect_send_fail = value;
+        suspect_send_fail.value_namespace = name_space;
+        suspect_send_fail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-start-mid-bucket")
     {
         suspect_start_mid_bucket = value;
+        suspect_start_mid_bucket.value_namespace = name_space;
+        suspect_start_mid_bucket.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-of-maximum")
     {
         time_of_maximum = value;
+        time_of_maximum.value_namespace = name_space;
+        time_of_maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-of-minimum")
     {
         time_of_minimum = value;
+        time_of_minimum.value_namespace = name_space;
+        time_of_minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "corrupt")
+    {
+        corrupt.yfilter = yfilter;
+    }
+    if(value_path == "data-lost-count")
+    {
+        data_lost_count.yfilter = yfilter;
+    }
+    if(value_path == "data-sent-count")
+    {
+        data_sent_count.yfilter = yfilter;
+    }
+    if(value_path == "duplicates")
+    {
+        duplicates.yfilter = yfilter;
+    }
+    if(value_path == "duration")
+    {
+        duration.yfilter = yfilter;
+    }
+    if(value_path == "lost")
+    {
+        lost.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "out-of-order")
+    {
+        out_of_order.yfilter = yfilter;
+    }
+    if(value_path == "overall-flr")
+    {
+        overall_flr.yfilter = yfilter;
+    }
+    if(value_path == "premature-reason")
+    {
+        premature_reason.yfilter = yfilter;
+    }
+    if(value_path == "premature-reason-string")
+    {
+        premature_reason_string.yfilter = yfilter;
+    }
+    if(value_path == "result-count")
+    {
+        result_count.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+    if(value_path == "standard-deviation")
+    {
+        standard_deviation.yfilter = yfilter;
+    }
+    if(value_path == "start-at")
+    {
+        start_at.yfilter = yfilter;
+    }
+    if(value_path == "suspect-cleared-mid-bucket")
+    {
+        suspect_cleared_mid_bucket.yfilter = yfilter;
+    }
+    if(value_path == "suspect-clock-drift")
+    {
+        suspect_clock_drift.yfilter = yfilter;
+    }
+    if(value_path == "suspect-flr-low-packet-count")
+    {
+        suspect_flr_low_packet_count.yfilter = yfilter;
+    }
+    if(value_path == "suspect-management-latency")
+    {
+        suspect_management_latency.yfilter = yfilter;
+    }
+    if(value_path == "suspect-memory-allocation-failed")
+    {
+        suspect_memory_allocation_failed.yfilter = yfilter;
+    }
+    if(value_path == "suspect-misordering")
+    {
+        suspect_misordering.yfilter = yfilter;
+    }
+    if(value_path == "suspect-multiple-buckets")
+    {
+        suspect_multiple_buckets.yfilter = yfilter;
+    }
+    if(value_path == "suspect-premature-end")
+    {
+        suspect_premature_end.yfilter = yfilter;
+    }
+    if(value_path == "suspect-probe-restarted")
+    {
+        suspect_probe_restarted.yfilter = yfilter;
+    }
+    if(value_path == "suspect-schedule-latency")
+    {
+        suspect_schedule_latency.yfilter = yfilter;
+    }
+    if(value_path == "suspect-send-fail")
+    {
+        suspect_send_fail.yfilter = yfilter;
+    }
+    if(value_path == "suspect-start-mid-bucket")
+    {
+        suspect_start_mid_bucket.yfilter = yfilter;
+    }
+    if(value_path == "time-of-maximum")
+    {
+        time_of_maximum.yfilter = yfilter;
+    }
+    if(value_path == "time-of-minimum")
+    {
+        time_of_minimum.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "contents" || name == "average" || name == "corrupt" || name == "data-lost-count" || name == "data-sent-count" || name == "duplicates" || name == "duration" || name == "lost" || name == "maximum" || name == "minimum" || name == "out-of-order" || name == "overall-flr" || name == "premature-reason" || name == "premature-reason-string" || name == "result-count" || name == "sent" || name == "standard-deviation" || name == "start-at" || name == "suspect-cleared-mid-bucket" || name == "suspect-clock-drift" || name == "suspect-flr-low-packet-count" || name == "suspect-management-latency" || name == "suspect-memory-allocation-failed" || name == "suspect-misordering" || name == "suspect-multiple-buckets" || name == "suspect-premature-end" || name == "suspect-probe-restarted" || name == "suspect-schedule-latency" || name == "suspect-send-fail" || name == "suspect-start-mid-bucket" || name == "time-of-maximum" || name == "time-of-minimum")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Contents()
@@ -6362,8 +8298,8 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bucket_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bucket_type.yfilter)
 	|| (aggregated !=  nullptr && aggregated->has_operation())
 	|| (unaggregated !=  nullptr && unaggregated->has_operation());
 }
@@ -6391,7 +8327,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bucket_type.is_set || is_set(bucket_type.operation)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
+    if (bucket_type.is_set || is_set(bucket_type.yfilter)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6438,12 +8374,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bucket-type")
     {
         bucket_type = value;
+        bucket_type.value_namespace = name_space;
+        bucket_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bucket-type")
+    {
+        bucket_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregated" || name == "unaggregated" || name == "bucket-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Aggregated()
@@ -6472,7 +8425,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
         if(bins[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::get_segment_path() const
@@ -6537,8 +8490,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::Bins()
@@ -6569,13 +8533,13 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(lower_bound.operation)
-	|| is_set(lower_bound_tenths.operation)
-	|| is_set(sum.operation)
-	|| is_set(upper_bound.operation)
-	|| is_set(upper_bound_tenths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(lower_bound_tenths.yfilter)
+	|| ydk::is_set(sum.yfilter)
+	|| ydk::is_set(upper_bound.yfilter)
+	|| ydk::is_set(upper_bound_tenths.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::get_segment_path() const
@@ -6601,12 +8565,12 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (lower_bound.is_set || is_set(lower_bound.operation)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (lower_bound_tenths.is_set || is_set(lower_bound_tenths.operation)) leaf_name_data.push_back(lower_bound_tenths.get_name_leafdata());
-    if (sum.is_set || is_set(sum.operation)) leaf_name_data.push_back(sum.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.operation)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
-    if (upper_bound_tenths.is_set || is_set(upper_bound_tenths.operation)) leaf_name_data.push_back(upper_bound_tenths.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (lower_bound_tenths.is_set || is_set(lower_bound_tenths.yfilter)) leaf_name_data.push_back(lower_bound_tenths.get_name_leafdata());
+    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+    if (upper_bound_tenths.is_set || is_set(upper_bound_tenths.yfilter)) leaf_name_data.push_back(upper_bound_tenths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6625,32 +8589,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound")
     {
         lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound-tenths")
     {
         lower_bound_tenths = value;
+        lower_bound_tenths.value_namespace = name_space;
+        lower_bound_tenths.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sum")
     {
         sum = value;
+        sum.value_namespace = name_space;
+        sum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound")
     {
         upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound-tenths")
     {
         upper_bound_tenths = value;
+        upper_bound_tenths.value_namespace = name_space;
+        upper_bound_tenths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound-tenths")
+    {
+        lower_bound_tenths.yfilter = yfilter;
+    }
+    if(value_path == "sum")
+    {
+        sum.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound-tenths")
+    {
+        upper_bound_tenths.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "lower-bound" || name == "lower-bound-tenths" || name == "sum" || name == "upper-bound" || name == "upper-bound-tenths")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Unaggregated()
@@ -6679,7 +8690,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
         if(sample[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::get_segment_path() const
@@ -6744,8 +8755,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sample")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::Sample()
@@ -6782,16 +8804,16 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(corrupt.operation)
-	|| is_set(frames_lost.operation)
-	|| is_set(frames_sent.operation)
-	|| is_set(no_data_packets.operation)
-	|| is_set(out_of_order.operation)
-	|| is_set(result.operation)
-	|| is_set(sent.operation)
-	|| is_set(sent_at.operation)
-	|| is_set(timed_out.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(corrupt.yfilter)
+	|| ydk::is_set(frames_lost.yfilter)
+	|| ydk::is_set(frames_sent.yfilter)
+	|| ydk::is_set(no_data_packets.yfilter)
+	|| ydk::is_set(out_of_order.yfilter)
+	|| ydk::is_set(result.yfilter)
+	|| ydk::is_set(sent.yfilter)
+	|| ydk::is_set(sent_at.yfilter)
+	|| ydk::is_set(timed_out.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_segment_path() const
@@ -6817,15 +8839,15 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::Statis
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (corrupt.is_set || is_set(corrupt.operation)) leaf_name_data.push_back(corrupt.get_name_leafdata());
-    if (frames_lost.is_set || is_set(frames_lost.operation)) leaf_name_data.push_back(frames_lost.get_name_leafdata());
-    if (frames_sent.is_set || is_set(frames_sent.operation)) leaf_name_data.push_back(frames_sent.get_name_leafdata());
-    if (no_data_packets.is_set || is_set(no_data_packets.operation)) leaf_name_data.push_back(no_data_packets.get_name_leafdata());
-    if (out_of_order.is_set || is_set(out_of_order.operation)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-    if (sent_at.is_set || is_set(sent_at.operation)) leaf_name_data.push_back(sent_at.get_name_leafdata());
-    if (timed_out.is_set || is_set(timed_out.operation)) leaf_name_data.push_back(timed_out.get_name_leafdata());
+    if (corrupt.is_set || is_set(corrupt.yfilter)) leaf_name_data.push_back(corrupt.get_name_leafdata());
+    if (frames_lost.is_set || is_set(frames_lost.yfilter)) leaf_name_data.push_back(frames_lost.get_name_leafdata());
+    if (frames_sent.is_set || is_set(frames_sent.yfilter)) leaf_name_data.push_back(frames_sent.get_name_leafdata());
+    if (no_data_packets.is_set || is_set(no_data_packets.yfilter)) leaf_name_data.push_back(no_data_packets.get_name_leafdata());
+    if (out_of_order.is_set || is_set(out_of_order.yfilter)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+    if (sent_at.is_set || is_set(sent_at.yfilter)) leaf_name_data.push_back(sent_at.get_name_leafdata());
+    if (timed_out.is_set || is_set(timed_out.yfilter)) leaf_name_data.push_back(timed_out.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6844,44 +8866,109 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "corrupt")
     {
         corrupt = value;
+        corrupt.value_namespace = name_space;
+        corrupt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-lost")
     {
         frames_lost = value;
+        frames_lost.value_namespace = name_space;
+        frames_lost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-sent")
     {
         frames_sent = value;
+        frames_sent.value_namespace = name_space;
+        frames_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data-packets")
     {
         no_data_packets = value;
+        no_data_packets.value_namespace = name_space;
+        no_data_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-order")
     {
         out_of_order = value;
+        out_of_order.value_namespace = name_space;
+        out_of_order.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent")
     {
         sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent-at")
     {
         sent_at = value;
+        sent_at.value_namespace = name_space;
+        sent_at.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timed-out")
     {
         timed_out = value;
+        timed_out.value_namespace = name_space;
+        timed_out.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "corrupt")
+    {
+        corrupt.yfilter = yfilter;
+    }
+    if(value_path == "frames-lost")
+    {
+        frames_lost.yfilter = yfilter;
+    }
+    if(value_path == "frames-sent")
+    {
+        frames_sent.yfilter = yfilter;
+    }
+    if(value_path == "no-data-packets")
+    {
+        no_data_packets.yfilter = yfilter;
+    }
+    if(value_path == "out-of-order")
+    {
+        out_of_order.yfilter = yfilter;
+    }
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+    if(value_path == "sent-at")
+    {
+        sent_at.yfilter = yfilter;
+    }
+    if(value_path == "timed-out")
+    {
+        timed_out.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "corrupt" || name == "frames-lost" || name == "frames-sent" || name == "no-data-packets" || name == "out-of-order" || name == "result" || name == "sent" || name == "sent-at" || name == "timed-out")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::ConfigErrors::ConfigErrors()
@@ -6910,7 +8997,7 @@ bool Sla::Protocols::Ethernet::ConfigErrors::has_operation() const
         if(config_error[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::ConfigErrors::get_segment_path() const
@@ -6975,8 +9062,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::ConfigE
     return children;
 }
 
-void Sla::Protocols::Ethernet::ConfigErrors::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::ConfigErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::ConfigErrors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::ConfigErrors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config-error")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::ConfigErrors::ConfigError::ConfigError()
@@ -7049,34 +9147,34 @@ bool Sla::Protocols::Ethernet::ConfigErrors::ConfigError::has_operation() const
 {
     for (auto const & leaf : error_string.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(display_short.operation)
-	|| is_set(domain_name.operation)
-	|| is_set(error_string.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mep_id.operation)
-	|| is_set(min_packet_interval_inconsistent.operation)
-	|| is_set(ow_delay_ds_inconsistent.operation)
-	|| is_set(ow_delay_sd_inconsistent.operation)
-	|| is_set(ow_jitter_ds_inconsistent.operation)
-	|| is_set(ow_jitter_sd_inconsistent.operation)
-	|| is_set(ow_loss_ds_inconsistent.operation)
-	|| is_set(ow_loss_sd_inconsistent.operation)
-	|| is_set(packet_pad_inconsistent.operation)
-	|| is_set(packet_rand_pad_inconsistent.operation)
-	|| is_set(packet_type_inconsistent.operation)
-	|| is_set(priority_inconsistent.operation)
-	|| is_set(probe_too_big.operation)
-	|| is_set(profile_doesnt_exist.operation)
-	|| is_set(profile_name.operation)
-	|| is_set(profile_name_xr.operation)
-	|| is_set(rt_delay_inconsistent.operation)
-	|| is_set(rt_jitter_inconsistent.operation)
-	|| is_set(synthetic_loss_not_supported.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(display_short.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(error_string.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mep_id.yfilter)
+	|| ydk::is_set(min_packet_interval_inconsistent.yfilter)
+	|| ydk::is_set(ow_delay_ds_inconsistent.yfilter)
+	|| ydk::is_set(ow_delay_sd_inconsistent.yfilter)
+	|| ydk::is_set(ow_jitter_ds_inconsistent.yfilter)
+	|| ydk::is_set(ow_jitter_sd_inconsistent.yfilter)
+	|| ydk::is_set(ow_loss_ds_inconsistent.yfilter)
+	|| ydk::is_set(ow_loss_sd_inconsistent.yfilter)
+	|| ydk::is_set(packet_pad_inconsistent.yfilter)
+	|| ydk::is_set(packet_rand_pad_inconsistent.yfilter)
+	|| ydk::is_set(packet_type_inconsistent.yfilter)
+	|| ydk::is_set(priority_inconsistent.yfilter)
+	|| ydk::is_set(probe_too_big.yfilter)
+	|| ydk::is_set(profile_doesnt_exist.yfilter)
+	|| ydk::is_set(profile_name.yfilter)
+	|| ydk::is_set(profile_name_xr.yfilter)
+	|| ydk::is_set(rt_delay_inconsistent.yfilter)
+	|| ydk::is_set(rt_jitter_inconsistent.yfilter)
+	|| ydk::is_set(synthetic_loss_not_supported.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::ConfigErrors::ConfigError::get_segment_path() const
@@ -7102,29 +9200,29 @@ const EntityPath Sla::Protocols::Ethernet::ConfigErrors::ConfigError::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (display_short.is_set || is_set(display_short.operation)) leaf_name_data.push_back(display_short.get_name_leafdata());
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
-    if (min_packet_interval_inconsistent.is_set || is_set(min_packet_interval_inconsistent.operation)) leaf_name_data.push_back(min_packet_interval_inconsistent.get_name_leafdata());
-    if (ow_delay_ds_inconsistent.is_set || is_set(ow_delay_ds_inconsistent.operation)) leaf_name_data.push_back(ow_delay_ds_inconsistent.get_name_leafdata());
-    if (ow_delay_sd_inconsistent.is_set || is_set(ow_delay_sd_inconsistent.operation)) leaf_name_data.push_back(ow_delay_sd_inconsistent.get_name_leafdata());
-    if (ow_jitter_ds_inconsistent.is_set || is_set(ow_jitter_ds_inconsistent.operation)) leaf_name_data.push_back(ow_jitter_ds_inconsistent.get_name_leafdata());
-    if (ow_jitter_sd_inconsistent.is_set || is_set(ow_jitter_sd_inconsistent.operation)) leaf_name_data.push_back(ow_jitter_sd_inconsistent.get_name_leafdata());
-    if (ow_loss_ds_inconsistent.is_set || is_set(ow_loss_ds_inconsistent.operation)) leaf_name_data.push_back(ow_loss_ds_inconsistent.get_name_leafdata());
-    if (ow_loss_sd_inconsistent.is_set || is_set(ow_loss_sd_inconsistent.operation)) leaf_name_data.push_back(ow_loss_sd_inconsistent.get_name_leafdata());
-    if (packet_pad_inconsistent.is_set || is_set(packet_pad_inconsistent.operation)) leaf_name_data.push_back(packet_pad_inconsistent.get_name_leafdata());
-    if (packet_rand_pad_inconsistent.is_set || is_set(packet_rand_pad_inconsistent.operation)) leaf_name_data.push_back(packet_rand_pad_inconsistent.get_name_leafdata());
-    if (packet_type_inconsistent.is_set || is_set(packet_type_inconsistent.operation)) leaf_name_data.push_back(packet_type_inconsistent.get_name_leafdata());
-    if (priority_inconsistent.is_set || is_set(priority_inconsistent.operation)) leaf_name_data.push_back(priority_inconsistent.get_name_leafdata());
-    if (probe_too_big.is_set || is_set(probe_too_big.operation)) leaf_name_data.push_back(probe_too_big.get_name_leafdata());
-    if (profile_doesnt_exist.is_set || is_set(profile_doesnt_exist.operation)) leaf_name_data.push_back(profile_doesnt_exist.get_name_leafdata());
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
-    if (profile_name_xr.is_set || is_set(profile_name_xr.operation)) leaf_name_data.push_back(profile_name_xr.get_name_leafdata());
-    if (rt_delay_inconsistent.is_set || is_set(rt_delay_inconsistent.operation)) leaf_name_data.push_back(rt_delay_inconsistent.get_name_leafdata());
-    if (rt_jitter_inconsistent.is_set || is_set(rt_jitter_inconsistent.operation)) leaf_name_data.push_back(rt_jitter_inconsistent.get_name_leafdata());
-    if (synthetic_loss_not_supported.is_set || is_set(synthetic_loss_not_supported.operation)) leaf_name_data.push_back(synthetic_loss_not_supported.get_name_leafdata());
+    if (display_short.is_set || is_set(display_short.yfilter)) leaf_name_data.push_back(display_short.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.yfilter)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (min_packet_interval_inconsistent.is_set || is_set(min_packet_interval_inconsistent.yfilter)) leaf_name_data.push_back(min_packet_interval_inconsistent.get_name_leafdata());
+    if (ow_delay_ds_inconsistent.is_set || is_set(ow_delay_ds_inconsistent.yfilter)) leaf_name_data.push_back(ow_delay_ds_inconsistent.get_name_leafdata());
+    if (ow_delay_sd_inconsistent.is_set || is_set(ow_delay_sd_inconsistent.yfilter)) leaf_name_data.push_back(ow_delay_sd_inconsistent.get_name_leafdata());
+    if (ow_jitter_ds_inconsistent.is_set || is_set(ow_jitter_ds_inconsistent.yfilter)) leaf_name_data.push_back(ow_jitter_ds_inconsistent.get_name_leafdata());
+    if (ow_jitter_sd_inconsistent.is_set || is_set(ow_jitter_sd_inconsistent.yfilter)) leaf_name_data.push_back(ow_jitter_sd_inconsistent.get_name_leafdata());
+    if (ow_loss_ds_inconsistent.is_set || is_set(ow_loss_ds_inconsistent.yfilter)) leaf_name_data.push_back(ow_loss_ds_inconsistent.get_name_leafdata());
+    if (ow_loss_sd_inconsistent.is_set || is_set(ow_loss_sd_inconsistent.yfilter)) leaf_name_data.push_back(ow_loss_sd_inconsistent.get_name_leafdata());
+    if (packet_pad_inconsistent.is_set || is_set(packet_pad_inconsistent.yfilter)) leaf_name_data.push_back(packet_pad_inconsistent.get_name_leafdata());
+    if (packet_rand_pad_inconsistent.is_set || is_set(packet_rand_pad_inconsistent.yfilter)) leaf_name_data.push_back(packet_rand_pad_inconsistent.get_name_leafdata());
+    if (packet_type_inconsistent.is_set || is_set(packet_type_inconsistent.yfilter)) leaf_name_data.push_back(packet_type_inconsistent.get_name_leafdata());
+    if (priority_inconsistent.is_set || is_set(priority_inconsistent.yfilter)) leaf_name_data.push_back(priority_inconsistent.get_name_leafdata());
+    if (probe_too_big.is_set || is_set(probe_too_big.yfilter)) leaf_name_data.push_back(probe_too_big.get_name_leafdata());
+    if (profile_doesnt_exist.is_set || is_set(profile_doesnt_exist.yfilter)) leaf_name_data.push_back(profile_doesnt_exist.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name_xr.is_set || is_set(profile_name_xr.yfilter)) leaf_name_data.push_back(profile_name_xr.get_name_leafdata());
+    if (rt_delay_inconsistent.is_set || is_set(rt_delay_inconsistent.yfilter)) leaf_name_data.push_back(rt_delay_inconsistent.get_name_leafdata());
+    if (rt_jitter_inconsistent.is_set || is_set(rt_jitter_inconsistent.yfilter)) leaf_name_data.push_back(rt_jitter_inconsistent.get_name_leafdata());
+    if (synthetic_loss_not_supported.is_set || is_set(synthetic_loss_not_supported.yfilter)) leaf_name_data.push_back(synthetic_loss_not_supported.get_name_leafdata());
 
     auto error_string_name_datas = error_string.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), error_string_name_datas.begin(), error_string_name_datas.end());
@@ -7145,15 +9243,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::ConfigE
     return children;
 }
 
-void Sla::Protocols::Ethernet::ConfigErrors::ConfigError::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::ConfigErrors::ConfigError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "display-short")
     {
         display_short = value;
+        display_short.value_namespace = name_space;
+        display_short.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-name")
     {
         domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error-string")
     {
@@ -7162,87 +9264,236 @@ void Sla::Protocols::Ethernet::ConfigErrors::ConfigError::set_value(const std::s
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
+        mep_id.value_namespace = name_space;
+        mep_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-packet-interval-inconsistent")
     {
         min_packet_interval_inconsistent = value;
+        min_packet_interval_inconsistent.value_namespace = name_space;
+        min_packet_interval_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ow-delay-ds-inconsistent")
     {
         ow_delay_ds_inconsistent = value;
+        ow_delay_ds_inconsistent.value_namespace = name_space;
+        ow_delay_ds_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ow-delay-sd-inconsistent")
     {
         ow_delay_sd_inconsistent = value;
+        ow_delay_sd_inconsistent.value_namespace = name_space;
+        ow_delay_sd_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ow-jitter-ds-inconsistent")
     {
         ow_jitter_ds_inconsistent = value;
+        ow_jitter_ds_inconsistent.value_namespace = name_space;
+        ow_jitter_ds_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ow-jitter-sd-inconsistent")
     {
         ow_jitter_sd_inconsistent = value;
+        ow_jitter_sd_inconsistent.value_namespace = name_space;
+        ow_jitter_sd_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ow-loss-ds-inconsistent")
     {
         ow_loss_ds_inconsistent = value;
+        ow_loss_ds_inconsistent.value_namespace = name_space;
+        ow_loss_ds_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ow-loss-sd-inconsistent")
     {
         ow_loss_sd_inconsistent = value;
+        ow_loss_sd_inconsistent.value_namespace = name_space;
+        ow_loss_sd_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-pad-inconsistent")
     {
         packet_pad_inconsistent = value;
+        packet_pad_inconsistent.value_namespace = name_space;
+        packet_pad_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-rand-pad-inconsistent")
     {
         packet_rand_pad_inconsistent = value;
+        packet_rand_pad_inconsistent.value_namespace = name_space;
+        packet_rand_pad_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-type-inconsistent")
     {
         packet_type_inconsistent = value;
+        packet_type_inconsistent.value_namespace = name_space;
+        packet_type_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-inconsistent")
     {
         priority_inconsistent = value;
+        priority_inconsistent.value_namespace = name_space;
+        priority_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-too-big")
     {
         probe_too_big = value;
+        probe_too_big.value_namespace = name_space;
+        probe_too_big.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile-doesnt-exist")
     {
         profile_doesnt_exist = value;
+        profile_doesnt_exist.value_namespace = name_space;
+        profile_doesnt_exist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile-name-xr")
     {
         profile_name_xr = value;
+        profile_name_xr.value_namespace = name_space;
+        profile_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rt-delay-inconsistent")
     {
         rt_delay_inconsistent = value;
+        rt_delay_inconsistent.value_namespace = name_space;
+        rt_delay_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rt-jitter-inconsistent")
     {
         rt_jitter_inconsistent = value;
+        rt_jitter_inconsistent.value_namespace = name_space;
+        rt_jitter_inconsistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "synthetic-loss-not-supported")
     {
         synthetic_loss_not_supported = value;
+        synthetic_loss_not_supported.value_namespace = name_space;
+        synthetic_loss_not_supported.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::ConfigErrors::ConfigError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "display-short")
+    {
+        display_short.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "error-string")
+    {
+        error_string.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mep-id")
+    {
+        mep_id.yfilter = yfilter;
+    }
+    if(value_path == "min-packet-interval-inconsistent")
+    {
+        min_packet_interval_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "ow-delay-ds-inconsistent")
+    {
+        ow_delay_ds_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "ow-delay-sd-inconsistent")
+    {
+        ow_delay_sd_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "ow-jitter-ds-inconsistent")
+    {
+        ow_jitter_ds_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "ow-jitter-sd-inconsistent")
+    {
+        ow_jitter_sd_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "ow-loss-ds-inconsistent")
+    {
+        ow_loss_ds_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "ow-loss-sd-inconsistent")
+    {
+        ow_loss_sd_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "packet-pad-inconsistent")
+    {
+        packet_pad_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "packet-rand-pad-inconsistent")
+    {
+        packet_rand_pad_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "packet-type-inconsistent")
+    {
+        packet_type_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "priority-inconsistent")
+    {
+        priority_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "probe-too-big")
+    {
+        probe_too_big.yfilter = yfilter;
+    }
+    if(value_path == "profile-doesnt-exist")
+    {
+        profile_doesnt_exist.yfilter = yfilter;
+    }
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+    if(value_path == "profile-name-xr")
+    {
+        profile_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "rt-delay-inconsistent")
+    {
+        rt_delay_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "rt-jitter-inconsistent")
+    {
+        rt_jitter_inconsistent.yfilter = yfilter;
+    }
+    if(value_path == "synthetic-loss-not-supported")
+    {
+        synthetic_loss_not_supported.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::ConfigErrors::ConfigError::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "display-short" || name == "domain-name" || name == "error-string" || name == "interface-name" || name == "mac-address" || name == "mep-id" || name == "min-packet-interval-inconsistent" || name == "ow-delay-ds-inconsistent" || name == "ow-delay-sd-inconsistent" || name == "ow-jitter-ds-inconsistent" || name == "ow-jitter-sd-inconsistent" || name == "ow-loss-ds-inconsistent" || name == "ow-loss-sd-inconsistent" || name == "packet-pad-inconsistent" || name == "packet-rand-pad-inconsistent" || name == "packet-type-inconsistent" || name == "priority-inconsistent" || name == "probe-too-big" || name == "profile-doesnt-exist" || name == "profile-name" || name == "profile-name-xr" || name == "rt-delay-inconsistent" || name == "rt-jitter-inconsistent" || name == "synthetic-loss-not-supported")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperations()
@@ -7271,7 +9522,7 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::has_operation() const
         if(on_demand_operation[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::get_segment_path() const
@@ -7336,8 +9587,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "on-demand-operation")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::OnDemandOperation()
@@ -7381,15 +9643,15 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::has_data()
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(display_long.operation)
-	|| is_set(display_short.operation)
-	|| is_set(domain_name.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(last_run.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mep_id.operation)
-	|| is_set(operation_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(display_long.yfilter)
+	|| ydk::is_set(display_short.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(last_run.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mep_id.yfilter)
+	|| ydk::is_set(operation_id.yfilter)
 	|| (profile_options !=  nullptr && profile_options->has_operation())
 	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
@@ -7417,14 +9679,14 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (display_long.is_set || is_set(display_long.operation)) leaf_name_data.push_back(display_long.get_name_leafdata());
-    if (display_short.is_set || is_set(display_short.operation)) leaf_name_data.push_back(display_short.get_name_leafdata());
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (last_run.is_set || is_set(last_run.operation)) leaf_name_data.push_back(last_run.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
-    if (operation_id.is_set || is_set(operation_id.operation)) leaf_name_data.push_back(operation_id.get_name_leafdata());
+    if (display_long.is_set || is_set(display_long.yfilter)) leaf_name_data.push_back(display_long.get_name_leafdata());
+    if (display_short.is_set || is_set(display_short.yfilter)) leaf_name_data.push_back(display_short.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (last_run.is_set || is_set(last_run.yfilter)) leaf_name_data.push_back(last_run.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.yfilter)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (operation_id.is_set || is_set(operation_id.yfilter)) leaf_name_data.push_back(operation_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7471,40 +9733,99 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "display-long")
     {
         display_long = value;
+        display_long.value_namespace = name_space;
+        display_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "display-short")
     {
         display_short = value;
+        display_short.value_namespace = name_space;
+        display_short.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-name")
     {
         domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-run")
     {
         last_run = value;
+        last_run.value_namespace = name_space;
+        last_run.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
+        mep_id.value_namespace = name_space;
+        mep_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation-id")
     {
         operation_id = value;
+        operation_id.value_namespace = name_space;
+        operation_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "display-long")
+    {
+        display_long.yfilter = yfilter;
+    }
+    if(value_path == "display-short")
+    {
+        display_short.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "last-run")
+    {
+        last_run.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mep-id")
+    {
+        mep_id.yfilter = yfilter;
+    }
+    if(value_path == "operation-id")
+    {
+        operation_id.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-options" || name == "specific-options" || name == "display-long" || name == "display-short" || name == "domain-name" || name == "interface-name" || name == "last-run" || name == "mac-address" || name == "mep-id" || name == "operation-id")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::ProfileOptions()
@@ -7558,13 +9879,13 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
         if(operation_metric[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(bursts_per_probe.operation)
-	|| is_set(flr_calculation_interval.operation)
-	|| is_set(inter_burst_interval.operation)
-	|| is_set(inter_packet_interval.operation)
-	|| is_set(packets_per_burst.operation)
-	|| is_set(probe_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bursts_per_probe.yfilter)
+	|| ydk::is_set(flr_calculation_interval.yfilter)
+	|| ydk::is_set(inter_burst_interval.yfilter)
+	|| ydk::is_set(inter_packet_interval.yfilter)
+	|| ydk::is_set(packets_per_burst.yfilter)
+	|| ydk::is_set(probe_type.yfilter)
 	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
 	|| (packet_padding !=  nullptr && packet_padding->has_operation())
 	|| (priority !=  nullptr && priority->has_operation());
@@ -7593,12 +9914,12 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bursts_per_probe.is_set || is_set(bursts_per_probe.operation)) leaf_name_data.push_back(bursts_per_probe.get_name_leafdata());
-    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.operation)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
-    if (inter_burst_interval.is_set || is_set(inter_burst_interval.operation)) leaf_name_data.push_back(inter_burst_interval.get_name_leafdata());
-    if (inter_packet_interval.is_set || is_set(inter_packet_interval.operation)) leaf_name_data.push_back(inter_packet_interval.get_name_leafdata());
-    if (packets_per_burst.is_set || is_set(packets_per_burst.operation)) leaf_name_data.push_back(packets_per_burst.get_name_leafdata());
-    if (probe_type.is_set || is_set(probe_type.operation)) leaf_name_data.push_back(probe_type.get_name_leafdata());
+    if (bursts_per_probe.is_set || is_set(bursts_per_probe.yfilter)) leaf_name_data.push_back(bursts_per_probe.get_name_leafdata());
+    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.yfilter)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
+    if (inter_burst_interval.is_set || is_set(inter_burst_interval.yfilter)) leaf_name_data.push_back(inter_burst_interval.get_name_leafdata());
+    if (inter_packet_interval.is_set || is_set(inter_packet_interval.yfilter)) leaf_name_data.push_back(inter_packet_interval.get_name_leafdata());
+    if (packets_per_burst.is_set || is_set(packets_per_burst.yfilter)) leaf_name_data.push_back(packets_per_burst.get_name_leafdata());
+    if (probe_type.is_set || is_set(probe_type.yfilter)) leaf_name_data.push_back(probe_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7680,32 +10001,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bursts-per-probe")
     {
         bursts_per_probe = value;
+        bursts_per_probe.value_namespace = name_space;
+        bursts_per_probe.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flr-calculation-interval")
     {
         flr_calculation_interval = value;
+        flr_calculation_interval.value_namespace = name_space;
+        flr_calculation_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-burst-interval")
     {
         inter_burst_interval = value;
+        inter_burst_interval.value_namespace = name_space;
+        inter_burst_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inter-packet-interval")
     {
         inter_packet_interval = value;
+        inter_packet_interval.value_namespace = name_space;
+        inter_packet_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-per-burst")
     {
         packets_per_burst = value;
+        packets_per_burst.value_namespace = name_space;
+        packets_per_burst.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-type")
     {
         probe_type = value;
+        probe_type.value_namespace = name_space;
+        probe_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bursts-per-probe")
+    {
+        bursts_per_probe.yfilter = yfilter;
+    }
+    if(value_path == "flr-calculation-interval")
+    {
+        flr_calculation_interval.yfilter = yfilter;
+    }
+    if(value_path == "inter-burst-interval")
+    {
+        inter_burst_interval.yfilter = yfilter;
+    }
+    if(value_path == "inter-packet-interval")
+    {
+        inter_packet_interval.yfilter = yfilter;
+    }
+    if(value_path == "packets-per-burst")
+    {
+        packets_per_burst.yfilter = yfilter;
+    }
+    if(value_path == "probe-type")
+    {
+        probe_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation-metric" || name == "operation-schedule" || name == "packet-padding" || name == "priority" || name == "bursts-per-probe" || name == "flr-calculation-interval" || name == "inter-burst-interval" || name == "inter-packet-interval" || name == "packets-per-burst" || name == "probe-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::PacketPadding()
@@ -7730,10 +10098,10 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(packet_pad_size.operation)
-	|| is_set(test_pattern_pad_hex_string.operation)
-	|| is_set(test_pattern_pad_scheme.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(packet_pad_size.yfilter)
+	|| ydk::is_set(test_pattern_pad_hex_string.yfilter)
+	|| ydk::is_set(test_pattern_pad_scheme.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::get_segment_path() const
@@ -7759,9 +10127,9 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (packet_pad_size.is_set || is_set(packet_pad_size.operation)) leaf_name_data.push_back(packet_pad_size.get_name_leafdata());
-    if (test_pattern_pad_hex_string.is_set || is_set(test_pattern_pad_hex_string.operation)) leaf_name_data.push_back(test_pattern_pad_hex_string.get_name_leafdata());
-    if (test_pattern_pad_scheme.is_set || is_set(test_pattern_pad_scheme.operation)) leaf_name_data.push_back(test_pattern_pad_scheme.get_name_leafdata());
+    if (packet_pad_size.is_set || is_set(packet_pad_size.yfilter)) leaf_name_data.push_back(packet_pad_size.get_name_leafdata());
+    if (test_pattern_pad_hex_string.is_set || is_set(test_pattern_pad_hex_string.yfilter)) leaf_name_data.push_back(test_pattern_pad_hex_string.get_name_leafdata());
+    if (test_pattern_pad_scheme.is_set || is_set(test_pattern_pad_scheme.yfilter)) leaf_name_data.push_back(test_pattern_pad_scheme.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7780,20 +10148,49 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-pad-size")
     {
         packet_pad_size = value;
+        packet_pad_size.value_namespace = name_space;
+        packet_pad_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-pattern-pad-hex-string")
     {
         test_pattern_pad_hex_string = value;
+        test_pattern_pad_hex_string.value_namespace = name_space;
+        test_pattern_pad_hex_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-pattern-pad-scheme")
     {
         test_pattern_pad_scheme = value;
+        test_pattern_pad_scheme.value_namespace = name_space;
+        test_pattern_pad_scheme.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packet-pad-size")
+    {
+        packet_pad_size.yfilter = yfilter;
+    }
+    if(value_path == "test-pattern-pad-hex-string")
+    {
+        test_pattern_pad_hex_string.yfilter = yfilter;
+    }
+    if(value_path == "test-pattern-pad-scheme")
+    {
+        test_pattern_pad_scheme.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packet-pad-size" || name == "test-pattern-pad-hex-string" || name == "test-pattern-pad-scheme")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::Priority()
@@ -7816,9 +10213,9 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cos.operation)
-	|| is_set(priority_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(priority_type.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::get_segment_path() const
@@ -7844,8 +10241,8 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (priority_type.is_set || is_set(priority_type.operation)) leaf_name_data.push_back(priority_type.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (priority_type.is_set || is_set(priority_type.yfilter)) leaf_name_data.push_back(priority_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7864,16 +10261,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-type")
     {
         priority_type = value;
+        priority_type.value_namespace = name_space;
+        priority_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "priority-type")
+    {
+        priority_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cos" || name == "priority-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::OperationSchedule()
@@ -7900,11 +10320,11 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(schedule_duration.operation)
-	|| is_set(schedule_interval.operation)
-	|| is_set(start_time.operation)
-	|| is_set(start_time_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(schedule_duration.yfilter)
+	|| ydk::is_set(schedule_interval.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(start_time_configured.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::get_segment_path() const
@@ -7930,10 +10350,10 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (schedule_duration.is_set || is_set(schedule_duration.operation)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
-    if (schedule_interval.is_set || is_set(schedule_interval.operation)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (start_time_configured.is_set || is_set(start_time_configured.operation)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
+    if (schedule_duration.is_set || is_set(schedule_duration.yfilter)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
+    if (schedule_interval.is_set || is_set(schedule_interval.yfilter)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (start_time_configured.is_set || is_set(start_time_configured.yfilter)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7952,24 +10372,59 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "schedule-duration")
     {
         schedule_duration = value;
+        schedule_duration.value_namespace = name_space;
+        schedule_duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "schedule-interval")
     {
         schedule_interval = value;
+        schedule_interval.value_namespace = name_space;
+        schedule_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time-configured")
     {
         start_time_configured = value;
+        start_time_configured.value_namespace = name_space;
+        start_time_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "schedule-duration")
+    {
+        schedule_duration.yfilter = yfilter;
+    }
+    if(value_path == "schedule-interval")
+    {
+        schedule_interval.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "start-time-configured")
+    {
+        start_time_configured.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "schedule-duration" || name == "schedule-interval" || name == "start-time" || name == "start-time-configured")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::OperationMetric()
@@ -7995,8 +10450,8 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(current_buckets_archive.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(current_buckets_archive.yfilter)
 	|| (metric_config !=  nullptr && metric_config->has_operation());
 }
 
@@ -8023,7 +10478,7 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (current_buckets_archive.is_set || is_set(current_buckets_archive.operation)) leaf_name_data.push_back(current_buckets_archive.get_name_leafdata());
+    if (current_buckets_archive.is_set || is_set(current_buckets_archive.yfilter)) leaf_name_data.push_back(current_buckets_archive.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8056,12 +10511,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "current-buckets-archive")
     {
         current_buckets_archive = value;
+        current_buckets_archive.value_namespace = name_space;
+        current_buckets_archive.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "current-buckets-archive")
+    {
+        current_buckets_archive.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "metric-config" || name == "current-buckets-archive")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::MetricConfig()
@@ -8092,13 +10564,13 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bins_count.operation)
-	|| is_set(bins_width.operation)
-	|| is_set(bucket_size.operation)
-	|| is_set(bucket_size_unit.operation)
-	|| is_set(buckets_archive.operation)
-	|| is_set(metric_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bins_count.yfilter)
+	|| ydk::is_set(bins_width.yfilter)
+	|| ydk::is_set(bucket_size.yfilter)
+	|| ydk::is_set(bucket_size_unit.yfilter)
+	|| ydk::is_set(buckets_archive.yfilter)
+	|| ydk::is_set(metric_type.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::get_segment_path() const
@@ -8124,12 +10596,12 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bins_count.is_set || is_set(bins_count.operation)) leaf_name_data.push_back(bins_count.get_name_leafdata());
-    if (bins_width.is_set || is_set(bins_width.operation)) leaf_name_data.push_back(bins_width.get_name_leafdata());
-    if (bucket_size.is_set || is_set(bucket_size.operation)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
-    if (bucket_size_unit.is_set || is_set(bucket_size_unit.operation)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
-    if (buckets_archive.is_set || is_set(buckets_archive.operation)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (bins_count.is_set || is_set(bins_count.yfilter)) leaf_name_data.push_back(bins_count.get_name_leafdata());
+    if (bins_width.is_set || is_set(bins_width.yfilter)) leaf_name_data.push_back(bins_width.get_name_leafdata());
+    if (bucket_size.is_set || is_set(bucket_size.yfilter)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
+    if (bucket_size_unit.is_set || is_set(bucket_size_unit.yfilter)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
+    if (buckets_archive.is_set || is_set(buckets_archive.yfilter)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8148,32 +10620,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bins-count")
     {
         bins_count = value;
+        bins_count.value_namespace = name_space;
+        bins_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bins-width")
     {
         bins_width = value;
+        bins_width.value_namespace = name_space;
+        bins_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size")
     {
         bucket_size = value;
+        bucket_size.value_namespace = name_space;
+        bucket_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size-unit")
     {
         bucket_size_unit = value;
+        bucket_size_unit.value_namespace = name_space;
+        bucket_size_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "buckets-archive")
     {
         buckets_archive = value;
+        buckets_archive.value_namespace = name_space;
+        buckets_archive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric-type")
     {
         metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bins-count")
+    {
+        bins_count.yfilter = yfilter;
+    }
+    if(value_path == "bins-width")
+    {
+        bins_width.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size")
+    {
+        bucket_size.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size-unit")
+    {
+        bucket_size_unit.yfilter = yfilter;
+    }
+    if(value_path == "buckets-archive")
+    {
+        buckets_archive.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins-count" || name == "bins-width" || name == "bucket-size" || name == "bucket-size-unit" || name == "buckets-archive" || name == "metric-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::SpecificOptions()
@@ -8203,8 +10722,8 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOp
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oper_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(oper_type.yfilter)
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
@@ -8232,7 +10751,7 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oper_type.is_set || is_set(oper_type.operation)) leaf_name_data.push_back(oper_type.get_name_leafdata());
+    if (oper_type.is_set || is_set(oper_type.yfilter)) leaf_name_data.push_back(oper_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8279,12 +10798,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oper-type")
     {
         oper_type = value;
+        oper_type.value_namespace = name_space;
+        oper_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oper-type")
+    {
+        oper_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-operation-options" || name == "ondemand-operation-options" || name == "oper-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::ConfiguredOperationOptions()
@@ -8305,8 +10841,8 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOp
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::get_segment_path() const
@@ -8332,7 +10868,7 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8351,12 +10887,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::OndemandOperationOptions()
@@ -8379,9 +10932,9 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOp
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ondemand_operation_id.operation)
-	|| is_set(probe_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ondemand_operation_id.yfilter)
+	|| ydk::is_set(probe_count.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::get_segment_path() const
@@ -8407,8 +10960,8 @@ const EntityPath Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.operation)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
-    if (probe_count.is_set || is_set(probe_count.operation)) leaf_name_data.push_back(probe_count.get_name_leafdata());
+    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.yfilter)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
+    if (probe_count.is_set || is_set(probe_count.yfilter)) leaf_name_data.push_back(probe_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8427,16 +10980,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     return children;
 }
 
-void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ondemand-operation-id")
     {
         ondemand_operation_id = value;
+        ondemand_operation_id.value_namespace = name_space;
+        ondemand_operation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-count")
     {
         probe_count = value;
+        probe_count.value_namespace = name_space;
+        probe_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ondemand-operation-id")
+    {
+        ondemand_operation_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-count")
+    {
+        probe_count.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ondemand-operation-id" || name == "probe-count")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrents()
@@ -8465,7 +11041,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::has_operation() const
         if(statistics_current[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::get_segment_path() const
@@ -8530,8 +11106,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics-current")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::StatisticsCurrent()
@@ -8587,16 +11174,16 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::has_operat
         if(operation_metric[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(display_long.operation)
-	|| is_set(display_short.operation)
-	|| is_set(domain_name.operation)
-	|| is_set(flr_calculation_interval.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mep_id.operation)
-	|| is_set(probe_type.operation)
-	|| is_set(profile_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(display_long.yfilter)
+	|| ydk::is_set(display_short.yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(flr_calculation_interval.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mep_id.yfilter)
+	|| ydk::is_set(probe_type.yfilter)
+	|| ydk::is_set(profile_name.yfilter)
 	|| (operation_schedule !=  nullptr && operation_schedule->has_operation())
 	|| (specific_options !=  nullptr && specific_options->has_operation());
 }
@@ -8624,15 +11211,15 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (display_long.is_set || is_set(display_long.operation)) leaf_name_data.push_back(display_long.get_name_leafdata());
-    if (display_short.is_set || is_set(display_short.operation)) leaf_name_data.push_back(display_short.get_name_leafdata());
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.operation)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mep_id.is_set || is_set(mep_id.operation)) leaf_name_data.push_back(mep_id.get_name_leafdata());
-    if (probe_type.is_set || is_set(probe_type.operation)) leaf_name_data.push_back(probe_type.get_name_leafdata());
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (display_long.is_set || is_set(display_long.yfilter)) leaf_name_data.push_back(display_long.get_name_leafdata());
+    if (display_short.is_set || is_set(display_short.yfilter)) leaf_name_data.push_back(display_short.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (flr_calculation_interval.is_set || is_set(flr_calculation_interval.yfilter)) leaf_name_data.push_back(flr_calculation_interval.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mep_id.is_set || is_set(mep_id.yfilter)) leaf_name_data.push_back(mep_id.get_name_leafdata());
+    if (probe_type.is_set || is_set(probe_type.yfilter)) leaf_name_data.push_back(probe_type.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8700,44 +11287,109 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "display-long")
     {
         display_long = value;
+        display_long.value_namespace = name_space;
+        display_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "display-short")
     {
         display_short = value;
+        display_short.value_namespace = name_space;
+        display_short.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-name")
     {
         domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flr-calculation-interval")
     {
         flr_calculation_interval = value;
+        flr_calculation_interval.value_namespace = name_space;
+        flr_calculation_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mep-id")
     {
         mep_id = value;
+        mep_id.value_namespace = name_space;
+        mep_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-type")
     {
         probe_type = value;
+        probe_type.value_namespace = name_space;
+        probe_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "display-long")
+    {
+        display_long.yfilter = yfilter;
+    }
+    if(value_path == "display-short")
+    {
+        display_short.yfilter = yfilter;
+    }
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "flr-calculation-interval")
+    {
+        flr_calculation_interval.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mep-id")
+    {
+        mep_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-type")
+    {
+        probe_type.yfilter = yfilter;
+    }
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation-metric" || name == "operation-schedule" || name == "specific-options" || name == "display-long" || name == "display-short" || name == "domain-name" || name == "flr-calculation-interval" || name == "interface-name" || name == "mac-address" || name == "mep-id" || name == "probe-type" || name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::SpecificOptions()
@@ -8767,8 +11419,8 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOp
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(oper_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(oper_type.yfilter)
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_operation())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_operation());
 }
@@ -8796,7 +11448,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (oper_type.is_set || is_set(oper_type.operation)) leaf_name_data.push_back(oper_type.get_name_leafdata());
+    if (oper_type.is_set || is_set(oper_type.yfilter)) leaf_name_data.push_back(oper_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8843,12 +11495,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oper-type")
     {
         oper_type = value;
+        oper_type.value_namespace = name_space;
+        oper_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "oper-type")
+    {
+        oper_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configured-operation-options" || name == "ondemand-operation-options" || name == "oper-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::ConfiguredOperationOptions()
@@ -8869,8 +11538,8 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOp
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile_name.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::get_segment_path() const
@@ -8896,7 +11565,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile_name.is_set || is_set(profile_name.operation)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8915,12 +11584,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
         profile_name = value;
+        profile_name.value_namespace = name_space;
+        profile_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile-name")
+    {
+        profile_name.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile-name")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::OndemandOperationOptions()
@@ -8943,9 +11629,9 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOp
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ondemand_operation_id.operation)
-	|| is_set(probe_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ondemand_operation_id.yfilter)
+	|| ydk::is_set(probe_count.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::get_segment_path() const
@@ -8971,8 +11657,8 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.operation)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
-    if (probe_count.is_set || is_set(probe_count.operation)) leaf_name_data.push_back(probe_count.get_name_leafdata());
+    if (ondemand_operation_id.is_set || is_set(ondemand_operation_id.yfilter)) leaf_name_data.push_back(ondemand_operation_id.get_name_leafdata());
+    if (probe_count.is_set || is_set(probe_count.yfilter)) leaf_name_data.push_back(probe_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8991,16 +11677,39 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ondemand-operation-id")
     {
         ondemand_operation_id = value;
+        ondemand_operation_id.value_namespace = name_space;
+        ondemand_operation_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "probe-count")
     {
         probe_count = value;
+        probe_count.value_namespace = name_space;
+        probe_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ondemand-operation-id")
+    {
+        ondemand_operation_id.yfilter = yfilter;
+    }
+    if(value_path == "probe-count")
+    {
+        probe_count.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ondemand-operation-id" || name == "probe-count")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::OperationSchedule()
@@ -9027,11 +11736,11 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationS
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(schedule_duration.operation)
-	|| is_set(schedule_interval.operation)
-	|| is_set(start_time.operation)
-	|| is_set(start_time_configured.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(schedule_duration.yfilter)
+	|| ydk::is_set(schedule_interval.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(start_time_configured.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::get_segment_path() const
@@ -9057,10 +11766,10 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (schedule_duration.is_set || is_set(schedule_duration.operation)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
-    if (schedule_interval.is_set || is_set(schedule_interval.operation)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
-    if (start_time.is_set || is_set(start_time.operation)) leaf_name_data.push_back(start_time.get_name_leafdata());
-    if (start_time_configured.is_set || is_set(start_time_configured.operation)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
+    if (schedule_duration.is_set || is_set(schedule_duration.yfilter)) leaf_name_data.push_back(schedule_duration.get_name_leafdata());
+    if (schedule_interval.is_set || is_set(schedule_interval.yfilter)) leaf_name_data.push_back(schedule_interval.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (start_time_configured.is_set || is_set(start_time_configured.yfilter)) leaf_name_data.push_back(start_time_configured.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9079,24 +11788,59 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "schedule-duration")
     {
         schedule_duration = value;
+        schedule_duration.value_namespace = name_space;
+        schedule_duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "schedule-interval")
     {
         schedule_interval = value;
+        schedule_interval.value_namespace = name_space;
+        schedule_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time")
     {
         start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-time-configured")
     {
         start_time_configured = value;
+        start_time_configured.value_namespace = name_space;
+        start_time_configured.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "schedule-duration")
+    {
+        schedule_duration.yfilter = yfilter;
+    }
+    if(value_path == "schedule-interval")
+    {
+        schedule_interval.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "start-time-configured")
+    {
+        start_time_configured.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "schedule-duration" || name == "schedule-interval" || name == "start-time" || name == "start-time-configured")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::OperationMetric()
@@ -9129,7 +11873,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
         if(bucket[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation());
 }
 
@@ -9209,8 +11953,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bucket" || name == "config")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::Config()
@@ -9241,13 +11996,13 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bins_count.operation)
-	|| is_set(bins_width.operation)
-	|| is_set(bucket_size.operation)
-	|| is_set(bucket_size_unit.operation)
-	|| is_set(buckets_archive.operation)
-	|| is_set(metric_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bins_count.yfilter)
+	|| ydk::is_set(bins_width.yfilter)
+	|| ydk::is_set(bucket_size.yfilter)
+	|| ydk::is_set(bucket_size_unit.yfilter)
+	|| ydk::is_set(buckets_archive.yfilter)
+	|| ydk::is_set(metric_type.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::get_segment_path() const
@@ -9273,12 +12028,12 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bins_count.is_set || is_set(bins_count.operation)) leaf_name_data.push_back(bins_count.get_name_leafdata());
-    if (bins_width.is_set || is_set(bins_width.operation)) leaf_name_data.push_back(bins_width.get_name_leafdata());
-    if (bucket_size.is_set || is_set(bucket_size.operation)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
-    if (bucket_size_unit.is_set || is_set(bucket_size_unit.operation)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
-    if (buckets_archive.is_set || is_set(buckets_archive.operation)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.operation)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (bins_count.is_set || is_set(bins_count.yfilter)) leaf_name_data.push_back(bins_count.get_name_leafdata());
+    if (bins_width.is_set || is_set(bins_width.yfilter)) leaf_name_data.push_back(bins_width.get_name_leafdata());
+    if (bucket_size.is_set || is_set(bucket_size.yfilter)) leaf_name_data.push_back(bucket_size.get_name_leafdata());
+    if (bucket_size_unit.is_set || is_set(bucket_size_unit.yfilter)) leaf_name_data.push_back(bucket_size_unit.get_name_leafdata());
+    if (buckets_archive.is_set || is_set(buckets_archive.yfilter)) leaf_name_data.push_back(buckets_archive.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9297,32 +12052,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bins-count")
     {
         bins_count = value;
+        bins_count.value_namespace = name_space;
+        bins_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bins-width")
     {
         bins_width = value;
+        bins_width.value_namespace = name_space;
+        bins_width.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size")
     {
         bucket_size = value;
+        bucket_size.value_namespace = name_space;
+        bucket_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bucket-size-unit")
     {
         bucket_size_unit = value;
+        bucket_size_unit.value_namespace = name_space;
+        bucket_size_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "buckets-archive")
     {
         buckets_archive = value;
+        buckets_archive.value_namespace = name_space;
+        buckets_archive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric-type")
     {
         metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bins-count")
+    {
+        bins_count.yfilter = yfilter;
+    }
+    if(value_path == "bins-width")
+    {
+        bins_width.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size")
+    {
+        bucket_size.yfilter = yfilter;
+    }
+    if(value_path == "bucket-size-unit")
+    {
+        bucket_size_unit.yfilter = yfilter;
+    }
+    if(value_path == "buckets-archive")
+    {
+        buckets_archive.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins-count" || name == "bins-width" || name == "bucket-size" || name == "bucket-size-unit" || name == "buckets-archive" || name == "metric-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Bucket()
@@ -9408,38 +12210,38 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(corrupt.operation)
-	|| is_set(data_lost_count.operation)
-	|| is_set(data_sent_count.operation)
-	|| is_set(duplicates.operation)
-	|| is_set(duration.operation)
-	|| is_set(lost.operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation)
-	|| is_set(out_of_order.operation)
-	|| is_set(overall_flr.operation)
-	|| is_set(premature_reason.operation)
-	|| is_set(premature_reason_string.operation)
-	|| is_set(result_count.operation)
-	|| is_set(sent.operation)
-	|| is_set(standard_deviation.operation)
-	|| is_set(start_at.operation)
-	|| is_set(suspect_cleared_mid_bucket.operation)
-	|| is_set(suspect_clock_drift.operation)
-	|| is_set(suspect_flr_low_packet_count.operation)
-	|| is_set(suspect_management_latency.operation)
-	|| is_set(suspect_memory_allocation_failed.operation)
-	|| is_set(suspect_misordering.operation)
-	|| is_set(suspect_multiple_buckets.operation)
-	|| is_set(suspect_premature_end.operation)
-	|| is_set(suspect_probe_restarted.operation)
-	|| is_set(suspect_schedule_latency.operation)
-	|| is_set(suspect_send_fail.operation)
-	|| is_set(suspect_start_mid_bucket.operation)
-	|| is_set(time_of_maximum.operation)
-	|| is_set(time_of_minimum.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(corrupt.yfilter)
+	|| ydk::is_set(data_lost_count.yfilter)
+	|| ydk::is_set(data_sent_count.yfilter)
+	|| ydk::is_set(duplicates.yfilter)
+	|| ydk::is_set(duration.yfilter)
+	|| ydk::is_set(lost.yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter)
+	|| ydk::is_set(out_of_order.yfilter)
+	|| ydk::is_set(overall_flr.yfilter)
+	|| ydk::is_set(premature_reason.yfilter)
+	|| ydk::is_set(premature_reason_string.yfilter)
+	|| ydk::is_set(result_count.yfilter)
+	|| ydk::is_set(sent.yfilter)
+	|| ydk::is_set(standard_deviation.yfilter)
+	|| ydk::is_set(start_at.yfilter)
+	|| ydk::is_set(suspect_cleared_mid_bucket.yfilter)
+	|| ydk::is_set(suspect_clock_drift.yfilter)
+	|| ydk::is_set(suspect_flr_low_packet_count.yfilter)
+	|| ydk::is_set(suspect_management_latency.yfilter)
+	|| ydk::is_set(suspect_memory_allocation_failed.yfilter)
+	|| ydk::is_set(suspect_misordering.yfilter)
+	|| ydk::is_set(suspect_multiple_buckets.yfilter)
+	|| ydk::is_set(suspect_premature_end.yfilter)
+	|| ydk::is_set(suspect_probe_restarted.yfilter)
+	|| ydk::is_set(suspect_schedule_latency.yfilter)
+	|| ydk::is_set(suspect_send_fail.yfilter)
+	|| ydk::is_set(suspect_start_mid_bucket.yfilter)
+	|| ydk::is_set(time_of_maximum.yfilter)
+	|| ydk::is_set(time_of_minimum.yfilter)
 	|| (contents !=  nullptr && contents->has_operation());
 }
 
@@ -9466,37 +12268,37 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (corrupt.is_set || is_set(corrupt.operation)) leaf_name_data.push_back(corrupt.get_name_leafdata());
-    if (data_lost_count.is_set || is_set(data_lost_count.operation)) leaf_name_data.push_back(data_lost_count.get_name_leafdata());
-    if (data_sent_count.is_set || is_set(data_sent_count.operation)) leaf_name_data.push_back(data_sent_count.get_name_leafdata());
-    if (duplicates.is_set || is_set(duplicates.operation)) leaf_name_data.push_back(duplicates.get_name_leafdata());
-    if (duration.is_set || is_set(duration.operation)) leaf_name_data.push_back(duration.get_name_leafdata());
-    if (lost.is_set || is_set(lost.operation)) leaf_name_data.push_back(lost.get_name_leafdata());
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
-    if (out_of_order.is_set || is_set(out_of_order.operation)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
-    if (overall_flr.is_set || is_set(overall_flr.operation)) leaf_name_data.push_back(overall_flr.get_name_leafdata());
-    if (premature_reason.is_set || is_set(premature_reason.operation)) leaf_name_data.push_back(premature_reason.get_name_leafdata());
-    if (premature_reason_string.is_set || is_set(premature_reason_string.operation)) leaf_name_data.push_back(premature_reason_string.get_name_leafdata());
-    if (result_count.is_set || is_set(result_count.operation)) leaf_name_data.push_back(result_count.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-    if (standard_deviation.is_set || is_set(standard_deviation.operation)) leaf_name_data.push_back(standard_deviation.get_name_leafdata());
-    if (start_at.is_set || is_set(start_at.operation)) leaf_name_data.push_back(start_at.get_name_leafdata());
-    if (suspect_cleared_mid_bucket.is_set || is_set(suspect_cleared_mid_bucket.operation)) leaf_name_data.push_back(suspect_cleared_mid_bucket.get_name_leafdata());
-    if (suspect_clock_drift.is_set || is_set(suspect_clock_drift.operation)) leaf_name_data.push_back(suspect_clock_drift.get_name_leafdata());
-    if (suspect_flr_low_packet_count.is_set || is_set(suspect_flr_low_packet_count.operation)) leaf_name_data.push_back(suspect_flr_low_packet_count.get_name_leafdata());
-    if (suspect_management_latency.is_set || is_set(suspect_management_latency.operation)) leaf_name_data.push_back(suspect_management_latency.get_name_leafdata());
-    if (suspect_memory_allocation_failed.is_set || is_set(suspect_memory_allocation_failed.operation)) leaf_name_data.push_back(suspect_memory_allocation_failed.get_name_leafdata());
-    if (suspect_misordering.is_set || is_set(suspect_misordering.operation)) leaf_name_data.push_back(suspect_misordering.get_name_leafdata());
-    if (suspect_multiple_buckets.is_set || is_set(suspect_multiple_buckets.operation)) leaf_name_data.push_back(suspect_multiple_buckets.get_name_leafdata());
-    if (suspect_premature_end.is_set || is_set(suspect_premature_end.operation)) leaf_name_data.push_back(suspect_premature_end.get_name_leafdata());
-    if (suspect_probe_restarted.is_set || is_set(suspect_probe_restarted.operation)) leaf_name_data.push_back(suspect_probe_restarted.get_name_leafdata());
-    if (suspect_schedule_latency.is_set || is_set(suspect_schedule_latency.operation)) leaf_name_data.push_back(suspect_schedule_latency.get_name_leafdata());
-    if (suspect_send_fail.is_set || is_set(suspect_send_fail.operation)) leaf_name_data.push_back(suspect_send_fail.get_name_leafdata());
-    if (suspect_start_mid_bucket.is_set || is_set(suspect_start_mid_bucket.operation)) leaf_name_data.push_back(suspect_start_mid_bucket.get_name_leafdata());
-    if (time_of_maximum.is_set || is_set(time_of_maximum.operation)) leaf_name_data.push_back(time_of_maximum.get_name_leafdata());
-    if (time_of_minimum.is_set || is_set(time_of_minimum.operation)) leaf_name_data.push_back(time_of_minimum.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (corrupt.is_set || is_set(corrupt.yfilter)) leaf_name_data.push_back(corrupt.get_name_leafdata());
+    if (data_lost_count.is_set || is_set(data_lost_count.yfilter)) leaf_name_data.push_back(data_lost_count.get_name_leafdata());
+    if (data_sent_count.is_set || is_set(data_sent_count.yfilter)) leaf_name_data.push_back(data_sent_count.get_name_leafdata());
+    if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
+    if (duration.is_set || is_set(duration.yfilter)) leaf_name_data.push_back(duration.get_name_leafdata());
+    if (lost.is_set || is_set(lost.yfilter)) leaf_name_data.push_back(lost.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (out_of_order.is_set || is_set(out_of_order.yfilter)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
+    if (overall_flr.is_set || is_set(overall_flr.yfilter)) leaf_name_data.push_back(overall_flr.get_name_leafdata());
+    if (premature_reason.is_set || is_set(premature_reason.yfilter)) leaf_name_data.push_back(premature_reason.get_name_leafdata());
+    if (premature_reason_string.is_set || is_set(premature_reason_string.yfilter)) leaf_name_data.push_back(premature_reason_string.get_name_leafdata());
+    if (result_count.is_set || is_set(result_count.yfilter)) leaf_name_data.push_back(result_count.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+    if (standard_deviation.is_set || is_set(standard_deviation.yfilter)) leaf_name_data.push_back(standard_deviation.get_name_leafdata());
+    if (start_at.is_set || is_set(start_at.yfilter)) leaf_name_data.push_back(start_at.get_name_leafdata());
+    if (suspect_cleared_mid_bucket.is_set || is_set(suspect_cleared_mid_bucket.yfilter)) leaf_name_data.push_back(suspect_cleared_mid_bucket.get_name_leafdata());
+    if (suspect_clock_drift.is_set || is_set(suspect_clock_drift.yfilter)) leaf_name_data.push_back(suspect_clock_drift.get_name_leafdata());
+    if (suspect_flr_low_packet_count.is_set || is_set(suspect_flr_low_packet_count.yfilter)) leaf_name_data.push_back(suspect_flr_low_packet_count.get_name_leafdata());
+    if (suspect_management_latency.is_set || is_set(suspect_management_latency.yfilter)) leaf_name_data.push_back(suspect_management_latency.get_name_leafdata());
+    if (suspect_memory_allocation_failed.is_set || is_set(suspect_memory_allocation_failed.yfilter)) leaf_name_data.push_back(suspect_memory_allocation_failed.get_name_leafdata());
+    if (suspect_misordering.is_set || is_set(suspect_misordering.yfilter)) leaf_name_data.push_back(suspect_misordering.get_name_leafdata());
+    if (suspect_multiple_buckets.is_set || is_set(suspect_multiple_buckets.yfilter)) leaf_name_data.push_back(suspect_multiple_buckets.get_name_leafdata());
+    if (suspect_premature_end.is_set || is_set(suspect_premature_end.yfilter)) leaf_name_data.push_back(suspect_premature_end.get_name_leafdata());
+    if (suspect_probe_restarted.is_set || is_set(suspect_probe_restarted.yfilter)) leaf_name_data.push_back(suspect_probe_restarted.get_name_leafdata());
+    if (suspect_schedule_latency.is_set || is_set(suspect_schedule_latency.yfilter)) leaf_name_data.push_back(suspect_schedule_latency.get_name_leafdata());
+    if (suspect_send_fail.is_set || is_set(suspect_send_fail.yfilter)) leaf_name_data.push_back(suspect_send_fail.get_name_leafdata());
+    if (suspect_start_mid_bucket.is_set || is_set(suspect_start_mid_bucket.yfilter)) leaf_name_data.push_back(suspect_start_mid_bucket.get_name_leafdata());
+    if (time_of_maximum.is_set || is_set(time_of_maximum.yfilter)) leaf_name_data.push_back(time_of_maximum.get_name_leafdata());
+    if (time_of_minimum.is_set || is_set(time_of_minimum.yfilter)) leaf_name_data.push_back(time_of_minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9529,132 +12331,329 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "corrupt")
     {
         corrupt = value;
+        corrupt.value_namespace = name_space;
+        corrupt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-lost-count")
     {
         data_lost_count = value;
+        data_lost_count.value_namespace = name_space;
+        data_lost_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-sent-count")
     {
         data_sent_count = value;
+        data_sent_count.value_namespace = name_space;
+        data_sent_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicates")
     {
         duplicates = value;
+        duplicates.value_namespace = name_space;
+        duplicates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duration")
     {
         duration = value;
+        duration.value_namespace = name_space;
+        duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lost")
     {
         lost = value;
+        lost.value_namespace = name_space;
+        lost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-order")
     {
         out_of_order = value;
+        out_of_order.value_namespace = name_space;
+        out_of_order.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overall-flr")
     {
         overall_flr = value;
+        overall_flr.value_namespace = name_space;
+        overall_flr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "premature-reason")
     {
         premature_reason = value;
+        premature_reason.value_namespace = name_space;
+        premature_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "premature-reason-string")
     {
         premature_reason_string = value;
+        premature_reason_string.value_namespace = name_space;
+        premature_reason_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "result-count")
     {
         result_count = value;
+        result_count.value_namespace = name_space;
+        result_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent")
     {
         sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standard-deviation")
     {
         standard_deviation = value;
+        standard_deviation.value_namespace = name_space;
+        standard_deviation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-at")
     {
         start_at = value;
+        start_at.value_namespace = name_space;
+        start_at.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-cleared-mid-bucket")
     {
         suspect_cleared_mid_bucket = value;
+        suspect_cleared_mid_bucket.value_namespace = name_space;
+        suspect_cleared_mid_bucket.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-clock-drift")
     {
         suspect_clock_drift = value;
+        suspect_clock_drift.value_namespace = name_space;
+        suspect_clock_drift.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-flr-low-packet-count")
     {
         suspect_flr_low_packet_count = value;
+        suspect_flr_low_packet_count.value_namespace = name_space;
+        suspect_flr_low_packet_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-management-latency")
     {
         suspect_management_latency = value;
+        suspect_management_latency.value_namespace = name_space;
+        suspect_management_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-memory-allocation-failed")
     {
         suspect_memory_allocation_failed = value;
+        suspect_memory_allocation_failed.value_namespace = name_space;
+        suspect_memory_allocation_failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-misordering")
     {
         suspect_misordering = value;
+        suspect_misordering.value_namespace = name_space;
+        suspect_misordering.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-multiple-buckets")
     {
         suspect_multiple_buckets = value;
+        suspect_multiple_buckets.value_namespace = name_space;
+        suspect_multiple_buckets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-premature-end")
     {
         suspect_premature_end = value;
+        suspect_premature_end.value_namespace = name_space;
+        suspect_premature_end.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-probe-restarted")
     {
         suspect_probe_restarted = value;
+        suspect_probe_restarted.value_namespace = name_space;
+        suspect_probe_restarted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-schedule-latency")
     {
         suspect_schedule_latency = value;
+        suspect_schedule_latency.value_namespace = name_space;
+        suspect_schedule_latency.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-send-fail")
     {
         suspect_send_fail = value;
+        suspect_send_fail.value_namespace = name_space;
+        suspect_send_fail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suspect-start-mid-bucket")
     {
         suspect_start_mid_bucket = value;
+        suspect_start_mid_bucket.value_namespace = name_space;
+        suspect_start_mid_bucket.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-of-maximum")
     {
         time_of_maximum = value;
+        time_of_maximum.value_namespace = name_space;
+        time_of_maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-of-minimum")
     {
         time_of_minimum = value;
+        time_of_minimum.value_namespace = name_space;
+        time_of_minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "corrupt")
+    {
+        corrupt.yfilter = yfilter;
+    }
+    if(value_path == "data-lost-count")
+    {
+        data_lost_count.yfilter = yfilter;
+    }
+    if(value_path == "data-sent-count")
+    {
+        data_sent_count.yfilter = yfilter;
+    }
+    if(value_path == "duplicates")
+    {
+        duplicates.yfilter = yfilter;
+    }
+    if(value_path == "duration")
+    {
+        duration.yfilter = yfilter;
+    }
+    if(value_path == "lost")
+    {
+        lost.yfilter = yfilter;
+    }
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+    if(value_path == "out-of-order")
+    {
+        out_of_order.yfilter = yfilter;
+    }
+    if(value_path == "overall-flr")
+    {
+        overall_flr.yfilter = yfilter;
+    }
+    if(value_path == "premature-reason")
+    {
+        premature_reason.yfilter = yfilter;
+    }
+    if(value_path == "premature-reason-string")
+    {
+        premature_reason_string.yfilter = yfilter;
+    }
+    if(value_path == "result-count")
+    {
+        result_count.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+    if(value_path == "standard-deviation")
+    {
+        standard_deviation.yfilter = yfilter;
+    }
+    if(value_path == "start-at")
+    {
+        start_at.yfilter = yfilter;
+    }
+    if(value_path == "suspect-cleared-mid-bucket")
+    {
+        suspect_cleared_mid_bucket.yfilter = yfilter;
+    }
+    if(value_path == "suspect-clock-drift")
+    {
+        suspect_clock_drift.yfilter = yfilter;
+    }
+    if(value_path == "suspect-flr-low-packet-count")
+    {
+        suspect_flr_low_packet_count.yfilter = yfilter;
+    }
+    if(value_path == "suspect-management-latency")
+    {
+        suspect_management_latency.yfilter = yfilter;
+    }
+    if(value_path == "suspect-memory-allocation-failed")
+    {
+        suspect_memory_allocation_failed.yfilter = yfilter;
+    }
+    if(value_path == "suspect-misordering")
+    {
+        suspect_misordering.yfilter = yfilter;
+    }
+    if(value_path == "suspect-multiple-buckets")
+    {
+        suspect_multiple_buckets.yfilter = yfilter;
+    }
+    if(value_path == "suspect-premature-end")
+    {
+        suspect_premature_end.yfilter = yfilter;
+    }
+    if(value_path == "suspect-probe-restarted")
+    {
+        suspect_probe_restarted.yfilter = yfilter;
+    }
+    if(value_path == "suspect-schedule-latency")
+    {
+        suspect_schedule_latency.yfilter = yfilter;
+    }
+    if(value_path == "suspect-send-fail")
+    {
+        suspect_send_fail.yfilter = yfilter;
+    }
+    if(value_path == "suspect-start-mid-bucket")
+    {
+        suspect_start_mid_bucket.yfilter = yfilter;
+    }
+    if(value_path == "time-of-maximum")
+    {
+        time_of_maximum.yfilter = yfilter;
+    }
+    if(value_path == "time-of-minimum")
+    {
+        time_of_minimum.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "contents" || name == "average" || name == "corrupt" || name == "data-lost-count" || name == "data-sent-count" || name == "duplicates" || name == "duration" || name == "lost" || name == "maximum" || name == "minimum" || name == "out-of-order" || name == "overall-flr" || name == "premature-reason" || name == "premature-reason-string" || name == "result-count" || name == "sent" || name == "standard-deviation" || name == "start-at" || name == "suspect-cleared-mid-bucket" || name == "suspect-clock-drift" || name == "suspect-flr-low-packet-count" || name == "suspect-management-latency" || name == "suspect-memory-allocation-failed" || name == "suspect-misordering" || name == "suspect-multiple-buckets" || name == "suspect-premature-end" || name == "suspect-probe-restarted" || name == "suspect-schedule-latency" || name == "suspect-send-fail" || name == "suspect-start-mid-bucket" || name == "time-of-maximum" || name == "time-of-minimum")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Contents()
@@ -9684,8 +12683,8 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bucket_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bucket_type.yfilter)
 	|| (aggregated !=  nullptr && aggregated->has_operation())
 	|| (unaggregated !=  nullptr && unaggregated->has_operation());
 }
@@ -9713,7 +12712,7 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bucket_type.is_set || is_set(bucket_type.operation)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
+    if (bucket_type.is_set || is_set(bucket_type.yfilter)) leaf_name_data.push_back(bucket_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9760,12 +12759,29 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bucket-type")
     {
         bucket_type = value;
+        bucket_type.value_namespace = name_space;
+        bucket_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bucket-type")
+    {
+        bucket_type.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aggregated" || name == "unaggregated" || name == "bucket-type")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Aggregated()
@@ -9794,7 +12810,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
         if(bins[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::get_segment_path() const
@@ -9859,8 +12875,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bins")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::Bins()
@@ -9891,13 +12918,13 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(lower_bound.operation)
-	|| is_set(lower_bound_tenths.operation)
-	|| is_set(sum.operation)
-	|| is_set(upper_bound.operation)
-	|| is_set(upper_bound_tenths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(lower_bound_tenths.yfilter)
+	|| ydk::is_set(sum.yfilter)
+	|| ydk::is_set(upper_bound.yfilter)
+	|| ydk::is_set(upper_bound_tenths.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::get_segment_path() const
@@ -9923,12 +12950,12 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count.is_set || is_set(count.operation)) leaf_name_data.push_back(count.get_name_leafdata());
-    if (lower_bound.is_set || is_set(lower_bound.operation)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (lower_bound_tenths.is_set || is_set(lower_bound_tenths.operation)) leaf_name_data.push_back(lower_bound_tenths.get_name_leafdata());
-    if (sum.is_set || is_set(sum.operation)) leaf_name_data.push_back(sum.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.operation)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
-    if (upper_bound_tenths.is_set || is_set(upper_bound_tenths.operation)) leaf_name_data.push_back(upper_bound_tenths.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (lower_bound_tenths.is_set || is_set(lower_bound_tenths.yfilter)) leaf_name_data.push_back(lower_bound_tenths.get_name_leafdata());
+    if (sum.is_set || is_set(sum.yfilter)) leaf_name_data.push_back(sum.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+    if (upper_bound_tenths.is_set || is_set(upper_bound_tenths.yfilter)) leaf_name_data.push_back(upper_bound_tenths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9947,32 +12974,79 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
         count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound")
     {
         lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound-tenths")
     {
         lower_bound_tenths = value;
+        lower_bound_tenths.value_namespace = name_space;
+        lower_bound_tenths.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sum")
     {
         sum = value;
+        sum.value_namespace = name_space;
+        sum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound")
     {
         upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound-tenths")
     {
         upper_bound_tenths = value;
+        upper_bound_tenths.value_namespace = name_space;
+        upper_bound_tenths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound-tenths")
+    {
+        lower_bound_tenths.yfilter = yfilter;
+    }
+    if(value_path == "sum")
+    {
+        sum.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound-tenths")
+    {
+        upper_bound_tenths.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "lower-bound" || name == "lower-bound-tenths" || name == "sum" || name == "upper-bound" || name == "upper-bound-tenths")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Unaggregated()
@@ -10001,7 +13075,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
         if(sample[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::get_segment_path() const
@@ -10066,8 +13140,19 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sample")
+        return true;
+    return false;
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::Sample()
@@ -10104,16 +13189,16 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(corrupt.operation)
-	|| is_set(frames_lost.operation)
-	|| is_set(frames_sent.operation)
-	|| is_set(no_data_packets.operation)
-	|| is_set(out_of_order.operation)
-	|| is_set(result.operation)
-	|| is_set(sent.operation)
-	|| is_set(sent_at.operation)
-	|| is_set(timed_out.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(corrupt.yfilter)
+	|| ydk::is_set(frames_lost.yfilter)
+	|| ydk::is_set(frames_sent.yfilter)
+	|| ydk::is_set(no_data_packets.yfilter)
+	|| ydk::is_set(out_of_order.yfilter)
+	|| ydk::is_set(result.yfilter)
+	|| ydk::is_set(sent.yfilter)
+	|| ydk::is_set(sent_at.yfilter)
+	|| ydk::is_set(timed_out.yfilter);
 }
 
 std::string Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::get_segment_path() const
@@ -10139,15 +13224,15 @@ const EntityPath Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (corrupt.is_set || is_set(corrupt.operation)) leaf_name_data.push_back(corrupt.get_name_leafdata());
-    if (frames_lost.is_set || is_set(frames_lost.operation)) leaf_name_data.push_back(frames_lost.get_name_leafdata());
-    if (frames_sent.is_set || is_set(frames_sent.operation)) leaf_name_data.push_back(frames_sent.get_name_leafdata());
-    if (no_data_packets.is_set || is_set(no_data_packets.operation)) leaf_name_data.push_back(no_data_packets.get_name_leafdata());
-    if (out_of_order.is_set || is_set(out_of_order.operation)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-    if (sent_at.is_set || is_set(sent_at.operation)) leaf_name_data.push_back(sent_at.get_name_leafdata());
-    if (timed_out.is_set || is_set(timed_out.operation)) leaf_name_data.push_back(timed_out.get_name_leafdata());
+    if (corrupt.is_set || is_set(corrupt.yfilter)) leaf_name_data.push_back(corrupt.get_name_leafdata());
+    if (frames_lost.is_set || is_set(frames_lost.yfilter)) leaf_name_data.push_back(frames_lost.get_name_leafdata());
+    if (frames_sent.is_set || is_set(frames_sent.yfilter)) leaf_name_data.push_back(frames_sent.get_name_leafdata());
+    if (no_data_packets.is_set || is_set(no_data_packets.yfilter)) leaf_name_data.push_back(no_data_packets.get_name_leafdata());
+    if (out_of_order.is_set || is_set(out_of_order.yfilter)) leaf_name_data.push_back(out_of_order.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+    if (sent_at.is_set || is_set(sent_at.yfilter)) leaf_name_data.push_back(sent_at.get_name_leafdata());
+    if (timed_out.is_set || is_set(timed_out.yfilter)) leaf_name_data.push_back(timed_out.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10166,44 +13251,109 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     return children;
 }
 
-void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, std::string value)
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "corrupt")
     {
         corrupt = value;
+        corrupt.value_namespace = name_space;
+        corrupt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-lost")
     {
         frames_lost = value;
+        frames_lost.value_namespace = name_space;
+        frames_lost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-sent")
     {
         frames_sent = value;
+        frames_sent.value_namespace = name_space;
+        frames_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "no-data-packets")
     {
         no_data_packets = value;
+        no_data_packets.value_namespace = name_space;
+        no_data_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-of-order")
     {
         out_of_order = value;
+        out_of_order.value_namespace = name_space;
+        out_of_order.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent")
     {
         sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent-at")
     {
         sent_at = value;
+        sent_at.value_namespace = name_space;
+        sent_at.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timed-out")
     {
         timed_out = value;
+        timed_out.value_namespace = name_space;
+        timed_out.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "corrupt")
+    {
+        corrupt.yfilter = yfilter;
+    }
+    if(value_path == "frames-lost")
+    {
+        frames_lost.yfilter = yfilter;
+    }
+    if(value_path == "frames-sent")
+    {
+        frames_sent.yfilter = yfilter;
+    }
+    if(value_path == "no-data-packets")
+    {
+        no_data_packets.yfilter = yfilter;
+    }
+    if(value_path == "out-of-order")
+    {
+        out_of_order.yfilter = yfilter;
+    }
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+    if(value_path == "sent-at")
+    {
+        sent_at.yfilter = yfilter;
+    }
+    if(value_path == "timed-out")
+    {
+        timed_out.yfilter = yfilter;
+    }
+}
+
+bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "corrupt" || name == "frames-lost" || name == "frames-sent" || name == "no-data-packets" || name == "out-of-order" || name == "result" || name == "sent" || name == "sent-at" || name == "timed-out")
+        return true;
+    return false;
 }
 
 SlaNodes::SlaNodes()
@@ -10222,7 +13372,7 @@ bool SlaNodes::has_data() const
 
 bool SlaNodes::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SlaNodes::get_segment_path() const
@@ -10263,7 +13413,11 @@ std::map<std::string, std::shared_ptr<Entity>> SlaNodes::get_children() const
     return children;
 }
 
-void SlaNodes::set_value(const std::string & value_path, std::string value)
+void SlaNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SlaNodes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -10285,6 +13439,16 @@ std::string SlaNodes::get_bundle_name() const
 augment_capabilities_function SlaNodes::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SlaNodes::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SlaNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 

@@ -6,14 +6,16 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_cfm_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_cfm_oper {
 
 CfmStatistics::CfmStatistics()
     :
-    cfm_meps_(std::make_shared<CfmStatistics::CfmMeps>())
+    cfm_meps(std::make_shared<CfmStatistics::CfmMeps>())
 {
-    cfm_meps_->parent = this;
+    cfm_meps->parent = this;
 
     yang_name = "cfm-statistics"; yang_parent_name = "Cisco-IOS-XE-cfm-oper";
 }
@@ -24,13 +26,13 @@ CfmStatistics::~CfmStatistics()
 
 bool CfmStatistics::has_data() const
 {
-    return (cfm_meps_ !=  nullptr && cfm_meps_->has_data());
+    return (cfm_meps !=  nullptr && cfm_meps->has_data());
 }
 
 bool CfmStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| (cfm_meps_ !=  nullptr && cfm_meps_->has_operation());
+    return is_set(yfilter)
+	|| (cfm_meps !=  nullptr && cfm_meps->has_operation());
 }
 
 std::string CfmStatistics::get_segment_path() const
@@ -64,11 +66,11 @@ std::shared_ptr<Entity> CfmStatistics::get_child_by_name(const std::string & chi
 {
     if(child_yang_name == "cfm-meps")
     {
-        if(cfm_meps_ == nullptr)
+        if(cfm_meps == nullptr)
         {
-            cfm_meps_ = std::make_shared<CfmStatistics::CfmMeps>();
+            cfm_meps = std::make_shared<CfmStatistics::CfmMeps>();
         }
-        return cfm_meps_;
+        return cfm_meps;
     }
 
     return nullptr;
@@ -77,15 +79,19 @@ std::shared_ptr<Entity> CfmStatistics::get_child_by_name(const std::string & chi
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cfm_meps_ != nullptr)
+    if(cfm_meps != nullptr)
     {
-        children["cfm-meps"] = cfm_meps_;
+        children["cfm-meps"] = cfm_meps;
     }
 
     return children;
 }
 
-void CfmStatistics::set_value(const std::string & value_path, std::string value)
+void CfmStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CfmStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,6 +115,18 @@ augment_capabilities_function CfmStatistics::get_augment_capabilities_function()
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CfmStatistics::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CfmStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cfm-meps")
+        return true;
+    return false;
+}
+
 CfmStatistics::CfmMeps::CfmMeps()
 {
     yang_name = "cfm-meps"; yang_parent_name = "cfm-statistics";
@@ -120,9 +138,9 @@ CfmStatistics::CfmMeps::~CfmMeps()
 
 bool CfmStatistics::CfmMeps::has_data() const
 {
-    for (std::size_t index=0; index<cfm_mep_.size(); index++)
+    for (std::size_t index=0; index<cfm_mep.size(); index++)
     {
-        if(cfm_mep_[index]->has_data())
+        if(cfm_mep[index]->has_data())
             return true;
     }
     return false;
@@ -130,12 +148,12 @@ bool CfmStatistics::CfmMeps::has_data() const
 
 bool CfmStatistics::CfmMeps::has_operation() const
 {
-    for (std::size_t index=0; index<cfm_mep_.size(); index++)
+    for (std::size_t index=0; index<cfm_mep.size(); index++)
     {
-        if(cfm_mep_[index]->has_operation())
+        if(cfm_mep[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CfmStatistics::CfmMeps::get_segment_path() const
@@ -172,7 +190,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
 {
     if(child_yang_name == "cfm-mep")
     {
-        for(auto const & c : cfm_mep_)
+        for(auto const & c : cfm_mep)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -182,7 +200,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
         }
         auto c = std::make_shared<CfmStatistics::CfmMeps::CfmMep>();
         c->parent = this;
-        cfm_mep_.push_back(c);
+        cfm_mep.push_back(c);
         return c;
     }
 
@@ -192,7 +210,7 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cfm_mep_)
+    for (auto const & c : cfm_mep)
     {
         children[c->get_segment_path()] = c;
     }
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::get_child
     return children;
 }
 
-void CfmStatistics::CfmMeps::set_value(const std::string & value_path, std::string value)
+void CfmStatistics::CfmMeps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CfmStatistics::CfmMeps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CfmStatistics::CfmMeps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cfm-mep")
+        return true;
+    return false;
 }
 
 CfmStatistics::CfmMeps::CfmMep::CfmMep()
@@ -217,9 +246,9 @@ CfmStatistics::CfmMeps::CfmMep::CfmMep()
     lbr_transmitted{YType::uint64, "lbr-transmitted"},
     ltr_unexpected{YType::uint64, "ltr-unexpected"}
     	,
-    last_cleared_(std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>())
+    last_cleared(std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>())
 {
-    last_cleared_->parent = this;
+    last_cleared->parent = this;
 
     yang_name = "cfm-mep"; yang_parent_name = "cfm-meps";
 }
@@ -240,23 +269,23 @@ bool CfmStatistics::CfmMeps::CfmMep::has_data() const
 	|| lbr_seq_errors.is_set
 	|| lbr_transmitted.is_set
 	|| ltr_unexpected.is_set
-	|| (last_cleared_ !=  nullptr && last_cleared_->has_data());
+	|| (last_cleared !=  nullptr && last_cleared->has_data());
 }
 
 bool CfmStatistics::CfmMeps::CfmMep::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(domain_name.operation)
-	|| is_set(ma_name.operation)
-	|| is_set(mpid.operation)
-	|| is_set(ccm_seq_errors.operation)
-	|| is_set(ccm_transmitted.operation)
-	|| is_set(lbr_received_bad.operation)
-	|| is_set(lbr_received_ok.operation)
-	|| is_set(lbr_seq_errors.operation)
-	|| is_set(lbr_transmitted.operation)
-	|| is_set(ltr_unexpected.operation)
-	|| (last_cleared_ !=  nullptr && last_cleared_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(domain_name.yfilter)
+	|| ydk::is_set(ma_name.yfilter)
+	|| ydk::is_set(mpid.yfilter)
+	|| ydk::is_set(ccm_seq_errors.yfilter)
+	|| ydk::is_set(ccm_transmitted.yfilter)
+	|| ydk::is_set(lbr_received_bad.yfilter)
+	|| ydk::is_set(lbr_received_ok.yfilter)
+	|| ydk::is_set(lbr_seq_errors.yfilter)
+	|| ydk::is_set(lbr_transmitted.yfilter)
+	|| ydk::is_set(ltr_unexpected.yfilter)
+	|| (last_cleared !=  nullptr && last_cleared->has_operation());
 }
 
 std::string CfmStatistics::CfmMeps::CfmMep::get_segment_path() const
@@ -282,16 +311,16 @@ const EntityPath CfmStatistics::CfmMeps::CfmMep::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain_name.is_set || is_set(domain_name.operation)) leaf_name_data.push_back(domain_name.get_name_leafdata());
-    if (ma_name.is_set || is_set(ma_name.operation)) leaf_name_data.push_back(ma_name.get_name_leafdata());
-    if (mpid.is_set || is_set(mpid.operation)) leaf_name_data.push_back(mpid.get_name_leafdata());
-    if (ccm_seq_errors.is_set || is_set(ccm_seq_errors.operation)) leaf_name_data.push_back(ccm_seq_errors.get_name_leafdata());
-    if (ccm_transmitted.is_set || is_set(ccm_transmitted.operation)) leaf_name_data.push_back(ccm_transmitted.get_name_leafdata());
-    if (lbr_received_bad.is_set || is_set(lbr_received_bad.operation)) leaf_name_data.push_back(lbr_received_bad.get_name_leafdata());
-    if (lbr_received_ok.is_set || is_set(lbr_received_ok.operation)) leaf_name_data.push_back(lbr_received_ok.get_name_leafdata());
-    if (lbr_seq_errors.is_set || is_set(lbr_seq_errors.operation)) leaf_name_data.push_back(lbr_seq_errors.get_name_leafdata());
-    if (lbr_transmitted.is_set || is_set(lbr_transmitted.operation)) leaf_name_data.push_back(lbr_transmitted.get_name_leafdata());
-    if (ltr_unexpected.is_set || is_set(ltr_unexpected.operation)) leaf_name_data.push_back(ltr_unexpected.get_name_leafdata());
+    if (domain_name.is_set || is_set(domain_name.yfilter)) leaf_name_data.push_back(domain_name.get_name_leafdata());
+    if (ma_name.is_set || is_set(ma_name.yfilter)) leaf_name_data.push_back(ma_name.get_name_leafdata());
+    if (mpid.is_set || is_set(mpid.yfilter)) leaf_name_data.push_back(mpid.get_name_leafdata());
+    if (ccm_seq_errors.is_set || is_set(ccm_seq_errors.yfilter)) leaf_name_data.push_back(ccm_seq_errors.get_name_leafdata());
+    if (ccm_transmitted.is_set || is_set(ccm_transmitted.yfilter)) leaf_name_data.push_back(ccm_transmitted.get_name_leafdata());
+    if (lbr_received_bad.is_set || is_set(lbr_received_bad.yfilter)) leaf_name_data.push_back(lbr_received_bad.get_name_leafdata());
+    if (lbr_received_ok.is_set || is_set(lbr_received_ok.yfilter)) leaf_name_data.push_back(lbr_received_ok.get_name_leafdata());
+    if (lbr_seq_errors.is_set || is_set(lbr_seq_errors.yfilter)) leaf_name_data.push_back(lbr_seq_errors.get_name_leafdata());
+    if (lbr_transmitted.is_set || is_set(lbr_transmitted.yfilter)) leaf_name_data.push_back(lbr_transmitted.get_name_leafdata());
+    if (ltr_unexpected.is_set || is_set(ltr_unexpected.yfilter)) leaf_name_data.push_back(ltr_unexpected.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -303,11 +332,11 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::CfmMep::get_child_by_name(const 
 {
     if(child_yang_name == "last-cleared")
     {
-        if(last_cleared_ == nullptr)
+        if(last_cleared == nullptr)
         {
-            last_cleared_ = std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>();
+            last_cleared = std::make_shared<CfmStatistics::CfmMeps::CfmMep::LastCleared>();
         }
-        return last_cleared_;
+        return last_cleared;
     }
 
     return nullptr;
@@ -316,56 +345,127 @@ std::shared_ptr<Entity> CfmStatistics::CfmMeps::CfmMep::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::CfmMep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(last_cleared_ != nullptr)
+    if(last_cleared != nullptr)
     {
-        children["last-cleared"] = last_cleared_;
+        children["last-cleared"] = last_cleared;
     }
 
     return children;
 }
 
-void CfmStatistics::CfmMeps::CfmMep::set_value(const std::string & value_path, std::string value)
+void CfmStatistics::CfmMeps::CfmMep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "domain-name")
     {
         domain_name = value;
+        domain_name.value_namespace = name_space;
+        domain_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ma-name")
     {
         ma_name = value;
+        ma_name.value_namespace = name_space;
+        ma_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpid")
     {
         mpid = value;
+        mpid.value_namespace = name_space;
+        mpid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ccm-seq-errors")
     {
         ccm_seq_errors = value;
+        ccm_seq_errors.value_namespace = name_space;
+        ccm_seq_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ccm-transmitted")
     {
         ccm_transmitted = value;
+        ccm_transmitted.value_namespace = name_space;
+        ccm_transmitted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lbr-received-bad")
     {
         lbr_received_bad = value;
+        lbr_received_bad.value_namespace = name_space;
+        lbr_received_bad.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lbr-received-ok")
     {
         lbr_received_ok = value;
+        lbr_received_ok.value_namespace = name_space;
+        lbr_received_ok.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lbr-seq-errors")
     {
         lbr_seq_errors = value;
+        lbr_seq_errors.value_namespace = name_space;
+        lbr_seq_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lbr-transmitted")
     {
         lbr_transmitted = value;
+        lbr_transmitted.value_namespace = name_space;
+        lbr_transmitted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ltr-unexpected")
     {
         ltr_unexpected = value;
+        ltr_unexpected.value_namespace = name_space;
+        ltr_unexpected.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CfmStatistics::CfmMeps::CfmMep::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "domain-name")
+    {
+        domain_name.yfilter = yfilter;
+    }
+    if(value_path == "ma-name")
+    {
+        ma_name.yfilter = yfilter;
+    }
+    if(value_path == "mpid")
+    {
+        mpid.yfilter = yfilter;
+    }
+    if(value_path == "ccm-seq-errors")
+    {
+        ccm_seq_errors.yfilter = yfilter;
+    }
+    if(value_path == "ccm-transmitted")
+    {
+        ccm_transmitted.yfilter = yfilter;
+    }
+    if(value_path == "lbr-received-bad")
+    {
+        lbr_received_bad.yfilter = yfilter;
+    }
+    if(value_path == "lbr-received-ok")
+    {
+        lbr_received_ok.yfilter = yfilter;
+    }
+    if(value_path == "lbr-seq-errors")
+    {
+        lbr_seq_errors.yfilter = yfilter;
+    }
+    if(value_path == "lbr-transmitted")
+    {
+        lbr_transmitted.yfilter = yfilter;
+    }
+    if(value_path == "ltr-unexpected")
+    {
+        ltr_unexpected.yfilter = yfilter;
+    }
+}
+
+bool CfmStatistics::CfmMeps::CfmMep::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-cleared" || name == "domain-name" || name == "ma-name" || name == "mpid" || name == "ccm-seq-errors" || name == "ccm-transmitted" || name == "lbr-received-bad" || name == "lbr-received-ok" || name == "lbr-seq-errors" || name == "lbr-transmitted" || name == "ltr-unexpected")
+        return true;
+    return false;
 }
 
 CfmStatistics::CfmMeps::CfmMep::LastCleared::LastCleared()
@@ -388,9 +488,9 @@ bool CfmStatistics::CfmMeps::CfmMep::LastCleared::has_data() const
 
 bool CfmStatistics::CfmMeps::CfmMep::LastCleared::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(never.operation)
-	|| is_set(time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(never.yfilter)
+	|| ydk::is_set(time.yfilter);
 }
 
 std::string CfmStatistics::CfmMeps::CfmMep::LastCleared::get_segment_path() const
@@ -416,8 +516,8 @@ const EntityPath CfmStatistics::CfmMeps::CfmMep::LastCleared::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (never.is_set || is_set(never.operation)) leaf_name_data.push_back(never.get_name_leafdata());
-    if (time.is_set || is_set(time.operation)) leaf_name_data.push_back(time.get_name_leafdata());
+    if (never.is_set || is_set(never.yfilter)) leaf_name_data.push_back(never.get_name_leafdata());
+    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -436,20 +536,43 @@ std::map<std::string, std::shared_ptr<Entity>> CfmStatistics::CfmMeps::CfmMep::L
     return children;
 }
 
-void CfmStatistics::CfmMeps::CfmMep::LastCleared::set_value(const std::string & value_path, std::string value)
+void CfmStatistics::CfmMeps::CfmMep::LastCleared::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "never")
     {
         never = value;
+        never.value_namespace = name_space;
+        never.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time")
     {
         time = value;
+        time.value_namespace = name_space;
+        time.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CfmLastClearedTypeEnum::never_cleared {0, "never-cleared"};
-const Enum::YLeaf CfmLastClearedTypeEnum::cleared_before {1, "cleared-before"};
+void CfmStatistics::CfmMeps::CfmMep::LastCleared::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "never")
+    {
+        never.yfilter = yfilter;
+    }
+    if(value_path == "time")
+    {
+        time.yfilter = yfilter;
+    }
+}
+
+bool CfmStatistics::CfmMeps::CfmMep::LastCleared::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "never" || name == "time")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf CfmLastClearedType::never_cleared {0, "never-cleared"};
+const Enum::YLeaf CfmLastClearedType::cleared_before {1, "cleared-before"};
 
 
 }

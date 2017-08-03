@@ -7,19 +7,19 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lib_mpp_oper {
 
-class MppAfIdBaseIdentity : public virtual Identity
+class MppAfIdBase : public virtual ydk::Identity
 {
     public:
-        MppAfIdBaseIdentity();
-        ~MppAfIdBaseIdentity();
+        MppAfIdBase();
+        ~MppAfIdBase();
 
 
-}; // MppAfIdBaseIdentity
+}; // MppAfIdBase
 
-class ManagementPlaneProtection : public Entity
+class ManagementPlaneProtection : public ydk::Entity
 {
     public:
         ManagementPlaneProtection();
@@ -27,15 +27,18 @@ class ManagementPlaneProtection : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Outband; //type: ManagementPlaneProtection::Outband
         class Inband; //type: ManagementPlaneProtection::Inband
@@ -46,7 +49,7 @@ class ManagementPlaneProtection : public Entity
 }; // ManagementPlaneProtection
 
 
-class ManagementPlaneProtection::Outband : public Entity
+class ManagementPlaneProtection::Outband : public ydk::Entity
 {
     public:
         Outband();
@@ -54,11 +57,13 @@ class ManagementPlaneProtection::Outband : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: ManagementPlaneProtection::Outband::Vrf
         class Interfaces; //type: ManagementPlaneProtection::Outband::Interfaces
@@ -69,7 +74,7 @@ class ManagementPlaneProtection::Outband : public Entity
 }; // ManagementPlaneProtection::Outband
 
 
-class ManagementPlaneProtection::Outband::Vrf : public Entity
+class ManagementPlaneProtection::Outband::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -77,18 +82,20 @@ class ManagementPlaneProtection::Outband::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
 
 }; // ManagementPlaneProtection::Outband::Vrf
 
 
-class ManagementPlaneProtection::Outband::Interfaces : public Entity
+class ManagementPlaneProtection::Outband::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -96,11 +103,13 @@ class ManagementPlaneProtection::Outband::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: ManagementPlaneProtection::Outband::Interfaces::Interface
 
@@ -109,7 +118,7 @@ class ManagementPlaneProtection::Outband::Interfaces : public Entity
 }; // ManagementPlaneProtection::Outband::Interfaces
 
 
-class ManagementPlaneProtection::Outband::Interfaces::Interface : public Entity
+class ManagementPlaneProtection::Outband::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -117,13 +126,15 @@ class ManagementPlaneProtection::Outband::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
         class Protocol; //type: ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol> > protocol;
@@ -131,7 +142,7 @@ class ManagementPlaneProtection::Outband::Interfaces::Interface : public Entity
 }; // ManagementPlaneProtection::Outband::Interfaces::Interface
 
 
-class ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol : public Entity
+class ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -139,14 +150,16 @@ class ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allow; //type: MppAllowEnum
-        YLeaf is_all_peers_allowed; //type: boolean
+        ydk::YLeaf allow; //type: MppAllow
+        ydk::YLeaf is_all_peers_allowed; //type: boolean
         class PeerAddress; //type: ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress> > peer_address;
@@ -154,7 +167,7 @@ class ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol : publ
 }; // ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol
 
 
-class ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress : public Entity
+class ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress : public ydk::Entity
 {
     public:
         PeerAddress();
@@ -162,20 +175,22 @@ class ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerA
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af_name; //type: MppAfIdBaseIdentity
-        YLeaf ipv4_address; //type: string
-        YLeaf ipv6_address; //type: string
+        ydk::YLeaf af_name; //type: MppAfIdBase
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
 
 }; // ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol::PeerAddress
 
 
-class ManagementPlaneProtection::Inband : public Entity
+class ManagementPlaneProtection::Inband : public ydk::Entity
 {
     public:
         Inband();
@@ -183,11 +198,13 @@ class ManagementPlaneProtection::Inband : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interfaces; //type: ManagementPlaneProtection::Inband::Interfaces
 
@@ -196,7 +213,7 @@ class ManagementPlaneProtection::Inband : public Entity
 }; // ManagementPlaneProtection::Inband
 
 
-class ManagementPlaneProtection::Inband::Interfaces : public Entity
+class ManagementPlaneProtection::Inband::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -204,11 +221,13 @@ class ManagementPlaneProtection::Inband::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: ManagementPlaneProtection::Inband::Interfaces::Interface
 
@@ -217,7 +236,7 @@ class ManagementPlaneProtection::Inband::Interfaces : public Entity
 }; // ManagementPlaneProtection::Inband::Interfaces
 
 
-class ManagementPlaneProtection::Inband::Interfaces::Interface : public Entity
+class ManagementPlaneProtection::Inband::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -225,13 +244,15 @@ class ManagementPlaneProtection::Inband::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
         class Protocol; //type: ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol> > protocol;
@@ -239,7 +260,7 @@ class ManagementPlaneProtection::Inband::Interfaces::Interface : public Entity
 }; // ManagementPlaneProtection::Inband::Interfaces::Interface
 
 
-class ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol : public Entity
+class ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -247,14 +268,16 @@ class ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allow; //type: MppAllowEnum
-        YLeaf is_all_peers_allowed; //type: boolean
+        ydk::YLeaf allow; //type: MppAllow
+        ydk::YLeaf is_all_peers_allowed; //type: boolean
         class PeerAddress; //type: ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_lib_mpp_oper::ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress> > peer_address;
@@ -262,7 +285,7 @@ class ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol : publi
 }; // ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol
 
 
-class ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress : public Entity
+class ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress : public ydk::Entity
 {
     public:
         PeerAddress();
@@ -270,47 +293,49 @@ class ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAd
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af_name; //type: MppAfIdBaseIdentity
-        YLeaf ipv4_address; //type: string
-        YLeaf ipv6_address; //type: string
+        ydk::YLeaf af_name; //type: MppAfIdBase
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
 
 }; // ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::PeerAddress
 
-class Ipv4Identity : public Cisco_IOS_XR_lib_mpp_oper::MppAfIdBaseIdentity, virtual Identity
+class Ipv6 : public Cisco_IOS_XR_lib_mpp_oper::MppAfIdBase, virtual ydk::Identity
 {
     public:
-        Ipv4Identity();
-        ~Ipv4Identity();
+        Ipv6();
+        ~Ipv6();
 
 
-}; // Ipv4Identity
+}; // Ipv6
 
-class Ipv6Identity : public Cisco_IOS_XR_lib_mpp_oper::MppAfIdBaseIdentity, virtual Identity
+class Ipv4 : public Cisco_IOS_XR_lib_mpp_oper::MppAfIdBase, virtual ydk::Identity
 {
     public:
-        Ipv6Identity();
-        ~Ipv6Identity();
+        Ipv4();
+        ~Ipv4();
 
 
-}; // Ipv6Identity
+}; // Ipv4
 
-class MppAllowEnum : public Enum
+class MppAllow : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ssh;
-        static const Enum::YLeaf telnet;
-        static const Enum::YLeaf snmp;
-        static const Enum::YLeaf tftp;
-        static const Enum::YLeaf http;
-        static const Enum::YLeaf xr_xml;
-        static const Enum::YLeaf netconf;
-        static const Enum::YLeaf all;
+        static const ydk::Enum::YLeaf ssh;
+        static const ydk::Enum::YLeaf telnet;
+        static const ydk::Enum::YLeaf snmp;
+        static const ydk::Enum::YLeaf tftp;
+        static const ydk::Enum::YLeaf http;
+        static const ydk::Enum::YLeaf xr_xml;
+        static const ydk::Enum::YLeaf netconf;
+        static const ydk::Enum::YLeaf all;
 
 };
 

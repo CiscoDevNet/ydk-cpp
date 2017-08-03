@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_invmgr_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_invmgr_cfg {
 
 InventoryConfigurations::InventoryConfigurations()
@@ -35,7 +37,7 @@ bool InventoryConfigurations::has_operation() const
         if(entity_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InventoryConfigurations::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> InventoryConfigurations::get_chil
     return children;
 }
 
-void InventoryConfigurations::set_value(const std::string & value_path, std::string value)
+void InventoryConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InventoryConfigurations::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -121,6 +127,18 @@ augment_capabilities_function InventoryConfigurations::get_augment_capabilities_
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> InventoryConfigurations::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool InventoryConfigurations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entity")
+        return true;
+    return false;
+}
+
 InventoryConfigurations::Entity_::Entity_()
     :
     name{YType::str, "name"},
@@ -141,9 +159,9 @@ bool InventoryConfigurations::Entity_::has_data() const
 
 bool InventoryConfigurations::Entity_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(name_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(name_xr.yfilter);
 }
 
 std::string InventoryConfigurations::Entity_::get_segment_path() const
@@ -169,8 +187,8 @@ const EntityPath InventoryConfigurations::Entity_::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (name_xr.is_set || is_set(name_xr.operation)) leaf_name_data.push_back(name_xr.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name_xr.is_set || is_set(name_xr.yfilter)) leaf_name_data.push_back(name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -189,16 +207,39 @@ std::map<std::string, std::shared_ptr<Entity>> InventoryConfigurations::Entity_:
     return children;
 }
 
-void InventoryConfigurations::Entity_::set_value(const std::string & value_path, std::string value)
+void InventoryConfigurations::Entity_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name-xr")
     {
         name_xr = value;
+        name_xr.value_namespace = name_space;
+        name_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InventoryConfigurations::Entity_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "name-xr")
+    {
+        name_xr.yfilter = yfilter;
+    }
+}
+
+bool InventoryConfigurations::Entity_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "name-xr")
+        return true;
+    return false;
 }
 
 

@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace ietf {
 namespace ietf_key_chain {
 
-class KeyChains : public Entity
+class KeyChains : public ydk::Entity
 {
     public:
         KeyChains();
@@ -18,17 +18,20 @@ class KeyChains : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf name; //type: string
+        ydk::YLeaf name; //type: string
         class AcceptTolerance; //type: KeyChains::AcceptTolerance
         class Key; //type: KeyChains::Key
 
@@ -38,7 +41,7 @@ class KeyChains : public Entity
 }; // KeyChains
 
 
-class KeyChains::AcceptTolerance : public Entity
+class KeyChains::AcceptTolerance : public ydk::Entity
 {
     public:
         AcceptTolerance();
@@ -46,18 +49,20 @@ class KeyChains::AcceptTolerance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf duration; //type: uint32
+        ydk::YLeaf duration; //type: uint32
 
 }; // KeyChains::AcceptTolerance
 
 
-class KeyChains::Key : public Entity
+class KeyChains::Key : public ydk::Entity
 {
     public:
         Key();
@@ -65,13 +70,15 @@ class KeyChains::Key : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf key_id; //type: uint64
+        ydk::YLeaf key_id; //type: uint64
         class KeyString; //type: KeyChains::Key::KeyString
         class Lifetime; //type: KeyChains::Key::Lifetime
         class CryptoAlgorithm; //type: KeyChains::Key::CryptoAlgorithm
@@ -83,7 +90,7 @@ class KeyChains::Key : public Entity
 }; // KeyChains::Key
 
 
-class KeyChains::Key::KeyString : public Entity
+class KeyChains::Key::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -91,19 +98,21 @@ class KeyChains::Key::KeyString : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf keystring; //type: string
-        YLeaf hexadecimal_string; //type: string
+        ydk::YLeaf keystring; //type: string
+        ydk::YLeaf hexadecimal_string; //type: string
 
 }; // KeyChains::Key::KeyString
 
 
-class KeyChains::Key::Lifetime : public Entity
+class KeyChains::Key::Lifetime : public ydk::Entity
 {
     public:
         Lifetime();
@@ -111,11 +120,13 @@ class KeyChains::Key::Lifetime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SendAcceptLifetime; //type: KeyChains::Key::Lifetime::SendAcceptLifetime
         class SendLifetime; //type: KeyChains::Key::Lifetime::SendLifetime
@@ -128,7 +139,7 @@ class KeyChains::Key::Lifetime : public Entity
 }; // KeyChains::Key::Lifetime
 
 
-class KeyChains::Key::Lifetime::SendAcceptLifetime : public Entity
+class KeyChains::Key::Lifetime::SendAcceptLifetime : public ydk::Entity
 {
     public:
         SendAcceptLifetime();
@@ -136,22 +147,24 @@ class KeyChains::Key::Lifetime::SendAcceptLifetime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf always; //type: empty
-        YLeaf start_date_time; //type: string
-        YLeaf no_end_time; //type: empty
-        YLeaf duration; //type: uint32
-        YLeaf end_date_time; //type: string
+        ydk::YLeaf always; //type: empty
+        ydk::YLeaf start_date_time; //type: string
+        ydk::YLeaf no_end_time; //type: empty
+        ydk::YLeaf duration; //type: uint32
+        ydk::YLeaf end_date_time; //type: string
 
 }; // KeyChains::Key::Lifetime::SendAcceptLifetime
 
 
-class KeyChains::Key::Lifetime::SendLifetime : public Entity
+class KeyChains::Key::Lifetime::SendLifetime : public ydk::Entity
 {
     public:
         SendLifetime();
@@ -159,22 +172,24 @@ class KeyChains::Key::Lifetime::SendLifetime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf always; //type: empty
-        YLeaf start_date_time; //type: string
-        YLeaf no_end_time; //type: empty
-        YLeaf duration; //type: uint32
-        YLeaf end_date_time; //type: string
+        ydk::YLeaf always; //type: empty
+        ydk::YLeaf start_date_time; //type: string
+        ydk::YLeaf no_end_time; //type: empty
+        ydk::YLeaf duration; //type: uint32
+        ydk::YLeaf end_date_time; //type: string
 
 }; // KeyChains::Key::Lifetime::SendLifetime
 
 
-class KeyChains::Key::Lifetime::AcceptLifetime : public Entity
+class KeyChains::Key::Lifetime::AcceptLifetime : public ydk::Entity
 {
     public:
         AcceptLifetime();
@@ -182,22 +197,24 @@ class KeyChains::Key::Lifetime::AcceptLifetime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf always; //type: empty
-        YLeaf start_date_time; //type: string
-        YLeaf no_end_time; //type: empty
-        YLeaf duration; //type: uint32
-        YLeaf end_date_time; //type: string
+        ydk::YLeaf always; //type: empty
+        ydk::YLeaf start_date_time; //type: string
+        ydk::YLeaf no_end_time; //type: empty
+        ydk::YLeaf duration; //type: uint32
+        ydk::YLeaf end_date_time; //type: string
 
 }; // KeyChains::Key::Lifetime::AcceptLifetime
 
 
-class KeyChains::Key::CryptoAlgorithm : public Entity
+class KeyChains::Key::CryptoAlgorithm : public ydk::Entity
 {
     public:
         CryptoAlgorithm();
@@ -205,20 +222,22 @@ class KeyChains::Key::CryptoAlgorithm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hmac_sha1_12; //type: empty
-        YLeaf hmac_sha1_20; //type: empty
-        YLeaf md5; //type: empty
-        YLeaf sha_1; //type: empty
-        YLeaf hmac_sha_1; //type: empty
-        YLeaf hmac_sha_256; //type: empty
-        YLeaf hmac_sha_384; //type: empty
-        YLeaf hmac_sha_512; //type: empty
+        ydk::YLeaf hmac_sha1_12; //type: empty
+        ydk::YLeaf hmac_sha1_20; //type: empty
+        ydk::YLeaf md5; //type: empty
+        ydk::YLeaf sha_1; //type: empty
+        ydk::YLeaf hmac_sha_1; //type: empty
+        ydk::YLeaf hmac_sha_256; //type: empty
+        ydk::YLeaf hmac_sha_384; //type: empty
+        ydk::YLeaf hmac_sha_512; //type: empty
 
 }; // KeyChains::Key::CryptoAlgorithm
 

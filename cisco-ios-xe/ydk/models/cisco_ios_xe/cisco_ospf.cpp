@@ -6,21 +6,23 @@
 #include "generated_entity_lookup.hpp"
 #include "cisco_ospf.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace cisco_ospf {
 
-const Enum::YLeaf OspfLogAdjEnum::enable {0, "enable"};
-const Enum::YLeaf OspfLogAdjEnum::detail {1, "detail"};
-const Enum::YLeaf OspfLogAdjEnum::disable {2, "disable"};
+const Enum::YLeaf PrefixApplicability::protected_ {1, "protected"};
+const Enum::YLeaf PrefixApplicability::all {2, "all"};
 
-const Enum::YLeaf PrefixApplicabilityEnum::protected_ {1, "protected"};
-const Enum::YLeaf PrefixApplicabilityEnum::all {2, "all"};
+const Enum::YLeaf AccessListInOutType::in {0, "in"};
+const Enum::YLeaf AccessListInOutType::out {1, "out"};
 
-const Enum::YLeaf AccessListInOutTypeEnum::in {0, "in"};
-const Enum::YLeaf AccessListInOutTypeEnum::out {1, "out"};
+const Enum::YLeaf OspfExternalType::Y_1 {0, "1"};
+const Enum::YLeaf OspfExternalType::Y_2 {1, "2"};
 
-const Enum::YLeaf OspfExternalTypeEnum::Y_1 {0, "1"};
-const Enum::YLeaf OspfExternalTypeEnum::Y_2 {1, "2"};
+const Enum::YLeaf OspfLogAdj::enable {0, "enable"};
+const Enum::YLeaf OspfLogAdj::detail {1, "detail"};
+const Enum::YLeaf OspfLogAdj::disable {2, "disable"};
 
 
 }

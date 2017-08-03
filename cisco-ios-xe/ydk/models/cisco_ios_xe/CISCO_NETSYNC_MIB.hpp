@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_NETSYNC_MIB {
 
-class CiscoNetsyncMib : public Entity
+class CiscoNetsyncMib : public ydk::Entity
 {
     public:
         CiscoNetsyncMib();
@@ -18,15 +18,18 @@ class CiscoNetsyncMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Cisconetsyncmibnotifcontrol; //type: CiscoNetsyncMib::Cisconetsyncmibnotifcontrol
         class Cnsclkselglobaltable; //type: CiscoNetsyncMib::Cnsclkselglobaltable
@@ -35,17 +38,17 @@ class CiscoNetsyncMib : public Entity
         class Cnsextoutputtable; //type: CiscoNetsyncMib::Cnsextoutputtable
         class Cnst4Clocksourcetable; //type: CiscoNetsyncMib::Cnst4Clocksourcetable
 
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cisconetsyncmibnotifcontrol> cisconetsyncmibnotifcontrol_;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsclkselglobaltable> cnsclkselglobaltable_;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable> cnsextoutputtable_;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsinputsourcetable> cnsinputsourcetable_;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsselectedinputsourcetable> cnsselectedinputsourcetable_;
-        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnst4Clocksourcetable> cnst4clocksourcetable_;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cisconetsyncmibnotifcontrol> cisconetsyncmibnotifcontrol;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsclkselglobaltable> cnsclkselglobaltable;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable> cnsextoutputtable;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsinputsourcetable> cnsinputsourcetable;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsselectedinputsourcetable> cnsselectedinputsourcetable;
+        std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnst4Clocksourcetable> cnst4clocksourcetable;
         
 }; // CiscoNetsyncMib
 
 
-class CiscoNetsyncMib::Cisconetsyncmibnotifcontrol : public Entity
+class CiscoNetsyncMib::Cisconetsyncmibnotifcontrol : public ydk::Entity
 {
     public:
         Cisconetsyncmibnotifcontrol();
@@ -53,18 +56,20 @@ class CiscoNetsyncMib::Cisconetsyncmibnotifcontrol : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cnsmibenablestatusnotification; //type: boolean
+        ydk::YLeaf cnsmibenablestatusnotification; //type: boolean
 
 }; // CiscoNetsyncMib::Cisconetsyncmibnotifcontrol
 
 
-class CiscoNetsyncMib::Cnsclkselglobaltable : public Entity
+class CiscoNetsyncMib::Cnsclkselglobaltable : public ydk::Entity
 {
     public:
         Cnsclkselglobaltable();
@@ -72,20 +77,22 @@ class CiscoNetsyncMib::Cnsclkselglobaltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cnsclkselglobalentry; //type: CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry> > cnsclkselglobalentry_;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry> > cnsclkselglobalentry;
         
 }; // CiscoNetsyncMib::Cnsclkselglobaltable
 
 
-class CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry : public Entity
+class CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry : public ydk::Entity
 {
     public:
         Cnsclkselglobalentry();
@@ -93,30 +100,32 @@ class CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cnsclkselgloprocindex; //type: uint32
-        YLeaf cnsclkselglobprocessmode; //type: CisconetsyncqlmodeEnum
-        YLeaf cnsclkselglobclockmode; //type: CisconetsyncclockmodeEnum
-        YLeaf cnsclkselglobnetsyncenable; //type: boolean
-        YLeaf cnsclkselglobrevertivemode; //type: boolean
-        YLeaf cnsclkselglobesmcmode; //type: boolean
-        YLeaf cnsclkselglobeecoption; //type: CisconetsynceecoptionEnum
-        YLeaf cnsclkselglobnetworkoption; //type: CisconetsyncnetworkoptionEnum
-        YLeaf cnsclkselglobholdofftime; //type: uint32
-        YLeaf cnsclkselglobwtrtime; //type: uint32
-        YLeaf cnsclkselglobnofsources; //type: uint32
-        YLeaf cnsclkselgloblastholdoverseconds; //type: uint32
-        YLeaf cnsclkselglobcurrholdoverseconds; //type: uint32
+        ydk::YLeaf cnsclkselgloprocindex; //type: uint32
+        ydk::YLeaf cnsclkselglobprocessmode; //type: Cisconetsyncqlmode
+        ydk::YLeaf cnsclkselglobclockmode; //type: Cisconetsyncclockmode
+        ydk::YLeaf cnsclkselglobnetsyncenable; //type: boolean
+        ydk::YLeaf cnsclkselglobrevertivemode; //type: boolean
+        ydk::YLeaf cnsclkselglobesmcmode; //type: boolean
+        ydk::YLeaf cnsclkselglobeecoption; //type: Cisconetsynceecoption
+        ydk::YLeaf cnsclkselglobnetworkoption; //type: Cisconetsyncnetworkoption
+        ydk::YLeaf cnsclkselglobholdofftime; //type: uint32
+        ydk::YLeaf cnsclkselglobwtrtime; //type: uint32
+        ydk::YLeaf cnsclkselglobnofsources; //type: uint32
+        ydk::YLeaf cnsclkselgloblastholdoverseconds; //type: uint32
+        ydk::YLeaf cnsclkselglobcurrholdoverseconds; //type: uint32
 
 }; // CiscoNetsyncMib::Cnsclkselglobaltable::Cnsclkselglobalentry
 
 
-class CiscoNetsyncMib::Cnsselectedinputsourcetable : public Entity
+class CiscoNetsyncMib::Cnsselectedinputsourcetable : public ydk::Entity
 {
     public:
         Cnsselectedinputsourcetable();
@@ -124,20 +133,22 @@ class CiscoNetsyncMib::Cnsselectedinputsourcetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cnsselectedinputsourceentry; //type: CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry> > cnsselectedinputsourceentry_;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry> > cnsselectedinputsourceentry;
         
 }; // CiscoNetsyncMib::Cnsselectedinputsourcetable
 
 
-class CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry : public Entity
+class CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry : public ydk::Entity
 {
     public:
         Cnsselectedinputsourceentry();
@@ -145,25 +156,27 @@ class CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cnsselinpsrcnetsyncindex; //type: uint32
-        YLeaf cnsselinpsrcname; //type: string
-        YLeaf cnsselinpsrcintftype; //type: CisconetsynciftypeEnum
-        YLeaf cnsselinpsrcqualitylevel; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnsselinpsrcpriority; //type: uint32
-        YLeaf cnsselinpsrctimestamp; //type: uint32
-        YLeaf cnsselinpsrcfsw; //type: boolean
-        YLeaf cnsselinpsrcmsw; //type: boolean
+        ydk::YLeaf cnsselinpsrcnetsyncindex; //type: uint32
+        ydk::YLeaf cnsselinpsrcname; //type: string
+        ydk::YLeaf cnsselinpsrcintftype; //type: Cisconetsynciftype
+        ydk::YLeaf cnsselinpsrcqualitylevel; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnsselinpsrcpriority; //type: uint32
+        ydk::YLeaf cnsselinpsrctimestamp; //type: uint32
+        ydk::YLeaf cnsselinpsrcfsw; //type: boolean
+        ydk::YLeaf cnsselinpsrcmsw; //type: boolean
 
 }; // CiscoNetsyncMib::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry
 
 
-class CiscoNetsyncMib::Cnsinputsourcetable : public Entity
+class CiscoNetsyncMib::Cnsinputsourcetable : public ydk::Entity
 {
     public:
         Cnsinputsourcetable();
@@ -171,20 +184,22 @@ class CiscoNetsyncMib::Cnsinputsourcetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cnsinputsourceentry; //type: CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry> > cnsinputsourceentry_;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry> > cnsinputsourceentry;
         
 }; // CiscoNetsyncMib::Cnsinputsourcetable
 
 
-class CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry : public Entity
+class CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry : public ydk::Entity
 {
     public:
         Cnsinputsourceentry();
@@ -192,36 +207,38 @@ class CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cnsinpsrcnetsyncindex; //type: uint32
-        YLeaf cnsinpsrcname; //type: string
-        YLeaf cnsinpsrcintftype; //type: CisconetsynciftypeEnum
-        YLeaf cnsinpsrcpriority; //type: uint32
-        YLeaf cnsinpsrcesmccap; //type: CisconetsyncesmccapEnum
-        YLeaf cnsinpsrcssmcap; //type: CisconetsyncssmcapEnum
-        YLeaf cnsinpsrcqualityleveltxcfg; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnsinpsrcqualitylevelrxcfg; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnsinpsrcqualityleveltx; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnsinpsrcqualitylevelrx; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnsinpsrcqualitylevel; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnsinpsrcholdofftime; //type: uint32
-        YLeaf cnsinpsrcwtrtime; //type: uint32
-        YLeaf cnsinpsrclockout; //type: boolean
-        YLeaf cnsinpsrcsignalfailure; //type: boolean
-        YLeaf cnsinpsrcalarm; //type: boolean
-        YLeaf cnsinpsrcalarminfo; //type: Cisconetsyncalarminfo
-        YLeaf cnsinpsrcfsw; //type: boolean
-        YLeaf cnsinpsrcmsw; //type: boolean
+        ydk::YLeaf cnsinpsrcnetsyncindex; //type: uint32
+        ydk::YLeaf cnsinpsrcname; //type: string
+        ydk::YLeaf cnsinpsrcintftype; //type: Cisconetsynciftype
+        ydk::YLeaf cnsinpsrcpriority; //type: uint32
+        ydk::YLeaf cnsinpsrcesmccap; //type: Cisconetsyncesmccap
+        ydk::YLeaf cnsinpsrcssmcap; //type: Cisconetsyncssmcap
+        ydk::YLeaf cnsinpsrcqualityleveltxcfg; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnsinpsrcqualitylevelrxcfg; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnsinpsrcqualityleveltx; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnsinpsrcqualitylevelrx; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnsinpsrcqualitylevel; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnsinpsrcholdofftime; //type: uint32
+        ydk::YLeaf cnsinpsrcwtrtime; //type: uint32
+        ydk::YLeaf cnsinpsrclockout; //type: boolean
+        ydk::YLeaf cnsinpsrcsignalfailure; //type: boolean
+        ydk::YLeaf cnsinpsrcalarm; //type: boolean
+        ydk::YLeaf cnsinpsrcalarminfo; //type: Cisconetsyncalarminfo
+        ydk::YLeaf cnsinpsrcfsw; //type: boolean
+        ydk::YLeaf cnsinpsrcmsw; //type: boolean
 
 }; // CiscoNetsyncMib::Cnsinputsourcetable::Cnsinputsourceentry
 
 
-class CiscoNetsyncMib::Cnsextoutputtable : public Entity
+class CiscoNetsyncMib::Cnsextoutputtable : public ydk::Entity
 {
     public:
         Cnsextoutputtable();
@@ -229,20 +246,22 @@ class CiscoNetsyncMib::Cnsextoutputtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cnsextoutputentry; //type: CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry> > cnsextoutputentry_;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry> > cnsextoutputentry;
         
 }; // CiscoNetsyncMib::Cnsextoutputtable
 
 
-class CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry : public Entity
+class CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry : public ydk::Entity
 {
     public:
         Cnsextoutputentry();
@@ -250,26 +269,28 @@ class CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cnsextoutlistindex; //type: uint32
-        YLeaf cnsextoutselnetsyncindex; //type: uint32
-        YLeaf cnsextoutname; //type: string
-        YLeaf cnsextoutintftype; //type: CisconetsynciftypeEnum
-        YLeaf cnsextoutqualitylevel; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnsextoutpriority; //type: uint32
-        YLeaf cnsextoutfsw; //type: boolean
-        YLeaf cnsextoutmsw; //type: boolean
-        YLeaf cnsextoutsquelch; //type: boolean
+        ydk::YLeaf cnsextoutlistindex; //type: uint32
+        ydk::YLeaf cnsextoutselnetsyncindex; //type: uint32
+        ydk::YLeaf cnsextoutname; //type: string
+        ydk::YLeaf cnsextoutintftype; //type: Cisconetsynciftype
+        ydk::YLeaf cnsextoutqualitylevel; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnsextoutpriority; //type: uint32
+        ydk::YLeaf cnsextoutfsw; //type: boolean
+        ydk::YLeaf cnsextoutmsw; //type: boolean
+        ydk::YLeaf cnsextoutsquelch; //type: boolean
 
 }; // CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry
 
 
-class CiscoNetsyncMib::Cnst4Clocksourcetable : public Entity
+class CiscoNetsyncMib::Cnst4Clocksourcetable : public ydk::Entity
 {
     public:
         Cnst4Clocksourcetable();
@@ -277,20 +298,22 @@ class CiscoNetsyncMib::Cnst4Clocksourcetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cnst4Clocksourceentry; //type: CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry
 
-        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry> > cnst4clocksourceentry_;
+        std::vector<std::shared_ptr<CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry> > cnst4clocksourceentry;
         
 }; // CiscoNetsyncMib::Cnst4Clocksourcetable
 
 
-class CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry : public Entity
+class CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry : public ydk::Entity
 {
     public:
         Cnst4Clocksourceentry();
@@ -298,153 +321,155 @@ class CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: uint32 (refers to CISCO_NETSYNC_MIB::CiscoNetsyncMib::Cnsextoutputtable::Cnsextoutputentry::cnsextoutlistindex)
-        YLeaf cnsextoutlistindex;
-        YLeaf cnst4clksrcnetsyncindex; //type: uint32
-        YLeaf cnst4clksrcname; //type: string
-        YLeaf cnst4clksrcintftype; //type: CisconetsynciftypeEnum
-        YLeaf cnst4clksrcpriority; //type: uint32
-        YLeaf cnst4clksrcesmccap; //type: CisconetsyncesmccapEnum
-        YLeaf cnst4clksrcssmcap; //type: CisconetsyncssmcapEnum
-        YLeaf cnst4clksrcqualityleveltxcfg; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnst4clksrcqualitylevelrxcfg; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnst4clksrcqualityleveltx; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnst4clksrcqualitylevelrx; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnst4clksrcqualitylevel; //type: CisconetsyncqualitylevelEnum
-        YLeaf cnst4clksrcholdofftime; //type: uint32
-        YLeaf cnst4clksrcwtrtime; //type: uint32
-        YLeaf cnst4clksrclockout; //type: boolean
-        YLeaf cnst4clksrcsignalfailure; //type: boolean
-        YLeaf cnst4clksrcalarm; //type: boolean
-        YLeaf cnst4clksrcalarminfo; //type: Cisconetsyncalarminfo
-        YLeaf cnst4clksrcfsw; //type: boolean
-        YLeaf cnst4clksrcmsw; //type: boolean
+        ydk::YLeaf cnsextoutlistindex;
+        ydk::YLeaf cnst4clksrcnetsyncindex; //type: uint32
+        ydk::YLeaf cnst4clksrcname; //type: string
+        ydk::YLeaf cnst4clksrcintftype; //type: Cisconetsynciftype
+        ydk::YLeaf cnst4clksrcpriority; //type: uint32
+        ydk::YLeaf cnst4clksrcesmccap; //type: Cisconetsyncesmccap
+        ydk::YLeaf cnst4clksrcssmcap; //type: Cisconetsyncssmcap
+        ydk::YLeaf cnst4clksrcqualityleveltxcfg; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnst4clksrcqualitylevelrxcfg; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnst4clksrcqualityleveltx; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnst4clksrcqualitylevelrx; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnst4clksrcqualitylevel; //type: Cisconetsyncqualitylevel
+        ydk::YLeaf cnst4clksrcholdofftime; //type: uint32
+        ydk::YLeaf cnst4clksrcwtrtime; //type: uint32
+        ydk::YLeaf cnst4clksrclockout; //type: boolean
+        ydk::YLeaf cnst4clksrcsignalfailure; //type: boolean
+        ydk::YLeaf cnst4clksrcalarm; //type: boolean
+        ydk::YLeaf cnst4clksrcalarminfo; //type: Cisconetsyncalarminfo
+        ydk::YLeaf cnst4clksrcfsw; //type: boolean
+        ydk::YLeaf cnst4clksrcmsw; //type: boolean
 
 }; // CiscoNetsyncMib::Cnst4Clocksourcetable::Cnst4Clocksourceentry
 
-class CisconetsyncesmccapEnum : public Enum
+class Cisconetsynciftype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netsyncESMCCapNone;
-        static const Enum::YLeaf netsyncESMCCapTxRx;
-        static const Enum::YLeaf netsyncESMCCapTx;
-        static const Enum::YLeaf netsyncESMCCapRx;
-        static const Enum::YLeaf netsyncESMCCapInvalid;
+        static const ydk::Enum::YLeaf netsyncIfTypeUnknown;
+        static const ydk::Enum::YLeaf netsyncIfTypeInternal;
+        static const ydk::Enum::YLeaf netsyncIfTypeEthernet;
+        static const ydk::Enum::YLeaf netsyncIfTypeSonet;
+        static const ydk::Enum::YLeaf netsyncIfTypeTop;
+        static const ydk::Enum::YLeaf netsyncIfTypeExt;
+        static const ydk::Enum::YLeaf netsyncIfTypeController;
+        static const ydk::Enum::YLeaf netsyncIfTypeGps;
+        static const ydk::Enum::YLeaf netsyncIfTypeAtm;
 
 };
 
-class CisconetsyncqlmodeEnum : public Enum
+class Cisconetsynceecoption : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netsyncQLModeUnknown;
-        static const Enum::YLeaf netsyncQLModeQlDisabled;
-        static const Enum::YLeaf netsyncQLModeQlEnabled;
+        static const ydk::Enum::YLeaf netsyncEECOptionUnknown;
+        static const ydk::Enum::YLeaf netsyncEECOption1;
+        static const ydk::Enum::YLeaf netsyncEECOption2;
+        static const ydk::Enum::YLeaf netsyncEECOptionInvalid;
 
 };
 
-class CisconetsyncqualitylevelEnum : public Enum
+class Cisconetsyncnetworkoption : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netsyncQualityLevelNULL;
-        static const Enum::YLeaf netsyncQualityLevelDNU;
-        static const Enum::YLeaf netsyncQualityLevelDUS;
-        static const Enum::YLeaf netsyncQualityLevelFAILED;
-        static const Enum::YLeaf netsyncQualityLevelINV0;
-        static const Enum::YLeaf netsyncQualityLevelINV1;
-        static const Enum::YLeaf netsyncQualityLevelINV2;
-        static const Enum::YLeaf netsyncQualityLevelINV3;
-        static const Enum::YLeaf netsyncQualityLevelINV4;
-        static const Enum::YLeaf netsyncQualityLevelINV5;
-        static const Enum::YLeaf netsyncQualityLevelINV6;
-        static const Enum::YLeaf netsyncQualityLevelINV7;
-        static const Enum::YLeaf netsyncQualityLevelINV8;
-        static const Enum::YLeaf netsyncQualityLevelINV9;
-        static const Enum::YLeaf netsyncQualityLevelINV10;
-        static const Enum::YLeaf netsyncQualityLevelINV11;
-        static const Enum::YLeaf netsyncQualityLevelINV12;
-        static const Enum::YLeaf netsyncQualityLevelINV13;
-        static const Enum::YLeaf netsyncQualityLevelINV14;
-        static const Enum::YLeaf netsyncQualityLevelINV15;
-        static const Enum::YLeaf netsyncQualityLevelNSUPP;
-        static const Enum::YLeaf netsyncQualityLevelPRC;
-        static const Enum::YLeaf netsyncQualityLevelPROV;
-        static const Enum::YLeaf netsyncQualityLevelPRS;
-        static const Enum::YLeaf netsyncQualityLevelSEC;
-        static const Enum::YLeaf netsyncQualityLevelSMC;
-        static const Enum::YLeaf netsyncQualityLevelSSUA;
-        static const Enum::YLeaf netsyncQualityLevelSSUB;
-        static const Enum::YLeaf netsyncQualityLevelST2;
-        static const Enum::YLeaf netsyncQualityLevelST3;
-        static const Enum::YLeaf netsyncQualityLevelST3E;
-        static const Enum::YLeaf netsyncQualityLevelST4;
-        static const Enum::YLeaf netsyncQualityLevelSTU;
-        static const Enum::YLeaf netsyncQualityLevelTNC;
-        static const Enum::YLeaf netsyncQualityLevelUNC;
-        static const Enum::YLeaf netsyncQualityLevelUNK;
+        static const ydk::Enum::YLeaf netsyncNetworkOptionUnknown;
+        static const ydk::Enum::YLeaf netsyncNetworkOption1;
+        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen1;
+        static const ydk::Enum::YLeaf netsyncNetworkOption2Gen2;
+        static const ydk::Enum::YLeaf netsyncNetworkOption3;
+        static const ydk::Enum::YLeaf netsyncNetworkOptionInvalid;
 
 };
 
-class CisconetsyncclockmodeEnum : public Enum
+class Cisconetsyncssmcap : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netsyncClockModeUnknown;
-        static const Enum::YLeaf netsyncClockModeFreerun;
-        static const Enum::YLeaf netsyncClockModeHoldover;
-        static const Enum::YLeaf netsyncClockModeLocked;
+        static const ydk::Enum::YLeaf netsyncSSMCapNone;
+        static const ydk::Enum::YLeaf netsyncSSMCapTxRx;
+        static const ydk::Enum::YLeaf netsyncSSMCapTx;
+        static const ydk::Enum::YLeaf netsyncSSMCapRx;
+        static const ydk::Enum::YLeaf netsyncSSMCapInvalid;
 
 };
 
-class CisconetsyncssmcapEnum : public Enum
+class Cisconetsyncclockmode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netsyncSSMCapNone;
-        static const Enum::YLeaf netsyncSSMCapTxRx;
-        static const Enum::YLeaf netsyncSSMCapTx;
-        static const Enum::YLeaf netsyncSSMCapRx;
-        static const Enum::YLeaf netsyncSSMCapInvalid;
+        static const ydk::Enum::YLeaf netsyncClockModeUnknown;
+        static const ydk::Enum::YLeaf netsyncClockModeFreerun;
+        static const ydk::Enum::YLeaf netsyncClockModeHoldover;
+        static const ydk::Enum::YLeaf netsyncClockModeLocked;
 
 };
 
-class CisconetsynciftypeEnum : public Enum
+class Cisconetsyncqlmode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netsyncIfTypeUnknown;
-        static const Enum::YLeaf netsyncIfTypeInternal;
-        static const Enum::YLeaf netsyncIfTypeEthernet;
-        static const Enum::YLeaf netsyncIfTypeSonet;
-        static const Enum::YLeaf netsyncIfTypeTop;
-        static const Enum::YLeaf netsyncIfTypeExt;
-        static const Enum::YLeaf netsyncIfTypeController;
-        static const Enum::YLeaf netsyncIfTypeGps;
-        static const Enum::YLeaf netsyncIfTypeAtm;
+        static const ydk::Enum::YLeaf netsyncQLModeUnknown;
+        static const ydk::Enum::YLeaf netsyncQLModeQlDisabled;
+        static const ydk::Enum::YLeaf netsyncQLModeQlEnabled;
 
 };
 
-class CisconetsyncnetworkoptionEnum : public Enum
+class Cisconetsyncesmccap : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netsyncNetworkOptionUnknown;
-        static const Enum::YLeaf netsyncNetworkOption1;
-        static const Enum::YLeaf netsyncNetworkOption2Gen1;
-        static const Enum::YLeaf netsyncNetworkOption2Gen2;
-        static const Enum::YLeaf netsyncNetworkOption3;
-        static const Enum::YLeaf netsyncNetworkOptionInvalid;
+        static const ydk::Enum::YLeaf netsyncESMCCapNone;
+        static const ydk::Enum::YLeaf netsyncESMCCapTxRx;
+        static const ydk::Enum::YLeaf netsyncESMCCapTx;
+        static const ydk::Enum::YLeaf netsyncESMCCapRx;
+        static const ydk::Enum::YLeaf netsyncESMCCapInvalid;
 
 };
 
-class CisconetsynceecoptionEnum : public Enum
+class Cisconetsyncqualitylevel : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netsyncEECOptionUnknown;
-        static const Enum::YLeaf netsyncEECOption1;
-        static const Enum::YLeaf netsyncEECOption2;
-        static const Enum::YLeaf netsyncEECOptionInvalid;
+        static const ydk::Enum::YLeaf netsyncQualityLevelNULL;
+        static const ydk::Enum::YLeaf netsyncQualityLevelDNU;
+        static const ydk::Enum::YLeaf netsyncQualityLevelDUS;
+        static const ydk::Enum::YLeaf netsyncQualityLevelFAILED;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV0;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV1;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV2;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV3;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV4;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV5;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV6;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV7;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV8;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV9;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV10;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV11;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV12;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV13;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV14;
+        static const ydk::Enum::YLeaf netsyncQualityLevelINV15;
+        static const ydk::Enum::YLeaf netsyncQualityLevelNSUPP;
+        static const ydk::Enum::YLeaf netsyncQualityLevelPRC;
+        static const ydk::Enum::YLeaf netsyncQualityLevelPROV;
+        static const ydk::Enum::YLeaf netsyncQualityLevelPRS;
+        static const ydk::Enum::YLeaf netsyncQualityLevelSEC;
+        static const ydk::Enum::YLeaf netsyncQualityLevelSMC;
+        static const ydk::Enum::YLeaf netsyncQualityLevelSSUA;
+        static const ydk::Enum::YLeaf netsyncQualityLevelSSUB;
+        static const ydk::Enum::YLeaf netsyncQualityLevelST2;
+        static const ydk::Enum::YLeaf netsyncQualityLevelST3;
+        static const ydk::Enum::YLeaf netsyncQualityLevelST3E;
+        static const ydk::Enum::YLeaf netsyncQualityLevelST4;
+        static const ydk::Enum::YLeaf netsyncQualityLevelSTU;
+        static const ydk::Enum::YLeaf netsyncQualityLevelTNC;
+        static const ydk::Enum::YLeaf netsyncQualityLevelUNC;
+        static const ydk::Enum::YLeaf netsyncQualityLevelUNK;
 
 };
 

@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_SYSLOG_MIB {
 
-class CiscoSyslogMib : public Entity
+class CiscoSyslogMib : public ydk::Entity
 {
     public:
         CiscoSyslogMib();
@@ -19,15 +19,18 @@ class CiscoSyslogMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Clogbasic; //type: CiscoSyslogMib::Clogbasic
         class Cloghistory; //type: CiscoSyslogMib::Cloghistory
@@ -35,16 +38,16 @@ class CiscoSyslogMib : public Entity
         class Cloghistorytable; //type: CiscoSyslogMib::Cloghistorytable
         class Clogserverconfigtable; //type: CiscoSyslogMib::Clogserverconfigtable
 
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogbasic> clogbasic_;
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistory> cloghistory_;
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistorytable> cloghistorytable_;
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserver> clogserver_;
-        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserverconfigtable> clogserverconfigtable_;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogbasic> clogbasic;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistory> cloghistory;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistorytable> cloghistorytable;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserver> clogserver;
+        std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserverconfigtable> clogserverconfigtable;
         
 }; // CiscoSyslogMib
 
 
-class CiscoSyslogMib::Clogbasic : public Entity
+class CiscoSyslogMib::Clogbasic : public ydk::Entity
 {
     public:
         Clogbasic();
@@ -52,25 +55,27 @@ class CiscoSyslogMib::Clogbasic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf clognotificationssent; //type: uint32
-        YLeaf clognotificationsenabled; //type: boolean
-        YLeaf clogmaxseverity; //type: SyslogseverityEnum
-        YLeaf clogmsgignores; //type: uint32
-        YLeaf clogmsgdrops; //type: uint32
-        YLeaf clogoriginidtype; //type: ClogoriginidtypeEnum
-        YLeaf clogoriginid; //type: string
-        class ClogoriginidtypeEnum;
+        ydk::YLeaf clognotificationssent; //type: uint32
+        ydk::YLeaf clognotificationsenabled; //type: boolean
+        ydk::YLeaf clogmaxseverity; //type: Syslogseverity
+        ydk::YLeaf clogmsgignores; //type: uint32
+        ydk::YLeaf clogmsgdrops; //type: uint32
+        ydk::YLeaf clogoriginidtype; //type: Clogoriginidtype
+        ydk::YLeaf clogoriginid; //type: string
+        class Clogoriginidtype;
 
 }; // CiscoSyslogMib::Clogbasic
 
 
-class CiscoSyslogMib::Cloghistory : public Entity
+class CiscoSyslogMib::Cloghistory : public ydk::Entity
 {
     public:
         Cloghistory();
@@ -78,19 +83,21 @@ class CiscoSyslogMib::Cloghistory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cloghisttablemaxlength; //type: int32
-        YLeaf cloghistmsgsflushed; //type: uint32
+        ydk::YLeaf cloghisttablemaxlength; //type: int32
+        ydk::YLeaf cloghistmsgsflushed; //type: uint32
 
 }; // CiscoSyslogMib::Cloghistory
 
 
-class CiscoSyslogMib::Clogserver : public Entity
+class CiscoSyslogMib::Clogserver : public ydk::Entity
 {
     public:
         Clogserver();
@@ -98,18 +105,20 @@ class CiscoSyslogMib::Clogserver : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf clogmaxservers; //type: uint32
+        ydk::YLeaf clogmaxservers; //type: uint32
 
 }; // CiscoSyslogMib::Clogserver
 
 
-class CiscoSyslogMib::Cloghistorytable : public Entity
+class CiscoSyslogMib::Cloghistorytable : public ydk::Entity
 {
     public:
         Cloghistorytable();
@@ -117,20 +126,22 @@ class CiscoSyslogMib::Cloghistorytable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cloghistoryentry; //type: CiscoSyslogMib::Cloghistorytable::Cloghistoryentry
 
-        std::vector<std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistorytable::Cloghistoryentry> > cloghistoryentry_;
+        std::vector<std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Cloghistorytable::Cloghistoryentry> > cloghistoryentry;
         
 }; // CiscoSyslogMib::Cloghistorytable
 
 
-class CiscoSyslogMib::Cloghistorytable::Cloghistoryentry : public Entity
+class CiscoSyslogMib::Cloghistorytable::Cloghistoryentry : public ydk::Entity
 {
     public:
         Cloghistoryentry();
@@ -138,23 +149,25 @@ class CiscoSyslogMib::Cloghistorytable::Cloghistoryentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cloghistindex; //type: int32
-        YLeaf cloghistfacility; //type: string
-        YLeaf cloghistseverity; //type: SyslogseverityEnum
-        YLeaf cloghistmsgname; //type: string
-        YLeaf cloghistmsgtext; //type: string
-        YLeaf cloghisttimestamp; //type: uint32
+        ydk::YLeaf cloghistindex; //type: int32
+        ydk::YLeaf cloghistfacility; //type: string
+        ydk::YLeaf cloghistseverity; //type: Syslogseverity
+        ydk::YLeaf cloghistmsgname; //type: string
+        ydk::YLeaf cloghistmsgtext; //type: string
+        ydk::YLeaf cloghisttimestamp; //type: uint32
 
 }; // CiscoSyslogMib::Cloghistorytable::Cloghistoryentry
 
 
-class CiscoSyslogMib::Clogserverconfigtable : public Entity
+class CiscoSyslogMib::Clogserverconfigtable : public ydk::Entity
 {
     public:
         Clogserverconfigtable();
@@ -162,20 +175,22 @@ class CiscoSyslogMib::Clogserverconfigtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Clogserverconfigentry; //type: CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry
 
-        std::vector<std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry> > clogserverconfigentry_;
+        std::vector<std::shared_ptr<CISCO_SYSLOG_MIB::CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry> > clogserverconfigentry;
         
 }; // CiscoSyslogMib::Clogserverconfigtable
 
 
-class CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry : public Entity
+class CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry : public ydk::Entity
 {
     public:
         Clogserverconfigentry();
@@ -183,41 +198,43 @@ class CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf clogserveraddrtype; //type: InetaddresstypeEnum
-        YLeaf clogserveraddr; //type: binary
-        YLeaf clogserverstatus; //type: RowstatusEnum
+        ydk::YLeaf clogserveraddrtype; //type: Inetaddresstype
+        ydk::YLeaf clogserveraddr; //type: binary
+        ydk::YLeaf clogserverstatus; //type: Rowstatus
 
 }; // CiscoSyslogMib::Clogserverconfigtable::Clogserverconfigentry
 
-class SyslogseverityEnum : public Enum
+class Syslogseverity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf emergency;
-        static const Enum::YLeaf alert;
-        static const Enum::YLeaf critical;
-        static const Enum::YLeaf error;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf notice;
-        static const Enum::YLeaf info;
-        static const Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf emergency;
+        static const ydk::Enum::YLeaf alert;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf notice;
+        static const ydk::Enum::YLeaf info;
+        static const ydk::Enum::YLeaf debug;
 
 };
 
-class CiscoSyslogMib::Clogbasic::ClogoriginidtypeEnum : public Enum
+class CiscoSyslogMib::Clogbasic::Clogoriginidtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf hostName;
-        static const Enum::YLeaf ipv4Address;
-        static const Enum::YLeaf contextName;
-        static const Enum::YLeaf userDefined;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf hostName;
+        static const ydk::Enum::YLeaf ipv4Address;
+        static const ydk::Enum::YLeaf contextName;
+        static const ydk::Enum::YLeaf userDefined;
 
 };
 

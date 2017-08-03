@@ -7,14 +7,14 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_ospf {
 
-class RedistOspfExternalTypeEnum : public Enum
+class RedistOspfExternalType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_1;
-        static const Enum::YLeaf Y_2;
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
 
 };
 

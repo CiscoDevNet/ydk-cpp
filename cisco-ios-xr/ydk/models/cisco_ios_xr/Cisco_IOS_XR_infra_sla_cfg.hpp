@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_sla_cfg {
 
-class Sla : public Entity
+class Sla : public ydk::Entity
 {
     public:
         Sla();
@@ -19,15 +19,18 @@ class Sla : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Protocols; //type: Sla::Protocols
 
@@ -36,7 +39,7 @@ class Sla : public Entity
 }; // Sla
 
 
-class Sla::Protocols : public Entity
+class Sla::Protocols : public ydk::Entity
 {
     public:
         Protocols();
@@ -44,11 +47,13 @@ class Sla::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ethernet; //type: Sla::Protocols::Ethernet
 
@@ -57,7 +62,7 @@ class Sla::Protocols : public Entity
 }; // Sla::Protocols
 
 
-class Sla::Protocols::Ethernet : public Entity
+class Sla::Protocols::Ethernet : public ydk::Entity
 {
     public:
         Ethernet();
@@ -65,11 +70,13 @@ class Sla::Protocols::Ethernet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Profiles; //type: Sla::Protocols::Ethernet::Profiles
 
@@ -78,7 +85,7 @@ class Sla::Protocols::Ethernet : public Entity
 }; // Sla::Protocols::Ethernet
 
 
-class Sla::Protocols::Ethernet::Profiles : public Entity
+class Sla::Protocols::Ethernet::Profiles : public ydk::Entity
 {
     public:
         Profiles();
@@ -86,11 +93,13 @@ class Sla::Protocols::Ethernet::Profiles : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Profile; //type: Sla::Protocols::Ethernet::Profiles::Profile
 
@@ -99,7 +108,7 @@ class Sla::Protocols::Ethernet::Profiles : public Entity
 }; // Sla::Protocols::Ethernet::Profiles
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile : public ydk::Entity
 {
     public:
         Profile();
@@ -107,14 +116,16 @@ class Sla::Protocols::Ethernet::Profiles::Profile : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_name; //type: string
-        YLeaf packet_type; //type: string
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf packet_type; //type: string
         class Statistics; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics
         class Schedule; //type: Sla::Protocols::Ethernet::Profiles::Profile::Schedule
         class Probe; //type: Sla::Protocols::Ethernet::Profiles::Profile::Probe
@@ -126,7 +137,7 @@ class Sla::Protocols::Ethernet::Profiles::Profile : public Entity
 }; // Sla::Protocols::Ethernet::Profiles::Profile
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Statistics : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -134,11 +145,13 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Statistic; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic
 
@@ -147,7 +160,7 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics : public Entity
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic : public ydk::Entity
 {
     public:
         Statistic();
@@ -155,15 +168,17 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf statistic_name; //type: SlaStatisticTypeEnumEnum
-        YLeaf enable; //type: empty
-        YLeaf buckets_archive; //type: uint32
+        ydk::YLeaf statistic_name; //type: SlaStatisticTypeEnum
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf buckets_archive; //type: uint32
         class BucketsSize; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize
         class Aggregation; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation
 
@@ -173,7 +188,7 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic : publi
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize : public ydk::Entity
 {
     public:
         BucketsSize();
@@ -181,19 +196,21 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Bucket
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf buckets_size; //type: uint32
-        YLeaf buckets_size_unit; //type: SlaBucketsSizeUnitsEnumEnum
+        ydk::YLeaf buckets_size; //type: uint32
+        ydk::YLeaf buckets_size_unit; //type: SlaBucketsSizeUnitsEnum
 
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::BucketsSize
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation : public ydk::Entity
 {
     public:
         Aggregation();
@@ -201,20 +218,22 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggreg
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bins_count; //type: uint32
-        YLeaf bins_width; //type: uint32
-        YLeaf bins_width_tenths; //type: uint32
+        ydk::YLeaf bins_count; //type: uint32
+        ydk::YLeaf bins_width; //type: uint32
+        ydk::YLeaf bins_width_tenths; //type: uint32
 
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic::Aggregation
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Schedule : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Schedule : public ydk::Entity
 {
     public:
         Schedule();
@@ -222,25 +241,27 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Schedule : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf probe_interval; //type: uint32
-        YLeaf probe_interval_day; //type: SlaProbeIntervalDayEnumEnum
-        YLeaf probe_interval_unit; //type: SlaProbeIntervalUnitsEnumEnum
-        YLeaf start_time_hour; //type: uint32
-        YLeaf start_time_minute; //type: uint32
-        YLeaf start_time_second; //type: uint32
-        YLeaf probe_duration; //type: uint32
-        YLeaf probe_duration_unit; //type: SlaProbeDurationUnitsEnumEnum
+        ydk::YLeaf probe_interval; //type: uint32
+        ydk::YLeaf probe_interval_day; //type: SlaProbeIntervalDayEnum
+        ydk::YLeaf probe_interval_unit; //type: SlaProbeIntervalUnitsEnum
+        ydk::YLeaf start_time_hour; //type: uint32
+        ydk::YLeaf start_time_minute; //type: uint32
+        ydk::YLeaf start_time_second; //type: uint32
+        ydk::YLeaf probe_duration; //type: uint32
+        ydk::YLeaf probe_duration_unit; //type: SlaProbeDurationUnitsEnum
 
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Schedule
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Probe : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Probe : public ydk::Entity
 {
     public:
         Probe();
@@ -248,14 +269,16 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Probe : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf priority; //type: uint32
-        YLeaf synthetic_loss_calculation_packets; //type: uint32
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf synthetic_loss_calculation_packets; //type: uint32
         class Send; //type: Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send
         class PacketSizeAndPadding; //type: Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding
 
@@ -265,7 +288,7 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Probe : public Entity
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Probe
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send : public ydk::Entity
 {
     public:
         Send();
@@ -273,23 +296,25 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf burst_interval; //type: uint32
-        YLeaf burst_interval_unit; //type: SlaBurstIntervalUnitsEnumEnum
-        YLeaf packet_interval; //type: uint32
-        YLeaf packet_interval_unit; //type: SlaPacketIntervalUnitsEnumEnum
-        YLeaf packet_count; //type: uint32
-        YLeaf send_type; //type: SlaSendEnum
+        ydk::YLeaf burst_interval; //type: uint32
+        ydk::YLeaf burst_interval_unit; //type: SlaBurstIntervalUnitsEnum
+        ydk::YLeaf packet_interval; //type: uint32
+        ydk::YLeaf packet_interval_unit; //type: SlaPacketIntervalUnitsEnum
+        ydk::YLeaf packet_count; //type: uint32
+        ydk::YLeaf send_type; //type: SlaSend
 
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Probe::Send
 
 
-class Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding : public Entity
+class Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding : public ydk::Entity
 {
     public:
         PacketSizeAndPadding();
@@ -297,15 +322,17 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf size; //type: uint32
-        YLeaf padding_type; //type: SlaPaddingPatternEnum
-        YLeaf padding_value; //type: string
+        ydk::YLeaf size; //type: uint32
+        ydk::YLeaf padding_type; //type: SlaPaddingPattern
+        ydk::YLeaf padding_value; //type: string
 
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Probe::PacketSizeAndPadding
 

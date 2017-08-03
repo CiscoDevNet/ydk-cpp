@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace MPLS_LDP_GENERIC_STD_MIB {
 
-class MplsLdpGenericStdMib : public Entity
+class MplsLdpGenericStdMib : public ydk::Entity
 {
     public:
         MplsLdpGenericStdMib();
@@ -19,24 +19,27 @@ class MplsLdpGenericStdMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Mplsldpentitygenericlrtable; //type: MplsLdpGenericStdMib::Mplsldpentitygenericlrtable
 
-        std::shared_ptr<MPLS_LDP_GENERIC_STD_MIB::MplsLdpGenericStdMib::Mplsldpentitygenericlrtable> mplsldpentitygenericlrtable_;
+        std::shared_ptr<MPLS_LDP_GENERIC_STD_MIB::MplsLdpGenericStdMib::Mplsldpentitygenericlrtable> mplsldpentitygenericlrtable;
         
 }; // MplsLdpGenericStdMib
 
 
-class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable : public Entity
+class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable : public ydk::Entity
 {
     public:
         Mplsldpentitygenericlrtable();
@@ -44,20 +47,22 @@ class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Mplsldpentitygenericlrentry; //type: MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry
 
-        std::vector<std::shared_ptr<MPLS_LDP_GENERIC_STD_MIB::MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry> > mplsldpentitygenericlrentry_;
+        std::vector<std::shared_ptr<MPLS_LDP_GENERIC_STD_MIB::MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry> > mplsldpentitygenericlrentry;
         
 }; // MplsLdpGenericStdMib::Mplsldpentitygenericlrtable
 
 
-class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry : public Entity
+class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry : public ydk::Entity
 {
     public:
         Mplsldpentitygenericlrentry();
@@ -65,31 +70,33 @@ class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlre
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityldpid)
-        YLeaf mplsldpentityldpid;
+        ydk::YLeaf mplsldpentityldpid;
         //type: uint32 (refers to MPLS_LDP_STD_MIB::MplsLdpStdMib::Mplsldpentitytable::Mplsldpentityentry::mplsldpentityindex)
-        YLeaf mplsldpentityindex;
-        YLeaf mplsldpentitygenericlrmin; //type: uint32
-        YLeaf mplsldpentitygenericlrmax; //type: uint32
-        YLeaf mplsldpentitygenericlabelspace; //type: MplsldpentitygenericlabelspaceEnum
-        YLeaf mplsldpentitygenericifindexorzero; //type: int32
-        YLeaf mplsldpentitygenericlrstoragetype; //type: StoragetypeEnum
-        YLeaf mplsldpentitygenericlrrowstatus; //type: RowstatusEnum
-        class MplsldpentitygenericlabelspaceEnum;
+        ydk::YLeaf mplsldpentityindex;
+        ydk::YLeaf mplsldpentitygenericlrmin; //type: uint32
+        ydk::YLeaf mplsldpentitygenericlrmax; //type: uint32
+        ydk::YLeaf mplsldpentitygenericlabelspace; //type: Mplsldpentitygenericlabelspace
+        ydk::YLeaf mplsldpentitygenericifindexorzero; //type: int32
+        ydk::YLeaf mplsldpentitygenericlrstoragetype; //type: Storagetype
+        ydk::YLeaf mplsldpentitygenericlrrowstatus; //type: Rowstatus
+        class Mplsldpentitygenericlabelspace;
 
 }; // MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry
 
-class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::MplsldpentitygenericlabelspaceEnum : public Enum
+class MplsLdpGenericStdMib::Mplsldpentitygenericlrtable::Mplsldpentitygenericlrentry::Mplsldpentitygenericlabelspace : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf perPlatform;
-        static const Enum::YLeaf perInterface;
+        static const ydk::Enum::YLeaf perPlatform;
+        static const ydk::Enum::YLeaf perInterface;
 
 };
 

@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_dnx_port_mapper_oper {
 
-class Oor : public Entity
+class Oor : public ydk::Entity
 {
     public:
         Oor();
@@ -18,15 +18,18 @@ class Oor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: Oor::Nodes
 
@@ -35,7 +38,7 @@ class Oor : public Entity
 }; // Oor
 
 
-class Oor::Nodes : public Entity
+class Oor::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -43,11 +46,13 @@ class Oor::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: Oor::Nodes::Node
 
@@ -56,7 +61,7 @@ class Oor::Nodes : public Entity
 }; // Oor::Nodes
 
 
-class Oor::Nodes::Node : public Entity
+class Oor::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -64,303 +69,117 @@ class Oor::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        class InterfaceNpuResources; //type: Oor::Nodes::Node::InterfaceNpuResources
-        class BundleInterfaceDetails; //type: Oor::Nodes::Node::BundleInterfaceDetails
-        class InterfaceDetails; //type: Oor::Nodes::Node::InterfaceDetails
-        class InterfaceSummaryDatas; //type: Oor::Nodes::Node::InterfaceSummaryDatas
-        class OorSummary; //type: Oor::Nodes::Node::OorSummary
+        ydk::YLeaf node_name; //type: string
+        class Summary; //type: Oor::Nodes::Node::Summary
+        class InterfaceNames; //type: Oor::Nodes::Node::InterfaceNames
 
-        std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::BundleInterfaceDetails> bundle_interface_details;
-        std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceDetails> interface_details;
-        std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceNpuResources> interface_npu_resources;
-        std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceSummaryDatas> interface_summary_datas;
-        std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::OorSummary> oor_summary;
+        std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceNames> interface_names;
+        std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::Summary> summary;
         
 }; // Oor::Nodes::Node
 
 
-class Oor::Nodes::Node::InterfaceNpuResources : public Entity
+class Oor::Nodes::Node::Summary : public ydk::Entity
 {
     public:
-        InterfaceNpuResources();
-        ~InterfaceNpuResources();
+        Summary();
+        ~Summary();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class InterfaceNpuResource; //type: Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource
+        ydk::YLeaf red; //type: uint32
+        ydk::YLeaf green; //type: uint32
+        ydk::YLeaf yel_low; //type: uint32
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource> > interface_npu_resource;
+}; // Oor::Nodes::Node::Summary
+
+
+class Oor::Nodes::Node::InterfaceNames : public ydk::Entity
+{
+    public:
+        InterfaceNames();
+        ~InterfaceNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class InterfaceName; //type: Oor::Nodes::Node::InterfaceNames::InterfaceName
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceNames::InterfaceName> > interface_name;
         
-}; // Oor::Nodes::Node::InterfaceNpuResources
+}; // Oor::Nodes::Node::InterfaceNames
 
 
-class Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource : public Entity
+class Oor::Nodes::Node::InterfaceNames::InterfaceName : public ydk::Entity
 {
     public:
-        InterfaceNpuResource();
-        ~InterfaceNpuResource();
+        InterfaceName();
+        ~InterfaceName();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf name; //type: string
-        YLeaf max_entries; //type: uint32
-        YLeaf red_threshold; //type: uint32
-        YLeaf red_threshold_percent; //type: uint32
-        YLeaf yellow_threshold; //type: uint32
-        YLeaf yellow_threshold_percent; //type: uint32
-        YLeaf interface_state; //type: string
-        YLeaf time_stamp; //type: string
-        YLeaf number_of_members; //type: uint32
-        class Member; //type: Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member
+        ydk::YLeaf interface_name; //type: string
+        class Interface; //type: Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member> > member;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface> > interface;
         
-}; // Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource
+}; // Oor::Nodes::Node::InterfaceNames::InterfaceName
 
 
-class Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member : public Entity
+class Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface : public ydk::Entity
 {
     public:
-        Member();
-        ~Member();
+        Interface();
+        ~Interface();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf location; //type: string
-        YLeaf npu_id; //type: uint32
-        YLeaf total_in_use; //type: uint32
-        YLeaf total_in_use_percent; //type: uint32
-        YLeaf number_of_dpa_tables; //type: uint32
-        class DpaTable; //type: Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_status; //type: string
+        ydk::YLeaf time_stamp; //type: string
+        ydk::YLeaf npu_id; //type: string
+        ydk::YLeaf hardware_resource; //type: string
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable> > dpa_table;
-        
-}; // Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member
-
-
-class Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable : public Entity
-{
-    public:
-        DpaTable();
-        ~DpaTable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf name; //type: string
-        YLeaf in_use; //type: uint32
-        YLeaf in_use_percent; //type: uint32
-
-}; // Oor::Nodes::Node::InterfaceNpuResources::InterfaceNpuResource::Member::DpaTable
-
-
-class Oor::Nodes::Node::BundleInterfaceDetails : public Entity
-{
-    public:
-        BundleInterfaceDetails();
-        ~BundleInterfaceDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class BundleInterfaceDetail; //type: Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail> > bundle_interface_detail;
-        
-}; // Oor::Nodes::Node::BundleInterfaceDetails
-
-
-class Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail : public Entity
-{
-    public:
-        BundleInterfaceDetail();
-        ~BundleInterfaceDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf interface; //type: int32
-        YLeaf interface_state; //type: string
-        YLeaf time_stamp; //type: string
-        class Member; //type: Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member> > member;
-        
-}; // Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail
-
-
-class Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member : public Entity
-{
-    public:
-        Member();
-        ~Member();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf interface_name; //type: string
-        YLeaf interface_status; //type: string
-        YLeaf time_stamp; //type: string
-        YLeaf npu_id; //type: string
-        YLeaf hardware_resource; //type: string
-
-}; // Oor::Nodes::Node::BundleInterfaceDetails::BundleInterfaceDetail::Member
-
-
-class Oor::Nodes::Node::InterfaceDetails : public Entity
-{
-    public:
-        InterfaceDetails();
-        ~InterfaceDetails();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class InterfaceDetail; //type: Oor::Nodes::Node::InterfaceDetails::InterfaceDetail
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceDetails::InterfaceDetail> > interface_detail;
-        
-}; // Oor::Nodes::Node::InterfaceDetails
-
-
-class Oor::Nodes::Node::InterfaceDetails::InterfaceDetail : public Entity
-{
-    public:
-        InterfaceDetail();
-        ~InterfaceDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf interface; //type: int32
-        YLeaf interface_name; //type: string
-        YLeaf interface_status; //type: string
-        YLeaf time_stamp; //type: string
-        YLeaf npu_id; //type: string
-        YLeaf hardware_resource; //type: string
-
-}; // Oor::Nodes::Node::InterfaceDetails::InterfaceDetail
-
-
-class Oor::Nodes::Node::InterfaceSummaryDatas : public Entity
-{
-    public:
-        InterfaceSummaryDatas();
-        ~InterfaceSummaryDatas();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class InterfaceSummaryData; //type: Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_dnx_port_mapper_oper::Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData> > interface_summary_data;
-        
-}; // Oor::Nodes::Node::InterfaceSummaryDatas
-
-
-class Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData : public Entity
-{
-    public:
-        InterfaceSummaryData();
-        ~InterfaceSummaryData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf interface; //type: int32
-        YLeaf interface_name; //type: string
-        YLeaf interface_status; //type: string
-        YLeaf hardware_resource; //type: string
-
-}; // Oor::Nodes::Node::InterfaceSummaryDatas::InterfaceSummaryData
-
-
-class Oor::Nodes::Node::OorSummary : public Entity
-{
-    public:
-        OorSummary();
-        ~OorSummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf red; //type: uint32
-        YLeaf green; //type: uint32
-        YLeaf yel_low; //type: uint32
-
-}; // Oor::Nodes::Node::OorSummary
+}; // Oor::Nodes::Node::InterfaceNames::InterfaceName::Interface
 
 
 }

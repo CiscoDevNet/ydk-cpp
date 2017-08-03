@@ -6,32 +6,34 @@
 #include "generated_entity_lookup.hpp"
 #include "SNMP_FRAMEWORK_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace SNMP_FRAMEWORK_MIB {
 
-SnmpprivprotocolsIdentity::SnmpprivprotocolsIdentity()
-     : Identity("SNMP-FRAMEWORK-MIB:snmpPrivProtocols")
+Snmpauthprotocols::Snmpauthprotocols()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpAuthProtocols")
 {
 }
 
-SnmpprivprotocolsIdentity::~SnmpprivprotocolsIdentity()
+Snmpauthprotocols::~Snmpauthprotocols()
 {
 }
 
-SnmpauthprotocolsIdentity::SnmpauthprotocolsIdentity()
-     : Identity("SNMP-FRAMEWORK-MIB:snmpAuthProtocols")
+Snmpprivprotocols::Snmpprivprotocols()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB", "SNMP-FRAMEWORK-MIB:snmpPrivProtocols")
 {
 }
 
-SnmpauthprotocolsIdentity::~SnmpauthprotocolsIdentity()
+Snmpprivprotocols::~Snmpprivprotocols()
 {
 }
 
 SnmpFrameworkMib::SnmpFrameworkMib()
     :
-    snmpengine_(std::make_shared<SnmpFrameworkMib::Snmpengine>())
+    snmpengine(std::make_shared<SnmpFrameworkMib::Snmpengine>())
 {
-    snmpengine_->parent = this;
+    snmpengine->parent = this;
 
     yang_name = "SNMP-FRAMEWORK-MIB"; yang_parent_name = "SNMP-FRAMEWORK-MIB";
 }
@@ -42,13 +44,13 @@ SnmpFrameworkMib::~SnmpFrameworkMib()
 
 bool SnmpFrameworkMib::has_data() const
 {
-    return (snmpengine_ !=  nullptr && snmpengine_->has_data());
+    return (snmpengine !=  nullptr && snmpengine->has_data());
 }
 
 bool SnmpFrameworkMib::has_operation() const
 {
-    return is_set(operation)
-	|| (snmpengine_ !=  nullptr && snmpengine_->has_operation());
+    return is_set(yfilter)
+	|| (snmpengine !=  nullptr && snmpengine->has_operation());
 }
 
 std::string SnmpFrameworkMib::get_segment_path() const
@@ -82,11 +84,11 @@ std::shared_ptr<Entity> SnmpFrameworkMib::get_child_by_name(const std::string & 
 {
     if(child_yang_name == "snmpEngine")
     {
-        if(snmpengine_ == nullptr)
+        if(snmpengine == nullptr)
         {
-            snmpengine_ = std::make_shared<SnmpFrameworkMib::Snmpengine>();
+            snmpengine = std::make_shared<SnmpFrameworkMib::Snmpengine>();
         }
-        return snmpengine_;
+        return snmpengine;
     }
 
     return nullptr;
@@ -95,15 +97,19 @@ std::shared_ptr<Entity> SnmpFrameworkMib::get_child_by_name(const std::string & 
 std::map<std::string, std::shared_ptr<Entity>> SnmpFrameworkMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(snmpengine_ != nullptr)
+    if(snmpengine != nullptr)
     {
-        children["snmpEngine"] = snmpengine_;
+        children["snmpEngine"] = snmpengine;
     }
 
     return children;
 }
 
-void SnmpFrameworkMib::set_value(const std::string & value_path, std::string value)
+void SnmpFrameworkMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SnmpFrameworkMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -125,6 +131,18 @@ std::string SnmpFrameworkMib::get_bundle_name() const
 augment_capabilities_function SnmpFrameworkMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SnmpFrameworkMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool SnmpFrameworkMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmpEngine")
+        return true;
+    return false;
 }
 
 SnmpFrameworkMib::Snmpengine::Snmpengine()
@@ -151,11 +169,11 @@ bool SnmpFrameworkMib::Snmpengine::has_data() const
 
 bool SnmpFrameworkMib::Snmpengine::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(snmpengineboots.operation)
-	|| is_set(snmpengineid.operation)
-	|| is_set(snmpenginemaxmessagesize.operation)
-	|| is_set(snmpenginetime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(snmpengineboots.yfilter)
+	|| ydk::is_set(snmpengineid.yfilter)
+	|| ydk::is_set(snmpenginemaxmessagesize.yfilter)
+	|| ydk::is_set(snmpenginetime.yfilter);
 }
 
 std::string SnmpFrameworkMib::Snmpengine::get_segment_path() const
@@ -181,10 +199,10 @@ const EntityPath SnmpFrameworkMib::Snmpengine::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (snmpengineboots.is_set || is_set(snmpengineboots.operation)) leaf_name_data.push_back(snmpengineboots.get_name_leafdata());
-    if (snmpengineid.is_set || is_set(snmpengineid.operation)) leaf_name_data.push_back(snmpengineid.get_name_leafdata());
-    if (snmpenginemaxmessagesize.is_set || is_set(snmpenginemaxmessagesize.operation)) leaf_name_data.push_back(snmpenginemaxmessagesize.get_name_leafdata());
-    if (snmpenginetime.is_set || is_set(snmpenginetime.operation)) leaf_name_data.push_back(snmpenginetime.get_name_leafdata());
+    if (snmpengineboots.is_set || is_set(snmpengineboots.yfilter)) leaf_name_data.push_back(snmpengineboots.get_name_leafdata());
+    if (snmpengineid.is_set || is_set(snmpengineid.yfilter)) leaf_name_data.push_back(snmpengineid.get_name_leafdata());
+    if (snmpenginemaxmessagesize.is_set || is_set(snmpenginemaxmessagesize.yfilter)) leaf_name_data.push_back(snmpenginemaxmessagesize.get_name_leafdata());
+    if (snmpenginetime.is_set || is_set(snmpenginetime.yfilter)) leaf_name_data.push_back(snmpenginetime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -203,29 +221,64 @@ std::map<std::string, std::shared_ptr<Entity>> SnmpFrameworkMib::Snmpengine::get
     return children;
 }
 
-void SnmpFrameworkMib::Snmpengine::set_value(const std::string & value_path, std::string value)
+void SnmpFrameworkMib::Snmpengine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpEngineBoots")
     {
         snmpengineboots = value;
+        snmpengineboots.value_namespace = name_space;
+        snmpengineboots.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpEngineID")
     {
         snmpengineid = value;
+        snmpengineid.value_namespace = name_space;
+        snmpengineid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpEngineMaxMessageSize")
     {
         snmpenginemaxmessagesize = value;
+        snmpenginemaxmessagesize.value_namespace = name_space;
+        snmpenginemaxmessagesize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpEngineTime")
     {
         snmpenginetime = value;
+        snmpenginetime.value_namespace = name_space;
+        snmpenginetime.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf SnmpsecuritylevelEnum::noAuthNoPriv {1, "noAuthNoPriv"};
-const Enum::YLeaf SnmpsecuritylevelEnum::authNoPriv {2, "authNoPriv"};
-const Enum::YLeaf SnmpsecuritylevelEnum::authPriv {3, "authPriv"};
+void SnmpFrameworkMib::Snmpengine::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "snmpEngineBoots")
+    {
+        snmpengineboots.yfilter = yfilter;
+    }
+    if(value_path == "snmpEngineID")
+    {
+        snmpengineid.yfilter = yfilter;
+    }
+    if(value_path == "snmpEngineMaxMessageSize")
+    {
+        snmpenginemaxmessagesize.yfilter = yfilter;
+    }
+    if(value_path == "snmpEngineTime")
+    {
+        snmpenginetime.yfilter = yfilter;
+    }
+}
+
+bool SnmpFrameworkMib::Snmpengine::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmpEngineBoots" || name == "snmpEngineID" || name == "snmpEngineMaxMessageSize" || name == "snmpEngineTime")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Snmpsecuritylevel::noAuthNoPriv {1, "noAuthNoPriv"};
+const Enum::YLeaf Snmpsecuritylevel::authNoPriv {2, "authNoPriv"};
+const Enum::YLeaf Snmpsecuritylevel::authPriv {3, "authPriv"};
 
 
 }

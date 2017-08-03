@@ -7,7 +7,9 @@
 #include "Cisco_IOS_XR_manageability_perfmgmt_cfg_0.hpp"
 #include "Cisco_IOS_XR_manageability_perfmgmt_cfg_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_manageability_perfmgmt_cfg {
 
 PerfMgmt::PerfMgmt()
@@ -46,7 +48,7 @@ bool PerfMgmt::has_data() const
 
 bool PerfMgmt::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (enable !=  nullptr && enable->has_operation())
 	|| (reg_exp_groups !=  nullptr && reg_exp_groups->has_operation())
 	|| (resources !=  nullptr && resources->has_operation())
@@ -162,7 +164,11 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::get_children() const
     return children;
 }
 
-void PerfMgmt::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PerfMgmt::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -184,6 +190,18 @@ std::string PerfMgmt::get_bundle_name() const
 augment_capabilities_function PerfMgmt::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> PerfMgmt::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PerfMgmt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "reg-exp-groups" || name == "resources" || name == "statistics" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerfMgmt::Resources::Resources()
@@ -212,7 +230,7 @@ bool PerfMgmt::Resources::has_data() const
 
 bool PerfMgmt::Resources::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (dump_local !=  nullptr && dump_local->has_operation())
 	|| (memory_resources !=  nullptr && memory_resources->has_operation())
 	|| (tftp_resources !=  nullptr && tftp_resources->has_operation());
@@ -301,8 +319,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Resources::get_children
     return children;
 }
 
-void PerfMgmt::Resources::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Resources::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Resources::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dump-local" || name == "memory-resources" || name == "tftp-resources")
+        return true;
+    return false;
 }
 
 PerfMgmt::Resources::TftpResources::TftpResources()
@@ -327,10 +356,10 @@ bool PerfMgmt::Resources::TftpResources::has_data() const
 
 bool PerfMgmt::Resources::TftpResources::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(directory.operation)
-	|| is_set(server_address.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(directory.yfilter)
+	|| ydk::is_set(server_address.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string PerfMgmt::Resources::TftpResources::get_segment_path() const
@@ -356,9 +385,9 @@ const EntityPath PerfMgmt::Resources::TftpResources::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (directory.is_set || is_set(directory.operation)) leaf_name_data.push_back(directory.get_name_leafdata());
-    if (server_address.is_set || is_set(server_address.operation)) leaf_name_data.push_back(server_address.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (directory.is_set || is_set(directory.yfilter)) leaf_name_data.push_back(directory.get_name_leafdata());
+    if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -377,20 +406,49 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Resources::TftpResource
     return children;
 }
 
-void PerfMgmt::Resources::TftpResources::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Resources::TftpResources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "directory")
     {
         directory = value;
+        directory.value_namespace = name_space;
+        directory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "server-address")
     {
         server_address = value;
+        server_address.value_namespace = name_space;
+        server_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Resources::TftpResources::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "directory")
+    {
+        directory.yfilter = yfilter;
+    }
+    if(value_path == "server-address")
+    {
+        server_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Resources::TftpResources::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "directory" || name == "server-address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Resources::DumpLocal::DumpLocal()
@@ -411,8 +469,8 @@ bool PerfMgmt::Resources::DumpLocal::has_data() const
 
 bool PerfMgmt::Resources::DumpLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string PerfMgmt::Resources::DumpLocal::get_segment_path() const
@@ -438,7 +496,7 @@ const EntityPath PerfMgmt::Resources::DumpLocal::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -457,12 +515,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Resources::DumpLocal::g
     return children;
 }
 
-void PerfMgmt::Resources::DumpLocal::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Resources::DumpLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Resources::DumpLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Resources::DumpLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 PerfMgmt::Resources::MemoryResources::MemoryResources()
@@ -485,9 +560,9 @@ bool PerfMgmt::Resources::MemoryResources::has_data() const
 
 bool PerfMgmt::Resources::MemoryResources::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_limit.operation)
-	|| is_set(min_reserved.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_limit.yfilter)
+	|| ydk::is_set(min_reserved.yfilter);
 }
 
 std::string PerfMgmt::Resources::MemoryResources::get_segment_path() const
@@ -513,8 +588,8 @@ const EntityPath PerfMgmt::Resources::MemoryResources::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_limit.is_set || is_set(max_limit.operation)) leaf_name_data.push_back(max_limit.get_name_leafdata());
-    if (min_reserved.is_set || is_set(min_reserved.operation)) leaf_name_data.push_back(min_reserved.get_name_leafdata());
+    if (max_limit.is_set || is_set(max_limit.yfilter)) leaf_name_data.push_back(max_limit.get_name_leafdata());
+    if (min_reserved.is_set || is_set(min_reserved.yfilter)) leaf_name_data.push_back(min_reserved.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -533,16 +608,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Resources::MemoryResour
     return children;
 }
 
-void PerfMgmt::Resources::MemoryResources::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Resources::MemoryResources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-limit")
     {
         max_limit = value;
+        max_limit.value_namespace = name_space;
+        max_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-reserved")
     {
         min_reserved = value;
+        min_reserved.value_namespace = name_space;
+        min_reserved.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Resources::MemoryResources::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-limit")
+    {
+        max_limit.yfilter = yfilter;
+    }
+    if(value_path == "min-reserved")
+    {
+        min_reserved.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Resources::MemoryResources::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-limit" || name == "min-reserved")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Statistics()
@@ -601,7 +699,7 @@ bool PerfMgmt::Statistics::has_data() const
 
 bool PerfMgmt::Statistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_operation())
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (cpu_node !=  nullptr && cpu_node->has_operation())
@@ -795,8 +893,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::get_childre
     return children;
 }
 
-void PerfMgmt::Statistics::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-counter-interface" || name == "bgp" || name == "cpu-node" || name == "data-rate-interface" || name == "generic-counter-interface" || name == "ldp-mpls" || name == "memory-node" || name == "ospfv2-protocol" || name == "ospfv3-protocol" || name == "process-node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::GenericCounterInterface::GenericCounterInterface()
@@ -819,7 +928,7 @@ bool PerfMgmt::Statistics::GenericCounterInterface::has_data() const
 
 bool PerfMgmt::Statistics::GenericCounterInterface::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -878,8 +987,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::GenericCoun
     return children;
 }
 
-void PerfMgmt::Statistics::GenericCounterInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::GenericCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::GenericCounterInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::GenericCounterInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::GenericCounterInterface::Templates::Templates()
@@ -908,7 +1028,7 @@ bool PerfMgmt::Statistics::GenericCounterInterface::Templates::has_operation() c
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::GenericCounterInterface::Templates::get_segment_path() const
@@ -973,8 +1093,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::GenericCoun
     return children;
 }
 
-void PerfMgmt::Statistics::GenericCounterInterface::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::GenericCounterInterface::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::GenericCounterInterface::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::GenericCounterInterface::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::Template_()
@@ -1005,13 +1136,13 @@ bool PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::has_da
 
 bool PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::get_segment_path() const
@@ -1037,12 +1168,12 @@ const EntityPath PerfMgmt::Statistics::GenericCounterInterface::Templates::Templ
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1061,32 +1192,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::GenericCoun
     return children;
 }
 
-void PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::GenericCounterInterface::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::ProcessNode::ProcessNode()
@@ -1109,7 +1287,7 @@ bool PerfMgmt::Statistics::ProcessNode::has_data() const
 
 bool PerfMgmt::Statistics::ProcessNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -1168,8 +1346,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::ProcessNode
     return children;
 }
 
-void PerfMgmt::Statistics::ProcessNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::ProcessNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::ProcessNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::ProcessNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::ProcessNode::Templates::Templates()
@@ -1198,7 +1387,7 @@ bool PerfMgmt::Statistics::ProcessNode::Templates::has_operation() const
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::ProcessNode::Templates::get_segment_path() const
@@ -1263,8 +1452,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::ProcessNode
     return children;
 }
 
-void PerfMgmt::Statistics::ProcessNode::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::ProcessNode::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::ProcessNode::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::ProcessNode::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::ProcessNode::Templates::Template_::Template_()
@@ -1295,13 +1495,13 @@ bool PerfMgmt::Statistics::ProcessNode::Templates::Template_::has_data() const
 
 bool PerfMgmt::Statistics::ProcessNode::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_segment_path() const
@@ -1327,12 +1527,12 @@ const EntityPath PerfMgmt::Statistics::ProcessNode::Templates::Template_::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1351,32 +1551,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::ProcessNode
     return children;
 }
 
-void PerfMgmt::Statistics::ProcessNode::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::ProcessNode::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::ProcessNode::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::ProcessNode::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::BasicCounterInterface::BasicCounterInterface()
@@ -1399,7 +1646,7 @@ bool PerfMgmt::Statistics::BasicCounterInterface::has_data() const
 
 bool PerfMgmt::Statistics::BasicCounterInterface::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -1458,8 +1705,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::BasicCounte
     return children;
 }
 
-void PerfMgmt::Statistics::BasicCounterInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::BasicCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::BasicCounterInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::BasicCounterInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::BasicCounterInterface::Templates::Templates()
@@ -1488,7 +1746,7 @@ bool PerfMgmt::Statistics::BasicCounterInterface::Templates::has_operation() con
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::BasicCounterInterface::Templates::get_segment_path() const
@@ -1553,8 +1811,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::BasicCounte
     return children;
 }
 
-void PerfMgmt::Statistics::BasicCounterInterface::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::BasicCounterInterface::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::BasicCounterInterface::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::BasicCounterInterface::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::Template_()
@@ -1585,13 +1854,13 @@ bool PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::has_data
 
 bool PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::get_segment_path() const
@@ -1617,12 +1886,12 @@ const EntityPath PerfMgmt::Statistics::BasicCounterInterface::Templates::Templat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1641,32 +1910,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::BasicCounte
     return children;
 }
 
-void PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::BasicCounterInterface::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Ospfv3Protocol::Ospfv3Protocol()
@@ -1689,7 +2005,7 @@ bool PerfMgmt::Statistics::Ospfv3Protocol::has_data() const
 
 bool PerfMgmt::Statistics::Ospfv3Protocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -1748,8 +2064,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv3Proto
     return children;
 }
 
-void PerfMgmt::Statistics::Ospfv3Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Ospfv3Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::Ospfv3Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::Ospfv3Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Ospfv3Protocol::Templates::Templates()
@@ -1778,7 +2105,7 @@ bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::has_operation() const
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_segment_path() const
@@ -1843,8 +2170,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv3Proto
     return children;
 }
 
-void PerfMgmt::Statistics::Ospfv3Protocol::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Ospfv3Protocol::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::Ospfv3Protocol::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::Template_()
@@ -1875,13 +2213,13 @@ bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::has_data() cons
 
 bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get_segment_path() const
@@ -1907,12 +2245,12 @@ const EntityPath PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1931,32 +2269,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv3Proto
     return children;
 }
 
-void PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::CpuNode::CpuNode()
@@ -1979,7 +2364,7 @@ bool PerfMgmt::Statistics::CpuNode::has_data() const
 
 bool PerfMgmt::Statistics::CpuNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -2038,8 +2423,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::CpuNode::ge
     return children;
 }
 
-void PerfMgmt::Statistics::CpuNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::CpuNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::CpuNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::CpuNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::CpuNode::Templates::Templates()
@@ -2068,7 +2464,7 @@ bool PerfMgmt::Statistics::CpuNode::Templates::has_operation() const
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::CpuNode::Templates::get_segment_path() const
@@ -2133,8 +2529,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::CpuNode::Te
     return children;
 }
 
-void PerfMgmt::Statistics::CpuNode::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::CpuNode::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::CpuNode::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::CpuNode::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::CpuNode::Templates::Template_::Template_()
@@ -2165,13 +2572,13 @@ bool PerfMgmt::Statistics::CpuNode::Templates::Template_::has_data() const
 
 bool PerfMgmt::Statistics::CpuNode::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::CpuNode::Templates::Template_::get_segment_path() const
@@ -2197,12 +2604,12 @@ const EntityPath PerfMgmt::Statistics::CpuNode::Templates::Template_::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2221,32 +2628,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::CpuNode::Te
     return children;
 }
 
-void PerfMgmt::Statistics::CpuNode::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::CpuNode::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::CpuNode::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::CpuNode::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::DataRateInterface::DataRateInterface()
@@ -2269,7 +2723,7 @@ bool PerfMgmt::Statistics::DataRateInterface::has_data() const
 
 bool PerfMgmt::Statistics::DataRateInterface::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -2328,8 +2782,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::DataRateInt
     return children;
 }
 
-void PerfMgmt::Statistics::DataRateInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::DataRateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::DataRateInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::DataRateInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::DataRateInterface::Templates::Templates()
@@ -2358,7 +2823,7 @@ bool PerfMgmt::Statistics::DataRateInterface::Templates::has_operation() const
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::DataRateInterface::Templates::get_segment_path() const
@@ -2423,8 +2888,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::DataRateInt
     return children;
 }
 
-void PerfMgmt::Statistics::DataRateInterface::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::DataRateInterface::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::DataRateInterface::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::DataRateInterface::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::DataRateInterface::Templates::Template_::Template_()
@@ -2455,13 +2931,13 @@ bool PerfMgmt::Statistics::DataRateInterface::Templates::Template_::has_data() c
 
 bool PerfMgmt::Statistics::DataRateInterface::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::DataRateInterface::Templates::Template_::get_segment_path() const
@@ -2487,12 +2963,12 @@ const EntityPath PerfMgmt::Statistics::DataRateInterface::Templates::Template_::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2511,32 +2987,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::DataRateInt
     return children;
 }
 
-void PerfMgmt::Statistics::DataRateInterface::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::DataRateInterface::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::DataRateInterface::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::DataRateInterface::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::MemoryNode::MemoryNode()
@@ -2559,7 +3082,7 @@ bool PerfMgmt::Statistics::MemoryNode::has_data() const
 
 bool PerfMgmt::Statistics::MemoryNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -2618,8 +3141,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::MemoryNode:
     return children;
 }
 
-void PerfMgmt::Statistics::MemoryNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::MemoryNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::MemoryNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::MemoryNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::MemoryNode::Templates::Templates()
@@ -2648,7 +3182,7 @@ bool PerfMgmt::Statistics::MemoryNode::Templates::has_operation() const
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::MemoryNode::Templates::get_segment_path() const
@@ -2713,8 +3247,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::MemoryNode:
     return children;
 }
 
-void PerfMgmt::Statistics::MemoryNode::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::MemoryNode::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::MemoryNode::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::MemoryNode::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::MemoryNode::Templates::Template_::Template_()
@@ -2745,13 +3290,13 @@ bool PerfMgmt::Statistics::MemoryNode::Templates::Template_::has_data() const
 
 bool PerfMgmt::Statistics::MemoryNode::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_segment_path() const
@@ -2777,12 +3322,12 @@ const EntityPath PerfMgmt::Statistics::MemoryNode::Templates::Template_::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2801,32 +3346,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::MemoryNode:
     return children;
 }
 
-void PerfMgmt::Statistics::MemoryNode::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::MemoryNode::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::MemoryNode::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::MemoryNode::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::LdpMpls::LdpMpls()
@@ -2849,7 +3441,7 @@ bool PerfMgmt::Statistics::LdpMpls::has_data() const
 
 bool PerfMgmt::Statistics::LdpMpls::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -2908,8 +3500,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::LdpMpls::ge
     return children;
 }
 
-void PerfMgmt::Statistics::LdpMpls::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::LdpMpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::LdpMpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::LdpMpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::LdpMpls::Templates::Templates()
@@ -2938,7 +3541,7 @@ bool PerfMgmt::Statistics::LdpMpls::Templates::has_operation() const
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::LdpMpls::Templates::get_segment_path() const
@@ -3003,8 +3606,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::LdpMpls::Te
     return children;
 }
 
-void PerfMgmt::Statistics::LdpMpls::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::LdpMpls::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::LdpMpls::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::LdpMpls::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::LdpMpls::Templates::Template_::Template_()
@@ -3035,13 +3649,13 @@ bool PerfMgmt::Statistics::LdpMpls::Templates::Template_::has_data() const
 
 bool PerfMgmt::Statistics::LdpMpls::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_segment_path() const
@@ -3067,12 +3681,12 @@ const EntityPath PerfMgmt::Statistics::LdpMpls::Templates::Template_::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3091,32 +3705,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::LdpMpls::Te
     return children;
 }
 
-void PerfMgmt::Statistics::LdpMpls::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::LdpMpls::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::LdpMpls::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::LdpMpls::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Bgp::Bgp()
@@ -3139,7 +3800,7 @@ bool PerfMgmt::Statistics::Bgp::has_data() const
 
 bool PerfMgmt::Statistics::Bgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -3198,8 +3859,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Bgp::get_ch
     return children;
 }
 
-void PerfMgmt::Statistics::Bgp::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Bgp::Templates::Templates()
@@ -3228,7 +3900,7 @@ bool PerfMgmt::Statistics::Bgp::Templates::has_operation() const
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::Bgp::Templates::get_segment_path() const
@@ -3293,8 +3965,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Bgp::Templa
     return children;
 }
 
-void PerfMgmt::Statistics::Bgp::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Bgp::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::Bgp::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::Bgp::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Bgp::Templates::Template_::Template_()
@@ -3325,13 +4008,13 @@ bool PerfMgmt::Statistics::Bgp::Templates::Template_::has_data() const
 
 bool PerfMgmt::Statistics::Bgp::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::Bgp::Templates::Template_::get_segment_path() const
@@ -3357,12 +4040,12 @@ const EntityPath PerfMgmt::Statistics::Bgp::Templates::Template_::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3381,32 +4064,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Bgp::Templa
     return children;
 }
 
-void PerfMgmt::Statistics::Bgp::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Bgp::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::Bgp::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::Bgp::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Ospfv2Protocol::Ospfv2Protocol()
@@ -3429,7 +4159,7 @@ bool PerfMgmt::Statistics::Ospfv2Protocol::has_data() const
 
 bool PerfMgmt::Statistics::Ospfv2Protocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (templates !=  nullptr && templates->has_operation());
 }
 
@@ -3488,8 +4218,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv2Proto
     return children;
 }
 
-void PerfMgmt::Statistics::Ospfv2Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Ospfv2Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::Ospfv2Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::Ospfv2Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Ospfv2Protocol::Templates::Templates()
@@ -3518,7 +4259,7 @@ bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::has_operation() const
         if(template_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_segment_path() const
@@ -3583,8 +4324,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv2Proto
     return children;
 }
 
-void PerfMgmt::Statistics::Ospfv2Protocol::Templates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Ospfv2Protocol::Templates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Statistics::Ospfv2Protocol::Templates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::Template_()
@@ -3615,13 +4367,13 @@ bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::has_data() cons
 
 bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(history_persistent.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(sample_size.operation)
-	|| is_set(vrf_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(history_persistent.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(sample_size.yfilter)
+	|| ydk::is_set(vrf_group.yfilter);
 }
 
 std::string PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get_segment_path() const
@@ -3647,12 +4399,12 @@ const EntityPath PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (history_persistent.is_set || is_set(history_persistent.operation)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (sample_size.is_set || is_set(sample_size.operation)) leaf_name_data.push_back(sample_size.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (history_persistent.is_set || is_set(history_persistent.yfilter)) leaf_name_data.push_back(history_persistent.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (sample_size.is_set || is_set(sample_size.yfilter)) leaf_name_data.push_back(sample_size.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3671,32 +4423,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv2Proto
     return children;
 }
 
-void PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history-persistent")
     {
         history_persistent = value;
+        history_persistent.value_namespace = name_space;
+        history_persistent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-size")
     {
         sample_size = value;
+        sample_size.value_namespace = name_space;
+        sample_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "history-persistent")
+    {
+        history_persistent.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-size")
+    {
+        sample_size.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name" || name == "history-persistent" || name == "reg-exp-group" || name == "sample-interval" || name == "sample-size" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Enable()
@@ -3727,7 +4526,7 @@ bool PerfMgmt::Enable::has_data() const
 
 bool PerfMgmt::Enable::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (monitor_enable !=  nullptr && monitor_enable->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation())
 	|| (threshold !=  nullptr && threshold->has_operation());
@@ -3816,8 +4615,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::get_children() 
     return children;
 }
 
-void PerfMgmt::Enable::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "monitor-enable" || name == "statistics" || name == "threshold")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::Threshold()
@@ -3876,7 +4686,7 @@ bool PerfMgmt::Enable::Threshold::has_data() const
 
 bool PerfMgmt::Enable::Threshold::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_operation())
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (cpu_node !=  nullptr && cpu_node->has_operation())
@@ -4070,8 +4880,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::get_
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-counter-interface" || name == "bgp" || name == "cpu-node" || name == "data-rate-interface" || name == "generic-counter-interface" || name == "ldp-mpls" || name == "memory-node" || name == "ospfv2-protocol" || name == "ospfv3-protocol" || name == "process-node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::Ospfv3Protocol::Ospfv3Protocol()
@@ -4092,8 +4913,8 @@ bool PerfMgmt::Enable::Threshold::Ospfv3Protocol::has_data() const
 
 bool PerfMgmt::Enable::Threshold::Ospfv3Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_segment_path() const
@@ -4119,7 +4940,7 @@ const EntityPath PerfMgmt::Enable::Threshold::Ospfv3Protocol::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4138,12 +4959,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Ospf
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::Ospfv3Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::Ospfv3Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::Ospfv3Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::Ospfv3Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::Bgp::Bgp()
@@ -4164,8 +5002,8 @@ bool PerfMgmt::Enable::Threshold::Bgp::has_data() const
 
 bool PerfMgmt::Enable::Threshold::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::Bgp::get_segment_path() const
@@ -4191,7 +5029,7 @@ const EntityPath PerfMgmt::Enable::Threshold::Bgp::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4210,12 +5048,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Bgp:
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::Bgp::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::DataRateInterface::DataRateInterface()
@@ -4236,8 +5091,8 @@ bool PerfMgmt::Enable::Threshold::DataRateInterface::has_data() const
 
 bool PerfMgmt::Enable::Threshold::DataRateInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::DataRateInterface::get_segment_path() const
@@ -4263,7 +5118,7 @@ const EntityPath PerfMgmt::Enable::Threshold::DataRateInterface::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4282,12 +5137,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Data
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::DataRateInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::DataRateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::DataRateInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::DataRateInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::Ospfv2Protocol::Ospfv2Protocol()
@@ -4308,8 +5180,8 @@ bool PerfMgmt::Enable::Threshold::Ospfv2Protocol::has_data() const
 
 bool PerfMgmt::Enable::Threshold::Ospfv2Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_segment_path() const
@@ -4335,7 +5207,7 @@ const EntityPath PerfMgmt::Enable::Threshold::Ospfv2Protocol::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4354,12 +5226,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Ospf
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::Ospfv2Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::Ospfv2Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::Ospfv2Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::Ospfv2Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::MemoryNode()
@@ -4386,7 +5275,7 @@ bool PerfMgmt::Enable::Threshold::MemoryNode::has_data() const
 
 bool PerfMgmt::Enable::Threshold::MemoryNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (node_all !=  nullptr && node_all->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -4460,8 +5349,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Memo
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::MemoryNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::MemoryNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Threshold::MemoryNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Threshold::MemoryNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-all" || name == "nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Nodes()
@@ -4490,7 +5390,7 @@ bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_segment_path() const
@@ -4555,8 +5455,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Memo
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::MemoryNode::Nodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::MemoryNode::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Threshold::MemoryNode::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::Node()
@@ -4579,9 +5490,9 @@ bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::has_data() const
 
 bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_segment_path() const
@@ -4607,8 +5518,8 @@ const EntityPath PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4627,16 +5538,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Memo
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-id" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::NodeAll()
@@ -4657,8 +5591,8 @@ bool PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::has_data() const
 
 bool PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_segment_path() const
@@ -4684,7 +5618,7 @@ const EntityPath PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4703,12 +5637,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Memo
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::GenericCounterInterface::GenericCounterInterface()
@@ -4729,8 +5680,8 @@ bool PerfMgmt::Enable::Threshold::GenericCounterInterface::has_data() const
 
 bool PerfMgmt::Enable::Threshold::GenericCounterInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::GenericCounterInterface::get_segment_path() const
@@ -4756,7 +5707,7 @@ const EntityPath PerfMgmt::Enable::Threshold::GenericCounterInterface::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4775,12 +5726,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Gene
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::GenericCounterInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::GenericCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::GenericCounterInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::GenericCounterInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::CpuNode()
@@ -4807,7 +5775,7 @@ bool PerfMgmt::Enable::Threshold::CpuNode::has_data() const
 
 bool PerfMgmt::Enable::Threshold::CpuNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (node_all !=  nullptr && node_all->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -4881,8 +5849,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuN
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::CpuNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::CpuNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Threshold::CpuNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Threshold::CpuNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-all" || name == "nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::Nodes::Nodes()
@@ -4911,7 +5890,7 @@ bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_segment_path() const
@@ -4976,8 +5955,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuN
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::CpuNode::Nodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::CpuNode::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Threshold::CpuNode::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::Node()
@@ -5000,9 +5990,9 @@ bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::has_data() const
 
 bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_segment_path() const
@@ -5028,8 +6018,8 @@ const EntityPath PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5048,16 +6038,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuN
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-id" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::NodeAll::NodeAll()
@@ -5078,8 +6091,8 @@ bool PerfMgmt::Enable::Threshold::CpuNode::NodeAll::has_data() const
 
 bool PerfMgmt::Enable::Threshold::CpuNode::NodeAll::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_segment_path() const
@@ -5105,7 +6118,7 @@ const EntityPath PerfMgmt::Enable::Threshold::CpuNode::NodeAll::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5124,12 +6137,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuN
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::CpuNode::NodeAll::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::CpuNode::NodeAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::CpuNode::NodeAll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::CpuNode::NodeAll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::LdpMpls::LdpMpls()
@@ -5150,8 +6180,8 @@ bool PerfMgmt::Enable::Threshold::LdpMpls::has_data() const
 
 bool PerfMgmt::Enable::Threshold::LdpMpls::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::LdpMpls::get_segment_path() const
@@ -5177,7 +6207,7 @@ const EntityPath PerfMgmt::Enable::Threshold::LdpMpls::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5196,12 +6226,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::LdpM
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::LdpMpls::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::LdpMpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::LdpMpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::LdpMpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::ProcessNode()
@@ -5228,7 +6275,7 @@ bool PerfMgmt::Enable::Threshold::ProcessNode::has_data() const
 
 bool PerfMgmt::Enable::Threshold::ProcessNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (node_all !=  nullptr && node_all->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -5302,8 +6349,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Proc
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::ProcessNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::ProcessNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Threshold::ProcessNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Threshold::ProcessNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-all" || name == "nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Nodes()
@@ -5332,7 +6390,7 @@ bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_segment_path() const
@@ -5397,8 +6455,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Proc
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::ProcessNode::Nodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::ProcessNode::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Threshold::ProcessNode::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::Node()
@@ -5421,9 +6490,9 @@ bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::has_data() const
 
 bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_segment_path() const
@@ -5449,8 +6518,8 @@ const EntityPath PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5469,16 +6538,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Proc
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-id" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::NodeAll()
@@ -5499,8 +6591,8 @@ bool PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::has_data() const
 
 bool PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_segment_path() const
@@ -5526,7 +6618,7 @@ const EntityPath PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5545,12 +6637,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Proc
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Threshold::BasicCounterInterface::BasicCounterInterface()
@@ -5571,8 +6680,8 @@ bool PerfMgmt::Enable::Threshold::BasicCounterInterface::has_data() const
 
 bool PerfMgmt::Enable::Threshold::BasicCounterInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Threshold::BasicCounterInterface::get_segment_path() const
@@ -5598,7 +6707,7 @@ const EntityPath PerfMgmt::Enable::Threshold::BasicCounterInterface::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5617,12 +6726,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Basi
     return children;
 }
 
-void PerfMgmt::Enable::Threshold::BasicCounterInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Threshold::BasicCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Threshold::BasicCounterInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Threshold::BasicCounterInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::Statistics()
@@ -5681,7 +6807,7 @@ bool PerfMgmt::Enable::Statistics::has_data() const
 
 bool PerfMgmt::Enable::Statistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_operation())
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (cpu_node !=  nullptr && cpu_node->has_operation())
@@ -5875,8 +7001,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::get
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-counter-interface" || name == "bgp" || name == "cpu-node" || name == "data-rate-interface" || name == "generic-counter-interface" || name == "ldp-mpls" || name == "memory-node" || name == "ospfv2-protocol" || name == "ospfv3-protocol" || name == "process-node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::GenericCounterInterface::GenericCounterInterface()
@@ -5897,8 +7034,8 @@ bool PerfMgmt::Enable::Statistics::GenericCounterInterface::has_data() const
 
 bool PerfMgmt::Enable::Statistics::GenericCounterInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::GenericCounterInterface::get_segment_path() const
@@ -5924,7 +7061,7 @@ const EntityPath PerfMgmt::Enable::Statistics::GenericCounterInterface::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5943,12 +7080,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Gen
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::GenericCounterInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::GenericCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::GenericCounterInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::GenericCounterInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::Bgp::Bgp()
@@ -5969,8 +7123,8 @@ bool PerfMgmt::Enable::Statistics::Bgp::has_data() const
 
 bool PerfMgmt::Enable::Statistics::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::Bgp::get_segment_path() const
@@ -5996,7 +7150,7 @@ const EntityPath PerfMgmt::Enable::Statistics::Bgp::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6015,12 +7169,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Bgp
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::Bgp::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::Ospfv2Protocol::Ospfv2Protocol()
@@ -6041,8 +7212,8 @@ bool PerfMgmt::Enable::Statistics::Ospfv2Protocol::has_data() const
 
 bool PerfMgmt::Enable::Statistics::Ospfv2Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_segment_path() const
@@ -6068,7 +7239,7 @@ const EntityPath PerfMgmt::Enable::Statistics::Ospfv2Protocol::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6087,12 +7258,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Osp
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::Ospfv2Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::Ospfv2Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::Ospfv2Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::Ospfv2Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::Ospfv3Protocol::Ospfv3Protocol()
@@ -6113,8 +7301,8 @@ bool PerfMgmt::Enable::Statistics::Ospfv3Protocol::has_data() const
 
 bool PerfMgmt::Enable::Statistics::Ospfv3Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_segment_path() const
@@ -6140,7 +7328,7 @@ const EntityPath PerfMgmt::Enable::Statistics::Ospfv3Protocol::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6159,12 +7347,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Osp
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::Ospfv3Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::Ospfv3Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::Ospfv3Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::Ospfv3Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::CpuNode()
@@ -6191,7 +7396,7 @@ bool PerfMgmt::Enable::Statistics::CpuNode::has_data() const
 
 bool PerfMgmt::Enable::Statistics::CpuNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (node_all !=  nullptr && node_all->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -6265,8 +7470,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Cpu
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::CpuNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::CpuNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Statistics::CpuNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Statistics::CpuNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-all" || name == "nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::NodeAll::NodeAll()
@@ -6287,8 +7503,8 @@ bool PerfMgmt::Enable::Statistics::CpuNode::NodeAll::has_data() const
 
 bool PerfMgmt::Enable::Statistics::CpuNode::NodeAll::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_segment_path() const
@@ -6314,7 +7530,7 @@ const EntityPath PerfMgmt::Enable::Statistics::CpuNode::NodeAll::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6333,12 +7549,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Cpu
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::CpuNode::NodeAll::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::CpuNode::NodeAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::CpuNode::NodeAll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::CpuNode::NodeAll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::Nodes::Nodes()
@@ -6367,7 +7600,7 @@ bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_segment_path() const
@@ -6432,8 +7665,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Cpu
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::CpuNode::Nodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::CpuNode::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Statistics::CpuNode::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::Node()
@@ -6456,9 +7700,9 @@ bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::has_data() const
 
 bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_segment_path() const
@@ -6484,8 +7728,8 @@ const EntityPath PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6504,16 +7748,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Cpu
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-id" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::BasicCounterInterface::BasicCounterInterface()
@@ -6534,8 +7801,8 @@ bool PerfMgmt::Enable::Statistics::BasicCounterInterface::has_data() const
 
 bool PerfMgmt::Enable::Statistics::BasicCounterInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::BasicCounterInterface::get_segment_path() const
@@ -6561,7 +7828,7 @@ const EntityPath PerfMgmt::Enable::Statistics::BasicCounterInterface::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6580,12 +7847,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Bas
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::BasicCounterInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::BasicCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::BasicCounterInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::BasicCounterInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::ProcessNode()
@@ -6612,7 +7896,7 @@ bool PerfMgmt::Enable::Statistics::ProcessNode::has_data() const
 
 bool PerfMgmt::Enable::Statistics::ProcessNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (node_all !=  nullptr && node_all->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -6686,8 +7970,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Pro
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::ProcessNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::ProcessNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Statistics::ProcessNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Statistics::ProcessNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-all" || name == "nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::NodeAll()
@@ -6708,8 +8003,8 @@ bool PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::has_data() const
 
 bool PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_segment_path() const
@@ -6735,7 +8030,7 @@ const EntityPath PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6754,12 +8049,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Pro
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Nodes()
@@ -6788,7 +8100,7 @@ bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_segment_path() const
@@ -6853,8 +8165,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Pro
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::ProcessNode::Nodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::ProcessNode::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Statistics::ProcessNode::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::Node()
@@ -6877,9 +8200,9 @@ bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::has_data() const
 
 bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_segment_path() const
@@ -6905,8 +8228,8 @@ const EntityPath PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6925,16 +8248,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Pro
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-id" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::DataRateInterface::DataRateInterface()
@@ -6955,8 +8301,8 @@ bool PerfMgmt::Enable::Statistics::DataRateInterface::has_data() const
 
 bool PerfMgmt::Enable::Statistics::DataRateInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::DataRateInterface::get_segment_path() const
@@ -6982,7 +8328,7 @@ const EntityPath PerfMgmt::Enable::Statistics::DataRateInterface::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7001,12 +8347,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Dat
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::DataRateInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::DataRateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::DataRateInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::DataRateInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::MemoryNode()
@@ -7033,7 +8396,7 @@ bool PerfMgmt::Enable::Statistics::MemoryNode::has_data() const
 
 bool PerfMgmt::Enable::Statistics::MemoryNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (node_all !=  nullptr && node_all->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -7107,8 +8470,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Mem
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::MemoryNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::MemoryNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Statistics::MemoryNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Statistics::MemoryNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-all" || name == "nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::NodeAll()
@@ -7129,8 +8503,8 @@ bool PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::has_data() const
 
 bool PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_segment_path() const
@@ -7156,7 +8530,7 @@ const EntityPath PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7175,12 +8549,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Mem
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Nodes()
@@ -7209,7 +8600,7 @@ bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_segment_path() const
@@ -7274,8 +8665,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Mem
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::MemoryNode::Nodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::MemoryNode::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::Statistics::MemoryNode::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::Node()
@@ -7298,9 +8700,9 @@ bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::has_data() const
 
 bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_segment_path() const
@@ -7326,8 +8728,8 @@ const EntityPath PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7346,16 +8748,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Mem
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-id" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::Statistics::LdpMpls::LdpMpls()
@@ -7376,8 +8801,8 @@ bool PerfMgmt::Enable::Statistics::LdpMpls::has_data() const
 
 bool PerfMgmt::Enable::Statistics::LdpMpls::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::Statistics::LdpMpls::get_segment_path() const
@@ -7403,7 +8828,7 @@ const EntityPath PerfMgmt::Enable::Statistics::LdpMpls::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7422,12 +8847,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Ldp
     return children;
 }
 
-void PerfMgmt::Enable::Statistics::LdpMpls::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::Statistics::LdpMpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::Statistics::LdpMpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::Statistics::LdpMpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::MonitorEnable()
@@ -7486,7 +8928,7 @@ bool PerfMgmt::Enable::MonitorEnable::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_counters !=  nullptr && basic_counters->has_operation())
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (cpu !=  nullptr && cpu->has_operation())
@@ -7680,8 +9122,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-counters" || name == "bgp" || name == "cpu" || name == "data-rates" || name == "generic-counters" || name == "ldp-mpls" || name == "memory" || name == "ospfv2-protocol" || name == "ospfv3-protocol" || name == "process")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::LdpMpls::LdpMpls()
@@ -7704,7 +9157,7 @@ bool PerfMgmt::Enable::MonitorEnable::LdpMpls::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::LdpMpls::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
@@ -7763,8 +9216,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::LdpMpls::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::LdpMpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::LdpMpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::LdpMpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Sessions()
@@ -7793,7 +9257,7 @@ bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_segment_path() const
@@ -7858,8 +9322,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::Session()
@@ -7882,9 +9357,9 @@ bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::has_data() con
 
 bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_segment_path() const
@@ -7910,8 +9385,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session.is_set || is_set(session.operation)) leaf_name_data.push_back(session.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7930,16 +9405,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session")
     {
         session = value;
+        session.value_namespace = name_space;
+        session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session")
+    {
+        session.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::Ospfv3Protocol()
@@ -7962,7 +9460,7 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ospf_instances !=  nullptr && ospf_instances->has_operation());
 }
 
@@ -8021,8 +9519,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf-instances")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstances()
@@ -8051,7 +9560,7 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::has_operati
         if(ospf_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::get_segment_path() const
@@ -8116,8 +9625,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf-instance")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::OspfInstance()
@@ -8140,9 +9660,9 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstanc
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(instance_name.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(instance_name.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::get_segment_path() const
@@ -8168,8 +9688,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (instance_name.is_set || is_set(instance_name.yfilter)) leaf_name_data.push_back(instance_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8188,16 +9708,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "instance-name")
     {
         instance_name = value;
+        instance_name.value_namespace = name_space;
+        instance_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instance-name")
+    {
+        instance_name.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance-name" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::GenericCounters::GenericCounters()
@@ -8220,7 +9763,7 @@ bool PerfMgmt::Enable::MonitorEnable::GenericCounters::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::GenericCounters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
@@ -8279,8 +9822,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::GenericCounters::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::GenericCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::GenericCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::GenericCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interfaces()
@@ -8309,7 +9863,7 @@ bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::has_operation
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::get_segment_path() const
@@ -8374,8 +9928,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::Interface()
@@ -8398,9 +9963,9 @@ bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::ha
 
 bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::get_segment_path() const
@@ -8426,8 +9991,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::I
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8446,16 +10011,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::Process()
@@ -8478,7 +10066,7 @@ bool PerfMgmt::Enable::MonitorEnable::Process::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Process::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (process_nodes !=  nullptr && process_nodes->has_operation());
 }
 
@@ -8537,8 +10125,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Process::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Process::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Process::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Process::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNodes()
@@ -8567,7 +10166,7 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::has_operation() con
         if(process_node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::get_segment_path() const
@@ -8632,8 +10231,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::ProcessNode()
@@ -8659,8 +10269,8 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::has_da
 
 bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
 	|| (pids !=  nullptr && pids->has_operation());
 }
 
@@ -8687,7 +10297,7 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::Process
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8720,12 +10330,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pids" || name == "node-id")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pids()
@@ -8754,7 +10381,7 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::
         if(pid[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::get_segment_path() const
@@ -8819,8 +10446,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pid")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::Pid()
@@ -8843,9 +10481,9 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::
 
 bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pid.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pid.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::get_segment_path() const
@@ -8871,8 +10509,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::Process
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pid.is_set || is_set(pid.operation)) leaf_name_data.push_back(pid.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8891,16 +10529,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pid")
     {
         pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pid" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::BasicCounters::BasicCounters()
@@ -8923,7 +10584,7 @@ bool PerfMgmt::Enable::MonitorEnable::BasicCounters::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::BasicCounters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
@@ -8982,8 +10643,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::BasicCounters::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::BasicCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::BasicCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::BasicCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interfaces()
@@ -9012,7 +10684,7 @@ bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::has_operation()
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::get_segment_path() const
@@ -9077,8 +10749,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::Interface()
@@ -9101,9 +10784,9 @@ bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::has_
 
 bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::get_segment_path() const
@@ -9129,8 +10812,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Int
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9149,16 +10832,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Memory::Memory()
@@ -9181,7 +10887,7 @@ bool PerfMgmt::Enable::MonitorEnable::Memory::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Memory::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -9240,8 +10946,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Memory::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Memory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Memory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Memory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Nodes()
@@ -9270,7 +10987,7 @@ bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_segment_path() const
@@ -9335,8 +11052,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Memory::Nodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Memory::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Memory::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::Node()
@@ -9359,9 +11087,9 @@ bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_segment_path() const
@@ -9387,8 +11115,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9407,16 +11135,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-id" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::Ospfv2Protocol()
@@ -9439,7 +11190,7 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ospf_instances !=  nullptr && ospf_instances->has_operation());
 }
 
@@ -9498,8 +11249,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf-instances")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstances()
@@ -9528,7 +11290,7 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::has_operati
         if(ospf_instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::get_segment_path() const
@@ -9593,8 +11355,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf-instance")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::OspfInstance()
@@ -9617,9 +11390,9 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstanc
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(instance_name.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(instance_name.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::get_segment_path() const
@@ -9645,8 +11418,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (instance_name.is_set || is_set(instance_name.operation)) leaf_name_data.push_back(instance_name.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (instance_name.is_set || is_set(instance_name.yfilter)) leaf_name_data.push_back(instance_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9665,16 +11438,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "instance-name")
     {
         instance_name = value;
+        instance_name.value_namespace = name_space;
+        instance_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "instance-name")
+    {
+        instance_name.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance-name" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Cpu::Cpu()
@@ -9697,7 +11493,7 @@ bool PerfMgmt::Enable::MonitorEnable::Cpu::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Cpu::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -9756,8 +11552,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Cpu::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Cpu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Cpu::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Cpu::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Nodes()
@@ -9786,7 +11593,7 @@ bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_segment_path() const
@@ -9851,8 +11658,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::Node()
@@ -9875,9 +11693,9 @@ bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_segment_path() const
@@ -9903,8 +11721,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9923,16 +11741,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-id" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Bgp::Bgp()
@@ -9955,7 +11796,7 @@ bool PerfMgmt::Enable::MonitorEnable::Bgp::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Bgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (neighbors !=  nullptr && neighbors->has_operation());
 }
 
@@ -10014,8 +11855,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Bgp::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbors")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbors()
@@ -10044,7 +11896,7 @@ bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::has_operation() const
         if(neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_segment_path() const
@@ -10109,8 +11961,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::Neighbor()
@@ -10133,9 +11996,9 @@ bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(peer_address.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(peer_address.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_segment_path() const
@@ -10161,8 +12024,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (peer_address.is_set || is_set(peer_address.operation)) leaf_name_data.push_back(peer_address.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10181,16 +12044,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-address")
     {
         peer_address = value;
+        peer_address.value_namespace = name_space;
+        peer_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "peer-address")
+    {
+        peer_address.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peer-address" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::DataRates::DataRates()
@@ -10213,7 +12099,7 @@ bool PerfMgmt::Enable::MonitorEnable::DataRates::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::DataRates::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
@@ -10272,8 +12158,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::DataRates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::DataRates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::DataRates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::DataRates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interfaces()
@@ -10302,7 +12199,7 @@ bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::has_operation() con
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::get_segment_path() const
@@ -10367,8 +12264,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::Interface()
@@ -10391,9 +12299,9 @@ bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::has_data
 
 bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(template_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(template_name.yfilter);
 }
 
 std::string PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::get_segment_path() const
@@ -10419,8 +12327,8 @@ const EntityPath PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10439,16 +12347,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     return children;
 }
 
-void PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "template-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::RegExpGroups::RegExpGroups()
@@ -10477,7 +12408,7 @@ bool PerfMgmt::RegExpGroups::has_operation() const
         if(reg_exp_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::RegExpGroups::get_segment_path() const
@@ -10542,8 +12473,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::get_child
     return children;
 }
 
-void PerfMgmt::RegExpGroups::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::RegExpGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::RegExpGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::RegExpGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reg-exp-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::RegExpGroups::RegExpGroup::RegExpGroup()
@@ -10569,8 +12511,8 @@ bool PerfMgmt::RegExpGroups::RegExpGroup::has_data() const
 
 bool PerfMgmt::RegExpGroups::RegExpGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(reg_exp_group_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(reg_exp_group_name.yfilter)
 	|| (reg_exps !=  nullptr && reg_exps->has_operation());
 }
 
@@ -10597,7 +12539,7 @@ const EntityPath PerfMgmt::RegExpGroups::RegExpGroup::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reg_exp_group_name.is_set || is_set(reg_exp_group_name.operation)) leaf_name_data.push_back(reg_exp_group_name.get_name_leafdata());
+    if (reg_exp_group_name.is_set || is_set(reg_exp_group_name.yfilter)) leaf_name_data.push_back(reg_exp_group_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10630,12 +12572,29 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::RegExpGro
     return children;
 }
 
-void PerfMgmt::RegExpGroups::RegExpGroup::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::RegExpGroups::RegExpGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reg-exp-group-name")
     {
         reg_exp_group_name = value;
+        reg_exp_group_name.value_namespace = name_space;
+        reg_exp_group_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::RegExpGroups::RegExpGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reg-exp-group-name")
+    {
+        reg_exp_group_name.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::RegExpGroups::RegExpGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reg-exps" || name == "reg-exp-group-name")
+        return true;
+    return false;
 }
 
 PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExps()
@@ -10664,7 +12623,7 @@ bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::has_operation() const
         if(reg_exp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_segment_path() const
@@ -10729,8 +12688,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::RegExpGro
     return children;
 }
 
-void PerfMgmt::RegExpGroups::RegExpGroup::RegExps::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::RegExpGroups::RegExpGroup::RegExps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::RegExpGroups::RegExpGroup::RegExps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reg-exp")
+        return true;
+    return false;
 }
 
 PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::RegExp()
@@ -10753,9 +12723,9 @@ bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::has_data() const
 
 bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(reg_exp_index.operation)
-	|| is_set(reg_exp_string.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(reg_exp_index.yfilter)
+	|| ydk::is_set(reg_exp_string.yfilter);
 }
 
 std::string PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_segment_path() const
@@ -10781,8 +12751,8 @@ const EntityPath PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (reg_exp_index.is_set || is_set(reg_exp_index.operation)) leaf_name_data.push_back(reg_exp_index.get_name_leafdata());
-    if (reg_exp_string.is_set || is_set(reg_exp_string.operation)) leaf_name_data.push_back(reg_exp_string.get_name_leafdata());
+    if (reg_exp_index.is_set || is_set(reg_exp_index.yfilter)) leaf_name_data.push_back(reg_exp_index.get_name_leafdata());
+    if (reg_exp_string.is_set || is_set(reg_exp_string.yfilter)) leaf_name_data.push_back(reg_exp_string.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10801,16 +12771,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::RegExpGro
     return children;
 }
 
-void PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "reg-exp-index")
     {
         reg_exp_index = value;
+        reg_exp_index.value_namespace = name_space;
+        reg_exp_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-string")
     {
         reg_exp_string = value;
+        reg_exp_string.value_namespace = name_space;
+        reg_exp_string.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reg-exp-index")
+    {
+        reg_exp_index.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-string")
+    {
+        reg_exp_string.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reg-exp-index" || name == "reg-exp-string")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Threshold()
@@ -10869,7 +12862,7 @@ bool PerfMgmt::Threshold::has_data() const
 
 bool PerfMgmt::Threshold::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_operation())
 	|| (bgp !=  nullptr && bgp->has_operation())
 	|| (cpu_node !=  nullptr && cpu_node->has_operation())
@@ -11063,8 +13056,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::get_children
     return children;
 }
 
-void PerfMgmt::Threshold::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-counter-interface" || name == "bgp" || name == "cpu-node" || name == "data-rate-interface" || name == "generic-counter-interface" || name == "ldp-mpls" || name == "memory-node" || name == "ospfv2-protocol" || name == "ospfv3-protocol" || name == "process-node")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface()
@@ -11087,7 +13091,7 @@ bool PerfMgmt::Threshold::GenericCounterInterface::has_data() const
 
 bool PerfMgmt::Threshold::GenericCounterInterface::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (generic_counter_interface_templates !=  nullptr && generic_counter_interface_templates->has_operation());
 }
 
@@ -11146,8 +13150,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "generic-counter-interface-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplates()
@@ -11176,7 +13191,7 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
         if(generic_counter_interface_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::get_segment_path() const
@@ -11241,8 +13256,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "generic-counter-interface-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::GenericCounterInterfaceTemplate()
@@ -11310,11 +13336,11 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(vrf_group.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(vrf_group.yfilter)
 	|| (in_broadcast_pkts !=  nullptr && in_broadcast_pkts->has_operation())
 	|| (in_multicast_pkts !=  nullptr && in_multicast_pkts->has_operation())
 	|| (in_octets !=  nullptr && in_octets->has_operation())
@@ -11360,10 +13386,10 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11662,24 +13688,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-broadcast-pkts" || name == "in-multicast-pkts" || name == "in-octets" || name == "in-packets" || name == "in-ucast-pkts" || name == "input-crc" || name == "input-frame" || name == "input-overrun" || name == "input-queue-drops" || name == "input-total-drops" || name == "input-total-errors" || name == "input-unknown-proto" || name == "out-broadcast-pkts" || name == "out-multicast-pkts" || name == "out-octets" || name == "out-packets" || name == "out-ucast-pkts" || name == "output-total-drops" || name == "output-total-errors" || name == "output-underrun" || name == "template-name" || name == "reg-exp-group" || name == "sample-interval" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::InOctets()
@@ -11710,13 +13771,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::get_segment_path() const
@@ -11742,12 +13803,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11766,32 +13827,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::InUcastPkts()
@@ -11822,13 +13930,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::get_segment_path() const
@@ -11854,12 +13962,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11878,32 +13986,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::OutUcastPkts()
@@ -11934,13 +14089,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::get_segment_path() const
@@ -11966,12 +14121,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11990,32 +14145,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::OutBroadcastPkts()
@@ -12046,13 +14248,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::get_segment_path() const
@@ -12078,12 +14280,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12102,32 +14304,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::OutMulticastPkts()
@@ -12158,13 +14407,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::get_segment_path() const
@@ -12190,12 +14439,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12214,32 +14463,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::InputOverrun()
@@ -12270,13 +14566,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::get_segment_path() const
@@ -12302,12 +14598,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12326,32 +14622,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::OutOctets()
@@ -12382,13 +14725,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::get_segment_path() const
@@ -12414,12 +14757,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12438,32 +14781,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::OutputUnderrun()
@@ -12494,13 +14884,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::get_segment_path() const
@@ -12526,12 +14916,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12550,32 +14940,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::InputTotalErrors()
@@ -12606,13 +15043,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::get_segment_path() const
@@ -12638,12 +15075,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12662,32 +15099,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::OutputTotalDrops()
@@ -12718,13 +15202,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::get_segment_path() const
@@ -12750,12 +15234,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12774,32 +15258,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::InputCrc()
@@ -12830,13 +15361,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::get_segment_path() const
@@ -12862,12 +15393,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12886,32 +15417,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::InBroadcastPkts()
@@ -12942,13 +15520,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::get_segment_path() const
@@ -12974,12 +15552,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12998,32 +15576,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::InMulticastPkts()
@@ -13054,13 +15679,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::get_segment_path() const
@@ -13086,12 +15711,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13110,32 +15735,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::OutPackets()
@@ -13166,13 +15838,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::get_segment_path() const
@@ -13198,12 +15870,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13222,32 +15894,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::OutputTotalErrors()
@@ -13278,13 +15997,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::get_segment_path() const
@@ -13310,12 +16029,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13334,32 +16053,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::InPackets()
@@ -13390,13 +16156,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::get_segment_path() const
@@ -13422,12 +16188,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13446,32 +16212,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::InputUnknownProto()
@@ -13502,13 +16315,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::get_segment_path() const
@@ -13534,12 +16347,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13558,32 +16371,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::InputQueueDrops()
@@ -13614,13 +16474,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::get_segment_path() const
@@ -13646,12 +16506,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13670,32 +16530,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::InputTotalDrops()
@@ -13726,13 +16633,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::get_segment_path() const
@@ -13758,12 +16665,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13782,32 +16689,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::InputFrame()
@@ -13838,13 +16792,13 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::get_segment_path() const
@@ -13870,12 +16824,12 @@ const EntityPath PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13894,32 +16848,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     return children;
 }
 
-void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMpls()
@@ -13942,7 +16943,7 @@ bool PerfMgmt::Threshold::LdpMpls::has_data() const
 
 bool PerfMgmt::Threshold::LdpMpls::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ldp_mpls_templates !=  nullptr && ldp_mpls_templates->has_operation());
 }
 
@@ -14001,8 +17002,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::get
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::LdpMpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::LdpMpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ldp-mpls-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplates()
@@ -14031,7 +17043,7 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::has_operation() const
         if(ldp_mpls_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_segment_path() const
@@ -14096,8 +17108,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ldp-mpls-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LdpMplsTemplate()
@@ -14157,9 +17180,9 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::has_data()
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(sample_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
 	|| (address_msgs_rcvd !=  nullptr && address_msgs_rcvd->has_operation())
 	|| (address_msgs_sent !=  nullptr && address_msgs_sent->has_operation())
 	|| (address_withdraw_msgs_rcvd !=  nullptr && address_withdraw_msgs_rcvd->has_operation())
@@ -14203,8 +17226,8 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14475,16 +17498,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-msgs-rcvd" || name == "address-msgs-sent" || name == "address-withdraw-msgs-rcvd" || name == "address-withdraw-msgs-sent" || name == "init-msgs-rcvd" || name == "init-msgs-sent" || name == "keepalive-msgs-rcvd" || name == "keepalive-msgs-sent" || name == "label-mapping-msgs-rcvd" || name == "label-mapping-msgs-sent" || name == "label-release-msgs-rcvd" || name == "label-release-msgs-sent" || name == "label-withdraw-msgs-rcvd" || name == "label-withdraw-msgs-sent" || name == "notification-msgs-rcvd" || name == "notification-msgs-sent" || name == "total-msgs-rcvd" || name == "total-msgs-sent" || name == "template-name" || name == "sample-interval")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::AddressWithdrawMsgsRcvd()
@@ -14515,13 +17561,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWit
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::get_segment_path() const
@@ -14547,12 +17593,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14571,32 +17617,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::LabelWithdrawMsgsRcvd()
@@ -14627,13 +17720,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithd
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::get_segment_path() const
@@ -14659,12 +17752,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14683,32 +17776,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::AddressWithdrawMsgsSent()
@@ -14739,13 +17879,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWit
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::get_segment_path() const
@@ -14771,12 +17911,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14795,32 +17935,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::LabelWithdrawMsgsSent()
@@ -14851,13 +18038,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithd
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::get_segment_path() const
@@ -14883,12 +18070,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14907,32 +18094,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::NotificationMsgsRcvd()
@@ -14963,13 +18197,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Notificati
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::get_segment_path() const
@@ -14995,12 +18229,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15019,32 +18253,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::TotalMsgsRcvd()
@@ -15075,13 +18356,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsR
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::get_segment_path() const
@@ -15107,12 +18388,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15131,32 +18412,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::NotificationMsgsSent()
@@ -15187,13 +18515,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::Notificati
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::get_segment_path() const
@@ -15219,12 +18547,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15243,32 +18571,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::TotalMsgsSent()
@@ -15299,13 +18674,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsS
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::get_segment_path() const
@@ -15331,12 +18706,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15355,32 +18730,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::LabelReleaseMsgsRcvd()
@@ -15411,13 +18833,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRelea
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::get_segment_path() const
@@ -15443,12 +18865,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15467,45 +18889,92 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf PmThresholdOpEnum::eq {1, "eq"};
-const Enum::YLeaf PmThresholdOpEnum::ne {2, "ne"};
-const Enum::YLeaf PmThresholdOpEnum::lt {3, "lt"};
-const Enum::YLeaf PmThresholdOpEnum::le {4, "le"};
-const Enum::YLeaf PmThresholdOpEnum::gt {5, "gt"};
-const Enum::YLeaf PmThresholdOpEnum::ge {6, "ge"};
-const Enum::YLeaf PmThresholdOpEnum::rg {7, "rg"};
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf PmThresholdRearmEnum::always {0, "always"};
-const Enum::YLeaf PmThresholdRearmEnum::window {1, "window"};
-const Enum::YLeaf PmThresholdRearmEnum::toggle {2, "toggle"};
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf PmThresholdOp::eq {1, "eq"};
+const Enum::YLeaf PmThresholdOp::ne {2, "ne"};
+const Enum::YLeaf PmThresholdOp::lt {3, "lt"};
+const Enum::YLeaf PmThresholdOp::le {4, "le"};
+const Enum::YLeaf PmThresholdOp::gt {5, "gt"};
+const Enum::YLeaf PmThresholdOp::ge {6, "ge"};
+const Enum::YLeaf PmThresholdOp::rg {7, "rg"};
+
+const Enum::YLeaf PmThresholdRearm::always {0, "always"};
+const Enum::YLeaf PmThresholdRearm::window {1, "window"};
+const Enum::YLeaf PmThresholdRearm::toggle {2, "toggle"};
 
 
 }

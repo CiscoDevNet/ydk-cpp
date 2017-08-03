@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ncs5k_fea_pfilter_nonatomic_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ncs5k_fea_pfilter_nonatomic_cfg {
 
 Hardware::Hardware()
@@ -29,7 +31,7 @@ bool Hardware::has_data() const
 
 bool Hardware::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (access_list !=  nullptr && access_list->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Hardware::get_children() const
     return children;
 }
 
-void Hardware::set_value(const std::string & value_path, std::string value)
+void Hardware::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Hardware::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,6 +115,18 @@ augment_capabilities_function Hardware::get_augment_capabilities_function() cons
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Hardware::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Hardware::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list")
+        return true;
+    return false;
+}
+
 Hardware::AccessList::AccessList()
     :
     atomic_disable{YType::enumeration, "atomic-disable"}
@@ -127,8 +145,8 @@ bool Hardware::AccessList::has_data() const
 
 bool Hardware::AccessList::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(atomic_disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(atomic_disable.yfilter);
 }
 
 std::string Hardware::AccessList::get_segment_path() const
@@ -154,7 +172,7 @@ const EntityPath Hardware::AccessList::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (atomic_disable.is_set || is_set(atomic_disable.operation)) leaf_name_data.push_back(atomic_disable.get_name_leafdata());
+    if (atomic_disable.is_set || is_set(atomic_disable.yfilter)) leaf_name_data.push_back(atomic_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -173,16 +191,33 @@ std::map<std::string, std::shared_ptr<Entity>> Hardware::AccessList::get_childre
     return children;
 }
 
-void Hardware::AccessList::set_value(const std::string & value_path, std::string value)
+void Hardware::AccessList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atomic-disable")
     {
         atomic_disable = value;
+        atomic_disable.value_namespace = name_space;
+        atomic_disable.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf AtomicDisableDfltActnEnum::default_action_deny {1, "default-action-deny"};
-const Enum::YLeaf AtomicDisableDfltActnEnum::default_action_permit {2, "default-action-permit"};
+void Hardware::AccessList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "atomic-disable")
+    {
+        atomic_disable.yfilter = yfilter;
+    }
+}
+
+bool Hardware::AccessList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "atomic-disable")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf AtomicDisableDfltActn::default_action_deny {1, "default-action-deny"};
+const Enum::YLeaf AtomicDisableDfltActn::default_action_permit {2, "default-action-permit"};
 
 
 }

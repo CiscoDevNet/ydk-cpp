@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_shellutil_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_shellutil_cfg {
 
 HostNames::HostNames()
@@ -27,8 +29,8 @@ bool HostNames::has_data() const
 
 bool HostNames::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(host_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(host_name.yfilter);
 }
 
 std::string HostNames::get_segment_path() const
@@ -51,7 +53,7 @@ const EntityPath HostNames::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (host_name.is_set || is_set(host_name.operation)) leaf_name_data.push_back(host_name.get_name_leafdata());
+    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -70,11 +72,21 @@ std::map<std::string, std::shared_ptr<Entity>> HostNames::get_children() const
     return children;
 }
 
-void HostNames::set_value(const std::string & value_path, std::string value)
+void HostNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "host-name")
     {
         host_name = value;
+        host_name.value_namespace = name_space;
+        host_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HostNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "host-name")
+    {
+        host_name.yfilter = yfilter;
     }
 }
 
@@ -96,6 +108,18 @@ std::string HostNames::get_bundle_name() const
 augment_capabilities_function HostNames::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HostNames::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HostNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host-name")
+        return true;
+    return false;
 }
 
 

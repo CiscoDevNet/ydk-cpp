@@ -9,11 +9,175 @@
 
 #include "Cisco_IOS_XR_ip_rsvp_oper_2.hpp"
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_rsvp_oper {
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession : public Entity
+class Rsvp::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession : public ydk::Entity
+{
+    public:
+        Ipv4UniSession();
+        ~Ipv4UniSession();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_address; //type: string
+
+}; // Rsvp::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4UniSession
+
+
+class Rsvp::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession : public ydk::Entity
+{
+    public:
+        Ipv4P2MpLspSession();
+        ~Ipv4P2MpLspSession();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_tunnel_id; //type: string
+
+}; // Rsvp::SessionBriefs::SessionBrief::Session::RsvpSession::Ipv4P2MpLspSession
+
+
+class Rsvp::PsbDetaileds : public ydk::Entity
+{
+    public:
+        PsbDetaileds();
+        ~PsbDetaileds();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class PsbDetailed; //type: Rsvp::PsbDetaileds::PsbDetailed
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed> > psb_detailed;
+        
+}; // Rsvp::PsbDetaileds
+
+
+class Rsvp::PsbDetaileds::PsbDetailed : public ydk::Entity
+{
+    public:
+        PsbDetailed();
+        ~PsbDetailed();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_port; //type: int32
+        ydk::YLeaf protocol; //type: int32
+        ydk::YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf session_type; //type: RsvpSession
+        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: int32
+        ydk::YLeaf sub_group_origin; //type: string
+        ydk::YLeaf sub_group_id; //type: int32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf input_interface; //type: string
+        ydk::YLeaf backup_tunnel_name; //type: string
+        ydk::YLeaf is_in_ero_valid; //type: boolean
+        ydk::YLeaf is_out_ero_valid; //type: boolean
+        class Session; //type: Rsvp::PsbDetaileds::PsbDetailed::Session
+        class S2LSubLsp; //type: Rsvp::PsbDetaileds::PsbDetailed::S2LSubLsp
+        class Template_; //type: Rsvp::PsbDetaileds::PsbDetailed::Template_
+        class SessionAttribute; //type: Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute
+        class TrafficSpec; //type: Rsvp::PsbDetaileds::PsbDetailed::TrafficSpec
+        class GenericTrafficSpec; //type: Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec
+        class PathFlags; //type: Rsvp::PsbDetaileds::PsbDetailed::PathFlags
+        class Hop; //type: Rsvp::PsbDetaileds::PsbDetailed::Hop
+        class PolicySourceInfo; //type: Rsvp::PsbDetaileds::PsbDetailed::PolicySourceInfo
+        class Header; //type: Rsvp::PsbDetaileds::PsbDetailed::Header
+        class ExpiryTime; //type: Rsvp::PsbDetaileds::PsbDetailed::ExpiryTime
+        class PolicyFlags; //type: Rsvp::PsbDetaileds::PsbDetailed::PolicyFlags
+        class PolicyQueryFlags; //type: Rsvp::PsbDetaileds::PsbDetailed::PolicyQueryFlags
+        class LabelInfo; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo
+        class ClassType; //type: Rsvp::PsbDetaileds::PsbDetailed::ClassType
+        class Pfc; //type: Rsvp::PsbDetaileds::PsbDetailed::Pfc
+        class InEro; //type: Rsvp::PsbDetaileds::PsbDetailed::InEro
+        class OutEro; //type: Rsvp::PsbDetaileds::PsbDetailed::OutEro
+
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::ClassType> class_type;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::ExpiryTime> expiry_time;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec> generic_traffic_spec;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::Header> header;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::Hop> hop;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::InEro> > in_ero;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::LabelInfo> label_info;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::OutEro> > out_ero;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::PathFlags> path_flags;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::Pfc> > pfc;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::PolicyFlags> policy_flags;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::PolicyQueryFlags> policy_query_flags;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::PolicySourceInfo> policy_source_info;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::S2LSubLsp> s2l_sub_lsp;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::Session> session;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute> session_attribute;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::Template_> template_;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::TrafficSpec> traffic_spec;
+        
+}; // Rsvp::PsbDetaileds::PsbDetailed
+
+
+class Rsvp::PsbDetaileds::PsbDetailed::Session : public ydk::Entity
+{
+    public:
+        Session();
+        ~Session();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RsvpSession; //type: Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession
+
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession> rsvp_session;
+        
+}; // Rsvp::PsbDetaileds::PsbDetailed::Session
+
+
+class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession : public ydk::Entity
 {
     public:
         RsvpSession();
@@ -21,13 +185,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_type; //type: RsvpMgmtSessionEnum
+        ydk::YLeaf session_type; //type: RsvpMgmtSession
         class Ipv4; //type: Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4
         class Ipv4LspSession; //type: Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession
         class Ipv4UniSession; //type: Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession
@@ -41,7 +207,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4 : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -49,20 +215,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4 : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf protocol; //type: uint8
-        YLeaf destination_port; //type: uint16
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf protocol; //type: uint8
+        ydk::YLeaf destination_port; //type: uint16
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession : public ydk::Entity
 {
     public:
         Ipv4LspSession();
@@ -70,20 +238,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_tunnel_id; //type: string
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4LspSession
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession : public ydk::Entity
 {
     public:
         Ipv4UniSession();
@@ -91,20 +261,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_address; //type: string
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4UniSession
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession : public ydk::Entity
 {
     public:
         Ipv4P2MpLspSession();
@@ -112,20 +284,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf p2mp_id; //type: uint32
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_tunnel_id; //type: string
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::S2LSubLsp : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::S2LSubLsp : public ydk::Entity
 {
     public:
         S2LSubLsp();
@@ -133,18 +307,20 @@ class Rsvp::PsbDetaileds::PsbDetailed::S2LSubLsp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf s2l_destination_address; //type: string
+        ydk::YLeaf s2l_destination_address; //type: string
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::S2LSubLsp
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Template_ : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Template_ : public ydk::Entity
 {
     public:
         Template_();
@@ -152,11 +328,13 @@ class Rsvp::PsbDetaileds::PsbDetailed::Template_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RsvpFilter; //type: Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter
 
@@ -165,7 +343,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::Template_ : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::Template_
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter : public ydk::Entity
 {
     public:
         RsvpFilter();
@@ -173,13 +351,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf filter_type; //type: RsvpMgmtFilterEnum
+        ydk::YLeaf filter_type; //type: RsvpMgmtFilter
         class UdpIpv4Session; //type: Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session
         class P2MpIpv4Session; //type: Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session
 
@@ -189,7 +369,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session : public ydk::Entity
 {
     public:
         UdpIpv4Session();
@@ -197,19 +377,21 @@ class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf source_port; //type: uint16
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: uint16
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::UdpIpv4Session
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session : public ydk::Entity
 {
     public:
         P2MpIpv4Session();
@@ -217,21 +399,23 @@ class Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf source_port; //type: uint16
-        YLeaf p2mp_sub_group_origin; //type: string
-        YLeaf sub_group_id; //type: uint16
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: uint16
+        ydk::YLeaf p2mp_sub_group_origin; //type: string
+        ydk::YLeaf sub_group_id; //type: uint16
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Template_::RsvpFilter::P2MpIpv4Session
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute : public ydk::Entity
 {
     public:
         SessionAttribute();
@@ -239,14 +423,16 @@ class Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf setup_priority; //type: uint8
-        YLeaf reservation_priority; //type: uint8
+        ydk::YLeaf setup_priority; //type: uint8
+        ydk::YLeaf reservation_priority; //type: uint8
         class SessAttributeFlags; //type: Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags> sess_attribute_flags;
@@ -254,7 +440,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags : public ydk::Entity
 {
     public:
         SessAttributeFlags();
@@ -262,22 +448,24 @@ class Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_local_protect; //type: boolean
-        YLeaf is_node_protect; //type: boolean
-        YLeaf is_bandwidth_protect; //type: boolean
-        YLeaf is_record_labels; //type: boolean
-        YLeaf is_shared_explicit_requested; //type: boolean
+        ydk::YLeaf is_local_protect; //type: boolean
+        ydk::YLeaf is_node_protect; //type: boolean
+        ydk::YLeaf is_bandwidth_protect; //type: boolean
+        ydk::YLeaf is_record_labels; //type: boolean
+        ydk::YLeaf is_shared_explicit_requested; //type: boolean
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::SessionAttribute::SessAttributeFlags
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::TrafficSpec : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::TrafficSpec : public ydk::Entity
 {
     public:
         TrafficSpec();
@@ -285,22 +473,24 @@ class Rsvp::PsbDetaileds::PsbDetailed::TrafficSpec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf traffic_average_rate; //type: uint64
-        YLeaf traffic_max_burst; //type: uint64
-        YLeaf traffic_peak_rate; //type: uint64
-        YLeaf traffic_min_unit; //type: uint32
-        YLeaf traffic_max_unit; //type: uint32
+        ydk::YLeaf traffic_average_rate; //type: uint64
+        ydk::YLeaf traffic_max_burst; //type: uint64
+        ydk::YLeaf traffic_peak_rate; //type: uint64
+        ydk::YLeaf traffic_min_unit; //type: uint32
+        ydk::YLeaf traffic_max_unit; //type: uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::TrafficSpec
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec : public ydk::Entity
 {
     public:
         GenericTrafficSpec();
@@ -308,13 +498,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tspec_type; //type: RsvpMgmtTspecEnum
+        ydk::YLeaf tspec_type; //type: RsvpMgmtTspec
         class G709OtnTspec; //type: Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec
         class IntsrvTspec; //type: Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec
 
@@ -324,7 +516,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec : public ydk::Entity
 {
     public:
         G709OtnTspec();
@@ -332,21 +524,23 @@ class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf traffic_signal_type; //type: uint8
-        YLeaf traffic_nvc; //type: uint16
-        YLeaf traffic_multiplier; //type: uint16
-        YLeaf traffic_bit_rate; //type: uint64
+        ydk::YLeaf traffic_signal_type; //type: uint8
+        ydk::YLeaf traffic_nvc; //type: uint16
+        ydk::YLeaf traffic_multiplier; //type: uint16
+        ydk::YLeaf traffic_bit_rate; //type: uint64
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::G709OtnTspec
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec : public ydk::Entity
 {
     public:
         IntsrvTspec();
@@ -354,22 +548,24 @@ class Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf traffic_average_rate; //type: uint64
-        YLeaf traffic_max_burst; //type: uint64
-        YLeaf traffic_peak_rate; //type: uint64
-        YLeaf traffic_min_unit; //type: uint32
-        YLeaf traffic_max_unit; //type: uint32
+        ydk::YLeaf traffic_average_rate; //type: uint64
+        ydk::YLeaf traffic_max_burst; //type: uint64
+        ydk::YLeaf traffic_peak_rate; //type: uint64
+        ydk::YLeaf traffic_min_unit; //type: uint32
+        ydk::YLeaf traffic_max_unit; //type: uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::GenericTrafficSpec::IntsrvTspec
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::PathFlags : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::PathFlags : public ydk::Entity
 {
     public:
         PathFlags();
@@ -377,23 +573,25 @@ class Rsvp::PsbDetaileds::PsbDetailed::PathFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_non_rsvp_hop_upstream; //type: boolean
-        YLeaf is_local_sender; //type: boolean
-        YLeaf is_message_id_valid; //type: boolean
-        YLeaf is_local_repair; //type: boolean
-        YLeaf is_bidirectional; //type: boolean
-        YLeaf is_lockout; //type: boolean
+        ydk::YLeaf is_non_rsvp_hop_upstream; //type: boolean
+        ydk::YLeaf is_local_sender; //type: boolean
+        ydk::YLeaf is_message_id_valid; //type: boolean
+        ydk::YLeaf is_local_repair; //type: boolean
+        ydk::YLeaf is_bidirectional; //type: boolean
+        ydk::YLeaf is_lockout; //type: boolean
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::PathFlags
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Hop : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Hop : public ydk::Entity
 {
     public:
         Hop();
@@ -401,19 +599,21 @@ class Rsvp::PsbDetaileds::PsbDetailed::Hop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_logical_interface_name; //type: string
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Hop
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::PolicySourceInfo : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::PolicySourceInfo : public ydk::Entity
 {
     public:
         PolicySourceInfo();
@@ -421,22 +621,24 @@ class Rsvp::PsbDetaileds::PsbDetailed::PolicySourceInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_te_link; //type: boolean
-        YLeaf is_local; //type: boolean
-        YLeaf is_cops; //type: boolean
-        YLeaf is_default; //type: boolean
-        YLeaf is_cable; //type: boolean
+        ydk::YLeaf is_te_link; //type: boolean
+        ydk::YLeaf is_local; //type: boolean
+        ydk::YLeaf is_cops; //type: boolean
+        ydk::YLeaf is_default; //type: boolean
+        ydk::YLeaf is_cable; //type: boolean
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::PolicySourceInfo
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Header : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Header : public ydk::Entity
 {
     public:
         Header();
@@ -444,24 +646,26 @@ class Rsvp::PsbDetaileds::PsbDetailed::Header : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rsvp_version; //type: uint8
-        YLeaf rsvp_header_flags; //type: uint8
-        YLeaf rsvp_ttl; //type: uint8
-        YLeaf rsvp_message_type; //type: uint8
-        YLeaf ip_tos; //type: uint8
-        YLeaf ip_ttl; //type: uint8
-        YLeaf ip_source_address; //type: string
+        ydk::YLeaf rsvp_version; //type: uint8
+        ydk::YLeaf rsvp_header_flags; //type: uint8
+        ydk::YLeaf rsvp_ttl; //type: uint8
+        ydk::YLeaf rsvp_message_type; //type: uint8
+        ydk::YLeaf ip_tos; //type: uint8
+        ydk::YLeaf ip_ttl; //type: uint8
+        ydk::YLeaf ip_source_address; //type: string
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Header
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::ExpiryTime : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::ExpiryTime : public ydk::Entity
 {
     public:
         ExpiryTime();
@@ -469,19 +673,21 @@ class Rsvp::PsbDetaileds::PsbDetailed::ExpiryTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: int32
-        YLeaf nanoseconds; //type: int32
+        ydk::YLeaf seconds; //type: int32
+        ydk::YLeaf nanoseconds; //type: int32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::ExpiryTime
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::PolicyFlags : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::PolicyFlags : public ydk::Entity
 {
     public:
         PolicyFlags();
@@ -489,20 +695,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::PolicyFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_accepted; //type: boolean
-        YLeaf is_installed; //type: boolean
-        YLeaf is_forwarding; //type: boolean
+        ydk::YLeaf is_accepted; //type: boolean
+        ydk::YLeaf is_installed; //type: boolean
+        ydk::YLeaf is_forwarding; //type: boolean
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::PolicyFlags
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::PolicyQueryFlags : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::PolicyQueryFlags : public ydk::Entity
 {
     public:
         PolicyQueryFlags();
@@ -510,21 +718,23 @@ class Rsvp::PsbDetaileds::PsbDetailed::PolicyQueryFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_needed; //type: boolean
-        YLeaf is_report_required; //type: boolean
-        YLeaf is_resync; //type: boolean
-        YLeaf is_bypass; //type: boolean
+        ydk::YLeaf is_needed; //type: boolean
+        ydk::YLeaf is_report_required; //type: boolean
+        ydk::YLeaf is_resync; //type: boolean
+        ydk::YLeaf is_bypass; //type: boolean
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::PolicyQueryFlags
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo : public ydk::Entity
 {
     public:
         LabelInfo();
@@ -532,20 +742,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_valid; //type: boolean
-        YLeaf local_downstream_label; //type: uint32
-        YLeaf outgoing_downstream_label; //type: uint32
-        YLeaf merge_point_label; //type: uint32
-        YLeaf outgoing_upstream_label; //type: uint32
-        YLeaf local_upstream_label; //type: uint32
-        YLeaf recovery_label; //type: uint32
-        YLeaf lsp_wrap_label; //type: uint32
+        ydk::YLeaf is_valid; //type: boolean
+        ydk::YLeaf local_downstream_label; //type: uint32
+        ydk::YLeaf outgoing_downstream_label; //type: uint32
+        ydk::YLeaf merge_point_label; //type: uint32
+        ydk::YLeaf outgoing_upstream_label; //type: uint32
+        ydk::YLeaf local_upstream_label; //type: uint32
+        ydk::YLeaf recovery_label; //type: uint32
+        ydk::YLeaf lsp_wrap_label; //type: uint32
         class GenericLocalDownstreamLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel
         class GenericOutgoingDownstreamLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
         class GenericMergePointLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel
@@ -563,7 +775,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel : public ydk::Entity
 {
     public:
         GenericLocalDownstreamLabel();
@@ -571,13 +783,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel> generalized_label;
@@ -585,7 +799,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel : 
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -593,18 +807,20 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::G
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel : public ydk::Entity
 {
     public:
         GenericOutgoingDownstreamLabel();
@@ -612,13 +828,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel> generalized_label;
@@ -626,7 +844,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -634,18 +852,20 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel : public ydk::Entity
 {
     public:
         GenericMergePointLabel();
@@ -653,13 +873,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel> generalized_label;
@@ -667,7 +889,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel : publi
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -675,18 +897,20 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::Genera
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel : public ydk::Entity
 {
     public:
         GenericOutgoingUpstreamLabel();
@@ -694,13 +918,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel> generalized_label;
@@ -708,7 +934,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel :
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -716,18 +942,20 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel : public ydk::Entity
 {
     public:
         GenericLocalUpstreamLabel();
@@ -735,13 +963,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel> generalized_label;
@@ -749,7 +979,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel : pu
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -757,18 +987,20 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::Gen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel : public ydk::Entity
 {
     public:
         GenericRecoveryLabel();
@@ -776,13 +1008,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel> generalized_label;
@@ -790,7 +1024,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel : public 
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -798,18 +1032,20 @@ class Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::Generali
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::ClassType : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::ClassType : public ydk::Entity
 {
     public:
         ClassType();
@@ -817,19 +1053,21 @@ class Rsvp::PsbDetaileds::PsbDetailed::ClassType : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_class_type_info_valid; //type: boolean
-        YLeaf class_type; //type: uint8
+        ydk::YLeaf is_class_type_info_valid; //type: boolean
+        ydk::YLeaf class_type; //type: uint8
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::ClassType
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Pfc : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Pfc : public ydk::Entity
 {
     public:
         Pfc();
@@ -837,13 +1075,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::Pfc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf output_interface; //type: string
+        ydk::YLeaf output_interface; //type: string
         class PolicyFlags; //type: Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags
         class PolicyQueryFlags; //type: Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags
 
@@ -853,7 +1093,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::Pfc : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::Pfc
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags : public ydk::Entity
 {
     public:
         PolicyFlags();
@@ -861,20 +1101,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_accepted; //type: boolean
-        YLeaf is_installed; //type: boolean
-        YLeaf is_forwarding; //type: boolean
+        ydk::YLeaf is_accepted; //type: boolean
+        ydk::YLeaf is_installed; //type: boolean
+        ydk::YLeaf is_forwarding; //type: boolean
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyFlags
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags : public ydk::Entity
 {
     public:
         PolicyQueryFlags();
@@ -882,21 +1124,23 @@ class Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_needed; //type: boolean
-        YLeaf is_report_required; //type: boolean
-        YLeaf is_resync; //type: boolean
-        YLeaf is_bypass; //type: boolean
+        ydk::YLeaf is_needed; //type: boolean
+        ydk::YLeaf is_report_required; //type: boolean
+        ydk::YLeaf is_resync; //type: boolean
+        ydk::YLeaf is_bypass; //type: boolean
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Pfc::PolicyQueryFlags
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::InEro : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::InEro : public ydk::Entity
 {
     public:
         InEro();
@@ -904,13 +1148,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::InEro : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ero_type; //type: RsvpMgmtEroSubobjEnum
+        ydk::YLeaf ero_type; //type: RsvpMgmtEroSubobj
         class Ipv4EroSubObject; //type: Rsvp::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject
         class UnnumberedEroSubObject; //type: Rsvp::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject
 
@@ -920,7 +1166,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::InEro : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::InEro
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject : public ydk::Entity
 {
     public:
         Ipv4EroSubObject();
@@ -928,20 +1174,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_strict_route; //type: boolean
-        YLeaf ero_address; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf is_strict_route; //type: boolean
+        ydk::YLeaf ero_address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::InEro::Ipv4EroSubObject
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject : public ydk::Entity
 {
     public:
         UnnumberedEroSubObject();
@@ -949,21 +1197,23 @@ class Rsvp::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_strict_route; //type: boolean
-        YLeaf ero_interface_id; //type: uint32
-        YLeaf ero_router_id; //type: string
-        YLeaf status; //type: RsvpMgmtEroSubobjStatusEnum
+        ydk::YLeaf is_strict_route; //type: boolean
+        ydk::YLeaf ero_interface_id; //type: uint32
+        ydk::YLeaf ero_router_id; //type: string
+        ydk::YLeaf status; //type: RsvpMgmtEroSubobjStatus
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::InEro::UnnumberedEroSubObject
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::OutEro : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::OutEro : public ydk::Entity
 {
     public:
         OutEro();
@@ -971,13 +1221,15 @@ class Rsvp::PsbDetaileds::PsbDetailed::OutEro : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ero_type; //type: RsvpMgmtEroSubobjEnum
+        ydk::YLeaf ero_type; //type: RsvpMgmtEroSubobj
         class Ipv4EroSubObject; //type: Rsvp::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject
         class UnnumberedEroSubObject; //type: Rsvp::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject
 
@@ -987,7 +1239,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::OutEro : public Entity
 }; // Rsvp::PsbDetaileds::PsbDetailed::OutEro
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject : public ydk::Entity
 {
     public:
         Ipv4EroSubObject();
@@ -995,20 +1247,22 @@ class Rsvp::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_strict_route; //type: boolean
-        YLeaf ero_address; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf is_strict_route; //type: boolean
+        ydk::YLeaf ero_address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::OutEro::Ipv4EroSubObject
 
 
-class Rsvp::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject : public Entity
+class Rsvp::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject : public ydk::Entity
 {
     public:
         UnnumberedEroSubObject();
@@ -1016,21 +1270,281 @@ class Rsvp::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_strict_route; //type: boolean
-        YLeaf ero_interface_id; //type: uint32
-        YLeaf ero_router_id; //type: string
-        YLeaf status; //type: RsvpMgmtEroSubobjStatusEnum
+        ydk::YLeaf is_strict_route; //type: boolean
+        ydk::YLeaf ero_interface_id; //type: uint32
+        ydk::YLeaf ero_router_id; //type: string
+        ydk::YLeaf status; //type: RsvpMgmtEroSubobjStatus
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::OutEro::UnnumberedEroSubObject
 
 
-class Rsvp::FrrSummary : public Entity
+class Rsvp::ControllerDetaileds : public ydk::Entity
+{
+    public:
+        ControllerDetaileds();
+        ~ControllerDetaileds();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ControllerDetailed; //type: Rsvp::ControllerDetaileds::ControllerDetailed
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::ControllerDetaileds::ControllerDetailed> > controller_detailed;
+        
+}; // Rsvp::ControllerDetaileds
+
+
+class Rsvp::ControllerDetaileds::ControllerDetailed : public ydk::Entity
+{
+    public:
+        ControllerDetailed();
+        ~ControllerDetailed();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf controller_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf signalling_ip_tos; //type: uint8
+        ydk::YLeaf integrity_send_password; //type: string
+        ydk::YLeaf integrity_receive_password; //type: string
+        ydk::YLeaf integrity_receive_password_optional; //type: uint8
+        ydk::YLeaf refresh_timer_state; //type: RsvpTimerState
+        ydk::YLeaf summary_refresh_timer_state; //type: RsvpTimerState
+        ydk::YLeaf refresh_interval; //type: int32
+        ydk::YLeaf out_of_band_refresh_interval; //type: uint32
+        ydk::YLeaf summary_refresh_max_size; //type: uint32
+        ydk::YLeaf bundle_message_max_size; //type: uint32
+        ydk::YLeaf expiry_timer_state; //type: RsvpTimerState
+        ydk::YLeaf expiry_states; //type: int32
+        ydk::YLeaf expiry_interval; //type: int32
+        ydk::YLeaf expiry_drops_tolerated; //type: int32
+        ydk::YLeaf out_of_band_expiry_drops_tolerated; //type: uint32
+        ydk::YLeaf ack_hold_time; //type: uint32
+        ydk::YLeaf ack_max_size; //type: uint32
+        ydk::YLeaf retransmit_time; //type: uint32
+        ydk::YLeaf pacing_interval; //type: uint32
+        ydk::YLeaf pacing_message_rate; //type: uint32
+        ydk::YLeaf pacing_timer_state; //type: RsvpTimerState
+        ydk::YLeaf pacing_messages; //type: int32
+        class BandwidthInformation; //type: Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation
+        class Flags; //type: Rsvp::ControllerDetaileds::ControllerDetailed::Flags
+        class NeighborArray; //type: Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray
+
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation> bandwidth_information;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::ControllerDetaileds::ControllerDetailed::Flags> flags;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray> > neighbor_array;
+        
+}; // Rsvp::ControllerDetaileds::ControllerDetailed
+
+
+class Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation : public ydk::Entity
+{
+    public:
+        BandwidthInformation();
+        ~BandwidthInformation();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dste_mode; //type: RsvpMgmtDsteModes
+        class PreStandardDsteInterface; //type: Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface
+        class StandardDsteInterface; //type: Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface
+
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface> pre_standard_dste_interface;
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface> standard_dste_interface;
+        
+}; // Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation
+
+
+class Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface : public ydk::Entity
+{
+    public:
+        PreStandardDsteInterface();
+        ~PreStandardDsteInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf allocated_bit_rate; //type: uint64
+        ydk::YLeaf max_flow_bandwidth; //type: uint64
+        ydk::YLeaf max_bandwidth; //type: uint64
+        ydk::YLeaf max_subpool_bandwidth; //type: uint64
+        ydk::YLeaf is_max_bandwidth_absolute; //type: boolean
+        ydk::YLeaf is_max_subpool_bandwidth_absolute; //type: boolean
+
+}; // Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::PreStandardDsteInterface
+
+
+class Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface : public ydk::Entity
+{
+    public:
+        StandardDsteInterface();
+        ~StandardDsteInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf allocated_bit_rate; //type: uint64
+        ydk::YLeaf max_flow_bandwidth; //type: uint64
+        ydk::YLeaf max_bandwidth; //type: uint64
+        ydk::YLeaf max_pool0_bandwidth; //type: uint64
+        ydk::YLeaf max_pool1_bandwidth; //type: uint64
+        ydk::YLeaf is_max_bandwidth_absolute; //type: boolean
+        ydk::YLeaf is_max_bc0_bandwidth_absolute; //type: boolean
+        ydk::YLeaf is_max_bc1_bandwidth_absolute; //type: boolean
+
+}; // Rsvp::ControllerDetaileds::ControllerDetailed::BandwidthInformation::StandardDsteInterface
+
+
+class Rsvp::ControllerDetaileds::ControllerDetailed::Flags : public ydk::Entity
+{
+    public:
+        Flags();
+        ~Flags();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_mpls_enabled; //type: boolean
+        ydk::YLeaf is_refresh_reduction_enabled; //type: boolean
+        ydk::YLeaf is_pacing_enabled; //type: boolean
+        ydk::YLeaf is_refresh_enabled; //type: boolean
+        ydk::YLeaf is_s_refresh_enabled; //type: boolean
+        ydk::YLeaf is_interface_down; //type: boolean
+        ydk::YLeaf is_interface_created; //type: boolean
+        ydk::YLeaf is_rel_s_refresh_enabled; //type: boolean
+        ydk::YLeaf is_backup_tunnel; //type: boolean
+        ydk::YLeaf is_rsvp_configured; //type: boolean
+        ydk::YLeaf is_non_default_vrf; //type: boolean
+        ydk::YLeaf is_message_bundling_enabled; //type: boolean
+
+}; // Rsvp::ControllerDetaileds::ControllerDetailed::Flags
+
+
+class Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray : public ydk::Entity
+{
+    public:
+        NeighborArray();
+        ~NeighborArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf is_neighbor_refresh_reduction_capable; //type: boolean
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf message_ids; //type: uint32
+        ydk::YLeaf outgoing_states; //type: int32
+        class ExpiryTime; //type: Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime
+        class NeighborMessageId; //type: Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId
+
+        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime> expiry_time;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId> > neighbor_message_id;
+        
+}; // Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray
+
+
+class Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime : public ydk::Entity
+{
+    public:
+        ExpiryTime();
+        ~ExpiryTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: int32
+        ydk::YLeaf nanoseconds; //type: int32
+
+}; // Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::ExpiryTime
+
+
+class Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId : public ydk::Entity
+{
+    public:
+        NeighborMessageId();
+        ~NeighborMessageId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf message_id; //type: uint32
+
+}; // Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::NeighborMessageId
+
+
+class Rsvp::FrrSummary : public ydk::Entity
 {
     public:
         FrrSummary();
@@ -1038,11 +1552,13 @@ class Rsvp::FrrSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PathStates; //type: Rsvp::FrrSummary::PathStates
         class ReservationStates; //type: Rsvp::FrrSummary::ReservationStates
@@ -1053,7 +1569,7 @@ class Rsvp::FrrSummary : public Entity
 }; // Rsvp::FrrSummary
 
 
-class Rsvp::FrrSummary::PathStates : public Entity
+class Rsvp::FrrSummary::PathStates : public ydk::Entity
 {
     public:
         PathStates();
@@ -1061,21 +1577,23 @@ class Rsvp::FrrSummary::PathStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total; //type: uint32
-        YLeaf active_instances; //type: uint32
-        YLeaf ready_instances; //type: uint32
-        YLeaf active_wait_instances; //type: uint32
+        ydk::YLeaf total; //type: uint32
+        ydk::YLeaf active_instances; //type: uint32
+        ydk::YLeaf ready_instances; //type: uint32
+        ydk::YLeaf active_wait_instances; //type: uint32
 
 }; // Rsvp::FrrSummary::PathStates
 
 
-class Rsvp::FrrSummary::ReservationStates : public Entity
+class Rsvp::FrrSummary::ReservationStates : public ydk::Entity
 {
     public:
         ReservationStates();
@@ -1083,21 +1601,23 @@ class Rsvp::FrrSummary::ReservationStates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf total; //type: uint32
-        YLeaf active_instances; //type: uint32
-        YLeaf ready_instances; //type: uint32
-        YLeaf active_wait_instances; //type: uint32
+        ydk::YLeaf total; //type: uint32
+        ydk::YLeaf active_instances; //type: uint32
+        ydk::YLeaf ready_instances; //type: uint32
+        ydk::YLeaf active_wait_instances; //type: uint32
 
 }; // Rsvp::FrrSummary::ReservationStates
 
 
-class Rsvp::RsbDetaileds : public Entity
+class Rsvp::RsbDetaileds : public ydk::Entity
 {
     public:
         RsbDetaileds();
@@ -1105,11 +1625,13 @@ class Rsvp::RsbDetaileds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RsbDetailed; //type: Rsvp::RsbDetaileds::RsbDetailed
 
@@ -1118,7 +1640,7 @@ class Rsvp::RsbDetaileds : public Entity
 }; // Rsvp::RsbDetaileds
 
 
-class Rsvp::RsbDetaileds::RsbDetailed : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed : public ydk::Entity
 {
     public:
         RsbDetailed();
@@ -1126,25 +1648,27 @@ class Rsvp::RsbDetaileds::RsbDetailed : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf destination_port; //type: int32
-        YLeaf protocol; //type: int32
-        YLeaf extended_tunnel_id; //type: string
-        YLeaf session_type; //type: RsvpSessionEnum
-        YLeaf p2mp_id; //type: int32
-        YLeaf source_address; //type: string
-        YLeaf source_port; //type: int32
-        YLeaf sub_group_origin; //type: string
-        YLeaf sub_group_id; //type: int32
-        YLeaf vrf_name; //type: string
-        YLeaf input_adjusted_interface; //type: string
-        YLeaf input_physical_interface; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_port; //type: int32
+        ydk::YLeaf protocol; //type: int32
+        ydk::YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf session_type; //type: RsvpSession
+        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: int32
+        ydk::YLeaf sub_group_origin; //type: string
+        ydk::YLeaf sub_group_id; //type: int32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf input_adjusted_interface; //type: string
+        ydk::YLeaf input_physical_interface; //type: string
         class FlowSpec; //type: Rsvp::RsbDetaileds::RsbDetailed::FlowSpec
         class GenericFlowSpec; //type: Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec
         class Session; //type: Rsvp::RsbDetaileds::RsbDetailed::Session
@@ -1178,7 +1702,7 @@ class Rsvp::RsbDetaileds::RsbDetailed : public Entity
 }; // Rsvp::RsbDetaileds::RsbDetailed
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::FlowSpec : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::FlowSpec : public ydk::Entity
 {
     public:
         FlowSpec();
@@ -1186,25 +1710,27 @@ class Rsvp::RsbDetaileds::RsbDetailed::FlowSpec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flow_average_rate; //type: uint64
-        YLeaf flow_max_burst; //type: uint64
-        YLeaf flow_peak_rate; //type: uint64
-        YLeaf flow_min_unit; //type: uint32
-        YLeaf flow_max_unit; //type: uint32
-        YLeaf flow_requested_rate; //type: uint64
-        YLeaf flow_slack; //type: uint32
-        YLeaf flow_qos; //type: RsvpMgmtQosServiceEnumEnum
+        ydk::YLeaf flow_average_rate; //type: uint64
+        ydk::YLeaf flow_max_burst; //type: uint64
+        ydk::YLeaf flow_peak_rate; //type: uint64
+        ydk::YLeaf flow_min_unit; //type: uint32
+        ydk::YLeaf flow_max_unit; //type: uint32
+        ydk::YLeaf flow_requested_rate; //type: uint64
+        ydk::YLeaf flow_slack; //type: uint32
+        ydk::YLeaf flow_qos; //type: RsvpMgmtQosServiceEnum
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::FlowSpec
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec : public ydk::Entity
 {
     public:
         GenericFlowSpec();
@@ -1212,13 +1738,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flow_spec_type; //type: RsvpMgmtFlowSpecEnum
+        ydk::YLeaf flow_spec_type; //type: RsvpMgmtFlowSpec
         class G709OtnFlowSpec; //type: Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec> g709otn_flow_spec;
@@ -1226,7 +1754,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec : public Entity
 }; // Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec : public ydk::Entity
 {
     public:
         G709OtnFlowSpec();
@@ -1234,21 +1762,23 @@ class Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flow_signal_type; //type: uint8
-        YLeaf flow_nvc; //type: uint16
-        YLeaf flow_multiplier; //type: uint16
-        YLeaf flow_bit_rate; //type: uint64
+        ydk::YLeaf flow_signal_type; //type: uint8
+        ydk::YLeaf flow_nvc; //type: uint16
+        ydk::YLeaf flow_multiplier; //type: uint16
+        ydk::YLeaf flow_bit_rate; //type: uint64
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::GenericFlowSpec::G709OtnFlowSpec
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Session : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Session : public ydk::Entity
 {
     public:
         Session();
@@ -1256,11 +1786,13 @@ class Rsvp::RsbDetaileds::RsbDetailed::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RsvpSession; //type: Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession
 
@@ -1269,7 +1801,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::Session : public Entity
 }; // Rsvp::RsbDetaileds::RsbDetailed::Session
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession : public ydk::Entity
 {
     public:
         RsvpSession();
@@ -1277,13 +1809,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_type; //type: RsvpMgmtSessionEnum
+        ydk::YLeaf session_type; //type: RsvpMgmtSession
         class Ipv4; //type: Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4
         class Ipv4LspSession; //type: Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession
         class Ipv4UniSession; //type: Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession
@@ -1297,7 +1831,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession : public Entity
 }; // Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4 : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -1305,20 +1839,22 @@ class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4 : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf protocol; //type: uint8
-        YLeaf destination_port; //type: uint16
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf protocol; //type: uint8
+        ydk::YLeaf destination_port; //type: uint16
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession : public ydk::Entity
 {
     public:
         Ipv4LspSession();
@@ -1326,20 +1862,22 @@ class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_tunnel_id; //type: string
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4LspSession
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession : public ydk::Entity
 {
     public:
         Ipv4UniSession();
@@ -1347,20 +1885,22 @@ class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_address; //type: string
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4UniSession
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession : public ydk::Entity
 {
     public:
         Ipv4P2MpLspSession();
@@ -1368,20 +1908,22 @@ class Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf p2mp_id; //type: uint32
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_tunnel_id; //type: string
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Session::RsvpSession::Ipv4P2MpLspSession
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::S2LSubLsp : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::S2LSubLsp : public ydk::Entity
 {
     public:
         S2LSubLsp();
@@ -1389,18 +1931,20 @@ class Rsvp::RsbDetaileds::RsbDetailed::S2LSubLsp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf s2l_destination_address; //type: string
+        ydk::YLeaf s2l_destination_address; //type: string
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::S2LSubLsp
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Style : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Style : public ydk::Entity
 {
     public:
         Style();
@@ -1408,18 +1952,20 @@ class Rsvp::RsbDetaileds::RsbDetailed::Style : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reservation_type; //type: RsvpMgmtReservationTypeEnumEnum
+        ydk::YLeaf reservation_type; //type: RsvpMgmtReservationTypeEnum
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Style
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Filter : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Filter : public ydk::Entity
 {
     public:
         Filter();
@@ -1427,11 +1973,13 @@ class Rsvp::RsbDetaileds::RsbDetailed::Filter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RsvpFilter; //type: Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter
 
@@ -1440,7 +1988,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::Filter : public Entity
 }; // Rsvp::RsbDetaileds::RsbDetailed::Filter
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter : public ydk::Entity
 {
     public:
         RsvpFilter();
@@ -1448,13 +1996,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf filter_type; //type: RsvpMgmtFilterEnum
+        ydk::YLeaf filter_type; //type: RsvpMgmtFilter
         class UdpIpv4Session; //type: Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session
         class P2MpIpv4Session; //type: Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session
 
@@ -1464,7 +2014,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter : public Entity
 }; // Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session : public ydk::Entity
 {
     public:
         UdpIpv4Session();
@@ -1472,19 +2022,21 @@ class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf source_port; //type: uint16
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: uint16
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::UdpIpv4Session
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session : public ydk::Entity
 {
     public:
         P2MpIpv4Session();
@@ -1492,21 +2044,23 @@ class Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf source_port; //type: uint16
-        YLeaf p2mp_sub_group_origin; //type: string
-        YLeaf sub_group_id; //type: uint16
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: uint16
+        ydk::YLeaf p2mp_sub_group_origin; //type: string
+        ydk::YLeaf sub_group_id; //type: uint16
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Filter::RsvpFilter::P2MpIpv4Session
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::RsbFlags : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::RsbFlags : public ydk::Entity
 {
     public:
         RsbFlags();
@@ -1514,22 +2068,24 @@ class Rsvp::RsbDetaileds::RsbDetailed::RsbFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_local_receiver; //type: boolean
-        YLeaf is_message_id_valid; //type: boolean
-        YLeaf is_local_repair; //type: boolean
-        YLeaf is_merge_point; //type: boolean
-        YLeaf is_lockout; //type: boolean
+        ydk::YLeaf is_local_receiver; //type: boolean
+        ydk::YLeaf is_message_id_valid; //type: boolean
+        ydk::YLeaf is_local_repair; //type: boolean
+        ydk::YLeaf is_merge_point; //type: boolean
+        ydk::YLeaf is_lockout; //type: boolean
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::RsbFlags
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Hop : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Hop : public ydk::Entity
 {
     public:
         Hop();
@@ -1537,19 +2093,21 @@ class Rsvp::RsbDetaileds::RsbDetailed::Hop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_logical_interface_name; //type: string
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Hop
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::PolicySources : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::PolicySources : public ydk::Entity
 {
     public:
         PolicySources();
@@ -1557,22 +2115,24 @@ class Rsvp::RsbDetaileds::RsbDetailed::PolicySources : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_te_link; //type: boolean
-        YLeaf is_local; //type: boolean
-        YLeaf is_cops; //type: boolean
-        YLeaf is_default; //type: boolean
-        YLeaf is_cable; //type: boolean
+        ydk::YLeaf is_te_link; //type: boolean
+        ydk::YLeaf is_local; //type: boolean
+        ydk::YLeaf is_cops; //type: boolean
+        ydk::YLeaf is_default; //type: boolean
+        ydk::YLeaf is_cable; //type: boolean
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::PolicySources
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::Header : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::Header : public ydk::Entity
 {
     public:
         Header();
@@ -1580,24 +2140,26 @@ class Rsvp::RsbDetaileds::RsbDetailed::Header : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rsvp_version; //type: uint8
-        YLeaf rsvp_header_flags; //type: uint8
-        YLeaf rsvp_ttl; //type: uint8
-        YLeaf rsvp_message_type; //type: uint8
-        YLeaf ip_tos; //type: uint8
-        YLeaf ip_ttl; //type: uint8
-        YLeaf ip_source_address; //type: string
+        ydk::YLeaf rsvp_version; //type: uint8
+        ydk::YLeaf rsvp_header_flags; //type: uint8
+        ydk::YLeaf rsvp_ttl; //type: uint8
+        ydk::YLeaf rsvp_message_type; //type: uint8
+        ydk::YLeaf ip_tos; //type: uint8
+        ydk::YLeaf ip_ttl; //type: uint8
+        ydk::YLeaf ip_source_address; //type: string
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Header
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::PolicyFlags : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::PolicyFlags : public ydk::Entity
 {
     public:
         PolicyFlags();
@@ -1605,20 +2167,22 @@ class Rsvp::RsbDetaileds::RsbDetailed::PolicyFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_accepted; //type: boolean
-        YLeaf is_installed; //type: boolean
-        YLeaf is_forwarding; //type: boolean
+        ydk::YLeaf is_accepted; //type: boolean
+        ydk::YLeaf is_installed; //type: boolean
+        ydk::YLeaf is_forwarding; //type: boolean
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::PolicyFlags
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::ExpiryTime : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::ExpiryTime : public ydk::Entity
 {
     public:
         ExpiryTime();
@@ -1626,19 +2190,21 @@ class Rsvp::RsbDetaileds::RsbDetailed::ExpiryTime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: int32
-        YLeaf nanoseconds; //type: int32
+        ydk::YLeaf seconds; //type: int32
+        ydk::YLeaf nanoseconds; //type: int32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::ExpiryTime
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::PolicyQueryFlags : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::PolicyQueryFlags : public ydk::Entity
 {
     public:
         PolicyQueryFlags();
@@ -1646,21 +2212,23 @@ class Rsvp::RsbDetaileds::RsbDetailed::PolicyQueryFlags : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_needed; //type: boolean
-        YLeaf is_report_required; //type: boolean
-        YLeaf is_resync; //type: boolean
-        YLeaf is_bypass; //type: boolean
+        ydk::YLeaf is_needed; //type: boolean
+        ydk::YLeaf is_report_required; //type: boolean
+        ydk::YLeaf is_resync; //type: boolean
+        ydk::YLeaf is_bypass; //type: boolean
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::PolicyQueryFlags
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo : public ydk::Entity
 {
     public:
         LabelInfo();
@@ -1668,20 +2236,22 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_valid; //type: boolean
-        YLeaf local_downstream_label; //type: uint32
-        YLeaf outgoing_downstream_label; //type: uint32
-        YLeaf merge_point_label; //type: uint32
-        YLeaf outgoing_upstream_label; //type: uint32
-        YLeaf local_upstream_label; //type: uint32
-        YLeaf recovery_label; //type: uint32
-        YLeaf lsp_wrap_label; //type: uint32
+        ydk::YLeaf is_valid; //type: boolean
+        ydk::YLeaf local_downstream_label; //type: uint32
+        ydk::YLeaf outgoing_downstream_label; //type: uint32
+        ydk::YLeaf merge_point_label; //type: uint32
+        ydk::YLeaf outgoing_upstream_label; //type: uint32
+        ydk::YLeaf local_upstream_label; //type: uint32
+        ydk::YLeaf recovery_label; //type: uint32
+        ydk::YLeaf lsp_wrap_label; //type: uint32
         class GenericLocalDownstreamLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel
         class GenericOutgoingDownstreamLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
         class GenericMergePointLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel
@@ -1699,7 +2269,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo : public Entity
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel : public ydk::Entity
 {
     public:
         GenericLocalDownstreamLabel();
@@ -1707,13 +2277,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel> generalized_label;
@@ -1721,7 +2293,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel : 
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -1729,18 +2301,20 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::G
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLabel::GeneralizedLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel : public ydk::Entity
 {
     public:
         GenericOutgoingDownstreamLabel();
@@ -1748,13 +2322,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel> generalized_label;
@@ -1762,7 +2338,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -1770,18 +2346,20 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstreamLabel::GeneralizedLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel : public ydk::Entity
 {
     public:
         GenericMergePointLabel();
@@ -1789,13 +2367,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel> generalized_label;
@@ -1803,7 +2383,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel : publi
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -1811,18 +2391,20 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::Genera
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::GeneralizedLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel : public ydk::Entity
 {
     public:
         GenericOutgoingUpstreamLabel();
@@ -1830,13 +2412,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel> generalized_label;
@@ -1844,7 +2428,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel :
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -1852,18 +2436,20 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamLabel::GeneralizedLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel : public ydk::Entity
 {
     public:
         GenericLocalUpstreamLabel();
@@ -1871,13 +2457,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel> generalized_label;
@@ -1885,7 +2473,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel : pu
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -1893,18 +2481,20 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::Gen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabel::GeneralizedLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel : public ydk::Entity
 {
     public:
         GenericRecoveryLabel();
@@ -1912,13 +2502,15 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf generic_label_type; //type: RsvpMgmtGenericLabelEnum
+        ydk::YLeaf generic_label_type; //type: RsvpMgmtGenericLabel
         class GeneralizedLabel; //type: Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel> generalized_label;
@@ -1926,7 +2518,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel : public 
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel
 
 
-class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel : public Entity
+class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel : public ydk::Entity
 {
     public:
         GeneralizedLabel();
@@ -1934,18 +2526,20 @@ class Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::Generali
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList value_; //type: list of  uint32
+        ydk::YLeafList value_; //type: list of  uint32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::GeneralizedLabel
 
 
-class Rsvp::InterfaceSummaries : public Entity
+class Rsvp::InterfaceSummaries : public ydk::Entity
 {
     public:
         InterfaceSummaries();
@@ -1953,11 +2547,13 @@ class Rsvp::InterfaceSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceSummary; //type: Rsvp::InterfaceSummaries::InterfaceSummary
 
@@ -1966,7 +2562,7 @@ class Rsvp::InterfaceSummaries : public Entity
 }; // Rsvp::InterfaceSummaries
 
 
-class Rsvp::InterfaceSummaries::InterfaceSummary : public Entity
+class Rsvp::InterfaceSummaries::InterfaceSummary : public ydk::Entity
 {
     public:
         InterfaceSummary();
@@ -1974,18 +2570,20 @@ class Rsvp::InterfaceSummaries::InterfaceSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_name_xr; //type: string
-        YLeaf paths_in; //type: uint32
-        YLeaf paths_out; //type: uint32
-        YLeaf reservations_in; //type: uint32
-        YLeaf reservations_out; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf paths_in; //type: uint32
+        ydk::YLeaf paths_out; //type: uint32
+        ydk::YLeaf reservations_in; //type: uint32
+        ydk::YLeaf reservations_out; //type: uint32
         class BandwidthInformation; //type: Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation> bandwidth_information;
@@ -1993,7 +2591,7 @@ class Rsvp::InterfaceSummaries::InterfaceSummary : public Entity
 }; // Rsvp::InterfaceSummaries::InterfaceSummary
 
 
-class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation : public Entity
+class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation : public ydk::Entity
 {
     public:
         BandwidthInformation();
@@ -2001,13 +2599,15 @@ class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dste_mode; //type: RsvpMgmtDsteModesEnum
+        ydk::YLeaf dste_mode; //type: RsvpMgmtDsteModes
         class PreStandardDsteInterface; //type: Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface
         class StandardDsteInterface; //type: Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface
 
@@ -2017,7 +2617,7 @@ class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation : public 
 }; // Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation
 
 
-class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface : public Entity
+class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface : public ydk::Entity
 {
     public:
         PreStandardDsteInterface();
@@ -2025,23 +2625,25 @@ class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStand
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allocated_bit_rate; //type: uint64
-        YLeaf max_flow_bandwidth; //type: uint64
-        YLeaf max_bandwidth; //type: uint64
-        YLeaf max_subpool_bandwidth; //type: uint64
-        YLeaf is_max_bandwidth_absolute; //type: boolean
-        YLeaf is_max_subpool_bandwidth_absolute; //type: boolean
+        ydk::YLeaf allocated_bit_rate; //type: uint64
+        ydk::YLeaf max_flow_bandwidth; //type: uint64
+        ydk::YLeaf max_bandwidth; //type: uint64
+        ydk::YLeaf max_subpool_bandwidth; //type: uint64
+        ydk::YLeaf is_max_bandwidth_absolute; //type: boolean
+        ydk::YLeaf is_max_subpool_bandwidth_absolute; //type: boolean
 
 }; // Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::PreStandardDsteInterface
 
 
-class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface : public Entity
+class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface : public ydk::Entity
 {
     public:
         StandardDsteInterface();
@@ -2049,25 +2651,27 @@ class Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::Standard
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf allocated_bit_rate; //type: uint64
-        YLeaf max_flow_bandwidth; //type: uint64
-        YLeaf max_bandwidth; //type: uint64
-        YLeaf max_pool0_bandwidth; //type: uint64
-        YLeaf max_pool1_bandwidth; //type: uint64
-        YLeaf is_max_bandwidth_absolute; //type: boolean
-        YLeaf is_max_bc0_bandwidth_absolute; //type: boolean
-        YLeaf is_max_bc1_bandwidth_absolute; //type: boolean
+        ydk::YLeaf allocated_bit_rate; //type: uint64
+        ydk::YLeaf max_flow_bandwidth; //type: uint64
+        ydk::YLeaf max_bandwidth; //type: uint64
+        ydk::YLeaf max_pool0_bandwidth; //type: uint64
+        ydk::YLeaf max_pool1_bandwidth; //type: uint64
+        ydk::YLeaf is_max_bandwidth_absolute; //type: boolean
+        ydk::YLeaf is_max_bc0_bandwidth_absolute; //type: boolean
+        ydk::YLeaf is_max_bc1_bandwidth_absolute; //type: boolean
 
 }; // Rsvp::InterfaceSummaries::InterfaceSummary::BandwidthInformation::StandardDsteInterface
 
 
-class Rsvp::HelloInstanceBriefs : public Entity
+class Rsvp::HelloInstanceBriefs : public ydk::Entity
 {
     public:
         HelloInstanceBriefs();
@@ -2075,11 +2679,13 @@ class Rsvp::HelloInstanceBriefs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class HelloInstanceBrief; //type: Rsvp::HelloInstanceBriefs::HelloInstanceBrief
 
@@ -2088,7 +2694,7 @@ class Rsvp::HelloInstanceBriefs : public Entity
 }; // Rsvp::HelloInstanceBriefs
 
 
-class Rsvp::HelloInstanceBriefs::HelloInstanceBrief : public Entity
+class Rsvp::HelloInstanceBriefs::HelloInstanceBrief : public ydk::Entity
 {
     public:
         HelloInstanceBrief();
@@ -2096,25 +2702,27 @@ class Rsvp::HelloInstanceBriefs::HelloInstanceBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf source_address_xr; //type: string
-        YLeaf destination_address_xr; //type: string
-        YLeaf neighbor_hello_state; //type: RsvpMgmtHelloStateEnum
-        YLeaf instance_type; //type: RsvpMgmtHelloInstanceEnum
-        YLeaf hello_interface; //type: string
-        YLeaf lost_communication_total; //type: uint16
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf source_address_xr; //type: string
+        ydk::YLeaf destination_address_xr; //type: string
+        ydk::YLeaf neighbor_hello_state; //type: RsvpMgmtHelloState
+        ydk::YLeaf instance_type; //type: RsvpMgmtHelloInstance
+        ydk::YLeaf hello_interface; //type: string
+        ydk::YLeaf lost_communication_total; //type: uint16
 
 }; // Rsvp::HelloInstanceBriefs::HelloInstanceBrief
 
 
-class Rsvp::AuthenticationDetails : public Entity
+class Rsvp::AuthenticationDetails : public ydk::Entity
 {
     public:
         AuthenticationDetails();
@@ -2122,11 +2730,13 @@ class Rsvp::AuthenticationDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AuthenticationDetail; //type: Rsvp::AuthenticationDetails::AuthenticationDetail
 
@@ -2135,7 +2745,7 @@ class Rsvp::AuthenticationDetails : public Entity
 }; // Rsvp::AuthenticationDetails
 
 
-class Rsvp::AuthenticationDetails::AuthenticationDetail : public Entity
+class Rsvp::AuthenticationDetails::AuthenticationDetail : public ydk::Entity
 {
     public:
         AuthenticationDetail();
@@ -2143,21 +2753,23 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
-        YLeaf mode_id; //type: RsvpModeEnum
-        YLeaf interface_name; //type: string
-        YLeaf key_status; //type: uint32
-        YLeaf key_digest_info; //type: uint32
-        YLeaf lifetime; //type: uint32
-        YLeaf lifetime_left; //type: uint32
-        YLeaf challenge_status; //type: RsvpMgmtAuthChallengeStatusEnum
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf mode_id; //type: RsvpMode
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf key_status; //type: uint32
+        ydk::YLeaf key_digest_info; //type: uint32
+        ydk::YLeaf lifetime; //type: uint32
+        ydk::YLeaf lifetime_left; //type: uint32
+        ydk::YLeaf challenge_status; //type: RsvpMgmtAuthChallengeStatus
         class AuthCompact; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact
         class DirectionInfo; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo
 
@@ -2167,7 +2779,7 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail : public Entity
 }; // Rsvp::AuthenticationDetails::AuthenticationDetail
 
 
-class Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact : public Entity
+class Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact : public ydk::Entity
 {
     public:
         AuthCompact();
@@ -2175,25 +2787,27 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address_xr; //type: string
-        YLeaf destination_address_xr; //type: string
-        YLeaf neighbor_address; //type: string
-        YLeaf direction; //type: RsvpMgmtAuthDirectionEnum
-        YLeaf key_type; //type: RsvpMgmtAuthKiEnum
-        YLeaf key_source; //type: string
-        YLeaf key_id; //type: uint64
-        YLeaf key_id_valid; //type: uint32
+        ydk::YLeaf source_address_xr; //type: string
+        ydk::YLeaf destination_address_xr; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf direction; //type: RsvpMgmtAuthDirection
+        ydk::YLeaf key_type; //type: RsvpMgmtAuthKi
+        ydk::YLeaf key_source; //type: string
+        ydk::YLeaf key_id; //type: uint64
+        ydk::YLeaf key_id_valid; //type: uint32
 
 }; // Rsvp::AuthenticationDetails::AuthenticationDetail::AuthCompact
 
 
-class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo : public Entity
+class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo : public ydk::Entity
 {
     public:
         DirectionInfo();
@@ -2201,13 +2815,15 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf auth_direction; //type: RsvpMgmtAuthDirectionEnum
+        ydk::YLeaf auth_direction; //type: RsvpMgmtAuthDirection
         class SendInfo; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo
         class ReceiveInfo; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo
 
@@ -2217,7 +2833,7 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo : public 
 }; // Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo
 
 
-class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo : public Entity
+class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo : public ydk::Entity
 {
     public:
         SendInfo();
@@ -2225,13 +2841,15 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sequence; //type: uint64
+        ydk::YLeaf sequence; //type: uint64
         class Counters; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters> counters;
@@ -2239,7 +2857,7 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo
 }; // Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo
 
 
-class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters : public Entity
+class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -2247,21 +2865,23 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf authentication_sent; //type: uint32
-        YLeaf authentication_failures; //type: uint32
-        YLeaf authentication_send_challenges_received; //type: uint32
-        YLeaf authentication_challenge_responses_sent; //type: uint32
+        ydk::YLeaf authentication_sent; //type: uint32
+        ydk::YLeaf authentication_failures; //type: uint32
+        ydk::YLeaf authentication_send_challenges_received; //type: uint32
+        ydk::YLeaf authentication_challenge_responses_sent; //type: uint32
 
 }; // Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::SendInfo::Counters
 
 
-class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo : public Entity
+class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo : public ydk::Entity
 {
     public:
         ReceiveInfo();
@@ -2269,16 +2889,18 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sequence; //type: uint64
-        YLeaf sequence_window_size; //type: uint32
-        YLeaf sequence_window_count; //type: uint32
-        YLeafList sequence_window; //type: list of  uint64
+        ydk::YLeaf sequence; //type: uint64
+        ydk::YLeaf sequence_window_size; //type: uint32
+        ydk::YLeaf sequence_window_count; //type: uint32
+        ydk::YLeafList sequence_window; //type: list of  uint64
         class Counters; //type: Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters> counters;
@@ -2286,7 +2908,7 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveI
 }; // Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo
 
 
-class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters : public Entity
+class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -2294,33 +2916,35 @@ class Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf authentication_received_valid_messages; //type: uint32
-        YLeaf authentication_received_challenges_sent; //type: uint32
-        YLeaf authentication_received_challenge_response; //type: uint32
-        YLeaf authentication_received_challenges_resent; //type: uint32
-        YLeaf authentication_received_challenge_timeouts; //type: uint32
-        YLeaf authentication_received_during_challenge; //type: uint32
-        YLeaf authentication_received_incomplete; //type: uint32
-        YLeaf authentication_received_no_integrity; //type: uint32
-        YLeaf authentication_received_bad_digest; //type: uint32
-        YLeaf authentication_received_wrong_digest_type; //type: uint32
-        YLeaf authentication_received_sequence_number_duplicate; //type: uint32
-        YLeaf authentication_received_sequence_number_outof_range; //type: uint32
-        YLeaf authentication_received_wrong_challenges_response; //type: uint32
-        YLeaf authentication_received_challenges_response_duplicate; //type: uint32
-        YLeaf authentication_received_response_late; //type: uint32
-        YLeaf authentication_received_bad_message_format; //type: uint32
+        ydk::YLeaf authentication_received_valid_messages; //type: uint32
+        ydk::YLeaf authentication_received_challenges_sent; //type: uint32
+        ydk::YLeaf authentication_received_challenge_response; //type: uint32
+        ydk::YLeaf authentication_received_challenges_resent; //type: uint32
+        ydk::YLeaf authentication_received_challenge_timeouts; //type: uint32
+        ydk::YLeaf authentication_received_during_challenge; //type: uint32
+        ydk::YLeaf authentication_received_incomplete; //type: uint32
+        ydk::YLeaf authentication_received_no_integrity; //type: uint32
+        ydk::YLeaf authentication_received_bad_digest; //type: uint32
+        ydk::YLeaf authentication_received_wrong_digest_type; //type: uint32
+        ydk::YLeaf authentication_received_sequence_number_duplicate; //type: uint32
+        ydk::YLeaf authentication_received_sequence_number_outof_range; //type: uint32
+        ydk::YLeaf authentication_received_wrong_challenges_response; //type: uint32
+        ydk::YLeaf authentication_received_challenges_response_duplicate; //type: uint32
+        ydk::YLeaf authentication_received_response_late; //type: uint32
+        ydk::YLeaf authentication_received_bad_message_format; //type: uint32
 
 }; // Rsvp::AuthenticationDetails::AuthenticationDetail::DirectionInfo::ReceiveInfo::Counters
 
 
-class Rsvp::RsbBriefs : public Entity
+class Rsvp::RsbBriefs : public ydk::Entity
 {
     public:
         RsbBriefs();
@@ -2328,11 +2952,13 @@ class Rsvp::RsbBriefs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RsbBrief; //type: Rsvp::RsbBriefs::RsbBrief
 
@@ -2341,7 +2967,7 @@ class Rsvp::RsbBriefs : public Entity
 }; // Rsvp::RsbBriefs
 
 
-class Rsvp::RsbBriefs::RsbBrief : public Entity
+class Rsvp::RsbBriefs::RsbBrief : public ydk::Entity
 {
     public:
         RsbBrief();
@@ -2349,24 +2975,26 @@ class Rsvp::RsbBriefs::RsbBrief : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf destination_port; //type: int32
-        YLeaf protocol; //type: int32
-        YLeaf extended_tunnel_id; //type: string
-        YLeaf session_type; //type: RsvpSessionEnum
-        YLeaf p2mp_id; //type: int32
-        YLeaf source_address; //type: string
-        YLeaf source_port; //type: int32
-        YLeaf sub_group_origin; //type: string
-        YLeaf sub_group_id; //type: int32
-        YLeaf vrf_name; //type: string
-        YLeaf input_interface; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_port; //type: int32
+        ydk::YLeaf protocol; //type: int32
+        ydk::YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf session_type; //type: RsvpSession
+        ydk::YLeaf p2mp_id; //type: int32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: int32
+        ydk::YLeaf sub_group_origin; //type: string
+        ydk::YLeaf sub_group_id; //type: int32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf input_interface; //type: string
         class Session; //type: Rsvp::RsbBriefs::RsbBrief::Session
         class S2LSubLsp; //type: Rsvp::RsbBriefs::RsbBrief::S2LSubLsp
         class FlowSpec; //type: Rsvp::RsbBriefs::RsbBrief::FlowSpec
@@ -2384,7 +3012,7 @@ class Rsvp::RsbBriefs::RsbBrief : public Entity
 }; // Rsvp::RsbBriefs::RsbBrief
 
 
-class Rsvp::RsbBriefs::RsbBrief::Session : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Session : public ydk::Entity
 {
     public:
         Session();
@@ -2392,11 +3020,13 @@ class Rsvp::RsbBriefs::RsbBrief::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RsvpSession; //type: Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession
 
@@ -2405,7 +3035,7 @@ class Rsvp::RsbBriefs::RsbBrief::Session : public Entity
 }; // Rsvp::RsbBriefs::RsbBrief::Session
 
 
-class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession : public ydk::Entity
 {
     public:
         RsvpSession();
@@ -2413,13 +3043,15 @@ class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_type; //type: RsvpMgmtSessionEnum
+        ydk::YLeaf session_type; //type: RsvpMgmtSession
         class Ipv4; //type: Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4
         class Ipv4LspSession; //type: Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession
         class Ipv4UniSession; //type: Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession
@@ -2433,7 +3065,7 @@ class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession : public Entity
 }; // Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession
 
 
-class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4 : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -2441,20 +3073,22 @@ class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf protocol; //type: uint8
-        YLeaf destination_port; //type: uint16
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf protocol; //type: uint8
+        ydk::YLeaf destination_port; //type: uint16
 
 }; // Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4
 
 
-class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession : public ydk::Entity
 {
     public:
         Ipv4LspSession();
@@ -2462,20 +3096,22 @@ class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_tunnel_id; //type: string
 
 }; // Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4LspSession
 
 
-class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession : public ydk::Entity
 {
     public:
         Ipv4UniSession();
@@ -2483,20 +3119,22 @@ class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_address; //type: string
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_address; //type: string
 
 }; // Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4UniSession
 
 
-class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession : public ydk::Entity
 {
     public:
         Ipv4P2MpLspSession();
@@ -2504,20 +3142,22 @@ class Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf p2mp_id; //type: uint32
-        YLeaf tunnel_id; //type: uint16
-        YLeaf extended_tunnel_id; //type: string
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf extended_tunnel_id; //type: string
 
 }; // Rsvp::RsbBriefs::RsbBrief::Session::RsvpSession::Ipv4P2MpLspSession
 
 
-class Rsvp::RsbBriefs::RsbBrief::S2LSubLsp : public Entity
+class Rsvp::RsbBriefs::RsbBrief::S2LSubLsp : public ydk::Entity
 {
     public:
         S2LSubLsp();
@@ -2525,18 +3165,20 @@ class Rsvp::RsbBriefs::RsbBrief::S2LSubLsp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf s2l_destination_address; //type: string
+        ydk::YLeaf s2l_destination_address; //type: string
 
 }; // Rsvp::RsbBriefs::RsbBrief::S2LSubLsp
 
 
-class Rsvp::RsbBriefs::RsbBrief::FlowSpec : public Entity
+class Rsvp::RsbBriefs::RsbBrief::FlowSpec : public ydk::Entity
 {
     public:
         FlowSpec();
@@ -2544,25 +3186,27 @@ class Rsvp::RsbBriefs::RsbBrief::FlowSpec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flow_average_rate; //type: uint64
-        YLeaf flow_max_burst; //type: uint64
-        YLeaf flow_peak_rate; //type: uint64
-        YLeaf flow_min_unit; //type: uint32
-        YLeaf flow_max_unit; //type: uint32
-        YLeaf flow_requested_rate; //type: uint64
-        YLeaf flow_slack; //type: uint32
-        YLeaf flow_qos; //type: RsvpMgmtQosServiceEnumEnum
+        ydk::YLeaf flow_average_rate; //type: uint64
+        ydk::YLeaf flow_max_burst; //type: uint64
+        ydk::YLeaf flow_peak_rate; //type: uint64
+        ydk::YLeaf flow_min_unit; //type: uint32
+        ydk::YLeaf flow_max_unit; //type: uint32
+        ydk::YLeaf flow_requested_rate; //type: uint64
+        ydk::YLeaf flow_slack; //type: uint32
+        ydk::YLeaf flow_qos; //type: RsvpMgmtQosServiceEnum
 
 }; // Rsvp::RsbBriefs::RsbBrief::FlowSpec
 
 
-class Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec : public Entity
+class Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec : public ydk::Entity
 {
     public:
         GenericFlowSpec();
@@ -2570,13 +3214,15 @@ class Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flow_spec_type; //type: RsvpMgmtFlowSpecEnum
+        ydk::YLeaf flow_spec_type; //type: RsvpMgmtFlowSpec
         class G709OtnFlowSpec; //type: Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec
 
         std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec> g709otn_flow_spec;
@@ -2584,7 +3230,7 @@ class Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec : public Entity
 }; // Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec
 
 
-class Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec : public Entity
+class Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec : public ydk::Entity
 {
     public:
         G709OtnFlowSpec();
@@ -2592,21 +3238,23 @@ class Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flow_signal_type; //type: uint8
-        YLeaf flow_nvc; //type: uint16
-        YLeaf flow_multiplier; //type: uint16
-        YLeaf flow_bit_rate; //type: uint64
+        ydk::YLeaf flow_signal_type; //type: uint8
+        ydk::YLeaf flow_nvc; //type: uint16
+        ydk::YLeaf flow_multiplier; //type: uint16
+        ydk::YLeaf flow_bit_rate; //type: uint64
 
 }; // Rsvp::RsbBriefs::RsbBrief::GenericFlowSpec::G709OtnFlowSpec
 
 
-class Rsvp::RsbBriefs::RsbBrief::Style : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Style : public ydk::Entity
 {
     public:
         Style();
@@ -2614,18 +3262,20 @@ class Rsvp::RsbBriefs::RsbBrief::Style : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reservation_type; //type: RsvpMgmtReservationTypeEnumEnum
+        ydk::YLeaf reservation_type; //type: RsvpMgmtReservationTypeEnum
 
 }; // Rsvp::RsbBriefs::RsbBrief::Style
 
 
-class Rsvp::RsbBriefs::RsbBrief::Filter : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Filter : public ydk::Entity
 {
     public:
         Filter();
@@ -2633,11 +3283,13 @@ class Rsvp::RsbBriefs::RsbBrief::Filter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RsvpFilter; //type: Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter
 
@@ -2646,7 +3298,7 @@ class Rsvp::RsbBriefs::RsbBrief::Filter : public Entity
 }; // Rsvp::RsbBriefs::RsbBrief::Filter
 
 
-class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter : public ydk::Entity
 {
     public:
         RsvpFilter();
@@ -2654,13 +3306,15 @@ class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf filter_type; //type: RsvpMgmtFilterEnum
+        ydk::YLeaf filter_type; //type: RsvpMgmtFilter
         class UdpIpv4Session; //type: Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session
         class P2MpIpv4Session; //type: Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session
 
@@ -2670,7 +3324,7 @@ class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter : public Entity
 }; // Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter
 
 
-class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session : public ydk::Entity
 {
     public:
         UdpIpv4Session();
@@ -2678,19 +3332,21 @@ class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf source_port; //type: uint16
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: uint16
 
 }; // Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::UdpIpv4Session
 
 
-class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session : public Entity
+class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session : public ydk::Entity
 {
     public:
         P2MpIpv4Session();
@@ -2698,21 +3354,23 @@ class Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf source_port; //type: uint16
-        YLeaf p2mp_sub_group_origin; //type: string
-        YLeaf sub_group_id; //type: uint16
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf source_port; //type: uint16
+        ydk::YLeaf p2mp_sub_group_origin; //type: string
+        ydk::YLeaf sub_group_id; //type: uint16
 
 }; // Rsvp::RsbBriefs::RsbBrief::Filter::RsvpFilter::P2MpIpv4Session
 
 
-class Rsvp::OpenConfig : public Entity
+class Rsvp::OpenConfig : public ydk::Entity
 {
     public:
         OpenConfig();
@@ -2720,11 +3378,13 @@ class Rsvp::OpenConfig : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class GlobalCounters; //type: Rsvp::OpenConfig::GlobalCounters
         class InterfaceCounters; //type: Rsvp::OpenConfig::InterfaceCounters
@@ -2735,7 +3395,7 @@ class Rsvp::OpenConfig : public Entity
 }; // Rsvp::OpenConfig
 
 
-class Rsvp::OpenConfig::GlobalCounters : public Entity
+class Rsvp::OpenConfig::GlobalCounters : public ydk::Entity
 {
     public:
         GlobalCounters();
@@ -2743,38 +3403,40 @@ class Rsvp::OpenConfig::GlobalCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path_timeouts; //type: uint64
-        YLeaf reservation_timeouts; //type: uint64
-        YLeaf rate_limited_messages; //type: uint64
-        YLeaf in_path_messages; //type: uint64
-        YLeaf in_path_error_messages; //type: uint64
-        YLeaf in_path_tear_messages; //type: uint64
-        YLeaf in_reservation_messages; //type: uint64
-        YLeaf in_reservation_error_messages; //type: uint64
-        YLeaf in_reservation_tear_messages; //type: uint64
-        YLeaf in_hello_messages; //type: uint64
-        YLeaf in_srefresh_messages; //type: uint64
-        YLeaf in_ack_messages; //type: uint64
-        YLeaf out_path_messages; //type: uint64
-        YLeaf out_path_error_messages; //type: uint64
-        YLeaf out_path_tear_messages; //type: uint64
-        YLeaf out_reservation_messages; //type: uint64
-        YLeaf out_reservation_error_messages; //type: uint64
-        YLeaf out_reservation_tear_messages; //type: uint64
-        YLeaf out_hello_messages; //type: uint64
-        YLeaf out_srefresh_messages; //type: uint64
-        YLeaf out_ack_messages; //type: uint64
+        ydk::YLeaf path_timeouts; //type: uint64
+        ydk::YLeaf reservation_timeouts; //type: uint64
+        ydk::YLeaf rate_limited_messages; //type: uint64
+        ydk::YLeaf in_path_messages; //type: uint64
+        ydk::YLeaf in_path_error_messages; //type: uint64
+        ydk::YLeaf in_path_tear_messages; //type: uint64
+        ydk::YLeaf in_reservation_messages; //type: uint64
+        ydk::YLeaf in_reservation_error_messages; //type: uint64
+        ydk::YLeaf in_reservation_tear_messages; //type: uint64
+        ydk::YLeaf in_hello_messages; //type: uint64
+        ydk::YLeaf in_srefresh_messages; //type: uint64
+        ydk::YLeaf in_ack_messages; //type: uint64
+        ydk::YLeaf out_path_messages; //type: uint64
+        ydk::YLeaf out_path_error_messages; //type: uint64
+        ydk::YLeaf out_path_tear_messages; //type: uint64
+        ydk::YLeaf out_reservation_messages; //type: uint64
+        ydk::YLeaf out_reservation_error_messages; //type: uint64
+        ydk::YLeaf out_reservation_tear_messages; //type: uint64
+        ydk::YLeaf out_hello_messages; //type: uint64
+        ydk::YLeaf out_srefresh_messages; //type: uint64
+        ydk::YLeaf out_ack_messages; //type: uint64
 
 }; // Rsvp::OpenConfig::GlobalCounters
 
 
-class Rsvp::OpenConfig::InterfaceCounters : public Entity
+class Rsvp::OpenConfig::InterfaceCounters : public ydk::Entity
 {
     public:
         InterfaceCounters();
@@ -2782,11 +3444,13 @@ class Rsvp::OpenConfig::InterfaceCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceCounter; //type: Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter
 
@@ -2795,7 +3459,7 @@ class Rsvp::OpenConfig::InterfaceCounters : public Entity
 }; // Rsvp::OpenConfig::InterfaceCounters
 
 
-class Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter : public Entity
+class Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter : public ydk::Entity
 {
     public:
         InterfaceCounter();
@@ -2803,37 +3467,39 @@ class Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_name_xr; //type: string
-        YLeaf in_path_messages; //type: uint64
-        YLeaf in_path_error_messages; //type: uint64
-        YLeaf in_path_tear_messages; //type: uint64
-        YLeaf in_reservation_messages; //type: uint64
-        YLeaf in_reservation_error_messages; //type: uint64
-        YLeaf in_reservation_tear_messages; //type: uint64
-        YLeaf in_hello_messages; //type: uint64
-        YLeaf in_srefresh_messages; //type: uint64
-        YLeaf in_ack_messages; //type: uint64
-        YLeaf out_path_messages; //type: uint64
-        YLeaf out_path_error_messages; //type: uint64
-        YLeaf out_path_tear_messages; //type: uint64
-        YLeaf out_reservation_messages; //type: uint64
-        YLeaf out_reservation_error_messages; //type: uint64
-        YLeaf out_reservation_tear_messages; //type: uint64
-        YLeaf out_hello_messages; //type: uint64
-        YLeaf out_srefresh_messages; //type: uint64
-        YLeaf out_ack_messages; //type: uint64
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf in_path_messages; //type: uint64
+        ydk::YLeaf in_path_error_messages; //type: uint64
+        ydk::YLeaf in_path_tear_messages; //type: uint64
+        ydk::YLeaf in_reservation_messages; //type: uint64
+        ydk::YLeaf in_reservation_error_messages; //type: uint64
+        ydk::YLeaf in_reservation_tear_messages; //type: uint64
+        ydk::YLeaf in_hello_messages; //type: uint64
+        ydk::YLeaf in_srefresh_messages; //type: uint64
+        ydk::YLeaf in_ack_messages; //type: uint64
+        ydk::YLeaf out_path_messages; //type: uint64
+        ydk::YLeaf out_path_error_messages; //type: uint64
+        ydk::YLeaf out_path_tear_messages; //type: uint64
+        ydk::YLeaf out_reservation_messages; //type: uint64
+        ydk::YLeaf out_reservation_error_messages; //type: uint64
+        ydk::YLeaf out_reservation_tear_messages; //type: uint64
+        ydk::YLeaf out_hello_messages; //type: uint64
+        ydk::YLeaf out_srefresh_messages; //type: uint64
+        ydk::YLeaf out_ack_messages; //type: uint64
 
 }; // Rsvp::OpenConfig::InterfaceCounters::InterfaceCounter
 
 
-class Rsvp::Counters : public Entity
+class Rsvp::Counters : public ydk::Entity
 {
     public:
         Counters();
@@ -2841,11 +3507,13 @@ class Rsvp::Counters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceMessages; //type: Rsvp::Counters::InterfaceMessages
         class MessageSummary; //type: Rsvp::Counters::MessageSummary
@@ -2870,7 +3538,7 @@ class Rsvp::Counters : public Entity
 }; // Rsvp::Counters
 
 
-class Rsvp::Counters::InterfaceMessages : public Entity
+class Rsvp::Counters::InterfaceMessages : public ydk::Entity
 {
     public:
         InterfaceMessages();
@@ -2878,11 +3546,13 @@ class Rsvp::Counters::InterfaceMessages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceMessage; //type: Rsvp::Counters::InterfaceMessages::InterfaceMessage
 
@@ -2891,7 +3561,7 @@ class Rsvp::Counters::InterfaceMessages : public Entity
 }; // Rsvp::Counters::InterfaceMessages
 
 
-class Rsvp::Counters::InterfaceMessages::InterfaceMessage : public Entity
+class Rsvp::Counters::InterfaceMessages::InterfaceMessage : public ydk::Entity
 {
     public:
         InterfaceMessage();
@@ -2899,16 +3569,18 @@ class Rsvp::Counters::InterfaceMessages::InterfaceMessage : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf retransmitted_messages; //type: uint32
-        YLeaf out_of_order_messages; //type: uint32
-        YLeaf rate_limited_messages; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf retransmitted_messages; //type: uint32
+        ydk::YLeaf out_of_order_messages; //type: uint32
+        ydk::YLeaf rate_limited_messages; //type: uint32
         class ReceivedMessages; //type: Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages
         class TransmittedMessages; //type: Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages
         class BundleReceivedMessages; //type: Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages
@@ -2922,7 +3594,7 @@ class Rsvp::Counters::InterfaceMessages::InterfaceMessage : public Entity
 }; // Rsvp::Counters::InterfaceMessages::InterfaceMessage
 
 
-class Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages : public Entity
+class Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages : public ydk::Entity
 {
     public:
         ReceivedMessages();
@@ -2930,30 +3602,32 @@ class Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: uint32
-        YLeaf reservation; //type: uint32
-        YLeaf path_error; //type: uint32
-        YLeaf reservation_error; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf bundle; //type: uint32
-        YLeaf ack; //type: uint32
-        YLeaf srefresh; //type: uint32
-        YLeaf hello; //type: uint32
-        YLeaf challenge; //type: uint32
-        YLeaf response; //type: uint32
+        ydk::YLeaf path; //type: uint32
+        ydk::YLeaf reservation; //type: uint32
+        ydk::YLeaf path_error; //type: uint32
+        ydk::YLeaf reservation_error; //type: uint32
+        ydk::YLeaf path_tear; //type: uint32
+        ydk::YLeaf reservation_tear; //type: uint32
+        ydk::YLeaf reservation_confirm; //type: uint32
+        ydk::YLeaf bundle; //type: uint32
+        ydk::YLeaf ack; //type: uint32
+        ydk::YLeaf srefresh; //type: uint32
+        ydk::YLeaf hello; //type: uint32
+        ydk::YLeaf challenge; //type: uint32
+        ydk::YLeaf response; //type: uint32
 
 }; // Rsvp::Counters::InterfaceMessages::InterfaceMessage::ReceivedMessages
 
 
-class Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages : public Entity
+class Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages : public ydk::Entity
 {
     public:
         TransmittedMessages();
@@ -2961,30 +3635,32 @@ class Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: uint32
-        YLeaf reservation; //type: uint32
-        YLeaf path_error; //type: uint32
-        YLeaf reservation_error; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf bundle; //type: uint32
-        YLeaf ack; //type: uint32
-        YLeaf srefresh; //type: uint32
-        YLeaf hello; //type: uint32
-        YLeaf challenge; //type: uint32
-        YLeaf response; //type: uint32
+        ydk::YLeaf path; //type: uint32
+        ydk::YLeaf reservation; //type: uint32
+        ydk::YLeaf path_error; //type: uint32
+        ydk::YLeaf reservation_error; //type: uint32
+        ydk::YLeaf path_tear; //type: uint32
+        ydk::YLeaf reservation_tear; //type: uint32
+        ydk::YLeaf reservation_confirm; //type: uint32
+        ydk::YLeaf bundle; //type: uint32
+        ydk::YLeaf ack; //type: uint32
+        ydk::YLeaf srefresh; //type: uint32
+        ydk::YLeaf hello; //type: uint32
+        ydk::YLeaf challenge; //type: uint32
+        ydk::YLeaf response; //type: uint32
 
 }; // Rsvp::Counters::InterfaceMessages::InterfaceMessage::TransmittedMessages
 
 
-class Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages : public Entity
+class Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages : public ydk::Entity
 {
     public:
         BundleReceivedMessages();
@@ -2992,30 +3668,32 @@ class Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessage
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: uint32
-        YLeaf reservation; //type: uint32
-        YLeaf path_error; //type: uint32
-        YLeaf reservation_error; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf bundle; //type: uint32
-        YLeaf ack; //type: uint32
-        YLeaf srefresh; //type: uint32
-        YLeaf hello; //type: uint32
-        YLeaf challenge; //type: uint32
-        YLeaf response; //type: uint32
+        ydk::YLeaf path; //type: uint32
+        ydk::YLeaf reservation; //type: uint32
+        ydk::YLeaf path_error; //type: uint32
+        ydk::YLeaf reservation_error; //type: uint32
+        ydk::YLeaf path_tear; //type: uint32
+        ydk::YLeaf reservation_tear; //type: uint32
+        ydk::YLeaf reservation_confirm; //type: uint32
+        ydk::YLeaf bundle; //type: uint32
+        ydk::YLeaf ack; //type: uint32
+        ydk::YLeaf srefresh; //type: uint32
+        ydk::YLeaf hello; //type: uint32
+        ydk::YLeaf challenge; //type: uint32
+        ydk::YLeaf response; //type: uint32
 
 }; // Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleReceivedMessages
 
 
-class Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMessages : public Entity
+class Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMessages : public ydk::Entity
 {
     public:
         BundleTransmittedMessages();
@@ -3023,30 +3701,32 @@ class Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMess
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: uint32
-        YLeaf reservation; //type: uint32
-        YLeaf path_error; //type: uint32
-        YLeaf reservation_error; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf bundle; //type: uint32
-        YLeaf ack; //type: uint32
-        YLeaf srefresh; //type: uint32
-        YLeaf hello; //type: uint32
-        YLeaf challenge; //type: uint32
-        YLeaf response; //type: uint32
+        ydk::YLeaf path; //type: uint32
+        ydk::YLeaf reservation; //type: uint32
+        ydk::YLeaf path_error; //type: uint32
+        ydk::YLeaf reservation_error; //type: uint32
+        ydk::YLeaf path_tear; //type: uint32
+        ydk::YLeaf reservation_tear; //type: uint32
+        ydk::YLeaf reservation_confirm; //type: uint32
+        ydk::YLeaf bundle; //type: uint32
+        ydk::YLeaf ack; //type: uint32
+        ydk::YLeaf srefresh; //type: uint32
+        ydk::YLeaf hello; //type: uint32
+        ydk::YLeaf challenge; //type: uint32
+        ydk::YLeaf response; //type: uint32
 
 }; // Rsvp::Counters::InterfaceMessages::InterfaceMessage::BundleTransmittedMessages
 
 
-class Rsvp::Counters::MessageSummary : public Entity
+class Rsvp::Counters::MessageSummary : public ydk::Entity
 {
     public:
         MessageSummary();
@@ -3054,15 +3734,17 @@ class Rsvp::Counters::MessageSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf retransmitted_messages; //type: uint32
-        YLeaf out_of_order_messages; //type: uint32
-        YLeaf rate_limited_messages; //type: uint32
+        ydk::YLeaf retransmitted_messages; //type: uint32
+        ydk::YLeaf out_of_order_messages; //type: uint32
+        ydk::YLeaf rate_limited_messages; //type: uint32
         class ReceivedMessages; //type: Rsvp::Counters::MessageSummary::ReceivedMessages
         class TransmittedMessages; //type: Rsvp::Counters::MessageSummary::TransmittedMessages
         class BundleReceivedMessages; //type: Rsvp::Counters::MessageSummary::BundleReceivedMessages
@@ -3076,7 +3758,7 @@ class Rsvp::Counters::MessageSummary : public Entity
 }; // Rsvp::Counters::MessageSummary
 
 
-class Rsvp::Counters::MessageSummary::ReceivedMessages : public Entity
+class Rsvp::Counters::MessageSummary::ReceivedMessages : public ydk::Entity
 {
     public:
         ReceivedMessages();
@@ -3084,30 +3766,32 @@ class Rsvp::Counters::MessageSummary::ReceivedMessages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: uint32
-        YLeaf reservation; //type: uint32
-        YLeaf path_error; //type: uint32
-        YLeaf reservation_error; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf bundle; //type: uint32
-        YLeaf ack; //type: uint32
-        YLeaf srefresh; //type: uint32
-        YLeaf hello; //type: uint32
-        YLeaf challenge; //type: uint32
-        YLeaf response; //type: uint32
+        ydk::YLeaf path; //type: uint32
+        ydk::YLeaf reservation; //type: uint32
+        ydk::YLeaf path_error; //type: uint32
+        ydk::YLeaf reservation_error; //type: uint32
+        ydk::YLeaf path_tear; //type: uint32
+        ydk::YLeaf reservation_tear; //type: uint32
+        ydk::YLeaf reservation_confirm; //type: uint32
+        ydk::YLeaf bundle; //type: uint32
+        ydk::YLeaf ack; //type: uint32
+        ydk::YLeaf srefresh; //type: uint32
+        ydk::YLeaf hello; //type: uint32
+        ydk::YLeaf challenge; //type: uint32
+        ydk::YLeaf response; //type: uint32
 
 }; // Rsvp::Counters::MessageSummary::ReceivedMessages
 
 
-class Rsvp::Counters::MessageSummary::TransmittedMessages : public Entity
+class Rsvp::Counters::MessageSummary::TransmittedMessages : public ydk::Entity
 {
     public:
         TransmittedMessages();
@@ -3115,30 +3799,32 @@ class Rsvp::Counters::MessageSummary::TransmittedMessages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: uint32
-        YLeaf reservation; //type: uint32
-        YLeaf path_error; //type: uint32
-        YLeaf reservation_error; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf bundle; //type: uint32
-        YLeaf ack; //type: uint32
-        YLeaf srefresh; //type: uint32
-        YLeaf hello; //type: uint32
-        YLeaf challenge; //type: uint32
-        YLeaf response; //type: uint32
+        ydk::YLeaf path; //type: uint32
+        ydk::YLeaf reservation; //type: uint32
+        ydk::YLeaf path_error; //type: uint32
+        ydk::YLeaf reservation_error; //type: uint32
+        ydk::YLeaf path_tear; //type: uint32
+        ydk::YLeaf reservation_tear; //type: uint32
+        ydk::YLeaf reservation_confirm; //type: uint32
+        ydk::YLeaf bundle; //type: uint32
+        ydk::YLeaf ack; //type: uint32
+        ydk::YLeaf srefresh; //type: uint32
+        ydk::YLeaf hello; //type: uint32
+        ydk::YLeaf challenge; //type: uint32
+        ydk::YLeaf response; //type: uint32
 
 }; // Rsvp::Counters::MessageSummary::TransmittedMessages
 
 
-class Rsvp::Counters::MessageSummary::BundleReceivedMessages : public Entity
+class Rsvp::Counters::MessageSummary::BundleReceivedMessages : public ydk::Entity
 {
     public:
         BundleReceivedMessages();
@@ -3146,30 +3832,32 @@ class Rsvp::Counters::MessageSummary::BundleReceivedMessages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: uint32
-        YLeaf reservation; //type: uint32
-        YLeaf path_error; //type: uint32
-        YLeaf reservation_error; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf bundle; //type: uint32
-        YLeaf ack; //type: uint32
-        YLeaf srefresh; //type: uint32
-        YLeaf hello; //type: uint32
-        YLeaf challenge; //type: uint32
-        YLeaf response; //type: uint32
+        ydk::YLeaf path; //type: uint32
+        ydk::YLeaf reservation; //type: uint32
+        ydk::YLeaf path_error; //type: uint32
+        ydk::YLeaf reservation_error; //type: uint32
+        ydk::YLeaf path_tear; //type: uint32
+        ydk::YLeaf reservation_tear; //type: uint32
+        ydk::YLeaf reservation_confirm; //type: uint32
+        ydk::YLeaf bundle; //type: uint32
+        ydk::YLeaf ack; //type: uint32
+        ydk::YLeaf srefresh; //type: uint32
+        ydk::YLeaf hello; //type: uint32
+        ydk::YLeaf challenge; //type: uint32
+        ydk::YLeaf response; //type: uint32
 
 }; // Rsvp::Counters::MessageSummary::BundleReceivedMessages
 
 
-class Rsvp::Counters::MessageSummary::BundleTransmittedMessages : public Entity
+class Rsvp::Counters::MessageSummary::BundleTransmittedMessages : public ydk::Entity
 {
     public:
         BundleTransmittedMessages();
@@ -3177,30 +3865,32 @@ class Rsvp::Counters::MessageSummary::BundleTransmittedMessages : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: uint32
-        YLeaf reservation; //type: uint32
-        YLeaf path_error; //type: uint32
-        YLeaf reservation_error; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf bundle; //type: uint32
-        YLeaf ack; //type: uint32
-        YLeaf srefresh; //type: uint32
-        YLeaf hello; //type: uint32
-        YLeaf challenge; //type: uint32
-        YLeaf response; //type: uint32
+        ydk::YLeaf path; //type: uint32
+        ydk::YLeaf reservation; //type: uint32
+        ydk::YLeaf path_error; //type: uint32
+        ydk::YLeaf reservation_error; //type: uint32
+        ydk::YLeaf path_tear; //type: uint32
+        ydk::YLeaf reservation_tear; //type: uint32
+        ydk::YLeaf reservation_confirm; //type: uint32
+        ydk::YLeaf bundle; //type: uint32
+        ydk::YLeaf ack; //type: uint32
+        ydk::YLeaf srefresh; //type: uint32
+        ydk::YLeaf hello; //type: uint32
+        ydk::YLeaf challenge; //type: uint32
+        ydk::YLeaf response; //type: uint32
 
 }; // Rsvp::Counters::MessageSummary::BundleTransmittedMessages
 
 
-class Rsvp::Counters::PrefixFiltering : public Entity
+class Rsvp::Counters::PrefixFiltering : public ydk::Entity
 {
     public:
         PrefixFiltering();
@@ -3208,11 +3898,13 @@ class Rsvp::Counters::PrefixFiltering : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Accesses; //type: Rsvp::Counters::PrefixFiltering::Accesses
         class Interfaces; //type: Rsvp::Counters::PrefixFiltering::Interfaces
@@ -3223,7 +3915,7 @@ class Rsvp::Counters::PrefixFiltering : public Entity
 }; // Rsvp::Counters::PrefixFiltering
 
 
-class Rsvp::Counters::PrefixFiltering::Accesses : public Entity
+class Rsvp::Counters::PrefixFiltering::Accesses : public ydk::Entity
 {
     public:
         Accesses();
@@ -3231,340 +3923,19 @@ class Rsvp::Counters::PrefixFiltering::Accesses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Access; //type: Rsvp::Counters::PrefixFiltering::Accesses::Access
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Accesses::Access> > access;
         
 }; // Rsvp::Counters::PrefixFiltering::Accesses
-
-
-class Rsvp::Counters::PrefixFiltering::Accesses::Access : public Entity
-{
-    public:
-        Access();
-        ~Access();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf access_list_name; //type: string
-        class Forwarded; //type: Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded
-        class LocallyDestined; //type: Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined
-        class Dropped; //type: Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped
-        class Total; //type: Rsvp::Counters::PrefixFiltering::Accesses::Access::Total
-
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped> dropped;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded> forwarded;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined> locally_destined;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Accesses::Access::Total> total;
-        
-}; // Rsvp::Counters::PrefixFiltering::Accesses::Access
-
-
-class Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded : public Entity
-{
-    public:
-        Forwarded();
-        ~Forwarded();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Accesses::Access::Forwarded
-
-
-class Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined : public Entity
-{
-    public:
-        LocallyDestined();
-        ~LocallyDestined();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Accesses::Access::LocallyDestined
-
-
-class Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped : public Entity
-{
-    public:
-        Dropped();
-        ~Dropped();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Accesses::Access::Dropped
-
-
-class Rsvp::Counters::PrefixFiltering::Accesses::Access::Total : public Entity
-{
-    public:
-        Total();
-        ~Total();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Accesses::Access::Total
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces : public Entity
-{
-    public:
-        Interfaces();
-        ~Interfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Summary; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Summary
-        class Interfaces_; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_
-
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_> interfaces;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Summary> summary;
-        
-}; // Rsvp::Counters::PrefixFiltering::Interfaces
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces::Summary : public Entity
-{
-    public:
-        Summary();
-        ~Summary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Forwarded; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded
-        class LocallyDestined; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined
-        class Dropped; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped
-        class DefaultActionDropped; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped
-        class DefaultActionProcessed; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed
-        class Total; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total
-
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped> default_action_dropped;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed> default_action_processed;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped> dropped;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded> forwarded;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined> locally_destined;
-        std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total> total;
-        
-}; // Rsvp::Counters::PrefixFiltering::Interfaces::Summary
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded : public Entity
-{
-    public:
-        Forwarded();
-        ~Forwarded();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Forwarded
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined : public Entity
-{
-    public:
-        LocallyDestined();
-        ~LocallyDestined();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Interfaces::Summary::LocallyDestined
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped : public Entity
-{
-    public:
-        Dropped();
-        ~Dropped();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Dropped
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped : public Entity
-{
-    public:
-        DefaultActionDropped();
-        ~DefaultActionDropped();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionDropped
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed : public Entity
-{
-    public:
-        DefaultActionProcessed();
-        ~DefaultActionProcessed();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Interfaces::Summary::DefaultActionProcessed
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total : public Entity
-{
-    public:
-        Total();
-        ~Total();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf path; //type: uint32
-        YLeaf path_tear; //type: uint32
-        YLeaf reservation_confirm; //type: uint32
-        YLeaf total; //type: uint32
-
-}; // Rsvp::Counters::PrefixFiltering::Interfaces::Summary::Total
-
-
-class Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_ : public Entity
-{
-    public:
-        Interfaces_();
-        ~Interfaces_();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class Interface; //type: Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rsvp_oper::Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_::Interface> > interface;
-        
-}; // Rsvp::Counters::PrefixFiltering::Interfaces::Interfaces_
 
 
 }

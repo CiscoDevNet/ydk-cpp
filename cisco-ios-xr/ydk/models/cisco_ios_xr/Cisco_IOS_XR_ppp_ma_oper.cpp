@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ppp_ma_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ppp_ma_oper {
 
 Ppp::Ppp()
@@ -29,7 +31,7 @@ bool Ppp::has_data() const
 
 bool Ppp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::get_children() const
     return children;
 }
 
-void Ppp::set_value(const std::string & value_path, std::string value)
+void Ppp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ppp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Ppp::get_bundle_name() const
 augment_capabilities_function Ppp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Ppp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ppp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool Ppp::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ppp::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::get_children() const
     return children;
 }
 
-void Ppp::Nodes::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Node()
@@ -251,8 +280,8 @@ bool Ppp::Nodes::Node::has_data() const
 
 bool Ppp::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (node_interface_statistics !=  nullptr && node_interface_statistics->has_operation())
 	|| (node_interfaces !=  nullptr && node_interfaces->has_operation())
 	|| (sso_alerts !=  nullptr && sso_alerts->has_operation())
@@ -285,7 +314,7 @@ const EntityPath Ppp::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -402,12 +431,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::get_children() 
     return children;
 }
 
-void Ppp::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-interface-statistics" || name == "node-interfaces" || name == "sso-alerts" || name == "sso-groups" || name == "sso-summary" || name == "statistics" || name == "summary" || name == "node-name")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Statistics::Statistics()
@@ -444,7 +490,7 @@ bool Ppp::Nodes::Node::Statistics::has_operation() const
         if(ncp_statistics_array[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (authentication_statistics !=  nullptr && authentication_statistics->has_operation())
 	|| (lcp_statistics !=  nullptr && lcp_statistics->has_operation());
 }
@@ -539,8 +585,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::get
     return children;
 }
 
-void Ppp::Nodes::Node::Statistics::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-statistics" || name == "lcp-statistics" || name == "ncp-statistics-array")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Statistics::LcpStatistics::LcpStatistics()
@@ -607,31 +664,31 @@ bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_data() const
 
 bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(code_rej_rcvd.operation)
-	|| is_set(code_rej_sent.operation)
-	|| is_set(conf_ack_rcvd.operation)
-	|| is_set(conf_ack_sent.operation)
-	|| is_set(conf_nak_rcvd.operation)
-	|| is_set(conf_nak_sent.operation)
-	|| is_set(conf_rej_rcvd.operation)
-	|| is_set(conf_rej_sent.operation)
-	|| is_set(conf_req_rcvd.operation)
-	|| is_set(conf_req_sent.operation)
-	|| is_set(disc_req_rcvd.operation)
-	|| is_set(disc_req_sent.operation)
-	|| is_set(echo_rep_rcvd.operation)
-	|| is_set(echo_rep_sent.operation)
-	|| is_set(echo_req_rcvd.operation)
-	|| is_set(echo_req_sent.operation)
-	|| is_set(link_error.operation)
-	|| is_set(link_up.operation)
-	|| is_set(proto_rej_rcvd.operation)
-	|| is_set(proto_rej_sent.operation)
-	|| is_set(term_ack_rcvd.operation)
-	|| is_set(term_ack_sent.operation)
-	|| is_set(term_req_rcvd.operation)
-	|| is_set(term_req_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(code_rej_rcvd.yfilter)
+	|| ydk::is_set(code_rej_sent.yfilter)
+	|| ydk::is_set(conf_ack_rcvd.yfilter)
+	|| ydk::is_set(conf_ack_sent.yfilter)
+	|| ydk::is_set(conf_nak_rcvd.yfilter)
+	|| ydk::is_set(conf_nak_sent.yfilter)
+	|| ydk::is_set(conf_rej_rcvd.yfilter)
+	|| ydk::is_set(conf_rej_sent.yfilter)
+	|| ydk::is_set(conf_req_rcvd.yfilter)
+	|| ydk::is_set(conf_req_sent.yfilter)
+	|| ydk::is_set(disc_req_rcvd.yfilter)
+	|| ydk::is_set(disc_req_sent.yfilter)
+	|| ydk::is_set(echo_rep_rcvd.yfilter)
+	|| ydk::is_set(echo_rep_sent.yfilter)
+	|| ydk::is_set(echo_req_rcvd.yfilter)
+	|| ydk::is_set(echo_req_sent.yfilter)
+	|| ydk::is_set(link_error.yfilter)
+	|| ydk::is_set(link_up.yfilter)
+	|| ydk::is_set(proto_rej_rcvd.yfilter)
+	|| ydk::is_set(proto_rej_sent.yfilter)
+	|| ydk::is_set(term_ack_rcvd.yfilter)
+	|| ydk::is_set(term_ack_sent.yfilter)
+	|| ydk::is_set(term_req_rcvd.yfilter)
+	|| ydk::is_set(term_req_sent.yfilter);
 }
 
 std::string Ppp::Nodes::Node::Statistics::LcpStatistics::get_segment_path() const
@@ -657,30 +714,30 @@ const EntityPath Ppp::Nodes::Node::Statistics::LcpStatistics::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (code_rej_rcvd.is_set || is_set(code_rej_rcvd.operation)) leaf_name_data.push_back(code_rej_rcvd.get_name_leafdata());
-    if (code_rej_sent.is_set || is_set(code_rej_sent.operation)) leaf_name_data.push_back(code_rej_sent.get_name_leafdata());
-    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.operation)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
-    if (conf_ack_sent.is_set || is_set(conf_ack_sent.operation)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
-    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.operation)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
-    if (conf_nak_sent.is_set || is_set(conf_nak_sent.operation)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
-    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.operation)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
-    if (conf_rej_sent.is_set || is_set(conf_rej_sent.operation)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
-    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.operation)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
-    if (conf_req_sent.is_set || is_set(conf_req_sent.operation)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
-    if (disc_req_rcvd.is_set || is_set(disc_req_rcvd.operation)) leaf_name_data.push_back(disc_req_rcvd.get_name_leafdata());
-    if (disc_req_sent.is_set || is_set(disc_req_sent.operation)) leaf_name_data.push_back(disc_req_sent.get_name_leafdata());
-    if (echo_rep_rcvd.is_set || is_set(echo_rep_rcvd.operation)) leaf_name_data.push_back(echo_rep_rcvd.get_name_leafdata());
-    if (echo_rep_sent.is_set || is_set(echo_rep_sent.operation)) leaf_name_data.push_back(echo_rep_sent.get_name_leafdata());
-    if (echo_req_rcvd.is_set || is_set(echo_req_rcvd.operation)) leaf_name_data.push_back(echo_req_rcvd.get_name_leafdata());
-    if (echo_req_sent.is_set || is_set(echo_req_sent.operation)) leaf_name_data.push_back(echo_req_sent.get_name_leafdata());
-    if (link_error.is_set || is_set(link_error.operation)) leaf_name_data.push_back(link_error.get_name_leafdata());
-    if (link_up.is_set || is_set(link_up.operation)) leaf_name_data.push_back(link_up.get_name_leafdata());
-    if (proto_rej_rcvd.is_set || is_set(proto_rej_rcvd.operation)) leaf_name_data.push_back(proto_rej_rcvd.get_name_leafdata());
-    if (proto_rej_sent.is_set || is_set(proto_rej_sent.operation)) leaf_name_data.push_back(proto_rej_sent.get_name_leafdata());
-    if (term_ack_rcvd.is_set || is_set(term_ack_rcvd.operation)) leaf_name_data.push_back(term_ack_rcvd.get_name_leafdata());
-    if (term_ack_sent.is_set || is_set(term_ack_sent.operation)) leaf_name_data.push_back(term_ack_sent.get_name_leafdata());
-    if (term_req_rcvd.is_set || is_set(term_req_rcvd.operation)) leaf_name_data.push_back(term_req_rcvd.get_name_leafdata());
-    if (term_req_sent.is_set || is_set(term_req_sent.operation)) leaf_name_data.push_back(term_req_sent.get_name_leafdata());
+    if (code_rej_rcvd.is_set || is_set(code_rej_rcvd.yfilter)) leaf_name_data.push_back(code_rej_rcvd.get_name_leafdata());
+    if (code_rej_sent.is_set || is_set(code_rej_sent.yfilter)) leaf_name_data.push_back(code_rej_sent.get_name_leafdata());
+    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
+    if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
+    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
+    if (conf_nak_sent.is_set || is_set(conf_nak_sent.yfilter)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
+    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.yfilter)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
+    if (conf_rej_sent.is_set || is_set(conf_rej_sent.yfilter)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
+    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
+    if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
+    if (disc_req_rcvd.is_set || is_set(disc_req_rcvd.yfilter)) leaf_name_data.push_back(disc_req_rcvd.get_name_leafdata());
+    if (disc_req_sent.is_set || is_set(disc_req_sent.yfilter)) leaf_name_data.push_back(disc_req_sent.get_name_leafdata());
+    if (echo_rep_rcvd.is_set || is_set(echo_rep_rcvd.yfilter)) leaf_name_data.push_back(echo_rep_rcvd.get_name_leafdata());
+    if (echo_rep_sent.is_set || is_set(echo_rep_sent.yfilter)) leaf_name_data.push_back(echo_rep_sent.get_name_leafdata());
+    if (echo_req_rcvd.is_set || is_set(echo_req_rcvd.yfilter)) leaf_name_data.push_back(echo_req_rcvd.get_name_leafdata());
+    if (echo_req_sent.is_set || is_set(echo_req_sent.yfilter)) leaf_name_data.push_back(echo_req_sent.get_name_leafdata());
+    if (link_error.is_set || is_set(link_error.yfilter)) leaf_name_data.push_back(link_error.get_name_leafdata());
+    if (link_up.is_set || is_set(link_up.yfilter)) leaf_name_data.push_back(link_up.get_name_leafdata());
+    if (proto_rej_rcvd.is_set || is_set(proto_rej_rcvd.yfilter)) leaf_name_data.push_back(proto_rej_rcvd.get_name_leafdata());
+    if (proto_rej_sent.is_set || is_set(proto_rej_sent.yfilter)) leaf_name_data.push_back(proto_rej_sent.get_name_leafdata());
+    if (term_ack_rcvd.is_set || is_set(term_ack_rcvd.yfilter)) leaf_name_data.push_back(term_ack_rcvd.get_name_leafdata());
+    if (term_ack_sent.is_set || is_set(term_ack_sent.yfilter)) leaf_name_data.push_back(term_ack_sent.get_name_leafdata());
+    if (term_req_rcvd.is_set || is_set(term_req_rcvd.yfilter)) leaf_name_data.push_back(term_req_rcvd.get_name_leafdata());
+    if (term_req_sent.is_set || is_set(term_req_sent.yfilter)) leaf_name_data.push_back(term_req_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -699,104 +756,259 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::Lcp
     return children;
 }
 
-void Ppp::Nodes::Node::Statistics::LcpStatistics::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Statistics::LcpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "code-rej-rcvd")
     {
         code_rej_rcvd = value;
+        code_rej_rcvd.value_namespace = name_space;
+        code_rej_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "code-rej-sent")
     {
         code_rej_sent = value;
+        code_rej_sent.value_namespace = name_space;
+        code_rej_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-ack-rcvd")
     {
         conf_ack_rcvd = value;
+        conf_ack_rcvd.value_namespace = name_space;
+        conf_ack_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-ack-sent")
     {
         conf_ack_sent = value;
+        conf_ack_sent.value_namespace = name_space;
+        conf_ack_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-nak-rcvd")
     {
         conf_nak_rcvd = value;
+        conf_nak_rcvd.value_namespace = name_space;
+        conf_nak_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-nak-sent")
     {
         conf_nak_sent = value;
+        conf_nak_sent.value_namespace = name_space;
+        conf_nak_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-rej-rcvd")
     {
         conf_rej_rcvd = value;
+        conf_rej_rcvd.value_namespace = name_space;
+        conf_rej_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-rej-sent")
     {
         conf_rej_sent = value;
+        conf_rej_sent.value_namespace = name_space;
+        conf_rej_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-req-rcvd")
     {
         conf_req_rcvd = value;
+        conf_req_rcvd.value_namespace = name_space;
+        conf_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-req-sent")
     {
         conf_req_sent = value;
+        conf_req_sent.value_namespace = name_space;
+        conf_req_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disc-req-rcvd")
     {
         disc_req_rcvd = value;
+        disc_req_rcvd.value_namespace = name_space;
+        disc_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disc-req-sent")
     {
         disc_req_sent = value;
+        disc_req_sent.value_namespace = name_space;
+        disc_req_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-rep-rcvd")
     {
         echo_rep_rcvd = value;
+        echo_rep_rcvd.value_namespace = name_space;
+        echo_rep_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-rep-sent")
     {
         echo_rep_sent = value;
+        echo_rep_sent.value_namespace = name_space;
+        echo_rep_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-req-rcvd")
     {
         echo_req_rcvd = value;
+        echo_req_rcvd.value_namespace = name_space;
+        echo_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-req-sent")
     {
         echo_req_sent = value;
+        echo_req_sent.value_namespace = name_space;
+        echo_req_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-error")
     {
         link_error = value;
+        link_error.value_namespace = name_space;
+        link_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-up")
     {
         link_up = value;
+        link_up.value_namespace = name_space;
+        link_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-rej-rcvd")
     {
         proto_rej_rcvd = value;
+        proto_rej_rcvd.value_namespace = name_space;
+        proto_rej_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-rej-sent")
     {
         proto_rej_sent = value;
+        proto_rej_sent.value_namespace = name_space;
+        proto_rej_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "term-ack-rcvd")
     {
         term_ack_rcvd = value;
+        term_ack_rcvd.value_namespace = name_space;
+        term_ack_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "term-ack-sent")
     {
         term_ack_sent = value;
+        term_ack_sent.value_namespace = name_space;
+        term_ack_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "term-req-rcvd")
     {
         term_req_rcvd = value;
+        term_req_rcvd.value_namespace = name_space;
+        term_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "term-req-sent")
     {
         term_req_sent = value;
+        term_req_sent.value_namespace = name_space;
+        term_req_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::Statistics::LcpStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "code-rej-rcvd")
+    {
+        code_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "code-rej-sent")
+    {
+        code_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-ack-rcvd")
+    {
+        conf_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-ack-sent")
+    {
+        conf_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-rcvd")
+    {
+        conf_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-sent")
+    {
+        conf_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-rcvd")
+    {
+        conf_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-sent")
+    {
+        conf_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-rcvd")
+    {
+        conf_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-sent")
+    {
+        conf_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "disc-req-rcvd")
+    {
+        disc_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "disc-req-sent")
+    {
+        disc_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "echo-rep-rcvd")
+    {
+        echo_rep_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "echo-rep-sent")
+    {
+        echo_rep_sent.yfilter = yfilter;
+    }
+    if(value_path == "echo-req-rcvd")
+    {
+        echo_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "echo-req-sent")
+    {
+        echo_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "link-error")
+    {
+        link_error.yfilter = yfilter;
+    }
+    if(value_path == "link-up")
+    {
+        link_up.yfilter = yfilter;
+    }
+    if(value_path == "proto-rej-rcvd")
+    {
+        proto_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "proto-rej-sent")
+    {
+        proto_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "term-ack-rcvd")
+    {
+        term_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "term-ack-sent")
+    {
+        term_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "term-req-rcvd")
+    {
+        term_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "term-req-sent")
+    {
+        term_req_sent.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Statistics::LcpStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "code-rej-rcvd" || name == "code-rej-sent" || name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "disc-req-rcvd" || name == "disc-req-sent" || name == "echo-rep-rcvd" || name == "echo-rep-sent" || name == "echo-req-rcvd" || name == "echo-req-sent" || name == "link-error" || name == "link-up" || name == "proto-rej-rcvd" || name == "proto-rej-sent" || name == "term-ack-rcvd" || name == "term-ack-sent" || name == "term-req-rcvd" || name == "term-req-sent")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Statistics::AuthenticationStatistics::AuthenticationStatistics()
@@ -845,22 +1057,22 @@ bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_data() const
 
 bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auth_timeout_count.operation)
-	|| is_set(chap_chall_rcvd.operation)
-	|| is_set(chap_chall_sent.operation)
-	|| is_set(chap_rep_fail_rcvd.operation)
-	|| is_set(chap_rep_fail_sent.operation)
-	|| is_set(chap_rep_succ_rcvd.operation)
-	|| is_set(chap_rep_succ_sent.operation)
-	|| is_set(chap_resp_rcvd.operation)
-	|| is_set(chap_resp_sent.operation)
-	|| is_set(pap_ack_rcvd.operation)
-	|| is_set(pap_ack_sent.operation)
-	|| is_set(pap_nak_rcvd.operation)
-	|| is_set(pap_nak_sent.operation)
-	|| is_set(pap_req_rcvd.operation)
-	|| is_set(pap_req_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(auth_timeout_count.yfilter)
+	|| ydk::is_set(chap_chall_rcvd.yfilter)
+	|| ydk::is_set(chap_chall_sent.yfilter)
+	|| ydk::is_set(chap_rep_fail_rcvd.yfilter)
+	|| ydk::is_set(chap_rep_fail_sent.yfilter)
+	|| ydk::is_set(chap_rep_succ_rcvd.yfilter)
+	|| ydk::is_set(chap_rep_succ_sent.yfilter)
+	|| ydk::is_set(chap_resp_rcvd.yfilter)
+	|| ydk::is_set(chap_resp_sent.yfilter)
+	|| ydk::is_set(pap_ack_rcvd.yfilter)
+	|| ydk::is_set(pap_ack_sent.yfilter)
+	|| ydk::is_set(pap_nak_rcvd.yfilter)
+	|| ydk::is_set(pap_nak_sent.yfilter)
+	|| ydk::is_set(pap_req_rcvd.yfilter)
+	|| ydk::is_set(pap_req_sent.yfilter);
 }
 
 std::string Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_segment_path() const
@@ -886,21 +1098,21 @@ const EntityPath Ppp::Nodes::Node::Statistics::AuthenticationStatistics::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auth_timeout_count.is_set || is_set(auth_timeout_count.operation)) leaf_name_data.push_back(auth_timeout_count.get_name_leafdata());
-    if (chap_chall_rcvd.is_set || is_set(chap_chall_rcvd.operation)) leaf_name_data.push_back(chap_chall_rcvd.get_name_leafdata());
-    if (chap_chall_sent.is_set || is_set(chap_chall_sent.operation)) leaf_name_data.push_back(chap_chall_sent.get_name_leafdata());
-    if (chap_rep_fail_rcvd.is_set || is_set(chap_rep_fail_rcvd.operation)) leaf_name_data.push_back(chap_rep_fail_rcvd.get_name_leafdata());
-    if (chap_rep_fail_sent.is_set || is_set(chap_rep_fail_sent.operation)) leaf_name_data.push_back(chap_rep_fail_sent.get_name_leafdata());
-    if (chap_rep_succ_rcvd.is_set || is_set(chap_rep_succ_rcvd.operation)) leaf_name_data.push_back(chap_rep_succ_rcvd.get_name_leafdata());
-    if (chap_rep_succ_sent.is_set || is_set(chap_rep_succ_sent.operation)) leaf_name_data.push_back(chap_rep_succ_sent.get_name_leafdata());
-    if (chap_resp_rcvd.is_set || is_set(chap_resp_rcvd.operation)) leaf_name_data.push_back(chap_resp_rcvd.get_name_leafdata());
-    if (chap_resp_sent.is_set || is_set(chap_resp_sent.operation)) leaf_name_data.push_back(chap_resp_sent.get_name_leafdata());
-    if (pap_ack_rcvd.is_set || is_set(pap_ack_rcvd.operation)) leaf_name_data.push_back(pap_ack_rcvd.get_name_leafdata());
-    if (pap_ack_sent.is_set || is_set(pap_ack_sent.operation)) leaf_name_data.push_back(pap_ack_sent.get_name_leafdata());
-    if (pap_nak_rcvd.is_set || is_set(pap_nak_rcvd.operation)) leaf_name_data.push_back(pap_nak_rcvd.get_name_leafdata());
-    if (pap_nak_sent.is_set || is_set(pap_nak_sent.operation)) leaf_name_data.push_back(pap_nak_sent.get_name_leafdata());
-    if (pap_req_rcvd.is_set || is_set(pap_req_rcvd.operation)) leaf_name_data.push_back(pap_req_rcvd.get_name_leafdata());
-    if (pap_req_sent.is_set || is_set(pap_req_sent.operation)) leaf_name_data.push_back(pap_req_sent.get_name_leafdata());
+    if (auth_timeout_count.is_set || is_set(auth_timeout_count.yfilter)) leaf_name_data.push_back(auth_timeout_count.get_name_leafdata());
+    if (chap_chall_rcvd.is_set || is_set(chap_chall_rcvd.yfilter)) leaf_name_data.push_back(chap_chall_rcvd.get_name_leafdata());
+    if (chap_chall_sent.is_set || is_set(chap_chall_sent.yfilter)) leaf_name_data.push_back(chap_chall_sent.get_name_leafdata());
+    if (chap_rep_fail_rcvd.is_set || is_set(chap_rep_fail_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_fail_rcvd.get_name_leafdata());
+    if (chap_rep_fail_sent.is_set || is_set(chap_rep_fail_sent.yfilter)) leaf_name_data.push_back(chap_rep_fail_sent.get_name_leafdata());
+    if (chap_rep_succ_rcvd.is_set || is_set(chap_rep_succ_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_succ_rcvd.get_name_leafdata());
+    if (chap_rep_succ_sent.is_set || is_set(chap_rep_succ_sent.yfilter)) leaf_name_data.push_back(chap_rep_succ_sent.get_name_leafdata());
+    if (chap_resp_rcvd.is_set || is_set(chap_resp_rcvd.yfilter)) leaf_name_data.push_back(chap_resp_rcvd.get_name_leafdata());
+    if (chap_resp_sent.is_set || is_set(chap_resp_sent.yfilter)) leaf_name_data.push_back(chap_resp_sent.get_name_leafdata());
+    if (pap_ack_rcvd.is_set || is_set(pap_ack_rcvd.yfilter)) leaf_name_data.push_back(pap_ack_rcvd.get_name_leafdata());
+    if (pap_ack_sent.is_set || is_set(pap_ack_sent.yfilter)) leaf_name_data.push_back(pap_ack_sent.get_name_leafdata());
+    if (pap_nak_rcvd.is_set || is_set(pap_nak_rcvd.yfilter)) leaf_name_data.push_back(pap_nak_rcvd.get_name_leafdata());
+    if (pap_nak_sent.is_set || is_set(pap_nak_sent.yfilter)) leaf_name_data.push_back(pap_nak_sent.get_name_leafdata());
+    if (pap_req_rcvd.is_set || is_set(pap_req_rcvd.yfilter)) leaf_name_data.push_back(pap_req_rcvd.get_name_leafdata());
+    if (pap_req_sent.is_set || is_set(pap_req_sent.yfilter)) leaf_name_data.push_back(pap_req_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -919,68 +1131,169 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::Aut
     return children;
 }
 
-void Ppp::Nodes::Node::Statistics::AuthenticationStatistics::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Statistics::AuthenticationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auth-timeout-count")
     {
         auth_timeout_count = value;
+        auth_timeout_count.value_namespace = name_space;
+        auth_timeout_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-chall-rcvd")
     {
         chap_chall_rcvd = value;
+        chap_chall_rcvd.value_namespace = name_space;
+        chap_chall_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-chall-sent")
     {
         chap_chall_sent = value;
+        chap_chall_sent.value_namespace = name_space;
+        chap_chall_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-rep-fail-rcvd")
     {
         chap_rep_fail_rcvd = value;
+        chap_rep_fail_rcvd.value_namespace = name_space;
+        chap_rep_fail_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-rep-fail-sent")
     {
         chap_rep_fail_sent = value;
+        chap_rep_fail_sent.value_namespace = name_space;
+        chap_rep_fail_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-rep-succ-rcvd")
     {
         chap_rep_succ_rcvd = value;
+        chap_rep_succ_rcvd.value_namespace = name_space;
+        chap_rep_succ_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-rep-succ-sent")
     {
         chap_rep_succ_sent = value;
+        chap_rep_succ_sent.value_namespace = name_space;
+        chap_rep_succ_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-resp-rcvd")
     {
         chap_resp_rcvd = value;
+        chap_resp_rcvd.value_namespace = name_space;
+        chap_resp_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-resp-sent")
     {
         chap_resp_sent = value;
+        chap_resp_sent.value_namespace = name_space;
+        chap_resp_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-ack-rcvd")
     {
         pap_ack_rcvd = value;
+        pap_ack_rcvd.value_namespace = name_space;
+        pap_ack_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-ack-sent")
     {
         pap_ack_sent = value;
+        pap_ack_sent.value_namespace = name_space;
+        pap_ack_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-nak-rcvd")
     {
         pap_nak_rcvd = value;
+        pap_nak_rcvd.value_namespace = name_space;
+        pap_nak_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-nak-sent")
     {
         pap_nak_sent = value;
+        pap_nak_sent.value_namespace = name_space;
+        pap_nak_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-req-rcvd")
     {
         pap_req_rcvd = value;
+        pap_req_rcvd.value_namespace = name_space;
+        pap_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-req-sent")
     {
         pap_req_sent = value;
+        pap_req_sent.value_namespace = name_space;
+        pap_req_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::Statistics::AuthenticationStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auth-timeout-count")
+    {
+        auth_timeout_count.yfilter = yfilter;
+    }
+    if(value_path == "chap-chall-rcvd")
+    {
+        chap_chall_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-chall-sent")
+    {
+        chap_chall_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-fail-rcvd")
+    {
+        chap_rep_fail_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-fail-sent")
+    {
+        chap_rep_fail_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-succ-rcvd")
+    {
+        chap_rep_succ_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-succ-sent")
+    {
+        chap_rep_succ_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-resp-rcvd")
+    {
+        chap_resp_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-resp-sent")
+    {
+        chap_resp_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-ack-rcvd")
+    {
+        pap_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-ack-sent")
+    {
+        pap_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-nak-rcvd")
+    {
+        pap_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-nak-sent")
+    {
+        pap_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-req-rcvd")
+    {
+        pap_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-req-sent")
+    {
+        pap_req_sent.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Statistics::AuthenticationStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auth-timeout-count" || name == "chap-chall-rcvd" || name == "chap-chall-sent" || name == "chap-rep-fail-rcvd" || name == "chap-rep-fail-sent" || name == "chap-rep-succ-rcvd" || name == "chap-rep-succ-sent" || name == "chap-resp-rcvd" || name == "chap-resp-sent" || name == "pap-ack-rcvd" || name == "pap-ack-sent" || name == "pap-nak-rcvd" || name == "pap-nak-sent" || name == "pap-req-rcvd" || name == "pap-req-sent")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Statistics::NcpStatisticsArray::NcpStatisticsArray()
@@ -1029,22 +1342,22 @@ bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_data() const
 
 bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(conf_ack_rcvd.operation)
-	|| is_set(conf_ack_sent.operation)
-	|| is_set(conf_nak_rcvd.operation)
-	|| is_set(conf_nak_sent.operation)
-	|| is_set(conf_rej_rcvd.operation)
-	|| is_set(conf_rej_sent.operation)
-	|| is_set(conf_req_rcvd.operation)
-	|| is_set(conf_req_sent.operation)
-	|| is_set(ncp_identifier.operation)
-	|| is_set(proto_rej_rcvd.operation)
-	|| is_set(proto_rej_sent.operation)
-	|| is_set(term_ack_rcvd.operation)
-	|| is_set(term_ack_sent.operation)
-	|| is_set(term_req_rcvd.operation)
-	|| is_set(term_req_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(conf_ack_rcvd.yfilter)
+	|| ydk::is_set(conf_ack_sent.yfilter)
+	|| ydk::is_set(conf_nak_rcvd.yfilter)
+	|| ydk::is_set(conf_nak_sent.yfilter)
+	|| ydk::is_set(conf_rej_rcvd.yfilter)
+	|| ydk::is_set(conf_rej_sent.yfilter)
+	|| ydk::is_set(conf_req_rcvd.yfilter)
+	|| ydk::is_set(conf_req_sent.yfilter)
+	|| ydk::is_set(ncp_identifier.yfilter)
+	|| ydk::is_set(proto_rej_rcvd.yfilter)
+	|| ydk::is_set(proto_rej_sent.yfilter)
+	|| ydk::is_set(term_ack_rcvd.yfilter)
+	|| ydk::is_set(term_ack_sent.yfilter)
+	|| ydk::is_set(term_req_rcvd.yfilter)
+	|| ydk::is_set(term_req_sent.yfilter);
 }
 
 std::string Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_segment_path() const
@@ -1070,21 +1383,21 @@ const EntityPath Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.operation)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
-    if (conf_ack_sent.is_set || is_set(conf_ack_sent.operation)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
-    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.operation)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
-    if (conf_nak_sent.is_set || is_set(conf_nak_sent.operation)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
-    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.operation)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
-    if (conf_rej_sent.is_set || is_set(conf_rej_sent.operation)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
-    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.operation)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
-    if (conf_req_sent.is_set || is_set(conf_req_sent.operation)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
-    if (ncp_identifier.is_set || is_set(ncp_identifier.operation)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
-    if (proto_rej_rcvd.is_set || is_set(proto_rej_rcvd.operation)) leaf_name_data.push_back(proto_rej_rcvd.get_name_leafdata());
-    if (proto_rej_sent.is_set || is_set(proto_rej_sent.operation)) leaf_name_data.push_back(proto_rej_sent.get_name_leafdata());
-    if (term_ack_rcvd.is_set || is_set(term_ack_rcvd.operation)) leaf_name_data.push_back(term_ack_rcvd.get_name_leafdata());
-    if (term_ack_sent.is_set || is_set(term_ack_sent.operation)) leaf_name_data.push_back(term_ack_sent.get_name_leafdata());
-    if (term_req_rcvd.is_set || is_set(term_req_rcvd.operation)) leaf_name_data.push_back(term_req_rcvd.get_name_leafdata());
-    if (term_req_sent.is_set || is_set(term_req_sent.operation)) leaf_name_data.push_back(term_req_sent.get_name_leafdata());
+    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
+    if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
+    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
+    if (conf_nak_sent.is_set || is_set(conf_nak_sent.yfilter)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
+    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.yfilter)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
+    if (conf_rej_sent.is_set || is_set(conf_rej_sent.yfilter)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
+    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
+    if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
+    if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
+    if (proto_rej_rcvd.is_set || is_set(proto_rej_rcvd.yfilter)) leaf_name_data.push_back(proto_rej_rcvd.get_name_leafdata());
+    if (proto_rej_sent.is_set || is_set(proto_rej_sent.yfilter)) leaf_name_data.push_back(proto_rej_sent.get_name_leafdata());
+    if (term_ack_rcvd.is_set || is_set(term_ack_rcvd.yfilter)) leaf_name_data.push_back(term_ack_rcvd.get_name_leafdata());
+    if (term_ack_sent.is_set || is_set(term_ack_sent.yfilter)) leaf_name_data.push_back(term_ack_sent.get_name_leafdata());
+    if (term_req_rcvd.is_set || is_set(term_req_rcvd.yfilter)) leaf_name_data.push_back(term_req_rcvd.get_name_leafdata());
+    if (term_req_sent.is_set || is_set(term_req_sent.yfilter)) leaf_name_data.push_back(term_req_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1103,68 +1416,169 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Statistics::Ncp
     return children;
 }
 
-void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "conf-ack-rcvd")
     {
         conf_ack_rcvd = value;
+        conf_ack_rcvd.value_namespace = name_space;
+        conf_ack_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-ack-sent")
     {
         conf_ack_sent = value;
+        conf_ack_sent.value_namespace = name_space;
+        conf_ack_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-nak-rcvd")
     {
         conf_nak_rcvd = value;
+        conf_nak_rcvd.value_namespace = name_space;
+        conf_nak_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-nak-sent")
     {
         conf_nak_sent = value;
+        conf_nak_sent.value_namespace = name_space;
+        conf_nak_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-rej-rcvd")
     {
         conf_rej_rcvd = value;
+        conf_rej_rcvd.value_namespace = name_space;
+        conf_rej_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-rej-sent")
     {
         conf_rej_sent = value;
+        conf_rej_sent.value_namespace = name_space;
+        conf_rej_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-req-rcvd")
     {
         conf_req_rcvd = value;
+        conf_req_rcvd.value_namespace = name_space;
+        conf_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-req-sent")
     {
         conf_req_sent = value;
+        conf_req_sent.value_namespace = name_space;
+        conf_req_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ncp-identifier")
     {
         ncp_identifier = value;
+        ncp_identifier.value_namespace = name_space;
+        ncp_identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-rej-rcvd")
     {
         proto_rej_rcvd = value;
+        proto_rej_rcvd.value_namespace = name_space;
+        proto_rej_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-rej-sent")
     {
         proto_rej_sent = value;
+        proto_rej_sent.value_namespace = name_space;
+        proto_rej_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "term-ack-rcvd")
     {
         term_ack_rcvd = value;
+        term_ack_rcvd.value_namespace = name_space;
+        term_ack_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "term-ack-sent")
     {
         term_ack_sent = value;
+        term_ack_sent.value_namespace = name_space;
+        term_ack_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "term-req-rcvd")
     {
         term_req_rcvd = value;
+        term_req_rcvd.value_namespace = name_space;
+        term_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "term-req-sent")
     {
         term_req_sent = value;
+        term_req_sent.value_namespace = name_space;
+        term_req_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::Statistics::NcpStatisticsArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "conf-ack-rcvd")
+    {
+        conf_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-ack-sent")
+    {
+        conf_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-rcvd")
+    {
+        conf_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-sent")
+    {
+        conf_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-rcvd")
+    {
+        conf_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-sent")
+    {
+        conf_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-rcvd")
+    {
+        conf_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-sent")
+    {
+        conf_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "ncp-identifier")
+    {
+        ncp_identifier.yfilter = yfilter;
+    }
+    if(value_path == "proto-rej-rcvd")
+    {
+        proto_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "proto-rej-sent")
+    {
+        proto_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "term-ack-rcvd")
+    {
+        term_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "term-ack-sent")
+    {
+        term_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "term-req-rcvd")
+    {
+        term_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "term-req-sent")
+    {
+        term_req_sent.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Statistics::NcpStatisticsArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "ncp-identifier" || name == "proto-rej-rcvd" || name == "proto-rej-sent" || name == "term-ack-rcvd" || name == "term-ack-sent" || name == "term-req-rcvd" || name == "term-req-sent")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterfaces()
@@ -1193,7 +1607,7 @@ bool Ppp::Nodes::Node::NodeInterfaces::has_operation() const
         if(node_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::get_segment_path() const
@@ -1258,13 +1672,25 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-interface")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NodeInterface()
     :
     interface{YType::str, "interface"},
+    caps_idb_srg_role{YType::uint32, "caps-idb-srg-role"},
     ip_interworking_enabled{YType::boolean, "ip-interworking-enabled"},
     is_l2ac{YType::boolean, "is-l2ac"},
     is_lcp_delayed{YType::boolean, "is-lcp-delayed"},
@@ -1288,7 +1714,7 @@ Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NodeInterface()
     peer_mru{YType::uint16, "peer-mru"},
     provisioned{YType::boolean, "provisioned"},
     session_expires{YType::uint32, "session-expires"},
-    srg_role{YType::uint32, "srg-role"},
+    session_srg_role{YType::uint32, "session-srg-role"},
     ssrp_peer_id{YType::str, "ssrp-peer-id"},
     xconnect_id{YType::uint32, "xconnect-id"}
     	,
@@ -1317,6 +1743,7 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_data() const
             return true;
     }
     return interface.is_set
+	|| caps_idb_srg_role.is_set
 	|| ip_interworking_enabled.is_set
 	|| is_l2ac.is_set
 	|| is_lcp_delayed.is_set
@@ -1340,7 +1767,7 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_data() const
 	|| peer_mru.is_set
 	|| provisioned.is_set
 	|| session_expires.is_set
-	|| srg_role.is_set
+	|| session_srg_role.is_set
 	|| ssrp_peer_id.is_set
 	|| xconnect_id.is_set
 	|| (auth_info !=  nullptr && auth_info->has_data())
@@ -1355,34 +1782,35 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_operation() const
         if(ncp_info_array[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(ip_interworking_enabled.operation)
-	|| is_set(is_l2ac.operation)
-	|| is_set(is_lcp_delayed.operation)
-	|| is_set(is_loopback_detected.operation)
-	|| is_set(is_mcmp_enabled.operation)
-	|| is_set(is_ssrp_configured.operation)
-	|| is_set(is_tunneled_session.operation)
-	|| is_set(keepalive_period.operation)
-	|| is_set(keepalive_retry_count.operation)
-	|| is_set(lcp_state.operation)
-	|| is_set(lcpsso_state.operation)
-	|| is_set(line_state.operation)
-	|| is_set(local_ed.operation)
-	|| is_set(local_mcmp_classes.operation)
-	|| is_set(local_mrru.operation)
-	|| is_set(local_mru.operation)
-	|| is_set(parent_state.operation)
-	|| is_set(peer_ed.operation)
-	|| is_set(peer_mcmp_classes.operation)
-	|| is_set(peer_mrru.operation)
-	|| is_set(peer_mru.operation)
-	|| is_set(provisioned.operation)
-	|| is_set(session_expires.operation)
-	|| is_set(srg_role.operation)
-	|| is_set(ssrp_peer_id.operation)
-	|| is_set(xconnect_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(caps_idb_srg_role.yfilter)
+	|| ydk::is_set(ip_interworking_enabled.yfilter)
+	|| ydk::is_set(is_l2ac.yfilter)
+	|| ydk::is_set(is_lcp_delayed.yfilter)
+	|| ydk::is_set(is_loopback_detected.yfilter)
+	|| ydk::is_set(is_mcmp_enabled.yfilter)
+	|| ydk::is_set(is_ssrp_configured.yfilter)
+	|| ydk::is_set(is_tunneled_session.yfilter)
+	|| ydk::is_set(keepalive_period.yfilter)
+	|| ydk::is_set(keepalive_retry_count.yfilter)
+	|| ydk::is_set(lcp_state.yfilter)
+	|| ydk::is_set(lcpsso_state.yfilter)
+	|| ydk::is_set(line_state.yfilter)
+	|| ydk::is_set(local_ed.yfilter)
+	|| ydk::is_set(local_mcmp_classes.yfilter)
+	|| ydk::is_set(local_mrru.yfilter)
+	|| ydk::is_set(local_mru.yfilter)
+	|| ydk::is_set(parent_state.yfilter)
+	|| ydk::is_set(peer_ed.yfilter)
+	|| ydk::is_set(peer_mcmp_classes.yfilter)
+	|| ydk::is_set(peer_mrru.yfilter)
+	|| ydk::is_set(peer_mru.yfilter)
+	|| ydk::is_set(provisioned.yfilter)
+	|| ydk::is_set(session_expires.yfilter)
+	|| ydk::is_set(session_srg_role.yfilter)
+	|| ydk::is_set(ssrp_peer_id.yfilter)
+	|| ydk::is_set(xconnect_id.yfilter)
 	|| (auth_info !=  nullptr && auth_info->has_operation())
 	|| (configured_timeout !=  nullptr && configured_timeout->has_operation())
 	|| (mp_info !=  nullptr && mp_info->has_operation());
@@ -1411,33 +1839,34 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (ip_interworking_enabled.is_set || is_set(ip_interworking_enabled.operation)) leaf_name_data.push_back(ip_interworking_enabled.get_name_leafdata());
-    if (is_l2ac.is_set || is_set(is_l2ac.operation)) leaf_name_data.push_back(is_l2ac.get_name_leafdata());
-    if (is_lcp_delayed.is_set || is_set(is_lcp_delayed.operation)) leaf_name_data.push_back(is_lcp_delayed.get_name_leafdata());
-    if (is_loopback_detected.is_set || is_set(is_loopback_detected.operation)) leaf_name_data.push_back(is_loopback_detected.get_name_leafdata());
-    if (is_mcmp_enabled.is_set || is_set(is_mcmp_enabled.operation)) leaf_name_data.push_back(is_mcmp_enabled.get_name_leafdata());
-    if (is_ssrp_configured.is_set || is_set(is_ssrp_configured.operation)) leaf_name_data.push_back(is_ssrp_configured.get_name_leafdata());
-    if (is_tunneled_session.is_set || is_set(is_tunneled_session.operation)) leaf_name_data.push_back(is_tunneled_session.get_name_leafdata());
-    if (keepalive_period.is_set || is_set(keepalive_period.operation)) leaf_name_data.push_back(keepalive_period.get_name_leafdata());
-    if (keepalive_retry_count.is_set || is_set(keepalive_retry_count.operation)) leaf_name_data.push_back(keepalive_retry_count.get_name_leafdata());
-    if (lcp_state.is_set || is_set(lcp_state.operation)) leaf_name_data.push_back(lcp_state.get_name_leafdata());
-    if (lcpsso_state.is_set || is_set(lcpsso_state.operation)) leaf_name_data.push_back(lcpsso_state.get_name_leafdata());
-    if (line_state.is_set || is_set(line_state.operation)) leaf_name_data.push_back(line_state.get_name_leafdata());
-    if (local_ed.is_set || is_set(local_ed.operation)) leaf_name_data.push_back(local_ed.get_name_leafdata());
-    if (local_mcmp_classes.is_set || is_set(local_mcmp_classes.operation)) leaf_name_data.push_back(local_mcmp_classes.get_name_leafdata());
-    if (local_mrru.is_set || is_set(local_mrru.operation)) leaf_name_data.push_back(local_mrru.get_name_leafdata());
-    if (local_mru.is_set || is_set(local_mru.operation)) leaf_name_data.push_back(local_mru.get_name_leafdata());
-    if (parent_state.is_set || is_set(parent_state.operation)) leaf_name_data.push_back(parent_state.get_name_leafdata());
-    if (peer_ed.is_set || is_set(peer_ed.operation)) leaf_name_data.push_back(peer_ed.get_name_leafdata());
-    if (peer_mcmp_classes.is_set || is_set(peer_mcmp_classes.operation)) leaf_name_data.push_back(peer_mcmp_classes.get_name_leafdata());
-    if (peer_mrru.is_set || is_set(peer_mrru.operation)) leaf_name_data.push_back(peer_mrru.get_name_leafdata());
-    if (peer_mru.is_set || is_set(peer_mru.operation)) leaf_name_data.push_back(peer_mru.get_name_leafdata());
-    if (provisioned.is_set || is_set(provisioned.operation)) leaf_name_data.push_back(provisioned.get_name_leafdata());
-    if (session_expires.is_set || is_set(session_expires.operation)) leaf_name_data.push_back(session_expires.get_name_leafdata());
-    if (srg_role.is_set || is_set(srg_role.operation)) leaf_name_data.push_back(srg_role.get_name_leafdata());
-    if (ssrp_peer_id.is_set || is_set(ssrp_peer_id.operation)) leaf_name_data.push_back(ssrp_peer_id.get_name_leafdata());
-    if (xconnect_id.is_set || is_set(xconnect_id.operation)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (caps_idb_srg_role.is_set || is_set(caps_idb_srg_role.yfilter)) leaf_name_data.push_back(caps_idb_srg_role.get_name_leafdata());
+    if (ip_interworking_enabled.is_set || is_set(ip_interworking_enabled.yfilter)) leaf_name_data.push_back(ip_interworking_enabled.get_name_leafdata());
+    if (is_l2ac.is_set || is_set(is_l2ac.yfilter)) leaf_name_data.push_back(is_l2ac.get_name_leafdata());
+    if (is_lcp_delayed.is_set || is_set(is_lcp_delayed.yfilter)) leaf_name_data.push_back(is_lcp_delayed.get_name_leafdata());
+    if (is_loopback_detected.is_set || is_set(is_loopback_detected.yfilter)) leaf_name_data.push_back(is_loopback_detected.get_name_leafdata());
+    if (is_mcmp_enabled.is_set || is_set(is_mcmp_enabled.yfilter)) leaf_name_data.push_back(is_mcmp_enabled.get_name_leafdata());
+    if (is_ssrp_configured.is_set || is_set(is_ssrp_configured.yfilter)) leaf_name_data.push_back(is_ssrp_configured.get_name_leafdata());
+    if (is_tunneled_session.is_set || is_set(is_tunneled_session.yfilter)) leaf_name_data.push_back(is_tunneled_session.get_name_leafdata());
+    if (keepalive_period.is_set || is_set(keepalive_period.yfilter)) leaf_name_data.push_back(keepalive_period.get_name_leafdata());
+    if (keepalive_retry_count.is_set || is_set(keepalive_retry_count.yfilter)) leaf_name_data.push_back(keepalive_retry_count.get_name_leafdata());
+    if (lcp_state.is_set || is_set(lcp_state.yfilter)) leaf_name_data.push_back(lcp_state.get_name_leafdata());
+    if (lcpsso_state.is_set || is_set(lcpsso_state.yfilter)) leaf_name_data.push_back(lcpsso_state.get_name_leafdata());
+    if (line_state.is_set || is_set(line_state.yfilter)) leaf_name_data.push_back(line_state.get_name_leafdata());
+    if (local_ed.is_set || is_set(local_ed.yfilter)) leaf_name_data.push_back(local_ed.get_name_leafdata());
+    if (local_mcmp_classes.is_set || is_set(local_mcmp_classes.yfilter)) leaf_name_data.push_back(local_mcmp_classes.get_name_leafdata());
+    if (local_mrru.is_set || is_set(local_mrru.yfilter)) leaf_name_data.push_back(local_mrru.get_name_leafdata());
+    if (local_mru.is_set || is_set(local_mru.yfilter)) leaf_name_data.push_back(local_mru.get_name_leafdata());
+    if (parent_state.is_set || is_set(parent_state.yfilter)) leaf_name_data.push_back(parent_state.get_name_leafdata());
+    if (peer_ed.is_set || is_set(peer_ed.yfilter)) leaf_name_data.push_back(peer_ed.get_name_leafdata());
+    if (peer_mcmp_classes.is_set || is_set(peer_mcmp_classes.yfilter)) leaf_name_data.push_back(peer_mcmp_classes.get_name_leafdata());
+    if (peer_mrru.is_set || is_set(peer_mrru.yfilter)) leaf_name_data.push_back(peer_mrru.get_name_leafdata());
+    if (peer_mru.is_set || is_set(peer_mru.yfilter)) leaf_name_data.push_back(peer_mru.get_name_leafdata());
+    if (provisioned.is_set || is_set(provisioned.yfilter)) leaf_name_data.push_back(provisioned.get_name_leafdata());
+    if (session_expires.is_set || is_set(session_expires.yfilter)) leaf_name_data.push_back(session_expires.get_name_leafdata());
+    if (session_srg_role.is_set || is_set(session_srg_role.yfilter)) leaf_name_data.push_back(session_srg_role.get_name_leafdata());
+    if (ssrp_peer_id.is_set || is_set(ssrp_peer_id.yfilter)) leaf_name_data.push_back(ssrp_peer_id.get_name_leafdata());
+    if (xconnect_id.is_set || is_set(xconnect_id.yfilter)) leaf_name_data.push_back(xconnect_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1519,116 +1948,299 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "caps-idb-srg-role")
+    {
+        caps_idb_srg_role = value;
+        caps_idb_srg_role.value_namespace = name_space;
+        caps_idb_srg_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-interworking-enabled")
     {
         ip_interworking_enabled = value;
+        ip_interworking_enabled.value_namespace = name_space;
+        ip_interworking_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-l2ac")
     {
         is_l2ac = value;
+        is_l2ac.value_namespace = name_space;
+        is_l2ac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-lcp-delayed")
     {
         is_lcp_delayed = value;
+        is_lcp_delayed.value_namespace = name_space;
+        is_lcp_delayed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-loopback-detected")
     {
         is_loopback_detected = value;
+        is_loopback_detected.value_namespace = name_space;
+        is_loopback_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-mcmp-enabled")
     {
         is_mcmp_enabled = value;
+        is_mcmp_enabled.value_namespace = name_space;
+        is_mcmp_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-ssrp-configured")
     {
         is_ssrp_configured = value;
+        is_ssrp_configured.value_namespace = name_space;
+        is_ssrp_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-tunneled-session")
     {
         is_tunneled_session = value;
+        is_tunneled_session.value_namespace = name_space;
+        is_tunneled_session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "keepalive-period")
     {
         keepalive_period = value;
+        keepalive_period.value_namespace = name_space;
+        keepalive_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "keepalive-retry-count")
     {
         keepalive_retry_count = value;
+        keepalive_retry_count.value_namespace = name_space;
+        keepalive_retry_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lcp-state")
     {
         lcp_state = value;
+        lcp_state.value_namespace = name_space;
+        lcp_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lcpsso-state")
     {
         lcpsso_state = value;
+        lcpsso_state.value_namespace = name_space;
+        lcpsso_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-state")
     {
         line_state = value;
+        line_state.value_namespace = name_space;
+        line_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-ed")
     {
         local_ed = value;
+        local_ed.value_namespace = name_space;
+        local_ed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mcmp-classes")
     {
         local_mcmp_classes = value;
+        local_mcmp_classes.value_namespace = name_space;
+        local_mcmp_classes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mrru")
     {
         local_mrru = value;
+        local_mrru.value_namespace = name_space;
+        local_mrru.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mru")
     {
         local_mru = value;
+        local_mru.value_namespace = name_space;
+        local_mru.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parent-state")
     {
         parent_state = value;
+        parent_state.value_namespace = name_space;
+        parent_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-ed")
     {
         peer_ed = value;
+        peer_ed.value_namespace = name_space;
+        peer_ed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-mcmp-classes")
     {
         peer_mcmp_classes = value;
+        peer_mcmp_classes.value_namespace = name_space;
+        peer_mcmp_classes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-mrru")
     {
         peer_mrru = value;
+        peer_mrru.value_namespace = name_space;
+        peer_mrru.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-mru")
     {
         peer_mru = value;
+        peer_mru.value_namespace = name_space;
+        peer_mru.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "provisioned")
     {
         provisioned = value;
+        provisioned.value_namespace = name_space;
+        provisioned.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-expires")
     {
         session_expires = value;
+        session_expires.value_namespace = name_space;
+        session_expires.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "srg-role")
+    if(value_path == "session-srg-role")
     {
-        srg_role = value;
+        session_srg_role = value;
+        session_srg_role.value_namespace = name_space;
+        session_srg_role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssrp-peer-id")
     {
         ssrp_peer_id = value;
+        ssrp_peer_id.value_namespace = name_space;
+        ssrp_peer_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "xconnect-id")
     {
         xconnect_id = value;
+        xconnect_id.value_namespace = name_space;
+        xconnect_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "caps-idb-srg-role")
+    {
+        caps_idb_srg_role.yfilter = yfilter;
+    }
+    if(value_path == "ip-interworking-enabled")
+    {
+        ip_interworking_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-l2ac")
+    {
+        is_l2ac.yfilter = yfilter;
+    }
+    if(value_path == "is-lcp-delayed")
+    {
+        is_lcp_delayed.yfilter = yfilter;
+    }
+    if(value_path == "is-loopback-detected")
+    {
+        is_loopback_detected.yfilter = yfilter;
+    }
+    if(value_path == "is-mcmp-enabled")
+    {
+        is_mcmp_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-ssrp-configured")
+    {
+        is_ssrp_configured.yfilter = yfilter;
+    }
+    if(value_path == "is-tunneled-session")
+    {
+        is_tunneled_session.yfilter = yfilter;
+    }
+    if(value_path == "keepalive-period")
+    {
+        keepalive_period.yfilter = yfilter;
+    }
+    if(value_path == "keepalive-retry-count")
+    {
+        keepalive_retry_count.yfilter = yfilter;
+    }
+    if(value_path == "lcp-state")
+    {
+        lcp_state.yfilter = yfilter;
+    }
+    if(value_path == "lcpsso-state")
+    {
+        lcpsso_state.yfilter = yfilter;
+    }
+    if(value_path == "line-state")
+    {
+        line_state.yfilter = yfilter;
+    }
+    if(value_path == "local-ed")
+    {
+        local_ed.yfilter = yfilter;
+    }
+    if(value_path == "local-mcmp-classes")
+    {
+        local_mcmp_classes.yfilter = yfilter;
+    }
+    if(value_path == "local-mrru")
+    {
+        local_mrru.yfilter = yfilter;
+    }
+    if(value_path == "local-mru")
+    {
+        local_mru.yfilter = yfilter;
+    }
+    if(value_path == "parent-state")
+    {
+        parent_state.yfilter = yfilter;
+    }
+    if(value_path == "peer-ed")
+    {
+        peer_ed.yfilter = yfilter;
+    }
+    if(value_path == "peer-mcmp-classes")
+    {
+        peer_mcmp_classes.yfilter = yfilter;
+    }
+    if(value_path == "peer-mrru")
+    {
+        peer_mrru.yfilter = yfilter;
+    }
+    if(value_path == "peer-mru")
+    {
+        peer_mru.yfilter = yfilter;
+    }
+    if(value_path == "provisioned")
+    {
+        provisioned.yfilter = yfilter;
+    }
+    if(value_path == "session-expires")
+    {
+        session_expires.yfilter = yfilter;
+    }
+    if(value_path == "session-srg-role")
+    {
+        session_srg_role.yfilter = yfilter;
+    }
+    if(value_path == "ssrp-peer-id")
+    {
+        ssrp_peer_id.yfilter = yfilter;
+    }
+    if(value_path == "xconnect-id")
+    {
+        xconnect_id.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auth-info" || name == "configured-timeout" || name == "mp-info" || name == "ncp-info-array" || name == "interface" || name == "caps-idb-srg-role" || name == "ip-interworking-enabled" || name == "is-l2ac" || name == "is-lcp-delayed" || name == "is-loopback-detected" || name == "is-mcmp-enabled" || name == "is-ssrp-configured" || name == "is-tunneled-session" || name == "keepalive-period" || name == "keepalive-retry-count" || name == "lcp-state" || name == "lcpsso-state" || name == "line-state" || name == "local-ed" || name == "local-mcmp-classes" || name == "local-mrru" || name == "local-mru" || name == "parent-state" || name == "peer-ed" || name == "peer-mcmp-classes" || name == "peer-mrru" || name == "peer-mru" || name == "provisioned" || name == "session-expires" || name == "session-srg-role" || name == "ssrp-peer-id" || name == "xconnect-id")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpInfo()
@@ -1673,15 +2285,15 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::has_operation() co
         if(mp_member_info_array[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active_links.operation)
-	|| is_set(inactive_links.operation)
-	|| is_set(is_mp_bundle.operation)
-	|| is_set(is_mp_bundle_member.operation)
-	|| is_set(minimum_active_links.operation)
-	|| is_set(mp_bundle_interface.operation)
-	|| is_set(mp_group.operation)
-	|| is_set(mp_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active_links.yfilter)
+	|| ydk::is_set(inactive_links.yfilter)
+	|| ydk::is_set(is_mp_bundle.yfilter)
+	|| ydk::is_set(is_mp_bundle_member.yfilter)
+	|| ydk::is_set(minimum_active_links.yfilter)
+	|| ydk::is_set(mp_bundle_interface.yfilter)
+	|| ydk::is_set(mp_group.yfilter)
+	|| ydk::is_set(mp_state.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::get_segment_path() const
@@ -1707,14 +2319,14 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_links.is_set || is_set(active_links.operation)) leaf_name_data.push_back(active_links.get_name_leafdata());
-    if (inactive_links.is_set || is_set(inactive_links.operation)) leaf_name_data.push_back(inactive_links.get_name_leafdata());
-    if (is_mp_bundle.is_set || is_set(is_mp_bundle.operation)) leaf_name_data.push_back(is_mp_bundle.get_name_leafdata());
-    if (is_mp_bundle_member.is_set || is_set(is_mp_bundle_member.operation)) leaf_name_data.push_back(is_mp_bundle_member.get_name_leafdata());
-    if (minimum_active_links.is_set || is_set(minimum_active_links.operation)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
-    if (mp_bundle_interface.is_set || is_set(mp_bundle_interface.operation)) leaf_name_data.push_back(mp_bundle_interface.get_name_leafdata());
-    if (mp_group.is_set || is_set(mp_group.operation)) leaf_name_data.push_back(mp_group.get_name_leafdata());
-    if (mp_state.is_set || is_set(mp_state.operation)) leaf_name_data.push_back(mp_state.get_name_leafdata());
+    if (active_links.is_set || is_set(active_links.yfilter)) leaf_name_data.push_back(active_links.get_name_leafdata());
+    if (inactive_links.is_set || is_set(inactive_links.yfilter)) leaf_name_data.push_back(inactive_links.get_name_leafdata());
+    if (is_mp_bundle.is_set || is_set(is_mp_bundle.yfilter)) leaf_name_data.push_back(is_mp_bundle.get_name_leafdata());
+    if (is_mp_bundle_member.is_set || is_set(is_mp_bundle_member.yfilter)) leaf_name_data.push_back(is_mp_bundle_member.get_name_leafdata());
+    if (minimum_active_links.is_set || is_set(minimum_active_links.yfilter)) leaf_name_data.push_back(minimum_active_links.get_name_leafdata());
+    if (mp_bundle_interface.is_set || is_set(mp_bundle_interface.yfilter)) leaf_name_data.push_back(mp_bundle_interface.get_name_leafdata());
+    if (mp_group.is_set || is_set(mp_group.yfilter)) leaf_name_data.push_back(mp_group.get_name_leafdata());
+    if (mp_state.is_set || is_set(mp_state.yfilter)) leaf_name_data.push_back(mp_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1754,40 +2366,99 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-links")
     {
         active_links = value;
+        active_links.value_namespace = name_space;
+        active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inactive-links")
     {
         inactive_links = value;
+        inactive_links.value_namespace = name_space;
+        inactive_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-mp-bundle")
     {
         is_mp_bundle = value;
+        is_mp_bundle.value_namespace = name_space;
+        is_mp_bundle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-mp-bundle-member")
     {
         is_mp_bundle_member = value;
+        is_mp_bundle_member.value_namespace = name_space;
+        is_mp_bundle_member.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-active-links")
     {
         minimum_active_links = value;
+        minimum_active_links.value_namespace = name_space;
+        minimum_active_links.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mp-bundle-interface")
     {
         mp_bundle_interface = value;
+        mp_bundle_interface.value_namespace = name_space;
+        mp_bundle_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mp-group")
     {
         mp_group = value;
+        mp_group.value_namespace = name_space;
+        mp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mp-state")
     {
         mp_state = value;
+        mp_state.value_namespace = name_space;
+        mp_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-links")
+    {
+        active_links.yfilter = yfilter;
+    }
+    if(value_path == "inactive-links")
+    {
+        inactive_links.yfilter = yfilter;
+    }
+    if(value_path == "is-mp-bundle")
+    {
+        is_mp_bundle.yfilter = yfilter;
+    }
+    if(value_path == "is-mp-bundle-member")
+    {
+        is_mp_bundle_member.yfilter = yfilter;
+    }
+    if(value_path == "minimum-active-links")
+    {
+        minimum_active_links.yfilter = yfilter;
+    }
+    if(value_path == "mp-bundle-interface")
+    {
+        mp_bundle_interface.yfilter = yfilter;
+    }
+    if(value_path == "mp-group")
+    {
+        mp_group.yfilter = yfilter;
+    }
+    if(value_path == "mp-state")
+    {
+        mp_state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mp-member-info-array" || name == "active-links" || name == "inactive-links" || name == "is-mp-bundle" || name == "is-mp-bundle-member" || name == "minimum-active-links" || name == "mp-bundle-interface" || name == "mp-group" || name == "mp-state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::MpMemberInfoArray()
@@ -1810,9 +2481,9 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray:
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::get_segment_path() const
@@ -1838,8 +2509,8 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemb
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1858,16 +2529,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInfoArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface" || name == "state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::ConfiguredTimeout()
@@ -1890,9 +2584,9 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_dat
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(minutes.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(minutes.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::get_segment_path() const
@@ -1918,8 +2612,8 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTime
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (minutes.is_set || is_set(minutes.operation)) leaf_name_data.push_back(minutes.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1938,16 +2632,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "minutes")
     {
         minutes = value;
+        minutes.value_namespace = name_space;
+        minutes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minutes")
+    {
+        minutes.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::ConfiguredTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minutes" || name == "seconds")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::AuthInfo()
@@ -1982,15 +2699,15 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_data() const
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_authenticated.operation)
-	|| is_set(is_sso_authenticated.operation)
-	|| is_set(of_peer_auth.operation)
-	|| is_set(of_peer_name.operation)
-	|| is_set(of_peer_sso_state.operation)
-	|| is_set(of_us_auth.operation)
-	|| is_set(of_us_name.operation)
-	|| is_set(of_us_sso_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_authenticated.yfilter)
+	|| ydk::is_set(is_sso_authenticated.yfilter)
+	|| ydk::is_set(of_peer_auth.yfilter)
+	|| ydk::is_set(of_peer_name.yfilter)
+	|| ydk::is_set(of_peer_sso_state.yfilter)
+	|| ydk::is_set(of_us_auth.yfilter)
+	|| ydk::is_set(of_us_name.yfilter)
+	|| ydk::is_set(of_us_sso_state.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_segment_path() const
@@ -2016,14 +2733,14 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_authenticated.is_set || is_set(is_authenticated.operation)) leaf_name_data.push_back(is_authenticated.get_name_leafdata());
-    if (is_sso_authenticated.is_set || is_set(is_sso_authenticated.operation)) leaf_name_data.push_back(is_sso_authenticated.get_name_leafdata());
-    if (of_peer_auth.is_set || is_set(of_peer_auth.operation)) leaf_name_data.push_back(of_peer_auth.get_name_leafdata());
-    if (of_peer_name.is_set || is_set(of_peer_name.operation)) leaf_name_data.push_back(of_peer_name.get_name_leafdata());
-    if (of_peer_sso_state.is_set || is_set(of_peer_sso_state.operation)) leaf_name_data.push_back(of_peer_sso_state.get_name_leafdata());
-    if (of_us_auth.is_set || is_set(of_us_auth.operation)) leaf_name_data.push_back(of_us_auth.get_name_leafdata());
-    if (of_us_name.is_set || is_set(of_us_name.operation)) leaf_name_data.push_back(of_us_name.get_name_leafdata());
-    if (of_us_sso_state.is_set || is_set(of_us_sso_state.operation)) leaf_name_data.push_back(of_us_sso_state.get_name_leafdata());
+    if (is_authenticated.is_set || is_set(is_authenticated.yfilter)) leaf_name_data.push_back(is_authenticated.get_name_leafdata());
+    if (is_sso_authenticated.is_set || is_set(is_sso_authenticated.yfilter)) leaf_name_data.push_back(is_sso_authenticated.get_name_leafdata());
+    if (of_peer_auth.is_set || is_set(of_peer_auth.yfilter)) leaf_name_data.push_back(of_peer_auth.get_name_leafdata());
+    if (of_peer_name.is_set || is_set(of_peer_name.yfilter)) leaf_name_data.push_back(of_peer_name.get_name_leafdata());
+    if (of_peer_sso_state.is_set || is_set(of_peer_sso_state.yfilter)) leaf_name_data.push_back(of_peer_sso_state.get_name_leafdata());
+    if (of_us_auth.is_set || is_set(of_us_auth.yfilter)) leaf_name_data.push_back(of_us_auth.get_name_leafdata());
+    if (of_us_name.is_set || is_set(of_us_name.yfilter)) leaf_name_data.push_back(of_us_name.get_name_leafdata());
+    if (of_us_sso_state.is_set || is_set(of_us_sso_state.yfilter)) leaf_name_data.push_back(of_us_sso_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2042,40 +2759,99 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-authenticated")
     {
         is_authenticated = value;
+        is_authenticated.value_namespace = name_space;
+        is_authenticated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sso-authenticated")
     {
         is_sso_authenticated = value;
+        is_sso_authenticated.value_namespace = name_space;
+        is_sso_authenticated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "of-peer-auth")
     {
         of_peer_auth = value;
+        of_peer_auth.value_namespace = name_space;
+        of_peer_auth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "of-peer-name")
     {
         of_peer_name = value;
+        of_peer_name.value_namespace = name_space;
+        of_peer_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "of-peer-sso-state")
     {
         of_peer_sso_state = value;
+        of_peer_sso_state.value_namespace = name_space;
+        of_peer_sso_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "of-us-auth")
     {
         of_us_auth = value;
+        of_us_auth.value_namespace = name_space;
+        of_us_auth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "of-us-name")
     {
         of_us_name = value;
+        of_us_name.value_namespace = name_space;
+        of_us_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "of-us-sso-state")
     {
         of_us_sso_state = value;
+        of_us_sso_state.value_namespace = name_space;
+        of_us_sso_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-authenticated")
+    {
+        is_authenticated.yfilter = yfilter;
+    }
+    if(value_path == "is-sso-authenticated")
+    {
+        is_sso_authenticated.yfilter = yfilter;
+    }
+    if(value_path == "of-peer-auth")
+    {
+        of_peer_auth.yfilter = yfilter;
+    }
+    if(value_path == "of-peer-name")
+    {
+        of_peer_name.yfilter = yfilter;
+    }
+    if(value_path == "of-peer-sso-state")
+    {
+        of_peer_sso_state.yfilter = yfilter;
+    }
+    if(value_path == "of-us-auth")
+    {
+        of_us_auth.yfilter = yfilter;
+    }
+    if(value_path == "of-us-name")
+    {
+        of_us_name.yfilter = yfilter;
+    }
+    if(value_path == "of-us-sso-state")
+    {
+        of_us_sso_state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::AuthInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-authenticated" || name == "is-sso-authenticated" || name == "of-peer-auth" || name == "of-peer-name" || name == "of-peer-sso-state" || name == "of-us-auth" || name == "of-us-name" || name == "of-us-sso-state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfoArray()
@@ -2107,11 +2883,11 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::has_data() c
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_passive.operation)
-	|| is_set(ncp_identifier.operation)
-	|| is_set(ncp_state.operation)
-	|| is_set(ncpsso_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(is_passive.yfilter)
+	|| ydk::is_set(ncp_identifier.yfilter)
+	|| ydk::is_set(ncp_state.yfilter)
+	|| ydk::is_set(ncpsso_state.yfilter)
 	|| (ncp_info !=  nullptr && ncp_info->has_operation());
 }
 
@@ -2138,10 +2914,10 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_passive.is_set || is_set(is_passive.operation)) leaf_name_data.push_back(is_passive.get_name_leafdata());
-    if (ncp_identifier.is_set || is_set(ncp_identifier.operation)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
-    if (ncp_state.is_set || is_set(ncp_state.operation)) leaf_name_data.push_back(ncp_state.get_name_leafdata());
-    if (ncpsso_state.is_set || is_set(ncpsso_state.operation)) leaf_name_data.push_back(ncpsso_state.get_name_leafdata());
+    if (is_passive.is_set || is_set(is_passive.yfilter)) leaf_name_data.push_back(is_passive.get_name_leafdata());
+    if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
+    if (ncp_state.is_set || is_set(ncp_state.yfilter)) leaf_name_data.push_back(ncp_state.get_name_leafdata());
+    if (ncpsso_state.is_set || is_set(ncpsso_state.yfilter)) leaf_name_data.push_back(ncpsso_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2174,24 +2950,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-passive")
     {
         is_passive = value;
+        is_passive.value_namespace = name_space;
+        is_passive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ncp-identifier")
     {
         ncp_identifier = value;
+        ncp_identifier.value_namespace = name_space;
+        ncp_identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ncp-state")
     {
         ncp_state = value;
+        ncp_state.value_namespace = name_space;
+        ncp_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ncpsso-state")
     {
         ncpsso_state = value;
+        ncpsso_state.value_namespace = name_space;
+        ncpsso_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-passive")
+    {
+        is_passive.yfilter = yfilter;
+    }
+    if(value_path == "ncp-identifier")
+    {
+        ncp_identifier.yfilter = yfilter;
+    }
+    if(value_path == "ncp-state")
+    {
+        ncp_state.yfilter = yfilter;
+    }
+    if(value_path == "ncpsso-state")
+    {
+        ncpsso_state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ncp-info" || name == "is-passive" || name == "ncp-identifier" || name == "ncp-state" || name == "ncpsso-state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::NcpInfo()
@@ -2225,8 +3036,8 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::has
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (ipcp_info !=  nullptr && ipcp_info->has_operation())
 	|| (ipcpiw_info !=  nullptr && ipcpiw_info->has_operation())
 	|| (ipv6cp_info !=  nullptr && ipv6cp_info->has_operation());
@@ -2255,7 +3066,7 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2316,12 +3127,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipcp-info" || name == "ipcpiw-info" || name == "ipv6cp-info" || name == "type")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::IpcpInfo()
@@ -2365,15 +3193,15 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipc
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dns_primary.operation)
-	|| is_set(dns_secondary.operation)
-	|| is_set(is_iphc_configured.operation)
-	|| is_set(local_address.operation)
-	|| is_set(peer_address.operation)
-	|| is_set(peer_netmask.operation)
-	|| is_set(wins_primary.operation)
-	|| is_set(wins_secondary.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(dns_primary.yfilter)
+	|| ydk::is_set(dns_secondary.yfilter)
+	|| ydk::is_set(is_iphc_configured.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(peer_address.yfilter)
+	|| ydk::is_set(peer_netmask.yfilter)
+	|| ydk::is_set(wins_primary.yfilter)
+	|| ydk::is_set(wins_secondary.yfilter)
 	|| (local_iphc_options !=  nullptr && local_iphc_options->has_operation())
 	|| (peer_iphc_options !=  nullptr && peer_iphc_options->has_operation());
 }
@@ -2401,14 +3229,14 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dns_primary.is_set || is_set(dns_primary.operation)) leaf_name_data.push_back(dns_primary.get_name_leafdata());
-    if (dns_secondary.is_set || is_set(dns_secondary.operation)) leaf_name_data.push_back(dns_secondary.get_name_leafdata());
-    if (is_iphc_configured.is_set || is_set(is_iphc_configured.operation)) leaf_name_data.push_back(is_iphc_configured.get_name_leafdata());
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (peer_address.is_set || is_set(peer_address.operation)) leaf_name_data.push_back(peer_address.get_name_leafdata());
-    if (peer_netmask.is_set || is_set(peer_netmask.operation)) leaf_name_data.push_back(peer_netmask.get_name_leafdata());
-    if (wins_primary.is_set || is_set(wins_primary.operation)) leaf_name_data.push_back(wins_primary.get_name_leafdata());
-    if (wins_secondary.is_set || is_set(wins_secondary.operation)) leaf_name_data.push_back(wins_secondary.get_name_leafdata());
+    if (dns_primary.is_set || is_set(dns_primary.yfilter)) leaf_name_data.push_back(dns_primary.get_name_leafdata());
+    if (dns_secondary.is_set || is_set(dns_secondary.yfilter)) leaf_name_data.push_back(dns_secondary.get_name_leafdata());
+    if (is_iphc_configured.is_set || is_set(is_iphc_configured.yfilter)) leaf_name_data.push_back(is_iphc_configured.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
+    if (peer_netmask.is_set || is_set(peer_netmask.yfilter)) leaf_name_data.push_back(peer_netmask.get_name_leafdata());
+    if (wins_primary.is_set || is_set(wins_primary.yfilter)) leaf_name_data.push_back(wins_primary.get_name_leafdata());
+    if (wins_secondary.is_set || is_set(wins_secondary.yfilter)) leaf_name_data.push_back(wins_secondary.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2455,40 +3283,99 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dns-primary")
     {
         dns_primary = value;
+        dns_primary.value_namespace = name_space;
+        dns_primary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dns-secondary")
     {
         dns_secondary = value;
+        dns_secondary.value_namespace = name_space;
+        dns_secondary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-iphc-configured")
     {
         is_iphc_configured = value;
+        is_iphc_configured.value_namespace = name_space;
+        is_iphc_configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-address")
     {
         peer_address = value;
+        peer_address.value_namespace = name_space;
+        peer_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-netmask")
     {
         peer_netmask = value;
+        peer_netmask.value_namespace = name_space;
+        peer_netmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wins-primary")
     {
         wins_primary = value;
+        wins_primary.value_namespace = name_space;
+        wins_primary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wins-secondary")
     {
         wins_secondary = value;
+        wins_secondary.value_namespace = name_space;
+        wins_secondary.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dns-primary")
+    {
+        dns_primary.yfilter = yfilter;
+    }
+    if(value_path == "dns-secondary")
+    {
+        dns_secondary.yfilter = yfilter;
+    }
+    if(value_path == "is-iphc-configured")
+    {
+        is_iphc_configured.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "peer-address")
+    {
+        peer_address.yfilter = yfilter;
+    }
+    if(value_path == "peer-netmask")
+    {
+        peer_netmask.yfilter = yfilter;
+    }
+    if(value_path == "wins-primary")
+    {
+        wins_primary.yfilter = yfilter;
+    }
+    if(value_path == "wins-secondary")
+    {
+        wins_secondary.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-iphc-options" || name == "peer-iphc-options" || name == "dns-primary" || name == "dns-secondary" || name == "is-iphc-configured" || name == "local-address" || name == "peer-address" || name == "peer-netmask" || name == "wins-primary" || name == "wins-secondary")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::LocalIphcOptions()
@@ -2523,15 +3410,15 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipc
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(compression_type.operation)
-	|| is_set(ec_rtp_compression.operation)
-	|| is_set(max_header.operation)
-	|| is_set(max_period.operation)
-	|| is_set(max_time.operation)
-	|| is_set(non_tcp_space.operation)
-	|| is_set(rtp_compression.operation)
-	|| is_set(tcp_space.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(compression_type.yfilter)
+	|| ydk::is_set(ec_rtp_compression.yfilter)
+	|| ydk::is_set(max_header.yfilter)
+	|| ydk::is_set(max_period.yfilter)
+	|| ydk::is_set(max_time.yfilter)
+	|| ydk::is_set(non_tcp_space.yfilter)
+	|| ydk::is_set(rtp_compression.yfilter)
+	|| ydk::is_set(tcp_space.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::get_segment_path() const
@@ -2557,14 +3444,14 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (compression_type.is_set || is_set(compression_type.operation)) leaf_name_data.push_back(compression_type.get_name_leafdata());
-    if (ec_rtp_compression.is_set || is_set(ec_rtp_compression.operation)) leaf_name_data.push_back(ec_rtp_compression.get_name_leafdata());
-    if (max_header.is_set || is_set(max_header.operation)) leaf_name_data.push_back(max_header.get_name_leafdata());
-    if (max_period.is_set || is_set(max_period.operation)) leaf_name_data.push_back(max_period.get_name_leafdata());
-    if (max_time.is_set || is_set(max_time.operation)) leaf_name_data.push_back(max_time.get_name_leafdata());
-    if (non_tcp_space.is_set || is_set(non_tcp_space.operation)) leaf_name_data.push_back(non_tcp_space.get_name_leafdata());
-    if (rtp_compression.is_set || is_set(rtp_compression.operation)) leaf_name_data.push_back(rtp_compression.get_name_leafdata());
-    if (tcp_space.is_set || is_set(tcp_space.operation)) leaf_name_data.push_back(tcp_space.get_name_leafdata());
+    if (compression_type.is_set || is_set(compression_type.yfilter)) leaf_name_data.push_back(compression_type.get_name_leafdata());
+    if (ec_rtp_compression.is_set || is_set(ec_rtp_compression.yfilter)) leaf_name_data.push_back(ec_rtp_compression.get_name_leafdata());
+    if (max_header.is_set || is_set(max_header.yfilter)) leaf_name_data.push_back(max_header.get_name_leafdata());
+    if (max_period.is_set || is_set(max_period.yfilter)) leaf_name_data.push_back(max_period.get_name_leafdata());
+    if (max_time.is_set || is_set(max_time.yfilter)) leaf_name_data.push_back(max_time.get_name_leafdata());
+    if (non_tcp_space.is_set || is_set(non_tcp_space.yfilter)) leaf_name_data.push_back(non_tcp_space.get_name_leafdata());
+    if (rtp_compression.is_set || is_set(rtp_compression.yfilter)) leaf_name_data.push_back(rtp_compression.get_name_leafdata());
+    if (tcp_space.is_set || is_set(tcp_space.yfilter)) leaf_name_data.push_back(tcp_space.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2583,40 +3470,99 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "compression-type")
     {
         compression_type = value;
+        compression_type.value_namespace = name_space;
+        compression_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ec-rtp-compression")
     {
         ec_rtp_compression = value;
+        ec_rtp_compression.value_namespace = name_space;
+        ec_rtp_compression.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-header")
     {
         max_header = value;
+        max_header.value_namespace = name_space;
+        max_header.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-period")
     {
         max_period = value;
+        max_period.value_namespace = name_space;
+        max_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-time")
     {
         max_time = value;
+        max_time.value_namespace = name_space;
+        max_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "non-tcp-space")
     {
         non_tcp_space = value;
+        non_tcp_space.value_namespace = name_space;
+        non_tcp_space.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp-compression")
     {
         rtp_compression = value;
+        rtp_compression.value_namespace = name_space;
+        rtp_compression.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcp-space")
     {
         tcp_space = value;
+        tcp_space.value_namespace = name_space;
+        tcp_space.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "compression-type")
+    {
+        compression_type.yfilter = yfilter;
+    }
+    if(value_path == "ec-rtp-compression")
+    {
+        ec_rtp_compression.yfilter = yfilter;
+    }
+    if(value_path == "max-header")
+    {
+        max_header.yfilter = yfilter;
+    }
+    if(value_path == "max-period")
+    {
+        max_period.yfilter = yfilter;
+    }
+    if(value_path == "max-time")
+    {
+        max_time.yfilter = yfilter;
+    }
+    if(value_path == "non-tcp-space")
+    {
+        non_tcp_space.yfilter = yfilter;
+    }
+    if(value_path == "rtp-compression")
+    {
+        rtp_compression.yfilter = yfilter;
+    }
+    if(value_path == "tcp-space")
+    {
+        tcp_space.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::LocalIphcOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "compression-type" || name == "ec-rtp-compression" || name == "max-header" || name == "max-period" || name == "max-time" || name == "non-tcp-space" || name == "rtp-compression" || name == "tcp-space")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::PeerIphcOptions()
@@ -2651,15 +3597,15 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipc
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(compression_type.operation)
-	|| is_set(ec_rtp_compression.operation)
-	|| is_set(max_header.operation)
-	|| is_set(max_period.operation)
-	|| is_set(max_time.operation)
-	|| is_set(non_tcp_space.operation)
-	|| is_set(rtp_compression.operation)
-	|| is_set(tcp_space.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(compression_type.yfilter)
+	|| ydk::is_set(ec_rtp_compression.yfilter)
+	|| ydk::is_set(max_header.yfilter)
+	|| ydk::is_set(max_period.yfilter)
+	|| ydk::is_set(max_time.yfilter)
+	|| ydk::is_set(non_tcp_space.yfilter)
+	|| ydk::is_set(rtp_compression.yfilter)
+	|| ydk::is_set(tcp_space.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::get_segment_path() const
@@ -2685,14 +3631,14 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (compression_type.is_set || is_set(compression_type.operation)) leaf_name_data.push_back(compression_type.get_name_leafdata());
-    if (ec_rtp_compression.is_set || is_set(ec_rtp_compression.operation)) leaf_name_data.push_back(ec_rtp_compression.get_name_leafdata());
-    if (max_header.is_set || is_set(max_header.operation)) leaf_name_data.push_back(max_header.get_name_leafdata());
-    if (max_period.is_set || is_set(max_period.operation)) leaf_name_data.push_back(max_period.get_name_leafdata());
-    if (max_time.is_set || is_set(max_time.operation)) leaf_name_data.push_back(max_time.get_name_leafdata());
-    if (non_tcp_space.is_set || is_set(non_tcp_space.operation)) leaf_name_data.push_back(non_tcp_space.get_name_leafdata());
-    if (rtp_compression.is_set || is_set(rtp_compression.operation)) leaf_name_data.push_back(rtp_compression.get_name_leafdata());
-    if (tcp_space.is_set || is_set(tcp_space.operation)) leaf_name_data.push_back(tcp_space.get_name_leafdata());
+    if (compression_type.is_set || is_set(compression_type.yfilter)) leaf_name_data.push_back(compression_type.get_name_leafdata());
+    if (ec_rtp_compression.is_set || is_set(ec_rtp_compression.yfilter)) leaf_name_data.push_back(ec_rtp_compression.get_name_leafdata());
+    if (max_header.is_set || is_set(max_header.yfilter)) leaf_name_data.push_back(max_header.get_name_leafdata());
+    if (max_period.is_set || is_set(max_period.yfilter)) leaf_name_data.push_back(max_period.get_name_leafdata());
+    if (max_time.is_set || is_set(max_time.yfilter)) leaf_name_data.push_back(max_time.get_name_leafdata());
+    if (non_tcp_space.is_set || is_set(non_tcp_space.yfilter)) leaf_name_data.push_back(non_tcp_space.get_name_leafdata());
+    if (rtp_compression.is_set || is_set(rtp_compression.yfilter)) leaf_name_data.push_back(rtp_compression.get_name_leafdata());
+    if (tcp_space.is_set || is_set(tcp_space.yfilter)) leaf_name_data.push_back(tcp_space.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2711,40 +3657,99 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "compression-type")
     {
         compression_type = value;
+        compression_type.value_namespace = name_space;
+        compression_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ec-rtp-compression")
     {
         ec_rtp_compression = value;
+        ec_rtp_compression.value_namespace = name_space;
+        ec_rtp_compression.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-header")
     {
         max_header = value;
+        max_header.value_namespace = name_space;
+        max_header.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-period")
     {
         max_period = value;
+        max_period.value_namespace = name_space;
+        max_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-time")
     {
         max_time = value;
+        max_time.value_namespace = name_space;
+        max_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "non-tcp-space")
     {
         non_tcp_space = value;
+        non_tcp_space.value_namespace = name_space;
+        non_tcp_space.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rtp-compression")
     {
         rtp_compression = value;
+        rtp_compression.value_namespace = name_space;
+        rtp_compression.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcp-space")
     {
         tcp_space = value;
+        tcp_space.value_namespace = name_space;
+        tcp_space.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "compression-type")
+    {
+        compression_type.yfilter = yfilter;
+    }
+    if(value_path == "ec-rtp-compression")
+    {
+        ec_rtp_compression.yfilter = yfilter;
+    }
+    if(value_path == "max-header")
+    {
+        max_header.yfilter = yfilter;
+    }
+    if(value_path == "max-period")
+    {
+        max_period.yfilter = yfilter;
+    }
+    if(value_path == "max-time")
+    {
+        max_time.yfilter = yfilter;
+    }
+    if(value_path == "non-tcp-space")
+    {
+        non_tcp_space.yfilter = yfilter;
+    }
+    if(value_path == "rtp-compression")
+    {
+        rtp_compression.yfilter = yfilter;
+    }
+    if(value_path == "tcp-space")
+    {
+        tcp_space.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpInfo::PeerIphcOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "compression-type" || name == "ec-rtp-compression" || name == "max-header" || name == "max-period" || name == "max-time" || name == "non-tcp-space" || name == "rtp-compression" || name == "tcp-space")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::IpcpiwInfo()
@@ -2767,9 +3772,9 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipc
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_address.operation)
-	|| is_set(peer_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(peer_address.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::get_segment_path() const
@@ -2795,8 +3800,8 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (peer_address.is_set || is_set(peer_address.operation)) leaf_name_data.push_back(peer_address.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2815,16 +3820,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-address")
     {
         peer_address = value;
+        peer_address.value_namespace = name_space;
+        peer_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "peer-address")
+    {
+        peer_address.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::IpcpiwInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "peer-address")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::Ipv6CpInfo()
@@ -2847,9 +3875,9 @@ bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv
 
 bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_address.operation)
-	|| is_set(peer_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(peer_address.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::get_segment_path() const
@@ -2875,8 +3903,8 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (peer_address.is_set || is_set(peer_address.operation)) leaf_name_data.push_back(peer_address.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (peer_address.is_set || is_set(peer_address.yfilter)) leaf_name_data.push_back(peer_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2895,16 +3923,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaces:
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-address")
     {
         peer_address = value;
+        peer_address.value_namespace = name_space;
+        peer_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "peer-address")
+    {
+        peer_address.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::NcpInfo::Ipv6CpInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "peer-address")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlerts()
@@ -2933,7 +3984,7 @@ bool Ppp::Nodes::Node::SsoAlerts::has_operation() const
         if(sso_alert[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoAlerts::get_segment_path() const
@@ -2998,8 +4049,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::get_
     return children;
 }
 
-void Ppp::Nodes::Node::SsoAlerts::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoAlerts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::SsoAlerts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::SsoAlerts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sso-alert")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::SsoAlert()
@@ -3037,8 +4099,8 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::has_data() const
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
 	|| (ipcp_error !=  nullptr && ipcp_error->has_operation())
 	|| (lcp_error !=  nullptr && lcp_error->has_operation())
 	|| (of_peer_auth_error !=  nullptr && of_peer_auth_error->has_operation())
@@ -3068,7 +4130,7 @@ const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3143,12 +4205,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoA
     return children;
 }
 
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipcp-error" || name == "lcp-error" || name == "of-peer-auth-error" || name == "of-us-auth-error" || name == "interface")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::LcpError()
@@ -3173,10 +4252,10 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_data() const
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(context.operation)
-	|| is_set(error.operation)
-	|| is_set(is_error.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(is_error.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_segment_path() const
@@ -3202,9 +4281,9 @@ const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (context.is_set || is_set(context.operation)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (is_error.is_set || is_set(is_error.operation)) leaf_name_data.push_back(is_error.get_name_leafdata());
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3223,20 +4302,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoA
     return children;
 }
 
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "context")
     {
         context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-error")
     {
         is_error = value;
+        is_error.value_namespace = name_space;
+        is_error.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "context")
+    {
+        context.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "is-error")
+    {
+        is_error.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::LcpError::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "context" || name == "error" || name == "is-error")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::OfUsAuthError()
@@ -3261,10 +4369,10 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_data() const
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(context.operation)
-	|| is_set(error.operation)
-	|| is_set(is_error.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(is_error.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_segment_path() const
@@ -3290,9 +4398,9 @@ const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (context.is_set || is_set(context.operation)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (is_error.is_set || is_set(is_error.operation)) leaf_name_data.push_back(is_error.get_name_leafdata());
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3311,20 +4419,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoA
     return children;
 }
 
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "context")
     {
         context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-error")
     {
         is_error = value;
+        is_error.value_namespace = name_space;
+        is_error.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "context")
+    {
+        context.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "is-error")
+    {
+        is_error.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfUsAuthError::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "context" || name == "error" || name == "is-error")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::OfPeerAuthError()
@@ -3349,10 +4486,10 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_data() const
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(context.operation)
-	|| is_set(error.operation)
-	|| is_set(is_error.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(is_error.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_segment_path() const
@@ -3378,9 +4515,9 @@ const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (context.is_set || is_set(context.operation)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (is_error.is_set || is_set(is_error.operation)) leaf_name_data.push_back(is_error.get_name_leafdata());
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3399,20 +4536,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoA
     return children;
 }
 
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "context")
     {
         context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-error")
     {
         is_error = value;
+        is_error.value_namespace = name_space;
+        is_error.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "context")
+    {
+        context.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "is-error")
+    {
+        is_error.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::OfPeerAuthError::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "context" || name == "error" || name == "is-error")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::IpcpError()
@@ -3437,10 +4603,10 @@ bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::has_data() const
 
 bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(context.operation)
-	|| is_set(error.operation)
-	|| is_set(is_error.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(context.yfilter)
+	|| ydk::is_set(error.yfilter)
+	|| ydk::is_set(is_error.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::get_segment_path() const
@@ -3466,9 +4632,9 @@ const EntityPath Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (context.is_set || is_set(context.operation)) leaf_name_data.push_back(context.get_name_leafdata());
-    if (error.is_set || is_set(error.operation)) leaf_name_data.push_back(error.get_name_leafdata());
-    if (is_error.is_set || is_set(is_error.operation)) leaf_name_data.push_back(is_error.get_name_leafdata());
+    if (context.is_set || is_set(context.yfilter)) leaf_name_data.push_back(context.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+    if (is_error.is_set || is_set(is_error.yfilter)) leaf_name_data.push_back(is_error.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3487,20 +4653,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoAlerts::SsoA
     return children;
 }
 
-void Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "context")
     {
         context = value;
+        context.value_namespace = name_space;
+        context.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "error")
     {
         error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-error")
     {
         is_error = value;
+        is_error.value_namespace = name_space;
+        is_error.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "context")
+    {
+        context.yfilter = yfilter;
+    }
+    if(value_path == "error")
+    {
+        error.yfilter = yfilter;
+    }
+    if(value_path == "is-error")
+    {
+        is_error.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoAlerts::SsoAlert::IpcpError::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "context" || name == "error" || name == "is-error")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistics()
@@ -3529,7 +4724,7 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_operation() const
         if(node_interface_statistic[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaceStatistics::get_segment_path() const
@@ -3594,8 +4789,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceSt
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-interface-statistic")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NodeInterfaceStatistic()
@@ -3635,8 +4841,8 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_oper
         if(ncp_statistics_array[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (authentication_statistics !=  nullptr && authentication_statistics->has_operation())
 	|| (lcp_statistics !=  nullptr && lcp_statistics->has_operation());
 }
@@ -3664,7 +4870,7 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3732,12 +4938,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceSt
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-statistics" || name == "lcp-statistics" || name == "ncp-statistics-array" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::LcpStatistics()
@@ -3788,23 +5011,23 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStati
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(conf_ack_rcvd.operation)
-	|| is_set(conf_ack_sent.operation)
-	|| is_set(conf_nak_rcvd.operation)
-	|| is_set(conf_nak_sent.operation)
-	|| is_set(conf_rej_rcvd.operation)
-	|| is_set(conf_rej_sent.operation)
-	|| is_set(conf_req_rcvd.operation)
-	|| is_set(conf_req_sent.operation)
-	|| is_set(disc_req_rcvd.operation)
-	|| is_set(disc_req_sent.operation)
-	|| is_set(echo_rep_rcvd.operation)
-	|| is_set(echo_rep_sent.operation)
-	|| is_set(echo_req_rcvd.operation)
-	|| is_set(echo_req_sent.operation)
-	|| is_set(link_error.operation)
-	|| is_set(link_up.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(conf_ack_rcvd.yfilter)
+	|| ydk::is_set(conf_ack_sent.yfilter)
+	|| ydk::is_set(conf_nak_rcvd.yfilter)
+	|| ydk::is_set(conf_nak_sent.yfilter)
+	|| ydk::is_set(conf_rej_rcvd.yfilter)
+	|| ydk::is_set(conf_rej_sent.yfilter)
+	|| ydk::is_set(conf_req_rcvd.yfilter)
+	|| ydk::is_set(conf_req_sent.yfilter)
+	|| ydk::is_set(disc_req_rcvd.yfilter)
+	|| ydk::is_set(disc_req_sent.yfilter)
+	|| ydk::is_set(echo_rep_rcvd.yfilter)
+	|| ydk::is_set(echo_rep_sent.yfilter)
+	|| ydk::is_set(echo_req_rcvd.yfilter)
+	|| ydk::is_set(echo_req_sent.yfilter)
+	|| ydk::is_set(link_error.yfilter)
+	|| ydk::is_set(link_up.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::get_segment_path() const
@@ -3830,22 +5053,22 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.operation)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
-    if (conf_ack_sent.is_set || is_set(conf_ack_sent.operation)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
-    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.operation)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
-    if (conf_nak_sent.is_set || is_set(conf_nak_sent.operation)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
-    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.operation)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
-    if (conf_rej_sent.is_set || is_set(conf_rej_sent.operation)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
-    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.operation)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
-    if (conf_req_sent.is_set || is_set(conf_req_sent.operation)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
-    if (disc_req_rcvd.is_set || is_set(disc_req_rcvd.operation)) leaf_name_data.push_back(disc_req_rcvd.get_name_leafdata());
-    if (disc_req_sent.is_set || is_set(disc_req_sent.operation)) leaf_name_data.push_back(disc_req_sent.get_name_leafdata());
-    if (echo_rep_rcvd.is_set || is_set(echo_rep_rcvd.operation)) leaf_name_data.push_back(echo_rep_rcvd.get_name_leafdata());
-    if (echo_rep_sent.is_set || is_set(echo_rep_sent.operation)) leaf_name_data.push_back(echo_rep_sent.get_name_leafdata());
-    if (echo_req_rcvd.is_set || is_set(echo_req_rcvd.operation)) leaf_name_data.push_back(echo_req_rcvd.get_name_leafdata());
-    if (echo_req_sent.is_set || is_set(echo_req_sent.operation)) leaf_name_data.push_back(echo_req_sent.get_name_leafdata());
-    if (link_error.is_set || is_set(link_error.operation)) leaf_name_data.push_back(link_error.get_name_leafdata());
-    if (link_up.is_set || is_set(link_up.operation)) leaf_name_data.push_back(link_up.get_name_leafdata());
+    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
+    if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
+    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
+    if (conf_nak_sent.is_set || is_set(conf_nak_sent.yfilter)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
+    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.yfilter)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
+    if (conf_rej_sent.is_set || is_set(conf_rej_sent.yfilter)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
+    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
+    if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
+    if (disc_req_rcvd.is_set || is_set(disc_req_rcvd.yfilter)) leaf_name_data.push_back(disc_req_rcvd.get_name_leafdata());
+    if (disc_req_sent.is_set || is_set(disc_req_sent.yfilter)) leaf_name_data.push_back(disc_req_sent.get_name_leafdata());
+    if (echo_rep_rcvd.is_set || is_set(echo_rep_rcvd.yfilter)) leaf_name_data.push_back(echo_rep_rcvd.get_name_leafdata());
+    if (echo_rep_sent.is_set || is_set(echo_rep_sent.yfilter)) leaf_name_data.push_back(echo_rep_sent.get_name_leafdata());
+    if (echo_req_rcvd.is_set || is_set(echo_req_rcvd.yfilter)) leaf_name_data.push_back(echo_req_rcvd.get_name_leafdata());
+    if (echo_req_sent.is_set || is_set(echo_req_sent.yfilter)) leaf_name_data.push_back(echo_req_sent.get_name_leafdata());
+    if (link_error.is_set || is_set(link_error.yfilter)) leaf_name_data.push_back(link_error.get_name_leafdata());
+    if (link_up.is_set || is_set(link_up.yfilter)) leaf_name_data.push_back(link_up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3864,72 +5087,179 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceSt
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "conf-ack-rcvd")
     {
         conf_ack_rcvd = value;
+        conf_ack_rcvd.value_namespace = name_space;
+        conf_ack_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-ack-sent")
     {
         conf_ack_sent = value;
+        conf_ack_sent.value_namespace = name_space;
+        conf_ack_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-nak-rcvd")
     {
         conf_nak_rcvd = value;
+        conf_nak_rcvd.value_namespace = name_space;
+        conf_nak_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-nak-sent")
     {
         conf_nak_sent = value;
+        conf_nak_sent.value_namespace = name_space;
+        conf_nak_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-rej-rcvd")
     {
         conf_rej_rcvd = value;
+        conf_rej_rcvd.value_namespace = name_space;
+        conf_rej_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-rej-sent")
     {
         conf_rej_sent = value;
+        conf_rej_sent.value_namespace = name_space;
+        conf_rej_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-req-rcvd")
     {
         conf_req_rcvd = value;
+        conf_req_rcvd.value_namespace = name_space;
+        conf_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-req-sent")
     {
         conf_req_sent = value;
+        conf_req_sent.value_namespace = name_space;
+        conf_req_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disc-req-rcvd")
     {
         disc_req_rcvd = value;
+        disc_req_rcvd.value_namespace = name_space;
+        disc_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disc-req-sent")
     {
         disc_req_sent = value;
+        disc_req_sent.value_namespace = name_space;
+        disc_req_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-rep-rcvd")
     {
         echo_rep_rcvd = value;
+        echo_rep_rcvd.value_namespace = name_space;
+        echo_rep_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-rep-sent")
     {
         echo_rep_sent = value;
+        echo_rep_sent.value_namespace = name_space;
+        echo_rep_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-req-rcvd")
     {
         echo_req_rcvd = value;
+        echo_req_rcvd.value_namespace = name_space;
+        echo_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-req-sent")
     {
         echo_req_sent = value;
+        echo_req_sent.value_namespace = name_space;
+        echo_req_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-error")
     {
         link_error = value;
+        link_error.value_namespace = name_space;
+        link_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-up")
     {
         link_up = value;
+        link_up.value_namespace = name_space;
+        link_up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "conf-ack-rcvd")
+    {
+        conf_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-ack-sent")
+    {
+        conf_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-rcvd")
+    {
+        conf_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-sent")
+    {
+        conf_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-rcvd")
+    {
+        conf_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-sent")
+    {
+        conf_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-rcvd")
+    {
+        conf_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-sent")
+    {
+        conf_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "disc-req-rcvd")
+    {
+        disc_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "disc-req-sent")
+    {
+        disc_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "echo-rep-rcvd")
+    {
+        echo_rep_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "echo-rep-sent")
+    {
+        echo_rep_sent.yfilter = yfilter;
+    }
+    if(value_path == "echo-req-rcvd")
+    {
+        echo_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "echo-req-sent")
+    {
+        echo_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "link-error")
+    {
+        link_error.yfilter = yfilter;
+    }
+    if(value_path == "link-up")
+    {
+        link_up.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::LcpStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "disc-req-rcvd" || name == "disc-req-sent" || name == "echo-rep-rcvd" || name == "echo-rep-sent" || name == "echo-req-rcvd" || name == "echo-req-sent" || name == "link-error" || name == "link-up")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::AuthenticationStatistics()
@@ -3978,22 +5308,22 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::Authenti
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auth_timeout_count.operation)
-	|| is_set(chap_chall_rcvd.operation)
-	|| is_set(chap_chall_sent.operation)
-	|| is_set(chap_rep_fail_rcvd.operation)
-	|| is_set(chap_rep_fail_sent.operation)
-	|| is_set(chap_rep_succ_rcvd.operation)
-	|| is_set(chap_rep_succ_sent.operation)
-	|| is_set(chap_resp_rcvd.operation)
-	|| is_set(chap_resp_sent.operation)
-	|| is_set(pap_ack_rcvd.operation)
-	|| is_set(pap_ack_sent.operation)
-	|| is_set(pap_nak_rcvd.operation)
-	|| is_set(pap_nak_sent.operation)
-	|| is_set(pap_req_rcvd.operation)
-	|| is_set(pap_req_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(auth_timeout_count.yfilter)
+	|| ydk::is_set(chap_chall_rcvd.yfilter)
+	|| ydk::is_set(chap_chall_sent.yfilter)
+	|| ydk::is_set(chap_rep_fail_rcvd.yfilter)
+	|| ydk::is_set(chap_rep_fail_sent.yfilter)
+	|| ydk::is_set(chap_rep_succ_rcvd.yfilter)
+	|| ydk::is_set(chap_rep_succ_sent.yfilter)
+	|| ydk::is_set(chap_resp_rcvd.yfilter)
+	|| ydk::is_set(chap_resp_sent.yfilter)
+	|| ydk::is_set(pap_ack_rcvd.yfilter)
+	|| ydk::is_set(pap_ack_sent.yfilter)
+	|| ydk::is_set(pap_nak_rcvd.yfilter)
+	|| ydk::is_set(pap_nak_sent.yfilter)
+	|| ydk::is_set(pap_req_rcvd.yfilter)
+	|| ydk::is_set(pap_req_sent.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::get_segment_path() const
@@ -4019,21 +5349,21 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auth_timeout_count.is_set || is_set(auth_timeout_count.operation)) leaf_name_data.push_back(auth_timeout_count.get_name_leafdata());
-    if (chap_chall_rcvd.is_set || is_set(chap_chall_rcvd.operation)) leaf_name_data.push_back(chap_chall_rcvd.get_name_leafdata());
-    if (chap_chall_sent.is_set || is_set(chap_chall_sent.operation)) leaf_name_data.push_back(chap_chall_sent.get_name_leafdata());
-    if (chap_rep_fail_rcvd.is_set || is_set(chap_rep_fail_rcvd.operation)) leaf_name_data.push_back(chap_rep_fail_rcvd.get_name_leafdata());
-    if (chap_rep_fail_sent.is_set || is_set(chap_rep_fail_sent.operation)) leaf_name_data.push_back(chap_rep_fail_sent.get_name_leafdata());
-    if (chap_rep_succ_rcvd.is_set || is_set(chap_rep_succ_rcvd.operation)) leaf_name_data.push_back(chap_rep_succ_rcvd.get_name_leafdata());
-    if (chap_rep_succ_sent.is_set || is_set(chap_rep_succ_sent.operation)) leaf_name_data.push_back(chap_rep_succ_sent.get_name_leafdata());
-    if (chap_resp_rcvd.is_set || is_set(chap_resp_rcvd.operation)) leaf_name_data.push_back(chap_resp_rcvd.get_name_leafdata());
-    if (chap_resp_sent.is_set || is_set(chap_resp_sent.operation)) leaf_name_data.push_back(chap_resp_sent.get_name_leafdata());
-    if (pap_ack_rcvd.is_set || is_set(pap_ack_rcvd.operation)) leaf_name_data.push_back(pap_ack_rcvd.get_name_leafdata());
-    if (pap_ack_sent.is_set || is_set(pap_ack_sent.operation)) leaf_name_data.push_back(pap_ack_sent.get_name_leafdata());
-    if (pap_nak_rcvd.is_set || is_set(pap_nak_rcvd.operation)) leaf_name_data.push_back(pap_nak_rcvd.get_name_leafdata());
-    if (pap_nak_sent.is_set || is_set(pap_nak_sent.operation)) leaf_name_data.push_back(pap_nak_sent.get_name_leafdata());
-    if (pap_req_rcvd.is_set || is_set(pap_req_rcvd.operation)) leaf_name_data.push_back(pap_req_rcvd.get_name_leafdata());
-    if (pap_req_sent.is_set || is_set(pap_req_sent.operation)) leaf_name_data.push_back(pap_req_sent.get_name_leafdata());
+    if (auth_timeout_count.is_set || is_set(auth_timeout_count.yfilter)) leaf_name_data.push_back(auth_timeout_count.get_name_leafdata());
+    if (chap_chall_rcvd.is_set || is_set(chap_chall_rcvd.yfilter)) leaf_name_data.push_back(chap_chall_rcvd.get_name_leafdata());
+    if (chap_chall_sent.is_set || is_set(chap_chall_sent.yfilter)) leaf_name_data.push_back(chap_chall_sent.get_name_leafdata());
+    if (chap_rep_fail_rcvd.is_set || is_set(chap_rep_fail_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_fail_rcvd.get_name_leafdata());
+    if (chap_rep_fail_sent.is_set || is_set(chap_rep_fail_sent.yfilter)) leaf_name_data.push_back(chap_rep_fail_sent.get_name_leafdata());
+    if (chap_rep_succ_rcvd.is_set || is_set(chap_rep_succ_rcvd.yfilter)) leaf_name_data.push_back(chap_rep_succ_rcvd.get_name_leafdata());
+    if (chap_rep_succ_sent.is_set || is_set(chap_rep_succ_sent.yfilter)) leaf_name_data.push_back(chap_rep_succ_sent.get_name_leafdata());
+    if (chap_resp_rcvd.is_set || is_set(chap_resp_rcvd.yfilter)) leaf_name_data.push_back(chap_resp_rcvd.get_name_leafdata());
+    if (chap_resp_sent.is_set || is_set(chap_resp_sent.yfilter)) leaf_name_data.push_back(chap_resp_sent.get_name_leafdata());
+    if (pap_ack_rcvd.is_set || is_set(pap_ack_rcvd.yfilter)) leaf_name_data.push_back(pap_ack_rcvd.get_name_leafdata());
+    if (pap_ack_sent.is_set || is_set(pap_ack_sent.yfilter)) leaf_name_data.push_back(pap_ack_sent.get_name_leafdata());
+    if (pap_nak_rcvd.is_set || is_set(pap_nak_rcvd.yfilter)) leaf_name_data.push_back(pap_nak_rcvd.get_name_leafdata());
+    if (pap_nak_sent.is_set || is_set(pap_nak_sent.yfilter)) leaf_name_data.push_back(pap_nak_sent.get_name_leafdata());
+    if (pap_req_rcvd.is_set || is_set(pap_req_rcvd.yfilter)) leaf_name_data.push_back(pap_req_rcvd.get_name_leafdata());
+    if (pap_req_sent.is_set || is_set(pap_req_sent.yfilter)) leaf_name_data.push_back(pap_req_sent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4052,68 +5382,169 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceSt
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auth-timeout-count")
     {
         auth_timeout_count = value;
+        auth_timeout_count.value_namespace = name_space;
+        auth_timeout_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-chall-rcvd")
     {
         chap_chall_rcvd = value;
+        chap_chall_rcvd.value_namespace = name_space;
+        chap_chall_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-chall-sent")
     {
         chap_chall_sent = value;
+        chap_chall_sent.value_namespace = name_space;
+        chap_chall_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-rep-fail-rcvd")
     {
         chap_rep_fail_rcvd = value;
+        chap_rep_fail_rcvd.value_namespace = name_space;
+        chap_rep_fail_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-rep-fail-sent")
     {
         chap_rep_fail_sent = value;
+        chap_rep_fail_sent.value_namespace = name_space;
+        chap_rep_fail_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-rep-succ-rcvd")
     {
         chap_rep_succ_rcvd = value;
+        chap_rep_succ_rcvd.value_namespace = name_space;
+        chap_rep_succ_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-rep-succ-sent")
     {
         chap_rep_succ_sent = value;
+        chap_rep_succ_sent.value_namespace = name_space;
+        chap_rep_succ_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-resp-rcvd")
     {
         chap_resp_rcvd = value;
+        chap_resp_rcvd.value_namespace = name_space;
+        chap_resp_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chap-resp-sent")
     {
         chap_resp_sent = value;
+        chap_resp_sent.value_namespace = name_space;
+        chap_resp_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-ack-rcvd")
     {
         pap_ack_rcvd = value;
+        pap_ack_rcvd.value_namespace = name_space;
+        pap_ack_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-ack-sent")
     {
         pap_ack_sent = value;
+        pap_ack_sent.value_namespace = name_space;
+        pap_ack_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-nak-rcvd")
     {
         pap_nak_rcvd = value;
+        pap_nak_rcvd.value_namespace = name_space;
+        pap_nak_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-nak-sent")
     {
         pap_nak_sent = value;
+        pap_nak_sent.value_namespace = name_space;
+        pap_nak_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-req-rcvd")
     {
         pap_req_rcvd = value;
+        pap_req_rcvd.value_namespace = name_space;
+        pap_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pap-req-sent")
     {
         pap_req_sent = value;
+        pap_req_sent.value_namespace = name_space;
+        pap_req_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auth-timeout-count")
+    {
+        auth_timeout_count.yfilter = yfilter;
+    }
+    if(value_path == "chap-chall-rcvd")
+    {
+        chap_chall_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-chall-sent")
+    {
+        chap_chall_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-fail-rcvd")
+    {
+        chap_rep_fail_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-fail-sent")
+    {
+        chap_rep_fail_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-succ-rcvd")
+    {
+        chap_rep_succ_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-rep-succ-sent")
+    {
+        chap_rep_succ_sent.yfilter = yfilter;
+    }
+    if(value_path == "chap-resp-rcvd")
+    {
+        chap_resp_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "chap-resp-sent")
+    {
+        chap_resp_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-ack-rcvd")
+    {
+        pap_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-ack-sent")
+    {
+        pap_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-nak-rcvd")
+    {
+        pap_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-nak-sent")
+    {
+        pap_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "pap-req-rcvd")
+    {
+        pap_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "pap-req-sent")
+    {
+        pap_req_sent.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::AuthenticationStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auth-timeout-count" || name == "chap-chall-rcvd" || name == "chap-chall-sent" || name == "chap-rep-fail-rcvd" || name == "chap-rep-fail-sent" || name == "chap-rep-succ-rcvd" || name == "chap-rep-succ-sent" || name == "chap-resp-rcvd" || name == "chap-resp-sent" || name == "pap-ack-rcvd" || name == "pap-ack-sent" || name == "pap-nak-rcvd" || name == "pap-nak-sent" || name == "pap-req-rcvd" || name == "pap-req-sent")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::NcpStatisticsArray()
@@ -4150,16 +5581,16 @@ bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStati
 
 bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(conf_ack_rcvd.operation)
-	|| is_set(conf_ack_sent.operation)
-	|| is_set(conf_nak_rcvd.operation)
-	|| is_set(conf_nak_sent.operation)
-	|| is_set(conf_rej_rcvd.operation)
-	|| is_set(conf_rej_sent.operation)
-	|| is_set(conf_req_rcvd.operation)
-	|| is_set(conf_req_sent.operation)
-	|| is_set(ncp_identifier.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(conf_ack_rcvd.yfilter)
+	|| ydk::is_set(conf_ack_sent.yfilter)
+	|| ydk::is_set(conf_nak_rcvd.yfilter)
+	|| ydk::is_set(conf_nak_sent.yfilter)
+	|| ydk::is_set(conf_rej_rcvd.yfilter)
+	|| ydk::is_set(conf_rej_sent.yfilter)
+	|| ydk::is_set(conf_req_rcvd.yfilter)
+	|| ydk::is_set(conf_req_sent.yfilter)
+	|| ydk::is_set(ncp_identifier.yfilter);
 }
 
 std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::get_segment_path() const
@@ -4185,15 +5616,15 @@ const EntityPath Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatist
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.operation)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
-    if (conf_ack_sent.is_set || is_set(conf_ack_sent.operation)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
-    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.operation)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
-    if (conf_nak_sent.is_set || is_set(conf_nak_sent.operation)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
-    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.operation)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
-    if (conf_rej_sent.is_set || is_set(conf_rej_sent.operation)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
-    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.operation)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
-    if (conf_req_sent.is_set || is_set(conf_req_sent.operation)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
-    if (ncp_identifier.is_set || is_set(ncp_identifier.operation)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
+    if (conf_ack_rcvd.is_set || is_set(conf_ack_rcvd.yfilter)) leaf_name_data.push_back(conf_ack_rcvd.get_name_leafdata());
+    if (conf_ack_sent.is_set || is_set(conf_ack_sent.yfilter)) leaf_name_data.push_back(conf_ack_sent.get_name_leafdata());
+    if (conf_nak_rcvd.is_set || is_set(conf_nak_rcvd.yfilter)) leaf_name_data.push_back(conf_nak_rcvd.get_name_leafdata());
+    if (conf_nak_sent.is_set || is_set(conf_nak_sent.yfilter)) leaf_name_data.push_back(conf_nak_sent.get_name_leafdata());
+    if (conf_rej_rcvd.is_set || is_set(conf_rej_rcvd.yfilter)) leaf_name_data.push_back(conf_rej_rcvd.get_name_leafdata());
+    if (conf_rej_sent.is_set || is_set(conf_rej_sent.yfilter)) leaf_name_data.push_back(conf_rej_sent.get_name_leafdata());
+    if (conf_req_rcvd.is_set || is_set(conf_req_rcvd.yfilter)) leaf_name_data.push_back(conf_req_rcvd.get_name_leafdata());
+    if (conf_req_sent.is_set || is_set(conf_req_sent.yfilter)) leaf_name_data.push_back(conf_req_sent.get_name_leafdata());
+    if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4212,44 +5643,109 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::NodeInterfaceSt
     return children;
 }
 
-void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "conf-ack-rcvd")
     {
         conf_ack_rcvd = value;
+        conf_ack_rcvd.value_namespace = name_space;
+        conf_ack_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-ack-sent")
     {
         conf_ack_sent = value;
+        conf_ack_sent.value_namespace = name_space;
+        conf_ack_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-nak-rcvd")
     {
         conf_nak_rcvd = value;
+        conf_nak_rcvd.value_namespace = name_space;
+        conf_nak_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-nak-sent")
     {
         conf_nak_sent = value;
+        conf_nak_sent.value_namespace = name_space;
+        conf_nak_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-rej-rcvd")
     {
         conf_rej_rcvd = value;
+        conf_rej_rcvd.value_namespace = name_space;
+        conf_rej_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-rej-sent")
     {
         conf_rej_sent = value;
+        conf_rej_sent.value_namespace = name_space;
+        conf_rej_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-req-rcvd")
     {
         conf_req_rcvd = value;
+        conf_req_rcvd.value_namespace = name_space;
+        conf_req_rcvd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "conf-req-sent")
     {
         conf_req_sent = value;
+        conf_req_sent.value_namespace = name_space;
+        conf_req_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ncp-identifier")
     {
         ncp_identifier = value;
+        ncp_identifier.value_namespace = name_space;
+        ncp_identifier.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "conf-ack-rcvd")
+    {
+        conf_ack_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-ack-sent")
+    {
+        conf_ack_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-rcvd")
+    {
+        conf_nak_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-nak-sent")
+    {
+        conf_nak_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-rcvd")
+    {
+        conf_rej_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-rej-sent")
+    {
+        conf_rej_sent.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-rcvd")
+    {
+        conf_req_rcvd.yfilter = yfilter;
+    }
+    if(value_path == "conf-req-sent")
+    {
+        conf_req_sent.yfilter = yfilter;
+    }
+    if(value_path == "ncp-identifier")
+    {
+        ncp_identifier.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::NcpStatisticsArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conf-ack-rcvd" || name == "conf-ack-sent" || name == "conf-nak-rcvd" || name == "conf-nak-sent" || name == "conf-rej-rcvd" || name == "conf-rej-sent" || name == "conf-req-rcvd" || name == "conf-req-sent" || name == "ncp-identifier")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoSummary::SsoSummary()
@@ -4284,7 +5780,7 @@ bool Ppp::Nodes::Node::SsoSummary::has_data() const
 
 bool Ppp::Nodes::Node::SsoSummary::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipcp_states !=  nullptr && ipcp_states->has_operation())
 	|| (lcp_states !=  nullptr && lcp_states->has_operation())
 	|| (of_peer_auth_states !=  nullptr && of_peer_auth_states->has_operation())
@@ -4388,8 +5884,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::get
     return children;
 }
 
-void Ppp::Nodes::Node::SsoSummary::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::SsoSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::SsoSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipcp-states" || name == "lcp-states" || name == "of-peer-auth-states" || name == "of-us-auth-states")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoSummary::LcpStates::LcpStates()
@@ -4418,12 +5925,12 @@ bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_operation() const
 {
     for (auto const & leaf : count.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(total.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoSummary::LcpStates::get_segment_path() const
@@ -4449,7 +5956,7 @@ const EntityPath Ppp::Nodes::Node::SsoSummary::LcpStates::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     auto count_name_datas = count.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
@@ -4470,7 +5977,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::Lcp
     return children;
 }
 
-void Ppp::Nodes::Node::SsoSummary::LcpStates::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoSummary::LcpStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
@@ -4479,7 +5986,28 @@ void Ppp::Nodes::Node::SsoSummary::LcpStates::set_value(const std::string & valu
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoSummary::LcpStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoSummary::LcpStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::OfUsAuthStates()
@@ -4508,12 +6036,12 @@ bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_operation() const
 {
     for (auto const & leaf : count.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(total.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_segment_path() const
@@ -4539,7 +6067,7 @@ const EntityPath Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     auto count_name_datas = count.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
@@ -4560,7 +6088,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::OfU
     return children;
 }
 
-void Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
@@ -4569,7 +6097,28 @@ void Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::set_value(const std::string &
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoSummary::OfUsAuthStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::OfPeerAuthStates()
@@ -4598,12 +6147,12 @@ bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_operation() const
 {
     for (auto const & leaf : count.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(total.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_segment_path() const
@@ -4629,7 +6178,7 @@ const EntityPath Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     auto count_name_datas = count.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
@@ -4650,7 +6199,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::OfP
     return children;
 }
 
-void Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
@@ -4659,7 +6208,28 @@ void Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::set_value(const std::string
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoSummary::OfPeerAuthStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoSummary::IpcpStates::IpcpStates()
@@ -4688,12 +6258,12 @@ bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_operation() const
 {
     for (auto const & leaf : count.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(total.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoSummary::IpcpStates::get_segment_path() const
@@ -4719,7 +6289,7 @@ const EntityPath Ppp::Nodes::Node::SsoSummary::IpcpStates::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     auto count_name_datas = count.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
@@ -4740,7 +6310,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoSummary::Ipc
     return children;
 }
 
-void Ppp::Nodes::Node::SsoSummary::IpcpStates::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoSummary::IpcpStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
@@ -4749,7 +6319,28 @@ void Ppp::Nodes::Node::SsoSummary::IpcpStates::set_value(const std::string & val
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoSummary::IpcpStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoSummary::IpcpStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroups()
@@ -4778,7 +6369,7 @@ bool Ppp::Nodes::Node::SsoGroups::has_operation() const
         if(sso_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoGroups::get_segment_path() const
@@ -4843,8 +6434,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::get_
     return children;
 }
 
-void Ppp::Nodes::Node::SsoGroups::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::SsoGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::SsoGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sso-group")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoGroup()
@@ -4870,8 +6472,8 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::has_data() const
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(group_id.yfilter)
 	|| (sso_states !=  nullptr && sso_states->has_operation());
 }
 
@@ -4898,7 +6500,7 @@ const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_id.is_set || is_set(group_id.operation)) leaf_name_data.push_back(group_id.get_name_leafdata());
+    if (group_id.is_set || is_set(group_id.yfilter)) leaf_name_data.push_back(group_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4931,12 +6533,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoG
     return children;
 }
 
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-id")
     {
         group_id = value;
+        group_id.value_namespace = name_space;
+        group_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-id")
+    {
+        group_id.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sso-states" || name == "group-id")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoStates()
@@ -4965,7 +6584,7 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::has_operation() const
         if(sso_state[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::get_segment_path() const
@@ -5030,8 +6649,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoG
     return children;
 }
 
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sso-state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::SsoState()
@@ -5073,10 +6703,10 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::has_data() cons
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(session_id.operation)
-	|| is_set(interface.operation)
-	|| is_set(session_id_xr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(session_id_xr.yfilter)
 	|| (ipcp_state !=  nullptr && ipcp_state->has_operation())
 	|| (lcp_state !=  nullptr && lcp_state->has_operation())
 	|| (of_peer_auth_state !=  nullptr && of_peer_auth_state->has_operation())
@@ -5106,9 +6736,9 @@ const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (session_id_xr.is_set || is_set(session_id_xr.operation)) leaf_name_data.push_back(session_id_xr.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (session_id_xr.is_set || is_set(session_id_xr.yfilter)) leaf_name_data.push_back(session_id_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5183,20 +6813,49 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoG
     return children;
 }
 
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id-xr")
     {
         session_id_xr = value;
+        session_id_xr.value_namespace = name_space;
+        session_id_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "session-id-xr")
+    {
+        session_id_xr.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipcp-state" || name == "lcp-state" || name == "of-peer-auth-state" || name == "of-us-auth-state" || name == "session-id" || name == "interface" || name == "session-id-xr")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::LcpState()
@@ -5219,9 +6878,9 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_d
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_running.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_running.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::get_segment_path() const
@@ -5247,8 +6906,8 @@ const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::Lcp
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_running.is_set || is_set(is_running.operation)) leaf_name_data.push_back(is_running.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5267,16 +6926,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoG
     return children;
 }
 
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-running")
     {
         is_running = value;
+        is_running.value_namespace = name_space;
+        is_running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-running")
+    {
+        is_running.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::LcpState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-running" || name == "state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::OfUsAuthState()
@@ -5299,9 +6981,9 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_running.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_running.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::get_segment_path() const
@@ -5327,8 +7009,8 @@ const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfU
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_running.is_set || is_set(is_running.operation)) leaf_name_data.push_back(is_running.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5347,16 +7029,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoG
     return children;
 }
 
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-running")
     {
         is_running = value;
+        is_running.value_namespace = name_space;
+        is_running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-running")
+    {
+        is_running.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfUsAuthState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-running" || name == "state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::OfPeerAuthState()
@@ -5379,9 +7084,9 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_running.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_running.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::get_segment_path() const
@@ -5407,8 +7112,8 @@ const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfP
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_running.is_set || is_set(is_running.operation)) leaf_name_data.push_back(is_running.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5427,16 +7132,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoG
     return children;
 }
 
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-running")
     {
         is_running = value;
+        is_running.value_namespace = name_space;
+        is_running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-running")
+    {
+        is_running.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::OfPeerAuthState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-running" || name == "state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::IpcpState()
@@ -5459,9 +7187,9 @@ bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::has_
 
 bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_running.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_running.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::get_segment_path() const
@@ -5487,8 +7215,8 @@ const EntityPath Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::Ipc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_running.is_set || is_set(is_running.operation)) leaf_name_data.push_back(is_running.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (is_running.is_set || is_set(is_running.yfilter)) leaf_name_data.push_back(is_running.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5507,16 +7235,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::SsoGroups::SsoG
     return children;
 }
 
-void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-running")
     {
         is_running = value;
+        is_running.value_namespace = name_space;
+        is_running.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-running")
+    {
+        is_running.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::SsoGroups::SsoGroup::SsoStates::SsoState::IpcpState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-running" || name == "state")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Summary::Summary()
@@ -5547,7 +7298,7 @@ bool Ppp::Nodes::Node::Summary::has_data() const
 
 bool Ppp::Nodes::Node::Summary::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (fsm_states !=  nullptr && fsm_states->has_operation())
 	|| (intfs !=  nullptr && intfs->has_operation())
 	|| (lcp_auth_phases !=  nullptr && lcp_auth_phases->has_operation());
@@ -5636,8 +7387,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::get_ch
     return children;
 }
 
-void Ppp::Nodes::Node::Summary::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fsm-states" || name == "intfs" || name == "lcp-auth-phases")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Summary::Intfs::Intfs()
@@ -5670,14 +7432,14 @@ bool Ppp::Nodes::Node::Summary::Intfs::has_data() const
 
 bool Ppp::Nodes::Node::Summary::Intfs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(gcc0_count.operation)
-	|| is_set(gcc1_count.operation)
-	|| is_set(multilink_bundle_count.operation)
-	|| is_set(pos_count.operation)
-	|| is_set(pppoe_count.operation)
-	|| is_set(serial_count.operation)
-	|| is_set(total.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(gcc0_count.yfilter)
+	|| ydk::is_set(gcc1_count.yfilter)
+	|| ydk::is_set(multilink_bundle_count.yfilter)
+	|| ydk::is_set(pos_count.yfilter)
+	|| ydk::is_set(pppoe_count.yfilter)
+	|| ydk::is_set(serial_count.yfilter)
+	|| ydk::is_set(total.yfilter);
 }
 
 std::string Ppp::Nodes::Node::Summary::Intfs::get_segment_path() const
@@ -5703,13 +7465,13 @@ const EntityPath Ppp::Nodes::Node::Summary::Intfs::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (gcc0_count.is_set || is_set(gcc0_count.operation)) leaf_name_data.push_back(gcc0_count.get_name_leafdata());
-    if (gcc1_count.is_set || is_set(gcc1_count.operation)) leaf_name_data.push_back(gcc1_count.get_name_leafdata());
-    if (multilink_bundle_count.is_set || is_set(multilink_bundle_count.operation)) leaf_name_data.push_back(multilink_bundle_count.get_name_leafdata());
-    if (pos_count.is_set || is_set(pos_count.operation)) leaf_name_data.push_back(pos_count.get_name_leafdata());
-    if (pppoe_count.is_set || is_set(pppoe_count.operation)) leaf_name_data.push_back(pppoe_count.get_name_leafdata());
-    if (serial_count.is_set || is_set(serial_count.operation)) leaf_name_data.push_back(serial_count.get_name_leafdata());
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (gcc0_count.is_set || is_set(gcc0_count.yfilter)) leaf_name_data.push_back(gcc0_count.get_name_leafdata());
+    if (gcc1_count.is_set || is_set(gcc1_count.yfilter)) leaf_name_data.push_back(gcc1_count.get_name_leafdata());
+    if (multilink_bundle_count.is_set || is_set(multilink_bundle_count.yfilter)) leaf_name_data.push_back(multilink_bundle_count.get_name_leafdata());
+    if (pos_count.is_set || is_set(pos_count.yfilter)) leaf_name_data.push_back(pos_count.get_name_leafdata());
+    if (pppoe_count.is_set || is_set(pppoe_count.yfilter)) leaf_name_data.push_back(pppoe_count.get_name_leafdata());
+    if (serial_count.is_set || is_set(serial_count.yfilter)) leaf_name_data.push_back(serial_count.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5728,36 +7490,89 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::Intfs:
     return children;
 }
 
-void Ppp::Nodes::Node::Summary::Intfs::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Summary::Intfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "gcc0-count")
     {
         gcc0_count = value;
+        gcc0_count.value_namespace = name_space;
+        gcc0_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gcc1-count")
     {
         gcc1_count = value;
+        gcc1_count.value_namespace = name_space;
+        gcc1_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multilink-bundle-count")
     {
         multilink_bundle_count = value;
+        multilink_bundle_count.value_namespace = name_space;
+        multilink_bundle_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pos-count")
     {
         pos_count = value;
+        pos_count.value_namespace = name_space;
+        pos_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pppoe-count")
     {
         pppoe_count = value;
+        pppoe_count.value_namespace = name_space;
+        pppoe_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-count")
     {
         serial_count = value;
+        serial_count.value_namespace = name_space;
+        serial_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::Summary::Intfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "gcc0-count")
+    {
+        gcc0_count.yfilter = yfilter;
+    }
+    if(value_path == "gcc1-count")
+    {
+        gcc1_count.yfilter = yfilter;
+    }
+    if(value_path == "multilink-bundle-count")
+    {
+        multilink_bundle_count.yfilter = yfilter;
+    }
+    if(value_path == "pos-count")
+    {
+        pos_count.yfilter = yfilter;
+    }
+    if(value_path == "pppoe-count")
+    {
+        pppoe_count.yfilter = yfilter;
+    }
+    if(value_path == "serial-count")
+    {
+        serial_count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Summary::Intfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "gcc0-count" || name == "gcc1-count" || name == "multilink-bundle-count" || name == "pos-count" || name == "pppoe-count" || name == "serial-count" || name == "total")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Summary::FsmStates::FsmStates()
@@ -5790,7 +7605,7 @@ bool Ppp::Nodes::Node::Summary::FsmStates::has_operation() const
         if(ncpfsm_states_array[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (lcpfsm_states !=  nullptr && lcpfsm_states->has_operation());
 }
 
@@ -5870,8 +7685,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmSta
     return children;
 }
 
-void Ppp::Nodes::Node::Summary::FsmStates::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Summary::FsmStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lcpfsm-states" || name == "ncpfsm-states-array")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::LcpfsmStates()
@@ -5900,12 +7726,12 @@ bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_operation() const
 {
     for (auto const & leaf : count.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(total.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(total.yfilter);
 }
 
 std::string Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_segment_path() const
@@ -5931,7 +7757,7 @@ const EntityPath Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     auto count_name_datas = count.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
@@ -5952,7 +7778,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmSta
     return children;
 }
 
-void Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
@@ -5961,7 +7787,28 @@ void Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::set_value(const std::st
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::LcpfsmStates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "total")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::NcpfsmStatesArray()
@@ -5992,13 +7839,13 @@ bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_operation() co
 {
     for (auto const & leaf : count.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(count.operation)
-	|| is_set(ncp_identifier.operation)
-	|| is_set(total.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(ncp_identifier.yfilter)
+	|| ydk::is_set(total.yfilter);
 }
 
 std::string Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_segment_path() const
@@ -6024,8 +7871,8 @@ const EntityPath Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ncp_identifier.is_set || is_set(ncp_identifier.operation)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
-    if (total.is_set || is_set(total.operation)) leaf_name_data.push_back(total.get_name_leafdata());
+    if (ncp_identifier.is_set || is_set(ncp_identifier.yfilter)) leaf_name_data.push_back(ncp_identifier.get_name_leafdata());
+    if (total.is_set || is_set(total.yfilter)) leaf_name_data.push_back(total.get_name_leafdata());
 
     auto count_name_datas = count.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), count_name_datas.begin(), count_name_datas.end());
@@ -6046,7 +7893,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::FsmSta
     return children;
 }
 
-void Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count")
     {
@@ -6055,11 +7902,38 @@ void Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::set_value(const st
     if(value_path == "ncp-identifier")
     {
         ncp_identifier = value;
+        ncp_identifier.value_namespace = name_space;
+        ncp_identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total")
     {
         total = value;
+        total.value_namespace = name_space;
+        total.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "ncp-identifier")
+    {
+        ncp_identifier.yfilter = yfilter;
+    }
+    if(value_path == "total")
+    {
+        total.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count" || name == "ncp-identifier" || name == "total")
+        return true;
+    return false;
 }
 
 Ppp::Nodes::Node::Summary::LcpAuthPhases::LcpAuthPhases()
@@ -6090,13 +7964,13 @@ bool Ppp::Nodes::Node::Summary::LcpAuthPhases::has_data() const
 
 bool Ppp::Nodes::Node::Summary::LcpAuthPhases::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authenticating.operation)
-	|| is_set(lcp_not_negotiated.operation)
-	|| is_set(line_held_down.operation)
-	|| is_set(up_l2_fwded.operation)
-	|| is_set(up_local_term.operation)
-	|| is_set(up_tunneled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authenticating.yfilter)
+	|| ydk::is_set(lcp_not_negotiated.yfilter)
+	|| ydk::is_set(line_held_down.yfilter)
+	|| ydk::is_set(up_l2_fwded.yfilter)
+	|| ydk::is_set(up_local_term.yfilter)
+	|| ydk::is_set(up_tunneled.yfilter);
 }
 
 std::string Ppp::Nodes::Node::Summary::LcpAuthPhases::get_segment_path() const
@@ -6122,12 +7996,12 @@ const EntityPath Ppp::Nodes::Node::Summary::LcpAuthPhases::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authenticating.is_set || is_set(authenticating.operation)) leaf_name_data.push_back(authenticating.get_name_leafdata());
-    if (lcp_not_negotiated.is_set || is_set(lcp_not_negotiated.operation)) leaf_name_data.push_back(lcp_not_negotiated.get_name_leafdata());
-    if (line_held_down.is_set || is_set(line_held_down.operation)) leaf_name_data.push_back(line_held_down.get_name_leafdata());
-    if (up_l2_fwded.is_set || is_set(up_l2_fwded.operation)) leaf_name_data.push_back(up_l2_fwded.get_name_leafdata());
-    if (up_local_term.is_set || is_set(up_local_term.operation)) leaf_name_data.push_back(up_local_term.get_name_leafdata());
-    if (up_tunneled.is_set || is_set(up_tunneled.operation)) leaf_name_data.push_back(up_tunneled.get_name_leafdata());
+    if (authenticating.is_set || is_set(authenticating.yfilter)) leaf_name_data.push_back(authenticating.get_name_leafdata());
+    if (lcp_not_negotiated.is_set || is_set(lcp_not_negotiated.yfilter)) leaf_name_data.push_back(lcp_not_negotiated.get_name_leafdata());
+    if (line_held_down.is_set || is_set(line_held_down.yfilter)) leaf_name_data.push_back(line_held_down.get_name_leafdata());
+    if (up_l2_fwded.is_set || is_set(up_l2_fwded.yfilter)) leaf_name_data.push_back(up_l2_fwded.get_name_leafdata());
+    if (up_local_term.is_set || is_set(up_local_term.yfilter)) leaf_name_data.push_back(up_local_term.get_name_leafdata());
+    if (up_tunneled.is_set || is_set(up_tunneled.yfilter)) leaf_name_data.push_back(up_tunneled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6146,81 +8020,128 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Nodes::Node::Summary::LcpAut
     return children;
 }
 
-void Ppp::Nodes::Node::Summary::LcpAuthPhases::set_value(const std::string & value_path, std::string value)
+void Ppp::Nodes::Node::Summary::LcpAuthPhases::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authenticating")
     {
         authenticating = value;
+        authenticating.value_namespace = name_space;
+        authenticating.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lcp-not-negotiated")
     {
         lcp_not_negotiated = value;
+        lcp_not_negotiated.value_namespace = name_space;
+        lcp_not_negotiated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "line-held-down")
     {
         line_held_down = value;
+        line_held_down.value_namespace = name_space;
+        line_held_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-l2-fwded")
     {
         up_l2_fwded = value;
+        up_l2_fwded.value_namespace = name_space;
+        up_l2_fwded.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-local-term")
     {
         up_local_term = value;
+        up_local_term.value_namespace = name_space;
+        up_local_term.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-tunneled")
     {
         up_tunneled = value;
+        up_tunneled.value_namespace = name_space;
+        up_tunneled.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf NcpIdentEnum::cdpcp {1, "cdpcp"};
-const Enum::YLeaf NcpIdentEnum::ipcp {2, "ipcp"};
-const Enum::YLeaf NcpIdentEnum::ipcpiw {3, "ipcpiw"};
-const Enum::YLeaf NcpIdentEnum::ipv6cp {4, "ipv6cp"};
-const Enum::YLeaf NcpIdentEnum::mplscp {5, "mplscp"};
-const Enum::YLeaf NcpIdentEnum::osicp {6, "osicp"};
+void Ppp::Nodes::Node::Summary::LcpAuthPhases::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authenticating")
+    {
+        authenticating.yfilter = yfilter;
+    }
+    if(value_path == "lcp-not-negotiated")
+    {
+        lcp_not_negotiated.yfilter = yfilter;
+    }
+    if(value_path == "line-held-down")
+    {
+        line_held_down.yfilter = yfilter;
+    }
+    if(value_path == "up-l2-fwded")
+    {
+        up_l2_fwded.yfilter = yfilter;
+    }
+    if(value_path == "up-local-term")
+    {
+        up_local_term.yfilter = yfilter;
+    }
+    if(value_path == "up-tunneled")
+    {
+        up_tunneled.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf PppSsoFsmStateEnum::ppp_sso_state_not_ready_0 {0, "ppp-sso-state-not-ready-0"};
-const Enum::YLeaf PppSsoFsmStateEnum::ppp_sso_state_standby_unnegd_1 {1, "ppp-sso-state-standby-unnegd-1"};
-const Enum::YLeaf PppSsoFsmStateEnum::ppp_sso_state_active_down_2 {2, "ppp-sso-state-active-down-2"};
-const Enum::YLeaf PppSsoFsmStateEnum::ppp_sso_state_deactivating_3 {3, "ppp-sso-state-deactivating-3"};
-const Enum::YLeaf PppSsoFsmStateEnum::ppp_sso_state_active_unnegd_4 {4, "ppp-sso-state-active-unnegd-4"};
-const Enum::YLeaf PppSsoFsmStateEnum::ppp_sso_state_standby_negd_5 {5, "ppp-sso-state-standby-negd-5"};
-const Enum::YLeaf PppSsoFsmStateEnum::ppp_sso_state_activating_6 {6, "ppp-sso-state-activating-6"};
-const Enum::YLeaf PppSsoFsmStateEnum::ppp_sso_state_active_negd_7 {7, "ppp-sso-state-active-negd-7"};
+bool Ppp::Nodes::Node::Summary::LcpAuthPhases::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authenticating" || name == "lcp-not-negotiated" || name == "line-held-down" || name == "up-l2-fwded" || name == "up-local-term" || name == "up-tunneled")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf PppIphcCompressionEnum::ppp_iphc_compression_fmt_none {0, "ppp-iphc-compression-fmt-none"};
-const Enum::YLeaf PppIphcCompressionEnum::ppp_iphc_compression_fmt_vj {1, "ppp-iphc-compression-fmt-vj"};
-const Enum::YLeaf PppIphcCompressionEnum::ppp_iphc_compression_fmt_ietf {2, "ppp-iphc-compression-fmt-ietf"};
-const Enum::YLeaf PppIphcCompressionEnum::ppp_iphc_compression_fmt_iphc {3, "ppp-iphc-compression-fmt-iphc"};
-const Enum::YLeaf PppIphcCompressionEnum::ppp_iphc_compression_fmt_cisco {4, "ppp-iphc-compression-fmt-cisco"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_none {0, "ppp-iphc-compression-fmt-none"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_vj {1, "ppp-iphc-compression-fmt-vj"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_ietf {2, "ppp-iphc-compression-fmt-ietf"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_iphc {3, "ppp-iphc-compression-fmt-iphc"};
+const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_cisco {4, "ppp-iphc-compression-fmt-cisco"};
 
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
-const Enum::YLeaf PppFsmStateEnum::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_not_ready_0 {0, "ppp-sso-state-not-ready-0"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_unnegd_1 {1, "ppp-sso-state-standby-unnegd-1"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_down_2 {2, "ppp-sso-state-active-down-2"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_deactivating_3 {3, "ppp-sso-state-deactivating-3"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_unnegd_4 {4, "ppp-sso-state-active-unnegd-4"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_negd_5 {5, "ppp-sso-state-standby-negd-5"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_activating_6 {6, "ppp-sso-state-activating-6"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_negd_7 {7, "ppp-sso-state-active-negd-7"};
 
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_detached {0, "ppp-lcp-mp-mbr-state-detached"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_lcp_not_negotiated {1, "ppp-lcp-mp-mbr-state-lcp-not-negotiated"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_link_noise {2, "ppp-lcp-mp-mbr-state-link-noise"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_bundle_shutdown {3, "ppp-lcp-mp-mbr-state-bundle-shutdown"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_mrru_rejected {4, "ppp-lcp-mp-mbr-state-mrru-rejected"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_mrru_mismatch {5, "ppp-lcp-mp-mbr-state-mrru-mismatch"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_ed_mismatch {6, "ppp-lcp-mp-mbr-state-ed-mismatch"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_auth_name_mismatch {7, "ppp-lcp-mp-mbr-state-auth-name-mismatch"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_mcmp_rejected {8, "ppp-lcp-mp-mbr-state-mcmp-rejected"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_mcmp_not_negotiated {9, "ppp-lcp-mp-mbr-state-mcmp-not-negotiated"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_mcmp_local_mismatch {10, "ppp-lcp-mp-mbr-state-mcmp-local-mismatch"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_mcmp_peer_mismatch {11, "ppp-lcp-mp-mbr-state-mcmp-peer-mismatch"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_standby_up {12, "ppp-lcp-mp-mbr-state-standby-up"};
-const Enum::YLeaf PppLcpMpMbrStateEnum::ppp_lcp_mp_mbr_state_active {13, "ppp-lcp-mp-mbr-state-active"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_detached {0, "ppp-lcp-mp-mbr-state-detached"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_lcp_not_negotiated {1, "ppp-lcp-mp-mbr-state-lcp-not-negotiated"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_link_noise {2, "ppp-lcp-mp-mbr-state-link-noise"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_bundle_shutdown {3, "ppp-lcp-mp-mbr-state-bundle-shutdown"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mrru_rejected {4, "ppp-lcp-mp-mbr-state-mrru-rejected"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mrru_mismatch {5, "ppp-lcp-mp-mbr-state-mrru-mismatch"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_ed_mismatch {6, "ppp-lcp-mp-mbr-state-ed-mismatch"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_auth_name_mismatch {7, "ppp-lcp-mp-mbr-state-auth-name-mismatch"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_rejected {8, "ppp-lcp-mp-mbr-state-mcmp-rejected"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_not_negotiated {9, "ppp-lcp-mp-mbr-state-mcmp-not-negotiated"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_local_mismatch {10, "ppp-lcp-mp-mbr-state-mcmp-local-mismatch"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_peer_mismatch {11, "ppp-lcp-mp-mbr-state-mcmp-peer-mismatch"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_standby_up {12, "ppp-lcp-mp-mbr-state-standby-up"};
+const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_active {13, "ppp-lcp-mp-mbr-state-active"};
+
+const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
+const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
+const Enum::YLeaf NcpIdent::ipcpiw {3, "ipcpiw"};
+const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
+const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
+const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
+
+const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
 
 
 }

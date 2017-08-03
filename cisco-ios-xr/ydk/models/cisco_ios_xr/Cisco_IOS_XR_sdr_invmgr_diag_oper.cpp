@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_sdr_invmgr_diag_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sdr_invmgr_diag_oper {
 
 Diag::Diag()
@@ -29,7 +31,7 @@ bool Diag::has_data() const
 
 bool Diag::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (racks !=  nullptr && racks->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::get_children() const
     return children;
 }
 
-void Diag::set_value(const std::string & value_path, std::string value)
+void Diag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Diag::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Diag::get_bundle_name() const
 augment_capabilities_function Diag::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Diag::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Diag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "racks")
+        return true;
+    return false;
 }
 
 Diag::Racks::Racks()
@@ -135,7 +153,7 @@ bool Diag::Racks::has_operation() const
         if(rack[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Diag::Racks::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::get_children() const
     return children;
 }
 
-void Diag::Racks::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Diag::Racks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rack")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Rack()
@@ -239,8 +268,8 @@ bool Diag::Racks::Rack::has_data() const
 
 bool Diag::Racks::Rack::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rack_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(rack_name.yfilter)
 	|| (chassis !=  nullptr && chassis->has_operation())
 	|| (fan_traies !=  nullptr && fan_traies->has_operation())
 	|| (power_shelfs !=  nullptr && power_shelfs->has_operation())
@@ -270,7 +299,7 @@ const EntityPath Diag::Racks::Rack::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rack_name.is_set || is_set(rack_name.operation)) leaf_name_data.push_back(rack_name.get_name_leafdata());
+    if (rack_name.is_set || is_set(rack_name.yfilter)) leaf_name_data.push_back(rack_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -345,12 +374,29 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::get_children()
     return children;
 }
 
-void Diag::Racks::Rack::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rack-name")
     {
         rack_name = value;
+        rack_name.value_namespace = name_space;
+        rack_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rack-name")
+    {
+        rack_name.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "chassis" || name == "fan-traies" || name == "power-shelfs" || name == "slots" || name == "rack-name")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelfs()
@@ -379,7 +425,7 @@ bool Diag::Racks::Rack::PowerShelfs::has_operation() const
         if(power_shelf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Diag::Racks::Rack::PowerShelfs::get_segment_path() const
@@ -444,8 +490,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::g
     return children;
 }
 
-void Diag::Racks::Rack::PowerShelfs::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::PowerShelfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Diag::Racks::Rack::PowerShelfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::Rack::PowerShelfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "power-shelf")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerShelf()
@@ -471,8 +528,8 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::has_data() const
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(power_shelf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(power_shelf_name.yfilter)
 	|| (power_supplies !=  nullptr && power_supplies->has_operation());
 }
 
@@ -499,7 +556,7 @@ const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (power_shelf_name.is_set || is_set(power_shelf_name.operation)) leaf_name_data.push_back(power_shelf_name.get_name_leafdata());
+    if (power_shelf_name.is_set || is_set(power_shelf_name.yfilter)) leaf_name_data.push_back(power_shelf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -532,12 +589,29 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::P
     return children;
 }
 
-void Diag::Racks::Rack::PowerShelfs::PowerShelf::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "power-shelf-name")
     {
         power_shelf_name = value;
+        power_shelf_name.value_namespace = name_space;
+        power_shelf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "power-shelf-name")
+    {
+        power_shelf_name.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::PowerShelfs::PowerShelf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "power-supplies" || name == "power-shelf-name")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupplies()
@@ -566,7 +640,7 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::has_operation() 
         if(power_supply[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::get_segment_path() const
@@ -631,8 +705,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::P
     return children;
 }
 
-void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "power-supply")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::PowerSupply()
@@ -658,8 +743,8 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::has
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(power_supply_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(power_supply_name.yfilter)
 	|| (information !=  nullptr && information->has_operation());
 }
 
@@ -686,7 +771,7 @@ const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::Powe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (power_supply_name.is_set || is_set(power_supply_name.operation)) leaf_name_data.push_back(power_supply_name.get_name_leafdata());
+    if (power_supply_name.is_set || is_set(power_supply_name.yfilter)) leaf_name_data.push_back(power_supply_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -719,12 +804,29 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::P
     return children;
 }
 
-void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "power-supply-name")
     {
         power_supply_name = value;
+        power_supply_name.value_namespace = name_space;
+        power_supply_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "power-supply-name")
+    {
+        power_supply_name.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "information" || name == "power-supply-name")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Information()
@@ -860,63 +962,63 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asset_alias.operation)
-	|| is_set(asset_id.operation)
-	|| is_set(base_mac_address1.operation)
-	|| is_set(base_mac_address2.operation)
-	|| is_set(base_mac_address3.operation)
-	|| is_set(base_mac_address4.operation)
-	|| is_set(block_checksum.operation)
-	|| is_set(block_count.operation)
-	|| is_set(block_length.operation)
-	|| is_set(block_signature.operation)
-	|| is_set(block_version.operation)
-	|| is_set(chassis_sid.operation)
-	|| is_set(clei.operation)
-	|| is_set(controller_family.operation)
-	|| is_set(controller_type.operation)
-	|| is_set(description.operation)
-	|| is_set(dev_num1.operation)
-	|| is_set(dev_num2.operation)
-	|| is_set(dev_num3.operation)
-	|| is_set(dev_num4.operation)
-	|| is_set(dev_num5.operation)
-	|| is_set(dev_num6.operation)
-	|| is_set(dev_num7.operation)
-	|| is_set(eci.operation)
-	|| is_set(eeprom_size.operation)
-	|| is_set(engineer_use.operation)
-	|| is_set(fru_major_type.operation)
-	|| is_set(fru_minor_type.operation)
-	|| is_set(hw_version.operation)
-	|| is_set(hwid.operation)
-	|| is_set(idprom_format_rev.operation)
-	|| is_set(mac_add_blk_size1.operation)
-	|| is_set(mac_add_blk_size2.operation)
-	|| is_set(mac_add_blk_size3.operation)
-	|| is_set(mac_add_blk_size4.operation)
-	|| is_set(manu_test_data.operation)
-	|| is_set(mfg_bits.operation)
-	|| is_set(mfg_deviation.operation)
-	|| is_set(oem_string.operation)
-	|| is_set(part_number.operation)
-	|| is_set(part_revision.operation)
-	|| is_set(pca_num.operation)
-	|| is_set(pcavid.operation)
-	|| is_set(pcb_serial_num.operation)
-	|| is_set(pid.operation)
-	|| is_set(power_consumption.operation)
-	|| is_set(power_supply_type.operation)
-	|| is_set(product_id.operation)
-	|| is_set(rma_code.operation)
-	|| is_set(serial_number.operation)
-	|| is_set(snmpoid.operation)
-	|| is_set(top_assem_part_num.operation)
-	|| is_set(top_assem_vid.operation)
-	|| is_set(udi_description.operation)
-	|| is_set(udi_name.operation)
-	|| is_set(vid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(asset_alias.yfilter)
+	|| ydk::is_set(asset_id.yfilter)
+	|| ydk::is_set(base_mac_address1.yfilter)
+	|| ydk::is_set(base_mac_address2.yfilter)
+	|| ydk::is_set(base_mac_address3.yfilter)
+	|| ydk::is_set(base_mac_address4.yfilter)
+	|| ydk::is_set(block_checksum.yfilter)
+	|| ydk::is_set(block_count.yfilter)
+	|| ydk::is_set(block_length.yfilter)
+	|| ydk::is_set(block_signature.yfilter)
+	|| ydk::is_set(block_version.yfilter)
+	|| ydk::is_set(chassis_sid.yfilter)
+	|| ydk::is_set(clei.yfilter)
+	|| ydk::is_set(controller_family.yfilter)
+	|| ydk::is_set(controller_type.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(dev_num1.yfilter)
+	|| ydk::is_set(dev_num2.yfilter)
+	|| ydk::is_set(dev_num3.yfilter)
+	|| ydk::is_set(dev_num4.yfilter)
+	|| ydk::is_set(dev_num5.yfilter)
+	|| ydk::is_set(dev_num6.yfilter)
+	|| ydk::is_set(dev_num7.yfilter)
+	|| ydk::is_set(eci.yfilter)
+	|| ydk::is_set(eeprom_size.yfilter)
+	|| ydk::is_set(engineer_use.yfilter)
+	|| ydk::is_set(fru_major_type.yfilter)
+	|| ydk::is_set(fru_minor_type.yfilter)
+	|| ydk::is_set(hw_version.yfilter)
+	|| ydk::is_set(hwid.yfilter)
+	|| ydk::is_set(idprom_format_rev.yfilter)
+	|| ydk::is_set(mac_add_blk_size1.yfilter)
+	|| ydk::is_set(mac_add_blk_size2.yfilter)
+	|| ydk::is_set(mac_add_blk_size3.yfilter)
+	|| ydk::is_set(mac_add_blk_size4.yfilter)
+	|| ydk::is_set(manu_test_data.yfilter)
+	|| ydk::is_set(mfg_bits.yfilter)
+	|| ydk::is_set(mfg_deviation.yfilter)
+	|| ydk::is_set(oem_string.yfilter)
+	|| ydk::is_set(part_number.yfilter)
+	|| ydk::is_set(part_revision.yfilter)
+	|| ydk::is_set(pca_num.yfilter)
+	|| ydk::is_set(pcavid.yfilter)
+	|| ydk::is_set(pcb_serial_num.yfilter)
+	|| ydk::is_set(pid.yfilter)
+	|| ydk::is_set(power_consumption.yfilter)
+	|| ydk::is_set(power_supply_type.yfilter)
+	|| ydk::is_set(product_id.yfilter)
+	|| ydk::is_set(rma_code.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(snmpoid.yfilter)
+	|| ydk::is_set(top_assem_part_num.yfilter)
+	|| ydk::is_set(top_assem_vid.yfilter)
+	|| ydk::is_set(udi_description.yfilter)
+	|| ydk::is_set(udi_name.yfilter)
+	|| ydk::is_set(vid.yfilter)
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
@@ -943,62 +1045,62 @@ const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::Powe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asset_alias.is_set || is_set(asset_alias.operation)) leaf_name_data.push_back(asset_alias.get_name_leafdata());
-    if (asset_id.is_set || is_set(asset_id.operation)) leaf_name_data.push_back(asset_id.get_name_leafdata());
-    if (base_mac_address1.is_set || is_set(base_mac_address1.operation)) leaf_name_data.push_back(base_mac_address1.get_name_leafdata());
-    if (base_mac_address2.is_set || is_set(base_mac_address2.operation)) leaf_name_data.push_back(base_mac_address2.get_name_leafdata());
-    if (base_mac_address3.is_set || is_set(base_mac_address3.operation)) leaf_name_data.push_back(base_mac_address3.get_name_leafdata());
-    if (base_mac_address4.is_set || is_set(base_mac_address4.operation)) leaf_name_data.push_back(base_mac_address4.get_name_leafdata());
-    if (block_checksum.is_set || is_set(block_checksum.operation)) leaf_name_data.push_back(block_checksum.get_name_leafdata());
-    if (block_count.is_set || is_set(block_count.operation)) leaf_name_data.push_back(block_count.get_name_leafdata());
-    if (block_length.is_set || is_set(block_length.operation)) leaf_name_data.push_back(block_length.get_name_leafdata());
-    if (block_signature.is_set || is_set(block_signature.operation)) leaf_name_data.push_back(block_signature.get_name_leafdata());
-    if (block_version.is_set || is_set(block_version.operation)) leaf_name_data.push_back(block_version.get_name_leafdata());
-    if (chassis_sid.is_set || is_set(chassis_sid.operation)) leaf_name_data.push_back(chassis_sid.get_name_leafdata());
-    if (clei.is_set || is_set(clei.operation)) leaf_name_data.push_back(clei.get_name_leafdata());
-    if (controller_family.is_set || is_set(controller_family.operation)) leaf_name_data.push_back(controller_family.get_name_leafdata());
-    if (controller_type.is_set || is_set(controller_type.operation)) leaf_name_data.push_back(controller_type.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (dev_num1.is_set || is_set(dev_num1.operation)) leaf_name_data.push_back(dev_num1.get_name_leafdata());
-    if (dev_num2.is_set || is_set(dev_num2.operation)) leaf_name_data.push_back(dev_num2.get_name_leafdata());
-    if (dev_num3.is_set || is_set(dev_num3.operation)) leaf_name_data.push_back(dev_num3.get_name_leafdata());
-    if (dev_num4.is_set || is_set(dev_num4.operation)) leaf_name_data.push_back(dev_num4.get_name_leafdata());
-    if (dev_num5.is_set || is_set(dev_num5.operation)) leaf_name_data.push_back(dev_num5.get_name_leafdata());
-    if (dev_num6.is_set || is_set(dev_num6.operation)) leaf_name_data.push_back(dev_num6.get_name_leafdata());
-    if (dev_num7.is_set || is_set(dev_num7.operation)) leaf_name_data.push_back(dev_num7.get_name_leafdata());
-    if (eci.is_set || is_set(eci.operation)) leaf_name_data.push_back(eci.get_name_leafdata());
-    if (eeprom_size.is_set || is_set(eeprom_size.operation)) leaf_name_data.push_back(eeprom_size.get_name_leafdata());
-    if (engineer_use.is_set || is_set(engineer_use.operation)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
-    if (fru_major_type.is_set || is_set(fru_major_type.operation)) leaf_name_data.push_back(fru_major_type.get_name_leafdata());
-    if (fru_minor_type.is_set || is_set(fru_minor_type.operation)) leaf_name_data.push_back(fru_minor_type.get_name_leafdata());
-    if (hw_version.is_set || is_set(hw_version.operation)) leaf_name_data.push_back(hw_version.get_name_leafdata());
-    if (hwid.is_set || is_set(hwid.operation)) leaf_name_data.push_back(hwid.get_name_leafdata());
-    if (idprom_format_rev.is_set || is_set(idprom_format_rev.operation)) leaf_name_data.push_back(idprom_format_rev.get_name_leafdata());
-    if (mac_add_blk_size1.is_set || is_set(mac_add_blk_size1.operation)) leaf_name_data.push_back(mac_add_blk_size1.get_name_leafdata());
-    if (mac_add_blk_size2.is_set || is_set(mac_add_blk_size2.operation)) leaf_name_data.push_back(mac_add_blk_size2.get_name_leafdata());
-    if (mac_add_blk_size3.is_set || is_set(mac_add_blk_size3.operation)) leaf_name_data.push_back(mac_add_blk_size3.get_name_leafdata());
-    if (mac_add_blk_size4.is_set || is_set(mac_add_blk_size4.operation)) leaf_name_data.push_back(mac_add_blk_size4.get_name_leafdata());
-    if (manu_test_data.is_set || is_set(manu_test_data.operation)) leaf_name_data.push_back(manu_test_data.get_name_leafdata());
-    if (mfg_bits.is_set || is_set(mfg_bits.operation)) leaf_name_data.push_back(mfg_bits.get_name_leafdata());
-    if (mfg_deviation.is_set || is_set(mfg_deviation.operation)) leaf_name_data.push_back(mfg_deviation.get_name_leafdata());
-    if (oem_string.is_set || is_set(oem_string.operation)) leaf_name_data.push_back(oem_string.get_name_leafdata());
-    if (part_number.is_set || is_set(part_number.operation)) leaf_name_data.push_back(part_number.get_name_leafdata());
-    if (part_revision.is_set || is_set(part_revision.operation)) leaf_name_data.push_back(part_revision.get_name_leafdata());
-    if (pca_num.is_set || is_set(pca_num.operation)) leaf_name_data.push_back(pca_num.get_name_leafdata());
-    if (pcavid.is_set || is_set(pcavid.operation)) leaf_name_data.push_back(pcavid.get_name_leafdata());
-    if (pcb_serial_num.is_set || is_set(pcb_serial_num.operation)) leaf_name_data.push_back(pcb_serial_num.get_name_leafdata());
-    if (pid.is_set || is_set(pid.operation)) leaf_name_data.push_back(pid.get_name_leafdata());
-    if (power_consumption.is_set || is_set(power_consumption.operation)) leaf_name_data.push_back(power_consumption.get_name_leafdata());
-    if (power_supply_type.is_set || is_set(power_supply_type.operation)) leaf_name_data.push_back(power_supply_type.get_name_leafdata());
-    if (product_id.is_set || is_set(product_id.operation)) leaf_name_data.push_back(product_id.get_name_leafdata());
-    if (rma_code.is_set || is_set(rma_code.operation)) leaf_name_data.push_back(rma_code.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.operation)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (snmpoid.is_set || is_set(snmpoid.operation)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
-    if (top_assem_part_num.is_set || is_set(top_assem_part_num.operation)) leaf_name_data.push_back(top_assem_part_num.get_name_leafdata());
-    if (top_assem_vid.is_set || is_set(top_assem_vid.operation)) leaf_name_data.push_back(top_assem_vid.get_name_leafdata());
-    if (udi_description.is_set || is_set(udi_description.operation)) leaf_name_data.push_back(udi_description.get_name_leafdata());
-    if (udi_name.is_set || is_set(udi_name.operation)) leaf_name_data.push_back(udi_name.get_name_leafdata());
-    if (vid.is_set || is_set(vid.operation)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (asset_alias.is_set || is_set(asset_alias.yfilter)) leaf_name_data.push_back(asset_alias.get_name_leafdata());
+    if (asset_id.is_set || is_set(asset_id.yfilter)) leaf_name_data.push_back(asset_id.get_name_leafdata());
+    if (base_mac_address1.is_set || is_set(base_mac_address1.yfilter)) leaf_name_data.push_back(base_mac_address1.get_name_leafdata());
+    if (base_mac_address2.is_set || is_set(base_mac_address2.yfilter)) leaf_name_data.push_back(base_mac_address2.get_name_leafdata());
+    if (base_mac_address3.is_set || is_set(base_mac_address3.yfilter)) leaf_name_data.push_back(base_mac_address3.get_name_leafdata());
+    if (base_mac_address4.is_set || is_set(base_mac_address4.yfilter)) leaf_name_data.push_back(base_mac_address4.get_name_leafdata());
+    if (block_checksum.is_set || is_set(block_checksum.yfilter)) leaf_name_data.push_back(block_checksum.get_name_leafdata());
+    if (block_count.is_set || is_set(block_count.yfilter)) leaf_name_data.push_back(block_count.get_name_leafdata());
+    if (block_length.is_set || is_set(block_length.yfilter)) leaf_name_data.push_back(block_length.get_name_leafdata());
+    if (block_signature.is_set || is_set(block_signature.yfilter)) leaf_name_data.push_back(block_signature.get_name_leafdata());
+    if (block_version.is_set || is_set(block_version.yfilter)) leaf_name_data.push_back(block_version.get_name_leafdata());
+    if (chassis_sid.is_set || is_set(chassis_sid.yfilter)) leaf_name_data.push_back(chassis_sid.get_name_leafdata());
+    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
+    if (controller_family.is_set || is_set(controller_family.yfilter)) leaf_name_data.push_back(controller_family.get_name_leafdata());
+    if (controller_type.is_set || is_set(controller_type.yfilter)) leaf_name_data.push_back(controller_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (dev_num1.is_set || is_set(dev_num1.yfilter)) leaf_name_data.push_back(dev_num1.get_name_leafdata());
+    if (dev_num2.is_set || is_set(dev_num2.yfilter)) leaf_name_data.push_back(dev_num2.get_name_leafdata());
+    if (dev_num3.is_set || is_set(dev_num3.yfilter)) leaf_name_data.push_back(dev_num3.get_name_leafdata());
+    if (dev_num4.is_set || is_set(dev_num4.yfilter)) leaf_name_data.push_back(dev_num4.get_name_leafdata());
+    if (dev_num5.is_set || is_set(dev_num5.yfilter)) leaf_name_data.push_back(dev_num5.get_name_leafdata());
+    if (dev_num6.is_set || is_set(dev_num6.yfilter)) leaf_name_data.push_back(dev_num6.get_name_leafdata());
+    if (dev_num7.is_set || is_set(dev_num7.yfilter)) leaf_name_data.push_back(dev_num7.get_name_leafdata());
+    if (eci.is_set || is_set(eci.yfilter)) leaf_name_data.push_back(eci.get_name_leafdata());
+    if (eeprom_size.is_set || is_set(eeprom_size.yfilter)) leaf_name_data.push_back(eeprom_size.get_name_leafdata());
+    if (engineer_use.is_set || is_set(engineer_use.yfilter)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
+    if (fru_major_type.is_set || is_set(fru_major_type.yfilter)) leaf_name_data.push_back(fru_major_type.get_name_leafdata());
+    if (fru_minor_type.is_set || is_set(fru_minor_type.yfilter)) leaf_name_data.push_back(fru_minor_type.get_name_leafdata());
+    if (hw_version.is_set || is_set(hw_version.yfilter)) leaf_name_data.push_back(hw_version.get_name_leafdata());
+    if (hwid.is_set || is_set(hwid.yfilter)) leaf_name_data.push_back(hwid.get_name_leafdata());
+    if (idprom_format_rev.is_set || is_set(idprom_format_rev.yfilter)) leaf_name_data.push_back(idprom_format_rev.get_name_leafdata());
+    if (mac_add_blk_size1.is_set || is_set(mac_add_blk_size1.yfilter)) leaf_name_data.push_back(mac_add_blk_size1.get_name_leafdata());
+    if (mac_add_blk_size2.is_set || is_set(mac_add_blk_size2.yfilter)) leaf_name_data.push_back(mac_add_blk_size2.get_name_leafdata());
+    if (mac_add_blk_size3.is_set || is_set(mac_add_blk_size3.yfilter)) leaf_name_data.push_back(mac_add_blk_size3.get_name_leafdata());
+    if (mac_add_blk_size4.is_set || is_set(mac_add_blk_size4.yfilter)) leaf_name_data.push_back(mac_add_blk_size4.get_name_leafdata());
+    if (manu_test_data.is_set || is_set(manu_test_data.yfilter)) leaf_name_data.push_back(manu_test_data.get_name_leafdata());
+    if (mfg_bits.is_set || is_set(mfg_bits.yfilter)) leaf_name_data.push_back(mfg_bits.get_name_leafdata());
+    if (mfg_deviation.is_set || is_set(mfg_deviation.yfilter)) leaf_name_data.push_back(mfg_deviation.get_name_leafdata());
+    if (oem_string.is_set || is_set(oem_string.yfilter)) leaf_name_data.push_back(oem_string.get_name_leafdata());
+    if (part_number.is_set || is_set(part_number.yfilter)) leaf_name_data.push_back(part_number.get_name_leafdata());
+    if (part_revision.is_set || is_set(part_revision.yfilter)) leaf_name_data.push_back(part_revision.get_name_leafdata());
+    if (pca_num.is_set || is_set(pca_num.yfilter)) leaf_name_data.push_back(pca_num.get_name_leafdata());
+    if (pcavid.is_set || is_set(pcavid.yfilter)) leaf_name_data.push_back(pcavid.get_name_leafdata());
+    if (pcb_serial_num.is_set || is_set(pcb_serial_num.yfilter)) leaf_name_data.push_back(pcb_serial_num.get_name_leafdata());
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
+    if (power_consumption.is_set || is_set(power_consumption.yfilter)) leaf_name_data.push_back(power_consumption.get_name_leafdata());
+    if (power_supply_type.is_set || is_set(power_supply_type.yfilter)) leaf_name_data.push_back(power_supply_type.get_name_leafdata());
+    if (product_id.is_set || is_set(product_id.yfilter)) leaf_name_data.push_back(product_id.get_name_leafdata());
+    if (rma_code.is_set || is_set(rma_code.yfilter)) leaf_name_data.push_back(rma_code.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (snmpoid.is_set || is_set(snmpoid.yfilter)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
+    if (top_assem_part_num.is_set || is_set(top_assem_part_num.yfilter)) leaf_name_data.push_back(top_assem_part_num.get_name_leafdata());
+    if (top_assem_vid.is_set || is_set(top_assem_vid.yfilter)) leaf_name_data.push_back(top_assem_vid.get_name_leafdata());
+    if (udi_description.is_set || is_set(udi_description.yfilter)) leaf_name_data.push_back(udi_description.get_name_leafdata());
+    if (udi_name.is_set || is_set(udi_name.yfilter)) leaf_name_data.push_back(udi_name.get_name_leafdata());
+    if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1031,232 +1133,579 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::P
     return children;
 }
 
-void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asset-alias")
     {
         asset_alias = value;
+        asset_alias.value_namespace = name_space;
+        asset_alias.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "asset-id")
     {
         asset_id = value;
+        asset_id.value_namespace = name_space;
+        asset_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address1")
     {
         base_mac_address1 = value;
+        base_mac_address1.value_namespace = name_space;
+        base_mac_address1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address2")
     {
         base_mac_address2 = value;
+        base_mac_address2.value_namespace = name_space;
+        base_mac_address2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address3")
     {
         base_mac_address3 = value;
+        base_mac_address3.value_namespace = name_space;
+        base_mac_address3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address4")
     {
         base_mac_address4 = value;
+        base_mac_address4.value_namespace = name_space;
+        base_mac_address4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-checksum")
     {
         block_checksum = value;
+        block_checksum.value_namespace = name_space;
+        block_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-count")
     {
         block_count = value;
+        block_count.value_namespace = name_space;
+        block_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-length")
     {
         block_length = value;
+        block_length.value_namespace = name_space;
+        block_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-signature")
     {
         block_signature = value;
+        block_signature.value_namespace = name_space;
+        block_signature.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-version")
     {
         block_version = value;
+        block_version.value_namespace = name_space;
+        block_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chassis-sid")
     {
         chassis_sid = value;
+        chassis_sid.value_namespace = name_space;
+        chassis_sid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "clei")
     {
         clei = value;
+        clei.value_namespace = name_space;
+        clei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-family")
     {
         controller_family = value;
+        controller_family.value_namespace = name_space;
+        controller_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-type")
     {
         controller_type = value;
+        controller_type.value_namespace = name_space;
+        controller_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num1")
     {
         dev_num1 = value;
+        dev_num1.value_namespace = name_space;
+        dev_num1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num2")
     {
         dev_num2 = value;
+        dev_num2.value_namespace = name_space;
+        dev_num2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num3")
     {
         dev_num3 = value;
+        dev_num3.value_namespace = name_space;
+        dev_num3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num4")
     {
         dev_num4 = value;
+        dev_num4.value_namespace = name_space;
+        dev_num4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num5")
     {
         dev_num5 = value;
+        dev_num5.value_namespace = name_space;
+        dev_num5.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num6")
     {
         dev_num6 = value;
+        dev_num6.value_namespace = name_space;
+        dev_num6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num7")
     {
         dev_num7 = value;
+        dev_num7.value_namespace = name_space;
+        dev_num7.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eci")
     {
         eci = value;
+        eci.value_namespace = name_space;
+        eci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eeprom-size")
     {
         eeprom_size = value;
+        eeprom_size.value_namespace = name_space;
+        eeprom_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "engineer-use")
     {
         engineer_use = value;
+        engineer_use.value_namespace = name_space;
+        engineer_use.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fru-major-type")
     {
         fru_major_type = value;
+        fru_major_type.value_namespace = name_space;
+        fru_major_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fru-minor-type")
     {
         fru_minor_type = value;
+        fru_minor_type.value_namespace = name_space;
+        fru_minor_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hw-version")
     {
         hw_version = value;
+        hw_version.value_namespace = name_space;
+        hw_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hwid")
     {
         hwid = value;
+        hwid.value_namespace = name_space;
+        hwid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idprom-format-rev")
     {
         idprom_format_rev = value;
+        idprom_format_rev.value_namespace = name_space;
+        idprom_format_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size1")
     {
         mac_add_blk_size1 = value;
+        mac_add_blk_size1.value_namespace = name_space;
+        mac_add_blk_size1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size2")
     {
         mac_add_blk_size2 = value;
+        mac_add_blk_size2.value_namespace = name_space;
+        mac_add_blk_size2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size3")
     {
         mac_add_blk_size3 = value;
+        mac_add_blk_size3.value_namespace = name_space;
+        mac_add_blk_size3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size4")
     {
         mac_add_blk_size4 = value;
+        mac_add_blk_size4.value_namespace = name_space;
+        mac_add_blk_size4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "manu-test-data")
     {
         manu_test_data = value;
+        manu_test_data.value_namespace = name_space;
+        manu_test_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mfg-bits")
     {
         mfg_bits = value;
+        mfg_bits.value_namespace = name_space;
+        mfg_bits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mfg-deviation")
     {
         mfg_deviation = value;
+        mfg_deviation.value_namespace = name_space;
+        mfg_deviation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oem-string")
     {
         oem_string = value;
+        oem_string.value_namespace = name_space;
+        oem_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "part-number")
     {
         part_number = value;
+        part_number.value_namespace = name_space;
+        part_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "part-revision")
     {
         part_revision = value;
+        part_revision.value_namespace = name_space;
+        part_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pca-num")
     {
         pca_num = value;
+        pca_num.value_namespace = name_space;
+        pca_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcavid")
     {
         pcavid = value;
+        pcavid.value_namespace = name_space;
+        pcavid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcb-serial-num")
     {
         pcb_serial_num = value;
+        pcb_serial_num.value_namespace = name_space;
+        pcb_serial_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pid")
     {
         pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-consumption")
     {
         power_consumption = value;
+        power_consumption.value_namespace = name_space;
+        power_consumption.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-supply-type")
     {
         power_supply_type = value;
+        power_supply_type.value_namespace = name_space;
+        power_supply_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "product-id")
     {
         product_id = value;
+        product_id.value_namespace = name_space;
+        product_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rma-code")
     {
         rma_code = value;
+        rma_code.value_namespace = name_space;
+        rma_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
         serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpoid")
     {
         snmpoid = value;
+        snmpoid.value_namespace = name_space;
+        snmpoid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "top-assem-part-num")
     {
         top_assem_part_num = value;
+        top_assem_part_num.value_namespace = name_space;
+        top_assem_part_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "top-assem-vid")
     {
         top_assem_vid = value;
+        top_assem_vid.value_namespace = name_space;
+        top_assem_vid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udi-description")
     {
         udi_description = value;
+        udi_description.value_namespace = name_space;
+        udi_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udi-name")
     {
         udi_name = value;
+        udi_name.value_namespace = name_space;
+        udi_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vid")
     {
         vid = value;
+        vid.value_namespace = name_space;
+        vid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asset-alias")
+    {
+        asset_alias.yfilter = yfilter;
+    }
+    if(value_path == "asset-id")
+    {
+        asset_id.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address1")
+    {
+        base_mac_address1.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address2")
+    {
+        base_mac_address2.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address3")
+    {
+        base_mac_address3.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address4")
+    {
+        base_mac_address4.yfilter = yfilter;
+    }
+    if(value_path == "block-checksum")
+    {
+        block_checksum.yfilter = yfilter;
+    }
+    if(value_path == "block-count")
+    {
+        block_count.yfilter = yfilter;
+    }
+    if(value_path == "block-length")
+    {
+        block_length.yfilter = yfilter;
+    }
+    if(value_path == "block-signature")
+    {
+        block_signature.yfilter = yfilter;
+    }
+    if(value_path == "block-version")
+    {
+        block_version.yfilter = yfilter;
+    }
+    if(value_path == "chassis-sid")
+    {
+        chassis_sid.yfilter = yfilter;
+    }
+    if(value_path == "clei")
+    {
+        clei.yfilter = yfilter;
+    }
+    if(value_path == "controller-family")
+    {
+        controller_family.yfilter = yfilter;
+    }
+    if(value_path == "controller-type")
+    {
+        controller_type.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "dev-num1")
+    {
+        dev_num1.yfilter = yfilter;
+    }
+    if(value_path == "dev-num2")
+    {
+        dev_num2.yfilter = yfilter;
+    }
+    if(value_path == "dev-num3")
+    {
+        dev_num3.yfilter = yfilter;
+    }
+    if(value_path == "dev-num4")
+    {
+        dev_num4.yfilter = yfilter;
+    }
+    if(value_path == "dev-num5")
+    {
+        dev_num5.yfilter = yfilter;
+    }
+    if(value_path == "dev-num6")
+    {
+        dev_num6.yfilter = yfilter;
+    }
+    if(value_path == "dev-num7")
+    {
+        dev_num7.yfilter = yfilter;
+    }
+    if(value_path == "eci")
+    {
+        eci.yfilter = yfilter;
+    }
+    if(value_path == "eeprom-size")
+    {
+        eeprom_size.yfilter = yfilter;
+    }
+    if(value_path == "engineer-use")
+    {
+        engineer_use.yfilter = yfilter;
+    }
+    if(value_path == "fru-major-type")
+    {
+        fru_major_type.yfilter = yfilter;
+    }
+    if(value_path == "fru-minor-type")
+    {
+        fru_minor_type.yfilter = yfilter;
+    }
+    if(value_path == "hw-version")
+    {
+        hw_version.yfilter = yfilter;
+    }
+    if(value_path == "hwid")
+    {
+        hwid.yfilter = yfilter;
+    }
+    if(value_path == "idprom-format-rev")
+    {
+        idprom_format_rev.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size1")
+    {
+        mac_add_blk_size1.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size2")
+    {
+        mac_add_blk_size2.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size3")
+    {
+        mac_add_blk_size3.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size4")
+    {
+        mac_add_blk_size4.yfilter = yfilter;
+    }
+    if(value_path == "manu-test-data")
+    {
+        manu_test_data.yfilter = yfilter;
+    }
+    if(value_path == "mfg-bits")
+    {
+        mfg_bits.yfilter = yfilter;
+    }
+    if(value_path == "mfg-deviation")
+    {
+        mfg_deviation.yfilter = yfilter;
+    }
+    if(value_path == "oem-string")
+    {
+        oem_string.yfilter = yfilter;
+    }
+    if(value_path == "part-number")
+    {
+        part_number.yfilter = yfilter;
+    }
+    if(value_path == "part-revision")
+    {
+        part_revision.yfilter = yfilter;
+    }
+    if(value_path == "pca-num")
+    {
+        pca_num.yfilter = yfilter;
+    }
+    if(value_path == "pcavid")
+    {
+        pcavid.yfilter = yfilter;
+    }
+    if(value_path == "pcb-serial-num")
+    {
+        pcb_serial_num.yfilter = yfilter;
+    }
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
+    if(value_path == "power-consumption")
+    {
+        power_consumption.yfilter = yfilter;
+    }
+    if(value_path == "power-supply-type")
+    {
+        power_supply_type.yfilter = yfilter;
+    }
+    if(value_path == "product-id")
+    {
+        product_id.yfilter = yfilter;
+    }
+    if(value_path == "rma-code")
+    {
+        rma_code.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "snmpoid")
+    {
+        snmpoid.yfilter = yfilter;
+    }
+    if(value_path == "top-assem-part-num")
+    {
+        top_assem_part_num.yfilter = yfilter;
+    }
+    if(value_path == "top-assem-vid")
+    {
+        top_assem_vid.yfilter = yfilter;
+    }
+    if(value_path == "udi-description")
+    {
+        udi_description.yfilter = yfilter;
+    }
+    if(value_path == "udi-name")
+    {
+        udi_name.yfilter = yfilter;
+    }
+    if(value_path == "vid")
+    {
+        vid.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rma" || name == "asset-alias" || name == "asset-id" || name == "base-mac-address1" || name == "base-mac-address2" || name == "base-mac-address3" || name == "base-mac-address4" || name == "block-checksum" || name == "block-count" || name == "block-length" || name == "block-signature" || name == "block-version" || name == "chassis-sid" || name == "clei" || name == "controller-family" || name == "controller-type" || name == "description" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "eci" || name == "eeprom-size" || name == "engineer-use" || name == "fru-major-type" || name == "fru-minor-type" || name == "hw-version" || name == "hwid" || name == "idprom-format-rev" || name == "mac-add-blk-size1" || name == "mac-add-blk-size2" || name == "mac-add-blk-size3" || name == "mac-add-blk-size4" || name == "manu-test-data" || name == "mfg-bits" || name == "mfg-deviation" || name == "oem-string" || name == "part-number" || name == "part-revision" || name == "pca-num" || name == "pcavid" || name == "pcb-serial-num" || name == "pid" || name == "power-consumption" || name == "power-supply-type" || name == "product-id" || name == "rma-code" || name == "serial-number" || name == "snmpoid" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "udi-description" || name == "udi-name" || name == "vid")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::Rma()
@@ -1281,10 +1730,10 @@ bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Inf
 
 bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rma_history.operation)
-	|| is_set(rma_number.operation)
-	|| is_set(test_history.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rma_history.yfilter)
+	|| ydk::is_set(rma_number.yfilter)
+	|| ydk::is_set(test_history.yfilter);
 }
 
 std::string Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::get_segment_path() const
@@ -1310,9 +1759,9 @@ const EntityPath Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::Powe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rma_history.is_set || is_set(rma_history.operation)) leaf_name_data.push_back(rma_history.get_name_leafdata());
-    if (rma_number.is_set || is_set(rma_number.operation)) leaf_name_data.push_back(rma_number.get_name_leafdata());
-    if (test_history.is_set || is_set(test_history.operation)) leaf_name_data.push_back(test_history.get_name_leafdata());
+    if (rma_history.is_set || is_set(rma_history.yfilter)) leaf_name_data.push_back(rma_history.get_name_leafdata());
+    if (rma_number.is_set || is_set(rma_number.yfilter)) leaf_name_data.push_back(rma_number.get_name_leafdata());
+    if (test_history.is_set || is_set(test_history.yfilter)) leaf_name_data.push_back(test_history.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1331,20 +1780,49 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::PowerShelfs::P
     return children;
 }
 
-void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rma-history")
     {
         rma_history = value;
+        rma_history.value_namespace = name_space;
+        rma_history.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rma-number")
     {
         rma_number = value;
+        rma_number.value_namespace = name_space;
+        rma_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-history")
     {
         test_history = value;
+        test_history.value_namespace = name_space;
+        test_history.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rma-history")
+    {
+        rma_history.yfilter = yfilter;
+    }
+    if(value_path == "rma-number")
+    {
+        rma_number.yfilter = yfilter;
+    }
+    if(value_path == "test-history")
+    {
+        test_history.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply::Information::Rma::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rma-history" || name == "rma-number" || name == "test-history")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::FanTraies::FanTraies()
@@ -1373,7 +1851,7 @@ bool Diag::Racks::Rack::FanTraies::has_operation() const
         if(fan_tray[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Diag::Racks::Rack::FanTraies::get_segment_path() const
@@ -1438,8 +1916,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::get
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::FanTraies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Diag::Racks::Rack::FanTraies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::Rack::FanTraies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fan-tray")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::FanTray()
@@ -1465,8 +1954,8 @@ bool Diag::Racks::Rack::FanTraies::FanTray::has_data() const
 
 bool Diag::Racks::Rack::FanTraies::FanTray::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fan_tray_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(fan_tray_name.yfilter)
 	|| (fanses !=  nullptr && fanses->has_operation());
 }
 
@@ -1493,7 +1982,7 @@ const EntityPath Diag::Racks::Rack::FanTraies::FanTray::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fan_tray_name.is_set || is_set(fan_tray_name.operation)) leaf_name_data.push_back(fan_tray_name.get_name_leafdata());
+    if (fan_tray_name.is_set || is_set(fan_tray_name.yfilter)) leaf_name_data.push_back(fan_tray_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1526,12 +2015,29 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::FanTraies::FanTray::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fan-tray-name")
     {
         fan_tray_name = value;
+        fan_tray_name.value_namespace = name_space;
+        fan_tray_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::FanTraies::FanTray::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fan-tray-name")
+    {
+        fan_tray_name.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::FanTraies::FanTray::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fanses" || name == "fan-tray-name")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fanses()
@@ -1560,7 +2066,7 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_operation() const
         if(fans[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::get_segment_path() const
@@ -1625,8 +2131,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::FanTraies::FanTray::Fanses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Diag::Racks::Rack::FanTraies::FanTray::Fanses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fans")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Fans()
@@ -1652,8 +2169,8 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_data() const
 
 bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fans_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(fans_name.yfilter)
 	|| (information !=  nullptr && information->has_operation());
 }
 
@@ -1680,7 +2197,7 @@ const EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fans_name.is_set || is_set(fans_name.operation)) leaf_name_data.push_back(fans_name.get_name_leafdata());
+    if (fans_name.is_set || is_set(fans_name.yfilter)) leaf_name_data.push_back(fans_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1713,12 +2230,29 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fans-name")
     {
         fans_name = value;
+        fans_name.value_namespace = name_space;
+        fans_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fans-name")
+    {
+        fans_name.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "information" || name == "fans-name")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Information()
@@ -1854,63 +2388,63 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_data(
 
 bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asset_alias.operation)
-	|| is_set(asset_id.operation)
-	|| is_set(base_mac_address1.operation)
-	|| is_set(base_mac_address2.operation)
-	|| is_set(base_mac_address3.operation)
-	|| is_set(base_mac_address4.operation)
-	|| is_set(block_checksum.operation)
-	|| is_set(block_count.operation)
-	|| is_set(block_length.operation)
-	|| is_set(block_signature.operation)
-	|| is_set(block_version.operation)
-	|| is_set(chassis_sid.operation)
-	|| is_set(clei.operation)
-	|| is_set(controller_family.operation)
-	|| is_set(controller_type.operation)
-	|| is_set(description.operation)
-	|| is_set(dev_num1.operation)
-	|| is_set(dev_num2.operation)
-	|| is_set(dev_num3.operation)
-	|| is_set(dev_num4.operation)
-	|| is_set(dev_num5.operation)
-	|| is_set(dev_num6.operation)
-	|| is_set(dev_num7.operation)
-	|| is_set(eci.operation)
-	|| is_set(eeprom_size.operation)
-	|| is_set(engineer_use.operation)
-	|| is_set(fru_major_type.operation)
-	|| is_set(fru_minor_type.operation)
-	|| is_set(hw_version.operation)
-	|| is_set(hwid.operation)
-	|| is_set(idprom_format_rev.operation)
-	|| is_set(mac_add_blk_size1.operation)
-	|| is_set(mac_add_blk_size2.operation)
-	|| is_set(mac_add_blk_size3.operation)
-	|| is_set(mac_add_blk_size4.operation)
-	|| is_set(manu_test_data.operation)
-	|| is_set(mfg_bits.operation)
-	|| is_set(mfg_deviation.operation)
-	|| is_set(oem_string.operation)
-	|| is_set(part_number.operation)
-	|| is_set(part_revision.operation)
-	|| is_set(pca_num.operation)
-	|| is_set(pcavid.operation)
-	|| is_set(pcb_serial_num.operation)
-	|| is_set(pid.operation)
-	|| is_set(power_consumption.operation)
-	|| is_set(power_supply_type.operation)
-	|| is_set(product_id.operation)
-	|| is_set(rma_code.operation)
-	|| is_set(serial_number.operation)
-	|| is_set(snmpoid.operation)
-	|| is_set(top_assem_part_num.operation)
-	|| is_set(top_assem_vid.operation)
-	|| is_set(udi_description.operation)
-	|| is_set(udi_name.operation)
-	|| is_set(vid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(asset_alias.yfilter)
+	|| ydk::is_set(asset_id.yfilter)
+	|| ydk::is_set(base_mac_address1.yfilter)
+	|| ydk::is_set(base_mac_address2.yfilter)
+	|| ydk::is_set(base_mac_address3.yfilter)
+	|| ydk::is_set(base_mac_address4.yfilter)
+	|| ydk::is_set(block_checksum.yfilter)
+	|| ydk::is_set(block_count.yfilter)
+	|| ydk::is_set(block_length.yfilter)
+	|| ydk::is_set(block_signature.yfilter)
+	|| ydk::is_set(block_version.yfilter)
+	|| ydk::is_set(chassis_sid.yfilter)
+	|| ydk::is_set(clei.yfilter)
+	|| ydk::is_set(controller_family.yfilter)
+	|| ydk::is_set(controller_type.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(dev_num1.yfilter)
+	|| ydk::is_set(dev_num2.yfilter)
+	|| ydk::is_set(dev_num3.yfilter)
+	|| ydk::is_set(dev_num4.yfilter)
+	|| ydk::is_set(dev_num5.yfilter)
+	|| ydk::is_set(dev_num6.yfilter)
+	|| ydk::is_set(dev_num7.yfilter)
+	|| ydk::is_set(eci.yfilter)
+	|| ydk::is_set(eeprom_size.yfilter)
+	|| ydk::is_set(engineer_use.yfilter)
+	|| ydk::is_set(fru_major_type.yfilter)
+	|| ydk::is_set(fru_minor_type.yfilter)
+	|| ydk::is_set(hw_version.yfilter)
+	|| ydk::is_set(hwid.yfilter)
+	|| ydk::is_set(idprom_format_rev.yfilter)
+	|| ydk::is_set(mac_add_blk_size1.yfilter)
+	|| ydk::is_set(mac_add_blk_size2.yfilter)
+	|| ydk::is_set(mac_add_blk_size3.yfilter)
+	|| ydk::is_set(mac_add_blk_size4.yfilter)
+	|| ydk::is_set(manu_test_data.yfilter)
+	|| ydk::is_set(mfg_bits.yfilter)
+	|| ydk::is_set(mfg_deviation.yfilter)
+	|| ydk::is_set(oem_string.yfilter)
+	|| ydk::is_set(part_number.yfilter)
+	|| ydk::is_set(part_revision.yfilter)
+	|| ydk::is_set(pca_num.yfilter)
+	|| ydk::is_set(pcavid.yfilter)
+	|| ydk::is_set(pcb_serial_num.yfilter)
+	|| ydk::is_set(pid.yfilter)
+	|| ydk::is_set(power_consumption.yfilter)
+	|| ydk::is_set(power_supply_type.yfilter)
+	|| ydk::is_set(product_id.yfilter)
+	|| ydk::is_set(rma_code.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(snmpoid.yfilter)
+	|| ydk::is_set(top_assem_part_num.yfilter)
+	|| ydk::is_set(top_assem_vid.yfilter)
+	|| ydk::is_set(udi_description.yfilter)
+	|| ydk::is_set(udi_name.yfilter)
+	|| ydk::is_set(vid.yfilter)
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
@@ -1937,62 +2471,62 @@ const EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Informatio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asset_alias.is_set || is_set(asset_alias.operation)) leaf_name_data.push_back(asset_alias.get_name_leafdata());
-    if (asset_id.is_set || is_set(asset_id.operation)) leaf_name_data.push_back(asset_id.get_name_leafdata());
-    if (base_mac_address1.is_set || is_set(base_mac_address1.operation)) leaf_name_data.push_back(base_mac_address1.get_name_leafdata());
-    if (base_mac_address2.is_set || is_set(base_mac_address2.operation)) leaf_name_data.push_back(base_mac_address2.get_name_leafdata());
-    if (base_mac_address3.is_set || is_set(base_mac_address3.operation)) leaf_name_data.push_back(base_mac_address3.get_name_leafdata());
-    if (base_mac_address4.is_set || is_set(base_mac_address4.operation)) leaf_name_data.push_back(base_mac_address4.get_name_leafdata());
-    if (block_checksum.is_set || is_set(block_checksum.operation)) leaf_name_data.push_back(block_checksum.get_name_leafdata());
-    if (block_count.is_set || is_set(block_count.operation)) leaf_name_data.push_back(block_count.get_name_leafdata());
-    if (block_length.is_set || is_set(block_length.operation)) leaf_name_data.push_back(block_length.get_name_leafdata());
-    if (block_signature.is_set || is_set(block_signature.operation)) leaf_name_data.push_back(block_signature.get_name_leafdata());
-    if (block_version.is_set || is_set(block_version.operation)) leaf_name_data.push_back(block_version.get_name_leafdata());
-    if (chassis_sid.is_set || is_set(chassis_sid.operation)) leaf_name_data.push_back(chassis_sid.get_name_leafdata());
-    if (clei.is_set || is_set(clei.operation)) leaf_name_data.push_back(clei.get_name_leafdata());
-    if (controller_family.is_set || is_set(controller_family.operation)) leaf_name_data.push_back(controller_family.get_name_leafdata());
-    if (controller_type.is_set || is_set(controller_type.operation)) leaf_name_data.push_back(controller_type.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (dev_num1.is_set || is_set(dev_num1.operation)) leaf_name_data.push_back(dev_num1.get_name_leafdata());
-    if (dev_num2.is_set || is_set(dev_num2.operation)) leaf_name_data.push_back(dev_num2.get_name_leafdata());
-    if (dev_num3.is_set || is_set(dev_num3.operation)) leaf_name_data.push_back(dev_num3.get_name_leafdata());
-    if (dev_num4.is_set || is_set(dev_num4.operation)) leaf_name_data.push_back(dev_num4.get_name_leafdata());
-    if (dev_num5.is_set || is_set(dev_num5.operation)) leaf_name_data.push_back(dev_num5.get_name_leafdata());
-    if (dev_num6.is_set || is_set(dev_num6.operation)) leaf_name_data.push_back(dev_num6.get_name_leafdata());
-    if (dev_num7.is_set || is_set(dev_num7.operation)) leaf_name_data.push_back(dev_num7.get_name_leafdata());
-    if (eci.is_set || is_set(eci.operation)) leaf_name_data.push_back(eci.get_name_leafdata());
-    if (eeprom_size.is_set || is_set(eeprom_size.operation)) leaf_name_data.push_back(eeprom_size.get_name_leafdata());
-    if (engineer_use.is_set || is_set(engineer_use.operation)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
-    if (fru_major_type.is_set || is_set(fru_major_type.operation)) leaf_name_data.push_back(fru_major_type.get_name_leafdata());
-    if (fru_minor_type.is_set || is_set(fru_minor_type.operation)) leaf_name_data.push_back(fru_minor_type.get_name_leafdata());
-    if (hw_version.is_set || is_set(hw_version.operation)) leaf_name_data.push_back(hw_version.get_name_leafdata());
-    if (hwid.is_set || is_set(hwid.operation)) leaf_name_data.push_back(hwid.get_name_leafdata());
-    if (idprom_format_rev.is_set || is_set(idprom_format_rev.operation)) leaf_name_data.push_back(idprom_format_rev.get_name_leafdata());
-    if (mac_add_blk_size1.is_set || is_set(mac_add_blk_size1.operation)) leaf_name_data.push_back(mac_add_blk_size1.get_name_leafdata());
-    if (mac_add_blk_size2.is_set || is_set(mac_add_blk_size2.operation)) leaf_name_data.push_back(mac_add_blk_size2.get_name_leafdata());
-    if (mac_add_blk_size3.is_set || is_set(mac_add_blk_size3.operation)) leaf_name_data.push_back(mac_add_blk_size3.get_name_leafdata());
-    if (mac_add_blk_size4.is_set || is_set(mac_add_blk_size4.operation)) leaf_name_data.push_back(mac_add_blk_size4.get_name_leafdata());
-    if (manu_test_data.is_set || is_set(manu_test_data.operation)) leaf_name_data.push_back(manu_test_data.get_name_leafdata());
-    if (mfg_bits.is_set || is_set(mfg_bits.operation)) leaf_name_data.push_back(mfg_bits.get_name_leafdata());
-    if (mfg_deviation.is_set || is_set(mfg_deviation.operation)) leaf_name_data.push_back(mfg_deviation.get_name_leafdata());
-    if (oem_string.is_set || is_set(oem_string.operation)) leaf_name_data.push_back(oem_string.get_name_leafdata());
-    if (part_number.is_set || is_set(part_number.operation)) leaf_name_data.push_back(part_number.get_name_leafdata());
-    if (part_revision.is_set || is_set(part_revision.operation)) leaf_name_data.push_back(part_revision.get_name_leafdata());
-    if (pca_num.is_set || is_set(pca_num.operation)) leaf_name_data.push_back(pca_num.get_name_leafdata());
-    if (pcavid.is_set || is_set(pcavid.operation)) leaf_name_data.push_back(pcavid.get_name_leafdata());
-    if (pcb_serial_num.is_set || is_set(pcb_serial_num.operation)) leaf_name_data.push_back(pcb_serial_num.get_name_leafdata());
-    if (pid.is_set || is_set(pid.operation)) leaf_name_data.push_back(pid.get_name_leafdata());
-    if (power_consumption.is_set || is_set(power_consumption.operation)) leaf_name_data.push_back(power_consumption.get_name_leafdata());
-    if (power_supply_type.is_set || is_set(power_supply_type.operation)) leaf_name_data.push_back(power_supply_type.get_name_leafdata());
-    if (product_id.is_set || is_set(product_id.operation)) leaf_name_data.push_back(product_id.get_name_leafdata());
-    if (rma_code.is_set || is_set(rma_code.operation)) leaf_name_data.push_back(rma_code.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.operation)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (snmpoid.is_set || is_set(snmpoid.operation)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
-    if (top_assem_part_num.is_set || is_set(top_assem_part_num.operation)) leaf_name_data.push_back(top_assem_part_num.get_name_leafdata());
-    if (top_assem_vid.is_set || is_set(top_assem_vid.operation)) leaf_name_data.push_back(top_assem_vid.get_name_leafdata());
-    if (udi_description.is_set || is_set(udi_description.operation)) leaf_name_data.push_back(udi_description.get_name_leafdata());
-    if (udi_name.is_set || is_set(udi_name.operation)) leaf_name_data.push_back(udi_name.get_name_leafdata());
-    if (vid.is_set || is_set(vid.operation)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (asset_alias.is_set || is_set(asset_alias.yfilter)) leaf_name_data.push_back(asset_alias.get_name_leafdata());
+    if (asset_id.is_set || is_set(asset_id.yfilter)) leaf_name_data.push_back(asset_id.get_name_leafdata());
+    if (base_mac_address1.is_set || is_set(base_mac_address1.yfilter)) leaf_name_data.push_back(base_mac_address1.get_name_leafdata());
+    if (base_mac_address2.is_set || is_set(base_mac_address2.yfilter)) leaf_name_data.push_back(base_mac_address2.get_name_leafdata());
+    if (base_mac_address3.is_set || is_set(base_mac_address3.yfilter)) leaf_name_data.push_back(base_mac_address3.get_name_leafdata());
+    if (base_mac_address4.is_set || is_set(base_mac_address4.yfilter)) leaf_name_data.push_back(base_mac_address4.get_name_leafdata());
+    if (block_checksum.is_set || is_set(block_checksum.yfilter)) leaf_name_data.push_back(block_checksum.get_name_leafdata());
+    if (block_count.is_set || is_set(block_count.yfilter)) leaf_name_data.push_back(block_count.get_name_leafdata());
+    if (block_length.is_set || is_set(block_length.yfilter)) leaf_name_data.push_back(block_length.get_name_leafdata());
+    if (block_signature.is_set || is_set(block_signature.yfilter)) leaf_name_data.push_back(block_signature.get_name_leafdata());
+    if (block_version.is_set || is_set(block_version.yfilter)) leaf_name_data.push_back(block_version.get_name_leafdata());
+    if (chassis_sid.is_set || is_set(chassis_sid.yfilter)) leaf_name_data.push_back(chassis_sid.get_name_leafdata());
+    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
+    if (controller_family.is_set || is_set(controller_family.yfilter)) leaf_name_data.push_back(controller_family.get_name_leafdata());
+    if (controller_type.is_set || is_set(controller_type.yfilter)) leaf_name_data.push_back(controller_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (dev_num1.is_set || is_set(dev_num1.yfilter)) leaf_name_data.push_back(dev_num1.get_name_leafdata());
+    if (dev_num2.is_set || is_set(dev_num2.yfilter)) leaf_name_data.push_back(dev_num2.get_name_leafdata());
+    if (dev_num3.is_set || is_set(dev_num3.yfilter)) leaf_name_data.push_back(dev_num3.get_name_leafdata());
+    if (dev_num4.is_set || is_set(dev_num4.yfilter)) leaf_name_data.push_back(dev_num4.get_name_leafdata());
+    if (dev_num5.is_set || is_set(dev_num5.yfilter)) leaf_name_data.push_back(dev_num5.get_name_leafdata());
+    if (dev_num6.is_set || is_set(dev_num6.yfilter)) leaf_name_data.push_back(dev_num6.get_name_leafdata());
+    if (dev_num7.is_set || is_set(dev_num7.yfilter)) leaf_name_data.push_back(dev_num7.get_name_leafdata());
+    if (eci.is_set || is_set(eci.yfilter)) leaf_name_data.push_back(eci.get_name_leafdata());
+    if (eeprom_size.is_set || is_set(eeprom_size.yfilter)) leaf_name_data.push_back(eeprom_size.get_name_leafdata());
+    if (engineer_use.is_set || is_set(engineer_use.yfilter)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
+    if (fru_major_type.is_set || is_set(fru_major_type.yfilter)) leaf_name_data.push_back(fru_major_type.get_name_leafdata());
+    if (fru_minor_type.is_set || is_set(fru_minor_type.yfilter)) leaf_name_data.push_back(fru_minor_type.get_name_leafdata());
+    if (hw_version.is_set || is_set(hw_version.yfilter)) leaf_name_data.push_back(hw_version.get_name_leafdata());
+    if (hwid.is_set || is_set(hwid.yfilter)) leaf_name_data.push_back(hwid.get_name_leafdata());
+    if (idprom_format_rev.is_set || is_set(idprom_format_rev.yfilter)) leaf_name_data.push_back(idprom_format_rev.get_name_leafdata());
+    if (mac_add_blk_size1.is_set || is_set(mac_add_blk_size1.yfilter)) leaf_name_data.push_back(mac_add_blk_size1.get_name_leafdata());
+    if (mac_add_blk_size2.is_set || is_set(mac_add_blk_size2.yfilter)) leaf_name_data.push_back(mac_add_blk_size2.get_name_leafdata());
+    if (mac_add_blk_size3.is_set || is_set(mac_add_blk_size3.yfilter)) leaf_name_data.push_back(mac_add_blk_size3.get_name_leafdata());
+    if (mac_add_blk_size4.is_set || is_set(mac_add_blk_size4.yfilter)) leaf_name_data.push_back(mac_add_blk_size4.get_name_leafdata());
+    if (manu_test_data.is_set || is_set(manu_test_data.yfilter)) leaf_name_data.push_back(manu_test_data.get_name_leafdata());
+    if (mfg_bits.is_set || is_set(mfg_bits.yfilter)) leaf_name_data.push_back(mfg_bits.get_name_leafdata());
+    if (mfg_deviation.is_set || is_set(mfg_deviation.yfilter)) leaf_name_data.push_back(mfg_deviation.get_name_leafdata());
+    if (oem_string.is_set || is_set(oem_string.yfilter)) leaf_name_data.push_back(oem_string.get_name_leafdata());
+    if (part_number.is_set || is_set(part_number.yfilter)) leaf_name_data.push_back(part_number.get_name_leafdata());
+    if (part_revision.is_set || is_set(part_revision.yfilter)) leaf_name_data.push_back(part_revision.get_name_leafdata());
+    if (pca_num.is_set || is_set(pca_num.yfilter)) leaf_name_data.push_back(pca_num.get_name_leafdata());
+    if (pcavid.is_set || is_set(pcavid.yfilter)) leaf_name_data.push_back(pcavid.get_name_leafdata());
+    if (pcb_serial_num.is_set || is_set(pcb_serial_num.yfilter)) leaf_name_data.push_back(pcb_serial_num.get_name_leafdata());
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
+    if (power_consumption.is_set || is_set(power_consumption.yfilter)) leaf_name_data.push_back(power_consumption.get_name_leafdata());
+    if (power_supply_type.is_set || is_set(power_supply_type.yfilter)) leaf_name_data.push_back(power_supply_type.get_name_leafdata());
+    if (product_id.is_set || is_set(product_id.yfilter)) leaf_name_data.push_back(product_id.get_name_leafdata());
+    if (rma_code.is_set || is_set(rma_code.yfilter)) leaf_name_data.push_back(rma_code.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (snmpoid.is_set || is_set(snmpoid.yfilter)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
+    if (top_assem_part_num.is_set || is_set(top_assem_part_num.yfilter)) leaf_name_data.push_back(top_assem_part_num.get_name_leafdata());
+    if (top_assem_vid.is_set || is_set(top_assem_vid.yfilter)) leaf_name_data.push_back(top_assem_vid.get_name_leafdata());
+    if (udi_description.is_set || is_set(udi_description.yfilter)) leaf_name_data.push_back(udi_description.get_name_leafdata());
+    if (udi_name.is_set || is_set(udi_name.yfilter)) leaf_name_data.push_back(udi_name.get_name_leafdata());
+    if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2025,232 +2559,579 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asset-alias")
     {
         asset_alias = value;
+        asset_alias.value_namespace = name_space;
+        asset_alias.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "asset-id")
     {
         asset_id = value;
+        asset_id.value_namespace = name_space;
+        asset_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address1")
     {
         base_mac_address1 = value;
+        base_mac_address1.value_namespace = name_space;
+        base_mac_address1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address2")
     {
         base_mac_address2 = value;
+        base_mac_address2.value_namespace = name_space;
+        base_mac_address2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address3")
     {
         base_mac_address3 = value;
+        base_mac_address3.value_namespace = name_space;
+        base_mac_address3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address4")
     {
         base_mac_address4 = value;
+        base_mac_address4.value_namespace = name_space;
+        base_mac_address4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-checksum")
     {
         block_checksum = value;
+        block_checksum.value_namespace = name_space;
+        block_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-count")
     {
         block_count = value;
+        block_count.value_namespace = name_space;
+        block_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-length")
     {
         block_length = value;
+        block_length.value_namespace = name_space;
+        block_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-signature")
     {
         block_signature = value;
+        block_signature.value_namespace = name_space;
+        block_signature.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-version")
     {
         block_version = value;
+        block_version.value_namespace = name_space;
+        block_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chassis-sid")
     {
         chassis_sid = value;
+        chassis_sid.value_namespace = name_space;
+        chassis_sid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "clei")
     {
         clei = value;
+        clei.value_namespace = name_space;
+        clei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-family")
     {
         controller_family = value;
+        controller_family.value_namespace = name_space;
+        controller_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-type")
     {
         controller_type = value;
+        controller_type.value_namespace = name_space;
+        controller_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num1")
     {
         dev_num1 = value;
+        dev_num1.value_namespace = name_space;
+        dev_num1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num2")
     {
         dev_num2 = value;
+        dev_num2.value_namespace = name_space;
+        dev_num2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num3")
     {
         dev_num3 = value;
+        dev_num3.value_namespace = name_space;
+        dev_num3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num4")
     {
         dev_num4 = value;
+        dev_num4.value_namespace = name_space;
+        dev_num4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num5")
     {
         dev_num5 = value;
+        dev_num5.value_namespace = name_space;
+        dev_num5.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num6")
     {
         dev_num6 = value;
+        dev_num6.value_namespace = name_space;
+        dev_num6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num7")
     {
         dev_num7 = value;
+        dev_num7.value_namespace = name_space;
+        dev_num7.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eci")
     {
         eci = value;
+        eci.value_namespace = name_space;
+        eci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eeprom-size")
     {
         eeprom_size = value;
+        eeprom_size.value_namespace = name_space;
+        eeprom_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "engineer-use")
     {
         engineer_use = value;
+        engineer_use.value_namespace = name_space;
+        engineer_use.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fru-major-type")
     {
         fru_major_type = value;
+        fru_major_type.value_namespace = name_space;
+        fru_major_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fru-minor-type")
     {
         fru_minor_type = value;
+        fru_minor_type.value_namespace = name_space;
+        fru_minor_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hw-version")
     {
         hw_version = value;
+        hw_version.value_namespace = name_space;
+        hw_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hwid")
     {
         hwid = value;
+        hwid.value_namespace = name_space;
+        hwid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idprom-format-rev")
     {
         idprom_format_rev = value;
+        idprom_format_rev.value_namespace = name_space;
+        idprom_format_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size1")
     {
         mac_add_blk_size1 = value;
+        mac_add_blk_size1.value_namespace = name_space;
+        mac_add_blk_size1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size2")
     {
         mac_add_blk_size2 = value;
+        mac_add_blk_size2.value_namespace = name_space;
+        mac_add_blk_size2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size3")
     {
         mac_add_blk_size3 = value;
+        mac_add_blk_size3.value_namespace = name_space;
+        mac_add_blk_size3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size4")
     {
         mac_add_blk_size4 = value;
+        mac_add_blk_size4.value_namespace = name_space;
+        mac_add_blk_size4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "manu-test-data")
     {
         manu_test_data = value;
+        manu_test_data.value_namespace = name_space;
+        manu_test_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mfg-bits")
     {
         mfg_bits = value;
+        mfg_bits.value_namespace = name_space;
+        mfg_bits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mfg-deviation")
     {
         mfg_deviation = value;
+        mfg_deviation.value_namespace = name_space;
+        mfg_deviation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oem-string")
     {
         oem_string = value;
+        oem_string.value_namespace = name_space;
+        oem_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "part-number")
     {
         part_number = value;
+        part_number.value_namespace = name_space;
+        part_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "part-revision")
     {
         part_revision = value;
+        part_revision.value_namespace = name_space;
+        part_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pca-num")
     {
         pca_num = value;
+        pca_num.value_namespace = name_space;
+        pca_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcavid")
     {
         pcavid = value;
+        pcavid.value_namespace = name_space;
+        pcavid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcb-serial-num")
     {
         pcb_serial_num = value;
+        pcb_serial_num.value_namespace = name_space;
+        pcb_serial_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pid")
     {
         pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-consumption")
     {
         power_consumption = value;
+        power_consumption.value_namespace = name_space;
+        power_consumption.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-supply-type")
     {
         power_supply_type = value;
+        power_supply_type.value_namespace = name_space;
+        power_supply_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "product-id")
     {
         product_id = value;
+        product_id.value_namespace = name_space;
+        product_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rma-code")
     {
         rma_code = value;
+        rma_code.value_namespace = name_space;
+        rma_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
         serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpoid")
     {
         snmpoid = value;
+        snmpoid.value_namespace = name_space;
+        snmpoid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "top-assem-part-num")
     {
         top_assem_part_num = value;
+        top_assem_part_num.value_namespace = name_space;
+        top_assem_part_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "top-assem-vid")
     {
         top_assem_vid = value;
+        top_assem_vid.value_namespace = name_space;
+        top_assem_vid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udi-description")
     {
         udi_description = value;
+        udi_description.value_namespace = name_space;
+        udi_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udi-name")
     {
         udi_name = value;
+        udi_name.value_namespace = name_space;
+        udi_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vid")
     {
         vid = value;
+        vid.value_namespace = name_space;
+        vid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asset-alias")
+    {
+        asset_alias.yfilter = yfilter;
+    }
+    if(value_path == "asset-id")
+    {
+        asset_id.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address1")
+    {
+        base_mac_address1.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address2")
+    {
+        base_mac_address2.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address3")
+    {
+        base_mac_address3.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address4")
+    {
+        base_mac_address4.yfilter = yfilter;
+    }
+    if(value_path == "block-checksum")
+    {
+        block_checksum.yfilter = yfilter;
+    }
+    if(value_path == "block-count")
+    {
+        block_count.yfilter = yfilter;
+    }
+    if(value_path == "block-length")
+    {
+        block_length.yfilter = yfilter;
+    }
+    if(value_path == "block-signature")
+    {
+        block_signature.yfilter = yfilter;
+    }
+    if(value_path == "block-version")
+    {
+        block_version.yfilter = yfilter;
+    }
+    if(value_path == "chassis-sid")
+    {
+        chassis_sid.yfilter = yfilter;
+    }
+    if(value_path == "clei")
+    {
+        clei.yfilter = yfilter;
+    }
+    if(value_path == "controller-family")
+    {
+        controller_family.yfilter = yfilter;
+    }
+    if(value_path == "controller-type")
+    {
+        controller_type.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "dev-num1")
+    {
+        dev_num1.yfilter = yfilter;
+    }
+    if(value_path == "dev-num2")
+    {
+        dev_num2.yfilter = yfilter;
+    }
+    if(value_path == "dev-num3")
+    {
+        dev_num3.yfilter = yfilter;
+    }
+    if(value_path == "dev-num4")
+    {
+        dev_num4.yfilter = yfilter;
+    }
+    if(value_path == "dev-num5")
+    {
+        dev_num5.yfilter = yfilter;
+    }
+    if(value_path == "dev-num6")
+    {
+        dev_num6.yfilter = yfilter;
+    }
+    if(value_path == "dev-num7")
+    {
+        dev_num7.yfilter = yfilter;
+    }
+    if(value_path == "eci")
+    {
+        eci.yfilter = yfilter;
+    }
+    if(value_path == "eeprom-size")
+    {
+        eeprom_size.yfilter = yfilter;
+    }
+    if(value_path == "engineer-use")
+    {
+        engineer_use.yfilter = yfilter;
+    }
+    if(value_path == "fru-major-type")
+    {
+        fru_major_type.yfilter = yfilter;
+    }
+    if(value_path == "fru-minor-type")
+    {
+        fru_minor_type.yfilter = yfilter;
+    }
+    if(value_path == "hw-version")
+    {
+        hw_version.yfilter = yfilter;
+    }
+    if(value_path == "hwid")
+    {
+        hwid.yfilter = yfilter;
+    }
+    if(value_path == "idprom-format-rev")
+    {
+        idprom_format_rev.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size1")
+    {
+        mac_add_blk_size1.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size2")
+    {
+        mac_add_blk_size2.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size3")
+    {
+        mac_add_blk_size3.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size4")
+    {
+        mac_add_blk_size4.yfilter = yfilter;
+    }
+    if(value_path == "manu-test-data")
+    {
+        manu_test_data.yfilter = yfilter;
+    }
+    if(value_path == "mfg-bits")
+    {
+        mfg_bits.yfilter = yfilter;
+    }
+    if(value_path == "mfg-deviation")
+    {
+        mfg_deviation.yfilter = yfilter;
+    }
+    if(value_path == "oem-string")
+    {
+        oem_string.yfilter = yfilter;
+    }
+    if(value_path == "part-number")
+    {
+        part_number.yfilter = yfilter;
+    }
+    if(value_path == "part-revision")
+    {
+        part_revision.yfilter = yfilter;
+    }
+    if(value_path == "pca-num")
+    {
+        pca_num.yfilter = yfilter;
+    }
+    if(value_path == "pcavid")
+    {
+        pcavid.yfilter = yfilter;
+    }
+    if(value_path == "pcb-serial-num")
+    {
+        pcb_serial_num.yfilter = yfilter;
+    }
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
+    if(value_path == "power-consumption")
+    {
+        power_consumption.yfilter = yfilter;
+    }
+    if(value_path == "power-supply-type")
+    {
+        power_supply_type.yfilter = yfilter;
+    }
+    if(value_path == "product-id")
+    {
+        product_id.yfilter = yfilter;
+    }
+    if(value_path == "rma-code")
+    {
+        rma_code.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "snmpoid")
+    {
+        snmpoid.yfilter = yfilter;
+    }
+    if(value_path == "top-assem-part-num")
+    {
+        top_assem_part_num.yfilter = yfilter;
+    }
+    if(value_path == "top-assem-vid")
+    {
+        top_assem_vid.yfilter = yfilter;
+    }
+    if(value_path == "udi-description")
+    {
+        udi_description.yfilter = yfilter;
+    }
+    if(value_path == "udi-name")
+    {
+        udi_name.yfilter = yfilter;
+    }
+    if(value_path == "vid")
+    {
+        vid.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rma" || name == "asset-alias" || name == "asset-id" || name == "base-mac-address1" || name == "base-mac-address2" || name == "base-mac-address3" || name == "base-mac-address4" || name == "block-checksum" || name == "block-count" || name == "block-length" || name == "block-signature" || name == "block-version" || name == "chassis-sid" || name == "clei" || name == "controller-family" || name == "controller-type" || name == "description" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "eci" || name == "eeprom-size" || name == "engineer-use" || name == "fru-major-type" || name == "fru-minor-type" || name == "hw-version" || name == "hwid" || name == "idprom-format-rev" || name == "mac-add-blk-size1" || name == "mac-add-blk-size2" || name == "mac-add-blk-size3" || name == "mac-add-blk-size4" || name == "manu-test-data" || name == "mfg-bits" || name == "mfg-deviation" || name == "oem-string" || name == "part-number" || name == "part-revision" || name == "pca-num" || name == "pcavid" || name == "pcb-serial-num" || name == "pid" || name == "power-consumption" || name == "power-supply-type" || name == "product-id" || name == "rma-code" || name == "serial-number" || name == "snmpoid" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "udi-description" || name == "udi-name" || name == "vid")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::Rma()
@@ -2275,10 +3156,10 @@ bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_
 
 bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rma_history.operation)
-	|| is_set(rma_number.operation)
-	|| is_set(test_history.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rma_history.yfilter)
+	|| ydk::is_set(rma_number.yfilter)
+	|| ydk::is_set(test_history.yfilter);
 }
 
 std::string Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::get_segment_path() const
@@ -2304,9 +3185,9 @@ const EntityPath Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Informatio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rma_history.is_set || is_set(rma_history.operation)) leaf_name_data.push_back(rma_history.get_name_leafdata());
-    if (rma_number.is_set || is_set(rma_number.operation)) leaf_name_data.push_back(rma_number.get_name_leafdata());
-    if (test_history.is_set || is_set(test_history.operation)) leaf_name_data.push_back(test_history.get_name_leafdata());
+    if (rma_history.is_set || is_set(rma_history.yfilter)) leaf_name_data.push_back(rma_history.get_name_leafdata());
+    if (rma_number.is_set || is_set(rma_number.yfilter)) leaf_name_data.push_back(rma_number.get_name_leafdata());
+    if (test_history.is_set || is_set(test_history.yfilter)) leaf_name_data.push_back(test_history.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2325,20 +3206,49 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::FanTraies::Fan
     return children;
 }
 
-void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rma-history")
     {
         rma_history = value;
+        rma_history.value_namespace = name_space;
+        rma_history.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rma-number")
     {
         rma_number = value;
+        rma_number.value_namespace = name_space;
+        rma_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-history")
     {
         test_history = value;
+        test_history.value_namespace = name_space;
+        test_history.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rma-history")
+    {
+        rma_history.yfilter = yfilter;
+    }
+    if(value_path == "rma-number")
+    {
+        rma_number.yfilter = yfilter;
+    }
+    if(value_path == "test-history")
+    {
+        test_history.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans::Information::Rma::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rma-history" || name == "rma-number" || name == "test-history")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Slots::Slots()
@@ -2367,7 +3277,7 @@ bool Diag::Racks::Rack::Slots::has_operation() const
         if(slot[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Diag::Racks::Rack::Slots::get_segment_path() const
@@ -2432,8 +3342,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::get_chi
     return children;
 }
 
-void Diag::Racks::Rack::Slots::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Slots::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Diag::Racks::Rack::Slots::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slot")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Slots::Slot::Slot()
@@ -2459,8 +3380,8 @@ bool Diag::Racks::Rack::Slots::Slot::has_data() const
 
 bool Diag::Racks::Rack::Slots::Slot::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(slot_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(slot_name.yfilter)
 	|| (instances !=  nullptr && instances->has_operation());
 }
 
@@ -2487,7 +3408,7 @@ const EntityPath Diag::Racks::Rack::Slots::Slot::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slot_name.is_set || is_set(slot_name.operation)) leaf_name_data.push_back(slot_name.get_name_leafdata());
+    if (slot_name.is_set || is_set(slot_name.yfilter)) leaf_name_data.push_back(slot_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2520,12 +3441,29 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::g
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Slots::Slot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slot-name")
     {
         slot_name = value;
+        slot_name.value_namespace = name_space;
+        slot_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::Slots::Slot::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slot-name")
+    {
+        slot_name.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instances" || name == "slot-name")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instances()
@@ -2554,7 +3492,7 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::has_operation() const
         if(instance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Instances::get_segment_path() const
@@ -2619,8 +3557,19 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Slots::Slot::Instances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "instance")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Instance()
@@ -2646,8 +3595,8 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_data() const
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (detail !=  nullptr && detail->has_operation());
 }
 
@@ -2674,7 +3623,7 @@ const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2707,12 +3656,29 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail" || name == "name")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Detail()
@@ -2738,8 +3704,8 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::has_data() con
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_operational_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_operational_state.yfilter)
 	|| (card_instance !=  nullptr && card_instance->has_operation());
 }
 
@@ -2766,7 +3732,7 @@ const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_operational_state.is_set || is_set(node_operational_state.operation)) leaf_name_data.push_back(node_operational_state.get_name_leafdata());
+    if (node_operational_state.is_set || is_set(node_operational_state.yfilter)) leaf_name_data.push_back(node_operational_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2799,12 +3765,29 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-operational-state")
     {
         node_operational_state = value;
+        node_operational_state.value_namespace = name_space;
+        node_operational_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-operational-state")
+    {
+        node_operational_state.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "card-instance" || name == "node-operational-state")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::CardInstance()
@@ -2940,63 +3923,63 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asset_alias.operation)
-	|| is_set(asset_id.operation)
-	|| is_set(base_mac_address1.operation)
-	|| is_set(base_mac_address2.operation)
-	|| is_set(base_mac_address3.operation)
-	|| is_set(base_mac_address4.operation)
-	|| is_set(block_checksum.operation)
-	|| is_set(block_count.operation)
-	|| is_set(block_length.operation)
-	|| is_set(block_signature.operation)
-	|| is_set(block_version.operation)
-	|| is_set(chassis_sid.operation)
-	|| is_set(clei.operation)
-	|| is_set(controller_family.operation)
-	|| is_set(controller_type.operation)
-	|| is_set(description.operation)
-	|| is_set(dev_num1.operation)
-	|| is_set(dev_num2.operation)
-	|| is_set(dev_num3.operation)
-	|| is_set(dev_num4.operation)
-	|| is_set(dev_num5.operation)
-	|| is_set(dev_num6.operation)
-	|| is_set(dev_num7.operation)
-	|| is_set(eci.operation)
-	|| is_set(eeprom_size.operation)
-	|| is_set(engineer_use.operation)
-	|| is_set(fru_major_type.operation)
-	|| is_set(fru_minor_type.operation)
-	|| is_set(hw_version.operation)
-	|| is_set(hwid.operation)
-	|| is_set(idprom_format_rev.operation)
-	|| is_set(mac_add_blk_size1.operation)
-	|| is_set(mac_add_blk_size2.operation)
-	|| is_set(mac_add_blk_size3.operation)
-	|| is_set(mac_add_blk_size4.operation)
-	|| is_set(manu_test_data.operation)
-	|| is_set(mfg_bits.operation)
-	|| is_set(mfg_deviation.operation)
-	|| is_set(oem_string.operation)
-	|| is_set(part_number.operation)
-	|| is_set(part_revision.operation)
-	|| is_set(pca_num.operation)
-	|| is_set(pcavid.operation)
-	|| is_set(pcb_serial_num.operation)
-	|| is_set(pid.operation)
-	|| is_set(power_consumption.operation)
-	|| is_set(power_supply_type.operation)
-	|| is_set(product_id.operation)
-	|| is_set(rma_code.operation)
-	|| is_set(serial_number.operation)
-	|| is_set(snmpoid.operation)
-	|| is_set(top_assem_part_num.operation)
-	|| is_set(top_assem_vid.operation)
-	|| is_set(udi_description.operation)
-	|| is_set(udi_name.operation)
-	|| is_set(vid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(asset_alias.yfilter)
+	|| ydk::is_set(asset_id.yfilter)
+	|| ydk::is_set(base_mac_address1.yfilter)
+	|| ydk::is_set(base_mac_address2.yfilter)
+	|| ydk::is_set(base_mac_address3.yfilter)
+	|| ydk::is_set(base_mac_address4.yfilter)
+	|| ydk::is_set(block_checksum.yfilter)
+	|| ydk::is_set(block_count.yfilter)
+	|| ydk::is_set(block_length.yfilter)
+	|| ydk::is_set(block_signature.yfilter)
+	|| ydk::is_set(block_version.yfilter)
+	|| ydk::is_set(chassis_sid.yfilter)
+	|| ydk::is_set(clei.yfilter)
+	|| ydk::is_set(controller_family.yfilter)
+	|| ydk::is_set(controller_type.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(dev_num1.yfilter)
+	|| ydk::is_set(dev_num2.yfilter)
+	|| ydk::is_set(dev_num3.yfilter)
+	|| ydk::is_set(dev_num4.yfilter)
+	|| ydk::is_set(dev_num5.yfilter)
+	|| ydk::is_set(dev_num6.yfilter)
+	|| ydk::is_set(dev_num7.yfilter)
+	|| ydk::is_set(eci.yfilter)
+	|| ydk::is_set(eeprom_size.yfilter)
+	|| ydk::is_set(engineer_use.yfilter)
+	|| ydk::is_set(fru_major_type.yfilter)
+	|| ydk::is_set(fru_minor_type.yfilter)
+	|| ydk::is_set(hw_version.yfilter)
+	|| ydk::is_set(hwid.yfilter)
+	|| ydk::is_set(idprom_format_rev.yfilter)
+	|| ydk::is_set(mac_add_blk_size1.yfilter)
+	|| ydk::is_set(mac_add_blk_size2.yfilter)
+	|| ydk::is_set(mac_add_blk_size3.yfilter)
+	|| ydk::is_set(mac_add_blk_size4.yfilter)
+	|| ydk::is_set(manu_test_data.yfilter)
+	|| ydk::is_set(mfg_bits.yfilter)
+	|| ydk::is_set(mfg_deviation.yfilter)
+	|| ydk::is_set(oem_string.yfilter)
+	|| ydk::is_set(part_number.yfilter)
+	|| ydk::is_set(part_revision.yfilter)
+	|| ydk::is_set(pca_num.yfilter)
+	|| ydk::is_set(pcavid.yfilter)
+	|| ydk::is_set(pcb_serial_num.yfilter)
+	|| ydk::is_set(pid.yfilter)
+	|| ydk::is_set(power_consumption.yfilter)
+	|| ydk::is_set(power_supply_type.yfilter)
+	|| ydk::is_set(product_id.yfilter)
+	|| ydk::is_set(rma_code.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(snmpoid.yfilter)
+	|| ydk::is_set(top_assem_part_num.yfilter)
+	|| ydk::is_set(top_assem_vid.yfilter)
+	|| ydk::is_set(udi_description.yfilter)
+	|| ydk::is_set(udi_name.yfilter)
+	|| ydk::is_set(vid.yfilter)
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
@@ -3023,62 +4006,62 @@ const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Ca
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asset_alias.is_set || is_set(asset_alias.operation)) leaf_name_data.push_back(asset_alias.get_name_leafdata());
-    if (asset_id.is_set || is_set(asset_id.operation)) leaf_name_data.push_back(asset_id.get_name_leafdata());
-    if (base_mac_address1.is_set || is_set(base_mac_address1.operation)) leaf_name_data.push_back(base_mac_address1.get_name_leafdata());
-    if (base_mac_address2.is_set || is_set(base_mac_address2.operation)) leaf_name_data.push_back(base_mac_address2.get_name_leafdata());
-    if (base_mac_address3.is_set || is_set(base_mac_address3.operation)) leaf_name_data.push_back(base_mac_address3.get_name_leafdata());
-    if (base_mac_address4.is_set || is_set(base_mac_address4.operation)) leaf_name_data.push_back(base_mac_address4.get_name_leafdata());
-    if (block_checksum.is_set || is_set(block_checksum.operation)) leaf_name_data.push_back(block_checksum.get_name_leafdata());
-    if (block_count.is_set || is_set(block_count.operation)) leaf_name_data.push_back(block_count.get_name_leafdata());
-    if (block_length.is_set || is_set(block_length.operation)) leaf_name_data.push_back(block_length.get_name_leafdata());
-    if (block_signature.is_set || is_set(block_signature.operation)) leaf_name_data.push_back(block_signature.get_name_leafdata());
-    if (block_version.is_set || is_set(block_version.operation)) leaf_name_data.push_back(block_version.get_name_leafdata());
-    if (chassis_sid.is_set || is_set(chassis_sid.operation)) leaf_name_data.push_back(chassis_sid.get_name_leafdata());
-    if (clei.is_set || is_set(clei.operation)) leaf_name_data.push_back(clei.get_name_leafdata());
-    if (controller_family.is_set || is_set(controller_family.operation)) leaf_name_data.push_back(controller_family.get_name_leafdata());
-    if (controller_type.is_set || is_set(controller_type.operation)) leaf_name_data.push_back(controller_type.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (dev_num1.is_set || is_set(dev_num1.operation)) leaf_name_data.push_back(dev_num1.get_name_leafdata());
-    if (dev_num2.is_set || is_set(dev_num2.operation)) leaf_name_data.push_back(dev_num2.get_name_leafdata());
-    if (dev_num3.is_set || is_set(dev_num3.operation)) leaf_name_data.push_back(dev_num3.get_name_leafdata());
-    if (dev_num4.is_set || is_set(dev_num4.operation)) leaf_name_data.push_back(dev_num4.get_name_leafdata());
-    if (dev_num5.is_set || is_set(dev_num5.operation)) leaf_name_data.push_back(dev_num5.get_name_leafdata());
-    if (dev_num6.is_set || is_set(dev_num6.operation)) leaf_name_data.push_back(dev_num6.get_name_leafdata());
-    if (dev_num7.is_set || is_set(dev_num7.operation)) leaf_name_data.push_back(dev_num7.get_name_leafdata());
-    if (eci.is_set || is_set(eci.operation)) leaf_name_data.push_back(eci.get_name_leafdata());
-    if (eeprom_size.is_set || is_set(eeprom_size.operation)) leaf_name_data.push_back(eeprom_size.get_name_leafdata());
-    if (engineer_use.is_set || is_set(engineer_use.operation)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
-    if (fru_major_type.is_set || is_set(fru_major_type.operation)) leaf_name_data.push_back(fru_major_type.get_name_leafdata());
-    if (fru_minor_type.is_set || is_set(fru_minor_type.operation)) leaf_name_data.push_back(fru_minor_type.get_name_leafdata());
-    if (hw_version.is_set || is_set(hw_version.operation)) leaf_name_data.push_back(hw_version.get_name_leafdata());
-    if (hwid.is_set || is_set(hwid.operation)) leaf_name_data.push_back(hwid.get_name_leafdata());
-    if (idprom_format_rev.is_set || is_set(idprom_format_rev.operation)) leaf_name_data.push_back(idprom_format_rev.get_name_leafdata());
-    if (mac_add_blk_size1.is_set || is_set(mac_add_blk_size1.operation)) leaf_name_data.push_back(mac_add_blk_size1.get_name_leafdata());
-    if (mac_add_blk_size2.is_set || is_set(mac_add_blk_size2.operation)) leaf_name_data.push_back(mac_add_blk_size2.get_name_leafdata());
-    if (mac_add_blk_size3.is_set || is_set(mac_add_blk_size3.operation)) leaf_name_data.push_back(mac_add_blk_size3.get_name_leafdata());
-    if (mac_add_blk_size4.is_set || is_set(mac_add_blk_size4.operation)) leaf_name_data.push_back(mac_add_blk_size4.get_name_leafdata());
-    if (manu_test_data.is_set || is_set(manu_test_data.operation)) leaf_name_data.push_back(manu_test_data.get_name_leafdata());
-    if (mfg_bits.is_set || is_set(mfg_bits.operation)) leaf_name_data.push_back(mfg_bits.get_name_leafdata());
-    if (mfg_deviation.is_set || is_set(mfg_deviation.operation)) leaf_name_data.push_back(mfg_deviation.get_name_leafdata());
-    if (oem_string.is_set || is_set(oem_string.operation)) leaf_name_data.push_back(oem_string.get_name_leafdata());
-    if (part_number.is_set || is_set(part_number.operation)) leaf_name_data.push_back(part_number.get_name_leafdata());
-    if (part_revision.is_set || is_set(part_revision.operation)) leaf_name_data.push_back(part_revision.get_name_leafdata());
-    if (pca_num.is_set || is_set(pca_num.operation)) leaf_name_data.push_back(pca_num.get_name_leafdata());
-    if (pcavid.is_set || is_set(pcavid.operation)) leaf_name_data.push_back(pcavid.get_name_leafdata());
-    if (pcb_serial_num.is_set || is_set(pcb_serial_num.operation)) leaf_name_data.push_back(pcb_serial_num.get_name_leafdata());
-    if (pid.is_set || is_set(pid.operation)) leaf_name_data.push_back(pid.get_name_leafdata());
-    if (power_consumption.is_set || is_set(power_consumption.operation)) leaf_name_data.push_back(power_consumption.get_name_leafdata());
-    if (power_supply_type.is_set || is_set(power_supply_type.operation)) leaf_name_data.push_back(power_supply_type.get_name_leafdata());
-    if (product_id.is_set || is_set(product_id.operation)) leaf_name_data.push_back(product_id.get_name_leafdata());
-    if (rma_code.is_set || is_set(rma_code.operation)) leaf_name_data.push_back(rma_code.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.operation)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (snmpoid.is_set || is_set(snmpoid.operation)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
-    if (top_assem_part_num.is_set || is_set(top_assem_part_num.operation)) leaf_name_data.push_back(top_assem_part_num.get_name_leafdata());
-    if (top_assem_vid.is_set || is_set(top_assem_vid.operation)) leaf_name_data.push_back(top_assem_vid.get_name_leafdata());
-    if (udi_description.is_set || is_set(udi_description.operation)) leaf_name_data.push_back(udi_description.get_name_leafdata());
-    if (udi_name.is_set || is_set(udi_name.operation)) leaf_name_data.push_back(udi_name.get_name_leafdata());
-    if (vid.is_set || is_set(vid.operation)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (asset_alias.is_set || is_set(asset_alias.yfilter)) leaf_name_data.push_back(asset_alias.get_name_leafdata());
+    if (asset_id.is_set || is_set(asset_id.yfilter)) leaf_name_data.push_back(asset_id.get_name_leafdata());
+    if (base_mac_address1.is_set || is_set(base_mac_address1.yfilter)) leaf_name_data.push_back(base_mac_address1.get_name_leafdata());
+    if (base_mac_address2.is_set || is_set(base_mac_address2.yfilter)) leaf_name_data.push_back(base_mac_address2.get_name_leafdata());
+    if (base_mac_address3.is_set || is_set(base_mac_address3.yfilter)) leaf_name_data.push_back(base_mac_address3.get_name_leafdata());
+    if (base_mac_address4.is_set || is_set(base_mac_address4.yfilter)) leaf_name_data.push_back(base_mac_address4.get_name_leafdata());
+    if (block_checksum.is_set || is_set(block_checksum.yfilter)) leaf_name_data.push_back(block_checksum.get_name_leafdata());
+    if (block_count.is_set || is_set(block_count.yfilter)) leaf_name_data.push_back(block_count.get_name_leafdata());
+    if (block_length.is_set || is_set(block_length.yfilter)) leaf_name_data.push_back(block_length.get_name_leafdata());
+    if (block_signature.is_set || is_set(block_signature.yfilter)) leaf_name_data.push_back(block_signature.get_name_leafdata());
+    if (block_version.is_set || is_set(block_version.yfilter)) leaf_name_data.push_back(block_version.get_name_leafdata());
+    if (chassis_sid.is_set || is_set(chassis_sid.yfilter)) leaf_name_data.push_back(chassis_sid.get_name_leafdata());
+    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
+    if (controller_family.is_set || is_set(controller_family.yfilter)) leaf_name_data.push_back(controller_family.get_name_leafdata());
+    if (controller_type.is_set || is_set(controller_type.yfilter)) leaf_name_data.push_back(controller_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (dev_num1.is_set || is_set(dev_num1.yfilter)) leaf_name_data.push_back(dev_num1.get_name_leafdata());
+    if (dev_num2.is_set || is_set(dev_num2.yfilter)) leaf_name_data.push_back(dev_num2.get_name_leafdata());
+    if (dev_num3.is_set || is_set(dev_num3.yfilter)) leaf_name_data.push_back(dev_num3.get_name_leafdata());
+    if (dev_num4.is_set || is_set(dev_num4.yfilter)) leaf_name_data.push_back(dev_num4.get_name_leafdata());
+    if (dev_num5.is_set || is_set(dev_num5.yfilter)) leaf_name_data.push_back(dev_num5.get_name_leafdata());
+    if (dev_num6.is_set || is_set(dev_num6.yfilter)) leaf_name_data.push_back(dev_num6.get_name_leafdata());
+    if (dev_num7.is_set || is_set(dev_num7.yfilter)) leaf_name_data.push_back(dev_num7.get_name_leafdata());
+    if (eci.is_set || is_set(eci.yfilter)) leaf_name_data.push_back(eci.get_name_leafdata());
+    if (eeprom_size.is_set || is_set(eeprom_size.yfilter)) leaf_name_data.push_back(eeprom_size.get_name_leafdata());
+    if (engineer_use.is_set || is_set(engineer_use.yfilter)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
+    if (fru_major_type.is_set || is_set(fru_major_type.yfilter)) leaf_name_data.push_back(fru_major_type.get_name_leafdata());
+    if (fru_minor_type.is_set || is_set(fru_minor_type.yfilter)) leaf_name_data.push_back(fru_minor_type.get_name_leafdata());
+    if (hw_version.is_set || is_set(hw_version.yfilter)) leaf_name_data.push_back(hw_version.get_name_leafdata());
+    if (hwid.is_set || is_set(hwid.yfilter)) leaf_name_data.push_back(hwid.get_name_leafdata());
+    if (idprom_format_rev.is_set || is_set(idprom_format_rev.yfilter)) leaf_name_data.push_back(idprom_format_rev.get_name_leafdata());
+    if (mac_add_blk_size1.is_set || is_set(mac_add_blk_size1.yfilter)) leaf_name_data.push_back(mac_add_blk_size1.get_name_leafdata());
+    if (mac_add_blk_size2.is_set || is_set(mac_add_blk_size2.yfilter)) leaf_name_data.push_back(mac_add_blk_size2.get_name_leafdata());
+    if (mac_add_blk_size3.is_set || is_set(mac_add_blk_size3.yfilter)) leaf_name_data.push_back(mac_add_blk_size3.get_name_leafdata());
+    if (mac_add_blk_size4.is_set || is_set(mac_add_blk_size4.yfilter)) leaf_name_data.push_back(mac_add_blk_size4.get_name_leafdata());
+    if (manu_test_data.is_set || is_set(manu_test_data.yfilter)) leaf_name_data.push_back(manu_test_data.get_name_leafdata());
+    if (mfg_bits.is_set || is_set(mfg_bits.yfilter)) leaf_name_data.push_back(mfg_bits.get_name_leafdata());
+    if (mfg_deviation.is_set || is_set(mfg_deviation.yfilter)) leaf_name_data.push_back(mfg_deviation.get_name_leafdata());
+    if (oem_string.is_set || is_set(oem_string.yfilter)) leaf_name_data.push_back(oem_string.get_name_leafdata());
+    if (part_number.is_set || is_set(part_number.yfilter)) leaf_name_data.push_back(part_number.get_name_leafdata());
+    if (part_revision.is_set || is_set(part_revision.yfilter)) leaf_name_data.push_back(part_revision.get_name_leafdata());
+    if (pca_num.is_set || is_set(pca_num.yfilter)) leaf_name_data.push_back(pca_num.get_name_leafdata());
+    if (pcavid.is_set || is_set(pcavid.yfilter)) leaf_name_data.push_back(pcavid.get_name_leafdata());
+    if (pcb_serial_num.is_set || is_set(pcb_serial_num.yfilter)) leaf_name_data.push_back(pcb_serial_num.get_name_leafdata());
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
+    if (power_consumption.is_set || is_set(power_consumption.yfilter)) leaf_name_data.push_back(power_consumption.get_name_leafdata());
+    if (power_supply_type.is_set || is_set(power_supply_type.yfilter)) leaf_name_data.push_back(power_supply_type.get_name_leafdata());
+    if (product_id.is_set || is_set(product_id.yfilter)) leaf_name_data.push_back(product_id.get_name_leafdata());
+    if (rma_code.is_set || is_set(rma_code.yfilter)) leaf_name_data.push_back(rma_code.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (snmpoid.is_set || is_set(snmpoid.yfilter)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
+    if (top_assem_part_num.is_set || is_set(top_assem_part_num.yfilter)) leaf_name_data.push_back(top_assem_part_num.get_name_leafdata());
+    if (top_assem_vid.is_set || is_set(top_assem_vid.yfilter)) leaf_name_data.push_back(top_assem_vid.get_name_leafdata());
+    if (udi_description.is_set || is_set(udi_description.yfilter)) leaf_name_data.push_back(udi_description.get_name_leafdata());
+    if (udi_name.is_set || is_set(udi_name.yfilter)) leaf_name_data.push_back(udi_name.get_name_leafdata());
+    if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3111,232 +4094,579 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asset-alias")
     {
         asset_alias = value;
+        asset_alias.value_namespace = name_space;
+        asset_alias.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "asset-id")
     {
         asset_id = value;
+        asset_id.value_namespace = name_space;
+        asset_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address1")
     {
         base_mac_address1 = value;
+        base_mac_address1.value_namespace = name_space;
+        base_mac_address1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address2")
     {
         base_mac_address2 = value;
+        base_mac_address2.value_namespace = name_space;
+        base_mac_address2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address3")
     {
         base_mac_address3 = value;
+        base_mac_address3.value_namespace = name_space;
+        base_mac_address3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address4")
     {
         base_mac_address4 = value;
+        base_mac_address4.value_namespace = name_space;
+        base_mac_address4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-checksum")
     {
         block_checksum = value;
+        block_checksum.value_namespace = name_space;
+        block_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-count")
     {
         block_count = value;
+        block_count.value_namespace = name_space;
+        block_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-length")
     {
         block_length = value;
+        block_length.value_namespace = name_space;
+        block_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-signature")
     {
         block_signature = value;
+        block_signature.value_namespace = name_space;
+        block_signature.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-version")
     {
         block_version = value;
+        block_version.value_namespace = name_space;
+        block_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chassis-sid")
     {
         chassis_sid = value;
+        chassis_sid.value_namespace = name_space;
+        chassis_sid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "clei")
     {
         clei = value;
+        clei.value_namespace = name_space;
+        clei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-family")
     {
         controller_family = value;
+        controller_family.value_namespace = name_space;
+        controller_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-type")
     {
         controller_type = value;
+        controller_type.value_namespace = name_space;
+        controller_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num1")
     {
         dev_num1 = value;
+        dev_num1.value_namespace = name_space;
+        dev_num1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num2")
     {
         dev_num2 = value;
+        dev_num2.value_namespace = name_space;
+        dev_num2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num3")
     {
         dev_num3 = value;
+        dev_num3.value_namespace = name_space;
+        dev_num3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num4")
     {
         dev_num4 = value;
+        dev_num4.value_namespace = name_space;
+        dev_num4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num5")
     {
         dev_num5 = value;
+        dev_num5.value_namespace = name_space;
+        dev_num5.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num6")
     {
         dev_num6 = value;
+        dev_num6.value_namespace = name_space;
+        dev_num6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num7")
     {
         dev_num7 = value;
+        dev_num7.value_namespace = name_space;
+        dev_num7.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eci")
     {
         eci = value;
+        eci.value_namespace = name_space;
+        eci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eeprom-size")
     {
         eeprom_size = value;
+        eeprom_size.value_namespace = name_space;
+        eeprom_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "engineer-use")
     {
         engineer_use = value;
+        engineer_use.value_namespace = name_space;
+        engineer_use.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fru-major-type")
     {
         fru_major_type = value;
+        fru_major_type.value_namespace = name_space;
+        fru_major_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fru-minor-type")
     {
         fru_minor_type = value;
+        fru_minor_type.value_namespace = name_space;
+        fru_minor_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hw-version")
     {
         hw_version = value;
+        hw_version.value_namespace = name_space;
+        hw_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hwid")
     {
         hwid = value;
+        hwid.value_namespace = name_space;
+        hwid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idprom-format-rev")
     {
         idprom_format_rev = value;
+        idprom_format_rev.value_namespace = name_space;
+        idprom_format_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size1")
     {
         mac_add_blk_size1 = value;
+        mac_add_blk_size1.value_namespace = name_space;
+        mac_add_blk_size1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size2")
     {
         mac_add_blk_size2 = value;
+        mac_add_blk_size2.value_namespace = name_space;
+        mac_add_blk_size2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size3")
     {
         mac_add_blk_size3 = value;
+        mac_add_blk_size3.value_namespace = name_space;
+        mac_add_blk_size3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size4")
     {
         mac_add_blk_size4 = value;
+        mac_add_blk_size4.value_namespace = name_space;
+        mac_add_blk_size4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "manu-test-data")
     {
         manu_test_data = value;
+        manu_test_data.value_namespace = name_space;
+        manu_test_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mfg-bits")
     {
         mfg_bits = value;
+        mfg_bits.value_namespace = name_space;
+        mfg_bits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mfg-deviation")
     {
         mfg_deviation = value;
+        mfg_deviation.value_namespace = name_space;
+        mfg_deviation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oem-string")
     {
         oem_string = value;
+        oem_string.value_namespace = name_space;
+        oem_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "part-number")
     {
         part_number = value;
+        part_number.value_namespace = name_space;
+        part_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "part-revision")
     {
         part_revision = value;
+        part_revision.value_namespace = name_space;
+        part_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pca-num")
     {
         pca_num = value;
+        pca_num.value_namespace = name_space;
+        pca_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcavid")
     {
         pcavid = value;
+        pcavid.value_namespace = name_space;
+        pcavid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcb-serial-num")
     {
         pcb_serial_num = value;
+        pcb_serial_num.value_namespace = name_space;
+        pcb_serial_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pid")
     {
         pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-consumption")
     {
         power_consumption = value;
+        power_consumption.value_namespace = name_space;
+        power_consumption.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-supply-type")
     {
         power_supply_type = value;
+        power_supply_type.value_namespace = name_space;
+        power_supply_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "product-id")
     {
         product_id = value;
+        product_id.value_namespace = name_space;
+        product_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rma-code")
     {
         rma_code = value;
+        rma_code.value_namespace = name_space;
+        rma_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
         serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpoid")
     {
         snmpoid = value;
+        snmpoid.value_namespace = name_space;
+        snmpoid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "top-assem-part-num")
     {
         top_assem_part_num = value;
+        top_assem_part_num.value_namespace = name_space;
+        top_assem_part_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "top-assem-vid")
     {
         top_assem_vid = value;
+        top_assem_vid.value_namespace = name_space;
+        top_assem_vid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udi-description")
     {
         udi_description = value;
+        udi_description.value_namespace = name_space;
+        udi_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udi-name")
     {
         udi_name = value;
+        udi_name.value_namespace = name_space;
+        udi_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vid")
     {
         vid = value;
+        vid.value_namespace = name_space;
+        vid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asset-alias")
+    {
+        asset_alias.yfilter = yfilter;
+    }
+    if(value_path == "asset-id")
+    {
+        asset_id.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address1")
+    {
+        base_mac_address1.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address2")
+    {
+        base_mac_address2.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address3")
+    {
+        base_mac_address3.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address4")
+    {
+        base_mac_address4.yfilter = yfilter;
+    }
+    if(value_path == "block-checksum")
+    {
+        block_checksum.yfilter = yfilter;
+    }
+    if(value_path == "block-count")
+    {
+        block_count.yfilter = yfilter;
+    }
+    if(value_path == "block-length")
+    {
+        block_length.yfilter = yfilter;
+    }
+    if(value_path == "block-signature")
+    {
+        block_signature.yfilter = yfilter;
+    }
+    if(value_path == "block-version")
+    {
+        block_version.yfilter = yfilter;
+    }
+    if(value_path == "chassis-sid")
+    {
+        chassis_sid.yfilter = yfilter;
+    }
+    if(value_path == "clei")
+    {
+        clei.yfilter = yfilter;
+    }
+    if(value_path == "controller-family")
+    {
+        controller_family.yfilter = yfilter;
+    }
+    if(value_path == "controller-type")
+    {
+        controller_type.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "dev-num1")
+    {
+        dev_num1.yfilter = yfilter;
+    }
+    if(value_path == "dev-num2")
+    {
+        dev_num2.yfilter = yfilter;
+    }
+    if(value_path == "dev-num3")
+    {
+        dev_num3.yfilter = yfilter;
+    }
+    if(value_path == "dev-num4")
+    {
+        dev_num4.yfilter = yfilter;
+    }
+    if(value_path == "dev-num5")
+    {
+        dev_num5.yfilter = yfilter;
+    }
+    if(value_path == "dev-num6")
+    {
+        dev_num6.yfilter = yfilter;
+    }
+    if(value_path == "dev-num7")
+    {
+        dev_num7.yfilter = yfilter;
+    }
+    if(value_path == "eci")
+    {
+        eci.yfilter = yfilter;
+    }
+    if(value_path == "eeprom-size")
+    {
+        eeprom_size.yfilter = yfilter;
+    }
+    if(value_path == "engineer-use")
+    {
+        engineer_use.yfilter = yfilter;
+    }
+    if(value_path == "fru-major-type")
+    {
+        fru_major_type.yfilter = yfilter;
+    }
+    if(value_path == "fru-minor-type")
+    {
+        fru_minor_type.yfilter = yfilter;
+    }
+    if(value_path == "hw-version")
+    {
+        hw_version.yfilter = yfilter;
+    }
+    if(value_path == "hwid")
+    {
+        hwid.yfilter = yfilter;
+    }
+    if(value_path == "idprom-format-rev")
+    {
+        idprom_format_rev.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size1")
+    {
+        mac_add_blk_size1.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size2")
+    {
+        mac_add_blk_size2.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size3")
+    {
+        mac_add_blk_size3.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size4")
+    {
+        mac_add_blk_size4.yfilter = yfilter;
+    }
+    if(value_path == "manu-test-data")
+    {
+        manu_test_data.yfilter = yfilter;
+    }
+    if(value_path == "mfg-bits")
+    {
+        mfg_bits.yfilter = yfilter;
+    }
+    if(value_path == "mfg-deviation")
+    {
+        mfg_deviation.yfilter = yfilter;
+    }
+    if(value_path == "oem-string")
+    {
+        oem_string.yfilter = yfilter;
+    }
+    if(value_path == "part-number")
+    {
+        part_number.yfilter = yfilter;
+    }
+    if(value_path == "part-revision")
+    {
+        part_revision.yfilter = yfilter;
+    }
+    if(value_path == "pca-num")
+    {
+        pca_num.yfilter = yfilter;
+    }
+    if(value_path == "pcavid")
+    {
+        pcavid.yfilter = yfilter;
+    }
+    if(value_path == "pcb-serial-num")
+    {
+        pcb_serial_num.yfilter = yfilter;
+    }
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
+    if(value_path == "power-consumption")
+    {
+        power_consumption.yfilter = yfilter;
+    }
+    if(value_path == "power-supply-type")
+    {
+        power_supply_type.yfilter = yfilter;
+    }
+    if(value_path == "product-id")
+    {
+        product_id.yfilter = yfilter;
+    }
+    if(value_path == "rma-code")
+    {
+        rma_code.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "snmpoid")
+    {
+        snmpoid.yfilter = yfilter;
+    }
+    if(value_path == "top-assem-part-num")
+    {
+        top_assem_part_num.yfilter = yfilter;
+    }
+    if(value_path == "top-assem-vid")
+    {
+        top_assem_vid.yfilter = yfilter;
+    }
+    if(value_path == "udi-description")
+    {
+        udi_description.yfilter = yfilter;
+    }
+    if(value_path == "udi-name")
+    {
+        udi_name.yfilter = yfilter;
+    }
+    if(value_path == "vid")
+    {
+        vid.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rma" || name == "asset-alias" || name == "asset-id" || name == "base-mac-address1" || name == "base-mac-address2" || name == "base-mac-address3" || name == "base-mac-address4" || name == "block-checksum" || name == "block-count" || name == "block-length" || name == "block-signature" || name == "block-version" || name == "chassis-sid" || name == "clei" || name == "controller-family" || name == "controller-type" || name == "description" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "eci" || name == "eeprom-size" || name == "engineer-use" || name == "fru-major-type" || name == "fru-minor-type" || name == "hw-version" || name == "hwid" || name == "idprom-format-rev" || name == "mac-add-blk-size1" || name == "mac-add-blk-size2" || name == "mac-add-blk-size3" || name == "mac-add-blk-size4" || name == "manu-test-data" || name == "mfg-bits" || name == "mfg-deviation" || name == "oem-string" || name == "part-number" || name == "part-revision" || name == "pca-num" || name == "pcavid" || name == "pcb-serial-num" || name == "pid" || name == "power-consumption" || name == "power-supply-type" || name == "product-id" || name == "rma-code" || name == "serial-number" || name == "snmpoid" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "udi-description" || name == "udi-name" || name == "vid")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::Rma()
@@ -3361,10 +4691,10 @@ bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::
 
 bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rma_history.operation)
-	|| is_set(rma_number.operation)
-	|| is_set(test_history.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rma_history.yfilter)
+	|| ydk::is_set(rma_number.yfilter)
+	|| ydk::is_set(test_history.yfilter);
 }
 
 std::string Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::get_segment_path() const
@@ -3390,9 +4720,9 @@ const EntityPath Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::Ca
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rma_history.is_set || is_set(rma_history.operation)) leaf_name_data.push_back(rma_history.get_name_leafdata());
-    if (rma_number.is_set || is_set(rma_number.operation)) leaf_name_data.push_back(rma_number.get_name_leafdata());
-    if (test_history.is_set || is_set(test_history.operation)) leaf_name_data.push_back(test_history.get_name_leafdata());
+    if (rma_history.is_set || is_set(rma_history.yfilter)) leaf_name_data.push_back(rma_history.get_name_leafdata());
+    if (rma_number.is_set || is_set(rma_number.yfilter)) leaf_name_data.push_back(rma_number.get_name_leafdata());
+    if (test_history.is_set || is_set(test_history.yfilter)) leaf_name_data.push_back(test_history.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3411,20 +4741,49 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Slots::Slot::I
     return children;
 }
 
-void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rma-history")
     {
         rma_history = value;
+        rma_history.value_namespace = name_space;
+        rma_history.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rma-number")
     {
         rma_number = value;
+        rma_number.value_namespace = name_space;
+        rma_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-history")
     {
         test_history = value;
+        test_history.value_namespace = name_space;
+        test_history.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rma-history")
+    {
+        rma_history.yfilter = yfilter;
+    }
+    if(value_path == "rma-number")
+    {
+        rma_number.yfilter = yfilter;
+    }
+    if(value_path == "test-history")
+    {
+        test_history.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Slots::Slot::Instances::Instance::Detail::CardInstance::Rma::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rma-history" || name == "rma-number" || name == "test-history")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Chassis::Chassis()
@@ -3560,63 +4919,63 @@ bool Diag::Racks::Rack::Chassis::has_data() const
 
 bool Diag::Racks::Rack::Chassis::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asset_alias.operation)
-	|| is_set(asset_id.operation)
-	|| is_set(base_mac_address1.operation)
-	|| is_set(base_mac_address2.operation)
-	|| is_set(base_mac_address3.operation)
-	|| is_set(base_mac_address4.operation)
-	|| is_set(block_checksum.operation)
-	|| is_set(block_count.operation)
-	|| is_set(block_length.operation)
-	|| is_set(block_signature.operation)
-	|| is_set(block_version.operation)
-	|| is_set(chassis_sid.operation)
-	|| is_set(clei.operation)
-	|| is_set(controller_family.operation)
-	|| is_set(controller_type.operation)
-	|| is_set(description.operation)
-	|| is_set(dev_num1.operation)
-	|| is_set(dev_num2.operation)
-	|| is_set(dev_num3.operation)
-	|| is_set(dev_num4.operation)
-	|| is_set(dev_num5.operation)
-	|| is_set(dev_num6.operation)
-	|| is_set(dev_num7.operation)
-	|| is_set(eci.operation)
-	|| is_set(eeprom_size.operation)
-	|| is_set(engineer_use.operation)
-	|| is_set(fru_major_type.operation)
-	|| is_set(fru_minor_type.operation)
-	|| is_set(hw_version.operation)
-	|| is_set(hwid.operation)
-	|| is_set(idprom_format_rev.operation)
-	|| is_set(mac_add_blk_size1.operation)
-	|| is_set(mac_add_blk_size2.operation)
-	|| is_set(mac_add_blk_size3.operation)
-	|| is_set(mac_add_blk_size4.operation)
-	|| is_set(manu_test_data.operation)
-	|| is_set(mfg_bits.operation)
-	|| is_set(mfg_deviation.operation)
-	|| is_set(oem_string.operation)
-	|| is_set(part_number.operation)
-	|| is_set(part_revision.operation)
-	|| is_set(pca_num.operation)
-	|| is_set(pcavid.operation)
-	|| is_set(pcb_serial_num.operation)
-	|| is_set(pid.operation)
-	|| is_set(power_consumption.operation)
-	|| is_set(power_supply_type.operation)
-	|| is_set(product_id.operation)
-	|| is_set(rma_code.operation)
-	|| is_set(serial_number.operation)
-	|| is_set(snmpoid.operation)
-	|| is_set(top_assem_part_num.operation)
-	|| is_set(top_assem_vid.operation)
-	|| is_set(udi_description.operation)
-	|| is_set(udi_name.operation)
-	|| is_set(vid.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(asset_alias.yfilter)
+	|| ydk::is_set(asset_id.yfilter)
+	|| ydk::is_set(base_mac_address1.yfilter)
+	|| ydk::is_set(base_mac_address2.yfilter)
+	|| ydk::is_set(base_mac_address3.yfilter)
+	|| ydk::is_set(base_mac_address4.yfilter)
+	|| ydk::is_set(block_checksum.yfilter)
+	|| ydk::is_set(block_count.yfilter)
+	|| ydk::is_set(block_length.yfilter)
+	|| ydk::is_set(block_signature.yfilter)
+	|| ydk::is_set(block_version.yfilter)
+	|| ydk::is_set(chassis_sid.yfilter)
+	|| ydk::is_set(clei.yfilter)
+	|| ydk::is_set(controller_family.yfilter)
+	|| ydk::is_set(controller_type.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(dev_num1.yfilter)
+	|| ydk::is_set(dev_num2.yfilter)
+	|| ydk::is_set(dev_num3.yfilter)
+	|| ydk::is_set(dev_num4.yfilter)
+	|| ydk::is_set(dev_num5.yfilter)
+	|| ydk::is_set(dev_num6.yfilter)
+	|| ydk::is_set(dev_num7.yfilter)
+	|| ydk::is_set(eci.yfilter)
+	|| ydk::is_set(eeprom_size.yfilter)
+	|| ydk::is_set(engineer_use.yfilter)
+	|| ydk::is_set(fru_major_type.yfilter)
+	|| ydk::is_set(fru_minor_type.yfilter)
+	|| ydk::is_set(hw_version.yfilter)
+	|| ydk::is_set(hwid.yfilter)
+	|| ydk::is_set(idprom_format_rev.yfilter)
+	|| ydk::is_set(mac_add_blk_size1.yfilter)
+	|| ydk::is_set(mac_add_blk_size2.yfilter)
+	|| ydk::is_set(mac_add_blk_size3.yfilter)
+	|| ydk::is_set(mac_add_blk_size4.yfilter)
+	|| ydk::is_set(manu_test_data.yfilter)
+	|| ydk::is_set(mfg_bits.yfilter)
+	|| ydk::is_set(mfg_deviation.yfilter)
+	|| ydk::is_set(oem_string.yfilter)
+	|| ydk::is_set(part_number.yfilter)
+	|| ydk::is_set(part_revision.yfilter)
+	|| ydk::is_set(pca_num.yfilter)
+	|| ydk::is_set(pcavid.yfilter)
+	|| ydk::is_set(pcb_serial_num.yfilter)
+	|| ydk::is_set(pid.yfilter)
+	|| ydk::is_set(power_consumption.yfilter)
+	|| ydk::is_set(power_supply_type.yfilter)
+	|| ydk::is_set(product_id.yfilter)
+	|| ydk::is_set(rma_code.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(snmpoid.yfilter)
+	|| ydk::is_set(top_assem_part_num.yfilter)
+	|| ydk::is_set(top_assem_vid.yfilter)
+	|| ydk::is_set(udi_description.yfilter)
+	|| ydk::is_set(udi_name.yfilter)
+	|| ydk::is_set(vid.yfilter)
 	|| (rma !=  nullptr && rma->has_operation());
 }
 
@@ -3643,62 +5002,62 @@ const EntityPath Diag::Racks::Rack::Chassis::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asset_alias.is_set || is_set(asset_alias.operation)) leaf_name_data.push_back(asset_alias.get_name_leafdata());
-    if (asset_id.is_set || is_set(asset_id.operation)) leaf_name_data.push_back(asset_id.get_name_leafdata());
-    if (base_mac_address1.is_set || is_set(base_mac_address1.operation)) leaf_name_data.push_back(base_mac_address1.get_name_leafdata());
-    if (base_mac_address2.is_set || is_set(base_mac_address2.operation)) leaf_name_data.push_back(base_mac_address2.get_name_leafdata());
-    if (base_mac_address3.is_set || is_set(base_mac_address3.operation)) leaf_name_data.push_back(base_mac_address3.get_name_leafdata());
-    if (base_mac_address4.is_set || is_set(base_mac_address4.operation)) leaf_name_data.push_back(base_mac_address4.get_name_leafdata());
-    if (block_checksum.is_set || is_set(block_checksum.operation)) leaf_name_data.push_back(block_checksum.get_name_leafdata());
-    if (block_count.is_set || is_set(block_count.operation)) leaf_name_data.push_back(block_count.get_name_leafdata());
-    if (block_length.is_set || is_set(block_length.operation)) leaf_name_data.push_back(block_length.get_name_leafdata());
-    if (block_signature.is_set || is_set(block_signature.operation)) leaf_name_data.push_back(block_signature.get_name_leafdata());
-    if (block_version.is_set || is_set(block_version.operation)) leaf_name_data.push_back(block_version.get_name_leafdata());
-    if (chassis_sid.is_set || is_set(chassis_sid.operation)) leaf_name_data.push_back(chassis_sid.get_name_leafdata());
-    if (clei.is_set || is_set(clei.operation)) leaf_name_data.push_back(clei.get_name_leafdata());
-    if (controller_family.is_set || is_set(controller_family.operation)) leaf_name_data.push_back(controller_family.get_name_leafdata());
-    if (controller_type.is_set || is_set(controller_type.operation)) leaf_name_data.push_back(controller_type.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (dev_num1.is_set || is_set(dev_num1.operation)) leaf_name_data.push_back(dev_num1.get_name_leafdata());
-    if (dev_num2.is_set || is_set(dev_num2.operation)) leaf_name_data.push_back(dev_num2.get_name_leafdata());
-    if (dev_num3.is_set || is_set(dev_num3.operation)) leaf_name_data.push_back(dev_num3.get_name_leafdata());
-    if (dev_num4.is_set || is_set(dev_num4.operation)) leaf_name_data.push_back(dev_num4.get_name_leafdata());
-    if (dev_num5.is_set || is_set(dev_num5.operation)) leaf_name_data.push_back(dev_num5.get_name_leafdata());
-    if (dev_num6.is_set || is_set(dev_num6.operation)) leaf_name_data.push_back(dev_num6.get_name_leafdata());
-    if (dev_num7.is_set || is_set(dev_num7.operation)) leaf_name_data.push_back(dev_num7.get_name_leafdata());
-    if (eci.is_set || is_set(eci.operation)) leaf_name_data.push_back(eci.get_name_leafdata());
-    if (eeprom_size.is_set || is_set(eeprom_size.operation)) leaf_name_data.push_back(eeprom_size.get_name_leafdata());
-    if (engineer_use.is_set || is_set(engineer_use.operation)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
-    if (fru_major_type.is_set || is_set(fru_major_type.operation)) leaf_name_data.push_back(fru_major_type.get_name_leafdata());
-    if (fru_minor_type.is_set || is_set(fru_minor_type.operation)) leaf_name_data.push_back(fru_minor_type.get_name_leafdata());
-    if (hw_version.is_set || is_set(hw_version.operation)) leaf_name_data.push_back(hw_version.get_name_leafdata());
-    if (hwid.is_set || is_set(hwid.operation)) leaf_name_data.push_back(hwid.get_name_leafdata());
-    if (idprom_format_rev.is_set || is_set(idprom_format_rev.operation)) leaf_name_data.push_back(idprom_format_rev.get_name_leafdata());
-    if (mac_add_blk_size1.is_set || is_set(mac_add_blk_size1.operation)) leaf_name_data.push_back(mac_add_blk_size1.get_name_leafdata());
-    if (mac_add_blk_size2.is_set || is_set(mac_add_blk_size2.operation)) leaf_name_data.push_back(mac_add_blk_size2.get_name_leafdata());
-    if (mac_add_blk_size3.is_set || is_set(mac_add_blk_size3.operation)) leaf_name_data.push_back(mac_add_blk_size3.get_name_leafdata());
-    if (mac_add_blk_size4.is_set || is_set(mac_add_blk_size4.operation)) leaf_name_data.push_back(mac_add_blk_size4.get_name_leafdata());
-    if (manu_test_data.is_set || is_set(manu_test_data.operation)) leaf_name_data.push_back(manu_test_data.get_name_leafdata());
-    if (mfg_bits.is_set || is_set(mfg_bits.operation)) leaf_name_data.push_back(mfg_bits.get_name_leafdata());
-    if (mfg_deviation.is_set || is_set(mfg_deviation.operation)) leaf_name_data.push_back(mfg_deviation.get_name_leafdata());
-    if (oem_string.is_set || is_set(oem_string.operation)) leaf_name_data.push_back(oem_string.get_name_leafdata());
-    if (part_number.is_set || is_set(part_number.operation)) leaf_name_data.push_back(part_number.get_name_leafdata());
-    if (part_revision.is_set || is_set(part_revision.operation)) leaf_name_data.push_back(part_revision.get_name_leafdata());
-    if (pca_num.is_set || is_set(pca_num.operation)) leaf_name_data.push_back(pca_num.get_name_leafdata());
-    if (pcavid.is_set || is_set(pcavid.operation)) leaf_name_data.push_back(pcavid.get_name_leafdata());
-    if (pcb_serial_num.is_set || is_set(pcb_serial_num.operation)) leaf_name_data.push_back(pcb_serial_num.get_name_leafdata());
-    if (pid.is_set || is_set(pid.operation)) leaf_name_data.push_back(pid.get_name_leafdata());
-    if (power_consumption.is_set || is_set(power_consumption.operation)) leaf_name_data.push_back(power_consumption.get_name_leafdata());
-    if (power_supply_type.is_set || is_set(power_supply_type.operation)) leaf_name_data.push_back(power_supply_type.get_name_leafdata());
-    if (product_id.is_set || is_set(product_id.operation)) leaf_name_data.push_back(product_id.get_name_leafdata());
-    if (rma_code.is_set || is_set(rma_code.operation)) leaf_name_data.push_back(rma_code.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.operation)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (snmpoid.is_set || is_set(snmpoid.operation)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
-    if (top_assem_part_num.is_set || is_set(top_assem_part_num.operation)) leaf_name_data.push_back(top_assem_part_num.get_name_leafdata());
-    if (top_assem_vid.is_set || is_set(top_assem_vid.operation)) leaf_name_data.push_back(top_assem_vid.get_name_leafdata());
-    if (udi_description.is_set || is_set(udi_description.operation)) leaf_name_data.push_back(udi_description.get_name_leafdata());
-    if (udi_name.is_set || is_set(udi_name.operation)) leaf_name_data.push_back(udi_name.get_name_leafdata());
-    if (vid.is_set || is_set(vid.operation)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (asset_alias.is_set || is_set(asset_alias.yfilter)) leaf_name_data.push_back(asset_alias.get_name_leafdata());
+    if (asset_id.is_set || is_set(asset_id.yfilter)) leaf_name_data.push_back(asset_id.get_name_leafdata());
+    if (base_mac_address1.is_set || is_set(base_mac_address1.yfilter)) leaf_name_data.push_back(base_mac_address1.get_name_leafdata());
+    if (base_mac_address2.is_set || is_set(base_mac_address2.yfilter)) leaf_name_data.push_back(base_mac_address2.get_name_leafdata());
+    if (base_mac_address3.is_set || is_set(base_mac_address3.yfilter)) leaf_name_data.push_back(base_mac_address3.get_name_leafdata());
+    if (base_mac_address4.is_set || is_set(base_mac_address4.yfilter)) leaf_name_data.push_back(base_mac_address4.get_name_leafdata());
+    if (block_checksum.is_set || is_set(block_checksum.yfilter)) leaf_name_data.push_back(block_checksum.get_name_leafdata());
+    if (block_count.is_set || is_set(block_count.yfilter)) leaf_name_data.push_back(block_count.get_name_leafdata());
+    if (block_length.is_set || is_set(block_length.yfilter)) leaf_name_data.push_back(block_length.get_name_leafdata());
+    if (block_signature.is_set || is_set(block_signature.yfilter)) leaf_name_data.push_back(block_signature.get_name_leafdata());
+    if (block_version.is_set || is_set(block_version.yfilter)) leaf_name_data.push_back(block_version.get_name_leafdata());
+    if (chassis_sid.is_set || is_set(chassis_sid.yfilter)) leaf_name_data.push_back(chassis_sid.get_name_leafdata());
+    if (clei.is_set || is_set(clei.yfilter)) leaf_name_data.push_back(clei.get_name_leafdata());
+    if (controller_family.is_set || is_set(controller_family.yfilter)) leaf_name_data.push_back(controller_family.get_name_leafdata());
+    if (controller_type.is_set || is_set(controller_type.yfilter)) leaf_name_data.push_back(controller_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (dev_num1.is_set || is_set(dev_num1.yfilter)) leaf_name_data.push_back(dev_num1.get_name_leafdata());
+    if (dev_num2.is_set || is_set(dev_num2.yfilter)) leaf_name_data.push_back(dev_num2.get_name_leafdata());
+    if (dev_num3.is_set || is_set(dev_num3.yfilter)) leaf_name_data.push_back(dev_num3.get_name_leafdata());
+    if (dev_num4.is_set || is_set(dev_num4.yfilter)) leaf_name_data.push_back(dev_num4.get_name_leafdata());
+    if (dev_num5.is_set || is_set(dev_num5.yfilter)) leaf_name_data.push_back(dev_num5.get_name_leafdata());
+    if (dev_num6.is_set || is_set(dev_num6.yfilter)) leaf_name_data.push_back(dev_num6.get_name_leafdata());
+    if (dev_num7.is_set || is_set(dev_num7.yfilter)) leaf_name_data.push_back(dev_num7.get_name_leafdata());
+    if (eci.is_set || is_set(eci.yfilter)) leaf_name_data.push_back(eci.get_name_leafdata());
+    if (eeprom_size.is_set || is_set(eeprom_size.yfilter)) leaf_name_data.push_back(eeprom_size.get_name_leafdata());
+    if (engineer_use.is_set || is_set(engineer_use.yfilter)) leaf_name_data.push_back(engineer_use.get_name_leafdata());
+    if (fru_major_type.is_set || is_set(fru_major_type.yfilter)) leaf_name_data.push_back(fru_major_type.get_name_leafdata());
+    if (fru_minor_type.is_set || is_set(fru_minor_type.yfilter)) leaf_name_data.push_back(fru_minor_type.get_name_leafdata());
+    if (hw_version.is_set || is_set(hw_version.yfilter)) leaf_name_data.push_back(hw_version.get_name_leafdata());
+    if (hwid.is_set || is_set(hwid.yfilter)) leaf_name_data.push_back(hwid.get_name_leafdata());
+    if (idprom_format_rev.is_set || is_set(idprom_format_rev.yfilter)) leaf_name_data.push_back(idprom_format_rev.get_name_leafdata());
+    if (mac_add_blk_size1.is_set || is_set(mac_add_blk_size1.yfilter)) leaf_name_data.push_back(mac_add_blk_size1.get_name_leafdata());
+    if (mac_add_blk_size2.is_set || is_set(mac_add_blk_size2.yfilter)) leaf_name_data.push_back(mac_add_blk_size2.get_name_leafdata());
+    if (mac_add_blk_size3.is_set || is_set(mac_add_blk_size3.yfilter)) leaf_name_data.push_back(mac_add_blk_size3.get_name_leafdata());
+    if (mac_add_blk_size4.is_set || is_set(mac_add_blk_size4.yfilter)) leaf_name_data.push_back(mac_add_blk_size4.get_name_leafdata());
+    if (manu_test_data.is_set || is_set(manu_test_data.yfilter)) leaf_name_data.push_back(manu_test_data.get_name_leafdata());
+    if (mfg_bits.is_set || is_set(mfg_bits.yfilter)) leaf_name_data.push_back(mfg_bits.get_name_leafdata());
+    if (mfg_deviation.is_set || is_set(mfg_deviation.yfilter)) leaf_name_data.push_back(mfg_deviation.get_name_leafdata());
+    if (oem_string.is_set || is_set(oem_string.yfilter)) leaf_name_data.push_back(oem_string.get_name_leafdata());
+    if (part_number.is_set || is_set(part_number.yfilter)) leaf_name_data.push_back(part_number.get_name_leafdata());
+    if (part_revision.is_set || is_set(part_revision.yfilter)) leaf_name_data.push_back(part_revision.get_name_leafdata());
+    if (pca_num.is_set || is_set(pca_num.yfilter)) leaf_name_data.push_back(pca_num.get_name_leafdata());
+    if (pcavid.is_set || is_set(pcavid.yfilter)) leaf_name_data.push_back(pcavid.get_name_leafdata());
+    if (pcb_serial_num.is_set || is_set(pcb_serial_num.yfilter)) leaf_name_data.push_back(pcb_serial_num.get_name_leafdata());
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
+    if (power_consumption.is_set || is_set(power_consumption.yfilter)) leaf_name_data.push_back(power_consumption.get_name_leafdata());
+    if (power_supply_type.is_set || is_set(power_supply_type.yfilter)) leaf_name_data.push_back(power_supply_type.get_name_leafdata());
+    if (product_id.is_set || is_set(product_id.yfilter)) leaf_name_data.push_back(product_id.get_name_leafdata());
+    if (rma_code.is_set || is_set(rma_code.yfilter)) leaf_name_data.push_back(rma_code.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (snmpoid.is_set || is_set(snmpoid.yfilter)) leaf_name_data.push_back(snmpoid.get_name_leafdata());
+    if (top_assem_part_num.is_set || is_set(top_assem_part_num.yfilter)) leaf_name_data.push_back(top_assem_part_num.get_name_leafdata());
+    if (top_assem_vid.is_set || is_set(top_assem_vid.yfilter)) leaf_name_data.push_back(top_assem_vid.get_name_leafdata());
+    if (udi_description.is_set || is_set(udi_description.yfilter)) leaf_name_data.push_back(udi_description.get_name_leafdata());
+    if (udi_name.is_set || is_set(udi_name.yfilter)) leaf_name_data.push_back(udi_name.get_name_leafdata());
+    if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3731,232 +5090,579 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Chassis::get_c
     return children;
 }
 
-void Diag::Racks::Rack::Chassis::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Chassis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asset-alias")
     {
         asset_alias = value;
+        asset_alias.value_namespace = name_space;
+        asset_alias.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "asset-id")
     {
         asset_id = value;
+        asset_id.value_namespace = name_space;
+        asset_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address1")
     {
         base_mac_address1 = value;
+        base_mac_address1.value_namespace = name_space;
+        base_mac_address1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address2")
     {
         base_mac_address2 = value;
+        base_mac_address2.value_namespace = name_space;
+        base_mac_address2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address3")
     {
         base_mac_address3 = value;
+        base_mac_address3.value_namespace = name_space;
+        base_mac_address3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "base-mac-address4")
     {
         base_mac_address4 = value;
+        base_mac_address4.value_namespace = name_space;
+        base_mac_address4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-checksum")
     {
         block_checksum = value;
+        block_checksum.value_namespace = name_space;
+        block_checksum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-count")
     {
         block_count = value;
+        block_count.value_namespace = name_space;
+        block_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-length")
     {
         block_length = value;
+        block_length.value_namespace = name_space;
+        block_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-signature")
     {
         block_signature = value;
+        block_signature.value_namespace = name_space;
+        block_signature.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "block-version")
     {
         block_version = value;
+        block_version.value_namespace = name_space;
+        block_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chassis-sid")
     {
         chassis_sid = value;
+        chassis_sid.value_namespace = name_space;
+        chassis_sid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "clei")
     {
         clei = value;
+        clei.value_namespace = name_space;
+        clei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-family")
     {
         controller_family = value;
+        controller_family.value_namespace = name_space;
+        controller_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "controller-type")
     {
         controller_type = value;
+        controller_type.value_namespace = name_space;
+        controller_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num1")
     {
         dev_num1 = value;
+        dev_num1.value_namespace = name_space;
+        dev_num1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num2")
     {
         dev_num2 = value;
+        dev_num2.value_namespace = name_space;
+        dev_num2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num3")
     {
         dev_num3 = value;
+        dev_num3.value_namespace = name_space;
+        dev_num3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num4")
     {
         dev_num4 = value;
+        dev_num4.value_namespace = name_space;
+        dev_num4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num5")
     {
         dev_num5 = value;
+        dev_num5.value_namespace = name_space;
+        dev_num5.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num6")
     {
         dev_num6 = value;
+        dev_num6.value_namespace = name_space;
+        dev_num6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dev-num7")
     {
         dev_num7 = value;
+        dev_num7.value_namespace = name_space;
+        dev_num7.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eci")
     {
         eci = value;
+        eci.value_namespace = name_space;
+        eci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "eeprom-size")
     {
         eeprom_size = value;
+        eeprom_size.value_namespace = name_space;
+        eeprom_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "engineer-use")
     {
         engineer_use = value;
+        engineer_use.value_namespace = name_space;
+        engineer_use.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fru-major-type")
     {
         fru_major_type = value;
+        fru_major_type.value_namespace = name_space;
+        fru_major_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fru-minor-type")
     {
         fru_minor_type = value;
+        fru_minor_type.value_namespace = name_space;
+        fru_minor_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hw-version")
     {
         hw_version = value;
+        hw_version.value_namespace = name_space;
+        hw_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hwid")
     {
         hwid = value;
+        hwid.value_namespace = name_space;
+        hwid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idprom-format-rev")
     {
         idprom_format_rev = value;
+        idprom_format_rev.value_namespace = name_space;
+        idprom_format_rev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size1")
     {
         mac_add_blk_size1 = value;
+        mac_add_blk_size1.value_namespace = name_space;
+        mac_add_blk_size1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size2")
     {
         mac_add_blk_size2 = value;
+        mac_add_blk_size2.value_namespace = name_space;
+        mac_add_blk_size2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size3")
     {
         mac_add_blk_size3 = value;
+        mac_add_blk_size3.value_namespace = name_space;
+        mac_add_blk_size3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-add-blk-size4")
     {
         mac_add_blk_size4 = value;
+        mac_add_blk_size4.value_namespace = name_space;
+        mac_add_blk_size4.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "manu-test-data")
     {
         manu_test_data = value;
+        manu_test_data.value_namespace = name_space;
+        manu_test_data.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mfg-bits")
     {
         mfg_bits = value;
+        mfg_bits.value_namespace = name_space;
+        mfg_bits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mfg-deviation")
     {
         mfg_deviation = value;
+        mfg_deviation.value_namespace = name_space;
+        mfg_deviation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oem-string")
     {
         oem_string = value;
+        oem_string.value_namespace = name_space;
+        oem_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "part-number")
     {
         part_number = value;
+        part_number.value_namespace = name_space;
+        part_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "part-revision")
     {
         part_revision = value;
+        part_revision.value_namespace = name_space;
+        part_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pca-num")
     {
         pca_num = value;
+        pca_num.value_namespace = name_space;
+        pca_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcavid")
     {
         pcavid = value;
+        pcavid.value_namespace = name_space;
+        pcavid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pcb-serial-num")
     {
         pcb_serial_num = value;
+        pcb_serial_num.value_namespace = name_space;
+        pcb_serial_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pid")
     {
         pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-consumption")
     {
         power_consumption = value;
+        power_consumption.value_namespace = name_space;
+        power_consumption.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "power-supply-type")
     {
         power_supply_type = value;
+        power_supply_type.value_namespace = name_space;
+        power_supply_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "product-id")
     {
         product_id = value;
+        product_id.value_namespace = name_space;
+        product_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rma-code")
     {
         rma_code = value;
+        rma_code.value_namespace = name_space;
+        rma_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
         serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmpoid")
     {
         snmpoid = value;
+        snmpoid.value_namespace = name_space;
+        snmpoid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "top-assem-part-num")
     {
         top_assem_part_num = value;
+        top_assem_part_num.value_namespace = name_space;
+        top_assem_part_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "top-assem-vid")
     {
         top_assem_vid = value;
+        top_assem_vid.value_namespace = name_space;
+        top_assem_vid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udi-description")
     {
         udi_description = value;
+        udi_description.value_namespace = name_space;
+        udi_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udi-name")
     {
         udi_name = value;
+        udi_name.value_namespace = name_space;
+        udi_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vid")
     {
         vid = value;
+        vid.value_namespace = name_space;
+        vid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::Chassis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asset-alias")
+    {
+        asset_alias.yfilter = yfilter;
+    }
+    if(value_path == "asset-id")
+    {
+        asset_id.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address1")
+    {
+        base_mac_address1.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address2")
+    {
+        base_mac_address2.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address3")
+    {
+        base_mac_address3.yfilter = yfilter;
+    }
+    if(value_path == "base-mac-address4")
+    {
+        base_mac_address4.yfilter = yfilter;
+    }
+    if(value_path == "block-checksum")
+    {
+        block_checksum.yfilter = yfilter;
+    }
+    if(value_path == "block-count")
+    {
+        block_count.yfilter = yfilter;
+    }
+    if(value_path == "block-length")
+    {
+        block_length.yfilter = yfilter;
+    }
+    if(value_path == "block-signature")
+    {
+        block_signature.yfilter = yfilter;
+    }
+    if(value_path == "block-version")
+    {
+        block_version.yfilter = yfilter;
+    }
+    if(value_path == "chassis-sid")
+    {
+        chassis_sid.yfilter = yfilter;
+    }
+    if(value_path == "clei")
+    {
+        clei.yfilter = yfilter;
+    }
+    if(value_path == "controller-family")
+    {
+        controller_family.yfilter = yfilter;
+    }
+    if(value_path == "controller-type")
+    {
+        controller_type.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "dev-num1")
+    {
+        dev_num1.yfilter = yfilter;
+    }
+    if(value_path == "dev-num2")
+    {
+        dev_num2.yfilter = yfilter;
+    }
+    if(value_path == "dev-num3")
+    {
+        dev_num3.yfilter = yfilter;
+    }
+    if(value_path == "dev-num4")
+    {
+        dev_num4.yfilter = yfilter;
+    }
+    if(value_path == "dev-num5")
+    {
+        dev_num5.yfilter = yfilter;
+    }
+    if(value_path == "dev-num6")
+    {
+        dev_num6.yfilter = yfilter;
+    }
+    if(value_path == "dev-num7")
+    {
+        dev_num7.yfilter = yfilter;
+    }
+    if(value_path == "eci")
+    {
+        eci.yfilter = yfilter;
+    }
+    if(value_path == "eeprom-size")
+    {
+        eeprom_size.yfilter = yfilter;
+    }
+    if(value_path == "engineer-use")
+    {
+        engineer_use.yfilter = yfilter;
+    }
+    if(value_path == "fru-major-type")
+    {
+        fru_major_type.yfilter = yfilter;
+    }
+    if(value_path == "fru-minor-type")
+    {
+        fru_minor_type.yfilter = yfilter;
+    }
+    if(value_path == "hw-version")
+    {
+        hw_version.yfilter = yfilter;
+    }
+    if(value_path == "hwid")
+    {
+        hwid.yfilter = yfilter;
+    }
+    if(value_path == "idprom-format-rev")
+    {
+        idprom_format_rev.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size1")
+    {
+        mac_add_blk_size1.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size2")
+    {
+        mac_add_blk_size2.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size3")
+    {
+        mac_add_blk_size3.yfilter = yfilter;
+    }
+    if(value_path == "mac-add-blk-size4")
+    {
+        mac_add_blk_size4.yfilter = yfilter;
+    }
+    if(value_path == "manu-test-data")
+    {
+        manu_test_data.yfilter = yfilter;
+    }
+    if(value_path == "mfg-bits")
+    {
+        mfg_bits.yfilter = yfilter;
+    }
+    if(value_path == "mfg-deviation")
+    {
+        mfg_deviation.yfilter = yfilter;
+    }
+    if(value_path == "oem-string")
+    {
+        oem_string.yfilter = yfilter;
+    }
+    if(value_path == "part-number")
+    {
+        part_number.yfilter = yfilter;
+    }
+    if(value_path == "part-revision")
+    {
+        part_revision.yfilter = yfilter;
+    }
+    if(value_path == "pca-num")
+    {
+        pca_num.yfilter = yfilter;
+    }
+    if(value_path == "pcavid")
+    {
+        pcavid.yfilter = yfilter;
+    }
+    if(value_path == "pcb-serial-num")
+    {
+        pcb_serial_num.yfilter = yfilter;
+    }
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
+    if(value_path == "power-consumption")
+    {
+        power_consumption.yfilter = yfilter;
+    }
+    if(value_path == "power-supply-type")
+    {
+        power_supply_type.yfilter = yfilter;
+    }
+    if(value_path == "product-id")
+    {
+        product_id.yfilter = yfilter;
+    }
+    if(value_path == "rma-code")
+    {
+        rma_code.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "snmpoid")
+    {
+        snmpoid.yfilter = yfilter;
+    }
+    if(value_path == "top-assem-part-num")
+    {
+        top_assem_part_num.yfilter = yfilter;
+    }
+    if(value_path == "top-assem-vid")
+    {
+        top_assem_vid.yfilter = yfilter;
+    }
+    if(value_path == "udi-description")
+    {
+        udi_description.yfilter = yfilter;
+    }
+    if(value_path == "udi-name")
+    {
+        udi_name.yfilter = yfilter;
+    }
+    if(value_path == "vid")
+    {
+        vid.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Chassis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rma" || name == "asset-alias" || name == "asset-id" || name == "base-mac-address1" || name == "base-mac-address2" || name == "base-mac-address3" || name == "base-mac-address4" || name == "block-checksum" || name == "block-count" || name == "block-length" || name == "block-signature" || name == "block-version" || name == "chassis-sid" || name == "clei" || name == "controller-family" || name == "controller-type" || name == "description" || name == "dev-num1" || name == "dev-num2" || name == "dev-num3" || name == "dev-num4" || name == "dev-num5" || name == "dev-num6" || name == "dev-num7" || name == "eci" || name == "eeprom-size" || name == "engineer-use" || name == "fru-major-type" || name == "fru-minor-type" || name == "hw-version" || name == "hwid" || name == "idprom-format-rev" || name == "mac-add-blk-size1" || name == "mac-add-blk-size2" || name == "mac-add-blk-size3" || name == "mac-add-blk-size4" || name == "manu-test-data" || name == "mfg-bits" || name == "mfg-deviation" || name == "oem-string" || name == "part-number" || name == "part-revision" || name == "pca-num" || name == "pcavid" || name == "pcb-serial-num" || name == "pid" || name == "power-consumption" || name == "power-supply-type" || name == "product-id" || name == "rma-code" || name == "serial-number" || name == "snmpoid" || name == "top-assem-part-num" || name == "top-assem-vid" || name == "udi-description" || name == "udi-name" || name == "vid")
+        return true;
+    return false;
 }
 
 Diag::Racks::Rack::Chassis::Rma::Rma()
@@ -3981,10 +5687,10 @@ bool Diag::Racks::Rack::Chassis::Rma::has_data() const
 
 bool Diag::Racks::Rack::Chassis::Rma::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rma_history.operation)
-	|| is_set(rma_number.operation)
-	|| is_set(test_history.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rma_history.yfilter)
+	|| ydk::is_set(rma_number.yfilter)
+	|| ydk::is_set(test_history.yfilter);
 }
 
 std::string Diag::Racks::Rack::Chassis::Rma::get_segment_path() const
@@ -4010,9 +5716,9 @@ const EntityPath Diag::Racks::Rack::Chassis::Rma::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rma_history.is_set || is_set(rma_history.operation)) leaf_name_data.push_back(rma_history.get_name_leafdata());
-    if (rma_number.is_set || is_set(rma_number.operation)) leaf_name_data.push_back(rma_number.get_name_leafdata());
-    if (test_history.is_set || is_set(test_history.operation)) leaf_name_data.push_back(test_history.get_name_leafdata());
+    if (rma_history.is_set || is_set(rma_history.yfilter)) leaf_name_data.push_back(rma_history.get_name_leafdata());
+    if (rma_number.is_set || is_set(rma_number.yfilter)) leaf_name_data.push_back(rma_number.get_name_leafdata());
+    if (test_history.is_set || is_set(test_history.yfilter)) leaf_name_data.push_back(test_history.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4031,20 +5737,49 @@ std::map<std::string, std::shared_ptr<Entity>> Diag::Racks::Rack::Chassis::Rma::
     return children;
 }
 
-void Diag::Racks::Rack::Chassis::Rma::set_value(const std::string & value_path, std::string value)
+void Diag::Racks::Rack::Chassis::Rma::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rma-history")
     {
         rma_history = value;
+        rma_history.value_namespace = name_space;
+        rma_history.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rma-number")
     {
         rma_number = value;
+        rma_number.value_namespace = name_space;
+        rma_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "test-history")
     {
         test_history = value;
+        test_history.value_namespace = name_space;
+        test_history.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Diag::Racks::Rack::Chassis::Rma::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rma-history")
+    {
+        rma_history.yfilter = yfilter;
+    }
+    if(value_path == "rma-number")
+    {
+        rma_number.yfilter = yfilter;
+    }
+    if(value_path == "test-history")
+    {
+        test_history.yfilter = yfilter;
+    }
+}
+
+bool Diag::Racks::Rack::Chassis::Rma::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rma-history" || name == "rma-number" || name == "test-history")
+        return true;
+    return false;
 }
 
 

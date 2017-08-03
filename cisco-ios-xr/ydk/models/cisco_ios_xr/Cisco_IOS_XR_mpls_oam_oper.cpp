@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_oam_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_oam_oper {
 
 MplsOam::MplsOam()
@@ -37,7 +39,7 @@ bool MplsOam::has_data() const
 
 bool MplsOam::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global !=  nullptr && global->has_operation())
 	|| (interface !=  nullptr && interface->has_operation())
 	|| (packet !=  nullptr && packet->has_operation());
@@ -123,7 +125,11 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::get_children() const
     return children;
 }
 
-void MplsOam::set_value(const std::string & value_path, std::string value)
+void MplsOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsOam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -145,6 +151,18 @@ std::string MplsOam::get_bundle_name() const
 augment_capabilities_function MplsOam::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> MplsOam::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool MplsOam::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "interface" || name == "packet")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Interface()
@@ -171,7 +189,7 @@ bool MplsOam::Interface::has_data() const
 
 bool MplsOam::Interface::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (briefs !=  nullptr && briefs->has_operation())
 	|| (details !=  nullptr && details->has_operation());
 }
@@ -245,8 +263,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::get_children(
     return children;
 }
 
-void MplsOam::Interface::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "briefs" || name == "details")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Briefs::Briefs()
@@ -275,7 +304,7 @@ bool MplsOam::Interface::Briefs::has_operation() const
         if(brief[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsOam::Interface::Briefs::get_segment_path() const
@@ -340,8 +369,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::get_c
     return children;
 }
 
-void MplsOam::Interface::Briefs::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Briefs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Briefs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Briefs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Briefs::Brief::Brief()
@@ -376,15 +416,15 @@ bool MplsOam::Interface::Briefs::Brief::has_data() const
 
 bool MplsOam::Interface::Briefs::Brief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(mtu.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(prefix_length_v6.operation)
-	|| is_set(primary_address.operation)
-	|| is_set(primary_address_v6.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(prefix_length_v6.yfilter)
+	|| ydk::is_set(primary_address.yfilter)
+	|| ydk::is_set(primary_address_v6.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string MplsOam::Interface::Briefs::Brief::get_segment_path() const
@@ -410,14 +450,14 @@ const EntityPath MplsOam::Interface::Briefs::Brief::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (prefix_length_v6.is_set || is_set(prefix_length_v6.operation)) leaf_name_data.push_back(prefix_length_v6.get_name_leafdata());
-    if (primary_address.is_set || is_set(primary_address.operation)) leaf_name_data.push_back(primary_address.get_name_leafdata());
-    if (primary_address_v6.is_set || is_set(primary_address_v6.operation)) leaf_name_data.push_back(primary_address_v6.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix_length_v6.is_set || is_set(prefix_length_v6.yfilter)) leaf_name_data.push_back(prefix_length_v6.get_name_leafdata());
+    if (primary_address.is_set || is_set(primary_address.yfilter)) leaf_name_data.push_back(primary_address.get_name_leafdata());
+    if (primary_address_v6.is_set || is_set(primary_address_v6.yfilter)) leaf_name_data.push_back(primary_address_v6.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -436,40 +476,99 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::Brief
     return children;
 }
 
-void MplsOam::Interface::Briefs::Brief::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Briefs::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length-v6")
     {
         prefix_length_v6 = value;
+        prefix_length_v6.value_namespace = name_space;
+        prefix_length_v6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address")
     {
         primary_address = value;
+        primary_address.value_namespace = name_space;
+        primary_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address-v6")
     {
         primary_address_v6 = value;
+        primary_address_v6.value_namespace = name_space;
+        primary_address_v6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Briefs::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length-v6")
+    {
+        prefix_length_v6.yfilter = yfilter;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address.yfilter = yfilter;
+    }
+    if(value_path == "primary-address-v6")
+    {
+        primary_address_v6.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Briefs::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface-name-xr" || name == "mtu" || name == "prefix-length" || name == "prefix-length-v6" || name == "primary-address" || name == "primary-address-v6" || name == "state")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Details()
@@ -498,7 +597,7 @@ bool MplsOam::Interface::Details::has_operation() const
         if(detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MplsOam::Interface::Details::get_segment_path() const
@@ -563,8 +662,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::get_
     return children;
 }
 
-void MplsOam::Interface::Details::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "detail")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::Detail()
@@ -594,8 +704,8 @@ bool MplsOam::Interface::Details::Detail::has_data() const
 
 bool MplsOam::Interface::Details::Detail::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (interface_brief !=  nullptr && interface_brief->has_operation())
 	|| (packet_statistics !=  nullptr && packet_statistics->has_operation());
 }
@@ -623,7 +733,7 @@ const EntityPath MplsOam::Interface::Details::Detail::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -670,12 +780,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-brief" || name == "packet-statistics" || name == "interface-name")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::InterfaceBrief::InterfaceBrief()
@@ -708,14 +835,14 @@ bool MplsOam::Interface::Details::Detail::InterfaceBrief::has_data() const
 
 bool MplsOam::Interface::Details::Detail::InterfaceBrief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(mtu.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(prefix_length_v6.operation)
-	|| is_set(primary_address.operation)
-	|| is_set(primary_address_v6.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(prefix_length_v6.yfilter)
+	|| ydk::is_set(primary_address.yfilter)
+	|| ydk::is_set(primary_address_v6.yfilter)
+	|| ydk::is_set(state.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::InterfaceBrief::get_segment_path() const
@@ -741,13 +868,13 @@ const EntityPath MplsOam::Interface::Details::Detail::InterfaceBrief::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (prefix_length_v6.is_set || is_set(prefix_length_v6.operation)) leaf_name_data.push_back(prefix_length_v6.get_name_leafdata());
-    if (primary_address.is_set || is_set(primary_address.operation)) leaf_name_data.push_back(primary_address.get_name_leafdata());
-    if (primary_address_v6.is_set || is_set(primary_address_v6.operation)) leaf_name_data.push_back(primary_address_v6.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (prefix_length_v6.is_set || is_set(prefix_length_v6.yfilter)) leaf_name_data.push_back(prefix_length_v6.get_name_leafdata());
+    if (primary_address.is_set || is_set(primary_address.yfilter)) leaf_name_data.push_back(primary_address.get_name_leafdata());
+    if (primary_address_v6.is_set || is_set(primary_address_v6.yfilter)) leaf_name_data.push_back(primary_address_v6.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -766,36 +893,89 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::InterfaceBrief::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::InterfaceBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length-v6")
     {
         prefix_length_v6 = value;
+        prefix_length_v6.value_namespace = name_space;
+        prefix_length_v6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address")
     {
         primary_address = value;
+        primary_address.value_namespace = name_space;
+        primary_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-address-v6")
     {
         primary_address_v6 = value;
+        primary_address_v6.value_namespace = name_space;
+        primary_address_v6.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::InterfaceBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length-v6")
+    {
+        prefix_length_v6.yfilter = yfilter;
+    }
+    if(value_path == "primary-address")
+    {
+        primary_address.yfilter = yfilter;
+    }
+    if(value_path == "primary-address-v6")
+    {
+        primary_address_v6.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::InterfaceBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name-xr" || name == "mtu" || name == "prefix-length" || name == "prefix-length-v6" || name == "primary-address" || name == "primary-address-v6" || name == "state")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::PacketStatistics()
@@ -838,7 +1018,7 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::has_data() const
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (protect_rep_sent !=  nullptr && protect_rep_sent->has_operation())
 	|| (protect_req_sent !=  nullptr && protect_req_sent->has_operation())
 	|| (received !=  nullptr && received->has_operation())
@@ -972,8 +1152,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protect-rep-sent" || name == "protect-req-sent" || name == "received" || name == "sent" || name == "working-rep-sent" || name == "working-req-sent")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::Received()
@@ -1048,7 +1239,7 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::has_data()
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (protect_protocol_received_good_reply !=  nullptr && protect_protocol_received_good_reply->has_operation())
 	|| (protect_protocol_received_good_request !=  nullptr && protect_protocol_received_good_request->has_operation())
 	|| (received_error_general !=  nullptr && received_error_general->has_operation())
@@ -1302,8 +1493,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protect-protocol-received-good-reply" || name == "protect-protocol-received-good-request" || name == "received-error-general" || name == "received-error-ip-header" || name == "received-error-no-interface" || name == "received-error-no-memory" || name == "received-error-queue-full" || name == "received-error-runt" || name == "received-error-udp-header" || name == "received-good-bfd-reply" || name == "received-good-bfd-request" || name == "received-good-reply" || name == "received-good-request" || name == "received-unknown")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::ReceivedGoodRequest()
@@ -1326,9 +1528,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::get_segment_path() const
@@ -1354,8 +1556,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1374,16 +1576,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::ReceivedGoodReply()
@@ -1406,9 +1631,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::get_segment_path() const
@@ -1434,8 +1659,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1454,16 +1679,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::ReceivedUnknown()
@@ -1486,9 +1734,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUn
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::get_segment_path() const
@@ -1514,8 +1762,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1534,16 +1782,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::ReceivedErrorIpHeader()
@@ -1566,9 +1837,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::get_segment_path() const
@@ -1594,8 +1865,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1614,16 +1885,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::ReceivedErrorUdpHeader()
@@ -1646,9 +1940,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::get_segment_path() const
@@ -1674,8 +1968,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1694,16 +1988,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::ReceivedErrorRunt()
@@ -1726,9 +2043,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::get_segment_path() const
@@ -1754,8 +2071,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1774,16 +2091,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::ReceivedErrorQueueFull()
@@ -1806,9 +2146,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::get_segment_path() const
@@ -1834,8 +2174,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1854,16 +2194,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::ReceivedErrorGeneral()
@@ -1886,9 +2249,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::get_segment_path() const
@@ -1914,8 +2277,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1934,16 +2297,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::ReceivedErrorNoInterface()
@@ -1966,9 +2352,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::get_segment_path() const
@@ -1994,8 +2380,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2014,16 +2400,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::ReceivedErrorNoMemory()
@@ -2046,9 +2455,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedEr
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::get_segment_path() const
@@ -2074,8 +2483,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2094,16 +2503,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::ProtectProtocolReceivedGoodRequest()
@@ -2126,9 +2558,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectPro
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::get_segment_path() const
@@ -2154,8 +2586,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2174,16 +2606,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::ProtectProtocolReceivedGoodReply()
@@ -2206,9 +2661,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectPro
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::get_segment_path() const
@@ -2234,8 +2689,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2254,16 +2709,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::ReceivedGoodBfdRequest()
@@ -2286,9 +2764,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::get_segment_path() const
@@ -2314,8 +2792,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2334,16 +2812,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::ReceivedGoodBfdReply()
@@ -2366,9 +2867,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::get_segment_path() const
@@ -2394,8 +2895,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Received
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2414,16 +2915,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Sent()
@@ -2458,7 +2982,7 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::has_data() con
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -2562,8 +3086,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::TransmitGood()
@@ -2586,9 +3121,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::get_segment_path() const
@@ -2614,8 +3149,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Tr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2634,16 +3169,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::TransmitDrop()
@@ -2666,9 +3224,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::get_segment_path() const
@@ -2694,8 +3252,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Tr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2714,16 +3272,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::TransmitBfdGood()
@@ -2746,9 +3327,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGoo
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::get_segment_path() const
@@ -2774,8 +3355,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Tr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2794,16 +3375,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::BfdNoReply()
@@ -2826,9 +3430,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::ha
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::get_segment_path() const
@@ -2854,8 +3458,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Bf
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2874,16 +3478,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::WorkingReqSent()
@@ -2918,7 +3545,7 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -3022,8 +3649,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::TransmitGood()
@@ -3046,9 +3684,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::get_segment_path() const
@@ -3074,8 +3712,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3094,16 +3732,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::TransmitDrop()
@@ -3126,9 +3787,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::get_segment_path() const
@@ -3154,8 +3815,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3174,16 +3835,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::TransmitBfdGood()
@@ -3206,9 +3890,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::get_segment_path() const
@@ -3234,8 +3918,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3254,16 +3938,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::BfdNoReply()
@@ -3286,9 +3993,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdN
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::get_segment_path() const
@@ -3314,8 +4021,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3334,16 +4041,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::WorkingRepSent()
@@ -3378,7 +4108,7 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::has_
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -3482,8 +4212,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::TransmitGood()
@@ -3506,9 +4247,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::get_segment_path() const
@@ -3534,8 +4275,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3554,16 +4295,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::TransmitDrop()
@@ -3586,9 +4350,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::get_segment_path() const
@@ -3614,8 +4378,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3634,16 +4398,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::TransmitBfdGood()
@@ -3666,9 +4453,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::get_segment_path() const
@@ -3694,8 +4481,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3714,16 +4501,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::BfdNoReply()
@@ -3746,9 +4556,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdN
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::get_segment_path() const
@@ -3774,8 +4584,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::WorkingR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3794,16 +4604,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::ProtectReqSent()
@@ -3838,7 +4671,7 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -3942,8 +4775,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::TransmitGood()
@@ -3966,9 +4810,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::get_segment_path() const
@@ -3994,8 +4838,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4014,16 +4858,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::TransmitDrop()
@@ -4046,9 +4913,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::get_segment_path() const
@@ -4074,8 +4941,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4094,16 +4961,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::TransmitBfdGood()
@@ -4126,9 +5016,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::get_segment_path() const
@@ -4154,8 +5044,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4174,16 +5064,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::BfdNoReply()
@@ -4206,9 +5119,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdN
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::get_segment_path() const
@@ -4234,8 +5147,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4254,16 +5167,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::ProtectRepSent()
@@ -4298,7 +5234,7 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -4402,8 +5338,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::TransmitGood()
@@ -4426,9 +5373,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::get_segment_path() const
@@ -4454,8 +5401,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4474,16 +5421,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::TransmitDrop()
@@ -4506,9 +5476,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::get_segment_path() const
@@ -4534,8 +5504,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4554,16 +5524,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::TransmitBfdGood()
@@ -4586,9 +5579,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::get_segment_path() const
@@ -4614,8 +5607,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4634,16 +5627,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::BfdNoReply()
@@ -4666,9 +5682,9 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdN
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::get_segment_path() const
@@ -4694,8 +5710,8 @@ const EntityPath MplsOam::Interface::Details::Detail::PacketStatistics::ProtectR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4714,16 +5730,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::Deta
     return children;
 }
 
-void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Packet()
@@ -4766,7 +5805,7 @@ bool MplsOam::Packet::has_data() const
 
 bool MplsOam::Packet::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (protect_rep_sent !=  nullptr && protect_rep_sent->has_operation())
 	|| (protect_req_sent !=  nullptr && protect_req_sent->has_operation())
 	|| (received !=  nullptr && received->has_operation())
@@ -4900,8 +5939,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::get_children() c
     return children;
 }
 
-void MplsOam::Packet::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Packet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protect-rep-sent" || name == "protect-req-sent" || name == "received" || name == "sent" || name == "working-rep-sent" || name == "working-req-sent")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::Received()
@@ -4976,7 +6026,7 @@ bool MplsOam::Packet::Received::has_data() const
 
 bool MplsOam::Packet::Received::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (protect_protocol_received_good_reply !=  nullptr && protect_protocol_received_good_reply->has_operation())
 	|| (protect_protocol_received_good_request !=  nullptr && protect_protocol_received_good_request->has_operation())
 	|| (received_error_general !=  nullptr && received_error_general->has_operation())
@@ -5230,8 +6280,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::get_ch
     return children;
 }
 
-void MplsOam::Packet::Received::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Packet::Received::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::Received::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protect-protocol-received-good-reply" || name == "protect-protocol-received-good-request" || name == "received-error-general" || name == "received-error-ip-header" || name == "received-error-no-interface" || name == "received-error-no-memory" || name == "received-error-queue-full" || name == "received-error-runt" || name == "received-error-udp-header" || name == "received-good-bfd-reply" || name == "received-good-bfd-request" || name == "received-good-reply" || name == "received-good-request" || name == "received-unknown")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedGoodRequest::ReceivedGoodRequest()
@@ -5254,9 +6315,9 @@ bool MplsOam::Packet::Received::ReceivedGoodRequest::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedGoodRequest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedGoodRequest::get_segment_path() const
@@ -5282,8 +6343,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedGoodRequest::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5302,16 +6363,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedGoodRequest::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedGoodReply::ReceivedGoodReply()
@@ -5334,9 +6418,9 @@ bool MplsOam::Packet::Received::ReceivedGoodReply::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedGoodReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedGoodReply::get_segment_path() const
@@ -5362,8 +6446,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedGoodReply::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5382,16 +6466,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedGoodReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedUnknown::ReceivedUnknown()
@@ -5414,9 +6521,9 @@ bool MplsOam::Packet::Received::ReceivedUnknown::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedUnknown::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedUnknown::get_segment_path() const
@@ -5442,8 +6549,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedUnknown::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5462,16 +6569,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedUnknown::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedUnknown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedUnknown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedUnknown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorIpHeader::ReceivedErrorIpHeader()
@@ -5494,9 +6624,9 @@ bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedErrorIpHeader::get_segment_path() const
@@ -5522,8 +6652,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedErrorIpHeader::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5542,16 +6672,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedErrorIpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedErrorIpHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorUdpHeader::ReceivedErrorUdpHeader()
@@ -5574,9 +6727,9 @@ bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_segment_path() const
@@ -5602,8 +6755,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedErrorUdpHeader::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5622,16 +6775,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedErrorUdpHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedErrorUdpHeader::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorRunt::ReceivedErrorRunt()
@@ -5654,9 +6830,9 @@ bool MplsOam::Packet::Received::ReceivedErrorRunt::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedErrorRunt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedErrorRunt::get_segment_path() const
@@ -5682,8 +6858,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedErrorRunt::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5702,16 +6878,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedErrorRunt::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedErrorRunt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedErrorRunt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorRunt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorQueueFull::ReceivedErrorQueueFull()
@@ -5734,9 +6933,9 @@ bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedErrorQueueFull::get_segment_path() const
@@ -5762,8 +6961,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedErrorQueueFull::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5782,16 +6981,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedErrorQueueFull::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedErrorQueueFull::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorGeneral::ReceivedErrorGeneral()
@@ -5814,9 +7036,9 @@ bool MplsOam::Packet::Received::ReceivedErrorGeneral::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedErrorGeneral::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedErrorGeneral::get_segment_path() const
@@ -5842,8 +7064,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedErrorGeneral::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5862,16 +7084,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedErrorGeneral::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedErrorGeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedErrorGeneral::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorGeneral::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorNoInterface::ReceivedErrorNoInterface()
@@ -5894,9 +7139,9 @@ bool MplsOam::Packet::Received::ReceivedErrorNoInterface::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedErrorNoInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedErrorNoInterface::get_segment_path() const
@@ -5922,8 +7167,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedErrorNoInterface::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5942,16 +7187,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedErrorNoInterface::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedErrorNoInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedErrorNoInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorNoInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedErrorNoMemory::ReceivedErrorNoMemory()
@@ -5974,9 +7242,9 @@ bool MplsOam::Packet::Received::ReceivedErrorNoMemory::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedErrorNoMemory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedErrorNoMemory::get_segment_path() const
@@ -6002,8 +7270,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedErrorNoMemory::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6022,16 +7290,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedErrorNoMemory::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedErrorNoMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedErrorNoMemory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedErrorNoMemory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::ProtectProtocolReceivedGoodRequest()
@@ -6054,9 +7345,9 @@ bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_data() c
 
 bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::get_segment_path() const
@@ -6082,8 +7373,8 @@ const EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6102,16 +7393,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Protec
     return children;
 }
 
-void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::ProtectProtocolReceivedGoodReply()
@@ -6134,9 +7448,9 @@ bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_data() con
 
 bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::get_segment_path() const
@@ -6162,8 +7476,8 @@ const EntityPath MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6182,16 +7496,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Protec
     return children;
 }
 
-void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedGoodBfdRequest::ReceivedGoodBfdRequest()
@@ -6214,9 +7551,9 @@ bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_segment_path() const
@@ -6242,8 +7579,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedGoodBfdRequest::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6262,16 +7599,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedGoodBfdRequest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Received::ReceivedGoodBfdReply::ReceivedGoodBfdReply()
@@ -6294,9 +7654,9 @@ bool MplsOam::Packet::Received::ReceivedGoodBfdReply::has_data() const
 
 bool MplsOam::Packet::Received::ReceivedGoodBfdReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Received::ReceivedGoodBfdReply::get_segment_path() const
@@ -6322,8 +7682,8 @@ const EntityPath MplsOam::Packet::Received::ReceivedGoodBfdReply::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6342,16 +7702,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Received::Receiv
     return children;
 }
 
-void MplsOam::Packet::Received::ReceivedGoodBfdReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Received::ReceivedGoodBfdReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Received::ReceivedGoodBfdReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Received::ReceivedGoodBfdReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Sent::Sent()
@@ -6386,7 +7769,7 @@ bool MplsOam::Packet::Sent::has_data() const
 
 bool MplsOam::Packet::Sent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -6490,8 +7873,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::get_childr
     return children;
 }
 
-void MplsOam::Packet::Sent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Sent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Packet::Sent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::Sent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Sent::TransmitGood::TransmitGood()
@@ -6514,9 +7908,9 @@ bool MplsOam::Packet::Sent::TransmitGood::has_data() const
 
 bool MplsOam::Packet::Sent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Sent::TransmitGood::get_segment_path() const
@@ -6542,8 +7936,8 @@ const EntityPath MplsOam::Packet::Sent::TransmitGood::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6562,16 +7956,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitGo
     return children;
 }
 
-void MplsOam::Packet::Sent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Sent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Sent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Sent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Sent::TransmitDrop::TransmitDrop()
@@ -6594,9 +8011,9 @@ bool MplsOam::Packet::Sent::TransmitDrop::has_data() const
 
 bool MplsOam::Packet::Sent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Sent::TransmitDrop::get_segment_path() const
@@ -6622,8 +8039,8 @@ const EntityPath MplsOam::Packet::Sent::TransmitDrop::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6642,16 +8059,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitDr
     return children;
 }
 
-void MplsOam::Packet::Sent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Sent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Sent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Sent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Sent::TransmitBfdGood::TransmitBfdGood()
@@ -6674,9 +8114,9 @@ bool MplsOam::Packet::Sent::TransmitBfdGood::has_data() const
 
 bool MplsOam::Packet::Sent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Sent::TransmitBfdGood::get_segment_path() const
@@ -6702,8 +8142,8 @@ const EntityPath MplsOam::Packet::Sent::TransmitBfdGood::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6722,16 +8162,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::TransmitBf
     return children;
 }
 
-void MplsOam::Packet::Sent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Sent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Sent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Sent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::Sent::BfdNoReply::BfdNoReply()
@@ -6754,9 +8217,9 @@ bool MplsOam::Packet::Sent::BfdNoReply::has_data() const
 
 bool MplsOam::Packet::Sent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::Sent::BfdNoReply::get_segment_path() const
@@ -6782,8 +8245,8 @@ const EntityPath MplsOam::Packet::Sent::BfdNoReply::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6802,16 +8265,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::Sent::BfdNoReply
     return children;
 }
 
-void MplsOam::Packet::Sent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::Sent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::Sent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::Sent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingReqSent::WorkingReqSent()
@@ -6846,7 +8332,7 @@ bool MplsOam::Packet::WorkingReqSent::has_data() const
 
 bool MplsOam::Packet::WorkingReqSent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -6950,8 +8436,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingReqSent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Packet::WorkingReqSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::WorkingReqSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingReqSent::TransmitGood::TransmitGood()
@@ -6974,9 +8471,9 @@ bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_data() const
 
 bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::WorkingReqSent::TransmitGood::get_segment_path() const
@@ -7002,8 +8499,8 @@ const EntityPath MplsOam::Packet::WorkingReqSent::TransmitGood::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7022,16 +8519,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::WorkingReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingReqSent::TransmitDrop::TransmitDrop()
@@ -7054,9 +8574,9 @@ bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_data() const
 
 bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::WorkingReqSent::TransmitDrop::get_segment_path() const
@@ -7082,8 +8602,8 @@ const EntityPath MplsOam::Packet::WorkingReqSent::TransmitDrop::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7102,16 +8622,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::WorkingReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingReqSent::TransmitBfdGood::TransmitBfdGood()
@@ -7134,9 +8677,9 @@ bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_data() const
 
 bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_segment_path() const
@@ -7162,8 +8705,8 @@ const EntityPath MplsOam::Packet::WorkingReqSent::TransmitBfdGood::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7182,16 +8725,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::WorkingReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingReqSent::BfdNoReply::BfdNoReply()
@@ -7214,9 +8780,9 @@ bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_data() const
 
 bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::WorkingReqSent::BfdNoReply::get_segment_path() const
@@ -7242,8 +8808,8 @@ const EntityPath MplsOam::Packet::WorkingReqSent::BfdNoReply::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7262,16 +8828,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingReqSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::WorkingReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingRepSent::WorkingRepSent()
@@ -7306,7 +8895,7 @@ bool MplsOam::Packet::WorkingRepSent::has_data() const
 
 bool MplsOam::Packet::WorkingRepSent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -7410,8 +8999,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingRepSent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Packet::WorkingRepSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::WorkingRepSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingRepSent::TransmitGood::TransmitGood()
@@ -7434,9 +9034,9 @@ bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_data() const
 
 bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::WorkingRepSent::TransmitGood::get_segment_path() const
@@ -7462,8 +9062,8 @@ const EntityPath MplsOam::Packet::WorkingRepSent::TransmitGood::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7482,16 +9082,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingRepSent::TransmitDrop::TransmitDrop()
@@ -7514,9 +9137,9 @@ bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_data() const
 
 bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::WorkingRepSent::TransmitDrop::get_segment_path() const
@@ -7542,8 +9165,8 @@ const EntityPath MplsOam::Packet::WorkingRepSent::TransmitDrop::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7562,16 +9185,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingRepSent::TransmitBfdGood::TransmitBfdGood()
@@ -7594,9 +9240,9 @@ bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_data() const
 
 bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_segment_path() const
@@ -7622,8 +9268,8 @@ const EntityPath MplsOam::Packet::WorkingRepSent::TransmitBfdGood::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7642,16 +9288,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::WorkingRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::WorkingRepSent::BfdNoReply::BfdNoReply()
@@ -7674,9 +9343,9 @@ bool MplsOam::Packet::WorkingRepSent::BfdNoReply::has_data() const
 
 bool MplsOam::Packet::WorkingRepSent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::WorkingRepSent::BfdNoReply::get_segment_path() const
@@ -7702,8 +9371,8 @@ const EntityPath MplsOam::Packet::WorkingRepSent::BfdNoReply::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7722,16 +9391,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::WorkingRepSent::
     return children;
 }
 
-void MplsOam::Packet::WorkingRepSent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::WorkingRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::WorkingRepSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::WorkingRepSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectReqSent::ProtectReqSent()
@@ -7766,7 +9458,7 @@ bool MplsOam::Packet::ProtectReqSent::has_data() const
 
 bool MplsOam::Packet::ProtectReqSent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -7870,8 +9562,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectReqSent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectReqSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Packet::ProtectReqSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::ProtectReqSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectReqSent::TransmitGood::TransmitGood()
@@ -7894,9 +9597,9 @@ bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_data() const
 
 bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::ProtectReqSent::TransmitGood::get_segment_path() const
@@ -7922,8 +9625,8 @@ const EntityPath MplsOam::Packet::ProtectReqSent::TransmitGood::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7942,16 +9645,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectReqSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectReqSent::TransmitDrop::TransmitDrop()
@@ -7974,9 +9700,9 @@ bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_data() const
 
 bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::ProtectReqSent::TransmitDrop::get_segment_path() const
@@ -8002,8 +9728,8 @@ const EntityPath MplsOam::Packet::ProtectReqSent::TransmitDrop::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8022,16 +9748,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectReqSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectReqSent::TransmitBfdGood::TransmitBfdGood()
@@ -8054,9 +9803,9 @@ bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_data() const
 
 bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_segment_path() const
@@ -8082,8 +9831,8 @@ const EntityPath MplsOam::Packet::ProtectReqSent::TransmitBfdGood::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8102,16 +9851,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectReqSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::ProtectReqSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectReqSent::BfdNoReply::BfdNoReply()
@@ -8134,9 +9906,9 @@ bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_data() const
 
 bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::ProtectReqSent::BfdNoReply::get_segment_path() const
@@ -8162,8 +9934,8 @@ const EntityPath MplsOam::Packet::ProtectReqSent::BfdNoReply::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8182,16 +9954,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectReqSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectReqSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::ProtectReqSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectRepSent::ProtectRepSent()
@@ -8226,7 +10021,7 @@ bool MplsOam::Packet::ProtectRepSent::has_data() const
 
 bool MplsOam::Packet::ProtectRepSent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bfd_no_reply !=  nullptr && bfd_no_reply->has_operation())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_operation())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_operation())
@@ -8330,8 +10125,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectRepSent::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectRepSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Packet::ProtectRepSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Packet::ProtectRepSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-no-reply" || name == "transmit-bfd-good" || name == "transmit-drop" || name == "transmit-good")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectRepSent::TransmitGood::TransmitGood()
@@ -8354,9 +10160,9 @@ bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_data() const
 
 bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::ProtectRepSent::TransmitGood::get_segment_path() const
@@ -8382,8 +10188,8 @@ const EntityPath MplsOam::Packet::ProtectRepSent::TransmitGood::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8402,16 +10208,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectRepSent::TransmitGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectRepSent::TransmitDrop::TransmitDrop()
@@ -8434,9 +10263,9 @@ bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_data() const
 
 bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::ProtectRepSent::TransmitDrop::get_segment_path() const
@@ -8462,8 +10291,8 @@ const EntityPath MplsOam::Packet::ProtectRepSent::TransmitDrop::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8482,16 +10311,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectRepSent::TransmitDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectRepSent::TransmitBfdGood::TransmitBfdGood()
@@ -8514,9 +10366,9 @@ bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_data() const
 
 bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_segment_path() const
@@ -8542,8 +10394,8 @@ const EntityPath MplsOam::Packet::ProtectRepSent::TransmitBfdGood::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8562,16 +10414,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectRepSent::TransmitBfdGood::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::ProtectRepSent::TransmitBfdGood::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Packet::ProtectRepSent::BfdNoReply::BfdNoReply()
@@ -8594,9 +10469,9 @@ bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_data() const
 
 bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MplsOam::Packet::ProtectRepSent::BfdNoReply::get_segment_path() const
@@ -8622,8 +10497,8 @@ const EntityPath MplsOam::Packet::ProtectRepSent::BfdNoReply::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8642,16 +10517,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Packet::ProtectRepSent::
     return children;
 }
 
-void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, std::string value)
+void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Packet::ProtectRepSent::BfdNoReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "packets")
+        return true;
+    return false;
 }
 
 MplsOam::Global::Global()
@@ -8681,8 +10579,8 @@ bool MplsOam::Global::has_data() const
 
 bool MplsOam::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(total_clients.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(total_clients.yfilter)
 	|| (collaborator_statistics !=  nullptr && collaborator_statistics->has_operation())
 	|| (message_statistics !=  nullptr && message_statistics->has_operation());
 }
@@ -8710,7 +10608,7 @@ const EntityPath MplsOam::Global::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total_clients.is_set || is_set(total_clients.operation)) leaf_name_data.push_back(total_clients.get_name_leafdata());
+    if (total_clients.is_set || is_set(total_clients.yfilter)) leaf_name_data.push_back(total_clients.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8757,12 +10655,29 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::get_children() c
     return children;
 }
 
-void MplsOam::Global::set_value(const std::string & value_path, std::string value)
+void MplsOam::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-clients")
     {
         total_clients = value;
+        total_clients.value_namespace = name_space;
+        total_clients.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-clients")
+    {
+        total_clients.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collaborator-statistics" || name == "message-statistics" || name == "total-clients")
+        return true;
+    return false;
 }
 
 MplsOam::Global::MessageStatistics::MessageStatistics()
@@ -8803,18 +10718,18 @@ bool MplsOam::Global::MessageStatistics::has_data() const
 
 bool MplsOam::Global::MessageStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(echo_cancel_messages.operation)
-	|| is_set(echo_submit_messages.operation)
-	|| is_set(get_config_messages.operation)
-	|| is_set(get_response_messages.operation)
-	|| is_set(get_result_messages.operation)
-	|| is_set(property_block_messages.operation)
-	|| is_set(property_request_messages.operation)
-	|| is_set(property_response_messages.operation)
-	|| is_set(register_messages.operation)
-	|| is_set(thread_request_messages.operation)
-	|| is_set(unregister_messages.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(echo_cancel_messages.yfilter)
+	|| ydk::is_set(echo_submit_messages.yfilter)
+	|| ydk::is_set(get_config_messages.yfilter)
+	|| ydk::is_set(get_response_messages.yfilter)
+	|| ydk::is_set(get_result_messages.yfilter)
+	|| ydk::is_set(property_block_messages.yfilter)
+	|| ydk::is_set(property_request_messages.yfilter)
+	|| ydk::is_set(property_response_messages.yfilter)
+	|| ydk::is_set(register_messages.yfilter)
+	|| ydk::is_set(thread_request_messages.yfilter)
+	|| ydk::is_set(unregister_messages.yfilter);
 }
 
 std::string MplsOam::Global::MessageStatistics::get_segment_path() const
@@ -8840,17 +10755,17 @@ const EntityPath MplsOam::Global::MessageStatistics::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (echo_cancel_messages.is_set || is_set(echo_cancel_messages.operation)) leaf_name_data.push_back(echo_cancel_messages.get_name_leafdata());
-    if (echo_submit_messages.is_set || is_set(echo_submit_messages.operation)) leaf_name_data.push_back(echo_submit_messages.get_name_leafdata());
-    if (get_config_messages.is_set || is_set(get_config_messages.operation)) leaf_name_data.push_back(get_config_messages.get_name_leafdata());
-    if (get_response_messages.is_set || is_set(get_response_messages.operation)) leaf_name_data.push_back(get_response_messages.get_name_leafdata());
-    if (get_result_messages.is_set || is_set(get_result_messages.operation)) leaf_name_data.push_back(get_result_messages.get_name_leafdata());
-    if (property_block_messages.is_set || is_set(property_block_messages.operation)) leaf_name_data.push_back(property_block_messages.get_name_leafdata());
-    if (property_request_messages.is_set || is_set(property_request_messages.operation)) leaf_name_data.push_back(property_request_messages.get_name_leafdata());
-    if (property_response_messages.is_set || is_set(property_response_messages.operation)) leaf_name_data.push_back(property_response_messages.get_name_leafdata());
-    if (register_messages.is_set || is_set(register_messages.operation)) leaf_name_data.push_back(register_messages.get_name_leafdata());
-    if (thread_request_messages.is_set || is_set(thread_request_messages.operation)) leaf_name_data.push_back(thread_request_messages.get_name_leafdata());
-    if (unregister_messages.is_set || is_set(unregister_messages.operation)) leaf_name_data.push_back(unregister_messages.get_name_leafdata());
+    if (echo_cancel_messages.is_set || is_set(echo_cancel_messages.yfilter)) leaf_name_data.push_back(echo_cancel_messages.get_name_leafdata());
+    if (echo_submit_messages.is_set || is_set(echo_submit_messages.yfilter)) leaf_name_data.push_back(echo_submit_messages.get_name_leafdata());
+    if (get_config_messages.is_set || is_set(get_config_messages.yfilter)) leaf_name_data.push_back(get_config_messages.get_name_leafdata());
+    if (get_response_messages.is_set || is_set(get_response_messages.yfilter)) leaf_name_data.push_back(get_response_messages.get_name_leafdata());
+    if (get_result_messages.is_set || is_set(get_result_messages.yfilter)) leaf_name_data.push_back(get_result_messages.get_name_leafdata());
+    if (property_block_messages.is_set || is_set(property_block_messages.yfilter)) leaf_name_data.push_back(property_block_messages.get_name_leafdata());
+    if (property_request_messages.is_set || is_set(property_request_messages.yfilter)) leaf_name_data.push_back(property_request_messages.get_name_leafdata());
+    if (property_response_messages.is_set || is_set(property_response_messages.yfilter)) leaf_name_data.push_back(property_response_messages.get_name_leafdata());
+    if (register_messages.is_set || is_set(register_messages.yfilter)) leaf_name_data.push_back(register_messages.get_name_leafdata());
+    if (thread_request_messages.is_set || is_set(thread_request_messages.yfilter)) leaf_name_data.push_back(thread_request_messages.get_name_leafdata());
+    if (unregister_messages.is_set || is_set(unregister_messages.yfilter)) leaf_name_data.push_back(unregister_messages.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8869,52 +10784,129 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::MessageStatistic
     return children;
 }
 
-void MplsOam::Global::MessageStatistics::set_value(const std::string & value_path, std::string value)
+void MplsOam::Global::MessageStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "echo-cancel-messages")
     {
         echo_cancel_messages = value;
+        echo_cancel_messages.value_namespace = name_space;
+        echo_cancel_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "echo-submit-messages")
     {
         echo_submit_messages = value;
+        echo_submit_messages.value_namespace = name_space;
+        echo_submit_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-config-messages")
     {
         get_config_messages = value;
+        get_config_messages.value_namespace = name_space;
+        get_config_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-response-messages")
     {
         get_response_messages = value;
+        get_response_messages.value_namespace = name_space;
+        get_response_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "get-result-messages")
     {
         get_result_messages = value;
+        get_result_messages.value_namespace = name_space;
+        get_result_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "property-block-messages")
     {
         property_block_messages = value;
+        property_block_messages.value_namespace = name_space;
+        property_block_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "property-request-messages")
     {
         property_request_messages = value;
+        property_request_messages.value_namespace = name_space;
+        property_request_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "property-response-messages")
     {
         property_response_messages = value;
+        property_response_messages.value_namespace = name_space;
+        property_response_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "register-messages")
     {
         register_messages = value;
+        register_messages.value_namespace = name_space;
+        register_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "thread-request-messages")
     {
         thread_request_messages = value;
+        thread_request_messages.value_namespace = name_space;
+        thread_request_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unregister-messages")
     {
         unregister_messages = value;
+        unregister_messages.value_namespace = name_space;
+        unregister_messages.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Global::MessageStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "echo-cancel-messages")
+    {
+        echo_cancel_messages.yfilter = yfilter;
+    }
+    if(value_path == "echo-submit-messages")
+    {
+        echo_submit_messages.yfilter = yfilter;
+    }
+    if(value_path == "get-config-messages")
+    {
+        get_config_messages.yfilter = yfilter;
+    }
+    if(value_path == "get-response-messages")
+    {
+        get_response_messages.yfilter = yfilter;
+    }
+    if(value_path == "get-result-messages")
+    {
+        get_result_messages.yfilter = yfilter;
+    }
+    if(value_path == "property-block-messages")
+    {
+        property_block_messages.yfilter = yfilter;
+    }
+    if(value_path == "property-request-messages")
+    {
+        property_request_messages.yfilter = yfilter;
+    }
+    if(value_path == "property-response-messages")
+    {
+        property_response_messages.yfilter = yfilter;
+    }
+    if(value_path == "register-messages")
+    {
+        register_messages.yfilter = yfilter;
+    }
+    if(value_path == "thread-request-messages")
+    {
+        thread_request_messages.yfilter = yfilter;
+    }
+    if(value_path == "unregister-messages")
+    {
+        unregister_messages.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::MessageStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "echo-cancel-messages" || name == "echo-submit-messages" || name == "get-config-messages" || name == "get-response-messages" || name == "get-result-messages" || name == "property-block-messages" || name == "property-request-messages" || name == "property-response-messages" || name == "register-messages" || name == "thread-request-messages" || name == "unregister-messages")
+        return true;
+    return false;
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorStatistics()
@@ -8949,7 +10941,7 @@ bool MplsOam::Global::CollaboratorStatistics::has_data() const
 
 bool MplsOam::Global::CollaboratorStatistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (collaborator_i_parm !=  nullptr && collaborator_i_parm->has_operation())
 	|| (collaborator_im !=  nullptr && collaborator_im->has_operation())
 	|| (collaborator_net_io !=  nullptr && collaborator_net_io->has_operation())
@@ -9053,8 +11045,19 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStat
     return children;
 }
 
-void MplsOam::Global::CollaboratorStatistics::set_value(const std::string & value_path, std::string value)
+void MplsOam::Global::CollaboratorStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MplsOam::Global::CollaboratorStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsOam::Global::CollaboratorStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collaborator-i-parm" || name == "collaborator-im" || name == "collaborator-net-io" || name == "collaborator-rib")
+        return true;
+    return false;
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::CollaboratorIParm()
@@ -9077,9 +11080,9 @@ bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_data() cons
 
 bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(downs.operation)
-	|| is_set(ups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(downs.yfilter)
+	|| ydk::is_set(ups.yfilter);
 }
 
 std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get_segment_path() const
@@ -9105,8 +11108,8 @@ const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (downs.is_set || is_set(downs.operation)) leaf_name_data.push_back(downs.get_name_leafdata());
-    if (ups.is_set || is_set(ups.operation)) leaf_name_data.push_back(ups.get_name_leafdata());
+    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
+    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9125,16 +11128,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStat
     return children;
 }
 
-void MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::set_value(const std::string & value_path, std::string value)
+void MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "downs")
     {
         downs = value;
+        downs.value_namespace = name_space;
+        downs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ups")
     {
         ups = value;
+        ups.value_namespace = name_space;
+        ups.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "downs")
+    {
+        downs.yfilter = yfilter;
+    }
+    if(value_path == "ups")
+    {
+        ups.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downs" || name == "ups")
+        return true;
+    return false;
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorIm::CollaboratorIm()
@@ -9157,9 +11183,9 @@ bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_data() const
 
 bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(downs.operation)
-	|| is_set(ups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(downs.yfilter)
+	|| ydk::is_set(ups.yfilter);
 }
 
 std::string MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_segment_path() const
@@ -9185,8 +11211,8 @@ const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorIm::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (downs.is_set || is_set(downs.operation)) leaf_name_data.push_back(downs.get_name_leafdata());
-    if (ups.is_set || is_set(ups.operation)) leaf_name_data.push_back(ups.get_name_leafdata());
+    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
+    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9205,16 +11231,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStat
     return children;
 }
 
-void MplsOam::Global::CollaboratorStatistics::CollaboratorIm::set_value(const std::string & value_path, std::string value)
+void MplsOam::Global::CollaboratorStatistics::CollaboratorIm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "downs")
     {
         downs = value;
+        downs.value_namespace = name_space;
+        downs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ups")
     {
         ups = value;
+        ups.value_namespace = name_space;
+        ups.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorIm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "downs")
+    {
+        downs.yfilter = yfilter;
+    }
+    if(value_path == "ups")
+    {
+        ups.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downs" || name == "ups")
+        return true;
+    return false;
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::CollaboratorNetIo()
@@ -9237,9 +11286,9 @@ bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_data() cons
 
 bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(downs.operation)
-	|| is_set(ups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(downs.yfilter)
+	|| ydk::is_set(ups.yfilter);
 }
 
 std::string MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get_segment_path() const
@@ -9265,8 +11314,8 @@ const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (downs.is_set || is_set(downs.operation)) leaf_name_data.push_back(downs.get_name_leafdata());
-    if (ups.is_set || is_set(ups.operation)) leaf_name_data.push_back(ups.get_name_leafdata());
+    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
+    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9285,16 +11334,39 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStat
     return children;
 }
 
-void MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::set_value(const std::string & value_path, std::string value)
+void MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "downs")
     {
         downs = value;
+        downs.value_namespace = name_space;
+        downs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ups")
     {
         ups = value;
+        ups.value_namespace = name_space;
+        ups.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "downs")
+    {
+        downs.yfilter = yfilter;
+    }
+    if(value_path == "ups")
+    {
+        ups.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downs" || name == "ups")
+        return true;
+    return false;
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorRib::CollaboratorRib()
@@ -9317,9 +11389,9 @@ bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_data() const
 
 bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(downs.operation)
-	|| is_set(ups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(downs.yfilter)
+	|| ydk::is_set(ups.yfilter);
 }
 
 std::string MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_segment_path() const
@@ -9345,8 +11417,8 @@ const EntityPath MplsOam::Global::CollaboratorStatistics::CollaboratorRib::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (downs.is_set || is_set(downs.operation)) leaf_name_data.push_back(downs.get_name_leafdata());
-    if (ups.is_set || is_set(ups.operation)) leaf_name_data.push_back(ups.get_name_leafdata());
+    if (downs.is_set || is_set(downs.yfilter)) leaf_name_data.push_back(downs.get_name_leafdata());
+    if (ups.is_set || is_set(ups.yfilter)) leaf_name_data.push_back(ups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9365,36 +11437,59 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Global::CollaboratorStat
     return children;
 }
 
-void MplsOam::Global::CollaboratorStatistics::CollaboratorRib::set_value(const std::string & value_path, std::string value)
+void MplsOam::Global::CollaboratorStatistics::CollaboratorRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "downs")
     {
         downs = value;
+        downs.value_namespace = name_space;
+        downs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ups")
     {
         ups = value;
+        ups.value_namespace = name_space;
+        ups.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf LspvBagInterfaceStateEnum::not_ready {0, "not-ready"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::admin_down {1, "admin-down"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::down {2, "down"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::up {3, "up"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::shutdown {4, "shutdown"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::error_disable {5, "error-disable"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::down_immediate {6, "down-immediate"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::admin_immediate {7, "admin-immediate"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::graceful_down {8, "graceful-down"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::begin_shutdown {9, "begin-shutdown"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::end_shutdown {10, "end-shutdown"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::begin_error_disable {11, "begin-error-disable"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::end_error_disable {12, "end-error-disable"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::begin_graceful_down {13, "begin-graceful-down"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::reset {14, "reset"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::operational {15, "operational"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::not_operational {16, "not-operational"};
-const Enum::YLeaf LspvBagInterfaceStateEnum::not_known {17, "not-known"};
+void MplsOam::Global::CollaboratorStatistics::CollaboratorRib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "downs")
+    {
+        downs.yfilter = yfilter;
+    }
+    if(value_path == "ups")
+    {
+        ups.yfilter = yfilter;
+    }
+}
+
+bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "downs" || name == "ups")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf LspvBagInterfaceState::not_ready {0, "not-ready"};
+const Enum::YLeaf LspvBagInterfaceState::admin_down {1, "admin-down"};
+const Enum::YLeaf LspvBagInterfaceState::down {2, "down"};
+const Enum::YLeaf LspvBagInterfaceState::up {3, "up"};
+const Enum::YLeaf LspvBagInterfaceState::shutdown {4, "shutdown"};
+const Enum::YLeaf LspvBagInterfaceState::error_disable {5, "error-disable"};
+const Enum::YLeaf LspvBagInterfaceState::down_immediate {6, "down-immediate"};
+const Enum::YLeaf LspvBagInterfaceState::admin_immediate {7, "admin-immediate"};
+const Enum::YLeaf LspvBagInterfaceState::graceful_down {8, "graceful-down"};
+const Enum::YLeaf LspvBagInterfaceState::begin_shutdown {9, "begin-shutdown"};
+const Enum::YLeaf LspvBagInterfaceState::end_shutdown {10, "end-shutdown"};
+const Enum::YLeaf LspvBagInterfaceState::begin_error_disable {11, "begin-error-disable"};
+const Enum::YLeaf LspvBagInterfaceState::end_error_disable {12, "end-error-disable"};
+const Enum::YLeaf LspvBagInterfaceState::begin_graceful_down {13, "begin-graceful-down"};
+const Enum::YLeaf LspvBagInterfaceState::reset {14, "reset"};
+const Enum::YLeaf LspvBagInterfaceState::operational {15, "operational"};
+const Enum::YLeaf LspvBagInterfaceState::not_operational {16, "not-operational"};
+const Enum::YLeaf LspvBagInterfaceState::not_known {17, "not-known"};
 
 
 }

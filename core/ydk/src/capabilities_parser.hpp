@@ -29,20 +29,20 @@ struct Capability;
 
 class CapabilitiesXmlParser
 {
-	public:
-		CapabilitiesXmlParser();
-		virtual ~CapabilitiesXmlParser();
+    public:
+        CapabilitiesXmlParser();
+        virtual ~CapabilitiesXmlParser();
 
-		virtual std::vector<std::string> parse(const std::string & capabilities_xml) = 0;
+        virtual std::vector<std::string> parse(const std::string & capabilities_xml) = 0;
 };
 
 class CapabilitiesParser
 {
-	public:
-		CapabilitiesParser();
-		virtual ~CapabilitiesParser();
+    public:
+        CapabilitiesParser();
+        virtual ~CapabilitiesParser();
 
-		virtual std::vector<path::Capability> parse(std::vector<std::string> & capabilities) const =0;
+        virtual std::vector<path::Capability> parse(std::vector<std::string> & capabilities) const = 0;
 };
 }
 

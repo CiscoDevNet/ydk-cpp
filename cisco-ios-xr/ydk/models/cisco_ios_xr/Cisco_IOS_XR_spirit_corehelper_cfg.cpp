@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_spirit_corehelper_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_spirit_corehelper_cfg {
 
 Exception::Exception()
@@ -29,7 +31,7 @@ bool Exception::has_data() const
 
 bool Exception::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (file !=  nullptr && file->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Exception::get_children() const
     return children;
 }
 
-void Exception::set_value(const std::string & value_path, std::string value)
+void Exception::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Exception::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Exception::get_bundle_name() const
 augment_capabilities_function Exception::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Exception::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Exception::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "file")
+        return true;
+    return false;
 }
 
 Exception::File::File()
@@ -131,10 +149,10 @@ bool Exception::File::has_data() const
 
 bool Exception::File::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(choice1.operation)
-	|| is_set(choice2.operation)
-	|| is_set(choice3.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(choice1.yfilter)
+	|| ydk::is_set(choice2.yfilter)
+	|| ydk::is_set(choice3.yfilter);
 }
 
 std::string Exception::File::get_segment_path() const
@@ -160,9 +178,9 @@ const EntityPath Exception::File::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (choice1.is_set || is_set(choice1.operation)) leaf_name_data.push_back(choice1.get_name_leafdata());
-    if (choice2.is_set || is_set(choice2.operation)) leaf_name_data.push_back(choice2.get_name_leafdata());
-    if (choice3.is_set || is_set(choice3.operation)) leaf_name_data.push_back(choice3.get_name_leafdata());
+    if (choice1.is_set || is_set(choice1.yfilter)) leaf_name_data.push_back(choice1.get_name_leafdata());
+    if (choice2.is_set || is_set(choice2.yfilter)) leaf_name_data.push_back(choice2.get_name_leafdata());
+    if (choice3.is_set || is_set(choice3.yfilter)) leaf_name_data.push_back(choice3.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -181,20 +199,49 @@ std::map<std::string, std::shared_ptr<Entity>> Exception::File::get_children() c
     return children;
 }
 
-void Exception::File::set_value(const std::string & value_path, std::string value)
+void Exception::File::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "choice1")
     {
         choice1 = value;
+        choice1.value_namespace = name_space;
+        choice1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "choice2")
     {
         choice2 = value;
+        choice2.value_namespace = name_space;
+        choice2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "choice3")
     {
         choice3 = value;
+        choice3.value_namespace = name_space;
+        choice3.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Exception::File::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "choice1")
+    {
+        choice1.yfilter = yfilter;
+    }
+    if(value_path == "choice2")
+    {
+        choice2.yfilter = yfilter;
+    }
+    if(value_path == "choice3")
+    {
+        choice3.yfilter = yfilter;
+    }
+}
+
+bool Exception::File::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "choice1" || name == "choice2" || name == "choice3")
+        return true;
+    return false;
 }
 
 

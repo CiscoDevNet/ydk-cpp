@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_lsd_oper {
 
-class MplsLsdNodes : public Entity
+class MplsLsdNodes : public ydk::Entity
 {
     public:
         MplsLsdNodes();
@@ -18,15 +18,18 @@ class MplsLsdNodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class MplsLsdNode; //type: MplsLsdNodes::MplsLsdNode
 
@@ -35,7 +38,7 @@ class MplsLsdNodes : public Entity
 }; // MplsLsdNodes
 
 
-class MplsLsdNodes::MplsLsdNode : public Entity
+class MplsLsdNodes::MplsLsdNode : public ydk::Entity
 {
     public:
         MplsLsdNode();
@@ -43,13 +46,15 @@ class MplsLsdNodes::MplsLsdNode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class Clients; //type: MplsLsdNodes::MplsLsdNode::Clients
         class LabelSummary; //type: MplsLsdNodes::MplsLsdNode::LabelSummary
         class Labels; //type: MplsLsdNodes::MplsLsdNode::Labels
@@ -77,7 +82,7 @@ class MplsLsdNodes::MplsLsdNode : public Entity
 }; // MplsLsdNodes::MplsLsdNode
 
 
-class MplsLsdNodes::MplsLsdNode::Clients : public Entity
+class MplsLsdNodes::MplsLsdNode::Clients : public ydk::Entity
 {
     public:
         Clients();
@@ -85,11 +90,13 @@ class MplsLsdNodes::MplsLsdNode::Clients : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Client; //type: MplsLsdNodes::MplsLsdNode::Clients::Client
 
@@ -98,7 +105,7 @@ class MplsLsdNodes::MplsLsdNode::Clients : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Clients
 
 
-class MplsLsdNodes::MplsLsdNode::Clients::Client : public Entity
+class MplsLsdNodes::MplsLsdNode::Clients::Client : public ydk::Entity
 {
     public:
         Client();
@@ -106,15 +113,17 @@ class MplsLsdNodes::MplsLsdNode::Clients::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf client_name; //type: string
-        YLeaf client_index; //type: uint32
-        YLeaf node_id; //type: string
+        ydk::YLeaf client_name; //type: string
+        ydk::YLeaf client_index; //type: uint32
+        ydk::YLeaf node_id; //type: string
         class ClientUnion; //type: MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion
 
         std::shared_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion> client_union;
@@ -122,7 +131,7 @@ class MplsLsdNodes::MplsLsdNode::Clients::Client : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Clients::Client
 
 
-class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion : public Entity
+class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion : public ydk::Entity
 {
     public:
         ClientUnion();
@@ -130,13 +139,15 @@ class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsd_client_type; //type: MgmtLsdClientEnum
+        ydk::YLeaf lsd_client_type; //type: MgmtLsdClient
         class Application; //type: MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application
         class BcdlAgent; //type: MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent
 
@@ -146,7 +157,7 @@ class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion
 
 
-class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application : public Entity
+class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application : public ydk::Entity
 {
     public:
         Application();
@@ -154,21 +165,23 @@ class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf application_name; //type: string
-        YLeaf application_type; //type: MgmtLsdAppEnum
-        YLeaf application_instance; //type: string
-        YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf application_role_primary; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application
 
 
-class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent : public Entity
+class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent : public ydk::Entity
 {
     public:
         BcdlAgent();
@@ -176,19 +189,21 @@ class MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf client_conn_index; //type: int32
-        YLeaf parent_client_conn_index; //type: int32
+        ydk::YLeaf client_conn_index; //type: int32
+        ydk::YLeaf parent_client_conn_index; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent
 
 
-class MplsLsdNodes::MplsLsdNode::LabelSummary : public Entity
+class MplsLsdNodes::MplsLsdNode::LabelSummary : public ydk::Entity
 {
     public:
         LabelSummary();
@@ -196,15 +211,17 @@ class MplsLsdNodes::MplsLsdNode::LabelSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name_xr; //type: string
-        YLeaf total_labels; //type: uint32
-        YLeaf rsi_connected; //type: int32
+        ydk::YLeaf vrf_name_xr; //type: string
+        ydk::YLeaf total_labels; //type: uint32
+        ydk::YLeaf rsi_connected; //type: int32
         class OwnerCount; //type: MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount> > owner_count;
@@ -212,7 +229,7 @@ class MplsLsdNodes::MplsLsdNode::LabelSummary : public Entity
 }; // MplsLsdNodes::MplsLsdNode::LabelSummary
 
 
-class MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount : public Entity
+class MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount : public ydk::Entity
 {
     public:
         OwnerCount();
@@ -220,22 +237,24 @@ class MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf application_type; //type: MgmtLsdAppEnum
-        YLeaf application_name; //type: string
-        YLeaf application_role_primary; //type: int32
-        YLeaf application_instance; //type: string
-        YLeaf number_of_labels; //type: uint32
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf number_of_labels; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount
 
 
-class MplsLsdNodes::MplsLsdNode::Labels : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels : public ydk::Entity
 {
     public:
         Labels();
@@ -243,11 +262,13 @@ class MplsLsdNodes::MplsLsdNode::Labels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Label; //type: MplsLsdNodes::MplsLsdNode::Labels::Label
 
@@ -256,7 +277,7 @@ class MplsLsdNodes::MplsLsdNode::Labels : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Labels
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label : public ydk::Entity
 {
     public:
         Label();
@@ -264,18 +285,20 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label_id; //type: int32
-        YLeaf label; //type: uint32
-        YLeaf rewrite_is_bound; //type: int32
-        YLeaf rewrite_owners; //type: uint32
-        YLeaf rs_iconnected; //type: int32
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf label_id; //type: int32
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf rewrite_is_bound; //type: int32
+        ydk::YLeaf rewrite_owners; //type: uint32
+        ydk::YLeaf rs_iconnected; //type: int32
+        ydk::YLeaf vrf_name; //type: string
         class LabelContext; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner
 
@@ -285,7 +308,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext : public ydk::Entity
 {
     public:
         LabelContext();
@@ -293,13 +316,15 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf application_data; //type: string
+        ydk::YLeaf application_data; //type: string
         class Key; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key
 
         std::shared_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key> key;
@@ -307,7 +332,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key : public ydk::Entity
 {
     public:
         Key();
@@ -315,13 +340,15 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
+        ydk::YLeaf label_context_type; //type: MgmtLsdLblCtx
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data
         class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data
         class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data
@@ -383,7 +410,7 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key : public Entit
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -391,22 +418,24 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf security_id; //type: uint32
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -414,22 +443,24 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf security_id; //type: uint32
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -437,24 +468,26 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf tunnel_source; //type: string
-        YLeaf tunnel_dest; //type: string
-        YLeaf tunnel_id; //type: uint32
-        YLeaf tunnel_id_extension; //type: uint32
-        YLeaf tunnel_lsp_id; //type: uint32
-        YLeaf is_srte; //type: int32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf tunnel_source; //type: string
+        ydk::YLeaf tunnel_dest; //type: string
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf tunnel_id_extension; //type: uint32
+        ydk::YLeaf tunnel_lsp_id; //type: uint32
+        ydk::YLeaf is_srte; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData : public ydk::Entity
 {
     public:
         Ipv4L3VpnData();
@@ -462,20 +495,22 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf route_distinguisher; //type: uint64
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf route_distinguisher; //type: uint64
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData : public ydk::Entity
 {
     public:
         Ipv6L3VpnData();
@@ -483,20 +518,22 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf route_distinguisher; //type: uint64
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf route_distinguisher; //type: uint64
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData : public ydk::Entity
 {
     public:
         VrfL3VpnData();
@@ -504,19 +541,21 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf security_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf security_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData : public ydk::Entity
 {
     public:
         Cev4L3VpnData();
@@ -524,20 +563,22 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf security_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf security_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData : public ydk::Entity
 {
     public:
         Cev6L3VpnData();
@@ -545,20 +586,22 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf ipv6_next_hop; //type: string
-        YLeaf security_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf ipv6_next_hop; //type: string
+        ydk::YLeaf security_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -566,21 +609,23 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireDat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf pseudowire_id; //type: uint64
-        YLeaf remote_l2_router_id; //type: uint32
-        YLeaf subinterface; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf pseudowire_id; //type: uint64
+        ydk::YLeaf remote_l2_router_id; //type: uint32
+        ydk::YLeaf subinterface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData : public ydk::Entity
 {
     public:
         LabelBlockData();
@@ -588,22 +633,24 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockDat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf service; //type: uint8
-        YLeaf vpn_id; //type: uint16
-        YLeaf edge_id; //type: uint16
-        YLeaf offset; //type: uint32
-        YLeaf size; //type: uint32
+        ydk::YLeaf service; //type: uint8
+        ydk::YLeaf vpn_id; //type: uint16
+        ydk::YLeaf edge_id; //type: uint16
+        ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf size; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -611,19 +658,21 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf parent_interface; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf parent_interface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData : public ydk::Entity
 {
     public:
         Tev4P2MpData();
@@ -631,24 +680,26 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf tunnel_source; //type: string
-        YLeaf p2mp_id; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf tunnel_id_extension; //type: uint32
-        YLeaf tunnel_lsp_id; //type: uint32
-        YLeaf previous_hop; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf tunnel_source; //type: string
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf tunnel_id_extension; //type: uint32
+        ydk::YLeaf tunnel_lsp_id; //type: uint32
+        ydk::YLeaf previous_hop; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data : public ydk::Entity
 {
     public:
         MldPv4Data();
@@ -656,22 +707,24 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf type; //type: uint16
-        YLeaf lsm_id; //type: uint32
-        YLeaf peer_lsrid; //type: string
-        YLeaf peer_label_space_id; //type: uint16
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf lsm_id; //type: uint32
+        ydk::YLeaf peer_lsrid; //type: string
+        ydk::YLeaf peer_label_space_id; //type: uint16
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -679,18 +732,20 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHea
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pwhe_intf; //type: string
+        ydk::YLeaf pwhe_intf; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData : public ydk::Entity
 {
     public:
         TpData();
@@ -698,24 +753,26 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_global_id; //type: uint32
-        YLeaf source_node_id; //type: string
-        YLeaf dest_global_id; //type: uint32
-        YLeaf dest_node_id; //type: string
-        YLeaf source_tunnel_id; //type: uint16
-        YLeaf dest_tunnel_id; //type: uint16
-        YLeaf lsp_id; //type: uint16
+        ydk::YLeaf source_global_id; //type: uint32
+        ydk::YLeaf source_node_id; //type: string
+        ydk::YLeaf dest_global_id; //type: uint32
+        ydk::YLeaf dest_node_id; //type: string
+        ydk::YLeaf source_tunnel_id; //type: uint16
+        ydk::YLeaf dest_tunnel_id; //type: uint16
+        ydk::YLeaf lsp_id; //type: uint16
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         GenericRoutingEncapsulation();
@@ -723,18 +780,20 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutin
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf gre_interface; //type: string
+        ydk::YLeaf gre_interface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         Ipv6GenericRoutingEncapsulation();
@@ -742,18 +801,20 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf greipv6_interface; //type: string
+        ydk::YLeaf greipv6_interface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData : public ydk::Entity
 {
     public:
         EvpnData();
@@ -761,20 +822,22 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evpn_id; //type: uint32
-        YLeaf evpn_tag; //type: uint32
-        YLeaf ethernet_segment; //type: string
+        ydk::YLeaf evpn_id; //type: uint32
+        ydk::YLeaf evpn_tag; //type: uint32
+        ydk::YLeaf ethernet_segment; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData : public ydk::Entity
 {
     public:
         Ipv4BlbData();
@@ -782,19 +845,21 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf blb_intf; //type: string
-        YLeaf prefix; //type: string
+        ydk::YLeaf blb_intf; //type: string
+        ydk::YLeaf prefix; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData : public ydk::Entity
 {
     public:
         Ipv6BlbData();
@@ -802,19 +867,21 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf blb_intf; //type: string
-        YLeaf prefix; //type: string
+        ydk::YLeaf blb_intf; //type: string
+        ydk::YLeaf prefix; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData : public ydk::Entity
 {
     public:
         PiMiPmsiData();
@@ -822,20 +889,22 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_id; //type: uint32
-        YLeaf head; //type: int32
-        YLeaf v6; //type: int32
+        ydk::YLeaf vrf_id; //type: uint32
+        ydk::YLeaf head; //type: int32
+        ydk::YLeaf v6; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData : public ydk::Entity
 {
     public:
         PiMsPmsiData();
@@ -843,23 +912,25 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_id; //type: uint32
-        YLeaf source; //type: string
-        YLeaf head; //type: int32
-        YLeaf v6; //type: int32
-        YLeaf hli; //type: uint32
-        YLeaf seg; //type: int32
+        ydk::YLeaf vrf_id; //type: uint32
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf head; //type: int32
+        ydk::YLeaf v6; //type: int32
+        ydk::YLeaf hli; //type: uint32
+        ydk::YLeaf seg; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn : public ydk::Entity
 {
     public:
         NextHopSetL3Vpn();
@@ -867,19 +938,21 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3V
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf next_hop_set_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf next_hop_set_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment : public ydk::Entity
 {
     public:
         SrPrefixSegment();
@@ -887,19 +960,21 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegme
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf segment_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf segment_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4 : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv4();
@@ -907,21 +982,23 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf index_; //type: uint32
-        YLeaf type; //type: uint32
-        YLeaf intf; //type: string
-        YLeaf addr; //type: string
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf type; //type: uint32
+        ydk::YLeaf intf; //type: string
+        ydk::YLeaf addr; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6 : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv6();
@@ -929,21 +1006,23 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf index_; //type: uint32
-        YLeaf type; //type: uint32
-        YLeaf intf; //type: string
-        YLeaf addr; //type: string
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf type; //type: uint32
+        ydk::YLeaf intf; //type: string
+        ydk::YLeaf addr; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData : public ydk::Entity
 {
     public:
         LabelBlockSrgbData();
@@ -951,20 +1030,22 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrg
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf start_label; //type: uint32
-        YLeaf offset; //type: uint32
-        YLeaf size; //type: uint32
+        ydk::YLeaf start_label; //type: uint32
+        ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf size; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding : public ydk::Entity
 {
     public:
         TeBinding();
@@ -972,19 +1053,21 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf te_identifier; //type: uint32
-        YLeaf te_type; //type: MgmtLsdTeBindingEnum
+        ydk::YLeaf te_identifier; //type: uint32
+        ydk::YLeaf te_type; //type: MgmtLsdTeBinding
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding
 
 
-class MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner : public Entity
+class MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -992,22 +1075,24 @@ class MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf application_name; //type: string
-        YLeaf application_type; //type: MgmtLsdAppEnum
-        YLeaf application_role_primary; //type: int32
-        YLeaf application_instance; //type: string
-        YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
 }; // MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase : public ydk::Entity
 {
     public:
         FrrDatabase();
@@ -1015,11 +1100,13 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TunnelMidpoints; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints
         class TunnelHeads; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads
@@ -1038,7 +1125,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase : public Entity
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints : public ydk::Entity
 {
     public:
         TunnelMidpoints();
@@ -1046,11 +1133,13 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TunnelMidpoint; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint
 
@@ -1059,7 +1148,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints : public Entity
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint : public ydk::Entity
 {
     public:
         TunnelMidpoint();
@@ -1067,16 +1156,18 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label; //type: int32
-        YLeaf tunnel_interface; //type: string
-        YLeaf input_label; //type: uint32
-        YLeaf entry_frr_state; //type: MgmtLsdFrrStateEnum
+        ydk::YLeaf label; //type: int32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf input_label; //type: uint32
+        ydk::YLeaf entry_frr_state; //type: MgmtLsdFrrState
         class FrrEntryId; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId
         class OutPath; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath
 
@@ -1086,7 +1177,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint : 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId : public ydk::Entity
 {
     public:
         FrrEntryId();
@@ -1094,13 +1185,15 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf role; //type: MgmtLsdLspRoleEnum
+        ydk::YLeaf role; //type: MgmtLsdLspRole
         class Head; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head
         class Midpoint; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint
 
@@ -1110,7 +1203,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::F
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head : public ydk::Entity
 {
     public:
         Head();
@@ -1118,19 +1211,21 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf destination_prefix_length; //type: uint8
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf destination_prefix_length; //type: uint8
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint : public ydk::Entity
 {
     public:
         Midpoint();
@@ -1138,20 +1233,22 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::F
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf lspid; //type: uint32
-        YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf lspid; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath : public ydk::Entity
 {
     public:
         OutPath();
@@ -1159,22 +1256,24 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::O
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf out_interface; //type: string
-        YLeaf out_label; //type: uint32
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf frr_interface; //type: string
-        YLeaf frr_label; //type: uint32
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf frr_interface; //type: string
+        ydk::YLeaf frr_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads : public ydk::Entity
 {
     public:
         TunnelHeads();
@@ -1182,11 +1281,13 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TunnelHead; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead
 
@@ -1195,7 +1296,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads : public Entity
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead : public ydk::Entity
 {
     public:
         TunnelHead();
@@ -1203,16 +1304,18 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf tunnel_interface; //type: string
-        YLeaf input_label; //type: uint32
-        YLeaf entry_frr_state; //type: MgmtLsdFrrStateEnum
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf input_label; //type: uint32
+        ydk::YLeaf entry_frr_state; //type: MgmtLsdFrrState
         class FrrEntryId; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId
         class OutPath; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath
 
@@ -1222,7 +1325,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead : public E
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId : public ydk::Entity
 {
     public:
         FrrEntryId();
@@ -1230,13 +1333,15 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf role; //type: MgmtLsdLspRoleEnum
+        ydk::YLeaf role; //type: MgmtLsdLspRole
         class Head; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head
         class Midpoint; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint
 
@@ -1246,7 +1351,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryI
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head : public ydk::Entity
 {
     public:
         Head();
@@ -1254,19 +1359,21 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_prefix; //type: string
-        YLeaf destination_prefix_length; //type: uint8
+        ydk::YLeaf destination_prefix; //type: string
+        ydk::YLeaf destination_prefix_length; //type: uint8
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint : public ydk::Entity
 {
     public:
         Midpoint();
@@ -1274,20 +1381,22 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryI
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address; //type: string
-        YLeaf lspid; //type: uint32
-        YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf lspid; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath : public ydk::Entity
 {
     public:
         OutPath();
@@ -1295,22 +1404,24 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf out_interface; //type: string
-        YLeaf out_label; //type: uint32
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf frr_interface; //type: string
-        YLeaf frr_label; //type: uint32
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf frr_interface; //type: string
+        ydk::YLeaf frr_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary : public ydk::Entity
 {
     public:
         TunnelHeadSummary();
@@ -1318,21 +1429,23 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf igp; //type: uint32
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf igp; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces : public ydk::Entity
 {
     public:
         SummaryProtectedInterfaces();
@@ -1340,11 +1453,13 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SummaryProtectedInterface; //type: MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface
 
@@ -1353,7 +1468,7 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces : publi
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface : public ydk::Entity
 {
     public:
         SummaryProtectedInterface();
@@ -1361,22 +1476,24 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::Summar
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf igp; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf igp; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary : public ydk::Entity
 {
     public:
         TunnelSummary();
@@ -1384,21 +1501,23 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf igp; //type: uint32
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf igp; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary
 
 
-class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary : public Entity
+class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary : public ydk::Entity
 {
     public:
         TunnelMidpointSummary();
@@ -1406,21 +1525,23 @@ class MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active; //type: uint32
-        YLeaf ready; //type: uint32
-        YLeaf partial; //type: uint32
-        YLeaf igp; //type: uint32
+        ydk::YLeaf active; //type: uint32
+        ydk::YLeaf ready; //type: uint32
+        ydk::YLeaf partial; //type: uint32
+        ydk::YLeaf igp; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite : public ydk::Entity
 {
     public:
         Rewrite();
@@ -1428,11 +1549,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RewritePws; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws
         class RewriteIpv4S; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S
@@ -1447,7 +1570,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Rewrite
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws : public ydk::Entity
 {
     public:
         RewritePws();
@@ -1455,11 +1578,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RewritePw; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw
 
@@ -1468,7 +1593,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw : public ydk::Entity
 {
     public:
         RewritePw();
@@ -1476,20 +1601,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pw_list_id; //type: int32
-        YLeaf rewrite_version; //type: uint64
-        YLeaf bcdl_priority; //type: uint8
-        YLeaf lsd_queue; //type: uint8
-        YLeaf rw_install_time; //type: uint64
-        YLeaf rw_install_age; //type: uint64
-        YLeaf rw_updated; //type: int32
-        YLeaf priority_updated; //type: int32
+        ydk::YLeaf pw_list_id; //type: int32
+        ydk::YLeaf rewrite_version; //type: uint64
+        ydk::YLeaf bcdl_priority; //type: uint8
+        ydk::YLeaf lsd_queue; //type: uint8
+        ydk::YLeaf rw_install_time; //type: uint64
+        ydk::YLeaf rw_install_age; //type: uint64
+        ydk::YLeaf rw_updated; //type: int32
+        ydk::YLeaf priority_updated; //type: int32
         class FpiKey; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey
         class RewriteId; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId
         class AssociatedFpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi
@@ -1507,7 +1634,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey : public ydk::Entity
 {
     public:
         FpiKey();
@@ -1515,11 +1642,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Fpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner
@@ -1530,7 +1659,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey : public
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi : public ydk::Entity
 {
     public:
         Fpi();
@@ -1538,13 +1667,15 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf fpi_type; //type: MgmtLsdFpiEnum
+        ydk::YLeaf fpi_type; //type: MgmtLsdFpi
         class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData
         class TeData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data
@@ -1562,7 +1693,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi : p
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -1570,20 +1701,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::La
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label; //type: uint32
-        YLeaf security_id; //type: uint32
-        YLeaf elc; //type: int32
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf elc; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData : public ydk::Entity
 {
     public:
         TeData();
@@ -1591,19 +1724,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Te
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnel_interface; //type: string
-        YLeaf local_label; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf local_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -1611,22 +1746,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf version; //type: uint32
-        YLeaf sr_local_label; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf sr_local_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -1634,22 +1771,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ip
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf router_flags; //type: uint32
-        YLeaf prefix_len; //type: uint8
-        YLeaf version; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf router_flags; //type: uint32
+        ydk::YLeaf prefix_len; //type: uint8
+        ydk::YLeaf version; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -1657,18 +1796,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Pw
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pwhe_list_id; //type: uint16
+        ydk::YLeaf pwhe_list_id; //type: uint16
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtIntfData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtIntfData : public ydk::Entity
 {
     public:
         DmtcExtIntfData();
@@ -1676,18 +1817,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Dm
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dmtc_ext_ifh; //type: string
+        ydk::YLeaf dmtc_ext_ifh; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtIntfData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -1695,22 +1838,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Applica
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf application_name; //type: string
-        YLeaf application_type; //type: MgmtLsdAppEnum
-        YLeaf application_role_primary; //type: int32
-        YLeaf application_instance; //type: string
-        YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId : public ydk::Entity
 {
     public:
         RewriteId();
@@ -1718,11 +1863,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RewriteId_; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
@@ -1731,7 +1878,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId : pub
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_ : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_ : public ydk::Entity
 {
     public:
         RewriteId_();
@@ -1739,13 +1886,15 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rewrite_id_type; //type: MgmtLsdRwIdEnum
+        ydk::YLeaf rewrite_id_type; //type: MgmtLsdRwId
         class LabelContext; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext
         class LocalLabelRewrite; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite
 
@@ -1755,7 +1904,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext : public ydk::Entity
 {
     public:
         LabelContext();
@@ -1763,13 +1912,15 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label_context_type; //type: MgmtLsdLblCtxEnum
+        ydk::YLeaf label_context_type; //type: MgmtLsdLblCtx
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data
         class Ipv6Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data
         class Tev4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data
@@ -1831,7 +1982,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -1839,22 +1990,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf security_id; //type: uint32
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -1862,22 +2015,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf security_id; //type: uint32
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -1885,24 +2040,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf tunnel_source; //type: string
-        YLeaf tunnel_dest; //type: string
-        YLeaf tunnel_id; //type: uint32
-        YLeaf tunnel_id_extension; //type: uint32
-        YLeaf tunnel_lsp_id; //type: uint32
-        YLeaf is_srte; //type: int32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf tunnel_source; //type: string
+        ydk::YLeaf tunnel_dest; //type: string
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf tunnel_id_extension; //type: uint32
+        ydk::YLeaf tunnel_lsp_id; //type: uint32
+        ydk::YLeaf is_srte; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData : public ydk::Entity
 {
     public:
         Ipv4L3VpnData();
@@ -1910,20 +2067,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf route_distinguisher; //type: uint64
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf route_distinguisher; //type: uint64
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData : public ydk::Entity
 {
     public:
         Ipv6L3VpnData();
@@ -1931,20 +2090,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf route_distinguisher; //type: uint64
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf route_distinguisher; //type: uint64
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData : public ydk::Entity
 {
     public:
         VrfL3VpnData();
@@ -1952,19 +2113,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf security_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf security_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData : public ydk::Entity
 {
     public:
         Cev4L3VpnData();
@@ -1972,20 +2135,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf security_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf security_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData : public ydk::Entity
 {
     public:
         Cev6L3VpnData();
@@ -1993,20 +2158,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf ipv6_next_hop; //type: string
-        YLeaf security_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf ipv6_next_hop; //type: string
+        ydk::YLeaf security_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -2014,21 +2181,23 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf pseudowire_id; //type: uint64
-        YLeaf remote_l2_router_id; //type: uint32
-        YLeaf subinterface; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf pseudowire_id; //type: uint64
+        ydk::YLeaf remote_l2_router_id; //type: uint32
+        ydk::YLeaf subinterface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData : public ydk::Entity
 {
     public:
         LabelBlockData();
@@ -2036,22 +2205,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf service; //type: uint8
-        YLeaf vpn_id; //type: uint16
-        YLeaf edge_id; //type: uint16
-        YLeaf offset; //type: uint32
-        YLeaf size; //type: uint32
+        ydk::YLeaf service; //type: uint8
+        ydk::YLeaf vpn_id; //type: uint16
+        ydk::YLeaf edge_id; //type: uint16
+        ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf size; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -2059,19 +2230,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf parent_interface; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf parent_interface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData : public ydk::Entity
 {
     public:
         Tev4P2MpData();
@@ -2079,24 +2252,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf tunnel_source; //type: string
-        YLeaf p2mp_id; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf tunnel_id_extension; //type: uint32
-        YLeaf tunnel_lsp_id; //type: uint32
-        YLeaf previous_hop; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf tunnel_source; //type: string
+        ydk::YLeaf p2mp_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf tunnel_id_extension; //type: uint32
+        ydk::YLeaf tunnel_lsp_id; //type: uint32
+        ydk::YLeaf previous_hop; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data : public ydk::Entity
 {
     public:
         MldPv4Data();
@@ -2104,22 +2279,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf type; //type: uint16
-        YLeaf lsm_id; //type: uint32
-        YLeaf peer_lsrid; //type: string
-        YLeaf peer_label_space_id; //type: uint16
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf type; //type: uint16
+        ydk::YLeaf lsm_id; //type: uint32
+        ydk::YLeaf peer_lsrid; //type: string
+        ydk::YLeaf peer_label_space_id; //type: uint16
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -2127,18 +2304,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pwhe_intf; //type: string
+        ydk::YLeaf pwhe_intf; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData : public ydk::Entity
 {
     public:
         TpData();
@@ -2146,24 +2325,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_global_id; //type: uint32
-        YLeaf source_node_id; //type: string
-        YLeaf dest_global_id; //type: uint32
-        YLeaf dest_node_id; //type: string
-        YLeaf source_tunnel_id; //type: uint16
-        YLeaf dest_tunnel_id; //type: uint16
-        YLeaf lsp_id; //type: uint16
+        ydk::YLeaf source_global_id; //type: uint32
+        ydk::YLeaf source_node_id; //type: string
+        ydk::YLeaf dest_global_id; //type: uint32
+        ydk::YLeaf dest_node_id; //type: string
+        ydk::YLeaf source_tunnel_id; //type: uint16
+        ydk::YLeaf dest_tunnel_id; //type: uint16
+        ydk::YLeaf lsp_id; //type: uint16
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         GenericRoutingEncapsulation();
@@ -2171,18 +2352,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf gre_interface; //type: string
+        ydk::YLeaf gre_interface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation : public ydk::Entity
 {
     public:
         Ipv6GenericRoutingEncapsulation();
@@ -2190,18 +2373,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf greipv6_interface; //type: string
+        ydk::YLeaf greipv6_interface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData : public ydk::Entity
 {
     public:
         EvpnData();
@@ -2209,20 +2394,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf evpn_id; //type: uint32
-        YLeaf evpn_tag; //type: uint32
-        YLeaf ethernet_segment; //type: string
+        ydk::YLeaf evpn_id; //type: uint32
+        ydk::YLeaf evpn_tag; //type: uint32
+        ydk::YLeaf ethernet_segment; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData : public ydk::Entity
 {
     public:
         Ipv4BlbData();
@@ -2230,19 +2417,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf blb_intf; //type: string
-        YLeaf prefix; //type: string
+        ydk::YLeaf blb_intf; //type: string
+        ydk::YLeaf prefix; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData : public ydk::Entity
 {
     public:
         Ipv6BlbData();
@@ -2250,19 +2439,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf blb_intf; //type: string
-        YLeaf prefix; //type: string
+        ydk::YLeaf blb_intf; //type: string
+        ydk::YLeaf prefix; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData : public ydk::Entity
 {
     public:
         PiMiPmsiData();
@@ -2270,20 +2461,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_id; //type: uint32
-        YLeaf head; //type: int32
-        YLeaf v6; //type: int32
+        ydk::YLeaf vrf_id; //type: uint32
+        ydk::YLeaf head; //type: int32
+        ydk::YLeaf v6; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData : public ydk::Entity
 {
     public:
         PiMsPmsiData();
@@ -2291,23 +2484,25 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_id; //type: uint32
-        YLeaf source; //type: string
-        YLeaf head; //type: int32
-        YLeaf v6; //type: int32
-        YLeaf hli; //type: uint32
-        YLeaf seg; //type: int32
+        ydk::YLeaf vrf_id; //type: uint32
+        ydk::YLeaf source; //type: string
+        ydk::YLeaf head; //type: int32
+        ydk::YLeaf v6; //type: int32
+        ydk::YLeaf hli; //type: uint32
+        ydk::YLeaf seg; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn : public ydk::Entity
 {
     public:
         NextHopSetL3Vpn();
@@ -2315,19 +2510,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf next_hop_set_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf next_hop_set_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment : public ydk::Entity
 {
     public:
         SrPrefixSegment();
@@ -2335,19 +2532,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf segment_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf segment_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv4();
@@ -2355,21 +2554,23 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf index_; //type: uint32
-        YLeaf type; //type: uint32
-        YLeaf intf; //type: string
-        YLeaf addr; //type: string
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf type; //type: uint32
+        ydk::YLeaf intf; //type: string
+        ydk::YLeaf addr; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6 : public ydk::Entity
 {
     public:
         SrAdjSegmentIpv6();
@@ -2377,21 +2578,23 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf index_; //type: uint32
-        YLeaf type; //type: uint32
-        YLeaf intf; //type: string
-        YLeaf addr; //type: string
+        ydk::YLeaf index_; //type: uint32
+        ydk::YLeaf type; //type: uint32
+        ydk::YLeaf intf; //type: string
+        ydk::YLeaf addr; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData : public ydk::Entity
 {
     public:
         LabelBlockSrgbData();
@@ -2399,20 +2602,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf start_label; //type: uint32
-        YLeaf offset; //type: uint32
-        YLeaf size; //type: uint32
+        ydk::YLeaf start_label; //type: uint32
+        ydk::YLeaf offset; //type: uint32
+        ydk::YLeaf size; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding : public ydk::Entity
 {
     public:
         TeBinding();
@@ -2420,19 +2625,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf te_identifier; //type: uint32
-        YLeaf te_type; //type: MgmtLsdTeBindingEnum
+        ydk::YLeaf te_identifier; //type: uint32
+        ydk::YLeaf te_type; //type: MgmtLsdTeBinding
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite : public ydk::Entity
 {
     public:
         LocalLabelRewrite();
@@ -2440,18 +2647,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList label_data; //type: list of  uint32
+        ydk::YLeafList label_data; //type: list of  uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi : public ydk::Entity
 {
     public:
         AssociatedFpi();
@@ -2459,11 +2668,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Fpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner
@@ -2474,7 +2685,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi :
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi : public ydk::Entity
 {
     public:
         Fpi();
@@ -2482,13 +2693,15 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf fpi_type; //type: MgmtLsdFpiEnum
+        ydk::YLeaf fpi_type; //type: MgmtLsdFpi
         class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData
         class TeData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data
@@ -2506,7 +2719,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -2514,20 +2727,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label; //type: uint32
-        YLeaf security_id; //type: uint32
-        YLeaf elc; //type: int32
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf elc; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData : public ydk::Entity
 {
     public:
         TeData();
@@ -2535,19 +2750,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnel_interface; //type: string
-        YLeaf local_label; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf local_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -2555,22 +2772,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf version; //type: uint32
-        YLeaf sr_local_label; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf sr_local_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -2578,22 +2797,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf router_flags; //type: uint32
-        YLeaf prefix_len; //type: uint8
-        YLeaf version; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf router_flags; //type: uint32
+        ydk::YLeaf prefix_len; //type: uint8
+        ydk::YLeaf version; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -2601,18 +2822,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pwhe_list_id; //type: uint16
+        ydk::YLeaf pwhe_list_id; //type: uint16
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData : public ydk::Entity
 {
     public:
         DmtcExtIntfData();
@@ -2620,18 +2843,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dmtc_ext_ifh; //type: string
+        ydk::YLeaf dmtc_ext_ifh; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -2639,22 +2864,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf application_name; //type: string
-        YLeaf application_type; //type: MgmtLsdAppEnum
-        YLeaf application_role_primary; //type: int32
-        YLeaf application_instance; //type: string
-        YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf : public ydk::Entity
 {
     public:
         V4Rpf();
@@ -2662,19 +2889,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf v4_rpf_neighbor; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf v4_rpf_neighbor; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf : public ydk::Entity
 {
     public:
         V6Rpf();
@@ -2682,19 +2911,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf v6_rpf_neighbor; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf v6_rpf_neighbor; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois : public ydk::Entity
 {
     public:
         Mois();
@@ -2702,11 +2933,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ApplicationResource; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource
         class MoiArray; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray
@@ -2717,7 +2950,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois : public E
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource : public ydk::Entity
 {
     public:
         ApplicationResource();
@@ -2725,22 +2958,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::Applicati
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf application_name; //type: string
-        YLeaf application_type; //type: MgmtLsdAppEnum
-        YLeaf application_role_primary; //type: int32
-        YLeaf application_instance; //type: string
-        YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray : public ydk::Entity
 {
     public:
         MoiArray();
@@ -2748,11 +2983,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Moi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi
 
@@ -2761,7 +2998,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi : public ydk::Entity
 {
     public:
         Moi();
@@ -2769,13 +3006,15 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf moi_type; //type: MgmtLsdMoiEnum
+        ydk::YLeaf moi_type; //type: MgmtLsdMoi
         class PopAndLookupIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4
         class PopAndLookupTp; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp
         class PopAndLookupIpv6; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6
@@ -2809,7 +3048,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4 : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4 : public ydk::Entity
 {
     public:
         PopAndLookupIpv4();
@@ -2817,20 +3056,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp : public ydk::Entity
 {
     public:
         PopAndLookupTp();
@@ -2838,21 +3079,23 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
-        YLeaf out_label; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6 : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6 : public ydk::Entity
 {
     public:
         PopAndLookupIpv6();
@@ -2860,20 +3103,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -2881,31 +3126,33 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
-        YLeaf out_interface; //type: string
-        YLeaf out_interface_parent; //type: string
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf path_id; //type: uint8
-        YLeaf backup_path_id; //type: uint8
-        YLeaf load_metric; //type: uint32
-        YLeaf out_label; //type: uint32
-        YLeaf out_label_name; //type: string
-        YLeaf tunnel_id; //type: uint16
-        YLeaf next_hop_id; //type: uint32
-        YLeaf local_label; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -2913,27 +3160,29 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
-        YLeaf out_interface; //type: string
-        YLeaf out_label; //type: uint32
-        YLeaf out_label_name; //type: string
-        YLeaf ipv6_next_hop; //type: string
-        YLeaf path_id; //type: uint8
-        YLeaf backup_path_id; //type: uint8
-        YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf ipv6_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf next_hop_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data : public ydk::Entity
 {
     public:
         Tev4Data();
@@ -2941,32 +3190,34 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
-        YLeaf out_interface; //type: string
-        YLeaf out_label; //type: uint32
-        YLeaf out_label_name; //type: string
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf backup_interface; //type: string
-        YLeaf backup_ipv4_next_hop; //type: string
-        YLeaf merge_point_label; //type: uint32
-        YLeaf backup_local_label; //type: uint32
-        YLeaf tunnel_interface; //type: string
-        YLeaf tunnel_weight; //type: uint32
-        YLeaf data_out_parent_interface; //type: string
-        YLeaf tunnel_class; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf backup_interface; //type: string
+        ydk::YLeaf backup_ipv4_next_hop; //type: string
+        ydk::YLeaf merge_point_label; //type: uint32
+        ydk::YLeaf backup_local_label; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf tunnel_weight; //type: uint32
+        ydk::YLeaf data_out_parent_interface; //type: string
+        ydk::YLeaf tunnel_class; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData : public ydk::Entity
 {
     public:
         PseudowireData();
@@ -2974,27 +3225,29 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
-        YLeaf out_interface; //type: string
-        YLeaf out_label; //type: uint32
-        YLeaf cross_connect_id; //type: uint32
-        YLeaf pseuodo_wire_connect_id; //type: uint32
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf bridge_id; //type: uint32
-        YLeaf split_horizon_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf cross_connect_id; //type: uint32
+        ydk::YLeaf pseuodo_wire_connect_id; //type: uint32
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf bridge_id; //type: uint32
+        ydk::YLeaf split_horizon_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData : public ydk::Entity
 {
     public:
         IpSubData();
@@ -3002,21 +3255,23 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf out_interface; //type: string
-        YLeaf path_flags_decode; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData : public ydk::Entity
 {
     public:
         PseudowireHeadEndData();
@@ -3024,28 +3279,30 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
-        YLeaf out_interface; //type: string
-        YLeaf out_label; //type: uint32
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf control_word; //type: int32
-        YLeaf imposition; //type: int32
-        YLeaf vctype; //type: uint8
-        YLeaf pw_list_id; //type: uint16
-        YLeaf pwhe_interface; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf control_word; //type: int32
+        ydk::YLeaf imposition; //type: int32
+        ydk::YLeaf vctype; //type: uint8
+        ydk::YLeaf pw_list_id; //type: uint16
+        ydk::YLeaf pwhe_interface; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -3053,22 +3310,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf l3_interface; //type: string
-        YLeaf l2_interface; //type: string
-        YLeaf path_flags_decode; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf l3_interface; //type: string
+        ydk::YLeaf l2_interface; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data : public ydk::Entity
 {
     public:
         Stackv4Data();
@@ -3076,13 +3335,15 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf owner_application_type; //type: MgmtLsdAppEnum
+        ydk::YLeaf owner_application_type; //type: MgmtLsdApp
         class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop
         class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
@@ -3092,7 +3353,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -3100,31 +3361,33 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
-        YLeaf out_interface; //type: string
-        YLeaf out_interface_parent; //type: string
-        YLeaf ipv4_next_hop; //type: string
-        YLeaf path_id; //type: uint8
-        YLeaf backup_path_id; //type: uint8
-        YLeaf load_metric; //type: uint32
-        YLeaf out_label; //type: uint32
-        YLeaf out_label_name; //type: string
-        YLeaf tunnel_id; //type: uint16
-        YLeaf next_hop_id; //type: uint32
-        YLeaf local_label; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_interface_parent; //type: string
+        ydk::YLeaf ipv4_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf tunnel_id; //type: uint16
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -3132,15 +3395,17 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf num_nexthops; //type: uint8
-        YLeaf num_lbls; //type: uint8
-        YLeafList nexthop; //type: list of  string
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        ydk::YLeafList nexthop; //type: list of  string
         class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label> > label;
@@ -3148,7 +3413,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -3156,19 +3421,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf outgoing_label; //type: uint32
-        YLeaf outgoing_label_str; //type: string
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data : public ydk::Entity
 {
     public:
         Stackv6Data();
@@ -3176,11 +3443,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Nexthop; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop
         class InnerStack; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack
@@ -3191,7 +3460,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop : public ydk::Entity
 {
     public:
         Nexthop();
@@ -3199,27 +3468,29 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf path_flags_decode; //type: string
-        YLeaf out_interface; //type: string
-        YLeaf out_label; //type: uint32
-        YLeaf out_label_name; //type: string
-        YLeaf ipv6_next_hop; //type: string
-        YLeaf path_id; //type: uint8
-        YLeaf backup_path_id; //type: uint8
-        YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf path_flags_decode; //type: string
+        ydk::YLeaf out_interface; //type: string
+        ydk::YLeaf out_label; //type: uint32
+        ydk::YLeaf out_label_name; //type: string
+        ydk::YLeaf ipv6_next_hop; //type: string
+        ydk::YLeaf path_id; //type: uint8
+        ydk::YLeaf backup_path_id; //type: uint8
+        ydk::YLeaf next_hop_id; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack : public ydk::Entity
 {
     public:
         InnerStack();
@@ -3227,15 +3498,17 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf num_nexthops; //type: uint8
-        YLeaf num_lbls; //type: uint8
-        YLeafList nexthop; //type: list of  string
+        ydk::YLeaf num_nexthops; //type: uint8
+        ydk::YLeaf num_lbls; //type: uint8
+        ydk::YLeafList nexthop; //type: list of  string
         class Label; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_lsd_oper::MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label> > label;
@@ -3243,7 +3516,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label : public ydk::Entity
 {
     public:
         Label();
@@ -3251,19 +3524,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf outgoing_label; //type: uint32
-        YLeaf outgoing_label_str; //type: string
+        ydk::YLeaf outgoing_label; //type: uint32
+        ydk::YLeaf outgoing_label_str; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData : public ydk::Entity
 {
     public:
         TeHeadData();
@@ -3271,24 +3546,26 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf table_name; //type: string
-        YLeaf tunnel_local_label; //type: uint32
-        YLeaf tunnel_local_label_str; //type: string
-        YLeaf tunnel_fwd_class; //type: uint8
-        YLeaf tunnel_load_metric; //type: uint32
-        YLeaf flags_decode; //type: string
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf table_name; //type: string
+        ydk::YLeaf tunnel_local_label; //type: uint32
+        ydk::YLeaf tunnel_local_label_str; //type: string
+        ydk::YLeaf tunnel_fwd_class; //type: uint8
+        ydk::YLeaf tunnel_load_metric; //type: uint32
+        ydk::YLeaf flags_decode; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData : public ydk::Entity
 {
     public:
         DmtcData();
@@ -3296,18 +3573,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dmtc_ext_ifh; //type: string
+        ydk::YLeaf dmtc_ext_ifh; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S : public ydk::Entity
 {
     public:
         RewriteIpv4S();
@@ -3315,11 +3594,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RewriteIpv4; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4
 
@@ -3328,7 +3609,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S : public Entity
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4 : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4 : public ydk::Entity
 {
     public:
         RewriteIpv4();
@@ -3336,23 +3617,25 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4 : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rsi_table_name; //type: string
-        YLeaf rsi_table_id; //type: string
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: int32
-        YLeaf rewrite_version; //type: uint64
-        YLeaf bcdl_priority; //type: uint8
-        YLeaf lsd_queue; //type: uint8
-        YLeaf rw_install_time; //type: uint64
-        YLeaf rw_install_age; //type: uint64
-        YLeaf rw_updated; //type: int32
-        YLeaf priority_updated; //type: int32
+        ydk::YLeaf rsi_table_name; //type: string
+        ydk::YLeaf rsi_table_id; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf rewrite_version; //type: uint64
+        ydk::YLeaf bcdl_priority; //type: uint8
+        ydk::YLeaf lsd_queue; //type: uint8
+        ydk::YLeaf rw_install_time; //type: uint64
+        ydk::YLeaf rw_install_age; //type: uint64
+        ydk::YLeaf rw_updated; //type: int32
+        ydk::YLeaf priority_updated; //type: int32
         class FpiKey; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
         class RewriteId; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId
         class AssociatedFpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi
@@ -3370,7 +3653,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4 : public Ent
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey : public ydk::Entity
 {
     public:
         FpiKey();
@@ -3378,11 +3661,13 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Fpi; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
         class ApplicationOwner; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner
@@ -3393,7 +3678,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey : pu
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi : public ydk::Entity
 {
     public:
         Fpi();
@@ -3401,13 +3686,15 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf fpi_type; //type: MgmtLsdFpiEnum
+        ydk::YLeaf fpi_type; //type: MgmtLsdFpi
         class LabelData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData
         class TeData; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData
         class Ipv4Data; //type: MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data
@@ -3425,7 +3712,7 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData : public ydk::Entity
 {
     public:
         LabelData();
@@ -3433,20 +3720,22 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf label; //type: uint32
-        YLeaf security_id; //type: uint32
-        YLeaf elc; //type: int32
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf security_id; //type: uint32
+        ydk::YLeaf elc; //type: int32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData : public ydk::Entity
 {
     public:
         TeData();
@@ -3454,19 +3743,21 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tunnel_interface; //type: string
-        YLeaf local_label; //type: uint32
+        ydk::YLeaf tunnel_interface; //type: string
+        ydk::YLeaf local_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data : public ydk::Entity
 {
     public:
         Ipv4Data();
@@ -3474,22 +3765,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf version; //type: uint32
-        YLeaf sr_local_label; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf sr_local_label; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data : public ydk::Entity
 {
     public:
         Ipv6Data();
@@ -3497,22 +3790,24 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf table_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf router_flags; //type: uint32
-        YLeaf prefix_len; //type: uint8
-        YLeaf version; //type: uint32
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf router_flags; //type: uint32
+        ydk::YLeaf prefix_len; //type: uint8
+        ydk::YLeaf version; //type: uint32
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData : public ydk::Entity
 {
     public:
         PwListData();
@@ -3520,18 +3815,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pwhe_list_id; //type: uint16
+        ydk::YLeaf pwhe_list_id; //type: uint16
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData : public ydk::Entity
 {
     public:
         DmtcExtIntfData();
@@ -3539,18 +3836,20 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dmtc_ext_ifh; //type: string
+        ydk::YLeaf dmtc_ext_ifh; //type: string
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData
 
 
-class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner : public Entity
+class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner : public ydk::Entity
 {
     public:
         ApplicationOwner();
@@ -3558,186 +3857,188 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::App
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf application_name; //type: string
-        YLeaf application_type; //type: MgmtLsdAppEnum
-        YLeaf application_role_primary; //type: int32
-        YLeaf application_instance; //type: string
-        YLeaf resource_state; //type: MgmtLsdAppRsrcStateEnum
+        ydk::YLeaf application_name; //type: string
+        ydk::YLeaf application_type; //type: MgmtLsdApp
+        ydk::YLeaf application_role_primary; //type: int32
+        ydk::YLeaf application_instance; //type: string
+        ydk::YLeaf resource_state; //type: MgmtLsdAppRsrcState
 
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner
 
-class MgmtLsdClientEnum : public Enum
+class MgmtLsdIntfState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_client_type_app;
-        static const Enum::YLeaf mgmt_lsd_client_type_ba;
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_unknown;
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_up;
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_down;
 
 };
 
-class MgmtLsdFrrStateEnum : public Enum
+class MgmtLsdTeBinding : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_frr_state_partial;
-        static const Enum::YLeaf mgmt_lsd_frr_state_active;
-        static const Enum::YLeaf mgmt_lsd_frr_state_ready;
-        static const Enum::YLeaf mgmt_lsd_frr_state_complete;
-        static const Enum::YLeaf mgmt_lsd_frr_state_any;
-        static const Enum::YLeaf mgmt_lsd_frr_state_igp;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_tun_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_grp_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_tun_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_grp_id;
 
 };
 
-class MgmtLsdMoiEnum : public Enum
+class MgmtLsdLspRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_ipv4;
-        static const Enum::YLeaf mgmt_lsd_moi_type_ipv4;
-        static const Enum::YLeaf mgmt_lsd_moi_type_ipv6;
-        static const Enum::YLeaf mgmt_lsd_moi_type_tev4;
-        static const Enum::YLeaf mgmt_lsd_moi_type_pw;
-        static const Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_ipv6;
-        static const Enum::YLeaf mgmt_lsd_moi_type_ip_sub;
-        static const Enum::YLeaf mgmt_lsd_moi_type_pwhe;
-        static const Enum::YLeaf mgmt_lsd_moi_type_pw_list;
-        static const Enum::YLeaf mgmt_lsd_moi_type_ipv4_stack;
-        static const Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_tp;
-        static const Enum::YLeaf mgmt_lsd_moi_type_ipv6_stack;
-        static const Enum::YLeaf mgmt_lsd_moi_type_te_head;
-        static const Enum::YLeaf mgmt_lsd_moi_type_dmtc_ext_intf;
+        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_head;
+        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_mid;
 
 };
 
-class MgmtLsdFpiEnum : public Enum
+class MgmtLsdFpi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_fpi_type_label;
-        static const Enum::YLeaf mgmt_lsd_fpi_type_te;
-        static const Enum::YLeaf mgmt_lsd_fpi_type_ipv4;
-        static const Enum::YLeaf mgmt_lsd_fpi_type_ipv6;
-        static const Enum::YLeaf mgmt_lsd_fpi_type_pw_list;
-        static const Enum::YLeaf mgmt_lsd_fpi_type_te_v2;
-        static const Enum::YLeaf mgmt_lsd_fpi_type_dmtc_ext_intf;
+        static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_label;
+        static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_te;
+        static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_ipv6;
+        static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_pw_list;
+        static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_te_v2;
+        static const ydk::Enum::YLeaf mgmt_lsd_fpi_type_dmtc_ext_intf;
 
 };
 
-class MgmtLsdLblCtxEnum : public Enum
+class MgmtLsdAppRsrcState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_none;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_ipv4;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_ipv6;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_tev4;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_ipv4;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_ipv6;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_vrf;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_cev4;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_cev6;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_pw;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_lbl_blk;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_ip_sub;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_tev4_p2mp;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_mldpv4;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_pwhe;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_tp;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_gre;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_evpn;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_blb_ipv4;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_blb_ipv6;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_pim_i_pmsi;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_pim_s_pmsi;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_nh_set;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_pfx_seg;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv4;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv6;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_lbl_blk_srgb;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_te_binding;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_gre_ipv6;
-        static const Enum::YLeaf mgmt_lsd_lbl_ctx_type_any;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_active;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd_svr;
 
 };
 
-class MgmtLsdLspRoleEnum : public Enum
+class MgmtLsdRwId : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_lsp_role_head;
-        static const Enum::YLeaf mgmt_lsd_lsp_role_mid;
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_none;
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_lbl_ctx;
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_loc_lbl;
 
 };
 
-class MgmtLsdAppRsrcStateEnum : public Enum
+class MgmtLsdFrrState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_app_rsrc_state_active;
-        static const Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd;
-        static const Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd_svr;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_partial;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_active;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_ready;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_complete;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_any;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_igp;
 
 };
 
-class MgmtLsdRwIdEnum : public Enum
+class MgmtLsdLblCtx : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_rw_id_type_none;
-        static const Enum::YLeaf mgmt_lsd_rw_id_type_lbl_ctx;
-        static const Enum::YLeaf mgmt_lsd_rw_id_type_loc_lbl;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_none;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_ipv6;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_tev4;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_ipv6;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_vrf;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_cev4;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_cev6;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_pw;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_lbl_blk;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_ip_sub;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_tev4_p2mp;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_mldpv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_pwhe;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_tp;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_gre;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_evpn;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_blb_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_blb_ipv6;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_pim_i_pmsi;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_pim_s_pmsi;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_l3vpn_nh_set;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_pfx_seg;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_sr_adj_seg_ipv6;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_lbl_blk_srgb;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_te_binding;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_gre_ipv6;
+        static const ydk::Enum::YLeaf mgmt_lsd_lbl_ctx_type_any;
 
 };
 
-class MgmtLsdAppEnum : public Enum
+class MgmtLsdClient : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_app_type_none;
-        static const Enum::YLeaf mgmt_lsd_app_type_int;
-        static const Enum::YLeaf mgmt_lsd_app_type_test;
-        static const Enum::YLeaf mgmt_lsd_app_type_static;
-        static const Enum::YLeaf mgmt_lsd_app_type_ldp;
-        static const Enum::YLeaf mgmt_lsd_app_type_te;
-        static const Enum::YLeaf mgmt_lsd_app_type_app_controller;
-        static const Enum::YLeaf mgmt_lsd_app_type_bgp_ipv4;
-        static const Enum::YLeaf mgmt_lsd_app_type_bgp_vpn_ipv4;
-        static const Enum::YLeaf mgmt_lsd_app_type_l2vpn;
-        static const Enum::YLeaf mgmt_lsd_app_type_bgp_spkr;
-        static const Enum::YLeaf mgmt_lsd_app_type_bfd;
-        static const Enum::YLeaf mgmt_lsd_app_type_pim;
-        static const Enum::YLeaf mgmt_lsd_app_type_v2_lsd;
-        static const Enum::YLeaf mgmt_lsd_app_type_pim6;
-        static const Enum::YLeaf mgmt_lsd_app_type_isis;
-        static const Enum::YLeaf mgmt_lsd_app_type_ospf;
-        static const Enum::YLeaf mgmt_lsd_app_type_cgn;
-        static const Enum::YLeaf mgmt_lsd_app_type_dmtc;
-        static const Enum::YLeaf mgmt_lsd_app_type_any;
+        static const ydk::Enum::YLeaf mgmt_lsd_client_type_app;
+        static const ydk::Enum::YLeaf mgmt_lsd_client_type_ba;
 
 };
 
-class MgmtLsdTeBindingEnum : public Enum
+class MgmtLsdAppState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_ident_p2p_tun_id;
-        static const Enum::YLeaf mgmt_lsd_ident_p2p_grp_id;
-        static const Enum::YLeaf mgmt_lsd_ident_p2mp_tun_id;
-        static const Enum::YLeaf mgmt_lsd_ident_p2mp_grp_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_active;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_zombie;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_recover;
 
 };
 
-class MgmtLsdAppStateEnum : public Enum
+class MgmtLsdMoi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_app_state_active;
-        static const Enum::YLeaf mgmt_lsd_app_state_zombie;
-        static const Enum::YLeaf mgmt_lsd_app_state_recover;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_ipv6;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_tev4;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_pw;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_ipv6;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_ip_sub;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_pwhe;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_pw_list;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_ipv4_stack;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_pop_and_lkup_tp;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_ipv6_stack;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_te_head;
+        static const ydk::Enum::YLeaf mgmt_lsd_moi_type_dmtc_ext_intf;
 
 };
 
-class MgmtLsdIntfStateEnum : public Enum
+class MgmtLsdApp : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsd_intf_state_unknown;
-        static const Enum::YLeaf mgmt_lsd_intf_state_up;
-        static const Enum::YLeaf mgmt_lsd_intf_state_down;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_none;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_int;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_test;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_static;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_ldp;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_te;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_app_controller;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_bgp_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_bgp_vpn_ipv4;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_l2vpn;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_bgp_spkr;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_bfd;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_pim;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_v2_lsd;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_pim6;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_isis;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_ospf;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_cgn;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_dmtc;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_any;
 
 };
 

@@ -7,20 +7,20 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_wanphy_ui_cfg {
 
-class WanphyLanModeEnum : public Enum
+class WanphyWanMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf on;
+        static const ydk::Enum::YLeaf on;
 
 };
 
-class WanphyWanModeEnum : public Enum
+class WanphyLanMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf on;
+        static const ydk::Enum::YLeaf on;
 
 };
 

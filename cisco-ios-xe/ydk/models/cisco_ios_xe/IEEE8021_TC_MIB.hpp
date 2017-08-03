@@ -7,47 +7,47 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace IEEE8021_TC_MIB {
 
-class Ieee8021PrioritycodepointEnum : public Enum
+class Ieee8021Bridgeporttype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf codePoint8p0d;
-        static const Enum::YLeaf codePoint7p1d;
-        static const Enum::YLeaf codePoint6p2d;
-        static const Enum::YLeaf codePoint5p3d;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf customerVlanPort;
+        static const ydk::Enum::YLeaf providerNetworkPort;
+        static const ydk::Enum::YLeaf customerNetworkPort;
+        static const ydk::Enum::YLeaf customerEdgePort;
+        static const ydk::Enum::YLeaf customerBackbonePort;
+        static const ydk::Enum::YLeaf virtualInstancePort;
+        static const ydk::Enum::YLeaf dBridgePort;
 
 };
 
-class Ieee8021ServiceselectortypeEnum : public Enum
+class Ieee8021Portacceptableframetypes : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf vlanId;
-        static const Enum::YLeaf isid;
+        static const ydk::Enum::YLeaf admitAll;
+        static const ydk::Enum::YLeaf admitUntaggedAndPriority;
+        static const ydk::Enum::YLeaf admitTagged;
 
 };
 
-class Ieee8021PortacceptableframetypesEnum : public Enum
+class Ieee8021Serviceselectortype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf admitAll;
-        static const Enum::YLeaf admitUntaggedAndPriority;
-        static const Enum::YLeaf admitTagged;
+        static const ydk::Enum::YLeaf vlanId;
+        static const ydk::Enum::YLeaf isid;
 
 };
 
-class Ieee8021BridgeporttypeEnum : public Enum
+class Ieee8021Prioritycodepoint : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf customerVlanPort;
-        static const Enum::YLeaf providerNetworkPort;
-        static const Enum::YLeaf customerNetworkPort;
-        static const Enum::YLeaf customerEdgePort;
-        static const Enum::YLeaf customerBackbonePort;
-        static const Enum::YLeaf virtualInstancePort;
-        static const Enum::YLeaf dBridgePort;
+        static const ydk::Enum::YLeaf codePoint8p0d;
+        static const ydk::Enum::YLeaf codePoint7p1d;
+        static const ydk::Enum::YLeaf codePoint6p2d;
+        static const ydk::Enum::YLeaf codePoint5p3d;
 
 };
 

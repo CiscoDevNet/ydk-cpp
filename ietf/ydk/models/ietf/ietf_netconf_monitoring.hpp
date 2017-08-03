@@ -7,28 +7,28 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace ietf {
 namespace ietf_netconf_monitoring {
 
-class SchemaFormatIdentity : public virtual Identity
+class SchemaFormat : public virtual ydk::Identity
 {
     public:
-        SchemaFormatIdentity();
-        ~SchemaFormatIdentity();
+        SchemaFormat();
+        ~SchemaFormat();
 
 
-}; // SchemaFormatIdentity
+}; // SchemaFormat
 
-class TransportIdentity : public virtual Identity
+class Transport : public virtual ydk::Identity
 {
     public:
-        TransportIdentity();
-        ~TransportIdentity();
+        Transport();
+        ~Transport();
 
 
-}; // TransportIdentity
+}; // Transport
 
-class NetconfState : public Entity
+class NetconfState : public ydk::Entity
 {
     public:
         NetconfState();
@@ -36,15 +36,18 @@ class NetconfState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Capabilities; //type: NetconfState::Capabilities
         class Datastores; //type: NetconfState::Datastores
@@ -61,7 +64,7 @@ class NetconfState : public Entity
 }; // NetconfState
 
 
-class NetconfState::Capabilities : public Entity
+class NetconfState::Capabilities : public ydk::Entity
 {
     public:
         Capabilities();
@@ -69,18 +72,20 @@ class NetconfState::Capabilities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList capability; //type: list of  string
+        ydk::YLeafList capability; //type: list of  string
 
 }; // NetconfState::Capabilities
 
 
-class NetconfState::Datastores : public Entity
+class NetconfState::Datastores : public ydk::Entity
 {
     public:
         Datastores();
@@ -88,11 +93,13 @@ class NetconfState::Datastores : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Datastore; //type: NetconfState::Datastores::Datastore
 
@@ -101,7 +108,7 @@ class NetconfState::Datastores : public Entity
 }; // NetconfState::Datastores
 
 
-class NetconfState::Datastores::Datastore : public Entity
+class NetconfState::Datastores::Datastore : public ydk::Entity
 {
     public:
         Datastore();
@@ -109,13 +116,15 @@ class NetconfState::Datastores::Datastore : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: NetconfDatastoreTypeEnum
+        ydk::YLeaf name; //type: NetconfDatastoreType
         class Locks; //type: NetconfState::Datastores::Datastore::Locks
 
         std::shared_ptr<ietf_netconf_monitoring::NetconfState::Datastores::Datastore::Locks> locks; // presence node
@@ -123,7 +132,7 @@ class NetconfState::Datastores::Datastore : public Entity
 }; // NetconfState::Datastores::Datastore
 
 
-class NetconfState::Datastores::Datastore::Locks : public Entity
+class NetconfState::Datastores::Datastore::Locks : public ydk::Entity
 {
     public:
         Locks();
@@ -131,11 +140,13 @@ class NetconfState::Datastores::Datastore::Locks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class GlobalLock; //type: NetconfState::Datastores::Datastore::Locks::GlobalLock
         class PartialLock; //type: NetconfState::Datastores::Datastore::Locks::PartialLock
@@ -146,7 +157,7 @@ class NetconfState::Datastores::Datastore::Locks : public Entity
 }; // NetconfState::Datastores::Datastore::Locks
 
 
-class NetconfState::Datastores::Datastore::Locks::GlobalLock : public Entity
+class NetconfState::Datastores::Datastore::Locks::GlobalLock : public ydk::Entity
 {
     public:
         GlobalLock();
@@ -154,19 +165,21 @@ class NetconfState::Datastores::Datastore::Locks::GlobalLock : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf locked_by_session; //type: uint32
-        YLeaf locked_time; //type: string
+        ydk::YLeaf locked_by_session; //type: uint32
+        ydk::YLeaf locked_time; //type: string
 
 }; // NetconfState::Datastores::Datastore::Locks::GlobalLock
 
 
-class NetconfState::Datastores::Datastore::Locks::PartialLock : public Entity
+class NetconfState::Datastores::Datastore::Locks::PartialLock : public ydk::Entity
 {
     public:
         PartialLock();
@@ -174,22 +187,24 @@ class NetconfState::Datastores::Datastore::Locks::PartialLock : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lock_id; //type: uint32
-        YLeaf locked_by_session; //type: uint32
-        YLeaf locked_time; //type: string
-        YLeafList select; //type: list of  string
-        YLeafList locked_node; //type: list of  instance-identifier
+        ydk::YLeaf lock_id; //type: uint32
+        ydk::YLeaf locked_by_session; //type: uint32
+        ydk::YLeaf locked_time; //type: string
+        ydk::YLeafList select; //type: list of  string
+        ydk::YLeafList locked_node; //type: list of  instance-identifier
 
 }; // NetconfState::Datastores::Datastore::Locks::PartialLock
 
 
-class NetconfState::Schemas : public Entity
+class NetconfState::Schemas : public ydk::Entity
 {
     public:
         Schemas();
@@ -197,11 +212,13 @@ class NetconfState::Schemas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Schema; //type: NetconfState::Schemas::Schema
 
@@ -210,7 +227,7 @@ class NetconfState::Schemas : public Entity
 }; // NetconfState::Schemas
 
 
-class NetconfState::Schemas::Schema : public Entity
+class NetconfState::Schemas::Schema : public ydk::Entity
 {
     public:
         Schema();
@@ -218,23 +235,25 @@ class NetconfState::Schemas::Schema : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf identifier; //type: string
-        YLeaf version; //type: string
-        YLeaf format; //type: SchemaFormatIdentity
-        YLeaf namespace_; //type: string
-        YLeafList location; //type: list of  one of string, enumeration
-        class LocationEnum;
+        ydk::YLeaf identifier; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf format; //type: SchemaFormat
+        ydk::YLeaf namespace_; //type: string
+        ydk::YLeafList location; //type: list of  one of string, enumeration
+        class Location;
 
 }; // NetconfState::Schemas::Schema
 
 
-class NetconfState::Sessions : public Entity
+class NetconfState::Sessions : public ydk::Entity
 {
     public:
         Sessions();
@@ -242,11 +261,13 @@ class NetconfState::Sessions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Session; //type: NetconfState::Sessions::Session
 
@@ -255,7 +276,7 @@ class NetconfState::Sessions : public Entity
 }; // NetconfState::Sessions
 
 
-class NetconfState::Sessions::Session : public Entity
+class NetconfState::Sessions::Session : public ydk::Entity
 {
     public:
         Session();
@@ -263,26 +284,28 @@ class NetconfState::Sessions::Session : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf session_id; //type: uint32
-        YLeaf transport; //type: TransportIdentity
-        YLeaf username; //type: string
-        YLeaf source_host; //type: one of union, string
-        YLeaf login_time; //type: string
-        YLeaf in_rpcs; //type: uint32
-        YLeaf in_bad_rpcs; //type: uint32
-        YLeaf out_rpc_errors; //type: uint32
-        YLeaf out_notifications; //type: uint32
+        ydk::YLeaf session_id; //type: uint32
+        ydk::YLeaf transport; //type: Transport
+        ydk::YLeaf username; //type: string
+        ydk::YLeaf source_host; //type: one of string, union
+        ydk::YLeaf login_time; //type: string
+        ydk::YLeaf in_rpcs; //type: uint32
+        ydk::YLeaf in_bad_rpcs; //type: uint32
+        ydk::YLeaf out_rpc_errors; //type: uint32
+        ydk::YLeaf out_notifications; //type: uint32
 
 }; // NetconfState::Sessions::Session
 
 
-class NetconfState::Statistics : public Entity
+class NetconfState::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -290,51 +313,56 @@ class NetconfState::Statistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf netconf_start_time; //type: string
-        YLeaf in_bad_hellos; //type: uint32
-        YLeaf in_sessions; //type: uint32
-        YLeaf dropped_sessions; //type: uint32
-        YLeaf in_rpcs; //type: uint32
-        YLeaf in_bad_rpcs; //type: uint32
-        YLeaf out_rpc_errors; //type: uint32
-        YLeaf out_notifications; //type: uint32
+        ydk::YLeaf netconf_start_time; //type: string
+        ydk::YLeaf in_bad_hellos; //type: uint32
+        ydk::YLeaf in_sessions; //type: uint32
+        ydk::YLeaf dropped_sessions; //type: uint32
+        ydk::YLeaf in_rpcs; //type: uint32
+        ydk::YLeaf in_bad_rpcs; //type: uint32
+        ydk::YLeaf out_rpc_errors; //type: uint32
+        ydk::YLeaf out_notifications; //type: uint32
 
 }; // NetconfState::Statistics
 
-class GetSchemaRpc : public Entity
+class GetSchema : public ydk::Entity
 {
     public:
-        GetSchemaRpc();
-        ~GetSchemaRpc();
+        GetSchema();
+        ~GetSchema();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: GetSchemaRpc::Input
-        class Output; //type: GetSchemaRpc::Output
+        class Input; //type: GetSchema::Input
+        class Output; //type: GetSchema::Output
 
-        std::shared_ptr<ietf_netconf_monitoring::GetSchemaRpc::Input> input;
-        std::shared_ptr<ietf_netconf_monitoring::GetSchemaRpc::Output> output;
+        std::shared_ptr<ietf_netconf_monitoring::GetSchema::Input> input;
+        std::shared_ptr<ietf_netconf_monitoring::GetSchema::Output> output;
         
-}; // GetSchemaRpc
+}; // GetSchema
 
 
-class GetSchemaRpc::Input : public Entity
+class GetSchema::Input : public ydk::Entity
 {
     public:
         Input();
@@ -342,20 +370,22 @@ class GetSchemaRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf identifier; //type: string
-        YLeaf version; //type: string
-        YLeaf format; //type: SchemaFormatIdentity
+        ydk::YLeaf identifier; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf format; //type: SchemaFormat
 
-}; // GetSchemaRpc::Input
+}; // GetSchema::Input
 
 
-class GetSchemaRpc::Output : public Entity
+class GetSchema::Output : public ydk::Entity
 {
     public:
         Output();
@@ -363,119 +393,121 @@ class GetSchemaRpc::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf data; //type: string
+        ydk::YLeaf data; //type: string
 
-}; // GetSchemaRpc::Output
+}; // GetSchema::Output
 
-class NetconfBeepIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class Rnc : public ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        NetconfBeepIdentity();
-        ~NetconfBeepIdentity();
+        Rnc();
+        ~Rnc();
 
 
-}; // NetconfBeepIdentity
+}; // Rnc
 
-class NetconfSshIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class Yang : public ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        NetconfSshIdentity();
-        ~NetconfSshIdentity();
+        Yang();
+        ~Yang();
 
 
-}; // NetconfSshIdentity
+}; // Yang
 
-class RncIdentity : public ietf_netconf_monitoring::SchemaFormatIdentity, virtual Identity
+class NetconfBeep : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        RncIdentity();
-        ~RncIdentity();
+        NetconfBeep();
+        ~NetconfBeep();
 
 
-}; // RncIdentity
+}; // NetconfBeep
 
-class YinIdentity : public ietf_netconf_monitoring::SchemaFormatIdentity, virtual Identity
+class NetconfSoapOverBeep : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        YinIdentity();
-        ~YinIdentity();
+        NetconfSoapOverBeep();
+        ~NetconfSoapOverBeep();
 
 
-}; // YinIdentity
+}; // NetconfSoapOverBeep
 
-class RngIdentity : public ietf_netconf_monitoring::SchemaFormatIdentity, virtual Identity
+class NetconfSsh : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        RngIdentity();
-        ~RngIdentity();
+        NetconfSsh();
+        ~NetconfSsh();
 
 
-}; // RngIdentity
+}; // NetconfSsh
 
-class XsdIdentity : public ietf_netconf_monitoring::SchemaFormatIdentity, virtual Identity
+class NetconfSoapOverHttps : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        XsdIdentity();
-        ~XsdIdentity();
+        NetconfSoapOverHttps();
+        ~NetconfSoapOverHttps();
 
 
-}; // XsdIdentity
+}; // NetconfSoapOverHttps
 
-class NetconfSoapOverBeepIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class Rng : public ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        NetconfSoapOverBeepIdentity();
-        ~NetconfSoapOverBeepIdentity();
+        Rng();
+        ~Rng();
 
 
-}; // NetconfSoapOverBeepIdentity
+}; // Rng
 
-class NetconfTlsIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class NetconfTls : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        NetconfTlsIdentity();
-        ~NetconfTlsIdentity();
+        NetconfTls();
+        ~NetconfTls();
 
 
-}; // NetconfTlsIdentity
+}; // NetconfTls
 
-class YangIdentity : public ietf_netconf_monitoring::SchemaFormatIdentity, virtual Identity
+class Yin : public ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        YangIdentity();
-        ~YangIdentity();
+        Yin();
+        ~Yin();
 
 
-}; // YangIdentity
+}; // Yin
 
-class NetconfSoapOverHttpsIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class Xsd : public ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        NetconfSoapOverHttpsIdentity();
-        ~NetconfSoapOverHttpsIdentity();
+        Xsd();
+        ~Xsd();
 
 
-}; // NetconfSoapOverHttpsIdentity
+}; // Xsd
 
-class NetconfDatastoreTypeEnum : public Enum
+class NetconfDatastoreType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf running;
-        static const Enum::YLeaf candidate;
-        static const Enum::YLeaf startup;
+        static const ydk::Enum::YLeaf running;
+        static const ydk::Enum::YLeaf candidate;
+        static const ydk::Enum::YLeaf startup;
 
 };
 
-class NetconfState::Schemas::Schema::LocationEnum : public Enum
+class NetconfState::Schemas::Schema::Location : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NETCONF;
+        static const ydk::Enum::YLeaf NETCONF;
 
 };
 

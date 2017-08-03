@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ncs1k_mxp_headless_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ncs1k_mxp_headless_oper {
 
 HeadlessFuncData::HeadlessFuncData()
@@ -33,7 +35,7 @@ bool HeadlessFuncData::has_data() const
 
 bool HeadlessFuncData::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ethernet_port_names !=  nullptr && ethernet_port_names->has_operation())
 	|| (otn_port_names !=  nullptr && otn_port_names->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::get_children() 
     return children;
 }
 
-void HeadlessFuncData::set_value(const std::string & value_path, std::string value)
+void HeadlessFuncData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HeadlessFuncData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string HeadlessFuncData::get_bundle_name() const
 augment_capabilities_function HeadlessFuncData::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HeadlessFuncData::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HeadlessFuncData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-port-names" || name == "otn-port-names")
+        return true;
+    return false;
 }
 
 HeadlessFuncData::OtnPortNames::OtnPortNames()
@@ -154,7 +172,7 @@ bool HeadlessFuncData::OtnPortNames::has_operation() const
         if(otn_port_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HeadlessFuncData::OtnPortNames::get_segment_path() const
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::g
     return children;
 }
 
-void HeadlessFuncData::OtnPortNames::set_value(const std::string & value_path, std::string value)
+void HeadlessFuncData::OtnPortNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HeadlessFuncData::OtnPortNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HeadlessFuncData::OtnPortNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otn-port-name")
+        return true;
+    return false;
 }
 
 HeadlessFuncData::OtnPortNames::OtnPortName::OtnPortName()
@@ -252,11 +281,11 @@ bool HeadlessFuncData::OtnPortNames::OtnPortName::has_data() const
 
 bool HeadlessFuncData::OtnPortNames::OtnPortName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(headless_end_time.operation)
-	|| is_set(headless_start_time.operation)
-	|| is_set(started_stateful.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(headless_end_time.yfilter)
+	|| ydk::is_set(headless_start_time.yfilter)
+	|| ydk::is_set(started_stateful.yfilter)
 	|| (otn_statistics !=  nullptr && otn_statistics->has_operation());
 }
 
@@ -283,10 +312,10 @@ const EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (headless_end_time.is_set || is_set(headless_end_time.operation)) leaf_name_data.push_back(headless_end_time.get_name_leafdata());
-    if (headless_start_time.is_set || is_set(headless_start_time.operation)) leaf_name_data.push_back(headless_start_time.get_name_leafdata());
-    if (started_stateful.is_set || is_set(started_stateful.operation)) leaf_name_data.push_back(started_stateful.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (headless_end_time.is_set || is_set(headless_end_time.yfilter)) leaf_name_data.push_back(headless_end_time.get_name_leafdata());
+    if (headless_start_time.is_set || is_set(headless_start_time.yfilter)) leaf_name_data.push_back(headless_start_time.get_name_leafdata());
+    if (started_stateful.is_set || is_set(started_stateful.yfilter)) leaf_name_data.push_back(started_stateful.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -319,24 +348,59 @@ std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::O
     return children;
 }
 
-void HeadlessFuncData::OtnPortNames::OtnPortName::set_value(const std::string & value_path, std::string value)
+void HeadlessFuncData::OtnPortNames::OtnPortName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "headless-end-time")
     {
         headless_end_time = value;
+        headless_end_time.value_namespace = name_space;
+        headless_end_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "headless-start-time")
     {
         headless_start_time = value;
+        headless_start_time.value_namespace = name_space;
+        headless_start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "started-stateful")
     {
         started_stateful = value;
+        started_stateful.value_namespace = name_space;
+        started_stateful.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HeadlessFuncData::OtnPortNames::OtnPortName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "headless-end-time")
+    {
+        headless_end_time.yfilter = yfilter;
+    }
+    if(value_path == "headless-start-time")
+    {
+        headless_start_time.yfilter = yfilter;
+    }
+    if(value_path == "started-stateful")
+    {
+        started_stateful.yfilter = yfilter;
+    }
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otn-statistics" || name == "name" || name == "headless-end-time" || name == "headless-start-time" || name == "started-stateful")
+        return true;
+    return false;
 }
 
 HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::OtnStatistics()
@@ -363,11 +427,11 @@ bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_data() cons
 
 bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fec_ec.operation)
-	|| is_set(fec_uc.operation)
-	|| is_set(sm_bei.operation)
-	|| is_set(sm_bip.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fec_ec.yfilter)
+	|| ydk::is_set(fec_uc.yfilter)
+	|| ydk::is_set(sm_bei.yfilter)
+	|| ydk::is_set(sm_bip.yfilter);
 }
 
 std::string HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get_segment_path() const
@@ -393,10 +457,10 @@ const EntityPath HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fec_ec.is_set || is_set(fec_ec.operation)) leaf_name_data.push_back(fec_ec.get_name_leafdata());
-    if (fec_uc.is_set || is_set(fec_uc.operation)) leaf_name_data.push_back(fec_uc.get_name_leafdata());
-    if (sm_bei.is_set || is_set(sm_bei.operation)) leaf_name_data.push_back(sm_bei.get_name_leafdata());
-    if (sm_bip.is_set || is_set(sm_bip.operation)) leaf_name_data.push_back(sm_bip.get_name_leafdata());
+    if (fec_ec.is_set || is_set(fec_ec.yfilter)) leaf_name_data.push_back(fec_ec.get_name_leafdata());
+    if (fec_uc.is_set || is_set(fec_uc.yfilter)) leaf_name_data.push_back(fec_uc.get_name_leafdata());
+    if (sm_bei.is_set || is_set(sm_bei.yfilter)) leaf_name_data.push_back(sm_bei.get_name_leafdata());
+    if (sm_bip.is_set || is_set(sm_bip.yfilter)) leaf_name_data.push_back(sm_bip.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -415,24 +479,59 @@ std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::OtnPortNames::O
     return children;
 }
 
-void HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::set_value(const std::string & value_path, std::string value)
+void HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fec-ec")
     {
         fec_ec = value;
+        fec_ec.value_namespace = name_space;
+        fec_ec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fec-uc")
     {
         fec_uc = value;
+        fec_uc.value_namespace = name_space;
+        fec_uc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sm-bei")
     {
         sm_bei = value;
+        sm_bei.value_namespace = name_space;
+        sm_bei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sm-bip")
     {
         sm_bip = value;
+        sm_bip.value_namespace = name_space;
+        sm_bip.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fec-ec")
+    {
+        fec_ec.yfilter = yfilter;
+    }
+    if(value_path == "fec-uc")
+    {
+        fec_uc.yfilter = yfilter;
+    }
+    if(value_path == "sm-bei")
+    {
+        sm_bei.yfilter = yfilter;
+    }
+    if(value_path == "sm-bip")
+    {
+        sm_bip.yfilter = yfilter;
+    }
+}
+
+bool HeadlessFuncData::OtnPortNames::OtnPortName::OtnStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fec-ec" || name == "fec-uc" || name == "sm-bei" || name == "sm-bip")
+        return true;
+    return false;
 }
 
 HeadlessFuncData::EthernetPortNames::EthernetPortNames()
@@ -461,7 +560,7 @@ bool HeadlessFuncData::EthernetPortNames::has_operation() const
         if(ethernet_port_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HeadlessFuncData::EthernetPortNames::get_segment_path() const
@@ -526,8 +625,19 @@ std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNam
     return children;
 }
 
-void HeadlessFuncData::EthernetPortNames::set_value(const std::string & value_path, std::string value)
+void HeadlessFuncData::EthernetPortNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HeadlessFuncData::EthernetPortNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HeadlessFuncData::EthernetPortNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-port-name")
+        return true;
+    return false;
 }
 
 HeadlessFuncData::EthernetPortNames::EthernetPortName::EthernetPortName()
@@ -559,11 +669,11 @@ bool HeadlessFuncData::EthernetPortNames::EthernetPortName::has_data() const
 
 bool HeadlessFuncData::EthernetPortNames::EthernetPortName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(headless_end_time.operation)
-	|| is_set(headless_start_time.operation)
-	|| is_set(started_stateful.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(headless_end_time.yfilter)
+	|| ydk::is_set(headless_start_time.yfilter)
+	|| ydk::is_set(started_stateful.yfilter)
 	|| (ether_statistics !=  nullptr && ether_statistics->has_operation());
 }
 
@@ -590,10 +700,10 @@ const EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (headless_end_time.is_set || is_set(headless_end_time.operation)) leaf_name_data.push_back(headless_end_time.get_name_leafdata());
-    if (headless_start_time.is_set || is_set(headless_start_time.operation)) leaf_name_data.push_back(headless_start_time.get_name_leafdata());
-    if (started_stateful.is_set || is_set(started_stateful.operation)) leaf_name_data.push_back(started_stateful.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (headless_end_time.is_set || is_set(headless_end_time.yfilter)) leaf_name_data.push_back(headless_end_time.get_name_leafdata());
+    if (headless_start_time.is_set || is_set(headless_start_time.yfilter)) leaf_name_data.push_back(headless_start_time.get_name_leafdata());
+    if (started_stateful.is_set || is_set(started_stateful.yfilter)) leaf_name_data.push_back(started_stateful.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -626,24 +736,59 @@ std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNam
     return children;
 }
 
-void HeadlessFuncData::EthernetPortNames::EthernetPortName::set_value(const std::string & value_path, std::string value)
+void HeadlessFuncData::EthernetPortNames::EthernetPortName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "headless-end-time")
     {
         headless_end_time = value;
+        headless_end_time.value_namespace = name_space;
+        headless_end_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "headless-start-time")
     {
         headless_start_time = value;
+        headless_start_time.value_namespace = name_space;
+        headless_start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "started-stateful")
     {
         started_stateful = value;
+        started_stateful.value_namespace = name_space;
+        started_stateful.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HeadlessFuncData::EthernetPortNames::EthernetPortName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "headless-end-time")
+    {
+        headless_end_time.yfilter = yfilter;
+    }
+    if(value_path == "headless-start-time")
+    {
+        headless_start_time.yfilter = yfilter;
+    }
+    if(value_path == "started-stateful")
+    {
+        started_stateful.yfilter = yfilter;
+    }
+}
+
+bool HeadlessFuncData::EthernetPortNames::EthernetPortName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ether-statistics" || name == "name" || name == "headless-end-time" || name == "headless-start-time" || name == "started-stateful")
+        return true;
+    return false;
 }
 
 HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::EtherStatistics()
@@ -726,39 +871,39 @@ bool HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::has
 
 bool HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(rx8021q_pkt.operation)
-	|| is_set(rx_bytes_good.operation)
-	|| is_set(rx_error_jabbers.operation)
-	|| is_set(rx_lldp_pkt.operation)
-	|| is_set(rx_packets.operation)
-	|| is_set(rx_pause.operation)
-	|| is_set(rx_pkt_drop.operation)
-	|| is_set(rx_pkts1024_to1518_bytes.operation)
-	|| is_set(rx_pkts128to255_bytes.operation)
-	|| is_set(rx_pkts256_to511_bytes.operation)
-	|| is_set(rx_pkts512_to1023_bytes.operation)
-	|| is_set(rx_pkts64_bytes.operation)
-	|| is_set(rx_pkts65_to127_bytes.operation)
-	|| is_set(rx_pkts_bad_fcs.operation)
-	|| is_set(rx_pkts_broadcast.operation)
-	|| is_set(rx_pkts_good.operation)
-	|| is_set(rx_pkts_multicast.operation)
-	|| is_set(rx_pkts_over_sized.operation)
-	|| is_set(rx_pkts_under_sized.operation)
-	|| is_set(rx_pkts_unicast.operation)
-	|| is_set(rx_recv_fragments.operation)
-	|| is_set(rx_total_bytes.operation)
-	|| is_set(tx_bad_fcs.operation)
-	|| is_set(tx_bytes_good.operation)
-	|| is_set(tx_fragments.operation)
-	|| is_set(tx_jabber.operation)
-	|| is_set(tx_packets.operation)
-	|| is_set(tx_pause.operation)
-	|| is_set(tx_pkts_good.operation)
-	|| is_set(tx_pkts_over_sized.operation)
-	|| is_set(tx_pkts_under_sized.operation)
-	|| is_set(tx_total_bytes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rx8021q_pkt.yfilter)
+	|| ydk::is_set(rx_bytes_good.yfilter)
+	|| ydk::is_set(rx_error_jabbers.yfilter)
+	|| ydk::is_set(rx_lldp_pkt.yfilter)
+	|| ydk::is_set(rx_packets.yfilter)
+	|| ydk::is_set(rx_pause.yfilter)
+	|| ydk::is_set(rx_pkt_drop.yfilter)
+	|| ydk::is_set(rx_pkts1024_to1518_bytes.yfilter)
+	|| ydk::is_set(rx_pkts128to255_bytes.yfilter)
+	|| ydk::is_set(rx_pkts256_to511_bytes.yfilter)
+	|| ydk::is_set(rx_pkts512_to1023_bytes.yfilter)
+	|| ydk::is_set(rx_pkts64_bytes.yfilter)
+	|| ydk::is_set(rx_pkts65_to127_bytes.yfilter)
+	|| ydk::is_set(rx_pkts_bad_fcs.yfilter)
+	|| ydk::is_set(rx_pkts_broadcast.yfilter)
+	|| ydk::is_set(rx_pkts_good.yfilter)
+	|| ydk::is_set(rx_pkts_multicast.yfilter)
+	|| ydk::is_set(rx_pkts_over_sized.yfilter)
+	|| ydk::is_set(rx_pkts_under_sized.yfilter)
+	|| ydk::is_set(rx_pkts_unicast.yfilter)
+	|| ydk::is_set(rx_recv_fragments.yfilter)
+	|| ydk::is_set(rx_total_bytes.yfilter)
+	|| ydk::is_set(tx_bad_fcs.yfilter)
+	|| ydk::is_set(tx_bytes_good.yfilter)
+	|| ydk::is_set(tx_fragments.yfilter)
+	|| ydk::is_set(tx_jabber.yfilter)
+	|| ydk::is_set(tx_packets.yfilter)
+	|| ydk::is_set(tx_pause.yfilter)
+	|| ydk::is_set(tx_pkts_good.yfilter)
+	|| ydk::is_set(tx_pkts_over_sized.yfilter)
+	|| ydk::is_set(tx_pkts_under_sized.yfilter)
+	|| ydk::is_set(tx_total_bytes.yfilter);
 }
 
 std::string HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::get_segment_path() const
@@ -784,38 +929,38 @@ const EntityPath HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rx8021q_pkt.is_set || is_set(rx8021q_pkt.operation)) leaf_name_data.push_back(rx8021q_pkt.get_name_leafdata());
-    if (rx_bytes_good.is_set || is_set(rx_bytes_good.operation)) leaf_name_data.push_back(rx_bytes_good.get_name_leafdata());
-    if (rx_error_jabbers.is_set || is_set(rx_error_jabbers.operation)) leaf_name_data.push_back(rx_error_jabbers.get_name_leafdata());
-    if (rx_lldp_pkt.is_set || is_set(rx_lldp_pkt.operation)) leaf_name_data.push_back(rx_lldp_pkt.get_name_leafdata());
-    if (rx_packets.is_set || is_set(rx_packets.operation)) leaf_name_data.push_back(rx_packets.get_name_leafdata());
-    if (rx_pause.is_set || is_set(rx_pause.operation)) leaf_name_data.push_back(rx_pause.get_name_leafdata());
-    if (rx_pkt_drop.is_set || is_set(rx_pkt_drop.operation)) leaf_name_data.push_back(rx_pkt_drop.get_name_leafdata());
-    if (rx_pkts1024_to1518_bytes.is_set || is_set(rx_pkts1024_to1518_bytes.operation)) leaf_name_data.push_back(rx_pkts1024_to1518_bytes.get_name_leafdata());
-    if (rx_pkts128to255_bytes.is_set || is_set(rx_pkts128to255_bytes.operation)) leaf_name_data.push_back(rx_pkts128to255_bytes.get_name_leafdata());
-    if (rx_pkts256_to511_bytes.is_set || is_set(rx_pkts256_to511_bytes.operation)) leaf_name_data.push_back(rx_pkts256_to511_bytes.get_name_leafdata());
-    if (rx_pkts512_to1023_bytes.is_set || is_set(rx_pkts512_to1023_bytes.operation)) leaf_name_data.push_back(rx_pkts512_to1023_bytes.get_name_leafdata());
-    if (rx_pkts64_bytes.is_set || is_set(rx_pkts64_bytes.operation)) leaf_name_data.push_back(rx_pkts64_bytes.get_name_leafdata());
-    if (rx_pkts65_to127_bytes.is_set || is_set(rx_pkts65_to127_bytes.operation)) leaf_name_data.push_back(rx_pkts65_to127_bytes.get_name_leafdata());
-    if (rx_pkts_bad_fcs.is_set || is_set(rx_pkts_bad_fcs.operation)) leaf_name_data.push_back(rx_pkts_bad_fcs.get_name_leafdata());
-    if (rx_pkts_broadcast.is_set || is_set(rx_pkts_broadcast.operation)) leaf_name_data.push_back(rx_pkts_broadcast.get_name_leafdata());
-    if (rx_pkts_good.is_set || is_set(rx_pkts_good.operation)) leaf_name_data.push_back(rx_pkts_good.get_name_leafdata());
-    if (rx_pkts_multicast.is_set || is_set(rx_pkts_multicast.operation)) leaf_name_data.push_back(rx_pkts_multicast.get_name_leafdata());
-    if (rx_pkts_over_sized.is_set || is_set(rx_pkts_over_sized.operation)) leaf_name_data.push_back(rx_pkts_over_sized.get_name_leafdata());
-    if (rx_pkts_under_sized.is_set || is_set(rx_pkts_under_sized.operation)) leaf_name_data.push_back(rx_pkts_under_sized.get_name_leafdata());
-    if (rx_pkts_unicast.is_set || is_set(rx_pkts_unicast.operation)) leaf_name_data.push_back(rx_pkts_unicast.get_name_leafdata());
-    if (rx_recv_fragments.is_set || is_set(rx_recv_fragments.operation)) leaf_name_data.push_back(rx_recv_fragments.get_name_leafdata());
-    if (rx_total_bytes.is_set || is_set(rx_total_bytes.operation)) leaf_name_data.push_back(rx_total_bytes.get_name_leafdata());
-    if (tx_bad_fcs.is_set || is_set(tx_bad_fcs.operation)) leaf_name_data.push_back(tx_bad_fcs.get_name_leafdata());
-    if (tx_bytes_good.is_set || is_set(tx_bytes_good.operation)) leaf_name_data.push_back(tx_bytes_good.get_name_leafdata());
-    if (tx_fragments.is_set || is_set(tx_fragments.operation)) leaf_name_data.push_back(tx_fragments.get_name_leafdata());
-    if (tx_jabber.is_set || is_set(tx_jabber.operation)) leaf_name_data.push_back(tx_jabber.get_name_leafdata());
-    if (tx_packets.is_set || is_set(tx_packets.operation)) leaf_name_data.push_back(tx_packets.get_name_leafdata());
-    if (tx_pause.is_set || is_set(tx_pause.operation)) leaf_name_data.push_back(tx_pause.get_name_leafdata());
-    if (tx_pkts_good.is_set || is_set(tx_pkts_good.operation)) leaf_name_data.push_back(tx_pkts_good.get_name_leafdata());
-    if (tx_pkts_over_sized.is_set || is_set(tx_pkts_over_sized.operation)) leaf_name_data.push_back(tx_pkts_over_sized.get_name_leafdata());
-    if (tx_pkts_under_sized.is_set || is_set(tx_pkts_under_sized.operation)) leaf_name_data.push_back(tx_pkts_under_sized.get_name_leafdata());
-    if (tx_total_bytes.is_set || is_set(tx_total_bytes.operation)) leaf_name_data.push_back(tx_total_bytes.get_name_leafdata());
+    if (rx8021q_pkt.is_set || is_set(rx8021q_pkt.yfilter)) leaf_name_data.push_back(rx8021q_pkt.get_name_leafdata());
+    if (rx_bytes_good.is_set || is_set(rx_bytes_good.yfilter)) leaf_name_data.push_back(rx_bytes_good.get_name_leafdata());
+    if (rx_error_jabbers.is_set || is_set(rx_error_jabbers.yfilter)) leaf_name_data.push_back(rx_error_jabbers.get_name_leafdata());
+    if (rx_lldp_pkt.is_set || is_set(rx_lldp_pkt.yfilter)) leaf_name_data.push_back(rx_lldp_pkt.get_name_leafdata());
+    if (rx_packets.is_set || is_set(rx_packets.yfilter)) leaf_name_data.push_back(rx_packets.get_name_leafdata());
+    if (rx_pause.is_set || is_set(rx_pause.yfilter)) leaf_name_data.push_back(rx_pause.get_name_leafdata());
+    if (rx_pkt_drop.is_set || is_set(rx_pkt_drop.yfilter)) leaf_name_data.push_back(rx_pkt_drop.get_name_leafdata());
+    if (rx_pkts1024_to1518_bytes.is_set || is_set(rx_pkts1024_to1518_bytes.yfilter)) leaf_name_data.push_back(rx_pkts1024_to1518_bytes.get_name_leafdata());
+    if (rx_pkts128to255_bytes.is_set || is_set(rx_pkts128to255_bytes.yfilter)) leaf_name_data.push_back(rx_pkts128to255_bytes.get_name_leafdata());
+    if (rx_pkts256_to511_bytes.is_set || is_set(rx_pkts256_to511_bytes.yfilter)) leaf_name_data.push_back(rx_pkts256_to511_bytes.get_name_leafdata());
+    if (rx_pkts512_to1023_bytes.is_set || is_set(rx_pkts512_to1023_bytes.yfilter)) leaf_name_data.push_back(rx_pkts512_to1023_bytes.get_name_leafdata());
+    if (rx_pkts64_bytes.is_set || is_set(rx_pkts64_bytes.yfilter)) leaf_name_data.push_back(rx_pkts64_bytes.get_name_leafdata());
+    if (rx_pkts65_to127_bytes.is_set || is_set(rx_pkts65_to127_bytes.yfilter)) leaf_name_data.push_back(rx_pkts65_to127_bytes.get_name_leafdata());
+    if (rx_pkts_bad_fcs.is_set || is_set(rx_pkts_bad_fcs.yfilter)) leaf_name_data.push_back(rx_pkts_bad_fcs.get_name_leafdata());
+    if (rx_pkts_broadcast.is_set || is_set(rx_pkts_broadcast.yfilter)) leaf_name_data.push_back(rx_pkts_broadcast.get_name_leafdata());
+    if (rx_pkts_good.is_set || is_set(rx_pkts_good.yfilter)) leaf_name_data.push_back(rx_pkts_good.get_name_leafdata());
+    if (rx_pkts_multicast.is_set || is_set(rx_pkts_multicast.yfilter)) leaf_name_data.push_back(rx_pkts_multicast.get_name_leafdata());
+    if (rx_pkts_over_sized.is_set || is_set(rx_pkts_over_sized.yfilter)) leaf_name_data.push_back(rx_pkts_over_sized.get_name_leafdata());
+    if (rx_pkts_under_sized.is_set || is_set(rx_pkts_under_sized.yfilter)) leaf_name_data.push_back(rx_pkts_under_sized.get_name_leafdata());
+    if (rx_pkts_unicast.is_set || is_set(rx_pkts_unicast.yfilter)) leaf_name_data.push_back(rx_pkts_unicast.get_name_leafdata());
+    if (rx_recv_fragments.is_set || is_set(rx_recv_fragments.yfilter)) leaf_name_data.push_back(rx_recv_fragments.get_name_leafdata());
+    if (rx_total_bytes.is_set || is_set(rx_total_bytes.yfilter)) leaf_name_data.push_back(rx_total_bytes.get_name_leafdata());
+    if (tx_bad_fcs.is_set || is_set(tx_bad_fcs.yfilter)) leaf_name_data.push_back(tx_bad_fcs.get_name_leafdata());
+    if (tx_bytes_good.is_set || is_set(tx_bytes_good.yfilter)) leaf_name_data.push_back(tx_bytes_good.get_name_leafdata());
+    if (tx_fragments.is_set || is_set(tx_fragments.yfilter)) leaf_name_data.push_back(tx_fragments.get_name_leafdata());
+    if (tx_jabber.is_set || is_set(tx_jabber.yfilter)) leaf_name_data.push_back(tx_jabber.get_name_leafdata());
+    if (tx_packets.is_set || is_set(tx_packets.yfilter)) leaf_name_data.push_back(tx_packets.get_name_leafdata());
+    if (tx_pause.is_set || is_set(tx_pause.yfilter)) leaf_name_data.push_back(tx_pause.get_name_leafdata());
+    if (tx_pkts_good.is_set || is_set(tx_pkts_good.yfilter)) leaf_name_data.push_back(tx_pkts_good.get_name_leafdata());
+    if (tx_pkts_over_sized.is_set || is_set(tx_pkts_over_sized.yfilter)) leaf_name_data.push_back(tx_pkts_over_sized.get_name_leafdata());
+    if (tx_pkts_under_sized.is_set || is_set(tx_pkts_under_sized.yfilter)) leaf_name_data.push_back(tx_pkts_under_sized.get_name_leafdata());
+    if (tx_total_bytes.is_set || is_set(tx_total_bytes.yfilter)) leaf_name_data.push_back(tx_total_bytes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -834,136 +979,339 @@ std::map<std::string, std::shared_ptr<Entity>> HeadlessFuncData::EthernetPortNam
     return children;
 }
 
-void HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::set_value(const std::string & value_path, std::string value)
+void HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rx8021q-pkt")
     {
         rx8021q_pkt = value;
+        rx8021q_pkt.value_namespace = name_space;
+        rx8021q_pkt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-bytes-good")
     {
         rx_bytes_good = value;
+        rx_bytes_good.value_namespace = name_space;
+        rx_bytes_good.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-error-jabbers")
     {
         rx_error_jabbers = value;
+        rx_error_jabbers.value_namespace = name_space;
+        rx_error_jabbers.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-lldp-pkt")
     {
         rx_lldp_pkt = value;
+        rx_lldp_pkt.value_namespace = name_space;
+        rx_lldp_pkt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-packets")
     {
         rx_packets = value;
+        rx_packets.value_namespace = name_space;
+        rx_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pause")
     {
         rx_pause = value;
+        rx_pause.value_namespace = name_space;
+        rx_pause.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkt-drop")
     {
         rx_pkt_drop = value;
+        rx_pkt_drop.value_namespace = name_space;
+        rx_pkt_drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts1024-to1518-bytes")
     {
         rx_pkts1024_to1518_bytes = value;
+        rx_pkts1024_to1518_bytes.value_namespace = name_space;
+        rx_pkts1024_to1518_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts128to255-bytes")
     {
         rx_pkts128to255_bytes = value;
+        rx_pkts128to255_bytes.value_namespace = name_space;
+        rx_pkts128to255_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts256-to511-bytes")
     {
         rx_pkts256_to511_bytes = value;
+        rx_pkts256_to511_bytes.value_namespace = name_space;
+        rx_pkts256_to511_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts512-to1023-bytes")
     {
         rx_pkts512_to1023_bytes = value;
+        rx_pkts512_to1023_bytes.value_namespace = name_space;
+        rx_pkts512_to1023_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts64-bytes")
     {
         rx_pkts64_bytes = value;
+        rx_pkts64_bytes.value_namespace = name_space;
+        rx_pkts64_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts65-to127-bytes")
     {
         rx_pkts65_to127_bytes = value;
+        rx_pkts65_to127_bytes.value_namespace = name_space;
+        rx_pkts65_to127_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts-bad-fcs")
     {
         rx_pkts_bad_fcs = value;
+        rx_pkts_bad_fcs.value_namespace = name_space;
+        rx_pkts_bad_fcs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts-broadcast")
     {
         rx_pkts_broadcast = value;
+        rx_pkts_broadcast.value_namespace = name_space;
+        rx_pkts_broadcast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts-good")
     {
         rx_pkts_good = value;
+        rx_pkts_good.value_namespace = name_space;
+        rx_pkts_good.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts-multicast")
     {
         rx_pkts_multicast = value;
+        rx_pkts_multicast.value_namespace = name_space;
+        rx_pkts_multicast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts-over-sized")
     {
         rx_pkts_over_sized = value;
+        rx_pkts_over_sized.value_namespace = name_space;
+        rx_pkts_over_sized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts-under-sized")
     {
         rx_pkts_under_sized = value;
+        rx_pkts_under_sized.value_namespace = name_space;
+        rx_pkts_under_sized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-pkts-unicast")
     {
         rx_pkts_unicast = value;
+        rx_pkts_unicast.value_namespace = name_space;
+        rx_pkts_unicast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-recv-fragments")
     {
         rx_recv_fragments = value;
+        rx_recv_fragments.value_namespace = name_space;
+        rx_recv_fragments.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-total-bytes")
     {
         rx_total_bytes = value;
+        rx_total_bytes.value_namespace = name_space;
+        rx_total_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-bad-fcs")
     {
         tx_bad_fcs = value;
+        tx_bad_fcs.value_namespace = name_space;
+        tx_bad_fcs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-bytes-good")
     {
         tx_bytes_good = value;
+        tx_bytes_good.value_namespace = name_space;
+        tx_bytes_good.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-fragments")
     {
         tx_fragments = value;
+        tx_fragments.value_namespace = name_space;
+        tx_fragments.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-jabber")
     {
         tx_jabber = value;
+        tx_jabber.value_namespace = name_space;
+        tx_jabber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-packets")
     {
         tx_packets = value;
+        tx_packets.value_namespace = name_space;
+        tx_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-pause")
     {
         tx_pause = value;
+        tx_pause.value_namespace = name_space;
+        tx_pause.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-pkts-good")
     {
         tx_pkts_good = value;
+        tx_pkts_good.value_namespace = name_space;
+        tx_pkts_good.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-pkts-over-sized")
     {
         tx_pkts_over_sized = value;
+        tx_pkts_over_sized.value_namespace = name_space;
+        tx_pkts_over_sized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-pkts-under-sized")
     {
         tx_pkts_under_sized = value;
+        tx_pkts_under_sized.value_namespace = name_space;
+        tx_pkts_under_sized.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-total-bytes")
     {
         tx_total_bytes = value;
+        tx_total_bytes.value_namespace = name_space;
+        tx_total_bytes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rx8021q-pkt")
+    {
+        rx8021q_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rx-bytes-good")
+    {
+        rx_bytes_good.yfilter = yfilter;
+    }
+    if(value_path == "rx-error-jabbers")
+    {
+        rx_error_jabbers.yfilter = yfilter;
+    }
+    if(value_path == "rx-lldp-pkt")
+    {
+        rx_lldp_pkt.yfilter = yfilter;
+    }
+    if(value_path == "rx-packets")
+    {
+        rx_packets.yfilter = yfilter;
+    }
+    if(value_path == "rx-pause")
+    {
+        rx_pause.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkt-drop")
+    {
+        rx_pkt_drop.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts1024-to1518-bytes")
+    {
+        rx_pkts1024_to1518_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts128to255-bytes")
+    {
+        rx_pkts128to255_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts256-to511-bytes")
+    {
+        rx_pkts256_to511_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts512-to1023-bytes")
+    {
+        rx_pkts512_to1023_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts64-bytes")
+    {
+        rx_pkts64_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts65-to127-bytes")
+    {
+        rx_pkts65_to127_bytes.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts-bad-fcs")
+    {
+        rx_pkts_bad_fcs.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts-broadcast")
+    {
+        rx_pkts_broadcast.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts-good")
+    {
+        rx_pkts_good.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts-multicast")
+    {
+        rx_pkts_multicast.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts-over-sized")
+    {
+        rx_pkts_over_sized.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts-under-sized")
+    {
+        rx_pkts_under_sized.yfilter = yfilter;
+    }
+    if(value_path == "rx-pkts-unicast")
+    {
+        rx_pkts_unicast.yfilter = yfilter;
+    }
+    if(value_path == "rx-recv-fragments")
+    {
+        rx_recv_fragments.yfilter = yfilter;
+    }
+    if(value_path == "rx-total-bytes")
+    {
+        rx_total_bytes.yfilter = yfilter;
+    }
+    if(value_path == "tx-bad-fcs")
+    {
+        tx_bad_fcs.yfilter = yfilter;
+    }
+    if(value_path == "tx-bytes-good")
+    {
+        tx_bytes_good.yfilter = yfilter;
+    }
+    if(value_path == "tx-fragments")
+    {
+        tx_fragments.yfilter = yfilter;
+    }
+    if(value_path == "tx-jabber")
+    {
+        tx_jabber.yfilter = yfilter;
+    }
+    if(value_path == "tx-packets")
+    {
+        tx_packets.yfilter = yfilter;
+    }
+    if(value_path == "tx-pause")
+    {
+        tx_pause.yfilter = yfilter;
+    }
+    if(value_path == "tx-pkts-good")
+    {
+        tx_pkts_good.yfilter = yfilter;
+    }
+    if(value_path == "tx-pkts-over-sized")
+    {
+        tx_pkts_over_sized.yfilter = yfilter;
+    }
+    if(value_path == "tx-pkts-under-sized")
+    {
+        tx_pkts_under_sized.yfilter = yfilter;
+    }
+    if(value_path == "tx-total-bytes")
+    {
+        tx_total_bytes.yfilter = yfilter;
+    }
+}
+
+bool HeadlessFuncData::EthernetPortNames::EthernetPortName::EtherStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx8021q-pkt" || name == "rx-bytes-good" || name == "rx-error-jabbers" || name == "rx-lldp-pkt" || name == "rx-packets" || name == "rx-pause" || name == "rx-pkt-drop" || name == "rx-pkts1024-to1518-bytes" || name == "rx-pkts128to255-bytes" || name == "rx-pkts256-to511-bytes" || name == "rx-pkts512-to1023-bytes" || name == "rx-pkts64-bytes" || name == "rx-pkts65-to127-bytes" || name == "rx-pkts-bad-fcs" || name == "rx-pkts-broadcast" || name == "rx-pkts-good" || name == "rx-pkts-multicast" || name == "rx-pkts-over-sized" || name == "rx-pkts-under-sized" || name == "rx-pkts-unicast" || name == "rx-recv-fragments" || name == "rx-total-bytes" || name == "tx-bad-fcs" || name == "tx-bytes-good" || name == "tx-fragments" || name == "tx-jabber" || name == "tx-packets" || name == "tx-pause" || name == "tx-pkts-good" || name == "tx-pkts-over-sized" || name == "tx-pkts-under-sized" || name == "tx-total-bytes")
+        return true;
+    return false;
 }
 
 

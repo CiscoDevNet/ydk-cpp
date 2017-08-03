@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_asr9k_asic_errors_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_asic_errors_oper {
 
 AsicErrorStats::AsicErrorStats()
@@ -29,7 +31,7 @@ bool AsicErrorStats::has_data() const
 
 bool AsicErrorStats::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::get_children() co
     return children;
 }
 
-void AsicErrorStats::set_value(const std::string & value_path, std::string value)
+void AsicErrorStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AsicErrorStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string AsicErrorStats::get_bundle_name() const
 augment_capabilities_function AsicErrorStats::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> AsicErrorStats::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool AsicErrorStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 AsicErrorStats::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool AsicErrorStats::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AsicErrorStats::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::get_childr
     return children;
 }
 
-void AsicErrorStats::Nodes::set_value(const std::string & value_path, std::string value)
+void AsicErrorStats::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AsicErrorStats::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AsicErrorStats::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 AsicErrorStats::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool AsicErrorStats::Nodes::Node::has_data() const
 
 bool AsicErrorStats::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (counts !=  nullptr && counts->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath AsicErrorStats::Nodes::Node::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::get_
     return children;
 }
 
-void AsicErrorStats::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void AsicErrorStats::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AsicErrorStats::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool AsicErrorStats::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counts" || name == "node-name")
+        return true;
+    return false;
 }
 
 AsicErrorStats::Nodes::Node::Counts::Counts()
@@ -322,7 +368,7 @@ bool AsicErrorStats::Nodes::Node::Counts::has_operation() const
         if(count[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AsicErrorStats::Nodes::Node::Counts::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Coun
     return children;
 }
 
-void AsicErrorStats::Nodes::Node::Counts::set_value(const std::string & value_path, std::string value)
+void AsicErrorStats::Nodes::Node::Counts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AsicErrorStats::Nodes::Node::Counts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AsicErrorStats::Nodes::Node::Counts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count")
+        return true;
+    return false;
 }
 
 AsicErrorStats::Nodes::Node::Counts::Count::Count()
@@ -419,8 +476,8 @@ bool AsicErrorStats::Nodes::Node::Counts::Count::has_operation() const
         if(sum_data[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string AsicErrorStats::Nodes::Node::Counts::Count::get_segment_path() const
@@ -446,7 +503,7 @@ const EntityPath AsicErrorStats::Nodes::Node::Counts::Count::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -486,12 +543,29 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Coun
     return children;
 }
 
-void AsicErrorStats::Nodes::Node::Counts::Count::set_value(const std::string & value_path, std::string value)
+void AsicErrorStats::Nodes::Node::Counts::Count::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AsicErrorStats::Nodes::Node::Counts::Count::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool AsicErrorStats::Nodes::Node::Counts::Count::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sum-data" || name == "type")
+        return true;
+    return false;
 }
 
 AsicErrorStats::Nodes::Node::Counts::Count::SumData::SumData()
@@ -534,19 +608,19 @@ bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_operation() const
 {
     for (auto const & leaf : node_key.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(crc_err_count.operation)
-	|| is_set(gen_err_count.operation)
-	|| is_set(instance.operation)
-	|| is_set(mbe_err_count.operation)
-	|| is_set(node_key.operation)
-	|| is_set(num_nodes.operation)
-	|| is_set(par_err_count.operation)
-	|| is_set(reset_err_count.operation)
-	|| is_set(sbe_err_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(crc_err_count.yfilter)
+	|| ydk::is_set(gen_err_count.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(mbe_err_count.yfilter)
+	|| ydk::is_set(node_key.yfilter)
+	|| ydk::is_set(num_nodes.yfilter)
+	|| ydk::is_set(par_err_count.yfilter)
+	|| ydk::is_set(reset_err_count.yfilter)
+	|| ydk::is_set(sbe_err_count.yfilter);
 }
 
 std::string AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_segment_path() const
@@ -572,14 +646,14 @@ const EntityPath AsicErrorStats::Nodes::Node::Counts::Count::SumData::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (crc_err_count.is_set || is_set(crc_err_count.operation)) leaf_name_data.push_back(crc_err_count.get_name_leafdata());
-    if (gen_err_count.is_set || is_set(gen_err_count.operation)) leaf_name_data.push_back(gen_err_count.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (mbe_err_count.is_set || is_set(mbe_err_count.operation)) leaf_name_data.push_back(mbe_err_count.get_name_leafdata());
-    if (num_nodes.is_set || is_set(num_nodes.operation)) leaf_name_data.push_back(num_nodes.get_name_leafdata());
-    if (par_err_count.is_set || is_set(par_err_count.operation)) leaf_name_data.push_back(par_err_count.get_name_leafdata());
-    if (reset_err_count.is_set || is_set(reset_err_count.operation)) leaf_name_data.push_back(reset_err_count.get_name_leafdata());
-    if (sbe_err_count.is_set || is_set(sbe_err_count.operation)) leaf_name_data.push_back(sbe_err_count.get_name_leafdata());
+    if (crc_err_count.is_set || is_set(crc_err_count.yfilter)) leaf_name_data.push_back(crc_err_count.get_name_leafdata());
+    if (gen_err_count.is_set || is_set(gen_err_count.yfilter)) leaf_name_data.push_back(gen_err_count.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (mbe_err_count.is_set || is_set(mbe_err_count.yfilter)) leaf_name_data.push_back(mbe_err_count.get_name_leafdata());
+    if (num_nodes.is_set || is_set(num_nodes.yfilter)) leaf_name_data.push_back(num_nodes.get_name_leafdata());
+    if (par_err_count.is_set || is_set(par_err_count.yfilter)) leaf_name_data.push_back(par_err_count.get_name_leafdata());
+    if (reset_err_count.is_set || is_set(reset_err_count.yfilter)) leaf_name_data.push_back(reset_err_count.get_name_leafdata());
+    if (sbe_err_count.is_set || is_set(sbe_err_count.yfilter)) leaf_name_data.push_back(sbe_err_count.get_name_leafdata());
 
     auto node_key_name_datas = node_key.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), node_key_name_datas.begin(), node_key_name_datas.end());
@@ -600,23 +674,31 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrorStats::Nodes::Node::Coun
     return children;
 }
 
-void AsicErrorStats::Nodes::Node::Counts::Count::SumData::set_value(const std::string & value_path, std::string value)
+void AsicErrorStats::Nodes::Node::Counts::Count::SumData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "crc-err-count")
     {
         crc_err_count = value;
+        crc_err_count.value_namespace = name_space;
+        crc_err_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gen-err-count")
     {
         gen_err_count = value;
+        gen_err_count.value_namespace = name_space;
+        gen_err_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mbe-err-count")
     {
         mbe_err_count = value;
+        mbe_err_count.value_namespace = name_space;
+        mbe_err_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-key")
     {
@@ -625,19 +707,74 @@ void AsicErrorStats::Nodes::Node::Counts::Count::SumData::set_value(const std::s
     if(value_path == "num-nodes")
     {
         num_nodes = value;
+        num_nodes.value_namespace = name_space;
+        num_nodes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "par-err-count")
     {
         par_err_count = value;
+        par_err_count.value_namespace = name_space;
+        par_err_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reset-err-count")
     {
         reset_err_count = value;
+        reset_err_count.value_namespace = name_space;
+        reset_err_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sbe-err-count")
     {
         sbe_err_count = value;
+        sbe_err_count.value_namespace = name_space;
+        sbe_err_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AsicErrorStats::Nodes::Node::Counts::Count::SumData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "crc-err-count")
+    {
+        crc_err_count.yfilter = yfilter;
+    }
+    if(value_path == "gen-err-count")
+    {
+        gen_err_count.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "mbe-err-count")
+    {
+        mbe_err_count.yfilter = yfilter;
+    }
+    if(value_path == "node-key")
+    {
+        node_key.yfilter = yfilter;
+    }
+    if(value_path == "num-nodes")
+    {
+        num_nodes.yfilter = yfilter;
+    }
+    if(value_path == "par-err-count")
+    {
+        par_err_count.yfilter = yfilter;
+    }
+    if(value_path == "reset-err-count")
+    {
+        reset_err_count.yfilter = yfilter;
+    }
+    if(value_path == "sbe-err-count")
+    {
+        sbe_err_count.yfilter = yfilter;
+    }
+}
+
+bool AsicErrorStats::Nodes::Node::Counts::Count::SumData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "crc-err-count" || name == "gen-err-count" || name == "instance" || name == "mbe-err-count" || name == "node-key" || name == "num-nodes" || name == "par-err-count" || name == "reset-err-count" || name == "sbe-err-count")
+        return true;
+    return false;
 }
 
 

@@ -9,11 +9,11 @@
 
 #include "Cisco_IOS_XR_ip_rib_ipv4_oper_1.hpp"
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_rib_ipv4_oper {
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap : public ydk::Entity
 {
     public:
         Smiap();
@@ -21,11 +21,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProtocolRoutes; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes
         class Information; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information
@@ -36,7 +38,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes : public ydk::Entity
 {
     public:
         ProtocolRoutes();
@@ -44,11 +46,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProtocolRoute; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute
 
@@ -57,7 +61,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute : public ydk::Entity
 {
     public:
         ProtocolRoute();
@@ -65,46 +69,48 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
-        YLeaf prefix_length_xr; //type: uint8
-        YLeaf route_version; //type: uint32
-        YLeaf protocol_id; //type: uint32
-        YLeaf protocol_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf client_id; //type: uint32
-        YLeaf route_type; //type: uint16
-        YLeaf priority; //type: uint8
-        YLeaf svd_type; //type: uint8
-        YLeaf flags; //type: uint32
-        YLeaf extended_flags; //type: uint64
-        YLeaf tag; //type: uint32
-        YLeaf distance; //type: uint32
-        YLeaf diversion_distance; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf attribute_identity; //type: uint32
-        YLeaf traffic_index; //type: uint8
-        YLeaf route_precedence; //type: uint8
-        YLeaf qos_group; //type: uint8
-        YLeaf flow_tag; //type: uint8
-        YLeaf fwd_class; //type: uint8
-        YLeaf pic_count; //type: uint8
-        YLeaf active; //type: boolean
-        YLeaf diversion; //type: boolean
-        YLeaf diversion_proto_name; //type: string
-        YLeaf route_age; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf tbl_version; //type: uint64
-        YLeaf route_modify_time; //type: uint64
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length_xr; //type: uint8
+        ydk::YLeaf route_version; //type: uint32
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf route_type; //type: uint16
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf svd_type; //type: uint8
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf extended_flags; //type: uint64
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf diversion_distance; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf attribute_identity; //type: uint32
+        ydk::YLeaf traffic_index; //type: uint8
+        ydk::YLeaf route_precedence; //type: uint8
+        ydk::YLeaf qos_group; //type: uint8
+        ydk::YLeaf flow_tag; //type: uint8
+        ydk::YLeaf fwd_class; //type: uint8
+        ydk::YLeaf pic_count; //type: uint8
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf diversion; //type: boolean
+        ydk::YLeaf diversion_proto_name; //type: string
+        ydk::YLeaf route_age; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf tbl_version; //type: uint64
+        ydk::YLeaf route_modify_time; //type: uint64
         class RoutePath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath
 
         std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath> route_path;
@@ -112,7 +118,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -120,11 +126,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4RibEdmPath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
@@ -133,7 +141,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public ydk::Entity
 {
     public:
         Ipv4RibEdmPath();
@@ -141,55 +149,57 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf information_source; //type: string
-        YLeaf v6_nexthop; //type: string
-        YLeaf v6_information_source; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf load_metric; //type: uint32
-        YLeaf flags64; //type: uint64
-        YLeaf flags; //type: uint16
-        YLeaf private_flags; //type: uint16
-        YLeaf looped; //type: boolean
-        YLeaf next_hop_table_id; //type: uint32
-        YLeaf next_hop_vrf_name; //type: string
-        YLeaf next_hop_table_name; //type: string
-        YLeaf next_hop_afi; //type: uint32
-        YLeaf next_hop_safi; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf pathid; //type: uint32
-        YLeaf backup_pathid; //type: uint32
-        YLeaf ref_cnt_of_backup; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf mvpn_present; //type: boolean
-        YLeaf path_rt_present; //type: boolean
-        YLeaf vrf_import_rt_present; //type: boolean
-        YLeaf source_asrt_present; //type: boolean
-        YLeaf source_rd_present; //type: boolean
-        YLeaf segmented_nexthop_present; //type: boolean
-        YLeaf next_hop_id; //type: uint32
-        YLeaf next_hop_id_refcount; //type: uint32
-        YLeaf ospf_area_id; //type: string
-        YLeaf has_labelstk; //type: boolean
-        YLeaf num_labels; //type: uint8
-        YLeaf binding_label; //type: uint32
-        YLeaf nhid_feid; //type: uint64
-        YLeaf mpls_feid; //type: uint64
-        YLeafList remote_backup_addr; //type: list of  string
-        YLeafList labelstk; //type: list of  uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf information_source; //type: string
+        ydk::YLeaf v6_nexthop; //type: string
+        ydk::YLeaf v6_information_source; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf flags64; //type: uint64
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf private_flags; //type: uint16
+        ydk::YLeaf looped; //type: boolean
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf next_hop_vrf_name; //type: string
+        ydk::YLeaf next_hop_table_name; //type: string
+        ydk::YLeaf next_hop_afi; //type: uint32
+        ydk::YLeaf next_hop_safi; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf pathid; //type: uint32
+        ydk::YLeaf backup_pathid; //type: uint32
+        ydk::YLeaf ref_cnt_of_backup; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf mvpn_present; //type: boolean
+        ydk::YLeaf path_rt_present; //type: boolean
+        ydk::YLeaf vrf_import_rt_present; //type: boolean
+        ydk::YLeaf source_asrt_present; //type: boolean
+        ydk::YLeaf source_rd_present; //type: boolean
+        ydk::YLeaf segmented_nexthop_present; //type: boolean
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf next_hop_id_refcount; //type: uint32
+        ydk::YLeaf ospf_area_id; //type: string
+        ydk::YLeaf has_labelstk; //type: boolean
+        ydk::YLeaf num_labels; //type: uint8
+        ydk::YLeaf binding_label; //type: uint32
+        ydk::YLeaf nhid_feid; //type: uint64
+        ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeafList remote_backup_addr; //type: list of  string
+        ydk::YLeafList labelstk; //type: list of  uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information : public ydk::Entity
 {
     public:
         Information();
@@ -197,28 +207,30 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_names; //type: string
-        YLeaf instance; //type: string
-        YLeaf version; //type: uint32
-        YLeaf redistribution_client_count; //type: uint32
-        YLeaf protocol_clients_count; //type: uint32
-        YLeaf routes_counts; //type: uint32
-        YLeaf active_routes_count; //type: uint32
-        YLeaf deleted_routes_count; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf protocol_route_memory; //type: uint32
-        YLeaf backup_routes_count; //type: uint32
+        ydk::YLeaf protocol_names; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf redistribution_client_count; //type: uint32
+        ydk::YLeaf protocol_clients_count; //type: uint32
+        ydk::YLeaf routes_counts; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf deleted_routes_count; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf protocol_route_memory; //type: uint32
+        ydk::YLeaf backup_routes_count; //type: uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::Information
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv : public ydk::Entity
 {
     public:
         Lspv();
@@ -226,11 +238,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProtocolRoutes; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes
         class Information; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information
@@ -241,7 +255,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes : public ydk::Entity
 {
     public:
         ProtocolRoutes();
@@ -249,11 +263,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProtocolRoute; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute
 
@@ -262,7 +278,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute : public ydk::Entity
 {
     public:
         ProtocolRoute();
@@ -270,46 +286,48 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
-        YLeaf prefix_length_xr; //type: uint8
-        YLeaf route_version; //type: uint32
-        YLeaf protocol_id; //type: uint32
-        YLeaf protocol_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf client_id; //type: uint32
-        YLeaf route_type; //type: uint16
-        YLeaf priority; //type: uint8
-        YLeaf svd_type; //type: uint8
-        YLeaf flags; //type: uint32
-        YLeaf extended_flags; //type: uint64
-        YLeaf tag; //type: uint32
-        YLeaf distance; //type: uint32
-        YLeaf diversion_distance; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf attribute_identity; //type: uint32
-        YLeaf traffic_index; //type: uint8
-        YLeaf route_precedence; //type: uint8
-        YLeaf qos_group; //type: uint8
-        YLeaf flow_tag; //type: uint8
-        YLeaf fwd_class; //type: uint8
-        YLeaf pic_count; //type: uint8
-        YLeaf active; //type: boolean
-        YLeaf diversion; //type: boolean
-        YLeaf diversion_proto_name; //type: string
-        YLeaf route_age; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf tbl_version; //type: uint64
-        YLeaf route_modify_time; //type: uint64
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length_xr; //type: uint8
+        ydk::YLeaf route_version; //type: uint32
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf route_type; //type: uint16
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf svd_type; //type: uint8
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf extended_flags; //type: uint64
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf diversion_distance; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf attribute_identity; //type: uint32
+        ydk::YLeaf traffic_index; //type: uint8
+        ydk::YLeaf route_precedence; //type: uint8
+        ydk::YLeaf qos_group; //type: uint8
+        ydk::YLeaf flow_tag; //type: uint8
+        ydk::YLeaf fwd_class; //type: uint8
+        ydk::YLeaf pic_count; //type: uint8
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf diversion; //type: boolean
+        ydk::YLeaf diversion_proto_name; //type: string
+        ydk::YLeaf route_age; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf tbl_version; //type: uint64
+        ydk::YLeaf route_modify_time; //type: uint64
         class RoutePath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath
 
         std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath> route_path;
@@ -317,7 +335,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -325,11 +343,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4RibEdmPath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
@@ -338,7 +358,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public ydk::Entity
 {
     public:
         Ipv4RibEdmPath();
@@ -346,55 +366,57 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf information_source; //type: string
-        YLeaf v6_nexthop; //type: string
-        YLeaf v6_information_source; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf load_metric; //type: uint32
-        YLeaf flags64; //type: uint64
-        YLeaf flags; //type: uint16
-        YLeaf private_flags; //type: uint16
-        YLeaf looped; //type: boolean
-        YLeaf next_hop_table_id; //type: uint32
-        YLeaf next_hop_vrf_name; //type: string
-        YLeaf next_hop_table_name; //type: string
-        YLeaf next_hop_afi; //type: uint32
-        YLeaf next_hop_safi; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf pathid; //type: uint32
-        YLeaf backup_pathid; //type: uint32
-        YLeaf ref_cnt_of_backup; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf mvpn_present; //type: boolean
-        YLeaf path_rt_present; //type: boolean
-        YLeaf vrf_import_rt_present; //type: boolean
-        YLeaf source_asrt_present; //type: boolean
-        YLeaf source_rd_present; //type: boolean
-        YLeaf segmented_nexthop_present; //type: boolean
-        YLeaf next_hop_id; //type: uint32
-        YLeaf next_hop_id_refcount; //type: uint32
-        YLeaf ospf_area_id; //type: string
-        YLeaf has_labelstk; //type: boolean
-        YLeaf num_labels; //type: uint8
-        YLeaf binding_label; //type: uint32
-        YLeaf nhid_feid; //type: uint64
-        YLeaf mpls_feid; //type: uint64
-        YLeafList remote_backup_addr; //type: list of  string
-        YLeafList labelstk; //type: list of  uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf information_source; //type: string
+        ydk::YLeaf v6_nexthop; //type: string
+        ydk::YLeaf v6_information_source; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf flags64; //type: uint64
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf private_flags; //type: uint16
+        ydk::YLeaf looped; //type: boolean
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf next_hop_vrf_name; //type: string
+        ydk::YLeaf next_hop_table_name; //type: string
+        ydk::YLeaf next_hop_afi; //type: uint32
+        ydk::YLeaf next_hop_safi; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf pathid; //type: uint32
+        ydk::YLeaf backup_pathid; //type: uint32
+        ydk::YLeaf ref_cnt_of_backup; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf mvpn_present; //type: boolean
+        ydk::YLeaf path_rt_present; //type: boolean
+        ydk::YLeaf vrf_import_rt_present; //type: boolean
+        ydk::YLeaf source_asrt_present; //type: boolean
+        ydk::YLeaf source_rd_present; //type: boolean
+        ydk::YLeaf segmented_nexthop_present; //type: boolean
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf next_hop_id_refcount; //type: uint32
+        ydk::YLeaf ospf_area_id; //type: string
+        ydk::YLeaf has_labelstk; //type: boolean
+        ydk::YLeaf num_labels; //type: uint8
+        ydk::YLeaf binding_label; //type: uint32
+        ydk::YLeaf nhid_feid; //type: uint64
+        ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeafList remote_backup_addr; //type: list of  string
+        ydk::YLeafList labelstk; //type: list of  uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information : public ydk::Entity
 {
     public:
         Information();
@@ -402,28 +424,30 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_names; //type: string
-        YLeaf instance; //type: string
-        YLeaf version; //type: uint32
-        YLeaf redistribution_client_count; //type: uint32
-        YLeaf protocol_clients_count; //type: uint32
-        YLeaf routes_counts; //type: uint32
-        YLeaf active_routes_count; //type: uint32
-        YLeaf deleted_routes_count; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf protocol_route_memory; //type: uint32
-        YLeaf backup_routes_count; //type: uint32
+        ydk::YLeaf protocol_names; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf redistribution_client_count; //type: uint32
+        ydk::YLeaf protocol_clients_count; //type: uint32
+        ydk::YLeaf routes_counts; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf deleted_routes_count; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf protocol_route_memory; //type: uint32
+        ydk::YLeaf backup_routes_count; //type: uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Lspv::Information
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs : public ydk::Entity
 {
     public:
         NonAs();
@@ -431,11 +455,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProtocolRoutes; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes
         class Information; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information
@@ -446,7 +472,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes : public ydk::Entity
 {
     public:
         ProtocolRoutes();
@@ -454,11 +480,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProtocolRoute; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute
 
@@ -467,7 +495,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute : public ydk::Entity
 {
     public:
         ProtocolRoute();
@@ -475,46 +503,48 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
-        YLeaf prefix_length_xr; //type: uint8
-        YLeaf route_version; //type: uint32
-        YLeaf protocol_id; //type: uint32
-        YLeaf protocol_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf client_id; //type: uint32
-        YLeaf route_type; //type: uint16
-        YLeaf priority; //type: uint8
-        YLeaf svd_type; //type: uint8
-        YLeaf flags; //type: uint32
-        YLeaf extended_flags; //type: uint64
-        YLeaf tag; //type: uint32
-        YLeaf distance; //type: uint32
-        YLeaf diversion_distance; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf attribute_identity; //type: uint32
-        YLeaf traffic_index; //type: uint8
-        YLeaf route_precedence; //type: uint8
-        YLeaf qos_group; //type: uint8
-        YLeaf flow_tag; //type: uint8
-        YLeaf fwd_class; //type: uint8
-        YLeaf pic_count; //type: uint8
-        YLeaf active; //type: boolean
-        YLeaf diversion; //type: boolean
-        YLeaf diversion_proto_name; //type: string
-        YLeaf route_age; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf tbl_version; //type: uint64
-        YLeaf route_modify_time; //type: uint64
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length_xr; //type: uint8
+        ydk::YLeaf route_version; //type: uint32
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf route_type; //type: uint16
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf svd_type; //type: uint8
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf extended_flags; //type: uint64
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf diversion_distance; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf attribute_identity; //type: uint32
+        ydk::YLeaf traffic_index; //type: uint8
+        ydk::YLeaf route_precedence; //type: uint8
+        ydk::YLeaf qos_group; //type: uint8
+        ydk::YLeaf flow_tag; //type: uint8
+        ydk::YLeaf fwd_class; //type: uint8
+        ydk::YLeaf pic_count; //type: uint8
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf diversion; //type: boolean
+        ydk::YLeaf diversion_proto_name; //type: string
+        ydk::YLeaf route_age; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf tbl_version; //type: uint64
+        ydk::YLeaf route_modify_time; //type: uint64
         class RoutePath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath
 
         std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath> route_path;
@@ -522,7 +552,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -530,11 +560,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4RibEdmPath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
@@ -543,7 +575,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public ydk::Entity
 {
     public:
         Ipv4RibEdmPath();
@@ -551,55 +583,57 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf information_source; //type: string
-        YLeaf v6_nexthop; //type: string
-        YLeaf v6_information_source; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf load_metric; //type: uint32
-        YLeaf flags64; //type: uint64
-        YLeaf flags; //type: uint16
-        YLeaf private_flags; //type: uint16
-        YLeaf looped; //type: boolean
-        YLeaf next_hop_table_id; //type: uint32
-        YLeaf next_hop_vrf_name; //type: string
-        YLeaf next_hop_table_name; //type: string
-        YLeaf next_hop_afi; //type: uint32
-        YLeaf next_hop_safi; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf pathid; //type: uint32
-        YLeaf backup_pathid; //type: uint32
-        YLeaf ref_cnt_of_backup; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf mvpn_present; //type: boolean
-        YLeaf path_rt_present; //type: boolean
-        YLeaf vrf_import_rt_present; //type: boolean
-        YLeaf source_asrt_present; //type: boolean
-        YLeaf source_rd_present; //type: boolean
-        YLeaf segmented_nexthop_present; //type: boolean
-        YLeaf next_hop_id; //type: uint32
-        YLeaf next_hop_id_refcount; //type: uint32
-        YLeaf ospf_area_id; //type: string
-        YLeaf has_labelstk; //type: boolean
-        YLeaf num_labels; //type: uint8
-        YLeaf binding_label; //type: uint32
-        YLeaf nhid_feid; //type: uint64
-        YLeaf mpls_feid; //type: uint64
-        YLeafList remote_backup_addr; //type: list of  string
-        YLeafList labelstk; //type: list of  uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf information_source; //type: string
+        ydk::YLeaf v6_nexthop; //type: string
+        ydk::YLeaf v6_information_source; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf flags64; //type: uint64
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf private_flags; //type: uint16
+        ydk::YLeaf looped; //type: boolean
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf next_hop_vrf_name; //type: string
+        ydk::YLeaf next_hop_table_name; //type: string
+        ydk::YLeaf next_hop_afi; //type: uint32
+        ydk::YLeaf next_hop_safi; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf pathid; //type: uint32
+        ydk::YLeaf backup_pathid; //type: uint32
+        ydk::YLeaf ref_cnt_of_backup; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf mvpn_present; //type: boolean
+        ydk::YLeaf path_rt_present; //type: boolean
+        ydk::YLeaf vrf_import_rt_present; //type: boolean
+        ydk::YLeaf source_asrt_present; //type: boolean
+        ydk::YLeaf source_rd_present; //type: boolean
+        ydk::YLeaf segmented_nexthop_present; //type: boolean
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf next_hop_id_refcount; //type: uint32
+        ydk::YLeaf ospf_area_id; //type: string
+        ydk::YLeaf has_labelstk; //type: boolean
+        ydk::YLeaf num_labels; //type: uint8
+        ydk::YLeaf binding_label; //type: uint32
+        ydk::YLeaf nhid_feid; //type: uint64
+        ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeafList remote_backup_addr; //type: list of  string
+        ydk::YLeafList labelstk; //type: list of  uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information : public ydk::Entity
 {
     public:
         Information();
@@ -607,28 +641,30 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_names; //type: string
-        YLeaf instance; //type: string
-        YLeaf version; //type: uint32
-        YLeaf redistribution_client_count; //type: uint32
-        YLeaf protocol_clients_count; //type: uint32
-        YLeaf routes_counts; //type: uint32
-        YLeaf active_routes_count; //type: uint32
-        YLeaf deleted_routes_count; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf protocol_route_memory; //type: uint32
-        YLeaf backup_routes_count; //type: uint32
+        ydk::YLeaf protocol_names; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf redistribution_client_count; //type: uint32
+        ydk::YLeaf protocol_clients_count; //type: uint32
+        ydk::YLeaf routes_counts; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf deleted_routes_count; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf protocol_route_memory; //type: uint32
+        ydk::YLeaf backup_routes_count; //type: uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::NonAs::Information
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp : public ydk::Entity
 {
     public:
         Bgp();
@@ -636,11 +672,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class As; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As
 
@@ -649,7 +687,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As : public ydk::Entity
 {
     public:
         As();
@@ -657,13 +695,15 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as; //type: string
+        ydk::YLeaf as; //type: string
         class ProtocolRoutes; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes
         class Information; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information
 
@@ -673,7 +713,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes : public ydk::Entity
 {
     public:
         ProtocolRoutes();
@@ -681,11 +721,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProtocolRoute; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute
 
@@ -694,7 +736,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute : public ydk::Entity
 {
     public:
         ProtocolRoute();
@@ -702,46 +744,48 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
-        YLeaf prefix_length_xr; //type: uint8
-        YLeaf route_version; //type: uint32
-        YLeaf protocol_id; //type: uint32
-        YLeaf protocol_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf client_id; //type: uint32
-        YLeaf route_type; //type: uint16
-        YLeaf priority; //type: uint8
-        YLeaf svd_type; //type: uint8
-        YLeaf flags; //type: uint32
-        YLeaf extended_flags; //type: uint64
-        YLeaf tag; //type: uint32
-        YLeaf distance; //type: uint32
-        YLeaf diversion_distance; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf attribute_identity; //type: uint32
-        YLeaf traffic_index; //type: uint8
-        YLeaf route_precedence; //type: uint8
-        YLeaf qos_group; //type: uint8
-        YLeaf flow_tag; //type: uint8
-        YLeaf fwd_class; //type: uint8
-        YLeaf pic_count; //type: uint8
-        YLeaf active; //type: boolean
-        YLeaf diversion; //type: boolean
-        YLeaf diversion_proto_name; //type: string
-        YLeaf route_age; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf tbl_version; //type: uint64
-        YLeaf route_modify_time; //type: uint64
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length_xr; //type: uint8
+        ydk::YLeaf route_version; //type: uint32
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf route_type; //type: uint16
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf svd_type; //type: uint8
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf extended_flags; //type: uint64
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf diversion_distance; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf attribute_identity; //type: uint32
+        ydk::YLeaf traffic_index; //type: uint8
+        ydk::YLeaf route_precedence; //type: uint8
+        ydk::YLeaf qos_group; //type: uint8
+        ydk::YLeaf flow_tag; //type: uint8
+        ydk::YLeaf fwd_class; //type: uint8
+        ydk::YLeaf pic_count; //type: uint8
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf diversion; //type: boolean
+        ydk::YLeaf diversion_proto_name; //type: string
+        ydk::YLeaf route_age; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf tbl_version; //type: uint64
+        ydk::YLeaf route_modify_time; //type: uint64
         class RoutePath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath
 
         std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath> route_path;
@@ -749,7 +793,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -757,11 +801,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4RibEdmPath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
@@ -770,7 +816,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public ydk::Entity
 {
     public:
         Ipv4RibEdmPath();
@@ -778,55 +824,57 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf information_source; //type: string
-        YLeaf v6_nexthop; //type: string
-        YLeaf v6_information_source; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf load_metric; //type: uint32
-        YLeaf flags64; //type: uint64
-        YLeaf flags; //type: uint16
-        YLeaf private_flags; //type: uint16
-        YLeaf looped; //type: boolean
-        YLeaf next_hop_table_id; //type: uint32
-        YLeaf next_hop_vrf_name; //type: string
-        YLeaf next_hop_table_name; //type: string
-        YLeaf next_hop_afi; //type: uint32
-        YLeaf next_hop_safi; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf pathid; //type: uint32
-        YLeaf backup_pathid; //type: uint32
-        YLeaf ref_cnt_of_backup; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf mvpn_present; //type: boolean
-        YLeaf path_rt_present; //type: boolean
-        YLeaf vrf_import_rt_present; //type: boolean
-        YLeaf source_asrt_present; //type: boolean
-        YLeaf source_rd_present; //type: boolean
-        YLeaf segmented_nexthop_present; //type: boolean
-        YLeaf next_hop_id; //type: uint32
-        YLeaf next_hop_id_refcount; //type: uint32
-        YLeaf ospf_area_id; //type: string
-        YLeaf has_labelstk; //type: boolean
-        YLeaf num_labels; //type: uint8
-        YLeaf binding_label; //type: uint32
-        YLeaf nhid_feid; //type: uint64
-        YLeaf mpls_feid; //type: uint64
-        YLeafList remote_backup_addr; //type: list of  string
-        YLeafList labelstk; //type: list of  uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf information_source; //type: string
+        ydk::YLeaf v6_nexthop; //type: string
+        ydk::YLeaf v6_information_source; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf flags64; //type: uint64
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf private_flags; //type: uint16
+        ydk::YLeaf looped; //type: boolean
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf next_hop_vrf_name; //type: string
+        ydk::YLeaf next_hop_table_name; //type: string
+        ydk::YLeaf next_hop_afi; //type: uint32
+        ydk::YLeaf next_hop_safi; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf pathid; //type: uint32
+        ydk::YLeaf backup_pathid; //type: uint32
+        ydk::YLeaf ref_cnt_of_backup; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf mvpn_present; //type: boolean
+        ydk::YLeaf path_rt_present; //type: boolean
+        ydk::YLeaf vrf_import_rt_present; //type: boolean
+        ydk::YLeaf source_asrt_present; //type: boolean
+        ydk::YLeaf source_rd_present; //type: boolean
+        ydk::YLeaf segmented_nexthop_present; //type: boolean
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf next_hop_id_refcount; //type: uint32
+        ydk::YLeaf ospf_area_id; //type: string
+        ydk::YLeaf has_labelstk; //type: boolean
+        ydk::YLeaf num_labels; //type: uint8
+        ydk::YLeaf binding_label; //type: uint32
+        ydk::YLeaf nhid_feid; //type: uint64
+        ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeafList remote_backup_addr; //type: list of  string
+        ydk::YLeafList labelstk; //type: list of  uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information : public ydk::Entity
 {
     public:
         Information();
@@ -834,28 +882,30 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_names; //type: string
-        YLeaf instance; //type: string
-        YLeaf version; //type: uint32
-        YLeaf redistribution_client_count; //type: uint32
-        YLeaf protocol_clients_count; //type: uint32
-        YLeaf routes_counts; //type: uint32
-        YLeaf active_routes_count; //type: uint32
-        YLeaf deleted_routes_count; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf protocol_route_memory; //type: uint32
-        YLeaf backup_routes_count; //type: uint32
+        ydk::YLeaf protocol_names; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf redistribution_client_count; //type: uint32
+        ydk::YLeaf protocol_clients_count; //type: uint32
+        ydk::YLeaf routes_counts; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf deleted_routes_count; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf protocol_route_memory; //type: uint32
+        ydk::YLeaf backup_routes_count; //type: uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Bgp::As::Information
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -863,11 +913,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class As; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As
 
@@ -876,7 +928,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As : public ydk::Entity
 {
     public:
         As();
@@ -884,13 +936,15 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf as; //type: string
+        ydk::YLeaf as; //type: string
         class ProtocolRoutes; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes
         class Information; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information
 
@@ -900,7 +954,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes : public ydk::Entity
 {
     public:
         ProtocolRoutes();
@@ -908,11 +962,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ProtocolRoute; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute
 
@@ -921,7 +977,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute : public ydk::Entity
 {
     public:
         ProtocolRoute();
@@ -929,46 +985,48 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
-        YLeaf prefix_length_xr; //type: uint8
-        YLeaf route_version; //type: uint32
-        YLeaf protocol_id; //type: uint32
-        YLeaf protocol_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf client_id; //type: uint32
-        YLeaf route_type; //type: uint16
-        YLeaf priority; //type: uint8
-        YLeaf svd_type; //type: uint8
-        YLeaf flags; //type: uint32
-        YLeaf extended_flags; //type: uint64
-        YLeaf tag; //type: uint32
-        YLeaf distance; //type: uint32
-        YLeaf diversion_distance; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf attribute_identity; //type: uint32
-        YLeaf traffic_index; //type: uint8
-        YLeaf route_precedence; //type: uint8
-        YLeaf qos_group; //type: uint8
-        YLeaf flow_tag; //type: uint8
-        YLeaf fwd_class; //type: uint8
-        YLeaf pic_count; //type: uint8
-        YLeaf active; //type: boolean
-        YLeaf diversion; //type: boolean
-        YLeaf diversion_proto_name; //type: string
-        YLeaf route_age; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf tbl_version; //type: uint64
-        YLeaf route_modify_time; //type: uint64
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length_xr; //type: uint8
+        ydk::YLeaf route_version; //type: uint32
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf route_type; //type: uint16
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf svd_type; //type: uint8
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf extended_flags; //type: uint64
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf diversion_distance; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf attribute_identity; //type: uint32
+        ydk::YLeaf traffic_index; //type: uint8
+        ydk::YLeaf route_precedence; //type: uint8
+        ydk::YLeaf qos_group; //type: uint8
+        ydk::YLeaf flow_tag; //type: uint8
+        ydk::YLeaf fwd_class; //type: uint8
+        ydk::YLeaf pic_count; //type: uint8
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf diversion; //type: boolean
+        ydk::YLeaf diversion_proto_name; //type: string
+        ydk::YLeaf route_age; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf tbl_version; //type: uint64
+        ydk::YLeaf route_modify_time; //type: uint64
         class RoutePath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath
 
         std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath> route_path;
@@ -976,7 +1034,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -984,11 +1042,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4RibEdmPath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
@@ -997,7 +1057,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath : public ydk::Entity
 {
     public:
         Ipv4RibEdmPath();
@@ -1005,55 +1065,57 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf information_source; //type: string
-        YLeaf v6_nexthop; //type: string
-        YLeaf v6_information_source; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf load_metric; //type: uint32
-        YLeaf flags64; //type: uint64
-        YLeaf flags; //type: uint16
-        YLeaf private_flags; //type: uint16
-        YLeaf looped; //type: boolean
-        YLeaf next_hop_table_id; //type: uint32
-        YLeaf next_hop_vrf_name; //type: string
-        YLeaf next_hop_table_name; //type: string
-        YLeaf next_hop_afi; //type: uint32
-        YLeaf next_hop_safi; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf pathid; //type: uint32
-        YLeaf backup_pathid; //type: uint32
-        YLeaf ref_cnt_of_backup; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf mvpn_present; //type: boolean
-        YLeaf path_rt_present; //type: boolean
-        YLeaf vrf_import_rt_present; //type: boolean
-        YLeaf source_asrt_present; //type: boolean
-        YLeaf source_rd_present; //type: boolean
-        YLeaf segmented_nexthop_present; //type: boolean
-        YLeaf next_hop_id; //type: uint32
-        YLeaf next_hop_id_refcount; //type: uint32
-        YLeaf ospf_area_id; //type: string
-        YLeaf has_labelstk; //type: boolean
-        YLeaf num_labels; //type: uint8
-        YLeaf binding_label; //type: uint32
-        YLeaf nhid_feid; //type: uint64
-        YLeaf mpls_feid; //type: uint64
-        YLeafList remote_backup_addr; //type: list of  string
-        YLeafList labelstk; //type: list of  uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf information_source; //type: string
+        ydk::YLeaf v6_nexthop; //type: string
+        ydk::YLeaf v6_information_source; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf flags64; //type: uint64
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf private_flags; //type: uint16
+        ydk::YLeaf looped; //type: boolean
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf next_hop_vrf_name; //type: string
+        ydk::YLeaf next_hop_table_name; //type: string
+        ydk::YLeaf next_hop_afi; //type: uint32
+        ydk::YLeaf next_hop_safi; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf pathid; //type: uint32
+        ydk::YLeaf backup_pathid; //type: uint32
+        ydk::YLeaf ref_cnt_of_backup; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf mvpn_present; //type: boolean
+        ydk::YLeaf path_rt_present; //type: boolean
+        ydk::YLeaf vrf_import_rt_present; //type: boolean
+        ydk::YLeaf source_asrt_present; //type: boolean
+        ydk::YLeaf source_rd_present; //type: boolean
+        ydk::YLeaf segmented_nexthop_present; //type: boolean
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf next_hop_id_refcount; //type: uint32
+        ydk::YLeaf ospf_area_id; //type: string
+        ydk::YLeaf has_labelstk; //type: boolean
+        ydk::YLeaf num_labels; //type: uint8
+        ydk::YLeaf binding_label; //type: uint32
+        ydk::YLeaf nhid_feid; //type: uint64
+        ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeafList remote_backup_addr; //type: list of  string
+        ydk::YLeafList labelstk; //type: list of  uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::ProtocolRoutes::ProtocolRoute::RoutePath::Ipv4RibEdmPath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information : public ydk::Entity
 {
     public:
         Information();
@@ -1061,28 +1123,30 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_names; //type: string
-        YLeaf instance; //type: string
-        YLeaf version; //type: uint32
-        YLeaf redistribution_client_count; //type: uint32
-        YLeaf protocol_clients_count; //type: uint32
-        YLeaf routes_counts; //type: uint32
-        YLeaf active_routes_count; //type: uint32
-        YLeaf deleted_routes_count; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf protocol_route_memory; //type: uint32
-        YLeaf backup_routes_count; //type: uint32
+        ydk::YLeaf protocol_names; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf redistribution_client_count; //type: uint32
+        ydk::YLeaf protocol_clients_count; //type: uint32
+        ydk::YLeaf routes_counts; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf deleted_routes_count; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf protocol_route_memory; //type: uint32
+        ydk::YLeaf backup_routes_count; //type: uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Isis::As::Information
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes : public ydk::Entity
 {
     public:
         QRoutes();
@@ -1090,11 +1154,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class QRoute; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute
 
@@ -1103,7 +1169,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute : public ydk::Entity
 {
     public:
         QRoute();
@@ -1111,46 +1177,48 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix; //type: string
-        YLeaf prefix_length_xr; //type: uint8
-        YLeaf route_version; //type: uint32
-        YLeaf protocol_id; //type: uint32
-        YLeaf protocol_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf client_id; //type: uint32
-        YLeaf route_type; //type: uint16
-        YLeaf priority; //type: uint8
-        YLeaf svd_type; //type: uint8
-        YLeaf flags; //type: uint32
-        YLeaf extended_flags; //type: uint64
-        YLeaf tag; //type: uint32
-        YLeaf distance; //type: uint32
-        YLeaf diversion_distance; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf attribute_identity; //type: uint32
-        YLeaf traffic_index; //type: uint8
-        YLeaf route_precedence; //type: uint8
-        YLeaf qos_group; //type: uint8
-        YLeaf flow_tag; //type: uint8
-        YLeaf fwd_class; //type: uint8
-        YLeaf pic_count; //type: uint8
-        YLeaf active; //type: boolean
-        YLeaf diversion; //type: boolean
-        YLeaf diversion_proto_name; //type: string
-        YLeaf route_age; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf tbl_version; //type: uint64
-        YLeaf route_modify_time; //type: uint64
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length_xr; //type: uint8
+        ydk::YLeaf route_version; //type: uint32
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf route_type; //type: uint16
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf svd_type; //type: uint8
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf extended_flags; //type: uint64
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf diversion_distance; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf attribute_identity; //type: uint32
+        ydk::YLeaf traffic_index; //type: uint8
+        ydk::YLeaf route_precedence; //type: uint8
+        ydk::YLeaf qos_group; //type: uint8
+        ydk::YLeaf flow_tag; //type: uint8
+        ydk::YLeaf fwd_class; //type: uint8
+        ydk::YLeaf pic_count; //type: uint8
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf diversion; //type: boolean
+        ydk::YLeaf diversion_proto_name; //type: string
+        ydk::YLeaf route_age; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf tbl_version; //type: uint64
+        ydk::YLeaf route_modify_time; //type: uint64
         class RoutePath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath
 
         std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath> route_path;
@@ -1158,7 +1226,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -1166,11 +1234,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4RibEdmPath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath
 
@@ -1179,7 +1249,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath : public ydk::Entity
 {
     public:
         Ipv4RibEdmPath();
@@ -1187,55 +1257,57 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf information_source; //type: string
-        YLeaf v6_nexthop; //type: string
-        YLeaf v6_information_source; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf load_metric; //type: uint32
-        YLeaf flags64; //type: uint64
-        YLeaf flags; //type: uint16
-        YLeaf private_flags; //type: uint16
-        YLeaf looped; //type: boolean
-        YLeaf next_hop_table_id; //type: uint32
-        YLeaf next_hop_vrf_name; //type: string
-        YLeaf next_hop_table_name; //type: string
-        YLeaf next_hop_afi; //type: uint32
-        YLeaf next_hop_safi; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf pathid; //type: uint32
-        YLeaf backup_pathid; //type: uint32
-        YLeaf ref_cnt_of_backup; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf mvpn_present; //type: boolean
-        YLeaf path_rt_present; //type: boolean
-        YLeaf vrf_import_rt_present; //type: boolean
-        YLeaf source_asrt_present; //type: boolean
-        YLeaf source_rd_present; //type: boolean
-        YLeaf segmented_nexthop_present; //type: boolean
-        YLeaf next_hop_id; //type: uint32
-        YLeaf next_hop_id_refcount; //type: uint32
-        YLeaf ospf_area_id; //type: string
-        YLeaf has_labelstk; //type: boolean
-        YLeaf num_labels; //type: uint8
-        YLeaf binding_label; //type: uint32
-        YLeaf nhid_feid; //type: uint64
-        YLeaf mpls_feid; //type: uint64
-        YLeafList remote_backup_addr; //type: list of  string
-        YLeafList labelstk; //type: list of  uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf information_source; //type: string
+        ydk::YLeaf v6_nexthop; //type: string
+        ydk::YLeaf v6_information_source; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf flags64; //type: uint64
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf private_flags; //type: uint16
+        ydk::YLeaf looped; //type: boolean
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf next_hop_vrf_name; //type: string
+        ydk::YLeaf next_hop_table_name; //type: string
+        ydk::YLeaf next_hop_afi; //type: uint32
+        ydk::YLeaf next_hop_safi; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf pathid; //type: uint32
+        ydk::YLeaf backup_pathid; //type: uint32
+        ydk::YLeaf ref_cnt_of_backup; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf mvpn_present; //type: boolean
+        ydk::YLeaf path_rt_present; //type: boolean
+        ydk::YLeaf vrf_import_rt_present; //type: boolean
+        ydk::YLeaf source_asrt_present; //type: boolean
+        ydk::YLeaf source_rd_present; //type: boolean
+        ydk::YLeaf segmented_nexthop_present; //type: boolean
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf next_hop_id_refcount; //type: uint32
+        ydk::YLeaf ospf_area_id; //type: string
+        ydk::YLeaf has_labelstk; //type: boolean
+        ydk::YLeaf num_labels; //type: uint8
+        ydk::YLeaf binding_label; //type: uint32
+        ydk::YLeaf nhid_feid; //type: uint64
+        ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeafList remote_backup_addr; //type: list of  string
+        ydk::YLeafList labelstk; //type: list of  uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::QRoutes::QRoute::RoutePath::Ipv4RibEdmPath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes : public ydk::Entity
 {
     public:
         BackupRoutes();
@@ -1243,11 +1315,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BackupRoute; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute
 
@@ -1256,7 +1330,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute : public ydk::Entity
 {
     public:
         BackupRoute();
@@ -1264,47 +1338,49 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf protoid; //type: int32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length_xr; //type: uint8
-        YLeaf route_version; //type: uint32
-        YLeaf protocol_id; //type: uint32
-        YLeaf protocol_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf client_id; //type: uint32
-        YLeaf route_type; //type: uint16
-        YLeaf priority; //type: uint8
-        YLeaf svd_type; //type: uint8
-        YLeaf flags; //type: uint32
-        YLeaf extended_flags; //type: uint64
-        YLeaf tag; //type: uint32
-        YLeaf distance; //type: uint32
-        YLeaf diversion_distance; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf attribute_identity; //type: uint32
-        YLeaf traffic_index; //type: uint8
-        YLeaf route_precedence; //type: uint8
-        YLeaf qos_group; //type: uint8
-        YLeaf flow_tag; //type: uint8
-        YLeaf fwd_class; //type: uint8
-        YLeaf pic_count; //type: uint8
-        YLeaf active; //type: boolean
-        YLeaf diversion; //type: boolean
-        YLeaf diversion_proto_name; //type: string
-        YLeaf route_age; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf tbl_version; //type: uint64
-        YLeaf route_modify_time; //type: uint64
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf protoid; //type: int32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length_xr; //type: uint8
+        ydk::YLeaf route_version; //type: uint32
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf route_type; //type: uint16
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf svd_type; //type: uint8
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf extended_flags; //type: uint64
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf diversion_distance; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf attribute_identity; //type: uint32
+        ydk::YLeaf traffic_index; //type: uint8
+        ydk::YLeaf route_precedence; //type: uint8
+        ydk::YLeaf qos_group; //type: uint8
+        ydk::YLeaf flow_tag; //type: uint8
+        ydk::YLeaf fwd_class; //type: uint8
+        ydk::YLeaf pic_count; //type: uint8
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf diversion; //type: boolean
+        ydk::YLeaf diversion_proto_name; //type: string
+        ydk::YLeaf route_age; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf tbl_version; //type: uint64
+        ydk::YLeaf route_modify_time; //type: uint64
         class RoutePath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath
 
         std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath> route_path;
@@ -1312,7 +1388,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -1320,11 +1396,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4RibEdmPath; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath
 
@@ -1333,7 +1411,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath : public ydk::Entity
 {
     public:
         Ipv4RibEdmPath();
@@ -1341,55 +1419,57 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf information_source; //type: string
-        YLeaf v6_nexthop; //type: string
-        YLeaf v6_information_source; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf load_metric; //type: uint32
-        YLeaf flags64; //type: uint64
-        YLeaf flags; //type: uint16
-        YLeaf private_flags; //type: uint16
-        YLeaf looped; //type: boolean
-        YLeaf next_hop_table_id; //type: uint32
-        YLeaf next_hop_vrf_name; //type: string
-        YLeaf next_hop_table_name; //type: string
-        YLeaf next_hop_afi; //type: uint32
-        YLeaf next_hop_safi; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf pathid; //type: uint32
-        YLeaf backup_pathid; //type: uint32
-        YLeaf ref_cnt_of_backup; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf mvpn_present; //type: boolean
-        YLeaf path_rt_present; //type: boolean
-        YLeaf vrf_import_rt_present; //type: boolean
-        YLeaf source_asrt_present; //type: boolean
-        YLeaf source_rd_present; //type: boolean
-        YLeaf segmented_nexthop_present; //type: boolean
-        YLeaf next_hop_id; //type: uint32
-        YLeaf next_hop_id_refcount; //type: uint32
-        YLeaf ospf_area_id; //type: string
-        YLeaf has_labelstk; //type: boolean
-        YLeaf num_labels; //type: uint8
-        YLeaf binding_label; //type: uint32
-        YLeaf nhid_feid; //type: uint64
-        YLeaf mpls_feid; //type: uint64
-        YLeafList remote_backup_addr; //type: list of  string
-        YLeafList labelstk; //type: list of  uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf information_source; //type: string
+        ydk::YLeaf v6_nexthop; //type: string
+        ydk::YLeaf v6_information_source; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf flags64; //type: uint64
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf private_flags; //type: uint16
+        ydk::YLeaf looped; //type: boolean
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf next_hop_vrf_name; //type: string
+        ydk::YLeaf next_hop_table_name; //type: string
+        ydk::YLeaf next_hop_afi; //type: uint32
+        ydk::YLeaf next_hop_safi; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf pathid; //type: uint32
+        ydk::YLeaf backup_pathid; //type: uint32
+        ydk::YLeaf ref_cnt_of_backup; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf mvpn_present; //type: boolean
+        ydk::YLeaf path_rt_present; //type: boolean
+        ydk::YLeaf vrf_import_rt_present; //type: boolean
+        ydk::YLeaf source_asrt_present; //type: boolean
+        ydk::YLeaf source_rd_present; //type: boolean
+        ydk::YLeaf segmented_nexthop_present; //type: boolean
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf next_hop_id_refcount; //type: uint32
+        ydk::YLeaf ospf_area_id; //type: string
+        ydk::YLeaf has_labelstk; //type: boolean
+        ydk::YLeaf num_labels; //type: uint8
+        ydk::YLeaf binding_label; //type: uint32
+        ydk::YLeaf nhid_feid; //type: uint64
+        ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeafList remote_backup_addr; //type: list of  string
+        ydk::YLeafList labelstk; //type: list of  uint32
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::BackupRoutes::BackupRoute::RoutePath::Ipv4RibEdmPath
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts : public ydk::Entity
 {
     public:
         Adverts();
@@ -1397,11 +1477,13 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Advert; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert
 
@@ -1410,7 +1492,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert : public ydk::Entity
 {
     public:
         Advert();
@@ -1418,14 +1500,16 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
         class Ipv4RibEdmAdvert; //type: Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert> > ipv4_rib_edm_advert;
@@ -1433,7 +1517,7 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert
 
 
-class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert : public Entity
+class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert : public ydk::Entity
 {
     public:
         Ipv4RibEdmAdvert();
@@ -1441,25 +1525,27 @@ class Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableN
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_id; //type: uint32
-        YLeaf client_id; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf extended_communities; //type: string
-        YLeaf protocol_opaque_flags; //type: uint8
-        YLeaf protocol_opaque; //type: uint32
-        YLeaf code; //type: int8
-        YLeaf instance_name; //type: string
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf extended_communities; //type: string
+        ydk::YLeaf protocol_opaque_flags; //type: uint8
+        ydk::YLeaf protocol_opaque; //type: uint32
+        ydk::YLeaf code; //type: int8
+        ydk::YLeaf instance_name; //type: string
 
 }; // Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Adverts::Advert::Ipv4RibEdmAdvert
 
 
-class Rib::RibTableIds : public Entity
+class Rib::RibTableIds : public ydk::Entity
 {
     public:
         RibTableIds();
@@ -1467,11 +1553,13 @@ class Rib::RibTableIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RibTableId; //type: Rib::RibTableIds::RibTableId
 
@@ -1480,7 +1568,7 @@ class Rib::RibTableIds : public Entity
 }; // Rib::RibTableIds
 
 
-class Rib::RibTableIds::RibTableId : public Entity
+class Rib::RibTableIds::RibTableId : public ydk::Entity
 {
     public:
         RibTableId();
@@ -1488,13 +1576,15 @@ class Rib::RibTableIds::RibTableId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tableid; //type: string
+        ydk::YLeaf tableid; //type: string
         class SummaryProtos; //type: Rib::RibTableIds::RibTableId::SummaryProtos
         class RibTableItfHndls; //type: Rib::RibTableIds::RibTableId::RibTableItfHndls
 
@@ -1504,7 +1594,7 @@ class Rib::RibTableIds::RibTableId : public Entity
 }; // Rib::RibTableIds::RibTableId
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos : public ydk::Entity
 {
     public:
         SummaryProtos();
@@ -1512,11 +1602,13 @@ class Rib::RibTableIds::RibTableId::SummaryProtos : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SummaryProto; //type: Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto
 
@@ -1525,7 +1617,7 @@ class Rib::RibTableIds::RibTableId::SummaryProtos : public Entity
 }; // Rib::RibTableIds::RibTableId::SummaryProtos
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto : public ydk::Entity
 {
     public:
         SummaryProto();
@@ -1533,15 +1625,17 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protoid; //type: int32
-        YLeaf name; //type: string
-        YLeaf instance; //type: string
+        ydk::YLeaf protoid; //type: int32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf instance; //type: string
         class ProtoRouteCount; //type: Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount
         class RtypeNone; //type: Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone
         class RtypeOther; //type: Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther
@@ -1583,7 +1677,7 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto : public Entity
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount : public ydk::Entity
 {
     public:
         ProtoRouteCount();
@@ -1591,21 +1685,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::ProtoRouteCount
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone : public ydk::Entity
 {
     public:
         RtypeNone();
@@ -1613,21 +1709,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeNone
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther : public ydk::Entity
 {
     public:
         RtypeOther();
@@ -1635,21 +1733,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOther
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra : public ydk::Entity
 {
     public:
         RtypeOspfIntra();
@@ -1657,21 +1757,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfIntra
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter : public ydk::Entity
 {
     public:
         RtypeOspfInter();
@@ -1679,21 +1781,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfInter
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1 : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1 : public ydk::Entity
 {
     public:
         RtypeOspfExtern1();
@@ -1701,21 +1805,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern1
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2 : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2 : public ydk::Entity
 {
     public:
         RtypeOspfExtern2();
@@ -1723,21 +1829,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfExtern2
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum : public ydk::Entity
 {
     public:
         RtypeIsisSum();
@@ -1745,21 +1853,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisSum
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1 : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1 : public ydk::Entity
 {
     public:
         RtypeIsisL1();
@@ -1767,21 +1877,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1 : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2 : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2 : public ydk::Entity
 {
     public:
         RtypeIsisL2();
@@ -1789,21 +1901,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2 : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL2
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia : public ydk::Entity
 {
     public:
         RtypeIsisL1Ia();
@@ -1811,21 +1925,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIsisL1Ia
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt : public ydk::Entity
 {
     public:
         RtypeBgpInt();
@@ -1833,21 +1949,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpInt
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt : public ydk::Entity
 {
     public:
         RtypeBgpExt();
@@ -1855,21 +1973,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpExt
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc : public ydk::Entity
 {
     public:
         RtypeBgpLoc();
@@ -1877,21 +1997,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeBgpLoc
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1 : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1 : public ydk::Entity
 {
     public:
         RtypeOspfNssa1();
@@ -1899,21 +2021,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa1
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2 : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2 : public ydk::Entity
 {
     public:
         RtypeOspfNssa2();
@@ -1921,21 +2045,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeOspfNssa2
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int : public ydk::Entity
 {
     public:
         RtypeIgrp2Int();
@@ -1943,21 +2069,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Int
 
 
-class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext : public Entity
+class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext : public ydk::Entity
 {
     public:
         RtypeIgrp2Ext();
@@ -1965,21 +2093,23 @@ class Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf active_routes_count; //type: uint32
-        YLeaf num_backup_routes; //type: uint32
-        YLeaf num_active_paths; //type: uint32
-        YLeaf num_backup_paths; //type: uint32
+        ydk::YLeaf active_routes_count; //type: uint32
+        ydk::YLeaf num_backup_routes; //type: uint32
+        ydk::YLeaf num_active_paths; //type: uint32
+        ydk::YLeaf num_backup_paths; //type: uint32
 
 }; // Rib::RibTableIds::RibTableId::SummaryProtos::SummaryProto::RtypeIgrp2Ext
 
 
-class Rib::RibTableIds::RibTableId::RibTableItfHndls : public Entity
+class Rib::RibTableIds::RibTableId::RibTableItfHndls : public ydk::Entity
 {
     public:
         RibTableItfHndls();
@@ -1987,11 +2117,13 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RibTableItfHndl; //type: Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl
 
@@ -2000,7 +2132,7 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls : public Entity
 }; // Rib::RibTableIds::RibTableId::RibTableItfHndls
 
 
-class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl : public Entity
+class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl : public ydk::Entity
 {
     public:
         RibTableItfHndl();
@@ -2008,13 +2140,15 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf handle; //type: int32
+        ydk::YLeaf handle; //type: int32
         class ItfRoute; //type: Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute> > itf_route;
@@ -2022,7 +2156,7 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl : public E
 }; // Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl
 
 
-class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute : public Entity
+class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute : public ydk::Entity
 {
     public:
         ItfRoute();
@@ -2030,45 +2164,47 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix; //type: string
-        YLeaf prefix_length_xr; //type: uint8
-        YLeaf route_version; //type: uint32
-        YLeaf protocol_id; //type: uint32
-        YLeaf protocol_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf client_id; //type: uint32
-        YLeaf route_type; //type: uint16
-        YLeaf priority; //type: uint8
-        YLeaf svd_type; //type: uint8
-        YLeaf flags; //type: uint32
-        YLeaf extended_flags; //type: uint64
-        YLeaf tag; //type: uint32
-        YLeaf distance; //type: uint32
-        YLeaf diversion_distance; //type: uint32
-        YLeaf metric; //type: uint32
-        YLeaf paths_count; //type: uint32
-        YLeaf attribute_identity; //type: uint32
-        YLeaf traffic_index; //type: uint8
-        YLeaf route_precedence; //type: uint8
-        YLeaf qos_group; //type: uint8
-        YLeaf flow_tag; //type: uint8
-        YLeaf fwd_class; //type: uint8
-        YLeaf pic_count; //type: uint8
-        YLeaf active; //type: boolean
-        YLeaf diversion; //type: boolean
-        YLeaf diversion_proto_name; //type: string
-        YLeaf route_age; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf version; //type: uint32
-        YLeaf tbl_version; //type: uint64
-        YLeaf route_modify_time; //type: uint64
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length_xr; //type: uint8
+        ydk::YLeaf route_version; //type: uint32
+        ydk::YLeaf protocol_id; //type: uint32
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf client_id; //type: uint32
+        ydk::YLeaf route_type; //type: uint16
+        ydk::YLeaf priority; //type: uint8
+        ydk::YLeaf svd_type; //type: uint8
+        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf extended_flags; //type: uint64
+        ydk::YLeaf tag; //type: uint32
+        ydk::YLeaf distance; //type: uint32
+        ydk::YLeaf diversion_distance; //type: uint32
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf paths_count; //type: uint32
+        ydk::YLeaf attribute_identity; //type: uint32
+        ydk::YLeaf traffic_index; //type: uint8
+        ydk::YLeaf route_precedence; //type: uint8
+        ydk::YLeaf qos_group; //type: uint8
+        ydk::YLeaf flow_tag; //type: uint8
+        ydk::YLeaf fwd_class; //type: uint8
+        ydk::YLeaf pic_count; //type: uint8
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf diversion; //type: boolean
+        ydk::YLeaf diversion_proto_name; //type: string
+        ydk::YLeaf route_age; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf version; //type: uint32
+        ydk::YLeaf tbl_version; //type: uint64
+        ydk::YLeaf route_modify_time; //type: uint64
         class RoutePath; //type: Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath
 
         std::shared_ptr<Cisco_IOS_XR_ip_rib_ipv4_oper::Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath> route_path;
@@ -2076,7 +2212,7 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute 
 }; // Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute
 
 
-class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath : public Entity
+class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -2084,11 +2220,13 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4RibEdmPath; //type: Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath
 
@@ -2097,7 +2235,7 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute:
 }; // Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath
 
 
-class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath : public Entity
+class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath : public ydk::Entity
 {
     public:
         Ipv4RibEdmPath();
@@ -2105,50 +2243,52 @@ class Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf information_source; //type: string
-        YLeaf v6_nexthop; //type: string
-        YLeaf v6_information_source; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf metric; //type: uint32
-        YLeaf load_metric; //type: uint32
-        YLeaf flags64; //type: uint64
-        YLeaf flags; //type: uint16
-        YLeaf private_flags; //type: uint16
-        YLeaf looped; //type: boolean
-        YLeaf next_hop_table_id; //type: uint32
-        YLeaf next_hop_vrf_name; //type: string
-        YLeaf next_hop_table_name; //type: string
-        YLeaf next_hop_afi; //type: uint32
-        YLeaf next_hop_safi; //type: uint32
-        YLeaf route_label; //type: uint32
-        YLeaf tunnel_id; //type: uint32
-        YLeaf pathid; //type: uint32
-        YLeaf backup_pathid; //type: uint32
-        YLeaf ref_cnt_of_backup; //type: uint32
-        YLeaf number_of_extended_communities; //type: uint32
-        YLeaf mvpn_present; //type: boolean
-        YLeaf path_rt_present; //type: boolean
-        YLeaf vrf_import_rt_present; //type: boolean
-        YLeaf source_asrt_present; //type: boolean
-        YLeaf source_rd_present; //type: boolean
-        YLeaf segmented_nexthop_present; //type: boolean
-        YLeaf next_hop_id; //type: uint32
-        YLeaf next_hop_id_refcount; //type: uint32
-        YLeaf ospf_area_id; //type: string
-        YLeaf has_labelstk; //type: boolean
-        YLeaf num_labels; //type: uint8
-        YLeaf binding_label; //type: uint32
-        YLeaf nhid_feid; //type: uint64
-        YLeaf mpls_feid; //type: uint64
-        YLeafList remote_backup_addr; //type: list of  string
-        YLeafList labelstk; //type: list of  uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf information_source; //type: string
+        ydk::YLeaf v6_nexthop; //type: string
+        ydk::YLeaf v6_information_source; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf metric; //type: uint32
+        ydk::YLeaf load_metric; //type: uint32
+        ydk::YLeaf flags64; //type: uint64
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf private_flags; //type: uint16
+        ydk::YLeaf looped; //type: boolean
+        ydk::YLeaf next_hop_table_id; //type: uint32
+        ydk::YLeaf next_hop_vrf_name; //type: string
+        ydk::YLeaf next_hop_table_name; //type: string
+        ydk::YLeaf next_hop_afi; //type: uint32
+        ydk::YLeaf next_hop_safi; //type: uint32
+        ydk::YLeaf route_label; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
+        ydk::YLeaf pathid; //type: uint32
+        ydk::YLeaf backup_pathid; //type: uint32
+        ydk::YLeaf ref_cnt_of_backup; //type: uint32
+        ydk::YLeaf number_of_extended_communities; //type: uint32
+        ydk::YLeaf mvpn_present; //type: boolean
+        ydk::YLeaf path_rt_present; //type: boolean
+        ydk::YLeaf vrf_import_rt_present; //type: boolean
+        ydk::YLeaf source_asrt_present; //type: boolean
+        ydk::YLeaf source_rd_present; //type: boolean
+        ydk::YLeaf segmented_nexthop_present; //type: boolean
+        ydk::YLeaf next_hop_id; //type: uint32
+        ydk::YLeaf next_hop_id_refcount; //type: uint32
+        ydk::YLeaf ospf_area_id; //type: string
+        ydk::YLeaf has_labelstk; //type: boolean
+        ydk::YLeaf num_labels; //type: uint8
+        ydk::YLeaf binding_label; //type: uint32
+        ydk::YLeaf nhid_feid; //type: uint64
+        ydk::YLeaf mpls_feid; //type: uint64
+        ydk::YLeafList remote_backup_addr; //type: list of  string
+        ydk::YLeafList labelstk; //type: list of  uint32
 
 }; // Rib::RibTableIds::RibTableId::RibTableItfHndls::RibTableItfHndl::ItfRoute::RoutePath::Ipv4RibEdmPath
 

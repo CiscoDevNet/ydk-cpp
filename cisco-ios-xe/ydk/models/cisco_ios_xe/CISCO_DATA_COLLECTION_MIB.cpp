@@ -6,32 +6,34 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_DATA_COLLECTION_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_DATA_COLLECTION_MIB {
 
 CiscoDataCollectionMib::CiscoDataCollectionMib()
     :
-    cdcdgbaseobjecttable_(std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable>())
-	,cdcdginstancetable_(std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable>())
-	,cdcdgtable_(std::make_shared<CiscoDataCollectionMib::Cdcdgtable>())
-	,cdcfilexferconftable_(std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable>())
-	,cdcvfile_(std::make_shared<CiscoDataCollectionMib::Cdcvfile>())
-	,cdcvfilemgmttable_(std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable>())
-	,cdcvfiletable_(std::make_shared<CiscoDataCollectionMib::Cdcvfiletable>())
+    cdcdgbaseobjecttable(std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable>())
+	,cdcdginstancetable(std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable>())
+	,cdcdgtable(std::make_shared<CiscoDataCollectionMib::Cdcdgtable>())
+	,cdcfilexferconftable(std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable>())
+	,cdcvfile(std::make_shared<CiscoDataCollectionMib::Cdcvfile>())
+	,cdcvfilemgmttable(std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable>())
+	,cdcvfiletable(std::make_shared<CiscoDataCollectionMib::Cdcvfiletable>())
 {
-    cdcdgbaseobjecttable_->parent = this;
+    cdcdgbaseobjecttable->parent = this;
 
-    cdcdginstancetable_->parent = this;
+    cdcdginstancetable->parent = this;
 
-    cdcdgtable_->parent = this;
+    cdcdgtable->parent = this;
 
-    cdcfilexferconftable_->parent = this;
+    cdcfilexferconftable->parent = this;
 
-    cdcvfile_->parent = this;
+    cdcvfile->parent = this;
 
-    cdcvfilemgmttable_->parent = this;
+    cdcvfilemgmttable->parent = this;
 
-    cdcvfiletable_->parent = this;
+    cdcvfiletable->parent = this;
 
     yang_name = "CISCO-DATA-COLLECTION-MIB"; yang_parent_name = "CISCO-DATA-COLLECTION-MIB";
 }
@@ -42,25 +44,25 @@ CiscoDataCollectionMib::~CiscoDataCollectionMib()
 
 bool CiscoDataCollectionMib::has_data() const
 {
-    return (cdcdgbaseobjecttable_ !=  nullptr && cdcdgbaseobjecttable_->has_data())
-	|| (cdcdginstancetable_ !=  nullptr && cdcdginstancetable_->has_data())
-	|| (cdcdgtable_ !=  nullptr && cdcdgtable_->has_data())
-	|| (cdcfilexferconftable_ !=  nullptr && cdcfilexferconftable_->has_data())
-	|| (cdcvfile_ !=  nullptr && cdcvfile_->has_data())
-	|| (cdcvfilemgmttable_ !=  nullptr && cdcvfilemgmttable_->has_data())
-	|| (cdcvfiletable_ !=  nullptr && cdcvfiletable_->has_data());
+    return (cdcdgbaseobjecttable !=  nullptr && cdcdgbaseobjecttable->has_data())
+	|| (cdcdginstancetable !=  nullptr && cdcdginstancetable->has_data())
+	|| (cdcdgtable !=  nullptr && cdcdgtable->has_data())
+	|| (cdcfilexferconftable !=  nullptr && cdcfilexferconftable->has_data())
+	|| (cdcvfile !=  nullptr && cdcvfile->has_data())
+	|| (cdcvfilemgmttable !=  nullptr && cdcvfilemgmttable->has_data())
+	|| (cdcvfiletable !=  nullptr && cdcvfiletable->has_data());
 }
 
 bool CiscoDataCollectionMib::has_operation() const
 {
-    return is_set(operation)
-	|| (cdcdgbaseobjecttable_ !=  nullptr && cdcdgbaseobjecttable_->has_operation())
-	|| (cdcdginstancetable_ !=  nullptr && cdcdginstancetable_->has_operation())
-	|| (cdcdgtable_ !=  nullptr && cdcdgtable_->has_operation())
-	|| (cdcfilexferconftable_ !=  nullptr && cdcfilexferconftable_->has_operation())
-	|| (cdcvfile_ !=  nullptr && cdcvfile_->has_operation())
-	|| (cdcvfilemgmttable_ !=  nullptr && cdcvfilemgmttable_->has_operation())
-	|| (cdcvfiletable_ !=  nullptr && cdcvfiletable_->has_operation());
+    return is_set(yfilter)
+	|| (cdcdgbaseobjecttable !=  nullptr && cdcdgbaseobjecttable->has_operation())
+	|| (cdcdginstancetable !=  nullptr && cdcdginstancetable->has_operation())
+	|| (cdcdgtable !=  nullptr && cdcdgtable->has_operation())
+	|| (cdcfilexferconftable !=  nullptr && cdcfilexferconftable->has_operation())
+	|| (cdcvfile !=  nullptr && cdcvfile->has_operation())
+	|| (cdcvfilemgmttable !=  nullptr && cdcvfilemgmttable->has_operation())
+	|| (cdcvfiletable !=  nullptr && cdcvfiletable->has_operation());
 }
 
 std::string CiscoDataCollectionMib::get_segment_path() const
@@ -94,65 +96,65 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::get_child_by_name(const std::str
 {
     if(child_yang_name == "cdcDGBaseObjectTable")
     {
-        if(cdcdgbaseobjecttable_ == nullptr)
+        if(cdcdgbaseobjecttable == nullptr)
         {
-            cdcdgbaseobjecttable_ = std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable>();
+            cdcdgbaseobjecttable = std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable>();
         }
-        return cdcdgbaseobjecttable_;
+        return cdcdgbaseobjecttable;
     }
 
     if(child_yang_name == "cdcDGInstanceTable")
     {
-        if(cdcdginstancetable_ == nullptr)
+        if(cdcdginstancetable == nullptr)
         {
-            cdcdginstancetable_ = std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable>();
+            cdcdginstancetable = std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable>();
         }
-        return cdcdginstancetable_;
+        return cdcdginstancetable;
     }
 
     if(child_yang_name == "cdcDGTable")
     {
-        if(cdcdgtable_ == nullptr)
+        if(cdcdgtable == nullptr)
         {
-            cdcdgtable_ = std::make_shared<CiscoDataCollectionMib::Cdcdgtable>();
+            cdcdgtable = std::make_shared<CiscoDataCollectionMib::Cdcdgtable>();
         }
-        return cdcdgtable_;
+        return cdcdgtable;
     }
 
     if(child_yang_name == "cdcFileXferConfTable")
     {
-        if(cdcfilexferconftable_ == nullptr)
+        if(cdcfilexferconftable == nullptr)
         {
-            cdcfilexferconftable_ = std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable>();
+            cdcfilexferconftable = std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable>();
         }
-        return cdcfilexferconftable_;
+        return cdcfilexferconftable;
     }
 
     if(child_yang_name == "cdcVFile")
     {
-        if(cdcvfile_ == nullptr)
+        if(cdcvfile == nullptr)
         {
-            cdcvfile_ = std::make_shared<CiscoDataCollectionMib::Cdcvfile>();
+            cdcvfile = std::make_shared<CiscoDataCollectionMib::Cdcvfile>();
         }
-        return cdcvfile_;
+        return cdcvfile;
     }
 
     if(child_yang_name == "cdcVFileMgmtTable")
     {
-        if(cdcvfilemgmttable_ == nullptr)
+        if(cdcvfilemgmttable == nullptr)
         {
-            cdcvfilemgmttable_ = std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable>();
+            cdcvfilemgmttable = std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable>();
         }
-        return cdcvfilemgmttable_;
+        return cdcvfilemgmttable;
     }
 
     if(child_yang_name == "cdcVFileTable")
     {
-        if(cdcvfiletable_ == nullptr)
+        if(cdcvfiletable == nullptr)
         {
-            cdcvfiletable_ = std::make_shared<CiscoDataCollectionMib::Cdcvfiletable>();
+            cdcvfiletable = std::make_shared<CiscoDataCollectionMib::Cdcvfiletable>();
         }
-        return cdcvfiletable_;
+        return cdcvfiletable;
     }
 
     return nullptr;
@@ -161,45 +163,49 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::get_child_by_name(const std::str
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cdcdgbaseobjecttable_ != nullptr)
+    if(cdcdgbaseobjecttable != nullptr)
     {
-        children["cdcDGBaseObjectTable"] = cdcdgbaseobjecttable_;
+        children["cdcDGBaseObjectTable"] = cdcdgbaseobjecttable;
     }
 
-    if(cdcdginstancetable_ != nullptr)
+    if(cdcdginstancetable != nullptr)
     {
-        children["cdcDGInstanceTable"] = cdcdginstancetable_;
+        children["cdcDGInstanceTable"] = cdcdginstancetable;
     }
 
-    if(cdcdgtable_ != nullptr)
+    if(cdcdgtable != nullptr)
     {
-        children["cdcDGTable"] = cdcdgtable_;
+        children["cdcDGTable"] = cdcdgtable;
     }
 
-    if(cdcfilexferconftable_ != nullptr)
+    if(cdcfilexferconftable != nullptr)
     {
-        children["cdcFileXferConfTable"] = cdcfilexferconftable_;
+        children["cdcFileXferConfTable"] = cdcfilexferconftable;
     }
 
-    if(cdcvfile_ != nullptr)
+    if(cdcvfile != nullptr)
     {
-        children["cdcVFile"] = cdcvfile_;
+        children["cdcVFile"] = cdcvfile;
     }
 
-    if(cdcvfilemgmttable_ != nullptr)
+    if(cdcvfilemgmttable != nullptr)
     {
-        children["cdcVFileMgmtTable"] = cdcvfilemgmttable_;
+        children["cdcVFileMgmtTable"] = cdcvfilemgmttable;
     }
 
-    if(cdcvfiletable_ != nullptr)
+    if(cdcvfiletable != nullptr)
     {
-        children["cdcVFileTable"] = cdcvfiletable_;
+        children["cdcVFileTable"] = cdcvfiletable;
     }
 
     return children;
 }
 
-void CiscoDataCollectionMib::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoDataCollectionMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -223,6 +229,18 @@ augment_capabilities_function CiscoDataCollectionMib::get_augment_capabilities_f
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoDataCollectionMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoDataCollectionMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcDGBaseObjectTable" || name == "cdcDGInstanceTable" || name == "cdcDGTable" || name == "cdcFileXferConfTable" || name == "cdcVFile" || name == "cdcVFileMgmtTable" || name == "cdcVFileTable")
+        return true;
+    return false;
+}
+
 CiscoDataCollectionMib::Cdcvfile::Cdcvfile()
     :
     cdcvfilemaxsizehitslimit{YType::uint32, "cdcVFileMaxSizeHitsLimit"},
@@ -243,9 +261,9 @@ bool CiscoDataCollectionMib::Cdcvfile::has_data() const
 
 bool CiscoDataCollectionMib::Cdcvfile::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cdcvfilemaxsizehitslimit.operation)
-	|| is_set(cdcvfilepersistentstorage.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cdcvfilemaxsizehitslimit.yfilter)
+	|| ydk::is_set(cdcvfilepersistentstorage.yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcvfile::get_segment_path() const
@@ -271,8 +289,8 @@ const EntityPath CiscoDataCollectionMib::Cdcvfile::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cdcvfilemaxsizehitslimit.is_set || is_set(cdcvfilemaxsizehitslimit.operation)) leaf_name_data.push_back(cdcvfilemaxsizehitslimit.get_name_leafdata());
-    if (cdcvfilepersistentstorage.is_set || is_set(cdcvfilepersistentstorage.operation)) leaf_name_data.push_back(cdcvfilepersistentstorage.get_name_leafdata());
+    if (cdcvfilemaxsizehitslimit.is_set || is_set(cdcvfilemaxsizehitslimit.yfilter)) leaf_name_data.push_back(cdcvfilemaxsizehitslimit.get_name_leafdata());
+    if (cdcvfilepersistentstorage.is_set || is_set(cdcvfilepersistentstorage.yfilter)) leaf_name_data.push_back(cdcvfilepersistentstorage.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -291,16 +309,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfile:
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcvfile::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcvfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcVFileMaxSizeHitsLimit")
     {
         cdcvfilemaxsizehitslimit = value;
+        cdcvfilemaxsizehitslimit.value_namespace = name_space;
+        cdcvfilemaxsizehitslimit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFilePersistentStorage")
     {
         cdcvfilepersistentstorage = value;
+        cdcvfilepersistentstorage.value_namespace = name_space;
+        cdcvfilepersistentstorage.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDataCollectionMib::Cdcvfile::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdcVFileMaxSizeHitsLimit")
+    {
+        cdcvfilemaxsizehitslimit.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFilePersistentStorage")
+    {
+        cdcvfilepersistentstorage.yfilter = yfilter;
+    }
+}
+
+bool CiscoDataCollectionMib::Cdcvfile::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcVFileMaxSizeHitsLimit" || name == "cdcVFilePersistentStorage")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcvfiletable::Cdcvfiletable()
@@ -314,9 +355,9 @@ CiscoDataCollectionMib::Cdcvfiletable::~Cdcvfiletable()
 
 bool CiscoDataCollectionMib::Cdcvfiletable::has_data() const
 {
-    for (std::size_t index=0; index<cdcvfileentry_.size(); index++)
+    for (std::size_t index=0; index<cdcvfileentry.size(); index++)
     {
-        if(cdcvfileentry_[index]->has_data())
+        if(cdcvfileentry[index]->has_data())
             return true;
     }
     return false;
@@ -324,12 +365,12 @@ bool CiscoDataCollectionMib::Cdcvfiletable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcvfiletable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcvfileentry_.size(); index++)
+    for (std::size_t index=0; index<cdcvfileentry.size(); index++)
     {
-        if(cdcvfileentry_[index]->has_operation())
+        if(cdcvfileentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcvfiletable::get_segment_path() const
@@ -366,7 +407,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfiletable::get_child_by_name
 {
     if(child_yang_name == "cdcVFileEntry")
     {
-        for(auto const & c : cdcvfileentry_)
+        for(auto const & c : cdcvfileentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -376,7 +417,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfiletable::get_child_by_name
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry>();
         c->parent = this;
-        cdcvfileentry_.push_back(c);
+        cdcvfileentry.push_back(c);
         return c;
     }
 
@@ -386,7 +427,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfiletable::get_child_by_name
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfiletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcvfileentry_)
+    for (auto const & c : cdcvfileentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -394,8 +435,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfilet
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcvfiletable::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcvfiletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDataCollectionMib::Cdcvfiletable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDataCollectionMib::Cdcvfiletable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcVFileEntry")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileentry()
@@ -444,22 +496,22 @@ bool CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::has_data() const
 
 bool CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cdcvfileindex.operation)
-	|| is_set(cdcvfileadminstatus.operation)
-	|| is_set(cdcvfilecollectionerrorenable.operation)
-	|| is_set(cdcvfilecollectionperiod.operation)
-	|| is_set(cdcvfilecollectmode.operation)
-	|| is_set(cdcvfilecommand.operation)
-	|| is_set(cdcvfilecurrentsize.operation)
-	|| is_set(cdcvfiledescription.operation)
-	|| is_set(cdcvfileerrorcode.operation)
-	|| is_set(cdcvfileformat.operation)
-	|| is_set(cdcvfilemaxsize.operation)
-	|| is_set(cdcvfilename.operation)
-	|| is_set(cdcvfileoperstatus.operation)
-	|| is_set(cdcvfileretentionperiod.operation)
-	|| is_set(cdcvfilerowstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cdcvfileindex.yfilter)
+	|| ydk::is_set(cdcvfileadminstatus.yfilter)
+	|| ydk::is_set(cdcvfilecollectionerrorenable.yfilter)
+	|| ydk::is_set(cdcvfilecollectionperiod.yfilter)
+	|| ydk::is_set(cdcvfilecollectmode.yfilter)
+	|| ydk::is_set(cdcvfilecommand.yfilter)
+	|| ydk::is_set(cdcvfilecurrentsize.yfilter)
+	|| ydk::is_set(cdcvfiledescription.yfilter)
+	|| ydk::is_set(cdcvfileerrorcode.yfilter)
+	|| ydk::is_set(cdcvfileformat.yfilter)
+	|| ydk::is_set(cdcvfilemaxsize.yfilter)
+	|| ydk::is_set(cdcvfilename.yfilter)
+	|| ydk::is_set(cdcvfileoperstatus.yfilter)
+	|| ydk::is_set(cdcvfileretentionperiod.yfilter)
+	|| ydk::is_set(cdcvfilerowstatus.yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::get_segment_path() const
@@ -485,21 +537,21 @@ const EntityPath CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cdcvfileindex.is_set || is_set(cdcvfileindex.operation)) leaf_name_data.push_back(cdcvfileindex.get_name_leafdata());
-    if (cdcvfileadminstatus.is_set || is_set(cdcvfileadminstatus.operation)) leaf_name_data.push_back(cdcvfileadminstatus.get_name_leafdata());
-    if (cdcvfilecollectionerrorenable.is_set || is_set(cdcvfilecollectionerrorenable.operation)) leaf_name_data.push_back(cdcvfilecollectionerrorenable.get_name_leafdata());
-    if (cdcvfilecollectionperiod.is_set || is_set(cdcvfilecollectionperiod.operation)) leaf_name_data.push_back(cdcvfilecollectionperiod.get_name_leafdata());
-    if (cdcvfilecollectmode.is_set || is_set(cdcvfilecollectmode.operation)) leaf_name_data.push_back(cdcvfilecollectmode.get_name_leafdata());
-    if (cdcvfilecommand.is_set || is_set(cdcvfilecommand.operation)) leaf_name_data.push_back(cdcvfilecommand.get_name_leafdata());
-    if (cdcvfilecurrentsize.is_set || is_set(cdcvfilecurrentsize.operation)) leaf_name_data.push_back(cdcvfilecurrentsize.get_name_leafdata());
-    if (cdcvfiledescription.is_set || is_set(cdcvfiledescription.operation)) leaf_name_data.push_back(cdcvfiledescription.get_name_leafdata());
-    if (cdcvfileerrorcode.is_set || is_set(cdcvfileerrorcode.operation)) leaf_name_data.push_back(cdcvfileerrorcode.get_name_leafdata());
-    if (cdcvfileformat.is_set || is_set(cdcvfileformat.operation)) leaf_name_data.push_back(cdcvfileformat.get_name_leafdata());
-    if (cdcvfilemaxsize.is_set || is_set(cdcvfilemaxsize.operation)) leaf_name_data.push_back(cdcvfilemaxsize.get_name_leafdata());
-    if (cdcvfilename.is_set || is_set(cdcvfilename.operation)) leaf_name_data.push_back(cdcvfilename.get_name_leafdata());
-    if (cdcvfileoperstatus.is_set || is_set(cdcvfileoperstatus.operation)) leaf_name_data.push_back(cdcvfileoperstatus.get_name_leafdata());
-    if (cdcvfileretentionperiod.is_set || is_set(cdcvfileretentionperiod.operation)) leaf_name_data.push_back(cdcvfileretentionperiod.get_name_leafdata());
-    if (cdcvfilerowstatus.is_set || is_set(cdcvfilerowstatus.operation)) leaf_name_data.push_back(cdcvfilerowstatus.get_name_leafdata());
+    if (cdcvfileindex.is_set || is_set(cdcvfileindex.yfilter)) leaf_name_data.push_back(cdcvfileindex.get_name_leafdata());
+    if (cdcvfileadminstatus.is_set || is_set(cdcvfileadminstatus.yfilter)) leaf_name_data.push_back(cdcvfileadminstatus.get_name_leafdata());
+    if (cdcvfilecollectionerrorenable.is_set || is_set(cdcvfilecollectionerrorenable.yfilter)) leaf_name_data.push_back(cdcvfilecollectionerrorenable.get_name_leafdata());
+    if (cdcvfilecollectionperiod.is_set || is_set(cdcvfilecollectionperiod.yfilter)) leaf_name_data.push_back(cdcvfilecollectionperiod.get_name_leafdata());
+    if (cdcvfilecollectmode.is_set || is_set(cdcvfilecollectmode.yfilter)) leaf_name_data.push_back(cdcvfilecollectmode.get_name_leafdata());
+    if (cdcvfilecommand.is_set || is_set(cdcvfilecommand.yfilter)) leaf_name_data.push_back(cdcvfilecommand.get_name_leafdata());
+    if (cdcvfilecurrentsize.is_set || is_set(cdcvfilecurrentsize.yfilter)) leaf_name_data.push_back(cdcvfilecurrentsize.get_name_leafdata());
+    if (cdcvfiledescription.is_set || is_set(cdcvfiledescription.yfilter)) leaf_name_data.push_back(cdcvfiledescription.get_name_leafdata());
+    if (cdcvfileerrorcode.is_set || is_set(cdcvfileerrorcode.yfilter)) leaf_name_data.push_back(cdcvfileerrorcode.get_name_leafdata());
+    if (cdcvfileformat.is_set || is_set(cdcvfileformat.yfilter)) leaf_name_data.push_back(cdcvfileformat.get_name_leafdata());
+    if (cdcvfilemaxsize.is_set || is_set(cdcvfilemaxsize.yfilter)) leaf_name_data.push_back(cdcvfilemaxsize.get_name_leafdata());
+    if (cdcvfilename.is_set || is_set(cdcvfilename.yfilter)) leaf_name_data.push_back(cdcvfilename.get_name_leafdata());
+    if (cdcvfileoperstatus.is_set || is_set(cdcvfileoperstatus.yfilter)) leaf_name_data.push_back(cdcvfileoperstatus.get_name_leafdata());
+    if (cdcvfileretentionperiod.is_set || is_set(cdcvfileretentionperiod.yfilter)) leaf_name_data.push_back(cdcvfileretentionperiod.get_name_leafdata());
+    if (cdcvfilerowstatus.is_set || is_set(cdcvfilerowstatus.yfilter)) leaf_name_data.push_back(cdcvfilerowstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -518,68 +570,169 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfilet
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcVFileIndex")
     {
         cdcvfileindex = value;
+        cdcvfileindex.value_namespace = name_space;
+        cdcvfileindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileAdminStatus")
     {
         cdcvfileadminstatus = value;
+        cdcvfileadminstatus.value_namespace = name_space;
+        cdcvfileadminstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileCollectionErrorEnable")
     {
         cdcvfilecollectionerrorenable = value;
+        cdcvfilecollectionerrorenable.value_namespace = name_space;
+        cdcvfilecollectionerrorenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileCollectionPeriod")
     {
         cdcvfilecollectionperiod = value;
+        cdcvfilecollectionperiod.value_namespace = name_space;
+        cdcvfilecollectionperiod.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileCollectMode")
     {
         cdcvfilecollectmode = value;
+        cdcvfilecollectmode.value_namespace = name_space;
+        cdcvfilecollectmode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileCommand")
     {
         cdcvfilecommand = value;
+        cdcvfilecommand.value_namespace = name_space;
+        cdcvfilecommand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileCurrentSize")
     {
         cdcvfilecurrentsize = value;
+        cdcvfilecurrentsize.value_namespace = name_space;
+        cdcvfilecurrentsize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileDescription")
     {
         cdcvfiledescription = value;
+        cdcvfiledescription.value_namespace = name_space;
+        cdcvfiledescription.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileErrorCode")
     {
         cdcvfileerrorcode = value;
+        cdcvfileerrorcode.value_namespace = name_space;
+        cdcvfileerrorcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileFormat")
     {
         cdcvfileformat = value;
+        cdcvfileformat.value_namespace = name_space;
+        cdcvfileformat.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMaxSize")
     {
         cdcvfilemaxsize = value;
+        cdcvfilemaxsize.value_namespace = name_space;
+        cdcvfilemaxsize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileName")
     {
         cdcvfilename = value;
+        cdcvfilename.value_namespace = name_space;
+        cdcvfilename.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileOperStatus")
     {
         cdcvfileoperstatus = value;
+        cdcvfileoperstatus.value_namespace = name_space;
+        cdcvfileoperstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileRetentionPeriod")
     {
         cdcvfileretentionperiod = value;
+        cdcvfileretentionperiod.value_namespace = name_space;
+        cdcvfileretentionperiod.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileRowStatus")
     {
         cdcvfilerowstatus = value;
+        cdcvfilerowstatus.value_namespace = name_space;
+        cdcvfilerowstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdcVFileIndex")
+    {
+        cdcvfileindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileAdminStatus")
+    {
+        cdcvfileadminstatus.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileCollectionErrorEnable")
+    {
+        cdcvfilecollectionerrorenable.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileCollectionPeriod")
+    {
+        cdcvfilecollectionperiod.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileCollectMode")
+    {
+        cdcvfilecollectmode.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileCommand")
+    {
+        cdcvfilecommand.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileCurrentSize")
+    {
+        cdcvfilecurrentsize.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileDescription")
+    {
+        cdcvfiledescription.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileErrorCode")
+    {
+        cdcvfileerrorcode.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileFormat")
+    {
+        cdcvfileformat.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMaxSize")
+    {
+        cdcvfilemaxsize.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileName")
+    {
+        cdcvfilename.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileOperStatus")
+    {
+        cdcvfileoperstatus.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileRetentionPeriod")
+    {
+        cdcvfileretentionperiod.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileRowStatus")
+    {
+        cdcvfilerowstatus.yfilter = yfilter;
+    }
+}
+
+bool CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcVFileIndex" || name == "cdcVFileAdminStatus" || name == "cdcVFileCollectionErrorEnable" || name == "cdcVFileCollectionPeriod" || name == "cdcVFileCollectMode" || name == "cdcVFileCommand" || name == "cdcVFileCurrentSize" || name == "cdcVFileDescription" || name == "cdcVFileErrorCode" || name == "cdcVFileFormat" || name == "cdcVFileMaxSize" || name == "cdcVFileName" || name == "cdcVFileOperStatus" || name == "cdcVFileRetentionPeriod" || name == "cdcVFileRowStatus")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmttable()
@@ -593,9 +746,9 @@ CiscoDataCollectionMib::Cdcvfilemgmttable::~Cdcvfilemgmttable()
 
 bool CiscoDataCollectionMib::Cdcvfilemgmttable::has_data() const
 {
-    for (std::size_t index=0; index<cdcvfilemgmtentry_.size(); index++)
+    for (std::size_t index=0; index<cdcvfilemgmtentry.size(); index++)
     {
-        if(cdcvfilemgmtentry_[index]->has_data())
+        if(cdcvfilemgmtentry[index]->has_data())
             return true;
     }
     return false;
@@ -603,12 +756,12 @@ bool CiscoDataCollectionMib::Cdcvfilemgmttable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcvfilemgmttable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcvfilemgmtentry_.size(); index++)
+    for (std::size_t index=0; index<cdcvfilemgmtentry.size(); index++)
     {
-        if(cdcvfilemgmtentry_[index]->has_operation())
+        if(cdcvfilemgmtentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcvfilemgmttable::get_segment_path() const
@@ -645,7 +798,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfilemgmttable::get_child_by_
 {
     if(child_yang_name == "cdcVFileMgmtEntry")
     {
-        for(auto const & c : cdcvfilemgmtentry_)
+        for(auto const & c : cdcvfilemgmtentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -655,7 +808,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfilemgmttable::get_child_by_
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry>();
         c->parent = this;
-        cdcvfilemgmtentry_.push_back(c);
+        cdcvfilemgmtentry.push_back(c);
         return c;
     }
 
@@ -665,7 +818,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcvfilemgmttable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfilemgmttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcvfilemgmtentry_)
+    for (auto const & c : cdcvfilemgmtentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -673,8 +826,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfilem
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcvfilemgmttable::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcvfilemgmttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDataCollectionMib::Cdcvfilemgmttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDataCollectionMib::Cdcvfilemgmttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcVFileMgmtEntry")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtentry()
@@ -711,16 +875,16 @@ bool CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::has_data() co
 
 bool CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cdcvfileindex.operation)
-	|| is_set(cdcvfilemgmtindex.operation)
-	|| is_set(cdcvfilemgmtcommand.operation)
-	|| is_set(cdcvfilemgmtlastxferstatus.operation)
-	|| is_set(cdcvfilemgmtlastxferurl.operation)
-	|| is_set(cdcvfilemgmtname.operation)
-	|| is_set(cdcvfilemgmttimestamp.operation)
-	|| is_set(cdcvfilemgmttimetolive.operation)
-	|| is_set(cdcvfilemgmtxferurl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cdcvfileindex.yfilter)
+	|| ydk::is_set(cdcvfilemgmtindex.yfilter)
+	|| ydk::is_set(cdcvfilemgmtcommand.yfilter)
+	|| ydk::is_set(cdcvfilemgmtlastxferstatus.yfilter)
+	|| ydk::is_set(cdcvfilemgmtlastxferurl.yfilter)
+	|| ydk::is_set(cdcvfilemgmtname.yfilter)
+	|| ydk::is_set(cdcvfilemgmttimestamp.yfilter)
+	|| ydk::is_set(cdcvfilemgmttimetolive.yfilter)
+	|| ydk::is_set(cdcvfilemgmtxferurl.yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::get_segment_path() const
@@ -746,15 +910,15 @@ const EntityPath CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cdcvfileindex.is_set || is_set(cdcvfileindex.operation)) leaf_name_data.push_back(cdcvfileindex.get_name_leafdata());
-    if (cdcvfilemgmtindex.is_set || is_set(cdcvfilemgmtindex.operation)) leaf_name_data.push_back(cdcvfilemgmtindex.get_name_leafdata());
-    if (cdcvfilemgmtcommand.is_set || is_set(cdcvfilemgmtcommand.operation)) leaf_name_data.push_back(cdcvfilemgmtcommand.get_name_leafdata());
-    if (cdcvfilemgmtlastxferstatus.is_set || is_set(cdcvfilemgmtlastxferstatus.operation)) leaf_name_data.push_back(cdcvfilemgmtlastxferstatus.get_name_leafdata());
-    if (cdcvfilemgmtlastxferurl.is_set || is_set(cdcvfilemgmtlastxferurl.operation)) leaf_name_data.push_back(cdcvfilemgmtlastxferurl.get_name_leafdata());
-    if (cdcvfilemgmtname.is_set || is_set(cdcvfilemgmtname.operation)) leaf_name_data.push_back(cdcvfilemgmtname.get_name_leafdata());
-    if (cdcvfilemgmttimestamp.is_set || is_set(cdcvfilemgmttimestamp.operation)) leaf_name_data.push_back(cdcvfilemgmttimestamp.get_name_leafdata());
-    if (cdcvfilemgmttimetolive.is_set || is_set(cdcvfilemgmttimetolive.operation)) leaf_name_data.push_back(cdcvfilemgmttimetolive.get_name_leafdata());
-    if (cdcvfilemgmtxferurl.is_set || is_set(cdcvfilemgmtxferurl.operation)) leaf_name_data.push_back(cdcvfilemgmtxferurl.get_name_leafdata());
+    if (cdcvfileindex.is_set || is_set(cdcvfileindex.yfilter)) leaf_name_data.push_back(cdcvfileindex.get_name_leafdata());
+    if (cdcvfilemgmtindex.is_set || is_set(cdcvfilemgmtindex.yfilter)) leaf_name_data.push_back(cdcvfilemgmtindex.get_name_leafdata());
+    if (cdcvfilemgmtcommand.is_set || is_set(cdcvfilemgmtcommand.yfilter)) leaf_name_data.push_back(cdcvfilemgmtcommand.get_name_leafdata());
+    if (cdcvfilemgmtlastxferstatus.is_set || is_set(cdcvfilemgmtlastxferstatus.yfilter)) leaf_name_data.push_back(cdcvfilemgmtlastxferstatus.get_name_leafdata());
+    if (cdcvfilemgmtlastxferurl.is_set || is_set(cdcvfilemgmtlastxferurl.yfilter)) leaf_name_data.push_back(cdcvfilemgmtlastxferurl.get_name_leafdata());
+    if (cdcvfilemgmtname.is_set || is_set(cdcvfilemgmtname.yfilter)) leaf_name_data.push_back(cdcvfilemgmtname.get_name_leafdata());
+    if (cdcvfilemgmttimestamp.is_set || is_set(cdcvfilemgmttimestamp.yfilter)) leaf_name_data.push_back(cdcvfilemgmttimestamp.get_name_leafdata());
+    if (cdcvfilemgmttimetolive.is_set || is_set(cdcvfilemgmttimetolive.yfilter)) leaf_name_data.push_back(cdcvfilemgmttimetolive.get_name_leafdata());
+    if (cdcvfilemgmtxferurl.is_set || is_set(cdcvfilemgmtxferurl.yfilter)) leaf_name_data.push_back(cdcvfilemgmtxferurl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -773,44 +937,109 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcvfilem
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcVFileIndex")
     {
         cdcvfileindex = value;
+        cdcvfileindex.value_namespace = name_space;
+        cdcvfileindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMgmtIndex")
     {
         cdcvfilemgmtindex = value;
+        cdcvfilemgmtindex.value_namespace = name_space;
+        cdcvfilemgmtindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMgmtCommand")
     {
         cdcvfilemgmtcommand = value;
+        cdcvfilemgmtcommand.value_namespace = name_space;
+        cdcvfilemgmtcommand.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMgmtLastXferStatus")
     {
         cdcvfilemgmtlastxferstatus = value;
+        cdcvfilemgmtlastxferstatus.value_namespace = name_space;
+        cdcvfilemgmtlastxferstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMgmtLastXferURL")
     {
         cdcvfilemgmtlastxferurl = value;
+        cdcvfilemgmtlastxferurl.value_namespace = name_space;
+        cdcvfilemgmtlastxferurl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMgmtName")
     {
         cdcvfilemgmtname = value;
+        cdcvfilemgmtname.value_namespace = name_space;
+        cdcvfilemgmtname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMgmtTimestamp")
     {
         cdcvfilemgmttimestamp = value;
+        cdcvfilemgmttimestamp.value_namespace = name_space;
+        cdcvfilemgmttimestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMgmtTimeToLive")
     {
         cdcvfilemgmttimetolive = value;
+        cdcvfilemgmttimetolive.value_namespace = name_space;
+        cdcvfilemgmttimetolive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcVFileMgmtXferURL")
     {
         cdcvfilemgmtxferurl = value;
+        cdcvfilemgmtxferurl.value_namespace = name_space;
+        cdcvfilemgmtxferurl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdcVFileIndex")
+    {
+        cdcvfileindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMgmtIndex")
+    {
+        cdcvfilemgmtindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMgmtCommand")
+    {
+        cdcvfilemgmtcommand.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMgmtLastXferStatus")
+    {
+        cdcvfilemgmtlastxferstatus.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMgmtLastXferURL")
+    {
+        cdcvfilemgmtlastxferurl.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMgmtName")
+    {
+        cdcvfilemgmtname.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMgmtTimestamp")
+    {
+        cdcvfilemgmttimestamp.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMgmtTimeToLive")
+    {
+        cdcvfilemgmttimetolive.yfilter = yfilter;
+    }
+    if(value_path == "cdcVFileMgmtXferURL")
+    {
+        cdcvfilemgmtxferurl.yfilter = yfilter;
+    }
+}
+
+bool CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcVFileIndex" || name == "cdcVFileMgmtIndex" || name == "cdcVFileMgmtCommand" || name == "cdcVFileMgmtLastXferStatus" || name == "cdcVFileMgmtLastXferURL" || name == "cdcVFileMgmtName" || name == "cdcVFileMgmtTimestamp" || name == "cdcVFileMgmtTimeToLive" || name == "cdcVFileMgmtXferURL")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcdgtable::Cdcdgtable()
@@ -824,9 +1053,9 @@ CiscoDataCollectionMib::Cdcdgtable::~Cdcdgtable()
 
 bool CiscoDataCollectionMib::Cdcdgtable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdgentry_.size(); index++)
+    for (std::size_t index=0; index<cdcdgentry.size(); index++)
     {
-        if(cdcdgentry_[index]->has_data())
+        if(cdcdgentry[index]->has_data())
             return true;
     }
     return false;
@@ -834,12 +1063,12 @@ bool CiscoDataCollectionMib::Cdcdgtable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcdgtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdgentry_.size(); index++)
+    for (std::size_t index=0; index<cdcdgentry.size(); index++)
     {
-        if(cdcdgentry_[index]->has_operation())
+        if(cdcdgentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcdgtable::get_segment_path() const
@@ -876,7 +1105,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgtable::get_child_by_name(co
 {
     if(child_yang_name == "cdcDGEntry")
     {
-        for(auto const & c : cdcdgentry_)
+        for(auto const & c : cdcdgentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -886,7 +1115,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgtable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry>();
         c->parent = this;
-        cdcdgentry_.push_back(c);
+        cdcdgentry.push_back(c);
         return c;
     }
 
@@ -896,7 +1125,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgtable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdgtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcdgentry_)
+    for (auto const & c : cdcdgentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -904,8 +1133,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdgtabl
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcdgtable::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcdgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDataCollectionMib::Cdcdgtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDataCollectionMib::Cdcdgtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcDGEntry")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::Cdcdgentry()
@@ -946,18 +1186,18 @@ bool CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::has_data() const
 
 bool CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cdcdgindex.operation)
-	|| is_set(cdcdgcomment.operation)
-	|| is_set(cdcdgcontextname.operation)
-	|| is_set(cdcdginstgrpindex.operation)
-	|| is_set(cdcdgobject.operation)
-	|| is_set(cdcdgobjectgrpindex.operation)
-	|| is_set(cdcdgpollperiod.operation)
-	|| is_set(cdcdgrowstatus.operation)
-	|| is_set(cdcdgtargettag.operation)
-	|| is_set(cdcdgtype.operation)
-	|| is_set(cdcdgvfileindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cdcdgindex.yfilter)
+	|| ydk::is_set(cdcdgcomment.yfilter)
+	|| ydk::is_set(cdcdgcontextname.yfilter)
+	|| ydk::is_set(cdcdginstgrpindex.yfilter)
+	|| ydk::is_set(cdcdgobject.yfilter)
+	|| ydk::is_set(cdcdgobjectgrpindex.yfilter)
+	|| ydk::is_set(cdcdgpollperiod.yfilter)
+	|| ydk::is_set(cdcdgrowstatus.yfilter)
+	|| ydk::is_set(cdcdgtargettag.yfilter)
+	|| ydk::is_set(cdcdgtype.yfilter)
+	|| ydk::is_set(cdcdgvfileindex.yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::get_segment_path() const
@@ -983,17 +1223,17 @@ const EntityPath CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cdcdgindex.is_set || is_set(cdcdgindex.operation)) leaf_name_data.push_back(cdcdgindex.get_name_leafdata());
-    if (cdcdgcomment.is_set || is_set(cdcdgcomment.operation)) leaf_name_data.push_back(cdcdgcomment.get_name_leafdata());
-    if (cdcdgcontextname.is_set || is_set(cdcdgcontextname.operation)) leaf_name_data.push_back(cdcdgcontextname.get_name_leafdata());
-    if (cdcdginstgrpindex.is_set || is_set(cdcdginstgrpindex.operation)) leaf_name_data.push_back(cdcdginstgrpindex.get_name_leafdata());
-    if (cdcdgobject.is_set || is_set(cdcdgobject.operation)) leaf_name_data.push_back(cdcdgobject.get_name_leafdata());
-    if (cdcdgobjectgrpindex.is_set || is_set(cdcdgobjectgrpindex.operation)) leaf_name_data.push_back(cdcdgobjectgrpindex.get_name_leafdata());
-    if (cdcdgpollperiod.is_set || is_set(cdcdgpollperiod.operation)) leaf_name_data.push_back(cdcdgpollperiod.get_name_leafdata());
-    if (cdcdgrowstatus.is_set || is_set(cdcdgrowstatus.operation)) leaf_name_data.push_back(cdcdgrowstatus.get_name_leafdata());
-    if (cdcdgtargettag.is_set || is_set(cdcdgtargettag.operation)) leaf_name_data.push_back(cdcdgtargettag.get_name_leafdata());
-    if (cdcdgtype.is_set || is_set(cdcdgtype.operation)) leaf_name_data.push_back(cdcdgtype.get_name_leafdata());
-    if (cdcdgvfileindex.is_set || is_set(cdcdgvfileindex.operation)) leaf_name_data.push_back(cdcdgvfileindex.get_name_leafdata());
+    if (cdcdgindex.is_set || is_set(cdcdgindex.yfilter)) leaf_name_data.push_back(cdcdgindex.get_name_leafdata());
+    if (cdcdgcomment.is_set || is_set(cdcdgcomment.yfilter)) leaf_name_data.push_back(cdcdgcomment.get_name_leafdata());
+    if (cdcdgcontextname.is_set || is_set(cdcdgcontextname.yfilter)) leaf_name_data.push_back(cdcdgcontextname.get_name_leafdata());
+    if (cdcdginstgrpindex.is_set || is_set(cdcdginstgrpindex.yfilter)) leaf_name_data.push_back(cdcdginstgrpindex.get_name_leafdata());
+    if (cdcdgobject.is_set || is_set(cdcdgobject.yfilter)) leaf_name_data.push_back(cdcdgobject.get_name_leafdata());
+    if (cdcdgobjectgrpindex.is_set || is_set(cdcdgobjectgrpindex.yfilter)) leaf_name_data.push_back(cdcdgobjectgrpindex.get_name_leafdata());
+    if (cdcdgpollperiod.is_set || is_set(cdcdgpollperiod.yfilter)) leaf_name_data.push_back(cdcdgpollperiod.get_name_leafdata());
+    if (cdcdgrowstatus.is_set || is_set(cdcdgrowstatus.yfilter)) leaf_name_data.push_back(cdcdgrowstatus.get_name_leafdata());
+    if (cdcdgtargettag.is_set || is_set(cdcdgtargettag.yfilter)) leaf_name_data.push_back(cdcdgtargettag.get_name_leafdata());
+    if (cdcdgtype.is_set || is_set(cdcdgtype.yfilter)) leaf_name_data.push_back(cdcdgtype.get_name_leafdata());
+    if (cdcdgvfileindex.is_set || is_set(cdcdgvfileindex.yfilter)) leaf_name_data.push_back(cdcdgvfileindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1012,52 +1252,129 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdgtabl
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcDGIndex")
     {
         cdcdgindex = value;
+        cdcdgindex.value_namespace = name_space;
+        cdcdgindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGComment")
     {
         cdcdgcomment = value;
+        cdcdgcomment.value_namespace = name_space;
+        cdcdgcomment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGContextName")
     {
         cdcdgcontextname = value;
+        cdcdgcontextname.value_namespace = name_space;
+        cdcdgcontextname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGInstGrpIndex")
     {
         cdcdginstgrpindex = value;
+        cdcdginstgrpindex.value_namespace = name_space;
+        cdcdginstgrpindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGObject")
     {
         cdcdgobject = value;
+        cdcdgobject.value_namespace = name_space;
+        cdcdgobject.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGObjectGrpIndex")
     {
         cdcdgobjectgrpindex = value;
+        cdcdgobjectgrpindex.value_namespace = name_space;
+        cdcdgobjectgrpindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGPollPeriod")
     {
         cdcdgpollperiod = value;
+        cdcdgpollperiod.value_namespace = name_space;
+        cdcdgpollperiod.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGRowStatus")
     {
         cdcdgrowstatus = value;
+        cdcdgrowstatus.value_namespace = name_space;
+        cdcdgrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGTargetTag")
     {
         cdcdgtargettag = value;
+        cdcdgtargettag.value_namespace = name_space;
+        cdcdgtargettag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGType")
     {
         cdcdgtype = value;
+        cdcdgtype.value_namespace = name_space;
+        cdcdgtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGVFileIndex")
     {
         cdcdgvfileindex = value;
+        cdcdgvfileindex.value_namespace = name_space;
+        cdcdgvfileindex.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdcDGIndex")
+    {
+        cdcdgindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGComment")
+    {
+        cdcdgcomment.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGContextName")
+    {
+        cdcdgcontextname.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGInstGrpIndex")
+    {
+        cdcdginstgrpindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGObject")
+    {
+        cdcdgobject.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGObjectGrpIndex")
+    {
+        cdcdgobjectgrpindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGPollPeriod")
+    {
+        cdcdgpollperiod.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGRowStatus")
+    {
+        cdcdgrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGTargetTag")
+    {
+        cdcdgtargettag.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGType")
+    {
+        cdcdgtype.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGVFileIndex")
+    {
+        cdcdgvfileindex.yfilter = yfilter;
+    }
+}
+
+bool CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcDGIndex" || name == "cdcDGComment" || name == "cdcDGContextName" || name == "cdcDGInstGrpIndex" || name == "cdcDGObject" || name == "cdcDGObjectGrpIndex" || name == "cdcDGPollPeriod" || name == "cdcDGRowStatus" || name == "cdcDGTargetTag" || name == "cdcDGType" || name == "cdcDGVFileIndex")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjecttable()
@@ -1071,9 +1388,9 @@ CiscoDataCollectionMib::Cdcdgbaseobjecttable::~Cdcdgbaseobjecttable()
 
 bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdgbaseobjectentry_.size(); index++)
+    for (std::size_t index=0; index<cdcdgbaseobjectentry.size(); index++)
     {
-        if(cdcdgbaseobjectentry_[index]->has_data())
+        if(cdcdgbaseobjectentry[index]->has_data())
             return true;
     }
     return false;
@@ -1081,12 +1398,12 @@ bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdgbaseobjectentry_.size(); index++)
+    for (std::size_t index=0; index<cdcdgbaseobjectentry.size(); index++)
     {
-        if(cdcdgbaseobjectentry_[index]->has_operation())
+        if(cdcdgbaseobjectentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_segment_path() const
@@ -1123,7 +1440,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_child_
 {
     if(child_yang_name == "cdcDGBaseObjectEntry")
     {
-        for(auto const & c : cdcdgbaseobjectentry_)
+        for(auto const & c : cdcdgbaseobjectentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1133,7 +1450,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_child_
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry>();
         c->parent = this;
-        cdcdgbaseobjectentry_.push_back(c);
+        cdcdgbaseobjectentry.push_back(c);
         return c;
     }
 
@@ -1143,7 +1460,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdgbaseobjecttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcdgbaseobjectentry_)
+    for (auto const & c : cdcdgbaseobjectentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1151,8 +1468,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdgbase
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcdgbaseobjecttable::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcdgbaseobjecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDataCollectionMib::Cdcdgbaseobjecttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcDGBaseObjectEntry")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::Cdcdgbaseobjectentry()
@@ -1181,12 +1509,12 @@ bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::has_dat
 
 bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cdcdgbaseobjectgrpindex.operation)
-	|| is_set(cdcdgbaseobjectindex.operation)
-	|| is_set(cdcdgbaseobjectlist.operation)
-	|| is_set(cdcdgbaseobjectrowstatus.operation)
-	|| is_set(cdcdgbaseobjectsubtree.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cdcdgbaseobjectgrpindex.yfilter)
+	|| ydk::is_set(cdcdgbaseobjectindex.yfilter)
+	|| ydk::is_set(cdcdgbaseobjectlist.yfilter)
+	|| ydk::is_set(cdcdgbaseobjectrowstatus.yfilter)
+	|| ydk::is_set(cdcdgbaseobjectsubtree.yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::get_segment_path() const
@@ -1212,11 +1540,11 @@ const EntityPath CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjecten
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cdcdgbaseobjectgrpindex.is_set || is_set(cdcdgbaseobjectgrpindex.operation)) leaf_name_data.push_back(cdcdgbaseobjectgrpindex.get_name_leafdata());
-    if (cdcdgbaseobjectindex.is_set || is_set(cdcdgbaseobjectindex.operation)) leaf_name_data.push_back(cdcdgbaseobjectindex.get_name_leafdata());
-    if (cdcdgbaseobjectlist.is_set || is_set(cdcdgbaseobjectlist.operation)) leaf_name_data.push_back(cdcdgbaseobjectlist.get_name_leafdata());
-    if (cdcdgbaseobjectrowstatus.is_set || is_set(cdcdgbaseobjectrowstatus.operation)) leaf_name_data.push_back(cdcdgbaseobjectrowstatus.get_name_leafdata());
-    if (cdcdgbaseobjectsubtree.is_set || is_set(cdcdgbaseobjectsubtree.operation)) leaf_name_data.push_back(cdcdgbaseobjectsubtree.get_name_leafdata());
+    if (cdcdgbaseobjectgrpindex.is_set || is_set(cdcdgbaseobjectgrpindex.yfilter)) leaf_name_data.push_back(cdcdgbaseobjectgrpindex.get_name_leafdata());
+    if (cdcdgbaseobjectindex.is_set || is_set(cdcdgbaseobjectindex.yfilter)) leaf_name_data.push_back(cdcdgbaseobjectindex.get_name_leafdata());
+    if (cdcdgbaseobjectlist.is_set || is_set(cdcdgbaseobjectlist.yfilter)) leaf_name_data.push_back(cdcdgbaseobjectlist.get_name_leafdata());
+    if (cdcdgbaseobjectrowstatus.is_set || is_set(cdcdgbaseobjectrowstatus.yfilter)) leaf_name_data.push_back(cdcdgbaseobjectrowstatus.get_name_leafdata());
+    if (cdcdgbaseobjectsubtree.is_set || is_set(cdcdgbaseobjectsubtree.yfilter)) leaf_name_data.push_back(cdcdgbaseobjectsubtree.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1235,28 +1563,69 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdgbase
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcDGBaseObjectGrpIndex")
     {
         cdcdgbaseobjectgrpindex = value;
+        cdcdgbaseobjectgrpindex.value_namespace = name_space;
+        cdcdgbaseobjectgrpindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGBaseObjectIndex")
     {
         cdcdgbaseobjectindex = value;
+        cdcdgbaseobjectindex.value_namespace = name_space;
+        cdcdgbaseobjectindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGBaseObjectList")
     {
         cdcdgbaseobjectlist = value;
+        cdcdgbaseobjectlist.value_namespace = name_space;
+        cdcdgbaseobjectlist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGBaseObjectRowStatus")
     {
         cdcdgbaseobjectrowstatus = value;
+        cdcdgbaseobjectrowstatus.value_namespace = name_space;
+        cdcdgbaseobjectrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGBaseObjectSubtree")
     {
         cdcdgbaseobjectsubtree = value;
+        cdcdgbaseobjectsubtree.value_namespace = name_space;
+        cdcdgbaseobjectsubtree.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdcDGBaseObjectGrpIndex")
+    {
+        cdcdgbaseobjectgrpindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGBaseObjectIndex")
+    {
+        cdcdgbaseobjectindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGBaseObjectList")
+    {
+        cdcdgbaseobjectlist.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGBaseObjectRowStatus")
+    {
+        cdcdgbaseobjectrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGBaseObjectSubtree")
+    {
+        cdcdgbaseobjectsubtree.yfilter = yfilter;
+    }
+}
+
+bool CiscoDataCollectionMib::Cdcdgbaseobjecttable::Cdcdgbaseobjectentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcDGBaseObjectGrpIndex" || name == "cdcDGBaseObjectIndex" || name == "cdcDGBaseObjectList" || name == "cdcDGBaseObjectRowStatus" || name == "cdcDGBaseObjectSubtree")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstancetable()
@@ -1270,9 +1639,9 @@ CiscoDataCollectionMib::Cdcdginstancetable::~Cdcdginstancetable()
 
 bool CiscoDataCollectionMib::Cdcdginstancetable::has_data() const
 {
-    for (std::size_t index=0; index<cdcdginstanceentry_.size(); index++)
+    for (std::size_t index=0; index<cdcdginstanceentry.size(); index++)
     {
-        if(cdcdginstanceentry_[index]->has_data())
+        if(cdcdginstanceentry[index]->has_data())
             return true;
     }
     return false;
@@ -1280,12 +1649,12 @@ bool CiscoDataCollectionMib::Cdcdginstancetable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcdginstancetable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcdginstanceentry_.size(); index++)
+    for (std::size_t index=0; index<cdcdginstanceentry.size(); index++)
     {
-        if(cdcdginstanceentry_[index]->has_operation())
+        if(cdcdginstanceentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcdginstancetable::get_segment_path() const
@@ -1322,7 +1691,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdginstancetable::get_child_by
 {
     if(child_yang_name == "cdcDGInstanceEntry")
     {
-        for(auto const & c : cdcdginstanceentry_)
+        for(auto const & c : cdcdginstanceentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1332,7 +1701,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdginstancetable::get_child_by
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry>();
         c->parent = this;
-        cdcdginstanceentry_.push_back(c);
+        cdcdginstanceentry.push_back(c);
         return c;
     }
 
@@ -1342,7 +1711,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcdginstancetable::get_child_by
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdginstancetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcdginstanceentry_)
+    for (auto const & c : cdcdginstanceentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1350,8 +1719,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdginst
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcdginstancetable::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcdginstancetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDataCollectionMib::Cdcdginstancetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDataCollectionMib::Cdcdginstancetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcDGInstanceEntry")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstanceentry()
@@ -1386,15 +1766,15 @@ bool CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::has_data() 
 
 bool CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cdcdginstancegrpindex.operation)
-	|| is_set(cdcdginstanceindex.operation)
-	|| is_set(cdcdginstancenumrepititions.operation)
-	|| is_set(cdcdginstanceoid.operation)
-	|| is_set(cdcdginstanceoidend.operation)
-	|| is_set(cdcdginstanceotherptr.operation)
-	|| is_set(cdcdginstancerowstatus.operation)
-	|| is_set(cdcdginstancetype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cdcdginstancegrpindex.yfilter)
+	|| ydk::is_set(cdcdginstanceindex.yfilter)
+	|| ydk::is_set(cdcdginstancenumrepititions.yfilter)
+	|| ydk::is_set(cdcdginstanceoid.yfilter)
+	|| ydk::is_set(cdcdginstanceoidend.yfilter)
+	|| ydk::is_set(cdcdginstanceotherptr.yfilter)
+	|| ydk::is_set(cdcdginstancerowstatus.yfilter)
+	|| ydk::is_set(cdcdginstancetype.yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::get_segment_path() const
@@ -1420,14 +1800,14 @@ const EntityPath CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cdcdginstancegrpindex.is_set || is_set(cdcdginstancegrpindex.operation)) leaf_name_data.push_back(cdcdginstancegrpindex.get_name_leafdata());
-    if (cdcdginstanceindex.is_set || is_set(cdcdginstanceindex.operation)) leaf_name_data.push_back(cdcdginstanceindex.get_name_leafdata());
-    if (cdcdginstancenumrepititions.is_set || is_set(cdcdginstancenumrepititions.operation)) leaf_name_data.push_back(cdcdginstancenumrepititions.get_name_leafdata());
-    if (cdcdginstanceoid.is_set || is_set(cdcdginstanceoid.operation)) leaf_name_data.push_back(cdcdginstanceoid.get_name_leafdata());
-    if (cdcdginstanceoidend.is_set || is_set(cdcdginstanceoidend.operation)) leaf_name_data.push_back(cdcdginstanceoidend.get_name_leafdata());
-    if (cdcdginstanceotherptr.is_set || is_set(cdcdginstanceotherptr.operation)) leaf_name_data.push_back(cdcdginstanceotherptr.get_name_leafdata());
-    if (cdcdginstancerowstatus.is_set || is_set(cdcdginstancerowstatus.operation)) leaf_name_data.push_back(cdcdginstancerowstatus.get_name_leafdata());
-    if (cdcdginstancetype.is_set || is_set(cdcdginstancetype.operation)) leaf_name_data.push_back(cdcdginstancetype.get_name_leafdata());
+    if (cdcdginstancegrpindex.is_set || is_set(cdcdginstancegrpindex.yfilter)) leaf_name_data.push_back(cdcdginstancegrpindex.get_name_leafdata());
+    if (cdcdginstanceindex.is_set || is_set(cdcdginstanceindex.yfilter)) leaf_name_data.push_back(cdcdginstanceindex.get_name_leafdata());
+    if (cdcdginstancenumrepititions.is_set || is_set(cdcdginstancenumrepititions.yfilter)) leaf_name_data.push_back(cdcdginstancenumrepititions.get_name_leafdata());
+    if (cdcdginstanceoid.is_set || is_set(cdcdginstanceoid.yfilter)) leaf_name_data.push_back(cdcdginstanceoid.get_name_leafdata());
+    if (cdcdginstanceoidend.is_set || is_set(cdcdginstanceoidend.yfilter)) leaf_name_data.push_back(cdcdginstanceoidend.get_name_leafdata());
+    if (cdcdginstanceotherptr.is_set || is_set(cdcdginstanceotherptr.yfilter)) leaf_name_data.push_back(cdcdginstanceotherptr.get_name_leafdata());
+    if (cdcdginstancerowstatus.is_set || is_set(cdcdginstancerowstatus.yfilter)) leaf_name_data.push_back(cdcdginstancerowstatus.get_name_leafdata());
+    if (cdcdginstancetype.is_set || is_set(cdcdginstancetype.yfilter)) leaf_name_data.push_back(cdcdginstancetype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1446,40 +1826,99 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcdginst
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcDGInstanceGrpIndex")
     {
         cdcdginstancegrpindex = value;
+        cdcdginstancegrpindex.value_namespace = name_space;
+        cdcdginstancegrpindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGInstanceIndex")
     {
         cdcdginstanceindex = value;
+        cdcdginstanceindex.value_namespace = name_space;
+        cdcdginstanceindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGInstanceNumRepititions")
     {
         cdcdginstancenumrepititions = value;
+        cdcdginstancenumrepititions.value_namespace = name_space;
+        cdcdginstancenumrepititions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGInstanceOid")
     {
         cdcdginstanceoid = value;
+        cdcdginstanceoid.value_namespace = name_space;
+        cdcdginstanceoid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGInstanceOidEnd")
     {
         cdcdginstanceoidend = value;
+        cdcdginstanceoidend.value_namespace = name_space;
+        cdcdginstanceoidend.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGInstanceOtherPtr")
     {
         cdcdginstanceotherptr = value;
+        cdcdginstanceotherptr.value_namespace = name_space;
+        cdcdginstanceotherptr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGInstanceRowStatus")
     {
         cdcdginstancerowstatus = value;
+        cdcdginstancerowstatus.value_namespace = name_space;
+        cdcdginstancerowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcDGInstanceType")
     {
         cdcdginstancetype = value;
+        cdcdginstancetype.value_namespace = name_space;
+        cdcdginstancetype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdcDGInstanceGrpIndex")
+    {
+        cdcdginstancegrpindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGInstanceIndex")
+    {
+        cdcdginstanceindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGInstanceNumRepititions")
+    {
+        cdcdginstancenumrepititions.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGInstanceOid")
+    {
+        cdcdginstanceoid.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGInstanceOidEnd")
+    {
+        cdcdginstanceoidend.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGInstanceOtherPtr")
+    {
+        cdcdginstanceotherptr.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGInstanceRowStatus")
+    {
+        cdcdginstancerowstatus.yfilter = yfilter;
+    }
+    if(value_path == "cdcDGInstanceType")
+    {
+        cdcdginstancetype.yfilter = yfilter;
+    }
+}
+
+bool CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcDGInstanceGrpIndex" || name == "cdcDGInstanceIndex" || name == "cdcDGInstanceNumRepititions" || name == "cdcDGInstanceOid" || name == "cdcDGInstanceOidEnd" || name == "cdcDGInstanceOtherPtr" || name == "cdcDGInstanceRowStatus" || name == "cdcDGInstanceType")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconftable()
@@ -1493,9 +1932,9 @@ CiscoDataCollectionMib::Cdcfilexferconftable::~Cdcfilexferconftable()
 
 bool CiscoDataCollectionMib::Cdcfilexferconftable::has_data() const
 {
-    for (std::size_t index=0; index<cdcfilexferconfentry_.size(); index++)
+    for (std::size_t index=0; index<cdcfilexferconfentry.size(); index++)
     {
-        if(cdcfilexferconfentry_[index]->has_data())
+        if(cdcfilexferconfentry[index]->has_data())
             return true;
     }
     return false;
@@ -1503,12 +1942,12 @@ bool CiscoDataCollectionMib::Cdcfilexferconftable::has_data() const
 
 bool CiscoDataCollectionMib::Cdcfilexferconftable::has_operation() const
 {
-    for (std::size_t index=0; index<cdcfilexferconfentry_.size(); index++)
+    for (std::size_t index=0; index<cdcfilexferconfentry.size(); index++)
     {
-        if(cdcfilexferconfentry_[index]->has_operation())
+        if(cdcfilexferconfentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcfilexferconftable::get_segment_path() const
@@ -1545,7 +1984,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcfilexferconftable::get_child_
 {
     if(child_yang_name == "cdcFileXferConfEntry")
     {
-        for(auto const & c : cdcfilexferconfentry_)
+        for(auto const & c : cdcfilexferconfentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1555,7 +1994,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcfilexferconftable::get_child_
         }
         auto c = std::make_shared<CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry>();
         c->parent = this;
-        cdcfilexferconfentry_.push_back(c);
+        cdcfilexferconfentry.push_back(c);
         return c;
     }
 
@@ -1565,7 +2004,7 @@ std::shared_ptr<Entity> CiscoDataCollectionMib::Cdcfilexferconftable::get_child_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcfilexferconftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdcfilexferconfentry_)
+    for (auto const & c : cdcfilexferconfentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1573,8 +2012,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcfilexf
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcfilexferconftable::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcfilexferconftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDataCollectionMib::Cdcfilexferconftable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDataCollectionMib::Cdcfilexferconftable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcFileXferConfEntry")
+        return true;
+    return false;
 }
 
 CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry::Cdcfilexferconfentry()
@@ -1607,14 +2057,14 @@ bool CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry::has_dat
 
 bool CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cdcvfileindex.operation)
-	|| is_set(cdcfilexferconffailureenable.operation)
-	|| is_set(cdcfilexferconfpriurl.operation)
-	|| is_set(cdcfilexferconfretrycount.operation)
-	|| is_set(cdcfilexferconfretryperiod.operation)
-	|| is_set(cdcfilexferconfsecurl.operation)
-	|| is_set(cdcfilexferconfsuccessenable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cdcvfileindex.yfilter)
+	|| ydk::is_set(cdcfilexferconffailureenable.yfilter)
+	|| ydk::is_set(cdcfilexferconfpriurl.yfilter)
+	|| ydk::is_set(cdcfilexferconfretrycount.yfilter)
+	|| ydk::is_set(cdcfilexferconfretryperiod.yfilter)
+	|| ydk::is_set(cdcfilexferconfsecurl.yfilter)
+	|| ydk::is_set(cdcfilexferconfsuccessenable.yfilter);
 }
 
 std::string CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry::get_segment_path() const
@@ -1640,13 +2090,13 @@ const EntityPath CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfen
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cdcvfileindex.is_set || is_set(cdcvfileindex.operation)) leaf_name_data.push_back(cdcvfileindex.get_name_leafdata());
-    if (cdcfilexferconffailureenable.is_set || is_set(cdcfilexferconffailureenable.operation)) leaf_name_data.push_back(cdcfilexferconffailureenable.get_name_leafdata());
-    if (cdcfilexferconfpriurl.is_set || is_set(cdcfilexferconfpriurl.operation)) leaf_name_data.push_back(cdcfilexferconfpriurl.get_name_leafdata());
-    if (cdcfilexferconfretrycount.is_set || is_set(cdcfilexferconfretrycount.operation)) leaf_name_data.push_back(cdcfilexferconfretrycount.get_name_leafdata());
-    if (cdcfilexferconfretryperiod.is_set || is_set(cdcfilexferconfretryperiod.operation)) leaf_name_data.push_back(cdcfilexferconfretryperiod.get_name_leafdata());
-    if (cdcfilexferconfsecurl.is_set || is_set(cdcfilexferconfsecurl.operation)) leaf_name_data.push_back(cdcfilexferconfsecurl.get_name_leafdata());
-    if (cdcfilexferconfsuccessenable.is_set || is_set(cdcfilexferconfsuccessenable.operation)) leaf_name_data.push_back(cdcfilexferconfsuccessenable.get_name_leafdata());
+    if (cdcvfileindex.is_set || is_set(cdcvfileindex.yfilter)) leaf_name_data.push_back(cdcvfileindex.get_name_leafdata());
+    if (cdcfilexferconffailureenable.is_set || is_set(cdcfilexferconffailureenable.yfilter)) leaf_name_data.push_back(cdcfilexferconffailureenable.get_name_leafdata());
+    if (cdcfilexferconfpriurl.is_set || is_set(cdcfilexferconfpriurl.yfilter)) leaf_name_data.push_back(cdcfilexferconfpriurl.get_name_leafdata());
+    if (cdcfilexferconfretrycount.is_set || is_set(cdcfilexferconfretrycount.yfilter)) leaf_name_data.push_back(cdcfilexferconfretrycount.get_name_leafdata());
+    if (cdcfilexferconfretryperiod.is_set || is_set(cdcfilexferconfretryperiod.yfilter)) leaf_name_data.push_back(cdcfilexferconfretryperiod.get_name_leafdata());
+    if (cdcfilexferconfsecurl.is_set || is_set(cdcfilexferconfsecurl.yfilter)) leaf_name_data.push_back(cdcfilexferconfsecurl.get_name_leafdata());
+    if (cdcfilexferconfsuccessenable.is_set || is_set(cdcfilexferconfsuccessenable.yfilter)) leaf_name_data.push_back(cdcfilexferconfsuccessenable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1665,87 +2115,140 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDataCollectionMib::Cdcfilexf
     return children;
 }
 
-void CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry::set_value(const std::string & value_path, std::string value)
+void CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdcVFileIndex")
     {
         cdcvfileindex = value;
+        cdcvfileindex.value_namespace = name_space;
+        cdcvfileindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcFileXferConfFailureEnable")
     {
         cdcfilexferconffailureenable = value;
+        cdcfilexferconffailureenable.value_namespace = name_space;
+        cdcfilexferconffailureenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcFileXferConfPriUrl")
     {
         cdcfilexferconfpriurl = value;
+        cdcfilexferconfpriurl.value_namespace = name_space;
+        cdcfilexferconfpriurl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcFileXferConfRetryCount")
     {
         cdcfilexferconfretrycount = value;
+        cdcfilexferconfretrycount.value_namespace = name_space;
+        cdcfilexferconfretrycount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcFileXferConfRetryPeriod")
     {
         cdcfilexferconfretryperiod = value;
+        cdcfilexferconfretryperiod.value_namespace = name_space;
+        cdcfilexferconfretryperiod.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcFileXferConfSecUrl")
     {
         cdcfilexferconfsecurl = value;
+        cdcfilexferconfsecurl.value_namespace = name_space;
+        cdcfilexferconfsecurl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdcFileXferConfSuccessEnable")
     {
         cdcfilexferconfsuccessenable = value;
+        cdcfilexferconfsuccessenable.value_namespace = name_space;
+        cdcfilexferconfsuccessenable.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CdcfilexferstatusEnum::notStarted {1, "notStarted"};
-const Enum::YLeaf CdcfilexferstatusEnum::success {2, "success"};
-const Enum::YLeaf CdcfilexferstatusEnum::aborted {3, "aborted"};
-const Enum::YLeaf CdcfilexferstatusEnum::fileOpenFailRemote {4, "fileOpenFailRemote"};
-const Enum::YLeaf CdcfilexferstatusEnum::badDomainName {5, "badDomainName"};
-const Enum::YLeaf CdcfilexferstatusEnum::unreachableIpAddress {6, "unreachableIpAddress"};
-const Enum::YLeaf CdcfilexferstatusEnum::networkFailed {7, "networkFailed"};
-const Enum::YLeaf CdcfilexferstatusEnum::fileWriteFailed {8, "fileWriteFailed"};
-const Enum::YLeaf CdcfilexferstatusEnum::authFailed {9, "authFailed"};
+void CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cdcVFileIndex")
+    {
+        cdcvfileindex.yfilter = yfilter;
+    }
+    if(value_path == "cdcFileXferConfFailureEnable")
+    {
+        cdcfilexferconffailureenable.yfilter = yfilter;
+    }
+    if(value_path == "cdcFileXferConfPriUrl")
+    {
+        cdcfilexferconfpriurl.yfilter = yfilter;
+    }
+    if(value_path == "cdcFileXferConfRetryCount")
+    {
+        cdcfilexferconfretrycount.yfilter = yfilter;
+    }
+    if(value_path == "cdcFileXferConfRetryPeriod")
+    {
+        cdcfilexferconfretryperiod.yfilter = yfilter;
+    }
+    if(value_path == "cdcFileXferConfSecUrl")
+    {
+        cdcfilexferconfsecurl.yfilter = yfilter;
+    }
+    if(value_path == "cdcFileXferConfSuccessEnable")
+    {
+        cdcfilexferconfsuccessenable.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CdcfileformatEnum::cdcBulkASCII {1, "cdcBulkASCII"};
-const Enum::YLeaf CdcfileformatEnum::cdcBulkBinary {2, "cdcBulkBinary"};
-const Enum::YLeaf CdcfileformatEnum::cdcSchemaASCII {3, "cdcSchemaASCII"};
+bool CiscoDataCollectionMib::Cdcfilexferconftable::Cdcfilexferconfentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdcVFileIndex" || name == "cdcFileXferConfFailureEnable" || name == "cdcFileXferConfPriUrl" || name == "cdcFileXferConfRetryCount" || name == "cdcFileXferConfRetryPeriod" || name == "cdcFileXferConfSecUrl" || name == "cdcFileXferConfSuccessEnable")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfilecommandEnum::idle {1, "idle"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfilecommandEnum::swapToNewFile {2, "swapToNewFile"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfilecommandEnum::collectNow {3, "collectNow"};
+const Enum::YLeaf Cdcfileformat::cdcBulkASCII {1, "cdcBulkASCII"};
+const Enum::YLeaf Cdcfileformat::cdcBulkBinary {2, "cdcBulkBinary"};
+const Enum::YLeaf Cdcfileformat::cdcSchemaASCII {3, "cdcSchemaASCII"};
 
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfilecollectmodeEnum::auto_ {1, "auto"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfilecollectmodeEnum::manual {2, "manual"};
+const Enum::YLeaf Cdcfilexferstatus::notStarted {1, "notStarted"};
+const Enum::YLeaf Cdcfilexferstatus::success {2, "success"};
+const Enum::YLeaf Cdcfilexferstatus::aborted {3, "aborted"};
+const Enum::YLeaf Cdcfilexferstatus::fileOpenFailRemote {4, "fileOpenFailRemote"};
+const Enum::YLeaf Cdcfilexferstatus::badDomainName {5, "badDomainName"};
+const Enum::YLeaf Cdcfilexferstatus::unreachableIpAddress {6, "unreachableIpAddress"};
+const Enum::YLeaf Cdcfilexferstatus::networkFailed {7, "networkFailed"};
+const Enum::YLeaf Cdcfilexferstatus::fileWriteFailed {8, "fileWriteFailed"};
+const Enum::YLeaf Cdcfilexferstatus::authFailed {9, "authFailed"};
 
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileadminstatusEnum::enabled {1, "enabled"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileadminstatusEnum::disabled {2, "disabled"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfilecommand::idle {1, "idle"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfilecommand::swapToNewFile {2, "swapToNewFile"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfilecommand::collectNow {3, "collectNow"};
 
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileoperstatusEnum::enabled {1, "enabled"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileoperstatusEnum::disabled {2, "disabled"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileoperstatusEnum::error {3, "error"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfilecollectmode::auto_ {1, "auto"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfilecollectmode::manual {2, "manual"};
 
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileerrorcodeEnum::noError {1, "noError"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileerrorcodeEnum::otherError {2, "otherError"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileerrorcodeEnum::noSpace {3, "noSpace"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileerrorcodeEnum::openError {4, "openError"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileerrorcodeEnum::tooSmallMaxSize {5, "tooSmallMaxSize"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileerrorcodeEnum::tooManyMaxSizeHits {6, "tooManyMaxSizeHits"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::CdcvfileerrorcodeEnum::noResource {7, "noResource"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileadminstatus::enabled {1, "enabled"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileadminstatus::disabled {2, "disabled"};
 
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::CdcvfilemgmtcommandEnum::idle {1, "idle"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::CdcvfilemgmtcommandEnum::delete_ {2, "delete"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::CdcvfilemgmtcommandEnum::transfer {3, "transfer"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::CdcvfilemgmtcommandEnum::abortTransfer {4, "abortTransfer"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileoperstatus::enabled {1, "enabled"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileoperstatus::disabled {2, "disabled"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileoperstatus::error {3, "error"};
 
-const Enum::YLeaf CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::CdcdgtypeEnum::object {1, "object"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::CdcdgtypeEnum::table {2, "table"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::noError {1, "noError"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::otherError {2, "otherError"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::noSpace {3, "noSpace"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::openError {4, "openError"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::tooSmallMaxSize {5, "tooSmallMaxSize"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::tooManyMaxSizeHits {6, "tooManyMaxSizeHits"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfiletable::Cdcvfileentry::Cdcvfileerrorcode::noResource {7, "noResource"};
 
-const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::CdcdginstancetypeEnum::individual {1, "individual"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::CdcdginstancetypeEnum::range {2, "range"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::CdcdginstancetypeEnum::repititions {3, "repititions"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::CdcdginstancetypeEnum::subTree {4, "subTree"};
-const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::CdcdginstancetypeEnum::other {5, "other"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand::idle {1, "idle"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand::delete_ {2, "delete"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand::transfer {3, "transfer"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcvfilemgmttable::Cdcvfilemgmtentry::Cdcvfilemgmtcommand::abortTransfer {4, "abortTransfer"};
+
+const Enum::YLeaf CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::Cdcdgtype::object {1, "object"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcdgtable::Cdcdgentry::Cdcdgtype::table {2, "table"};
+
+const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::individual {1, "individual"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::range {2, "range"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::repititions {3, "repititions"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::subTree {4, "subTree"};
+const Enum::YLeaf CiscoDataCollectionMib::Cdcdginstancetable::Cdcdginstanceentry::Cdcdginstancetype::other {5, "other"};
 
 
 }

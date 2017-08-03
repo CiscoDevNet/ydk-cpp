@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_icpe_infra_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_icpe_infra_cfg {
 
 NvSatelliteGlobal::NvSatelliteGlobal()
@@ -29,7 +31,7 @@ bool NvSatelliteGlobal::has_data() const
 
 bool NvSatelliteGlobal::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (chassis_mac !=  nullptr && chassis_mac->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatelliteGlobal::get_children()
     return children;
 }
 
-void NvSatelliteGlobal::set_value(const std::string & value_path, std::string value)
+void NvSatelliteGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NvSatelliteGlobal::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string NvSatelliteGlobal::get_bundle_name() const
 augment_capabilities_function NvSatelliteGlobal::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> NvSatelliteGlobal::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool NvSatelliteGlobal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "chassis-mac")
+        return true;
+    return false;
 }
 
 NvSatelliteGlobal::ChassisMac::ChassisMac()
@@ -131,10 +149,10 @@ bool NvSatelliteGlobal::ChassisMac::has_data() const
 
 bool NvSatelliteGlobal::ChassisMac::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mac1.operation)
-	|| is_set(mac2.operation)
-	|| is_set(mac3.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mac1.yfilter)
+	|| ydk::is_set(mac2.yfilter)
+	|| ydk::is_set(mac3.yfilter);
 }
 
 std::string NvSatelliteGlobal::ChassisMac::get_segment_path() const
@@ -160,9 +178,9 @@ const EntityPath NvSatelliteGlobal::ChassisMac::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mac1.is_set || is_set(mac1.operation)) leaf_name_data.push_back(mac1.get_name_leafdata());
-    if (mac2.is_set || is_set(mac2.operation)) leaf_name_data.push_back(mac2.get_name_leafdata());
-    if (mac3.is_set || is_set(mac3.operation)) leaf_name_data.push_back(mac3.get_name_leafdata());
+    if (mac1.is_set || is_set(mac1.yfilter)) leaf_name_data.push_back(mac1.get_name_leafdata());
+    if (mac2.is_set || is_set(mac2.yfilter)) leaf_name_data.push_back(mac2.get_name_leafdata());
+    if (mac3.is_set || is_set(mac3.yfilter)) leaf_name_data.push_back(mac3.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -181,20 +199,49 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatelliteGlobal::ChassisMac::ge
     return children;
 }
 
-void NvSatelliteGlobal::ChassisMac::set_value(const std::string & value_path, std::string value)
+void NvSatelliteGlobal::ChassisMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac1")
     {
         mac1 = value;
+        mac1.value_namespace = name_space;
+        mac1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac2")
     {
         mac2 = value;
+        mac2.value_namespace = name_space;
+        mac2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac3")
     {
         mac3 = value;
+        mac3.value_namespace = name_space;
+        mac3.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NvSatelliteGlobal::ChassisMac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mac1")
+    {
+        mac1.yfilter = yfilter;
+    }
+    if(value_path == "mac2")
+    {
+        mac2.yfilter = yfilter;
+    }
+    if(value_path == "mac3")
+    {
+        mac3.yfilter = yfilter;
+    }
+}
+
+bool NvSatelliteGlobal::ChassisMac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac1" || name == "mac2" || name == "mac3")
+        return true;
+    return false;
 }
 
 NvSatellites::NvSatellites()
@@ -223,7 +270,7 @@ bool NvSatellites::has_operation() const
         if(nv_satellite[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string NvSatellites::get_segment_path() const
@@ -285,7 +332,11 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::get_children() cons
     return children;
 }
 
-void NvSatellites::set_value(const std::string & value_path, std::string value)
+void NvSatellites::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NvSatellites::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -307,6 +358,18 @@ std::string NvSatellites::get_bundle_name() const
 augment_capabilities_function NvSatellites::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> NvSatellites::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool NvSatellites::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nv-satellite")
+        return true;
+    return false;
 }
 
 NvSatellites::NvSatellite::NvSatellite()
@@ -366,19 +429,19 @@ bool NvSatellites::NvSatellite::has_data() const
 
 bool NvSatellites::NvSatellite::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(satellite_id.operation)
-	|| is_set(delayed_switchback.operation)
-	|| is_set(description.operation)
-	|| is_set(device_name.operation)
-	|| is_set(disc_timeout.operation)
-	|| is_set(enable.operation)
-	|| is_set(ip_address.operation)
-	|| is_set(secret.operation)
-	|| is_set(serial_number.operation)
-	|| is_set(timeout_warning.operation)
-	|| is_set(type.operation)
-	|| is_set(vrf.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(satellite_id.yfilter)
+	|| ydk::is_set(delayed_switchback.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(device_name.yfilter)
+	|| ydk::is_set(disc_timeout.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(ip_address.yfilter)
+	|| ydk::is_set(secret.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(timeout_warning.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(vrf.yfilter)
 	|| (candidate_fabric_ports !=  nullptr && candidate_fabric_ports->has_operation())
 	|| (connection_info !=  nullptr && connection_info->has_operation())
 	|| (redundancy !=  nullptr && redundancy->has_operation())
@@ -408,18 +471,18 @@ const EntityPath NvSatellites::NvSatellite::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (satellite_id.is_set || is_set(satellite_id.operation)) leaf_name_data.push_back(satellite_id.get_name_leafdata());
-    if (delayed_switchback.is_set || is_set(delayed_switchback.operation)) leaf_name_data.push_back(delayed_switchback.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (device_name.is_set || is_set(device_name.operation)) leaf_name_data.push_back(device_name.get_name_leafdata());
-    if (disc_timeout.is_set || is_set(disc_timeout.operation)) leaf_name_data.push_back(disc_timeout.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.operation)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (secret.is_set || is_set(secret.operation)) leaf_name_data.push_back(secret.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.operation)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (timeout_warning.is_set || is_set(timeout_warning.operation)) leaf_name_data.push_back(timeout_warning.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (satellite_id.is_set || is_set(satellite_id.yfilter)) leaf_name_data.push_back(satellite_id.get_name_leafdata());
+    if (delayed_switchback.is_set || is_set(delayed_switchback.yfilter)) leaf_name_data.push_back(delayed_switchback.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (device_name.is_set || is_set(device_name.yfilter)) leaf_name_data.push_back(device_name.get_name_leafdata());
+    if (disc_timeout.is_set || is_set(disc_timeout.yfilter)) leaf_name_data.push_back(disc_timeout.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
+    if (secret.is_set || is_set(secret.yfilter)) leaf_name_data.push_back(secret.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (timeout_warning.is_set || is_set(timeout_warning.yfilter)) leaf_name_data.push_back(timeout_warning.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -494,56 +557,139 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::get_ch
     return children;
 }
 
-void NvSatellites::NvSatellite::set_value(const std::string & value_path, std::string value)
+void NvSatellites::NvSatellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "satellite-id")
     {
         satellite_id = value;
+        satellite_id.value_namespace = name_space;
+        satellite_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delayed-switchback")
     {
         delayed_switchback = value;
+        delayed_switchback.value_namespace = name_space;
+        delayed_switchback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "device-name")
     {
         device_name = value;
+        device_name.value_namespace = name_space;
+        device_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disc-timeout")
     {
         disc_timeout = value;
+        disc_timeout.value_namespace = name_space;
+        disc_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address")
     {
         ip_address = value;
+        ip_address.value_namespace = name_space;
+        ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secret")
     {
         secret = value;
+        secret.value_namespace = name_space;
+        secret.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
         serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-warning")
     {
         timeout_warning = value;
+        timeout_warning.value_namespace = name_space;
+        timeout_warning.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NvSatellites::NvSatellite::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "satellite-id")
+    {
+        satellite_id.yfilter = yfilter;
+    }
+    if(value_path == "delayed-switchback")
+    {
+        delayed_switchback.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "device-name")
+    {
+        device_name.yfilter = yfilter;
+    }
+    if(value_path == "disc-timeout")
+    {
+        disc_timeout.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "ip-address")
+    {
+        ip_address.yfilter = yfilter;
+    }
+    if(value_path == "secret")
+    {
+        secret.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "timeout-warning")
+    {
+        timeout_warning.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool NvSatellites::NvSatellite::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-fabric-ports" || name == "connection-info" || name == "redundancy" || name == "upgrade-on-connect" || name == "satellite-id" || name == "delayed-switchback" || name == "description" || name == "device-name" || name == "disc-timeout" || name == "enable" || name == "ip-address" || name == "secret" || name == "serial-number" || name == "timeout-warning" || name == "type" || name == "vrf")
+        return true;
+    return false;
 }
 
 NvSatellites::NvSatellite::UpgradeOnConnect::UpgradeOnConnect()
@@ -566,9 +712,9 @@ bool NvSatellites::NvSatellite::UpgradeOnConnect::has_data() const
 
 bool NvSatellites::NvSatellite::UpgradeOnConnect::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(connect_type.operation)
-	|| is_set(reference.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(connect_type.yfilter)
+	|| ydk::is_set(reference.yfilter);
 }
 
 std::string NvSatellites::NvSatellite::UpgradeOnConnect::get_segment_path() const
@@ -594,8 +740,8 @@ const EntityPath NvSatellites::NvSatellite::UpgradeOnConnect::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (connect_type.is_set || is_set(connect_type.operation)) leaf_name_data.push_back(connect_type.get_name_leafdata());
-    if (reference.is_set || is_set(reference.operation)) leaf_name_data.push_back(reference.get_name_leafdata());
+    if (connect_type.is_set || is_set(connect_type.yfilter)) leaf_name_data.push_back(connect_type.get_name_leafdata());
+    if (reference.is_set || is_set(reference.yfilter)) leaf_name_data.push_back(reference.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -614,16 +760,39 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::Upgrad
     return children;
 }
 
-void NvSatellites::NvSatellite::UpgradeOnConnect::set_value(const std::string & value_path, std::string value)
+void NvSatellites::NvSatellite::UpgradeOnConnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "connect-type")
     {
         connect_type = value;
+        connect_type.value_namespace = name_space;
+        connect_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reference")
     {
         reference = value;
+        reference.value_namespace = name_space;
+        reference.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NvSatellites::NvSatellite::UpgradeOnConnect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "connect-type")
+    {
+        connect_type.yfilter = yfilter;
+    }
+    if(value_path == "reference")
+    {
+        reference.yfilter = yfilter;
+    }
+}
+
+bool NvSatellites::NvSatellite::UpgradeOnConnect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connect-type" || name == "reference")
+        return true;
+    return false;
 }
 
 NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPorts()
@@ -652,7 +821,7 @@ bool NvSatellites::NvSatellite::CandidateFabricPorts::has_operation() const
         if(candidate_fabric_port[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string NvSatellites::NvSatellite::CandidateFabricPorts::get_segment_path() const
@@ -717,8 +886,19 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::Candid
     return children;
 }
 
-void NvSatellites::NvSatellite::CandidateFabricPorts::set_value(const std::string & value_path, std::string value)
+void NvSatellites::NvSatellite::CandidateFabricPorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void NvSatellites::NvSatellite::CandidateFabricPorts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NvSatellites::NvSatellite::CandidateFabricPorts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-fabric-port")
+        return true;
+    return false;
 }
 
 NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::CandidateFabricPort()
@@ -745,11 +925,11 @@ bool NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::has_d
 
 bool NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(port_type.operation)
-	|| is_set(slot.operation)
-	|| is_set(sub_slot.operation)
-	|| is_set(port_range.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(port_type.yfilter)
+	|| ydk::is_set(slot.yfilter)
+	|| ydk::is_set(sub_slot.yfilter)
+	|| ydk::is_set(port_range.yfilter);
 }
 
 std::string NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::get_segment_path() const
@@ -775,10 +955,10 @@ const EntityPath NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (port_type.is_set || is_set(port_type.operation)) leaf_name_data.push_back(port_type.get_name_leafdata());
-    if (slot.is_set || is_set(slot.operation)) leaf_name_data.push_back(slot.get_name_leafdata());
-    if (sub_slot.is_set || is_set(sub_slot.operation)) leaf_name_data.push_back(sub_slot.get_name_leafdata());
-    if (port_range.is_set || is_set(port_range.operation)) leaf_name_data.push_back(port_range.get_name_leafdata());
+    if (port_type.is_set || is_set(port_type.yfilter)) leaf_name_data.push_back(port_type.get_name_leafdata());
+    if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
+    if (sub_slot.is_set || is_set(sub_slot.yfilter)) leaf_name_data.push_back(sub_slot.get_name_leafdata());
+    if (port_range.is_set || is_set(port_range.yfilter)) leaf_name_data.push_back(port_range.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -797,24 +977,59 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::Candid
     return children;
 }
 
-void NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::set_value(const std::string & value_path, std::string value)
+void NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "port-type")
     {
         port_type = value;
+        port_type.value_namespace = name_space;
+        port_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slot")
     {
         slot = value;
+        slot.value_namespace = name_space;
+        slot.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-slot")
     {
         sub_slot = value;
+        sub_slot.value_namespace = name_space;
+        sub_slot.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-range")
     {
         port_range = value;
+        port_range.value_namespace = name_space;
+        port_range.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "port-type")
+    {
+        port_type.yfilter = yfilter;
+    }
+    if(value_path == "slot")
+    {
+        slot.yfilter = yfilter;
+    }
+    if(value_path == "sub-slot")
+    {
+        sub_slot.yfilter = yfilter;
+    }
+    if(value_path == "port-range")
+    {
+        port_range.yfilter = yfilter;
+    }
+}
+
+bool NvSatellites::NvSatellite::CandidateFabricPorts::CandidateFabricPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-type" || name == "slot" || name == "sub-slot" || name == "port-range")
+        return true;
+    return false;
 }
 
 NvSatellites::NvSatellite::ConnectionInfo::ConnectionInfo()
@@ -837,9 +1052,9 @@ bool NvSatellites::NvSatellite::ConnectionInfo::has_data() const
 
 bool NvSatellites::NvSatellite::ConnectionInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(password.operation)
-	|| is_set(username.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(username.yfilter);
 }
 
 std::string NvSatellites::NvSatellite::ConnectionInfo::get_segment_path() const
@@ -865,8 +1080,8 @@ const EntityPath NvSatellites::NvSatellite::ConnectionInfo::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (username.is_set || is_set(username.operation)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -885,16 +1100,39 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::Connec
     return children;
 }
 
-void NvSatellites::NvSatellite::ConnectionInfo::set_value(const std::string & value_path, std::string value)
+void NvSatellites::NvSatellite::ConnectionInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "username")
     {
         username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NvSatellites::NvSatellite::ConnectionInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool NvSatellites::NvSatellite::ConnectionInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "password" || name == "username")
+        return true;
+    return false;
 }
 
 NvSatellites::NvSatellite::Redundancy::Redundancy()
@@ -915,8 +1153,8 @@ bool NvSatellites::NvSatellite::Redundancy::has_data() const
 
 bool NvSatellites::NvSatellite::Redundancy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(host_priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(host_priority.yfilter);
 }
 
 std::string NvSatellites::NvSatellite::Redundancy::get_segment_path() const
@@ -942,7 +1180,7 @@ const EntityPath NvSatellites::NvSatellite::Redundancy::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (host_priority.is_set || is_set(host_priority.operation)) leaf_name_data.push_back(host_priority.get_name_leafdata());
+    if (host_priority.is_set || is_set(host_priority.yfilter)) leaf_name_data.push_back(host_priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -961,12 +1199,29 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellites::NvSatellite::Redund
     return children;
 }
 
-void NvSatellites::NvSatellite::Redundancy::set_value(const std::string & value_path, std::string value)
+void NvSatellites::NvSatellite::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "host-priority")
     {
         host_priority = value;
+        host_priority.value_namespace = name_space;
+        host_priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void NvSatellites::NvSatellite::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "host-priority")
+    {
+        host_priority.yfilter = yfilter;
+    }
+}
+
+bool NvSatellites::NvSatellite::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host-priority")
+        return true;
+    return false;
 }
 
 

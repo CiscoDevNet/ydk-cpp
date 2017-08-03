@@ -6,96 +6,98 @@
 #include "generated_entity_lookup.hpp"
 #include "openconfig_if_ethernet.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace openconfig {
 namespace openconfig_if_ethernet {
 
-EthernetSpeedIdentity::EthernetSpeedIdentity()
-     : Identity("openconfig-if-ethernet:ethernet-speed")
+Ethernet_Speed::Ethernet_Speed()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:ETHERNET_SPEED")
 {
 }
 
-EthernetSpeedIdentity::~EthernetSpeedIdentity()
+Ethernet_Speed::~Ethernet_Speed()
 {
 }
 
-Speed_100GbIdentity::Speed_100GbIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_100Gb")
+Speed_50Gb::Speed_50Gb()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_50GB")
 {
 }
 
-Speed_100GbIdentity::~Speed_100GbIdentity()
+Speed_50Gb::~Speed_50Gb()
 {
 }
 
-Speed_25GbIdentity::Speed_25GbIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_25Gb")
+Speed_25Gb::Speed_25Gb()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_25GB")
 {
 }
 
-Speed_25GbIdentity::~Speed_25GbIdentity()
+Speed_25Gb::~Speed_25Gb()
 {
 }
 
-Speed_1GbIdentity::Speed_1GbIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_1Gb")
+Speed_100Mb::Speed_100Mb()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_100MB")
 {
 }
 
-Speed_1GbIdentity::~Speed_1GbIdentity()
+Speed_100Mb::~Speed_100Mb()
 {
 }
 
-Speed_10GbIdentity::Speed_10GbIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_10Gb")
+Speed_Unknown::Speed_Unknown()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_UNKNOWN")
 {
 }
 
-Speed_10GbIdentity::~Speed_10GbIdentity()
+Speed_Unknown::~Speed_Unknown()
 {
 }
 
-Speed_10MbIdentity::Speed_10MbIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_10Mb")
+Speed_10Gb::Speed_10Gb()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_10GB")
 {
 }
 
-Speed_10MbIdentity::~Speed_10MbIdentity()
+Speed_10Gb::~Speed_10Gb()
 {
 }
 
-Speed_40GbIdentity::Speed_40GbIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_40Gb")
+Speed_1Gb::Speed_1Gb()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_1GB")
 {
 }
 
-Speed_40GbIdentity::~Speed_40GbIdentity()
+Speed_1Gb::~Speed_1Gb()
 {
 }
 
-Speed_UnknownIdentity::Speed_UnknownIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_UNKNOWN")
+Speed_40Gb::Speed_40Gb()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_40GB")
 {
 }
 
-Speed_UnknownIdentity::~Speed_UnknownIdentity()
+Speed_40Gb::~Speed_40Gb()
 {
 }
 
-Speed_50GbIdentity::Speed_50GbIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_50Gb")
+Speed_10Mb::Speed_10Mb()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_10MB")
 {
 }
 
-Speed_50GbIdentity::~Speed_50GbIdentity()
+Speed_10Mb::~Speed_10Mb()
 {
 }
 
-Speed_100MbIdentity::Speed_100MbIdentity()
-     : Identity("openconfig-if-ethernet:SPEED_100Mb")
+Speed_100Gb::Speed_100Gb()
+     : Identity("http://openconfig.net/yang/interfaces/ethernet", "openconfig-if-ethernet", "openconfig-if-ethernet:SPEED_100GB")
 {
 }
 
-Speed_100MbIdentity::~Speed_100MbIdentity()
+Speed_100Gb::~Speed_100Gb()
 {
 }
 

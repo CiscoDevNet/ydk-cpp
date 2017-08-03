@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_vpn_oper {
 
-class L3Vpn : public Entity
+class L3Vpn : public ydk::Entity
 {
     public:
         L3Vpn();
@@ -18,15 +18,18 @@ class L3Vpn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class InvalidVrfs; //type: L3Vpn::InvalidVrfs
         class Vrfs; //type: L3Vpn::Vrfs
@@ -37,7 +40,7 @@ class L3Vpn : public Entity
 }; // L3Vpn
 
 
-class L3Vpn::InvalidVrfs : public Entity
+class L3Vpn::InvalidVrfs : public ydk::Entity
 {
     public:
         InvalidVrfs();
@@ -45,11 +48,13 @@ class L3Vpn::InvalidVrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InvalidVrf; //type: L3Vpn::InvalidVrfs::InvalidVrf
 
@@ -58,7 +63,7 @@ class L3Vpn::InvalidVrfs : public Entity
 }; // L3Vpn::InvalidVrfs
 
 
-class L3Vpn::InvalidVrfs::InvalidVrf : public Entity
+class L3Vpn::InvalidVrfs::InvalidVrf : public ydk::Entity
 {
     public:
         InvalidVrf();
@@ -66,17 +71,19 @@ class L3Vpn::InvalidVrfs::InvalidVrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
-        YLeaf vrf_name_xr; //type: string
-        YLeaf vrf_description; //type: string
-        YLeaf route_distinguisher; //type: string
-        YLeaf is_big_vrf; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name_xr; //type: string
+        ydk::YLeaf vrf_description; //type: string
+        ydk::YLeaf route_distinguisher; //type: string
+        ydk::YLeaf is_big_vrf; //type: boolean
         class Interface; //type: L3Vpn::InvalidVrfs::InvalidVrf::Interface
         class Af; //type: L3Vpn::InvalidVrfs::InvalidVrf::Af
 
@@ -86,7 +93,7 @@ class L3Vpn::InvalidVrfs::InvalidVrf : public Entity
 }; // L3Vpn::InvalidVrfs::InvalidVrf
 
 
-class L3Vpn::InvalidVrfs::InvalidVrf::Interface : public Entity
+class L3Vpn::InvalidVrfs::InvalidVrf::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -94,18 +101,20 @@ class L3Vpn::InvalidVrfs::InvalidVrf::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // L3Vpn::InvalidVrfs::InvalidVrf::Interface
 
 
-class L3Vpn::InvalidVrfs::InvalidVrf::Af : public Entity
+class L3Vpn::InvalidVrfs::InvalidVrf::Af : public ydk::Entity
 {
     public:
         Af();
@@ -113,16 +122,18 @@ class L3Vpn::InvalidVrfs::InvalidVrf::Af : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af_name; //type: MplsVpnAfiEnum
-        YLeaf saf_name; //type: MplsVpnSafiEnum
-        YLeaf import_route_policy; //type: string
-        YLeaf export_route_policy; //type: string
+        ydk::YLeaf af_name; //type: MplsVpnAfi
+        ydk::YLeaf saf_name; //type: MplsVpnSafi
+        ydk::YLeaf import_route_policy; //type: string
+        ydk::YLeaf export_route_policy; //type: string
         class RouteTarget; //type: L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget> > route_target;
@@ -130,7 +141,7 @@ class L3Vpn::InvalidVrfs::InvalidVrf::Af : public Entity
 }; // L3Vpn::InvalidVrfs::InvalidVrf::Af
 
 
-class L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget : public Entity
+class L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget : public ydk::Entity
 {
     public:
         RouteTarget();
@@ -138,21 +149,23 @@ class L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_target_type; //type: MplsVpnRtEnum
-        YLeaf route_target_value; //type: string
-        YLeaf af_name; //type: MplsVpnAfiEnum
-        YLeaf saf_name; //type: MplsVpnSafiEnum
+        ydk::YLeaf route_target_type; //type: MplsVpnRt
+        ydk::YLeaf route_target_value; //type: string
+        ydk::YLeaf af_name; //type: MplsVpnAfi
+        ydk::YLeaf saf_name; //type: MplsVpnSafi
 
 }; // L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget
 
 
-class L3Vpn::Vrfs : public Entity
+class L3Vpn::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -160,11 +173,13 @@ class L3Vpn::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: L3Vpn::Vrfs::Vrf
 
@@ -173,7 +188,7 @@ class L3Vpn::Vrfs : public Entity
 }; // L3Vpn::Vrfs
 
 
-class L3Vpn::Vrfs::Vrf : public Entity
+class L3Vpn::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -181,17 +196,19 @@ class L3Vpn::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
-        YLeaf vrf_name_xr; //type: string
-        YLeaf vrf_description; //type: string
-        YLeaf route_distinguisher; //type: string
-        YLeaf is_big_vrf; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name_xr; //type: string
+        ydk::YLeaf vrf_description; //type: string
+        ydk::YLeaf route_distinguisher; //type: string
+        ydk::YLeaf is_big_vrf; //type: boolean
         class Interface; //type: L3Vpn::Vrfs::Vrf::Interface
         class Af; //type: L3Vpn::Vrfs::Vrf::Af
 
@@ -201,7 +218,7 @@ class L3Vpn::Vrfs::Vrf : public Entity
 }; // L3Vpn::Vrfs::Vrf
 
 
-class L3Vpn::Vrfs::Vrf::Interface : public Entity
+class L3Vpn::Vrfs::Vrf::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -209,18 +226,20 @@ class L3Vpn::Vrfs::Vrf::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // L3Vpn::Vrfs::Vrf::Interface
 
 
-class L3Vpn::Vrfs::Vrf::Af : public Entity
+class L3Vpn::Vrfs::Vrf::Af : public ydk::Entity
 {
     public:
         Af();
@@ -228,16 +247,18 @@ class L3Vpn::Vrfs::Vrf::Af : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf af_name; //type: MplsVpnAfiEnum
-        YLeaf saf_name; //type: MplsVpnSafiEnum
-        YLeaf import_route_policy; //type: string
-        YLeaf export_route_policy; //type: string
+        ydk::YLeaf af_name; //type: MplsVpnAfi
+        ydk::YLeaf saf_name; //type: MplsVpnSafi
+        ydk::YLeaf import_route_policy; //type: string
+        ydk::YLeaf export_route_policy; //type: string
         class RouteTarget; //type: L3Vpn::Vrfs::Vrf::Af::RouteTarget
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_mpls_vpn_oper::L3Vpn::Vrfs::Vrf::Af::RouteTarget> > route_target;
@@ -245,7 +266,7 @@ class L3Vpn::Vrfs::Vrf::Af : public Entity
 }; // L3Vpn::Vrfs::Vrf::Af
 
 
-class L3Vpn::Vrfs::Vrf::Af::RouteTarget : public Entity
+class L3Vpn::Vrfs::Vrf::Af::RouteTarget : public ydk::Entity
 {
     public:
         RouteTarget();
@@ -253,42 +274,44 @@ class L3Vpn::Vrfs::Vrf::Af::RouteTarget : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_target_type; //type: MplsVpnRtEnum
-        YLeaf route_target_value; //type: string
-        YLeaf af_name; //type: MplsVpnAfiEnum
-        YLeaf saf_name; //type: MplsVpnSafiEnum
+        ydk::YLeaf route_target_type; //type: MplsVpnRt
+        ydk::YLeaf route_target_value; //type: string
+        ydk::YLeaf af_name; //type: MplsVpnAfi
+        ydk::YLeaf saf_name; //type: MplsVpnSafi
 
 }; // L3Vpn::Vrfs::Vrf::Af::RouteTarget
 
-class MplsVpnRtEnum : public Enum
+class MplsVpnAfi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf import;
-        static const Enum::YLeaf export_;
-        static const Enum::YLeaf both;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class MplsVpnAfiEnum : public Enum
+class MplsVpnRt : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf import;
+        static const ydk::Enum::YLeaf export_;
+        static const ydk::Enum::YLeaf both;
 
 };
 
-class MplsVpnSafiEnum : public Enum
+class MplsVpnSafi : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unicast;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf flowspec;
 
 };
 

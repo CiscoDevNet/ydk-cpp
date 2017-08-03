@@ -9,100 +9,100 @@
 
 #include "ydk_ietf/ietf_yang_smiv2.hpp"
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace DIFFSERV_MIB {
 
-class DiffservtbparamtrtcmblindIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservtbparamsrtcmaware : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservtbparamtrtcmblindIdentity();
-        ~DiffservtbparamtrtcmblindIdentity();
+        Diffservtbparamsrtcmaware();
+        ~Diffservtbparamsrtcmaware();
 
 
-}; // DiffservtbparamtrtcmblindIdentity
+}; // Diffservtbparamsrtcmaware
 
-class DiffservschedulerwfqIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservtbparamtrtcmaware : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservschedulerwfqIdentity();
-        ~DiffservschedulerwfqIdentity();
+        Diffservtbparamtrtcmaware();
+        ~Diffservtbparamtrtcmaware();
 
 
-}; // DiffservschedulerwfqIdentity
+}; // Diffservtbparamtrtcmaware
 
-class DiffservtbparamtswtcmIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservtbparamtrtcmblind : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservtbparamtswtcmIdentity();
-        ~DiffservtbparamtswtcmIdentity();
+        Diffservtbparamtrtcmblind();
+        ~Diffservtbparamtrtcmblind();
 
 
-}; // DiffservtbparamtswtcmIdentity
+}; // Diffservtbparamtrtcmblind
 
-class DiffservtbparamavgrateIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservschedulerwfq : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservtbparamavgrateIdentity();
-        ~DiffservtbparamavgrateIdentity();
+        Diffservschedulerwfq();
+        ~Diffservschedulerwfq();
 
 
-}; // DiffservtbparamavgrateIdentity
+}; // Diffservschedulerwfq
 
-class DiffservschedulerwrrIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservtbparamtswtcm : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservschedulerwrrIdentity();
-        ~DiffservschedulerwrrIdentity();
+        Diffservtbparamtswtcm();
+        ~Diffservtbparamtswtcm();
 
 
-}; // DiffservschedulerwrrIdentity
+}; // Diffservtbparamtswtcm
 
-class DiffservtbparamsrtcmawareIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservtbparamavgrate : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservtbparamsrtcmawareIdentity();
-        ~DiffservtbparamsrtcmawareIdentity();
+        Diffservtbparamavgrate();
+        ~Diffservtbparamavgrate();
 
 
-}; // DiffservtbparamsrtcmawareIdentity
+}; // Diffservtbparamavgrate
 
-class DiffservtbparamsrtcmblindIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservschedulerwrr : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservtbparamsrtcmblindIdentity();
-        ~DiffservtbparamsrtcmblindIdentity();
+        Diffservschedulerwrr();
+        ~Diffservschedulerwrr();
 
 
-}; // DiffservtbparamsrtcmblindIdentity
+}; // Diffservschedulerwrr
 
-class DiffservtbparamsimpletokenbucketIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservtbparamsimpletokenbucket : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservtbparamsimpletokenbucketIdentity();
-        ~DiffservtbparamsimpletokenbucketIdentity();
+        Diffservtbparamsimpletokenbucket();
+        ~Diffservtbparamsimpletokenbucket();
 
 
-}; // DiffservtbparamsimpletokenbucketIdentity
+}; // Diffservtbparamsimpletokenbucket
 
-class DiffservschedulerpriorityIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservschedulerpriority : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservschedulerpriorityIdentity();
-        ~DiffservschedulerpriorityIdentity();
+        Diffservschedulerpriority();
+        ~Diffservschedulerpriority();
 
 
-}; // DiffservschedulerpriorityIdentity
+}; // Diffservschedulerpriority
 
-class DiffservtbparamtrtcmawareIdentity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Diffservtbparamsrtcmblind : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffservtbparamtrtcmawareIdentity();
-        ~DiffservtbparamtrtcmawareIdentity();
+        Diffservtbparamsrtcmblind();
+        ~Diffservtbparamsrtcmblind();
 
 
-}; // DiffservtbparamtrtcmawareIdentity
+}; // Diffservtbparamsrtcmblind
 
-class DiffservMib : public Entity
+class DiffservMib : public ydk::Entity
 {
     public:
         DiffservMib();
@@ -110,15 +110,18 @@ class DiffservMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Diffservclassifier; //type: DiffservMib::Diffservclassifier
         class Diffservmeter; //type: DiffservMib::Diffservmeter
@@ -143,33 +146,33 @@ class DiffservMib : public Entity
         class Diffservminratetable; //type: DiffservMib::Diffservminratetable
         class Diffservmaxratetable; //type: DiffservMib::Diffservmaxratetable
 
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservaction> diffservaction_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservactiontable> diffservactiontable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdrop> diffservalgdrop_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdroptable> diffservalgdroptable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclassifier> diffservclassifier_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrelementtable> diffservclfrelementtable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrtable> diffservclfrtable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservcountacttable> diffservcountacttable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdatapathtable> diffservdatapathtable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdscpmarkacttable> diffservdscpmarkacttable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmaxratetable> diffservmaxratetable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmeter> diffservmeter_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmetertable> diffservmetertable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservminratetable> diffservminratetable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmultifieldclfrtable> diffservmultifieldclfrtable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqtable> diffservqtable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqueue> diffservqueue_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservrandomdroptable> diffservrandomdroptable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservscheduler> diffservscheduler_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservschedulertable> diffservschedulertable_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparam> diffservtbparam_;
-        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparamtable> diffservtbparamtable_;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservaction> diffservaction;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservactiontable> diffservactiontable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdrop> diffservalgdrop;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdroptable> diffservalgdroptable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclassifier> diffservclassifier;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrelementtable> diffservclfrelementtable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrtable> diffservclfrtable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservcountacttable> diffservcountacttable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdatapathtable> diffservdatapathtable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdscpmarkacttable> diffservdscpmarkacttable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmaxratetable> diffservmaxratetable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmeter> diffservmeter;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmetertable> diffservmetertable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservminratetable> diffservminratetable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmultifieldclfrtable> diffservmultifieldclfrtable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqtable> diffservqtable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqueue> diffservqueue;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservrandomdroptable> diffservrandomdroptable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservscheduler> diffservscheduler;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservschedulertable> diffservschedulertable;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparam> diffservtbparam;
+        std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparamtable> diffservtbparamtable;
         
 }; // DiffservMib
 
 
-class DiffservMib::Diffservclassifier : public Entity
+class DiffservMib::Diffservclassifier : public ydk::Entity
 {
     public:
         Diffservclassifier();
@@ -177,20 +180,22 @@ class DiffservMib::Diffservclassifier : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservclfrnextfree; //type: uint32
-        YLeaf diffservclfrelementnextfree; //type: uint32
-        YLeaf diffservmultifieldclfrnextfree; //type: uint32
+        ydk::YLeaf diffservclfrnextfree; //type: uint32
+        ydk::YLeaf diffservclfrelementnextfree; //type: uint32
+        ydk::YLeaf diffservmultifieldclfrnextfree; //type: uint32
 
 }; // DiffservMib::Diffservclassifier
 
 
-class DiffservMib::Diffservmeter : public Entity
+class DiffservMib::Diffservmeter : public ydk::Entity
 {
     public:
         Diffservmeter();
@@ -198,18 +203,20 @@ class DiffservMib::Diffservmeter : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservmeternextfree; //type: uint32
+        ydk::YLeaf diffservmeternextfree; //type: uint32
 
 }; // DiffservMib::Diffservmeter
 
 
-class DiffservMib::Diffservtbparam : public Entity
+class DiffservMib::Diffservtbparam : public ydk::Entity
 {
     public:
         Diffservtbparam();
@@ -217,18 +224,20 @@ class DiffservMib::Diffservtbparam : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservtbparamnextfree; //type: uint32
+        ydk::YLeaf diffservtbparamnextfree; //type: uint32
 
 }; // DiffservMib::Diffservtbparam
 
 
-class DiffservMib::Diffservaction : public Entity
+class DiffservMib::Diffservaction : public ydk::Entity
 {
     public:
         Diffservaction();
@@ -236,19 +245,21 @@ class DiffservMib::Diffservaction : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservactionnextfree; //type: uint32
-        YLeaf diffservcountactnextfree; //type: uint32
+        ydk::YLeaf diffservactionnextfree; //type: uint32
+        ydk::YLeaf diffservcountactnextfree; //type: uint32
 
 }; // DiffservMib::Diffservaction
 
 
-class DiffservMib::Diffservalgdrop : public Entity
+class DiffservMib::Diffservalgdrop : public ydk::Entity
 {
     public:
         Diffservalgdrop();
@@ -256,19 +267,21 @@ class DiffservMib::Diffservalgdrop : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservalgdropnextfree; //type: uint32
-        YLeaf diffservrandomdropnextfree; //type: uint32
+        ydk::YLeaf diffservalgdropnextfree; //type: uint32
+        ydk::YLeaf diffservrandomdropnextfree; //type: uint32
 
 }; // DiffservMib::Diffservalgdrop
 
 
-class DiffservMib::Diffservqueue : public Entity
+class DiffservMib::Diffservqueue : public ydk::Entity
 {
     public:
         Diffservqueue();
@@ -276,18 +289,20 @@ class DiffservMib::Diffservqueue : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservqnextfree; //type: uint32
+        ydk::YLeaf diffservqnextfree; //type: uint32
 
 }; // DiffservMib::Diffservqueue
 
 
-class DiffservMib::Diffservscheduler : public Entity
+class DiffservMib::Diffservscheduler : public ydk::Entity
 {
     public:
         Diffservscheduler();
@@ -295,20 +310,22 @@ class DiffservMib::Diffservscheduler : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservschedulernextfree; //type: uint32
-        YLeaf diffservminratenextfree; //type: uint32
-        YLeaf diffservmaxratenextfree; //type: uint32
+        ydk::YLeaf diffservschedulernextfree; //type: uint32
+        ydk::YLeaf diffservminratenextfree; //type: uint32
+        ydk::YLeaf diffservmaxratenextfree; //type: uint32
 
 }; // DiffservMib::Diffservscheduler
 
 
-class DiffservMib::Diffservdatapathtable : public Entity
+class DiffservMib::Diffservdatapathtable : public ydk::Entity
 {
     public:
         Diffservdatapathtable();
@@ -316,20 +333,22 @@ class DiffservMib::Diffservdatapathtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservdatapathentry; //type: DiffservMib::Diffservdatapathtable::Diffservdatapathentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdatapathtable::Diffservdatapathentry> > diffservdatapathentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdatapathtable::Diffservdatapathentry> > diffservdatapathentry;
         
 }; // DiffservMib::Diffservdatapathtable
 
 
-class DiffservMib::Diffservdatapathtable::Diffservdatapathentry : public Entity
+class DiffservMib::Diffservdatapathtable::Diffservdatapathentry : public ydk::Entity
 {
     public:
         Diffservdatapathentry();
@@ -337,23 +356,25 @@ class DiffservMib::Diffservdatapathtable::Diffservdatapathentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to IF_MIB::IfMib::Iftable::Ifentry::ifindex)
-        YLeaf ifindex;
-        YLeaf diffservdatapathifdirection; //type: IfdirectionEnum
-        YLeaf diffservdatapathstart; //type: string
-        YLeaf diffservdatapathstorage; //type: StoragetypeEnum
-        YLeaf diffservdatapathstatus; //type: RowstatusEnum
+        ydk::YLeaf ifindex;
+        ydk::YLeaf diffservdatapathifdirection; //type: Ifdirection
+        ydk::YLeaf diffservdatapathstart; //type: string
+        ydk::YLeaf diffservdatapathstorage; //type: Storagetype
+        ydk::YLeaf diffservdatapathstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservdatapathtable::Diffservdatapathentry
 
 
-class DiffservMib::Diffservclfrtable : public Entity
+class DiffservMib::Diffservclfrtable : public ydk::Entity
 {
     public:
         Diffservclfrtable();
@@ -361,20 +382,22 @@ class DiffservMib::Diffservclfrtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservclfrentry; //type: DiffservMib::Diffservclfrtable::Diffservclfrentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrtable::Diffservclfrentry> > diffservclfrentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrtable::Diffservclfrentry> > diffservclfrentry;
         
 }; // DiffservMib::Diffservclfrtable
 
 
-class DiffservMib::Diffservclfrtable::Diffservclfrentry : public Entity
+class DiffservMib::Diffservclfrtable::Diffservclfrentry : public ydk::Entity
 {
     public:
         Diffservclfrentry();
@@ -382,20 +405,22 @@ class DiffservMib::Diffservclfrtable::Diffservclfrentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservclfrid; //type: uint32
-        YLeaf diffservclfrstorage; //type: StoragetypeEnum
-        YLeaf diffservclfrstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservclfrid; //type: uint32
+        ydk::YLeaf diffservclfrstorage; //type: Storagetype
+        ydk::YLeaf diffservclfrstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservclfrtable::Diffservclfrentry
 
 
-class DiffservMib::Diffservclfrelementtable : public Entity
+class DiffservMib::Diffservclfrelementtable : public ydk::Entity
 {
     public:
         Diffservclfrelementtable();
@@ -403,20 +428,22 @@ class DiffservMib::Diffservclfrelementtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservclfrelemententry; //type: DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry> > diffservclfrelemententry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry> > diffservclfrelemententry;
         
 }; // DiffservMib::Diffservclfrelementtable
 
 
-class DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry : public Entity
+class DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry : public ydk::Entity
 {
     public:
         Diffservclfrelemententry();
@@ -424,25 +451,27 @@ class DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: uint32 (refers to DIFFSERV_MIB::DiffservMib::Diffservclfrtable::Diffservclfrentry::diffservclfrid)
-        YLeaf diffservclfrid;
-        YLeaf diffservclfrelementid; //type: uint32
-        YLeaf diffservclfrelementprecedence; //type: uint32
-        YLeaf diffservclfrelementnext; //type: string
-        YLeaf diffservclfrelementspecific; //type: string
-        YLeaf diffservclfrelementstorage; //type: StoragetypeEnum
-        YLeaf diffservclfrelementstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservclfrid;
+        ydk::YLeaf diffservclfrelementid; //type: uint32
+        ydk::YLeaf diffservclfrelementprecedence; //type: uint32
+        ydk::YLeaf diffservclfrelementnext; //type: string
+        ydk::YLeaf diffservclfrelementspecific; //type: string
+        ydk::YLeaf diffservclfrelementstorage; //type: Storagetype
+        ydk::YLeaf diffservclfrelementstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservclfrelementtable::Diffservclfrelemententry
 
 
-class DiffservMib::Diffservmultifieldclfrtable : public Entity
+class DiffservMib::Diffservmultifieldclfrtable : public ydk::Entity
 {
     public:
         Diffservmultifieldclfrtable();
@@ -450,20 +479,22 @@ class DiffservMib::Diffservmultifieldclfrtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservmultifieldclfrentry; //type: DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry> > diffservmultifieldclfrentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry> > diffservmultifieldclfrentry;
         
 }; // DiffservMib::Diffservmultifieldclfrtable
 
 
-class DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry : public Entity
+class DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry : public ydk::Entity
 {
     public:
         Diffservmultifieldclfrentry();
@@ -471,32 +502,34 @@ class DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservmultifieldclfrid; //type: uint32
-        YLeaf diffservmultifieldclfraddrtype; //type: InetaddresstypeEnum
-        YLeaf diffservmultifieldclfrdstaddr; //type: binary
-        YLeaf diffservmultifieldclfrdstprefixlength; //type: uint32
-        YLeaf diffservmultifieldclfrsrcaddr; //type: binary
-        YLeaf diffservmultifieldclfrsrcprefixlength; //type: uint32
-        YLeaf diffservmultifieldclfrdscp; //type: int32
-        YLeaf diffservmultifieldclfrflowid; //type: uint32
-        YLeaf diffservmultifieldclfrprotocol; //type: uint32
-        YLeaf diffservmultifieldclfrdstl4portmin; //type: uint16
-        YLeaf diffservmultifieldclfrdstl4portmax; //type: uint16
-        YLeaf diffservmultifieldclfrsrcl4portmin; //type: uint16
-        YLeaf diffservmultifieldclfrsrcl4portmax; //type: uint16
-        YLeaf diffservmultifieldclfrstorage; //type: StoragetypeEnum
-        YLeaf diffservmultifieldclfrstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservmultifieldclfrid; //type: uint32
+        ydk::YLeaf diffservmultifieldclfraddrtype; //type: Inetaddresstype
+        ydk::YLeaf diffservmultifieldclfrdstaddr; //type: binary
+        ydk::YLeaf diffservmultifieldclfrdstprefixlength; //type: uint32
+        ydk::YLeaf diffservmultifieldclfrsrcaddr; //type: binary
+        ydk::YLeaf diffservmultifieldclfrsrcprefixlength; //type: uint32
+        ydk::YLeaf diffservmultifieldclfrdscp; //type: int32
+        ydk::YLeaf diffservmultifieldclfrflowid; //type: uint32
+        ydk::YLeaf diffservmultifieldclfrprotocol; //type: uint32
+        ydk::YLeaf diffservmultifieldclfrdstl4portmin; //type: uint16
+        ydk::YLeaf diffservmultifieldclfrdstl4portmax; //type: uint16
+        ydk::YLeaf diffservmultifieldclfrsrcl4portmin; //type: uint16
+        ydk::YLeaf diffservmultifieldclfrsrcl4portmax; //type: uint16
+        ydk::YLeaf diffservmultifieldclfrstorage; //type: Storagetype
+        ydk::YLeaf diffservmultifieldclfrstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry
 
 
-class DiffservMib::Diffservmetertable : public Entity
+class DiffservMib::Diffservmetertable : public ydk::Entity
 {
     public:
         Diffservmetertable();
@@ -504,20 +537,22 @@ class DiffservMib::Diffservmetertable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservmeterentry; //type: DiffservMib::Diffservmetertable::Diffservmeterentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmetertable::Diffservmeterentry> > diffservmeterentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmetertable::Diffservmeterentry> > diffservmeterentry;
         
 }; // DiffservMib::Diffservmetertable
 
 
-class DiffservMib::Diffservmetertable::Diffservmeterentry : public Entity
+class DiffservMib::Diffservmetertable::Diffservmeterentry : public ydk::Entity
 {
     public:
         Diffservmeterentry();
@@ -525,23 +560,25 @@ class DiffservMib::Diffservmetertable::Diffservmeterentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservmeterid; //type: uint32
-        YLeaf diffservmetersucceednext; //type: string
-        YLeaf diffservmeterfailnext; //type: string
-        YLeaf diffservmeterspecific; //type: string
-        YLeaf diffservmeterstorage; //type: StoragetypeEnum
-        YLeaf diffservmeterstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservmeterid; //type: uint32
+        ydk::YLeaf diffservmetersucceednext; //type: string
+        ydk::YLeaf diffservmeterfailnext; //type: string
+        ydk::YLeaf diffservmeterspecific; //type: string
+        ydk::YLeaf diffservmeterstorage; //type: Storagetype
+        ydk::YLeaf diffservmeterstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservmetertable::Diffservmeterentry
 
 
-class DiffservMib::Diffservtbparamtable : public Entity
+class DiffservMib::Diffservtbparamtable : public ydk::Entity
 {
     public:
         Diffservtbparamtable();
@@ -549,20 +586,22 @@ class DiffservMib::Diffservtbparamtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservtbparamentry; //type: DiffservMib::Diffservtbparamtable::Diffservtbparamentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparamtable::Diffservtbparamentry> > diffservtbparamentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservtbparamtable::Diffservtbparamentry> > diffservtbparamentry;
         
 }; // DiffservMib::Diffservtbparamtable
 
 
-class DiffservMib::Diffservtbparamtable::Diffservtbparamentry : public Entity
+class DiffservMib::Diffservtbparamtable::Diffservtbparamentry : public ydk::Entity
 {
     public:
         Diffservtbparamentry();
@@ -570,24 +609,26 @@ class DiffservMib::Diffservtbparamtable::Diffservtbparamentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservtbparamid; //type: uint32
-        YLeaf diffservtbparamtype; //type: string
-        YLeaf diffservtbparamrate; //type: uint32
-        YLeaf diffservtbparamburstsize; //type: int32
-        YLeaf diffservtbparaminterval; //type: uint32
-        YLeaf diffservtbparamstorage; //type: StoragetypeEnum
-        YLeaf diffservtbparamstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservtbparamid; //type: uint32
+        ydk::YLeaf diffservtbparamtype; //type: string
+        ydk::YLeaf diffservtbparamrate; //type: uint32
+        ydk::YLeaf diffservtbparamburstsize; //type: int32
+        ydk::YLeaf diffservtbparaminterval; //type: uint32
+        ydk::YLeaf diffservtbparamstorage; //type: Storagetype
+        ydk::YLeaf diffservtbparamstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservtbparamtable::Diffservtbparamentry
 
 
-class DiffservMib::Diffservactiontable : public Entity
+class DiffservMib::Diffservactiontable : public ydk::Entity
 {
     public:
         Diffservactiontable();
@@ -595,20 +636,22 @@ class DiffservMib::Diffservactiontable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservactionentry; //type: DiffservMib::Diffservactiontable::Diffservactionentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservactiontable::Diffservactionentry> > diffservactionentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservactiontable::Diffservactionentry> > diffservactionentry;
         
 }; // DiffservMib::Diffservactiontable
 
 
-class DiffservMib::Diffservactiontable::Diffservactionentry : public Entity
+class DiffservMib::Diffservactiontable::Diffservactionentry : public ydk::Entity
 {
     public:
         Diffservactionentry();
@@ -616,23 +659,25 @@ class DiffservMib::Diffservactiontable::Diffservactionentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservactionid; //type: uint32
-        YLeaf diffservactioninterface; //type: int32
-        YLeaf diffservactionnext; //type: string
-        YLeaf diffservactionspecific; //type: string
-        YLeaf diffservactionstorage; //type: StoragetypeEnum
-        YLeaf diffservactionstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservactionid; //type: uint32
+        ydk::YLeaf diffservactioninterface; //type: int32
+        ydk::YLeaf diffservactionnext; //type: string
+        ydk::YLeaf diffservactionspecific; //type: string
+        ydk::YLeaf diffservactionstorage; //type: Storagetype
+        ydk::YLeaf diffservactionstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservactiontable::Diffservactionentry
 
 
-class DiffservMib::Diffservdscpmarkacttable : public Entity
+class DiffservMib::Diffservdscpmarkacttable : public ydk::Entity
 {
     public:
         Diffservdscpmarkacttable();
@@ -640,20 +685,22 @@ class DiffservMib::Diffservdscpmarkacttable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservdscpmarkactentry; //type: DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry> > diffservdscpmarkactentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry> > diffservdscpmarkactentry;
         
 }; // DiffservMib::Diffservdscpmarkacttable
 
 
-class DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry : public Entity
+class DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry : public ydk::Entity
 {
     public:
         Diffservdscpmarkactentry();
@@ -661,18 +708,20 @@ class DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservdscpmarkactdscp; //type: uint8
+        ydk::YLeaf diffservdscpmarkactdscp; //type: uint8
 
 }; // DiffservMib::Diffservdscpmarkacttable::Diffservdscpmarkactentry
 
 
-class DiffservMib::Diffservcountacttable : public Entity
+class DiffservMib::Diffservcountacttable : public ydk::Entity
 {
     public:
         Diffservcountacttable();
@@ -680,20 +729,22 @@ class DiffservMib::Diffservcountacttable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservcountactentry; //type: DiffservMib::Diffservcountacttable::Diffservcountactentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservcountacttable::Diffservcountactentry> > diffservcountactentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservcountacttable::Diffservcountactentry> > diffservcountactentry;
         
 }; // DiffservMib::Diffservcountacttable
 
 
-class DiffservMib::Diffservcountacttable::Diffservcountactentry : public Entity
+class DiffservMib::Diffservcountacttable::Diffservcountactentry : public ydk::Entity
 {
     public:
         Diffservcountactentry();
@@ -701,22 +752,24 @@ class DiffservMib::Diffservcountacttable::Diffservcountactentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservcountactid; //type: uint32
-        YLeaf diffservcountactoctets; //type: uint64
-        YLeaf diffservcountactpkts; //type: uint64
-        YLeaf diffservcountactstorage; //type: StoragetypeEnum
-        YLeaf diffservcountactstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservcountactid; //type: uint32
+        ydk::YLeaf diffservcountactoctets; //type: uint64
+        ydk::YLeaf diffservcountactpkts; //type: uint64
+        ydk::YLeaf diffservcountactstorage; //type: Storagetype
+        ydk::YLeaf diffservcountactstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservcountacttable::Diffservcountactentry
 
 
-class DiffservMib::Diffservalgdroptable : public Entity
+class DiffservMib::Diffservalgdroptable : public ydk::Entity
 {
     public:
         Diffservalgdroptable();
@@ -724,20 +777,22 @@ class DiffservMib::Diffservalgdroptable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservalgdropentry; //type: DiffservMib::Diffservalgdroptable::Diffservalgdropentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdroptable::Diffservalgdropentry> > diffservalgdropentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservalgdroptable::Diffservalgdropentry> > diffservalgdropentry;
         
 }; // DiffservMib::Diffservalgdroptable
 
 
-class DiffservMib::Diffservalgdroptable::Diffservalgdropentry : public Entity
+class DiffservMib::Diffservalgdroptable::Diffservalgdropentry : public ydk::Entity
 {
     public:
         Diffservalgdropentry();
@@ -745,30 +800,32 @@ class DiffservMib::Diffservalgdroptable::Diffservalgdropentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservalgdropid; //type: uint32
-        YLeaf diffservalgdroptype; //type: DiffservalgdroptypeEnum
-        YLeaf diffservalgdropnext; //type: string
-        YLeaf diffservalgdropqmeasure; //type: string
-        YLeaf diffservalgdropqthreshold; //type: uint32
-        YLeaf diffservalgdropspecific; //type: string
-        YLeaf diffservalgdropoctets; //type: uint64
-        YLeaf diffservalgdroppkts; //type: uint64
-        YLeaf diffservalgrandomdropoctets; //type: uint64
-        YLeaf diffservalgrandomdroppkts; //type: uint64
-        YLeaf diffservalgdropstorage; //type: StoragetypeEnum
-        YLeaf diffservalgdropstatus; //type: RowstatusEnum
-        class DiffservalgdroptypeEnum;
+        ydk::YLeaf diffservalgdropid; //type: uint32
+        ydk::YLeaf diffservalgdroptype; //type: Diffservalgdroptype
+        ydk::YLeaf diffservalgdropnext; //type: string
+        ydk::YLeaf diffservalgdropqmeasure; //type: string
+        ydk::YLeaf diffservalgdropqthreshold; //type: uint32
+        ydk::YLeaf diffservalgdropspecific; //type: string
+        ydk::YLeaf diffservalgdropoctets; //type: uint64
+        ydk::YLeaf diffservalgdroppkts; //type: uint64
+        ydk::YLeaf diffservalgrandomdropoctets; //type: uint64
+        ydk::YLeaf diffservalgrandomdroppkts; //type: uint64
+        ydk::YLeaf diffservalgdropstorage; //type: Storagetype
+        ydk::YLeaf diffservalgdropstatus; //type: Rowstatus
+        class Diffservalgdroptype;
 
 }; // DiffservMib::Diffservalgdroptable::Diffservalgdropentry
 
 
-class DiffservMib::Diffservrandomdroptable : public Entity
+class DiffservMib::Diffservrandomdroptable : public ydk::Entity
 {
     public:
         Diffservrandomdroptable();
@@ -776,20 +833,22 @@ class DiffservMib::Diffservrandomdroptable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservrandomdropentry; //type: DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry> > diffservrandomdropentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry> > diffservrandomdropentry;
         
 }; // DiffservMib::Diffservrandomdroptable
 
 
-class DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry : public Entity
+class DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry : public ydk::Entity
 {
     public:
         Diffservrandomdropentry();
@@ -797,27 +856,29 @@ class DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservrandomdropid; //type: uint32
-        YLeaf diffservrandomdropminthreshbytes; //type: uint32
-        YLeaf diffservrandomdropminthreshpkts; //type: uint32
-        YLeaf diffservrandomdropmaxthreshbytes; //type: uint32
-        YLeaf diffservrandomdropmaxthreshpkts; //type: uint32
-        YLeaf diffservrandomdropprobmax; //type: uint32
-        YLeaf diffservrandomdropweight; //type: uint32
-        YLeaf diffservrandomdropsamplingrate; //type: uint32
-        YLeaf diffservrandomdropstorage; //type: StoragetypeEnum
-        YLeaf diffservrandomdropstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservrandomdropid; //type: uint32
+        ydk::YLeaf diffservrandomdropminthreshbytes; //type: uint32
+        ydk::YLeaf diffservrandomdropminthreshpkts; //type: uint32
+        ydk::YLeaf diffservrandomdropmaxthreshbytes; //type: uint32
+        ydk::YLeaf diffservrandomdropmaxthreshpkts; //type: uint32
+        ydk::YLeaf diffservrandomdropprobmax; //type: uint32
+        ydk::YLeaf diffservrandomdropweight; //type: uint32
+        ydk::YLeaf diffservrandomdropsamplingrate; //type: uint32
+        ydk::YLeaf diffservrandomdropstorage; //type: Storagetype
+        ydk::YLeaf diffservrandomdropstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservrandomdroptable::Diffservrandomdropentry
 
 
-class DiffservMib::Diffservqtable : public Entity
+class DiffservMib::Diffservqtable : public ydk::Entity
 {
     public:
         Diffservqtable();
@@ -825,20 +886,22 @@ class DiffservMib::Diffservqtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservqentry; //type: DiffservMib::Diffservqtable::Diffservqentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqtable::Diffservqentry> > diffservqentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservqtable::Diffservqentry> > diffservqentry;
         
 }; // DiffservMib::Diffservqtable
 
 
-class DiffservMib::Diffservqtable::Diffservqentry : public Entity
+class DiffservMib::Diffservqtable::Diffservqentry : public ydk::Entity
 {
     public:
         Diffservqentry();
@@ -846,23 +909,25 @@ class DiffservMib::Diffservqtable::Diffservqentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservqid; //type: uint32
-        YLeaf diffservqnext; //type: string
-        YLeaf diffservqminrate; //type: string
-        YLeaf diffservqmaxrate; //type: string
-        YLeaf diffservqstorage; //type: StoragetypeEnum
-        YLeaf diffservqstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservqid; //type: uint32
+        ydk::YLeaf diffservqnext; //type: string
+        ydk::YLeaf diffservqminrate; //type: string
+        ydk::YLeaf diffservqmaxrate; //type: string
+        ydk::YLeaf diffservqstorage; //type: Storagetype
+        ydk::YLeaf diffservqstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservqtable::Diffservqentry
 
 
-class DiffservMib::Diffservschedulertable : public Entity
+class DiffservMib::Diffservschedulertable : public ydk::Entity
 {
     public:
         Diffservschedulertable();
@@ -870,20 +935,22 @@ class DiffservMib::Diffservschedulertable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservschedulerentry; //type: DiffservMib::Diffservschedulertable::Diffservschedulerentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservschedulertable::Diffservschedulerentry> > diffservschedulerentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservschedulertable::Diffservschedulerentry> > diffservschedulerentry;
         
 }; // DiffservMib::Diffservschedulertable
 
 
-class DiffservMib::Diffservschedulertable::Diffservschedulerentry : public Entity
+class DiffservMib::Diffservschedulertable::Diffservschedulerentry : public ydk::Entity
 {
     public:
         Diffservschedulerentry();
@@ -891,24 +958,26 @@ class DiffservMib::Diffservschedulertable::Diffservschedulerentry : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservschedulerid; //type: uint32
-        YLeaf diffservschedulernext; //type: string
-        YLeaf diffservschedulermethod; //type: string
-        YLeaf diffservschedulerminrate; //type: string
-        YLeaf diffservschedulermaxrate; //type: string
-        YLeaf diffservschedulerstorage; //type: StoragetypeEnum
-        YLeaf diffservschedulerstatus; //type: RowstatusEnum
+        ydk::YLeaf diffservschedulerid; //type: uint32
+        ydk::YLeaf diffservschedulernext; //type: string
+        ydk::YLeaf diffservschedulermethod; //type: string
+        ydk::YLeaf diffservschedulerminrate; //type: string
+        ydk::YLeaf diffservschedulermaxrate; //type: string
+        ydk::YLeaf diffservschedulerstorage; //type: Storagetype
+        ydk::YLeaf diffservschedulerstatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservschedulertable::Diffservschedulerentry
 
 
-class DiffservMib::Diffservminratetable : public Entity
+class DiffservMib::Diffservminratetable : public ydk::Entity
 {
     public:
         Diffservminratetable();
@@ -916,20 +985,22 @@ class DiffservMib::Diffservminratetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservminrateentry; //type: DiffservMib::Diffservminratetable::Diffservminrateentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservminratetable::Diffservminrateentry> > diffservminrateentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservminratetable::Diffservminrateentry> > diffservminrateentry;
         
 }; // DiffservMib::Diffservminratetable
 
 
-class DiffservMib::Diffservminratetable::Diffservminrateentry : public Entity
+class DiffservMib::Diffservminratetable::Diffservminrateentry : public ydk::Entity
 {
     public:
         Diffservminrateentry();
@@ -937,23 +1008,25 @@ class DiffservMib::Diffservminratetable::Diffservminrateentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservminrateid; //type: uint32
-        YLeaf diffservminratepriority; //type: uint32
-        YLeaf diffservminrateabsolute; //type: uint32
-        YLeaf diffservminraterelative; //type: uint32
-        YLeaf diffservminratestorage; //type: StoragetypeEnum
-        YLeaf diffservminratestatus; //type: RowstatusEnum
+        ydk::YLeaf diffservminrateid; //type: uint32
+        ydk::YLeaf diffservminratepriority; //type: uint32
+        ydk::YLeaf diffservminrateabsolute; //type: uint32
+        ydk::YLeaf diffservminraterelative; //type: uint32
+        ydk::YLeaf diffservminratestorage; //type: Storagetype
+        ydk::YLeaf diffservminratestatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservminratetable::Diffservminrateentry
 
 
-class DiffservMib::Diffservmaxratetable : public Entity
+class DiffservMib::Diffservmaxratetable : public ydk::Entity
 {
     public:
         Diffservmaxratetable();
@@ -961,20 +1034,22 @@ class DiffservMib::Diffservmaxratetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Diffservmaxrateentry; //type: DiffservMib::Diffservmaxratetable::Diffservmaxrateentry
 
-        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmaxratetable::Diffservmaxrateentry> > diffservmaxrateentry_;
+        std::vector<std::shared_ptr<DIFFSERV_MIB::DiffservMib::Diffservmaxratetable::Diffservmaxrateentry> > diffservmaxrateentry;
         
 }; // DiffservMib::Diffservmaxratetable
 
 
-class DiffservMib::Diffservmaxratetable::Diffservmaxrateentry : public Entity
+class DiffservMib::Diffservmaxratetable::Diffservmaxrateentry : public ydk::Entity
 {
     public:
         Diffservmaxrateentry();
@@ -982,38 +1057,40 @@ class DiffservMib::Diffservmaxratetable::Diffservmaxrateentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf diffservmaxrateid; //type: uint32
-        YLeaf diffservmaxratelevel; //type: uint32
-        YLeaf diffservmaxrateabsolute; //type: uint32
-        YLeaf diffservmaxraterelative; //type: uint32
-        YLeaf diffservmaxratethreshold; //type: int32
-        YLeaf diffservmaxratestorage; //type: StoragetypeEnum
-        YLeaf diffservmaxratestatus; //type: RowstatusEnum
+        ydk::YLeaf diffservmaxrateid; //type: uint32
+        ydk::YLeaf diffservmaxratelevel; //type: uint32
+        ydk::YLeaf diffservmaxrateabsolute; //type: uint32
+        ydk::YLeaf diffservmaxraterelative; //type: uint32
+        ydk::YLeaf diffservmaxratethreshold; //type: int32
+        ydk::YLeaf diffservmaxratestorage; //type: Storagetype
+        ydk::YLeaf diffservmaxratestatus; //type: Rowstatus
 
 }; // DiffservMib::Diffservmaxratetable::Diffservmaxrateentry
 
-class IfdirectionEnum : public Enum
+class Ifdirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inbound;
-        static const Enum::YLeaf outbound;
+        static const ydk::Enum::YLeaf inbound;
+        static const ydk::Enum::YLeaf outbound;
 
 };
 
-class DiffservMib::Diffservalgdroptable::Diffservalgdropentry::DiffservalgdroptypeEnum : public Enum
+class DiffservMib::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdroptype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf tailDrop;
-        static const Enum::YLeaf headDrop;
-        static const Enum::YLeaf randomDrop;
-        static const Enum::YLeaf alwaysDrop;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf tailDrop;
+        static const ydk::Enum::YLeaf headDrop;
+        static const ydk::Enum::YLeaf randomDrop;
+        static const ydk::Enum::YLeaf alwaysDrop;
 
 };
 

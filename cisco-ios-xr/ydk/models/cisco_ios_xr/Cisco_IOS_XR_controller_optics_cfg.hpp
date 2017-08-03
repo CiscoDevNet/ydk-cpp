@@ -7,75 +7,75 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_controller_optics_cfg {
 
-class OpticsDwdmCarrierGridEnum : public Enum
+class OpticsOtsAmpliGainRange : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_50g_hz_grid;
-        static const Enum::YLeaf Y_100mhz_grid;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf extended;
 
 };
 
-class OpticsOtsAmpliGainRangeEnum : public Enum
+class OpticsOtsAmpliControlMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf normal;
-        static const Enum::YLeaf extended;
+        static const ydk::Enum::YLeaf automatic;
+        static const ydk::Enum::YLeaf manual;
 
 };
 
-class OpticsOtsSafetyControlModeEnum : public Enum
+class Threshold : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf auto_;
-        static const Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf high;
 
 };
 
-class OpticsLoopbackEnum : public Enum
+class OpticsDwdmCarrierParam : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf internal;
-        static const Enum::YLeaf line;
+        static const ydk::Enum::YLeaf itu_ch;
+        static const ydk::Enum::YLeaf wavelength;
+        static const ydk::Enum::YLeaf frequency;
 
 };
 
-class OpticsFecEnum : public Enum
+class OpticsOtsSafetyControlMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf fec_none;
-        static const Enum::YLeaf fec_h15;
-        static const Enum::YLeaf fec_h25;
-        static const Enum::YLeaf fec_h15_de;
-        static const Enum::YLeaf fec_h25_de;
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class ThresholdEnum : public Enum
+class OpticsDwdmCarrierGrid : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf low;
-        static const Enum::YLeaf high;
+        static const ydk::Enum::YLeaf Y_50g_hz_grid;
+        static const ydk::Enum::YLeaf Y_100mhz_grid;
 
 };
 
-class OpticsOtsAmpliControlModeEnum : public Enum
+class OpticsLoopback : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf automatic;
-        static const Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf line;
 
 };
 
-class OpticsDwdmCarrierParamEnum : public Enum
+class OpticsFec : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf itu_ch;
-        static const Enum::YLeaf wavelength;
-        static const Enum::YLeaf frequency;
+        static const ydk::Enum::YLeaf fec_none;
+        static const ydk::Enum::YLeaf fec_h15;
+        static const ydk::Enum::YLeaf fec_h25;
+        static const ydk::Enum::YLeaf fec_h15_de;
+        static const ydk::Enum::YLeaf fec_h25_de;
 
 };
 

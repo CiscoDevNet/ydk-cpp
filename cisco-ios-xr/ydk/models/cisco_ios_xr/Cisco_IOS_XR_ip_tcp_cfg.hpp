@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_tcp_cfg {
 
-class IpTcp : public Entity
+class IpTcp : public ydk::Entity
 {
     public:
         IpTcp();
@@ -18,24 +18,27 @@ class IpTcp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf accept_rate; //type: uint32
-        YLeaf selective_ack; //type: empty
-        YLeaf window_size; //type: uint32
-        YLeaf receive_q; //type: uint32
-        YLeaf maximum_segment_size; //type: uint32
-        YLeaf syn_wait_time; //type: uint32
-        YLeaf timestamp; //type: empty
-        YLeaf path_mtu_discovery; //type: int32
+        ydk::YLeaf accept_rate; //type: uint32
+        ydk::YLeaf selective_ack; //type: empty
+        ydk::YLeaf window_size; //type: uint32
+        ydk::YLeaf receive_q; //type: uint32
+        ydk::YLeaf maximum_segment_size; //type: uint32
+        ydk::YLeaf syn_wait_time; //type: uint32
+        ydk::YLeaf timestamp; //type: empty
+        ydk::YLeaf path_mtu_discovery; //type: int32
         class Directory; //type: IpTcp::Directory
         class Throttle; //type: IpTcp::Throttle
         class NumThread; //type: IpTcp::NumThread
@@ -47,7 +50,7 @@ class IpTcp : public Entity
 }; // IpTcp
 
 
-class IpTcp::Directory : public Entity
+class IpTcp::Directory : public ydk::Entity
 {
     public:
         Directory();
@@ -55,20 +58,22 @@ class IpTcp::Directory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf directoryname; //type: string
-        YLeaf max_debug_files; //type: uint32
-        YLeaf max_file_size_files; //type: uint32
+        ydk::YLeaf directoryname; //type: string
+        ydk::YLeaf max_debug_files; //type: uint32
+        ydk::YLeaf max_file_size_files; //type: uint32
 
 }; // IpTcp::Directory
 
 
-class IpTcp::Throttle : public Entity
+class IpTcp::Throttle : public ydk::Entity
 {
     public:
         Throttle();
@@ -76,19 +81,21 @@ class IpTcp::Throttle : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tcpmin_throttle; //type: uint32
-        YLeaf tcpmaxthrottle; //type: uint32
+        ydk::YLeaf tcpmin_throttle; //type: uint32
+        ydk::YLeaf tcpmaxthrottle; //type: uint32
 
 }; // IpTcp::Throttle
 
 
-class IpTcp::NumThread : public Entity
+class IpTcp::NumThread : public ydk::Entity
 {
     public:
         NumThread();
@@ -96,18 +103,20 @@ class IpTcp::NumThread : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tcp_in_q_threads; //type: uint32
-        YLeaf tcp_out_q_threads; //type: uint32
+        ydk::YLeaf tcp_in_q_threads; //type: uint32
+        ydk::YLeaf tcp_out_q_threads; //type: uint32
 
 }; // IpTcp::NumThread
 
-class Ip : public Entity
+class Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -115,15 +124,18 @@ class Ip : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Cinetd; //type: Ip::Cinetd
         class ForwardProtocol; //type: Ip::ForwardProtocol
@@ -134,7 +146,7 @@ class Ip : public Entity
 }; // Ip
 
 
-class Ip::Cinetd : public Entity
+class Ip::Cinetd : public ydk::Entity
 {
     public:
         Cinetd();
@@ -142,11 +154,13 @@ class Ip::Cinetd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Services; //type: Ip::Cinetd::Services
 
@@ -155,7 +169,7 @@ class Ip::Cinetd : public Entity
 }; // Ip::Cinetd
 
 
-class Ip::Cinetd::Services : public Entity
+class Ip::Cinetd::Services : public ydk::Entity
 {
     public:
         Services();
@@ -163,11 +177,13 @@ class Ip::Cinetd::Services : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4; //type: Ip::Cinetd::Services::Ipv4
         class Vrfs; //type: Ip::Cinetd::Services::Vrfs
@@ -180,7 +196,7 @@ class Ip::Cinetd::Services : public Entity
 }; // Ip::Cinetd::Services
 
 
-class Ip::Cinetd::Services::Ipv4 : public Entity
+class Ip::Cinetd::Services::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -188,11 +204,13 @@ class Ip::Cinetd::Services::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SmallServers; //type: Ip::Cinetd::Services::Ipv4::SmallServers
 
@@ -201,7 +219,7 @@ class Ip::Cinetd::Services::Ipv4 : public Entity
 }; // Ip::Cinetd::Services::Ipv4
 
 
-class Ip::Cinetd::Services::Ipv4::SmallServers : public Entity
+class Ip::Cinetd::Services::Ipv4::SmallServers : public ydk::Entity
 {
     public:
         SmallServers();
@@ -209,11 +227,13 @@ class Ip::Cinetd::Services::Ipv4::SmallServers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TcpSmallServers; //type: Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers
         class UdpSmallServers; //type: Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers
@@ -224,7 +244,7 @@ class Ip::Cinetd::Services::Ipv4::SmallServers : public Entity
 }; // Ip::Cinetd::Services::Ipv4::SmallServers
 
 
-class Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers : public Entity
+class Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers : public ydk::Entity
 {
     public:
         TcpSmallServers();
@@ -232,19 +252,21 @@ class Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_control_list_name; //type: string
-        YLeaf small_server; //type: int32
+        ydk::YLeaf access_control_list_name; //type: string
+        ydk::YLeaf small_server; //type: int32
 
 }; // Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers
 
 
-class Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers : public Entity
+class Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers : public ydk::Entity
 {
     public:
         UdpSmallServers();
@@ -252,19 +274,21 @@ class Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_control_list_name; //type: string
-        YLeaf small_server; //type: uint32
+        ydk::YLeaf access_control_list_name; //type: string
+        ydk::YLeaf small_server; //type: uint32
 
 }; // Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers
 
 
-class Ip::Cinetd::Services::Vrfs : public Entity
+class Ip::Cinetd::Services::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -272,11 +296,13 @@ class Ip::Cinetd::Services::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: Ip::Cinetd::Services::Vrfs::Vrf
 
@@ -285,7 +311,7 @@ class Ip::Cinetd::Services::Vrfs : public Entity
 }; // Ip::Cinetd::Services::Vrfs
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -293,13 +319,15 @@ class Ip::Cinetd::Services::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class Ipv6; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6
         class Ipv4; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4
 
@@ -309,7 +337,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf : public Entity
 }; // Ip::Cinetd::Services::Vrfs::Vrf
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6 : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -317,11 +345,13 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Telnet; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet
         class Tftp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp
@@ -332,7 +362,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6 : public Entity
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet : public ydk::Entity
 {
     public:
         Telnet();
@@ -340,11 +370,13 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tcp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp
 
@@ -353,7 +385,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet : public Entity
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -361,19 +393,21 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_list_name; //type: string
-        YLeaf maximum_server; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf maximum_server; //type: uint32
 
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp : public ydk::Entity
 {
     public:
         Tftp();
@@ -381,11 +415,13 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Udp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp
 
@@ -394,7 +430,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp : public Entity
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp : public ydk::Entity
 {
     public:
         Udp();
@@ -402,21 +438,23 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_list_name; //type: string
-        YLeaf maximum_server; //type: uint32
-        YLeaf home_directory; //type: string
-        YLeaf dscp_value; //type: int32
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf maximum_server; //type: uint32
+        ydk::YLeaf home_directory; //type: string
+        ydk::YLeaf dscp_value; //type: int32
 
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4 : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -424,11 +462,13 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Telnet; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet
         class Tftp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp
@@ -439,7 +479,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4 : public Entity
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet : public ydk::Entity
 {
     public:
         Telnet();
@@ -447,11 +487,13 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tcp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp
 
@@ -460,7 +502,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet : public Entity
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -468,19 +510,21 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_list_name; //type: string
-        YLeaf maximum_server; //type: uint32
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf maximum_server; //type: uint32
 
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp : public ydk::Entity
 {
     public:
         Tftp();
@@ -488,11 +532,13 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Udp; //type: Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp
 
@@ -501,7 +547,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp : public Entity
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp
 
 
-class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp : public Entity
+class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp : public ydk::Entity
 {
     public:
         Udp();
@@ -509,21 +555,23 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_list_name; //type: string
-        YLeaf maximum_server; //type: uint32
-        YLeaf home_directory; //type: string
-        YLeaf dscp_value; //type: int32
+        ydk::YLeaf access_list_name; //type: string
+        ydk::YLeaf maximum_server; //type: uint32
+        ydk::YLeaf home_directory; //type: string
+        ydk::YLeaf dscp_value; //type: int32
 
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp
 
 
-class Ip::Cinetd::Services::Ipv6 : public Entity
+class Ip::Cinetd::Services::Ipv6 : public ydk::Entity
 {
     public:
         Ipv6();
@@ -531,11 +579,13 @@ class Ip::Cinetd::Services::Ipv6 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SmallServers; //type: Ip::Cinetd::Services::Ipv6::SmallServers
 
@@ -544,7 +594,7 @@ class Ip::Cinetd::Services::Ipv6 : public Entity
 }; // Ip::Cinetd::Services::Ipv6
 
 
-class Ip::Cinetd::Services::Ipv6::SmallServers : public Entity
+class Ip::Cinetd::Services::Ipv6::SmallServers : public ydk::Entity
 {
     public:
         SmallServers();
@@ -552,11 +602,13 @@ class Ip::Cinetd::Services::Ipv6::SmallServers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TcpSmallServers; //type: Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers
 
@@ -565,7 +617,7 @@ class Ip::Cinetd::Services::Ipv6::SmallServers : public Entity
 }; // Ip::Cinetd::Services::Ipv6::SmallServers
 
 
-class Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers : public Entity
+class Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers : public ydk::Entity
 {
     public:
         TcpSmallServers();
@@ -573,19 +625,21 @@ class Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_control_list_name; //type: string
-        YLeaf small_server; //type: int32
+        ydk::YLeaf access_control_list_name; //type: string
+        ydk::YLeaf small_server; //type: int32
 
 }; // Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers
 
 
-class Ip::ForwardProtocol : public Entity
+class Ip::ForwardProtocol : public ydk::Entity
 {
     public:
         ForwardProtocol();
@@ -593,11 +647,13 @@ class Ip::ForwardProtocol : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Udp; //type: Ip::ForwardProtocol::Udp
 
@@ -606,7 +662,7 @@ class Ip::ForwardProtocol : public Entity
 }; // Ip::ForwardProtocol
 
 
-class Ip::ForwardProtocol::Udp : public Entity
+class Ip::ForwardProtocol::Udp : public ydk::Entity
 {
     public:
         Udp();
@@ -614,13 +670,15 @@ class Ip::ForwardProtocol::Udp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf disable; //type: empty
+        ydk::YLeaf disable; //type: empty
         class Ports; //type: Ip::ForwardProtocol::Udp::Ports
 
         std::shared_ptr<Cisco_IOS_XR_ip_tcp_cfg::Ip::ForwardProtocol::Udp::Ports> ports;
@@ -628,7 +686,7 @@ class Ip::ForwardProtocol::Udp : public Entity
 }; // Ip::ForwardProtocol::Udp
 
 
-class Ip::ForwardProtocol::Udp::Ports : public Entity
+class Ip::ForwardProtocol::Udp::Ports : public ydk::Entity
 {
     public:
         Ports();
@@ -636,11 +694,13 @@ class Ip::ForwardProtocol::Udp::Ports : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Port; //type: Ip::ForwardProtocol::Udp::Ports::Port
 
@@ -649,7 +709,7 @@ class Ip::ForwardProtocol::Udp::Ports : public Entity
 }; // Ip::ForwardProtocol::Udp::Ports
 
 
-class Ip::ForwardProtocol::Udp::Ports::Port : public Entity
+class Ip::ForwardProtocol::Udp::Ports::Port : public ydk::Entity
 {
     public:
         Port();
@@ -657,14 +717,16 @@ class Ip::ForwardProtocol::Udp::Ports::Port : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf port_id; //type: uint16
-        YLeaf enable; //type: boolean
+        ydk::YLeaf port_id; //type: uint16
+        ydk::YLeaf enable; //type: boolean
 
 }; // Ip::ForwardProtocol::Udp::Ports::Port
 

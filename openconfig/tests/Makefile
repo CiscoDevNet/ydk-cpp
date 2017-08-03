@@ -25,14 +25,14 @@ LXXFLAGS        = -lUnitTest++ -I./../.includes -L./../ -lydk_client -L./../.lib
 default: all
 
 ydk_test : $(TEST_SOURCE) Makefile
-	$(CXX) $(CXXFLAGS) $(TEST_SOURCE) -o $(TEST_BINARY) $(LXXFLAGS)
-	@touch $(TEST_BINARY)
+    $(CXX) $(CXXFLAGS) $(TEST_SOURCE) -o $(TEST_BINARY) $(LXXFLAGS)
+    @touch $(TEST_BINARY)
 
 all : $(LIBYDK_AR) $(TEST_BINARY)
-	./$(TEST_BINARY)
+    ./$(TEST_BINARY)
 
 $(LIBYDK_AR) : ../Makefile
-	make -C .. netconf_client 
+    make -C .. netconf_client 
 
 clean :
-	rm -f $(TEST_BINARY) $(LIBYDK_AR)
+    rm -f $(TEST_BINARY) $(LIBYDK_AR)

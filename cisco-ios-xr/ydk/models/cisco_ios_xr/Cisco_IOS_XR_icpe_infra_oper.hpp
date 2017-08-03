@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_icpe_infra_oper {
 
-class NvSatellite : public Entity
+class NvSatellite : public ydk::Entity
 {
     public:
         NvSatellite();
@@ -19,15 +19,18 @@ class NvSatellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class ReloadOpStatuses; //type: NvSatellite::ReloadOpStatuses
         class InstallStatuses; //type: NvSatellite::InstallStatuses
@@ -66,7 +69,7 @@ class NvSatellite : public Entity
 }; // NvSatellite
 
 
-class NvSatellite::ReloadOpStatuses : public Entity
+class NvSatellite::ReloadOpStatuses : public ydk::Entity
 {
     public:
         ReloadOpStatuses();
@@ -74,11 +77,13 @@ class NvSatellite::ReloadOpStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ReloadOpStatus; //type: NvSatellite::ReloadOpStatuses::ReloadOpStatus
 
@@ -87,7 +92,7 @@ class NvSatellite::ReloadOpStatuses : public Entity
 }; // NvSatellite::ReloadOpStatuses
 
 
-class NvSatellite::ReloadOpStatuses::ReloadOpStatus : public Entity
+class NvSatellite::ReloadOpStatuses::ReloadOpStatus : public ydk::Entity
 {
     public:
         ReloadOpStatus();
@@ -95,24 +100,26 @@ class NvSatellite::ReloadOpStatuses::ReloadOpStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf operation_id; //type: uint32
-        YLeaf operation_id_xr; //type: uint32
-        YLeaf satellite_range; //type: string
-        YLeafList sats_not_initiated; //type: list of  uint16
-        YLeafList sats_reloading; //type: list of  uint16
-        YLeafList sats_reloaded; //type: list of  uint16
-        YLeafList sats_reload_failed; //type: list of  uint16
+        ydk::YLeaf operation_id; //type: uint32
+        ydk::YLeaf operation_id_xr; //type: uint32
+        ydk::YLeaf satellite_range; //type: string
+        ydk::YLeafList sats_not_initiated; //type: list of  uint16
+        ydk::YLeafList sats_reloading; //type: list of  uint16
+        ydk::YLeafList sats_reloaded; //type: list of  uint16
+        ydk::YLeafList sats_reload_failed; //type: list of  uint16
 
 }; // NvSatellite::ReloadOpStatuses::ReloadOpStatus
 
 
-class NvSatellite::InstallStatuses : public Entity
+class NvSatellite::InstallStatuses : public ydk::Entity
 {
     public:
         InstallStatuses();
@@ -120,11 +127,13 @@ class NvSatellite::InstallStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InstallStatus; //type: NvSatellite::InstallStatuses::InstallStatus
 
@@ -133,7 +142,7 @@ class NvSatellite::InstallStatuses : public Entity
 }; // NvSatellite::InstallStatuses
 
 
-class NvSatellite::InstallStatuses::InstallStatus : public Entity
+class NvSatellite::InstallStatuses::InstallStatus : public ydk::Entity
 {
     public:
         InstallStatus();
@@ -141,38 +150,40 @@ class NvSatellite::InstallStatuses::InstallStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_range; //type: string
-        YLeaf satellite_range_xr; //type: string
-        YLeaf operation_id; //type: uint32
-        YLeafList sats_not_initiated; //type: list of  uint16
-        YLeafList sats_transferring; //type: list of  uint16
-        YLeafList sats_activating; //type: list of  uint16
-        YLeafList sats_updating; //type: list of  uint16
-        YLeafList sats_deactivating; //type: list of  uint16
-        YLeafList sats_removing; //type: list of  uint16
-        YLeafList sats_transfer_failed; //type: list of  uint16
-        YLeafList sats_activate_failed; //type: list of  uint16
-        YLeafList sats_update_failed; //type: list of  uint16
-        YLeafList sats_deactivate_failed; //type: list of  uint16
-        YLeafList sats_remove_failed; //type: list of  uint16
-        YLeafList sats_transfer_aborted; //type: list of  uint16
-        YLeafList sats_activate_aborted; //type: list of  uint16
-        YLeafList sats_update_aborted; //type: list of  uint16
-        YLeafList sats_deactivate_aborted; //type: list of  uint16
-        YLeafList sats_remove_aborted; //type: list of  uint16
-        YLeafList sats_no_operation; //type: list of  uint16
-        YLeafList sats_completed; //type: list of  uint16
+        ydk::YLeaf satellite_range; //type: string
+        ydk::YLeaf satellite_range_xr; //type: string
+        ydk::YLeaf operation_id; //type: uint32
+        ydk::YLeafList sats_not_initiated; //type: list of  uint16
+        ydk::YLeafList sats_transferring; //type: list of  uint16
+        ydk::YLeafList sats_activating; //type: list of  uint16
+        ydk::YLeafList sats_updating; //type: list of  uint16
+        ydk::YLeafList sats_deactivating; //type: list of  uint16
+        ydk::YLeafList sats_removing; //type: list of  uint16
+        ydk::YLeafList sats_transfer_failed; //type: list of  uint16
+        ydk::YLeafList sats_activate_failed; //type: list of  uint16
+        ydk::YLeafList sats_update_failed; //type: list of  uint16
+        ydk::YLeafList sats_deactivate_failed; //type: list of  uint16
+        ydk::YLeafList sats_remove_failed; //type: list of  uint16
+        ydk::YLeafList sats_transfer_aborted; //type: list of  uint16
+        ydk::YLeafList sats_activate_aborted; //type: list of  uint16
+        ydk::YLeafList sats_update_aborted; //type: list of  uint16
+        ydk::YLeafList sats_deactivate_aborted; //type: list of  uint16
+        ydk::YLeafList sats_remove_aborted; //type: list of  uint16
+        ydk::YLeafList sats_no_operation; //type: list of  uint16
+        ydk::YLeafList sats_completed; //type: list of  uint16
 
 }; // NvSatellite::InstallStatuses::InstallStatus
 
 
-class NvSatellite::SdacpRedundancies : public Entity
+class NvSatellite::SdacpRedundancies : public ydk::Entity
 {
     public:
         SdacpRedundancies();
@@ -180,11 +191,13 @@ class NvSatellite::SdacpRedundancies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SdacpRedundancy; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy
 
@@ -193,7 +206,7 @@ class NvSatellite::SdacpRedundancies : public Entity
 }; // NvSatellite::SdacpRedundancies
 
 
-class NvSatellite::SdacpRedundancies::SdacpRedundancy : public Entity
+class NvSatellite::SdacpRedundancies::SdacpRedundancy : public ydk::Entity
 {
     public:
         SdacpRedundancy();
@@ -201,22 +214,24 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf iccp_group; //type: uint32
-        YLeaf iccp_group_xr; //type: uint32
-        YLeaf protocol_state; //type: IcpeOpmSessStateEnum
-        YLeaf transport_state; //type: IcpeOpmTransportStateEnum
-        YLeaf authentication_state; //type: IcpeOpmAuthFsmStateEnum
-        YLeaf arbitration_state; //type: IcpeOpmArbitrationFsmStateEnum
-        YLeaf synchronization_state; //type: IcpeOpmSyncFsmStateEnum
-        YLeaf primacy; //type: IcpeOpmControllerEnum
-        YLeaf system_mac; //type: string
-        YLeaf isolated; //type: boolean
+        ydk::YLeaf iccp_group; //type: uint32
+        ydk::YLeaf iccp_group_xr; //type: uint32
+        ydk::YLeaf protocol_state; //type: IcpeOpmSessState
+        ydk::YLeaf transport_state; //type: IcpeOpmTransportState
+        ydk::YLeaf authentication_state; //type: IcpeOpmAuthFsmState
+        ydk::YLeaf arbitration_state; //type: IcpeOpmArbitrationFsmState
+        ydk::YLeaf synchronization_state; //type: IcpeOpmSyncFsmState
+        ydk::YLeaf primacy; //type: IcpeOpmController
+        ydk::YLeaf system_mac; //type: string
+        ydk::YLeaf isolated; //type: boolean
         class ProtocolStateTimestamp; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp
         class Channel; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel
 
@@ -226,7 +241,7 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy : public Entity
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy
 
 
-class NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp : public Entity
+class NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp : public ydk::Entity
 {
     public:
         ProtocolStateTimestamp();
@@ -234,19 +249,21 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp
 
 
-class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel : public Entity
+class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel : public ydk::Entity
 {
     public:
         Channel();
@@ -254,19 +271,21 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf channel_id; //type: uint32
-        YLeaf chan_state; //type: IcpeOpmChanFsmStateEnum
-        YLeaf resync_state; //type: IcpeOpmResyncFsmStateEnum
-        YLeaf control_messages_sent; //type: uint64
-        YLeaf normal_messages_sent; //type: uint64
-        YLeaf control_messages_received; //type: uint64
-        YLeaf normal_messages_received; //type: uint64
+        ydk::YLeaf channel_id; //type: uint32
+        ydk::YLeaf chan_state; //type: IcpeOpmChanFsmState
+        ydk::YLeaf resync_state; //type: IcpeOpmResyncFsmState
+        ydk::YLeaf control_messages_sent; //type: uint64
+        ydk::YLeaf normal_messages_sent; //type: uint64
+        ydk::YLeaf control_messages_received; //type: uint64
+        ydk::YLeaf normal_messages_received; //type: uint64
         class ChannelStateTimestamp; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp
         class ResyncStateTimestamp; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp
 
@@ -276,7 +295,7 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel : public Entity
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel
 
 
-class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp : public Entity
+class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp : public ydk::Entity
 {
     public:
         ChannelStateTimestamp();
@@ -284,19 +303,21 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTime
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp
 
 
-class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp : public Entity
+class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp : public ydk::Entity
 {
     public:
         ResyncStateTimestamp();
@@ -304,19 +325,21 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimes
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp
 
 
-class NvSatellite::InstallShows : public Entity
+class NvSatellite::InstallShows : public ydk::Entity
 {
     public:
         InstallShows();
@@ -324,11 +347,13 @@ class NvSatellite::InstallShows : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InstallShow; //type: NvSatellite::InstallShows::InstallShow
 
@@ -337,7 +362,7 @@ class NvSatellite::InstallShows : public Entity
 }; // NvSatellite::InstallShows
 
 
-class NvSatellite::InstallShows::InstallShow : public Entity
+class NvSatellite::InstallShows::InstallShow : public ydk::Entity
 {
     public:
         InstallShow();
@@ -345,39 +370,41 @@ class NvSatellite::InstallShows::InstallShow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf operation_id; //type: uint32
-        YLeaf operation_id_xr; //type: uint32
-        YLeaf satellite_range; //type: string
-        YLeaf operation_type; //type: uint16
-        YLeaf progress_percentage; //type: uint16
-        YLeaf start_time; //type: uint32
-        YLeaf end_time; //type: uint32
-        YLeaf ref_state; //type: IcpeInstallSatStateEnum
-        YLeafList sats_not_initiated; //type: list of  uint16
-        YLeafList sats_transferring; //type: list of  uint16
-        YLeafList sats_activating; //type: list of  uint16
-        YLeafList sats_updating; //type: list of  uint16
-        YLeafList sats_deactivating; //type: list of  uint16
-        YLeafList sats_removing; //type: list of  uint16
-        YLeafList sats_transfer_failed; //type: list of  uint16
-        YLeafList sats_activate_failed; //type: list of  uint16
-        YLeafList sats_update_failed; //type: list of  uint16
-        YLeafList sats_deactivate_failed; //type: list of  uint16
-        YLeafList sats_remove_failed; //type: list of  uint16
-        YLeafList sats_transfer_aborted; //type: list of  uint16
-        YLeafList sats_activate_aborted; //type: list of  uint16
-        YLeafList sats_update_aborted; //type: list of  uint16
-        YLeafList sats_deactivate_aborted; //type: list of  uint16
-        YLeafList sats_remove_aborted; //type: list of  uint16
-        YLeafList sats_no_operation; //type: list of  uint16
-        YLeafList sats_completed; //type: list of  uint16
-        YLeafList name_string; //type: list of  string
+        ydk::YLeaf operation_id; //type: uint32
+        ydk::YLeaf operation_id_xr; //type: uint32
+        ydk::YLeaf satellite_range; //type: string
+        ydk::YLeaf operation_type; //type: uint16
+        ydk::YLeaf progress_percentage; //type: uint16
+        ydk::YLeaf start_time; //type: uint32
+        ydk::YLeaf end_time; //type: uint32
+        ydk::YLeaf ref_state; //type: IcpeInstallSatState
+        ydk::YLeafList sats_not_initiated; //type: list of  uint16
+        ydk::YLeafList sats_transferring; //type: list of  uint16
+        ydk::YLeafList sats_activating; //type: list of  uint16
+        ydk::YLeafList sats_updating; //type: list of  uint16
+        ydk::YLeafList sats_deactivating; //type: list of  uint16
+        ydk::YLeafList sats_removing; //type: list of  uint16
+        ydk::YLeafList sats_transfer_failed; //type: list of  uint16
+        ydk::YLeafList sats_activate_failed; //type: list of  uint16
+        ydk::YLeafList sats_update_failed; //type: list of  uint16
+        ydk::YLeafList sats_deactivate_failed; //type: list of  uint16
+        ydk::YLeafList sats_remove_failed; //type: list of  uint16
+        ydk::YLeafList sats_transfer_aborted; //type: list of  uint16
+        ydk::YLeafList sats_activate_aborted; //type: list of  uint16
+        ydk::YLeafList sats_update_aborted; //type: list of  uint16
+        ydk::YLeafList sats_deactivate_aborted; //type: list of  uint16
+        ydk::YLeafList sats_remove_aborted; //type: list of  uint16
+        ydk::YLeafList sats_no_operation; //type: list of  uint16
+        ydk::YLeafList sats_completed; //type: list of  uint16
+        ydk::YLeafList name_string; //type: list of  string
         class Satellite; //type: NvSatellite::InstallShows::InstallShow::Satellite
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallShows::InstallShow::Satellite> > satellite;
@@ -385,7 +412,7 @@ class NvSatellite::InstallShows::InstallShow : public Entity
 }; // NvSatellite::InstallShows::InstallShow
 
 
-class NvSatellite::InstallShows::InstallShow::Satellite : public Entity
+class NvSatellite::InstallShows::InstallShow::Satellite : public ydk::Entity
 {
     public:
         Satellite();
@@ -393,24 +420,26 @@ class NvSatellite::InstallShows::InstallShow::Satellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_id; //type: uint16
-        YLeaf state; //type: IcpeInstallSatStateEnum
-        YLeaf percentage; //type: uint16
-        YLeaf retries; //type: uint16
-        YLeaf start_time; //type: uint32
-        YLeaf end_time; //type: uint32
-        YLeaf info; //type: string
+        ydk::YLeaf satellite_id; //type: uint16
+        ydk::YLeaf state; //type: IcpeInstallSatState
+        ydk::YLeaf percentage; //type: uint16
+        ydk::YLeaf retries; //type: uint16
+        ydk::YLeaf start_time; //type: uint32
+        ydk::YLeaf end_time; //type: uint32
+        ydk::YLeaf info; //type: string
 
 }; // NvSatellite::InstallShows::InstallShow::Satellite
 
 
-class NvSatellite::SatelliteStatuses : public Entity
+class NvSatellite::SatelliteStatuses : public ydk::Entity
 {
     public:
         SatelliteStatuses();
@@ -418,11 +447,13 @@ class NvSatellite::SatelliteStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SatelliteStatus; //type: NvSatellite::SatelliteStatuses::SatelliteStatus
 
@@ -431,7 +462,7 @@ class NvSatellite::SatelliteStatuses : public Entity
 }; // NvSatellite::SatelliteStatuses
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus : public ydk::Entity
 {
     public:
         SatelliteStatus();
@@ -439,49 +470,51 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_id; //type: uint32
-        YLeaf satellite_id_xr; //type: uint32
-        YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
-        YLeaf remote_version_present; //type: boolean
-        YLeaf type; //type: string
-        YLeaf ethernet_fabric_supported; //type: boolean
-        YLeaf optical_supported; //type: boolean
-        YLeaf ip_address; //type: string
-        YLeaf ip_address_present; //type: boolean
-        YLeaf ip_address_auto; //type: boolean
-        YLeaf ipv6_address; //type: string
-        YLeaf ipv6_address_present; //type: boolean
-        YLeaf vrf_name; //type: string
-        YLeaf vrfid; //type: uint32
-        YLeaf description; //type: string
-        YLeaf description_present; //type: boolean
-        YLeaf mac_address; //type: string
-        YLeaf mac_address_present; //type: boolean
-        YLeaf configured_serial_number; //type: string
-        YLeaf configured_serial_number_present; //type: boolean
-        YLeaf received_serial_number; //type: string
-        YLeaf received_serial_number_present; //type: boolean
-        YLeaf password; //type: string
-        YLeaf password_error; //type: string
-        YLeaf received_host_name; //type: string
-        YLeaf cfgd_timeout; //type: uint32
-        YLeaf timeout_warning; //type: uint32
-        YLeaf conflict_reason; //type: IcpeOperConflictEnum
-        YLeaf conflict_context; //type: string
-        YLeaf redundancy_iccp_group; //type: uint32
-        YLeaf recovery_delay_time_left; //type: uint16
-        YLeaf host_treating_as_active; //type: boolean
-        YLeaf satellite_treating_as_active; //type: boolean
-        YLeaf sdacp_session_state; //type: IcpeOperSdacpSessStateEnum
-        YLeaf sdacp_session_failure_reason; //type: IcpeGcoOperControlReasonEnum
-        YLeaf install_state; //type: IcpeOperInstallStateEnum
-        YLeafList remote_version; //type: list of  string
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf satellite_id_xr; //type: uint32
+        ydk::YLeaf version_check_state; //type: IcpeOperVerCheckState
+        ydk::YLeaf remote_version_present; //type: boolean
+        ydk::YLeaf type; //type: string
+        ydk::YLeaf ethernet_fabric_supported; //type: boolean
+        ydk::YLeaf optical_supported; //type: boolean
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf ip_address_present; //type: boolean
+        ydk::YLeaf ip_address_auto; //type: boolean
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf ipv6_address_present; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf vrfid; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf description_present; //type: boolean
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf mac_address_present; //type: boolean
+        ydk::YLeaf configured_serial_number; //type: string
+        ydk::YLeaf configured_serial_number_present; //type: boolean
+        ydk::YLeaf received_serial_number; //type: string
+        ydk::YLeaf received_serial_number_present; //type: boolean
+        ydk::YLeaf password; //type: string
+        ydk::YLeaf password_error; //type: string
+        ydk::YLeaf received_host_name; //type: string
+        ydk::YLeaf cfgd_timeout; //type: uint32
+        ydk::YLeaf timeout_warning; //type: uint32
+        ydk::YLeaf conflict_reason; //type: IcpeOperConflict
+        ydk::YLeaf conflict_context; //type: string
+        ydk::YLeaf redundancy_iccp_group; //type: uint32
+        ydk::YLeaf recovery_delay_time_left; //type: uint16
+        ydk::YLeaf host_treating_as_active; //type: boolean
+        ydk::YLeaf satellite_treating_as_active; //type: boolean
+        ydk::YLeaf sdacp_session_state; //type: IcpeOperSdacpSessState
+        ydk::YLeaf sdacp_session_failure_reason; //type: IcpeGcoOperControlReason
+        ydk::YLeaf install_state; //type: IcpeOperInstallState
+        ydk::YLeafList remote_version; //type: list of  string
         class CandidateFabricPorts; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
         class OpticalStatus; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus
         class RedundancyOutOfSyncTimestamp; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp
@@ -495,7 +528,7 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus : public Entity
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts : public ydk::Entity
 {
     public:
         CandidateFabricPorts();
@@ -503,15 +536,17 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf channel_up; //type: boolean
-        YLeaf out_of_sync; //type: boolean
-        YLeaf error_string; //type: string
+        ydk::YLeaf channel_up; //type: boolean
+        ydk::YLeaf out_of_sync; //type: boolean
+        ydk::YLeaf error_string; //type: string
         class ConfiguredPort; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort
         class CurrentPort; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort
 
@@ -521,7 +556,7 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts : pu
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort : public ydk::Entity
 {
     public:
         ConfiguredPort();
@@ -529,22 +564,24 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Con
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf port_type; //type: IcpeOperFabricPortEnum
-        YLeaf slot; //type: uint16
-        YLeaf subslot; //type: uint16
-        YLeaf port; //type: uint16
-        YLeaf valid; //type: boolean
+        ydk::YLeaf port_type; //type: IcpeOperFabricPort
+        ydk::YLeaf slot; //type: uint16
+        ydk::YLeaf subslot; //type: uint16
+        ydk::YLeaf port; //type: uint16
+        ydk::YLeaf valid; //type: boolean
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort : public ydk::Entity
 {
     public:
         CurrentPort();
@@ -552,23 +589,25 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Cur
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf port_type; //type: IcpeOperFabricPortEnum
-        YLeaf slot; //type: uint16
-        YLeaf subslot; //type: uint16
-        YLeaf port; //type: uint16
-        YLeaf permanent; //type: boolean
-        YLeaf requested; //type: boolean
+        ydk::YLeaf port_type; //type: IcpeOperFabricPort
+        ydk::YLeaf slot; //type: uint16
+        ydk::YLeaf subslot; //type: uint16
+        ydk::YLeaf port; //type: uint16
+        ydk::YLeaf permanent; //type: boolean
+        ydk::YLeaf requested; //type: boolean
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus : public ydk::Entity
 {
     public:
         OpticalStatus();
@@ -576,13 +615,15 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf chassis_sync_state; //type: IcpeOpticalSyncStateEnum
+        ydk::YLeaf chassis_sync_state; //type: IcpeOpticalSyncState
         class Application; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application> > application;
@@ -590,7 +631,7 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus : public En
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application : public ydk::Entity
 {
     public:
         Application();
@@ -598,19 +639,21 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Applicatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf sync_state; //type: IcpeOpticalSyncStateEnum
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf sync_state; //type: IcpeOpticalSyncState
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp : public ydk::Entity
 {
     public:
         RedundancyOutOfSyncTimestamp();
@@ -618,19 +661,21 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimest
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink : public ydk::Entity
 {
     public:
         ConfiguredLink();
@@ -638,24 +683,26 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
-        YLeaf ip_address; //type: string
-        YLeaf ip_address_auto; //type: boolean
-        YLeaf vrf_id_present; //type: boolean
-        YLeaf vrf_id; //type: uint32
-        YLeaf minimum_preferred_links; //type: uint32
-        YLeaf number_active_links; //type: uint32
-        YLeaf min_links_satisfied; //type: boolean
-        YLeaf minimum_required_links; //type: uint32
-        YLeaf required_min_links_satisfied; //type: boolean
-        YLeaf conflict_reason; //type: IcpeOperConflictEnum
-        YLeaf conflict_context; //type: string
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf ip_address_auto; //type: boolean
+        ydk::YLeaf vrf_id_present; //type: boolean
+        ydk::YLeaf vrf_id; //type: uint32
+        ydk::YLeaf minimum_preferred_links; //type: uint32
+        ydk::YLeaf number_active_links; //type: uint32
+        ydk::YLeaf min_links_satisfied; //type: boolean
+        ydk::YLeaf minimum_required_links; //type: uint32
+        ydk::YLeaf required_min_links_satisfied; //type: boolean
+        ydk::YLeaf conflict_reason; //type: IcpeOperConflict
+        ydk::YLeaf conflict_context; //type: string
         class PortRange; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange
         class DiscoveredLink; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink
 
@@ -665,7 +712,7 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink : public E
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange : public ydk::Entity
 {
     public:
         PortRange();
@@ -673,24 +720,26 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf slot; //type: uint32
-        YLeaf subslot; //type: uint32
-        YLeaf low_port; //type: uint32
-        YLeaf high_port; //type: uint32
-        YLeaf port_type; //type: IcpeOperPortEnum
-        YLeaf conflict_reason; //type: IcpeOperConflictEnum
-        YLeaf conflict_context; //type: string
+        ydk::YLeaf slot; //type: uint32
+        ydk::YLeaf subslot; //type: uint32
+        ydk::YLeaf low_port; //type: uint32
+        ydk::YLeaf high_port; //type: uint32
+        ydk::YLeaf port_type; //type: IcpeOperPort
+        ydk::YLeaf conflict_reason; //type: IcpeOperConflict
+        ydk::YLeaf conflict_context; //type: string
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange
 
 
-class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink : public Entity
+class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink : public ydk::Entity
 {
     public:
         DiscoveredLink();
@@ -698,21 +747,23 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Discovere
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
-        YLeaf state; //type: IcpeOperDiscdLinkStateEnum
-        YLeaf conflict_reason; //type: IcpeOperConflictEnum
-        YLeaf conflict_context; //type: string
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf state; //type: IcpeOperDiscdLinkState
+        ydk::YLeaf conflict_reason; //type: IcpeOperConflict
+        ydk::YLeaf conflict_context; //type: string
 
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink
 
 
-class NvSatellite::SatellitePriorities : public Entity
+class NvSatellite::SatellitePriorities : public ydk::Entity
 {
     public:
         SatellitePriorities();
@@ -720,11 +771,13 @@ class NvSatellite::SatellitePriorities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SatellitePriority; //type: NvSatellite::SatellitePriorities::SatellitePriority
 
@@ -733,7 +786,7 @@ class NvSatellite::SatellitePriorities : public Entity
 }; // NvSatellite::SatellitePriorities
 
 
-class NvSatellite::SatellitePriorities::SatellitePriority : public Entity
+class NvSatellite::SatellitePriorities::SatellitePriority : public ydk::Entity
 {
     public:
         SatellitePriority();
@@ -741,25 +794,27 @@ class NvSatellite::SatellitePriorities::SatellitePriority : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_id; //type: uint32
-        YLeaf satellite_id_xr; //type: uint32
-        YLeaf rgid; //type: uint32
-        YLeaf best_path_hops; //type: uint32
-        YLeaf configured_priority; //type: uint8
-        YLeaf host_priority; //type: uint64
-        YLeaf partner_priority; //type: uint64
-        YLeaf multichassis_redundancy; //type: IcpeOperMultichassisRedundancyEnum
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf satellite_id_xr; //type: uint32
+        ydk::YLeaf rgid; //type: uint32
+        ydk::YLeaf best_path_hops; //type: uint32
+        ydk::YLeaf configured_priority; //type: uint8
+        ydk::YLeaf host_priority; //type: uint64
+        ydk::YLeaf partner_priority; //type: uint64
+        ydk::YLeaf multichassis_redundancy; //type: IcpeOperMultichassisRedundancy
 
 }; // NvSatellite::SatellitePriorities::SatellitePriority
 
 
-class NvSatellite::SatelliteVersions : public Entity
+class NvSatellite::SatelliteVersions : public ydk::Entity
 {
     public:
         SatelliteVersions();
@@ -767,11 +822,13 @@ class NvSatellite::SatelliteVersions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SatelliteVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion
 
@@ -780,7 +837,7 @@ class NvSatellite::SatelliteVersions : public Entity
 }; // NvSatellite::SatelliteVersions
 
 
-class NvSatellite::SatelliteVersions::SatelliteVersion : public Entity
+class NvSatellite::SatelliteVersions::SatelliteVersion : public ydk::Entity
 {
     public:
         SatelliteVersion();
@@ -788,17 +845,19 @@ class NvSatellite::SatelliteVersions::SatelliteVersion : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_id; //type: uint32
-        YLeaf satellite_id_xr; //type: uint32
-        YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
-        YLeaf remote_version_present; //type: boolean
-        YLeafList remote_version; //type: list of  string
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf satellite_id_xr; //type: uint32
+        ydk::YLeaf version_check_state; //type: IcpeOperVerCheckState
+        ydk::YLeaf remote_version_present; //type: boolean
+        ydk::YLeafList remote_version; //type: list of  string
         class ActiveVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion
         class TransferredVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion
         class CommittedVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion
@@ -810,7 +869,7 @@ class NvSatellite::SatelliteVersions::SatelliteVersion : public Entity
 }; // NvSatellite::SatelliteVersions::SatelliteVersion
 
 
-class NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion : public Entity
+class NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion : public ydk::Entity
 {
     public:
         ActiveVersion();
@@ -818,20 +877,22 @@ class NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
-        YLeaf remote_version_present; //type: boolean
-        YLeafList remote_version; //type: list of  string
+        ydk::YLeaf version_check_state; //type: IcpeOperVerCheckState
+        ydk::YLeaf remote_version_present; //type: boolean
+        ydk::YLeafList remote_version; //type: list of  string
 
 }; // NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion
 
 
-class NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion : public Entity
+class NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion : public ydk::Entity
 {
     public:
         TransferredVersion();
@@ -839,20 +900,22 @@ class NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
-        YLeaf remote_version_present; //type: boolean
-        YLeafList remote_version; //type: list of  string
+        ydk::YLeaf version_check_state; //type: IcpeOperVerCheckState
+        ydk::YLeaf remote_version_present; //type: boolean
+        ydk::YLeafList remote_version; //type: list of  string
 
 }; // NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion
 
 
-class NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion : public Entity
+class NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion : public ydk::Entity
 {
     public:
         CommittedVersion();
@@ -860,20 +923,22 @@ class NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf version_check_state; //type: IcpeOperVerCheckStateEnum
-        YLeaf remote_version_present; //type: boolean
-        YLeafList remote_version; //type: list of  string
+        ydk::YLeaf version_check_state; //type: IcpeOperVerCheckState
+        ydk::YLeaf remote_version_present; //type: boolean
+        ydk::YLeafList remote_version; //type: list of  string
 
 }; // NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion
 
 
-class NvSatellite::SatelliteTopologies : public Entity
+class NvSatellite::SatelliteTopologies : public ydk::Entity
 {
     public:
         SatelliteTopologies();
@@ -881,11 +946,13 @@ class NvSatellite::SatelliteTopologies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SatelliteTopology; //type: NvSatellite::SatelliteTopologies::SatelliteTopology
 
@@ -894,7 +961,7 @@ class NvSatellite::SatelliteTopologies : public Entity
 }; // NvSatellite::SatelliteTopologies
 
 
-class NvSatellite::SatelliteTopologies::SatelliteTopology : public Entity
+class NvSatellite::SatelliteTopologies::SatelliteTopology : public ydk::Entity
 {
     public:
         SatelliteTopology();
@@ -902,18 +969,20 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_name_xr; //type: string
-        YLeaf interface_handle; //type: string
-        YLeaf redundancy_iccp_group; //type: uint32
-        YLeaf is_physical; //type: boolean
-        YLeaf ring_whole; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf redundancy_iccp_group; //type: uint32
+        ydk::YLeaf is_physical; //type: boolean
+        ydk::YLeaf ring_whole; //type: boolean
         class DiscoveredLink; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink
         class Satellite; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite
 
@@ -923,7 +992,7 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology : public Entity
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology
 
 
-class NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink : public Entity
+class NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink : public ydk::Entity
 {
     public:
         DiscoveredLink();
@@ -931,20 +1000,22 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_handle; //type: string
-        YLeaf discovery_running; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf discovery_running; //type: boolean
 
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink
 
 
-class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite : public Entity
+class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite : public ydk::Entity
 {
     public:
         Satellite();
@@ -952,23 +1023,25 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mac_address; //type: string
-        YLeaf configured; //type: boolean
-        YLeaf num_hops; //type: uint16
-        YLeaf type; //type: string
-        YLeaf satellite_id; //type: uint32
-        YLeaf received_serial_number; //type: string
-        YLeaf received_serial_number_present; //type: boolean
-        YLeaf vlan_id; //type: uint16
-        YLeaf display_name; //type: string
-        YLeaf conflict_reason; //type: IcpeOperConflictEnum
-        YLeaf conflict_context; //type: string
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf configured; //type: boolean
+        ydk::YLeaf num_hops; //type: uint16
+        ydk::YLeaf type; //type: string
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf received_serial_number; //type: string
+        ydk::YLeaf received_serial_number_present; //type: boolean
+        ydk::YLeaf vlan_id; //type: uint16
+        ydk::YLeaf display_name; //type: string
+        ydk::YLeaf conflict_reason; //type: IcpeOperConflict
+        ydk::YLeaf conflict_context; //type: string
         class FabricLink; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink> > fabric_link;
@@ -976,7 +1049,7 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite : public En
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite
 
 
-class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink : public Entity
+class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink : public ydk::Entity
 {
     public:
         FabricLink();
@@ -984,18 +1057,20 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf icl_id; //type: uint32
-        YLeaf interface_name; //type: string
-        YLeaf display_name; //type: string
-        YLeaf redundant; //type: boolean
-        YLeaf active; //type: boolean
-        YLeaf obsolete; //type: boolean
+        ydk::YLeaf icl_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf display_name; //type: string
+        ydk::YLeaf redundant; //type: boolean
+        ydk::YLeaf active; //type: boolean
+        ydk::YLeaf obsolete; //type: boolean
         class RemoteDevice; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice> > remote_device;
@@ -1003,7 +1078,7 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
 
-class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice : public Entity
+class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice : public ydk::Entity
 {
     public:
         RemoteDevice();
@@ -1011,24 +1086,26 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mac_address; //type: string
-        YLeaf source; //type: IcpeOperTopoRemoteSourceEnum
-        YLeaf remote_is_satellite; //type: boolean
-        YLeaf remote_is_local_host; //type: boolean
-        YLeaf icl_id; //type: uint32
-        YLeaf interface_handle; //type: string
-        YLeaf interface_name; //type: string
+        ydk::YLeaf mac_address; //type: string
+        ydk::YLeaf source; //type: IcpeOperTopoRemoteSource
+        ydk::YLeaf remote_is_satellite; //type: boolean
+        ydk::YLeaf remote_is_local_host; //type: boolean
+        ydk::YLeaf icl_id; //type: uint32
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf interface_name; //type: string
 
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice
 
 
-class NvSatellite::InstallProgresses : public Entity
+class NvSatellite::InstallProgresses : public ydk::Entity
 {
     public:
         InstallProgresses();
@@ -1036,11 +1113,13 @@ class NvSatellite::InstallProgresses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InstallProgress; //type: NvSatellite::InstallProgresses::InstallProgress
 
@@ -1049,7 +1128,7 @@ class NvSatellite::InstallProgresses : public Entity
 }; // NvSatellite::InstallProgresses
 
 
-class NvSatellite::InstallProgresses::InstallProgress : public Entity
+class NvSatellite::InstallProgresses::InstallProgress : public ydk::Entity
 {
     public:
         InstallProgress();
@@ -1057,20 +1136,22 @@ class NvSatellite::InstallProgresses::InstallProgress : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf progress_percentage; //type: uint32
-        YLeaf progress_percentage_xr; //type: uint16
-        YLeaf satellite_count; //type: uint32
+        ydk::YLeaf progress_percentage; //type: uint32
+        ydk::YLeaf progress_percentage_xr; //type: uint16
+        ydk::YLeaf satellite_count; //type: uint32
 
 }; // NvSatellite::InstallProgresses::InstallProgress
 
 
-class NvSatellite::ReloadStatuses : public Entity
+class NvSatellite::ReloadStatuses : public ydk::Entity
 {
     public:
         ReloadStatuses();
@@ -1078,11 +1159,13 @@ class NvSatellite::ReloadStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ReloadStatus; //type: NvSatellite::ReloadStatuses::ReloadStatus
 
@@ -1091,7 +1174,7 @@ class NvSatellite::ReloadStatuses : public Entity
 }; // NvSatellite::ReloadStatuses
 
 
-class NvSatellite::ReloadStatuses::ReloadStatus : public Entity
+class NvSatellite::ReloadStatuses::ReloadStatus : public ydk::Entity
 {
     public:
         ReloadStatus();
@@ -1099,23 +1182,25 @@ class NvSatellite::ReloadStatuses::ReloadStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_range; //type: string
-        YLeaf satellite_range_xr; //type: string
-        YLeafList sats_not_initiated; //type: list of  uint16
-        YLeafList sats_reloading; //type: list of  uint16
-        YLeafList sats_reloaded; //type: list of  uint16
-        YLeafList sats_reload_failed; //type: list of  uint16
+        ydk::YLeaf satellite_range; //type: string
+        ydk::YLeaf satellite_range_xr; //type: string
+        ydk::YLeafList sats_not_initiated; //type: list of  uint16
+        ydk::YLeafList sats_reloading; //type: list of  uint16
+        ydk::YLeafList sats_reloaded; //type: list of  uint16
+        ydk::YLeafList sats_reload_failed; //type: list of  uint16
 
 }; // NvSatellite::ReloadStatuses::ReloadStatus
 
 
-class NvSatellite::Install : public Entity
+class NvSatellite::Install : public ydk::Entity
 {
     public:
         Install();
@@ -1123,11 +1208,13 @@ class NvSatellite::Install : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SatelliteSoftwareVersions; //type: NvSatellite::Install::SatelliteSoftwareVersions
 
@@ -1136,7 +1223,7 @@ class NvSatellite::Install : public Entity
 }; // NvSatellite::Install
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions : public ydk::Entity
 {
     public:
         SatelliteSoftwareVersions();
@@ -1144,11 +1231,13 @@ class NvSatellite::Install::SatelliteSoftwareVersions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SatelliteSoftwareVersion; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion
 
@@ -1157,7 +1246,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions : public Entity
 }; // NvSatellite::Install::SatelliteSoftwareVersions
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion : public ydk::Entity
 {
     public:
         SatelliteSoftwareVersion();
@@ -1165,15 +1254,17 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_id; //type: uint32
-        YLeaf satellite_id_xr; //type: uint32
-        YLeaf package_support; //type: IcpeInstallPkgSuppEnum
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf satellite_id_xr; //type: uint32
+        ydk::YLeaf package_support; //type: IcpeInstallPkgSupp
         class InstallPackageInfo; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo
 
         std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo> install_package_info;
@@ -1181,7 +1272,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion 
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo : public ydk::Entity
 {
     public:
         InstallPackageInfo();
@@ -1189,11 +1280,13 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ActivePackages; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages
         class InactivePackages; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages
@@ -1206,7 +1299,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages : public ydk::Entity
 {
     public:
         ActivePackages();
@@ -1214,11 +1307,13 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package
 
@@ -1227,7 +1322,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1235,20 +1330,22 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf version; //type: string
-        YLeaf is_base_image; //type: boolean
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf is_base_image; //type: boolean
 
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages : public ydk::Entity
 {
     public:
         InactivePackages();
@@ -1256,11 +1353,13 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package
 
@@ -1269,7 +1368,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1277,20 +1376,22 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf version; //type: string
-        YLeaf is_base_image; //type: boolean
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf is_base_image; //type: boolean
 
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages : public ydk::Entity
 {
     public:
         CommittedPackages();
@@ -1298,11 +1399,13 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package
 
@@ -1311,7 +1414,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages
 
 
-class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package : public Entity
+class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package : public ydk::Entity
 {
     public:
         Package();
@@ -1319,20 +1422,22 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf version; //type: string
-        YLeaf is_base_image; //type: boolean
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf is_base_image; //type: boolean
 
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package
 
 
-class NvSatellite::InstallOpStatuses : public Entity
+class NvSatellite::InstallOpStatuses : public ydk::Entity
 {
     public:
         InstallOpStatuses();
@@ -1340,11 +1445,13 @@ class NvSatellite::InstallOpStatuses : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InstallOpStatus; //type: NvSatellite::InstallOpStatuses::InstallOpStatus
 
@@ -1353,7 +1460,7 @@ class NvSatellite::InstallOpStatuses : public Entity
 }; // NvSatellite::InstallOpStatuses
 
 
-class NvSatellite::InstallOpStatuses::InstallOpStatus : public Entity
+class NvSatellite::InstallOpStatuses::InstallOpStatus : public ydk::Entity
 {
     public:
         InstallOpStatus();
@@ -1361,38 +1468,40 @@ class NvSatellite::InstallOpStatuses::InstallOpStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf operation_id; //type: uint32
-        YLeaf operation_id_xr; //type: uint32
-        YLeaf satellite_range; //type: string
-        YLeafList sats_not_initiated; //type: list of  uint16
-        YLeafList sats_transferring; //type: list of  uint16
-        YLeafList sats_activating; //type: list of  uint16
-        YLeafList sats_updating; //type: list of  uint16
-        YLeafList sats_deactivating; //type: list of  uint16
-        YLeafList sats_removing; //type: list of  uint16
-        YLeafList sats_transfer_failed; //type: list of  uint16
-        YLeafList sats_activate_failed; //type: list of  uint16
-        YLeafList sats_update_failed; //type: list of  uint16
-        YLeafList sats_deactivate_failed; //type: list of  uint16
-        YLeafList sats_remove_failed; //type: list of  uint16
-        YLeafList sats_transfer_aborted; //type: list of  uint16
-        YLeafList sats_activate_aborted; //type: list of  uint16
-        YLeafList sats_update_aborted; //type: list of  uint16
-        YLeafList sats_deactivate_aborted; //type: list of  uint16
-        YLeafList sats_remove_aborted; //type: list of  uint16
-        YLeafList sats_no_operation; //type: list of  uint16
-        YLeafList sats_completed; //type: list of  uint16
+        ydk::YLeaf operation_id; //type: uint32
+        ydk::YLeaf operation_id_xr; //type: uint32
+        ydk::YLeaf satellite_range; //type: string
+        ydk::YLeafList sats_not_initiated; //type: list of  uint16
+        ydk::YLeafList sats_transferring; //type: list of  uint16
+        ydk::YLeafList sats_activating; //type: list of  uint16
+        ydk::YLeafList sats_updating; //type: list of  uint16
+        ydk::YLeafList sats_deactivating; //type: list of  uint16
+        ydk::YLeafList sats_removing; //type: list of  uint16
+        ydk::YLeafList sats_transfer_failed; //type: list of  uint16
+        ydk::YLeafList sats_activate_failed; //type: list of  uint16
+        ydk::YLeafList sats_update_failed; //type: list of  uint16
+        ydk::YLeafList sats_deactivate_failed; //type: list of  uint16
+        ydk::YLeafList sats_remove_failed; //type: list of  uint16
+        ydk::YLeafList sats_transfer_aborted; //type: list of  uint16
+        ydk::YLeafList sats_activate_aborted; //type: list of  uint16
+        ydk::YLeafList sats_update_aborted; //type: list of  uint16
+        ydk::YLeafList sats_deactivate_aborted; //type: list of  uint16
+        ydk::YLeafList sats_remove_aborted; //type: list of  uint16
+        ydk::YLeafList sats_no_operation; //type: list of  uint16
+        ydk::YLeafList sats_completed; //type: list of  uint16
 
 }; // NvSatellite::InstallOpStatuses::InstallOpStatus
 
 
-class NvSatellite::SatelliteProperties : public Entity
+class NvSatellite::SatelliteProperties : public ydk::Entity
 {
     public:
         SatelliteProperties();
@@ -1400,11 +1509,13 @@ class NvSatellite::SatelliteProperties : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IdRanges; //type: NvSatellite::SatelliteProperties::IdRanges
 
@@ -1413,7 +1524,7 @@ class NvSatellite::SatelliteProperties : public Entity
 }; // NvSatellite::SatelliteProperties
 
 
-class NvSatellite::SatelliteProperties::IdRanges : public Entity
+class NvSatellite::SatelliteProperties::IdRanges : public ydk::Entity
 {
     public:
         IdRanges();
@@ -1421,11 +1532,13 @@ class NvSatellite::SatelliteProperties::IdRanges : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IdRange; //type: NvSatellite::SatelliteProperties::IdRanges::IdRange
 
@@ -1434,7 +1547,7 @@ class NvSatellite::SatelliteProperties::IdRanges : public Entity
 }; // NvSatellite::SatelliteProperties::IdRanges
 
 
-class NvSatellite::SatelliteProperties::IdRanges::IdRange : public Entity
+class NvSatellite::SatelliteProperties::IdRanges::IdRange : public ydk::Entity
 {
     public:
         IdRange();
@@ -1442,20 +1555,22 @@ class NvSatellite::SatelliteProperties::IdRanges::IdRange : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sat_id_range; //type: string
-        YLeaf min; //type: uint32
-        YLeaf max; //type: uint32
+        ydk::YLeaf sat_id_range; //type: string
+        ydk::YLeaf min; //type: uint32
+        ydk::YLeaf max; //type: uint32
 
 }; // NvSatellite::SatelliteProperties::IdRanges::IdRange
 
 
-class NvSatellite::SdacpDiscovery2S : public Entity
+class NvSatellite::SdacpDiscovery2S : public ydk::Entity
 {
     public:
         SdacpDiscovery2S();
@@ -1463,11 +1578,13 @@ class NvSatellite::SdacpDiscovery2S : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SdacpDiscovery2; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2
 
@@ -1476,7 +1593,7 @@ class NvSatellite::SdacpDiscovery2S : public Entity
 }; // NvSatellite::SdacpDiscovery2S
 
 
-class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2 : public Entity
+class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2 : public ydk::Entity
 {
     public:
         SdacpDiscovery2();
@@ -1484,14 +1601,16 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_name_xr; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name_xr; //type: string
         class Interface; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface
         class Satellite; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite
 
@@ -1501,7 +1620,7 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2 : public Entity
 }; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2
 
 
-class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface : public Entity
+class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1509,19 +1628,21 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_status; //type: DpmProtoStateEnum
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_status; //type: DpmProtoState
 
 }; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface
 
 
-class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite : public Entity
+class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite : public ydk::Entity
 {
     public:
         Satellite();
@@ -1529,17 +1650,19 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_id; //type: uint32
-        YLeaf satellite_status; //type: DpmProtoStateEnum
-        YLeaf conflict_reason; //type: uint32
-        YLeaf satellite_ip_address; //type: string
-        YLeaf host_ip_address; //type: string
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf satellite_status; //type: DpmProtoState
+        ydk::YLeaf conflict_reason; //type: uint32
+        ydk::YLeaf satellite_ip_address; //type: string
+        ydk::YLeaf host_ip_address; //type: string
         class Interface; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface> > interface;
@@ -1547,7 +1670,7 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite : public Entity
 }; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite
 
 
-class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface : public Entity
+class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1555,26 +1678,28 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_handle; //type: string
-        YLeaf satellite_status; //type: DpmProtoStateEnum
-        YLeaf conflict_reason; //type: uint32
-        YLeaf satellite_chassis_vendor; //type: string
-        YLeaf satellite_interface_id; //type: uint32
-        YLeaf satellite_interface_mac; //type: string
-        YLeaf satellite_chassis_mac; //type: string
-        YLeaf satellite_serial_id; //type: string
-        YLeaf satellite_module_vendor; //type: string
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf satellite_status; //type: DpmProtoState
+        ydk::YLeaf conflict_reason; //type: uint32
+        ydk::YLeaf satellite_chassis_vendor; //type: string
+        ydk::YLeaf satellite_interface_id; //type: uint32
+        ydk::YLeaf satellite_interface_mac; //type: string
+        ydk::YLeaf satellite_chassis_mac; //type: string
+        ydk::YLeaf satellite_serial_id; //type: string
+        ydk::YLeaf satellite_module_vendor; //type: string
 
 }; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface
 
 
-class NvSatellite::IcpeDpms : public Entity
+class NvSatellite::IcpeDpms : public ydk::Entity
 {
     public:
         IcpeDpms();
@@ -1582,11 +1707,13 @@ class NvSatellite::IcpeDpms : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class IcpeDpm; //type: NvSatellite::IcpeDpms::IcpeDpm
 
@@ -1595,7 +1722,7 @@ class NvSatellite::IcpeDpms : public Entity
 }; // NvSatellite::IcpeDpms
 
 
-class NvSatellite::IcpeDpms::IcpeDpm : public Entity
+class NvSatellite::IcpeDpms::IcpeDpm : public ydk::Entity
 {
     public:
         IcpeDpm();
@@ -1603,27 +1730,29 @@ class NvSatellite::IcpeDpms::IcpeDpm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf discovery_interface; //type: string
-        YLeaf discovery_interface_xr; //type: string
-        YLeaf discovery_interface_handle; //type: string
-        YLeaf discovery_interface_status; //type: DpmProtoStateEnum
-        YLeaf ident_packets_received; //type: uint64
-        YLeaf ready_packets_received; //type: uint64
-        YLeaf los_packets_received; //type: uint64
-        YLeaf invalid_packets_received; //type: uint64
-        YLeaf configuration_packets_sent; //type: uint64
-        YLeaf ack_packets_sent; //type: uint64
-        YLeaf reject_packets_sent; //type: uint64
-        YLeaf probe_packets_sent; //type: uint64
-        YLeaf host_ack_packets_received; //type: uint64
-        YLeaf host_ack_packets_sent; //type: uint64
-        YLeaf secs_since_pkts_cleaned; //type: uint64
+        ydk::YLeaf discovery_interface; //type: string
+        ydk::YLeaf discovery_interface_xr; //type: string
+        ydk::YLeaf discovery_interface_handle; //type: string
+        ydk::YLeaf discovery_interface_status; //type: DpmProtoState
+        ydk::YLeaf ident_packets_received; //type: uint64
+        ydk::YLeaf ready_packets_received; //type: uint64
+        ydk::YLeaf los_packets_received; //type: uint64
+        ydk::YLeaf invalid_packets_received; //type: uint64
+        ydk::YLeaf configuration_packets_sent; //type: uint64
+        ydk::YLeaf ack_packets_sent; //type: uint64
+        ydk::YLeaf reject_packets_sent; //type: uint64
+        ydk::YLeaf probe_packets_sent; //type: uint64
+        ydk::YLeaf host_ack_packets_received; //type: uint64
+        ydk::YLeaf host_ack_packets_sent; //type: uint64
+        ydk::YLeaf secs_since_pkts_cleaned; //type: uint64
         class Satellite; //type: NvSatellite::IcpeDpms::IcpeDpm::Satellite
         class RemoteHost; //type: NvSatellite::IcpeDpms::IcpeDpm::RemoteHost
 
@@ -1633,7 +1762,7 @@ class NvSatellite::IcpeDpms::IcpeDpm : public Entity
 }; // NvSatellite::IcpeDpms::IcpeDpm
 
 
-class NvSatellite::IcpeDpms::IcpeDpm::Satellite : public Entity
+class NvSatellite::IcpeDpms::IcpeDpm::Satellite : public ydk::Entity
 {
     public:
         Satellite();
@@ -1641,50 +1770,52 @@ class NvSatellite::IcpeDpms::IcpeDpm::Satellite : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_id; //type: uint32
-        YLeaf satellite_interface_id; //type: uint32
-        YLeaf satellite_interface_mac; //type: string
-        YLeaf satellite_ip_address; //type: string
-        YLeaf host_ip_address; //type: string
-        YLeaf satellite_chassis_type; //type: string
-        YLeaf satellite_chassis_vendor; //type: string
-        YLeaf satellite_chassis_mac; //type: string
-        YLeaf satellite_serial_id; //type: string
-        YLeaf satellite_module_type; //type: string
-        YLeaf satellite_module_vendor; //type: string
-        YLeaf satellite_module_mac; //type: string
-        YLeaf conflict_reason; //type: uint32
-        YLeaf received_sys_mac; //type: string
-        YLeaf host_chassis_type; //type: string
-        YLeaf host_chassis_vendor; //type: string
-        YLeaf host_chassis_mac; //type: string
-        YLeaf discovery_protocol_state; //type: DpmProtoStateEnum
-        YLeaf last_imdr_state; //type: uint32
-        YLeaf current_timeout; //type: uint32
-        YLeaf is_queued_for_efd; //type: boolean
-        YLeaf is_queued_for_oc; //type: boolean
-        YLeaf ifmgr_state; //type: boolean
-        YLeaf legacy; //type: boolean
-        YLeaf deleting; //type: boolean
-        YLeaf ident_packets_received; //type: uint64
-        YLeaf ready_packets_received; //type: uint64
-        YLeaf los_packets_received; //type: uint64
-        YLeaf invalid_packets_received; //type: uint64
-        YLeaf configuration_packets_sent; //type: uint64
-        YLeaf ack_packets_sent; //type: uint64
-        YLeaf reject_packets_sent; //type: uint64
-        YLeaf secs_since_pkts_cleaned; //type: uint64
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf satellite_interface_id; //type: uint32
+        ydk::YLeaf satellite_interface_mac; //type: string
+        ydk::YLeaf satellite_ip_address; //type: string
+        ydk::YLeaf host_ip_address; //type: string
+        ydk::YLeaf satellite_chassis_type; //type: string
+        ydk::YLeaf satellite_chassis_vendor; //type: string
+        ydk::YLeaf satellite_chassis_mac; //type: string
+        ydk::YLeaf satellite_serial_id; //type: string
+        ydk::YLeaf satellite_module_type; //type: string
+        ydk::YLeaf satellite_module_vendor; //type: string
+        ydk::YLeaf satellite_module_mac; //type: string
+        ydk::YLeaf conflict_reason; //type: uint32
+        ydk::YLeaf received_sys_mac; //type: string
+        ydk::YLeaf host_chassis_type; //type: string
+        ydk::YLeaf host_chassis_vendor; //type: string
+        ydk::YLeaf host_chassis_mac; //type: string
+        ydk::YLeaf discovery_protocol_state; //type: DpmProtoState
+        ydk::YLeaf last_imdr_state; //type: uint32
+        ydk::YLeaf current_timeout; //type: uint32
+        ydk::YLeaf is_queued_for_efd; //type: boolean
+        ydk::YLeaf is_queued_for_oc; //type: boolean
+        ydk::YLeaf ifmgr_state; //type: boolean
+        ydk::YLeaf legacy; //type: boolean
+        ydk::YLeaf deleting; //type: boolean
+        ydk::YLeaf ident_packets_received; //type: uint64
+        ydk::YLeaf ready_packets_received; //type: uint64
+        ydk::YLeaf los_packets_received; //type: uint64
+        ydk::YLeaf invalid_packets_received; //type: uint64
+        ydk::YLeaf configuration_packets_sent; //type: uint64
+        ydk::YLeaf ack_packets_sent; //type: uint64
+        ydk::YLeaf reject_packets_sent; //type: uint64
+        ydk::YLeaf secs_since_pkts_cleaned; //type: uint64
 
 }; // NvSatellite::IcpeDpms::IcpeDpm::Satellite
 
 
-class NvSatellite::IcpeDpms::IcpeDpm::RemoteHost : public Entity
+class NvSatellite::IcpeDpms::IcpeDpm::RemoteHost : public ydk::Entity
 {
     public:
         RemoteHost();
@@ -1692,25 +1823,27 @@ class NvSatellite::IcpeDpms::IcpeDpm::RemoteHost : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf host_chassis_mac; //type: string
-        YLeaf host_interface_mac; //type: string
-        YLeaf discovery_protocol_state; //type: DpmProtoHostStateEnum
-        YLeaf route_length; //type: uint32
-        YLeaf current_timeout; //type: uint32
-        YLeaf host_ack_packets_received; //type: uint64
-        YLeaf host_ack_packets_sent; //type: uint64
-        YLeaf secs_since_pkts_cleaned; //type: uint64
+        ydk::YLeaf host_chassis_mac; //type: string
+        ydk::YLeaf host_interface_mac; //type: string
+        ydk::YLeaf discovery_protocol_state; //type: DpmProtoHostState
+        ydk::YLeaf route_length; //type: uint32
+        ydk::YLeaf current_timeout; //type: uint32
+        ydk::YLeaf host_ack_packets_received; //type: uint64
+        ydk::YLeaf host_ack_packets_sent; //type: uint64
+        ydk::YLeaf secs_since_pkts_cleaned; //type: uint64
 
 }; // NvSatellite::IcpeDpms::IcpeDpm::RemoteHost
 
 
-class NvSatellite::SdacpControls : public Entity
+class NvSatellite::SdacpControls : public ydk::Entity
 {
     public:
         SdacpControls();
@@ -1718,11 +1851,13 @@ class NvSatellite::SdacpControls : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SdacpControl; //type: NvSatellite::SdacpControls::SdacpControl
 
@@ -1731,7 +1866,7 @@ class NvSatellite::SdacpControls : public Entity
 }; // NvSatellite::SdacpControls
 
 
-class NvSatellite::SdacpControls::SdacpControl : public Entity
+class NvSatellite::SdacpControls::SdacpControl : public ydk::Entity
 {
     public:
         SdacpControl();
@@ -1739,19 +1874,21 @@ class NvSatellite::SdacpControls::SdacpControl : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf satellite_id; //type: uint32
-        YLeaf satellite_id_xr; //type: uint32
-        YLeaf satellite_ip_address; //type: string
-        YLeaf ip_address_auto; //type: boolean
-        YLeaf vrf_name; //type: string
-        YLeaf control_protocol_state; //type: IcpeCpmControlFsmStateEnum
-        YLeaf transport_error; //type: uint32
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf satellite_id_xr; //type: uint32
+        ydk::YLeaf satellite_ip_address; //type: string
+        ydk::YLeaf ip_address_auto; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf control_protocol_state; //type: IcpeCpmControlFsmState
+        ydk::YLeaf transport_error; //type: uint32
         class ProtocolStateTimestamp; //type: NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp
         class TransportErrorTimestamp; //type: NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp
         class Channel; //type: NvSatellite::SdacpControls::SdacpControl::Channel
@@ -1763,7 +1900,7 @@ class NvSatellite::SdacpControls::SdacpControl : public Entity
 }; // NvSatellite::SdacpControls::SdacpControl
 
 
-class NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp : public Entity
+class NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp : public ydk::Entity
 {
     public:
         ProtocolStateTimestamp();
@@ -1771,19 +1908,21 @@ class NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp
 
 
-class NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp : public Entity
+class NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp : public ydk::Entity
 {
     public:
         TransportErrorTimestamp();
@@ -1791,19 +1930,21 @@ class NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp
 
 
-class NvSatellite::SdacpControls::SdacpControl::Channel : public Entity
+class NvSatellite::SdacpControls::SdacpControl::Channel : public ydk::Entity
 {
     public:
         Channel();
@@ -1811,23 +1952,25 @@ class NvSatellite::SdacpControls::SdacpControl::Channel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf channel_id; //type: uint16
-        YLeaf resync_state; //type: IcpeCpmChannelResyncStateEnum
-        YLeaf channel_state; //type: IcpeCpmChanFsmStateEnum
-        YLeaf control_messages_sent; //type: uint64
-        YLeaf normal_messages_sent; //type: uint64
-        YLeaf control_messages_received; //type: uint64
-        YLeaf normal_messages_received; //type: uint64
-        YLeaf control_messages_dropped; //type: uint64
-        YLeaf normal_messages_dropped; //type: uint64
-        YLeaf secs_since_last_cleared; //type: uint64
-        YLeaf version; //type: uint16
+        ydk::YLeaf channel_id; //type: uint16
+        ydk::YLeaf resync_state; //type: IcpeCpmChannelResyncState
+        ydk::YLeaf channel_state; //type: IcpeCpmChanFsmState
+        ydk::YLeaf control_messages_sent; //type: uint64
+        ydk::YLeaf normal_messages_sent; //type: uint64
+        ydk::YLeaf control_messages_received; //type: uint64
+        ydk::YLeaf normal_messages_received; //type: uint64
+        ydk::YLeaf control_messages_dropped; //type: uint64
+        ydk::YLeaf normal_messages_dropped; //type: uint64
+        ydk::YLeaf secs_since_last_cleared; //type: uint64
+        ydk::YLeaf version; //type: uint16
         class Capabilities; //type: NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities
         class ResyncStateTimestamp; //type: NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp
         class ChannelStateTimestamp; //type: NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp
@@ -1839,7 +1982,7 @@ class NvSatellite::SdacpControls::SdacpControl::Channel : public Entity
 }; // NvSatellite::SdacpControls::SdacpControl::Channel
 
 
-class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities : public Entity
+class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities : public ydk::Entity
 {
     public:
         Capabilities();
@@ -1847,11 +1990,13 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TlVs; //type: NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs
 
@@ -1860,7 +2005,7 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities : public E
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities
 
 
-class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs : public Entity
+class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs : public ydk::Entity
 {
     public:
         TlVs();
@@ -1868,20 +2013,22 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: uint32
-        YLeaf debug; //type: string
-        YLeafList value_; //type: list of  uint8
+        ydk::YLeaf type; //type: uint32
+        ydk::YLeaf debug; //type: string
+        ydk::YLeafList value_; //type: list of  uint8
 
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs
 
 
-class NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp : public Entity
+class NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp : public ydk::Entity
 {
     public:
         ResyncStateTimestamp();
@@ -1889,19 +2036,21 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp
 
 
-class NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp : public Entity
+class NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp : public ydk::Entity
 {
     public:
         ChannelStateTimestamp();
@@ -1909,281 +2058,283 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf seconds; //type: uint32
-        YLeaf nanoseconds; //type: uint32
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp
 
-class IcpeOpmSyncFsmStateEnum : public Enum
+class IcpeOpmChanFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_opm_sync_fsm_state_split_brain;
-        static const Enum::YLeaf icpe_opm_sync_fsm_state_waiting;
-        static const Enum::YLeaf icpe_opm_sync_fsm_state_whole_brain;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_down;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_closed;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opening;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opened;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_open;
 
 };
 
-class IcpeOperSdacpSessStateEnum : public Enum
+class IcpeInstallSatState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_sdacp_sess_state_not_created;
-        static const Enum::YLeaf icpe_oper_sdacp_sess_state_created;
-        static const Enum::YLeaf icpe_oper_sdacp_sess_state_authentication_not_ok;
-        static const Enum::YLeaf icpe_oper_sdacp_sess_state_authentication_ok;
-        static const Enum::YLeaf icpe_oper_sdacp_sess_state_version_not_ok;
-        static const Enum::YLeaf icpe_oper_sdacp_sess_state_up;
-        static const Enum::YLeaf icpe_oper_sdacp_sess_state_issu;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_unknown;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_not_initiat_ed;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_transferring;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_activating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_updating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_deactivating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_removing;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_success;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_failure;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_multiple_ops;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_aborted;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_protocol_version;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_pkg_not_present;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_no_image;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_no_such_file;
 
 };
 
-class IcpeOpmTransportStateEnum : public Enum
+class IcpeOpmResyncFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_opm_transport_state_disconnected;
-        static const Enum::YLeaf icpe_opm_transport_state_iccp_unavailable;
-        static const Enum::YLeaf icpe_opm_transport_state_no_member_present;
-        static const Enum::YLeaf icpe_opm_transport_state_member_down;
-        static const Enum::YLeaf icpe_opm_transport_state_member_not_reachable;
-        static const Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect;
-        static const Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect_response;
-        static const Enum::YLeaf icpe_opm_transport_state_connected;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_not_open;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_stable;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_in_resync;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_queued;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_resync_req;
 
 };
 
-class IcpeOpmAuthFsmStateEnum : public Enum
+class IcpeOpmSyncFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_opm_auth_fsm_state_unauth;
-        static const Enum::YLeaf icpe_opm_auth_fsm_state_waiting;
-        static const Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_auth;
-        static const Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_reply;
-        static const Enum::YLeaf icpe_opm_auth_fsm_state_authed;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_split_brain;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_whole_brain;
 
 };
 
-class IcpeOpmControllerEnum : public Enum
+class IcpeInstallPkgSupp : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_opm_controller_unknown;
-        static const Enum::YLeaf icpe_opm_controller_primary;
-        static const Enum::YLeaf icpe_opm_controller_secondary;
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_unknown;
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_not_supported;
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_supported;
 
 };
 
-class IcpeOpmResyncFsmStateEnum : public Enum
+class IcpeOperDiscdLinkState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_opm_resync_fsm_state_not_open;
-        static const Enum::YLeaf icpe_opm_resync_fsm_state_stable;
-        static const Enum::YLeaf icpe_opm_resync_fsm_state_in_resync;
-        static const Enum::YLeaf icpe_opm_resync_fsm_state_queued;
-        static const Enum::YLeaf icpe_opm_resync_fsm_state_resync_req;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_stopped;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_probing;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_configuring;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_ready;
 
 };
 
-class IcpeOpmChanFsmStateEnum : public Enum
+class IcpeOperPort : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_opm_chan_fsm_state_down;
-        static const Enum::YLeaf icpe_opm_chan_fsm_state_closed;
-        static const Enum::YLeaf icpe_opm_chan_fsm_state_opening;
-        static const Enum::YLeaf icpe_opm_chan_fsm_state_opened;
-        static const Enum::YLeaf icpe_opm_chan_fsm_state_open;
+        static const ydk::Enum::YLeaf icpe_oper_port_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_port_gigabit_ethernet;
+        static const ydk::Enum::YLeaf icpe_oper_port_ten_gig_e;
 
 };
 
-class IcpeOpmSessStateEnum : public Enum
+class IcpeOpmArbitrationFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_opm_sess_state_disconnected;
-        static const Enum::YLeaf icpe_opm_sess_state_connecting;
-        static const Enum::YLeaf icpe_opm_sess_state_authenticating;
-        static const Enum::YLeaf icpe_opm_sess_state_arbitrating;
-        static const Enum::YLeaf icpe_opm_sess_state_waiting_for_resyncs;
-        static const Enum::YLeaf icpe_opm_sess_state_connected;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_unarbitrated;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrating;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrated;
 
 };
 
-class IcpeOperInstallStateEnum : public Enum
+class IcpeOperMultichassisRedundancy : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_install_state_stable;
-        static const Enum::YLeaf icpe_oper_install_state_transferring;
-        static const Enum::YLeaf icpe_oper_install_state_transferred;
-        static const Enum::YLeaf icpe_oper_install_state_installing;
-        static const Enum::YLeaf icpe_oper_install_state_in_progress;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_not_redundant;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_active;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_standby;
 
 };
 
-class IcpeOperPortEnum : public Enum
+class IcpeOperInstallState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_port_unknown;
-        static const Enum::YLeaf icpe_oper_port_gigabit_ethernet;
-        static const Enum::YLeaf icpe_oper_port_ten_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_stable;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_transferring;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_transferred;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_installing;
+        static const ydk::Enum::YLeaf icpe_oper_install_state_in_progress;
 
 };
 
-class IcpeOperFabricPortEnum : public Enum
+class IcpeOpmSessState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_fabric_port_unknown;
-        static const Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_gig_e;
-        static const Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_ten_gig_e;
-        static const Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_hundred_gig_e;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_disconnected;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_connecting;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_authenticating;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_arbitrating;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_waiting_for_resyncs;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_connected;
 
 };
 
-class IcpeInstallPkgSuppEnum : public Enum
+class IcpeOperConflict : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_install_pkg_supp_unknown;
-        static const Enum::YLeaf icpe_install_pkg_supp_not_supported;
-        static const Enum::YLeaf icpe_install_pkg_supp_supported;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_not_calculated;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_no_conflict;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_not_configured;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_no_type;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_id_invalid;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_no_ipv4_addr;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_conflicting_ipv4_addr;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_no_configured_links;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_no_discovered_links;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_invalid_ports;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_ports_overlap;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_waiting_for_ipv4_addr;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_waiting_for_vrf;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_different_ipv4_addr;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_different_vrf;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_link_ipv4_overlap;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_waiting_for_ident;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_multiple_ids;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_multiple_satellites;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_ident_rejected;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_interface_down;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_auto_ip_unavailable;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_auto_ip_link_manual_ip;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_link_auto_ip_satellite_manual_ip;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_serial_num_mismatch;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_not_identified;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_unsupported_type;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_partition_unsupported;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_no_serial_number;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_conflicting_serial_number;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_link_waiting_for_arp;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_host_pe_isolated_split_brain;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_fabric_iccp_group_inconsistent;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_invalid_iccp_group;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_port_rejected;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_satellite_icl_not_supported;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_multiple_serial_number;
+        static const ydk::Enum::YLeaf icpe_oper_conflict_multiple_mac_address;
 
 };
 
-class IcpeGcoOperControlReasonEnum : public Enum
+class IcpeOpmTransportState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_gco_oper_control_reason_unknown_error;
-        static const Enum::YLeaf icpe_gco_oper_control_reason_wrong_chassis_type;
-        static const Enum::YLeaf icpe_gco_oper_control_reason_wrong_chassis_serial;
-        static const Enum::YLeaf icpe_gco_oper_control_reason_needs_to_upgrade;
-        static const Enum::YLeaf icpe_gco_oper_control_reason_none;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_disconnected;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_iccp_unavailable;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_no_member_present;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_down;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_not_reachable;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect_response;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_connected;
 
 };
 
-class IcpeInstallSatStateEnum : public Enum
+class IcpeOperVerCheckState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_install_sat_state_unknown;
-        static const Enum::YLeaf icpe_install_sat_state_not_initiat_ed;
-        static const Enum::YLeaf icpe_install_sat_state_transferring;
-        static const Enum::YLeaf icpe_install_sat_state_activating;
-        static const Enum::YLeaf icpe_install_sat_state_updating;
-        static const Enum::YLeaf icpe_install_sat_state_deactivating;
-        static const Enum::YLeaf icpe_install_sat_state_removing;
-        static const Enum::YLeaf icpe_install_sat_state_success;
-        static const Enum::YLeaf icpe_install_sat_state_failure;
-        static const Enum::YLeaf icpe_install_sat_state_multiple_ops;
-        static const Enum::YLeaf icpe_install_sat_state_aborted;
-        static const Enum::YLeaf icpe_install_sat_state_protocol_version;
-        static const Enum::YLeaf icpe_install_sat_state_pkg_not_present;
-        static const Enum::YLeaf icpe_install_sat_state_no_image;
-        static const Enum::YLeaf icpe_install_sat_state_no_such_file;
+        static const ydk::Enum::YLeaf icpe_oper_ver_check_state_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_ver_check_state_not_compatible;
+        static const ydk::Enum::YLeaf icpe_oper_ver_check_state_current_version;
+        static const ydk::Enum::YLeaf icpe_oper_ver_check_state_compatible_older;
+        static const ydk::Enum::YLeaf icpe_oper_ver_check_state_compatible_newer;
 
 };
 
-class IcpeOpmArbitrationFsmStateEnum : public Enum
+class IcpeOperTopoRemoteSource : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_opm_arbitration_fsm_state_unarbitrated;
-        static const Enum::YLeaf icpe_opm_arbitration_fsm_state_waiting;
-        static const Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrating;
-        static const Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrated;
+        static const ydk::Enum::YLeaf icpe_oper_topo_remote_source_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_topo_remote_source_remote_icl_id;
+        static const ydk::Enum::YLeaf icpe_oper_topo_remote_source_remote_satellite_mac;
+        static const ydk::Enum::YLeaf icpe_oper_topo_remote_source_remote_host_mac;
+        static const ydk::Enum::YLeaf icpe_oper_topo_remote_source_direct_satellite;
+        static const ydk::Enum::YLeaf icpe_oper_topo_remote_source_direct_host;
 
 };
 
-class IcpeOperConflictEnum : public Enum
+class IcpeOpticalSyncState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_conflict_not_calculated;
-        static const Enum::YLeaf icpe_oper_conflict_no_conflict;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_not_configured;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_no_type;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_id_invalid;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_no_ipv4_addr;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_conflicting_ipv4_addr;
-        static const Enum::YLeaf icpe_oper_conflict_no_configured_links;
-        static const Enum::YLeaf icpe_oper_conflict_no_discovered_links;
-        static const Enum::YLeaf icpe_oper_conflict_invalid_ports;
-        static const Enum::YLeaf icpe_oper_conflict_ports_overlap;
-        static const Enum::YLeaf icpe_oper_conflict_waiting_for_ipv4_addr;
-        static const Enum::YLeaf icpe_oper_conflict_waiting_for_vrf;
-        static const Enum::YLeaf icpe_oper_conflict_different_ipv4_addr;
-        static const Enum::YLeaf icpe_oper_conflict_different_vrf;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_link_ipv4_overlap;
-        static const Enum::YLeaf icpe_oper_conflict_waiting_for_ident;
-        static const Enum::YLeaf icpe_oper_conflict_multiple_ids;
-        static const Enum::YLeaf icpe_oper_conflict_multiple_satellites;
-        static const Enum::YLeaf icpe_oper_conflict_ident_rejected;
-        static const Enum::YLeaf icpe_oper_conflict_interface_down;
-        static const Enum::YLeaf icpe_oper_conflict_auto_ip_unavailable;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_auto_ip_link_manual_ip;
-        static const Enum::YLeaf icpe_oper_conflict_link_auto_ip_satellite_manual_ip;
-        static const Enum::YLeaf icpe_oper_conflict_serial_num_mismatch;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_not_identified;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_unsupported_type;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_partition_unsupported;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_no_serial_number;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_conflicting_serial_number;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_link_waiting_for_arp;
-        static const Enum::YLeaf icpe_oper_conflict_host_pe_isolated_split_brain;
-        static const Enum::YLeaf icpe_oper_conflict_fabric_iccp_group_inconsistent;
-        static const Enum::YLeaf icpe_oper_conflict_invalid_iccp_group;
-        static const Enum::YLeaf icpe_oper_conflict_port_rejected;
-        static const Enum::YLeaf icpe_oper_conflict_satellite_icl_not_supported;
-        static const Enum::YLeaf icpe_oper_conflict_multiple_serial_number;
-        static const Enum::YLeaf icpe_oper_conflict_multiple_mac_address;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_unknown;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_syncing;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_synced;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_not_connected;
 
 };
 
-class IcpeOperVerCheckStateEnum : public Enum
+class IcpeOpmAuthFsmState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_ver_check_state_unknown;
-        static const Enum::YLeaf icpe_oper_ver_check_state_not_compatible;
-        static const Enum::YLeaf icpe_oper_ver_check_state_current_version;
-        static const Enum::YLeaf icpe_oper_ver_check_state_compatible_older;
-        static const Enum::YLeaf icpe_oper_ver_check_state_compatible_newer;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_unauth;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_auth;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_reply;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_authed;
 
 };
 
-class IcpeOperMultichassisRedundancyEnum : public Enum
+class IcpeOperSdacpSessState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_multi_chassis_redundancy_not_redundant;
-        static const Enum::YLeaf icpe_oper_multi_chassis_redundancy_active;
-        static const Enum::YLeaf icpe_oper_multi_chassis_redundancy_standby;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_not_created;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_created;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_authentication_not_ok;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_authentication_ok;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_version_not_ok;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_up;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_issu;
 
 };
 
-class IcpeOperDiscdLinkStateEnum : public Enum
+class IcpeOperFabricPort : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_discd_link_state_stopped;
-        static const Enum::YLeaf icpe_oper_discd_link_state_probing;
-        static const Enum::YLeaf icpe_oper_discd_link_state_configuring;
-        static const Enum::YLeaf icpe_oper_discd_link_state_ready;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_ten_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_hundred_gig_e;
 
 };
 
-class IcpeOperTopoRemoteSourceEnum : public Enum
+class IcpeOpmController : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_oper_topo_remote_source_unknown;
-        static const Enum::YLeaf icpe_oper_topo_remote_source_remote_icl_id;
-        static const Enum::YLeaf icpe_oper_topo_remote_source_remote_satellite_mac;
-        static const Enum::YLeaf icpe_oper_topo_remote_source_remote_host_mac;
-        static const Enum::YLeaf icpe_oper_topo_remote_source_direct_satellite;
-        static const Enum::YLeaf icpe_oper_topo_remote_source_direct_host;
+        static const ydk::Enum::YLeaf icpe_opm_controller_unknown;
+        static const ydk::Enum::YLeaf icpe_opm_controller_primary;
+        static const ydk::Enum::YLeaf icpe_opm_controller_secondary;
 
 };
 
-class IcpeOpticalSyncStateEnum : public Enum
+class IcpeGcoOperControlReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf icpe_optical_sync_state_unknown;
-        static const Enum::YLeaf icpe_optical_sync_state_syncing;
-        static const Enum::YLeaf icpe_optical_sync_state_synced;
-        static const Enum::YLeaf icpe_optical_sync_state_not_connected;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_unknown_error;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_wrong_chassis_type;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_wrong_chassis_serial;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_needs_to_upgrade;
+        static const ydk::Enum::YLeaf icpe_gco_oper_control_reason_none;
 
 };
 

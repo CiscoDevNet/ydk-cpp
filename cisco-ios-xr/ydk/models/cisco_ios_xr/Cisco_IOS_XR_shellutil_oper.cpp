@@ -6,15 +6,17 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_shellutil_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_shellutil_oper {
 
 SystemTime::SystemTime()
     :
-    clock(std::make_shared<SystemTime::Clock>())
+    clock_(std::make_shared<SystemTime::Clock_>())
 	,uptime(std::make_shared<SystemTime::Uptime>())
 {
-    clock->parent = this;
+    clock_->parent = this;
 
     uptime->parent = this;
 
@@ -27,14 +29,14 @@ SystemTime::~SystemTime()
 
 bool SystemTime::has_data() const
 {
-    return (clock !=  nullptr && clock->has_data())
+    return (clock_ !=  nullptr && clock_->has_data())
 	|| (uptime !=  nullptr && uptime->has_data());
 }
 
 bool SystemTime::has_operation() const
 {
-    return is_set(operation)
-	|| (clock !=  nullptr && clock->has_operation())
+    return is_set(yfilter)
+	|| (clock_ !=  nullptr && clock_->has_operation())
 	|| (uptime !=  nullptr && uptime->has_operation());
 }
 
@@ -69,11 +71,11 @@ std::shared_ptr<Entity> SystemTime::get_child_by_name(const std::string & child_
 {
     if(child_yang_name == "clock")
     {
-        if(clock == nullptr)
+        if(clock_ == nullptr)
         {
-            clock = std::make_shared<SystemTime::Clock>();
+            clock_ = std::make_shared<SystemTime::Clock_>();
         }
-        return clock;
+        return clock_;
     }
 
     if(child_yang_name == "uptime")
@@ -91,9 +93,9 @@ std::shared_ptr<Entity> SystemTime::get_child_by_name(const std::string & child_
 std::map<std::string, std::shared_ptr<Entity>> SystemTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(clock != nullptr)
+    if(clock_ != nullptr)
     {
-        children["clock"] = clock;
+        children["clock"] = clock_;
     }
 
     if(uptime != nullptr)
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> SystemTime::get_children() const
     return children;
 }
 
-void SystemTime::set_value(const std::string & value_path, std::string value)
+void SystemTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SystemTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -128,7 +134,19 @@ augment_capabilities_function SystemTime::get_augment_capabilities_function() co
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-SystemTime::Clock::Clock()
+std::map<std::pair<std::string, std::string>, std::string> SystemTime::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SystemTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "clock" || name == "uptime")
+        return true;
+    return false;
+}
+
+SystemTime::Clock_::Clock_()
     :
     day{YType::uint8, "day"},
     hour{YType::uint8, "hour"},
@@ -144,11 +162,11 @@ SystemTime::Clock::Clock()
     yang_name = "clock"; yang_parent_name = "system-time";
 }
 
-SystemTime::Clock::~Clock()
+SystemTime::Clock_::~Clock_()
 {
 }
 
-bool SystemTime::Clock::has_data() const
+bool SystemTime::Clock_::has_data() const
 {
     return day.is_set
 	|| hour.is_set
@@ -162,22 +180,22 @@ bool SystemTime::Clock::has_data() const
 	|| year.is_set;
 }
 
-bool SystemTime::Clock::has_operation() const
+bool SystemTime::Clock_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(day.operation)
-	|| is_set(hour.operation)
-	|| is_set(millisecond.operation)
-	|| is_set(minute.operation)
-	|| is_set(month.operation)
-	|| is_set(second.operation)
-	|| is_set(time_source.operation)
-	|| is_set(time_zone.operation)
-	|| is_set(wday.operation)
-	|| is_set(year.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hour.yfilter)
+	|| ydk::is_set(millisecond.yfilter)
+	|| ydk::is_set(minute.yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(second.yfilter)
+	|| ydk::is_set(time_source.yfilter)
+	|| ydk::is_set(time_zone.yfilter)
+	|| ydk::is_set(wday.yfilter)
+	|| ydk::is_set(year.yfilter);
 }
 
-std::string SystemTime::Clock::get_segment_path() const
+std::string SystemTime::Clock_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock";
@@ -186,7 +204,7 @@ std::string SystemTime::Clock::get_segment_path() const
 
 }
 
-const EntityPath SystemTime::Clock::get_entity_path(Entity* ancestor) const
+const EntityPath SystemTime::Clock_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -200,16 +218,16 @@ const EntityPath SystemTime::Clock::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (day.is_set || is_set(day.operation)) leaf_name_data.push_back(day.get_name_leafdata());
-    if (hour.is_set || is_set(hour.operation)) leaf_name_data.push_back(hour.get_name_leafdata());
-    if (millisecond.is_set || is_set(millisecond.operation)) leaf_name_data.push_back(millisecond.get_name_leafdata());
-    if (minute.is_set || is_set(minute.operation)) leaf_name_data.push_back(minute.get_name_leafdata());
-    if (month.is_set || is_set(month.operation)) leaf_name_data.push_back(month.get_name_leafdata());
-    if (second.is_set || is_set(second.operation)) leaf_name_data.push_back(second.get_name_leafdata());
-    if (time_source.is_set || is_set(time_source.operation)) leaf_name_data.push_back(time_source.get_name_leafdata());
-    if (time_zone.is_set || is_set(time_zone.operation)) leaf_name_data.push_back(time_zone.get_name_leafdata());
-    if (wday.is_set || is_set(wday.operation)) leaf_name_data.push_back(wday.get_name_leafdata());
-    if (year.is_set || is_set(year.operation)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hour.is_set || is_set(hour.yfilter)) leaf_name_data.push_back(hour.get_name_leafdata());
+    if (millisecond.is_set || is_set(millisecond.yfilter)) leaf_name_data.push_back(millisecond.get_name_leafdata());
+    if (minute.is_set || is_set(minute.yfilter)) leaf_name_data.push_back(minute.get_name_leafdata());
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (second.is_set || is_set(second.yfilter)) leaf_name_data.push_back(second.get_name_leafdata());
+    if (time_source.is_set || is_set(time_source.yfilter)) leaf_name_data.push_back(time_source.get_name_leafdata());
+    if (time_zone.is_set || is_set(time_zone.yfilter)) leaf_name_data.push_back(time_zone.get_name_leafdata());
+    if (wday.is_set || is_set(wday.yfilter)) leaf_name_data.push_back(wday.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -217,59 +235,130 @@ const EntityPath SystemTime::Clock::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SystemTime::Clock::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SystemTime::Clock_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SystemTime::Clock::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SystemTime::Clock_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SystemTime::Clock::set_value(const std::string & value_path, std::string value)
+void SystemTime::Clock_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "day")
     {
         day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hour")
     {
         hour = value;
+        hour.value_namespace = name_space;
+        hour.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "millisecond")
     {
         millisecond = value;
+        millisecond.value_namespace = name_space;
+        millisecond.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minute")
     {
         minute = value;
+        minute.value_namespace = name_space;
+        minute.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "month")
     {
         month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second")
     {
         second = value;
+        second.value_namespace = name_space;
+        second.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-source")
     {
         time_source = value;
+        time_source.value_namespace = name_space;
+        time_source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-zone")
     {
         time_zone = value;
+        time_zone.value_namespace = name_space;
+        time_zone.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wday")
     {
         wday = value;
+        wday.value_namespace = name_space;
+        wday.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "year")
     {
         year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SystemTime::Clock_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hour")
+    {
+        hour.yfilter = yfilter;
+    }
+    if(value_path == "millisecond")
+    {
+        millisecond.yfilter = yfilter;
+    }
+    if(value_path == "minute")
+    {
+        minute.yfilter = yfilter;
+    }
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "second")
+    {
+        second.yfilter = yfilter;
+    }
+    if(value_path == "time-source")
+    {
+        time_source.yfilter = yfilter;
+    }
+    if(value_path == "time-zone")
+    {
+        time_zone.yfilter = yfilter;
+    }
+    if(value_path == "wday")
+    {
+        wday.yfilter = yfilter;
+    }
+    if(value_path == "year")
+    {
+        year.yfilter = yfilter;
+    }
+}
+
+bool SystemTime::Clock_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hour" || name == "millisecond" || name == "minute" || name == "month" || name == "second" || name == "time-source" || name == "time-zone" || name == "wday" || name == "year")
+        return true;
+    return false;
 }
 
 SystemTime::Uptime::Uptime()
@@ -292,9 +381,9 @@ bool SystemTime::Uptime::has_data() const
 
 bool SystemTime::Uptime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(host_name.operation)
-	|| is_set(uptime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(host_name.yfilter)
+	|| ydk::is_set(uptime.yfilter);
 }
 
 std::string SystemTime::Uptime::get_segment_path() const
@@ -320,8 +409,8 @@ const EntityPath SystemTime::Uptime::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (host_name.is_set || is_set(host_name.operation)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (uptime.is_set || is_set(uptime.operation)) leaf_name_data.push_back(uptime.get_name_leafdata());
+    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
+    if (uptime.is_set || is_set(uptime.yfilter)) leaf_name_data.push_back(uptime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -340,23 +429,46 @@ std::map<std::string, std::shared_ptr<Entity>> SystemTime::Uptime::get_children(
     return children;
 }
 
-void SystemTime::Uptime::set_value(const std::string & value_path, std::string value)
+void SystemTime::Uptime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "host-name")
     {
         host_name = value;
+        host_name.value_namespace = name_space;
+        host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "uptime")
     {
         uptime = value;
+        uptime.value_namespace = name_space;
+        uptime.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf TimeSourceEnum::error {0, "error"};
-const Enum::YLeaf TimeSourceEnum::none {1, "none"};
-const Enum::YLeaf TimeSourceEnum::ntp {2, "ntp"};
-const Enum::YLeaf TimeSourceEnum::manual {3, "manual"};
-const Enum::YLeaf TimeSourceEnum::calendar {4, "calendar"};
+void SystemTime::Uptime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "host-name")
+    {
+        host_name.yfilter = yfilter;
+    }
+    if(value_path == "uptime")
+    {
+        uptime.yfilter = yfilter;
+    }
+}
+
+bool SystemTime::Uptime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host-name" || name == "uptime")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf TimeSource::error {0, "error"};
+const Enum::YLeaf TimeSource::none {1, "none"};
+const Enum::YLeaf TimeSource::ntp {2, "ntp"};
+const Enum::YLeaf TimeSource::manual {3, "manual"};
+const Enum::YLeaf TimeSource::calendar {4, "calendar"};
 
 
 }

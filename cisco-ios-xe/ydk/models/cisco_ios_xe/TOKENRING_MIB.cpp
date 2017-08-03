@@ -6,65 +6,67 @@
 #include "generated_entity_lookup.hpp"
 #include "TOKENRING_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace TOKENRING_MIB {
 
-Dot5Chipsettitms380Identity::Dot5Chipsettitms380Identity()
-     : Identity("TOKENRING-MIB:dot5ChipSetTItms380")
+Dot5Testinsertfunc::Dot5Testinsertfunc()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5TestInsertFunc")
 {
 }
 
-Dot5Chipsettitms380Identity::~Dot5Chipsettitms380Identity()
+Dot5Testinsertfunc::~Dot5Testinsertfunc()
 {
 }
 
-Dot5Chipsettitms380C16Identity::Dot5Chipsettitms380C16Identity()
-     : Identity("TOKENRING-MIB:dot5ChipSetTItms380c16")
+Dot5Testfullduplexloopback::Dot5Testfullduplexloopback()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5TestFullDuplexLoopBack")
 {
 }
 
-Dot5Chipsettitms380C16Identity::~Dot5Chipsettitms380C16Identity()
+Dot5Testfullduplexloopback::~Dot5Testfullduplexloopback()
 {
 }
 
-Dot5Chipsetibm16Identity::Dot5Chipsetibm16Identity()
-     : Identity("TOKENRING-MIB:dot5ChipSetIBM16")
+Dot5Chipsettitms380::Dot5Chipsettitms380()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5ChipSetTItms380")
 {
 }
 
-Dot5Chipsetibm16Identity::~Dot5Chipsetibm16Identity()
+Dot5Chipsettitms380::~Dot5Chipsettitms380()
 {
 }
 
-Dot5TestinsertfuncIdentity::Dot5TestinsertfuncIdentity()
-     : Identity("TOKENRING-MIB:dot5TestInsertFunc")
+Dot5Chipsettitms380C16::Dot5Chipsettitms380C16()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5ChipSetTItms380c16")
 {
 }
 
-Dot5TestinsertfuncIdentity::~Dot5TestinsertfuncIdentity()
+Dot5Chipsettitms380C16::~Dot5Chipsettitms380C16()
 {
 }
 
-Dot5TestfullduplexloopbackIdentity::Dot5TestfullduplexloopbackIdentity()
-     : Identity("TOKENRING-MIB:dot5TestFullDuplexLoopBack")
+Dot5Chipsetibm16::Dot5Chipsetibm16()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:TOKENRING-MIB", "TOKENRING-MIB", "TOKENRING-MIB:dot5ChipSetIBM16")
 {
 }
 
-Dot5TestfullduplexloopbackIdentity::~Dot5TestfullduplexloopbackIdentity()
+Dot5Chipsetibm16::~Dot5Chipsetibm16()
 {
 }
 
 TokenringMib::TokenringMib()
     :
-    dot5statstable_(std::make_shared<TokenringMib::Dot5Statstable>())
-	,dot5table_(std::make_shared<TokenringMib::Dot5Table>())
-	,dot5timertable_(std::make_shared<TokenringMib::Dot5Timertable>())
+    dot5statstable(std::make_shared<TokenringMib::Dot5Statstable>())
+	,dot5table(std::make_shared<TokenringMib::Dot5Table>())
+	,dot5timertable(std::make_shared<TokenringMib::Dot5Timertable>())
 {
-    dot5statstable_->parent = this;
+    dot5statstable->parent = this;
 
-    dot5table_->parent = this;
+    dot5table->parent = this;
 
-    dot5timertable_->parent = this;
+    dot5timertable->parent = this;
 
     yang_name = "TOKENRING-MIB"; yang_parent_name = "TOKENRING-MIB";
 }
@@ -75,17 +77,17 @@ TokenringMib::~TokenringMib()
 
 bool TokenringMib::has_data() const
 {
-    return (dot5statstable_ !=  nullptr && dot5statstable_->has_data())
-	|| (dot5table_ !=  nullptr && dot5table_->has_data())
-	|| (dot5timertable_ !=  nullptr && dot5timertable_->has_data());
+    return (dot5statstable !=  nullptr && dot5statstable->has_data())
+	|| (dot5table !=  nullptr && dot5table->has_data())
+	|| (dot5timertable !=  nullptr && dot5timertable->has_data());
 }
 
 bool TokenringMib::has_operation() const
 {
-    return is_set(operation)
-	|| (dot5statstable_ !=  nullptr && dot5statstable_->has_operation())
-	|| (dot5table_ !=  nullptr && dot5table_->has_operation())
-	|| (dot5timertable_ !=  nullptr && dot5timertable_->has_operation());
+    return is_set(yfilter)
+	|| (dot5statstable !=  nullptr && dot5statstable->has_operation())
+	|| (dot5table !=  nullptr && dot5table->has_operation())
+	|| (dot5timertable !=  nullptr && dot5timertable->has_operation());
 }
 
 std::string TokenringMib::get_segment_path() const
@@ -119,29 +121,29 @@ std::shared_ptr<Entity> TokenringMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "dot5StatsTable")
     {
-        if(dot5statstable_ == nullptr)
+        if(dot5statstable == nullptr)
         {
-            dot5statstable_ = std::make_shared<TokenringMib::Dot5Statstable>();
+            dot5statstable = std::make_shared<TokenringMib::Dot5Statstable>();
         }
-        return dot5statstable_;
+        return dot5statstable;
     }
 
     if(child_yang_name == "dot5Table")
     {
-        if(dot5table_ == nullptr)
+        if(dot5table == nullptr)
         {
-            dot5table_ = std::make_shared<TokenringMib::Dot5Table>();
+            dot5table = std::make_shared<TokenringMib::Dot5Table>();
         }
-        return dot5table_;
+        return dot5table;
     }
 
     if(child_yang_name == "dot5TimerTable")
     {
-        if(dot5timertable_ == nullptr)
+        if(dot5timertable == nullptr)
         {
-            dot5timertable_ = std::make_shared<TokenringMib::Dot5Timertable>();
+            dot5timertable = std::make_shared<TokenringMib::Dot5Timertable>();
         }
-        return dot5timertable_;
+        return dot5timertable;
     }
 
     return nullptr;
@@ -150,25 +152,29 @@ std::shared_ptr<Entity> TokenringMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> TokenringMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(dot5statstable_ != nullptr)
+    if(dot5statstable != nullptr)
     {
-        children["dot5StatsTable"] = dot5statstable_;
+        children["dot5StatsTable"] = dot5statstable;
     }
 
-    if(dot5table_ != nullptr)
+    if(dot5table != nullptr)
     {
-        children["dot5Table"] = dot5table_;
+        children["dot5Table"] = dot5table;
     }
 
-    if(dot5timertable_ != nullptr)
+    if(dot5timertable != nullptr)
     {
-        children["dot5TimerTable"] = dot5timertable_;
+        children["dot5TimerTable"] = dot5timertable;
     }
 
     return children;
 }
 
-void TokenringMib::set_value(const std::string & value_path, std::string value)
+void TokenringMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void TokenringMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -192,6 +198,18 @@ augment_capabilities_function TokenringMib::get_augment_capabilities_function() 
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> TokenringMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool TokenringMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot5StatsTable" || name == "dot5Table" || name == "dot5TimerTable")
+        return true;
+    return false;
+}
+
 TokenringMib::Dot5Table::Dot5Table()
 {
     yang_name = "dot5Table"; yang_parent_name = "TOKENRING-MIB";
@@ -203,9 +221,9 @@ TokenringMib::Dot5Table::~Dot5Table()
 
 bool TokenringMib::Dot5Table::has_data() const
 {
-    for (std::size_t index=0; index<dot5entry_.size(); index++)
+    for (std::size_t index=0; index<dot5entry.size(); index++)
     {
-        if(dot5entry_[index]->has_data())
+        if(dot5entry[index]->has_data())
             return true;
     }
     return false;
@@ -213,12 +231,12 @@ bool TokenringMib::Dot5Table::has_data() const
 
 bool TokenringMib::Dot5Table::has_operation() const
 {
-    for (std::size_t index=0; index<dot5entry_.size(); index++)
+    for (std::size_t index=0; index<dot5entry.size(); index++)
     {
-        if(dot5entry_[index]->has_operation())
+        if(dot5entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TokenringMib::Dot5Table::get_segment_path() const
@@ -255,7 +273,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Table::get_child_by_name(const std::st
 {
     if(child_yang_name == "dot5Entry")
     {
-        for(auto const & c : dot5entry_)
+        for(auto const & c : dot5entry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -265,7 +283,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Table::get_child_by_name(const std::st
         }
         auto c = std::make_shared<TokenringMib::Dot5Table::Dot5Entry>();
         c->parent = this;
-        dot5entry_.push_back(c);
+        dot5entry.push_back(c);
         return c;
     }
 
@@ -275,7 +293,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Table::get_child_by_name(const std::st
 std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot5entry_)
+    for (auto const & c : dot5entry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -283,8 +301,19 @@ std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Table::get_chil
     return children;
 }
 
-void TokenringMib::Dot5Table::set_value(const std::string & value_path, std::string value)
+void TokenringMib::Dot5Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TokenringMib::Dot5Table::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TokenringMib::Dot5Table::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot5Entry")
+        return true;
+    return false;
 }
 
 TokenringMib::Dot5Table::Dot5Entry::Dot5Entry()
@@ -323,17 +352,17 @@ bool TokenringMib::Dot5Table::Dot5Entry::has_data() const
 
 bool TokenringMib::Dot5Table::Dot5Entry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot5ifindex.operation)
-	|| is_set(dot5actmonparticipate.operation)
-	|| is_set(dot5commands.operation)
-	|| is_set(dot5functional.operation)
-	|| is_set(dot5lastbeaconsent.operation)
-	|| is_set(dot5ringopenstatus.operation)
-	|| is_set(dot5ringspeed.operation)
-	|| is_set(dot5ringstate.operation)
-	|| is_set(dot5ringstatus.operation)
-	|| is_set(dot5upstream.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dot5ifindex.yfilter)
+	|| ydk::is_set(dot5actmonparticipate.yfilter)
+	|| ydk::is_set(dot5commands.yfilter)
+	|| ydk::is_set(dot5functional.yfilter)
+	|| ydk::is_set(dot5lastbeaconsent.yfilter)
+	|| ydk::is_set(dot5ringopenstatus.yfilter)
+	|| ydk::is_set(dot5ringspeed.yfilter)
+	|| ydk::is_set(dot5ringstate.yfilter)
+	|| ydk::is_set(dot5ringstatus.yfilter)
+	|| ydk::is_set(dot5upstream.yfilter);
 }
 
 std::string TokenringMib::Dot5Table::Dot5Entry::get_segment_path() const
@@ -359,16 +388,16 @@ const EntityPath TokenringMib::Dot5Table::Dot5Entry::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot5ifindex.is_set || is_set(dot5ifindex.operation)) leaf_name_data.push_back(dot5ifindex.get_name_leafdata());
-    if (dot5actmonparticipate.is_set || is_set(dot5actmonparticipate.operation)) leaf_name_data.push_back(dot5actmonparticipate.get_name_leafdata());
-    if (dot5commands.is_set || is_set(dot5commands.operation)) leaf_name_data.push_back(dot5commands.get_name_leafdata());
-    if (dot5functional.is_set || is_set(dot5functional.operation)) leaf_name_data.push_back(dot5functional.get_name_leafdata());
-    if (dot5lastbeaconsent.is_set || is_set(dot5lastbeaconsent.operation)) leaf_name_data.push_back(dot5lastbeaconsent.get_name_leafdata());
-    if (dot5ringopenstatus.is_set || is_set(dot5ringopenstatus.operation)) leaf_name_data.push_back(dot5ringopenstatus.get_name_leafdata());
-    if (dot5ringspeed.is_set || is_set(dot5ringspeed.operation)) leaf_name_data.push_back(dot5ringspeed.get_name_leafdata());
-    if (dot5ringstate.is_set || is_set(dot5ringstate.operation)) leaf_name_data.push_back(dot5ringstate.get_name_leafdata());
-    if (dot5ringstatus.is_set || is_set(dot5ringstatus.operation)) leaf_name_data.push_back(dot5ringstatus.get_name_leafdata());
-    if (dot5upstream.is_set || is_set(dot5upstream.operation)) leaf_name_data.push_back(dot5upstream.get_name_leafdata());
+    if (dot5ifindex.is_set || is_set(dot5ifindex.yfilter)) leaf_name_data.push_back(dot5ifindex.get_name_leafdata());
+    if (dot5actmonparticipate.is_set || is_set(dot5actmonparticipate.yfilter)) leaf_name_data.push_back(dot5actmonparticipate.get_name_leafdata());
+    if (dot5commands.is_set || is_set(dot5commands.yfilter)) leaf_name_data.push_back(dot5commands.get_name_leafdata());
+    if (dot5functional.is_set || is_set(dot5functional.yfilter)) leaf_name_data.push_back(dot5functional.get_name_leafdata());
+    if (dot5lastbeaconsent.is_set || is_set(dot5lastbeaconsent.yfilter)) leaf_name_data.push_back(dot5lastbeaconsent.get_name_leafdata());
+    if (dot5ringopenstatus.is_set || is_set(dot5ringopenstatus.yfilter)) leaf_name_data.push_back(dot5ringopenstatus.get_name_leafdata());
+    if (dot5ringspeed.is_set || is_set(dot5ringspeed.yfilter)) leaf_name_data.push_back(dot5ringspeed.get_name_leafdata());
+    if (dot5ringstate.is_set || is_set(dot5ringstate.yfilter)) leaf_name_data.push_back(dot5ringstate.get_name_leafdata());
+    if (dot5ringstatus.is_set || is_set(dot5ringstatus.yfilter)) leaf_name_data.push_back(dot5ringstatus.get_name_leafdata());
+    if (dot5upstream.is_set || is_set(dot5upstream.yfilter)) leaf_name_data.push_back(dot5upstream.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -387,48 +416,119 @@ std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Table::Dot5Entr
     return children;
 }
 
-void TokenringMib::Dot5Table::Dot5Entry::set_value(const std::string & value_path, std::string value)
+void TokenringMib::Dot5Table::Dot5Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot5IfIndex")
     {
         dot5ifindex = value;
+        dot5ifindex.value_namespace = name_space;
+        dot5ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5ActMonParticipate")
     {
         dot5actmonparticipate = value;
+        dot5actmonparticipate.value_namespace = name_space;
+        dot5actmonparticipate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5Commands")
     {
         dot5commands = value;
+        dot5commands.value_namespace = name_space;
+        dot5commands.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5Functional")
     {
         dot5functional = value;
+        dot5functional.value_namespace = name_space;
+        dot5functional.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5LastBeaconSent")
     {
         dot5lastbeaconsent = value;
+        dot5lastbeaconsent.value_namespace = name_space;
+        dot5lastbeaconsent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5RingOpenStatus")
     {
         dot5ringopenstatus = value;
+        dot5ringopenstatus.value_namespace = name_space;
+        dot5ringopenstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5RingSpeed")
     {
         dot5ringspeed = value;
+        dot5ringspeed.value_namespace = name_space;
+        dot5ringspeed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5RingState")
     {
         dot5ringstate = value;
+        dot5ringstate.value_namespace = name_space;
+        dot5ringstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5RingStatus")
     {
         dot5ringstatus = value;
+        dot5ringstatus.value_namespace = name_space;
+        dot5ringstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5UpStream")
     {
         dot5upstream = value;
+        dot5upstream.value_namespace = name_space;
+        dot5upstream.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TokenringMib::Dot5Table::Dot5Entry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot5IfIndex")
+    {
+        dot5ifindex.yfilter = yfilter;
+    }
+    if(value_path == "dot5ActMonParticipate")
+    {
+        dot5actmonparticipate.yfilter = yfilter;
+    }
+    if(value_path == "dot5Commands")
+    {
+        dot5commands.yfilter = yfilter;
+    }
+    if(value_path == "dot5Functional")
+    {
+        dot5functional.yfilter = yfilter;
+    }
+    if(value_path == "dot5LastBeaconSent")
+    {
+        dot5lastbeaconsent.yfilter = yfilter;
+    }
+    if(value_path == "dot5RingOpenStatus")
+    {
+        dot5ringopenstatus.yfilter = yfilter;
+    }
+    if(value_path == "dot5RingSpeed")
+    {
+        dot5ringspeed.yfilter = yfilter;
+    }
+    if(value_path == "dot5RingState")
+    {
+        dot5ringstate.yfilter = yfilter;
+    }
+    if(value_path == "dot5RingStatus")
+    {
+        dot5ringstatus.yfilter = yfilter;
+    }
+    if(value_path == "dot5UpStream")
+    {
+        dot5upstream.yfilter = yfilter;
+    }
+}
+
+bool TokenringMib::Dot5Table::Dot5Entry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot5IfIndex" || name == "dot5ActMonParticipate" || name == "dot5Commands" || name == "dot5Functional" || name == "dot5LastBeaconSent" || name == "dot5RingOpenStatus" || name == "dot5RingSpeed" || name == "dot5RingState" || name == "dot5RingStatus" || name == "dot5UpStream")
+        return true;
+    return false;
 }
 
 TokenringMib::Dot5Statstable::Dot5Statstable()
@@ -442,9 +542,9 @@ TokenringMib::Dot5Statstable::~Dot5Statstable()
 
 bool TokenringMib::Dot5Statstable::has_data() const
 {
-    for (std::size_t index=0; index<dot5statsentry_.size(); index++)
+    for (std::size_t index=0; index<dot5statsentry.size(); index++)
     {
-        if(dot5statsentry_[index]->has_data())
+        if(dot5statsentry[index]->has_data())
             return true;
     }
     return false;
@@ -452,12 +552,12 @@ bool TokenringMib::Dot5Statstable::has_data() const
 
 bool TokenringMib::Dot5Statstable::has_operation() const
 {
-    for (std::size_t index=0; index<dot5statsentry_.size(); index++)
+    for (std::size_t index=0; index<dot5statsentry.size(); index++)
     {
-        if(dot5statsentry_[index]->has_operation())
+        if(dot5statsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TokenringMib::Dot5Statstable::get_segment_path() const
@@ -494,7 +594,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Statstable::get_child_by_name(const st
 {
     if(child_yang_name == "dot5StatsEntry")
     {
-        for(auto const & c : dot5statsentry_)
+        for(auto const & c : dot5statsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -504,7 +604,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Statstable::get_child_by_name(const st
         }
         auto c = std::make_shared<TokenringMib::Dot5Statstable::Dot5Statsentry>();
         c->parent = this;
-        dot5statsentry_.push_back(c);
+        dot5statsentry.push_back(c);
         return c;
     }
 
@@ -514,7 +614,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Statstable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Statstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot5statsentry_)
+    for (auto const & c : dot5statsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -522,8 +622,19 @@ std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Statstable::get
     return children;
 }
 
-void TokenringMib::Dot5Statstable::set_value(const std::string & value_path, std::string value)
+void TokenringMib::Dot5Statstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TokenringMib::Dot5Statstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TokenringMib::Dot5Statstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot5StatsEntry")
+        return true;
+    return false;
 }
 
 TokenringMib::Dot5Statstable::Dot5Statsentry::Dot5Statsentry()
@@ -580,26 +691,26 @@ bool TokenringMib::Dot5Statstable::Dot5Statsentry::has_data() const
 
 bool TokenringMib::Dot5Statstable::Dot5Statsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot5statsifindex.operation)
-	|| is_set(dot5statsaborttranserrors.operation)
-	|| is_set(dot5statsacerrors.operation)
-	|| is_set(dot5statsbursterrors.operation)
-	|| is_set(dot5statsframecopiederrors.operation)
-	|| is_set(dot5statsfreqerrors.operation)
-	|| is_set(dot5statsharderrors.operation)
-	|| is_set(dot5statsinternalerrors.operation)
-	|| is_set(dot5statslineerrors.operation)
-	|| is_set(dot5statslobewires.operation)
-	|| is_set(dot5statslostframeerrors.operation)
-	|| is_set(dot5statsreceivecongestions.operation)
-	|| is_set(dot5statsrecoverys.operation)
-	|| is_set(dot5statsremoves.operation)
-	|| is_set(dot5statssignalloss.operation)
-	|| is_set(dot5statssingles.operation)
-	|| is_set(dot5statssofterrors.operation)
-	|| is_set(dot5statstokenerrors.operation)
-	|| is_set(dot5statstransmitbeacons.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dot5statsifindex.yfilter)
+	|| ydk::is_set(dot5statsaborttranserrors.yfilter)
+	|| ydk::is_set(dot5statsacerrors.yfilter)
+	|| ydk::is_set(dot5statsbursterrors.yfilter)
+	|| ydk::is_set(dot5statsframecopiederrors.yfilter)
+	|| ydk::is_set(dot5statsfreqerrors.yfilter)
+	|| ydk::is_set(dot5statsharderrors.yfilter)
+	|| ydk::is_set(dot5statsinternalerrors.yfilter)
+	|| ydk::is_set(dot5statslineerrors.yfilter)
+	|| ydk::is_set(dot5statslobewires.yfilter)
+	|| ydk::is_set(dot5statslostframeerrors.yfilter)
+	|| ydk::is_set(dot5statsreceivecongestions.yfilter)
+	|| ydk::is_set(dot5statsrecoverys.yfilter)
+	|| ydk::is_set(dot5statsremoves.yfilter)
+	|| ydk::is_set(dot5statssignalloss.yfilter)
+	|| ydk::is_set(dot5statssingles.yfilter)
+	|| ydk::is_set(dot5statssofterrors.yfilter)
+	|| ydk::is_set(dot5statstokenerrors.yfilter)
+	|| ydk::is_set(dot5statstransmitbeacons.yfilter);
 }
 
 std::string TokenringMib::Dot5Statstable::Dot5Statsentry::get_segment_path() const
@@ -625,25 +736,25 @@ const EntityPath TokenringMib::Dot5Statstable::Dot5Statsentry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot5statsifindex.is_set || is_set(dot5statsifindex.operation)) leaf_name_data.push_back(dot5statsifindex.get_name_leafdata());
-    if (dot5statsaborttranserrors.is_set || is_set(dot5statsaborttranserrors.operation)) leaf_name_data.push_back(dot5statsaborttranserrors.get_name_leafdata());
-    if (dot5statsacerrors.is_set || is_set(dot5statsacerrors.operation)) leaf_name_data.push_back(dot5statsacerrors.get_name_leafdata());
-    if (dot5statsbursterrors.is_set || is_set(dot5statsbursterrors.operation)) leaf_name_data.push_back(dot5statsbursterrors.get_name_leafdata());
-    if (dot5statsframecopiederrors.is_set || is_set(dot5statsframecopiederrors.operation)) leaf_name_data.push_back(dot5statsframecopiederrors.get_name_leafdata());
-    if (dot5statsfreqerrors.is_set || is_set(dot5statsfreqerrors.operation)) leaf_name_data.push_back(dot5statsfreqerrors.get_name_leafdata());
-    if (dot5statsharderrors.is_set || is_set(dot5statsharderrors.operation)) leaf_name_data.push_back(dot5statsharderrors.get_name_leafdata());
-    if (dot5statsinternalerrors.is_set || is_set(dot5statsinternalerrors.operation)) leaf_name_data.push_back(dot5statsinternalerrors.get_name_leafdata());
-    if (dot5statslineerrors.is_set || is_set(dot5statslineerrors.operation)) leaf_name_data.push_back(dot5statslineerrors.get_name_leafdata());
-    if (dot5statslobewires.is_set || is_set(dot5statslobewires.operation)) leaf_name_data.push_back(dot5statslobewires.get_name_leafdata());
-    if (dot5statslostframeerrors.is_set || is_set(dot5statslostframeerrors.operation)) leaf_name_data.push_back(dot5statslostframeerrors.get_name_leafdata());
-    if (dot5statsreceivecongestions.is_set || is_set(dot5statsreceivecongestions.operation)) leaf_name_data.push_back(dot5statsreceivecongestions.get_name_leafdata());
-    if (dot5statsrecoverys.is_set || is_set(dot5statsrecoverys.operation)) leaf_name_data.push_back(dot5statsrecoverys.get_name_leafdata());
-    if (dot5statsremoves.is_set || is_set(dot5statsremoves.operation)) leaf_name_data.push_back(dot5statsremoves.get_name_leafdata());
-    if (dot5statssignalloss.is_set || is_set(dot5statssignalloss.operation)) leaf_name_data.push_back(dot5statssignalloss.get_name_leafdata());
-    if (dot5statssingles.is_set || is_set(dot5statssingles.operation)) leaf_name_data.push_back(dot5statssingles.get_name_leafdata());
-    if (dot5statssofterrors.is_set || is_set(dot5statssofterrors.operation)) leaf_name_data.push_back(dot5statssofterrors.get_name_leafdata());
-    if (dot5statstokenerrors.is_set || is_set(dot5statstokenerrors.operation)) leaf_name_data.push_back(dot5statstokenerrors.get_name_leafdata());
-    if (dot5statstransmitbeacons.is_set || is_set(dot5statstransmitbeacons.operation)) leaf_name_data.push_back(dot5statstransmitbeacons.get_name_leafdata());
+    if (dot5statsifindex.is_set || is_set(dot5statsifindex.yfilter)) leaf_name_data.push_back(dot5statsifindex.get_name_leafdata());
+    if (dot5statsaborttranserrors.is_set || is_set(dot5statsaborttranserrors.yfilter)) leaf_name_data.push_back(dot5statsaborttranserrors.get_name_leafdata());
+    if (dot5statsacerrors.is_set || is_set(dot5statsacerrors.yfilter)) leaf_name_data.push_back(dot5statsacerrors.get_name_leafdata());
+    if (dot5statsbursterrors.is_set || is_set(dot5statsbursterrors.yfilter)) leaf_name_data.push_back(dot5statsbursterrors.get_name_leafdata());
+    if (dot5statsframecopiederrors.is_set || is_set(dot5statsframecopiederrors.yfilter)) leaf_name_data.push_back(dot5statsframecopiederrors.get_name_leafdata());
+    if (dot5statsfreqerrors.is_set || is_set(dot5statsfreqerrors.yfilter)) leaf_name_data.push_back(dot5statsfreqerrors.get_name_leafdata());
+    if (dot5statsharderrors.is_set || is_set(dot5statsharderrors.yfilter)) leaf_name_data.push_back(dot5statsharderrors.get_name_leafdata());
+    if (dot5statsinternalerrors.is_set || is_set(dot5statsinternalerrors.yfilter)) leaf_name_data.push_back(dot5statsinternalerrors.get_name_leafdata());
+    if (dot5statslineerrors.is_set || is_set(dot5statslineerrors.yfilter)) leaf_name_data.push_back(dot5statslineerrors.get_name_leafdata());
+    if (dot5statslobewires.is_set || is_set(dot5statslobewires.yfilter)) leaf_name_data.push_back(dot5statslobewires.get_name_leafdata());
+    if (dot5statslostframeerrors.is_set || is_set(dot5statslostframeerrors.yfilter)) leaf_name_data.push_back(dot5statslostframeerrors.get_name_leafdata());
+    if (dot5statsreceivecongestions.is_set || is_set(dot5statsreceivecongestions.yfilter)) leaf_name_data.push_back(dot5statsreceivecongestions.get_name_leafdata());
+    if (dot5statsrecoverys.is_set || is_set(dot5statsrecoverys.yfilter)) leaf_name_data.push_back(dot5statsrecoverys.get_name_leafdata());
+    if (dot5statsremoves.is_set || is_set(dot5statsremoves.yfilter)) leaf_name_data.push_back(dot5statsremoves.get_name_leafdata());
+    if (dot5statssignalloss.is_set || is_set(dot5statssignalloss.yfilter)) leaf_name_data.push_back(dot5statssignalloss.get_name_leafdata());
+    if (dot5statssingles.is_set || is_set(dot5statssingles.yfilter)) leaf_name_data.push_back(dot5statssingles.get_name_leafdata());
+    if (dot5statssofterrors.is_set || is_set(dot5statssofterrors.yfilter)) leaf_name_data.push_back(dot5statssofterrors.get_name_leafdata());
+    if (dot5statstokenerrors.is_set || is_set(dot5statstokenerrors.yfilter)) leaf_name_data.push_back(dot5statstokenerrors.get_name_leafdata());
+    if (dot5statstransmitbeacons.is_set || is_set(dot5statstransmitbeacons.yfilter)) leaf_name_data.push_back(dot5statstransmitbeacons.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -662,84 +773,209 @@ std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Statstable::Dot
     return children;
 }
 
-void TokenringMib::Dot5Statstable::Dot5Statsentry::set_value(const std::string & value_path, std::string value)
+void TokenringMib::Dot5Statstable::Dot5Statsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot5StatsIfIndex")
     {
         dot5statsifindex = value;
+        dot5statsifindex.value_namespace = name_space;
+        dot5statsifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsAbortTransErrors")
     {
         dot5statsaborttranserrors = value;
+        dot5statsaborttranserrors.value_namespace = name_space;
+        dot5statsaborttranserrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsACErrors")
     {
         dot5statsacerrors = value;
+        dot5statsacerrors.value_namespace = name_space;
+        dot5statsacerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsBurstErrors")
     {
         dot5statsbursterrors = value;
+        dot5statsbursterrors.value_namespace = name_space;
+        dot5statsbursterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsFrameCopiedErrors")
     {
         dot5statsframecopiederrors = value;
+        dot5statsframecopiederrors.value_namespace = name_space;
+        dot5statsframecopiederrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsFreqErrors")
     {
         dot5statsfreqerrors = value;
+        dot5statsfreqerrors.value_namespace = name_space;
+        dot5statsfreqerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsHardErrors")
     {
         dot5statsharderrors = value;
+        dot5statsharderrors.value_namespace = name_space;
+        dot5statsharderrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsInternalErrors")
     {
         dot5statsinternalerrors = value;
+        dot5statsinternalerrors.value_namespace = name_space;
+        dot5statsinternalerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsLineErrors")
     {
         dot5statslineerrors = value;
+        dot5statslineerrors.value_namespace = name_space;
+        dot5statslineerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsLobeWires")
     {
         dot5statslobewires = value;
+        dot5statslobewires.value_namespace = name_space;
+        dot5statslobewires.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsLostFrameErrors")
     {
         dot5statslostframeerrors = value;
+        dot5statslostframeerrors.value_namespace = name_space;
+        dot5statslostframeerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsReceiveCongestions")
     {
         dot5statsreceivecongestions = value;
+        dot5statsreceivecongestions.value_namespace = name_space;
+        dot5statsreceivecongestions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsRecoverys")
     {
         dot5statsrecoverys = value;
+        dot5statsrecoverys.value_namespace = name_space;
+        dot5statsrecoverys.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsRemoves")
     {
         dot5statsremoves = value;
+        dot5statsremoves.value_namespace = name_space;
+        dot5statsremoves.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsSignalLoss")
     {
         dot5statssignalloss = value;
+        dot5statssignalloss.value_namespace = name_space;
+        dot5statssignalloss.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsSingles")
     {
         dot5statssingles = value;
+        dot5statssingles.value_namespace = name_space;
+        dot5statssingles.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsSoftErrors")
     {
         dot5statssofterrors = value;
+        dot5statssofterrors.value_namespace = name_space;
+        dot5statssofterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsTokenErrors")
     {
         dot5statstokenerrors = value;
+        dot5statstokenerrors.value_namespace = name_space;
+        dot5statstokenerrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5StatsTransmitBeacons")
     {
         dot5statstransmitbeacons = value;
+        dot5statstransmitbeacons.value_namespace = name_space;
+        dot5statstransmitbeacons.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TokenringMib::Dot5Statstable::Dot5Statsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot5StatsIfIndex")
+    {
+        dot5statsifindex.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsAbortTransErrors")
+    {
+        dot5statsaborttranserrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsACErrors")
+    {
+        dot5statsacerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsBurstErrors")
+    {
+        dot5statsbursterrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsFrameCopiedErrors")
+    {
+        dot5statsframecopiederrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsFreqErrors")
+    {
+        dot5statsfreqerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsHardErrors")
+    {
+        dot5statsharderrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsInternalErrors")
+    {
+        dot5statsinternalerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsLineErrors")
+    {
+        dot5statslineerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsLobeWires")
+    {
+        dot5statslobewires.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsLostFrameErrors")
+    {
+        dot5statslostframeerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsReceiveCongestions")
+    {
+        dot5statsreceivecongestions.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsRecoverys")
+    {
+        dot5statsrecoverys.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsRemoves")
+    {
+        dot5statsremoves.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsSignalLoss")
+    {
+        dot5statssignalloss.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsSingles")
+    {
+        dot5statssingles.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsSoftErrors")
+    {
+        dot5statssofterrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsTokenErrors")
+    {
+        dot5statstokenerrors.yfilter = yfilter;
+    }
+    if(value_path == "dot5StatsTransmitBeacons")
+    {
+        dot5statstransmitbeacons.yfilter = yfilter;
+    }
+}
+
+bool TokenringMib::Dot5Statstable::Dot5Statsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot5StatsIfIndex" || name == "dot5StatsAbortTransErrors" || name == "dot5StatsACErrors" || name == "dot5StatsBurstErrors" || name == "dot5StatsFrameCopiedErrors" || name == "dot5StatsFreqErrors" || name == "dot5StatsHardErrors" || name == "dot5StatsInternalErrors" || name == "dot5StatsLineErrors" || name == "dot5StatsLobeWires" || name == "dot5StatsLostFrameErrors" || name == "dot5StatsReceiveCongestions" || name == "dot5StatsRecoverys" || name == "dot5StatsRemoves" || name == "dot5StatsSignalLoss" || name == "dot5StatsSingles" || name == "dot5StatsSoftErrors" || name == "dot5StatsTokenErrors" || name == "dot5StatsTransmitBeacons")
+        return true;
+    return false;
 }
 
 TokenringMib::Dot5Timertable::Dot5Timertable()
@@ -753,9 +989,9 @@ TokenringMib::Dot5Timertable::~Dot5Timertable()
 
 bool TokenringMib::Dot5Timertable::has_data() const
 {
-    for (std::size_t index=0; index<dot5timerentry_.size(); index++)
+    for (std::size_t index=0; index<dot5timerentry.size(); index++)
     {
-        if(dot5timerentry_[index]->has_data())
+        if(dot5timerentry[index]->has_data())
             return true;
     }
     return false;
@@ -763,12 +999,12 @@ bool TokenringMib::Dot5Timertable::has_data() const
 
 bool TokenringMib::Dot5Timertable::has_operation() const
 {
-    for (std::size_t index=0; index<dot5timerentry_.size(); index++)
+    for (std::size_t index=0; index<dot5timerentry.size(); index++)
     {
-        if(dot5timerentry_[index]->has_operation())
+        if(dot5timerentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TokenringMib::Dot5Timertable::get_segment_path() const
@@ -805,7 +1041,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Timertable::get_child_by_name(const st
 {
     if(child_yang_name == "dot5TimerEntry")
     {
-        for(auto const & c : dot5timerentry_)
+        for(auto const & c : dot5timerentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -815,7 +1051,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Timertable::get_child_by_name(const st
         }
         auto c = std::make_shared<TokenringMib::Dot5Timertable::Dot5Timerentry>();
         c->parent = this;
-        dot5timerentry_.push_back(c);
+        dot5timerentry.push_back(c);
         return c;
     }
 
@@ -825,7 +1061,7 @@ std::shared_ptr<Entity> TokenringMib::Dot5Timertable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Timertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : dot5timerentry_)
+    for (auto const & c : dot5timerentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -833,8 +1069,19 @@ std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Timertable::get
     return children;
 }
 
-void TokenringMib::Dot5Timertable::set_value(const std::string & value_path, std::string value)
+void TokenringMib::Dot5Timertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TokenringMib::Dot5Timertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TokenringMib::Dot5Timertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot5TimerEntry")
+        return true;
+    return false;
 }
 
 TokenringMib::Dot5Timertable::Dot5Timerentry::Dot5Timerentry()
@@ -875,18 +1122,18 @@ bool TokenringMib::Dot5Timertable::Dot5Timerentry::has_data() const
 
 bool TokenringMib::Dot5Timertable::Dot5Timerentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot5timerifindex.operation)
-	|| is_set(dot5timeractivemon.operation)
-	|| is_set(dot5timerbeaconreceive.operation)
-	|| is_set(dot5timerbeacontransmit.operation)
-	|| is_set(dot5timererrorreport.operation)
-	|| is_set(dot5timerholding.operation)
-	|| is_set(dot5timernotoken.operation)
-	|| is_set(dot5timerqueuepdu.operation)
-	|| is_set(dot5timerreturnrepeat.operation)
-	|| is_set(dot5timerstandbymon.operation)
-	|| is_set(dot5timervalidtransmit.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dot5timerifindex.yfilter)
+	|| ydk::is_set(dot5timeractivemon.yfilter)
+	|| ydk::is_set(dot5timerbeaconreceive.yfilter)
+	|| ydk::is_set(dot5timerbeacontransmit.yfilter)
+	|| ydk::is_set(dot5timererrorreport.yfilter)
+	|| ydk::is_set(dot5timerholding.yfilter)
+	|| ydk::is_set(dot5timernotoken.yfilter)
+	|| ydk::is_set(dot5timerqueuepdu.yfilter)
+	|| ydk::is_set(dot5timerreturnrepeat.yfilter)
+	|| ydk::is_set(dot5timerstandbymon.yfilter)
+	|| ydk::is_set(dot5timervalidtransmit.yfilter);
 }
 
 std::string TokenringMib::Dot5Timertable::Dot5Timerentry::get_segment_path() const
@@ -912,17 +1159,17 @@ const EntityPath TokenringMib::Dot5Timertable::Dot5Timerentry::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot5timerifindex.is_set || is_set(dot5timerifindex.operation)) leaf_name_data.push_back(dot5timerifindex.get_name_leafdata());
-    if (dot5timeractivemon.is_set || is_set(dot5timeractivemon.operation)) leaf_name_data.push_back(dot5timeractivemon.get_name_leafdata());
-    if (dot5timerbeaconreceive.is_set || is_set(dot5timerbeaconreceive.operation)) leaf_name_data.push_back(dot5timerbeaconreceive.get_name_leafdata());
-    if (dot5timerbeacontransmit.is_set || is_set(dot5timerbeacontransmit.operation)) leaf_name_data.push_back(dot5timerbeacontransmit.get_name_leafdata());
-    if (dot5timererrorreport.is_set || is_set(dot5timererrorreport.operation)) leaf_name_data.push_back(dot5timererrorreport.get_name_leafdata());
-    if (dot5timerholding.is_set || is_set(dot5timerholding.operation)) leaf_name_data.push_back(dot5timerholding.get_name_leafdata());
-    if (dot5timernotoken.is_set || is_set(dot5timernotoken.operation)) leaf_name_data.push_back(dot5timernotoken.get_name_leafdata());
-    if (dot5timerqueuepdu.is_set || is_set(dot5timerqueuepdu.operation)) leaf_name_data.push_back(dot5timerqueuepdu.get_name_leafdata());
-    if (dot5timerreturnrepeat.is_set || is_set(dot5timerreturnrepeat.operation)) leaf_name_data.push_back(dot5timerreturnrepeat.get_name_leafdata());
-    if (dot5timerstandbymon.is_set || is_set(dot5timerstandbymon.operation)) leaf_name_data.push_back(dot5timerstandbymon.get_name_leafdata());
-    if (dot5timervalidtransmit.is_set || is_set(dot5timervalidtransmit.operation)) leaf_name_data.push_back(dot5timervalidtransmit.get_name_leafdata());
+    if (dot5timerifindex.is_set || is_set(dot5timerifindex.yfilter)) leaf_name_data.push_back(dot5timerifindex.get_name_leafdata());
+    if (dot5timeractivemon.is_set || is_set(dot5timeractivemon.yfilter)) leaf_name_data.push_back(dot5timeractivemon.get_name_leafdata());
+    if (dot5timerbeaconreceive.is_set || is_set(dot5timerbeaconreceive.yfilter)) leaf_name_data.push_back(dot5timerbeaconreceive.get_name_leafdata());
+    if (dot5timerbeacontransmit.is_set || is_set(dot5timerbeacontransmit.yfilter)) leaf_name_data.push_back(dot5timerbeacontransmit.get_name_leafdata());
+    if (dot5timererrorreport.is_set || is_set(dot5timererrorreport.yfilter)) leaf_name_data.push_back(dot5timererrorreport.get_name_leafdata());
+    if (dot5timerholding.is_set || is_set(dot5timerholding.yfilter)) leaf_name_data.push_back(dot5timerholding.get_name_leafdata());
+    if (dot5timernotoken.is_set || is_set(dot5timernotoken.yfilter)) leaf_name_data.push_back(dot5timernotoken.get_name_leafdata());
+    if (dot5timerqueuepdu.is_set || is_set(dot5timerqueuepdu.yfilter)) leaf_name_data.push_back(dot5timerqueuepdu.get_name_leafdata());
+    if (dot5timerreturnrepeat.is_set || is_set(dot5timerreturnrepeat.yfilter)) leaf_name_data.push_back(dot5timerreturnrepeat.get_name_leafdata());
+    if (dot5timerstandbymon.is_set || is_set(dot5timerstandbymon.yfilter)) leaf_name_data.push_back(dot5timerstandbymon.get_name_leafdata());
+    if (dot5timervalidtransmit.is_set || is_set(dot5timervalidtransmit.yfilter)) leaf_name_data.push_back(dot5timervalidtransmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -941,85 +1188,162 @@ std::map<std::string, std::shared_ptr<Entity>> TokenringMib::Dot5Timertable::Dot
     return children;
 }
 
-void TokenringMib::Dot5Timertable::Dot5Timerentry::set_value(const std::string & value_path, std::string value)
+void TokenringMib::Dot5Timertable::Dot5Timerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot5TimerIfIndex")
     {
         dot5timerifindex = value;
+        dot5timerifindex.value_namespace = name_space;
+        dot5timerifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerActiveMon")
     {
         dot5timeractivemon = value;
+        dot5timeractivemon.value_namespace = name_space;
+        dot5timeractivemon.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerBeaconReceive")
     {
         dot5timerbeaconreceive = value;
+        dot5timerbeaconreceive.value_namespace = name_space;
+        dot5timerbeaconreceive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerBeaconTransmit")
     {
         dot5timerbeacontransmit = value;
+        dot5timerbeacontransmit.value_namespace = name_space;
+        dot5timerbeacontransmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerErrorReport")
     {
         dot5timererrorreport = value;
+        dot5timererrorreport.value_namespace = name_space;
+        dot5timererrorreport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerHolding")
     {
         dot5timerholding = value;
+        dot5timerholding.value_namespace = name_space;
+        dot5timerholding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerNoToken")
     {
         dot5timernotoken = value;
+        dot5timernotoken.value_namespace = name_space;
+        dot5timernotoken.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerQueuePDU")
     {
         dot5timerqueuepdu = value;
+        dot5timerqueuepdu.value_namespace = name_space;
+        dot5timerqueuepdu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerReturnRepeat")
     {
         dot5timerreturnrepeat = value;
+        dot5timerreturnrepeat.value_namespace = name_space;
+        dot5timerreturnrepeat.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerStandbyMon")
     {
         dot5timerstandbymon = value;
+        dot5timerstandbymon.value_namespace = name_space;
+        dot5timerstandbymon.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot5TimerValidTransmit")
     {
         dot5timervalidtransmit = value;
+        dot5timervalidtransmit.value_namespace = name_space;
+        dot5timervalidtransmit.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5CommandsEnum::noop {1, "noop"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5CommandsEnum::open {2, "open"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5CommandsEnum::reset {3, "reset"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5CommandsEnum::close {4, "close"};
+void TokenringMib::Dot5Timertable::Dot5Timerentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot5TimerIfIndex")
+    {
+        dot5timerifindex.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerActiveMon")
+    {
+        dot5timeractivemon.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerBeaconReceive")
+    {
+        dot5timerbeaconreceive.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerBeaconTransmit")
+    {
+        dot5timerbeacontransmit.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerErrorReport")
+    {
+        dot5timererrorreport.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerHolding")
+    {
+        dot5timerholding.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerNoToken")
+    {
+        dot5timernotoken.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerQueuePDU")
+    {
+        dot5timerqueuepdu.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerReturnRepeat")
+    {
+        dot5timerreturnrepeat.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerStandbyMon")
+    {
+        dot5timerstandbymon.yfilter = yfilter;
+    }
+    if(value_path == "dot5TimerValidTransmit")
+    {
+        dot5timervalidtransmit.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingstateEnum::opened {1, "opened"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingstateEnum::closed {2, "closed"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingstateEnum::opening {3, "opening"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingstateEnum::closing {4, "closing"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingstateEnum::openFailure {5, "openFailure"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingstateEnum::ringFailure {6, "ringFailure"};
+bool TokenringMib::Dot5Timertable::Dot5Timerentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot5TimerIfIndex" || name == "dot5TimerActiveMon" || name == "dot5TimerBeaconReceive" || name == "dot5TimerBeaconTransmit" || name == "dot5TimerErrorReport" || name == "dot5TimerHolding" || name == "dot5TimerNoToken" || name == "dot5TimerQueuePDU" || name == "dot5TimerReturnRepeat" || name == "dot5TimerStandbyMon" || name == "dot5TimerValidTransmit")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::noOpen {1, "noOpen"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::badParam {2, "badParam"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::lobeFailed {3, "lobeFailed"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::signalLoss {4, "signalLoss"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::insertionTimeout {5, "insertionTimeout"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::ringFailed {6, "ringFailed"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::beaconing {7, "beaconing"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::duplicateMAC {8, "duplicateMAC"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::requestFailed {9, "requestFailed"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::removeReceived {10, "removeReceived"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingopenstatusEnum::open {11, "open"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Commands::noop {1, "noop"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Commands::open {2, "open"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Commands::reset {3, "reset"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Commands::close {4, "close"};
 
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingspeedEnum::unknown {1, "unknown"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingspeedEnum::oneMegabit {2, "oneMegabit"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingspeedEnum::fourMegabit {3, "fourMegabit"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5RingspeedEnum::sixteenMegabit {4, "sixteenMegabit"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringstate::opened {1, "opened"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringstate::closed {2, "closed"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringstate::opening {3, "opening"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringstate::closing {4, "closing"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringstate::openFailure {5, "openFailure"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringstate::ringFailure {6, "ringFailure"};
 
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5ActmonparticipateEnum::true_ {1, "true"};
-const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5ActmonparticipateEnum::false_ {2, "false"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::noOpen {1, "noOpen"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::badParam {2, "badParam"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::lobeFailed {3, "lobeFailed"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::signalLoss {4, "signalLoss"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::insertionTimeout {5, "insertionTimeout"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::ringFailed {6, "ringFailed"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::beaconing {7, "beaconing"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::duplicateMAC {8, "duplicateMAC"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::requestFailed {9, "requestFailed"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::removeReceived {10, "removeReceived"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringopenstatus::open {11, "open"};
+
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringspeed::unknown {1, "unknown"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringspeed::oneMegabit {2, "oneMegabit"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringspeed::fourMegabit {3, "fourMegabit"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Ringspeed::sixteenMegabit {4, "sixteenMegabit"};
+
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Actmonparticipate::true_ {1, "true"};
+const Enum::YLeaf TokenringMib::Dot5Table::Dot5Entry::Dot5Actmonparticipate::false_ {2, "false"};
 
 
 }

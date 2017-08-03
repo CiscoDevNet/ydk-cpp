@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_wdsysmon_fd_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_wdsysmon_fd_oper {
 
 SystemMonitoring::SystemMonitoring()
@@ -35,7 +37,7 @@ bool SystemMonitoring::has_operation() const
         if(cpu_utilization[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SystemMonitoring::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::get_children() 
     return children;
 }
 
-void SystemMonitoring::set_value(const std::string & value_path, std::string value)
+void SystemMonitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SystemMonitoring::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string SystemMonitoring::get_bundle_name() const
 augment_capabilities_function SystemMonitoring::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SystemMonitoring::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SystemMonitoring::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpu-utilization")
+        return true;
+    return false;
 }
 
 SystemMonitoring::CpuUtilization::CpuUtilization()
@@ -155,11 +173,11 @@ bool SystemMonitoring::CpuUtilization::has_operation() const
         if(process_cpu[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(node_name.operation)
-	|| is_set(total_cpu_fifteen_minute.operation)
-	|| is_set(total_cpu_five_minute.operation)
-	|| is_set(total_cpu_one_minute.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(total_cpu_fifteen_minute.yfilter)
+	|| ydk::is_set(total_cpu_five_minute.yfilter)
+	|| ydk::is_set(total_cpu_one_minute.yfilter);
 }
 
 std::string SystemMonitoring::CpuUtilization::get_segment_path() const
@@ -185,10 +203,10 @@ const EntityPath SystemMonitoring::CpuUtilization::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (total_cpu_fifteen_minute.is_set || is_set(total_cpu_fifteen_minute.operation)) leaf_name_data.push_back(total_cpu_fifteen_minute.get_name_leafdata());
-    if (total_cpu_five_minute.is_set || is_set(total_cpu_five_minute.operation)) leaf_name_data.push_back(total_cpu_five_minute.get_name_leafdata());
-    if (total_cpu_one_minute.is_set || is_set(total_cpu_one_minute.operation)) leaf_name_data.push_back(total_cpu_one_minute.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (total_cpu_fifteen_minute.is_set || is_set(total_cpu_fifteen_minute.yfilter)) leaf_name_data.push_back(total_cpu_fifteen_minute.get_name_leafdata());
+    if (total_cpu_five_minute.is_set || is_set(total_cpu_five_minute.yfilter)) leaf_name_data.push_back(total_cpu_five_minute.get_name_leafdata());
+    if (total_cpu_one_minute.is_set || is_set(total_cpu_one_minute.yfilter)) leaf_name_data.push_back(total_cpu_one_minute.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -228,24 +246,59 @@ std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::CpuUtilization:
     return children;
 }
 
-void SystemMonitoring::CpuUtilization::set_value(const std::string & value_path, std::string value)
+void SystemMonitoring::CpuUtilization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-cpu-fifteen-minute")
     {
         total_cpu_fifteen_minute = value;
+        total_cpu_fifteen_minute.value_namespace = name_space;
+        total_cpu_fifteen_minute.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-cpu-five-minute")
     {
         total_cpu_five_minute = value;
+        total_cpu_five_minute.value_namespace = name_space;
+        total_cpu_five_minute.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-cpu-one-minute")
     {
         total_cpu_one_minute = value;
+        total_cpu_one_minute.value_namespace = name_space;
+        total_cpu_one_minute.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SystemMonitoring::CpuUtilization::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "total-cpu-fifteen-minute")
+    {
+        total_cpu_fifteen_minute.yfilter = yfilter;
+    }
+    if(value_path == "total-cpu-five-minute")
+    {
+        total_cpu_five_minute.yfilter = yfilter;
+    }
+    if(value_path == "total-cpu-one-minute")
+    {
+        total_cpu_one_minute.yfilter = yfilter;
+    }
+}
+
+bool SystemMonitoring::CpuUtilization::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-cpu" || name == "node-name" || name == "total-cpu-fifteen-minute" || name == "total-cpu-five-minute" || name == "total-cpu-one-minute")
+        return true;
+    return false;
 }
 
 SystemMonitoring::CpuUtilization::ProcessCpu::ProcessCpu()
@@ -274,12 +327,12 @@ bool SystemMonitoring::CpuUtilization::ProcessCpu::has_data() const
 
 bool SystemMonitoring::CpuUtilization::ProcessCpu::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(process_cpu_fifteen_minute.operation)
-	|| is_set(process_cpu_five_minute.operation)
-	|| is_set(process_cpu_one_minute.operation)
-	|| is_set(process_id.operation)
-	|| is_set(process_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(process_cpu_fifteen_minute.yfilter)
+	|| ydk::is_set(process_cpu_five_minute.yfilter)
+	|| ydk::is_set(process_cpu_one_minute.yfilter)
+	|| ydk::is_set(process_id.yfilter)
+	|| ydk::is_set(process_name.yfilter);
 }
 
 std::string SystemMonitoring::CpuUtilization::ProcessCpu::get_segment_path() const
@@ -305,11 +358,11 @@ const EntityPath SystemMonitoring::CpuUtilization::ProcessCpu::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (process_cpu_fifteen_minute.is_set || is_set(process_cpu_fifteen_minute.operation)) leaf_name_data.push_back(process_cpu_fifteen_minute.get_name_leafdata());
-    if (process_cpu_five_minute.is_set || is_set(process_cpu_five_minute.operation)) leaf_name_data.push_back(process_cpu_five_minute.get_name_leafdata());
-    if (process_cpu_one_minute.is_set || is_set(process_cpu_one_minute.operation)) leaf_name_data.push_back(process_cpu_one_minute.get_name_leafdata());
-    if (process_id.is_set || is_set(process_id.operation)) leaf_name_data.push_back(process_id.get_name_leafdata());
-    if (process_name.is_set || is_set(process_name.operation)) leaf_name_data.push_back(process_name.get_name_leafdata());
+    if (process_cpu_fifteen_minute.is_set || is_set(process_cpu_fifteen_minute.yfilter)) leaf_name_data.push_back(process_cpu_fifteen_minute.get_name_leafdata());
+    if (process_cpu_five_minute.is_set || is_set(process_cpu_five_minute.yfilter)) leaf_name_data.push_back(process_cpu_five_minute.get_name_leafdata());
+    if (process_cpu_one_minute.is_set || is_set(process_cpu_one_minute.yfilter)) leaf_name_data.push_back(process_cpu_one_minute.get_name_leafdata());
+    if (process_id.is_set || is_set(process_id.yfilter)) leaf_name_data.push_back(process_id.get_name_leafdata());
+    if (process_name.is_set || is_set(process_name.yfilter)) leaf_name_data.push_back(process_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -328,28 +381,69 @@ std::map<std::string, std::shared_ptr<Entity>> SystemMonitoring::CpuUtilization:
     return children;
 }
 
-void SystemMonitoring::CpuUtilization::ProcessCpu::set_value(const std::string & value_path, std::string value)
+void SystemMonitoring::CpuUtilization::ProcessCpu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "process-cpu-fifteen-minute")
     {
         process_cpu_fifteen_minute = value;
+        process_cpu_fifteen_minute.value_namespace = name_space;
+        process_cpu_fifteen_minute.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-cpu-five-minute")
     {
         process_cpu_five_minute = value;
+        process_cpu_five_minute.value_namespace = name_space;
+        process_cpu_five_minute.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-cpu-one-minute")
     {
         process_cpu_one_minute = value;
+        process_cpu_one_minute.value_namespace = name_space;
+        process_cpu_one_minute.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-id")
     {
         process_id = value;
+        process_id.value_namespace = name_space;
+        process_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "process-name")
     {
         process_name = value;
+        process_name.value_namespace = name_space;
+        process_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SystemMonitoring::CpuUtilization::ProcessCpu::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "process-cpu-fifteen-minute")
+    {
+        process_cpu_fifteen_minute.yfilter = yfilter;
+    }
+    if(value_path == "process-cpu-five-minute")
+    {
+        process_cpu_five_minute.yfilter = yfilter;
+    }
+    if(value_path == "process-cpu-one-minute")
+    {
+        process_cpu_one_minute.yfilter = yfilter;
+    }
+    if(value_path == "process-id")
+    {
+        process_id.yfilter = yfilter;
+    }
+    if(value_path == "process-name")
+    {
+        process_name.yfilter = yfilter;
+    }
+}
+
+bool SystemMonitoring::CpuUtilization::ProcessCpu::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-cpu-fifteen-minute" || name == "process-cpu-five-minute" || name == "process-cpu-one-minute" || name == "process-id" || name == "process-name")
+        return true;
+    return false;
 }
 
 

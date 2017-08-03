@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_fretta_grid_svr_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_fretta_grid_svr_oper {
 
 Grid::Grid()
@@ -29,7 +31,7 @@ bool Grid::has_data() const
 
 bool Grid::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::get_children() const
     return children;
 }
 
-void Grid::set_value(const std::string & value_path, std::string value)
+void Grid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Grid::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Grid::get_bundle_name() const
 augment_capabilities_function Grid::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Grid::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Grid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Grid::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool Grid::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Grid::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::get_children() const
     return children;
 }
 
-void Grid::Nodes::set_value(const std::string & value_path, std::string value)
+void Grid::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Grid::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Grid::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Grid::Nodes::Node::Node()
@@ -231,8 +260,8 @@ bool Grid::Nodes::Node::has_data() const
 
 bool Grid::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (client_xr !=  nullptr && client_xr->has_operation())
 	|| (clients !=  nullptr && clients->has_operation());
 }
@@ -260,7 +289,7 @@ const EntityPath Grid::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -307,12 +336,29 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::get_children()
     return children;
 }
 
-void Grid::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Grid::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Grid::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Grid::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-xr" || name == "clients" || name == "node-name")
+        return true;
+    return false;
 }
 
 Grid::Nodes::Node::ClientXr::ClientXr()
@@ -341,7 +387,7 @@ bool Grid::Nodes::Node::ClientXr::has_operation() const
         if(client[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Grid::Nodes::Node::ClientXr::get_segment_path() const
@@ -406,8 +452,19 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::ClientXr::get_
     return children;
 }
 
-void Grid::Nodes::Node::ClientXr::set_value(const std::string & value_path, std::string value)
+void Grid::Nodes::Node::ClientXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Grid::Nodes::Node::ClientXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Grid::Nodes::Node::ClientXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client")
+        return true;
+    return false;
 }
 
 Grid::Nodes::Node::ClientXr::Client::Client()
@@ -438,8 +495,8 @@ bool Grid::Nodes::Node::ClientXr::Client::has_operation() const
         if(client_data[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(client_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(client_name.yfilter);
 }
 
 std::string Grid::Nodes::Node::ClientXr::Client::get_segment_path() const
@@ -465,7 +522,7 @@ const EntityPath Grid::Nodes::Node::ClientXr::Client::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client_name.is_set || is_set(client_name.operation)) leaf_name_data.push_back(client_name.get_name_leafdata());
+    if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -505,12 +562,29 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::ClientXr::Clie
     return children;
 }
 
-void Grid::Nodes::Node::ClientXr::Client::set_value(const std::string & value_path, std::string value)
+void Grid::Nodes::Node::ClientXr::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-name")
     {
         client_name = value;
+        client_name.value_namespace = name_space;
+        client_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Grid::Nodes::Node::ClientXr::Client::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-name")
+    {
+        client_name.yfilter = yfilter;
+    }
+}
+
+bool Grid::Nodes::Node::ClientXr::Client::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-data" || name == "client-name")
+        return true;
+    return false;
 }
 
 Grid::Nodes::Node::ClientXr::Client::ClientData::ClientData()
@@ -531,8 +605,8 @@ bool Grid::Nodes::Node::ClientXr::Client::ClientData::has_data() const
 
 bool Grid::Nodes::Node::ClientXr::Client::ClientData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(res_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(res_id.yfilter);
 }
 
 std::string Grid::Nodes::Node::ClientXr::Client::ClientData::get_segment_path() const
@@ -558,7 +632,7 @@ const EntityPath Grid::Nodes::Node::ClientXr::Client::ClientData::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (res_id.is_set || is_set(res_id.operation)) leaf_name_data.push_back(res_id.get_name_leafdata());
+    if (res_id.is_set || is_set(res_id.yfilter)) leaf_name_data.push_back(res_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -577,12 +651,29 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::ClientXr::Clie
     return children;
 }
 
-void Grid::Nodes::Node::ClientXr::Client::ClientData::set_value(const std::string & value_path, std::string value)
+void Grid::Nodes::Node::ClientXr::Client::ClientData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "res-id")
     {
         res_id = value;
+        res_id.value_namespace = name_space;
+        res_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Grid::Nodes::Node::ClientXr::Client::ClientData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "res-id")
+    {
+        res_id.yfilter = yfilter;
+    }
+}
+
+bool Grid::Nodes::Node::ClientXr::Client::ClientData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "res-id")
+        return true;
+    return false;
 }
 
 Grid::Nodes::Node::Clients::Clients()
@@ -611,7 +702,7 @@ bool Grid::Nodes::Node::Clients::has_operation() const
         if(client[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Grid::Nodes::Node::Clients::get_segment_path() const
@@ -676,8 +767,19 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::Clients::get_c
     return children;
 }
 
-void Grid::Nodes::Node::Clients::set_value(const std::string & value_path, std::string value)
+void Grid::Nodes::Node::Clients::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Grid::Nodes::Node::Clients::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Grid::Nodes::Node::Clients::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client")
+        return true;
+    return false;
 }
 
 Grid::Nodes::Node::Clients::Client::Client()
@@ -708,8 +810,8 @@ bool Grid::Nodes::Node::Clients::Client::has_operation() const
         if(client_data[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(client_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(client_name.yfilter);
 }
 
 std::string Grid::Nodes::Node::Clients::Client::get_segment_path() const
@@ -735,7 +837,7 @@ const EntityPath Grid::Nodes::Node::Clients::Client::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (client_name.is_set || is_set(client_name.operation)) leaf_name_data.push_back(client_name.get_name_leafdata());
+    if (client_name.is_set || is_set(client_name.yfilter)) leaf_name_data.push_back(client_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -775,12 +877,29 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::Clients::Clien
     return children;
 }
 
-void Grid::Nodes::Node::Clients::Client::set_value(const std::string & value_path, std::string value)
+void Grid::Nodes::Node::Clients::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "client-name")
     {
         client_name = value;
+        client_name.value_namespace = name_space;
+        client_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Grid::Nodes::Node::Clients::Client::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-name")
+    {
+        client_name.yfilter = yfilter;
+    }
+}
+
+bool Grid::Nodes::Node::Clients::Client::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-data" || name == "client-name")
+        return true;
+    return false;
 }
 
 Grid::Nodes::Node::Clients::Client::ClientData::ClientData()
@@ -801,8 +920,8 @@ bool Grid::Nodes::Node::Clients::Client::ClientData::has_data() const
 
 bool Grid::Nodes::Node::Clients::Client::ClientData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(res_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(res_id.yfilter);
 }
 
 std::string Grid::Nodes::Node::Clients::Client::ClientData::get_segment_path() const
@@ -828,7 +947,7 @@ const EntityPath Grid::Nodes::Node::Clients::Client::ClientData::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (res_id.is_set || is_set(res_id.operation)) leaf_name_data.push_back(res_id.get_name_leafdata());
+    if (res_id.is_set || is_set(res_id.yfilter)) leaf_name_data.push_back(res_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -847,12 +966,29 @@ std::map<std::string, std::shared_ptr<Entity>> Grid::Nodes::Node::Clients::Clien
     return children;
 }
 
-void Grid::Nodes::Node::Clients::Client::ClientData::set_value(const std::string & value_path, std::string value)
+void Grid::Nodes::Node::Clients::Client::ClientData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "res-id")
     {
         res_id = value;
+        res_id.value_namespace = name_space;
+        res_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Grid::Nodes::Node::Clients::Client::ClientData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "res-id")
+    {
+        res_id.yfilter = yfilter;
+    }
+}
+
+bool Grid::Nodes::Node::Clients::Client::ClientData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "res-id")
+        return true;
+    return false;
 }
 
 

@@ -7,43 +7,43 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_management_oper {
 
-class HostAfIdBaseIdentity : public virtual Identity
+class HostAfIdBase : public virtual ydk::Identity
 {
     public:
-        HostAfIdBaseIdentity();
-        ~HostAfIdBaseIdentity();
+        HostAfIdBase();
+        ~HostAfIdBase();
 
 
-}; // HostAfIdBaseIdentity
+}; // HostAfIdBase
 
-class Ipv4Identity : public Cisco_IOS_XR_tty_management_oper::HostAfIdBaseIdentity, virtual Identity
+class Ipv6 : public Cisco_IOS_XR_tty_management_oper::HostAfIdBase, virtual ydk::Identity
 {
     public:
-        Ipv4Identity();
-        ~Ipv4Identity();
+        Ipv6();
+        ~Ipv6();
 
 
-}; // Ipv4Identity
+}; // Ipv6
 
-class Ipv6Identity : public Cisco_IOS_XR_tty_management_oper::HostAfIdBaseIdentity, virtual Identity
+class Ipv4 : public Cisco_IOS_XR_tty_management_oper::HostAfIdBase, virtual ydk::Identity
 {
     public:
-        Ipv6Identity();
-        ~Ipv6Identity();
+        Ipv4();
+        ~Ipv4();
 
 
-}; // Ipv6Identity
+}; // Ipv4
 
-class TransportServiceEnum : public Enum
+class TransportService : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf telnet;
-        static const Enum::YLeaf rlogin;
-        static const Enum::YLeaf ssh;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf telnet;
+        static const ydk::Enum::YLeaf rlogin;
+        static const ydk::Enum::YLeaf ssh;
 
 };
 

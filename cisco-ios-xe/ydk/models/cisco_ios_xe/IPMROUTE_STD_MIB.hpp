@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace IPMROUTE_STD_MIB {
 
-class IpmrouteStdMib : public Entity
+class IpmrouteStdMib : public ydk::Entity
 {
     public:
         IpmrouteStdMib();
@@ -19,15 +19,18 @@ class IpmrouteStdMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Ipmroute; //type: IpmrouteStdMib::Ipmroute
         class Ipmroutetable; //type: IpmrouteStdMib::Ipmroutetable
@@ -36,17 +39,17 @@ class IpmrouteStdMib : public Entity
         class Ipmrouteboundarytable; //type: IpmrouteStdMib::Ipmrouteboundarytable
         class Ipmroutescopenametable; //type: IpmrouteStdMib::Ipmroutescopenametable
 
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroute> ipmroute_;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteboundarytable> ipmrouteboundarytable_;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteinterfacetable> ipmrouteinterfacetable_;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable> ipmroutenexthoptable_;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutescopenametable> ipmroutescopenametable_;
-        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable> ipmroutetable_;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroute> ipmroute;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteboundarytable> ipmrouteboundarytable;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteinterfacetable> ipmrouteinterfacetable;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable> ipmroutenexthoptable;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutescopenametable> ipmroutescopenametable;
+        std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable> ipmroutetable;
         
 }; // IpmrouteStdMib
 
 
-class IpmrouteStdMib::Ipmroute : public Entity
+class IpmrouteStdMib::Ipmroute : public ydk::Entity
 {
     public:
         Ipmroute();
@@ -54,20 +57,22 @@ class IpmrouteStdMib::Ipmroute : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipmrouteenable; //type: IpmrouteenableEnum
-        YLeaf ipmrouteentrycount; //type: uint32
-        class IpmrouteenableEnum;
+        ydk::YLeaf ipmrouteenable; //type: Ipmrouteenable
+        ydk::YLeaf ipmrouteentrycount; //type: uint32
+        class Ipmrouteenable;
 
 }; // IpmrouteStdMib::Ipmroute
 
 
-class IpmrouteStdMib::Ipmroutetable : public Entity
+class IpmrouteStdMib::Ipmroutetable : public ydk::Entity
 {
     public:
         Ipmroutetable();
@@ -75,20 +80,22 @@ class IpmrouteStdMib::Ipmroutetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipmrouteentry; //type: IpmrouteStdMib::Ipmroutetable::Ipmrouteentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable::Ipmrouteentry> > ipmrouteentry_;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutetable::Ipmrouteentry> > ipmrouteentry;
         
 }; // IpmrouteStdMib::Ipmroutetable
 
 
-class IpmrouteStdMib::Ipmroutetable::Ipmrouteentry : public Entity
+class IpmrouteStdMib::Ipmroutetable::Ipmrouteentry : public ydk::Entity
 {
     public:
         Ipmrouteentry();
@@ -96,55 +103,57 @@ class IpmrouteStdMib::Ipmroutetable::Ipmrouteentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipmroutegroup; //type: string
-        YLeaf ipmroutesource; //type: string
-        YLeaf ipmroutesourcemask; //type: string
-        YLeaf ipmrouteupstreamneighbor; //type: string
-        YLeaf ipmrouteinifindex; //type: int32
-        YLeaf ipmrouteuptime; //type: uint32
-        YLeaf ipmrouteexpirytime; //type: uint32
-        YLeaf ipmroutepkts; //type: uint32
-        YLeaf ipmroutedifferentinifpackets; //type: uint32
-        YLeaf ipmrouteoctets; //type: uint32
-        YLeaf ipmrouteprotocol; //type: IanaipmrouteprotocolEnum
-        YLeaf ipmroutertproto; //type: IanaiprouteprotocolEnum
-        YLeaf ipmroutertaddress; //type: string
-        YLeaf ipmroutertmask; //type: string
-        YLeaf ipmrouterttype; //type: IpmrouterttypeEnum
-        YLeaf ipmroutehcoctets; //type: uint64
-        YLeaf ciscoipmroutepruneflag; //type: boolean
-        YLeaf ciscoipmroutesparseflag; //type: boolean
-        YLeaf ciscoipmrouteconnectedflag; //type: boolean
-        YLeaf ciscoipmroutelocalflag; //type: boolean
-        YLeaf ciscoipmrouteregisterflag; //type: boolean
-        YLeaf ciscoipmrouterpflag; //type: boolean
-        YLeaf ciscoipmroutesptflag; //type: boolean
-        YLeaf ciscoipmroutebps; //type: uint32
-        YLeaf ciscoipmroutemetric; //type: int32
-        YLeaf ciscoipmroutemetricpreference; //type: int32
-        YLeaf ciscoipmrouteinlimit; //type: int32
-        YLeaf ciscoipmroutelastused; //type: uint32
-        YLeaf ciscoipmrouteinlimit2; //type: uint32
-        YLeaf ciscoipmroutejoinflag; //type: boolean
-        YLeaf ciscoipmroutemsdpflag; //type: boolean
-        YLeaf ciscoipmrouteproxyjoinflag; //type: boolean
-        YLeaf ciscoipmroutepkts; //type: uint64
-        YLeaf ciscoipmroutedifferentinifpkts; //type: uint64
-        YLeaf ciscoipmrouteoctets; //type: uint64
-        YLeaf ciscoipmroutebps2; //type: uint64
-        YLeaf ciscoipmroutemetric2; //type: uint32
-        class IpmrouterttypeEnum;
+        ydk::YLeaf ipmroutegroup; //type: string
+        ydk::YLeaf ipmroutesource; //type: string
+        ydk::YLeaf ipmroutesourcemask; //type: string
+        ydk::YLeaf ipmrouteupstreamneighbor; //type: string
+        ydk::YLeaf ipmrouteinifindex; //type: int32
+        ydk::YLeaf ipmrouteuptime; //type: uint32
+        ydk::YLeaf ipmrouteexpirytime; //type: uint32
+        ydk::YLeaf ipmroutepkts; //type: uint32
+        ydk::YLeaf ipmroutedifferentinifpackets; //type: uint32
+        ydk::YLeaf ipmrouteoctets; //type: uint32
+        ydk::YLeaf ipmrouteprotocol; //type: Ianaipmrouteprotocol
+        ydk::YLeaf ipmroutertproto; //type: Ianaiprouteprotocol
+        ydk::YLeaf ipmroutertaddress; //type: string
+        ydk::YLeaf ipmroutertmask; //type: string
+        ydk::YLeaf ipmrouterttype; //type: Ipmrouterttype
+        ydk::YLeaf ipmroutehcoctets; //type: uint64
+        ydk::YLeaf ciscoipmroutepruneflag; //type: boolean
+        ydk::YLeaf ciscoipmroutesparseflag; //type: boolean
+        ydk::YLeaf ciscoipmrouteconnectedflag; //type: boolean
+        ydk::YLeaf ciscoipmroutelocalflag; //type: boolean
+        ydk::YLeaf ciscoipmrouteregisterflag; //type: boolean
+        ydk::YLeaf ciscoipmrouterpflag; //type: boolean
+        ydk::YLeaf ciscoipmroutesptflag; //type: boolean
+        ydk::YLeaf ciscoipmroutebps; //type: uint32
+        ydk::YLeaf ciscoipmroutemetric; //type: int32
+        ydk::YLeaf ciscoipmroutemetricpreference; //type: int32
+        ydk::YLeaf ciscoipmrouteinlimit; //type: int32
+        ydk::YLeaf ciscoipmroutelastused; //type: uint32
+        ydk::YLeaf ciscoipmrouteinlimit2; //type: uint32
+        ydk::YLeaf ciscoipmroutejoinflag; //type: boolean
+        ydk::YLeaf ciscoipmroutemsdpflag; //type: boolean
+        ydk::YLeaf ciscoipmrouteproxyjoinflag; //type: boolean
+        ydk::YLeaf ciscoipmroutepkts; //type: uint64
+        ydk::YLeaf ciscoipmroutedifferentinifpkts; //type: uint64
+        ydk::YLeaf ciscoipmrouteoctets; //type: uint64
+        ydk::YLeaf ciscoipmroutebps2; //type: uint64
+        ydk::YLeaf ciscoipmroutemetric2; //type: uint32
+        class Ipmrouterttype;
 
 }; // IpmrouteStdMib::Ipmroutetable::Ipmrouteentry
 
 
-class IpmrouteStdMib::Ipmroutenexthoptable : public Entity
+class IpmrouteStdMib::Ipmroutenexthoptable : public ydk::Entity
 {
     public:
         Ipmroutenexthoptable();
@@ -152,20 +161,22 @@ class IpmrouteStdMib::Ipmroutenexthoptable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipmroutenexthopentry; //type: IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry> > ipmroutenexthopentry_;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry> > ipmroutenexthopentry;
         
 }; // IpmrouteStdMib::Ipmroutenexthoptable
 
 
-class IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry : public Entity
+class IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry : public ydk::Entity
 {
     public:
         Ipmroutenexthopentry();
@@ -173,32 +184,34 @@ class IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipmroutenexthopgroup; //type: string
-        YLeaf ipmroutenexthopsource; //type: string
-        YLeaf ipmroutenexthopsourcemask; //type: string
-        YLeaf ipmroutenexthopifindex; //type: int32
-        YLeaf ipmroutenexthopaddress; //type: string
-        YLeaf ipmroutenexthopstate; //type: IpmroutenexthopstateEnum
-        YLeaf ipmroutenexthopuptime; //type: uint32
-        YLeaf ipmroutenexthopexpirytime; //type: uint32
-        YLeaf ipmroutenexthopclosestmemberhops; //type: int32
-        YLeaf ipmroutenexthopprotocol; //type: IanaipmrouteprotocolEnum
-        YLeaf ipmroutenexthoppkts; //type: uint32
-        YLeaf ciscoipmroutenexthopoutlimit; //type: uint32
-        YLeaf ciscoipmroutenexthopmachdr; //type: binary
-        YLeaf ciscoipmroutenexthoppkts; //type: uint64
-        class IpmroutenexthopstateEnum;
+        ydk::YLeaf ipmroutenexthopgroup; //type: string
+        ydk::YLeaf ipmroutenexthopsource; //type: string
+        ydk::YLeaf ipmroutenexthopsourcemask; //type: string
+        ydk::YLeaf ipmroutenexthopifindex; //type: int32
+        ydk::YLeaf ipmroutenexthopaddress; //type: string
+        ydk::YLeaf ipmroutenexthopstate; //type: Ipmroutenexthopstate
+        ydk::YLeaf ipmroutenexthopuptime; //type: uint32
+        ydk::YLeaf ipmroutenexthopexpirytime; //type: uint32
+        ydk::YLeaf ipmroutenexthopclosestmemberhops; //type: int32
+        ydk::YLeaf ipmroutenexthopprotocol; //type: Ianaipmrouteprotocol
+        ydk::YLeaf ipmroutenexthoppkts; //type: uint32
+        ydk::YLeaf ciscoipmroutenexthopoutlimit; //type: uint32
+        ydk::YLeaf ciscoipmroutenexthopmachdr; //type: binary
+        ydk::YLeaf ciscoipmroutenexthoppkts; //type: uint64
+        class Ipmroutenexthopstate;
 
 }; // IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry
 
 
-class IpmrouteStdMib::Ipmrouteinterfacetable : public Entity
+class IpmrouteStdMib::Ipmrouteinterfacetable : public ydk::Entity
 {
     public:
         Ipmrouteinterfacetable();
@@ -206,20 +219,22 @@ class IpmrouteStdMib::Ipmrouteinterfacetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipmrouteinterfaceentry; //type: IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry> > ipmrouteinterfaceentry_;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry> > ipmrouteinterfaceentry;
         
 }; // IpmrouteStdMib::Ipmrouteinterfacetable
 
 
-class IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry : public Entity
+class IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry : public ydk::Entity
 {
     public:
         Ipmrouteinterfaceentry();
@@ -227,31 +242,33 @@ class IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipmrouteinterfaceifindex; //type: int32
-        YLeaf ipmrouteinterfacettl; //type: int32
-        YLeaf ipmrouteinterfaceprotocol; //type: IanaipmrouteprotocolEnum
-        YLeaf ipmrouteinterfaceratelimit; //type: int32
-        YLeaf ipmrouteinterfaceinmcastoctets; //type: uint32
-        YLeaf ipmrouteinterfaceoutmcastoctets; //type: uint32
-        YLeaf ipmrouteinterfacehcinmcastoctets; //type: uint64
-        YLeaf ipmrouteinterfacehcoutmcastoctets; //type: uint64
-        YLeaf ciscoipmrouteifinmcastoctets; //type: uint64
-        YLeaf ciscoipmrouteifoutmcastoctets; //type: uint64
-        YLeaf ciscoipmrouteifinmcastpkts; //type: uint32
-        YLeaf ciscoipmrouteifhcinmcastpkts; //type: uint64
-        YLeaf ciscoipmrouteifoutmcastpkts; //type: uint32
-        YLeaf ciscoipmrouteifhcoutmcastpkts; //type: uint64
+        ydk::YLeaf ipmrouteinterfaceifindex; //type: int32
+        ydk::YLeaf ipmrouteinterfacettl; //type: int32
+        ydk::YLeaf ipmrouteinterfaceprotocol; //type: Ianaipmrouteprotocol
+        ydk::YLeaf ipmrouteinterfaceratelimit; //type: int32
+        ydk::YLeaf ipmrouteinterfaceinmcastoctets; //type: uint32
+        ydk::YLeaf ipmrouteinterfaceoutmcastoctets; //type: uint32
+        ydk::YLeaf ipmrouteinterfacehcinmcastoctets; //type: uint64
+        ydk::YLeaf ipmrouteinterfacehcoutmcastoctets; //type: uint64
+        ydk::YLeaf ciscoipmrouteifinmcastoctets; //type: uint64
+        ydk::YLeaf ciscoipmrouteifoutmcastoctets; //type: uint64
+        ydk::YLeaf ciscoipmrouteifinmcastpkts; //type: uint32
+        ydk::YLeaf ciscoipmrouteifhcinmcastpkts; //type: uint64
+        ydk::YLeaf ciscoipmrouteifoutmcastpkts; //type: uint32
+        ydk::YLeaf ciscoipmrouteifhcoutmcastpkts; //type: uint64
 
 }; // IpmrouteStdMib::Ipmrouteinterfacetable::Ipmrouteinterfaceentry
 
 
-class IpmrouteStdMib::Ipmrouteboundarytable : public Entity
+class IpmrouteStdMib::Ipmrouteboundarytable : public ydk::Entity
 {
     public:
         Ipmrouteboundarytable();
@@ -259,20 +276,22 @@ class IpmrouteStdMib::Ipmrouteboundarytable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipmrouteboundaryentry; //type: IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry> > ipmrouteboundaryentry_;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry> > ipmrouteboundaryentry;
         
 }; // IpmrouteStdMib::Ipmrouteboundarytable
 
 
-class IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry : public Entity
+class IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry : public ydk::Entity
 {
     public:
         Ipmrouteboundaryentry();
@@ -280,21 +299,23 @@ class IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipmrouteboundaryifindex; //type: int32
-        YLeaf ipmrouteboundaryaddress; //type: string
-        YLeaf ipmrouteboundaryaddressmask; //type: string
-        YLeaf ipmrouteboundarystatus; //type: RowstatusEnum
+        ydk::YLeaf ipmrouteboundaryifindex; //type: int32
+        ydk::YLeaf ipmrouteboundaryaddress; //type: string
+        ydk::YLeaf ipmrouteboundaryaddressmask; //type: string
+        ydk::YLeaf ipmrouteboundarystatus; //type: Rowstatus
 
 }; // IpmrouteStdMib::Ipmrouteboundarytable::Ipmrouteboundaryentry
 
 
-class IpmrouteStdMib::Ipmroutescopenametable : public Entity
+class IpmrouteStdMib::Ipmroutescopenametable : public ydk::Entity
 {
     public:
         Ipmroutescopenametable();
@@ -302,20 +323,22 @@ class IpmrouteStdMib::Ipmroutescopenametable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipmroutescopenameentry; //type: IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry
 
-        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry> > ipmroutescopenameentry_;
+        std::vector<std::shared_ptr<IPMROUTE_STD_MIB::IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry> > ipmroutescopenameentry;
         
 }; // IpmrouteStdMib::Ipmroutescopenametable
 
 
-class IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry : public Entity
+class IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry : public ydk::Entity
 {
     public:
         Ipmroutescopenameentry();
@@ -323,42 +346,44 @@ class IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ipmroutescopenameaddress; //type: string
-        YLeaf ipmroutescopenameaddressmask; //type: string
-        YLeaf ipmroutescopenamelanguage; //type: string
-        YLeaf ipmroutescopenamestring; //type: string
-        YLeaf ipmroutescopenamedefault; //type: boolean
-        YLeaf ipmroutescopenamestatus; //type: RowstatusEnum
+        ydk::YLeaf ipmroutescopenameaddress; //type: string
+        ydk::YLeaf ipmroutescopenameaddressmask; //type: string
+        ydk::YLeaf ipmroutescopenamelanguage; //type: string
+        ydk::YLeaf ipmroutescopenamestring; //type: string
+        ydk::YLeaf ipmroutescopenamedefault; //type: boolean
+        ydk::YLeaf ipmroutescopenamestatus; //type: Rowstatus
 
 }; // IpmrouteStdMib::Ipmroutescopenametable::Ipmroutescopenameentry
 
-class IpmrouteStdMib::Ipmroute::IpmrouteenableEnum : public Enum
+class IpmrouteStdMib::Ipmroute::Ipmrouteenable : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enabled;
-        static const Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 
-class IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::IpmrouterttypeEnum : public Enum
+class IpmrouteStdMib::Ipmroutetable::Ipmrouteentry::Ipmrouterttype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unicast;
-        static const Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
 
 };
 
-class IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::IpmroutenexthopstateEnum : public Enum
+class IpmrouteStdMib::Ipmroutenexthoptable::Ipmroutenexthopentry::Ipmroutenexthopstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf pruned;
-        static const Enum::YLeaf forwarding;
+        static const ydk::Enum::YLeaf pruned;
+        static const ydk::Enum::YLeaf forwarding;
 
 };
 

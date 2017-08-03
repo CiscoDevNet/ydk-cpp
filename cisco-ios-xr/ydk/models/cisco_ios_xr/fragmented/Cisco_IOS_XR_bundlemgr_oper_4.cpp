@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_4.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_bundlemgr_oper {
 
 BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::LoadBalanceData()
@@ -31,10 +33,10 @@ bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalance
 
 bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_link_threshold.operation)
-	|| is_set(type.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_link_threshold.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::get_segment_path() const
@@ -60,9 +62,9 @@ const EntityPath BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_link_threshold.is_set || is_set(local_link_threshold.operation)) leaf_name_data.push_back(local_link_threshold.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (local_link_threshold.is_set || is_set(local_link_threshold.yfilter)) leaf_name_data.push_back(local_link_threshold.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -81,20 +83,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Br
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-link-threshold")
     {
         local_link_threshold = value;
+        local_link_threshold.value_namespace = name_space;
+        local_link_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-link-threshold")
+    {
+        local_link_threshold.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-link-threshold" || name == "type" || name == "value")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundles()
@@ -123,7 +154,7 @@ bool BundlesAdjacency::Nodes::Node::Bundles::has_operation() const
         if(bundle[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::get_segment_path() const
@@ -188,8 +219,19 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::Bundle()
@@ -215,8 +257,8 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::has_data() const
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_name.yfilter)
 	|| (bundle_info !=  nullptr && bundle_info->has_operation());
 }
 
@@ -243,7 +285,7 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_name.is_set || is_set(bundle_name.operation)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
+    if (bundle_name.is_set || is_set(bundle_name.yfilter)) leaf_name_data.push_back(bundle_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -276,12 +318,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-name")
     {
         bundle_name = value;
+        bundle_name.value_namespace = name_space;
+        bundle_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-name")
+    {
+        bundle_name.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-info" || name == "bundle-name")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::BundleInfo()
@@ -335,10 +394,10 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::has_operation()
         if(sub_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(avoid_rebalance.operation)
-	|| is_set(max_member_count.operation)
-	|| is_set(media.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(avoid_rebalance.yfilter)
+	|| ydk::is_set(max_member_count.yfilter)
+	|| ydk::is_set(media.yfilter)
 	|| (brief !=  nullptr && brief->has_operation())
 	|| (load_balance_data !=  nullptr && load_balance_data->has_operation());
 }
@@ -366,9 +425,9 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (avoid_rebalance.is_set || is_set(avoid_rebalance.operation)) leaf_name_data.push_back(avoid_rebalance.get_name_leafdata());
-    if (max_member_count.is_set || is_set(max_member_count.operation)) leaf_name_data.push_back(max_member_count.get_name_leafdata());
-    if (media.is_set || is_set(media.operation)) leaf_name_data.push_back(media.get_name_leafdata());
+    if (avoid_rebalance.is_set || is_set(avoid_rebalance.yfilter)) leaf_name_data.push_back(avoid_rebalance.get_name_leafdata());
+    if (max_member_count.is_set || is_set(max_member_count.yfilter)) leaf_name_data.push_back(max_member_count.get_name_leafdata());
+    if (media.is_set || is_set(media.yfilter)) leaf_name_data.push_back(media.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -457,20 +516,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "avoid-rebalance")
     {
         avoid_rebalance = value;
+        avoid_rebalance.value_namespace = name_space;
+        avoid_rebalance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-member-count")
     {
         max_member_count = value;
+        max_member_count.value_namespace = name_space;
+        max_member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "media")
     {
         media = value;
+        media.value_namespace = name_space;
+        media.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "avoid-rebalance")
+    {
+        avoid_rebalance.yfilter = yfilter;
+    }
+    if(value_path == "max-member-count")
+    {
+        max_member_count.yfilter = yfilter;
+    }
+    if(value_path == "media")
+    {
+        media.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief" || name == "load-balance-data" || name == "member" || name == "sub-interface" || name == "avoid-rebalance" || name == "max-member-count" || name == "media")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::Brief()
@@ -507,11 +595,11 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::has_oper
         if(sub_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(member_count.operation)
-	|| is_set(sub_interface_count.operation)
-	|| is_set(total_weight.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(member_count.yfilter)
+	|| ydk::is_set(sub_interface_count.yfilter)
+	|| ydk::is_set(total_weight.yfilter);
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::get_segment_path() const
@@ -537,10 +625,10 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Bri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (member_count.is_set || is_set(member_count.operation)) leaf_name_data.push_back(member_count.get_name_leafdata());
-    if (sub_interface_count.is_set || is_set(sub_interface_count.operation)) leaf_name_data.push_back(sub_interface_count.get_name_leafdata());
-    if (total_weight.is_set || is_set(total_weight.operation)) leaf_name_data.push_back(total_weight.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (member_count.is_set || is_set(member_count.yfilter)) leaf_name_data.push_back(member_count.get_name_leafdata());
+    if (sub_interface_count.is_set || is_set(sub_interface_count.yfilter)) leaf_name_data.push_back(sub_interface_count.get_name_leafdata());
+    if (total_weight.is_set || is_set(total_weight.yfilter)) leaf_name_data.push_back(total_weight.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -580,24 +668,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-count")
     {
         member_count = value;
+        member_count.value_namespace = name_space;
+        member_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-interface-count")
     {
         sub_interface_count = value;
+        sub_interface_count.value_namespace = name_space;
+        sub_interface_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-weight")
     {
         total_weight = value;
+        total_weight.value_namespace = name_space;
+        total_weight.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "member-count")
+    {
+        member_count.yfilter = yfilter;
+    }
+    if(value_path == "sub-interface-count")
+    {
+        sub_interface_count.yfilter = yfilter;
+    }
+    if(value_path == "total-weight")
+    {
+        total_weight.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sub-interface" || name == "interface-name" || name == "member-count" || name == "sub-interface-count" || name == "total-weight")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::SubInterface()
@@ -623,8 +746,8 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInter
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (load_balance_data !=  nullptr && load_balance_data->has_operation());
 }
 
@@ -651,7 +774,7 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Bri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -684,12 +807,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "load-balance-data" || name == "interface-name")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::LoadBalanceData()
@@ -714,10 +854,10 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInter
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_link_threshold.operation)
-	|| is_set(type.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_link_threshold.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::get_segment_path() const
@@ -743,9 +883,9 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Bri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_link_threshold.is_set || is_set(local_link_threshold.operation)) leaf_name_data.push_back(local_link_threshold.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (local_link_threshold.is_set || is_set(local_link_threshold.yfilter)) leaf_name_data.push_back(local_link_threshold.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -764,20 +904,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-link-threshold")
     {
         local_link_threshold = value;
+        local_link_threshold.value_namespace = name_space;
+        local_link_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-link-threshold")
+    {
+        local_link_threshold.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::SubInterface::LoadBalanceData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-link-threshold" || name == "type" || name == "value")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::LoadBalanceData()
@@ -802,10 +971,10 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_link_threshold.operation)
-	|| is_set(type.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_link_threshold.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::get_segment_path() const
@@ -831,9 +1000,9 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Loa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_link_threshold.is_set || is_set(local_link_threshold.operation)) leaf_name_data.push_back(local_link_threshold.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (local_link_threshold.is_set || is_set(local_link_threshold.yfilter)) leaf_name_data.push_back(local_link_threshold.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -852,20 +1021,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-link-threshold")
     {
         local_link_threshold = value;
+        local_link_threshold.value_namespace = name_space;
+        local_link_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-link-threshold")
+    {
+        local_link_threshold.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::LoadBalanceData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-link-threshold" || name == "type" || name == "value")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::Member()
@@ -892,11 +1090,11 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::has_dat
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(link_id.operation)
-	|| is_set(link_order_number.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(link_id.yfilter)
+	|| ydk::is_set(link_order_number.yfilter);
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::get_segment_path() const
@@ -922,10 +1120,10 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Mem
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (link_id.is_set || is_set(link_id.operation)) leaf_name_data.push_back(link_id.get_name_leafdata());
-    if (link_order_number.is_set || is_set(link_order_number.operation)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (link_id.is_set || is_set(link_id.yfilter)) leaf_name_data.push_back(link_id.get_name_leafdata());
+    if (link_order_number.is_set || is_set(link_order_number.yfilter)) leaf_name_data.push_back(link_order_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -944,24 +1142,59 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-id")
     {
         link_id = value;
+        link_id.value_namespace = name_space;
+        link_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-order-number")
     {
         link_order_number = value;
+        link_order_number.value_namespace = name_space;
+        link_order_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "link-id")
+    {
+        link_id.yfilter = yfilter;
+    }
+    if(value_path == "link-order-number")
+    {
+        link_order_number.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "interface-name" || name == "link-id" || name == "link-order-number")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::SubInterface()
@@ -987,8 +1220,8 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::h
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (load_balance_data !=  nullptr && load_balance_data->has_operation());
 }
 
@@ -1015,7 +1248,7 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Sub
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1048,12 +1281,29 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "load-balance-data" || name == "interface-name")
+        return true;
+    return false;
 }
 
 BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::LoadBalanceData()
@@ -1078,10 +1328,10 @@ bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::L
 
 bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_link_threshold.operation)
-	|| is_set(type.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_link_threshold.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::get_segment_path() const
@@ -1107,9 +1357,9 @@ const EntityPath BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Sub
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_link_threshold.is_set || is_set(local_link_threshold.operation)) leaf_name_data.push_back(local_link_threshold.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (local_link_threshold.is_set || is_set(local_link_threshold.yfilter)) leaf_name_data.push_back(local_link_threshold.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1128,20 +1378,49 @@ std::map<std::string, std::shared_ptr<Entity>> BundlesAdjacency::Nodes::Node::Bu
     return children;
 }
 
-void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::set_value(const std::string & value_path, std::string value)
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-link-threshold")
     {
         local_link_threshold = value;
+        local_link_threshold.value_namespace = name_space;
+        local_link_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-link-threshold")
+    {
+        local_link_threshold.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInterface::LoadBalanceData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-link-threshold" || name == "type" || name == "value")
+        return true;
+    return false;
 }
 
 

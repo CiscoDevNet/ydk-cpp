@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_rip_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_rip_cfg {
 
 Rip::Rip()
@@ -33,7 +35,7 @@ bool Rip::has_data() const
 
 bool Rip::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_vrf !=  nullptr && default_vrf->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::get_children() const
     return children;
 }
 
-void Rip::set_value(const std::string & value_path, std::string value)
+void Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Rip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string Rip::get_bundle_name() const
 augment_capabilities_function Rip::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Rip::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Rip::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf" || name == "vrfs")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::DefaultVrf()
@@ -189,18 +207,18 @@ bool Rip::DefaultVrf::has_data() const
 
 bool Rip::DefaultVrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_summary.operation)
-	|| is_set(broadcast_for_v2.operation)
-	|| is_set(default_metric.operation)
-	|| is_set(distance.operation)
-	|| is_set(enable.operation)
-	|| is_set(maximum_paths.operation)
-	|| is_set(nsf.operation)
-	|| is_set(output_delay.operation)
-	|| is_set(policy_in.operation)
-	|| is_set(policy_out.operation)
-	|| is_set(validate_source_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(auto_summary.yfilter)
+	|| ydk::is_set(broadcast_for_v2.yfilter)
+	|| ydk::is_set(default_metric.yfilter)
+	|| ydk::is_set(distance.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(maximum_paths.yfilter)
+	|| ydk::is_set(nsf.yfilter)
+	|| ydk::is_set(output_delay.yfilter)
+	|| ydk::is_set(policy_in.yfilter)
+	|| ydk::is_set(policy_out.yfilter)
+	|| ydk::is_set(validate_source_disable.yfilter)
 	|| (default_information !=  nullptr && default_information->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (ip_distances !=  nullptr && ip_distances->has_operation())
@@ -232,17 +250,17 @@ const EntityPath Rip::DefaultVrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_summary.is_set || is_set(auto_summary.operation)) leaf_name_data.push_back(auto_summary.get_name_leafdata());
-    if (broadcast_for_v2.is_set || is_set(broadcast_for_v2.operation)) leaf_name_data.push_back(broadcast_for_v2.get_name_leafdata());
-    if (default_metric.is_set || is_set(default_metric.operation)) leaf_name_data.push_back(default_metric.get_name_leafdata());
-    if (distance.is_set || is_set(distance.operation)) leaf_name_data.push_back(distance.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
-    if (nsf.is_set || is_set(nsf.operation)) leaf_name_data.push_back(nsf.get_name_leafdata());
-    if (output_delay.is_set || is_set(output_delay.operation)) leaf_name_data.push_back(output_delay.get_name_leafdata());
-    if (policy_in.is_set || is_set(policy_in.operation)) leaf_name_data.push_back(policy_in.get_name_leafdata());
-    if (policy_out.is_set || is_set(policy_out.operation)) leaf_name_data.push_back(policy_out.get_name_leafdata());
-    if (validate_source_disable.is_set || is_set(validate_source_disable.operation)) leaf_name_data.push_back(validate_source_disable.get_name_leafdata());
+    if (auto_summary.is_set || is_set(auto_summary.yfilter)) leaf_name_data.push_back(auto_summary.get_name_leafdata());
+    if (broadcast_for_v2.is_set || is_set(broadcast_for_v2.yfilter)) leaf_name_data.push_back(broadcast_for_v2.get_name_leafdata());
+    if (default_metric.is_set || is_set(default_metric.yfilter)) leaf_name_data.push_back(default_metric.get_name_leafdata());
+    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (nsf.is_set || is_set(nsf.yfilter)) leaf_name_data.push_back(nsf.get_name_leafdata());
+    if (output_delay.is_set || is_set(output_delay.yfilter)) leaf_name_data.push_back(output_delay.get_name_leafdata());
+    if (policy_in.is_set || is_set(policy_in.yfilter)) leaf_name_data.push_back(policy_in.get_name_leafdata());
+    if (policy_out.is_set || is_set(policy_out.yfilter)) leaf_name_data.push_back(policy_out.get_name_leafdata());
+    if (validate_source_disable.is_set || is_set(validate_source_disable.yfilter)) leaf_name_data.push_back(validate_source_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -345,52 +363,129 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::get_children() c
     return children;
 }
 
-void Rip::DefaultVrf::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-summary")
     {
         auto_summary = value;
+        auto_summary.value_namespace = name_space;
+        auto_summary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-for-v2")
     {
         broadcast_for_v2 = value;
+        broadcast_for_v2.value_namespace = name_space;
+        broadcast_for_v2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-metric")
     {
         default_metric = value;
+        default_metric.value_namespace = name_space;
+        default_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "distance")
     {
         distance = value;
+        distance.value_namespace = name_space;
+        distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsf")
     {
         nsf = value;
+        nsf.value_namespace = name_space;
+        nsf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-delay")
     {
         output_delay = value;
+        output_delay.value_namespace = name_space;
+        output_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-in")
     {
         policy_in = value;
+        policy_in.value_namespace = name_space;
+        policy_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-out")
     {
         policy_out = value;
+        policy_out.value_namespace = name_space;
+        policy_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate-source-disable")
     {
         validate_source_disable = value;
+        validate_source_disable.value_namespace = name_space;
+        validate_source_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-summary")
+    {
+        auto_summary.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-for-v2")
+    {
+        broadcast_for_v2.yfilter = yfilter;
+    }
+    if(value_path == "default-metric")
+    {
+        default_metric.yfilter = yfilter;
+    }
+    if(value_path == "distance")
+    {
+        distance.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+    if(value_path == "nsf")
+    {
+        nsf.yfilter = yfilter;
+    }
+    if(value_path == "output-delay")
+    {
+        output_delay.yfilter = yfilter;
+    }
+    if(value_path == "policy-in")
+    {
+        policy_in.yfilter = yfilter;
+    }
+    if(value_path == "policy-out")
+    {
+        policy_out.yfilter = yfilter;
+    }
+    if(value_path == "validate-source-disable")
+    {
+        validate_source_disable.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-information" || name == "interfaces" || name == "ip-distances" || name == "neighbors" || name == "redistribution" || name == "timers" || name == "auto-summary" || name == "broadcast-for-v2" || name == "default-metric" || name == "distance" || name == "enable" || name == "maximum-paths" || name == "nsf" || name == "output-delay" || name == "policy-in" || name == "policy-out" || name == "validate-source-disable")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::DefaultInformation::DefaultInformation()
@@ -413,9 +508,9 @@ bool Rip::DefaultVrf::DefaultInformation::has_data() const
 
 bool Rip::DefaultVrf::DefaultInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(option.operation)
-	|| is_set(route_policy_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(option.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
 }
 
 std::string Rip::DefaultVrf::DefaultInformation::get_segment_path() const
@@ -441,8 +536,8 @@ const EntityPath Rip::DefaultVrf::DefaultInformation::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (option.is_set || is_set(option.operation)) leaf_name_data.push_back(option.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (option.is_set || is_set(option.yfilter)) leaf_name_data.push_back(option.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -461,16 +556,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::DefaultInformati
     return children;
 }
 
-void Rip::DefaultVrf::DefaultInformation::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "option")
     {
         option = value;
+        option.value_namespace = name_space;
+        option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::DefaultInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option")
+    {
+        option.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::DefaultInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option" || name == "route-policy-name")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Redistribution()
@@ -509,7 +627,7 @@ bool Rip::DefaultVrf::Redistribution::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bgps !=  nullptr && bgps->has_operation())
 	|| (connected !=  nullptr && connected->has_operation())
 	|| (eigrp_s !=  nullptr && eigrp_s->has_operation())
@@ -643,8 +761,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::DefaultVrf::Redistribution::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::DefaultVrf::Redistribution::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgps" || name == "connected" || name == "eigrp-s" || name == "isises" || name == "ospfs" || name == "static")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Connected::Connected()
@@ -667,9 +796,9 @@ bool Rip::DefaultVrf::Redistribution::Connected::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::Connected::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::Connected::get_segment_path() const
@@ -695,8 +824,8 @@ const EntityPath Rip::DefaultVrf::Redistribution::Connected::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -715,16 +844,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Connected::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Redistribution::Connected::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Redistribution::Connected::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "route-type")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Bgps::Bgps()
@@ -753,7 +905,7 @@ bool Rip::DefaultVrf::Redistribution::Bgps::has_operation() const
         if(bgp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::Bgps::get_segment_path() const
@@ -818,8 +970,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Bgps::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::Bgps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::DefaultVrf::Redistribution::Bgps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::DefaultVrf::Redistribution::Bgps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Bgps::Bgp::Bgp()
@@ -846,11 +1009,11 @@ bool Rip::DefaultVrf::Redistribution::Bgps::Bgp::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::Bgps::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asnxx.operation)
-	|| is_set(asnyy.operation)
-	|| is_set(policy.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(asnxx.yfilter)
+	|| ydk::is_set(asnyy.yfilter)
+	|| ydk::is_set(policy.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::Bgps::Bgp::get_segment_path() const
@@ -876,10 +1039,10 @@ const EntityPath Rip::DefaultVrf::Redistribution::Bgps::Bgp::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asnxx.is_set || is_set(asnxx.operation)) leaf_name_data.push_back(asnxx.get_name_leafdata());
-    if (asnyy.is_set || is_set(asnyy.operation)) leaf_name_data.push_back(asnyy.get_name_leafdata());
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (asnxx.is_set || is_set(asnxx.yfilter)) leaf_name_data.push_back(asnxx.get_name_leafdata());
+    if (asnyy.is_set || is_set(asnyy.yfilter)) leaf_name_data.push_back(asnyy.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -898,24 +1061,59 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Bgps::Bgp::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::Bgps::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asnxx")
     {
         asnxx = value;
+        asnxx.value_namespace = name_space;
+        asnxx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "asnyy")
     {
         asnyy = value;
+        asnyy.value_namespace = name_space;
+        asnyy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Redistribution::Bgps::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asnxx")
+    {
+        asnxx.yfilter = yfilter;
+    }
+    if(value_path == "asnyy")
+    {
+        asnyy.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Redistribution::Bgps::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asnxx" || name == "asnyy" || name == "policy" || name == "type")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Isises::Isises()
@@ -944,7 +1142,7 @@ bool Rip::DefaultVrf::Redistribution::Isises::has_operation() const
         if(isis[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::Isises::get_segment_path() const
@@ -1009,8 +1207,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Isises::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::Isises::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::DefaultVrf::Redistribution::Isises::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::DefaultVrf::Redistribution::Isises::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "isis")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Isises::Isis::Isis()
@@ -1035,10 +1244,10 @@ bool Rip::DefaultVrf::Redistribution::Isises::Isis::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::Isises::Isis::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(isis_name.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(isis_name.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::Isises::Isis::get_segment_path() const
@@ -1064,9 +1273,9 @@ const EntityPath Rip::DefaultVrf::Redistribution::Isises::Isis::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (isis_name.is_set || is_set(isis_name.operation)) leaf_name_data.push_back(isis_name.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (isis_name.is_set || is_set(isis_name.yfilter)) leaf_name_data.push_back(isis_name.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1085,20 +1294,49 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Isises::Isis::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::Isises::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "isis-name")
     {
         isis_name = value;
+        isis_name.value_namespace = name_space;
+        isis_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Redistribution::Isises::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "isis-name")
+    {
+        isis_name.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Redistribution::Isises::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "isis-name" || name == "route-policy-name" || name == "route-type")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::EigrpS::EigrpS()
@@ -1127,7 +1365,7 @@ bool Rip::DefaultVrf::Redistribution::EigrpS::has_operation() const
         if(eigrp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::EigrpS::get_segment_path() const
@@ -1192,8 +1430,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::EigrpS::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::EigrpS::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::DefaultVrf::Redistribution::EigrpS::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::DefaultVrf::Redistribution::EigrpS::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "eigrp")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::Eigrp()
@@ -1218,10 +1467,10 @@ bool Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(as.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::get_segment_path() const
@@ -1247,9 +1496,9 @@ const EntityPath Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1268,20 +1517,49 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as" || name == "route-policy-name" || name == "route-type")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Static_::Static_()
@@ -1304,9 +1582,9 @@ bool Rip::DefaultVrf::Redistribution::Static_::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::Static_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::Static_::get_segment_path() const
@@ -1332,8 +1610,8 @@ const EntityPath Rip::DefaultVrf::Redistribution::Static_::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1352,16 +1630,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Static_::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Redistribution::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Redistribution::Static_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "route-type")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Ospfs::Ospfs()
@@ -1390,7 +1691,7 @@ bool Rip::DefaultVrf::Redistribution::Ospfs::has_operation() const
         if(ospf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::Ospfs::get_segment_path() const
@@ -1455,8 +1756,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Ospfs::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::Ospfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::DefaultVrf::Redistribution::Ospfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::DefaultVrf::Redistribution::Ospfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Redistribution::Ospfs::Ospf::Ospf()
@@ -1489,14 +1801,14 @@ bool Rip::DefaultVrf::Redistribution::Ospfs::Ospf::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::Ospfs::Ospf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ospf_name.operation)
-	|| is_set(external.operation)
-	|| is_set(external_type.operation)
-	|| is_set(internal.operation)
-	|| is_set(nssa_external.operation)
-	|| is_set(nssa_external_type.operation)
-	|| is_set(route_policy_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ospf_name.yfilter)
+	|| ydk::is_set(external.yfilter)
+	|| ydk::is_set(external_type.yfilter)
+	|| ydk::is_set(internal.yfilter)
+	|| ydk::is_set(nssa_external.yfilter)
+	|| ydk::is_set(nssa_external_type.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
 }
 
 std::string Rip::DefaultVrf::Redistribution::Ospfs::Ospf::get_segment_path() const
@@ -1522,13 +1834,13 @@ const EntityPath Rip::DefaultVrf::Redistribution::Ospfs::Ospf::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ospf_name.is_set || is_set(ospf_name.operation)) leaf_name_data.push_back(ospf_name.get_name_leafdata());
-    if (external.is_set || is_set(external.operation)) leaf_name_data.push_back(external.get_name_leafdata());
-    if (external_type.is_set || is_set(external_type.operation)) leaf_name_data.push_back(external_type.get_name_leafdata());
-    if (internal.is_set || is_set(internal.operation)) leaf_name_data.push_back(internal.get_name_leafdata());
-    if (nssa_external.is_set || is_set(nssa_external.operation)) leaf_name_data.push_back(nssa_external.get_name_leafdata());
-    if (nssa_external_type.is_set || is_set(nssa_external_type.operation)) leaf_name_data.push_back(nssa_external_type.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (ospf_name.is_set || is_set(ospf_name.yfilter)) leaf_name_data.push_back(ospf_name.get_name_leafdata());
+    if (external.is_set || is_set(external.yfilter)) leaf_name_data.push_back(external.get_name_leafdata());
+    if (external_type.is_set || is_set(external_type.yfilter)) leaf_name_data.push_back(external_type.get_name_leafdata());
+    if (internal.is_set || is_set(internal.yfilter)) leaf_name_data.push_back(internal.get_name_leafdata());
+    if (nssa_external.is_set || is_set(nssa_external.yfilter)) leaf_name_data.push_back(nssa_external.get_name_leafdata());
+    if (nssa_external_type.is_set || is_set(nssa_external_type.yfilter)) leaf_name_data.push_back(nssa_external_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1547,36 +1859,89 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     return children;
 }
 
-void Rip::DefaultVrf::Redistribution::Ospfs::Ospf::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Redistribution::Ospfs::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ospf-name")
     {
         ospf_name = value;
+        ospf_name.value_namespace = name_space;
+        ospf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external")
     {
         external = value;
+        external.value_namespace = name_space;
+        external.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-type")
     {
         external_type = value;
+        external_type.value_namespace = name_space;
+        external_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal")
     {
         internal = value;
+        internal.value_namespace = name_space;
+        internal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nssa-external")
     {
         nssa_external = value;
+        nssa_external.value_namespace = name_space;
+        nssa_external.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nssa-external-type")
     {
         nssa_external_type = value;
+        nssa_external_type.value_namespace = name_space;
+        nssa_external_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Redistribution::Ospfs::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ospf-name")
+    {
+        ospf_name.yfilter = yfilter;
+    }
+    if(value_path == "external")
+    {
+        external.yfilter = yfilter;
+    }
+    if(value_path == "external-type")
+    {
+        external_type.yfilter = yfilter;
+    }
+    if(value_path == "internal")
+    {
+        internal.yfilter = yfilter;
+    }
+    if(value_path == "nssa-external")
+    {
+        nssa_external.yfilter = yfilter;
+    }
+    if(value_path == "nssa-external-type")
+    {
+        nssa_external_type.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Redistribution::Ospfs::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf-name" || name == "external" || name == "external-type" || name == "internal" || name == "nssa-external" || name == "nssa-external-type" || name == "route-policy-name")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::IpDistances::IpDistances()
@@ -1605,7 +1970,7 @@ bool Rip::DefaultVrf::IpDistances::has_operation() const
         if(ip_distance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::DefaultVrf::IpDistances::get_segment_path() const
@@ -1670,8 +2035,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::IpDistances::get
     return children;
 }
 
-void Rip::DefaultVrf::IpDistances::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::IpDistances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::DefaultVrf::IpDistances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::DefaultVrf::IpDistances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-distance")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::IpDistances::IpDistance::IpDistance()
@@ -1696,10 +2072,10 @@ bool Rip::DefaultVrf::IpDistances::IpDistance::has_data() const
 
 bool Rip::DefaultVrf::IpDistances::IpDistance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(netmask.operation)
-	|| is_set(distance.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(netmask.yfilter)
+	|| ydk::is_set(distance.yfilter);
 }
 
 std::string Rip::DefaultVrf::IpDistances::IpDistance::get_segment_path() const
@@ -1725,9 +2101,9 @@ const EntityPath Rip::DefaultVrf::IpDistances::IpDistance::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.operation)) leaf_name_data.push_back(netmask.get_name_leafdata());
-    if (distance.is_set || is_set(distance.operation)) leaf_name_data.push_back(distance.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
+    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1746,20 +2122,49 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::IpDistances::IpD
     return children;
 }
 
-void Rip::DefaultVrf::IpDistances::IpDistance::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::IpDistances::IpDistance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netmask")
     {
         netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "distance")
     {
         distance = value;
+        distance.value_namespace = name_space;
+        distance.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::IpDistances::IpDistance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
+    }
+    if(value_path == "distance")
+    {
+        distance.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::IpDistances::IpDistance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "netmask" || name == "distance")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Interfaces::Interfaces()
@@ -1788,7 +2193,7 @@ bool Rip::DefaultVrf::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::DefaultVrf::Interfaces::get_segment_path() const
@@ -1853,8 +2258,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::get_
     return children;
 }
 
-void Rip::DefaultVrf::Interfaces::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::DefaultVrf::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::DefaultVrf::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Interfaces::Interface::Interface()
@@ -1906,16 +2322,16 @@ bool Rip::DefaultVrf::Interfaces::Interface::has_data() const
 
 bool Rip::DefaultVrf::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(accept_metric_zero.operation)
-	|| is_set(broadcast_for_v2.operation)
-	|| is_set(enable.operation)
-	|| is_set(passive.operation)
-	|| is_set(poison_reverse.operation)
-	|| is_set(policy_in.operation)
-	|| is_set(policy_out.operation)
-	|| is_set(split_horizon_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(accept_metric_zero.yfilter)
+	|| ydk::is_set(broadcast_for_v2.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(passive.yfilter)
+	|| ydk::is_set(poison_reverse.yfilter)
+	|| ydk::is_set(policy_in.yfilter)
+	|| ydk::is_set(policy_out.yfilter)
+	|| ydk::is_set(split_horizon_disable.yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (receive_version !=  nullptr && receive_version->has_operation())
 	|| (send_version !=  nullptr && send_version->has_operation())
@@ -1945,15 +2361,15 @@ const EntityPath Rip::DefaultVrf::Interfaces::Interface::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (accept_metric_zero.is_set || is_set(accept_metric_zero.operation)) leaf_name_data.push_back(accept_metric_zero.get_name_leafdata());
-    if (broadcast_for_v2.is_set || is_set(broadcast_for_v2.operation)) leaf_name_data.push_back(broadcast_for_v2.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (passive.is_set || is_set(passive.operation)) leaf_name_data.push_back(passive.get_name_leafdata());
-    if (poison_reverse.is_set || is_set(poison_reverse.operation)) leaf_name_data.push_back(poison_reverse.get_name_leafdata());
-    if (policy_in.is_set || is_set(policy_in.operation)) leaf_name_data.push_back(policy_in.get_name_leafdata());
-    if (policy_out.is_set || is_set(policy_out.operation)) leaf_name_data.push_back(policy_out.get_name_leafdata());
-    if (split_horizon_disable.is_set || is_set(split_horizon_disable.operation)) leaf_name_data.push_back(split_horizon_disable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (accept_metric_zero.is_set || is_set(accept_metric_zero.yfilter)) leaf_name_data.push_back(accept_metric_zero.get_name_leafdata());
+    if (broadcast_for_v2.is_set || is_set(broadcast_for_v2.yfilter)) leaf_name_data.push_back(broadcast_for_v2.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (passive.is_set || is_set(passive.yfilter)) leaf_name_data.push_back(passive.get_name_leafdata());
+    if (poison_reverse.is_set || is_set(poison_reverse.yfilter)) leaf_name_data.push_back(poison_reverse.get_name_leafdata());
+    if (policy_in.is_set || is_set(policy_in.yfilter)) leaf_name_data.push_back(policy_in.get_name_leafdata());
+    if (policy_out.is_set || is_set(policy_out.yfilter)) leaf_name_data.push_back(policy_out.get_name_leafdata());
+    if (split_horizon_disable.is_set || is_set(split_horizon_disable.yfilter)) leaf_name_data.push_back(split_horizon_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2028,44 +2444,109 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Inte
     return children;
 }
 
-void Rip::DefaultVrf::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accept-metric-zero")
     {
         accept_metric_zero = value;
+        accept_metric_zero.value_namespace = name_space;
+        accept_metric_zero.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-for-v2")
     {
         broadcast_for_v2 = value;
+        broadcast_for_v2.value_namespace = name_space;
+        broadcast_for_v2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passive")
     {
         passive = value;
+        passive.value_namespace = name_space;
+        passive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poison-reverse")
     {
         poison_reverse = value;
+        poison_reverse.value_namespace = name_space;
+        poison_reverse.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-in")
     {
         policy_in = value;
+        policy_in.value_namespace = name_space;
+        policy_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-out")
     {
         policy_out = value;
+        policy_out.value_namespace = name_space;
+        policy_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "split-horizon-disable")
     {
         split_horizon_disable = value;
+        split_horizon_disable.value_namespace = name_space;
+        split_horizon_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "accept-metric-zero")
+    {
+        accept_metric_zero.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-for-v2")
+    {
+        broadcast_for_v2.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "passive")
+    {
+        passive.yfilter = yfilter;
+    }
+    if(value_path == "poison-reverse")
+    {
+        poison_reverse.yfilter = yfilter;
+    }
+    if(value_path == "policy-in")
+    {
+        policy_in.yfilter = yfilter;
+    }
+    if(value_path == "policy-out")
+    {
+        policy_out.yfilter = yfilter;
+    }
+    if(value_path == "split-horizon-disable")
+    {
+        split_horizon_disable.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication" || name == "receive-version" || name == "send-version" || name == "site-of-origin" || name == "interface-name" || name == "accept-metric-zero" || name == "broadcast-for-v2" || name == "enable" || name == "passive" || name == "poison-reverse" || name == "policy-in" || name == "policy-out" || name == "split-horizon-disable")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Interfaces::Interface::Authentication::Authentication()
@@ -2088,9 +2569,9 @@ bool Rip::DefaultVrf::Interfaces::Interface::Authentication::has_data() const
 
 bool Rip::DefaultVrf::Interfaces::Interface::Authentication::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(keychain.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(keychain.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Rip::DefaultVrf::Interfaces::Interface::Authentication::get_segment_path() const
@@ -2116,8 +2597,8 @@ const EntityPath Rip::DefaultVrf::Interfaces::Interface::Authentication::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (keychain.is_set || is_set(keychain.operation)) leaf_name_data.push_back(keychain.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (keychain.is_set || is_set(keychain.yfilter)) leaf_name_data.push_back(keychain.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2136,16 +2617,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Inte
     return children;
 }
 
-void Rip::DefaultVrf::Interfaces::Interface::Authentication::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Interfaces::Interface::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "keychain")
     {
         keychain = value;
+        keychain.value_namespace = name_space;
+        keychain.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Interfaces::Interface::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "keychain")
+    {
+        keychain.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Interfaces::Interface::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keychain" || name == "mode")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::SiteOfOrigin()
@@ -2176,13 +2680,13 @@ bool Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::has_data() const
 
 bool Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_index.operation)
-	|| is_set(as_index.operation)
-	|| is_set(as_xx.operation)
-	|| is_set(as_yy.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_index.yfilter)
+	|| ydk::is_set(as_index.yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as_yy.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::get_segment_path() const
@@ -2208,12 +2712,12 @@ const EntityPath Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_index.is_set || is_set(address_index.operation)) leaf_name_data.push_back(address_index.get_name_leafdata());
-    if (as_index.is_set || is_set(as_index.operation)) leaf_name_data.push_back(as_index.get_name_leafdata());
-    if (as_xx.is_set || is_set(as_xx.operation)) leaf_name_data.push_back(as_xx.get_name_leafdata());
-    if (as_yy.is_set || is_set(as_yy.operation)) leaf_name_data.push_back(as_yy.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_index.is_set || is_set(address_index.yfilter)) leaf_name_data.push_back(address_index.get_name_leafdata());
+    if (as_index.is_set || is_set(as_index.yfilter)) leaf_name_data.push_back(as_index.get_name_leafdata());
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as_yy.is_set || is_set(as_yy.yfilter)) leaf_name_data.push_back(as_yy.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2232,32 +2736,79 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Inte
     return children;
 }
 
-void Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-index")
     {
         address_index = value;
+        address_index.value_namespace = name_space;
+        address_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-index")
     {
         as_index = value;
+        as_index.value_namespace = name_space;
+        as_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-xx")
     {
         as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-yy")
     {
         as_yy = value;
+        as_yy.value_namespace = name_space;
+        as_yy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-index")
+    {
+        address_index.yfilter = yfilter;
+    }
+    if(value_path == "as-index")
+    {
+        as_index.yfilter = yfilter;
+    }
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as-yy")
+    {
+        as_yy.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-index" || name == "as-index" || name == "as-xx" || name == "as-yy" || name == "type")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::ReceiveVersion()
@@ -2280,9 +2831,9 @@ bool Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::has_data() const
 
 bool Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(version1.operation)
-	|| is_set(version2.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(version1.yfilter)
+	|| ydk::is_set(version2.yfilter);
 }
 
 std::string Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::get_segment_path() const
@@ -2308,8 +2859,8 @@ const EntityPath Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (version1.is_set || is_set(version1.operation)) leaf_name_data.push_back(version1.get_name_leafdata());
-    if (version2.is_set || is_set(version2.operation)) leaf_name_data.push_back(version2.get_name_leafdata());
+    if (version1.is_set || is_set(version1.yfilter)) leaf_name_data.push_back(version1.get_name_leafdata());
+    if (version2.is_set || is_set(version2.yfilter)) leaf_name_data.push_back(version2.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2328,16 +2879,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Inte
     return children;
 }
 
-void Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "version1")
     {
         version1 = value;
+        version1.value_namespace = name_space;
+        version1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version2")
     {
         version2 = value;
+        version2.value_namespace = name_space;
+        version2.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "version1")
+    {
+        version1.yfilter = yfilter;
+    }
+    if(value_path == "version2")
+    {
+        version2.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "version1" || name == "version2")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Interfaces::Interface::SendVersion::SendVersion()
@@ -2360,9 +2934,9 @@ bool Rip::DefaultVrf::Interfaces::Interface::SendVersion::has_data() const
 
 bool Rip::DefaultVrf::Interfaces::Interface::SendVersion::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(version1.operation)
-	|| is_set(version2.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(version1.yfilter)
+	|| ydk::is_set(version2.yfilter);
 }
 
 std::string Rip::DefaultVrf::Interfaces::Interface::SendVersion::get_segment_path() const
@@ -2388,8 +2962,8 @@ const EntityPath Rip::DefaultVrf::Interfaces::Interface::SendVersion::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (version1.is_set || is_set(version1.operation)) leaf_name_data.push_back(version1.get_name_leafdata());
-    if (version2.is_set || is_set(version2.operation)) leaf_name_data.push_back(version2.get_name_leafdata());
+    if (version1.is_set || is_set(version1.yfilter)) leaf_name_data.push_back(version1.get_name_leafdata());
+    if (version2.is_set || is_set(version2.yfilter)) leaf_name_data.push_back(version2.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2408,16 +2982,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::Inte
     return children;
 }
 
-void Rip::DefaultVrf::Interfaces::Interface::SendVersion::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Interfaces::Interface::SendVersion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "version1")
     {
         version1 = value;
+        version1.value_namespace = name_space;
+        version1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version2")
     {
         version2 = value;
+        version2.value_namespace = name_space;
+        version2.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Interfaces::Interface::SendVersion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "version1")
+    {
+        version1.yfilter = yfilter;
+    }
+    if(value_path == "version2")
+    {
+        version2.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Interfaces::Interface::SendVersion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "version1" || name == "version2")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Neighbors::Neighbors()
@@ -2446,7 +3043,7 @@ bool Rip::DefaultVrf::Neighbors::has_operation() const
         if(neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::DefaultVrf::Neighbors::get_segment_path() const
@@ -2511,8 +3108,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Neighbors::get_c
     return children;
 }
 
-void Rip::DefaultVrf::Neighbors::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::DefaultVrf::Neighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::DefaultVrf::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Neighbors::Neighbor::Neighbor()
@@ -2533,8 +3141,8 @@ bool Rip::DefaultVrf::Neighbors::Neighbor::has_data() const
 
 bool Rip::DefaultVrf::Neighbors::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(neighbor_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_address.yfilter);
 }
 
 std::string Rip::DefaultVrf::Neighbors::Neighbor::get_segment_path() const
@@ -2560,7 +3168,7 @@ const EntityPath Rip::DefaultVrf::Neighbors::Neighbor::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2579,12 +3187,29 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Neighbors::Neigh
     return children;
 }
 
-void Rip::DefaultVrf::Neighbors::Neighbor::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Neighbors::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-address")
+        return true;
+    return false;
 }
 
 Rip::DefaultVrf::Timers::Timers()
@@ -2611,11 +3236,11 @@ bool Rip::DefaultVrf::Timers::has_data() const
 
 bool Rip::DefaultVrf::Timers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(flush_timer.operation)
-	|| is_set(holddown_timer.operation)
-	|| is_set(invalid_timer.operation)
-	|| is_set(update_timer.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(flush_timer.yfilter)
+	|| ydk::is_set(holddown_timer.yfilter)
+	|| ydk::is_set(invalid_timer.yfilter)
+	|| ydk::is_set(update_timer.yfilter);
 }
 
 std::string Rip::DefaultVrf::Timers::get_segment_path() const
@@ -2641,10 +3266,10 @@ const EntityPath Rip::DefaultVrf::Timers::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flush_timer.is_set || is_set(flush_timer.operation)) leaf_name_data.push_back(flush_timer.get_name_leafdata());
-    if (holddown_timer.is_set || is_set(holddown_timer.operation)) leaf_name_data.push_back(holddown_timer.get_name_leafdata());
-    if (invalid_timer.is_set || is_set(invalid_timer.operation)) leaf_name_data.push_back(invalid_timer.get_name_leafdata());
-    if (update_timer.is_set || is_set(update_timer.operation)) leaf_name_data.push_back(update_timer.get_name_leafdata());
+    if (flush_timer.is_set || is_set(flush_timer.yfilter)) leaf_name_data.push_back(flush_timer.get_name_leafdata());
+    if (holddown_timer.is_set || is_set(holddown_timer.yfilter)) leaf_name_data.push_back(holddown_timer.get_name_leafdata());
+    if (invalid_timer.is_set || is_set(invalid_timer.yfilter)) leaf_name_data.push_back(invalid_timer.get_name_leafdata());
+    if (update_timer.is_set || is_set(update_timer.yfilter)) leaf_name_data.push_back(update_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2663,24 +3288,59 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Timers::get_chil
     return children;
 }
 
-void Rip::DefaultVrf::Timers::set_value(const std::string & value_path, std::string value)
+void Rip::DefaultVrf::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flush-timer")
     {
         flush_timer = value;
+        flush_timer.value_namespace = name_space;
+        flush_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "holddown-timer")
     {
         holddown_timer = value;
+        holddown_timer.value_namespace = name_space;
+        holddown_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-timer")
     {
         invalid_timer = value;
+        invalid_timer.value_namespace = name_space;
+        invalid_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "update-timer")
     {
         update_timer = value;
+        update_timer.value_namespace = name_space;
+        update_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::DefaultVrf::Timers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flush-timer")
+    {
+        flush_timer.yfilter = yfilter;
+    }
+    if(value_path == "holddown-timer")
+    {
+        holddown_timer.yfilter = yfilter;
+    }
+    if(value_path == "invalid-timer")
+    {
+        invalid_timer.yfilter = yfilter;
+    }
+    if(value_path == "update-timer")
+    {
+        update_timer.yfilter = yfilter;
+    }
+}
+
+bool Rip::DefaultVrf::Timers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flush-timer" || name == "holddown-timer" || name == "invalid-timer" || name == "update-timer")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrfs()
@@ -2709,7 +3369,7 @@ bool Rip::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::Vrfs::get_segment_path() const
@@ -2774,8 +3434,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::get_children() const
     return children;
 }
 
-void Rip::Vrfs::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Vrf()
@@ -2841,19 +3512,19 @@ bool Rip::Vrfs::Vrf::has_data() const
 
 bool Rip::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(auto_summary.operation)
-	|| is_set(broadcast_for_v2.operation)
-	|| is_set(default_metric.operation)
-	|| is_set(distance.operation)
-	|| is_set(enable.operation)
-	|| is_set(maximum_paths.operation)
-	|| is_set(nsf.operation)
-	|| is_set(output_delay.operation)
-	|| is_set(policy_in.operation)
-	|| is_set(policy_out.operation)
-	|| is_set(validate_source_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(auto_summary.yfilter)
+	|| ydk::is_set(broadcast_for_v2.yfilter)
+	|| ydk::is_set(default_metric.yfilter)
+	|| ydk::is_set(distance.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(maximum_paths.yfilter)
+	|| ydk::is_set(nsf.yfilter)
+	|| ydk::is_set(output_delay.yfilter)
+	|| ydk::is_set(policy_in.yfilter)
+	|| ydk::is_set(policy_out.yfilter)
+	|| ydk::is_set(validate_source_disable.yfilter)
 	|| (default_information !=  nullptr && default_information->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (ip_distances !=  nullptr && ip_distances->has_operation())
@@ -2885,18 +3556,18 @@ const EntityPath Rip::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (auto_summary.is_set || is_set(auto_summary.operation)) leaf_name_data.push_back(auto_summary.get_name_leafdata());
-    if (broadcast_for_v2.is_set || is_set(broadcast_for_v2.operation)) leaf_name_data.push_back(broadcast_for_v2.get_name_leafdata());
-    if (default_metric.is_set || is_set(default_metric.operation)) leaf_name_data.push_back(default_metric.get_name_leafdata());
-    if (distance.is_set || is_set(distance.operation)) leaf_name_data.push_back(distance.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
-    if (nsf.is_set || is_set(nsf.operation)) leaf_name_data.push_back(nsf.get_name_leafdata());
-    if (output_delay.is_set || is_set(output_delay.operation)) leaf_name_data.push_back(output_delay.get_name_leafdata());
-    if (policy_in.is_set || is_set(policy_in.operation)) leaf_name_data.push_back(policy_in.get_name_leafdata());
-    if (policy_out.is_set || is_set(policy_out.operation)) leaf_name_data.push_back(policy_out.get_name_leafdata());
-    if (validate_source_disable.is_set || is_set(validate_source_disable.operation)) leaf_name_data.push_back(validate_source_disable.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (auto_summary.is_set || is_set(auto_summary.yfilter)) leaf_name_data.push_back(auto_summary.get_name_leafdata());
+    if (broadcast_for_v2.is_set || is_set(broadcast_for_v2.yfilter)) leaf_name_data.push_back(broadcast_for_v2.get_name_leafdata());
+    if (default_metric.is_set || is_set(default_metric.yfilter)) leaf_name_data.push_back(default_metric.get_name_leafdata());
+    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (nsf.is_set || is_set(nsf.yfilter)) leaf_name_data.push_back(nsf.get_name_leafdata());
+    if (output_delay.is_set || is_set(output_delay.yfilter)) leaf_name_data.push_back(output_delay.get_name_leafdata());
+    if (policy_in.is_set || is_set(policy_in.yfilter)) leaf_name_data.push_back(policy_in.get_name_leafdata());
+    if (policy_out.is_set || is_set(policy_out.yfilter)) leaf_name_data.push_back(policy_out.get_name_leafdata());
+    if (validate_source_disable.is_set || is_set(validate_source_disable.yfilter)) leaf_name_data.push_back(validate_source_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2999,56 +3670,139 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::get_children() co
     return children;
 }
 
-void Rip::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auto-summary")
     {
         auto_summary = value;
+        auto_summary.value_namespace = name_space;
+        auto_summary.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-for-v2")
     {
         broadcast_for_v2 = value;
+        broadcast_for_v2.value_namespace = name_space;
+        broadcast_for_v2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-metric")
     {
         default_metric = value;
+        default_metric.value_namespace = name_space;
+        default_metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "distance")
     {
         distance = value;
+        distance.value_namespace = name_space;
+        distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsf")
     {
         nsf = value;
+        nsf.value_namespace = name_space;
+        nsf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-delay")
     {
         output_delay = value;
+        output_delay.value_namespace = name_space;
+        output_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-in")
     {
         policy_in = value;
+        policy_in.value_namespace = name_space;
+        policy_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-out")
     {
         policy_out = value;
+        policy_out.value_namespace = name_space;
+        policy_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate-source-disable")
     {
         validate_source_disable = value;
+        validate_source_disable.value_namespace = name_space;
+        validate_source_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "auto-summary")
+    {
+        auto_summary.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-for-v2")
+    {
+        broadcast_for_v2.yfilter = yfilter;
+    }
+    if(value_path == "default-metric")
+    {
+        default_metric.yfilter = yfilter;
+    }
+    if(value_path == "distance")
+    {
+        distance.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+    if(value_path == "nsf")
+    {
+        nsf.yfilter = yfilter;
+    }
+    if(value_path == "output-delay")
+    {
+        output_delay.yfilter = yfilter;
+    }
+    if(value_path == "policy-in")
+    {
+        policy_in.yfilter = yfilter;
+    }
+    if(value_path == "policy-out")
+    {
+        policy_out.yfilter = yfilter;
+    }
+    if(value_path == "validate-source-disable")
+    {
+        validate_source_disable.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-information" || name == "interfaces" || name == "ip-distances" || name == "neighbors" || name == "redistribution" || name == "timers" || name == "vrf-name" || name == "auto-summary" || name == "broadcast-for-v2" || name == "default-metric" || name == "distance" || name == "enable" || name == "maximum-paths" || name == "nsf" || name == "output-delay" || name == "policy-in" || name == "policy-out" || name == "validate-source-disable")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::DefaultInformation::DefaultInformation()
@@ -3071,9 +3825,9 @@ bool Rip::Vrfs::Vrf::DefaultInformation::has_data() const
 
 bool Rip::Vrfs::Vrf::DefaultInformation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(option.operation)
-	|| is_set(route_policy_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(option.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::DefaultInformation::get_segment_path() const
@@ -3099,8 +3853,8 @@ const EntityPath Rip::Vrfs::Vrf::DefaultInformation::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (option.is_set || is_set(option.operation)) leaf_name_data.push_back(option.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (option.is_set || is_set(option.yfilter)) leaf_name_data.push_back(option.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3119,16 +3873,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::DefaultInformatio
     return children;
 }
 
-void Rip::Vrfs::Vrf::DefaultInformation::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::DefaultInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "option")
     {
         option = value;
+        option.value_namespace = name_space;
+        option.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::DefaultInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option")
+    {
+        option.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::DefaultInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option" || name == "route-policy-name")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Redistribution()
@@ -3167,7 +3944,7 @@ bool Rip::Vrfs::Vrf::Redistribution::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bgps !=  nullptr && bgps->has_operation())
 	|| (connected !=  nullptr && connected->has_operation())
 	|| (eigrp_s !=  nullptr && eigrp_s->has_operation())
@@ -3301,8 +4078,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::g
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::Vrf::Redistribution::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgps" || name == "connected" || name == "eigrp-s" || name == "isises" || name == "ospfs" || name == "static")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Connected::Connected()
@@ -3325,9 +4113,9 @@ bool Rip::Vrfs::Vrf::Redistribution::Connected::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::Connected::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::Connected::get_segment_path() const
@@ -3353,8 +4141,8 @@ const EntityPath Rip::Vrfs::Vrf::Redistribution::Connected::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3373,16 +4161,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::C
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Connected::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::Connected::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Redistribution::Connected::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::Connected::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "route-type")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Bgps::Bgps()
@@ -3411,7 +4222,7 @@ bool Rip::Vrfs::Vrf::Redistribution::Bgps::has_operation() const
         if(bgp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::Bgps::get_segment_path() const
@@ -3476,8 +4287,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::B
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Bgps::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::Bgps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::Vrf::Redistribution::Bgps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::Bgps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::Bgp()
@@ -3504,11 +4326,11 @@ bool Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(asnxx.operation)
-	|| is_set(asnyy.operation)
-	|| is_set(policy.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(asnxx.yfilter)
+	|| ydk::is_set(asnyy.yfilter)
+	|| ydk::is_set(policy.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::get_segment_path() const
@@ -3534,10 +4356,10 @@ const EntityPath Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (asnxx.is_set || is_set(asnxx.operation)) leaf_name_data.push_back(asnxx.get_name_leafdata());
-    if (asnyy.is_set || is_set(asnyy.operation)) leaf_name_data.push_back(asnyy.get_name_leafdata());
-    if (policy.is_set || is_set(policy.operation)) leaf_name_data.push_back(policy.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (asnxx.is_set || is_set(asnxx.yfilter)) leaf_name_data.push_back(asnxx.get_name_leafdata());
+    if (asnyy.is_set || is_set(asnyy.yfilter)) leaf_name_data.push_back(asnyy.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3556,24 +4378,59 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::B
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "asnxx")
     {
         asnxx = value;
+        asnxx.value_namespace = name_space;
+        asnxx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "asnyy")
     {
         asnyy = value;
+        asnyy.value_namespace = name_space;
+        asnyy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy")
     {
         policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "asnxx")
+    {
+        asnxx.yfilter = yfilter;
+    }
+    if(value_path == "asnyy")
+    {
+        asnyy.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "asnxx" || name == "asnyy" || name == "policy" || name == "type")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Isises::Isises()
@@ -3602,7 +4459,7 @@ bool Rip::Vrfs::Vrf::Redistribution::Isises::has_operation() const
         if(isis[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::Isises::get_segment_path() const
@@ -3667,8 +4524,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::I
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Isises::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::Isises::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::Vrf::Redistribution::Isises::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::Isises::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "isis")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Isises::Isis::Isis()
@@ -3693,10 +4561,10 @@ bool Rip::Vrfs::Vrf::Redistribution::Isises::Isis::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::Isises::Isis::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(isis_name.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(isis_name.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::Isises::Isis::get_segment_path() const
@@ -3722,9 +4590,9 @@ const EntityPath Rip::Vrfs::Vrf::Redistribution::Isises::Isis::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (isis_name.is_set || is_set(isis_name.operation)) leaf_name_data.push_back(isis_name.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (isis_name.is_set || is_set(isis_name.yfilter)) leaf_name_data.push_back(isis_name.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3743,20 +4611,49 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::I
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Isises::Isis::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::Isises::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "isis-name")
     {
         isis_name = value;
+        isis_name.value_namespace = name_space;
+        isis_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Redistribution::Isises::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "isis-name")
+    {
+        isis_name.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::Isises::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "isis-name" || name == "route-policy-name" || name == "route-type")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::EigrpS::EigrpS()
@@ -3785,7 +4682,7 @@ bool Rip::Vrfs::Vrf::Redistribution::EigrpS::has_operation() const
         if(eigrp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::EigrpS::get_segment_path() const
@@ -3850,8 +4747,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::E
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::EigrpS::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::EigrpS::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::Vrf::Redistribution::EigrpS::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::EigrpS::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "eigrp")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::Eigrp()
@@ -3876,10 +4784,10 @@ bool Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(as.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::get_segment_path() const
@@ -3905,9 +4813,9 @@ const EntityPath Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3926,20 +4834,49 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::E
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as" || name == "route-policy-name" || name == "route-type")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Static_::Static_()
@@ -3962,9 +4899,9 @@ bool Rip::Vrfs::Vrf::Redistribution::Static_::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::Static_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(route_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(route_type.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::Static_::get_segment_path() const
@@ -3990,8 +4927,8 @@ const EntityPath Rip::Vrfs::Vrf::Redistribution::Static_::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (route_type.is_set || is_set(route_type.operation)) leaf_name_data.push_back(route_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_type.is_set || is_set(route_type.yfilter)) leaf_name_data.push_back(route_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4010,16 +4947,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::S
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Static_::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::Static_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-type")
     {
         route_type = value;
+        route_type.value_namespace = name_space;
+        route_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Redistribution::Static_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "route-type")
+    {
+        route_type.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::Static_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "route-type")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospfs()
@@ -4048,7 +5008,7 @@ bool Rip::Vrfs::Vrf::Redistribution::Ospfs::has_operation() const
         if(ospf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::Ospfs::get_segment_path() const
@@ -4113,8 +5073,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::O
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Ospfs::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::Ospfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::Vrf::Redistribution::Ospfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::Ospfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::Ospf()
@@ -4147,14 +5118,14 @@ bool Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ospf_name.operation)
-	|| is_set(external.operation)
-	|| is_set(external_type.operation)
-	|| is_set(internal.operation)
-	|| is_set(nssa_external.operation)
-	|| is_set(nssa_external_type.operation)
-	|| is_set(route_policy_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ospf_name.yfilter)
+	|| ydk::is_set(external.yfilter)
+	|| ydk::is_set(external_type.yfilter)
+	|| ydk::is_set(internal.yfilter)
+	|| ydk::is_set(nssa_external.yfilter)
+	|| ydk::is_set(nssa_external_type.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::get_segment_path() const
@@ -4180,13 +5151,13 @@ const EntityPath Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ospf_name.is_set || is_set(ospf_name.operation)) leaf_name_data.push_back(ospf_name.get_name_leafdata());
-    if (external.is_set || is_set(external.operation)) leaf_name_data.push_back(external.get_name_leafdata());
-    if (external_type.is_set || is_set(external_type.operation)) leaf_name_data.push_back(external_type.get_name_leafdata());
-    if (internal.is_set || is_set(internal.operation)) leaf_name_data.push_back(internal.get_name_leafdata());
-    if (nssa_external.is_set || is_set(nssa_external.operation)) leaf_name_data.push_back(nssa_external.get_name_leafdata());
-    if (nssa_external_type.is_set || is_set(nssa_external_type.operation)) leaf_name_data.push_back(nssa_external_type.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (ospf_name.is_set || is_set(ospf_name.yfilter)) leaf_name_data.push_back(ospf_name.get_name_leafdata());
+    if (external.is_set || is_set(external.yfilter)) leaf_name_data.push_back(external.get_name_leafdata());
+    if (external_type.is_set || is_set(external_type.yfilter)) leaf_name_data.push_back(external_type.get_name_leafdata());
+    if (internal.is_set || is_set(internal.yfilter)) leaf_name_data.push_back(internal.get_name_leafdata());
+    if (nssa_external.is_set || is_set(nssa_external.yfilter)) leaf_name_data.push_back(nssa_external.get_name_leafdata());
+    if (nssa_external_type.is_set || is_set(nssa_external_type.yfilter)) leaf_name_data.push_back(nssa_external_type.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4205,36 +5176,89 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::O
     return children;
 }
 
-void Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ospf-name")
     {
         ospf_name = value;
+        ospf_name.value_namespace = name_space;
+        ospf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external")
     {
         external = value;
+        external.value_namespace = name_space;
+        external.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-type")
     {
         external_type = value;
+        external_type.value_namespace = name_space;
+        external_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal")
     {
         internal = value;
+        internal.value_namespace = name_space;
+        internal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nssa-external")
     {
         nssa_external = value;
+        nssa_external.value_namespace = name_space;
+        nssa_external.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nssa-external-type")
     {
         nssa_external_type = value;
+        nssa_external_type.value_namespace = name_space;
+        nssa_external_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ospf-name")
+    {
+        ospf_name.yfilter = yfilter;
+    }
+    if(value_path == "external")
+    {
+        external.yfilter = yfilter;
+    }
+    if(value_path == "external-type")
+    {
+        external_type.yfilter = yfilter;
+    }
+    if(value_path == "internal")
+    {
+        internal.yfilter = yfilter;
+    }
+    if(value_path == "nssa-external")
+    {
+        nssa_external.yfilter = yfilter;
+    }
+    if(value_path == "nssa-external-type")
+    {
+        nssa_external_type.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospf-name" || name == "external" || name == "external-type" || name == "internal" || name == "nssa-external" || name == "nssa-external-type" || name == "route-policy-name")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::IpDistances::IpDistances()
@@ -4263,7 +5287,7 @@ bool Rip::Vrfs::Vrf::IpDistances::has_operation() const
         if(ip_distance[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::IpDistances::get_segment_path() const
@@ -4328,8 +5352,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::IpDistances::get_
     return children;
 }
 
-void Rip::Vrfs::Vrf::IpDistances::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::IpDistances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::Vrf::IpDistances::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::Vrf::IpDistances::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-distance")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::IpDistances::IpDistance::IpDistance()
@@ -4354,10 +5389,10 @@ bool Rip::Vrfs::Vrf::IpDistances::IpDistance::has_data() const
 
 bool Rip::Vrfs::Vrf::IpDistances::IpDistance::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(netmask.operation)
-	|| is_set(distance.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(netmask.yfilter)
+	|| ydk::is_set(distance.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::IpDistances::IpDistance::get_segment_path() const
@@ -4383,9 +5418,9 @@ const EntityPath Rip::Vrfs::Vrf::IpDistances::IpDistance::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.operation)) leaf_name_data.push_back(netmask.get_name_leafdata());
-    if (distance.is_set || is_set(distance.operation)) leaf_name_data.push_back(distance.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
+    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4404,20 +5439,49 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::IpDistances::IpDi
     return children;
 }
 
-void Rip::Vrfs::Vrf::IpDistances::IpDistance::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::IpDistances::IpDistance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netmask")
     {
         netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "distance")
     {
         distance = value;
+        distance.value_namespace = name_space;
+        distance.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::IpDistances::IpDistance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
+    }
+    if(value_path == "distance")
+    {
+        distance.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::IpDistances::IpDistance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "netmask" || name == "distance")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interfaces()
@@ -4446,7 +5510,7 @@ bool Rip::Vrfs::Vrf::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Interfaces::get_segment_path() const
@@ -4511,8 +5575,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::get_c
     return children;
 }
 
-void Rip::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::Vrf::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::Vrf::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::Interface()
@@ -4564,16 +5639,16 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::has_data() const
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(accept_metric_zero.operation)
-	|| is_set(broadcast_for_v2.operation)
-	|| is_set(enable.operation)
-	|| is_set(passive.operation)
-	|| is_set(poison_reverse.operation)
-	|| is_set(policy_in.operation)
-	|| is_set(policy_out.operation)
-	|| is_set(split_horizon_disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(accept_metric_zero.yfilter)
+	|| ydk::is_set(broadcast_for_v2.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(passive.yfilter)
+	|| ydk::is_set(poison_reverse.yfilter)
+	|| ydk::is_set(policy_in.yfilter)
+	|| ydk::is_set(policy_out.yfilter)
+	|| ydk::is_set(split_horizon_disable.yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (receive_version !=  nullptr && receive_version->has_operation())
 	|| (send_version !=  nullptr && send_version->has_operation())
@@ -4603,15 +5678,15 @@ const EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (accept_metric_zero.is_set || is_set(accept_metric_zero.operation)) leaf_name_data.push_back(accept_metric_zero.get_name_leafdata());
-    if (broadcast_for_v2.is_set || is_set(broadcast_for_v2.operation)) leaf_name_data.push_back(broadcast_for_v2.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (passive.is_set || is_set(passive.operation)) leaf_name_data.push_back(passive.get_name_leafdata());
-    if (poison_reverse.is_set || is_set(poison_reverse.operation)) leaf_name_data.push_back(poison_reverse.get_name_leafdata());
-    if (policy_in.is_set || is_set(policy_in.operation)) leaf_name_data.push_back(policy_in.get_name_leafdata());
-    if (policy_out.is_set || is_set(policy_out.operation)) leaf_name_data.push_back(policy_out.get_name_leafdata());
-    if (split_horizon_disable.is_set || is_set(split_horizon_disable.operation)) leaf_name_data.push_back(split_horizon_disable.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (accept_metric_zero.is_set || is_set(accept_metric_zero.yfilter)) leaf_name_data.push_back(accept_metric_zero.get_name_leafdata());
+    if (broadcast_for_v2.is_set || is_set(broadcast_for_v2.yfilter)) leaf_name_data.push_back(broadcast_for_v2.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (passive.is_set || is_set(passive.yfilter)) leaf_name_data.push_back(passive.get_name_leafdata());
+    if (poison_reverse.is_set || is_set(poison_reverse.yfilter)) leaf_name_data.push_back(poison_reverse.get_name_leafdata());
+    if (policy_in.is_set || is_set(policy_in.yfilter)) leaf_name_data.push_back(policy_in.get_name_leafdata());
+    if (policy_out.is_set || is_set(policy_out.yfilter)) leaf_name_data.push_back(policy_out.get_name_leafdata());
+    if (split_horizon_disable.is_set || is_set(split_horizon_disable.yfilter)) leaf_name_data.push_back(split_horizon_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4686,44 +5761,109 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Rip::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accept-metric-zero")
     {
         accept_metric_zero = value;
+        accept_metric_zero.value_namespace = name_space;
+        accept_metric_zero.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-for-v2")
     {
         broadcast_for_v2 = value;
+        broadcast_for_v2.value_namespace = name_space;
+        broadcast_for_v2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passive")
     {
         passive = value;
+        passive.value_namespace = name_space;
+        passive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "poison-reverse")
     {
         poison_reverse = value;
+        poison_reverse.value_namespace = name_space;
+        poison_reverse.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-in")
     {
         policy_in = value;
+        policy_in.value_namespace = name_space;
+        policy_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-out")
     {
         policy_out = value;
+        policy_out.value_namespace = name_space;
+        policy_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "split-horizon-disable")
     {
         split_horizon_disable = value;
+        split_horizon_disable.value_namespace = name_space;
+        split_horizon_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "accept-metric-zero")
+    {
+        accept_metric_zero.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-for-v2")
+    {
+        broadcast_for_v2.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "passive")
+    {
+        passive.yfilter = yfilter;
+    }
+    if(value_path == "poison-reverse")
+    {
+        poison_reverse.yfilter = yfilter;
+    }
+    if(value_path == "policy-in")
+    {
+        policy_in.yfilter = yfilter;
+    }
+    if(value_path == "policy-out")
+    {
+        policy_out.yfilter = yfilter;
+    }
+    if(value_path == "split-horizon-disable")
+    {
+        split_horizon_disable.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication" || name == "receive-version" || name == "send-version" || name == "site-of-origin" || name == "interface-name" || name == "accept-metric-zero" || name == "broadcast-for-v2" || name == "enable" || name == "passive" || name == "poison-reverse" || name == "policy-in" || name == "policy-out" || name == "split-horizon-disable")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::Authentication()
@@ -4746,9 +5886,9 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::has_data() const
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(keychain.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(keychain.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::get_segment_path() const
@@ -4774,8 +5914,8 @@ const EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (keychain.is_set || is_set(keychain.operation)) leaf_name_data.push_back(keychain.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (keychain.is_set || is_set(keychain.yfilter)) leaf_name_data.push_back(keychain.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4794,16 +5934,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "keychain")
     {
         keychain = value;
+        keychain.value_namespace = name_space;
+        keychain.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "keychain")
+    {
+        keychain.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keychain" || name == "mode")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::SiteOfOrigin()
@@ -4834,13 +5997,13 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::has_data() const
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_index.operation)
-	|| is_set(as_index.operation)
-	|| is_set(as_xx.operation)
-	|| is_set(as_yy.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_index.yfilter)
+	|| ydk::is_set(as_index.yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as_yy.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::get_segment_path() const
@@ -4866,12 +6029,12 @@ const EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_index.is_set || is_set(address_index.operation)) leaf_name_data.push_back(address_index.get_name_leafdata());
-    if (as_index.is_set || is_set(as_index.operation)) leaf_name_data.push_back(as_index.get_name_leafdata());
-    if (as_xx.is_set || is_set(as_xx.operation)) leaf_name_data.push_back(as_xx.get_name_leafdata());
-    if (as_yy.is_set || is_set(as_yy.operation)) leaf_name_data.push_back(as_yy.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_index.is_set || is_set(address_index.yfilter)) leaf_name_data.push_back(address_index.get_name_leafdata());
+    if (as_index.is_set || is_set(as_index.yfilter)) leaf_name_data.push_back(as_index.get_name_leafdata());
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as_yy.is_set || is_set(as_yy.yfilter)) leaf_name_data.push_back(as_yy.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4890,32 +6053,79 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-index")
     {
         address_index = value;
+        address_index.value_namespace = name_space;
+        address_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-index")
     {
         as_index = value;
+        as_index.value_namespace = name_space;
+        as_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-xx")
     {
         as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "as-yy")
     {
         as_yy = value;
+        as_yy.value_namespace = name_space;
+        as_yy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-index")
+    {
+        address_index.yfilter = yfilter;
+    }
+    if(value_path == "as-index")
+    {
+        as_index.yfilter = yfilter;
+    }
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as-yy")
+    {
+        as_yy.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-index" || name == "as-index" || name == "as-xx" || name == "as-yy" || name == "type")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::ReceiveVersion()
@@ -4938,9 +6148,9 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::has_data() const
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(version1.operation)
-	|| is_set(version2.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(version1.yfilter)
+	|| ydk::is_set(version2.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::get_segment_path() const
@@ -4966,8 +6176,8 @@ const EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (version1.is_set || is_set(version1.operation)) leaf_name_data.push_back(version1.get_name_leafdata());
-    if (version2.is_set || is_set(version2.operation)) leaf_name_data.push_back(version2.get_name_leafdata());
+    if (version1.is_set || is_set(version1.yfilter)) leaf_name_data.push_back(version1.get_name_leafdata());
+    if (version2.is_set || is_set(version2.yfilter)) leaf_name_data.push_back(version2.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4986,16 +6196,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "version1")
     {
         version1 = value;
+        version1.value_namespace = name_space;
+        version1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version2")
     {
         version2 = value;
+        version2.value_namespace = name_space;
+        version2.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "version1")
+    {
+        version1.yfilter = yfilter;
+    }
+    if(value_path == "version2")
+    {
+        version2.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "version1" || name == "version2")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::SendVersion()
@@ -5018,9 +6251,9 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::has_data() const
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(version1.operation)
-	|| is_set(version2.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(version1.yfilter)
+	|| ydk::is_set(version2.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::get_segment_path() const
@@ -5046,8 +6279,8 @@ const EntityPath Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (version1.is_set || is_set(version1.operation)) leaf_name_data.push_back(version1.get_name_leafdata());
-    if (version2.is_set || is_set(version2.operation)) leaf_name_data.push_back(version2.get_name_leafdata());
+    if (version1.is_set || is_set(version1.yfilter)) leaf_name_data.push_back(version1.get_name_leafdata());
+    if (version2.is_set || is_set(version2.yfilter)) leaf_name_data.push_back(version2.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5066,16 +6299,39 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "version1")
     {
         version1 = value;
+        version1.value_namespace = name_space;
+        version1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version2")
     {
         version2 = value;
+        version2.value_namespace = name_space;
+        version2.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "version1")
+    {
+        version1.yfilter = yfilter;
+    }
+    if(value_path == "version2")
+    {
+        version2.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "version1" || name == "version2")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Neighbors::Neighbors()
@@ -5104,7 +6360,7 @@ bool Rip::Vrfs::Vrf::Neighbors::has_operation() const
         if(neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Neighbors::get_segment_path() const
@@ -5169,8 +6425,19 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Neighbors::get_ch
     return children;
 }
 
-void Rip::Vrfs::Vrf::Neighbors::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Rip::Vrfs::Vrf::Neighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Rip::Vrfs::Vrf::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Neighbors::Neighbor::Neighbor()
@@ -5191,8 +6458,8 @@ bool Rip::Vrfs::Vrf::Neighbors::Neighbor::has_data() const
 
 bool Rip::Vrfs::Vrf::Neighbors::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(neighbor_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_address.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Neighbors::Neighbor::get_segment_path() const
@@ -5218,7 +6485,7 @@ const EntityPath Rip::Vrfs::Vrf::Neighbors::Neighbor::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5237,12 +6504,29 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Neighbors::Neighb
     return children;
 }
 
-void Rip::Vrfs::Vrf::Neighbors::Neighbor::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Rip::Vrfs::Vrf::Neighbors::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool Rip::Vrfs::Vrf::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor-address")
+        return true;
+    return false;
 }
 
 Rip::Vrfs::Vrf::Timers::Timers()
@@ -5269,11 +6553,11 @@ bool Rip::Vrfs::Vrf::Timers::has_data() const
 
 bool Rip::Vrfs::Vrf::Timers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(flush_timer.operation)
-	|| is_set(holddown_timer.operation)
-	|| is_set(invalid_timer.operation)
-	|| is_set(update_timer.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(flush_timer.yfilter)
+	|| ydk::is_set(holddown_timer.yfilter)
+	|| ydk::is_set(invalid_timer.yfilter)
+	|| ydk::is_set(update_timer.yfilter);
 }
 
 std::string Rip::Vrfs::Vrf::Timers::get_segment_path() const
@@ -5299,10 +6583,10 @@ const EntityPath Rip::Vrfs::Vrf::Timers::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flush_timer.is_set || is_set(flush_timer.operation)) leaf_name_data.push_back(flush_timer.get_name_leafdata());
-    if (holddown_timer.is_set || is_set(holddown_timer.operation)) leaf_name_data.push_back(holddown_timer.get_name_leafdata());
-    if (invalid_timer.is_set || is_set(invalid_timer.operation)) leaf_name_data.push_back(invalid_timer.get_name_leafdata());
-    if (update_timer.is_set || is_set(update_timer.operation)) leaf_name_data.push_back(update_timer.get_name_leafdata());
+    if (flush_timer.is_set || is_set(flush_timer.yfilter)) leaf_name_data.push_back(flush_timer.get_name_leafdata());
+    if (holddown_timer.is_set || is_set(holddown_timer.yfilter)) leaf_name_data.push_back(holddown_timer.get_name_leafdata());
+    if (invalid_timer.is_set || is_set(invalid_timer.yfilter)) leaf_name_data.push_back(invalid_timer.get_name_leafdata());
+    if (update_timer.is_set || is_set(update_timer.yfilter)) leaf_name_data.push_back(update_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5321,46 +6605,81 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Timers::get_child
     return children;
 }
 
-void Rip::Vrfs::Vrf::Timers::set_value(const std::string & value_path, std::string value)
+void Rip::Vrfs::Vrf::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flush-timer")
     {
         flush_timer = value;
+        flush_timer.value_namespace = name_space;
+        flush_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "holddown-timer")
     {
         holddown_timer = value;
+        holddown_timer.value_namespace = name_space;
+        holddown_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-timer")
     {
         invalid_timer = value;
+        invalid_timer.value_namespace = name_space;
+        invalid_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "update-timer")
     {
         update_timer = value;
+        update_timer.value_namespace = name_space;
+        update_timer.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf RipAuthModeEnum::text {2, "text"};
-const Enum::YLeaf RipAuthModeEnum::md5 {3, "md5"};
+void Rip::Vrfs::Vrf::Timers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flush-timer")
+    {
+        flush_timer.yfilter = yfilter;
+    }
+    if(value_path == "holddown-timer")
+    {
+        holddown_timer.yfilter = yfilter;
+    }
+    if(value_path == "invalid-timer")
+    {
+        invalid_timer.yfilter = yfilter;
+    }
+    if(value_path == "update-timer")
+    {
+        update_timer.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf IsisRedistRouteEnum::level1 {1, "level1"};
-const Enum::YLeaf IsisRedistRouteEnum::level2 {2, "level2"};
-const Enum::YLeaf IsisRedistRouteEnum::level1_and2 {3, "level1-and2"};
+bool Rip::Vrfs::Vrf::Timers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flush-timer" || name == "holddown-timer" || name == "invalid-timer" || name == "update-timer")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf DefaultInformationOptionEnum::always {0, "always"};
-const Enum::YLeaf DefaultInformationOptionEnum::policy {1, "policy"};
+const Enum::YLeaf DefaultInformationOption::always {0, "always"};
+const Enum::YLeaf DefaultInformationOption::policy {1, "policy"};
 
-const Enum::YLeaf BgpRedistRouteEnum::all {0, "all"};
-const Enum::YLeaf BgpRedistRouteEnum::internal {512, "internal"};
-const Enum::YLeaf BgpRedistRouteEnum::external {1024, "external"};
-const Enum::YLeaf BgpRedistRouteEnum::local {2048, "local"};
+const Enum::YLeaf RipAuthMode::text {2, "text"};
+const Enum::YLeaf RipAuthMode::md5 {3, "md5"};
 
-const Enum::YLeaf RipExtCommunityEnum::as {0, "as"};
-const Enum::YLeaf RipExtCommunityEnum::ipv4_address {1, "ipv4-address"};
-const Enum::YLeaf RipExtCommunityEnum::four_byte_as {2, "four-byte-as"};
+const Enum::YLeaf BgpRedistRoute::all {0, "all"};
+const Enum::YLeaf BgpRedistRoute::internal {512, "internal"};
+const Enum::YLeaf BgpRedistRoute::external {1024, "external"};
+const Enum::YLeaf BgpRedistRoute::local {2048, "local"};
 
-const Enum::YLeaf DefaultRedistRouteEnum::all {0, "all"};
+const Enum::YLeaf RipExtCommunity::as {0, "as"};
+const Enum::YLeaf RipExtCommunity::ipv4_address {1, "ipv4-address"};
+const Enum::YLeaf RipExtCommunity::four_byte_as {2, "four-byte-as"};
+
+const Enum::YLeaf IsisRedistRoute::level1 {1, "level1"};
+const Enum::YLeaf IsisRedistRoute::level2 {2, "level2"};
+const Enum::YLeaf IsisRedistRoute::level1_and2 {3, "level1-and2"};
+
+const Enum::YLeaf DefaultRedistRoute::all {0, "all"};
 
 
 }

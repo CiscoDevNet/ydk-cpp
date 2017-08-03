@@ -7,152 +7,152 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_rib_bgp_types {
 
-class Bgp_Not_Selected_BestpathIdentity : public virtual Identity
+class Bgp_Not_Selected_Policy : public virtual ydk::Identity
 {
     public:
-        Bgp_Not_Selected_BestpathIdentity();
-        ~Bgp_Not_Selected_BestpathIdentity();
+        Bgp_Not_Selected_Policy();
+        ~Bgp_Not_Selected_Policy();
 
 
-}; // Bgp_Not_Selected_BestpathIdentity
+}; // Bgp_Not_Selected_Policy
 
-class Bgp_Not_Selected_PolicyIdentity : public virtual Identity
+class Bgp_Not_Selected_Bestpath : public virtual ydk::Identity
 {
     public:
-        Bgp_Not_Selected_PolicyIdentity();
-        ~Bgp_Not_Selected_PolicyIdentity();
+        Bgp_Not_Selected_Bestpath();
+        ~Bgp_Not_Selected_Bestpath();
 
 
-}; // Bgp_Not_Selected_PolicyIdentity
+}; // Bgp_Not_Selected_Bestpath
 
-class Invalid_Route_ReasonIdentity : public virtual Identity
+class Invalid_Route_Reason : public virtual ydk::Identity
 {
     public:
-        Invalid_Route_ReasonIdentity();
-        ~Invalid_Route_ReasonIdentity();
+        Invalid_Route_Reason();
+        ~Invalid_Route_Reason();
 
 
-}; // Invalid_Route_ReasonIdentity
+}; // Invalid_Route_Reason
 
-class Invalid_OriginatorIdentity : public openconfig_rib_bgp_types::Invalid_Route_ReasonIdentity, virtual Identity
+class Invalid_Cluster_Loop : public openconfig_rib_bgp_types::Invalid_Route_Reason, virtual ydk::Identity
 {
     public:
-        Invalid_OriginatorIdentity();
-        ~Invalid_OriginatorIdentity();
+        Invalid_Cluster_Loop();
+        ~Invalid_Cluster_Loop();
 
 
-}; // Invalid_OriginatorIdentity
+}; // Invalid_Cluster_Loop
 
-class Higher_Router_IdIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_BestpathIdentity, virtual Identity
+class Higher_Router_Id : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
 {
     public:
-        Higher_Router_IdIdentity();
-        ~Higher_Router_IdIdentity();
+        Higher_Router_Id();
+        ~Higher_Router_Id();
 
 
-}; // Higher_Router_IdIdentity
+}; // Higher_Router_Id
 
-class Invalid_Cluster_LoopIdentity : public openconfig_rib_bgp_types::Invalid_Route_ReasonIdentity, virtual Identity
+class Invalid_As_Loop : public openconfig_rib_bgp_types::Invalid_Route_Reason, virtual ydk::Identity
 {
     public:
-        Invalid_Cluster_LoopIdentity();
-        ~Invalid_Cluster_LoopIdentity();
+        Invalid_As_Loop();
+        ~Invalid_As_Loop();
 
 
-}; // Invalid_Cluster_LoopIdentity
+}; // Invalid_As_Loop
 
-class Rejected_Import_PolicyIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_PolicyIdentity, virtual Identity
+class Invalid_Originator : public openconfig_rib_bgp_types::Invalid_Route_Reason, virtual ydk::Identity
 {
     public:
-        Rejected_Import_PolicyIdentity();
-        ~Rejected_Import_PolicyIdentity();
+        Invalid_Originator();
+        ~Invalid_Originator();
 
 
-}; // Rejected_Import_PolicyIdentity
+}; // Invalid_Originator
 
-class Origin_Type_HigherIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_BestpathIdentity, virtual Identity
+class Invalid_Confed : public openconfig_rib_bgp_types::Invalid_Route_Reason, virtual ydk::Identity
 {
     public:
-        Origin_Type_HigherIdentity();
-        ~Origin_Type_HigherIdentity();
+        Invalid_Confed();
+        ~Invalid_Confed();
 
 
-}; // Origin_Type_HigherIdentity
+}; // Invalid_Confed
 
-class Med_HigherIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_BestpathIdentity, virtual Identity
+class Origin_Type_Higher : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
 {
     public:
-        Med_HigherIdentity();
-        ~Med_HigherIdentity();
+        Origin_Type_Higher();
+        ~Origin_Type_Higher();
 
 
-}; // Med_HigherIdentity
+}; // Origin_Type_Higher
 
-class Invalid_As_LoopIdentity : public openconfig_rib_bgp_types::Invalid_Route_ReasonIdentity, virtual Identity
+class Local_Pref_Lower : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
 {
     public:
-        Invalid_As_LoopIdentity();
-        ~Invalid_As_LoopIdentity();
+        Local_Pref_Lower();
+        ~Local_Pref_Lower();
 
 
-}; // Invalid_As_LoopIdentity
+}; // Local_Pref_Lower
 
-class Local_Pref_LowerIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_BestpathIdentity, virtual Identity
+class Prefer_External : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
 {
     public:
-        Local_Pref_LowerIdentity();
-        ~Local_Pref_LowerIdentity();
+        Prefer_External();
+        ~Prefer_External();
 
 
-}; // Local_Pref_LowerIdentity
+}; // Prefer_External
 
-class Invalid_ConfedIdentity : public openconfig_rib_bgp_types::Invalid_Route_ReasonIdentity, virtual Identity
+class Rejected_Import_Policy : public openconfig_rib_bgp_types::Bgp_Not_Selected_Policy, virtual ydk::Identity
 {
     public:
-        Invalid_ConfedIdentity();
-        ~Invalid_ConfedIdentity();
+        Rejected_Import_Policy();
+        ~Rejected_Import_Policy();
 
 
-}; // Invalid_ConfedIdentity
+}; // Rejected_Import_Policy
 
-class As_Path_LongerIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_BestpathIdentity, virtual Identity
+class As_Path_Longer : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
 {
     public:
-        As_Path_LongerIdentity();
-        ~As_Path_LongerIdentity();
+        As_Path_Longer();
+        ~As_Path_Longer();
 
 
-}; // As_Path_LongerIdentity
+}; // As_Path_Longer
 
-class Higher_Peer_AddressIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_BestpathIdentity, virtual Identity
+class Higher_Peer_Address : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
 {
     public:
-        Higher_Peer_AddressIdentity();
-        ~Higher_Peer_AddressIdentity();
+        Higher_Peer_Address();
+        ~Higher_Peer_Address();
 
 
-}; // Higher_Peer_AddressIdentity
+}; // Higher_Peer_Address
 
-class Nexthop_Cost_HigherIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_BestpathIdentity, virtual Identity
+class Nexthop_Cost_Higher : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
 {
     public:
-        Nexthop_Cost_HigherIdentity();
-        ~Nexthop_Cost_HigherIdentity();
+        Nexthop_Cost_Higher();
+        ~Nexthop_Cost_Higher();
 
 
-}; // Nexthop_Cost_HigherIdentity
+}; // Nexthop_Cost_Higher
 
-class Prefer_ExternalIdentity : public openconfig_rib_bgp_types::Bgp_Not_Selected_BestpathIdentity, virtual Identity
+class Med_Higher : public openconfig_rib_bgp_types::Bgp_Not_Selected_Bestpath, virtual ydk::Identity
 {
     public:
-        Prefer_ExternalIdentity();
-        ~Prefer_ExternalIdentity();
+        Med_Higher();
+        ~Med_Higher();
 
 
-}; // Prefer_ExternalIdentity
+}; // Med_Higher
 
 
 }

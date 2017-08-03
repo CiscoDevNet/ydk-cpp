@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lpts_lib_cfg {
 
-class Lpts : public Entity
+class Lpts : public ydk::Entity
 {
     public:
         Lpts();
@@ -19,15 +19,18 @@ class Lpts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Ipolicer; //type: Lpts::Ipolicer
         class Punt; //type: Lpts::Punt
@@ -38,7 +41,7 @@ class Lpts : public Entity
 }; // Lpts
 
 
-class Lpts::Ipolicer : public Entity
+class Lpts::Ipolicer : public ydk::Entity
 {
     public:
         Ipolicer();
@@ -46,13 +49,15 @@ class Lpts::Ipolicer : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
+        ydk::YLeaf enable; //type: empty
         class Ipv4Acls; //type: Lpts::Ipolicer::Ipv4Acls
         class Flows; //type: Lpts::Ipolicer::Flows
 
@@ -62,7 +67,7 @@ class Lpts::Ipolicer : public Entity
 }; // Lpts::Ipolicer
 
 
-class Lpts::Ipolicer::Ipv4Acls : public Entity
+class Lpts::Ipolicer::Ipv4Acls : public ydk::Entity
 {
     public:
         Ipv4Acls();
@@ -70,11 +75,13 @@ class Lpts::Ipolicer::Ipv4Acls : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4Acl; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
 
@@ -83,7 +90,7 @@ class Lpts::Ipolicer::Ipv4Acls : public Entity
 }; // Lpts::Ipolicer::Ipv4Acls
 
 
-class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl : public Entity
+class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl : public ydk::Entity
 {
     public:
         Ipv4Acl();
@@ -91,13 +98,15 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf acl_name; //type: string
+        ydk::YLeaf acl_name; //type: string
         class Ipv4VrfNames; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames
 
         std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames> ipv4vrf_names;
@@ -105,7 +114,7 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl : public Entity
 }; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
 
 
-class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames : public Entity
+class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames : public ydk::Entity
 {
     public:
         Ipv4VrfNames();
@@ -113,11 +122,13 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ipv4VrfName; //type: Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName
 
@@ -126,7 +137,7 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames : public Entity
 }; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames
 
 
-class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName : public Entity
+class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName : public ydk::Entity
 {
     public:
         Ipv4VrfName();
@@ -134,19 +145,21 @@ class Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
-        YLeaf acl_rate; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf acl_rate; //type: uint32
 
 }; // Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName
 
 
-class Lpts::Ipolicer::Flows : public Entity
+class Lpts::Ipolicer::Flows : public ydk::Entity
 {
     public:
         Flows();
@@ -154,11 +167,13 @@ class Lpts::Ipolicer::Flows : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Flow; //type: Lpts::Ipolicer::Flows::Flow
 
@@ -167,7 +182,7 @@ class Lpts::Ipolicer::Flows : public Entity
 }; // Lpts::Ipolicer::Flows
 
 
-class Lpts::Ipolicer::Flows::Flow : public Entity
+class Lpts::Ipolicer::Flows::Flow : public ydk::Entity
 {
     public:
         Flow();
@@ -175,14 +190,16 @@ class Lpts::Ipolicer::Flows::Flow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flow_type; //type: LptsFlowEnum
-        YLeaf rate; //type: int32
+        ydk::YLeaf flow_type; //type: LptsFlow
+        ydk::YLeaf rate; //type: int32
         class Precedences; //type: Lpts::Ipolicer::Flows::Flow::Precedences
 
         std::shared_ptr<Cisco_IOS_XR_lpts_lib_cfg::Lpts::Ipolicer::Flows::Flow::Precedences> precedences;
@@ -190,7 +207,7 @@ class Lpts::Ipolicer::Flows::Flow : public Entity
 }; // Lpts::Ipolicer::Flows::Flow
 
 
-class Lpts::Ipolicer::Flows::Flow::Precedences : public Entity
+class Lpts::Ipolicer::Flows::Flow::Precedences : public ydk::Entity
 {
     public:
         Precedences();
@@ -198,18 +215,20 @@ class Lpts::Ipolicer::Flows::Flow::Precedences : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList precedence; //type: list of  one of uint32, enumeration
+        ydk::YLeafList precedence; //type: list of  one of uint32, enumeration
 
 }; // Lpts::Ipolicer::Flows::Flow::Precedences
 
 
-class Lpts::Punt : public Entity
+class Lpts::Punt : public ydk::Entity
 {
     public:
         Punt();
@@ -217,11 +236,13 @@ class Lpts::Punt : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Flowtrap; //type: Lpts::Punt::Flowtrap
 
@@ -230,7 +251,7 @@ class Lpts::Punt : public Entity
 }; // Lpts::Punt
 
 
-class Lpts::Punt::Flowtrap : public Entity
+class Lpts::Punt::Flowtrap : public ydk::Entity
 {
     public:
         Flowtrap();
@@ -238,23 +259,25 @@ class Lpts::Punt::Flowtrap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf max_flow_gap; //type: uint32
-        YLeaf et_size; //type: uint32
-        YLeaf eviction_threshold; //type: uint32
-        YLeaf report_threshold; //type: uint16
-        YLeaf non_subscriber_interfaces; //type: int32
-        YLeaf sample_prob; //type: string
-        YLeaf eviction_search_limit; //type: uint32
-        YLeaf routing_protocols_enable; //type: boolean
-        YLeaf subscriber_interfaces; //type: boolean
-        YLeaf interface_based_flow; //type: boolean
-        YLeaf dampening; //type: uint32
+        ydk::YLeaf max_flow_gap; //type: uint32
+        ydk::YLeaf et_size; //type: uint32
+        ydk::YLeaf eviction_threshold; //type: uint32
+        ydk::YLeaf report_threshold; //type: uint16
+        ydk::YLeaf non_subscriber_interfaces; //type: int32
+        ydk::YLeaf sample_prob; //type: string
+        ydk::YLeaf eviction_search_limit; //type: uint32
+        ydk::YLeaf routing_protocols_enable; //type: boolean
+        ydk::YLeaf subscriber_interfaces; //type: boolean
+        ydk::YLeaf interface_based_flow; //type: boolean
+        ydk::YLeaf dampening; //type: uint32
         class PenaltyRates; //type: Lpts::Punt::Flowtrap::PenaltyRates
         class PenaltyTimeouts; //type: Lpts::Punt::Flowtrap::PenaltyTimeouts
         class Exclude; //type: Lpts::Punt::Flowtrap::Exclude
@@ -266,7 +289,7 @@ class Lpts::Punt::Flowtrap : public Entity
 }; // Lpts::Punt::Flowtrap
 
 
-class Lpts::Punt::Flowtrap::PenaltyRates : public Entity
+class Lpts::Punt::Flowtrap::PenaltyRates : public ydk::Entity
 {
     public:
         PenaltyRates();
@@ -274,11 +297,13 @@ class Lpts::Punt::Flowtrap::PenaltyRates : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PenaltyRate; //type: Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate
 
@@ -287,7 +312,7 @@ class Lpts::Punt::Flowtrap::PenaltyRates : public Entity
 }; // Lpts::Punt::Flowtrap::PenaltyRates
 
 
-class Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate : public Entity
+class Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate : public ydk::Entity
 {
     public:
         PenaltyRate();
@@ -295,19 +320,21 @@ class Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: LptsPuntFlowtrapProtoIdEnum
-        YLeaf rate; //type: uint32
+        ydk::YLeaf protocol_name; //type: LptsPuntFlowtrapProtoId
+        ydk::YLeaf rate; //type: uint32
 
 }; // Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate
 
 
-class Lpts::Punt::Flowtrap::PenaltyTimeouts : public Entity
+class Lpts::Punt::Flowtrap::PenaltyTimeouts : public ydk::Entity
 {
     public:
         PenaltyTimeouts();
@@ -315,11 +342,13 @@ class Lpts::Punt::Flowtrap::PenaltyTimeouts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PenaltyTimeout; //type: Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout
 
@@ -328,7 +357,7 @@ class Lpts::Punt::Flowtrap::PenaltyTimeouts : public Entity
 }; // Lpts::Punt::Flowtrap::PenaltyTimeouts
 
 
-class Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout : public Entity
+class Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout : public ydk::Entity
 {
     public:
         PenaltyTimeout();
@@ -336,19 +365,21 @@ class Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: LptsPuntFlowtrapProtoIdEnum
-        YLeaf timeout; //type: uint32
+        ydk::YLeaf protocol_name; //type: LptsPuntFlowtrapProtoId
+        ydk::YLeaf timeout; //type: uint32
 
 }; // Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout
 
 
-class Lpts::Punt::Flowtrap::Exclude : public Entity
+class Lpts::Punt::Flowtrap::Exclude : public ydk::Entity
 {
     public:
         Exclude();
@@ -356,11 +387,13 @@ class Lpts::Punt::Flowtrap::Exclude : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceNames; //type: Lpts::Punt::Flowtrap::Exclude::InterfaceNames
 
@@ -369,7 +402,7 @@ class Lpts::Punt::Flowtrap::Exclude : public Entity
 }; // Lpts::Punt::Flowtrap::Exclude
 
 
-class Lpts::Punt::Flowtrap::Exclude::InterfaceNames : public Entity
+class Lpts::Punt::Flowtrap::Exclude::InterfaceNames : public ydk::Entity
 {
     public:
         InterfaceNames();
@@ -377,11 +410,13 @@ class Lpts::Punt::Flowtrap::Exclude::InterfaceNames : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceName; //type: Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName
 
@@ -390,7 +425,7 @@ class Lpts::Punt::Flowtrap::Exclude::InterfaceNames : public Entity
 }; // Lpts::Punt::Flowtrap::Exclude::InterfaceNames
 
 
-class Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName : public Entity
+class Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName : public ydk::Entity
 {
     public:
         InterfaceName();
@@ -398,14 +433,16 @@ class Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ifname; //type: string
-        YLeaf id1; //type: boolean
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf id1; //type: boolean
 
 }; // Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName
 

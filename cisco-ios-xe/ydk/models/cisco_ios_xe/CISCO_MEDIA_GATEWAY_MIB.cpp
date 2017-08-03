@@ -6,35 +6,37 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_MEDIA_GATEWAY_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_MEDIA_GATEWAY_MIB {
 
 CiscoMediaGatewayMib::CiscoMediaGatewayMib()
     :
-    cmediagwcallcontrolconfigtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable>())
-	,cmediagwdnsipconfigtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable>())
-	,cmediagwdomainnameconfigtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable>())
-	,cmediagwipconfigtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable>())
-	,cmediagwrscstatstable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable>())
-	,cmediagwtable_(std::make_shared<CiscoMediaGatewayMib::Cmediagwtable>())
-	,cmgwliftable_(std::make_shared<CiscoMediaGatewayMib::Cmgwliftable>())
-	,cmgwsignalprotocoltable_(std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable>())
+    cmediagwcallcontrolconfigtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable>())
+	,cmediagwdnsipconfigtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable>())
+	,cmediagwdomainnameconfigtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable>())
+	,cmediagwipconfigtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable>())
+	,cmediagwrscstatstable(std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable>())
+	,cmediagwtable(std::make_shared<CiscoMediaGatewayMib::Cmediagwtable>())
+	,cmgwliftable(std::make_shared<CiscoMediaGatewayMib::Cmgwliftable>())
+	,cmgwsignalprotocoltable(std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable>())
 {
-    cmediagwcallcontrolconfigtable_->parent = this;
+    cmediagwcallcontrolconfigtable->parent = this;
 
-    cmediagwdnsipconfigtable_->parent = this;
+    cmediagwdnsipconfigtable->parent = this;
 
-    cmediagwdomainnameconfigtable_->parent = this;
+    cmediagwdomainnameconfigtable->parent = this;
 
-    cmediagwipconfigtable_->parent = this;
+    cmediagwipconfigtable->parent = this;
 
-    cmediagwrscstatstable_->parent = this;
+    cmediagwrscstatstable->parent = this;
 
-    cmediagwtable_->parent = this;
+    cmediagwtable->parent = this;
 
-    cmgwliftable_->parent = this;
+    cmgwliftable->parent = this;
 
-    cmgwsignalprotocoltable_->parent = this;
+    cmgwsignalprotocoltable->parent = this;
 
     yang_name = "CISCO-MEDIA-GATEWAY-MIB"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB";
 }
@@ -45,27 +47,27 @@ CiscoMediaGatewayMib::~CiscoMediaGatewayMib()
 
 bool CiscoMediaGatewayMib::has_data() const
 {
-    return (cmediagwcallcontrolconfigtable_ !=  nullptr && cmediagwcallcontrolconfigtable_->has_data())
-	|| (cmediagwdnsipconfigtable_ !=  nullptr && cmediagwdnsipconfigtable_->has_data())
-	|| (cmediagwdomainnameconfigtable_ !=  nullptr && cmediagwdomainnameconfigtable_->has_data())
-	|| (cmediagwipconfigtable_ !=  nullptr && cmediagwipconfigtable_->has_data())
-	|| (cmediagwrscstatstable_ !=  nullptr && cmediagwrscstatstable_->has_data())
-	|| (cmediagwtable_ !=  nullptr && cmediagwtable_->has_data())
-	|| (cmgwliftable_ !=  nullptr && cmgwliftable_->has_data())
-	|| (cmgwsignalprotocoltable_ !=  nullptr && cmgwsignalprotocoltable_->has_data());
+    return (cmediagwcallcontrolconfigtable !=  nullptr && cmediagwcallcontrolconfigtable->has_data())
+	|| (cmediagwdnsipconfigtable !=  nullptr && cmediagwdnsipconfigtable->has_data())
+	|| (cmediagwdomainnameconfigtable !=  nullptr && cmediagwdomainnameconfigtable->has_data())
+	|| (cmediagwipconfigtable !=  nullptr && cmediagwipconfigtable->has_data())
+	|| (cmediagwrscstatstable !=  nullptr && cmediagwrscstatstable->has_data())
+	|| (cmediagwtable !=  nullptr && cmediagwtable->has_data())
+	|| (cmgwliftable !=  nullptr && cmgwliftable->has_data())
+	|| (cmgwsignalprotocoltable !=  nullptr && cmgwsignalprotocoltable->has_data());
 }
 
 bool CiscoMediaGatewayMib::has_operation() const
 {
-    return is_set(operation)
-	|| (cmediagwcallcontrolconfigtable_ !=  nullptr && cmediagwcallcontrolconfigtable_->has_operation())
-	|| (cmediagwdnsipconfigtable_ !=  nullptr && cmediagwdnsipconfigtable_->has_operation())
-	|| (cmediagwdomainnameconfigtable_ !=  nullptr && cmediagwdomainnameconfigtable_->has_operation())
-	|| (cmediagwipconfigtable_ !=  nullptr && cmediagwipconfigtable_->has_operation())
-	|| (cmediagwrscstatstable_ !=  nullptr && cmediagwrscstatstable_->has_operation())
-	|| (cmediagwtable_ !=  nullptr && cmediagwtable_->has_operation())
-	|| (cmgwliftable_ !=  nullptr && cmgwliftable_->has_operation())
-	|| (cmgwsignalprotocoltable_ !=  nullptr && cmgwsignalprotocoltable_->has_operation());
+    return is_set(yfilter)
+	|| (cmediagwcallcontrolconfigtable !=  nullptr && cmediagwcallcontrolconfigtable->has_operation())
+	|| (cmediagwdnsipconfigtable !=  nullptr && cmediagwdnsipconfigtable->has_operation())
+	|| (cmediagwdomainnameconfigtable !=  nullptr && cmediagwdomainnameconfigtable->has_operation())
+	|| (cmediagwipconfigtable !=  nullptr && cmediagwipconfigtable->has_operation())
+	|| (cmediagwrscstatstable !=  nullptr && cmediagwrscstatstable->has_operation())
+	|| (cmediagwtable !=  nullptr && cmediagwtable->has_operation())
+	|| (cmgwliftable !=  nullptr && cmgwliftable->has_operation())
+	|| (cmgwsignalprotocoltable !=  nullptr && cmgwsignalprotocoltable->has_operation());
 }
 
 std::string CiscoMediaGatewayMib::get_segment_path() const
@@ -99,74 +101,74 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::get_child_by_name(const std::strin
 {
     if(child_yang_name == "cMediaGwCallControlConfigTable")
     {
-        if(cmediagwcallcontrolconfigtable_ == nullptr)
+        if(cmediagwcallcontrolconfigtable == nullptr)
         {
-            cmediagwcallcontrolconfigtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable>();
+            cmediagwcallcontrolconfigtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable>();
         }
-        return cmediagwcallcontrolconfigtable_;
+        return cmediagwcallcontrolconfigtable;
     }
 
     if(child_yang_name == "cMediaGwDnsIpConfigTable")
     {
-        if(cmediagwdnsipconfigtable_ == nullptr)
+        if(cmediagwdnsipconfigtable == nullptr)
         {
-            cmediagwdnsipconfigtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable>();
+            cmediagwdnsipconfigtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable>();
         }
-        return cmediagwdnsipconfigtable_;
+        return cmediagwdnsipconfigtable;
     }
 
     if(child_yang_name == "cMediaGwDomainNameConfigTable")
     {
-        if(cmediagwdomainnameconfigtable_ == nullptr)
+        if(cmediagwdomainnameconfigtable == nullptr)
         {
-            cmediagwdomainnameconfigtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable>();
+            cmediagwdomainnameconfigtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable>();
         }
-        return cmediagwdomainnameconfigtable_;
+        return cmediagwdomainnameconfigtable;
     }
 
     if(child_yang_name == "cMediaGwIpConfigTable")
     {
-        if(cmediagwipconfigtable_ == nullptr)
+        if(cmediagwipconfigtable == nullptr)
         {
-            cmediagwipconfigtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable>();
+            cmediagwipconfigtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable>();
         }
-        return cmediagwipconfigtable_;
+        return cmediagwipconfigtable;
     }
 
     if(child_yang_name == "cMediaGwRscStatsTable")
     {
-        if(cmediagwrscstatstable_ == nullptr)
+        if(cmediagwrscstatstable == nullptr)
         {
-            cmediagwrscstatstable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable>();
+            cmediagwrscstatstable = std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable>();
         }
-        return cmediagwrscstatstable_;
+        return cmediagwrscstatstable;
     }
 
     if(child_yang_name == "cMediaGwTable")
     {
-        if(cmediagwtable_ == nullptr)
+        if(cmediagwtable == nullptr)
         {
-            cmediagwtable_ = std::make_shared<CiscoMediaGatewayMib::Cmediagwtable>();
+            cmediagwtable = std::make_shared<CiscoMediaGatewayMib::Cmediagwtable>();
         }
-        return cmediagwtable_;
+        return cmediagwtable;
     }
 
     if(child_yang_name == "cmgwLifTable")
     {
-        if(cmgwliftable_ == nullptr)
+        if(cmgwliftable == nullptr)
         {
-            cmgwliftable_ = std::make_shared<CiscoMediaGatewayMib::Cmgwliftable>();
+            cmgwliftable = std::make_shared<CiscoMediaGatewayMib::Cmgwliftable>();
         }
-        return cmgwliftable_;
+        return cmgwliftable;
     }
 
     if(child_yang_name == "cmgwSignalProtocolTable")
     {
-        if(cmgwsignalprotocoltable_ == nullptr)
+        if(cmgwsignalprotocoltable == nullptr)
         {
-            cmgwsignalprotocoltable_ = std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable>();
+            cmgwsignalprotocoltable = std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable>();
         }
-        return cmgwsignalprotocoltable_;
+        return cmgwsignalprotocoltable;
     }
 
     return nullptr;
@@ -175,50 +177,54 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::get_child_by_name(const std::strin
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cmediagwcallcontrolconfigtable_ != nullptr)
+    if(cmediagwcallcontrolconfigtable != nullptr)
     {
-        children["cMediaGwCallControlConfigTable"] = cmediagwcallcontrolconfigtable_;
+        children["cMediaGwCallControlConfigTable"] = cmediagwcallcontrolconfigtable;
     }
 
-    if(cmediagwdnsipconfigtable_ != nullptr)
+    if(cmediagwdnsipconfigtable != nullptr)
     {
-        children["cMediaGwDnsIpConfigTable"] = cmediagwdnsipconfigtable_;
+        children["cMediaGwDnsIpConfigTable"] = cmediagwdnsipconfigtable;
     }
 
-    if(cmediagwdomainnameconfigtable_ != nullptr)
+    if(cmediagwdomainnameconfigtable != nullptr)
     {
-        children["cMediaGwDomainNameConfigTable"] = cmediagwdomainnameconfigtable_;
+        children["cMediaGwDomainNameConfigTable"] = cmediagwdomainnameconfigtable;
     }
 
-    if(cmediagwipconfigtable_ != nullptr)
+    if(cmediagwipconfigtable != nullptr)
     {
-        children["cMediaGwIpConfigTable"] = cmediagwipconfigtable_;
+        children["cMediaGwIpConfigTable"] = cmediagwipconfigtable;
     }
 
-    if(cmediagwrscstatstable_ != nullptr)
+    if(cmediagwrscstatstable != nullptr)
     {
-        children["cMediaGwRscStatsTable"] = cmediagwrscstatstable_;
+        children["cMediaGwRscStatsTable"] = cmediagwrscstatstable;
     }
 
-    if(cmediagwtable_ != nullptr)
+    if(cmediagwtable != nullptr)
     {
-        children["cMediaGwTable"] = cmediagwtable_;
+        children["cMediaGwTable"] = cmediagwtable;
     }
 
-    if(cmgwliftable_ != nullptr)
+    if(cmgwliftable != nullptr)
     {
-        children["cmgwLifTable"] = cmgwliftable_;
+        children["cmgwLifTable"] = cmgwliftable;
     }
 
-    if(cmgwsignalprotocoltable_ != nullptr)
+    if(cmgwsignalprotocoltable != nullptr)
     {
-        children["cmgwSignalProtocolTable"] = cmgwsignalprotocoltable_;
+        children["cmgwSignalProtocolTable"] = cmgwsignalprotocoltable;
     }
 
     return children;
 }
 
-void CiscoMediaGatewayMib::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoMediaGatewayMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -242,6 +248,18 @@ augment_capabilities_function CiscoMediaGatewayMib::get_augment_capabilities_fun
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoMediaGatewayMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoMediaGatewayMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cMediaGwCallControlConfigTable" || name == "cMediaGwDnsIpConfigTable" || name == "cMediaGwDomainNameConfigTable" || name == "cMediaGwIpConfigTable" || name == "cMediaGwRscStatsTable" || name == "cMediaGwTable" || name == "cmgwLifTable" || name == "cmgwSignalProtocolTable")
+        return true;
+    return false;
+}
+
 CiscoMediaGatewayMib::Cmediagwtable::Cmediagwtable()
 {
     yang_name = "cMediaGwTable"; yang_parent_name = "CISCO-MEDIA-GATEWAY-MIB";
@@ -253,9 +271,9 @@ CiscoMediaGatewayMib::Cmediagwtable::~Cmediagwtable()
 
 bool CiscoMediaGatewayMib::Cmediagwtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwentry.size(); index++)
     {
-        if(cmediagwentry_[index]->has_data())
+        if(cmediagwentry[index]->has_data())
             return true;
     }
     return false;
@@ -263,12 +281,12 @@ bool CiscoMediaGatewayMib::Cmediagwtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwentry.size(); index++)
     {
-        if(cmediagwentry_[index]->has_operation())
+        if(cmediagwentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwtable::get_segment_path() const
@@ -305,7 +323,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwtable::get_child_by_name(c
 {
     if(child_yang_name == "cMediaGwEntry")
     {
-        for(auto const & c : cmediagwentry_)
+        for(auto const & c : cmediagwentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -315,7 +333,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwtable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry>();
         c->parent = this;
-        cmediagwentry_.push_back(c);
+        cmediagwentry.push_back(c);
         return c;
     }
 
@@ -325,7 +343,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwentry_)
+    for (auto const & c : cmediagwentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -333,8 +351,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwtab
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwtable::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoMediaGatewayMib::Cmediagwtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoMediaGatewayMib::Cmediagwtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cMediaGwEntry")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::Cmediagwentry()
@@ -373,17 +402,17 @@ bool CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmgwindex.operation)
-	|| is_set(cmgwadminstate.operation)
-	|| is_set(cmgwdomainname.operation)
-	|| is_set(cmgwgracetime.operation)
-	|| is_set(cmgwlawinterceptenabled.operation)
-	|| is_set(cmgwphysicalindex.operation)
-	|| is_set(cmgwservicestate.operation)
-	|| is_set(cmgwsrcfilterenabled.operation)
-	|| is_set(cmgwv23enabled.operation)
-	|| is_set(cmgwvtmappingmode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmgwindex.yfilter)
+	|| ydk::is_set(cmgwadminstate.yfilter)
+	|| ydk::is_set(cmgwdomainname.yfilter)
+	|| ydk::is_set(cmgwgracetime.yfilter)
+	|| ydk::is_set(cmgwlawinterceptenabled.yfilter)
+	|| ydk::is_set(cmgwphysicalindex.yfilter)
+	|| ydk::is_set(cmgwservicestate.yfilter)
+	|| ydk::is_set(cmgwsrcfilterenabled.yfilter)
+	|| ydk::is_set(cmgwv23enabled.yfilter)
+	|| ydk::is_set(cmgwvtmappingmode.yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::get_segment_path() const
@@ -409,16 +438,16 @@ const EntityPath CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmgwindex.is_set || is_set(cmgwindex.operation)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
-    if (cmgwadminstate.is_set || is_set(cmgwadminstate.operation)) leaf_name_data.push_back(cmgwadminstate.get_name_leafdata());
-    if (cmgwdomainname.is_set || is_set(cmgwdomainname.operation)) leaf_name_data.push_back(cmgwdomainname.get_name_leafdata());
-    if (cmgwgracetime.is_set || is_set(cmgwgracetime.operation)) leaf_name_data.push_back(cmgwgracetime.get_name_leafdata());
-    if (cmgwlawinterceptenabled.is_set || is_set(cmgwlawinterceptenabled.operation)) leaf_name_data.push_back(cmgwlawinterceptenabled.get_name_leafdata());
-    if (cmgwphysicalindex.is_set || is_set(cmgwphysicalindex.operation)) leaf_name_data.push_back(cmgwphysicalindex.get_name_leafdata());
-    if (cmgwservicestate.is_set || is_set(cmgwservicestate.operation)) leaf_name_data.push_back(cmgwservicestate.get_name_leafdata());
-    if (cmgwsrcfilterenabled.is_set || is_set(cmgwsrcfilterenabled.operation)) leaf_name_data.push_back(cmgwsrcfilterenabled.get_name_leafdata());
-    if (cmgwv23enabled.is_set || is_set(cmgwv23enabled.operation)) leaf_name_data.push_back(cmgwv23enabled.get_name_leafdata());
-    if (cmgwvtmappingmode.is_set || is_set(cmgwvtmappingmode.operation)) leaf_name_data.push_back(cmgwvtmappingmode.get_name_leafdata());
+    if (cmgwindex.is_set || is_set(cmgwindex.yfilter)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
+    if (cmgwadminstate.is_set || is_set(cmgwadminstate.yfilter)) leaf_name_data.push_back(cmgwadminstate.get_name_leafdata());
+    if (cmgwdomainname.is_set || is_set(cmgwdomainname.yfilter)) leaf_name_data.push_back(cmgwdomainname.get_name_leafdata());
+    if (cmgwgracetime.is_set || is_set(cmgwgracetime.yfilter)) leaf_name_data.push_back(cmgwgracetime.get_name_leafdata());
+    if (cmgwlawinterceptenabled.is_set || is_set(cmgwlawinterceptenabled.yfilter)) leaf_name_data.push_back(cmgwlawinterceptenabled.get_name_leafdata());
+    if (cmgwphysicalindex.is_set || is_set(cmgwphysicalindex.yfilter)) leaf_name_data.push_back(cmgwphysicalindex.get_name_leafdata());
+    if (cmgwservicestate.is_set || is_set(cmgwservicestate.yfilter)) leaf_name_data.push_back(cmgwservicestate.get_name_leafdata());
+    if (cmgwsrcfilterenabled.is_set || is_set(cmgwsrcfilterenabled.yfilter)) leaf_name_data.push_back(cmgwsrcfilterenabled.get_name_leafdata());
+    if (cmgwv23enabled.is_set || is_set(cmgwv23enabled.yfilter)) leaf_name_data.push_back(cmgwv23enabled.get_name_leafdata());
+    if (cmgwvtmappingmode.is_set || is_set(cmgwvtmappingmode.yfilter)) leaf_name_data.push_back(cmgwvtmappingmode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -437,48 +466,119 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwtab
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
         cmgwindex = value;
+        cmgwindex.value_namespace = name_space;
+        cmgwindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwAdminState")
     {
         cmgwadminstate = value;
+        cmgwadminstate.value_namespace = name_space;
+        cmgwadminstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwDomainName")
     {
         cmgwdomainname = value;
+        cmgwdomainname.value_namespace = name_space;
+        cmgwdomainname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwGraceTime")
     {
         cmgwgracetime = value;
+        cmgwgracetime.value_namespace = name_space;
+        cmgwgracetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwLawInterceptEnabled")
     {
         cmgwlawinterceptenabled = value;
+        cmgwlawinterceptenabled.value_namespace = name_space;
+        cmgwlawinterceptenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwPhysicalIndex")
     {
         cmgwphysicalindex = value;
+        cmgwphysicalindex.value_namespace = name_space;
+        cmgwphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwServiceState")
     {
         cmgwservicestate = value;
+        cmgwservicestate.value_namespace = name_space;
+        cmgwservicestate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwSrcFilterEnabled")
     {
         cmgwsrcfilterenabled = value;
+        cmgwsrcfilterenabled.value_namespace = name_space;
+        cmgwsrcfilterenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwV23Enabled")
     {
         cmgwv23enabled = value;
+        cmgwv23enabled.value_namespace = name_space;
+        cmgwv23enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwVtMappingMode")
     {
         cmgwvtmappingmode = value;
+        cmgwvtmappingmode.value_namespace = name_space;
+        cmgwvtmappingmode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmgwIndex")
+    {
+        cmgwindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwAdminState")
+    {
+        cmgwadminstate.yfilter = yfilter;
+    }
+    if(value_path == "cmgwDomainName")
+    {
+        cmgwdomainname.yfilter = yfilter;
+    }
+    if(value_path == "cmgwGraceTime")
+    {
+        cmgwgracetime.yfilter = yfilter;
+    }
+    if(value_path == "cmgwLawInterceptEnabled")
+    {
+        cmgwlawinterceptenabled.yfilter = yfilter;
+    }
+    if(value_path == "cmgwPhysicalIndex")
+    {
+        cmgwphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwServiceState")
+    {
+        cmgwservicestate.yfilter = yfilter;
+    }
+    if(value_path == "cmgwSrcFilterEnabled")
+    {
+        cmgwsrcfilterenabled.yfilter = yfilter;
+    }
+    if(value_path == "cmgwV23Enabled")
+    {
+        cmgwv23enabled.yfilter = yfilter;
+    }
+    if(value_path == "cmgwVtMappingMode")
+    {
+        cmgwvtmappingmode.yfilter = yfilter;
+    }
+}
+
+bool CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwIndex" || name == "cmgwAdminState" || name == "cmgwDomainName" || name == "cmgwGraceTime" || name == "cmgwLawInterceptEnabled" || name == "cmgwPhysicalIndex" || name == "cmgwServiceState" || name == "cmgwSrcFilterEnabled" || name == "cmgwV23Enabled" || name == "cmgwVtMappingMode")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocoltable()
@@ -492,9 +592,9 @@ CiscoMediaGatewayMib::Cmgwsignalprotocoltable::~Cmgwsignalprotocoltable()
 
 bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::has_data() const
 {
-    for (std::size_t index=0; index<cmgwsignalprotocolentry_.size(); index++)
+    for (std::size_t index=0; index<cmgwsignalprotocolentry.size(); index++)
     {
-        if(cmgwsignalprotocolentry_[index]->has_data())
+        if(cmgwsignalprotocolentry[index]->has_data())
             return true;
     }
     return false;
@@ -502,12 +602,12 @@ bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::has_operation() const
 {
-    for (std::size_t index=0; index<cmgwsignalprotocolentry_.size(); index++)
+    for (std::size_t index=0; index<cmgwsignalprotocolentry.size(); index++)
     {
-        if(cmgwsignalprotocolentry_[index]->has_operation())
+        if(cmgwsignalprotocolentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_segment_path() const
@@ -544,7 +644,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_child
 {
     if(child_yang_name == "cmgwSignalProtocolEntry")
     {
-        for(auto const & c : cmgwsignalprotocolentry_)
+        for(auto const & c : cmgwsignalprotocolentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -554,7 +654,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_child
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry>();
         c->parent = this;
-        cmgwsignalprotocolentry_.push_back(c);
+        cmgwsignalprotocolentry.push_back(c);
         return c;
     }
 
@@ -564,7 +664,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmgwsignalprotocoltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmgwsignalprotocolentry_)
+    for (auto const & c : cmgwsignalprotocolentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -572,8 +672,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmgwsignalp
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmgwsignalprotocoltable::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmgwsignalprotocoltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoMediaGatewayMib::Cmgwsignalprotocoltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwSignalProtocolEntry")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocolentry()
@@ -608,15 +719,15 @@ bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has
 
 bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmgwindex.operation)
-	|| is_set(cmgwsignalprotocolindex.operation)
-	|| is_set(cmgwsignalmgcprotocolport.operation)
-	|| is_set(cmgwsignalprotocol.operation)
-	|| is_set(cmgwsignalprotocolconfigver.operation)
-	|| is_set(cmgwsignalprotocolport.operation)
-	|| is_set(cmgwsignalprotocolpreference.operation)
-	|| is_set(cmgwsignalprotocolversion.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmgwindex.yfilter)
+	|| ydk::is_set(cmgwsignalprotocolindex.yfilter)
+	|| ydk::is_set(cmgwsignalmgcprotocolport.yfilter)
+	|| ydk::is_set(cmgwsignalprotocol.yfilter)
+	|| ydk::is_set(cmgwsignalprotocolconfigver.yfilter)
+	|| ydk::is_set(cmgwsignalprotocolport.yfilter)
+	|| ydk::is_set(cmgwsignalprotocolpreference.yfilter)
+	|| ydk::is_set(cmgwsignalprotocolversion.yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::get_segment_path() const
@@ -642,14 +753,14 @@ const EntityPath CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotoc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmgwindex.is_set || is_set(cmgwindex.operation)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
-    if (cmgwsignalprotocolindex.is_set || is_set(cmgwsignalprotocolindex.operation)) leaf_name_data.push_back(cmgwsignalprotocolindex.get_name_leafdata());
-    if (cmgwsignalmgcprotocolport.is_set || is_set(cmgwsignalmgcprotocolport.operation)) leaf_name_data.push_back(cmgwsignalmgcprotocolport.get_name_leafdata());
-    if (cmgwsignalprotocol.is_set || is_set(cmgwsignalprotocol.operation)) leaf_name_data.push_back(cmgwsignalprotocol.get_name_leafdata());
-    if (cmgwsignalprotocolconfigver.is_set || is_set(cmgwsignalprotocolconfigver.operation)) leaf_name_data.push_back(cmgwsignalprotocolconfigver.get_name_leafdata());
-    if (cmgwsignalprotocolport.is_set || is_set(cmgwsignalprotocolport.operation)) leaf_name_data.push_back(cmgwsignalprotocolport.get_name_leafdata());
-    if (cmgwsignalprotocolpreference.is_set || is_set(cmgwsignalprotocolpreference.operation)) leaf_name_data.push_back(cmgwsignalprotocolpreference.get_name_leafdata());
-    if (cmgwsignalprotocolversion.is_set || is_set(cmgwsignalprotocolversion.operation)) leaf_name_data.push_back(cmgwsignalprotocolversion.get_name_leafdata());
+    if (cmgwindex.is_set || is_set(cmgwindex.yfilter)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
+    if (cmgwsignalprotocolindex.is_set || is_set(cmgwsignalprotocolindex.yfilter)) leaf_name_data.push_back(cmgwsignalprotocolindex.get_name_leafdata());
+    if (cmgwsignalmgcprotocolport.is_set || is_set(cmgwsignalmgcprotocolport.yfilter)) leaf_name_data.push_back(cmgwsignalmgcprotocolport.get_name_leafdata());
+    if (cmgwsignalprotocol.is_set || is_set(cmgwsignalprotocol.yfilter)) leaf_name_data.push_back(cmgwsignalprotocol.get_name_leafdata());
+    if (cmgwsignalprotocolconfigver.is_set || is_set(cmgwsignalprotocolconfigver.yfilter)) leaf_name_data.push_back(cmgwsignalprotocolconfigver.get_name_leafdata());
+    if (cmgwsignalprotocolport.is_set || is_set(cmgwsignalprotocolport.yfilter)) leaf_name_data.push_back(cmgwsignalprotocolport.get_name_leafdata());
+    if (cmgwsignalprotocolpreference.is_set || is_set(cmgwsignalprotocolpreference.yfilter)) leaf_name_data.push_back(cmgwsignalprotocolpreference.get_name_leafdata());
+    if (cmgwsignalprotocolversion.is_set || is_set(cmgwsignalprotocolversion.yfilter)) leaf_name_data.push_back(cmgwsignalprotocolversion.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -668,40 +779,99 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmgwsignalp
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
         cmgwindex = value;
+        cmgwindex.value_namespace = name_space;
+        cmgwindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwSignalProtocolIndex")
     {
         cmgwsignalprotocolindex = value;
+        cmgwsignalprotocolindex.value_namespace = name_space;
+        cmgwsignalprotocolindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwSignalMgcProtocolPort")
     {
         cmgwsignalmgcprotocolport = value;
+        cmgwsignalmgcprotocolport.value_namespace = name_space;
+        cmgwsignalmgcprotocolport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwSignalProtocol")
     {
         cmgwsignalprotocol = value;
+        cmgwsignalprotocol.value_namespace = name_space;
+        cmgwsignalprotocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwSignalProtocolConfigVer")
     {
         cmgwsignalprotocolconfigver = value;
+        cmgwsignalprotocolconfigver.value_namespace = name_space;
+        cmgwsignalprotocolconfigver.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwSignalProtocolPort")
     {
         cmgwsignalprotocolport = value;
+        cmgwsignalprotocolport.value_namespace = name_space;
+        cmgwsignalprotocolport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwSignalProtocolPreference")
     {
         cmgwsignalprotocolpreference = value;
+        cmgwsignalprotocolpreference.value_namespace = name_space;
+        cmgwsignalprotocolpreference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwSignalProtocolVersion")
     {
         cmgwsignalprotocolversion = value;
+        cmgwsignalprotocolversion.value_namespace = name_space;
+        cmgwsignalprotocolversion.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmgwIndex")
+    {
+        cmgwindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwSignalProtocolIndex")
+    {
+        cmgwsignalprotocolindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwSignalMgcProtocolPort")
+    {
+        cmgwsignalmgcprotocolport.yfilter = yfilter;
+    }
+    if(value_path == "cmgwSignalProtocol")
+    {
+        cmgwsignalprotocol.yfilter = yfilter;
+    }
+    if(value_path == "cmgwSignalProtocolConfigVer")
+    {
+        cmgwsignalprotocolconfigver.yfilter = yfilter;
+    }
+    if(value_path == "cmgwSignalProtocolPort")
+    {
+        cmgwsignalprotocolport.yfilter = yfilter;
+    }
+    if(value_path == "cmgwSignalProtocolPreference")
+    {
+        cmgwsignalprotocolpreference.yfilter = yfilter;
+    }
+    if(value_path == "cmgwSignalProtocolVersion")
+    {
+        cmgwsignalprotocolversion.yfilter = yfilter;
+    }
+}
+
+bool CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwIndex" || name == "cmgwSignalProtocolIndex" || name == "cmgwSignalMgcProtocolPort" || name == "cmgwSignalProtocol" || name == "cmgwSignalProtocolConfigVer" || name == "cmgwSignalProtocolPort" || name == "cmgwSignalProtocolPreference" || name == "cmgwSignalProtocolVersion")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigtable()
@@ -715,9 +885,9 @@ CiscoMediaGatewayMib::Cmediagwipconfigtable::~Cmediagwipconfigtable()
 
 bool CiscoMediaGatewayMib::Cmediagwipconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwipconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwipconfigentry.size(); index++)
     {
-        if(cmediagwipconfigentry_[index]->has_data())
+        if(cmediagwipconfigentry[index]->has_data())
             return true;
     }
     return false;
@@ -725,12 +895,12 @@ bool CiscoMediaGatewayMib::Cmediagwipconfigtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwipconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwipconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwipconfigentry.size(); index++)
     {
-        if(cmediagwipconfigentry_[index]->has_operation())
+        if(cmediagwipconfigentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwipconfigtable::get_segment_path() const
@@ -767,7 +937,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwipconfigtable::get_child_b
 {
     if(child_yang_name == "cMediaGwIpConfigEntry")
     {
-        for(auto const & c : cmediagwipconfigentry_)
+        for(auto const & c : cmediagwipconfigentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -777,7 +947,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwipconfigtable::get_child_b
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry>();
         c->parent = this;
-        cmediagwipconfigentry_.push_back(c);
+        cmediagwipconfigentry.push_back(c);
         return c;
     }
 
@@ -787,7 +957,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwipconfigtable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwipconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwipconfigentry_)
+    for (auto const & c : cmediagwipconfigentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -795,8 +965,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwipc
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwipconfigtable::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwipconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoMediaGatewayMib::Cmediagwipconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoMediaGatewayMib::Cmediagwipconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cMediaGwIpConfigEntry")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry::Cmediagwipconfigentry()
@@ -837,18 +1018,18 @@ bool CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry::has_dat
 
 bool CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmgwindex.operation)
-	|| is_set(cmgwipconfigindex.operation)
-	|| is_set(cmgwipconfigaddress.operation)
-	|| is_set(cmgwipconfigaddrtype.operation)
-	|| is_set(cmgwipconfigdefaultgwip.operation)
-	|| is_set(cmgwipconfigforremotemapping.operation)
-	|| is_set(cmgwipconfigifindex.operation)
-	|| is_set(cmgwipconfigrowstatus.operation)
-	|| is_set(cmgwipconfigsubnetmask.operation)
-	|| is_set(cmgwipconfigvci.operation)
-	|| is_set(cmgwipconfigvpi.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmgwindex.yfilter)
+	|| ydk::is_set(cmgwipconfigindex.yfilter)
+	|| ydk::is_set(cmgwipconfigaddress.yfilter)
+	|| ydk::is_set(cmgwipconfigaddrtype.yfilter)
+	|| ydk::is_set(cmgwipconfigdefaultgwip.yfilter)
+	|| ydk::is_set(cmgwipconfigforremotemapping.yfilter)
+	|| ydk::is_set(cmgwipconfigifindex.yfilter)
+	|| ydk::is_set(cmgwipconfigrowstatus.yfilter)
+	|| ydk::is_set(cmgwipconfigsubnetmask.yfilter)
+	|| ydk::is_set(cmgwipconfigvci.yfilter)
+	|| ydk::is_set(cmgwipconfigvpi.yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry::get_segment_path() const
@@ -874,17 +1055,17 @@ const EntityPath CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigen
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmgwindex.is_set || is_set(cmgwindex.operation)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
-    if (cmgwipconfigindex.is_set || is_set(cmgwipconfigindex.operation)) leaf_name_data.push_back(cmgwipconfigindex.get_name_leafdata());
-    if (cmgwipconfigaddress.is_set || is_set(cmgwipconfigaddress.operation)) leaf_name_data.push_back(cmgwipconfigaddress.get_name_leafdata());
-    if (cmgwipconfigaddrtype.is_set || is_set(cmgwipconfigaddrtype.operation)) leaf_name_data.push_back(cmgwipconfigaddrtype.get_name_leafdata());
-    if (cmgwipconfigdefaultgwip.is_set || is_set(cmgwipconfigdefaultgwip.operation)) leaf_name_data.push_back(cmgwipconfigdefaultgwip.get_name_leafdata());
-    if (cmgwipconfigforremotemapping.is_set || is_set(cmgwipconfigforremotemapping.operation)) leaf_name_data.push_back(cmgwipconfigforremotemapping.get_name_leafdata());
-    if (cmgwipconfigifindex.is_set || is_set(cmgwipconfigifindex.operation)) leaf_name_data.push_back(cmgwipconfigifindex.get_name_leafdata());
-    if (cmgwipconfigrowstatus.is_set || is_set(cmgwipconfigrowstatus.operation)) leaf_name_data.push_back(cmgwipconfigrowstatus.get_name_leafdata());
-    if (cmgwipconfigsubnetmask.is_set || is_set(cmgwipconfigsubnetmask.operation)) leaf_name_data.push_back(cmgwipconfigsubnetmask.get_name_leafdata());
-    if (cmgwipconfigvci.is_set || is_set(cmgwipconfigvci.operation)) leaf_name_data.push_back(cmgwipconfigvci.get_name_leafdata());
-    if (cmgwipconfigvpi.is_set || is_set(cmgwipconfigvpi.operation)) leaf_name_data.push_back(cmgwipconfigvpi.get_name_leafdata());
+    if (cmgwindex.is_set || is_set(cmgwindex.yfilter)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
+    if (cmgwipconfigindex.is_set || is_set(cmgwipconfigindex.yfilter)) leaf_name_data.push_back(cmgwipconfigindex.get_name_leafdata());
+    if (cmgwipconfigaddress.is_set || is_set(cmgwipconfigaddress.yfilter)) leaf_name_data.push_back(cmgwipconfigaddress.get_name_leafdata());
+    if (cmgwipconfigaddrtype.is_set || is_set(cmgwipconfigaddrtype.yfilter)) leaf_name_data.push_back(cmgwipconfigaddrtype.get_name_leafdata());
+    if (cmgwipconfigdefaultgwip.is_set || is_set(cmgwipconfigdefaultgwip.yfilter)) leaf_name_data.push_back(cmgwipconfigdefaultgwip.get_name_leafdata());
+    if (cmgwipconfigforremotemapping.is_set || is_set(cmgwipconfigforremotemapping.yfilter)) leaf_name_data.push_back(cmgwipconfigforremotemapping.get_name_leafdata());
+    if (cmgwipconfigifindex.is_set || is_set(cmgwipconfigifindex.yfilter)) leaf_name_data.push_back(cmgwipconfigifindex.get_name_leafdata());
+    if (cmgwipconfigrowstatus.is_set || is_set(cmgwipconfigrowstatus.yfilter)) leaf_name_data.push_back(cmgwipconfigrowstatus.get_name_leafdata());
+    if (cmgwipconfigsubnetmask.is_set || is_set(cmgwipconfigsubnetmask.yfilter)) leaf_name_data.push_back(cmgwipconfigsubnetmask.get_name_leafdata());
+    if (cmgwipconfigvci.is_set || is_set(cmgwipconfigvci.yfilter)) leaf_name_data.push_back(cmgwipconfigvci.get_name_leafdata());
+    if (cmgwipconfigvpi.is_set || is_set(cmgwipconfigvpi.yfilter)) leaf_name_data.push_back(cmgwipconfigvpi.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -903,52 +1084,129 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwipc
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
         cmgwindex = value;
+        cmgwindex.value_namespace = name_space;
+        cmgwindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigIndex")
     {
         cmgwipconfigindex = value;
+        cmgwipconfigindex.value_namespace = name_space;
+        cmgwipconfigindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigAddress")
     {
         cmgwipconfigaddress = value;
+        cmgwipconfigaddress.value_namespace = name_space;
+        cmgwipconfigaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigAddrType")
     {
         cmgwipconfigaddrtype = value;
+        cmgwipconfigaddrtype.value_namespace = name_space;
+        cmgwipconfigaddrtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigDefaultGwIp")
     {
         cmgwipconfigdefaultgwip = value;
+        cmgwipconfigdefaultgwip.value_namespace = name_space;
+        cmgwipconfigdefaultgwip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigForRemoteMapping")
     {
         cmgwipconfigforremotemapping = value;
+        cmgwipconfigforremotemapping.value_namespace = name_space;
+        cmgwipconfigforremotemapping.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigIfIndex")
     {
         cmgwipconfigifindex = value;
+        cmgwipconfigifindex.value_namespace = name_space;
+        cmgwipconfigifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigRowStatus")
     {
         cmgwipconfigrowstatus = value;
+        cmgwipconfigrowstatus.value_namespace = name_space;
+        cmgwipconfigrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigSubnetMask")
     {
         cmgwipconfigsubnetmask = value;
+        cmgwipconfigsubnetmask.value_namespace = name_space;
+        cmgwipconfigsubnetmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigVci")
     {
         cmgwipconfigvci = value;
+        cmgwipconfigvci.value_namespace = name_space;
+        cmgwipconfigvci.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwIpConfigVpi")
     {
         cmgwipconfigvpi = value;
+        cmgwipconfigvpi.value_namespace = name_space;
+        cmgwipconfigvpi.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmgwIndex")
+    {
+        cmgwindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigIndex")
+    {
+        cmgwipconfigindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigAddress")
+    {
+        cmgwipconfigaddress.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigAddrType")
+    {
+        cmgwipconfigaddrtype.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigDefaultGwIp")
+    {
+        cmgwipconfigdefaultgwip.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigForRemoteMapping")
+    {
+        cmgwipconfigforremotemapping.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigIfIndex")
+    {
+        cmgwipconfigifindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigRowStatus")
+    {
+        cmgwipconfigrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigSubnetMask")
+    {
+        cmgwipconfigsubnetmask.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigVci")
+    {
+        cmgwipconfigvci.yfilter = yfilter;
+    }
+    if(value_path == "cmgwIpConfigVpi")
+    {
+        cmgwipconfigvpi.yfilter = yfilter;
+    }
+}
+
+bool CiscoMediaGatewayMib::Cmediagwipconfigtable::Cmediagwipconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwIndex" || name == "cmgwIpConfigIndex" || name == "cmgwIpConfigAddress" || name == "cmgwIpConfigAddrType" || name == "cmgwIpConfigDefaultGwIp" || name == "cmgwIpConfigForRemoteMapping" || name == "cmgwIpConfigIfIndex" || name == "cmgwIpConfigRowStatus" || name == "cmgwIpConfigSubnetMask" || name == "cmgwIpConfigVci" || name == "cmgwIpConfigVpi")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigtable()
@@ -962,9 +1220,9 @@ CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::~Cmediagwdomainnameconfigta
 
 bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwdomainnameconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwdomainnameconfigentry.size(); index++)
     {
-        if(cmediagwdomainnameconfigentry_[index]->has_data())
+        if(cmediagwdomainnameconfigentry[index]->has_data())
             return true;
     }
     return false;
@@ -972,12 +1230,12 @@ bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwdomainnameconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwdomainnameconfigentry.size(); index++)
     {
-        if(cmediagwdomainnameconfigentry_[index]->has_operation())
+        if(cmediagwdomainnameconfigentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get_segment_path() const
@@ -1014,7 +1272,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get
 {
     if(child_yang_name == "cMediaGwDomainNameConfigEntry")
     {
-        for(auto const & c : cmediagwdomainnameconfigentry_)
+        for(auto const & c : cmediagwdomainnameconfigentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1024,7 +1282,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry>();
         c->parent = this;
-        cmediagwdomainnameconfigentry_.push_back(c);
+        cmediagwdomainnameconfigentry.push_back(c);
         return c;
     }
 
@@ -1034,7 +1292,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwdomainnameconfigentry_)
+    for (auto const & c : cmediagwdomainnameconfigentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1042,8 +1300,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwdom
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cMediaGwDomainNameConfigEntry")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmediagwdomainnameconfigentry()
@@ -1072,12 +1341,12 @@ bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconf
 
 bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmgwindex.operation)
-	|| is_set(cmgwconfigdomainnameindex.operation)
-	|| is_set(cmgwconfigdomainname.operation)
-	|| is_set(cmgwconfigdomainnameentity.operation)
-	|| is_set(cmgwconfigdomainnamerowstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmgwindex.yfilter)
+	|| ydk::is_set(cmgwconfigdomainnameindex.yfilter)
+	|| ydk::is_set(cmgwconfigdomainname.yfilter)
+	|| ydk::is_set(cmgwconfigdomainnameentity.yfilter)
+	|| ydk::is_set(cmgwconfigdomainnamerowstatus.yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::get_segment_path() const
@@ -1103,11 +1372,11 @@ const EntityPath CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmgwindex.is_set || is_set(cmgwindex.operation)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
-    if (cmgwconfigdomainnameindex.is_set || is_set(cmgwconfigdomainnameindex.operation)) leaf_name_data.push_back(cmgwconfigdomainnameindex.get_name_leafdata());
-    if (cmgwconfigdomainname.is_set || is_set(cmgwconfigdomainname.operation)) leaf_name_data.push_back(cmgwconfigdomainname.get_name_leafdata());
-    if (cmgwconfigdomainnameentity.is_set || is_set(cmgwconfigdomainnameentity.operation)) leaf_name_data.push_back(cmgwconfigdomainnameentity.get_name_leafdata());
-    if (cmgwconfigdomainnamerowstatus.is_set || is_set(cmgwconfigdomainnamerowstatus.operation)) leaf_name_data.push_back(cmgwconfigdomainnamerowstatus.get_name_leafdata());
+    if (cmgwindex.is_set || is_set(cmgwindex.yfilter)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
+    if (cmgwconfigdomainnameindex.is_set || is_set(cmgwconfigdomainnameindex.yfilter)) leaf_name_data.push_back(cmgwconfigdomainnameindex.get_name_leafdata());
+    if (cmgwconfigdomainname.is_set || is_set(cmgwconfigdomainname.yfilter)) leaf_name_data.push_back(cmgwconfigdomainname.get_name_leafdata());
+    if (cmgwconfigdomainnameentity.is_set || is_set(cmgwconfigdomainnameentity.yfilter)) leaf_name_data.push_back(cmgwconfigdomainnameentity.get_name_leafdata());
+    if (cmgwconfigdomainnamerowstatus.is_set || is_set(cmgwconfigdomainnamerowstatus.yfilter)) leaf_name_data.push_back(cmgwconfigdomainnamerowstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1126,28 +1395,69 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwdom
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
         cmgwindex = value;
+        cmgwindex.value_namespace = name_space;
+        cmgwindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwConfigDomainNameIndex")
     {
         cmgwconfigdomainnameindex = value;
+        cmgwconfigdomainnameindex.value_namespace = name_space;
+        cmgwconfigdomainnameindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwConfigDomainName")
     {
         cmgwconfigdomainname = value;
+        cmgwconfigdomainname.value_namespace = name_space;
+        cmgwconfigdomainname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwConfigDomainNameEntity")
     {
         cmgwconfigdomainnameentity = value;
+        cmgwconfigdomainnameentity.value_namespace = name_space;
+        cmgwconfigdomainnameentity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwConfigDomainNameRowStatus")
     {
         cmgwconfigdomainnamerowstatus = value;
+        cmgwconfigdomainnamerowstatus.value_namespace = name_space;
+        cmgwconfigdomainnamerowstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmgwIndex")
+    {
+        cmgwindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwConfigDomainNameIndex")
+    {
+        cmgwconfigdomainnameindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwConfigDomainName")
+    {
+        cmgwconfigdomainname.yfilter = yfilter;
+    }
+    if(value_path == "cmgwConfigDomainNameEntity")
+    {
+        cmgwconfigdomainnameentity.yfilter = yfilter;
+    }
+    if(value_path == "cmgwConfigDomainNameRowStatus")
+    {
+        cmgwconfigdomainnamerowstatus.yfilter = yfilter;
+    }
+}
+
+bool CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwIndex" || name == "cmgwConfigDomainNameIndex" || name == "cmgwConfigDomainName" || name == "cmgwConfigDomainNameEntity" || name == "cmgwConfigDomainNameRowStatus")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigtable()
@@ -1161,9 +1471,9 @@ CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::~Cmediagwdnsipconfigtable()
 
 bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwdnsipconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwdnsipconfigentry.size(); index++)
     {
-        if(cmediagwdnsipconfigentry_[index]->has_data())
+        if(cmediagwdnsipconfigentry[index]->has_data())
             return true;
     }
     return false;
@@ -1171,12 +1481,12 @@ bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwdnsipconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwdnsipconfigentry.size(); index++)
     {
-        if(cmediagwdnsipconfigentry_[index]->has_operation())
+        if(cmediagwdnsipconfigentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_segment_path() const
@@ -1213,7 +1523,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_chil
 {
     if(child_yang_name == "cMediaGwDnsIpConfigEntry")
     {
-        for(auto const & c : cmediagwdnsipconfigentry_)
+        for(auto const & c : cmediagwdnsipconfigentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1223,7 +1533,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_chil
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry>();
         c->parent = this;
-        cmediagwdnsipconfigentry_.push_back(c);
+        cmediagwdnsipconfigentry.push_back(c);
         return c;
     }
 
@@ -1233,7 +1543,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_chil
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwdnsipconfigentry_)
+    for (auto const & c : cmediagwdnsipconfigentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1241,8 +1551,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwdns
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cMediaGwDnsIpConfigEntry")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::Cmediagwdnsipconfigentry()
@@ -1273,13 +1594,13 @@ bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::h
 
 bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmgwindex.operation)
-	|| is_set(cmgwdnsipindex.operation)
-	|| is_set(cmgwdnsdomainname.operation)
-	|| is_set(cmgwdnsip.operation)
-	|| is_set(cmgwdnsiprowstatus.operation)
-	|| is_set(cmgwdnsiptype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmgwindex.yfilter)
+	|| ydk::is_set(cmgwdnsipindex.yfilter)
+	|| ydk::is_set(cmgwdnsdomainname.yfilter)
+	|| ydk::is_set(cmgwdnsip.yfilter)
+	|| ydk::is_set(cmgwdnsiprowstatus.yfilter)
+	|| ydk::is_set(cmgwdnsiptype.yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::get_segment_path() const
@@ -1305,12 +1626,12 @@ const EntityPath CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipco
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmgwindex.is_set || is_set(cmgwindex.operation)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
-    if (cmgwdnsipindex.is_set || is_set(cmgwdnsipindex.operation)) leaf_name_data.push_back(cmgwdnsipindex.get_name_leafdata());
-    if (cmgwdnsdomainname.is_set || is_set(cmgwdnsdomainname.operation)) leaf_name_data.push_back(cmgwdnsdomainname.get_name_leafdata());
-    if (cmgwdnsip.is_set || is_set(cmgwdnsip.operation)) leaf_name_data.push_back(cmgwdnsip.get_name_leafdata());
-    if (cmgwdnsiprowstatus.is_set || is_set(cmgwdnsiprowstatus.operation)) leaf_name_data.push_back(cmgwdnsiprowstatus.get_name_leafdata());
-    if (cmgwdnsiptype.is_set || is_set(cmgwdnsiptype.operation)) leaf_name_data.push_back(cmgwdnsiptype.get_name_leafdata());
+    if (cmgwindex.is_set || is_set(cmgwindex.yfilter)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
+    if (cmgwdnsipindex.is_set || is_set(cmgwdnsipindex.yfilter)) leaf_name_data.push_back(cmgwdnsipindex.get_name_leafdata());
+    if (cmgwdnsdomainname.is_set || is_set(cmgwdnsdomainname.yfilter)) leaf_name_data.push_back(cmgwdnsdomainname.get_name_leafdata());
+    if (cmgwdnsip.is_set || is_set(cmgwdnsip.yfilter)) leaf_name_data.push_back(cmgwdnsip.get_name_leafdata());
+    if (cmgwdnsiprowstatus.is_set || is_set(cmgwdnsiprowstatus.yfilter)) leaf_name_data.push_back(cmgwdnsiprowstatus.get_name_leafdata());
+    if (cmgwdnsiptype.is_set || is_set(cmgwdnsiptype.yfilter)) leaf_name_data.push_back(cmgwdnsiptype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1329,32 +1650,79 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwdns
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
         cmgwindex = value;
+        cmgwindex.value_namespace = name_space;
+        cmgwindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwDnsIpIndex")
     {
         cmgwdnsipindex = value;
+        cmgwdnsipindex.value_namespace = name_space;
+        cmgwdnsipindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwDnsDomainName")
     {
         cmgwdnsdomainname = value;
+        cmgwdnsdomainname.value_namespace = name_space;
+        cmgwdnsdomainname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwDnsIp")
     {
         cmgwdnsip = value;
+        cmgwdnsip.value_namespace = name_space;
+        cmgwdnsip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwDnsIpRowStatus")
     {
         cmgwdnsiprowstatus = value;
+        cmgwdnsiprowstatus.value_namespace = name_space;
+        cmgwdnsiprowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwDnsIpType")
     {
         cmgwdnsiptype = value;
+        cmgwdnsiptype.value_namespace = name_space;
+        cmgwdnsiptype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmgwIndex")
+    {
+        cmgwindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwDnsIpIndex")
+    {
+        cmgwdnsipindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwDnsDomainName")
+    {
+        cmgwdnsdomainname.yfilter = yfilter;
+    }
+    if(value_path == "cmgwDnsIp")
+    {
+        cmgwdnsip.yfilter = yfilter;
+    }
+    if(value_path == "cmgwDnsIpRowStatus")
+    {
+        cmgwdnsiprowstatus.yfilter = yfilter;
+    }
+    if(value_path == "cmgwDnsIpType")
+    {
+        cmgwdnsiptype.yfilter = yfilter;
+    }
+}
+
+bool CiscoMediaGatewayMib::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwIndex" || name == "cmgwDnsIpIndex" || name == "cmgwDnsDomainName" || name == "cmgwDnsIp" || name == "cmgwDnsIpRowStatus" || name == "cmgwDnsIpType")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmgwliftable::Cmgwliftable()
@@ -1368,9 +1736,9 @@ CiscoMediaGatewayMib::Cmgwliftable::~Cmgwliftable()
 
 bool CiscoMediaGatewayMib::Cmgwliftable::has_data() const
 {
-    for (std::size_t index=0; index<cmgwlifentry_.size(); index++)
+    for (std::size_t index=0; index<cmgwlifentry.size(); index++)
     {
-        if(cmgwlifentry_[index]->has_data())
+        if(cmgwlifentry[index]->has_data())
             return true;
     }
     return false;
@@ -1378,12 +1746,12 @@ bool CiscoMediaGatewayMib::Cmgwliftable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmgwliftable::has_operation() const
 {
-    for (std::size_t index=0; index<cmgwlifentry_.size(); index++)
+    for (std::size_t index=0; index<cmgwlifentry.size(); index++)
     {
-        if(cmgwlifentry_[index]->has_operation())
+        if(cmgwlifentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmgwliftable::get_segment_path() const
@@ -1420,7 +1788,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwliftable::get_child_by_name(co
 {
     if(child_yang_name == "cmgwLifEntry")
     {
-        for(auto const & c : cmgwlifentry_)
+        for(auto const & c : cmgwlifentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1430,7 +1798,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwliftable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry>();
         c->parent = this;
-        cmgwlifentry_.push_back(c);
+        cmgwlifentry.push_back(c);
         return c;
     }
 
@@ -1440,7 +1808,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmgwliftable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmgwliftable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmgwlifentry_)
+    for (auto const & c : cmgwlifentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1448,8 +1816,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmgwliftabl
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmgwliftable::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmgwliftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoMediaGatewayMib::Cmgwliftable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoMediaGatewayMib::Cmgwliftable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwLifEntry")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::Cmgwlifentry()
@@ -1476,11 +1855,11 @@ bool CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::has_data() const
 
 bool CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmgwindex.operation)
-	|| is_set(cmgwlifnumber.operation)
-	|| is_set(cmgwlifpvccount.operation)
-	|| is_set(cmgwlifvoiceifcount.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmgwindex.yfilter)
+	|| ydk::is_set(cmgwlifnumber.yfilter)
+	|| ydk::is_set(cmgwlifpvccount.yfilter)
+	|| ydk::is_set(cmgwlifvoiceifcount.yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::get_segment_path() const
@@ -1506,10 +1885,10 @@ const EntityPath CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmgwindex.is_set || is_set(cmgwindex.operation)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
-    if (cmgwlifnumber.is_set || is_set(cmgwlifnumber.operation)) leaf_name_data.push_back(cmgwlifnumber.get_name_leafdata());
-    if (cmgwlifpvccount.is_set || is_set(cmgwlifpvccount.operation)) leaf_name_data.push_back(cmgwlifpvccount.get_name_leafdata());
-    if (cmgwlifvoiceifcount.is_set || is_set(cmgwlifvoiceifcount.operation)) leaf_name_data.push_back(cmgwlifvoiceifcount.get_name_leafdata());
+    if (cmgwindex.is_set || is_set(cmgwindex.yfilter)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
+    if (cmgwlifnumber.is_set || is_set(cmgwlifnumber.yfilter)) leaf_name_data.push_back(cmgwlifnumber.get_name_leafdata());
+    if (cmgwlifpvccount.is_set || is_set(cmgwlifpvccount.yfilter)) leaf_name_data.push_back(cmgwlifpvccount.get_name_leafdata());
+    if (cmgwlifvoiceifcount.is_set || is_set(cmgwlifvoiceifcount.yfilter)) leaf_name_data.push_back(cmgwlifvoiceifcount.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1528,24 +1907,59 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmgwliftabl
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
         cmgwindex = value;
+        cmgwindex.value_namespace = name_space;
+        cmgwindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwLifNumber")
     {
         cmgwlifnumber = value;
+        cmgwlifnumber.value_namespace = name_space;
+        cmgwlifnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwLifPvcCount")
     {
         cmgwlifpvccount = value;
+        cmgwlifpvccount.value_namespace = name_space;
+        cmgwlifpvccount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwLifVoiceIfCount")
     {
         cmgwlifvoiceifcount = value;
+        cmgwlifvoiceifcount.value_namespace = name_space;
+        cmgwlifvoiceifcount.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmgwIndex")
+    {
+        cmgwindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwLifNumber")
+    {
+        cmgwlifnumber.yfilter = yfilter;
+    }
+    if(value_path == "cmgwLifPvcCount")
+    {
+        cmgwlifpvccount.yfilter = yfilter;
+    }
+    if(value_path == "cmgwLifVoiceIfCount")
+    {
+        cmgwlifvoiceifcount.yfilter = yfilter;
+    }
+}
+
+bool CiscoMediaGatewayMib::Cmgwliftable::Cmgwlifentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwIndex" || name == "cmgwLifNumber" || name == "cmgwLifPvcCount" || name == "cmgwLifVoiceIfCount")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigtable()
@@ -1559,9 +1973,9 @@ CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::~Cmediagwcallcontrolconfig
 
 bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry.size(); index++)
     {
-        if(cmediagwcallcontrolconfigentry_[index]->has_data())
+        if(cmediagwcallcontrolconfigentry[index]->has_data())
             return true;
     }
     return false;
@@ -1569,12 +1983,12 @@ bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwcallcontrolconfigentry.size(); index++)
     {
-        if(cmediagwcallcontrolconfigentry_[index]->has_operation())
+        if(cmediagwcallcontrolconfigentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::get_segment_path() const
@@ -1611,7 +2025,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::ge
 {
     if(child_yang_name == "cMediaGwCallControlConfigEntry")
     {
-        for(auto const & c : cmediagwcallcontrolconfigentry_)
+        for(auto const & c : cmediagwcallcontrolconfigentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1621,7 +2035,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::ge
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry>();
         c->parent = this;
-        cmediagwcallcontrolconfigentry_.push_back(c);
+        cmediagwcallcontrolconfigentry.push_back(c);
         return c;
     }
 
@@ -1631,7 +2045,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::ge
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwcallcontrolconfigentry_)
+    for (auto const & c : cmediagwcallcontrolconfigentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1639,8 +2053,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwcal
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cMediaGwCallControlConfigEntry")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcallcontrolconfigentry()
@@ -1697,26 +2122,26 @@ bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolco
 
 bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmgwindex.operation)
-	|| is_set(cmediagwcccfgaal1svcnameprefix.operation)
-	|| is_set(cmediagwcccfgaal2svcnameprefix.operation)
-	|| is_set(cmediagwcccfgbearertos.operation)
-	|| is_set(cmediagwcccfgclusterenabled.operation)
-	|| is_set(cmediagwcccfgcontroltos.operation)
-	|| is_set(cmediagwcccfgdefaulttoneplanid.operation)
-	|| is_set(cmediagwcccfgdefbearertraffic.operation)
-	|| is_set(cmediagwcccfgdefrtpnameprefix.operation)
-	|| is_set(cmediagwcccfgdescrinfoenabled.operation)
-	|| is_set(cmediagwcccfgdsnameprefix.operation)
-	|| is_set(cmediagwcccfgnsepayload.operation)
-	|| is_set(cmediagwcccfgnseresptimer.operation)
-	|| is_set(cmediagwcccfgntepayload.operation)
-	|| is_set(cmediagwcccfgrtpnameprefix.operation)
-	|| is_set(cmediagwcccfgvbdjitterdelaymode.operation)
-	|| is_set(cmediagwcccfgvbdjittermaxdelay.operation)
-	|| is_set(cmediagwcccfgvbdjittermindelay.operation)
-	|| is_set(cmediagwcccfgvbdjitternomdelay.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmgwindex.yfilter)
+	|| ydk::is_set(cmediagwcccfgaal1svcnameprefix.yfilter)
+	|| ydk::is_set(cmediagwcccfgaal2svcnameprefix.yfilter)
+	|| ydk::is_set(cmediagwcccfgbearertos.yfilter)
+	|| ydk::is_set(cmediagwcccfgclusterenabled.yfilter)
+	|| ydk::is_set(cmediagwcccfgcontroltos.yfilter)
+	|| ydk::is_set(cmediagwcccfgdefaulttoneplanid.yfilter)
+	|| ydk::is_set(cmediagwcccfgdefbearertraffic.yfilter)
+	|| ydk::is_set(cmediagwcccfgdefrtpnameprefix.yfilter)
+	|| ydk::is_set(cmediagwcccfgdescrinfoenabled.yfilter)
+	|| ydk::is_set(cmediagwcccfgdsnameprefix.yfilter)
+	|| ydk::is_set(cmediagwcccfgnsepayload.yfilter)
+	|| ydk::is_set(cmediagwcccfgnseresptimer.yfilter)
+	|| ydk::is_set(cmediagwcccfgntepayload.yfilter)
+	|| ydk::is_set(cmediagwcccfgrtpnameprefix.yfilter)
+	|| ydk::is_set(cmediagwcccfgvbdjitterdelaymode.yfilter)
+	|| ydk::is_set(cmediagwcccfgvbdjittermaxdelay.yfilter)
+	|| ydk::is_set(cmediagwcccfgvbdjittermindelay.yfilter)
+	|| ydk::is_set(cmediagwcccfgvbdjitternomdelay.yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::get_segment_path() const
@@ -1742,25 +2167,25 @@ const EntityPath CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmgwindex.is_set || is_set(cmgwindex.operation)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
-    if (cmediagwcccfgaal1svcnameprefix.is_set || is_set(cmediagwcccfgaal1svcnameprefix.operation)) leaf_name_data.push_back(cmediagwcccfgaal1svcnameprefix.get_name_leafdata());
-    if (cmediagwcccfgaal2svcnameprefix.is_set || is_set(cmediagwcccfgaal2svcnameprefix.operation)) leaf_name_data.push_back(cmediagwcccfgaal2svcnameprefix.get_name_leafdata());
-    if (cmediagwcccfgbearertos.is_set || is_set(cmediagwcccfgbearertos.operation)) leaf_name_data.push_back(cmediagwcccfgbearertos.get_name_leafdata());
-    if (cmediagwcccfgclusterenabled.is_set || is_set(cmediagwcccfgclusterenabled.operation)) leaf_name_data.push_back(cmediagwcccfgclusterenabled.get_name_leafdata());
-    if (cmediagwcccfgcontroltos.is_set || is_set(cmediagwcccfgcontroltos.operation)) leaf_name_data.push_back(cmediagwcccfgcontroltos.get_name_leafdata());
-    if (cmediagwcccfgdefaulttoneplanid.is_set || is_set(cmediagwcccfgdefaulttoneplanid.operation)) leaf_name_data.push_back(cmediagwcccfgdefaulttoneplanid.get_name_leafdata());
-    if (cmediagwcccfgdefbearertraffic.is_set || is_set(cmediagwcccfgdefbearertraffic.operation)) leaf_name_data.push_back(cmediagwcccfgdefbearertraffic.get_name_leafdata());
-    if (cmediagwcccfgdefrtpnameprefix.is_set || is_set(cmediagwcccfgdefrtpnameprefix.operation)) leaf_name_data.push_back(cmediagwcccfgdefrtpnameprefix.get_name_leafdata());
-    if (cmediagwcccfgdescrinfoenabled.is_set || is_set(cmediagwcccfgdescrinfoenabled.operation)) leaf_name_data.push_back(cmediagwcccfgdescrinfoenabled.get_name_leafdata());
-    if (cmediagwcccfgdsnameprefix.is_set || is_set(cmediagwcccfgdsnameprefix.operation)) leaf_name_data.push_back(cmediagwcccfgdsnameprefix.get_name_leafdata());
-    if (cmediagwcccfgnsepayload.is_set || is_set(cmediagwcccfgnsepayload.operation)) leaf_name_data.push_back(cmediagwcccfgnsepayload.get_name_leafdata());
-    if (cmediagwcccfgnseresptimer.is_set || is_set(cmediagwcccfgnseresptimer.operation)) leaf_name_data.push_back(cmediagwcccfgnseresptimer.get_name_leafdata());
-    if (cmediagwcccfgntepayload.is_set || is_set(cmediagwcccfgntepayload.operation)) leaf_name_data.push_back(cmediagwcccfgntepayload.get_name_leafdata());
-    if (cmediagwcccfgrtpnameprefix.is_set || is_set(cmediagwcccfgrtpnameprefix.operation)) leaf_name_data.push_back(cmediagwcccfgrtpnameprefix.get_name_leafdata());
-    if (cmediagwcccfgvbdjitterdelaymode.is_set || is_set(cmediagwcccfgvbdjitterdelaymode.operation)) leaf_name_data.push_back(cmediagwcccfgvbdjitterdelaymode.get_name_leafdata());
-    if (cmediagwcccfgvbdjittermaxdelay.is_set || is_set(cmediagwcccfgvbdjittermaxdelay.operation)) leaf_name_data.push_back(cmediagwcccfgvbdjittermaxdelay.get_name_leafdata());
-    if (cmediagwcccfgvbdjittermindelay.is_set || is_set(cmediagwcccfgvbdjittermindelay.operation)) leaf_name_data.push_back(cmediagwcccfgvbdjittermindelay.get_name_leafdata());
-    if (cmediagwcccfgvbdjitternomdelay.is_set || is_set(cmediagwcccfgvbdjitternomdelay.operation)) leaf_name_data.push_back(cmediagwcccfgvbdjitternomdelay.get_name_leafdata());
+    if (cmgwindex.is_set || is_set(cmgwindex.yfilter)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
+    if (cmediagwcccfgaal1svcnameprefix.is_set || is_set(cmediagwcccfgaal1svcnameprefix.yfilter)) leaf_name_data.push_back(cmediagwcccfgaal1svcnameprefix.get_name_leafdata());
+    if (cmediagwcccfgaal2svcnameprefix.is_set || is_set(cmediagwcccfgaal2svcnameprefix.yfilter)) leaf_name_data.push_back(cmediagwcccfgaal2svcnameprefix.get_name_leafdata());
+    if (cmediagwcccfgbearertos.is_set || is_set(cmediagwcccfgbearertos.yfilter)) leaf_name_data.push_back(cmediagwcccfgbearertos.get_name_leafdata());
+    if (cmediagwcccfgclusterenabled.is_set || is_set(cmediagwcccfgclusterenabled.yfilter)) leaf_name_data.push_back(cmediagwcccfgclusterenabled.get_name_leafdata());
+    if (cmediagwcccfgcontroltos.is_set || is_set(cmediagwcccfgcontroltos.yfilter)) leaf_name_data.push_back(cmediagwcccfgcontroltos.get_name_leafdata());
+    if (cmediagwcccfgdefaulttoneplanid.is_set || is_set(cmediagwcccfgdefaulttoneplanid.yfilter)) leaf_name_data.push_back(cmediagwcccfgdefaulttoneplanid.get_name_leafdata());
+    if (cmediagwcccfgdefbearertraffic.is_set || is_set(cmediagwcccfgdefbearertraffic.yfilter)) leaf_name_data.push_back(cmediagwcccfgdefbearertraffic.get_name_leafdata());
+    if (cmediagwcccfgdefrtpnameprefix.is_set || is_set(cmediagwcccfgdefrtpnameprefix.yfilter)) leaf_name_data.push_back(cmediagwcccfgdefrtpnameprefix.get_name_leafdata());
+    if (cmediagwcccfgdescrinfoenabled.is_set || is_set(cmediagwcccfgdescrinfoenabled.yfilter)) leaf_name_data.push_back(cmediagwcccfgdescrinfoenabled.get_name_leafdata());
+    if (cmediagwcccfgdsnameprefix.is_set || is_set(cmediagwcccfgdsnameprefix.yfilter)) leaf_name_data.push_back(cmediagwcccfgdsnameprefix.get_name_leafdata());
+    if (cmediagwcccfgnsepayload.is_set || is_set(cmediagwcccfgnsepayload.yfilter)) leaf_name_data.push_back(cmediagwcccfgnsepayload.get_name_leafdata());
+    if (cmediagwcccfgnseresptimer.is_set || is_set(cmediagwcccfgnseresptimer.yfilter)) leaf_name_data.push_back(cmediagwcccfgnseresptimer.get_name_leafdata());
+    if (cmediagwcccfgntepayload.is_set || is_set(cmediagwcccfgntepayload.yfilter)) leaf_name_data.push_back(cmediagwcccfgntepayload.get_name_leafdata());
+    if (cmediagwcccfgrtpnameprefix.is_set || is_set(cmediagwcccfgrtpnameprefix.yfilter)) leaf_name_data.push_back(cmediagwcccfgrtpnameprefix.get_name_leafdata());
+    if (cmediagwcccfgvbdjitterdelaymode.is_set || is_set(cmediagwcccfgvbdjitterdelaymode.yfilter)) leaf_name_data.push_back(cmediagwcccfgvbdjitterdelaymode.get_name_leafdata());
+    if (cmediagwcccfgvbdjittermaxdelay.is_set || is_set(cmediagwcccfgvbdjittermaxdelay.yfilter)) leaf_name_data.push_back(cmediagwcccfgvbdjittermaxdelay.get_name_leafdata());
+    if (cmediagwcccfgvbdjittermindelay.is_set || is_set(cmediagwcccfgvbdjittermindelay.yfilter)) leaf_name_data.push_back(cmediagwcccfgvbdjittermindelay.get_name_leafdata());
+    if (cmediagwcccfgvbdjitternomdelay.is_set || is_set(cmediagwcccfgvbdjitternomdelay.yfilter)) leaf_name_data.push_back(cmediagwcccfgvbdjitternomdelay.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1779,84 +2204,209 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwcal
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
         cmgwindex = value;
+        cmgwindex.value_namespace = name_space;
+        cmgwindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgAal1SvcNamePrefix")
     {
         cmediagwcccfgaal1svcnameprefix = value;
+        cmediagwcccfgaal1svcnameprefix.value_namespace = name_space;
+        cmediagwcccfgaal1svcnameprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgAal2SvcNamePrefix")
     {
         cmediagwcccfgaal2svcnameprefix = value;
+        cmediagwcccfgaal2svcnameprefix.value_namespace = name_space;
+        cmediagwcccfgaal2svcnameprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgBearerTos")
     {
         cmediagwcccfgbearertos = value;
+        cmediagwcccfgbearertos.value_namespace = name_space;
+        cmediagwcccfgbearertos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgClusterEnabled")
     {
         cmediagwcccfgclusterenabled = value;
+        cmediagwcccfgclusterenabled.value_namespace = name_space;
+        cmediagwcccfgclusterenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgControlTos")
     {
         cmediagwcccfgcontroltos = value;
+        cmediagwcccfgcontroltos.value_namespace = name_space;
+        cmediagwcccfgcontroltos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgDefaultTonePlanId")
     {
         cmediagwcccfgdefaulttoneplanid = value;
+        cmediagwcccfgdefaulttoneplanid.value_namespace = name_space;
+        cmediagwcccfgdefaulttoneplanid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgDefBearerTraffic")
     {
         cmediagwcccfgdefbearertraffic = value;
+        cmediagwcccfgdefbearertraffic.value_namespace = name_space;
+        cmediagwcccfgdefbearertraffic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgDefRtpNamePrefix")
     {
         cmediagwcccfgdefrtpnameprefix = value;
+        cmediagwcccfgdefrtpnameprefix.value_namespace = name_space;
+        cmediagwcccfgdefrtpnameprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgDescrInfoEnabled")
     {
         cmediagwcccfgdescrinfoenabled = value;
+        cmediagwcccfgdescrinfoenabled.value_namespace = name_space;
+        cmediagwcccfgdescrinfoenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgDsNamePrefix")
     {
         cmediagwcccfgdsnameprefix = value;
+        cmediagwcccfgdsnameprefix.value_namespace = name_space;
+        cmediagwcccfgdsnameprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgNsePayload")
     {
         cmediagwcccfgnsepayload = value;
+        cmediagwcccfgnsepayload.value_namespace = name_space;
+        cmediagwcccfgnsepayload.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgNseRespTimer")
     {
         cmediagwcccfgnseresptimer = value;
+        cmediagwcccfgnseresptimer.value_namespace = name_space;
+        cmediagwcccfgnseresptimer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgNtePayload")
     {
         cmediagwcccfgntepayload = value;
+        cmediagwcccfgntepayload.value_namespace = name_space;
+        cmediagwcccfgntepayload.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgRtpNamePrefix")
     {
         cmediagwcccfgrtpnameprefix = value;
+        cmediagwcccfgrtpnameprefix.value_namespace = name_space;
+        cmediagwcccfgrtpnameprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgVbdJitterDelayMode")
     {
         cmediagwcccfgvbdjitterdelaymode = value;
+        cmediagwcccfgvbdjitterdelaymode.value_namespace = name_space;
+        cmediagwcccfgvbdjitterdelaymode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgVbdJitterMaxDelay")
     {
         cmediagwcccfgvbdjittermaxdelay = value;
+        cmediagwcccfgvbdjittermaxdelay.value_namespace = name_space;
+        cmediagwcccfgvbdjittermaxdelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgVbdJitterMinDelay")
     {
         cmediagwcccfgvbdjittermindelay = value;
+        cmediagwcccfgvbdjittermindelay.value_namespace = name_space;
+        cmediagwcccfgvbdjittermindelay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cMediaGwCcCfgVbdJitterNomDelay")
     {
         cmediagwcccfgvbdjitternomdelay = value;
+        cmediagwcccfgvbdjitternomdelay.value_namespace = name_space;
+        cmediagwcccfgvbdjitternomdelay.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmgwIndex")
+    {
+        cmgwindex.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgAal1SvcNamePrefix")
+    {
+        cmediagwcccfgaal1svcnameprefix.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgAal2SvcNamePrefix")
+    {
+        cmediagwcccfgaal2svcnameprefix.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgBearerTos")
+    {
+        cmediagwcccfgbearertos.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgClusterEnabled")
+    {
+        cmediagwcccfgclusterenabled.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgControlTos")
+    {
+        cmediagwcccfgcontroltos.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgDefaultTonePlanId")
+    {
+        cmediagwcccfgdefaulttoneplanid.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgDefBearerTraffic")
+    {
+        cmediagwcccfgdefbearertraffic.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgDefRtpNamePrefix")
+    {
+        cmediagwcccfgdefrtpnameprefix.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgDescrInfoEnabled")
+    {
+        cmediagwcccfgdescrinfoenabled.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgDsNamePrefix")
+    {
+        cmediagwcccfgdsnameprefix.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgNsePayload")
+    {
+        cmediagwcccfgnsepayload.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgNseRespTimer")
+    {
+        cmediagwcccfgnseresptimer.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgNtePayload")
+    {
+        cmediagwcccfgntepayload.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgRtpNamePrefix")
+    {
+        cmediagwcccfgrtpnameprefix.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgVbdJitterDelayMode")
+    {
+        cmediagwcccfgvbdjitterdelaymode.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgVbdJitterMaxDelay")
+    {
+        cmediagwcccfgvbdjittermaxdelay.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgVbdJitterMinDelay")
+    {
+        cmediagwcccfgvbdjittermindelay.yfilter = yfilter;
+    }
+    if(value_path == "cMediaGwCcCfgVbdJitterNomDelay")
+    {
+        cmediagwcccfgvbdjitternomdelay.yfilter = yfilter;
+    }
+}
+
+bool CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwIndex" || name == "cMediaGwCcCfgAal1SvcNamePrefix" || name == "cMediaGwCcCfgAal2SvcNamePrefix" || name == "cMediaGwCcCfgBearerTos" || name == "cMediaGwCcCfgClusterEnabled" || name == "cMediaGwCcCfgControlTos" || name == "cMediaGwCcCfgDefaultTonePlanId" || name == "cMediaGwCcCfgDefBearerTraffic" || name == "cMediaGwCcCfgDefRtpNamePrefix" || name == "cMediaGwCcCfgDescrInfoEnabled" || name == "cMediaGwCcCfgDsNamePrefix" || name == "cMediaGwCcCfgNsePayload" || name == "cMediaGwCcCfgNseRespTimer" || name == "cMediaGwCcCfgNtePayload" || name == "cMediaGwCcCfgRtpNamePrefix" || name == "cMediaGwCcCfgVbdJitterDelayMode" || name == "cMediaGwCcCfgVbdJitterMaxDelay" || name == "cMediaGwCcCfgVbdJitterMinDelay" || name == "cMediaGwCcCfgVbdJitterNomDelay")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatstable()
@@ -1870,9 +2420,9 @@ CiscoMediaGatewayMib::Cmediagwrscstatstable::~Cmediagwrscstatstable()
 
 bool CiscoMediaGatewayMib::Cmediagwrscstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cmediagwrscstatsentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwrscstatsentry.size(); index++)
     {
-        if(cmediagwrscstatsentry_[index]->has_data())
+        if(cmediagwrscstatsentry[index]->has_data())
             return true;
     }
     return false;
@@ -1880,12 +2430,12 @@ bool CiscoMediaGatewayMib::Cmediagwrscstatstable::has_data() const
 
 bool CiscoMediaGatewayMib::Cmediagwrscstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cmediagwrscstatsentry_.size(); index++)
+    for (std::size_t index=0; index<cmediagwrscstatsentry.size(); index++)
     {
-        if(cmediagwrscstatsentry_[index]->has_operation())
+        if(cmediagwrscstatsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwrscstatstable::get_segment_path() const
@@ -1922,7 +2472,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwrscstatstable::get_child_b
 {
     if(child_yang_name == "cMediaGwRscStatsEntry")
     {
-        for(auto const & c : cmediagwrscstatsentry_)
+        for(auto const & c : cmediagwrscstatsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1932,7 +2482,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwrscstatstable::get_child_b
         }
         auto c = std::make_shared<CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry>();
         c->parent = this;
-        cmediagwrscstatsentry_.push_back(c);
+        cmediagwrscstatsentry.push_back(c);
         return c;
     }
 
@@ -1942,7 +2492,7 @@ std::shared_ptr<Entity> CiscoMediaGatewayMib::Cmediagwrscstatstable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwrscstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cmediagwrscstatsentry_)
+    for (auto const & c : cmediagwrscstatsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1950,8 +2500,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwrsc
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwrscstatstable::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwrscstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoMediaGatewayMib::Cmediagwrscstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoMediaGatewayMib::Cmediagwrscstatstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cMediaGwRscStatsEntry")
+        return true;
+    return false;
 }
 
 CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmediagwrscstatsentry()
@@ -1982,13 +2543,13 @@ bool CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::has_dat
 
 bool CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cmgwindex.operation)
-	|| is_set(cmgwrscstatsindex.operation)
-	|| is_set(cmgwrscaverageutilization.operation)
-	|| is_set(cmgwrscmaximumutilization.operation)
-	|| is_set(cmgwrscminimumutilization.operation)
-	|| is_set(cmgwrscsincelastreset.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cmgwindex.yfilter)
+	|| ydk::is_set(cmgwrscstatsindex.yfilter)
+	|| ydk::is_set(cmgwrscaverageutilization.yfilter)
+	|| ydk::is_set(cmgwrscmaximumutilization.yfilter)
+	|| ydk::is_set(cmgwrscminimumutilization.yfilter)
+	|| ydk::is_set(cmgwrscsincelastreset.yfilter);
 }
 
 std::string CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::get_segment_path() const
@@ -2014,12 +2575,12 @@ const EntityPath CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsen
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cmgwindex.is_set || is_set(cmgwindex.operation)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
-    if (cmgwrscstatsindex.is_set || is_set(cmgwrscstatsindex.operation)) leaf_name_data.push_back(cmgwrscstatsindex.get_name_leafdata());
-    if (cmgwrscaverageutilization.is_set || is_set(cmgwrscaverageutilization.operation)) leaf_name_data.push_back(cmgwrscaverageutilization.get_name_leafdata());
-    if (cmgwrscmaximumutilization.is_set || is_set(cmgwrscmaximumutilization.operation)) leaf_name_data.push_back(cmgwrscmaximumutilization.get_name_leafdata());
-    if (cmgwrscminimumutilization.is_set || is_set(cmgwrscminimumutilization.operation)) leaf_name_data.push_back(cmgwrscminimumutilization.get_name_leafdata());
-    if (cmgwrscsincelastreset.is_set || is_set(cmgwrscsincelastreset.operation)) leaf_name_data.push_back(cmgwrscsincelastreset.get_name_leafdata());
+    if (cmgwindex.is_set || is_set(cmgwindex.yfilter)) leaf_name_data.push_back(cmgwindex.get_name_leafdata());
+    if (cmgwrscstatsindex.is_set || is_set(cmgwrscstatsindex.yfilter)) leaf_name_data.push_back(cmgwrscstatsindex.get_name_leafdata());
+    if (cmgwrscaverageutilization.is_set || is_set(cmgwrscaverageutilization.yfilter)) leaf_name_data.push_back(cmgwrscaverageutilization.get_name_leafdata());
+    if (cmgwrscmaximumutilization.is_set || is_set(cmgwrscmaximumutilization.yfilter)) leaf_name_data.push_back(cmgwrscmaximumutilization.get_name_leafdata());
+    if (cmgwrscminimumutilization.is_set || is_set(cmgwrscminimumutilization.yfilter)) leaf_name_data.push_back(cmgwrscminimumutilization.get_name_leafdata());
+    if (cmgwrscsincelastreset.is_set || is_set(cmgwrscsincelastreset.yfilter)) leaf_name_data.push_back(cmgwrscsincelastreset.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2038,83 +2599,130 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoMediaGatewayMib::Cmediagwrsc
     return children;
 }
 
-void CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::set_value(const std::string & value_path, std::string value)
+void CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmgwIndex")
     {
         cmgwindex = value;
+        cmgwindex.value_namespace = name_space;
+        cmgwindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwRscStatsIndex")
     {
         cmgwrscstatsindex = value;
+        cmgwrscstatsindex.value_namespace = name_space;
+        cmgwrscstatsindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwRscAverageUtilization")
     {
         cmgwrscaverageutilization = value;
+        cmgwrscaverageutilization.value_namespace = name_space;
+        cmgwrscaverageutilization.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwRscMaximumUtilization")
     {
         cmgwrscmaximumutilization = value;
+        cmgwrscmaximumutilization.value_namespace = name_space;
+        cmgwrscmaximumutilization.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwRscMinimumUtilization")
     {
         cmgwrscminimumutilization = value;
+        cmgwrscminimumutilization.value_namespace = name_space;
+        cmgwrscminimumutilization.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cmgwRscSinceLastReset")
     {
         cmgwrscsincelastreset = value;
+        cmgwrscsincelastreset.value_namespace = name_space;
+        cmgwrscsincelastreset.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CcallcontroljitterdelaymodeEnum::adaptive {1, "adaptive"};
-const Enum::YLeaf CcallcontroljitterdelaymodeEnum::fixed {2, "fixed"};
+void CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cmgwIndex")
+    {
+        cmgwindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwRscStatsIndex")
+    {
+        cmgwrscstatsindex.yfilter = yfilter;
+    }
+    if(value_path == "cmgwRscAverageUtilization")
+    {
+        cmgwrscaverageutilization.yfilter = yfilter;
+    }
+    if(value_path == "cmgwRscMaximumUtilization")
+    {
+        cmgwrscmaximumutilization.yfilter = yfilter;
+    }
+    if(value_path == "cmgwRscMinimumUtilization")
+    {
+        cmgwrscminimumutilization.yfilter = yfilter;
+    }
+    if(value_path == "cmgwRscSinceLastReset")
+    {
+        cmgwrscsincelastreset.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CgwadminstateEnum::inService {1, "inService"};
-const Enum::YLeaf CgwadminstateEnum::forcedOutOfService {2, "forcedOutOfService"};
-const Enum::YLeaf CgwadminstateEnum::gracefulOutOfService {3, "gracefulOutOfService"};
+bool CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cmgwIndex" || name == "cmgwRscStatsIndex" || name == "cmgwRscAverageUtilization" || name == "cmgwRscMaximumUtilization" || name == "cmgwRscMinimumUtilization" || name == "cmgwRscSinceLastReset")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CgwservicestateEnum::inService {1, "inService"};
-const Enum::YLeaf CgwservicestateEnum::forcedOutOfService {2, "forcedOutOfService"};
-const Enum::YLeaf CgwservicestateEnum::gracefulOutOfService {3, "gracefulOutOfService"};
+const Enum::YLeaf Cgwservicestate::inService {1, "inService"};
+const Enum::YLeaf Cgwservicestate::forcedOutOfService {2, "forcedOutOfService"};
+const Enum::YLeaf Cgwservicestate::gracefulOutOfService {3, "gracefulOutOfService"};
 
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::CmgwvtmappingmodeEnum::standard {1, "standard"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::CmgwvtmappingmodeEnum::titan {2, "titan"};
+const Enum::YLeaf Ccallcontroljitterdelaymode::adaptive {1, "adaptive"};
+const Enum::YLeaf Ccallcontroljitterdelaymode::fixed {2, "fixed"};
 
-const Enum::YLeaf CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::CmgwsignalprotocolEnum::other {1, "other"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::CmgwsignalprotocolEnum::mgcp {2, "mgcp"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::CmgwsignalprotocolEnum::h248 {3, "h248"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::CmgwsignalprotocolEnum::tgcp {4, "tgcp"};
+const Enum::YLeaf Cgwadminstate::inService {1, "inService"};
+const Enum::YLeaf Cgwadminstate::forcedOutOfService {2, "forcedOutOfService"};
+const Enum::YLeaf Cgwadminstate::gracefulOutOfService {3, "gracefulOutOfService"};
 
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::CmgwconfigdomainnameentityEnum::gateway {1, "gateway"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::CmgwconfigdomainnameentityEnum::dnsServer {2, "dnsServer"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::CmgwconfigdomainnameentityEnum::mgc {3, "mgc"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::Cmgwvtmappingmode::standard {1, "standard"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwtable::Cmediagwentry::Cmgwvtmappingmode::titan {2, "titan"};
 
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::CmediagwcccfgclusterenabledEnum::disabled {1, "disabled"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::CmediagwcccfgclusterenabledEnum::enabled {2, "enabled"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::CmediagwcccfgclusterenabledEnum::conditionalEnabled {3, "conditionalEnabled"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol::other {1, "other"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol::mgcp {2, "mgcp"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol::h248 {3, "h248"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol::tgcp {4, "tgcp"};
 
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::CmediagwcccfgdefbearertrafficEnum::ipPvcAal5 {1, "ipPvcAal5"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::CmediagwcccfgdefbearertrafficEnum::atmPvcAal2 {2, "atmPvcAal2"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::CmediagwcccfgdefbearertrafficEnum::atmSvcAal2 {3, "atmSvcAal2"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::CmediagwcccfgdefbearertrafficEnum::atmSvcAal1 {4, "atmSvcAal1"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity::gateway {1, "gateway"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity::dnsServer {2, "dnsServer"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity::mgc {3, "mgc"};
 
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::cpu {1, "cpu"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::staticmemory {2, "staticmemory"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::dynamicmemory {3, "dynamicmemory"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::sysmemory {4, "sysmemory"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::commbuffer {5, "commbuffer"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::msgq {6, "msgq"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::atmq {7, "atmq"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::svccongestion {8, "svccongestion"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::rsvpq {9, "rsvpq"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::dspq {10, "dspq"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::h248congestion {11, "h248congestion"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::callpersec {12, "callpersec"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::smallipcbuffer {13, "smallipcbuffer"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::mediumipcbuffer {14, "mediumipcbuffer"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::largeipcbuffer {15, "largeipcbuffer"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::hugeipcbuffer {16, "hugeipcbuffer"};
-const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::CmgwrscstatsindexEnum::mblkipcbuffer {17, "mblkipcbuffer"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled::disabled {1, "disabled"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled::enabled {2, "enabled"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled::conditionalEnabled {3, "conditionalEnabled"};
+
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic::ipPvcAal5 {1, "ipPvcAal5"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic::atmPvcAal2 {2, "atmPvcAal2"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic::atmSvcAal2 {3, "atmSvcAal2"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic::atmSvcAal1 {4, "atmSvcAal1"};
+
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::cpu {1, "cpu"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::staticmemory {2, "staticmemory"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::dynamicmemory {3, "dynamicmemory"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::sysmemory {4, "sysmemory"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::commbuffer {5, "commbuffer"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::msgq {6, "msgq"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::atmq {7, "atmq"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::svccongestion {8, "svccongestion"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::rsvpq {9, "rsvpq"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::dspq {10, "dspq"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::h248congestion {11, "h248congestion"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::callpersec {12, "callpersec"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::smallipcbuffer {13, "smallipcbuffer"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::mediumipcbuffer {14, "mediumipcbuffer"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::largeipcbuffer {15, "largeipcbuffer"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::hugeipcbuffer {16, "hugeipcbuffer"};
+const Enum::YLeaf CiscoMediaGatewayMib::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex::mblkipcbuffer {17, "mblkipcbuffer"};
 
 
 }

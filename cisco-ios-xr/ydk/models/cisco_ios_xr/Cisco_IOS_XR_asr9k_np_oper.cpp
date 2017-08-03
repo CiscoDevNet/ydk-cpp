@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_asr9k_np_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_np_oper {
 
 HardwareModuleNp::HardwareModuleNp()
@@ -29,7 +31,7 @@ bool HardwareModuleNp::has_data() const
 
 bool HardwareModuleNp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::get_children() 
     return children;
 }
 
-void HardwareModuleNp::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleNp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string HardwareModuleNp::get_bundle_name() const
 augment_capabilities_function HardwareModuleNp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleNp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleNp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool HardwareModuleNp::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::get_chil
     return children;
 }
 
-void HardwareModuleNp::Nodes::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleNp::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool HardwareModuleNp::Nodes::Node::has_data() const
 
 bool HardwareModuleNp::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (nps !=  nullptr && nps->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath HardwareModuleNp::Nodes::Node::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::ge
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nps" || name == "node-name")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Nps()
@@ -322,7 +368,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::has_operation() const
         if(np[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::Np()
@@ -426,8 +483,8 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::has_data() const
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(np_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(np_name.yfilter)
 	|| (chn_load !=  nullptr && chn_load->has_operation())
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (fast_drop !=  nullptr && fast_drop->has_operation())
@@ -457,7 +514,7 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (np_name.is_set || is_set(np_name.operation)) leaf_name_data.push_back(np_name.get_name_leafdata());
+    if (np_name.is_set || is_set(np_name.yfilter)) leaf_name_data.push_back(np_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -532,12 +589,29 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "np-name")
     {
         np_name = value;
+        np_name.value_namespace = name_space;
+        np_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "np-name")
+    {
+        np_name.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "chn-load" || name == "counters" || name == "fast-drop" || name == "tcam-summary" || name == "np-name")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::ChnLoad()
@@ -566,7 +640,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::has_operation() const
         if(np_chn_load[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_segment_path() const
@@ -631,8 +705,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np-chn-load")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::NpChnLoad()
@@ -663,13 +748,13 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::has_data() cons
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(avg_guar_rfd_usage.operation)
-	|| is_set(avg_rfd_usage.operation)
-	|| is_set(flow_ctr_counter.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(peak_guar_rfd_usage.operation)
-	|| is_set(peak_rfd_usage.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(avg_guar_rfd_usage.yfilter)
+	|| ydk::is_set(avg_rfd_usage.yfilter)
+	|| ydk::is_set(flow_ctr_counter.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(peak_guar_rfd_usage.yfilter)
+	|| ydk::is_set(peak_rfd_usage.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::get_segment_path() const
@@ -695,12 +780,12 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (avg_guar_rfd_usage.is_set || is_set(avg_guar_rfd_usage.operation)) leaf_name_data.push_back(avg_guar_rfd_usage.get_name_leafdata());
-    if (avg_rfd_usage.is_set || is_set(avg_rfd_usage.operation)) leaf_name_data.push_back(avg_rfd_usage.get_name_leafdata());
-    if (flow_ctr_counter.is_set || is_set(flow_ctr_counter.operation)) leaf_name_data.push_back(flow_ctr_counter.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (peak_guar_rfd_usage.is_set || is_set(peak_guar_rfd_usage.operation)) leaf_name_data.push_back(peak_guar_rfd_usage.get_name_leafdata());
-    if (peak_rfd_usage.is_set || is_set(peak_rfd_usage.operation)) leaf_name_data.push_back(peak_rfd_usage.get_name_leafdata());
+    if (avg_guar_rfd_usage.is_set || is_set(avg_guar_rfd_usage.yfilter)) leaf_name_data.push_back(avg_guar_rfd_usage.get_name_leafdata());
+    if (avg_rfd_usage.is_set || is_set(avg_rfd_usage.yfilter)) leaf_name_data.push_back(avg_rfd_usage.get_name_leafdata());
+    if (flow_ctr_counter.is_set || is_set(flow_ctr_counter.yfilter)) leaf_name_data.push_back(flow_ctr_counter.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (peak_guar_rfd_usage.is_set || is_set(peak_guar_rfd_usage.yfilter)) leaf_name_data.push_back(peak_guar_rfd_usage.get_name_leafdata());
+    if (peak_rfd_usage.is_set || is_set(peak_rfd_usage.yfilter)) leaf_name_data.push_back(peak_rfd_usage.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -719,32 +804,79 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "avg-guar-rfd-usage")
     {
         avg_guar_rfd_usage = value;
+        avg_guar_rfd_usage.value_namespace = name_space;
+        avg_guar_rfd_usage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "avg-rfd-usage")
     {
         avg_rfd_usage = value;
+        avg_rfd_usage.value_namespace = name_space;
+        avg_rfd_usage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-ctr-counter")
     {
         flow_ctr_counter = value;
+        flow_ctr_counter.value_namespace = name_space;
+        flow_ctr_counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-guar-rfd-usage")
     {
         peak_guar_rfd_usage = value;
+        peak_guar_rfd_usage.value_namespace = name_space;
+        peak_guar_rfd_usage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-rfd-usage")
     {
         peak_rfd_usage = value;
+        peak_rfd_usage.value_namespace = name_space;
+        peak_rfd_usage.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "avg-guar-rfd-usage")
+    {
+        avg_guar_rfd_usage.yfilter = yfilter;
+    }
+    if(value_path == "avg-rfd-usage")
+    {
+        avg_rfd_usage.yfilter = yfilter;
+    }
+    if(value_path == "flow-ctr-counter")
+    {
+        flow_ctr_counter.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "peak-guar-rfd-usage")
+    {
+        peak_guar_rfd_usage.yfilter = yfilter;
+    }
+    if(value_path == "peak-rfd-usage")
+    {
+        peak_rfd_usage.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "avg-guar-rfd-usage" || name == "avg-rfd-usage" || name == "flow-ctr-counter" || name == "interface-name" || name == "peak-guar-rfd-usage" || name == "peak-rfd-usage")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamSummary()
@@ -771,7 +903,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::has_data() const
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (internal_tcam_info !=  nullptr && internal_tcam_info->has_operation())
 	|| (tcam_info !=  nullptr && tcam_info->has_operation());
 }
@@ -845,8 +977,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "internal-tcam-info" || name == "tcam-info")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::InternalTcamInfo()
@@ -883,7 +1026,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::has_
         if(tcam_lt_l2[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tcam_lt_ods2 !=  nullptr && tcam_lt_ods2->has_operation())
 	|| (tcam_lt_ods8 !=  nullptr && tcam_lt_ods8->has_operation());
 }
@@ -978,8 +1121,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcam-lt-l2" || name == "tcam-lt-ods2" || name == "tcam-lt-ods8")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::TcamLtOds2()
@@ -1031,9 +1185,9 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_entries.operation)
-	|| is_set(max_entries.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(free_entries.yfilter)
+	|| ydk::is_set(max_entries.yfilter)
 	|| (app_id_acl !=  nullptr && app_id_acl->has_operation())
 	|| (app_id_afmon !=  nullptr && app_id_afmon->has_operation())
 	|| (app_id_ifib !=  nullptr && app_id_ifib->has_operation())
@@ -1066,8 +1220,8 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_entries.is_set || is_set(free_entries.operation)) leaf_name_data.push_back(free_entries.get_name_leafdata());
-    if (max_entries.is_set || is_set(max_entries.operation)) leaf_name_data.push_back(max_entries.get_name_leafdata());
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (max_entries.is_set || is_set(max_entries.yfilter)) leaf_name_data.push_back(max_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1184,16 +1338,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-entries")
     {
         free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-entries")
     {
         max_entries = value;
+        max_entries.value_namespace = name_space;
+        max_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+    if(value_path == "max-entries")
+    {
+        max_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "app-id-acl" || name == "app-id-afmon" || name == "app-id-ifib" || name == "app-id-li" || name == "app-id-pbr" || name == "app-id-qos" || name == "application-edpl-entry" || name == "free-entries" || name == "max-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::AppIdIfib()
@@ -1218,10 +1395,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::get_segment_path() const
@@ -1247,9 +1424,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1268,20 +1445,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::AppIdQos()
@@ -1306,10 +1512,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::get_segment_path() const
@@ -1335,9 +1541,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1356,20 +1562,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::AppIdAcl()
@@ -1394,10 +1629,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::get_segment_path() const
@@ -1423,9 +1658,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1444,20 +1679,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::AppIdAfmon()
@@ -1482,10 +1746,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::get_segment_path() const
@@ -1511,9 +1775,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1532,20 +1796,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::AppIdLi()
@@ -1570,10 +1863,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::get_segment_path() const
@@ -1599,9 +1892,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1620,20 +1913,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::AppIdPbr()
@@ -1658,10 +1980,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::get_segment_path() const
@@ -1687,9 +2009,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1708,20 +2030,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::ApplicationEdplEntry()
@@ -1746,10 +2097,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::get_segment_path() const
@@ -1775,9 +2126,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1796,20 +2147,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::TcamLtOds8()
@@ -1861,9 +2241,9 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_entries.operation)
-	|| is_set(max_entries.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(free_entries.yfilter)
+	|| ydk::is_set(max_entries.yfilter)
 	|| (app_id_acl !=  nullptr && app_id_acl->has_operation())
 	|| (app_id_afmon !=  nullptr && app_id_afmon->has_operation())
 	|| (app_id_ifib !=  nullptr && app_id_ifib->has_operation())
@@ -1896,8 +2276,8 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_entries.is_set || is_set(free_entries.operation)) leaf_name_data.push_back(free_entries.get_name_leafdata());
-    if (max_entries.is_set || is_set(max_entries.operation)) leaf_name_data.push_back(max_entries.get_name_leafdata());
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (max_entries.is_set || is_set(max_entries.yfilter)) leaf_name_data.push_back(max_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2014,16 +2394,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-entries")
     {
         free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-entries")
     {
         max_entries = value;
+        max_entries.value_namespace = name_space;
+        max_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+    if(value_path == "max-entries")
+    {
+        max_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "app-id-acl" || name == "app-id-afmon" || name == "app-id-ifib" || name == "app-id-li" || name == "app-id-pbr" || name == "app-id-qos" || name == "application-edpl-entry" || name == "free-entries" || name == "max-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::AppIdIfib()
@@ -2048,10 +2451,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::get_segment_path() const
@@ -2077,9 +2480,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2098,20 +2501,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::AppIdQos()
@@ -2136,10 +2568,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::get_segment_path() const
@@ -2165,9 +2597,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2186,20 +2618,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::AppIdAcl()
@@ -2224,10 +2685,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::get_segment_path() const
@@ -2253,9 +2714,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2274,20 +2735,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::AppIdAfmon()
@@ -2312,10 +2802,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::get_segment_path() const
@@ -2341,9 +2831,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2362,20 +2852,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::AppIdLi()
@@ -2400,10 +2919,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::get_segment_path() const
@@ -2429,9 +2948,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2450,20 +2969,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::AppIdPbr()
@@ -2488,10 +3036,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::get_segment_path() const
@@ -2517,9 +3065,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2538,20 +3086,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::ApplicationEdplEntry()
@@ -2576,10 +3153,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_vmr_ids.operation)
-	|| is_set(total_allocated_entries.operation)
-	|| is_set(total_used_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter)
+	|| ydk::is_set(total_allocated_entries.yfilter)
+	|| ydk::is_set(total_used_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::get_segment_path() const
@@ -2605,9 +3182,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
-    if (total_allocated_entries.is_set || is_set(total_allocated_entries.operation)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
-    if (total_used_entries.is_set || is_set(total_used_entries.operation)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (total_allocated_entries.is_set || is_set(total_allocated_entries.yfilter)) leaf_name_data.push_back(total_allocated_entries.get_name_leafdata());
+    if (total_used_entries.is_set || is_set(total_used_entries.yfilter)) leaf_name_data.push_back(total_used_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2626,20 +3203,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-allocated-entries")
     {
         total_allocated_entries = value;
+        total_allocated_entries.value_namespace = name_space;
+        total_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-used-entries")
     {
         total_used_entries = value;
+        total_used_entries.value_namespace = name_space;
+        total_used_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+    if(value_path == "total-allocated-entries")
+    {
+        total_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "total-used-entries")
+    {
+        total_used_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-vmr-ids" || name == "total-allocated-entries" || name == "total-used-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::TcamLtL2()
@@ -2664,10 +3270,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_entries.operation)
-	|| is_set(partition_id.operation)
-	|| is_set(valid_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_entries.yfilter)
+	|| ydk::is_set(partition_id.yfilter)
+	|| ydk::is_set(valid_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::get_segment_path() const
@@ -2693,9 +3299,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_entries.is_set || is_set(free_entries.operation)) leaf_name_data.push_back(free_entries.get_name_leafdata());
-    if (partition_id.is_set || is_set(partition_id.operation)) leaf_name_data.push_back(partition_id.get_name_leafdata());
-    if (valid_entries.is_set || is_set(valid_entries.operation)) leaf_name_data.push_back(valid_entries.get_name_leafdata());
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (partition_id.is_set || is_set(partition_id.yfilter)) leaf_name_data.push_back(partition_id.get_name_leafdata());
+    if (valid_entries.is_set || is_set(valid_entries.yfilter)) leaf_name_data.push_back(valid_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2714,20 +3320,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-entries")
     {
         free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partition-id")
     {
         partition_id = value;
+        partition_id.value_namespace = name_space;
+        partition_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-entries")
     {
         valid_entries = value;
+        valid_entries.value_namespace = name_space;
+        valid_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+    if(value_path == "partition-id")
+    {
+        partition_id.yfilter = yfilter;
+    }
+    if(value_path == "valid-entries")
+    {
+        valid_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-entries" || name == "partition-id" || name == "valid-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamInfo()
@@ -2764,7 +3399,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::has_operatio
         if(tcam_lt_l2[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tcam_lt_ods2 !=  nullptr && tcam_lt_ods2->has_operation())
 	|| (tcam_lt_ods8 !=  nullptr && tcam_lt_ods8->has_operation());
 }
@@ -2859,8 +3494,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcam-lt-l2" || name == "tcam-lt-ods2" || name == "tcam-lt-ods8")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::TcamLtOds2()
@@ -2916,9 +3562,9 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_entries.operation)
-	|| is_set(reserved_entries.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(free_entries.yfilter)
+	|| ydk::is_set(reserved_entries.yfilter)
 	|| (acl_common !=  nullptr && acl_common->has_operation())
 	|| (app_id_acl !=  nullptr && app_id_acl->has_operation())
 	|| (app_id_afmon !=  nullptr && app_id_afmon->has_operation())
@@ -2952,8 +3598,8 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_entries.is_set || is_set(free_entries.operation)) leaf_name_data.push_back(free_entries.get_name_leafdata());
-    if (reserved_entries.is_set || is_set(reserved_entries.operation)) leaf_name_data.push_back(reserved_entries.get_name_leafdata());
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (reserved_entries.is_set || is_set(reserved_entries.yfilter)) leaf_name_data.push_back(reserved_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3084,16 +3730,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-entries")
     {
         free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reserved-entries")
     {
         reserved_entries = value;
+        reserved_entries.value_namespace = name_space;
+        reserved_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+    if(value_path == "reserved-entries")
+    {
+        reserved_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-common" || name == "app-id-acl" || name == "app-id-afmon" || name == "app-id-edpl" || name == "app-id-ifib" || name == "app-id-li" || name == "app-id-pbr" || name == "app-id-qos" || name == "free-entries" || name == "reserved-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::AclCommon()
@@ -3116,9 +3785,9 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allocated_entries.operation)
-	|| is_set(free_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allocated_entries.yfilter)
+	|| ydk::is_set(free_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::get_segment_path() const
@@ -3144,8 +3813,8 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allocated_entries.is_set || is_set(allocated_entries.operation)) leaf_name_data.push_back(allocated_entries.get_name_leafdata());
-    if (free_entries.is_set || is_set(free_entries.operation)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (allocated_entries.is_set || is_set(allocated_entries.yfilter)) leaf_name_data.push_back(allocated_entries.get_name_leafdata());
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3164,16 +3833,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allocated-entries")
     {
         allocated_entries = value;
+        allocated_entries.value_namespace = name_space;
+        allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free-entries")
     {
         free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allocated-entries")
+    {
+        allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocated-entries" || name == "free-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::AppIdIfib()
@@ -3198,10 +3890,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::get_segment_path() const
@@ -3227,9 +3919,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3248,20 +3940,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::AppIdQos()
@@ -3286,10 +4007,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::get_segment_path() const
@@ -3315,9 +4036,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3336,20 +4057,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::AppIdAcl()
@@ -3374,10 +4124,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::get_segment_path() const
@@ -3403,9 +4153,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3424,20 +4174,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::AppIdAfmon()
@@ -3462,10 +4241,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::get_segment_path() const
@@ -3491,9 +4270,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3512,20 +4291,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::AppIdLi()
@@ -3550,10 +4358,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::get_segment_path() const
@@ -3579,9 +4387,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3600,20 +4408,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::AppIdPbr()
@@ -3638,10 +4475,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::get_segment_path() const
@@ -3667,9 +4504,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3688,20 +4525,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::AppIdEdpl()
@@ -3726,10 +4592,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::get_segment_path() const
@@ -3755,9 +4621,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3776,20 +4642,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::TcamLtOds8()
@@ -3845,9 +4740,9 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_entries.operation)
-	|| is_set(reserved_entries.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(free_entries.yfilter)
+	|| ydk::is_set(reserved_entries.yfilter)
 	|| (acl_common !=  nullptr && acl_common->has_operation())
 	|| (app_id_acl !=  nullptr && app_id_acl->has_operation())
 	|| (app_id_afmon !=  nullptr && app_id_afmon->has_operation())
@@ -3881,8 +4776,8 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_entries.is_set || is_set(free_entries.operation)) leaf_name_data.push_back(free_entries.get_name_leafdata());
-    if (reserved_entries.is_set || is_set(reserved_entries.operation)) leaf_name_data.push_back(reserved_entries.get_name_leafdata());
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (reserved_entries.is_set || is_set(reserved_entries.yfilter)) leaf_name_data.push_back(reserved_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4013,16 +4908,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-entries")
     {
         free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reserved-entries")
     {
         reserved_entries = value;
+        reserved_entries.value_namespace = name_space;
+        reserved_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+    if(value_path == "reserved-entries")
+    {
+        reserved_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-common" || name == "app-id-acl" || name == "app-id-afmon" || name == "app-id-edpl" || name == "app-id-ifib" || name == "app-id-li" || name == "app-id-pbr" || name == "app-id-qos" || name == "free-entries" || name == "reserved-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::AclCommon()
@@ -4045,9 +4963,9 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allocated_entries.operation)
-	|| is_set(free_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allocated_entries.yfilter)
+	|| ydk::is_set(free_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::get_segment_path() const
@@ -4073,8 +4991,8 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allocated_entries.is_set || is_set(allocated_entries.operation)) leaf_name_data.push_back(allocated_entries.get_name_leafdata());
-    if (free_entries.is_set || is_set(free_entries.operation)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (allocated_entries.is_set || is_set(allocated_entries.yfilter)) leaf_name_data.push_back(allocated_entries.get_name_leafdata());
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4093,16 +5011,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allocated-entries")
     {
         allocated_entries = value;
+        allocated_entries.value_namespace = name_space;
+        allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free-entries")
     {
         free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allocated-entries")
+    {
+        allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allocated-entries" || name == "free-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::AppIdIfib()
@@ -4127,10 +5068,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::get_segment_path() const
@@ -4156,9 +5097,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4177,20 +5118,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::AppIdQos()
@@ -4215,10 +5185,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::get_segment_path() const
@@ -4244,9 +5214,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4265,20 +5235,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::AppIdAcl()
@@ -4303,10 +5302,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::get_segment_path() const
@@ -4332,9 +5331,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4353,20 +5352,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::AppIdAfmon()
@@ -4391,10 +5419,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::get_segment_path() const
@@ -4420,9 +5448,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4441,20 +5469,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::AppIdLi()
@@ -4479,10 +5536,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::get_segment_path() const
@@ -4508,9 +5565,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4529,20 +5586,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::AppIdPbr()
@@ -4567,10 +5653,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::get_segment_path() const
@@ -4596,9 +5682,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4617,20 +5703,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::AppIdEdpl()
@@ -4655,10 +5770,10 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(num_active_entries.operation)
-	|| is_set(num_allocated_entries.operation)
-	|| is_set(num_vmr_ids.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(num_active_entries.yfilter)
+	|| ydk::is_set(num_allocated_entries.yfilter)
+	|| ydk::is_set(num_vmr_ids.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::get_segment_path() const
@@ -4684,9 +5799,9 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (num_active_entries.is_set || is_set(num_active_entries.operation)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
-    if (num_allocated_entries.is_set || is_set(num_allocated_entries.operation)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
-    if (num_vmr_ids.is_set || is_set(num_vmr_ids.operation)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
+    if (num_active_entries.is_set || is_set(num_active_entries.yfilter)) leaf_name_data.push_back(num_active_entries.get_name_leafdata());
+    if (num_allocated_entries.is_set || is_set(num_allocated_entries.yfilter)) leaf_name_data.push_back(num_allocated_entries.get_name_leafdata());
+    if (num_vmr_ids.is_set || is_set(num_vmr_ids.yfilter)) leaf_name_data.push_back(num_vmr_ids.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4705,20 +5820,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "num-active-entries")
     {
         num_active_entries = value;
+        num_active_entries.value_namespace = name_space;
+        num_active_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-allocated-entries")
     {
         num_allocated_entries = value;
+        num_allocated_entries.value_namespace = name_space;
+        num_allocated_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "num-vmr-ids")
     {
         num_vmr_ids = value;
+        num_vmr_ids.value_namespace = name_space;
+        num_vmr_ids.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-active-entries")
+    {
+        num_active_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-allocated-entries")
+    {
+        num_allocated_entries.yfilter = yfilter;
+    }
+    if(value_path == "num-vmr-ids")
+    {
+        num_vmr_ids.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "num-active-entries" || name == "num-allocated-entries" || name == "num-vmr-ids")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::TcamLtL2()
@@ -4745,11 +5889,11 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::ha
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free_entries.operation)
-	|| is_set(partition_id.operation)
-	|| is_set(priority.operation)
-	|| is_set(valid_entries.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free_entries.yfilter)
+	|| ydk::is_set(partition_id.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(valid_entries.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::get_segment_path() const
@@ -4775,10 +5919,10 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free_entries.is_set || is_set(free_entries.operation)) leaf_name_data.push_back(free_entries.get_name_leafdata());
-    if (partition_id.is_set || is_set(partition_id.operation)) leaf_name_data.push_back(partition_id.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (valid_entries.is_set || is_set(valid_entries.operation)) leaf_name_data.push_back(valid_entries.get_name_leafdata());
+    if (free_entries.is_set || is_set(free_entries.yfilter)) leaf_name_data.push_back(free_entries.get_name_leafdata());
+    if (partition_id.is_set || is_set(partition_id.yfilter)) leaf_name_data.push_back(partition_id.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (valid_entries.is_set || is_set(valid_entries.yfilter)) leaf_name_data.push_back(valid_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4797,24 +5941,59 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free-entries")
     {
         free_entries = value;
+        free_entries.value_namespace = name_space;
+        free_entries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "partition-id")
     {
         partition_id = value;
+        partition_id.value_namespace = name_space;
+        partition_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "valid-entries")
     {
         valid_entries = value;
+        valid_entries.value_namespace = name_space;
+        valid_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free-entries")
+    {
+        free_entries.yfilter = yfilter;
+    }
+    if(value_path == "partition-id")
+    {
+        partition_id.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "valid-entries")
+    {
+        valid_entries.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free-entries" || name == "partition-id" || name == "priority" || name == "valid-entries")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::Counters::Counters()
@@ -4843,7 +6022,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_operation() const
         if(np_counter[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_segment_path() const
@@ -4908,8 +6087,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np-counter")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::NpCounter()
@@ -4938,12 +6128,12 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_data() con
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter_index.operation)
-	|| is_set(counter_name.operation)
-	|| is_set(counter_type.operation)
-	|| is_set(counter_value.operation)
-	|| is_set(rate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter_index.yfilter)
+	|| ydk::is_set(counter_name.yfilter)
+	|| ydk::is_set(counter_type.yfilter)
+	|| ydk::is_set(counter_value.yfilter)
+	|| ydk::is_set(rate.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::get_segment_path() const
@@ -4969,11 +6159,11 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter_index.is_set || is_set(counter_index.operation)) leaf_name_data.push_back(counter_index.get_name_leafdata());
-    if (counter_name.is_set || is_set(counter_name.operation)) leaf_name_data.push_back(counter_name.get_name_leafdata());
-    if (counter_type.is_set || is_set(counter_type.operation)) leaf_name_data.push_back(counter_type.get_name_leafdata());
-    if (counter_value.is_set || is_set(counter_value.operation)) leaf_name_data.push_back(counter_value.get_name_leafdata());
-    if (rate.is_set || is_set(rate.operation)) leaf_name_data.push_back(rate.get_name_leafdata());
+    if (counter_index.is_set || is_set(counter_index.yfilter)) leaf_name_data.push_back(counter_index.get_name_leafdata());
+    if (counter_name.is_set || is_set(counter_name.yfilter)) leaf_name_data.push_back(counter_name.get_name_leafdata());
+    if (counter_type.is_set || is_set(counter_type.yfilter)) leaf_name_data.push_back(counter_type.get_name_leafdata());
+    if (counter_value.is_set || is_set(counter_value.yfilter)) leaf_name_data.push_back(counter_value.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4992,28 +6182,69 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter-index")
     {
         counter_index = value;
+        counter_index.value_namespace = name_space;
+        counter_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "counter-name")
     {
         counter_name = value;
+        counter_name.value_namespace = name_space;
+        counter_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "counter-type")
     {
         counter_type = value;
+        counter_type.value_namespace = name_space;
+        counter_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "counter-value")
     {
         counter_value = value;
+        counter_value.value_namespace = name_space;
+        counter_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate")
     {
         rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter-index")
+    {
+        counter_index.yfilter = yfilter;
+    }
+    if(value_path == "counter-name")
+    {
+        counter_name.yfilter = yfilter;
+    }
+    if(value_path == "counter-type")
+    {
+        counter_type.yfilter = yfilter;
+    }
+    if(value_path == "counter-value")
+    {
+        counter_value.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter-index" || name == "counter-name" || name == "counter-type" || name == "counter-value" || name == "rate")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::FastDrop()
@@ -5042,7 +6273,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_operation() const
         if(np_fast_drop[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_segment_path() const
@@ -5107,8 +6338,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np-fast-drop")
+        return true;
+    return false;
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::NpFastDrop()
@@ -5131,9 +6373,9 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_data() co
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter_value.operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter_value.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::get_segment_path() const
@@ -5159,8 +6401,8 @@ const EntityPath HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter_value.is_set || is_set(counter_value.operation)) leaf_name_data.push_back(counter_value.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (counter_value.is_set || is_set(counter_value.yfilter)) leaf_name_data.push_back(counter_value.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5179,16 +6421,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     return children;
 }
 
-void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::set_value(const std::string & value_path, std::string value)
+void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter-value")
     {
         counter_value = value;
+        counter_value.value_namespace = name_space;
+        counter_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter-value")
+    {
+        counter_value.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter-value" || name == "interface-name")
+        return true;
+    return false;
 }
 
 

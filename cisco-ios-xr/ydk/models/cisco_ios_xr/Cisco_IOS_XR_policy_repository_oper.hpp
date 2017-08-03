@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_policy_repository_oper {
 
-class RoutingPolicy : public Entity
+class RoutingPolicy : public ydk::Entity
 {
     public:
         RoutingPolicy();
@@ -18,15 +18,18 @@ class RoutingPolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Limits; //type: RoutingPolicy::Limits
         class Policies; //type: RoutingPolicy::Policies
@@ -39,7 +42,7 @@ class RoutingPolicy : public Entity
 }; // RoutingPolicy
 
 
-class RoutingPolicy::Limits : public Entity
+class RoutingPolicy::Limits : public ydk::Entity
 {
     public:
         Limits();
@@ -47,24 +50,26 @@ class RoutingPolicy::Limits : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf maximum_lines_of_policy; //type: uint32
-        YLeaf current_lines_of_policy_limit; //type: uint32
-        YLeaf current_lines_of_policy_used; //type: uint32
-        YLeaf maximum_number_of_policies; //type: uint32
-        YLeaf current_number_of_policies_limit; //type: uint32
-        YLeaf current_number_of_policies_used; //type: uint32
-        YLeaf compiled_policies_length; //type: uint32
+        ydk::YLeaf maximum_lines_of_policy; //type: uint32
+        ydk::YLeaf current_lines_of_policy_limit; //type: uint32
+        ydk::YLeaf current_lines_of_policy_used; //type: uint32
+        ydk::YLeaf maximum_number_of_policies; //type: uint32
+        ydk::YLeaf current_number_of_policies_limit; //type: uint32
+        ydk::YLeaf current_number_of_policies_used; //type: uint32
+        ydk::YLeaf compiled_policies_length; //type: uint32
 
 }; // RoutingPolicy::Limits
 
 
-class RoutingPolicy::Policies : public Entity
+class RoutingPolicy::Policies : public ydk::Entity
 {
     public:
         Policies();
@@ -72,11 +77,13 @@ class RoutingPolicy::Policies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RoutePolicies; //type: RoutingPolicy::Policies::RoutePolicies
         class Unused; //type: RoutingPolicy::Policies::Unused
@@ -91,7 +98,7 @@ class RoutingPolicy::Policies : public Entity
 }; // RoutingPolicy::Policies
 
 
-class RoutingPolicy::Policies::RoutePolicies : public Entity
+class RoutingPolicy::Policies::RoutePolicies : public ydk::Entity
 {
     public:
         RoutePolicies();
@@ -99,11 +106,13 @@ class RoutingPolicy::Policies::RoutePolicies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RoutePolicy; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy
 
@@ -112,7 +121,7 @@ class RoutingPolicy::Policies::RoutePolicies : public Entity
 }; // RoutingPolicy::Policies::RoutePolicies
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy : public ydk::Entity
 {
     public:
         RoutePolicy();
@@ -120,13 +129,15 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
+        ydk::YLeaf route_policy_name; //type: string
         class PolicyUses; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses
         class UsedBy; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy
         class Attached; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached
@@ -138,7 +149,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy : public Entity
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses : public ydk::Entity
 {
     public:
         PolicyUses();
@@ -146,11 +157,13 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DirectlyUsedPolicies; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies
         class AllUsedSets; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets
@@ -165,7 +178,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses : public E
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies : public ydk::Entity
 {
     public:
         DirectlyUsedPolicies();
@@ -173,18 +186,20 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyU
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets : public ydk::Entity
 {
     public:
         AllUsedSets();
@@ -192,11 +207,13 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets
 
@@ -205,7 +222,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSe
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets : public ydk::Entity
 {
     public:
         Sets();
@@ -213,19 +230,21 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSe
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_domain; //type: string
-        YLeafList set_name; //type: list of  string
+        ydk::YLeaf set_domain; //type: string
+        ydk::YLeafList set_name; //type: list of  string
 
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets : public ydk::Entity
 {
     public:
         DirectlyUsedSets();
@@ -233,11 +252,13 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyU
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets
 
@@ -246,7 +267,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyU
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets : public ydk::Entity
 {
     public:
         Sets();
@@ -254,19 +275,21 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyU
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_domain; //type: string
-        YLeafList set_name; //type: list of  string
+        ydk::YLeaf set_domain; //type: string
+        ydk::YLeafList set_name; //type: list of  string
 
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies : public ydk::Entity
 {
     public:
         AllUsedPolicies();
@@ -274,18 +297,20 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -293,11 +318,13 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference
 
@@ -306,7 +333,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy : public Entit
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -314,20 +341,22 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -335,11 +364,13 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding
 
@@ -348,7 +379,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached : public Ent
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached
 
 
-class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding : public Entity
+class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -356,37 +387,39 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding
 
 
-class RoutingPolicy::Policies::Unused : public Entity
+class RoutingPolicy::Policies::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -394,18 +427,20 @@ class RoutingPolicy::Policies::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Policies::Unused
 
 
-class RoutingPolicy::Policies::Inactive : public Entity
+class RoutingPolicy::Policies::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -413,18 +448,20 @@ class RoutingPolicy::Policies::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Policies::Inactive
 
 
-class RoutingPolicy::Policies::Active : public Entity
+class RoutingPolicy::Policies::Active : public ydk::Entity
 {
     public:
         Active();
@@ -432,18 +469,20 @@ class RoutingPolicy::Policies::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Policies::Active
 
 
-class RoutingPolicy::Sets : public Entity
+class RoutingPolicy::Sets : public ydk::Entity
 {
     public:
         Sets();
@@ -451,11 +490,13 @@ class RoutingPolicy::Sets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Etag; //type: RoutingPolicy::Sets::Etag
         class OspfArea; //type: RoutingPolicy::Sets::OspfArea
@@ -492,7 +533,7 @@ class RoutingPolicy::Sets : public Entity
 }; // RoutingPolicy::Sets
 
 
-class RoutingPolicy::Sets::Etag : public Entity
+class RoutingPolicy::Sets::Etag : public ydk::Entity
 {
     public:
         Etag();
@@ -500,11 +541,13 @@ class RoutingPolicy::Sets::Etag : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::Etag::Sets_
         class Unused; //type: RoutingPolicy::Sets::Etag::Unused
@@ -519,7 +562,7 @@ class RoutingPolicy::Sets::Etag : public Entity
 }; // RoutingPolicy::Sets::Etag
 
 
-class RoutingPolicy::Sets::Etag::Sets_ : public Entity
+class RoutingPolicy::Sets::Etag::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -527,11 +570,13 @@ class RoutingPolicy::Sets::Etag::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::Etag::Sets_::Set
 
@@ -540,7 +585,7 @@ class RoutingPolicy::Sets::Etag::Sets_ : public Entity
 }; // RoutingPolicy::Sets::Etag::Sets_
 
 
-class RoutingPolicy::Sets::Etag::Sets_::Set : public Entity
+class RoutingPolicy::Sets::Etag::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -548,13 +593,15 @@ class RoutingPolicy::Sets::Etag::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::Etag::Sets_::Set::Attached
 
@@ -564,7 +611,7 @@ class RoutingPolicy::Sets::Etag::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::Etag::Sets_::Set
 
 
-class RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -572,11 +619,13 @@ class RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference
 
@@ -585,7 +634,7 @@ class RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -593,20 +642,22 @@ class RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::Etag::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::Etag::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -614,11 +665,13 @@ class RoutingPolicy::Sets::Etag::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding
 
@@ -627,7 +680,7 @@ class RoutingPolicy::Sets::Etag::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::Etag::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -635,37 +688,39 @@ class RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::Etag::Unused : public Entity
+class RoutingPolicy::Sets::Etag::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -673,18 +728,20 @@ class RoutingPolicy::Sets::Etag::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Etag::Unused
 
 
-class RoutingPolicy::Sets::Etag::Inactive : public Entity
+class RoutingPolicy::Sets::Etag::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -692,18 +749,20 @@ class RoutingPolicy::Sets::Etag::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Etag::Inactive
 
 
-class RoutingPolicy::Sets::Etag::Active : public Entity
+class RoutingPolicy::Sets::Etag::Active : public ydk::Entity
 {
     public:
         Active();
@@ -711,18 +770,20 @@ class RoutingPolicy::Sets::Etag::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Etag::Active
 
 
-class RoutingPolicy::Sets::OspfArea : public Entity
+class RoutingPolicy::Sets::OspfArea : public ydk::Entity
 {
     public:
         OspfArea();
@@ -730,11 +791,13 @@ class RoutingPolicy::Sets::OspfArea : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::OspfArea::Sets_
         class Unused; //type: RoutingPolicy::Sets::OspfArea::Unused
@@ -749,7 +812,7 @@ class RoutingPolicy::Sets::OspfArea : public Entity
 }; // RoutingPolicy::Sets::OspfArea
 
 
-class RoutingPolicy::Sets::OspfArea::Sets_ : public Entity
+class RoutingPolicy::Sets::OspfArea::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -757,11 +820,13 @@ class RoutingPolicy::Sets::OspfArea::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::OspfArea::Sets_::Set
 
@@ -770,7 +835,7 @@ class RoutingPolicy::Sets::OspfArea::Sets_ : public Entity
 }; // RoutingPolicy::Sets::OspfArea::Sets_
 
 
-class RoutingPolicy::Sets::OspfArea::Sets_::Set : public Entity
+class RoutingPolicy::Sets::OspfArea::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -778,13 +843,15 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached
 
@@ -794,7 +861,7 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::OspfArea::Sets_::Set
 
 
-class RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -802,11 +869,13 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference
 
@@ -815,7 +884,7 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -823,20 +892,22 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -844,11 +915,13 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding
 
@@ -857,7 +930,7 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -865,37 +938,39 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::OspfArea::Unused : public Entity
+class RoutingPolicy::Sets::OspfArea::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -903,18 +978,20 @@ class RoutingPolicy::Sets::OspfArea::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::OspfArea::Unused
 
 
-class RoutingPolicy::Sets::OspfArea::Inactive : public Entity
+class RoutingPolicy::Sets::OspfArea::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -922,18 +999,20 @@ class RoutingPolicy::Sets::OspfArea::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::OspfArea::Inactive
 
 
-class RoutingPolicy::Sets::OspfArea::Active : public Entity
+class RoutingPolicy::Sets::OspfArea::Active : public ydk::Entity
 {
     public:
         Active();
@@ -941,18 +1020,20 @@ class RoutingPolicy::Sets::OspfArea::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::OspfArea::Active
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque : public ydk::Entity
 {
     public:
         ExtendedCommunityOpaque();
@@ -960,11 +1041,13 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_
         class Unused; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused
@@ -979,7 +1062,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_ : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -987,11 +1070,13 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set
 
@@ -1000,7 +1085,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_ : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1008,13 +1093,15 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached
 
@@ -1024,7 +1111,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -1032,11 +1119,13 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference
 
@@ -1045,7 +1134,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy : public 
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -1053,20 +1142,22 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Referenc
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -1074,11 +1165,13 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding
 
@@ -1087,7 +1180,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached : publi
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -1095,37 +1188,39 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Bindin
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -1133,18 +1228,20 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -1152,18 +1249,20 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive
 
 
-class RoutingPolicy::Sets::ExtendedCommunityOpaque::Active : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityOpaque::Active : public ydk::Entity
 {
     public:
         Active();
@@ -1171,18 +1270,20 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Active
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh : public ydk::Entity
 {
     public:
         ExtendedCommunitySegNh();
@@ -1190,11 +1291,13 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_
         class Unused; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused
@@ -1209,7 +1312,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_ : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -1217,11 +1320,13 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set
 
@@ -1230,7 +1335,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_ : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1238,13 +1343,15 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached
 
@@ -1254,7 +1361,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -1262,11 +1369,13 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference
 
@@ -1275,7 +1384,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy : public E
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -1283,20 +1392,22 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -1304,11 +1415,13 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding
 
@@ -1317,7 +1430,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached : public
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -1325,37 +1438,39 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -1363,18 +1478,20 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -1382,18 +1499,20 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySegNh::Active : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySegNh::Active : public ydk::Entity
 {
     public:
         Active();
@@ -1401,18 +1520,20 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Active
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo : public ydk::Entity
 {
     public:
         ExtendedCommunitySoo();
@@ -1420,11 +1541,13 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_
         class Unused; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Unused
@@ -1439,7 +1562,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_ : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -1447,11 +1570,13 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set
 
@@ -1460,7 +1585,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_ : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1468,13 +1593,15 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached
 
@@ -1484,7 +1611,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -1492,11 +1619,13 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference
 
@@ -1505,7 +1634,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy : public Ent
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -1513,20 +1642,22 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -1534,11 +1665,13 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding
 
@@ -1547,7 +1680,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached : public E
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -1555,37 +1688,39 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Unused : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -1593,18 +1728,20 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Unused
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -1612,18 +1749,20 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive
 
 
-class RoutingPolicy::Sets::ExtendedCommunitySoo::Active : public Entity
+class RoutingPolicy::Sets::ExtendedCommunitySoo::Active : public ydk::Entity
 {
     public:
         Active();
@@ -1631,18 +1770,20 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Active
 
 
-class RoutingPolicy::Sets::Tag : public Entity
+class RoutingPolicy::Sets::Tag : public ydk::Entity
 {
     public:
         Tag();
@@ -1650,11 +1791,13 @@ class RoutingPolicy::Sets::Tag : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::Tag::Sets_
         class Unused; //type: RoutingPolicy::Sets::Tag::Unused
@@ -1669,7 +1812,7 @@ class RoutingPolicy::Sets::Tag : public Entity
 }; // RoutingPolicy::Sets::Tag
 
 
-class RoutingPolicy::Sets::Tag::Sets_ : public Entity
+class RoutingPolicy::Sets::Tag::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -1677,11 +1820,13 @@ class RoutingPolicy::Sets::Tag::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::Tag::Sets_::Set
 
@@ -1690,7 +1835,7 @@ class RoutingPolicy::Sets::Tag::Sets_ : public Entity
 }; // RoutingPolicy::Sets::Tag::Sets_
 
 
-class RoutingPolicy::Sets::Tag::Sets_::Set : public Entity
+class RoutingPolicy::Sets::Tag::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1698,13 +1843,15 @@ class RoutingPolicy::Sets::Tag::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::Tag::Sets_::Set::Attached
 
@@ -1714,7 +1861,7 @@ class RoutingPolicy::Sets::Tag::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::Tag::Sets_::Set
 
 
-class RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -1722,11 +1869,13 @@ class RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference
 
@@ -1735,7 +1884,7 @@ class RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -1743,20 +1892,22 @@ class RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::Tag::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::Tag::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -1764,11 +1915,13 @@ class RoutingPolicy::Sets::Tag::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding
 
@@ -1777,7 +1930,7 @@ class RoutingPolicy::Sets::Tag::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::Tag::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -1785,37 +1938,39 @@ class RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::Tag::Unused : public Entity
+class RoutingPolicy::Sets::Tag::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -1823,18 +1978,20 @@ class RoutingPolicy::Sets::Tag::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Tag::Unused
 
 
-class RoutingPolicy::Sets::Tag::Inactive : public Entity
+class RoutingPolicy::Sets::Tag::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -1842,18 +1999,20 @@ class RoutingPolicy::Sets::Tag::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Tag::Inactive
 
 
-class RoutingPolicy::Sets::Tag::Active : public Entity
+class RoutingPolicy::Sets::Tag::Active : public ydk::Entity
 {
     public:
         Active();
@@ -1861,18 +2020,20 @@ class RoutingPolicy::Sets::Tag::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Tag::Active
 
 
-class RoutingPolicy::Sets::Prefix : public Entity
+class RoutingPolicy::Sets::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -1880,11 +2041,13 @@ class RoutingPolicy::Sets::Prefix : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::Prefix::Sets_
         class Unused; //type: RoutingPolicy::Sets::Prefix::Unused
@@ -1899,7 +2062,7 @@ class RoutingPolicy::Sets::Prefix : public Entity
 }; // RoutingPolicy::Sets::Prefix
 
 
-class RoutingPolicy::Sets::Prefix::Sets_ : public Entity
+class RoutingPolicy::Sets::Prefix::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -1907,11 +2070,13 @@ class RoutingPolicy::Sets::Prefix::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::Prefix::Sets_::Set
 
@@ -1920,7 +2085,7 @@ class RoutingPolicy::Sets::Prefix::Sets_ : public Entity
 }; // RoutingPolicy::Sets::Prefix::Sets_
 
 
-class RoutingPolicy::Sets::Prefix::Sets_::Set : public Entity
+class RoutingPolicy::Sets::Prefix::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1928,13 +2093,15 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::Prefix::Sets_::Set::Attached
 
@@ -1944,7 +2111,7 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::Prefix::Sets_::Set
 
 
-class RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -1952,11 +2119,13 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference
 
@@ -1965,7 +2134,7 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -1973,20 +2142,22 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::Prefix::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::Prefix::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -1994,11 +2165,13 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding
 
@@ -2007,7 +2180,7 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::Prefix::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -2015,37 +2188,39 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::Prefix::Unused : public Entity
+class RoutingPolicy::Sets::Prefix::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -2053,18 +2228,20 @@ class RoutingPolicy::Sets::Prefix::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Prefix::Unused
 
 
-class RoutingPolicy::Sets::Prefix::Inactive : public Entity
+class RoutingPolicy::Sets::Prefix::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -2072,18 +2249,20 @@ class RoutingPolicy::Sets::Prefix::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Prefix::Inactive
 
 
-class RoutingPolicy::Sets::Prefix::Active : public Entity
+class RoutingPolicy::Sets::Prefix::Active : public ydk::Entity
 {
     public:
         Active();
@@ -2091,18 +2270,20 @@ class RoutingPolicy::Sets::Prefix::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Prefix::Active
 
 
-class RoutingPolicy::Sets::Community : public Entity
+class RoutingPolicy::Sets::Community : public ydk::Entity
 {
     public:
         Community();
@@ -2110,11 +2291,13 @@ class RoutingPolicy::Sets::Community : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::Community::Sets_
         class Unused; //type: RoutingPolicy::Sets::Community::Unused
@@ -2129,7 +2312,7 @@ class RoutingPolicy::Sets::Community : public Entity
 }; // RoutingPolicy::Sets::Community
 
 
-class RoutingPolicy::Sets::Community::Sets_ : public Entity
+class RoutingPolicy::Sets::Community::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -2137,11 +2320,13 @@ class RoutingPolicy::Sets::Community::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::Community::Sets_::Set
 
@@ -2150,7 +2335,7 @@ class RoutingPolicy::Sets::Community::Sets_ : public Entity
 }; // RoutingPolicy::Sets::Community::Sets_
 
 
-class RoutingPolicy::Sets::Community::Sets_::Set : public Entity
+class RoutingPolicy::Sets::Community::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -2158,13 +2343,15 @@ class RoutingPolicy::Sets::Community::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::Community::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::Community::Sets_::Set::Attached
 
@@ -2174,7 +2361,7 @@ class RoutingPolicy::Sets::Community::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::Community::Sets_::Set
 
 
-class RoutingPolicy::Sets::Community::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::Community::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -2182,11 +2369,13 @@ class RoutingPolicy::Sets::Community::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference
 
@@ -2195,7 +2384,7 @@ class RoutingPolicy::Sets::Community::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::Community::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -2203,20 +2392,22 @@ class RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::Community::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::Community::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -2224,11 +2415,13 @@ class RoutingPolicy::Sets::Community::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding
 
@@ -2237,7 +2430,7 @@ class RoutingPolicy::Sets::Community::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::Community::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -2245,37 +2438,39 @@ class RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::Community::Unused : public Entity
+class RoutingPolicy::Sets::Community::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -2283,18 +2478,20 @@ class RoutingPolicy::Sets::Community::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Community::Unused
 
 
-class RoutingPolicy::Sets::Community::Inactive : public Entity
+class RoutingPolicy::Sets::Community::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -2302,18 +2499,20 @@ class RoutingPolicy::Sets::Community::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Community::Inactive
 
 
-class RoutingPolicy::Sets::Community::Active : public Entity
+class RoutingPolicy::Sets::Community::Active : public ydk::Entity
 {
     public:
         Active();
@@ -2321,18 +2520,20 @@ class RoutingPolicy::Sets::Community::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Community::Active
 
 
-class RoutingPolicy::Sets::AsPath : public Entity
+class RoutingPolicy::Sets::AsPath : public ydk::Entity
 {
     public:
         AsPath();
@@ -2340,11 +2541,13 @@ class RoutingPolicy::Sets::AsPath : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::AsPath::Sets_
         class Unused; //type: RoutingPolicy::Sets::AsPath::Unused
@@ -2359,7 +2562,7 @@ class RoutingPolicy::Sets::AsPath : public Entity
 }; // RoutingPolicy::Sets::AsPath
 
 
-class RoutingPolicy::Sets::AsPath::Sets_ : public Entity
+class RoutingPolicy::Sets::AsPath::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -2367,11 +2570,13 @@ class RoutingPolicy::Sets::AsPath::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::AsPath::Sets_::Set
 
@@ -2380,7 +2585,7 @@ class RoutingPolicy::Sets::AsPath::Sets_ : public Entity
 }; // RoutingPolicy::Sets::AsPath::Sets_
 
 
-class RoutingPolicy::Sets::AsPath::Sets_::Set : public Entity
+class RoutingPolicy::Sets::AsPath::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -2388,13 +2593,15 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::AsPath::Sets_::Set::Attached
 
@@ -2404,7 +2611,7 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::AsPath::Sets_::Set
 
 
-class RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -2412,11 +2619,13 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference
 
@@ -2425,7 +2634,7 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -2433,20 +2642,22 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::AsPath::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::AsPath::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -2454,11 +2665,13 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding
 
@@ -2467,7 +2680,7 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::AsPath::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -2475,37 +2688,39 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::AsPath::Unused : public Entity
+class RoutingPolicy::Sets::AsPath::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -2513,18 +2728,20 @@ class RoutingPolicy::Sets::AsPath::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::AsPath::Unused
 
 
-class RoutingPolicy::Sets::AsPath::Inactive : public Entity
+class RoutingPolicy::Sets::AsPath::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -2532,18 +2749,20 @@ class RoutingPolicy::Sets::AsPath::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::AsPath::Inactive
 
 
-class RoutingPolicy::Sets::AsPath::Active : public Entity
+class RoutingPolicy::Sets::AsPath::Active : public ydk::Entity
 {
     public:
         Active();
@@ -2551,18 +2770,20 @@ class RoutingPolicy::Sets::AsPath::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::AsPath::Active
 
 
-class RoutingPolicy::Sets::Esi : public Entity
+class RoutingPolicy::Sets::Esi : public ydk::Entity
 {
     public:
         Esi();
@@ -2570,11 +2791,13 @@ class RoutingPolicy::Sets::Esi : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::Esi::Sets_
         class Unused; //type: RoutingPolicy::Sets::Esi::Unused
@@ -2589,7 +2812,7 @@ class RoutingPolicy::Sets::Esi : public Entity
 }; // RoutingPolicy::Sets::Esi
 
 
-class RoutingPolicy::Sets::Esi::Sets_ : public Entity
+class RoutingPolicy::Sets::Esi::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -2597,11 +2820,13 @@ class RoutingPolicy::Sets::Esi::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::Esi::Sets_::Set
 
@@ -2610,7 +2835,7 @@ class RoutingPolicy::Sets::Esi::Sets_ : public Entity
 }; // RoutingPolicy::Sets::Esi::Sets_
 
 
-class RoutingPolicy::Sets::Esi::Sets_::Set : public Entity
+class RoutingPolicy::Sets::Esi::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -2618,13 +2843,15 @@ class RoutingPolicy::Sets::Esi::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::Esi::Sets_::Set::Attached
 
@@ -2634,7 +2861,7 @@ class RoutingPolicy::Sets::Esi::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::Esi::Sets_::Set
 
 
-class RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -2642,11 +2869,13 @@ class RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference
 
@@ -2655,7 +2884,7 @@ class RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -2663,20 +2892,22 @@ class RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::Esi::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::Esi::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -2684,11 +2915,13 @@ class RoutingPolicy::Sets::Esi::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding
 
@@ -2697,7 +2930,7 @@ class RoutingPolicy::Sets::Esi::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::Esi::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -2705,37 +2938,39 @@ class RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::Esi::Unused : public Entity
+class RoutingPolicy::Sets::Esi::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -2743,18 +2978,20 @@ class RoutingPolicy::Sets::Esi::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Esi::Unused
 
 
-class RoutingPolicy::Sets::Esi::Inactive : public Entity
+class RoutingPolicy::Sets::Esi::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -2762,18 +2999,20 @@ class RoutingPolicy::Sets::Esi::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Esi::Inactive
 
 
-class RoutingPolicy::Sets::Esi::Active : public Entity
+class RoutingPolicy::Sets::Esi::Active : public ydk::Entity
 {
     public:
         Active();
@@ -2781,18 +3020,20 @@ class RoutingPolicy::Sets::Esi::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Esi::Active
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth : public ydk::Entity
 {
     public:
         ExtendedCommunityBandwidth();
@@ -2800,11 +3041,13 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_
         class Unused; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused
@@ -2817,7 +3060,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_ : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -2825,11 +3068,13 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set
 
@@ -2838,7 +3083,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_ : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -2846,13 +3091,15 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached
 
@@ -2862,7 +3109,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set : public Entit
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -2870,11 +3117,13 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference
 
@@ -2883,7 +3132,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy : publ
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -2891,20 +3140,22 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Refer
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -2912,11 +3163,13 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding
 
@@ -2925,7 +3178,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached : pu
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -2933,37 +3186,39 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Bin
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -2971,18 +3226,20 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused
 
 
-class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -2990,18 +3247,20 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt : public ydk::Entity
 {
     public:
         ExtendedCommunityRt();
@@ -3009,11 +3268,13 @@ class RoutingPolicy::Sets::ExtendedCommunityRt : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_
         class Unused; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Unused
@@ -3028,7 +3289,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRt : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityRt
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_ : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -3036,11 +3297,13 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set
 
@@ -3049,7 +3312,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_ : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -3057,13 +3320,15 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached
 
@@ -3073,7 +3338,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -3081,11 +3346,13 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference
 
@@ -3094,7 +3361,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy : public Enti
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -3102,20 +3369,22 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -3123,11 +3392,13 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding
 
@@ -3136,7 +3407,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached : public En
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -3144,37 +3415,39 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Unused : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -3182,18 +3455,20 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Unused
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Inactive : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -3201,18 +3476,20 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Inactive
 
 
-class RoutingPolicy::Sets::ExtendedCommunityRt::Active : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityRt::Active : public ydk::Entity
 {
     public:
         Active();
@@ -3220,18 +3497,20 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Active
 
 
-class RoutingPolicy::Sets::Rd : public Entity
+class RoutingPolicy::Sets::Rd : public ydk::Entity
 {
     public:
         Rd();
@@ -3239,11 +3518,13 @@ class RoutingPolicy::Sets::Rd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::Rd::Sets_
         class Unused; //type: RoutingPolicy::Sets::Rd::Unused
@@ -3258,7 +3539,7 @@ class RoutingPolicy::Sets::Rd : public Entity
 }; // RoutingPolicy::Sets::Rd
 
 
-class RoutingPolicy::Sets::Rd::Sets_ : public Entity
+class RoutingPolicy::Sets::Rd::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -3266,11 +3547,13 @@ class RoutingPolicy::Sets::Rd::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::Rd::Sets_::Set
 
@@ -3279,7 +3562,7 @@ class RoutingPolicy::Sets::Rd::Sets_ : public Entity
 }; // RoutingPolicy::Sets::Rd::Sets_
 
 
-class RoutingPolicy::Sets::Rd::Sets_::Set : public Entity
+class RoutingPolicy::Sets::Rd::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -3287,13 +3570,15 @@ class RoutingPolicy::Sets::Rd::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::Rd::Sets_::Set::Attached
 
@@ -3303,7 +3588,7 @@ class RoutingPolicy::Sets::Rd::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::Rd::Sets_::Set
 
 
-class RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -3311,11 +3596,13 @@ class RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference
 
@@ -3324,7 +3611,7 @@ class RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -3332,20 +3619,22 @@ class RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::Rd::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::Rd::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -3353,11 +3642,13 @@ class RoutingPolicy::Sets::Rd::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding
 
@@ -3366,7 +3657,7 @@ class RoutingPolicy::Sets::Rd::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::Rd::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -3374,37 +3665,39 @@ class RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::Rd::Unused : public Entity
+class RoutingPolicy::Sets::Rd::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -3412,18 +3705,20 @@ class RoutingPolicy::Sets::Rd::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Rd::Unused
 
 
-class RoutingPolicy::Sets::Rd::Inactive : public Entity
+class RoutingPolicy::Sets::Rd::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -3431,18 +3726,20 @@ class RoutingPolicy::Sets::Rd::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Rd::Inactive
 
 
-class RoutingPolicy::Sets::Rd::Active : public Entity
+class RoutingPolicy::Sets::Rd::Active : public ydk::Entity
 {
     public:
         Active();
@@ -3450,18 +3747,20 @@ class RoutingPolicy::Sets::Rd::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Rd::Active
 
 
-class RoutingPolicy::Sets::Mac : public Entity
+class RoutingPolicy::Sets::Mac : public ydk::Entity
 {
     public:
         Mac();
@@ -3469,11 +3768,13 @@ class RoutingPolicy::Sets::Mac : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::Mac::Sets_
         class Unused; //type: RoutingPolicy::Sets::Mac::Unused
@@ -3488,7 +3789,7 @@ class RoutingPolicy::Sets::Mac : public Entity
 }; // RoutingPolicy::Sets::Mac
 
 
-class RoutingPolicy::Sets::Mac::Sets_ : public Entity
+class RoutingPolicy::Sets::Mac::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -3496,11 +3797,13 @@ class RoutingPolicy::Sets::Mac::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::Mac::Sets_::Set
 
@@ -3509,7 +3812,7 @@ class RoutingPolicy::Sets::Mac::Sets_ : public Entity
 }; // RoutingPolicy::Sets::Mac::Sets_
 
 
-class RoutingPolicy::Sets::Mac::Sets_::Set : public Entity
+class RoutingPolicy::Sets::Mac::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -3517,13 +3820,15 @@ class RoutingPolicy::Sets::Mac::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::Mac::Sets_::Set::Attached
 
@@ -3533,7 +3838,7 @@ class RoutingPolicy::Sets::Mac::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::Mac::Sets_::Set
 
 
-class RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -3541,11 +3846,13 @@ class RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::Reference
 
@@ -3554,7 +3861,7 @@ class RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy : public Entity
 }; // RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -3562,20 +3869,22 @@ class RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::Reference : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::Mac::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::Mac::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::Mac::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -3583,11 +3892,13 @@ class RoutingPolicy::Sets::Mac::Sets_::Set::Attached : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::Mac::Sets_::Set::Attached::Binding
 
@@ -3596,7 +3907,7 @@ class RoutingPolicy::Sets::Mac::Sets_::Set::Attached : public Entity
 }; // RoutingPolicy::Sets::Mac::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::Mac::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::Mac::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -3604,37 +3915,39 @@ class RoutingPolicy::Sets::Mac::Sets_::Set::Attached::Binding : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::Mac::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::Mac::Unused : public Entity
+class RoutingPolicy::Sets::Mac::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -3642,18 +3955,20 @@ class RoutingPolicy::Sets::Mac::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Mac::Unused
 
 
-class RoutingPolicy::Sets::Mac::Inactive : public Entity
+class RoutingPolicy::Sets::Mac::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -3661,18 +3976,20 @@ class RoutingPolicy::Sets::Mac::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Mac::Inactive
 
 
-class RoutingPolicy::Sets::Mac::Active : public Entity
+class RoutingPolicy::Sets::Mac::Active : public ydk::Entity
 {
     public:
         Active();
@@ -3680,18 +3997,20 @@ class RoutingPolicy::Sets::Mac::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::Mac::Active
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost : public ydk::Entity
 {
     public:
         ExtendedCommunityCost();
@@ -3699,11 +4018,13 @@ class RoutingPolicy::Sets::ExtendedCommunityCost : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sets_; //type: RoutingPolicy::Sets::ExtendedCommunityCost::Sets_
         class Unused; //type: RoutingPolicy::Sets::ExtendedCommunityCost::Unused
@@ -3718,7 +4039,7 @@ class RoutingPolicy::Sets::ExtendedCommunityCost : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityCost
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_ : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_ : public ydk::Entity
 {
     public:
         Sets_();
@@ -3726,11 +4047,13 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set
 
@@ -3739,7 +4062,7 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_ : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Sets_
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set : public ydk::Entity
 {
     public:
         Set();
@@ -3747,13 +4070,15 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf set_name; //type: string
+        ydk::YLeaf set_name; //type: string
         class UsedBy; //type: RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy
         class Attached; //type: RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached
 
@@ -3763,7 +4088,7 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set : public Entity
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy : public ydk::Entity
 {
     public:
         UsedBy();
@@ -3771,11 +4096,13 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference
 
@@ -3784,7 +4111,7 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy : public En
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference : public ydk::Entity
 {
     public:
         Reference();
@@ -3792,20 +4119,22 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_policy_name; //type: string
-        YLeaf used_directly; //type: boolean
-        YLeaf status; //type: ObjectStatusEnum
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf used_directly; //type: boolean
+        ydk::YLeaf status; //type: ObjectStatus
 
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy::Reference
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached : public ydk::Entity
 {
     public:
         Attached();
@@ -3813,11 +4142,13 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding
 
@@ -3826,7 +4157,7 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached : public 
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding : public ydk::Entity
 {
     public:
         Binding();
@@ -3834,37 +4165,39 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf proto_instance; //type: string
-        YLeaf af_name; //type: AddressFamilyEnum
-        YLeaf saf_name; //type: SubAddressFamilyEnum
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_af_name; //type: AddressFamilyEnum
-        YLeaf group_name; //type: string
-        YLeaf direction; //type: AttachPointDirectionEnum
-        YLeaf group; //type: GroupEnum
-        YLeaf source_protocol; //type: string
-        YLeaf aggregate_network_address; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf instance; //type: string
-        YLeaf area_id; //type: string
-        YLeaf propogate_from; //type: int32
-        YLeaf propogate_to; //type: int32
-        YLeaf route_policy_name; //type: string
-        YLeaf attached_policy; //type: string
-        YLeaf attach_point; //type: string
+        ydk::YLeaf protocol; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf proto_instance; //type: string
+        ydk::YLeaf af_name; //type: AddressFamily
+        ydk::YLeaf saf_name; //type: SubAddressFamily
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_af_name; //type: AddressFamily
+        ydk::YLeaf group_name; //type: string
+        ydk::YLeaf direction; //type: AttachPointDirection
+        ydk::YLeaf group; //type: Group
+        ydk::YLeaf source_protocol; //type: string
+        ydk::YLeaf aggregate_network_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf instance; //type: string
+        ydk::YLeaf area_id; //type: string
+        ydk::YLeaf propogate_from; //type: int32
+        ydk::YLeaf propogate_to; //type: int32
+        ydk::YLeaf route_policy_name; //type: string
+        ydk::YLeaf attached_policy; //type: string
+        ydk::YLeaf attach_point; //type: string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Sets_::Set::Attached::Binding
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Unused : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Unused : public ydk::Entity
 {
     public:
         Unused();
@@ -3872,18 +4205,20 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Unused : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Unused
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Inactive : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Inactive : public ydk::Entity
 {
     public:
         Inactive();
@@ -3891,18 +4226,20 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Inactive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Inactive
 
 
-class RoutingPolicy::Sets::ExtendedCommunityCost::Active : public Entity
+class RoutingPolicy::Sets::ExtendedCommunityCost::Active : public ydk::Entity
 {
     public:
         Active();
@@ -3910,72 +4247,74 @@ class RoutingPolicy::Sets::ExtendedCommunityCost::Active : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList object; //type: list of  string
+        ydk::YLeafList object; //type: list of  string
 
 }; // RoutingPolicy::Sets::ExtendedCommunityCost::Active
 
-class GroupEnum : public Enum
+class AddressFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf address_family_group;
-        static const Enum::YLeaf session_group;
-        static const Enum::YLeaf neighbor_group;
-        static const Enum::YLeaf neighbor;
-        static const Enum::YLeaf error_group;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf l2vpn;
+        static const ydk::Enum::YLeaf ls;
+        static const ydk::Enum::YLeaf af_none;
+        static const ydk::Enum::YLeaf af_unknown;
 
 };
 
-class AttachPointDirectionEnum : public Enum
+class ObjectStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf in;
-        static const Enum::YLeaf out;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf inactive;
+        static const ydk::Enum::YLeaf unused;
 
 };
 
-class SubAddressFamilyEnum : public Enum
+class AttachPointDirection : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unicast;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf label;
-        static const Enum::YLeaf tunnel;
-        static const Enum::YLeaf vpn;
-        static const Enum::YLeaf mdt;
-        static const Enum::YLeaf vpls;
-        static const Enum::YLeaf rt_constraint;
-        static const Enum::YLeaf mvpn;
-        static const Enum::YLeaf flow;
-        static const Enum::YLeaf vpn_mcast;
-        static const Enum::YLeaf saf_none;
-        static const Enum::YLeaf saf_unknown;
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf out;
 
 };
 
-class AddressFamilyEnum : public Enum
+class Group : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
-        static const Enum::YLeaf l2vpn;
-        static const Enum::YLeaf ls;
-        static const Enum::YLeaf af_none;
-        static const Enum::YLeaf af_unknown;
+        static const ydk::Enum::YLeaf address_family_group;
+        static const ydk::Enum::YLeaf session_group;
+        static const ydk::Enum::YLeaf neighbor_group;
+        static const ydk::Enum::YLeaf neighbor;
+        static const ydk::Enum::YLeaf error_group;
 
 };
 
-class ObjectStatusEnum : public Enum
+class SubAddressFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf active;
-        static const Enum::YLeaf inactive;
-        static const Enum::YLeaf unused;
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf label;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf vpn;
+        static const ydk::Enum::YLeaf mdt;
+        static const ydk::Enum::YLeaf vpls;
+        static const ydk::Enum::YLeaf rt_constraint;
+        static const ydk::Enum::YLeaf mvpn;
+        static const ydk::Enum::YLeaf flow;
+        static const ydk::Enum::YLeaf vpn_mcast;
+        static const ydk::Enum::YLeaf saf_none;
+        static const ydk::Enum::YLeaf saf_unknown;
 
 };
 

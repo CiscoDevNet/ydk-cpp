@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ppp_ma_syslog_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ppp_ma_syslog_cfg {
 
 Ppp::Ppp()
@@ -29,7 +31,7 @@ bool Ppp::has_data() const
 
 bool Ppp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (syslog !=  nullptr && syslog->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::get_children() const
     return children;
 }
 
-void Ppp::set_value(const std::string & value_path, std::string value)
+void Ppp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ppp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -109,6 +115,18 @@ augment_capabilities_function Ppp::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Ppp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ppp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "syslog")
+        return true;
+    return false;
+}
+
 Ppp::Syslog::Syslog()
     :
     enable_session_status{YType::empty, "enable-session-status"}
@@ -127,8 +145,8 @@ bool Ppp::Syslog::has_data() const
 
 bool Ppp::Syslog::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable_session_status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable_session_status.yfilter);
 }
 
 std::string Ppp::Syslog::get_segment_path() const
@@ -154,7 +172,7 @@ const EntityPath Ppp::Syslog::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable_session_status.is_set || is_set(enable_session_status.operation)) leaf_name_data.push_back(enable_session_status.get_name_leafdata());
+    if (enable_session_status.is_set || is_set(enable_session_status.yfilter)) leaf_name_data.push_back(enable_session_status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -173,12 +191,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ppp::Syslog::get_children() const
     return children;
 }
 
-void Ppp::Syslog::set_value(const std::string & value_path, std::string value)
+void Ppp::Syslog::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable-session-status")
     {
         enable_session_status = value;
+        enable_session_status.value_namespace = name_space;
+        enable_session_status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ppp::Syslog::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable-session-status")
+    {
+        enable_session_status.yfilter = yfilter;
+    }
+}
+
+bool Ppp::Syslog::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable-session-status")
+        return true;
+    return false;
 }
 
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_config_cfgmgr_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_config_cfgmgr_cfg {
 
 Cfgmgr::Cfgmgr()
@@ -27,8 +29,8 @@ bool Cfgmgr::has_data() const
 
 bool Cfgmgr::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mode_exclusive.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mode_exclusive.yfilter);
 }
 
 std::string Cfgmgr::get_segment_path() const
@@ -51,7 +53,7 @@ const EntityPath Cfgmgr::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mode_exclusive.is_set || is_set(mode_exclusive.operation)) leaf_name_data.push_back(mode_exclusive.get_name_leafdata());
+    if (mode_exclusive.is_set || is_set(mode_exclusive.yfilter)) leaf_name_data.push_back(mode_exclusive.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -70,11 +72,21 @@ std::map<std::string, std::shared_ptr<Entity>> Cfgmgr::get_children() const
     return children;
 }
 
-void Cfgmgr::set_value(const std::string & value_path, std::string value)
+void Cfgmgr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mode-exclusive")
     {
         mode_exclusive = value;
+        mode_exclusive.value_namespace = name_space;
+        mode_exclusive.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Cfgmgr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode-exclusive")
+    {
+        mode_exclusive.yfilter = yfilter;
     }
 }
 
@@ -96,6 +108,18 @@ std::string Cfgmgr::get_bundle_name() const
 augment_capabilities_function Cfgmgr::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Cfgmgr::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Cfgmgr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mode-exclusive")
+        return true;
+    return false;
 }
 
 

@@ -7,44 +7,44 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace cisco_storm_control {
 
-class StormControlActionIdentity : public virtual Identity
+class StormControlAction : public virtual ydk::Identity
 {
     public:
-        StormControlActionIdentity();
-        ~StormControlActionIdentity();
+        StormControlAction();
+        ~StormControlAction();
 
 
-}; // StormControlActionIdentity
+}; // StormControlAction
 
-class ActionShutdownIdentity : public cisco_storm_control::StormControlActionIdentity, virtual Identity
+class ActionShutdown : public cisco_storm_control::StormControlAction, virtual ydk::Identity
 {
     public:
-        ActionShutdownIdentity();
-        ~ActionShutdownIdentity();
+        ActionShutdown();
+        ~ActionShutdown();
 
 
-}; // ActionShutdownIdentity
+}; // ActionShutdown
 
-class ActionSnmpTrapIdentity : public cisco_storm_control::StormControlActionIdentity, virtual Identity
+class ActionDrop : public cisco_storm_control::StormControlAction, virtual ydk::Identity
 {
     public:
-        ActionSnmpTrapIdentity();
-        ~ActionSnmpTrapIdentity();
+        ActionDrop();
+        ~ActionDrop();
 
 
-}; // ActionSnmpTrapIdentity
+}; // ActionDrop
 
-class ActionDropIdentity : public cisco_storm_control::StormControlActionIdentity, virtual Identity
+class ActionSnmpTrap : public cisco_storm_control::StormControlAction, virtual ydk::Identity
 {
     public:
-        ActionDropIdentity();
-        ~ActionDropIdentity();
+        ActionSnmpTrap();
+        ~ActionSnmpTrap();
 
 
-}; // ActionDropIdentity
+}; // ActionSnmpTrap
 
 
 }

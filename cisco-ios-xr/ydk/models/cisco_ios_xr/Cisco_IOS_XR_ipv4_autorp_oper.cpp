@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_autorp_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_autorp_oper {
 
 AutoRp::AutoRp()
@@ -33,7 +35,7 @@ bool AutoRp::has_data() const
 
 bool AutoRp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (standby !=  nullptr && standby->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::get_children() const
     return children;
 }
 
-void AutoRp::set_value(const std::string & value_path, std::string value)
+void AutoRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void AutoRp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string AutoRp::get_bundle_name() const
 augment_capabilities_function AutoRp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> AutoRp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool AutoRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "standby")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::Standby()
@@ -152,7 +170,7 @@ bool AutoRp::Standby::has_data() const
 
 bool AutoRp::Standby::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (candidate_rp !=  nullptr && candidate_rp->has_operation())
 	|| (mapping_agent !=  nullptr && mapping_agent->has_operation());
 }
@@ -226,8 +244,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::get_children() c
     return children;
 }
 
-void AutoRp::Standby::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Standby::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Standby::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-rp" || name == "mapping-agent")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::CandidateRp::CandidateRp()
@@ -254,7 +283,7 @@ bool AutoRp::Standby::CandidateRp::has_data() const
 
 bool AutoRp::Standby::CandidateRp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (rps !=  nullptr && rps->has_operation())
 	|| (traffic !=  nullptr && traffic->has_operation());
 }
@@ -328,8 +357,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::get
     return children;
 }
 
-void AutoRp::Standby::CandidateRp::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::CandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Standby::CandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Standby::CandidateRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rps" || name == "traffic")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::CandidateRp::Traffic::Traffic()
@@ -352,9 +392,9 @@ bool AutoRp::Standby::CandidateRp::Traffic::has_data() const
 
 bool AutoRp::Standby::CandidateRp::Traffic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active_sent_packets.operation)
-	|| is_set(standby_sent_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active_sent_packets.yfilter)
+	|| ydk::is_set(standby_sent_packets.yfilter);
 }
 
 std::string AutoRp::Standby::CandidateRp::Traffic::get_segment_path() const
@@ -380,8 +420,8 @@ const EntityPath AutoRp::Standby::CandidateRp::Traffic::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_sent_packets.is_set || is_set(active_sent_packets.operation)) leaf_name_data.push_back(active_sent_packets.get_name_leafdata());
-    if (standby_sent_packets.is_set || is_set(standby_sent_packets.operation)) leaf_name_data.push_back(standby_sent_packets.get_name_leafdata());
+    if (active_sent_packets.is_set || is_set(active_sent_packets.yfilter)) leaf_name_data.push_back(active_sent_packets.get_name_leafdata());
+    if (standby_sent_packets.is_set || is_set(standby_sent_packets.yfilter)) leaf_name_data.push_back(standby_sent_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -400,16 +440,39 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Tra
     return children;
 }
 
-void AutoRp::Standby::CandidateRp::Traffic::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::CandidateRp::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-sent-packets")
     {
         active_sent_packets = value;
+        active_sent_packets.value_namespace = name_space;
+        active_sent_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-sent-packets")
     {
         standby_sent_packets = value;
+        standby_sent_packets.value_namespace = name_space;
+        standby_sent_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Standby::CandidateRp::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-sent-packets")
+    {
+        active_sent_packets.yfilter = yfilter;
+    }
+    if(value_path == "standby-sent-packets")
+    {
+        standby_sent_packets.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Standby::CandidateRp::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-sent-packets" || name == "standby-sent-packets")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::CandidateRp::Rps::Rps()
@@ -438,7 +501,7 @@ bool AutoRp::Standby::CandidateRp::Rps::has_operation() const
         if(rp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AutoRp::Standby::CandidateRp::Rps::get_segment_path() const
@@ -503,8 +566,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps
     return children;
 }
 
-void AutoRp::Standby::CandidateRp::Rps::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::CandidateRp::Rps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Standby::CandidateRp::Rps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Standby::CandidateRp::Rps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::CandidateRp::Rps::Rp::Rp()
@@ -537,14 +611,14 @@ bool AutoRp::Standby::CandidateRp::Rps::Rp::has_data() const
 
 bool AutoRp::Standby::CandidateRp::Rps::Rp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(announce_period.operation)
-	|| is_set(candidate_rp_address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(protocol_mode.operation)
-	|| is_set(protocol_mode_xr.operation)
-	|| is_set(ttl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(announce_period.yfilter)
+	|| ydk::is_set(candidate_rp_address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(protocol_mode.yfilter)
+	|| ydk::is_set(protocol_mode_xr.yfilter)
+	|| ydk::is_set(ttl.yfilter);
 }
 
 std::string AutoRp::Standby::CandidateRp::Rps::Rp::get_segment_path() const
@@ -570,13 +644,13 @@ const EntityPath AutoRp::Standby::CandidateRp::Rps::Rp::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (announce_period.is_set || is_set(announce_period.operation)) leaf_name_data.push_back(announce_period.get_name_leafdata());
-    if (candidate_rp_address.is_set || is_set(candidate_rp_address.operation)) leaf_name_data.push_back(candidate_rp_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (protocol_mode.is_set || is_set(protocol_mode.operation)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
-    if (protocol_mode_xr.is_set || is_set(protocol_mode_xr.operation)) leaf_name_data.push_back(protocol_mode_xr.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (announce_period.is_set || is_set(announce_period.yfilter)) leaf_name_data.push_back(announce_period.get_name_leafdata());
+    if (candidate_rp_address.is_set || is_set(candidate_rp_address.yfilter)) leaf_name_data.push_back(candidate_rp_address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (protocol_mode.is_set || is_set(protocol_mode.yfilter)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
+    if (protocol_mode_xr.is_set || is_set(protocol_mode_xr.yfilter)) leaf_name_data.push_back(protocol_mode_xr.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -595,36 +669,89 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::CandidateRp::Rps
     return children;
 }
 
-void AutoRp::Standby::CandidateRp::Rps::Rp::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::CandidateRp::Rps::Rp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "announce-period")
     {
         announce_period = value;
+        announce_period.value_namespace = name_space;
+        announce_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "candidate-rp-address")
     {
         candidate_rp_address = value;
+        candidate_rp_address.value_namespace = name_space;
+        candidate_rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-mode")
     {
         protocol_mode = value;
+        protocol_mode.value_namespace = name_space;
+        protocol_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-mode-xr")
     {
         protocol_mode_xr = value;
+        protocol_mode_xr.value_namespace = name_space;
+        protocol_mode_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Standby::CandidateRp::Rps::Rp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "announce-period")
+    {
+        announce_period.yfilter = yfilter;
+    }
+    if(value_path == "candidate-rp-address")
+    {
+        candidate_rp_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "protocol-mode")
+    {
+        protocol_mode.yfilter = yfilter;
+    }
+    if(value_path == "protocol-mode-xr")
+    {
+        protocol_mode_xr.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Standby::CandidateRp::Rps::Rp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "announce-period" || name == "candidate-rp-address" || name == "interface-name" || name == "protocol-mode" || name == "protocol-mode-xr" || name == "ttl")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::MappingAgent::MappingAgent()
@@ -655,7 +782,7 @@ bool AutoRp::Standby::MappingAgent::has_data() const
 
 bool AutoRp::Standby::MappingAgent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (rp_addresses !=  nullptr && rp_addresses->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (traffic !=  nullptr && traffic->has_operation());
@@ -744,8 +871,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::ge
     return children;
 }
 
-void AutoRp::Standby::MappingAgent::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::MappingAgent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Standby::MappingAgent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Standby::MappingAgent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-addresses" || name == "summary" || name == "traffic")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::MappingAgent::Traffic::Traffic()
@@ -772,11 +910,11 @@ bool AutoRp::Standby::MappingAgent::Traffic::has_data() const
 
 bool AutoRp::Standby::MappingAgent::Traffic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active_received_packets.operation)
-	|| is_set(active_sent_packets.operation)
-	|| is_set(standby_received_packets.operation)
-	|| is_set(standby_sent_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active_received_packets.yfilter)
+	|| ydk::is_set(active_sent_packets.yfilter)
+	|| ydk::is_set(standby_received_packets.yfilter)
+	|| ydk::is_set(standby_sent_packets.yfilter);
 }
 
 std::string AutoRp::Standby::MappingAgent::Traffic::get_segment_path() const
@@ -802,10 +940,10 @@ const EntityPath AutoRp::Standby::MappingAgent::Traffic::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_received_packets.is_set || is_set(active_received_packets.operation)) leaf_name_data.push_back(active_received_packets.get_name_leafdata());
-    if (active_sent_packets.is_set || is_set(active_sent_packets.operation)) leaf_name_data.push_back(active_sent_packets.get_name_leafdata());
-    if (standby_received_packets.is_set || is_set(standby_received_packets.operation)) leaf_name_data.push_back(standby_received_packets.get_name_leafdata());
-    if (standby_sent_packets.is_set || is_set(standby_sent_packets.operation)) leaf_name_data.push_back(standby_sent_packets.get_name_leafdata());
+    if (active_received_packets.is_set || is_set(active_received_packets.yfilter)) leaf_name_data.push_back(active_received_packets.get_name_leafdata());
+    if (active_sent_packets.is_set || is_set(active_sent_packets.yfilter)) leaf_name_data.push_back(active_sent_packets.get_name_leafdata());
+    if (standby_received_packets.is_set || is_set(standby_received_packets.yfilter)) leaf_name_data.push_back(standby_received_packets.get_name_leafdata());
+    if (standby_sent_packets.is_set || is_set(standby_sent_packets.yfilter)) leaf_name_data.push_back(standby_sent_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -824,24 +962,59 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Tr
     return children;
 }
 
-void AutoRp::Standby::MappingAgent::Traffic::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::MappingAgent::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-received-packets")
     {
         active_received_packets = value;
+        active_received_packets.value_namespace = name_space;
+        active_received_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-sent-packets")
     {
         active_sent_packets = value;
+        active_sent_packets.value_namespace = name_space;
+        active_sent_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-received-packets")
     {
         standby_received_packets = value;
+        standby_received_packets.value_namespace = name_space;
+        standby_received_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-sent-packets")
     {
         standby_sent_packets = value;
+        standby_sent_packets.value_namespace = name_space;
+        standby_sent_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Standby::MappingAgent::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-received-packets")
+    {
+        active_received_packets.yfilter = yfilter;
+    }
+    if(value_path == "active-sent-packets")
+    {
+        active_sent_packets.yfilter = yfilter;
+    }
+    if(value_path == "standby-received-packets")
+    {
+        standby_received_packets.yfilter = yfilter;
+    }
+    if(value_path == "standby-sent-packets")
+    {
+        standby_sent_packets.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Standby::MappingAgent::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-received-packets" || name == "active-sent-packets" || name == "standby-received-packets" || name == "standby-sent-packets")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::MappingAgent::RpAddresses::RpAddresses()
@@ -870,7 +1043,7 @@ bool AutoRp::Standby::MappingAgent::RpAddresses::has_operation() const
         if(rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AutoRp::Standby::MappingAgent::RpAddresses::get_segment_path() const
@@ -935,8 +1108,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Rp
     return children;
 }
 
-void AutoRp::Standby::MappingAgent::RpAddresses::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::MappingAgent::RpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Standby::MappingAgent::RpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Standby::MappingAgent::RpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::RpAddress()
@@ -973,11 +1157,11 @@ bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::has_operation() cons
         if(range[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(expiry_time.operation)
-	|| is_set(pim_version.operation)
-	|| is_set(rp_address_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(expiry_time.yfilter)
+	|| ydk::is_set(pim_version.yfilter)
+	|| ydk::is_set(rp_address_xr.yfilter);
 }
 
 std::string AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_segment_path() const
@@ -1003,10 +1187,10 @@ const EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (expiry_time.is_set || is_set(expiry_time.operation)) leaf_name_data.push_back(expiry_time.get_name_leafdata());
-    if (pim_version.is_set || is_set(pim_version.operation)) leaf_name_data.push_back(pim_version.get_name_leafdata());
-    if (rp_address_xr.is_set || is_set(rp_address_xr.operation)) leaf_name_data.push_back(rp_address_xr.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (expiry_time.is_set || is_set(expiry_time.yfilter)) leaf_name_data.push_back(expiry_time.get_name_leafdata());
+    if (pim_version.is_set || is_set(pim_version.yfilter)) leaf_name_data.push_back(pim_version.get_name_leafdata());
+    if (rp_address_xr.is_set || is_set(rp_address_xr.yfilter)) leaf_name_data.push_back(rp_address_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1046,24 +1230,59 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Rp
     return children;
 }
 
-void AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "expiry-time")
     {
         expiry_time = value;
+        expiry_time.value_namespace = name_space;
+        expiry_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pim-version")
     {
         pim_version = value;
+        pim_version.value_namespace = name_space;
+        pim_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-address-xr")
     {
         rp_address_xr = value;
+        rp_address_xr.value_namespace = name_space;
+        rp_address_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "expiry-time")
+    {
+        expiry_time.yfilter = yfilter;
+    }
+    if(value_path == "pim-version")
+    {
+        pim_version.yfilter = yfilter;
+    }
+    if(value_path == "rp-address-xr")
+    {
+        rp_address_xr.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "range" || name == "rp-address" || name == "expiry-time" || name == "pim-version" || name == "rp-address-xr")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::Range()
@@ -1096,14 +1315,14 @@ bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::has_data() co
 
 bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(check_point_object_id.operation)
-	|| is_set(create_type.operation)
-	|| is_set(is_advertised.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(protocol_mode.operation)
-	|| is_set(uptime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(check_point_object_id.yfilter)
+	|| ydk::is_set(create_type.yfilter)
+	|| ydk::is_set(is_advertised.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(protocol_mode.yfilter)
+	|| ydk::is_set(uptime.yfilter);
 }
 
 std::string AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_segment_path() const
@@ -1129,13 +1348,13 @@ const EntityPath AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (check_point_object_id.is_set || is_set(check_point_object_id.operation)) leaf_name_data.push_back(check_point_object_id.get_name_leafdata());
-    if (create_type.is_set || is_set(create_type.operation)) leaf_name_data.push_back(create_type.get_name_leafdata());
-    if (is_advertised.is_set || is_set(is_advertised.operation)) leaf_name_data.push_back(is_advertised.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (protocol_mode.is_set || is_set(protocol_mode.operation)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
-    if (uptime.is_set || is_set(uptime.operation)) leaf_name_data.push_back(uptime.get_name_leafdata());
+    if (check_point_object_id.is_set || is_set(check_point_object_id.yfilter)) leaf_name_data.push_back(check_point_object_id.get_name_leafdata());
+    if (create_type.is_set || is_set(create_type.yfilter)) leaf_name_data.push_back(create_type.get_name_leafdata());
+    if (is_advertised.is_set || is_set(is_advertised.yfilter)) leaf_name_data.push_back(is_advertised.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (protocol_mode.is_set || is_set(protocol_mode.yfilter)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
+    if (uptime.is_set || is_set(uptime.yfilter)) leaf_name_data.push_back(uptime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1154,36 +1373,89 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Rp
     return children;
 }
 
-void AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "check-point-object-id")
     {
         check_point_object_id = value;
+        check_point_object_id.value_namespace = name_space;
+        check_point_object_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "create-type")
     {
         create_type = value;
+        create_type.value_namespace = name_space;
+        create_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertised")
     {
         is_advertised = value;
+        is_advertised.value_namespace = name_space;
+        is_advertised.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-mode")
     {
         protocol_mode = value;
+        protocol_mode.value_namespace = name_space;
+        protocol_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "uptime")
     {
         uptime = value;
+        uptime.value_namespace = name_space;
+        uptime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "check-point-object-id")
+    {
+        check_point_object_id.yfilter = yfilter;
+    }
+    if(value_path == "create-type")
+    {
+        create_type.yfilter = yfilter;
+    }
+    if(value_path == "is-advertised")
+    {
+        is_advertised.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "protocol-mode")
+    {
+        protocol_mode.yfilter = yfilter;
+    }
+    if(value_path == "uptime")
+    {
+        uptime.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "check-point-object-id" || name == "create-type" || name == "is-advertised" || name == "prefix" || name == "prefix-length" || name == "protocol-mode" || name == "uptime")
+        return true;
+    return false;
 }
 
 AutoRp::Standby::MappingAgent::Summary::Summary()
@@ -1208,10 +1480,10 @@ bool AutoRp::Standby::MappingAgent::Summary::has_data() const
 
 bool AutoRp::Standby::MappingAgent::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cache_count.operation)
-	|| is_set(cache_limit.operation)
-	|| is_set(is_maximum_disabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cache_count.yfilter)
+	|| ydk::is_set(cache_limit.yfilter)
+	|| ydk::is_set(is_maximum_disabled.yfilter);
 }
 
 std::string AutoRp::Standby::MappingAgent::Summary::get_segment_path() const
@@ -1237,9 +1509,9 @@ const EntityPath AutoRp::Standby::MappingAgent::Summary::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cache_count.is_set || is_set(cache_count.operation)) leaf_name_data.push_back(cache_count.get_name_leafdata());
-    if (cache_limit.is_set || is_set(cache_limit.operation)) leaf_name_data.push_back(cache_limit.get_name_leafdata());
-    if (is_maximum_disabled.is_set || is_set(is_maximum_disabled.operation)) leaf_name_data.push_back(is_maximum_disabled.get_name_leafdata());
+    if (cache_count.is_set || is_set(cache_count.yfilter)) leaf_name_data.push_back(cache_count.get_name_leafdata());
+    if (cache_limit.is_set || is_set(cache_limit.yfilter)) leaf_name_data.push_back(cache_limit.get_name_leafdata());
+    if (is_maximum_disabled.is_set || is_set(is_maximum_disabled.yfilter)) leaf_name_data.push_back(is_maximum_disabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1258,20 +1530,49 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Standby::MappingAgent::Su
     return children;
 }
 
-void AutoRp::Standby::MappingAgent::Summary::set_value(const std::string & value_path, std::string value)
+void AutoRp::Standby::MappingAgent::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-count")
     {
         cache_count = value;
+        cache_count.value_namespace = name_space;
+        cache_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cache-limit")
     {
         cache_limit = value;
+        cache_limit.value_namespace = name_space;
+        cache_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-disabled")
     {
         is_maximum_disabled = value;
+        is_maximum_disabled.value_namespace = name_space;
+        is_maximum_disabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Standby::MappingAgent::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-count")
+    {
+        cache_count.yfilter = yfilter;
+    }
+    if(value_path == "cache-limit")
+    {
+        cache_limit.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-disabled")
+    {
+        is_maximum_disabled.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Standby::MappingAgent::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-count" || name == "cache-limit" || name == "is-maximum-disabled")
+        return true;
+    return false;
 }
 
 AutoRp::Active::Active()
@@ -1298,7 +1599,7 @@ bool AutoRp::Active::has_data() const
 
 bool AutoRp::Active::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (candidate_rp !=  nullptr && candidate_rp->has_operation())
 	|| (mapping_agent !=  nullptr && mapping_agent->has_operation());
 }
@@ -1372,8 +1673,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::get_children() co
     return children;
 }
 
-void AutoRp::Active::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-rp" || name == "mapping-agent")
+        return true;
+    return false;
 }
 
 AutoRp::Active::CandidateRp::CandidateRp()
@@ -1400,7 +1712,7 @@ bool AutoRp::Active::CandidateRp::has_data() const
 
 bool AutoRp::Active::CandidateRp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (rps !=  nullptr && rps->has_operation())
 	|| (traffic !=  nullptr && traffic->has_operation());
 }
@@ -1474,8 +1786,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::get_
     return children;
 }
 
-void AutoRp::Active::CandidateRp::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::CandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Active::CandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Active::CandidateRp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rps" || name == "traffic")
+        return true;
+    return false;
 }
 
 AutoRp::Active::CandidateRp::Traffic::Traffic()
@@ -1498,9 +1821,9 @@ bool AutoRp::Active::CandidateRp::Traffic::has_data() const
 
 bool AutoRp::Active::CandidateRp::Traffic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active_sent_packets.operation)
-	|| is_set(standby_sent_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active_sent_packets.yfilter)
+	|| ydk::is_set(standby_sent_packets.yfilter);
 }
 
 std::string AutoRp::Active::CandidateRp::Traffic::get_segment_path() const
@@ -1526,8 +1849,8 @@ const EntityPath AutoRp::Active::CandidateRp::Traffic::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_sent_packets.is_set || is_set(active_sent_packets.operation)) leaf_name_data.push_back(active_sent_packets.get_name_leafdata());
-    if (standby_sent_packets.is_set || is_set(standby_sent_packets.operation)) leaf_name_data.push_back(standby_sent_packets.get_name_leafdata());
+    if (active_sent_packets.is_set || is_set(active_sent_packets.yfilter)) leaf_name_data.push_back(active_sent_packets.get_name_leafdata());
+    if (standby_sent_packets.is_set || is_set(standby_sent_packets.yfilter)) leaf_name_data.push_back(standby_sent_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1546,16 +1869,39 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Traf
     return children;
 }
 
-void AutoRp::Active::CandidateRp::Traffic::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::CandidateRp::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-sent-packets")
     {
         active_sent_packets = value;
+        active_sent_packets.value_namespace = name_space;
+        active_sent_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-sent-packets")
     {
         standby_sent_packets = value;
+        standby_sent_packets.value_namespace = name_space;
+        standby_sent_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Active::CandidateRp::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-sent-packets")
+    {
+        active_sent_packets.yfilter = yfilter;
+    }
+    if(value_path == "standby-sent-packets")
+    {
+        standby_sent_packets.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Active::CandidateRp::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-sent-packets" || name == "standby-sent-packets")
+        return true;
+    return false;
 }
 
 AutoRp::Active::CandidateRp::Rps::Rps()
@@ -1584,7 +1930,7 @@ bool AutoRp::Active::CandidateRp::Rps::has_operation() const
         if(rp[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AutoRp::Active::CandidateRp::Rps::get_segment_path() const
@@ -1649,8 +1995,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps:
     return children;
 }
 
-void AutoRp::Active::CandidateRp::Rps::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::CandidateRp::Rps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Active::CandidateRp::Rps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Active::CandidateRp::Rps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp")
+        return true;
+    return false;
 }
 
 AutoRp::Active::CandidateRp::Rps::Rp::Rp()
@@ -1683,14 +2040,14 @@ bool AutoRp::Active::CandidateRp::Rps::Rp::has_data() const
 
 bool AutoRp::Active::CandidateRp::Rps::Rp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(announce_period.operation)
-	|| is_set(candidate_rp_address.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(protocol_mode.operation)
-	|| is_set(protocol_mode_xr.operation)
-	|| is_set(ttl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(announce_period.yfilter)
+	|| ydk::is_set(candidate_rp_address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(protocol_mode.yfilter)
+	|| ydk::is_set(protocol_mode_xr.yfilter)
+	|| ydk::is_set(ttl.yfilter);
 }
 
 std::string AutoRp::Active::CandidateRp::Rps::Rp::get_segment_path() const
@@ -1716,13 +2073,13 @@ const EntityPath AutoRp::Active::CandidateRp::Rps::Rp::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (announce_period.is_set || is_set(announce_period.operation)) leaf_name_data.push_back(announce_period.get_name_leafdata());
-    if (candidate_rp_address.is_set || is_set(candidate_rp_address.operation)) leaf_name_data.push_back(candidate_rp_address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (protocol_mode.is_set || is_set(protocol_mode.operation)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
-    if (protocol_mode_xr.is_set || is_set(protocol_mode_xr.operation)) leaf_name_data.push_back(protocol_mode_xr.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.operation)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (announce_period.is_set || is_set(announce_period.yfilter)) leaf_name_data.push_back(announce_period.get_name_leafdata());
+    if (candidate_rp_address.is_set || is_set(candidate_rp_address.yfilter)) leaf_name_data.push_back(candidate_rp_address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (protocol_mode.is_set || is_set(protocol_mode.yfilter)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
+    if (protocol_mode_xr.is_set || is_set(protocol_mode_xr.yfilter)) leaf_name_data.push_back(protocol_mode_xr.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1741,36 +2098,89 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::CandidateRp::Rps:
     return children;
 }
 
-void AutoRp::Active::CandidateRp::Rps::Rp::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::CandidateRp::Rps::Rp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "announce-period")
     {
         announce_period = value;
+        announce_period.value_namespace = name_space;
+        announce_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "candidate-rp-address")
     {
         candidate_rp_address = value;
+        candidate_rp_address.value_namespace = name_space;
+        candidate_rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-mode")
     {
         protocol_mode = value;
+        protocol_mode.value_namespace = name_space;
+        protocol_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-mode-xr")
     {
         protocol_mode_xr = value;
+        protocol_mode_xr.value_namespace = name_space;
+        protocol_mode_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl")
     {
         ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Active::CandidateRp::Rps::Rp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "announce-period")
+    {
+        announce_period.yfilter = yfilter;
+    }
+    if(value_path == "candidate-rp-address")
+    {
+        candidate_rp_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "protocol-mode")
+    {
+        protocol_mode.yfilter = yfilter;
+    }
+    if(value_path == "protocol-mode-xr")
+    {
+        protocol_mode_xr.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Active::CandidateRp::Rps::Rp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "announce-period" || name == "candidate-rp-address" || name == "interface-name" || name == "protocol-mode" || name == "protocol-mode-xr" || name == "ttl")
+        return true;
+    return false;
 }
 
 AutoRp::Active::MappingAgent::MappingAgent()
@@ -1801,7 +2211,7 @@ bool AutoRp::Active::MappingAgent::has_data() const
 
 bool AutoRp::Active::MappingAgent::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (rp_addresses !=  nullptr && rp_addresses->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (traffic !=  nullptr && traffic->has_operation());
@@ -1890,8 +2300,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::get
     return children;
 }
 
-void AutoRp::Active::MappingAgent::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::MappingAgent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Active::MappingAgent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Active::MappingAgent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-addresses" || name == "summary" || name == "traffic")
+        return true;
+    return false;
 }
 
 AutoRp::Active::MappingAgent::Traffic::Traffic()
@@ -1918,11 +2339,11 @@ bool AutoRp::Active::MappingAgent::Traffic::has_data() const
 
 bool AutoRp::Active::MappingAgent::Traffic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active_received_packets.operation)
-	|| is_set(active_sent_packets.operation)
-	|| is_set(standby_received_packets.operation)
-	|| is_set(standby_sent_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active_received_packets.yfilter)
+	|| ydk::is_set(active_sent_packets.yfilter)
+	|| ydk::is_set(standby_received_packets.yfilter)
+	|| ydk::is_set(standby_sent_packets.yfilter);
 }
 
 std::string AutoRp::Active::MappingAgent::Traffic::get_segment_path() const
@@ -1948,10 +2369,10 @@ const EntityPath AutoRp::Active::MappingAgent::Traffic::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_received_packets.is_set || is_set(active_received_packets.operation)) leaf_name_data.push_back(active_received_packets.get_name_leafdata());
-    if (active_sent_packets.is_set || is_set(active_sent_packets.operation)) leaf_name_data.push_back(active_sent_packets.get_name_leafdata());
-    if (standby_received_packets.is_set || is_set(standby_received_packets.operation)) leaf_name_data.push_back(standby_received_packets.get_name_leafdata());
-    if (standby_sent_packets.is_set || is_set(standby_sent_packets.operation)) leaf_name_data.push_back(standby_sent_packets.get_name_leafdata());
+    if (active_received_packets.is_set || is_set(active_received_packets.yfilter)) leaf_name_data.push_back(active_received_packets.get_name_leafdata());
+    if (active_sent_packets.is_set || is_set(active_sent_packets.yfilter)) leaf_name_data.push_back(active_sent_packets.get_name_leafdata());
+    if (standby_received_packets.is_set || is_set(standby_received_packets.yfilter)) leaf_name_data.push_back(standby_received_packets.get_name_leafdata());
+    if (standby_sent_packets.is_set || is_set(standby_sent_packets.yfilter)) leaf_name_data.push_back(standby_sent_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1970,24 +2391,59 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::Tra
     return children;
 }
 
-void AutoRp::Active::MappingAgent::Traffic::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::MappingAgent::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-received-packets")
     {
         active_received_packets = value;
+        active_received_packets.value_namespace = name_space;
+        active_received_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-sent-packets")
     {
         active_sent_packets = value;
+        active_sent_packets.value_namespace = name_space;
+        active_sent_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-received-packets")
     {
         standby_received_packets = value;
+        standby_received_packets.value_namespace = name_space;
+        standby_received_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-sent-packets")
     {
         standby_sent_packets = value;
+        standby_sent_packets.value_namespace = name_space;
+        standby_sent_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Active::MappingAgent::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-received-packets")
+    {
+        active_received_packets.yfilter = yfilter;
+    }
+    if(value_path == "active-sent-packets")
+    {
+        active_sent_packets.yfilter = yfilter;
+    }
+    if(value_path == "standby-received-packets")
+    {
+        standby_received_packets.yfilter = yfilter;
+    }
+    if(value_path == "standby-sent-packets")
+    {
+        standby_sent_packets.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Active::MappingAgent::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-received-packets" || name == "active-sent-packets" || name == "standby-received-packets" || name == "standby-sent-packets")
+        return true;
+    return false;
 }
 
 AutoRp::Active::MappingAgent::RpAddresses::RpAddresses()
@@ -2016,7 +2472,7 @@ bool AutoRp::Active::MappingAgent::RpAddresses::has_operation() const
         if(rp_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string AutoRp::Active::MappingAgent::RpAddresses::get_segment_path() const
@@ -2081,8 +2537,19 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpA
     return children;
 }
 
-void AutoRp::Active::MappingAgent::RpAddresses::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::MappingAgent::RpAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void AutoRp::Active::MappingAgent::RpAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool AutoRp::Active::MappingAgent::RpAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rp-address")
+        return true;
+    return false;
 }
 
 AutoRp::Active::MappingAgent::RpAddresses::RpAddress::RpAddress()
@@ -2119,11 +2586,11 @@ bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::has_operation() const
         if(range[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(rp_address.operation)
-	|| is_set(expiry_time.operation)
-	|| is_set(pim_version.operation)
-	|| is_set(rp_address_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(rp_address.yfilter)
+	|| ydk::is_set(expiry_time.yfilter)
+	|| ydk::is_set(pim_version.yfilter)
+	|| ydk::is_set(rp_address_xr.yfilter);
 }
 
 std::string AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_segment_path() const
@@ -2149,10 +2616,10 @@ const EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rp_address.is_set || is_set(rp_address.operation)) leaf_name_data.push_back(rp_address.get_name_leafdata());
-    if (expiry_time.is_set || is_set(expiry_time.operation)) leaf_name_data.push_back(expiry_time.get_name_leafdata());
-    if (pim_version.is_set || is_set(pim_version.operation)) leaf_name_data.push_back(pim_version.get_name_leafdata());
-    if (rp_address_xr.is_set || is_set(rp_address_xr.operation)) leaf_name_data.push_back(rp_address_xr.get_name_leafdata());
+    if (rp_address.is_set || is_set(rp_address.yfilter)) leaf_name_data.push_back(rp_address.get_name_leafdata());
+    if (expiry_time.is_set || is_set(expiry_time.yfilter)) leaf_name_data.push_back(expiry_time.get_name_leafdata());
+    if (pim_version.is_set || is_set(pim_version.yfilter)) leaf_name_data.push_back(pim_version.get_name_leafdata());
+    if (rp_address_xr.is_set || is_set(rp_address_xr.yfilter)) leaf_name_data.push_back(rp_address_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2192,24 +2659,59 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpA
     return children;
 }
 
-void AutoRp::Active::MappingAgent::RpAddresses::RpAddress::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::MappingAgent::RpAddresses::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "rp-address")
     {
         rp_address = value;
+        rp_address.value_namespace = name_space;
+        rp_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "expiry-time")
     {
         expiry_time = value;
+        expiry_time.value_namespace = name_space;
+        expiry_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pim-version")
     {
         pim_version = value;
+        pim_version.value_namespace = name_space;
+        pim_version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rp-address-xr")
     {
         rp_address_xr = value;
+        rp_address_xr.value_namespace = name_space;
+        rp_address_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Active::MappingAgent::RpAddresses::RpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rp-address")
+    {
+        rp_address.yfilter = yfilter;
+    }
+    if(value_path == "expiry-time")
+    {
+        expiry_time.yfilter = yfilter;
+    }
+    if(value_path == "pim-version")
+    {
+        pim_version.yfilter = yfilter;
+    }
+    if(value_path == "rp-address-xr")
+    {
+        rp_address_xr.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "range" || name == "rp-address" || name == "expiry-time" || name == "pim-version" || name == "rp-address-xr")
+        return true;
+    return false;
 }
 
 AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::Range()
@@ -2242,14 +2744,14 @@ bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::has_data() con
 
 bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(check_point_object_id.operation)
-	|| is_set(create_type.operation)
-	|| is_set(is_advertised.operation)
-	|| is_set(prefix.operation)
-	|| is_set(prefix_length.operation)
-	|| is_set(protocol_mode.operation)
-	|| is_set(uptime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(check_point_object_id.yfilter)
+	|| ydk::is_set(create_type.yfilter)
+	|| ydk::is_set(is_advertised.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(protocol_mode.yfilter)
+	|| ydk::is_set(uptime.yfilter);
 }
 
 std::string AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_segment_path() const
@@ -2275,13 +2777,13 @@ const EntityPath AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (check_point_object_id.is_set || is_set(check_point_object_id.operation)) leaf_name_data.push_back(check_point_object_id.get_name_leafdata());
-    if (create_type.is_set || is_set(create_type.operation)) leaf_name_data.push_back(create_type.get_name_leafdata());
-    if (is_advertised.is_set || is_set(is_advertised.operation)) leaf_name_data.push_back(is_advertised.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.operation)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (protocol_mode.is_set || is_set(protocol_mode.operation)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
-    if (uptime.is_set || is_set(uptime.operation)) leaf_name_data.push_back(uptime.get_name_leafdata());
+    if (check_point_object_id.is_set || is_set(check_point_object_id.yfilter)) leaf_name_data.push_back(check_point_object_id.get_name_leafdata());
+    if (create_type.is_set || is_set(create_type.yfilter)) leaf_name_data.push_back(create_type.get_name_leafdata());
+    if (is_advertised.is_set || is_set(is_advertised.yfilter)) leaf_name_data.push_back(is_advertised.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (protocol_mode.is_set || is_set(protocol_mode.yfilter)) leaf_name_data.push_back(protocol_mode.get_name_leafdata());
+    if (uptime.is_set || is_set(uptime.yfilter)) leaf_name_data.push_back(uptime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2300,36 +2802,89 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::RpA
     return children;
 }
 
-void AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "check-point-object-id")
     {
         check_point_object_id = value;
+        check_point_object_id.value_namespace = name_space;
+        check_point_object_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "create-type")
     {
         create_type = value;
+        create_type.value_namespace = name_space;
+        create_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-advertised")
     {
         is_advertised = value;
+        is_advertised.value_namespace = name_space;
+        is_advertised.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix")
     {
         prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-mode")
     {
         protocol_mode = value;
+        protocol_mode.value_namespace = name_space;
+        protocol_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "uptime")
     {
         uptime = value;
+        uptime.value_namespace = name_space;
+        uptime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "check-point-object-id")
+    {
+        check_point_object_id.yfilter = yfilter;
+    }
+    if(value_path == "create-type")
+    {
+        create_type.yfilter = yfilter;
+    }
+    if(value_path == "is-advertised")
+    {
+        is_advertised.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "protocol-mode")
+    {
+        protocol_mode.yfilter = yfilter;
+    }
+    if(value_path == "uptime")
+    {
+        uptime.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "check-point-object-id" || name == "create-type" || name == "is-advertised" || name == "prefix" || name == "prefix-length" || name == "protocol-mode" || name == "uptime")
+        return true;
+    return false;
 }
 
 AutoRp::Active::MappingAgent::Summary::Summary()
@@ -2354,10 +2909,10 @@ bool AutoRp::Active::MappingAgent::Summary::has_data() const
 
 bool AutoRp::Active::MappingAgent::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cache_count.operation)
-	|| is_set(cache_limit.operation)
-	|| is_set(is_maximum_disabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cache_count.yfilter)
+	|| ydk::is_set(cache_limit.yfilter)
+	|| ydk::is_set(is_maximum_disabled.yfilter);
 }
 
 std::string AutoRp::Active::MappingAgent::Summary::get_segment_path() const
@@ -2383,9 +2938,9 @@ const EntityPath AutoRp::Active::MappingAgent::Summary::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cache_count.is_set || is_set(cache_count.operation)) leaf_name_data.push_back(cache_count.get_name_leafdata());
-    if (cache_limit.is_set || is_set(cache_limit.operation)) leaf_name_data.push_back(cache_limit.get_name_leafdata());
-    if (is_maximum_disabled.is_set || is_set(is_maximum_disabled.operation)) leaf_name_data.push_back(is_maximum_disabled.get_name_leafdata());
+    if (cache_count.is_set || is_set(cache_count.yfilter)) leaf_name_data.push_back(cache_count.get_name_leafdata());
+    if (cache_limit.is_set || is_set(cache_limit.yfilter)) leaf_name_data.push_back(cache_limit.get_name_leafdata());
+    if (is_maximum_disabled.is_set || is_set(is_maximum_disabled.yfilter)) leaf_name_data.push_back(is_maximum_disabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2404,24 +2959,53 @@ std::map<std::string, std::shared_ptr<Entity>> AutoRp::Active::MappingAgent::Sum
     return children;
 }
 
-void AutoRp::Active::MappingAgent::Summary::set_value(const std::string & value_path, std::string value)
+void AutoRp::Active::MappingAgent::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cache-count")
     {
         cache_count = value;
+        cache_count.value_namespace = name_space;
+        cache_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cache-limit")
     {
         cache_limit = value;
+        cache_limit.value_namespace = name_space;
+        cache_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-maximum-disabled")
     {
         is_maximum_disabled = value;
+        is_maximum_disabled.value_namespace = name_space;
+        is_maximum_disabled.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf AutorpProtocolModeEnum::sparse {0, "sparse"};
-const Enum::YLeaf AutorpProtocolModeEnum::bidirectional {1, "bidirectional"};
+void AutoRp::Active::MappingAgent::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-count")
+    {
+        cache_count.yfilter = yfilter;
+    }
+    if(value_path == "cache-limit")
+    {
+        cache_limit.yfilter = yfilter;
+    }
+    if(value_path == "is-maximum-disabled")
+    {
+        is_maximum_disabled.yfilter = yfilter;
+    }
+}
+
+bool AutoRp::Active::MappingAgent::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-count" || name == "cache-limit" || name == "is-maximum-disabled")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf AutorpProtocolMode::sparse {0, "sparse"};
+const Enum::YLeaf AutorpProtocolMode::bidirectional {1, "bidirectional"};
 
 
 }

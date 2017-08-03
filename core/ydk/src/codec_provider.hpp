@@ -36,24 +36,24 @@ typedef void (*augment_capabilities_function)();
 class CodecServiceProvider
 {
 public:
-	CodecServiceProvider(EncodingFormat encoding);
-	CodecServiceProvider(path::Repository & repo, EncodingFormat encoding);
-	~CodecServiceProvider();
+    CodecServiceProvider(EncodingFormat encoding);
+    CodecServiceProvider(path::Repository & repo, EncodingFormat encoding);
+    ~CodecServiceProvider();
 
-	void initialize(const std::string & bundle_name, const std::string & models_path, augment_capabilities_function get_caps_func);
-	path::RootSchemaNode& get_root_schema_for_bundle(const std::string & bundle_name);
+    void initialize(const std::string & bundle_name, const std::string & models_path, augment_capabilities_function get_caps_func);
+    path::RootSchemaNode& get_root_schema_for_bundle(const std::string & bundle_name);
 
 private:
-	void initialize_root_schema(const std::string & bundle_name, path::Repository & repo);
+    void initialize_root_schema(const std::string & bundle_name, path::Repository & repo);
 
 public:
-	EncodingFormat m_encoding;
+    EncodingFormat m_encoding;
 
 private:
-	std::map<std::string, std::shared_ptr<path::RootSchemaNode>> m_root_schema_table;
-	bool user_provided_repo;
-	bool capabilities_augmented;
-	path::Repository m_repo;
+    std::map<std::string, std::shared_ptr<path::RootSchemaNode>> m_root_schema_table;
+    bool user_provided_repo;
+    bool capabilities_augmented;
+    path::Repository m_repo;
 
 };
 }

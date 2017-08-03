@@ -6,65 +6,67 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_ENTITY_FRU_CONTROL_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_ENTITY_FRU_CONTROL_MIB {
 
 CiscoEntityFruControlMib::CiscoEntityFruControlMib()
     :
-    cefcchassiscoolingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable>())
-	,cefcconnectorratingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable>())
-	,cefcfancoolingcaptable_(std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable>())
-	,cefcfancoolingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable>())
-	,cefcfantraystatustable_(std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable>())
-	,cefcfrupower_(std::make_shared<CiscoEntityFruControlMib::Cefcfrupower>())
-	,cefcfrupowerstatustable_(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable>())
-	,cefcfrupowersupplygrouptable_(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable>())
-	,cefcfrupowersupplyvaluetable_(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable>())
-	,cefcintellimoduletable_(std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable>())
-	,cefcmibnotificationenables_(std::make_shared<CiscoEntityFruControlMib::Cefcmibnotificationenables>())
-	,cefcmodulecoolingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable>())
-	,cefcmodulelocalswitchingtable_(std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable>())
-	,cefcmodulepowerconsumptiontable_(std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable>())
-	,cefcmoduletable_(std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable>())
-	,cefcphysicaltable_(std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable>())
-	,cefcpowersupplyinputtable_(std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable>())
-	,cefcpowersupplyoutputtable_(std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable>())
+    cefcchassiscoolingtable(std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable>())
+	,cefcconnectorratingtable(std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable>())
+	,cefcfancoolingcaptable(std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable>())
+	,cefcfancoolingtable(std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable>())
+	,cefcfantraystatustable(std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable>())
+	,cefcfrupower(std::make_shared<CiscoEntityFruControlMib::Cefcfrupower>())
+	,cefcfrupowerstatustable(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable>())
+	,cefcfrupowersupplygrouptable(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable>())
+	,cefcfrupowersupplyvaluetable(std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable>())
+	,cefcintellimoduletable(std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable>())
+	,cefcmibnotificationenables(std::make_shared<CiscoEntityFruControlMib::Cefcmibnotificationenables>())
+	,cefcmodulecoolingtable(std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable>())
+	,cefcmodulelocalswitchingtable(std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable>())
+	,cefcmodulepowerconsumptiontable(std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable>())
+	,cefcmoduletable(std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable>())
+	,cefcphysicaltable(std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable>())
+	,cefcpowersupplyinputtable(std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable>())
+	,cefcpowersupplyoutputtable(std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable>())
 {
-    cefcchassiscoolingtable_->parent = this;
+    cefcchassiscoolingtable->parent = this;
 
-    cefcconnectorratingtable_->parent = this;
+    cefcconnectorratingtable->parent = this;
 
-    cefcfancoolingcaptable_->parent = this;
+    cefcfancoolingcaptable->parent = this;
 
-    cefcfancoolingtable_->parent = this;
+    cefcfancoolingtable->parent = this;
 
-    cefcfantraystatustable_->parent = this;
+    cefcfantraystatustable->parent = this;
 
-    cefcfrupower_->parent = this;
+    cefcfrupower->parent = this;
 
-    cefcfrupowerstatustable_->parent = this;
+    cefcfrupowerstatustable->parent = this;
 
-    cefcfrupowersupplygrouptable_->parent = this;
+    cefcfrupowersupplygrouptable->parent = this;
 
-    cefcfrupowersupplyvaluetable_->parent = this;
+    cefcfrupowersupplyvaluetable->parent = this;
 
-    cefcintellimoduletable_->parent = this;
+    cefcintellimoduletable->parent = this;
 
-    cefcmibnotificationenables_->parent = this;
+    cefcmibnotificationenables->parent = this;
 
-    cefcmodulecoolingtable_->parent = this;
+    cefcmodulecoolingtable->parent = this;
 
-    cefcmodulelocalswitchingtable_->parent = this;
+    cefcmodulelocalswitchingtable->parent = this;
 
-    cefcmodulepowerconsumptiontable_->parent = this;
+    cefcmodulepowerconsumptiontable->parent = this;
 
-    cefcmoduletable_->parent = this;
+    cefcmoduletable->parent = this;
 
-    cefcphysicaltable_->parent = this;
+    cefcphysicaltable->parent = this;
 
-    cefcpowersupplyinputtable_->parent = this;
+    cefcpowersupplyinputtable->parent = this;
 
-    cefcpowersupplyoutputtable_->parent = this;
+    cefcpowersupplyoutputtable->parent = this;
 
     yang_name = "CISCO-ENTITY-FRU-CONTROL-MIB"; yang_parent_name = "CISCO-ENTITY-FRU-CONTROL-MIB";
 }
@@ -75,47 +77,47 @@ CiscoEntityFruControlMib::~CiscoEntityFruControlMib()
 
 bool CiscoEntityFruControlMib::has_data() const
 {
-    return (cefcchassiscoolingtable_ !=  nullptr && cefcchassiscoolingtable_->has_data())
-	|| (cefcconnectorratingtable_ !=  nullptr && cefcconnectorratingtable_->has_data())
-	|| (cefcfancoolingcaptable_ !=  nullptr && cefcfancoolingcaptable_->has_data())
-	|| (cefcfancoolingtable_ !=  nullptr && cefcfancoolingtable_->has_data())
-	|| (cefcfantraystatustable_ !=  nullptr && cefcfantraystatustable_->has_data())
-	|| (cefcfrupower_ !=  nullptr && cefcfrupower_->has_data())
-	|| (cefcfrupowerstatustable_ !=  nullptr && cefcfrupowerstatustable_->has_data())
-	|| (cefcfrupowersupplygrouptable_ !=  nullptr && cefcfrupowersupplygrouptable_->has_data())
-	|| (cefcfrupowersupplyvaluetable_ !=  nullptr && cefcfrupowersupplyvaluetable_->has_data())
-	|| (cefcintellimoduletable_ !=  nullptr && cefcintellimoduletable_->has_data())
-	|| (cefcmibnotificationenables_ !=  nullptr && cefcmibnotificationenables_->has_data())
-	|| (cefcmodulecoolingtable_ !=  nullptr && cefcmodulecoolingtable_->has_data())
-	|| (cefcmodulelocalswitchingtable_ !=  nullptr && cefcmodulelocalswitchingtable_->has_data())
-	|| (cefcmodulepowerconsumptiontable_ !=  nullptr && cefcmodulepowerconsumptiontable_->has_data())
-	|| (cefcmoduletable_ !=  nullptr && cefcmoduletable_->has_data())
-	|| (cefcphysicaltable_ !=  nullptr && cefcphysicaltable_->has_data())
-	|| (cefcpowersupplyinputtable_ !=  nullptr && cefcpowersupplyinputtable_->has_data())
-	|| (cefcpowersupplyoutputtable_ !=  nullptr && cefcpowersupplyoutputtable_->has_data());
+    return (cefcchassiscoolingtable !=  nullptr && cefcchassiscoolingtable->has_data())
+	|| (cefcconnectorratingtable !=  nullptr && cefcconnectorratingtable->has_data())
+	|| (cefcfancoolingcaptable !=  nullptr && cefcfancoolingcaptable->has_data())
+	|| (cefcfancoolingtable !=  nullptr && cefcfancoolingtable->has_data())
+	|| (cefcfantraystatustable !=  nullptr && cefcfantraystatustable->has_data())
+	|| (cefcfrupower !=  nullptr && cefcfrupower->has_data())
+	|| (cefcfrupowerstatustable !=  nullptr && cefcfrupowerstatustable->has_data())
+	|| (cefcfrupowersupplygrouptable !=  nullptr && cefcfrupowersupplygrouptable->has_data())
+	|| (cefcfrupowersupplyvaluetable !=  nullptr && cefcfrupowersupplyvaluetable->has_data())
+	|| (cefcintellimoduletable !=  nullptr && cefcintellimoduletable->has_data())
+	|| (cefcmibnotificationenables !=  nullptr && cefcmibnotificationenables->has_data())
+	|| (cefcmodulecoolingtable !=  nullptr && cefcmodulecoolingtable->has_data())
+	|| (cefcmodulelocalswitchingtable !=  nullptr && cefcmodulelocalswitchingtable->has_data())
+	|| (cefcmodulepowerconsumptiontable !=  nullptr && cefcmodulepowerconsumptiontable->has_data())
+	|| (cefcmoduletable !=  nullptr && cefcmoduletable->has_data())
+	|| (cefcphysicaltable !=  nullptr && cefcphysicaltable->has_data())
+	|| (cefcpowersupplyinputtable !=  nullptr && cefcpowersupplyinputtable->has_data())
+	|| (cefcpowersupplyoutputtable !=  nullptr && cefcpowersupplyoutputtable->has_data());
 }
 
 bool CiscoEntityFruControlMib::has_operation() const
 {
-    return is_set(operation)
-	|| (cefcchassiscoolingtable_ !=  nullptr && cefcchassiscoolingtable_->has_operation())
-	|| (cefcconnectorratingtable_ !=  nullptr && cefcconnectorratingtable_->has_operation())
-	|| (cefcfancoolingcaptable_ !=  nullptr && cefcfancoolingcaptable_->has_operation())
-	|| (cefcfancoolingtable_ !=  nullptr && cefcfancoolingtable_->has_operation())
-	|| (cefcfantraystatustable_ !=  nullptr && cefcfantraystatustable_->has_operation())
-	|| (cefcfrupower_ !=  nullptr && cefcfrupower_->has_operation())
-	|| (cefcfrupowerstatustable_ !=  nullptr && cefcfrupowerstatustable_->has_operation())
-	|| (cefcfrupowersupplygrouptable_ !=  nullptr && cefcfrupowersupplygrouptable_->has_operation())
-	|| (cefcfrupowersupplyvaluetable_ !=  nullptr && cefcfrupowersupplyvaluetable_->has_operation())
-	|| (cefcintellimoduletable_ !=  nullptr && cefcintellimoduletable_->has_operation())
-	|| (cefcmibnotificationenables_ !=  nullptr && cefcmibnotificationenables_->has_operation())
-	|| (cefcmodulecoolingtable_ !=  nullptr && cefcmodulecoolingtable_->has_operation())
-	|| (cefcmodulelocalswitchingtable_ !=  nullptr && cefcmodulelocalswitchingtable_->has_operation())
-	|| (cefcmodulepowerconsumptiontable_ !=  nullptr && cefcmodulepowerconsumptiontable_->has_operation())
-	|| (cefcmoduletable_ !=  nullptr && cefcmoduletable_->has_operation())
-	|| (cefcphysicaltable_ !=  nullptr && cefcphysicaltable_->has_operation())
-	|| (cefcpowersupplyinputtable_ !=  nullptr && cefcpowersupplyinputtable_->has_operation())
-	|| (cefcpowersupplyoutputtable_ !=  nullptr && cefcpowersupplyoutputtable_->has_operation());
+    return is_set(yfilter)
+	|| (cefcchassiscoolingtable !=  nullptr && cefcchassiscoolingtable->has_operation())
+	|| (cefcconnectorratingtable !=  nullptr && cefcconnectorratingtable->has_operation())
+	|| (cefcfancoolingcaptable !=  nullptr && cefcfancoolingcaptable->has_operation())
+	|| (cefcfancoolingtable !=  nullptr && cefcfancoolingtable->has_operation())
+	|| (cefcfantraystatustable !=  nullptr && cefcfantraystatustable->has_operation())
+	|| (cefcfrupower !=  nullptr && cefcfrupower->has_operation())
+	|| (cefcfrupowerstatustable !=  nullptr && cefcfrupowerstatustable->has_operation())
+	|| (cefcfrupowersupplygrouptable !=  nullptr && cefcfrupowersupplygrouptable->has_operation())
+	|| (cefcfrupowersupplyvaluetable !=  nullptr && cefcfrupowersupplyvaluetable->has_operation())
+	|| (cefcintellimoduletable !=  nullptr && cefcintellimoduletable->has_operation())
+	|| (cefcmibnotificationenables !=  nullptr && cefcmibnotificationenables->has_operation())
+	|| (cefcmodulecoolingtable !=  nullptr && cefcmodulecoolingtable->has_operation())
+	|| (cefcmodulelocalswitchingtable !=  nullptr && cefcmodulelocalswitchingtable->has_operation())
+	|| (cefcmodulepowerconsumptiontable !=  nullptr && cefcmodulepowerconsumptiontable->has_operation())
+	|| (cefcmoduletable !=  nullptr && cefcmoduletable->has_operation())
+	|| (cefcphysicaltable !=  nullptr && cefcphysicaltable->has_operation())
+	|| (cefcpowersupplyinputtable !=  nullptr && cefcpowersupplyinputtable->has_operation())
+	|| (cefcpowersupplyoutputtable !=  nullptr && cefcpowersupplyoutputtable->has_operation());
 }
 
 std::string CiscoEntityFruControlMib::get_segment_path() const
@@ -149,164 +151,164 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::get_child_by_name(const std::s
 {
     if(child_yang_name == "cefcChassisCoolingTable")
     {
-        if(cefcchassiscoolingtable_ == nullptr)
+        if(cefcchassiscoolingtable == nullptr)
         {
-            cefcchassiscoolingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable>();
+            cefcchassiscoolingtable = std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable>();
         }
-        return cefcchassiscoolingtable_;
+        return cefcchassiscoolingtable;
     }
 
     if(child_yang_name == "cefcConnectorRatingTable")
     {
-        if(cefcconnectorratingtable_ == nullptr)
+        if(cefcconnectorratingtable == nullptr)
         {
-            cefcconnectorratingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable>();
+            cefcconnectorratingtable = std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable>();
         }
-        return cefcconnectorratingtable_;
+        return cefcconnectorratingtable;
     }
 
     if(child_yang_name == "cefcFanCoolingCapTable")
     {
-        if(cefcfancoolingcaptable_ == nullptr)
+        if(cefcfancoolingcaptable == nullptr)
         {
-            cefcfancoolingcaptable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable>();
+            cefcfancoolingcaptable = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable>();
         }
-        return cefcfancoolingcaptable_;
+        return cefcfancoolingcaptable;
     }
 
     if(child_yang_name == "cefcFanCoolingTable")
     {
-        if(cefcfancoolingtable_ == nullptr)
+        if(cefcfancoolingtable == nullptr)
         {
-            cefcfancoolingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable>();
+            cefcfancoolingtable = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable>();
         }
-        return cefcfancoolingtable_;
+        return cefcfancoolingtable;
     }
 
     if(child_yang_name == "cefcFanTrayStatusTable")
     {
-        if(cefcfantraystatustable_ == nullptr)
+        if(cefcfantraystatustable == nullptr)
         {
-            cefcfantraystatustable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable>();
+            cefcfantraystatustable = std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable>();
         }
-        return cefcfantraystatustable_;
+        return cefcfantraystatustable;
     }
 
     if(child_yang_name == "cefcFRUPower")
     {
-        if(cefcfrupower_ == nullptr)
+        if(cefcfrupower == nullptr)
         {
-            cefcfrupower_ = std::make_shared<CiscoEntityFruControlMib::Cefcfrupower>();
+            cefcfrupower = std::make_shared<CiscoEntityFruControlMib::Cefcfrupower>();
         }
-        return cefcfrupower_;
+        return cefcfrupower;
     }
 
     if(child_yang_name == "cefcFRUPowerStatusTable")
     {
-        if(cefcfrupowerstatustable_ == nullptr)
+        if(cefcfrupowerstatustable == nullptr)
         {
-            cefcfrupowerstatustable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable>();
+            cefcfrupowerstatustable = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable>();
         }
-        return cefcfrupowerstatustable_;
+        return cefcfrupowerstatustable;
     }
 
     if(child_yang_name == "cefcFRUPowerSupplyGroupTable")
     {
-        if(cefcfrupowersupplygrouptable_ == nullptr)
+        if(cefcfrupowersupplygrouptable == nullptr)
         {
-            cefcfrupowersupplygrouptable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable>();
+            cefcfrupowersupplygrouptable = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable>();
         }
-        return cefcfrupowersupplygrouptable_;
+        return cefcfrupowersupplygrouptable;
     }
 
     if(child_yang_name == "cefcFRUPowerSupplyValueTable")
     {
-        if(cefcfrupowersupplyvaluetable_ == nullptr)
+        if(cefcfrupowersupplyvaluetable == nullptr)
         {
-            cefcfrupowersupplyvaluetable_ = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable>();
+            cefcfrupowersupplyvaluetable = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable>();
         }
-        return cefcfrupowersupplyvaluetable_;
+        return cefcfrupowersupplyvaluetable;
     }
 
     if(child_yang_name == "cefcIntelliModuleTable")
     {
-        if(cefcintellimoduletable_ == nullptr)
+        if(cefcintellimoduletable == nullptr)
         {
-            cefcintellimoduletable_ = std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable>();
+            cefcintellimoduletable = std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable>();
         }
-        return cefcintellimoduletable_;
+        return cefcintellimoduletable;
     }
 
     if(child_yang_name == "cefcMIBNotificationEnables")
     {
-        if(cefcmibnotificationenables_ == nullptr)
+        if(cefcmibnotificationenables == nullptr)
         {
-            cefcmibnotificationenables_ = std::make_shared<CiscoEntityFruControlMib::Cefcmibnotificationenables>();
+            cefcmibnotificationenables = std::make_shared<CiscoEntityFruControlMib::Cefcmibnotificationenables>();
         }
-        return cefcmibnotificationenables_;
+        return cefcmibnotificationenables;
     }
 
     if(child_yang_name == "cefcModuleCoolingTable")
     {
-        if(cefcmodulecoolingtable_ == nullptr)
+        if(cefcmodulecoolingtable == nullptr)
         {
-            cefcmodulecoolingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable>();
+            cefcmodulecoolingtable = std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable>();
         }
-        return cefcmodulecoolingtable_;
+        return cefcmodulecoolingtable;
     }
 
     if(child_yang_name == "cefcModuleLocalSwitchingTable")
     {
-        if(cefcmodulelocalswitchingtable_ == nullptr)
+        if(cefcmodulelocalswitchingtable == nullptr)
         {
-            cefcmodulelocalswitchingtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable>();
+            cefcmodulelocalswitchingtable = std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable>();
         }
-        return cefcmodulelocalswitchingtable_;
+        return cefcmodulelocalswitchingtable;
     }
 
     if(child_yang_name == "cefcModulePowerConsumptionTable")
     {
-        if(cefcmodulepowerconsumptiontable_ == nullptr)
+        if(cefcmodulepowerconsumptiontable == nullptr)
         {
-            cefcmodulepowerconsumptiontable_ = std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable>();
+            cefcmodulepowerconsumptiontable = std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable>();
         }
-        return cefcmodulepowerconsumptiontable_;
+        return cefcmodulepowerconsumptiontable;
     }
 
     if(child_yang_name == "cefcModuleTable")
     {
-        if(cefcmoduletable_ == nullptr)
+        if(cefcmoduletable == nullptr)
         {
-            cefcmoduletable_ = std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable>();
+            cefcmoduletable = std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable>();
         }
-        return cefcmoduletable_;
+        return cefcmoduletable;
     }
 
     if(child_yang_name == "cefcPhysicalTable")
     {
-        if(cefcphysicaltable_ == nullptr)
+        if(cefcphysicaltable == nullptr)
         {
-            cefcphysicaltable_ = std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable>();
+            cefcphysicaltable = std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable>();
         }
-        return cefcphysicaltable_;
+        return cefcphysicaltable;
     }
 
     if(child_yang_name == "cefcPowerSupplyInputTable")
     {
-        if(cefcpowersupplyinputtable_ == nullptr)
+        if(cefcpowersupplyinputtable == nullptr)
         {
-            cefcpowersupplyinputtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable>();
+            cefcpowersupplyinputtable = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable>();
         }
-        return cefcpowersupplyinputtable_;
+        return cefcpowersupplyinputtable;
     }
 
     if(child_yang_name == "cefcPowerSupplyOutputTable")
     {
-        if(cefcpowersupplyoutputtable_ == nullptr)
+        if(cefcpowersupplyoutputtable == nullptr)
         {
-            cefcpowersupplyoutputtable_ = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable>();
+            cefcpowersupplyoutputtable = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable>();
         }
-        return cefcpowersupplyoutputtable_;
+        return cefcpowersupplyoutputtable;
     }
 
     return nullptr;
@@ -315,100 +317,104 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::get_child_by_name(const std::s
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cefcchassiscoolingtable_ != nullptr)
+    if(cefcchassiscoolingtable != nullptr)
     {
-        children["cefcChassisCoolingTable"] = cefcchassiscoolingtable_;
+        children["cefcChassisCoolingTable"] = cefcchassiscoolingtable;
     }
 
-    if(cefcconnectorratingtable_ != nullptr)
+    if(cefcconnectorratingtable != nullptr)
     {
-        children["cefcConnectorRatingTable"] = cefcconnectorratingtable_;
+        children["cefcConnectorRatingTable"] = cefcconnectorratingtable;
     }
 
-    if(cefcfancoolingcaptable_ != nullptr)
+    if(cefcfancoolingcaptable != nullptr)
     {
-        children["cefcFanCoolingCapTable"] = cefcfancoolingcaptable_;
+        children["cefcFanCoolingCapTable"] = cefcfancoolingcaptable;
     }
 
-    if(cefcfancoolingtable_ != nullptr)
+    if(cefcfancoolingtable != nullptr)
     {
-        children["cefcFanCoolingTable"] = cefcfancoolingtable_;
+        children["cefcFanCoolingTable"] = cefcfancoolingtable;
     }
 
-    if(cefcfantraystatustable_ != nullptr)
+    if(cefcfantraystatustable != nullptr)
     {
-        children["cefcFanTrayStatusTable"] = cefcfantraystatustable_;
+        children["cefcFanTrayStatusTable"] = cefcfantraystatustable;
     }
 
-    if(cefcfrupower_ != nullptr)
+    if(cefcfrupower != nullptr)
     {
-        children["cefcFRUPower"] = cefcfrupower_;
+        children["cefcFRUPower"] = cefcfrupower;
     }
 
-    if(cefcfrupowerstatustable_ != nullptr)
+    if(cefcfrupowerstatustable != nullptr)
     {
-        children["cefcFRUPowerStatusTable"] = cefcfrupowerstatustable_;
+        children["cefcFRUPowerStatusTable"] = cefcfrupowerstatustable;
     }
 
-    if(cefcfrupowersupplygrouptable_ != nullptr)
+    if(cefcfrupowersupplygrouptable != nullptr)
     {
-        children["cefcFRUPowerSupplyGroupTable"] = cefcfrupowersupplygrouptable_;
+        children["cefcFRUPowerSupplyGroupTable"] = cefcfrupowersupplygrouptable;
     }
 
-    if(cefcfrupowersupplyvaluetable_ != nullptr)
+    if(cefcfrupowersupplyvaluetable != nullptr)
     {
-        children["cefcFRUPowerSupplyValueTable"] = cefcfrupowersupplyvaluetable_;
+        children["cefcFRUPowerSupplyValueTable"] = cefcfrupowersupplyvaluetable;
     }
 
-    if(cefcintellimoduletable_ != nullptr)
+    if(cefcintellimoduletable != nullptr)
     {
-        children["cefcIntelliModuleTable"] = cefcintellimoduletable_;
+        children["cefcIntelliModuleTable"] = cefcintellimoduletable;
     }
 
-    if(cefcmibnotificationenables_ != nullptr)
+    if(cefcmibnotificationenables != nullptr)
     {
-        children["cefcMIBNotificationEnables"] = cefcmibnotificationenables_;
+        children["cefcMIBNotificationEnables"] = cefcmibnotificationenables;
     }
 
-    if(cefcmodulecoolingtable_ != nullptr)
+    if(cefcmodulecoolingtable != nullptr)
     {
-        children["cefcModuleCoolingTable"] = cefcmodulecoolingtable_;
+        children["cefcModuleCoolingTable"] = cefcmodulecoolingtable;
     }
 
-    if(cefcmodulelocalswitchingtable_ != nullptr)
+    if(cefcmodulelocalswitchingtable != nullptr)
     {
-        children["cefcModuleLocalSwitchingTable"] = cefcmodulelocalswitchingtable_;
+        children["cefcModuleLocalSwitchingTable"] = cefcmodulelocalswitchingtable;
     }
 
-    if(cefcmodulepowerconsumptiontable_ != nullptr)
+    if(cefcmodulepowerconsumptiontable != nullptr)
     {
-        children["cefcModulePowerConsumptionTable"] = cefcmodulepowerconsumptiontable_;
+        children["cefcModulePowerConsumptionTable"] = cefcmodulepowerconsumptiontable;
     }
 
-    if(cefcmoduletable_ != nullptr)
+    if(cefcmoduletable != nullptr)
     {
-        children["cefcModuleTable"] = cefcmoduletable_;
+        children["cefcModuleTable"] = cefcmoduletable;
     }
 
-    if(cefcphysicaltable_ != nullptr)
+    if(cefcphysicaltable != nullptr)
     {
-        children["cefcPhysicalTable"] = cefcphysicaltable_;
+        children["cefcPhysicalTable"] = cefcphysicaltable;
     }
 
-    if(cefcpowersupplyinputtable_ != nullptr)
+    if(cefcpowersupplyinputtable != nullptr)
     {
-        children["cefcPowerSupplyInputTable"] = cefcpowersupplyinputtable_;
+        children["cefcPowerSupplyInputTable"] = cefcpowersupplyinputtable;
     }
 
-    if(cefcpowersupplyoutputtable_ != nullptr)
+    if(cefcpowersupplyoutputtable != nullptr)
     {
-        children["cefcPowerSupplyOutputTable"] = cefcpowersupplyoutputtable_;
+        children["cefcPowerSupplyOutputTable"] = cefcpowersupplyoutputtable;
     }
 
     return children;
 }
 
-void CiscoEntityFruControlMib::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoEntityFruControlMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -432,6 +438,18 @@ augment_capabilities_function CiscoEntityFruControlMib::get_augment_capabilities
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoEntityFruControlMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoEntityFruControlMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcChassisCoolingTable" || name == "cefcConnectorRatingTable" || name == "cefcFanCoolingCapTable" || name == "cefcFanCoolingTable" || name == "cefcFanTrayStatusTable" || name == "cefcFRUPower" || name == "cefcFRUPowerStatusTable" || name == "cefcFRUPowerSupplyGroupTable" || name == "cefcFRUPowerSupplyValueTable" || name == "cefcIntelliModuleTable" || name == "cefcMIBNotificationEnables" || name == "cefcModuleCoolingTable" || name == "cefcModuleLocalSwitchingTable" || name == "cefcModulePowerConsumptionTable" || name == "cefcModuleTable" || name == "cefcPhysicalTable" || name == "cefcPowerSupplyInputTable" || name == "cefcPowerSupplyOutputTable")
+        return true;
+    return false;
+}
+
 CiscoEntityFruControlMib::Cefcfrupower::Cefcfrupower()
     :
     cefcmaxdefaulthighinlinepower{YType::uint32, "cefcMaxDefaultHighInLinePower"},
@@ -452,9 +470,9 @@ bool CiscoEntityFruControlMib::Cefcfrupower::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfrupower::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cefcmaxdefaulthighinlinepower.operation)
-	|| is_set(cefcmaxdefaultinlinepower.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cefcmaxdefaulthighinlinepower.yfilter)
+	|| ydk::is_set(cefcmaxdefaultinlinepower.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfrupower::get_segment_path() const
@@ -480,8 +498,8 @@ const EntityPath CiscoEntityFruControlMib::Cefcfrupower::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cefcmaxdefaulthighinlinepower.is_set || is_set(cefcmaxdefaulthighinlinepower.operation)) leaf_name_data.push_back(cefcmaxdefaulthighinlinepower.get_name_leafdata());
-    if (cefcmaxdefaultinlinepower.is_set || is_set(cefcmaxdefaultinlinepower.operation)) leaf_name_data.push_back(cefcmaxdefaultinlinepower.get_name_leafdata());
+    if (cefcmaxdefaulthighinlinepower.is_set || is_set(cefcmaxdefaulthighinlinepower.yfilter)) leaf_name_data.push_back(cefcmaxdefaulthighinlinepower.get_name_leafdata());
+    if (cefcmaxdefaultinlinepower.is_set || is_set(cefcmaxdefaultinlinepower.yfilter)) leaf_name_data.push_back(cefcmaxdefaultinlinepower.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -500,16 +518,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfru
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfrupower::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfrupower::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefcMaxDefaultHighInLinePower")
     {
         cefcmaxdefaulthighinlinepower = value;
+        cefcmaxdefaulthighinlinepower.value_namespace = name_space;
+        cefcmaxdefaulthighinlinepower.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcMaxDefaultInLinePower")
     {
         cefcmaxdefaultinlinepower = value;
+        cefcmaxdefaultinlinepower.value_namespace = name_space;
+        cefcmaxdefaultinlinepower.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcfrupower::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cefcMaxDefaultHighInLinePower")
+    {
+        cefcmaxdefaulthighinlinepower.yfilter = yfilter;
+    }
+    if(value_path == "cefcMaxDefaultInLinePower")
+    {
+        cefcmaxdefaultinlinepower.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcfrupower::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcMaxDefaultHighInLinePower" || name == "cefcMaxDefaultInLinePower")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmibnotificationenables::Cefcmibnotificationenables()
@@ -532,9 +573,9 @@ bool CiscoEntityFruControlMib::Cefcmibnotificationenables::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmibnotificationenables::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cefcenablepsoutputchangenotif.operation)
-	|| is_set(cefcmibenablestatusnotification.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cefcenablepsoutputchangenotif.yfilter)
+	|| ydk::is_set(cefcmibenablestatusnotification.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmibnotificationenables::get_segment_path() const
@@ -560,8 +601,8 @@ const EntityPath CiscoEntityFruControlMib::Cefcmibnotificationenables::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cefcenablepsoutputchangenotif.is_set || is_set(cefcenablepsoutputchangenotif.operation)) leaf_name_data.push_back(cefcenablepsoutputchangenotif.get_name_leafdata());
-    if (cefcmibenablestatusnotification.is_set || is_set(cefcmibenablestatusnotification.operation)) leaf_name_data.push_back(cefcmibenablestatusnotification.get_name_leafdata());
+    if (cefcenablepsoutputchangenotif.is_set || is_set(cefcenablepsoutputchangenotif.yfilter)) leaf_name_data.push_back(cefcenablepsoutputchangenotif.get_name_leafdata());
+    if (cefcmibenablestatusnotification.is_set || is_set(cefcmibenablestatusnotification.yfilter)) leaf_name_data.push_back(cefcmibenablestatusnotification.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -580,16 +621,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmib
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmibnotificationenables::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmibnotificationenables::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefcEnablePSOutputChangeNotif")
     {
         cefcenablepsoutputchangenotif = value;
+        cefcenablepsoutputchangenotif.value_namespace = name_space;
+        cefcenablepsoutputchangenotif.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcMIBEnableStatusNotification")
     {
         cefcmibenablestatusnotification = value;
+        cefcmibenablestatusnotification.value_namespace = name_space;
+        cefcmibenablestatusnotification.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcmibnotificationenables::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cefcEnablePSOutputChangeNotif")
+    {
+        cefcenablepsoutputchangenotif.yfilter = yfilter;
+    }
+    if(value_path == "cefcMIBEnableStatusNotification")
+    {
+        cefcmibenablestatusnotification.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcmibnotificationenables::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcEnablePSOutputChangeNotif" || name == "cefcMIBEnableStatusNotification")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygrouptable()
@@ -603,9 +667,9 @@ CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::~Cefcfrupowersupplygroup
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplygroupentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplygroupentry.size(); index++)
     {
-        if(cefcfrupowersupplygroupentry_[index]->has_data())
+        if(cefcfrupowersupplygroupentry[index]->has_data())
             return true;
     }
     return false;
@@ -613,12 +677,12 @@ bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplygroupentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplygroupentry.size(); index++)
     {
-        if(cefcfrupowersupplygroupentry_[index]->has_operation())
+        if(cefcfrupowersupplygroupentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::get_segment_path() const
@@ -655,7 +719,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::
 {
     if(child_yang_name == "cefcFRUPowerSupplyGroupEntry")
     {
-        for(auto const & c : cefcfrupowersupplygroupentry_)
+        for(auto const & c : cefcfrupowersupplygroupentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -665,7 +729,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry>();
         c->parent = this;
-        cefcfrupowersupplygroupentry_.push_back(c);
+        cefcfrupowersupplygroupentry.push_back(c);
         return c;
     }
 
@@ -675,7 +739,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfrupowersupplygroupentry_)
+    for (auto const & c : cefcfrupowersupplygroupentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -683,8 +747,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfru
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcFRUPowerSupplyGroupEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcfrupowersupplygroupentry()
@@ -719,15 +794,15 @@ bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplyg
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcpowernonredundantreason.operation)
-	|| is_set(cefcpowerredundancymode.operation)
-	|| is_set(cefcpowerredundancyopermode.operation)
-	|| is_set(cefcpowerunits.operation)
-	|| is_set(cefctotalavailablecurrent.operation)
-	|| is_set(cefctotaldrawncurrent.operation)
-	|| is_set(cefctotaldrawninlinecurrent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcpowernonredundantreason.yfilter)
+	|| ydk::is_set(cefcpowerredundancymode.yfilter)
+	|| ydk::is_set(cefcpowerredundancyopermode.yfilter)
+	|| ydk::is_set(cefcpowerunits.yfilter)
+	|| ydk::is_set(cefctotalavailablecurrent.yfilter)
+	|| ydk::is_set(cefctotaldrawncurrent.yfilter)
+	|| ydk::is_set(cefctotaldrawninlinecurrent.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::get_segment_path() const
@@ -753,14 +828,14 @@ const EntityPath CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfru
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcpowernonredundantreason.is_set || is_set(cefcpowernonredundantreason.operation)) leaf_name_data.push_back(cefcpowernonredundantreason.get_name_leafdata());
-    if (cefcpowerredundancymode.is_set || is_set(cefcpowerredundancymode.operation)) leaf_name_data.push_back(cefcpowerredundancymode.get_name_leafdata());
-    if (cefcpowerredundancyopermode.is_set || is_set(cefcpowerredundancyopermode.operation)) leaf_name_data.push_back(cefcpowerredundancyopermode.get_name_leafdata());
-    if (cefcpowerunits.is_set || is_set(cefcpowerunits.operation)) leaf_name_data.push_back(cefcpowerunits.get_name_leafdata());
-    if (cefctotalavailablecurrent.is_set || is_set(cefctotalavailablecurrent.operation)) leaf_name_data.push_back(cefctotalavailablecurrent.get_name_leafdata());
-    if (cefctotaldrawncurrent.is_set || is_set(cefctotaldrawncurrent.operation)) leaf_name_data.push_back(cefctotaldrawncurrent.get_name_leafdata());
-    if (cefctotaldrawninlinecurrent.is_set || is_set(cefctotaldrawninlinecurrent.operation)) leaf_name_data.push_back(cefctotaldrawninlinecurrent.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcpowernonredundantreason.is_set || is_set(cefcpowernonredundantreason.yfilter)) leaf_name_data.push_back(cefcpowernonredundantreason.get_name_leafdata());
+    if (cefcpowerredundancymode.is_set || is_set(cefcpowerredundancymode.yfilter)) leaf_name_data.push_back(cefcpowerredundancymode.get_name_leafdata());
+    if (cefcpowerredundancyopermode.is_set || is_set(cefcpowerredundancyopermode.yfilter)) leaf_name_data.push_back(cefcpowerredundancyopermode.get_name_leafdata());
+    if (cefcpowerunits.is_set || is_set(cefcpowerunits.yfilter)) leaf_name_data.push_back(cefcpowerunits.get_name_leafdata());
+    if (cefctotalavailablecurrent.is_set || is_set(cefctotalavailablecurrent.yfilter)) leaf_name_data.push_back(cefctotalavailablecurrent.get_name_leafdata());
+    if (cefctotaldrawncurrent.is_set || is_set(cefctotaldrawncurrent.yfilter)) leaf_name_data.push_back(cefctotaldrawncurrent.get_name_leafdata());
+    if (cefctotaldrawninlinecurrent.is_set || is_set(cefctotaldrawninlinecurrent.yfilter)) leaf_name_data.push_back(cefctotaldrawninlinecurrent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -779,40 +854,99 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfru
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPowerNonRedundantReason")
     {
         cefcpowernonredundantreason = value;
+        cefcpowernonredundantreason.value_namespace = name_space;
+        cefcpowernonredundantreason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPowerRedundancyMode")
     {
         cefcpowerredundancymode = value;
+        cefcpowerredundancymode.value_namespace = name_space;
+        cefcpowerredundancymode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPowerRedundancyOperMode")
     {
         cefcpowerredundancyopermode = value;
+        cefcpowerredundancyopermode.value_namespace = name_space;
+        cefcpowerredundancyopermode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPowerUnits")
     {
         cefcpowerunits = value;
+        cefcpowerunits.value_namespace = name_space;
+        cefcpowerunits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcTotalAvailableCurrent")
     {
         cefctotalavailablecurrent = value;
+        cefctotalavailablecurrent.value_namespace = name_space;
+        cefctotalavailablecurrent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcTotalDrawnCurrent")
     {
         cefctotaldrawncurrent = value;
+        cefctotaldrawncurrent.value_namespace = name_space;
+        cefctotaldrawncurrent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcTotalDrawnInlineCurrent")
     {
         cefctotaldrawninlinecurrent = value;
+        cefctotaldrawninlinecurrent.value_namespace = name_space;
+        cefctotaldrawninlinecurrent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcPowerNonRedundantReason")
+    {
+        cefcpowernonredundantreason.yfilter = yfilter;
+    }
+    if(value_path == "cefcPowerRedundancyMode")
+    {
+        cefcpowerredundancymode.yfilter = yfilter;
+    }
+    if(value_path == "cefcPowerRedundancyOperMode")
+    {
+        cefcpowerredundancyopermode.yfilter = yfilter;
+    }
+    if(value_path == "cefcPowerUnits")
+    {
+        cefcpowerunits.yfilter = yfilter;
+    }
+    if(value_path == "cefcTotalAvailableCurrent")
+    {
+        cefctotalavailablecurrent.yfilter = yfilter;
+    }
+    if(value_path == "cefcTotalDrawnCurrent")
+    {
+        cefctotaldrawncurrent.yfilter = yfilter;
+    }
+    if(value_path == "cefcTotalDrawnInlineCurrent")
+    {
+        cefctotaldrawninlinecurrent.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcPowerNonRedundantReason" || name == "cefcPowerRedundancyMode" || name == "cefcPowerRedundancyOperMode" || name == "cefcPowerUnits" || name == "cefcTotalAvailableCurrent" || name == "cefcTotalDrawnCurrent" || name == "cefcTotalDrawnInlineCurrent")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatustable()
@@ -826,9 +960,9 @@ CiscoEntityFruControlMib::Cefcfrupowerstatustable::~Cefcfrupowerstatustable()
 
 bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowerstatusentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowerstatusentry.size(); index++)
     {
-        if(cefcfrupowerstatusentry_[index]->has_data())
+        if(cefcfrupowerstatusentry[index]->has_data())
             return true;
     }
     return false;
@@ -836,12 +970,12 @@ bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowerstatusentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowerstatusentry.size(); index++)
     {
-        if(cefcfrupowerstatusentry_[index]->has_operation())
+        if(cefcfrupowerstatusentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_segment_path() const
@@ -878,7 +1012,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_c
 {
     if(child_yang_name == "cefcFRUPowerStatusEntry")
     {
-        for(auto const & c : cefcfrupowerstatusentry_)
+        for(auto const & c : cefcfrupowerstatusentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -888,7 +1022,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_c
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry>();
         c->parent = this;
-        cefcfrupowerstatusentry_.push_back(c);
+        cefcfrupowerstatusentry.push_back(c);
         return c;
     }
 
@@ -898,7 +1032,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfrupowerstatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfrupowerstatusentry_)
+    for (auto const & c : cefcfrupowerstatusentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -906,8 +1040,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfru
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfrupowerstatustable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfrupowerstatustable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcfrupowerstatustable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcFRUPowerStatusEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::Cefcfrupowerstatusentry()
@@ -938,13 +1083,13 @@ bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry:
 
 bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcfrucurrent.operation)
-	|| is_set(cefcfrupoweradminstatus.operation)
-	|| is_set(cefcfrupowercapability.operation)
-	|| is_set(cefcfrupoweroperstatus.operation)
-	|| is_set(cefcfrurealtimecurrent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcfrucurrent.yfilter)
+	|| ydk::is_set(cefcfrupoweradminstatus.yfilter)
+	|| ydk::is_set(cefcfrupowercapability.yfilter)
+	|| ydk::is_set(cefcfrupoweroperstatus.yfilter)
+	|| ydk::is_set(cefcfrurealtimecurrent.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::get_segment_path() const
@@ -970,12 +1115,12 @@ const EntityPath CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupower
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcfrucurrent.is_set || is_set(cefcfrucurrent.operation)) leaf_name_data.push_back(cefcfrucurrent.get_name_leafdata());
-    if (cefcfrupoweradminstatus.is_set || is_set(cefcfrupoweradminstatus.operation)) leaf_name_data.push_back(cefcfrupoweradminstatus.get_name_leafdata());
-    if (cefcfrupowercapability.is_set || is_set(cefcfrupowercapability.operation)) leaf_name_data.push_back(cefcfrupowercapability.get_name_leafdata());
-    if (cefcfrupoweroperstatus.is_set || is_set(cefcfrupoweroperstatus.operation)) leaf_name_data.push_back(cefcfrupoweroperstatus.get_name_leafdata());
-    if (cefcfrurealtimecurrent.is_set || is_set(cefcfrurealtimecurrent.operation)) leaf_name_data.push_back(cefcfrurealtimecurrent.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcfrucurrent.is_set || is_set(cefcfrucurrent.yfilter)) leaf_name_data.push_back(cefcfrucurrent.get_name_leafdata());
+    if (cefcfrupoweradminstatus.is_set || is_set(cefcfrupoweradminstatus.yfilter)) leaf_name_data.push_back(cefcfrupoweradminstatus.get_name_leafdata());
+    if (cefcfrupowercapability.is_set || is_set(cefcfrupowercapability.yfilter)) leaf_name_data.push_back(cefcfrupowercapability.get_name_leafdata());
+    if (cefcfrupoweroperstatus.is_set || is_set(cefcfrupoweroperstatus.yfilter)) leaf_name_data.push_back(cefcfrupoweroperstatus.get_name_leafdata());
+    if (cefcfrurealtimecurrent.is_set || is_set(cefcfrurealtimecurrent.yfilter)) leaf_name_data.push_back(cefcfrurealtimecurrent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -994,19 +1139,25 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfru
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFRUCurrent")
     {
         cefcfrucurrent = value;
+        cefcfrucurrent.value_namespace = name_space;
+        cefcfrucurrent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFRUPowerAdminStatus")
     {
         cefcfrupoweradminstatus = value;
+        cefcfrupoweradminstatus.value_namespace = name_space;
+        cefcfrupoweradminstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFRUPowerCapability")
     {
@@ -1015,11 +1166,50 @@ void CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry:
     if(value_path == "cefcFRUPowerOperStatus")
     {
         cefcfrupoweroperstatus = value;
+        cefcfrupoweroperstatus.value_namespace = name_space;
+        cefcfrupoweroperstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFRURealTimeCurrent")
     {
         cefcfrurealtimecurrent = value;
+        cefcfrurealtimecurrent.value_namespace = name_space;
+        cefcfrurealtimecurrent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRUCurrent")
+    {
+        cefcfrucurrent.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRUPowerAdminStatus")
+    {
+        cefcfrupoweradminstatus.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRUPowerCapability")
+    {
+        cefcfrupowercapability.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRUPowerOperStatus")
+    {
+        cefcfrupoweroperstatus.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRURealTimeCurrent")
+    {
+        cefcfrurealtimecurrent.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcfrupowerstatustable::Cefcfrupowerstatusentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcFRUCurrent" || name == "cefcFRUPowerAdminStatus" || name == "cefcFRUPowerCapability" || name == "cefcFRUPowerOperStatus" || name == "cefcFRURealTimeCurrent")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvaluetable()
@@ -1033,9 +1223,9 @@ CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::~Cefcfrupowersupplyvalue
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry.size(); index++)
     {
-        if(cefcfrupowersupplyvalueentry_[index]->has_data())
+        if(cefcfrupowersupplyvalueentry[index]->has_data())
             return true;
     }
     return false;
@@ -1043,12 +1233,12 @@ bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfrupowersupplyvalueentry.size(); index++)
     {
-        if(cefcfrupowersupplyvalueentry_[index]->has_operation())
+        if(cefcfrupowersupplyvalueentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::get_segment_path() const
@@ -1085,7 +1275,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::
 {
     if(child_yang_name == "cefcFRUPowerSupplyValueEntry")
     {
-        for(auto const & c : cefcfrupowersupplyvalueentry_)
+        for(auto const & c : cefcfrupowersupplyvalueentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1095,7 +1285,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry>();
         c->parent = this;
-        cefcfrupowersupplyvalueentry_.push_back(c);
+        cefcfrupowersupplyvalueentry.push_back(c);
         return c;
     }
 
@@ -1105,7 +1295,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfrupowersupplyvalueentry_)
+    for (auto const & c : cefcfrupowersupplyvalueentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1113,8 +1303,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfru
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcFRUPowerSupplyValueEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::Cefcfrupowersupplyvalueentry()
@@ -1143,12 +1344,12 @@ bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyv
 
 bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcfrudrawninlinecurrent.operation)
-	|| is_set(cefcfrudrawnsystemcurrent.operation)
-	|| is_set(cefcfrutotalinlinecurrent.operation)
-	|| is_set(cefcfrutotalsystemcurrent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcfrudrawninlinecurrent.yfilter)
+	|| ydk::is_set(cefcfrudrawnsystemcurrent.yfilter)
+	|| ydk::is_set(cefcfrutotalinlinecurrent.yfilter)
+	|| ydk::is_set(cefcfrutotalsystemcurrent.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::get_segment_path() const
@@ -1174,11 +1375,11 @@ const EntityPath CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfru
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcfrudrawninlinecurrent.is_set || is_set(cefcfrudrawninlinecurrent.operation)) leaf_name_data.push_back(cefcfrudrawninlinecurrent.get_name_leafdata());
-    if (cefcfrudrawnsystemcurrent.is_set || is_set(cefcfrudrawnsystemcurrent.operation)) leaf_name_data.push_back(cefcfrudrawnsystemcurrent.get_name_leafdata());
-    if (cefcfrutotalinlinecurrent.is_set || is_set(cefcfrutotalinlinecurrent.operation)) leaf_name_data.push_back(cefcfrutotalinlinecurrent.get_name_leafdata());
-    if (cefcfrutotalsystemcurrent.is_set || is_set(cefcfrutotalsystemcurrent.operation)) leaf_name_data.push_back(cefcfrutotalsystemcurrent.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcfrudrawninlinecurrent.is_set || is_set(cefcfrudrawninlinecurrent.yfilter)) leaf_name_data.push_back(cefcfrudrawninlinecurrent.get_name_leafdata());
+    if (cefcfrudrawnsystemcurrent.is_set || is_set(cefcfrudrawnsystemcurrent.yfilter)) leaf_name_data.push_back(cefcfrudrawnsystemcurrent.get_name_leafdata());
+    if (cefcfrutotalinlinecurrent.is_set || is_set(cefcfrutotalinlinecurrent.yfilter)) leaf_name_data.push_back(cefcfrutotalinlinecurrent.get_name_leafdata());
+    if (cefcfrutotalsystemcurrent.is_set || is_set(cefcfrutotalsystemcurrent.yfilter)) leaf_name_data.push_back(cefcfrutotalsystemcurrent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1197,28 +1398,69 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfru
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFRUDrawnInlineCurrent")
     {
         cefcfrudrawninlinecurrent = value;
+        cefcfrudrawninlinecurrent.value_namespace = name_space;
+        cefcfrudrawninlinecurrent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFRUDrawnSystemCurrent")
     {
         cefcfrudrawnsystemcurrent = value;
+        cefcfrudrawnsystemcurrent.value_namespace = name_space;
+        cefcfrudrawnsystemcurrent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFRUTotalInlineCurrent")
     {
         cefcfrutotalinlinecurrent = value;
+        cefcfrutotalinlinecurrent.value_namespace = name_space;
+        cefcfrutotalinlinecurrent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFRUTotalSystemCurrent")
     {
         cefcfrutotalsystemcurrent = value;
+        cefcfrutotalsystemcurrent.value_namespace = name_space;
+        cefcfrutotalsystemcurrent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRUDrawnInlineCurrent")
+    {
+        cefcfrudrawninlinecurrent.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRUDrawnSystemCurrent")
+    {
+        cefcfrudrawnsystemcurrent.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRUTotalInlineCurrent")
+    {
+        cefcfrutotalinlinecurrent.yfilter = yfilter;
+    }
+    if(value_path == "cefcFRUTotalSystemCurrent")
+    {
+        cefcfrutotalsystemcurrent.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcFRUDrawnInlineCurrent" || name == "cefcFRUDrawnSystemCurrent" || name == "cefcFRUTotalInlineCurrent" || name == "cefcFRUTotalSystemCurrent")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduletable()
@@ -1232,9 +1474,9 @@ CiscoEntityFruControlMib::Cefcmoduletable::~Cefcmoduletable()
 
 bool CiscoEntityFruControlMib::Cefcmoduletable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmoduleentry_.size(); index++)
+    for (std::size_t index=0; index<cefcmoduleentry.size(); index++)
     {
-        if(cefcmoduleentry_[index]->has_data())
+        if(cefcmoduleentry[index]->has_data())
             return true;
     }
     return false;
@@ -1242,12 +1484,12 @@ bool CiscoEntityFruControlMib::Cefcmoduletable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmoduletable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmoduleentry_.size(); index++)
+    for (std::size_t index=0; index<cefcmoduleentry.size(); index++)
     {
-        if(cefcmoduleentry_[index]->has_operation())
+        if(cefcmoduleentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmoduletable::get_segment_path() const
@@ -1284,7 +1526,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmoduletable::get_child_by_
 {
     if(child_yang_name == "cefcModuleEntry")
     {
-        for(auto const & c : cefcmoduleentry_)
+        for(auto const & c : cefcmoduleentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1294,7 +1536,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmoduletable::get_child_by_
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry>();
         c->parent = this;
-        cefcmoduleentry_.push_back(c);
+        cefcmoduleentry.push_back(c);
         return c;
     }
 
@@ -1304,7 +1546,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmoduletable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmoduletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcmoduleentry_)
+    for (auto const & c : cefcmoduleentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1312,8 +1554,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmod
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmoduletable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmoduletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcmoduletable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcmoduletable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcModuleEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::Cefcmoduleentry()
@@ -1350,16 +1603,16 @@ bool CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::has_data() cons
 
 bool CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcmoduleadminstatus.operation)
-	|| is_set(cefcmodulelastclearconfigtime.operation)
-	|| is_set(cefcmoduleoperstatus.operation)
-	|| is_set(cefcmoduleresetreason.operation)
-	|| is_set(cefcmoduleresetreasondescription.operation)
-	|| is_set(cefcmodulestatechangereasondescr.operation)
-	|| is_set(cefcmodulestatuslastchangetime.operation)
-	|| is_set(cefcmoduleuptime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcmoduleadminstatus.yfilter)
+	|| ydk::is_set(cefcmodulelastclearconfigtime.yfilter)
+	|| ydk::is_set(cefcmoduleoperstatus.yfilter)
+	|| ydk::is_set(cefcmoduleresetreason.yfilter)
+	|| ydk::is_set(cefcmoduleresetreasondescription.yfilter)
+	|| ydk::is_set(cefcmodulestatechangereasondescr.yfilter)
+	|| ydk::is_set(cefcmodulestatuslastchangetime.yfilter)
+	|| ydk::is_set(cefcmoduleuptime.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::get_segment_path() const
@@ -1385,15 +1638,15 @@ const EntityPath CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcmoduleadminstatus.is_set || is_set(cefcmoduleadminstatus.operation)) leaf_name_data.push_back(cefcmoduleadminstatus.get_name_leafdata());
-    if (cefcmodulelastclearconfigtime.is_set || is_set(cefcmodulelastclearconfigtime.operation)) leaf_name_data.push_back(cefcmodulelastclearconfigtime.get_name_leafdata());
-    if (cefcmoduleoperstatus.is_set || is_set(cefcmoduleoperstatus.operation)) leaf_name_data.push_back(cefcmoduleoperstatus.get_name_leafdata());
-    if (cefcmoduleresetreason.is_set || is_set(cefcmoduleresetreason.operation)) leaf_name_data.push_back(cefcmoduleresetreason.get_name_leafdata());
-    if (cefcmoduleresetreasondescription.is_set || is_set(cefcmoduleresetreasondescription.operation)) leaf_name_data.push_back(cefcmoduleresetreasondescription.get_name_leafdata());
-    if (cefcmodulestatechangereasondescr.is_set || is_set(cefcmodulestatechangereasondescr.operation)) leaf_name_data.push_back(cefcmodulestatechangereasondescr.get_name_leafdata());
-    if (cefcmodulestatuslastchangetime.is_set || is_set(cefcmodulestatuslastchangetime.operation)) leaf_name_data.push_back(cefcmodulestatuslastchangetime.get_name_leafdata());
-    if (cefcmoduleuptime.is_set || is_set(cefcmoduleuptime.operation)) leaf_name_data.push_back(cefcmoduleuptime.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcmoduleadminstatus.is_set || is_set(cefcmoduleadminstatus.yfilter)) leaf_name_data.push_back(cefcmoduleadminstatus.get_name_leafdata());
+    if (cefcmodulelastclearconfigtime.is_set || is_set(cefcmodulelastclearconfigtime.yfilter)) leaf_name_data.push_back(cefcmodulelastclearconfigtime.get_name_leafdata());
+    if (cefcmoduleoperstatus.is_set || is_set(cefcmoduleoperstatus.yfilter)) leaf_name_data.push_back(cefcmoduleoperstatus.get_name_leafdata());
+    if (cefcmoduleresetreason.is_set || is_set(cefcmoduleresetreason.yfilter)) leaf_name_data.push_back(cefcmoduleresetreason.get_name_leafdata());
+    if (cefcmoduleresetreasondescription.is_set || is_set(cefcmoduleresetreasondescription.yfilter)) leaf_name_data.push_back(cefcmoduleresetreasondescription.get_name_leafdata());
+    if (cefcmodulestatechangereasondescr.is_set || is_set(cefcmodulestatechangereasondescr.yfilter)) leaf_name_data.push_back(cefcmodulestatechangereasondescr.get_name_leafdata());
+    if (cefcmodulestatuslastchangetime.is_set || is_set(cefcmodulestatuslastchangetime.yfilter)) leaf_name_data.push_back(cefcmodulestatuslastchangetime.get_name_leafdata());
+    if (cefcmoduleuptime.is_set || is_set(cefcmoduleuptime.yfilter)) leaf_name_data.push_back(cefcmoduleuptime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1412,44 +1665,109 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmod
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleAdminStatus")
     {
         cefcmoduleadminstatus = value;
+        cefcmoduleadminstatus.value_namespace = name_space;
+        cefcmoduleadminstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleLastClearConfigTime")
     {
         cefcmodulelastclearconfigtime = value;
+        cefcmodulelastclearconfigtime.value_namespace = name_space;
+        cefcmodulelastclearconfigtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleOperStatus")
     {
         cefcmoduleoperstatus = value;
+        cefcmoduleoperstatus.value_namespace = name_space;
+        cefcmoduleoperstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleResetReason")
     {
         cefcmoduleresetreason = value;
+        cefcmoduleresetreason.value_namespace = name_space;
+        cefcmoduleresetreason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleResetReasonDescription")
     {
         cefcmoduleresetreasondescription = value;
+        cefcmoduleresetreasondescription.value_namespace = name_space;
+        cefcmoduleresetreasondescription.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleStateChangeReasonDescr")
     {
         cefcmodulestatechangereasondescr = value;
+        cefcmodulestatechangereasondescr.value_namespace = name_space;
+        cefcmodulestatechangereasondescr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleStatusLastChangeTime")
     {
         cefcmodulestatuslastchangetime = value;
+        cefcmodulestatuslastchangetime.value_namespace = name_space;
+        cefcmodulestatuslastchangetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleUpTime")
     {
         cefcmoduleuptime = value;
+        cefcmoduleuptime.value_namespace = name_space;
+        cefcmoduleuptime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleAdminStatus")
+    {
+        cefcmoduleadminstatus.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleLastClearConfigTime")
+    {
+        cefcmodulelastclearconfigtime.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleOperStatus")
+    {
+        cefcmoduleoperstatus.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleResetReason")
+    {
+        cefcmoduleresetreason.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleResetReasonDescription")
+    {
+        cefcmoduleresetreasondescription.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleStateChangeReasonDescr")
+    {
+        cefcmodulestatechangereasondescr.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleStatusLastChangeTime")
+    {
+        cefcmodulestatuslastchangetime.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleUpTime")
+    {
+        cefcmoduleuptime.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcmoduletable::Cefcmoduleentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcModuleAdminStatus" || name == "cefcModuleLastClearConfigTime" || name == "cefcModuleOperStatus" || name == "cefcModuleResetReason" || name == "cefcModuleResetReasonDescription" || name == "cefcModuleStateChangeReasonDescr" || name == "cefcModuleStatusLastChangeTime" || name == "cefcModuleUpTime")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduletable()
@@ -1463,9 +1781,9 @@ CiscoEntityFruControlMib::Cefcintellimoduletable::~Cefcintellimoduletable()
 
 bool CiscoEntityFruControlMib::Cefcintellimoduletable::has_data() const
 {
-    for (std::size_t index=0; index<cefcintellimoduleentry_.size(); index++)
+    for (std::size_t index=0; index<cefcintellimoduleentry.size(); index++)
     {
-        if(cefcintellimoduleentry_[index]->has_data())
+        if(cefcintellimoduleentry[index]->has_data())
             return true;
     }
     return false;
@@ -1473,12 +1791,12 @@ bool CiscoEntityFruControlMib::Cefcintellimoduletable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcintellimoduletable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcintellimoduleentry_.size(); index++)
+    for (std::size_t index=0; index<cefcintellimoduleentry.size(); index++)
     {
-        if(cefcintellimoduleentry_[index]->has_operation())
+        if(cefcintellimoduleentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcintellimoduletable::get_segment_path() const
@@ -1515,7 +1833,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcintellimoduletable::get_ch
 {
     if(child_yang_name == "cefcIntelliModuleEntry")
     {
-        for(auto const & c : cefcintellimoduleentry_)
+        for(auto const & c : cefcintellimoduleentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1525,7 +1843,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcintellimoduletable::get_ch
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry>();
         c->parent = this;
-        cefcintellimoduleentry_.push_back(c);
+        cefcintellimoduleentry.push_back(c);
         return c;
     }
 
@@ -1535,7 +1853,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcintellimoduletable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcintellimoduletable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcintellimoduleentry_)
+    for (auto const & c : cefcintellimoduleentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1543,8 +1861,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcint
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcintellimoduletable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcintellimoduletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcintellimoduletable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcintellimoduletable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcIntelliModuleEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry::Cefcintellimoduleentry()
@@ -1569,10 +1898,10 @@ bool CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry::h
 
 bool CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcintellimoduleipaddr.operation)
-	|| is_set(cefcintellimoduleipaddrtype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcintellimoduleipaddr.yfilter)
+	|| ydk::is_set(cefcintellimoduleipaddrtype.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry::get_segment_path() const
@@ -1598,9 +1927,9 @@ const EntityPath CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcintellimoduleipaddr.is_set || is_set(cefcintellimoduleipaddr.operation)) leaf_name_data.push_back(cefcintellimoduleipaddr.get_name_leafdata());
-    if (cefcintellimoduleipaddrtype.is_set || is_set(cefcintellimoduleipaddrtype.operation)) leaf_name_data.push_back(cefcintellimoduleipaddrtype.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcintellimoduleipaddr.is_set || is_set(cefcintellimoduleipaddr.yfilter)) leaf_name_data.push_back(cefcintellimoduleipaddr.get_name_leafdata());
+    if (cefcintellimoduleipaddrtype.is_set || is_set(cefcintellimoduleipaddrtype.yfilter)) leaf_name_data.push_back(cefcintellimoduleipaddrtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1619,20 +1948,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcint
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcIntelliModuleIPAddr")
     {
         cefcintellimoduleipaddr = value;
+        cefcintellimoduleipaddr.value_namespace = name_space;
+        cefcintellimoduleipaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcIntelliModuleIPAddrType")
     {
         cefcintellimoduleipaddrtype = value;
+        cefcintellimoduleipaddrtype.value_namespace = name_space;
+        cefcintellimoduleipaddrtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcIntelliModuleIPAddr")
+    {
+        cefcintellimoduleipaddr.yfilter = yfilter;
+    }
+    if(value_path == "cefcIntelliModuleIPAddrType")
+    {
+        cefcintellimoduleipaddrtype.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcintellimoduletable::Cefcintellimoduleentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcIntelliModuleIPAddr" || name == "cefcIntelliModuleIPAddrType")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingtable()
@@ -1646,9 +2004,9 @@ CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::~Cefcmodulelocalswitchi
 
 bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulelocalswitchingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcmodulelocalswitchingentry.size(); index++)
     {
-        if(cefcmodulelocalswitchingentry_[index]->has_data())
+        if(cefcmodulelocalswitchingentry[index]->has_data())
             return true;
     }
     return false;
@@ -1656,12 +2014,12 @@ bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulelocalswitchingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcmodulelocalswitchingentry.size(); index++)
     {
-        if(cefcmodulelocalswitchingentry_[index]->has_operation())
+        if(cefcmodulelocalswitchingentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::get_segment_path() const
@@ -1698,7 +2056,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable:
 {
     if(child_yang_name == "cefcModuleLocalSwitchingEntry")
     {
-        for(auto const & c : cefcmodulelocalswitchingentry_)
+        for(auto const & c : cefcmodulelocalswitchingentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1708,7 +2066,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable:
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry>();
         c->parent = this;
-        cefcmodulelocalswitchingentry_.push_back(c);
+        cefcmodulelocalswitchingentry.push_back(c);
         return c;
     }
 
@@ -1718,7 +2076,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable:
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcmodulelocalswitchingentry_)
+    for (auto const & c : cefcmodulelocalswitchingentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1726,8 +2084,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmod
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcModuleLocalSwitchingEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::Cefcmodulelocalswitchingentry()
@@ -1750,9 +2119,9 @@ bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswi
 
 bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcmodulelocalswitchingmode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcmodulelocalswitchingmode.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::get_segment_path() const
@@ -1778,8 +2147,8 @@ const EntityPath CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcmodulelocalswitchingmode.is_set || is_set(cefcmodulelocalswitchingmode.operation)) leaf_name_data.push_back(cefcmodulelocalswitchingmode.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcmodulelocalswitchingmode.is_set || is_set(cefcmodulelocalswitchingmode.yfilter)) leaf_name_data.push_back(cefcmodulelocalswitchingmode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1798,16 +2167,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmod
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleLocalSwitchingMode")
     {
         cefcmodulelocalswitchingmode = value;
+        cefcmodulelocalswitchingmode.value_namespace = name_space;
+        cefcmodulelocalswitchingmode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleLocalSwitchingMode")
+    {
+        cefcmodulelocalswitchingmode.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcModuleLocalSwitchingMode")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatustable()
@@ -1821,9 +2213,9 @@ CiscoEntityFruControlMib::Cefcfantraystatustable::~Cefcfantraystatustable()
 
 bool CiscoEntityFruControlMib::Cefcfantraystatustable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfantraystatusentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfantraystatusentry.size(); index++)
     {
-        if(cefcfantraystatusentry_[index]->has_data())
+        if(cefcfantraystatusentry[index]->has_data())
             return true;
     }
     return false;
@@ -1831,12 +2223,12 @@ bool CiscoEntityFruControlMib::Cefcfantraystatustable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfantraystatustable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfantraystatusentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfantraystatusentry.size(); index++)
     {
-        if(cefcfantraystatusentry_[index]->has_operation())
+        if(cefcfantraystatusentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfantraystatustable::get_segment_path() const
@@ -1873,7 +2265,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfantraystatustable::get_ch
 {
     if(child_yang_name == "cefcFanTrayStatusEntry")
     {
-        for(auto const & c : cefcfantraystatusentry_)
+        for(auto const & c : cefcfantraystatusentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1883,7 +2275,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfantraystatustable::get_ch
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry>();
         c->parent = this;
-        cefcfantraystatusentry_.push_back(c);
+        cefcfantraystatusentry.push_back(c);
         return c;
     }
 
@@ -1893,7 +2285,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfantraystatustable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfantraystatustable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfantraystatusentry_)
+    for (auto const & c : cefcfantraystatusentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1901,8 +2293,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfan
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfantraystatustable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfantraystatustable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcfantraystatustable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcfantraystatustable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcFanTrayStatusEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantraystatusentry()
@@ -1925,9 +2328,9 @@ bool CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::h
 
 bool CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcfantrayoperstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcfantrayoperstatus.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::get_segment_path() const
@@ -1953,8 +2356,8 @@ const EntityPath CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantrayst
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcfantrayoperstatus.is_set || is_set(cefcfantrayoperstatus.operation)) leaf_name_data.push_back(cefcfantrayoperstatus.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcfantrayoperstatus.is_set || is_set(cefcfantrayoperstatus.yfilter)) leaf_name_data.push_back(cefcfantrayoperstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1973,16 +2376,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfan
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFanTrayOperStatus")
     {
         cefcfantrayoperstatus = value;
+        cefcfantrayoperstatus.value_namespace = name_space;
+        cefcfantrayoperstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcFanTrayOperStatus")
+    {
+        cefcfantrayoperstatus.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcFanTrayOperStatus")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicaltable()
@@ -1996,9 +2422,9 @@ CiscoEntityFruControlMib::Cefcphysicaltable::~Cefcphysicaltable()
 
 bool CiscoEntityFruControlMib::Cefcphysicaltable::has_data() const
 {
-    for (std::size_t index=0; index<cefcphysicalentry_.size(); index++)
+    for (std::size_t index=0; index<cefcphysicalentry.size(); index++)
     {
-        if(cefcphysicalentry_[index]->has_data())
+        if(cefcphysicalentry[index]->has_data())
             return true;
     }
     return false;
@@ -2006,12 +2432,12 @@ bool CiscoEntityFruControlMib::Cefcphysicaltable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcphysicaltable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcphysicalentry_.size(); index++)
+    for (std::size_t index=0; index<cefcphysicalentry.size(); index++)
     {
-        if(cefcphysicalentry_[index]->has_operation())
+        if(cefcphysicalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcphysicaltable::get_segment_path() const
@@ -2048,7 +2474,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcphysicaltable::get_child_b
 {
     if(child_yang_name == "cefcPhysicalEntry")
     {
-        for(auto const & c : cefcphysicalentry_)
+        for(auto const & c : cefcphysicalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2058,7 +2484,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcphysicaltable::get_child_b
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry>();
         c->parent = this;
-        cefcphysicalentry_.push_back(c);
+        cefcphysicalentry.push_back(c);
         return c;
     }
 
@@ -2068,7 +2494,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcphysicaltable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcphysicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcphysicalentry_)
+    for (auto const & c : cefcphysicalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2076,8 +2502,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcphy
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcphysicaltable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcphysicaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcphysicaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcphysicaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcPhysicalEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalentry()
@@ -2100,9 +2537,9 @@ bool CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::has_data() 
 
 bool CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcphysicalstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcphysicalstatus.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::get_segment_path() const
@@ -2128,8 +2565,8 @@ const EntityPath CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcphysicalstatus.is_set || is_set(cefcphysicalstatus.operation)) leaf_name_data.push_back(cefcphysicalstatus.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcphysicalstatus.is_set || is_set(cefcphysicalstatus.yfilter)) leaf_name_data.push_back(cefcphysicalstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2148,16 +2585,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcphy
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPhysicalStatus")
     {
         cefcphysicalstatus = value;
+        cefcphysicalstatus.value_namespace = name_space;
+        cefcphysicalstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcPhysicalStatus")
+    {
+        cefcphysicalstatus.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcPhysicalStatus")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputtable()
@@ -2171,9 +2631,9 @@ CiscoEntityFruControlMib::Cefcpowersupplyinputtable::~Cefcpowersupplyinputtable(
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyinputentry_.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyinputentry.size(); index++)
     {
-        if(cefcpowersupplyinputentry_[index]->has_data())
+        if(cefcpowersupplyinputentry[index]->has_data())
             return true;
     }
     return false;
@@ -2181,12 +2641,12 @@ bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyinputentry_.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyinputentry.size(); index++)
     {
-        if(cefcpowersupplyinputentry_[index]->has_operation())
+        if(cefcpowersupplyinputentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get_segment_path() const
@@ -2223,7 +2683,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get
 {
     if(child_yang_name == "cefcPowerSupplyInputEntry")
     {
-        for(auto const & c : cefcpowersupplyinputentry_)
+        for(auto const & c : cefcpowersupplyinputentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2233,7 +2693,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry>();
         c->parent = this;
-        cefcpowersupplyinputentry_.push_back(c);
+        cefcpowersupplyinputentry.push_back(c);
         return c;
     }
 
@@ -2243,7 +2703,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcpowersupplyinputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcpowersupplyinputentry_)
+    for (auto const & c : cefcpowersupplyinputentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2251,8 +2711,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcpow
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcpowersupplyinputtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcpowersupplyinputtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcpowersupplyinputtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcPowerSupplyInputEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputentry()
@@ -2277,10 +2748,10 @@ bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputen
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcpowersupplyinputindex.operation)
-	|| is_set(cefcpowersupplyinputtype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcpowersupplyinputindex.yfilter)
+	|| ydk::is_set(cefcpowersupplyinputtype.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::get_segment_path() const
@@ -2306,9 +2777,9 @@ const EntityPath CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowers
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcpowersupplyinputindex.is_set || is_set(cefcpowersupplyinputindex.operation)) leaf_name_data.push_back(cefcpowersupplyinputindex.get_name_leafdata());
-    if (cefcpowersupplyinputtype.is_set || is_set(cefcpowersupplyinputtype.operation)) leaf_name_data.push_back(cefcpowersupplyinputtype.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcpowersupplyinputindex.is_set || is_set(cefcpowersupplyinputindex.yfilter)) leaf_name_data.push_back(cefcpowersupplyinputindex.get_name_leafdata());
+    if (cefcpowersupplyinputtype.is_set || is_set(cefcpowersupplyinputtype.yfilter)) leaf_name_data.push_back(cefcpowersupplyinputtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2327,20 +2798,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcpow
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPowerSupplyInputIndex")
     {
         cefcpowersupplyinputindex = value;
+        cefcpowersupplyinputindex.value_namespace = name_space;
+        cefcpowersupplyinputindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPowerSupplyInputType")
     {
         cefcpowersupplyinputtype = value;
+        cefcpowersupplyinputtype.value_namespace = name_space;
+        cefcpowersupplyinputtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcPowerSupplyInputIndex")
+    {
+        cefcpowersupplyinputindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcPowerSupplyInputType")
+    {
+        cefcpowersupplyinputtype.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcPowerSupplyInputIndex" || name == "cefcPowerSupplyInputType")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputtable()
@@ -2354,9 +2854,9 @@ CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::~Cefcpowersupplyoutputtabl
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyoutputentry_.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyoutputentry.size(); index++)
     {
-        if(cefcpowersupplyoutputentry_[index]->has_data())
+        if(cefcpowersupplyoutputentry[index]->has_data())
             return true;
     }
     return false;
@@ -2364,12 +2864,12 @@ bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcpowersupplyoutputentry_.size(); index++)
+    for (std::size_t index=0; index<cefcpowersupplyoutputentry.size(); index++)
     {
-        if(cefcpowersupplyoutputentry_[index]->has_operation())
+        if(cefcpowersupplyoutputentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::get_segment_path() const
@@ -2406,7 +2906,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::ge
 {
     if(child_yang_name == "cefcPowerSupplyOutputEntry")
     {
-        for(auto const & c : cefcpowersupplyoutputentry_)
+        for(auto const & c : cefcpowersupplyoutputentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2416,7 +2916,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::ge
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry>();
         c->parent = this;
-        cefcpowersupplyoutputentry_.push_back(c);
+        cefcpowersupplyoutputentry.push_back(c);
         return c;
     }
 
@@ -2426,7 +2926,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::ge
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcpowersupplyoutputentry_)
+    for (auto const & c : cefcpowersupplyoutputentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2434,8 +2934,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcpow
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcPowerSupplyOutputEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::Cefcpowersupplyoutputentry()
@@ -2462,11 +2973,11 @@ bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutput
 
 bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcpsoutputmodeindex.operation)
-	|| is_set(cefcpsoutputmodecurrent.operation)
-	|| is_set(cefcpsoutputmodeinoperation.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcpsoutputmodeindex.yfilter)
+	|| ydk::is_set(cefcpsoutputmodecurrent.yfilter)
+	|| ydk::is_set(cefcpsoutputmodeinoperation.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::get_segment_path() const
@@ -2492,10 +3003,10 @@ const EntityPath CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpower
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcpsoutputmodeindex.is_set || is_set(cefcpsoutputmodeindex.operation)) leaf_name_data.push_back(cefcpsoutputmodeindex.get_name_leafdata());
-    if (cefcpsoutputmodecurrent.is_set || is_set(cefcpsoutputmodecurrent.operation)) leaf_name_data.push_back(cefcpsoutputmodecurrent.get_name_leafdata());
-    if (cefcpsoutputmodeinoperation.is_set || is_set(cefcpsoutputmodeinoperation.operation)) leaf_name_data.push_back(cefcpsoutputmodeinoperation.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcpsoutputmodeindex.is_set || is_set(cefcpsoutputmodeindex.yfilter)) leaf_name_data.push_back(cefcpsoutputmodeindex.get_name_leafdata());
+    if (cefcpsoutputmodecurrent.is_set || is_set(cefcpsoutputmodecurrent.yfilter)) leaf_name_data.push_back(cefcpsoutputmodecurrent.get_name_leafdata());
+    if (cefcpsoutputmodeinoperation.is_set || is_set(cefcpsoutputmodeinoperation.yfilter)) leaf_name_data.push_back(cefcpsoutputmodeinoperation.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2514,24 +3025,59 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcpow
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPSOutputModeIndex")
     {
         cefcpsoutputmodeindex = value;
+        cefcpsoutputmodeindex.value_namespace = name_space;
+        cefcpsoutputmodeindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPSOutputModeCurrent")
     {
         cefcpsoutputmodecurrent = value;
+        cefcpsoutputmodecurrent.value_namespace = name_space;
+        cefcpsoutputmodecurrent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcPSOutputModeInOperation")
     {
         cefcpsoutputmodeinoperation = value;
+        cefcpsoutputmodeinoperation.value_namespace = name_space;
+        cefcpsoutputmodeinoperation.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcPSOutputModeIndex")
+    {
+        cefcpsoutputmodeindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcPSOutputModeCurrent")
+    {
+        cefcpsoutputmodecurrent.yfilter = yfilter;
+    }
+    if(value_path == "cefcPSOutputModeInOperation")
+    {
+        cefcpsoutputmodeinoperation.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcPSOutputModeIndex" || name == "cefcPSOutputModeCurrent" || name == "cefcPSOutputModeInOperation")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingtable()
@@ -2545,9 +3091,9 @@ CiscoEntityFruControlMib::Cefcchassiscoolingtable::~Cefcchassiscoolingtable()
 
 bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcchassiscoolingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcchassiscoolingentry.size(); index++)
     {
-        if(cefcchassiscoolingentry_[index]->has_data())
+        if(cefcchassiscoolingentry[index]->has_data())
             return true;
     }
     return false;
@@ -2555,12 +3101,12 @@ bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcchassiscoolingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcchassiscoolingentry.size(); index++)
     {
-        if(cefcchassiscoolingentry_[index]->has_operation())
+        if(cefcchassiscoolingentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_segment_path() const
@@ -2597,7 +3143,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_c
 {
     if(child_yang_name == "cefcChassisCoolingEntry")
     {
-        for(auto const & c : cefcchassiscoolingentry_)
+        for(auto const & c : cefcchassiscoolingentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2607,7 +3153,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_c
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry>();
         c->parent = this;
-        cefcchassiscoolingentry_.push_back(c);
+        cefcchassiscoolingentry.push_back(c);
         return c;
     }
 
@@ -2617,7 +3163,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_c
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcchassiscoolingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcchassiscoolingentry_)
+    for (auto const & c : cefcchassiscoolingentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2625,8 +3171,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefccha
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcchassiscoolingtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcchassiscoolingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcchassiscoolingtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcChassisCoolingEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry::Cefcchassiscoolingentry()
@@ -2651,10 +3208,10 @@ bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry:
 
 bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcchassisperslotcoolingcap.operation)
-	|| is_set(cefcchassisperslotcoolingunit.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcchassisperslotcoolingcap.yfilter)
+	|| ydk::is_set(cefcchassisperslotcoolingunit.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry::get_segment_path() const
@@ -2680,9 +3237,9 @@ const EntityPath CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassisc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcchassisperslotcoolingcap.is_set || is_set(cefcchassisperslotcoolingcap.operation)) leaf_name_data.push_back(cefcchassisperslotcoolingcap.get_name_leafdata());
-    if (cefcchassisperslotcoolingunit.is_set || is_set(cefcchassisperslotcoolingunit.operation)) leaf_name_data.push_back(cefcchassisperslotcoolingunit.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcchassisperslotcoolingcap.is_set || is_set(cefcchassisperslotcoolingcap.yfilter)) leaf_name_data.push_back(cefcchassisperslotcoolingcap.get_name_leafdata());
+    if (cefcchassisperslotcoolingunit.is_set || is_set(cefcchassisperslotcoolingunit.yfilter)) leaf_name_data.push_back(cefcchassisperslotcoolingunit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2701,20 +3258,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefccha
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcChassisPerSlotCoolingCap")
     {
         cefcchassisperslotcoolingcap = value;
+        cefcchassisperslotcoolingcap.value_namespace = name_space;
+        cefcchassisperslotcoolingcap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcChassisPerSlotCoolingUnit")
     {
         cefcchassisperslotcoolingunit = value;
+        cefcchassisperslotcoolingunit.value_namespace = name_space;
+        cefcchassisperslotcoolingunit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcChassisPerSlotCoolingCap")
+    {
+        cefcchassisperslotcoolingcap.yfilter = yfilter;
+    }
+    if(value_path == "cefcChassisPerSlotCoolingUnit")
+    {
+        cefcchassisperslotcoolingunit.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcchassiscoolingtable::Cefcchassiscoolingentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcChassisPerSlotCoolingCap" || name == "cefcChassisPerSlotCoolingUnit")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingtable()
@@ -2728,9 +3314,9 @@ CiscoEntityFruControlMib::Cefcfancoolingtable::~Cefcfancoolingtable()
 
 bool CiscoEntityFruControlMib::Cefcfancoolingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfancoolingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingentry.size(); index++)
     {
-        if(cefcfancoolingentry_[index]->has_data())
+        if(cefcfancoolingentry[index]->has_data())
             return true;
     }
     return false;
@@ -2738,12 +3324,12 @@ bool CiscoEntityFruControlMib::Cefcfancoolingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfancoolingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfancoolingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingentry.size(); index++)
     {
-        if(cefcfancoolingentry_[index]->has_operation())
+        if(cefcfancoolingentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfancoolingtable::get_segment_path() const
@@ -2780,7 +3366,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingtable::get_child
 {
     if(child_yang_name == "cefcFanCoolingEntry")
     {
-        for(auto const & c : cefcfancoolingentry_)
+        for(auto const & c : cefcfancoolingentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2790,7 +3376,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingtable::get_child
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry>();
         c->parent = this;
-        cefcfancoolingentry_.push_back(c);
+        cefcfancoolingentry.push_back(c);
         return c;
     }
 
@@ -2800,7 +3386,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingtable::get_child
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfancoolingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfancoolingentry_)
+    for (auto const & c : cefcfancoolingentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2808,8 +3394,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfan
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfancoolingtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfancoolingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcfancoolingtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcfancoolingtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcFanCoolingEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry::Cefcfancoolingentry()
@@ -2834,10 +3431,10 @@ bool CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry::has_dat
 
 bool CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcfancoolingcapacity.operation)
-	|| is_set(cefcfancoolingcapacityunit.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcfancoolingcapacity.yfilter)
+	|| ydk::is_set(cefcfancoolingcapacityunit.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry::get_segment_path() const
@@ -2863,9 +3460,9 @@ const EntityPath CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingen
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcfancoolingcapacity.is_set || is_set(cefcfancoolingcapacity.operation)) leaf_name_data.push_back(cefcfancoolingcapacity.get_name_leafdata());
-    if (cefcfancoolingcapacityunit.is_set || is_set(cefcfancoolingcapacityunit.operation)) leaf_name_data.push_back(cefcfancoolingcapacityunit.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcfancoolingcapacity.is_set || is_set(cefcfancoolingcapacity.yfilter)) leaf_name_data.push_back(cefcfancoolingcapacity.get_name_leafdata());
+    if (cefcfancoolingcapacityunit.is_set || is_set(cefcfancoolingcapacityunit.yfilter)) leaf_name_data.push_back(cefcfancoolingcapacityunit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2884,20 +3481,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfan
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFanCoolingCapacity")
     {
         cefcfancoolingcapacity = value;
+        cefcfancoolingcapacity.value_namespace = name_space;
+        cefcfancoolingcapacity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFanCoolingCapacityUnit")
     {
         cefcfancoolingcapacityunit = value;
+        cefcfancoolingcapacityunit.value_namespace = name_space;
+        cefcfancoolingcapacityunit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcFanCoolingCapacity")
+    {
+        cefcfancoolingcapacity.yfilter = yfilter;
+    }
+    if(value_path == "cefcFanCoolingCapacityUnit")
+    {
+        cefcfancoolingcapacityunit.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcfancoolingtable::Cefcfancoolingentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcFanCoolingCapacity" || name == "cefcFanCoolingCapacityUnit")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingtable()
@@ -2911,9 +3537,9 @@ CiscoEntityFruControlMib::Cefcmodulecoolingtable::~Cefcmodulecoolingtable()
 
 bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulecoolingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcmodulecoolingentry.size(); index++)
     {
-        if(cefcmodulecoolingentry_[index]->has_data())
+        if(cefcmodulecoolingentry[index]->has_data())
             return true;
     }
     return false;
@@ -2921,12 +3547,12 @@ bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulecoolingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcmodulecoolingentry.size(); index++)
     {
-        if(cefcmodulecoolingentry_[index]->has_operation())
+        if(cefcmodulecoolingentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_segment_path() const
@@ -2963,7 +3589,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_ch
 {
     if(child_yang_name == "cefcModuleCoolingEntry")
     {
-        for(auto const & c : cefcmodulecoolingentry_)
+        for(auto const & c : cefcmodulecoolingentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2973,7 +3599,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_ch
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry>();
         c->parent = this;
-        cefcmodulecoolingentry_.push_back(c);
+        cefcmodulecoolingentry.push_back(c);
         return c;
     }
 
@@ -2983,7 +3609,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmodulecoolingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcmodulecoolingentry_)
+    for (auto const & c : cefcmodulecoolingentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2991,8 +3617,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmod
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmodulecoolingtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmodulecoolingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcmodulecoolingtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcModuleCoolingEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry::Cefcmodulecoolingentry()
@@ -3017,10 +3654,10 @@ bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry::h
 
 bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcmodulecooling.operation)
-	|| is_set(cefcmodulecoolingunit.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcmodulecooling.yfilter)
+	|| ydk::is_set(cefcmodulecoolingunit.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry::get_segment_path() const
@@ -3046,9 +3683,9 @@ const EntityPath CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcmodulecooling.is_set || is_set(cefcmodulecooling.operation)) leaf_name_data.push_back(cefcmodulecooling.get_name_leafdata());
-    if (cefcmodulecoolingunit.is_set || is_set(cefcmodulecoolingunit.operation)) leaf_name_data.push_back(cefcmodulecoolingunit.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcmodulecooling.is_set || is_set(cefcmodulecooling.yfilter)) leaf_name_data.push_back(cefcmodulecooling.get_name_leafdata());
+    if (cefcmodulecoolingunit.is_set || is_set(cefcmodulecoolingunit.yfilter)) leaf_name_data.push_back(cefcmodulecoolingunit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3067,20 +3704,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmod
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleCooling")
     {
         cefcmodulecooling = value;
+        cefcmodulecooling.value_namespace = name_space;
+        cefcmodulecooling.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModuleCoolingUnit")
     {
         cefcmodulecoolingunit = value;
+        cefcmodulecoolingunit.value_namespace = name_space;
+        cefcmodulecoolingunit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleCooling")
+    {
+        cefcmodulecooling.yfilter = yfilter;
+    }
+    if(value_path == "cefcModuleCoolingUnit")
+    {
+        cefcmodulecoolingunit.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcmodulecoolingtable::Cefcmodulecoolingentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcModuleCooling" || name == "cefcModuleCoolingUnit")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcaptable()
@@ -3094,9 +3760,9 @@ CiscoEntityFruControlMib::Cefcfancoolingcaptable::~Cefcfancoolingcaptable()
 
 bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfancoolingcapentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingcapentry.size(); index++)
     {
-        if(cefcfancoolingcapentry_[index]->has_data())
+        if(cefcfancoolingcapentry[index]->has_data())
             return true;
     }
     return false;
@@ -3104,12 +3770,12 @@ bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfancoolingcapentry_.size(); index++)
+    for (std::size_t index=0; index<cefcfancoolingcapentry.size(); index++)
     {
-        if(cefcfancoolingcapentry_[index]->has_operation())
+        if(cefcfancoolingcapentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_segment_path() const
@@ -3146,7 +3812,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_ch
 {
     if(child_yang_name == "cefcFanCoolingCapEntry")
     {
-        for(auto const & c : cefcfancoolingcapentry_)
+        for(auto const & c : cefcfancoolingcapentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3156,7 +3822,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_ch
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry>();
         c->parent = this;
-        cefcfancoolingcapentry_.push_back(c);
+        cefcfancoolingcapentry.push_back(c);
         return c;
     }
 
@@ -3166,7 +3832,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_ch
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfancoolingcaptable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcfancoolingcapentry_)
+    for (auto const & c : cefcfancoolingcapentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3174,8 +3840,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfan
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfancoolingcaptable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfancoolingcaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcfancoolingcaptable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcFanCoolingCapEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry::Cefcfancoolingcapentry()
@@ -3206,13 +3883,13 @@ bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry::h
 
 bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcfancoolingcapindex.operation)
-	|| is_set(cefcfancoolingcapcapacity.operation)
-	|| is_set(cefcfancoolingcapcapacityunit.operation)
-	|| is_set(cefcfancoolingcapcurrent.operation)
-	|| is_set(cefcfancoolingcapmodedescr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcfancoolingcapindex.yfilter)
+	|| ydk::is_set(cefcfancoolingcapcapacity.yfilter)
+	|| ydk::is_set(cefcfancoolingcapcapacityunit.yfilter)
+	|| ydk::is_set(cefcfancoolingcapcurrent.yfilter)
+	|| ydk::is_set(cefcfancoolingcapmodedescr.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry::get_segment_path() const
@@ -3238,12 +3915,12 @@ const EntityPath CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcfancoolingcapindex.is_set || is_set(cefcfancoolingcapindex.operation)) leaf_name_data.push_back(cefcfancoolingcapindex.get_name_leafdata());
-    if (cefcfancoolingcapcapacity.is_set || is_set(cefcfancoolingcapcapacity.operation)) leaf_name_data.push_back(cefcfancoolingcapcapacity.get_name_leafdata());
-    if (cefcfancoolingcapcapacityunit.is_set || is_set(cefcfancoolingcapcapacityunit.operation)) leaf_name_data.push_back(cefcfancoolingcapcapacityunit.get_name_leafdata());
-    if (cefcfancoolingcapcurrent.is_set || is_set(cefcfancoolingcapcurrent.operation)) leaf_name_data.push_back(cefcfancoolingcapcurrent.get_name_leafdata());
-    if (cefcfancoolingcapmodedescr.is_set || is_set(cefcfancoolingcapmodedescr.operation)) leaf_name_data.push_back(cefcfancoolingcapmodedescr.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcfancoolingcapindex.is_set || is_set(cefcfancoolingcapindex.yfilter)) leaf_name_data.push_back(cefcfancoolingcapindex.get_name_leafdata());
+    if (cefcfancoolingcapcapacity.is_set || is_set(cefcfancoolingcapcapacity.yfilter)) leaf_name_data.push_back(cefcfancoolingcapcapacity.get_name_leafdata());
+    if (cefcfancoolingcapcapacityunit.is_set || is_set(cefcfancoolingcapcapacityunit.yfilter)) leaf_name_data.push_back(cefcfancoolingcapcapacityunit.get_name_leafdata());
+    if (cefcfancoolingcapcurrent.is_set || is_set(cefcfancoolingcapcurrent.yfilter)) leaf_name_data.push_back(cefcfancoolingcapcurrent.get_name_leafdata());
+    if (cefcfancoolingcapmodedescr.is_set || is_set(cefcfancoolingcapmodedescr.yfilter)) leaf_name_data.push_back(cefcfancoolingcapmodedescr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3262,32 +3939,79 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcfan
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFanCoolingCapIndex")
     {
         cefcfancoolingcapindex = value;
+        cefcfancoolingcapindex.value_namespace = name_space;
+        cefcfancoolingcapindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFanCoolingCapCapacity")
     {
         cefcfancoolingcapcapacity = value;
+        cefcfancoolingcapcapacity.value_namespace = name_space;
+        cefcfancoolingcapcapacity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFanCoolingCapCapacityUnit")
     {
         cefcfancoolingcapcapacityunit = value;
+        cefcfancoolingcapcapacityunit.value_namespace = name_space;
+        cefcfancoolingcapcapacityunit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFanCoolingCapCurrent")
     {
         cefcfancoolingcapcurrent = value;
+        cefcfancoolingcapcurrent.value_namespace = name_space;
+        cefcfancoolingcapcurrent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcFanCoolingCapModeDescr")
     {
         cefcfancoolingcapmodedescr = value;
+        cefcfancoolingcapmodedescr.value_namespace = name_space;
+        cefcfancoolingcapmodedescr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcFanCoolingCapIndex")
+    {
+        cefcfancoolingcapindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcFanCoolingCapCapacity")
+    {
+        cefcfancoolingcapcapacity.yfilter = yfilter;
+    }
+    if(value_path == "cefcFanCoolingCapCapacityUnit")
+    {
+        cefcfancoolingcapcapacityunit.yfilter = yfilter;
+    }
+    if(value_path == "cefcFanCoolingCapCurrent")
+    {
+        cefcfancoolingcapcurrent.yfilter = yfilter;
+    }
+    if(value_path == "cefcFanCoolingCapModeDescr")
+    {
+        cefcfancoolingcapmodedescr.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcfancoolingcaptable::Cefcfancoolingcapentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcFanCoolingCapIndex" || name == "cefcFanCoolingCapCapacity" || name == "cefcFanCoolingCapCapacityUnit" || name == "cefcFanCoolingCapCurrent" || name == "cefcFanCoolingCapModeDescr")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingtable()
@@ -3301,9 +4025,9 @@ CiscoEntityFruControlMib::Cefcconnectorratingtable::~Cefcconnectorratingtable()
 
 bool CiscoEntityFruControlMib::Cefcconnectorratingtable::has_data() const
 {
-    for (std::size_t index=0; index<cefcconnectorratingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcconnectorratingentry.size(); index++)
     {
-        if(cefcconnectorratingentry_[index]->has_data())
+        if(cefcconnectorratingentry[index]->has_data())
             return true;
     }
     return false;
@@ -3311,12 +4035,12 @@ bool CiscoEntityFruControlMib::Cefcconnectorratingtable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcconnectorratingtable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcconnectorratingentry_.size(); index++)
+    for (std::size_t index=0; index<cefcconnectorratingentry.size(); index++)
     {
-        if(cefcconnectorratingentry_[index]->has_operation())
+        if(cefcconnectorratingentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcconnectorratingtable::get_segment_path() const
@@ -3353,7 +4077,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcconnectorratingtable::get_
 {
     if(child_yang_name == "cefcConnectorRatingEntry")
     {
-        for(auto const & c : cefcconnectorratingentry_)
+        for(auto const & c : cefcconnectorratingentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3363,7 +4087,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcconnectorratingtable::get_
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry>();
         c->parent = this;
-        cefcconnectorratingentry_.push_back(c);
+        cefcconnectorratingentry.push_back(c);
         return c;
     }
 
@@ -3373,7 +4097,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcconnectorratingtable::get_
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcconnectorratingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcconnectorratingentry_)
+    for (auto const & c : cefcconnectorratingentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3381,8 +4105,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefccon
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcconnectorratingtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcconnectorratingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcconnectorratingtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcconnectorratingtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcConnectorRatingEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry::Cefcconnectorratingentry()
@@ -3405,9 +4140,9 @@ bool CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentr
 
 bool CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcconnectorrating.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcconnectorrating.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry::get_segment_path() const
@@ -3433,8 +4168,8 @@ const EntityPath CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnect
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcconnectorrating.is_set || is_set(cefcconnectorrating.operation)) leaf_name_data.push_back(cefcconnectorrating.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcconnectorrating.is_set || is_set(cefcconnectorrating.yfilter)) leaf_name_data.push_back(cefcconnectorrating.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3453,16 +4188,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefccon
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcConnectorRating")
     {
         cefcconnectorrating = value;
+        cefcconnectorrating.value_namespace = name_space;
+        cefcconnectorrating.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcConnectorRating")
+    {
+        cefcconnectorrating.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityFruControlMib::Cefcconnectorratingtable::Cefcconnectorratingentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcConnectorRating")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptiontable()
@@ -3476,9 +4234,9 @@ CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::~Cefcmodulepowerconsu
 
 bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::has_data() const
 {
-    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry_.size(); index++)
+    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry.size(); index++)
     {
-        if(cefcmodulepowerconsumptionentry_[index]->has_data())
+        if(cefcmodulepowerconsumptionentry[index]->has_data())
             return true;
     }
     return false;
@@ -3486,12 +4244,12 @@ bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::has_data() const
 
 bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry_.size(); index++)
+    for (std::size_t index=0; index<cefcmodulepowerconsumptionentry.size(); index++)
     {
-        if(cefcmodulepowerconsumptionentry_[index]->has_operation())
+        if(cefcmodulepowerconsumptionentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::get_segment_path() const
@@ -3528,7 +4286,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontabl
 {
     if(child_yang_name == "cefcModulePowerConsumptionEntry")
     {
-        for(auto const & c : cefcmodulepowerconsumptionentry_)
+        for(auto const & c : cefcmodulepowerconsumptionentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3538,7 +4296,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontabl
         }
         auto c = std::make_shared<CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry>();
         c->parent = this;
-        cefcmodulepowerconsumptionentry_.push_back(c);
+        cefcmodulepowerconsumptionentry.push_back(c);
         return c;
     }
 
@@ -3548,7 +4306,7 @@ std::shared_ptr<Entity> CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontabl
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cefcmodulepowerconsumptionentry_)
+    for (auto const & c : cefcmodulepowerconsumptionentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3556,8 +4314,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmod
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cefcModulePowerConsumptionEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::Cefcmodulepowerconsumptionentry()
@@ -3580,9 +4349,9 @@ bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerc
 
 bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(cefcmodulepowerconsumption.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(cefcmodulepowerconsumption.yfilter);
 }
 
 std::string CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::get_segment_path() const
@@ -3608,8 +4377,8 @@ const EntityPath CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (cefcmodulepowerconsumption.is_set || is_set(cefcmodulepowerconsumption.operation)) leaf_name_data.push_back(cefcmodulepowerconsumption.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (cefcmodulepowerconsumption.is_set || is_set(cefcmodulepowerconsumption.yfilter)) leaf_name_data.push_back(cefcmodulepowerconsumption.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3628,129 +4397,152 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityFruControlMib::Cefcmod
     return children;
 }
 
-void CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cefcModulePowerConsumption")
     {
         cefcmodulepowerconsumption = value;
+        cefcmodulepowerconsumption.value_namespace = name_space;
+        cefcmodulepowerconsumption.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf ModuleadmintypeEnum::enabled {1, "enabled"};
-const Enum::YLeaf ModuleadmintypeEnum::disabled {2, "disabled"};
-const Enum::YLeaf ModuleadmintypeEnum::reset {3, "reset"};
-const Enum::YLeaf ModuleadmintypeEnum::outOfServiceAdmin {4, "outOfServiceAdmin"};
+void CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "cefcModulePowerConsumption")
+    {
+        cefcmodulepowerconsumption.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf FrucoolingunitEnum::cfm {1, "cfm"};
-const Enum::YLeaf FrucoolingunitEnum::watts {2, "watts"};
+bool CiscoEntityFruControlMib::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "cefcModulePowerConsumption")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf PoweradmintypeEnum::on {1, "on"};
-const Enum::YLeaf PoweradmintypeEnum::off {2, "off"};
-const Enum::YLeaf PoweradmintypeEnum::inlineAuto {3, "inlineAuto"};
-const Enum::YLeaf PoweradmintypeEnum::inlineOn {4, "inlineOn"};
-const Enum::YLeaf PoweradmintypeEnum::powerCycle {5, "powerCycle"};
+const Enum::YLeaf Powerredundancytype::notsupported {1, "notsupported"};
+const Enum::YLeaf Powerredundancytype::redundant {2, "redundant"};
+const Enum::YLeaf Powerredundancytype::combined {3, "combined"};
+const Enum::YLeaf Powerredundancytype::nonRedundant {4, "nonRedundant"};
+const Enum::YLeaf Powerredundancytype::psRedundant {5, "psRedundant"};
+const Enum::YLeaf Powerredundancytype::inPwrSrcRedundant {6, "inPwrSrcRedundant"};
+const Enum::YLeaf Powerredundancytype::psRedundantSingleInput {7, "psRedundantSingleInput"};
 
-const Enum::YLeaf ModuleopertypeEnum::unknown {1, "unknown"};
-const Enum::YLeaf ModuleopertypeEnum::ok {2, "ok"};
-const Enum::YLeaf ModuleopertypeEnum::disabled {3, "disabled"};
-const Enum::YLeaf ModuleopertypeEnum::okButDiagFailed {4, "okButDiagFailed"};
-const Enum::YLeaf ModuleopertypeEnum::boot {5, "boot"};
-const Enum::YLeaf ModuleopertypeEnum::selfTest {6, "selfTest"};
-const Enum::YLeaf ModuleopertypeEnum::failed {7, "failed"};
-const Enum::YLeaf ModuleopertypeEnum::missing {8, "missing"};
-const Enum::YLeaf ModuleopertypeEnum::mismatchWithParent {9, "mismatchWithParent"};
-const Enum::YLeaf ModuleopertypeEnum::mismatchConfig {10, "mismatchConfig"};
-const Enum::YLeaf ModuleopertypeEnum::diagFailed {11, "diagFailed"};
-const Enum::YLeaf ModuleopertypeEnum::dormant {12, "dormant"};
-const Enum::YLeaf ModuleopertypeEnum::outOfServiceAdmin {13, "outOfServiceAdmin"};
-const Enum::YLeaf ModuleopertypeEnum::outOfServiceEnvTemp {14, "outOfServiceEnvTemp"};
-const Enum::YLeaf ModuleopertypeEnum::poweredDown {15, "poweredDown"};
-const Enum::YLeaf ModuleopertypeEnum::poweredUp {16, "poweredUp"};
-const Enum::YLeaf ModuleopertypeEnum::powerDenied {17, "powerDenied"};
-const Enum::YLeaf ModuleopertypeEnum::powerCycled {18, "powerCycled"};
-const Enum::YLeaf ModuleopertypeEnum::okButPowerOverWarning {19, "okButPowerOverWarning"};
-const Enum::YLeaf ModuleopertypeEnum::okButPowerOverCritical {20, "okButPowerOverCritical"};
-const Enum::YLeaf ModuleopertypeEnum::syncInProgress {21, "syncInProgress"};
-const Enum::YLeaf ModuleopertypeEnum::upgrading {22, "upgrading"};
-const Enum::YLeaf ModuleopertypeEnum::okButAuthFailed {23, "okButAuthFailed"};
-const Enum::YLeaf ModuleopertypeEnum::mdr {24, "mdr"};
-const Enum::YLeaf ModuleopertypeEnum::fwMismatchFound {25, "fwMismatchFound"};
-const Enum::YLeaf ModuleopertypeEnum::fwDownloadSuccess {26, "fwDownloadSuccess"};
-const Enum::YLeaf ModuleopertypeEnum::fwDownloadFailure {27, "fwDownloadFailure"};
+const Enum::YLeaf Poweradmintype::on {1, "on"};
+const Enum::YLeaf Poweradmintype::off {2, "off"};
+const Enum::YLeaf Poweradmintype::inlineAuto {3, "inlineAuto"};
+const Enum::YLeaf Poweradmintype::inlineOn {4, "inlineOn"};
+const Enum::YLeaf Poweradmintype::powerCycle {5, "powerCycle"};
 
-const Enum::YLeaf ModuleresetreasontypeEnum::unknown {1, "unknown"};
-const Enum::YLeaf ModuleresetreasontypeEnum::powerUp {2, "powerUp"};
-const Enum::YLeaf ModuleresetreasontypeEnum::parityError {3, "parityError"};
-const Enum::YLeaf ModuleresetreasontypeEnum::clearConfigReset {4, "clearConfigReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::manualReset {5, "manualReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::watchDogTimeoutReset {6, "watchDogTimeoutReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::resourceOverflowReset {7, "resourceOverflowReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::missingTaskReset {8, "missingTaskReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::lowVoltageReset {9, "lowVoltageReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::controllerReset {10, "controllerReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::systemReset {11, "systemReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::switchoverReset {12, "switchoverReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::upgradeReset {13, "upgradeReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::downgradeReset {14, "downgradeReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::cacheErrorReset {15, "cacheErrorReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::deviceDriverReset {16, "deviceDriverReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::softwareExceptionReset {17, "softwareExceptionReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::restoreConfigReset {18, "restoreConfigReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::abortRevReset {19, "abortRevReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::burnBootReset {20, "burnBootReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::standbyCdHealthierReset {21, "standbyCdHealthierReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::nonNativeConfigClearReset {22, "nonNativeConfigClearReset"};
-const Enum::YLeaf ModuleresetreasontypeEnum::memoryProtectionErrorReset {23, "memoryProtectionErrorReset"};
+const Enum::YLeaf Moduleopertype::unknown {1, "unknown"};
+const Enum::YLeaf Moduleopertype::ok {2, "ok"};
+const Enum::YLeaf Moduleopertype::disabled {3, "disabled"};
+const Enum::YLeaf Moduleopertype::okButDiagFailed {4, "okButDiagFailed"};
+const Enum::YLeaf Moduleopertype::boot {5, "boot"};
+const Enum::YLeaf Moduleopertype::selfTest {6, "selfTest"};
+const Enum::YLeaf Moduleopertype::failed {7, "failed"};
+const Enum::YLeaf Moduleopertype::missing {8, "missing"};
+const Enum::YLeaf Moduleopertype::mismatchWithParent {9, "mismatchWithParent"};
+const Enum::YLeaf Moduleopertype::mismatchConfig {10, "mismatchConfig"};
+const Enum::YLeaf Moduleopertype::diagFailed {11, "diagFailed"};
+const Enum::YLeaf Moduleopertype::dormant {12, "dormant"};
+const Enum::YLeaf Moduleopertype::outOfServiceAdmin {13, "outOfServiceAdmin"};
+const Enum::YLeaf Moduleopertype::outOfServiceEnvTemp {14, "outOfServiceEnvTemp"};
+const Enum::YLeaf Moduleopertype::poweredDown {15, "poweredDown"};
+const Enum::YLeaf Moduleopertype::poweredUp {16, "poweredUp"};
+const Enum::YLeaf Moduleopertype::powerDenied {17, "powerDenied"};
+const Enum::YLeaf Moduleopertype::powerCycled {18, "powerCycled"};
+const Enum::YLeaf Moduleopertype::okButPowerOverWarning {19, "okButPowerOverWarning"};
+const Enum::YLeaf Moduleopertype::okButPowerOverCritical {20, "okButPowerOverCritical"};
+const Enum::YLeaf Moduleopertype::syncInProgress {21, "syncInProgress"};
+const Enum::YLeaf Moduleopertype::upgrading {22, "upgrading"};
+const Enum::YLeaf Moduleopertype::okButAuthFailed {23, "okButAuthFailed"};
+const Enum::YLeaf Moduleopertype::mdr {24, "mdr"};
+const Enum::YLeaf Moduleopertype::fwMismatchFound {25, "fwMismatchFound"};
+const Enum::YLeaf Moduleopertype::fwDownloadSuccess {26, "fwDownloadSuccess"};
+const Enum::YLeaf Moduleopertype::fwDownloadFailure {27, "fwDownloadFailure"};
 
-const Enum::YLeaf PowerredundancytypeEnum::notsupported {1, "notsupported"};
-const Enum::YLeaf PowerredundancytypeEnum::redundant {2, "redundant"};
-const Enum::YLeaf PowerredundancytypeEnum::combined {3, "combined"};
-const Enum::YLeaf PowerredundancytypeEnum::nonRedundant {4, "nonRedundant"};
-const Enum::YLeaf PowerredundancytypeEnum::psRedundant {5, "psRedundant"};
-const Enum::YLeaf PowerredundancytypeEnum::inPwrSrcRedundant {6, "inPwrSrcRedundant"};
-const Enum::YLeaf PowerredundancytypeEnum::psRedundantSingleInput {7, "psRedundantSingleInput"};
+const Enum::YLeaf Frucoolingunit::cfm {1, "cfm"};
+const Enum::YLeaf Frucoolingunit::watts {2, "watts"};
 
-const Enum::YLeaf PoweropertypeEnum::offEnvOther {1, "offEnvOther"};
-const Enum::YLeaf PoweropertypeEnum::on {2, "on"};
-const Enum::YLeaf PoweropertypeEnum::offAdmin {3, "offAdmin"};
-const Enum::YLeaf PoweropertypeEnum::offDenied {4, "offDenied"};
-const Enum::YLeaf PoweropertypeEnum::offEnvPower {5, "offEnvPower"};
-const Enum::YLeaf PoweropertypeEnum::offEnvTemp {6, "offEnvTemp"};
-const Enum::YLeaf PoweropertypeEnum::offEnvFan {7, "offEnvFan"};
-const Enum::YLeaf PoweropertypeEnum::failed {8, "failed"};
-const Enum::YLeaf PoweropertypeEnum::onButFanFail {9, "onButFanFail"};
-const Enum::YLeaf PoweropertypeEnum::offCooling {10, "offCooling"};
-const Enum::YLeaf PoweropertypeEnum::offConnectorRating {11, "offConnectorRating"};
-const Enum::YLeaf PoweropertypeEnum::onButInlinePowerFail {12, "onButInlinePowerFail"};
+const Enum::YLeaf Moduleresetreasontype::unknown {1, "unknown"};
+const Enum::YLeaf Moduleresetreasontype::powerUp {2, "powerUp"};
+const Enum::YLeaf Moduleresetreasontype::parityError {3, "parityError"};
+const Enum::YLeaf Moduleresetreasontype::clearConfigReset {4, "clearConfigReset"};
+const Enum::YLeaf Moduleresetreasontype::manualReset {5, "manualReset"};
+const Enum::YLeaf Moduleresetreasontype::watchDogTimeoutReset {6, "watchDogTimeoutReset"};
+const Enum::YLeaf Moduleresetreasontype::resourceOverflowReset {7, "resourceOverflowReset"};
+const Enum::YLeaf Moduleresetreasontype::missingTaskReset {8, "missingTaskReset"};
+const Enum::YLeaf Moduleresetreasontype::lowVoltageReset {9, "lowVoltageReset"};
+const Enum::YLeaf Moduleresetreasontype::controllerReset {10, "controllerReset"};
+const Enum::YLeaf Moduleresetreasontype::systemReset {11, "systemReset"};
+const Enum::YLeaf Moduleresetreasontype::switchoverReset {12, "switchoverReset"};
+const Enum::YLeaf Moduleresetreasontype::upgradeReset {13, "upgradeReset"};
+const Enum::YLeaf Moduleresetreasontype::downgradeReset {14, "downgradeReset"};
+const Enum::YLeaf Moduleresetreasontype::cacheErrorReset {15, "cacheErrorReset"};
+const Enum::YLeaf Moduleresetreasontype::deviceDriverReset {16, "deviceDriverReset"};
+const Enum::YLeaf Moduleresetreasontype::softwareExceptionReset {17, "softwareExceptionReset"};
+const Enum::YLeaf Moduleresetreasontype::restoreConfigReset {18, "restoreConfigReset"};
+const Enum::YLeaf Moduleresetreasontype::abortRevReset {19, "abortRevReset"};
+const Enum::YLeaf Moduleresetreasontype::burnBootReset {20, "burnBootReset"};
+const Enum::YLeaf Moduleresetreasontype::standbyCdHealthierReset {21, "standbyCdHealthierReset"};
+const Enum::YLeaf Moduleresetreasontype::nonNativeConfigClearReset {22, "nonNativeConfigClearReset"};
+const Enum::YLeaf Moduleresetreasontype::memoryProtectionErrorReset {23, "memoryProtectionErrorReset"};
 
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::CefcpowernonredundantreasonEnum::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::CefcpowernonredundantreasonEnum::unknown {2, "unknown"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::CefcpowernonredundantreasonEnum::singleSupply {3, "singleSupply"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::CefcpowernonredundantreasonEnum::mismatchedSupplies {4, "mismatchedSupplies"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::CefcpowernonredundantreasonEnum::supplyError {5, "supplyError"};
+const Enum::YLeaf Poweropertype::offEnvOther {1, "offEnvOther"};
+const Enum::YLeaf Poweropertype::on {2, "on"};
+const Enum::YLeaf Poweropertype::offAdmin {3, "offAdmin"};
+const Enum::YLeaf Poweropertype::offDenied {4, "offDenied"};
+const Enum::YLeaf Poweropertype::offEnvPower {5, "offEnvPower"};
+const Enum::YLeaf Poweropertype::offEnvTemp {6, "offEnvTemp"};
+const Enum::YLeaf Poweropertype::offEnvFan {7, "offEnvFan"};
+const Enum::YLeaf Poweropertype::failed {8, "failed"};
+const Enum::YLeaf Poweropertype::onButFanFail {9, "onButFanFail"};
+const Enum::YLeaf Poweropertype::offCooling {10, "offCooling"};
+const Enum::YLeaf Poweropertype::offConnectorRating {11, "offConnectorRating"};
+const Enum::YLeaf Poweropertype::onButInlinePowerFail {12, "onButInlinePowerFail"};
 
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::CefcmodulelocalswitchingmodeEnum::enabled {1, "enabled"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::CefcmodulelocalswitchingmodeEnum::disabled {2, "disabled"};
+const Enum::YLeaf Moduleadmintype::enabled {1, "enabled"};
+const Enum::YLeaf Moduleadmintype::disabled {2, "disabled"};
+const Enum::YLeaf Moduleadmintype::reset {3, "reset"};
+const Enum::YLeaf Moduleadmintype::outOfServiceAdmin {4, "outOfServiceAdmin"};
 
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::CefcfantrayoperstatusEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::CefcfantrayoperstatusEnum::up {2, "up"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::CefcfantrayoperstatusEnum::down {3, "down"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::CefcfantrayoperstatusEnum::warning {4, "warning"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::unknown {2, "unknown"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::singleSupply {3, "singleSupply"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::mismatchedSupplies {4, "mismatchedSupplies"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason::supplyError {5, "supplyError"};
 
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::CefcphysicalstatusEnum::other {1, "other"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::CefcphysicalstatusEnum::supported {2, "supported"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::CefcphysicalstatusEnum::unsupported {3, "unsupported"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::CefcphysicalstatusEnum::incompatible {4, "incompatible"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::Cefcmodulelocalswitchingmode::enabled {1, "enabled"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::Cefcmodulelocalswitchingmode::disabled {2, "disabled"};
 
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::CefcpowersupplyinputtypeEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::CefcpowersupplyinputtypeEnum::acLow {2, "acLow"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::CefcpowersupplyinputtypeEnum::acHigh {3, "acHigh"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::CefcpowersupplyinputtypeEnum::dcLow {4, "dcLow"};
-const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::CefcpowersupplyinputtypeEnum::dcHigh {5, "dcHigh"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::unknown {1, "unknown"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::up {2, "up"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::down {3, "down"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus::warning {4, "warning"};
+
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus::other {1, "other"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus::supported {2, "supported"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus::unsupported {3, "unsupported"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus::incompatible {4, "incompatible"};
+
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::unknown {1, "unknown"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::acLow {2, "acLow"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::acHigh {3, "acHigh"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::dcLow {4, "dcLow"};
+const Enum::YLeaf CiscoEntityFruControlMib::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype::dcHigh {5, "dcHigh"};
 
 
 }

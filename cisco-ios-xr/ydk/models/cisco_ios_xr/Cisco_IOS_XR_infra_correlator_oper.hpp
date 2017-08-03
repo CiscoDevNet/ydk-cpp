@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_correlator_oper {
 
-class Suppression : public Entity
+class Suppression : public ydk::Entity
 {
     public:
         Suppression();
@@ -18,15 +18,18 @@ class Suppression : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class RuleSummaries; //type: Suppression::RuleSummaries
         class RuleDetails; //type: Suppression::RuleDetails
@@ -37,7 +40,7 @@ class Suppression : public Entity
 }; // Suppression
 
 
-class Suppression::RuleSummaries : public Entity
+class Suppression::RuleSummaries : public ydk::Entity
 {
     public:
         RuleSummaries();
@@ -45,11 +48,13 @@ class Suppression::RuleSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RuleSummary; //type: Suppression::RuleSummaries::RuleSummary
 
@@ -58,7 +63,7 @@ class Suppression::RuleSummaries : public Entity
 }; // Suppression::RuleSummaries
 
 
-class Suppression::RuleSummaries::RuleSummary : public Entity
+class Suppression::RuleSummaries::RuleSummary : public ydk::Entity
 {
     public:
         RuleSummary();
@@ -66,21 +71,23 @@ class Suppression::RuleSummaries::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_name; //type: string
-        YLeaf rule_name_xr; //type: string
-        YLeaf rule_state; //type: AcRuleStateEnum
-        YLeaf suppressed_alarms_count; //type: uint32
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeaf suppressed_alarms_count; //type: uint32
 
 }; // Suppression::RuleSummaries::RuleSummary
 
 
-class Suppression::RuleDetails : public Entity
+class Suppression::RuleDetails : public ydk::Entity
 {
     public:
         RuleDetails();
@@ -88,11 +95,13 @@ class Suppression::RuleDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RuleDetail; //type: Suppression::RuleDetails::RuleDetail
 
@@ -101,7 +110,7 @@ class Suppression::RuleDetails : public Entity
 }; // Suppression::RuleDetails
 
 
-class Suppression::RuleDetails::RuleDetail : public Entity
+class Suppression::RuleDetails::RuleDetail : public ydk::Entity
 {
     public:
         RuleDetail();
@@ -109,16 +118,18 @@ class Suppression::RuleDetails::RuleDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_name; //type: string
-        YLeaf all_alarms; //type: boolean
-        YLeaf alarm_severity; //type: AlAlarmSeverityEnum
-        YLeafList apply_source; //type: list of  string
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf all_alarms; //type: boolean
+        ydk::YLeaf alarm_severity; //type: AlAlarmSeverity
+        ydk::YLeafList apply_source; //type: list of  string
         class RuleSummary; //type: Suppression::RuleDetails::RuleDetail::RuleSummary
         class Codes; //type: Suppression::RuleDetails::RuleDetail::Codes
 
@@ -128,7 +139,7 @@ class Suppression::RuleDetails::RuleDetail : public Entity
 }; // Suppression::RuleDetails::RuleDetail
 
 
-class Suppression::RuleDetails::RuleDetail::RuleSummary : public Entity
+class Suppression::RuleDetails::RuleDetail::RuleSummary : public ydk::Entity
 {
     public:
         RuleSummary();
@@ -136,20 +147,22 @@ class Suppression::RuleDetails::RuleDetail::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_name_xr; //type: string
-        YLeaf rule_state; //type: AcRuleStateEnum
-        YLeaf suppressed_alarms_count; //type: uint32
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeaf suppressed_alarms_count; //type: uint32
 
 }; // Suppression::RuleDetails::RuleDetail::RuleSummary
 
 
-class Suppression::RuleDetails::RuleDetail::Codes : public Entity
+class Suppression::RuleDetails::RuleDetail::Codes : public ydk::Entity
 {
     public:
         Codes();
@@ -157,19 +170,21 @@ class Suppression::RuleDetails::RuleDetail::Codes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: string
-        YLeaf group; //type: string
-        YLeaf code; //type: string
+        ydk::YLeaf category; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf code; //type: string
 
 }; // Suppression::RuleDetails::RuleDetail::Codes
 
-class Correlator : public Entity
+class Correlator : public ydk::Entity
 {
     public:
         Correlator();
@@ -177,15 +192,18 @@ class Correlator : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Rules; //type: Correlator::Rules
         class BufferStatus; //type: Correlator::BufferStatus
@@ -206,7 +224,7 @@ class Correlator : public Entity
 }; // Correlator
 
 
-class Correlator::Rules : public Entity
+class Correlator::Rules : public ydk::Entity
 {
     public:
         Rules();
@@ -214,11 +232,13 @@ class Correlator::Rules : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rule; //type: Correlator::Rules::Rule
 
@@ -227,7 +247,7 @@ class Correlator::Rules : public Entity
 }; // Correlator::Rules
 
 
-class Correlator::Rules::Rule : public Entity
+class Correlator::Rules::Rule : public ydk::Entity
 {
     public:
         Rule();
@@ -235,18 +255,20 @@ class Correlator::Rules::Rule : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_name; //type: string
-        YLeaf rule_name_xr; //type: string
-        YLeaf timeout; //type: uint32
-        YLeaf rule_state; //type: AcRuleStateEnum
-        YLeafList apply_location; //type: list of  string
-        YLeafList apply_context; //type: list of  string
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf timeout; //type: uint32
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeafList apply_location; //type: list of  string
+        ydk::YLeafList apply_context; //type: list of  string
         class Codes; //type: Correlator::Rules::Rule::Codes
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule::Codes> > codes;
@@ -254,7 +276,7 @@ class Correlator::Rules::Rule : public Entity
 }; // Correlator::Rules::Rule
 
 
-class Correlator::Rules::Rule::Codes : public Entity
+class Correlator::Rules::Rule::Codes : public ydk::Entity
 {
     public:
         Codes();
@@ -262,20 +284,22 @@ class Correlator::Rules::Rule::Codes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: string
-        YLeaf group; //type: string
-        YLeaf code; //type: string
+        ydk::YLeaf category; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf code; //type: string
 
 }; // Correlator::Rules::Rule::Codes
 
 
-class Correlator::BufferStatus : public Entity
+class Correlator::BufferStatus : public ydk::Entity
 {
     public:
         BufferStatus();
@@ -283,19 +307,21 @@ class Correlator::BufferStatus : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf current_size; //type: uint32
-        YLeaf configured_size; //type: uint32
+        ydk::YLeaf current_size; //type: uint32
+        ydk::YLeaf configured_size; //type: uint32
 
 }; // Correlator::BufferStatus
 
 
-class Correlator::Alarms : public Entity
+class Correlator::Alarms : public ydk::Entity
 {
     public:
         Alarms();
@@ -303,11 +329,13 @@ class Correlator::Alarms : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Alarm; //type: Correlator::Alarms::Alarm
 
@@ -316,7 +344,7 @@ class Correlator::Alarms : public Entity
 }; // Correlator::Alarms
 
 
-class Correlator::Alarms::Alarm : public Entity
+class Correlator::Alarms::Alarm : public ydk::Entity
 {
     public:
         Alarm();
@@ -324,15 +352,17 @@ class Correlator::Alarms::Alarm : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf alarm_id; //type: int32
-        YLeaf rule_name; //type: string
-        YLeaf context; //type: string
+        ydk::YLeaf alarm_id; //type: int32
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf context; //type: string
         class AlarmInfo; //type: Correlator::Alarms::Alarm::AlarmInfo
 
         std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::Alarms::Alarm::AlarmInfo> alarm_info;
@@ -340,7 +370,7 @@ class Correlator::Alarms::Alarm : public Entity
 }; // Correlator::Alarms::Alarm
 
 
-class Correlator::Alarms::Alarm::AlarmInfo : public Entity
+class Correlator::Alarms::Alarm::AlarmInfo : public ydk::Entity
 {
     public:
         AlarmInfo();
@@ -348,27 +378,29 @@ class Correlator::Alarms::Alarm::AlarmInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_id; //type: string
-        YLeaf timestamp; //type: uint64
-        YLeaf category; //type: string
-        YLeaf group; //type: string
-        YLeaf code; //type: string
-        YLeaf severity; //type: AlAlarmSeverityEnum
-        YLeaf state; //type: AlAlarmBistateEnum
-        YLeaf correlation_id; //type: uint32
-        YLeaf is_admin; //type: boolean
-        YLeaf additional_text; //type: string
+        ydk::YLeaf source_id; //type: string
+        ydk::YLeaf timestamp; //type: uint64
+        ydk::YLeaf category; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf code; //type: string
+        ydk::YLeaf severity; //type: AlAlarmSeverity
+        ydk::YLeaf state; //type: AlAlarmBistate
+        ydk::YLeaf correlation_id; //type: uint32
+        ydk::YLeaf is_admin; //type: boolean
+        ydk::YLeaf additional_text; //type: string
 
 }; // Correlator::Alarms::Alarm::AlarmInfo
 
 
-class Correlator::RuleSetSummaries : public Entity
+class Correlator::RuleSetSummaries : public ydk::Entity
 {
     public:
         RuleSetSummaries();
@@ -376,11 +408,13 @@ class Correlator::RuleSetSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RuleSetSummary; //type: Correlator::RuleSetSummaries::RuleSetSummary
 
@@ -389,7 +423,7 @@ class Correlator::RuleSetSummaries : public Entity
 }; // Correlator::RuleSetSummaries
 
 
-class Correlator::RuleSetSummaries::RuleSetSummary : public Entity
+class Correlator::RuleSetSummaries::RuleSetSummary : public ydk::Entity
 {
     public:
         RuleSetSummary();
@@ -397,19 +431,21 @@ class Correlator::RuleSetSummaries::RuleSetSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_set_name; //type: string
-        YLeaf rule_set_name_xr; //type: string
+        ydk::YLeaf rule_set_name; //type: string
+        ydk::YLeaf rule_set_name_xr; //type: string
 
 }; // Correlator::RuleSetSummaries::RuleSetSummary
 
 
-class Correlator::RuleSetDetails : public Entity
+class Correlator::RuleSetDetails : public ydk::Entity
 {
     public:
         RuleSetDetails();
@@ -417,11 +453,13 @@ class Correlator::RuleSetDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RuleSetDetail; //type: Correlator::RuleSetDetails::RuleSetDetail
 
@@ -430,7 +468,7 @@ class Correlator::RuleSetDetails : public Entity
 }; // Correlator::RuleSetDetails
 
 
-class Correlator::RuleSetDetails::RuleSetDetail : public Entity
+class Correlator::RuleSetDetails::RuleSetDetail : public ydk::Entity
 {
     public:
         RuleSetDetail();
@@ -438,14 +476,16 @@ class Correlator::RuleSetDetails::RuleSetDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_set_name; //type: string
-        YLeaf rule_set_name_xr; //type: string
+        ydk::YLeaf rule_set_name; //type: string
+        ydk::YLeaf rule_set_name_xr; //type: string
         class Rules; //type: Correlator::RuleSetDetails::RuleSetDetail::Rules
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetDetails::RuleSetDetail::Rules> > rules;
@@ -453,7 +493,7 @@ class Correlator::RuleSetDetails::RuleSetDetail : public Entity
 }; // Correlator::RuleSetDetails::RuleSetDetail
 
 
-class Correlator::RuleSetDetails::RuleSetDetail::Rules : public Entity
+class Correlator::RuleSetDetails::RuleSetDetail::Rules : public ydk::Entity
 {
     public:
         Rules();
@@ -461,21 +501,23 @@ class Correlator::RuleSetDetails::RuleSetDetail::Rules : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_name_xr; //type: string
-        YLeaf stateful; //type: boolean
-        YLeaf rule_state; //type: AcRuleStateEnum
-        YLeaf buffered_alarms_count; //type: uint32
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf stateful; //type: boolean
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeaf buffered_alarms_count; //type: uint32
 
 }; // Correlator::RuleSetDetails::RuleSetDetail::Rules
 
 
-class Correlator::RuleDetails : public Entity
+class Correlator::RuleDetails : public ydk::Entity
 {
     public:
         RuleDetails();
@@ -483,11 +525,13 @@ class Correlator::RuleDetails : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RuleDetail; //type: Correlator::RuleDetails::RuleDetail
 
@@ -496,7 +540,7 @@ class Correlator::RuleDetails : public Entity
 }; // Correlator::RuleDetails
 
 
-class Correlator::RuleDetails::RuleDetail : public Entity
+class Correlator::RuleDetails::RuleDetail : public ydk::Entity
 {
     public:
         RuleDetail();
@@ -504,21 +548,23 @@ class Correlator::RuleDetails::RuleDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_name; //type: string
-        YLeaf timeout; //type: uint32
-        YLeaf root_cause_timeout; //type: uint32
-        YLeaf internal; //type: boolean
-        YLeaf reissue_non_bistate; //type: boolean
-        YLeaf reparent; //type: boolean
-        YLeaf context_correlation; //type: boolean
-        YLeafList apply_location; //type: list of  string
-        YLeafList apply_context; //type: list of  string
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf timeout; //type: uint32
+        ydk::YLeaf root_cause_timeout; //type: uint32
+        ydk::YLeaf internal; //type: boolean
+        ydk::YLeaf reissue_non_bistate; //type: boolean
+        ydk::YLeaf reparent; //type: boolean
+        ydk::YLeaf context_correlation; //type: boolean
+        ydk::YLeafList apply_location; //type: list of  string
+        ydk::YLeafList apply_context; //type: list of  string
         class RuleSummary; //type: Correlator::RuleDetails::RuleDetail::RuleSummary
         class Codes; //type: Correlator::RuleDetails::RuleDetail::Codes
 
@@ -528,7 +574,7 @@ class Correlator::RuleDetails::RuleDetail : public Entity
 }; // Correlator::RuleDetails::RuleDetail
 
 
-class Correlator::RuleDetails::RuleDetail::RuleSummary : public Entity
+class Correlator::RuleDetails::RuleDetail::RuleSummary : public ydk::Entity
 {
     public:
         RuleSummary();
@@ -536,21 +582,23 @@ class Correlator::RuleDetails::RuleDetail::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_name_xr; //type: string
-        YLeaf stateful; //type: boolean
-        YLeaf rule_state; //type: AcRuleStateEnum
-        YLeaf buffered_alarms_count; //type: uint32
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf stateful; //type: boolean
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeaf buffered_alarms_count; //type: uint32
 
 }; // Correlator::RuleDetails::RuleDetail::RuleSummary
 
 
-class Correlator::RuleDetails::RuleDetail::Codes : public Entity
+class Correlator::RuleDetails::RuleDetail::Codes : public ydk::Entity
 {
     public:
         Codes();
@@ -558,20 +606,22 @@ class Correlator::RuleDetails::RuleDetail::Codes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf category; //type: string
-        YLeaf group; //type: string
-        YLeaf code; //type: string
+        ydk::YLeaf category; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf code; //type: string
 
 }; // Correlator::RuleDetails::RuleDetail::Codes
 
 
-class Correlator::RuleSummaries : public Entity
+class Correlator::RuleSummaries : public ydk::Entity
 {
     public:
         RuleSummaries();
@@ -579,11 +629,13 @@ class Correlator::RuleSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class RuleSummary; //type: Correlator::RuleSummaries::RuleSummary
 
@@ -592,7 +644,7 @@ class Correlator::RuleSummaries : public Entity
 }; // Correlator::RuleSummaries
 
 
-class Correlator::RuleSummaries::RuleSummary : public Entity
+class Correlator::RuleSummaries::RuleSummary : public ydk::Entity
 {
     public:
         RuleSummary();
@@ -600,50 +652,52 @@ class Correlator::RuleSummaries::RuleSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rule_name; //type: string
-        YLeaf rule_name_xr; //type: string
-        YLeaf stateful; //type: boolean
-        YLeaf rule_state; //type: AcRuleStateEnum
-        YLeaf buffered_alarms_count; //type: uint32
+        ydk::YLeaf rule_name; //type: string
+        ydk::YLeaf rule_name_xr; //type: string
+        ydk::YLeaf stateful; //type: boolean
+        ydk::YLeaf rule_state; //type: AcRuleState
+        ydk::YLeaf buffered_alarms_count; //type: uint32
 
 }; // Correlator::RuleSummaries::RuleSummary
 
-class AlAlarmBistateEnum : public Enum
+class AlAlarmBistate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_available;
-        static const Enum::YLeaf active;
-        static const Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf not_available;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf clear;
 
 };
 
-class AlAlarmSeverityEnum : public Enum
+class AcRuleState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf emergency;
-        static const Enum::YLeaf alert;
-        static const Enum::YLeaf critical;
-        static const Enum::YLeaf error;
-        static const Enum::YLeaf warning;
-        static const Enum::YLeaf notice;
-        static const Enum::YLeaf informational;
-        static const Enum::YLeaf debugging;
+        static const ydk::Enum::YLeaf rule_unapplied;
+        static const ydk::Enum::YLeaf rule_applied;
+        static const ydk::Enum::YLeaf rule_applied_all;
 
 };
 
-class AcRuleStateEnum : public Enum
+class AlAlarmSeverity : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf rule_unapplied;
-        static const Enum::YLeaf rule_applied;
-        static const Enum::YLeaf rule_applied_all;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf emergency;
+        static const ydk::Enum::YLeaf alert;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf notice;
+        static const ydk::Enum::YLeaf informational;
+        static const ydk::Enum::YLeaf debugging;
 
 };
 

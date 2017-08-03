@@ -7,40 +7,40 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace INET_ADDRESS_MIB {
 
-class InetaddresstypeEnum : public Enum
+class Inetversion : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
-        static const Enum::YLeaf ipv4z;
-        static const Enum::YLeaf ipv6z;
-        static const Enum::YLeaf dns;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class InetscopetypeEnum : public Enum
+class Inetaddresstype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf interfaceLocal;
-        static const Enum::YLeaf linkLocal;
-        static const Enum::YLeaf subnetLocal;
-        static const Enum::YLeaf adminLocal;
-        static const Enum::YLeaf siteLocal;
-        static const Enum::YLeaf organizationLocal;
-        static const Enum::YLeaf global;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv4z;
+        static const ydk::Enum::YLeaf ipv6z;
+        static const ydk::Enum::YLeaf dns;
 
 };
 
-class InetversionEnum : public Enum
+class Inetscopetype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf interfaceLocal;
+        static const ydk::Enum::YLeaf linkLocal;
+        static const ydk::Enum::YLeaf subnetLocal;
+        static const ydk::Enum::YLeaf adminLocal;
+        static const ydk::Enum::YLeaf siteLocal;
+        static const ydk::Enum::YLeaf organizationLocal;
+        static const ydk::Enum::YLeaf global;
 
 };
 

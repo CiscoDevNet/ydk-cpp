@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_rsi_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_rsi_oper {
 
 VrfGroup::VrfGroup()
@@ -29,7 +31,7 @@ bool VrfGroup::has_data() const
 
 bool VrfGroup::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> VrfGroup::get_children() const
     return children;
 }
 
-void VrfGroup::set_value(const std::string & value_path, std::string value)
+void VrfGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void VrfGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string VrfGroup::get_bundle_name() const
 augment_capabilities_function VrfGroup::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> VrfGroup::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool VrfGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 VrfGroup::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool VrfGroup::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string VrfGroup::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> VrfGroup::Nodes::get_children() c
     return children;
 }
 
-void VrfGroup::Nodes::set_value(const std::string & value_path, std::string value)
+void VrfGroup::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void VrfGroup::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool VrfGroup::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 VrfGroup::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool VrfGroup::Nodes::Node::has_data() const
 
 bool VrfGroup::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (groups !=  nullptr && groups->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath VrfGroup::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> VrfGroup::Nodes::Node::get_childr
     return children;
 }
 
-void VrfGroup::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void VrfGroup::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void VrfGroup::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool VrfGroup::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groups" || name == "node-name")
+        return true;
+    return false;
 }
 
 VrfGroup::Nodes::Node::Groups::Groups()
@@ -322,7 +368,7 @@ bool VrfGroup::Nodes::Node::Groups::has_operation() const
         if(group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string VrfGroup::Nodes::Node::Groups::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> VrfGroup::Nodes::Node::Groups::ge
     return children;
 }
 
-void VrfGroup::Nodes::Node::Groups::set_value(const std::string & value_path, std::string value)
+void VrfGroup::Nodes::Node::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void VrfGroup::Nodes::Node::Groups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool VrfGroup::Nodes::Node::Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
 }
 
 VrfGroup::Nodes::Node::Groups::Group::Group()
@@ -423,10 +480,10 @@ bool VrfGroup::Nodes::Node::Groups::Group::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(group_name.operation)
-	|| is_set(forward_reference.operation)
-	|| is_set(vr_fs.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(forward_reference.yfilter)
+	|| ydk::is_set(vr_fs.yfilter);
 }
 
 std::string VrfGroup::Nodes::Node::Groups::Group::get_segment_path() const
@@ -452,9 +509,9 @@ const EntityPath VrfGroup::Nodes::Node::Groups::Group::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (forward_reference.is_set || is_set(forward_reference.operation)) leaf_name_data.push_back(forward_reference.get_name_leafdata());
-    if (vr_fs.is_set || is_set(vr_fs.operation)) leaf_name_data.push_back(vr_fs.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (forward_reference.is_set || is_set(forward_reference.yfilter)) leaf_name_data.push_back(forward_reference.get_name_leafdata());
+    if (vr_fs.is_set || is_set(vr_fs.yfilter)) leaf_name_data.push_back(vr_fs.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -494,20 +551,49 @@ std::map<std::string, std::shared_ptr<Entity>> VrfGroup::Nodes::Node::Groups::Gr
     return children;
 }
 
-void VrfGroup::Nodes::Node::Groups::Group::set_value(const std::string & value_path, std::string value)
+void VrfGroup::Nodes::Node::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-reference")
     {
         forward_reference = value;
+        forward_reference.value_namespace = name_space;
+        forward_reference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vr-fs")
     {
         vr_fs = value;
+        vr_fs.value_namespace = name_space;
+        vr_fs.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void VrfGroup::Nodes::Node::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "forward-reference")
+    {
+        forward_reference.yfilter = yfilter;
+    }
+    if(value_path == "vr-fs")
+    {
+        vr_fs.yfilter = yfilter;
+    }
+}
+
+bool VrfGroup::Nodes::Node::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf" || name == "group-name" || name == "forward-reference" || name == "vr-fs")
+        return true;
+    return false;
 }
 
 VrfGroup::Nodes::Node::Groups::Group::Vrf::Vrf()
@@ -528,8 +614,8 @@ bool VrfGroup::Nodes::Node::Groups::Group::Vrf::has_data() const
 
 bool VrfGroup::Nodes::Node::Groups::Group::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string VrfGroup::Nodes::Node::Groups::Group::Vrf::get_segment_path() const
@@ -555,7 +641,7 @@ const EntityPath VrfGroup::Nodes::Node::Groups::Group::Vrf::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -574,12 +660,29 @@ std::map<std::string, std::shared_ptr<Entity>> VrfGroup::Nodes::Node::Groups::Gr
     return children;
 }
 
-void VrfGroup::Nodes::Node::Groups::Group::Vrf::set_value(const std::string & value_path, std::string value)
+void VrfGroup::Nodes::Node::Groups::Group::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void VrfGroup::Nodes::Node::Groups::Group::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool VrfGroup::Nodes::Node::Groups::Group::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name")
+        return true;
+    return false;
 }
 
 Srlg::Srlg()
@@ -610,7 +713,7 @@ bool Srlg::has_data() const
 
 bool Srlg::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interface_srlg_names !=  nullptr && interface_srlg_names->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation())
 	|| (srlg_maps !=  nullptr && srlg_maps->has_operation());
@@ -696,7 +799,11 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::get_children() const
     return children;
 }
 
-void Srlg::set_value(const std::string & value_path, std::string value)
+void Srlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Srlg::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -718,6 +825,18 @@ std::string Srlg::get_bundle_name() const
 augment_capabilities_function Srlg::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Srlg::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Srlg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-srlg-names" || name == "nodes" || name == "srlg-maps")
+        return true;
+    return false;
 }
 
 Srlg::SrlgMaps::SrlgMaps()
@@ -746,7 +865,7 @@ bool Srlg::SrlgMaps::has_operation() const
         if(srlg_map[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::SrlgMaps::get_segment_path() const
@@ -811,8 +930,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::SrlgMaps::get_children() co
     return children;
 }
 
-void Srlg::SrlgMaps::set_value(const std::string & value_path, std::string value)
+void Srlg::SrlgMaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::SrlgMaps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::SrlgMaps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-map")
+        return true;
+    return false;
 }
 
 Srlg::SrlgMaps::SrlgMap::SrlgMap()
@@ -837,10 +967,10 @@ bool Srlg::SrlgMaps::SrlgMap::has_data() const
 
 bool Srlg::SrlgMaps::SrlgMap::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(srlg_name.operation)
-	|| is_set(srlg_name_xr.operation)
-	|| is_set(srlg_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(srlg_name.yfilter)
+	|| ydk::is_set(srlg_name_xr.yfilter)
+	|| ydk::is_set(srlg_value.yfilter);
 }
 
 std::string Srlg::SrlgMaps::SrlgMap::get_segment_path() const
@@ -866,9 +996,9 @@ const EntityPath Srlg::SrlgMaps::SrlgMap::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (srlg_name.is_set || is_set(srlg_name.operation)) leaf_name_data.push_back(srlg_name.get_name_leafdata());
-    if (srlg_name_xr.is_set || is_set(srlg_name_xr.operation)) leaf_name_data.push_back(srlg_name_xr.get_name_leafdata());
-    if (srlg_value.is_set || is_set(srlg_value.operation)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
+    if (srlg_name.is_set || is_set(srlg_name.yfilter)) leaf_name_data.push_back(srlg_name.get_name_leafdata());
+    if (srlg_name_xr.is_set || is_set(srlg_name_xr.yfilter)) leaf_name_data.push_back(srlg_name_xr.get_name_leafdata());
+    if (srlg_value.is_set || is_set(srlg_value.yfilter)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -887,20 +1017,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::SrlgMaps::SrlgMap::get_chil
     return children;
 }
 
-void Srlg::SrlgMaps::SrlgMap::set_value(const std::string & value_path, std::string value)
+void Srlg::SrlgMaps::SrlgMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "srlg-name")
     {
         srlg_name = value;
+        srlg_name.value_namespace = name_space;
+        srlg_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-name-xr")
     {
         srlg_name_xr = value;
+        srlg_name_xr.value_namespace = name_space;
+        srlg_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-value")
     {
         srlg_value = value;
+        srlg_value.value_namespace = name_space;
+        srlg_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::SrlgMaps::SrlgMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srlg-name")
+    {
+        srlg_name.yfilter = yfilter;
+    }
+    if(value_path == "srlg-name-xr")
+    {
+        srlg_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "srlg-value")
+    {
+        srlg_value.yfilter = yfilter;
+    }
+}
+
+bool Srlg::SrlgMaps::SrlgMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-name" || name == "srlg-name-xr" || name == "srlg-value")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Nodes()
@@ -929,7 +1088,7 @@ bool Srlg::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::Nodes::get_segment_path() const
@@ -994,8 +1153,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::get_children() const
     return children;
 }
 
-void Srlg::Nodes::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::Node()
@@ -1045,8 +1215,8 @@ bool Srlg::Nodes::Node::has_data() const
 
 bool Srlg::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (groups !=  nullptr && groups->has_operation())
 	|| (inherit_nodes !=  nullptr && inherit_nodes->has_operation())
 	|| (interface_details !=  nullptr && interface_details->has_operation())
@@ -1079,7 +1249,7 @@ const EntityPath Srlg::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1196,12 +1366,29 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::get_children()
     return children;
 }
 
-void Srlg::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groups" || name == "inherit-nodes" || name == "interface-details" || name == "interface-srlg-names" || name == "interfaces" || name == "srlg-maps" || name == "srlg-values" || name == "node-name")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::SrlgMaps::SrlgMaps()
@@ -1230,7 +1417,7 @@ bool Srlg::Nodes::Node::SrlgMaps::has_operation() const
         if(srlg_map[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::Nodes::Node::SrlgMaps::get_segment_path() const
@@ -1295,8 +1482,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::SrlgMaps::get_
     return children;
 }
 
-void Srlg::Nodes::Node::SrlgMaps::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::SrlgMaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::Nodes::Node::SrlgMaps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::Nodes::Node::SrlgMaps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-map")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::SrlgMaps::SrlgMap::SrlgMap()
@@ -1321,10 +1519,10 @@ bool Srlg::Nodes::Node::SrlgMaps::SrlgMap::has_data() const
 
 bool Srlg::Nodes::Node::SrlgMaps::SrlgMap::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(srlg_name.operation)
-	|| is_set(srlg_name_xr.operation)
-	|| is_set(srlg_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(srlg_name.yfilter)
+	|| ydk::is_set(srlg_name_xr.yfilter)
+	|| ydk::is_set(srlg_value.yfilter);
 }
 
 std::string Srlg::Nodes::Node::SrlgMaps::SrlgMap::get_segment_path() const
@@ -1350,9 +1548,9 @@ const EntityPath Srlg::Nodes::Node::SrlgMaps::SrlgMap::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (srlg_name.is_set || is_set(srlg_name.operation)) leaf_name_data.push_back(srlg_name.get_name_leafdata());
-    if (srlg_name_xr.is_set || is_set(srlg_name_xr.operation)) leaf_name_data.push_back(srlg_name_xr.get_name_leafdata());
-    if (srlg_value.is_set || is_set(srlg_value.operation)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
+    if (srlg_name.is_set || is_set(srlg_name.yfilter)) leaf_name_data.push_back(srlg_name.get_name_leafdata());
+    if (srlg_name_xr.is_set || is_set(srlg_name_xr.yfilter)) leaf_name_data.push_back(srlg_name_xr.get_name_leafdata());
+    if (srlg_value.is_set || is_set(srlg_value.yfilter)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1371,20 +1569,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::SrlgMaps::Srlg
     return children;
 }
 
-void Srlg::Nodes::Node::SrlgMaps::SrlgMap::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::SrlgMaps::SrlgMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "srlg-name")
     {
         srlg_name = value;
+        srlg_name.value_namespace = name_space;
+        srlg_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-name-xr")
     {
         srlg_name_xr = value;
+        srlg_name_xr.value_namespace = name_space;
+        srlg_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-value")
     {
         srlg_value = value;
+        srlg_value.value_namespace = name_space;
+        srlg_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::SrlgMaps::SrlgMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srlg-name")
+    {
+        srlg_name.yfilter = yfilter;
+    }
+    if(value_path == "srlg-name-xr")
+    {
+        srlg_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "srlg-value")
+    {
+        srlg_value.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::SrlgMaps::SrlgMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-name" || name == "srlg-name-xr" || name == "srlg-value")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::Groups::Groups()
@@ -1413,7 +1640,7 @@ bool Srlg::Nodes::Node::Groups::has_operation() const
         if(group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::Nodes::Node::Groups::get_segment_path() const
@@ -1478,8 +1705,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::Groups::get_ch
     return children;
 }
 
-void Srlg::Nodes::Node::Groups::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::Nodes::Node::Groups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::Nodes::Node::Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::Groups::Group::Group()
@@ -1514,10 +1752,10 @@ bool Srlg::Nodes::Node::Groups::Group::has_operation() const
         if(srlg_attribute[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(group_name.operation)
-	|| is_set(group_name_xr.operation)
-	|| is_set(group_values.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(group_name_xr.yfilter)
+	|| ydk::is_set(group_values.yfilter);
 }
 
 std::string Srlg::Nodes::Node::Groups::Group::get_segment_path() const
@@ -1543,9 +1781,9 @@ const EntityPath Srlg::Nodes::Node::Groups::Group::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (group_name_xr.is_set || is_set(group_name_xr.operation)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
-    if (group_values.is_set || is_set(group_values.operation)) leaf_name_data.push_back(group_values.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (group_name_xr.is_set || is_set(group_name_xr.yfilter)) leaf_name_data.push_back(group_name_xr.get_name_leafdata());
+    if (group_values.is_set || is_set(group_values.yfilter)) leaf_name_data.push_back(group_values.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1585,20 +1823,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::Groups::Group:
     return children;
 }
 
-void Srlg::Nodes::Node::Groups::Group::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::Groups::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name-xr")
     {
         group_name_xr = value;
+        group_name_xr.value_namespace = name_space;
+        group_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-values")
     {
         group_values = value;
+        group_values.value_namespace = name_space;
+        group_values.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::Groups::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "group-name-xr")
+    {
+        group_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "group-values")
+    {
+        group_values.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::Groups::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-attribute" || name == "group-name" || name == "group-name-xr" || name == "group-values")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::Groups::Group::SrlgAttribute::SrlgAttribute()
@@ -1623,10 +1890,10 @@ bool Srlg::Nodes::Node::Groups::Group::SrlgAttribute::has_data() const
 
 bool Srlg::Nodes::Node::Groups::Group::SrlgAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(priority.operation)
-	|| is_set(srlg_index.operation)
-	|| is_set(srlg_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(srlg_index.yfilter)
+	|| ydk::is_set(srlg_value.yfilter);
 }
 
 std::string Srlg::Nodes::Node::Groups::Group::SrlgAttribute::get_segment_path() const
@@ -1652,9 +1919,9 @@ const EntityPath Srlg::Nodes::Node::Groups::Group::SrlgAttribute::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (srlg_index.is_set || is_set(srlg_index.operation)) leaf_name_data.push_back(srlg_index.get_name_leafdata());
-    if (srlg_value.is_set || is_set(srlg_value.operation)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (srlg_index.is_set || is_set(srlg_index.yfilter)) leaf_name_data.push_back(srlg_index.get_name_leafdata());
+    if (srlg_value.is_set || is_set(srlg_value.yfilter)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1673,20 +1940,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::Groups::Group:
     return children;
 }
 
-void Srlg::Nodes::Node::Groups::Group::SrlgAttribute::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::Groups::Group::SrlgAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-index")
     {
         srlg_index = value;
+        srlg_index.value_namespace = name_space;
+        srlg_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-value")
     {
         srlg_value = value;
+        srlg_value.value_namespace = name_space;
+        srlg_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::Groups::Group::SrlgAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "srlg-index")
+    {
+        srlg_index.yfilter = yfilter;
+    }
+    if(value_path == "srlg-value")
+    {
+        srlg_value.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::Groups::Group::SrlgAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority" || name == "srlg-index" || name == "srlg-value")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InheritNodes::InheritNodes()
@@ -1715,7 +2011,7 @@ bool Srlg::Nodes::Node::InheritNodes::has_operation() const
         if(inherit_node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::Nodes::Node::InheritNodes::get_segment_path() const
@@ -1780,8 +2076,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InheritNodes::
     return children;
 }
 
-void Srlg::Nodes::Node::InheritNodes::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InheritNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::Nodes::Node::InheritNodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::Nodes::Node::InheritNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inherit-node")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InheritNodes::InheritNode::InheritNode()
@@ -1816,10 +2123,10 @@ bool Srlg::Nodes::Node::InheritNodes::InheritNode::has_operation() const
         if(srlg_attribute[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(inherit_node_name.operation)
-	|| is_set(node_name.operation)
-	|| is_set(node_values.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(inherit_node_name.yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(node_values.yfilter);
 }
 
 std::string Srlg::Nodes::Node::InheritNodes::InheritNode::get_segment_path() const
@@ -1845,9 +2152,9 @@ const EntityPath Srlg::Nodes::Node::InheritNodes::InheritNode::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (inherit_node_name.is_set || is_set(inherit_node_name.operation)) leaf_name_data.push_back(inherit_node_name.get_name_leafdata());
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (node_values.is_set || is_set(node_values.operation)) leaf_name_data.push_back(node_values.get_name_leafdata());
+    if (inherit_node_name.is_set || is_set(inherit_node_name.yfilter)) leaf_name_data.push_back(inherit_node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_values.is_set || is_set(node_values.yfilter)) leaf_name_data.push_back(node_values.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1887,20 +2194,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InheritNodes::
     return children;
 }
 
-void Srlg::Nodes::Node::InheritNodes::InheritNode::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InheritNodes::InheritNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "inherit-node-name")
     {
         inherit_node_name = value;
+        inherit_node_name.value_namespace = name_space;
+        inherit_node_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-values")
     {
         node_values = value;
+        node_values.value_namespace = name_space;
+        node_values.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::InheritNodes::InheritNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "inherit-node-name")
+    {
+        inherit_node_name.yfilter = yfilter;
+    }
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "node-values")
+    {
+        node_values.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::InheritNodes::InheritNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-attribute" || name == "inherit-node-name" || name == "node-name" || name == "node-values")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::SrlgAttribute()
@@ -1925,10 +2261,10 @@ bool Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::has_data() con
 
 bool Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(priority.operation)
-	|| is_set(srlg_index.operation)
-	|| is_set(srlg_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(srlg_index.yfilter)
+	|| ydk::is_set(srlg_value.yfilter);
 }
 
 std::string Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::get_segment_path() const
@@ -1954,9 +2290,9 @@ const EntityPath Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (srlg_index.is_set || is_set(srlg_index.operation)) leaf_name_data.push_back(srlg_index.get_name_leafdata());
-    if (srlg_value.is_set || is_set(srlg_value.operation)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (srlg_index.is_set || is_set(srlg_index.yfilter)) leaf_name_data.push_back(srlg_index.get_name_leafdata());
+    if (srlg_value.is_set || is_set(srlg_value.yfilter)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1975,20 +2311,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InheritNodes::
     return children;
 }
 
-void Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-index")
     {
         srlg_index = value;
+        srlg_index.value_namespace = name_space;
+        srlg_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-value")
     {
         srlg_value = value;
+        srlg_value.value_namespace = name_space;
+        srlg_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "srlg-index")
+    {
+        srlg_index.yfilter = yfilter;
+    }
+    if(value_path == "srlg-value")
+    {
+        srlg_value.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::InheritNodes::InheritNode::SrlgAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority" || name == "srlg-index" || name == "srlg-value")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::Interfaces::Interfaces()
@@ -2017,7 +2382,7 @@ bool Srlg::Nodes::Node::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::Nodes::Node::Interfaces::get_segment_path() const
@@ -2082,8 +2447,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::Interfaces::ge
     return children;
 }
 
-void Srlg::Nodes::Node::Interfaces::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::Nodes::Node::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::Interfaces::Interface::Interface()
@@ -2118,15 +2494,15 @@ bool Srlg::Nodes::Node::Interfaces::Interface::has_operation() const
 {
     for (auto const & leaf : srlg_value.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(registrations.operation)
-	|| is_set(srlg_value.operation)
-	|| is_set(value_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(registrations.yfilter)
+	|| ydk::is_set(srlg_value.yfilter)
+	|| ydk::is_set(value_count.yfilter);
 }
 
 std::string Srlg::Nodes::Node::Interfaces::Interface::get_segment_path() const
@@ -2152,10 +2528,10 @@ const EntityPath Srlg::Nodes::Node::Interfaces::Interface::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (registrations.is_set || is_set(registrations.operation)) leaf_name_data.push_back(registrations.get_name_leafdata());
-    if (value_count.is_set || is_set(value_count.operation)) leaf_name_data.push_back(value_count.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (registrations.is_set || is_set(registrations.yfilter)) leaf_name_data.push_back(registrations.get_name_leafdata());
+    if (value_count.is_set || is_set(value_count.yfilter)) leaf_name_data.push_back(value_count.get_name_leafdata());
 
     auto srlg_value_name_datas = srlg_value.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), srlg_value_name_datas.begin(), srlg_value_name_datas.end());
@@ -2176,19 +2552,25 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Srlg::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "registrations")
     {
         registrations = value;
+        registrations.value_namespace = name_space;
+        registrations.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-value")
     {
@@ -2197,7 +2579,40 @@ void Srlg::Nodes::Node::Interfaces::Interface::set_value(const std::string & val
     if(value_path == "value-count")
     {
         value_count = value;
+        value_count.value_namespace = name_space;
+        value_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "registrations")
+    {
+        registrations.yfilter = yfilter;
+    }
+    if(value_path == "srlg-value")
+    {
+        srlg_value.yfilter = yfilter;
+    }
+    if(value_path == "value-count")
+    {
+        value_count.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface-name-xr" || name == "registrations" || name == "srlg-value" || name == "value-count")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InterfaceDetails::InterfaceDetails()
@@ -2226,7 +2641,7 @@ bool Srlg::Nodes::Node::InterfaceDetails::has_operation() const
         if(interface_detail[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::Nodes::Node::InterfaceDetails::get_segment_path() const
@@ -2291,8 +2706,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InterfaceDetai
     return children;
 }
 
-void Srlg::Nodes::Node::InterfaceDetails::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InterfaceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::Nodes::Node::InterfaceDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::Nodes::Node::InterfaceDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-detail")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::InterfaceDetail()
@@ -2327,10 +2753,10 @@ bool Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::has_operation() const
         if(srlg_attribute[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(groups.operation)
-	|| is_set(nodes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(groups.yfilter)
+	|| ydk::is_set(nodes.yfilter);
 }
 
 std::string Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::get_segment_path() const
@@ -2356,9 +2782,9 @@ const EntityPath Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (groups.is_set || is_set(groups.operation)) leaf_name_data.push_back(groups.get_name_leafdata());
-    if (nodes.is_set || is_set(nodes.operation)) leaf_name_data.push_back(nodes.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (groups.is_set || is_set(groups.yfilter)) leaf_name_data.push_back(groups.get_name_leafdata());
+    if (nodes.is_set || is_set(nodes.yfilter)) leaf_name_data.push_back(nodes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2398,20 +2824,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InterfaceDetai
     return children;
 }
 
-void Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "groups")
     {
         groups = value;
+        groups.value_namespace = name_space;
+        groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nodes")
     {
         nodes = value;
+        nodes.value_namespace = name_space;
+        nodes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "groups")
+    {
+        groups.yfilter = yfilter;
+    }
+    if(value_path == "nodes")
+    {
+        nodes.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-attribute" || name == "interface-name" || name == "groups" || name == "nodes")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::SrlgAttribute()
@@ -2440,12 +2895,12 @@ bool Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::has_da
 
 bool Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(priority.operation)
-	|| is_set(source.operation)
-	|| is_set(source_name.operation)
-	|| is_set(srlg_index.operation)
-	|| is_set(srlg_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(source_name.yfilter)
+	|| ydk::is_set(srlg_index.yfilter)
+	|| ydk::is_set(srlg_value.yfilter);
 }
 
 std::string Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::get_segment_path() const
@@ -2471,11 +2926,11 @@ const EntityPath Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (source_name.is_set || is_set(source_name.operation)) leaf_name_data.push_back(source_name.get_name_leafdata());
-    if (srlg_index.is_set || is_set(srlg_index.operation)) leaf_name_data.push_back(srlg_index.get_name_leafdata());
-    if (srlg_value.is_set || is_set(srlg_value.operation)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (source_name.is_set || is_set(source_name.yfilter)) leaf_name_data.push_back(source_name.get_name_leafdata());
+    if (srlg_index.is_set || is_set(srlg_index.yfilter)) leaf_name_data.push_back(srlg_index.get_name_leafdata());
+    if (srlg_value.is_set || is_set(srlg_value.yfilter)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2494,28 +2949,69 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InterfaceDetai
     return children;
 }
 
-void Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-name")
     {
         source_name = value;
+        source_name.value_namespace = name_space;
+        source_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-index")
     {
         srlg_index = value;
+        srlg_index.value_namespace = name_space;
+        srlg_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-value")
     {
         srlg_value = value;
+        srlg_value.value_namespace = name_space;
+        srlg_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "source-name")
+    {
+        source_name.yfilter = yfilter;
+    }
+    if(value_path == "srlg-index")
+    {
+        srlg_index.yfilter = yfilter;
+    }
+    if(value_path == "srlg-value")
+    {
+        srlg_value.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::InterfaceDetails::InterfaceDetail::SrlgAttribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority" || name == "source" || name == "source-name" || name == "srlg-index" || name == "srlg-value")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::SrlgValues::SrlgValues()
@@ -2544,7 +3040,7 @@ bool Srlg::Nodes::Node::SrlgValues::has_operation() const
         if(srlg_value[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::Nodes::Node::SrlgValues::get_segment_path() const
@@ -2609,8 +3105,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::SrlgValues::ge
     return children;
 }
 
-void Srlg::Nodes::Node::SrlgValues::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::SrlgValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::Nodes::Node::SrlgValues::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::Nodes::Node::SrlgValues::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-value")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::SrlgValues::SrlgValue::SrlgValue()
@@ -2639,12 +3146,12 @@ bool Srlg::Nodes::Node::SrlgValues::SrlgValue::has_operation() const
 {
     for (auto const & leaf : interface_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(value_.operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Srlg::Nodes::Node::SrlgValues::SrlgValue::get_segment_path() const
@@ -2670,7 +3177,7 @@ const EntityPath Srlg::Nodes::Node::SrlgValues::SrlgValue::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
     auto interface_name_name_datas = interface_name.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), interface_name_name_datas.begin(), interface_name_name_datas.end());
@@ -2691,16 +3198,37 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::SrlgValues::Sr
     return children;
 }
 
-void Srlg::Nodes::Node::SrlgValues::SrlgValue::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::SrlgValues::SrlgValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name.append(value);
     }
+}
+
+void Srlg::Nodes::Node::SrlgValues::SrlgValue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::SrlgValues::SrlgValue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgNames()
@@ -2729,7 +3257,7 @@ bool Srlg::Nodes::Node::InterfaceSrlgNames::has_operation() const
         if(interface_srlg_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::Nodes::Node::InterfaceSrlgNames::get_segment_path() const
@@ -2794,8 +3322,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InterfaceSrlgN
     return children;
 }
 
-void Srlg::Nodes::Node::InterfaceSrlgNames::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InterfaceSrlgNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::Nodes::Node::InterfaceSrlgNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::Nodes::Node::InterfaceSrlgNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-srlg-name")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::InterfaceSrlgName()
@@ -2825,10 +3364,10 @@ bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::has_data() const
 
 bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(srlg_name.operation)
-	|| is_set(srlg_name_xr.operation)
-	|| is_set(srlg_value.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(srlg_name.yfilter)
+	|| ydk::is_set(srlg_name_xr.yfilter)
+	|| ydk::is_set(srlg_value.yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
@@ -2855,9 +3394,9 @@ const EntityPath Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (srlg_name.is_set || is_set(srlg_name.operation)) leaf_name_data.push_back(srlg_name.get_name_leafdata());
-    if (srlg_name_xr.is_set || is_set(srlg_name_xr.operation)) leaf_name_data.push_back(srlg_name_xr.get_name_leafdata());
-    if (srlg_value.is_set || is_set(srlg_value.operation)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
+    if (srlg_name.is_set || is_set(srlg_name.yfilter)) leaf_name_data.push_back(srlg_name.get_name_leafdata());
+    if (srlg_name_xr.is_set || is_set(srlg_name_xr.yfilter)) leaf_name_data.push_back(srlg_name_xr.get_name_leafdata());
+    if (srlg_value.is_set || is_set(srlg_value.yfilter)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2890,20 +3429,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InterfaceSrlgN
     return children;
 }
 
-void Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "srlg-name")
     {
         srlg_name = value;
+        srlg_name.value_namespace = name_space;
+        srlg_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-name-xr")
     {
         srlg_name_xr = value;
+        srlg_name_xr.value_namespace = name_space;
+        srlg_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-value")
     {
         srlg_value = value;
+        srlg_value.value_namespace = name_space;
+        srlg_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srlg-name")
+    {
+        srlg_name.yfilter = yfilter;
+    }
+    if(value_path == "srlg-name-xr")
+    {
+        srlg_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "srlg-value")
+    {
+        srlg_value.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "srlg-name" || name == "srlg-name-xr" || name == "srlg-value")
+        return true;
+    return false;
 }
 
 Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::Interfaces()
@@ -2931,11 +3499,11 @@ bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_o
 {
     for (auto const & leaf : interface_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::get_segment_path() const
@@ -2981,12 +3549,27 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::Nodes::Node::InterfaceSrlgN
     return children;
 }
 
-void Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::set_value(const std::string & value_path, std::string value)
+void Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name.append(value);
     }
+}
+
+void Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Srlg::Nodes::Node::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
 }
 
 Srlg::InterfaceSrlgNames::InterfaceSrlgNames()
@@ -3015,7 +3598,7 @@ bool Srlg::InterfaceSrlgNames::has_operation() const
         if(interface_srlg_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Srlg::InterfaceSrlgNames::get_segment_path() const
@@ -3080,8 +3663,19 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::InterfaceSrlgNames::get_chi
     return children;
 }
 
-void Srlg::InterfaceSrlgNames::set_value(const std::string & value_path, std::string value)
+void Srlg::InterfaceSrlgNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Srlg::InterfaceSrlgNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Srlg::InterfaceSrlgNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-srlg-name")
+        return true;
+    return false;
 }
 
 Srlg::InterfaceSrlgNames::InterfaceSrlgName::InterfaceSrlgName()
@@ -3111,10 +3705,10 @@ bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::has_data() const
 
 bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(srlg_name.operation)
-	|| is_set(srlg_name_xr.operation)
-	|| is_set(srlg_value.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(srlg_name.yfilter)
+	|| ydk::is_set(srlg_name_xr.yfilter)
+	|| ydk::is_set(srlg_value.yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
@@ -3141,9 +3735,9 @@ const EntityPath Srlg::InterfaceSrlgNames::InterfaceSrlgName::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (srlg_name.is_set || is_set(srlg_name.operation)) leaf_name_data.push_back(srlg_name.get_name_leafdata());
-    if (srlg_name_xr.is_set || is_set(srlg_name_xr.operation)) leaf_name_data.push_back(srlg_name_xr.get_name_leafdata());
-    if (srlg_value.is_set || is_set(srlg_value.operation)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
+    if (srlg_name.is_set || is_set(srlg_name.yfilter)) leaf_name_data.push_back(srlg_name.get_name_leafdata());
+    if (srlg_name_xr.is_set || is_set(srlg_name_xr.yfilter)) leaf_name_data.push_back(srlg_name_xr.get_name_leafdata());
+    if (srlg_value.is_set || is_set(srlg_value.yfilter)) leaf_name_data.push_back(srlg_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3176,20 +3770,49 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::InterfaceSrlgNames::Interfa
     return children;
 }
 
-void Srlg::InterfaceSrlgNames::InterfaceSrlgName::set_value(const std::string & value_path, std::string value)
+void Srlg::InterfaceSrlgNames::InterfaceSrlgName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "srlg-name")
     {
         srlg_name = value;
+        srlg_name.value_namespace = name_space;
+        srlg_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-name-xr")
     {
         srlg_name_xr = value;
+        srlg_name_xr.value_namespace = name_space;
+        srlg_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-value")
     {
         srlg_value = value;
+        srlg_value.value_namespace = name_space;
+        srlg_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Srlg::InterfaceSrlgNames::InterfaceSrlgName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "srlg-name")
+    {
+        srlg_name.yfilter = yfilter;
+    }
+    if(value_path == "srlg-name-xr")
+    {
+        srlg_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "srlg-value")
+    {
+        srlg_value.yfilter = yfilter;
+    }
+}
+
+bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "srlg-name" || name == "srlg-name-xr" || name == "srlg-value")
+        return true;
+    return false;
 }
 
 Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::Interfaces()
@@ -3217,11 +3840,11 @@ bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_operation() co
 {
     for (auto const & leaf : interface_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::get_segment_path() const
@@ -3267,12 +3890,27 @@ std::map<std::string, std::shared_ptr<Entity>> Srlg::InterfaceSrlgNames::Interfa
     return children;
 }
 
-void Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::set_value(const std::string & value_path, std::string value)
+void Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name.append(value);
     }
+}
+
+void Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Srlg::InterfaceSrlgNames::InterfaceSrlgName::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
 }
 
 SelectiveVrfDownload::SelectiveVrfDownload()
@@ -3295,7 +3933,7 @@ bool SelectiveVrfDownload::has_data() const
 
 bool SelectiveVrfDownload::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (state !=  nullptr && state->has_operation());
 }
 
@@ -3351,7 +3989,11 @@ std::map<std::string, std::shared_ptr<Entity>> SelectiveVrfDownload::get_childre
     return children;
 }
 
-void SelectiveVrfDownload::set_value(const std::string & value_path, std::string value)
+void SelectiveVrfDownload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SelectiveVrfDownload::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -3375,6 +4017,18 @@ augment_capabilities_function SelectiveVrfDownload::get_augment_capabilities_fun
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> SelectiveVrfDownload::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SelectiveVrfDownload::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state")
+        return true;
+    return false;
+}
+
 SelectiveVrfDownload::State::State()
     :
     is_svd_enabled{YType::boolean, "is-svd-enabled"},
@@ -3395,9 +4049,9 @@ bool SelectiveVrfDownload::State::has_data() const
 
 bool SelectiveVrfDownload::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_svd_enabled.operation)
-	|| is_set(is_svd_enabled_cfg.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_svd_enabled.yfilter)
+	|| ydk::is_set(is_svd_enabled_cfg.yfilter);
 }
 
 std::string SelectiveVrfDownload::State::get_segment_path() const
@@ -3423,8 +4077,8 @@ const EntityPath SelectiveVrfDownload::State::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_svd_enabled.is_set || is_set(is_svd_enabled.operation)) leaf_name_data.push_back(is_svd_enabled.get_name_leafdata());
-    if (is_svd_enabled_cfg.is_set || is_set(is_svd_enabled_cfg.operation)) leaf_name_data.push_back(is_svd_enabled_cfg.get_name_leafdata());
+    if (is_svd_enabled.is_set || is_set(is_svd_enabled.yfilter)) leaf_name_data.push_back(is_svd_enabled.get_name_leafdata());
+    if (is_svd_enabled_cfg.is_set || is_set(is_svd_enabled_cfg.yfilter)) leaf_name_data.push_back(is_svd_enabled_cfg.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3443,32 +4097,55 @@ std::map<std::string, std::shared_ptr<Entity>> SelectiveVrfDownload::State::get_
     return children;
 }
 
-void SelectiveVrfDownload::State::set_value(const std::string & value_path, std::string value)
+void SelectiveVrfDownload::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-svd-enabled")
     {
         is_svd_enabled = value;
+        is_svd_enabled.value_namespace = name_space;
+        is_svd_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-svd-enabled-cfg")
     {
         is_svd_enabled_cfg = value;
+        is_svd_enabled_cfg.value_namespace = name_space;
+        is_svd_enabled_cfg.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf PriorityEnum::critical {0, "critical"};
-const Enum::YLeaf PriorityEnum::high {1, "high"};
-const Enum::YLeaf PriorityEnum::medium {2, "medium"};
-const Enum::YLeaf PriorityEnum::low {3, "low"};
-const Enum::YLeaf PriorityEnum::very_low {4, "very-low"};
+void SelectiveVrfDownload::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-svd-enabled")
+    {
+        is_svd_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-svd-enabled-cfg")
+    {
+        is_svd_enabled_cfg.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf SourceEnum::configured {1, "configured"};
-const Enum::YLeaf SourceEnum::from_group {2, "from-group"};
-const Enum::YLeaf SourceEnum::inherited {4, "inherited"};
-const Enum::YLeaf SourceEnum::from_optical {8, "from-optical"};
-const Enum::YLeaf SourceEnum::configured_and_notified {17, "configured-and-notified"};
-const Enum::YLeaf SourceEnum::from_group_and_notified {18, "from-group-and-notified"};
-const Enum::YLeaf SourceEnum::inherited_and_notified {20, "inherited-and-notified"};
-const Enum::YLeaf SourceEnum::from_optical_and_notified {24, "from-optical-and-notified"};
+bool SelectiveVrfDownload::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-svd-enabled" || name == "is-svd-enabled-cfg")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Source::configured {1, "configured"};
+const Enum::YLeaf Source::from_group {2, "from-group"};
+const Enum::YLeaf Source::inherited {4, "inherited"};
+const Enum::YLeaf Source::from_optical {8, "from-optical"};
+const Enum::YLeaf Source::configured_and_notified {17, "configured-and-notified"};
+const Enum::YLeaf Source::from_group_and_notified {18, "from-group-and-notified"};
+const Enum::YLeaf Source::inherited_and_notified {20, "inherited-and-notified"};
+const Enum::YLeaf Source::from_optical_and_notified {24, "from-optical-and-notified"};
+
+const Enum::YLeaf Priority::critical {0, "critical"};
+const Enum::YLeaf Priority::high {1, "high"};
+const Enum::YLeaf Priority::medium {2, "medium"};
+const Enum::YLeaf Priority::low {3, "low"};
+const Enum::YLeaf Priority::very_low {4, "very-low"};
 
 
 }

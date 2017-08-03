@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_vpn_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_vpn_oper {
 
 L3Vpn::L3Vpn()
@@ -33,7 +35,7 @@ bool L3Vpn::has_data() const
 
 bool L3Vpn::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (invalid_vrfs !=  nullptr && invalid_vrfs->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::get_children() const
     return children;
 }
 
-void L3Vpn::set_value(const std::string & value_path, std::string value)
+void L3Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L3Vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string L3Vpn::get_bundle_name() const
 augment_capabilities_function L3Vpn::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> L3Vpn::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool L3Vpn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "invalid-vrfs" || name == "vrfs")
+        return true;
+    return false;
 }
 
 L3Vpn::InvalidVrfs::InvalidVrfs()
@@ -154,7 +172,7 @@ bool L3Vpn::InvalidVrfs::has_operation() const
         if(invalid_vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L3Vpn::InvalidVrfs::get_segment_path() const
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::get_children(
     return children;
 }
 
-void L3Vpn::InvalidVrfs::set_value(const std::string & value_path, std::string value)
+void L3Vpn::InvalidVrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L3Vpn::InvalidVrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L3Vpn::InvalidVrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "invalid-vrf")
+        return true;
+    return false;
 }
 
 L3Vpn::InvalidVrfs::InvalidVrf::InvalidVrf()
@@ -269,12 +298,12 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(is_big_vrf.operation)
-	|| is_set(route_distinguisher.operation)
-	|| is_set(vrf_description.operation)
-	|| is_set(vrf_name_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(is_big_vrf.yfilter)
+	|| ydk::is_set(route_distinguisher.yfilter)
+	|| ydk::is_set(vrf_description.yfilter)
+	|| ydk::is_set(vrf_name_xr.yfilter);
 }
 
 std::string L3Vpn::InvalidVrfs::InvalidVrf::get_segment_path() const
@@ -300,11 +329,11 @@ const EntityPath L3Vpn::InvalidVrfs::InvalidVrf::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (is_big_vrf.is_set || is_set(is_big_vrf.operation)) leaf_name_data.push_back(is_big_vrf.get_name_leafdata());
-    if (route_distinguisher.is_set || is_set(route_distinguisher.operation)) leaf_name_data.push_back(route_distinguisher.get_name_leafdata());
-    if (vrf_description.is_set || is_set(vrf_description.operation)) leaf_name_data.push_back(vrf_description.get_name_leafdata());
-    if (vrf_name_xr.is_set || is_set(vrf_name_xr.operation)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (is_big_vrf.is_set || is_set(is_big_vrf.yfilter)) leaf_name_data.push_back(is_big_vrf.get_name_leafdata());
+    if (route_distinguisher.is_set || is_set(route_distinguisher.yfilter)) leaf_name_data.push_back(route_distinguisher.get_name_leafdata());
+    if (vrf_description.is_set || is_set(vrf_description.yfilter)) leaf_name_data.push_back(vrf_description.get_name_leafdata());
+    if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -365,28 +394,69 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::g
     return children;
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::set_value(const std::string & value_path, std::string value)
+void L3Vpn::InvalidVrfs::InvalidVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-big-vrf")
     {
         is_big_vrf = value;
+        is_big_vrf.value_namespace = name_space;
+        is_big_vrf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-distinguisher")
     {
         route_distinguisher = value;
+        route_distinguisher.value_namespace = name_space;
+        route_distinguisher.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-description")
     {
         vrf_description = value;
+        vrf_description.value_namespace = name_space;
+        vrf_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name-xr")
     {
         vrf_name_xr = value;
+        vrf_name_xr.value_namespace = name_space;
+        vrf_name_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L3Vpn::InvalidVrfs::InvalidVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "is-big-vrf")
+    {
+        is_big_vrf.yfilter = yfilter;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher.yfilter = yfilter;
+    }
+    if(value_path == "vrf-description")
+    {
+        vrf_description.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name-xr")
+    {
+        vrf_name_xr.yfilter = yfilter;
+    }
+}
+
+bool L3Vpn::InvalidVrfs::InvalidVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "interface" || name == "vrf-name" || name == "is-big-vrf" || name == "route-distinguisher" || name == "vrf-description" || name == "vrf-name-xr")
+        return true;
+    return false;
 }
 
 L3Vpn::InvalidVrfs::InvalidVrf::Interface::Interface()
@@ -407,8 +477,8 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::Interface::has_data() const
 
 bool L3Vpn::InvalidVrfs::InvalidVrf::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_segment_path() const
@@ -434,7 +504,7 @@ const EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Interface::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -453,12 +523,29 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::I
     return children;
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Interface::set_value(const std::string & value_path, std::string value)
+void L3Vpn::InvalidVrfs::InvalidVrf::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L3Vpn::InvalidVrfs::InvalidVrf::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool L3Vpn::InvalidVrfs::InvalidVrf::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
 }
 
 L3Vpn::InvalidVrfs::InvalidVrf::Af::Af()
@@ -495,11 +582,11 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::Af::has_operation() const
         if(route_target[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(export_route_policy.operation)
-	|| is_set(import_route_policy.operation)
-	|| is_set(saf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(export_route_policy.yfilter)
+	|| ydk::is_set(import_route_policy.yfilter)
+	|| ydk::is_set(saf_name.yfilter);
 }
 
 std::string L3Vpn::InvalidVrfs::InvalidVrf::Af::get_segment_path() const
@@ -525,10 +612,10 @@ const EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (export_route_policy.is_set || is_set(export_route_policy.operation)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
-    if (import_route_policy.is_set || is_set(import_route_policy.operation)) leaf_name_data.push_back(import_route_policy.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (export_route_policy.is_set || is_set(export_route_policy.yfilter)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
+    if (import_route_policy.is_set || is_set(import_route_policy.yfilter)) leaf_name_data.push_back(import_route_policy.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -568,24 +655,59 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::A
     return children;
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Af::set_value(const std::string & value_path, std::string value)
+void L3Vpn::InvalidVrfs::InvalidVrf::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "export-route-policy")
     {
         export_route_policy = value;
+        export_route_policy.value_namespace = name_space;
+        export_route_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "import-route-policy")
     {
         import_route_policy = value;
+        import_route_policy.value_namespace = name_space;
+        import_route_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L3Vpn::InvalidVrfs::InvalidVrf::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "export-route-policy")
+    {
+        export_route_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-route-policy")
+    {
+        import_route_policy.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+}
+
+bool L3Vpn::InvalidVrfs::InvalidVrf::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-target" || name == "af-name" || name == "export-route-policy" || name == "import-route-policy" || name == "saf-name")
+        return true;
+    return false;
 }
 
 L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::RouteTarget()
@@ -612,11 +734,11 @@ bool L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_data() const
 
 bool L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(route_target_type.operation)
-	|| is_set(route_target_value.operation)
-	|| is_set(saf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(route_target_type.yfilter)
+	|| ydk::is_set(route_target_value.yfilter)
+	|| ydk::is_set(saf_name.yfilter);
 }
 
 std::string L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_segment_path() const
@@ -642,10 +764,10 @@ const EntityPath L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (route_target_type.is_set || is_set(route_target_type.operation)) leaf_name_data.push_back(route_target_type.get_name_leafdata());
-    if (route_target_value.is_set || is_set(route_target_value.operation)) leaf_name_data.push_back(route_target_value.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (route_target_type.is_set || is_set(route_target_type.yfilter)) leaf_name_data.push_back(route_target_type.get_name_leafdata());
+    if (route_target_value.is_set || is_set(route_target_value.yfilter)) leaf_name_data.push_back(route_target_value.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -664,24 +786,59 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::InvalidVrfs::InvalidVrf::A
     return children;
 }
 
-void L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_value(const std::string & value_path, std::string value)
+void L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-target-type")
     {
         route_target_type = value;
+        route_target_type.value_namespace = name_space;
+        route_target_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-target-value")
     {
         route_target_value = value;
+        route_target_value.value_namespace = name_space;
+        route_target_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "route-target-type")
+    {
+        route_target_type.yfilter = yfilter;
+    }
+    if(value_path == "route-target-value")
+    {
+        route_target_value.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+}
+
+bool L3Vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "route-target-type" || name == "route-target-value" || name == "saf-name")
+        return true;
+    return false;
 }
 
 L3Vpn::Vrfs::Vrfs()
@@ -710,7 +867,7 @@ bool L3Vpn::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L3Vpn::Vrfs::get_segment_path() const
@@ -775,8 +932,19 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::get_children() const
     return children;
 }
 
-void L3Vpn::Vrfs::set_value(const std::string & value_path, std::string value)
+void L3Vpn::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L3Vpn::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L3Vpn::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 L3Vpn::Vrfs::Vrf::Vrf()
@@ -825,12 +993,12 @@ bool L3Vpn::Vrfs::Vrf::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(is_big_vrf.operation)
-	|| is_set(route_distinguisher.operation)
-	|| is_set(vrf_description.operation)
-	|| is_set(vrf_name_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(is_big_vrf.yfilter)
+	|| ydk::is_set(route_distinguisher.yfilter)
+	|| ydk::is_set(vrf_description.yfilter)
+	|| ydk::is_set(vrf_name_xr.yfilter);
 }
 
 std::string L3Vpn::Vrfs::Vrf::get_segment_path() const
@@ -856,11 +1024,11 @@ const EntityPath L3Vpn::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (is_big_vrf.is_set || is_set(is_big_vrf.operation)) leaf_name_data.push_back(is_big_vrf.get_name_leafdata());
-    if (route_distinguisher.is_set || is_set(route_distinguisher.operation)) leaf_name_data.push_back(route_distinguisher.get_name_leafdata());
-    if (vrf_description.is_set || is_set(vrf_description.operation)) leaf_name_data.push_back(vrf_description.get_name_leafdata());
-    if (vrf_name_xr.is_set || is_set(vrf_name_xr.operation)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (is_big_vrf.is_set || is_set(is_big_vrf.yfilter)) leaf_name_data.push_back(is_big_vrf.get_name_leafdata());
+    if (route_distinguisher.is_set || is_set(route_distinguisher.yfilter)) leaf_name_data.push_back(route_distinguisher.get_name_leafdata());
+    if (vrf_description.is_set || is_set(vrf_description.yfilter)) leaf_name_data.push_back(vrf_description.get_name_leafdata());
+    if (vrf_name_xr.is_set || is_set(vrf_name_xr.yfilter)) leaf_name_data.push_back(vrf_name_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -921,28 +1089,69 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::get_children() 
     return children;
 }
 
-void L3Vpn::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void L3Vpn::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-big-vrf")
     {
         is_big_vrf = value;
+        is_big_vrf.value_namespace = name_space;
+        is_big_vrf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-distinguisher")
     {
         route_distinguisher = value;
+        route_distinguisher.value_namespace = name_space;
+        route_distinguisher.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-description")
     {
         vrf_description = value;
+        vrf_description.value_namespace = name_space;
+        vrf_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name-xr")
     {
         vrf_name_xr = value;
+        vrf_name_xr.value_namespace = name_space;
+        vrf_name_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L3Vpn::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "is-big-vrf")
+    {
+        is_big_vrf.yfilter = yfilter;
+    }
+    if(value_path == "route-distinguisher")
+    {
+        route_distinguisher.yfilter = yfilter;
+    }
+    if(value_path == "vrf-description")
+    {
+        vrf_description.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name-xr")
+    {
+        vrf_name_xr.yfilter = yfilter;
+    }
+}
+
+bool L3Vpn::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "interface" || name == "vrf-name" || name == "is-big-vrf" || name == "route-distinguisher" || name == "vrf-description" || name == "vrf-name-xr")
+        return true;
+    return false;
 }
 
 L3Vpn::Vrfs::Vrf::Interface::Interface()
@@ -963,8 +1172,8 @@ bool L3Vpn::Vrfs::Vrf::Interface::has_data() const
 
 bool L3Vpn::Vrfs::Vrf::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string L3Vpn::Vrfs::Vrf::Interface::get_segment_path() const
@@ -990,7 +1199,7 @@ const EntityPath L3Vpn::Vrfs::Vrf::Interface::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1009,12 +1218,29 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Interface::get_
     return children;
 }
 
-void L3Vpn::Vrfs::Vrf::Interface::set_value(const std::string & value_path, std::string value)
+void L3Vpn::Vrfs::Vrf::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L3Vpn::Vrfs::Vrf::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool L3Vpn::Vrfs::Vrf::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
 }
 
 L3Vpn::Vrfs::Vrf::Af::Af()
@@ -1051,11 +1277,11 @@ bool L3Vpn::Vrfs::Vrf::Af::has_operation() const
         if(route_target[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(export_route_policy.operation)
-	|| is_set(import_route_policy.operation)
-	|| is_set(saf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(export_route_policy.yfilter)
+	|| ydk::is_set(import_route_policy.yfilter)
+	|| ydk::is_set(saf_name.yfilter);
 }
 
 std::string L3Vpn::Vrfs::Vrf::Af::get_segment_path() const
@@ -1081,10 +1307,10 @@ const EntityPath L3Vpn::Vrfs::Vrf::Af::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (export_route_policy.is_set || is_set(export_route_policy.operation)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
-    if (import_route_policy.is_set || is_set(import_route_policy.operation)) leaf_name_data.push_back(import_route_policy.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (export_route_policy.is_set || is_set(export_route_policy.yfilter)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
+    if (import_route_policy.is_set || is_set(import_route_policy.yfilter)) leaf_name_data.push_back(import_route_policy.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1124,24 +1350,59 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::get_childre
     return children;
 }
 
-void L3Vpn::Vrfs::Vrf::Af::set_value(const std::string & value_path, std::string value)
+void L3Vpn::Vrfs::Vrf::Af::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "export-route-policy")
     {
         export_route_policy = value;
+        export_route_policy.value_namespace = name_space;
+        export_route_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "import-route-policy")
     {
         import_route_policy = value;
+        import_route_policy.value_namespace = name_space;
+        import_route_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L3Vpn::Vrfs::Vrf::Af::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "export-route-policy")
+    {
+        export_route_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-route-policy")
+    {
+        import_route_policy.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+}
+
+bool L3Vpn::Vrfs::Vrf::Af::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-target" || name == "af-name" || name == "export-route-policy" || name == "import-route-policy" || name == "saf-name")
+        return true;
+    return false;
 }
 
 L3Vpn::Vrfs::Vrf::Af::RouteTarget::RouteTarget()
@@ -1168,11 +1429,11 @@ bool L3Vpn::Vrfs::Vrf::Af::RouteTarget::has_data() const
 
 bool L3Vpn::Vrfs::Vrf::Af::RouteTarget::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(route_target_type.operation)
-	|| is_set(route_target_value.operation)
-	|| is_set(saf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(route_target_type.yfilter)
+	|| ydk::is_set(route_target_value.yfilter)
+	|| ydk::is_set(saf_name.yfilter);
 }
 
 std::string L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_segment_path() const
@@ -1198,10 +1459,10 @@ const EntityPath L3Vpn::Vrfs::Vrf::Af::RouteTarget::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (route_target_type.is_set || is_set(route_target_type.operation)) leaf_name_data.push_back(route_target_type.get_name_leafdata());
-    if (route_target_value.is_set || is_set(route_target_value.operation)) leaf_name_data.push_back(route_target_value.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (route_target_type.is_set || is_set(route_target_type.yfilter)) leaf_name_data.push_back(route_target_type.get_name_leafdata());
+    if (route_target_value.is_set || is_set(route_target_value.yfilter)) leaf_name_data.push_back(route_target_value.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1220,36 +1481,71 @@ std::map<std::string, std::shared_ptr<Entity>> L3Vpn::Vrfs::Vrf::Af::RouteTarget
     return children;
 }
 
-void L3Vpn::Vrfs::Vrf::Af::RouteTarget::set_value(const std::string & value_path, std::string value)
+void L3Vpn::Vrfs::Vrf::Af::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-target-type")
     {
         route_target_type = value;
+        route_target_type.value_namespace = name_space;
+        route_target_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-target-value")
     {
         route_target_value = value;
+        route_target_value.value_namespace = name_space;
+        route_target_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf MplsVpnRtEnum::import {1, "import"};
-const Enum::YLeaf MplsVpnRtEnum::export_ {2, "export"};
-const Enum::YLeaf MplsVpnRtEnum::both {3, "both"};
+void L3Vpn::Vrfs::Vrf::Af::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "route-target-type")
+    {
+        route_target_type.yfilter = yfilter;
+    }
+    if(value_path == "route-target-value")
+    {
+        route_target_value.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf MplsVpnAfiEnum::ipv4 {1, "ipv4"};
-const Enum::YLeaf MplsVpnAfiEnum::ipv6 {2, "ipv6"};
+bool L3Vpn::Vrfs::Vrf::Af::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "route-target-type" || name == "route-target-value" || name == "saf-name")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf MplsVpnSafiEnum::unicast {1, "unicast"};
-const Enum::YLeaf MplsVpnSafiEnum::multicast {2, "multicast"};
-const Enum::YLeaf MplsVpnSafiEnum::flowspec {133, "flowspec"};
+const Enum::YLeaf MplsVpnAfi::ipv4 {1, "ipv4"};
+const Enum::YLeaf MplsVpnAfi::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf MplsVpnRt::import {1, "import"};
+const Enum::YLeaf MplsVpnRt::export_ {2, "export"};
+const Enum::YLeaf MplsVpnRt::both {3, "both"};
+
+const Enum::YLeaf MplsVpnSafi::unicast {1, "unicast"};
+const Enum::YLeaf MplsVpnSafi::multicast {2, "multicast"};
+const Enum::YLeaf MplsVpnSafi::flowspec {133, "flowspec"};
 
 
 }

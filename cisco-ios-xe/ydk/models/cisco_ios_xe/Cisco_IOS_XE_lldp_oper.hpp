@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_lldp_oper {
 
-class LldpEntries : public Entity
+class LldpEntries : public ydk::Entity
 {
     public:
         LldpEntries();
@@ -18,24 +18,27 @@ class LldpEntries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class LldpEntry; //type: LldpEntries::LldpEntry
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry> > lldp_entry_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry> > lldp_entry;
         
 }; // LldpEntries
 
 
-class LldpEntries::LldpEntry : public Entity
+class LldpEntries::LldpEntry : public ydk::Entity
 {
     public:
         LldpEntry();
@@ -43,24 +46,26 @@ class LldpEntries::LldpEntry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf device_id; //type: string
-        YLeaf local_interface; //type: string
-        YLeaf connecting_interface; //type: string
-        YLeaf ttl; //type: uint32
+        ydk::YLeaf device_id; //type: string
+        ydk::YLeaf local_interface; //type: string
+        ydk::YLeaf connecting_interface; //type: string
+        ydk::YLeaf ttl; //type: uint32
         class Capabilities; //type: LldpEntries::LldpEntry::Capabilities
 
-        std::shared_ptr<Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry::Capabilities> capabilities_;
+        std::shared_ptr<Cisco_IOS_XE_lldp_oper::LldpEntries::LldpEntry::Capabilities> capabilities;
         
 }; // LldpEntries::LldpEntry
 
 
-class LldpEntries::LldpEntry::Capabilities : public Entity
+class LldpEntries::LldpEntry::Capabilities : public ydk::Entity
 {
     public:
         Capabilities();
@@ -68,20 +73,22 @@ class LldpEntries::LldpEntry::Capabilities : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf repeater; //type: empty
-        YLeaf bridge; //type: empty
-        YLeaf access_point; //type: empty
-        YLeaf router; //type: empty
-        YLeaf telephone; //type: empty
-        YLeaf docsis; //type: empty
-        YLeaf station; //type: empty
-        YLeaf other; //type: empty
+        ydk::YLeaf repeater; //type: empty
+        ydk::YLeaf bridge; //type: empty
+        ydk::YLeaf access_point; //type: empty
+        ydk::YLeaf router; //type: empty
+        ydk::YLeaf telephone; //type: empty
+        ydk::YLeaf docsis; //type: empty
+        ydk::YLeaf station; //type: empty
+        ydk::YLeaf other; //type: empty
 
 }; // LldpEntries::LldpEntry::Capabilities
 

@@ -6,132 +6,134 @@
 #include "generated_entity_lookup.hpp"
 #include "cisco_odm.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace cisco_odm {
 
-ParsernameIdentity::ParsernameIdentity()
-     : Identity("cisco-odm:parsername")
+Parsername::Parsername()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:parsername")
 {
 }
 
-ParsernameIdentity::~ParsernameIdentity()
+Parsername::~Parsername()
 {
 }
 
-FlowmonitorIdentity::FlowmonitorIdentity()
-     : Identity("cisco-odm:FlowMonitor")
+Mplsstaticbinding::Mplsstaticbinding()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSStaticBinding")
 {
 }
 
-FlowmonitorIdentity::~FlowmonitorIdentity()
+Mplsstaticbinding::~Mplsstaticbinding()
 {
 }
 
-VirtualserviceIdentity::VirtualserviceIdentity()
-     : Identity("cisco-odm:VirtualService")
+Mplsforwardingtable::Mplsforwardingtable()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSForwardingTable")
 {
 }
 
-VirtualserviceIdentity::~VirtualserviceIdentity()
+Mplsforwardingtable::~Mplsforwardingtable()
 {
 }
 
-DiffservIdentity::DiffservIdentity()
-     : Identity("cisco-odm:Diffserv")
+Bridgedomain::Bridgedomain()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BridgeDomain")
 {
 }
 
-DiffservIdentity::~DiffservIdentity()
+Bridgedomain::~Bridgedomain()
 {
 }
 
-BridgedomainIdentity::BridgedomainIdentity()
-     : Identity("cisco-odm:BridgeDomain")
+Platformsoftware::Platformsoftware()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:PlatformSoftware")
 {
 }
 
-BridgedomainIdentity::~BridgedomainIdentity()
+Platformsoftware::~Platformsoftware()
 {
 }
 
-MplsstaticbindingIdentity::MplsstaticbindingIdentity()
-     : Identity("cisco-odm:MPLSStaticBinding")
+Virtualservice::Virtualservice()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:VirtualService")
 {
 }
 
-MplsstaticbindingIdentity::~MplsstaticbindingIdentity()
+Virtualservice::~Virtualservice()
 {
 }
 
-EthernetcfmstatsIdentity::EthernetcfmstatsIdentity()
-     : Identity("cisco-odm:EthernetCFMStats")
+Ospf::Ospf()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:OSPF")
 {
 }
 
-EthernetcfmstatsIdentity::~EthernetcfmstatsIdentity()
+Ospf::~Ospf()
 {
 }
 
-MplsforwardingtableIdentity::MplsforwardingtableIdentity()
-     : Identity("cisco-odm:MPLSForwardingTable")
+Bfdneighbors::Bfdneighbors()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BFDNeighbors")
 {
 }
 
-MplsforwardingtableIdentity::~MplsforwardingtableIdentity()
+Bfdneighbors::~Bfdneighbors()
 {
 }
 
-BgpIdentity::BgpIdentity()
-     : Identity("cisco-odm:BGP")
+Flowmonitor::Flowmonitor()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:FlowMonitor")
 {
 }
 
-BgpIdentity::~BgpIdentity()
+Flowmonitor::~Flowmonitor()
 {
 }
 
-IprouteIdentity::IprouteIdentity()
-     : Identity("cisco-odm:IPRoute")
+Ethernetcfmstats::Ethernetcfmstats()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:EthernetCFMStats")
 {
 }
 
-IprouteIdentity::~IprouteIdentity()
+Ethernetcfmstats::~Ethernetcfmstats()
 {
 }
 
-PlatformsoftwareIdentity::PlatformsoftwareIdentity()
-     : Identity("cisco-odm:PlatformSoftware")
+Bgp::Bgp()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:BGP")
 {
 }
 
-PlatformsoftwareIdentity::~PlatformsoftwareIdentity()
+Bgp::~Bgp()
 {
 }
 
-MplsldpneighborsIdentity::MplsldpneighborsIdentity()
-     : Identity("cisco-odm:MPLSLDPNeighbors")
+Mplsldpneighbors::Mplsldpneighbors()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:MPLSLDPNeighbors")
 {
 }
 
-MplsldpneighborsIdentity::~MplsldpneighborsIdentity()
+Mplsldpneighbors::~Mplsldpneighbors()
 {
 }
 
-BfdneighborsIdentity::BfdneighborsIdentity()
-     : Identity("cisco-odm:BFDNeighbors")
+Diffserv::Diffserv()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:Diffserv")
 {
 }
 
-BfdneighborsIdentity::~BfdneighborsIdentity()
+Diffserv::~Diffserv()
 {
 }
 
-OspfIdentity::OspfIdentity()
-     : Identity("cisco-odm:OSPF")
+Iproute::Iproute()
+     : Identity("http://cisco.com/yang/cisco-odm", "cisco-odm", "cisco-odm:IPRoute")
 {
 }
 
-OspfIdentity::~OspfIdentity()
+Iproute::~Iproute()
 {
 }
 

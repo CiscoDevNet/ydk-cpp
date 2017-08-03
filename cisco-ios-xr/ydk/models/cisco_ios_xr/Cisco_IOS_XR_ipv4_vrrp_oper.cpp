@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_vrrp_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_vrrp_oper {
 
 Vrrp::Vrrp()
@@ -41,7 +43,7 @@ bool Vrrp::has_data() const
 
 bool Vrrp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation())
 	|| (mgo_sessions !=  nullptr && mgo_sessions->has_operation())
@@ -142,7 +144,11 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::get_children() const
     return children;
 }
 
-void Vrrp::set_value(const std::string & value_path, std::string value)
+void Vrrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vrrp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -164,6 +170,18 @@ std::string Vrrp::get_bundle_name() const
 augment_capabilities_function Vrrp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Vrrp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Vrrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "mgo-sessions" || name == "summary")
+        return true;
+    return false;
 }
 
 Vrrp::Summary::Summary()
@@ -274,53 +292,53 @@ bool Vrrp::Summary::has_data() const
 
 bool Vrrp::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bfd_session_inactive.operation)
-	|| is_set(bfd_sessions_down.operation)
-	|| is_set(bfd_sessions_up.operation)
-	|| is_set(interfaces_ipv4_state_down.operation)
-	|| is_set(interfaces_ipv4_state_up.operation)
-	|| is_set(interfaces_ipv6_state_down.operation)
-	|| is_set(interfaces_ipv6_state_up.operation)
-	|| is_set(ipv4_sessions_backup.operation)
-	|| is_set(ipv4_sessions_init.operation)
-	|| is_set(ipv4_sessions_master.operation)
-	|| is_set(ipv4_sessions_master_owner.operation)
-	|| is_set(ipv4_slaves_backup.operation)
-	|| is_set(ipv4_slaves_init.operation)
-	|| is_set(ipv4_slaves_master.operation)
-	|| is_set(ipv4_virtual_ip_addresses_backup_down.operation)
-	|| is_set(ipv4_virtual_ip_addresses_backup_up.operation)
-	|| is_set(ipv4_virtual_ip_addresses_init_down.operation)
-	|| is_set(ipv4_virtual_ip_addresses_init_up.operation)
-	|| is_set(ipv4_virtual_ip_addresses_master_down.operation)
-	|| is_set(ipv4_virtual_ip_addresses_master_owner_down.operation)
-	|| is_set(ipv4_virtual_ip_addresses_master_owner_up.operation)
-	|| is_set(ipv4_virtual_ip_addresses_master_up.operation)
-	|| is_set(ipv6_sessions_backup.operation)
-	|| is_set(ipv6_sessions_init.operation)
-	|| is_set(ipv6_sessions_master.operation)
-	|| is_set(ipv6_sessions_master_owner.operation)
-	|| is_set(ipv6_slaves_backup.operation)
-	|| is_set(ipv6_slaves_init.operation)
-	|| is_set(ipv6_slaves_master.operation)
-	|| is_set(ipv6_virtual_ip_addresses_backup_down.operation)
-	|| is_set(ipv6_virtual_ip_addresses_backup_up.operation)
-	|| is_set(ipv6_virtual_ip_addresses_init_down.operation)
-	|| is_set(ipv6_virtual_ip_addresses_init_up.operation)
-	|| is_set(ipv6_virtual_ip_addresses_master_down.operation)
-	|| is_set(ipv6_virtual_ip_addresses_master_owner_down.operation)
-	|| is_set(ipv6_virtual_ip_addresses_master_owner_up.operation)
-	|| is_set(ipv6_virtual_ip_addresses_master_up.operation)
-	|| is_set(ipv6bfd_session_inactive.operation)
-	|| is_set(ipv6bfd_sessions_down.operation)
-	|| is_set(ipv6bfd_sessions_up.operation)
-	|| is_set(tracked_interfaces_ipv4_state_down.operation)
-	|| is_set(tracked_interfaces_ipv4_state_up.operation)
-	|| is_set(tracked_interfaces_ipv6_state_down.operation)
-	|| is_set(tracked_interfaces_ipv6_state_up.operation)
-	|| is_set(tracked_objects_state_down.operation)
-	|| is_set(tracked_objects_state_up.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bfd_session_inactive.yfilter)
+	|| ydk::is_set(bfd_sessions_down.yfilter)
+	|| ydk::is_set(bfd_sessions_up.yfilter)
+	|| ydk::is_set(interfaces_ipv4_state_down.yfilter)
+	|| ydk::is_set(interfaces_ipv4_state_up.yfilter)
+	|| ydk::is_set(interfaces_ipv6_state_down.yfilter)
+	|| ydk::is_set(interfaces_ipv6_state_up.yfilter)
+	|| ydk::is_set(ipv4_sessions_backup.yfilter)
+	|| ydk::is_set(ipv4_sessions_init.yfilter)
+	|| ydk::is_set(ipv4_sessions_master.yfilter)
+	|| ydk::is_set(ipv4_sessions_master_owner.yfilter)
+	|| ydk::is_set(ipv4_slaves_backup.yfilter)
+	|| ydk::is_set(ipv4_slaves_init.yfilter)
+	|| ydk::is_set(ipv4_slaves_master.yfilter)
+	|| ydk::is_set(ipv4_virtual_ip_addresses_backup_down.yfilter)
+	|| ydk::is_set(ipv4_virtual_ip_addresses_backup_up.yfilter)
+	|| ydk::is_set(ipv4_virtual_ip_addresses_init_down.yfilter)
+	|| ydk::is_set(ipv4_virtual_ip_addresses_init_up.yfilter)
+	|| ydk::is_set(ipv4_virtual_ip_addresses_master_down.yfilter)
+	|| ydk::is_set(ipv4_virtual_ip_addresses_master_owner_down.yfilter)
+	|| ydk::is_set(ipv4_virtual_ip_addresses_master_owner_up.yfilter)
+	|| ydk::is_set(ipv4_virtual_ip_addresses_master_up.yfilter)
+	|| ydk::is_set(ipv6_sessions_backup.yfilter)
+	|| ydk::is_set(ipv6_sessions_init.yfilter)
+	|| ydk::is_set(ipv6_sessions_master.yfilter)
+	|| ydk::is_set(ipv6_sessions_master_owner.yfilter)
+	|| ydk::is_set(ipv6_slaves_backup.yfilter)
+	|| ydk::is_set(ipv6_slaves_init.yfilter)
+	|| ydk::is_set(ipv6_slaves_master.yfilter)
+	|| ydk::is_set(ipv6_virtual_ip_addresses_backup_down.yfilter)
+	|| ydk::is_set(ipv6_virtual_ip_addresses_backup_up.yfilter)
+	|| ydk::is_set(ipv6_virtual_ip_addresses_init_down.yfilter)
+	|| ydk::is_set(ipv6_virtual_ip_addresses_init_up.yfilter)
+	|| ydk::is_set(ipv6_virtual_ip_addresses_master_down.yfilter)
+	|| ydk::is_set(ipv6_virtual_ip_addresses_master_owner_down.yfilter)
+	|| ydk::is_set(ipv6_virtual_ip_addresses_master_owner_up.yfilter)
+	|| ydk::is_set(ipv6_virtual_ip_addresses_master_up.yfilter)
+	|| ydk::is_set(ipv6bfd_session_inactive.yfilter)
+	|| ydk::is_set(ipv6bfd_sessions_down.yfilter)
+	|| ydk::is_set(ipv6bfd_sessions_up.yfilter)
+	|| ydk::is_set(tracked_interfaces_ipv4_state_down.yfilter)
+	|| ydk::is_set(tracked_interfaces_ipv4_state_up.yfilter)
+	|| ydk::is_set(tracked_interfaces_ipv6_state_down.yfilter)
+	|| ydk::is_set(tracked_interfaces_ipv6_state_up.yfilter)
+	|| ydk::is_set(tracked_objects_state_down.yfilter)
+	|| ydk::is_set(tracked_objects_state_up.yfilter);
 }
 
 std::string Vrrp::Summary::get_segment_path() const
@@ -346,52 +364,52 @@ const EntityPath Vrrp::Summary::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bfd_session_inactive.is_set || is_set(bfd_session_inactive.operation)) leaf_name_data.push_back(bfd_session_inactive.get_name_leafdata());
-    if (bfd_sessions_down.is_set || is_set(bfd_sessions_down.operation)) leaf_name_data.push_back(bfd_sessions_down.get_name_leafdata());
-    if (bfd_sessions_up.is_set || is_set(bfd_sessions_up.operation)) leaf_name_data.push_back(bfd_sessions_up.get_name_leafdata());
-    if (interfaces_ipv4_state_down.is_set || is_set(interfaces_ipv4_state_down.operation)) leaf_name_data.push_back(interfaces_ipv4_state_down.get_name_leafdata());
-    if (interfaces_ipv4_state_up.is_set || is_set(interfaces_ipv4_state_up.operation)) leaf_name_data.push_back(interfaces_ipv4_state_up.get_name_leafdata());
-    if (interfaces_ipv6_state_down.is_set || is_set(interfaces_ipv6_state_down.operation)) leaf_name_data.push_back(interfaces_ipv6_state_down.get_name_leafdata());
-    if (interfaces_ipv6_state_up.is_set || is_set(interfaces_ipv6_state_up.operation)) leaf_name_data.push_back(interfaces_ipv6_state_up.get_name_leafdata());
-    if (ipv4_sessions_backup.is_set || is_set(ipv4_sessions_backup.operation)) leaf_name_data.push_back(ipv4_sessions_backup.get_name_leafdata());
-    if (ipv4_sessions_init.is_set || is_set(ipv4_sessions_init.operation)) leaf_name_data.push_back(ipv4_sessions_init.get_name_leafdata());
-    if (ipv4_sessions_master.is_set || is_set(ipv4_sessions_master.operation)) leaf_name_data.push_back(ipv4_sessions_master.get_name_leafdata());
-    if (ipv4_sessions_master_owner.is_set || is_set(ipv4_sessions_master_owner.operation)) leaf_name_data.push_back(ipv4_sessions_master_owner.get_name_leafdata());
-    if (ipv4_slaves_backup.is_set || is_set(ipv4_slaves_backup.operation)) leaf_name_data.push_back(ipv4_slaves_backup.get_name_leafdata());
-    if (ipv4_slaves_init.is_set || is_set(ipv4_slaves_init.operation)) leaf_name_data.push_back(ipv4_slaves_init.get_name_leafdata());
-    if (ipv4_slaves_master.is_set || is_set(ipv4_slaves_master.operation)) leaf_name_data.push_back(ipv4_slaves_master.get_name_leafdata());
-    if (ipv4_virtual_ip_addresses_backup_down.is_set || is_set(ipv4_virtual_ip_addresses_backup_down.operation)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_backup_down.get_name_leafdata());
-    if (ipv4_virtual_ip_addresses_backup_up.is_set || is_set(ipv4_virtual_ip_addresses_backup_up.operation)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_backup_up.get_name_leafdata());
-    if (ipv4_virtual_ip_addresses_init_down.is_set || is_set(ipv4_virtual_ip_addresses_init_down.operation)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_init_down.get_name_leafdata());
-    if (ipv4_virtual_ip_addresses_init_up.is_set || is_set(ipv4_virtual_ip_addresses_init_up.operation)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_init_up.get_name_leafdata());
-    if (ipv4_virtual_ip_addresses_master_down.is_set || is_set(ipv4_virtual_ip_addresses_master_down.operation)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_master_down.get_name_leafdata());
-    if (ipv4_virtual_ip_addresses_master_owner_down.is_set || is_set(ipv4_virtual_ip_addresses_master_owner_down.operation)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_master_owner_down.get_name_leafdata());
-    if (ipv4_virtual_ip_addresses_master_owner_up.is_set || is_set(ipv4_virtual_ip_addresses_master_owner_up.operation)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_master_owner_up.get_name_leafdata());
-    if (ipv4_virtual_ip_addresses_master_up.is_set || is_set(ipv4_virtual_ip_addresses_master_up.operation)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_master_up.get_name_leafdata());
-    if (ipv6_sessions_backup.is_set || is_set(ipv6_sessions_backup.operation)) leaf_name_data.push_back(ipv6_sessions_backup.get_name_leafdata());
-    if (ipv6_sessions_init.is_set || is_set(ipv6_sessions_init.operation)) leaf_name_data.push_back(ipv6_sessions_init.get_name_leafdata());
-    if (ipv6_sessions_master.is_set || is_set(ipv6_sessions_master.operation)) leaf_name_data.push_back(ipv6_sessions_master.get_name_leafdata());
-    if (ipv6_sessions_master_owner.is_set || is_set(ipv6_sessions_master_owner.operation)) leaf_name_data.push_back(ipv6_sessions_master_owner.get_name_leafdata());
-    if (ipv6_slaves_backup.is_set || is_set(ipv6_slaves_backup.operation)) leaf_name_data.push_back(ipv6_slaves_backup.get_name_leafdata());
-    if (ipv6_slaves_init.is_set || is_set(ipv6_slaves_init.operation)) leaf_name_data.push_back(ipv6_slaves_init.get_name_leafdata());
-    if (ipv6_slaves_master.is_set || is_set(ipv6_slaves_master.operation)) leaf_name_data.push_back(ipv6_slaves_master.get_name_leafdata());
-    if (ipv6_virtual_ip_addresses_backup_down.is_set || is_set(ipv6_virtual_ip_addresses_backup_down.operation)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_backup_down.get_name_leafdata());
-    if (ipv6_virtual_ip_addresses_backup_up.is_set || is_set(ipv6_virtual_ip_addresses_backup_up.operation)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_backup_up.get_name_leafdata());
-    if (ipv6_virtual_ip_addresses_init_down.is_set || is_set(ipv6_virtual_ip_addresses_init_down.operation)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_init_down.get_name_leafdata());
-    if (ipv6_virtual_ip_addresses_init_up.is_set || is_set(ipv6_virtual_ip_addresses_init_up.operation)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_init_up.get_name_leafdata());
-    if (ipv6_virtual_ip_addresses_master_down.is_set || is_set(ipv6_virtual_ip_addresses_master_down.operation)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_master_down.get_name_leafdata());
-    if (ipv6_virtual_ip_addresses_master_owner_down.is_set || is_set(ipv6_virtual_ip_addresses_master_owner_down.operation)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_master_owner_down.get_name_leafdata());
-    if (ipv6_virtual_ip_addresses_master_owner_up.is_set || is_set(ipv6_virtual_ip_addresses_master_owner_up.operation)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_master_owner_up.get_name_leafdata());
-    if (ipv6_virtual_ip_addresses_master_up.is_set || is_set(ipv6_virtual_ip_addresses_master_up.operation)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_master_up.get_name_leafdata());
-    if (ipv6bfd_session_inactive.is_set || is_set(ipv6bfd_session_inactive.operation)) leaf_name_data.push_back(ipv6bfd_session_inactive.get_name_leafdata());
-    if (ipv6bfd_sessions_down.is_set || is_set(ipv6bfd_sessions_down.operation)) leaf_name_data.push_back(ipv6bfd_sessions_down.get_name_leafdata());
-    if (ipv6bfd_sessions_up.is_set || is_set(ipv6bfd_sessions_up.operation)) leaf_name_data.push_back(ipv6bfd_sessions_up.get_name_leafdata());
-    if (tracked_interfaces_ipv4_state_down.is_set || is_set(tracked_interfaces_ipv4_state_down.operation)) leaf_name_data.push_back(tracked_interfaces_ipv4_state_down.get_name_leafdata());
-    if (tracked_interfaces_ipv4_state_up.is_set || is_set(tracked_interfaces_ipv4_state_up.operation)) leaf_name_data.push_back(tracked_interfaces_ipv4_state_up.get_name_leafdata());
-    if (tracked_interfaces_ipv6_state_down.is_set || is_set(tracked_interfaces_ipv6_state_down.operation)) leaf_name_data.push_back(tracked_interfaces_ipv6_state_down.get_name_leafdata());
-    if (tracked_interfaces_ipv6_state_up.is_set || is_set(tracked_interfaces_ipv6_state_up.operation)) leaf_name_data.push_back(tracked_interfaces_ipv6_state_up.get_name_leafdata());
-    if (tracked_objects_state_down.is_set || is_set(tracked_objects_state_down.operation)) leaf_name_data.push_back(tracked_objects_state_down.get_name_leafdata());
-    if (tracked_objects_state_up.is_set || is_set(tracked_objects_state_up.operation)) leaf_name_data.push_back(tracked_objects_state_up.get_name_leafdata());
+    if (bfd_session_inactive.is_set || is_set(bfd_session_inactive.yfilter)) leaf_name_data.push_back(bfd_session_inactive.get_name_leafdata());
+    if (bfd_sessions_down.is_set || is_set(bfd_sessions_down.yfilter)) leaf_name_data.push_back(bfd_sessions_down.get_name_leafdata());
+    if (bfd_sessions_up.is_set || is_set(bfd_sessions_up.yfilter)) leaf_name_data.push_back(bfd_sessions_up.get_name_leafdata());
+    if (interfaces_ipv4_state_down.is_set || is_set(interfaces_ipv4_state_down.yfilter)) leaf_name_data.push_back(interfaces_ipv4_state_down.get_name_leafdata());
+    if (interfaces_ipv4_state_up.is_set || is_set(interfaces_ipv4_state_up.yfilter)) leaf_name_data.push_back(interfaces_ipv4_state_up.get_name_leafdata());
+    if (interfaces_ipv6_state_down.is_set || is_set(interfaces_ipv6_state_down.yfilter)) leaf_name_data.push_back(interfaces_ipv6_state_down.get_name_leafdata());
+    if (interfaces_ipv6_state_up.is_set || is_set(interfaces_ipv6_state_up.yfilter)) leaf_name_data.push_back(interfaces_ipv6_state_up.get_name_leafdata());
+    if (ipv4_sessions_backup.is_set || is_set(ipv4_sessions_backup.yfilter)) leaf_name_data.push_back(ipv4_sessions_backup.get_name_leafdata());
+    if (ipv4_sessions_init.is_set || is_set(ipv4_sessions_init.yfilter)) leaf_name_data.push_back(ipv4_sessions_init.get_name_leafdata());
+    if (ipv4_sessions_master.is_set || is_set(ipv4_sessions_master.yfilter)) leaf_name_data.push_back(ipv4_sessions_master.get_name_leafdata());
+    if (ipv4_sessions_master_owner.is_set || is_set(ipv4_sessions_master_owner.yfilter)) leaf_name_data.push_back(ipv4_sessions_master_owner.get_name_leafdata());
+    if (ipv4_slaves_backup.is_set || is_set(ipv4_slaves_backup.yfilter)) leaf_name_data.push_back(ipv4_slaves_backup.get_name_leafdata());
+    if (ipv4_slaves_init.is_set || is_set(ipv4_slaves_init.yfilter)) leaf_name_data.push_back(ipv4_slaves_init.get_name_leafdata());
+    if (ipv4_slaves_master.is_set || is_set(ipv4_slaves_master.yfilter)) leaf_name_data.push_back(ipv4_slaves_master.get_name_leafdata());
+    if (ipv4_virtual_ip_addresses_backup_down.is_set || is_set(ipv4_virtual_ip_addresses_backup_down.yfilter)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_backup_down.get_name_leafdata());
+    if (ipv4_virtual_ip_addresses_backup_up.is_set || is_set(ipv4_virtual_ip_addresses_backup_up.yfilter)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_backup_up.get_name_leafdata());
+    if (ipv4_virtual_ip_addresses_init_down.is_set || is_set(ipv4_virtual_ip_addresses_init_down.yfilter)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_init_down.get_name_leafdata());
+    if (ipv4_virtual_ip_addresses_init_up.is_set || is_set(ipv4_virtual_ip_addresses_init_up.yfilter)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_init_up.get_name_leafdata());
+    if (ipv4_virtual_ip_addresses_master_down.is_set || is_set(ipv4_virtual_ip_addresses_master_down.yfilter)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_master_down.get_name_leafdata());
+    if (ipv4_virtual_ip_addresses_master_owner_down.is_set || is_set(ipv4_virtual_ip_addresses_master_owner_down.yfilter)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_master_owner_down.get_name_leafdata());
+    if (ipv4_virtual_ip_addresses_master_owner_up.is_set || is_set(ipv4_virtual_ip_addresses_master_owner_up.yfilter)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_master_owner_up.get_name_leafdata());
+    if (ipv4_virtual_ip_addresses_master_up.is_set || is_set(ipv4_virtual_ip_addresses_master_up.yfilter)) leaf_name_data.push_back(ipv4_virtual_ip_addresses_master_up.get_name_leafdata());
+    if (ipv6_sessions_backup.is_set || is_set(ipv6_sessions_backup.yfilter)) leaf_name_data.push_back(ipv6_sessions_backup.get_name_leafdata());
+    if (ipv6_sessions_init.is_set || is_set(ipv6_sessions_init.yfilter)) leaf_name_data.push_back(ipv6_sessions_init.get_name_leafdata());
+    if (ipv6_sessions_master.is_set || is_set(ipv6_sessions_master.yfilter)) leaf_name_data.push_back(ipv6_sessions_master.get_name_leafdata());
+    if (ipv6_sessions_master_owner.is_set || is_set(ipv6_sessions_master_owner.yfilter)) leaf_name_data.push_back(ipv6_sessions_master_owner.get_name_leafdata());
+    if (ipv6_slaves_backup.is_set || is_set(ipv6_slaves_backup.yfilter)) leaf_name_data.push_back(ipv6_slaves_backup.get_name_leafdata());
+    if (ipv6_slaves_init.is_set || is_set(ipv6_slaves_init.yfilter)) leaf_name_data.push_back(ipv6_slaves_init.get_name_leafdata());
+    if (ipv6_slaves_master.is_set || is_set(ipv6_slaves_master.yfilter)) leaf_name_data.push_back(ipv6_slaves_master.get_name_leafdata());
+    if (ipv6_virtual_ip_addresses_backup_down.is_set || is_set(ipv6_virtual_ip_addresses_backup_down.yfilter)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_backup_down.get_name_leafdata());
+    if (ipv6_virtual_ip_addresses_backup_up.is_set || is_set(ipv6_virtual_ip_addresses_backup_up.yfilter)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_backup_up.get_name_leafdata());
+    if (ipv6_virtual_ip_addresses_init_down.is_set || is_set(ipv6_virtual_ip_addresses_init_down.yfilter)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_init_down.get_name_leafdata());
+    if (ipv6_virtual_ip_addresses_init_up.is_set || is_set(ipv6_virtual_ip_addresses_init_up.yfilter)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_init_up.get_name_leafdata());
+    if (ipv6_virtual_ip_addresses_master_down.is_set || is_set(ipv6_virtual_ip_addresses_master_down.yfilter)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_master_down.get_name_leafdata());
+    if (ipv6_virtual_ip_addresses_master_owner_down.is_set || is_set(ipv6_virtual_ip_addresses_master_owner_down.yfilter)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_master_owner_down.get_name_leafdata());
+    if (ipv6_virtual_ip_addresses_master_owner_up.is_set || is_set(ipv6_virtual_ip_addresses_master_owner_up.yfilter)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_master_owner_up.get_name_leafdata());
+    if (ipv6_virtual_ip_addresses_master_up.is_set || is_set(ipv6_virtual_ip_addresses_master_up.yfilter)) leaf_name_data.push_back(ipv6_virtual_ip_addresses_master_up.get_name_leafdata());
+    if (ipv6bfd_session_inactive.is_set || is_set(ipv6bfd_session_inactive.yfilter)) leaf_name_data.push_back(ipv6bfd_session_inactive.get_name_leafdata());
+    if (ipv6bfd_sessions_down.is_set || is_set(ipv6bfd_sessions_down.yfilter)) leaf_name_data.push_back(ipv6bfd_sessions_down.get_name_leafdata());
+    if (ipv6bfd_sessions_up.is_set || is_set(ipv6bfd_sessions_up.yfilter)) leaf_name_data.push_back(ipv6bfd_sessions_up.get_name_leafdata());
+    if (tracked_interfaces_ipv4_state_down.is_set || is_set(tracked_interfaces_ipv4_state_down.yfilter)) leaf_name_data.push_back(tracked_interfaces_ipv4_state_down.get_name_leafdata());
+    if (tracked_interfaces_ipv4_state_up.is_set || is_set(tracked_interfaces_ipv4_state_up.yfilter)) leaf_name_data.push_back(tracked_interfaces_ipv4_state_up.get_name_leafdata());
+    if (tracked_interfaces_ipv6_state_down.is_set || is_set(tracked_interfaces_ipv6_state_down.yfilter)) leaf_name_data.push_back(tracked_interfaces_ipv6_state_down.get_name_leafdata());
+    if (tracked_interfaces_ipv6_state_up.is_set || is_set(tracked_interfaces_ipv6_state_up.yfilter)) leaf_name_data.push_back(tracked_interfaces_ipv6_state_up.get_name_leafdata());
+    if (tracked_objects_state_down.is_set || is_set(tracked_objects_state_down.yfilter)) leaf_name_data.push_back(tracked_objects_state_down.get_name_leafdata());
+    if (tracked_objects_state_up.is_set || is_set(tracked_objects_state_up.yfilter)) leaf_name_data.push_back(tracked_objects_state_up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -410,192 +428,479 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Summary::get_children() con
     return children;
 }
 
-void Vrrp::Summary::set_value(const std::string & value_path, std::string value)
+void Vrrp::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bfd-session-inactive")
     {
         bfd_session_inactive = value;
+        bfd_session_inactive.value_namespace = name_space;
+        bfd_session_inactive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-sessions-down")
     {
         bfd_sessions_down = value;
+        bfd_sessions_down.value_namespace = name_space;
+        bfd_sessions_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-sessions-up")
     {
         bfd_sessions_up = value;
+        bfd_sessions_up.value_namespace = name_space;
+        bfd_sessions_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interfaces-ipv4-state-down")
     {
         interfaces_ipv4_state_down = value;
+        interfaces_ipv4_state_down.value_namespace = name_space;
+        interfaces_ipv4_state_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interfaces-ipv4-state-up")
     {
         interfaces_ipv4_state_up = value;
+        interfaces_ipv4_state_up.value_namespace = name_space;
+        interfaces_ipv4_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interfaces-ipv6-state-down")
     {
         interfaces_ipv6_state_down = value;
+        interfaces_ipv6_state_down.value_namespace = name_space;
+        interfaces_ipv6_state_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interfaces-ipv6-state-up")
     {
         interfaces_ipv6_state_up = value;
+        interfaces_ipv6_state_up.value_namespace = name_space;
+        interfaces_ipv6_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-sessions-backup")
     {
         ipv4_sessions_backup = value;
+        ipv4_sessions_backup.value_namespace = name_space;
+        ipv4_sessions_backup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-sessions-init")
     {
         ipv4_sessions_init = value;
+        ipv4_sessions_init.value_namespace = name_space;
+        ipv4_sessions_init.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-sessions-master")
     {
         ipv4_sessions_master = value;
+        ipv4_sessions_master.value_namespace = name_space;
+        ipv4_sessions_master.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-sessions-master-owner")
     {
         ipv4_sessions_master_owner = value;
+        ipv4_sessions_master_owner.value_namespace = name_space;
+        ipv4_sessions_master_owner.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-slaves-backup")
     {
         ipv4_slaves_backup = value;
+        ipv4_slaves_backup.value_namespace = name_space;
+        ipv4_slaves_backup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-slaves-init")
     {
         ipv4_slaves_init = value;
+        ipv4_slaves_init.value_namespace = name_space;
+        ipv4_slaves_init.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-slaves-master")
     {
         ipv4_slaves_master = value;
+        ipv4_slaves_master.value_namespace = name_space;
+        ipv4_slaves_master.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-virtual-ip-addresses-backup-down")
     {
         ipv4_virtual_ip_addresses_backup_down = value;
+        ipv4_virtual_ip_addresses_backup_down.value_namespace = name_space;
+        ipv4_virtual_ip_addresses_backup_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-virtual-ip-addresses-backup-up")
     {
         ipv4_virtual_ip_addresses_backup_up = value;
+        ipv4_virtual_ip_addresses_backup_up.value_namespace = name_space;
+        ipv4_virtual_ip_addresses_backup_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-virtual-ip-addresses-init-down")
     {
         ipv4_virtual_ip_addresses_init_down = value;
+        ipv4_virtual_ip_addresses_init_down.value_namespace = name_space;
+        ipv4_virtual_ip_addresses_init_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-virtual-ip-addresses-init-up")
     {
         ipv4_virtual_ip_addresses_init_up = value;
+        ipv4_virtual_ip_addresses_init_up.value_namespace = name_space;
+        ipv4_virtual_ip_addresses_init_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-virtual-ip-addresses-master-down")
     {
         ipv4_virtual_ip_addresses_master_down = value;
+        ipv4_virtual_ip_addresses_master_down.value_namespace = name_space;
+        ipv4_virtual_ip_addresses_master_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-virtual-ip-addresses-master-owner-down")
     {
         ipv4_virtual_ip_addresses_master_owner_down = value;
+        ipv4_virtual_ip_addresses_master_owner_down.value_namespace = name_space;
+        ipv4_virtual_ip_addresses_master_owner_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-virtual-ip-addresses-master-owner-up")
     {
         ipv4_virtual_ip_addresses_master_owner_up = value;
+        ipv4_virtual_ip_addresses_master_owner_up.value_namespace = name_space;
+        ipv4_virtual_ip_addresses_master_owner_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-virtual-ip-addresses-master-up")
     {
         ipv4_virtual_ip_addresses_master_up = value;
+        ipv4_virtual_ip_addresses_master_up.value_namespace = name_space;
+        ipv4_virtual_ip_addresses_master_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-sessions-backup")
     {
         ipv6_sessions_backup = value;
+        ipv6_sessions_backup.value_namespace = name_space;
+        ipv6_sessions_backup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-sessions-init")
     {
         ipv6_sessions_init = value;
+        ipv6_sessions_init.value_namespace = name_space;
+        ipv6_sessions_init.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-sessions-master")
     {
         ipv6_sessions_master = value;
+        ipv6_sessions_master.value_namespace = name_space;
+        ipv6_sessions_master.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-sessions-master-owner")
     {
         ipv6_sessions_master_owner = value;
+        ipv6_sessions_master_owner.value_namespace = name_space;
+        ipv6_sessions_master_owner.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-slaves-backup")
     {
         ipv6_slaves_backup = value;
+        ipv6_slaves_backup.value_namespace = name_space;
+        ipv6_slaves_backup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-slaves-init")
     {
         ipv6_slaves_init = value;
+        ipv6_slaves_init.value_namespace = name_space;
+        ipv6_slaves_init.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-slaves-master")
     {
         ipv6_slaves_master = value;
+        ipv6_slaves_master.value_namespace = name_space;
+        ipv6_slaves_master.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-virtual-ip-addresses-backup-down")
     {
         ipv6_virtual_ip_addresses_backup_down = value;
+        ipv6_virtual_ip_addresses_backup_down.value_namespace = name_space;
+        ipv6_virtual_ip_addresses_backup_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-virtual-ip-addresses-backup-up")
     {
         ipv6_virtual_ip_addresses_backup_up = value;
+        ipv6_virtual_ip_addresses_backup_up.value_namespace = name_space;
+        ipv6_virtual_ip_addresses_backup_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-virtual-ip-addresses-init-down")
     {
         ipv6_virtual_ip_addresses_init_down = value;
+        ipv6_virtual_ip_addresses_init_down.value_namespace = name_space;
+        ipv6_virtual_ip_addresses_init_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-virtual-ip-addresses-init-up")
     {
         ipv6_virtual_ip_addresses_init_up = value;
+        ipv6_virtual_ip_addresses_init_up.value_namespace = name_space;
+        ipv6_virtual_ip_addresses_init_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-virtual-ip-addresses-master-down")
     {
         ipv6_virtual_ip_addresses_master_down = value;
+        ipv6_virtual_ip_addresses_master_down.value_namespace = name_space;
+        ipv6_virtual_ip_addresses_master_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-virtual-ip-addresses-master-owner-down")
     {
         ipv6_virtual_ip_addresses_master_owner_down = value;
+        ipv6_virtual_ip_addresses_master_owner_down.value_namespace = name_space;
+        ipv6_virtual_ip_addresses_master_owner_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-virtual-ip-addresses-master-owner-up")
     {
         ipv6_virtual_ip_addresses_master_owner_up = value;
+        ipv6_virtual_ip_addresses_master_owner_up.value_namespace = name_space;
+        ipv6_virtual_ip_addresses_master_owner_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-virtual-ip-addresses-master-up")
     {
         ipv6_virtual_ip_addresses_master_up = value;
+        ipv6_virtual_ip_addresses_master_up.value_namespace = name_space;
+        ipv6_virtual_ip_addresses_master_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-session-inactive")
     {
         ipv6bfd_session_inactive = value;
+        ipv6bfd_session_inactive.value_namespace = name_space;
+        ipv6bfd_session_inactive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-sessions-down")
     {
         ipv6bfd_sessions_down = value;
+        ipv6bfd_sessions_down.value_namespace = name_space;
+        ipv6bfd_sessions_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6bfd-sessions-up")
     {
         ipv6bfd_sessions_up = value;
+        ipv6bfd_sessions_up.value_namespace = name_space;
+        ipv6bfd_sessions_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interfaces-ipv4-state-down")
     {
         tracked_interfaces_ipv4_state_down = value;
+        tracked_interfaces_ipv4_state_down.value_namespace = name_space;
+        tracked_interfaces_ipv4_state_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interfaces-ipv4-state-up")
     {
         tracked_interfaces_ipv4_state_up = value;
+        tracked_interfaces_ipv4_state_up.value_namespace = name_space;
+        tracked_interfaces_ipv4_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interfaces-ipv6-state-down")
     {
         tracked_interfaces_ipv6_state_down = value;
+        tracked_interfaces_ipv6_state_down.value_namespace = name_space;
+        tracked_interfaces_ipv6_state_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interfaces-ipv6-state-up")
     {
         tracked_interfaces_ipv6_state_up = value;
+        tracked_interfaces_ipv6_state_up.value_namespace = name_space;
+        tracked_interfaces_ipv6_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-objects-state-down")
     {
         tracked_objects_state_down = value;
+        tracked_objects_state_down.value_namespace = name_space;
+        tracked_objects_state_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-objects-state-up")
     {
         tracked_objects_state_up = value;
+        tracked_objects_state_up.value_namespace = name_space;
+        tracked_objects_state_up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bfd-session-inactive")
+    {
+        bfd_session_inactive.yfilter = yfilter;
+    }
+    if(value_path == "bfd-sessions-down")
+    {
+        bfd_sessions_down.yfilter = yfilter;
+    }
+    if(value_path == "bfd-sessions-up")
+    {
+        bfd_sessions_up.yfilter = yfilter;
+    }
+    if(value_path == "interfaces-ipv4-state-down")
+    {
+        interfaces_ipv4_state_down.yfilter = yfilter;
+    }
+    if(value_path == "interfaces-ipv4-state-up")
+    {
+        interfaces_ipv4_state_up.yfilter = yfilter;
+    }
+    if(value_path == "interfaces-ipv6-state-down")
+    {
+        interfaces_ipv6_state_down.yfilter = yfilter;
+    }
+    if(value_path == "interfaces-ipv6-state-up")
+    {
+        interfaces_ipv6_state_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-sessions-backup")
+    {
+        ipv4_sessions_backup.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-sessions-init")
+    {
+        ipv4_sessions_init.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-sessions-master")
+    {
+        ipv4_sessions_master.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-sessions-master-owner")
+    {
+        ipv4_sessions_master_owner.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-slaves-backup")
+    {
+        ipv4_slaves_backup.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-slaves-init")
+    {
+        ipv4_slaves_init.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-slaves-master")
+    {
+        ipv4_slaves_master.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-virtual-ip-addresses-backup-down")
+    {
+        ipv4_virtual_ip_addresses_backup_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-virtual-ip-addresses-backup-up")
+    {
+        ipv4_virtual_ip_addresses_backup_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-virtual-ip-addresses-init-down")
+    {
+        ipv4_virtual_ip_addresses_init_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-virtual-ip-addresses-init-up")
+    {
+        ipv4_virtual_ip_addresses_init_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-virtual-ip-addresses-master-down")
+    {
+        ipv4_virtual_ip_addresses_master_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-virtual-ip-addresses-master-owner-down")
+    {
+        ipv4_virtual_ip_addresses_master_owner_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-virtual-ip-addresses-master-owner-up")
+    {
+        ipv4_virtual_ip_addresses_master_owner_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-virtual-ip-addresses-master-up")
+    {
+        ipv4_virtual_ip_addresses_master_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-sessions-backup")
+    {
+        ipv6_sessions_backup.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-sessions-init")
+    {
+        ipv6_sessions_init.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-sessions-master")
+    {
+        ipv6_sessions_master.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-sessions-master-owner")
+    {
+        ipv6_sessions_master_owner.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-slaves-backup")
+    {
+        ipv6_slaves_backup.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-slaves-init")
+    {
+        ipv6_slaves_init.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-slaves-master")
+    {
+        ipv6_slaves_master.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-virtual-ip-addresses-backup-down")
+    {
+        ipv6_virtual_ip_addresses_backup_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-virtual-ip-addresses-backup-up")
+    {
+        ipv6_virtual_ip_addresses_backup_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-virtual-ip-addresses-init-down")
+    {
+        ipv6_virtual_ip_addresses_init_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-virtual-ip-addresses-init-up")
+    {
+        ipv6_virtual_ip_addresses_init_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-virtual-ip-addresses-master-down")
+    {
+        ipv6_virtual_ip_addresses_master_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-virtual-ip-addresses-master-owner-down")
+    {
+        ipv6_virtual_ip_addresses_master_owner_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-virtual-ip-addresses-master-owner-up")
+    {
+        ipv6_virtual_ip_addresses_master_owner_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-virtual-ip-addresses-master-up")
+    {
+        ipv6_virtual_ip_addresses_master_up.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-session-inactive")
+    {
+        ipv6bfd_session_inactive.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-sessions-down")
+    {
+        ipv6bfd_sessions_down.yfilter = yfilter;
+    }
+    if(value_path == "ipv6bfd-sessions-up")
+    {
+        ipv6bfd_sessions_up.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interfaces-ipv4-state-down")
+    {
+        tracked_interfaces_ipv4_state_down.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interfaces-ipv4-state-up")
+    {
+        tracked_interfaces_ipv4_state_up.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interfaces-ipv6-state-down")
+    {
+        tracked_interfaces_ipv6_state_down.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interfaces-ipv6-state-up")
+    {
+        tracked_interfaces_ipv6_state_up.yfilter = yfilter;
+    }
+    if(value_path == "tracked-objects-state-down")
+    {
+        tracked_objects_state_down.yfilter = yfilter;
+    }
+    if(value_path == "tracked-objects-state-up")
+    {
+        tracked_objects_state_up.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bfd-session-inactive" || name == "bfd-sessions-down" || name == "bfd-sessions-up" || name == "interfaces-ipv4-state-down" || name == "interfaces-ipv4-state-up" || name == "interfaces-ipv6-state-down" || name == "interfaces-ipv6-state-up" || name == "ipv4-sessions-backup" || name == "ipv4-sessions-init" || name == "ipv4-sessions-master" || name == "ipv4-sessions-master-owner" || name == "ipv4-slaves-backup" || name == "ipv4-slaves-init" || name == "ipv4-slaves-master" || name == "ipv4-virtual-ip-addresses-backup-down" || name == "ipv4-virtual-ip-addresses-backup-up" || name == "ipv4-virtual-ip-addresses-init-down" || name == "ipv4-virtual-ip-addresses-init-up" || name == "ipv4-virtual-ip-addresses-master-down" || name == "ipv4-virtual-ip-addresses-master-owner-down" || name == "ipv4-virtual-ip-addresses-master-owner-up" || name == "ipv4-virtual-ip-addresses-master-up" || name == "ipv6-sessions-backup" || name == "ipv6-sessions-init" || name == "ipv6-sessions-master" || name == "ipv6-sessions-master-owner" || name == "ipv6-slaves-backup" || name == "ipv6-slaves-init" || name == "ipv6-slaves-master" || name == "ipv6-virtual-ip-addresses-backup-down" || name == "ipv6-virtual-ip-addresses-backup-up" || name == "ipv6-virtual-ip-addresses-init-down" || name == "ipv6-virtual-ip-addresses-init-up" || name == "ipv6-virtual-ip-addresses-master-down" || name == "ipv6-virtual-ip-addresses-master-owner-down" || name == "ipv6-virtual-ip-addresses-master-owner-up" || name == "ipv6-virtual-ip-addresses-master-up" || name == "ipv6bfd-session-inactive" || name == "ipv6bfd-sessions-down" || name == "ipv6bfd-sessions-up" || name == "tracked-interfaces-ipv4-state-down" || name == "tracked-interfaces-ipv4-state-up" || name == "tracked-interfaces-ipv6-state-down" || name == "tracked-interfaces-ipv6-state-up" || name == "tracked-objects-state-down" || name == "tracked-objects-state-up")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::Ipv6()
@@ -626,7 +931,7 @@ bool Vrrp::Ipv6::has_data() const
 
 bool Vrrp::Ipv6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (track_items !=  nullptr && track_items->has_operation())
 	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
@@ -715,8 +1020,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::get_children() const
     return children;
 }
 
-void Vrrp::Ipv6::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "track-items" || name == "virtual-routers")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::TrackItems::TrackItems()
@@ -745,7 +1061,7 @@ bool Vrrp::Ipv6::TrackItems::has_operation() const
         if(track_item[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Ipv6::TrackItems::get_segment_path() const
@@ -810,8 +1126,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::TrackItems::get_child
     return children;
 }
 
-void Vrrp::Ipv6::TrackItems::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::TrackItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Ipv6::TrackItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Ipv6::TrackItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-item")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::TrackItems::TrackItem::TrackItem()
@@ -848,16 +1175,16 @@ bool Vrrp::Ipv6::TrackItems::TrackItem::has_data() const
 
 bool Vrrp::Ipv6::TrackItems::TrackItem::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(virtual_router_id.operation)
-	|| is_set(tracked_interface_name.operation)
-	|| is_set(interface.operation)
-	|| is_set(priority.operation)
-	|| is_set(state.operation)
-	|| is_set(tracked_item_index.operation)
-	|| is_set(tracked_item_type.operation)
-	|| is_set(virtual_router_id_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(virtual_router_id.yfilter)
+	|| ydk::is_set(tracked_interface_name.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(tracked_item_index.yfilter)
+	|| ydk::is_set(tracked_item_type.yfilter)
+	|| ydk::is_set(virtual_router_id_xr.yfilter);
 }
 
 std::string Vrrp::Ipv6::TrackItems::TrackItem::get_segment_path() const
@@ -883,15 +1210,15 @@ const EntityPath Vrrp::Ipv6::TrackItems::TrackItem::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (virtual_router_id.is_set || is_set(virtual_router_id.operation)) leaf_name_data.push_back(virtual_router_id.get_name_leafdata());
-    if (tracked_interface_name.is_set || is_set(tracked_interface_name.operation)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (tracked_item_index.is_set || is_set(tracked_item_index.operation)) leaf_name_data.push_back(tracked_item_index.get_name_leafdata());
-    if (tracked_item_type.is_set || is_set(tracked_item_type.operation)) leaf_name_data.push_back(tracked_item_type.get_name_leafdata());
-    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.operation)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (virtual_router_id.is_set || is_set(virtual_router_id.yfilter)) leaf_name_data.push_back(virtual_router_id.get_name_leafdata());
+    if (tracked_interface_name.is_set || is_set(tracked_interface_name.yfilter)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (tracked_item_index.is_set || is_set(tracked_item_index.yfilter)) leaf_name_data.push_back(tracked_item_index.get_name_leafdata());
+    if (tracked_item_type.is_set || is_set(tracked_item_type.yfilter)) leaf_name_data.push_back(tracked_item_type.get_name_leafdata());
+    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.yfilter)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -910,44 +1237,109 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::TrackItems::TrackItem
     return children;
 }
 
-void Vrrp::Ipv6::TrackItems::TrackItem::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::TrackItems::TrackItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-router-id")
     {
         virtual_router_id = value;
+        virtual_router_id.value_namespace = name_space;
+        virtual_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interface-name")
     {
         tracked_interface_name = value;
+        tracked_interface_name.value_namespace = name_space;
+        tracked_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-item-index")
     {
         tracked_item_index = value;
+        tracked_item_index.value_namespace = name_space;
+        tracked_item_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-item-type")
     {
         tracked_item_type = value;
+        tracked_item_type.value_namespace = name_space;
+        tracked_item_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-router-id-xr")
     {
         virtual_router_id_xr = value;
+        virtual_router_id_xr.value_namespace = name_space;
+        virtual_router_id_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::TrackItems::TrackItem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id")
+    {
+        virtual_router_id.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-name")
+    {
+        tracked_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-index")
+    {
+        tracked_item_index.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-type")
+    {
+        tracked_item_type.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id-xr")
+    {
+        virtual_router_id_xr.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::TrackItems::TrackItem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "virtual-router-id" || name == "tracked-interface-name" || name == "interface" || name == "priority" || name == "state" || name == "tracked-item-index" || name == "tracked-item-type" || name == "virtual-router-id-xr")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouters()
@@ -976,7 +1368,7 @@ bool Vrrp::Ipv6::VirtualRouters::has_operation() const
         if(virtual_router[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Ipv6::VirtualRouters::get_segment_path() const
@@ -1041,8 +1433,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::get_c
     return children;
 }
 
-void Vrrp::Ipv6::VirtualRouters::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::VirtualRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Ipv6::VirtualRouters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Ipv6::VirtualRouters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual-router")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::VirtualRouter()
@@ -1252,86 +1655,86 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_operation() const
     }
     for (auto const & leaf : ipv4_configured_down_address.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : operational_address.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(virtual_router_id.operation)
-	|| is_set(address_family.operation)
-	|| is_set(address_list_error_count.operation)
-	|| is_set(advert_interval_error_count.operation)
-	|| is_set(adverts_received_count.operation)
-	|| is_set(adverts_sent_count.operation)
-	|| is_set(auth_type_mismatch_count.operation)
-	|| is_set(authentication_fail_count.operation)
-	|| is_set(authentication_flag.operation)
-	|| is_set(authentication_string.operation)
-	|| is_set(authentication_type.operation)
-	|| is_set(bfd_cfg_remote_ip.operation)
-	|| is_set(bfd_configured_remote_ipv6_address.operation)
-	|| is_set(bfd_interval.operation)
-	|| is_set(bfd_multiplier.operation)
-	|| is_set(bfd_session_state.operation)
-	|| is_set(configured_advertize_time.operation)
-	|| is_set(configured_down_address_count.operation)
-	|| is_set(configured_priority.operation)
-	|| is_set(delay_timer_flag.operation)
-	|| is_set(delay_timer_msecs.operation)
-	|| is_set(delay_timer_secs.operation)
-	|| is_set(followed_session_name.operation)
-	|| is_set(force_timer_flag.operation)
-	|| is_set(interface_ipv4_address.operation)
-	|| is_set(interface_ipv6_address.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(invalid_auth_type_count.operation)
-	|| is_set(invalid_packet_count.operation)
-	|| is_set(ip_address_owner_flag.operation)
-	|| is_set(ipv4_configured_down_address.operation)
-	|| is_set(is_accept_mode.operation)
-	|| is_set(is_slave.operation)
-	|| is_set(master_count.operation)
-	|| is_set(master_ip_address.operation)
-	|| is_set(master_ipv6_address.operation)
-	|| is_set(master_priority.operation)
-	|| is_set(min_delay_time.operation)
-	|| is_set(oper_advertize_time.operation)
-	|| is_set(operational_address.operation)
-	|| is_set(operational_address_count.operation)
-	|| is_set(operational_priority.operation)
-	|| is_set(pkt_length_errors_count.operation)
-	|| is_set(preempt_delay_time.operation)
-	|| is_set(preempt_flag.operation)
-	|| is_set(primary_state.operation)
-	|| is_set(primary_virtual_ip.operation)
-	|| is_set(priority_decrement.operation)
-	|| is_set(priority_zero_received_count.operation)
-	|| is_set(priority_zero_sent_count.operation)
-	|| is_set(reload_delay_time.operation)
-	|| is_set(secondary_address_count.operation)
-	|| is_set(session_name.operation)
-	|| is_set(slaves.operation)
-	|| is_set(state_change_count.operation)
-	|| is_set(state_from_checkpoint.operation)
-	|| is_set(time_in_current_state.operation)
-	|| is_set(time_stats_discontinuity.operation)
-	|| is_set(time_vrouter_up.operation)
-	|| is_set(tracked_interface_count.operation)
-	|| is_set(tracked_interface_up_count.operation)
-	|| is_set(tracked_item_count.operation)
-	|| is_set(tracked_item_up_count.operation)
-	|| is_set(ttl_error_count.operation)
-	|| is_set(version.operation)
-	|| is_set(virtual_linklocal_ipv6_address.operation)
-	|| is_set(virtual_mac_address.operation)
-	|| is_set(virtual_mac_address_state.operation)
-	|| is_set(virtual_router_id_xr.operation)
-	|| is_set(vrrp_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(virtual_router_id.yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(address_list_error_count.yfilter)
+	|| ydk::is_set(advert_interval_error_count.yfilter)
+	|| ydk::is_set(adverts_received_count.yfilter)
+	|| ydk::is_set(adverts_sent_count.yfilter)
+	|| ydk::is_set(auth_type_mismatch_count.yfilter)
+	|| ydk::is_set(authentication_fail_count.yfilter)
+	|| ydk::is_set(authentication_flag.yfilter)
+	|| ydk::is_set(authentication_string.yfilter)
+	|| ydk::is_set(authentication_type.yfilter)
+	|| ydk::is_set(bfd_cfg_remote_ip.yfilter)
+	|| ydk::is_set(bfd_configured_remote_ipv6_address.yfilter)
+	|| ydk::is_set(bfd_interval.yfilter)
+	|| ydk::is_set(bfd_multiplier.yfilter)
+	|| ydk::is_set(bfd_session_state.yfilter)
+	|| ydk::is_set(configured_advertize_time.yfilter)
+	|| ydk::is_set(configured_down_address_count.yfilter)
+	|| ydk::is_set(configured_priority.yfilter)
+	|| ydk::is_set(delay_timer_flag.yfilter)
+	|| ydk::is_set(delay_timer_msecs.yfilter)
+	|| ydk::is_set(delay_timer_secs.yfilter)
+	|| ydk::is_set(followed_session_name.yfilter)
+	|| ydk::is_set(force_timer_flag.yfilter)
+	|| ydk::is_set(interface_ipv4_address.yfilter)
+	|| ydk::is_set(interface_ipv6_address.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(invalid_auth_type_count.yfilter)
+	|| ydk::is_set(invalid_packet_count.yfilter)
+	|| ydk::is_set(ip_address_owner_flag.yfilter)
+	|| ydk::is_set(ipv4_configured_down_address.yfilter)
+	|| ydk::is_set(is_accept_mode.yfilter)
+	|| ydk::is_set(is_slave.yfilter)
+	|| ydk::is_set(master_count.yfilter)
+	|| ydk::is_set(master_ip_address.yfilter)
+	|| ydk::is_set(master_ipv6_address.yfilter)
+	|| ydk::is_set(master_priority.yfilter)
+	|| ydk::is_set(min_delay_time.yfilter)
+	|| ydk::is_set(oper_advertize_time.yfilter)
+	|| ydk::is_set(operational_address.yfilter)
+	|| ydk::is_set(operational_address_count.yfilter)
+	|| ydk::is_set(operational_priority.yfilter)
+	|| ydk::is_set(pkt_length_errors_count.yfilter)
+	|| ydk::is_set(preempt_delay_time.yfilter)
+	|| ydk::is_set(preempt_flag.yfilter)
+	|| ydk::is_set(primary_state.yfilter)
+	|| ydk::is_set(primary_virtual_ip.yfilter)
+	|| ydk::is_set(priority_decrement.yfilter)
+	|| ydk::is_set(priority_zero_received_count.yfilter)
+	|| ydk::is_set(priority_zero_sent_count.yfilter)
+	|| ydk::is_set(reload_delay_time.yfilter)
+	|| ydk::is_set(secondary_address_count.yfilter)
+	|| ydk::is_set(session_name.yfilter)
+	|| ydk::is_set(slaves.yfilter)
+	|| ydk::is_set(state_change_count.yfilter)
+	|| ydk::is_set(state_from_checkpoint.yfilter)
+	|| ydk::is_set(time_in_current_state.yfilter)
+	|| ydk::is_set(time_stats_discontinuity.yfilter)
+	|| ydk::is_set(time_vrouter_up.yfilter)
+	|| ydk::is_set(tracked_interface_count.yfilter)
+	|| ydk::is_set(tracked_interface_up_count.yfilter)
+	|| ydk::is_set(tracked_item_count.yfilter)
+	|| ydk::is_set(tracked_item_up_count.yfilter)
+	|| ydk::is_set(ttl_error_count.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(virtual_linklocal_ipv6_address.yfilter)
+	|| ydk::is_set(virtual_mac_address.yfilter)
+	|| ydk::is_set(virtual_mac_address_state.yfilter)
+	|| ydk::is_set(virtual_router_id_xr.yfilter)
+	|| ydk::is_set(vrrp_state.yfilter)
 	|| (resign_received_time !=  nullptr && resign_received_time->has_operation())
 	|| (resign_sent_time !=  nullptr && resign_sent_time->has_operation());
 }
@@ -1359,75 +1762,75 @@ const EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (virtual_router_id.is_set || is_set(virtual_router_id.operation)) leaf_name_data.push_back(virtual_router_id.get_name_leafdata());
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (address_list_error_count.is_set || is_set(address_list_error_count.operation)) leaf_name_data.push_back(address_list_error_count.get_name_leafdata());
-    if (advert_interval_error_count.is_set || is_set(advert_interval_error_count.operation)) leaf_name_data.push_back(advert_interval_error_count.get_name_leafdata());
-    if (adverts_received_count.is_set || is_set(adverts_received_count.operation)) leaf_name_data.push_back(adverts_received_count.get_name_leafdata());
-    if (adverts_sent_count.is_set || is_set(adverts_sent_count.operation)) leaf_name_data.push_back(adverts_sent_count.get_name_leafdata());
-    if (auth_type_mismatch_count.is_set || is_set(auth_type_mismatch_count.operation)) leaf_name_data.push_back(auth_type_mismatch_count.get_name_leafdata());
-    if (authentication_fail_count.is_set || is_set(authentication_fail_count.operation)) leaf_name_data.push_back(authentication_fail_count.get_name_leafdata());
-    if (authentication_flag.is_set || is_set(authentication_flag.operation)) leaf_name_data.push_back(authentication_flag.get_name_leafdata());
-    if (authentication_string.is_set || is_set(authentication_string.operation)) leaf_name_data.push_back(authentication_string.get_name_leafdata());
-    if (authentication_type.is_set || is_set(authentication_type.operation)) leaf_name_data.push_back(authentication_type.get_name_leafdata());
-    if (bfd_cfg_remote_ip.is_set || is_set(bfd_cfg_remote_ip.operation)) leaf_name_data.push_back(bfd_cfg_remote_ip.get_name_leafdata());
-    if (bfd_configured_remote_ipv6_address.is_set || is_set(bfd_configured_remote_ipv6_address.operation)) leaf_name_data.push_back(bfd_configured_remote_ipv6_address.get_name_leafdata());
-    if (bfd_interval.is_set || is_set(bfd_interval.operation)) leaf_name_data.push_back(bfd_interval.get_name_leafdata());
-    if (bfd_multiplier.is_set || is_set(bfd_multiplier.operation)) leaf_name_data.push_back(bfd_multiplier.get_name_leafdata());
-    if (bfd_session_state.is_set || is_set(bfd_session_state.operation)) leaf_name_data.push_back(bfd_session_state.get_name_leafdata());
-    if (configured_advertize_time.is_set || is_set(configured_advertize_time.operation)) leaf_name_data.push_back(configured_advertize_time.get_name_leafdata());
-    if (configured_down_address_count.is_set || is_set(configured_down_address_count.operation)) leaf_name_data.push_back(configured_down_address_count.get_name_leafdata());
-    if (configured_priority.is_set || is_set(configured_priority.operation)) leaf_name_data.push_back(configured_priority.get_name_leafdata());
-    if (delay_timer_flag.is_set || is_set(delay_timer_flag.operation)) leaf_name_data.push_back(delay_timer_flag.get_name_leafdata());
-    if (delay_timer_msecs.is_set || is_set(delay_timer_msecs.operation)) leaf_name_data.push_back(delay_timer_msecs.get_name_leafdata());
-    if (delay_timer_secs.is_set || is_set(delay_timer_secs.operation)) leaf_name_data.push_back(delay_timer_secs.get_name_leafdata());
-    if (followed_session_name.is_set || is_set(followed_session_name.operation)) leaf_name_data.push_back(followed_session_name.get_name_leafdata());
-    if (force_timer_flag.is_set || is_set(force_timer_flag.operation)) leaf_name_data.push_back(force_timer_flag.get_name_leafdata());
-    if (interface_ipv4_address.is_set || is_set(interface_ipv4_address.operation)) leaf_name_data.push_back(interface_ipv4_address.get_name_leafdata());
-    if (interface_ipv6_address.is_set || is_set(interface_ipv6_address.operation)) leaf_name_data.push_back(interface_ipv6_address.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (invalid_auth_type_count.is_set || is_set(invalid_auth_type_count.operation)) leaf_name_data.push_back(invalid_auth_type_count.get_name_leafdata());
-    if (invalid_packet_count.is_set || is_set(invalid_packet_count.operation)) leaf_name_data.push_back(invalid_packet_count.get_name_leafdata());
-    if (ip_address_owner_flag.is_set || is_set(ip_address_owner_flag.operation)) leaf_name_data.push_back(ip_address_owner_flag.get_name_leafdata());
-    if (is_accept_mode.is_set || is_set(is_accept_mode.operation)) leaf_name_data.push_back(is_accept_mode.get_name_leafdata());
-    if (is_slave.is_set || is_set(is_slave.operation)) leaf_name_data.push_back(is_slave.get_name_leafdata());
-    if (master_count.is_set || is_set(master_count.operation)) leaf_name_data.push_back(master_count.get_name_leafdata());
-    if (master_ip_address.is_set || is_set(master_ip_address.operation)) leaf_name_data.push_back(master_ip_address.get_name_leafdata());
-    if (master_ipv6_address.is_set || is_set(master_ipv6_address.operation)) leaf_name_data.push_back(master_ipv6_address.get_name_leafdata());
-    if (master_priority.is_set || is_set(master_priority.operation)) leaf_name_data.push_back(master_priority.get_name_leafdata());
-    if (min_delay_time.is_set || is_set(min_delay_time.operation)) leaf_name_data.push_back(min_delay_time.get_name_leafdata());
-    if (oper_advertize_time.is_set || is_set(oper_advertize_time.operation)) leaf_name_data.push_back(oper_advertize_time.get_name_leafdata());
-    if (operational_address_count.is_set || is_set(operational_address_count.operation)) leaf_name_data.push_back(operational_address_count.get_name_leafdata());
-    if (operational_priority.is_set || is_set(operational_priority.operation)) leaf_name_data.push_back(operational_priority.get_name_leafdata());
-    if (pkt_length_errors_count.is_set || is_set(pkt_length_errors_count.operation)) leaf_name_data.push_back(pkt_length_errors_count.get_name_leafdata());
-    if (preempt_delay_time.is_set || is_set(preempt_delay_time.operation)) leaf_name_data.push_back(preempt_delay_time.get_name_leafdata());
-    if (preempt_flag.is_set || is_set(preempt_flag.operation)) leaf_name_data.push_back(preempt_flag.get_name_leafdata());
-    if (primary_state.is_set || is_set(primary_state.operation)) leaf_name_data.push_back(primary_state.get_name_leafdata());
-    if (primary_virtual_ip.is_set || is_set(primary_virtual_ip.operation)) leaf_name_data.push_back(primary_virtual_ip.get_name_leafdata());
-    if (priority_decrement.is_set || is_set(priority_decrement.operation)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
-    if (priority_zero_received_count.is_set || is_set(priority_zero_received_count.operation)) leaf_name_data.push_back(priority_zero_received_count.get_name_leafdata());
-    if (priority_zero_sent_count.is_set || is_set(priority_zero_sent_count.operation)) leaf_name_data.push_back(priority_zero_sent_count.get_name_leafdata());
-    if (reload_delay_time.is_set || is_set(reload_delay_time.operation)) leaf_name_data.push_back(reload_delay_time.get_name_leafdata());
-    if (secondary_address_count.is_set || is_set(secondary_address_count.operation)) leaf_name_data.push_back(secondary_address_count.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
-    if (slaves.is_set || is_set(slaves.operation)) leaf_name_data.push_back(slaves.get_name_leafdata());
-    if (state_change_count.is_set || is_set(state_change_count.operation)) leaf_name_data.push_back(state_change_count.get_name_leafdata());
-    if (state_from_checkpoint.is_set || is_set(state_from_checkpoint.operation)) leaf_name_data.push_back(state_from_checkpoint.get_name_leafdata());
-    if (time_in_current_state.is_set || is_set(time_in_current_state.operation)) leaf_name_data.push_back(time_in_current_state.get_name_leafdata());
-    if (time_stats_discontinuity.is_set || is_set(time_stats_discontinuity.operation)) leaf_name_data.push_back(time_stats_discontinuity.get_name_leafdata());
-    if (time_vrouter_up.is_set || is_set(time_vrouter_up.operation)) leaf_name_data.push_back(time_vrouter_up.get_name_leafdata());
-    if (tracked_interface_count.is_set || is_set(tracked_interface_count.operation)) leaf_name_data.push_back(tracked_interface_count.get_name_leafdata());
-    if (tracked_interface_up_count.is_set || is_set(tracked_interface_up_count.operation)) leaf_name_data.push_back(tracked_interface_up_count.get_name_leafdata());
-    if (tracked_item_count.is_set || is_set(tracked_item_count.operation)) leaf_name_data.push_back(tracked_item_count.get_name_leafdata());
-    if (tracked_item_up_count.is_set || is_set(tracked_item_up_count.operation)) leaf_name_data.push_back(tracked_item_up_count.get_name_leafdata());
-    if (ttl_error_count.is_set || is_set(ttl_error_count.operation)) leaf_name_data.push_back(ttl_error_count.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (virtual_linklocal_ipv6_address.is_set || is_set(virtual_linklocal_ipv6_address.operation)) leaf_name_data.push_back(virtual_linklocal_ipv6_address.get_name_leafdata());
-    if (virtual_mac_address.is_set || is_set(virtual_mac_address.operation)) leaf_name_data.push_back(virtual_mac_address.get_name_leafdata());
-    if (virtual_mac_address_state.is_set || is_set(virtual_mac_address_state.operation)) leaf_name_data.push_back(virtual_mac_address_state.get_name_leafdata());
-    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.operation)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
-    if (vrrp_state.is_set || is_set(vrrp_state.operation)) leaf_name_data.push_back(vrrp_state.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (virtual_router_id.is_set || is_set(virtual_router_id.yfilter)) leaf_name_data.push_back(virtual_router_id.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (address_list_error_count.is_set || is_set(address_list_error_count.yfilter)) leaf_name_data.push_back(address_list_error_count.get_name_leafdata());
+    if (advert_interval_error_count.is_set || is_set(advert_interval_error_count.yfilter)) leaf_name_data.push_back(advert_interval_error_count.get_name_leafdata());
+    if (adverts_received_count.is_set || is_set(adverts_received_count.yfilter)) leaf_name_data.push_back(adverts_received_count.get_name_leafdata());
+    if (adverts_sent_count.is_set || is_set(adverts_sent_count.yfilter)) leaf_name_data.push_back(adverts_sent_count.get_name_leafdata());
+    if (auth_type_mismatch_count.is_set || is_set(auth_type_mismatch_count.yfilter)) leaf_name_data.push_back(auth_type_mismatch_count.get_name_leafdata());
+    if (authentication_fail_count.is_set || is_set(authentication_fail_count.yfilter)) leaf_name_data.push_back(authentication_fail_count.get_name_leafdata());
+    if (authentication_flag.is_set || is_set(authentication_flag.yfilter)) leaf_name_data.push_back(authentication_flag.get_name_leafdata());
+    if (authentication_string.is_set || is_set(authentication_string.yfilter)) leaf_name_data.push_back(authentication_string.get_name_leafdata());
+    if (authentication_type.is_set || is_set(authentication_type.yfilter)) leaf_name_data.push_back(authentication_type.get_name_leafdata());
+    if (bfd_cfg_remote_ip.is_set || is_set(bfd_cfg_remote_ip.yfilter)) leaf_name_data.push_back(bfd_cfg_remote_ip.get_name_leafdata());
+    if (bfd_configured_remote_ipv6_address.is_set || is_set(bfd_configured_remote_ipv6_address.yfilter)) leaf_name_data.push_back(bfd_configured_remote_ipv6_address.get_name_leafdata());
+    if (bfd_interval.is_set || is_set(bfd_interval.yfilter)) leaf_name_data.push_back(bfd_interval.get_name_leafdata());
+    if (bfd_multiplier.is_set || is_set(bfd_multiplier.yfilter)) leaf_name_data.push_back(bfd_multiplier.get_name_leafdata());
+    if (bfd_session_state.is_set || is_set(bfd_session_state.yfilter)) leaf_name_data.push_back(bfd_session_state.get_name_leafdata());
+    if (configured_advertize_time.is_set || is_set(configured_advertize_time.yfilter)) leaf_name_data.push_back(configured_advertize_time.get_name_leafdata());
+    if (configured_down_address_count.is_set || is_set(configured_down_address_count.yfilter)) leaf_name_data.push_back(configured_down_address_count.get_name_leafdata());
+    if (configured_priority.is_set || is_set(configured_priority.yfilter)) leaf_name_data.push_back(configured_priority.get_name_leafdata());
+    if (delay_timer_flag.is_set || is_set(delay_timer_flag.yfilter)) leaf_name_data.push_back(delay_timer_flag.get_name_leafdata());
+    if (delay_timer_msecs.is_set || is_set(delay_timer_msecs.yfilter)) leaf_name_data.push_back(delay_timer_msecs.get_name_leafdata());
+    if (delay_timer_secs.is_set || is_set(delay_timer_secs.yfilter)) leaf_name_data.push_back(delay_timer_secs.get_name_leafdata());
+    if (followed_session_name.is_set || is_set(followed_session_name.yfilter)) leaf_name_data.push_back(followed_session_name.get_name_leafdata());
+    if (force_timer_flag.is_set || is_set(force_timer_flag.yfilter)) leaf_name_data.push_back(force_timer_flag.get_name_leafdata());
+    if (interface_ipv4_address.is_set || is_set(interface_ipv4_address.yfilter)) leaf_name_data.push_back(interface_ipv4_address.get_name_leafdata());
+    if (interface_ipv6_address.is_set || is_set(interface_ipv6_address.yfilter)) leaf_name_data.push_back(interface_ipv6_address.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (invalid_auth_type_count.is_set || is_set(invalid_auth_type_count.yfilter)) leaf_name_data.push_back(invalid_auth_type_count.get_name_leafdata());
+    if (invalid_packet_count.is_set || is_set(invalid_packet_count.yfilter)) leaf_name_data.push_back(invalid_packet_count.get_name_leafdata());
+    if (ip_address_owner_flag.is_set || is_set(ip_address_owner_flag.yfilter)) leaf_name_data.push_back(ip_address_owner_flag.get_name_leafdata());
+    if (is_accept_mode.is_set || is_set(is_accept_mode.yfilter)) leaf_name_data.push_back(is_accept_mode.get_name_leafdata());
+    if (is_slave.is_set || is_set(is_slave.yfilter)) leaf_name_data.push_back(is_slave.get_name_leafdata());
+    if (master_count.is_set || is_set(master_count.yfilter)) leaf_name_data.push_back(master_count.get_name_leafdata());
+    if (master_ip_address.is_set || is_set(master_ip_address.yfilter)) leaf_name_data.push_back(master_ip_address.get_name_leafdata());
+    if (master_ipv6_address.is_set || is_set(master_ipv6_address.yfilter)) leaf_name_data.push_back(master_ipv6_address.get_name_leafdata());
+    if (master_priority.is_set || is_set(master_priority.yfilter)) leaf_name_data.push_back(master_priority.get_name_leafdata());
+    if (min_delay_time.is_set || is_set(min_delay_time.yfilter)) leaf_name_data.push_back(min_delay_time.get_name_leafdata());
+    if (oper_advertize_time.is_set || is_set(oper_advertize_time.yfilter)) leaf_name_data.push_back(oper_advertize_time.get_name_leafdata());
+    if (operational_address_count.is_set || is_set(operational_address_count.yfilter)) leaf_name_data.push_back(operational_address_count.get_name_leafdata());
+    if (operational_priority.is_set || is_set(operational_priority.yfilter)) leaf_name_data.push_back(operational_priority.get_name_leafdata());
+    if (pkt_length_errors_count.is_set || is_set(pkt_length_errors_count.yfilter)) leaf_name_data.push_back(pkt_length_errors_count.get_name_leafdata());
+    if (preempt_delay_time.is_set || is_set(preempt_delay_time.yfilter)) leaf_name_data.push_back(preempt_delay_time.get_name_leafdata());
+    if (preempt_flag.is_set || is_set(preempt_flag.yfilter)) leaf_name_data.push_back(preempt_flag.get_name_leafdata());
+    if (primary_state.is_set || is_set(primary_state.yfilter)) leaf_name_data.push_back(primary_state.get_name_leafdata());
+    if (primary_virtual_ip.is_set || is_set(primary_virtual_ip.yfilter)) leaf_name_data.push_back(primary_virtual_ip.get_name_leafdata());
+    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
+    if (priority_zero_received_count.is_set || is_set(priority_zero_received_count.yfilter)) leaf_name_data.push_back(priority_zero_received_count.get_name_leafdata());
+    if (priority_zero_sent_count.is_set || is_set(priority_zero_sent_count.yfilter)) leaf_name_data.push_back(priority_zero_sent_count.get_name_leafdata());
+    if (reload_delay_time.is_set || is_set(reload_delay_time.yfilter)) leaf_name_data.push_back(reload_delay_time.get_name_leafdata());
+    if (secondary_address_count.is_set || is_set(secondary_address_count.yfilter)) leaf_name_data.push_back(secondary_address_count.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (slaves.is_set || is_set(slaves.yfilter)) leaf_name_data.push_back(slaves.get_name_leafdata());
+    if (state_change_count.is_set || is_set(state_change_count.yfilter)) leaf_name_data.push_back(state_change_count.get_name_leafdata());
+    if (state_from_checkpoint.is_set || is_set(state_from_checkpoint.yfilter)) leaf_name_data.push_back(state_from_checkpoint.get_name_leafdata());
+    if (time_in_current_state.is_set || is_set(time_in_current_state.yfilter)) leaf_name_data.push_back(time_in_current_state.get_name_leafdata());
+    if (time_stats_discontinuity.is_set || is_set(time_stats_discontinuity.yfilter)) leaf_name_data.push_back(time_stats_discontinuity.get_name_leafdata());
+    if (time_vrouter_up.is_set || is_set(time_vrouter_up.yfilter)) leaf_name_data.push_back(time_vrouter_up.get_name_leafdata());
+    if (tracked_interface_count.is_set || is_set(tracked_interface_count.yfilter)) leaf_name_data.push_back(tracked_interface_count.get_name_leafdata());
+    if (tracked_interface_up_count.is_set || is_set(tracked_interface_up_count.yfilter)) leaf_name_data.push_back(tracked_interface_up_count.get_name_leafdata());
+    if (tracked_item_count.is_set || is_set(tracked_item_count.yfilter)) leaf_name_data.push_back(tracked_item_count.get_name_leafdata());
+    if (tracked_item_up_count.is_set || is_set(tracked_item_up_count.yfilter)) leaf_name_data.push_back(tracked_item_up_count.get_name_leafdata());
+    if (ttl_error_count.is_set || is_set(ttl_error_count.yfilter)) leaf_name_data.push_back(ttl_error_count.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (virtual_linklocal_ipv6_address.is_set || is_set(virtual_linklocal_ipv6_address.yfilter)) leaf_name_data.push_back(virtual_linklocal_ipv6_address.get_name_leafdata());
+    if (virtual_mac_address.is_set || is_set(virtual_mac_address.yfilter)) leaf_name_data.push_back(virtual_mac_address.get_name_leafdata());
+    if (virtual_mac_address_state.is_set || is_set(virtual_mac_address_state.yfilter)) leaf_name_data.push_back(virtual_mac_address_state.get_name_leafdata());
+    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.yfilter)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
+    if (vrrp_state.is_set || is_set(vrrp_state.yfilter)) leaf_name_data.push_back(vrrp_state.get_name_leafdata());
 
     auto ipv4_configured_down_address_name_datas = ipv4_configured_down_address.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), ipv4_configured_down_address_name_datas.begin(), ipv4_configured_down_address_name_datas.end());
@@ -1541,131 +1944,193 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv6::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-router-id")
     {
         virtual_router_id = value;
+        virtual_router_id.value_namespace = name_space;
+        virtual_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-list-error-count")
     {
         address_list_error_count = value;
+        address_list_error_count.value_namespace = name_space;
+        address_list_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "advert-interval-error-count")
     {
         advert_interval_error_count = value;
+        advert_interval_error_count.value_namespace = name_space;
+        advert_interval_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adverts-received-count")
     {
         adverts_received_count = value;
+        adverts_received_count.value_namespace = name_space;
+        adverts_received_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adverts-sent-count")
     {
         adverts_sent_count = value;
+        adverts_sent_count.value_namespace = name_space;
+        adverts_sent_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auth-type-mismatch-count")
     {
         auth_type_mismatch_count = value;
+        auth_type_mismatch_count.value_namespace = name_space;
+        auth_type_mismatch_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-fail-count")
     {
         authentication_fail_count = value;
+        authentication_fail_count.value_namespace = name_space;
+        authentication_fail_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-flag")
     {
         authentication_flag = value;
+        authentication_flag.value_namespace = name_space;
+        authentication_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-string")
     {
         authentication_string = value;
+        authentication_string.value_namespace = name_space;
+        authentication_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-type")
     {
         authentication_type = value;
+        authentication_type.value_namespace = name_space;
+        authentication_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-cfg-remote-ip")
     {
         bfd_cfg_remote_ip = value;
+        bfd_cfg_remote_ip.value_namespace = name_space;
+        bfd_cfg_remote_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-configured-remote-ipv6-address")
     {
         bfd_configured_remote_ipv6_address = value;
+        bfd_configured_remote_ipv6_address.value_namespace = name_space;
+        bfd_configured_remote_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-interval")
     {
         bfd_interval = value;
+        bfd_interval.value_namespace = name_space;
+        bfd_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-multiplier")
     {
         bfd_multiplier = value;
+        bfd_multiplier.value_namespace = name_space;
+        bfd_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-session-state")
     {
         bfd_session_state = value;
+        bfd_session_state.value_namespace = name_space;
+        bfd_session_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-advertize-time")
     {
         configured_advertize_time = value;
+        configured_advertize_time.value_namespace = name_space;
+        configured_advertize_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-down-address-count")
     {
         configured_down_address_count = value;
+        configured_down_address_count.value_namespace = name_space;
+        configured_down_address_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-priority")
     {
         configured_priority = value;
+        configured_priority.value_namespace = name_space;
+        configured_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay-timer-flag")
     {
         delay_timer_flag = value;
+        delay_timer_flag.value_namespace = name_space;
+        delay_timer_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay-timer-msecs")
     {
         delay_timer_msecs = value;
+        delay_timer_msecs.value_namespace = name_space;
+        delay_timer_msecs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay-timer-secs")
     {
         delay_timer_secs = value;
+        delay_timer_secs.value_namespace = name_space;
+        delay_timer_secs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "followed-session-name")
     {
         followed_session_name = value;
+        followed_session_name.value_namespace = name_space;
+        followed_session_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "force-timer-flag")
     {
         force_timer_flag = value;
+        force_timer_flag.value_namespace = name_space;
+        force_timer_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-ipv4-address")
     {
         interface_ipv4_address = value;
+        interface_ipv4_address.value_namespace = name_space;
+        interface_ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-ipv6-address")
     {
         interface_ipv6_address = value;
+        interface_ipv6_address.value_namespace = name_space;
+        interface_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-auth-type-count")
     {
         invalid_auth_type_count = value;
+        invalid_auth_type_count.value_namespace = name_space;
+        invalid_auth_type_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-packet-count")
     {
         invalid_packet_count = value;
+        invalid_packet_count.value_namespace = name_space;
+        invalid_packet_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address-owner-flag")
     {
         ip_address_owner_flag = value;
+        ip_address_owner_flag.value_namespace = name_space;
+        ip_address_owner_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-configured-down-address")
     {
@@ -1674,34 +2139,50 @@ void Vrrp::Ipv6::VirtualRouters::VirtualRouter::set_value(const std::string & va
     if(value_path == "is-accept-mode")
     {
         is_accept_mode = value;
+        is_accept_mode.value_namespace = name_space;
+        is_accept_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-slave")
     {
         is_slave = value;
+        is_slave.value_namespace = name_space;
+        is_slave.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master-count")
     {
         master_count = value;
+        master_count.value_namespace = name_space;
+        master_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master-ip-address")
     {
         master_ip_address = value;
+        master_ip_address.value_namespace = name_space;
+        master_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master-ipv6-address")
     {
         master_ipv6_address = value;
+        master_ipv6_address.value_namespace = name_space;
+        master_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master-priority")
     {
         master_priority = value;
+        master_priority.value_namespace = name_space;
+        master_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-delay-time")
     {
         min_delay_time = value;
+        min_delay_time.value_namespace = name_space;
+        min_delay_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oper-advertize-time")
     {
         oper_advertize_time = value;
+        oper_advertize_time.value_namespace = name_space;
+        oper_advertize_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational-address")
     {
@@ -1710,123 +2191,478 @@ void Vrrp::Ipv6::VirtualRouters::VirtualRouter::set_value(const std::string & va
     if(value_path == "operational-address-count")
     {
         operational_address_count = value;
+        operational_address_count.value_namespace = name_space;
+        operational_address_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational-priority")
     {
         operational_priority = value;
+        operational_priority.value_namespace = name_space;
+        operational_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pkt-length-errors-count")
     {
         pkt_length_errors_count = value;
+        pkt_length_errors_count.value_namespace = name_space;
+        pkt_length_errors_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preempt-delay-time")
     {
         preempt_delay_time = value;
+        preempt_delay_time.value_namespace = name_space;
+        preempt_delay_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preempt-flag")
     {
         preempt_flag = value;
+        preempt_flag.value_namespace = name_space;
+        preempt_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-state")
     {
         primary_state = value;
+        primary_state.value_namespace = name_space;
+        primary_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-virtual-ip")
     {
         primary_virtual_ip = value;
+        primary_virtual_ip.value_namespace = name_space;
+        primary_virtual_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-decrement")
     {
         priority_decrement = value;
+        priority_decrement.value_namespace = name_space;
+        priority_decrement.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-zero-received-count")
     {
         priority_zero_received_count = value;
+        priority_zero_received_count.value_namespace = name_space;
+        priority_zero_received_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-zero-sent-count")
     {
         priority_zero_sent_count = value;
+        priority_zero_sent_count.value_namespace = name_space;
+        priority_zero_sent_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reload-delay-time")
     {
         reload_delay_time = value;
+        reload_delay_time.value_namespace = name_space;
+        reload_delay_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-address-count")
     {
         secondary_address_count = value;
+        secondary_address_count.value_namespace = name_space;
+        secondary_address_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slaves")
     {
         slaves = value;
+        slaves.value_namespace = name_space;
+        slaves.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state-change-count")
     {
         state_change_count = value;
+        state_change_count.value_namespace = name_space;
+        state_change_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state-from-checkpoint")
     {
         state_from_checkpoint = value;
+        state_from_checkpoint.value_namespace = name_space;
+        state_from_checkpoint.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-current-state")
     {
         time_in_current_state = value;
+        time_in_current_state.value_namespace = name_space;
+        time_in_current_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stats-discontinuity")
     {
         time_stats_discontinuity = value;
+        time_stats_discontinuity.value_namespace = name_space;
+        time_stats_discontinuity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-vrouter-up")
     {
         time_vrouter_up = value;
+        time_vrouter_up.value_namespace = name_space;
+        time_vrouter_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interface-count")
     {
         tracked_interface_count = value;
+        tracked_interface_count.value_namespace = name_space;
+        tracked_interface_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interface-up-count")
     {
         tracked_interface_up_count = value;
+        tracked_interface_up_count.value_namespace = name_space;
+        tracked_interface_up_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-item-count")
     {
         tracked_item_count = value;
+        tracked_item_count.value_namespace = name_space;
+        tracked_item_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-item-up-count")
     {
         tracked_item_up_count = value;
+        tracked_item_up_count.value_namespace = name_space;
+        tracked_item_up_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl-error-count")
     {
         ttl_error_count = value;
+        ttl_error_count.value_namespace = name_space;
+        ttl_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-linklocal-ipv6-address")
     {
         virtual_linklocal_ipv6_address = value;
+        virtual_linklocal_ipv6_address.value_namespace = name_space;
+        virtual_linklocal_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-mac-address")
     {
         virtual_mac_address = value;
+        virtual_mac_address.value_namespace = name_space;
+        virtual_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-mac-address-state")
     {
         virtual_mac_address_state = value;
+        virtual_mac_address_state.value_namespace = name_space;
+        virtual_mac_address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-router-id-xr")
     {
         virtual_router_id_xr = value;
+        virtual_router_id_xr.value_namespace = name_space;
+        virtual_router_id_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrrp-state")
     {
         vrrp_state = value;
+        vrrp_state.value_namespace = name_space;
+        vrrp_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id")
+    {
+        virtual_router_id.yfilter = yfilter;
+    }
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "address-list-error-count")
+    {
+        address_list_error_count.yfilter = yfilter;
+    }
+    if(value_path == "advert-interval-error-count")
+    {
+        advert_interval_error_count.yfilter = yfilter;
+    }
+    if(value_path == "adverts-received-count")
+    {
+        adverts_received_count.yfilter = yfilter;
+    }
+    if(value_path == "adverts-sent-count")
+    {
+        adverts_sent_count.yfilter = yfilter;
+    }
+    if(value_path == "auth-type-mismatch-count")
+    {
+        auth_type_mismatch_count.yfilter = yfilter;
+    }
+    if(value_path == "authentication-fail-count")
+    {
+        authentication_fail_count.yfilter = yfilter;
+    }
+    if(value_path == "authentication-flag")
+    {
+        authentication_flag.yfilter = yfilter;
+    }
+    if(value_path == "authentication-string")
+    {
+        authentication_string.yfilter = yfilter;
+    }
+    if(value_path == "authentication-type")
+    {
+        authentication_type.yfilter = yfilter;
+    }
+    if(value_path == "bfd-cfg-remote-ip")
+    {
+        bfd_cfg_remote_ip.yfilter = yfilter;
+    }
+    if(value_path == "bfd-configured-remote-ipv6-address")
+    {
+        bfd_configured_remote_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "bfd-interval")
+    {
+        bfd_interval.yfilter = yfilter;
+    }
+    if(value_path == "bfd-multiplier")
+    {
+        bfd_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "bfd-session-state")
+    {
+        bfd_session_state.yfilter = yfilter;
+    }
+    if(value_path == "configured-advertize-time")
+    {
+        configured_advertize_time.yfilter = yfilter;
+    }
+    if(value_path == "configured-down-address-count")
+    {
+        configured_down_address_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-priority")
+    {
+        configured_priority.yfilter = yfilter;
+    }
+    if(value_path == "delay-timer-flag")
+    {
+        delay_timer_flag.yfilter = yfilter;
+    }
+    if(value_path == "delay-timer-msecs")
+    {
+        delay_timer_msecs.yfilter = yfilter;
+    }
+    if(value_path == "delay-timer-secs")
+    {
+        delay_timer_secs.yfilter = yfilter;
+    }
+    if(value_path == "followed-session-name")
+    {
+        followed_session_name.yfilter = yfilter;
+    }
+    if(value_path == "force-timer-flag")
+    {
+        force_timer_flag.yfilter = yfilter;
+    }
+    if(value_path == "interface-ipv4-address")
+    {
+        interface_ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-ipv6-address")
+    {
+        interface_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "invalid-auth-type-count")
+    {
+        invalid_auth_type_count.yfilter = yfilter;
+    }
+    if(value_path == "invalid-packet-count")
+    {
+        invalid_packet_count.yfilter = yfilter;
+    }
+    if(value_path == "ip-address-owner-flag")
+    {
+        ip_address_owner_flag.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-configured-down-address")
+    {
+        ipv4_configured_down_address.yfilter = yfilter;
+    }
+    if(value_path == "is-accept-mode")
+    {
+        is_accept_mode.yfilter = yfilter;
+    }
+    if(value_path == "is-slave")
+    {
+        is_slave.yfilter = yfilter;
+    }
+    if(value_path == "master-count")
+    {
+        master_count.yfilter = yfilter;
+    }
+    if(value_path == "master-ip-address")
+    {
+        master_ip_address.yfilter = yfilter;
+    }
+    if(value_path == "master-ipv6-address")
+    {
+        master_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "master-priority")
+    {
+        master_priority.yfilter = yfilter;
+    }
+    if(value_path == "min-delay-time")
+    {
+        min_delay_time.yfilter = yfilter;
+    }
+    if(value_path == "oper-advertize-time")
+    {
+        oper_advertize_time.yfilter = yfilter;
+    }
+    if(value_path == "operational-address")
+    {
+        operational_address.yfilter = yfilter;
+    }
+    if(value_path == "operational-address-count")
+    {
+        operational_address_count.yfilter = yfilter;
+    }
+    if(value_path == "operational-priority")
+    {
+        operational_priority.yfilter = yfilter;
+    }
+    if(value_path == "pkt-length-errors-count")
+    {
+        pkt_length_errors_count.yfilter = yfilter;
+    }
+    if(value_path == "preempt-delay-time")
+    {
+        preempt_delay_time.yfilter = yfilter;
+    }
+    if(value_path == "preempt-flag")
+    {
+        preempt_flag.yfilter = yfilter;
+    }
+    if(value_path == "primary-state")
+    {
+        primary_state.yfilter = yfilter;
+    }
+    if(value_path == "primary-virtual-ip")
+    {
+        primary_virtual_ip.yfilter = yfilter;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement.yfilter = yfilter;
+    }
+    if(value_path == "priority-zero-received-count")
+    {
+        priority_zero_received_count.yfilter = yfilter;
+    }
+    if(value_path == "priority-zero-sent-count")
+    {
+        priority_zero_sent_count.yfilter = yfilter;
+    }
+    if(value_path == "reload-delay-time")
+    {
+        reload_delay_time.yfilter = yfilter;
+    }
+    if(value_path == "secondary-address-count")
+    {
+        secondary_address_count.yfilter = yfilter;
+    }
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+    if(value_path == "slaves")
+    {
+        slaves.yfilter = yfilter;
+    }
+    if(value_path == "state-change-count")
+    {
+        state_change_count.yfilter = yfilter;
+    }
+    if(value_path == "state-from-checkpoint")
+    {
+        state_from_checkpoint.yfilter = yfilter;
+    }
+    if(value_path == "time-in-current-state")
+    {
+        time_in_current_state.yfilter = yfilter;
+    }
+    if(value_path == "time-stats-discontinuity")
+    {
+        time_stats_discontinuity.yfilter = yfilter;
+    }
+    if(value_path == "time-vrouter-up")
+    {
+        time_vrouter_up.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-count")
+    {
+        tracked_interface_count.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-up-count")
+    {
+        tracked_interface_up_count.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-count")
+    {
+        tracked_item_count.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-up-count")
+    {
+        tracked_item_up_count.yfilter = yfilter;
+    }
+    if(value_path == "ttl-error-count")
+    {
+        ttl_error_count.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "virtual-linklocal-ipv6-address")
+    {
+        virtual_linklocal_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "virtual-mac-address")
+    {
+        virtual_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "virtual-mac-address-state")
+    {
+        virtual_mac_address_state.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id-xr")
+    {
+        virtual_router_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "vrrp-state")
+    {
+        vrrp_state.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-configured-down-address" || name == "ipv6-operational-address" || name == "resign-received-time" || name == "resign-sent-time" || name == "state-change-history" || name == "interface-name" || name == "virtual-router-id" || name == "address-family" || name == "address-list-error-count" || name == "advert-interval-error-count" || name == "adverts-received-count" || name == "adverts-sent-count" || name == "auth-type-mismatch-count" || name == "authentication-fail-count" || name == "authentication-flag" || name == "authentication-string" || name == "authentication-type" || name == "bfd-cfg-remote-ip" || name == "bfd-configured-remote-ipv6-address" || name == "bfd-interval" || name == "bfd-multiplier" || name == "bfd-session-state" || name == "configured-advertize-time" || name == "configured-down-address-count" || name == "configured-priority" || name == "delay-timer-flag" || name == "delay-timer-msecs" || name == "delay-timer-secs" || name == "followed-session-name" || name == "force-timer-flag" || name == "interface-ipv4-address" || name == "interface-ipv6-address" || name == "interface-name-xr" || name == "invalid-auth-type-count" || name == "invalid-packet-count" || name == "ip-address-owner-flag" || name == "ipv4-configured-down-address" || name == "is-accept-mode" || name == "is-slave" || name == "master-count" || name == "master-ip-address" || name == "master-ipv6-address" || name == "master-priority" || name == "min-delay-time" || name == "oper-advertize-time" || name == "operational-address" || name == "operational-address-count" || name == "operational-priority" || name == "pkt-length-errors-count" || name == "preempt-delay-time" || name == "preempt-flag" || name == "primary-state" || name == "primary-virtual-ip" || name == "priority-decrement" || name == "priority-zero-received-count" || name == "priority-zero-sent-count" || name == "reload-delay-time" || name == "secondary-address-count" || name == "session-name" || name == "slaves" || name == "state-change-count" || name == "state-from-checkpoint" || name == "time-in-current-state" || name == "time-stats-discontinuity" || name == "time-vrouter-up" || name == "tracked-interface-count" || name == "tracked-interface-up-count" || name == "tracked-item-count" || name == "tracked-item-up-count" || name == "ttl-error-count" || name == "version" || name == "virtual-linklocal-ipv6-address" || name == "virtual-mac-address" || name == "virtual-mac-address-state" || name == "virtual-router-id-xr" || name == "vrrp-state")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::ResignSentTime()
@@ -1849,9 +2685,9 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::has_data() const
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::get_segment_path() const
@@ -1877,8 +2713,8 @@ const EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1897,16 +2733,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::ResignReceivedTime()
@@ -1929,9 +2788,9 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::has_data() c
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::get_segment_path() const
@@ -1957,8 +2816,8 @@ const EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1977,16 +2836,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::Ipv6OperationalAddress()
@@ -2007,8 +2889,8 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::has_data
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::get_segment_path() const
@@ -2034,7 +2916,7 @@ const EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2053,12 +2935,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::Ipv6ConfiguredDownAddress()
@@ -2079,8 +2978,8 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_d
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::get_segment_path() const
@@ -2106,7 +3005,7 @@ const EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2125,12 +3024,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::StateChangeHistory()
@@ -2160,10 +3076,10 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::has_data() c
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(new_state.operation)
-	|| is_set(old_state.operation)
-	|| is_set(reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(new_state.yfilter)
+	|| ydk::is_set(old_state.yfilter)
+	|| ydk::is_set(reason.yfilter)
 	|| (time !=  nullptr && time->has_operation());
 }
 
@@ -2190,9 +3106,9 @@ const EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (new_state.is_set || is_set(new_state.operation)) leaf_name_data.push_back(new_state.get_name_leafdata());
-    if (old_state.is_set || is_set(old_state.operation)) leaf_name_data.push_back(old_state.get_name_leafdata());
-    if (reason.is_set || is_set(reason.operation)) leaf_name_data.push_back(reason.get_name_leafdata());
+    if (new_state.is_set || is_set(new_state.yfilter)) leaf_name_data.push_back(new_state.get_name_leafdata());
+    if (old_state.is_set || is_set(old_state.yfilter)) leaf_name_data.push_back(old_state.get_name_leafdata());
+    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2225,20 +3141,49 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "new-state")
     {
         new_state = value;
+        new_state.value_namespace = name_space;
+        new_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "old-state")
     {
         old_state = value;
+        old_state.value_namespace = name_space;
+        old_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reason")
     {
         reason = value;
+        reason.value_namespace = name_space;
+        reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "new-state")
+    {
+        new_state.yfilter = yfilter;
+    }
+    if(value_path == "old-state")
+    {
+        old_state.yfilter = yfilter;
+    }
+    if(value_path == "reason")
+    {
+        reason.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time" || name == "new-state" || name == "old-state" || name == "reason")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::Time()
@@ -2261,9 +3206,9 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_da
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::get_segment_path() const
@@ -2289,8 +3234,8 @@ const EntityPath Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2309,16 +3254,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::Interfaces::Interfaces()
@@ -2347,7 +3315,7 @@ bool Vrrp::Ipv6::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Ipv6::Interfaces::get_segment_path() const
@@ -2412,8 +3380,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::Interfaces::get_child
     return children;
 }
 
-void Vrrp::Ipv6::Interfaces::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Ipv6::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Ipv6::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv6::Interfaces::Interface::Interface()
@@ -2444,13 +3423,13 @@ bool Vrrp::Ipv6::Interfaces::Interface::has_data() const
 
 bool Vrrp::Ipv6::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface.operation)
-	|| is_set(invalid_checksum_count.operation)
-	|| is_set(invalid_packet_length_count.operation)
-	|| is_set(invalid_version_count.operation)
-	|| is_set(invalid_vrid_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(invalid_checksum_count.yfilter)
+	|| ydk::is_set(invalid_packet_length_count.yfilter)
+	|| ydk::is_set(invalid_version_count.yfilter)
+	|| ydk::is_set(invalid_vrid_count.yfilter);
 }
 
 std::string Vrrp::Ipv6::Interfaces::Interface::get_segment_path() const
@@ -2476,12 +3455,12 @@ const EntityPath Vrrp::Ipv6::Interfaces::Interface::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (invalid_checksum_count.is_set || is_set(invalid_checksum_count.operation)) leaf_name_data.push_back(invalid_checksum_count.get_name_leafdata());
-    if (invalid_packet_length_count.is_set || is_set(invalid_packet_length_count.operation)) leaf_name_data.push_back(invalid_packet_length_count.get_name_leafdata());
-    if (invalid_version_count.is_set || is_set(invalid_version_count.operation)) leaf_name_data.push_back(invalid_version_count.get_name_leafdata());
-    if (invalid_vrid_count.is_set || is_set(invalid_vrid_count.operation)) leaf_name_data.push_back(invalid_vrid_count.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (invalid_checksum_count.is_set || is_set(invalid_checksum_count.yfilter)) leaf_name_data.push_back(invalid_checksum_count.get_name_leafdata());
+    if (invalid_packet_length_count.is_set || is_set(invalid_packet_length_count.yfilter)) leaf_name_data.push_back(invalid_packet_length_count.get_name_leafdata());
+    if (invalid_version_count.is_set || is_set(invalid_version_count.yfilter)) leaf_name_data.push_back(invalid_version_count.get_name_leafdata());
+    if (invalid_vrid_count.is_set || is_set(invalid_vrid_count.yfilter)) leaf_name_data.push_back(invalid_vrid_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2500,32 +3479,79 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::Interfaces::Interface
     return children;
 }
 
-void Vrrp::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv6::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-checksum-count")
     {
         invalid_checksum_count = value;
+        invalid_checksum_count.value_namespace = name_space;
+        invalid_checksum_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-packet-length-count")
     {
         invalid_packet_length_count = value;
+        invalid_packet_length_count.value_namespace = name_space;
+        invalid_packet_length_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-version-count")
     {
         invalid_version_count = value;
+        invalid_version_count.value_namespace = name_space;
+        invalid_version_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-vrid-count")
     {
         invalid_vrid_count = value;
+        invalid_vrid_count.value_namespace = name_space;
+        invalid_vrid_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv6::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "invalid-checksum-count")
+    {
+        invalid_checksum_count.yfilter = yfilter;
+    }
+    if(value_path == "invalid-packet-length-count")
+    {
+        invalid_packet_length_count.yfilter = yfilter;
+    }
+    if(value_path == "invalid-version-count")
+    {
+        invalid_version_count.yfilter = yfilter;
+    }
+    if(value_path == "invalid-vrid-count")
+    {
+        invalid_vrid_count.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv6::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface" || name == "invalid-checksum-count" || name == "invalid-packet-length-count" || name == "invalid-version-count" || name == "invalid-vrid-count")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::Ipv4()
@@ -2556,7 +3582,7 @@ bool Vrrp::Ipv4::has_data() const
 
 bool Vrrp::Ipv4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (track_items !=  nullptr && track_items->has_operation())
 	|| (virtual_routers !=  nullptr && virtual_routers->has_operation());
@@ -2645,8 +3671,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::get_children() const
     return children;
 }
 
-void Vrrp::Ipv4::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "track-items" || name == "virtual-routers")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::Interfaces::Interfaces()
@@ -2675,7 +3712,7 @@ bool Vrrp::Ipv4::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Ipv4::Interfaces::get_segment_path() const
@@ -2740,8 +3777,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::Interfaces::get_child
     return children;
 }
 
-void Vrrp::Ipv4::Interfaces::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Ipv4::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Ipv4::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::Interfaces::Interface::Interface()
@@ -2772,13 +3820,13 @@ bool Vrrp::Ipv4::Interfaces::Interface::has_data() const
 
 bool Vrrp::Ipv4::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(interface.operation)
-	|| is_set(invalid_checksum_count.operation)
-	|| is_set(invalid_packet_length_count.operation)
-	|| is_set(invalid_version_count.operation)
-	|| is_set(invalid_vrid_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(invalid_checksum_count.yfilter)
+	|| ydk::is_set(invalid_packet_length_count.yfilter)
+	|| ydk::is_set(invalid_version_count.yfilter)
+	|| ydk::is_set(invalid_vrid_count.yfilter);
 }
 
 std::string Vrrp::Ipv4::Interfaces::Interface::get_segment_path() const
@@ -2804,12 +3852,12 @@ const EntityPath Vrrp::Ipv4::Interfaces::Interface::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (invalid_checksum_count.is_set || is_set(invalid_checksum_count.operation)) leaf_name_data.push_back(invalid_checksum_count.get_name_leafdata());
-    if (invalid_packet_length_count.is_set || is_set(invalid_packet_length_count.operation)) leaf_name_data.push_back(invalid_packet_length_count.get_name_leafdata());
-    if (invalid_version_count.is_set || is_set(invalid_version_count.operation)) leaf_name_data.push_back(invalid_version_count.get_name_leafdata());
-    if (invalid_vrid_count.is_set || is_set(invalid_vrid_count.operation)) leaf_name_data.push_back(invalid_vrid_count.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (invalid_checksum_count.is_set || is_set(invalid_checksum_count.yfilter)) leaf_name_data.push_back(invalid_checksum_count.get_name_leafdata());
+    if (invalid_packet_length_count.is_set || is_set(invalid_packet_length_count.yfilter)) leaf_name_data.push_back(invalid_packet_length_count.get_name_leafdata());
+    if (invalid_version_count.is_set || is_set(invalid_version_count.yfilter)) leaf_name_data.push_back(invalid_version_count.get_name_leafdata());
+    if (invalid_vrid_count.is_set || is_set(invalid_vrid_count.yfilter)) leaf_name_data.push_back(invalid_vrid_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2828,32 +3876,79 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::Interfaces::Interface
     return children;
 }
 
-void Vrrp::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-checksum-count")
     {
         invalid_checksum_count = value;
+        invalid_checksum_count.value_namespace = name_space;
+        invalid_checksum_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-packet-length-count")
     {
         invalid_packet_length_count = value;
+        invalid_packet_length_count.value_namespace = name_space;
+        invalid_packet_length_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-version-count")
     {
         invalid_version_count = value;
+        invalid_version_count.value_namespace = name_space;
+        invalid_version_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-vrid-count")
     {
         invalid_vrid_count = value;
+        invalid_vrid_count.value_namespace = name_space;
+        invalid_vrid_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "invalid-checksum-count")
+    {
+        invalid_checksum_count.yfilter = yfilter;
+    }
+    if(value_path == "invalid-packet-length-count")
+    {
+        invalid_packet_length_count.yfilter = yfilter;
+    }
+    if(value_path == "invalid-version-count")
+    {
+        invalid_version_count.yfilter = yfilter;
+    }
+    if(value_path == "invalid-vrid-count")
+    {
+        invalid_vrid_count.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "interface" || name == "invalid-checksum-count" || name == "invalid-packet-length-count" || name == "invalid-version-count" || name == "invalid-vrid-count")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::TrackItems::TrackItems()
@@ -2882,7 +3977,7 @@ bool Vrrp::Ipv4::TrackItems::has_operation() const
         if(track_item[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Ipv4::TrackItems::get_segment_path() const
@@ -2947,8 +4042,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::TrackItems::get_child
     return children;
 }
 
-void Vrrp::Ipv4::TrackItems::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::TrackItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Ipv4::TrackItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Ipv4::TrackItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "track-item")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::TrackItems::TrackItem::TrackItem()
@@ -2985,16 +4091,16 @@ bool Vrrp::Ipv4::TrackItems::TrackItem::has_data() const
 
 bool Vrrp::Ipv4::TrackItems::TrackItem::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(virtual_router_id.operation)
-	|| is_set(tracked_interface_name.operation)
-	|| is_set(interface.operation)
-	|| is_set(priority.operation)
-	|| is_set(state.operation)
-	|| is_set(tracked_item_index.operation)
-	|| is_set(tracked_item_type.operation)
-	|| is_set(virtual_router_id_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(virtual_router_id.yfilter)
+	|| ydk::is_set(tracked_interface_name.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(tracked_item_index.yfilter)
+	|| ydk::is_set(tracked_item_type.yfilter)
+	|| ydk::is_set(virtual_router_id_xr.yfilter);
 }
 
 std::string Vrrp::Ipv4::TrackItems::TrackItem::get_segment_path() const
@@ -3020,15 +4126,15 @@ const EntityPath Vrrp::Ipv4::TrackItems::TrackItem::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (virtual_router_id.is_set || is_set(virtual_router_id.operation)) leaf_name_data.push_back(virtual_router_id.get_name_leafdata());
-    if (tracked_interface_name.is_set || is_set(tracked_interface_name.operation)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (tracked_item_index.is_set || is_set(tracked_item_index.operation)) leaf_name_data.push_back(tracked_item_index.get_name_leafdata());
-    if (tracked_item_type.is_set || is_set(tracked_item_type.operation)) leaf_name_data.push_back(tracked_item_type.get_name_leafdata());
-    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.operation)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (virtual_router_id.is_set || is_set(virtual_router_id.yfilter)) leaf_name_data.push_back(virtual_router_id.get_name_leafdata());
+    if (tracked_interface_name.is_set || is_set(tracked_interface_name.yfilter)) leaf_name_data.push_back(tracked_interface_name.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (tracked_item_index.is_set || is_set(tracked_item_index.yfilter)) leaf_name_data.push_back(tracked_item_index.get_name_leafdata());
+    if (tracked_item_type.is_set || is_set(tracked_item_type.yfilter)) leaf_name_data.push_back(tracked_item_type.get_name_leafdata());
+    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.yfilter)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3047,44 +4153,109 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::TrackItems::TrackItem
     return children;
 }
 
-void Vrrp::Ipv4::TrackItems::TrackItem::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::TrackItems::TrackItem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-router-id")
     {
         virtual_router_id = value;
+        virtual_router_id.value_namespace = name_space;
+        virtual_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interface-name")
     {
         tracked_interface_name = value;
+        tracked_interface_name.value_namespace = name_space;
+        tracked_interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-item-index")
     {
         tracked_item_index = value;
+        tracked_item_index.value_namespace = name_space;
+        tracked_item_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-item-type")
     {
         tracked_item_type = value;
+        tracked_item_type.value_namespace = name_space;
+        tracked_item_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-router-id-xr")
     {
         virtual_router_id_xr = value;
+        virtual_router_id_xr.value_namespace = name_space;
+        virtual_router_id_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::TrackItems::TrackItem::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id")
+    {
+        virtual_router_id.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-name")
+    {
+        tracked_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-index")
+    {
+        tracked_item_index.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-type")
+    {
+        tracked_item_type.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id-xr")
+    {
+        virtual_router_id_xr.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::TrackItems::TrackItem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "virtual-router-id" || name == "tracked-interface-name" || name == "interface" || name == "priority" || name == "state" || name == "tracked-item-index" || name == "tracked-item-type" || name == "virtual-router-id-xr")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouters()
@@ -3113,7 +4284,7 @@ bool Vrrp::Ipv4::VirtualRouters::has_operation() const
         if(virtual_router[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::Ipv4::VirtualRouters::get_segment_path() const
@@ -3178,8 +4349,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::get_c
     return children;
 }
 
-void Vrrp::Ipv4::VirtualRouters::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::VirtualRouters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::Ipv4::VirtualRouters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::Ipv4::VirtualRouters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "virtual-router")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::VirtualRouter()
@@ -3389,86 +4571,86 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_operation() const
     }
     for (auto const & leaf : ipv4_configured_down_address.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : operational_address.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(virtual_router_id.operation)
-	|| is_set(address_family.operation)
-	|| is_set(address_list_error_count.operation)
-	|| is_set(advert_interval_error_count.operation)
-	|| is_set(adverts_received_count.operation)
-	|| is_set(adverts_sent_count.operation)
-	|| is_set(auth_type_mismatch_count.operation)
-	|| is_set(authentication_fail_count.operation)
-	|| is_set(authentication_flag.operation)
-	|| is_set(authentication_string.operation)
-	|| is_set(authentication_type.operation)
-	|| is_set(bfd_cfg_remote_ip.operation)
-	|| is_set(bfd_configured_remote_ipv6_address.operation)
-	|| is_set(bfd_interval.operation)
-	|| is_set(bfd_multiplier.operation)
-	|| is_set(bfd_session_state.operation)
-	|| is_set(configured_advertize_time.operation)
-	|| is_set(configured_down_address_count.operation)
-	|| is_set(configured_priority.operation)
-	|| is_set(delay_timer_flag.operation)
-	|| is_set(delay_timer_msecs.operation)
-	|| is_set(delay_timer_secs.operation)
-	|| is_set(followed_session_name.operation)
-	|| is_set(force_timer_flag.operation)
-	|| is_set(interface_ipv4_address.operation)
-	|| is_set(interface_ipv6_address.operation)
-	|| is_set(interface_name_xr.operation)
-	|| is_set(invalid_auth_type_count.operation)
-	|| is_set(invalid_packet_count.operation)
-	|| is_set(ip_address_owner_flag.operation)
-	|| is_set(ipv4_configured_down_address.operation)
-	|| is_set(is_accept_mode.operation)
-	|| is_set(is_slave.operation)
-	|| is_set(master_count.operation)
-	|| is_set(master_ip_address.operation)
-	|| is_set(master_ipv6_address.operation)
-	|| is_set(master_priority.operation)
-	|| is_set(min_delay_time.operation)
-	|| is_set(oper_advertize_time.operation)
-	|| is_set(operational_address.operation)
-	|| is_set(operational_address_count.operation)
-	|| is_set(operational_priority.operation)
-	|| is_set(pkt_length_errors_count.operation)
-	|| is_set(preempt_delay_time.operation)
-	|| is_set(preempt_flag.operation)
-	|| is_set(primary_state.operation)
-	|| is_set(primary_virtual_ip.operation)
-	|| is_set(priority_decrement.operation)
-	|| is_set(priority_zero_received_count.operation)
-	|| is_set(priority_zero_sent_count.operation)
-	|| is_set(reload_delay_time.operation)
-	|| is_set(secondary_address_count.operation)
-	|| is_set(session_name.operation)
-	|| is_set(slaves.operation)
-	|| is_set(state_change_count.operation)
-	|| is_set(state_from_checkpoint.operation)
-	|| is_set(time_in_current_state.operation)
-	|| is_set(time_stats_discontinuity.operation)
-	|| is_set(time_vrouter_up.operation)
-	|| is_set(tracked_interface_count.operation)
-	|| is_set(tracked_interface_up_count.operation)
-	|| is_set(tracked_item_count.operation)
-	|| is_set(tracked_item_up_count.operation)
-	|| is_set(ttl_error_count.operation)
-	|| is_set(version.operation)
-	|| is_set(virtual_linklocal_ipv6_address.operation)
-	|| is_set(virtual_mac_address.operation)
-	|| is_set(virtual_mac_address_state.operation)
-	|| is_set(virtual_router_id_xr.operation)
-	|| is_set(vrrp_state.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(virtual_router_id.yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(address_list_error_count.yfilter)
+	|| ydk::is_set(advert_interval_error_count.yfilter)
+	|| ydk::is_set(adverts_received_count.yfilter)
+	|| ydk::is_set(adverts_sent_count.yfilter)
+	|| ydk::is_set(auth_type_mismatch_count.yfilter)
+	|| ydk::is_set(authentication_fail_count.yfilter)
+	|| ydk::is_set(authentication_flag.yfilter)
+	|| ydk::is_set(authentication_string.yfilter)
+	|| ydk::is_set(authentication_type.yfilter)
+	|| ydk::is_set(bfd_cfg_remote_ip.yfilter)
+	|| ydk::is_set(bfd_configured_remote_ipv6_address.yfilter)
+	|| ydk::is_set(bfd_interval.yfilter)
+	|| ydk::is_set(bfd_multiplier.yfilter)
+	|| ydk::is_set(bfd_session_state.yfilter)
+	|| ydk::is_set(configured_advertize_time.yfilter)
+	|| ydk::is_set(configured_down_address_count.yfilter)
+	|| ydk::is_set(configured_priority.yfilter)
+	|| ydk::is_set(delay_timer_flag.yfilter)
+	|| ydk::is_set(delay_timer_msecs.yfilter)
+	|| ydk::is_set(delay_timer_secs.yfilter)
+	|| ydk::is_set(followed_session_name.yfilter)
+	|| ydk::is_set(force_timer_flag.yfilter)
+	|| ydk::is_set(interface_ipv4_address.yfilter)
+	|| ydk::is_set(interface_ipv6_address.yfilter)
+	|| ydk::is_set(interface_name_xr.yfilter)
+	|| ydk::is_set(invalid_auth_type_count.yfilter)
+	|| ydk::is_set(invalid_packet_count.yfilter)
+	|| ydk::is_set(ip_address_owner_flag.yfilter)
+	|| ydk::is_set(ipv4_configured_down_address.yfilter)
+	|| ydk::is_set(is_accept_mode.yfilter)
+	|| ydk::is_set(is_slave.yfilter)
+	|| ydk::is_set(master_count.yfilter)
+	|| ydk::is_set(master_ip_address.yfilter)
+	|| ydk::is_set(master_ipv6_address.yfilter)
+	|| ydk::is_set(master_priority.yfilter)
+	|| ydk::is_set(min_delay_time.yfilter)
+	|| ydk::is_set(oper_advertize_time.yfilter)
+	|| ydk::is_set(operational_address.yfilter)
+	|| ydk::is_set(operational_address_count.yfilter)
+	|| ydk::is_set(operational_priority.yfilter)
+	|| ydk::is_set(pkt_length_errors_count.yfilter)
+	|| ydk::is_set(preempt_delay_time.yfilter)
+	|| ydk::is_set(preempt_flag.yfilter)
+	|| ydk::is_set(primary_state.yfilter)
+	|| ydk::is_set(primary_virtual_ip.yfilter)
+	|| ydk::is_set(priority_decrement.yfilter)
+	|| ydk::is_set(priority_zero_received_count.yfilter)
+	|| ydk::is_set(priority_zero_sent_count.yfilter)
+	|| ydk::is_set(reload_delay_time.yfilter)
+	|| ydk::is_set(secondary_address_count.yfilter)
+	|| ydk::is_set(session_name.yfilter)
+	|| ydk::is_set(slaves.yfilter)
+	|| ydk::is_set(state_change_count.yfilter)
+	|| ydk::is_set(state_from_checkpoint.yfilter)
+	|| ydk::is_set(time_in_current_state.yfilter)
+	|| ydk::is_set(time_stats_discontinuity.yfilter)
+	|| ydk::is_set(time_vrouter_up.yfilter)
+	|| ydk::is_set(tracked_interface_count.yfilter)
+	|| ydk::is_set(tracked_interface_up_count.yfilter)
+	|| ydk::is_set(tracked_item_count.yfilter)
+	|| ydk::is_set(tracked_item_up_count.yfilter)
+	|| ydk::is_set(ttl_error_count.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(virtual_linklocal_ipv6_address.yfilter)
+	|| ydk::is_set(virtual_mac_address.yfilter)
+	|| ydk::is_set(virtual_mac_address_state.yfilter)
+	|| ydk::is_set(virtual_router_id_xr.yfilter)
+	|| ydk::is_set(vrrp_state.yfilter)
 	|| (resign_received_time !=  nullptr && resign_received_time->has_operation())
 	|| (resign_sent_time !=  nullptr && resign_sent_time->has_operation());
 }
@@ -3496,75 +4678,75 @@ const EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (virtual_router_id.is_set || is_set(virtual_router_id.operation)) leaf_name_data.push_back(virtual_router_id.get_name_leafdata());
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (address_list_error_count.is_set || is_set(address_list_error_count.operation)) leaf_name_data.push_back(address_list_error_count.get_name_leafdata());
-    if (advert_interval_error_count.is_set || is_set(advert_interval_error_count.operation)) leaf_name_data.push_back(advert_interval_error_count.get_name_leafdata());
-    if (adverts_received_count.is_set || is_set(adverts_received_count.operation)) leaf_name_data.push_back(adverts_received_count.get_name_leafdata());
-    if (adverts_sent_count.is_set || is_set(adverts_sent_count.operation)) leaf_name_data.push_back(adverts_sent_count.get_name_leafdata());
-    if (auth_type_mismatch_count.is_set || is_set(auth_type_mismatch_count.operation)) leaf_name_data.push_back(auth_type_mismatch_count.get_name_leafdata());
-    if (authentication_fail_count.is_set || is_set(authentication_fail_count.operation)) leaf_name_data.push_back(authentication_fail_count.get_name_leafdata());
-    if (authentication_flag.is_set || is_set(authentication_flag.operation)) leaf_name_data.push_back(authentication_flag.get_name_leafdata());
-    if (authentication_string.is_set || is_set(authentication_string.operation)) leaf_name_data.push_back(authentication_string.get_name_leafdata());
-    if (authentication_type.is_set || is_set(authentication_type.operation)) leaf_name_data.push_back(authentication_type.get_name_leafdata());
-    if (bfd_cfg_remote_ip.is_set || is_set(bfd_cfg_remote_ip.operation)) leaf_name_data.push_back(bfd_cfg_remote_ip.get_name_leafdata());
-    if (bfd_configured_remote_ipv6_address.is_set || is_set(bfd_configured_remote_ipv6_address.operation)) leaf_name_data.push_back(bfd_configured_remote_ipv6_address.get_name_leafdata());
-    if (bfd_interval.is_set || is_set(bfd_interval.operation)) leaf_name_data.push_back(bfd_interval.get_name_leafdata());
-    if (bfd_multiplier.is_set || is_set(bfd_multiplier.operation)) leaf_name_data.push_back(bfd_multiplier.get_name_leafdata());
-    if (bfd_session_state.is_set || is_set(bfd_session_state.operation)) leaf_name_data.push_back(bfd_session_state.get_name_leafdata());
-    if (configured_advertize_time.is_set || is_set(configured_advertize_time.operation)) leaf_name_data.push_back(configured_advertize_time.get_name_leafdata());
-    if (configured_down_address_count.is_set || is_set(configured_down_address_count.operation)) leaf_name_data.push_back(configured_down_address_count.get_name_leafdata());
-    if (configured_priority.is_set || is_set(configured_priority.operation)) leaf_name_data.push_back(configured_priority.get_name_leafdata());
-    if (delay_timer_flag.is_set || is_set(delay_timer_flag.operation)) leaf_name_data.push_back(delay_timer_flag.get_name_leafdata());
-    if (delay_timer_msecs.is_set || is_set(delay_timer_msecs.operation)) leaf_name_data.push_back(delay_timer_msecs.get_name_leafdata());
-    if (delay_timer_secs.is_set || is_set(delay_timer_secs.operation)) leaf_name_data.push_back(delay_timer_secs.get_name_leafdata());
-    if (followed_session_name.is_set || is_set(followed_session_name.operation)) leaf_name_data.push_back(followed_session_name.get_name_leafdata());
-    if (force_timer_flag.is_set || is_set(force_timer_flag.operation)) leaf_name_data.push_back(force_timer_flag.get_name_leafdata());
-    if (interface_ipv4_address.is_set || is_set(interface_ipv4_address.operation)) leaf_name_data.push_back(interface_ipv4_address.get_name_leafdata());
-    if (interface_ipv6_address.is_set || is_set(interface_ipv6_address.operation)) leaf_name_data.push_back(interface_ipv6_address.get_name_leafdata());
-    if (interface_name_xr.is_set || is_set(interface_name_xr.operation)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
-    if (invalid_auth_type_count.is_set || is_set(invalid_auth_type_count.operation)) leaf_name_data.push_back(invalid_auth_type_count.get_name_leafdata());
-    if (invalid_packet_count.is_set || is_set(invalid_packet_count.operation)) leaf_name_data.push_back(invalid_packet_count.get_name_leafdata());
-    if (ip_address_owner_flag.is_set || is_set(ip_address_owner_flag.operation)) leaf_name_data.push_back(ip_address_owner_flag.get_name_leafdata());
-    if (is_accept_mode.is_set || is_set(is_accept_mode.operation)) leaf_name_data.push_back(is_accept_mode.get_name_leafdata());
-    if (is_slave.is_set || is_set(is_slave.operation)) leaf_name_data.push_back(is_slave.get_name_leafdata());
-    if (master_count.is_set || is_set(master_count.operation)) leaf_name_data.push_back(master_count.get_name_leafdata());
-    if (master_ip_address.is_set || is_set(master_ip_address.operation)) leaf_name_data.push_back(master_ip_address.get_name_leafdata());
-    if (master_ipv6_address.is_set || is_set(master_ipv6_address.operation)) leaf_name_data.push_back(master_ipv6_address.get_name_leafdata());
-    if (master_priority.is_set || is_set(master_priority.operation)) leaf_name_data.push_back(master_priority.get_name_leafdata());
-    if (min_delay_time.is_set || is_set(min_delay_time.operation)) leaf_name_data.push_back(min_delay_time.get_name_leafdata());
-    if (oper_advertize_time.is_set || is_set(oper_advertize_time.operation)) leaf_name_data.push_back(oper_advertize_time.get_name_leafdata());
-    if (operational_address_count.is_set || is_set(operational_address_count.operation)) leaf_name_data.push_back(operational_address_count.get_name_leafdata());
-    if (operational_priority.is_set || is_set(operational_priority.operation)) leaf_name_data.push_back(operational_priority.get_name_leafdata());
-    if (pkt_length_errors_count.is_set || is_set(pkt_length_errors_count.operation)) leaf_name_data.push_back(pkt_length_errors_count.get_name_leafdata());
-    if (preempt_delay_time.is_set || is_set(preempt_delay_time.operation)) leaf_name_data.push_back(preempt_delay_time.get_name_leafdata());
-    if (preempt_flag.is_set || is_set(preempt_flag.operation)) leaf_name_data.push_back(preempt_flag.get_name_leafdata());
-    if (primary_state.is_set || is_set(primary_state.operation)) leaf_name_data.push_back(primary_state.get_name_leafdata());
-    if (primary_virtual_ip.is_set || is_set(primary_virtual_ip.operation)) leaf_name_data.push_back(primary_virtual_ip.get_name_leafdata());
-    if (priority_decrement.is_set || is_set(priority_decrement.operation)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
-    if (priority_zero_received_count.is_set || is_set(priority_zero_received_count.operation)) leaf_name_data.push_back(priority_zero_received_count.get_name_leafdata());
-    if (priority_zero_sent_count.is_set || is_set(priority_zero_sent_count.operation)) leaf_name_data.push_back(priority_zero_sent_count.get_name_leafdata());
-    if (reload_delay_time.is_set || is_set(reload_delay_time.operation)) leaf_name_data.push_back(reload_delay_time.get_name_leafdata());
-    if (secondary_address_count.is_set || is_set(secondary_address_count.operation)) leaf_name_data.push_back(secondary_address_count.get_name_leafdata());
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
-    if (slaves.is_set || is_set(slaves.operation)) leaf_name_data.push_back(slaves.get_name_leafdata());
-    if (state_change_count.is_set || is_set(state_change_count.operation)) leaf_name_data.push_back(state_change_count.get_name_leafdata());
-    if (state_from_checkpoint.is_set || is_set(state_from_checkpoint.operation)) leaf_name_data.push_back(state_from_checkpoint.get_name_leafdata());
-    if (time_in_current_state.is_set || is_set(time_in_current_state.operation)) leaf_name_data.push_back(time_in_current_state.get_name_leafdata());
-    if (time_stats_discontinuity.is_set || is_set(time_stats_discontinuity.operation)) leaf_name_data.push_back(time_stats_discontinuity.get_name_leafdata());
-    if (time_vrouter_up.is_set || is_set(time_vrouter_up.operation)) leaf_name_data.push_back(time_vrouter_up.get_name_leafdata());
-    if (tracked_interface_count.is_set || is_set(tracked_interface_count.operation)) leaf_name_data.push_back(tracked_interface_count.get_name_leafdata());
-    if (tracked_interface_up_count.is_set || is_set(tracked_interface_up_count.operation)) leaf_name_data.push_back(tracked_interface_up_count.get_name_leafdata());
-    if (tracked_item_count.is_set || is_set(tracked_item_count.operation)) leaf_name_data.push_back(tracked_item_count.get_name_leafdata());
-    if (tracked_item_up_count.is_set || is_set(tracked_item_up_count.operation)) leaf_name_data.push_back(tracked_item_up_count.get_name_leafdata());
-    if (ttl_error_count.is_set || is_set(ttl_error_count.operation)) leaf_name_data.push_back(ttl_error_count.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (virtual_linklocal_ipv6_address.is_set || is_set(virtual_linklocal_ipv6_address.operation)) leaf_name_data.push_back(virtual_linklocal_ipv6_address.get_name_leafdata());
-    if (virtual_mac_address.is_set || is_set(virtual_mac_address.operation)) leaf_name_data.push_back(virtual_mac_address.get_name_leafdata());
-    if (virtual_mac_address_state.is_set || is_set(virtual_mac_address_state.operation)) leaf_name_data.push_back(virtual_mac_address_state.get_name_leafdata());
-    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.operation)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
-    if (vrrp_state.is_set || is_set(vrrp_state.operation)) leaf_name_data.push_back(vrrp_state.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (virtual_router_id.is_set || is_set(virtual_router_id.yfilter)) leaf_name_data.push_back(virtual_router_id.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (address_list_error_count.is_set || is_set(address_list_error_count.yfilter)) leaf_name_data.push_back(address_list_error_count.get_name_leafdata());
+    if (advert_interval_error_count.is_set || is_set(advert_interval_error_count.yfilter)) leaf_name_data.push_back(advert_interval_error_count.get_name_leafdata());
+    if (adverts_received_count.is_set || is_set(adverts_received_count.yfilter)) leaf_name_data.push_back(adverts_received_count.get_name_leafdata());
+    if (adverts_sent_count.is_set || is_set(adverts_sent_count.yfilter)) leaf_name_data.push_back(adverts_sent_count.get_name_leafdata());
+    if (auth_type_mismatch_count.is_set || is_set(auth_type_mismatch_count.yfilter)) leaf_name_data.push_back(auth_type_mismatch_count.get_name_leafdata());
+    if (authentication_fail_count.is_set || is_set(authentication_fail_count.yfilter)) leaf_name_data.push_back(authentication_fail_count.get_name_leafdata());
+    if (authentication_flag.is_set || is_set(authentication_flag.yfilter)) leaf_name_data.push_back(authentication_flag.get_name_leafdata());
+    if (authentication_string.is_set || is_set(authentication_string.yfilter)) leaf_name_data.push_back(authentication_string.get_name_leafdata());
+    if (authentication_type.is_set || is_set(authentication_type.yfilter)) leaf_name_data.push_back(authentication_type.get_name_leafdata());
+    if (bfd_cfg_remote_ip.is_set || is_set(bfd_cfg_remote_ip.yfilter)) leaf_name_data.push_back(bfd_cfg_remote_ip.get_name_leafdata());
+    if (bfd_configured_remote_ipv6_address.is_set || is_set(bfd_configured_remote_ipv6_address.yfilter)) leaf_name_data.push_back(bfd_configured_remote_ipv6_address.get_name_leafdata());
+    if (bfd_interval.is_set || is_set(bfd_interval.yfilter)) leaf_name_data.push_back(bfd_interval.get_name_leafdata());
+    if (bfd_multiplier.is_set || is_set(bfd_multiplier.yfilter)) leaf_name_data.push_back(bfd_multiplier.get_name_leafdata());
+    if (bfd_session_state.is_set || is_set(bfd_session_state.yfilter)) leaf_name_data.push_back(bfd_session_state.get_name_leafdata());
+    if (configured_advertize_time.is_set || is_set(configured_advertize_time.yfilter)) leaf_name_data.push_back(configured_advertize_time.get_name_leafdata());
+    if (configured_down_address_count.is_set || is_set(configured_down_address_count.yfilter)) leaf_name_data.push_back(configured_down_address_count.get_name_leafdata());
+    if (configured_priority.is_set || is_set(configured_priority.yfilter)) leaf_name_data.push_back(configured_priority.get_name_leafdata());
+    if (delay_timer_flag.is_set || is_set(delay_timer_flag.yfilter)) leaf_name_data.push_back(delay_timer_flag.get_name_leafdata());
+    if (delay_timer_msecs.is_set || is_set(delay_timer_msecs.yfilter)) leaf_name_data.push_back(delay_timer_msecs.get_name_leafdata());
+    if (delay_timer_secs.is_set || is_set(delay_timer_secs.yfilter)) leaf_name_data.push_back(delay_timer_secs.get_name_leafdata());
+    if (followed_session_name.is_set || is_set(followed_session_name.yfilter)) leaf_name_data.push_back(followed_session_name.get_name_leafdata());
+    if (force_timer_flag.is_set || is_set(force_timer_flag.yfilter)) leaf_name_data.push_back(force_timer_flag.get_name_leafdata());
+    if (interface_ipv4_address.is_set || is_set(interface_ipv4_address.yfilter)) leaf_name_data.push_back(interface_ipv4_address.get_name_leafdata());
+    if (interface_ipv6_address.is_set || is_set(interface_ipv6_address.yfilter)) leaf_name_data.push_back(interface_ipv6_address.get_name_leafdata());
+    if (interface_name_xr.is_set || is_set(interface_name_xr.yfilter)) leaf_name_data.push_back(interface_name_xr.get_name_leafdata());
+    if (invalid_auth_type_count.is_set || is_set(invalid_auth_type_count.yfilter)) leaf_name_data.push_back(invalid_auth_type_count.get_name_leafdata());
+    if (invalid_packet_count.is_set || is_set(invalid_packet_count.yfilter)) leaf_name_data.push_back(invalid_packet_count.get_name_leafdata());
+    if (ip_address_owner_flag.is_set || is_set(ip_address_owner_flag.yfilter)) leaf_name_data.push_back(ip_address_owner_flag.get_name_leafdata());
+    if (is_accept_mode.is_set || is_set(is_accept_mode.yfilter)) leaf_name_data.push_back(is_accept_mode.get_name_leafdata());
+    if (is_slave.is_set || is_set(is_slave.yfilter)) leaf_name_data.push_back(is_slave.get_name_leafdata());
+    if (master_count.is_set || is_set(master_count.yfilter)) leaf_name_data.push_back(master_count.get_name_leafdata());
+    if (master_ip_address.is_set || is_set(master_ip_address.yfilter)) leaf_name_data.push_back(master_ip_address.get_name_leafdata());
+    if (master_ipv6_address.is_set || is_set(master_ipv6_address.yfilter)) leaf_name_data.push_back(master_ipv6_address.get_name_leafdata());
+    if (master_priority.is_set || is_set(master_priority.yfilter)) leaf_name_data.push_back(master_priority.get_name_leafdata());
+    if (min_delay_time.is_set || is_set(min_delay_time.yfilter)) leaf_name_data.push_back(min_delay_time.get_name_leafdata());
+    if (oper_advertize_time.is_set || is_set(oper_advertize_time.yfilter)) leaf_name_data.push_back(oper_advertize_time.get_name_leafdata());
+    if (operational_address_count.is_set || is_set(operational_address_count.yfilter)) leaf_name_data.push_back(operational_address_count.get_name_leafdata());
+    if (operational_priority.is_set || is_set(operational_priority.yfilter)) leaf_name_data.push_back(operational_priority.get_name_leafdata());
+    if (pkt_length_errors_count.is_set || is_set(pkt_length_errors_count.yfilter)) leaf_name_data.push_back(pkt_length_errors_count.get_name_leafdata());
+    if (preempt_delay_time.is_set || is_set(preempt_delay_time.yfilter)) leaf_name_data.push_back(preempt_delay_time.get_name_leafdata());
+    if (preempt_flag.is_set || is_set(preempt_flag.yfilter)) leaf_name_data.push_back(preempt_flag.get_name_leafdata());
+    if (primary_state.is_set || is_set(primary_state.yfilter)) leaf_name_data.push_back(primary_state.get_name_leafdata());
+    if (primary_virtual_ip.is_set || is_set(primary_virtual_ip.yfilter)) leaf_name_data.push_back(primary_virtual_ip.get_name_leafdata());
+    if (priority_decrement.is_set || is_set(priority_decrement.yfilter)) leaf_name_data.push_back(priority_decrement.get_name_leafdata());
+    if (priority_zero_received_count.is_set || is_set(priority_zero_received_count.yfilter)) leaf_name_data.push_back(priority_zero_received_count.get_name_leafdata());
+    if (priority_zero_sent_count.is_set || is_set(priority_zero_sent_count.yfilter)) leaf_name_data.push_back(priority_zero_sent_count.get_name_leafdata());
+    if (reload_delay_time.is_set || is_set(reload_delay_time.yfilter)) leaf_name_data.push_back(reload_delay_time.get_name_leafdata());
+    if (secondary_address_count.is_set || is_set(secondary_address_count.yfilter)) leaf_name_data.push_back(secondary_address_count.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (slaves.is_set || is_set(slaves.yfilter)) leaf_name_data.push_back(slaves.get_name_leafdata());
+    if (state_change_count.is_set || is_set(state_change_count.yfilter)) leaf_name_data.push_back(state_change_count.get_name_leafdata());
+    if (state_from_checkpoint.is_set || is_set(state_from_checkpoint.yfilter)) leaf_name_data.push_back(state_from_checkpoint.get_name_leafdata());
+    if (time_in_current_state.is_set || is_set(time_in_current_state.yfilter)) leaf_name_data.push_back(time_in_current_state.get_name_leafdata());
+    if (time_stats_discontinuity.is_set || is_set(time_stats_discontinuity.yfilter)) leaf_name_data.push_back(time_stats_discontinuity.get_name_leafdata());
+    if (time_vrouter_up.is_set || is_set(time_vrouter_up.yfilter)) leaf_name_data.push_back(time_vrouter_up.get_name_leafdata());
+    if (tracked_interface_count.is_set || is_set(tracked_interface_count.yfilter)) leaf_name_data.push_back(tracked_interface_count.get_name_leafdata());
+    if (tracked_interface_up_count.is_set || is_set(tracked_interface_up_count.yfilter)) leaf_name_data.push_back(tracked_interface_up_count.get_name_leafdata());
+    if (tracked_item_count.is_set || is_set(tracked_item_count.yfilter)) leaf_name_data.push_back(tracked_item_count.get_name_leafdata());
+    if (tracked_item_up_count.is_set || is_set(tracked_item_up_count.yfilter)) leaf_name_data.push_back(tracked_item_up_count.get_name_leafdata());
+    if (ttl_error_count.is_set || is_set(ttl_error_count.yfilter)) leaf_name_data.push_back(ttl_error_count.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (virtual_linklocal_ipv6_address.is_set || is_set(virtual_linklocal_ipv6_address.yfilter)) leaf_name_data.push_back(virtual_linklocal_ipv6_address.get_name_leafdata());
+    if (virtual_mac_address.is_set || is_set(virtual_mac_address.yfilter)) leaf_name_data.push_back(virtual_mac_address.get_name_leafdata());
+    if (virtual_mac_address_state.is_set || is_set(virtual_mac_address_state.yfilter)) leaf_name_data.push_back(virtual_mac_address_state.get_name_leafdata());
+    if (virtual_router_id_xr.is_set || is_set(virtual_router_id_xr.yfilter)) leaf_name_data.push_back(virtual_router_id_xr.get_name_leafdata());
+    if (vrrp_state.is_set || is_set(vrrp_state.yfilter)) leaf_name_data.push_back(vrrp_state.get_name_leafdata());
 
     auto ipv4_configured_down_address_name_datas = ipv4_configured_down_address.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), ipv4_configured_down_address_name_datas.begin(), ipv4_configured_down_address_name_datas.end());
@@ -3678,131 +4860,193 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv4::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-router-id")
     {
         virtual_router_id = value;
+        virtual_router_id.value_namespace = name_space;
+        virtual_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-list-error-count")
     {
         address_list_error_count = value;
+        address_list_error_count.value_namespace = name_space;
+        address_list_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "advert-interval-error-count")
     {
         advert_interval_error_count = value;
+        advert_interval_error_count.value_namespace = name_space;
+        advert_interval_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adverts-received-count")
     {
         adverts_received_count = value;
+        adverts_received_count.value_namespace = name_space;
+        adverts_received_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adverts-sent-count")
     {
         adverts_sent_count = value;
+        adverts_sent_count.value_namespace = name_space;
+        adverts_sent_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "auth-type-mismatch-count")
     {
         auth_type_mismatch_count = value;
+        auth_type_mismatch_count.value_namespace = name_space;
+        auth_type_mismatch_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-fail-count")
     {
         authentication_fail_count = value;
+        authentication_fail_count.value_namespace = name_space;
+        authentication_fail_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-flag")
     {
         authentication_flag = value;
+        authentication_flag.value_namespace = name_space;
+        authentication_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-string")
     {
         authentication_string = value;
+        authentication_string.value_namespace = name_space;
+        authentication_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication-type")
     {
         authentication_type = value;
+        authentication_type.value_namespace = name_space;
+        authentication_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-cfg-remote-ip")
     {
         bfd_cfg_remote_ip = value;
+        bfd_cfg_remote_ip.value_namespace = name_space;
+        bfd_cfg_remote_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-configured-remote-ipv6-address")
     {
         bfd_configured_remote_ipv6_address = value;
+        bfd_configured_remote_ipv6_address.value_namespace = name_space;
+        bfd_configured_remote_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-interval")
     {
         bfd_interval = value;
+        bfd_interval.value_namespace = name_space;
+        bfd_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-multiplier")
     {
         bfd_multiplier = value;
+        bfd_multiplier.value_namespace = name_space;
+        bfd_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bfd-session-state")
     {
         bfd_session_state = value;
+        bfd_session_state.value_namespace = name_space;
+        bfd_session_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-advertize-time")
     {
         configured_advertize_time = value;
+        configured_advertize_time.value_namespace = name_space;
+        configured_advertize_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-down-address-count")
     {
         configured_down_address_count = value;
+        configured_down_address_count.value_namespace = name_space;
+        configured_down_address_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured-priority")
     {
         configured_priority = value;
+        configured_priority.value_namespace = name_space;
+        configured_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay-timer-flag")
     {
         delay_timer_flag = value;
+        delay_timer_flag.value_namespace = name_space;
+        delay_timer_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay-timer-msecs")
     {
         delay_timer_msecs = value;
+        delay_timer_msecs.value_namespace = name_space;
+        delay_timer_msecs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "delay-timer-secs")
     {
         delay_timer_secs = value;
+        delay_timer_secs.value_namespace = name_space;
+        delay_timer_secs.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "followed-session-name")
     {
         followed_session_name = value;
+        followed_session_name.value_namespace = name_space;
+        followed_session_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "force-timer-flag")
     {
         force_timer_flag = value;
+        force_timer_flag.value_namespace = name_space;
+        force_timer_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-ipv4-address")
     {
         interface_ipv4_address = value;
+        interface_ipv4_address.value_namespace = name_space;
+        interface_ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-ipv6-address")
     {
         interface_ipv6_address = value;
+        interface_ipv6_address.value_namespace = name_space;
+        interface_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name-xr")
     {
         interface_name_xr = value;
+        interface_name_xr.value_namespace = name_space;
+        interface_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-auth-type-count")
     {
         invalid_auth_type_count = value;
+        invalid_auth_type_count.value_namespace = name_space;
+        invalid_auth_type_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "invalid-packet-count")
     {
         invalid_packet_count = value;
+        invalid_packet_count.value_namespace = name_space;
+        invalid_packet_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-address-owner-flag")
     {
         ip_address_owner_flag = value;
+        ip_address_owner_flag.value_namespace = name_space;
+        ip_address_owner_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-configured-down-address")
     {
@@ -3811,34 +5055,50 @@ void Vrrp::Ipv4::VirtualRouters::VirtualRouter::set_value(const std::string & va
     if(value_path == "is-accept-mode")
     {
         is_accept_mode = value;
+        is_accept_mode.value_namespace = name_space;
+        is_accept_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-slave")
     {
         is_slave = value;
+        is_slave.value_namespace = name_space;
+        is_slave.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master-count")
     {
         master_count = value;
+        master_count.value_namespace = name_space;
+        master_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master-ip-address")
     {
         master_ip_address = value;
+        master_ip_address.value_namespace = name_space;
+        master_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master-ipv6-address")
     {
         master_ipv6_address = value;
+        master_ipv6_address.value_namespace = name_space;
+        master_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "master-priority")
     {
         master_priority = value;
+        master_priority.value_namespace = name_space;
+        master_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-delay-time")
     {
         min_delay_time = value;
+        min_delay_time.value_namespace = name_space;
+        min_delay_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oper-advertize-time")
     {
         oper_advertize_time = value;
+        oper_advertize_time.value_namespace = name_space;
+        oper_advertize_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational-address")
     {
@@ -3847,123 +5107,478 @@ void Vrrp::Ipv4::VirtualRouters::VirtualRouter::set_value(const std::string & va
     if(value_path == "operational-address-count")
     {
         operational_address_count = value;
+        operational_address_count.value_namespace = name_space;
+        operational_address_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational-priority")
     {
         operational_priority = value;
+        operational_priority.value_namespace = name_space;
+        operational_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pkt-length-errors-count")
     {
         pkt_length_errors_count = value;
+        pkt_length_errors_count.value_namespace = name_space;
+        pkt_length_errors_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preempt-delay-time")
     {
         preempt_delay_time = value;
+        preempt_delay_time.value_namespace = name_space;
+        preempt_delay_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preempt-flag")
     {
         preempt_flag = value;
+        preempt_flag.value_namespace = name_space;
+        preempt_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-state")
     {
         primary_state = value;
+        primary_state.value_namespace = name_space;
+        primary_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-virtual-ip")
     {
         primary_virtual_ip = value;
+        primary_virtual_ip.value_namespace = name_space;
+        primary_virtual_ip.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-decrement")
     {
         priority_decrement = value;
+        priority_decrement.value_namespace = name_space;
+        priority_decrement.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-zero-received-count")
     {
         priority_zero_received_count = value;
+        priority_zero_received_count.value_namespace = name_space;
+        priority_zero_received_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-zero-sent-count")
     {
         priority_zero_sent_count = value;
+        priority_zero_sent_count.value_namespace = name_space;
+        priority_zero_sent_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reload-delay-time")
     {
         reload_delay_time = value;
+        reload_delay_time.value_namespace = name_space;
+        reload_delay_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-address-count")
     {
         secondary_address_count = value;
+        secondary_address_count.value_namespace = name_space;
+        secondary_address_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slaves")
     {
         slaves = value;
+        slaves.value_namespace = name_space;
+        slaves.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state-change-count")
     {
         state_change_count = value;
+        state_change_count.value_namespace = name_space;
+        state_change_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state-from-checkpoint")
     {
         state_from_checkpoint = value;
+        state_from_checkpoint.value_namespace = name_space;
+        state_from_checkpoint.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-current-state")
     {
         time_in_current_state = value;
+        time_in_current_state.value_namespace = name_space;
+        time_in_current_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-stats-discontinuity")
     {
         time_stats_discontinuity = value;
+        time_stats_discontinuity.value_namespace = name_space;
+        time_stats_discontinuity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-vrouter-up")
     {
         time_vrouter_up = value;
+        time_vrouter_up.value_namespace = name_space;
+        time_vrouter_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interface-count")
     {
         tracked_interface_count = value;
+        tracked_interface_count.value_namespace = name_space;
+        tracked_interface_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-interface-up-count")
     {
         tracked_interface_up_count = value;
+        tracked_interface_up_count.value_namespace = name_space;
+        tracked_interface_up_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-item-count")
     {
         tracked_item_count = value;
+        tracked_item_count.value_namespace = name_space;
+        tracked_item_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tracked-item-up-count")
     {
         tracked_item_up_count = value;
+        tracked_item_up_count.value_namespace = name_space;
+        tracked_item_up_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ttl-error-count")
     {
         ttl_error_count = value;
+        ttl_error_count.value_namespace = name_space;
+        ttl_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-linklocal-ipv6-address")
     {
         virtual_linklocal_ipv6_address = value;
+        virtual_linklocal_ipv6_address.value_namespace = name_space;
+        virtual_linklocal_ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-mac-address")
     {
         virtual_mac_address = value;
+        virtual_mac_address.value_namespace = name_space;
+        virtual_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-mac-address-state")
     {
         virtual_mac_address_state = value;
+        virtual_mac_address_state.value_namespace = name_space;
+        virtual_mac_address_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "virtual-router-id-xr")
     {
         virtual_router_id_xr = value;
+        virtual_router_id_xr.value_namespace = name_space;
+        virtual_router_id_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrrp-state")
     {
         vrrp_state = value;
+        vrrp_state.value_namespace = name_space;
+        vrrp_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id")
+    {
+        virtual_router_id.yfilter = yfilter;
+    }
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "address-list-error-count")
+    {
+        address_list_error_count.yfilter = yfilter;
+    }
+    if(value_path == "advert-interval-error-count")
+    {
+        advert_interval_error_count.yfilter = yfilter;
+    }
+    if(value_path == "adverts-received-count")
+    {
+        adverts_received_count.yfilter = yfilter;
+    }
+    if(value_path == "adverts-sent-count")
+    {
+        adverts_sent_count.yfilter = yfilter;
+    }
+    if(value_path == "auth-type-mismatch-count")
+    {
+        auth_type_mismatch_count.yfilter = yfilter;
+    }
+    if(value_path == "authentication-fail-count")
+    {
+        authentication_fail_count.yfilter = yfilter;
+    }
+    if(value_path == "authentication-flag")
+    {
+        authentication_flag.yfilter = yfilter;
+    }
+    if(value_path == "authentication-string")
+    {
+        authentication_string.yfilter = yfilter;
+    }
+    if(value_path == "authentication-type")
+    {
+        authentication_type.yfilter = yfilter;
+    }
+    if(value_path == "bfd-cfg-remote-ip")
+    {
+        bfd_cfg_remote_ip.yfilter = yfilter;
+    }
+    if(value_path == "bfd-configured-remote-ipv6-address")
+    {
+        bfd_configured_remote_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "bfd-interval")
+    {
+        bfd_interval.yfilter = yfilter;
+    }
+    if(value_path == "bfd-multiplier")
+    {
+        bfd_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "bfd-session-state")
+    {
+        bfd_session_state.yfilter = yfilter;
+    }
+    if(value_path == "configured-advertize-time")
+    {
+        configured_advertize_time.yfilter = yfilter;
+    }
+    if(value_path == "configured-down-address-count")
+    {
+        configured_down_address_count.yfilter = yfilter;
+    }
+    if(value_path == "configured-priority")
+    {
+        configured_priority.yfilter = yfilter;
+    }
+    if(value_path == "delay-timer-flag")
+    {
+        delay_timer_flag.yfilter = yfilter;
+    }
+    if(value_path == "delay-timer-msecs")
+    {
+        delay_timer_msecs.yfilter = yfilter;
+    }
+    if(value_path == "delay-timer-secs")
+    {
+        delay_timer_secs.yfilter = yfilter;
+    }
+    if(value_path == "followed-session-name")
+    {
+        followed_session_name.yfilter = yfilter;
+    }
+    if(value_path == "force-timer-flag")
+    {
+        force_timer_flag.yfilter = yfilter;
+    }
+    if(value_path == "interface-ipv4-address")
+    {
+        interface_ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-ipv6-address")
+    {
+        interface_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name-xr")
+    {
+        interface_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "invalid-auth-type-count")
+    {
+        invalid_auth_type_count.yfilter = yfilter;
+    }
+    if(value_path == "invalid-packet-count")
+    {
+        invalid_packet_count.yfilter = yfilter;
+    }
+    if(value_path == "ip-address-owner-flag")
+    {
+        ip_address_owner_flag.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-configured-down-address")
+    {
+        ipv4_configured_down_address.yfilter = yfilter;
+    }
+    if(value_path == "is-accept-mode")
+    {
+        is_accept_mode.yfilter = yfilter;
+    }
+    if(value_path == "is-slave")
+    {
+        is_slave.yfilter = yfilter;
+    }
+    if(value_path == "master-count")
+    {
+        master_count.yfilter = yfilter;
+    }
+    if(value_path == "master-ip-address")
+    {
+        master_ip_address.yfilter = yfilter;
+    }
+    if(value_path == "master-ipv6-address")
+    {
+        master_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "master-priority")
+    {
+        master_priority.yfilter = yfilter;
+    }
+    if(value_path == "min-delay-time")
+    {
+        min_delay_time.yfilter = yfilter;
+    }
+    if(value_path == "oper-advertize-time")
+    {
+        oper_advertize_time.yfilter = yfilter;
+    }
+    if(value_path == "operational-address")
+    {
+        operational_address.yfilter = yfilter;
+    }
+    if(value_path == "operational-address-count")
+    {
+        operational_address_count.yfilter = yfilter;
+    }
+    if(value_path == "operational-priority")
+    {
+        operational_priority.yfilter = yfilter;
+    }
+    if(value_path == "pkt-length-errors-count")
+    {
+        pkt_length_errors_count.yfilter = yfilter;
+    }
+    if(value_path == "preempt-delay-time")
+    {
+        preempt_delay_time.yfilter = yfilter;
+    }
+    if(value_path == "preempt-flag")
+    {
+        preempt_flag.yfilter = yfilter;
+    }
+    if(value_path == "primary-state")
+    {
+        primary_state.yfilter = yfilter;
+    }
+    if(value_path == "primary-virtual-ip")
+    {
+        primary_virtual_ip.yfilter = yfilter;
+    }
+    if(value_path == "priority-decrement")
+    {
+        priority_decrement.yfilter = yfilter;
+    }
+    if(value_path == "priority-zero-received-count")
+    {
+        priority_zero_received_count.yfilter = yfilter;
+    }
+    if(value_path == "priority-zero-sent-count")
+    {
+        priority_zero_sent_count.yfilter = yfilter;
+    }
+    if(value_path == "reload-delay-time")
+    {
+        reload_delay_time.yfilter = yfilter;
+    }
+    if(value_path == "secondary-address-count")
+    {
+        secondary_address_count.yfilter = yfilter;
+    }
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+    if(value_path == "slaves")
+    {
+        slaves.yfilter = yfilter;
+    }
+    if(value_path == "state-change-count")
+    {
+        state_change_count.yfilter = yfilter;
+    }
+    if(value_path == "state-from-checkpoint")
+    {
+        state_from_checkpoint.yfilter = yfilter;
+    }
+    if(value_path == "time-in-current-state")
+    {
+        time_in_current_state.yfilter = yfilter;
+    }
+    if(value_path == "time-stats-discontinuity")
+    {
+        time_stats_discontinuity.yfilter = yfilter;
+    }
+    if(value_path == "time-vrouter-up")
+    {
+        time_vrouter_up.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-count")
+    {
+        tracked_interface_count.yfilter = yfilter;
+    }
+    if(value_path == "tracked-interface-up-count")
+    {
+        tracked_interface_up_count.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-count")
+    {
+        tracked_item_count.yfilter = yfilter;
+    }
+    if(value_path == "tracked-item-up-count")
+    {
+        tracked_item_up_count.yfilter = yfilter;
+    }
+    if(value_path == "ttl-error-count")
+    {
+        ttl_error_count.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "virtual-linklocal-ipv6-address")
+    {
+        virtual_linklocal_ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "virtual-mac-address")
+    {
+        virtual_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "virtual-mac-address-state")
+    {
+        virtual_mac_address_state.yfilter = yfilter;
+    }
+    if(value_path == "virtual-router-id-xr")
+    {
+        virtual_router_id_xr.yfilter = yfilter;
+    }
+    if(value_path == "vrrp-state")
+    {
+        vrrp_state.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-configured-down-address" || name == "ipv6-operational-address" || name == "resign-received-time" || name == "resign-sent-time" || name == "state-change-history" || name == "interface-name" || name == "virtual-router-id" || name == "address-family" || name == "address-list-error-count" || name == "advert-interval-error-count" || name == "adverts-received-count" || name == "adverts-sent-count" || name == "auth-type-mismatch-count" || name == "authentication-fail-count" || name == "authentication-flag" || name == "authentication-string" || name == "authentication-type" || name == "bfd-cfg-remote-ip" || name == "bfd-configured-remote-ipv6-address" || name == "bfd-interval" || name == "bfd-multiplier" || name == "bfd-session-state" || name == "configured-advertize-time" || name == "configured-down-address-count" || name == "configured-priority" || name == "delay-timer-flag" || name == "delay-timer-msecs" || name == "delay-timer-secs" || name == "followed-session-name" || name == "force-timer-flag" || name == "interface-ipv4-address" || name == "interface-ipv6-address" || name == "interface-name-xr" || name == "invalid-auth-type-count" || name == "invalid-packet-count" || name == "ip-address-owner-flag" || name == "ipv4-configured-down-address" || name == "is-accept-mode" || name == "is-slave" || name == "master-count" || name == "master-ip-address" || name == "master-ipv6-address" || name == "master-priority" || name == "min-delay-time" || name == "oper-advertize-time" || name == "operational-address" || name == "operational-address-count" || name == "operational-priority" || name == "pkt-length-errors-count" || name == "preempt-delay-time" || name == "preempt-flag" || name == "primary-state" || name == "primary-virtual-ip" || name == "priority-decrement" || name == "priority-zero-received-count" || name == "priority-zero-sent-count" || name == "reload-delay-time" || name == "secondary-address-count" || name == "session-name" || name == "slaves" || name == "state-change-count" || name == "state-from-checkpoint" || name == "time-in-current-state" || name == "time-stats-discontinuity" || name == "time-vrouter-up" || name == "tracked-interface-count" || name == "tracked-interface-up-count" || name == "tracked-item-count" || name == "tracked-item-up-count" || name == "ttl-error-count" || name == "version" || name == "virtual-linklocal-ipv6-address" || name == "virtual-mac-address" || name == "virtual-mac-address-state" || name == "virtual-router-id-xr" || name == "vrrp-state")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::ResignSentTime()
@@ -3986,9 +5601,9 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::has_data() const
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::get_segment_path() const
@@ -4014,8 +5629,8 @@ const EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4034,16 +5649,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::ResignReceivedTime()
@@ -4066,9 +5704,9 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::has_data() c
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::get_segment_path() const
@@ -4094,8 +5732,8 @@ const EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4114,16 +5752,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::Ipv6OperationalAddress()
@@ -4144,8 +5805,8 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::has_data
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::get_segment_path() const
@@ -4171,7 +5832,7 @@ const EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4190,12 +5851,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::Ipv6ConfiguredDownAddress()
@@ -4216,8 +5894,8 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_d
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::get_segment_path() const
@@ -4243,7 +5921,7 @@ const EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4262,12 +5940,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::StateChangeHistory()
@@ -4297,10 +5992,10 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::has_data() c
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(new_state.operation)
-	|| is_set(old_state.operation)
-	|| is_set(reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(new_state.yfilter)
+	|| ydk::is_set(old_state.yfilter)
+	|| ydk::is_set(reason.yfilter)
 	|| (time !=  nullptr && time->has_operation());
 }
 
@@ -4327,9 +6022,9 @@ const EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (new_state.is_set || is_set(new_state.operation)) leaf_name_data.push_back(new_state.get_name_leafdata());
-    if (old_state.is_set || is_set(old_state.operation)) leaf_name_data.push_back(old_state.get_name_leafdata());
-    if (reason.is_set || is_set(reason.operation)) leaf_name_data.push_back(reason.get_name_leafdata());
+    if (new_state.is_set || is_set(new_state.yfilter)) leaf_name_data.push_back(new_state.get_name_leafdata());
+    if (old_state.is_set || is_set(old_state.yfilter)) leaf_name_data.push_back(old_state.get_name_leafdata());
+    if (reason.is_set || is_set(reason.yfilter)) leaf_name_data.push_back(reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4362,20 +6057,49 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "new-state")
     {
         new_state = value;
+        new_state.value_namespace = name_space;
+        new_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "old-state")
     {
         old_state = value;
+        old_state.value_namespace = name_space;
+        old_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reason")
     {
         reason = value;
+        reason.value_namespace = name_space;
+        reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "new-state")
+    {
+        new_state.yfilter = yfilter;
+    }
+    if(value_path == "old-state")
+    {
+        old_state.yfilter = yfilter;
+    }
+    if(value_path == "reason")
+    {
+        reason.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time" || name == "new-state" || name == "old-state" || name == "reason")
+        return true;
+    return false;
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::Time()
@@ -4398,9 +6122,9 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_da
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nanoseconds.operation)
-	|| is_set(seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nanoseconds.yfilter)
+	|| ydk::is_set(seconds.yfilter);
 }
 
 std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::get_segment_path() const
@@ -4426,8 +6150,8 @@ const EntityPath Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nanoseconds.is_set || is_set(nanoseconds.operation)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
-    if (seconds.is_set || is_set(seconds.operation)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (nanoseconds.is_set || is_set(nanoseconds.yfilter)) leaf_name_data.push_back(nanoseconds.get_name_leafdata());
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4446,16 +6170,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     return children;
 }
 
-void Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::set_value(const std::string & value_path, std::string value)
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nanoseconds")
     {
         nanoseconds = value;
+        nanoseconds.value_namespace = name_space;
+        nanoseconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds")
     {
         seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nanoseconds")
+    {
+        nanoseconds.yfilter = yfilter;
+    }
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nanoseconds" || name == "seconds")
+        return true;
+    return false;
 }
 
 Vrrp::MgoSessions::MgoSessions()
@@ -4484,7 +6231,7 @@ bool Vrrp::MgoSessions::has_operation() const
         if(mgo_session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vrrp::MgoSessions::get_segment_path() const
@@ -4549,8 +6296,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::MgoSessions::get_children()
     return children;
 }
 
-void Vrrp::MgoSessions::set_value(const std::string & value_path, std::string value)
+void Vrrp::MgoSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vrrp::MgoSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrrp::MgoSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mgo-session")
+        return true;
+    return false;
 }
 
 Vrrp::MgoSessions::MgoSession::MgoSession()
@@ -4591,13 +6349,13 @@ bool Vrrp::MgoSessions::MgoSession::has_operation() const
         if(slave[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(session_name.operation)
-	|| is_set(primary_af_name.operation)
-	|| is_set(primary_session_interface.operation)
-	|| is_set(primary_session_name.operation)
-	|| is_set(primary_session_number.operation)
-	|| is_set(primary_session_state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(session_name.yfilter)
+	|| ydk::is_set(primary_af_name.yfilter)
+	|| ydk::is_set(primary_session_interface.yfilter)
+	|| ydk::is_set(primary_session_name.yfilter)
+	|| ydk::is_set(primary_session_number.yfilter)
+	|| ydk::is_set(primary_session_state.yfilter);
 }
 
 std::string Vrrp::MgoSessions::MgoSession::get_segment_path() const
@@ -4623,12 +6381,12 @@ const EntityPath Vrrp::MgoSessions::MgoSession::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (session_name.is_set || is_set(session_name.operation)) leaf_name_data.push_back(session_name.get_name_leafdata());
-    if (primary_af_name.is_set || is_set(primary_af_name.operation)) leaf_name_data.push_back(primary_af_name.get_name_leafdata());
-    if (primary_session_interface.is_set || is_set(primary_session_interface.operation)) leaf_name_data.push_back(primary_session_interface.get_name_leafdata());
-    if (primary_session_name.is_set || is_set(primary_session_name.operation)) leaf_name_data.push_back(primary_session_name.get_name_leafdata());
-    if (primary_session_number.is_set || is_set(primary_session_number.operation)) leaf_name_data.push_back(primary_session_number.get_name_leafdata());
-    if (primary_session_state.is_set || is_set(primary_session_state.operation)) leaf_name_data.push_back(primary_session_state.get_name_leafdata());
+    if (session_name.is_set || is_set(session_name.yfilter)) leaf_name_data.push_back(session_name.get_name_leafdata());
+    if (primary_af_name.is_set || is_set(primary_af_name.yfilter)) leaf_name_data.push_back(primary_af_name.get_name_leafdata());
+    if (primary_session_interface.is_set || is_set(primary_session_interface.yfilter)) leaf_name_data.push_back(primary_session_interface.get_name_leafdata());
+    if (primary_session_name.is_set || is_set(primary_session_name.yfilter)) leaf_name_data.push_back(primary_session_name.get_name_leafdata());
+    if (primary_session_number.is_set || is_set(primary_session_number.yfilter)) leaf_name_data.push_back(primary_session_number.get_name_leafdata());
+    if (primary_session_state.is_set || is_set(primary_session_state.yfilter)) leaf_name_data.push_back(primary_session_state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4668,32 +6426,79 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::MgoSessions::MgoSession::ge
     return children;
 }
 
-void Vrrp::MgoSessions::MgoSession::set_value(const std::string & value_path, std::string value)
+void Vrrp::MgoSessions::MgoSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-name")
     {
         session_name = value;
+        session_name.value_namespace = name_space;
+        session_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-af-name")
     {
         primary_af_name = value;
+        primary_af_name.value_namespace = name_space;
+        primary_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-session-interface")
     {
         primary_session_interface = value;
+        primary_session_interface.value_namespace = name_space;
+        primary_session_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-session-name")
     {
         primary_session_name = value;
+        primary_session_name.value_namespace = name_space;
+        primary_session_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-session-number")
     {
         primary_session_number = value;
+        primary_session_number.value_namespace = name_space;
+        primary_session_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "primary-session-state")
     {
         primary_session_state = value;
+        primary_session_state.value_namespace = name_space;
+        primary_session_state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vrrp::MgoSessions::MgoSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-name")
+    {
+        session_name.yfilter = yfilter;
+    }
+    if(value_path == "primary-af-name")
+    {
+        primary_af_name.yfilter = yfilter;
+    }
+    if(value_path == "primary-session-interface")
+    {
+        primary_session_interface.yfilter = yfilter;
+    }
+    if(value_path == "primary-session-name")
+    {
+        primary_session_name.yfilter = yfilter;
+    }
+    if(value_path == "primary-session-number")
+    {
+        primary_session_number.yfilter = yfilter;
+    }
+    if(value_path == "primary-session-state")
+    {
+        primary_session_state.yfilter = yfilter;
+    }
+}
+
+bool Vrrp::MgoSessions::MgoSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slave" || name == "session-name" || name == "primary-af-name" || name == "primary-session-interface" || name == "primary-session-name" || name == "primary-session-number" || name == "primary-session-state")
+        return true;
+    return false;
 }
 
 Vrrp::MgoSessions::MgoSession::Slave::Slave()
@@ -4716,9 +6521,9 @@ bool Vrrp::MgoSessions::MgoSession::Slave::has_data() const
 
 bool Vrrp::MgoSessions::MgoSession::Slave::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(slave_interface.operation)
-	|| is_set(slave_virtual_router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(slave_interface.yfilter)
+	|| ydk::is_set(slave_virtual_router_id.yfilter);
 }
 
 std::string Vrrp::MgoSessions::MgoSession::Slave::get_segment_path() const
@@ -4744,8 +6549,8 @@ const EntityPath Vrrp::MgoSessions::MgoSession::Slave::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slave_interface.is_set || is_set(slave_interface.operation)) leaf_name_data.push_back(slave_interface.get_name_leafdata());
-    if (slave_virtual_router_id.is_set || is_set(slave_virtual_router_id.operation)) leaf_name_data.push_back(slave_virtual_router_id.get_name_leafdata());
+    if (slave_interface.is_set || is_set(slave_interface.yfilter)) leaf_name_data.push_back(slave_interface.get_name_leafdata());
+    if (slave_virtual_router_id.is_set || is_set(slave_virtual_router_id.yfilter)) leaf_name_data.push_back(slave_virtual_router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4764,56 +6569,79 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::MgoSessions::MgoSession::Sl
     return children;
 }
 
-void Vrrp::MgoSessions::MgoSession::Slave::set_value(const std::string & value_path, std::string value)
+void Vrrp::MgoSessions::MgoSession::Slave::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slave-interface")
     {
         slave_interface = value;
+        slave_interface.value_namespace = name_space;
+        slave_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "slave-virtual-router-id")
     {
         slave_virtual_router_id = value;
+        slave_virtual_router_id.value_namespace = name_space;
+        slave_virtual_router_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_bfd_down {0, "state-change-bfd-down"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_virtual_ip_configured {1, "state-change-virtual-ip-configured"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_interface_ip {2, "state-change-interface-ip"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_delay_timer {3, "state-change-delay-timer"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_startup {4, "state-change-startup"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_interface_up {5, "state-change-interface-up"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_interface_down {6, "state-change-interface-down"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_master_down_timer {7, "state-change-master-down-timer"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_higher_priority_master {8, "state-change-higher-priority-master"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_fhrp_admin {9, "state-change-fhrp-admin"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_mgo_parent {10, "state-change-mgo-parent"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_chkpt_update {11, "state-change-chkpt-update"};
-const Enum::YLeaf VrrpStateChangeReasonEnum::state_change_issu_resync {12, "state-change-issu-resync"};
+void Vrrp::MgoSessions::MgoSession::Slave::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slave-interface")
+    {
+        slave_interface.yfilter = yfilter;
+    }
+    if(value_path == "slave-virtual-router-id")
+    {
+        slave_virtual_router_id.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf VrrpVmacStateEnum::stored {0, "stored"};
-const Enum::YLeaf VrrpVmacStateEnum::reserved {1, "reserved"};
-const Enum::YLeaf VrrpVmacStateEnum::active {2, "active"};
-const Enum::YLeaf VrrpVmacStateEnum::reserving {3, "reserving"};
+bool Vrrp::MgoSessions::MgoSession::Slave::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slave-interface" || name == "slave-virtual-router-id")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf VrrpBAfEnum::address_family_ipv4 {0, "address-family-ipv4"};
-const Enum::YLeaf VrrpBAfEnum::address_family_ipv6 {1, "address-family-ipv6"};
-const Enum::YLeaf VrrpBAfEnum::vrrp_baf_count {2, "vrrp-baf-count"};
+const Enum::YLeaf VrrpBfdSessionState::bfd_state_none {0, "bfd-state-none"};
+const Enum::YLeaf VrrpBfdSessionState::bfd_state_inactive {1, "bfd-state-inactive"};
+const Enum::YLeaf VrrpBfdSessionState::bfd_state_up {2, "bfd-state-up"};
+const Enum::YLeaf VrrpBfdSessionState::bfd_state_down {3, "bfd-state-down"};
 
-const Enum::YLeaf VrrpVipStateEnum::virtual_ip_state_down {0, "virtual-ip-state-down"};
-const Enum::YLeaf VrrpVipStateEnum::virtual_ip_state_up {1, "virtual-ip-state-up"};
+const Enum::YLeaf VrrpProtAuth::authentication_none {0, "authentication-none"};
+const Enum::YLeaf VrrpProtAuth::authentication_text {1, "authentication-text"};
+const Enum::YLeaf VrrpProtAuth::authentication_ip {2, "authentication-ip"};
 
-const Enum::YLeaf VrrpProtAuthEnum::authentication_none {0, "authentication-none"};
-const Enum::YLeaf VrrpProtAuthEnum::authentication_text {1, "authentication-text"};
-const Enum::YLeaf VrrpProtAuthEnum::authentication_ip {2, "authentication-ip"};
+const Enum::YLeaf VrrpVmacState::stored {0, "stored"};
+const Enum::YLeaf VrrpVmacState::reserved {1, "reserved"};
+const Enum::YLeaf VrrpVmacState::active {2, "active"};
+const Enum::YLeaf VrrpVmacState::reserving {3, "reserving"};
 
-const Enum::YLeaf VrrpBfdSessionStateEnum::bfd_state_none {0, "bfd-state-none"};
-const Enum::YLeaf VrrpBfdSessionStateEnum::bfd_state_inactive {1, "bfd-state-inactive"};
-const Enum::YLeaf VrrpBfdSessionStateEnum::bfd_state_up {2, "bfd-state-up"};
-const Enum::YLeaf VrrpBfdSessionStateEnum::bfd_state_down {3, "bfd-state-down"};
+const Enum::YLeaf VrrpBAf::address_family_ipv4 {0, "address-family-ipv4"};
+const Enum::YLeaf VrrpBAf::address_family_ipv6 {1, "address-family-ipv6"};
+const Enum::YLeaf VrrpBAf::vrrp_baf_count {2, "vrrp-baf-count"};
 
-const Enum::YLeaf VrrpBagProtocolStateEnum::state_initial {1, "state-initial"};
-const Enum::YLeaf VrrpBagProtocolStateEnum::state_backup {2, "state-backup"};
-const Enum::YLeaf VrrpBagProtocolStateEnum::state_master {3, "state-master"};
+const Enum::YLeaf VrrpBagProtocolState::state_initial {1, "state-initial"};
+const Enum::YLeaf VrrpBagProtocolState::state_backup {2, "state-backup"};
+const Enum::YLeaf VrrpBagProtocolState::state_master {3, "state-master"};
+
+const Enum::YLeaf VrrpVipState::virtual_ip_state_down {0, "virtual-ip-state-down"};
+const Enum::YLeaf VrrpVipState::virtual_ip_state_up {1, "virtual-ip-state-up"};
+
+const Enum::YLeaf VrrpStateChangeReason::state_change_bfd_down {0, "state-change-bfd-down"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_virtual_ip_configured {1, "state-change-virtual-ip-configured"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_interface_ip {2, "state-change-interface-ip"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_delay_timer {3, "state-change-delay-timer"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_startup {4, "state-change-startup"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_interface_up {5, "state-change-interface-up"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_interface_down {6, "state-change-interface-down"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_master_down_timer {7, "state-change-master-down-timer"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_higher_priority_master {8, "state-change-higher-priority-master"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_fhrp_admin {9, "state-change-fhrp-admin"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_mgo_parent {10, "state-change-mgo-parent"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_chkpt_update {11, "state-change-chkpt-update"};
+const Enum::YLeaf VrrpStateChangeReason::state_change_issu_resync {12, "state-change-issu-resync"};
 
 
 }

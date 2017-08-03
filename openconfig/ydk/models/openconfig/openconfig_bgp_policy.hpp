@@ -7,29 +7,29 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_bgp_policy {
 
-class BgpNextHopTypeEnum : public Enum
+class BgpSetCommunityOptionType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf SELF;
+        static const ydk::Enum::YLeaf ADD;
+        static const ydk::Enum::YLeaf REMOVE;
+        static const ydk::Enum::YLeaf REPLACE;
 
 };
 
-class BgpSetMedTypeEnum : public Enum
+class BgpSetMedType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf IGP;
+        static const ydk::Enum::YLeaf IGP;
 
 };
 
-class BgpSetCommunityOptionTypeEnum : public Enum
+class BgpNextHopType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ADD;
-        static const Enum::YLeaf REMOVE;
-        static const Enum::YLeaf REPLACE;
+        static const ydk::Enum::YLeaf SELF;
 
 };
 

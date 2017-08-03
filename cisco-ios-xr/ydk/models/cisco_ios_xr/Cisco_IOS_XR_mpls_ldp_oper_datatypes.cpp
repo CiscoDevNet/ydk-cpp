@@ -6,11 +6,13 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_ldp_oper_datatypes.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_ldp_oper_datatypes {
 
-const Enum::YLeaf MplsLdpOperAfNameEnum::ipv4 {1, "ipv4"};
-const Enum::YLeaf MplsLdpOperAfNameEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf MplsLdpOperAfName::ipv4 {1, "ipv4"};
+const Enum::YLeaf MplsLdpOperAfName::ipv6 {2, "ipv6"};
 
 
 }

@@ -6,14 +6,16 @@
 #include "generated_entity_lookup.hpp"
 #include "OSPF_TRAP_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace OSPF_TRAP_MIB {
 
 OspfTrapMib::OspfTrapMib()
     :
-    ospftrapcontrol_(std::make_shared<OspfTrapMib::Ospftrapcontrol>())
+    ospftrapcontrol(std::make_shared<OspfTrapMib::Ospftrapcontrol>())
 {
-    ospftrapcontrol_->parent = this;
+    ospftrapcontrol->parent = this;
 
     yang_name = "OSPF-TRAP-MIB"; yang_parent_name = "OSPF-TRAP-MIB";
 }
@@ -24,13 +26,13 @@ OspfTrapMib::~OspfTrapMib()
 
 bool OspfTrapMib::has_data() const
 {
-    return (ospftrapcontrol_ !=  nullptr && ospftrapcontrol_->has_data());
+    return (ospftrapcontrol !=  nullptr && ospftrapcontrol->has_data());
 }
 
 bool OspfTrapMib::has_operation() const
 {
-    return is_set(operation)
-	|| (ospftrapcontrol_ !=  nullptr && ospftrapcontrol_->has_operation());
+    return is_set(yfilter)
+	|| (ospftrapcontrol !=  nullptr && ospftrapcontrol->has_operation());
 }
 
 std::string OspfTrapMib::get_segment_path() const
@@ -64,11 +66,11 @@ std::shared_ptr<Entity> OspfTrapMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "ospfTrapControl")
     {
-        if(ospftrapcontrol_ == nullptr)
+        if(ospftrapcontrol == nullptr)
         {
-            ospftrapcontrol_ = std::make_shared<OspfTrapMib::Ospftrapcontrol>();
+            ospftrapcontrol = std::make_shared<OspfTrapMib::Ospftrapcontrol>();
         }
-        return ospftrapcontrol_;
+        return ospftrapcontrol;
     }
 
     return nullptr;
@@ -77,15 +79,19 @@ std::shared_ptr<Entity> OspfTrapMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> OspfTrapMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ospftrapcontrol_ != nullptr)
+    if(ospftrapcontrol != nullptr)
     {
-        children["ospfTrapControl"] = ospftrapcontrol_;
+        children["ospfTrapControl"] = ospftrapcontrol;
     }
 
     return children;
 }
 
-void OspfTrapMib::set_value(const std::string & value_path, std::string value)
+void OspfTrapMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void OspfTrapMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string OspfTrapMib::get_bundle_name() const
 augment_capabilities_function OspfTrapMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> OspfTrapMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool OspfTrapMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfTrapControl")
+        return true;
+    return false;
 }
 
 OspfTrapMib::Ospftrapcontrol::Ospftrapcontrol()
@@ -133,11 +151,11 @@ bool OspfTrapMib::Ospftrapcontrol::has_data() const
 
 bool OspfTrapMib::Ospftrapcontrol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ospfconfigerrortype.operation)
-	|| is_set(ospfpacketsrc.operation)
-	|| is_set(ospfpackettype.operation)
-	|| is_set(ospfsettrap.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ospfconfigerrortype.yfilter)
+	|| ydk::is_set(ospfpacketsrc.yfilter)
+	|| ydk::is_set(ospfpackettype.yfilter)
+	|| ydk::is_set(ospfsettrap.yfilter);
 }
 
 std::string OspfTrapMib::Ospftrapcontrol::get_segment_path() const
@@ -163,10 +181,10 @@ const EntityPath OspfTrapMib::Ospftrapcontrol::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ospfconfigerrortype.is_set || is_set(ospfconfigerrortype.operation)) leaf_name_data.push_back(ospfconfigerrortype.get_name_leafdata());
-    if (ospfpacketsrc.is_set || is_set(ospfpacketsrc.operation)) leaf_name_data.push_back(ospfpacketsrc.get_name_leafdata());
-    if (ospfpackettype.is_set || is_set(ospfpackettype.operation)) leaf_name_data.push_back(ospfpackettype.get_name_leafdata());
-    if (ospfsettrap.is_set || is_set(ospfsettrap.operation)) leaf_name_data.push_back(ospfsettrap.get_name_leafdata());
+    if (ospfconfigerrortype.is_set || is_set(ospfconfigerrortype.yfilter)) leaf_name_data.push_back(ospfconfigerrortype.get_name_leafdata());
+    if (ospfpacketsrc.is_set || is_set(ospfpacketsrc.yfilter)) leaf_name_data.push_back(ospfpacketsrc.get_name_leafdata());
+    if (ospfpackettype.is_set || is_set(ospfpackettype.yfilter)) leaf_name_data.push_back(ospfpackettype.get_name_leafdata());
+    if (ospfsettrap.is_set || is_set(ospfsettrap.yfilter)) leaf_name_data.push_back(ospfsettrap.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -185,46 +203,81 @@ std::map<std::string, std::shared_ptr<Entity>> OspfTrapMib::Ospftrapcontrol::get
     return children;
 }
 
-void OspfTrapMib::Ospftrapcontrol::set_value(const std::string & value_path, std::string value)
+void OspfTrapMib::Ospftrapcontrol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ospfConfigErrorType")
     {
         ospfconfigerrortype = value;
+        ospfconfigerrortype.value_namespace = name_space;
+        ospfconfigerrortype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospfPacketSrc")
     {
         ospfpacketsrc = value;
+        ospfpacketsrc.value_namespace = name_space;
+        ospfpacketsrc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospfPacketType")
     {
         ospfpackettype = value;
+        ospfpackettype.value_namespace = name_space;
+        ospfpackettype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ospfSetTrap")
     {
         ospfsettrap = value;
+        ospfsettrap.value_namespace = name_space;
+        ospfsettrap.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::badVersion {1, "badVersion"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::areaMismatch {2, "areaMismatch"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::unknownNbmaNbr {3, "unknownNbmaNbr"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::unknownVirtualNbr {4, "unknownVirtualNbr"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::authTypeMismatch {5, "authTypeMismatch"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::authFailure {6, "authFailure"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::netMaskMismatch {7, "netMaskMismatch"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::helloIntervalMismatch {8, "helloIntervalMismatch"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::deadIntervalMismatch {9, "deadIntervalMismatch"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::optionMismatch {10, "optionMismatch"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::mtuMismatch {11, "mtuMismatch"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::duplicateRouterId {12, "duplicateRouterId"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfconfigerrortypeEnum::noError {13, "noError"};
+void OspfTrapMib::Ospftrapcontrol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ospfConfigErrorType")
+    {
+        ospfconfigerrortype.yfilter = yfilter;
+    }
+    if(value_path == "ospfPacketSrc")
+    {
+        ospfpacketsrc.yfilter = yfilter;
+    }
+    if(value_path == "ospfPacketType")
+    {
+        ospfpackettype.yfilter = yfilter;
+    }
+    if(value_path == "ospfSetTrap")
+    {
+        ospfsettrap.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfpackettypeEnum::hello {1, "hello"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfpackettypeEnum::dbDescript {2, "dbDescript"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfpackettypeEnum::lsReq {3, "lsReq"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfpackettypeEnum::lsUpdate {4, "lsUpdate"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfpackettypeEnum::lsAck {5, "lsAck"};
-const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::OspfpackettypeEnum::nullPacket {6, "nullPacket"};
+bool OspfTrapMib::Ospftrapcontrol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfConfigErrorType" || name == "ospfPacketSrc" || name == "ospfPacketType" || name == "ospfSetTrap")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::badVersion {1, "badVersion"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::areaMismatch {2, "areaMismatch"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::unknownNbmaNbr {3, "unknownNbmaNbr"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::unknownVirtualNbr {4, "unknownVirtualNbr"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::authTypeMismatch {5, "authTypeMismatch"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::authFailure {6, "authFailure"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::netMaskMismatch {7, "netMaskMismatch"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::helloIntervalMismatch {8, "helloIntervalMismatch"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::deadIntervalMismatch {9, "deadIntervalMismatch"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::optionMismatch {10, "optionMismatch"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::mtuMismatch {11, "mtuMismatch"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::duplicateRouterId {12, "duplicateRouterId"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfconfigerrortype::noError {13, "noError"};
+
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfpackettype::hello {1, "hello"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfpackettype::dbDescript {2, "dbDescript"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfpackettype::lsReq {3, "lsReq"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfpackettype::lsUpdate {4, "lsUpdate"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfpackettype::lsAck {5, "lsAck"};
+const Enum::YLeaf OspfTrapMib::Ospftrapcontrol::Ospfpackettype::nullPacket {6, "nullPacket"};
 
 
 }

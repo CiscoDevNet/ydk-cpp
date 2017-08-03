@@ -7,66 +7,66 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace MPLS_TC_STD_MIB {
 
-class MplslabeldistributionmethodEnum : public Enum
+class Tehopaddresstype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf downstreamOnDemand;
-        static const Enum::YLeaf downstreamUnsolicited;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf asnumber;
+        static const ydk::Enum::YLeaf unnum;
+        static const ydk::Enum::YLeaf lspid;
 
 };
 
-class MplsretentionmodeEnum : public Enum
+class Mplslabeldistributionmethod : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf conservative;
-        static const Enum::YLeaf liberal;
+        static const ydk::Enum::YLeaf downstreamOnDemand;
+        static const ydk::Enum::YLeaf downstreamUnsolicited;
 
 };
 
-class MplsldplabeltypeEnum : public Enum
+class Mplsretentionmode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf generic;
-        static const Enum::YLeaf atm;
-        static const Enum::YLeaf frameRelay;
+        static const ydk::Enum::YLeaf conservative;
+        static const ydk::Enum::YLeaf liberal;
 
 };
 
-class TehopaddresstypeEnum : public Enum
+class Mplsowner : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
-        static const Enum::YLeaf asnumber;
-        static const Enum::YLeaf unnum;
-        static const Enum::YLeaf lspid;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf snmp;
+        static const ydk::Enum::YLeaf ldp;
+        static const ydk::Enum::YLeaf crldp;
+        static const ydk::Enum::YLeaf rsvpTe;
+        static const ydk::Enum::YLeaf policyAgent;
 
 };
 
-class MplslsptypeEnum : public Enum
+class Mplsldplabeltype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf terminatingLsp;
-        static const Enum::YLeaf originatingLsp;
-        static const Enum::YLeaf crossConnectingLsp;
+        static const ydk::Enum::YLeaf generic;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf frameRelay;
 
 };
 
-class MplsownerEnum : public Enum
+class Mplslsptype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf snmp;
-        static const Enum::YLeaf ldp;
-        static const Enum::YLeaf crldp;
-        static const Enum::YLeaf rsvpTe;
-        static const Enum::YLeaf policyAgent;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf terminatingLsp;
+        static const ydk::Enum::YLeaf originatingLsp;
+        static const ydk::Enum::YLeaf crossConnectingLsp;
 
 };
 

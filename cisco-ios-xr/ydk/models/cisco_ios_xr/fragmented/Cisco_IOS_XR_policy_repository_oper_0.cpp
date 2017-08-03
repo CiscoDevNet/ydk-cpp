@@ -7,7 +7,9 @@
 #include "Cisco_IOS_XR_policy_repository_oper_0.hpp"
 #include "Cisco_IOS_XR_policy_repository_oper_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_policy_repository_oper {
 
 RoutingPolicy::RoutingPolicy()
@@ -38,7 +40,7 @@ bool RoutingPolicy::has_data() const
 
 bool RoutingPolicy::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (limits !=  nullptr && limits->has_operation())
 	|| (policies !=  nullptr && policies->has_operation())
 	|| (sets !=  nullptr && sets->has_operation());
@@ -124,7 +126,11 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::get_children() con
     return children;
 }
 
-void RoutingPolicy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void RoutingPolicy::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -146,6 +152,18 @@ std::string RoutingPolicy::get_bundle_name() const
 augment_capabilities_function RoutingPolicy::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> RoutingPolicy::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool RoutingPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limits" || name == "policies" || name == "sets")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Limits::Limits()
@@ -178,14 +196,14 @@ bool RoutingPolicy::Limits::has_data() const
 
 bool RoutingPolicy::Limits::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(compiled_policies_length.operation)
-	|| is_set(current_lines_of_policy_limit.operation)
-	|| is_set(current_lines_of_policy_used.operation)
-	|| is_set(current_number_of_policies_limit.operation)
-	|| is_set(current_number_of_policies_used.operation)
-	|| is_set(maximum_lines_of_policy.operation)
-	|| is_set(maximum_number_of_policies.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(compiled_policies_length.yfilter)
+	|| ydk::is_set(current_lines_of_policy_limit.yfilter)
+	|| ydk::is_set(current_lines_of_policy_used.yfilter)
+	|| ydk::is_set(current_number_of_policies_limit.yfilter)
+	|| ydk::is_set(current_number_of_policies_used.yfilter)
+	|| ydk::is_set(maximum_lines_of_policy.yfilter)
+	|| ydk::is_set(maximum_number_of_policies.yfilter);
 }
 
 std::string RoutingPolicy::Limits::get_segment_path() const
@@ -211,13 +229,13 @@ const EntityPath RoutingPolicy::Limits::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (compiled_policies_length.is_set || is_set(compiled_policies_length.operation)) leaf_name_data.push_back(compiled_policies_length.get_name_leafdata());
-    if (current_lines_of_policy_limit.is_set || is_set(current_lines_of_policy_limit.operation)) leaf_name_data.push_back(current_lines_of_policy_limit.get_name_leafdata());
-    if (current_lines_of_policy_used.is_set || is_set(current_lines_of_policy_used.operation)) leaf_name_data.push_back(current_lines_of_policy_used.get_name_leafdata());
-    if (current_number_of_policies_limit.is_set || is_set(current_number_of_policies_limit.operation)) leaf_name_data.push_back(current_number_of_policies_limit.get_name_leafdata());
-    if (current_number_of_policies_used.is_set || is_set(current_number_of_policies_used.operation)) leaf_name_data.push_back(current_number_of_policies_used.get_name_leafdata());
-    if (maximum_lines_of_policy.is_set || is_set(maximum_lines_of_policy.operation)) leaf_name_data.push_back(maximum_lines_of_policy.get_name_leafdata());
-    if (maximum_number_of_policies.is_set || is_set(maximum_number_of_policies.operation)) leaf_name_data.push_back(maximum_number_of_policies.get_name_leafdata());
+    if (compiled_policies_length.is_set || is_set(compiled_policies_length.yfilter)) leaf_name_data.push_back(compiled_policies_length.get_name_leafdata());
+    if (current_lines_of_policy_limit.is_set || is_set(current_lines_of_policy_limit.yfilter)) leaf_name_data.push_back(current_lines_of_policy_limit.get_name_leafdata());
+    if (current_lines_of_policy_used.is_set || is_set(current_lines_of_policy_used.yfilter)) leaf_name_data.push_back(current_lines_of_policy_used.get_name_leafdata());
+    if (current_number_of_policies_limit.is_set || is_set(current_number_of_policies_limit.yfilter)) leaf_name_data.push_back(current_number_of_policies_limit.get_name_leafdata());
+    if (current_number_of_policies_used.is_set || is_set(current_number_of_policies_used.yfilter)) leaf_name_data.push_back(current_number_of_policies_used.get_name_leafdata());
+    if (maximum_lines_of_policy.is_set || is_set(maximum_lines_of_policy.yfilter)) leaf_name_data.push_back(maximum_lines_of_policy.get_name_leafdata());
+    if (maximum_number_of_policies.is_set || is_set(maximum_number_of_policies.yfilter)) leaf_name_data.push_back(maximum_number_of_policies.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -236,36 +254,89 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Limits::get_childr
     return children;
 }
 
-void RoutingPolicy::Limits::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Limits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "compiled-policies-length")
     {
         compiled_policies_length = value;
+        compiled_policies_length.value_namespace = name_space;
+        compiled_policies_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "current-lines-of-policy-limit")
     {
         current_lines_of_policy_limit = value;
+        current_lines_of_policy_limit.value_namespace = name_space;
+        current_lines_of_policy_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "current-lines-of-policy-used")
     {
         current_lines_of_policy_used = value;
+        current_lines_of_policy_used.value_namespace = name_space;
+        current_lines_of_policy_used.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "current-number-of-policies-limit")
     {
         current_number_of_policies_limit = value;
+        current_number_of_policies_limit.value_namespace = name_space;
+        current_number_of_policies_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "current-number-of-policies-used")
     {
         current_number_of_policies_used = value;
+        current_number_of_policies_used.value_namespace = name_space;
+        current_number_of_policies_used.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-lines-of-policy")
     {
         maximum_lines_of_policy = value;
+        maximum_lines_of_policy.value_namespace = name_space;
+        maximum_lines_of_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-number-of-policies")
     {
         maximum_number_of_policies = value;
+        maximum_number_of_policies.value_namespace = name_space;
+        maximum_number_of_policies.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Limits::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "compiled-policies-length")
+    {
+        compiled_policies_length.yfilter = yfilter;
+    }
+    if(value_path == "current-lines-of-policy-limit")
+    {
+        current_lines_of_policy_limit.yfilter = yfilter;
+    }
+    if(value_path == "current-lines-of-policy-used")
+    {
+        current_lines_of_policy_used.yfilter = yfilter;
+    }
+    if(value_path == "current-number-of-policies-limit")
+    {
+        current_number_of_policies_limit.yfilter = yfilter;
+    }
+    if(value_path == "current-number-of-policies-used")
+    {
+        current_number_of_policies_used.yfilter = yfilter;
+    }
+    if(value_path == "maximum-lines-of-policy")
+    {
+        maximum_lines_of_policy.yfilter = yfilter;
+    }
+    if(value_path == "maximum-number-of-policies")
+    {
+        maximum_number_of_policies.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Limits::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "compiled-policies-length" || name == "current-lines-of-policy-limit" || name == "current-lines-of-policy-used" || name == "current-number-of-policies-limit" || name == "current-number-of-policies-used" || name == "maximum-lines-of-policy" || name == "maximum-number-of-policies")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::Policies()
@@ -300,7 +371,7 @@ bool RoutingPolicy::Policies::has_data() const
 
 bool RoutingPolicy::Policies::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (route_policies !=  nullptr && route_policies->has_operation())
@@ -404,8 +475,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::get_chil
     return children;
 }
 
-void RoutingPolicy::Policies::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Policies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Policies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "route-policies" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicies()
@@ -434,7 +516,7 @@ bool RoutingPolicy::Policies::RoutePolicies::has_operation() const
         if(route_policy[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::get_segment_path() const
@@ -499,8 +581,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Policies::RoutePolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::RoutePolicy()
@@ -534,8 +627,8 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::has_data() const
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (policy_uses !=  nullptr && policy_uses->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
@@ -564,7 +657,7 @@ const EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -625,12 +718,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "policy-uses" || name == "used-by" || name == "route-policy-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::PolicyUses()
@@ -665,7 +775,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::has_data()
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (all_used_policies !=  nullptr && all_used_policies->has_operation())
 	|| (all_used_sets !=  nullptr && all_used_sets->has_operation())
 	|| (directly_used_policies !=  nullptr && directly_used_policies->has_operation())
@@ -769,8 +879,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all-used-policies" || name == "all-used-sets" || name == "directly-used-policies" || name == "directly-used-sets")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::DirectlyUsedPolicies()
@@ -798,11 +919,11 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUs
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::get_segment_path() const
@@ -848,12 +969,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::AllUsedSets()
@@ -882,7 +1018,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSet
         if(sets[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::get_segment_path() const
@@ -947,8 +1083,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sets")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::Sets()
@@ -977,12 +1124,12 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSet
 {
     for (auto const & leaf : set_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(set_domain.operation)
-	|| is_set(set_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_domain.yfilter)
+	|| ydk::is_set(set_name.yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::get_segment_path() const
@@ -1008,7 +1155,7 @@ const EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_domain.is_set || is_set(set_domain.operation)) leaf_name_data.push_back(set_domain.get_name_leafdata());
+    if (set_domain.is_set || is_set(set_domain.yfilter)) leaf_name_data.push_back(set_domain.get_name_leafdata());
 
     auto set_name_name_datas = set_name.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), set_name_name_datas.begin(), set_name_name_datas.end());
@@ -1029,16 +1176,37 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-domain")
     {
         set_domain = value;
+        set_domain.value_namespace = name_space;
+        set_domain.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-name")
     {
         set_name.append(value);
     }
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-domain")
+    {
+        set_domain.yfilter = yfilter;
+    }
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-domain" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::DirectlyUsedSets()
@@ -1067,7 +1235,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUs
         if(sets[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::get_segment_path() const
@@ -1132,8 +1300,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sets")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::Sets()
@@ -1162,12 +1341,12 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUs
 {
     for (auto const & leaf : set_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(set_domain.operation)
-	|| is_set(set_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_domain.yfilter)
+	|| ydk::is_set(set_name.yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::get_segment_path() const
@@ -1193,7 +1372,7 @@ const EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_domain.is_set || is_set(set_domain.operation)) leaf_name_data.push_back(set_domain.get_name_leafdata());
+    if (set_domain.is_set || is_set(set_domain.yfilter)) leaf_name_data.push_back(set_domain.get_name_leafdata());
 
     auto set_name_name_datas = set_name.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), set_name_name_datas.begin(), set_name_name_datas.end());
@@ -1214,16 +1393,37 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-domain")
     {
         set_domain = value;
+        set_domain.value_namespace = name_space;
+        set_domain.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-name")
     {
         set_name.append(value);
     }
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-domain")
+    {
+        set_domain.yfilter = yfilter;
+    }
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-domain" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::AllUsedPolicies()
@@ -1251,11 +1451,11 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPol
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::get_segment_path() const
@@ -1301,12 +1501,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::UsedBy()
@@ -1335,7 +1550,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::has_operation(
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::get_segment_path() const
@@ -1400,8 +1615,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::Reference()
@@ -1426,10 +1652,10 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::has
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::get_segment_path() const
@@ -1455,9 +1681,9 @@ const EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Re
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1476,20 +1702,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Attached()
@@ -1518,7 +1773,7 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::has_operatio
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::get_segment_path() const
@@ -1583,8 +1838,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::Binding()
@@ -1643,27 +1909,27 @@ bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::has
 
 bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::get_segment_path() const
@@ -1689,26 +1955,26 @@ const EntityPath RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1727,88 +1993,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::RoutePol
     return children;
 }
 
-void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::Unused::Unused()
@@ -1836,11 +2233,11 @@ bool RoutingPolicy::Policies::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Policies::Unused::get_segment_path() const
@@ -1886,12 +2283,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::Unused::
     return children;
 }
 
-void RoutingPolicy::Policies::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Policies::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::Inactive::Inactive()
@@ -1919,11 +2331,11 @@ bool RoutingPolicy::Policies::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Policies::Inactive::get_segment_path() const
@@ -1969,12 +2381,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::Inactive
     return children;
 }
 
-void RoutingPolicy::Policies::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Policies::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Policies::Active::Active()
@@ -2002,11 +2429,11 @@ bool RoutingPolicy::Policies::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Policies::Active::get_segment_path() const
@@ -2052,12 +2479,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Policies::Active::
     return children;
 }
 
-void RoutingPolicy::Policies::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Policies::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Policies::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Policies::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Sets()
@@ -2136,7 +2578,7 @@ bool RoutingPolicy::Sets::has_data() const
 
 bool RoutingPolicy::Sets::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (as_path !=  nullptr && as_path->has_operation())
 	|| (community !=  nullptr && community->has_operation())
 	|| (esi !=  nullptr && esi->has_operation())
@@ -2405,8 +2847,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::get_children
     return children;
 }
 
-void RoutingPolicy::Sets::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as-path" || name == "community" || name == "esi" || name == "etag" || name == "extended-community-bandwidth" || name == "extended-community-cost" || name == "extended-community-opaque" || name == "extended-community-rt" || name == "extended-community-seg-nh" || name == "extended-community-soo" || name == "mac" || name == "ospf-area" || name == "prefix" || name == "rd" || name == "tag")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Etag()
@@ -2441,7 +2894,7 @@ bool RoutingPolicy::Sets::Etag::has_data() const
 
 bool RoutingPolicy::Sets::Etag::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -2545,8 +2998,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::get_ch
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Etag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Etag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Sets_()
@@ -2575,7 +3039,7 @@ bool RoutingPolicy::Sets::Etag::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Etag::Sets_::get_segment_path() const
@@ -2640,8 +3104,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Etag::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Etag::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::Set()
@@ -2671,8 +3146,8 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -2700,7 +3175,7 @@ const EntityPath RoutingPolicy::Sets::Etag::Sets_::Set::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2747,12 +3222,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Etag::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Etag::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::UsedBy()
@@ -2781,7 +3273,7 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::has_operation() const
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::get_segment_path() const
@@ -2846,8 +3338,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::Reference()
@@ -2872,10 +3375,10 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::has_data() const
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -2901,9 +3404,9 @@ const EntityPath RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2922,20 +3425,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Attached()
@@ -2964,7 +3496,7 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::has_operation() const
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Etag::Sets_::Set::Attached::get_segment_path() const
@@ -3029,8 +3561,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Etag::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::Binding()
@@ -3089,27 +3632,27 @@ bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::has_data() const
 
 bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -3135,26 +3678,26 @@ const EntityPath RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3173,88 +3716,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Sets_:
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Unused::Unused()
@@ -3282,11 +3956,11 @@ bool RoutingPolicy::Sets::Etag::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Etag::Unused::get_segment_path() const
@@ -3332,12 +4006,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Unused
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Etag::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Etag::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Inactive::Inactive()
@@ -3365,11 +4054,11 @@ bool RoutingPolicy::Sets::Etag::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Etag::Inactive::get_segment_path() const
@@ -3415,12 +4104,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Inacti
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Etag::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Etag::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Etag::Active::Active()
@@ -3448,11 +4152,11 @@ bool RoutingPolicy::Sets::Etag::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Etag::Active::get_segment_path() const
@@ -3498,12 +4202,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Etag::Active
     return children;
 }
 
-void RoutingPolicy::Sets::Etag::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Etag::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Etag::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Etag::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::OspfArea()
@@ -3538,7 +4257,7 @@ bool RoutingPolicy::Sets::OspfArea::has_data() const
 
 bool RoutingPolicy::Sets::OspfArea::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -3642,8 +4361,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::ge
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::OspfArea::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::OspfArea::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Sets_()
@@ -3672,7 +4402,7 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Sets_::get_segment_path() const
@@ -3737,8 +4467,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::OspfArea::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::OspfArea::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::Set()
@@ -3768,8 +4509,8 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -3797,7 +4538,7 @@ const EntityPath RoutingPolicy::Sets::OspfArea::Sets_::Set::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3844,12 +4585,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::OspfArea::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::UsedBy()
@@ -3878,7 +4636,7 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::has_operation() const
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::get_segment_path() const
@@ -3943,8 +4701,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::Reference()
@@ -3969,10 +4738,10 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::has_data() co
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -3998,9 +4767,9 @@ const EntityPath RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4019,20 +4788,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Attached()
@@ -4061,7 +4859,7 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::has_operation() const
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::get_segment_path() const
@@ -4126,8 +4924,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::Binding()
@@ -4186,27 +4995,27 @@ bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::has_data() co
 
 bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -4232,26 +5041,26 @@ const EntityPath RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4270,88 +5079,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Se
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Unused::Unused()
@@ -4379,11 +5319,11 @@ bool RoutingPolicy::Sets::OspfArea::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Unused::get_segment_path() const
@@ -4429,12 +5369,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Un
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::OspfArea::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::OspfArea::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Inactive::Inactive()
@@ -4462,11 +5417,11 @@ bool RoutingPolicy::Sets::OspfArea::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Inactive::get_segment_path() const
@@ -4512,12 +5467,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::In
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::OspfArea::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::OspfArea::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::OspfArea::Active::Active()
@@ -4545,11 +5515,11 @@ bool RoutingPolicy::Sets::OspfArea::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::OspfArea::Active::get_segment_path() const
@@ -4595,12 +5565,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::OspfArea::Ac
     return children;
 }
 
-void RoutingPolicy::Sets::OspfArea::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::OspfArea::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::OspfArea::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::OspfArea::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::ExtendedCommunityOpaque()
@@ -4635,7 +5620,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -4739,8 +5724,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Sets_()
@@ -4769,7 +5765,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::get_segment_path() const
@@ -4834,8 +5830,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Set()
@@ -4865,8 +5872,8 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -4894,7 +5901,7 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4941,12 +5948,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::UsedBy()
@@ -4975,7 +5999,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::has_opera
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::get_segment_path() const
@@ -5040,8 +6064,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::Reference()
@@ -5066,10 +6101,10 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -5095,9 +6130,9 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedB
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5116,20 +6151,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Attached()
@@ -5158,7 +6222,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::has_ope
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::get_segment_path() const
@@ -5223,8 +6287,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::Binding()
@@ -5283,27 +6358,27 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding
 
 bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -5329,26 +6404,26 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5367,88 +6442,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::Unused()
@@ -5476,11 +6682,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::get_segment_path() const
@@ -5526,12 +6732,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::Inactive()
@@ -5559,11 +6780,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::has_operation() con
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::get_segment_path() const
@@ -5609,12 +6830,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::Active()
@@ -5642,11 +6878,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::get_segment_path() const
@@ -5692,12 +6928,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityOpaque::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::ExtendedCommunitySegNh()
@@ -5732,7 +6983,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -5836,8 +7087,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Sets_()
@@ -5866,7 +7128,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::get_segment_path() const
@@ -5931,8 +7193,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Set()
@@ -5962,8 +7235,8 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -5991,7 +7264,7 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6038,12 +7311,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::UsedBy()
@@ -6072,7 +7362,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::has_operat
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::get_segment_path() const
@@ -6137,8 +7427,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::Reference()
@@ -6163,10 +7464,10 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference:
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -6192,9 +7493,9 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6213,20 +7514,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Attached()
@@ -6255,7 +7585,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::has_oper
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::get_segment_path() const
@@ -6320,8 +7650,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::Binding()
@@ -6380,27 +7721,27 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding:
 
 bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -6426,26 +7767,26 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attach
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6464,88 +7805,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::Unused()
@@ -6573,11 +8045,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::get_segment_path() const
@@ -6623,12 +8095,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::Inactive()
@@ -6656,11 +8143,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::has_operation() cons
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::get_segment_path() const
@@ -6706,12 +8193,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::Active()
@@ -6739,11 +8241,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::get_segment_path() const
@@ -6789,12 +8291,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySegNh::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::ExtendedCommunitySoo()
@@ -6829,7 +8346,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -6933,8 +8450,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Sets_()
@@ -6963,7 +8491,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::get_segment_path() const
@@ -7028,8 +8556,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Set()
@@ -7059,8 +8598,8 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -7088,7 +8627,7 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7135,12 +8674,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::UsedBy()
@@ -7169,7 +8725,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::has_operatio
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::get_segment_path() const
@@ -7234,8 +8790,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::Reference()
@@ -7260,10 +8827,10 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::h
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -7289,9 +8856,9 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7310,20 +8877,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Attached()
@@ -7352,7 +8948,7 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::has_operat
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::get_segment_path() const
@@ -7417,8 +9013,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::Binding()
@@ -7477,27 +9084,27 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::h
 
 bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -7523,26 +9130,26 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7561,88 +9168,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::Unused()
@@ -7670,11 +9408,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::get_segment_path() const
@@ -7720,12 +9458,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::Inactive()
@@ -7753,11 +9506,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::get_segment_path() const
@@ -7803,12 +9556,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunitySoo::Active::Active()
@@ -7836,11 +9604,11 @@ bool RoutingPolicy::Sets::ExtendedCommunitySoo::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunitySoo::Active::get_segment_path() const
@@ -7886,12 +9654,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunitySoo::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunitySoo::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunitySoo::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Tag()
@@ -7926,7 +9709,7 @@ bool RoutingPolicy::Sets::Tag::has_data() const
 
 bool RoutingPolicy::Sets::Tag::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -8030,8 +9813,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::get_chi
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Tag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Tag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Sets_()
@@ -8060,7 +9854,7 @@ bool RoutingPolicy::Sets::Tag::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Tag::Sets_::get_segment_path() const
@@ -8125,8 +9919,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Tag::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Tag::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::Set()
@@ -8156,8 +9961,8 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -8185,7 +9990,7 @@ const EntityPath RoutingPolicy::Sets::Tag::Sets_::Set::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8232,12 +10037,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Tag::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Tag::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::UsedBy()
@@ -8266,7 +10088,7 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::has_operation() const
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::get_segment_path() const
@@ -8331,8 +10153,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::Reference()
@@ -8357,10 +10190,10 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -8386,9 +10219,9 @@ const EntityPath RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8407,20 +10240,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Attached()
@@ -8449,7 +10311,7 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::has_operation() const
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Tag::Sets_::Set::Attached::get_segment_path() const
@@ -8514,8 +10376,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Tag::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::Binding()
@@ -8574,27 +10447,27 @@ bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::has_data() const
 
 bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -8620,26 +10493,26 @@ const EntityPath RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8658,88 +10531,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Unused::Unused()
@@ -8767,11 +10771,11 @@ bool RoutingPolicy::Sets::Tag::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Tag::Unused::get_segment_path() const
@@ -8817,12 +10821,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Unused:
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Tag::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Tag::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Inactive::Inactive()
@@ -8850,11 +10869,11 @@ bool RoutingPolicy::Sets::Tag::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Tag::Inactive::get_segment_path() const
@@ -8900,12 +10919,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Inactiv
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Tag::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Tag::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Tag::Active::Active()
@@ -8933,11 +10967,11 @@ bool RoutingPolicy::Sets::Tag::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Tag::Active::get_segment_path() const
@@ -8983,12 +11017,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Tag::Active:
     return children;
 }
 
-void RoutingPolicy::Sets::Tag::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Tag::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Tag::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Tag::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Prefix()
@@ -9023,7 +11072,7 @@ bool RoutingPolicy::Sets::Prefix::has_data() const
 
 bool RoutingPolicy::Sets::Prefix::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -9127,8 +11176,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::get_
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Sets_()
@@ -9157,7 +11217,7 @@ bool RoutingPolicy::Sets::Prefix::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Sets_::get_segment_path() const
@@ -9222,8 +11282,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Prefix::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Prefix::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::Set()
@@ -9253,8 +11324,8 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -9282,7 +11353,7 @@ const EntityPath RoutingPolicy::Sets::Prefix::Sets_::Set::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9329,12 +11400,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Prefix::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Prefix::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::UsedBy()
@@ -9363,7 +11451,7 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::has_operation() const
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::get_segment_path() const
@@ -9428,8 +11516,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::Reference()
@@ -9454,10 +11553,10 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::has_data() cons
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -9483,9 +11582,9 @@ const EntityPath RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9504,20 +11603,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Attached()
@@ -9546,7 +11674,7 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::has_operation() const
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::get_segment_path() const
@@ -9611,8 +11739,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::Binding()
@@ -9671,27 +11810,27 @@ bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::has_data() cons
 
 bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -9717,26 +11856,26 @@ const EntityPath RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9755,88 +11894,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Unused::Unused()
@@ -9864,11 +12134,11 @@ bool RoutingPolicy::Sets::Prefix::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Unused::get_segment_path() const
@@ -9914,12 +12184,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Unus
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Prefix::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Prefix::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Inactive::Inactive()
@@ -9947,11 +12232,11 @@ bool RoutingPolicy::Sets::Prefix::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Inactive::get_segment_path() const
@@ -9997,12 +12282,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Inac
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Prefix::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Prefix::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Prefix::Active::Active()
@@ -10030,11 +12330,11 @@ bool RoutingPolicy::Sets::Prefix::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Prefix::Active::get_segment_path() const
@@ -10080,12 +12380,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Prefix::Acti
     return children;
 }
 
-void RoutingPolicy::Sets::Prefix::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Prefix::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Prefix::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Prefix::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Community()
@@ -10120,7 +12435,7 @@ bool RoutingPolicy::Sets::Community::has_data() const
 
 bool RoutingPolicy::Sets::Community::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -10224,8 +12539,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::g
     return children;
 }
 
-void RoutingPolicy::Sets::Community::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Community::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Community::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Sets_::Sets_()
@@ -10254,7 +12580,7 @@ bool RoutingPolicy::Sets::Community::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Community::Sets_::get_segment_path() const
@@ -10319,8 +12645,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Community::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Community::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::Set()
@@ -10350,8 +12687,8 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -10379,7 +12716,7 @@ const EntityPath RoutingPolicy::Sets::Community::Sets_::Set::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10426,12 +12763,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Community::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Community::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::UsedBy()
@@ -10460,7 +12814,7 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::has_operation() const
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::get_segment_path() const
@@ -10525,8 +12879,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::Reference()
@@ -10551,10 +12916,10 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::has_data() c
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -10580,9 +12945,9 @@ const EntityPath RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10601,20 +12966,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::Attached::Attached()
@@ -10643,7 +13037,7 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::has_operation() const
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Community::Sets_::Set::Attached::get_segment_path() const
@@ -10708,8 +13102,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Community::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::Binding()
@@ -10768,27 +13173,27 @@ bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::has_data() c
 
 bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -10814,26 +13219,26 @@ const EntityPath RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10852,88 +13257,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::S
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Unused::Unused()
@@ -10961,11 +13497,11 @@ bool RoutingPolicy::Sets::Community::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Community::Unused::get_segment_path() const
@@ -11011,12 +13547,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::U
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Community::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Community::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Inactive::Inactive()
@@ -11044,11 +13595,11 @@ bool RoutingPolicy::Sets::Community::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Community::Inactive::get_segment_path() const
@@ -11094,12 +13645,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::I
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Community::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Community::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Community::Active::Active()
@@ -11127,11 +13693,11 @@ bool RoutingPolicy::Sets::Community::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Community::Active::get_segment_path() const
@@ -11177,12 +13743,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Community::A
     return children;
 }
 
-void RoutingPolicy::Sets::Community::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Community::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Community::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Community::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::AsPath()
@@ -11217,7 +13798,7 @@ bool RoutingPolicy::Sets::AsPath::has_data() const
 
 bool RoutingPolicy::Sets::AsPath::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -11321,8 +13902,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::get_
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::AsPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::AsPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Sets_()
@@ -11351,7 +13943,7 @@ bool RoutingPolicy::Sets::AsPath::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Sets_::get_segment_path() const
@@ -11416,8 +14008,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::AsPath::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::AsPath::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::Set()
@@ -11447,8 +14050,8 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -11476,7 +14079,7 @@ const EntityPath RoutingPolicy::Sets::AsPath::Sets_::Set::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11523,12 +14126,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::AsPath::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AsPath::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::UsedBy()
@@ -11557,7 +14177,7 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::has_operation() const
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::get_segment_path() const
@@ -11622,8 +14242,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::Reference()
@@ -11648,10 +14279,10 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::has_data() cons
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -11677,9 +14308,9 @@ const EntityPath RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11698,20 +14329,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Attached()
@@ -11740,7 +14400,7 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::has_operation() const
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::get_segment_path() const
@@ -11805,8 +14465,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::Binding()
@@ -11865,27 +14536,27 @@ bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::has_data() cons
 
 bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -11911,26 +14582,26 @@ const EntityPath RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11949,88 +14620,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Sets
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Unused::Unused()
@@ -12058,11 +14860,11 @@ bool RoutingPolicy::Sets::AsPath::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Unused::get_segment_path() const
@@ -12108,12 +14910,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Unus
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::AsPath::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AsPath::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Inactive::Inactive()
@@ -12141,11 +14958,11 @@ bool RoutingPolicy::Sets::AsPath::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Inactive::get_segment_path() const
@@ -12191,12 +15008,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Inac
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::AsPath::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AsPath::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::AsPath::Active::Active()
@@ -12224,11 +15056,11 @@ bool RoutingPolicy::Sets::AsPath::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::AsPath::Active::get_segment_path() const
@@ -12274,12 +15106,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::AsPath::Acti
     return children;
 }
 
-void RoutingPolicy::Sets::AsPath::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::AsPath::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::AsPath::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::AsPath::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Esi()
@@ -12314,7 +15161,7 @@ bool RoutingPolicy::Sets::Esi::has_data() const
 
 bool RoutingPolicy::Sets::Esi::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -12418,8 +15265,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::get_chi
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Esi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Esi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Sets_()
@@ -12448,7 +15306,7 @@ bool RoutingPolicy::Sets::Esi::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Esi::Sets_::get_segment_path() const
@@ -12513,8 +15371,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Esi::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Esi::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::Set()
@@ -12544,8 +15413,8 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -12573,7 +15442,7 @@ const EntityPath RoutingPolicy::Sets::Esi::Sets_::Set::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12620,12 +15489,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Esi::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Esi::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::UsedBy()
@@ -12654,7 +15540,7 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::has_operation() const
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::get_segment_path() const
@@ -12719,8 +15605,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::Reference()
@@ -12745,10 +15642,10 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::has_data() const
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -12774,9 +15671,9 @@ const EntityPath RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12795,20 +15692,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Attached()
@@ -12837,7 +15763,7 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::has_operation() const
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Esi::Sets_::Set::Attached::get_segment_path() const
@@ -12902,8 +15828,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Esi::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::Binding()
@@ -12962,27 +15899,27 @@ bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::has_data() const
 
 bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -13008,26 +15945,26 @@ const EntityPath RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13046,88 +15983,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Sets_::
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Unused::Unused()
@@ -13155,11 +16223,11 @@ bool RoutingPolicy::Sets::Esi::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Esi::Unused::get_segment_path() const
@@ -13205,12 +16273,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Unused:
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Esi::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Esi::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Inactive::Inactive()
@@ -13238,11 +16321,11 @@ bool RoutingPolicy::Sets::Esi::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Esi::Inactive::get_segment_path() const
@@ -13288,12 +16371,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Inactiv
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Esi::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Esi::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Esi::Active::Active()
@@ -13321,11 +16419,11 @@ bool RoutingPolicy::Sets::Esi::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Esi::Active::get_segment_path() const
@@ -13371,12 +16469,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Esi::Active:
     return children;
 }
 
-void RoutingPolicy::Sets::Esi::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Esi::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Esi::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Esi::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::ExtendedCommunityBandwidth()
@@ -13407,7 +16520,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
 	|| (unused !=  nullptr && unused->has_operation());
@@ -13496,8 +16609,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Sets_()
@@ -13526,7 +16650,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::has_operation() con
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::get_segment_path() const
@@ -13591,8 +16715,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Set()
@@ -13622,8 +16757,8 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::has_data() con
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -13651,7 +16786,7 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13698,12 +16833,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::UsedBy()
@@ -13732,7 +16884,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::has_op
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::get_segment_path() const
@@ -13797,8 +16949,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::Reference()
@@ -13823,10 +16986,10 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Refere
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -13852,9 +17015,9 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Us
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13873,20 +17036,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Attached()
@@ -13915,7 +17107,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::has_
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::get_segment_path() const
@@ -13980,8 +17172,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::Binding()
@@ -14040,27 +17243,27 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Bind
 
 bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -14086,26 +17289,26 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::At
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14124,88 +17327,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::Unused()
@@ -14233,11 +17567,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::has_operation() co
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::get_segment_path() const
@@ -14283,12 +17617,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::Inactive()
@@ -14316,11 +17665,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::has_operation() 
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::get_segment_path() const
@@ -14366,12 +17715,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityBandwidth::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::ExtendedCommunityRt()
@@ -14406,7 +17770,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -14510,8 +17874,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Sets_()
@@ -14540,7 +17915,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::get_segment_path() const
@@ -14605,8 +17980,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Set()
@@ -14636,8 +18022,8 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -14665,7 +18051,7 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14712,12 +18098,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::UsedBy()
@@ -14746,7 +18149,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::has_operation
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::get_segment_path() const
@@ -14811,8 +18214,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::Reference()
@@ -14837,10 +18251,10 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::ha
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -14866,9 +18280,9 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::R
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14887,20 +18301,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Attached()
@@ -14929,7 +18372,7 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::has_operati
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::get_segment_path() const
@@ -14994,8 +18437,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::Binding()
@@ -15054,27 +18508,27 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::ha
 
 bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -15100,26 +18554,26 @@ const EntityPath RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15138,88 +18592,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Unused::Unused()
@@ -15247,11 +18832,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Unused::get_segment_path() const
@@ -15297,12 +18882,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::Inactive()
@@ -15330,11 +18930,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::get_segment_path() const
@@ -15380,12 +18980,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::ExtendedCommunityRt::Active::Active()
@@ -15413,11 +19028,11 @@ bool RoutingPolicy::Sets::ExtendedCommunityRt::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::ExtendedCommunityRt::Active::get_segment_path() const
@@ -15463,12 +19078,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::ExtendedComm
     return children;
 }
 
-void RoutingPolicy::Sets::ExtendedCommunityRt::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::ExtendedCommunityRt::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::ExtendedCommunityRt::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::ExtendedCommunityRt::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Rd()
@@ -15503,7 +19133,7 @@ bool RoutingPolicy::Sets::Rd::has_data() const
 
 bool RoutingPolicy::Sets::Rd::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -15607,8 +19237,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::get_chil
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Rd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Rd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Sets_::Sets_()
@@ -15637,7 +19278,7 @@ bool RoutingPolicy::Sets::Rd::Sets_::has_operation() const
         if(set[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Rd::Sets_::get_segment_path() const
@@ -15702,8 +19343,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::g
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Sets_::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Sets_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Rd::Sets_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Rd::Sets_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Sets_::Set::Set()
@@ -15733,8 +19385,8 @@ bool RoutingPolicy::Sets::Rd::Sets_::Set::has_data() const
 
 bool RoutingPolicy::Sets::Rd::Sets_::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(set_name.yfilter)
 	|| (attached !=  nullptr && attached->has_operation())
 	|| (used_by !=  nullptr && used_by->has_operation());
 }
@@ -15762,7 +19414,7 @@ const EntityPath RoutingPolicy::Sets::Rd::Sets_::Set::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_name.is_set || is_set(set_name.operation)) leaf_name_data.push_back(set_name.get_name_leafdata());
+    if (set_name.is_set || is_set(set_name.yfilter)) leaf_name_data.push_back(set_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15809,12 +19461,29 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::S
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Sets_::Set::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Sets_::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-name")
     {
         set_name = value;
+        set_name.value_namespace = name_space;
+        set_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Rd::Sets_::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-name")
+    {
+        set_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Rd::Sets_::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attached" || name == "used-by" || name == "set-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::UsedBy()
@@ -15843,7 +19512,7 @@ bool RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::has_operation() const
         if(reference[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::get_segment_path() const
@@ -15908,8 +19577,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::S
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reference")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::Reference()
@@ -15934,10 +19614,10 @@ bool RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::has_data() const
 
 bool RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(status.operation)
-	|| is_set(used_directly.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(used_directly.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::get_segment_path() const
@@ -15963,9 +19643,9 @@ const EntityPath RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (used_directly.is_set || is_set(used_directly.operation)) leaf_name_data.push_back(used_directly.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (used_directly.is_set || is_set(used_directly.yfilter)) leaf_name_data.push_back(used_directly.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15984,20 +19664,49 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::S
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used-directly")
     {
         used_directly = value;
+        used_directly.value_namespace = name_space;
+        used_directly.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "used-directly")
+    {
+        used_directly.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Rd::Sets_::Set::UsedBy::Reference::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-policy-name" || name == "status" || name == "used-directly")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Attached()
@@ -16026,7 +19735,7 @@ bool RoutingPolicy::Sets::Rd::Sets_::Set::Attached::has_operation() const
         if(binding[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string RoutingPolicy::Sets::Rd::Sets_::Set::Attached::get_segment_path() const
@@ -16091,8 +19800,19 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::S
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Sets_::Set::Attached::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Sets_::Set::Attached::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void RoutingPolicy::Sets::Rd::Sets_::Set::Attached::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool RoutingPolicy::Sets::Rd::Sets_::Set::Attached::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "binding")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::Binding()
@@ -16151,27 +19871,27 @@ bool RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::has_data() const
 
 bool RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(aggregate_network_address.operation)
-	|| is_set(area_id.operation)
-	|| is_set(attach_point.operation)
-	|| is_set(attached_policy.operation)
-	|| is_set(direction.operation)
-	|| is_set(group.operation)
-	|| is_set(group_name.operation)
-	|| is_set(instance.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(neighbor_af_name.operation)
-	|| is_set(propogate_from.operation)
-	|| is_set(propogate_to.operation)
-	|| is_set(proto_instance.operation)
-	|| is_set(protocol.operation)
-	|| is_set(route_policy_name.operation)
-	|| is_set(saf_name.operation)
-	|| is_set(source_protocol.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(aggregate_network_address.yfilter)
+	|| ydk::is_set(area_id.yfilter)
+	|| ydk::is_set(attach_point.yfilter)
+	|| ydk::is_set(attached_policy.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(group_name.yfilter)
+	|| ydk::is_set(instance.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(neighbor_af_name.yfilter)
+	|| ydk::is_set(propogate_from.yfilter)
+	|| ydk::is_set(propogate_to.yfilter)
+	|| ydk::is_set(proto_instance.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(route_policy_name.yfilter)
+	|| ydk::is_set(saf_name.yfilter)
+	|| ydk::is_set(source_protocol.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::get_segment_path() const
@@ -16197,26 +19917,26 @@ const EntityPath RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (aggregate_network_address.is_set || is_set(aggregate_network_address.operation)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
-    if (area_id.is_set || is_set(area_id.operation)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (attach_point.is_set || is_set(attach_point.operation)) leaf_name_data.push_back(attach_point.get_name_leafdata());
-    if (attached_policy.is_set || is_set(attached_policy.operation)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (group.is_set || is_set(group.operation)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.operation)) leaf_name_data.push_back(group_name.get_name_leafdata());
-    if (instance.is_set || is_set(instance.operation)) leaf_name_data.push_back(instance.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (neighbor_af_name.is_set || is_set(neighbor_af_name.operation)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
-    if (propogate_from.is_set || is_set(propogate_from.operation)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
-    if (propogate_to.is_set || is_set(propogate_to.operation)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
-    if (proto_instance.is_set || is_set(proto_instance.operation)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (route_policy_name.is_set || is_set(route_policy_name.operation)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
-    if (saf_name.is_set || is_set(saf_name.operation)) leaf_name_data.push_back(saf_name.get_name_leafdata());
-    if (source_protocol.is_set || is_set(source_protocol.operation)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (aggregate_network_address.is_set || is_set(aggregate_network_address.yfilter)) leaf_name_data.push_back(aggregate_network_address.get_name_leafdata());
+    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
+    if (attach_point.is_set || is_set(attach_point.yfilter)) leaf_name_data.push_back(attach_point.get_name_leafdata());
+    if (attached_policy.is_set || is_set(attached_policy.yfilter)) leaf_name_data.push_back(attached_policy.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_af_name.is_set || is_set(neighbor_af_name.yfilter)) leaf_name_data.push_back(neighbor_af_name.get_name_leafdata());
+    if (propogate_from.is_set || is_set(propogate_from.yfilter)) leaf_name_data.push_back(propogate_from.get_name_leafdata());
+    if (propogate_to.is_set || is_set(propogate_to.yfilter)) leaf_name_data.push_back(propogate_to.get_name_leafdata());
+    if (proto_instance.is_set || is_set(proto_instance.yfilter)) leaf_name_data.push_back(proto_instance.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (route_policy_name.is_set || is_set(route_policy_name.yfilter)) leaf_name_data.push_back(route_policy_name.get_name_leafdata());
+    if (saf_name.is_set || is_set(saf_name.yfilter)) leaf_name_data.push_back(saf_name.get_name_leafdata());
+    if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -16235,88 +19955,219 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Sets_::S
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "aggregate-network-address")
     {
         aggregate_network_address = value;
+        aggregate_network_address.value_namespace = name_space;
+        aggregate_network_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "area-id")
     {
         area_id = value;
+        area_id.value_namespace = name_space;
+        area_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attach-point")
     {
         attach_point = value;
+        attach_point.value_namespace = name_space;
+        attach_point.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "attached-policy")
     {
         attached_policy = value;
+        attached_policy.value_namespace = name_space;
+        attached_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group")
     {
         group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-name")
     {
         group_name = value;
+        group_name.value_namespace = name_space;
+        group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "instance")
     {
         instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-af-name")
     {
         neighbor_af_name = value;
+        neighbor_af_name.value_namespace = name_space;
+        neighbor_af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-from")
     {
         propogate_from = value;
+        propogate_from.value_namespace = name_space;
+        propogate_from.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "propogate-to")
     {
         propogate_to = value;
+        propogate_to.value_namespace = name_space;
+        propogate_to.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proto-instance")
     {
         proto_instance = value;
+        proto_instance.value_namespace = name_space;
+        proto_instance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-policy-name")
     {
         route_policy_name = value;
+        route_policy_name.value_namespace = name_space;
+        route_policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "saf-name")
     {
         saf_name = value;
+        saf_name.value_namespace = name_space;
+        saf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-protocol")
     {
         source_protocol = value;
+        source_protocol.value_namespace = name_space;
+        source_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "aggregate-network-address")
+    {
+        aggregate_network_address.yfilter = yfilter;
+    }
+    if(value_path == "area-id")
+    {
+        area_id.yfilter = yfilter;
+    }
+    if(value_path == "attach-point")
+    {
+        attach_point.yfilter = yfilter;
+    }
+    if(value_path == "attached-policy")
+    {
+        attached_policy.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "group-name")
+    {
+        group_name.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-af-name")
+    {
+        neighbor_af_name.yfilter = yfilter;
+    }
+    if(value_path == "propogate-from")
+    {
+        propogate_from.yfilter = yfilter;
+    }
+    if(value_path == "propogate-to")
+    {
+        propogate_to.yfilter = yfilter;
+    }
+    if(value_path == "proto-instance")
+    {
+        proto_instance.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "route-policy-name")
+    {
+        route_policy_name.yfilter = yfilter;
+    }
+    if(value_path == "saf-name")
+    {
+        saf_name.yfilter = yfilter;
+    }
+    if(value_path == "source-protocol")
+    {
+        source_protocol.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Rd::Sets_::Set::Attached::Binding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "aggregate-network-address" || name == "area-id" || name == "attach-point" || name == "attached-policy" || name == "direction" || name == "group" || name == "group-name" || name == "instance" || name == "interface-name" || name == "neighbor-address" || name == "neighbor-af-name" || name == "propogate-from" || name == "propogate-to" || name == "proto-instance" || name == "protocol" || name == "route-policy-name" || name == "saf-name" || name == "source-protocol" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Unused::Unused()
@@ -16344,11 +20195,11 @@ bool RoutingPolicy::Sets::Rd::Unused::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Rd::Unused::get_segment_path() const
@@ -16394,12 +20245,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Unused::
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Unused::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Unused::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Rd::Unused::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Rd::Unused::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Inactive::Inactive()
@@ -16427,11 +20293,11 @@ bool RoutingPolicy::Sets::Rd::Inactive::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Rd::Inactive::get_segment_path() const
@@ -16477,12 +20343,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Inactive
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Inactive::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Inactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Rd::Inactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Rd::Inactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Rd::Active::Active()
@@ -16510,11 +20391,11 @@ bool RoutingPolicy::Sets::Rd::Active::has_operation() const
 {
     for (auto const & leaf : object.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(object.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(object.yfilter);
 }
 
 std::string RoutingPolicy::Sets::Rd::Active::get_segment_path() const
@@ -16560,12 +20441,27 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Rd::Active::
     return children;
 }
 
-void RoutingPolicy::Sets::Rd::Active::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Rd::Active::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "object")
     {
         object.append(value);
     }
+}
+
+void RoutingPolicy::Sets::Rd::Active::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "object")
+    {
+        object.yfilter = yfilter;
+    }
+}
+
+bool RoutingPolicy::Sets::Rd::Active::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "object")
+        return true;
+    return false;
 }
 
 RoutingPolicy::Sets::Mac::Mac()
@@ -16600,7 +20496,7 @@ bool RoutingPolicy::Sets::Mac::has_data() const
 
 bool RoutingPolicy::Sets::Mac::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (active !=  nullptr && active->has_operation())
 	|| (inactive !=  nullptr && inactive->has_operation())
 	|| (sets !=  nullptr && sets->has_operation())
@@ -16704,43 +20600,54 @@ std::map<std::string, std::shared_ptr<Entity>> RoutingPolicy::Sets::Mac::get_chi
     return children;
 }
 
-void RoutingPolicy::Sets::Mac::set_value(const std::string & value_path, std::string value)
+void RoutingPolicy::Sets::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-const Enum::YLeaf GroupEnum::address_family_group {0, "address-family-group"};
-const Enum::YLeaf GroupEnum::session_group {1, "session-group"};
-const Enum::YLeaf GroupEnum::neighbor_group {2, "neighbor-group"};
-const Enum::YLeaf GroupEnum::neighbor {3, "neighbor"};
-const Enum::YLeaf GroupEnum::error_group {4, "error-group"};
+void RoutingPolicy::Sets::Mac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
 
-const Enum::YLeaf AttachPointDirectionEnum::in {0, "in"};
-const Enum::YLeaf AttachPointDirectionEnum::out {1, "out"};
+bool RoutingPolicy::Sets::Mac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "inactive" || name == "sets" || name == "unused")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf SubAddressFamilyEnum::unicast {0, "unicast"};
-const Enum::YLeaf SubAddressFamilyEnum::multicast {1, "multicast"};
-const Enum::YLeaf SubAddressFamilyEnum::label {2, "label"};
-const Enum::YLeaf SubAddressFamilyEnum::tunnel {3, "tunnel"};
-const Enum::YLeaf SubAddressFamilyEnum::vpn {4, "vpn"};
-const Enum::YLeaf SubAddressFamilyEnum::mdt {5, "mdt"};
-const Enum::YLeaf SubAddressFamilyEnum::vpls {6, "vpls"};
-const Enum::YLeaf SubAddressFamilyEnum::rt_constraint {7, "rt-constraint"};
-const Enum::YLeaf SubAddressFamilyEnum::mvpn {8, "mvpn"};
-const Enum::YLeaf SubAddressFamilyEnum::flow {9, "flow"};
-const Enum::YLeaf SubAddressFamilyEnum::vpn_mcast {10, "vpn-mcast"};
-const Enum::YLeaf SubAddressFamilyEnum::saf_none {11, "saf-none"};
-const Enum::YLeaf SubAddressFamilyEnum::saf_unknown {12, "saf-unknown"};
+const Enum::YLeaf AddressFamily::ipv4 {0, "ipv4"};
+const Enum::YLeaf AddressFamily::ipv6 {1, "ipv6"};
+const Enum::YLeaf AddressFamily::l2vpn {2, "l2vpn"};
+const Enum::YLeaf AddressFamily::ls {3, "ls"};
+const Enum::YLeaf AddressFamily::af_none {4, "af-none"};
+const Enum::YLeaf AddressFamily::af_unknown {5, "af-unknown"};
 
-const Enum::YLeaf AddressFamilyEnum::ipv4 {0, "ipv4"};
-const Enum::YLeaf AddressFamilyEnum::ipv6 {1, "ipv6"};
-const Enum::YLeaf AddressFamilyEnum::l2vpn {2, "l2vpn"};
-const Enum::YLeaf AddressFamilyEnum::ls {3, "ls"};
-const Enum::YLeaf AddressFamilyEnum::af_none {4, "af-none"};
-const Enum::YLeaf AddressFamilyEnum::af_unknown {5, "af-unknown"};
+const Enum::YLeaf ObjectStatus::active {0, "active"};
+const Enum::YLeaf ObjectStatus::inactive {1, "inactive"};
+const Enum::YLeaf ObjectStatus::unused {2, "unused"};
 
-const Enum::YLeaf ObjectStatusEnum::active {0, "active"};
-const Enum::YLeaf ObjectStatusEnum::inactive {1, "inactive"};
-const Enum::YLeaf ObjectStatusEnum::unused {2, "unused"};
+const Enum::YLeaf AttachPointDirection::in {0, "in"};
+const Enum::YLeaf AttachPointDirection::out {1, "out"};
+
+const Enum::YLeaf Group::address_family_group {0, "address-family-group"};
+const Enum::YLeaf Group::session_group {1, "session-group"};
+const Enum::YLeaf Group::neighbor_group {2, "neighbor-group"};
+const Enum::YLeaf Group::neighbor {3, "neighbor"};
+const Enum::YLeaf Group::error_group {4, "error-group"};
+
+const Enum::YLeaf SubAddressFamily::unicast {0, "unicast"};
+const Enum::YLeaf SubAddressFamily::multicast {1, "multicast"};
+const Enum::YLeaf SubAddressFamily::label {2, "label"};
+const Enum::YLeaf SubAddressFamily::tunnel {3, "tunnel"};
+const Enum::YLeaf SubAddressFamily::vpn {4, "vpn"};
+const Enum::YLeaf SubAddressFamily::mdt {5, "mdt"};
+const Enum::YLeaf SubAddressFamily::vpls {6, "vpls"};
+const Enum::YLeaf SubAddressFamily::rt_constraint {7, "rt-constraint"};
+const Enum::YLeaf SubAddressFamily::mvpn {8, "mvpn"};
+const Enum::YLeaf SubAddressFamily::flow {9, "flow"};
+const Enum::YLeaf SubAddressFamily::vpn_mcast {10, "vpn-mcast"};
+const Enum::YLeaf SubAddressFamily::saf_none {11, "saf-none"};
+const Enum::YLeaf SubAddressFamily::saf_unknown {12, "saf-unknown"};
 
 
 }

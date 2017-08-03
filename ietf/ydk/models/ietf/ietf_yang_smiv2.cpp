@@ -6,15 +6,17 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_yang_smiv2.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_yang_smiv2 {
 
-ObjectIdentityIdentity::ObjectIdentityIdentity()
-     : Identity("ietf-yang-smiv2:object-identity")
+ObjectIdentity::ObjectIdentity()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-smiv2", "ietf-yang-smiv2", "ietf-yang-smiv2:object-identity")
 {
 }
 
-ObjectIdentityIdentity::~ObjectIdentityIdentity()
+ObjectIdentity::~ObjectIdentity()
 {
 }
 

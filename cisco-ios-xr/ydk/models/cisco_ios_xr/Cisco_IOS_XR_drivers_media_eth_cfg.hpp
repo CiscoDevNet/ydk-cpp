@@ -7,71 +7,71 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_drivers_media_eth_cfg {
 
-class EthernetIpgEnum : public Enum
+class EthernetFlowCtrl : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf non_standard;
+        static const ydk::Enum::YLeaf ingress;
+        static const ydk::Enum::YLeaf egress;
+        static const ydk::Enum::YLeaf bidirectional;
 
 };
 
-class EthernetPfcEnum : public Enum
+class EthernetSpeed : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf on;
+        static const ydk::Enum::YLeaf Y_10;
+        static const ydk::Enum::YLeaf Y_100;
+        static const ydk::Enum::YLeaf Y_1000;
 
 };
 
-class EthernetAutoNegotiationEnum : public Enum
+class EthernetLoopback : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf true_;
-        static const Enum::YLeaf override;
+        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf line;
 
 };
 
-class EthernetDuplexEnum : public Enum
+class EthernetAutoNegotiation : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf full;
-        static const Enum::YLeaf half;
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf override;
 
 };
 
-class EthernetLoopbackEnum : public Enum
+class EthernetPfc : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf external;
-        static const Enum::YLeaf internal;
-        static const Enum::YLeaf line;
+        static const ydk::Enum::YLeaf on;
 
 };
 
-class EthernetSpeedEnum : public Enum
+class EthernetFec : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf Y_10;
-        static const Enum::YLeaf Y_100;
-        static const Enum::YLeaf Y_1000;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf standard;
 
 };
 
-class EthernetFlowCtrlEnum : public Enum
+class EthernetDuplex : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ingress;
-        static const Enum::YLeaf egress;
-        static const Enum::YLeaf bidirectional;
+        static const ydk::Enum::YLeaf full;
+        static const ydk::Enum::YLeaf half;
 
 };
 
-class EthernetFecEnum : public Enum
+class EthernetIpg : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf non_standard;
 
 };
 

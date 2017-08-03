@@ -6,242 +6,244 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_syslog_types.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_syslog_types {
 
-SyslogFacilityIdentity::SyslogFacilityIdentity()
-     : Identity("ietf-syslog-types:syslog-facility")
+SyslogFacility::SyslogFacility()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:syslog-facility")
 {
 }
 
-SyslogFacilityIdentity::~SyslogFacilityIdentity()
+SyslogFacility::~SyslogFacility()
 {
 }
 
-Cron2Identity::Cron2Identity()
-     : Identity("ietf-syslog-types:cron2")
+User::User()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:user")
 {
 }
 
-Cron2Identity::~Cron2Identity()
+User::~User()
 {
 }
 
-CronIdentity::CronIdentity()
-     : Identity("ietf-syslog-types:cron")
+Ftp::Ftp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ftp")
 {
 }
 
-CronIdentity::~CronIdentity()
+Ftp::~Ftp()
 {
 }
 
-SyslogIdentity::SyslogIdentity()
-     : Identity("ietf-syslog-types:syslog")
+Kern::Kern()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:kern")
 {
 }
 
-SyslogIdentity::~SyslogIdentity()
+Kern::~Kern()
 {
 }
 
-Local4Identity::Local4Identity()
-     : Identity("ietf-syslog-types:local4")
+Local4::Local4()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local4")
 {
 }
 
-Local4Identity::~Local4Identity()
+Local4::~Local4()
 {
 }
 
-FtpIdentity::FtpIdentity()
-     : Identity("ietf-syslog-types:ftp")
+Local1::Local1()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local1")
 {
 }
 
-FtpIdentity::~FtpIdentity()
+Local1::~Local1()
 {
 }
 
-UucpIdentity::UucpIdentity()
-     : Identity("ietf-syslog-types:uucp")
+Cron::Cron()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:cron")
 {
 }
 
-UucpIdentity::~UucpIdentity()
+Cron::~Cron()
 {
 }
 
-ConsoleIdentity::ConsoleIdentity()
-     : Identity("ietf-syslog-types:console")
+Mail::Mail()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:mail")
 {
 }
 
-ConsoleIdentity::~ConsoleIdentity()
+Mail::~Mail()
 {
 }
 
-MailIdentity::MailIdentity()
-     : Identity("ietf-syslog-types:mail")
+Local3::Local3()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local3")
 {
 }
 
-MailIdentity::~MailIdentity()
+Local3::~Local3()
 {
 }
 
-AuthprivIdentity::AuthprivIdentity()
-     : Identity("ietf-syslog-types:authpriv")
+Local5::Local5()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local5")
 {
 }
 
-AuthprivIdentity::~AuthprivIdentity()
+Local5::~Local5()
 {
 }
 
-NtpIdentity::NtpIdentity()
-     : Identity("ietf-syslog-types:ntp")
+Authpriv::Authpriv()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:authpriv")
 {
 }
 
-NtpIdentity::~NtpIdentity()
+Authpriv::~Authpriv()
 {
 }
 
-AuthIdentity::AuthIdentity()
-     : Identity("ietf-syslog-types:auth")
+Daemon::Daemon()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:daemon")
 {
 }
 
-AuthIdentity::~AuthIdentity()
+Daemon::~Daemon()
 {
 }
 
-UserIdentity::UserIdentity()
-     : Identity("ietf-syslog-types:user")
+Syslog::Syslog()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:syslog")
 {
 }
 
-UserIdentity::~UserIdentity()
+Syslog::~Syslog()
 {
 }
 
-Local5Identity::Local5Identity()
-     : Identity("ietf-syslog-types:local5")
+Ntp::Ntp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:ntp")
 {
 }
 
-Local5Identity::~Local5Identity()
+Ntp::~Ntp()
 {
 }
 
-NewsIdentity::NewsIdentity()
-     : Identity("ietf-syslog-types:news")
+Audit::Audit()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:audit")
 {
 }
 
-NewsIdentity::~NewsIdentity()
+Audit::~Audit()
 {
 }
 
-Local7Identity::Local7Identity()
-     : Identity("ietf-syslog-types:local7")
+Local6::Local6()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local6")
 {
 }
 
-Local7Identity::~Local7Identity()
+Local6::~Local6()
 {
 }
 
-Local6Identity::Local6Identity()
-     : Identity("ietf-syslog-types:local6")
+Cron2::Cron2()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:cron2")
 {
 }
 
-Local6Identity::~Local6Identity()
+Cron2::~Cron2()
 {
 }
 
-Local1Identity::Local1Identity()
-     : Identity("ietf-syslog-types:local1")
+Uucp::Uucp()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:uucp")
 {
 }
 
-Local1Identity::~Local1Identity()
+Uucp::~Uucp()
 {
 }
 
-Local0Identity::Local0Identity()
-     : Identity("ietf-syslog-types:local0")
+Local7::Local7()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local7")
 {
 }
 
-Local0Identity::~Local0Identity()
+Local7::~Local7()
 {
 }
 
-Local3Identity::Local3Identity()
-     : Identity("ietf-syslog-types:local3")
+News::News()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:news")
 {
 }
 
-Local3Identity::~Local3Identity()
+News::~News()
 {
 }
 
-Local2Identity::Local2Identity()
-     : Identity("ietf-syslog-types:local2")
+Console::Console()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:console")
 {
 }
 
-Local2Identity::~Local2Identity()
+Console::~Console()
 {
 }
 
-AuditIdentity::AuditIdentity()
-     : Identity("ietf-syslog-types:audit")
+Auth::Auth()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:auth")
 {
 }
 
-AuditIdentity::~AuditIdentity()
+Auth::~Auth()
 {
 }
 
-DaemonIdentity::DaemonIdentity()
-     : Identity("ietf-syslog-types:daemon")
+Lpr::Lpr()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:lpr")
 {
 }
 
-DaemonIdentity::~DaemonIdentity()
+Lpr::~Lpr()
 {
 }
 
-LprIdentity::LprIdentity()
-     : Identity("ietf-syslog-types:lpr")
+Local2::Local2()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local2")
 {
 }
 
-LprIdentity::~LprIdentity()
+Local2::~Local2()
 {
 }
 
-KernIdentity::KernIdentity()
-     : Identity("ietf-syslog-types:kern")
+Local0::Local0()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-syslog-types", "ietf-syslog-types", "ietf-syslog-types:local0")
 {
 }
 
-KernIdentity::~KernIdentity()
+Local0::~Local0()
 {
 }
 
-const Enum::YLeaf SeverityEnum::emergency {0, "emergency"};
-const Enum::YLeaf SeverityEnum::alert {1, "alert"};
-const Enum::YLeaf SeverityEnum::critical {2, "critical"};
-const Enum::YLeaf SeverityEnum::error {3, "error"};
-const Enum::YLeaf SeverityEnum::warning {4, "warning"};
-const Enum::YLeaf SeverityEnum::notice {5, "notice"};
-const Enum::YLeaf SeverityEnum::info {6, "info"};
-const Enum::YLeaf SeverityEnum::debug {7, "debug"};
+const Enum::YLeaf Severity::emergency {0, "emergency"};
+const Enum::YLeaf Severity::alert {1, "alert"};
+const Enum::YLeaf Severity::critical {2, "critical"};
+const Enum::YLeaf Severity::error {3, "error"};
+const Enum::YLeaf Severity::warning {4, "warning"};
+const Enum::YLeaf Severity::notice {5, "notice"};
+const Enum::YLeaf Severity::info {6, "info"};
+const Enum::YLeaf Severity::debug {7, "debug"};
 
 
 }

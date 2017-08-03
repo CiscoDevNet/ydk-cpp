@@ -7,35 +7,38 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ospfv3_act {
 
-class ActOspfv3RoutesRpc : public Entity
+class ActOspfv3Routes : public ydk::Entity
 {
     public:
-        ActOspfv3RoutesRpc();
-        ~ActOspfv3RoutesRpc();
+        ActOspfv3Routes();
+        ~ActOspfv3Routes();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ActOspfv3RoutesRpc::Input
+        class Input; //type: ActOspfv3Routes::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3RoutesRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3Routes::Input> input;
         
-}; // ActOspfv3RoutesRpc
+}; // ActOspfv3Routes
 
 
-class ActOspfv3RoutesRpc::Input : public Entity
+class ActOspfv3Routes::Input : public ydk::Entity
 {
     public:
         Input();
@@ -43,21 +46,23 @@ class ActOspfv3RoutesRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route; //type: empty
-        class Instance; //type: ActOspfv3RoutesRpc::Input::Instance
+        ydk::YLeaf route; //type: empty
+        class Instance; //type: ActOspfv3Routes::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3RoutesRpc::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3Routes::Input::Instance> instance;
         
-}; // ActOspfv3RoutesRpc::Input
+}; // ActOspfv3Routes::Input
 
 
-class ActOspfv3RoutesRpc::Input::Instance : public Entity
+class ActOspfv3Routes::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -65,42 +70,47 @@ class ActOspfv3RoutesRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ActOspfv3RoutesRpc::Input::Instance
+}; // ActOspfv3Routes::Input::Instance
 
-class ActOspfv3RedistributionRpc : public Entity
+class ActOspfv3Redistribution : public ydk::Entity
 {
     public:
-        ActOspfv3RedistributionRpc();
-        ~ActOspfv3RedistributionRpc();
+        ActOspfv3Redistribution();
+        ~ActOspfv3Redistribution();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ActOspfv3RedistributionRpc::Input
+        class Input; //type: ActOspfv3Redistribution::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3RedistributionRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3Redistribution::Input> input;
         
-}; // ActOspfv3RedistributionRpc
+}; // ActOspfv3Redistribution
 
 
-class ActOspfv3RedistributionRpc::Input : public Entity
+class ActOspfv3Redistribution::Input : public ydk::Entity
 {
     public:
         Input();
@@ -108,21 +118,23 @@ class ActOspfv3RedistributionRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf redistribution; //type: empty
-        class Instance; //type: ActOspfv3RedistributionRpc::Input::Instance
+        ydk::YLeaf redistribution; //type: empty
+        class Instance; //type: ActOspfv3Redistribution::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3RedistributionRpc::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3Redistribution::Input::Instance> instance;
         
-}; // ActOspfv3RedistributionRpc::Input
+}; // ActOspfv3Redistribution::Input
 
 
-class ActOspfv3RedistributionRpc::Input::Instance : public Entity
+class ActOspfv3Redistribution::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -130,42 +142,47 @@ class ActOspfv3RedistributionRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ActOspfv3RedistributionRpc::Input::Instance
+}; // ActOspfv3Redistribution::Input::Instance
 
-class ActOspfv3ProcessRpc : public Entity
+class ActOspfv3Process : public ydk::Entity
 {
     public:
-        ActOspfv3ProcessRpc();
-        ~ActOspfv3ProcessRpc();
+        ActOspfv3Process();
+        ~ActOspfv3Process();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ActOspfv3ProcessRpc::Input
+        class Input; //type: ActOspfv3Process::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3ProcessRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3Process::Input> input;
         
-}; // ActOspfv3ProcessRpc
+}; // ActOspfv3Process
 
 
-class ActOspfv3ProcessRpc::Input : public Entity
+class ActOspfv3Process::Input : public ydk::Entity
 {
     public:
         Input();
@@ -173,21 +190,23 @@ class ActOspfv3ProcessRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf process; //type: empty
-        class Instance; //type: ActOspfv3ProcessRpc::Input::Instance
+        ydk::YLeaf process; //type: empty
+        class Instance; //type: ActOspfv3Process::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3ProcessRpc::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3Process::Input::Instance> instance;
         
-}; // ActOspfv3ProcessRpc::Input
+}; // ActOspfv3Process::Input
 
 
-class ActOspfv3ProcessRpc::Input::Instance : public Entity
+class ActOspfv3Process::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -195,42 +214,47 @@ class ActOspfv3ProcessRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ActOspfv3ProcessRpc::Input::Instance
+}; // ActOspfv3Process::Input::Instance
 
-class ActOspfv3StatisticsNeighborRpc : public Entity
+class ActOspfv3StatisticsNeighbor : public ydk::Entity
 {
     public:
-        ActOspfv3StatisticsNeighborRpc();
-        ~ActOspfv3StatisticsNeighborRpc();
+        ActOspfv3StatisticsNeighbor();
+        ~ActOspfv3StatisticsNeighbor();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ActOspfv3StatisticsNeighborRpc::Input
+        class Input; //type: ActOspfv3StatisticsNeighbor::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3StatisticsNeighborRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3StatisticsNeighbor::Input> input;
         
-}; // ActOspfv3StatisticsNeighborRpc
+}; // ActOspfv3StatisticsNeighbor
 
 
-class ActOspfv3StatisticsNeighborRpc::Input : public Entity
+class ActOspfv3StatisticsNeighbor::Input : public ydk::Entity
 {
     public:
         Input();
@@ -238,22 +262,24 @@ class ActOspfv3StatisticsNeighborRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Instance; //type: ActOspfv3StatisticsNeighborRpc::Input::Instance
-        class Neighbor; //type: ActOspfv3StatisticsNeighborRpc::Input::Neighbor
+        class Instance; //type: ActOspfv3StatisticsNeighbor::Input::Instance
+        class Neighbor; //type: ActOspfv3StatisticsNeighbor::Input::Neighbor
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3StatisticsNeighborRpc::Input::Instance> instance;
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3StatisticsNeighborRpc::Input::Neighbor> neighbor;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3StatisticsNeighbor::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3StatisticsNeighbor::Input::Neighbor> neighbor;
         
-}; // ActOspfv3StatisticsNeighborRpc::Input
+}; // ActOspfv3StatisticsNeighbor::Input
 
 
-class ActOspfv3StatisticsNeighborRpc::Input::Instance : public Entity
+class ActOspfv3StatisticsNeighbor::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -261,18 +287,20 @@ class ActOspfv3StatisticsNeighborRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ActOspfv3StatisticsNeighborRpc::Input::Instance
+}; // ActOspfv3StatisticsNeighbor::Input::Instance
 
 
-class ActOspfv3StatisticsNeighborRpc::Input::Neighbor : public Entity
+class ActOspfv3StatisticsNeighbor::Input::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -280,43 +308,48 @@ class ActOspfv3StatisticsNeighborRpc::Input::Neighbor : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_id; //type: string
-        YLeaf interface_name; //type: string
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf interface_name; //type: string
 
-}; // ActOspfv3StatisticsNeighborRpc::Input::Neighbor
+}; // ActOspfv3StatisticsNeighbor::Input::Neighbor
 
-class ActOspfv3StatisticsRpc : public Entity
+class ActOspfv3Statistics : public ydk::Entity
 {
     public:
-        ActOspfv3StatisticsRpc();
-        ~ActOspfv3StatisticsRpc();
+        ActOspfv3Statistics();
+        ~ActOspfv3Statistics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ActOspfv3StatisticsRpc::Input
+        class Input; //type: ActOspfv3Statistics::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3StatisticsRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3Statistics::Input> input;
         
-}; // ActOspfv3StatisticsRpc
+}; // ActOspfv3Statistics
 
 
-class ActOspfv3StatisticsRpc::Input : public Entity
+class ActOspfv3Statistics::Input : public ydk::Entity
 {
     public:
         Input();
@@ -324,23 +357,25 @@ class ActOspfv3StatisticsRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix_priority; //type: empty
-        YLeaf spf; //type: empty
-        YLeaf neighbor; //type: empty
-        class Instance; //type: ActOspfv3StatisticsRpc::Input::Instance
+        ydk::YLeaf prefix_priority; //type: empty
+        ydk::YLeaf spf; //type: empty
+        ydk::YLeaf neighbor; //type: empty
+        class Instance; //type: ActOspfv3Statistics::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3StatisticsRpc::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3Statistics::Input::Instance> instance;
         
-}; // ActOspfv3StatisticsRpc::Input
+}; // ActOspfv3Statistics::Input
 
 
-class ActOspfv3StatisticsRpc::Input::Instance : public Entity
+class ActOspfv3Statistics::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -348,42 +383,47 @@ class ActOspfv3StatisticsRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
+        ydk::YLeaf instance_identifier; //type: string
 
-}; // ActOspfv3StatisticsRpc::Input::Instance
+}; // ActOspfv3Statistics::Input::Instance
 
-class ActOspfv3InstanceVrfRpc : public Entity
+class ActOspfv3InstanceVrf : public ydk::Entity
 {
     public:
-        ActOspfv3InstanceVrfRpc();
-        ~ActOspfv3InstanceVrfRpc();
+        ActOspfv3InstanceVrf();
+        ~ActOspfv3InstanceVrf();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Input; //type: ActOspfv3InstanceVrfRpc::Input
+        class Input; //type: ActOspfv3InstanceVrf::Input
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input> input;
         
-}; // ActOspfv3InstanceVrfRpc
+}; // ActOspfv3InstanceVrf
 
 
-class ActOspfv3InstanceVrfRpc::Input : public Entity
+class ActOspfv3InstanceVrf::Input : public ydk::Entity
 {
     public:
         Input();
@@ -391,20 +431,22 @@ class ActOspfv3InstanceVrfRpc::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Instance; //type: ActOspfv3InstanceVrfRpc::Input::Instance
+        class Instance; //type: ActOspfv3InstanceVrf::Input::Instance
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance> instance;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance> instance;
         
-}; // ActOspfv3InstanceVrfRpc::Input
+}; // ActOspfv3InstanceVrf::Input
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance : public Entity
+class ActOspfv3InstanceVrf::Input::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -412,25 +454,27 @@ class ActOspfv3InstanceVrfRpc::Input::Instance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf instance_identifier; //type: string
-        class Vrf; //type: ActOspfv3InstanceVrfRpc::Input::Instance::Vrf
-        class All; //type: ActOspfv3InstanceVrfRpc::Input::Instance::All
-        class AllInclusive; //type: ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive
+        ydk::YLeaf instance_identifier; //type: string
+        class Vrf; //type: ActOspfv3InstanceVrf::Input::Instance::Vrf
+        class All; //type: ActOspfv3InstanceVrf::Input::Instance::All
+        class AllInclusive; //type: ActOspfv3InstanceVrf::Input::Instance::AllInclusive
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::All> all;
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive> all_inclusive;
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::Vrf> vrf;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::All> all;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::AllInclusive> all_inclusive;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::Vrf> vrf;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance
+}; // ActOspfv3InstanceVrf::Input::Instance
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::Vrf : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -438,24 +482,26 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
-        YLeaf process; //type: empty
-        YLeaf redistribution; //type: empty
-        YLeaf route; //type: empty
-        class Stats; //type: ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf process; //type: empty
+        ydk::YLeaf redistribution; //type: empty
+        ydk::YLeaf route; //type: empty
+        class Stats; //type: ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats> stats;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats> stats;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::Vrf
+}; // ActOspfv3InstanceVrf::Input::Instance::Vrf
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats : public ydk::Entity
 {
     public:
         Stats();
@@ -463,22 +509,24 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf spf; //type: empty
-        YLeaf prefix_priority; //type: empty
-        class Neighbor; //type: ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor
+        ydk::YLeaf spf; //type: empty
+        ydk::YLeaf prefix_priority; //type: empty
+        class Neighbor; //type: ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor> neighbor;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor> neighbor;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats
+}; // ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -486,21 +534,23 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_id; //type: string
-        class Interface; //type: ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface
+        ydk::YLeaf neighbor_id; //type: string
+        class Interface; //type: ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface> interface;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface> interface;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor
+}; // ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -508,18 +558,20 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
 
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::Vrf::Stats::Neighbor::Interface
+}; // ActOspfv3InstanceVrf::Input::Instance::Vrf::Stats::Neighbor::Interface
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::All : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::All : public ydk::Entity
 {
     public:
         All();
@@ -527,23 +579,25 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::All : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf process; //type: empty
-        YLeaf redistribution; //type: empty
-        YLeaf route; //type: empty
-        class Stats; //type: ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats
+        ydk::YLeaf process; //type: empty
+        ydk::YLeaf redistribution; //type: empty
+        ydk::YLeaf route; //type: empty
+        class Stats; //type: ActOspfv3InstanceVrf::Input::Instance::All::Stats
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats> stats;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::All::Stats> stats;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::All
+}; // ActOspfv3InstanceVrf::Input::Instance::All
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::All::Stats : public ydk::Entity
 {
     public:
         Stats();
@@ -551,22 +605,24 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf spf; //type: empty
-        YLeaf prefix_priority; //type: empty
-        class Neighbor; //type: ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor
+        ydk::YLeaf spf; //type: empty
+        ydk::YLeaf prefix_priority; //type: empty
+        class Neighbor; //type: ActOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor> neighbor;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor> neighbor;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats
+}; // ActOspfv3InstanceVrf::Input::Instance::All::Stats
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -574,21 +630,23 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_id; //type: string
-        class Interface; //type: ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface
+        ydk::YLeaf neighbor_id; //type: string
+        class Interface; //type: ActOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface> interface;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface> interface;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor
+}; // ActOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -596,18 +654,20 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
 
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::All::Stats::Neighbor::Interface
+}; // ActOspfv3InstanceVrf::Input::Instance::All::Stats::Neighbor::Interface
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::AllInclusive : public ydk::Entity
 {
     public:
         AllInclusive();
@@ -615,23 +675,25 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf process; //type: empty
-        YLeaf redistribution; //type: empty
-        YLeaf route; //type: empty
-        class Stats; //type: ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats
+        ydk::YLeaf process; //type: empty
+        ydk::YLeaf redistribution; //type: empty
+        ydk::YLeaf route; //type: empty
+        class Stats; //type: ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats> stats;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats> stats;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive
+}; // ActOspfv3InstanceVrf::Input::Instance::AllInclusive
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats : public ydk::Entity
 {
     public:
         Stats();
@@ -639,22 +701,24 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf spf; //type: empty
-        YLeaf prefix_priority; //type: empty
-        class Neighbor; //type: ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor
+        ydk::YLeaf spf; //type: empty
+        ydk::YLeaf prefix_priority; //type: empty
+        class Neighbor; //type: ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor> neighbor;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor> neighbor;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats
+}; // ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor : public ydk::Entity
 {
     public:
         Neighbor();
@@ -662,21 +726,23 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf neighbor_id; //type: string
-        class Interface; //type: ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface
+        ydk::YLeaf neighbor_id; //type: string
+        class Interface; //type: ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interface
 
-        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface> interface;
+        std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_act::ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interface> interface;
         
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor
+}; // ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor
 
 
-class ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface : public Entity
+class ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -684,15 +750,17 @@ class ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
 
-}; // ActOspfv3InstanceVrfRpc::Input::Instance::AllInclusive::Stats::Neighbor::Interface
+}; // ActOspfv3InstanceVrf::Input::Instance::AllInclusive::Stats::Neighbor::Interface
 
 
 }

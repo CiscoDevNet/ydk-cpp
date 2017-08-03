@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_statsd_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_statsd_oper {
 
 InfraStatistics::InfraStatistics()
@@ -29,7 +31,7 @@ bool InfraStatistics::has_data() const
 
 bool InfraStatistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::get_children() c
     return children;
 }
 
-void InfraStatistics::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InfraStatistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string InfraStatistics::get_bundle_name() const
 augment_capabilities_function InfraStatistics::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> InfraStatistics::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool InfraStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interfaces()
@@ -135,7 +153,7 @@ bool InfraStatistics::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InfraStatistics::Interfaces::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::get_
     return children;
 }
 
-void InfraStatistics::Interfaces::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InfraStatistics::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InfraStatistics::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Interface()
@@ -251,8 +280,8 @@ bool InfraStatistics::Interfaces::Interface::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (cache !=  nullptr && cache->has_operation())
 	|| (data_rate !=  nullptr && data_rate->has_operation())
 	|| (generic_counters !=  nullptr && generic_counters->has_operation())
@@ -285,7 +314,7 @@ const EntityPath InfraStatistics::Interfaces::Interface::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -402,12 +431,29 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache" || name == "data-rate" || name == "generic-counters" || name == "interfaces-mib-counters" || name == "latest" || name == "protocols" || name == "total" || name == "interface-name")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Cache::Cache()
@@ -442,7 +488,7 @@ bool InfraStatistics::Interfaces::Interface::Cache::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Cache::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (data_rate !=  nullptr && data_rate->has_operation())
 	|| (generic_counters !=  nullptr && generic_counters->has_operation())
 	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_operation())
@@ -546,8 +592,19 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Cache::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Cache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InfraStatistics::Interfaces::Interface::Cache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InfraStatistics::Interfaces::Interface::Cache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-rate" || name == "generic-counters" || name == "interfaces-mib-counters" || name == "protocols")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocols()
@@ -576,7 +633,7 @@ bool InfraStatistics::Interfaces::Interface::Cache::Protocols::has_operation() c
         if(protocol[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Cache::Protocols::get_segment_path() const
@@ -641,8 +698,19 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Cache::Protocols::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Cache::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InfraStatistics::Interfaces::Interface::Cache::Protocols::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InfraStatistics::Interfaces::Interface::Cache::Protocols::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::Protocol()
@@ -683,18 +751,18 @@ bool InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::has_dat
 
 bool InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(protocol_name.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(input_data_rate.operation)
-	|| is_set(input_packet_rate.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(output_data_rate.operation)
-	|| is_set(output_packet_rate.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(protocol.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_name.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(input_data_rate.yfilter)
+	|| ydk::is_set(input_packet_rate.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(output_data_rate.yfilter)
+	|| ydk::is_set(output_packet_rate.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(protocol.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::get_segment_path() const
@@ -720,17 +788,17 @@ const EntityPath InfraStatistics::Interfaces::Interface::Cache::Protocols::Proto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (protocol_name.is_set || is_set(protocol_name.operation)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (input_data_rate.is_set || is_set(input_data_rate.operation)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
-    if (input_packet_rate.is_set || is_set(input_packet_rate.operation)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (output_data_rate.is_set || is_set(output_data_rate.operation)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
-    if (output_packet_rate.is_set || is_set(output_packet_rate.operation)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (input_data_rate.is_set || is_set(input_data_rate.yfilter)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
+    if (input_packet_rate.is_set || is_set(input_packet_rate.yfilter)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (output_data_rate.is_set || is_set(output_data_rate.yfilter)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
+    if (output_packet_rate.is_set || is_set(output_packet_rate.yfilter)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -749,52 +817,129 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol-name")
     {
         protocol_name = value;
+        protocol_name.value_namespace = name_space;
+        protocol_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-data-rate")
     {
         input_data_rate = value;
+        input_data_rate.value_namespace = name_space;
+        input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packet-rate")
     {
         input_packet_rate = value;
+        input_packet_rate.value_namespace = name_space;
+        input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-data-rate")
     {
         output_data_rate = value;
+        output_data_rate.value_namespace = name_space;
+        output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-packet-rate")
     {
         output_packet_rate = value;
+        output_packet_rate.value_namespace = name_space;
+        output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocol-name")
+    {
+        protocol_name.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "input-data-rate")
+    {
+        input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "input-packet-rate")
+    {
+        input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "output-data-rate")
+    {
+        output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "output-packet-rate")
+    {
+        output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-name" || name == "bytes-received" || name == "bytes-sent" || name == "input-data-rate" || name == "input-packet-rate" || name == "last-data-time" || name == "output-data-rate" || name == "output-packet-rate" || name == "packets-received" || name == "packets-sent" || name == "protocol")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::InterfacesMibCounters()
@@ -885,43 +1030,43 @@ bool InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::has_d
 
 bool InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(applique.operation)
-	|| is_set(availability_flag.operation)
-	|| is_set(broadcast_packets_received.operation)
-	|| is_set(broadcast_packets_sent.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(carrier_transitions.operation)
-	|| is_set(crc_errors.operation)
-	|| is_set(framing_errors_received.operation)
-	|| is_set(giant_packets_received.operation)
-	|| is_set(input_aborts.operation)
-	|| is_set(input_drops.operation)
-	|| is_set(input_errors.operation)
-	|| is_set(input_ignored_packets.operation)
-	|| is_set(input_overruns.operation)
-	|| is_set(input_queue_drops.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(last_discontinuity_time.operation)
-	|| is_set(multicast_packets_received.operation)
-	|| is_set(multicast_packets_sent.operation)
-	|| is_set(output_buffer_failures.operation)
-	|| is_set(output_buffers_swapped_out.operation)
-	|| is_set(output_drops.operation)
-	|| is_set(output_errors.operation)
-	|| is_set(output_queue_drops.operation)
-	|| is_set(output_underruns.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(parity_packets_received.operation)
-	|| is_set(resets.operation)
-	|| is_set(runt_packets_received.operation)
-	|| is_set(seconds_since_last_clear_counters.operation)
-	|| is_set(seconds_since_packet_received.operation)
-	|| is_set(seconds_since_packet_sent.operation)
-	|| is_set(throttled_packets_received.operation)
-	|| is_set(unknown_protocol_packets_received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(applique.yfilter)
+	|| ydk::is_set(availability_flag.yfilter)
+	|| ydk::is_set(broadcast_packets_received.yfilter)
+	|| ydk::is_set(broadcast_packets_sent.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(carrier_transitions.yfilter)
+	|| ydk::is_set(crc_errors.yfilter)
+	|| ydk::is_set(framing_errors_received.yfilter)
+	|| ydk::is_set(giant_packets_received.yfilter)
+	|| ydk::is_set(input_aborts.yfilter)
+	|| ydk::is_set(input_drops.yfilter)
+	|| ydk::is_set(input_errors.yfilter)
+	|| ydk::is_set(input_ignored_packets.yfilter)
+	|| ydk::is_set(input_overruns.yfilter)
+	|| ydk::is_set(input_queue_drops.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(last_discontinuity_time.yfilter)
+	|| ydk::is_set(multicast_packets_received.yfilter)
+	|| ydk::is_set(multicast_packets_sent.yfilter)
+	|| ydk::is_set(output_buffer_failures.yfilter)
+	|| ydk::is_set(output_buffers_swapped_out.yfilter)
+	|| ydk::is_set(output_drops.yfilter)
+	|| ydk::is_set(output_errors.yfilter)
+	|| ydk::is_set(output_queue_drops.yfilter)
+	|| ydk::is_set(output_underruns.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(parity_packets_received.yfilter)
+	|| ydk::is_set(resets.yfilter)
+	|| ydk::is_set(runt_packets_received.yfilter)
+	|| ydk::is_set(seconds_since_last_clear_counters.yfilter)
+	|| ydk::is_set(seconds_since_packet_received.yfilter)
+	|| ydk::is_set(seconds_since_packet_sent.yfilter)
+	|| ydk::is_set(throttled_packets_received.yfilter)
+	|| ydk::is_set(unknown_protocol_packets_received.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::get_segment_path() const
@@ -947,42 +1092,42 @@ const EntityPath InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCou
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (applique.is_set || is_set(applique.operation)) leaf_name_data.push_back(applique.get_name_leafdata());
-    if (availability_flag.is_set || is_set(availability_flag.operation)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
-    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.operation)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
-    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.operation)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (carrier_transitions.is_set || is_set(carrier_transitions.operation)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
-    if (crc_errors.is_set || is_set(crc_errors.operation)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
-    if (framing_errors_received.is_set || is_set(framing_errors_received.operation)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
-    if (giant_packets_received.is_set || is_set(giant_packets_received.operation)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
-    if (input_aborts.is_set || is_set(input_aborts.operation)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
-    if (input_drops.is_set || is_set(input_drops.operation)) leaf_name_data.push_back(input_drops.get_name_leafdata());
-    if (input_errors.is_set || is_set(input_errors.operation)) leaf_name_data.push_back(input_errors.get_name_leafdata());
-    if (input_ignored_packets.is_set || is_set(input_ignored_packets.operation)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
-    if (input_overruns.is_set || is_set(input_overruns.operation)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
-    if (input_queue_drops.is_set || is_set(input_queue_drops.operation)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.operation)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
-    if (multicast_packets_received.is_set || is_set(multicast_packets_received.operation)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
-    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.operation)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
-    if (output_buffer_failures.is_set || is_set(output_buffer_failures.operation)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
-    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.operation)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
-    if (output_drops.is_set || is_set(output_drops.operation)) leaf_name_data.push_back(output_drops.get_name_leafdata());
-    if (output_errors.is_set || is_set(output_errors.operation)) leaf_name_data.push_back(output_errors.get_name_leafdata());
-    if (output_queue_drops.is_set || is_set(output_queue_drops.operation)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
-    if (output_underruns.is_set || is_set(output_underruns.operation)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (parity_packets_received.is_set || is_set(parity_packets_received.operation)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
-    if (resets.is_set || is_set(resets.operation)) leaf_name_data.push_back(resets.get_name_leafdata());
-    if (runt_packets_received.is_set || is_set(runt_packets_received.operation)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
-    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.operation)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
-    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.operation)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
-    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.operation)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
-    if (throttled_packets_received.is_set || is_set(throttled_packets_received.operation)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
-    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.operation)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
+    if (applique.is_set || is_set(applique.yfilter)) leaf_name_data.push_back(applique.get_name_leafdata());
+    if (availability_flag.is_set || is_set(availability_flag.yfilter)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
+    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.yfilter)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
+    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.yfilter)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (carrier_transitions.is_set || is_set(carrier_transitions.yfilter)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
+    if (crc_errors.is_set || is_set(crc_errors.yfilter)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
+    if (framing_errors_received.is_set || is_set(framing_errors_received.yfilter)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
+    if (giant_packets_received.is_set || is_set(giant_packets_received.yfilter)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
+    if (input_aborts.is_set || is_set(input_aborts.yfilter)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
+    if (input_drops.is_set || is_set(input_drops.yfilter)) leaf_name_data.push_back(input_drops.get_name_leafdata());
+    if (input_errors.is_set || is_set(input_errors.yfilter)) leaf_name_data.push_back(input_errors.get_name_leafdata());
+    if (input_ignored_packets.is_set || is_set(input_ignored_packets.yfilter)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
+    if (input_overruns.is_set || is_set(input_overruns.yfilter)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
+    if (input_queue_drops.is_set || is_set(input_queue_drops.yfilter)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.yfilter)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
+    if (multicast_packets_received.is_set || is_set(multicast_packets_received.yfilter)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
+    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.yfilter)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
+    if (output_buffer_failures.is_set || is_set(output_buffer_failures.yfilter)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
+    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.yfilter)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
+    if (output_drops.is_set || is_set(output_drops.yfilter)) leaf_name_data.push_back(output_drops.get_name_leafdata());
+    if (output_errors.is_set || is_set(output_errors.yfilter)) leaf_name_data.push_back(output_errors.get_name_leafdata());
+    if (output_queue_drops.is_set || is_set(output_queue_drops.yfilter)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
+    if (output_underruns.is_set || is_set(output_underruns.yfilter)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (parity_packets_received.is_set || is_set(parity_packets_received.yfilter)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
+    if (resets.is_set || is_set(resets.yfilter)) leaf_name_data.push_back(resets.get_name_leafdata());
+    if (runt_packets_received.is_set || is_set(runt_packets_received.yfilter)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
+    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.yfilter)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
+    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.yfilter)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
+    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.yfilter)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
+    if (throttled_packets_received.is_set || is_set(throttled_packets_received.yfilter)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
+    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.yfilter)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1001,152 +1146,379 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "applique")
     {
         applique = value;
+        applique.value_namespace = name_space;
+        applique.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "availability-flag")
     {
         availability_flag = value;
+        availability_flag.value_namespace = name_space;
+        availability_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-received")
     {
         broadcast_packets_received = value;
+        broadcast_packets_received.value_namespace = name_space;
+        broadcast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-sent")
     {
         broadcast_packets_sent = value;
+        broadcast_packets_sent.value_namespace = name_space;
+        broadcast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "carrier-transitions")
     {
         carrier_transitions = value;
+        carrier_transitions.value_namespace = name_space;
+        carrier_transitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "crc-errors")
     {
         crc_errors = value;
+        crc_errors.value_namespace = name_space;
+        crc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-errors-received")
     {
         framing_errors_received = value;
+        framing_errors_received.value_namespace = name_space;
+        framing_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "giant-packets-received")
     {
         giant_packets_received = value;
+        giant_packets_received.value_namespace = name_space;
+        giant_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-aborts")
     {
         input_aborts = value;
+        input_aborts.value_namespace = name_space;
+        input_aborts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-drops")
     {
         input_drops = value;
+        input_drops.value_namespace = name_space;
+        input_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-errors")
     {
         input_errors = value;
+        input_errors.value_namespace = name_space;
+        input_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-ignored-packets")
     {
         input_ignored_packets = value;
+        input_ignored_packets.value_namespace = name_space;
+        input_ignored_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-overruns")
     {
         input_overruns = value;
+        input_overruns.value_namespace = name_space;
+        input_overruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-queue-drops")
     {
         input_queue_drops = value;
+        input_queue_drops.value_namespace = name_space;
+        input_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-discontinuity-time")
     {
         last_discontinuity_time = value;
+        last_discontinuity_time.value_namespace = name_space;
+        last_discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-received")
     {
         multicast_packets_received = value;
+        multicast_packets_received.value_namespace = name_space;
+        multicast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-sent")
     {
         multicast_packets_sent = value;
+        multicast_packets_sent.value_namespace = name_space;
+        multicast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffer-failures")
     {
         output_buffer_failures = value;
+        output_buffer_failures.value_namespace = name_space;
+        output_buffer_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffers-swapped-out")
     {
         output_buffers_swapped_out = value;
+        output_buffers_swapped_out.value_namespace = name_space;
+        output_buffers_swapped_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-drops")
     {
         output_drops = value;
+        output_drops.value_namespace = name_space;
+        output_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-errors")
     {
         output_errors = value;
+        output_errors.value_namespace = name_space;
+        output_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-queue-drops")
     {
         output_queue_drops = value;
+        output_queue_drops.value_namespace = name_space;
+        output_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-underruns")
     {
         output_underruns = value;
+        output_underruns.value_namespace = name_space;
+        output_underruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-packets-received")
     {
         parity_packets_received = value;
+        parity_packets_received.value_namespace = name_space;
+        parity_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resets")
     {
         resets = value;
+        resets.value_namespace = name_space;
+        resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "runt-packets-received")
     {
         runt_packets_received = value;
+        runt_packets_received.value_namespace = name_space;
+        runt_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-last-clear-counters")
     {
         seconds_since_last_clear_counters = value;
+        seconds_since_last_clear_counters.value_namespace = name_space;
+        seconds_since_last_clear_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-received")
     {
         seconds_since_packet_received = value;
+        seconds_since_packet_received.value_namespace = name_space;
+        seconds_since_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-sent")
     {
         seconds_since_packet_sent = value;
+        seconds_since_packet_sent.value_namespace = name_space;
+        seconds_since_packet_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttled-packets-received")
     {
         throttled_packets_received = value;
+        throttled_packets_received.value_namespace = name_space;
+        throttled_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-protocol-packets-received")
     {
         unknown_protocol_packets_received = value;
+        unknown_protocol_packets_received.value_namespace = name_space;
+        unknown_protocol_packets_received.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applique")
+    {
+        applique.yfilter = yfilter;
+    }
+    if(value_path == "availability-flag")
+    {
+        availability_flag.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-received")
+    {
+        broadcast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-sent")
+    {
+        broadcast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "carrier-transitions")
+    {
+        carrier_transitions.yfilter = yfilter;
+    }
+    if(value_path == "crc-errors")
+    {
+        crc_errors.yfilter = yfilter;
+    }
+    if(value_path == "framing-errors-received")
+    {
+        framing_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "giant-packets-received")
+    {
+        giant_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "input-aborts")
+    {
+        input_aborts.yfilter = yfilter;
+    }
+    if(value_path == "input-drops")
+    {
+        input_drops.yfilter = yfilter;
+    }
+    if(value_path == "input-errors")
+    {
+        input_errors.yfilter = yfilter;
+    }
+    if(value_path == "input-ignored-packets")
+    {
+        input_ignored_packets.yfilter = yfilter;
+    }
+    if(value_path == "input-overruns")
+    {
+        input_overruns.yfilter = yfilter;
+    }
+    if(value_path == "input-queue-drops")
+    {
+        input_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "last-discontinuity-time")
+    {
+        last_discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-received")
+    {
+        multicast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-sent")
+    {
+        multicast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "output-buffer-failures")
+    {
+        output_buffer_failures.yfilter = yfilter;
+    }
+    if(value_path == "output-buffers-swapped-out")
+    {
+        output_buffers_swapped_out.yfilter = yfilter;
+    }
+    if(value_path == "output-drops")
+    {
+        output_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-errors")
+    {
+        output_errors.yfilter = yfilter;
+    }
+    if(value_path == "output-queue-drops")
+    {
+        output_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-underruns")
+    {
+        output_underruns.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "parity-packets-received")
+    {
+        parity_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "resets")
+    {
+        resets.yfilter = yfilter;
+    }
+    if(value_path == "runt-packets-received")
+    {
+        runt_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-last-clear-counters")
+    {
+        seconds_since_last_clear_counters.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-received")
+    {
+        seconds_since_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-sent")
+    {
+        seconds_since_packet_sent.yfilter = yfilter;
+    }
+    if(value_path == "throttled-packets-received")
+    {
+        throttled_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets-received")
+    {
+        unknown_protocol_packets_received.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applique" || name == "availability-flag" || name == "broadcast-packets-received" || name == "broadcast-packets-sent" || name == "bytes-received" || name == "bytes-sent" || name == "carrier-transitions" || name == "crc-errors" || name == "framing-errors-received" || name == "giant-packets-received" || name == "input-aborts" || name == "input-drops" || name == "input-errors" || name == "input-ignored-packets" || name == "input-overruns" || name == "input-queue-drops" || name == "last-data-time" || name == "last-discontinuity-time" || name == "multicast-packets-received" || name == "multicast-packets-sent" || name == "output-buffer-failures" || name == "output-buffers-swapped-out" || name == "output-drops" || name == "output-errors" || name == "output-queue-drops" || name == "output-underruns" || name == "packets-received" || name == "packets-sent" || name == "parity-packets-received" || name == "resets" || name == "runt-packets-received" || name == "seconds-since-last-clear-counters" || name == "seconds-since-packet-received" || name == "seconds-since-packet-sent" || name == "throttled-packets-received" || name == "unknown-protocol-packets-received")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Cache::DataRate::DataRate()
@@ -1191,20 +1563,20 @@ bool InfraStatistics::Interfaces::Interface::Cache::DataRate::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Cache::DataRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(input_data_rate.operation)
-	|| is_set(input_load.operation)
-	|| is_set(input_packet_rate.operation)
-	|| is_set(load_interval.operation)
-	|| is_set(output_data_rate.operation)
-	|| is_set(output_load.operation)
-	|| is_set(output_packet_rate.operation)
-	|| is_set(peak_input_data_rate.operation)
-	|| is_set(peak_input_packet_rate.operation)
-	|| is_set(peak_output_data_rate.operation)
-	|| is_set(peak_output_packet_rate.operation)
-	|| is_set(reliability.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(input_data_rate.yfilter)
+	|| ydk::is_set(input_load.yfilter)
+	|| ydk::is_set(input_packet_rate.yfilter)
+	|| ydk::is_set(load_interval.yfilter)
+	|| ydk::is_set(output_data_rate.yfilter)
+	|| ydk::is_set(output_load.yfilter)
+	|| ydk::is_set(output_packet_rate.yfilter)
+	|| ydk::is_set(peak_input_data_rate.yfilter)
+	|| ydk::is_set(peak_input_packet_rate.yfilter)
+	|| ydk::is_set(peak_output_data_rate.yfilter)
+	|| ydk::is_set(peak_output_packet_rate.yfilter)
+	|| ydk::is_set(reliability.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Cache::DataRate::get_segment_path() const
@@ -1230,19 +1602,19 @@ const EntityPath InfraStatistics::Interfaces::Interface::Cache::DataRate::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (input_data_rate.is_set || is_set(input_data_rate.operation)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
-    if (input_load.is_set || is_set(input_load.operation)) leaf_name_data.push_back(input_load.get_name_leafdata());
-    if (input_packet_rate.is_set || is_set(input_packet_rate.operation)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
-    if (load_interval.is_set || is_set(load_interval.operation)) leaf_name_data.push_back(load_interval.get_name_leafdata());
-    if (output_data_rate.is_set || is_set(output_data_rate.operation)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
-    if (output_load.is_set || is_set(output_load.operation)) leaf_name_data.push_back(output_load.get_name_leafdata());
-    if (output_packet_rate.is_set || is_set(output_packet_rate.operation)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
-    if (peak_input_data_rate.is_set || is_set(peak_input_data_rate.operation)) leaf_name_data.push_back(peak_input_data_rate.get_name_leafdata());
-    if (peak_input_packet_rate.is_set || is_set(peak_input_packet_rate.operation)) leaf_name_data.push_back(peak_input_packet_rate.get_name_leafdata());
-    if (peak_output_data_rate.is_set || is_set(peak_output_data_rate.operation)) leaf_name_data.push_back(peak_output_data_rate.get_name_leafdata());
-    if (peak_output_packet_rate.is_set || is_set(peak_output_packet_rate.operation)) leaf_name_data.push_back(peak_output_packet_rate.get_name_leafdata());
-    if (reliability.is_set || is_set(reliability.operation)) leaf_name_data.push_back(reliability.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (input_data_rate.is_set || is_set(input_data_rate.yfilter)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
+    if (input_load.is_set || is_set(input_load.yfilter)) leaf_name_data.push_back(input_load.get_name_leafdata());
+    if (input_packet_rate.is_set || is_set(input_packet_rate.yfilter)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
+    if (load_interval.is_set || is_set(load_interval.yfilter)) leaf_name_data.push_back(load_interval.get_name_leafdata());
+    if (output_data_rate.is_set || is_set(output_data_rate.yfilter)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
+    if (output_load.is_set || is_set(output_load.yfilter)) leaf_name_data.push_back(output_load.get_name_leafdata());
+    if (output_packet_rate.is_set || is_set(output_packet_rate.yfilter)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
+    if (peak_input_data_rate.is_set || is_set(peak_input_data_rate.yfilter)) leaf_name_data.push_back(peak_input_data_rate.get_name_leafdata());
+    if (peak_input_packet_rate.is_set || is_set(peak_input_packet_rate.yfilter)) leaf_name_data.push_back(peak_input_packet_rate.get_name_leafdata());
+    if (peak_output_data_rate.is_set || is_set(peak_output_data_rate.yfilter)) leaf_name_data.push_back(peak_output_data_rate.get_name_leafdata());
+    if (peak_output_packet_rate.is_set || is_set(peak_output_packet_rate.yfilter)) leaf_name_data.push_back(peak_output_packet_rate.get_name_leafdata());
+    if (reliability.is_set || is_set(reliability.yfilter)) leaf_name_data.push_back(reliability.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1261,60 +1633,149 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Cache::DataRate::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Cache::DataRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-data-rate")
     {
         input_data_rate = value;
+        input_data_rate.value_namespace = name_space;
+        input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-load")
     {
         input_load = value;
+        input_load.value_namespace = name_space;
+        input_load.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packet-rate")
     {
         input_packet_rate = value;
+        input_packet_rate.value_namespace = name_space;
+        input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-interval")
     {
         load_interval = value;
+        load_interval.value_namespace = name_space;
+        load_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-data-rate")
     {
         output_data_rate = value;
+        output_data_rate.value_namespace = name_space;
+        output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-load")
     {
         output_load = value;
+        output_load.value_namespace = name_space;
+        output_load.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-packet-rate")
     {
         output_packet_rate = value;
+        output_packet_rate.value_namespace = name_space;
+        output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-input-data-rate")
     {
         peak_input_data_rate = value;
+        peak_input_data_rate.value_namespace = name_space;
+        peak_input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-input-packet-rate")
     {
         peak_input_packet_rate = value;
+        peak_input_packet_rate.value_namespace = name_space;
+        peak_input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-output-data-rate")
     {
         peak_output_data_rate = value;
+        peak_output_data_rate.value_namespace = name_space;
+        peak_output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-output-packet-rate")
     {
         peak_output_packet_rate = value;
+        peak_output_packet_rate.value_namespace = name_space;
+        peak_output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reliability")
     {
         reliability = value;
+        reliability.value_namespace = name_space;
+        reliability.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Cache::DataRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "input-data-rate")
+    {
+        input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "input-load")
+    {
+        input_load.yfilter = yfilter;
+    }
+    if(value_path == "input-packet-rate")
+    {
+        input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "load-interval")
+    {
+        load_interval.yfilter = yfilter;
+    }
+    if(value_path == "output-data-rate")
+    {
+        output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "output-load")
+    {
+        output_load.yfilter = yfilter;
+    }
+    if(value_path == "output-packet-rate")
+    {
+        output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-input-data-rate")
+    {
+        peak_input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-input-packet-rate")
+    {
+        peak_input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-output-data-rate")
+    {
+        peak_output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-output-packet-rate")
+    {
+        peak_output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "reliability")
+    {
+        reliability.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Cache::DataRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "input-data-rate" || name == "input-load" || name == "input-packet-rate" || name == "load-interval" || name == "output-data-rate" || name == "output-load" || name == "output-packet-rate" || name == "peak-input-data-rate" || name == "peak-input-packet-rate" || name == "peak-output-data-rate" || name == "peak-output-packet-rate" || name == "reliability")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Cache::GenericCounters::GenericCounters()
@@ -1405,43 +1866,43 @@ bool InfraStatistics::Interfaces::Interface::Cache::GenericCounters::has_data() 
 
 bool InfraStatistics::Interfaces::Interface::Cache::GenericCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(applique.operation)
-	|| is_set(availability_flag.operation)
-	|| is_set(broadcast_packets_received.operation)
-	|| is_set(broadcast_packets_sent.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(carrier_transitions.operation)
-	|| is_set(crc_errors.operation)
-	|| is_set(framing_errors_received.operation)
-	|| is_set(giant_packets_received.operation)
-	|| is_set(input_aborts.operation)
-	|| is_set(input_drops.operation)
-	|| is_set(input_errors.operation)
-	|| is_set(input_ignored_packets.operation)
-	|| is_set(input_overruns.operation)
-	|| is_set(input_queue_drops.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(last_discontinuity_time.operation)
-	|| is_set(multicast_packets_received.operation)
-	|| is_set(multicast_packets_sent.operation)
-	|| is_set(output_buffer_failures.operation)
-	|| is_set(output_buffers_swapped_out.operation)
-	|| is_set(output_drops.operation)
-	|| is_set(output_errors.operation)
-	|| is_set(output_queue_drops.operation)
-	|| is_set(output_underruns.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(parity_packets_received.operation)
-	|| is_set(resets.operation)
-	|| is_set(runt_packets_received.operation)
-	|| is_set(seconds_since_last_clear_counters.operation)
-	|| is_set(seconds_since_packet_received.operation)
-	|| is_set(seconds_since_packet_sent.operation)
-	|| is_set(throttled_packets_received.operation)
-	|| is_set(unknown_protocol_packets_received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(applique.yfilter)
+	|| ydk::is_set(availability_flag.yfilter)
+	|| ydk::is_set(broadcast_packets_received.yfilter)
+	|| ydk::is_set(broadcast_packets_sent.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(carrier_transitions.yfilter)
+	|| ydk::is_set(crc_errors.yfilter)
+	|| ydk::is_set(framing_errors_received.yfilter)
+	|| ydk::is_set(giant_packets_received.yfilter)
+	|| ydk::is_set(input_aborts.yfilter)
+	|| ydk::is_set(input_drops.yfilter)
+	|| ydk::is_set(input_errors.yfilter)
+	|| ydk::is_set(input_ignored_packets.yfilter)
+	|| ydk::is_set(input_overruns.yfilter)
+	|| ydk::is_set(input_queue_drops.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(last_discontinuity_time.yfilter)
+	|| ydk::is_set(multicast_packets_received.yfilter)
+	|| ydk::is_set(multicast_packets_sent.yfilter)
+	|| ydk::is_set(output_buffer_failures.yfilter)
+	|| ydk::is_set(output_buffers_swapped_out.yfilter)
+	|| ydk::is_set(output_drops.yfilter)
+	|| ydk::is_set(output_errors.yfilter)
+	|| ydk::is_set(output_queue_drops.yfilter)
+	|| ydk::is_set(output_underruns.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(parity_packets_received.yfilter)
+	|| ydk::is_set(resets.yfilter)
+	|| ydk::is_set(runt_packets_received.yfilter)
+	|| ydk::is_set(seconds_since_last_clear_counters.yfilter)
+	|| ydk::is_set(seconds_since_packet_received.yfilter)
+	|| ydk::is_set(seconds_since_packet_sent.yfilter)
+	|| ydk::is_set(throttled_packets_received.yfilter)
+	|| ydk::is_set(unknown_protocol_packets_received.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Cache::GenericCounters::get_segment_path() const
@@ -1467,42 +1928,42 @@ const EntityPath InfraStatistics::Interfaces::Interface::Cache::GenericCounters:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (applique.is_set || is_set(applique.operation)) leaf_name_data.push_back(applique.get_name_leafdata());
-    if (availability_flag.is_set || is_set(availability_flag.operation)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
-    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.operation)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
-    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.operation)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (carrier_transitions.is_set || is_set(carrier_transitions.operation)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
-    if (crc_errors.is_set || is_set(crc_errors.operation)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
-    if (framing_errors_received.is_set || is_set(framing_errors_received.operation)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
-    if (giant_packets_received.is_set || is_set(giant_packets_received.operation)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
-    if (input_aborts.is_set || is_set(input_aborts.operation)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
-    if (input_drops.is_set || is_set(input_drops.operation)) leaf_name_data.push_back(input_drops.get_name_leafdata());
-    if (input_errors.is_set || is_set(input_errors.operation)) leaf_name_data.push_back(input_errors.get_name_leafdata());
-    if (input_ignored_packets.is_set || is_set(input_ignored_packets.operation)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
-    if (input_overruns.is_set || is_set(input_overruns.operation)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
-    if (input_queue_drops.is_set || is_set(input_queue_drops.operation)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.operation)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
-    if (multicast_packets_received.is_set || is_set(multicast_packets_received.operation)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
-    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.operation)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
-    if (output_buffer_failures.is_set || is_set(output_buffer_failures.operation)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
-    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.operation)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
-    if (output_drops.is_set || is_set(output_drops.operation)) leaf_name_data.push_back(output_drops.get_name_leafdata());
-    if (output_errors.is_set || is_set(output_errors.operation)) leaf_name_data.push_back(output_errors.get_name_leafdata());
-    if (output_queue_drops.is_set || is_set(output_queue_drops.operation)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
-    if (output_underruns.is_set || is_set(output_underruns.operation)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (parity_packets_received.is_set || is_set(parity_packets_received.operation)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
-    if (resets.is_set || is_set(resets.operation)) leaf_name_data.push_back(resets.get_name_leafdata());
-    if (runt_packets_received.is_set || is_set(runt_packets_received.operation)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
-    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.operation)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
-    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.operation)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
-    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.operation)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
-    if (throttled_packets_received.is_set || is_set(throttled_packets_received.operation)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
-    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.operation)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
+    if (applique.is_set || is_set(applique.yfilter)) leaf_name_data.push_back(applique.get_name_leafdata());
+    if (availability_flag.is_set || is_set(availability_flag.yfilter)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
+    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.yfilter)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
+    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.yfilter)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (carrier_transitions.is_set || is_set(carrier_transitions.yfilter)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
+    if (crc_errors.is_set || is_set(crc_errors.yfilter)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
+    if (framing_errors_received.is_set || is_set(framing_errors_received.yfilter)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
+    if (giant_packets_received.is_set || is_set(giant_packets_received.yfilter)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
+    if (input_aborts.is_set || is_set(input_aborts.yfilter)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
+    if (input_drops.is_set || is_set(input_drops.yfilter)) leaf_name_data.push_back(input_drops.get_name_leafdata());
+    if (input_errors.is_set || is_set(input_errors.yfilter)) leaf_name_data.push_back(input_errors.get_name_leafdata());
+    if (input_ignored_packets.is_set || is_set(input_ignored_packets.yfilter)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
+    if (input_overruns.is_set || is_set(input_overruns.yfilter)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
+    if (input_queue_drops.is_set || is_set(input_queue_drops.yfilter)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.yfilter)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
+    if (multicast_packets_received.is_set || is_set(multicast_packets_received.yfilter)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
+    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.yfilter)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
+    if (output_buffer_failures.is_set || is_set(output_buffer_failures.yfilter)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
+    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.yfilter)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
+    if (output_drops.is_set || is_set(output_drops.yfilter)) leaf_name_data.push_back(output_drops.get_name_leafdata());
+    if (output_errors.is_set || is_set(output_errors.yfilter)) leaf_name_data.push_back(output_errors.get_name_leafdata());
+    if (output_queue_drops.is_set || is_set(output_queue_drops.yfilter)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
+    if (output_underruns.is_set || is_set(output_underruns.yfilter)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (parity_packets_received.is_set || is_set(parity_packets_received.yfilter)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
+    if (resets.is_set || is_set(resets.yfilter)) leaf_name_data.push_back(resets.get_name_leafdata());
+    if (runt_packets_received.is_set || is_set(runt_packets_received.yfilter)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
+    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.yfilter)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
+    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.yfilter)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
+    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.yfilter)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
+    if (throttled_packets_received.is_set || is_set(throttled_packets_received.yfilter)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
+    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.yfilter)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1521,152 +1982,379 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Cache::GenericCounters::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Cache::GenericCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "applique")
     {
         applique = value;
+        applique.value_namespace = name_space;
+        applique.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "availability-flag")
     {
         availability_flag = value;
+        availability_flag.value_namespace = name_space;
+        availability_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-received")
     {
         broadcast_packets_received = value;
+        broadcast_packets_received.value_namespace = name_space;
+        broadcast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-sent")
     {
         broadcast_packets_sent = value;
+        broadcast_packets_sent.value_namespace = name_space;
+        broadcast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "carrier-transitions")
     {
         carrier_transitions = value;
+        carrier_transitions.value_namespace = name_space;
+        carrier_transitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "crc-errors")
     {
         crc_errors = value;
+        crc_errors.value_namespace = name_space;
+        crc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-errors-received")
     {
         framing_errors_received = value;
+        framing_errors_received.value_namespace = name_space;
+        framing_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "giant-packets-received")
     {
         giant_packets_received = value;
+        giant_packets_received.value_namespace = name_space;
+        giant_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-aborts")
     {
         input_aborts = value;
+        input_aborts.value_namespace = name_space;
+        input_aborts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-drops")
     {
         input_drops = value;
+        input_drops.value_namespace = name_space;
+        input_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-errors")
     {
         input_errors = value;
+        input_errors.value_namespace = name_space;
+        input_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-ignored-packets")
     {
         input_ignored_packets = value;
+        input_ignored_packets.value_namespace = name_space;
+        input_ignored_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-overruns")
     {
         input_overruns = value;
+        input_overruns.value_namespace = name_space;
+        input_overruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-queue-drops")
     {
         input_queue_drops = value;
+        input_queue_drops.value_namespace = name_space;
+        input_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-discontinuity-time")
     {
         last_discontinuity_time = value;
+        last_discontinuity_time.value_namespace = name_space;
+        last_discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-received")
     {
         multicast_packets_received = value;
+        multicast_packets_received.value_namespace = name_space;
+        multicast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-sent")
     {
         multicast_packets_sent = value;
+        multicast_packets_sent.value_namespace = name_space;
+        multicast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffer-failures")
     {
         output_buffer_failures = value;
+        output_buffer_failures.value_namespace = name_space;
+        output_buffer_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffers-swapped-out")
     {
         output_buffers_swapped_out = value;
+        output_buffers_swapped_out.value_namespace = name_space;
+        output_buffers_swapped_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-drops")
     {
         output_drops = value;
+        output_drops.value_namespace = name_space;
+        output_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-errors")
     {
         output_errors = value;
+        output_errors.value_namespace = name_space;
+        output_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-queue-drops")
     {
         output_queue_drops = value;
+        output_queue_drops.value_namespace = name_space;
+        output_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-underruns")
     {
         output_underruns = value;
+        output_underruns.value_namespace = name_space;
+        output_underruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-packets-received")
     {
         parity_packets_received = value;
+        parity_packets_received.value_namespace = name_space;
+        parity_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resets")
     {
         resets = value;
+        resets.value_namespace = name_space;
+        resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "runt-packets-received")
     {
         runt_packets_received = value;
+        runt_packets_received.value_namespace = name_space;
+        runt_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-last-clear-counters")
     {
         seconds_since_last_clear_counters = value;
+        seconds_since_last_clear_counters.value_namespace = name_space;
+        seconds_since_last_clear_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-received")
     {
         seconds_since_packet_received = value;
+        seconds_since_packet_received.value_namespace = name_space;
+        seconds_since_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-sent")
     {
         seconds_since_packet_sent = value;
+        seconds_since_packet_sent.value_namespace = name_space;
+        seconds_since_packet_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttled-packets-received")
     {
         throttled_packets_received = value;
+        throttled_packets_received.value_namespace = name_space;
+        throttled_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-protocol-packets-received")
     {
         unknown_protocol_packets_received = value;
+        unknown_protocol_packets_received.value_namespace = name_space;
+        unknown_protocol_packets_received.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Cache::GenericCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applique")
+    {
+        applique.yfilter = yfilter;
+    }
+    if(value_path == "availability-flag")
+    {
+        availability_flag.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-received")
+    {
+        broadcast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-sent")
+    {
+        broadcast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "carrier-transitions")
+    {
+        carrier_transitions.yfilter = yfilter;
+    }
+    if(value_path == "crc-errors")
+    {
+        crc_errors.yfilter = yfilter;
+    }
+    if(value_path == "framing-errors-received")
+    {
+        framing_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "giant-packets-received")
+    {
+        giant_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "input-aborts")
+    {
+        input_aborts.yfilter = yfilter;
+    }
+    if(value_path == "input-drops")
+    {
+        input_drops.yfilter = yfilter;
+    }
+    if(value_path == "input-errors")
+    {
+        input_errors.yfilter = yfilter;
+    }
+    if(value_path == "input-ignored-packets")
+    {
+        input_ignored_packets.yfilter = yfilter;
+    }
+    if(value_path == "input-overruns")
+    {
+        input_overruns.yfilter = yfilter;
+    }
+    if(value_path == "input-queue-drops")
+    {
+        input_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "last-discontinuity-time")
+    {
+        last_discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-received")
+    {
+        multicast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-sent")
+    {
+        multicast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "output-buffer-failures")
+    {
+        output_buffer_failures.yfilter = yfilter;
+    }
+    if(value_path == "output-buffers-swapped-out")
+    {
+        output_buffers_swapped_out.yfilter = yfilter;
+    }
+    if(value_path == "output-drops")
+    {
+        output_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-errors")
+    {
+        output_errors.yfilter = yfilter;
+    }
+    if(value_path == "output-queue-drops")
+    {
+        output_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-underruns")
+    {
+        output_underruns.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "parity-packets-received")
+    {
+        parity_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "resets")
+    {
+        resets.yfilter = yfilter;
+    }
+    if(value_path == "runt-packets-received")
+    {
+        runt_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-last-clear-counters")
+    {
+        seconds_since_last_clear_counters.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-received")
+    {
+        seconds_since_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-sent")
+    {
+        seconds_since_packet_sent.yfilter = yfilter;
+    }
+    if(value_path == "throttled-packets-received")
+    {
+        throttled_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets-received")
+    {
+        unknown_protocol_packets_received.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Cache::GenericCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applique" || name == "availability-flag" || name == "broadcast-packets-received" || name == "broadcast-packets-sent" || name == "bytes-received" || name == "bytes-sent" || name == "carrier-transitions" || name == "crc-errors" || name == "framing-errors-received" || name == "giant-packets-received" || name == "input-aborts" || name == "input-drops" || name == "input-errors" || name == "input-ignored-packets" || name == "input-overruns" || name == "input-queue-drops" || name == "last-data-time" || name == "last-discontinuity-time" || name == "multicast-packets-received" || name == "multicast-packets-sent" || name == "output-buffer-failures" || name == "output-buffers-swapped-out" || name == "output-drops" || name == "output-errors" || name == "output-queue-drops" || name == "output-underruns" || name == "packets-received" || name == "packets-sent" || name == "parity-packets-received" || name == "resets" || name == "runt-packets-received" || name == "seconds-since-last-clear-counters" || name == "seconds-since-packet-received" || name == "seconds-since-packet-sent" || name == "throttled-packets-received" || name == "unknown-protocol-packets-received")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Latest::Latest()
@@ -1701,7 +2389,7 @@ bool InfraStatistics::Interfaces::Interface::Latest::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Latest::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (data_rate !=  nullptr && data_rate->has_operation())
 	|| (generic_counters !=  nullptr && generic_counters->has_operation())
 	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_operation())
@@ -1805,8 +2493,19 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Latest::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Latest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InfraStatistics::Interfaces::Interface::Latest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InfraStatistics::Interfaces::Interface::Latest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-rate" || name == "generic-counters" || name == "interfaces-mib-counters" || name == "protocols")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocols()
@@ -1835,7 +2534,7 @@ bool InfraStatistics::Interfaces::Interface::Latest::Protocols::has_operation() 
         if(protocol[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Latest::Protocols::get_segment_path() const
@@ -1900,8 +2599,19 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Latest::Protocols::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Latest::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InfraStatistics::Interfaces::Interface::Latest::Protocols::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InfraStatistics::Interfaces::Interface::Latest::Protocols::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::Protocol()
@@ -1942,18 +2652,18 @@ bool InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::has_da
 
 bool InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(protocol_name.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(input_data_rate.operation)
-	|| is_set(input_packet_rate.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(output_data_rate.operation)
-	|| is_set(output_packet_rate.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(protocol.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_name.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(input_data_rate.yfilter)
+	|| ydk::is_set(input_packet_rate.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(output_data_rate.yfilter)
+	|| ydk::is_set(output_packet_rate.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(protocol.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::get_segment_path() const
@@ -1979,17 +2689,17 @@ const EntityPath InfraStatistics::Interfaces::Interface::Latest::Protocols::Prot
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (protocol_name.is_set || is_set(protocol_name.operation)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (input_data_rate.is_set || is_set(input_data_rate.operation)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
-    if (input_packet_rate.is_set || is_set(input_packet_rate.operation)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (output_data_rate.is_set || is_set(output_data_rate.operation)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
-    if (output_packet_rate.is_set || is_set(output_packet_rate.operation)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (input_data_rate.is_set || is_set(input_data_rate.yfilter)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
+    if (input_packet_rate.is_set || is_set(input_packet_rate.yfilter)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (output_data_rate.is_set || is_set(output_data_rate.yfilter)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
+    if (output_packet_rate.is_set || is_set(output_packet_rate.yfilter)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2008,52 +2718,129 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol-name")
     {
         protocol_name = value;
+        protocol_name.value_namespace = name_space;
+        protocol_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-data-rate")
     {
         input_data_rate = value;
+        input_data_rate.value_namespace = name_space;
+        input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packet-rate")
     {
         input_packet_rate = value;
+        input_packet_rate.value_namespace = name_space;
+        input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-data-rate")
     {
         output_data_rate = value;
+        output_data_rate.value_namespace = name_space;
+        output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-packet-rate")
     {
         output_packet_rate = value;
+        output_packet_rate.value_namespace = name_space;
+        output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocol-name")
+    {
+        protocol_name.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "input-data-rate")
+    {
+        input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "input-packet-rate")
+    {
+        input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "output-data-rate")
+    {
+        output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "output-packet-rate")
+    {
+        output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-name" || name == "bytes-received" || name == "bytes-sent" || name == "input-data-rate" || name == "input-packet-rate" || name == "last-data-time" || name == "output-data-rate" || name == "output-packet-rate" || name == "packets-received" || name == "packets-sent" || name == "protocol")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::InterfacesMibCounters()
@@ -2144,43 +2931,43 @@ bool InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::has_
 
 bool InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(applique.operation)
-	|| is_set(availability_flag.operation)
-	|| is_set(broadcast_packets_received.operation)
-	|| is_set(broadcast_packets_sent.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(carrier_transitions.operation)
-	|| is_set(crc_errors.operation)
-	|| is_set(framing_errors_received.operation)
-	|| is_set(giant_packets_received.operation)
-	|| is_set(input_aborts.operation)
-	|| is_set(input_drops.operation)
-	|| is_set(input_errors.operation)
-	|| is_set(input_ignored_packets.operation)
-	|| is_set(input_overruns.operation)
-	|| is_set(input_queue_drops.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(last_discontinuity_time.operation)
-	|| is_set(multicast_packets_received.operation)
-	|| is_set(multicast_packets_sent.operation)
-	|| is_set(output_buffer_failures.operation)
-	|| is_set(output_buffers_swapped_out.operation)
-	|| is_set(output_drops.operation)
-	|| is_set(output_errors.operation)
-	|| is_set(output_queue_drops.operation)
-	|| is_set(output_underruns.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(parity_packets_received.operation)
-	|| is_set(resets.operation)
-	|| is_set(runt_packets_received.operation)
-	|| is_set(seconds_since_last_clear_counters.operation)
-	|| is_set(seconds_since_packet_received.operation)
-	|| is_set(seconds_since_packet_sent.operation)
-	|| is_set(throttled_packets_received.operation)
-	|| is_set(unknown_protocol_packets_received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(applique.yfilter)
+	|| ydk::is_set(availability_flag.yfilter)
+	|| ydk::is_set(broadcast_packets_received.yfilter)
+	|| ydk::is_set(broadcast_packets_sent.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(carrier_transitions.yfilter)
+	|| ydk::is_set(crc_errors.yfilter)
+	|| ydk::is_set(framing_errors_received.yfilter)
+	|| ydk::is_set(giant_packets_received.yfilter)
+	|| ydk::is_set(input_aborts.yfilter)
+	|| ydk::is_set(input_drops.yfilter)
+	|| ydk::is_set(input_errors.yfilter)
+	|| ydk::is_set(input_ignored_packets.yfilter)
+	|| ydk::is_set(input_overruns.yfilter)
+	|| ydk::is_set(input_queue_drops.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(last_discontinuity_time.yfilter)
+	|| ydk::is_set(multicast_packets_received.yfilter)
+	|| ydk::is_set(multicast_packets_sent.yfilter)
+	|| ydk::is_set(output_buffer_failures.yfilter)
+	|| ydk::is_set(output_buffers_swapped_out.yfilter)
+	|| ydk::is_set(output_drops.yfilter)
+	|| ydk::is_set(output_errors.yfilter)
+	|| ydk::is_set(output_queue_drops.yfilter)
+	|| ydk::is_set(output_underruns.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(parity_packets_received.yfilter)
+	|| ydk::is_set(resets.yfilter)
+	|| ydk::is_set(runt_packets_received.yfilter)
+	|| ydk::is_set(seconds_since_last_clear_counters.yfilter)
+	|| ydk::is_set(seconds_since_packet_received.yfilter)
+	|| ydk::is_set(seconds_since_packet_sent.yfilter)
+	|| ydk::is_set(throttled_packets_received.yfilter)
+	|| ydk::is_set(unknown_protocol_packets_received.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::get_segment_path() const
@@ -2206,42 +2993,42 @@ const EntityPath InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (applique.is_set || is_set(applique.operation)) leaf_name_data.push_back(applique.get_name_leafdata());
-    if (availability_flag.is_set || is_set(availability_flag.operation)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
-    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.operation)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
-    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.operation)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (carrier_transitions.is_set || is_set(carrier_transitions.operation)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
-    if (crc_errors.is_set || is_set(crc_errors.operation)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
-    if (framing_errors_received.is_set || is_set(framing_errors_received.operation)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
-    if (giant_packets_received.is_set || is_set(giant_packets_received.operation)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
-    if (input_aborts.is_set || is_set(input_aborts.operation)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
-    if (input_drops.is_set || is_set(input_drops.operation)) leaf_name_data.push_back(input_drops.get_name_leafdata());
-    if (input_errors.is_set || is_set(input_errors.operation)) leaf_name_data.push_back(input_errors.get_name_leafdata());
-    if (input_ignored_packets.is_set || is_set(input_ignored_packets.operation)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
-    if (input_overruns.is_set || is_set(input_overruns.operation)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
-    if (input_queue_drops.is_set || is_set(input_queue_drops.operation)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.operation)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
-    if (multicast_packets_received.is_set || is_set(multicast_packets_received.operation)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
-    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.operation)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
-    if (output_buffer_failures.is_set || is_set(output_buffer_failures.operation)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
-    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.operation)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
-    if (output_drops.is_set || is_set(output_drops.operation)) leaf_name_data.push_back(output_drops.get_name_leafdata());
-    if (output_errors.is_set || is_set(output_errors.operation)) leaf_name_data.push_back(output_errors.get_name_leafdata());
-    if (output_queue_drops.is_set || is_set(output_queue_drops.operation)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
-    if (output_underruns.is_set || is_set(output_underruns.operation)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (parity_packets_received.is_set || is_set(parity_packets_received.operation)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
-    if (resets.is_set || is_set(resets.operation)) leaf_name_data.push_back(resets.get_name_leafdata());
-    if (runt_packets_received.is_set || is_set(runt_packets_received.operation)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
-    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.operation)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
-    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.operation)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
-    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.operation)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
-    if (throttled_packets_received.is_set || is_set(throttled_packets_received.operation)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
-    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.operation)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
+    if (applique.is_set || is_set(applique.yfilter)) leaf_name_data.push_back(applique.get_name_leafdata());
+    if (availability_flag.is_set || is_set(availability_flag.yfilter)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
+    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.yfilter)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
+    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.yfilter)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (carrier_transitions.is_set || is_set(carrier_transitions.yfilter)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
+    if (crc_errors.is_set || is_set(crc_errors.yfilter)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
+    if (framing_errors_received.is_set || is_set(framing_errors_received.yfilter)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
+    if (giant_packets_received.is_set || is_set(giant_packets_received.yfilter)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
+    if (input_aborts.is_set || is_set(input_aborts.yfilter)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
+    if (input_drops.is_set || is_set(input_drops.yfilter)) leaf_name_data.push_back(input_drops.get_name_leafdata());
+    if (input_errors.is_set || is_set(input_errors.yfilter)) leaf_name_data.push_back(input_errors.get_name_leafdata());
+    if (input_ignored_packets.is_set || is_set(input_ignored_packets.yfilter)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
+    if (input_overruns.is_set || is_set(input_overruns.yfilter)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
+    if (input_queue_drops.is_set || is_set(input_queue_drops.yfilter)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.yfilter)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
+    if (multicast_packets_received.is_set || is_set(multicast_packets_received.yfilter)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
+    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.yfilter)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
+    if (output_buffer_failures.is_set || is_set(output_buffer_failures.yfilter)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
+    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.yfilter)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
+    if (output_drops.is_set || is_set(output_drops.yfilter)) leaf_name_data.push_back(output_drops.get_name_leafdata());
+    if (output_errors.is_set || is_set(output_errors.yfilter)) leaf_name_data.push_back(output_errors.get_name_leafdata());
+    if (output_queue_drops.is_set || is_set(output_queue_drops.yfilter)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
+    if (output_underruns.is_set || is_set(output_underruns.yfilter)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (parity_packets_received.is_set || is_set(parity_packets_received.yfilter)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
+    if (resets.is_set || is_set(resets.yfilter)) leaf_name_data.push_back(resets.get_name_leafdata());
+    if (runt_packets_received.is_set || is_set(runt_packets_received.yfilter)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
+    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.yfilter)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
+    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.yfilter)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
+    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.yfilter)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
+    if (throttled_packets_received.is_set || is_set(throttled_packets_received.yfilter)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
+    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.yfilter)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2260,152 +3047,379 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "applique")
     {
         applique = value;
+        applique.value_namespace = name_space;
+        applique.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "availability-flag")
     {
         availability_flag = value;
+        availability_flag.value_namespace = name_space;
+        availability_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-received")
     {
         broadcast_packets_received = value;
+        broadcast_packets_received.value_namespace = name_space;
+        broadcast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-sent")
     {
         broadcast_packets_sent = value;
+        broadcast_packets_sent.value_namespace = name_space;
+        broadcast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "carrier-transitions")
     {
         carrier_transitions = value;
+        carrier_transitions.value_namespace = name_space;
+        carrier_transitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "crc-errors")
     {
         crc_errors = value;
+        crc_errors.value_namespace = name_space;
+        crc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-errors-received")
     {
         framing_errors_received = value;
+        framing_errors_received.value_namespace = name_space;
+        framing_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "giant-packets-received")
     {
         giant_packets_received = value;
+        giant_packets_received.value_namespace = name_space;
+        giant_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-aborts")
     {
         input_aborts = value;
+        input_aborts.value_namespace = name_space;
+        input_aborts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-drops")
     {
         input_drops = value;
+        input_drops.value_namespace = name_space;
+        input_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-errors")
     {
         input_errors = value;
+        input_errors.value_namespace = name_space;
+        input_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-ignored-packets")
     {
         input_ignored_packets = value;
+        input_ignored_packets.value_namespace = name_space;
+        input_ignored_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-overruns")
     {
         input_overruns = value;
+        input_overruns.value_namespace = name_space;
+        input_overruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-queue-drops")
     {
         input_queue_drops = value;
+        input_queue_drops.value_namespace = name_space;
+        input_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-discontinuity-time")
     {
         last_discontinuity_time = value;
+        last_discontinuity_time.value_namespace = name_space;
+        last_discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-received")
     {
         multicast_packets_received = value;
+        multicast_packets_received.value_namespace = name_space;
+        multicast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-sent")
     {
         multicast_packets_sent = value;
+        multicast_packets_sent.value_namespace = name_space;
+        multicast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffer-failures")
     {
         output_buffer_failures = value;
+        output_buffer_failures.value_namespace = name_space;
+        output_buffer_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffers-swapped-out")
     {
         output_buffers_swapped_out = value;
+        output_buffers_swapped_out.value_namespace = name_space;
+        output_buffers_swapped_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-drops")
     {
         output_drops = value;
+        output_drops.value_namespace = name_space;
+        output_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-errors")
     {
         output_errors = value;
+        output_errors.value_namespace = name_space;
+        output_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-queue-drops")
     {
         output_queue_drops = value;
+        output_queue_drops.value_namespace = name_space;
+        output_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-underruns")
     {
         output_underruns = value;
+        output_underruns.value_namespace = name_space;
+        output_underruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-packets-received")
     {
         parity_packets_received = value;
+        parity_packets_received.value_namespace = name_space;
+        parity_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resets")
     {
         resets = value;
+        resets.value_namespace = name_space;
+        resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "runt-packets-received")
     {
         runt_packets_received = value;
+        runt_packets_received.value_namespace = name_space;
+        runt_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-last-clear-counters")
     {
         seconds_since_last_clear_counters = value;
+        seconds_since_last_clear_counters.value_namespace = name_space;
+        seconds_since_last_clear_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-received")
     {
         seconds_since_packet_received = value;
+        seconds_since_packet_received.value_namespace = name_space;
+        seconds_since_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-sent")
     {
         seconds_since_packet_sent = value;
+        seconds_since_packet_sent.value_namespace = name_space;
+        seconds_since_packet_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttled-packets-received")
     {
         throttled_packets_received = value;
+        throttled_packets_received.value_namespace = name_space;
+        throttled_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-protocol-packets-received")
     {
         unknown_protocol_packets_received = value;
+        unknown_protocol_packets_received.value_namespace = name_space;
+        unknown_protocol_packets_received.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applique")
+    {
+        applique.yfilter = yfilter;
+    }
+    if(value_path == "availability-flag")
+    {
+        availability_flag.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-received")
+    {
+        broadcast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-sent")
+    {
+        broadcast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "carrier-transitions")
+    {
+        carrier_transitions.yfilter = yfilter;
+    }
+    if(value_path == "crc-errors")
+    {
+        crc_errors.yfilter = yfilter;
+    }
+    if(value_path == "framing-errors-received")
+    {
+        framing_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "giant-packets-received")
+    {
+        giant_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "input-aborts")
+    {
+        input_aborts.yfilter = yfilter;
+    }
+    if(value_path == "input-drops")
+    {
+        input_drops.yfilter = yfilter;
+    }
+    if(value_path == "input-errors")
+    {
+        input_errors.yfilter = yfilter;
+    }
+    if(value_path == "input-ignored-packets")
+    {
+        input_ignored_packets.yfilter = yfilter;
+    }
+    if(value_path == "input-overruns")
+    {
+        input_overruns.yfilter = yfilter;
+    }
+    if(value_path == "input-queue-drops")
+    {
+        input_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "last-discontinuity-time")
+    {
+        last_discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-received")
+    {
+        multicast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-sent")
+    {
+        multicast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "output-buffer-failures")
+    {
+        output_buffer_failures.yfilter = yfilter;
+    }
+    if(value_path == "output-buffers-swapped-out")
+    {
+        output_buffers_swapped_out.yfilter = yfilter;
+    }
+    if(value_path == "output-drops")
+    {
+        output_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-errors")
+    {
+        output_errors.yfilter = yfilter;
+    }
+    if(value_path == "output-queue-drops")
+    {
+        output_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-underruns")
+    {
+        output_underruns.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "parity-packets-received")
+    {
+        parity_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "resets")
+    {
+        resets.yfilter = yfilter;
+    }
+    if(value_path == "runt-packets-received")
+    {
+        runt_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-last-clear-counters")
+    {
+        seconds_since_last_clear_counters.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-received")
+    {
+        seconds_since_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-sent")
+    {
+        seconds_since_packet_sent.yfilter = yfilter;
+    }
+    if(value_path == "throttled-packets-received")
+    {
+        throttled_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets-received")
+    {
+        unknown_protocol_packets_received.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applique" || name == "availability-flag" || name == "broadcast-packets-received" || name == "broadcast-packets-sent" || name == "bytes-received" || name == "bytes-sent" || name == "carrier-transitions" || name == "crc-errors" || name == "framing-errors-received" || name == "giant-packets-received" || name == "input-aborts" || name == "input-drops" || name == "input-errors" || name == "input-ignored-packets" || name == "input-overruns" || name == "input-queue-drops" || name == "last-data-time" || name == "last-discontinuity-time" || name == "multicast-packets-received" || name == "multicast-packets-sent" || name == "output-buffer-failures" || name == "output-buffers-swapped-out" || name == "output-drops" || name == "output-errors" || name == "output-queue-drops" || name == "output-underruns" || name == "packets-received" || name == "packets-sent" || name == "parity-packets-received" || name == "resets" || name == "runt-packets-received" || name == "seconds-since-last-clear-counters" || name == "seconds-since-packet-received" || name == "seconds-since-packet-sent" || name == "throttled-packets-received" || name == "unknown-protocol-packets-received")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Latest::DataRate::DataRate()
@@ -2450,20 +3464,20 @@ bool InfraStatistics::Interfaces::Interface::Latest::DataRate::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Latest::DataRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(input_data_rate.operation)
-	|| is_set(input_load.operation)
-	|| is_set(input_packet_rate.operation)
-	|| is_set(load_interval.operation)
-	|| is_set(output_data_rate.operation)
-	|| is_set(output_load.operation)
-	|| is_set(output_packet_rate.operation)
-	|| is_set(peak_input_data_rate.operation)
-	|| is_set(peak_input_packet_rate.operation)
-	|| is_set(peak_output_data_rate.operation)
-	|| is_set(peak_output_packet_rate.operation)
-	|| is_set(reliability.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(input_data_rate.yfilter)
+	|| ydk::is_set(input_load.yfilter)
+	|| ydk::is_set(input_packet_rate.yfilter)
+	|| ydk::is_set(load_interval.yfilter)
+	|| ydk::is_set(output_data_rate.yfilter)
+	|| ydk::is_set(output_load.yfilter)
+	|| ydk::is_set(output_packet_rate.yfilter)
+	|| ydk::is_set(peak_input_data_rate.yfilter)
+	|| ydk::is_set(peak_input_packet_rate.yfilter)
+	|| ydk::is_set(peak_output_data_rate.yfilter)
+	|| ydk::is_set(peak_output_packet_rate.yfilter)
+	|| ydk::is_set(reliability.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Latest::DataRate::get_segment_path() const
@@ -2489,19 +3503,19 @@ const EntityPath InfraStatistics::Interfaces::Interface::Latest::DataRate::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (input_data_rate.is_set || is_set(input_data_rate.operation)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
-    if (input_load.is_set || is_set(input_load.operation)) leaf_name_data.push_back(input_load.get_name_leafdata());
-    if (input_packet_rate.is_set || is_set(input_packet_rate.operation)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
-    if (load_interval.is_set || is_set(load_interval.operation)) leaf_name_data.push_back(load_interval.get_name_leafdata());
-    if (output_data_rate.is_set || is_set(output_data_rate.operation)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
-    if (output_load.is_set || is_set(output_load.operation)) leaf_name_data.push_back(output_load.get_name_leafdata());
-    if (output_packet_rate.is_set || is_set(output_packet_rate.operation)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
-    if (peak_input_data_rate.is_set || is_set(peak_input_data_rate.operation)) leaf_name_data.push_back(peak_input_data_rate.get_name_leafdata());
-    if (peak_input_packet_rate.is_set || is_set(peak_input_packet_rate.operation)) leaf_name_data.push_back(peak_input_packet_rate.get_name_leafdata());
-    if (peak_output_data_rate.is_set || is_set(peak_output_data_rate.operation)) leaf_name_data.push_back(peak_output_data_rate.get_name_leafdata());
-    if (peak_output_packet_rate.is_set || is_set(peak_output_packet_rate.operation)) leaf_name_data.push_back(peak_output_packet_rate.get_name_leafdata());
-    if (reliability.is_set || is_set(reliability.operation)) leaf_name_data.push_back(reliability.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (input_data_rate.is_set || is_set(input_data_rate.yfilter)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
+    if (input_load.is_set || is_set(input_load.yfilter)) leaf_name_data.push_back(input_load.get_name_leafdata());
+    if (input_packet_rate.is_set || is_set(input_packet_rate.yfilter)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
+    if (load_interval.is_set || is_set(load_interval.yfilter)) leaf_name_data.push_back(load_interval.get_name_leafdata());
+    if (output_data_rate.is_set || is_set(output_data_rate.yfilter)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
+    if (output_load.is_set || is_set(output_load.yfilter)) leaf_name_data.push_back(output_load.get_name_leafdata());
+    if (output_packet_rate.is_set || is_set(output_packet_rate.yfilter)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
+    if (peak_input_data_rate.is_set || is_set(peak_input_data_rate.yfilter)) leaf_name_data.push_back(peak_input_data_rate.get_name_leafdata());
+    if (peak_input_packet_rate.is_set || is_set(peak_input_packet_rate.yfilter)) leaf_name_data.push_back(peak_input_packet_rate.get_name_leafdata());
+    if (peak_output_data_rate.is_set || is_set(peak_output_data_rate.yfilter)) leaf_name_data.push_back(peak_output_data_rate.get_name_leafdata());
+    if (peak_output_packet_rate.is_set || is_set(peak_output_packet_rate.yfilter)) leaf_name_data.push_back(peak_output_packet_rate.get_name_leafdata());
+    if (reliability.is_set || is_set(reliability.yfilter)) leaf_name_data.push_back(reliability.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2520,60 +3534,149 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Latest::DataRate::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Latest::DataRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-data-rate")
     {
         input_data_rate = value;
+        input_data_rate.value_namespace = name_space;
+        input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-load")
     {
         input_load = value;
+        input_load.value_namespace = name_space;
+        input_load.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packet-rate")
     {
         input_packet_rate = value;
+        input_packet_rate.value_namespace = name_space;
+        input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-interval")
     {
         load_interval = value;
+        load_interval.value_namespace = name_space;
+        load_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-data-rate")
     {
         output_data_rate = value;
+        output_data_rate.value_namespace = name_space;
+        output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-load")
     {
         output_load = value;
+        output_load.value_namespace = name_space;
+        output_load.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-packet-rate")
     {
         output_packet_rate = value;
+        output_packet_rate.value_namespace = name_space;
+        output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-input-data-rate")
     {
         peak_input_data_rate = value;
+        peak_input_data_rate.value_namespace = name_space;
+        peak_input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-input-packet-rate")
     {
         peak_input_packet_rate = value;
+        peak_input_packet_rate.value_namespace = name_space;
+        peak_input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-output-data-rate")
     {
         peak_output_data_rate = value;
+        peak_output_data_rate.value_namespace = name_space;
+        peak_output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-output-packet-rate")
     {
         peak_output_packet_rate = value;
+        peak_output_packet_rate.value_namespace = name_space;
+        peak_output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reliability")
     {
         reliability = value;
+        reliability.value_namespace = name_space;
+        reliability.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Latest::DataRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "input-data-rate")
+    {
+        input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "input-load")
+    {
+        input_load.yfilter = yfilter;
+    }
+    if(value_path == "input-packet-rate")
+    {
+        input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "load-interval")
+    {
+        load_interval.yfilter = yfilter;
+    }
+    if(value_path == "output-data-rate")
+    {
+        output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "output-load")
+    {
+        output_load.yfilter = yfilter;
+    }
+    if(value_path == "output-packet-rate")
+    {
+        output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-input-data-rate")
+    {
+        peak_input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-input-packet-rate")
+    {
+        peak_input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-output-data-rate")
+    {
+        peak_output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-output-packet-rate")
+    {
+        peak_output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "reliability")
+    {
+        reliability.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Latest::DataRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "input-data-rate" || name == "input-load" || name == "input-packet-rate" || name == "load-interval" || name == "output-data-rate" || name == "output-load" || name == "output-packet-rate" || name == "peak-input-data-rate" || name == "peak-input-packet-rate" || name == "peak-output-data-rate" || name == "peak-output-packet-rate" || name == "reliability")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Latest::GenericCounters::GenericCounters()
@@ -2664,43 +3767,43 @@ bool InfraStatistics::Interfaces::Interface::Latest::GenericCounters::has_data()
 
 bool InfraStatistics::Interfaces::Interface::Latest::GenericCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(applique.operation)
-	|| is_set(availability_flag.operation)
-	|| is_set(broadcast_packets_received.operation)
-	|| is_set(broadcast_packets_sent.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(carrier_transitions.operation)
-	|| is_set(crc_errors.operation)
-	|| is_set(framing_errors_received.operation)
-	|| is_set(giant_packets_received.operation)
-	|| is_set(input_aborts.operation)
-	|| is_set(input_drops.operation)
-	|| is_set(input_errors.operation)
-	|| is_set(input_ignored_packets.operation)
-	|| is_set(input_overruns.operation)
-	|| is_set(input_queue_drops.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(last_discontinuity_time.operation)
-	|| is_set(multicast_packets_received.operation)
-	|| is_set(multicast_packets_sent.operation)
-	|| is_set(output_buffer_failures.operation)
-	|| is_set(output_buffers_swapped_out.operation)
-	|| is_set(output_drops.operation)
-	|| is_set(output_errors.operation)
-	|| is_set(output_queue_drops.operation)
-	|| is_set(output_underruns.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(parity_packets_received.operation)
-	|| is_set(resets.operation)
-	|| is_set(runt_packets_received.operation)
-	|| is_set(seconds_since_last_clear_counters.operation)
-	|| is_set(seconds_since_packet_received.operation)
-	|| is_set(seconds_since_packet_sent.operation)
-	|| is_set(throttled_packets_received.operation)
-	|| is_set(unknown_protocol_packets_received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(applique.yfilter)
+	|| ydk::is_set(availability_flag.yfilter)
+	|| ydk::is_set(broadcast_packets_received.yfilter)
+	|| ydk::is_set(broadcast_packets_sent.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(carrier_transitions.yfilter)
+	|| ydk::is_set(crc_errors.yfilter)
+	|| ydk::is_set(framing_errors_received.yfilter)
+	|| ydk::is_set(giant_packets_received.yfilter)
+	|| ydk::is_set(input_aborts.yfilter)
+	|| ydk::is_set(input_drops.yfilter)
+	|| ydk::is_set(input_errors.yfilter)
+	|| ydk::is_set(input_ignored_packets.yfilter)
+	|| ydk::is_set(input_overruns.yfilter)
+	|| ydk::is_set(input_queue_drops.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(last_discontinuity_time.yfilter)
+	|| ydk::is_set(multicast_packets_received.yfilter)
+	|| ydk::is_set(multicast_packets_sent.yfilter)
+	|| ydk::is_set(output_buffer_failures.yfilter)
+	|| ydk::is_set(output_buffers_swapped_out.yfilter)
+	|| ydk::is_set(output_drops.yfilter)
+	|| ydk::is_set(output_errors.yfilter)
+	|| ydk::is_set(output_queue_drops.yfilter)
+	|| ydk::is_set(output_underruns.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(parity_packets_received.yfilter)
+	|| ydk::is_set(resets.yfilter)
+	|| ydk::is_set(runt_packets_received.yfilter)
+	|| ydk::is_set(seconds_since_last_clear_counters.yfilter)
+	|| ydk::is_set(seconds_since_packet_received.yfilter)
+	|| ydk::is_set(seconds_since_packet_sent.yfilter)
+	|| ydk::is_set(throttled_packets_received.yfilter)
+	|| ydk::is_set(unknown_protocol_packets_received.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Latest::GenericCounters::get_segment_path() const
@@ -2726,42 +3829,42 @@ const EntityPath InfraStatistics::Interfaces::Interface::Latest::GenericCounters
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (applique.is_set || is_set(applique.operation)) leaf_name_data.push_back(applique.get_name_leafdata());
-    if (availability_flag.is_set || is_set(availability_flag.operation)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
-    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.operation)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
-    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.operation)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (carrier_transitions.is_set || is_set(carrier_transitions.operation)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
-    if (crc_errors.is_set || is_set(crc_errors.operation)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
-    if (framing_errors_received.is_set || is_set(framing_errors_received.operation)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
-    if (giant_packets_received.is_set || is_set(giant_packets_received.operation)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
-    if (input_aborts.is_set || is_set(input_aborts.operation)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
-    if (input_drops.is_set || is_set(input_drops.operation)) leaf_name_data.push_back(input_drops.get_name_leafdata());
-    if (input_errors.is_set || is_set(input_errors.operation)) leaf_name_data.push_back(input_errors.get_name_leafdata());
-    if (input_ignored_packets.is_set || is_set(input_ignored_packets.operation)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
-    if (input_overruns.is_set || is_set(input_overruns.operation)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
-    if (input_queue_drops.is_set || is_set(input_queue_drops.operation)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.operation)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
-    if (multicast_packets_received.is_set || is_set(multicast_packets_received.operation)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
-    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.operation)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
-    if (output_buffer_failures.is_set || is_set(output_buffer_failures.operation)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
-    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.operation)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
-    if (output_drops.is_set || is_set(output_drops.operation)) leaf_name_data.push_back(output_drops.get_name_leafdata());
-    if (output_errors.is_set || is_set(output_errors.operation)) leaf_name_data.push_back(output_errors.get_name_leafdata());
-    if (output_queue_drops.is_set || is_set(output_queue_drops.operation)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
-    if (output_underruns.is_set || is_set(output_underruns.operation)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (parity_packets_received.is_set || is_set(parity_packets_received.operation)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
-    if (resets.is_set || is_set(resets.operation)) leaf_name_data.push_back(resets.get_name_leafdata());
-    if (runt_packets_received.is_set || is_set(runt_packets_received.operation)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
-    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.operation)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
-    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.operation)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
-    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.operation)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
-    if (throttled_packets_received.is_set || is_set(throttled_packets_received.operation)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
-    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.operation)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
+    if (applique.is_set || is_set(applique.yfilter)) leaf_name_data.push_back(applique.get_name_leafdata());
+    if (availability_flag.is_set || is_set(availability_flag.yfilter)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
+    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.yfilter)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
+    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.yfilter)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (carrier_transitions.is_set || is_set(carrier_transitions.yfilter)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
+    if (crc_errors.is_set || is_set(crc_errors.yfilter)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
+    if (framing_errors_received.is_set || is_set(framing_errors_received.yfilter)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
+    if (giant_packets_received.is_set || is_set(giant_packets_received.yfilter)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
+    if (input_aborts.is_set || is_set(input_aborts.yfilter)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
+    if (input_drops.is_set || is_set(input_drops.yfilter)) leaf_name_data.push_back(input_drops.get_name_leafdata());
+    if (input_errors.is_set || is_set(input_errors.yfilter)) leaf_name_data.push_back(input_errors.get_name_leafdata());
+    if (input_ignored_packets.is_set || is_set(input_ignored_packets.yfilter)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
+    if (input_overruns.is_set || is_set(input_overruns.yfilter)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
+    if (input_queue_drops.is_set || is_set(input_queue_drops.yfilter)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.yfilter)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
+    if (multicast_packets_received.is_set || is_set(multicast_packets_received.yfilter)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
+    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.yfilter)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
+    if (output_buffer_failures.is_set || is_set(output_buffer_failures.yfilter)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
+    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.yfilter)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
+    if (output_drops.is_set || is_set(output_drops.yfilter)) leaf_name_data.push_back(output_drops.get_name_leafdata());
+    if (output_errors.is_set || is_set(output_errors.yfilter)) leaf_name_data.push_back(output_errors.get_name_leafdata());
+    if (output_queue_drops.is_set || is_set(output_queue_drops.yfilter)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
+    if (output_underruns.is_set || is_set(output_underruns.yfilter)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (parity_packets_received.is_set || is_set(parity_packets_received.yfilter)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
+    if (resets.is_set || is_set(resets.yfilter)) leaf_name_data.push_back(resets.get_name_leafdata());
+    if (runt_packets_received.is_set || is_set(runt_packets_received.yfilter)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
+    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.yfilter)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
+    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.yfilter)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
+    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.yfilter)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
+    if (throttled_packets_received.is_set || is_set(throttled_packets_received.yfilter)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
+    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.yfilter)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2780,152 +3883,379 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Latest::GenericCounters::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Latest::GenericCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "applique")
     {
         applique = value;
+        applique.value_namespace = name_space;
+        applique.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "availability-flag")
     {
         availability_flag = value;
+        availability_flag.value_namespace = name_space;
+        availability_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-received")
     {
         broadcast_packets_received = value;
+        broadcast_packets_received.value_namespace = name_space;
+        broadcast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-sent")
     {
         broadcast_packets_sent = value;
+        broadcast_packets_sent.value_namespace = name_space;
+        broadcast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "carrier-transitions")
     {
         carrier_transitions = value;
+        carrier_transitions.value_namespace = name_space;
+        carrier_transitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "crc-errors")
     {
         crc_errors = value;
+        crc_errors.value_namespace = name_space;
+        crc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-errors-received")
     {
         framing_errors_received = value;
+        framing_errors_received.value_namespace = name_space;
+        framing_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "giant-packets-received")
     {
         giant_packets_received = value;
+        giant_packets_received.value_namespace = name_space;
+        giant_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-aborts")
     {
         input_aborts = value;
+        input_aborts.value_namespace = name_space;
+        input_aborts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-drops")
     {
         input_drops = value;
+        input_drops.value_namespace = name_space;
+        input_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-errors")
     {
         input_errors = value;
+        input_errors.value_namespace = name_space;
+        input_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-ignored-packets")
     {
         input_ignored_packets = value;
+        input_ignored_packets.value_namespace = name_space;
+        input_ignored_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-overruns")
     {
         input_overruns = value;
+        input_overruns.value_namespace = name_space;
+        input_overruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-queue-drops")
     {
         input_queue_drops = value;
+        input_queue_drops.value_namespace = name_space;
+        input_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-discontinuity-time")
     {
         last_discontinuity_time = value;
+        last_discontinuity_time.value_namespace = name_space;
+        last_discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-received")
     {
         multicast_packets_received = value;
+        multicast_packets_received.value_namespace = name_space;
+        multicast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-sent")
     {
         multicast_packets_sent = value;
+        multicast_packets_sent.value_namespace = name_space;
+        multicast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffer-failures")
     {
         output_buffer_failures = value;
+        output_buffer_failures.value_namespace = name_space;
+        output_buffer_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffers-swapped-out")
     {
         output_buffers_swapped_out = value;
+        output_buffers_swapped_out.value_namespace = name_space;
+        output_buffers_swapped_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-drops")
     {
         output_drops = value;
+        output_drops.value_namespace = name_space;
+        output_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-errors")
     {
         output_errors = value;
+        output_errors.value_namespace = name_space;
+        output_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-queue-drops")
     {
         output_queue_drops = value;
+        output_queue_drops.value_namespace = name_space;
+        output_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-underruns")
     {
         output_underruns = value;
+        output_underruns.value_namespace = name_space;
+        output_underruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-packets-received")
     {
         parity_packets_received = value;
+        parity_packets_received.value_namespace = name_space;
+        parity_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resets")
     {
         resets = value;
+        resets.value_namespace = name_space;
+        resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "runt-packets-received")
     {
         runt_packets_received = value;
+        runt_packets_received.value_namespace = name_space;
+        runt_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-last-clear-counters")
     {
         seconds_since_last_clear_counters = value;
+        seconds_since_last_clear_counters.value_namespace = name_space;
+        seconds_since_last_clear_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-received")
     {
         seconds_since_packet_received = value;
+        seconds_since_packet_received.value_namespace = name_space;
+        seconds_since_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-sent")
     {
         seconds_since_packet_sent = value;
+        seconds_since_packet_sent.value_namespace = name_space;
+        seconds_since_packet_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttled-packets-received")
     {
         throttled_packets_received = value;
+        throttled_packets_received.value_namespace = name_space;
+        throttled_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-protocol-packets-received")
     {
         unknown_protocol_packets_received = value;
+        unknown_protocol_packets_received.value_namespace = name_space;
+        unknown_protocol_packets_received.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Latest::GenericCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applique")
+    {
+        applique.yfilter = yfilter;
+    }
+    if(value_path == "availability-flag")
+    {
+        availability_flag.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-received")
+    {
+        broadcast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-sent")
+    {
+        broadcast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "carrier-transitions")
+    {
+        carrier_transitions.yfilter = yfilter;
+    }
+    if(value_path == "crc-errors")
+    {
+        crc_errors.yfilter = yfilter;
+    }
+    if(value_path == "framing-errors-received")
+    {
+        framing_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "giant-packets-received")
+    {
+        giant_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "input-aborts")
+    {
+        input_aborts.yfilter = yfilter;
+    }
+    if(value_path == "input-drops")
+    {
+        input_drops.yfilter = yfilter;
+    }
+    if(value_path == "input-errors")
+    {
+        input_errors.yfilter = yfilter;
+    }
+    if(value_path == "input-ignored-packets")
+    {
+        input_ignored_packets.yfilter = yfilter;
+    }
+    if(value_path == "input-overruns")
+    {
+        input_overruns.yfilter = yfilter;
+    }
+    if(value_path == "input-queue-drops")
+    {
+        input_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "last-discontinuity-time")
+    {
+        last_discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-received")
+    {
+        multicast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-sent")
+    {
+        multicast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "output-buffer-failures")
+    {
+        output_buffer_failures.yfilter = yfilter;
+    }
+    if(value_path == "output-buffers-swapped-out")
+    {
+        output_buffers_swapped_out.yfilter = yfilter;
+    }
+    if(value_path == "output-drops")
+    {
+        output_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-errors")
+    {
+        output_errors.yfilter = yfilter;
+    }
+    if(value_path == "output-queue-drops")
+    {
+        output_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-underruns")
+    {
+        output_underruns.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "parity-packets-received")
+    {
+        parity_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "resets")
+    {
+        resets.yfilter = yfilter;
+    }
+    if(value_path == "runt-packets-received")
+    {
+        runt_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-last-clear-counters")
+    {
+        seconds_since_last_clear_counters.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-received")
+    {
+        seconds_since_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-sent")
+    {
+        seconds_since_packet_sent.yfilter = yfilter;
+    }
+    if(value_path == "throttled-packets-received")
+    {
+        throttled_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets-received")
+    {
+        unknown_protocol_packets_received.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Latest::GenericCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applique" || name == "availability-flag" || name == "broadcast-packets-received" || name == "broadcast-packets-sent" || name == "bytes-received" || name == "bytes-sent" || name == "carrier-transitions" || name == "crc-errors" || name == "framing-errors-received" || name == "giant-packets-received" || name == "input-aborts" || name == "input-drops" || name == "input-errors" || name == "input-ignored-packets" || name == "input-overruns" || name == "input-queue-drops" || name == "last-data-time" || name == "last-discontinuity-time" || name == "multicast-packets-received" || name == "multicast-packets-sent" || name == "output-buffer-failures" || name == "output-buffers-swapped-out" || name == "output-drops" || name == "output-errors" || name == "output-queue-drops" || name == "output-underruns" || name == "packets-received" || name == "packets-sent" || name == "parity-packets-received" || name == "resets" || name == "runt-packets-received" || name == "seconds-since-last-clear-counters" || name == "seconds-since-packet-received" || name == "seconds-since-packet-sent" || name == "throttled-packets-received" || name == "unknown-protocol-packets-received")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Total::Total()
@@ -2960,7 +4290,7 @@ bool InfraStatistics::Interfaces::Interface::Total::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Total::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (data_rate !=  nullptr && data_rate->has_operation())
 	|| (generic_counters !=  nullptr && generic_counters->has_operation())
 	|| (interfaces_mib_counters !=  nullptr && interfaces_mib_counters->has_operation())
@@ -3064,8 +4394,19 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Total::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Total::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InfraStatistics::Interfaces::Interface::Total::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InfraStatistics::Interfaces::Interface::Total::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-rate" || name == "generic-counters" || name == "interfaces-mib-counters" || name == "protocols")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Total::Protocols::Protocols()
@@ -3094,7 +4435,7 @@ bool InfraStatistics::Interfaces::Interface::Total::Protocols::has_operation() c
         if(protocol[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Total::Protocols::get_segment_path() const
@@ -3159,8 +4500,19 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Total::Protocols::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Total::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InfraStatistics::Interfaces::Interface::Total::Protocols::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InfraStatistics::Interfaces::Interface::Total::Protocols::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::Protocol()
@@ -3201,18 +4553,18 @@ bool InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::has_dat
 
 bool InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(protocol_name.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(input_data_rate.operation)
-	|| is_set(input_packet_rate.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(output_data_rate.operation)
-	|| is_set(output_packet_rate.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(protocol.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_name.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(input_data_rate.yfilter)
+	|| ydk::is_set(input_packet_rate.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(output_data_rate.yfilter)
+	|| ydk::is_set(output_packet_rate.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(protocol.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::get_segment_path() const
@@ -3238,17 +4590,17 @@ const EntityPath InfraStatistics::Interfaces::Interface::Total::Protocols::Proto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (protocol_name.is_set || is_set(protocol_name.operation)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (input_data_rate.is_set || is_set(input_data_rate.operation)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
-    if (input_packet_rate.is_set || is_set(input_packet_rate.operation)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (output_data_rate.is_set || is_set(output_data_rate.operation)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
-    if (output_packet_rate.is_set || is_set(output_packet_rate.operation)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (input_data_rate.is_set || is_set(input_data_rate.yfilter)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
+    if (input_packet_rate.is_set || is_set(input_packet_rate.yfilter)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (output_data_rate.is_set || is_set(output_data_rate.yfilter)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
+    if (output_packet_rate.is_set || is_set(output_packet_rate.yfilter)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3267,52 +4619,129 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol-name")
     {
         protocol_name = value;
+        protocol_name.value_namespace = name_space;
+        protocol_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-data-rate")
     {
         input_data_rate = value;
+        input_data_rate.value_namespace = name_space;
+        input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packet-rate")
     {
         input_packet_rate = value;
+        input_packet_rate.value_namespace = name_space;
+        input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-data-rate")
     {
         output_data_rate = value;
+        output_data_rate.value_namespace = name_space;
+        output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-packet-rate")
     {
         output_packet_rate = value;
+        output_packet_rate.value_namespace = name_space;
+        output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocol-name")
+    {
+        protocol_name.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "input-data-rate")
+    {
+        input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "input-packet-rate")
+    {
+        input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "output-data-rate")
+    {
+        output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "output-packet-rate")
+    {
+        output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-name" || name == "bytes-received" || name == "bytes-sent" || name == "input-data-rate" || name == "input-packet-rate" || name == "last-data-time" || name == "output-data-rate" || name == "output-packet-rate" || name == "packets-received" || name == "packets-sent" || name == "protocol")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::InterfacesMibCounters()
@@ -3403,43 +4832,43 @@ bool InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::has_d
 
 bool InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(applique.operation)
-	|| is_set(availability_flag.operation)
-	|| is_set(broadcast_packets_received.operation)
-	|| is_set(broadcast_packets_sent.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(carrier_transitions.operation)
-	|| is_set(crc_errors.operation)
-	|| is_set(framing_errors_received.operation)
-	|| is_set(giant_packets_received.operation)
-	|| is_set(input_aborts.operation)
-	|| is_set(input_drops.operation)
-	|| is_set(input_errors.operation)
-	|| is_set(input_ignored_packets.operation)
-	|| is_set(input_overruns.operation)
-	|| is_set(input_queue_drops.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(last_discontinuity_time.operation)
-	|| is_set(multicast_packets_received.operation)
-	|| is_set(multicast_packets_sent.operation)
-	|| is_set(output_buffer_failures.operation)
-	|| is_set(output_buffers_swapped_out.operation)
-	|| is_set(output_drops.operation)
-	|| is_set(output_errors.operation)
-	|| is_set(output_queue_drops.operation)
-	|| is_set(output_underruns.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(parity_packets_received.operation)
-	|| is_set(resets.operation)
-	|| is_set(runt_packets_received.operation)
-	|| is_set(seconds_since_last_clear_counters.operation)
-	|| is_set(seconds_since_packet_received.operation)
-	|| is_set(seconds_since_packet_sent.operation)
-	|| is_set(throttled_packets_received.operation)
-	|| is_set(unknown_protocol_packets_received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(applique.yfilter)
+	|| ydk::is_set(availability_flag.yfilter)
+	|| ydk::is_set(broadcast_packets_received.yfilter)
+	|| ydk::is_set(broadcast_packets_sent.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(carrier_transitions.yfilter)
+	|| ydk::is_set(crc_errors.yfilter)
+	|| ydk::is_set(framing_errors_received.yfilter)
+	|| ydk::is_set(giant_packets_received.yfilter)
+	|| ydk::is_set(input_aborts.yfilter)
+	|| ydk::is_set(input_drops.yfilter)
+	|| ydk::is_set(input_errors.yfilter)
+	|| ydk::is_set(input_ignored_packets.yfilter)
+	|| ydk::is_set(input_overruns.yfilter)
+	|| ydk::is_set(input_queue_drops.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(last_discontinuity_time.yfilter)
+	|| ydk::is_set(multicast_packets_received.yfilter)
+	|| ydk::is_set(multicast_packets_sent.yfilter)
+	|| ydk::is_set(output_buffer_failures.yfilter)
+	|| ydk::is_set(output_buffers_swapped_out.yfilter)
+	|| ydk::is_set(output_drops.yfilter)
+	|| ydk::is_set(output_errors.yfilter)
+	|| ydk::is_set(output_queue_drops.yfilter)
+	|| ydk::is_set(output_underruns.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(parity_packets_received.yfilter)
+	|| ydk::is_set(resets.yfilter)
+	|| ydk::is_set(runt_packets_received.yfilter)
+	|| ydk::is_set(seconds_since_last_clear_counters.yfilter)
+	|| ydk::is_set(seconds_since_packet_received.yfilter)
+	|| ydk::is_set(seconds_since_packet_sent.yfilter)
+	|| ydk::is_set(throttled_packets_received.yfilter)
+	|| ydk::is_set(unknown_protocol_packets_received.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::get_segment_path() const
@@ -3465,42 +4894,42 @@ const EntityPath InfraStatistics::Interfaces::Interface::Total::InterfacesMibCou
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (applique.is_set || is_set(applique.operation)) leaf_name_data.push_back(applique.get_name_leafdata());
-    if (availability_flag.is_set || is_set(availability_flag.operation)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
-    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.operation)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
-    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.operation)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (carrier_transitions.is_set || is_set(carrier_transitions.operation)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
-    if (crc_errors.is_set || is_set(crc_errors.operation)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
-    if (framing_errors_received.is_set || is_set(framing_errors_received.operation)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
-    if (giant_packets_received.is_set || is_set(giant_packets_received.operation)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
-    if (input_aborts.is_set || is_set(input_aborts.operation)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
-    if (input_drops.is_set || is_set(input_drops.operation)) leaf_name_data.push_back(input_drops.get_name_leafdata());
-    if (input_errors.is_set || is_set(input_errors.operation)) leaf_name_data.push_back(input_errors.get_name_leafdata());
-    if (input_ignored_packets.is_set || is_set(input_ignored_packets.operation)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
-    if (input_overruns.is_set || is_set(input_overruns.operation)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
-    if (input_queue_drops.is_set || is_set(input_queue_drops.operation)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.operation)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
-    if (multicast_packets_received.is_set || is_set(multicast_packets_received.operation)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
-    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.operation)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
-    if (output_buffer_failures.is_set || is_set(output_buffer_failures.operation)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
-    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.operation)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
-    if (output_drops.is_set || is_set(output_drops.operation)) leaf_name_data.push_back(output_drops.get_name_leafdata());
-    if (output_errors.is_set || is_set(output_errors.operation)) leaf_name_data.push_back(output_errors.get_name_leafdata());
-    if (output_queue_drops.is_set || is_set(output_queue_drops.operation)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
-    if (output_underruns.is_set || is_set(output_underruns.operation)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (parity_packets_received.is_set || is_set(parity_packets_received.operation)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
-    if (resets.is_set || is_set(resets.operation)) leaf_name_data.push_back(resets.get_name_leafdata());
-    if (runt_packets_received.is_set || is_set(runt_packets_received.operation)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
-    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.operation)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
-    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.operation)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
-    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.operation)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
-    if (throttled_packets_received.is_set || is_set(throttled_packets_received.operation)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
-    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.operation)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
+    if (applique.is_set || is_set(applique.yfilter)) leaf_name_data.push_back(applique.get_name_leafdata());
+    if (availability_flag.is_set || is_set(availability_flag.yfilter)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
+    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.yfilter)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
+    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.yfilter)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (carrier_transitions.is_set || is_set(carrier_transitions.yfilter)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
+    if (crc_errors.is_set || is_set(crc_errors.yfilter)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
+    if (framing_errors_received.is_set || is_set(framing_errors_received.yfilter)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
+    if (giant_packets_received.is_set || is_set(giant_packets_received.yfilter)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
+    if (input_aborts.is_set || is_set(input_aborts.yfilter)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
+    if (input_drops.is_set || is_set(input_drops.yfilter)) leaf_name_data.push_back(input_drops.get_name_leafdata());
+    if (input_errors.is_set || is_set(input_errors.yfilter)) leaf_name_data.push_back(input_errors.get_name_leafdata());
+    if (input_ignored_packets.is_set || is_set(input_ignored_packets.yfilter)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
+    if (input_overruns.is_set || is_set(input_overruns.yfilter)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
+    if (input_queue_drops.is_set || is_set(input_queue_drops.yfilter)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.yfilter)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
+    if (multicast_packets_received.is_set || is_set(multicast_packets_received.yfilter)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
+    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.yfilter)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
+    if (output_buffer_failures.is_set || is_set(output_buffer_failures.yfilter)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
+    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.yfilter)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
+    if (output_drops.is_set || is_set(output_drops.yfilter)) leaf_name_data.push_back(output_drops.get_name_leafdata());
+    if (output_errors.is_set || is_set(output_errors.yfilter)) leaf_name_data.push_back(output_errors.get_name_leafdata());
+    if (output_queue_drops.is_set || is_set(output_queue_drops.yfilter)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
+    if (output_underruns.is_set || is_set(output_underruns.yfilter)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (parity_packets_received.is_set || is_set(parity_packets_received.yfilter)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
+    if (resets.is_set || is_set(resets.yfilter)) leaf_name_data.push_back(resets.get_name_leafdata());
+    if (runt_packets_received.is_set || is_set(runt_packets_received.yfilter)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
+    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.yfilter)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
+    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.yfilter)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
+    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.yfilter)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
+    if (throttled_packets_received.is_set || is_set(throttled_packets_received.yfilter)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
+    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.yfilter)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3519,152 +4948,379 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "applique")
     {
         applique = value;
+        applique.value_namespace = name_space;
+        applique.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "availability-flag")
     {
         availability_flag = value;
+        availability_flag.value_namespace = name_space;
+        availability_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-received")
     {
         broadcast_packets_received = value;
+        broadcast_packets_received.value_namespace = name_space;
+        broadcast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-sent")
     {
         broadcast_packets_sent = value;
+        broadcast_packets_sent.value_namespace = name_space;
+        broadcast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "carrier-transitions")
     {
         carrier_transitions = value;
+        carrier_transitions.value_namespace = name_space;
+        carrier_transitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "crc-errors")
     {
         crc_errors = value;
+        crc_errors.value_namespace = name_space;
+        crc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-errors-received")
     {
         framing_errors_received = value;
+        framing_errors_received.value_namespace = name_space;
+        framing_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "giant-packets-received")
     {
         giant_packets_received = value;
+        giant_packets_received.value_namespace = name_space;
+        giant_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-aborts")
     {
         input_aborts = value;
+        input_aborts.value_namespace = name_space;
+        input_aborts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-drops")
     {
         input_drops = value;
+        input_drops.value_namespace = name_space;
+        input_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-errors")
     {
         input_errors = value;
+        input_errors.value_namespace = name_space;
+        input_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-ignored-packets")
     {
         input_ignored_packets = value;
+        input_ignored_packets.value_namespace = name_space;
+        input_ignored_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-overruns")
     {
         input_overruns = value;
+        input_overruns.value_namespace = name_space;
+        input_overruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-queue-drops")
     {
         input_queue_drops = value;
+        input_queue_drops.value_namespace = name_space;
+        input_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-discontinuity-time")
     {
         last_discontinuity_time = value;
+        last_discontinuity_time.value_namespace = name_space;
+        last_discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-received")
     {
         multicast_packets_received = value;
+        multicast_packets_received.value_namespace = name_space;
+        multicast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-sent")
     {
         multicast_packets_sent = value;
+        multicast_packets_sent.value_namespace = name_space;
+        multicast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffer-failures")
     {
         output_buffer_failures = value;
+        output_buffer_failures.value_namespace = name_space;
+        output_buffer_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffers-swapped-out")
     {
         output_buffers_swapped_out = value;
+        output_buffers_swapped_out.value_namespace = name_space;
+        output_buffers_swapped_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-drops")
     {
         output_drops = value;
+        output_drops.value_namespace = name_space;
+        output_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-errors")
     {
         output_errors = value;
+        output_errors.value_namespace = name_space;
+        output_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-queue-drops")
     {
         output_queue_drops = value;
+        output_queue_drops.value_namespace = name_space;
+        output_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-underruns")
     {
         output_underruns = value;
+        output_underruns.value_namespace = name_space;
+        output_underruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-packets-received")
     {
         parity_packets_received = value;
+        parity_packets_received.value_namespace = name_space;
+        parity_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resets")
     {
         resets = value;
+        resets.value_namespace = name_space;
+        resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "runt-packets-received")
     {
         runt_packets_received = value;
+        runt_packets_received.value_namespace = name_space;
+        runt_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-last-clear-counters")
     {
         seconds_since_last_clear_counters = value;
+        seconds_since_last_clear_counters.value_namespace = name_space;
+        seconds_since_last_clear_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-received")
     {
         seconds_since_packet_received = value;
+        seconds_since_packet_received.value_namespace = name_space;
+        seconds_since_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-sent")
     {
         seconds_since_packet_sent = value;
+        seconds_since_packet_sent.value_namespace = name_space;
+        seconds_since_packet_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttled-packets-received")
     {
         throttled_packets_received = value;
+        throttled_packets_received.value_namespace = name_space;
+        throttled_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-protocol-packets-received")
     {
         unknown_protocol_packets_received = value;
+        unknown_protocol_packets_received.value_namespace = name_space;
+        unknown_protocol_packets_received.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applique")
+    {
+        applique.yfilter = yfilter;
+    }
+    if(value_path == "availability-flag")
+    {
+        availability_flag.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-received")
+    {
+        broadcast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-sent")
+    {
+        broadcast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "carrier-transitions")
+    {
+        carrier_transitions.yfilter = yfilter;
+    }
+    if(value_path == "crc-errors")
+    {
+        crc_errors.yfilter = yfilter;
+    }
+    if(value_path == "framing-errors-received")
+    {
+        framing_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "giant-packets-received")
+    {
+        giant_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "input-aborts")
+    {
+        input_aborts.yfilter = yfilter;
+    }
+    if(value_path == "input-drops")
+    {
+        input_drops.yfilter = yfilter;
+    }
+    if(value_path == "input-errors")
+    {
+        input_errors.yfilter = yfilter;
+    }
+    if(value_path == "input-ignored-packets")
+    {
+        input_ignored_packets.yfilter = yfilter;
+    }
+    if(value_path == "input-overruns")
+    {
+        input_overruns.yfilter = yfilter;
+    }
+    if(value_path == "input-queue-drops")
+    {
+        input_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "last-discontinuity-time")
+    {
+        last_discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-received")
+    {
+        multicast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-sent")
+    {
+        multicast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "output-buffer-failures")
+    {
+        output_buffer_failures.yfilter = yfilter;
+    }
+    if(value_path == "output-buffers-swapped-out")
+    {
+        output_buffers_swapped_out.yfilter = yfilter;
+    }
+    if(value_path == "output-drops")
+    {
+        output_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-errors")
+    {
+        output_errors.yfilter = yfilter;
+    }
+    if(value_path == "output-queue-drops")
+    {
+        output_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-underruns")
+    {
+        output_underruns.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "parity-packets-received")
+    {
+        parity_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "resets")
+    {
+        resets.yfilter = yfilter;
+    }
+    if(value_path == "runt-packets-received")
+    {
+        runt_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-last-clear-counters")
+    {
+        seconds_since_last_clear_counters.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-received")
+    {
+        seconds_since_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-sent")
+    {
+        seconds_since_packet_sent.yfilter = yfilter;
+    }
+    if(value_path == "throttled-packets-received")
+    {
+        throttled_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets-received")
+    {
+        unknown_protocol_packets_received.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applique" || name == "availability-flag" || name == "broadcast-packets-received" || name == "broadcast-packets-sent" || name == "bytes-received" || name == "bytes-sent" || name == "carrier-transitions" || name == "crc-errors" || name == "framing-errors-received" || name == "giant-packets-received" || name == "input-aborts" || name == "input-drops" || name == "input-errors" || name == "input-ignored-packets" || name == "input-overruns" || name == "input-queue-drops" || name == "last-data-time" || name == "last-discontinuity-time" || name == "multicast-packets-received" || name == "multicast-packets-sent" || name == "output-buffer-failures" || name == "output-buffers-swapped-out" || name == "output-drops" || name == "output-errors" || name == "output-queue-drops" || name == "output-underruns" || name == "packets-received" || name == "packets-sent" || name == "parity-packets-received" || name == "resets" || name == "runt-packets-received" || name == "seconds-since-last-clear-counters" || name == "seconds-since-packet-received" || name == "seconds-since-packet-sent" || name == "throttled-packets-received" || name == "unknown-protocol-packets-received")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Total::DataRate::DataRate()
@@ -3709,20 +5365,20 @@ bool InfraStatistics::Interfaces::Interface::Total::DataRate::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::Total::DataRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(input_data_rate.operation)
-	|| is_set(input_load.operation)
-	|| is_set(input_packet_rate.operation)
-	|| is_set(load_interval.operation)
-	|| is_set(output_data_rate.operation)
-	|| is_set(output_load.operation)
-	|| is_set(output_packet_rate.operation)
-	|| is_set(peak_input_data_rate.operation)
-	|| is_set(peak_input_packet_rate.operation)
-	|| is_set(peak_output_data_rate.operation)
-	|| is_set(peak_output_packet_rate.operation)
-	|| is_set(reliability.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(input_data_rate.yfilter)
+	|| ydk::is_set(input_load.yfilter)
+	|| ydk::is_set(input_packet_rate.yfilter)
+	|| ydk::is_set(load_interval.yfilter)
+	|| ydk::is_set(output_data_rate.yfilter)
+	|| ydk::is_set(output_load.yfilter)
+	|| ydk::is_set(output_packet_rate.yfilter)
+	|| ydk::is_set(peak_input_data_rate.yfilter)
+	|| ydk::is_set(peak_input_packet_rate.yfilter)
+	|| ydk::is_set(peak_output_data_rate.yfilter)
+	|| ydk::is_set(peak_output_packet_rate.yfilter)
+	|| ydk::is_set(reliability.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Total::DataRate::get_segment_path() const
@@ -3748,19 +5404,19 @@ const EntityPath InfraStatistics::Interfaces::Interface::Total::DataRate::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (input_data_rate.is_set || is_set(input_data_rate.operation)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
-    if (input_load.is_set || is_set(input_load.operation)) leaf_name_data.push_back(input_load.get_name_leafdata());
-    if (input_packet_rate.is_set || is_set(input_packet_rate.operation)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
-    if (load_interval.is_set || is_set(load_interval.operation)) leaf_name_data.push_back(load_interval.get_name_leafdata());
-    if (output_data_rate.is_set || is_set(output_data_rate.operation)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
-    if (output_load.is_set || is_set(output_load.operation)) leaf_name_data.push_back(output_load.get_name_leafdata());
-    if (output_packet_rate.is_set || is_set(output_packet_rate.operation)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
-    if (peak_input_data_rate.is_set || is_set(peak_input_data_rate.operation)) leaf_name_data.push_back(peak_input_data_rate.get_name_leafdata());
-    if (peak_input_packet_rate.is_set || is_set(peak_input_packet_rate.operation)) leaf_name_data.push_back(peak_input_packet_rate.get_name_leafdata());
-    if (peak_output_data_rate.is_set || is_set(peak_output_data_rate.operation)) leaf_name_data.push_back(peak_output_data_rate.get_name_leafdata());
-    if (peak_output_packet_rate.is_set || is_set(peak_output_packet_rate.operation)) leaf_name_data.push_back(peak_output_packet_rate.get_name_leafdata());
-    if (reliability.is_set || is_set(reliability.operation)) leaf_name_data.push_back(reliability.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (input_data_rate.is_set || is_set(input_data_rate.yfilter)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
+    if (input_load.is_set || is_set(input_load.yfilter)) leaf_name_data.push_back(input_load.get_name_leafdata());
+    if (input_packet_rate.is_set || is_set(input_packet_rate.yfilter)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
+    if (load_interval.is_set || is_set(load_interval.yfilter)) leaf_name_data.push_back(load_interval.get_name_leafdata());
+    if (output_data_rate.is_set || is_set(output_data_rate.yfilter)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
+    if (output_load.is_set || is_set(output_load.yfilter)) leaf_name_data.push_back(output_load.get_name_leafdata());
+    if (output_packet_rate.is_set || is_set(output_packet_rate.yfilter)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
+    if (peak_input_data_rate.is_set || is_set(peak_input_data_rate.yfilter)) leaf_name_data.push_back(peak_input_data_rate.get_name_leafdata());
+    if (peak_input_packet_rate.is_set || is_set(peak_input_packet_rate.yfilter)) leaf_name_data.push_back(peak_input_packet_rate.get_name_leafdata());
+    if (peak_output_data_rate.is_set || is_set(peak_output_data_rate.yfilter)) leaf_name_data.push_back(peak_output_data_rate.get_name_leafdata());
+    if (peak_output_packet_rate.is_set || is_set(peak_output_packet_rate.yfilter)) leaf_name_data.push_back(peak_output_packet_rate.get_name_leafdata());
+    if (reliability.is_set || is_set(reliability.yfilter)) leaf_name_data.push_back(reliability.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3779,60 +5435,149 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Total::DataRate::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Total::DataRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-data-rate")
     {
         input_data_rate = value;
+        input_data_rate.value_namespace = name_space;
+        input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-load")
     {
         input_load = value;
+        input_load.value_namespace = name_space;
+        input_load.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packet-rate")
     {
         input_packet_rate = value;
+        input_packet_rate.value_namespace = name_space;
+        input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-interval")
     {
         load_interval = value;
+        load_interval.value_namespace = name_space;
+        load_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-data-rate")
     {
         output_data_rate = value;
+        output_data_rate.value_namespace = name_space;
+        output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-load")
     {
         output_load = value;
+        output_load.value_namespace = name_space;
+        output_load.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-packet-rate")
     {
         output_packet_rate = value;
+        output_packet_rate.value_namespace = name_space;
+        output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-input-data-rate")
     {
         peak_input_data_rate = value;
+        peak_input_data_rate.value_namespace = name_space;
+        peak_input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-input-packet-rate")
     {
         peak_input_packet_rate = value;
+        peak_input_packet_rate.value_namespace = name_space;
+        peak_input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-output-data-rate")
     {
         peak_output_data_rate = value;
+        peak_output_data_rate.value_namespace = name_space;
+        peak_output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-output-packet-rate")
     {
         peak_output_packet_rate = value;
+        peak_output_packet_rate.value_namespace = name_space;
+        peak_output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reliability")
     {
         reliability = value;
+        reliability.value_namespace = name_space;
+        reliability.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Total::DataRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "input-data-rate")
+    {
+        input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "input-load")
+    {
+        input_load.yfilter = yfilter;
+    }
+    if(value_path == "input-packet-rate")
+    {
+        input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "load-interval")
+    {
+        load_interval.yfilter = yfilter;
+    }
+    if(value_path == "output-data-rate")
+    {
+        output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "output-load")
+    {
+        output_load.yfilter = yfilter;
+    }
+    if(value_path == "output-packet-rate")
+    {
+        output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-input-data-rate")
+    {
+        peak_input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-input-packet-rate")
+    {
+        peak_input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-output-data-rate")
+    {
+        peak_output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-output-packet-rate")
+    {
+        peak_output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "reliability")
+    {
+        reliability.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Total::DataRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "input-data-rate" || name == "input-load" || name == "input-packet-rate" || name == "load-interval" || name == "output-data-rate" || name == "output-load" || name == "output-packet-rate" || name == "peak-input-data-rate" || name == "peak-input-packet-rate" || name == "peak-output-data-rate" || name == "peak-output-packet-rate" || name == "reliability")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Total::GenericCounters::GenericCounters()
@@ -3923,43 +5668,43 @@ bool InfraStatistics::Interfaces::Interface::Total::GenericCounters::has_data() 
 
 bool InfraStatistics::Interfaces::Interface::Total::GenericCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(applique.operation)
-	|| is_set(availability_flag.operation)
-	|| is_set(broadcast_packets_received.operation)
-	|| is_set(broadcast_packets_sent.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(carrier_transitions.operation)
-	|| is_set(crc_errors.operation)
-	|| is_set(framing_errors_received.operation)
-	|| is_set(giant_packets_received.operation)
-	|| is_set(input_aborts.operation)
-	|| is_set(input_drops.operation)
-	|| is_set(input_errors.operation)
-	|| is_set(input_ignored_packets.operation)
-	|| is_set(input_overruns.operation)
-	|| is_set(input_queue_drops.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(last_discontinuity_time.operation)
-	|| is_set(multicast_packets_received.operation)
-	|| is_set(multicast_packets_sent.operation)
-	|| is_set(output_buffer_failures.operation)
-	|| is_set(output_buffers_swapped_out.operation)
-	|| is_set(output_drops.operation)
-	|| is_set(output_errors.operation)
-	|| is_set(output_queue_drops.operation)
-	|| is_set(output_underruns.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(parity_packets_received.operation)
-	|| is_set(resets.operation)
-	|| is_set(runt_packets_received.operation)
-	|| is_set(seconds_since_last_clear_counters.operation)
-	|| is_set(seconds_since_packet_received.operation)
-	|| is_set(seconds_since_packet_sent.operation)
-	|| is_set(throttled_packets_received.operation)
-	|| is_set(unknown_protocol_packets_received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(applique.yfilter)
+	|| ydk::is_set(availability_flag.yfilter)
+	|| ydk::is_set(broadcast_packets_received.yfilter)
+	|| ydk::is_set(broadcast_packets_sent.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(carrier_transitions.yfilter)
+	|| ydk::is_set(crc_errors.yfilter)
+	|| ydk::is_set(framing_errors_received.yfilter)
+	|| ydk::is_set(giant_packets_received.yfilter)
+	|| ydk::is_set(input_aborts.yfilter)
+	|| ydk::is_set(input_drops.yfilter)
+	|| ydk::is_set(input_errors.yfilter)
+	|| ydk::is_set(input_ignored_packets.yfilter)
+	|| ydk::is_set(input_overruns.yfilter)
+	|| ydk::is_set(input_queue_drops.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(last_discontinuity_time.yfilter)
+	|| ydk::is_set(multicast_packets_received.yfilter)
+	|| ydk::is_set(multicast_packets_sent.yfilter)
+	|| ydk::is_set(output_buffer_failures.yfilter)
+	|| ydk::is_set(output_buffers_swapped_out.yfilter)
+	|| ydk::is_set(output_drops.yfilter)
+	|| ydk::is_set(output_errors.yfilter)
+	|| ydk::is_set(output_queue_drops.yfilter)
+	|| ydk::is_set(output_underruns.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(parity_packets_received.yfilter)
+	|| ydk::is_set(resets.yfilter)
+	|| ydk::is_set(runt_packets_received.yfilter)
+	|| ydk::is_set(seconds_since_last_clear_counters.yfilter)
+	|| ydk::is_set(seconds_since_packet_received.yfilter)
+	|| ydk::is_set(seconds_since_packet_sent.yfilter)
+	|| ydk::is_set(throttled_packets_received.yfilter)
+	|| ydk::is_set(unknown_protocol_packets_received.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Total::GenericCounters::get_segment_path() const
@@ -3985,42 +5730,42 @@ const EntityPath InfraStatistics::Interfaces::Interface::Total::GenericCounters:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (applique.is_set || is_set(applique.operation)) leaf_name_data.push_back(applique.get_name_leafdata());
-    if (availability_flag.is_set || is_set(availability_flag.operation)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
-    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.operation)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
-    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.operation)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (carrier_transitions.is_set || is_set(carrier_transitions.operation)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
-    if (crc_errors.is_set || is_set(crc_errors.operation)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
-    if (framing_errors_received.is_set || is_set(framing_errors_received.operation)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
-    if (giant_packets_received.is_set || is_set(giant_packets_received.operation)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
-    if (input_aborts.is_set || is_set(input_aborts.operation)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
-    if (input_drops.is_set || is_set(input_drops.operation)) leaf_name_data.push_back(input_drops.get_name_leafdata());
-    if (input_errors.is_set || is_set(input_errors.operation)) leaf_name_data.push_back(input_errors.get_name_leafdata());
-    if (input_ignored_packets.is_set || is_set(input_ignored_packets.operation)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
-    if (input_overruns.is_set || is_set(input_overruns.operation)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
-    if (input_queue_drops.is_set || is_set(input_queue_drops.operation)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.operation)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
-    if (multicast_packets_received.is_set || is_set(multicast_packets_received.operation)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
-    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.operation)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
-    if (output_buffer_failures.is_set || is_set(output_buffer_failures.operation)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
-    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.operation)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
-    if (output_drops.is_set || is_set(output_drops.operation)) leaf_name_data.push_back(output_drops.get_name_leafdata());
-    if (output_errors.is_set || is_set(output_errors.operation)) leaf_name_data.push_back(output_errors.get_name_leafdata());
-    if (output_queue_drops.is_set || is_set(output_queue_drops.operation)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
-    if (output_underruns.is_set || is_set(output_underruns.operation)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (parity_packets_received.is_set || is_set(parity_packets_received.operation)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
-    if (resets.is_set || is_set(resets.operation)) leaf_name_data.push_back(resets.get_name_leafdata());
-    if (runt_packets_received.is_set || is_set(runt_packets_received.operation)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
-    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.operation)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
-    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.operation)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
-    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.operation)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
-    if (throttled_packets_received.is_set || is_set(throttled_packets_received.operation)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
-    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.operation)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
+    if (applique.is_set || is_set(applique.yfilter)) leaf_name_data.push_back(applique.get_name_leafdata());
+    if (availability_flag.is_set || is_set(availability_flag.yfilter)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
+    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.yfilter)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
+    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.yfilter)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (carrier_transitions.is_set || is_set(carrier_transitions.yfilter)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
+    if (crc_errors.is_set || is_set(crc_errors.yfilter)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
+    if (framing_errors_received.is_set || is_set(framing_errors_received.yfilter)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
+    if (giant_packets_received.is_set || is_set(giant_packets_received.yfilter)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
+    if (input_aborts.is_set || is_set(input_aborts.yfilter)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
+    if (input_drops.is_set || is_set(input_drops.yfilter)) leaf_name_data.push_back(input_drops.get_name_leafdata());
+    if (input_errors.is_set || is_set(input_errors.yfilter)) leaf_name_data.push_back(input_errors.get_name_leafdata());
+    if (input_ignored_packets.is_set || is_set(input_ignored_packets.yfilter)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
+    if (input_overruns.is_set || is_set(input_overruns.yfilter)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
+    if (input_queue_drops.is_set || is_set(input_queue_drops.yfilter)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.yfilter)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
+    if (multicast_packets_received.is_set || is_set(multicast_packets_received.yfilter)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
+    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.yfilter)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
+    if (output_buffer_failures.is_set || is_set(output_buffer_failures.yfilter)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
+    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.yfilter)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
+    if (output_drops.is_set || is_set(output_drops.yfilter)) leaf_name_data.push_back(output_drops.get_name_leafdata());
+    if (output_errors.is_set || is_set(output_errors.yfilter)) leaf_name_data.push_back(output_errors.get_name_leafdata());
+    if (output_queue_drops.is_set || is_set(output_queue_drops.yfilter)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
+    if (output_underruns.is_set || is_set(output_underruns.yfilter)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (parity_packets_received.is_set || is_set(parity_packets_received.yfilter)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
+    if (resets.is_set || is_set(resets.yfilter)) leaf_name_data.push_back(resets.get_name_leafdata());
+    if (runt_packets_received.is_set || is_set(runt_packets_received.yfilter)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
+    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.yfilter)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
+    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.yfilter)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
+    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.yfilter)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
+    if (throttled_packets_received.is_set || is_set(throttled_packets_received.yfilter)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
+    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.yfilter)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4039,152 +5784,379 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Total::GenericCounters::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Total::GenericCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "applique")
     {
         applique = value;
+        applique.value_namespace = name_space;
+        applique.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "availability-flag")
     {
         availability_flag = value;
+        availability_flag.value_namespace = name_space;
+        availability_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-received")
     {
         broadcast_packets_received = value;
+        broadcast_packets_received.value_namespace = name_space;
+        broadcast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-sent")
     {
         broadcast_packets_sent = value;
+        broadcast_packets_sent.value_namespace = name_space;
+        broadcast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "carrier-transitions")
     {
         carrier_transitions = value;
+        carrier_transitions.value_namespace = name_space;
+        carrier_transitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "crc-errors")
     {
         crc_errors = value;
+        crc_errors.value_namespace = name_space;
+        crc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-errors-received")
     {
         framing_errors_received = value;
+        framing_errors_received.value_namespace = name_space;
+        framing_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "giant-packets-received")
     {
         giant_packets_received = value;
+        giant_packets_received.value_namespace = name_space;
+        giant_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-aborts")
     {
         input_aborts = value;
+        input_aborts.value_namespace = name_space;
+        input_aborts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-drops")
     {
         input_drops = value;
+        input_drops.value_namespace = name_space;
+        input_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-errors")
     {
         input_errors = value;
+        input_errors.value_namespace = name_space;
+        input_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-ignored-packets")
     {
         input_ignored_packets = value;
+        input_ignored_packets.value_namespace = name_space;
+        input_ignored_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-overruns")
     {
         input_overruns = value;
+        input_overruns.value_namespace = name_space;
+        input_overruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-queue-drops")
     {
         input_queue_drops = value;
+        input_queue_drops.value_namespace = name_space;
+        input_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-discontinuity-time")
     {
         last_discontinuity_time = value;
+        last_discontinuity_time.value_namespace = name_space;
+        last_discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-received")
     {
         multicast_packets_received = value;
+        multicast_packets_received.value_namespace = name_space;
+        multicast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-sent")
     {
         multicast_packets_sent = value;
+        multicast_packets_sent.value_namespace = name_space;
+        multicast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffer-failures")
     {
         output_buffer_failures = value;
+        output_buffer_failures.value_namespace = name_space;
+        output_buffer_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffers-swapped-out")
     {
         output_buffers_swapped_out = value;
+        output_buffers_swapped_out.value_namespace = name_space;
+        output_buffers_swapped_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-drops")
     {
         output_drops = value;
+        output_drops.value_namespace = name_space;
+        output_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-errors")
     {
         output_errors = value;
+        output_errors.value_namespace = name_space;
+        output_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-queue-drops")
     {
         output_queue_drops = value;
+        output_queue_drops.value_namespace = name_space;
+        output_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-underruns")
     {
         output_underruns = value;
+        output_underruns.value_namespace = name_space;
+        output_underruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-packets-received")
     {
         parity_packets_received = value;
+        parity_packets_received.value_namespace = name_space;
+        parity_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resets")
     {
         resets = value;
+        resets.value_namespace = name_space;
+        resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "runt-packets-received")
     {
         runt_packets_received = value;
+        runt_packets_received.value_namespace = name_space;
+        runt_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-last-clear-counters")
     {
         seconds_since_last_clear_counters = value;
+        seconds_since_last_clear_counters.value_namespace = name_space;
+        seconds_since_last_clear_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-received")
     {
         seconds_since_packet_received = value;
+        seconds_since_packet_received.value_namespace = name_space;
+        seconds_since_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-sent")
     {
         seconds_since_packet_sent = value;
+        seconds_since_packet_sent.value_namespace = name_space;
+        seconds_since_packet_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttled-packets-received")
     {
         throttled_packets_received = value;
+        throttled_packets_received.value_namespace = name_space;
+        throttled_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-protocol-packets-received")
     {
         unknown_protocol_packets_received = value;
+        unknown_protocol_packets_received.value_namespace = name_space;
+        unknown_protocol_packets_received.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Total::GenericCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applique")
+    {
+        applique.yfilter = yfilter;
+    }
+    if(value_path == "availability-flag")
+    {
+        availability_flag.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-received")
+    {
+        broadcast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-sent")
+    {
+        broadcast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "carrier-transitions")
+    {
+        carrier_transitions.yfilter = yfilter;
+    }
+    if(value_path == "crc-errors")
+    {
+        crc_errors.yfilter = yfilter;
+    }
+    if(value_path == "framing-errors-received")
+    {
+        framing_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "giant-packets-received")
+    {
+        giant_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "input-aborts")
+    {
+        input_aborts.yfilter = yfilter;
+    }
+    if(value_path == "input-drops")
+    {
+        input_drops.yfilter = yfilter;
+    }
+    if(value_path == "input-errors")
+    {
+        input_errors.yfilter = yfilter;
+    }
+    if(value_path == "input-ignored-packets")
+    {
+        input_ignored_packets.yfilter = yfilter;
+    }
+    if(value_path == "input-overruns")
+    {
+        input_overruns.yfilter = yfilter;
+    }
+    if(value_path == "input-queue-drops")
+    {
+        input_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "last-discontinuity-time")
+    {
+        last_discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-received")
+    {
+        multicast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-sent")
+    {
+        multicast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "output-buffer-failures")
+    {
+        output_buffer_failures.yfilter = yfilter;
+    }
+    if(value_path == "output-buffers-swapped-out")
+    {
+        output_buffers_swapped_out.yfilter = yfilter;
+    }
+    if(value_path == "output-drops")
+    {
+        output_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-errors")
+    {
+        output_errors.yfilter = yfilter;
+    }
+    if(value_path == "output-queue-drops")
+    {
+        output_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-underruns")
+    {
+        output_underruns.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "parity-packets-received")
+    {
+        parity_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "resets")
+    {
+        resets.yfilter = yfilter;
+    }
+    if(value_path == "runt-packets-received")
+    {
+        runt_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-last-clear-counters")
+    {
+        seconds_since_last_clear_counters.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-received")
+    {
+        seconds_since_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-sent")
+    {
+        seconds_since_packet_sent.yfilter = yfilter;
+    }
+    if(value_path == "throttled-packets-received")
+    {
+        throttled_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets-received")
+    {
+        unknown_protocol_packets_received.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Total::GenericCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applique" || name == "availability-flag" || name == "broadcast-packets-received" || name == "broadcast-packets-sent" || name == "bytes-received" || name == "bytes-sent" || name == "carrier-transitions" || name == "crc-errors" || name == "framing-errors-received" || name == "giant-packets-received" || name == "input-aborts" || name == "input-drops" || name == "input-errors" || name == "input-ignored-packets" || name == "input-overruns" || name == "input-queue-drops" || name == "last-data-time" || name == "last-discontinuity-time" || name == "multicast-packets-received" || name == "multicast-packets-sent" || name == "output-buffer-failures" || name == "output-buffers-swapped-out" || name == "output-drops" || name == "output-errors" || name == "output-queue-drops" || name == "output-underruns" || name == "packets-received" || name == "packets-sent" || name == "parity-packets-received" || name == "resets" || name == "runt-packets-received" || name == "seconds-since-last-clear-counters" || name == "seconds-since-packet-received" || name == "seconds-since-packet-sent" || name == "throttled-packets-received" || name == "unknown-protocol-packets-received")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Protocols::Protocols()
@@ -4213,7 +6185,7 @@ bool InfraStatistics::Interfaces::Interface::Protocols::has_operation() const
         if(protocol[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Protocols::get_segment_path() const
@@ -4278,8 +6250,19 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Protocols::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Protocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void InfraStatistics::Interfaces::Interface::Protocols::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InfraStatistics::Interfaces::Interface::Protocols::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::Protocols::Protocol::Protocol()
@@ -4320,18 +6303,18 @@ bool InfraStatistics::Interfaces::Interface::Protocols::Protocol::has_data() con
 
 bool InfraStatistics::Interfaces::Interface::Protocols::Protocol::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(protocol_name.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(input_data_rate.operation)
-	|| is_set(input_packet_rate.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(output_data_rate.operation)
-	|| is_set(output_packet_rate.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(protocol.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(protocol_name.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(input_data_rate.yfilter)
+	|| ydk::is_set(input_packet_rate.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(output_data_rate.yfilter)
+	|| ydk::is_set(output_packet_rate.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(protocol.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::Protocols::Protocol::get_segment_path() const
@@ -4357,17 +6340,17 @@ const EntityPath InfraStatistics::Interfaces::Interface::Protocols::Protocol::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (protocol_name.is_set || is_set(protocol_name.operation)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (input_data_rate.is_set || is_set(input_data_rate.operation)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
-    if (input_packet_rate.is_set || is_set(input_packet_rate.operation)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (output_data_rate.is_set || is_set(output_data_rate.operation)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
-    if (output_packet_rate.is_set || is_set(output_packet_rate.operation)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (protocol_name.is_set || is_set(protocol_name.yfilter)) leaf_name_data.push_back(protocol_name.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (input_data_rate.is_set || is_set(input_data_rate.yfilter)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
+    if (input_packet_rate.is_set || is_set(input_packet_rate.yfilter)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (output_data_rate.is_set || is_set(output_data_rate.yfilter)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
+    if (output_packet_rate.is_set || is_set(output_packet_rate.yfilter)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4386,52 +6369,129 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::Protocols::Protocol::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::Protocols::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol-name")
     {
         protocol_name = value;
+        protocol_name.value_namespace = name_space;
+        protocol_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-data-rate")
     {
         input_data_rate = value;
+        input_data_rate.value_namespace = name_space;
+        input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packet-rate")
     {
         input_packet_rate = value;
+        input_packet_rate.value_namespace = name_space;
+        input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-data-rate")
     {
         output_data_rate = value;
+        output_data_rate.value_namespace = name_space;
+        output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-packet-rate")
     {
         output_packet_rate = value;
+        output_packet_rate.value_namespace = name_space;
+        output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::Protocols::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "protocol-name")
+    {
+        protocol_name.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "input-data-rate")
+    {
+        input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "input-packet-rate")
+    {
+        input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "output-data-rate")
+    {
+        output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "output-packet-rate")
+    {
+        output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::Protocols::Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "protocol-name" || name == "bytes-received" || name == "bytes-sent" || name == "input-data-rate" || name == "input-packet-rate" || name == "last-data-time" || name == "output-data-rate" || name == "output-packet-rate" || name == "packets-received" || name == "packets-sent" || name == "protocol")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::InterfacesMibCounters::InterfacesMibCounters()
@@ -4522,43 +6582,43 @@ bool InfraStatistics::Interfaces::Interface::InterfacesMibCounters::has_data() c
 
 bool InfraStatistics::Interfaces::Interface::InterfacesMibCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(applique.operation)
-	|| is_set(availability_flag.operation)
-	|| is_set(broadcast_packets_received.operation)
-	|| is_set(broadcast_packets_sent.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(carrier_transitions.operation)
-	|| is_set(crc_errors.operation)
-	|| is_set(framing_errors_received.operation)
-	|| is_set(giant_packets_received.operation)
-	|| is_set(input_aborts.operation)
-	|| is_set(input_drops.operation)
-	|| is_set(input_errors.operation)
-	|| is_set(input_ignored_packets.operation)
-	|| is_set(input_overruns.operation)
-	|| is_set(input_queue_drops.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(last_discontinuity_time.operation)
-	|| is_set(multicast_packets_received.operation)
-	|| is_set(multicast_packets_sent.operation)
-	|| is_set(output_buffer_failures.operation)
-	|| is_set(output_buffers_swapped_out.operation)
-	|| is_set(output_drops.operation)
-	|| is_set(output_errors.operation)
-	|| is_set(output_queue_drops.operation)
-	|| is_set(output_underruns.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(parity_packets_received.operation)
-	|| is_set(resets.operation)
-	|| is_set(runt_packets_received.operation)
-	|| is_set(seconds_since_last_clear_counters.operation)
-	|| is_set(seconds_since_packet_received.operation)
-	|| is_set(seconds_since_packet_sent.operation)
-	|| is_set(throttled_packets_received.operation)
-	|| is_set(unknown_protocol_packets_received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(applique.yfilter)
+	|| ydk::is_set(availability_flag.yfilter)
+	|| ydk::is_set(broadcast_packets_received.yfilter)
+	|| ydk::is_set(broadcast_packets_sent.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(carrier_transitions.yfilter)
+	|| ydk::is_set(crc_errors.yfilter)
+	|| ydk::is_set(framing_errors_received.yfilter)
+	|| ydk::is_set(giant_packets_received.yfilter)
+	|| ydk::is_set(input_aborts.yfilter)
+	|| ydk::is_set(input_drops.yfilter)
+	|| ydk::is_set(input_errors.yfilter)
+	|| ydk::is_set(input_ignored_packets.yfilter)
+	|| ydk::is_set(input_overruns.yfilter)
+	|| ydk::is_set(input_queue_drops.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(last_discontinuity_time.yfilter)
+	|| ydk::is_set(multicast_packets_received.yfilter)
+	|| ydk::is_set(multicast_packets_sent.yfilter)
+	|| ydk::is_set(output_buffer_failures.yfilter)
+	|| ydk::is_set(output_buffers_swapped_out.yfilter)
+	|| ydk::is_set(output_drops.yfilter)
+	|| ydk::is_set(output_errors.yfilter)
+	|| ydk::is_set(output_queue_drops.yfilter)
+	|| ydk::is_set(output_underruns.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(parity_packets_received.yfilter)
+	|| ydk::is_set(resets.yfilter)
+	|| ydk::is_set(runt_packets_received.yfilter)
+	|| ydk::is_set(seconds_since_last_clear_counters.yfilter)
+	|| ydk::is_set(seconds_since_packet_received.yfilter)
+	|| ydk::is_set(seconds_since_packet_sent.yfilter)
+	|| ydk::is_set(throttled_packets_received.yfilter)
+	|| ydk::is_set(unknown_protocol_packets_received.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::InterfacesMibCounters::get_segment_path() const
@@ -4584,42 +6644,42 @@ const EntityPath InfraStatistics::Interfaces::Interface::InterfacesMibCounters::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (applique.is_set || is_set(applique.operation)) leaf_name_data.push_back(applique.get_name_leafdata());
-    if (availability_flag.is_set || is_set(availability_flag.operation)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
-    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.operation)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
-    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.operation)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (carrier_transitions.is_set || is_set(carrier_transitions.operation)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
-    if (crc_errors.is_set || is_set(crc_errors.operation)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
-    if (framing_errors_received.is_set || is_set(framing_errors_received.operation)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
-    if (giant_packets_received.is_set || is_set(giant_packets_received.operation)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
-    if (input_aborts.is_set || is_set(input_aborts.operation)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
-    if (input_drops.is_set || is_set(input_drops.operation)) leaf_name_data.push_back(input_drops.get_name_leafdata());
-    if (input_errors.is_set || is_set(input_errors.operation)) leaf_name_data.push_back(input_errors.get_name_leafdata());
-    if (input_ignored_packets.is_set || is_set(input_ignored_packets.operation)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
-    if (input_overruns.is_set || is_set(input_overruns.operation)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
-    if (input_queue_drops.is_set || is_set(input_queue_drops.operation)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.operation)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
-    if (multicast_packets_received.is_set || is_set(multicast_packets_received.operation)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
-    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.operation)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
-    if (output_buffer_failures.is_set || is_set(output_buffer_failures.operation)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
-    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.operation)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
-    if (output_drops.is_set || is_set(output_drops.operation)) leaf_name_data.push_back(output_drops.get_name_leafdata());
-    if (output_errors.is_set || is_set(output_errors.operation)) leaf_name_data.push_back(output_errors.get_name_leafdata());
-    if (output_queue_drops.is_set || is_set(output_queue_drops.operation)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
-    if (output_underruns.is_set || is_set(output_underruns.operation)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (parity_packets_received.is_set || is_set(parity_packets_received.operation)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
-    if (resets.is_set || is_set(resets.operation)) leaf_name_data.push_back(resets.get_name_leafdata());
-    if (runt_packets_received.is_set || is_set(runt_packets_received.operation)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
-    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.operation)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
-    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.operation)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
-    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.operation)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
-    if (throttled_packets_received.is_set || is_set(throttled_packets_received.operation)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
-    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.operation)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
+    if (applique.is_set || is_set(applique.yfilter)) leaf_name_data.push_back(applique.get_name_leafdata());
+    if (availability_flag.is_set || is_set(availability_flag.yfilter)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
+    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.yfilter)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
+    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.yfilter)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (carrier_transitions.is_set || is_set(carrier_transitions.yfilter)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
+    if (crc_errors.is_set || is_set(crc_errors.yfilter)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
+    if (framing_errors_received.is_set || is_set(framing_errors_received.yfilter)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
+    if (giant_packets_received.is_set || is_set(giant_packets_received.yfilter)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
+    if (input_aborts.is_set || is_set(input_aborts.yfilter)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
+    if (input_drops.is_set || is_set(input_drops.yfilter)) leaf_name_data.push_back(input_drops.get_name_leafdata());
+    if (input_errors.is_set || is_set(input_errors.yfilter)) leaf_name_data.push_back(input_errors.get_name_leafdata());
+    if (input_ignored_packets.is_set || is_set(input_ignored_packets.yfilter)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
+    if (input_overruns.is_set || is_set(input_overruns.yfilter)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
+    if (input_queue_drops.is_set || is_set(input_queue_drops.yfilter)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.yfilter)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
+    if (multicast_packets_received.is_set || is_set(multicast_packets_received.yfilter)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
+    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.yfilter)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
+    if (output_buffer_failures.is_set || is_set(output_buffer_failures.yfilter)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
+    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.yfilter)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
+    if (output_drops.is_set || is_set(output_drops.yfilter)) leaf_name_data.push_back(output_drops.get_name_leafdata());
+    if (output_errors.is_set || is_set(output_errors.yfilter)) leaf_name_data.push_back(output_errors.get_name_leafdata());
+    if (output_queue_drops.is_set || is_set(output_queue_drops.yfilter)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
+    if (output_underruns.is_set || is_set(output_underruns.yfilter)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (parity_packets_received.is_set || is_set(parity_packets_received.yfilter)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
+    if (resets.is_set || is_set(resets.yfilter)) leaf_name_data.push_back(resets.get_name_leafdata());
+    if (runt_packets_received.is_set || is_set(runt_packets_received.yfilter)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
+    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.yfilter)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
+    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.yfilter)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
+    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.yfilter)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
+    if (throttled_packets_received.is_set || is_set(throttled_packets_received.yfilter)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
+    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.yfilter)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4638,152 +6698,379 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::InterfacesMibCounters::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::InterfacesMibCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "applique")
     {
         applique = value;
+        applique.value_namespace = name_space;
+        applique.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "availability-flag")
     {
         availability_flag = value;
+        availability_flag.value_namespace = name_space;
+        availability_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-received")
     {
         broadcast_packets_received = value;
+        broadcast_packets_received.value_namespace = name_space;
+        broadcast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-sent")
     {
         broadcast_packets_sent = value;
+        broadcast_packets_sent.value_namespace = name_space;
+        broadcast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "carrier-transitions")
     {
         carrier_transitions = value;
+        carrier_transitions.value_namespace = name_space;
+        carrier_transitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "crc-errors")
     {
         crc_errors = value;
+        crc_errors.value_namespace = name_space;
+        crc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-errors-received")
     {
         framing_errors_received = value;
+        framing_errors_received.value_namespace = name_space;
+        framing_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "giant-packets-received")
     {
         giant_packets_received = value;
+        giant_packets_received.value_namespace = name_space;
+        giant_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-aborts")
     {
         input_aborts = value;
+        input_aborts.value_namespace = name_space;
+        input_aborts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-drops")
     {
         input_drops = value;
+        input_drops.value_namespace = name_space;
+        input_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-errors")
     {
         input_errors = value;
+        input_errors.value_namespace = name_space;
+        input_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-ignored-packets")
     {
         input_ignored_packets = value;
+        input_ignored_packets.value_namespace = name_space;
+        input_ignored_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-overruns")
     {
         input_overruns = value;
+        input_overruns.value_namespace = name_space;
+        input_overruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-queue-drops")
     {
         input_queue_drops = value;
+        input_queue_drops.value_namespace = name_space;
+        input_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-discontinuity-time")
     {
         last_discontinuity_time = value;
+        last_discontinuity_time.value_namespace = name_space;
+        last_discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-received")
     {
         multicast_packets_received = value;
+        multicast_packets_received.value_namespace = name_space;
+        multicast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-sent")
     {
         multicast_packets_sent = value;
+        multicast_packets_sent.value_namespace = name_space;
+        multicast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffer-failures")
     {
         output_buffer_failures = value;
+        output_buffer_failures.value_namespace = name_space;
+        output_buffer_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffers-swapped-out")
     {
         output_buffers_swapped_out = value;
+        output_buffers_swapped_out.value_namespace = name_space;
+        output_buffers_swapped_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-drops")
     {
         output_drops = value;
+        output_drops.value_namespace = name_space;
+        output_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-errors")
     {
         output_errors = value;
+        output_errors.value_namespace = name_space;
+        output_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-queue-drops")
     {
         output_queue_drops = value;
+        output_queue_drops.value_namespace = name_space;
+        output_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-underruns")
     {
         output_underruns = value;
+        output_underruns.value_namespace = name_space;
+        output_underruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-packets-received")
     {
         parity_packets_received = value;
+        parity_packets_received.value_namespace = name_space;
+        parity_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resets")
     {
         resets = value;
+        resets.value_namespace = name_space;
+        resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "runt-packets-received")
     {
         runt_packets_received = value;
+        runt_packets_received.value_namespace = name_space;
+        runt_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-last-clear-counters")
     {
         seconds_since_last_clear_counters = value;
+        seconds_since_last_clear_counters.value_namespace = name_space;
+        seconds_since_last_clear_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-received")
     {
         seconds_since_packet_received = value;
+        seconds_since_packet_received.value_namespace = name_space;
+        seconds_since_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-sent")
     {
         seconds_since_packet_sent = value;
+        seconds_since_packet_sent.value_namespace = name_space;
+        seconds_since_packet_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttled-packets-received")
     {
         throttled_packets_received = value;
+        throttled_packets_received.value_namespace = name_space;
+        throttled_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-protocol-packets-received")
     {
         unknown_protocol_packets_received = value;
+        unknown_protocol_packets_received.value_namespace = name_space;
+        unknown_protocol_packets_received.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::InterfacesMibCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applique")
+    {
+        applique.yfilter = yfilter;
+    }
+    if(value_path == "availability-flag")
+    {
+        availability_flag.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-received")
+    {
+        broadcast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-sent")
+    {
+        broadcast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "carrier-transitions")
+    {
+        carrier_transitions.yfilter = yfilter;
+    }
+    if(value_path == "crc-errors")
+    {
+        crc_errors.yfilter = yfilter;
+    }
+    if(value_path == "framing-errors-received")
+    {
+        framing_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "giant-packets-received")
+    {
+        giant_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "input-aborts")
+    {
+        input_aborts.yfilter = yfilter;
+    }
+    if(value_path == "input-drops")
+    {
+        input_drops.yfilter = yfilter;
+    }
+    if(value_path == "input-errors")
+    {
+        input_errors.yfilter = yfilter;
+    }
+    if(value_path == "input-ignored-packets")
+    {
+        input_ignored_packets.yfilter = yfilter;
+    }
+    if(value_path == "input-overruns")
+    {
+        input_overruns.yfilter = yfilter;
+    }
+    if(value_path == "input-queue-drops")
+    {
+        input_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "last-discontinuity-time")
+    {
+        last_discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-received")
+    {
+        multicast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-sent")
+    {
+        multicast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "output-buffer-failures")
+    {
+        output_buffer_failures.yfilter = yfilter;
+    }
+    if(value_path == "output-buffers-swapped-out")
+    {
+        output_buffers_swapped_out.yfilter = yfilter;
+    }
+    if(value_path == "output-drops")
+    {
+        output_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-errors")
+    {
+        output_errors.yfilter = yfilter;
+    }
+    if(value_path == "output-queue-drops")
+    {
+        output_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-underruns")
+    {
+        output_underruns.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "parity-packets-received")
+    {
+        parity_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "resets")
+    {
+        resets.yfilter = yfilter;
+    }
+    if(value_path == "runt-packets-received")
+    {
+        runt_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-last-clear-counters")
+    {
+        seconds_since_last_clear_counters.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-received")
+    {
+        seconds_since_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-sent")
+    {
+        seconds_since_packet_sent.yfilter = yfilter;
+    }
+    if(value_path == "throttled-packets-received")
+    {
+        throttled_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets-received")
+    {
+        unknown_protocol_packets_received.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::InterfacesMibCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applique" || name == "availability-flag" || name == "broadcast-packets-received" || name == "broadcast-packets-sent" || name == "bytes-received" || name == "bytes-sent" || name == "carrier-transitions" || name == "crc-errors" || name == "framing-errors-received" || name == "giant-packets-received" || name == "input-aborts" || name == "input-drops" || name == "input-errors" || name == "input-ignored-packets" || name == "input-overruns" || name == "input-queue-drops" || name == "last-data-time" || name == "last-discontinuity-time" || name == "multicast-packets-received" || name == "multicast-packets-sent" || name == "output-buffer-failures" || name == "output-buffers-swapped-out" || name == "output-drops" || name == "output-errors" || name == "output-queue-drops" || name == "output-underruns" || name == "packets-received" || name == "packets-sent" || name == "parity-packets-received" || name == "resets" || name == "runt-packets-received" || name == "seconds-since-last-clear-counters" || name == "seconds-since-packet-received" || name == "seconds-since-packet-sent" || name == "throttled-packets-received" || name == "unknown-protocol-packets-received")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::DataRate::DataRate()
@@ -4828,20 +7115,20 @@ bool InfraStatistics::Interfaces::Interface::DataRate::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::DataRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bandwidth.operation)
-	|| is_set(input_data_rate.operation)
-	|| is_set(input_load.operation)
-	|| is_set(input_packet_rate.operation)
-	|| is_set(load_interval.operation)
-	|| is_set(output_data_rate.operation)
-	|| is_set(output_load.operation)
-	|| is_set(output_packet_rate.operation)
-	|| is_set(peak_input_data_rate.operation)
-	|| is_set(peak_input_packet_rate.operation)
-	|| is_set(peak_output_data_rate.operation)
-	|| is_set(peak_output_packet_rate.operation)
-	|| is_set(reliability.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bandwidth.yfilter)
+	|| ydk::is_set(input_data_rate.yfilter)
+	|| ydk::is_set(input_load.yfilter)
+	|| ydk::is_set(input_packet_rate.yfilter)
+	|| ydk::is_set(load_interval.yfilter)
+	|| ydk::is_set(output_data_rate.yfilter)
+	|| ydk::is_set(output_load.yfilter)
+	|| ydk::is_set(output_packet_rate.yfilter)
+	|| ydk::is_set(peak_input_data_rate.yfilter)
+	|| ydk::is_set(peak_input_packet_rate.yfilter)
+	|| ydk::is_set(peak_output_data_rate.yfilter)
+	|| ydk::is_set(peak_output_packet_rate.yfilter)
+	|| ydk::is_set(reliability.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::DataRate::get_segment_path() const
@@ -4867,19 +7154,19 @@ const EntityPath InfraStatistics::Interfaces::Interface::DataRate::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bandwidth.is_set || is_set(bandwidth.operation)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
-    if (input_data_rate.is_set || is_set(input_data_rate.operation)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
-    if (input_load.is_set || is_set(input_load.operation)) leaf_name_data.push_back(input_load.get_name_leafdata());
-    if (input_packet_rate.is_set || is_set(input_packet_rate.operation)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
-    if (load_interval.is_set || is_set(load_interval.operation)) leaf_name_data.push_back(load_interval.get_name_leafdata());
-    if (output_data_rate.is_set || is_set(output_data_rate.operation)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
-    if (output_load.is_set || is_set(output_load.operation)) leaf_name_data.push_back(output_load.get_name_leafdata());
-    if (output_packet_rate.is_set || is_set(output_packet_rate.operation)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
-    if (peak_input_data_rate.is_set || is_set(peak_input_data_rate.operation)) leaf_name_data.push_back(peak_input_data_rate.get_name_leafdata());
-    if (peak_input_packet_rate.is_set || is_set(peak_input_packet_rate.operation)) leaf_name_data.push_back(peak_input_packet_rate.get_name_leafdata());
-    if (peak_output_data_rate.is_set || is_set(peak_output_data_rate.operation)) leaf_name_data.push_back(peak_output_data_rate.get_name_leafdata());
-    if (peak_output_packet_rate.is_set || is_set(peak_output_packet_rate.operation)) leaf_name_data.push_back(peak_output_packet_rate.get_name_leafdata());
-    if (reliability.is_set || is_set(reliability.operation)) leaf_name_data.push_back(reliability.get_name_leafdata());
+    if (bandwidth.is_set || is_set(bandwidth.yfilter)) leaf_name_data.push_back(bandwidth.get_name_leafdata());
+    if (input_data_rate.is_set || is_set(input_data_rate.yfilter)) leaf_name_data.push_back(input_data_rate.get_name_leafdata());
+    if (input_load.is_set || is_set(input_load.yfilter)) leaf_name_data.push_back(input_load.get_name_leafdata());
+    if (input_packet_rate.is_set || is_set(input_packet_rate.yfilter)) leaf_name_data.push_back(input_packet_rate.get_name_leafdata());
+    if (load_interval.is_set || is_set(load_interval.yfilter)) leaf_name_data.push_back(load_interval.get_name_leafdata());
+    if (output_data_rate.is_set || is_set(output_data_rate.yfilter)) leaf_name_data.push_back(output_data_rate.get_name_leafdata());
+    if (output_load.is_set || is_set(output_load.yfilter)) leaf_name_data.push_back(output_load.get_name_leafdata());
+    if (output_packet_rate.is_set || is_set(output_packet_rate.yfilter)) leaf_name_data.push_back(output_packet_rate.get_name_leafdata());
+    if (peak_input_data_rate.is_set || is_set(peak_input_data_rate.yfilter)) leaf_name_data.push_back(peak_input_data_rate.get_name_leafdata());
+    if (peak_input_packet_rate.is_set || is_set(peak_input_packet_rate.yfilter)) leaf_name_data.push_back(peak_input_packet_rate.get_name_leafdata());
+    if (peak_output_data_rate.is_set || is_set(peak_output_data_rate.yfilter)) leaf_name_data.push_back(peak_output_data_rate.get_name_leafdata());
+    if (peak_output_packet_rate.is_set || is_set(peak_output_packet_rate.yfilter)) leaf_name_data.push_back(peak_output_packet_rate.get_name_leafdata());
+    if (reliability.is_set || is_set(reliability.yfilter)) leaf_name_data.push_back(reliability.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4898,60 +7185,149 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::DataRate::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::DataRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth")
     {
         bandwidth = value;
+        bandwidth.value_namespace = name_space;
+        bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-data-rate")
     {
         input_data_rate = value;
+        input_data_rate.value_namespace = name_space;
+        input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-load")
     {
         input_load = value;
+        input_load.value_namespace = name_space;
+        input_load.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-packet-rate")
     {
         input_packet_rate = value;
+        input_packet_rate.value_namespace = name_space;
+        input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "load-interval")
     {
         load_interval = value;
+        load_interval.value_namespace = name_space;
+        load_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-data-rate")
     {
         output_data_rate = value;
+        output_data_rate.value_namespace = name_space;
+        output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-load")
     {
         output_load = value;
+        output_load.value_namespace = name_space;
+        output_load.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-packet-rate")
     {
         output_packet_rate = value;
+        output_packet_rate.value_namespace = name_space;
+        output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-input-data-rate")
     {
         peak_input_data_rate = value;
+        peak_input_data_rate.value_namespace = name_space;
+        peak_input_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-input-packet-rate")
     {
         peak_input_packet_rate = value;
+        peak_input_packet_rate.value_namespace = name_space;
+        peak_input_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-output-data-rate")
     {
         peak_output_data_rate = value;
+        peak_output_data_rate.value_namespace = name_space;
+        peak_output_data_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peak-output-packet-rate")
     {
         peak_output_packet_rate = value;
+        peak_output_packet_rate.value_namespace = name_space;
+        peak_output_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reliability")
     {
         reliability = value;
+        reliability.value_namespace = name_space;
+        reliability.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::DataRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bandwidth")
+    {
+        bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "input-data-rate")
+    {
+        input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "input-load")
+    {
+        input_load.yfilter = yfilter;
+    }
+    if(value_path == "input-packet-rate")
+    {
+        input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "load-interval")
+    {
+        load_interval.yfilter = yfilter;
+    }
+    if(value_path == "output-data-rate")
+    {
+        output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "output-load")
+    {
+        output_load.yfilter = yfilter;
+    }
+    if(value_path == "output-packet-rate")
+    {
+        output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-input-data-rate")
+    {
+        peak_input_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-input-packet-rate")
+    {
+        peak_input_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-output-data-rate")
+    {
+        peak_output_data_rate.yfilter = yfilter;
+    }
+    if(value_path == "peak-output-packet-rate")
+    {
+        peak_output_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "reliability")
+    {
+        reliability.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::DataRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "input-data-rate" || name == "input-load" || name == "input-packet-rate" || name == "load-interval" || name == "output-data-rate" || name == "output-load" || name == "output-packet-rate" || name == "peak-input-data-rate" || name == "peak-input-packet-rate" || name == "peak-output-data-rate" || name == "peak-output-packet-rate" || name == "reliability")
+        return true;
+    return false;
 }
 
 InfraStatistics::Interfaces::Interface::GenericCounters::GenericCounters()
@@ -5042,43 +7418,43 @@ bool InfraStatistics::Interfaces::Interface::GenericCounters::has_data() const
 
 bool InfraStatistics::Interfaces::Interface::GenericCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(applique.operation)
-	|| is_set(availability_flag.operation)
-	|| is_set(broadcast_packets_received.operation)
-	|| is_set(broadcast_packets_sent.operation)
-	|| is_set(bytes_received.operation)
-	|| is_set(bytes_sent.operation)
-	|| is_set(carrier_transitions.operation)
-	|| is_set(crc_errors.operation)
-	|| is_set(framing_errors_received.operation)
-	|| is_set(giant_packets_received.operation)
-	|| is_set(input_aborts.operation)
-	|| is_set(input_drops.operation)
-	|| is_set(input_errors.operation)
-	|| is_set(input_ignored_packets.operation)
-	|| is_set(input_overruns.operation)
-	|| is_set(input_queue_drops.operation)
-	|| is_set(last_data_time.operation)
-	|| is_set(last_discontinuity_time.operation)
-	|| is_set(multicast_packets_received.operation)
-	|| is_set(multicast_packets_sent.operation)
-	|| is_set(output_buffer_failures.operation)
-	|| is_set(output_buffers_swapped_out.operation)
-	|| is_set(output_drops.operation)
-	|| is_set(output_errors.operation)
-	|| is_set(output_queue_drops.operation)
-	|| is_set(output_underruns.operation)
-	|| is_set(packets_received.operation)
-	|| is_set(packets_sent.operation)
-	|| is_set(parity_packets_received.operation)
-	|| is_set(resets.operation)
-	|| is_set(runt_packets_received.operation)
-	|| is_set(seconds_since_last_clear_counters.operation)
-	|| is_set(seconds_since_packet_received.operation)
-	|| is_set(seconds_since_packet_sent.operation)
-	|| is_set(throttled_packets_received.operation)
-	|| is_set(unknown_protocol_packets_received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(applique.yfilter)
+	|| ydk::is_set(availability_flag.yfilter)
+	|| ydk::is_set(broadcast_packets_received.yfilter)
+	|| ydk::is_set(broadcast_packets_sent.yfilter)
+	|| ydk::is_set(bytes_received.yfilter)
+	|| ydk::is_set(bytes_sent.yfilter)
+	|| ydk::is_set(carrier_transitions.yfilter)
+	|| ydk::is_set(crc_errors.yfilter)
+	|| ydk::is_set(framing_errors_received.yfilter)
+	|| ydk::is_set(giant_packets_received.yfilter)
+	|| ydk::is_set(input_aborts.yfilter)
+	|| ydk::is_set(input_drops.yfilter)
+	|| ydk::is_set(input_errors.yfilter)
+	|| ydk::is_set(input_ignored_packets.yfilter)
+	|| ydk::is_set(input_overruns.yfilter)
+	|| ydk::is_set(input_queue_drops.yfilter)
+	|| ydk::is_set(last_data_time.yfilter)
+	|| ydk::is_set(last_discontinuity_time.yfilter)
+	|| ydk::is_set(multicast_packets_received.yfilter)
+	|| ydk::is_set(multicast_packets_sent.yfilter)
+	|| ydk::is_set(output_buffer_failures.yfilter)
+	|| ydk::is_set(output_buffers_swapped_out.yfilter)
+	|| ydk::is_set(output_drops.yfilter)
+	|| ydk::is_set(output_errors.yfilter)
+	|| ydk::is_set(output_queue_drops.yfilter)
+	|| ydk::is_set(output_underruns.yfilter)
+	|| ydk::is_set(packets_received.yfilter)
+	|| ydk::is_set(packets_sent.yfilter)
+	|| ydk::is_set(parity_packets_received.yfilter)
+	|| ydk::is_set(resets.yfilter)
+	|| ydk::is_set(runt_packets_received.yfilter)
+	|| ydk::is_set(seconds_since_last_clear_counters.yfilter)
+	|| ydk::is_set(seconds_since_packet_received.yfilter)
+	|| ydk::is_set(seconds_since_packet_sent.yfilter)
+	|| ydk::is_set(throttled_packets_received.yfilter)
+	|| ydk::is_set(unknown_protocol_packets_received.yfilter);
 }
 
 std::string InfraStatistics::Interfaces::Interface::GenericCounters::get_segment_path() const
@@ -5104,42 +7480,42 @@ const EntityPath InfraStatistics::Interfaces::Interface::GenericCounters::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (applique.is_set || is_set(applique.operation)) leaf_name_data.push_back(applique.get_name_leafdata());
-    if (availability_flag.is_set || is_set(availability_flag.operation)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
-    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.operation)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
-    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.operation)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
-    if (bytes_received.is_set || is_set(bytes_received.operation)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
-    if (bytes_sent.is_set || is_set(bytes_sent.operation)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
-    if (carrier_transitions.is_set || is_set(carrier_transitions.operation)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
-    if (crc_errors.is_set || is_set(crc_errors.operation)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
-    if (framing_errors_received.is_set || is_set(framing_errors_received.operation)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
-    if (giant_packets_received.is_set || is_set(giant_packets_received.operation)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
-    if (input_aborts.is_set || is_set(input_aborts.operation)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
-    if (input_drops.is_set || is_set(input_drops.operation)) leaf_name_data.push_back(input_drops.get_name_leafdata());
-    if (input_errors.is_set || is_set(input_errors.operation)) leaf_name_data.push_back(input_errors.get_name_leafdata());
-    if (input_ignored_packets.is_set || is_set(input_ignored_packets.operation)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
-    if (input_overruns.is_set || is_set(input_overruns.operation)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
-    if (input_queue_drops.is_set || is_set(input_queue_drops.operation)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
-    if (last_data_time.is_set || is_set(last_data_time.operation)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
-    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.operation)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
-    if (multicast_packets_received.is_set || is_set(multicast_packets_received.operation)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
-    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.operation)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
-    if (output_buffer_failures.is_set || is_set(output_buffer_failures.operation)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
-    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.operation)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
-    if (output_drops.is_set || is_set(output_drops.operation)) leaf_name_data.push_back(output_drops.get_name_leafdata());
-    if (output_errors.is_set || is_set(output_errors.operation)) leaf_name_data.push_back(output_errors.get_name_leafdata());
-    if (output_queue_drops.is_set || is_set(output_queue_drops.operation)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
-    if (output_underruns.is_set || is_set(output_underruns.operation)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
-    if (packets_received.is_set || is_set(packets_received.operation)) leaf_name_data.push_back(packets_received.get_name_leafdata());
-    if (packets_sent.is_set || is_set(packets_sent.operation)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
-    if (parity_packets_received.is_set || is_set(parity_packets_received.operation)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
-    if (resets.is_set || is_set(resets.operation)) leaf_name_data.push_back(resets.get_name_leafdata());
-    if (runt_packets_received.is_set || is_set(runt_packets_received.operation)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
-    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.operation)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
-    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.operation)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
-    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.operation)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
-    if (throttled_packets_received.is_set || is_set(throttled_packets_received.operation)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
-    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.operation)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
+    if (applique.is_set || is_set(applique.yfilter)) leaf_name_data.push_back(applique.get_name_leafdata());
+    if (availability_flag.is_set || is_set(availability_flag.yfilter)) leaf_name_data.push_back(availability_flag.get_name_leafdata());
+    if (broadcast_packets_received.is_set || is_set(broadcast_packets_received.yfilter)) leaf_name_data.push_back(broadcast_packets_received.get_name_leafdata());
+    if (broadcast_packets_sent.is_set || is_set(broadcast_packets_sent.yfilter)) leaf_name_data.push_back(broadcast_packets_sent.get_name_leafdata());
+    if (bytes_received.is_set || is_set(bytes_received.yfilter)) leaf_name_data.push_back(bytes_received.get_name_leafdata());
+    if (bytes_sent.is_set || is_set(bytes_sent.yfilter)) leaf_name_data.push_back(bytes_sent.get_name_leafdata());
+    if (carrier_transitions.is_set || is_set(carrier_transitions.yfilter)) leaf_name_data.push_back(carrier_transitions.get_name_leafdata());
+    if (crc_errors.is_set || is_set(crc_errors.yfilter)) leaf_name_data.push_back(crc_errors.get_name_leafdata());
+    if (framing_errors_received.is_set || is_set(framing_errors_received.yfilter)) leaf_name_data.push_back(framing_errors_received.get_name_leafdata());
+    if (giant_packets_received.is_set || is_set(giant_packets_received.yfilter)) leaf_name_data.push_back(giant_packets_received.get_name_leafdata());
+    if (input_aborts.is_set || is_set(input_aborts.yfilter)) leaf_name_data.push_back(input_aborts.get_name_leafdata());
+    if (input_drops.is_set || is_set(input_drops.yfilter)) leaf_name_data.push_back(input_drops.get_name_leafdata());
+    if (input_errors.is_set || is_set(input_errors.yfilter)) leaf_name_data.push_back(input_errors.get_name_leafdata());
+    if (input_ignored_packets.is_set || is_set(input_ignored_packets.yfilter)) leaf_name_data.push_back(input_ignored_packets.get_name_leafdata());
+    if (input_overruns.is_set || is_set(input_overruns.yfilter)) leaf_name_data.push_back(input_overruns.get_name_leafdata());
+    if (input_queue_drops.is_set || is_set(input_queue_drops.yfilter)) leaf_name_data.push_back(input_queue_drops.get_name_leafdata());
+    if (last_data_time.is_set || is_set(last_data_time.yfilter)) leaf_name_data.push_back(last_data_time.get_name_leafdata());
+    if (last_discontinuity_time.is_set || is_set(last_discontinuity_time.yfilter)) leaf_name_data.push_back(last_discontinuity_time.get_name_leafdata());
+    if (multicast_packets_received.is_set || is_set(multicast_packets_received.yfilter)) leaf_name_data.push_back(multicast_packets_received.get_name_leafdata());
+    if (multicast_packets_sent.is_set || is_set(multicast_packets_sent.yfilter)) leaf_name_data.push_back(multicast_packets_sent.get_name_leafdata());
+    if (output_buffer_failures.is_set || is_set(output_buffer_failures.yfilter)) leaf_name_data.push_back(output_buffer_failures.get_name_leafdata());
+    if (output_buffers_swapped_out.is_set || is_set(output_buffers_swapped_out.yfilter)) leaf_name_data.push_back(output_buffers_swapped_out.get_name_leafdata());
+    if (output_drops.is_set || is_set(output_drops.yfilter)) leaf_name_data.push_back(output_drops.get_name_leafdata());
+    if (output_errors.is_set || is_set(output_errors.yfilter)) leaf_name_data.push_back(output_errors.get_name_leafdata());
+    if (output_queue_drops.is_set || is_set(output_queue_drops.yfilter)) leaf_name_data.push_back(output_queue_drops.get_name_leafdata());
+    if (output_underruns.is_set || is_set(output_underruns.yfilter)) leaf_name_data.push_back(output_underruns.get_name_leafdata());
+    if (packets_received.is_set || is_set(packets_received.yfilter)) leaf_name_data.push_back(packets_received.get_name_leafdata());
+    if (packets_sent.is_set || is_set(packets_sent.yfilter)) leaf_name_data.push_back(packets_sent.get_name_leafdata());
+    if (parity_packets_received.is_set || is_set(parity_packets_received.yfilter)) leaf_name_data.push_back(parity_packets_received.get_name_leafdata());
+    if (resets.is_set || is_set(resets.yfilter)) leaf_name_data.push_back(resets.get_name_leafdata());
+    if (runt_packets_received.is_set || is_set(runt_packets_received.yfilter)) leaf_name_data.push_back(runt_packets_received.get_name_leafdata());
+    if (seconds_since_last_clear_counters.is_set || is_set(seconds_since_last_clear_counters.yfilter)) leaf_name_data.push_back(seconds_since_last_clear_counters.get_name_leafdata());
+    if (seconds_since_packet_received.is_set || is_set(seconds_since_packet_received.yfilter)) leaf_name_data.push_back(seconds_since_packet_received.get_name_leafdata());
+    if (seconds_since_packet_sent.is_set || is_set(seconds_since_packet_sent.yfilter)) leaf_name_data.push_back(seconds_since_packet_sent.get_name_leafdata());
+    if (throttled_packets_received.is_set || is_set(throttled_packets_received.yfilter)) leaf_name_data.push_back(throttled_packets_received.get_name_leafdata());
+    if (unknown_protocol_packets_received.is_set || is_set(unknown_protocol_packets_received.yfilter)) leaf_name_data.push_back(unknown_protocol_packets_received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5158,152 +7534,379 @@ std::map<std::string, std::shared_ptr<Entity>> InfraStatistics::Interfaces::Inte
     return children;
 }
 
-void InfraStatistics::Interfaces::Interface::GenericCounters::set_value(const std::string & value_path, std::string value)
+void InfraStatistics::Interfaces::Interface::GenericCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "applique")
     {
         applique = value;
+        applique.value_namespace = name_space;
+        applique.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "availability-flag")
     {
         availability_flag = value;
+        availability_flag.value_namespace = name_space;
+        availability_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-received")
     {
         broadcast_packets_received = value;
+        broadcast_packets_received.value_namespace = name_space;
+        broadcast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "broadcast-packets-sent")
     {
         broadcast_packets_sent = value;
+        broadcast_packets_sent.value_namespace = name_space;
+        broadcast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-received")
     {
         bytes_received = value;
+        bytes_received.value_namespace = name_space;
+        bytes_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bytes-sent")
     {
         bytes_sent = value;
+        bytes_sent.value_namespace = name_space;
+        bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "carrier-transitions")
     {
         carrier_transitions = value;
+        carrier_transitions.value_namespace = name_space;
+        carrier_transitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "crc-errors")
     {
         crc_errors = value;
+        crc_errors.value_namespace = name_space;
+        crc_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-errors-received")
     {
         framing_errors_received = value;
+        framing_errors_received.value_namespace = name_space;
+        framing_errors_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "giant-packets-received")
     {
         giant_packets_received = value;
+        giant_packets_received.value_namespace = name_space;
+        giant_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-aborts")
     {
         input_aborts = value;
+        input_aborts.value_namespace = name_space;
+        input_aborts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-drops")
     {
         input_drops = value;
+        input_drops.value_namespace = name_space;
+        input_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-errors")
     {
         input_errors = value;
+        input_errors.value_namespace = name_space;
+        input_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-ignored-packets")
     {
         input_ignored_packets = value;
+        input_ignored_packets.value_namespace = name_space;
+        input_ignored_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-overruns")
     {
         input_overruns = value;
+        input_overruns.value_namespace = name_space;
+        input_overruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "input-queue-drops")
     {
         input_queue_drops = value;
+        input_queue_drops.value_namespace = name_space;
+        input_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-data-time")
     {
         last_data_time = value;
+        last_data_time.value_namespace = name_space;
+        last_data_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-discontinuity-time")
     {
         last_discontinuity_time = value;
+        last_discontinuity_time.value_namespace = name_space;
+        last_discontinuity_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-received")
     {
         multicast_packets_received = value;
+        multicast_packets_received.value_namespace = name_space;
+        multicast_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multicast-packets-sent")
     {
         multicast_packets_sent = value;
+        multicast_packets_sent.value_namespace = name_space;
+        multicast_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffer-failures")
     {
         output_buffer_failures = value;
+        output_buffer_failures.value_namespace = name_space;
+        output_buffer_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-buffers-swapped-out")
     {
         output_buffers_swapped_out = value;
+        output_buffers_swapped_out.value_namespace = name_space;
+        output_buffers_swapped_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-drops")
     {
         output_drops = value;
+        output_drops.value_namespace = name_space;
+        output_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-errors")
     {
         output_errors = value;
+        output_errors.value_namespace = name_space;
+        output_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-queue-drops")
     {
         output_queue_drops = value;
+        output_queue_drops.value_namespace = name_space;
+        output_queue_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output-underruns")
     {
         output_underruns = value;
+        output_underruns.value_namespace = name_space;
+        output_underruns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-received")
     {
         packets_received = value;
+        packets_received.value_namespace = name_space;
+        packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets-sent")
     {
         packets_sent = value;
+        packets_sent.value_namespace = name_space;
+        packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-packets-received")
     {
         parity_packets_received = value;
+        parity_packets_received.value_namespace = name_space;
+        parity_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resets")
     {
         resets = value;
+        resets.value_namespace = name_space;
+        resets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "runt-packets-received")
     {
         runt_packets_received = value;
+        runt_packets_received.value_namespace = name_space;
+        runt_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-last-clear-counters")
     {
         seconds_since_last_clear_counters = value;
+        seconds_since_last_clear_counters.value_namespace = name_space;
+        seconds_since_last_clear_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-received")
     {
         seconds_since_packet_received = value;
+        seconds_since_packet_received.value_namespace = name_space;
+        seconds_since_packet_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "seconds-since-packet-sent")
     {
         seconds_since_packet_sent = value;
+        seconds_since_packet_sent.value_namespace = name_space;
+        seconds_since_packet_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "throttled-packets-received")
     {
         throttled_packets_received = value;
+        throttled_packets_received.value_namespace = name_space;
+        throttled_packets_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-protocol-packets-received")
     {
         unknown_protocol_packets_received = value;
+        unknown_protocol_packets_received.value_namespace = name_space;
+        unknown_protocol_packets_received.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void InfraStatistics::Interfaces::Interface::GenericCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applique")
+    {
+        applique.yfilter = yfilter;
+    }
+    if(value_path == "availability-flag")
+    {
+        availability_flag.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-received")
+    {
+        broadcast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "broadcast-packets-sent")
+    {
+        broadcast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "bytes-received")
+    {
+        bytes_received.yfilter = yfilter;
+    }
+    if(value_path == "bytes-sent")
+    {
+        bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "carrier-transitions")
+    {
+        carrier_transitions.yfilter = yfilter;
+    }
+    if(value_path == "crc-errors")
+    {
+        crc_errors.yfilter = yfilter;
+    }
+    if(value_path == "framing-errors-received")
+    {
+        framing_errors_received.yfilter = yfilter;
+    }
+    if(value_path == "giant-packets-received")
+    {
+        giant_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "input-aborts")
+    {
+        input_aborts.yfilter = yfilter;
+    }
+    if(value_path == "input-drops")
+    {
+        input_drops.yfilter = yfilter;
+    }
+    if(value_path == "input-errors")
+    {
+        input_errors.yfilter = yfilter;
+    }
+    if(value_path == "input-ignored-packets")
+    {
+        input_ignored_packets.yfilter = yfilter;
+    }
+    if(value_path == "input-overruns")
+    {
+        input_overruns.yfilter = yfilter;
+    }
+    if(value_path == "input-queue-drops")
+    {
+        input_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "last-data-time")
+    {
+        last_data_time.yfilter = yfilter;
+    }
+    if(value_path == "last-discontinuity-time")
+    {
+        last_discontinuity_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-received")
+    {
+        multicast_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "multicast-packets-sent")
+    {
+        multicast_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "output-buffer-failures")
+    {
+        output_buffer_failures.yfilter = yfilter;
+    }
+    if(value_path == "output-buffers-swapped-out")
+    {
+        output_buffers_swapped_out.yfilter = yfilter;
+    }
+    if(value_path == "output-drops")
+    {
+        output_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-errors")
+    {
+        output_errors.yfilter = yfilter;
+    }
+    if(value_path == "output-queue-drops")
+    {
+        output_queue_drops.yfilter = yfilter;
+    }
+    if(value_path == "output-underruns")
+    {
+        output_underruns.yfilter = yfilter;
+    }
+    if(value_path == "packets-received")
+    {
+        packets_received.yfilter = yfilter;
+    }
+    if(value_path == "packets-sent")
+    {
+        packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "parity-packets-received")
+    {
+        parity_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "resets")
+    {
+        resets.yfilter = yfilter;
+    }
+    if(value_path == "runt-packets-received")
+    {
+        runt_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-last-clear-counters")
+    {
+        seconds_since_last_clear_counters.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-received")
+    {
+        seconds_since_packet_received.yfilter = yfilter;
+    }
+    if(value_path == "seconds-since-packet-sent")
+    {
+        seconds_since_packet_sent.yfilter = yfilter;
+    }
+    if(value_path == "throttled-packets-received")
+    {
+        throttled_packets_received.yfilter = yfilter;
+    }
+    if(value_path == "unknown-protocol-packets-received")
+    {
+        unknown_protocol_packets_received.yfilter = yfilter;
+    }
+}
+
+bool InfraStatistics::Interfaces::Interface::GenericCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applique" || name == "availability-flag" || name == "broadcast-packets-received" || name == "broadcast-packets-sent" || name == "bytes-received" || name == "bytes-sent" || name == "carrier-transitions" || name == "crc-errors" || name == "framing-errors-received" || name == "giant-packets-received" || name == "input-aborts" || name == "input-drops" || name == "input-errors" || name == "input-ignored-packets" || name == "input-overruns" || name == "input-queue-drops" || name == "last-data-time" || name == "last-discontinuity-time" || name == "multicast-packets-received" || name == "multicast-packets-sent" || name == "output-buffer-failures" || name == "output-buffers-swapped-out" || name == "output-drops" || name == "output-errors" || name == "output-queue-drops" || name == "output-underruns" || name == "packets-received" || name == "packets-sent" || name == "parity-packets-received" || name == "resets" || name == "runt-packets-received" || name == "seconds-since-last-clear-counters" || name == "seconds-since-packet-received" || name == "seconds-since-packet-sent" || name == "throttled-packets-received" || name == "unknown-protocol-packets-received")
+        return true;
+    return false;
 }
 
 

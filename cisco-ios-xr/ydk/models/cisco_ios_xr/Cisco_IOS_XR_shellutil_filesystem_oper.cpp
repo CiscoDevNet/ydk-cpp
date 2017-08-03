@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_shellutil_filesystem_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_shellutil_filesystem_oper {
 
 FileSystem::FileSystem()
@@ -35,7 +37,7 @@ bool FileSystem::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string FileSystem::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> FileSystem::get_children() const
     return children;
 }
 
-void FileSystem::set_value(const std::string & value_path, std::string value)
+void FileSystem::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void FileSystem::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -119,6 +125,18 @@ std::string FileSystem::get_bundle_name() const
 augment_capabilities_function FileSystem::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> FileSystem::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool FileSystem::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 FileSystem::Node::Node()
@@ -149,8 +167,8 @@ bool FileSystem::Node::has_operation() const
         if(file_system[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(node_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter);
 }
 
 std::string FileSystem::Node::get_segment_path() const
@@ -176,7 +194,7 @@ const EntityPath FileSystem::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -216,12 +234,29 @@ std::map<std::string, std::shared_ptr<Entity>> FileSystem::Node::get_children() 
     return children;
 }
 
-void FileSystem::Node::set_value(const std::string & value_path, std::string value)
+void FileSystem::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FileSystem::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool FileSystem::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "file-system" || name == "node-name")
+        return true;
+    return false;
 }
 
 FileSystem::Node::FileSystem_::FileSystem_()
@@ -250,12 +285,12 @@ bool FileSystem::Node::FileSystem_::has_data() const
 
 bool FileSystem::Node::FileSystem_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(flags.operation)
-	|| is_set(free.operation)
-	|| is_set(prefixes.operation)
-	|| is_set(size.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(prefixes.yfilter)
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string FileSystem::Node::FileSystem_::get_segment_path() const
@@ -281,11 +316,11 @@ const EntityPath FileSystem::Node::FileSystem_::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flags.is_set || is_set(flags.operation)) leaf_name_data.push_back(flags.get_name_leafdata());
-    if (free.is_set || is_set(free.operation)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (prefixes.is_set || is_set(prefixes.operation)) leaf_name_data.push_back(prefixes.get_name_leafdata());
-    if (size.is_set || is_set(size.operation)) leaf_name_data.push_back(size.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (prefixes.is_set || is_set(prefixes.yfilter)) leaf_name_data.push_back(prefixes.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -304,28 +339,69 @@ std::map<std::string, std::shared_ptr<Entity>> FileSystem::Node::FileSystem_::ge
     return children;
 }
 
-void FileSystem::Node::FileSystem_::set_value(const std::string & value_path, std::string value)
+void FileSystem::Node::FileSystem_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flags")
     {
         flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "free")
     {
         free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefixes")
     {
         prefixes = value;
+        prefixes.value_namespace = name_space;
+        prefixes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "size")
     {
         size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FileSystem::Node::FileSystem_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "prefixes")
+    {
+        prefixes.yfilter = yfilter;
+    }
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool FileSystem::Node::FileSystem_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flags" || name == "free" || name == "prefixes" || name == "size" || name == "type")
+        return true;
+    return false;
 }
 
 

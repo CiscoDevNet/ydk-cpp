@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_policymgr_cfg {
 
-class PolicyManager : public Entity
+class PolicyManager : public ydk::Entity
 {
     public:
         PolicyManager();
@@ -18,15 +18,18 @@ class PolicyManager : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class ClassMaps; //type: PolicyManager::ClassMaps
         class PolicyMaps; //type: PolicyManager::PolicyMaps
@@ -37,7 +40,7 @@ class PolicyManager : public Entity
 }; // PolicyManager
 
 
-class PolicyManager::ClassMaps : public Entity
+class PolicyManager::ClassMaps : public ydk::Entity
 {
     public:
         ClassMaps();
@@ -45,11 +48,13 @@ class PolicyManager::ClassMaps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ClassMap; //type: PolicyManager::ClassMaps::ClassMap
 
@@ -58,7 +63,7 @@ class PolicyManager::ClassMaps : public Entity
 }; // PolicyManager::ClassMaps
 
 
-class PolicyManager::ClassMaps::ClassMap : public Entity
+class PolicyManager::ClassMaps::ClassMap : public ydk::Entity
 {
     public:
         ClassMap();
@@ -66,17 +71,19 @@ class PolicyManager::ClassMaps::ClassMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: ClassMapTypeEnum
-        YLeaf name; //type: string
-        YLeaf class_map_mode_match_any; //type: empty
-        YLeaf class_map_mode_match_all; //type: empty
-        YLeaf description; //type: string
+        ydk::YLeaf type; //type: ClassMapType
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf class_map_mode_match_any; //type: empty
+        ydk::YLeaf class_map_mode_match_all; //type: empty
+        ydk::YLeaf description; //type: string
         class Match; //type: PolicyManager::ClassMaps::ClassMap::Match
         class MatchNot; //type: PolicyManager::ClassMaps::ClassMap::MatchNot
 
@@ -86,7 +93,7 @@ class PolicyManager::ClassMaps::ClassMap : public Entity
 }; // PolicyManager::ClassMaps::ClassMap
 
 
-class PolicyManager::ClassMaps::ClassMap::Match : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
 {
     public:
         Match();
@@ -94,74 +101,76 @@ class PolicyManager::ClassMaps::ClassMap::Match : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dei; //type: uint8
-        YLeaf dei_inner; //type: uint8
-        YLeaf ipv4_acl; //type: string
-        YLeaf ipv6_acl; //type: string
-        YLeaf ethernet_services_acl; //type: string
-        YLeaf mpls_disposition_ipv4_access_list; //type: string
-        YLeaf mpls_disposition_ipv6_access_list; //type: string
-        YLeaf fr_de; //type: uint8
-        YLeaf tcp_flag; //type: uint16
-        YLeaf authen_status; //type: string
-        YLeaf vpls_control; //type: empty
-        YLeaf vpls_broadcast; //type: empty
-        YLeaf vpls_multicast; //type: empty
-        YLeaf vpls_known; //type: empty
-        YLeaf vpls_unknown; //type: empty
-        YLeaf atm_clp; //type: uint8
-        YLeaf atm_oam; //type: empty
-        YLeaf cac_admit; //type: empty
-        YLeaf cac_unadmit; //type: empty
-        YLeafList ipv4_dscp; //type: list of  string
-        YLeafList ipv6_dscp; //type: list of  string
-        YLeafList dscp; //type: list of  string
-        YLeafList ipv4_precedence; //type: list of  one of uint8, string
-        YLeafList ipv6_precedence; //type: list of  one of uint8, string
-        YLeafList precedence; //type: list of  one of uint8, string
-        YLeafList qos_group; //type: list of  string
-        YLeafList traffic_class; //type: list of  string
-        YLeafList cos; //type: list of  uint8
-        YLeafList inner_cos; //type: list of  uint8
-        YLeafList protocol; //type: list of  string
-        YLeafList mpls_experimental_topmost; //type: list of  uint8
-        YLeafList mpls_experimental_imposition; //type: list of  uint8
-        YLeafList discard_class; //type: list of  uint8
-        YLeafList ipv4_packet_length; //type: list of  string
-        YLeafList ipv6_packet_length; //type: list of  string
-        YLeafList packet_length; //type: list of  string
-        YLeafList vlan; //type: list of  string
-        YLeafList inner_vlan; //type: list of  string
-        YLeafList flow_tag; //type: list of  string
-        YLeafList ethertype; //type: list of  string
-        YLeafList destination_port; //type: list of  string
-        YLeafList fragment_type; //type: list of  string
-        YLeafList frame_relay_dlci; //type: list of  string
-        YLeafList icmpv4_code; //type: list of  string
-        YLeafList icmpv4_type; //type: list of  string
-        YLeafList icmpv6_code; //type: list of  string
-        YLeafList icmpv6_type; //type: list of  string
-        YLeafList source_port; //type: list of  string
-        YLeafList circuit_id; //type: list of  string
-        YLeafList circuit_id_regex; //type: list of  string
-        YLeafList dhcp_client_id; //type: list of  string
-        YLeafList dhcp_client_id_regex; //type: list of  string
-        YLeafList remote_id; //type: list of  string
-        YLeafList remote_id_regex; //type: list of  string
-        YLeafList service_name; //type: list of  string
-        YLeafList service_name_regex; //type: list of  string
-        YLeafList timer; //type: list of  string
-        YLeafList timer_regex; //type: list of  string
-        YLeafList user_name; //type: list of  string
-        YLeafList user_name_regex; //type: list of  string
-        YLeafList source_mac; //type: list of  string
-        YLeafList destination_mac; //type: list of  string
+        ydk::YLeaf dei; //type: uint8
+        ydk::YLeaf dei_inner; //type: uint8
+        ydk::YLeaf ipv4_acl; //type: string
+        ydk::YLeaf ipv6_acl; //type: string
+        ydk::YLeaf ethernet_services_acl; //type: string
+        ydk::YLeaf mpls_disposition_ipv4_access_list; //type: string
+        ydk::YLeaf mpls_disposition_ipv6_access_list; //type: string
+        ydk::YLeaf fr_de; //type: uint8
+        ydk::YLeaf tcp_flag; //type: uint16
+        ydk::YLeaf authen_status; //type: string
+        ydk::YLeaf vpls_control; //type: empty
+        ydk::YLeaf vpls_broadcast; //type: empty
+        ydk::YLeaf vpls_multicast; //type: empty
+        ydk::YLeaf vpls_known; //type: empty
+        ydk::YLeaf vpls_unknown; //type: empty
+        ydk::YLeaf atm_clp; //type: uint8
+        ydk::YLeaf atm_oam; //type: empty
+        ydk::YLeaf cac_admit; //type: empty
+        ydk::YLeaf cac_unadmit; //type: empty
+        ydk::YLeafList ipv4_dscp; //type: list of  string
+        ydk::YLeafList ipv6_dscp; //type: list of  string
+        ydk::YLeafList dscp; //type: list of  string
+        ydk::YLeafList ipv4_precedence; //type: list of  one of string, uint8
+        ydk::YLeafList ipv6_precedence; //type: list of  one of string, uint8
+        ydk::YLeafList precedence; //type: list of  one of string, uint8
+        ydk::YLeafList qos_group; //type: list of  string
+        ydk::YLeafList traffic_class; //type: list of  string
+        ydk::YLeafList cos; //type: list of  uint8
+        ydk::YLeafList inner_cos; //type: list of  uint8
+        ydk::YLeafList protocol; //type: list of  string
+        ydk::YLeafList mpls_experimental_topmost; //type: list of  uint8
+        ydk::YLeafList mpls_experimental_imposition; //type: list of  uint8
+        ydk::YLeafList discard_class; //type: list of  uint8
+        ydk::YLeafList ipv4_packet_length; //type: list of  string
+        ydk::YLeafList ipv6_packet_length; //type: list of  string
+        ydk::YLeafList packet_length; //type: list of  string
+        ydk::YLeafList vlan; //type: list of  string
+        ydk::YLeafList inner_vlan; //type: list of  string
+        ydk::YLeafList flow_tag; //type: list of  string
+        ydk::YLeafList ethertype; //type: list of  string
+        ydk::YLeafList destination_port; //type: list of  string
+        ydk::YLeafList fragment_type; //type: list of  string
+        ydk::YLeafList frame_relay_dlci; //type: list of  string
+        ydk::YLeafList icmpv4_code; //type: list of  string
+        ydk::YLeafList icmpv4_type; //type: list of  string
+        ydk::YLeafList icmpv6_code; //type: list of  string
+        ydk::YLeafList icmpv6_type; //type: list of  string
+        ydk::YLeafList source_port; //type: list of  string
+        ydk::YLeafList circuit_id; //type: list of  string
+        ydk::YLeafList circuit_id_regex; //type: list of  string
+        ydk::YLeafList dhcp_client_id; //type: list of  string
+        ydk::YLeafList dhcp_client_id_regex; //type: list of  string
+        ydk::YLeafList remote_id; //type: list of  string
+        ydk::YLeafList remote_id_regex; //type: list of  string
+        ydk::YLeafList service_name; //type: list of  string
+        ydk::YLeafList service_name_regex; //type: list of  string
+        ydk::YLeafList timer; //type: list of  string
+        ydk::YLeafList timer_regex; //type: list of  string
+        ydk::YLeafList user_name; //type: list of  string
+        ydk::YLeafList user_name_regex; //type: list of  string
+        ydk::YLeafList source_mac; //type: list of  string
+        ydk::YLeafList destination_mac; //type: list of  string
         class DestinationAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4
         class DestinationAddressIpv6; //type: PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6
         class SourceAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4
@@ -181,7 +190,7 @@ class PolicyManager::ClassMaps::ClassMap::Match : public Entity
 }; // PolicyManager::ClassMaps::ClassMap::Match
 
 
-class PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4 : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4 : public ydk::Entity
 {
     public:
         DestinationAddressIpv4();
@@ -189,19 +198,21 @@ class PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4 : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf netmask; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf netmask; //type: string
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4
 
 
-class PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6 : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6 : public ydk::Entity
 {
     public:
         DestinationAddressIpv6();
@@ -209,19 +220,21 @@ class PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6 : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6
 
 
-class PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4 : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4 : public ydk::Entity
 {
     public:
         SourceAddressIpv4();
@@ -229,19 +242,21 @@ class PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4 : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf netmask; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf netmask; //type: string
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4
 
 
-class PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6 : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6 : public ydk::Entity
 {
     public:
         SourceAddressIpv6();
@@ -249,19 +264,21 @@ class PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6 : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6
 
 
-class PolicyManager::ClassMaps::ClassMap::Match::DomainName : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match::DomainName : public ydk::Entity
 {
     public:
         DomainName();
@@ -269,19 +286,21 @@ class PolicyManager::ClassMaps::ClassMap::Match::DomainName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf format; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf format; //type: string
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::DomainName
 
 
-class PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex : public ydk::Entity
 {
     public:
         DomainNameRegex();
@@ -289,19 +308,21 @@ class PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf regex; //type: string
-        YLeaf format; //type: string
+        ydk::YLeaf regex; //type: string
+        ydk::YLeaf format; //type: string
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex
 
 
-class PolicyManager::ClassMaps::ClassMap::Match::Flow : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match::Flow : public ydk::Entity
 {
     public:
         Flow();
@@ -309,13 +330,15 @@ class PolicyManager::ClassMaps::ClassMap::Match::Flow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList flow_key; //type: list of  string
+        ydk::YLeafList flow_key; //type: list of  string
         class FlowCache; //type: PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache> flow_cache;
@@ -323,7 +346,7 @@ class PolicyManager::ClassMaps::ClassMap::Match::Flow : public Entity
 }; // PolicyManager::ClassMaps::ClassMap::Match::Flow
 
 
-class PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache : public Entity
+class PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache : public ydk::Entity
 {
     public:
         FlowCache();
@@ -331,18 +354,20 @@ class PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf idle_timeout; //type: one of uint16, string
+        ydk::YLeaf idle_timeout; //type: one of uint16, string
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache
 
 
-class PolicyManager::ClassMaps::ClassMap::MatchNot : public Entity
+class PolicyManager::ClassMaps::ClassMap::MatchNot : public ydk::Entity
 {
     public:
         MatchNot();
@@ -350,70 +375,72 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dei; //type: uint8
-        YLeaf dei_inner; //type: uint8
-        YLeaf ipv4_acl; //type: string
-        YLeaf ipv6_acl; //type: string
-        YLeaf ethernet_services_acl; //type: string
-        YLeaf mpls_disposition_ipv4_access_list; //type: string
-        YLeaf mpls_disposition_ipv6_access_list; //type: string
-        YLeaf fr_de; //type: uint8
-        YLeaf tcp_flag; //type: uint16
-        YLeaf authen_status; //type: string
-        YLeaf vpls_control; //type: empty
-        YLeaf vpls_broadcast; //type: empty
-        YLeaf vpls_multicast; //type: empty
-        YLeaf vpls_known; //type: empty
-        YLeaf vpls_unknown; //type: empty
-        YLeafList ipv4_dscp; //type: list of  string
-        YLeafList ipv6_dscp; //type: list of  string
-        YLeafList dscp; //type: list of  string
-        YLeafList ipv4_precedence; //type: list of  one of uint8, string
-        YLeafList ipv6_precedence; //type: list of  one of uint8, string
-        YLeafList precedence; //type: list of  one of uint8, string
-        YLeafList qos_group; //type: list of  string
-        YLeafList traffic_class; //type: list of  string
-        YLeafList cos; //type: list of  uint8
-        YLeafList inner_cos; //type: list of  uint8
-        YLeafList protocol; //type: list of  string
-        YLeafList mpls_experimental_topmost; //type: list of  uint8
-        YLeafList mpls_experimental_imposition; //type: list of  uint8
-        YLeafList discard_class; //type: list of  uint8
-        YLeafList ipv4_packet_length; //type: list of  string
-        YLeafList ipv6_packet_length; //type: list of  string
-        YLeafList packet_length; //type: list of  string
-        YLeafList vlan; //type: list of  string
-        YLeafList inner_vlan; //type: list of  string
-        YLeafList flow_tag; //type: list of  string
-        YLeafList ethertype; //type: list of  string
-        YLeafList destination_port; //type: list of  string
-        YLeafList fragment_type; //type: list of  string
-        YLeafList frame_relay_dlci; //type: list of  string
-        YLeafList icmpv4_code; //type: list of  string
-        YLeafList icmpv4_type; //type: list of  string
-        YLeafList icmpv6_code; //type: list of  string
-        YLeafList icmpv6_type; //type: list of  string
-        YLeafList source_port; //type: list of  string
-        YLeafList circuit_id; //type: list of  string
-        YLeafList circuit_id_regex; //type: list of  string
-        YLeafList dhcp_client_id; //type: list of  string
-        YLeafList dhcp_client_id_regex; //type: list of  string
-        YLeafList remote_id; //type: list of  string
-        YLeafList remote_id_regex; //type: list of  string
-        YLeafList service_name; //type: list of  string
-        YLeafList service_name_regex; //type: list of  string
-        YLeafList timer; //type: list of  string
-        YLeafList timer_regex; //type: list of  string
-        YLeafList user_name; //type: list of  string
-        YLeafList user_name_regex; //type: list of  string
-        YLeafList source_mac; //type: list of  string
-        YLeafList destination_mac; //type: list of  string
+        ydk::YLeaf dei; //type: uint8
+        ydk::YLeaf dei_inner; //type: uint8
+        ydk::YLeaf ipv4_acl; //type: string
+        ydk::YLeaf ipv6_acl; //type: string
+        ydk::YLeaf ethernet_services_acl; //type: string
+        ydk::YLeaf mpls_disposition_ipv4_access_list; //type: string
+        ydk::YLeaf mpls_disposition_ipv6_access_list; //type: string
+        ydk::YLeaf fr_de; //type: uint8
+        ydk::YLeaf tcp_flag; //type: uint16
+        ydk::YLeaf authen_status; //type: string
+        ydk::YLeaf vpls_control; //type: empty
+        ydk::YLeaf vpls_broadcast; //type: empty
+        ydk::YLeaf vpls_multicast; //type: empty
+        ydk::YLeaf vpls_known; //type: empty
+        ydk::YLeaf vpls_unknown; //type: empty
+        ydk::YLeafList ipv4_dscp; //type: list of  string
+        ydk::YLeafList ipv6_dscp; //type: list of  string
+        ydk::YLeafList dscp; //type: list of  string
+        ydk::YLeafList ipv4_precedence; //type: list of  one of string, uint8
+        ydk::YLeafList ipv6_precedence; //type: list of  one of string, uint8
+        ydk::YLeafList precedence; //type: list of  one of string, uint8
+        ydk::YLeafList qos_group; //type: list of  string
+        ydk::YLeafList traffic_class; //type: list of  string
+        ydk::YLeafList cos; //type: list of  uint8
+        ydk::YLeafList inner_cos; //type: list of  uint8
+        ydk::YLeafList protocol; //type: list of  string
+        ydk::YLeafList mpls_experimental_topmost; //type: list of  uint8
+        ydk::YLeafList mpls_experimental_imposition; //type: list of  uint8
+        ydk::YLeafList discard_class; //type: list of  uint8
+        ydk::YLeafList ipv4_packet_length; //type: list of  string
+        ydk::YLeafList ipv6_packet_length; //type: list of  string
+        ydk::YLeafList packet_length; //type: list of  string
+        ydk::YLeafList vlan; //type: list of  string
+        ydk::YLeafList inner_vlan; //type: list of  string
+        ydk::YLeafList flow_tag; //type: list of  string
+        ydk::YLeafList ethertype; //type: list of  string
+        ydk::YLeafList destination_port; //type: list of  string
+        ydk::YLeafList fragment_type; //type: list of  string
+        ydk::YLeafList frame_relay_dlci; //type: list of  string
+        ydk::YLeafList icmpv4_code; //type: list of  string
+        ydk::YLeafList icmpv4_type; //type: list of  string
+        ydk::YLeafList icmpv6_code; //type: list of  string
+        ydk::YLeafList icmpv6_type; //type: list of  string
+        ydk::YLeafList source_port; //type: list of  string
+        ydk::YLeafList circuit_id; //type: list of  string
+        ydk::YLeafList circuit_id_regex; //type: list of  string
+        ydk::YLeafList dhcp_client_id; //type: list of  string
+        ydk::YLeafList dhcp_client_id_regex; //type: list of  string
+        ydk::YLeafList remote_id; //type: list of  string
+        ydk::YLeafList remote_id_regex; //type: list of  string
+        ydk::YLeafList service_name; //type: list of  string
+        ydk::YLeafList service_name_regex; //type: list of  string
+        ydk::YLeafList timer; //type: list of  string
+        ydk::YLeafList timer_regex; //type: list of  string
+        ydk::YLeafList user_name; //type: list of  string
+        ydk::YLeafList user_name_regex; //type: list of  string
+        ydk::YLeafList source_mac; //type: list of  string
+        ydk::YLeafList destination_mac; //type: list of  string
         class DestinationAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4
         class DestinationAddressIpv6; //type: PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6
         class SourceAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4
@@ -433,7 +460,7 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public Entity
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot
 
 
-class PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4 : public Entity
+class PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4 : public ydk::Entity
 {
     public:
         DestinationAddressIpv4();
@@ -441,19 +468,21 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4 : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf netmask; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf netmask; //type: string
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4
 
 
-class PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6 : public Entity
+class PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6 : public ydk::Entity
 {
     public:
         DestinationAddressIpv6();
@@ -461,19 +490,21 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6 : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6
 
 
-class PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4 : public Entity
+class PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4 : public ydk::Entity
 {
     public:
         SourceAddressIpv4();
@@ -481,19 +512,21 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4 : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf netmask; //type: string
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf netmask; //type: string
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4
 
 
-class PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6 : public Entity
+class PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6 : public ydk::Entity
 {
     public:
         SourceAddressIpv6();
@@ -501,19 +534,21 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6 : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6
 
 
-class PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName : public Entity
+class PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName : public ydk::Entity
 {
     public:
         DomainName();
@@ -521,19 +556,21 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf format; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf format; //type: string
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName
 
 
-class PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex : public Entity
+class PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex : public ydk::Entity
 {
     public:
         DomainNameRegex();
@@ -541,19 +578,21 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf regex; //type: string
-        YLeaf format; //type: string
+        ydk::YLeaf regex; //type: string
+        ydk::YLeaf format; //type: string
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex
 
 
-class PolicyManager::ClassMaps::ClassMap::MatchNot::Flow : public Entity
+class PolicyManager::ClassMaps::ClassMap::MatchNot::Flow : public ydk::Entity
 {
     public:
         Flow();
@@ -561,18 +600,20 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot::Flow : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList flow_tag; //type: list of  uint16
+        ydk::YLeafList flow_tag; //type: list of  uint16
 
 }; // PolicyManager::ClassMaps::ClassMap::MatchNot::Flow
 
 
-class PolicyManager::PolicyMaps : public Entity
+class PolicyManager::PolicyMaps : public ydk::Entity
 {
     public:
         PolicyMaps();
@@ -580,11 +621,13 @@ class PolicyManager::PolicyMaps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PolicyMap; //type: PolicyManager::PolicyMaps::PolicyMap
 
@@ -593,7 +636,7 @@ class PolicyManager::PolicyMaps : public Entity
 }; // PolicyManager::PolicyMaps
 
 
-class PolicyManager::PolicyMaps::PolicyMap : public Entity
+class PolicyManager::PolicyMaps::PolicyMap : public ydk::Entity
 {
     public:
         PolicyMap();
@@ -601,15 +644,17 @@ class PolicyManager::PolicyMaps::PolicyMap : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf type; //type: PolicyMapTypeEnum
-        YLeaf name; //type: string
-        YLeaf description; //type: string
+        ydk::YLeaf type; //type: PolicyMapType
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf description; //type: string
         class Event; //type: PolicyManager::PolicyMaps::PolicyMap::Event
         class PolicyMapRule; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule
 
@@ -619,7 +664,7 @@ class PolicyManager::PolicyMaps::PolicyMap : public Entity
 }; // PolicyManager::PolicyMaps::PolicyMap
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event : public ydk::Entity
 {
     public:
         Event();
@@ -627,15 +672,17 @@ class PolicyManager::PolicyMaps::PolicyMap::Event : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf event_type; //type: EventTypeEnum
-        YLeaf event_mode_match_all; //type: empty
-        YLeaf event_mode_match_first; //type: empty
+        ydk::YLeaf event_type; //type: EventType
+        ydk::YLeaf event_mode_match_all; //type: empty
+        ydk::YLeaf event_mode_match_first; //type: empty
         class Class_; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_> > class_;
@@ -643,7 +690,7 @@ class PolicyManager::PolicyMaps::PolicyMap::Event : public Entity
 }; // PolicyManager::PolicyMaps::PolicyMap::Event
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_ : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class_ : public ydk::Entity
 {
     public:
         Class_();
@@ -651,15 +698,17 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf class_name; //type: string
-        YLeaf class_type; //type: PmapClassMapTypeEnum
-        YLeaf class_execution_strategy; //type: ExecutionStrategyEnum
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf class_type; //type: PmapClassMapType
+        ydk::YLeaf class_execution_strategy; //type: ExecutionStrategy
         class ActionRule; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule> > action_rule;
@@ -667,7 +716,7 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_ : public Entity
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule : public ydk::Entity
 {
     public:
         ActionRule();
@@ -675,15 +724,17 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf action_sequence_number; //type: uint16
-        YLeaf disconnect; //type: empty
-        YLeaf monitor; //type: empty
+        ydk::YLeaf action_sequence_number; //type: uint16
+        ydk::YLeaf disconnect; //type: empty
+        ydk::YLeaf monitor; //type: empty
         class ActivateDynamicTemplate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate
         class Authenticate; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate
         class Authorize; //type: PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
@@ -701,7 +752,7 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule : public E
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate : public ydk::Entity
 {
     public:
         ActivateDynamicTemplate();
@@ -709,19 +760,21 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateD
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf aaa_list; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf aaa_list; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate : public ydk::Entity
 {
     public:
         Authenticate();
@@ -729,18 +782,20 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authentic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf aaa_list; //type: string
+        ydk::YLeaf aaa_list; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize : public ydk::Entity
 {
     public:
         Authorize();
@@ -748,21 +803,23 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf aaa_list; //type: string
-        YLeaf format; //type: string
-        YLeaf identifier; //type: AuthorizeIdentifierEnum
-        YLeaf password; //type: string
+        ydk::YLeaf aaa_list; //type: string
+        ydk::YLeaf format; //type: string
+        ydk::YLeaf identifier; //type: AuthorizeIdentifier
+        ydk::YLeaf password; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate : public ydk::Entity
 {
     public:
         DeactivateDynamicTemplate();
@@ -770,19 +827,21 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Deactivat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf aaa_list; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf aaa_list; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer : public ydk::Entity
 {
     public:
         SetTimer();
@@ -790,19 +849,21 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf timer_name; //type: string
-        YLeaf timer_value; //type: uint32
+        ydk::YLeaf timer_name; //type: string
+        ydk::YLeaf timer_value; //type: uint32
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer
 
 
-class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer : public ydk::Entity
 {
     public:
         StopTimer();
@@ -810,18 +871,20 @@ class PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf timer_name; //type: string
+        ydk::YLeaf timer_name; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public ydk::Entity
 {
     public:
         PolicyMapRule();
@@ -829,23 +892,25 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf class_name; //type: string
-        YLeaf class_type; //type: PmapClassMapTypeEnum
-        YLeaf priority_level; //type: uint8
-        YLeaf default_red; //type: empty
-        YLeaf ecn_red; //type: empty
-        YLeaf http_redirect; //type: string
-        YLeaf pbr_transmit; //type: empty
-        YLeaf pbr_drop; //type: empty
-        YLeaf decap_gre; //type: empty
-        YLeaf service_fragment; //type: string
-        YLeaf fragment; //type: string
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf class_type; //type: PmapClassMapType
+        ydk::YLeaf priority_level; //type: uint8
+        ydk::YLeaf default_red; //type: empty
+        ydk::YLeaf ecn_red; //type: empty
+        ydk::YLeaf http_redirect; //type: string
+        ydk::YLeaf pbr_transmit; //type: empty
+        ydk::YLeaf pbr_drop; //type: empty
+        ydk::YLeaf decap_gre; //type: empty
+        ydk::YLeaf service_fragment; //type: string
+        ydk::YLeaf fragment; //type: string
         class Shape; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape
         class MinBandwidth; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth
         class BandwidthRemaining; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining
@@ -859,6 +924,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public Entity
         class FlowParams; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams
         class MetricsIpcbr; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr
         class React; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React
+        class PbrRedirect; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect
         class PbrForward; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward
         class ServiceFunctionPath; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath
 
@@ -868,6 +934,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public Entity
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr> metrics_ipcbr;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth> min_bandwidth;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward> pbr_forward;
+        std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect> pbr_redirect;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc> pfc;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police> police;
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit> queue_limit;
@@ -881,7 +948,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule : public Entity
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape : public ydk::Entity
 {
     public:
         Shape();
@@ -889,11 +956,13 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate
         class Burst; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst
@@ -904,7 +973,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape : public Entity
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate : public ydk::Entity
 {
     public:
         Rate();
@@ -912,19 +981,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst : public ydk::Entity
 {
     public:
         Burst();
@@ -932,19 +1003,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf units; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf units; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth : public ydk::Entity
 {
     public:
         MinBandwidth();
@@ -952,19 +1025,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining : public ydk::Entity
 {
     public:
         BandwidthRemaining();
@@ -972,19 +1047,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit : public ydk::Entity
 {
     public:
         QueueLimit();
@@ -992,19 +1069,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc : public ydk::Entity
 {
     public:
         Pfc();
@@ -1012,13 +1091,15 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf pfc_pause_set; //type: empty
+        ydk::YLeaf pfc_pause_set; //type: empty
         class PfcBufferSize; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize
         class PfcPauseThreshold; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold
         class PfcResumeThreshold; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold
@@ -1030,7 +1111,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc : public Entity
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize : public ydk::Entity
 {
     public:
         PfcBufferSize();
@@ -1038,19 +1119,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold : public ydk::Entity
 {
     public:
         PfcPauseThreshold();
@@ -1058,19 +1141,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshol
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold : public ydk::Entity
 {
     public:
         PfcResumeThreshold();
@@ -1078,19 +1163,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThresho
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect : public ydk::Entity
 {
     public:
         RandomDetect();
@@ -1098,28 +1185,30 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf threshold_min_value; //type: uint32
-        YLeaf threshold_min_units; //type: string
-        YLeaf threshold_max_value; //type: uint32
-        YLeaf threshold_max_units; //type: string
-        YLeaf dei; //type: uint8
-        YLeaf ecn; //type: empty
-        YLeafList cos; //type: list of  string
-        YLeafList discard_class; //type: list of  uint8
-        YLeafList dscp; //type: list of  string
-        YLeafList mpls_exp; //type: list of  uint8
-        YLeafList precedence; //type: list of  one of uint8, string
+        ydk::YLeaf threshold_min_value; //type: uint32
+        ydk::YLeaf threshold_min_units; //type: string
+        ydk::YLeaf threshold_max_value; //type: uint32
+        ydk::YLeaf threshold_max_units; //type: string
+        ydk::YLeaf dei; //type: uint8
+        ydk::YLeaf ecn; //type: empty
+        ydk::YLeafList cos; //type: list of  string
+        ydk::YLeafList discard_class; //type: list of  uint8
+        ydk::YLeafList dscp; //type: list of  string
+        ydk::YLeafList mpls_exp; //type: list of  uint8
+        ydk::YLeafList precedence; //type: list of  one of string, uint8
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1127,35 +1216,37 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dscp; //type: string
-        YLeaf qos_group; //type: uint16
-        YLeaf traffic_class; //type: uint8
-        YLeaf discard_class; //type: uint8
-        YLeaf forward_class; //type: uint8
-        YLeaf df; //type: uint8
-        YLeaf cos; //type: uint8
-        YLeaf inner_cos; //type: uint8
-        YLeaf precedence; //type: one of uint8, string
-        YLeaf precedence_tunnel; //type: one of uint8, string
-        YLeaf mpls_experimental_top_most; //type: uint8
-        YLeaf mpls_experimental_imposition; //type: uint8
-        YLeaf srp_priority; //type: uint8
-        YLeaf fr_de; //type: uint8
-        YLeaf dei; //type: uint8
-        YLeaf dei_imposition; //type: uint8
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
+        ydk::YLeaf dscp; //type: string
+        ydk::YLeaf qos_group; //type: uint16
+        ydk::YLeaf traffic_class; //type: uint8
+        ydk::YLeaf discard_class; //type: uint8
+        ydk::YLeaf forward_class; //type: uint8
+        ydk::YLeaf df; //type: uint8
+        ydk::YLeaf cos; //type: uint8
+        ydk::YLeaf inner_cos; //type: uint8
+        ydk::YLeaf precedence; //type: one of string, uint8
+        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
+        ydk::YLeaf mpls_experimental_top_most; //type: uint8
+        ydk::YLeaf mpls_experimental_imposition; //type: uint8
+        ydk::YLeaf srp_priority; //type: uint8
+        ydk::YLeaf fr_de; //type: uint8
+        ydk::YLeaf dei; //type: uint8
+        ydk::YLeaf dei_imposition; //type: uint8
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police : public ydk::Entity
 {
     public:
         Police();
@@ -1163,11 +1254,13 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate
         class PeakRate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate
@@ -1188,7 +1281,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police : public Entit
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate : public ydk::Entity
 {
     public:
         Rate();
@@ -1196,19 +1289,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf units; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf units; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate : public ydk::Entity
 {
     public:
         PeakRate();
@@ -1216,19 +1311,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf units; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf units; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst : public ydk::Entity
 {
     public:
         Burst();
@@ -1236,19 +1333,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf units; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf units; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst : public ydk::Entity
 {
     public:
         PeakBurst();
@@ -1256,19 +1355,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf units; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf units; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction : public ydk::Entity
 {
     public:
         ConformAction();
@@ -1276,14 +1377,16 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit; //type: empty
-        YLeaf drop; //type: empty
+        ydk::YLeaf transmit; //type: empty
+        ydk::YLeaf drop; //type: empty
         class Set; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set> set;
@@ -1291,7 +1394,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1299,35 +1402,37 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dscp; //type: string
-        YLeaf qos_group; //type: uint16
-        YLeaf traffic_class; //type: uint8
-        YLeaf discard_class; //type: uint8
-        YLeaf forward_class; //type: uint8
-        YLeaf df; //type: uint8
-        YLeaf cos; //type: uint8
-        YLeaf inner_cos; //type: uint8
-        YLeaf precedence; //type: one of uint8, string
-        YLeaf precedence_tunnel; //type: one of uint8, string
-        YLeaf mpls_experimental_top_most; //type: uint8
-        YLeaf mpls_experimental_imposition; //type: uint8
-        YLeaf srp_priority; //type: uint8
-        YLeaf fr_de; //type: uint8
-        YLeaf dei; //type: uint8
-        YLeaf dei_imposition; //type: uint8
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
+        ydk::YLeaf dscp; //type: string
+        ydk::YLeaf qos_group; //type: uint16
+        ydk::YLeaf traffic_class; //type: uint8
+        ydk::YLeaf discard_class; //type: uint8
+        ydk::YLeaf forward_class; //type: uint8
+        ydk::YLeaf df; //type: uint8
+        ydk::YLeaf cos; //type: uint8
+        ydk::YLeaf inner_cos; //type: uint8
+        ydk::YLeaf precedence; //type: one of string, uint8
+        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
+        ydk::YLeaf mpls_experimental_top_most; //type: uint8
+        ydk::YLeaf mpls_experimental_imposition; //type: uint8
+        ydk::YLeaf srp_priority; //type: uint8
+        ydk::YLeaf fr_de; //type: uint8
+        ydk::YLeaf dei; //type: uint8
+        ydk::YLeaf dei_imposition; //type: uint8
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction : public ydk::Entity
 {
     public:
         ExceedAction();
@@ -1335,14 +1440,16 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit; //type: empty
-        YLeaf drop; //type: empty
+        ydk::YLeaf transmit; //type: empty
+        ydk::YLeaf drop; //type: empty
         class Set; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set> set;
@@ -1350,7 +1457,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1358,35 +1465,37 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction:
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dscp; //type: string
-        YLeaf qos_group; //type: uint16
-        YLeaf traffic_class; //type: uint8
-        YLeaf discard_class; //type: uint8
-        YLeaf forward_class; //type: uint8
-        YLeaf df; //type: uint8
-        YLeaf cos; //type: uint8
-        YLeaf inner_cos; //type: uint8
-        YLeaf precedence; //type: one of uint8, string
-        YLeaf precedence_tunnel; //type: one of uint8, string
-        YLeaf mpls_experimental_top_most; //type: uint8
-        YLeaf mpls_experimental_imposition; //type: uint8
-        YLeaf srp_priority; //type: uint8
-        YLeaf fr_de; //type: uint8
-        YLeaf dei; //type: uint8
-        YLeaf dei_imposition; //type: uint8
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
+        ydk::YLeaf dscp; //type: string
+        ydk::YLeaf qos_group; //type: uint16
+        ydk::YLeaf traffic_class; //type: uint8
+        ydk::YLeaf discard_class; //type: uint8
+        ydk::YLeaf forward_class; //type: uint8
+        ydk::YLeaf df; //type: uint8
+        ydk::YLeaf cos; //type: uint8
+        ydk::YLeaf inner_cos; //type: uint8
+        ydk::YLeaf precedence; //type: one of string, uint8
+        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
+        ydk::YLeaf mpls_experimental_top_most; //type: uint8
+        ydk::YLeaf mpls_experimental_imposition; //type: uint8
+        ydk::YLeaf srp_priority; //type: uint8
+        ydk::YLeaf fr_de; //type: uint8
+        ydk::YLeaf dei; //type: uint8
+        ydk::YLeaf dei_imposition; //type: uint8
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction : public ydk::Entity
 {
     public:
         ViolateAction();
@@ -1394,14 +1503,16 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit; //type: empty
-        YLeaf drop; //type: empty
+        ydk::YLeaf transmit; //type: empty
+        ydk::YLeaf drop; //type: empty
         class Set; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set> set;
@@ -1409,7 +1520,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set : public ydk::Entity
 {
     public:
         Set();
@@ -1417,35 +1528,37 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf dscp; //type: string
-        YLeaf qos_group; //type: uint16
-        YLeaf traffic_class; //type: uint8
-        YLeaf discard_class; //type: uint8
-        YLeaf forward_class; //type: uint8
-        YLeaf df; //type: uint8
-        YLeaf cos; //type: uint8
-        YLeaf inner_cos; //type: uint8
-        YLeaf precedence; //type: one of uint8, string
-        YLeaf precedence_tunnel; //type: one of uint8, string
-        YLeaf mpls_experimental_top_most; //type: uint8
-        YLeaf mpls_experimental_imposition; //type: uint8
-        YLeaf srp_priority; //type: uint8
-        YLeaf fr_de; //type: uint8
-        YLeaf dei; //type: uint8
-        YLeaf dei_imposition; //type: uint8
-        YLeaf source_address; //type: string
-        YLeaf destination_address; //type: string
+        ydk::YLeaf dscp; //type: string
+        ydk::YLeaf qos_group; //type: uint16
+        ydk::YLeaf traffic_class; //type: uint8
+        ydk::YLeaf discard_class; //type: uint8
+        ydk::YLeaf forward_class; //type: uint8
+        ydk::YLeaf df; //type: uint8
+        ydk::YLeaf cos; //type: uint8
+        ydk::YLeaf inner_cos; //type: uint8
+        ydk::YLeaf precedence; //type: one of string, uint8
+        ydk::YLeaf precedence_tunnel; //type: one of string, uint8
+        ydk::YLeaf mpls_experimental_top_most; //type: uint8
+        ydk::YLeaf mpls_experimental_imposition; //type: uint8
+        ydk::YLeaf srp_priority; //type: uint8
+        ydk::YLeaf fr_de; //type: uint8
+        ydk::YLeaf dei; //type: uint8
+        ydk::YLeaf dei_imposition; //type: uint8
+        ydk::YLeaf source_address; //type: string
+        ydk::YLeaf destination_address; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy : public ydk::Entity
 {
     public:
         ServicePolicy();
@@ -1453,19 +1566,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf type; //type: string
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf type; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal : public ydk::Entity
 {
     public:
         CacLocal();
@@ -1473,13 +1588,15 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf flow_idle_timeout; //type: one of uint16, string
+        ydk::YLeaf flow_idle_timeout; //type: one of uint16, string
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate
         class FlowRate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate
 
@@ -1489,7 +1606,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal : public Ent
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate : public ydk::Entity
 {
     public:
         Rate();
@@ -1497,19 +1614,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf units; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf units; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate : public ydk::Entity
 {
     public:
         FlowRate();
@@ -1517,19 +1636,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf units; //type: string
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf units; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams : public ydk::Entity
 {
     public:
         FlowParams();
@@ -1537,21 +1658,23 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf max_flow; //type: uint16
-        YLeaf interval_duration; //type: uint32
-        YLeaf history; //type: uint32
-        YLeaf timeout; //type: uint32
+        ydk::YLeaf max_flow; //type: uint16
+        ydk::YLeaf interval_duration; //type: uint32
+        ydk::YLeaf history; //type: uint32
+        ydk::YLeaf timeout; //type: uint32
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr : public ydk::Entity
 {
     public:
         MetricsIpcbr();
@@ -1559,11 +1682,13 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate
         class MediaPacket; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket
@@ -1574,7 +1699,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr : public
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate : public ydk::Entity
 {
     public:
         Rate();
@@ -1582,20 +1707,22 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf layer3; //type: uint32
-        YLeaf packet; //type: uint32
-        YLeaf media; //type: uint32
+        ydk::YLeaf layer3; //type: uint32
+        ydk::YLeaf packet; //type: uint32
+        ydk::YLeaf media; //type: uint32
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket : public ydk::Entity
 {
     public:
         MediaPacket();
@@ -1603,19 +1730,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPa
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf size; //type: uint16
-        YLeaf count_in_layer3; //type: uint8
+        ydk::YLeaf size; //type: uint16
+        ydk::YLeaf count_in_layer3; //type: uint8
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React : public ydk::Entity
 {
     public:
         React();
@@ -1623,18 +1752,20 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf descrition; //type: string
-        YLeaf criterion_delay_factor; //type: empty
-        YLeaf criterion_media_stop; //type: empty
-        YLeaf criterion_mrv; //type: empty
-        YLeaf criterion_flow_count; //type: empty
-        YLeaf criterion_packet_rate; //type: empty
+        ydk::YLeaf descrition; //type: string
+        ydk::YLeaf criterion_delay_factor; //type: empty
+        ydk::YLeaf criterion_media_stop; //type: empty
+        ydk::YLeaf criterion_mrv; //type: empty
+        ydk::YLeaf criterion_flow_count; //type: empty
+        ydk::YLeaf criterion_packet_rate; //type: empty
         class Action; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action
         class Alarm; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm
         class Threshold; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
@@ -1646,7 +1777,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React : public Entity
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action : public ydk::Entity
 {
     public:
         Action();
@@ -1654,19 +1785,21 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf syslog; //type: empty
-        YLeaf snmp; //type: empty
+        ydk::YLeaf syslog; //type: empty
+        ydk::YLeaf snmp; //type: empty
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm : public ydk::Entity
 {
     public:
         Alarm();
@@ -1674,13 +1807,15 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf severity; //type: string
+        ydk::YLeaf severity; //type: string
         class Type; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type
 
         std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type> type;
@@ -1688,7 +1823,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm : public
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type : public ydk::Entity
 {
     public:
         Type();
@@ -1696,20 +1831,22 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf discrete; //type: empty
-        YLeaf group_count; //type: uint16
-        YLeaf group_percent; //type: uint16
+        ydk::YLeaf discrete; //type: empty
+        ydk::YLeaf group_count; //type: uint16
+        ydk::YLeaf group_percent; //type: uint16
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold : public ydk::Entity
 {
     public:
         Threshold();
@@ -1717,11 +1854,13 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class TriggerValue; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue
         class TriggerType; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType
@@ -1732,7 +1871,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold : pu
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue : public ydk::Entity
 {
     public:
         TriggerValue();
@@ -1740,22 +1879,24 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::Tri
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf greater_than; //type: string
-        YLeaf greater_than_equal; //type: string
-        YLeaf less_than; //type: string
-        YLeaf less_than_equal; //type: string
-        YLeaf range; //type: string
+        ydk::YLeaf greater_than; //type: string
+        ydk::YLeaf greater_than_equal; //type: string
+        ydk::YLeaf less_than; //type: string
+        ydk::YLeaf less_than_equal; //type: string
+        ydk::YLeaf range; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType : public ydk::Entity
 {
     public:
         TriggerType();
@@ -1763,41 +1904,44 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::Tri
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf immediate; //type: empty
-        YLeaf average; //type: uint32
+        ydk::YLeaf immediate; //type: empty
+        ydk::YLeaf average; //type: uint32
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect : public ydk::Entity
 {
     public:
-        PbrForward();
-        ~PbrForward();
+        PbrRedirect();
+        ~PbrRedirect();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf default_; //type: empty
-        class NextHop; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop
+        class NextHop; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop
 
-        std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop> next_hop;
+        std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop> next_hop;
         
-}; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward
+}; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -1805,20 +1949,116 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf; //type: string
-        YLeaf ipv4_address; //type: string
-        YLeaf ipv6_address; //type: string
+        class RouteTarget; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget
+
+        std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget> route_target;
+        
+}; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop
+
+
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget : public ydk::Entity
+{
+    public:
+        RouteTarget();
+        ~RouteTarget();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf as_number; //type: uint32
+        ydk::YLeaf index_; //type: uint32
+        class Ipv4Address; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address
+
+        std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address> ipv4_address;
+        
+}; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget
+
+
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address : public ydk::Entity
+{
+    public:
+        Ipv4Address();
+        ~Ipv4Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf netmask; //type: string
+
+}; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address
+
+
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward : public ydk::Entity
+{
+    public:
+        PbrForward();
+        ~PbrForward();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf default_; //type: empty
+        class NextHop; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop
+
+        std::shared_ptr<Cisco_IOS_XR_infra_policymgr_cfg::PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop> next_hop;
+        
+}; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward
+
+
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vrf; //type: string
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv6_address; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop
 
 
-class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath : public Entity
+class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath : public ydk::Entity
 {
     public:
         ServiceFunctionPath();
@@ -1826,89 +2066,91 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path_id; //type: uint32
-        YLeaf index_; //type: uint8
-        YLeaf metadata; //type: string
+        ydk::YLeaf path_id; //type: uint32
+        ydk::YLeaf index_; //type: uint8
+        ydk::YLeaf metadata; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath
 
-class EventTypeEnum : public Enum
+class ExecutionStrategy : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf account_logoff;
-        static const Enum::YLeaf account_logon;
-        static const Enum::YLeaf authentication_failure;
-        static const Enum::YLeaf authentication_no_response;
-        static const Enum::YLeaf authorization_failure;
-        static const Enum::YLeaf authorization_no_response;
-        static const Enum::YLeaf credit_exhausted;
-        static const Enum::YLeaf exception;
-        static const Enum::YLeaf idle_timeout;
-        static const Enum::YLeaf quota_depleted;
-        static const Enum::YLeaf service_start;
-        static const Enum::YLeaf service_stop;
-        static const Enum::YLeaf session_activate;
-        static const Enum::YLeaf session_start;
-        static const Enum::YLeaf session_stop;
-        static const Enum::YLeaf timer_expiry;
+        static const ydk::Enum::YLeaf do_all;
+        static const ydk::Enum::YLeaf do_until_failure;
+        static const ydk::Enum::YLeaf do_until_success;
 
 };
 
-class ClassMapTypeEnum : public Enum
+class ClassMapType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf qos;
-        static const Enum::YLeaf traffic;
-        static const Enum::YLeaf control;
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf control;
 
 };
 
-class ExecutionStrategyEnum : public Enum
+class AuthorizeIdentifier : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf do_all;
-        static const Enum::YLeaf do_until_failure;
-        static const Enum::YLeaf do_until_success;
+        static const ydk::Enum::YLeaf circuit_id;
+        static const ydk::Enum::YLeaf dhcp_client_id;
+        static const ydk::Enum::YLeaf remote_id;
+        static const ydk::Enum::YLeaf source_address_ipv4;
+        static const ydk::Enum::YLeaf source_address_ipv6;
+        static const ydk::Enum::YLeaf source_address_mac;
+        static const ydk::Enum::YLeaf username;
 
 };
 
-class AuthorizeIdentifierEnum : public Enum
+class PolicyMapType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf circuit_id;
-        static const Enum::YLeaf dhcp_client_id;
-        static const Enum::YLeaf remote_id;
-        static const Enum::YLeaf source_address_ipv4;
-        static const Enum::YLeaf source_address_ipv6;
-        static const Enum::YLeaf source_address_mac;
-        static const Enum::YLeaf username;
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf pbr;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf subscriber_control;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf flow_monitor;
 
 };
 
-class PmapClassMapTypeEnum : public Enum
+class EventType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf qos;
-        static const Enum::YLeaf traffic;
-        static const Enum::YLeaf subscriber_control;
+        static const ydk::Enum::YLeaf account_logoff;
+        static const ydk::Enum::YLeaf account_logon;
+        static const ydk::Enum::YLeaf authentication_failure;
+        static const ydk::Enum::YLeaf authentication_no_response;
+        static const ydk::Enum::YLeaf authorization_failure;
+        static const ydk::Enum::YLeaf authorization_no_response;
+        static const ydk::Enum::YLeaf credit_exhausted;
+        static const ydk::Enum::YLeaf exception;
+        static const ydk::Enum::YLeaf idle_timeout;
+        static const ydk::Enum::YLeaf quota_depleted;
+        static const ydk::Enum::YLeaf service_start;
+        static const ydk::Enum::YLeaf service_stop;
+        static const ydk::Enum::YLeaf session_activate;
+        static const ydk::Enum::YLeaf session_start;
+        static const ydk::Enum::YLeaf session_stop;
+        static const ydk::Enum::YLeaf timer_expiry;
 
 };
 
-class PolicyMapTypeEnum : public Enum
+class PmapClassMapType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf qos;
-        static const Enum::YLeaf pbr;
-        static const Enum::YLeaf traffic;
-        static const Enum::YLeaf subscriber_control;
-        static const Enum::YLeaf redirect;
-        static const Enum::YLeaf flow_monitor;
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf subscriber_control;
 
 };
 

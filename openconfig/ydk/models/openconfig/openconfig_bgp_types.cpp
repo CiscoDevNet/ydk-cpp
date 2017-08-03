@@ -6,224 +6,250 @@
 #include "generated_entity_lookup.hpp"
 #include "openconfig_bgp_types.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace openconfig {
 namespace openconfig_bgp_types {
 
-AfiSafiTypeIdentity::AfiSafiTypeIdentity()
-     : Identity("openconfig-bgp-types:afi-safi-type")
+Remove_Private_As_Option::Remove_Private_As_Option()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:REMOVE_PRIVATE_AS_OPTION")
 {
 }
 
-AfiSafiTypeIdentity::~AfiSafiTypeIdentity()
+Remove_Private_As_Option::~Remove_Private_As_Option()
 {
 }
 
-BgpCapabilityIdentity::BgpCapabilityIdentity()
-     : Identity("openconfig-bgp-types:bgp-capability")
+Bgp_Capability::Bgp_Capability()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:BGP_CAPABILITY")
 {
 }
 
-BgpCapabilityIdentity::~BgpCapabilityIdentity()
+Bgp_Capability::~Bgp_Capability()
 {
 }
 
-BgpWellKnownStdCommunityIdentity::BgpWellKnownStdCommunityIdentity()
-     : Identity("openconfig-bgp-types:bgp-well-known-std-community")
+Afi_Safi_Type::Afi_Safi_Type()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:AFI_SAFI_TYPE")
 {
 }
 
-BgpWellKnownStdCommunityIdentity::~BgpWellKnownStdCommunityIdentity()
+Afi_Safi_Type::~Afi_Safi_Type()
 {
 }
 
-RouteRefreshIdentity::RouteRefreshIdentity()
-     : Identity("openconfig-bgp-types:ROUTE-REFRESH")
+Bgp_Well_Known_Std_Community::Bgp_Well_Known_Std_Community()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:BGP_WELL_KNOWN_STD_COMMUNITY")
 {
 }
 
-RouteRefreshIdentity::~RouteRefreshIdentity()
+Bgp_Well_Known_Std_Community::~Bgp_Well_Known_Std_Community()
 {
 }
 
-No_Export_SubconfedIdentity::No_Export_SubconfedIdentity()
-     : Identity("openconfig-bgp-types:NO_EXPORT_SUBCONFED")
+Private_As_Remove_All::Private_As_Remove_All()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:PRIVATE_AS_REMOVE_ALL")
 {
 }
 
-No_Export_SubconfedIdentity::~No_Export_SubconfedIdentity()
+Private_As_Remove_All::~Private_As_Remove_All()
 {
 }
 
-No_AdvertiseIdentity::No_AdvertiseIdentity()
-     : Identity("openconfig-bgp-types:NO_ADVERTISE")
+Mpbgp::Mpbgp()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:MPBGP")
 {
 }
 
-No_AdvertiseIdentity::~No_AdvertiseIdentity()
+Mpbgp::~Mpbgp()
 {
 }
 
-MpbgpIdentity::MpbgpIdentity()
-     : Identity("openconfig-bgp-types:MPBGP")
+Ipv4_Labeled_Unicast::Ipv4_Labeled_Unicast()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV4_LABELED_UNICAST")
 {
 }
 
-MpbgpIdentity::~MpbgpIdentity()
+Ipv4_Labeled_Unicast::~Ipv4_Labeled_Unicast()
 {
 }
 
-Ipv4UnicastIdentity::Ipv4UnicastIdentity()
-     : Identity("openconfig-bgp-types:ipv4-unicast")
+Private_As_Replace_All::Private_As_Replace_All()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:PRIVATE_AS_REPLACE_ALL")
 {
 }
 
-Ipv4UnicastIdentity::~Ipv4UnicastIdentity()
+Private_As_Replace_All::~Private_As_Replace_All()
 {
 }
 
-AddPathsIdentity::AddPathsIdentity()
-     : Identity("openconfig-bgp-types:ADD-PATHS")
+Asn32::Asn32()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:ASN32")
 {
 }
 
-AddPathsIdentity::~AddPathsIdentity()
+Asn32::~Asn32()
 {
 }
 
-L3VpnIpv4MulticastIdentity::L3VpnIpv4MulticastIdentity()
-     : Identity("openconfig-bgp-types:l3vpn-ipv4-multicast")
+L3Vpn_Ipv4_Multicast::L3Vpn_Ipv4_Multicast()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV4_MULTICAST")
 {
 }
 
-L3VpnIpv4MulticastIdentity::~L3VpnIpv4MulticastIdentity()
+L3Vpn_Ipv4_Multicast::~L3Vpn_Ipv4_Multicast()
 {
 }
 
-No_ExportIdentity::No_ExportIdentity()
-     : Identity("openconfig-bgp-types:NO_EXPORT")
+No_Advertise::No_Advertise()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:NO_ADVERTISE")
 {
 }
 
-No_ExportIdentity::~No_ExportIdentity()
+No_Advertise::~No_Advertise()
 {
 }
 
-L2VpnEvpnIdentity::L2VpnEvpnIdentity()
-     : Identity("openconfig-bgp-types:l2vpn-evpn")
+Ipv4_Unicast::Ipv4_Unicast()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV4_UNICAST")
 {
 }
 
-L2VpnEvpnIdentity::~L2VpnEvpnIdentity()
+Ipv4_Unicast::~Ipv4_Unicast()
 {
 }
 
-Ipv4LabelledUnicastIdentity::Ipv4LabelledUnicastIdentity()
-     : Identity("openconfig-bgp-types:ipv4-labelled-unicast")
+Ipv6_Labeled_Unicast::Ipv6_Labeled_Unicast()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV6_LABELED_UNICAST")
 {
 }
 
-Ipv4LabelledUnicastIdentity::~Ipv4LabelledUnicastIdentity()
+Ipv6_Labeled_Unicast::~Ipv6_Labeled_Unicast()
 {
 }
 
-L3VpnIpv6UnicastIdentity::L3VpnIpv6UnicastIdentity()
-     : Identity("openconfig-bgp-types:l3vpn-ipv6-unicast")
+Nopeer::Nopeer()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:NOPEER")
 {
 }
 
-L3VpnIpv6UnicastIdentity::~L3VpnIpv6UnicastIdentity()
+Nopeer::~Nopeer()
 {
 }
 
-Ipv6LabelledUnicastIdentity::Ipv6LabelledUnicastIdentity()
-     : Identity("openconfig-bgp-types:ipv6-labelled-unicast")
+L2Vpn_Vpls::L2Vpn_Vpls()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L2VPN_VPLS")
 {
 }
 
-Ipv6LabelledUnicastIdentity::~Ipv6LabelledUnicastIdentity()
+L2Vpn_Vpls::~L2Vpn_Vpls()
 {
 }
 
-L3VpnIpv6MulticastIdentity::L3VpnIpv6MulticastIdentity()
-     : Identity("openconfig-bgp-types:l3vpn-ipv6-multicast")
+L3Vpn_Ipv4_Unicast::L3Vpn_Ipv4_Unicast()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV4_UNICAST")
 {
 }
 
-L3VpnIpv6MulticastIdentity::~L3VpnIpv6MulticastIdentity()
+L3Vpn_Ipv4_Unicast::~L3Vpn_Ipv4_Unicast()
 {
 }
 
-GracefulRestartIdentity::GracefulRestartIdentity()
-     : Identity("openconfig-bgp-types:GRACEFUL-RESTART")
+L2Vpn_Evpn::L2Vpn_Evpn()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L2VPN_EVPN")
 {
 }
 
-GracefulRestartIdentity::~GracefulRestartIdentity()
+L2Vpn_Evpn::~L2Vpn_Evpn()
 {
 }
 
-Ipv6UnicastIdentity::Ipv6UnicastIdentity()
-     : Identity("openconfig-bgp-types:ipv6-unicast")
+L3Vpn_Ipv6_Unicast::L3Vpn_Ipv6_Unicast()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV6_UNICAST")
 {
 }
 
-Ipv6UnicastIdentity::~Ipv6UnicastIdentity()
+L3Vpn_Ipv6_Unicast::~L3Vpn_Ipv6_Unicast()
 {
 }
 
-L2VpnVplsIdentity::L2VpnVplsIdentity()
-     : Identity("openconfig-bgp-types:l2vpn-vpls")
+Add_Paths::Add_Paths()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:ADD_PATHS")
 {
 }
 
-L2VpnVplsIdentity::~L2VpnVplsIdentity()
+Add_Paths::~Add_Paths()
 {
 }
 
-Asn32Identity::Asn32Identity()
-     : Identity("openconfig-bgp-types:ASN32")
+Route_Refresh::Route_Refresh()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:ROUTE_REFRESH")
 {
 }
 
-Asn32Identity::~Asn32Identity()
+Route_Refresh::~Route_Refresh()
 {
 }
 
-L3VpnIpv4UnicastIdentity::L3VpnIpv4UnicastIdentity()
-     : Identity("openconfig-bgp-types:l3vpn-ipv4-unicast")
+Graceful_Restart::Graceful_Restart()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:GRACEFUL_RESTART")
 {
 }
 
-L3VpnIpv4UnicastIdentity::~L3VpnIpv4UnicastIdentity()
+Graceful_Restart::~Graceful_Restart()
 {
 }
 
-NopeerIdentity::NopeerIdentity()
-     : Identity("openconfig-bgp-types:NOPEER")
+L3Vpn_Ipv6_Multicast::L3Vpn_Ipv6_Multicast()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:L3VPN_IPV6_MULTICAST")
 {
 }
 
-NopeerIdentity::~NopeerIdentity()
+L3Vpn_Ipv6_Multicast::~L3Vpn_Ipv6_Multicast()
 {
 }
 
-const Enum::YLeaf RemovePrivateAsOptionEnum::ALL {0, "ALL"};
-const Enum::YLeaf RemovePrivateAsOptionEnum::REPLACE {1, "REPLACE"};
+Ipv6_Unicast::Ipv6_Unicast()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:IPV6_UNICAST")
+{
+}
 
-const Enum::YLeaf CommunityTypeEnum::STANDARD {0, "STANDARD"};
-const Enum::YLeaf CommunityTypeEnum::EXTENDED {1, "EXTENDED"};
-const Enum::YLeaf CommunityTypeEnum::BOTH {2, "BOTH"};
-const Enum::YLeaf CommunityTypeEnum::NONE {3, "NONE"};
+Ipv6_Unicast::~Ipv6_Unicast()
+{
+}
 
-const Enum::YLeaf PeerTypeEnum::INTERNAL {0, "INTERNAL"};
-const Enum::YLeaf PeerTypeEnum::EXTERNAL {1, "EXTERNAL"};
+No_Export_Subconfed::No_Export_Subconfed()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:NO_EXPORT_SUBCONFED")
+{
+}
 
-const Enum::YLeaf BgpSessionDirectionEnum::INBOUND {0, "INBOUND"};
-const Enum::YLeaf BgpSessionDirectionEnum::OUTBOUND {1, "OUTBOUND"};
+No_Export_Subconfed::~No_Export_Subconfed()
+{
+}
 
-const Enum::YLeaf BgpOriginAttrTypeEnum::IGP {0, "IGP"};
-const Enum::YLeaf BgpOriginAttrTypeEnum::EGP {1, "EGP"};
-const Enum::YLeaf BgpOriginAttrTypeEnum::INCOMPLETE {2, "INCOMPLETE"};
+No_Export::No_Export()
+     : Identity("http://openconfig.net/yang/bgp-types", "openconfig-bgp-types", "openconfig-bgp-types:NO_EXPORT")
+{
+}
+
+No_Export::~No_Export()
+{
+}
+
+const Enum::YLeaf CommunityType::STANDARD {0, "STANDARD"};
+const Enum::YLeaf CommunityType::EXTENDED {1, "EXTENDED"};
+const Enum::YLeaf CommunityType::BOTH {2, "BOTH"};
+const Enum::YLeaf CommunityType::NONE {3, "NONE"};
+
+const Enum::YLeaf BgpOriginAttrType::IGP {0, "IGP"};
+const Enum::YLeaf BgpOriginAttrType::EGP {1, "EGP"};
+const Enum::YLeaf BgpOriginAttrType::INCOMPLETE {2, "INCOMPLETE"};
+
+const Enum::YLeaf PeerType::INTERNAL {0, "INTERNAL"};
+const Enum::YLeaf PeerType::EXTERNAL {1, "EXTERNAL"};
+
+const Enum::YLeaf BgpSessionDirection::INBOUND {0, "INBOUND"};
+const Enum::YLeaf BgpSessionDirection::OUTBOUND {1, "OUTBOUND"};
 
 
 }

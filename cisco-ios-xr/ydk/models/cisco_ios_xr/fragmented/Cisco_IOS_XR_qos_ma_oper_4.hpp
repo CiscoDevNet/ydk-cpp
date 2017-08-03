@@ -8,211 +8,40 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_qos_ma_oper_0.hpp"
+#include "Cisco_IOS_XR_qos_ma_oper_3.hpp"
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_qos_ma_oper {
 
 
-class Qos::QosGlobal : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics : public ydk::Entity
 {
     public:
-        QosGlobal();
-        ~QosGlobal();
+        Statistics();
+        ~Statistics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class VoQ; //type: Qos::QosGlobal::VoQ
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ> vo_q;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats> > class_stats;
         
-}; // Qos::QosGlobal
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics
 
 
-class Qos::QosGlobal::VoQ : public Entity
-{
-    public:
-        VoQ();
-        ~VoQ();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class VoQStatistics; //type: Qos::QosGlobal::VoQ::VoQStatistics
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics> vo_q_statistics;
-        
-}; // Qos::QosGlobal::VoQ
-
-
-class Qos::QosGlobal::VoQ::VoQStatistics : public Entity
-{
-    public:
-        VoQStatistics();
-        ~VoQStatistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class VoQinterfaces; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces> vo_qinterfaces;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics
-
-
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces : public Entity
-{
-    public:
-        VoQinterfaces();
-        ~VoQinterfaces();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class VoQinterface; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface> > vo_qinterface;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces
-
-
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface : public Entity
-{
-    public:
-        VoQinterface();
-        ~VoQinterface();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf interface_name; //type: string
-        class OutputVoQ; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
-        class VoQMemberInterfaces; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ> output_vo_q;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces> vo_q_member_interfaces;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface
-
-
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ : public Entity
-{
-    public:
-        OutputVoQ();
-        ~OutputVoQ();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class LocationvoQs; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs
-        class VoQStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs> locationvo_qs;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats> vo_q_stats;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
-
-
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs : public Entity
-{
-    public:
-        LocationvoQs();
-        ~LocationvoQs();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class LocationvoQ; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ> > locationvo_q;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs
-
-
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ : public Entity
-{
-    public:
-        LocationvoQ();
-        ~LocationvoQ();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf node_name; //type: string
-        class VoQStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats> vo_q_stats;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ
-
-
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats : public Entity
-{
-    public:
-        VoQStats();
-        ~VoQStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats> > class_stats;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats
-
-
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats : public ydk::Entity
 {
     public:
         ClassStats();
@@ -220,37 +49,39 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf counter_validity_bitmask; //type: uint64
-        YLeaf class_name; //type: string
-        YLeaf shared_queue_id; //type: uint32
-        YLeaf queue_descr; //type: string
-        YLeaf cac_state; //type: CacStateEnum
-        class GeneralStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats
-        class IphcStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats
-        class ChildPolicy; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy
-        class CacStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats
-        class QueueStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray
-        class PoliceStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray
-        class WredStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats
+        class ChildPolicy; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats> cac_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy> child_policy;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats> iphc_stats;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray> > wred_stats_array;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy> child_policy;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats : public ydk::Entity
 {
     public:
         GeneralStats();
@@ -258,26 +89,28 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets; //type: uint64
-        YLeaf transmit_bytes; //type: uint64
-        YLeaf total_drop_packets; //type: uint64
-        YLeaf total_drop_bytes; //type: uint64
-        YLeaf total_drop_rate; //type: uint32
-        YLeaf match_data_rate; //type: uint32
-        YLeaf total_transmit_rate; //type: uint32
-        YLeaf pre_policy_matched_packets; //type: uint64
-        YLeaf pre_policy_matched_bytes; //type: uint64
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::GeneralStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::GeneralStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats : public ydk::Entity
 {
     public:
         IphcStats();
@@ -285,29 +118,31 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf non_tcp_total_out_packets; //type: uint64
-        YLeaf non_tcp_total_out_bytes; //type: uint64
-        YLeaf non_tcp_bytes_saved; //type: uint64
-        YLeaf non_tcp_compressed_packets_out; //type: uint64
-        YLeaf non_tcp_bytes_sent_rate; //type: uint32
-        YLeaf non_tcp_full_header_packets_out; //type: uint64
-        YLeaf tcp_total_out_packets; //type: uint64
-        YLeaf tcp_total_out_bytes; //type: uint64
-        YLeaf tcp_bytes_saved; //type: uint64
-        YLeaf tcp_compressed_packets_out; //type: uint64
-        YLeaf tcp_bytes_sent_rate; //type: uint32
-        YLeaf tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::IphcStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy : public ydk::Entity
 {
     public:
         ChildPolicy();
@@ -315,17 +150,125 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy
 
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_ : public ydk::Entity
+{
+    public:
+        ClassStats_();
+        ~ClassStats_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats : public ydk::Entity
+{
+    public:
+        GeneralStats();
+        ~GeneralStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats : public ydk::Entity
+{
+    public:
+        IphcStats();
+        ~IphcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats : public ydk::Entity
 {
     public:
         CacStats();
@@ -333,23 +276,25 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf drop_rates; //type: uint32
-        YLeaf admitpackets; //type: uint64
-        YLeaf admit_bytes; //type: uint64
-        YLeaf admit_rates; //type: uint32
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray : public ydk::Entity
 {
     public:
         QueueStatsArray();
@@ -357,43 +302,45 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf queue_id; //type: uint32
-        YLeaf tail_drop_packets; //type: uint64
-        YLeaf tail_drop_bytes; //type: uint64
-        YLeaf atm_clp0_drop_packets; //type: uint64
-        YLeaf atm_clp0_drop_bytes; //type: uint64
-        YLeaf atm_clp1_drop_packets; //type: uint64
-        YLeaf atm_clp1_drop_bytes; //type: uint64
-        YLeaf queue_drop_threshold; //type: uint32
-        YLeaf forced_wred_stats_display; //type: boolean
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        class QueueInstanceLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength
-        class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
-        class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength : public ydk::Entity
 {
     public:
         QueueInstanceLength();
@@ -401,19 +348,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength : public ydk::Entity
 {
     public:
         QueueAverageLength();
@@ -421,19 +370,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength : public ydk::Entity
 {
     public:
         QueueMaxLength();
@@ -441,19 +392,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray : public ydk::Entity
 {
     public:
         PoliceStatsArray();
@@ -461,33 +414,35 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf violate_packets; //type: uint64
-        YLeaf violate_bytes; //type: uint64
-        YLeaf parent_drop_packets; //type: uint64
-        YLeaf parent_drop_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        YLeaf violate_rate; //type: uint32
-        class ColorClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats> color_class_stats;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats : public ydk::Entity
 {
     public:
         ColorClassStats();
@@ -495,35 +450,37 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf conform_class_conform_packets; //type: uint64
-        YLeaf conform_class_conform_bytes; //type: uint64
-        YLeaf conform_class_conform_rate; //type: uint32
-        YLeaf conform_class_exceed_packets; //type: uint64
-        YLeaf conform_class_exceed_bytes; //type: uint64
-        YLeaf conform_class_exceed_rate; //type: uint32
-        YLeaf conform_class_violate_packets; //type: uint64
-        YLeaf conform_class_violate_bytes; //type: uint64
-        YLeaf conform_class_violate_rate; //type: uint32
-        YLeaf exceed_class_exceed_packets; //type: uint64
-        YLeaf exceed_class_exceed_bytes; //type: uint64
-        YLeaf exceed_class_exceed_rate; //type: uint32
-        YLeaf exceed_class_violate_packets; //type: uint64
-        YLeaf exceed_class_violate_bytes; //type: uint64
-        YLeaf exceed_class_violate_rate; //type: uint32
-        YLeaf violate_class_violate_packets; //type: uint64
-        YLeaf violate_class_violate_bytes; //type: uint64
-        YLeaf violate_class_violate_rate; //type: uint32
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray : public ydk::Entity
 {
     public:
         WredStatsArray();
@@ -531,29 +488,31 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_title; //type: string
-        YLeaf red_transmit_packets; //type: uint64
-        YLeaf red_transmit_bytes; //type: uint64
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf red_ecn_marked_packets; //type: uint64
-        YLeaf red_ecn_marked_bytes; //type: uint64
-        class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel> > red_label;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel : public ydk::Entity
 {
     public:
         RedLabel();
@@ -561,44 +520,383 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf wred_type; //type: WredEnum
-        YLeaf value_; //type: uint8
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats : public ydk::Entity
 {
     public:
-        VoQStats();
-        ~VoQStats();
+        CacStats();
+        ~CacStats();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats> > class_stats;
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::CacStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray : public ydk::Entity
+{
+    public:
+        QueueStatsArray();
+        ~QueueStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public ydk::Entity
+{
+    public:
+        QueueInstanceLength();
+        ~QueueInstanceLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public ydk::Entity
+{
+    public:
+        QueueAverageLength();
+        ~QueueAverageLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public ydk::Entity
+{
+    public:
+        QueueMaxLength();
+        ~QueueMaxLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray : public ydk::Entity
+{
+    public:
+        PoliceStatsArray();
+        ~PoliceStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public ydk::Entity
+{
+    public:
+        ColorClassStats();
+        ~ColorClassStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray : public ydk::Entity
+{
+    public:
+        WredStatsArray();
+        ~WredStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel : public ydk::Entity
+{
+    public:
+        RedLabel();
+        ~RedLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats::WredStatsArray::RedLabel
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input : public ydk::Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ServicePolicyNames; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames
+        class Statistics; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames> service_policy_names;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics> statistics;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames : public ydk::Entity
+{
+    public:
+        ServicePolicyNames();
+        ~ServicePolicyNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance : public ydk::Entity
+{
+    public:
+        ServicePolicyInstance();
+        ~ServicePolicyInstance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf service_policy_name; //type: string
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats> > class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats : public ydk::Entity
 {
     public:
         ClassStats();
@@ -606,37 +904,39 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf counter_validity_bitmask; //type: uint64
-        YLeaf class_name; //type: string
-        YLeaf shared_queue_id; //type: uint32
-        YLeaf queue_descr; //type: string
-        YLeaf cac_state; //type: CacStateEnum
-        class GeneralStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats
-        class IphcStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats
-        class ChildPolicy; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy
-        class CacStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats
-        class QueueStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray
-        class PoliceStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray
-        class WredStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::IphcStats
+        class ChildPolicy; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::WredStatsArray
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats> cac_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy> child_policy;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats> iphc_stats;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray> > wred_stats_array;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy> child_policy;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::GeneralStats : public ydk::Entity
 {
     public:
         GeneralStats();
@@ -644,26 +944,28 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets; //type: uint64
-        YLeaf transmit_bytes; //type: uint64
-        YLeaf total_drop_packets; //type: uint64
-        YLeaf total_drop_bytes; //type: uint64
-        YLeaf total_drop_rate; //type: uint32
-        YLeaf match_data_rate; //type: uint32
-        YLeaf total_transmit_rate; //type: uint32
-        YLeaf pre_policy_matched_packets; //type: uint64
-        YLeaf pre_policy_matched_bytes; //type: uint64
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::GeneralStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::GeneralStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::IphcStats : public ydk::Entity
 {
     public:
         IphcStats();
@@ -671,29 +973,31 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf non_tcp_total_out_packets; //type: uint64
-        YLeaf non_tcp_total_out_bytes; //type: uint64
-        YLeaf non_tcp_bytes_saved; //type: uint64
-        YLeaf non_tcp_compressed_packets_out; //type: uint64
-        YLeaf non_tcp_bytes_sent_rate; //type: uint32
-        YLeaf non_tcp_full_header_packets_out; //type: uint64
-        YLeaf tcp_total_out_packets; //type: uint64
-        YLeaf tcp_total_out_bytes; //type: uint64
-        YLeaf tcp_bytes_saved; //type: uint64
-        YLeaf tcp_compressed_packets_out; //type: uint64
-        YLeaf tcp_bytes_sent_rate; //type: uint32
-        YLeaf tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::IphcStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy : public ydk::Entity
 {
     public:
         ChildPolicy();
@@ -701,17 +1005,125 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy
 
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_ : public ydk::Entity
+{
+    public:
+        ClassStats_();
+        ~ClassStats_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats : public ydk::Entity
+{
+    public:
+        GeneralStats();
+        ~GeneralStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats : public ydk::Entity
+{
+    public:
+        IphcStats();
+        ~IphcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats : public ydk::Entity
 {
     public:
         CacStats();
@@ -719,23 +1131,25 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf drop_rates; //type: uint32
-        YLeaf admitpackets; //type: uint64
-        YLeaf admit_bytes; //type: uint64
-        YLeaf admit_rates; //type: uint32
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray : public ydk::Entity
 {
     public:
         QueueStatsArray();
@@ -743,43 +1157,45 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf queue_id; //type: uint32
-        YLeaf tail_drop_packets; //type: uint64
-        YLeaf tail_drop_bytes; //type: uint64
-        YLeaf atm_clp0_drop_packets; //type: uint64
-        YLeaf atm_clp0_drop_bytes; //type: uint64
-        YLeaf atm_clp1_drop_packets; //type: uint64
-        YLeaf atm_clp1_drop_bytes; //type: uint64
-        YLeaf queue_drop_threshold; //type: uint32
-        YLeaf forced_wred_stats_display; //type: boolean
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        class QueueInstanceLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength
-        class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
-        class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength : public ydk::Entity
 {
     public:
         QueueInstanceLength();
@@ -787,19 +1203,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength : public ydk::Entity
 {
     public:
         QueueAverageLength();
@@ -807,19 +1225,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength : public ydk::Entity
 {
     public:
         QueueMaxLength();
@@ -827,19 +1247,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray : public ydk::Entity
 {
     public:
         PoliceStatsArray();
@@ -847,33 +1269,35 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf violate_packets; //type: uint64
-        YLeaf violate_bytes; //type: uint64
-        YLeaf parent_drop_packets; //type: uint64
-        YLeaf parent_drop_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        YLeaf violate_rate; //type: uint32
-        class ColorClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats> color_class_stats;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats : public ydk::Entity
 {
     public:
         ColorClassStats();
@@ -881,35 +1305,37 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf conform_class_conform_packets; //type: uint64
-        YLeaf conform_class_conform_bytes; //type: uint64
-        YLeaf conform_class_conform_rate; //type: uint32
-        YLeaf conform_class_exceed_packets; //type: uint64
-        YLeaf conform_class_exceed_bytes; //type: uint64
-        YLeaf conform_class_exceed_rate; //type: uint32
-        YLeaf conform_class_violate_packets; //type: uint64
-        YLeaf conform_class_violate_bytes; //type: uint64
-        YLeaf conform_class_violate_rate; //type: uint32
-        YLeaf exceed_class_exceed_packets; //type: uint64
-        YLeaf exceed_class_exceed_bytes; //type: uint64
-        YLeaf exceed_class_exceed_rate; //type: uint32
-        YLeaf exceed_class_violate_packets; //type: uint64
-        YLeaf exceed_class_violate_bytes; //type: uint64
-        YLeaf exceed_class_violate_rate; //type: uint32
-        YLeaf violate_class_violate_packets; //type: uint64
-        YLeaf violate_class_violate_bytes; //type: uint64
-        YLeaf violate_class_violate_rate; //type: uint32
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray : public ydk::Entity
 {
     public:
         WredStatsArray();
@@ -917,29 +1343,31 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_title; //type: string
-        YLeaf red_transmit_packets; //type: uint64
-        YLeaf red_transmit_bytes; //type: uint64
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf red_ecn_marked_packets; //type: uint64
-        YLeaf red_ecn_marked_bytes; //type: uint64
-        class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel> > red_label;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel : public ydk::Entity
 {
     public:
         RedLabel();
@@ -947,108 +1375,383 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf wred_type; //type: WredEnum
-        YLeaf value_; //type: uint8
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::CacStats : public ydk::Entity
 {
     public:
-        VoQMemberInterfaces();
-        ~VoQMemberInterfaces();
+        CacStats();
+        ~CacStats();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class VoQMemberInterface; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface> > vo_q_member_interface;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::CacStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray : public ydk::Entity
 {
     public:
-        VoQMemberInterface();
-        ~VoQMemberInterface();
+        QueueStatsArray();
+        ~QueueStatsArray();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        class VoQoutput; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput> vo_qoutput;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public ydk::Entity
 {
     public:
-        VoQoutput();
-        ~VoQoutput();
+        QueueInstanceLength();
+        ~QueueInstanceLength();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class VoQStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats> vo_q_stats;
-        
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public ydk::Entity
 {
     public:
-        VoQStats();
-        ~VoQStats();
+        QueueAverageLength();
+        ~QueueAverageLength();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats> > class_stats;
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public ydk::Entity
+{
+    public:
+        QueueMaxLength();
+        ~QueueMaxLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::PoliceStatsArray : public ydk::Entity
+{
+    public:
+        PoliceStatsArray();
+        ~PoliceStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::PoliceStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public ydk::Entity
+{
+    public:
+        ColorClassStats();
+        ~ColorClassStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::WredStatsArray : public ydk::Entity
+{
+    public:
+        WredStatsArray();
+        ~WredStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::WredStatsArray::RedLabel
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::WredStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::WredStatsArray::RedLabel : public ydk::Entity
+{
+    public:
+        RedLabel();
+        ~RedLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::Statistics::ClassStats::WredStatsArray::RedLabel
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ServicePolicyNames; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames
+        class Statistics; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames> service_policy_names;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics> statistics;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames : public ydk::Entity
+{
+    public:
+        ServicePolicyNames();
+        ~ServicePolicyNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance : public ydk::Entity
+{
+    public:
+        ServicePolicyInstance();
+        ~ServicePolicyInstance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf service_policy_name; //type: string
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics : public ydk::Entity
+{
+    public:
+        Statistics();
+        ~Statistics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats> > class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats : public ydk::Entity
 {
     public:
         ClassStats();
@@ -1056,37 +1759,39 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf counter_validity_bitmask; //type: uint64
-        YLeaf class_name; //type: string
-        YLeaf shared_queue_id; //type: uint32
-        YLeaf queue_descr; //type: string
-        YLeaf cac_state; //type: CacStateEnum
-        class GeneralStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats
-        class IphcStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::IphcStats
-        class ChildPolicy; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy
-        class CacStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::CacStats
-        class QueueStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray
-        class PoliceStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray
-        class WredStatsArray; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::IphcStats
+        class ChildPolicy; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::WredStatsArray
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::CacStats> cac_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy> child_policy;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::IphcStats> iphc_stats;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray> > wred_stats_array;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy> child_policy;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::GeneralStats : public ydk::Entity
 {
     public:
         GeneralStats();
@@ -1094,26 +1799,28 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets; //type: uint64
-        YLeaf transmit_bytes; //type: uint64
-        YLeaf total_drop_packets; //type: uint64
-        YLeaf total_drop_bytes; //type: uint64
-        YLeaf total_drop_rate; //type: uint32
-        YLeaf match_data_rate; //type: uint32
-        YLeaf total_transmit_rate; //type: uint32
-        YLeaf pre_policy_matched_packets; //type: uint64
-        YLeaf pre_policy_matched_bytes; //type: uint64
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::GeneralStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::GeneralStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::IphcStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::IphcStats : public ydk::Entity
 {
     public:
         IphcStats();
@@ -1121,29 +1828,31 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf non_tcp_total_out_packets; //type: uint64
-        YLeaf non_tcp_total_out_bytes; //type: uint64
-        YLeaf non_tcp_bytes_saved; //type: uint64
-        YLeaf non_tcp_compressed_packets_out; //type: uint64
-        YLeaf non_tcp_bytes_sent_rate; //type: uint32
-        YLeaf non_tcp_full_header_packets_out; //type: uint64
-        YLeaf tcp_total_out_packets; //type: uint64
-        YLeaf tcp_total_out_bytes; //type: uint64
-        YLeaf tcp_bytes_saved; //type: uint64
-        YLeaf tcp_compressed_packets_out; //type: uint64
-        YLeaf tcp_bytes_sent_rate; //type: uint32
-        YLeaf tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::IphcStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::IphcStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy : public ydk::Entity
 {
     public:
         ChildPolicy();
@@ -1151,17 +1860,125 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy
 
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_ : public ydk::Entity
+{
+    public:
+        ClassStats_();
+        ~ClassStats_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::CacStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats : public ydk::Entity
+{
+    public:
+        GeneralStats();
+        ~GeneralStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats : public ydk::Entity
+{
+    public:
+        IphcStats();
+        ~IphcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats : public ydk::Entity
 {
     public:
         CacStats();
@@ -1169,23 +1986,25 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf drop_rates; //type: uint32
-        YLeaf admitpackets; //type: uint64
-        YLeaf admit_bytes; //type: uint64
-        YLeaf admit_rates; //type: uint32
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::CacStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray : public ydk::Entity
 {
     public:
         QueueStatsArray();
@@ -1193,43 +2012,45 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf queue_id; //type: uint32
-        YLeaf tail_drop_packets; //type: uint64
-        YLeaf tail_drop_bytes; //type: uint64
-        YLeaf atm_clp0_drop_packets; //type: uint64
-        YLeaf atm_clp0_drop_bytes; //type: uint64
-        YLeaf atm_clp1_drop_packets; //type: uint64
-        YLeaf atm_clp1_drop_bytes; //type: uint64
-        YLeaf queue_drop_threshold; //type: uint32
-        YLeaf forced_wred_stats_display; //type: boolean
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        class QueueInstanceLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength
-        class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
-        class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength : public ydk::Entity
 {
     public:
         QueueInstanceLength();
@@ -1237,19 +2058,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength : public ydk::Entity
 {
     public:
         QueueAverageLength();
@@ -1257,19 +2080,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength : public ydk::Entity
 {
     public:
         QueueMaxLength();
@@ -1277,19 +2102,21 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray : public ydk::Entity
 {
     public:
         PoliceStatsArray();
@@ -1297,33 +2124,35 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf violate_packets; //type: uint64
-        YLeaf violate_bytes; //type: uint64
-        YLeaf parent_drop_packets; //type: uint64
-        YLeaf parent_drop_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        YLeaf violate_rate; //type: uint32
-        class ColorClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats> color_class_stats;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats : public ydk::Entity
 {
     public:
         ColorClassStats();
@@ -1331,35 +2160,37 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf conform_class_conform_packets; //type: uint64
-        YLeaf conform_class_conform_bytes; //type: uint64
-        YLeaf conform_class_conform_rate; //type: uint32
-        YLeaf conform_class_exceed_packets; //type: uint64
-        YLeaf conform_class_exceed_bytes; //type: uint64
-        YLeaf conform_class_exceed_rate; //type: uint32
-        YLeaf conform_class_violate_packets; //type: uint64
-        YLeaf conform_class_violate_bytes; //type: uint64
-        YLeaf conform_class_violate_rate; //type: uint32
-        YLeaf exceed_class_exceed_packets; //type: uint64
-        YLeaf exceed_class_exceed_bytes; //type: uint64
-        YLeaf exceed_class_exceed_rate; //type: uint32
-        YLeaf exceed_class_violate_packets; //type: uint64
-        YLeaf exceed_class_violate_bytes; //type: uint64
-        YLeaf exceed_class_violate_rate; //type: uint32
-        YLeaf violate_class_violate_packets; //type: uint64
-        YLeaf violate_class_violate_bytes; //type: uint64
-        YLeaf violate_class_violate_rate; //type: uint32
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray::ColorClassStats
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray : public ydk::Entity
 {
     public:
         WredStatsArray();
@@ -1367,29 +2198,31 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_title; //type: string
-        YLeaf red_transmit_packets; //type: uint64
-        YLeaf red_transmit_bytes; //type: uint64
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf red_ecn_marked_packets; //type: uint64
-        YLeaf red_ecn_marked_bytes; //type: uint64
-        class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray::RedLabel
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray::RedLabel> > red_label;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
         
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
 
-class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray::RedLabel : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel : public ydk::Entity
 {
     public:
         RedLabel();
@@ -1397,19 +2230,287 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf wred_type; //type: WredEnum
-        YLeaf value_; //type: uint8
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
 
-}; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray::RedLabel
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
 
-class Qos::InterfaceTable : public Entity
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::CacStats : public ydk::Entity
+{
+    public:
+        CacStats();
+        ~CacStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::CacStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray : public ydk::Entity
+{
+    public:
+        QueueStatsArray();
+        ~QueueStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public ydk::Entity
+{
+    public:
+        QueueInstanceLength();
+        ~QueueInstanceLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public ydk::Entity
+{
+    public:
+        QueueAverageLength();
+        ~QueueAverageLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public ydk::Entity
+{
+    public:
+        QueueMaxLength();
+        ~QueueMaxLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::PoliceStatsArray : public ydk::Entity
+{
+    public:
+        PoliceStatsArray();
+        ~PoliceStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::PoliceStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public ydk::Entity
+{
+    public:
+        ColorClassStats();
+        ~ColorClassStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::WredStatsArray : public ydk::Entity
+{
+    public:
+        WredStatsArray();
+        ~WredStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::WredStatsArray::RedLabel
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::WredStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::WredStatsArray::RedLabel : public ydk::Entity
+{
+    public:
+        RedLabel();
+        ~RedLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
+
+}; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::Statistics::ClassStats::WredStatsArray::RedLabel
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable : public ydk::Entity
 {
     public:
         InterfaceTable();
@@ -1417,20 +2518,22 @@ class Qos::InterfaceTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Interface; //type: Qos::InterfaceTable::Interface
+        class Interface; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface> > interface;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface> > interface;
         
-}; // Qos::InterfaceTable
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable
 
 
-class Qos::InterfaceTable::Interface : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1438,74 +2541,80 @@ class Qos::InterfaceTable::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        class Nodes; //type: Qos::InterfaceTable::Interface::Nodes
-        class MemberInterfaces; //type: Qos::InterfaceTable::Interface::MemberInterfaces
-        class SatelliteIds; //type: Qos::InterfaceTable::Interface::SatelliteIds
-        class Input; //type: Qos::InterfaceTable::Interface::Input
-        class Output; //type: Qos::InterfaceTable::Interface::Output
+        ydk::YLeaf interface_name; //type: string
+        class Nodes_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_
+        class MemberInterfaces; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces
+        class SatelliteIds; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds
+        class Input; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input
+        class Output; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input> input;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces> member_interfaces;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes> nodes;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output> output;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds> satellite_ids;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces> member_interfaces;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_> nodes;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output> output;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds> satellite_ids;
         
-}; // Qos::InterfaceTable::Interface
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface
 
 
-class Qos::InterfaceTable::Interface::Nodes : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_ : public ydk::Entity
 {
     public:
-        Nodes();
-        ~Nodes();
+        Nodes_();
+        ~Nodes_();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Node; //type: Qos::InterfaceTable::Interface::Nodes::Node
+        class Node_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node> > node;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_> > node;
         
-}; // Qos::InterfaceTable::Interface::Nodes
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_ : public ydk::Entity
 {
     public:
-        Node();
-        ~Node();
+        Node_();
+        ~Node_();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        class Input; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input
-        class Output; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output
+        ydk::YLeaf node_name; //type: string
+        class Input; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input
+        class Output; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input> input;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output> output;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output> output;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input : public ydk::Entity
 {
     public:
         Input();
@@ -1513,22 +2622,24 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ServicePolicyNames; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames
-        class Statistics; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics
+        class ServicePolicyNames; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames
+        class Statistics; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames> service_policy_names;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics> statistics;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames> service_policy_names;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics> statistics;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames : public ydk::Entity
 {
     public:
         ServicePolicyNames();
@@ -1536,20 +2647,22 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance
+        class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance : public ydk::Entity
 {
     public:
         ServicePolicyInstance();
@@ -1557,18 +2670,20 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf service_policy_name; //type: string
+        ydk::YLeaf service_policy_name; //type: string
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -1576,24 +2691,26 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats> > class_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats> > class_stats;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats : public ydk::Entity
 {
     public:
         ClassStats();
@@ -1601,37 +2718,39 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf counter_validity_bitmask; //type: uint64
-        YLeaf class_name; //type: string
-        YLeaf shared_queue_id; //type: uint32
-        YLeaf queue_descr; //type: string
-        YLeaf cac_state; //type: CacStateEnum
-        class GeneralStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats
-        class IphcStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats
-        class ChildPolicy; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy
-        class CacStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats
-        class QueueStatsArray; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray
-        class PoliceStatsArray; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray
-        class WredStatsArray; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::IphcStats
+        class ChildPolicy; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::WredStatsArray
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats> cac_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy> child_policy;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats> iphc_stats;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy> child_policy;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::GeneralStats : public ydk::Entity
 {
     public:
         GeneralStats();
@@ -1639,26 +2758,28 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets; //type: uint64
-        YLeaf transmit_bytes; //type: uint64
-        YLeaf total_drop_packets; //type: uint64
-        YLeaf total_drop_bytes; //type: uint64
-        YLeaf total_drop_rate; //type: uint32
-        YLeaf match_data_rate; //type: uint32
-        YLeaf total_transmit_rate; //type: uint32
-        YLeaf pre_policy_matched_packets; //type: uint64
-        YLeaf pre_policy_matched_bytes; //type: uint64
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::GeneralStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::GeneralStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::IphcStats : public ydk::Entity
 {
     public:
         IphcStats();
@@ -1666,29 +2787,31 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf non_tcp_total_out_packets; //type: uint64
-        YLeaf non_tcp_total_out_bytes; //type: uint64
-        YLeaf non_tcp_bytes_saved; //type: uint64
-        YLeaf non_tcp_compressed_packets_out; //type: uint64
-        YLeaf non_tcp_bytes_sent_rate; //type: uint32
-        YLeaf non_tcp_full_header_packets_out; //type: uint64
-        YLeaf tcp_total_out_packets; //type: uint64
-        YLeaf tcp_total_out_bytes; //type: uint64
-        YLeaf tcp_bytes_saved; //type: uint64
-        YLeaf tcp_compressed_packets_out; //type: uint64
-        YLeaf tcp_bytes_sent_rate; //type: uint32
-        YLeaf tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::IphcStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::IphcStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy : public ydk::Entity
 {
     public:
         ChildPolicy();
@@ -1696,17 +2819,125 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy
 
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::ChildPolicy
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_ : public ydk::Entity
+{
+    public:
+        ClassStats_();
+        ~ClassStats_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats : public ydk::Entity
+{
+    public:
+        GeneralStats();
+        ~GeneralStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats : public ydk::Entity
+{
+    public:
+        IphcStats();
+        ~IphcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats : public ydk::Entity
 {
     public:
         CacStats();
@@ -1714,23 +2945,25 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf drop_rates; //type: uint32
-        YLeaf admitpackets; //type: uint64
-        YLeaf admit_bytes; //type: uint64
-        YLeaf admit_rates; //type: uint32
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::CacStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray : public ydk::Entity
 {
     public:
         QueueStatsArray();
@@ -1738,43 +2971,45 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf queue_id; //type: uint32
-        YLeaf tail_drop_packets; //type: uint64
-        YLeaf tail_drop_bytes; //type: uint64
-        YLeaf atm_clp0_drop_packets; //type: uint64
-        YLeaf atm_clp0_drop_bytes; //type: uint64
-        YLeaf atm_clp1_drop_packets; //type: uint64
-        YLeaf atm_clp1_drop_bytes; //type: uint64
-        YLeaf queue_drop_threshold; //type: uint32
-        YLeaf forced_wred_stats_display; //type: boolean
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        class QueueInstanceLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
-        class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
-        class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength : public ydk::Entity
 {
     public:
         QueueInstanceLength();
@@ -1782,19 +3017,21 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength : public ydk::Entity
 {
     public:
         QueueAverageLength();
@@ -1802,19 +3039,21 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength : public ydk::Entity
 {
     public:
         QueueMaxLength();
@@ -1822,19 +3061,21 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray : public ydk::Entity
 {
     public:
         PoliceStatsArray();
@@ -1842,33 +3083,35 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf violate_packets; //type: uint64
-        YLeaf violate_bytes; //type: uint64
-        YLeaf parent_drop_packets; //type: uint64
-        YLeaf parent_drop_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        YLeaf violate_rate; //type: uint32
-        class ColorClassStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats> color_class_stats;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats : public ydk::Entity
 {
     public:
         ColorClassStats();
@@ -1876,35 +3119,37 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf conform_class_conform_packets; //type: uint64
-        YLeaf conform_class_conform_bytes; //type: uint64
-        YLeaf conform_class_conform_rate; //type: uint32
-        YLeaf conform_class_exceed_packets; //type: uint64
-        YLeaf conform_class_exceed_bytes; //type: uint64
-        YLeaf conform_class_exceed_rate; //type: uint32
-        YLeaf conform_class_violate_packets; //type: uint64
-        YLeaf conform_class_violate_bytes; //type: uint64
-        YLeaf conform_class_violate_rate; //type: uint32
-        YLeaf exceed_class_exceed_packets; //type: uint64
-        YLeaf exceed_class_exceed_bytes; //type: uint64
-        YLeaf exceed_class_exceed_rate; //type: uint32
-        YLeaf exceed_class_violate_packets; //type: uint64
-        YLeaf exceed_class_violate_bytes; //type: uint64
-        YLeaf exceed_class_violate_rate; //type: uint32
-        YLeaf violate_class_violate_packets; //type: uint64
-        YLeaf violate_class_violate_bytes; //type: uint64
-        YLeaf violate_class_violate_rate; //type: uint32
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray : public ydk::Entity
 {
     public:
         WredStatsArray();
@@ -1912,29 +3157,31 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_title; //type: string
-        YLeaf red_transmit_packets; //type: uint64
-        YLeaf red_transmit_bytes; //type: uint64
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf red_ecn_marked_packets; //type: uint64
-        YLeaf red_ecn_marked_bytes; //type: uint64
-        class RedLabel; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel : public ydk::Entity
 {
     public:
         RedLabel();
@@ -1942,19 +3189,287 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf wred_type; //type: WredEnum
-        YLeaf value_; //type: uint8
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Input::Statistics::ClassStats::WredStatsArray::RedLabel
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::CacStats : public ydk::Entity
+{
+    public:
+        CacStats();
+        ~CacStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::CacStats
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray : public ydk::Entity
+{
+    public:
+        QueueStatsArray();
+        ~QueueStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public ydk::Entity
+{
+    public:
+        QueueInstanceLength();
+        ~QueueInstanceLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public ydk::Entity
+{
+    public:
+        QueueAverageLength();
+        ~QueueAverageLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public ydk::Entity
+{
+    public:
+        QueueMaxLength();
+        ~QueueMaxLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::PoliceStatsArray : public ydk::Entity
+{
+    public:
+        PoliceStatsArray();
+        ~PoliceStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::PoliceStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public ydk::Entity
+{
+    public:
+        ColorClassStats();
+        ~ColorClassStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::WredStatsArray : public ydk::Entity
+{
+    public:
+        WredStatsArray();
+        ~WredStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::WredStatsArray::RedLabel
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::WredStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::WredStatsArray::RedLabel : public ydk::Entity
+{
+    public:
+        RedLabel();
+        ~RedLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::Statistics::ClassStats::WredStatsArray::RedLabel
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output : public ydk::Entity
 {
     public:
         Output();
@@ -1962,22 +3477,24 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ServicePolicyNames; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames
-        class Statistics; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics
+        class ServicePolicyNames; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames
+        class Statistics; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames> service_policy_names;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics> statistics;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames> service_policy_names;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics> statistics;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames : public ydk::Entity
 {
     public:
         ServicePolicyNames();
@@ -1985,20 +3502,22 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance
+        class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance : public ydk::Entity
 {
     public:
         ServicePolicyInstance();
@@ -2006,18 +3525,20 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf service_policy_name; //type: string
+        ydk::YLeaf service_policy_name; //type: string
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -2025,24 +3546,26 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats> > class_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats> > class_stats;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats : public ydk::Entity
 {
     public:
         ClassStats();
@@ -2050,37 +3573,39 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf counter_validity_bitmask; //type: uint64
-        YLeaf class_name; //type: string
-        YLeaf shared_queue_id; //type: uint32
-        YLeaf queue_descr; //type: string
-        YLeaf cac_state; //type: CacStateEnum
-        class GeneralStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats
-        class IphcStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats
-        class ChildPolicy; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy
-        class CacStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats
-        class QueueStatsArray; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray
-        class PoliceStatsArray; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray
-        class WredStatsArray; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::IphcStats
+        class ChildPolicy; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::WredStatsArray
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats> cac_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy> child_policy;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats> iphc_stats;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy> child_policy;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::GeneralStats : public ydk::Entity
 {
     public:
         GeneralStats();
@@ -2088,26 +3613,28 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf transmit_packets; //type: uint64
-        YLeaf transmit_bytes; //type: uint64
-        YLeaf total_drop_packets; //type: uint64
-        YLeaf total_drop_bytes; //type: uint64
-        YLeaf total_drop_rate; //type: uint32
-        YLeaf match_data_rate; //type: uint32
-        YLeaf total_transmit_rate; //type: uint32
-        YLeaf pre_policy_matched_packets; //type: uint64
-        YLeaf pre_policy_matched_bytes; //type: uint64
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::GeneralStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::GeneralStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::IphcStats : public ydk::Entity
 {
     public:
         IphcStats();
@@ -2115,29 +3642,31 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf non_tcp_total_out_packets; //type: uint64
-        YLeaf non_tcp_total_out_bytes; //type: uint64
-        YLeaf non_tcp_bytes_saved; //type: uint64
-        YLeaf non_tcp_compressed_packets_out; //type: uint64
-        YLeaf non_tcp_bytes_sent_rate; //type: uint32
-        YLeaf non_tcp_full_header_packets_out; //type: uint64
-        YLeaf tcp_total_out_packets; //type: uint64
-        YLeaf tcp_total_out_bytes; //type: uint64
-        YLeaf tcp_bytes_saved; //type: uint64
-        YLeaf tcp_compressed_packets_out; //type: uint64
-        YLeaf tcp_bytes_sent_rate; //type: uint32
-        YLeaf tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::IphcStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::IphcStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy : public ydk::Entity
 {
     public:
         ChildPolicy();
@@ -2145,17 +3674,125 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf state; //type: PolicyState
+        ydk::YLeaf state_description; //type: string
+        ydk::YLeaf satid; //type: uint32
+        class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy
 
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::ChildPolicy
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_ : public ydk::Entity
+{
+    public:
+        ClassStats_();
+        ~ClassStats_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf counter_validity_bitmask; //type: uint64
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf shared_queue_id; //type: uint32
+        ydk::YLeaf queue_descr; //type: string
+        ydk::YLeaf cac_state; //type: CacState
+        class GeneralStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+        class IphcStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+        class CacStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
+        class QueueStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
+        class PoliceStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
+        class WredStatsArray; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats : public ydk::Entity
+{
+    public:
+        GeneralStats();
+        ~GeneralStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf transmit_packets; //type: uint64
+        ydk::YLeaf transmit_bytes; //type: uint64
+        ydk::YLeaf total_drop_packets; //type: uint64
+        ydk::YLeaf total_drop_bytes; //type: uint64
+        ydk::YLeaf total_drop_rate; //type: uint32
+        ydk::YLeaf match_data_rate; //type: uint32
+        ydk::YLeaf total_transmit_rate; //type: uint32
+        ydk::YLeaf pre_policy_matched_packets; //type: uint64
+        ydk::YLeaf pre_policy_matched_bytes; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats : public ydk::Entity
+{
+    public:
+        IphcStats();
+        ~IphcStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf non_tcp_total_out_packets; //type: uint64
+        ydk::YLeaf non_tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf non_tcp_bytes_saved; //type: uint64
+        ydk::YLeaf non_tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf non_tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf non_tcp_full_header_packets_out; //type: uint64
+        ydk::YLeaf tcp_total_out_packets; //type: uint64
+        ydk::YLeaf tcp_total_out_bytes; //type: uint64
+        ydk::YLeaf tcp_bytes_saved; //type: uint64
+        ydk::YLeaf tcp_compressed_packets_out; //type: uint64
+        ydk::YLeaf tcp_bytes_sent_rate; //type: uint32
+        ydk::YLeaf tcp_full_header_packets_out; //type: uint64
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats : public ydk::Entity
 {
     public:
         CacStats();
@@ -2163,23 +3800,25 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf drop_rates; //type: uint32
-        YLeaf admitpackets; //type: uint64
-        YLeaf admit_bytes; //type: uint64
-        YLeaf admit_rates; //type: uint32
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::CacStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray : public ydk::Entity
 {
     public:
         QueueStatsArray();
@@ -2187,43 +3826,45 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf queue_id; //type: uint32
-        YLeaf tail_drop_packets; //type: uint64
-        YLeaf tail_drop_bytes; //type: uint64
-        YLeaf atm_clp0_drop_packets; //type: uint64
-        YLeaf atm_clp0_drop_bytes; //type: uint64
-        YLeaf atm_clp1_drop_packets; //type: uint64
-        YLeaf atm_clp1_drop_bytes; //type: uint64
-        YLeaf queue_drop_threshold; //type: uint32
-        YLeaf forced_wred_stats_display; //type: boolean
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        class QueueInstanceLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
-        class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
-        class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength : public ydk::Entity
 {
     public:
         QueueInstanceLength();
@@ -2231,19 +3872,21 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength : public ydk::Entity
 {
     public:
         QueueAverageLength();
@@ -2251,19 +3894,21 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength : public ydk::Entity
 {
     public:
         QueueMaxLength();
@@ -2271,19 +3916,21 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray : public ydk::Entity
 {
     public:
         PoliceStatsArray();
@@ -2291,33 +3938,35 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf violate_packets; //type: uint64
-        YLeaf violate_bytes; //type: uint64
-        YLeaf parent_drop_packets; //type: uint64
-        YLeaf parent_drop_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        YLeaf violate_rate; //type: uint32
-        class ColorClassStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats> color_class_stats;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats : public ydk::Entity
 {
     public:
         ColorClassStats();
@@ -2325,35 +3974,37 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf conform_class_conform_packets; //type: uint64
-        YLeaf conform_class_conform_bytes; //type: uint64
-        YLeaf conform_class_conform_rate; //type: uint32
-        YLeaf conform_class_exceed_packets; //type: uint64
-        YLeaf conform_class_exceed_bytes; //type: uint64
-        YLeaf conform_class_exceed_rate; //type: uint32
-        YLeaf conform_class_violate_packets; //type: uint64
-        YLeaf conform_class_violate_bytes; //type: uint64
-        YLeaf conform_class_violate_rate; //type: uint32
-        YLeaf exceed_class_exceed_packets; //type: uint64
-        YLeaf exceed_class_exceed_bytes; //type: uint64
-        YLeaf exceed_class_exceed_rate; //type: uint32
-        YLeaf exceed_class_violate_packets; //type: uint64
-        YLeaf exceed_class_violate_bytes; //type: uint64
-        YLeaf exceed_class_violate_rate; //type: uint32
-        YLeaf violate_class_violate_packets; //type: uint64
-        YLeaf violate_class_violate_bytes; //type: uint64
-        YLeaf violate_class_violate_rate; //type: uint32
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray::ColorClassStats
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray : public ydk::Entity
 {
     public:
         WredStatsArray();
@@ -2361,29 +4012,31 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf profile_title; //type: string
-        YLeaf red_transmit_packets; //type: uint64
-        YLeaf red_transmit_bytes; //type: uint64
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf red_ecn_marked_packets; //type: uint64
-        YLeaf red_ecn_marked_bytes; //type: uint64
-        class RedLabel; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
         
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
 
-class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel : public ydk::Entity
 {
     public:
         RedLabel();
@@ -2391,19 +4044,287 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStat
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf wred_type; //type: WredEnum
-        YLeaf value_; //type: uint8
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
 
-}; // Qos::InterfaceTable::Interface::Nodes::Node::Output::Statistics::ClassStats::WredStatsArray::RedLabel
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
 
-class Qos::InterfaceTable::Interface::MemberInterfaces : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::CacStats : public ydk::Entity
+{
+    public:
+        CacStats();
+        ~CacStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf drop_rates; //type: uint32
+        ydk::YLeaf admitpackets; //type: uint64
+        ydk::YLeaf admit_bytes; //type: uint64
+        ydk::YLeaf admit_rates; //type: uint32
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::CacStats
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray : public ydk::Entity
+{
+    public:
+        QueueStatsArray();
+        ~QueueStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf queue_id; //type: uint32
+        ydk::YLeaf tail_drop_packets; //type: uint64
+        ydk::YLeaf tail_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp0_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp0_drop_bytes; //type: uint64
+        ydk::YLeaf atm_clp1_drop_packets; //type: uint64
+        ydk::YLeaf atm_clp1_drop_bytes; //type: uint64
+        ydk::YLeaf queue_drop_threshold; //type: uint32
+        ydk::YLeaf forced_wred_stats_display; //type: boolean
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        class QueueInstanceLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+        class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+        class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public ydk::Entity
+{
+    public:
+        QueueInstanceLength();
+        ~QueueInstanceLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public ydk::Entity
+{
+    public:
+        QueueAverageLength();
+        ~QueueAverageLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public ydk::Entity
+{
+    public:
+        QueueMaxLength();
+        ~QueueMaxLength();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf unit; //type: PolicyParamUnit
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::PoliceStatsArray : public ydk::Entity
+{
+    public:
+        PoliceStatsArray();
+        ~PoliceStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf drop_packets; //type: uint64
+        ydk::YLeaf drop_bytes; //type: uint64
+        ydk::YLeaf conform_packets; //type: uint64
+        ydk::YLeaf conform_bytes; //type: uint64
+        ydk::YLeaf exceed_packets; //type: uint64
+        ydk::YLeaf exceed_bytes; //type: uint64
+        ydk::YLeaf violate_packets; //type: uint64
+        ydk::YLeaf violate_bytes; //type: uint64
+        ydk::YLeaf parent_drop_packets; //type: uint64
+        ydk::YLeaf parent_drop_bytes; //type: uint64
+        ydk::YLeaf conform_rate; //type: uint32
+        ydk::YLeaf exceed_rate; //type: uint32
+        ydk::YLeaf violate_rate; //type: uint32
+        class ColorClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::PoliceStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public ydk::Entity
+{
+    public:
+        ColorClassStats();
+        ~ColorClassStats();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf conform_class_conform_packets; //type: uint64
+        ydk::YLeaf conform_class_conform_bytes; //type: uint64
+        ydk::YLeaf conform_class_conform_rate; //type: uint32
+        ydk::YLeaf conform_class_exceed_packets; //type: uint64
+        ydk::YLeaf conform_class_exceed_bytes; //type: uint64
+        ydk::YLeaf conform_class_exceed_rate; //type: uint32
+        ydk::YLeaf conform_class_violate_packets; //type: uint64
+        ydk::YLeaf conform_class_violate_bytes; //type: uint64
+        ydk::YLeaf conform_class_violate_rate; //type: uint32
+        ydk::YLeaf exceed_class_exceed_packets; //type: uint64
+        ydk::YLeaf exceed_class_exceed_bytes; //type: uint64
+        ydk::YLeaf exceed_class_exceed_rate; //type: uint32
+        ydk::YLeaf exceed_class_violate_packets; //type: uint64
+        ydk::YLeaf exceed_class_violate_bytes; //type: uint64
+        ydk::YLeaf exceed_class_violate_rate; //type: uint32
+        ydk::YLeaf violate_class_violate_packets; //type: uint64
+        ydk::YLeaf violate_class_violate_bytes; //type: uint64
+        ydk::YLeaf violate_class_violate_rate; //type: uint32
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::WredStatsArray : public ydk::Entity
+{
+    public:
+        WredStatsArray();
+        ~WredStatsArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_title; //type: string
+        ydk::YLeaf red_transmit_packets; //type: uint64
+        ydk::YLeaf red_transmit_bytes; //type: uint64
+        ydk::YLeaf random_drop_packets; //type: uint64
+        ydk::YLeaf random_drop_bytes; //type: uint64
+        ydk::YLeaf max_threshold_packets; //type: uint64
+        ydk::YLeaf max_threshold_bytes; //type: uint64
+        ydk::YLeaf red_ecn_marked_packets; //type: uint64
+        ydk::YLeaf red_ecn_marked_bytes; //type: uint64
+        class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::WredStatsArray::RedLabel
+
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::WredStatsArray
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::WredStatsArray::RedLabel : public ydk::Entity
+{
+    public:
+        RedLabel();
+        ~RedLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf wred_type; //type: Wred
+        ydk::YLeaf value_; //type: uint8
+
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::Statistics::ClassStats::WredStatsArray::RedLabel
+
+
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces : public ydk::Entity
 {
     public:
         MemberInterfaces();
@@ -2411,20 +4332,22 @@ class Qos::InterfaceTable::Interface::MemberInterfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MemberInterface; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface
+        class MemberInterface; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface> > member_interface;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface> > member_interface;
         
-}; // Qos::InterfaceTable::Interface::MemberInterfaces
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces
 
 
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface : public ydk::Entity
 {
     public:
         MemberInterface();
@@ -2432,25 +4355,27 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        class SatelliteIds; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds
-        class Input; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
-        class Output; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output
+        ydk::YLeaf interface_name; //type: string
+        class SatelliteIds; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds
+        class Input; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
+        class Output; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input> input;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output> output;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds> satellite_ids;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output> output;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds> satellite_ids;
         
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface
 
 
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds : public ydk::Entity
 {
     public:
         SatelliteIds();
@@ -2458,20 +4383,22 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SatelliteId; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
+        class SatelliteId; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId> > satellite_id;
+        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId> > satellite_id;
         
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds
 
 
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId : public Entity
+class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId : public ydk::Entity
 {
     public:
         SatelliteId();
@@ -2479,1455 +4406,22 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf nv_satellite_id; //type: int32
-        class Input; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input
-        class Output; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output
+        ydk::YLeaf nv_satellite_id; //type: int32
+        class Input; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input
+        class Output; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output
 
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input> input;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output> output;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input> input;
+        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output> output;
         
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input : public Entity
-{
-    public:
-        Input();
-        ~Input();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class ServicePolicyNames; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
-        class Statistics; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames> service_policy_names;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics> statistics;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames : public Entity
-{
-    public:
-        ServicePolicyNames();
-        ~ServicePolicyNames();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance : public Entity
-{
-    public:
-        ServicePolicyInstance();
-        ~ServicePolicyInstance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf service_policy_name; //type: string
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics : public Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats> > class_stats;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats : public Entity
-{
-    public:
-        ClassStats();
-        ~ClassStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf counter_validity_bitmask; //type: uint64
-        YLeaf class_name; //type: string
-        YLeaf shared_queue_id; //type: uint32
-        YLeaf queue_descr; //type: string
-        YLeaf cac_state; //type: CacStateEnum
-        class GeneralStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats
-        class IphcStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats
-        class ChildPolicy; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy
-        class CacStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats
-        class QueueStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray
-        class PoliceStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray
-        class WredStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats> cac_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy> child_policy;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats> iphc_stats;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats : public Entity
-{
-    public:
-        GeneralStats();
-        ~GeneralStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf transmit_packets; //type: uint64
-        YLeaf transmit_bytes; //type: uint64
-        YLeaf total_drop_packets; //type: uint64
-        YLeaf total_drop_bytes; //type: uint64
-        YLeaf total_drop_rate; //type: uint32
-        YLeaf match_data_rate; //type: uint32
-        YLeaf total_transmit_rate; //type: uint32
-        YLeaf pre_policy_matched_packets; //type: uint64
-        YLeaf pre_policy_matched_bytes; //type: uint64
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::GeneralStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats : public Entity
-{
-    public:
-        IphcStats();
-        ~IphcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf non_tcp_total_out_packets; //type: uint64
-        YLeaf non_tcp_total_out_bytes; //type: uint64
-        YLeaf non_tcp_bytes_saved; //type: uint64
-        YLeaf non_tcp_compressed_packets_out; //type: uint64
-        YLeaf non_tcp_bytes_sent_rate; //type: uint32
-        YLeaf non_tcp_full_header_packets_out; //type: uint64
-        YLeaf tcp_total_out_packets; //type: uint64
-        YLeaf tcp_total_out_bytes; //type: uint64
-        YLeaf tcp_bytes_saved; //type: uint64
-        YLeaf tcp_compressed_packets_out; //type: uint64
-        YLeaf tcp_bytes_sent_rate; //type: uint32
-        YLeaf tcp_full_header_packets_out; //type: uint64
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::IphcStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy : public Entity
-{
-    public:
-        ChildPolicy();
-        ~ChildPolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::ChildPolicy
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats : public Entity
-{
-    public:
-        CacStats();
-        ~CacStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf drop_rates; //type: uint32
-        YLeaf admitpackets; //type: uint64
-        YLeaf admit_bytes; //type: uint64
-        YLeaf admit_rates; //type: uint32
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::CacStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray : public Entity
-{
-    public:
-        QueueStatsArray();
-        ~QueueStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf queue_id; //type: uint32
-        YLeaf tail_drop_packets; //type: uint64
-        YLeaf tail_drop_bytes; //type: uint64
-        YLeaf atm_clp0_drop_packets; //type: uint64
-        YLeaf atm_clp0_drop_bytes; //type: uint64
-        YLeaf atm_clp1_drop_packets; //type: uint64
-        YLeaf atm_clp1_drop_bytes; //type: uint64
-        YLeaf queue_drop_threshold; //type: uint32
-        YLeaf forced_wred_stats_display; //type: boolean
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        class QueueInstanceLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
-        class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
-        class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public Entity
-{
-    public:
-        QueueInstanceLength();
-        ~QueueInstanceLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public Entity
-{
-    public:
-        QueueAverageLength();
-        ~QueueAverageLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public Entity
-{
-    public:
-        QueueMaxLength();
-        ~QueueMaxLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray : public Entity
-{
-    public:
-        PoliceStatsArray();
-        ~PoliceStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf violate_packets; //type: uint64
-        YLeaf violate_bytes; //type: uint64
-        YLeaf parent_drop_packets; //type: uint64
-        YLeaf parent_drop_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        YLeaf violate_rate; //type: uint32
-        class ColorClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public Entity
-{
-    public:
-        ColorClassStats();
-        ~ColorClassStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf conform_class_conform_packets; //type: uint64
-        YLeaf conform_class_conform_bytes; //type: uint64
-        YLeaf conform_class_conform_rate; //type: uint32
-        YLeaf conform_class_exceed_packets; //type: uint64
-        YLeaf conform_class_exceed_bytes; //type: uint64
-        YLeaf conform_class_exceed_rate; //type: uint32
-        YLeaf conform_class_violate_packets; //type: uint64
-        YLeaf conform_class_violate_bytes; //type: uint64
-        YLeaf conform_class_violate_rate; //type: uint32
-        YLeaf exceed_class_exceed_packets; //type: uint64
-        YLeaf exceed_class_exceed_bytes; //type: uint64
-        YLeaf exceed_class_exceed_rate; //type: uint32
-        YLeaf exceed_class_violate_packets; //type: uint64
-        YLeaf exceed_class_violate_bytes; //type: uint64
-        YLeaf exceed_class_violate_rate; //type: uint32
-        YLeaf violate_class_violate_packets; //type: uint64
-        YLeaf violate_class_violate_bytes; //type: uint64
-        YLeaf violate_class_violate_rate; //type: uint32
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray : public Entity
-{
-    public:
-        WredStatsArray();
-        ~WredStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf profile_title; //type: string
-        YLeaf red_transmit_packets; //type: uint64
-        YLeaf red_transmit_bytes; //type: uint64
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf red_ecn_marked_packets; //type: uint64
-        YLeaf red_ecn_marked_bytes; //type: uint64
-        class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel : public Entity
-{
-    public:
-        RedLabel();
-        ~RedLabel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf wred_type; //type: WredEnum
-        YLeaf value_; //type: uint8
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::Statistics::ClassStats::WredStatsArray::RedLabel
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output : public Entity
-{
-    public:
-        Output();
-        ~Output();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class ServicePolicyNames; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
-        class Statistics; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames> service_policy_names;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics> statistics;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames : public Entity
-{
-    public:
-        ServicePolicyNames();
-        ~ServicePolicyNames();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance : public Entity
-{
-    public:
-        ServicePolicyInstance();
-        ~ServicePolicyInstance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf service_policy_name; //type: string
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics : public Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats> > class_stats;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats : public Entity
-{
-    public:
-        ClassStats();
-        ~ClassStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf counter_validity_bitmask; //type: uint64
-        YLeaf class_name; //type: string
-        YLeaf shared_queue_id; //type: uint32
-        YLeaf queue_descr; //type: string
-        YLeaf cac_state; //type: CacStateEnum
-        class GeneralStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats
-        class IphcStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats
-        class ChildPolicy; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy
-        class CacStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats
-        class QueueStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray
-        class PoliceStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray
-        class WredStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats> cac_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy> child_policy;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats> iphc_stats;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats : public Entity
-{
-    public:
-        GeneralStats();
-        ~GeneralStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf transmit_packets; //type: uint64
-        YLeaf transmit_bytes; //type: uint64
-        YLeaf total_drop_packets; //type: uint64
-        YLeaf total_drop_bytes; //type: uint64
-        YLeaf total_drop_rate; //type: uint32
-        YLeaf match_data_rate; //type: uint32
-        YLeaf total_transmit_rate; //type: uint32
-        YLeaf pre_policy_matched_packets; //type: uint64
-        YLeaf pre_policy_matched_bytes; //type: uint64
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::GeneralStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats : public Entity
-{
-    public:
-        IphcStats();
-        ~IphcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf non_tcp_total_out_packets; //type: uint64
-        YLeaf non_tcp_total_out_bytes; //type: uint64
-        YLeaf non_tcp_bytes_saved; //type: uint64
-        YLeaf non_tcp_compressed_packets_out; //type: uint64
-        YLeaf non_tcp_bytes_sent_rate; //type: uint32
-        YLeaf non_tcp_full_header_packets_out; //type: uint64
-        YLeaf tcp_total_out_packets; //type: uint64
-        YLeaf tcp_total_out_bytes; //type: uint64
-        YLeaf tcp_bytes_saved; //type: uint64
-        YLeaf tcp_compressed_packets_out; //type: uint64
-        YLeaf tcp_bytes_sent_rate; //type: uint32
-        YLeaf tcp_full_header_packets_out; //type: uint64
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::IphcStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy : public Entity
-{
-    public:
-        ChildPolicy();
-        ~ChildPolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::ChildPolicy
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats : public Entity
-{
-    public:
-        CacStats();
-        ~CacStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf drop_rates; //type: uint32
-        YLeaf admitpackets; //type: uint64
-        YLeaf admit_bytes; //type: uint64
-        YLeaf admit_rates; //type: uint32
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::CacStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray : public Entity
-{
-    public:
-        QueueStatsArray();
-        ~QueueStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf queue_id; //type: uint32
-        YLeaf tail_drop_packets; //type: uint64
-        YLeaf tail_drop_bytes; //type: uint64
-        YLeaf atm_clp0_drop_packets; //type: uint64
-        YLeaf atm_clp0_drop_bytes; //type: uint64
-        YLeaf atm_clp1_drop_packets; //type: uint64
-        YLeaf atm_clp1_drop_bytes; //type: uint64
-        YLeaf queue_drop_threshold; //type: uint32
-        YLeaf forced_wred_stats_display; //type: boolean
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        class QueueInstanceLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
-        class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
-        class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public Entity
-{
-    public:
-        QueueInstanceLength();
-        ~QueueInstanceLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public Entity
-{
-    public:
-        QueueAverageLength();
-        ~QueueAverageLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public Entity
-{
-    public:
-        QueueMaxLength();
-        ~QueueMaxLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray : public Entity
-{
-    public:
-        PoliceStatsArray();
-        ~PoliceStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf violate_packets; //type: uint64
-        YLeaf violate_bytes; //type: uint64
-        YLeaf parent_drop_packets; //type: uint64
-        YLeaf parent_drop_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        YLeaf violate_rate; //type: uint32
-        class ColorClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public Entity
-{
-    public:
-        ColorClassStats();
-        ~ColorClassStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf conform_class_conform_packets; //type: uint64
-        YLeaf conform_class_conform_bytes; //type: uint64
-        YLeaf conform_class_conform_rate; //type: uint32
-        YLeaf conform_class_exceed_packets; //type: uint64
-        YLeaf conform_class_exceed_bytes; //type: uint64
-        YLeaf conform_class_exceed_rate; //type: uint32
-        YLeaf conform_class_violate_packets; //type: uint64
-        YLeaf conform_class_violate_bytes; //type: uint64
-        YLeaf conform_class_violate_rate; //type: uint32
-        YLeaf exceed_class_exceed_packets; //type: uint64
-        YLeaf exceed_class_exceed_bytes; //type: uint64
-        YLeaf exceed_class_exceed_rate; //type: uint32
-        YLeaf exceed_class_violate_packets; //type: uint64
-        YLeaf exceed_class_violate_bytes; //type: uint64
-        YLeaf exceed_class_violate_rate; //type: uint32
-        YLeaf violate_class_violate_packets; //type: uint64
-        YLeaf violate_class_violate_bytes; //type: uint64
-        YLeaf violate_class_violate_rate; //type: uint32
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray : public Entity
-{
-    public:
-        WredStatsArray();
-        ~WredStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf profile_title; //type: string
-        YLeaf red_transmit_packets; //type: uint64
-        YLeaf red_transmit_bytes; //type: uint64
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf red_ecn_marked_packets; //type: uint64
-        YLeaf red_ecn_marked_bytes; //type: uint64
-        class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel : public Entity
-{
-    public:
-        RedLabel();
-        ~RedLabel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf wred_type; //type: WredEnum
-        YLeaf value_; //type: uint8
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::Statistics::ClassStats::WredStatsArray::RedLabel
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input : public Entity
-{
-    public:
-        Input();
-        ~Input();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class ServicePolicyNames; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
-        class Statistics; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames> service_policy_names;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics> statistics;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames : public Entity
-{
-    public:
-        ServicePolicyNames();
-        ~ServicePolicyNames();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance : public Entity
-{
-    public:
-        ServicePolicyInstance();
-        ~ServicePolicyInstance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf service_policy_name; //type: string
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics : public Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats> > class_stats;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats : public Entity
-{
-    public:
-        ClassStats();
-        ~ClassStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf counter_validity_bitmask; //type: uint64
-        YLeaf class_name; //type: string
-        YLeaf shared_queue_id; //type: uint32
-        YLeaf queue_descr; //type: string
-        YLeaf cac_state; //type: CacStateEnum
-        class GeneralStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats
-        class IphcStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats
-        class ChildPolicy; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy
-        class CacStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats
-        class QueueStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray
-        class PoliceStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray
-        class WredStatsArray; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats> cac_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy> child_policy;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats> general_stats;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats> iphc_stats;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats : public Entity
-{
-    public:
-        GeneralStats();
-        ~GeneralStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf transmit_packets; //type: uint64
-        YLeaf transmit_bytes; //type: uint64
-        YLeaf total_drop_packets; //type: uint64
-        YLeaf total_drop_bytes; //type: uint64
-        YLeaf total_drop_rate; //type: uint32
-        YLeaf match_data_rate; //type: uint32
-        YLeaf total_transmit_rate; //type: uint32
-        YLeaf pre_policy_matched_packets; //type: uint64
-        YLeaf pre_policy_matched_bytes; //type: uint64
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::GeneralStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats : public Entity
-{
-    public:
-        IphcStats();
-        ~IphcStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf non_tcp_total_out_packets; //type: uint64
-        YLeaf non_tcp_total_out_bytes; //type: uint64
-        YLeaf non_tcp_bytes_saved; //type: uint64
-        YLeaf non_tcp_compressed_packets_out; //type: uint64
-        YLeaf non_tcp_bytes_sent_rate; //type: uint32
-        YLeaf non_tcp_full_header_packets_out; //type: uint64
-        YLeaf tcp_total_out_packets; //type: uint64
-        YLeaf tcp_total_out_bytes; //type: uint64
-        YLeaf tcp_bytes_saved; //type: uint64
-        YLeaf tcp_compressed_packets_out; //type: uint64
-        YLeaf tcp_bytes_sent_rate; //type: uint32
-        YLeaf tcp_full_header_packets_out; //type: uint64
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::IphcStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy : public Entity
-{
-    public:
-        ChildPolicy();
-        ~ChildPolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::ChildPolicy
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats : public Entity
-{
-    public:
-        CacStats();
-        ~CacStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf drop_rates; //type: uint32
-        YLeaf admitpackets; //type: uint64
-        YLeaf admit_bytes; //type: uint64
-        YLeaf admit_rates; //type: uint32
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::CacStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray : public Entity
-{
-    public:
-        QueueStatsArray();
-        ~QueueStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf queue_id; //type: uint32
-        YLeaf tail_drop_packets; //type: uint64
-        YLeaf tail_drop_bytes; //type: uint64
-        YLeaf atm_clp0_drop_packets; //type: uint64
-        YLeaf atm_clp0_drop_bytes; //type: uint64
-        YLeaf atm_clp1_drop_packets; //type: uint64
-        YLeaf atm_clp1_drop_bytes; //type: uint64
-        YLeaf queue_drop_threshold; //type: uint32
-        YLeaf forced_wred_stats_display; //type: boolean
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        class QueueInstanceLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
-        class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
-        class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength : public Entity
-{
-    public:
-        QueueInstanceLength();
-        ~QueueInstanceLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength : public Entity
-{
-    public:
-        QueueAverageLength();
-        ~QueueAverageLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength : public Entity
-{
-    public:
-        QueueMaxLength();
-        ~QueueMaxLength();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf value_; //type: uint32
-        YLeaf unit; //type: PolicyParamUnitEnum
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray : public Entity
-{
-    public:
-        PoliceStatsArray();
-        ~PoliceStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf drop_packets; //type: uint64
-        YLeaf drop_bytes; //type: uint64
-        YLeaf conform_packets; //type: uint64
-        YLeaf conform_bytes; //type: uint64
-        YLeaf exceed_packets; //type: uint64
-        YLeaf exceed_bytes; //type: uint64
-        YLeaf violate_packets; //type: uint64
-        YLeaf violate_bytes; //type: uint64
-        YLeaf parent_drop_packets; //type: uint64
-        YLeaf parent_drop_bytes; //type: uint64
-        YLeaf conform_rate; //type: uint32
-        YLeaf exceed_rate; //type: uint32
-        YLeaf violate_rate; //type: uint32
-        class ColorClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats> color_class_stats;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats : public Entity
-{
-    public:
-        ColorClassStats();
-        ~ColorClassStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf conform_class_conform_packets; //type: uint64
-        YLeaf conform_class_conform_bytes; //type: uint64
-        YLeaf conform_class_conform_rate; //type: uint32
-        YLeaf conform_class_exceed_packets; //type: uint64
-        YLeaf conform_class_exceed_bytes; //type: uint64
-        YLeaf conform_class_exceed_rate; //type: uint32
-        YLeaf conform_class_violate_packets; //type: uint64
-        YLeaf conform_class_violate_bytes; //type: uint64
-        YLeaf conform_class_violate_rate; //type: uint32
-        YLeaf exceed_class_exceed_packets; //type: uint64
-        YLeaf exceed_class_exceed_bytes; //type: uint64
-        YLeaf exceed_class_exceed_rate; //type: uint32
-        YLeaf exceed_class_violate_packets; //type: uint64
-        YLeaf exceed_class_violate_bytes; //type: uint64
-        YLeaf exceed_class_violate_rate; //type: uint32
-        YLeaf violate_class_violate_packets; //type: uint64
-        YLeaf violate_class_violate_bytes; //type: uint64
-        YLeaf violate_class_violate_rate; //type: uint32
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::PoliceStatsArray::ColorClassStats
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray : public Entity
-{
-    public:
-        WredStatsArray();
-        ~WredStatsArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf profile_title; //type: string
-        YLeaf red_transmit_packets; //type: uint64
-        YLeaf red_transmit_bytes; //type: uint64
-        YLeaf random_drop_packets; //type: uint64
-        YLeaf random_drop_bytes; //type: uint64
-        YLeaf max_threshold_packets; //type: uint64
-        YLeaf max_threshold_bytes; //type: uint64
-        YLeaf red_ecn_marked_packets; //type: uint64
-        YLeaf red_ecn_marked_bytes; //type: uint64
-        class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel : public Entity
-{
-    public:
-        RedLabel();
-        ~RedLabel();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf wred_type; //type: WredEnum
-        YLeaf value_; //type: uint8
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::Statistics::ClassStats::WredStatsArray::RedLabel
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output : public Entity
-{
-    public:
-        Output();
-        ~Output();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class ServicePolicyNames; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
-        class Statistics; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics
-
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames> service_policy_names;
-        std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics> statistics;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames : public Entity
-{
-    public:
-        ServicePolicyNames();
-        ~ServicePolicyNames();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance : public Entity
-{
-    public:
-        ServicePolicyInstance();
-        ~ServicePolicyInstance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf service_policy_name; //type: string
-
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
-
-
-class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics : public Entity
-{
-    public:
-        Statistics();
-        ~Statistics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-
-        YLeaf policy_name; //type: string
-        YLeaf state; //type: PolicyStateEnum
-        YLeaf state_description; //type: string
-        YLeaf satid; //type: uint32
-        class ClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats
-
-        std::vector<std::shared_ptr<Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics::ClassStats> > class_stats;
-        
-}; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::Statistics
+}; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
 
 }

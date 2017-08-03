@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_tcp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_tcp_cfg {
 
 IpTcp::IpTcp()
@@ -48,15 +50,15 @@ bool IpTcp::has_data() const
 
 bool IpTcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accept_rate.operation)
-	|| is_set(maximum_segment_size.operation)
-	|| is_set(path_mtu_discovery.operation)
-	|| is_set(receive_q.operation)
-	|| is_set(selective_ack.operation)
-	|| is_set(syn_wait_time.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(window_size.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(accept_rate.yfilter)
+	|| ydk::is_set(maximum_segment_size.yfilter)
+	|| ydk::is_set(path_mtu_discovery.yfilter)
+	|| ydk::is_set(receive_q.yfilter)
+	|| ydk::is_set(selective_ack.yfilter)
+	|| ydk::is_set(syn_wait_time.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(window_size.yfilter)
 	|| (directory !=  nullptr && directory->has_operation())
 	|| (num_thread !=  nullptr && num_thread->has_operation())
 	|| (throttle !=  nullptr && throttle->has_operation());
@@ -82,14 +84,14 @@ const EntityPath IpTcp::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accept_rate.is_set || is_set(accept_rate.operation)) leaf_name_data.push_back(accept_rate.get_name_leafdata());
-    if (maximum_segment_size.is_set || is_set(maximum_segment_size.operation)) leaf_name_data.push_back(maximum_segment_size.get_name_leafdata());
-    if (path_mtu_discovery.is_set || is_set(path_mtu_discovery.operation)) leaf_name_data.push_back(path_mtu_discovery.get_name_leafdata());
-    if (receive_q.is_set || is_set(receive_q.operation)) leaf_name_data.push_back(receive_q.get_name_leafdata());
-    if (selective_ack.is_set || is_set(selective_ack.operation)) leaf_name_data.push_back(selective_ack.get_name_leafdata());
-    if (syn_wait_time.is_set || is_set(syn_wait_time.operation)) leaf_name_data.push_back(syn_wait_time.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (window_size.is_set || is_set(window_size.operation)) leaf_name_data.push_back(window_size.get_name_leafdata());
+    if (accept_rate.is_set || is_set(accept_rate.yfilter)) leaf_name_data.push_back(accept_rate.get_name_leafdata());
+    if (maximum_segment_size.is_set || is_set(maximum_segment_size.yfilter)) leaf_name_data.push_back(maximum_segment_size.get_name_leafdata());
+    if (path_mtu_discovery.is_set || is_set(path_mtu_discovery.yfilter)) leaf_name_data.push_back(path_mtu_discovery.get_name_leafdata());
+    if (receive_q.is_set || is_set(receive_q.yfilter)) leaf_name_data.push_back(receive_q.get_name_leafdata());
+    if (selective_ack.is_set || is_set(selective_ack.yfilter)) leaf_name_data.push_back(selective_ack.get_name_leafdata());
+    if (syn_wait_time.is_set || is_set(syn_wait_time.yfilter)) leaf_name_data.push_back(syn_wait_time.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (window_size.is_set || is_set(window_size.yfilter)) leaf_name_data.push_back(window_size.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -150,39 +152,91 @@ std::map<std::string, std::shared_ptr<Entity>> IpTcp::get_children() const
     return children;
 }
 
-void IpTcp::set_value(const std::string & value_path, std::string value)
+void IpTcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accept-rate")
     {
         accept_rate = value;
+        accept_rate.value_namespace = name_space;
+        accept_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-segment-size")
     {
         maximum_segment_size = value;
+        maximum_segment_size.value_namespace = name_space;
+        maximum_segment_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-mtu-discovery")
     {
         path_mtu_discovery = value;
+        path_mtu_discovery.value_namespace = name_space;
+        path_mtu_discovery.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receive-q")
     {
         receive_q = value;
+        receive_q.value_namespace = name_space;
+        receive_q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "selective-ack")
     {
         selective_ack = value;
+        selective_ack.value_namespace = name_space;
+        selective_ack.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "syn-wait-time")
     {
         syn_wait_time = value;
+        syn_wait_time.value_namespace = name_space;
+        syn_wait_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "window-size")
     {
         window_size = value;
+        window_size.value_namespace = name_space;
+        window_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IpTcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accept-rate")
+    {
+        accept_rate.yfilter = yfilter;
+    }
+    if(value_path == "maximum-segment-size")
+    {
+        maximum_segment_size.yfilter = yfilter;
+    }
+    if(value_path == "path-mtu-discovery")
+    {
+        path_mtu_discovery.yfilter = yfilter;
+    }
+    if(value_path == "receive-q")
+    {
+        receive_q.yfilter = yfilter;
+    }
+    if(value_path == "selective-ack")
+    {
+        selective_ack.yfilter = yfilter;
+    }
+    if(value_path == "syn-wait-time")
+    {
+        syn_wait_time.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "window-size")
+    {
+        window_size.yfilter = yfilter;
     }
 }
 
@@ -204,6 +258,18 @@ std::string IpTcp::get_bundle_name() const
 augment_capabilities_function IpTcp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> IpTcp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool IpTcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "directory" || name == "num-thread" || name == "throttle" || name == "accept-rate" || name == "maximum-segment-size" || name == "path-mtu-discovery" || name == "receive-q" || name == "selective-ack" || name == "syn-wait-time" || name == "timestamp" || name == "window-size")
+        return true;
+    return false;
 }
 
 IpTcp::Directory::Directory()
@@ -228,10 +294,10 @@ bool IpTcp::Directory::has_data() const
 
 bool IpTcp::Directory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(directoryname.operation)
-	|| is_set(max_debug_files.operation)
-	|| is_set(max_file_size_files.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(directoryname.yfilter)
+	|| ydk::is_set(max_debug_files.yfilter)
+	|| ydk::is_set(max_file_size_files.yfilter);
 }
 
 std::string IpTcp::Directory::get_segment_path() const
@@ -257,9 +323,9 @@ const EntityPath IpTcp::Directory::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (directoryname.is_set || is_set(directoryname.operation)) leaf_name_data.push_back(directoryname.get_name_leafdata());
-    if (max_debug_files.is_set || is_set(max_debug_files.operation)) leaf_name_data.push_back(max_debug_files.get_name_leafdata());
-    if (max_file_size_files.is_set || is_set(max_file_size_files.operation)) leaf_name_data.push_back(max_file_size_files.get_name_leafdata());
+    if (directoryname.is_set || is_set(directoryname.yfilter)) leaf_name_data.push_back(directoryname.get_name_leafdata());
+    if (max_debug_files.is_set || is_set(max_debug_files.yfilter)) leaf_name_data.push_back(max_debug_files.get_name_leafdata());
+    if (max_file_size_files.is_set || is_set(max_file_size_files.yfilter)) leaf_name_data.push_back(max_file_size_files.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -278,20 +344,49 @@ std::map<std::string, std::shared_ptr<Entity>> IpTcp::Directory::get_children() 
     return children;
 }
 
-void IpTcp::Directory::set_value(const std::string & value_path, std::string value)
+void IpTcp::Directory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "directoryname")
     {
         directoryname = value;
+        directoryname.value_namespace = name_space;
+        directoryname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-debug-files")
     {
         max_debug_files = value;
+        max_debug_files.value_namespace = name_space;
+        max_debug_files.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-file-size-files")
     {
         max_file_size_files = value;
+        max_file_size_files.value_namespace = name_space;
+        max_file_size_files.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpTcp::Directory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "directoryname")
+    {
+        directoryname.yfilter = yfilter;
+    }
+    if(value_path == "max-debug-files")
+    {
+        max_debug_files.yfilter = yfilter;
+    }
+    if(value_path == "max-file-size-files")
+    {
+        max_file_size_files.yfilter = yfilter;
+    }
+}
+
+bool IpTcp::Directory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "directoryname" || name == "max-debug-files" || name == "max-file-size-files")
+        return true;
+    return false;
 }
 
 IpTcp::Throttle::Throttle()
@@ -314,9 +409,9 @@ bool IpTcp::Throttle::has_data() const
 
 bool IpTcp::Throttle::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tcpmaxthrottle.operation)
-	|| is_set(tcpmin_throttle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tcpmaxthrottle.yfilter)
+	|| ydk::is_set(tcpmin_throttle.yfilter);
 }
 
 std::string IpTcp::Throttle::get_segment_path() const
@@ -342,8 +437,8 @@ const EntityPath IpTcp::Throttle::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tcpmaxthrottle.is_set || is_set(tcpmaxthrottle.operation)) leaf_name_data.push_back(tcpmaxthrottle.get_name_leafdata());
-    if (tcpmin_throttle.is_set || is_set(tcpmin_throttle.operation)) leaf_name_data.push_back(tcpmin_throttle.get_name_leafdata());
+    if (tcpmaxthrottle.is_set || is_set(tcpmaxthrottle.yfilter)) leaf_name_data.push_back(tcpmaxthrottle.get_name_leafdata());
+    if (tcpmin_throttle.is_set || is_set(tcpmin_throttle.yfilter)) leaf_name_data.push_back(tcpmin_throttle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -362,16 +457,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpTcp::Throttle::get_children() c
     return children;
 }
 
-void IpTcp::Throttle::set_value(const std::string & value_path, std::string value)
+void IpTcp::Throttle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tcpmaxthrottle")
     {
         tcpmaxthrottle = value;
+        tcpmaxthrottle.value_namespace = name_space;
+        tcpmaxthrottle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcpmin-throttle")
     {
         tcpmin_throttle = value;
+        tcpmin_throttle.value_namespace = name_space;
+        tcpmin_throttle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpTcp::Throttle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tcpmaxthrottle")
+    {
+        tcpmaxthrottle.yfilter = yfilter;
+    }
+    if(value_path == "tcpmin-throttle")
+    {
+        tcpmin_throttle.yfilter = yfilter;
+    }
+}
+
+bool IpTcp::Throttle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcpmaxthrottle" || name == "tcpmin-throttle")
+        return true;
+    return false;
 }
 
 IpTcp::NumThread::NumThread()
@@ -394,9 +512,9 @@ bool IpTcp::NumThread::has_data() const
 
 bool IpTcp::NumThread::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tcp_in_q_threads.operation)
-	|| is_set(tcp_out_q_threads.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tcp_in_q_threads.yfilter)
+	|| ydk::is_set(tcp_out_q_threads.yfilter);
 }
 
 std::string IpTcp::NumThread::get_segment_path() const
@@ -422,8 +540,8 @@ const EntityPath IpTcp::NumThread::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tcp_in_q_threads.is_set || is_set(tcp_in_q_threads.operation)) leaf_name_data.push_back(tcp_in_q_threads.get_name_leafdata());
-    if (tcp_out_q_threads.is_set || is_set(tcp_out_q_threads.operation)) leaf_name_data.push_back(tcp_out_q_threads.get_name_leafdata());
+    if (tcp_in_q_threads.is_set || is_set(tcp_in_q_threads.yfilter)) leaf_name_data.push_back(tcp_in_q_threads.get_name_leafdata());
+    if (tcp_out_q_threads.is_set || is_set(tcp_out_q_threads.yfilter)) leaf_name_data.push_back(tcp_out_q_threads.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -442,16 +560,39 @@ std::map<std::string, std::shared_ptr<Entity>> IpTcp::NumThread::get_children() 
     return children;
 }
 
-void IpTcp::NumThread::set_value(const std::string & value_path, std::string value)
+void IpTcp::NumThread::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tcp-in-q-threads")
     {
         tcp_in_q_threads = value;
+        tcp_in_q_threads.value_namespace = name_space;
+        tcp_in_q_threads.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcp-out-q-threads")
     {
         tcp_out_q_threads = value;
+        tcp_out_q_threads.value_namespace = name_space;
+        tcp_out_q_threads.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IpTcp::NumThread::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tcp-in-q-threads")
+    {
+        tcp_in_q_threads.yfilter = yfilter;
+    }
+    if(value_path == "tcp-out-q-threads")
+    {
+        tcp_out_q_threads.yfilter = yfilter;
+    }
+}
+
+bool IpTcp::NumThread::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcp-in-q-threads" || name == "tcp-out-q-threads")
+        return true;
+    return false;
 }
 
 Ip::Ip()
@@ -478,7 +619,7 @@ bool Ip::has_data() const
 
 bool Ip::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (cinetd !=  nullptr && cinetd->has_operation())
 	|| (forward_protocol !=  nullptr && forward_protocol->has_operation());
 }
@@ -549,7 +690,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::get_children() const
     return children;
 }
 
-void Ip::set_value(const std::string & value_path, std::string value)
+void Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -573,6 +718,18 @@ augment_capabilities_function Ip::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Ip::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ip::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cinetd" || name == "forward-protocol")
+        return true;
+    return false;
+}
+
 Ip::Cinetd::Cinetd()
     :
     services(std::make_shared<Ip::Cinetd::Services>())
@@ -593,7 +750,7 @@ bool Ip::Cinetd::has_data() const
 
 bool Ip::Cinetd::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (services !=  nullptr && services->has_operation());
 }
 
@@ -652,8 +809,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::get_children() const
     return children;
 }
 
-void Ip::Cinetd::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "services")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Services()
@@ -684,7 +852,7 @@ bool Ip::Cinetd::Services::has_data() const
 
 bool Ip::Cinetd::Services::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
@@ -773,8 +941,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::get_childre
     return children;
 }
 
-void Ip::Cinetd::Services::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "vrfs")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Ipv4::Ipv4()
@@ -797,7 +976,7 @@ bool Ip::Cinetd::Services::Ipv4::has_data() const
 
 bool Ip::Cinetd::Services::Ipv4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (small_servers !=  nullptr && small_servers->has_operation());
 }
 
@@ -856,8 +1035,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::get_c
     return children;
 }
 
-void Ip::Cinetd::Services::Ipv4::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "small-servers")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Ipv4::SmallServers::SmallServers()
@@ -880,7 +1070,7 @@ bool Ip::Cinetd::Services::Ipv4::SmallServers::has_data() const
 
 bool Ip::Cinetd::Services::Ipv4::SmallServers::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tcp_small_servers !=  nullptr && tcp_small_servers->has_operation())
 	|| (udp_small_servers !=  nullptr && udp_small_servers->has_operation());
 }
@@ -954,8 +1144,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::Small
     return children;
 }
 
-void Ip::Cinetd::Services::Ipv4::SmallServers::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Ipv4::SmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Ipv4::SmallServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Ipv4::SmallServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcp-small-servers" || name == "udp-small-servers")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::TcpSmallServers()
@@ -978,9 +1179,9 @@ bool Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::has_data() const
 
 bool Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_control_list_name.operation)
-	|| is_set(small_server.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_control_list_name.yfilter)
+	|| ydk::is_set(small_server.yfilter);
 }
 
 std::string Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_segment_path() const
@@ -1006,8 +1207,8 @@ const EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_control_list_name.is_set || is_set(access_control_list_name.operation)) leaf_name_data.push_back(access_control_list_name.get_name_leafdata());
-    if (small_server.is_set || is_set(small_server.operation)) leaf_name_data.push_back(small_server.get_name_leafdata());
+    if (access_control_list_name.is_set || is_set(access_control_list_name.yfilter)) leaf_name_data.push_back(access_control_list_name.get_name_leafdata());
+    if (small_server.is_set || is_set(small_server.yfilter)) leaf_name_data.push_back(small_server.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1026,16 +1227,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::Small
     return children;
 }
 
-void Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-control-list-name")
     {
         access_control_list_name = value;
+        access_control_list_name.value_namespace = name_space;
+        access_control_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "small-server")
     {
         small_server = value;
+        small_server.value_namespace = name_space;
+        small_server.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-control-list-name")
+    {
+        access_control_list_name.yfilter = yfilter;
+    }
+    if(value_path == "small-server")
+    {
+        small_server.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Ipv4::SmallServers::TcpSmallServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-control-list-name" || name == "small-server")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::UdpSmallServers()
@@ -1058,9 +1282,9 @@ bool Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::has_data() const
 
 bool Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_control_list_name.operation)
-	|| is_set(small_server.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_control_list_name.yfilter)
+	|| ydk::is_set(small_server.yfilter);
 }
 
 std::string Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_segment_path() const
@@ -1086,8 +1310,8 @@ const EntityPath Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_control_list_name.is_set || is_set(access_control_list_name.operation)) leaf_name_data.push_back(access_control_list_name.get_name_leafdata());
-    if (small_server.is_set || is_set(small_server.operation)) leaf_name_data.push_back(small_server.get_name_leafdata());
+    if (access_control_list_name.is_set || is_set(access_control_list_name.yfilter)) leaf_name_data.push_back(access_control_list_name.get_name_leafdata());
+    if (small_server.is_set || is_set(small_server.yfilter)) leaf_name_data.push_back(small_server.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1106,16 +1330,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv4::Small
     return children;
 }
 
-void Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-control-list-name")
     {
         access_control_list_name = value;
+        access_control_list_name.value_namespace = name_space;
+        access_control_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "small-server")
     {
         small_server = value;
+        small_server.value_namespace = name_space;
+        small_server.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-control-list-name")
+    {
+        access_control_list_name.yfilter = yfilter;
+    }
+    if(value_path == "small-server")
+    {
+        small_server.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Ipv4::SmallServers::UdpSmallServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-control-list-name" || name == "small-server")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrfs()
@@ -1144,7 +1391,7 @@ bool Ip::Cinetd::Services::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ip::Cinetd::Services::Vrfs::get_segment_path() const
@@ -1209,8 +1456,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::get_c
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Vrf()
@@ -1240,8 +1498,8 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
@@ -1269,7 +1527,7 @@ const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1316,12 +1574,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "ipv6" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Ipv6()
@@ -1348,7 +1623,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (telnet !=  nullptr && telnet->has_operation())
 	|| (tftp !=  nullptr && tftp->has_operation());
 }
@@ -1422,8 +1697,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "telnet" || name == "tftp")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Telnet()
@@ -1444,7 +1730,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tcp !=  nullptr && tcp->has_operation());
 }
 
@@ -1503,8 +1789,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcp")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::Tcp()
@@ -1527,9 +1824,9 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_server.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_server.yfilter);
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_segment_path() const
@@ -1555,8 +1852,8 @@ const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_server.is_set || is_set(maximum_server.operation)) leaf_name_data.push_back(maximum_server.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_server.is_set || is_set(maximum_server.yfilter)) leaf_name_data.push_back(maximum_server.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1575,16 +1872,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-server")
     {
         maximum_server = value;
+        maximum_server.value_namespace = name_space;
+        maximum_server.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-server")
+    {
+        maximum_server.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Telnet::Tcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-server")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Tftp()
@@ -1605,7 +1925,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (udp !=  nullptr && udp->has_operation());
 }
 
@@ -1664,8 +1984,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udp")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::Udp()
@@ -1692,11 +2023,11 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(dscp_value.operation)
-	|| is_set(home_directory.operation)
-	|| is_set(maximum_server.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(dscp_value.yfilter)
+	|| ydk::is_set(home_directory.yfilter)
+	|| ydk::is_set(maximum_server.yfilter);
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_segment_path() const
@@ -1722,10 +2053,10 @@ const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (dscp_value.is_set || is_set(dscp_value.operation)) leaf_name_data.push_back(dscp_value.get_name_leafdata());
-    if (home_directory.is_set || is_set(home_directory.operation)) leaf_name_data.push_back(home_directory.get_name_leafdata());
-    if (maximum_server.is_set || is_set(maximum_server.operation)) leaf_name_data.push_back(maximum_server.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (dscp_value.is_set || is_set(dscp_value.yfilter)) leaf_name_data.push_back(dscp_value.get_name_leafdata());
+    if (home_directory.is_set || is_set(home_directory.yfilter)) leaf_name_data.push_back(home_directory.get_name_leafdata());
+    if (maximum_server.is_set || is_set(maximum_server.yfilter)) leaf_name_data.push_back(maximum_server.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1744,24 +2075,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dscp-value")
     {
         dscp_value = value;
+        dscp_value.value_namespace = name_space;
+        dscp_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "home-directory")
     {
         home_directory = value;
+        home_directory.value_namespace = name_space;
+        home_directory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-server")
     {
         maximum_server = value;
+        maximum_server.value_namespace = name_space;
+        maximum_server.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "dscp-value")
+    {
+        dscp_value.yfilter = yfilter;
+    }
+    if(value_path == "home-directory")
+    {
+        home_directory.yfilter = yfilter;
+    }
+    if(value_path == "maximum-server")
+    {
+        maximum_server.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "dscp-value" || name == "home-directory" || name == "maximum-server")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Ipv4()
@@ -1788,7 +2154,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (telnet !=  nullptr && telnet->has_operation())
 	|| (tftp !=  nullptr && tftp->has_operation());
 }
@@ -1862,8 +2228,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "telnet" || name == "tftp")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Telnet()
@@ -1884,7 +2261,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tcp !=  nullptr && tcp->has_operation());
 }
 
@@ -1943,8 +2320,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcp")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::Tcp()
@@ -1967,9 +2355,9 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_server.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_server.yfilter);
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_segment_path() const
@@ -1995,8 +2383,8 @@ const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_server.is_set || is_set(maximum_server.operation)) leaf_name_data.push_back(maximum_server.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_server.is_set || is_set(maximum_server.yfilter)) leaf_name_data.push_back(maximum_server.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2015,16 +2403,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-server")
     {
         maximum_server = value;
+        maximum_server.value_namespace = name_space;
+        maximum_server.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-server")
+    {
+        maximum_server.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Telnet::Tcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-server")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Tftp()
@@ -2045,7 +2456,7 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (udp !=  nullptr && udp->has_operation());
 }
 
@@ -2104,8 +2515,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udp")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::Udp()
@@ -2132,11 +2554,11 @@ bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::has_data() const
 
 bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(dscp_value.operation)
-	|| is_set(home_directory.operation)
-	|| is_set(maximum_server.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(dscp_value.yfilter)
+	|| ydk::is_set(home_directory.yfilter)
+	|| ydk::is_set(maximum_server.yfilter);
 }
 
 std::string Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_segment_path() const
@@ -2162,10 +2584,10 @@ const EntityPath Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (dscp_value.is_set || is_set(dscp_value.operation)) leaf_name_data.push_back(dscp_value.get_name_leafdata());
-    if (home_directory.is_set || is_set(home_directory.operation)) leaf_name_data.push_back(home_directory.get_name_leafdata());
-    if (maximum_server.is_set || is_set(maximum_server.operation)) leaf_name_data.push_back(maximum_server.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (dscp_value.is_set || is_set(dscp_value.yfilter)) leaf_name_data.push_back(dscp_value.get_name_leafdata());
+    if (home_directory.is_set || is_set(home_directory.yfilter)) leaf_name_data.push_back(home_directory.get_name_leafdata());
+    if (maximum_server.is_set || is_set(maximum_server.yfilter)) leaf_name_data.push_back(maximum_server.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2184,24 +2606,59 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Vrfs::Vrf::
     return children;
 }
 
-void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dscp-value")
     {
         dscp_value = value;
+        dscp_value.value_namespace = name_space;
+        dscp_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "home-directory")
     {
         home_directory = value;
+        home_directory.value_namespace = name_space;
+        home_directory.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-server")
     {
         maximum_server = value;
+        maximum_server.value_namespace = name_space;
+        maximum_server.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "dscp-value")
+    {
+        dscp_value.yfilter = yfilter;
+    }
+    if(value_path == "home-directory")
+    {
+        home_directory.yfilter = yfilter;
+    }
+    if(value_path == "maximum-server")
+    {
+        maximum_server.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "dscp-value" || name == "home-directory" || name == "maximum-server")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Ipv6::Ipv6()
@@ -2224,7 +2681,7 @@ bool Ip::Cinetd::Services::Ipv6::has_data() const
 
 bool Ip::Cinetd::Services::Ipv6::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (small_servers !=  nullptr && small_servers->has_operation());
 }
 
@@ -2283,8 +2740,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::get_c
     return children;
 }
 
-void Ip::Cinetd::Services::Ipv6::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "small-servers")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Ipv6::SmallServers::SmallServers()
@@ -2305,7 +2773,7 @@ bool Ip::Cinetd::Services::Ipv6::SmallServers::has_data() const
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tcp_small_servers !=  nullptr && tcp_small_servers->has_operation());
 }
 
@@ -2364,8 +2832,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::Small
     return children;
 }
 
-void Ip::Cinetd::Services::Ipv6::SmallServers::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Ipv6::SmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::Cinetd::Services::Ipv6::SmallServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::Cinetd::Services::Ipv6::SmallServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcp-small-servers")
+        return true;
+    return false;
 }
 
 Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::TcpSmallServers()
@@ -2388,9 +2867,9 @@ bool Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::has_data() const
 
 bool Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_control_list_name.operation)
-	|| is_set(small_server.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_control_list_name.yfilter)
+	|| ydk::is_set(small_server.yfilter);
 }
 
 std::string Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_segment_path() const
@@ -2416,8 +2895,8 @@ const EntityPath Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_control_list_name.is_set || is_set(access_control_list_name.operation)) leaf_name_data.push_back(access_control_list_name.get_name_leafdata());
-    if (small_server.is_set || is_set(small_server.operation)) leaf_name_data.push_back(small_server.get_name_leafdata());
+    if (access_control_list_name.is_set || is_set(access_control_list_name.yfilter)) leaf_name_data.push_back(access_control_list_name.get_name_leafdata());
+    if (small_server.is_set || is_set(small_server.yfilter)) leaf_name_data.push_back(small_server.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2436,16 +2915,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::Cinetd::Services::Ipv6::Small
     return children;
 }
 
-void Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::set_value(const std::string & value_path, std::string value)
+void Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-control-list-name")
     {
         access_control_list_name = value;
+        access_control_list_name.value_namespace = name_space;
+        access_control_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "small-server")
     {
         small_server = value;
+        small_server.value_namespace = name_space;
+        small_server.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-control-list-name")
+    {
+        access_control_list_name.yfilter = yfilter;
+    }
+    if(value_path == "small-server")
+    {
+        small_server.yfilter = yfilter;
+    }
+}
+
+bool Ip::Cinetd::Services::Ipv6::SmallServers::TcpSmallServers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-control-list-name" || name == "small-server")
+        return true;
+    return false;
 }
 
 Ip::ForwardProtocol::ForwardProtocol()
@@ -2468,7 +2970,7 @@ bool Ip::ForwardProtocol::has_data() const
 
 bool Ip::ForwardProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (udp !=  nullptr && udp->has_operation());
 }
 
@@ -2527,8 +3029,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::get_children
     return children;
 }
 
-void Ip::ForwardProtocol::set_value(const std::string & value_path, std::string value)
+void Ip::ForwardProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::ForwardProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::ForwardProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "udp")
+        return true;
+    return false;
 }
 
 Ip::ForwardProtocol::Udp::Udp()
@@ -2554,8 +3067,8 @@ bool Ip::ForwardProtocol::Udp::has_data() const
 
 bool Ip::ForwardProtocol::Udp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(disable.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
 	|| (ports !=  nullptr && ports->has_operation());
 }
 
@@ -2582,7 +3095,7 @@ const EntityPath Ip::ForwardProtocol::Udp::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (disable.is_set || is_set(disable.operation)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2615,12 +3128,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::get_chi
     return children;
 }
 
-void Ip::ForwardProtocol::Udp::set_value(const std::string & value_path, std::string value)
+void Ip::ForwardProtocol::Udp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "disable")
     {
         disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::ForwardProtocol::Udp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Ip::ForwardProtocol::Udp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ports" || name == "disable")
+        return true;
+    return false;
 }
 
 Ip::ForwardProtocol::Udp::Ports::Ports()
@@ -2649,7 +3179,7 @@ bool Ip::ForwardProtocol::Udp::Ports::has_operation() const
         if(port[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ip::ForwardProtocol::Udp::Ports::get_segment_path() const
@@ -2714,8 +3244,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::
     return children;
 }
 
-void Ip::ForwardProtocol::Udp::Ports::set_value(const std::string & value_path, std::string value)
+void Ip::ForwardProtocol::Udp::Ports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ip::ForwardProtocol::Udp::Ports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ip::ForwardProtocol::Udp::Ports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port")
+        return true;
+    return false;
 }
 
 Ip::ForwardProtocol::Udp::Ports::Port::Port()
@@ -2738,9 +3279,9 @@ bool Ip::ForwardProtocol::Udp::Ports::Port::has_data() const
 
 bool Ip::ForwardProtocol::Udp::Ports::Port::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(port_id.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(port_id.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Ip::ForwardProtocol::Udp::Ports::Port::get_segment_path() const
@@ -2766,8 +3307,8 @@ const EntityPath Ip::ForwardProtocol::Udp::Ports::Port::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (port_id.is_set || is_set(port_id.operation)) leaf_name_data.push_back(port_id.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (port_id.is_set || is_set(port_id.yfilter)) leaf_name_data.push_back(port_id.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2786,16 +3327,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ip::ForwardProtocol::Udp::Ports::
     return children;
 }
 
-void Ip::ForwardProtocol::Udp::Ports::Port::set_value(const std::string & value_path, std::string value)
+void Ip::ForwardProtocol::Udp::Ports::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "port-id")
     {
         port_id = value;
+        port_id.value_namespace = name_space;
+        port_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ip::ForwardProtocol::Udp::Ports::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "port-id")
+    {
+        port_id.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Ip::ForwardProtocol::Udp::Ports::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-id" || name == "enable")
+        return true;
+    return false;
 }
 
 

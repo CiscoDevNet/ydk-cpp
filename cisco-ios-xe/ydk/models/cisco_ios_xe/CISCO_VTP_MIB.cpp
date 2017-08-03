@@ -6,53 +6,55 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_VTP_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_VTP_MIB {
 
 CiscoVtpMib::CiscoVtpMib()
     :
-    internalvlaninfo_(std::make_shared<CiscoVtpMib::Internalvlaninfo>())
-	,managementdomaintable_(std::make_shared<CiscoVtpMib::Managementdomaintable>())
-	,vlanstatistics_(std::make_shared<CiscoVtpMib::Vlanstatistics>())
-	,vlantrunkports_(std::make_shared<CiscoVtpMib::Vlantrunkports>())
-	,vlantrunkporttable_(std::make_shared<CiscoVtpMib::Vlantrunkporttable>())
-	,vtpauthenticationtable_(std::make_shared<CiscoVtpMib::Vtpauthenticationtable>())
-	,vtpdatabasetable_(std::make_shared<CiscoVtpMib::Vtpdatabasetable>())
-	,vtpdiscoverresulttable_(std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable>())
-	,vtpdiscovertable_(std::make_shared<CiscoVtpMib::Vtpdiscovertable>())
-	,vtpinternalvlantable_(std::make_shared<CiscoVtpMib::Vtpinternalvlantable>())
-	,vtpstatus_(std::make_shared<CiscoVtpMib::Vtpstatus>())
-	,vtpvlanedittable_(std::make_shared<CiscoVtpMib::Vtpvlanedittable>())
-	,vtpvlanlocalshutdowntable_(std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable>())
-	,vtpvlantable_(std::make_shared<CiscoVtpMib::Vtpvlantable>())
+    internalvlaninfo(std::make_shared<CiscoVtpMib::Internalvlaninfo>())
+	,managementdomaintable(std::make_shared<CiscoVtpMib::Managementdomaintable>())
+	,vlanstatistics(std::make_shared<CiscoVtpMib::Vlanstatistics>())
+	,vlantrunkports(std::make_shared<CiscoVtpMib::Vlantrunkports>())
+	,vlantrunkporttable(std::make_shared<CiscoVtpMib::Vlantrunkporttable>())
+	,vtpauthenticationtable(std::make_shared<CiscoVtpMib::Vtpauthenticationtable>())
+	,vtpdatabasetable(std::make_shared<CiscoVtpMib::Vtpdatabasetable>())
+	,vtpdiscoverresulttable(std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable>())
+	,vtpdiscovertable(std::make_shared<CiscoVtpMib::Vtpdiscovertable>())
+	,vtpinternalvlantable(std::make_shared<CiscoVtpMib::Vtpinternalvlantable>())
+	,vtpstatus(std::make_shared<CiscoVtpMib::Vtpstatus>())
+	,vtpvlanedittable(std::make_shared<CiscoVtpMib::Vtpvlanedittable>())
+	,vtpvlanlocalshutdowntable(std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable>())
+	,vtpvlantable(std::make_shared<CiscoVtpMib::Vtpvlantable>())
 {
-    internalvlaninfo_->parent = this;
+    internalvlaninfo->parent = this;
 
-    managementdomaintable_->parent = this;
+    managementdomaintable->parent = this;
 
-    vlanstatistics_->parent = this;
+    vlanstatistics->parent = this;
 
-    vlantrunkports_->parent = this;
+    vlantrunkports->parent = this;
 
-    vlantrunkporttable_->parent = this;
+    vlantrunkporttable->parent = this;
 
-    vtpauthenticationtable_->parent = this;
+    vtpauthenticationtable->parent = this;
 
-    vtpdatabasetable_->parent = this;
+    vtpdatabasetable->parent = this;
 
-    vtpdiscoverresulttable_->parent = this;
+    vtpdiscoverresulttable->parent = this;
 
-    vtpdiscovertable_->parent = this;
+    vtpdiscovertable->parent = this;
 
-    vtpinternalvlantable_->parent = this;
+    vtpinternalvlantable->parent = this;
 
-    vtpstatus_->parent = this;
+    vtpstatus->parent = this;
 
-    vtpvlanedittable_->parent = this;
+    vtpvlanedittable->parent = this;
 
-    vtpvlanlocalshutdowntable_->parent = this;
+    vtpvlanlocalshutdowntable->parent = this;
 
-    vtpvlantable_->parent = this;
+    vtpvlantable->parent = this;
 
     yang_name = "CISCO-VTP-MIB"; yang_parent_name = "CISCO-VTP-MIB";
 }
@@ -63,39 +65,39 @@ CiscoVtpMib::~CiscoVtpMib()
 
 bool CiscoVtpMib::has_data() const
 {
-    return (internalvlaninfo_ !=  nullptr && internalvlaninfo_->has_data())
-	|| (managementdomaintable_ !=  nullptr && managementdomaintable_->has_data())
-	|| (vlanstatistics_ !=  nullptr && vlanstatistics_->has_data())
-	|| (vlantrunkports_ !=  nullptr && vlantrunkports_->has_data())
-	|| (vlantrunkporttable_ !=  nullptr && vlantrunkporttable_->has_data())
-	|| (vtpauthenticationtable_ !=  nullptr && vtpauthenticationtable_->has_data())
-	|| (vtpdatabasetable_ !=  nullptr && vtpdatabasetable_->has_data())
-	|| (vtpdiscoverresulttable_ !=  nullptr && vtpdiscoverresulttable_->has_data())
-	|| (vtpdiscovertable_ !=  nullptr && vtpdiscovertable_->has_data())
-	|| (vtpinternalvlantable_ !=  nullptr && vtpinternalvlantable_->has_data())
-	|| (vtpstatus_ !=  nullptr && vtpstatus_->has_data())
-	|| (vtpvlanedittable_ !=  nullptr && vtpvlanedittable_->has_data())
-	|| (vtpvlanlocalshutdowntable_ !=  nullptr && vtpvlanlocalshutdowntable_->has_data())
-	|| (vtpvlantable_ !=  nullptr && vtpvlantable_->has_data());
+    return (internalvlaninfo !=  nullptr && internalvlaninfo->has_data())
+	|| (managementdomaintable !=  nullptr && managementdomaintable->has_data())
+	|| (vlanstatistics !=  nullptr && vlanstatistics->has_data())
+	|| (vlantrunkports !=  nullptr && vlantrunkports->has_data())
+	|| (vlantrunkporttable !=  nullptr && vlantrunkporttable->has_data())
+	|| (vtpauthenticationtable !=  nullptr && vtpauthenticationtable->has_data())
+	|| (vtpdatabasetable !=  nullptr && vtpdatabasetable->has_data())
+	|| (vtpdiscoverresulttable !=  nullptr && vtpdiscoverresulttable->has_data())
+	|| (vtpdiscovertable !=  nullptr && vtpdiscovertable->has_data())
+	|| (vtpinternalvlantable !=  nullptr && vtpinternalvlantable->has_data())
+	|| (vtpstatus !=  nullptr && vtpstatus->has_data())
+	|| (vtpvlanedittable !=  nullptr && vtpvlanedittable->has_data())
+	|| (vtpvlanlocalshutdowntable !=  nullptr && vtpvlanlocalshutdowntable->has_data())
+	|| (vtpvlantable !=  nullptr && vtpvlantable->has_data());
 }
 
 bool CiscoVtpMib::has_operation() const
 {
-    return is_set(operation)
-	|| (internalvlaninfo_ !=  nullptr && internalvlaninfo_->has_operation())
-	|| (managementdomaintable_ !=  nullptr && managementdomaintable_->has_operation())
-	|| (vlanstatistics_ !=  nullptr && vlanstatistics_->has_operation())
-	|| (vlantrunkports_ !=  nullptr && vlantrunkports_->has_operation())
-	|| (vlantrunkporttable_ !=  nullptr && vlantrunkporttable_->has_operation())
-	|| (vtpauthenticationtable_ !=  nullptr && vtpauthenticationtable_->has_operation())
-	|| (vtpdatabasetable_ !=  nullptr && vtpdatabasetable_->has_operation())
-	|| (vtpdiscoverresulttable_ !=  nullptr && vtpdiscoverresulttable_->has_operation())
-	|| (vtpdiscovertable_ !=  nullptr && vtpdiscovertable_->has_operation())
-	|| (vtpinternalvlantable_ !=  nullptr && vtpinternalvlantable_->has_operation())
-	|| (vtpstatus_ !=  nullptr && vtpstatus_->has_operation())
-	|| (vtpvlanedittable_ !=  nullptr && vtpvlanedittable_->has_operation())
-	|| (vtpvlanlocalshutdowntable_ !=  nullptr && vtpvlanlocalshutdowntable_->has_operation())
-	|| (vtpvlantable_ !=  nullptr && vtpvlantable_->has_operation());
+    return is_set(yfilter)
+	|| (internalvlaninfo !=  nullptr && internalvlaninfo->has_operation())
+	|| (managementdomaintable !=  nullptr && managementdomaintable->has_operation())
+	|| (vlanstatistics !=  nullptr && vlanstatistics->has_operation())
+	|| (vlantrunkports !=  nullptr && vlantrunkports->has_operation())
+	|| (vlantrunkporttable !=  nullptr && vlantrunkporttable->has_operation())
+	|| (vtpauthenticationtable !=  nullptr && vtpauthenticationtable->has_operation())
+	|| (vtpdatabasetable !=  nullptr && vtpdatabasetable->has_operation())
+	|| (vtpdiscoverresulttable !=  nullptr && vtpdiscoverresulttable->has_operation())
+	|| (vtpdiscovertable !=  nullptr && vtpdiscovertable->has_operation())
+	|| (vtpinternalvlantable !=  nullptr && vtpinternalvlantable->has_operation())
+	|| (vtpstatus !=  nullptr && vtpstatus->has_operation())
+	|| (vtpvlanedittable !=  nullptr && vtpvlanedittable->has_operation())
+	|| (vtpvlanlocalshutdowntable !=  nullptr && vtpvlanlocalshutdowntable->has_operation())
+	|| (vtpvlantable !=  nullptr && vtpvlantable->has_operation());
 }
 
 std::string CiscoVtpMib::get_segment_path() const
@@ -129,128 +131,128 @@ std::shared_ptr<Entity> CiscoVtpMib::get_child_by_name(const std::string & child
 {
     if(child_yang_name == "internalVlanInfo")
     {
-        if(internalvlaninfo_ == nullptr)
+        if(internalvlaninfo == nullptr)
         {
-            internalvlaninfo_ = std::make_shared<CiscoVtpMib::Internalvlaninfo>();
+            internalvlaninfo = std::make_shared<CiscoVtpMib::Internalvlaninfo>();
         }
-        return internalvlaninfo_;
+        return internalvlaninfo;
     }
 
     if(child_yang_name == "managementDomainTable")
     {
-        if(managementdomaintable_ == nullptr)
+        if(managementdomaintable == nullptr)
         {
-            managementdomaintable_ = std::make_shared<CiscoVtpMib::Managementdomaintable>();
+            managementdomaintable = std::make_shared<CiscoVtpMib::Managementdomaintable>();
         }
-        return managementdomaintable_;
+        return managementdomaintable;
     }
 
     if(child_yang_name == "vlanStatistics")
     {
-        if(vlanstatistics_ == nullptr)
+        if(vlanstatistics == nullptr)
         {
-            vlanstatistics_ = std::make_shared<CiscoVtpMib::Vlanstatistics>();
+            vlanstatistics = std::make_shared<CiscoVtpMib::Vlanstatistics>();
         }
-        return vlanstatistics_;
+        return vlanstatistics;
     }
 
     if(child_yang_name == "vlanTrunkPorts")
     {
-        if(vlantrunkports_ == nullptr)
+        if(vlantrunkports == nullptr)
         {
-            vlantrunkports_ = std::make_shared<CiscoVtpMib::Vlantrunkports>();
+            vlantrunkports = std::make_shared<CiscoVtpMib::Vlantrunkports>();
         }
-        return vlantrunkports_;
+        return vlantrunkports;
     }
 
     if(child_yang_name == "vlanTrunkPortTable")
     {
-        if(vlantrunkporttable_ == nullptr)
+        if(vlantrunkporttable == nullptr)
         {
-            vlantrunkporttable_ = std::make_shared<CiscoVtpMib::Vlantrunkporttable>();
+            vlantrunkporttable = std::make_shared<CiscoVtpMib::Vlantrunkporttable>();
         }
-        return vlantrunkporttable_;
+        return vlantrunkporttable;
     }
 
     if(child_yang_name == "vtpAuthenticationTable")
     {
-        if(vtpauthenticationtable_ == nullptr)
+        if(vtpauthenticationtable == nullptr)
         {
-            vtpauthenticationtable_ = std::make_shared<CiscoVtpMib::Vtpauthenticationtable>();
+            vtpauthenticationtable = std::make_shared<CiscoVtpMib::Vtpauthenticationtable>();
         }
-        return vtpauthenticationtable_;
+        return vtpauthenticationtable;
     }
 
     if(child_yang_name == "vtpDatabaseTable")
     {
-        if(vtpdatabasetable_ == nullptr)
+        if(vtpdatabasetable == nullptr)
         {
-            vtpdatabasetable_ = std::make_shared<CiscoVtpMib::Vtpdatabasetable>();
+            vtpdatabasetable = std::make_shared<CiscoVtpMib::Vtpdatabasetable>();
         }
-        return vtpdatabasetable_;
+        return vtpdatabasetable;
     }
 
     if(child_yang_name == "vtpDiscoverResultTable")
     {
-        if(vtpdiscoverresulttable_ == nullptr)
+        if(vtpdiscoverresulttable == nullptr)
         {
-            vtpdiscoverresulttable_ = std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable>();
+            vtpdiscoverresulttable = std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable>();
         }
-        return vtpdiscoverresulttable_;
+        return vtpdiscoverresulttable;
     }
 
     if(child_yang_name == "vtpDiscoverTable")
     {
-        if(vtpdiscovertable_ == nullptr)
+        if(vtpdiscovertable == nullptr)
         {
-            vtpdiscovertable_ = std::make_shared<CiscoVtpMib::Vtpdiscovertable>();
+            vtpdiscovertable = std::make_shared<CiscoVtpMib::Vtpdiscovertable>();
         }
-        return vtpdiscovertable_;
+        return vtpdiscovertable;
     }
 
     if(child_yang_name == "vtpInternalVlanTable")
     {
-        if(vtpinternalvlantable_ == nullptr)
+        if(vtpinternalvlantable == nullptr)
         {
-            vtpinternalvlantable_ = std::make_shared<CiscoVtpMib::Vtpinternalvlantable>();
+            vtpinternalvlantable = std::make_shared<CiscoVtpMib::Vtpinternalvlantable>();
         }
-        return vtpinternalvlantable_;
+        return vtpinternalvlantable;
     }
 
     if(child_yang_name == "vtpStatus")
     {
-        if(vtpstatus_ == nullptr)
+        if(vtpstatus == nullptr)
         {
-            vtpstatus_ = std::make_shared<CiscoVtpMib::Vtpstatus>();
+            vtpstatus = std::make_shared<CiscoVtpMib::Vtpstatus>();
         }
-        return vtpstatus_;
+        return vtpstatus;
     }
 
     if(child_yang_name == "vtpVlanEditTable")
     {
-        if(vtpvlanedittable_ == nullptr)
+        if(vtpvlanedittable == nullptr)
         {
-            vtpvlanedittable_ = std::make_shared<CiscoVtpMib::Vtpvlanedittable>();
+            vtpvlanedittable = std::make_shared<CiscoVtpMib::Vtpvlanedittable>();
         }
-        return vtpvlanedittable_;
+        return vtpvlanedittable;
     }
 
     if(child_yang_name == "vtpVlanLocalShutdownTable")
     {
-        if(vtpvlanlocalshutdowntable_ == nullptr)
+        if(vtpvlanlocalshutdowntable == nullptr)
         {
-            vtpvlanlocalshutdowntable_ = std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable>();
+            vtpvlanlocalshutdowntable = std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable>();
         }
-        return vtpvlanlocalshutdowntable_;
+        return vtpvlanlocalshutdowntable;
     }
 
     if(child_yang_name == "vtpVlanTable")
     {
-        if(vtpvlantable_ == nullptr)
+        if(vtpvlantable == nullptr)
         {
-            vtpvlantable_ = std::make_shared<CiscoVtpMib::Vtpvlantable>();
+            vtpvlantable = std::make_shared<CiscoVtpMib::Vtpvlantable>();
         }
-        return vtpvlantable_;
+        return vtpvlantable;
     }
 
     return nullptr;
@@ -259,80 +261,84 @@ std::shared_ptr<Entity> CiscoVtpMib::get_child_by_name(const std::string & child
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(internalvlaninfo_ != nullptr)
+    if(internalvlaninfo != nullptr)
     {
-        children["internalVlanInfo"] = internalvlaninfo_;
+        children["internalVlanInfo"] = internalvlaninfo;
     }
 
-    if(managementdomaintable_ != nullptr)
+    if(managementdomaintable != nullptr)
     {
-        children["managementDomainTable"] = managementdomaintable_;
+        children["managementDomainTable"] = managementdomaintable;
     }
 
-    if(vlanstatistics_ != nullptr)
+    if(vlanstatistics != nullptr)
     {
-        children["vlanStatistics"] = vlanstatistics_;
+        children["vlanStatistics"] = vlanstatistics;
     }
 
-    if(vlantrunkports_ != nullptr)
+    if(vlantrunkports != nullptr)
     {
-        children["vlanTrunkPorts"] = vlantrunkports_;
+        children["vlanTrunkPorts"] = vlantrunkports;
     }
 
-    if(vlantrunkporttable_ != nullptr)
+    if(vlantrunkporttable != nullptr)
     {
-        children["vlanTrunkPortTable"] = vlantrunkporttable_;
+        children["vlanTrunkPortTable"] = vlantrunkporttable;
     }
 
-    if(vtpauthenticationtable_ != nullptr)
+    if(vtpauthenticationtable != nullptr)
     {
-        children["vtpAuthenticationTable"] = vtpauthenticationtable_;
+        children["vtpAuthenticationTable"] = vtpauthenticationtable;
     }
 
-    if(vtpdatabasetable_ != nullptr)
+    if(vtpdatabasetable != nullptr)
     {
-        children["vtpDatabaseTable"] = vtpdatabasetable_;
+        children["vtpDatabaseTable"] = vtpdatabasetable;
     }
 
-    if(vtpdiscoverresulttable_ != nullptr)
+    if(vtpdiscoverresulttable != nullptr)
     {
-        children["vtpDiscoverResultTable"] = vtpdiscoverresulttable_;
+        children["vtpDiscoverResultTable"] = vtpdiscoverresulttable;
     }
 
-    if(vtpdiscovertable_ != nullptr)
+    if(vtpdiscovertable != nullptr)
     {
-        children["vtpDiscoverTable"] = vtpdiscovertable_;
+        children["vtpDiscoverTable"] = vtpdiscovertable;
     }
 
-    if(vtpinternalvlantable_ != nullptr)
+    if(vtpinternalvlantable != nullptr)
     {
-        children["vtpInternalVlanTable"] = vtpinternalvlantable_;
+        children["vtpInternalVlanTable"] = vtpinternalvlantable;
     }
 
-    if(vtpstatus_ != nullptr)
+    if(vtpstatus != nullptr)
     {
-        children["vtpStatus"] = vtpstatus_;
+        children["vtpStatus"] = vtpstatus;
     }
 
-    if(vtpvlanedittable_ != nullptr)
+    if(vtpvlanedittable != nullptr)
     {
-        children["vtpVlanEditTable"] = vtpvlanedittable_;
+        children["vtpVlanEditTable"] = vtpvlanedittable;
     }
 
-    if(vtpvlanlocalshutdowntable_ != nullptr)
+    if(vtpvlanlocalshutdowntable != nullptr)
     {
-        children["vtpVlanLocalShutdownTable"] = vtpvlanlocalshutdowntable_;
+        children["vtpVlanLocalShutdownTable"] = vtpvlanlocalshutdowntable;
     }
 
-    if(vtpvlantable_ != nullptr)
+    if(vtpvlantable != nullptr)
     {
-        children["vtpVlanTable"] = vtpvlantable_;
+        children["vtpVlanTable"] = vtpvlantable;
     }
 
     return children;
 }
 
-void CiscoVtpMib::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoVtpMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -354,6 +360,18 @@ std::string CiscoVtpMib::get_bundle_name() const
 augment_capabilities_function CiscoVtpMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CiscoVtpMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoVtpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "internalVlanInfo" || name == "managementDomainTable" || name == "vlanStatistics" || name == "vlanTrunkPorts" || name == "vlanTrunkPortTable" || name == "vtpAuthenticationTable" || name == "vtpDatabaseTable" || name == "vtpDiscoverResultTable" || name == "vtpDiscoverTable" || name == "vtpInternalVlanTable" || name == "vtpStatus" || name == "vtpVlanEditTable" || name == "vtpVlanLocalShutdownTable" || name == "vtpVlanTable")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpstatus::Vtpstatus()
@@ -382,12 +400,12 @@ bool CiscoVtpMib::Vtpstatus::has_data() const
 
 bool CiscoVtpMib::Vtpstatus::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vtpmaxvlanstorage.operation)
-	|| is_set(vtpnotificationsenabled.operation)
-	|| is_set(vtpversion.operation)
-	|| is_set(vtpvlancreatednotifenabled.operation)
-	|| is_set(vtpvlandeletednotifenabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vtpmaxvlanstorage.yfilter)
+	|| ydk::is_set(vtpnotificationsenabled.yfilter)
+	|| ydk::is_set(vtpversion.yfilter)
+	|| ydk::is_set(vtpvlancreatednotifenabled.yfilter)
+	|| ydk::is_set(vtpvlandeletednotifenabled.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpstatus::get_segment_path() const
@@ -413,11 +431,11 @@ const EntityPath CiscoVtpMib::Vtpstatus::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vtpmaxvlanstorage.is_set || is_set(vtpmaxvlanstorage.operation)) leaf_name_data.push_back(vtpmaxvlanstorage.get_name_leafdata());
-    if (vtpnotificationsenabled.is_set || is_set(vtpnotificationsenabled.operation)) leaf_name_data.push_back(vtpnotificationsenabled.get_name_leafdata());
-    if (vtpversion.is_set || is_set(vtpversion.operation)) leaf_name_data.push_back(vtpversion.get_name_leafdata());
-    if (vtpvlancreatednotifenabled.is_set || is_set(vtpvlancreatednotifenabled.operation)) leaf_name_data.push_back(vtpvlancreatednotifenabled.get_name_leafdata());
-    if (vtpvlandeletednotifenabled.is_set || is_set(vtpvlandeletednotifenabled.operation)) leaf_name_data.push_back(vtpvlandeletednotifenabled.get_name_leafdata());
+    if (vtpmaxvlanstorage.is_set || is_set(vtpmaxvlanstorage.yfilter)) leaf_name_data.push_back(vtpmaxvlanstorage.get_name_leafdata());
+    if (vtpnotificationsenabled.is_set || is_set(vtpnotificationsenabled.yfilter)) leaf_name_data.push_back(vtpnotificationsenabled.get_name_leafdata());
+    if (vtpversion.is_set || is_set(vtpversion.yfilter)) leaf_name_data.push_back(vtpversion.get_name_leafdata());
+    if (vtpvlancreatednotifenabled.is_set || is_set(vtpvlancreatednotifenabled.yfilter)) leaf_name_data.push_back(vtpvlancreatednotifenabled.get_name_leafdata());
+    if (vtpvlandeletednotifenabled.is_set || is_set(vtpvlandeletednotifenabled.yfilter)) leaf_name_data.push_back(vtpvlandeletednotifenabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -436,28 +454,69 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpstatus::get_child
     return children;
 }
 
-void CiscoVtpMib::Vtpstatus::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpstatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vtpMaxVlanStorage")
     {
         vtpmaxvlanstorage = value;
+        vtpmaxvlanstorage.value_namespace = name_space;
+        vtpmaxvlanstorage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpNotificationsEnabled")
     {
         vtpnotificationsenabled = value;
+        vtpnotificationsenabled.value_namespace = name_space;
+        vtpnotificationsenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVersion")
     {
         vtpversion = value;
+        vtpversion.value_namespace = name_space;
+        vtpversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanCreatedNotifEnabled")
     {
         vtpvlancreatednotifenabled = value;
+        vtpvlancreatednotifenabled.value_namespace = name_space;
+        vtpvlancreatednotifenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanDeletedNotifEnabled")
     {
         vtpvlandeletednotifenabled = value;
+        vtpvlandeletednotifenabled.value_namespace = name_space;
+        vtpvlandeletednotifenabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vtpstatus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vtpMaxVlanStorage")
+    {
+        vtpmaxvlanstorage.yfilter = yfilter;
+    }
+    if(value_path == "vtpNotificationsEnabled")
+    {
+        vtpnotificationsenabled.yfilter = yfilter;
+    }
+    if(value_path == "vtpVersion")
+    {
+        vtpversion.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanCreatedNotifEnabled")
+    {
+        vtpvlancreatednotifenabled.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanDeletedNotifEnabled")
+    {
+        vtpvlandeletednotifenabled.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vtpstatus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpMaxVlanStorage" || name == "vtpNotificationsEnabled" || name == "vtpVersion" || name == "vtpVlanCreatedNotifEnabled" || name == "vtpVlanDeletedNotifEnabled")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Internalvlaninfo::Internalvlaninfo()
@@ -478,8 +537,8 @@ bool CiscoVtpMib::Internalvlaninfo::has_data() const
 
 bool CiscoVtpMib::Internalvlaninfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vtpinternalvlanallocpolicy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vtpinternalvlanallocpolicy.yfilter);
 }
 
 std::string CiscoVtpMib::Internalvlaninfo::get_segment_path() const
@@ -505,7 +564,7 @@ const EntityPath CiscoVtpMib::Internalvlaninfo::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vtpinternalvlanallocpolicy.is_set || is_set(vtpinternalvlanallocpolicy.operation)) leaf_name_data.push_back(vtpinternalvlanallocpolicy.get_name_leafdata());
+    if (vtpinternalvlanallocpolicy.is_set || is_set(vtpinternalvlanallocpolicy.yfilter)) leaf_name_data.push_back(vtpinternalvlanallocpolicy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -524,12 +583,29 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Internalvlaninfo::ge
     return children;
 }
 
-void CiscoVtpMib::Internalvlaninfo::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Internalvlaninfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vtpInternalVlanAllocPolicy")
     {
         vtpinternalvlanallocpolicy = value;
+        vtpinternalvlanallocpolicy.value_namespace = name_space;
+        vtpinternalvlanallocpolicy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Internalvlaninfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vtpInternalVlanAllocPolicy")
+    {
+        vtpinternalvlanallocpolicy.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Internalvlaninfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpInternalVlanAllocPolicy")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vlantrunkports::Vlantrunkports()
@@ -552,9 +628,9 @@ bool CiscoVtpMib::Vlantrunkports::has_data() const
 
 bool CiscoVtpMib::Vlantrunkports::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vlantrunkportsdot1qtag.operation)
-	|| is_set(vlantrunkportsetserialno.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vlantrunkportsdot1qtag.yfilter)
+	|| ydk::is_set(vlantrunkportsetserialno.yfilter);
 }
 
 std::string CiscoVtpMib::Vlantrunkports::get_segment_path() const
@@ -580,8 +656,8 @@ const EntityPath CiscoVtpMib::Vlantrunkports::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vlantrunkportsdot1qtag.is_set || is_set(vlantrunkportsdot1qtag.operation)) leaf_name_data.push_back(vlantrunkportsdot1qtag.get_name_leafdata());
-    if (vlantrunkportsetserialno.is_set || is_set(vlantrunkportsetserialno.operation)) leaf_name_data.push_back(vlantrunkportsetserialno.get_name_leafdata());
+    if (vlantrunkportsdot1qtag.is_set || is_set(vlantrunkportsdot1qtag.yfilter)) leaf_name_data.push_back(vlantrunkportsdot1qtag.get_name_leafdata());
+    if (vlantrunkportsetserialno.is_set || is_set(vlantrunkportsetserialno.yfilter)) leaf_name_data.push_back(vlantrunkportsetserialno.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -600,16 +676,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vlantrunkports::get_
     return children;
 }
 
-void CiscoVtpMib::Vlantrunkports::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vlantrunkports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlanTrunkPortsDot1qTag")
     {
         vlantrunkportsdot1qtag = value;
+        vlantrunkportsdot1qtag.value_namespace = name_space;
+        vlantrunkportsdot1qtag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortSetSerialNo")
     {
         vlantrunkportsetserialno = value;
+        vlantrunkportsetserialno.value_namespace = name_space;
+        vlantrunkportsetserialno.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vlantrunkports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlanTrunkPortsDot1qTag")
+    {
+        vlantrunkportsdot1qtag.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortSetSerialNo")
+    {
+        vlantrunkportsetserialno.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vlantrunkports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlanTrunkPortsDot1qTag" || name == "vlanTrunkPortSetSerialNo")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vlanstatistics::Vlanstatistics()
@@ -636,11 +735,11 @@ bool CiscoVtpMib::Vlanstatistics::has_data() const
 
 bool CiscoVtpMib::Vlanstatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vlanstatsextendedvlans.operation)
-	|| is_set(vlanstatsfreevlans.operation)
-	|| is_set(vlanstatsinternalvlans.operation)
-	|| is_set(vlanstatsvlans.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vlanstatsextendedvlans.yfilter)
+	|| ydk::is_set(vlanstatsfreevlans.yfilter)
+	|| ydk::is_set(vlanstatsinternalvlans.yfilter)
+	|| ydk::is_set(vlanstatsvlans.yfilter);
 }
 
 std::string CiscoVtpMib::Vlanstatistics::get_segment_path() const
@@ -666,10 +765,10 @@ const EntityPath CiscoVtpMib::Vlanstatistics::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vlanstatsextendedvlans.is_set || is_set(vlanstatsextendedvlans.operation)) leaf_name_data.push_back(vlanstatsextendedvlans.get_name_leafdata());
-    if (vlanstatsfreevlans.is_set || is_set(vlanstatsfreevlans.operation)) leaf_name_data.push_back(vlanstatsfreevlans.get_name_leafdata());
-    if (vlanstatsinternalvlans.is_set || is_set(vlanstatsinternalvlans.operation)) leaf_name_data.push_back(vlanstatsinternalvlans.get_name_leafdata());
-    if (vlanstatsvlans.is_set || is_set(vlanstatsvlans.operation)) leaf_name_data.push_back(vlanstatsvlans.get_name_leafdata());
+    if (vlanstatsextendedvlans.is_set || is_set(vlanstatsextendedvlans.yfilter)) leaf_name_data.push_back(vlanstatsextendedvlans.get_name_leafdata());
+    if (vlanstatsfreevlans.is_set || is_set(vlanstatsfreevlans.yfilter)) leaf_name_data.push_back(vlanstatsfreevlans.get_name_leafdata());
+    if (vlanstatsinternalvlans.is_set || is_set(vlanstatsinternalvlans.yfilter)) leaf_name_data.push_back(vlanstatsinternalvlans.get_name_leafdata());
+    if (vlanstatsvlans.is_set || is_set(vlanstatsvlans.yfilter)) leaf_name_data.push_back(vlanstatsvlans.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -688,24 +787,59 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vlanstatistics::get_
     return children;
 }
 
-void CiscoVtpMib::Vlanstatistics::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vlanstatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlanStatsExtendedVlans")
     {
         vlanstatsextendedvlans = value;
+        vlanstatsextendedvlans.value_namespace = name_space;
+        vlanstatsextendedvlans.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanStatsFreeVlans")
     {
         vlanstatsfreevlans = value;
+        vlanstatsfreevlans.value_namespace = name_space;
+        vlanstatsfreevlans.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanStatsInternalVlans")
     {
         vlanstatsinternalvlans = value;
+        vlanstatsinternalvlans.value_namespace = name_space;
+        vlanstatsinternalvlans.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanStatsVlans")
     {
         vlanstatsvlans = value;
+        vlanstatsvlans.value_namespace = name_space;
+        vlanstatsvlans.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vlanstatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlanStatsExtendedVlans")
+    {
+        vlanstatsextendedvlans.yfilter = yfilter;
+    }
+    if(value_path == "vlanStatsFreeVlans")
+    {
+        vlanstatsfreevlans.yfilter = yfilter;
+    }
+    if(value_path == "vlanStatsInternalVlans")
+    {
+        vlanstatsinternalvlans.yfilter = yfilter;
+    }
+    if(value_path == "vlanStatsVlans")
+    {
+        vlanstatsvlans.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vlanstatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlanStatsExtendedVlans" || name == "vlanStatsFreeVlans" || name == "vlanStatsInternalVlans" || name == "vlanStatsVlans")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Managementdomaintable::Managementdomaintable()
@@ -719,9 +853,9 @@ CiscoVtpMib::Managementdomaintable::~Managementdomaintable()
 
 bool CiscoVtpMib::Managementdomaintable::has_data() const
 {
-    for (std::size_t index=0; index<managementdomainentry_.size(); index++)
+    for (std::size_t index=0; index<managementdomainentry.size(); index++)
     {
-        if(managementdomainentry_[index]->has_data())
+        if(managementdomainentry[index]->has_data())
             return true;
     }
     return false;
@@ -729,12 +863,12 @@ bool CiscoVtpMib::Managementdomaintable::has_data() const
 
 bool CiscoVtpMib::Managementdomaintable::has_operation() const
 {
-    for (std::size_t index=0; index<managementdomainentry_.size(); index++)
+    for (std::size_t index=0; index<managementdomainentry.size(); index++)
     {
-        if(managementdomainentry_[index]->has_operation())
+        if(managementdomainentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Managementdomaintable::get_segment_path() const
@@ -771,7 +905,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Managementdomaintable::get_child_by_name(co
 {
     if(child_yang_name == "managementDomainEntry")
     {
-        for(auto const & c : managementdomainentry_)
+        for(auto const & c : managementdomainentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -781,7 +915,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Managementdomaintable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoVtpMib::Managementdomaintable::Managementdomainentry>();
         c->parent = this;
-        managementdomainentry_.push_back(c);
+        managementdomainentry.push_back(c);
         return c;
     }
 
@@ -791,7 +925,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Managementdomaintable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Managementdomaintable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : managementdomainentry_)
+    for (auto const & c : managementdomainentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -799,8 +933,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Managementdomaintabl
     return children;
 }
 
-void CiscoVtpMib::Managementdomaintable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Managementdomaintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Managementdomaintable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Managementdomaintable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainentry()
@@ -883,39 +1028,39 @@ bool CiscoVtpMib::Managementdomaintable::Managementdomainentry::has_data() const
 
 bool CiscoVtpMib::Managementdomaintable::Managementdomainentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(managementdomainadminsrcif.operation)
-	|| is_set(managementdomainconfigfile.operation)
-	|| is_set(managementdomainconfigrevnumber.operation)
-	|| is_set(managementdomaindeviceid.operation)
-	|| is_set(managementdomainlastchange.operation)
-	|| is_set(managementdomainlastupdater.operation)
-	|| is_set(managementdomainlocalmode.operation)
-	|| is_set(managementdomainlocalupdater.operation)
-	|| is_set(managementdomainlocalupdatertype.operation)
-	|| is_set(managementdomainname.operation)
-	|| is_set(managementdomainopersrcif.operation)
-	|| is_set(managementdomainpruningstate.operation)
-	|| is_set(managementdomainpruningstateoper.operation)
-	|| is_set(managementdomainrowstatus.operation)
-	|| is_set(managementdomainsourceonlymode.operation)
-	|| is_set(managementdomaintftppathname.operation)
-	|| is_set(managementdomaintftpserver.operation)
-	|| is_set(managementdomainversioninuse.operation)
-	|| is_set(vtpconfigdigesterrors.operation)
-	|| is_set(vtpconfigrevnumbererrors.operation)
-	|| is_set(vtpinadvertrequests.operation)
-	|| is_set(vtpinsubsetadverts.operation)
-	|| is_set(vtpinsummaryadverts.operation)
-	|| is_set(vtpoutadvertrequests.operation)
-	|| is_set(vtpoutsubsetadverts.operation)
-	|| is_set(vtpoutsummaryadverts.operation)
-	|| is_set(vtpvlanapplystatus.operation)
-	|| is_set(vtpvlaneditbufferowner.operation)
-	|| is_set(vtpvlaneditconfigrevnumber.operation)
-	|| is_set(vtpvlaneditmodifiedvlan.operation)
-	|| is_set(vtpvlaneditoperation.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(managementdomainadminsrcif.yfilter)
+	|| ydk::is_set(managementdomainconfigfile.yfilter)
+	|| ydk::is_set(managementdomainconfigrevnumber.yfilter)
+	|| ydk::is_set(managementdomaindeviceid.yfilter)
+	|| ydk::is_set(managementdomainlastchange.yfilter)
+	|| ydk::is_set(managementdomainlastupdater.yfilter)
+	|| ydk::is_set(managementdomainlocalmode.yfilter)
+	|| ydk::is_set(managementdomainlocalupdater.yfilter)
+	|| ydk::is_set(managementdomainlocalupdatertype.yfilter)
+	|| ydk::is_set(managementdomainname.yfilter)
+	|| ydk::is_set(managementdomainopersrcif.yfilter)
+	|| ydk::is_set(managementdomainpruningstate.yfilter)
+	|| ydk::is_set(managementdomainpruningstateoper.yfilter)
+	|| ydk::is_set(managementdomainrowstatus.yfilter)
+	|| ydk::is_set(managementdomainsourceonlymode.yfilter)
+	|| ydk::is_set(managementdomaintftppathname.yfilter)
+	|| ydk::is_set(managementdomaintftpserver.yfilter)
+	|| ydk::is_set(managementdomainversioninuse.yfilter)
+	|| ydk::is_set(vtpconfigdigesterrors.yfilter)
+	|| ydk::is_set(vtpconfigrevnumbererrors.yfilter)
+	|| ydk::is_set(vtpinadvertrequests.yfilter)
+	|| ydk::is_set(vtpinsubsetadverts.yfilter)
+	|| ydk::is_set(vtpinsummaryadverts.yfilter)
+	|| ydk::is_set(vtpoutadvertrequests.yfilter)
+	|| ydk::is_set(vtpoutsubsetadverts.yfilter)
+	|| ydk::is_set(vtpoutsummaryadverts.yfilter)
+	|| ydk::is_set(vtpvlanapplystatus.yfilter)
+	|| ydk::is_set(vtpvlaneditbufferowner.yfilter)
+	|| ydk::is_set(vtpvlaneditconfigrevnumber.yfilter)
+	|| ydk::is_set(vtpvlaneditmodifiedvlan.yfilter)
+	|| ydk::is_set(vtpvlaneditoperation.yfilter);
 }
 
 std::string CiscoVtpMib::Managementdomaintable::Managementdomainentry::get_segment_path() const
@@ -941,38 +1086,38 @@ const EntityPath CiscoVtpMib::Managementdomaintable::Managementdomainentry::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (managementdomainadminsrcif.is_set || is_set(managementdomainadminsrcif.operation)) leaf_name_data.push_back(managementdomainadminsrcif.get_name_leafdata());
-    if (managementdomainconfigfile.is_set || is_set(managementdomainconfigfile.operation)) leaf_name_data.push_back(managementdomainconfigfile.get_name_leafdata());
-    if (managementdomainconfigrevnumber.is_set || is_set(managementdomainconfigrevnumber.operation)) leaf_name_data.push_back(managementdomainconfigrevnumber.get_name_leafdata());
-    if (managementdomaindeviceid.is_set || is_set(managementdomaindeviceid.operation)) leaf_name_data.push_back(managementdomaindeviceid.get_name_leafdata());
-    if (managementdomainlastchange.is_set || is_set(managementdomainlastchange.operation)) leaf_name_data.push_back(managementdomainlastchange.get_name_leafdata());
-    if (managementdomainlastupdater.is_set || is_set(managementdomainlastupdater.operation)) leaf_name_data.push_back(managementdomainlastupdater.get_name_leafdata());
-    if (managementdomainlocalmode.is_set || is_set(managementdomainlocalmode.operation)) leaf_name_data.push_back(managementdomainlocalmode.get_name_leafdata());
-    if (managementdomainlocalupdater.is_set || is_set(managementdomainlocalupdater.operation)) leaf_name_data.push_back(managementdomainlocalupdater.get_name_leafdata());
-    if (managementdomainlocalupdatertype.is_set || is_set(managementdomainlocalupdatertype.operation)) leaf_name_data.push_back(managementdomainlocalupdatertype.get_name_leafdata());
-    if (managementdomainname.is_set || is_set(managementdomainname.operation)) leaf_name_data.push_back(managementdomainname.get_name_leafdata());
-    if (managementdomainopersrcif.is_set || is_set(managementdomainopersrcif.operation)) leaf_name_data.push_back(managementdomainopersrcif.get_name_leafdata());
-    if (managementdomainpruningstate.is_set || is_set(managementdomainpruningstate.operation)) leaf_name_data.push_back(managementdomainpruningstate.get_name_leafdata());
-    if (managementdomainpruningstateoper.is_set || is_set(managementdomainpruningstateoper.operation)) leaf_name_data.push_back(managementdomainpruningstateoper.get_name_leafdata());
-    if (managementdomainrowstatus.is_set || is_set(managementdomainrowstatus.operation)) leaf_name_data.push_back(managementdomainrowstatus.get_name_leafdata());
-    if (managementdomainsourceonlymode.is_set || is_set(managementdomainsourceonlymode.operation)) leaf_name_data.push_back(managementdomainsourceonlymode.get_name_leafdata());
-    if (managementdomaintftppathname.is_set || is_set(managementdomaintftppathname.operation)) leaf_name_data.push_back(managementdomaintftppathname.get_name_leafdata());
-    if (managementdomaintftpserver.is_set || is_set(managementdomaintftpserver.operation)) leaf_name_data.push_back(managementdomaintftpserver.get_name_leafdata());
-    if (managementdomainversioninuse.is_set || is_set(managementdomainversioninuse.operation)) leaf_name_data.push_back(managementdomainversioninuse.get_name_leafdata());
-    if (vtpconfigdigesterrors.is_set || is_set(vtpconfigdigesterrors.operation)) leaf_name_data.push_back(vtpconfigdigesterrors.get_name_leafdata());
-    if (vtpconfigrevnumbererrors.is_set || is_set(vtpconfigrevnumbererrors.operation)) leaf_name_data.push_back(vtpconfigrevnumbererrors.get_name_leafdata());
-    if (vtpinadvertrequests.is_set || is_set(vtpinadvertrequests.operation)) leaf_name_data.push_back(vtpinadvertrequests.get_name_leafdata());
-    if (vtpinsubsetadverts.is_set || is_set(vtpinsubsetadverts.operation)) leaf_name_data.push_back(vtpinsubsetadverts.get_name_leafdata());
-    if (vtpinsummaryadverts.is_set || is_set(vtpinsummaryadverts.operation)) leaf_name_data.push_back(vtpinsummaryadverts.get_name_leafdata());
-    if (vtpoutadvertrequests.is_set || is_set(vtpoutadvertrequests.operation)) leaf_name_data.push_back(vtpoutadvertrequests.get_name_leafdata());
-    if (vtpoutsubsetadverts.is_set || is_set(vtpoutsubsetadverts.operation)) leaf_name_data.push_back(vtpoutsubsetadverts.get_name_leafdata());
-    if (vtpoutsummaryadverts.is_set || is_set(vtpoutsummaryadverts.operation)) leaf_name_data.push_back(vtpoutsummaryadverts.get_name_leafdata());
-    if (vtpvlanapplystatus.is_set || is_set(vtpvlanapplystatus.operation)) leaf_name_data.push_back(vtpvlanapplystatus.get_name_leafdata());
-    if (vtpvlaneditbufferowner.is_set || is_set(vtpvlaneditbufferowner.operation)) leaf_name_data.push_back(vtpvlaneditbufferowner.get_name_leafdata());
-    if (vtpvlaneditconfigrevnumber.is_set || is_set(vtpvlaneditconfigrevnumber.operation)) leaf_name_data.push_back(vtpvlaneditconfigrevnumber.get_name_leafdata());
-    if (vtpvlaneditmodifiedvlan.is_set || is_set(vtpvlaneditmodifiedvlan.operation)) leaf_name_data.push_back(vtpvlaneditmodifiedvlan.get_name_leafdata());
-    if (vtpvlaneditoperation.is_set || is_set(vtpvlaneditoperation.operation)) leaf_name_data.push_back(vtpvlaneditoperation.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (managementdomainadminsrcif.is_set || is_set(managementdomainadminsrcif.yfilter)) leaf_name_data.push_back(managementdomainadminsrcif.get_name_leafdata());
+    if (managementdomainconfigfile.is_set || is_set(managementdomainconfigfile.yfilter)) leaf_name_data.push_back(managementdomainconfigfile.get_name_leafdata());
+    if (managementdomainconfigrevnumber.is_set || is_set(managementdomainconfigrevnumber.yfilter)) leaf_name_data.push_back(managementdomainconfigrevnumber.get_name_leafdata());
+    if (managementdomaindeviceid.is_set || is_set(managementdomaindeviceid.yfilter)) leaf_name_data.push_back(managementdomaindeviceid.get_name_leafdata());
+    if (managementdomainlastchange.is_set || is_set(managementdomainlastchange.yfilter)) leaf_name_data.push_back(managementdomainlastchange.get_name_leafdata());
+    if (managementdomainlastupdater.is_set || is_set(managementdomainlastupdater.yfilter)) leaf_name_data.push_back(managementdomainlastupdater.get_name_leafdata());
+    if (managementdomainlocalmode.is_set || is_set(managementdomainlocalmode.yfilter)) leaf_name_data.push_back(managementdomainlocalmode.get_name_leafdata());
+    if (managementdomainlocalupdater.is_set || is_set(managementdomainlocalupdater.yfilter)) leaf_name_data.push_back(managementdomainlocalupdater.get_name_leafdata());
+    if (managementdomainlocalupdatertype.is_set || is_set(managementdomainlocalupdatertype.yfilter)) leaf_name_data.push_back(managementdomainlocalupdatertype.get_name_leafdata());
+    if (managementdomainname.is_set || is_set(managementdomainname.yfilter)) leaf_name_data.push_back(managementdomainname.get_name_leafdata());
+    if (managementdomainopersrcif.is_set || is_set(managementdomainopersrcif.yfilter)) leaf_name_data.push_back(managementdomainopersrcif.get_name_leafdata());
+    if (managementdomainpruningstate.is_set || is_set(managementdomainpruningstate.yfilter)) leaf_name_data.push_back(managementdomainpruningstate.get_name_leafdata());
+    if (managementdomainpruningstateoper.is_set || is_set(managementdomainpruningstateoper.yfilter)) leaf_name_data.push_back(managementdomainpruningstateoper.get_name_leafdata());
+    if (managementdomainrowstatus.is_set || is_set(managementdomainrowstatus.yfilter)) leaf_name_data.push_back(managementdomainrowstatus.get_name_leafdata());
+    if (managementdomainsourceonlymode.is_set || is_set(managementdomainsourceonlymode.yfilter)) leaf_name_data.push_back(managementdomainsourceonlymode.get_name_leafdata());
+    if (managementdomaintftppathname.is_set || is_set(managementdomaintftppathname.yfilter)) leaf_name_data.push_back(managementdomaintftppathname.get_name_leafdata());
+    if (managementdomaintftpserver.is_set || is_set(managementdomaintftpserver.yfilter)) leaf_name_data.push_back(managementdomaintftpserver.get_name_leafdata());
+    if (managementdomainversioninuse.is_set || is_set(managementdomainversioninuse.yfilter)) leaf_name_data.push_back(managementdomainversioninuse.get_name_leafdata());
+    if (vtpconfigdigesterrors.is_set || is_set(vtpconfigdigesterrors.yfilter)) leaf_name_data.push_back(vtpconfigdigesterrors.get_name_leafdata());
+    if (vtpconfigrevnumbererrors.is_set || is_set(vtpconfigrevnumbererrors.yfilter)) leaf_name_data.push_back(vtpconfigrevnumbererrors.get_name_leafdata());
+    if (vtpinadvertrequests.is_set || is_set(vtpinadvertrequests.yfilter)) leaf_name_data.push_back(vtpinadvertrequests.get_name_leafdata());
+    if (vtpinsubsetadverts.is_set || is_set(vtpinsubsetadverts.yfilter)) leaf_name_data.push_back(vtpinsubsetadverts.get_name_leafdata());
+    if (vtpinsummaryadverts.is_set || is_set(vtpinsummaryadverts.yfilter)) leaf_name_data.push_back(vtpinsummaryadverts.get_name_leafdata());
+    if (vtpoutadvertrequests.is_set || is_set(vtpoutadvertrequests.yfilter)) leaf_name_data.push_back(vtpoutadvertrequests.get_name_leafdata());
+    if (vtpoutsubsetadverts.is_set || is_set(vtpoutsubsetadverts.yfilter)) leaf_name_data.push_back(vtpoutsubsetadverts.get_name_leafdata());
+    if (vtpoutsummaryadverts.is_set || is_set(vtpoutsummaryadverts.yfilter)) leaf_name_data.push_back(vtpoutsummaryadverts.get_name_leafdata());
+    if (vtpvlanapplystatus.is_set || is_set(vtpvlanapplystatus.yfilter)) leaf_name_data.push_back(vtpvlanapplystatus.get_name_leafdata());
+    if (vtpvlaneditbufferowner.is_set || is_set(vtpvlaneditbufferowner.yfilter)) leaf_name_data.push_back(vtpvlaneditbufferowner.get_name_leafdata());
+    if (vtpvlaneditconfigrevnumber.is_set || is_set(vtpvlaneditconfigrevnumber.yfilter)) leaf_name_data.push_back(vtpvlaneditconfigrevnumber.get_name_leafdata());
+    if (vtpvlaneditmodifiedvlan.is_set || is_set(vtpvlaneditmodifiedvlan.yfilter)) leaf_name_data.push_back(vtpvlaneditmodifiedvlan.get_name_leafdata());
+    if (vtpvlaneditoperation.is_set || is_set(vtpvlaneditoperation.yfilter)) leaf_name_data.push_back(vtpvlaneditoperation.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -991,136 +1136,339 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Managementdomaintabl
     return children;
 }
 
-void CiscoVtpMib::Managementdomaintable::Managementdomainentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Managementdomaintable::Managementdomainentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainAdminSrcIf")
     {
         managementdomainadminsrcif = value;
+        managementdomainadminsrcif.value_namespace = name_space;
+        managementdomainadminsrcif.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainConfigFile")
     {
         managementdomainconfigfile = value;
+        managementdomainconfigfile.value_namespace = name_space;
+        managementdomainconfigfile.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainConfigRevNumber")
     {
         managementdomainconfigrevnumber = value;
+        managementdomainconfigrevnumber.value_namespace = name_space;
+        managementdomainconfigrevnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainDeviceID")
     {
         managementdomaindeviceid = value;
+        managementdomaindeviceid.value_namespace = name_space;
+        managementdomaindeviceid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainLastChange")
     {
         managementdomainlastchange = value;
+        managementdomainlastchange.value_namespace = name_space;
+        managementdomainlastchange.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainLastUpdater")
     {
         managementdomainlastupdater = value;
+        managementdomainlastupdater.value_namespace = name_space;
+        managementdomainlastupdater.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainLocalMode")
     {
         managementdomainlocalmode = value;
+        managementdomainlocalmode.value_namespace = name_space;
+        managementdomainlocalmode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainLocalUpdater")
     {
         managementdomainlocalupdater = value;
+        managementdomainlocalupdater.value_namespace = name_space;
+        managementdomainlocalupdater.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainLocalUpdaterType")
     {
         managementdomainlocalupdatertype = value;
+        managementdomainlocalupdatertype.value_namespace = name_space;
+        managementdomainlocalupdatertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainName")
     {
         managementdomainname = value;
+        managementdomainname.value_namespace = name_space;
+        managementdomainname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainOperSrcIf")
     {
         managementdomainopersrcif = value;
+        managementdomainopersrcif.value_namespace = name_space;
+        managementdomainopersrcif.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainPruningState")
     {
         managementdomainpruningstate = value;
+        managementdomainpruningstate.value_namespace = name_space;
+        managementdomainpruningstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainPruningStateOper")
     {
         managementdomainpruningstateoper = value;
+        managementdomainpruningstateoper.value_namespace = name_space;
+        managementdomainpruningstateoper.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainRowStatus")
     {
         managementdomainrowstatus = value;
+        managementdomainrowstatus.value_namespace = name_space;
+        managementdomainrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainSourceOnlyMode")
     {
         managementdomainsourceonlymode = value;
+        managementdomainsourceonlymode.value_namespace = name_space;
+        managementdomainsourceonlymode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainTftpPathname")
     {
         managementdomaintftppathname = value;
+        managementdomaintftppathname.value_namespace = name_space;
+        managementdomaintftppathname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainTftpServer")
     {
         managementdomaintftpserver = value;
+        managementdomaintftpserver.value_namespace = name_space;
+        managementdomaintftpserver.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "managementDomainVersionInUse")
     {
         managementdomainversioninuse = value;
+        managementdomainversioninuse.value_namespace = name_space;
+        managementdomainversioninuse.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpConfigDigestErrors")
     {
         vtpconfigdigesterrors = value;
+        vtpconfigdigesterrors.value_namespace = name_space;
+        vtpconfigdigesterrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpConfigRevNumberErrors")
     {
         vtpconfigrevnumbererrors = value;
+        vtpconfigrevnumbererrors.value_namespace = name_space;
+        vtpconfigrevnumbererrors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpInAdvertRequests")
     {
         vtpinadvertrequests = value;
+        vtpinadvertrequests.value_namespace = name_space;
+        vtpinadvertrequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpInSubsetAdverts")
     {
         vtpinsubsetadverts = value;
+        vtpinsubsetadverts.value_namespace = name_space;
+        vtpinsubsetadverts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpInSummaryAdverts")
     {
         vtpinsummaryadverts = value;
+        vtpinsummaryadverts.value_namespace = name_space;
+        vtpinsummaryadverts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpOutAdvertRequests")
     {
         vtpoutadvertrequests = value;
+        vtpoutadvertrequests.value_namespace = name_space;
+        vtpoutadvertrequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpOutSubsetAdverts")
     {
         vtpoutsubsetadverts = value;
+        vtpoutsubsetadverts.value_namespace = name_space;
+        vtpoutsubsetadverts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpOutSummaryAdverts")
     {
         vtpoutsummaryadverts = value;
+        vtpoutsummaryadverts.value_namespace = name_space;
+        vtpoutsummaryadverts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanApplyStatus")
     {
         vtpvlanapplystatus = value;
+        vtpvlanapplystatus.value_namespace = name_space;
+        vtpvlanapplystatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditBufferOwner")
     {
         vtpvlaneditbufferowner = value;
+        vtpvlaneditbufferowner.value_namespace = name_space;
+        vtpvlaneditbufferowner.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditConfigRevNumber")
     {
         vtpvlaneditconfigrevnumber = value;
+        vtpvlaneditconfigrevnumber.value_namespace = name_space;
+        vtpvlaneditconfigrevnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditModifiedVlan")
     {
         vtpvlaneditmodifiedvlan = value;
+        vtpvlaneditmodifiedvlan.value_namespace = name_space;
+        vtpvlaneditmodifiedvlan.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditOperation")
     {
         vtpvlaneditoperation = value;
+        vtpvlaneditoperation.value_namespace = name_space;
+        vtpvlaneditoperation.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Managementdomaintable::Managementdomainentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainAdminSrcIf")
+    {
+        managementdomainadminsrcif.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainConfigFile")
+    {
+        managementdomainconfigfile.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainConfigRevNumber")
+    {
+        managementdomainconfigrevnumber.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainDeviceID")
+    {
+        managementdomaindeviceid.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainLastChange")
+    {
+        managementdomainlastchange.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainLastUpdater")
+    {
+        managementdomainlastupdater.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainLocalMode")
+    {
+        managementdomainlocalmode.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainLocalUpdater")
+    {
+        managementdomainlocalupdater.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainLocalUpdaterType")
+    {
+        managementdomainlocalupdatertype.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainName")
+    {
+        managementdomainname.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainOperSrcIf")
+    {
+        managementdomainopersrcif.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainPruningState")
+    {
+        managementdomainpruningstate.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainPruningStateOper")
+    {
+        managementdomainpruningstateoper.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainRowStatus")
+    {
+        managementdomainrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainSourceOnlyMode")
+    {
+        managementdomainsourceonlymode.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainTftpPathname")
+    {
+        managementdomaintftppathname.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainTftpServer")
+    {
+        managementdomaintftpserver.yfilter = yfilter;
+    }
+    if(value_path == "managementDomainVersionInUse")
+    {
+        managementdomainversioninuse.yfilter = yfilter;
+    }
+    if(value_path == "vtpConfigDigestErrors")
+    {
+        vtpconfigdigesterrors.yfilter = yfilter;
+    }
+    if(value_path == "vtpConfigRevNumberErrors")
+    {
+        vtpconfigrevnumbererrors.yfilter = yfilter;
+    }
+    if(value_path == "vtpInAdvertRequests")
+    {
+        vtpinadvertrequests.yfilter = yfilter;
+    }
+    if(value_path == "vtpInSubsetAdverts")
+    {
+        vtpinsubsetadverts.yfilter = yfilter;
+    }
+    if(value_path == "vtpInSummaryAdverts")
+    {
+        vtpinsummaryadverts.yfilter = yfilter;
+    }
+    if(value_path == "vtpOutAdvertRequests")
+    {
+        vtpoutadvertrequests.yfilter = yfilter;
+    }
+    if(value_path == "vtpOutSubsetAdverts")
+    {
+        vtpoutsubsetadverts.yfilter = yfilter;
+    }
+    if(value_path == "vtpOutSummaryAdverts")
+    {
+        vtpoutsummaryadverts.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanApplyStatus")
+    {
+        vtpvlanapplystatus.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditBufferOwner")
+    {
+        vtpvlaneditbufferowner.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditConfigRevNumber")
+    {
+        vtpvlaneditconfigrevnumber.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditModifiedVlan")
+    {
+        vtpvlaneditmodifiedvlan.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditOperation")
+    {
+        vtpvlaneditoperation.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Managementdomaintable::Managementdomainentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "managementDomainAdminSrcIf" || name == "managementDomainConfigFile" || name == "managementDomainConfigRevNumber" || name == "managementDomainDeviceID" || name == "managementDomainLastChange" || name == "managementDomainLastUpdater" || name == "managementDomainLocalMode" || name == "managementDomainLocalUpdater" || name == "managementDomainLocalUpdaterType" || name == "managementDomainName" || name == "managementDomainOperSrcIf" || name == "managementDomainPruningState" || name == "managementDomainPruningStateOper" || name == "managementDomainRowStatus" || name == "managementDomainSourceOnlyMode" || name == "managementDomainTftpPathname" || name == "managementDomainTftpServer" || name == "managementDomainVersionInUse" || name == "vtpConfigDigestErrors" || name == "vtpConfigRevNumberErrors" || name == "vtpInAdvertRequests" || name == "vtpInSubsetAdverts" || name == "vtpInSummaryAdverts" || name == "vtpOutAdvertRequests" || name == "vtpOutSubsetAdverts" || name == "vtpOutSummaryAdverts" || name == "vtpVlanApplyStatus" || name == "vtpVlanEditBufferOwner" || name == "vtpVlanEditConfigRevNumber" || name == "vtpVlanEditModifiedVlan" || name == "vtpVlanEditOperation")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpvlantable::Vtpvlantable()
@@ -1134,9 +1482,9 @@ CiscoVtpMib::Vtpvlantable::~Vtpvlantable()
 
 bool CiscoVtpMib::Vtpvlantable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlanentry_.size(); index++)
+    for (std::size_t index=0; index<vtpvlanentry.size(); index++)
     {
-        if(vtpvlanentry_[index]->has_data())
+        if(vtpvlanentry[index]->has_data())
             return true;
     }
     return false;
@@ -1144,12 +1492,12 @@ bool CiscoVtpMib::Vtpvlantable::has_data() const
 
 bool CiscoVtpMib::Vtpvlantable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlanentry_.size(); index++)
+    for (std::size_t index=0; index<vtpvlanentry.size(); index++)
     {
-        if(vtpvlanentry_[index]->has_operation())
+        if(vtpvlanentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vtpvlantable::get_segment_path() const
@@ -1186,7 +1534,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlantable::get_child_by_name(const std::
 {
     if(child_yang_name == "vtpVlanEntry")
     {
-        for(auto const & c : vtpvlanentry_)
+        for(auto const & c : vtpvlanentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1196,7 +1544,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlantable::get_child_by_name(const std::
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpvlantable::Vtpvlanentry>();
         c->parent = this;
-        vtpvlanentry_.push_back(c);
+        vtpvlanentry.push_back(c);
         return c;
     }
 
@@ -1206,7 +1554,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlantable::get_child_by_name(const std::
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpvlanentry_)
+    for (auto const & c : vtpvlanentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1214,8 +1562,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlantable::get_ch
     return children;
 }
 
-void CiscoVtpMib::Vtpvlantable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpvlantable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vtpvlantable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vtpvlantable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpVlanEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanentry()
@@ -1274,27 +1633,27 @@ bool CiscoVtpMib::Vtpvlantable::Vtpvlanentry::has_data() const
 
 bool CiscoVtpMib::Vtpvlantable::Vtpvlanentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(vtpvlanindex.operation)
-	|| is_set(stpxvlanmistpinstmapinstindex.operation)
-	|| is_set(vtpvlanarehopcount.operation)
-	|| is_set(vtpvlanbridgenumber.operation)
-	|| is_set(vtpvlanbridgetype.operation)
-	|| is_set(vtpvlandot10said.operation)
-	|| is_set(vtpvlanifindex.operation)
-	|| is_set(vtpvlaniscrfbackup.operation)
-	|| is_set(vtpvlanmtu.operation)
-	|| is_set(vtpvlanname.operation)
-	|| is_set(vtpvlanparentvlan.operation)
-	|| is_set(vtpvlanringnumber.operation)
-	|| is_set(vtpvlanstate.operation)
-	|| is_set(vtpvlanstehopcount.operation)
-	|| is_set(vtpvlanstptype.operation)
-	|| is_set(vtpvlantranslationalvlan1.operation)
-	|| is_set(vtpvlantranslationalvlan2.operation)
-	|| is_set(vtpvlantype.operation)
-	|| is_set(vtpvlantypeext.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(vtpvlanindex.yfilter)
+	|| ydk::is_set(stpxvlanmistpinstmapinstindex.yfilter)
+	|| ydk::is_set(vtpvlanarehopcount.yfilter)
+	|| ydk::is_set(vtpvlanbridgenumber.yfilter)
+	|| ydk::is_set(vtpvlanbridgetype.yfilter)
+	|| ydk::is_set(vtpvlandot10said.yfilter)
+	|| ydk::is_set(vtpvlanifindex.yfilter)
+	|| ydk::is_set(vtpvlaniscrfbackup.yfilter)
+	|| ydk::is_set(vtpvlanmtu.yfilter)
+	|| ydk::is_set(vtpvlanname.yfilter)
+	|| ydk::is_set(vtpvlanparentvlan.yfilter)
+	|| ydk::is_set(vtpvlanringnumber.yfilter)
+	|| ydk::is_set(vtpvlanstate.yfilter)
+	|| ydk::is_set(vtpvlanstehopcount.yfilter)
+	|| ydk::is_set(vtpvlanstptype.yfilter)
+	|| ydk::is_set(vtpvlantranslationalvlan1.yfilter)
+	|| ydk::is_set(vtpvlantranslationalvlan2.yfilter)
+	|| ydk::is_set(vtpvlantype.yfilter)
+	|| ydk::is_set(vtpvlantypeext.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpvlantable::Vtpvlanentry::get_segment_path() const
@@ -1320,26 +1679,26 @@ const EntityPath CiscoVtpMib::Vtpvlantable::Vtpvlanentry::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (vtpvlanindex.is_set || is_set(vtpvlanindex.operation)) leaf_name_data.push_back(vtpvlanindex.get_name_leafdata());
-    if (stpxvlanmistpinstmapinstindex.is_set || is_set(stpxvlanmistpinstmapinstindex.operation)) leaf_name_data.push_back(stpxvlanmistpinstmapinstindex.get_name_leafdata());
-    if (vtpvlanarehopcount.is_set || is_set(vtpvlanarehopcount.operation)) leaf_name_data.push_back(vtpvlanarehopcount.get_name_leafdata());
-    if (vtpvlanbridgenumber.is_set || is_set(vtpvlanbridgenumber.operation)) leaf_name_data.push_back(vtpvlanbridgenumber.get_name_leafdata());
-    if (vtpvlanbridgetype.is_set || is_set(vtpvlanbridgetype.operation)) leaf_name_data.push_back(vtpvlanbridgetype.get_name_leafdata());
-    if (vtpvlandot10said.is_set || is_set(vtpvlandot10said.operation)) leaf_name_data.push_back(vtpvlandot10said.get_name_leafdata());
-    if (vtpvlanifindex.is_set || is_set(vtpvlanifindex.operation)) leaf_name_data.push_back(vtpvlanifindex.get_name_leafdata());
-    if (vtpvlaniscrfbackup.is_set || is_set(vtpvlaniscrfbackup.operation)) leaf_name_data.push_back(vtpvlaniscrfbackup.get_name_leafdata());
-    if (vtpvlanmtu.is_set || is_set(vtpvlanmtu.operation)) leaf_name_data.push_back(vtpvlanmtu.get_name_leafdata());
-    if (vtpvlanname.is_set || is_set(vtpvlanname.operation)) leaf_name_data.push_back(vtpvlanname.get_name_leafdata());
-    if (vtpvlanparentvlan.is_set || is_set(vtpvlanparentvlan.operation)) leaf_name_data.push_back(vtpvlanparentvlan.get_name_leafdata());
-    if (vtpvlanringnumber.is_set || is_set(vtpvlanringnumber.operation)) leaf_name_data.push_back(vtpvlanringnumber.get_name_leafdata());
-    if (vtpvlanstate.is_set || is_set(vtpvlanstate.operation)) leaf_name_data.push_back(vtpvlanstate.get_name_leafdata());
-    if (vtpvlanstehopcount.is_set || is_set(vtpvlanstehopcount.operation)) leaf_name_data.push_back(vtpvlanstehopcount.get_name_leafdata());
-    if (vtpvlanstptype.is_set || is_set(vtpvlanstptype.operation)) leaf_name_data.push_back(vtpvlanstptype.get_name_leafdata());
-    if (vtpvlantranslationalvlan1.is_set || is_set(vtpvlantranslationalvlan1.operation)) leaf_name_data.push_back(vtpvlantranslationalvlan1.get_name_leafdata());
-    if (vtpvlantranslationalvlan2.is_set || is_set(vtpvlantranslationalvlan2.operation)) leaf_name_data.push_back(vtpvlantranslationalvlan2.get_name_leafdata());
-    if (vtpvlantype.is_set || is_set(vtpvlantype.operation)) leaf_name_data.push_back(vtpvlantype.get_name_leafdata());
-    if (vtpvlantypeext.is_set || is_set(vtpvlantypeext.operation)) leaf_name_data.push_back(vtpvlantypeext.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (vtpvlanindex.is_set || is_set(vtpvlanindex.yfilter)) leaf_name_data.push_back(vtpvlanindex.get_name_leafdata());
+    if (stpxvlanmistpinstmapinstindex.is_set || is_set(stpxvlanmistpinstmapinstindex.yfilter)) leaf_name_data.push_back(stpxvlanmistpinstmapinstindex.get_name_leafdata());
+    if (vtpvlanarehopcount.is_set || is_set(vtpvlanarehopcount.yfilter)) leaf_name_data.push_back(vtpvlanarehopcount.get_name_leafdata());
+    if (vtpvlanbridgenumber.is_set || is_set(vtpvlanbridgenumber.yfilter)) leaf_name_data.push_back(vtpvlanbridgenumber.get_name_leafdata());
+    if (vtpvlanbridgetype.is_set || is_set(vtpvlanbridgetype.yfilter)) leaf_name_data.push_back(vtpvlanbridgetype.get_name_leafdata());
+    if (vtpvlandot10said.is_set || is_set(vtpvlandot10said.yfilter)) leaf_name_data.push_back(vtpvlandot10said.get_name_leafdata());
+    if (vtpvlanifindex.is_set || is_set(vtpvlanifindex.yfilter)) leaf_name_data.push_back(vtpvlanifindex.get_name_leafdata());
+    if (vtpvlaniscrfbackup.is_set || is_set(vtpvlaniscrfbackup.yfilter)) leaf_name_data.push_back(vtpvlaniscrfbackup.get_name_leafdata());
+    if (vtpvlanmtu.is_set || is_set(vtpvlanmtu.yfilter)) leaf_name_data.push_back(vtpvlanmtu.get_name_leafdata());
+    if (vtpvlanname.is_set || is_set(vtpvlanname.yfilter)) leaf_name_data.push_back(vtpvlanname.get_name_leafdata());
+    if (vtpvlanparentvlan.is_set || is_set(vtpvlanparentvlan.yfilter)) leaf_name_data.push_back(vtpvlanparentvlan.get_name_leafdata());
+    if (vtpvlanringnumber.is_set || is_set(vtpvlanringnumber.yfilter)) leaf_name_data.push_back(vtpvlanringnumber.get_name_leafdata());
+    if (vtpvlanstate.is_set || is_set(vtpvlanstate.yfilter)) leaf_name_data.push_back(vtpvlanstate.get_name_leafdata());
+    if (vtpvlanstehopcount.is_set || is_set(vtpvlanstehopcount.yfilter)) leaf_name_data.push_back(vtpvlanstehopcount.get_name_leafdata());
+    if (vtpvlanstptype.is_set || is_set(vtpvlanstptype.yfilter)) leaf_name_data.push_back(vtpvlanstptype.get_name_leafdata());
+    if (vtpvlantranslationalvlan1.is_set || is_set(vtpvlantranslationalvlan1.yfilter)) leaf_name_data.push_back(vtpvlantranslationalvlan1.get_name_leafdata());
+    if (vtpvlantranslationalvlan2.is_set || is_set(vtpvlantranslationalvlan2.yfilter)) leaf_name_data.push_back(vtpvlantranslationalvlan2.get_name_leafdata());
+    if (vtpvlantype.is_set || is_set(vtpvlantype.yfilter)) leaf_name_data.push_back(vtpvlantype.get_name_leafdata());
+    if (vtpvlantypeext.is_set || is_set(vtpvlantypeext.yfilter)) leaf_name_data.push_back(vtpvlantypeext.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1358,88 +1717,217 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlantable::Vtpvla
     return children;
 }
 
-void CiscoVtpMib::Vtpvlantable::Vtpvlanentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpvlantable::Vtpvlanentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanIndex")
     {
         vtpvlanindex = value;
+        vtpvlanindex.value_namespace = name_space;
+        vtpvlanindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stpxVlanMISTPInstMapInstIndex")
     {
         stpxvlanmistpinstmapinstindex = value;
+        stpxvlanmistpinstmapinstindex.value_namespace = name_space;
+        stpxvlanmistpinstmapinstindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanAreHopCount")
     {
         vtpvlanarehopcount = value;
+        vtpvlanarehopcount.value_namespace = name_space;
+        vtpvlanarehopcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanBridgeNumber")
     {
         vtpvlanbridgenumber = value;
+        vtpvlanbridgenumber.value_namespace = name_space;
+        vtpvlanbridgenumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanBridgeType")
     {
         vtpvlanbridgetype = value;
+        vtpvlanbridgetype.value_namespace = name_space;
+        vtpvlanbridgetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanDot10Said")
     {
         vtpvlandot10said = value;
+        vtpvlandot10said.value_namespace = name_space;
+        vtpvlandot10said.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanIfIndex")
     {
         vtpvlanifindex = value;
+        vtpvlanifindex.value_namespace = name_space;
+        vtpvlanifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanIsCRFBackup")
     {
         vtpvlaniscrfbackup = value;
+        vtpvlaniscrfbackup.value_namespace = name_space;
+        vtpvlaniscrfbackup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanMtu")
     {
         vtpvlanmtu = value;
+        vtpvlanmtu.value_namespace = name_space;
+        vtpvlanmtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanName")
     {
         vtpvlanname = value;
+        vtpvlanname.value_namespace = name_space;
+        vtpvlanname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanParentVlan")
     {
         vtpvlanparentvlan = value;
+        vtpvlanparentvlan.value_namespace = name_space;
+        vtpvlanparentvlan.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanRingNumber")
     {
         vtpvlanringnumber = value;
+        vtpvlanringnumber.value_namespace = name_space;
+        vtpvlanringnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanState")
     {
         vtpvlanstate = value;
+        vtpvlanstate.value_namespace = name_space;
+        vtpvlanstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanSteHopCount")
     {
         vtpvlanstehopcount = value;
+        vtpvlanstehopcount.value_namespace = name_space;
+        vtpvlanstehopcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanStpType")
     {
         vtpvlanstptype = value;
+        vtpvlanstptype.value_namespace = name_space;
+        vtpvlanstptype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanTranslationalVlan1")
     {
         vtpvlantranslationalvlan1 = value;
+        vtpvlantranslationalvlan1.value_namespace = name_space;
+        vtpvlantranslationalvlan1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanTranslationalVlan2")
     {
         vtpvlantranslationalvlan2 = value;
+        vtpvlantranslationalvlan2.value_namespace = name_space;
+        vtpvlantranslationalvlan2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanType")
     {
         vtpvlantype = value;
+        vtpvlantype.value_namespace = name_space;
+        vtpvlantype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanTypeExt")
     {
         vtpvlantypeext[value] = true;
     }
+}
+
+void CiscoVtpMib::Vtpvlantable::Vtpvlanentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanIndex")
+    {
+        vtpvlanindex.yfilter = yfilter;
+    }
+    if(value_path == "stpxVlanMISTPInstMapInstIndex")
+    {
+        stpxvlanmistpinstmapinstindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanAreHopCount")
+    {
+        vtpvlanarehopcount.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanBridgeNumber")
+    {
+        vtpvlanbridgenumber.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanBridgeType")
+    {
+        vtpvlanbridgetype.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanDot10Said")
+    {
+        vtpvlandot10said.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanIfIndex")
+    {
+        vtpvlanifindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanIsCRFBackup")
+    {
+        vtpvlaniscrfbackup.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanMtu")
+    {
+        vtpvlanmtu.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanName")
+    {
+        vtpvlanname.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanParentVlan")
+    {
+        vtpvlanparentvlan.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanRingNumber")
+    {
+        vtpvlanringnumber.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanState")
+    {
+        vtpvlanstate.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanSteHopCount")
+    {
+        vtpvlanstehopcount.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanStpType")
+    {
+        vtpvlanstptype.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanTranslationalVlan1")
+    {
+        vtpvlantranslationalvlan1.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanTranslationalVlan2")
+    {
+        vtpvlantranslationalvlan2.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanType")
+    {
+        vtpvlantype.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanTypeExt")
+    {
+        vtpvlantypeext.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vtpvlantable::Vtpvlanentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "vtpVlanIndex" || name == "stpxVlanMISTPInstMapInstIndex" || name == "vtpVlanAreHopCount" || name == "vtpVlanBridgeNumber" || name == "vtpVlanBridgeType" || name == "vtpVlanDot10Said" || name == "vtpVlanIfIndex" || name == "vtpVlanIsCRFBackup" || name == "vtpVlanMtu" || name == "vtpVlanName" || name == "vtpVlanParentVlan" || name == "vtpVlanRingNumber" || name == "vtpVlanState" || name == "vtpVlanSteHopCount" || name == "vtpVlanStpType" || name == "vtpVlanTranslationalVlan1" || name == "vtpVlanTranslationalVlan2" || name == "vtpVlanType" || name == "vtpVlanTypeExt")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlantable()
@@ -1453,9 +1941,9 @@ CiscoVtpMib::Vtpinternalvlantable::~Vtpinternalvlantable()
 
 bool CiscoVtpMib::Vtpinternalvlantable::has_data() const
 {
-    for (std::size_t index=0; index<vtpinternalvlanentry_.size(); index++)
+    for (std::size_t index=0; index<vtpinternalvlanentry.size(); index++)
     {
-        if(vtpinternalvlanentry_[index]->has_data())
+        if(vtpinternalvlanentry[index]->has_data())
             return true;
     }
     return false;
@@ -1463,12 +1951,12 @@ bool CiscoVtpMib::Vtpinternalvlantable::has_data() const
 
 bool CiscoVtpMib::Vtpinternalvlantable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpinternalvlanentry_.size(); index++)
+    for (std::size_t index=0; index<vtpinternalvlanentry.size(); index++)
     {
-        if(vtpinternalvlanentry_[index]->has_operation())
+        if(vtpinternalvlanentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vtpinternalvlantable::get_segment_path() const
@@ -1505,7 +1993,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpinternalvlantable::get_child_by_name(con
 {
     if(child_yang_name == "vtpInternalVlanEntry")
     {
-        for(auto const & c : vtpinternalvlanentry_)
+        for(auto const & c : vtpinternalvlanentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1515,7 +2003,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpinternalvlantable::get_child_by_name(con
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry>();
         c->parent = this;
-        vtpinternalvlanentry_.push_back(c);
+        vtpinternalvlanentry.push_back(c);
         return c;
     }
 
@@ -1525,7 +2013,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpinternalvlantable::get_child_by_name(con
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpinternalvlantable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpinternalvlanentry_)
+    for (auto const & c : vtpinternalvlanentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1533,8 +2021,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpinternalvlantable
     return children;
 }
 
-void CiscoVtpMib::Vtpinternalvlantable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpinternalvlantable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vtpinternalvlantable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vtpinternalvlantable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpInternalVlanEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::Vtpinternalvlanentry()
@@ -1559,10 +2058,10 @@ bool CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::has_data() const
 
 bool CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(vtpvlanindex.operation)
-	|| is_set(vtpinternalvlanowner.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(vtpvlanindex.yfilter)
+	|| ydk::is_set(vtpinternalvlanowner.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::get_segment_path() const
@@ -1588,9 +2087,9 @@ const EntityPath CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (vtpvlanindex.is_set || is_set(vtpvlanindex.operation)) leaf_name_data.push_back(vtpvlanindex.get_name_leafdata());
-    if (vtpinternalvlanowner.is_set || is_set(vtpinternalvlanowner.operation)) leaf_name_data.push_back(vtpinternalvlanowner.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (vtpvlanindex.is_set || is_set(vtpvlanindex.yfilter)) leaf_name_data.push_back(vtpvlanindex.get_name_leafdata());
+    if (vtpinternalvlanowner.is_set || is_set(vtpinternalvlanowner.yfilter)) leaf_name_data.push_back(vtpinternalvlanowner.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1609,20 +2108,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpinternalvlantable
     return children;
 }
 
-void CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanIndex")
     {
         vtpvlanindex = value;
+        vtpvlanindex.value_namespace = name_space;
+        vtpvlanindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpInternalVlanOwner")
     {
         vtpinternalvlanowner = value;
+        vtpinternalvlanowner.value_namespace = name_space;
+        vtpinternalvlanowner.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanIndex")
+    {
+        vtpvlanindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpInternalVlanOwner")
+    {
+        vtpinternalvlanowner.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vtpinternalvlantable::Vtpinternalvlanentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "vtpVlanIndex" || name == "vtpInternalVlanOwner")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpvlanedittable::Vtpvlanedittable()
@@ -1636,9 +2164,9 @@ CiscoVtpMib::Vtpvlanedittable::~Vtpvlanedittable()
 
 bool CiscoVtpMib::Vtpvlanedittable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlaneditentry_.size(); index++)
+    for (std::size_t index=0; index<vtpvlaneditentry.size(); index++)
     {
-        if(vtpvlaneditentry_[index]->has_data())
+        if(vtpvlaneditentry[index]->has_data())
             return true;
     }
     return false;
@@ -1646,12 +2174,12 @@ bool CiscoVtpMib::Vtpvlanedittable::has_data() const
 
 bool CiscoVtpMib::Vtpvlanedittable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlaneditentry_.size(); index++)
+    for (std::size_t index=0; index<vtpvlaneditentry.size(); index++)
     {
-        if(vtpvlaneditentry_[index]->has_operation())
+        if(vtpvlaneditentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vtpvlanedittable::get_segment_path() const
@@ -1688,7 +2216,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanedittable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpVlanEditEntry")
     {
-        for(auto const & c : vtpvlaneditentry_)
+        for(auto const & c : vtpvlaneditentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1698,7 +2226,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanedittable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry>();
         c->parent = this;
-        vtpvlaneditentry_.push_back(c);
+        vtpvlaneditentry.push_back(c);
         return c;
     }
 
@@ -1708,7 +2236,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanedittable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlanedittable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpvlaneditentry_)
+    for (auto const & c : vtpvlaneditentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1716,8 +2244,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlanedittable::ge
     return children;
 }
 
-void CiscoVtpMib::Vtpvlanedittable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpvlanedittable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vtpvlanedittable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vtpvlanedittable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpVlanEditEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditentry()
@@ -1778,28 +2317,28 @@ bool CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::has_data() const
 
 bool CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(vtpvlaneditindex.operation)
-	|| is_set(stpxvlanmistpinstmapeditinstindex.operation)
-	|| is_set(vtpvlaneditarehopcount.operation)
-	|| is_set(vtpvlaneditbridgenumber.operation)
-	|| is_set(vtpvlaneditbridgetype.operation)
-	|| is_set(vtpvlaneditdot10said.operation)
-	|| is_set(vtpvlaneditiscrfbackup.operation)
-	|| is_set(vtpvlaneditmtu.operation)
-	|| is_set(vtpvlaneditname.operation)
-	|| is_set(vtpvlaneditparentvlan.operation)
-	|| is_set(vtpvlaneditringnumber.operation)
-	|| is_set(vtpvlaneditrowstatus.operation)
-	|| is_set(vtpvlaneditstate.operation)
-	|| is_set(vtpvlaneditstehopcount.operation)
-	|| is_set(vtpvlaneditstptype.operation)
-	|| is_set(vtpvlanedittranslationalvlan1.operation)
-	|| is_set(vtpvlanedittranslationalvlan2.operation)
-	|| is_set(vtpvlanedittype.operation)
-	|| is_set(vtpvlanedittypeext.operation)
-	|| is_set(vtpvlanedittypeext2.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(vtpvlaneditindex.yfilter)
+	|| ydk::is_set(stpxvlanmistpinstmapeditinstindex.yfilter)
+	|| ydk::is_set(vtpvlaneditarehopcount.yfilter)
+	|| ydk::is_set(vtpvlaneditbridgenumber.yfilter)
+	|| ydk::is_set(vtpvlaneditbridgetype.yfilter)
+	|| ydk::is_set(vtpvlaneditdot10said.yfilter)
+	|| ydk::is_set(vtpvlaneditiscrfbackup.yfilter)
+	|| ydk::is_set(vtpvlaneditmtu.yfilter)
+	|| ydk::is_set(vtpvlaneditname.yfilter)
+	|| ydk::is_set(vtpvlaneditparentvlan.yfilter)
+	|| ydk::is_set(vtpvlaneditringnumber.yfilter)
+	|| ydk::is_set(vtpvlaneditrowstatus.yfilter)
+	|| ydk::is_set(vtpvlaneditstate.yfilter)
+	|| ydk::is_set(vtpvlaneditstehopcount.yfilter)
+	|| ydk::is_set(vtpvlaneditstptype.yfilter)
+	|| ydk::is_set(vtpvlanedittranslationalvlan1.yfilter)
+	|| ydk::is_set(vtpvlanedittranslationalvlan2.yfilter)
+	|| ydk::is_set(vtpvlanedittype.yfilter)
+	|| ydk::is_set(vtpvlanedittypeext.yfilter)
+	|| ydk::is_set(vtpvlanedittypeext2.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::get_segment_path() const
@@ -1825,27 +2364,27 @@ const EntityPath CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (vtpvlaneditindex.is_set || is_set(vtpvlaneditindex.operation)) leaf_name_data.push_back(vtpvlaneditindex.get_name_leafdata());
-    if (stpxvlanmistpinstmapeditinstindex.is_set || is_set(stpxvlanmistpinstmapeditinstindex.operation)) leaf_name_data.push_back(stpxvlanmistpinstmapeditinstindex.get_name_leafdata());
-    if (vtpvlaneditarehopcount.is_set || is_set(vtpvlaneditarehopcount.operation)) leaf_name_data.push_back(vtpvlaneditarehopcount.get_name_leafdata());
-    if (vtpvlaneditbridgenumber.is_set || is_set(vtpvlaneditbridgenumber.operation)) leaf_name_data.push_back(vtpvlaneditbridgenumber.get_name_leafdata());
-    if (vtpvlaneditbridgetype.is_set || is_set(vtpvlaneditbridgetype.operation)) leaf_name_data.push_back(vtpvlaneditbridgetype.get_name_leafdata());
-    if (vtpvlaneditdot10said.is_set || is_set(vtpvlaneditdot10said.operation)) leaf_name_data.push_back(vtpvlaneditdot10said.get_name_leafdata());
-    if (vtpvlaneditiscrfbackup.is_set || is_set(vtpvlaneditiscrfbackup.operation)) leaf_name_data.push_back(vtpvlaneditiscrfbackup.get_name_leafdata());
-    if (vtpvlaneditmtu.is_set || is_set(vtpvlaneditmtu.operation)) leaf_name_data.push_back(vtpvlaneditmtu.get_name_leafdata());
-    if (vtpvlaneditname.is_set || is_set(vtpvlaneditname.operation)) leaf_name_data.push_back(vtpvlaneditname.get_name_leafdata());
-    if (vtpvlaneditparentvlan.is_set || is_set(vtpvlaneditparentvlan.operation)) leaf_name_data.push_back(vtpvlaneditparentvlan.get_name_leafdata());
-    if (vtpvlaneditringnumber.is_set || is_set(vtpvlaneditringnumber.operation)) leaf_name_data.push_back(vtpvlaneditringnumber.get_name_leafdata());
-    if (vtpvlaneditrowstatus.is_set || is_set(vtpvlaneditrowstatus.operation)) leaf_name_data.push_back(vtpvlaneditrowstatus.get_name_leafdata());
-    if (vtpvlaneditstate.is_set || is_set(vtpvlaneditstate.operation)) leaf_name_data.push_back(vtpvlaneditstate.get_name_leafdata());
-    if (vtpvlaneditstehopcount.is_set || is_set(vtpvlaneditstehopcount.operation)) leaf_name_data.push_back(vtpvlaneditstehopcount.get_name_leafdata());
-    if (vtpvlaneditstptype.is_set || is_set(vtpvlaneditstptype.operation)) leaf_name_data.push_back(vtpvlaneditstptype.get_name_leafdata());
-    if (vtpvlanedittranslationalvlan1.is_set || is_set(vtpvlanedittranslationalvlan1.operation)) leaf_name_data.push_back(vtpvlanedittranslationalvlan1.get_name_leafdata());
-    if (vtpvlanedittranslationalvlan2.is_set || is_set(vtpvlanedittranslationalvlan2.operation)) leaf_name_data.push_back(vtpvlanedittranslationalvlan2.get_name_leafdata());
-    if (vtpvlanedittype.is_set || is_set(vtpvlanedittype.operation)) leaf_name_data.push_back(vtpvlanedittype.get_name_leafdata());
-    if (vtpvlanedittypeext.is_set || is_set(vtpvlanedittypeext.operation)) leaf_name_data.push_back(vtpvlanedittypeext.get_name_leafdata());
-    if (vtpvlanedittypeext2.is_set || is_set(vtpvlanedittypeext2.operation)) leaf_name_data.push_back(vtpvlanedittypeext2.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (vtpvlaneditindex.is_set || is_set(vtpvlaneditindex.yfilter)) leaf_name_data.push_back(vtpvlaneditindex.get_name_leafdata());
+    if (stpxvlanmistpinstmapeditinstindex.is_set || is_set(stpxvlanmistpinstmapeditinstindex.yfilter)) leaf_name_data.push_back(stpxvlanmistpinstmapeditinstindex.get_name_leafdata());
+    if (vtpvlaneditarehopcount.is_set || is_set(vtpvlaneditarehopcount.yfilter)) leaf_name_data.push_back(vtpvlaneditarehopcount.get_name_leafdata());
+    if (vtpvlaneditbridgenumber.is_set || is_set(vtpvlaneditbridgenumber.yfilter)) leaf_name_data.push_back(vtpvlaneditbridgenumber.get_name_leafdata());
+    if (vtpvlaneditbridgetype.is_set || is_set(vtpvlaneditbridgetype.yfilter)) leaf_name_data.push_back(vtpvlaneditbridgetype.get_name_leafdata());
+    if (vtpvlaneditdot10said.is_set || is_set(vtpvlaneditdot10said.yfilter)) leaf_name_data.push_back(vtpvlaneditdot10said.get_name_leafdata());
+    if (vtpvlaneditiscrfbackup.is_set || is_set(vtpvlaneditiscrfbackup.yfilter)) leaf_name_data.push_back(vtpvlaneditiscrfbackup.get_name_leafdata());
+    if (vtpvlaneditmtu.is_set || is_set(vtpvlaneditmtu.yfilter)) leaf_name_data.push_back(vtpvlaneditmtu.get_name_leafdata());
+    if (vtpvlaneditname.is_set || is_set(vtpvlaneditname.yfilter)) leaf_name_data.push_back(vtpvlaneditname.get_name_leafdata());
+    if (vtpvlaneditparentvlan.is_set || is_set(vtpvlaneditparentvlan.yfilter)) leaf_name_data.push_back(vtpvlaneditparentvlan.get_name_leafdata());
+    if (vtpvlaneditringnumber.is_set || is_set(vtpvlaneditringnumber.yfilter)) leaf_name_data.push_back(vtpvlaneditringnumber.get_name_leafdata());
+    if (vtpvlaneditrowstatus.is_set || is_set(vtpvlaneditrowstatus.yfilter)) leaf_name_data.push_back(vtpvlaneditrowstatus.get_name_leafdata());
+    if (vtpvlaneditstate.is_set || is_set(vtpvlaneditstate.yfilter)) leaf_name_data.push_back(vtpvlaneditstate.get_name_leafdata());
+    if (vtpvlaneditstehopcount.is_set || is_set(vtpvlaneditstehopcount.yfilter)) leaf_name_data.push_back(vtpvlaneditstehopcount.get_name_leafdata());
+    if (vtpvlaneditstptype.is_set || is_set(vtpvlaneditstptype.yfilter)) leaf_name_data.push_back(vtpvlaneditstptype.get_name_leafdata());
+    if (vtpvlanedittranslationalvlan1.is_set || is_set(vtpvlanedittranslationalvlan1.yfilter)) leaf_name_data.push_back(vtpvlanedittranslationalvlan1.get_name_leafdata());
+    if (vtpvlanedittranslationalvlan2.is_set || is_set(vtpvlanedittranslationalvlan2.yfilter)) leaf_name_data.push_back(vtpvlanedittranslationalvlan2.get_name_leafdata());
+    if (vtpvlanedittype.is_set || is_set(vtpvlanedittype.yfilter)) leaf_name_data.push_back(vtpvlanedittype.get_name_leafdata());
+    if (vtpvlanedittypeext.is_set || is_set(vtpvlanedittypeext.yfilter)) leaf_name_data.push_back(vtpvlanedittypeext.get_name_leafdata());
+    if (vtpvlanedittypeext2.is_set || is_set(vtpvlanedittypeext2.yfilter)) leaf_name_data.push_back(vtpvlanedittypeext2.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1864,83 +2403,121 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlanedittable::Vt
     return children;
 }
 
-void CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditIndex")
     {
         vtpvlaneditindex = value;
+        vtpvlaneditindex.value_namespace = name_space;
+        vtpvlaneditindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stpxVlanMISTPInstMapEditInstIndex")
     {
         stpxvlanmistpinstmapeditinstindex = value;
+        stpxvlanmistpinstmapeditinstindex.value_namespace = name_space;
+        stpxvlanmistpinstmapeditinstindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditAreHopCount")
     {
         vtpvlaneditarehopcount = value;
+        vtpvlaneditarehopcount.value_namespace = name_space;
+        vtpvlaneditarehopcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditBridgeNumber")
     {
         vtpvlaneditbridgenumber = value;
+        vtpvlaneditbridgenumber.value_namespace = name_space;
+        vtpvlaneditbridgenumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditBridgeType")
     {
         vtpvlaneditbridgetype = value;
+        vtpvlaneditbridgetype.value_namespace = name_space;
+        vtpvlaneditbridgetype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditDot10Said")
     {
         vtpvlaneditdot10said = value;
+        vtpvlaneditdot10said.value_namespace = name_space;
+        vtpvlaneditdot10said.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditIsCRFBackup")
     {
         vtpvlaneditiscrfbackup = value;
+        vtpvlaneditiscrfbackup.value_namespace = name_space;
+        vtpvlaneditiscrfbackup.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditMtu")
     {
         vtpvlaneditmtu = value;
+        vtpvlaneditmtu.value_namespace = name_space;
+        vtpvlaneditmtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditName")
     {
         vtpvlaneditname = value;
+        vtpvlaneditname.value_namespace = name_space;
+        vtpvlaneditname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditParentVlan")
     {
         vtpvlaneditparentvlan = value;
+        vtpvlaneditparentvlan.value_namespace = name_space;
+        vtpvlaneditparentvlan.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditRingNumber")
     {
         vtpvlaneditringnumber = value;
+        vtpvlaneditringnumber.value_namespace = name_space;
+        vtpvlaneditringnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditRowStatus")
     {
         vtpvlaneditrowstatus = value;
+        vtpvlaneditrowstatus.value_namespace = name_space;
+        vtpvlaneditrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditState")
     {
         vtpvlaneditstate = value;
+        vtpvlaneditstate.value_namespace = name_space;
+        vtpvlaneditstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditSteHopCount")
     {
         vtpvlaneditstehopcount = value;
+        vtpvlaneditstehopcount.value_namespace = name_space;
+        vtpvlaneditstehopcount.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditStpType")
     {
         vtpvlaneditstptype = value;
+        vtpvlaneditstptype.value_namespace = name_space;
+        vtpvlaneditstptype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditTranslationalVlan1")
     {
         vtpvlanedittranslationalvlan1 = value;
+        vtpvlanedittranslationalvlan1.value_namespace = name_space;
+        vtpvlanedittranslationalvlan1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditTranslationalVlan2")
     {
         vtpvlanedittranslationalvlan2 = value;
+        vtpvlanedittranslationalvlan2.value_namespace = name_space;
+        vtpvlanedittranslationalvlan2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditType")
     {
         vtpvlanedittype = value;
+        vtpvlanedittype.value_namespace = name_space;
+        vtpvlanedittype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanEditTypeExt")
     {
@@ -1950,6 +2527,101 @@ void CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::set_value(const std::strin
     {
         vtpvlanedittypeext2[value] = true;
     }
+}
+
+void CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditIndex")
+    {
+        vtpvlaneditindex.yfilter = yfilter;
+    }
+    if(value_path == "stpxVlanMISTPInstMapEditInstIndex")
+    {
+        stpxvlanmistpinstmapeditinstindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditAreHopCount")
+    {
+        vtpvlaneditarehopcount.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditBridgeNumber")
+    {
+        vtpvlaneditbridgenumber.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditBridgeType")
+    {
+        vtpvlaneditbridgetype.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditDot10Said")
+    {
+        vtpvlaneditdot10said.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditIsCRFBackup")
+    {
+        vtpvlaneditiscrfbackup.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditMtu")
+    {
+        vtpvlaneditmtu.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditName")
+    {
+        vtpvlaneditname.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditParentVlan")
+    {
+        vtpvlaneditparentvlan.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditRingNumber")
+    {
+        vtpvlaneditringnumber.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditRowStatus")
+    {
+        vtpvlaneditrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditState")
+    {
+        vtpvlaneditstate.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditSteHopCount")
+    {
+        vtpvlaneditstehopcount.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditStpType")
+    {
+        vtpvlaneditstptype.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditTranslationalVlan1")
+    {
+        vtpvlanedittranslationalvlan1.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditTranslationalVlan2")
+    {
+        vtpvlanedittranslationalvlan2.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditType")
+    {
+        vtpvlanedittype.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditTypeExt")
+    {
+        vtpvlanedittypeext.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanEditTypeExt2")
+    {
+        vtpvlanedittypeext2.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "vtpVlanEditIndex" || name == "stpxVlanMISTPInstMapEditInstIndex" || name == "vtpVlanEditAreHopCount" || name == "vtpVlanEditBridgeNumber" || name == "vtpVlanEditBridgeType" || name == "vtpVlanEditDot10Said" || name == "vtpVlanEditIsCRFBackup" || name == "vtpVlanEditMtu" || name == "vtpVlanEditName" || name == "vtpVlanEditParentVlan" || name == "vtpVlanEditRingNumber" || name == "vtpVlanEditRowStatus" || name == "vtpVlanEditState" || name == "vtpVlanEditSteHopCount" || name == "vtpVlanEditStpType" || name == "vtpVlanEditTranslationalVlan1" || name == "vtpVlanEditTranslationalVlan2" || name == "vtpVlanEditType" || name == "vtpVlanEditTypeExt" || name == "vtpVlanEditTypeExt2")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdowntable()
@@ -1963,9 +2635,9 @@ CiscoVtpMib::Vtpvlanlocalshutdowntable::~Vtpvlanlocalshutdowntable()
 
 bool CiscoVtpMib::Vtpvlanlocalshutdowntable::has_data() const
 {
-    for (std::size_t index=0; index<vtpvlanlocalshutdownentry_.size(); index++)
+    for (std::size_t index=0; index<vtpvlanlocalshutdownentry.size(); index++)
     {
-        if(vtpvlanlocalshutdownentry_[index]->has_data())
+        if(vtpvlanlocalshutdownentry[index]->has_data())
             return true;
     }
     return false;
@@ -1973,12 +2645,12 @@ bool CiscoVtpMib::Vtpvlanlocalshutdowntable::has_data() const
 
 bool CiscoVtpMib::Vtpvlanlocalshutdowntable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpvlanlocalshutdownentry_.size(); index++)
+    for (std::size_t index=0; index<vtpvlanlocalshutdownentry.size(); index++)
     {
-        if(vtpvlanlocalshutdownentry_[index]->has_operation())
+        if(vtpvlanlocalshutdownentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vtpvlanlocalshutdowntable::get_segment_path() const
@@ -2015,7 +2687,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanlocalshutdowntable::get_child_by_nam
 {
     if(child_yang_name == "vtpVlanLocalShutdownEntry")
     {
-        for(auto const & c : vtpvlanlocalshutdownentry_)
+        for(auto const & c : vtpvlanlocalshutdownentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2025,7 +2697,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanlocalshutdowntable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry>();
         c->parent = this;
-        vtpvlanlocalshutdownentry_.push_back(c);
+        vtpvlanlocalshutdownentry.push_back(c);
         return c;
     }
 
@@ -2035,7 +2707,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpvlanlocalshutdowntable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlanlocalshutdowntable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpvlanlocalshutdownentry_)
+    for (auto const & c : vtpvlanlocalshutdownentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2043,8 +2715,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlanlocalshutdown
     return children;
 }
 
-void CiscoVtpMib::Vtpvlanlocalshutdowntable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpvlanlocalshutdowntable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vtpvlanlocalshutdowntable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vtpvlanlocalshutdowntable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpVlanLocalShutdownEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::Vtpvlanlocalshutdownentry()
@@ -2069,10 +2752,10 @@ bool CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::has_data
 
 bool CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(vtpvlanindex.operation)
-	|| is_set(vtpvlanlocalshutdown.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(vtpvlanindex.yfilter)
+	|| ydk::is_set(vtpvlanlocalshutdown.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::get_segment_path() const
@@ -2098,9 +2781,9 @@ const EntityPath CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (vtpvlanindex.is_set || is_set(vtpvlanindex.operation)) leaf_name_data.push_back(vtpvlanindex.get_name_leafdata());
-    if (vtpvlanlocalshutdown.is_set || is_set(vtpvlanlocalshutdown.operation)) leaf_name_data.push_back(vtpvlanlocalshutdown.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (vtpvlanindex.is_set || is_set(vtpvlanindex.yfilter)) leaf_name_data.push_back(vtpvlanindex.get_name_leafdata());
+    if (vtpvlanlocalshutdown.is_set || is_set(vtpvlanlocalshutdown.yfilter)) leaf_name_data.push_back(vtpvlanlocalshutdown.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2119,20 +2802,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpvlanlocalshutdown
     return children;
 }
 
-void CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanIndex")
     {
         vtpvlanindex = value;
+        vtpvlanindex.value_namespace = name_space;
+        vtpvlanindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlanLocalShutdown")
     {
         vtpvlanlocalshutdown = value;
+        vtpvlanlocalshutdown.value_namespace = name_space;
+        vtpvlanlocalshutdown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanIndex")
+    {
+        vtpvlanindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlanLocalShutdown")
+    {
+        vtpvlanlocalshutdown.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "vtpVlanIndex" || name == "vtpVlanLocalShutdown")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vlantrunkporttable::Vlantrunkporttable()
@@ -2146,9 +2858,9 @@ CiscoVtpMib::Vlantrunkporttable::~Vlantrunkporttable()
 
 bool CiscoVtpMib::Vlantrunkporttable::has_data() const
 {
-    for (std::size_t index=0; index<vlantrunkportentry_.size(); index++)
+    for (std::size_t index=0; index<vlantrunkportentry.size(); index++)
     {
-        if(vlantrunkportentry_[index]->has_data())
+        if(vlantrunkportentry[index]->has_data())
             return true;
     }
     return false;
@@ -2156,12 +2868,12 @@ bool CiscoVtpMib::Vlantrunkporttable::has_data() const
 
 bool CiscoVtpMib::Vlantrunkporttable::has_operation() const
 {
-    for (std::size_t index=0; index<vlantrunkportentry_.size(); index++)
+    for (std::size_t index=0; index<vlantrunkportentry.size(); index++)
     {
-        if(vlantrunkportentry_[index]->has_operation())
+        if(vlantrunkportentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vlantrunkporttable::get_segment_path() const
@@ -2198,7 +2910,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vlantrunkporttable::get_child_by_name(const
 {
     if(child_yang_name == "vlanTrunkPortEntry")
     {
-        for(auto const & c : vlantrunkportentry_)
+        for(auto const & c : vlantrunkportentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2208,7 +2920,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vlantrunkporttable::get_child_by_name(const
         }
         auto c = std::make_shared<CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry>();
         c->parent = this;
-        vlantrunkportentry_.push_back(c);
+        vlantrunkportentry.push_back(c);
         return c;
     }
 
@@ -2218,7 +2930,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vlantrunkporttable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vlantrunkporttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vlantrunkportentry_)
+    for (auto const & c : vlantrunkportentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2226,8 +2938,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vlantrunkporttable::
     return children;
 }
 
-void CiscoVtpMib::Vlantrunkporttable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vlantrunkporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vlantrunkporttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vlantrunkporttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlanTrunkPortEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportentry()
@@ -2320,44 +3043,44 @@ bool CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::has_data() const
 
 bool CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vlantrunkportifindex.operation)
-	|| is_set(stpxpreferredmistpinstancesmap.operation)
-	|| is_set(stpxpreferredmstinstancesmap.operation)
-	|| is_set(stpxpreferredvlansmap.operation)
-	|| is_set(stpxpreferredvlansmap2k.operation)
-	|| is_set(stpxpreferredvlansmap3k.operation)
-	|| is_set(stpxpreferredvlansmap4k.operation)
-	|| is_set(vlantrunkportdot1qtunnel.operation)
-	|| is_set(vlantrunkportdynamicstate.operation)
-	|| is_set(vlantrunkportdynamicstatus.operation)
-	|| is_set(vlantrunkportencapsulationopertype.operation)
-	|| is_set(vlantrunkportencapsulationtype.operation)
-	|| is_set(vlantrunkportinjoins.operation)
-	|| is_set(vlantrunkportmanagementdomain.operation)
-	|| is_set(vlantrunkportnativevlan.operation)
-	|| is_set(vlantrunkportoldadverts.operation)
-	|| is_set(vlantrunkportoutjoins.operation)
-	|| is_set(vlantrunkportrowstatus.operation)
-	|| is_set(vlantrunkportvlansactivefirst2k.operation)
-	|| is_set(vlantrunkportvlansactivesecond2k.operation)
-	|| is_set(vlantrunkportvlansenabled.operation)
-	|| is_set(vlantrunkportvlansenabled2k.operation)
-	|| is_set(vlantrunkportvlansenabled3k.operation)
-	|| is_set(vlantrunkportvlansenabled4k.operation)
-	|| is_set(vlantrunkportvlanspruningeligible.operation)
-	|| is_set(vlantrunkportvlansrcvjoined.operation)
-	|| is_set(vlantrunkportvlansrcvjoined2k.operation)
-	|| is_set(vlantrunkportvlansrcvjoined3k.operation)
-	|| is_set(vlantrunkportvlansrcvjoined4k.operation)
-	|| is_set(vlantrunkportvlansxmitjoined.operation)
-	|| is_set(vlantrunkportvlansxmitjoined2k.operation)
-	|| is_set(vlantrunkportvlansxmitjoined3k.operation)
-	|| is_set(vlantrunkportvlansxmitjoined4k.operation)
-	|| is_set(vlantrunkportvtpenabled.operation)
-	|| is_set(vtpvlanspruningeligible2k.operation)
-	|| is_set(vtpvlanspruningeligible3k.operation)
-	|| is_set(vtpvlanspruningeligible4k.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vlantrunkportifindex.yfilter)
+	|| ydk::is_set(stpxpreferredmistpinstancesmap.yfilter)
+	|| ydk::is_set(stpxpreferredmstinstancesmap.yfilter)
+	|| ydk::is_set(stpxpreferredvlansmap.yfilter)
+	|| ydk::is_set(stpxpreferredvlansmap2k.yfilter)
+	|| ydk::is_set(stpxpreferredvlansmap3k.yfilter)
+	|| ydk::is_set(stpxpreferredvlansmap4k.yfilter)
+	|| ydk::is_set(vlantrunkportdot1qtunnel.yfilter)
+	|| ydk::is_set(vlantrunkportdynamicstate.yfilter)
+	|| ydk::is_set(vlantrunkportdynamicstatus.yfilter)
+	|| ydk::is_set(vlantrunkportencapsulationopertype.yfilter)
+	|| ydk::is_set(vlantrunkportencapsulationtype.yfilter)
+	|| ydk::is_set(vlantrunkportinjoins.yfilter)
+	|| ydk::is_set(vlantrunkportmanagementdomain.yfilter)
+	|| ydk::is_set(vlantrunkportnativevlan.yfilter)
+	|| ydk::is_set(vlantrunkportoldadverts.yfilter)
+	|| ydk::is_set(vlantrunkportoutjoins.yfilter)
+	|| ydk::is_set(vlantrunkportrowstatus.yfilter)
+	|| ydk::is_set(vlantrunkportvlansactivefirst2k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansactivesecond2k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansenabled.yfilter)
+	|| ydk::is_set(vlantrunkportvlansenabled2k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansenabled3k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansenabled4k.yfilter)
+	|| ydk::is_set(vlantrunkportvlanspruningeligible.yfilter)
+	|| ydk::is_set(vlantrunkportvlansrcvjoined.yfilter)
+	|| ydk::is_set(vlantrunkportvlansrcvjoined2k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansrcvjoined3k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansrcvjoined4k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansxmitjoined.yfilter)
+	|| ydk::is_set(vlantrunkportvlansxmitjoined2k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansxmitjoined3k.yfilter)
+	|| ydk::is_set(vlantrunkportvlansxmitjoined4k.yfilter)
+	|| ydk::is_set(vlantrunkportvtpenabled.yfilter)
+	|| ydk::is_set(vtpvlanspruningeligible2k.yfilter)
+	|| ydk::is_set(vtpvlanspruningeligible3k.yfilter)
+	|| ydk::is_set(vtpvlanspruningeligible4k.yfilter);
 }
 
 std::string CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::get_segment_path() const
@@ -2383,43 +3106,43 @@ const EntityPath CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vlantrunkportifindex.is_set || is_set(vlantrunkportifindex.operation)) leaf_name_data.push_back(vlantrunkportifindex.get_name_leafdata());
-    if (stpxpreferredmistpinstancesmap.is_set || is_set(stpxpreferredmistpinstancesmap.operation)) leaf_name_data.push_back(stpxpreferredmistpinstancesmap.get_name_leafdata());
-    if (stpxpreferredmstinstancesmap.is_set || is_set(stpxpreferredmstinstancesmap.operation)) leaf_name_data.push_back(stpxpreferredmstinstancesmap.get_name_leafdata());
-    if (stpxpreferredvlansmap.is_set || is_set(stpxpreferredvlansmap.operation)) leaf_name_data.push_back(stpxpreferredvlansmap.get_name_leafdata());
-    if (stpxpreferredvlansmap2k.is_set || is_set(stpxpreferredvlansmap2k.operation)) leaf_name_data.push_back(stpxpreferredvlansmap2k.get_name_leafdata());
-    if (stpxpreferredvlansmap3k.is_set || is_set(stpxpreferredvlansmap3k.operation)) leaf_name_data.push_back(stpxpreferredvlansmap3k.get_name_leafdata());
-    if (stpxpreferredvlansmap4k.is_set || is_set(stpxpreferredvlansmap4k.operation)) leaf_name_data.push_back(stpxpreferredvlansmap4k.get_name_leafdata());
-    if (vlantrunkportdot1qtunnel.is_set || is_set(vlantrunkportdot1qtunnel.operation)) leaf_name_data.push_back(vlantrunkportdot1qtunnel.get_name_leafdata());
-    if (vlantrunkportdynamicstate.is_set || is_set(vlantrunkportdynamicstate.operation)) leaf_name_data.push_back(vlantrunkportdynamicstate.get_name_leafdata());
-    if (vlantrunkportdynamicstatus.is_set || is_set(vlantrunkportdynamicstatus.operation)) leaf_name_data.push_back(vlantrunkportdynamicstatus.get_name_leafdata());
-    if (vlantrunkportencapsulationopertype.is_set || is_set(vlantrunkportencapsulationopertype.operation)) leaf_name_data.push_back(vlantrunkportencapsulationopertype.get_name_leafdata());
-    if (vlantrunkportencapsulationtype.is_set || is_set(vlantrunkportencapsulationtype.operation)) leaf_name_data.push_back(vlantrunkportencapsulationtype.get_name_leafdata());
-    if (vlantrunkportinjoins.is_set || is_set(vlantrunkportinjoins.operation)) leaf_name_data.push_back(vlantrunkportinjoins.get_name_leafdata());
-    if (vlantrunkportmanagementdomain.is_set || is_set(vlantrunkportmanagementdomain.operation)) leaf_name_data.push_back(vlantrunkportmanagementdomain.get_name_leafdata());
-    if (vlantrunkportnativevlan.is_set || is_set(vlantrunkportnativevlan.operation)) leaf_name_data.push_back(vlantrunkportnativevlan.get_name_leafdata());
-    if (vlantrunkportoldadverts.is_set || is_set(vlantrunkportoldadverts.operation)) leaf_name_data.push_back(vlantrunkportoldadverts.get_name_leafdata());
-    if (vlantrunkportoutjoins.is_set || is_set(vlantrunkportoutjoins.operation)) leaf_name_data.push_back(vlantrunkportoutjoins.get_name_leafdata());
-    if (vlantrunkportrowstatus.is_set || is_set(vlantrunkportrowstatus.operation)) leaf_name_data.push_back(vlantrunkportrowstatus.get_name_leafdata());
-    if (vlantrunkportvlansactivefirst2k.is_set || is_set(vlantrunkportvlansactivefirst2k.operation)) leaf_name_data.push_back(vlantrunkportvlansactivefirst2k.get_name_leafdata());
-    if (vlantrunkportvlansactivesecond2k.is_set || is_set(vlantrunkportvlansactivesecond2k.operation)) leaf_name_data.push_back(vlantrunkportvlansactivesecond2k.get_name_leafdata());
-    if (vlantrunkportvlansenabled.is_set || is_set(vlantrunkportvlansenabled.operation)) leaf_name_data.push_back(vlantrunkportvlansenabled.get_name_leafdata());
-    if (vlantrunkportvlansenabled2k.is_set || is_set(vlantrunkportvlansenabled2k.operation)) leaf_name_data.push_back(vlantrunkportvlansenabled2k.get_name_leafdata());
-    if (vlantrunkportvlansenabled3k.is_set || is_set(vlantrunkportvlansenabled3k.operation)) leaf_name_data.push_back(vlantrunkportvlansenabled3k.get_name_leafdata());
-    if (vlantrunkportvlansenabled4k.is_set || is_set(vlantrunkportvlansenabled4k.operation)) leaf_name_data.push_back(vlantrunkportvlansenabled4k.get_name_leafdata());
-    if (vlantrunkportvlanspruningeligible.is_set || is_set(vlantrunkportvlanspruningeligible.operation)) leaf_name_data.push_back(vlantrunkportvlanspruningeligible.get_name_leafdata());
-    if (vlantrunkportvlansrcvjoined.is_set || is_set(vlantrunkportvlansrcvjoined.operation)) leaf_name_data.push_back(vlantrunkportvlansrcvjoined.get_name_leafdata());
-    if (vlantrunkportvlansrcvjoined2k.is_set || is_set(vlantrunkportvlansrcvjoined2k.operation)) leaf_name_data.push_back(vlantrunkportvlansrcvjoined2k.get_name_leafdata());
-    if (vlantrunkportvlansrcvjoined3k.is_set || is_set(vlantrunkportvlansrcvjoined3k.operation)) leaf_name_data.push_back(vlantrunkportvlansrcvjoined3k.get_name_leafdata());
-    if (vlantrunkportvlansrcvjoined4k.is_set || is_set(vlantrunkportvlansrcvjoined4k.operation)) leaf_name_data.push_back(vlantrunkportvlansrcvjoined4k.get_name_leafdata());
-    if (vlantrunkportvlansxmitjoined.is_set || is_set(vlantrunkportvlansxmitjoined.operation)) leaf_name_data.push_back(vlantrunkportvlansxmitjoined.get_name_leafdata());
-    if (vlantrunkportvlansxmitjoined2k.is_set || is_set(vlantrunkportvlansxmitjoined2k.operation)) leaf_name_data.push_back(vlantrunkportvlansxmitjoined2k.get_name_leafdata());
-    if (vlantrunkportvlansxmitjoined3k.is_set || is_set(vlantrunkportvlansxmitjoined3k.operation)) leaf_name_data.push_back(vlantrunkportvlansxmitjoined3k.get_name_leafdata());
-    if (vlantrunkportvlansxmitjoined4k.is_set || is_set(vlantrunkportvlansxmitjoined4k.operation)) leaf_name_data.push_back(vlantrunkportvlansxmitjoined4k.get_name_leafdata());
-    if (vlantrunkportvtpenabled.is_set || is_set(vlantrunkportvtpenabled.operation)) leaf_name_data.push_back(vlantrunkportvtpenabled.get_name_leafdata());
-    if (vtpvlanspruningeligible2k.is_set || is_set(vtpvlanspruningeligible2k.operation)) leaf_name_data.push_back(vtpvlanspruningeligible2k.get_name_leafdata());
-    if (vtpvlanspruningeligible3k.is_set || is_set(vtpvlanspruningeligible3k.operation)) leaf_name_data.push_back(vtpvlanspruningeligible3k.get_name_leafdata());
-    if (vtpvlanspruningeligible4k.is_set || is_set(vtpvlanspruningeligible4k.operation)) leaf_name_data.push_back(vtpvlanspruningeligible4k.get_name_leafdata());
+    if (vlantrunkportifindex.is_set || is_set(vlantrunkportifindex.yfilter)) leaf_name_data.push_back(vlantrunkportifindex.get_name_leafdata());
+    if (stpxpreferredmistpinstancesmap.is_set || is_set(stpxpreferredmistpinstancesmap.yfilter)) leaf_name_data.push_back(stpxpreferredmistpinstancesmap.get_name_leafdata());
+    if (stpxpreferredmstinstancesmap.is_set || is_set(stpxpreferredmstinstancesmap.yfilter)) leaf_name_data.push_back(stpxpreferredmstinstancesmap.get_name_leafdata());
+    if (stpxpreferredvlansmap.is_set || is_set(stpxpreferredvlansmap.yfilter)) leaf_name_data.push_back(stpxpreferredvlansmap.get_name_leafdata());
+    if (stpxpreferredvlansmap2k.is_set || is_set(stpxpreferredvlansmap2k.yfilter)) leaf_name_data.push_back(stpxpreferredvlansmap2k.get_name_leafdata());
+    if (stpxpreferredvlansmap3k.is_set || is_set(stpxpreferredvlansmap3k.yfilter)) leaf_name_data.push_back(stpxpreferredvlansmap3k.get_name_leafdata());
+    if (stpxpreferredvlansmap4k.is_set || is_set(stpxpreferredvlansmap4k.yfilter)) leaf_name_data.push_back(stpxpreferredvlansmap4k.get_name_leafdata());
+    if (vlantrunkportdot1qtunnel.is_set || is_set(vlantrunkportdot1qtunnel.yfilter)) leaf_name_data.push_back(vlantrunkportdot1qtunnel.get_name_leafdata());
+    if (vlantrunkportdynamicstate.is_set || is_set(vlantrunkportdynamicstate.yfilter)) leaf_name_data.push_back(vlantrunkportdynamicstate.get_name_leafdata());
+    if (vlantrunkportdynamicstatus.is_set || is_set(vlantrunkportdynamicstatus.yfilter)) leaf_name_data.push_back(vlantrunkportdynamicstatus.get_name_leafdata());
+    if (vlantrunkportencapsulationopertype.is_set || is_set(vlantrunkportencapsulationopertype.yfilter)) leaf_name_data.push_back(vlantrunkportencapsulationopertype.get_name_leafdata());
+    if (vlantrunkportencapsulationtype.is_set || is_set(vlantrunkportencapsulationtype.yfilter)) leaf_name_data.push_back(vlantrunkportencapsulationtype.get_name_leafdata());
+    if (vlantrunkportinjoins.is_set || is_set(vlantrunkportinjoins.yfilter)) leaf_name_data.push_back(vlantrunkportinjoins.get_name_leafdata());
+    if (vlantrunkportmanagementdomain.is_set || is_set(vlantrunkportmanagementdomain.yfilter)) leaf_name_data.push_back(vlantrunkportmanagementdomain.get_name_leafdata());
+    if (vlantrunkportnativevlan.is_set || is_set(vlantrunkportnativevlan.yfilter)) leaf_name_data.push_back(vlantrunkportnativevlan.get_name_leafdata());
+    if (vlantrunkportoldadverts.is_set || is_set(vlantrunkportoldadverts.yfilter)) leaf_name_data.push_back(vlantrunkportoldadverts.get_name_leafdata());
+    if (vlantrunkportoutjoins.is_set || is_set(vlantrunkportoutjoins.yfilter)) leaf_name_data.push_back(vlantrunkportoutjoins.get_name_leafdata());
+    if (vlantrunkportrowstatus.is_set || is_set(vlantrunkportrowstatus.yfilter)) leaf_name_data.push_back(vlantrunkportrowstatus.get_name_leafdata());
+    if (vlantrunkportvlansactivefirst2k.is_set || is_set(vlantrunkportvlansactivefirst2k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansactivefirst2k.get_name_leafdata());
+    if (vlantrunkportvlansactivesecond2k.is_set || is_set(vlantrunkportvlansactivesecond2k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansactivesecond2k.get_name_leafdata());
+    if (vlantrunkportvlansenabled.is_set || is_set(vlantrunkportvlansenabled.yfilter)) leaf_name_data.push_back(vlantrunkportvlansenabled.get_name_leafdata());
+    if (vlantrunkportvlansenabled2k.is_set || is_set(vlantrunkportvlansenabled2k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansenabled2k.get_name_leafdata());
+    if (vlantrunkportvlansenabled3k.is_set || is_set(vlantrunkportvlansenabled3k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansenabled3k.get_name_leafdata());
+    if (vlantrunkportvlansenabled4k.is_set || is_set(vlantrunkportvlansenabled4k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansenabled4k.get_name_leafdata());
+    if (vlantrunkportvlanspruningeligible.is_set || is_set(vlantrunkportvlanspruningeligible.yfilter)) leaf_name_data.push_back(vlantrunkportvlanspruningeligible.get_name_leafdata());
+    if (vlantrunkportvlansrcvjoined.is_set || is_set(vlantrunkportvlansrcvjoined.yfilter)) leaf_name_data.push_back(vlantrunkportvlansrcvjoined.get_name_leafdata());
+    if (vlantrunkportvlansrcvjoined2k.is_set || is_set(vlantrunkportvlansrcvjoined2k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansrcvjoined2k.get_name_leafdata());
+    if (vlantrunkportvlansrcvjoined3k.is_set || is_set(vlantrunkportvlansrcvjoined3k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansrcvjoined3k.get_name_leafdata());
+    if (vlantrunkportvlansrcvjoined4k.is_set || is_set(vlantrunkportvlansrcvjoined4k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansrcvjoined4k.get_name_leafdata());
+    if (vlantrunkportvlansxmitjoined.is_set || is_set(vlantrunkportvlansxmitjoined.yfilter)) leaf_name_data.push_back(vlantrunkportvlansxmitjoined.get_name_leafdata());
+    if (vlantrunkportvlansxmitjoined2k.is_set || is_set(vlantrunkportvlansxmitjoined2k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansxmitjoined2k.get_name_leafdata());
+    if (vlantrunkportvlansxmitjoined3k.is_set || is_set(vlantrunkportvlansxmitjoined3k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansxmitjoined3k.get_name_leafdata());
+    if (vlantrunkportvlansxmitjoined4k.is_set || is_set(vlantrunkportvlansxmitjoined4k.yfilter)) leaf_name_data.push_back(vlantrunkportvlansxmitjoined4k.get_name_leafdata());
+    if (vlantrunkportvtpenabled.is_set || is_set(vlantrunkportvtpenabled.yfilter)) leaf_name_data.push_back(vlantrunkportvtpenabled.get_name_leafdata());
+    if (vtpvlanspruningeligible2k.is_set || is_set(vtpvlanspruningeligible2k.yfilter)) leaf_name_data.push_back(vtpvlanspruningeligible2k.get_name_leafdata());
+    if (vtpvlanspruningeligible3k.is_set || is_set(vtpvlanspruningeligible3k.yfilter)) leaf_name_data.push_back(vtpvlanspruningeligible3k.get_name_leafdata());
+    if (vtpvlanspruningeligible4k.is_set || is_set(vtpvlanspruningeligible4k.yfilter)) leaf_name_data.push_back(vtpvlanspruningeligible4k.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2438,156 +3161,389 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vlantrunkporttable::
     return children;
 }
 
-void CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlanTrunkPortIfIndex")
     {
         vlantrunkportifindex = value;
+        vlantrunkportifindex.value_namespace = name_space;
+        vlantrunkportifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stpxPreferredMISTPInstancesMap")
     {
         stpxpreferredmistpinstancesmap = value;
+        stpxpreferredmistpinstancesmap.value_namespace = name_space;
+        stpxpreferredmistpinstancesmap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stpxPreferredMSTInstancesMap")
     {
         stpxpreferredmstinstancesmap = value;
+        stpxpreferredmstinstancesmap.value_namespace = name_space;
+        stpxpreferredmstinstancesmap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stpxPreferredVlansMap")
     {
         stpxpreferredvlansmap = value;
+        stpxpreferredvlansmap.value_namespace = name_space;
+        stpxpreferredvlansmap.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stpxPreferredVlansMap2k")
     {
         stpxpreferredvlansmap2k = value;
+        stpxpreferredvlansmap2k.value_namespace = name_space;
+        stpxpreferredvlansmap2k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stpxPreferredVlansMap3k")
     {
         stpxpreferredvlansmap3k = value;
+        stpxpreferredvlansmap3k.value_namespace = name_space;
+        stpxpreferredvlansmap3k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stpxPreferredVlansMap4k")
     {
         stpxpreferredvlansmap4k = value;
+        stpxpreferredvlansmap4k.value_namespace = name_space;
+        stpxpreferredvlansmap4k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortDot1qTunnel")
     {
         vlantrunkportdot1qtunnel = value;
+        vlantrunkportdot1qtunnel.value_namespace = name_space;
+        vlantrunkportdot1qtunnel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortDynamicState")
     {
         vlantrunkportdynamicstate = value;
+        vlantrunkportdynamicstate.value_namespace = name_space;
+        vlantrunkportdynamicstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortDynamicStatus")
     {
         vlantrunkportdynamicstatus = value;
+        vlantrunkportdynamicstatus.value_namespace = name_space;
+        vlantrunkportdynamicstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortEncapsulationOperType")
     {
         vlantrunkportencapsulationopertype = value;
+        vlantrunkportencapsulationopertype.value_namespace = name_space;
+        vlantrunkportencapsulationopertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortEncapsulationType")
     {
         vlantrunkportencapsulationtype = value;
+        vlantrunkportencapsulationtype.value_namespace = name_space;
+        vlantrunkportencapsulationtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortInJoins")
     {
         vlantrunkportinjoins = value;
+        vlantrunkportinjoins.value_namespace = name_space;
+        vlantrunkportinjoins.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortManagementDomain")
     {
         vlantrunkportmanagementdomain = value;
+        vlantrunkportmanagementdomain.value_namespace = name_space;
+        vlantrunkportmanagementdomain.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortNativeVlan")
     {
         vlantrunkportnativevlan = value;
+        vlantrunkportnativevlan.value_namespace = name_space;
+        vlantrunkportnativevlan.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortOldAdverts")
     {
         vlantrunkportoldadverts = value;
+        vlantrunkportoldadverts.value_namespace = name_space;
+        vlantrunkportoldadverts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortOutJoins")
     {
         vlantrunkportoutjoins = value;
+        vlantrunkportoutjoins.value_namespace = name_space;
+        vlantrunkportoutjoins.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortRowStatus")
     {
         vlantrunkportrowstatus = value;
+        vlantrunkportrowstatus.value_namespace = name_space;
+        vlantrunkportrowstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansActiveFirst2k")
     {
         vlantrunkportvlansactivefirst2k = value;
+        vlantrunkportvlansactivefirst2k.value_namespace = name_space;
+        vlantrunkportvlansactivefirst2k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansActiveSecond2k")
     {
         vlantrunkportvlansactivesecond2k = value;
+        vlantrunkportvlansactivesecond2k.value_namespace = name_space;
+        vlantrunkportvlansactivesecond2k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansEnabled")
     {
         vlantrunkportvlansenabled = value;
+        vlantrunkportvlansenabled.value_namespace = name_space;
+        vlantrunkportvlansenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansEnabled2k")
     {
         vlantrunkportvlansenabled2k = value;
+        vlantrunkportvlansenabled2k.value_namespace = name_space;
+        vlantrunkportvlansenabled2k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansEnabled3k")
     {
         vlantrunkportvlansenabled3k = value;
+        vlantrunkportvlansenabled3k.value_namespace = name_space;
+        vlantrunkportvlansenabled3k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansEnabled4k")
     {
         vlantrunkportvlansenabled4k = value;
+        vlantrunkportvlansenabled4k.value_namespace = name_space;
+        vlantrunkportvlansenabled4k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansPruningEligible")
     {
         vlantrunkportvlanspruningeligible = value;
+        vlantrunkportvlanspruningeligible.value_namespace = name_space;
+        vlantrunkportvlanspruningeligible.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansRcvJoined")
     {
         vlantrunkportvlansrcvjoined = value;
+        vlantrunkportvlansrcvjoined.value_namespace = name_space;
+        vlantrunkportvlansrcvjoined.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansRcvJoined2k")
     {
         vlantrunkportvlansrcvjoined2k = value;
+        vlantrunkportvlansrcvjoined2k.value_namespace = name_space;
+        vlantrunkportvlansrcvjoined2k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansRcvJoined3k")
     {
         vlantrunkportvlansrcvjoined3k = value;
+        vlantrunkportvlansrcvjoined3k.value_namespace = name_space;
+        vlantrunkportvlansrcvjoined3k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansRcvJoined4k")
     {
         vlantrunkportvlansrcvjoined4k = value;
+        vlantrunkportvlansrcvjoined4k.value_namespace = name_space;
+        vlantrunkportvlansrcvjoined4k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansXmitJoined")
     {
         vlantrunkportvlansxmitjoined = value;
+        vlantrunkportvlansxmitjoined.value_namespace = name_space;
+        vlantrunkportvlansxmitjoined.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansXmitJoined2k")
     {
         vlantrunkportvlansxmitjoined2k = value;
+        vlantrunkportvlansxmitjoined2k.value_namespace = name_space;
+        vlantrunkportvlansxmitjoined2k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansXmitJoined3k")
     {
         vlantrunkportvlansxmitjoined3k = value;
+        vlantrunkportvlansxmitjoined3k.value_namespace = name_space;
+        vlantrunkportvlansxmitjoined3k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVlansXmitJoined4k")
     {
         vlantrunkportvlansxmitjoined4k = value;
+        vlantrunkportvlansxmitjoined4k.value_namespace = name_space;
+        vlantrunkportvlansxmitjoined4k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlanTrunkPortVtpEnabled")
     {
         vlantrunkportvtpenabled = value;
+        vlantrunkportvtpenabled.value_namespace = name_space;
+        vlantrunkportvtpenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlansPruningEligible2k")
     {
         vtpvlanspruningeligible2k = value;
+        vtpvlanspruningeligible2k.value_namespace = name_space;
+        vtpvlanspruningeligible2k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlansPruningEligible3k")
     {
         vtpvlanspruningeligible3k = value;
+        vtpvlanspruningeligible3k.value_namespace = name_space;
+        vtpvlanspruningeligible3k.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpVlansPruningEligible4k")
     {
         vtpvlanspruningeligible4k = value;
+        vtpvlanspruningeligible4k.value_namespace = name_space;
+        vtpvlanspruningeligible4k.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlanTrunkPortIfIndex")
+    {
+        vlantrunkportifindex.yfilter = yfilter;
+    }
+    if(value_path == "stpxPreferredMISTPInstancesMap")
+    {
+        stpxpreferredmistpinstancesmap.yfilter = yfilter;
+    }
+    if(value_path == "stpxPreferredMSTInstancesMap")
+    {
+        stpxpreferredmstinstancesmap.yfilter = yfilter;
+    }
+    if(value_path == "stpxPreferredVlansMap")
+    {
+        stpxpreferredvlansmap.yfilter = yfilter;
+    }
+    if(value_path == "stpxPreferredVlansMap2k")
+    {
+        stpxpreferredvlansmap2k.yfilter = yfilter;
+    }
+    if(value_path == "stpxPreferredVlansMap3k")
+    {
+        stpxpreferredvlansmap3k.yfilter = yfilter;
+    }
+    if(value_path == "stpxPreferredVlansMap4k")
+    {
+        stpxpreferredvlansmap4k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortDot1qTunnel")
+    {
+        vlantrunkportdot1qtunnel.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortDynamicState")
+    {
+        vlantrunkportdynamicstate.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortDynamicStatus")
+    {
+        vlantrunkportdynamicstatus.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortEncapsulationOperType")
+    {
+        vlantrunkportencapsulationopertype.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortEncapsulationType")
+    {
+        vlantrunkportencapsulationtype.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortInJoins")
+    {
+        vlantrunkportinjoins.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortManagementDomain")
+    {
+        vlantrunkportmanagementdomain.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortNativeVlan")
+    {
+        vlantrunkportnativevlan.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortOldAdverts")
+    {
+        vlantrunkportoldadverts.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortOutJoins")
+    {
+        vlantrunkportoutjoins.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortRowStatus")
+    {
+        vlantrunkportrowstatus.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansActiveFirst2k")
+    {
+        vlantrunkportvlansactivefirst2k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansActiveSecond2k")
+    {
+        vlantrunkportvlansactivesecond2k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansEnabled")
+    {
+        vlantrunkportvlansenabled.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansEnabled2k")
+    {
+        vlantrunkportvlansenabled2k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansEnabled3k")
+    {
+        vlantrunkportvlansenabled3k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansEnabled4k")
+    {
+        vlantrunkportvlansenabled4k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansPruningEligible")
+    {
+        vlantrunkportvlanspruningeligible.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansRcvJoined")
+    {
+        vlantrunkportvlansrcvjoined.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansRcvJoined2k")
+    {
+        vlantrunkportvlansrcvjoined2k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansRcvJoined3k")
+    {
+        vlantrunkportvlansrcvjoined3k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansRcvJoined4k")
+    {
+        vlantrunkportvlansrcvjoined4k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansXmitJoined")
+    {
+        vlantrunkportvlansxmitjoined.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansXmitJoined2k")
+    {
+        vlantrunkportvlansxmitjoined2k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansXmitJoined3k")
+    {
+        vlantrunkportvlansxmitjoined3k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVlansXmitJoined4k")
+    {
+        vlantrunkportvlansxmitjoined4k.yfilter = yfilter;
+    }
+    if(value_path == "vlanTrunkPortVtpEnabled")
+    {
+        vlantrunkportvtpenabled.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlansPruningEligible2k")
+    {
+        vtpvlanspruningeligible2k.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlansPruningEligible3k")
+    {
+        vtpvlanspruningeligible3k.yfilter = yfilter;
+    }
+    if(value_path == "vtpVlansPruningEligible4k")
+    {
+        vtpvlanspruningeligible4k.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlanTrunkPortIfIndex" || name == "stpxPreferredMISTPInstancesMap" || name == "stpxPreferredMSTInstancesMap" || name == "stpxPreferredVlansMap" || name == "stpxPreferredVlansMap2k" || name == "stpxPreferredVlansMap3k" || name == "stpxPreferredVlansMap4k" || name == "vlanTrunkPortDot1qTunnel" || name == "vlanTrunkPortDynamicState" || name == "vlanTrunkPortDynamicStatus" || name == "vlanTrunkPortEncapsulationOperType" || name == "vlanTrunkPortEncapsulationType" || name == "vlanTrunkPortInJoins" || name == "vlanTrunkPortManagementDomain" || name == "vlanTrunkPortNativeVlan" || name == "vlanTrunkPortOldAdverts" || name == "vlanTrunkPortOutJoins" || name == "vlanTrunkPortRowStatus" || name == "vlanTrunkPortVlansActiveFirst2k" || name == "vlanTrunkPortVlansActiveSecond2k" || name == "vlanTrunkPortVlansEnabled" || name == "vlanTrunkPortVlansEnabled2k" || name == "vlanTrunkPortVlansEnabled3k" || name == "vlanTrunkPortVlansEnabled4k" || name == "vlanTrunkPortVlansPruningEligible" || name == "vlanTrunkPortVlansRcvJoined" || name == "vlanTrunkPortVlansRcvJoined2k" || name == "vlanTrunkPortVlansRcvJoined3k" || name == "vlanTrunkPortVlansRcvJoined4k" || name == "vlanTrunkPortVlansXmitJoined" || name == "vlanTrunkPortVlansXmitJoined2k" || name == "vlanTrunkPortVlansXmitJoined3k" || name == "vlanTrunkPortVlansXmitJoined4k" || name == "vlanTrunkPortVtpEnabled" || name == "vtpVlansPruningEligible2k" || name == "vtpVlansPruningEligible3k" || name == "vtpVlansPruningEligible4k")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpdiscovertable::Vtpdiscovertable()
@@ -2601,9 +3557,9 @@ CiscoVtpMib::Vtpdiscovertable::~Vtpdiscovertable()
 
 bool CiscoVtpMib::Vtpdiscovertable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdiscoverentry_.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverentry.size(); index++)
     {
-        if(vtpdiscoverentry_[index]->has_data())
+        if(vtpdiscoverentry[index]->has_data())
             return true;
     }
     return false;
@@ -2611,12 +3567,12 @@ bool CiscoVtpMib::Vtpdiscovertable::has_data() const
 
 bool CiscoVtpMib::Vtpdiscovertable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdiscoverentry_.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverentry.size(); index++)
     {
-        if(vtpdiscoverentry_[index]->has_operation())
+        if(vtpdiscoverentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vtpdiscovertable::get_segment_path() const
@@ -2653,7 +3609,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscovertable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpDiscoverEntry")
     {
-        for(auto const & c : vtpdiscoverentry_)
+        for(auto const & c : vtpdiscoverentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2663,7 +3619,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscovertable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry>();
         c->parent = this;
-        vtpdiscoverentry_.push_back(c);
+        vtpdiscoverentry.push_back(c);
         return c;
     }
 
@@ -2673,7 +3629,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscovertable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdiscovertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpdiscoverentry_)
+    for (auto const & c : vtpdiscoverentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2681,8 +3637,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdiscovertable::ge
     return children;
 }
 
-void CiscoVtpMib::Vtpdiscovertable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpdiscovertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vtpdiscovertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vtpdiscovertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpDiscoverEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverentry()
@@ -2709,11 +3676,11 @@ bool CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::has_data() const
 
 bool CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(vtpdiscoveraction.operation)
-	|| is_set(vtpdiscoverstatus.operation)
-	|| is_set(vtplastdiscovertime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(vtpdiscoveraction.yfilter)
+	|| ydk::is_set(vtpdiscoverstatus.yfilter)
+	|| ydk::is_set(vtplastdiscovertime.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::get_segment_path() const
@@ -2739,10 +3706,10 @@ const EntityPath CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (vtpdiscoveraction.is_set || is_set(vtpdiscoveraction.operation)) leaf_name_data.push_back(vtpdiscoveraction.get_name_leafdata());
-    if (vtpdiscoverstatus.is_set || is_set(vtpdiscoverstatus.operation)) leaf_name_data.push_back(vtpdiscoverstatus.get_name_leafdata());
-    if (vtplastdiscovertime.is_set || is_set(vtplastdiscovertime.operation)) leaf_name_data.push_back(vtplastdiscovertime.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (vtpdiscoveraction.is_set || is_set(vtpdiscoveraction.yfilter)) leaf_name_data.push_back(vtpdiscoveraction.get_name_leafdata());
+    if (vtpdiscoverstatus.is_set || is_set(vtpdiscoverstatus.yfilter)) leaf_name_data.push_back(vtpdiscoverstatus.get_name_leafdata());
+    if (vtplastdiscovertime.is_set || is_set(vtplastdiscovertime.yfilter)) leaf_name_data.push_back(vtplastdiscovertime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2761,24 +3728,59 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdiscovertable::Vt
     return children;
 }
 
-void CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverAction")
     {
         vtpdiscoveraction = value;
+        vtpdiscoveraction.value_namespace = name_space;
+        vtpdiscoveraction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverStatus")
     {
         vtpdiscoverstatus = value;
+        vtpdiscoverstatus.value_namespace = name_space;
+        vtpdiscoverstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpLastDiscoverTime")
     {
         vtplastdiscovertime = value;
+        vtplastdiscovertime.value_namespace = name_space;
+        vtplastdiscovertime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverAction")
+    {
+        vtpdiscoveraction.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverStatus")
+    {
+        vtpdiscoverstatus.yfilter = yfilter;
+    }
+    if(value_path == "vtpLastDiscoverTime")
+    {
+        vtplastdiscovertime.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "vtpDiscoverAction" || name == "vtpDiscoverStatus" || name == "vtpLastDiscoverTime")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresulttable()
@@ -2792,9 +3794,9 @@ CiscoVtpMib::Vtpdiscoverresulttable::~Vtpdiscoverresulttable()
 
 bool CiscoVtpMib::Vtpdiscoverresulttable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdiscoverresultentry_.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverresultentry.size(); index++)
     {
-        if(vtpdiscoverresultentry_[index]->has_data())
+        if(vtpdiscoverresultentry[index]->has_data())
             return true;
     }
     return false;
@@ -2802,12 +3804,12 @@ bool CiscoVtpMib::Vtpdiscoverresulttable::has_data() const
 
 bool CiscoVtpMib::Vtpdiscoverresulttable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdiscoverresultentry_.size(); index++)
+    for (std::size_t index=0; index<vtpdiscoverresultentry.size(); index++)
     {
-        if(vtpdiscoverresultentry_[index]->has_operation())
+        if(vtpdiscoverresultentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vtpdiscoverresulttable::get_segment_path() const
@@ -2844,7 +3846,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscoverresulttable::get_child_by_name(c
 {
     if(child_yang_name == "vtpDiscoverResultEntry")
     {
-        for(auto const & c : vtpdiscoverresultentry_)
+        for(auto const & c : vtpdiscoverresultentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -2854,7 +3856,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscoverresulttable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry>();
         c->parent = this;
-        vtpdiscoverresultentry_.push_back(c);
+        vtpdiscoverresultentry.push_back(c);
         return c;
     }
 
@@ -2864,7 +3866,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdiscoverresulttable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdiscoverresulttable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpdiscoverresultentry_)
+    for (auto const & c : vtpdiscoverresultentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -2872,8 +3874,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdiscoverresulttab
     return children;
 }
 
-void CiscoVtpMib::Vtpdiscoverresulttable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpdiscoverresulttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vtpdiscoverresulttable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vtpdiscoverresulttable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpDiscoverResultEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::Vtpdiscoverresultentry()
@@ -2908,15 +3921,15 @@ bool CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::has_data() con
 
 bool CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(vtpdiscoverresultindex.operation)
-	|| is_set(vtpdiscoverresultconflicting.operation)
-	|| is_set(vtpdiscoverresultdatabasename.operation)
-	|| is_set(vtpdiscoverresultdeviceid.operation)
-	|| is_set(vtpdiscoverresultprimaryserver.operation)
-	|| is_set(vtpdiscoverresultrevnumber.operation)
-	|| is_set(vtpdiscoverresultsystemname.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(vtpdiscoverresultindex.yfilter)
+	|| ydk::is_set(vtpdiscoverresultconflicting.yfilter)
+	|| ydk::is_set(vtpdiscoverresultdatabasename.yfilter)
+	|| ydk::is_set(vtpdiscoverresultdeviceid.yfilter)
+	|| ydk::is_set(vtpdiscoverresultprimaryserver.yfilter)
+	|| ydk::is_set(vtpdiscoverresultrevnumber.yfilter)
+	|| ydk::is_set(vtpdiscoverresultsystemname.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::get_segment_path() const
@@ -2942,14 +3955,14 @@ const EntityPath CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (vtpdiscoverresultindex.is_set || is_set(vtpdiscoverresultindex.operation)) leaf_name_data.push_back(vtpdiscoverresultindex.get_name_leafdata());
-    if (vtpdiscoverresultconflicting.is_set || is_set(vtpdiscoverresultconflicting.operation)) leaf_name_data.push_back(vtpdiscoverresultconflicting.get_name_leafdata());
-    if (vtpdiscoverresultdatabasename.is_set || is_set(vtpdiscoverresultdatabasename.operation)) leaf_name_data.push_back(vtpdiscoverresultdatabasename.get_name_leafdata());
-    if (vtpdiscoverresultdeviceid.is_set || is_set(vtpdiscoverresultdeviceid.operation)) leaf_name_data.push_back(vtpdiscoverresultdeviceid.get_name_leafdata());
-    if (vtpdiscoverresultprimaryserver.is_set || is_set(vtpdiscoverresultprimaryserver.operation)) leaf_name_data.push_back(vtpdiscoverresultprimaryserver.get_name_leafdata());
-    if (vtpdiscoverresultrevnumber.is_set || is_set(vtpdiscoverresultrevnumber.operation)) leaf_name_data.push_back(vtpdiscoverresultrevnumber.get_name_leafdata());
-    if (vtpdiscoverresultsystemname.is_set || is_set(vtpdiscoverresultsystemname.operation)) leaf_name_data.push_back(vtpdiscoverresultsystemname.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (vtpdiscoverresultindex.is_set || is_set(vtpdiscoverresultindex.yfilter)) leaf_name_data.push_back(vtpdiscoverresultindex.get_name_leafdata());
+    if (vtpdiscoverresultconflicting.is_set || is_set(vtpdiscoverresultconflicting.yfilter)) leaf_name_data.push_back(vtpdiscoverresultconflicting.get_name_leafdata());
+    if (vtpdiscoverresultdatabasename.is_set || is_set(vtpdiscoverresultdatabasename.yfilter)) leaf_name_data.push_back(vtpdiscoverresultdatabasename.get_name_leafdata());
+    if (vtpdiscoverresultdeviceid.is_set || is_set(vtpdiscoverresultdeviceid.yfilter)) leaf_name_data.push_back(vtpdiscoverresultdeviceid.get_name_leafdata());
+    if (vtpdiscoverresultprimaryserver.is_set || is_set(vtpdiscoverresultprimaryserver.yfilter)) leaf_name_data.push_back(vtpdiscoverresultprimaryserver.get_name_leafdata());
+    if (vtpdiscoverresultrevnumber.is_set || is_set(vtpdiscoverresultrevnumber.yfilter)) leaf_name_data.push_back(vtpdiscoverresultrevnumber.get_name_leafdata());
+    if (vtpdiscoverresultsystemname.is_set || is_set(vtpdiscoverresultsystemname.yfilter)) leaf_name_data.push_back(vtpdiscoverresultsystemname.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2968,40 +3981,99 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdiscoverresulttab
     return children;
 }
 
-void CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverResultIndex")
     {
         vtpdiscoverresultindex = value;
+        vtpdiscoverresultindex.value_namespace = name_space;
+        vtpdiscoverresultindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverResultConflicting")
     {
         vtpdiscoverresultconflicting = value;
+        vtpdiscoverresultconflicting.value_namespace = name_space;
+        vtpdiscoverresultconflicting.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverResultDatabaseName")
     {
         vtpdiscoverresultdatabasename = value;
+        vtpdiscoverresultdatabasename.value_namespace = name_space;
+        vtpdiscoverresultdatabasename.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverResultDeviceId")
     {
         vtpdiscoverresultdeviceid = value;
+        vtpdiscoverresultdeviceid.value_namespace = name_space;
+        vtpdiscoverresultdeviceid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverResultPrimaryServer")
     {
         vtpdiscoverresultprimaryserver = value;
+        vtpdiscoverresultprimaryserver.value_namespace = name_space;
+        vtpdiscoverresultprimaryserver.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverResultRevNumber")
     {
         vtpdiscoverresultrevnumber = value;
+        vtpdiscoverresultrevnumber.value_namespace = name_space;
+        vtpdiscoverresultrevnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDiscoverResultSystemName")
     {
         vtpdiscoverresultsystemname = value;
+        vtpdiscoverresultsystemname.value_namespace = name_space;
+        vtpdiscoverresultsystemname.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverResultIndex")
+    {
+        vtpdiscoverresultindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverResultConflicting")
+    {
+        vtpdiscoverresultconflicting.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverResultDatabaseName")
+    {
+        vtpdiscoverresultdatabasename.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverResultDeviceId")
+    {
+        vtpdiscoverresultdeviceid.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverResultPrimaryServer")
+    {
+        vtpdiscoverresultprimaryserver.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverResultRevNumber")
+    {
+        vtpdiscoverresultrevnumber.yfilter = yfilter;
+    }
+    if(value_path == "vtpDiscoverResultSystemName")
+    {
+        vtpdiscoverresultsystemname.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vtpdiscoverresulttable::Vtpdiscoverresultentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "vtpDiscoverResultIndex" || name == "vtpDiscoverResultConflicting" || name == "vtpDiscoverResultDatabaseName" || name == "vtpDiscoverResultDeviceId" || name == "vtpDiscoverResultPrimaryServer" || name == "vtpDiscoverResultRevNumber" || name == "vtpDiscoverResultSystemName")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpdatabasetable::Vtpdatabasetable()
@@ -3015,9 +4087,9 @@ CiscoVtpMib::Vtpdatabasetable::~Vtpdatabasetable()
 
 bool CiscoVtpMib::Vtpdatabasetable::has_data() const
 {
-    for (std::size_t index=0; index<vtpdatabaseentry_.size(); index++)
+    for (std::size_t index=0; index<vtpdatabaseentry.size(); index++)
     {
-        if(vtpdatabaseentry_[index]->has_data())
+        if(vtpdatabaseentry[index]->has_data())
             return true;
     }
     return false;
@@ -3025,12 +4097,12 @@ bool CiscoVtpMib::Vtpdatabasetable::has_data() const
 
 bool CiscoVtpMib::Vtpdatabasetable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpdatabaseentry_.size(); index++)
+    for (std::size_t index=0; index<vtpdatabaseentry.size(); index++)
     {
-        if(vtpdatabaseentry_[index]->has_operation())
+        if(vtpdatabaseentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vtpdatabasetable::get_segment_path() const
@@ -3067,7 +4139,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdatabasetable::get_child_by_name(const s
 {
     if(child_yang_name == "vtpDatabaseEntry")
     {
-        for(auto const & c : vtpdatabaseentry_)
+        for(auto const & c : vtpdatabaseentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3077,7 +4149,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdatabasetable::get_child_by_name(const s
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry>();
         c->parent = this;
-        vtpdatabaseentry_.push_back(c);
+        vtpdatabaseentry.push_back(c);
         return c;
     }
 
@@ -3087,7 +4159,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpdatabasetable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdatabasetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpdatabaseentry_)
+    for (auto const & c : vtpdatabaseentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3095,8 +4167,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdatabasetable::ge
     return children;
 }
 
-void CiscoVtpMib::Vtpdatabasetable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpdatabasetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vtpdatabasetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vtpdatabasetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpDatabaseEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaseentry()
@@ -3133,16 +4216,16 @@ bool CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::has_data() const
 
 bool CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(vtpdatabaseindex.operation)
-	|| is_set(vtpdatabaselocalmode.operation)
-	|| is_set(vtpdatabasename.operation)
-	|| is_set(vtpdatabaseprimaryserver.operation)
-	|| is_set(vtpdatabaseprimaryserverid.operation)
-	|| is_set(vtpdatabaserevnumber.operation)
-	|| is_set(vtpdatabasetakeoverpassword.operation)
-	|| is_set(vtpdatabasetakeoverprimary.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(vtpdatabaseindex.yfilter)
+	|| ydk::is_set(vtpdatabaselocalmode.yfilter)
+	|| ydk::is_set(vtpdatabasename.yfilter)
+	|| ydk::is_set(vtpdatabaseprimaryserver.yfilter)
+	|| ydk::is_set(vtpdatabaseprimaryserverid.yfilter)
+	|| ydk::is_set(vtpdatabaserevnumber.yfilter)
+	|| ydk::is_set(vtpdatabasetakeoverpassword.yfilter)
+	|| ydk::is_set(vtpdatabasetakeoverprimary.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::get_segment_path() const
@@ -3168,15 +4251,15 @@ const EntityPath CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (vtpdatabaseindex.is_set || is_set(vtpdatabaseindex.operation)) leaf_name_data.push_back(vtpdatabaseindex.get_name_leafdata());
-    if (vtpdatabaselocalmode.is_set || is_set(vtpdatabaselocalmode.operation)) leaf_name_data.push_back(vtpdatabaselocalmode.get_name_leafdata());
-    if (vtpdatabasename.is_set || is_set(vtpdatabasename.operation)) leaf_name_data.push_back(vtpdatabasename.get_name_leafdata());
-    if (vtpdatabaseprimaryserver.is_set || is_set(vtpdatabaseprimaryserver.operation)) leaf_name_data.push_back(vtpdatabaseprimaryserver.get_name_leafdata());
-    if (vtpdatabaseprimaryserverid.is_set || is_set(vtpdatabaseprimaryserverid.operation)) leaf_name_data.push_back(vtpdatabaseprimaryserverid.get_name_leafdata());
-    if (vtpdatabaserevnumber.is_set || is_set(vtpdatabaserevnumber.operation)) leaf_name_data.push_back(vtpdatabaserevnumber.get_name_leafdata());
-    if (vtpdatabasetakeoverpassword.is_set || is_set(vtpdatabasetakeoverpassword.operation)) leaf_name_data.push_back(vtpdatabasetakeoverpassword.get_name_leafdata());
-    if (vtpdatabasetakeoverprimary.is_set || is_set(vtpdatabasetakeoverprimary.operation)) leaf_name_data.push_back(vtpdatabasetakeoverprimary.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (vtpdatabaseindex.is_set || is_set(vtpdatabaseindex.yfilter)) leaf_name_data.push_back(vtpdatabaseindex.get_name_leafdata());
+    if (vtpdatabaselocalmode.is_set || is_set(vtpdatabaselocalmode.yfilter)) leaf_name_data.push_back(vtpdatabaselocalmode.get_name_leafdata());
+    if (vtpdatabasename.is_set || is_set(vtpdatabasename.yfilter)) leaf_name_data.push_back(vtpdatabasename.get_name_leafdata());
+    if (vtpdatabaseprimaryserver.is_set || is_set(vtpdatabaseprimaryserver.yfilter)) leaf_name_data.push_back(vtpdatabaseprimaryserver.get_name_leafdata());
+    if (vtpdatabaseprimaryserverid.is_set || is_set(vtpdatabaseprimaryserverid.yfilter)) leaf_name_data.push_back(vtpdatabaseprimaryserverid.get_name_leafdata());
+    if (vtpdatabaserevnumber.is_set || is_set(vtpdatabaserevnumber.yfilter)) leaf_name_data.push_back(vtpdatabaserevnumber.get_name_leafdata());
+    if (vtpdatabasetakeoverpassword.is_set || is_set(vtpdatabasetakeoverpassword.yfilter)) leaf_name_data.push_back(vtpdatabasetakeoverpassword.get_name_leafdata());
+    if (vtpdatabasetakeoverprimary.is_set || is_set(vtpdatabasetakeoverprimary.yfilter)) leaf_name_data.push_back(vtpdatabasetakeoverprimary.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3195,44 +4278,109 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpdatabasetable::Vt
     return children;
 }
 
-void CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDatabaseIndex")
     {
         vtpdatabaseindex = value;
+        vtpdatabaseindex.value_namespace = name_space;
+        vtpdatabaseindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDatabaseLocalMode")
     {
         vtpdatabaselocalmode = value;
+        vtpdatabaselocalmode.value_namespace = name_space;
+        vtpdatabaselocalmode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDatabaseName")
     {
         vtpdatabasename = value;
+        vtpdatabasename.value_namespace = name_space;
+        vtpdatabasename.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDatabasePrimaryServer")
     {
         vtpdatabaseprimaryserver = value;
+        vtpdatabaseprimaryserver.value_namespace = name_space;
+        vtpdatabaseprimaryserver.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDatabasePrimaryServerId")
     {
         vtpdatabaseprimaryserverid = value;
+        vtpdatabaseprimaryserverid.value_namespace = name_space;
+        vtpdatabaseprimaryserverid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDatabaseRevNumber")
     {
         vtpdatabaserevnumber = value;
+        vtpdatabaserevnumber.value_namespace = name_space;
+        vtpdatabaserevnumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDatabaseTakeOverPassword")
     {
         vtpdatabasetakeoverpassword = value;
+        vtpdatabasetakeoverpassword.value_namespace = name_space;
+        vtpdatabasetakeoverpassword.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpDatabaseTakeOverPrimary")
     {
         vtpdatabasetakeoverprimary = value;
+        vtpdatabasetakeoverprimary.value_namespace = name_space;
+        vtpdatabasetakeoverprimary.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpDatabaseIndex")
+    {
+        vtpdatabaseindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpDatabaseLocalMode")
+    {
+        vtpdatabaselocalmode.yfilter = yfilter;
+    }
+    if(value_path == "vtpDatabaseName")
+    {
+        vtpdatabasename.yfilter = yfilter;
+    }
+    if(value_path == "vtpDatabasePrimaryServer")
+    {
+        vtpdatabaseprimaryserver.yfilter = yfilter;
+    }
+    if(value_path == "vtpDatabasePrimaryServerId")
+    {
+        vtpdatabaseprimaryserverid.yfilter = yfilter;
+    }
+    if(value_path == "vtpDatabaseRevNumber")
+    {
+        vtpdatabaserevnumber.yfilter = yfilter;
+    }
+    if(value_path == "vtpDatabaseTakeOverPassword")
+    {
+        vtpdatabasetakeoverpassword.yfilter = yfilter;
+    }
+    if(value_path == "vtpDatabaseTakeOverPrimary")
+    {
+        vtpdatabasetakeoverprimary.yfilter = yfilter;
+    }
+}
+
+bool CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "vtpDatabaseIndex" || name == "vtpDatabaseLocalMode" || name == "vtpDatabaseName" || name == "vtpDatabasePrimaryServer" || name == "vtpDatabasePrimaryServerId" || name == "vtpDatabaseRevNumber" || name == "vtpDatabaseTakeOverPassword" || name == "vtpDatabaseTakeOverPrimary")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpauthenticationtable::Vtpauthenticationtable()
@@ -3246,9 +4394,9 @@ CiscoVtpMib::Vtpauthenticationtable::~Vtpauthenticationtable()
 
 bool CiscoVtpMib::Vtpauthenticationtable::has_data() const
 {
-    for (std::size_t index=0; index<vtpauthentry_.size(); index++)
+    for (std::size_t index=0; index<vtpauthentry.size(); index++)
     {
-        if(vtpauthentry_[index]->has_data())
+        if(vtpauthentry[index]->has_data())
             return true;
     }
     return false;
@@ -3256,12 +4404,12 @@ bool CiscoVtpMib::Vtpauthenticationtable::has_data() const
 
 bool CiscoVtpMib::Vtpauthenticationtable::has_operation() const
 {
-    for (std::size_t index=0; index<vtpauthentry_.size(); index++)
+    for (std::size_t index=0; index<vtpauthentry.size(); index++)
     {
-        if(vtpauthentry_[index]->has_operation())
+        if(vtpauthentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoVtpMib::Vtpauthenticationtable::get_segment_path() const
@@ -3298,7 +4446,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpauthenticationtable::get_child_by_name(c
 {
     if(child_yang_name == "vtpAuthEntry")
     {
-        for(auto const & c : vtpauthentry_)
+        for(auto const & c : vtpauthentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -3308,7 +4456,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpauthenticationtable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry>();
         c->parent = this;
-        vtpauthentry_.push_back(c);
+        vtpauthentry.push_back(c);
         return c;
     }
 
@@ -3318,7 +4466,7 @@ std::shared_ptr<Entity> CiscoVtpMib::Vtpauthenticationtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpauthenticationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : vtpauthentry_)
+    for (auto const & c : vtpauthentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -3326,8 +4474,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpauthenticationtab
     return children;
 }
 
-void CiscoVtpMib::Vtpauthenticationtable::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpauthenticationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoVtpMib::Vtpauthenticationtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoVtpMib::Vtpauthenticationtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vtpAuthEntry")
+        return true;
+    return false;
 }
 
 CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::Vtpauthentry()
@@ -3354,11 +4513,11 @@ bool CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::has_data() const
 
 bool CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(managementdomainindex.operation)
-	|| is_set(vtpauthpassword.operation)
-	|| is_set(vtpauthpasswordtype.operation)
-	|| is_set(vtpauthsecretkey.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(managementdomainindex.yfilter)
+	|| ydk::is_set(vtpauthpassword.yfilter)
+	|| ydk::is_set(vtpauthpasswordtype.yfilter)
+	|| ydk::is_set(vtpauthsecretkey.yfilter);
 }
 
 std::string CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::get_segment_path() const
@@ -3384,10 +4543,10 @@ const EntityPath CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (managementdomainindex.is_set || is_set(managementdomainindex.operation)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
-    if (vtpauthpassword.is_set || is_set(vtpauthpassword.operation)) leaf_name_data.push_back(vtpauthpassword.get_name_leafdata());
-    if (vtpauthpasswordtype.is_set || is_set(vtpauthpasswordtype.operation)) leaf_name_data.push_back(vtpauthpasswordtype.get_name_leafdata());
-    if (vtpauthsecretkey.is_set || is_set(vtpauthsecretkey.operation)) leaf_name_data.push_back(vtpauthsecretkey.get_name_leafdata());
+    if (managementdomainindex.is_set || is_set(managementdomainindex.yfilter)) leaf_name_data.push_back(managementdomainindex.get_name_leafdata());
+    if (vtpauthpassword.is_set || is_set(vtpauthpassword.yfilter)) leaf_name_data.push_back(vtpauthpassword.get_name_leafdata());
+    if (vtpauthpasswordtype.is_set || is_set(vtpauthpasswordtype.yfilter)) leaf_name_data.push_back(vtpauthpasswordtype.get_name_leafdata());
+    if (vtpauthsecretkey.is_set || is_set(vtpauthsecretkey.yfilter)) leaf_name_data.push_back(vtpauthsecretkey.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3406,142 +4565,177 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoVtpMib::Vtpauthenticationtab
     return children;
 }
 
-void CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::set_value(const std::string & value_path, std::string value)
+void CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "managementDomainIndex")
     {
         managementdomainindex = value;
+        managementdomainindex.value_namespace = name_space;
+        managementdomainindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpAuthPassword")
     {
         vtpauthpassword = value;
+        vtpauthpassword.value_namespace = name_space;
+        vtpauthpassword.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpAuthPasswordType")
     {
         vtpauthpasswordtype = value;
+        vtpauthpasswordtype.value_namespace = name_space;
+        vtpauthpasswordtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vtpAuthSecretKey")
     {
         vtpauthsecretkey = value;
+        vtpauthsecretkey.value_namespace = name_space;
+        vtpauthsecretkey.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf VlantypeEnum::ethernet {1, "ethernet"};
-const Enum::YLeaf VlantypeEnum::fddi {2, "fddi"};
-const Enum::YLeaf VlantypeEnum::tokenRing {3, "tokenRing"};
-const Enum::YLeaf VlantypeEnum::fddiNet {4, "fddiNet"};
-const Enum::YLeaf VlantypeEnum::trNet {5, "trNet"};
-const Enum::YLeaf VlantypeEnum::deprecated {6, "deprecated"};
+void CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "managementDomainIndex")
+    {
+        managementdomainindex.yfilter = yfilter;
+    }
+    if(value_path == "vtpAuthPassword")
+    {
+        vtpauthpassword.yfilter = yfilter;
+    }
+    if(value_path == "vtpAuthPasswordType")
+    {
+        vtpauthpasswordtype.yfilter = yfilter;
+    }
+    if(value_path == "vtpAuthSecretKey")
+    {
+        vtpauthsecretkey.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CiscoVtpMib::Vtpstatus::VtpversionEnum::one {1, "one"};
-const Enum::YLeaf CiscoVtpMib::Vtpstatus::VtpversionEnum::two {2, "two"};
-const Enum::YLeaf CiscoVtpMib::Vtpstatus::VtpversionEnum::none {3, "none"};
-const Enum::YLeaf CiscoVtpMib::Vtpstatus::VtpversionEnum::three {4, "three"};
+bool CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "managementDomainIndex" || name == "vtpAuthPassword" || name == "vtpAuthPasswordType" || name == "vtpAuthSecretKey")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoVtpMib::Internalvlaninfo::VtpinternalvlanallocpolicyEnum::ascending {1, "ascending"};
-const Enum::YLeaf CiscoVtpMib::Internalvlaninfo::VtpinternalvlanallocpolicyEnum::descending {2, "descending"};
+const Enum::YLeaf Vlantype::ethernet {1, "ethernet"};
+const Enum::YLeaf Vlantype::fddi {2, "fddi"};
+const Enum::YLeaf Vlantype::tokenRing {3, "tokenRing"};
+const Enum::YLeaf Vlantype::fddiNet {4, "fddiNet"};
+const Enum::YLeaf Vlantype::trNet {5, "trNet"};
+const Enum::YLeaf Vlantype::deprecated {6, "deprecated"};
 
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainlocalmodeEnum::client {1, "client"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainlocalmodeEnum::server {2, "server"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainlocalmodeEnum::transparent {3, "transparent"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainlocalmodeEnum::off {4, "off"};
+const Enum::YLeaf CiscoVtpMib::Vtpstatus::Vtpversion::one {1, "one"};
+const Enum::YLeaf CiscoVtpMib::Vtpstatus::Vtpversion::two {2, "two"};
+const Enum::YLeaf CiscoVtpMib::Vtpstatus::Vtpversion::none {3, "none"};
+const Enum::YLeaf CiscoVtpMib::Vtpstatus::Vtpversion::three {4, "three"};
 
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainpruningstateEnum::enabled {1, "enabled"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainpruningstateEnum::disabled {2, "disabled"};
+const Enum::YLeaf CiscoVtpMib::Internalvlaninfo::Vtpinternalvlanallocpolicy::ascending {1, "ascending"};
+const Enum::YLeaf CiscoVtpMib::Internalvlaninfo::Vtpinternalvlanallocpolicy::descending {2, "descending"};
 
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainversioninuseEnum::version1 {1, "version1"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainversioninuseEnum::version2 {2, "version2"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainversioninuseEnum::none {3, "none"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainversioninuseEnum::version3 {4, "version3"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode::client {1, "client"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode::server {2, "server"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode::transparent {3, "transparent"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode::off {4, "off"};
 
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainpruningstateoperEnum::enabled {1, "enabled"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::ManagementdomainpruningstateoperEnum::disabled {2, "disabled"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainpruningstate::enabled {1, "enabled"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainpruningstate::disabled {2, "disabled"};
 
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlaneditoperationEnum::none {1, "none"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlaneditoperationEnum::copy {2, "copy"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlaneditoperationEnum::apply {3, "apply"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlaneditoperationEnum::release {4, "release"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlaneditoperationEnum::restartTimer {5, "restartTimer"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse::version1 {1, "version1"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse::version2 {2, "version2"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse::none {3, "none"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse::version3 {4, "version3"};
 
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::inProgress {1, "inProgress"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::succeeded {2, "succeeded"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::configNumberError {3, "configNumberError"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::inconsistentEdit {4, "inconsistentEdit"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::tooBig {5, "tooBig"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::localNVStoreFail {6, "localNVStoreFail"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::remoteNVStoreFail {7, "remoteNVStoreFail"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::editBufferEmpty {8, "editBufferEmpty"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::someOtherError {9, "someOtherError"};
-const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::VtpvlanapplystatusEnum::notPrimaryServer {10, "notPrimaryServer"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainpruningstateoper::enabled {1, "enabled"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Managementdomainpruningstateoper::disabled {2, "disabled"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanstateEnum::operational {1, "operational"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanstateEnum::suspended {2, "suspended"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanstateEnum::mtuTooBigForDevice {3, "mtuTooBigForDevice"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanstateEnum::mtuTooBigForTrunk {4, "mtuTooBigForTrunk"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::none {1, "none"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::copy {2, "copy"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::apply {3, "apply"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::release {4, "release"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation::restartTimer {5, "restartTimer"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanstptypeEnum::ieee {1, "ieee"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanstptypeEnum::ibm {2, "ibm"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanstptypeEnum::hybrid {3, "hybrid"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::inProgress {1, "inProgress"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::succeeded {2, "succeeded"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::configNumberError {3, "configNumberError"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::inconsistentEdit {4, "inconsistentEdit"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::tooBig {5, "tooBig"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::localNVStoreFail {6, "localNVStoreFail"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::remoteNVStoreFail {7, "remoteNVStoreFail"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::editBufferEmpty {8, "editBufferEmpty"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::someOtherError {9, "someOtherError"};
+const Enum::YLeaf CiscoVtpMib::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus::notPrimaryServer {10, "notPrimaryServer"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanbridgetypeEnum::none {0, "none"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanbridgetypeEnum::srt {1, "srt"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::VtpvlanbridgetypeEnum::srb {2, "srb"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanstate::operational {1, "operational"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanstate::suspended {2, "suspended"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanstate::mtuTooBigForDevice {3, "mtuTooBigForDevice"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanstate::mtuTooBigForTrunk {4, "mtuTooBigForTrunk"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::VtpvlaneditstateEnum::operational {1, "operational"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::VtpvlaneditstateEnum::suspended {2, "suspended"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanstptype::ieee {1, "ieee"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanstptype::ibm {2, "ibm"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanstptype::hybrid {3, "hybrid"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::VtpvlaneditstptypeEnum::ieee {1, "ieee"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::VtpvlaneditstptypeEnum::ibm {2, "ibm"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::VtpvlaneditstptypeEnum::auto_ {3, "auto"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanbridgetype::none {0, "none"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanbridgetype::srt {1, "srt"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlantable::Vtpvlanentry::Vtpvlanbridgetype::srb {2, "srb"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::VtpvlaneditbridgetypeEnum::srt {1, "srt"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::VtpvlaneditbridgetypeEnum::srb {2, "srb"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstate::operational {1, "operational"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstate::suspended {2, "suspended"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::VtpvlanlocalshutdownEnum::up {1, "up"};
-const Enum::YLeaf CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::VtpvlanlocalshutdownEnum::down {2, "down"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstptype::ieee {1, "ieee"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstptype::ibm {2, "ibm"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstptype::auto_ {3, "auto"};
 
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationtypeEnum::isl {1, "isl"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationtypeEnum::dot10 {2, "dot10"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationtypeEnum::lane {3, "lane"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationtypeEnum::dot1Q {4, "dot1Q"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationtypeEnum::negotiate {5, "negotiate"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditbridgetype::srt {1, "srt"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditbridgetype::srb {2, "srb"};
 
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportdynamicstateEnum::on {1, "on"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportdynamicstateEnum::off {2, "off"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportdynamicstateEnum::desirable {3, "desirable"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportdynamicstateEnum::auto_ {4, "auto"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportdynamicstateEnum::onNoNegotiate {5, "onNoNegotiate"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::Vtpvlanlocalshutdown::up {1, "up"};
+const Enum::YLeaf CiscoVtpMib::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::Vtpvlanlocalshutdown::down {2, "down"};
 
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportdynamicstatusEnum::trunking {1, "trunking"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportdynamicstatusEnum::notTrunking {2, "notTrunking"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::isl {1, "isl"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::dot10 {2, "dot10"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::lane {3, "lane"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::dot1Q {4, "dot1Q"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype::negotiate {5, "negotiate"};
 
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationopertypeEnum::isl {1, "isl"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationopertypeEnum::dot10 {2, "dot10"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationopertypeEnum::lane {3, "lane"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationopertypeEnum::dot1Q {4, "dot1Q"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationopertypeEnum::negotiating {5, "negotiating"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::VlantrunkportencapsulationopertypeEnum::notApplicable {6, "notApplicable"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::on {1, "on"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::off {2, "off"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::desirable {3, "desirable"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::auto_ {4, "auto"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate::onNoNegotiate {5, "onNoNegotiate"};
 
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1QtunnelEnum::trunk {1, "trunk"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1QtunnelEnum::access {2, "access"};
-const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1QtunnelEnum::disabled {3, "disabled"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstatus::trunking {1, "trunking"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstatus::notTrunking {2, "notTrunking"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::VtpdiscoveractionEnum::discover {1, "discover"};
-const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::VtpdiscoveractionEnum::noOperation {2, "noOperation"};
-const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::VtpdiscoveractionEnum::purgeResult {3, "purgeResult"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::isl {1, "isl"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::dot10 {2, "dot10"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::lane {3, "lane"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::dot1Q {4, "dot1Q"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::negotiating {5, "negotiating"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype::notApplicable {6, "notApplicable"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::VtpdiscoverstatusEnum::inProgress {1, "inProgress"};
-const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::VtpdiscoverstatusEnum::succeeded {2, "succeeded"};
-const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::VtpdiscoverstatusEnum::resourceUnavailable {3, "resourceUnavailable"};
-const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::VtpdiscoverstatusEnum::someOtherError {4, "someOtherError"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1Qtunnel::trunk {1, "trunk"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1Qtunnel::access {2, "access"};
+const Enum::YLeaf CiscoVtpMib::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1Qtunnel::disabled {3, "disabled"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::VtpdatabaselocalmodeEnum::client {1, "client"};
-const Enum::YLeaf CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::VtpdatabaselocalmodeEnum::server {2, "server"};
-const Enum::YLeaf CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::VtpdatabaselocalmodeEnum::transparent {3, "transparent"};
-const Enum::YLeaf CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::VtpdatabaselocalmodeEnum::off {4, "off"};
+const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoveraction::discover {1, "discover"};
+const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoveraction::noOperation {2, "noOperation"};
+const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoveraction::purgeResult {3, "purgeResult"};
 
-const Enum::YLeaf CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::VtpauthpasswordtypeEnum::plaintext {1, "plaintext"};
-const Enum::YLeaf CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::VtpauthpasswordtypeEnum::hidden {2, "hidden"};
+const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus::inProgress {1, "inProgress"};
+const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus::succeeded {2, "succeeded"};
+const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus::resourceUnavailable {3, "resourceUnavailable"};
+const Enum::YLeaf CiscoVtpMib::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus::someOtherError {4, "someOtherError"};
+
+const Enum::YLeaf CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode::client {1, "client"};
+const Enum::YLeaf CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode::server {2, "server"};
+const Enum::YLeaf CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode::transparent {3, "transparent"};
+const Enum::YLeaf CiscoVtpMib::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode::off {4, "off"};
+
+const Enum::YLeaf CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::Vtpauthpasswordtype::plaintext {1, "plaintext"};
+const Enum::YLeaf CiscoVtpMib::Vtpauthenticationtable::Vtpauthentry::Vtpauthpasswordtype::hidden {2, "hidden"};
 
 
 }

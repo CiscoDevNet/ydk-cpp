@@ -7,56 +7,61 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_memory_oper {
 
-class MemoryStats : public Entity
+class MemoryStatistics : public ydk::Entity
 {
     public:
-        MemoryStats();
-        ~MemoryStats();
+        MemoryStatistics();
+        ~MemoryStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class MemoryStat; //type: MemoryStats::MemoryStat
+        class MemoryStatistic; //type: MemoryStatistics::MemoryStatistic
 
-        std::vector<std::shared_ptr<Cisco_IOS_XE_memory_oper::MemoryStats::MemoryStat> > memory_stat_;
+        std::vector<std::shared_ptr<Cisco_IOS_XE_memory_oper::MemoryStatistics::MemoryStatistic> > memory_statistic;
         
-}; // MemoryStats
+}; // MemoryStatistics
 
 
-class MemoryStats::MemoryStat : public Entity
+class MemoryStatistics::MemoryStatistic : public ydk::Entity
 {
     public:
-        MemoryStat();
-        ~MemoryStat();
+        MemoryStatistic();
+        ~MemoryStatistic();
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf total_memory; //type: uint64
-        YLeaf used_memory; //type: uint64
-        YLeaf free_memory; //type: uint64
-        YLeaf lowest_usage; //type: uint64
-        YLeaf highest_usage; //type: uint64
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf total_memory; //type: uint64
+        ydk::YLeaf used_memory; //type: uint64
+        ydk::YLeaf free_memory; //type: uint64
+        ydk::YLeaf lowest_usage; //type: uint64
+        ydk::YLeaf highest_usage; //type: uint64
 
-}; // MemoryStats::MemoryStat
+}; // MemoryStatistics::MemoryStatistic
 
 
 }

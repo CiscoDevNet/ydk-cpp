@@ -6,29 +6,31 @@
 #include "generated_entity_lookup.hpp"
 #include "ENTITY_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace ENTITY_MIB {
 
 EntityMib::EntityMib()
     :
-    entaliasmappingtable_(std::make_shared<EntityMib::Entaliasmappingtable>())
-	,entitygeneral_(std::make_shared<EntityMib::Entitygeneral>())
-	,entlogicaltable_(std::make_shared<EntityMib::Entlogicaltable>())
-	,entlpmappingtable_(std::make_shared<EntityMib::Entlpmappingtable>())
-	,entphysicalcontainstable_(std::make_shared<EntityMib::Entphysicalcontainstable>())
-	,entphysicaltable_(std::make_shared<EntityMib::Entphysicaltable>())
+    entaliasmappingtable(std::make_shared<EntityMib::Entaliasmappingtable>())
+	,entitygeneral(std::make_shared<EntityMib::Entitygeneral>())
+	,entlogicaltable(std::make_shared<EntityMib::Entlogicaltable>())
+	,entlpmappingtable(std::make_shared<EntityMib::Entlpmappingtable>())
+	,entphysicalcontainstable(std::make_shared<EntityMib::Entphysicalcontainstable>())
+	,entphysicaltable(std::make_shared<EntityMib::Entphysicaltable>())
 {
-    entaliasmappingtable_->parent = this;
+    entaliasmappingtable->parent = this;
 
-    entitygeneral_->parent = this;
+    entitygeneral->parent = this;
 
-    entlogicaltable_->parent = this;
+    entlogicaltable->parent = this;
 
-    entlpmappingtable_->parent = this;
+    entlpmappingtable->parent = this;
 
-    entphysicalcontainstable_->parent = this;
+    entphysicalcontainstable->parent = this;
 
-    entphysicaltable_->parent = this;
+    entphysicaltable->parent = this;
 
     yang_name = "ENTITY-MIB"; yang_parent_name = "ENTITY-MIB";
 }
@@ -39,23 +41,23 @@ EntityMib::~EntityMib()
 
 bool EntityMib::has_data() const
 {
-    return (entaliasmappingtable_ !=  nullptr && entaliasmappingtable_->has_data())
-	|| (entitygeneral_ !=  nullptr && entitygeneral_->has_data())
-	|| (entlogicaltable_ !=  nullptr && entlogicaltable_->has_data())
-	|| (entlpmappingtable_ !=  nullptr && entlpmappingtable_->has_data())
-	|| (entphysicalcontainstable_ !=  nullptr && entphysicalcontainstable_->has_data())
-	|| (entphysicaltable_ !=  nullptr && entphysicaltable_->has_data());
+    return (entaliasmappingtable !=  nullptr && entaliasmappingtable->has_data())
+	|| (entitygeneral !=  nullptr && entitygeneral->has_data())
+	|| (entlogicaltable !=  nullptr && entlogicaltable->has_data())
+	|| (entlpmappingtable !=  nullptr && entlpmappingtable->has_data())
+	|| (entphysicalcontainstable !=  nullptr && entphysicalcontainstable->has_data())
+	|| (entphysicaltable !=  nullptr && entphysicaltable->has_data());
 }
 
 bool EntityMib::has_operation() const
 {
-    return is_set(operation)
-	|| (entaliasmappingtable_ !=  nullptr && entaliasmappingtable_->has_operation())
-	|| (entitygeneral_ !=  nullptr && entitygeneral_->has_operation())
-	|| (entlogicaltable_ !=  nullptr && entlogicaltable_->has_operation())
-	|| (entlpmappingtable_ !=  nullptr && entlpmappingtable_->has_operation())
-	|| (entphysicalcontainstable_ !=  nullptr && entphysicalcontainstable_->has_operation())
-	|| (entphysicaltable_ !=  nullptr && entphysicaltable_->has_operation());
+    return is_set(yfilter)
+	|| (entaliasmappingtable !=  nullptr && entaliasmappingtable->has_operation())
+	|| (entitygeneral !=  nullptr && entitygeneral->has_operation())
+	|| (entlogicaltable !=  nullptr && entlogicaltable->has_operation())
+	|| (entlpmappingtable !=  nullptr && entlpmappingtable->has_operation())
+	|| (entphysicalcontainstable !=  nullptr && entphysicalcontainstable->has_operation())
+	|| (entphysicaltable !=  nullptr && entphysicaltable->has_operation());
 }
 
 std::string EntityMib::get_segment_path() const
@@ -89,56 +91,56 @@ std::shared_ptr<Entity> EntityMib::get_child_by_name(const std::string & child_y
 {
     if(child_yang_name == "entAliasMappingTable")
     {
-        if(entaliasmappingtable_ == nullptr)
+        if(entaliasmappingtable == nullptr)
         {
-            entaliasmappingtable_ = std::make_shared<EntityMib::Entaliasmappingtable>();
+            entaliasmappingtable = std::make_shared<EntityMib::Entaliasmappingtable>();
         }
-        return entaliasmappingtable_;
+        return entaliasmappingtable;
     }
 
     if(child_yang_name == "entityGeneral")
     {
-        if(entitygeneral_ == nullptr)
+        if(entitygeneral == nullptr)
         {
-            entitygeneral_ = std::make_shared<EntityMib::Entitygeneral>();
+            entitygeneral = std::make_shared<EntityMib::Entitygeneral>();
         }
-        return entitygeneral_;
+        return entitygeneral;
     }
 
     if(child_yang_name == "entLogicalTable")
     {
-        if(entlogicaltable_ == nullptr)
+        if(entlogicaltable == nullptr)
         {
-            entlogicaltable_ = std::make_shared<EntityMib::Entlogicaltable>();
+            entlogicaltable = std::make_shared<EntityMib::Entlogicaltable>();
         }
-        return entlogicaltable_;
+        return entlogicaltable;
     }
 
     if(child_yang_name == "entLPMappingTable")
     {
-        if(entlpmappingtable_ == nullptr)
+        if(entlpmappingtable == nullptr)
         {
-            entlpmappingtable_ = std::make_shared<EntityMib::Entlpmappingtable>();
+            entlpmappingtable = std::make_shared<EntityMib::Entlpmappingtable>();
         }
-        return entlpmappingtable_;
+        return entlpmappingtable;
     }
 
     if(child_yang_name == "entPhysicalContainsTable")
     {
-        if(entphysicalcontainstable_ == nullptr)
+        if(entphysicalcontainstable == nullptr)
         {
-            entphysicalcontainstable_ = std::make_shared<EntityMib::Entphysicalcontainstable>();
+            entphysicalcontainstable = std::make_shared<EntityMib::Entphysicalcontainstable>();
         }
-        return entphysicalcontainstable_;
+        return entphysicalcontainstable;
     }
 
     if(child_yang_name == "entPhysicalTable")
     {
-        if(entphysicaltable_ == nullptr)
+        if(entphysicaltable == nullptr)
         {
-            entphysicaltable_ = std::make_shared<EntityMib::Entphysicaltable>();
+            entphysicaltable = std::make_shared<EntityMib::Entphysicaltable>();
         }
-        return entphysicaltable_;
+        return entphysicaltable;
     }
 
     return nullptr;
@@ -147,40 +149,44 @@ std::shared_ptr<Entity> EntityMib::get_child_by_name(const std::string & child_y
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(entaliasmappingtable_ != nullptr)
+    if(entaliasmappingtable != nullptr)
     {
-        children["entAliasMappingTable"] = entaliasmappingtable_;
+        children["entAliasMappingTable"] = entaliasmappingtable;
     }
 
-    if(entitygeneral_ != nullptr)
+    if(entitygeneral != nullptr)
     {
-        children["entityGeneral"] = entitygeneral_;
+        children["entityGeneral"] = entitygeneral;
     }
 
-    if(entlogicaltable_ != nullptr)
+    if(entlogicaltable != nullptr)
     {
-        children["entLogicalTable"] = entlogicaltable_;
+        children["entLogicalTable"] = entlogicaltable;
     }
 
-    if(entlpmappingtable_ != nullptr)
+    if(entlpmappingtable != nullptr)
     {
-        children["entLPMappingTable"] = entlpmappingtable_;
+        children["entLPMappingTable"] = entlpmappingtable;
     }
 
-    if(entphysicalcontainstable_ != nullptr)
+    if(entphysicalcontainstable != nullptr)
     {
-        children["entPhysicalContainsTable"] = entphysicalcontainstable_;
+        children["entPhysicalContainsTable"] = entphysicalcontainstable;
     }
 
-    if(entphysicaltable_ != nullptr)
+    if(entphysicaltable != nullptr)
     {
-        children["entPhysicalTable"] = entphysicaltable_;
+        children["entPhysicalTable"] = entphysicaltable;
     }
 
     return children;
 }
 
-void EntityMib::set_value(const std::string & value_path, std::string value)
+void EntityMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EntityMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -204,6 +210,18 @@ augment_capabilities_function EntityMib::get_augment_capabilities_function() con
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> EntityMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool EntityMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entAliasMappingTable" || name == "entityGeneral" || name == "entLogicalTable" || name == "entLPMappingTable" || name == "entPhysicalContainsTable" || name == "entPhysicalTable")
+        return true;
+    return false;
+}
+
 EntityMib::Entitygeneral::Entitygeneral()
     :
     entlastchangetime{YType::uint32, "entLastChangeTime"}
@@ -222,8 +240,8 @@ bool EntityMib::Entitygeneral::has_data() const
 
 bool EntityMib::Entitygeneral::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entlastchangetime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entlastchangetime.yfilter);
 }
 
 std::string EntityMib::Entitygeneral::get_segment_path() const
@@ -249,7 +267,7 @@ const EntityPath EntityMib::Entitygeneral::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entlastchangetime.is_set || is_set(entlastchangetime.operation)) leaf_name_data.push_back(entlastchangetime.get_name_leafdata());
+    if (entlastchangetime.is_set || is_set(entlastchangetime.yfilter)) leaf_name_data.push_back(entlastchangetime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -268,12 +286,29 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entitygeneral::get_chi
     return children;
 }
 
-void EntityMib::Entitygeneral::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entitygeneral::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entLastChangeTime")
     {
         entlastchangetime = value;
+        entlastchangetime.value_namespace = name_space;
+        entlastchangetime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EntityMib::Entitygeneral::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entLastChangeTime")
+    {
+        entlastchangetime.yfilter = yfilter;
+    }
+}
+
+bool EntityMib::Entitygeneral::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entLastChangeTime")
+        return true;
+    return false;
 }
 
 EntityMib::Entphysicaltable::Entphysicaltable()
@@ -287,9 +322,9 @@ EntityMib::Entphysicaltable::~Entphysicaltable()
 
 bool EntityMib::Entphysicaltable::has_data() const
 {
-    for (std::size_t index=0; index<entphysicalentry_.size(); index++)
+    for (std::size_t index=0; index<entphysicalentry.size(); index++)
     {
-        if(entphysicalentry_[index]->has_data())
+        if(entphysicalentry[index]->has_data())
             return true;
     }
     return false;
@@ -297,12 +332,12 @@ bool EntityMib::Entphysicaltable::has_data() const
 
 bool EntityMib::Entphysicaltable::has_operation() const
 {
-    for (std::size_t index=0; index<entphysicalentry_.size(); index++)
+    for (std::size_t index=0; index<entphysicalentry.size(); index++)
     {
-        if(entphysicalentry_[index]->has_operation())
+        if(entphysicalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EntityMib::Entphysicaltable::get_segment_path() const
@@ -339,7 +374,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicaltable::get_child_by_name(const std
 {
     if(child_yang_name == "entPhysicalEntry")
     {
-        for(auto const & c : entphysicalentry_)
+        for(auto const & c : entphysicalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -349,7 +384,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicaltable::get_child_by_name(const std
         }
         auto c = std::make_shared<EntityMib::Entphysicaltable::Entphysicalentry>();
         c->parent = this;
-        entphysicalentry_.push_back(c);
+        entphysicalentry.push_back(c);
         return c;
     }
 
@@ -359,7 +394,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicaltable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entphysicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entphysicalentry_)
+    for (auto const & c : entphysicalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -367,8 +402,19 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entphysicaltable::get_
     return children;
 }
 
-void EntityMib::Entphysicaltable::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entphysicaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EntityMib::Entphysicaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EntityMib::Entphysicaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalEntry")
+        return true;
+    return false;
 }
 
 EntityMib::Entphysicaltable::Entphysicalentry::Entphysicalentry()
@@ -425,26 +471,26 @@ bool EntityMib::Entphysicaltable::Entphysicalentry::has_data() const
 
 bool EntityMib::Entphysicaltable::Entphysicalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(ceentphysicalsecondserialnum.operation)
-	|| is_set(entphysicalalias.operation)
-	|| is_set(entphysicalassetid.operation)
-	|| is_set(entphysicalclass.operation)
-	|| is_set(entphysicalcontainedin.operation)
-	|| is_set(entphysicaldescr.operation)
-	|| is_set(entphysicalfirmwarerev.operation)
-	|| is_set(entphysicalhardwarerev.operation)
-	|| is_set(entphysicalisfru.operation)
-	|| is_set(entphysicalmfgdate.operation)
-	|| is_set(entphysicalmfgname.operation)
-	|| is_set(entphysicalmodelname.operation)
-	|| is_set(entphysicalname.operation)
-	|| is_set(entphysicalparentrelpos.operation)
-	|| is_set(entphysicalserialnum.operation)
-	|| is_set(entphysicalsoftwarerev.operation)
-	|| is_set(entphysicaluris.operation)
-	|| is_set(entphysicalvendortype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(ceentphysicalsecondserialnum.yfilter)
+	|| ydk::is_set(entphysicalalias.yfilter)
+	|| ydk::is_set(entphysicalassetid.yfilter)
+	|| ydk::is_set(entphysicalclass.yfilter)
+	|| ydk::is_set(entphysicalcontainedin.yfilter)
+	|| ydk::is_set(entphysicaldescr.yfilter)
+	|| ydk::is_set(entphysicalfirmwarerev.yfilter)
+	|| ydk::is_set(entphysicalhardwarerev.yfilter)
+	|| ydk::is_set(entphysicalisfru.yfilter)
+	|| ydk::is_set(entphysicalmfgdate.yfilter)
+	|| ydk::is_set(entphysicalmfgname.yfilter)
+	|| ydk::is_set(entphysicalmodelname.yfilter)
+	|| ydk::is_set(entphysicalname.yfilter)
+	|| ydk::is_set(entphysicalparentrelpos.yfilter)
+	|| ydk::is_set(entphysicalserialnum.yfilter)
+	|| ydk::is_set(entphysicalsoftwarerev.yfilter)
+	|| ydk::is_set(entphysicaluris.yfilter)
+	|| ydk::is_set(entphysicalvendortype.yfilter);
 }
 
 std::string EntityMib::Entphysicaltable::Entphysicalentry::get_segment_path() const
@@ -470,25 +516,25 @@ const EntityPath EntityMib::Entphysicaltable::Entphysicalentry::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (ceentphysicalsecondserialnum.is_set || is_set(ceentphysicalsecondserialnum.operation)) leaf_name_data.push_back(ceentphysicalsecondserialnum.get_name_leafdata());
-    if (entphysicalalias.is_set || is_set(entphysicalalias.operation)) leaf_name_data.push_back(entphysicalalias.get_name_leafdata());
-    if (entphysicalassetid.is_set || is_set(entphysicalassetid.operation)) leaf_name_data.push_back(entphysicalassetid.get_name_leafdata());
-    if (entphysicalclass.is_set || is_set(entphysicalclass.operation)) leaf_name_data.push_back(entphysicalclass.get_name_leafdata());
-    if (entphysicalcontainedin.is_set || is_set(entphysicalcontainedin.operation)) leaf_name_data.push_back(entphysicalcontainedin.get_name_leafdata());
-    if (entphysicaldescr.is_set || is_set(entphysicaldescr.operation)) leaf_name_data.push_back(entphysicaldescr.get_name_leafdata());
-    if (entphysicalfirmwarerev.is_set || is_set(entphysicalfirmwarerev.operation)) leaf_name_data.push_back(entphysicalfirmwarerev.get_name_leafdata());
-    if (entphysicalhardwarerev.is_set || is_set(entphysicalhardwarerev.operation)) leaf_name_data.push_back(entphysicalhardwarerev.get_name_leafdata());
-    if (entphysicalisfru.is_set || is_set(entphysicalisfru.operation)) leaf_name_data.push_back(entphysicalisfru.get_name_leafdata());
-    if (entphysicalmfgdate.is_set || is_set(entphysicalmfgdate.operation)) leaf_name_data.push_back(entphysicalmfgdate.get_name_leafdata());
-    if (entphysicalmfgname.is_set || is_set(entphysicalmfgname.operation)) leaf_name_data.push_back(entphysicalmfgname.get_name_leafdata());
-    if (entphysicalmodelname.is_set || is_set(entphysicalmodelname.operation)) leaf_name_data.push_back(entphysicalmodelname.get_name_leafdata());
-    if (entphysicalname.is_set || is_set(entphysicalname.operation)) leaf_name_data.push_back(entphysicalname.get_name_leafdata());
-    if (entphysicalparentrelpos.is_set || is_set(entphysicalparentrelpos.operation)) leaf_name_data.push_back(entphysicalparentrelpos.get_name_leafdata());
-    if (entphysicalserialnum.is_set || is_set(entphysicalserialnum.operation)) leaf_name_data.push_back(entphysicalserialnum.get_name_leafdata());
-    if (entphysicalsoftwarerev.is_set || is_set(entphysicalsoftwarerev.operation)) leaf_name_data.push_back(entphysicalsoftwarerev.get_name_leafdata());
-    if (entphysicaluris.is_set || is_set(entphysicaluris.operation)) leaf_name_data.push_back(entphysicaluris.get_name_leafdata());
-    if (entphysicalvendortype.is_set || is_set(entphysicalvendortype.operation)) leaf_name_data.push_back(entphysicalvendortype.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (ceentphysicalsecondserialnum.is_set || is_set(ceentphysicalsecondserialnum.yfilter)) leaf_name_data.push_back(ceentphysicalsecondserialnum.get_name_leafdata());
+    if (entphysicalalias.is_set || is_set(entphysicalalias.yfilter)) leaf_name_data.push_back(entphysicalalias.get_name_leafdata());
+    if (entphysicalassetid.is_set || is_set(entphysicalassetid.yfilter)) leaf_name_data.push_back(entphysicalassetid.get_name_leafdata());
+    if (entphysicalclass.is_set || is_set(entphysicalclass.yfilter)) leaf_name_data.push_back(entphysicalclass.get_name_leafdata());
+    if (entphysicalcontainedin.is_set || is_set(entphysicalcontainedin.yfilter)) leaf_name_data.push_back(entphysicalcontainedin.get_name_leafdata());
+    if (entphysicaldescr.is_set || is_set(entphysicaldescr.yfilter)) leaf_name_data.push_back(entphysicaldescr.get_name_leafdata());
+    if (entphysicalfirmwarerev.is_set || is_set(entphysicalfirmwarerev.yfilter)) leaf_name_data.push_back(entphysicalfirmwarerev.get_name_leafdata());
+    if (entphysicalhardwarerev.is_set || is_set(entphysicalhardwarerev.yfilter)) leaf_name_data.push_back(entphysicalhardwarerev.get_name_leafdata());
+    if (entphysicalisfru.is_set || is_set(entphysicalisfru.yfilter)) leaf_name_data.push_back(entphysicalisfru.get_name_leafdata());
+    if (entphysicalmfgdate.is_set || is_set(entphysicalmfgdate.yfilter)) leaf_name_data.push_back(entphysicalmfgdate.get_name_leafdata());
+    if (entphysicalmfgname.is_set || is_set(entphysicalmfgname.yfilter)) leaf_name_data.push_back(entphysicalmfgname.get_name_leafdata());
+    if (entphysicalmodelname.is_set || is_set(entphysicalmodelname.yfilter)) leaf_name_data.push_back(entphysicalmodelname.get_name_leafdata());
+    if (entphysicalname.is_set || is_set(entphysicalname.yfilter)) leaf_name_data.push_back(entphysicalname.get_name_leafdata());
+    if (entphysicalparentrelpos.is_set || is_set(entphysicalparentrelpos.yfilter)) leaf_name_data.push_back(entphysicalparentrelpos.get_name_leafdata());
+    if (entphysicalserialnum.is_set || is_set(entphysicalserialnum.yfilter)) leaf_name_data.push_back(entphysicalserialnum.get_name_leafdata());
+    if (entphysicalsoftwarerev.is_set || is_set(entphysicalsoftwarerev.yfilter)) leaf_name_data.push_back(entphysicalsoftwarerev.get_name_leafdata());
+    if (entphysicaluris.is_set || is_set(entphysicaluris.yfilter)) leaf_name_data.push_back(entphysicaluris.get_name_leafdata());
+    if (entphysicalvendortype.is_set || is_set(entphysicalvendortype.yfilter)) leaf_name_data.push_back(entphysicalvendortype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -507,84 +553,209 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entphysicaltable::Entp
     return children;
 }
 
-void EntityMib::Entphysicaltable::Entphysicalentry::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entphysicaltable::Entphysicalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceEntPhysicalSecondSerialNum")
     {
         ceentphysicalsecondserialnum = value;
+        ceentphysicalsecondserialnum.value_namespace = name_space;
+        ceentphysicalsecondserialnum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalAlias")
     {
         entphysicalalias = value;
+        entphysicalalias.value_namespace = name_space;
+        entphysicalalias.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalAssetID")
     {
         entphysicalassetid = value;
+        entphysicalassetid.value_namespace = name_space;
+        entphysicalassetid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalClass")
     {
         entphysicalclass = value;
+        entphysicalclass.value_namespace = name_space;
+        entphysicalclass.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalContainedIn")
     {
         entphysicalcontainedin = value;
+        entphysicalcontainedin.value_namespace = name_space;
+        entphysicalcontainedin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalDescr")
     {
         entphysicaldescr = value;
+        entphysicaldescr.value_namespace = name_space;
+        entphysicaldescr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalFirmwareRev")
     {
         entphysicalfirmwarerev = value;
+        entphysicalfirmwarerev.value_namespace = name_space;
+        entphysicalfirmwarerev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalHardwareRev")
     {
         entphysicalhardwarerev = value;
+        entphysicalhardwarerev.value_namespace = name_space;
+        entphysicalhardwarerev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalIsFRU")
     {
         entphysicalisfru = value;
+        entphysicalisfru.value_namespace = name_space;
+        entphysicalisfru.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalMfgDate")
     {
         entphysicalmfgdate = value;
+        entphysicalmfgdate.value_namespace = name_space;
+        entphysicalmfgdate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalMfgName")
     {
         entphysicalmfgname = value;
+        entphysicalmfgname.value_namespace = name_space;
+        entphysicalmfgname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalModelName")
     {
         entphysicalmodelname = value;
+        entphysicalmodelname.value_namespace = name_space;
+        entphysicalmodelname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalName")
     {
         entphysicalname = value;
+        entphysicalname.value_namespace = name_space;
+        entphysicalname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalParentRelPos")
     {
         entphysicalparentrelpos = value;
+        entphysicalparentrelpos.value_namespace = name_space;
+        entphysicalparentrelpos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalSerialNum")
     {
         entphysicalserialnum = value;
+        entphysicalserialnum.value_namespace = name_space;
+        entphysicalserialnum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalSoftwareRev")
     {
         entphysicalsoftwarerev = value;
+        entphysicalsoftwarerev.value_namespace = name_space;
+        entphysicalsoftwarerev.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalUris")
     {
         entphysicaluris = value;
+        entphysicaluris.value_namespace = name_space;
+        entphysicaluris.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalVendorType")
     {
         entphysicalvendortype = value;
+        entphysicalvendortype.value_namespace = name_space;
+        entphysicalvendortype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EntityMib::Entphysicaltable::Entphysicalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "ceEntPhysicalSecondSerialNum")
+    {
+        ceentphysicalsecondserialnum.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalAlias")
+    {
+        entphysicalalias.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalAssetID")
+    {
+        entphysicalassetid.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalClass")
+    {
+        entphysicalclass.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalContainedIn")
+    {
+        entphysicalcontainedin.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalDescr")
+    {
+        entphysicaldescr.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalFirmwareRev")
+    {
+        entphysicalfirmwarerev.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalHardwareRev")
+    {
+        entphysicalhardwarerev.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalIsFRU")
+    {
+        entphysicalisfru.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalMfgDate")
+    {
+        entphysicalmfgdate.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalMfgName")
+    {
+        entphysicalmfgname.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalModelName")
+    {
+        entphysicalmodelname.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalName")
+    {
+        entphysicalname.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalParentRelPos")
+    {
+        entphysicalparentrelpos.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalSerialNum")
+    {
+        entphysicalserialnum.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalSoftwareRev")
+    {
+        entphysicalsoftwarerev.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalUris")
+    {
+        entphysicaluris.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalVendorType")
+    {
+        entphysicalvendortype.yfilter = yfilter;
+    }
+}
+
+bool EntityMib::Entphysicaltable::Entphysicalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "ceEntPhysicalSecondSerialNum" || name == "entPhysicalAlias" || name == "entPhysicalAssetID" || name == "entPhysicalClass" || name == "entPhysicalContainedIn" || name == "entPhysicalDescr" || name == "entPhysicalFirmwareRev" || name == "entPhysicalHardwareRev" || name == "entPhysicalIsFRU" || name == "entPhysicalMfgDate" || name == "entPhysicalMfgName" || name == "entPhysicalModelName" || name == "entPhysicalName" || name == "entPhysicalParentRelPos" || name == "entPhysicalSerialNum" || name == "entPhysicalSoftwareRev" || name == "entPhysicalUris" || name == "entPhysicalVendorType")
+        return true;
+    return false;
 }
 
 EntityMib::Entlogicaltable::Entlogicaltable()
@@ -598,9 +769,9 @@ EntityMib::Entlogicaltable::~Entlogicaltable()
 
 bool EntityMib::Entlogicaltable::has_data() const
 {
-    for (std::size_t index=0; index<entlogicalentry_.size(); index++)
+    for (std::size_t index=0; index<entlogicalentry.size(); index++)
     {
-        if(entlogicalentry_[index]->has_data())
+        if(entlogicalentry[index]->has_data())
             return true;
     }
     return false;
@@ -608,12 +779,12 @@ bool EntityMib::Entlogicaltable::has_data() const
 
 bool EntityMib::Entlogicaltable::has_operation() const
 {
-    for (std::size_t index=0; index<entlogicalentry_.size(); index++)
+    for (std::size_t index=0; index<entlogicalentry.size(); index++)
     {
-        if(entlogicalentry_[index]->has_operation())
+        if(entlogicalentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EntityMib::Entlogicaltable::get_segment_path() const
@@ -650,7 +821,7 @@ std::shared_ptr<Entity> EntityMib::Entlogicaltable::get_child_by_name(const std:
 {
     if(child_yang_name == "entLogicalEntry")
     {
-        for(auto const & c : entlogicalentry_)
+        for(auto const & c : entlogicalentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -660,7 +831,7 @@ std::shared_ptr<Entity> EntityMib::Entlogicaltable::get_child_by_name(const std:
         }
         auto c = std::make_shared<EntityMib::Entlogicaltable::Entlogicalentry>();
         c->parent = this;
-        entlogicalentry_.push_back(c);
+        entlogicalentry.push_back(c);
         return c;
     }
 
@@ -670,7 +841,7 @@ std::shared_ptr<Entity> EntityMib::Entlogicaltable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entlogicaltable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entlogicalentry_)
+    for (auto const & c : entlogicalentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -678,8 +849,19 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entlogicaltable::get_c
     return children;
 }
 
-void EntityMib::Entlogicaltable::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entlogicaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EntityMib::Entlogicaltable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EntityMib::Entlogicaltable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entLogicalEntry")
+        return true;
+    return false;
 }
 
 EntityMib::Entlogicaltable::Entlogicalentry::Entlogicalentry()
@@ -714,15 +896,15 @@ bool EntityMib::Entlogicaltable::Entlogicalentry::has_data() const
 
 bool EntityMib::Entlogicaltable::Entlogicalentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entlogicalindex.operation)
-	|| is_set(entlogicalcommunity.operation)
-	|| is_set(entlogicalcontextengineid.operation)
-	|| is_set(entlogicalcontextname.operation)
-	|| is_set(entlogicaldescr.operation)
-	|| is_set(entlogicaltaddress.operation)
-	|| is_set(entlogicaltdomain.operation)
-	|| is_set(entlogicaltype.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entlogicalindex.yfilter)
+	|| ydk::is_set(entlogicalcommunity.yfilter)
+	|| ydk::is_set(entlogicalcontextengineid.yfilter)
+	|| ydk::is_set(entlogicalcontextname.yfilter)
+	|| ydk::is_set(entlogicaldescr.yfilter)
+	|| ydk::is_set(entlogicaltaddress.yfilter)
+	|| ydk::is_set(entlogicaltdomain.yfilter)
+	|| ydk::is_set(entlogicaltype.yfilter);
 }
 
 std::string EntityMib::Entlogicaltable::Entlogicalentry::get_segment_path() const
@@ -748,14 +930,14 @@ const EntityPath EntityMib::Entlogicaltable::Entlogicalentry::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entlogicalindex.is_set || is_set(entlogicalindex.operation)) leaf_name_data.push_back(entlogicalindex.get_name_leafdata());
-    if (entlogicalcommunity.is_set || is_set(entlogicalcommunity.operation)) leaf_name_data.push_back(entlogicalcommunity.get_name_leafdata());
-    if (entlogicalcontextengineid.is_set || is_set(entlogicalcontextengineid.operation)) leaf_name_data.push_back(entlogicalcontextengineid.get_name_leafdata());
-    if (entlogicalcontextname.is_set || is_set(entlogicalcontextname.operation)) leaf_name_data.push_back(entlogicalcontextname.get_name_leafdata());
-    if (entlogicaldescr.is_set || is_set(entlogicaldescr.operation)) leaf_name_data.push_back(entlogicaldescr.get_name_leafdata());
-    if (entlogicaltaddress.is_set || is_set(entlogicaltaddress.operation)) leaf_name_data.push_back(entlogicaltaddress.get_name_leafdata());
-    if (entlogicaltdomain.is_set || is_set(entlogicaltdomain.operation)) leaf_name_data.push_back(entlogicaltdomain.get_name_leafdata());
-    if (entlogicaltype.is_set || is_set(entlogicaltype.operation)) leaf_name_data.push_back(entlogicaltype.get_name_leafdata());
+    if (entlogicalindex.is_set || is_set(entlogicalindex.yfilter)) leaf_name_data.push_back(entlogicalindex.get_name_leafdata());
+    if (entlogicalcommunity.is_set || is_set(entlogicalcommunity.yfilter)) leaf_name_data.push_back(entlogicalcommunity.get_name_leafdata());
+    if (entlogicalcontextengineid.is_set || is_set(entlogicalcontextengineid.yfilter)) leaf_name_data.push_back(entlogicalcontextengineid.get_name_leafdata());
+    if (entlogicalcontextname.is_set || is_set(entlogicalcontextname.yfilter)) leaf_name_data.push_back(entlogicalcontextname.get_name_leafdata());
+    if (entlogicaldescr.is_set || is_set(entlogicaldescr.yfilter)) leaf_name_data.push_back(entlogicaldescr.get_name_leafdata());
+    if (entlogicaltaddress.is_set || is_set(entlogicaltaddress.yfilter)) leaf_name_data.push_back(entlogicaltaddress.get_name_leafdata());
+    if (entlogicaltdomain.is_set || is_set(entlogicaltdomain.yfilter)) leaf_name_data.push_back(entlogicaltdomain.get_name_leafdata());
+    if (entlogicaltype.is_set || is_set(entlogicaltype.yfilter)) leaf_name_data.push_back(entlogicaltype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -774,40 +956,99 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entlogicaltable::Entlo
     return children;
 }
 
-void EntityMib::Entlogicaltable::Entlogicalentry::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entlogicaltable::Entlogicalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entLogicalIndex")
     {
         entlogicalindex = value;
+        entlogicalindex.value_namespace = name_space;
+        entlogicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entLogicalCommunity")
     {
         entlogicalcommunity = value;
+        entlogicalcommunity.value_namespace = name_space;
+        entlogicalcommunity.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entLogicalContextEngineID")
     {
         entlogicalcontextengineid = value;
+        entlogicalcontextengineid.value_namespace = name_space;
+        entlogicalcontextengineid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entLogicalContextName")
     {
         entlogicalcontextname = value;
+        entlogicalcontextname.value_namespace = name_space;
+        entlogicalcontextname.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entLogicalDescr")
     {
         entlogicaldescr = value;
+        entlogicaldescr.value_namespace = name_space;
+        entlogicaldescr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entLogicalTAddress")
     {
         entlogicaltaddress = value;
+        entlogicaltaddress.value_namespace = name_space;
+        entlogicaltaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entLogicalTDomain")
     {
         entlogicaltdomain = value;
+        entlogicaltdomain.value_namespace = name_space;
+        entlogicaltdomain.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entLogicalType")
     {
         entlogicaltype = value;
+        entlogicaltype.value_namespace = name_space;
+        entlogicaltype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EntityMib::Entlogicaltable::Entlogicalentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entLogicalIndex")
+    {
+        entlogicalindex.yfilter = yfilter;
+    }
+    if(value_path == "entLogicalCommunity")
+    {
+        entlogicalcommunity.yfilter = yfilter;
+    }
+    if(value_path == "entLogicalContextEngineID")
+    {
+        entlogicalcontextengineid.yfilter = yfilter;
+    }
+    if(value_path == "entLogicalContextName")
+    {
+        entlogicalcontextname.yfilter = yfilter;
+    }
+    if(value_path == "entLogicalDescr")
+    {
+        entlogicaldescr.yfilter = yfilter;
+    }
+    if(value_path == "entLogicalTAddress")
+    {
+        entlogicaltaddress.yfilter = yfilter;
+    }
+    if(value_path == "entLogicalTDomain")
+    {
+        entlogicaltdomain.yfilter = yfilter;
+    }
+    if(value_path == "entLogicalType")
+    {
+        entlogicaltype.yfilter = yfilter;
+    }
+}
+
+bool EntityMib::Entlogicaltable::Entlogicalentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entLogicalIndex" || name == "entLogicalCommunity" || name == "entLogicalContextEngineID" || name == "entLogicalContextName" || name == "entLogicalDescr" || name == "entLogicalTAddress" || name == "entLogicalTDomain" || name == "entLogicalType")
+        return true;
+    return false;
 }
 
 EntityMib::Entlpmappingtable::Entlpmappingtable()
@@ -821,9 +1062,9 @@ EntityMib::Entlpmappingtable::~Entlpmappingtable()
 
 bool EntityMib::Entlpmappingtable::has_data() const
 {
-    for (std::size_t index=0; index<entlpmappingentry_.size(); index++)
+    for (std::size_t index=0; index<entlpmappingentry.size(); index++)
     {
-        if(entlpmappingentry_[index]->has_data())
+        if(entlpmappingentry[index]->has_data())
             return true;
     }
     return false;
@@ -831,12 +1072,12 @@ bool EntityMib::Entlpmappingtable::has_data() const
 
 bool EntityMib::Entlpmappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<entlpmappingentry_.size(); index++)
+    for (std::size_t index=0; index<entlpmappingentry.size(); index++)
     {
-        if(entlpmappingentry_[index]->has_operation())
+        if(entlpmappingentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EntityMib::Entlpmappingtable::get_segment_path() const
@@ -873,7 +1114,7 @@ std::shared_ptr<Entity> EntityMib::Entlpmappingtable::get_child_by_name(const st
 {
     if(child_yang_name == "entLPMappingEntry")
     {
-        for(auto const & c : entlpmappingentry_)
+        for(auto const & c : entlpmappingentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -883,7 +1124,7 @@ std::shared_ptr<Entity> EntityMib::Entlpmappingtable::get_child_by_name(const st
         }
         auto c = std::make_shared<EntityMib::Entlpmappingtable::Entlpmappingentry>();
         c->parent = this;
-        entlpmappingentry_.push_back(c);
+        entlpmappingentry.push_back(c);
         return c;
     }
 
@@ -893,7 +1134,7 @@ std::shared_ptr<Entity> EntityMib::Entlpmappingtable::get_child_by_name(const st
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entlpmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entlpmappingentry_)
+    for (auto const & c : entlpmappingentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -901,8 +1142,19 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entlpmappingtable::get
     return children;
 }
 
-void EntityMib::Entlpmappingtable::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entlpmappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EntityMib::Entlpmappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EntityMib::Entlpmappingtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entLPMappingEntry")
+        return true;
+    return false;
 }
 
 EntityMib::Entlpmappingtable::Entlpmappingentry::Entlpmappingentry()
@@ -925,9 +1177,9 @@ bool EntityMib::Entlpmappingtable::Entlpmappingentry::has_data() const
 
 bool EntityMib::Entlpmappingtable::Entlpmappingentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entlogicalindex.operation)
-	|| is_set(entlpphysicalindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entlogicalindex.yfilter)
+	|| ydk::is_set(entlpphysicalindex.yfilter);
 }
 
 std::string EntityMib::Entlpmappingtable::Entlpmappingentry::get_segment_path() const
@@ -953,8 +1205,8 @@ const EntityPath EntityMib::Entlpmappingtable::Entlpmappingentry::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entlogicalindex.is_set || is_set(entlogicalindex.operation)) leaf_name_data.push_back(entlogicalindex.get_name_leafdata());
-    if (entlpphysicalindex.is_set || is_set(entlpphysicalindex.operation)) leaf_name_data.push_back(entlpphysicalindex.get_name_leafdata());
+    if (entlogicalindex.is_set || is_set(entlogicalindex.yfilter)) leaf_name_data.push_back(entlogicalindex.get_name_leafdata());
+    if (entlpphysicalindex.is_set || is_set(entlpphysicalindex.yfilter)) leaf_name_data.push_back(entlpphysicalindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -973,16 +1225,39 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entlpmappingtable::Ent
     return children;
 }
 
-void EntityMib::Entlpmappingtable::Entlpmappingentry::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entlpmappingtable::Entlpmappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entLogicalIndex")
     {
         entlogicalindex = value;
+        entlogicalindex.value_namespace = name_space;
+        entlogicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entLPPhysicalIndex")
     {
         entlpphysicalindex = value;
+        entlpphysicalindex.value_namespace = name_space;
+        entlpphysicalindex.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EntityMib::Entlpmappingtable::Entlpmappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entLogicalIndex")
+    {
+        entlogicalindex.yfilter = yfilter;
+    }
+    if(value_path == "entLPPhysicalIndex")
+    {
+        entlpphysicalindex.yfilter = yfilter;
+    }
+}
+
+bool EntityMib::Entlpmappingtable::Entlpmappingentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entLogicalIndex" || name == "entLPPhysicalIndex")
+        return true;
+    return false;
 }
 
 EntityMib::Entaliasmappingtable::Entaliasmappingtable()
@@ -996,9 +1271,9 @@ EntityMib::Entaliasmappingtable::~Entaliasmappingtable()
 
 bool EntityMib::Entaliasmappingtable::has_data() const
 {
-    for (std::size_t index=0; index<entaliasmappingentry_.size(); index++)
+    for (std::size_t index=0; index<entaliasmappingentry.size(); index++)
     {
-        if(entaliasmappingentry_[index]->has_data())
+        if(entaliasmappingentry[index]->has_data())
             return true;
     }
     return false;
@@ -1006,12 +1281,12 @@ bool EntityMib::Entaliasmappingtable::has_data() const
 
 bool EntityMib::Entaliasmappingtable::has_operation() const
 {
-    for (std::size_t index=0; index<entaliasmappingentry_.size(); index++)
+    for (std::size_t index=0; index<entaliasmappingentry.size(); index++)
     {
-        if(entaliasmappingentry_[index]->has_operation())
+        if(entaliasmappingentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EntityMib::Entaliasmappingtable::get_segment_path() const
@@ -1048,7 +1323,7 @@ std::shared_ptr<Entity> EntityMib::Entaliasmappingtable::get_child_by_name(const
 {
     if(child_yang_name == "entAliasMappingEntry")
     {
-        for(auto const & c : entaliasmappingentry_)
+        for(auto const & c : entaliasmappingentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1058,7 +1333,7 @@ std::shared_ptr<Entity> EntityMib::Entaliasmappingtable::get_child_by_name(const
         }
         auto c = std::make_shared<EntityMib::Entaliasmappingtable::Entaliasmappingentry>();
         c->parent = this;
-        entaliasmappingentry_.push_back(c);
+        entaliasmappingentry.push_back(c);
         return c;
     }
 
@@ -1068,7 +1343,7 @@ std::shared_ptr<Entity> EntityMib::Entaliasmappingtable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entaliasmappingtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entaliasmappingentry_)
+    for (auto const & c : entaliasmappingentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1076,8 +1351,19 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entaliasmappingtable::
     return children;
 }
 
-void EntityMib::Entaliasmappingtable::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entaliasmappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EntityMib::Entaliasmappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EntityMib::Entaliasmappingtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entAliasMappingEntry")
+        return true;
+    return false;
 }
 
 EntityMib::Entaliasmappingtable::Entaliasmappingentry::Entaliasmappingentry()
@@ -1102,10 +1388,10 @@ bool EntityMib::Entaliasmappingtable::Entaliasmappingentry::has_data() const
 
 bool EntityMib::Entaliasmappingtable::Entaliasmappingentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(entaliaslogicalindexorzero.operation)
-	|| is_set(entaliasmappingidentifier.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(entaliaslogicalindexorzero.yfilter)
+	|| ydk::is_set(entaliasmappingidentifier.yfilter);
 }
 
 std::string EntityMib::Entaliasmappingtable::Entaliasmappingentry::get_segment_path() const
@@ -1131,9 +1417,9 @@ const EntityPath EntityMib::Entaliasmappingtable::Entaliasmappingentry::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (entaliaslogicalindexorzero.is_set || is_set(entaliaslogicalindexorzero.operation)) leaf_name_data.push_back(entaliaslogicalindexorzero.get_name_leafdata());
-    if (entaliasmappingidentifier.is_set || is_set(entaliasmappingidentifier.operation)) leaf_name_data.push_back(entaliasmappingidentifier.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (entaliaslogicalindexorzero.is_set || is_set(entaliaslogicalindexorzero.yfilter)) leaf_name_data.push_back(entaliaslogicalindexorzero.get_name_leafdata());
+    if (entaliasmappingidentifier.is_set || is_set(entaliasmappingidentifier.yfilter)) leaf_name_data.push_back(entaliasmappingidentifier.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1152,20 +1438,49 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entaliasmappingtable::
     return children;
 }
 
-void EntityMib::Entaliasmappingtable::Entaliasmappingentry::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entaliasmappingtable::Entaliasmappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entAliasLogicalIndexOrZero")
     {
         entaliaslogicalindexorzero = value;
+        entaliaslogicalindexorzero.value_namespace = name_space;
+        entaliaslogicalindexorzero.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entAliasMappingIdentifier")
     {
         entaliasmappingidentifier = value;
+        entaliasmappingidentifier.value_namespace = name_space;
+        entaliasmappingidentifier.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EntityMib::Entaliasmappingtable::Entaliasmappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "entAliasLogicalIndexOrZero")
+    {
+        entaliaslogicalindexorzero.yfilter = yfilter;
+    }
+    if(value_path == "entAliasMappingIdentifier")
+    {
+        entaliasmappingidentifier.yfilter = yfilter;
+    }
+}
+
+bool EntityMib::Entaliasmappingtable::Entaliasmappingentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "entAliasLogicalIndexOrZero" || name == "entAliasMappingIdentifier")
+        return true;
+    return false;
 }
 
 EntityMib::Entphysicalcontainstable::Entphysicalcontainstable()
@@ -1179,9 +1494,9 @@ EntityMib::Entphysicalcontainstable::~Entphysicalcontainstable()
 
 bool EntityMib::Entphysicalcontainstable::has_data() const
 {
-    for (std::size_t index=0; index<entphysicalcontainsentry_.size(); index++)
+    for (std::size_t index=0; index<entphysicalcontainsentry.size(); index++)
     {
-        if(entphysicalcontainsentry_[index]->has_data())
+        if(entphysicalcontainsentry[index]->has_data())
             return true;
     }
     return false;
@@ -1189,12 +1504,12 @@ bool EntityMib::Entphysicalcontainstable::has_data() const
 
 bool EntityMib::Entphysicalcontainstable::has_operation() const
 {
-    for (std::size_t index=0; index<entphysicalcontainsentry_.size(); index++)
+    for (std::size_t index=0; index<entphysicalcontainsentry.size(); index++)
     {
-        if(entphysicalcontainsentry_[index]->has_operation())
+        if(entphysicalcontainsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EntityMib::Entphysicalcontainstable::get_segment_path() const
@@ -1231,7 +1546,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicalcontainstable::get_child_by_name(c
 {
     if(child_yang_name == "entPhysicalContainsEntry")
     {
-        for(auto const & c : entphysicalcontainsentry_)
+        for(auto const & c : entphysicalcontainsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1241,7 +1556,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicalcontainstable::get_child_by_name(c
         }
         auto c = std::make_shared<EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry>();
         c->parent = this;
-        entphysicalcontainsentry_.push_back(c);
+        entphysicalcontainsentry.push_back(c);
         return c;
     }
 
@@ -1251,7 +1566,7 @@ std::shared_ptr<Entity> EntityMib::Entphysicalcontainstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entphysicalcontainstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : entphysicalcontainsentry_)
+    for (auto const & c : entphysicalcontainsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1259,8 +1574,19 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entphysicalcontainstab
     return children;
 }
 
-void EntityMib::Entphysicalcontainstable::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entphysicalcontainstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EntityMib::Entphysicalcontainstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EntityMib::Entphysicalcontainstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalContainsEntry")
+        return true;
+    return false;
 }
 
 EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::Entphysicalcontainsentry()
@@ -1283,9 +1609,9 @@ bool EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::has_data() c
 
 bool EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(entphysicalchildindex.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(entphysicalchildindex.yfilter);
 }
 
 std::string EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::get_segment_path() const
@@ -1311,8 +1637,8 @@ const EntityPath EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (entphysicalchildindex.is_set || is_set(entphysicalchildindex.operation)) leaf_name_data.push_back(entphysicalchildindex.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (entphysicalchildindex.is_set || is_set(entphysicalchildindex.yfilter)) leaf_name_data.push_back(entphysicalchildindex.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1331,30 +1657,53 @@ std::map<std::string, std::shared_ptr<Entity>> EntityMib::Entphysicalcontainstab
     return children;
 }
 
-void EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::set_value(const std::string & value_path, std::string value)
+void EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "entPhysicalChildIndex")
     {
         entphysicalchildindex = value;
+        entphysicalchildindex.value_namespace = name_space;
+        entphysicalchildindex.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf PhysicalclassEnum::other {1, "other"};
-const Enum::YLeaf PhysicalclassEnum::unknown {2, "unknown"};
-const Enum::YLeaf PhysicalclassEnum::chassis {3, "chassis"};
-const Enum::YLeaf PhysicalclassEnum::backplane {4, "backplane"};
-const Enum::YLeaf PhysicalclassEnum::container {5, "container"};
-const Enum::YLeaf PhysicalclassEnum::powerSupply {6, "powerSupply"};
-const Enum::YLeaf PhysicalclassEnum::fan {7, "fan"};
-const Enum::YLeaf PhysicalclassEnum::sensor {8, "sensor"};
-const Enum::YLeaf PhysicalclassEnum::module {9, "module"};
-const Enum::YLeaf PhysicalclassEnum::port {10, "port"};
-const Enum::YLeaf PhysicalclassEnum::stack {11, "stack"};
-const Enum::YLeaf PhysicalclassEnum::cpu {12, "cpu"};
+void EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "entPhysicalChildIndex")
+    {
+        entphysicalchildindex.yfilter = yfilter;
+    }
+}
+
+bool EntityMib::Entphysicalcontainstable::Entphysicalcontainsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "entPhysicalChildIndex")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Physicalclass::other {1, "other"};
+const Enum::YLeaf Physicalclass::unknown {2, "unknown"};
+const Enum::YLeaf Physicalclass::chassis {3, "chassis"};
+const Enum::YLeaf Physicalclass::backplane {4, "backplane"};
+const Enum::YLeaf Physicalclass::container {5, "container"};
+const Enum::YLeaf Physicalclass::powerSupply {6, "powerSupply"};
+const Enum::YLeaf Physicalclass::fan {7, "fan"};
+const Enum::YLeaf Physicalclass::sensor {8, "sensor"};
+const Enum::YLeaf Physicalclass::module {9, "module"};
+const Enum::YLeaf Physicalclass::port {10, "port"};
+const Enum::YLeaf Physicalclass::stack {11, "stack"};
+const Enum::YLeaf Physicalclass::cpu {12, "cpu"};
 
 
 }

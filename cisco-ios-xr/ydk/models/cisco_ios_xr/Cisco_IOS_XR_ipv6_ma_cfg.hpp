@@ -7,40 +7,40 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ma_cfg {
 
-class Ipv6SelfPingEnum : public Enum
+class Ipv6Qppb : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disabled;
-        static const Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ip_precedence;
+        static const ydk::Enum::YLeaf qos_group;
+        static const ydk::Enum::YLeaf both;
 
 };
 
-class Ipv6QppbEnum : public Enum
+class Ipv6DefaultPing : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf ip_precedence;
-        static const Enum::YLeaf qos_group;
-        static const Enum::YLeaf both;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 
-class Ipv6DefaultPingEnum : public Enum
+class Ipv6SelfPing : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf disabled;
-        static const Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
 
 };
 
-class Ipv6ReachableEnum : public Enum
+class Ipv6Reachable : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf any;
-        static const Enum::YLeaf received;
+        static const ydk::Enum::YLeaf any;
+        static const ydk::Enum::YLeaf received;
 
 };
 

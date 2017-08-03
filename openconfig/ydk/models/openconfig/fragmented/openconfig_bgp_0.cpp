@@ -7,7 +7,9 @@
 #include "openconfig_bgp_0.hpp"
 #include "openconfig_bgp_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace openconfig {
 namespace openconfig_bgp {
 
 Bgp::Bgp()
@@ -38,7 +40,7 @@ bool Bgp::has_data() const
 
 bool Bgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global !=  nullptr && global->has_operation())
 	|| (neighbors !=  nullptr && neighbors->has_operation())
 	|| (peer_groups !=  nullptr && peer_groups->has_operation());
@@ -124,7 +126,11 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::get_children() const
     return children;
 }
 
-void Bgp::set_value(const std::string & value_path, std::string value)
+void Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -146,6 +152,18 @@ std::string Bgp::get_bundle_name() const
 augment_capabilities_function Bgp::get_augment_capabilities_function() const
 {
     return openconfig_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Bgp::get_namespace_identity_lookup() const
+{
+    return openconfig_namespace_identity_lookup;
+}
+
+bool Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "neighbors" || name == "peer-groups")
+        return true;
+    return false;
 }
 
 Bgp::Global::Global()
@@ -200,7 +218,7 @@ bool Bgp::Global::has_data() const
 
 bool Bgp::Global::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (afi_safis !=  nullptr && afi_safis->has_operation())
 	|| (apply_policy !=  nullptr && apply_policy->has_operation())
 	|| (confederation !=  nullptr && confederation->has_operation())
@@ -379,8 +397,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::get_children() const
     return children;
 }
 
-void Bgp::Global::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-safis" || name == "apply-policy" || name == "confederation" || name == "config" || name == "default-route-distance" || name == "graceful-restart" || name == "route-selection-options" || name == "state" || name == "use-multiple-paths")
+        return true;
+    return false;
 }
 
 Bgp::Global::Config::Config()
@@ -403,9 +432,9 @@ bool Bgp::Global::Config::has_data() const
 
 bool Bgp::Global::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(as.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Bgp::Global::Config::get_segment_path() const
@@ -431,8 +460,8 @@ const EntityPath Bgp::Global::Config::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -451,16 +480,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Config::get_children
     return children;
 }
 
-void Bgp::Global::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "as" || name == "router-id")
+        return true;
+    return false;
 }
 
 Bgp::Global::State::State()
@@ -487,11 +539,11 @@ bool Bgp::Global::State::has_data() const
 
 bool Bgp::Global::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(as.operation)
-	|| is_set(router_id.operation)
-	|| is_set(total_paths.operation)
-	|| is_set(total_prefixes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(router_id.yfilter)
+	|| ydk::is_set(total_paths.yfilter)
+	|| ydk::is_set(total_prefixes.yfilter);
 }
 
 std::string Bgp::Global::State::get_segment_path() const
@@ -517,10 +569,10 @@ const EntityPath Bgp::Global::State::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (as.is_set || is_set(as.operation)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
-    if (total_paths.is_set || is_set(total_paths.operation)) leaf_name_data.push_back(total_paths.get_name_leafdata());
-    if (total_prefixes.is_set || is_set(total_prefixes.operation)) leaf_name_data.push_back(total_prefixes.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (total_paths.is_set || is_set(total_paths.yfilter)) leaf_name_data.push_back(total_paths.get_name_leafdata());
+    if (total_prefixes.is_set || is_set(total_prefixes.yfilter)) leaf_name_data.push_back(total_prefixes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -539,350 +591,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::State::get_children(
     return children;
 }
 
-void Bgp::Global::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "as")
     {
         as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-paths")
     {
         total_paths = value;
+        total_paths.value_namespace = name_space;
+        total_paths.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-prefixes")
     {
         total_prefixes = value;
+        total_prefixes.value_namespace = name_space;
+        total_prefixes.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Bgp::Global::RouteSelectionOptions::RouteSelectionOptions()
-    :
-    config(std::make_shared<Bgp::Global::RouteSelectionOptions::Config>())
-	,state(std::make_shared<Bgp::Global::RouteSelectionOptions::State>())
+void Bgp::Global::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "route-selection-options"; yang_parent_name = "global";
-}
-
-Bgp::Global::RouteSelectionOptions::~RouteSelectionOptions()
-{
-}
-
-bool Bgp::Global::RouteSelectionOptions::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::RouteSelectionOptions::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::RouteSelectionOptions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-selection-options";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::RouteSelectionOptions::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "as")
     {
-        path_buffer << "openconfig-bgp:bgp/global/" << get_segment_path();
+        as.yfilter = yfilter;
     }
-    else
+    if(value_path == "router-id")
     {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+        router_id.yfilter = yfilter;
     }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
+    if(value_path == "total-paths")
     {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::RouteSelectionOptions::Config>();
-        }
-        return config;
+        total_paths.yfilter = yfilter;
     }
-
-    if(child_yang_name == "state")
+    if(value_path == "total-prefixes")
     {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::RouteSelectionOptions::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::RouteSelectionOptions::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::RouteSelectionOptions::Config::Config()
-    :
-    advertise_inactive_routes{YType::boolean, "advertise-inactive-routes"},
-    always_compare_med{YType::boolean, "always-compare-med"},
-    enable_aigp{YType::boolean, "enable-aigp"},
-    external_compare_router_id{YType::boolean, "external-compare-router-id"},
-    ignore_as_path_length{YType::boolean, "ignore-as-path-length"},
-    ignore_next_hop_igp_metric{YType::boolean, "ignore-next-hop-igp-metric"}
-{
-    yang_name = "config"; yang_parent_name = "route-selection-options";
-}
-
-Bgp::Global::RouteSelectionOptions::Config::~Config()
-{
-}
-
-bool Bgp::Global::RouteSelectionOptions::Config::has_data() const
-{
-    return advertise_inactive_routes.is_set
-	|| always_compare_med.is_set
-	|| enable_aigp.is_set
-	|| external_compare_router_id.is_set
-	|| ignore_as_path_length.is_set
-	|| ignore_next_hop_igp_metric.is_set;
-}
-
-bool Bgp::Global::RouteSelectionOptions::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(advertise_inactive_routes.operation)
-	|| is_set(always_compare_med.operation)
-	|| is_set(enable_aigp.operation)
-	|| is_set(external_compare_router_id.operation)
-	|| is_set(ignore_as_path_length.operation)
-	|| is_set(ignore_next_hop_igp_metric.operation);
-}
-
-std::string Bgp::Global::RouteSelectionOptions::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::RouteSelectionOptions::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "openconfig-bgp:bgp/global/route-selection-options/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (advertise_inactive_routes.is_set || is_set(advertise_inactive_routes.operation)) leaf_name_data.push_back(advertise_inactive_routes.get_name_leafdata());
-    if (always_compare_med.is_set || is_set(always_compare_med.operation)) leaf_name_data.push_back(always_compare_med.get_name_leafdata());
-    if (enable_aigp.is_set || is_set(enable_aigp.operation)) leaf_name_data.push_back(enable_aigp.get_name_leafdata());
-    if (external_compare_router_id.is_set || is_set(external_compare_router_id.operation)) leaf_name_data.push_back(external_compare_router_id.get_name_leafdata());
-    if (ignore_as_path_length.is_set || is_set(ignore_as_path_length.operation)) leaf_name_data.push_back(ignore_as_path_length.get_name_leafdata());
-    if (ignore_next_hop_igp_metric.is_set || is_set(ignore_next_hop_igp_metric.operation)) leaf_name_data.push_back(ignore_next_hop_igp_metric.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::RouteSelectionOptions::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "advertise-inactive-routes")
-    {
-        advertise_inactive_routes = value;
-    }
-    if(value_path == "always-compare-med")
-    {
-        always_compare_med = value;
-    }
-    if(value_path == "enable-aigp")
-    {
-        enable_aigp = value;
-    }
-    if(value_path == "external-compare-router-id")
-    {
-        external_compare_router_id = value;
-    }
-    if(value_path == "ignore-as-path-length")
-    {
-        ignore_as_path_length = value;
-    }
-    if(value_path == "ignore-next-hop-igp-metric")
-    {
-        ignore_next_hop_igp_metric = value;
+        total_prefixes.yfilter = yfilter;
     }
 }
 
-Bgp::Global::RouteSelectionOptions::State::State()
-    :
-    advertise_inactive_routes{YType::boolean, "advertise-inactive-routes"},
-    always_compare_med{YType::boolean, "always-compare-med"},
-    enable_aigp{YType::boolean, "enable-aigp"},
-    external_compare_router_id{YType::boolean, "external-compare-router-id"},
-    ignore_as_path_length{YType::boolean, "ignore-as-path-length"},
-    ignore_next_hop_igp_metric{YType::boolean, "ignore-next-hop-igp-metric"}
+bool Bgp::Global::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    yang_name = "state"; yang_parent_name = "route-selection-options";
-}
-
-Bgp::Global::RouteSelectionOptions::State::~State()
-{
-}
-
-bool Bgp::Global::RouteSelectionOptions::State::has_data() const
-{
-    return advertise_inactive_routes.is_set
-	|| always_compare_med.is_set
-	|| enable_aigp.is_set
-	|| external_compare_router_id.is_set
-	|| ignore_as_path_length.is_set
-	|| ignore_next_hop_igp_metric.is_set;
-}
-
-bool Bgp::Global::RouteSelectionOptions::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(advertise_inactive_routes.operation)
-	|| is_set(always_compare_med.operation)
-	|| is_set(enable_aigp.operation)
-	|| is_set(external_compare_router_id.operation)
-	|| is_set(ignore_as_path_length.operation)
-	|| is_set(ignore_next_hop_igp_metric.operation);
-}
-
-std::string Bgp::Global::RouteSelectionOptions::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::RouteSelectionOptions::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        path_buffer << "openconfig-bgp:bgp/global/route-selection-options/" << get_segment_path();
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (advertise_inactive_routes.is_set || is_set(advertise_inactive_routes.operation)) leaf_name_data.push_back(advertise_inactive_routes.get_name_leafdata());
-    if (always_compare_med.is_set || is_set(always_compare_med.operation)) leaf_name_data.push_back(always_compare_med.get_name_leafdata());
-    if (enable_aigp.is_set || is_set(enable_aigp.operation)) leaf_name_data.push_back(enable_aigp.get_name_leafdata());
-    if (external_compare_router_id.is_set || is_set(external_compare_router_id.operation)) leaf_name_data.push_back(external_compare_router_id.get_name_leafdata());
-    if (ignore_as_path_length.is_set || is_set(ignore_as_path_length.operation)) leaf_name_data.push_back(ignore_as_path_length.get_name_leafdata());
-    if (ignore_next_hop_igp_metric.is_set || is_set(ignore_next_hop_igp_metric.operation)) leaf_name_data.push_back(ignore_next_hop_igp_metric.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::RouteSelectionOptions::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "advertise-inactive-routes")
-    {
-        advertise_inactive_routes = value;
-    }
-    if(value_path == "always-compare-med")
-    {
-        always_compare_med = value;
-    }
-    if(value_path == "enable-aigp")
-    {
-        enable_aigp = value;
-    }
-    if(value_path == "external-compare-router-id")
-    {
-        external_compare_router_id = value;
-    }
-    if(value_path == "ignore-as-path-length")
-    {
-        ignore_as_path_length = value;
-    }
-    if(value_path == "ignore-next-hop-igp-metric")
-    {
-        ignore_next_hop_igp_metric = value;
-    }
+    if(name == "as" || name == "router-id" || name == "total-paths" || name == "total-prefixes")
+        return true;
+    return false;
 }
 
 Bgp::Global::DefaultRouteDistance::DefaultRouteDistance()
@@ -909,7 +670,7 @@ bool Bgp::Global::DefaultRouteDistance::has_data() const
 
 bool Bgp::Global::DefaultRouteDistance::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -983,8 +744,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance
     return children;
 }
 
-void Bgp::Global::DefaultRouteDistance::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::DefaultRouteDistance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::DefaultRouteDistance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::DefaultRouteDistance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::DefaultRouteDistance::Config::Config()
@@ -1007,9 +779,9 @@ bool Bgp::Global::DefaultRouteDistance::Config::has_data() const
 
 bool Bgp::Global::DefaultRouteDistance::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(external_route_distance.operation)
-	|| is_set(internal_route_distance.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(external_route_distance.yfilter)
+	|| ydk::is_set(internal_route_distance.yfilter);
 }
 
 std::string Bgp::Global::DefaultRouteDistance::Config::get_segment_path() const
@@ -1035,8 +807,8 @@ const EntityPath Bgp::Global::DefaultRouteDistance::Config::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (external_route_distance.is_set || is_set(external_route_distance.operation)) leaf_name_data.push_back(external_route_distance.get_name_leafdata());
-    if (internal_route_distance.is_set || is_set(internal_route_distance.operation)) leaf_name_data.push_back(internal_route_distance.get_name_leafdata());
+    if (external_route_distance.is_set || is_set(external_route_distance.yfilter)) leaf_name_data.push_back(external_route_distance.get_name_leafdata());
+    if (internal_route_distance.is_set || is_set(internal_route_distance.yfilter)) leaf_name_data.push_back(internal_route_distance.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1055,16 +827,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance
     return children;
 }
 
-void Bgp::Global::DefaultRouteDistance::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::DefaultRouteDistance::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "external-route-distance")
     {
         external_route_distance = value;
+        external_route_distance.value_namespace = name_space;
+        external_route_distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal-route-distance")
     {
         internal_route_distance = value;
+        internal_route_distance.value_namespace = name_space;
+        internal_route_distance.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::DefaultRouteDistance::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "external-route-distance")
+    {
+        external_route_distance.yfilter = yfilter;
+    }
+    if(value_path == "internal-route-distance")
+    {
+        internal_route_distance.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::DefaultRouteDistance::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "external-route-distance" || name == "internal-route-distance")
+        return true;
+    return false;
 }
 
 Bgp::Global::DefaultRouteDistance::State::State()
@@ -1087,9 +882,9 @@ bool Bgp::Global::DefaultRouteDistance::State::has_data() const
 
 bool Bgp::Global::DefaultRouteDistance::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(external_route_distance.operation)
-	|| is_set(internal_route_distance.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(external_route_distance.yfilter)
+	|| ydk::is_set(internal_route_distance.yfilter);
 }
 
 std::string Bgp::Global::DefaultRouteDistance::State::get_segment_path() const
@@ -1115,8 +910,8 @@ const EntityPath Bgp::Global::DefaultRouteDistance::State::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (external_route_distance.is_set || is_set(external_route_distance.operation)) leaf_name_data.push_back(external_route_distance.get_name_leafdata());
-    if (internal_route_distance.is_set || is_set(internal_route_distance.operation)) leaf_name_data.push_back(internal_route_distance.get_name_leafdata());
+    if (external_route_distance.is_set || is_set(external_route_distance.yfilter)) leaf_name_data.push_back(external_route_distance.get_name_leafdata());
+    if (internal_route_distance.is_set || is_set(internal_route_distance.yfilter)) leaf_name_data.push_back(internal_route_distance.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1135,16 +930,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::DefaultRouteDistance
     return children;
 }
 
-void Bgp::Global::DefaultRouteDistance::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::DefaultRouteDistance::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "external-route-distance")
     {
         external_route_distance = value;
+        external_route_distance.value_namespace = name_space;
+        external_route_distance.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "internal-route-distance")
     {
         internal_route_distance = value;
+        internal_route_distance.value_namespace = name_space;
+        internal_route_distance.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::DefaultRouteDistance::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "external-route-distance")
+    {
+        external_route_distance.yfilter = yfilter;
+    }
+    if(value_path == "internal-route-distance")
+    {
+        internal_route_distance.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::DefaultRouteDistance::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "external-route-distance" || name == "internal-route-distance")
+        return true;
+    return false;
 }
 
 Bgp::Global::Confederation::Confederation()
@@ -1171,7 +989,7 @@ bool Bgp::Global::Confederation::has_data() const
 
 bool Bgp::Global::Confederation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -1245,8 +1063,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::get_c
     return children;
 }
 
-void Bgp::Global::Confederation::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::Confederation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::Confederation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::Confederation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::Confederation::Config::Config()
@@ -1277,13 +1106,13 @@ bool Bgp::Global::Confederation::Config::has_operation() const
 {
     for (auto const & leaf : member_as.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(identifier.operation)
-	|| is_set(member_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(member_as.yfilter);
 }
 
 std::string Bgp::Global::Confederation::Config::get_segment_path() const
@@ -1309,8 +1138,8 @@ const EntityPath Bgp::Global::Confederation::Config::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
 
     auto member_as_name_datas = member_as.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), member_as_name_datas.begin(), member_as_name_datas.end());
@@ -1331,20 +1160,47 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::Confi
     return children;
 }
 
-void Bgp::Global::Confederation::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::Confederation::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "identifier")
     {
         identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-as")
     {
         member_as.append(value);
     }
+}
+
+void Bgp::Global::Confederation::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "member-as")
+    {
+        member_as.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::Confederation::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "identifier" || name == "member-as")
+        return true;
+    return false;
 }
 
 Bgp::Global::Confederation::State::State()
@@ -1375,13 +1231,13 @@ bool Bgp::Global::Confederation::State::has_operation() const
 {
     for (auto const & leaf : member_as.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(identifier.operation)
-	|| is_set(member_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(member_as.yfilter);
 }
 
 std::string Bgp::Global::Confederation::State::get_segment_path() const
@@ -1407,8 +1263,8 @@ const EntityPath Bgp::Global::Confederation::State::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
 
     auto member_as_name_datas = member_as.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), member_as_name_datas.begin(), member_as_name_datas.end());
@@ -1429,20 +1285,422 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::Confederation::State
     return children;
 }
 
-void Bgp::Global::Confederation::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::Confederation::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "identifier")
     {
         identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "member-as")
     {
         member_as.append(value);
     }
+}
+
+void Bgp::Global::Confederation::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "member-as")
+    {
+        member_as.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::Confederation::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "identifier" || name == "member-as")
+        return true;
+    return false;
+}
+
+Bgp::Global::GracefulRestart::GracefulRestart()
+    :
+    config(std::make_shared<Bgp::Global::GracefulRestart::Config>())
+	,state(std::make_shared<Bgp::Global::GracefulRestart::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "graceful-restart"; yang_parent_name = "global";
+}
+
+Bgp::Global::GracefulRestart::~GracefulRestart()
+{
+}
+
+bool Bgp::Global::GracefulRestart::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::GracefulRestart::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::GracefulRestart::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "graceful-restart";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::GracefulRestart::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "openconfig-bgp:bgp/global/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::GracefulRestart::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::GracefulRestart::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::GracefulRestart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::GracefulRestart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::GracefulRestart::Config::Config()
+    :
+    enabled{YType::boolean, "enabled"},
+    helper_only{YType::boolean, "helper-only"},
+    restart_time{YType::uint16, "restart-time"},
+    stale_routes_time{YType::str, "stale-routes-time"}
+{
+    yang_name = "config"; yang_parent_name = "graceful-restart";
+}
+
+Bgp::Global::GracefulRestart::Config::~Config()
+{
+}
+
+bool Bgp::Global::GracefulRestart::Config::has_data() const
+{
+    return enabled.is_set
+	|| helper_only.is_set
+	|| restart_time.is_set
+	|| stale_routes_time.is_set;
+}
+
+bool Bgp::Global::GracefulRestart::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(helper_only.yfilter)
+	|| ydk::is_set(restart_time.yfilter)
+	|| ydk::is_set(stale_routes_time.yfilter);
+}
+
+std::string Bgp::Global::GracefulRestart::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "openconfig-bgp:bgp/global/graceful-restart/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (helper_only.is_set || is_set(helper_only.yfilter)) leaf_name_data.push_back(helper_only.get_name_leafdata());
+    if (restart_time.is_set || is_set(restart_time.yfilter)) leaf_name_data.push_back(restart_time.get_name_leafdata());
+    if (stale_routes_time.is_set || is_set(stale_routes_time.yfilter)) leaf_name_data.push_back(stale_routes_time.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "helper-only")
+    {
+        helper_only = value;
+        helper_only.value_namespace = name_space;
+        helper_only.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time = value;
+        restart_time.value_namespace = name_space;
+        restart_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-routes-time")
+    {
+        stale_routes_time = value;
+        stale_routes_time.value_namespace = name_space;
+        stale_routes_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::GracefulRestart::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "helper-only")
+    {
+        helper_only.yfilter = yfilter;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time.yfilter = yfilter;
+    }
+    if(value_path == "stale-routes-time")
+    {
+        stale_routes_time.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::GracefulRestart::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "helper-only" || name == "restart-time" || name == "stale-routes-time")
+        return true;
+    return false;
+}
+
+Bgp::Global::GracefulRestart::State::State()
+    :
+    enabled{YType::boolean, "enabled"},
+    helper_only{YType::boolean, "helper-only"},
+    restart_time{YType::uint16, "restart-time"},
+    stale_routes_time{YType::str, "stale-routes-time"}
+{
+    yang_name = "state"; yang_parent_name = "graceful-restart";
+}
+
+Bgp::Global::GracefulRestart::State::~State()
+{
+}
+
+bool Bgp::Global::GracefulRestart::State::has_data() const
+{
+    return enabled.is_set
+	|| helper_only.is_set
+	|| restart_time.is_set
+	|| stale_routes_time.is_set;
+}
+
+bool Bgp::Global::GracefulRestart::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(helper_only.yfilter)
+	|| ydk::is_set(restart_time.yfilter)
+	|| ydk::is_set(stale_routes_time.yfilter);
+}
+
+std::string Bgp::Global::GracefulRestart::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::GracefulRestart::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "openconfig-bgp:bgp/global/graceful-restart/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (helper_only.is_set || is_set(helper_only.yfilter)) leaf_name_data.push_back(helper_only.get_name_leafdata());
+    if (restart_time.is_set || is_set(restart_time.yfilter)) leaf_name_data.push_back(restart_time.get_name_leafdata());
+    if (stale_routes_time.is_set || is_set(stale_routes_time.yfilter)) leaf_name_data.push_back(stale_routes_time.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "helper-only")
+    {
+        helper_only = value;
+        helper_only.value_namespace = name_space;
+        helper_only.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time = value;
+        restart_time.value_namespace = name_space;
+        restart_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-routes-time")
+    {
+        stale_routes_time = value;
+        stale_routes_time.value_namespace = name_space;
+        stale_routes_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::GracefulRestart::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "helper-only")
+    {
+        helper_only.yfilter = yfilter;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time.yfilter = yfilter;
+    }
+    if(value_path == "stale-routes-time")
+    {
+        stale_routes_time.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::GracefulRestart::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "helper-only" || name == "restart-time" || name == "stale-routes-time")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::UseMultiplePaths()
@@ -1477,7 +1735,7 @@ bool Bgp::Global::UseMultiplePaths::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (ebgp !=  nullptr && ebgp->has_operation())
 	|| (ibgp !=  nullptr && ibgp->has_operation())
@@ -1581,8 +1839,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::ge
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::UseMultiplePaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::UseMultiplePaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "ebgp" || name == "ibgp" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::Config::Config()
@@ -1603,8 +1872,8 @@ bool Bgp::Global::UseMultiplePaths::Config::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
 }
 
 std::string Bgp::Global::UseMultiplePaths::Config::get_segment_path() const
@@ -1630,7 +1899,7 @@ const EntityPath Bgp::Global::UseMultiplePaths::Config::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1649,12 +1918,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Co
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::UseMultiplePaths::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::UseMultiplePaths::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::State::State()
@@ -1675,8 +1961,8 @@ bool Bgp::Global::UseMultiplePaths::State::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
 }
 
 std::string Bgp::Global::UseMultiplePaths::State::get_segment_path() const
@@ -1702,7 +1988,7 @@ const EntityPath Bgp::Global::UseMultiplePaths::State::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1721,12 +2007,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::St
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::UseMultiplePaths::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::UseMultiplePaths::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::Ebgp::Ebgp()
@@ -1753,7 +2056,7 @@ bool Bgp::Global::UseMultiplePaths::Ebgp::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::Ebgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -1827,8 +2130,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Eb
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::Ebgp::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::Ebgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::UseMultiplePaths::Ebgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::UseMultiplePaths::Ebgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::Ebgp::Config::Config()
@@ -1851,9 +2165,9 @@ bool Bgp::Global::UseMultiplePaths::Ebgp::Config::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::Ebgp::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_multiple_as.operation)
-	|| is_set(maximum_paths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_multiple_as.yfilter)
+	|| ydk::is_set(maximum_paths.yfilter);
 }
 
 std::string Bgp::Global::UseMultiplePaths::Ebgp::Config::get_segment_path() const
@@ -1879,8 +2193,8 @@ const EntityPath Bgp::Global::UseMultiplePaths::Ebgp::Config::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_multiple_as.is_set || is_set(allow_multiple_as.operation)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (allow_multiple_as.is_set || is_set(allow_multiple_as.yfilter)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1899,16 +2213,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Eb
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::Ebgp::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::Ebgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-multiple-as")
     {
         allow_multiple_as = value;
+        allow_multiple_as.value_namespace = name_space;
+        allow_multiple_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::UseMultiplePaths::Ebgp::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-multiple-as")
+    {
+        allow_multiple_as.yfilter = yfilter;
+    }
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::UseMultiplePaths::Ebgp::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-multiple-as" || name == "maximum-paths")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::Ebgp::State::State()
@@ -1931,9 +2268,9 @@ bool Bgp::Global::UseMultiplePaths::Ebgp::State::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::Ebgp::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_multiple_as.operation)
-	|| is_set(maximum_paths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_multiple_as.yfilter)
+	|| ydk::is_set(maximum_paths.yfilter);
 }
 
 std::string Bgp::Global::UseMultiplePaths::Ebgp::State::get_segment_path() const
@@ -1959,8 +2296,8 @@ const EntityPath Bgp::Global::UseMultiplePaths::Ebgp::State::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_multiple_as.is_set || is_set(allow_multiple_as.operation)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (allow_multiple_as.is_set || is_set(allow_multiple_as.yfilter)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1979,16 +2316,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Eb
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::Ebgp::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::Ebgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-multiple-as")
     {
         allow_multiple_as = value;
+        allow_multiple_as.value_namespace = name_space;
+        allow_multiple_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::UseMultiplePaths::Ebgp::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-multiple-as")
+    {
+        allow_multiple_as.yfilter = yfilter;
+    }
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::UseMultiplePaths::Ebgp::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-multiple-as" || name == "maximum-paths")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::Ibgp::Ibgp()
@@ -2015,7 +2375,7 @@ bool Bgp::Global::UseMultiplePaths::Ibgp::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::Ibgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -2089,8 +2449,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ib
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::Ibgp::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::Ibgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::UseMultiplePaths::Ibgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::UseMultiplePaths::Ibgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::Ibgp::Config::Config()
@@ -2111,8 +2482,8 @@ bool Bgp::Global::UseMultiplePaths::Ibgp::Config::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::Ibgp::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_paths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_paths.yfilter);
 }
 
 std::string Bgp::Global::UseMultiplePaths::Ibgp::Config::get_segment_path() const
@@ -2138,7 +2509,7 @@ const EntityPath Bgp::Global::UseMultiplePaths::Ibgp::Config::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2157,12 +2528,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ib
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::Ibgp::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::Ibgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::UseMultiplePaths::Ibgp::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::UseMultiplePaths::Ibgp::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-paths")
+        return true;
+    return false;
 }
 
 Bgp::Global::UseMultiplePaths::Ibgp::State::State()
@@ -2183,8 +2571,8 @@ bool Bgp::Global::UseMultiplePaths::Ibgp::State::has_data() const
 
 bool Bgp::Global::UseMultiplePaths::Ibgp::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_paths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_paths.yfilter);
 }
 
 std::string Bgp::Global::UseMultiplePaths::Ibgp::State::get_segment_path() const
@@ -2210,7 +2598,7 @@ const EntityPath Bgp::Global::UseMultiplePaths::Ibgp::State::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2229,53 +2617,70 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::UseMultiplePaths::Ib
     return children;
 }
 
-void Bgp::Global::UseMultiplePaths::Ibgp::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::UseMultiplePaths::Ibgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Bgp::Global::GracefulRestart::GracefulRestart()
+void Bgp::Global::UseMultiplePaths::Ibgp::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::UseMultiplePaths::Ibgp::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-paths")
+        return true;
+    return false;
+}
+
+Bgp::Global::RouteSelectionOptions::RouteSelectionOptions()
     :
-    config(std::make_shared<Bgp::Global::GracefulRestart::Config>())
-	,state(std::make_shared<Bgp::Global::GracefulRestart::State>())
+    config(std::make_shared<Bgp::Global::RouteSelectionOptions::Config>())
+	,state(std::make_shared<Bgp::Global::RouteSelectionOptions::State>())
 {
     config->parent = this;
 
     state->parent = this;
 
-    yang_name = "graceful-restart"; yang_parent_name = "global";
+    yang_name = "route-selection-options"; yang_parent_name = "global";
 }
 
-Bgp::Global::GracefulRestart::~GracefulRestart()
+Bgp::Global::RouteSelectionOptions::~RouteSelectionOptions()
 {
 }
 
-bool Bgp::Global::GracefulRestart::has_data() const
+bool Bgp::Global::RouteSelectionOptions::has_data() const
 {
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
 
-bool Bgp::Global::GracefulRestart::has_operation() const
+bool Bgp::Global::RouteSelectionOptions::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
 
-std::string Bgp::Global::GracefulRestart::get_segment_path() const
+std::string Bgp::Global::RouteSelectionOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "graceful-restart";
+    path_buffer << "route-selection-options";
 
     return path_buffer.str();
 
 }
 
-const EntityPath Bgp::Global::GracefulRestart::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::RouteSelectionOptions::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -2296,13 +2701,13 @@ const EntityPath Bgp::Global::GracefulRestart::get_entity_path(Entity* ancestor)
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "config")
     {
         if(config == nullptr)
         {
-            config = std::make_shared<Bgp::Global::GracefulRestart::Config>();
+            config = std::make_shared<Bgp::Global::RouteSelectionOptions::Config>();
         }
         return config;
     }
@@ -2311,7 +2716,7 @@ std::shared_ptr<Entity> Bgp::Global::GracefulRestart::get_child_by_name(const st
     {
         if(state == nullptr)
         {
-            state = std::make_shared<Bgp::Global::GracefulRestart::State>();
+            state = std::make_shared<Bgp::Global::RouteSelectionOptions::State>();
         }
         return state;
     }
@@ -2319,7 +2724,7 @@ std::shared_ptr<Entity> Bgp::Global::GracefulRestart::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(config != nullptr)
@@ -2335,42 +2740,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::get
     return children;
 }
 
-void Bgp::Global::GracefulRestart::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::RouteSelectionOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-Bgp::Global::GracefulRestart::Config::Config()
+void Bgp::Global::RouteSelectionOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::RouteSelectionOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::RouteSelectionOptions::Config::Config()
     :
-    enabled{YType::boolean, "enabled"},
-    helper_only{YType::boolean, "helper-only"},
-    restart_time{YType::uint16, "restart-time"},
-    stale_routes_time{YType::str, "stale-routes-time"}
+    advertise_inactive_routes{YType::boolean, "advertise-inactive-routes"},
+    always_compare_med{YType::boolean, "always-compare-med"},
+    enable_aigp{YType::boolean, "enable-aigp"},
+    external_compare_router_id{YType::boolean, "external-compare-router-id"},
+    ignore_as_path_length{YType::boolean, "ignore-as-path-length"},
+    ignore_next_hop_igp_metric{YType::boolean, "ignore-next-hop-igp-metric"}
 {
-    yang_name = "config"; yang_parent_name = "graceful-restart";
+    yang_name = "config"; yang_parent_name = "route-selection-options";
 }
 
-Bgp::Global::GracefulRestart::Config::~Config()
+Bgp::Global::RouteSelectionOptions::Config::~Config()
 {
 }
 
-bool Bgp::Global::GracefulRestart::Config::has_data() const
+bool Bgp::Global::RouteSelectionOptions::Config::has_data() const
 {
-    return enabled.is_set
-	|| helper_only.is_set
-	|| restart_time.is_set
-	|| stale_routes_time.is_set;
+    return advertise_inactive_routes.is_set
+	|| always_compare_med.is_set
+	|| enable_aigp.is_set
+	|| external_compare_router_id.is_set
+	|| ignore_as_path_length.is_set
+	|| ignore_next_hop_igp_metric.is_set;
 }
 
-bool Bgp::Global::GracefulRestart::Config::has_operation() const
+bool Bgp::Global::RouteSelectionOptions::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(helper_only.operation)
-	|| is_set(restart_time.operation)
-	|| is_set(stale_routes_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertise_inactive_routes.yfilter)
+	|| ydk::is_set(always_compare_med.yfilter)
+	|| ydk::is_set(enable_aigp.yfilter)
+	|| ydk::is_set(external_compare_router_id.yfilter)
+	|| ydk::is_set(ignore_as_path_length.yfilter)
+	|| ydk::is_set(ignore_next_hop_igp_metric.yfilter);
 }
 
-std::string Bgp::Global::GracefulRestart::Config::get_segment_path() const
+std::string Bgp::Global::RouteSelectionOptions::Config::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "config";
@@ -2379,12 +2801,12 @@ std::string Bgp::Global::GracefulRestart::Config::get_segment_path() const
 
 }
 
-const EntityPath Bgp::Global::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::RouteSelectionOptions::Config::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "openconfig-bgp:bgp/global/graceful-restart/" << get_segment_path();
+        path_buffer << "openconfig-bgp:bgp/global/route-selection-options/" << get_segment_path();
     }
     else
     {
@@ -2393,10 +2815,12 @@ const EntityPath Bgp::Global::GracefulRestart::Config::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (helper_only.is_set || is_set(helper_only.operation)) leaf_name_data.push_back(helper_only.get_name_leafdata());
-    if (restart_time.is_set || is_set(restart_time.operation)) leaf_name_data.push_back(restart_time.get_name_leafdata());
-    if (stale_routes_time.is_set || is_set(stale_routes_time.operation)) leaf_name_data.push_back(stale_routes_time.get_name_leafdata());
+    if (advertise_inactive_routes.is_set || is_set(advertise_inactive_routes.yfilter)) leaf_name_data.push_back(advertise_inactive_routes.get_name_leafdata());
+    if (always_compare_med.is_set || is_set(always_compare_med.yfilter)) leaf_name_data.push_back(always_compare_med.get_name_leafdata());
+    if (enable_aigp.is_set || is_set(enable_aigp.yfilter)) leaf_name_data.push_back(enable_aigp.get_name_leafdata());
+    if (external_compare_router_id.is_set || is_set(external_compare_router_id.yfilter)) leaf_name_data.push_back(external_compare_router_id.get_name_leafdata());
+    if (ignore_as_path_length.is_set || is_set(ignore_as_path_length.yfilter)) leaf_name_data.push_back(ignore_as_path_length.get_name_leafdata());
+    if (ignore_next_hop_igp_metric.is_set || is_set(ignore_next_hop_igp_metric.yfilter)) leaf_name_data.push_back(ignore_next_hop_igp_metric.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2404,69 +2828,130 @@ const EntityPath Bgp::Global::GracefulRestart::Config::get_entity_path(Entity* a
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::Config::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::Config::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Bgp::Global::GracefulRestart::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::RouteSelectionOptions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enabled")
+    if(value_path == "advertise-inactive-routes")
     {
-        enabled = value;
+        advertise_inactive_routes = value;
+        advertise_inactive_routes.value_namespace = name_space;
+        advertise_inactive_routes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "helper-only")
+    if(value_path == "always-compare-med")
     {
-        helper_only = value;
+        always_compare_med = value;
+        always_compare_med.value_namespace = name_space;
+        always_compare_med.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "restart-time")
+    if(value_path == "enable-aigp")
     {
-        restart_time = value;
+        enable_aigp = value;
+        enable_aigp.value_namespace = name_space;
+        enable_aigp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stale-routes-time")
+    if(value_path == "external-compare-router-id")
     {
-        stale_routes_time = value;
+        external_compare_router_id = value;
+        external_compare_router_id.value_namespace = name_space;
+        external_compare_router_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ignore-as-path-length")
+    {
+        ignore_as_path_length = value;
+        ignore_as_path_length.value_namespace = name_space;
+        ignore_as_path_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ignore-next-hop-igp-metric")
+    {
+        ignore_next_hop_igp_metric = value;
+        ignore_next_hop_igp_metric.value_namespace = name_space;
+        ignore_next_hop_igp_metric.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Bgp::Global::GracefulRestart::State::State()
+void Bgp::Global::RouteSelectionOptions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertise-inactive-routes")
+    {
+        advertise_inactive_routes.yfilter = yfilter;
+    }
+    if(value_path == "always-compare-med")
+    {
+        always_compare_med.yfilter = yfilter;
+    }
+    if(value_path == "enable-aigp")
+    {
+        enable_aigp.yfilter = yfilter;
+    }
+    if(value_path == "external-compare-router-id")
+    {
+        external_compare_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ignore-as-path-length")
+    {
+        ignore_as_path_length.yfilter = yfilter;
+    }
+    if(value_path == "ignore-next-hop-igp-metric")
+    {
+        ignore_next_hop_igp_metric.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::RouteSelectionOptions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise-inactive-routes" || name == "always-compare-med" || name == "enable-aigp" || name == "external-compare-router-id" || name == "ignore-as-path-length" || name == "ignore-next-hop-igp-metric")
+        return true;
+    return false;
+}
+
+Bgp::Global::RouteSelectionOptions::State::State()
     :
-    enabled{YType::boolean, "enabled"},
-    helper_only{YType::boolean, "helper-only"},
-    restart_time{YType::uint16, "restart-time"},
-    stale_routes_time{YType::str, "stale-routes-time"}
+    advertise_inactive_routes{YType::boolean, "advertise-inactive-routes"},
+    always_compare_med{YType::boolean, "always-compare-med"},
+    enable_aigp{YType::boolean, "enable-aigp"},
+    external_compare_router_id{YType::boolean, "external-compare-router-id"},
+    ignore_as_path_length{YType::boolean, "ignore-as-path-length"},
+    ignore_next_hop_igp_metric{YType::boolean, "ignore-next-hop-igp-metric"}
 {
-    yang_name = "state"; yang_parent_name = "graceful-restart";
+    yang_name = "state"; yang_parent_name = "route-selection-options";
 }
 
-Bgp::Global::GracefulRestart::State::~State()
+Bgp::Global::RouteSelectionOptions::State::~State()
 {
 }
 
-bool Bgp::Global::GracefulRestart::State::has_data() const
+bool Bgp::Global::RouteSelectionOptions::State::has_data() const
 {
-    return enabled.is_set
-	|| helper_only.is_set
-	|| restart_time.is_set
-	|| stale_routes_time.is_set;
+    return advertise_inactive_routes.is_set
+	|| always_compare_med.is_set
+	|| enable_aigp.is_set
+	|| external_compare_router_id.is_set
+	|| ignore_as_path_length.is_set
+	|| ignore_next_hop_igp_metric.is_set;
 }
 
-bool Bgp::Global::GracefulRestart::State::has_operation() const
+bool Bgp::Global::RouteSelectionOptions::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(helper_only.operation)
-	|| is_set(restart_time.operation)
-	|| is_set(stale_routes_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertise_inactive_routes.yfilter)
+	|| ydk::is_set(always_compare_med.yfilter)
+	|| ydk::is_set(enable_aigp.yfilter)
+	|| ydk::is_set(external_compare_router_id.yfilter)
+	|| ydk::is_set(ignore_as_path_length.yfilter)
+	|| ydk::is_set(ignore_next_hop_igp_metric.yfilter);
 }
 
-std::string Bgp::Global::GracefulRestart::State::get_segment_path() const
+std::string Bgp::Global::RouteSelectionOptions::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
@@ -2475,12 +2960,12 @@ std::string Bgp::Global::GracefulRestart::State::get_segment_path() const
 
 }
 
-const EntityPath Bgp::Global::GracefulRestart::State::get_entity_path(Entity* ancestor) const
+const EntityPath Bgp::Global::RouteSelectionOptions::State::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
     {
-        path_buffer << "openconfig-bgp:bgp/global/graceful-restart/" << get_segment_path();
+        path_buffer << "openconfig-bgp:bgp/global/route-selection-options/" << get_segment_path();
     }
     else
     {
@@ -2489,10 +2974,12 @@ const EntityPath Bgp::Global::GracefulRestart::State::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (helper_only.is_set || is_set(helper_only.operation)) leaf_name_data.push_back(helper_only.get_name_leafdata());
-    if (restart_time.is_set || is_set(restart_time.operation)) leaf_name_data.push_back(restart_time.get_name_leafdata());
-    if (stale_routes_time.is_set || is_set(stale_routes_time.operation)) leaf_name_data.push_back(stale_routes_time.get_name_leafdata());
+    if (advertise_inactive_routes.is_set || is_set(advertise_inactive_routes.yfilter)) leaf_name_data.push_back(advertise_inactive_routes.get_name_leafdata());
+    if (always_compare_med.is_set || is_set(always_compare_med.yfilter)) leaf_name_data.push_back(always_compare_med.get_name_leafdata());
+    if (enable_aigp.is_set || is_set(enable_aigp.yfilter)) leaf_name_data.push_back(enable_aigp.get_name_leafdata());
+    if (external_compare_router_id.is_set || is_set(external_compare_router_id.yfilter)) leaf_name_data.push_back(external_compare_router_id.get_name_leafdata());
+    if (ignore_as_path_length.is_set || is_set(ignore_as_path_length.yfilter)) leaf_name_data.push_back(ignore_as_path_length.get_name_leafdata());
+    if (ignore_next_hop_igp_metric.is_set || is_set(ignore_next_hop_igp_metric.yfilter)) leaf_name_data.push_back(ignore_next_hop_igp_metric.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2500,35 +2987,90 @@ const EntityPath Bgp::Global::GracefulRestart::State::get_entity_path(Entity* an
 
 }
 
-std::shared_ptr<Entity> Bgp::Global::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bgp::Global::RouteSelectionOptions::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::GracefulRestart::State::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::RouteSelectionOptions::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void Bgp::Global::GracefulRestart::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::RouteSelectionOptions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enabled")
+    if(value_path == "advertise-inactive-routes")
     {
-        enabled = value;
+        advertise_inactive_routes = value;
+        advertise_inactive_routes.value_namespace = name_space;
+        advertise_inactive_routes.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "helper-only")
+    if(value_path == "always-compare-med")
     {
-        helper_only = value;
+        always_compare_med = value;
+        always_compare_med.value_namespace = name_space;
+        always_compare_med.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "restart-time")
+    if(value_path == "enable-aigp")
     {
-        restart_time = value;
+        enable_aigp = value;
+        enable_aigp.value_namespace = name_space;
+        enable_aigp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "stale-routes-time")
+    if(value_path == "external-compare-router-id")
     {
-        stale_routes_time = value;
+        external_compare_router_id = value;
+        external_compare_router_id.value_namespace = name_space;
+        external_compare_router_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ignore-as-path-length")
+    {
+        ignore_as_path_length = value;
+        ignore_as_path_length.value_namespace = name_space;
+        ignore_as_path_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ignore-next-hop-igp-metric")
+    {
+        ignore_next_hop_igp_metric = value;
+        ignore_next_hop_igp_metric.value_namespace = name_space;
+        ignore_next_hop_igp_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::RouteSelectionOptions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertise-inactive-routes")
+    {
+        advertise_inactive_routes.yfilter = yfilter;
+    }
+    if(value_path == "always-compare-med")
+    {
+        always_compare_med.yfilter = yfilter;
+    }
+    if(value_path == "enable-aigp")
+    {
+        enable_aigp.yfilter = yfilter;
+    }
+    if(value_path == "external-compare-router-id")
+    {
+        external_compare_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ignore-as-path-length")
+    {
+        ignore_as_path_length.yfilter = yfilter;
+    }
+    if(value_path == "ignore-next-hop-igp-metric")
+    {
+        ignore_next_hop_igp_metric.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::RouteSelectionOptions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise-inactive-routes" || name == "always-compare-med" || name == "enable-aigp" || name == "external-compare-router-id" || name == "ignore-as-path-length" || name == "ignore-next-hop-igp-metric")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafis()
@@ -2557,7 +3099,7 @@ bool Bgp::Global::AfiSafis::has_operation() const
         if(afi_safi[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::get_segment_path() const
@@ -2622,8 +3164,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::get_childr
     return children;
 }
 
-void Bgp::Global::AfiSafis::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::AfiSafis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-safi")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::AfiSafi()
@@ -2633,9 +3186,9 @@ Bgp::Global::AfiSafis::AfiSafi::AfiSafi()
     apply_policy(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy>())
 	,config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Config>())
 	,graceful_restart(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::GracefulRestart>())
-	,ipv4_labelled_unicast(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast>())
+	,ipv4_labeled_unicast(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast>())
 	,ipv4_unicast(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast>())
-	,ipv6_labelled_unicast(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast>())
+	,ipv6_labeled_unicast(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast>())
 	,ipv6_unicast(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast>())
 	,l2vpn_evpn(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn>())
 	,l2vpn_vpls(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls>())
@@ -2653,11 +3206,11 @@ Bgp::Global::AfiSafis::AfiSafi::AfiSafi()
 
     graceful_restart->parent = this;
 
-    ipv4_labelled_unicast->parent = this;
+    ipv4_labeled_unicast->parent = this;
 
     ipv4_unicast->parent = this;
 
-    ipv6_labelled_unicast->parent = this;
+    ipv6_labeled_unicast->parent = this;
 
     ipv6_unicast->parent = this;
 
@@ -2692,9 +3245,9 @@ bool Bgp::Global::AfiSafis::AfiSafi::has_data() const
 	|| (apply_policy !=  nullptr && apply_policy->has_data())
 	|| (config !=  nullptr && config->has_data())
 	|| (graceful_restart !=  nullptr && graceful_restart->has_data())
-	|| (ipv4_labelled_unicast !=  nullptr && ipv4_labelled_unicast->has_data())
+	|| (ipv4_labeled_unicast !=  nullptr && ipv4_labeled_unicast->has_data())
 	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_data())
-	|| (ipv6_labelled_unicast !=  nullptr && ipv6_labelled_unicast->has_data())
+	|| (ipv6_labeled_unicast !=  nullptr && ipv6_labeled_unicast->has_data())
 	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_data())
 	|| (l2vpn_evpn !=  nullptr && l2vpn_evpn->has_data())
 	|| (l2vpn_vpls !=  nullptr && l2vpn_vpls->has_data())
@@ -2709,14 +3262,14 @@ bool Bgp::Global::AfiSafis::AfiSafi::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(afi_safi_name.yfilter)
 	|| (apply_policy !=  nullptr && apply_policy->has_operation())
 	|| (config !=  nullptr && config->has_operation())
 	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
-	|| (ipv4_labelled_unicast !=  nullptr && ipv4_labelled_unicast->has_operation())
+	|| (ipv4_labeled_unicast !=  nullptr && ipv4_labeled_unicast->has_operation())
 	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_operation())
-	|| (ipv6_labelled_unicast !=  nullptr && ipv6_labelled_unicast->has_operation())
+	|| (ipv6_labeled_unicast !=  nullptr && ipv6_labeled_unicast->has_operation())
 	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_operation())
 	|| (l2vpn_evpn !=  nullptr && l2vpn_evpn->has_operation())
 	|| (l2vpn_vpls !=  nullptr && l2vpn_vpls->has_operation())
@@ -2752,7 +3305,7 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (afi_safi_name.is_set || is_set(afi_safi_name.yfilter)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2789,13 +3342,13 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::get_child_by_name(const 
         return graceful_restart;
     }
 
-    if(child_yang_name == "ipv4-labelled-unicast")
+    if(child_yang_name == "ipv4-labeled-unicast")
     {
-        if(ipv4_labelled_unicast == nullptr)
+        if(ipv4_labeled_unicast == nullptr)
         {
-            ipv4_labelled_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast>();
+            ipv4_labeled_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast>();
         }
-        return ipv4_labelled_unicast;
+        return ipv4_labeled_unicast;
     }
 
     if(child_yang_name == "ipv4-unicast")
@@ -2807,13 +3360,13 @@ std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::get_child_by_name(const 
         return ipv4_unicast;
     }
 
-    if(child_yang_name == "ipv6-labelled-unicast")
+    if(child_yang_name == "ipv6-labeled-unicast")
     {
-        if(ipv6_labelled_unicast == nullptr)
+        if(ipv6_labeled_unicast == nullptr)
         {
-            ipv6_labelled_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast>();
+            ipv6_labeled_unicast = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast>();
         }
-        return ipv6_labelled_unicast;
+        return ipv6_labeled_unicast;
     }
 
     if(child_yang_name == "ipv6-unicast")
@@ -2927,9 +3480,9 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::g
         children["graceful-restart"] = graceful_restart;
     }
 
-    if(ipv4_labelled_unicast != nullptr)
+    if(ipv4_labeled_unicast != nullptr)
     {
-        children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
+        children["ipv4-labeled-unicast"] = ipv4_labeled_unicast;
     }
 
     if(ipv4_unicast != nullptr)
@@ -2937,9 +3490,9 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::g
         children["ipv4-unicast"] = ipv4_unicast;
     }
 
-    if(ipv6_labelled_unicast != nullptr)
+    if(ipv6_labeled_unicast != nullptr)
     {
-        children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
+        children["ipv6-labeled-unicast"] = ipv6_labeled_unicast;
     }
 
     if(ipv6_unicast != nullptr)
@@ -2995,12 +3548,263 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::g
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi-safi-name")
     {
         afi_safi_name = value;
+        afi_safi_name.value_namespace = name_space;
+        afi_safi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "apply-policy" || name == "config" || name == "graceful-restart" || name == "ipv4-labeled-unicast" || name == "ipv4-unicast" || name == "ipv6-labeled-unicast" || name == "ipv6-unicast" || name == "l2vpn-evpn" || name == "l2vpn-vpls" || name == "l3vpn-ipv4-multicast" || name == "l3vpn-ipv4-unicast" || name == "l3vpn-ipv6-multicast" || name == "l3vpn-ipv6-unicast" || name == "route-selection-options" || name == "state" || name == "use-multiple-paths" || name == "afi-safi-name")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Config::Config()
+    :
+    afi_safi_name{YType::identityref, "afi-safi-name"},
+    enabled{YType::boolean, "enabled"}
+{
+    yang_name = "config"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Config::has_data() const
+{
+    return afi_safi_name.is_set
+	|| enabled.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi_safi_name.yfilter)
+	|| ydk::is_set(enabled.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.yfilter)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+        afi_safi_name.value_namespace = name_space;
+        afi_safi_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-safi-name" || name == "enabled")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::State::State()
+    :
+    afi_safi_name{YType::identityref, "afi-safi-name"},
+    enabled{YType::boolean, "enabled"},
+    total_paths{YType::uint32, "total-paths"},
+    total_prefixes{YType::uint32, "total-prefixes"}
+{
+    yang_name = "state"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::State::has_data() const
+{
+    return afi_safi_name.is_set
+	|| enabled.is_set
+	|| total_paths.is_set
+	|| total_prefixes.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi_safi_name.yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(total_paths.yfilter)
+	|| ydk::is_set(total_prefixes.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.yfilter)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (total_paths.is_set || is_set(total_paths.yfilter)) leaf_name_data.push_back(total_paths.get_name_leafdata());
+    if (total_prefixes.is_set || is_set(total_prefixes.yfilter)) leaf_name_data.push_back(total_prefixes.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+        afi_safi_name.value_namespace = name_space;
+        afi_safi_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-paths")
+    {
+        total_paths = value;
+        total_paths.value_namespace = name_space;
+        total_paths.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-prefixes")
+    {
+        total_prefixes = value;
+        total_prefixes.value_namespace = name_space;
+        total_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "total-paths")
+    {
+        total_paths.yfilter = yfilter;
+    }
+    if(value_path == "total-prefixes")
+    {
+        total_prefixes.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-safi-name" || name == "enabled" || name == "total-paths" || name == "total-prefixes")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::GracefulRestart()
@@ -3027,7 +3831,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -3101,8 +3905,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::G
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::Config()
@@ -3123,8 +3938,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_segment_path() const
@@ -3150,7 +3965,7 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3169,12 +3984,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::G
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::State()
@@ -3195,8 +4027,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_segment_path() const
@@ -3222,7 +4054,7 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3241,4496 +4073,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::G
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Bgp::Global::AfiSafis::AfiSafi::Config::Config()
-    :
-    afi_safi_name{YType::identityref, "afi-safi-name"},
-    enabled{YType::boolean, "enabled"}
+void Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "config"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Config::has_data() const
-{
-    return afi_safi_name.is_set
-	|| enabled.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(enabled.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
     if(value_path == "enabled")
     {
-        enabled = value;
+        enabled.yfilter = yfilter;
     }
 }
 
-Bgp::Global::AfiSafis::AfiSafi::State::State()
-    :
-    afi_safi_name{YType::identityref, "afi-safi-name"},
-    enabled{YType::boolean, "enabled"},
-    total_paths{YType::uint32, "total-paths"},
-    total_prefixes{YType::uint32, "total-prefixes"}
+bool Bgp::Global::AfiSafis::AfiSafi::GracefulRestart::State::has_leaf_or_child_of_name(const std::string & name) const
 {
-    yang_name = "state"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::State::has_data() const
-{
-    return afi_safi_name.is_set
-	|| enabled.is_set
-	|| total_paths.is_set
-	|| total_prefixes.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(enabled.operation)
-	|| is_set(total_paths.operation)
-	|| is_set(total_prefixes.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (total_paths.is_set || is_set(total_paths.operation)) leaf_name_data.push_back(total_paths.get_name_leafdata());
-    if (total_prefixes.is_set || is_set(total_prefixes.operation)) leaf_name_data.push_back(total_prefixes.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "enabled")
-    {
-        enabled = value;
-    }
-    if(value_path == "total-paths")
-    {
-        total_paths = value;
-    }
-    if(value_path == "total-prefixes")
-    {
-        total_prefixes = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::ApplyPolicy()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "apply-policy"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::~ApplyPolicy()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "apply-policy";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'ApplyPolicy' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::Config()
-    :
-    default_export_policy{YType::enumeration, "default-export-policy"},
-    default_import_policy{YType::enumeration, "default-import-policy"},
-    export_policy{YType::str, "export-policy"},
-    import_policy{YType::str, "import-policy"}
-{
-    yang_name = "config"; yang_parent_name = "apply-policy";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::has_data() const
-{
-    for (auto const & leaf : export_policy.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : import_policy.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return default_export_policy.is_set
-	|| default_import_policy.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::has_operation() const
-{
-    for (auto const & leaf : export_policy.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    for (auto const & leaf : import_policy.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation)
-	|| is_set(export_policy.operation)
-	|| is_set(import_policy.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (default_export_policy.is_set || is_set(default_export_policy.operation)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
-    if (default_import_policy.is_set || is_set(default_import_policy.operation)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
-
-    auto export_policy_name_datas = export_policy.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
-    auto import_policy_name_datas = import_policy.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), import_policy_name_datas.begin(), import_policy_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "default-export-policy")
-    {
-        default_export_policy = value;
-    }
-    if(value_path == "default-import-policy")
-    {
-        default_import_policy = value;
-    }
-    if(value_path == "export-policy")
-    {
-        export_policy.append(value);
-    }
-    if(value_path == "import-policy")
-    {
-        import_policy.append(value);
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::State()
-    :
-    default_export_policy{YType::enumeration, "default-export-policy"},
-    default_import_policy{YType::enumeration, "default-import-policy"},
-    export_policy{YType::str, "export-policy"},
-    import_policy{YType::str, "import-policy"}
-{
-    yang_name = "state"; yang_parent_name = "apply-policy";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::has_data() const
-{
-    for (auto const & leaf : export_policy.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : import_policy.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return default_export_policy.is_set
-	|| default_import_policy.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::has_operation() const
-{
-    for (auto const & leaf : export_policy.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    for (auto const & leaf : import_policy.getYLeafs())
-    {
-        if(is_set(leaf.operation))
-            return true;
-    }
-    return is_set(operation)
-	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation)
-	|| is_set(export_policy.operation)
-	|| is_set(import_policy.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (default_export_policy.is_set || is_set(default_export_policy.operation)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
-    if (default_import_policy.is_set || is_set(default_import_policy.operation)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
-
-    auto export_policy_name_datas = export_policy.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
-    auto import_policy_name_datas = import_policy.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), import_policy_name_datas.begin(), import_policy_name_datas.end());
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "default-export-policy")
-    {
-        default_export_policy = value;
-    }
-    if(value_path == "default-import-policy")
-    {
-        default_import_policy = value;
-    }
-    if(value_path == "export-policy")
-    {
-        export_policy.append(value);
-    }
-    if(value_path == "import-policy")
-    {
-        import_policy.append(value);
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Ipv4Unicast()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config>())
-	,prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State>())
-{
-    config->parent = this;
-
-    prefix_limit->parent = this;
-
-    state->parent = this;
-
-    yang_name = "ipv4-unicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::~Ipv4Unicast()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (prefix_limit !=  nullptr && prefix_limit->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-unicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "ipv4-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::Config()
-    :
-    send_default_route{YType::boolean, "send-default-route"}
-{
-    yang_name = "config"; yang_parent_name = "ipv4-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::has_data() const
-{
-    return send_default_route.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(send_default_route.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (send_default_route.is_set || is_set(send_default_route.operation)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "send-default-route")
-    {
-        send_default_route = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::State()
-    :
-    send_default_route{YType::boolean, "send-default-route"}
-{
-    yang_name = "state"; yang_parent_name = "ipv4-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::has_data() const
-{
-    return send_default_route.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(send_default_route.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (send_default_route.is_set || is_set(send_default_route.operation)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "send-default-route")
-    {
-        send_default_route = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Ipv6Unicast()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config>())
-	,prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State>())
-{
-    config->parent = this;
-
-    prefix_limit->parent = this;
-
-    state->parent = this;
-
-    yang_name = "ipv6-unicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::~Ipv6Unicast()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (prefix_limit !=  nullptr && prefix_limit->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-unicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "ipv6-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::Config()
-    :
-    send_default_route{YType::boolean, "send-default-route"}
-{
-    yang_name = "config"; yang_parent_name = "ipv6-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::has_data() const
-{
-    return send_default_route.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(send_default_route.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (send_default_route.is_set || is_set(send_default_route.operation)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "send-default-route")
-    {
-        send_default_route = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::State()
-    :
-    send_default_route{YType::boolean, "send-default-route"}
-{
-    yang_name = "state"; yang_parent_name = "ipv6-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::has_data() const
-{
-    return send_default_route.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(send_default_route.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (send_default_route.is_set || is_set(send_default_route.operation)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "send-default-route")
-    {
-        send_default_route = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::Ipv4LabelledUnicast()
-    :
-    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "ipv4-labelled-unicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::~Ipv4LabelledUnicast()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-labelled-unicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4LabelledUnicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "ipv4-labelled-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::Ipv6LabelledUnicast()
-    :
-    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "ipv6-labelled-unicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::~Ipv6LabelledUnicast()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-labelled-unicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6LabelledUnicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "ipv6-labelled-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabelledUnicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::L3VpnIpv4Unicast()
-    :
-    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "l3vpn-ipv4-unicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::~L3VpnIpv4Unicast()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l3vpn-ipv4-unicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'L3VpnIpv4Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv4-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::L3VpnIpv6Unicast()
-    :
-    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "l3vpn-ipv6-unicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::~L3VpnIpv6Unicast()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l3vpn-ipv6-unicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'L3VpnIpv6Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv6-unicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::L3VpnIpv4Multicast()
-    :
-    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "l3vpn-ipv4-multicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::~L3VpnIpv4Multicast()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l3vpn-ipv4-multicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'L3VpnIpv4Multicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv4-multicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::L3VpnIpv6Multicast()
-    :
-    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "l3vpn-ipv6-multicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::~L3VpnIpv6Multicast()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l3vpn-ipv6-multicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'L3VpnIpv6Multicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv6-multicast";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::L2VpnVpls()
-    :
-    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "l2vpn-vpls"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::~L2VpnVpls()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2vpn-vpls";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'L2VpnVpls' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "l2vpn-vpls";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::L2VpnEvpn()
-    :
-    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "l2vpn-evpn"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::~L2VpnEvpn()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2vpn-evpn";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'L2VpnEvpn' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "l2vpn-evpn";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
+    if(name == "enabled")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::RouteSelectionOptions()
@@ -7757,7 +4122,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -7831,8 +4196,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::R
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::Config()
@@ -7863,13 +4239,13 @@ bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::has_data() c
 
 bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertise_inactive_routes.operation)
-	|| is_set(always_compare_med.operation)
-	|| is_set(enable_aigp.operation)
-	|| is_set(external_compare_router_id.operation)
-	|| is_set(ignore_as_path_length.operation)
-	|| is_set(ignore_next_hop_igp_metric.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertise_inactive_routes.yfilter)
+	|| ydk::is_set(always_compare_med.yfilter)
+	|| ydk::is_set(enable_aigp.yfilter)
+	|| ydk::is_set(external_compare_router_id.yfilter)
+	|| ydk::is_set(ignore_as_path_length.yfilter)
+	|| ydk::is_set(ignore_next_hop_igp_metric.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::get_segment_path() const
@@ -7895,12 +4271,12 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertise_inactive_routes.is_set || is_set(advertise_inactive_routes.operation)) leaf_name_data.push_back(advertise_inactive_routes.get_name_leafdata());
-    if (always_compare_med.is_set || is_set(always_compare_med.operation)) leaf_name_data.push_back(always_compare_med.get_name_leafdata());
-    if (enable_aigp.is_set || is_set(enable_aigp.operation)) leaf_name_data.push_back(enable_aigp.get_name_leafdata());
-    if (external_compare_router_id.is_set || is_set(external_compare_router_id.operation)) leaf_name_data.push_back(external_compare_router_id.get_name_leafdata());
-    if (ignore_as_path_length.is_set || is_set(ignore_as_path_length.operation)) leaf_name_data.push_back(ignore_as_path_length.get_name_leafdata());
-    if (ignore_next_hop_igp_metric.is_set || is_set(ignore_next_hop_igp_metric.operation)) leaf_name_data.push_back(ignore_next_hop_igp_metric.get_name_leafdata());
+    if (advertise_inactive_routes.is_set || is_set(advertise_inactive_routes.yfilter)) leaf_name_data.push_back(advertise_inactive_routes.get_name_leafdata());
+    if (always_compare_med.is_set || is_set(always_compare_med.yfilter)) leaf_name_data.push_back(always_compare_med.get_name_leafdata());
+    if (enable_aigp.is_set || is_set(enable_aigp.yfilter)) leaf_name_data.push_back(enable_aigp.get_name_leafdata());
+    if (external_compare_router_id.is_set || is_set(external_compare_router_id.yfilter)) leaf_name_data.push_back(external_compare_router_id.get_name_leafdata());
+    if (ignore_as_path_length.is_set || is_set(ignore_as_path_length.yfilter)) leaf_name_data.push_back(ignore_as_path_length.get_name_leafdata());
+    if (ignore_next_hop_igp_metric.is_set || is_set(ignore_next_hop_igp_metric.yfilter)) leaf_name_data.push_back(ignore_next_hop_igp_metric.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7919,32 +4295,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::R
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertise-inactive-routes")
     {
         advertise_inactive_routes = value;
+        advertise_inactive_routes.value_namespace = name_space;
+        advertise_inactive_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "always-compare-med")
     {
         always_compare_med = value;
+        always_compare_med.value_namespace = name_space;
+        always_compare_med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-aigp")
     {
         enable_aigp = value;
+        enable_aigp.value_namespace = name_space;
+        enable_aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-compare-router-id")
     {
         external_compare_router_id = value;
+        external_compare_router_id.value_namespace = name_space;
+        external_compare_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignore-as-path-length")
     {
         ignore_as_path_length = value;
+        ignore_as_path_length.value_namespace = name_space;
+        ignore_as_path_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignore-next-hop-igp-metric")
     {
         ignore_next_hop_igp_metric = value;
+        ignore_next_hop_igp_metric.value_namespace = name_space;
+        ignore_next_hop_igp_metric.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertise-inactive-routes")
+    {
+        advertise_inactive_routes.yfilter = yfilter;
+    }
+    if(value_path == "always-compare-med")
+    {
+        always_compare_med.yfilter = yfilter;
+    }
+    if(value_path == "enable-aigp")
+    {
+        enable_aigp.yfilter = yfilter;
+    }
+    if(value_path == "external-compare-router-id")
+    {
+        external_compare_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ignore-as-path-length")
+    {
+        ignore_as_path_length.yfilter = yfilter;
+    }
+    if(value_path == "ignore-next-hop-igp-metric")
+    {
+        ignore_next_hop_igp_metric.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise-inactive-routes" || name == "always-compare-med" || name == "enable-aigp" || name == "external-compare-router-id" || name == "ignore-as-path-length" || name == "ignore-next-hop-igp-metric")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::State()
@@ -7975,13 +4398,13 @@ bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::has_data() co
 
 bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertise_inactive_routes.operation)
-	|| is_set(always_compare_med.operation)
-	|| is_set(enable_aigp.operation)
-	|| is_set(external_compare_router_id.operation)
-	|| is_set(ignore_as_path_length.operation)
-	|| is_set(ignore_next_hop_igp_metric.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertise_inactive_routes.yfilter)
+	|| ydk::is_set(always_compare_med.yfilter)
+	|| ydk::is_set(enable_aigp.yfilter)
+	|| ydk::is_set(external_compare_router_id.yfilter)
+	|| ydk::is_set(ignore_as_path_length.yfilter)
+	|| ydk::is_set(ignore_next_hop_igp_metric.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::get_segment_path() const
@@ -8007,12 +4430,12 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertise_inactive_routes.is_set || is_set(advertise_inactive_routes.operation)) leaf_name_data.push_back(advertise_inactive_routes.get_name_leafdata());
-    if (always_compare_med.is_set || is_set(always_compare_med.operation)) leaf_name_data.push_back(always_compare_med.get_name_leafdata());
-    if (enable_aigp.is_set || is_set(enable_aigp.operation)) leaf_name_data.push_back(enable_aigp.get_name_leafdata());
-    if (external_compare_router_id.is_set || is_set(external_compare_router_id.operation)) leaf_name_data.push_back(external_compare_router_id.get_name_leafdata());
-    if (ignore_as_path_length.is_set || is_set(ignore_as_path_length.operation)) leaf_name_data.push_back(ignore_as_path_length.get_name_leafdata());
-    if (ignore_next_hop_igp_metric.is_set || is_set(ignore_next_hop_igp_metric.operation)) leaf_name_data.push_back(ignore_next_hop_igp_metric.get_name_leafdata());
+    if (advertise_inactive_routes.is_set || is_set(advertise_inactive_routes.yfilter)) leaf_name_data.push_back(advertise_inactive_routes.get_name_leafdata());
+    if (always_compare_med.is_set || is_set(always_compare_med.yfilter)) leaf_name_data.push_back(always_compare_med.get_name_leafdata());
+    if (enable_aigp.is_set || is_set(enable_aigp.yfilter)) leaf_name_data.push_back(enable_aigp.get_name_leafdata());
+    if (external_compare_router_id.is_set || is_set(external_compare_router_id.yfilter)) leaf_name_data.push_back(external_compare_router_id.get_name_leafdata());
+    if (ignore_as_path_length.is_set || is_set(ignore_as_path_length.yfilter)) leaf_name_data.push_back(ignore_as_path_length.get_name_leafdata());
+    if (ignore_next_hop_igp_metric.is_set || is_set(ignore_next_hop_igp_metric.yfilter)) leaf_name_data.push_back(ignore_next_hop_igp_metric.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8031,32 +4454,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::R
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertise-inactive-routes")
     {
         advertise_inactive_routes = value;
+        advertise_inactive_routes.value_namespace = name_space;
+        advertise_inactive_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "always-compare-med")
     {
         always_compare_med = value;
+        always_compare_med.value_namespace = name_space;
+        always_compare_med.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable-aigp")
     {
         enable_aigp = value;
+        enable_aigp.value_namespace = name_space;
+        enable_aigp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "external-compare-router-id")
     {
         external_compare_router_id = value;
+        external_compare_router_id.value_namespace = name_space;
+        external_compare_router_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignore-as-path-length")
     {
         ignore_as_path_length = value;
+        ignore_as_path_length.value_namespace = name_space;
+        ignore_as_path_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignore-next-hop-igp-metric")
     {
         ignore_next_hop_igp_metric = value;
+        ignore_next_hop_igp_metric.value_namespace = name_space;
+        ignore_next_hop_igp_metric.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertise-inactive-routes")
+    {
+        advertise_inactive_routes.yfilter = yfilter;
+    }
+    if(value_path == "always-compare-med")
+    {
+        always_compare_med.yfilter = yfilter;
+    }
+    if(value_path == "enable-aigp")
+    {
+        enable_aigp.yfilter = yfilter;
+    }
+    if(value_path == "external-compare-router-id")
+    {
+        external_compare_router_id.yfilter = yfilter;
+    }
+    if(value_path == "ignore-as-path-length")
+    {
+        ignore_as_path_length.yfilter = yfilter;
+    }
+    if(value_path == "ignore-next-hop-igp-metric")
+    {
+        ignore_next_hop_igp_metric.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::RouteSelectionOptions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise-inactive-routes" || name == "always-compare-med" || name == "enable-aigp" || name == "external-compare-router-id" || name == "ignore-as-path-length" || name == "ignore-next-hop-igp-metric")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::UseMultiplePaths()
@@ -8091,7 +4561,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (ebgp !=  nullptr && ebgp->has_operation())
 	|| (ibgp !=  nullptr && ibgp->has_operation())
@@ -8195,8 +4665,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "ebgp" || name == "ibgp" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::Config()
@@ -8217,8 +4698,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_segment_path() const
@@ -8244,7 +4725,7 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8263,12 +4744,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::State()
@@ -8289,8 +4787,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_segment_path() const
@@ -8316,7 +4814,7 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8335,12 +4833,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Ebgp()
@@ -8367,7 +4882,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -8441,8 +4956,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::Config()
@@ -8465,9 +4991,9 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::has_data() 
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_multiple_as.operation)
-	|| is_set(maximum_paths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_multiple_as.yfilter)
+	|| ydk::is_set(maximum_paths.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::get_segment_path() const
@@ -8493,8 +5019,8 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_multiple_as.is_set || is_set(allow_multiple_as.operation)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (allow_multiple_as.is_set || is_set(allow_multiple_as.yfilter)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8513,16 +5039,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-multiple-as")
     {
         allow_multiple_as = value;
+        allow_multiple_as.value_namespace = name_space;
+        allow_multiple_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-multiple-as")
+    {
+        allow_multiple_as.yfilter = yfilter;
+    }
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-multiple-as" || name == "maximum-paths")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::State()
@@ -8545,9 +5094,9 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::has_data() c
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_multiple_as.operation)
-	|| is_set(maximum_paths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_multiple_as.yfilter)
+	|| ydk::is_set(maximum_paths.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::get_segment_path() const
@@ -8573,8 +5122,8 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_multiple_as.is_set || is_set(allow_multiple_as.operation)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (allow_multiple_as.is_set || is_set(allow_multiple_as.yfilter)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8593,16 +5142,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-multiple-as")
     {
         allow_multiple_as = value;
+        allow_multiple_as.value_namespace = name_space;
+        allow_multiple_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-multiple-as")
+    {
+        allow_multiple_as.yfilter = yfilter;
+    }
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ebgp::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-multiple-as" || name == "maximum-paths")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Ibgp()
@@ -8629,7 +5201,7 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::has_data() const
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -8703,8 +5275,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::Config()
@@ -8725,8 +5308,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::has_data() 
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_paths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_paths.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::get_segment_path() const
@@ -8752,7 +5335,7 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8771,12 +5354,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-paths")
+        return true;
+    return false;
 }
 
 Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::State()
@@ -8797,8 +5397,8 @@ bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::has_data() c
 
 bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_paths.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_paths.yfilter);
 }
 
 std::string Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::get_segment_path() const
@@ -8824,7 +5424,7 @@ const EntityPath Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_paths.is_set || is_set(maximum_paths.operation)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
+    if (maximum_paths.is_set || is_set(maximum_paths.yfilter)) leaf_name_data.push_back(maximum_paths.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8843,12 +5443,5278 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::U
     return children;
 }
 
-void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-paths")
     {
         maximum_paths = value;
+        maximum_paths.value_namespace = name_space;
+        maximum_paths.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-paths")
+    {
+        maximum_paths.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::UseMultiplePaths::Ibgp::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-paths")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::ApplyPolicy()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "apply-policy"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::~ApplyPolicy()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "apply-policy";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'ApplyPolicy' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::Config()
+    :
+    default_export_policy{YType::enumeration, "default-export-policy"},
+    default_import_policy{YType::enumeration, "default-import-policy"},
+    export_policy{YType::str, "export-policy"},
+    import_policy{YType::str, "import-policy"}
+{
+    yang_name = "config"; yang_parent_name = "apply-policy";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::has_data() const
+{
+    for (auto const & leaf : export_policy.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : import_policy.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return default_export_policy.is_set
+	|| default_import_policy.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::has_operation() const
+{
+    for (auto const & leaf : export_policy.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : import_policy.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(default_export_policy.yfilter)
+	|| ydk::is_set(default_import_policy.yfilter)
+	|| ydk::is_set(export_policy.yfilter)
+	|| ydk::is_set(import_policy.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_export_policy.is_set || is_set(default_export_policy.yfilter)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
+    if (default_import_policy.is_set || is_set(default_import_policy.yfilter)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
+
+    auto export_policy_name_datas = export_policy.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
+    auto import_policy_name_datas = import_policy.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), import_policy_name_datas.begin(), import_policy_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy = value;
+        default_export_policy.value_namespace = name_space;
+        default_export_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy = value;
+        default_import_policy.value_namespace = name_space;
+        default_import_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.append(value);
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.append(value);
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy.yfilter = yfilter;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy.yfilter = yfilter;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-export-policy" || name == "default-import-policy" || name == "export-policy" || name == "import-policy")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::State()
+    :
+    default_export_policy{YType::enumeration, "default-export-policy"},
+    default_import_policy{YType::enumeration, "default-import-policy"},
+    export_policy{YType::str, "export-policy"},
+    import_policy{YType::str, "import-policy"}
+{
+    yang_name = "state"; yang_parent_name = "apply-policy";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::has_data() const
+{
+    for (auto const & leaf : export_policy.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : import_policy.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return default_export_policy.is_set
+	|| default_import_policy.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::has_operation() const
+{
+    for (auto const & leaf : export_policy.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : import_policy.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(default_export_policy.yfilter)
+	|| ydk::is_set(default_import_policy.yfilter)
+	|| ydk::is_set(export_policy.yfilter)
+	|| ydk::is_set(import_policy.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_export_policy.is_set || is_set(default_export_policy.yfilter)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
+    if (default_import_policy.is_set || is_set(default_import_policy.yfilter)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
+
+    auto export_policy_name_datas = export_policy.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
+    auto import_policy_name_datas = import_policy.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), import_policy_name_datas.begin(), import_policy_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy = value;
+        default_export_policy.value_namespace = name_space;
+        default_export_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy = value;
+        default_import_policy.value_namespace = name_space;
+        default_import_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.append(value);
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.append(value);
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy.yfilter = yfilter;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy.yfilter = yfilter;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::ApplyPolicy::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-export-policy" || name == "default-import-policy" || name == "export-policy" || name == "import-policy")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Ipv4Unicast()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config>())
+	,prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State>())
+{
+    config->parent = this;
+
+    prefix_limit->parent = this;
+
+    state->parent = this;
+
+    yang_name = "ipv4-unicast"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::~Ipv4Unicast()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-unicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "prefix-limit" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "ipv4-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::Config()
+    :
+    send_default_route{YType::boolean, "send-default-route"}
+{
+    yang_name = "config"; yang_parent_name = "ipv4-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::has_data() const
+{
+    return send_default_route.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(send_default_route.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (send_default_route.is_set || is_set(send_default_route.yfilter)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "send-default-route")
+    {
+        send_default_route = value;
+        send_default_route.value_namespace = name_space;
+        send_default_route.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "send-default-route")
+    {
+        send_default_route.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "send-default-route")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::State()
+    :
+    send_default_route{YType::boolean, "send-default-route"}
+{
+    yang_name = "state"; yang_parent_name = "ipv4-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::has_data() const
+{
+    return send_default_route.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(send_default_route.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (send_default_route.is_set || is_set(send_default_route.yfilter)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "send-default-route")
+    {
+        send_default_route = value;
+        send_default_route.value_namespace = name_space;
+        send_default_route.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "send-default-route")
+    {
+        send_default_route.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4Unicast::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "send-default-route")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Ipv6Unicast()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config>())
+	,prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State>())
+{
+    config->parent = this;
+
+    prefix_limit->parent = this;
+
+    state->parent = this;
+
+    yang_name = "ipv6-unicast"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::~Ipv6Unicast()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-unicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "prefix-limit" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "ipv6-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::Config()
+    :
+    send_default_route{YType::boolean, "send-default-route"}
+{
+    yang_name = "config"; yang_parent_name = "ipv6-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::has_data() const
+{
+    return send_default_route.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(send_default_route.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (send_default_route.is_set || is_set(send_default_route.yfilter)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "send-default-route")
+    {
+        send_default_route = value;
+        send_default_route.value_namespace = name_space;
+        send_default_route.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "send-default-route")
+    {
+        send_default_route.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "send-default-route")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::State()
+    :
+    send_default_route{YType::boolean, "send-default-route"}
+{
+    yang_name = "state"; yang_parent_name = "ipv6-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::has_data() const
+{
+    return send_default_route.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(send_default_route.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (send_default_route.is_set || is_set(send_default_route.yfilter)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "send-default-route")
+    {
+        send_default_route = value;
+        send_default_route.value_namespace = name_space;
+        send_default_route.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "send-default-route")
+    {
+        send_default_route.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6Unicast::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "send-default-route")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::Ipv4LabeledUnicast()
+    :
+    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit>())
+{
+    prefix_limit->parent = this;
+
+    yang_name = "ipv4-labeled-unicast"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::~Ipv4LabeledUnicast()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::has_data() const
+{
+    return (prefix_limit !=  nullptr && prefix_limit->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-labeled-unicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4LabeledUnicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "ipv4-labeled-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv4LabeledUnicast::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::Ipv6LabeledUnicast()
+    :
+    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit>())
+{
+    prefix_limit->parent = this;
+
+    yang_name = "ipv6-labeled-unicast"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::~Ipv6LabeledUnicast()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::has_data() const
+{
+    return (prefix_limit !=  nullptr && prefix_limit->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-labeled-unicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6LabeledUnicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "ipv6-labeled-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::Ipv6LabeledUnicast::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::L3VpnIpv4Unicast()
+    :
+    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit>())
+{
+    prefix_limit->parent = this;
+
+    yang_name = "l3vpn-ipv4-unicast"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::~L3VpnIpv4Unicast()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_data() const
+{
+    return (prefix_limit !=  nullptr && prefix_limit->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l3vpn-ipv4-unicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L3VpnIpv4Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv4-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Unicast::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::L3VpnIpv6Unicast()
+    :
+    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit>())
+{
+    prefix_limit->parent = this;
+
+    yang_name = "l3vpn-ipv6-unicast"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::~L3VpnIpv6Unicast()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_data() const
+{
+    return (prefix_limit !=  nullptr && prefix_limit->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l3vpn-ipv6-unicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L3VpnIpv6Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv6-unicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Unicast::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::L3VpnIpv4Multicast()
+    :
+    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit>())
+{
+    prefix_limit->parent = this;
+
+    yang_name = "l3vpn-ipv4-multicast"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::~L3VpnIpv4Multicast()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_data() const
+{
+    return (prefix_limit !=  nullptr && prefix_limit->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l3vpn-ipv4-multicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L3VpnIpv4Multicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv4-multicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv4Multicast::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::L3VpnIpv6Multicast()
+    :
+    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit>())
+{
+    prefix_limit->parent = this;
+
+    yang_name = "l3vpn-ipv6-multicast"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::~L3VpnIpv6Multicast()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_data() const
+{
+    return (prefix_limit !=  nullptr && prefix_limit->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l3vpn-ipv6-multicast";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L3VpnIpv6Multicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "l3vpn-ipv6-multicast";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L3VpnIpv6Multicast::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::L2VpnVpls()
+    :
+    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit>())
+{
+    prefix_limit->parent = this;
+
+    yang_name = "l2vpn-vpls"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::~L2VpnVpls()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::has_data() const
+{
+    return (prefix_limit !=  nullptr && prefix_limit->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-vpls";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2VpnVpls' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "l2vpn-vpls";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnVpls::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::L2VpnEvpn()
+    :
+    prefix_limit(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit>())
+{
+    prefix_limit->parent = this;
+
+    yang_name = "l2vpn-evpn"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::~L2VpnEvpn()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::has_data() const
+{
+    return (prefix_limit !=  nullptr && prefix_limit->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-evpn";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'L2VpnEvpn' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix-limit")
+    {
+        if(prefix_limit == nullptr)
+        {
+            prefix_limit = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit>();
+        }
+        return prefix_limit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefix_limit != nullptr)
+    {
+        children["prefix-limit"] = prefix_limit;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-limit")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::PrefixLimit()
+    :
+    config(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config>())
+	,state(std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "prefix-limit"; yang_parent_name = "l2vpn-evpn";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::~PrefixLimit()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-limit";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::Config()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "config"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::~Config()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::State()
+    :
+    max_prefixes{YType::uint32, "max-prefixes"},
+    restart_timer{YType::str, "restart-timer"},
+    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
+{
+    yang_name = "state"; yang_parent_name = "prefix-limit";
+}
+
+Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::~State()
+{
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::has_data() const
+{
+    return max_prefixes.is_set
+	|| restart_timer.is_set
+	|| shutdown_threshold_pct.is_set;
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_prefixes.yfilter)
+	|| ydk::is_set(restart_timer.yfilter)
+	|| ydk::is_set(shutdown_threshold_pct.yfilter);
+}
+
+std::string Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_prefixes.is_set || is_set(max_prefixes.yfilter)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
+    if (restart_timer.is_set || is_set(restart_timer.yfilter)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
+    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.yfilter)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes = value;
+        max_prefixes.value_namespace = name_space;
+        max_prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer = value;
+        restart_timer.value_namespace = name_space;
+        restart_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct = value;
+        shutdown_threshold_pct.value_namespace = name_space;
+        shutdown_threshold_pct.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-prefixes")
+    {
+        max_prefixes.yfilter = yfilter;
+    }
+    if(value_path == "restart-timer")
+    {
+        restart_timer.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-threshold-pct")
+    {
+        shutdown_threshold_pct.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::AfiSafis::AfiSafi::L2VpnEvpn::PrefixLimit::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-prefixes" || name == "restart-timer" || name == "shutdown-threshold-pct")
+        return true;
+    return false;
 }
 
 Bgp::Global::ApplyPolicy::ApplyPolicy()
@@ -8875,7 +10741,7 @@ bool Bgp::Global::ApplyPolicy::has_data() const
 
 bool Bgp::Global::ApplyPolicy::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -8949,8 +10815,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::get_chi
     return children;
 }
 
-void Bgp::Global::ApplyPolicy::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::ApplyPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Global::ApplyPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Global::ApplyPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Global::ApplyPolicy::Config::Config()
@@ -8987,19 +10864,19 @@ bool Bgp::Global::ApplyPolicy::Config::has_operation() const
 {
     for (auto const & leaf : export_policy.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : import_policy.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation)
-	|| is_set(export_policy.operation)
-	|| is_set(import_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(default_export_policy.yfilter)
+	|| ydk::is_set(default_import_policy.yfilter)
+	|| ydk::is_set(export_policy.yfilter)
+	|| ydk::is_set(import_policy.yfilter);
 }
 
 std::string Bgp::Global::ApplyPolicy::Config::get_segment_path() const
@@ -9025,8 +10902,8 @@ const EntityPath Bgp::Global::ApplyPolicy::Config::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_export_policy.is_set || is_set(default_export_policy.operation)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
-    if (default_import_policy.is_set || is_set(default_import_policy.operation)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
+    if (default_export_policy.is_set || is_set(default_export_policy.yfilter)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
+    if (default_import_policy.is_set || is_set(default_import_policy.yfilter)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
 
     auto export_policy_name_datas = export_policy.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
@@ -9049,15 +10926,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::Config:
     return children;
 }
 
-void Bgp::Global::ApplyPolicy::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::ApplyPolicy::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default-export-policy")
     {
         default_export_policy = value;
+        default_export_policy.value_namespace = name_space;
+        default_export_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-import-policy")
     {
         default_import_policy = value;
+        default_import_policy.value_namespace = name_space;
+        default_import_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "export-policy")
     {
@@ -9067,6 +10948,33 @@ void Bgp::Global::ApplyPolicy::Config::set_value(const std::string & value_path,
     {
         import_policy.append(value);
     }
+}
+
+void Bgp::Global::ApplyPolicy::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy.yfilter = yfilter;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy.yfilter = yfilter;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::ApplyPolicy::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-export-policy" || name == "default-import-policy" || name == "export-policy" || name == "import-policy")
+        return true;
+    return false;
 }
 
 Bgp::Global::ApplyPolicy::State::State()
@@ -9103,19 +11011,19 @@ bool Bgp::Global::ApplyPolicy::State::has_operation() const
 {
     for (auto const & leaf : export_policy.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : import_policy.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation)
-	|| is_set(export_policy.operation)
-	|| is_set(import_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(default_export_policy.yfilter)
+	|| ydk::is_set(default_import_policy.yfilter)
+	|| ydk::is_set(export_policy.yfilter)
+	|| ydk::is_set(import_policy.yfilter);
 }
 
 std::string Bgp::Global::ApplyPolicy::State::get_segment_path() const
@@ -9141,8 +11049,8 @@ const EntityPath Bgp::Global::ApplyPolicy::State::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_export_policy.is_set || is_set(default_export_policy.operation)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
-    if (default_import_policy.is_set || is_set(default_import_policy.operation)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
+    if (default_export_policy.is_set || is_set(default_export_policy.yfilter)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
+    if (default_import_policy.is_set || is_set(default_import_policy.yfilter)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
 
     auto export_policy_name_datas = export_policy.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
@@ -9165,15 +11073,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Global::ApplyPolicy::State::
     return children;
 }
 
-void Bgp::Global::ApplyPolicy::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Global::ApplyPolicy::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default-export-policy")
     {
         default_export_policy = value;
+        default_export_policy.value_namespace = name_space;
+        default_export_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-import-policy")
     {
         default_import_policy = value;
+        default_import_policy.value_namespace = name_space;
+        default_import_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "export-policy")
     {
@@ -9183,6 +11095,33 @@ void Bgp::Global::ApplyPolicy::State::set_value(const std::string & value_path, 
     {
         import_policy.append(value);
     }
+}
+
+void Bgp::Global::ApplyPolicy::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy.yfilter = yfilter;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy.yfilter = yfilter;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Global::ApplyPolicy::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-export-policy" || name == "default-import-policy" || name == "export-policy" || name == "import-policy")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbors()
@@ -9211,7 +11150,7 @@ bool Bgp::Neighbors::has_operation() const
         if(neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bgp::Neighbors::get_segment_path() const
@@ -9276,8 +11215,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::get_children() co
     return children;
 }
 
-void Bgp::Neighbors::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::Neighbor()
@@ -9355,8 +11305,8 @@ bool Bgp::Neighbors::Neighbor::has_data() const
 
 bool Bgp::Neighbors::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(neighbor_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
 	|| (add_paths !=  nullptr && add_paths->has_operation())
 	|| (afi_safis !=  nullptr && afi_safis->has_operation())
 	|| (apply_policy !=  nullptr && apply_policy->has_operation())
@@ -9396,7 +11346,7 @@ const EntityPath Bgp::Neighbors::Neighbor::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9611,24 +11561,42 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::get_chi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "add-paths" || name == "afi-safis" || name == "apply-policy" || name == "as-path-options" || name == "config" || name == "ebgp-multihop" || name == "error-handling" || name == "graceful-restart" || name == "logging-options" || name == "route-reflector" || name == "state" || name == "timers" || name == "transport" || name == "use-multiple-paths" || name == "neighbor-address")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::Config::Config()
     :
     auth_password{YType::str, "auth-password"},
     description{YType::str, "description"},
+    enabled{YType::boolean, "enabled"},
     local_as{YType::uint32, "local-as"},
     neighbor_address{YType::str, "neighbor-address"},
     peer_as{YType::uint32, "peer-as"},
     peer_group{YType::str, "peer-group"},
     peer_type{YType::enumeration, "peer-type"},
-    remove_private_as{YType::enumeration, "remove-private-as"},
+    remove_private_as{YType::identityref, "remove-private-as"},
     route_flap_damping{YType::boolean, "route-flap-damping"},
     send_community{YType::enumeration, "send-community"}
 {
@@ -9643,6 +11611,7 @@ bool Bgp::Neighbors::Neighbor::Config::has_data() const
 {
     return auth_password.is_set
 	|| description.is_set
+	|| enabled.is_set
 	|| local_as.is_set
 	|| neighbor_address.is_set
 	|| peer_as.is_set
@@ -9655,17 +11624,18 @@ bool Bgp::Neighbors::Neighbor::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auth_password.operation)
-	|| is_set(description.operation)
-	|| is_set(local_as.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(peer_as.operation)
-	|| is_set(peer_group.operation)
-	|| is_set(peer_type.operation)
-	|| is_set(remove_private_as.operation)
-	|| is_set(route_flap_damping.operation)
-	|| is_set(send_community.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(auth_password.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(local_as.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(peer_as.yfilter)
+	|| ydk::is_set(peer_group.yfilter)
+	|| ydk::is_set(peer_type.yfilter)
+	|| ydk::is_set(remove_private_as.yfilter)
+	|| ydk::is_set(route_flap_damping.yfilter)
+	|| ydk::is_set(send_community.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::Config::get_segment_path() const
@@ -9691,16 +11661,17 @@ const EntityPath Bgp::Neighbors::Neighbor::Config::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auth_password.is_set || is_set(auth_password.operation)) leaf_name_data.push_back(auth_password.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (local_as.is_set || is_set(local_as.operation)) leaf_name_data.push_back(local_as.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (peer_as.is_set || is_set(peer_as.operation)) leaf_name_data.push_back(peer_as.get_name_leafdata());
-    if (peer_group.is_set || is_set(peer_group.operation)) leaf_name_data.push_back(peer_group.get_name_leafdata());
-    if (peer_type.is_set || is_set(peer_type.operation)) leaf_name_data.push_back(peer_type.get_name_leafdata());
-    if (remove_private_as.is_set || is_set(remove_private_as.operation)) leaf_name_data.push_back(remove_private_as.get_name_leafdata());
-    if (route_flap_damping.is_set || is_set(route_flap_damping.operation)) leaf_name_data.push_back(route_flap_damping.get_name_leafdata());
-    if (send_community.is_set || is_set(send_community.operation)) leaf_name_data.push_back(send_community.get_name_leafdata());
+    if (auth_password.is_set || is_set(auth_password.yfilter)) leaf_name_data.push_back(auth_password.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (local_as.is_set || is_set(local_as.yfilter)) leaf_name_data.push_back(local_as.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (peer_as.is_set || is_set(peer_as.yfilter)) leaf_name_data.push_back(peer_as.get_name_leafdata());
+    if (peer_group.is_set || is_set(peer_group.yfilter)) leaf_name_data.push_back(peer_group.get_name_leafdata());
+    if (peer_type.is_set || is_set(peer_type.yfilter)) leaf_name_data.push_back(peer_type.get_name_leafdata());
+    if (remove_private_as.is_set || is_set(remove_private_as.yfilter)) leaf_name_data.push_back(remove_private_as.get_name_leafdata());
+    if (route_flap_damping.is_set || is_set(route_flap_damping.yfilter)) leaf_name_data.push_back(route_flap_damping.get_name_leafdata());
+    if (send_community.is_set || is_set(send_community.yfilter)) leaf_name_data.push_back(send_community.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9719,60 +11690,144 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Config:
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auth-password")
     {
         auth_password = value;
+        auth_password.value_namespace = name_space;
+        auth_password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-as")
     {
         local_as = value;
+        local_as.value_namespace = name_space;
+        local_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-as")
     {
         peer_as = value;
+        peer_as.value_namespace = name_space;
+        peer_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-group")
     {
         peer_group = value;
+        peer_group.value_namespace = name_space;
+        peer_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-type")
     {
         peer_type = value;
+        peer_type.value_namespace = name_space;
+        peer_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remove-private-as")
     {
         remove_private_as = value;
+        remove_private_as.value_namespace = name_space;
+        remove_private_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-flap-damping")
     {
         route_flap_damping = value;
+        route_flap_damping.value_namespace = name_space;
+        route_flap_damping.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "send-community")
     {
         send_community = value;
+        send_community.value_namespace = name_space;
+        send_community.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auth-password")
+    {
+        auth_password.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "local-as")
+    {
+        local_as.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "peer-as")
+    {
+        peer_as.yfilter = yfilter;
+    }
+    if(value_path == "peer-group")
+    {
+        peer_group.yfilter = yfilter;
+    }
+    if(value_path == "peer-type")
+    {
+        peer_type.yfilter = yfilter;
+    }
+    if(value_path == "remove-private-as")
+    {
+        remove_private_as.yfilter = yfilter;
+    }
+    if(value_path == "route-flap-damping")
+    {
+        route_flap_damping.yfilter = yfilter;
+    }
+    if(value_path == "send-community")
+    {
+        send_community.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auth-password" || name == "description" || name == "enabled" || name == "local-as" || name == "neighbor-address" || name == "peer-as" || name == "peer-group" || name == "peer-type" || name == "remove-private-as" || name == "route-flap-damping" || name == "send-community")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::State::State()
     :
     auth_password{YType::str, "auth-password"},
     description{YType::str, "description"},
+    enabled{YType::boolean, "enabled"},
+    established_transitions{YType::uint64, "established-transitions"},
+    last_established{YType::uint64, "last-established"},
     local_as{YType::uint32, "local-as"},
     neighbor_address{YType::str, "neighbor-address"},
     peer_as{YType::uint32, "peer-as"},
     peer_group{YType::str, "peer-group"},
     peer_type{YType::enumeration, "peer-type"},
-    remove_private_as{YType::enumeration, "remove-private-as"},
+    remove_private_as{YType::identityref, "remove-private-as"},
     route_flap_damping{YType::boolean, "route-flap-damping"},
     send_community{YType::enumeration, "send-community"},
     session_state{YType::enumeration, "session-state"},
@@ -9801,6 +11856,9 @@ bool Bgp::Neighbors::Neighbor::State::has_data() const
     }
     return auth_password.is_set
 	|| description.is_set
+	|| enabled.is_set
+	|| established_transitions.is_set
+	|| last_established.is_set
 	|| local_as.is_set
 	|| neighbor_address.is_set
 	|| peer_as.is_set
@@ -9818,22 +11876,25 @@ bool Bgp::Neighbors::Neighbor::State::has_operation() const
 {
     for (auto const & leaf : supported_capabilities.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(auth_password.operation)
-	|| is_set(description.operation)
-	|| is_set(local_as.operation)
-	|| is_set(neighbor_address.operation)
-	|| is_set(peer_as.operation)
-	|| is_set(peer_group.operation)
-	|| is_set(peer_type.operation)
-	|| is_set(remove_private_as.operation)
-	|| is_set(route_flap_damping.operation)
-	|| is_set(send_community.operation)
-	|| is_set(session_state.operation)
-	|| is_set(supported_capabilities.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(auth_password.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(established_transitions.yfilter)
+	|| ydk::is_set(last_established.yfilter)
+	|| ydk::is_set(local_as.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter)
+	|| ydk::is_set(peer_as.yfilter)
+	|| ydk::is_set(peer_group.yfilter)
+	|| ydk::is_set(peer_type.yfilter)
+	|| ydk::is_set(remove_private_as.yfilter)
+	|| ydk::is_set(route_flap_damping.yfilter)
+	|| ydk::is_set(send_community.yfilter)
+	|| ydk::is_set(session_state.yfilter)
+	|| ydk::is_set(supported_capabilities.yfilter)
 	|| (messages !=  nullptr && messages->has_operation())
 	|| (queues !=  nullptr && queues->has_operation());
 }
@@ -9861,17 +11922,20 @@ const EntityPath Bgp::Neighbors::Neighbor::State::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auth_password.is_set || is_set(auth_password.operation)) leaf_name_data.push_back(auth_password.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (local_as.is_set || is_set(local_as.operation)) leaf_name_data.push_back(local_as.get_name_leafdata());
-    if (neighbor_address.is_set || is_set(neighbor_address.operation)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
-    if (peer_as.is_set || is_set(peer_as.operation)) leaf_name_data.push_back(peer_as.get_name_leafdata());
-    if (peer_group.is_set || is_set(peer_group.operation)) leaf_name_data.push_back(peer_group.get_name_leafdata());
-    if (peer_type.is_set || is_set(peer_type.operation)) leaf_name_data.push_back(peer_type.get_name_leafdata());
-    if (remove_private_as.is_set || is_set(remove_private_as.operation)) leaf_name_data.push_back(remove_private_as.get_name_leafdata());
-    if (route_flap_damping.is_set || is_set(route_flap_damping.operation)) leaf_name_data.push_back(route_flap_damping.get_name_leafdata());
-    if (send_community.is_set || is_set(send_community.operation)) leaf_name_data.push_back(send_community.get_name_leafdata());
-    if (session_state.is_set || is_set(session_state.operation)) leaf_name_data.push_back(session_state.get_name_leafdata());
+    if (auth_password.is_set || is_set(auth_password.yfilter)) leaf_name_data.push_back(auth_password.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (established_transitions.is_set || is_set(established_transitions.yfilter)) leaf_name_data.push_back(established_transitions.get_name_leafdata());
+    if (last_established.is_set || is_set(last_established.yfilter)) leaf_name_data.push_back(last_established.get_name_leafdata());
+    if (local_as.is_set || is_set(local_as.yfilter)) leaf_name_data.push_back(local_as.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+    if (peer_as.is_set || is_set(peer_as.yfilter)) leaf_name_data.push_back(peer_as.get_name_leafdata());
+    if (peer_group.is_set || is_set(peer_group.yfilter)) leaf_name_data.push_back(peer_group.get_name_leafdata());
+    if (peer_type.is_set || is_set(peer_type.yfilter)) leaf_name_data.push_back(peer_type.get_name_leafdata());
+    if (remove_private_as.is_set || is_set(remove_private_as.yfilter)) leaf_name_data.push_back(remove_private_as.get_name_leafdata());
+    if (route_flap_damping.is_set || is_set(route_flap_damping.yfilter)) leaf_name_data.push_back(route_flap_damping.get_name_leafdata());
+    if (send_community.is_set || is_set(send_community.yfilter)) leaf_name_data.push_back(send_community.get_name_leafdata());
+    if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
 
     auto supported_capabilities_name_datas = supported_capabilities.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), supported_capabilities_name_datas.begin(), supported_capabilities_name_datas.end());
@@ -9920,56 +11984,168 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auth-password")
     {
         auth_password = value;
+        auth_password.value_namespace = name_space;
+        auth_password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "established-transitions")
+    {
+        established_transitions = value;
+        established_transitions.value_namespace = name_space;
+        established_transitions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "last-established")
+    {
+        last_established = value;
+        last_established.value_namespace = name_space;
+        last_established.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-as")
     {
         local_as = value;
+        local_as.value_namespace = name_space;
+        local_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-address")
     {
         neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-as")
     {
         peer_as = value;
+        peer_as.value_namespace = name_space;
+        peer_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-group")
     {
         peer_group = value;
+        peer_group.value_namespace = name_space;
+        peer_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "peer-type")
     {
         peer_type = value;
+        peer_type.value_namespace = name_space;
+        peer_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remove-private-as")
     {
         remove_private_as = value;
+        remove_private_as.value_namespace = name_space;
+        remove_private_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-flap-damping")
     {
         route_flap_damping = value;
+        route_flap_damping.value_namespace = name_space;
+        route_flap_damping.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "send-community")
     {
         send_community = value;
+        send_community.value_namespace = name_space;
+        send_community.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-state")
     {
         session_state = value;
+        session_state.value_namespace = name_space;
+        session_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "supported-capabilities")
     {
-        supported_capabilities.append(value);
+        Identity identity{name_space, name_space_prefix, value};
+        supported_capabilities.append(identity);
     }
+}
+
+void Bgp::Neighbors::Neighbor::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auth-password")
+    {
+        auth_password.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "established-transitions")
+    {
+        established_transitions.yfilter = yfilter;
+    }
+    if(value_path == "last-established")
+    {
+        last_established.yfilter = yfilter;
+    }
+    if(value_path == "local-as")
+    {
+        local_as.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+    if(value_path == "peer-as")
+    {
+        peer_as.yfilter = yfilter;
+    }
+    if(value_path == "peer-group")
+    {
+        peer_group.yfilter = yfilter;
+    }
+    if(value_path == "peer-type")
+    {
+        peer_type.yfilter = yfilter;
+    }
+    if(value_path == "remove-private-as")
+    {
+        remove_private_as.yfilter = yfilter;
+    }
+    if(value_path == "route-flap-damping")
+    {
+        route_flap_damping.yfilter = yfilter;
+    }
+    if(value_path == "send-community")
+    {
+        send_community.yfilter = yfilter;
+    }
+    if(value_path == "session-state")
+    {
+        session_state.yfilter = yfilter;
+    }
+    if(value_path == "supported-capabilities")
+    {
+        supported_capabilities.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "messages" || name == "queues" || name == "auth-password" || name == "description" || name == "enabled" || name == "established-transitions" || name == "last-established" || name == "local-as" || name == "neighbor-address" || name == "peer-as" || name == "peer-group" || name == "peer-type" || name == "remove-private-as" || name == "route-flap-damping" || name == "send-community" || name == "session-state" || name == "supported-capabilities")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::State::Messages::Messages()
@@ -9996,7 +12172,7 @@ bool Bgp::Neighbors::Neighbor::State::Messages::has_data() const
 
 bool Bgp::Neighbors::Neighbor::State::Messages::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (received !=  nullptr && received->has_operation())
 	|| (sent !=  nullptr && sent->has_operation());
 }
@@ -10070,8 +12246,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::State::Messages::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::State::Messages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::State::Messages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::State::Messages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "received" || name == "sent")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::State::Messages::Sent::Sent()
@@ -10094,9 +12281,9 @@ bool Bgp::Neighbors::Neighbor::State::Messages::Sent::has_data() const
 
 bool Bgp::Neighbors::Neighbor::State::Messages::Sent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(notification.operation)
-	|| is_set(update.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(notification.yfilter)
+	|| ydk::is_set(update.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::State::Messages::Sent::get_segment_path() const
@@ -10122,8 +12309,8 @@ const EntityPath Bgp::Neighbors::Neighbor::State::Messages::Sent::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (notification.is_set || is_set(notification.operation)) leaf_name_data.push_back(notification.get_name_leafdata());
-    if (update.is_set || is_set(update.operation)) leaf_name_data.push_back(update.get_name_leafdata());
+    if (notification.is_set || is_set(notification.yfilter)) leaf_name_data.push_back(notification.get_name_leafdata());
+    if (update.is_set || is_set(update.yfilter)) leaf_name_data.push_back(update.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10142,16 +12329,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::State::Messages::Sent::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::State::Messages::Sent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "NOTIFICATION")
     {
         notification = value;
+        notification.value_namespace = name_space;
+        notification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "UPDATE")
     {
         update = value;
+        update.value_namespace = name_space;
+        update.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::State::Messages::Sent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "NOTIFICATION")
+    {
+        notification.yfilter = yfilter;
+    }
+    if(value_path == "UPDATE")
+    {
+        update.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::State::Messages::Sent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "NOTIFICATION" || name == "UPDATE")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::State::Messages::Received::Received()
@@ -10174,9 +12384,9 @@ bool Bgp::Neighbors::Neighbor::State::Messages::Received::has_data() const
 
 bool Bgp::Neighbors::Neighbor::State::Messages::Received::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(notification.operation)
-	|| is_set(update.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(notification.yfilter)
+	|| ydk::is_set(update.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::State::Messages::Received::get_segment_path() const
@@ -10202,8 +12412,8 @@ const EntityPath Bgp::Neighbors::Neighbor::State::Messages::Received::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (notification.is_set || is_set(notification.operation)) leaf_name_data.push_back(notification.get_name_leafdata());
-    if (update.is_set || is_set(update.operation)) leaf_name_data.push_back(update.get_name_leafdata());
+    if (notification.is_set || is_set(notification.yfilter)) leaf_name_data.push_back(notification.get_name_leafdata());
+    if (update.is_set || is_set(update.yfilter)) leaf_name_data.push_back(update.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10222,16 +12432,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::State::Messages::Received::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::State::Messages::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "NOTIFICATION")
     {
         notification = value;
+        notification.value_namespace = name_space;
+        notification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "UPDATE")
     {
         update = value;
+        update.value_namespace = name_space;
+        update.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::State::Messages::Received::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "NOTIFICATION")
+    {
+        notification.yfilter = yfilter;
+    }
+    if(value_path == "UPDATE")
+    {
+        update.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::State::Messages::Received::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "NOTIFICATION" || name == "UPDATE")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::State::Queues::Queues()
@@ -10254,9 +12487,9 @@ bool Bgp::Neighbors::Neighbor::State::Queues::has_data() const
 
 bool Bgp::Neighbors::Neighbor::State::Queues::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(input.operation)
-	|| is_set(output.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter)
+	|| ydk::is_set(output.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::State::Queues::get_segment_path() const
@@ -10282,8 +12515,8 @@ const EntityPath Bgp::Neighbors::Neighbor::State::Queues::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (input.is_set || is_set(input.operation)) leaf_name_data.push_back(input.get_name_leafdata());
-    if (output.is_set || is_set(output.operation)) leaf_name_data.push_back(output.get_name_leafdata());
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
+    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10302,16 +12535,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::State::
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::State::Queues::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::State::Queues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "input")
     {
         input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "output")
     {
         output = value;
+        output.value_namespace = name_space;
+        output.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::State::Queues::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+    if(value_path == "output")
+    {
+        output.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::State::Queues::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::Timers::Timers()
@@ -10338,7 +12594,7 @@ bool Bgp::Neighbors::Neighbor::Timers::has_data() const
 
 bool Bgp::Neighbors::Neighbor::Timers::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -10412,8 +12668,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers:
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::Timers::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::Timers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::Timers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::Timers::Config::Config()
@@ -10440,11 +12707,11 @@ bool Bgp::Neighbors::Neighbor::Timers::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::Timers::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(connect_retry.operation)
-	|| is_set(hold_time.operation)
-	|| is_set(keepalive_interval.operation)
-	|| is_set(minimum_advertisement_interval.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(connect_retry.yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(keepalive_interval.yfilter)
+	|| ydk::is_set(minimum_advertisement_interval.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::Timers::Config::get_segment_path() const
@@ -10470,10 +12737,10 @@ const EntityPath Bgp::Neighbors::Neighbor::Timers::Config::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (connect_retry.is_set || is_set(connect_retry.operation)) leaf_name_data.push_back(connect_retry.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (keepalive_interval.is_set || is_set(keepalive_interval.operation)) leaf_name_data.push_back(keepalive_interval.get_name_leafdata());
-    if (minimum_advertisement_interval.is_set || is_set(minimum_advertisement_interval.operation)) leaf_name_data.push_back(minimum_advertisement_interval.get_name_leafdata());
+    if (connect_retry.is_set || is_set(connect_retry.yfilter)) leaf_name_data.push_back(connect_retry.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (keepalive_interval.is_set || is_set(keepalive_interval.yfilter)) leaf_name_data.push_back(keepalive_interval.get_name_leafdata());
+    if (minimum_advertisement_interval.is_set || is_set(minimum_advertisement_interval.yfilter)) leaf_name_data.push_back(minimum_advertisement_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10492,24 +12759,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers:
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::Timers::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::Timers::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "connect-retry")
     {
         connect_retry = value;
+        connect_retry.value_namespace = name_space;
+        connect_retry.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "keepalive-interval")
     {
         keepalive_interval = value;
+        keepalive_interval.value_namespace = name_space;
+        keepalive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-advertisement-interval")
     {
         minimum_advertisement_interval = value;
+        minimum_advertisement_interval.value_namespace = name_space;
+        minimum_advertisement_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::Timers::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "connect-retry")
+    {
+        connect_retry.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "keepalive-interval")
+    {
+        keepalive_interval.yfilter = yfilter;
+    }
+    if(value_path == "minimum-advertisement-interval")
+    {
+        minimum_advertisement_interval.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::Timers::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connect-retry" || name == "hold-time" || name == "keepalive-interval" || name == "minimum-advertisement-interval")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::Timers::State::State()
@@ -10518,8 +12820,7 @@ Bgp::Neighbors::Neighbor::Timers::State::State()
     hold_time{YType::str, "hold-time"},
     keepalive_interval{YType::str, "keepalive-interval"},
     minimum_advertisement_interval{YType::str, "minimum-advertisement-interval"},
-    negotiated_hold_time{YType::str, "negotiated-hold-time"},
-    uptime{YType::uint32, "uptime"}
+    negotiated_hold_time{YType::str, "negotiated-hold-time"}
 {
     yang_name = "state"; yang_parent_name = "timers";
 }
@@ -10534,19 +12835,17 @@ bool Bgp::Neighbors::Neighbor::Timers::State::has_data() const
 	|| hold_time.is_set
 	|| keepalive_interval.is_set
 	|| minimum_advertisement_interval.is_set
-	|| negotiated_hold_time.is_set
-	|| uptime.is_set;
+	|| negotiated_hold_time.is_set;
 }
 
 bool Bgp::Neighbors::Neighbor::Timers::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(connect_retry.operation)
-	|| is_set(hold_time.operation)
-	|| is_set(keepalive_interval.operation)
-	|| is_set(minimum_advertisement_interval.operation)
-	|| is_set(negotiated_hold_time.operation)
-	|| is_set(uptime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(connect_retry.yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(keepalive_interval.yfilter)
+	|| ydk::is_set(minimum_advertisement_interval.yfilter)
+	|| ydk::is_set(negotiated_hold_time.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::Timers::State::get_segment_path() const
@@ -10572,12 +12871,11 @@ const EntityPath Bgp::Neighbors::Neighbor::Timers::State::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (connect_retry.is_set || is_set(connect_retry.operation)) leaf_name_data.push_back(connect_retry.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (keepalive_interval.is_set || is_set(keepalive_interval.operation)) leaf_name_data.push_back(keepalive_interval.get_name_leafdata());
-    if (minimum_advertisement_interval.is_set || is_set(minimum_advertisement_interval.operation)) leaf_name_data.push_back(minimum_advertisement_interval.get_name_leafdata());
-    if (negotiated_hold_time.is_set || is_set(negotiated_hold_time.operation)) leaf_name_data.push_back(negotiated_hold_time.get_name_leafdata());
-    if (uptime.is_set || is_set(uptime.operation)) leaf_name_data.push_back(uptime.get_name_leafdata());
+    if (connect_retry.is_set || is_set(connect_retry.yfilter)) leaf_name_data.push_back(connect_retry.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (keepalive_interval.is_set || is_set(keepalive_interval.yfilter)) leaf_name_data.push_back(keepalive_interval.get_name_leafdata());
+    if (minimum_advertisement_interval.is_set || is_set(minimum_advertisement_interval.yfilter)) leaf_name_data.push_back(minimum_advertisement_interval.get_name_leafdata());
+    if (negotiated_hold_time.is_set || is_set(negotiated_hold_time.yfilter)) leaf_name_data.push_back(negotiated_hold_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10596,32 +12894,69 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Timers:
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::Timers::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::Timers::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "connect-retry")
     {
         connect_retry = value;
+        connect_retry.value_namespace = name_space;
+        connect_retry.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "keepalive-interval")
     {
         keepalive_interval = value;
+        keepalive_interval.value_namespace = name_space;
+        keepalive_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum-advertisement-interval")
     {
         minimum_advertisement_interval = value;
+        minimum_advertisement_interval.value_namespace = name_space;
+        minimum_advertisement_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negotiated-hold-time")
     {
         negotiated_hold_time = value;
+        negotiated_hold_time.value_namespace = name_space;
+        negotiated_hold_time.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "uptime")
+}
+
+void Bgp::Neighbors::Neighbor::Timers::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "connect-retry")
     {
-        uptime = value;
+        connect_retry.yfilter = yfilter;
     }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "keepalive-interval")
+    {
+        keepalive_interval.yfilter = yfilter;
+    }
+    if(value_path == "minimum-advertisement-interval")
+    {
+        minimum_advertisement_interval.yfilter = yfilter;
+    }
+    if(value_path == "negotiated-hold-time")
+    {
+        negotiated_hold_time.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::Timers::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connect-retry" || name == "hold-time" || name == "keepalive-interval" || name == "minimum-advertisement-interval" || name == "negotiated-hold-time")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::Transport::Transport()
@@ -10648,7 +12983,7 @@ bool Bgp::Neighbors::Neighbor::Transport::has_data() const
 
 bool Bgp::Neighbors::Neighbor::Transport::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -10722,8 +13057,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transpo
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::Transport::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::Transport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::Transport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::Transport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::Transport::Config::Config()
@@ -10750,11 +13096,11 @@ bool Bgp::Neighbors::Neighbor::Transport::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::Transport::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_address.operation)
-	|| is_set(mtu_discovery.operation)
-	|| is_set(passive_mode.operation)
-	|| is_set(tcp_mss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(mtu_discovery.yfilter)
+	|| ydk::is_set(passive_mode.yfilter)
+	|| ydk::is_set(tcp_mss.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::Transport::Config::get_segment_path() const
@@ -10780,10 +13126,10 @@ const EntityPath Bgp::Neighbors::Neighbor::Transport::Config::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (mtu_discovery.is_set || is_set(mtu_discovery.operation)) leaf_name_data.push_back(mtu_discovery.get_name_leafdata());
-    if (passive_mode.is_set || is_set(passive_mode.operation)) leaf_name_data.push_back(passive_mode.get_name_leafdata());
-    if (tcp_mss.is_set || is_set(tcp_mss.operation)) leaf_name_data.push_back(tcp_mss.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (mtu_discovery.is_set || is_set(mtu_discovery.yfilter)) leaf_name_data.push_back(mtu_discovery.get_name_leafdata());
+    if (passive_mode.is_set || is_set(passive_mode.yfilter)) leaf_name_data.push_back(passive_mode.get_name_leafdata());
+    if (tcp_mss.is_set || is_set(tcp_mss.yfilter)) leaf_name_data.push_back(tcp_mss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10802,24 +13148,59 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transpo
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::Transport::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::Transport::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu-discovery")
     {
         mtu_discovery = value;
+        mtu_discovery.value_namespace = name_space;
+        mtu_discovery.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passive-mode")
     {
         passive_mode = value;
+        passive_mode.value_namespace = name_space;
+        passive_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcp-mss")
     {
         tcp_mss = value;
+        tcp_mss.value_namespace = name_space;
+        tcp_mss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::Transport::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "mtu-discovery")
+    {
+        mtu_discovery.yfilter = yfilter;
+    }
+    if(value_path == "passive-mode")
+    {
+        passive_mode.yfilter = yfilter;
+    }
+    if(value_path == "tcp-mss")
+    {
+        tcp_mss.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::Transport::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "mtu-discovery" || name == "passive-mode" || name == "tcp-mss")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::Transport::State::State()
@@ -10852,14 +13233,14 @@ bool Bgp::Neighbors::Neighbor::Transport::State::has_data() const
 
 bool Bgp::Neighbors::Neighbor::Transport::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_address.operation)
-	|| is_set(local_port.operation)
-	|| is_set(mtu_discovery.operation)
-	|| is_set(passive_mode.operation)
-	|| is_set(remote_address.operation)
-	|| is_set(remote_port.operation)
-	|| is_set(tcp_mss.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(local_port.yfilter)
+	|| ydk::is_set(mtu_discovery.yfilter)
+	|| ydk::is_set(passive_mode.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(remote_port.yfilter)
+	|| ydk::is_set(tcp_mss.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::Transport::State::get_segment_path() const
@@ -10885,13 +13266,13 @@ const EntityPath Bgp::Neighbors::Neighbor::Transport::State::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (local_port.is_set || is_set(local_port.operation)) leaf_name_data.push_back(local_port.get_name_leafdata());
-    if (mtu_discovery.is_set || is_set(mtu_discovery.operation)) leaf_name_data.push_back(mtu_discovery.get_name_leafdata());
-    if (passive_mode.is_set || is_set(passive_mode.operation)) leaf_name_data.push_back(passive_mode.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
-    if (remote_port.is_set || is_set(remote_port.operation)) leaf_name_data.push_back(remote_port.get_name_leafdata());
-    if (tcp_mss.is_set || is_set(tcp_mss.operation)) leaf_name_data.push_back(tcp_mss.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (local_port.is_set || is_set(local_port.yfilter)) leaf_name_data.push_back(local_port.get_name_leafdata());
+    if (mtu_discovery.is_set || is_set(mtu_discovery.yfilter)) leaf_name_data.push_back(mtu_discovery.get_name_leafdata());
+    if (passive_mode.is_set || is_set(passive_mode.yfilter)) leaf_name_data.push_back(passive_mode.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (remote_port.is_set || is_set(remote_port.yfilter)) leaf_name_data.push_back(remote_port.get_name_leafdata());
+    if (tcp_mss.is_set || is_set(tcp_mss.yfilter)) leaf_name_data.push_back(tcp_mss.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10910,36 +13291,89 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Transpo
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::Transport::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::Transport::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-port")
     {
         local_port = value;
+        local_port.value_namespace = name_space;
+        local_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu-discovery")
     {
         mtu_discovery = value;
+        mtu_discovery.value_namespace = name_space;
+        mtu_discovery.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passive-mode")
     {
         passive_mode = value;
+        passive_mode.value_namespace = name_space;
+        passive_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-port")
     {
         remote_port = value;
+        remote_port.value_namespace = name_space;
+        remote_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcp-mss")
     {
         tcp_mss = value;
+        tcp_mss.value_namespace = name_space;
+        tcp_mss.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::Transport::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "local-port")
+    {
+        local_port.yfilter = yfilter;
+    }
+    if(value_path == "mtu-discovery")
+    {
+        mtu_discovery.yfilter = yfilter;
+    }
+    if(value_path == "passive-mode")
+    {
+        passive_mode.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-port")
+    {
+        remote_port.yfilter = yfilter;
+    }
+    if(value_path == "tcp-mss")
+    {
+        tcp_mss.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::Transport::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "local-port" || name == "mtu-discovery" || name == "passive-mode" || name == "remote-address" || name == "remote-port" || name == "tcp-mss")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::ErrorHandling::ErrorHandling()
@@ -10966,7 +13400,7 @@ bool Bgp::Neighbors::Neighbor::ErrorHandling::has_data() const
 
 bool Bgp::Neighbors::Neighbor::ErrorHandling::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -11040,8 +13474,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHa
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::ErrorHandling::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::ErrorHandling::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::ErrorHandling::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::ErrorHandling::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::ErrorHandling::Config::Config()
@@ -11062,8 +13507,8 @@ bool Bgp::Neighbors::Neighbor::ErrorHandling::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::ErrorHandling::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(treat_as_withdraw.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(treat_as_withdraw.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_segment_path() const
@@ -11089,7 +13534,7 @@ const EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::Config::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (treat_as_withdraw.is_set || is_set(treat_as_withdraw.operation)) leaf_name_data.push_back(treat_as_withdraw.get_name_leafdata());
+    if (treat_as_withdraw.is_set || is_set(treat_as_withdraw.yfilter)) leaf_name_data.push_back(treat_as_withdraw.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11108,12 +13553,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHa
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::ErrorHandling::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::ErrorHandling::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "treat-as-withdraw")
     {
         treat_as_withdraw = value;
+        treat_as_withdraw.value_namespace = name_space;
+        treat_as_withdraw.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::ErrorHandling::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "treat-as-withdraw")
+    {
+        treat_as_withdraw.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::ErrorHandling::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "treat-as-withdraw")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::ErrorHandling::State::State()
@@ -11136,9 +13598,9 @@ bool Bgp::Neighbors::Neighbor::ErrorHandling::State::has_data() const
 
 bool Bgp::Neighbors::Neighbor::ErrorHandling::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(erroneous_update_messages.operation)
-	|| is_set(treat_as_withdraw.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(erroneous_update_messages.yfilter)
+	|| ydk::is_set(treat_as_withdraw.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::ErrorHandling::State::get_segment_path() const
@@ -11164,8 +13626,8 @@ const EntityPath Bgp::Neighbors::Neighbor::ErrorHandling::State::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (erroneous_update_messages.is_set || is_set(erroneous_update_messages.operation)) leaf_name_data.push_back(erroneous_update_messages.get_name_leafdata());
-    if (treat_as_withdraw.is_set || is_set(treat_as_withdraw.operation)) leaf_name_data.push_back(treat_as_withdraw.get_name_leafdata());
+    if (erroneous_update_messages.is_set || is_set(erroneous_update_messages.yfilter)) leaf_name_data.push_back(erroneous_update_messages.get_name_leafdata());
+    if (treat_as_withdraw.is_set || is_set(treat_as_withdraw.yfilter)) leaf_name_data.push_back(treat_as_withdraw.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11184,16 +13646,470 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ErrorHa
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::ErrorHandling::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::ErrorHandling::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "erroneous-update-messages")
     {
         erroneous_update_messages = value;
+        erroneous_update_messages.value_namespace = name_space;
+        erroneous_update_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "treat-as-withdraw")
     {
         treat_as_withdraw = value;
+        treat_as_withdraw.value_namespace = name_space;
+        treat_as_withdraw.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::ErrorHandling::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "erroneous-update-messages")
+    {
+        erroneous_update_messages.yfilter = yfilter;
+    }
+    if(value_path == "treat-as-withdraw")
+    {
+        treat_as_withdraw.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::ErrorHandling::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "erroneous-update-messages" || name == "treat-as-withdraw")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::GracefulRestart::GracefulRestart()
+    :
+    config(std::make_shared<Bgp::Neighbors::Neighbor::GracefulRestart::Config>())
+	,state(std::make_shared<Bgp::Neighbors::Neighbor::GracefulRestart::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "graceful-restart"; yang_parent_name = "neighbor";
+}
+
+Bgp::Neighbors::Neighbor::GracefulRestart::~GracefulRestart()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Neighbors::Neighbor::GracefulRestart::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "graceful-restart";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::GracefulRestart::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'GracefulRestart' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Neighbors::Neighbor::GracefulRestart::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Neighbors::Neighbor::GracefulRestart::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Neighbors::Neighbor::GracefulRestart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::GracefulRestart::Config::Config()
+    :
+    enabled{YType::boolean, "enabled"},
+    helper_only{YType::boolean, "helper-only"},
+    restart_time{YType::uint16, "restart-time"},
+    stale_routes_time{YType::str, "stale-routes-time"}
+{
+    yang_name = "config"; yang_parent_name = "graceful-restart";
+}
+
+Bgp::Neighbors::Neighbor::GracefulRestart::Config::~Config()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::Config::has_data() const
+{
+    return enabled.is_set
+	|| helper_only.is_set
+	|| restart_time.is_set
+	|| stale_routes_time.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(helper_only.yfilter)
+	|| ydk::is_set(restart_time.yfilter)
+	|| ydk::is_set(stale_routes_time.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (helper_only.is_set || is_set(helper_only.yfilter)) leaf_name_data.push_back(helper_only.get_name_leafdata());
+    if (restart_time.is_set || is_set(restart_time.yfilter)) leaf_name_data.push_back(restart_time.get_name_leafdata());
+    if (stale_routes_time.is_set || is_set(stale_routes_time.yfilter)) leaf_name_data.push_back(stale_routes_time.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "helper-only")
+    {
+        helper_only = value;
+        helper_only.value_namespace = name_space;
+        helper_only.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time = value;
+        restart_time.value_namespace = name_space;
+        restart_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-routes-time")
+    {
+        stale_routes_time = value;
+        stale_routes_time.value_namespace = name_space;
+        stale_routes_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::GracefulRestart::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "helper-only")
+    {
+        helper_only.yfilter = yfilter;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time.yfilter = yfilter;
+    }
+    if(value_path == "stale-routes-time")
+    {
+        stale_routes_time.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "helper-only" || name == "restart-time" || name == "stale-routes-time")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::GracefulRestart::State::State()
+    :
+    enabled{YType::boolean, "enabled"},
+    helper_only{YType::boolean, "helper-only"},
+    local_restarting{YType::boolean, "local-restarting"},
+    mode{YType::enumeration, "mode"},
+    peer_restart_time{YType::uint16, "peer-restart-time"},
+    peer_restarting{YType::boolean, "peer-restarting"},
+    restart_time{YType::uint16, "restart-time"},
+    stale_routes_time{YType::str, "stale-routes-time"}
+{
+    yang_name = "state"; yang_parent_name = "graceful-restart";
+}
+
+Bgp::Neighbors::Neighbor::GracefulRestart::State::~State()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::State::has_data() const
+{
+    return enabled.is_set
+	|| helper_only.is_set
+	|| local_restarting.is_set
+	|| mode.is_set
+	|| peer_restart_time.is_set
+	|| peer_restarting.is_set
+	|| restart_time.is_set
+	|| stale_routes_time.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(helper_only.yfilter)
+	|| ydk::is_set(local_restarting.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(peer_restart_time.yfilter)
+	|| ydk::is_set(peer_restarting.yfilter)
+	|| ydk::is_set(restart_time.yfilter)
+	|| ydk::is_set(stale_routes_time.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::GracefulRestart::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::GracefulRestart::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (helper_only.is_set || is_set(helper_only.yfilter)) leaf_name_data.push_back(helper_only.get_name_leafdata());
+    if (local_restarting.is_set || is_set(local_restarting.yfilter)) leaf_name_data.push_back(local_restarting.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (peer_restart_time.is_set || is_set(peer_restart_time.yfilter)) leaf_name_data.push_back(peer_restart_time.get_name_leafdata());
+    if (peer_restarting.is_set || is_set(peer_restarting.yfilter)) leaf_name_data.push_back(peer_restarting.get_name_leafdata());
+    if (restart_time.is_set || is_set(restart_time.yfilter)) leaf_name_data.push_back(restart_time.get_name_leafdata());
+    if (stale_routes_time.is_set || is_set(stale_routes_time.yfilter)) leaf_name_data.push_back(stale_routes_time.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::GracefulRestart::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::GracefulRestart::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "helper-only")
+    {
+        helper_only = value;
+        helper_only.value_namespace = name_space;
+        helper_only.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "local-restarting")
+    {
+        local_restarting = value;
+        local_restarting.value_namespace = name_space;
+        local_restarting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-restart-time")
+    {
+        peer_restart_time = value;
+        peer_restart_time.value_namespace = name_space;
+        peer_restart_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peer-restarting")
+    {
+        peer_restarting = value;
+        peer_restarting.value_namespace = name_space;
+        peer_restarting.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time = value;
+        restart_time.value_namespace = name_space;
+        restart_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-routes-time")
+    {
+        stale_routes_time = value;
+        stale_routes_time.value_namespace = name_space;
+        stale_routes_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::GracefulRestart::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "helper-only")
+    {
+        helper_only.yfilter = yfilter;
+    }
+    if(value_path == "local-restarting")
+    {
+        local_restarting.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "peer-restart-time")
+    {
+        peer_restart_time.yfilter = yfilter;
+    }
+    if(value_path == "peer-restarting")
+    {
+        peer_restarting.yfilter = yfilter;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time.yfilter = yfilter;
+    }
+    if(value_path == "stale-routes-time")
+    {
+        stale_routes_time.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::GracefulRestart::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "helper-only" || name == "local-restarting" || name == "mode" || name == "peer-restart-time" || name == "peer-restarting" || name == "restart-time" || name == "stale-routes-time")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::LoggingOptions::LoggingOptions()
@@ -11220,7 +14136,7 @@ bool Bgp::Neighbors::Neighbor::LoggingOptions::has_data() const
 
 bool Bgp::Neighbors::Neighbor::LoggingOptions::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -11294,8 +14210,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Logging
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::LoggingOptions::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::LoggingOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::LoggingOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::LoggingOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::LoggingOptions::Config::Config()
@@ -11316,8 +14243,8 @@ bool Bgp::Neighbors::Neighbor::LoggingOptions::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::LoggingOptions::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log_neighbor_state_changes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log_neighbor_state_changes.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_segment_path() const
@@ -11343,7 +14270,7 @@ const EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::Config::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log_neighbor_state_changes.is_set || is_set(log_neighbor_state_changes.operation)) leaf_name_data.push_back(log_neighbor_state_changes.get_name_leafdata());
+    if (log_neighbor_state_changes.is_set || is_set(log_neighbor_state_changes.yfilter)) leaf_name_data.push_back(log_neighbor_state_changes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11362,12 +14289,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Logging
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::LoggingOptions::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::LoggingOptions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log-neighbor-state-changes")
     {
         log_neighbor_state_changes = value;
+        log_neighbor_state_changes.value_namespace = name_space;
+        log_neighbor_state_changes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::LoggingOptions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log-neighbor-state-changes")
+    {
+        log_neighbor_state_changes.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::LoggingOptions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log-neighbor-state-changes")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::LoggingOptions::State::State()
@@ -11388,8 +14332,8 @@ bool Bgp::Neighbors::Neighbor::LoggingOptions::State::has_data() const
 
 bool Bgp::Neighbors::Neighbor::LoggingOptions::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(log_neighbor_state_changes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(log_neighbor_state_changes.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::LoggingOptions::State::get_segment_path() const
@@ -11415,7 +14359,7 @@ const EntityPath Bgp::Neighbors::Neighbor::LoggingOptions::State::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (log_neighbor_state_changes.is_set || is_set(log_neighbor_state_changes.operation)) leaf_name_data.push_back(log_neighbor_state_changes.get_name_leafdata());
+    if (log_neighbor_state_changes.is_set || is_set(log_neighbor_state_changes.yfilter)) leaf_name_data.push_back(log_neighbor_state_changes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11434,12 +14378,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::Logging
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::LoggingOptions::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::LoggingOptions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log-neighbor-state-changes")
     {
         log_neighbor_state_changes = value;
+        log_neighbor_state_changes.value_namespace = name_space;
+        log_neighbor_state_changes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::LoggingOptions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "log-neighbor-state-changes")
+    {
+        log_neighbor_state_changes.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::LoggingOptions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "log-neighbor-state-changes")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::EbgpMultihop::EbgpMultihop()
@@ -11466,7 +14427,7 @@ bool Bgp::Neighbors::Neighbor::EbgpMultihop::has_data() const
 
 bool Bgp::Neighbors::Neighbor::EbgpMultihop::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -11540,8 +14501,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMul
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::EbgpMultihop::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::EbgpMultihop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::EbgpMultihop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::EbgpMultihop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::EbgpMultihop::Config::Config()
@@ -11564,9 +14536,9 @@ bool Bgp::Neighbors::Neighbor::EbgpMultihop::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::EbgpMultihop::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(multihop_ttl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(multihop_ttl.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_segment_path() const
@@ -11592,8 +14564,8 @@ const EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::Config::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (multihop_ttl.is_set || is_set(multihop_ttl.operation)) leaf_name_data.push_back(multihop_ttl.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (multihop_ttl.is_set || is_set(multihop_ttl.yfilter)) leaf_name_data.push_back(multihop_ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11612,16 +14584,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMul
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::EbgpMultihop::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::EbgpMultihop::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multihop-ttl")
     {
         multihop_ttl = value;
+        multihop_ttl.value_namespace = name_space;
+        multihop_ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::EbgpMultihop::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "multihop-ttl")
+    {
+        multihop_ttl.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::EbgpMultihop::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "multihop-ttl")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::EbgpMultihop::State::State()
@@ -11644,9 +14639,9 @@ bool Bgp::Neighbors::Neighbor::EbgpMultihop::State::has_data() const
 
 bool Bgp::Neighbors::Neighbor::EbgpMultihop::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(multihop_ttl.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(multihop_ttl.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_segment_path() const
@@ -11672,8 +14667,8 @@ const EntityPath Bgp::Neighbors::Neighbor::EbgpMultihop::State::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (multihop_ttl.is_set || is_set(multihop_ttl.operation)) leaf_name_data.push_back(multihop_ttl.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (multihop_ttl.is_set || is_set(multihop_ttl.yfilter)) leaf_name_data.push_back(multihop_ttl.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11692,16 +14687,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::EbgpMul
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::EbgpMultihop::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::EbgpMultihop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "multihop-ttl")
     {
         multihop_ttl = value;
+        multihop_ttl.value_namespace = name_space;
+        multihop_ttl.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::EbgpMultihop::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "multihop-ttl")
+    {
+        multihop_ttl.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::EbgpMultihop::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "multihop-ttl")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::RouteReflector::RouteReflector()
@@ -11728,7 +14746,7 @@ bool Bgp::Neighbors::Neighbor::RouteReflector::has_data() const
 
 bool Bgp::Neighbors::Neighbor::RouteReflector::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -11802,8 +14820,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteRe
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::RouteReflector::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::RouteReflector::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::RouteReflector::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::RouteReflector::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::RouteReflector::Config::Config()
@@ -11826,9 +14855,9 @@ bool Bgp::Neighbors::Neighbor::RouteReflector::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::RouteReflector::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_reflector_client.operation)
-	|| is_set(route_reflector_cluster_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_reflector_client.yfilter)
+	|| ydk::is_set(route_reflector_cluster_id.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::RouteReflector::Config::get_segment_path() const
@@ -11854,8 +14883,8 @@ const EntityPath Bgp::Neighbors::Neighbor::RouteReflector::Config::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_reflector_client.is_set || is_set(route_reflector_client.operation)) leaf_name_data.push_back(route_reflector_client.get_name_leafdata());
-    if (route_reflector_cluster_id.is_set || is_set(route_reflector_cluster_id.operation)) leaf_name_data.push_back(route_reflector_cluster_id.get_name_leafdata());
+    if (route_reflector_client.is_set || is_set(route_reflector_client.yfilter)) leaf_name_data.push_back(route_reflector_client.get_name_leafdata());
+    if (route_reflector_cluster_id.is_set || is_set(route_reflector_cluster_id.yfilter)) leaf_name_data.push_back(route_reflector_cluster_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11874,16 +14903,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteRe
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::RouteReflector::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::RouteReflector::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-reflector-client")
     {
         route_reflector_client = value;
+        route_reflector_client.value_namespace = name_space;
+        route_reflector_client.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-reflector-cluster-id")
     {
         route_reflector_cluster_id = value;
+        route_reflector_cluster_id.value_namespace = name_space;
+        route_reflector_cluster_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::RouteReflector::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-reflector-client")
+    {
+        route_reflector_client.yfilter = yfilter;
+    }
+    if(value_path == "route-reflector-cluster-id")
+    {
+        route_reflector_cluster_id.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::RouteReflector::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-reflector-client" || name == "route-reflector-cluster-id")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::RouteReflector::State::State()
@@ -11906,9 +14958,9 @@ bool Bgp::Neighbors::Neighbor::RouteReflector::State::has_data() const
 
 bool Bgp::Neighbors::Neighbor::RouteReflector::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(route_reflector_client.operation)
-	|| is_set(route_reflector_cluster_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(route_reflector_client.yfilter)
+	|| ydk::is_set(route_reflector_cluster_id.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::RouteReflector::State::get_segment_path() const
@@ -11934,8 +14986,8 @@ const EntityPath Bgp::Neighbors::Neighbor::RouteReflector::State::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (route_reflector_client.is_set || is_set(route_reflector_client.operation)) leaf_name_data.push_back(route_reflector_client.get_name_leafdata());
-    if (route_reflector_cluster_id.is_set || is_set(route_reflector_cluster_id.operation)) leaf_name_data.push_back(route_reflector_cluster_id.get_name_leafdata());
+    if (route_reflector_client.is_set || is_set(route_reflector_client.yfilter)) leaf_name_data.push_back(route_reflector_client.get_name_leafdata());
+    if (route_reflector_cluster_id.is_set || is_set(route_reflector_cluster_id.yfilter)) leaf_name_data.push_back(route_reflector_cluster_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11954,16 +15006,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::RouteRe
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::RouteReflector::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::RouteReflector::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "route-reflector-client")
     {
         route_reflector_client = value;
+        route_reflector_client.value_namespace = name_space;
+        route_reflector_client.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "route-reflector-cluster-id")
     {
         route_reflector_cluster_id = value;
+        route_reflector_cluster_id.value_namespace = name_space;
+        route_reflector_cluster_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::RouteReflector::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-reflector-client")
+    {
+        route_reflector_client.yfilter = yfilter;
+    }
+    if(value_path == "route-reflector-cluster-id")
+    {
+        route_reflector_cluster_id.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::RouteReflector::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-reflector-client" || name == "route-reflector-cluster-id")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AsPathOptions::AsPathOptions()
@@ -11990,7 +15065,7 @@ bool Bgp::Neighbors::Neighbor::AsPathOptions::has_data() const
 
 bool Bgp::Neighbors::Neighbor::AsPathOptions::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -12064,8 +15139,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathO
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AsPathOptions::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AsPathOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::AsPathOptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::AsPathOptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AsPathOptions::Config::Config()
@@ -12088,9 +15174,9 @@ bool Bgp::Neighbors::Neighbor::AsPathOptions::Config::has_data() const
 
 bool Bgp::Neighbors::Neighbor::AsPathOptions::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_own_as.operation)
-	|| is_set(replace_peer_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_own_as.yfilter)
+	|| ydk::is_set(replace_peer_as.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_segment_path() const
@@ -12116,8 +15202,8 @@ const EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::Config::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_own_as.is_set || is_set(allow_own_as.operation)) leaf_name_data.push_back(allow_own_as.get_name_leafdata());
-    if (replace_peer_as.is_set || is_set(replace_peer_as.operation)) leaf_name_data.push_back(replace_peer_as.get_name_leafdata());
+    if (allow_own_as.is_set || is_set(allow_own_as.yfilter)) leaf_name_data.push_back(allow_own_as.get_name_leafdata());
+    if (replace_peer_as.is_set || is_set(replace_peer_as.yfilter)) leaf_name_data.push_back(replace_peer_as.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12136,16 +15222,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathO
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AsPathOptions::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AsPathOptions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-own-as")
     {
         allow_own_as = value;
+        allow_own_as.value_namespace = name_space;
+        allow_own_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replace-peer-as")
     {
         replace_peer_as = value;
+        replace_peer_as.value_namespace = name_space;
+        replace_peer_as.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::AsPathOptions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-own-as")
+    {
+        allow_own_as.yfilter = yfilter;
+    }
+    if(value_path == "replace-peer-as")
+    {
+        replace_peer_as.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AsPathOptions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-own-as" || name == "replace-peer-as")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AsPathOptions::State::State()
@@ -12168,9 +15277,9 @@ bool Bgp::Neighbors::Neighbor::AsPathOptions::State::has_data() const
 
 bool Bgp::Neighbors::Neighbor::AsPathOptions::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(allow_own_as.operation)
-	|| is_set(replace_peer_as.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(allow_own_as.yfilter)
+	|| ydk::is_set(replace_peer_as.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AsPathOptions::State::get_segment_path() const
@@ -12196,8 +15305,8 @@ const EntityPath Bgp::Neighbors::Neighbor::AsPathOptions::State::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (allow_own_as.is_set || is_set(allow_own_as.operation)) leaf_name_data.push_back(allow_own_as.get_name_leafdata());
-    if (replace_peer_as.is_set || is_set(replace_peer_as.operation)) leaf_name_data.push_back(replace_peer_as.get_name_leafdata());
+    if (allow_own_as.is_set || is_set(allow_own_as.yfilter)) leaf_name_data.push_back(allow_own_as.get_name_leafdata());
+    if (replace_peer_as.is_set || is_set(replace_peer_as.yfilter)) leaf_name_data.push_back(replace_peer_as.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12216,16 +15325,39 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AsPathO
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AsPathOptions::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AsPathOptions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "allow-own-as")
     {
         allow_own_as = value;
+        allow_own_as.value_namespace = name_space;
+        allow_own_as.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "replace-peer-as")
     {
         replace_peer_as = value;
+        replace_peer_as.value_namespace = name_space;
+        replace_peer_as.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::AsPathOptions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-own-as")
+    {
+        allow_own_as.yfilter = yfilter;
+    }
+    if(value_path == "replace-peer-as")
+    {
+        replace_peer_as.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AsPathOptions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-own-as" || name == "replace-peer-as")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AddPaths::AddPaths()
@@ -12252,7 +15384,7 @@ bool Bgp::Neighbors::Neighbor::AddPaths::has_data() const
 
 bool Bgp::Neighbors::Neighbor::AddPaths::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -12326,12 +15458,24 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPath
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AddPaths::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AddPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::AddPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::AddPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AddPaths::Config::Config()
     :
+    eligible_prefix_policy{YType::str, "eligible-prefix-policy"},
     receive{YType::boolean, "receive"},
     send_max{YType::uint8, "send-max"}
 {
@@ -12344,15 +15488,17 @@ Bgp::Neighbors::Neighbor::AddPaths::Config::~Config()
 
 bool Bgp::Neighbors::Neighbor::AddPaths::Config::has_data() const
 {
-    return receive.is_set
+    return eligible_prefix_policy.is_set
+	|| receive.is_set
 	|| send_max.is_set;
 }
 
 bool Bgp::Neighbors::Neighbor::AddPaths::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(receive.operation)
-	|| is_set(send_max.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(eligible_prefix_policy.yfilter)
+	|| ydk::is_set(receive.yfilter)
+	|| ydk::is_set(send_max.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AddPaths::Config::get_segment_path() const
@@ -12378,8 +15524,9 @@ const EntityPath Bgp::Neighbors::Neighbor::AddPaths::Config::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (receive.is_set || is_set(receive.operation)) leaf_name_data.push_back(receive.get_name_leafdata());
-    if (send_max.is_set || is_set(send_max.operation)) leaf_name_data.push_back(send_max.get_name_leafdata());
+    if (eligible_prefix_policy.is_set || is_set(eligible_prefix_policy.yfilter)) leaf_name_data.push_back(eligible_prefix_policy.get_name_leafdata());
+    if (receive.is_set || is_set(receive.yfilter)) leaf_name_data.push_back(receive.get_name_leafdata());
+    if (send_max.is_set || is_set(send_max.yfilter)) leaf_name_data.push_back(send_max.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12398,20 +15545,54 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPath
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AddPaths::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AddPaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "eligible-prefix-policy")
+    {
+        eligible_prefix_policy = value;
+        eligible_prefix_policy.value_namespace = name_space;
+        eligible_prefix_policy.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "receive")
     {
         receive = value;
+        receive.value_namespace = name_space;
+        receive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "send-max")
     {
         send_max = value;
+        send_max.value_namespace = name_space;
+        send_max.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::AddPaths::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "eligible-prefix-policy")
+    {
+        eligible_prefix_policy.yfilter = yfilter;
+    }
+    if(value_path == "receive")
+    {
+        receive.yfilter = yfilter;
+    }
+    if(value_path == "send-max")
+    {
+        send_max.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AddPaths::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "eligible-prefix-policy" || name == "receive" || name == "send-max")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AddPaths::State::State()
     :
+    eligible_prefix_policy{YType::str, "eligible-prefix-policy"},
     receive{YType::boolean, "receive"},
     send_max{YType::uint8, "send-max"}
 {
@@ -12424,15 +15605,17 @@ Bgp::Neighbors::Neighbor::AddPaths::State::~State()
 
 bool Bgp::Neighbors::Neighbor::AddPaths::State::has_data() const
 {
-    return receive.is_set
+    return eligible_prefix_policy.is_set
+	|| receive.is_set
 	|| send_max.is_set;
 }
 
 bool Bgp::Neighbors::Neighbor::AddPaths::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(receive.operation)
-	|| is_set(send_max.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(eligible_prefix_policy.yfilter)
+	|| ydk::is_set(receive.yfilter)
+	|| ydk::is_set(send_max.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AddPaths::State::get_segment_path() const
@@ -12458,8 +15641,9 @@ const EntityPath Bgp::Neighbors::Neighbor::AddPaths::State::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (receive.is_set || is_set(receive.operation)) leaf_name_data.push_back(receive.get_name_leafdata());
-    if (send_max.is_set || is_set(send_max.operation)) leaf_name_data.push_back(send_max.get_name_leafdata());
+    if (eligible_prefix_policy.is_set || is_set(eligible_prefix_policy.yfilter)) leaf_name_data.push_back(eligible_prefix_policy.get_name_leafdata());
+    if (receive.is_set || is_set(receive.yfilter)) leaf_name_data.push_back(receive.get_name_leafdata());
+    if (send_max.is_set || is_set(send_max.yfilter)) leaf_name_data.push_back(send_max.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12478,16 +15662,1057 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AddPath
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AddPaths::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AddPaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "eligible-prefix-policy")
+    {
+        eligible_prefix_policy = value;
+        eligible_prefix_policy.value_namespace = name_space;
+        eligible_prefix_policy.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "receive")
     {
         receive = value;
+        receive.value_namespace = name_space;
+        receive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "send-max")
     {
         send_max = value;
+        send_max.value_namespace = name_space;
+        send_max.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::AddPaths::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "eligible-prefix-policy")
+    {
+        eligible_prefix_policy.yfilter = yfilter;
+    }
+    if(value_path == "receive")
+    {
+        receive.yfilter = yfilter;
+    }
+    if(value_path == "send-max")
+    {
+        send_max.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AddPaths::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "eligible-prefix-policy" || name == "receive" || name == "send-max")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::UseMultiplePaths()
+    :
+    config(std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::Config>())
+	,ebgp(std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp>())
+	,state(std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::State>())
+{
+    config->parent = this;
+
+    ebgp->parent = this;
+
+    state->parent = this;
+
+    yang_name = "use-multiple-paths"; yang_parent_name = "neighbor";
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::~UseMultiplePaths()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (ebgp !=  nullptr && ebgp->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (ebgp !=  nullptr && ebgp->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Neighbors::Neighbor::UseMultiplePaths::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "use-multiple-paths";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'UseMultiplePaths' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "ebgp")
+    {
+        if(ebgp == nullptr)
+        {
+            ebgp = std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp>();
+        }
+        return ebgp;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(ebgp != nullptr)
+    {
+        children["ebgp"] = ebgp;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "ebgp" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::Config()
+    :
+    enabled{YType::boolean, "enabled"}
+{
+    yang_name = "config"; yang_parent_name = "use-multiple-paths";
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::~Config()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::has_data() const
+{
+    return enabled.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::State::State()
+    :
+    enabled{YType::boolean, "enabled"}
+{
+    yang_name = "state"; yang_parent_name = "use-multiple-paths";
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::State::~State()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::State::has_data() const
+{
+    return enabled.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Ebgp()
+    :
+    config(std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config>())
+	,state(std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "ebgp"; yang_parent_name = "use-multiple-paths";
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::~Ebgp()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ebgp";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ebgp' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::Config()
+    :
+    allow_multiple_as{YType::boolean, "allow-multiple-as"}
+{
+    yang_name = "config"; yang_parent_name = "ebgp";
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::~Config()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::has_data() const
+{
+    return allow_multiple_as.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(allow_multiple_as.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (allow_multiple_as.is_set || is_set(allow_multiple_as.yfilter)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "allow-multiple-as")
+    {
+        allow_multiple_as = value;
+        allow_multiple_as.value_namespace = name_space;
+        allow_multiple_as.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-multiple-as")
+    {
+        allow_multiple_as.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-multiple-as")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::State()
+    :
+    allow_multiple_as{YType::boolean, "allow-multiple-as"}
+{
+    yang_name = "state"; yang_parent_name = "ebgp";
+}
+
+Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::~State()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::has_data() const
+{
+    return allow_multiple_as.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(allow_multiple_as.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (allow_multiple_as.is_set || is_set(allow_multiple_as.yfilter)) leaf_name_data.push_back(allow_multiple_as.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "allow-multiple-as")
+    {
+        allow_multiple_as = value;
+        allow_multiple_as.value_namespace = name_space;
+        allow_multiple_as.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-multiple-as")
+    {
+        allow_multiple_as.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::UseMultiplePaths::Ebgp::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-multiple-as")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::ApplyPolicy::ApplyPolicy()
+    :
+    config(std::make_shared<Bgp::Neighbors::Neighbor::ApplyPolicy::Config>())
+	,state(std::make_shared<Bgp::Neighbors::Neighbor::ApplyPolicy::State>())
+{
+    config->parent = this;
+
+    state->parent = this;
+
+    yang_name = "apply-policy"; yang_parent_name = "neighbor";
+}
+
+Bgp::Neighbors::Neighbor::ApplyPolicy::~ApplyPolicy()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::has_data() const
+{
+    return (config !=  nullptr && config->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| (config !=  nullptr && config->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string Bgp::Neighbors::Neighbor::ApplyPolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "apply-policy";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::ApplyPolicy::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'ApplyPolicy' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "config")
+    {
+        if(config == nullptr)
+        {
+            config = std::make_shared<Bgp::Neighbors::Neighbor::ApplyPolicy::Config>();
+        }
+        return config;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<Bgp::Neighbors::Neighbor::ApplyPolicy::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(config != nullptr)
+    {
+        children["config"] = config;
+    }
+
+    if(state != nullptr)
+    {
+        children["state"] = state;
+    }
+
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::ApplyPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp::Neighbors::Neighbor::ApplyPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::ApplyPolicy::Config::Config()
+    :
+    default_export_policy{YType::enumeration, "default-export-policy"},
+    default_import_policy{YType::enumeration, "default-import-policy"},
+    export_policy{YType::str, "export-policy"},
+    import_policy{YType::str, "import-policy"}
+{
+    yang_name = "config"; yang_parent_name = "apply-policy";
+}
+
+Bgp::Neighbors::Neighbor::ApplyPolicy::Config::~Config()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::Config::has_data() const
+{
+    for (auto const & leaf : export_policy.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : import_policy.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return default_export_policy.is_set
+	|| default_import_policy.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::Config::has_operation() const
+{
+    for (auto const & leaf : export_policy.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : import_policy.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(default_export_policy.yfilter)
+	|| ydk::is_set(default_import_policy.yfilter)
+	|| ydk::is_set(export_policy.yfilter)
+	|| ydk::is_set(import_policy.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_export_policy.is_set || is_set(default_export_policy.yfilter)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
+    if (default_import_policy.is_set || is_set(default_import_policy.yfilter)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
+
+    auto export_policy_name_datas = export_policy.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
+    auto import_policy_name_datas = import_policy.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), import_policy_name_datas.begin(), import_policy_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::ApplyPolicy::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy = value;
+        default_export_policy.value_namespace = name_space;
+        default_export_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy = value;
+        default_import_policy.value_namespace = name_space;
+        default_import_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.append(value);
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.append(value);
+    }
+}
+
+void Bgp::Neighbors::Neighbor::ApplyPolicy::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy.yfilter = yfilter;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy.yfilter = yfilter;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-export-policy" || name == "default-import-policy" || name == "export-policy" || name == "import-policy")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::ApplyPolicy::State::State()
+    :
+    default_export_policy{YType::enumeration, "default-export-policy"},
+    default_import_policy{YType::enumeration, "default-import-policy"},
+    export_policy{YType::str, "export-policy"},
+    import_policy{YType::str, "import-policy"}
+{
+    yang_name = "state"; yang_parent_name = "apply-policy";
+}
+
+Bgp::Neighbors::Neighbor::ApplyPolicy::State::~State()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::State::has_data() const
+{
+    for (auto const & leaf : export_policy.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : import_policy.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return default_export_policy.is_set
+	|| default_import_policy.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::State::has_operation() const
+{
+    for (auto const & leaf : export_policy.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : import_policy.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(default_export_policy.yfilter)
+	|| ydk::is_set(default_import_policy.yfilter)
+	|| ydk::is_set(export_policy.yfilter)
+	|| ydk::is_set(import_policy.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_export_policy.is_set || is_set(default_export_policy.yfilter)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
+    if (default_import_policy.is_set || is_set(default_import_policy.yfilter)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
+
+    auto export_policy_name_datas = export_policy.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
+    auto import_policy_name_datas = import_policy.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), import_policy_name_datas.begin(), import_policy_name_datas.end());
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::ApplyPolicy::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::ApplyPolicy::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy = value;
+        default_export_policy.value_namespace = name_space;
+        default_export_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy = value;
+        default_import_policy.value_namespace = name_space;
+        default_import_policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.append(value);
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.append(value);
+    }
+}
+
+void Bgp::Neighbors::Neighbor::ApplyPolicy::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy.yfilter = yfilter;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy.yfilter = yfilter;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::ApplyPolicy::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-export-policy" || name == "default-import-policy" || name == "export-policy" || name == "import-policy")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafis()
@@ -12516,7 +16741,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::has_operation() const
         if(afi_safi[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::get_segment_path() const
@@ -12581,8 +16806,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-safi")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::AfiSafi()
@@ -12592,9 +16828,9 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::AfiSafi()
     apply_policy(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy>())
 	,config(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config>())
 	,graceful_restart(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart>())
-	,ipv4_labelled_unicast(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast>())
+	,ipv4_labeled_unicast(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabeledUnicast>())
 	,ipv4_unicast(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast>())
-	,ipv6_labelled_unicast(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast>())
+	,ipv6_labeled_unicast(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabeledUnicast>())
 	,ipv6_unicast(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast>())
 	,l2vpn_evpn(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnEvpn>())
 	,l2vpn_vpls(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::L2VpnVpls>())
@@ -12611,11 +16847,11 @@ Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::AfiSafi()
 
     graceful_restart->parent = this;
 
-    ipv4_labelled_unicast->parent = this;
+    ipv4_labeled_unicast->parent = this;
 
     ipv4_unicast->parent = this;
 
-    ipv6_labelled_unicast->parent = this;
+    ipv6_labeled_unicast->parent = this;
 
     ipv6_unicast->parent = this;
 
@@ -12648,9 +16884,9 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::has_data() const
 	|| (apply_policy !=  nullptr && apply_policy->has_data())
 	|| (config !=  nullptr && config->has_data())
 	|| (graceful_restart !=  nullptr && graceful_restart->has_data())
-	|| (ipv4_labelled_unicast !=  nullptr && ipv4_labelled_unicast->has_data())
+	|| (ipv4_labeled_unicast !=  nullptr && ipv4_labeled_unicast->has_data())
 	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_data())
-	|| (ipv6_labelled_unicast !=  nullptr && ipv6_labelled_unicast->has_data())
+	|| (ipv6_labeled_unicast !=  nullptr && ipv6_labeled_unicast->has_data())
 	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_data())
 	|| (l2vpn_evpn !=  nullptr && l2vpn_evpn->has_data())
 	|| (l2vpn_vpls !=  nullptr && l2vpn_vpls->has_data())
@@ -12664,14 +16900,14 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::has_data() const
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(afi_safi_name.yfilter)
 	|| (apply_policy !=  nullptr && apply_policy->has_operation())
 	|| (config !=  nullptr && config->has_operation())
 	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
-	|| (ipv4_labelled_unicast !=  nullptr && ipv4_labelled_unicast->has_operation())
+	|| (ipv4_labeled_unicast !=  nullptr && ipv4_labeled_unicast->has_operation())
 	|| (ipv4_unicast !=  nullptr && ipv4_unicast->has_operation())
-	|| (ipv6_labelled_unicast !=  nullptr && ipv6_labelled_unicast->has_operation())
+	|| (ipv6_labeled_unicast !=  nullptr && ipv6_labeled_unicast->has_operation())
 	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_operation())
 	|| (l2vpn_evpn !=  nullptr && l2vpn_evpn->has_operation())
 	|| (l2vpn_vpls !=  nullptr && l2vpn_vpls->has_operation())
@@ -12706,7 +16942,7 @@ const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (afi_safi_name.is_set || is_set(afi_safi_name.yfilter)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12743,13 +16979,13 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_child_b
         return graceful_restart;
     }
 
-    if(child_yang_name == "ipv4-labelled-unicast")
+    if(child_yang_name == "ipv4-labeled-unicast")
     {
-        if(ipv4_labelled_unicast == nullptr)
+        if(ipv4_labeled_unicast == nullptr)
         {
-            ipv4_labelled_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast>();
+            ipv4_labeled_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabeledUnicast>();
         }
-        return ipv4_labelled_unicast;
+        return ipv4_labeled_unicast;
     }
 
     if(child_yang_name == "ipv4-unicast")
@@ -12761,13 +16997,13 @@ std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::get_child_b
         return ipv4_unicast;
     }
 
-    if(child_yang_name == "ipv6-labelled-unicast")
+    if(child_yang_name == "ipv6-labeled-unicast")
     {
-        if(ipv6_labelled_unicast == nullptr)
+        if(ipv6_labeled_unicast == nullptr)
         {
-            ipv6_labelled_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabelledUnicast>();
+            ipv6_labeled_unicast = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6LabeledUnicast>();
         }
-        return ipv6_labelled_unicast;
+        return ipv6_labeled_unicast;
     }
 
     if(child_yang_name == "ipv6-unicast")
@@ -12872,9 +17108,9 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
         children["graceful-restart"] = graceful_restart;
     }
 
-    if(ipv4_labelled_unicast != nullptr)
+    if(ipv4_labeled_unicast != nullptr)
     {
-        children["ipv4-labelled-unicast"] = ipv4_labelled_unicast;
+        children["ipv4-labeled-unicast"] = ipv4_labeled_unicast;
     }
 
     if(ipv4_unicast != nullptr)
@@ -12882,9 +17118,9 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
         children["ipv4-unicast"] = ipv4_unicast;
     }
 
-    if(ipv6_labelled_unicast != nullptr)
+    if(ipv6_labeled_unicast != nullptr)
     {
-        children["ipv6-labelled-unicast"] = ipv6_labelled_unicast;
+        children["ipv6-labeled-unicast"] = ipv6_labeled_unicast;
     }
 
     if(ipv6_unicast != nullptr)
@@ -12935,12 +17171,386 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi-safi-name")
     {
         afi_safi_name = value;
+        afi_safi_name.value_namespace = name_space;
+        afi_safi_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "apply-policy" || name == "config" || name == "graceful-restart" || name == "ipv4-labeled-unicast" || name == "ipv4-unicast" || name == "ipv6-labeled-unicast" || name == "ipv6-unicast" || name == "l2vpn-evpn" || name == "l2vpn-vpls" || name == "l3vpn-ipv4-multicast" || name == "l3vpn-ipv4-unicast" || name == "l3vpn-ipv6-multicast" || name == "l3vpn-ipv6-unicast" || name == "state" || name == "use-multiple-paths" || name == "afi-safi-name")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::Config()
+    :
+    afi_safi_name{YType::identityref, "afi-safi-name"},
+    enabled{YType::boolean, "enabled"}
+{
+    yang_name = "config"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::~Config()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::has_data() const
+{
+    return afi_safi_name.is_set
+	|| enabled.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi_safi_name.yfilter)
+	|| ydk::is_set(enabled.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "config";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_safi_name.is_set || is_set(afi_safi_name.yfilter)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+        afi_safi_name.value_namespace = name_space;
+        afi_safi_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-safi-name" || name == "enabled")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::State()
+    :
+    active{YType::boolean, "active"},
+    afi_safi_name{YType::identityref, "afi-safi-name"},
+    enabled{YType::boolean, "enabled"}
+    	,
+    prefixes(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes>())
+{
+    prefixes->parent = this;
+
+    yang_name = "state"; yang_parent_name = "afi-safi";
+}
+
+Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::~State()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::has_data() const
+{
+    return active.is_set
+	|| afi_safi_name.is_set
+	|| enabled.is_set
+	|| (prefixes !=  nullptr && prefixes->has_data());
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(afi_safi_name.yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| (prefixes !=  nullptr && prefixes->has_operation());
+}
+
+std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (afi_safi_name.is_set || is_set(afi_safi_name.yfilter)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefixes")
+    {
+        if(prefixes == nullptr)
+        {
+            prefixes = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes>();
+        }
+        return prefixes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(prefixes != nullptr)
+    {
+        children["prefixes"] = prefixes;
+    }
+
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "active")
+    {
+        active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name = value;
+        afi_safi_name.value_namespace = name_space;
+        afi_safi_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enabled")
+    {
+        enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "afi-safi-name")
+    {
+        afi_safi_name.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefixes" || name == "active" || name == "afi-safi-name" || name == "enabled")
+        return true;
+    return false;
+}
+
+Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::Prefixes()
+    :
+    installed{YType::uint32, "installed"},
+    received{YType::uint32, "received"},
+    sent{YType::uint32, "sent"}
+{
+    yang_name = "prefixes"; yang_parent_name = "state";
+}
+
+Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::~Prefixes()
+{
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::has_data() const
+{
+    return installed.is_set
+	|| received.is_set
+	|| sent.is_set;
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(installed.yfilter)
+	|| ydk::is_set(received.yfilter)
+	|| ydk::is_set(sent.yfilter);
+}
+
+std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefixes";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Prefixes' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (installed.is_set || is_set(installed.yfilter)) leaf_name_data.push_back(installed.get_name_leafdata());
+    if (received.is_set || is_set(received.yfilter)) leaf_name_data.push_back(received.get_name_leafdata());
+    if (sent.is_set || is_set(sent.yfilter)) leaf_name_data.push_back(sent.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "installed")
+    {
+        installed = value;
+        installed.value_namespace = name_space;
+        installed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "received")
+    {
+        received = value;
+        received.value_namespace = name_space;
+        received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sent")
+    {
+        sent = value;
+        sent.value_namespace = name_space;
+        sent.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "installed")
+    {
+        installed.yfilter = yfilter;
+    }
+    if(value_path == "received")
+    {
+        received.yfilter = yfilter;
+    }
+    if(value_path == "sent")
+    {
+        sent.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "installed" || name == "received" || name == "sent")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::GracefulRestart()
@@ -12967,7 +17577,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::has_data() co
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -13041,8 +17651,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::Config()
@@ -13063,8 +17684,8 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::has_d
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::get_segment_path() const
@@ -13090,7 +17711,7 @@ const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::C
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13109,12 +17730,29 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::State()
@@ -13139,10 +17777,10 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::has_da
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(advertised.operation)
-	|| is_set(enabled.operation)
-	|| is_set(received.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertised.yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(received.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::get_segment_path() const
@@ -13168,9 +17806,9 @@ const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (advertised.is_set || is_set(advertised.operation)) leaf_name_data.push_back(advertised.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (received.is_set || is_set(received.operation)) leaf_name_data.push_back(received.get_name_leafdata());
+    if (advertised.is_set || is_set(advertised.yfilter)) leaf_name_data.push_back(advertised.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (received.is_set || is_set(received.yfilter)) leaf_name_data.push_back(received.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13189,296 +17827,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertised")
     {
         advertised = value;
+        advertised.value_namespace = name_space;
+        advertised.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received")
     {
         received = value;
+        received.value_namespace = name_space;
+        received.value_namespace_prefix = name_space_prefix;
     }
 }
 
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::Config()
-    :
-    afi_safi_name{YType::identityref, "afi-safi-name"},
-    enabled{YType::boolean, "enabled"}
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    yang_name = "config"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::~Config()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::has_data() const
-{
-    return afi_safi_name.is_set
-	|| enabled.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(enabled.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
+    if(value_path == "advertised")
     {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
+        advertised.yfilter = yfilter;
     }
     if(value_path == "enabled")
     {
-        enabled = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::State()
-    :
-    active{YType::boolean, "active"},
-    afi_safi_name{YType::identityref, "afi-safi-name"},
-    enabled{YType::boolean, "enabled"}
-    	,
-    prefixes(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes>())
-{
-    prefixes->parent = this;
-
-    yang_name = "state"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::~State()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::has_data() const
-{
-    return active.is_set
-	|| afi_safi_name.is_set
-	|| enabled.is_set
-	|| (prefixes !=  nullptr && prefixes->has_data());
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(active.operation)
-	|| is_set(afi_safi_name.operation)
-	|| is_set(enabled.operation)
-	|| (prefixes !=  nullptr && prefixes->has_operation());
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (afi_safi_name.is_set || is_set(afi_safi_name.operation)) leaf_name_data.push_back(afi_safi_name.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefixes")
-    {
-        if(prefixes == nullptr)
-        {
-            prefixes = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes>();
-        }
-        return prefixes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefixes != nullptr)
-    {
-        children["prefixes"] = prefixes;
-    }
-
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "active")
-    {
-        active = value;
-    }
-    if(value_path == "afi-safi-name")
-    {
-        afi_safi_name = value;
-    }
-    if(value_path == "enabled")
-    {
-        enabled = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::Prefixes()
-    :
-    installed{YType::uint32, "installed"},
-    received{YType::uint32, "received"},
-    sent{YType::uint32, "sent"}
-{
-    yang_name = "prefixes"; yang_parent_name = "state";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::~Prefixes()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::has_data() const
-{
-    return installed.is_set
-	|| received.is_set
-	|| sent.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(installed.operation)
-	|| is_set(received.operation)
-	|| is_set(sent.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefixes";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Prefixes' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (installed.is_set || is_set(installed.operation)) leaf_name_data.push_back(installed.get_name_leafdata());
-    if (received.is_set || is_set(received.operation)) leaf_name_data.push_back(received.get_name_leafdata());
-    if (sent.is_set || is_set(sent.operation)) leaf_name_data.push_back(sent.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::State::Prefixes::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "installed")
-    {
-        installed = value;
+        enabled.yfilter = yfilter;
     }
     if(value_path == "received")
     {
-        received = value;
+        received.yfilter = yfilter;
     }
-    if(value_path == "sent")
-    {
-        sent = value;
-    }
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::GracefulRestart::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertised" || name == "enabled" || name == "received")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::ApplyPolicy()
@@ -13505,7 +17896,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::has_data() const
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -13579,8 +17970,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::Config()
@@ -13617,19 +18019,19 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::has_opera
 {
     for (auto const & leaf : export_policy.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : import_policy.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation)
-	|| is_set(export_policy.operation)
-	|| is_set(import_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(default_export_policy.yfilter)
+	|| ydk::is_set(default_import_policy.yfilter)
+	|| ydk::is_set(export_policy.yfilter)
+	|| ydk::is_set(import_policy.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::get_segment_path() const
@@ -13655,8 +18057,8 @@ const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Confi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_export_policy.is_set || is_set(default_export_policy.operation)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
-    if (default_import_policy.is_set || is_set(default_import_policy.operation)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
+    if (default_export_policy.is_set || is_set(default_export_policy.yfilter)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
+    if (default_import_policy.is_set || is_set(default_import_policy.yfilter)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
 
     auto export_policy_name_datas = export_policy.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
@@ -13679,15 +18081,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default-export-policy")
     {
         default_export_policy = value;
+        default_export_policy.value_namespace = name_space;
+        default_export_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-import-policy")
     {
         default_import_policy = value;
+        default_import_policy.value_namespace = name_space;
+        default_import_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "export-policy")
     {
@@ -13697,6 +18103,33 @@ void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::set_value
     {
         import_policy.append(value);
     }
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy.yfilter = yfilter;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy.yfilter = yfilter;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-export-policy" || name == "default-import-policy" || name == "export-policy" || name == "import-policy")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::State()
@@ -13733,19 +18166,19 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::has_operat
 {
     for (auto const & leaf : export_policy.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : import_policy.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(default_export_policy.operation)
-	|| is_set(default_import_policy.operation)
-	|| is_set(export_policy.operation)
-	|| is_set(import_policy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(default_export_policy.yfilter)
+	|| ydk::is_set(default_import_policy.yfilter)
+	|| ydk::is_set(export_policy.yfilter)
+	|| ydk::is_set(import_policy.yfilter);
 }
 
 std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::get_segment_path() const
@@ -13771,8 +18204,8 @@ const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_export_policy.is_set || is_set(default_export_policy.operation)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
-    if (default_import_policy.is_set || is_set(default_import_policy.operation)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
+    if (default_export_policy.is_set || is_set(default_export_policy.yfilter)) leaf_name_data.push_back(default_export_policy.get_name_leafdata());
+    if (default_import_policy.is_set || is_set(default_import_policy.yfilter)) leaf_name_data.push_back(default_import_policy.get_name_leafdata());
 
     auto export_policy_name_datas = export_policy.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), export_policy_name_datas.begin(), export_policy_name_datas.end());
@@ -13795,15 +18228,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default-export-policy")
     {
         default_export_policy = value;
+        default_export_policy.value_namespace = name_space;
+        default_export_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-import-policy")
     {
         default_import_policy = value;
+        default_import_policy.value_namespace = name_space;
+        default_import_policy.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "export-policy")
     {
@@ -13813,6 +18250,33 @@ void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::set_value(
     {
         import_policy.append(value);
     }
+}
+
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default-export-policy")
+    {
+        default_export_policy.yfilter = yfilter;
+    }
+    if(value_path == "default-import-policy")
+    {
+        default_import_policy.yfilter = yfilter;
+    }
+    if(value_path == "export-policy")
+    {
+        export_policy.yfilter = yfilter;
+    }
+    if(value_path == "import-policy")
+    {
+        import_policy.yfilter = yfilter;
+    }
+}
+
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::ApplyPolicy::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-export-policy" || name == "default-import-policy" || name == "export-policy" || name == "import-policy")
+        return true;
+    return false;
 }
 
 Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Ipv4Unicast()
@@ -13843,7 +18307,7 @@ bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::has_data() const
 
 bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -13932,1064 +18396,31 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafi
     return children;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::set_value(const std::string & value_path, std::string value)
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>())
+void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "ipv4-unicast";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::Config()
-    :
-    send_default_route{YType::boolean, "send-default-route"}
-{
-    yang_name = "config"; yang_parent_name = "ipv4-unicast";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::~Config()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::has_data() const
-{
-    return send_default_route.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(send_default_route.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (send_default_route.is_set || is_set(send_default_route.operation)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "send-default-route")
-    {
-        send_default_route = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::State()
-    :
-    send_default_route{YType::boolean, "send-default-route"}
-{
-    yang_name = "state"; yang_parent_name = "ipv4-unicast";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::~State()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::has_data() const
-{
-    return send_default_route.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(send_default_route.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (send_default_route.is_set || is_set(send_default_route.operation)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "send-default-route")
-    {
-        send_default_route = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Ipv6Unicast()
-    :
-    config(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config>())
-	,prefix_limit(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit>())
-	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State>())
-{
-    config->parent = this;
-
-    prefix_limit->parent = this;
-
-    state->parent = this;
-
-    yang_name = "ipv6-unicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::~Ipv6Unicast()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (prefix_limit !=  nullptr && prefix_limit->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv6-unicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv6Unicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::PrefixLimit()
-    :
-    config(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config>())
-	,state(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>())
-{
-    config->parent = this;
-
-    state->parent = this;
-
-    yang_name = "prefix-limit"; yang_parent_name = "ipv6-unicast";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::~PrefixLimit()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::has_operation() const
-{
-    return is_set(operation)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-limit";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'PrefixLimit' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::set_value(const std::string & value_path, std::string value)
-{
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::Config()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "config"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::~Config()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::State()
-    :
-    max_prefixes{YType::uint32, "max-prefixes"},
-    restart_timer{YType::str, "restart-timer"},
-    shutdown_threshold_pct{YType::uint8, "shutdown-threshold-pct"}
-{
-    yang_name = "state"; yang_parent_name = "prefix-limit";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::~State()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::has_data() const
-{
-    return max_prefixes.is_set
-	|| restart_timer.is_set
-	|| shutdown_threshold_pct.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(max_prefixes.operation)
-	|| is_set(restart_timer.operation)
-	|| is_set(shutdown_threshold_pct.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_prefixes.is_set || is_set(max_prefixes.operation)) leaf_name_data.push_back(max_prefixes.get_name_leafdata());
-    if (restart_timer.is_set || is_set(restart_timer.operation)) leaf_name_data.push_back(restart_timer.get_name_leafdata());
-    if (shutdown_threshold_pct.is_set || is_set(shutdown_threshold_pct.operation)) leaf_name_data.push_back(shutdown_threshold_pct.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::get_children() const
+bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4Unicast::has_leaf_or_child_of_name(const std::string & name) const
 {
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
+    if(name == "config" || name == "prefix-limit" || name == "state")
+        return true;
+    return false;
 }
 
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::PrefixLimit::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "max-prefixes")
-    {
-        max_prefixes = value;
-    }
-    if(value_path == "restart-timer")
-    {
-        restart_timer = value;
-    }
-    if(value_path == "shutdown-threshold-pct")
-    {
-        shutdown_threshold_pct = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::Config()
-    :
-    send_default_route{YType::boolean, "send-default-route"}
-{
-    yang_name = "config"; yang_parent_name = "ipv6-unicast";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::~Config()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::has_data() const
-{
-    return send_default_route.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(send_default_route.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Config' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (send_default_route.is_set || is_set(send_default_route.operation)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::Config::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "send-default-route")
-    {
-        send_default_route = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::State()
-    :
-    send_default_route{YType::boolean, "send-default-route"}
-{
-    yang_name = "state"; yang_parent_name = "ipv6-unicast";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::~State()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::has_data() const
-{
-    return send_default_route.is_set;
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::has_operation() const
-{
-    return is_set(operation)
-	|| is_set(send_default_route.operation);
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'State' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (send_default_route.is_set || is_set(send_default_route.operation)) leaf_name_data.push_back(send_default_route.get_name_leafdata());
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv6Unicast::State::set_value(const std::string & value_path, std::string value)
-{
-    if(value_path == "send-default-route")
-    {
-        send_default_route = value;
-    }
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::Ipv4LabelledUnicast()
-    :
-    prefix_limit(std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit>())
-{
-    prefix_limit->parent = this;
-
-    yang_name = "ipv4-labelled-unicast"; yang_parent_name = "afi-safi";
-}
-
-Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::~Ipv4LabelledUnicast()
-{
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_data() const
-{
-    return (prefix_limit !=  nullptr && prefix_limit->has_data());
-}
-
-bool Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::has_operation() const
-{
-    return is_set(operation)
-	|| (prefix_limit !=  nullptr && prefix_limit->has_operation());
-}
-
-std::string Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-labelled-unicast";
-
-    return path_buffer.str();
-
-}
-
-const EntityPath Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_entity_path(Entity* ancestor) const
-{
-    std::ostringstream path_buffer;
-    if (ancestor == nullptr)
-    {
-        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4LabelledUnicast' in openconfig_bgp cannot be nullptr as one of the ancestors is a list"});
-    }
-    else
-    {
-        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
-    }
-
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-
-    EntityPath entity_path {path_buffer.str(), leaf_name_data};
-    return entity_path;
-
-}
-
-std::shared_ptr<Entity> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "prefix-limit")
-    {
-        if(prefix_limit == nullptr)
-        {
-            prefix_limit = std::make_shared<Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::PrefixLimit>();
-        }
-        return prefix_limit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(prefix_limit != nullptr)
-    {
-        children["prefix-limit"] = prefix_limit;
-    }
-
-    return children;
-}
-
-void Bgp::Neighbors::Neighbor::AfiSafis::AfiSafi::Ipv4LabelledUnicast::set_value(const std::string & value_path, std::string value)
-{
-}
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionState::IDLE {0, "IDLE"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionState::CONNECT {1, "CONNECT"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionState::ACTIVE {2, "ACTIVE"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionState::OPENSENT {3, "OPENSENT"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionState::OPENCONFIRM {4, "OPENCONFIRM"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionState::ESTABLISHED {5, "ESTABLISHED"};
 
-const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::IDLE {0, "IDLE"};
-const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::CONNECT {1, "CONNECT"};
-const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::ACTIVE {2, "ACTIVE"};
-const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::OPENSENT {3, "OPENSENT"};
-const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::OPENCONFIRM {4, "OPENCONFIRM"};
-const Enum::YLeaf Bgp::Neighbors::Neighbor::State::SessionStateEnum::ESTABLISHED {5, "ESTABLISHED"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::GracefulRestart::State::Mode::HELPER_ONLY {0, "HELPER_ONLY"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::GracefulRestart::State::Mode::BILATERAL {1, "BILATERAL"};
+const Enum::YLeaf Bgp::Neighbors::Neighbor::GracefulRestart::State::Mode::REMOTE_HELPER {2, "REMOTE_HELPER"};
 
 
 }

@@ -1,15 +1,15 @@
 module openconfig-types {
-	yang-version "1";
+    yang-version "1";
 
-	namespace "http://openconfig.net/yang/openconfig-types";
+    namespace "http://openconfig.net/yang/openconfig-types";
 
-	prefix "oc-types";
+    prefix "oc-types";
 
   // import statements
   import openconfig-extensions { prefix oc-ext; }
 
-	// meta
-	organization
+    // meta
+    organization
     "OpenConfig working group";
 
   contact

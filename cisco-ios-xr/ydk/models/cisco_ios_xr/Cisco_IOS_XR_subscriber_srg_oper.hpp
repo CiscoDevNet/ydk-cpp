@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_subscriber_srg_oper {
 
-class SubscriberRedundancyManager : public Entity
+class SubscriberRedundancyManager : public ydk::Entity
 {
     public:
         SubscriberRedundancyManager();
@@ -18,15 +18,18 @@ class SubscriberRedundancyManager : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Groups; //type: SubscriberRedundancyManager::Groups
         class Summary; //type: SubscriberRedundancyManager::Summary
@@ -39,7 +42,7 @@ class SubscriberRedundancyManager : public Entity
 }; // SubscriberRedundancyManager
 
 
-class SubscriberRedundancyManager::Groups : public Entity
+class SubscriberRedundancyManager::Groups : public ydk::Entity
 {
     public:
         Groups();
@@ -47,11 +50,13 @@ class SubscriberRedundancyManager::Groups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Group; //type: SubscriberRedundancyManager::Groups::Group
 
@@ -60,7 +65,7 @@ class SubscriberRedundancyManager::Groups : public Entity
 }; // SubscriberRedundancyManager::Groups
 
 
-class SubscriberRedundancyManager::Groups::Group : public Entity
+class SubscriberRedundancyManager::Groups::Group : public ydk::Entity
 {
     public:
         Group();
@@ -68,31 +73,33 @@ class SubscriberRedundancyManager::Groups::Group : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf group; //type: string
-        YLeaf group_id; //type: uint32
-        YLeaf description; //type: string
-        YLeaf disabled; //type: boolean
-        YLeaf role; //type: SrgShowImRoleEnum
-        YLeaf peer_ipv4_address; //type: string
-        YLeaf peer_ipv6_address; //type: string
-        YLeaf interface_count; //type: uint32
-        YLeaf preferred_role; //type: SrgShowRoleEnum
-        YLeaf slave_mode; //type: SrgShowSlaveModeEnum
-        YLeaf object_tracking_status; //type: boolean
-        YLeaf virtual_mac_address; //type: string
-        YLeaf virtual_mac_address_disable; //type: boolean
-        YLeaf node_name; //type: string
+        ydk::YLeaf group; //type: string
+        ydk::YLeaf group_id; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf disabled; //type: boolean
+        ydk::YLeaf role; //type: SrgShowImRole
+        ydk::YLeaf peer_ipv4_address; //type: string
+        ydk::YLeaf peer_ipv6_address; //type: string
+        ydk::YLeaf interface_count; //type: uint32
+        ydk::YLeaf preferred_role; //type: SrgShowRole
+        ydk::YLeaf slave_mode; //type: SrgShowSlaveMode
+        ydk::YLeaf object_tracking_status; //type: boolean
+        ydk::YLeaf virtual_mac_address; //type: string
+        ydk::YLeaf virtual_mac_address_disable; //type: boolean
+        ydk::YLeaf node_name; //type: string
 
 }; // SubscriberRedundancyManager::Groups::Group
 
 
-class SubscriberRedundancyManager::Summary : public Entity
+class SubscriberRedundancyManager::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -100,33 +107,35 @@ class SubscriberRedundancyManager::Summary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf disabled; //type: boolean
-        YLeaf active_state; //type: boolean
-        YLeaf preferred_role; //type: SrgShowRoleEnum
-        YLeaf slave_mode; //type: SrgShowSlaveModeEnum
-        YLeaf hold_timer; //type: uint32
-        YLeaf source_interface_name; //type: string
-        YLeaf vrf_name; //type: string
-        YLeaf source_interface_ipv4_address; //type: string
-        YLeaf source_interface_ipv6_address; //type: string
-        YLeaf group_count; //type: uint32
-        YLeaf disabled_group_count; //type: uint32
-        YLeaf master_group_count; //type: uint32
-        YLeaf slave_group_count; //type: uint32
-        YLeaf interface_count; //type: uint32
-        YLeaf master_interface_count; //type: uint32
-        YLeaf slave_interface_count; //type: uint32
+        ydk::YLeaf disabled; //type: boolean
+        ydk::YLeaf active_state; //type: boolean
+        ydk::YLeaf preferred_role; //type: SrgShowRole
+        ydk::YLeaf slave_mode; //type: SrgShowSlaveMode
+        ydk::YLeaf hold_timer; //type: uint32
+        ydk::YLeaf source_interface_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf source_interface_ipv4_address; //type: string
+        ydk::YLeaf source_interface_ipv6_address; //type: string
+        ydk::YLeaf group_count; //type: uint32
+        ydk::YLeaf disabled_group_count; //type: uint32
+        ydk::YLeaf master_group_count; //type: uint32
+        ydk::YLeaf slave_group_count; //type: uint32
+        ydk::YLeaf interface_count; //type: uint32
+        ydk::YLeaf master_interface_count; //type: uint32
+        ydk::YLeaf slave_interface_count; //type: uint32
 
 }; // SubscriberRedundancyManager::Summary
 
 
-class SubscriberRedundancyManager::Interfaces : public Entity
+class SubscriberRedundancyManager::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -134,11 +143,13 @@ class SubscriberRedundancyManager::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: SubscriberRedundancyManager::Interfaces::Interface
 
@@ -147,7 +158,7 @@ class SubscriberRedundancyManager::Interfaces : public Entity
 }; // SubscriberRedundancyManager::Interfaces
 
 
-class SubscriberRedundancyManager::Interfaces::Interface : public Entity
+class SubscriberRedundancyManager::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -155,22 +166,24 @@ class SubscriberRedundancyManager::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf interface_mapping_id; //type: uint32
-        YLeaf forward_referenced; //type: boolean
-        YLeaf group_id; //type: uint32
-        YLeaf role; //type: SrgShowImRoleEnum
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_mapping_id; //type: uint32
+        ydk::YLeaf forward_referenced; //type: boolean
+        ydk::YLeaf group_id; //type: uint32
+        ydk::YLeaf role; //type: SrgShowImRole
 
 }; // SubscriberRedundancyManager::Interfaces::Interface
 
-class SubscriberRedundancyAgent : public Entity
+class SubscriberRedundancyAgent : public ydk::Entity
 {
     public:
         SubscriberRedundancyAgent();
@@ -178,15 +191,18 @@ class SubscriberRedundancyAgent : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: SubscriberRedundancyAgent::Nodes
 
@@ -195,7 +211,7 @@ class SubscriberRedundancyAgent : public Entity
 }; // SubscriberRedundancyAgent
 
 
-class SubscriberRedundancyAgent::Nodes : public Entity
+class SubscriberRedundancyAgent::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -203,11 +219,13 @@ class SubscriberRedundancyAgent::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: SubscriberRedundancyAgent::Nodes::Node
 
@@ -216,7 +234,7 @@ class SubscriberRedundancyAgent::Nodes : public Entity
 }; // SubscriberRedundancyAgent::Nodes
 
 
-class SubscriberRedundancyAgent::Nodes::Node : public Entity
+class SubscriberRedundancyAgent::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -224,13 +242,15 @@ class SubscriberRedundancyAgent::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class GroupIdXr; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIdXr
         class Interfaces; //type: SubscriberRedundancyAgent::Nodes::Node::Interfaces
         class GroupSummaries; //type: SubscriberRedundancyAgent::Nodes::Node::GroupSummaries
@@ -244,7 +264,7 @@ class SubscriberRedundancyAgent::Nodes::Node : public Entity
 }; // SubscriberRedundancyAgent::Nodes::Node
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr : public ydk::Entity
 {
     public:
         GroupIdXr();
@@ -252,11 +272,13 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class GroupId; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId
 
@@ -265,7 +287,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr : public Entity
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIdXr
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId : public ydk::Entity
 {
     public:
         GroupId();
@@ -273,23 +295,25 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf group_id; //type: string
-        YLeaf group_id_xr; //type: uint32
-        YLeaf interface_name; //type: string
-        YLeaf outer_vlan; //type: uint32
-        YLeaf inner_vlan; //type: uint32
-        YLeaf session_mac_address; //type: string
-        YLeaf pppoe_session_id; //type: uint16
-        YLeaf l2tp_tunnel_id; //type: uint32
-        YLeaf role_master; //type: boolean
-        YLeaf valid_mac_address; //type: boolean
-        YLeaf negative_acknowledgement_update_all; //type: boolean
+        ydk::YLeaf group_id; //type: string
+        ydk::YLeaf group_id_xr; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf outer_vlan; //type: uint32
+        ydk::YLeaf inner_vlan; //type: uint32
+        ydk::YLeaf session_mac_address; //type: string
+        ydk::YLeaf pppoe_session_id; //type: uint16
+        ydk::YLeaf l2tp_tunnel_id; //type: uint32
+        ydk::YLeaf role_master; //type: boolean
+        ydk::YLeaf valid_mac_address; //type: boolean
+        ydk::YLeaf negative_acknowledgement_update_all; //type: boolean
         class SessionDetailedInformation; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation
         class SessionSyncErrorInformation; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation
 
@@ -299,7 +323,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId : public Entity
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation : public ydk::Entity
 {
     public:
         SessionDetailedInformation();
@@ -307,22 +331,24 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetaile
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf component; //type: SrgShowCompEnum
-        YLeaf operation_; //type: SrgShowSessionOperationEnum
-        YLeaf tx_list_queue_fail; //type: boolean
-        YLeaf marked_for_sweeping; //type: boolean
-        YLeaf marked_for_cleanup; //type: boolean
+        ydk::YLeaf component; //type: SrgShowComp
+        ydk::YLeaf operation_; //type: SrgShowSessionOperation
+        ydk::YLeaf tx_list_queue_fail; //type: boolean
+        ydk::YLeaf marked_for_sweeping; //type: boolean
+        ydk::YLeaf marked_for_cleanup; //type: boolean
 
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation : public ydk::Entity
 {
     public:
         SessionSyncErrorInformation();
@@ -330,20 +356,22 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErr
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sync_error_count; //type: uint16
-        YLeaf last_error_code; //type: uint32
-        YLeaf last_error_type; //type: SrgShowSessionErrorEnum
+        ydk::YLeaf sync_error_count; //type: uint16
+        ydk::YLeaf last_error_code; //type: uint32
+        ydk::YLeaf last_error_type; //type: SrgShowSessionError
 
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation
 
 
-class SubscriberRedundancyAgent::Nodes::Node::Interfaces : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -351,11 +379,13 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface
 
@@ -364,7 +394,7 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces : public Entity
 }; // SubscriberRedundancyAgent::Nodes::Node::Interfaces
 
 
-class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -372,24 +402,26 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf interface_synchronization_id; //type: uint32
-        YLeaf group_id; //type: uint32
-        YLeaf role; //type: SrgShowImRoleEnum
-        YLeaf forward_referenced; //type: boolean
-        YLeaf session_count; //type: uint32
-        YLeaf interface_enable_error_count; //type: uint32
-        YLeaf interface_disable_error_count; //type: uint32
-        YLeaf interface_caps_add_error_count; //type: uint32
-        YLeaf interface_caps_remove_error_count; //type: uint32
-        YLeaf interface_attribute_update_error_count; //type: uint32
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_synchronization_id; //type: uint32
+        ydk::YLeaf group_id; //type: uint32
+        ydk::YLeaf role; //type: SrgShowImRole
+        ydk::YLeaf forward_referenced; //type: boolean
+        ydk::YLeaf session_count; //type: uint32
+        ydk::YLeaf interface_enable_error_count; //type: uint32
+        ydk::YLeaf interface_disable_error_count; //type: uint32
+        ydk::YLeaf interface_caps_add_error_count; //type: uint32
+        ydk::YLeaf interface_caps_remove_error_count; //type: uint32
+        ydk::YLeaf interface_attribute_update_error_count; //type: uint32
         class InterfaceOper; //type: SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper
         class InterfaceStatus; //type: SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus
         class ClientStatus; //type: SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus
@@ -401,7 +433,7 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface : public Ent
 }; // SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface
 
 
-class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper : public ydk::Entity
 {
     public:
         InterfaceOper();
@@ -409,22 +441,24 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOp
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf idb_oper_reg_enable; //type: boolean
-        YLeaf idb_oper_reg_disable; //type: boolean
-        YLeaf idb_oper_caps_add; //type: boolean
-        YLeaf idb_oper_caps_remove; //type: boolean
-        YLeaf idb_oper_attr_update; //type: boolean
+        ydk::YLeaf idb_oper_reg_enable; //type: boolean
+        ydk::YLeaf idb_oper_reg_disable; //type: boolean
+        ydk::YLeaf idb_oper_caps_add; //type: boolean
+        ydk::YLeaf idb_oper_caps_remove; //type: boolean
+        ydk::YLeaf idb_oper_attr_update; //type: boolean
 
 }; // SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper
 
 
-class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus : public ydk::Entity
 {
     public:
         InterfaceStatus();
@@ -432,25 +466,27 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceSt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf idb_state_fwd_ref; //type: boolean
-        YLeaf idb_state_stale; //type: boolean
-        YLeaf idb_state_registered; //type: boolean
-        YLeaf idb_state_caps_added; //type: boolean
-        YLeaf idb_state_owned_re_source; //type: boolean
-        YLeaf idb_client_eoms_pending; //type: boolean
-        YLeaf idb_state_p_end_caps_rem; //type: boolean
-        YLeaf idb_state_p_end_reg_disable; //type: boolean
+        ydk::YLeaf idb_state_fwd_ref; //type: boolean
+        ydk::YLeaf idb_state_stale; //type: boolean
+        ydk::YLeaf idb_state_registered; //type: boolean
+        ydk::YLeaf idb_state_caps_added; //type: boolean
+        ydk::YLeaf idb_state_owned_re_source; //type: boolean
+        ydk::YLeaf idb_client_eoms_pending; //type: boolean
+        ydk::YLeaf idb_state_p_end_caps_rem; //type: boolean
+        ydk::YLeaf idb_state_p_end_reg_disable; //type: boolean
 
 }; // SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus
 
 
-class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus : public ydk::Entity
 {
     public:
         ClientStatus();
@@ -458,21 +494,23 @@ class SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf component; //type: SrgShowCompEnum
-        YLeaf srg_show_idb_client_eoms_pending; //type: boolean
-        YLeaf srg_show_idb_client_sync_eod_pending; //type: boolean
-        YLeaf session_count; //type: uint32
+        ydk::YLeaf component; //type: SrgShowComp
+        ydk::YLeaf srg_show_idb_client_eoms_pending; //type: boolean
+        ydk::YLeaf srg_show_idb_client_sync_eod_pending; //type: boolean
+        ydk::YLeaf session_count; //type: uint32
 
 }; // SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupSummaries : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupSummaries : public ydk::Entity
 {
     public:
         GroupSummaries();
@@ -480,11 +518,13 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupSummaries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class GroupSummary; //type: SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary
 
@@ -493,7 +533,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupSummaries : public Entity
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupSummaries
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary : public ydk::Entity
 {
     public:
         GroupSummary();
@@ -501,30 +541,32 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf group_id; //type: string
-        YLeaf group_id_xr; //type: uint32
-        YLeaf role; //type: SrgShowImRoleEnum
-        YLeaf disabled; //type: boolean
-        YLeaf peer_ipv4_address; //type: string
-        YLeaf peer_ipv6_address; //type: string
-        YLeaf peer_status; //type: SrgPeerStatusEnum
-        YLeaf preferred_role; //type: SrgShowRoleEnum
-        YLeaf slave_mode; //type: SrgShowSlaveModeEnum
-        YLeaf object_tracking_status; //type: boolean
-        YLeaf interface_count; //type: uint32
-        YLeaf session_count; //type: uint32
-        YLeaf pending_add_session_count; //type: uint32
+        ydk::YLeaf group_id; //type: string
+        ydk::YLeaf group_id_xr; //type: uint32
+        ydk::YLeaf role; //type: SrgShowImRole
+        ydk::YLeaf disabled; //type: boolean
+        ydk::YLeaf peer_ipv4_address; //type: string
+        ydk::YLeaf peer_ipv6_address; //type: string
+        ydk::YLeaf peer_status; //type: SrgPeerStatus
+        ydk::YLeaf preferred_role; //type: SrgShowRole
+        ydk::YLeaf slave_mode; //type: SrgShowSlaveMode
+        ydk::YLeaf object_tracking_status; //type: boolean
+        ydk::YLeaf interface_count; //type: uint32
+        ydk::YLeaf session_count; //type: uint32
+        ydk::YLeaf pending_add_session_count; //type: uint32
 
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupIds : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupIds : public ydk::Entity
 {
     public:
         GroupIds();
@@ -532,11 +574,13 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class GroupId; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId
 
@@ -545,7 +589,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds : public Entity
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIds
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId : public ydk::Entity
 {
     public:
         GroupId();
@@ -553,51 +597,53 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf group_id; //type: string
-        YLeaf group_id_xr; //type: uint32
-        YLeaf description; //type: string
-        YLeaf disabled; //type: boolean
-        YLeaf init_role; //type: SrgShowRoleEnum
-        YLeaf negotiating_role; //type: SrgShowRoleEnum
-        YLeaf current_role; //type: SrgShowRoleEnum
-        YLeaf slave_mode; //type: SrgShowSlaveModeEnum
-        YLeaf hold_timer; //type: uint32
-        YLeaf virtual_mac_address; //type: string
-        YLeaf virtual_mac_address_disable; //type: boolean
-        YLeaf l2tp_source_ip; //type: string
-        YLeaf core_tracking_object_name; //type: string
-        YLeaf core_tracking_object_status; //type: boolean
-        YLeaf access_tracking_object_name; //type: string
-        YLeaf access_tracking_object_status; //type: boolean
-        YLeaf object_tracking_status; //type: boolean
-        YLeaf peer_ipv4_address; //type: string
-        YLeaf peer_ipv6_address; //type: string
-        YLeaf peer_status; //type: SrgPeerStatusEnum
-        YLeaf peer_last_negotiation_time; //type: string
-        YLeaf peer_last_up_time; //type: string
-        YLeaf peer_last_down_time; //type: string
-        YLeaf peer_init_role; //type: SrgShowRoleEnum
-        YLeaf peer_negotiating_role; //type: SrgShowRoleEnum
-        YLeaf peer_current_role; //type: SrgShowRoleEnum
-        YLeaf peer_object_tracking_status; //type: boolean
-        YLeaf last_switchover_time; //type: string
-        YLeaf switchover_count; //type: uint32
-        YLeaf last_switchover_reason; //type: SrgShowSoReasonEnum
-        YLeaf switchover_hold_time; //type: uint32
-        YLeaf session_count; //type: uint32
-        YLeaf slave_update_failure_count; //type: uint32
-        YLeaf tunnel_count; //type: uint32
-        YLeaf pending_session_update_count; //type: uint32
-        YLeaf pending_session_delete_count; //type: uint32
-        YLeaf interface_count; //type: uint32
-        YLeaf revertive_timer; //type: uint32
-        YLeaf switchover_revert_time; //type: uint32
+        ydk::YLeaf group_id; //type: string
+        ydk::YLeaf group_id_xr; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf disabled; //type: boolean
+        ydk::YLeaf init_role; //type: SrgShowRole
+        ydk::YLeaf negotiating_role; //type: SrgShowRole
+        ydk::YLeaf current_role; //type: SrgShowRole
+        ydk::YLeaf slave_mode; //type: SrgShowSlaveMode
+        ydk::YLeaf hold_timer; //type: uint32
+        ydk::YLeaf virtual_mac_address; //type: string
+        ydk::YLeaf virtual_mac_address_disable; //type: boolean
+        ydk::YLeaf l2tp_source_ip; //type: string
+        ydk::YLeaf core_tracking_object_name; //type: string
+        ydk::YLeaf core_tracking_object_status; //type: boolean
+        ydk::YLeaf access_tracking_object_name; //type: string
+        ydk::YLeaf access_tracking_object_status; //type: boolean
+        ydk::YLeaf object_tracking_status; //type: boolean
+        ydk::YLeaf peer_ipv4_address; //type: string
+        ydk::YLeaf peer_ipv6_address; //type: string
+        ydk::YLeaf peer_status; //type: SrgPeerStatus
+        ydk::YLeaf peer_last_negotiation_time; //type: string
+        ydk::YLeaf peer_last_up_time; //type: string
+        ydk::YLeaf peer_last_down_time; //type: string
+        ydk::YLeaf peer_init_role; //type: SrgShowRole
+        ydk::YLeaf peer_negotiating_role; //type: SrgShowRole
+        ydk::YLeaf peer_current_role; //type: SrgShowRole
+        ydk::YLeaf peer_object_tracking_status; //type: boolean
+        ydk::YLeaf last_switchover_time; //type: string
+        ydk::YLeaf switchover_count; //type: uint32
+        ydk::YLeaf last_switchover_reason; //type: SrgShowSoReason
+        ydk::YLeaf switchover_hold_time; //type: uint32
+        ydk::YLeaf session_count; //type: uint32
+        ydk::YLeaf slave_update_failure_count; //type: uint32
+        ydk::YLeaf tunnel_count; //type: uint32
+        ydk::YLeaf pending_session_update_count; //type: uint32
+        ydk::YLeaf pending_session_delete_count; //type: uint32
+        ydk::YLeaf interface_count; //type: uint32
+        ydk::YLeaf revertive_timer; //type: uint32
+        ydk::YLeaf switchover_revert_time; //type: uint32
         class Interface; //type: SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_subscriber_srg_oper::SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface> > interface;
@@ -605,7 +651,7 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId : public Entity
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId
 
 
-class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface : public Entity
+class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -613,102 +659,104 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_synchronization_id; //type: uint32
-        YLeaf forward_referenced; //type: boolean
-        YLeaf session_count; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_synchronization_id; //type: uint32
+        ydk::YLeaf forward_referenced; //type: boolean
+        ydk::YLeaf session_count; //type: uint32
 
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 
-class SrgShowImRoleEnum : public Enum
+class SrgShowSoReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf master;
-        static const Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf admin;
+        static const ydk::Enum::YLeaf peer_up;
+        static const ydk::Enum::YLeaf peer_down;
+        static const ydk::Enum::YLeaf object_tracking_status_change;
+        static const ydk::Enum::YLeaf srg_show_so_reason_max;
 
 };
 
-class SrgShowSessionErrorEnum : public Enum
+class SrgShowSessionError : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf hard;
-        static const Enum::YLeaf soft;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf hard;
+        static const ydk::Enum::YLeaf soft;
 
 };
 
-class SrgShowSoReasonEnum : public Enum
+class SrgPeerStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf internal;
-        static const Enum::YLeaf admin;
-        static const Enum::YLeaf peer_up;
-        static const Enum::YLeaf peer_down;
-        static const Enum::YLeaf object_tracking_status_change;
-        static const Enum::YLeaf srg_show_so_reason_max;
+        static const ydk::Enum::YLeaf not_configured;
+        static const ydk::Enum::YLeaf initialize;
+        static const ydk::Enum::YLeaf retry;
+        static const ydk::Enum::YLeaf connect;
+        static const ydk::Enum::YLeaf listen;
+        static const ydk::Enum::YLeaf registration;
+        static const ydk::Enum::YLeaf cleanup;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf established;
 
 };
 
-class SrgShowSessionOperationEnum : public Enum
+class SrgShowSessionOperation : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf update;
-        static const Enum::YLeaf delete_;
-        static const Enum::YLeaf in_sync;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf update;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf in_sync;
 
 };
 
-class SrgPeerStatusEnum : public Enum
+class SrgShowComp : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf not_configured;
-        static const Enum::YLeaf initialize;
-        static const Enum::YLeaf retry;
-        static const Enum::YLeaf connect;
-        static const Enum::YLeaf listen;
-        static const Enum::YLeaf registration;
-        static const Enum::YLeaf cleanup;
-        static const Enum::YLeaf connected;
-        static const Enum::YLeaf established;
+        static const ydk::Enum::YLeaf srga;
+        static const ydk::Enum::YLeaf dhcpv4;
+        static const ydk::Enum::YLeaf dhcpv6;
+        static const ydk::Enum::YLeaf pppoe;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf l2tp;
+        static const ydk::Enum::YLeaf iedge;
 
 };
 
-class SrgShowRoleEnum : public Enum
+class SrgShowRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf master;
-        static const Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 
-class SrgShowSlaveModeEnum : public Enum
+class SrgShowImRole : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf warm;
-        static const Enum::YLeaf hot;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 
-class SrgShowCompEnum : public Enum
+class SrgShowSlaveMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf srga;
-        static const Enum::YLeaf dhcpv4;
-        static const Enum::YLeaf dhcpv6;
-        static const Enum::YLeaf pppoe;
-        static const Enum::YLeaf ppp;
-        static const Enum::YLeaf l2tp;
-        static const Enum::YLeaf iedge;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf warm;
+        static const ydk::Enum::YLeaf hot;
 
 };
 

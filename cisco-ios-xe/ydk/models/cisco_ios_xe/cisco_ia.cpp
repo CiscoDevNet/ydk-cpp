@@ -6,39 +6,41 @@
 #include "generated_entity_lookup.hpp"
 #include "cisco_ia.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace cisco_ia {
 
-SyncFromRpc::SyncFromRpc()
+SyncFrom::SyncFrom()
     :
-    input_(std::make_shared<SyncFromRpc::Input>())
-	,output_(std::make_shared<SyncFromRpc::Output>())
+    input(std::make_shared<SyncFrom::Input>())
+	,output(std::make_shared<SyncFrom::Output>())
 {
-    input_->parent = this;
+    input->parent = this;
 
-    output_->parent = this;
+    output->parent = this;
 
     yang_name = "sync-from"; yang_parent_name = "cisco-ia";
 }
 
-SyncFromRpc::~SyncFromRpc()
+SyncFrom::~SyncFrom()
 {
 }
 
-bool SyncFromRpc::has_data() const
+bool SyncFrom::has_data() const
 {
-    return (input_ !=  nullptr && input_->has_data())
-	|| (output_ !=  nullptr && output_->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
-bool SyncFromRpc::has_operation() const
+bool SyncFrom::has_operation() const
 {
-    return is_set(operation)
-	|| (input_ !=  nullptr && input_->has_operation())
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string SyncFromRpc::get_segment_path() const
+std::string SyncFrom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-ia:sync-from";
@@ -47,7 +49,7 @@ std::string SyncFromRpc::get_segment_path() const
 
 }
 
-const EntityPath SyncFromRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SyncFrom::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -65,92 +67,111 @@ const EntityPath SyncFromRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SyncFromRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SyncFrom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
-        if(input_ == nullptr)
+        if(input == nullptr)
         {
-            input_ = std::make_shared<SyncFromRpc::Input>();
+            input = std::make_shared<SyncFrom::Input>();
         }
-        return input_;
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<SyncFromRpc::Output>();
+            output = std::make_shared<SyncFrom::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyncFromRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SyncFrom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input_ != nullptr)
+    if(input != nullptr)
     {
-        children["input"] = input_;
+        children["input"] = input;
     }
 
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void SyncFromRpc::set_value(const std::string & value_path, std::string value)
+void SyncFrom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> SyncFromRpc::clone_ptr() const
+void SyncFrom::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<SyncFromRpc>();
 }
 
-std::string SyncFromRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> SyncFrom::clone_ptr() const
+{
+    return std::make_shared<SyncFrom>();
+}
+
+std::string SyncFrom::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string SyncFromRpc::get_bundle_name() const
+std::string SyncFrom::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function SyncFromRpc::get_augment_capabilities_function() const
+augment_capabilities_function SyncFrom::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-SyncFromRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> SyncFrom::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool SyncFrom::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+SyncFrom::Input::Input()
     :
+    ignore_presrv_paths{YType::empty, "ignore-presrv-paths"},
     sync_defaults{YType::empty, "sync-defaults"}
 {
     yang_name = "input"; yang_parent_name = "sync-from";
 }
 
-SyncFromRpc::Input::~Input()
+SyncFrom::Input::~Input()
 {
 }
 
-bool SyncFromRpc::Input::has_data() const
+bool SyncFrom::Input::has_data() const
 {
-    return sync_defaults.is_set;
+    return ignore_presrv_paths.is_set
+	|| sync_defaults.is_set;
 }
 
-bool SyncFromRpc::Input::has_operation() const
+bool SyncFrom::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(sync_defaults.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ignore_presrv_paths.yfilter)
+	|| ydk::is_set(sync_defaults.yfilter);
 }
 
-std::string SyncFromRpc::Input::get_segment_path() const
+std::string SyncFrom::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -159,7 +180,7 @@ std::string SyncFromRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath SyncFromRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath SyncFrom::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -173,7 +194,8 @@ const EntityPath SyncFromRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sync_defaults.is_set || is_set(sync_defaults.operation)) leaf_name_data.push_back(sync_defaults.get_name_leafdata());
+    if (ignore_presrv_paths.is_set || is_set(ignore_presrv_paths.yfilter)) leaf_name_data.push_back(ignore_presrv_paths.get_name_leafdata());
+    if (sync_defaults.is_set || is_set(sync_defaults.yfilter)) leaf_name_data.push_back(sync_defaults.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -181,48 +203,75 @@ const EntityPath SyncFromRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SyncFromRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SyncFrom::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyncFromRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SyncFrom::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SyncFromRpc::Input::set_value(const std::string & value_path, std::string value)
+void SyncFrom::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "ignore-presrv-paths")
+    {
+        ignore_presrv_paths = value;
+        ignore_presrv_paths.value_namespace = name_space;
+        ignore_presrv_paths.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "sync-defaults")
     {
         sync_defaults = value;
+        sync_defaults.value_namespace = name_space;
+        sync_defaults.value_namespace_prefix = name_space_prefix;
     }
 }
 
-SyncFromRpc::Output::Output()
+void SyncFrom::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ignore-presrv-paths")
+    {
+        ignore_presrv_paths.yfilter = yfilter;
+    }
+    if(value_path == "sync-defaults")
+    {
+        sync_defaults.yfilter = yfilter;
+    }
+}
+
+bool SyncFrom::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ignore-presrv-paths" || name == "sync-defaults")
+        return true;
+    return false;
+}
+
+SyncFrom::Output::Output()
     :
     result{YType::str, "result"}
 {
     yang_name = "output"; yang_parent_name = "sync-from";
 }
 
-SyncFromRpc::Output::~Output()
+SyncFrom::Output::~Output()
 {
 }
 
-bool SyncFromRpc::Output::has_data() const
+bool SyncFrom::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool SyncFromRpc::Output::has_operation() const
+bool SyncFrom::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string SyncFromRpc::Output::get_segment_path() const
+std::string SyncFrom::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -231,7 +280,7 @@ std::string SyncFromRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath SyncFromRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath SyncFrom::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -245,7 +294,7 @@ const EntityPath SyncFromRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -253,50 +302,67 @@ const EntityPath SyncFromRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SyncFromRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SyncFrom::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SyncFromRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SyncFrom::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SyncFromRpc::Output::set_value(const std::string & value_path, std::string value)
+void SyncFrom::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
 }
 
-SaveConfigRpc::SaveConfigRpc()
-    :
-    output_(std::make_shared<SaveConfigRpc::Output>())
+void SyncFrom::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    output_->parent = this;
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
+
+bool SyncFrom::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+SaveConfig::SaveConfig()
+    :
+    output(std::make_shared<SaveConfig::Output>())
+{
+    output->parent = this;
 
     yang_name = "save-config"; yang_parent_name = "cisco-ia";
 }
 
-SaveConfigRpc::~SaveConfigRpc()
+SaveConfig::~SaveConfig()
 {
 }
 
-bool SaveConfigRpc::has_data() const
+bool SaveConfig::has_data() const
 {
-    return (output_ !=  nullptr && output_->has_data());
+    return (output !=  nullptr && output->has_data());
 }
 
-bool SaveConfigRpc::has_operation() const
+bool SaveConfig::has_operation() const
 {
-    return is_set(operation)
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string SaveConfigRpc::get_segment_path() const
+std::string SaveConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-ia:save-config";
@@ -305,7 +371,7 @@ std::string SaveConfigRpc::get_segment_path() const
 
 }
 
-const EntityPath SaveConfigRpc::get_entity_path(Entity* ancestor) const
+const EntityPath SaveConfig::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -323,78 +389,94 @@ const EntityPath SaveConfigRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SaveConfigRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SaveConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<SaveConfigRpc::Output>();
+            output = std::make_shared<SaveConfig::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SaveConfigRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SaveConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void SaveConfigRpc::set_value(const std::string & value_path, std::string value)
+void SaveConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> SaveConfigRpc::clone_ptr() const
+void SaveConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<SaveConfigRpc>();
 }
 
-std::string SaveConfigRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> SaveConfig::clone_ptr() const
+{
+    return std::make_shared<SaveConfig>();
+}
+
+std::string SaveConfig::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string SaveConfigRpc::get_bundle_name() const
+std::string SaveConfig::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function SaveConfigRpc::get_augment_capabilities_function() const
+augment_capabilities_function SaveConfig::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-SaveConfigRpc::Output::Output()
+std::map<std::pair<std::string, std::string>, std::string> SaveConfig::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool SaveConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "output")
+        return true;
+    return false;
+}
+
+SaveConfig::Output::Output()
     :
     result{YType::str, "result"}
 {
     yang_name = "output"; yang_parent_name = "save-config";
 }
 
-SaveConfigRpc::Output::~Output()
+SaveConfig::Output::~Output()
 {
 }
 
-bool SaveConfigRpc::Output::has_data() const
+bool SaveConfig::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool SaveConfigRpc::Output::has_operation() const
+bool SaveConfig::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string SaveConfigRpc::Output::get_segment_path() const
+std::string SaveConfig::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -403,7 +485,7 @@ std::string SaveConfigRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath SaveConfigRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath SaveConfig::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -417,7 +499,7 @@ const EntityPath SaveConfigRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -425,59 +507,76 @@ const EntityPath SaveConfigRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SaveConfigRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SaveConfig::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SaveConfigRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SaveConfig::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SaveConfigRpc::Output::set_value(const std::string & value_path, std::string value)
+void SaveConfig::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
 }
 
-CheckpointRpc::CheckpointRpc()
+void SaveConfig::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
+
+bool SaveConfig::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+IsSyncing::IsSyncing()
     :
-    output_(std::make_shared<CheckpointRpc::Output>())
+    output(std::make_shared<IsSyncing::Output>())
 {
-    output_->parent = this;
+    output->parent = this;
 
-    yang_name = "checkpoint"; yang_parent_name = "cisco-ia";
+    yang_name = "is-syncing"; yang_parent_name = "cisco-ia";
 }
 
-CheckpointRpc::~CheckpointRpc()
+IsSyncing::~IsSyncing()
 {
 }
 
-bool CheckpointRpc::has_data() const
+bool IsSyncing::has_data() const
 {
-    return (output_ !=  nullptr && output_->has_data());
+    return (output !=  nullptr && output->has_data());
 }
 
-bool CheckpointRpc::has_operation() const
+bool IsSyncing::has_operation() const
 {
-    return is_set(operation)
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string CheckpointRpc::get_segment_path() const
+std::string IsSyncing::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cisco-ia:checkpoint";
+    path_buffer << "cisco-ia:is-syncing";
 
     return path_buffer.str();
 
 }
 
-const EntityPath CheckpointRpc::get_entity_path(Entity* ancestor) const
+const EntityPath IsSyncing::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -495,78 +594,94 @@ const EntityPath CheckpointRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CheckpointRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IsSyncing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<CheckpointRpc::Output>();
+            output = std::make_shared<IsSyncing::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CheckpointRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IsSyncing::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void CheckpointRpc::set_value(const std::string & value_path, std::string value)
+void IsSyncing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> CheckpointRpc::clone_ptr() const
+void IsSyncing::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<CheckpointRpc>();
 }
 
-std::string CheckpointRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> IsSyncing::clone_ptr() const
+{
+    return std::make_shared<IsSyncing>();
+}
+
+std::string IsSyncing::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string CheckpointRpc::get_bundle_name() const
+std::string IsSyncing::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function CheckpointRpc::get_augment_capabilities_function() const
+augment_capabilities_function IsSyncing::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-CheckpointRpc::Output::Output()
+std::map<std::pair<std::string, std::string>, std::string> IsSyncing::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool IsSyncing::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "output")
+        return true;
+    return false;
+}
+
+IsSyncing::Output::Output()
     :
     result{YType::str, "result"}
 {
-    yang_name = "output"; yang_parent_name = "checkpoint";
+    yang_name = "output"; yang_parent_name = "is-syncing";
 }
 
-CheckpointRpc::Output::~Output()
+IsSyncing::Output::~Output()
 {
 }
 
-bool CheckpointRpc::Output::has_data() const
+bool IsSyncing::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool CheckpointRpc::Output::has_operation() const
+bool IsSyncing::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string CheckpointRpc::Output::get_segment_path() const
+std::string IsSyncing::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -575,7 +690,212 @@ std::string CheckpointRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath CheckpointRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath IsSyncing::Output::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "cisco-ia:is-syncing/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> IsSyncing::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> IsSyncing::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void IsSyncing::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "result")
+    {
+        result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void IsSyncing::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
+
+bool IsSyncing::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+Checkpoint::Checkpoint()
+    :
+    output(std::make_shared<Checkpoint::Output>())
+{
+    output->parent = this;
+
+    yang_name = "checkpoint"; yang_parent_name = "cisco-ia";
+}
+
+Checkpoint::~Checkpoint()
+{
+}
+
+bool Checkpoint::has_data() const
+{
+    return (output !=  nullptr && output->has_data());
+}
+
+bool Checkpoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| (output !=  nullptr && output->has_operation());
+}
+
+std::string Checkpoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-ia:checkpoint";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Checkpoint::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor != nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor has to be nullptr for top-level node. Path: "+get_segment_path()});
+    }
+
+    path_buffer << get_segment_path();
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> Checkpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<Checkpoint::Output>();
+        }
+        return output;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Checkpoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(output != nullptr)
+    {
+        children["output"] = output;
+    }
+
+    return children;
+}
+
+void Checkpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Checkpoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<Entity> Checkpoint::clone_ptr() const
+{
+    return std::make_shared<Checkpoint>();
+}
+
+std::string Checkpoint::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xe_models_path;
+}
+
+std::string Checkpoint::get_bundle_name() const
+{
+    return "cisco_ios_xe";
+}
+
+augment_capabilities_function Checkpoint::get_augment_capabilities_function() const
+{
+    return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Checkpoint::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Checkpoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "output")
+        return true;
+    return false;
+}
+
+Checkpoint::Output::Output()
+    :
+    result{YType::str, "result"}
+{
+    yang_name = "output"; yang_parent_name = "checkpoint";
+}
+
+Checkpoint::Output::~Output()
+{
+}
+
+bool Checkpoint::Output::has_data() const
+{
+    return result.is_set;
+}
+
+bool Checkpoint::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
+}
+
+std::string Checkpoint::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath Checkpoint::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -589,7 +909,7 @@ const EntityPath CheckpointRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -597,55 +917,72 @@ const EntityPath CheckpointRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> CheckpointRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Checkpoint::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CheckpointRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Checkpoint::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void CheckpointRpc::Output::set_value(const std::string & value_path, std::string value)
+void Checkpoint::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RevertRpc::RevertRpc()
-    :
-    input_(std::make_shared<RevertRpc::Input>())
-	,output_(std::make_shared<RevertRpc::Output>())
+void Checkpoint::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    input_->parent = this;
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
 
-    output_->parent = this;
+bool Checkpoint::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+Revert::Revert()
+    :
+    input(std::make_shared<Revert::Input>())
+	,output(std::make_shared<Revert::Output>())
+{
+    input->parent = this;
+
+    output->parent = this;
 
     yang_name = "revert"; yang_parent_name = "cisco-ia";
 }
 
-RevertRpc::~RevertRpc()
+Revert::~Revert()
 {
 }
 
-bool RevertRpc::has_data() const
+bool Revert::has_data() const
 {
-    return (input_ !=  nullptr && input_->has_data())
-	|| (output_ !=  nullptr && output_->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
-bool RevertRpc::has_operation() const
+bool Revert::has_operation() const
 {
-    return is_set(operation)
-	|| (input_ !=  nullptr && input_->has_operation())
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string RevertRpc::get_segment_path() const
+std::string Revert::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-ia:revert";
@@ -654,7 +991,7 @@ std::string RevertRpc::get_segment_path() const
 
 }
 
-const EntityPath RevertRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Revert::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -672,70 +1009,86 @@ const EntityPath RevertRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> RevertRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Revert::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
-        if(input_ == nullptr)
+        if(input == nullptr)
         {
-            input_ = std::make_shared<RevertRpc::Input>();
+            input = std::make_shared<Revert::Input>();
         }
-        return input_;
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<RevertRpc::Output>();
+            output = std::make_shared<Revert::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RevertRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Revert::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input_ != nullptr)
+    if(input != nullptr)
     {
-        children["input"] = input_;
+        children["input"] = input;
     }
 
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void RevertRpc::set_value(const std::string & value_path, std::string value)
+void Revert::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RevertRpc::clone_ptr() const
+void Revert::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RevertRpc>();
 }
 
-std::string RevertRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Revert::clone_ptr() const
+{
+    return std::make_shared<Revert>();
+}
+
+std::string Revert::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string RevertRpc::get_bundle_name() const
+std::string Revert::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function RevertRpc::get_augment_capabilities_function() const
+augment_capabilities_function Revert::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-RevertRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Revert::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Revert::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Revert::Input::Input()
     :
     idle{YType::int16, "idle"},
     now{YType::empty, "now"},
@@ -744,26 +1097,26 @@ RevertRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "revert";
 }
 
-RevertRpc::Input::~Input()
+Revert::Input::~Input()
 {
 }
 
-bool RevertRpc::Input::has_data() const
+bool Revert::Input::has_data() const
 {
     return idle.is_set
 	|| now.is_set
 	|| timer.is_set;
 }
 
-bool RevertRpc::Input::has_operation() const
+bool Revert::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(idle.operation)
-	|| is_set(now.operation)
-	|| is_set(timer.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(idle.yfilter)
+	|| ydk::is_set(now.yfilter)
+	|| ydk::is_set(timer.yfilter);
 }
 
-std::string RevertRpc::Input::get_segment_path() const
+std::string Revert::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -772,7 +1125,7 @@ std::string RevertRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RevertRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Revert::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -786,9 +1139,9 @@ const EntityPath RevertRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (idle.is_set || is_set(idle.operation)) leaf_name_data.push_back(idle.get_name_leafdata());
-    if (now.is_set || is_set(now.operation)) leaf_name_data.push_back(now.get_name_leafdata());
-    if (timer.is_set || is_set(timer.operation)) leaf_name_data.push_back(timer.get_name_leafdata());
+    if (idle.is_set || is_set(idle.yfilter)) leaf_name_data.push_back(idle.get_name_leafdata());
+    if (now.is_set || is_set(now.yfilter)) leaf_name_data.push_back(now.get_name_leafdata());
+    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -796,56 +1149,85 @@ const EntityPath RevertRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> RevertRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Revert::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RevertRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Revert::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RevertRpc::Input::set_value(const std::string & value_path, std::string value)
+void Revert::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "idle")
     {
         idle = value;
+        idle.value_namespace = name_space;
+        idle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "now")
     {
         now = value;
+        now.value_namespace = name_space;
+        now.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timer")
     {
         timer = value;
+        timer.value_namespace = name_space;
+        timer.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RevertRpc::Output::Output()
+void Revert::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "idle")
+    {
+        idle.yfilter = yfilter;
+    }
+    if(value_path == "now")
+    {
+        now.yfilter = yfilter;
+    }
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
+    }
+}
+
+bool Revert::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idle" || name == "now" || name == "timer")
+        return true;
+    return false;
+}
+
+Revert::Output::Output()
     :
     result{YType::str, "result"}
 {
     yang_name = "output"; yang_parent_name = "revert";
 }
 
-RevertRpc::Output::~Output()
+Revert::Output::~Output()
 {
 }
 
-bool RevertRpc::Output::has_data() const
+bool Revert::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool RevertRpc::Output::has_operation() const
+bool Revert::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string RevertRpc::Output::get_segment_path() const
+std::string Revert::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -854,7 +1236,7 @@ std::string RevertRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath RevertRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Revert::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -868,7 +1250,7 @@ const EntityPath RevertRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -876,55 +1258,72 @@ const EntityPath RevertRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> RevertRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Revert::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RevertRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Revert::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RevertRpc::Output::set_value(const std::string & value_path, std::string value)
+void Revert::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RollbackRpc::RollbackRpc()
-    :
-    input_(std::make_shared<RollbackRpc::Input>())
-	,output_(std::make_shared<RollbackRpc::Output>())
+void Revert::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    input_->parent = this;
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
 
-    output_->parent = this;
+bool Revert::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+Rollback::Rollback()
+    :
+    input(std::make_shared<Rollback::Input>())
+	,output(std::make_shared<Rollback::Output>())
+{
+    input->parent = this;
+
+    output->parent = this;
 
     yang_name = "rollback"; yang_parent_name = "cisco-ia";
 }
 
-RollbackRpc::~RollbackRpc()
+Rollback::~Rollback()
 {
 }
 
-bool RollbackRpc::has_data() const
+bool Rollback::has_data() const
 {
-    return (input_ !=  nullptr && input_->has_data())
-	|| (output_ !=  nullptr && output_->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
-bool RollbackRpc::has_operation() const
+bool Rollback::has_operation() const
 {
-    return is_set(operation)
-	|| (input_ !=  nullptr && input_->has_operation())
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string RollbackRpc::get_segment_path() const
+std::string Rollback::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cisco-ia:rollback";
@@ -933,7 +1332,7 @@ std::string RollbackRpc::get_segment_path() const
 
 }
 
-const EntityPath RollbackRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Rollback::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -951,70 +1350,86 @@ const EntityPath RollbackRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> RollbackRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rollback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
-        if(input_ == nullptr)
+        if(input == nullptr)
         {
-            input_ = std::make_shared<RollbackRpc::Input>();
+            input = std::make_shared<Rollback::Input>();
         }
-        return input_;
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<RollbackRpc::Output>();
+            output = std::make_shared<Rollback::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollbackRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rollback::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input_ != nullptr)
+    if(input != nullptr)
     {
-        children["input"] = input_;
+        children["input"] = input;
     }
 
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void RollbackRpc::set_value(const std::string & value_path, std::string value)
+void Rollback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> RollbackRpc::clone_ptr() const
+void Rollback::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<RollbackRpc>();
 }
 
-std::string RollbackRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Rollback::clone_ptr() const
+{
+    return std::make_shared<Rollback>();
+}
+
+std::string Rollback::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string RollbackRpc::get_bundle_name() const
+std::string Rollback::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function RollbackRpc::get_augment_capabilities_function() const
+augment_capabilities_function Rollback::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-RollbackRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Rollback::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Rollback::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Rollback::Input::Input()
     :
     nolock{YType::boolean, "nolock"},
     revert_on_error{YType::empty, "revert-on-error"},
@@ -1025,11 +1440,11 @@ RollbackRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "rollback";
 }
 
-RollbackRpc::Input::~Input()
+Rollback::Input::~Input()
 {
 }
 
-bool RollbackRpc::Input::has_data() const
+bool Rollback::Input::has_data() const
 {
     return nolock.is_set
 	|| revert_on_error.is_set
@@ -1038,17 +1453,17 @@ bool RollbackRpc::Input::has_data() const
 	|| verbose.is_set;
 }
 
-bool RollbackRpc::Input::has_operation() const
+bool Rollback::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(nolock.operation)
-	|| is_set(revert_on_error.operation)
-	|| is_set(revert_timer.operation)
-	|| is_set(target_url.operation)
-	|| is_set(verbose.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(nolock.yfilter)
+	|| ydk::is_set(revert_on_error.yfilter)
+	|| ydk::is_set(revert_timer.yfilter)
+	|| ydk::is_set(target_url.yfilter)
+	|| ydk::is_set(verbose.yfilter);
 }
 
-std::string RollbackRpc::Input::get_segment_path() const
+std::string Rollback::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -1057,7 +1472,7 @@ std::string RollbackRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath RollbackRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Rollback::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1071,11 +1486,11 @@ const EntityPath RollbackRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (nolock.is_set || is_set(nolock.operation)) leaf_name_data.push_back(nolock.get_name_leafdata());
-    if (revert_on_error.is_set || is_set(revert_on_error.operation)) leaf_name_data.push_back(revert_on_error.get_name_leafdata());
-    if (revert_timer.is_set || is_set(revert_timer.operation)) leaf_name_data.push_back(revert_timer.get_name_leafdata());
-    if (target_url.is_set || is_set(target_url.operation)) leaf_name_data.push_back(target_url.get_name_leafdata());
-    if (verbose.is_set || is_set(verbose.operation)) leaf_name_data.push_back(verbose.get_name_leafdata());
+    if (nolock.is_set || is_set(nolock.yfilter)) leaf_name_data.push_back(nolock.get_name_leafdata());
+    if (revert_on_error.is_set || is_set(revert_on_error.yfilter)) leaf_name_data.push_back(revert_on_error.get_name_leafdata());
+    if (revert_timer.is_set || is_set(revert_timer.yfilter)) leaf_name_data.push_back(revert_timer.get_name_leafdata());
+    if (target_url.is_set || is_set(target_url.yfilter)) leaf_name_data.push_back(target_url.get_name_leafdata());
+    if (verbose.is_set || is_set(verbose.yfilter)) leaf_name_data.push_back(verbose.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1083,64 +1498,105 @@ const EntityPath RollbackRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> RollbackRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rollback::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollbackRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rollback::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RollbackRpc::Input::set_value(const std::string & value_path, std::string value)
+void Rollback::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nolock")
     {
         nolock = value;
+        nolock.value_namespace = name_space;
+        nolock.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "revert-on-error")
     {
         revert_on_error = value;
+        revert_on_error.value_namespace = name_space;
+        revert_on_error.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "revert-timer")
     {
         revert_timer = value;
+        revert_timer.value_namespace = name_space;
+        revert_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "target-url")
     {
         target_url = value;
+        target_url.value_namespace = name_space;
+        target_url.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "verbose")
     {
         verbose = value;
+        verbose.value_namespace = name_space;
+        verbose.value_namespace_prefix = name_space_prefix;
     }
 }
 
-RollbackRpc::Output::Output()
+void Rollback::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nolock")
+    {
+        nolock.yfilter = yfilter;
+    }
+    if(value_path == "revert-on-error")
+    {
+        revert_on_error.yfilter = yfilter;
+    }
+    if(value_path == "revert-timer")
+    {
+        revert_timer.yfilter = yfilter;
+    }
+    if(value_path == "target-url")
+    {
+        target_url.yfilter = yfilter;
+    }
+    if(value_path == "verbose")
+    {
+        verbose.yfilter = yfilter;
+    }
+}
+
+bool Rollback::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nolock" || name == "revert-on-error" || name == "revert-timer" || name == "target-url" || name == "verbose")
+        return true;
+    return false;
+}
+
+Rollback::Output::Output()
     :
     result{YType::str, "result"}
 {
     yang_name = "output"; yang_parent_name = "rollback";
 }
 
-RollbackRpc::Output::~Output()
+Rollback::Output::~Output()
 {
 }
 
-bool RollbackRpc::Output::has_data() const
+bool Rollback::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool RollbackRpc::Output::has_operation() const
+bool Rollback::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string RollbackRpc::Output::get_segment_path() const
+std::string Rollback::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -1149,7 +1605,7 @@ std::string RollbackRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath RollbackRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Rollback::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1163,7 +1619,7 @@ const EntityPath RollbackRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1171,52 +1627,69 @@ const EntityPath RollbackRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> RollbackRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Rollback::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RollbackRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Rollback::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void RollbackRpc::Output::set_value(const std::string & value_path, std::string value)
+void Rollback::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CiaLogLevelEnum::none {0, "none"};
-const Enum::YLeaf CiaLogLevelEnum::error {1, "error"};
-const Enum::YLeaf CiaLogLevelEnum::warning {2, "warning"};
-const Enum::YLeaf CiaLogLevelEnum::information {3, "information"};
-const Enum::YLeaf CiaLogLevelEnum::debug {4, "debug"};
+void Rollback::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CiaSyncTypeEnum::disabled {0, "disabled"};
-const Enum::YLeaf CiaSyncTypeEnum::without_defaults {1, "without-defaults"};
-const Enum::YLeaf CiaSyncTypeEnum::include_defaults {2, "include-defaults"};
+bool Rollback::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf SyslogSeverityEnum::none {8, "none"};
-const Enum::YLeaf SyslogSeverityEnum::emergency {0, "emergency"};
-const Enum::YLeaf SyslogSeverityEnum::alert {1, "alert"};
-const Enum::YLeaf SyslogSeverityEnum::critical {2, "critical"};
-const Enum::YLeaf SyslogSeverityEnum::error {3, "error"};
-const Enum::YLeaf SyslogSeverityEnum::warning {4, "warning"};
-const Enum::YLeaf SyslogSeverityEnum::notice {5, "notice"};
-const Enum::YLeaf SyslogSeverityEnum::info {6, "info"};
-const Enum::YLeaf SyslogSeverityEnum::debug {7, "debug"};
+const Enum::YLeaf CiaLogLevel::none {0, "none"};
+const Enum::YLeaf CiaLogLevel::error {1, "error"};
+const Enum::YLeaf CiaLogLevel::warning {2, "warning"};
+const Enum::YLeaf CiaLogLevel::information {3, "information"};
+const Enum::YLeaf CiaLogLevel::debug {4, "debug"};
 
-const Enum::YLeaf OnepLogLevelEnum::none {0, "none"};
-const Enum::YLeaf OnepLogLevelEnum::fatal {1, "fatal"};
-const Enum::YLeaf OnepLogLevelEnum::error {2, "error"};
-const Enum::YLeaf OnepLogLevelEnum::warning {3, "warning"};
-const Enum::YLeaf OnepLogLevelEnum::information {4, "information"};
-const Enum::YLeaf OnepLogLevelEnum::debug {5, "debug"};
-const Enum::YLeaf OnepLogLevelEnum::trace {6, "trace"};
+const Enum::YLeaf CiaSyncType::disabled {0, "disabled"};
+const Enum::YLeaf CiaSyncType::without_defaults {1, "without-defaults"};
+const Enum::YLeaf CiaSyncType::include_defaults {2, "include-defaults"};
+
+const Enum::YLeaf SyslogSeverity::none {8, "none"};
+const Enum::YLeaf SyslogSeverity::emergency {0, "emergency"};
+const Enum::YLeaf SyslogSeverity::alert {1, "alert"};
+const Enum::YLeaf SyslogSeverity::critical {2, "critical"};
+const Enum::YLeaf SyslogSeverity::error {3, "error"};
+const Enum::YLeaf SyslogSeverity::warning {4, "warning"};
+const Enum::YLeaf SyslogSeverity::notice {5, "notice"};
+const Enum::YLeaf SyslogSeverity::info {6, "info"};
+const Enum::YLeaf SyslogSeverity::debug {7, "debug"};
+
+const Enum::YLeaf OnepLogLevel::none {0, "none"};
+const Enum::YLeaf OnepLogLevel::fatal {1, "fatal"};
+const Enum::YLeaf OnepLogLevel::error {2, "error"};
+const Enum::YLeaf OnepLogLevel::warning {3, "warning"};
+const Enum::YLeaf OnepLogLevel::information {4, "information"};
+const Enum::YLeaf OnepLogLevel::debug {5, "debug"};
+const Enum::YLeaf OnepLogLevel::trace {6, "trace"};
 
 
 }

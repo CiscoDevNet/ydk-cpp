@@ -6,40 +6,42 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_tty_management_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_management_oper {
 
-HostAfIdBaseIdentity::HostAfIdBaseIdentity()
-     : Identity("Cisco-IOS-XR-tty-management-oper-sub1:Host-af-id-base")
+HostAfIdBase::HostAfIdBase()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper:Host-af-id-base")
 {
 }
 
-HostAfIdBaseIdentity::~HostAfIdBaseIdentity()
+HostAfIdBase::~HostAfIdBase()
 {
 }
 
-Ipv4Identity::Ipv4Identity()
-     : Identity("Cisco-IOS-XR-tty-management-oper-sub1:ipv4")
+Ipv6::Ipv6()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper:ipv6")
 {
 }
 
-Ipv4Identity::~Ipv4Identity()
+Ipv6::~Ipv6()
 {
 }
 
-Ipv6Identity::Ipv6Identity()
-     : Identity("Cisco-IOS-XR-tty-management-oper-sub1:ipv6")
+Ipv4::Ipv4()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper", "Cisco-IOS-XR-tty-management-oper:ipv4")
 {
 }
 
-Ipv6Identity::~Ipv6Identity()
+Ipv4::~Ipv4()
 {
 }
 
-const Enum::YLeaf TransportServiceEnum::unknown {0, "unknown"};
-const Enum::YLeaf TransportServiceEnum::telnet {1, "telnet"};
-const Enum::YLeaf TransportServiceEnum::rlogin {2, "rlogin"};
-const Enum::YLeaf TransportServiceEnum::ssh {3, "ssh"};
+const Enum::YLeaf TransportService::unknown {0, "unknown"};
+const Enum::YLeaf TransportService::telnet {1, "telnet"};
+const Enum::YLeaf TransportService::rlogin {2, "rlogin"};
+const Enum::YLeaf TransportService::ssh {3, "ssh"};
 
 
 }

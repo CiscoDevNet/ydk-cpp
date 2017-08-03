@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ncs1k_mxp_lldp_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ncs1k_mxp_lldp_oper {
 
 LldpSnoopData::LldpSnoopData()
@@ -33,7 +35,7 @@ bool LldpSnoopData::has_data() const
 
 bool LldpSnoopData::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ethernet_controller_names !=  nullptr && ethernet_controller_names->has_operation())
 	|| (lldp_neighbor_brief !=  nullptr && lldp_neighbor_brief->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::get_children() con
     return children;
 }
 
-void LldpSnoopData::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void LldpSnoopData::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string LldpSnoopData::get_bundle_name() const
 augment_capabilities_function LldpSnoopData::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> LldpSnoopData::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool LldpSnoopData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-controller-names" || name == "lldp-neighbor-brief")
+        return true;
+    return false;
 }
 
 LldpSnoopData::LldpNeighborBrief::LldpNeighborBrief()
@@ -151,8 +169,8 @@ bool LldpSnoopData::LldpNeighborBrief::has_data() const
 
 bool LldpSnoopData::LldpNeighborBrief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(number_of_entries.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(number_of_entries.yfilter)
 	|| (neighbours !=  nullptr && neighbours->has_operation());
 }
 
@@ -179,7 +197,7 @@ const EntityPath LldpSnoopData::LldpNeighborBrief::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number_of_entries.is_set || is_set(number_of_entries.operation)) leaf_name_data.push_back(number_of_entries.get_name_leafdata());
+    if (number_of_entries.is_set || is_set(number_of_entries.yfilter)) leaf_name_data.push_back(number_of_entries.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -212,12 +230,29 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief:
     return children;
 }
 
-void LldpSnoopData::LldpNeighborBrief::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::LldpNeighborBrief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number-of-entries")
     {
         number_of_entries = value;
+        number_of_entries.value_namespace = name_space;
+        number_of_entries.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LldpSnoopData::LldpNeighborBrief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-of-entries")
+    {
+        number_of_entries.yfilter = yfilter;
+    }
+}
+
+bool LldpSnoopData::LldpNeighborBrief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbours" || name == "number-of-entries")
+        return true;
+    return false;
 }
 
 LldpSnoopData::LldpNeighborBrief::Neighbours::Neighbours()
@@ -246,7 +281,7 @@ bool LldpSnoopData::LldpNeighborBrief::Neighbours::has_operation() const
         if(lldp_neighbor_brief_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LldpSnoopData::LldpNeighborBrief::Neighbours::get_segment_path() const
@@ -311,8 +346,19 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief:
     return children;
 }
 
-void LldpSnoopData::LldpNeighborBrief::Neighbours::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::LldpNeighborBrief::Neighbours::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void LldpSnoopData::LldpNeighborBrief::Neighbours::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool LldpSnoopData::LldpNeighborBrief::Neighbours::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-neighbor-brief-entry")
+        return true;
+    return false;
 }
 
 LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::LldpNeighborBriefEntry()
@@ -343,13 +389,13 @@ bool LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::has_d
 
 bool LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(chassis_id.operation)
-	|| is_set(enabled_capabilities.operation)
-	|| is_set(hold_time.operation)
-	|| is_set(port_id_detail.operation)
-	|| is_set(recv_intf.operation)
-	|| is_set(system_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(chassis_id.yfilter)
+	|| ydk::is_set(enabled_capabilities.yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(port_id_detail.yfilter)
+	|| ydk::is_set(recv_intf.yfilter)
+	|| ydk::is_set(system_name.yfilter);
 }
 
 std::string LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::get_segment_path() const
@@ -375,12 +421,12 @@ const EntityPath LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBrief
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (chassis_id.is_set || is_set(chassis_id.operation)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
-    if (enabled_capabilities.is_set || is_set(enabled_capabilities.operation)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (port_id_detail.is_set || is_set(port_id_detail.operation)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
-    if (recv_intf.is_set || is_set(recv_intf.operation)) leaf_name_data.push_back(recv_intf.get_name_leafdata());
-    if (system_name.is_set || is_set(system_name.operation)) leaf_name_data.push_back(system_name.get_name_leafdata());
+    if (chassis_id.is_set || is_set(chassis_id.yfilter)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
+    if (enabled_capabilities.is_set || is_set(enabled_capabilities.yfilter)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (port_id_detail.is_set || is_set(port_id_detail.yfilter)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
+    if (recv_intf.is_set || is_set(recv_intf.yfilter)) leaf_name_data.push_back(recv_intf.get_name_leafdata());
+    if (system_name.is_set || is_set(system_name.yfilter)) leaf_name_data.push_back(system_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -399,32 +445,79 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::LldpNeighborBrief:
     return children;
 }
 
-void LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id")
     {
         chassis_id = value;
+        chassis_id.value_namespace = name_space;
+        chassis_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled-capabilities")
     {
         enabled_capabilities = value;
+        enabled_capabilities.value_namespace = name_space;
+        enabled_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-detail")
     {
         port_id_detail = value;
+        port_id_detail.value_namespace = name_space;
+        port_id_detail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recv-intf")
     {
         recv_intf = value;
+        recv_intf.value_namespace = name_space;
+        recv_intf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-name")
     {
         system_name = value;
+        system_name.value_namespace = name_space;
+        system_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "chassis-id")
+    {
+        chassis_id.yfilter = yfilter;
+    }
+    if(value_path == "enabled-capabilities")
+    {
+        enabled_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "port-id-detail")
+    {
+        port_id_detail.yfilter = yfilter;
+    }
+    if(value_path == "recv-intf")
+    {
+        recv_intf.yfilter = yfilter;
+    }
+    if(value_path == "system-name")
+    {
+        system_name.yfilter = yfilter;
+    }
+}
+
+bool LldpSnoopData::LldpNeighborBrief::Neighbours::LldpNeighborBriefEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "chassis-id" || name == "enabled-capabilities" || name == "hold-time" || name == "port-id-detail" || name == "recv-intf" || name == "system-name")
+        return true;
+    return false;
 }
 
 LldpSnoopData::EthernetControllerNames::EthernetControllerNames()
@@ -453,7 +546,7 @@ bool LldpSnoopData::EthernetControllerNames::has_operation() const
         if(ethernet_controller_name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LldpSnoopData::EthernetControllerNames::get_segment_path() const
@@ -518,8 +611,19 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetController
     return children;
 }
 
-void LldpSnoopData::EthernetControllerNames::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::EthernetControllerNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void LldpSnoopData::EthernetControllerNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool LldpSnoopData::EthernetControllerNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet-controller-name")
+        return true;
+    return false;
 }
 
 LldpSnoopData::EthernetControllerNames::EthernetControllerName::EthernetControllerName()
@@ -569,20 +673,20 @@ bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::has_data() 
 
 bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(chassis_id.operation)
-	|| is_set(drop_enabled.operation)
-	|| is_set(enabled_capabilities.operation)
-	|| is_set(hold_time.operation)
-	|| is_set(lldp_neighbor.operation)
-	|| is_set(port_description.operation)
-	|| is_set(port_id_detail.operation)
-	|| is_set(rx_lldp_pkts.operation)
-	|| is_set(source_mac.operation)
-	|| is_set(system_capabilities.operation)
-	|| is_set(system_description.operation)
-	|| is_set(system_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(chassis_id.yfilter)
+	|| ydk::is_set(drop_enabled.yfilter)
+	|| ydk::is_set(enabled_capabilities.yfilter)
+	|| ydk::is_set(hold_time.yfilter)
+	|| ydk::is_set(lldp_neighbor.yfilter)
+	|| ydk::is_set(port_description.yfilter)
+	|| ydk::is_set(port_id_detail.yfilter)
+	|| ydk::is_set(rx_lldp_pkts.yfilter)
+	|| ydk::is_set(source_mac.yfilter)
+	|| ydk::is_set(system_capabilities.yfilter)
+	|| ydk::is_set(system_description.yfilter)
+	|| ydk::is_set(system_name.yfilter)
 	|| (network_addresses !=  nullptr && network_addresses->has_operation());
 }
 
@@ -609,19 +713,19 @@ const EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (chassis_id.is_set || is_set(chassis_id.operation)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
-    if (drop_enabled.is_set || is_set(drop_enabled.operation)) leaf_name_data.push_back(drop_enabled.get_name_leafdata());
-    if (enabled_capabilities.is_set || is_set(enabled_capabilities.operation)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
-    if (hold_time.is_set || is_set(hold_time.operation)) leaf_name_data.push_back(hold_time.get_name_leafdata());
-    if (lldp_neighbor.is_set || is_set(lldp_neighbor.operation)) leaf_name_data.push_back(lldp_neighbor.get_name_leafdata());
-    if (port_description.is_set || is_set(port_description.operation)) leaf_name_data.push_back(port_description.get_name_leafdata());
-    if (port_id_detail.is_set || is_set(port_id_detail.operation)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
-    if (rx_lldp_pkts.is_set || is_set(rx_lldp_pkts.operation)) leaf_name_data.push_back(rx_lldp_pkts.get_name_leafdata());
-    if (source_mac.is_set || is_set(source_mac.operation)) leaf_name_data.push_back(source_mac.get_name_leafdata());
-    if (system_capabilities.is_set || is_set(system_capabilities.operation)) leaf_name_data.push_back(system_capabilities.get_name_leafdata());
-    if (system_description.is_set || is_set(system_description.operation)) leaf_name_data.push_back(system_description.get_name_leafdata());
-    if (system_name.is_set || is_set(system_name.operation)) leaf_name_data.push_back(system_name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (chassis_id.is_set || is_set(chassis_id.yfilter)) leaf_name_data.push_back(chassis_id.get_name_leafdata());
+    if (drop_enabled.is_set || is_set(drop_enabled.yfilter)) leaf_name_data.push_back(drop_enabled.get_name_leafdata());
+    if (enabled_capabilities.is_set || is_set(enabled_capabilities.yfilter)) leaf_name_data.push_back(enabled_capabilities.get_name_leafdata());
+    if (hold_time.is_set || is_set(hold_time.yfilter)) leaf_name_data.push_back(hold_time.get_name_leafdata());
+    if (lldp_neighbor.is_set || is_set(lldp_neighbor.yfilter)) leaf_name_data.push_back(lldp_neighbor.get_name_leafdata());
+    if (port_description.is_set || is_set(port_description.yfilter)) leaf_name_data.push_back(port_description.get_name_leafdata());
+    if (port_id_detail.is_set || is_set(port_id_detail.yfilter)) leaf_name_data.push_back(port_id_detail.get_name_leafdata());
+    if (rx_lldp_pkts.is_set || is_set(rx_lldp_pkts.yfilter)) leaf_name_data.push_back(rx_lldp_pkts.get_name_leafdata());
+    if (source_mac.is_set || is_set(source_mac.yfilter)) leaf_name_data.push_back(source_mac.get_name_leafdata());
+    if (system_capabilities.is_set || is_set(system_capabilities.yfilter)) leaf_name_data.push_back(system_capabilities.get_name_leafdata());
+    if (system_description.is_set || is_set(system_description.yfilter)) leaf_name_data.push_back(system_description.get_name_leafdata());
+    if (system_name.is_set || is_set(system_name.yfilter)) leaf_name_data.push_back(system_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -654,60 +758,149 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetController
     return children;
 }
 
-void LldpSnoopData::EthernetControllerNames::EthernetControllerName::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::EthernetControllerNames::EthernetControllerName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "chassis-id")
     {
         chassis_id = value;
+        chassis_id.value_namespace = name_space;
+        chassis_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drop-enabled")
     {
         drop_enabled = value;
+        drop_enabled.value_namespace = name_space;
+        drop_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled-capabilities")
     {
         enabled_capabilities = value;
+        enabled_capabilities.value_namespace = name_space;
+        enabled_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-time")
     {
         hold_time = value;
+        hold_time.value_namespace = name_space;
+        hold_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lldp-neighbor")
     {
         lldp_neighbor = value;
+        lldp_neighbor.value_namespace = name_space;
+        lldp_neighbor.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-description")
     {
         port_description = value;
+        port_description.value_namespace = name_space;
+        port_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-id-detail")
     {
         port_id_detail = value;
+        port_id_detail.value_namespace = name_space;
+        port_id_detail.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-lldp-pkts")
     {
         rx_lldp_pkts = value;
+        rx_lldp_pkts.value_namespace = name_space;
+        rx_lldp_pkts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-mac")
     {
         source_mac = value;
+        source_mac.value_namespace = name_space;
+        source_mac.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-capabilities")
     {
         system_capabilities = value;
+        system_capabilities.value_namespace = name_space;
+        system_capabilities.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-description")
     {
         system_description = value;
+        system_description.value_namespace = name_space;
+        system_description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "system-name")
     {
         system_name = value;
+        system_name.value_namespace = name_space;
+        system_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LldpSnoopData::EthernetControllerNames::EthernetControllerName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "chassis-id")
+    {
+        chassis_id.yfilter = yfilter;
+    }
+    if(value_path == "drop-enabled")
+    {
+        drop_enabled.yfilter = yfilter;
+    }
+    if(value_path == "enabled-capabilities")
+    {
+        enabled_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "hold-time")
+    {
+        hold_time.yfilter = yfilter;
+    }
+    if(value_path == "lldp-neighbor")
+    {
+        lldp_neighbor.yfilter = yfilter;
+    }
+    if(value_path == "port-description")
+    {
+        port_description.yfilter = yfilter;
+    }
+    if(value_path == "port-id-detail")
+    {
+        port_id_detail.yfilter = yfilter;
+    }
+    if(value_path == "rx-lldp-pkts")
+    {
+        rx_lldp_pkts.yfilter = yfilter;
+    }
+    if(value_path == "source-mac")
+    {
+        source_mac.yfilter = yfilter;
+    }
+    if(value_path == "system-capabilities")
+    {
+        system_capabilities.yfilter = yfilter;
+    }
+    if(value_path == "system-description")
+    {
+        system_description.yfilter = yfilter;
+    }
+    if(value_path == "system-name")
+    {
+        system_name.yfilter = yfilter;
+    }
+}
+
+bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-addresses" || name == "name" || name == "chassis-id" || name == "drop-enabled" || name == "enabled-capabilities" || name == "hold-time" || name == "lldp-neighbor" || name == "port-description" || name == "port-id-detail" || name == "rx-lldp-pkts" || name == "source-mac" || name == "system-capabilities" || name == "system-description" || name == "system-name")
+        return true;
+    return false;
 }
 
 LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::NetworkAddresses()
@@ -736,7 +929,7 @@ bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddr
         if(lldp_addr_entry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::get_segment_path() const
@@ -801,8 +994,19 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetController
     return children;
 }
 
-void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lldp-addr-entry")
+        return true;
+    return false;
 }
 
 LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::LldpAddrEntry()
@@ -830,9 +1034,9 @@ bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddr
 
 bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_num.operation)
-	|| is_set(ma_subtype.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(if_num.yfilter)
+	|| ydk::is_set(ma_subtype.yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -859,8 +1063,8 @@ const EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_num.is_set || is_set(if_num.operation)) leaf_name_data.push_back(if_num.get_name_leafdata());
-    if (ma_subtype.is_set || is_set(ma_subtype.operation)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
+    if (if_num.is_set || is_set(if_num.yfilter)) leaf_name_data.push_back(if_num.get_name_leafdata());
+    if (ma_subtype.is_set || is_set(ma_subtype.yfilter)) leaf_name_data.push_back(ma_subtype.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -893,16 +1097,39 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetController
     return children;
 }
 
-void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-num")
     {
         if_num = value;
+        if_num.value_namespace = name_space;
+        if_num.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ma-subtype")
     {
         ma_subtype = value;
+        ma_subtype.value_namespace = name_space;
+        ma_subtype.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-num")
+    {
+        if_num.yfilter = yfilter;
+    }
+    if(value_path == "ma-subtype")
+    {
+        ma_subtype.yfilter = yfilter;
+    }
+}
+
+bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "if-num" || name == "ma-subtype")
+        return true;
+    return false;
 }
 
 LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::Address()
@@ -927,10 +1154,10 @@ bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddr
 
 bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_type.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_type.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::get_segment_path() const
@@ -956,9 +1183,9 @@ const EntityPath LldpSnoopData::EthernetControllerNames::EthernetControllerName:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -977,24 +1204,53 @@ std::map<std::string, std::shared_ptr<Entity>> LldpSnoopData::EthernetController
     return children;
 }
 
-void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, std::string value)
+void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf LldpL3AddrProtocolEnum::ipv4 {0, "ipv4"};
-const Enum::YLeaf LldpL3AddrProtocolEnum::ipv6 {1, "ipv6"};
+void LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool LldpSnoopData::EthernetControllerNames::EthernetControllerName::NetworkAddresses::LldpAddrEntry::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-type" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf LldpL3AddrProtocol::ipv4 {0, "ipv4"};
+const Enum::YLeaf LldpL3AddrProtocol::ipv6 {1, "ipv6"};
 
 
 }

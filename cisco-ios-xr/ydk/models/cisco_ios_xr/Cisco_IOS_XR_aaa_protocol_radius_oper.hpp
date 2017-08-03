@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_protocol_radius_oper {
 
-class Radius : public Entity
+class Radius : public ydk::Entity
 {
     public:
         Radius();
@@ -18,15 +18,18 @@ class Radius : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: Radius::Nodes
 
@@ -35,7 +38,7 @@ class Radius : public Entity
 }; // Radius
 
 
-class Radius::Nodes : public Entity
+class Radius::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -43,11 +46,13 @@ class Radius::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: Radius::Nodes::Node
 
@@ -56,7 +61,7 @@ class Radius::Nodes : public Entity
 }; // Radius::Nodes
 
 
-class Radius::Nodes::Node : public Entity
+class Radius::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -64,13 +69,15 @@ class Radius::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class Client; //type: Radius::Nodes::Node::Client
         class DeadCriteria; //type: Radius::Nodes::Node::DeadCriteria
         class Authentication; //type: Radius::Nodes::Node::Authentication
@@ -88,7 +95,7 @@ class Radius::Nodes::Node : public Entity
 }; // Radius::Nodes::Node
 
 
-class Radius::Nodes::Node::Client : public Entity
+class Radius::Nodes::Node::Client : public ydk::Entity
 {
     public:
         Client();
@@ -96,20 +103,22 @@ class Radius::Nodes::Node::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf unknown_authentication_responses; //type: uint32
-        YLeaf authentication_nas_id; //type: string
-        YLeaf unknown_accounting_responses; //type: uint32
+        ydk::YLeaf unknown_authentication_responses; //type: uint32
+        ydk::YLeaf authentication_nas_id; //type: string
+        ydk::YLeaf unknown_accounting_responses; //type: uint32
 
 }; // Radius::Nodes::Node::Client
 
 
-class Radius::Nodes::Node::DeadCriteria : public Entity
+class Radius::Nodes::Node::DeadCriteria : public ydk::Entity
 {
     public:
         DeadCriteria();
@@ -117,11 +126,13 @@ class Radius::Nodes::Node::DeadCriteria : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Hosts; //type: Radius::Nodes::Node::DeadCriteria::Hosts
 
@@ -130,7 +141,7 @@ class Radius::Nodes::Node::DeadCriteria : public Entity
 }; // Radius::Nodes::Node::DeadCriteria
 
 
-class Radius::Nodes::Node::DeadCriteria::Hosts : public Entity
+class Radius::Nodes::Node::DeadCriteria::Hosts : public ydk::Entity
 {
     public:
         Hosts();
@@ -138,11 +149,13 @@ class Radius::Nodes::Node::DeadCriteria::Hosts : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Host; //type: Radius::Nodes::Node::DeadCriteria::Hosts::Host
 
@@ -151,7 +164,7 @@ class Radius::Nodes::Node::DeadCriteria::Hosts : public Entity
 }; // Radius::Nodes::Node::DeadCriteria::Hosts
 
 
-class Radius::Nodes::Node::DeadCriteria::Hosts::Host : public Entity
+class Radius::Nodes::Node::DeadCriteria::Hosts::Host : public ydk::Entity
 {
     public:
         Host();
@@ -159,15 +172,17 @@ class Radius::Nodes::Node::DeadCriteria::Hosts::Host : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip_address; //type: string
-        YLeaf auth_port_number; //type: uint32
-        YLeaf acct_port_number; //type: uint32
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf auth_port_number; //type: uint32
+        ydk::YLeaf acct_port_number; //type: uint32
         class Time; //type: Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time
         class Tries; //type: Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries
 
@@ -177,7 +192,7 @@ class Radius::Nodes::Node::DeadCriteria::Hosts::Host : public Entity
 }; // Radius::Nodes::Node::DeadCriteria::Hosts::Host
 
 
-class Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time : public Entity
+class Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time : public ydk::Entity
 {
     public:
         Time();
@@ -185,19 +200,21 @@ class Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf is_computed; //type: boolean
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf is_computed; //type: boolean
 
 }; // Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time
 
 
-class Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries : public Entity
+class Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries : public ydk::Entity
 {
     public:
         Tries();
@@ -205,19 +222,21 @@ class Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf value_; //type: uint32
-        YLeaf is_computed; //type: boolean
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf is_computed; //type: boolean
 
 }; // Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries
 
 
-class Radius::Nodes::Node::Authentication : public Entity
+class Radius::Nodes::Node::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -225,11 +244,13 @@ class Radius::Nodes::Node::Authentication : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AuthenticationGroup; //type: Radius::Nodes::Node::Authentication::AuthenticationGroup
 
@@ -238,7 +259,7 @@ class Radius::Nodes::Node::Authentication : public Entity
 }; // Radius::Nodes::Node::Authentication
 
 
-class Radius::Nodes::Node::Authentication::AuthenticationGroup : public Entity
+class Radius::Nodes::Node::Authentication::AuthenticationGroup : public ydk::Entity
 {
     public:
         AuthenticationGroup();
@@ -246,16 +267,18 @@ class Radius::Nodes::Node::Authentication::AuthenticationGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf server_address; //type: string
-        YLeaf port; //type: uint32
-        YLeaf ip_address; //type: string
-        YLeaf family; //type: string
+        ydk::YLeaf server_address; //type: string
+        ydk::YLeaf port; //type: uint32
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf family; //type: string
         class Authentication_; //type: Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_
 
         std::shared_ptr<Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_> authentication;
@@ -263,7 +286,7 @@ class Radius::Nodes::Node::Authentication::AuthenticationGroup : public Entity
 }; // Radius::Nodes::Node::Authentication::AuthenticationGroup
 
 
-class Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_ : public Entity
+class Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_ : public ydk::Entity
 {
     public:
         Authentication_();
@@ -271,35 +294,37 @@ class Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_ 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_requests; //type: uint32
-        YLeaf pending_access_requests; //type: uint32
-        YLeaf access_request_retransmits; //type: uint32
-        YLeaf access_accepts; //type: uint32
-        YLeaf access_rejects; //type: uint32
-        YLeaf access_challenges; //type: uint32
-        YLeaf access_timeouts; //type: uint32
-        YLeaf bad_access_responses; //type: uint32
-        YLeaf bad_access_authenticators; //type: uint32
-        YLeaf unknown_access_types; //type: uint32
-        YLeaf dropped_access_responses; //type: uint32
-        YLeaf rtt; //type: uint32
-        YLeaf authen_response_time; //type: uint32
-        YLeaf authen_transaction_successess; //type: uint32
-        YLeaf authen_transaction_failure; //type: uint32
-        YLeaf authen_unexpected_responses; //type: uint32
-        YLeaf authen_server_error_responses; //type: uint32
-        YLeaf authen_incorrect_responses; //type: uint32
+        ydk::YLeaf access_requests; //type: uint32
+        ydk::YLeaf pending_access_requests; //type: uint32
+        ydk::YLeaf access_request_retransmits; //type: uint32
+        ydk::YLeaf access_accepts; //type: uint32
+        ydk::YLeaf access_rejects; //type: uint32
+        ydk::YLeaf access_challenges; //type: uint32
+        ydk::YLeaf access_timeouts; //type: uint32
+        ydk::YLeaf bad_access_responses; //type: uint32
+        ydk::YLeaf bad_access_authenticators; //type: uint32
+        ydk::YLeaf unknown_access_types; //type: uint32
+        ydk::YLeaf dropped_access_responses; //type: uint32
+        ydk::YLeaf rtt; //type: uint32
+        ydk::YLeaf authen_response_time; //type: uint32
+        ydk::YLeaf authen_transaction_successess; //type: uint32
+        ydk::YLeaf authen_transaction_failure; //type: uint32
+        ydk::YLeaf authen_unexpected_responses; //type: uint32
+        ydk::YLeaf authen_server_error_responses; //type: uint32
+        ydk::YLeaf authen_incorrect_responses; //type: uint32
 
 }; // Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_
 
 
-class Radius::Nodes::Node::Accounting : public Entity
+class Radius::Nodes::Node::Accounting : public ydk::Entity
 {
     public:
         Accounting();
@@ -307,11 +332,13 @@ class Radius::Nodes::Node::Accounting : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AccountingGroup; //type: Radius::Nodes::Node::Accounting::AccountingGroup
 
@@ -320,7 +347,7 @@ class Radius::Nodes::Node::Accounting : public Entity
 }; // Radius::Nodes::Node::Accounting
 
 
-class Radius::Nodes::Node::Accounting::AccountingGroup : public Entity
+class Radius::Nodes::Node::Accounting::AccountingGroup : public ydk::Entity
 {
     public:
         AccountingGroup();
@@ -328,16 +355,18 @@ class Radius::Nodes::Node::Accounting::AccountingGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf server_address; //type: string
-        YLeaf port; //type: uint32
-        YLeaf ip_address; //type: string
-        YLeaf family; //type: string
+        ydk::YLeaf server_address; //type: string
+        ydk::YLeaf port; //type: uint32
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf family; //type: string
         class Accounting_; //type: Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_
 
         std::shared_ptr<Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_> accounting;
@@ -345,7 +374,7 @@ class Radius::Nodes::Node::Accounting::AccountingGroup : public Entity
 }; // Radius::Nodes::Node::Accounting::AccountingGroup
 
 
-class Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_ : public Entity
+class Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_ : public ydk::Entity
 {
     public:
         Accounting_();
@@ -353,33 +382,35 @@ class Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_ : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf requests; //type: uint32
-        YLeaf pending_requests; //type: uint32
-        YLeaf retransmits; //type: uint32
-        YLeaf responses; //type: uint32
-        YLeaf timeouts; //type: uint32
-        YLeaf bad_responses; //type: uint32
-        YLeaf bad_authenticators; //type: uint32
-        YLeaf unknown_packet_types; //type: uint32
-        YLeaf dropped_responses; //type: uint32
-        YLeaf rtt; //type: uint32
-        YLeaf acct_unexpected_responses; //type: uint32
-        YLeaf acct_server_error_responses; //type: uint32
-        YLeaf acct_incorrect_responses; //type: uint32
-        YLeaf acct_response_time; //type: uint32
-        YLeaf acct_transaction_successess; //type: uint32
-        YLeaf acct_transaction_failure; //type: uint32
+        ydk::YLeaf requests; //type: uint32
+        ydk::YLeaf pending_requests; //type: uint32
+        ydk::YLeaf retransmits; //type: uint32
+        ydk::YLeaf responses; //type: uint32
+        ydk::YLeaf timeouts; //type: uint32
+        ydk::YLeaf bad_responses; //type: uint32
+        ydk::YLeaf bad_authenticators; //type: uint32
+        ydk::YLeaf unknown_packet_types; //type: uint32
+        ydk::YLeaf dropped_responses; //type: uint32
+        ydk::YLeaf rtt; //type: uint32
+        ydk::YLeaf acct_unexpected_responses; //type: uint32
+        ydk::YLeaf acct_server_error_responses; //type: uint32
+        ydk::YLeaf acct_incorrect_responses; //type: uint32
+        ydk::YLeaf acct_response_time; //type: uint32
+        ydk::YLeaf acct_transaction_successess; //type: uint32
+        ydk::YLeaf acct_transaction_failure; //type: uint32
 
 }; // Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_
 
 
-class Radius::Nodes::Node::ServerGroups : public Entity
+class Radius::Nodes::Node::ServerGroups : public ydk::Entity
 {
     public:
         ServerGroups();
@@ -387,11 +418,13 @@ class Radius::Nodes::Node::ServerGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ServerGroup; //type: Radius::Nodes::Node::ServerGroups::ServerGroup
 
@@ -400,7 +433,7 @@ class Radius::Nodes::Node::ServerGroups : public Entity
 }; // Radius::Nodes::Node::ServerGroups
 
 
-class Radius::Nodes::Node::ServerGroups::ServerGroup : public Entity
+class Radius::Nodes::Node::ServerGroups::ServerGroup : public ydk::Entity
 {
     public:
         ServerGroup();
@@ -408,17 +441,19 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf server_group_name; //type: string
-        YLeaf groups; //type: uint32
-        YLeaf vrf_name; //type: string
-        YLeaf dead_time; //type: uint32
-        YLeaf servers; //type: uint32
+        ydk::YLeaf server_group_name; //type: string
+        ydk::YLeaf groups; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf dead_time; //type: uint32
+        ydk::YLeaf servers; //type: uint32
         class ServerGroup_; //type: Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_> > server_group;
@@ -426,7 +461,7 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup : public Entity
 }; // Radius::Nodes::Node::ServerGroups::ServerGroup
 
 
-class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_ : public Entity
+class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_ : public ydk::Entity
 {
     public:
         ServerGroup_();
@@ -434,18 +469,20 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_ : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf server_address; //type: string
-        YLeaf authentication_port; //type: uint32
-        YLeaf accounting_port; //type: uint32
-        YLeaf is_private; //type: boolean
-        YLeaf ip_address; //type: string
-        YLeaf family; //type: string
+        ydk::YLeaf server_address; //type: string
+        ydk::YLeaf authentication_port; //type: uint32
+        ydk::YLeaf accounting_port; //type: uint32
+        ydk::YLeaf is_private; //type: boolean
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf family; //type: string
         class Accounting; //type: Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting
         class Authentication; //type: Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication
         class Authorization; //type: Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization
@@ -457,7 +494,7 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_ : public Enti
 }; // Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_
 
 
-class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting : public Entity
+class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting : public ydk::Entity
 {
     public:
         Accounting();
@@ -465,33 +502,35 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf requests; //type: uint32
-        YLeaf pending_requests; //type: uint32
-        YLeaf retransmits; //type: uint32
-        YLeaf responses; //type: uint32
-        YLeaf timeouts; //type: uint32
-        YLeaf bad_responses; //type: uint32
-        YLeaf bad_authenticators; //type: uint32
-        YLeaf unknown_packet_types; //type: uint32
-        YLeaf dropped_responses; //type: uint32
-        YLeaf rtt; //type: uint32
-        YLeaf acct_unexpected_responses; //type: uint32
-        YLeaf acct_server_error_responses; //type: uint32
-        YLeaf acct_incorrect_responses; //type: uint32
-        YLeaf acct_response_time; //type: uint32
-        YLeaf acct_transaction_successess; //type: uint32
-        YLeaf acct_transaction_failure; //type: uint32
+        ydk::YLeaf requests; //type: uint32
+        ydk::YLeaf pending_requests; //type: uint32
+        ydk::YLeaf retransmits; //type: uint32
+        ydk::YLeaf responses; //type: uint32
+        ydk::YLeaf timeouts; //type: uint32
+        ydk::YLeaf bad_responses; //type: uint32
+        ydk::YLeaf bad_authenticators; //type: uint32
+        ydk::YLeaf unknown_packet_types; //type: uint32
+        ydk::YLeaf dropped_responses; //type: uint32
+        ydk::YLeaf rtt; //type: uint32
+        ydk::YLeaf acct_unexpected_responses; //type: uint32
+        ydk::YLeaf acct_server_error_responses; //type: uint32
+        ydk::YLeaf acct_incorrect_responses; //type: uint32
+        ydk::YLeaf acct_response_time; //type: uint32
+        ydk::YLeaf acct_transaction_successess; //type: uint32
+        ydk::YLeaf acct_transaction_failure; //type: uint32
 
 }; // Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting
 
 
-class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication : public Entity
+class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -499,35 +538,37 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authenticati
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf access_requests; //type: uint32
-        YLeaf pending_access_requests; //type: uint32
-        YLeaf access_request_retransmits; //type: uint32
-        YLeaf access_accepts; //type: uint32
-        YLeaf access_rejects; //type: uint32
-        YLeaf access_challenges; //type: uint32
-        YLeaf access_timeouts; //type: uint32
-        YLeaf bad_access_responses; //type: uint32
-        YLeaf bad_access_authenticators; //type: uint32
-        YLeaf unknown_access_types; //type: uint32
-        YLeaf dropped_access_responses; //type: uint32
-        YLeaf rtt; //type: uint32
-        YLeaf authen_response_time; //type: uint32
-        YLeaf authen_transaction_successess; //type: uint32
-        YLeaf authen_transaction_failure; //type: uint32
-        YLeaf authen_unexpected_responses; //type: uint32
-        YLeaf authen_server_error_responses; //type: uint32
-        YLeaf authen_incorrect_responses; //type: uint32
+        ydk::YLeaf access_requests; //type: uint32
+        ydk::YLeaf pending_access_requests; //type: uint32
+        ydk::YLeaf access_request_retransmits; //type: uint32
+        ydk::YLeaf access_accepts; //type: uint32
+        ydk::YLeaf access_rejects; //type: uint32
+        ydk::YLeaf access_challenges; //type: uint32
+        ydk::YLeaf access_timeouts; //type: uint32
+        ydk::YLeaf bad_access_responses; //type: uint32
+        ydk::YLeaf bad_access_authenticators; //type: uint32
+        ydk::YLeaf unknown_access_types; //type: uint32
+        ydk::YLeaf dropped_access_responses; //type: uint32
+        ydk::YLeaf rtt; //type: uint32
+        ydk::YLeaf authen_response_time; //type: uint32
+        ydk::YLeaf authen_transaction_successess; //type: uint32
+        ydk::YLeaf authen_transaction_failure; //type: uint32
+        ydk::YLeaf authen_unexpected_responses; //type: uint32
+        ydk::YLeaf authen_server_error_responses; //type: uint32
+        ydk::YLeaf authen_incorrect_responses; //type: uint32
 
 }; // Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication
 
 
-class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization : public Entity
+class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization : public ydk::Entity
 {
     public:
         Authorization();
@@ -535,25 +576,27 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorizatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf author_requests; //type: uint32
-        YLeaf author_request_timeouts; //type: uint32
-        YLeaf author_unexpected_responses; //type: uint32
-        YLeaf author_server_error_responses; //type: uint32
-        YLeaf author_incorrect_responses; //type: uint32
-        YLeaf author_response_time; //type: uint32
-        YLeaf author_transaction_successess; //type: uint32
-        YLeaf author_transaction_failure; //type: uint32
+        ydk::YLeaf author_requests; //type: uint32
+        ydk::YLeaf author_request_timeouts; //type: uint32
+        ydk::YLeaf author_unexpected_responses; //type: uint32
+        ydk::YLeaf author_server_error_responses; //type: uint32
+        ydk::YLeaf author_incorrect_responses; //type: uint32
+        ydk::YLeaf author_response_time; //type: uint32
+        ydk::YLeaf author_transaction_successess; //type: uint32
+        ydk::YLeaf author_transaction_failure; //type: uint32
 
 }; // Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization
 
 
-class Radius::Nodes::Node::DynamicAuthorization : public Entity
+class Radius::Nodes::Node::DynamicAuthorization : public ydk::Entity
 {
     public:
         DynamicAuthorization();
@@ -561,14 +604,16 @@ class Radius::Nodes::Node::DynamicAuthorization : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf disconnected_invalid_requests; //type: uint32
-        YLeaf invalid_coa_requests; //type: uint32
+        ydk::YLeaf disconnected_invalid_requests; //type: uint32
+        ydk::YLeaf invalid_coa_requests; //type: uint32
 
 }; // Radius::Nodes::Node::DynamicAuthorization
 

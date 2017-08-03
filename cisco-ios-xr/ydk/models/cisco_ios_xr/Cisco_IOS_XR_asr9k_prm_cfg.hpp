@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_prm_cfg {
 
-class HardwareModuleQosMode : public Entity
+class HardwareModuleQosMode : public ydk::Entity
 {
     public:
         HardwareModuleQosMode();
@@ -18,15 +18,18 @@ class HardwareModuleQosMode : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: HardwareModuleQosMode::Nodes
 
@@ -35,7 +38,7 @@ class HardwareModuleQosMode : public Entity
 }; // HardwareModuleQosMode
 
 
-class HardwareModuleQosMode::Nodes : public Entity
+class HardwareModuleQosMode::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -43,11 +46,13 @@ class HardwareModuleQosMode::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: HardwareModuleQosMode::Nodes::Node
 
@@ -56,7 +61,7 @@ class HardwareModuleQosMode::Nodes : public Entity
 }; // HardwareModuleQosMode::Nodes
 
 
-class HardwareModuleQosMode::Nodes::Node : public Entity
+class HardwareModuleQosMode::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -64,19 +69,21 @@ class HardwareModuleQosMode::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf child_shaping_disable; //type: empty
-        YLeaf lowburst_enable; //type: empty
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf child_shaping_disable; //type: empty
+        ydk::YLeaf lowburst_enable; //type: empty
 
 }; // HardwareModuleQosMode::Nodes::Node
 
-class HardwareModuleTcpMssAdjust : public Entity
+class HardwareModuleTcpMssAdjust : public ydk::Entity
 {
     public:
         HardwareModuleTcpMssAdjust();
@@ -84,15 +91,18 @@ class HardwareModuleTcpMssAdjust : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: HardwareModuleTcpMssAdjust::Nodes
 
@@ -101,7 +111,7 @@ class HardwareModuleTcpMssAdjust : public Entity
 }; // HardwareModuleTcpMssAdjust
 
 
-class HardwareModuleTcpMssAdjust::Nodes : public Entity
+class HardwareModuleTcpMssAdjust::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -109,11 +119,13 @@ class HardwareModuleTcpMssAdjust::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: HardwareModuleTcpMssAdjust::Nodes::Node
 
@@ -122,7 +134,7 @@ class HardwareModuleTcpMssAdjust::Nodes : public Entity
 }; // HardwareModuleTcpMssAdjust::Nodes
 
 
-class HardwareModuleTcpMssAdjust::Nodes::Node : public Entity
+class HardwareModuleTcpMssAdjust::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -130,13 +142,15 @@ class HardwareModuleTcpMssAdjust::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
+        ydk::YLeaf node_name; //type: string
         class Nps; //type: HardwareModuleTcpMssAdjust::Nodes::Node::Nps
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleTcpMssAdjust::Nodes::Node::Nps> nps;
@@ -144,7 +158,7 @@ class HardwareModuleTcpMssAdjust::Nodes::Node : public Entity
 }; // HardwareModuleTcpMssAdjust::Nodes::Node
 
 
-class HardwareModuleTcpMssAdjust::Nodes::Node::Nps : public Entity
+class HardwareModuleTcpMssAdjust::Nodes::Node::Nps : public ydk::Entity
 {
     public:
         Nps();
@@ -152,11 +166,13 @@ class HardwareModuleTcpMssAdjust::Nodes::Node::Nps : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Np; //type: HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np
 
@@ -165,7 +181,7 @@ class HardwareModuleTcpMssAdjust::Nodes::Node::Nps : public Entity
 }; // HardwareModuleTcpMssAdjust::Nodes::Node::Nps
 
 
-class HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np : public Entity
+class HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np : public ydk::Entity
 {
     public:
         Np();
@@ -173,18 +189,20 @@ class HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf np_id; //type: uint32
-        YLeaf adjust_value; //type: uint32
+        ydk::YLeaf np_id; //type: uint32
+        ydk::YLeaf adjust_value; //type: uint32
 
 }; // HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np
 
-class HardwareModuleLoadBalance : public Entity
+class HardwareModuleLoadBalance : public ydk::Entity
 {
     public:
         HardwareModuleLoadBalance();
@@ -192,15 +210,18 @@ class HardwareModuleLoadBalance : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Bundle; //type: HardwareModuleLoadBalance::Bundle
 
@@ -209,7 +230,7 @@ class HardwareModuleLoadBalance : public Entity
 }; // HardwareModuleLoadBalance
 
 
-class HardwareModuleLoadBalance::Bundle : public Entity
+class HardwareModuleLoadBalance::Bundle : public ydk::Entity
 {
     public:
         Bundle();
@@ -217,11 +238,13 @@ class HardwareModuleLoadBalance::Bundle : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class L2Service; //type: HardwareModuleLoadBalance::Bundle::L2Service
 
@@ -230,7 +253,7 @@ class HardwareModuleLoadBalance::Bundle : public Entity
 }; // HardwareModuleLoadBalance::Bundle
 
 
-class HardwareModuleLoadBalance::Bundle::L2Service : public Entity
+class HardwareModuleLoadBalance::Bundle::L2Service : public ydk::Entity
 {
     public:
         L2Service();
@@ -238,17 +261,19 @@ class HardwareModuleLoadBalance::Bundle::L2Service : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf l3_parameters; //type: empty
+        ydk::YLeaf l3_parameters; //type: empty
 
 }; // HardwareModuleLoadBalance::Bundle::L2Service
 
-class HardwareModuleTcam : public Entity
+class HardwareModuleTcam : public ydk::Entity
 {
     public:
         HardwareModuleTcam();
@@ -256,17 +281,20 @@ class HardwareModuleTcam : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf global_profile; //type: PrmTcamProfileEnum
+        ydk::YLeaf global_profile; //type: PrmTcamProfile
         class Nodes; //type: HardwareModuleTcam::Nodes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleTcam::Nodes> nodes;
@@ -274,7 +302,7 @@ class HardwareModuleTcam : public Entity
 }; // HardwareModuleTcam
 
 
-class HardwareModuleTcam::Nodes : public Entity
+class HardwareModuleTcam::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -282,11 +310,13 @@ class HardwareModuleTcam::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: HardwareModuleTcam::Nodes::Node
 
@@ -295,7 +325,7 @@ class HardwareModuleTcam::Nodes : public Entity
 }; // HardwareModuleTcam::Nodes
 
 
-class HardwareModuleTcam::Nodes::Node : public Entity
+class HardwareModuleTcam::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -303,18 +333,20 @@ class HardwareModuleTcam::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf profile; //type: PrmTcamProfileEnum
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf profile; //type: PrmTcamProfile
 
 }; // HardwareModuleTcam::Nodes::Node
 
-class HardwareModuleEfd : public Entity
+class HardwareModuleEfd : public ydk::Entity
 {
     public:
         HardwareModuleEfd();
@@ -322,15 +354,18 @@ class HardwareModuleEfd : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class NodeAll; //type: HardwareModuleEfd::NodeAll
         class Nodes; //type: HardwareModuleEfd::Nodes
@@ -341,7 +376,7 @@ class HardwareModuleEfd : public Entity
 }; // HardwareModuleEfd
 
 
-class HardwareModuleEfd::NodeAll : public Entity
+class HardwareModuleEfd::NodeAll : public ydk::Entity
 {
     public:
         NodeAll();
@@ -349,26 +384,62 @@ class HardwareModuleEfd::NodeAll : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enable; //type: empty
-        YLeaf mode; //type: Asr9KEfdModeEnum
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf mode; //type: Asr9KEfdMode
+        class VlanPriorityMask; //type: HardwareModuleEfd::NodeAll::VlanPriorityMask
         class IpPrecedence; //type: HardwareModuleEfd::NodeAll::IpPrecedence
         class VlanCos; //type: HardwareModuleEfd::NodeAll::VlanCos
+        class IpPriorityMask; //type: HardwareModuleEfd::NodeAll::IpPriorityMask
+        class MplsPriorityMask; //type: HardwareModuleEfd::NodeAll::MplsPriorityMask
         class MplsExp; //type: HardwareModuleEfd::NodeAll::MplsExp
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::NodeAll::IpPrecedence> ip_precedence; // presence node
+        std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::NodeAll::IpPriorityMask> ip_priority_mask; // presence node
         std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::NodeAll::MplsExp> mpls_exp; // presence node
+        std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::NodeAll::MplsPriorityMask> mpls_priority_mask; // presence node
         std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::NodeAll::VlanCos> vlan_cos; // presence node
+        std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::NodeAll::VlanPriorityMask> vlan_priority_mask; // presence node
         
 }; // HardwareModuleEfd::NodeAll
 
 
-class HardwareModuleEfd::NodeAll::IpPrecedence : public Entity
+class HardwareModuleEfd::NodeAll::VlanPriorityMask : public ydk::Entity
+{
+    public:
+        VlanPriorityMask();
+        ~VlanPriorityMask();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prec0; //type: uint32
+        ydk::YLeaf prec1; //type: uint32
+        ydk::YLeaf prec2; //type: uint32
+        ydk::YLeaf prec3; //type: uint32
+        ydk::YLeaf prec4; //type: uint32
+        ydk::YLeaf prec5; //type: uint32
+        ydk::YLeaf prec6; //type: uint32
+        ydk::YLeaf prec7; //type: uint32
+
+}; // HardwareModuleEfd::NodeAll::VlanPriorityMask
+
+
+class HardwareModuleEfd::NodeAll::IpPrecedence : public ydk::Entity
 {
     public:
         IpPrecedence();
@@ -376,19 +447,21 @@ class HardwareModuleEfd::NodeAll::IpPrecedence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf precedence; //type: uint32
-        YLeaf operation_; //type: Asr9KEfdOperationEnum
+        ydk::YLeaf precedence; //type: uint32
+        ydk::YLeaf operation_; //type: Asr9KEfdOperation
 
 }; // HardwareModuleEfd::NodeAll::IpPrecedence
 
 
-class HardwareModuleEfd::NodeAll::VlanCos : public Entity
+class HardwareModuleEfd::NodeAll::VlanCos : public ydk::Entity
 {
     public:
         VlanCos();
@@ -396,19 +469,77 @@ class HardwareModuleEfd::NodeAll::VlanCos : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cos; //type: uint32
-        YLeaf operation_; //type: Asr9KEfdOperationEnum
+        ydk::YLeaf cos; //type: uint32
+        ydk::YLeaf operation_; //type: Asr9KEfdOperation
 
 }; // HardwareModuleEfd::NodeAll::VlanCos
 
 
-class HardwareModuleEfd::NodeAll::MplsExp : public Entity
+class HardwareModuleEfd::NodeAll::IpPriorityMask : public ydk::Entity
+{
+    public:
+        IpPriorityMask();
+        ~IpPriorityMask();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prec0; //type: uint32
+        ydk::YLeaf prec1; //type: uint32
+        ydk::YLeaf prec2; //type: uint32
+        ydk::YLeaf prec3; //type: uint32
+        ydk::YLeaf prec4; //type: uint32
+        ydk::YLeaf prec5; //type: uint32
+        ydk::YLeaf prec6; //type: uint32
+        ydk::YLeaf prec7; //type: uint32
+
+}; // HardwareModuleEfd::NodeAll::IpPriorityMask
+
+
+class HardwareModuleEfd::NodeAll::MplsPriorityMask : public ydk::Entity
+{
+    public:
+        MplsPriorityMask();
+        ~MplsPriorityMask();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prec0; //type: uint32
+        ydk::YLeaf prec1; //type: uint32
+        ydk::YLeaf prec2; //type: uint32
+        ydk::YLeaf prec3; //type: uint32
+        ydk::YLeaf prec4; //type: uint32
+        ydk::YLeaf prec5; //type: uint32
+        ydk::YLeaf prec6; //type: uint32
+        ydk::YLeaf prec7; //type: uint32
+
+}; // HardwareModuleEfd::NodeAll::MplsPriorityMask
+
+
+class HardwareModuleEfd::NodeAll::MplsExp : public ydk::Entity
 {
     public:
         MplsExp();
@@ -416,19 +547,21 @@ class HardwareModuleEfd::NodeAll::MplsExp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf exp; //type: uint32
-        YLeaf operation_; //type: Asr9KEfdOperationEnum
+        ydk::YLeaf exp; //type: uint32
+        ydk::YLeaf operation_; //type: Asr9KEfdOperation
 
 }; // HardwareModuleEfd::NodeAll::MplsExp
 
 
-class HardwareModuleEfd::Nodes : public Entity
+class HardwareModuleEfd::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -436,11 +569,13 @@ class HardwareModuleEfd::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: HardwareModuleEfd::Nodes::Node
 
@@ -449,7 +584,7 @@ class HardwareModuleEfd::Nodes : public Entity
 }; // HardwareModuleEfd::Nodes
 
 
-class HardwareModuleEfd::Nodes::Node : public Entity
+class HardwareModuleEfd::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -457,27 +592,63 @@ class HardwareModuleEfd::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node_name; //type: string
-        YLeaf enable; //type: empty
-        YLeaf mode; //type: Asr9KEfdModeEnum
+        ydk::YLeaf node_name; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf mode; //type: Asr9KEfdMode
+        class VlanPriorityMask; //type: HardwareModuleEfd::Nodes::Node::VlanPriorityMask
         class IpPrecedence; //type: HardwareModuleEfd::Nodes::Node::IpPrecedence
         class VlanCos; //type: HardwareModuleEfd::Nodes::Node::VlanCos
+        class IpPriorityMask; //type: HardwareModuleEfd::Nodes::Node::IpPriorityMask
+        class MplsPriorityMask; //type: HardwareModuleEfd::Nodes::Node::MplsPriorityMask
         class MplsExp; //type: HardwareModuleEfd::Nodes::Node::MplsExp
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::IpPrecedence> ip_precedence; // presence node
+        std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::IpPriorityMask> ip_priority_mask; // presence node
         std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::MplsExp> mpls_exp; // presence node
+        std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::MplsPriorityMask> mpls_priority_mask; // presence node
         std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::VlanCos> vlan_cos; // presence node
+        std::shared_ptr<Cisco_IOS_XR_asr9k_prm_cfg::HardwareModuleEfd::Nodes::Node::VlanPriorityMask> vlan_priority_mask; // presence node
         
 }; // HardwareModuleEfd::Nodes::Node
 
 
-class HardwareModuleEfd::Nodes::Node::IpPrecedence : public Entity
+class HardwareModuleEfd::Nodes::Node::VlanPriorityMask : public ydk::Entity
+{
+    public:
+        VlanPriorityMask();
+        ~VlanPriorityMask();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prec0; //type: uint32
+        ydk::YLeaf prec1; //type: uint32
+        ydk::YLeaf prec2; //type: uint32
+        ydk::YLeaf prec3; //type: uint32
+        ydk::YLeaf prec4; //type: uint32
+        ydk::YLeaf prec5; //type: uint32
+        ydk::YLeaf prec6; //type: uint32
+        ydk::YLeaf prec7; //type: uint32
+
+}; // HardwareModuleEfd::Nodes::Node::VlanPriorityMask
+
+
+class HardwareModuleEfd::Nodes::Node::IpPrecedence : public ydk::Entity
 {
     public:
         IpPrecedence();
@@ -485,19 +656,21 @@ class HardwareModuleEfd::Nodes::Node::IpPrecedence : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf precedence; //type: uint32
-        YLeaf operation_; //type: Asr9KEfdOperationEnum
+        ydk::YLeaf precedence; //type: uint32
+        ydk::YLeaf operation_; //type: Asr9KEfdOperation
 
 }; // HardwareModuleEfd::Nodes::Node::IpPrecedence
 
 
-class HardwareModuleEfd::Nodes::Node::VlanCos : public Entity
+class HardwareModuleEfd::Nodes::Node::VlanCos : public ydk::Entity
 {
     public:
         VlanCos();
@@ -505,19 +678,77 @@ class HardwareModuleEfd::Nodes::Node::VlanCos : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cos; //type: uint32
-        YLeaf operation_; //type: Asr9KEfdOperationEnum
+        ydk::YLeaf cos; //type: uint32
+        ydk::YLeaf operation_; //type: Asr9KEfdOperation
 
 }; // HardwareModuleEfd::Nodes::Node::VlanCos
 
 
-class HardwareModuleEfd::Nodes::Node::MplsExp : public Entity
+class HardwareModuleEfd::Nodes::Node::IpPriorityMask : public ydk::Entity
+{
+    public:
+        IpPriorityMask();
+        ~IpPriorityMask();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prec0; //type: uint32
+        ydk::YLeaf prec1; //type: uint32
+        ydk::YLeaf prec2; //type: uint32
+        ydk::YLeaf prec3; //type: uint32
+        ydk::YLeaf prec4; //type: uint32
+        ydk::YLeaf prec5; //type: uint32
+        ydk::YLeaf prec6; //type: uint32
+        ydk::YLeaf prec7; //type: uint32
+
+}; // HardwareModuleEfd::Nodes::Node::IpPriorityMask
+
+
+class HardwareModuleEfd::Nodes::Node::MplsPriorityMask : public ydk::Entity
+{
+    public:
+        MplsPriorityMask();
+        ~MplsPriorityMask();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prec0; //type: uint32
+        ydk::YLeaf prec1; //type: uint32
+        ydk::YLeaf prec2; //type: uint32
+        ydk::YLeaf prec3; //type: uint32
+        ydk::YLeaf prec4; //type: uint32
+        ydk::YLeaf prec5; //type: uint32
+        ydk::YLeaf prec6; //type: uint32
+        ydk::YLeaf prec7; //type: uint32
+
+}; // HardwareModuleEfd::Nodes::Node::MplsPriorityMask
+
+
+class HardwareModuleEfd::Nodes::Node::MplsExp : public ydk::Entity
 {
     public:
         MplsExp();
@@ -525,39 +756,41 @@ class HardwareModuleEfd::Nodes::Node::MplsExp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf exp; //type: uint32
-        YLeaf operation_; //type: Asr9KEfdOperationEnum
+        ydk::YLeaf exp; //type: uint32
+        ydk::YLeaf operation_; //type: Asr9KEfdOperation
 
 }; // HardwareModuleEfd::Nodes::Node::MplsExp
 
-class Asr9KEfdModeEnum : public Enum
+class Asr9KEfdMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf only_outer_encap;
-        static const Enum::YLeaf include_inner_encap;
+        static const ydk::Enum::YLeaf only_outer_encap;
+        static const ydk::Enum::YLeaf include_inner_encap;
 
 };
 
-class Asr9KEfdOperationEnum : public Enum
+class Asr9KEfdOperation : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf less_than;
-        static const Enum::YLeaf greater_than_or_equal;
+        static const ydk::Enum::YLeaf less_than;
+        static const ydk::Enum::YLeaf greater_than_or_equal;
 
 };
 
-class PrmTcamProfileEnum : public Enum
+class PrmTcamProfile : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf profile0;
-        static const Enum::YLeaf profile1;
-        static const Enum::YLeaf profile2;
+        static const ydk::Enum::YLeaf profile0;
+        static const ydk::Enum::YLeaf profile1;
+        static const ydk::Enum::YLeaf profile2;
 
 };
 

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ethernet_link_oam_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ethernet_link_oam_oper {
 
 EtherLinkOam::EtherLinkOam()
@@ -49,7 +51,7 @@ bool EtherLinkOam::has_data() const
 
 bool EtherLinkOam::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (discovery_info_interfaces !=  nullptr && discovery_info_interfaces->has_operation())
 	|| (event_log_entry_interfaces !=  nullptr && event_log_entry_interfaces->has_operation())
 	|| (interface_state_interfaces !=  nullptr && interface_state_interfaces->has_operation())
@@ -180,7 +182,11 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::get_children() cons
     return children;
 }
 
-void EtherLinkOam::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EtherLinkOam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -202,6 +208,18 @@ std::string EtherLinkOam::get_bundle_name() const
 augment_capabilities_function EtherLinkOam::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> EtherLinkOam::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EtherLinkOam::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery-info-interfaces" || name == "event-log-entry-interfaces" || name == "interface-state-interfaces" || name == "nodes" || name == "running-config-interfaces" || name == "stats-interfaces")
+        return true;
+    return false;
 }
 
 EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterfaces()
@@ -230,7 +248,7 @@ bool EtherLinkOam::DiscoveryInfoInterfaces::has_operation() const
         if(discovery_info_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherLinkOam::DiscoveryInfoInterfaces::get_segment_path() const
@@ -295,8 +313,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::DiscoveryInfoInterf
     return children;
 }
 
-void EtherLinkOam::DiscoveryInfoInterfaces::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::DiscoveryInfoInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherLinkOam::DiscoveryInfoInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::DiscoveryInfoInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discovery-info-interface")
+        return true;
+    return false;
 }
 
 EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::DiscoveryInfoInterface()
@@ -415,57 +444,57 @@ bool EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::has_data() c
 
 bool EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
-	|| is_set(local_evaluating.operation)
-	|| is_set(local_function_event.operation)
-	|| is_set(local_function_event_valid.operation)
-	|| is_set(local_function_loopback.operation)
-	|| is_set(local_function_loopback_valid.operation)
-	|| is_set(local_function_unidirectional.operation)
-	|| is_set(local_function_unidirectional_valid.operation)
-	|| is_set(local_functionvariable.operation)
-	|| is_set(local_functionvariable_valid.operation)
-	|| is_set(local_mode.operation)
-	|| is_set(local_mode_valid.operation)
-	|| is_set(local_mtu.operation)
-	|| is_set(local_mtu_valid.operation)
-	|| is_set(local_mwd_key.operation)
-	|| is_set(local_mwd_key_valid.operation)
-	|| is_set(local_operational.operation)
-	|| is_set(local_revision.operation)
-	|| is_set(local_revisionvalid.operation)
-	|| is_set(loopback_mode.operation)
-	|| is_set(loopback_mode_valid.operation)
-	|| is_set(miswired.operation)
-	|| is_set(miswired_valid.operation)
-	|| is_set(name.operation)
-	|| is_set(operational_status.operation)
-	|| is_set(operational_status_valid.operation)
-	|| is_set(received_at_risk_notification_time_remaining.operation)
-	|| is_set(received_at_risk_notification_timestamp.operation)
-	|| is_set(remote_event.operation)
-	|| is_set(remote_event_valid.operation)
-	|| is_set(remote_loopback.operation)
-	|| is_set(remote_loopback_valid.operation)
-	|| is_set(remote_mac_address.operation)
-	|| is_set(remote_mac_address_valid.operation)
-	|| is_set(remote_mode.operation)
-	|| is_set(remote_mode_valid.operation)
-	|| is_set(remote_mtu.operation)
-	|| is_set(remote_mtu_valid.operation)
-	|| is_set(remote_mwd_key.operation)
-	|| is_set(remote_mwd_key_valid.operation)
-	|| is_set(remote_revision.operation)
-	|| is_set(remote_revisionvalid.operation)
-	|| is_set(remote_unidirectional.operation)
-	|| is_set(remote_unidirectional_valid.operation)
-	|| is_set(remote_variable.operation)
-	|| is_set(remote_variable_valid.operation)
-	|| is_set(remote_vendor_info.operation)
-	|| is_set(remote_vendor_info_valid.operation)
-	|| is_set(remote_vendor_oui.operation)
-	|| is_set(remote_vendor_oui_valid.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| ydk::is_set(local_evaluating.yfilter)
+	|| ydk::is_set(local_function_event.yfilter)
+	|| ydk::is_set(local_function_event_valid.yfilter)
+	|| ydk::is_set(local_function_loopback.yfilter)
+	|| ydk::is_set(local_function_loopback_valid.yfilter)
+	|| ydk::is_set(local_function_unidirectional.yfilter)
+	|| ydk::is_set(local_function_unidirectional_valid.yfilter)
+	|| ydk::is_set(local_functionvariable.yfilter)
+	|| ydk::is_set(local_functionvariable_valid.yfilter)
+	|| ydk::is_set(local_mode.yfilter)
+	|| ydk::is_set(local_mode_valid.yfilter)
+	|| ydk::is_set(local_mtu.yfilter)
+	|| ydk::is_set(local_mtu_valid.yfilter)
+	|| ydk::is_set(local_mwd_key.yfilter)
+	|| ydk::is_set(local_mwd_key_valid.yfilter)
+	|| ydk::is_set(local_operational.yfilter)
+	|| ydk::is_set(local_revision.yfilter)
+	|| ydk::is_set(local_revisionvalid.yfilter)
+	|| ydk::is_set(loopback_mode.yfilter)
+	|| ydk::is_set(loopback_mode_valid.yfilter)
+	|| ydk::is_set(miswired.yfilter)
+	|| ydk::is_set(miswired_valid.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(operational_status.yfilter)
+	|| ydk::is_set(operational_status_valid.yfilter)
+	|| ydk::is_set(received_at_risk_notification_time_remaining.yfilter)
+	|| ydk::is_set(received_at_risk_notification_timestamp.yfilter)
+	|| ydk::is_set(remote_event.yfilter)
+	|| ydk::is_set(remote_event_valid.yfilter)
+	|| ydk::is_set(remote_loopback.yfilter)
+	|| ydk::is_set(remote_loopback_valid.yfilter)
+	|| ydk::is_set(remote_mac_address.yfilter)
+	|| ydk::is_set(remote_mac_address_valid.yfilter)
+	|| ydk::is_set(remote_mode.yfilter)
+	|| ydk::is_set(remote_mode_valid.yfilter)
+	|| ydk::is_set(remote_mtu.yfilter)
+	|| ydk::is_set(remote_mtu_valid.yfilter)
+	|| ydk::is_set(remote_mwd_key.yfilter)
+	|| ydk::is_set(remote_mwd_key_valid.yfilter)
+	|| ydk::is_set(remote_revision.yfilter)
+	|| ydk::is_set(remote_revisionvalid.yfilter)
+	|| ydk::is_set(remote_unidirectional.yfilter)
+	|| ydk::is_set(remote_unidirectional_valid.yfilter)
+	|| ydk::is_set(remote_variable.yfilter)
+	|| ydk::is_set(remote_variable_valid.yfilter)
+	|| ydk::is_set(remote_vendor_info.yfilter)
+	|| ydk::is_set(remote_vendor_info_valid.yfilter)
+	|| ydk::is_set(remote_vendor_oui.yfilter)
+	|| ydk::is_set(remote_vendor_oui_valid.yfilter);
 }
 
 std::string EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::get_segment_path() const
@@ -491,56 +520,56 @@ const EntityPath EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-    if (local_evaluating.is_set || is_set(local_evaluating.operation)) leaf_name_data.push_back(local_evaluating.get_name_leafdata());
-    if (local_function_event.is_set || is_set(local_function_event.operation)) leaf_name_data.push_back(local_function_event.get_name_leafdata());
-    if (local_function_event_valid.is_set || is_set(local_function_event_valid.operation)) leaf_name_data.push_back(local_function_event_valid.get_name_leafdata());
-    if (local_function_loopback.is_set || is_set(local_function_loopback.operation)) leaf_name_data.push_back(local_function_loopback.get_name_leafdata());
-    if (local_function_loopback_valid.is_set || is_set(local_function_loopback_valid.operation)) leaf_name_data.push_back(local_function_loopback_valid.get_name_leafdata());
-    if (local_function_unidirectional.is_set || is_set(local_function_unidirectional.operation)) leaf_name_data.push_back(local_function_unidirectional.get_name_leafdata());
-    if (local_function_unidirectional_valid.is_set || is_set(local_function_unidirectional_valid.operation)) leaf_name_data.push_back(local_function_unidirectional_valid.get_name_leafdata());
-    if (local_functionvariable.is_set || is_set(local_functionvariable.operation)) leaf_name_data.push_back(local_functionvariable.get_name_leafdata());
-    if (local_functionvariable_valid.is_set || is_set(local_functionvariable_valid.operation)) leaf_name_data.push_back(local_functionvariable_valid.get_name_leafdata());
-    if (local_mode.is_set || is_set(local_mode.operation)) leaf_name_data.push_back(local_mode.get_name_leafdata());
-    if (local_mode_valid.is_set || is_set(local_mode_valid.operation)) leaf_name_data.push_back(local_mode_valid.get_name_leafdata());
-    if (local_mtu.is_set || is_set(local_mtu.operation)) leaf_name_data.push_back(local_mtu.get_name_leafdata());
-    if (local_mtu_valid.is_set || is_set(local_mtu_valid.operation)) leaf_name_data.push_back(local_mtu_valid.get_name_leafdata());
-    if (local_mwd_key.is_set || is_set(local_mwd_key.operation)) leaf_name_data.push_back(local_mwd_key.get_name_leafdata());
-    if (local_mwd_key_valid.is_set || is_set(local_mwd_key_valid.operation)) leaf_name_data.push_back(local_mwd_key_valid.get_name_leafdata());
-    if (local_operational.is_set || is_set(local_operational.operation)) leaf_name_data.push_back(local_operational.get_name_leafdata());
-    if (local_revision.is_set || is_set(local_revision.operation)) leaf_name_data.push_back(local_revision.get_name_leafdata());
-    if (local_revisionvalid.is_set || is_set(local_revisionvalid.operation)) leaf_name_data.push_back(local_revisionvalid.get_name_leafdata());
-    if (loopback_mode.is_set || is_set(loopback_mode.operation)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
-    if (loopback_mode_valid.is_set || is_set(loopback_mode_valid.operation)) leaf_name_data.push_back(loopback_mode_valid.get_name_leafdata());
-    if (miswired.is_set || is_set(miswired.operation)) leaf_name_data.push_back(miswired.get_name_leafdata());
-    if (miswired_valid.is_set || is_set(miswired_valid.operation)) leaf_name_data.push_back(miswired_valid.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (operational_status.is_set || is_set(operational_status.operation)) leaf_name_data.push_back(operational_status.get_name_leafdata());
-    if (operational_status_valid.is_set || is_set(operational_status_valid.operation)) leaf_name_data.push_back(operational_status_valid.get_name_leafdata());
-    if (received_at_risk_notification_time_remaining.is_set || is_set(received_at_risk_notification_time_remaining.operation)) leaf_name_data.push_back(received_at_risk_notification_time_remaining.get_name_leafdata());
-    if (received_at_risk_notification_timestamp.is_set || is_set(received_at_risk_notification_timestamp.operation)) leaf_name_data.push_back(received_at_risk_notification_timestamp.get_name_leafdata());
-    if (remote_event.is_set || is_set(remote_event.operation)) leaf_name_data.push_back(remote_event.get_name_leafdata());
-    if (remote_event_valid.is_set || is_set(remote_event_valid.operation)) leaf_name_data.push_back(remote_event_valid.get_name_leafdata());
-    if (remote_loopback.is_set || is_set(remote_loopback.operation)) leaf_name_data.push_back(remote_loopback.get_name_leafdata());
-    if (remote_loopback_valid.is_set || is_set(remote_loopback_valid.operation)) leaf_name_data.push_back(remote_loopback_valid.get_name_leafdata());
-    if (remote_mac_address.is_set || is_set(remote_mac_address.operation)) leaf_name_data.push_back(remote_mac_address.get_name_leafdata());
-    if (remote_mac_address_valid.is_set || is_set(remote_mac_address_valid.operation)) leaf_name_data.push_back(remote_mac_address_valid.get_name_leafdata());
-    if (remote_mode.is_set || is_set(remote_mode.operation)) leaf_name_data.push_back(remote_mode.get_name_leafdata());
-    if (remote_mode_valid.is_set || is_set(remote_mode_valid.operation)) leaf_name_data.push_back(remote_mode_valid.get_name_leafdata());
-    if (remote_mtu.is_set || is_set(remote_mtu.operation)) leaf_name_data.push_back(remote_mtu.get_name_leafdata());
-    if (remote_mtu_valid.is_set || is_set(remote_mtu_valid.operation)) leaf_name_data.push_back(remote_mtu_valid.get_name_leafdata());
-    if (remote_mwd_key.is_set || is_set(remote_mwd_key.operation)) leaf_name_data.push_back(remote_mwd_key.get_name_leafdata());
-    if (remote_mwd_key_valid.is_set || is_set(remote_mwd_key_valid.operation)) leaf_name_data.push_back(remote_mwd_key_valid.get_name_leafdata());
-    if (remote_revision.is_set || is_set(remote_revision.operation)) leaf_name_data.push_back(remote_revision.get_name_leafdata());
-    if (remote_revisionvalid.is_set || is_set(remote_revisionvalid.operation)) leaf_name_data.push_back(remote_revisionvalid.get_name_leafdata());
-    if (remote_unidirectional.is_set || is_set(remote_unidirectional.operation)) leaf_name_data.push_back(remote_unidirectional.get_name_leafdata());
-    if (remote_unidirectional_valid.is_set || is_set(remote_unidirectional_valid.operation)) leaf_name_data.push_back(remote_unidirectional_valid.get_name_leafdata());
-    if (remote_variable.is_set || is_set(remote_variable.operation)) leaf_name_data.push_back(remote_variable.get_name_leafdata());
-    if (remote_variable_valid.is_set || is_set(remote_variable_valid.operation)) leaf_name_data.push_back(remote_variable_valid.get_name_leafdata());
-    if (remote_vendor_info.is_set || is_set(remote_vendor_info.operation)) leaf_name_data.push_back(remote_vendor_info.get_name_leafdata());
-    if (remote_vendor_info_valid.is_set || is_set(remote_vendor_info_valid.operation)) leaf_name_data.push_back(remote_vendor_info_valid.get_name_leafdata());
-    if (remote_vendor_oui.is_set || is_set(remote_vendor_oui.operation)) leaf_name_data.push_back(remote_vendor_oui.get_name_leafdata());
-    if (remote_vendor_oui_valid.is_set || is_set(remote_vendor_oui_valid.operation)) leaf_name_data.push_back(remote_vendor_oui_valid.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (local_evaluating.is_set || is_set(local_evaluating.yfilter)) leaf_name_data.push_back(local_evaluating.get_name_leafdata());
+    if (local_function_event.is_set || is_set(local_function_event.yfilter)) leaf_name_data.push_back(local_function_event.get_name_leafdata());
+    if (local_function_event_valid.is_set || is_set(local_function_event_valid.yfilter)) leaf_name_data.push_back(local_function_event_valid.get_name_leafdata());
+    if (local_function_loopback.is_set || is_set(local_function_loopback.yfilter)) leaf_name_data.push_back(local_function_loopback.get_name_leafdata());
+    if (local_function_loopback_valid.is_set || is_set(local_function_loopback_valid.yfilter)) leaf_name_data.push_back(local_function_loopback_valid.get_name_leafdata());
+    if (local_function_unidirectional.is_set || is_set(local_function_unidirectional.yfilter)) leaf_name_data.push_back(local_function_unidirectional.get_name_leafdata());
+    if (local_function_unidirectional_valid.is_set || is_set(local_function_unidirectional_valid.yfilter)) leaf_name_data.push_back(local_function_unidirectional_valid.get_name_leafdata());
+    if (local_functionvariable.is_set || is_set(local_functionvariable.yfilter)) leaf_name_data.push_back(local_functionvariable.get_name_leafdata());
+    if (local_functionvariable_valid.is_set || is_set(local_functionvariable_valid.yfilter)) leaf_name_data.push_back(local_functionvariable_valid.get_name_leafdata());
+    if (local_mode.is_set || is_set(local_mode.yfilter)) leaf_name_data.push_back(local_mode.get_name_leafdata());
+    if (local_mode_valid.is_set || is_set(local_mode_valid.yfilter)) leaf_name_data.push_back(local_mode_valid.get_name_leafdata());
+    if (local_mtu.is_set || is_set(local_mtu.yfilter)) leaf_name_data.push_back(local_mtu.get_name_leafdata());
+    if (local_mtu_valid.is_set || is_set(local_mtu_valid.yfilter)) leaf_name_data.push_back(local_mtu_valid.get_name_leafdata());
+    if (local_mwd_key.is_set || is_set(local_mwd_key.yfilter)) leaf_name_data.push_back(local_mwd_key.get_name_leafdata());
+    if (local_mwd_key_valid.is_set || is_set(local_mwd_key_valid.yfilter)) leaf_name_data.push_back(local_mwd_key_valid.get_name_leafdata());
+    if (local_operational.is_set || is_set(local_operational.yfilter)) leaf_name_data.push_back(local_operational.get_name_leafdata());
+    if (local_revision.is_set || is_set(local_revision.yfilter)) leaf_name_data.push_back(local_revision.get_name_leafdata());
+    if (local_revisionvalid.is_set || is_set(local_revisionvalid.yfilter)) leaf_name_data.push_back(local_revisionvalid.get_name_leafdata());
+    if (loopback_mode.is_set || is_set(loopback_mode.yfilter)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
+    if (loopback_mode_valid.is_set || is_set(loopback_mode_valid.yfilter)) leaf_name_data.push_back(loopback_mode_valid.get_name_leafdata());
+    if (miswired.is_set || is_set(miswired.yfilter)) leaf_name_data.push_back(miswired.get_name_leafdata());
+    if (miswired_valid.is_set || is_set(miswired_valid.yfilter)) leaf_name_data.push_back(miswired_valid.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (operational_status.is_set || is_set(operational_status.yfilter)) leaf_name_data.push_back(operational_status.get_name_leafdata());
+    if (operational_status_valid.is_set || is_set(operational_status_valid.yfilter)) leaf_name_data.push_back(operational_status_valid.get_name_leafdata());
+    if (received_at_risk_notification_time_remaining.is_set || is_set(received_at_risk_notification_time_remaining.yfilter)) leaf_name_data.push_back(received_at_risk_notification_time_remaining.get_name_leafdata());
+    if (received_at_risk_notification_timestamp.is_set || is_set(received_at_risk_notification_timestamp.yfilter)) leaf_name_data.push_back(received_at_risk_notification_timestamp.get_name_leafdata());
+    if (remote_event.is_set || is_set(remote_event.yfilter)) leaf_name_data.push_back(remote_event.get_name_leafdata());
+    if (remote_event_valid.is_set || is_set(remote_event_valid.yfilter)) leaf_name_data.push_back(remote_event_valid.get_name_leafdata());
+    if (remote_loopback.is_set || is_set(remote_loopback.yfilter)) leaf_name_data.push_back(remote_loopback.get_name_leafdata());
+    if (remote_loopback_valid.is_set || is_set(remote_loopback_valid.yfilter)) leaf_name_data.push_back(remote_loopback_valid.get_name_leafdata());
+    if (remote_mac_address.is_set || is_set(remote_mac_address.yfilter)) leaf_name_data.push_back(remote_mac_address.get_name_leafdata());
+    if (remote_mac_address_valid.is_set || is_set(remote_mac_address_valid.yfilter)) leaf_name_data.push_back(remote_mac_address_valid.get_name_leafdata());
+    if (remote_mode.is_set || is_set(remote_mode.yfilter)) leaf_name_data.push_back(remote_mode.get_name_leafdata());
+    if (remote_mode_valid.is_set || is_set(remote_mode_valid.yfilter)) leaf_name_data.push_back(remote_mode_valid.get_name_leafdata());
+    if (remote_mtu.is_set || is_set(remote_mtu.yfilter)) leaf_name_data.push_back(remote_mtu.get_name_leafdata());
+    if (remote_mtu_valid.is_set || is_set(remote_mtu_valid.yfilter)) leaf_name_data.push_back(remote_mtu_valid.get_name_leafdata());
+    if (remote_mwd_key.is_set || is_set(remote_mwd_key.yfilter)) leaf_name_data.push_back(remote_mwd_key.get_name_leafdata());
+    if (remote_mwd_key_valid.is_set || is_set(remote_mwd_key_valid.yfilter)) leaf_name_data.push_back(remote_mwd_key_valid.get_name_leafdata());
+    if (remote_revision.is_set || is_set(remote_revision.yfilter)) leaf_name_data.push_back(remote_revision.get_name_leafdata());
+    if (remote_revisionvalid.is_set || is_set(remote_revisionvalid.yfilter)) leaf_name_data.push_back(remote_revisionvalid.get_name_leafdata());
+    if (remote_unidirectional.is_set || is_set(remote_unidirectional.yfilter)) leaf_name_data.push_back(remote_unidirectional.get_name_leafdata());
+    if (remote_unidirectional_valid.is_set || is_set(remote_unidirectional_valid.yfilter)) leaf_name_data.push_back(remote_unidirectional_valid.get_name_leafdata());
+    if (remote_variable.is_set || is_set(remote_variable.yfilter)) leaf_name_data.push_back(remote_variable.get_name_leafdata());
+    if (remote_variable_valid.is_set || is_set(remote_variable_valid.yfilter)) leaf_name_data.push_back(remote_variable_valid.get_name_leafdata());
+    if (remote_vendor_info.is_set || is_set(remote_vendor_info.yfilter)) leaf_name_data.push_back(remote_vendor_info.get_name_leafdata());
+    if (remote_vendor_info_valid.is_set || is_set(remote_vendor_info_valid.yfilter)) leaf_name_data.push_back(remote_vendor_info_valid.get_name_leafdata());
+    if (remote_vendor_oui.is_set || is_set(remote_vendor_oui.yfilter)) leaf_name_data.push_back(remote_vendor_oui.get_name_leafdata());
+    if (remote_vendor_oui_valid.is_set || is_set(remote_vendor_oui_valid.yfilter)) leaf_name_data.push_back(remote_vendor_oui_valid.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -559,208 +588,519 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::DiscoveryInfoInterf
     return children;
 }
 
-void EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-evaluating")
     {
         local_evaluating = value;
+        local_evaluating.value_namespace = name_space;
+        local_evaluating.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-function-event")
     {
         local_function_event = value;
+        local_function_event.value_namespace = name_space;
+        local_function_event.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-function-event-valid")
     {
         local_function_event_valid = value;
+        local_function_event_valid.value_namespace = name_space;
+        local_function_event_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-function-loopback")
     {
         local_function_loopback = value;
+        local_function_loopback.value_namespace = name_space;
+        local_function_loopback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-function-loopback-valid")
     {
         local_function_loopback_valid = value;
+        local_function_loopback_valid.value_namespace = name_space;
+        local_function_loopback_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-function-unidirectional")
     {
         local_function_unidirectional = value;
+        local_function_unidirectional.value_namespace = name_space;
+        local_function_unidirectional.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-function-unidirectional-valid")
     {
         local_function_unidirectional_valid = value;
+        local_function_unidirectional_valid.value_namespace = name_space;
+        local_function_unidirectional_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-functionvariable")
     {
         local_functionvariable = value;
+        local_functionvariable.value_namespace = name_space;
+        local_functionvariable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-functionvariable-valid")
     {
         local_functionvariable_valid = value;
+        local_functionvariable_valid.value_namespace = name_space;
+        local_functionvariable_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mode")
     {
         local_mode = value;
+        local_mode.value_namespace = name_space;
+        local_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mode-valid")
     {
         local_mode_valid = value;
+        local_mode_valid.value_namespace = name_space;
+        local_mode_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mtu")
     {
         local_mtu = value;
+        local_mtu.value_namespace = name_space;
+        local_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mtu-valid")
     {
         local_mtu_valid = value;
+        local_mtu_valid.value_namespace = name_space;
+        local_mtu_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mwd-key")
     {
         local_mwd_key = value;
+        local_mwd_key.value_namespace = name_space;
+        local_mwd_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mwd-key-valid")
     {
         local_mwd_key_valid = value;
+        local_mwd_key_valid.value_namespace = name_space;
+        local_mwd_key_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-operational")
     {
         local_operational = value;
+        local_operational.value_namespace = name_space;
+        local_operational.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-revision")
     {
         local_revision = value;
+        local_revision.value_namespace = name_space;
+        local_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-revisionvalid")
     {
         local_revisionvalid = value;
+        local_revisionvalid.value_namespace = name_space;
+        local_revisionvalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loopback-mode")
     {
         loopback_mode = value;
+        loopback_mode.value_namespace = name_space;
+        loopback_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loopback-mode-valid")
     {
         loopback_mode_valid = value;
+        loopback_mode_valid.value_namespace = name_space;
+        loopback_mode_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "miswired")
     {
         miswired = value;
+        miswired.value_namespace = name_space;
+        miswired.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "miswired-valid")
     {
         miswired_valid = value;
+        miswired_valid.value_namespace = name_space;
+        miswired_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational-status")
     {
         operational_status = value;
+        operational_status.value_namespace = name_space;
+        operational_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational-status-valid")
     {
         operational_status_valid = value;
+        operational_status_valid.value_namespace = name_space;
+        operational_status_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-at-risk-notification-time-remaining")
     {
         received_at_risk_notification_time_remaining = value;
+        received_at_risk_notification_time_remaining.value_namespace = name_space;
+        received_at_risk_notification_time_remaining.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-at-risk-notification-timestamp")
     {
         received_at_risk_notification_timestamp = value;
+        received_at_risk_notification_timestamp.value_namespace = name_space;
+        received_at_risk_notification_timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-event")
     {
         remote_event = value;
+        remote_event.value_namespace = name_space;
+        remote_event.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-event-valid")
     {
         remote_event_valid = value;
+        remote_event_valid.value_namespace = name_space;
+        remote_event_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback")
     {
         remote_loopback = value;
+        remote_loopback.value_namespace = name_space;
+        remote_loopback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback-valid")
     {
         remote_loopback_valid = value;
+        remote_loopback_valid.value_namespace = name_space;
+        remote_loopback_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mac-address")
     {
         remote_mac_address = value;
+        remote_mac_address.value_namespace = name_space;
+        remote_mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mac-address-valid")
     {
         remote_mac_address_valid = value;
+        remote_mac_address_valid.value_namespace = name_space;
+        remote_mac_address_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mode")
     {
         remote_mode = value;
+        remote_mode.value_namespace = name_space;
+        remote_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mode-valid")
     {
         remote_mode_valid = value;
+        remote_mode_valid.value_namespace = name_space;
+        remote_mode_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mtu")
     {
         remote_mtu = value;
+        remote_mtu.value_namespace = name_space;
+        remote_mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mtu-valid")
     {
         remote_mtu_valid = value;
+        remote_mtu_valid.value_namespace = name_space;
+        remote_mtu_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mwd-key")
     {
         remote_mwd_key = value;
+        remote_mwd_key.value_namespace = name_space;
+        remote_mwd_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mwd-key-valid")
     {
         remote_mwd_key_valid = value;
+        remote_mwd_key_valid.value_namespace = name_space;
+        remote_mwd_key_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-revision")
     {
         remote_revision = value;
+        remote_revision.value_namespace = name_space;
+        remote_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-revisionvalid")
     {
         remote_revisionvalid = value;
+        remote_revisionvalid.value_namespace = name_space;
+        remote_revisionvalid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-unidirectional")
     {
         remote_unidirectional = value;
+        remote_unidirectional.value_namespace = name_space;
+        remote_unidirectional.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-unidirectional-valid")
     {
         remote_unidirectional_valid = value;
+        remote_unidirectional_valid.value_namespace = name_space;
+        remote_unidirectional_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-variable")
     {
         remote_variable = value;
+        remote_variable.value_namespace = name_space;
+        remote_variable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-variable-valid")
     {
         remote_variable_valid = value;
+        remote_variable_valid.value_namespace = name_space;
+        remote_variable_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-vendor-info")
     {
         remote_vendor_info = value;
+        remote_vendor_info.value_namespace = name_space;
+        remote_vendor_info.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-vendor-info-valid")
     {
         remote_vendor_info_valid = value;
+        remote_vendor_info_valid.value_namespace = name_space;
+        remote_vendor_info_valid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-vendor-oui")
     {
         remote_vendor_oui = value;
+        remote_vendor_oui.value_namespace = name_space;
+        remote_vendor_oui.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-vendor-oui-valid")
     {
         remote_vendor_oui_valid = value;
+        remote_vendor_oui_valid.value_namespace = name_space;
+        remote_vendor_oui_valid.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+    if(value_path == "local-evaluating")
+    {
+        local_evaluating.yfilter = yfilter;
+    }
+    if(value_path == "local-function-event")
+    {
+        local_function_event.yfilter = yfilter;
+    }
+    if(value_path == "local-function-event-valid")
+    {
+        local_function_event_valid.yfilter = yfilter;
+    }
+    if(value_path == "local-function-loopback")
+    {
+        local_function_loopback.yfilter = yfilter;
+    }
+    if(value_path == "local-function-loopback-valid")
+    {
+        local_function_loopback_valid.yfilter = yfilter;
+    }
+    if(value_path == "local-function-unidirectional")
+    {
+        local_function_unidirectional.yfilter = yfilter;
+    }
+    if(value_path == "local-function-unidirectional-valid")
+    {
+        local_function_unidirectional_valid.yfilter = yfilter;
+    }
+    if(value_path == "local-functionvariable")
+    {
+        local_functionvariable.yfilter = yfilter;
+    }
+    if(value_path == "local-functionvariable-valid")
+    {
+        local_functionvariable_valid.yfilter = yfilter;
+    }
+    if(value_path == "local-mode")
+    {
+        local_mode.yfilter = yfilter;
+    }
+    if(value_path == "local-mode-valid")
+    {
+        local_mode_valid.yfilter = yfilter;
+    }
+    if(value_path == "local-mtu")
+    {
+        local_mtu.yfilter = yfilter;
+    }
+    if(value_path == "local-mtu-valid")
+    {
+        local_mtu_valid.yfilter = yfilter;
+    }
+    if(value_path == "local-mwd-key")
+    {
+        local_mwd_key.yfilter = yfilter;
+    }
+    if(value_path == "local-mwd-key-valid")
+    {
+        local_mwd_key_valid.yfilter = yfilter;
+    }
+    if(value_path == "local-operational")
+    {
+        local_operational.yfilter = yfilter;
+    }
+    if(value_path == "local-revision")
+    {
+        local_revision.yfilter = yfilter;
+    }
+    if(value_path == "local-revisionvalid")
+    {
+        local_revisionvalid.yfilter = yfilter;
+    }
+    if(value_path == "loopback-mode")
+    {
+        loopback_mode.yfilter = yfilter;
+    }
+    if(value_path == "loopback-mode-valid")
+    {
+        loopback_mode_valid.yfilter = yfilter;
+    }
+    if(value_path == "miswired")
+    {
+        miswired.yfilter = yfilter;
+    }
+    if(value_path == "miswired-valid")
+    {
+        miswired_valid.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "operational-status")
+    {
+        operational_status.yfilter = yfilter;
+    }
+    if(value_path == "operational-status-valid")
+    {
+        operational_status_valid.yfilter = yfilter;
+    }
+    if(value_path == "received-at-risk-notification-time-remaining")
+    {
+        received_at_risk_notification_time_remaining.yfilter = yfilter;
+    }
+    if(value_path == "received-at-risk-notification-timestamp")
+    {
+        received_at_risk_notification_timestamp.yfilter = yfilter;
+    }
+    if(value_path == "remote-event")
+    {
+        remote_event.yfilter = yfilter;
+    }
+    if(value_path == "remote-event-valid")
+    {
+        remote_event_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback")
+    {
+        remote_loopback.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback-valid")
+    {
+        remote_loopback_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-mac-address")
+    {
+        remote_mac_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-mac-address-valid")
+    {
+        remote_mac_address_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-mode")
+    {
+        remote_mode.yfilter = yfilter;
+    }
+    if(value_path == "remote-mode-valid")
+    {
+        remote_mode_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-mtu")
+    {
+        remote_mtu.yfilter = yfilter;
+    }
+    if(value_path == "remote-mtu-valid")
+    {
+        remote_mtu_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-mwd-key")
+    {
+        remote_mwd_key.yfilter = yfilter;
+    }
+    if(value_path == "remote-mwd-key-valid")
+    {
+        remote_mwd_key_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-revision")
+    {
+        remote_revision.yfilter = yfilter;
+    }
+    if(value_path == "remote-revisionvalid")
+    {
+        remote_revisionvalid.yfilter = yfilter;
+    }
+    if(value_path == "remote-unidirectional")
+    {
+        remote_unidirectional.yfilter = yfilter;
+    }
+    if(value_path == "remote-unidirectional-valid")
+    {
+        remote_unidirectional_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-variable")
+    {
+        remote_variable.yfilter = yfilter;
+    }
+    if(value_path == "remote-variable-valid")
+    {
+        remote_variable_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-vendor-info")
+    {
+        remote_vendor_info.yfilter = yfilter;
+    }
+    if(value_path == "remote-vendor-info-valid")
+    {
+        remote_vendor_info_valid.yfilter = yfilter;
+    }
+    if(value_path == "remote-vendor-oui")
+    {
+        remote_vendor_oui.yfilter = yfilter;
+    }
+    if(value_path == "remote-vendor-oui-valid")
+    {
+        remote_vendor_oui_valid.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::DiscoveryInfoInterfaces::DiscoveryInfoInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-interface" || name == "local-evaluating" || name == "local-function-event" || name == "local-function-event-valid" || name == "local-function-loopback" || name == "local-function-loopback-valid" || name == "local-function-unidirectional" || name == "local-function-unidirectional-valid" || name == "local-functionvariable" || name == "local-functionvariable-valid" || name == "local-mode" || name == "local-mode-valid" || name == "local-mtu" || name == "local-mtu-valid" || name == "local-mwd-key" || name == "local-mwd-key-valid" || name == "local-operational" || name == "local-revision" || name == "local-revisionvalid" || name == "loopback-mode" || name == "loopback-mode-valid" || name == "miswired" || name == "miswired-valid" || name == "name" || name == "operational-status" || name == "operational-status-valid" || name == "received-at-risk-notification-time-remaining" || name == "received-at-risk-notification-timestamp" || name == "remote-event" || name == "remote-event-valid" || name == "remote-loopback" || name == "remote-loopback-valid" || name == "remote-mac-address" || name == "remote-mac-address-valid" || name == "remote-mode" || name == "remote-mode-valid" || name == "remote-mtu" || name == "remote-mtu-valid" || name == "remote-mwd-key" || name == "remote-mwd-key-valid" || name == "remote-revision" || name == "remote-revisionvalid" || name == "remote-unidirectional" || name == "remote-unidirectional-valid" || name == "remote-variable" || name == "remote-variable-valid" || name == "remote-vendor-info" || name == "remote-vendor-info-valid" || name == "remote-vendor-oui" || name == "remote-vendor-oui-valid")
+        return true;
+    return false;
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterfaces()
@@ -789,7 +1129,7 @@ bool EtherLinkOam::InterfaceStateInterfaces::has_operation() const
         if(interface_state_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherLinkOam::InterfaceStateInterfaces::get_segment_path() const
@@ -854,8 +1194,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInter
     return children;
 }
 
-void EtherLinkOam::InterfaceStateInterfaces::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::InterfaceStateInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherLinkOam::InterfaceStateInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::InterfaceStateInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-state-interface")
+        return true;
+    return false;
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::InterfaceStateInterface()
@@ -895,13 +1246,13 @@ bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::has_data()
 
 bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
-	|| is_set(local_mwd_key.operation)
-	|| is_set(protocol_code.operation)
-	|| is_set(remote_mwd_key.operation)
-	|| is_set(remote_mwd_key_present.operation)
-	|| is_set(rx_fault.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| ydk::is_set(local_mwd_key.yfilter)
+	|| ydk::is_set(protocol_code.yfilter)
+	|| ydk::is_set(remote_mwd_key.yfilter)
+	|| ydk::is_set(remote_mwd_key_present.yfilter)
+	|| ydk::is_set(rx_fault.yfilter)
 	|| (efd_triggers !=  nullptr && efd_triggers->has_operation())
 	|| (errors !=  nullptr && errors->has_operation());
 }
@@ -929,12 +1280,12 @@ const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-    if (local_mwd_key.is_set || is_set(local_mwd_key.operation)) leaf_name_data.push_back(local_mwd_key.get_name_leafdata());
-    if (protocol_code.is_set || is_set(protocol_code.operation)) leaf_name_data.push_back(protocol_code.get_name_leafdata());
-    if (remote_mwd_key.is_set || is_set(remote_mwd_key.operation)) leaf_name_data.push_back(remote_mwd_key.get_name_leafdata());
-    if (remote_mwd_key_present.is_set || is_set(remote_mwd_key_present.operation)) leaf_name_data.push_back(remote_mwd_key_present.get_name_leafdata());
-    if (rx_fault.is_set || is_set(rx_fault.operation)) leaf_name_data.push_back(rx_fault.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (local_mwd_key.is_set || is_set(local_mwd_key.yfilter)) leaf_name_data.push_back(local_mwd_key.get_name_leafdata());
+    if (protocol_code.is_set || is_set(protocol_code.yfilter)) leaf_name_data.push_back(protocol_code.get_name_leafdata());
+    if (remote_mwd_key.is_set || is_set(remote_mwd_key.yfilter)) leaf_name_data.push_back(remote_mwd_key.get_name_leafdata());
+    if (remote_mwd_key_present.is_set || is_set(remote_mwd_key_present.yfilter)) leaf_name_data.push_back(remote_mwd_key_present.get_name_leafdata());
+    if (rx_fault.is_set || is_set(rx_fault.yfilter)) leaf_name_data.push_back(rx_fault.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -981,32 +1332,79 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInter
     return children;
 }
 
-void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-mwd-key")
     {
         local_mwd_key = value;
+        local_mwd_key.value_namespace = name_space;
+        local_mwd_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol-code")
     {
         protocol_code = value;
+        protocol_code.value_namespace = name_space;
+        protocol_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mwd-key")
     {
         remote_mwd_key = value;
+        remote_mwd_key.value_namespace = name_space;
+        remote_mwd_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-mwd-key-present")
     {
         remote_mwd_key_present = value;
+        remote_mwd_key_present.value_namespace = name_space;
+        remote_mwd_key_present.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-fault")
     {
         rx_fault = value;
+        rx_fault.value_namespace = name_space;
+        rx_fault.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+    if(value_path == "local-mwd-key")
+    {
+        local_mwd_key.yfilter = yfilter;
+    }
+    if(value_path == "protocol-code")
+    {
+        protocol_code.yfilter = yfilter;
+    }
+    if(value_path == "remote-mwd-key")
+    {
+        remote_mwd_key.yfilter = yfilter;
+    }
+    if(value_path == "remote-mwd-key-present")
+    {
+        remote_mwd_key_present.yfilter = yfilter;
+    }
+    if(value_path == "rx-fault")
+    {
+        rx_fault.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "efd-triggers" || name == "errors" || name == "member-interface" || name == "local-mwd-key" || name == "protocol-code" || name == "remote-mwd-key" || name == "remote-mwd-key-present" || name == "rx-fault")
+        return true;
+    return false;
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::Errors()
@@ -1045,17 +1443,17 @@ bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::ha
 
 bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(caps_add_error_code.operation)
-	|| is_set(caps_add_reason.operation)
-	|| is_set(epi_error_code.operation)
-	|| is_set(epi_reason.operation)
-	|| is_set(pfi_error_code.operation)
-	|| is_set(pfi_reason.operation)
-	|| is_set(platform_error_code.operation)
-	|| is_set(platform_reason.operation)
-	|| is_set(spio_error_code.operation)
-	|| is_set(spio_reason.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(caps_add_error_code.yfilter)
+	|| ydk::is_set(caps_add_reason.yfilter)
+	|| ydk::is_set(epi_error_code.yfilter)
+	|| ydk::is_set(epi_reason.yfilter)
+	|| ydk::is_set(pfi_error_code.yfilter)
+	|| ydk::is_set(pfi_reason.yfilter)
+	|| ydk::is_set(platform_error_code.yfilter)
+	|| ydk::is_set(platform_reason.yfilter)
+	|| ydk::is_set(spio_error_code.yfilter)
+	|| ydk::is_set(spio_reason.yfilter);
 }
 
 std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::get_segment_path() const
@@ -1081,16 +1479,16 @@ const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (caps_add_error_code.is_set || is_set(caps_add_error_code.operation)) leaf_name_data.push_back(caps_add_error_code.get_name_leafdata());
-    if (caps_add_reason.is_set || is_set(caps_add_reason.operation)) leaf_name_data.push_back(caps_add_reason.get_name_leafdata());
-    if (epi_error_code.is_set || is_set(epi_error_code.operation)) leaf_name_data.push_back(epi_error_code.get_name_leafdata());
-    if (epi_reason.is_set || is_set(epi_reason.operation)) leaf_name_data.push_back(epi_reason.get_name_leafdata());
-    if (pfi_error_code.is_set || is_set(pfi_error_code.operation)) leaf_name_data.push_back(pfi_error_code.get_name_leafdata());
-    if (pfi_reason.is_set || is_set(pfi_reason.operation)) leaf_name_data.push_back(pfi_reason.get_name_leafdata());
-    if (platform_error_code.is_set || is_set(platform_error_code.operation)) leaf_name_data.push_back(platform_error_code.get_name_leafdata());
-    if (platform_reason.is_set || is_set(platform_reason.operation)) leaf_name_data.push_back(platform_reason.get_name_leafdata());
-    if (spio_error_code.is_set || is_set(spio_error_code.operation)) leaf_name_data.push_back(spio_error_code.get_name_leafdata());
-    if (spio_reason.is_set || is_set(spio_reason.operation)) leaf_name_data.push_back(spio_reason.get_name_leafdata());
+    if (caps_add_error_code.is_set || is_set(caps_add_error_code.yfilter)) leaf_name_data.push_back(caps_add_error_code.get_name_leafdata());
+    if (caps_add_reason.is_set || is_set(caps_add_reason.yfilter)) leaf_name_data.push_back(caps_add_reason.get_name_leafdata());
+    if (epi_error_code.is_set || is_set(epi_error_code.yfilter)) leaf_name_data.push_back(epi_error_code.get_name_leafdata());
+    if (epi_reason.is_set || is_set(epi_reason.yfilter)) leaf_name_data.push_back(epi_reason.get_name_leafdata());
+    if (pfi_error_code.is_set || is_set(pfi_error_code.yfilter)) leaf_name_data.push_back(pfi_error_code.get_name_leafdata());
+    if (pfi_reason.is_set || is_set(pfi_reason.yfilter)) leaf_name_data.push_back(pfi_reason.get_name_leafdata());
+    if (platform_error_code.is_set || is_set(platform_error_code.yfilter)) leaf_name_data.push_back(platform_error_code.get_name_leafdata());
+    if (platform_reason.is_set || is_set(platform_reason.yfilter)) leaf_name_data.push_back(platform_reason.get_name_leafdata());
+    if (spio_error_code.is_set || is_set(spio_error_code.yfilter)) leaf_name_data.push_back(spio_error_code.get_name_leafdata());
+    if (spio_reason.is_set || is_set(spio_reason.yfilter)) leaf_name_data.push_back(spio_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1109,48 +1507,119 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInter
     return children;
 }
 
-void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "caps-add-error-code")
     {
         caps_add_error_code = value;
+        caps_add_error_code.value_namespace = name_space;
+        caps_add_error_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "caps-add-reason")
     {
         caps_add_reason = value;
+        caps_add_reason.value_namespace = name_space;
+        caps_add_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "epi-error-code")
     {
         epi_error_code = value;
+        epi_error_code.value_namespace = name_space;
+        epi_error_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "epi-reason")
     {
         epi_reason = value;
+        epi_reason.value_namespace = name_space;
+        epi_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pfi-error-code")
     {
         pfi_error_code = value;
+        pfi_error_code.value_namespace = name_space;
+        pfi_error_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pfi-reason")
     {
         pfi_reason = value;
+        pfi_reason.value_namespace = name_space;
+        pfi_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-error-code")
     {
         platform_error_code = value;
+        platform_error_code.value_namespace = name_space;
+        platform_error_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "platform-reason")
     {
         platform_reason = value;
+        platform_reason.value_namespace = name_space;
+        platform_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spio-error-code")
     {
         spio_error_code = value;
+        spio_error_code.value_namespace = name_space;
+        spio_error_code.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "spio-reason")
     {
         spio_reason = value;
+        spio_reason.value_namespace = name_space;
+        spio_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "caps-add-error-code")
+    {
+        caps_add_error_code.yfilter = yfilter;
+    }
+    if(value_path == "caps-add-reason")
+    {
+        caps_add_reason.yfilter = yfilter;
+    }
+    if(value_path == "epi-error-code")
+    {
+        epi_error_code.yfilter = yfilter;
+    }
+    if(value_path == "epi-reason")
+    {
+        epi_reason.yfilter = yfilter;
+    }
+    if(value_path == "pfi-error-code")
+    {
+        pfi_error_code.yfilter = yfilter;
+    }
+    if(value_path == "pfi-reason")
+    {
+        pfi_reason.yfilter = yfilter;
+    }
+    if(value_path == "platform-error-code")
+    {
+        platform_error_code.yfilter = yfilter;
+    }
+    if(value_path == "platform-reason")
+    {
+        platform_reason.yfilter = yfilter;
+    }
+    if(value_path == "spio-error-code")
+    {
+        spio_error_code.yfilter = yfilter;
+    }
+    if(value_path == "spio-reason")
+    {
+        spio_reason.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::Errors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "caps-add-error-code" || name == "caps-add-reason" || name == "epi-error-code" || name == "epi-reason" || name == "pfi-error-code" || name == "pfi-reason" || name == "platform-error-code" || name == "platform-reason" || name == "spio-error-code" || name == "spio-reason")
+        return true;
+    return false;
 }
 
 EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::EfdTriggers()
@@ -1179,12 +1648,12 @@ bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTrigger
 
 bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(capabilities_conflict.operation)
-	|| is_set(discovery_timed_out.operation)
-	|| is_set(link_fault_received.operation)
-	|| is_set(session_down.operation)
-	|| is_set(wiring_conflict.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(capabilities_conflict.yfilter)
+	|| ydk::is_set(discovery_timed_out.yfilter)
+	|| ydk::is_set(link_fault_received.yfilter)
+	|| ydk::is_set(session_down.yfilter)
+	|| ydk::is_set(wiring_conflict.yfilter);
 }
 
 std::string EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::get_segment_path() const
@@ -1210,11 +1679,11 @@ const EntityPath EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (capabilities_conflict.is_set || is_set(capabilities_conflict.operation)) leaf_name_data.push_back(capabilities_conflict.get_name_leafdata());
-    if (discovery_timed_out.is_set || is_set(discovery_timed_out.operation)) leaf_name_data.push_back(discovery_timed_out.get_name_leafdata());
-    if (link_fault_received.is_set || is_set(link_fault_received.operation)) leaf_name_data.push_back(link_fault_received.get_name_leafdata());
-    if (session_down.is_set || is_set(session_down.operation)) leaf_name_data.push_back(session_down.get_name_leafdata());
-    if (wiring_conflict.is_set || is_set(wiring_conflict.operation)) leaf_name_data.push_back(wiring_conflict.get_name_leafdata());
+    if (capabilities_conflict.is_set || is_set(capabilities_conflict.yfilter)) leaf_name_data.push_back(capabilities_conflict.get_name_leafdata());
+    if (discovery_timed_out.is_set || is_set(discovery_timed_out.yfilter)) leaf_name_data.push_back(discovery_timed_out.get_name_leafdata());
+    if (link_fault_received.is_set || is_set(link_fault_received.yfilter)) leaf_name_data.push_back(link_fault_received.get_name_leafdata());
+    if (session_down.is_set || is_set(session_down.yfilter)) leaf_name_data.push_back(session_down.get_name_leafdata());
+    if (wiring_conflict.is_set || is_set(wiring_conflict.yfilter)) leaf_name_data.push_back(wiring_conflict.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1233,28 +1702,69 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::InterfaceStateInter
     return children;
 }
 
-void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "capabilities-conflict")
     {
         capabilities_conflict = value;
+        capabilities_conflict.value_namespace = name_space;
+        capabilities_conflict.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discovery-timed-out")
     {
         discovery_timed_out = value;
+        discovery_timed_out.value_namespace = name_space;
+        discovery_timed_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-fault-received")
     {
         link_fault_received = value;
+        link_fault_received.value_namespace = name_space;
+        link_fault_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-down")
     {
         session_down = value;
+        session_down.value_namespace = name_space;
+        session_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wiring-conflict")
     {
         wiring_conflict = value;
+        wiring_conflict.value_namespace = name_space;
+        wiring_conflict.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capabilities-conflict")
+    {
+        capabilities_conflict.yfilter = yfilter;
+    }
+    if(value_path == "discovery-timed-out")
+    {
+        discovery_timed_out.yfilter = yfilter;
+    }
+    if(value_path == "link-fault-received")
+    {
+        link_fault_received.yfilter = yfilter;
+    }
+    if(value_path == "session-down")
+    {
+        session_down.yfilter = yfilter;
+    }
+    if(value_path == "wiring-conflict")
+    {
+        wiring_conflict.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::InterfaceStateInterfaces::InterfaceStateInterface::EfdTriggers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "capabilities-conflict" || name == "discovery-timed-out" || name == "link-fault-received" || name == "session-down" || name == "wiring-conflict")
+        return true;
+    return false;
 }
 
 EtherLinkOam::RunningConfigInterfaces::RunningConfigInterfaces()
@@ -1283,7 +1793,7 @@ bool EtherLinkOam::RunningConfigInterfaces::has_operation() const
         if(running_config_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherLinkOam::RunningConfigInterfaces::get_segment_path() const
@@ -1348,8 +1858,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::RunningConfigInterf
     return children;
 }
 
-void EtherLinkOam::RunningConfigInterfaces::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::RunningConfigInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherLinkOam::RunningConfigInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::RunningConfigInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "running-config-interface")
+        return true;
+    return false;
 }
 
 EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::RunningConfigInterface()
@@ -1526,86 +2047,86 @@ bool EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::has_data() c
 
 bool EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
-	|| is_set(capabilities_conflict_action.operation)
-	|| is_set(capabilities_conflict_action_overridden.operation)
-	|| is_set(connection_timeout.operation)
-	|| is_set(connection_timeout_overridden.operation)
-	|| is_set(critical_event_action.operation)
-	|| is_set(critical_event_action_overridden.operation)
-	|| is_set(discovery_timeout_action.operation)
-	|| is_set(discovery_timeout_action_overridden.operation)
-	|| is_set(dying_gasp_action.operation)
-	|| is_set(dying_gasp_action_overridden.operation)
-	|| is_set(fast_hello_interval_enabled.operation)
-	|| is_set(fast_hello_interval_enabled_overridden.operation)
-	|| is_set(frame_period_threshold_high.operation)
-	|| is_set(frame_period_threshold_high_multiplier.operation)
-	|| is_set(frame_period_threshold_high_overridden.operation)
-	|| is_set(frame_period_threshold_low.operation)
-	|| is_set(frame_period_threshold_low_multiplier.operation)
-	|| is_set(frame_period_threshold_low_overridden.operation)
-	|| is_set(frame_period_threshold_units.operation)
-	|| is_set(frame_period_window.operation)
-	|| is_set(frame_period_window_multiplier.operation)
-	|| is_set(frame_period_window_overridden.operation)
-	|| is_set(frame_period_window_units.operation)
-	|| is_set(frame_seconds_threshold_high.operation)
-	|| is_set(frame_seconds_threshold_high_overridden.operation)
-	|| is_set(frame_seconds_threshold_low.operation)
-	|| is_set(frame_seconds_threshold_low_overridden.operation)
-	|| is_set(frame_seconds_window.operation)
-	|| is_set(frame_seconds_window_overridden.operation)
-	|| is_set(frame_threshold_high.operation)
-	|| is_set(frame_threshold_high_multiplier.operation)
-	|| is_set(frame_threshold_high_overridden.operation)
-	|| is_set(frame_threshold_low.operation)
-	|| is_set(frame_threshold_low_multiplier.operation)
-	|| is_set(frame_threshold_low_overridden.operation)
-	|| is_set(frame_window.operation)
-	|| is_set(frame_window_overridden.operation)
-	|| is_set(high_threshold_action.operation)
-	|| is_set(high_threshold_action_overridden.operation)
-	|| is_set(link_fault_action.operation)
-	|| is_set(link_fault_action_overridden.operation)
-	|| is_set(link_monitor_enabled.operation)
-	|| is_set(link_monitoring_enabled_overridden.operation)
-	|| is_set(mib_retrieval_enabled.operation)
-	|| is_set(mib_retrieval_enabled_overridden.operation)
-	|| is_set(mode.operation)
-	|| is_set(mode_overridden.operation)
-	|| is_set(remote_loopback_action.operation)
-	|| is_set(remote_loopback_action_overridden.operation)
-	|| is_set(remote_loopback_enabled.operation)
-	|| is_set(remote_loopback_enabled_overridden.operation)
-	|| is_set(require_link_monitoring.operation)
-	|| is_set(require_link_monitoring_overridden.operation)
-	|| is_set(require_loopback.operation)
-	|| is_set(require_loopback_overridden.operation)
-	|| is_set(require_mib_retrieval_overridden.operation)
-	|| is_set(require_mode_overridden.operation)
-	|| is_set(require_remote_mib_retrieval.operation)
-	|| is_set(require_remote_mode.operation)
-	|| is_set(session_down_action.operation)
-	|| is_set(session_down_action_overridden.operation)
-	|| is_set(session_up_action.operation)
-	|| is_set(session_up_action_overridden.operation)
-	|| is_set(symbol_period_threshold_high.operation)
-	|| is_set(symbol_period_threshold_high_multiplier.operation)
-	|| is_set(symbol_period_threshold_high_overridden.operation)
-	|| is_set(symbol_period_threshold_low.operation)
-	|| is_set(symbol_period_threshold_low_multiplier.operation)
-	|| is_set(symbol_period_threshold_low_overridden.operation)
-	|| is_set(symbol_period_threshold_units.operation)
-	|| is_set(symbol_period_window.operation)
-	|| is_set(symbol_period_window_multiplier.operation)
-	|| is_set(symbol_period_window_overridden.operation)
-	|| is_set(symbol_period_window_units.operation)
-	|| is_set(udlf_enabled.operation)
-	|| is_set(udlf_enabled_overridden.operation)
-	|| is_set(wiring_conflict_action.operation)
-	|| is_set(wiring_conflict_action_overridden.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| ydk::is_set(capabilities_conflict_action.yfilter)
+	|| ydk::is_set(capabilities_conflict_action_overridden.yfilter)
+	|| ydk::is_set(connection_timeout.yfilter)
+	|| ydk::is_set(connection_timeout_overridden.yfilter)
+	|| ydk::is_set(critical_event_action.yfilter)
+	|| ydk::is_set(critical_event_action_overridden.yfilter)
+	|| ydk::is_set(discovery_timeout_action.yfilter)
+	|| ydk::is_set(discovery_timeout_action_overridden.yfilter)
+	|| ydk::is_set(dying_gasp_action.yfilter)
+	|| ydk::is_set(dying_gasp_action_overridden.yfilter)
+	|| ydk::is_set(fast_hello_interval_enabled.yfilter)
+	|| ydk::is_set(fast_hello_interval_enabled_overridden.yfilter)
+	|| ydk::is_set(frame_period_threshold_high.yfilter)
+	|| ydk::is_set(frame_period_threshold_high_multiplier.yfilter)
+	|| ydk::is_set(frame_period_threshold_high_overridden.yfilter)
+	|| ydk::is_set(frame_period_threshold_low.yfilter)
+	|| ydk::is_set(frame_period_threshold_low_multiplier.yfilter)
+	|| ydk::is_set(frame_period_threshold_low_overridden.yfilter)
+	|| ydk::is_set(frame_period_threshold_units.yfilter)
+	|| ydk::is_set(frame_period_window.yfilter)
+	|| ydk::is_set(frame_period_window_multiplier.yfilter)
+	|| ydk::is_set(frame_period_window_overridden.yfilter)
+	|| ydk::is_set(frame_period_window_units.yfilter)
+	|| ydk::is_set(frame_seconds_threshold_high.yfilter)
+	|| ydk::is_set(frame_seconds_threshold_high_overridden.yfilter)
+	|| ydk::is_set(frame_seconds_threshold_low.yfilter)
+	|| ydk::is_set(frame_seconds_threshold_low_overridden.yfilter)
+	|| ydk::is_set(frame_seconds_window.yfilter)
+	|| ydk::is_set(frame_seconds_window_overridden.yfilter)
+	|| ydk::is_set(frame_threshold_high.yfilter)
+	|| ydk::is_set(frame_threshold_high_multiplier.yfilter)
+	|| ydk::is_set(frame_threshold_high_overridden.yfilter)
+	|| ydk::is_set(frame_threshold_low.yfilter)
+	|| ydk::is_set(frame_threshold_low_multiplier.yfilter)
+	|| ydk::is_set(frame_threshold_low_overridden.yfilter)
+	|| ydk::is_set(frame_window.yfilter)
+	|| ydk::is_set(frame_window_overridden.yfilter)
+	|| ydk::is_set(high_threshold_action.yfilter)
+	|| ydk::is_set(high_threshold_action_overridden.yfilter)
+	|| ydk::is_set(link_fault_action.yfilter)
+	|| ydk::is_set(link_fault_action_overridden.yfilter)
+	|| ydk::is_set(link_monitor_enabled.yfilter)
+	|| ydk::is_set(link_monitoring_enabled_overridden.yfilter)
+	|| ydk::is_set(mib_retrieval_enabled.yfilter)
+	|| ydk::is_set(mib_retrieval_enabled_overridden.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(mode_overridden.yfilter)
+	|| ydk::is_set(remote_loopback_action.yfilter)
+	|| ydk::is_set(remote_loopback_action_overridden.yfilter)
+	|| ydk::is_set(remote_loopback_enabled.yfilter)
+	|| ydk::is_set(remote_loopback_enabled_overridden.yfilter)
+	|| ydk::is_set(require_link_monitoring.yfilter)
+	|| ydk::is_set(require_link_monitoring_overridden.yfilter)
+	|| ydk::is_set(require_loopback.yfilter)
+	|| ydk::is_set(require_loopback_overridden.yfilter)
+	|| ydk::is_set(require_mib_retrieval_overridden.yfilter)
+	|| ydk::is_set(require_mode_overridden.yfilter)
+	|| ydk::is_set(require_remote_mib_retrieval.yfilter)
+	|| ydk::is_set(require_remote_mode.yfilter)
+	|| ydk::is_set(session_down_action.yfilter)
+	|| ydk::is_set(session_down_action_overridden.yfilter)
+	|| ydk::is_set(session_up_action.yfilter)
+	|| ydk::is_set(session_up_action_overridden.yfilter)
+	|| ydk::is_set(symbol_period_threshold_high.yfilter)
+	|| ydk::is_set(symbol_period_threshold_high_multiplier.yfilter)
+	|| ydk::is_set(symbol_period_threshold_high_overridden.yfilter)
+	|| ydk::is_set(symbol_period_threshold_low.yfilter)
+	|| ydk::is_set(symbol_period_threshold_low_multiplier.yfilter)
+	|| ydk::is_set(symbol_period_threshold_low_overridden.yfilter)
+	|| ydk::is_set(symbol_period_threshold_units.yfilter)
+	|| ydk::is_set(symbol_period_window.yfilter)
+	|| ydk::is_set(symbol_period_window_multiplier.yfilter)
+	|| ydk::is_set(symbol_period_window_overridden.yfilter)
+	|| ydk::is_set(symbol_period_window_units.yfilter)
+	|| ydk::is_set(udlf_enabled.yfilter)
+	|| ydk::is_set(udlf_enabled_overridden.yfilter)
+	|| ydk::is_set(wiring_conflict_action.yfilter)
+	|| ydk::is_set(wiring_conflict_action_overridden.yfilter);
 }
 
 std::string EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::get_segment_path() const
@@ -1631,85 +2152,85 @@ const EntityPath EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-    if (capabilities_conflict_action.is_set || is_set(capabilities_conflict_action.operation)) leaf_name_data.push_back(capabilities_conflict_action.get_name_leafdata());
-    if (capabilities_conflict_action_overridden.is_set || is_set(capabilities_conflict_action_overridden.operation)) leaf_name_data.push_back(capabilities_conflict_action_overridden.get_name_leafdata());
-    if (connection_timeout.is_set || is_set(connection_timeout.operation)) leaf_name_data.push_back(connection_timeout.get_name_leafdata());
-    if (connection_timeout_overridden.is_set || is_set(connection_timeout_overridden.operation)) leaf_name_data.push_back(connection_timeout_overridden.get_name_leafdata());
-    if (critical_event_action.is_set || is_set(critical_event_action.operation)) leaf_name_data.push_back(critical_event_action.get_name_leafdata());
-    if (critical_event_action_overridden.is_set || is_set(critical_event_action_overridden.operation)) leaf_name_data.push_back(critical_event_action_overridden.get_name_leafdata());
-    if (discovery_timeout_action.is_set || is_set(discovery_timeout_action.operation)) leaf_name_data.push_back(discovery_timeout_action.get_name_leafdata());
-    if (discovery_timeout_action_overridden.is_set || is_set(discovery_timeout_action_overridden.operation)) leaf_name_data.push_back(discovery_timeout_action_overridden.get_name_leafdata());
-    if (dying_gasp_action.is_set || is_set(dying_gasp_action.operation)) leaf_name_data.push_back(dying_gasp_action.get_name_leafdata());
-    if (dying_gasp_action_overridden.is_set || is_set(dying_gasp_action_overridden.operation)) leaf_name_data.push_back(dying_gasp_action_overridden.get_name_leafdata());
-    if (fast_hello_interval_enabled.is_set || is_set(fast_hello_interval_enabled.operation)) leaf_name_data.push_back(fast_hello_interval_enabled.get_name_leafdata());
-    if (fast_hello_interval_enabled_overridden.is_set || is_set(fast_hello_interval_enabled_overridden.operation)) leaf_name_data.push_back(fast_hello_interval_enabled_overridden.get_name_leafdata());
-    if (frame_period_threshold_high.is_set || is_set(frame_period_threshold_high.operation)) leaf_name_data.push_back(frame_period_threshold_high.get_name_leafdata());
-    if (frame_period_threshold_high_multiplier.is_set || is_set(frame_period_threshold_high_multiplier.operation)) leaf_name_data.push_back(frame_period_threshold_high_multiplier.get_name_leafdata());
-    if (frame_period_threshold_high_overridden.is_set || is_set(frame_period_threshold_high_overridden.operation)) leaf_name_data.push_back(frame_period_threshold_high_overridden.get_name_leafdata());
-    if (frame_period_threshold_low.is_set || is_set(frame_period_threshold_low.operation)) leaf_name_data.push_back(frame_period_threshold_low.get_name_leafdata());
-    if (frame_period_threshold_low_multiplier.is_set || is_set(frame_period_threshold_low_multiplier.operation)) leaf_name_data.push_back(frame_period_threshold_low_multiplier.get_name_leafdata());
-    if (frame_period_threshold_low_overridden.is_set || is_set(frame_period_threshold_low_overridden.operation)) leaf_name_data.push_back(frame_period_threshold_low_overridden.get_name_leafdata());
-    if (frame_period_threshold_units.is_set || is_set(frame_period_threshold_units.operation)) leaf_name_data.push_back(frame_period_threshold_units.get_name_leafdata());
-    if (frame_period_window.is_set || is_set(frame_period_window.operation)) leaf_name_data.push_back(frame_period_window.get_name_leafdata());
-    if (frame_period_window_multiplier.is_set || is_set(frame_period_window_multiplier.operation)) leaf_name_data.push_back(frame_period_window_multiplier.get_name_leafdata());
-    if (frame_period_window_overridden.is_set || is_set(frame_period_window_overridden.operation)) leaf_name_data.push_back(frame_period_window_overridden.get_name_leafdata());
-    if (frame_period_window_units.is_set || is_set(frame_period_window_units.operation)) leaf_name_data.push_back(frame_period_window_units.get_name_leafdata());
-    if (frame_seconds_threshold_high.is_set || is_set(frame_seconds_threshold_high.operation)) leaf_name_data.push_back(frame_seconds_threshold_high.get_name_leafdata());
-    if (frame_seconds_threshold_high_overridden.is_set || is_set(frame_seconds_threshold_high_overridden.operation)) leaf_name_data.push_back(frame_seconds_threshold_high_overridden.get_name_leafdata());
-    if (frame_seconds_threshold_low.is_set || is_set(frame_seconds_threshold_low.operation)) leaf_name_data.push_back(frame_seconds_threshold_low.get_name_leafdata());
-    if (frame_seconds_threshold_low_overridden.is_set || is_set(frame_seconds_threshold_low_overridden.operation)) leaf_name_data.push_back(frame_seconds_threshold_low_overridden.get_name_leafdata());
-    if (frame_seconds_window.is_set || is_set(frame_seconds_window.operation)) leaf_name_data.push_back(frame_seconds_window.get_name_leafdata());
-    if (frame_seconds_window_overridden.is_set || is_set(frame_seconds_window_overridden.operation)) leaf_name_data.push_back(frame_seconds_window_overridden.get_name_leafdata());
-    if (frame_threshold_high.is_set || is_set(frame_threshold_high.operation)) leaf_name_data.push_back(frame_threshold_high.get_name_leafdata());
-    if (frame_threshold_high_multiplier.is_set || is_set(frame_threshold_high_multiplier.operation)) leaf_name_data.push_back(frame_threshold_high_multiplier.get_name_leafdata());
-    if (frame_threshold_high_overridden.is_set || is_set(frame_threshold_high_overridden.operation)) leaf_name_data.push_back(frame_threshold_high_overridden.get_name_leafdata());
-    if (frame_threshold_low.is_set || is_set(frame_threshold_low.operation)) leaf_name_data.push_back(frame_threshold_low.get_name_leafdata());
-    if (frame_threshold_low_multiplier.is_set || is_set(frame_threshold_low_multiplier.operation)) leaf_name_data.push_back(frame_threshold_low_multiplier.get_name_leafdata());
-    if (frame_threshold_low_overridden.is_set || is_set(frame_threshold_low_overridden.operation)) leaf_name_data.push_back(frame_threshold_low_overridden.get_name_leafdata());
-    if (frame_window.is_set || is_set(frame_window.operation)) leaf_name_data.push_back(frame_window.get_name_leafdata());
-    if (frame_window_overridden.is_set || is_set(frame_window_overridden.operation)) leaf_name_data.push_back(frame_window_overridden.get_name_leafdata());
-    if (high_threshold_action.is_set || is_set(high_threshold_action.operation)) leaf_name_data.push_back(high_threshold_action.get_name_leafdata());
-    if (high_threshold_action_overridden.is_set || is_set(high_threshold_action_overridden.operation)) leaf_name_data.push_back(high_threshold_action_overridden.get_name_leafdata());
-    if (link_fault_action.is_set || is_set(link_fault_action.operation)) leaf_name_data.push_back(link_fault_action.get_name_leafdata());
-    if (link_fault_action_overridden.is_set || is_set(link_fault_action_overridden.operation)) leaf_name_data.push_back(link_fault_action_overridden.get_name_leafdata());
-    if (link_monitor_enabled.is_set || is_set(link_monitor_enabled.operation)) leaf_name_data.push_back(link_monitor_enabled.get_name_leafdata());
-    if (link_monitoring_enabled_overridden.is_set || is_set(link_monitoring_enabled_overridden.operation)) leaf_name_data.push_back(link_monitoring_enabled_overridden.get_name_leafdata());
-    if (mib_retrieval_enabled.is_set || is_set(mib_retrieval_enabled.operation)) leaf_name_data.push_back(mib_retrieval_enabled.get_name_leafdata());
-    if (mib_retrieval_enabled_overridden.is_set || is_set(mib_retrieval_enabled_overridden.operation)) leaf_name_data.push_back(mib_retrieval_enabled_overridden.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (mode_overridden.is_set || is_set(mode_overridden.operation)) leaf_name_data.push_back(mode_overridden.get_name_leafdata());
-    if (remote_loopback_action.is_set || is_set(remote_loopback_action.operation)) leaf_name_data.push_back(remote_loopback_action.get_name_leafdata());
-    if (remote_loopback_action_overridden.is_set || is_set(remote_loopback_action_overridden.operation)) leaf_name_data.push_back(remote_loopback_action_overridden.get_name_leafdata());
-    if (remote_loopback_enabled.is_set || is_set(remote_loopback_enabled.operation)) leaf_name_data.push_back(remote_loopback_enabled.get_name_leafdata());
-    if (remote_loopback_enabled_overridden.is_set || is_set(remote_loopback_enabled_overridden.operation)) leaf_name_data.push_back(remote_loopback_enabled_overridden.get_name_leafdata());
-    if (require_link_monitoring.is_set || is_set(require_link_monitoring.operation)) leaf_name_data.push_back(require_link_monitoring.get_name_leafdata());
-    if (require_link_monitoring_overridden.is_set || is_set(require_link_monitoring_overridden.operation)) leaf_name_data.push_back(require_link_monitoring_overridden.get_name_leafdata());
-    if (require_loopback.is_set || is_set(require_loopback.operation)) leaf_name_data.push_back(require_loopback.get_name_leafdata());
-    if (require_loopback_overridden.is_set || is_set(require_loopback_overridden.operation)) leaf_name_data.push_back(require_loopback_overridden.get_name_leafdata());
-    if (require_mib_retrieval_overridden.is_set || is_set(require_mib_retrieval_overridden.operation)) leaf_name_data.push_back(require_mib_retrieval_overridden.get_name_leafdata());
-    if (require_mode_overridden.is_set || is_set(require_mode_overridden.operation)) leaf_name_data.push_back(require_mode_overridden.get_name_leafdata());
-    if (require_remote_mib_retrieval.is_set || is_set(require_remote_mib_retrieval.operation)) leaf_name_data.push_back(require_remote_mib_retrieval.get_name_leafdata());
-    if (require_remote_mode.is_set || is_set(require_remote_mode.operation)) leaf_name_data.push_back(require_remote_mode.get_name_leafdata());
-    if (session_down_action.is_set || is_set(session_down_action.operation)) leaf_name_data.push_back(session_down_action.get_name_leafdata());
-    if (session_down_action_overridden.is_set || is_set(session_down_action_overridden.operation)) leaf_name_data.push_back(session_down_action_overridden.get_name_leafdata());
-    if (session_up_action.is_set || is_set(session_up_action.operation)) leaf_name_data.push_back(session_up_action.get_name_leafdata());
-    if (session_up_action_overridden.is_set || is_set(session_up_action_overridden.operation)) leaf_name_data.push_back(session_up_action_overridden.get_name_leafdata());
-    if (symbol_period_threshold_high.is_set || is_set(symbol_period_threshold_high.operation)) leaf_name_data.push_back(symbol_period_threshold_high.get_name_leafdata());
-    if (symbol_period_threshold_high_multiplier.is_set || is_set(symbol_period_threshold_high_multiplier.operation)) leaf_name_data.push_back(symbol_period_threshold_high_multiplier.get_name_leafdata());
-    if (symbol_period_threshold_high_overridden.is_set || is_set(symbol_period_threshold_high_overridden.operation)) leaf_name_data.push_back(symbol_period_threshold_high_overridden.get_name_leafdata());
-    if (symbol_period_threshold_low.is_set || is_set(symbol_period_threshold_low.operation)) leaf_name_data.push_back(symbol_period_threshold_low.get_name_leafdata());
-    if (symbol_period_threshold_low_multiplier.is_set || is_set(symbol_period_threshold_low_multiplier.operation)) leaf_name_data.push_back(symbol_period_threshold_low_multiplier.get_name_leafdata());
-    if (symbol_period_threshold_low_overridden.is_set || is_set(symbol_period_threshold_low_overridden.operation)) leaf_name_data.push_back(symbol_period_threshold_low_overridden.get_name_leafdata());
-    if (symbol_period_threshold_units.is_set || is_set(symbol_period_threshold_units.operation)) leaf_name_data.push_back(symbol_period_threshold_units.get_name_leafdata());
-    if (symbol_period_window.is_set || is_set(symbol_period_window.operation)) leaf_name_data.push_back(symbol_period_window.get_name_leafdata());
-    if (symbol_period_window_multiplier.is_set || is_set(symbol_period_window_multiplier.operation)) leaf_name_data.push_back(symbol_period_window_multiplier.get_name_leafdata());
-    if (symbol_period_window_overridden.is_set || is_set(symbol_period_window_overridden.operation)) leaf_name_data.push_back(symbol_period_window_overridden.get_name_leafdata());
-    if (symbol_period_window_units.is_set || is_set(symbol_period_window_units.operation)) leaf_name_data.push_back(symbol_period_window_units.get_name_leafdata());
-    if (udlf_enabled.is_set || is_set(udlf_enabled.operation)) leaf_name_data.push_back(udlf_enabled.get_name_leafdata());
-    if (udlf_enabled_overridden.is_set || is_set(udlf_enabled_overridden.operation)) leaf_name_data.push_back(udlf_enabled_overridden.get_name_leafdata());
-    if (wiring_conflict_action.is_set || is_set(wiring_conflict_action.operation)) leaf_name_data.push_back(wiring_conflict_action.get_name_leafdata());
-    if (wiring_conflict_action_overridden.is_set || is_set(wiring_conflict_action_overridden.operation)) leaf_name_data.push_back(wiring_conflict_action_overridden.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (capabilities_conflict_action.is_set || is_set(capabilities_conflict_action.yfilter)) leaf_name_data.push_back(capabilities_conflict_action.get_name_leafdata());
+    if (capabilities_conflict_action_overridden.is_set || is_set(capabilities_conflict_action_overridden.yfilter)) leaf_name_data.push_back(capabilities_conflict_action_overridden.get_name_leafdata());
+    if (connection_timeout.is_set || is_set(connection_timeout.yfilter)) leaf_name_data.push_back(connection_timeout.get_name_leafdata());
+    if (connection_timeout_overridden.is_set || is_set(connection_timeout_overridden.yfilter)) leaf_name_data.push_back(connection_timeout_overridden.get_name_leafdata());
+    if (critical_event_action.is_set || is_set(critical_event_action.yfilter)) leaf_name_data.push_back(critical_event_action.get_name_leafdata());
+    if (critical_event_action_overridden.is_set || is_set(critical_event_action_overridden.yfilter)) leaf_name_data.push_back(critical_event_action_overridden.get_name_leafdata());
+    if (discovery_timeout_action.is_set || is_set(discovery_timeout_action.yfilter)) leaf_name_data.push_back(discovery_timeout_action.get_name_leafdata());
+    if (discovery_timeout_action_overridden.is_set || is_set(discovery_timeout_action_overridden.yfilter)) leaf_name_data.push_back(discovery_timeout_action_overridden.get_name_leafdata());
+    if (dying_gasp_action.is_set || is_set(dying_gasp_action.yfilter)) leaf_name_data.push_back(dying_gasp_action.get_name_leafdata());
+    if (dying_gasp_action_overridden.is_set || is_set(dying_gasp_action_overridden.yfilter)) leaf_name_data.push_back(dying_gasp_action_overridden.get_name_leafdata());
+    if (fast_hello_interval_enabled.is_set || is_set(fast_hello_interval_enabled.yfilter)) leaf_name_data.push_back(fast_hello_interval_enabled.get_name_leafdata());
+    if (fast_hello_interval_enabled_overridden.is_set || is_set(fast_hello_interval_enabled_overridden.yfilter)) leaf_name_data.push_back(fast_hello_interval_enabled_overridden.get_name_leafdata());
+    if (frame_period_threshold_high.is_set || is_set(frame_period_threshold_high.yfilter)) leaf_name_data.push_back(frame_period_threshold_high.get_name_leafdata());
+    if (frame_period_threshold_high_multiplier.is_set || is_set(frame_period_threshold_high_multiplier.yfilter)) leaf_name_data.push_back(frame_period_threshold_high_multiplier.get_name_leafdata());
+    if (frame_period_threshold_high_overridden.is_set || is_set(frame_period_threshold_high_overridden.yfilter)) leaf_name_data.push_back(frame_period_threshold_high_overridden.get_name_leafdata());
+    if (frame_period_threshold_low.is_set || is_set(frame_period_threshold_low.yfilter)) leaf_name_data.push_back(frame_period_threshold_low.get_name_leafdata());
+    if (frame_period_threshold_low_multiplier.is_set || is_set(frame_period_threshold_low_multiplier.yfilter)) leaf_name_data.push_back(frame_period_threshold_low_multiplier.get_name_leafdata());
+    if (frame_period_threshold_low_overridden.is_set || is_set(frame_period_threshold_low_overridden.yfilter)) leaf_name_data.push_back(frame_period_threshold_low_overridden.get_name_leafdata());
+    if (frame_period_threshold_units.is_set || is_set(frame_period_threshold_units.yfilter)) leaf_name_data.push_back(frame_period_threshold_units.get_name_leafdata());
+    if (frame_period_window.is_set || is_set(frame_period_window.yfilter)) leaf_name_data.push_back(frame_period_window.get_name_leafdata());
+    if (frame_period_window_multiplier.is_set || is_set(frame_period_window_multiplier.yfilter)) leaf_name_data.push_back(frame_period_window_multiplier.get_name_leafdata());
+    if (frame_period_window_overridden.is_set || is_set(frame_period_window_overridden.yfilter)) leaf_name_data.push_back(frame_period_window_overridden.get_name_leafdata());
+    if (frame_period_window_units.is_set || is_set(frame_period_window_units.yfilter)) leaf_name_data.push_back(frame_period_window_units.get_name_leafdata());
+    if (frame_seconds_threshold_high.is_set || is_set(frame_seconds_threshold_high.yfilter)) leaf_name_data.push_back(frame_seconds_threshold_high.get_name_leafdata());
+    if (frame_seconds_threshold_high_overridden.is_set || is_set(frame_seconds_threshold_high_overridden.yfilter)) leaf_name_data.push_back(frame_seconds_threshold_high_overridden.get_name_leafdata());
+    if (frame_seconds_threshold_low.is_set || is_set(frame_seconds_threshold_low.yfilter)) leaf_name_data.push_back(frame_seconds_threshold_low.get_name_leafdata());
+    if (frame_seconds_threshold_low_overridden.is_set || is_set(frame_seconds_threshold_low_overridden.yfilter)) leaf_name_data.push_back(frame_seconds_threshold_low_overridden.get_name_leafdata());
+    if (frame_seconds_window.is_set || is_set(frame_seconds_window.yfilter)) leaf_name_data.push_back(frame_seconds_window.get_name_leafdata());
+    if (frame_seconds_window_overridden.is_set || is_set(frame_seconds_window_overridden.yfilter)) leaf_name_data.push_back(frame_seconds_window_overridden.get_name_leafdata());
+    if (frame_threshold_high.is_set || is_set(frame_threshold_high.yfilter)) leaf_name_data.push_back(frame_threshold_high.get_name_leafdata());
+    if (frame_threshold_high_multiplier.is_set || is_set(frame_threshold_high_multiplier.yfilter)) leaf_name_data.push_back(frame_threshold_high_multiplier.get_name_leafdata());
+    if (frame_threshold_high_overridden.is_set || is_set(frame_threshold_high_overridden.yfilter)) leaf_name_data.push_back(frame_threshold_high_overridden.get_name_leafdata());
+    if (frame_threshold_low.is_set || is_set(frame_threshold_low.yfilter)) leaf_name_data.push_back(frame_threshold_low.get_name_leafdata());
+    if (frame_threshold_low_multiplier.is_set || is_set(frame_threshold_low_multiplier.yfilter)) leaf_name_data.push_back(frame_threshold_low_multiplier.get_name_leafdata());
+    if (frame_threshold_low_overridden.is_set || is_set(frame_threshold_low_overridden.yfilter)) leaf_name_data.push_back(frame_threshold_low_overridden.get_name_leafdata());
+    if (frame_window.is_set || is_set(frame_window.yfilter)) leaf_name_data.push_back(frame_window.get_name_leafdata());
+    if (frame_window_overridden.is_set || is_set(frame_window_overridden.yfilter)) leaf_name_data.push_back(frame_window_overridden.get_name_leafdata());
+    if (high_threshold_action.is_set || is_set(high_threshold_action.yfilter)) leaf_name_data.push_back(high_threshold_action.get_name_leafdata());
+    if (high_threshold_action_overridden.is_set || is_set(high_threshold_action_overridden.yfilter)) leaf_name_data.push_back(high_threshold_action_overridden.get_name_leafdata());
+    if (link_fault_action.is_set || is_set(link_fault_action.yfilter)) leaf_name_data.push_back(link_fault_action.get_name_leafdata());
+    if (link_fault_action_overridden.is_set || is_set(link_fault_action_overridden.yfilter)) leaf_name_data.push_back(link_fault_action_overridden.get_name_leafdata());
+    if (link_monitor_enabled.is_set || is_set(link_monitor_enabled.yfilter)) leaf_name_data.push_back(link_monitor_enabled.get_name_leafdata());
+    if (link_monitoring_enabled_overridden.is_set || is_set(link_monitoring_enabled_overridden.yfilter)) leaf_name_data.push_back(link_monitoring_enabled_overridden.get_name_leafdata());
+    if (mib_retrieval_enabled.is_set || is_set(mib_retrieval_enabled.yfilter)) leaf_name_data.push_back(mib_retrieval_enabled.get_name_leafdata());
+    if (mib_retrieval_enabled_overridden.is_set || is_set(mib_retrieval_enabled_overridden.yfilter)) leaf_name_data.push_back(mib_retrieval_enabled_overridden.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (mode_overridden.is_set || is_set(mode_overridden.yfilter)) leaf_name_data.push_back(mode_overridden.get_name_leafdata());
+    if (remote_loopback_action.is_set || is_set(remote_loopback_action.yfilter)) leaf_name_data.push_back(remote_loopback_action.get_name_leafdata());
+    if (remote_loopback_action_overridden.is_set || is_set(remote_loopback_action_overridden.yfilter)) leaf_name_data.push_back(remote_loopback_action_overridden.get_name_leafdata());
+    if (remote_loopback_enabled.is_set || is_set(remote_loopback_enabled.yfilter)) leaf_name_data.push_back(remote_loopback_enabled.get_name_leafdata());
+    if (remote_loopback_enabled_overridden.is_set || is_set(remote_loopback_enabled_overridden.yfilter)) leaf_name_data.push_back(remote_loopback_enabled_overridden.get_name_leafdata());
+    if (require_link_monitoring.is_set || is_set(require_link_monitoring.yfilter)) leaf_name_data.push_back(require_link_monitoring.get_name_leafdata());
+    if (require_link_monitoring_overridden.is_set || is_set(require_link_monitoring_overridden.yfilter)) leaf_name_data.push_back(require_link_monitoring_overridden.get_name_leafdata());
+    if (require_loopback.is_set || is_set(require_loopback.yfilter)) leaf_name_data.push_back(require_loopback.get_name_leafdata());
+    if (require_loopback_overridden.is_set || is_set(require_loopback_overridden.yfilter)) leaf_name_data.push_back(require_loopback_overridden.get_name_leafdata());
+    if (require_mib_retrieval_overridden.is_set || is_set(require_mib_retrieval_overridden.yfilter)) leaf_name_data.push_back(require_mib_retrieval_overridden.get_name_leafdata());
+    if (require_mode_overridden.is_set || is_set(require_mode_overridden.yfilter)) leaf_name_data.push_back(require_mode_overridden.get_name_leafdata());
+    if (require_remote_mib_retrieval.is_set || is_set(require_remote_mib_retrieval.yfilter)) leaf_name_data.push_back(require_remote_mib_retrieval.get_name_leafdata());
+    if (require_remote_mode.is_set || is_set(require_remote_mode.yfilter)) leaf_name_data.push_back(require_remote_mode.get_name_leafdata());
+    if (session_down_action.is_set || is_set(session_down_action.yfilter)) leaf_name_data.push_back(session_down_action.get_name_leafdata());
+    if (session_down_action_overridden.is_set || is_set(session_down_action_overridden.yfilter)) leaf_name_data.push_back(session_down_action_overridden.get_name_leafdata());
+    if (session_up_action.is_set || is_set(session_up_action.yfilter)) leaf_name_data.push_back(session_up_action.get_name_leafdata());
+    if (session_up_action_overridden.is_set || is_set(session_up_action_overridden.yfilter)) leaf_name_data.push_back(session_up_action_overridden.get_name_leafdata());
+    if (symbol_period_threshold_high.is_set || is_set(symbol_period_threshold_high.yfilter)) leaf_name_data.push_back(symbol_period_threshold_high.get_name_leafdata());
+    if (symbol_period_threshold_high_multiplier.is_set || is_set(symbol_period_threshold_high_multiplier.yfilter)) leaf_name_data.push_back(symbol_period_threshold_high_multiplier.get_name_leafdata());
+    if (symbol_period_threshold_high_overridden.is_set || is_set(symbol_period_threshold_high_overridden.yfilter)) leaf_name_data.push_back(symbol_period_threshold_high_overridden.get_name_leafdata());
+    if (symbol_period_threshold_low.is_set || is_set(symbol_period_threshold_low.yfilter)) leaf_name_data.push_back(symbol_period_threshold_low.get_name_leafdata());
+    if (symbol_period_threshold_low_multiplier.is_set || is_set(symbol_period_threshold_low_multiplier.yfilter)) leaf_name_data.push_back(symbol_period_threshold_low_multiplier.get_name_leafdata());
+    if (symbol_period_threshold_low_overridden.is_set || is_set(symbol_period_threshold_low_overridden.yfilter)) leaf_name_data.push_back(symbol_period_threshold_low_overridden.get_name_leafdata());
+    if (symbol_period_threshold_units.is_set || is_set(symbol_period_threshold_units.yfilter)) leaf_name_data.push_back(symbol_period_threshold_units.get_name_leafdata());
+    if (symbol_period_window.is_set || is_set(symbol_period_window.yfilter)) leaf_name_data.push_back(symbol_period_window.get_name_leafdata());
+    if (symbol_period_window_multiplier.is_set || is_set(symbol_period_window_multiplier.yfilter)) leaf_name_data.push_back(symbol_period_window_multiplier.get_name_leafdata());
+    if (symbol_period_window_overridden.is_set || is_set(symbol_period_window_overridden.yfilter)) leaf_name_data.push_back(symbol_period_window_overridden.get_name_leafdata());
+    if (symbol_period_window_units.is_set || is_set(symbol_period_window_units.yfilter)) leaf_name_data.push_back(symbol_period_window_units.get_name_leafdata());
+    if (udlf_enabled.is_set || is_set(udlf_enabled.yfilter)) leaf_name_data.push_back(udlf_enabled.get_name_leafdata());
+    if (udlf_enabled_overridden.is_set || is_set(udlf_enabled_overridden.yfilter)) leaf_name_data.push_back(udlf_enabled_overridden.get_name_leafdata());
+    if (wiring_conflict_action.is_set || is_set(wiring_conflict_action.yfilter)) leaf_name_data.push_back(wiring_conflict_action.get_name_leafdata());
+    if (wiring_conflict_action_overridden.is_set || is_set(wiring_conflict_action_overridden.yfilter)) leaf_name_data.push_back(wiring_conflict_action_overridden.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1728,324 +2249,809 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::RunningConfigInterf
     return children;
 }
 
-void EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "capabilities-conflict-action")
     {
         capabilities_conflict_action = value;
+        capabilities_conflict_action.value_namespace = name_space;
+        capabilities_conflict_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "capabilities-conflict-action-overridden")
     {
         capabilities_conflict_action_overridden = value;
+        capabilities_conflict_action_overridden.value_namespace = name_space;
+        capabilities_conflict_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "connection-timeout")
     {
         connection_timeout = value;
+        connection_timeout.value_namespace = name_space;
+        connection_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "connection-timeout-overridden")
     {
         connection_timeout_overridden = value;
+        connection_timeout_overridden.value_namespace = name_space;
+        connection_timeout_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "critical-event-action")
     {
         critical_event_action = value;
+        critical_event_action.value_namespace = name_space;
+        critical_event_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "critical-event-action-overridden")
     {
         critical_event_action_overridden = value;
+        critical_event_action_overridden.value_namespace = name_space;
+        critical_event_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discovery-timeout-action")
     {
         discovery_timeout_action = value;
+        discovery_timeout_action.value_namespace = name_space;
+        discovery_timeout_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discovery-timeout-action-overridden")
     {
         discovery_timeout_action_overridden = value;
+        discovery_timeout_action_overridden.value_namespace = name_space;
+        discovery_timeout_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dying-gasp-action")
     {
         dying_gasp_action = value;
+        dying_gasp_action.value_namespace = name_space;
+        dying_gasp_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dying-gasp-action-overridden")
     {
         dying_gasp_action_overridden = value;
+        dying_gasp_action_overridden.value_namespace = name_space;
+        dying_gasp_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-hello-interval-enabled")
     {
         fast_hello_interval_enabled = value;
+        fast_hello_interval_enabled.value_namespace = name_space;
+        fast_hello_interval_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fast-hello-interval-enabled-overridden")
     {
         fast_hello_interval_enabled_overridden = value;
+        fast_hello_interval_enabled_overridden.value_namespace = name_space;
+        fast_hello_interval_enabled_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-threshold-high")
     {
         frame_period_threshold_high = value;
+        frame_period_threshold_high.value_namespace = name_space;
+        frame_period_threshold_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-threshold-high-multiplier")
     {
         frame_period_threshold_high_multiplier = value;
+        frame_period_threshold_high_multiplier.value_namespace = name_space;
+        frame_period_threshold_high_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-threshold-high-overridden")
     {
         frame_period_threshold_high_overridden = value;
+        frame_period_threshold_high_overridden.value_namespace = name_space;
+        frame_period_threshold_high_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-threshold-low")
     {
         frame_period_threshold_low = value;
+        frame_period_threshold_low.value_namespace = name_space;
+        frame_period_threshold_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-threshold-low-multiplier")
     {
         frame_period_threshold_low_multiplier = value;
+        frame_period_threshold_low_multiplier.value_namespace = name_space;
+        frame_period_threshold_low_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-threshold-low-overridden")
     {
         frame_period_threshold_low_overridden = value;
+        frame_period_threshold_low_overridden.value_namespace = name_space;
+        frame_period_threshold_low_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-threshold-units")
     {
         frame_period_threshold_units = value;
+        frame_period_threshold_units.value_namespace = name_space;
+        frame_period_threshold_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-window")
     {
         frame_period_window = value;
+        frame_period_window.value_namespace = name_space;
+        frame_period_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-window-multiplier")
     {
         frame_period_window_multiplier = value;
+        frame_period_window_multiplier.value_namespace = name_space;
+        frame_period_window_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-window-overridden")
     {
         frame_period_window_overridden = value;
+        frame_period_window_overridden.value_namespace = name_space;
+        frame_period_window_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-period-window-units")
     {
         frame_period_window_units = value;
+        frame_period_window_units.value_namespace = name_space;
+        frame_period_window_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-seconds-threshold-high")
     {
         frame_seconds_threshold_high = value;
+        frame_seconds_threshold_high.value_namespace = name_space;
+        frame_seconds_threshold_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-seconds-threshold-high-overridden")
     {
         frame_seconds_threshold_high_overridden = value;
+        frame_seconds_threshold_high_overridden.value_namespace = name_space;
+        frame_seconds_threshold_high_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-seconds-threshold-low")
     {
         frame_seconds_threshold_low = value;
+        frame_seconds_threshold_low.value_namespace = name_space;
+        frame_seconds_threshold_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-seconds-threshold-low-overridden")
     {
         frame_seconds_threshold_low_overridden = value;
+        frame_seconds_threshold_low_overridden.value_namespace = name_space;
+        frame_seconds_threshold_low_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-seconds-window")
     {
         frame_seconds_window = value;
+        frame_seconds_window.value_namespace = name_space;
+        frame_seconds_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-seconds-window-overridden")
     {
         frame_seconds_window_overridden = value;
+        frame_seconds_window_overridden.value_namespace = name_space;
+        frame_seconds_window_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-threshold-high")
     {
         frame_threshold_high = value;
+        frame_threshold_high.value_namespace = name_space;
+        frame_threshold_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-threshold-high-multiplier")
     {
         frame_threshold_high_multiplier = value;
+        frame_threshold_high_multiplier.value_namespace = name_space;
+        frame_threshold_high_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-threshold-high-overridden")
     {
         frame_threshold_high_overridden = value;
+        frame_threshold_high_overridden.value_namespace = name_space;
+        frame_threshold_high_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-threshold-low")
     {
         frame_threshold_low = value;
+        frame_threshold_low.value_namespace = name_space;
+        frame_threshold_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-threshold-low-multiplier")
     {
         frame_threshold_low_multiplier = value;
+        frame_threshold_low_multiplier.value_namespace = name_space;
+        frame_threshold_low_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-threshold-low-overridden")
     {
         frame_threshold_low_overridden = value;
+        frame_threshold_low_overridden.value_namespace = name_space;
+        frame_threshold_low_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-window")
     {
         frame_window = value;
+        frame_window.value_namespace = name_space;
+        frame_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frame-window-overridden")
     {
         frame_window_overridden = value;
+        frame_window_overridden.value_namespace = name_space;
+        frame_window_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "high-threshold-action")
     {
         high_threshold_action = value;
+        high_threshold_action.value_namespace = name_space;
+        high_threshold_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "high-threshold-action-overridden")
     {
         high_threshold_action_overridden = value;
+        high_threshold_action_overridden.value_namespace = name_space;
+        high_threshold_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-fault-action")
     {
         link_fault_action = value;
+        link_fault_action.value_namespace = name_space;
+        link_fault_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-fault-action-overridden")
     {
         link_fault_action_overridden = value;
+        link_fault_action_overridden.value_namespace = name_space;
+        link_fault_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-monitor-enabled")
     {
         link_monitor_enabled = value;
+        link_monitor_enabled.value_namespace = name_space;
+        link_monitor_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-monitoring-enabled-overridden")
     {
         link_monitoring_enabled_overridden = value;
+        link_monitoring_enabled_overridden.value_namespace = name_space;
+        link_monitoring_enabled_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mib-retrieval-enabled")
     {
         mib_retrieval_enabled = value;
+        mib_retrieval_enabled.value_namespace = name_space;
+        mib_retrieval_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mib-retrieval-enabled-overridden")
     {
         mib_retrieval_enabled_overridden = value;
+        mib_retrieval_enabled_overridden.value_namespace = name_space;
+        mib_retrieval_enabled_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode-overridden")
     {
         mode_overridden = value;
+        mode_overridden.value_namespace = name_space;
+        mode_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback-action")
     {
         remote_loopback_action = value;
+        remote_loopback_action.value_namespace = name_space;
+        remote_loopback_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback-action-overridden")
     {
         remote_loopback_action_overridden = value;
+        remote_loopback_action_overridden.value_namespace = name_space;
+        remote_loopback_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback-enabled")
     {
         remote_loopback_enabled = value;
+        remote_loopback_enabled.value_namespace = name_space;
+        remote_loopback_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-loopback-enabled-overridden")
     {
         remote_loopback_enabled_overridden = value;
+        remote_loopback_enabled_overridden.value_namespace = name_space;
+        remote_loopback_enabled_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "require-link-monitoring")
     {
         require_link_monitoring = value;
+        require_link_monitoring.value_namespace = name_space;
+        require_link_monitoring.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "require-link-monitoring-overridden")
     {
         require_link_monitoring_overridden = value;
+        require_link_monitoring_overridden.value_namespace = name_space;
+        require_link_monitoring_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "require-loopback")
     {
         require_loopback = value;
+        require_loopback.value_namespace = name_space;
+        require_loopback.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "require-loopback-overridden")
     {
         require_loopback_overridden = value;
+        require_loopback_overridden.value_namespace = name_space;
+        require_loopback_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "require-mib-retrieval-overridden")
     {
         require_mib_retrieval_overridden = value;
+        require_mib_retrieval_overridden.value_namespace = name_space;
+        require_mib_retrieval_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "require-mode-overridden")
     {
         require_mode_overridden = value;
+        require_mode_overridden.value_namespace = name_space;
+        require_mode_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "require-remote-mib-retrieval")
     {
         require_remote_mib_retrieval = value;
+        require_remote_mib_retrieval.value_namespace = name_space;
+        require_remote_mib_retrieval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "require-remote-mode")
     {
         require_remote_mode = value;
+        require_remote_mode.value_namespace = name_space;
+        require_remote_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-down-action")
     {
         session_down_action = value;
+        session_down_action.value_namespace = name_space;
+        session_down_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-down-action-overridden")
     {
         session_down_action_overridden = value;
+        session_down_action_overridden.value_namespace = name_space;
+        session_down_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-up-action")
     {
         session_up_action = value;
+        session_up_action.value_namespace = name_space;
+        session_up_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-up-action-overridden")
     {
         session_up_action_overridden = value;
+        session_up_action_overridden.value_namespace = name_space;
+        session_up_action_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-threshold-high")
     {
         symbol_period_threshold_high = value;
+        symbol_period_threshold_high.value_namespace = name_space;
+        symbol_period_threshold_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-threshold-high-multiplier")
     {
         symbol_period_threshold_high_multiplier = value;
+        symbol_period_threshold_high_multiplier.value_namespace = name_space;
+        symbol_period_threshold_high_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-threshold-high-overridden")
     {
         symbol_period_threshold_high_overridden = value;
+        symbol_period_threshold_high_overridden.value_namespace = name_space;
+        symbol_period_threshold_high_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-threshold-low")
     {
         symbol_period_threshold_low = value;
+        symbol_period_threshold_low.value_namespace = name_space;
+        symbol_period_threshold_low.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-threshold-low-multiplier")
     {
         symbol_period_threshold_low_multiplier = value;
+        symbol_period_threshold_low_multiplier.value_namespace = name_space;
+        symbol_period_threshold_low_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-threshold-low-overridden")
     {
         symbol_period_threshold_low_overridden = value;
+        symbol_period_threshold_low_overridden.value_namespace = name_space;
+        symbol_period_threshold_low_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-threshold-units")
     {
         symbol_period_threshold_units = value;
+        symbol_period_threshold_units.value_namespace = name_space;
+        symbol_period_threshold_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-window")
     {
         symbol_period_window = value;
+        symbol_period_window.value_namespace = name_space;
+        symbol_period_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-window-multiplier")
     {
         symbol_period_window_multiplier = value;
+        symbol_period_window_multiplier.value_namespace = name_space;
+        symbol_period_window_multiplier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-window-overridden")
     {
         symbol_period_window_overridden = value;
+        symbol_period_window_overridden.value_namespace = name_space;
+        symbol_period_window_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "symbol-period-window-units")
     {
         symbol_period_window_units = value;
+        symbol_period_window_units.value_namespace = name_space;
+        symbol_period_window_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udlf-enabled")
     {
         udlf_enabled = value;
+        udlf_enabled.value_namespace = name_space;
+        udlf_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "udlf-enabled-overridden")
     {
         udlf_enabled_overridden = value;
+        udlf_enabled_overridden.value_namespace = name_space;
+        udlf_enabled_overridden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wiring-conflict-action")
     {
         wiring_conflict_action = value;
+        wiring_conflict_action.value_namespace = name_space;
+        wiring_conflict_action.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wiring-conflict-action-overridden")
     {
         wiring_conflict_action_overridden = value;
+        wiring_conflict_action_overridden.value_namespace = name_space;
+        wiring_conflict_action_overridden.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+    if(value_path == "capabilities-conflict-action")
+    {
+        capabilities_conflict_action.yfilter = yfilter;
+    }
+    if(value_path == "capabilities-conflict-action-overridden")
+    {
+        capabilities_conflict_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "connection-timeout")
+    {
+        connection_timeout.yfilter = yfilter;
+    }
+    if(value_path == "connection-timeout-overridden")
+    {
+        connection_timeout_overridden.yfilter = yfilter;
+    }
+    if(value_path == "critical-event-action")
+    {
+        critical_event_action.yfilter = yfilter;
+    }
+    if(value_path == "critical-event-action-overridden")
+    {
+        critical_event_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "discovery-timeout-action")
+    {
+        discovery_timeout_action.yfilter = yfilter;
+    }
+    if(value_path == "discovery-timeout-action-overridden")
+    {
+        discovery_timeout_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "dying-gasp-action")
+    {
+        dying_gasp_action.yfilter = yfilter;
+    }
+    if(value_path == "dying-gasp-action-overridden")
+    {
+        dying_gasp_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "fast-hello-interval-enabled")
+    {
+        fast_hello_interval_enabled.yfilter = yfilter;
+    }
+    if(value_path == "fast-hello-interval-enabled-overridden")
+    {
+        fast_hello_interval_enabled_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-threshold-high")
+    {
+        frame_period_threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-threshold-high-multiplier")
+    {
+        frame_period_threshold_high_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-threshold-high-overridden")
+    {
+        frame_period_threshold_high_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-threshold-low")
+    {
+        frame_period_threshold_low.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-threshold-low-multiplier")
+    {
+        frame_period_threshold_low_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-threshold-low-overridden")
+    {
+        frame_period_threshold_low_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-threshold-units")
+    {
+        frame_period_threshold_units.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-window")
+    {
+        frame_period_window.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-window-multiplier")
+    {
+        frame_period_window_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-window-overridden")
+    {
+        frame_period_window_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-period-window-units")
+    {
+        frame_period_window_units.yfilter = yfilter;
+    }
+    if(value_path == "frame-seconds-threshold-high")
+    {
+        frame_seconds_threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "frame-seconds-threshold-high-overridden")
+    {
+        frame_seconds_threshold_high_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-seconds-threshold-low")
+    {
+        frame_seconds_threshold_low.yfilter = yfilter;
+    }
+    if(value_path == "frame-seconds-threshold-low-overridden")
+    {
+        frame_seconds_threshold_low_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-seconds-window")
+    {
+        frame_seconds_window.yfilter = yfilter;
+    }
+    if(value_path == "frame-seconds-window-overridden")
+    {
+        frame_seconds_window_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-threshold-high")
+    {
+        frame_threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "frame-threshold-high-multiplier")
+    {
+        frame_threshold_high_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "frame-threshold-high-overridden")
+    {
+        frame_threshold_high_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-threshold-low")
+    {
+        frame_threshold_low.yfilter = yfilter;
+    }
+    if(value_path == "frame-threshold-low-multiplier")
+    {
+        frame_threshold_low_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "frame-threshold-low-overridden")
+    {
+        frame_threshold_low_overridden.yfilter = yfilter;
+    }
+    if(value_path == "frame-window")
+    {
+        frame_window.yfilter = yfilter;
+    }
+    if(value_path == "frame-window-overridden")
+    {
+        frame_window_overridden.yfilter = yfilter;
+    }
+    if(value_path == "high-threshold-action")
+    {
+        high_threshold_action.yfilter = yfilter;
+    }
+    if(value_path == "high-threshold-action-overridden")
+    {
+        high_threshold_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "link-fault-action")
+    {
+        link_fault_action.yfilter = yfilter;
+    }
+    if(value_path == "link-fault-action-overridden")
+    {
+        link_fault_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "link-monitor-enabled")
+    {
+        link_monitor_enabled.yfilter = yfilter;
+    }
+    if(value_path == "link-monitoring-enabled-overridden")
+    {
+        link_monitoring_enabled_overridden.yfilter = yfilter;
+    }
+    if(value_path == "mib-retrieval-enabled")
+    {
+        mib_retrieval_enabled.yfilter = yfilter;
+    }
+    if(value_path == "mib-retrieval-enabled-overridden")
+    {
+        mib_retrieval_enabled_overridden.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "mode-overridden")
+    {
+        mode_overridden.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback-action")
+    {
+        remote_loopback_action.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback-action-overridden")
+    {
+        remote_loopback_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback-enabled")
+    {
+        remote_loopback_enabled.yfilter = yfilter;
+    }
+    if(value_path == "remote-loopback-enabled-overridden")
+    {
+        remote_loopback_enabled_overridden.yfilter = yfilter;
+    }
+    if(value_path == "require-link-monitoring")
+    {
+        require_link_monitoring.yfilter = yfilter;
+    }
+    if(value_path == "require-link-monitoring-overridden")
+    {
+        require_link_monitoring_overridden.yfilter = yfilter;
+    }
+    if(value_path == "require-loopback")
+    {
+        require_loopback.yfilter = yfilter;
+    }
+    if(value_path == "require-loopback-overridden")
+    {
+        require_loopback_overridden.yfilter = yfilter;
+    }
+    if(value_path == "require-mib-retrieval-overridden")
+    {
+        require_mib_retrieval_overridden.yfilter = yfilter;
+    }
+    if(value_path == "require-mode-overridden")
+    {
+        require_mode_overridden.yfilter = yfilter;
+    }
+    if(value_path == "require-remote-mib-retrieval")
+    {
+        require_remote_mib_retrieval.yfilter = yfilter;
+    }
+    if(value_path == "require-remote-mode")
+    {
+        require_remote_mode.yfilter = yfilter;
+    }
+    if(value_path == "session-down-action")
+    {
+        session_down_action.yfilter = yfilter;
+    }
+    if(value_path == "session-down-action-overridden")
+    {
+        session_down_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "session-up-action")
+    {
+        session_up_action.yfilter = yfilter;
+    }
+    if(value_path == "session-up-action-overridden")
+    {
+        session_up_action_overridden.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-threshold-high")
+    {
+        symbol_period_threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-threshold-high-multiplier")
+    {
+        symbol_period_threshold_high_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-threshold-high-overridden")
+    {
+        symbol_period_threshold_high_overridden.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-threshold-low")
+    {
+        symbol_period_threshold_low.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-threshold-low-multiplier")
+    {
+        symbol_period_threshold_low_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-threshold-low-overridden")
+    {
+        symbol_period_threshold_low_overridden.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-threshold-units")
+    {
+        symbol_period_threshold_units.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-window")
+    {
+        symbol_period_window.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-window-multiplier")
+    {
+        symbol_period_window_multiplier.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-window-overridden")
+    {
+        symbol_period_window_overridden.yfilter = yfilter;
+    }
+    if(value_path == "symbol-period-window-units")
+    {
+        symbol_period_window_units.yfilter = yfilter;
+    }
+    if(value_path == "udlf-enabled")
+    {
+        udlf_enabled.yfilter = yfilter;
+    }
+    if(value_path == "udlf-enabled-overridden")
+    {
+        udlf_enabled_overridden.yfilter = yfilter;
+    }
+    if(value_path == "wiring-conflict-action")
+    {
+        wiring_conflict_action.yfilter = yfilter;
+    }
+    if(value_path == "wiring-conflict-action-overridden")
+    {
+        wiring_conflict_action_overridden.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::RunningConfigInterfaces::RunningConfigInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-interface" || name == "capabilities-conflict-action" || name == "capabilities-conflict-action-overridden" || name == "connection-timeout" || name == "connection-timeout-overridden" || name == "critical-event-action" || name == "critical-event-action-overridden" || name == "discovery-timeout-action" || name == "discovery-timeout-action-overridden" || name == "dying-gasp-action" || name == "dying-gasp-action-overridden" || name == "fast-hello-interval-enabled" || name == "fast-hello-interval-enabled-overridden" || name == "frame-period-threshold-high" || name == "frame-period-threshold-high-multiplier" || name == "frame-period-threshold-high-overridden" || name == "frame-period-threshold-low" || name == "frame-period-threshold-low-multiplier" || name == "frame-period-threshold-low-overridden" || name == "frame-period-threshold-units" || name == "frame-period-window" || name == "frame-period-window-multiplier" || name == "frame-period-window-overridden" || name == "frame-period-window-units" || name == "frame-seconds-threshold-high" || name == "frame-seconds-threshold-high-overridden" || name == "frame-seconds-threshold-low" || name == "frame-seconds-threshold-low-overridden" || name == "frame-seconds-window" || name == "frame-seconds-window-overridden" || name == "frame-threshold-high" || name == "frame-threshold-high-multiplier" || name == "frame-threshold-high-overridden" || name == "frame-threshold-low" || name == "frame-threshold-low-multiplier" || name == "frame-threshold-low-overridden" || name == "frame-window" || name == "frame-window-overridden" || name == "high-threshold-action" || name == "high-threshold-action-overridden" || name == "link-fault-action" || name == "link-fault-action-overridden" || name == "link-monitor-enabled" || name == "link-monitoring-enabled-overridden" || name == "mib-retrieval-enabled" || name == "mib-retrieval-enabled-overridden" || name == "mode" || name == "mode-overridden" || name == "remote-loopback-action" || name == "remote-loopback-action-overridden" || name == "remote-loopback-enabled" || name == "remote-loopback-enabled-overridden" || name == "require-link-monitoring" || name == "require-link-monitoring-overridden" || name == "require-loopback" || name == "require-loopback-overridden" || name == "require-mib-retrieval-overridden" || name == "require-mode-overridden" || name == "require-remote-mib-retrieval" || name == "require-remote-mode" || name == "session-down-action" || name == "session-down-action-overridden" || name == "session-up-action" || name == "session-up-action-overridden" || name == "symbol-period-threshold-high" || name == "symbol-period-threshold-high-multiplier" || name == "symbol-period-threshold-high-overridden" || name == "symbol-period-threshold-low" || name == "symbol-period-threshold-low-multiplier" || name == "symbol-period-threshold-low-overridden" || name == "symbol-period-threshold-units" || name == "symbol-period-window" || name == "symbol-period-window-multiplier" || name == "symbol-period-window-overridden" || name == "symbol-period-window-units" || name == "udlf-enabled" || name == "udlf-enabled-overridden" || name == "wiring-conflict-action" || name == "wiring-conflict-action-overridden")
+        return true;
+    return false;
 }
 
 EtherLinkOam::Nodes::Nodes()
@@ -2074,7 +3080,7 @@ bool EtherLinkOam::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherLinkOam::Nodes::get_segment_path() const
@@ -2139,8 +3145,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::get_children
     return children;
 }
 
-void EtherLinkOam::Nodes::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherLinkOam::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 EtherLinkOam::Nodes::Node::Node()
@@ -2166,8 +3183,8 @@ bool EtherLinkOam::Nodes::Node::has_data() const
 
 bool EtherLinkOam::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (summary !=  nullptr && summary->has_operation());
 }
 
@@ -2194,7 +3211,7 @@ const EntityPath EtherLinkOam::Nodes::Node::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2227,12 +3244,29 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::get_ch
     return children;
 }
 
-void EtherLinkOam::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "summary" || name == "node-name")
+        return true;
+    return false;
 }
 
 EtherLinkOam::Nodes::Node::Summary::Summary()
@@ -2295,29 +3329,29 @@ bool EtherLinkOam::Nodes::Node::Summary::has_data() const
 
 bool EtherLinkOam::Nodes::Node::Summary::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active_send.operation)
-	|| is_set(evaluating.operation)
-	|| is_set(events.operation)
-	|| is_set(interfaces.operation)
-	|| is_set(local_accept.operation)
-	|| is_set(local_events.operation)
-	|| is_set(local_frame.operation)
-	|| is_set(local_frame_period.operation)
-	|| is_set(local_frame_seconds.operation)
-	|| is_set(local_reject.operation)
-	|| is_set(local_symbol_period.operation)
-	|| is_set(loopback_mode.operation)
-	|| is_set(miswired_connections.operation)
-	|| is_set(operational.operation)
-	|| is_set(passive_wait.operation)
-	|| is_set(port_down.operation)
-	|| is_set(remote_events.operation)
-	|| is_set(remote_frame.operation)
-	|| is_set(remote_frame_period.operation)
-	|| is_set(remote_frame_seconds.operation)
-	|| is_set(remote_reject.operation)
-	|| is_set(remote_symbol_period.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active_send.yfilter)
+	|| ydk::is_set(evaluating.yfilter)
+	|| ydk::is_set(events.yfilter)
+	|| ydk::is_set(interfaces.yfilter)
+	|| ydk::is_set(local_accept.yfilter)
+	|| ydk::is_set(local_events.yfilter)
+	|| ydk::is_set(local_frame.yfilter)
+	|| ydk::is_set(local_frame_period.yfilter)
+	|| ydk::is_set(local_frame_seconds.yfilter)
+	|| ydk::is_set(local_reject.yfilter)
+	|| ydk::is_set(local_symbol_period.yfilter)
+	|| ydk::is_set(loopback_mode.yfilter)
+	|| ydk::is_set(miswired_connections.yfilter)
+	|| ydk::is_set(operational.yfilter)
+	|| ydk::is_set(passive_wait.yfilter)
+	|| ydk::is_set(port_down.yfilter)
+	|| ydk::is_set(remote_events.yfilter)
+	|| ydk::is_set(remote_frame.yfilter)
+	|| ydk::is_set(remote_frame_period.yfilter)
+	|| ydk::is_set(remote_frame_seconds.yfilter)
+	|| ydk::is_set(remote_reject.yfilter)
+	|| ydk::is_set(remote_symbol_period.yfilter);
 }
 
 std::string EtherLinkOam::Nodes::Node::Summary::get_segment_path() const
@@ -2343,28 +3377,28 @@ const EntityPath EtherLinkOam::Nodes::Node::Summary::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_send.is_set || is_set(active_send.operation)) leaf_name_data.push_back(active_send.get_name_leafdata());
-    if (evaluating.is_set || is_set(evaluating.operation)) leaf_name_data.push_back(evaluating.get_name_leafdata());
-    if (events.is_set || is_set(events.operation)) leaf_name_data.push_back(events.get_name_leafdata());
-    if (interfaces.is_set || is_set(interfaces.operation)) leaf_name_data.push_back(interfaces.get_name_leafdata());
-    if (local_accept.is_set || is_set(local_accept.operation)) leaf_name_data.push_back(local_accept.get_name_leafdata());
-    if (local_events.is_set || is_set(local_events.operation)) leaf_name_data.push_back(local_events.get_name_leafdata());
-    if (local_frame.is_set || is_set(local_frame.operation)) leaf_name_data.push_back(local_frame.get_name_leafdata());
-    if (local_frame_period.is_set || is_set(local_frame_period.operation)) leaf_name_data.push_back(local_frame_period.get_name_leafdata());
-    if (local_frame_seconds.is_set || is_set(local_frame_seconds.operation)) leaf_name_data.push_back(local_frame_seconds.get_name_leafdata());
-    if (local_reject.is_set || is_set(local_reject.operation)) leaf_name_data.push_back(local_reject.get_name_leafdata());
-    if (local_symbol_period.is_set || is_set(local_symbol_period.operation)) leaf_name_data.push_back(local_symbol_period.get_name_leafdata());
-    if (loopback_mode.is_set || is_set(loopback_mode.operation)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
-    if (miswired_connections.is_set || is_set(miswired_connections.operation)) leaf_name_data.push_back(miswired_connections.get_name_leafdata());
-    if (operational.is_set || is_set(operational.operation)) leaf_name_data.push_back(operational.get_name_leafdata());
-    if (passive_wait.is_set || is_set(passive_wait.operation)) leaf_name_data.push_back(passive_wait.get_name_leafdata());
-    if (port_down.is_set || is_set(port_down.operation)) leaf_name_data.push_back(port_down.get_name_leafdata());
-    if (remote_events.is_set || is_set(remote_events.operation)) leaf_name_data.push_back(remote_events.get_name_leafdata());
-    if (remote_frame.is_set || is_set(remote_frame.operation)) leaf_name_data.push_back(remote_frame.get_name_leafdata());
-    if (remote_frame_period.is_set || is_set(remote_frame_period.operation)) leaf_name_data.push_back(remote_frame_period.get_name_leafdata());
-    if (remote_frame_seconds.is_set || is_set(remote_frame_seconds.operation)) leaf_name_data.push_back(remote_frame_seconds.get_name_leafdata());
-    if (remote_reject.is_set || is_set(remote_reject.operation)) leaf_name_data.push_back(remote_reject.get_name_leafdata());
-    if (remote_symbol_period.is_set || is_set(remote_symbol_period.operation)) leaf_name_data.push_back(remote_symbol_period.get_name_leafdata());
+    if (active_send.is_set || is_set(active_send.yfilter)) leaf_name_data.push_back(active_send.get_name_leafdata());
+    if (evaluating.is_set || is_set(evaluating.yfilter)) leaf_name_data.push_back(evaluating.get_name_leafdata());
+    if (events.is_set || is_set(events.yfilter)) leaf_name_data.push_back(events.get_name_leafdata());
+    if (interfaces.is_set || is_set(interfaces.yfilter)) leaf_name_data.push_back(interfaces.get_name_leafdata());
+    if (local_accept.is_set || is_set(local_accept.yfilter)) leaf_name_data.push_back(local_accept.get_name_leafdata());
+    if (local_events.is_set || is_set(local_events.yfilter)) leaf_name_data.push_back(local_events.get_name_leafdata());
+    if (local_frame.is_set || is_set(local_frame.yfilter)) leaf_name_data.push_back(local_frame.get_name_leafdata());
+    if (local_frame_period.is_set || is_set(local_frame_period.yfilter)) leaf_name_data.push_back(local_frame_period.get_name_leafdata());
+    if (local_frame_seconds.is_set || is_set(local_frame_seconds.yfilter)) leaf_name_data.push_back(local_frame_seconds.get_name_leafdata());
+    if (local_reject.is_set || is_set(local_reject.yfilter)) leaf_name_data.push_back(local_reject.get_name_leafdata());
+    if (local_symbol_period.is_set || is_set(local_symbol_period.yfilter)) leaf_name_data.push_back(local_symbol_period.get_name_leafdata());
+    if (loopback_mode.is_set || is_set(loopback_mode.yfilter)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
+    if (miswired_connections.is_set || is_set(miswired_connections.yfilter)) leaf_name_data.push_back(miswired_connections.get_name_leafdata());
+    if (operational.is_set || is_set(operational.yfilter)) leaf_name_data.push_back(operational.get_name_leafdata());
+    if (passive_wait.is_set || is_set(passive_wait.yfilter)) leaf_name_data.push_back(passive_wait.get_name_leafdata());
+    if (port_down.is_set || is_set(port_down.yfilter)) leaf_name_data.push_back(port_down.get_name_leafdata());
+    if (remote_events.is_set || is_set(remote_events.yfilter)) leaf_name_data.push_back(remote_events.get_name_leafdata());
+    if (remote_frame.is_set || is_set(remote_frame.yfilter)) leaf_name_data.push_back(remote_frame.get_name_leafdata());
+    if (remote_frame_period.is_set || is_set(remote_frame_period.yfilter)) leaf_name_data.push_back(remote_frame_period.get_name_leafdata());
+    if (remote_frame_seconds.is_set || is_set(remote_frame_seconds.yfilter)) leaf_name_data.push_back(remote_frame_seconds.get_name_leafdata());
+    if (remote_reject.is_set || is_set(remote_reject.yfilter)) leaf_name_data.push_back(remote_reject.get_name_leafdata());
+    if (remote_symbol_period.is_set || is_set(remote_symbol_period.yfilter)) leaf_name_data.push_back(remote_symbol_period.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2383,96 +3417,239 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::Nodes::Node::Summar
     return children;
 }
 
-void EtherLinkOam::Nodes::Node::Summary::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::Nodes::Node::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-send")
     {
         active_send = value;
+        active_send.value_namespace = name_space;
+        active_send.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "evaluating")
     {
         evaluating = value;
+        evaluating.value_namespace = name_space;
+        evaluating.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "events")
     {
         events = value;
+        events.value_namespace = name_space;
+        events.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interfaces")
     {
         interfaces = value;
+        interfaces.value_namespace = name_space;
+        interfaces.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-accept")
     {
         local_accept = value;
+        local_accept.value_namespace = name_space;
+        local_accept.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-events")
     {
         local_events = value;
+        local_events.value_namespace = name_space;
+        local_events.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-frame")
     {
         local_frame = value;
+        local_frame.value_namespace = name_space;
+        local_frame.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-frame-period")
     {
         local_frame_period = value;
+        local_frame_period.value_namespace = name_space;
+        local_frame_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-frame-seconds")
     {
         local_frame_seconds = value;
+        local_frame_seconds.value_namespace = name_space;
+        local_frame_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-reject")
     {
         local_reject = value;
+        local_reject.value_namespace = name_space;
+        local_reject.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-symbol-period")
     {
         local_symbol_period = value;
+        local_symbol_period.value_namespace = name_space;
+        local_symbol_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loopback-mode")
     {
         loopback_mode = value;
+        loopback_mode.value_namespace = name_space;
+        loopback_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "miswired-connections")
     {
         miswired_connections = value;
+        miswired_connections.value_namespace = name_space;
+        miswired_connections.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operational")
     {
         operational = value;
+        operational.value_namespace = name_space;
+        operational.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passive-wait")
     {
         passive_wait = value;
+        passive_wait.value_namespace = name_space;
+        passive_wait.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-down")
     {
         port_down = value;
+        port_down.value_namespace = name_space;
+        port_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-events")
     {
         remote_events = value;
+        remote_events.value_namespace = name_space;
+        remote_events.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-frame")
     {
         remote_frame = value;
+        remote_frame.value_namespace = name_space;
+        remote_frame.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-frame-period")
     {
         remote_frame_period = value;
+        remote_frame_period.value_namespace = name_space;
+        remote_frame_period.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-frame-seconds")
     {
         remote_frame_seconds = value;
+        remote_frame_seconds.value_namespace = name_space;
+        remote_frame_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-reject")
     {
         remote_reject = value;
+        remote_reject.value_namespace = name_space;
+        remote_reject.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-symbol-period")
     {
         remote_symbol_period = value;
+        remote_symbol_period.value_namespace = name_space;
+        remote_symbol_period.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::Nodes::Node::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-send")
+    {
+        active_send.yfilter = yfilter;
+    }
+    if(value_path == "evaluating")
+    {
+        evaluating.yfilter = yfilter;
+    }
+    if(value_path == "events")
+    {
+        events.yfilter = yfilter;
+    }
+    if(value_path == "interfaces")
+    {
+        interfaces.yfilter = yfilter;
+    }
+    if(value_path == "local-accept")
+    {
+        local_accept.yfilter = yfilter;
+    }
+    if(value_path == "local-events")
+    {
+        local_events.yfilter = yfilter;
+    }
+    if(value_path == "local-frame")
+    {
+        local_frame.yfilter = yfilter;
+    }
+    if(value_path == "local-frame-period")
+    {
+        local_frame_period.yfilter = yfilter;
+    }
+    if(value_path == "local-frame-seconds")
+    {
+        local_frame_seconds.yfilter = yfilter;
+    }
+    if(value_path == "local-reject")
+    {
+        local_reject.yfilter = yfilter;
+    }
+    if(value_path == "local-symbol-period")
+    {
+        local_symbol_period.yfilter = yfilter;
+    }
+    if(value_path == "loopback-mode")
+    {
+        loopback_mode.yfilter = yfilter;
+    }
+    if(value_path == "miswired-connections")
+    {
+        miswired_connections.yfilter = yfilter;
+    }
+    if(value_path == "operational")
+    {
+        operational.yfilter = yfilter;
+    }
+    if(value_path == "passive-wait")
+    {
+        passive_wait.yfilter = yfilter;
+    }
+    if(value_path == "port-down")
+    {
+        port_down.yfilter = yfilter;
+    }
+    if(value_path == "remote-events")
+    {
+        remote_events.yfilter = yfilter;
+    }
+    if(value_path == "remote-frame")
+    {
+        remote_frame.yfilter = yfilter;
+    }
+    if(value_path == "remote-frame-period")
+    {
+        remote_frame_period.yfilter = yfilter;
+    }
+    if(value_path == "remote-frame-seconds")
+    {
+        remote_frame_seconds.yfilter = yfilter;
+    }
+    if(value_path == "remote-reject")
+    {
+        remote_reject.yfilter = yfilter;
+    }
+    if(value_path == "remote-symbol-period")
+    {
+        remote_symbol_period.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active-send" || name == "evaluating" || name == "events" || name == "interfaces" || name == "local-accept" || name == "local-events" || name == "local-frame" || name == "local-frame-period" || name == "local-frame-seconds" || name == "local-reject" || name == "local-symbol-period" || name == "loopback-mode" || name == "miswired-connections" || name == "operational" || name == "passive-wait" || name == "port-down" || name == "remote-events" || name == "remote-frame" || name == "remote-frame-period" || name == "remote-frame-seconds" || name == "remote-reject" || name == "remote-symbol-period")
+        return true;
+    return false;
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterfaces()
@@ -2501,7 +3678,7 @@ bool EtherLinkOam::EventLogEntryInterfaces::has_operation() const
         if(event_log_entry_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherLinkOam::EventLogEntryInterfaces::get_segment_path() const
@@ -2566,8 +3743,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterf
     return children;
 }
 
-void EtherLinkOam::EventLogEntryInterfaces::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::EventLogEntryInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-log-entry-interface")
+        return true;
+    return false;
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryInterface()
@@ -2593,8 +3781,8 @@ bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_data() c
 
 bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
 	|| (event_log_entry_indexes !=  nullptr && event_log_entry_indexes->has_operation());
 }
 
@@ -2621,7 +3809,7 @@ const EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2654,12 +3842,29 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterf
     return children;
 }
 
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-log-entry-indexes" || name == "member-interface")
+        return true;
+    return false;
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndexes()
@@ -2688,7 +3893,7 @@ bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntr
         if(event_log_entry_index[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::get_segment_path() const
@@ -2753,8 +3958,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterf
     return children;
 }
 
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-log-entry-index")
+        return true;
+    return false;
 }
 
 EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::EventLogEntryIndex()
@@ -2813,27 +4029,27 @@ bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntr
 
 bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(event_log_entry_index.operation)
-	|| is_set(action_taken.operation)
-	|| is_set(event_total.operation)
-	|| is_set(handle.operation)
-	|| is_set(index_.operation)
-	|| is_set(local_high_threshold.operation)
-	|| is_set(local_high_threshold_config_units.operation)
-	|| is_set(location.operation)
-	|| is_set(oui.operation)
-	|| is_set(running_total.operation)
-	|| is_set(threshold.operation)
-	|| is_set(threshold_config_units.operation)
-	|| is_set(threshold_units.operation)
-	|| is_set(timestamp.operation)
-	|| is_set(type.operation)
-	|| is_set(value_.operation)
-	|| is_set(value_config_units.operation)
-	|| is_set(window.operation)
-	|| is_set(window_config_units.operation)
-	|| is_set(window_units.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_log_entry_index.yfilter)
+	|| ydk::is_set(action_taken.yfilter)
+	|| ydk::is_set(event_total.yfilter)
+	|| ydk::is_set(handle.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(local_high_threshold.yfilter)
+	|| ydk::is_set(local_high_threshold_config_units.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(oui.yfilter)
+	|| ydk::is_set(running_total.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(threshold_config_units.yfilter)
+	|| ydk::is_set(threshold_units.yfilter)
+	|| ydk::is_set(timestamp.yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(value_config_units.yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| ydk::is_set(window_config_units.yfilter)
+	|| ydk::is_set(window_units.yfilter);
 }
 
 std::string EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::get_segment_path() const
@@ -2859,26 +4075,26 @@ const EntityPath EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_log_entry_index.is_set || is_set(event_log_entry_index.operation)) leaf_name_data.push_back(event_log_entry_index.get_name_leafdata());
-    if (action_taken.is_set || is_set(action_taken.operation)) leaf_name_data.push_back(action_taken.get_name_leafdata());
-    if (event_total.is_set || is_set(event_total.operation)) leaf_name_data.push_back(event_total.get_name_leafdata());
-    if (handle.is_set || is_set(handle.operation)) leaf_name_data.push_back(handle.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (local_high_threshold.is_set || is_set(local_high_threshold.operation)) leaf_name_data.push_back(local_high_threshold.get_name_leafdata());
-    if (local_high_threshold_config_units.is_set || is_set(local_high_threshold_config_units.operation)) leaf_name_data.push_back(local_high_threshold_config_units.get_name_leafdata());
-    if (location.is_set || is_set(location.operation)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (oui.is_set || is_set(oui.operation)) leaf_name_data.push_back(oui.get_name_leafdata());
-    if (running_total.is_set || is_set(running_total.operation)) leaf_name_data.push_back(running_total.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.operation)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (threshold_config_units.is_set || is_set(threshold_config_units.operation)) leaf_name_data.push_back(threshold_config_units.get_name_leafdata());
-    if (threshold_units.is_set || is_set(threshold_units.operation)) leaf_name_data.push_back(threshold_units.get_name_leafdata());
-    if (timestamp.is_set || is_set(timestamp.operation)) leaf_name_data.push_back(timestamp.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
-    if (value_config_units.is_set || is_set(value_config_units.operation)) leaf_name_data.push_back(value_config_units.get_name_leafdata());
-    if (window.is_set || is_set(window.operation)) leaf_name_data.push_back(window.get_name_leafdata());
-    if (window_config_units.is_set || is_set(window_config_units.operation)) leaf_name_data.push_back(window_config_units.get_name_leafdata());
-    if (window_units.is_set || is_set(window_units.operation)) leaf_name_data.push_back(window_units.get_name_leafdata());
+    if (event_log_entry_index.is_set || is_set(event_log_entry_index.yfilter)) leaf_name_data.push_back(event_log_entry_index.get_name_leafdata());
+    if (action_taken.is_set || is_set(action_taken.yfilter)) leaf_name_data.push_back(action_taken.get_name_leafdata());
+    if (event_total.is_set || is_set(event_total.yfilter)) leaf_name_data.push_back(event_total.get_name_leafdata());
+    if (handle.is_set || is_set(handle.yfilter)) leaf_name_data.push_back(handle.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (local_high_threshold.is_set || is_set(local_high_threshold.yfilter)) leaf_name_data.push_back(local_high_threshold.get_name_leafdata());
+    if (local_high_threshold_config_units.is_set || is_set(local_high_threshold_config_units.yfilter)) leaf_name_data.push_back(local_high_threshold_config_units.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (oui.is_set || is_set(oui.yfilter)) leaf_name_data.push_back(oui.get_name_leafdata());
+    if (running_total.is_set || is_set(running_total.yfilter)) leaf_name_data.push_back(running_total.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (threshold_config_units.is_set || is_set(threshold_config_units.yfilter)) leaf_name_data.push_back(threshold_config_units.get_name_leafdata());
+    if (threshold_units.is_set || is_set(threshold_units.yfilter)) leaf_name_data.push_back(threshold_units.get_name_leafdata());
+    if (timestamp.is_set || is_set(timestamp.yfilter)) leaf_name_data.push_back(timestamp.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (value_config_units.is_set || is_set(value_config_units.yfilter)) leaf_name_data.push_back(value_config_units.get_name_leafdata());
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+    if (window_config_units.is_set || is_set(window_config_units.yfilter)) leaf_name_data.push_back(window_config_units.get_name_leafdata());
+    if (window_units.is_set || is_set(window_units.yfilter)) leaf_name_data.push_back(window_units.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2897,88 +4113,219 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::EventLogEntryInterf
     return children;
 }
 
-void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-log-entry-index")
     {
         event_log_entry_index = value;
+        event_log_entry_index.value_namespace = name_space;
+        event_log_entry_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "action-taken")
     {
         action_taken = value;
+        action_taken.value_namespace = name_space;
+        action_taken.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-total")
     {
         event_total = value;
+        event_total.value_namespace = name_space;
+        event_total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "handle")
     {
         handle = value;
+        handle.value_namespace = name_space;
+        handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-high-threshold")
     {
         local_high_threshold = value;
+        local_high_threshold.value_namespace = name_space;
+        local_high_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-high-threshold-config-units")
     {
         local_high_threshold_config_units = value;
+        local_high_threshold_config_units.value_namespace = name_space;
+        local_high_threshold_config_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "location")
     {
         location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oui")
     {
         oui = value;
+        oui.value_namespace = name_space;
+        oui.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "running-total")
     {
         running_total = value;
+        running_total.value_namespace = name_space;
+        running_total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold")
     {
         threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-config-units")
     {
         threshold_config_units = value;
+        threshold_config_units.value_namespace = name_space;
+        threshold_config_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-units")
     {
         threshold_units = value;
+        threshold_units.value_namespace = name_space;
+        threshold_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timestamp")
     {
         timestamp = value;
+        timestamp.value_namespace = name_space;
+        timestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value-config-units")
     {
         value_config_units = value;
+        value_config_units.value_namespace = name_space;
+        value_config_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "window")
     {
         window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "window-config-units")
     {
         window_config_units = value;
+        window_config_units.value_namespace = name_space;
+        window_config_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "window-units")
     {
         window_units = value;
+        window_units.value_namespace = name_space;
+        window_units.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-log-entry-index")
+    {
+        event_log_entry_index.yfilter = yfilter;
+    }
+    if(value_path == "action-taken")
+    {
+        action_taken.yfilter = yfilter;
+    }
+    if(value_path == "event-total")
+    {
+        event_total.yfilter = yfilter;
+    }
+    if(value_path == "handle")
+    {
+        handle.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "local-high-threshold")
+    {
+        local_high_threshold.yfilter = yfilter;
+    }
+    if(value_path == "local-high-threshold-config-units")
+    {
+        local_high_threshold_config_units.yfilter = yfilter;
+    }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "oui")
+    {
+        oui.yfilter = yfilter;
+    }
+    if(value_path == "running-total")
+    {
+        running_total.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "threshold-config-units")
+    {
+        threshold_config_units.yfilter = yfilter;
+    }
+    if(value_path == "threshold-units")
+    {
+        threshold_units.yfilter = yfilter;
+    }
+    if(value_path == "timestamp")
+    {
+        timestamp.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+    if(value_path == "value-config-units")
+    {
+        value_config_units.yfilter = yfilter;
+    }
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+    if(value_path == "window-config-units")
+    {
+        window_config_units.yfilter = yfilter;
+    }
+    if(value_path == "window-units")
+    {
+        window_units.yfilter = yfilter;
+    }
+}
+
+bool EtherLinkOam::EventLogEntryInterfaces::EventLogEntryInterface::EventLogEntryIndexes::EventLogEntryIndex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event-log-entry-index" || name == "action-taken" || name == "event-total" || name == "handle" || name == "index" || name == "local-high-threshold" || name == "local-high-threshold-config-units" || name == "location" || name == "oui" || name == "running-total" || name == "threshold" || name == "threshold-config-units" || name == "threshold-units" || name == "timestamp" || name == "type" || name == "value" || name == "value-config-units" || name == "window" || name == "window-config-units" || name == "window-units")
+        return true;
+    return false;
 }
 
 EtherLinkOam::StatsInterfaces::StatsInterfaces()
@@ -3007,7 +4354,7 @@ bool EtherLinkOam::StatsInterfaces::has_operation() const
         if(stats_interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EtherLinkOam::StatsInterfaces::get_segment_path() const
@@ -3072,8 +4419,19 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::StatsInterfaces::ge
     return children;
 }
 
-void EtherLinkOam::StatsInterfaces::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::StatsInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EtherLinkOam::StatsInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EtherLinkOam::StatsInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "stats-interface")
+        return true;
+    return false;
 }
 
 EtherLinkOam::StatsInterfaces::StatsInterface::StatsInterface()
@@ -3146,34 +4504,34 @@ bool EtherLinkOam::StatsInterfaces::StatsInterface::has_data() const
 
 bool EtherLinkOam::StatsInterfaces::StatsInterface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(member_interface.operation)
-	|| is_set(duplicate_event_notification_rx.operation)
-	|| is_set(duplicate_event_notification_tx.operation)
-	|| is_set(fixed_frames_rx.operation)
-	|| is_set(frames_lost_due_to_oam.operation)
-	|| is_set(information_rx.operation)
-	|| is_set(information_tx.operation)
-	|| is_set(local_error_frame_period_records.operation)
-	|| is_set(local_error_frame_records.operation)
-	|| is_set(local_error_frame_second_records.operation)
-	|| is_set(local_error_symbol_period_records.operation)
-	|| is_set(loopback_control_rx.operation)
-	|| is_set(loopback_control_tx.operation)
-	|| is_set(org_specific_rx.operation)
-	|| is_set(org_specific_tx.operation)
-	|| is_set(remote_error_frame_period_records.operation)
-	|| is_set(remote_error_frame_records.operation)
-	|| is_set(remote_error_frame_second_records.operation)
-	|| is_set(remote_error_symbol_period_records.operation)
-	|| is_set(unique_event_notification_rx.operation)
-	|| is_set(unique_event_notification_tx.operation)
-	|| is_set(unsupported_codes_rx.operation)
-	|| is_set(unsupported_codes_tx.operation)
-	|| is_set(variable_request_rx.operation)
-	|| is_set(variable_request_tx.operation)
-	|| is_set(variable_response_rx.operation)
-	|| is_set(variable_response_tx.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(member_interface.yfilter)
+	|| ydk::is_set(duplicate_event_notification_rx.yfilter)
+	|| ydk::is_set(duplicate_event_notification_tx.yfilter)
+	|| ydk::is_set(fixed_frames_rx.yfilter)
+	|| ydk::is_set(frames_lost_due_to_oam.yfilter)
+	|| ydk::is_set(information_rx.yfilter)
+	|| ydk::is_set(information_tx.yfilter)
+	|| ydk::is_set(local_error_frame_period_records.yfilter)
+	|| ydk::is_set(local_error_frame_records.yfilter)
+	|| ydk::is_set(local_error_frame_second_records.yfilter)
+	|| ydk::is_set(local_error_symbol_period_records.yfilter)
+	|| ydk::is_set(loopback_control_rx.yfilter)
+	|| ydk::is_set(loopback_control_tx.yfilter)
+	|| ydk::is_set(org_specific_rx.yfilter)
+	|| ydk::is_set(org_specific_tx.yfilter)
+	|| ydk::is_set(remote_error_frame_period_records.yfilter)
+	|| ydk::is_set(remote_error_frame_records.yfilter)
+	|| ydk::is_set(remote_error_frame_second_records.yfilter)
+	|| ydk::is_set(remote_error_symbol_period_records.yfilter)
+	|| ydk::is_set(unique_event_notification_rx.yfilter)
+	|| ydk::is_set(unique_event_notification_tx.yfilter)
+	|| ydk::is_set(unsupported_codes_rx.yfilter)
+	|| ydk::is_set(unsupported_codes_tx.yfilter)
+	|| ydk::is_set(variable_request_rx.yfilter)
+	|| ydk::is_set(variable_request_tx.yfilter)
+	|| ydk::is_set(variable_response_rx.yfilter)
+	|| ydk::is_set(variable_response_tx.yfilter);
 }
 
 std::string EtherLinkOam::StatsInterfaces::StatsInterface::get_segment_path() const
@@ -3199,33 +4557,33 @@ const EntityPath EtherLinkOam::StatsInterfaces::StatsInterface::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (member_interface.is_set || is_set(member_interface.operation)) leaf_name_data.push_back(member_interface.get_name_leafdata());
-    if (duplicate_event_notification_rx.is_set || is_set(duplicate_event_notification_rx.operation)) leaf_name_data.push_back(duplicate_event_notification_rx.get_name_leafdata());
-    if (duplicate_event_notification_tx.is_set || is_set(duplicate_event_notification_tx.operation)) leaf_name_data.push_back(duplicate_event_notification_tx.get_name_leafdata());
-    if (fixed_frames_rx.is_set || is_set(fixed_frames_rx.operation)) leaf_name_data.push_back(fixed_frames_rx.get_name_leafdata());
-    if (frames_lost_due_to_oam.is_set || is_set(frames_lost_due_to_oam.operation)) leaf_name_data.push_back(frames_lost_due_to_oam.get_name_leafdata());
-    if (information_rx.is_set || is_set(information_rx.operation)) leaf_name_data.push_back(information_rx.get_name_leafdata());
-    if (information_tx.is_set || is_set(information_tx.operation)) leaf_name_data.push_back(information_tx.get_name_leafdata());
-    if (local_error_frame_period_records.is_set || is_set(local_error_frame_period_records.operation)) leaf_name_data.push_back(local_error_frame_period_records.get_name_leafdata());
-    if (local_error_frame_records.is_set || is_set(local_error_frame_records.operation)) leaf_name_data.push_back(local_error_frame_records.get_name_leafdata());
-    if (local_error_frame_second_records.is_set || is_set(local_error_frame_second_records.operation)) leaf_name_data.push_back(local_error_frame_second_records.get_name_leafdata());
-    if (local_error_symbol_period_records.is_set || is_set(local_error_symbol_period_records.operation)) leaf_name_data.push_back(local_error_symbol_period_records.get_name_leafdata());
-    if (loopback_control_rx.is_set || is_set(loopback_control_rx.operation)) leaf_name_data.push_back(loopback_control_rx.get_name_leafdata());
-    if (loopback_control_tx.is_set || is_set(loopback_control_tx.operation)) leaf_name_data.push_back(loopback_control_tx.get_name_leafdata());
-    if (org_specific_rx.is_set || is_set(org_specific_rx.operation)) leaf_name_data.push_back(org_specific_rx.get_name_leafdata());
-    if (org_specific_tx.is_set || is_set(org_specific_tx.operation)) leaf_name_data.push_back(org_specific_tx.get_name_leafdata());
-    if (remote_error_frame_period_records.is_set || is_set(remote_error_frame_period_records.operation)) leaf_name_data.push_back(remote_error_frame_period_records.get_name_leafdata());
-    if (remote_error_frame_records.is_set || is_set(remote_error_frame_records.operation)) leaf_name_data.push_back(remote_error_frame_records.get_name_leafdata());
-    if (remote_error_frame_second_records.is_set || is_set(remote_error_frame_second_records.operation)) leaf_name_data.push_back(remote_error_frame_second_records.get_name_leafdata());
-    if (remote_error_symbol_period_records.is_set || is_set(remote_error_symbol_period_records.operation)) leaf_name_data.push_back(remote_error_symbol_period_records.get_name_leafdata());
-    if (unique_event_notification_rx.is_set || is_set(unique_event_notification_rx.operation)) leaf_name_data.push_back(unique_event_notification_rx.get_name_leafdata());
-    if (unique_event_notification_tx.is_set || is_set(unique_event_notification_tx.operation)) leaf_name_data.push_back(unique_event_notification_tx.get_name_leafdata());
-    if (unsupported_codes_rx.is_set || is_set(unsupported_codes_rx.operation)) leaf_name_data.push_back(unsupported_codes_rx.get_name_leafdata());
-    if (unsupported_codes_tx.is_set || is_set(unsupported_codes_tx.operation)) leaf_name_data.push_back(unsupported_codes_tx.get_name_leafdata());
-    if (variable_request_rx.is_set || is_set(variable_request_rx.operation)) leaf_name_data.push_back(variable_request_rx.get_name_leafdata());
-    if (variable_request_tx.is_set || is_set(variable_request_tx.operation)) leaf_name_data.push_back(variable_request_tx.get_name_leafdata());
-    if (variable_response_rx.is_set || is_set(variable_response_rx.operation)) leaf_name_data.push_back(variable_response_rx.get_name_leafdata());
-    if (variable_response_tx.is_set || is_set(variable_response_tx.operation)) leaf_name_data.push_back(variable_response_tx.get_name_leafdata());
+    if (member_interface.is_set || is_set(member_interface.yfilter)) leaf_name_data.push_back(member_interface.get_name_leafdata());
+    if (duplicate_event_notification_rx.is_set || is_set(duplicate_event_notification_rx.yfilter)) leaf_name_data.push_back(duplicate_event_notification_rx.get_name_leafdata());
+    if (duplicate_event_notification_tx.is_set || is_set(duplicate_event_notification_tx.yfilter)) leaf_name_data.push_back(duplicate_event_notification_tx.get_name_leafdata());
+    if (fixed_frames_rx.is_set || is_set(fixed_frames_rx.yfilter)) leaf_name_data.push_back(fixed_frames_rx.get_name_leafdata());
+    if (frames_lost_due_to_oam.is_set || is_set(frames_lost_due_to_oam.yfilter)) leaf_name_data.push_back(frames_lost_due_to_oam.get_name_leafdata());
+    if (information_rx.is_set || is_set(information_rx.yfilter)) leaf_name_data.push_back(information_rx.get_name_leafdata());
+    if (information_tx.is_set || is_set(information_tx.yfilter)) leaf_name_data.push_back(information_tx.get_name_leafdata());
+    if (local_error_frame_period_records.is_set || is_set(local_error_frame_period_records.yfilter)) leaf_name_data.push_back(local_error_frame_period_records.get_name_leafdata());
+    if (local_error_frame_records.is_set || is_set(local_error_frame_records.yfilter)) leaf_name_data.push_back(local_error_frame_records.get_name_leafdata());
+    if (local_error_frame_second_records.is_set || is_set(local_error_frame_second_records.yfilter)) leaf_name_data.push_back(local_error_frame_second_records.get_name_leafdata());
+    if (local_error_symbol_period_records.is_set || is_set(local_error_symbol_period_records.yfilter)) leaf_name_data.push_back(local_error_symbol_period_records.get_name_leafdata());
+    if (loopback_control_rx.is_set || is_set(loopback_control_rx.yfilter)) leaf_name_data.push_back(loopback_control_rx.get_name_leafdata());
+    if (loopback_control_tx.is_set || is_set(loopback_control_tx.yfilter)) leaf_name_data.push_back(loopback_control_tx.get_name_leafdata());
+    if (org_specific_rx.is_set || is_set(org_specific_rx.yfilter)) leaf_name_data.push_back(org_specific_rx.get_name_leafdata());
+    if (org_specific_tx.is_set || is_set(org_specific_tx.yfilter)) leaf_name_data.push_back(org_specific_tx.get_name_leafdata());
+    if (remote_error_frame_period_records.is_set || is_set(remote_error_frame_period_records.yfilter)) leaf_name_data.push_back(remote_error_frame_period_records.get_name_leafdata());
+    if (remote_error_frame_records.is_set || is_set(remote_error_frame_records.yfilter)) leaf_name_data.push_back(remote_error_frame_records.get_name_leafdata());
+    if (remote_error_frame_second_records.is_set || is_set(remote_error_frame_second_records.yfilter)) leaf_name_data.push_back(remote_error_frame_second_records.get_name_leafdata());
+    if (remote_error_symbol_period_records.is_set || is_set(remote_error_symbol_period_records.yfilter)) leaf_name_data.push_back(remote_error_symbol_period_records.get_name_leafdata());
+    if (unique_event_notification_rx.is_set || is_set(unique_event_notification_rx.yfilter)) leaf_name_data.push_back(unique_event_notification_rx.get_name_leafdata());
+    if (unique_event_notification_tx.is_set || is_set(unique_event_notification_tx.yfilter)) leaf_name_data.push_back(unique_event_notification_tx.get_name_leafdata());
+    if (unsupported_codes_rx.is_set || is_set(unsupported_codes_rx.yfilter)) leaf_name_data.push_back(unsupported_codes_rx.get_name_leafdata());
+    if (unsupported_codes_tx.is_set || is_set(unsupported_codes_tx.yfilter)) leaf_name_data.push_back(unsupported_codes_tx.get_name_leafdata());
+    if (variable_request_rx.is_set || is_set(variable_request_rx.yfilter)) leaf_name_data.push_back(variable_request_rx.get_name_leafdata());
+    if (variable_request_tx.is_set || is_set(variable_request_tx.yfilter)) leaf_name_data.push_back(variable_request_tx.get_name_leafdata());
+    if (variable_response_rx.is_set || is_set(variable_response_rx.yfilter)) leaf_name_data.push_back(variable_response_rx.get_name_leafdata());
+    if (variable_response_tx.is_set || is_set(variable_response_tx.yfilter)) leaf_name_data.push_back(variable_response_tx.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3244,163 +4602,336 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLinkOam::StatsInterfaces::St
     return children;
 }
 
-void EtherLinkOam::StatsInterfaces::StatsInterface::set_value(const std::string & value_path, std::string value)
+void EtherLinkOam::StatsInterfaces::StatsInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "member-interface")
     {
         member_interface = value;
+        member_interface.value_namespace = name_space;
+        member_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicate-event-notification-rx")
     {
         duplicate_event_notification_rx = value;
+        duplicate_event_notification_rx.value_namespace = name_space;
+        duplicate_event_notification_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "duplicate-event-notification-tx")
     {
         duplicate_event_notification_tx = value;
+        duplicate_event_notification_tx.value_namespace = name_space;
+        duplicate_event_notification_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fixed-frames-rx")
     {
         fixed_frames_rx = value;
+        fixed_frames_rx.value_namespace = name_space;
+        fixed_frames_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "frames-lost-due-to-oam")
     {
         frames_lost_due_to_oam = value;
+        frames_lost_due_to_oam.value_namespace = name_space;
+        frames_lost_due_to_oam.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "information-rx")
     {
         information_rx = value;
+        information_rx.value_namespace = name_space;
+        information_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "information-tx")
     {
         information_tx = value;
+        information_tx.value_namespace = name_space;
+        information_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-error-frame-period-records")
     {
         local_error_frame_period_records = value;
+        local_error_frame_period_records.value_namespace = name_space;
+        local_error_frame_period_records.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-error-frame-records")
     {
         local_error_frame_records = value;
+        local_error_frame_records.value_namespace = name_space;
+        local_error_frame_records.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-error-frame-second-records")
     {
         local_error_frame_second_records = value;
+        local_error_frame_second_records.value_namespace = name_space;
+        local_error_frame_second_records.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-error-symbol-period-records")
     {
         local_error_symbol_period_records = value;
+        local_error_symbol_period_records.value_namespace = name_space;
+        local_error_symbol_period_records.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loopback-control-rx")
     {
         loopback_control_rx = value;
+        loopback_control_rx.value_namespace = name_space;
+        loopback_control_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loopback-control-tx")
     {
         loopback_control_tx = value;
+        loopback_control_tx.value_namespace = name_space;
+        loopback_control_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "org-specific-rx")
     {
         org_specific_rx = value;
+        org_specific_rx.value_namespace = name_space;
+        org_specific_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "org-specific-tx")
     {
         org_specific_tx = value;
+        org_specific_tx.value_namespace = name_space;
+        org_specific_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-error-frame-period-records")
     {
         remote_error_frame_period_records = value;
+        remote_error_frame_period_records.value_namespace = name_space;
+        remote_error_frame_period_records.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-error-frame-records")
     {
         remote_error_frame_records = value;
+        remote_error_frame_records.value_namespace = name_space;
+        remote_error_frame_records.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-error-frame-second-records")
     {
         remote_error_frame_second_records = value;
+        remote_error_frame_second_records.value_namespace = name_space;
+        remote_error_frame_second_records.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-error-symbol-period-records")
     {
         remote_error_symbol_period_records = value;
+        remote_error_symbol_period_records.value_namespace = name_space;
+        remote_error_symbol_period_records.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unique-event-notification-rx")
     {
         unique_event_notification_rx = value;
+        unique_event_notification_rx.value_namespace = name_space;
+        unique_event_notification_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unique-event-notification-tx")
     {
         unique_event_notification_tx = value;
+        unique_event_notification_tx.value_namespace = name_space;
+        unique_event_notification_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unsupported-codes-rx")
     {
         unsupported_codes_rx = value;
+        unsupported_codes_rx.value_namespace = name_space;
+        unsupported_codes_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unsupported-codes-tx")
     {
         unsupported_codes_tx = value;
+        unsupported_codes_tx.value_namespace = name_space;
+        unsupported_codes_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "variable-request-rx")
     {
         variable_request_rx = value;
+        variable_request_rx.value_namespace = name_space;
+        variable_request_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "variable-request-tx")
     {
         variable_request_tx = value;
+        variable_request_tx.value_namespace = name_space;
+        variable_request_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "variable-response-rx")
     {
         variable_response_rx = value;
+        variable_response_rx.value_namespace = name_space;
+        variable_response_rx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "variable-response-tx")
     {
         variable_response_tx = value;
+        variable_response_tx.value_namespace = name_space;
+        variable_response_tx.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf LogEnum::log_type_symbol_event {1, "log-type-symbol-event"};
-const Enum::YLeaf LogEnum::log_type_period_event {2, "log-type-period-event"};
-const Enum::YLeaf LogEnum::log_type_frame_event {3, "log-type-frame-event"};
-const Enum::YLeaf LogEnum::log_type_secs_event {4, "log-type-secs-event"};
-const Enum::YLeaf LogEnum::log_type_link_fault {256, "log-type-link-fault"};
-const Enum::YLeaf LogEnum::log_type_dying_gasp {257, "log-type-dying-gasp"};
-const Enum::YLeaf LogEnum::log_type_critical_event {258, "log-type-critical-event"};
+void EtherLinkOam::StatsInterfaces::StatsInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "member-interface")
+    {
+        member_interface.yfilter = yfilter;
+    }
+    if(value_path == "duplicate-event-notification-rx")
+    {
+        duplicate_event_notification_rx.yfilter = yfilter;
+    }
+    if(value_path == "duplicate-event-notification-tx")
+    {
+        duplicate_event_notification_tx.yfilter = yfilter;
+    }
+    if(value_path == "fixed-frames-rx")
+    {
+        fixed_frames_rx.yfilter = yfilter;
+    }
+    if(value_path == "frames-lost-due-to-oam")
+    {
+        frames_lost_due_to_oam.yfilter = yfilter;
+    }
+    if(value_path == "information-rx")
+    {
+        information_rx.yfilter = yfilter;
+    }
+    if(value_path == "information-tx")
+    {
+        information_tx.yfilter = yfilter;
+    }
+    if(value_path == "local-error-frame-period-records")
+    {
+        local_error_frame_period_records.yfilter = yfilter;
+    }
+    if(value_path == "local-error-frame-records")
+    {
+        local_error_frame_records.yfilter = yfilter;
+    }
+    if(value_path == "local-error-frame-second-records")
+    {
+        local_error_frame_second_records.yfilter = yfilter;
+    }
+    if(value_path == "local-error-symbol-period-records")
+    {
+        local_error_symbol_period_records.yfilter = yfilter;
+    }
+    if(value_path == "loopback-control-rx")
+    {
+        loopback_control_rx.yfilter = yfilter;
+    }
+    if(value_path == "loopback-control-tx")
+    {
+        loopback_control_tx.yfilter = yfilter;
+    }
+    if(value_path == "org-specific-rx")
+    {
+        org_specific_rx.yfilter = yfilter;
+    }
+    if(value_path == "org-specific-tx")
+    {
+        org_specific_tx.yfilter = yfilter;
+    }
+    if(value_path == "remote-error-frame-period-records")
+    {
+        remote_error_frame_period_records.yfilter = yfilter;
+    }
+    if(value_path == "remote-error-frame-records")
+    {
+        remote_error_frame_records.yfilter = yfilter;
+    }
+    if(value_path == "remote-error-frame-second-records")
+    {
+        remote_error_frame_second_records.yfilter = yfilter;
+    }
+    if(value_path == "remote-error-symbol-period-records")
+    {
+        remote_error_symbol_period_records.yfilter = yfilter;
+    }
+    if(value_path == "unique-event-notification-rx")
+    {
+        unique_event_notification_rx.yfilter = yfilter;
+    }
+    if(value_path == "unique-event-notification-tx")
+    {
+        unique_event_notification_tx.yfilter = yfilter;
+    }
+    if(value_path == "unsupported-codes-rx")
+    {
+        unsupported_codes_rx.yfilter = yfilter;
+    }
+    if(value_path == "unsupported-codes-tx")
+    {
+        unsupported_codes_tx.yfilter = yfilter;
+    }
+    if(value_path == "variable-request-rx")
+    {
+        variable_request_rx.yfilter = yfilter;
+    }
+    if(value_path == "variable-request-tx")
+    {
+        variable_request_tx.yfilter = yfilter;
+    }
+    if(value_path == "variable-response-rx")
+    {
+        variable_response_rx.yfilter = yfilter;
+    }
+    if(value_path == "variable-response-tx")
+    {
+        variable_response_tx.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf LogLocationEnum::log_location_local {1, "log-location-local"};
-const Enum::YLeaf LogLocationEnum::log_location_remote {2, "log-location-remote"};
+bool EtherLinkOam::StatsInterfaces::StatsInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "member-interface" || name == "duplicate-event-notification-rx" || name == "duplicate-event-notification-tx" || name == "fixed-frames-rx" || name == "frames-lost-due-to-oam" || name == "information-rx" || name == "information-tx" || name == "local-error-frame-period-records" || name == "local-error-frame-records" || name == "local-error-frame-second-records" || name == "local-error-symbol-period-records" || name == "loopback-control-rx" || name == "loopback-control-tx" || name == "org-specific-rx" || name == "org-specific-tx" || name == "remote-error-frame-period-records" || name == "remote-error-frame-records" || name == "remote-error-frame-second-records" || name == "remote-error-symbol-period-records" || name == "unique-event-notification-rx" || name == "unique-event-notification-tx" || name == "unsupported-codes-rx" || name == "unsupported-codes-tx" || name == "variable-request-rx" || name == "variable-request-tx" || name == "variable-response-rx" || name == "variable-response-tx")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf LoopbackStatusEnum::none {1, "none"};
-const Enum::YLeaf LoopbackStatusEnum::initiating {2, "initiating"};
-const Enum::YLeaf LoopbackStatusEnum::master_loopback {3, "master-loopback"};
-const Enum::YLeaf LoopbackStatusEnum::terminating {4, "terminating"};
-const Enum::YLeaf LoopbackStatusEnum::local_loopback {5, "local-loopback"};
-const Enum::YLeaf LoopbackStatusEnum::unknown {6, "unknown"};
+const Enum::YLeaf LoopbackStatus::none {1, "none"};
+const Enum::YLeaf LoopbackStatus::initiating {2, "initiating"};
+const Enum::YLeaf LoopbackStatus::master_loopback {3, "master-loopback"};
+const Enum::YLeaf LoopbackStatus::terminating {4, "terminating"};
+const Enum::YLeaf LoopbackStatus::local_loopback {5, "local-loopback"};
+const Enum::YLeaf LoopbackStatus::unknown {6, "unknown"};
 
-const Enum::YLeaf OperationalStateEnum::disabled {1, "disabled"};
-const Enum::YLeaf OperationalStateEnum::link_fault {2, "link-fault"};
-const Enum::YLeaf OperationalStateEnum::passive_wait {3, "passive-wait"};
-const Enum::YLeaf OperationalStateEnum::active_send_local {4, "active-send-local"};
-const Enum::YLeaf OperationalStateEnum::send_local_and_remote {5, "send-local-and-remote"};
-const Enum::YLeaf OperationalStateEnum::send_local_and_remote_ok {6, "send-local-and-remote-ok"};
-const Enum::YLeaf OperationalStateEnum::peering_locally_rejected {7, "peering-locally-rejected"};
-const Enum::YLeaf OperationalStateEnum::peering_remotely_rejected {8, "peering-remotely-rejected"};
-const Enum::YLeaf OperationalStateEnum::operational {9, "operational"};
-const Enum::YLeaf OperationalStateEnum::operational_half_duplex {10, "operational-half-duplex"};
+const Enum::YLeaf OperationalState::disabled {1, "disabled"};
+const Enum::YLeaf OperationalState::link_fault {2, "link-fault"};
+const Enum::YLeaf OperationalState::passive_wait {3, "passive-wait"};
+const Enum::YLeaf OperationalState::active_send_local {4, "active-send-local"};
+const Enum::YLeaf OperationalState::send_local_and_remote {5, "send-local-and-remote"};
+const Enum::YLeaf OperationalState::send_local_and_remote_ok {6, "send-local-and-remote-ok"};
+const Enum::YLeaf OperationalState::peering_locally_rejected {7, "peering-locally-rejected"};
+const Enum::YLeaf OperationalState::peering_remotely_rejected {8, "peering-remotely-rejected"};
+const Enum::YLeaf OperationalState::operational {9, "operational"};
+const Enum::YLeaf OperationalState::operational_half_duplex {10, "operational-half-duplex"};
 
-const Enum::YLeaf ModeEnum::passive {0, "passive"};
-const Enum::YLeaf ModeEnum::active {1, "active"};
-const Enum::YLeaf ModeEnum::dont_care {2, "dont-care"};
+const Enum::YLeaf ProtocolState::protocol_state_inactive {0, "protocol-state-inactive"};
+const Enum::YLeaf ProtocolState::protocol_state_fault {1, "protocol-state-fault"};
+const Enum::YLeaf ProtocolState::protocol_state_active_send_local {2, "protocol-state-active-send-local"};
+const Enum::YLeaf ProtocolState::protocol_state_passive_wait {3, "protocol-state-passive-wait"};
+const Enum::YLeaf ProtocolState::protocol_state_send_local_remote {4, "protocol-state-send-local-remote"};
+const Enum::YLeaf ProtocolState::protocol_state_send_local_remote_ok {5, "protocol-state-send-local-remote-ok"};
+const Enum::YLeaf ProtocolState::protocol_state_send_any {6, "protocol-state-send-any"};
 
-const Enum::YLeaf ActionEnum::no_action {1, "no-action"};
-const Enum::YLeaf ActionEnum::disable_interface {2, "disable-interface"};
-const Enum::YLeaf ActionEnum::log {3, "log"};
-const Enum::YLeaf ActionEnum::efd {4, "efd"};
+const Enum::YLeaf Mode::passive {0, "passive"};
+const Enum::YLeaf Mode::active {1, "active"};
+const Enum::YLeaf Mode::dont_care {2, "dont-care"};
 
-const Enum::YLeaf ProtocolStateEnum::protocol_state_inactive {0, "protocol-state-inactive"};
-const Enum::YLeaf ProtocolStateEnum::protocol_state_fault {1, "protocol-state-fault"};
-const Enum::YLeaf ProtocolStateEnum::protocol_state_active_send_local {2, "protocol-state-active-send-local"};
-const Enum::YLeaf ProtocolStateEnum::protocol_state_passive_wait {3, "protocol-state-passive-wait"};
-const Enum::YLeaf ProtocolStateEnum::protocol_state_send_local_remote {4, "protocol-state-send-local-remote"};
-const Enum::YLeaf ProtocolStateEnum::protocol_state_send_local_remote_ok {5, "protocol-state-send-local-remote-ok"};
-const Enum::YLeaf ProtocolStateEnum::protocol_state_send_any {6, "protocol-state-send-any"};
+const Enum::YLeaf Log::log_type_symbol_event {1, "log-type-symbol-event"};
+const Enum::YLeaf Log::log_type_period_event {2, "log-type-period-event"};
+const Enum::YLeaf Log::log_type_frame_event {3, "log-type-frame-event"};
+const Enum::YLeaf Log::log_type_secs_event {4, "log-type-secs-event"};
+const Enum::YLeaf Log::log_type_link_fault {256, "log-type-link-fault"};
+const Enum::YLeaf Log::log_type_dying_gasp {257, "log-type-dying-gasp"};
+const Enum::YLeaf Log::log_type_critical_event {258, "log-type-critical-event"};
+
+const Enum::YLeaf Action::no_action {1, "no-action"};
+const Enum::YLeaf Action::disable_interface {2, "disable-interface"};
+const Enum::YLeaf Action::log {3, "log"};
+const Enum::YLeaf Action::efd {4, "efd"};
+
+const Enum::YLeaf LogLocation::log_location_local {1, "log-location-local"};
+const Enum::YLeaf LogLocation::log_location_remote {2, "log-location-remote"};
 
 
 }

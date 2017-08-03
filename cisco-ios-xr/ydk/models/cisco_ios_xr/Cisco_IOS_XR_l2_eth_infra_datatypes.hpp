@@ -7,76 +7,76 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2_eth_infra_datatypes {
 
-class VlanTagOrCvpEnum : public Enum
+class VlanTagOrNull : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf native_with_cvlan_preservation;
+        static const ydk::Enum::YLeaf any;
 
 };
 
-class RewriteEnum : public Enum
+class VlanTagOrNative : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf pop1;
-        static const Enum::YLeaf pop2;
-        static const Enum::YLeaf push1;
-        static const Enum::YLeaf push2;
-        static const Enum::YLeaf translate1to1;
-        static const Enum::YLeaf translate1to2;
-        static const Enum::YLeaf translate2to1;
-        static const Enum::YLeaf translate2to2;
+        static const ydk::Enum::YLeaf native;
+        static const ydk::Enum::YLeaf native_with_cvlan_preservation;
 
 };
 
-class VlanEnum : public Enum
+class EthertypeMatch : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf vlan_type_dot1ad;
-        static const Enum::YLeaf vlan_type_dot1q;
+        static const ydk::Enum::YLeaf ppp_over_ethernet;
 
 };
 
-class EthertypeMatchEnum : public Enum
+class VlanTagOrAny : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ppp_over_ethernet;
+        static const ydk::Enum::YLeaf any;
 
 };
 
-class VlanTagOrNullEnum : public Enum
+class VlanTagOrCvp : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf any;
+        static const ydk::Enum::YLeaf native_with_cvlan_preservation;
 
 };
 
-class VlanTagOrAnyEnum : public Enum
+class Match : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf any;
+        static const ydk::Enum::YLeaf match_default;
+        static const ydk::Enum::YLeaf match_untagged;
+        static const ydk::Enum::YLeaf match_dot1q;
+        static const ydk::Enum::YLeaf match_dot1ad;
+        static const ydk::Enum::YLeaf match_dot1q_priority;
+        static const ydk::Enum::YLeaf match_dot1ad_priority;
 
 };
 
-class VlanTagOrNativeEnum : public Enum
+class Vlan : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf native;
-        static const Enum::YLeaf native_with_cvlan_preservation;
+        static const ydk::Enum::YLeaf vlan_type_dot1ad;
+        static const ydk::Enum::YLeaf vlan_type_dot1q;
 
 };
 
-class MatchEnum : public Enum
+class Rewrite : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf match_default;
-        static const Enum::YLeaf match_untagged;
-        static const Enum::YLeaf match_dot1q;
-        static const Enum::YLeaf match_dot1ad;
-        static const Enum::YLeaf match_dot1q_priority;
-        static const Enum::YLeaf match_dot1ad_priority;
+        static const ydk::Enum::YLeaf pop1;
+        static const ydk::Enum::YLeaf pop2;
+        static const ydk::Enum::YLeaf push1;
+        static const ydk::Enum::YLeaf push2;
+        static const ydk::Enum::YLeaf translate1to1;
+        static const ydk::Enum::YLeaf translate1to2;
+        static const ydk::Enum::YLeaf translate2to1;
+        static const ydk::Enum::YLeaf translate2to2;
 
 };
 

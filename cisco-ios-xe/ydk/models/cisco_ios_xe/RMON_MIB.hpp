@@ -9,19 +9,19 @@
 
 #include "ydk_ietf/ietf_yang_smiv2.hpp"
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace RMON_MIB {
 
-class Rmoneventsv2Identity : public ietf_yang_smiv2::ObjectIdentityIdentity, virtual Identity
+class Rmoneventsv2 : public ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Rmoneventsv2Identity();
-        ~Rmoneventsv2Identity();
+        Rmoneventsv2();
+        ~Rmoneventsv2();
 
 
-}; // Rmoneventsv2Identity
+}; // Rmoneventsv2
 
-class RmonMib : public Entity
+class RmonMib : public ydk::Entity
 {
     public:
         RmonMib();
@@ -29,15 +29,18 @@ class RmonMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Etherstatstable; //type: RmonMib::Etherstatstable
         class Historycontroltable; //type: RmonMib::Historycontroltable
@@ -58,29 +61,29 @@ class RmonMib : public Entity
         class Eventtable; //type: RmonMib::Eventtable
         class Logtable; //type: RmonMib::Logtable
 
-        std::shared_ptr<RMON_MIB::RmonMib::Alarmtable> alarmtable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Buffercontroltable> buffercontroltable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Capturebuffertable> capturebuffertable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Channeltable> channeltable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Etherhistorytable> etherhistorytable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Etherstatstable> etherstatstable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Eventtable> eventtable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Filtertable> filtertable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Historycontroltable> historycontroltable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Hostcontroltable> hostcontroltable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Hosttable> hosttable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Hosttimetable> hosttimetable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Hosttopncontroltable> hosttopncontroltable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Hosttopntable> hosttopntable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Logtable> logtable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Matrixcontroltable> matrixcontroltable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Matrixdstable> matrixdstable_;
-        std::shared_ptr<RMON_MIB::RmonMib::Matrixsdtable> matrixsdtable_;
+        std::shared_ptr<RMON_MIB::RmonMib::Alarmtable> alarmtable;
+        std::shared_ptr<RMON_MIB::RmonMib::Buffercontroltable> buffercontroltable;
+        std::shared_ptr<RMON_MIB::RmonMib::Capturebuffertable> capturebuffertable;
+        std::shared_ptr<RMON_MIB::RmonMib::Channeltable> channeltable;
+        std::shared_ptr<RMON_MIB::RmonMib::Etherhistorytable> etherhistorytable;
+        std::shared_ptr<RMON_MIB::RmonMib::Etherstatstable> etherstatstable;
+        std::shared_ptr<RMON_MIB::RmonMib::Eventtable> eventtable;
+        std::shared_ptr<RMON_MIB::RmonMib::Filtertable> filtertable;
+        std::shared_ptr<RMON_MIB::RmonMib::Historycontroltable> historycontroltable;
+        std::shared_ptr<RMON_MIB::RmonMib::Hostcontroltable> hostcontroltable;
+        std::shared_ptr<RMON_MIB::RmonMib::Hosttable> hosttable;
+        std::shared_ptr<RMON_MIB::RmonMib::Hosttimetable> hosttimetable;
+        std::shared_ptr<RMON_MIB::RmonMib::Hosttopncontroltable> hosttopncontroltable;
+        std::shared_ptr<RMON_MIB::RmonMib::Hosttopntable> hosttopntable;
+        std::shared_ptr<RMON_MIB::RmonMib::Logtable> logtable;
+        std::shared_ptr<RMON_MIB::RmonMib::Matrixcontroltable> matrixcontroltable;
+        std::shared_ptr<RMON_MIB::RmonMib::Matrixdstable> matrixdstable;
+        std::shared_ptr<RMON_MIB::RmonMib::Matrixsdtable> matrixsdtable;
         
 }; // RmonMib
 
 
-class RmonMib::Etherstatstable : public Entity
+class RmonMib::Etherstatstable : public ydk::Entity
 {
     public:
         Etherstatstable();
@@ -88,20 +91,22 @@ class RmonMib::Etherstatstable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Etherstatsentry; //type: RmonMib::Etherstatstable::Etherstatsentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Etherstatstable::Etherstatsentry> > etherstatsentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Etherstatstable::Etherstatsentry> > etherstatsentry;
         
 }; // RmonMib::Etherstatstable
 
 
-class RmonMib::Etherstatstable::Etherstatsentry : public Entity
+class RmonMib::Etherstatstable::Etherstatsentry : public ydk::Entity
 {
     public:
         Etherstatsentry();
@@ -109,38 +114,42 @@ class RmonMib::Etherstatstable::Etherstatsentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf etherstatsindex; //type: int32
-        YLeaf etherstatsdatasource; //type: string
-        YLeaf etherstatsdropevents; //type: uint32
-        YLeaf etherstatsoctets; //type: uint32
-        YLeaf etherstatspkts; //type: uint32
-        YLeaf etherstatsbroadcastpkts; //type: uint32
-        YLeaf etherstatsmulticastpkts; //type: uint32
-        YLeaf etherstatscrcalignerrors; //type: uint32
-        YLeaf etherstatsundersizepkts; //type: uint32
-        YLeaf etherstatsoversizepkts; //type: uint32
-        YLeaf etherstatsfragments; //type: uint32
-        YLeaf etherstatsjabbers; //type: uint32
-        YLeaf etherstatscollisions; //type: uint32
-        YLeaf etherstatspkts64octets; //type: uint32
-        YLeaf etherstatspkts65to127octets; //type: uint32
-        YLeaf etherstatspkts128to255octets; //type: uint32
-        YLeaf etherstatspkts256to511octets; //type: uint32
-        YLeaf etherstatspkts512to1023octets; //type: uint32
-        YLeaf etherstatspkts1024to1518octets; //type: uint32
-        YLeaf etherstatsowner; //type: binary
-        YLeaf etherstatsstatus; //type: EntrystatusEnum
+        ydk::YLeaf etherstatsindex; //type: int32
+        ydk::YLeaf etherstatsdatasource; //type: string
+        ydk::YLeaf etherstatsdropevents; //type: uint32
+        ydk::YLeaf etherstatsoctets; //type: uint32
+        ydk::YLeaf etherstatspkts; //type: uint32
+        ydk::YLeaf etherstatsbroadcastpkts; //type: uint32
+        ydk::YLeaf etherstatsmulticastpkts; //type: uint32
+        ydk::YLeaf etherstatscrcalignerrors; //type: uint32
+        ydk::YLeaf etherstatsundersizepkts; //type: uint32
+        ydk::YLeaf etherstatsoversizepkts; //type: uint32
+        ydk::YLeaf etherstatsfragments; //type: uint32
+        ydk::YLeaf etherstatsjabbers; //type: uint32
+        ydk::YLeaf etherstatscollisions; //type: uint32
+        ydk::YLeaf etherstatspkts64octets; //type: uint32
+        ydk::YLeaf etherstatspkts65to127octets; //type: uint32
+        ydk::YLeaf etherstatspkts128to255octets; //type: uint32
+        ydk::YLeaf etherstatspkts256to511octets; //type: uint32
+        ydk::YLeaf etherstatspkts512to1023octets; //type: uint32
+        ydk::YLeaf etherstatspkts1024to1518octets; //type: uint32
+        ydk::YLeaf etherstatsowner; //type: binary
+        ydk::YLeaf etherstatsstatus; //type: Entrystatus
+        ydk::YLeaf etherstatsdroppedframes; //type: uint32
+        ydk::YLeaf etherstatscreatetime; //type: uint32
 
 }; // RmonMib::Etherstatstable::Etherstatsentry
 
 
-class RmonMib::Historycontroltable : public Entity
+class RmonMib::Historycontroltable : public ydk::Entity
 {
     public:
         Historycontroltable();
@@ -148,20 +157,22 @@ class RmonMib::Historycontroltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Historycontrolentry; //type: RmonMib::Historycontroltable::Historycontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Historycontroltable::Historycontrolentry> > historycontrolentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Historycontroltable::Historycontrolentry> > historycontrolentry;
         
 }; // RmonMib::Historycontroltable
 
 
-class RmonMib::Historycontroltable::Historycontrolentry : public Entity
+class RmonMib::Historycontroltable::Historycontrolentry : public ydk::Entity
 {
     public:
         Historycontrolentry();
@@ -169,24 +180,27 @@ class RmonMib::Historycontroltable::Historycontrolentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf historycontrolindex; //type: int32
-        YLeaf historycontroldatasource; //type: string
-        YLeaf historycontrolbucketsrequested; //type: int32
-        YLeaf historycontrolbucketsgranted; //type: int32
-        YLeaf historycontrolinterval; //type: int32
-        YLeaf historycontrolowner; //type: binary
-        YLeaf historycontrolstatus; //type: EntrystatusEnum
+        ydk::YLeaf historycontrolindex; //type: int32
+        ydk::YLeaf historycontroldatasource; //type: string
+        ydk::YLeaf historycontrolbucketsrequested; //type: int32
+        ydk::YLeaf historycontrolbucketsgranted; //type: int32
+        ydk::YLeaf historycontrolinterval; //type: int32
+        ydk::YLeaf historycontrolowner; //type: binary
+        ydk::YLeaf historycontrolstatus; //type: Entrystatus
+        ydk::YLeaf historycontroldroppedframes; //type: uint32
 
 }; // RmonMib::Historycontroltable::Historycontrolentry
 
 
-class RmonMib::Etherhistorytable : public Entity
+class RmonMib::Etherhistorytable : public ydk::Entity
 {
     public:
         Etherhistorytable();
@@ -194,20 +208,22 @@ class RmonMib::Etherhistorytable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Etherhistoryentry; //type: RmonMib::Etherhistorytable::Etherhistoryentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Etherhistorytable::Etherhistoryentry> > etherhistoryentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Etherhistorytable::Etherhistoryentry> > etherhistoryentry;
         
 }; // RmonMib::Etherhistorytable
 
 
-class RmonMib::Etherhistorytable::Etherhistoryentry : public Entity
+class RmonMib::Etherhistorytable::Etherhistoryentry : public ydk::Entity
 {
     public:
         Etherhistoryentry();
@@ -215,32 +231,34 @@ class RmonMib::Etherhistorytable::Etherhistoryentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf etherhistoryindex; //type: int32
-        YLeaf etherhistorysampleindex; //type: int32
-        YLeaf etherhistoryintervalstart; //type: uint32
-        YLeaf etherhistorydropevents; //type: uint32
-        YLeaf etherhistoryoctets; //type: uint32
-        YLeaf etherhistorypkts; //type: uint32
-        YLeaf etherhistorybroadcastpkts; //type: uint32
-        YLeaf etherhistorymulticastpkts; //type: uint32
-        YLeaf etherhistorycrcalignerrors; //type: uint32
-        YLeaf etherhistoryundersizepkts; //type: uint32
-        YLeaf etherhistoryoversizepkts; //type: uint32
-        YLeaf etherhistoryfragments; //type: uint32
-        YLeaf etherhistoryjabbers; //type: uint32
-        YLeaf etherhistorycollisions; //type: uint32
-        YLeaf etherhistoryutilization; //type: int32
+        ydk::YLeaf etherhistoryindex; //type: int32
+        ydk::YLeaf etherhistorysampleindex; //type: int32
+        ydk::YLeaf etherhistoryintervalstart; //type: uint32
+        ydk::YLeaf etherhistorydropevents; //type: uint32
+        ydk::YLeaf etherhistoryoctets; //type: uint32
+        ydk::YLeaf etherhistorypkts; //type: uint32
+        ydk::YLeaf etherhistorybroadcastpkts; //type: uint32
+        ydk::YLeaf etherhistorymulticastpkts; //type: uint32
+        ydk::YLeaf etherhistorycrcalignerrors; //type: uint32
+        ydk::YLeaf etherhistoryundersizepkts; //type: uint32
+        ydk::YLeaf etherhistoryoversizepkts; //type: uint32
+        ydk::YLeaf etherhistoryfragments; //type: uint32
+        ydk::YLeaf etherhistoryjabbers; //type: uint32
+        ydk::YLeaf etherhistorycollisions; //type: uint32
+        ydk::YLeaf etherhistoryutilization; //type: int32
 
 }; // RmonMib::Etherhistorytable::Etherhistoryentry
 
 
-class RmonMib::Alarmtable : public Entity
+class RmonMib::Alarmtable : public ydk::Entity
 {
     public:
         Alarmtable();
@@ -248,20 +266,22 @@ class RmonMib::Alarmtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Alarmentry; //type: RmonMib::Alarmtable::Alarmentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Alarmtable::Alarmentry> > alarmentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Alarmtable::Alarmentry> > alarmentry;
         
 }; // RmonMib::Alarmtable
 
 
-class RmonMib::Alarmtable::Alarmentry : public Entity
+class RmonMib::Alarmtable::Alarmentry : public ydk::Entity
 {
     public:
         Alarmentry();
@@ -269,31 +289,33 @@ class RmonMib::Alarmtable::Alarmentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf alarmindex; //type: int32
-        YLeaf alarminterval; //type: int32
-        YLeaf alarmvariable; //type: string
-        YLeaf alarmsampletype; //type: AlarmsampletypeEnum
-        YLeaf alarmvalue; //type: int32
-        YLeaf alarmstartupalarm; //type: AlarmstartupalarmEnum
-        YLeaf alarmrisingthreshold; //type: int32
-        YLeaf alarmfallingthreshold; //type: int32
-        YLeaf alarmrisingeventindex; //type: int32
-        YLeaf alarmfallingeventindex; //type: int32
-        YLeaf alarmowner; //type: binary
-        YLeaf alarmstatus; //type: EntrystatusEnum
-        class AlarmsampletypeEnum;
-        class AlarmstartupalarmEnum;
+        ydk::YLeaf alarmindex; //type: int32
+        ydk::YLeaf alarminterval; //type: int32
+        ydk::YLeaf alarmvariable; //type: string
+        ydk::YLeaf alarmsampletype; //type: Alarmsampletype
+        ydk::YLeaf alarmvalue; //type: int32
+        ydk::YLeaf alarmstartupalarm; //type: Alarmstartupalarm
+        ydk::YLeaf alarmrisingthreshold; //type: int32
+        ydk::YLeaf alarmfallingthreshold; //type: int32
+        ydk::YLeaf alarmrisingeventindex; //type: int32
+        ydk::YLeaf alarmfallingeventindex; //type: int32
+        ydk::YLeaf alarmowner; //type: binary
+        ydk::YLeaf alarmstatus; //type: Entrystatus
+        class Alarmsampletype;
+        class Alarmstartupalarm;
 
 }; // RmonMib::Alarmtable::Alarmentry
 
 
-class RmonMib::Hostcontroltable : public Entity
+class RmonMib::Hostcontroltable : public ydk::Entity
 {
     public:
         Hostcontroltable();
@@ -301,20 +323,22 @@ class RmonMib::Hostcontroltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Hostcontrolentry; //type: RmonMib::Hostcontroltable::Hostcontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hostcontroltable::Hostcontrolentry> > hostcontrolentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hostcontroltable::Hostcontrolentry> > hostcontrolentry;
         
 }; // RmonMib::Hostcontroltable
 
 
-class RmonMib::Hostcontroltable::Hostcontrolentry : public Entity
+class RmonMib::Hostcontroltable::Hostcontrolentry : public ydk::Entity
 {
     public:
         Hostcontrolentry();
@@ -322,23 +346,27 @@ class RmonMib::Hostcontroltable::Hostcontrolentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hostcontrolindex; //type: int32
-        YLeaf hostcontroldatasource; //type: string
-        YLeaf hostcontroltablesize; //type: int32
-        YLeaf hostcontrollastdeletetime; //type: uint32
-        YLeaf hostcontrolowner; //type: binary
-        YLeaf hostcontrolstatus; //type: EntrystatusEnum
+        ydk::YLeaf hostcontrolindex; //type: int32
+        ydk::YLeaf hostcontroldatasource; //type: string
+        ydk::YLeaf hostcontroltablesize; //type: int32
+        ydk::YLeaf hostcontrollastdeletetime; //type: uint32
+        ydk::YLeaf hostcontrolowner; //type: binary
+        ydk::YLeaf hostcontrolstatus; //type: Entrystatus
+        ydk::YLeaf hostcontroldroppedframes; //type: uint32
+        ydk::YLeaf hostcontrolcreatetime; //type: uint32
 
 }; // RmonMib::Hostcontroltable::Hostcontrolentry
 
 
-class RmonMib::Hosttable : public Entity
+class RmonMib::Hosttable : public ydk::Entity
 {
     public:
         Hosttable();
@@ -346,20 +374,22 @@ class RmonMib::Hosttable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Hostentry; //type: RmonMib::Hosttable::Hostentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttable::Hostentry> > hostentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttable::Hostentry> > hostentry;
         
 }; // RmonMib::Hosttable
 
 
-class RmonMib::Hosttable::Hostentry : public Entity
+class RmonMib::Hosttable::Hostentry : public ydk::Entity
 {
     public:
         Hostentry();
@@ -367,27 +397,29 @@ class RmonMib::Hosttable::Hostentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hostindex; //type: int32
-        YLeaf hostaddress; //type: binary
-        YLeaf hostcreationorder; //type: int32
-        YLeaf hostinpkts; //type: uint32
-        YLeaf hostoutpkts; //type: uint32
-        YLeaf hostinoctets; //type: uint32
-        YLeaf hostoutoctets; //type: uint32
-        YLeaf hostouterrors; //type: uint32
-        YLeaf hostoutbroadcastpkts; //type: uint32
-        YLeaf hostoutmulticastpkts; //type: uint32
+        ydk::YLeaf hostindex; //type: int32
+        ydk::YLeaf hostaddress; //type: binary
+        ydk::YLeaf hostcreationorder; //type: int32
+        ydk::YLeaf hostinpkts; //type: uint32
+        ydk::YLeaf hostoutpkts; //type: uint32
+        ydk::YLeaf hostinoctets; //type: uint32
+        ydk::YLeaf hostoutoctets; //type: uint32
+        ydk::YLeaf hostouterrors; //type: uint32
+        ydk::YLeaf hostoutbroadcastpkts; //type: uint32
+        ydk::YLeaf hostoutmulticastpkts; //type: uint32
 
 }; // RmonMib::Hosttable::Hostentry
 
 
-class RmonMib::Hosttimetable : public Entity
+class RmonMib::Hosttimetable : public ydk::Entity
 {
     public:
         Hosttimetable();
@@ -395,20 +427,22 @@ class RmonMib::Hosttimetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Hosttimeentry; //type: RmonMib::Hosttimetable::Hosttimeentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttimetable::Hosttimeentry> > hosttimeentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttimetable::Hosttimeentry> > hosttimeentry;
         
 }; // RmonMib::Hosttimetable
 
 
-class RmonMib::Hosttimetable::Hosttimeentry : public Entity
+class RmonMib::Hosttimetable::Hosttimeentry : public ydk::Entity
 {
     public:
         Hosttimeentry();
@@ -416,27 +450,29 @@ class RmonMib::Hosttimetable::Hosttimeentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hosttimeindex; //type: int32
-        YLeaf hosttimecreationorder; //type: int32
-        YLeaf hosttimeaddress; //type: binary
-        YLeaf hosttimeinpkts; //type: uint32
-        YLeaf hosttimeoutpkts; //type: uint32
-        YLeaf hosttimeinoctets; //type: uint32
-        YLeaf hosttimeoutoctets; //type: uint32
-        YLeaf hosttimeouterrors; //type: uint32
-        YLeaf hosttimeoutbroadcastpkts; //type: uint32
-        YLeaf hosttimeoutmulticastpkts; //type: uint32
+        ydk::YLeaf hosttimeindex; //type: int32
+        ydk::YLeaf hosttimecreationorder; //type: int32
+        ydk::YLeaf hosttimeaddress; //type: binary
+        ydk::YLeaf hosttimeinpkts; //type: uint32
+        ydk::YLeaf hosttimeoutpkts; //type: uint32
+        ydk::YLeaf hosttimeinoctets; //type: uint32
+        ydk::YLeaf hosttimeoutoctets; //type: uint32
+        ydk::YLeaf hosttimeouterrors; //type: uint32
+        ydk::YLeaf hosttimeoutbroadcastpkts; //type: uint32
+        ydk::YLeaf hosttimeoutmulticastpkts; //type: uint32
 
 }; // RmonMib::Hosttimetable::Hosttimeentry
 
 
-class RmonMib::Hosttopncontroltable : public Entity
+class RmonMib::Hosttopncontroltable : public ydk::Entity
 {
     public:
         Hosttopncontroltable();
@@ -444,20 +480,22 @@ class RmonMib::Hosttopncontroltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Hosttopncontrolentry; //type: RmonMib::Hosttopncontroltable::Hosttopncontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttopncontroltable::Hosttopncontrolentry> > hosttopncontrolentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttopncontroltable::Hosttopncontrolentry> > hosttopncontrolentry;
         
 }; // RmonMib::Hosttopncontroltable
 
 
-class RmonMib::Hosttopncontroltable::Hosttopncontrolentry : public Entity
+class RmonMib::Hosttopncontroltable::Hosttopncontrolentry : public ydk::Entity
 {
     public:
         Hosttopncontrolentry();
@@ -465,28 +503,30 @@ class RmonMib::Hosttopncontroltable::Hosttopncontrolentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hosttopncontrolindex; //type: int32
-        YLeaf hosttopnhostindex; //type: int32
-        YLeaf hosttopnratebase; //type: HosttopnratebaseEnum
-        YLeaf hosttopntimeremaining; //type: int32
-        YLeaf hosttopnduration; //type: int32
-        YLeaf hosttopnrequestedsize; //type: int32
-        YLeaf hosttopngrantedsize; //type: int32
-        YLeaf hosttopnstarttime; //type: uint32
-        YLeaf hosttopnowner; //type: binary
-        YLeaf hosttopnstatus; //type: EntrystatusEnum
-        class HosttopnratebaseEnum;
+        ydk::YLeaf hosttopncontrolindex; //type: int32
+        ydk::YLeaf hosttopnhostindex; //type: int32
+        ydk::YLeaf hosttopnratebase; //type: Hosttopnratebase
+        ydk::YLeaf hosttopntimeremaining; //type: int32
+        ydk::YLeaf hosttopnduration; //type: int32
+        ydk::YLeaf hosttopnrequestedsize; //type: int32
+        ydk::YLeaf hosttopngrantedsize; //type: int32
+        ydk::YLeaf hosttopnstarttime; //type: uint32
+        ydk::YLeaf hosttopnowner; //type: binary
+        ydk::YLeaf hosttopnstatus; //type: Entrystatus
+        class Hosttopnratebase;
 
 }; // RmonMib::Hosttopncontroltable::Hosttopncontrolentry
 
 
-class RmonMib::Hosttopntable : public Entity
+class RmonMib::Hosttopntable : public ydk::Entity
 {
     public:
         Hosttopntable();
@@ -494,20 +534,22 @@ class RmonMib::Hosttopntable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Hosttopnentry; //type: RmonMib::Hosttopntable::Hosttopnentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttopntable::Hosttopnentry> > hosttopnentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Hosttopntable::Hosttopnentry> > hosttopnentry;
         
 }; // RmonMib::Hosttopntable
 
 
-class RmonMib::Hosttopntable::Hosttopnentry : public Entity
+class RmonMib::Hosttopntable::Hosttopnentry : public ydk::Entity
 {
     public:
         Hosttopnentry();
@@ -515,21 +557,23 @@ class RmonMib::Hosttopntable::Hosttopnentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hosttopnreport; //type: int32
-        YLeaf hosttopnindex; //type: int32
-        YLeaf hosttopnaddress; //type: binary
-        YLeaf hosttopnrate; //type: int32
+        ydk::YLeaf hosttopnreport; //type: int32
+        ydk::YLeaf hosttopnindex; //type: int32
+        ydk::YLeaf hosttopnaddress; //type: binary
+        ydk::YLeaf hosttopnrate; //type: int32
 
 }; // RmonMib::Hosttopntable::Hosttopnentry
 
 
-class RmonMib::Matrixcontroltable : public Entity
+class RmonMib::Matrixcontroltable : public ydk::Entity
 {
     public:
         Matrixcontroltable();
@@ -537,20 +581,22 @@ class RmonMib::Matrixcontroltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Matrixcontrolentry; //type: RmonMib::Matrixcontroltable::Matrixcontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixcontroltable::Matrixcontrolentry> > matrixcontrolentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixcontroltable::Matrixcontrolentry> > matrixcontrolentry;
         
 }; // RmonMib::Matrixcontroltable
 
 
-class RmonMib::Matrixcontroltable::Matrixcontrolentry : public Entity
+class RmonMib::Matrixcontroltable::Matrixcontrolentry : public ydk::Entity
 {
     public:
         Matrixcontrolentry();
@@ -558,23 +604,27 @@ class RmonMib::Matrixcontroltable::Matrixcontrolentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf matrixcontrolindex; //type: int32
-        YLeaf matrixcontroldatasource; //type: string
-        YLeaf matrixcontroltablesize; //type: int32
-        YLeaf matrixcontrollastdeletetime; //type: uint32
-        YLeaf matrixcontrolowner; //type: binary
-        YLeaf matrixcontrolstatus; //type: EntrystatusEnum
+        ydk::YLeaf matrixcontrolindex; //type: int32
+        ydk::YLeaf matrixcontroldatasource; //type: string
+        ydk::YLeaf matrixcontroltablesize; //type: int32
+        ydk::YLeaf matrixcontrollastdeletetime; //type: uint32
+        ydk::YLeaf matrixcontrolowner; //type: binary
+        ydk::YLeaf matrixcontrolstatus; //type: Entrystatus
+        ydk::YLeaf matrixcontroldroppedframes; //type: uint32
+        ydk::YLeaf matrixcontrolcreatetime; //type: uint32
 
 }; // RmonMib::Matrixcontroltable::Matrixcontrolentry
 
 
-class RmonMib::Matrixsdtable : public Entity
+class RmonMib::Matrixsdtable : public ydk::Entity
 {
     public:
         Matrixsdtable();
@@ -582,20 +632,22 @@ class RmonMib::Matrixsdtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Matrixsdentry; //type: RmonMib::Matrixsdtable::Matrixsdentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixsdtable::Matrixsdentry> > matrixsdentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixsdtable::Matrixsdentry> > matrixsdentry;
         
 }; // RmonMib::Matrixsdtable
 
 
-class RmonMib::Matrixsdtable::Matrixsdentry : public Entity
+class RmonMib::Matrixsdtable::Matrixsdentry : public ydk::Entity
 {
     public:
         Matrixsdentry();
@@ -603,23 +655,25 @@ class RmonMib::Matrixsdtable::Matrixsdentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf matrixsdindex; //type: int32
-        YLeaf matrixsdsourceaddress; //type: binary
-        YLeaf matrixsddestaddress; //type: binary
-        YLeaf matrixsdpkts; //type: uint32
-        YLeaf matrixsdoctets; //type: uint32
-        YLeaf matrixsderrors; //type: uint32
+        ydk::YLeaf matrixsdindex; //type: int32
+        ydk::YLeaf matrixsdsourceaddress; //type: binary
+        ydk::YLeaf matrixsddestaddress; //type: binary
+        ydk::YLeaf matrixsdpkts; //type: uint32
+        ydk::YLeaf matrixsdoctets; //type: uint32
+        ydk::YLeaf matrixsderrors; //type: uint32
 
 }; // RmonMib::Matrixsdtable::Matrixsdentry
 
 
-class RmonMib::Matrixdstable : public Entity
+class RmonMib::Matrixdstable : public ydk::Entity
 {
     public:
         Matrixdstable();
@@ -627,20 +681,22 @@ class RmonMib::Matrixdstable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Matrixdsentry; //type: RmonMib::Matrixdstable::Matrixdsentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixdstable::Matrixdsentry> > matrixdsentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Matrixdstable::Matrixdsentry> > matrixdsentry;
         
 }; // RmonMib::Matrixdstable
 
 
-class RmonMib::Matrixdstable::Matrixdsentry : public Entity
+class RmonMib::Matrixdstable::Matrixdsentry : public ydk::Entity
 {
     public:
         Matrixdsentry();
@@ -648,23 +704,25 @@ class RmonMib::Matrixdstable::Matrixdsentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf matrixdsindex; //type: int32
-        YLeaf matrixdsdestaddress; //type: binary
-        YLeaf matrixdssourceaddress; //type: binary
-        YLeaf matrixdspkts; //type: uint32
-        YLeaf matrixdsoctets; //type: uint32
-        YLeaf matrixdserrors; //type: uint32
+        ydk::YLeaf matrixdsindex; //type: int32
+        ydk::YLeaf matrixdsdestaddress; //type: binary
+        ydk::YLeaf matrixdssourceaddress; //type: binary
+        ydk::YLeaf matrixdspkts; //type: uint32
+        ydk::YLeaf matrixdsoctets; //type: uint32
+        ydk::YLeaf matrixdserrors; //type: uint32
 
 }; // RmonMib::Matrixdstable::Matrixdsentry
 
 
-class RmonMib::Filtertable : public Entity
+class RmonMib::Filtertable : public ydk::Entity
 {
     public:
         Filtertable();
@@ -672,20 +730,22 @@ class RmonMib::Filtertable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Filterentry; //type: RmonMib::Filtertable::Filterentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Filtertable::Filterentry> > filterentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Filtertable::Filterentry> > filterentry;
         
 }; // RmonMib::Filtertable
 
 
-class RmonMib::Filtertable::Filterentry : public Entity
+class RmonMib::Filtertable::Filterentry : public ydk::Entity
 {
     public:
         Filterentry();
@@ -693,28 +753,32 @@ class RmonMib::Filtertable::Filterentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf filterindex; //type: int32
-        YLeaf filterchannelindex; //type: int32
-        YLeaf filterpktdataoffset; //type: int32
-        YLeaf filterpktdata; //type: binary
-        YLeaf filterpktdatamask; //type: binary
-        YLeaf filterpktdatanotmask; //type: binary
-        YLeaf filterpktstatus; //type: int32
-        YLeaf filterpktstatusmask; //type: int32
-        YLeaf filterpktstatusnotmask; //type: int32
-        YLeaf filterowner; //type: binary
-        YLeaf filterstatus; //type: EntrystatusEnum
+        ydk::YLeaf filterindex; //type: int32
+        ydk::YLeaf filterchannelindex; //type: int32
+        ydk::YLeaf filterpktdataoffset; //type: int32
+        ydk::YLeaf filterpktdata; //type: binary
+        ydk::YLeaf filterpktdatamask; //type: binary
+        ydk::YLeaf filterpktdatanotmask; //type: binary
+        ydk::YLeaf filterpktstatus; //type: int32
+        ydk::YLeaf filterpktstatusmask; //type: int32
+        ydk::YLeaf filterpktstatusnotmask; //type: int32
+        ydk::YLeaf filterowner; //type: binary
+        ydk::YLeaf filterstatus; //type: Entrystatus
+        ydk::YLeaf filterprotocoldirdatalocalindex; //type: int32
+        ydk::YLeaf filterprotocoldirlocalindex; //type: int32
 
 }; // RmonMib::Filtertable::Filterentry
 
 
-class RmonMib::Channeltable : public Entity
+class RmonMib::Channeltable : public ydk::Entity
 {
     public:
         Channeltable();
@@ -722,20 +786,22 @@ class RmonMib::Channeltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Channelentry; //type: RmonMib::Channeltable::Channelentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Channeltable::Channelentry> > channelentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Channeltable::Channelentry> > channelentry;
         
 }; // RmonMib::Channeltable
 
 
-class RmonMib::Channeltable::Channelentry : public Entity
+class RmonMib::Channeltable::Channelentry : public ydk::Entity
 {
     public:
         Channelentry();
@@ -743,32 +809,36 @@ class RmonMib::Channeltable::Channelentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf channelindex; //type: int32
-        YLeaf channelifindex; //type: int32
-        YLeaf channelaccepttype; //type: ChannelaccepttypeEnum
-        YLeaf channeldatacontrol; //type: ChanneldatacontrolEnum
-        YLeaf channelturnoneventindex; //type: int32
-        YLeaf channelturnoffeventindex; //type: int32
-        YLeaf channeleventindex; //type: int32
-        YLeaf channeleventstatus; //type: ChanneleventstatusEnum
-        YLeaf channelmatches; //type: uint32
-        YLeaf channeldescription; //type: string
-        YLeaf channelowner; //type: binary
-        YLeaf channelstatus; //type: EntrystatusEnum
-        class ChannelaccepttypeEnum;
-        class ChanneldatacontrolEnum;
-        class ChanneleventstatusEnum;
+        ydk::YLeaf channelindex; //type: int32
+        ydk::YLeaf channelifindex; //type: int32
+        ydk::YLeaf channelaccepttype; //type: Channelaccepttype
+        ydk::YLeaf channeldatacontrol; //type: Channeldatacontrol
+        ydk::YLeaf channelturnoneventindex; //type: int32
+        ydk::YLeaf channelturnoffeventindex; //type: int32
+        ydk::YLeaf channeleventindex; //type: int32
+        ydk::YLeaf channeleventstatus; //type: Channeleventstatus
+        ydk::YLeaf channelmatches; //type: uint32
+        ydk::YLeaf channeldescription; //type: string
+        ydk::YLeaf channelowner; //type: binary
+        ydk::YLeaf channelstatus; //type: Entrystatus
+        ydk::YLeaf channeldroppedframes; //type: uint32
+        ydk::YLeaf channelcreatetime; //type: uint32
+        class Channelaccepttype;
+        class Channeldatacontrol;
+        class Channeleventstatus;
 
 }; // RmonMib::Channeltable::Channelentry
 
 
-class RmonMib::Buffercontroltable : public Entity
+class RmonMib::Buffercontroltable : public ydk::Entity
 {
     public:
         Buffercontroltable();
@@ -776,20 +846,22 @@ class RmonMib::Buffercontroltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Buffercontrolentry; //type: RmonMib::Buffercontroltable::Buffercontrolentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Buffercontroltable::Buffercontrolentry> > buffercontrolentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Buffercontroltable::Buffercontrolentry> > buffercontrolentry;
         
 }; // RmonMib::Buffercontroltable
 
 
-class RmonMib::Buffercontroltable::Buffercontrolentry : public Entity
+class RmonMib::Buffercontroltable::Buffercontrolentry : public ydk::Entity
 {
     public:
         Buffercontrolentry();
@@ -797,32 +869,34 @@ class RmonMib::Buffercontroltable::Buffercontrolentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf buffercontrolindex; //type: int32
-        YLeaf buffercontrolchannelindex; //type: int32
-        YLeaf buffercontrolfullstatus; //type: BuffercontrolfullstatusEnum
-        YLeaf buffercontrolfullaction; //type: BuffercontrolfullactionEnum
-        YLeaf buffercontrolcaptureslicesize; //type: int32
-        YLeaf buffercontroldownloadslicesize; //type: int32
-        YLeaf buffercontroldownloadoffset; //type: int32
-        YLeaf buffercontrolmaxoctetsrequested; //type: int32
-        YLeaf buffercontrolmaxoctetsgranted; //type: int32
-        YLeaf buffercontrolcapturedpackets; //type: int32
-        YLeaf buffercontrolturnontime; //type: uint32
-        YLeaf buffercontrolowner; //type: binary
-        YLeaf buffercontrolstatus; //type: EntrystatusEnum
-        class BuffercontrolfullstatusEnum;
-        class BuffercontrolfullactionEnum;
+        ydk::YLeaf buffercontrolindex; //type: int32
+        ydk::YLeaf buffercontrolchannelindex; //type: int32
+        ydk::YLeaf buffercontrolfullstatus; //type: Buffercontrolfullstatus
+        ydk::YLeaf buffercontrolfullaction; //type: Buffercontrolfullaction
+        ydk::YLeaf buffercontrolcaptureslicesize; //type: int32
+        ydk::YLeaf buffercontroldownloadslicesize; //type: int32
+        ydk::YLeaf buffercontroldownloadoffset; //type: int32
+        ydk::YLeaf buffercontrolmaxoctetsrequested; //type: int32
+        ydk::YLeaf buffercontrolmaxoctetsgranted; //type: int32
+        ydk::YLeaf buffercontrolcapturedpackets; //type: int32
+        ydk::YLeaf buffercontrolturnontime; //type: uint32
+        ydk::YLeaf buffercontrolowner; //type: binary
+        ydk::YLeaf buffercontrolstatus; //type: Entrystatus
+        class Buffercontrolfullstatus;
+        class Buffercontrolfullaction;
 
 }; // RmonMib::Buffercontroltable::Buffercontrolentry
 
 
-class RmonMib::Capturebuffertable : public Entity
+class RmonMib::Capturebuffertable : public ydk::Entity
 {
     public:
         Capturebuffertable();
@@ -830,20 +904,22 @@ class RmonMib::Capturebuffertable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Capturebufferentry; //type: RmonMib::Capturebuffertable::Capturebufferentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Capturebuffertable::Capturebufferentry> > capturebufferentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Capturebuffertable::Capturebufferentry> > capturebufferentry;
         
 }; // RmonMib::Capturebuffertable
 
 
-class RmonMib::Capturebuffertable::Capturebufferentry : public Entity
+class RmonMib::Capturebuffertable::Capturebufferentry : public ydk::Entity
 {
     public:
         Capturebufferentry();
@@ -851,24 +927,26 @@ class RmonMib::Capturebuffertable::Capturebufferentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf capturebuffercontrolindex; //type: int32
-        YLeaf capturebufferindex; //type: int32
-        YLeaf capturebufferpacketid; //type: int32
-        YLeaf capturebufferpacketdata; //type: binary
-        YLeaf capturebufferpacketlength; //type: int32
-        YLeaf capturebufferpackettime; //type: int32
-        YLeaf capturebufferpacketstatus; //type: int32
+        ydk::YLeaf capturebuffercontrolindex; //type: int32
+        ydk::YLeaf capturebufferindex; //type: int32
+        ydk::YLeaf capturebufferpacketid; //type: int32
+        ydk::YLeaf capturebufferpacketdata; //type: binary
+        ydk::YLeaf capturebufferpacketlength; //type: int32
+        ydk::YLeaf capturebufferpackettime; //type: int32
+        ydk::YLeaf capturebufferpacketstatus; //type: int32
 
 }; // RmonMib::Capturebuffertable::Capturebufferentry
 
 
-class RmonMib::Eventtable : public Entity
+class RmonMib::Eventtable : public ydk::Entity
 {
     public:
         Eventtable();
@@ -876,20 +954,22 @@ class RmonMib::Eventtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Evententry; //type: RmonMib::Eventtable::Evententry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Eventtable::Evententry> > evententry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Eventtable::Evententry> > evententry;
         
 }; // RmonMib::Eventtable
 
 
-class RmonMib::Eventtable::Evententry : public Entity
+class RmonMib::Eventtable::Evententry : public ydk::Entity
 {
     public:
         Evententry();
@@ -897,25 +977,27 @@ class RmonMib::Eventtable::Evententry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf eventindex; //type: int32
-        YLeaf eventdescription; //type: string
-        YLeaf eventtype; //type: EventtypeEnum
-        YLeaf eventcommunity; //type: binary
-        YLeaf eventlasttimesent; //type: uint32
-        YLeaf eventowner; //type: binary
-        YLeaf eventstatus; //type: EntrystatusEnum
-        class EventtypeEnum;
+        ydk::YLeaf eventindex; //type: int32
+        ydk::YLeaf eventdescription; //type: string
+        ydk::YLeaf eventtype; //type: Eventtype
+        ydk::YLeaf eventcommunity; //type: binary
+        ydk::YLeaf eventlasttimesent; //type: uint32
+        ydk::YLeaf eventowner; //type: binary
+        ydk::YLeaf eventstatus; //type: Entrystatus
+        class Eventtype;
 
 }; // RmonMib::Eventtable::Evententry
 
 
-class RmonMib::Logtable : public Entity
+class RmonMib::Logtable : public ydk::Entity
 {
     public:
         Logtable();
@@ -923,20 +1005,22 @@ class RmonMib::Logtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Logentry; //type: RmonMib::Logtable::Logentry
 
-        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Logtable::Logentry> > logentry_;
+        std::vector<std::shared_ptr<RMON_MIB::RmonMib::Logtable::Logentry> > logentry;
         
 }; // RmonMib::Logtable
 
 
-class RmonMib::Logtable::Logentry : public Entity
+class RmonMib::Logtable::Logentry : public ydk::Entity
 {
     public:
         Logentry();
@@ -944,107 +1028,109 @@ class RmonMib::Logtable::Logentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf logeventindex; //type: int32
-        YLeaf logindex; //type: int32
-        YLeaf logtime; //type: uint32
-        YLeaf logdescription; //type: string
+        ydk::YLeaf logeventindex; //type: int32
+        ydk::YLeaf logindex; //type: int32
+        ydk::YLeaf logtime; //type: uint32
+        ydk::YLeaf logdescription; //type: string
 
 }; // RmonMib::Logtable::Logentry
 
-class EntrystatusEnum : public Enum
+class Entrystatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf valid;
-        static const Enum::YLeaf createRequest;
-        static const Enum::YLeaf underCreation;
-        static const Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf valid;
+        static const ydk::Enum::YLeaf createRequest;
+        static const ydk::Enum::YLeaf underCreation;
+        static const ydk::Enum::YLeaf invalid;
 
 };
 
-class RmonMib::Alarmtable::Alarmentry::AlarmsampletypeEnum : public Enum
+class RmonMib::Alarmtable::Alarmentry::Alarmsampletype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf absoluteValue;
-        static const Enum::YLeaf deltaValue;
+        static const ydk::Enum::YLeaf absoluteValue;
+        static const ydk::Enum::YLeaf deltaValue;
 
 };
 
-class RmonMib::Alarmtable::Alarmentry::AlarmstartupalarmEnum : public Enum
+class RmonMib::Alarmtable::Alarmentry::Alarmstartupalarm : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf risingAlarm;
-        static const Enum::YLeaf fallingAlarm;
-        static const Enum::YLeaf risingOrFallingAlarm;
+        static const ydk::Enum::YLeaf risingAlarm;
+        static const ydk::Enum::YLeaf fallingAlarm;
+        static const ydk::Enum::YLeaf risingOrFallingAlarm;
 
 };
 
-class RmonMib::Hosttopncontroltable::Hosttopncontrolentry::HosttopnratebaseEnum : public Enum
+class RmonMib::Hosttopncontroltable::Hosttopncontrolentry::Hosttopnratebase : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf hostTopNInPkts;
-        static const Enum::YLeaf hostTopNOutPkts;
-        static const Enum::YLeaf hostTopNInOctets;
-        static const Enum::YLeaf hostTopNOutOctets;
-        static const Enum::YLeaf hostTopNOutErrors;
-        static const Enum::YLeaf hostTopNOutBroadcastPkts;
-        static const Enum::YLeaf hostTopNOutMulticastPkts;
+        static const ydk::Enum::YLeaf hostTopNInPkts;
+        static const ydk::Enum::YLeaf hostTopNOutPkts;
+        static const ydk::Enum::YLeaf hostTopNInOctets;
+        static const ydk::Enum::YLeaf hostTopNOutOctets;
+        static const ydk::Enum::YLeaf hostTopNOutErrors;
+        static const ydk::Enum::YLeaf hostTopNOutBroadcastPkts;
+        static const ydk::Enum::YLeaf hostTopNOutMulticastPkts;
 
 };
 
-class RmonMib::Channeltable::Channelentry::ChannelaccepttypeEnum : public Enum
+class RmonMib::Channeltable::Channelentry::Channelaccepttype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf acceptMatched;
-        static const Enum::YLeaf acceptFailed;
+        static const ydk::Enum::YLeaf acceptMatched;
+        static const ydk::Enum::YLeaf acceptFailed;
 
 };
 
-class RmonMib::Channeltable::Channelentry::ChanneldatacontrolEnum : public Enum
+class RmonMib::Channeltable::Channelentry::Channeldatacontrol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf on;
-        static const Enum::YLeaf off;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
 
 };
 
-class RmonMib::Channeltable::Channelentry::ChanneleventstatusEnum : public Enum
+class RmonMib::Channeltable::Channelentry::Channeleventstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf eventReady;
-        static const Enum::YLeaf eventFired;
-        static const Enum::YLeaf eventAlwaysReady;
+        static const ydk::Enum::YLeaf eventReady;
+        static const ydk::Enum::YLeaf eventFired;
+        static const ydk::Enum::YLeaf eventAlwaysReady;
 
 };
 
-class RmonMib::Buffercontroltable::Buffercontrolentry::BuffercontrolfullstatusEnum : public Enum
+class RmonMib::Buffercontroltable::Buffercontrolentry::Buffercontrolfullstatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf spaceAvailable;
-        static const Enum::YLeaf full;
+        static const ydk::Enum::YLeaf spaceAvailable;
+        static const ydk::Enum::YLeaf full;
 
 };
 
-class RmonMib::Buffercontroltable::Buffercontrolentry::BuffercontrolfullactionEnum : public Enum
+class RmonMib::Buffercontroltable::Buffercontrolentry::Buffercontrolfullaction : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf lockWhenFull;
-        static const Enum::YLeaf wrapWhenFull;
+        static const ydk::Enum::YLeaf lockWhenFull;
+        static const ydk::Enum::YLeaf wrapWhenFull;
 
 };
 
-class RmonMib::Eventtable::Evententry::EventtypeEnum : public Enum
+class RmonMib::Eventtable::Evententry::Eventtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf log;
-        static const Enum::YLeaf snmptrap;
-        static const Enum::YLeaf logandtrap;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf snmptrap;
+        static const ydk::Enum::YLeaf logandtrap;
 
 };
 

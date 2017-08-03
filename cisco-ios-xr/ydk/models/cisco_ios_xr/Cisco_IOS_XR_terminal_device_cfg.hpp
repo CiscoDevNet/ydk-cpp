@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_terminal_device_cfg {
 
-class LogicalChannels : public Entity
+class LogicalChannels : public ydk::Entity
 {
     public:
         LogicalChannels();
@@ -18,15 +18,18 @@ class LogicalChannels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Channel; //type: LogicalChannels::Channel
 
@@ -35,7 +38,7 @@ class LogicalChannels : public Entity
 }; // LogicalChannels
 
 
-class LogicalChannels::Channel : public Entity
+class LogicalChannels::Channel : public ydk::Entity
 {
     public:
         Channel();
@@ -43,21 +46,23 @@ class LogicalChannels::Channel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf channel_index; //type: int32
-        YLeaf trib_protocol; //type: LogicalTribProtocolEnum
-        YLeaf description; //type: string
-        YLeaf ingress_client_port; //type: string
-        YLeaf ingress_physical_channel; //type: uint32
-        YLeaf admin_state; //type: LogicalAdminStateEnum
-        YLeaf loopback_mode; //type: LogicalLoopbackModeEnum
-        YLeaf logical_channel_type; //type: LogicalProtocolEnum
-        YLeaf rate_class; //type: LogicalTribRateEnum
+        ydk::YLeaf channel_index; //type: int32
+        ydk::YLeaf trib_protocol; //type: LogicalTribProtocol
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf ingress_client_port; //type: string
+        ydk::YLeaf ingress_physical_channel; //type: uint32
+        ydk::YLeaf admin_state; //type: LogicalAdminState
+        ydk::YLeaf loopback_mode; //type: LogicalLoopbackMode
+        ydk::YLeaf logical_channel_type; //type: LogicalProtocol
+        ydk::YLeaf rate_class; //type: LogicalTribRate
         class LogicalChannelAssignments; //type: LogicalChannels::Channel::LogicalChannelAssignments
         class Otn; //type: LogicalChannels::Channel::Otn
 
@@ -67,7 +72,7 @@ class LogicalChannels::Channel : public Entity
 }; // LogicalChannels::Channel
 
 
-class LogicalChannels::Channel::LogicalChannelAssignments : public Entity
+class LogicalChannels::Channel::LogicalChannelAssignments : public ydk::Entity
 {
     public:
         LogicalChannelAssignments();
@@ -75,11 +80,13 @@ class LogicalChannels::Channel::LogicalChannelAssignments : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LogicalChannelAssignment; //type: LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment
 
@@ -88,7 +95,7 @@ class LogicalChannels::Channel::LogicalChannelAssignments : public Entity
 }; // LogicalChannels::Channel::LogicalChannelAssignments
 
 
-class LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment : public Entity
+class LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment : public ydk::Entity
 {
     public:
         LogicalChannelAssignment();
@@ -96,23 +103,25 @@ class LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignm
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf assignment_index; //type: int32
-        YLeaf description; //type: string
-        YLeaf logical_channel_id; //type: int32
-        YLeaf assignment_type; //type: LogicalChannelAssignmentEnum
-        YLeaf allocation; //type: int32
-        YLeaf optical_channel_id; //type: string
+        ydk::YLeaf assignment_index; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf logical_channel_id; //type: int32
+        ydk::YLeaf assignment_type; //type: LogicalChannelAssignment
+        ydk::YLeaf allocation; //type: int32
+        ydk::YLeaf optical_channel_id; //type: string
 
 }; // LogicalChannels::Channel::LogicalChannelAssignments::LogicalChannelAssignment
 
 
-class LogicalChannels::Channel::Otn : public Entity
+class LogicalChannels::Channel::Otn : public ydk::Entity
 {
     public:
         Otn();
@@ -120,19 +129,21 @@ class LogicalChannels::Channel::Otn : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tti_msg_auto; //type: LogicalChannelOtnTtiAutoEnum
-        YLeaf tti_msg_expected; //type: string
-        YLeaf tti_msg_transmit; //type: string
+        ydk::YLeaf tti_msg_auto; //type: LogicalChannelOtnTtiAuto
+        ydk::YLeaf tti_msg_expected; //type: string
+        ydk::YLeaf tti_msg_transmit; //type: string
 
 }; // LogicalChannels::Channel::Otn
 
-class OpticalChannels : public Entity
+class OpticalChannels : public ydk::Entity
 {
     public:
         OpticalChannels();
@@ -140,15 +151,18 @@ class OpticalChannels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class OpticalChannel; //type: OpticalChannels::OpticalChannel
 
@@ -157,7 +171,7 @@ class OpticalChannels : public Entity
 }; // OpticalChannels
 
 
-class OpticalChannels::OpticalChannel : public Entity
+class OpticalChannels::OpticalChannel : public ydk::Entity
 {
     public:
         OpticalChannel();
@@ -165,96 +179,98 @@ class OpticalChannels::OpticalChannel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ifname; //type: string
-        YLeaf operational_mode; //type: uint32
-        YLeaf line_port; //type: string
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf operational_mode; //type: uint32
+        ydk::YLeaf line_port; //type: string
 
 }; // OpticalChannels::OpticalChannel
 
-class LogicalTribRateEnum : public Enum
+class LogicalTribRate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf trib_rate1g;
-        static const Enum::YLeaf trib_rate2_5g;
-        static const Enum::YLeaf trib_rate10g;
-        static const Enum::YLeaf trib_rate40g;
-        static const Enum::YLeaf trib_rate100g;
+        static const ydk::Enum::YLeaf trib_rate1g;
+        static const ydk::Enum::YLeaf trib_rate2_5g;
+        static const ydk::Enum::YLeaf trib_rate10g;
+        static const ydk::Enum::YLeaf trib_rate40g;
+        static const ydk::Enum::YLeaf trib_rate100g;
 
 };
 
-class LogicalLoopbackModeEnum : public Enum
+class LogicalChannelOtnTtiAuto : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf facility;
-        static const Enum::YLeaf terminal;
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
 
 };
 
-class LogicalChannelOtnTtiAutoEnum : public Enum
+class LogicalChannelAssignment : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf false_;
-        static const Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf type_logical_channel;
+        static const ydk::Enum::YLeaf type_optical_channel;
 
 };
 
-class LogicalAdminStateEnum : public Enum
+class LogicalProtocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enable;
-        static const Enum::YLeaf disable;
-        static const Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf type_ethernet;
+        static const ydk::Enum::YLeaf type_otn;
 
 };
 
-class LogicalChannelAssignmentEnum : public Enum
+class LogicalAdminState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf type_logical_channel;
-        static const Enum::YLeaf type_optical_channel;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf maintenance;
 
 };
 
-class LogicalTribProtocolEnum : public Enum
+class LogicalTribProtocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf trib_proto_type1ge;
-        static const Enum::YLeaf trib_proto_type_oc48;
-        static const Enum::YLeaf trib_proto_type_stm16;
-        static const Enum::YLeaf trib_proto_type10gelan;
-        static const Enum::YLeaf trib_proto_type10gewan;
-        static const Enum::YLeaf trib_proto_type_oc192;
-        static const Enum::YLeaf trib_proto_type_stm64;
-        static const Enum::YLeaf trib_proto_type_otu2;
-        static const Enum::YLeaf trib_proto_type_otu2e;
-        static const Enum::YLeaf trib_proto_type_otu1e;
-        static const Enum::YLeaf trib_proto_type_odu2;
-        static const Enum::YLeaf trib_proto_type_odu2e;
-        static const Enum::YLeaf trib_proto_type40ge;
-        static const Enum::YLeaf trib_proto_type_oc768;
-        static const Enum::YLeaf trib_proto_type_stm256;
-        static const Enum::YLeaf trib_proto_type_otu3;
-        static const Enum::YLeaf trib_proto_type_odu3;
-        static const Enum::YLeaf trib_proto_type100ge;
-        static const Enum::YLeaf trib_proto_type100g_mlg;
-        static const Enum::YLeaf trib_proto_type_otu4;
-        static const Enum::YLeaf trib_proto_type_otu_cn;
-        static const Enum::YLeaf trib_proto_type_odu4;
+        static const ydk::Enum::YLeaf trib_proto_type1ge;
+        static const ydk::Enum::YLeaf trib_proto_type_oc48;
+        static const ydk::Enum::YLeaf trib_proto_type_stm16;
+        static const ydk::Enum::YLeaf trib_proto_type10gelan;
+        static const ydk::Enum::YLeaf trib_proto_type10gewan;
+        static const ydk::Enum::YLeaf trib_proto_type_oc192;
+        static const ydk::Enum::YLeaf trib_proto_type_stm64;
+        static const ydk::Enum::YLeaf trib_proto_type_otu2;
+        static const ydk::Enum::YLeaf trib_proto_type_otu2e;
+        static const ydk::Enum::YLeaf trib_proto_type_otu1e;
+        static const ydk::Enum::YLeaf trib_proto_type_odu2;
+        static const ydk::Enum::YLeaf trib_proto_type_odu2e;
+        static const ydk::Enum::YLeaf trib_proto_type40ge;
+        static const ydk::Enum::YLeaf trib_proto_type_oc768;
+        static const ydk::Enum::YLeaf trib_proto_type_stm256;
+        static const ydk::Enum::YLeaf trib_proto_type_otu3;
+        static const ydk::Enum::YLeaf trib_proto_type_odu3;
+        static const ydk::Enum::YLeaf trib_proto_type100ge;
+        static const ydk::Enum::YLeaf trib_proto_type100g_mlg;
+        static const ydk::Enum::YLeaf trib_proto_type_otu4;
+        static const ydk::Enum::YLeaf trib_proto_type_otu_cn;
+        static const ydk::Enum::YLeaf trib_proto_type_odu4;
 
 };
 
-class LogicalProtocolEnum : public Enum
+class LogicalLoopbackMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf type_ethernet;
-        static const Enum::YLeaf type_otn;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf facility;
+        static const ydk::Enum::YLeaf terminal;
 
 };
 

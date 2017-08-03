@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 2.8.9)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_openconfig VERSION 0.1.2 LANGUAGES C CXX)
+project(ydk_openconfig VERSION 0.1.3 LANGUAGES C CXX)
 
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk-openconfig")
 set (CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
 set (CPACK_PACKAGE_RELEASE "1")
-set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "YDK Core Library")
+set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "YDK Bundle Library")
 # set (CPACK_PACKAGE_DESCRIPTION_SUMMARY ${YDK_DESCRIPTION})
 
 # CPack Static Settings
@@ -34,7 +34,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         OUTPUT_VARIABLE LSB_RELEASE_ID_SHORT
         OUTPUT_STRIP_TRAILING_WHITESPACE
     )
-    
+
     set (CMAKE_BUILD_TYPE "Release")
     set (CMAKE_C_COMPILER "/usr/bin/clang")
     set (CMAKE_CXX_COMPILER "/usr/bin/clang++")
@@ -99,23 +99,23 @@ include(CPack)
 # include custom Modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 
-set(YDK_YANG_ARCHIVE openconfig\@0.1.2)
+set(YDK_YANG_ARCHIVE openconfig\@0.1.3)
 
 if(NOT LIB_INSTALL_DIR)
-	set(LIB_INSTALL_DIR lib)
+    set(LIB_INSTALL_DIR lib)
 endif()
 
 if(NOT INCLUDE_INSTALL_DIR)
-	set(INCLUDE_INSTALL_DIR include/ydk_openconfig)
+    set(INCLUDE_INSTALL_DIR include/ydk_openconfig)
 endif()
 
 if(NOT YANG_INSTALL_DIR)
-    set(YANG_INSTALL_DIR share/openconfig\@0.1.2)
+    set(YANG_INSTALL_DIR share/openconfig\@0.1.3)
 endif()
 
 # set default build type if not specified by user
 if(NOT CMAKE_BUILD_TYPE)
-	set(CMAKE_BUILD_TYPE release)
+    set(CMAKE_BUILD_TYPE release)
 endif()
 
 if(SHOW_WARNINGS)
@@ -128,13 +128,13 @@ set(CMAKE_CXX_FLAGS_RELEASE "-Os -DNDEBUG")
 set(CMAKE_CXX_FLAGS_DEBUG   "-g -O0")
 
 
-set(libydk_openconfig_src ydk/models/openconfig/generated_entity_lookup.cpp ydk/models/openconfig/openconfig_types.cpp ydk/models/openconfig/openconfig_bgp_policy.cpp ydk/models/openconfig/openconfig_vlan.cpp ydk/models/openconfig/openconfig_rib_bgp.cpp ydk/models/openconfig/openconfig_if_ethernet.cpp ydk/models/openconfig/openconfig_if_ip.cpp ydk/models/openconfig/openconfig_terminal_device.cpp ydk/models/openconfig/openconfig_rib_bgp_types.cpp ydk/models/openconfig/openconfig_mpls_types.cpp ydk/models/openconfig/openconfig_platform_types.cpp ydk/models/openconfig/openconfig_policy_types.cpp ydk/models/openconfig/openconfig_interfaces.cpp ydk/models/openconfig/openconfig_platform.cpp ydk/models/openconfig/openconfig_local_routing.cpp ydk/models/openconfig/openconfig_transport_types.cpp ydk/models/openconfig/openconfig_bgp_types.cpp ydk/models/openconfig/fragmented/openconfig_bgp_0.cpp ydk/models/openconfig/fragmented/openconfig_bgp_1.cpp ydk/models/openconfig/fragmented/openconfig_bgp_2.cpp ydk/models/openconfig/openconfig_mpls.cpp ydk/models/openconfig/openconfig_routing_policy.cpp ydk/models/openconfig/openconfig_if_aggregate.cpp ydk/models/openconfig/openconfig_telemetry.cpp ydk/models/openconfig/cisco_xr_openconfig_bgp_types.cpp)
+set(libydk_openconfig_src ydk/models/openconfig/generated_entity_lookup.cpp ydk/models/openconfig/iana_if_type.cpp ydk/models/openconfig/ietf_diffserv_action.cpp ydk/models/openconfig/ietf_diffserv_classifier.cpp ydk/models/openconfig/ietf_diffserv_policy.cpp ydk/models/openconfig/ietf_diffserv_target.cpp ydk/models/openconfig/ietf_event_notifications.cpp ydk/models/openconfig/ietf_inet_types.cpp ydk/models/openconfig/ietf_interfaces.cpp ydk/models/openconfig/ietf_ip.cpp ydk/models/openconfig/ietf_ipv4_unicast_routing.cpp ydk/models/openconfig/ietf_ipv6_unicast_routing.cpp ydk/models/openconfig/ietf_key_chain.cpp ydk/models/openconfig/ietf_netconf.cpp ydk/models/openconfig/ietf_netconf_monitoring.cpp ydk/models/openconfig/ietf_netconf_with_defaults.cpp ydk/models/openconfig/ietf_ospf.cpp ydk/models/openconfig/ietf_restconf_monitoring.cpp ydk/models/openconfig/ietf_routing.cpp ydk/models/openconfig/ietf_syslog_types.cpp ydk/models/openconfig/ietf_yang_library.cpp ydk/models/openconfig/ietf_yang_push.cpp ydk/models/openconfig/ietf_yang_smiv2.cpp ydk/models/openconfig/fragmented/openconfig_bgp_0.cpp ydk/models/openconfig/fragmented/openconfig_bgp_1.cpp ydk/models/openconfig/fragmented/openconfig_bgp_2.cpp ydk/models/openconfig/openconfig_bgp_policy.cpp ydk/models/openconfig/openconfig_bgp_types.cpp ydk/models/openconfig/openconfig_if_aggregate.cpp ydk/models/openconfig/openconfig_if_ethernet.cpp ydk/models/openconfig/openconfig_if_ip.cpp ydk/models/openconfig/openconfig_interfaces.cpp ydk/models/openconfig/openconfig_lacp.cpp ydk/models/openconfig/openconfig_local_routing.cpp ydk/models/openconfig/openconfig_mpls.cpp ydk/models/openconfig/openconfig_mpls_types.cpp ydk/models/openconfig/openconfig_platform.cpp ydk/models/openconfig/openconfig_platform_types.cpp ydk/models/openconfig/openconfig_policy_types.cpp ydk/models/openconfig/openconfig_rib_bgp.cpp ydk/models/openconfig/openconfig_rib_bgp_types.cpp ydk/models/openconfig/openconfig_routing_policy.cpp ydk/models/openconfig/openconfig_telemetry.cpp ydk/models/openconfig/openconfig_terminal_device.cpp ydk/models/openconfig/openconfig_transport_types.cpp ydk/models/openconfig/openconfig_types.cpp ydk/models/openconfig/openconfig_vlan.cpp ydk/models/openconfig/openconfig_vlan_types.cpp ydk/models/openconfig/policy_types.cpp)
 
-set(libydk_openconfig_headers ydk/models/openconfig/bundle_info.hpp ydk/models/openconfig/openconfig_types.hpp ydk/models/openconfig/openconfig_bgp_policy.hpp ydk/models/openconfig/openconfig_vlan.hpp ydk/models/openconfig/openconfig_rib_bgp.hpp ydk/models/openconfig/openconfig_if_ethernet.hpp ydk/models/openconfig/openconfig_if_ip.hpp ydk/models/openconfig/openconfig_terminal_device.hpp ydk/models/openconfig/openconfig_rib_bgp_types.hpp ydk/models/openconfig/openconfig_mpls_types.hpp ydk/models/openconfig/openconfig_platform_types.hpp ydk/models/openconfig/openconfig_policy_types.hpp ydk/models/openconfig/openconfig_interfaces.hpp ydk/models/openconfig/openconfig_platform.hpp ydk/models/openconfig/openconfig_local_routing.hpp ydk/models/openconfig/openconfig_transport_types.hpp ydk/models/openconfig/openconfig_bgp_types.hpp ydk/models/openconfig/openconfig_bgp.hpp ydk/models/openconfig/openconfig_mpls.hpp ydk/models/openconfig/openconfig_routing_policy.hpp ydk/models/openconfig/openconfig_if_aggregate.hpp ydk/models/openconfig/openconfig_telemetry.hpp ydk/models/openconfig/cisco_xr_openconfig_bgp_types.hpp)
+set(libydk_openconfig_headers ydk/models/openconfig/bundle_info.hpp ydk/models/openconfig/iana_if_type.hpp ydk/models/openconfig/ietf_diffserv_action.hpp ydk/models/openconfig/ietf_diffserv_classifier.hpp ydk/models/openconfig/ietf_diffserv_policy.hpp ydk/models/openconfig/ietf_diffserv_target.hpp ydk/models/openconfig/ietf_event_notifications.hpp ydk/models/openconfig/ietf_inet_types.hpp ydk/models/openconfig/ietf_interfaces.hpp ydk/models/openconfig/ietf_ip.hpp ydk/models/openconfig/ietf_ipv4_unicast_routing.hpp ydk/models/openconfig/ietf_ipv6_unicast_routing.hpp ydk/models/openconfig/ietf_key_chain.hpp ydk/models/openconfig/ietf_netconf.hpp ydk/models/openconfig/ietf_netconf_monitoring.hpp ydk/models/openconfig/ietf_netconf_with_defaults.hpp ydk/models/openconfig/ietf_ospf.hpp ydk/models/openconfig/ietf_restconf_monitoring.hpp ydk/models/openconfig/ietf_routing.hpp ydk/models/openconfig/ietf_syslog_types.hpp ydk/models/openconfig/ietf_yang_library.hpp ydk/models/openconfig/ietf_yang_push.hpp ydk/models/openconfig/ietf_yang_smiv2.hpp ydk/models/openconfig/openconfig_bgp.hpp ydk/models/openconfig/openconfig_bgp_policy.hpp ydk/models/openconfig/openconfig_bgp_types.hpp ydk/models/openconfig/openconfig_if_aggregate.hpp ydk/models/openconfig/openconfig_if_ethernet.hpp ydk/models/openconfig/openconfig_if_ip.hpp ydk/models/openconfig/openconfig_interfaces.hpp ydk/models/openconfig/openconfig_lacp.hpp ydk/models/openconfig/openconfig_local_routing.hpp ydk/models/openconfig/openconfig_mpls.hpp ydk/models/openconfig/openconfig_mpls_types.hpp ydk/models/openconfig/openconfig_platform.hpp ydk/models/openconfig/openconfig_platform_types.hpp ydk/models/openconfig/openconfig_policy_types.hpp ydk/models/openconfig/openconfig_rib_bgp.hpp ydk/models/openconfig/openconfig_rib_bgp_types.hpp ydk/models/openconfig/openconfig_routing_policy.hpp ydk/models/openconfig/openconfig_telemetry.hpp ydk/models/openconfig/openconfig_terminal_device.hpp ydk/models/openconfig/openconfig_transport_types.hpp ydk/models/openconfig/openconfig_types.hpp ydk/models/openconfig/openconfig_vlan.hpp ydk/models/openconfig/openconfig_vlan_types.hpp ydk/models/openconfig/policy_types.hpp)
 
-set(libydk_openconfig_yang cisco-xr-openconfig-bgp-types.yang cisco-xr-openconfig-interfaces-types.yang openconfig-bgp-multiprotocol.yang openconfig-bgp-operational.yang openconfig-bgp-policy.yang openconfig-bgp-types.yang openconfig-bgp.yang openconfig-extensions.yang openconfig-if-aggregate.yang openconfig-if-ethernet.yang openconfig-if-ip.yang openconfig-interfaces.yang openconfig-local-routing.yang openconfig-mpls-igp.yang openconfig-mpls-ldp.yang openconfig-mpls-rsvp.yang openconfig-mpls-sr.yang openconfig-mpls-static.yang openconfig-mpls-te.yang openconfig-mpls-types.yang openconfig-mpls.yang openconfig-platform-transceiver.yang openconfig-platform-types.yang openconfig-platform.yang openconfig-policy-types.yang openconfig-rib-bgp-types.yang openconfig-rib-bgp.yang openconfig-routing-policy.yang openconfig-telemetry.yang openconfig-terminal-device.yang openconfig-transport-types.yang openconfig-types.yang openconfig-vlan.yang ydk@2016-02-26.yang)
+set(libydk_openconfig_yang cisco-xr-openconfig-interfaces-types.yang openconfig-bgp-common-multiprotocol.yang openconfig-bgp-common-structure.yang openconfig-bgp-common.yang openconfig-bgp-global.yang openconfig-bgp-neighbor.yang openconfig-bgp-peer-group.yang openconfig-bgp-policy.yang openconfig-bgp-types.yang openconfig-bgp.yang openconfig-extensions.yang openconfig-if-aggregate.yang openconfig-if-ethernet.yang openconfig-if-ip.yang openconfig-interfaces.yang openconfig-lacp.yang openconfig-local-routing.yang openconfig-mpls-igp.yang openconfig-mpls-ldp.yang openconfig-mpls-rsvp.yang openconfig-mpls-sr.yang openconfig-mpls-static.yang openconfig-mpls-te.yang openconfig-mpls-types.yang openconfig-mpls.yang openconfig-platform-transceiver.yang openconfig-platform-types.yang openconfig-platform.yang openconfig-policy-types.yang openconfig-rib-bgp-types.yang openconfig-rib-bgp.yang openconfig-routing-policy.yang openconfig-telemetry.yang openconfig-terminal-device.yang openconfig-transport-types.yang openconfig-types.yang openconfig-vlan-types.yang openconfig-vlan.yang ydk@2016-02-26.yang)
 
-set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/openconfig\@0.1.2)
+set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/openconfig\@0.1.3)
 
 list(APPEND libydk_YANG_FILES "")
 foreach(yang_file IN LISTS libydk_openconfig_yang)
@@ -181,19 +181,19 @@ install(FILES ${libydk_YANG_FILES} DESTINATION ${YANG_INSTALL_DIR})
 # generate doxygen documentation for ydk_core API
 find_package(Doxygen)
 if(DOXYGEN_FOUND)
-	set(DOXYGEN_SKIP_DOT TRUE)
-	add_custom_target(doc
-			COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
-			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-	configure_file(Doxyfile.in Doxyfile)
+    set(DOXYGEN_SKIP_DOT TRUE)
+    add_custom_target(doc
+            COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_BINARY_DIR}/Doxyfile
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+    configure_file(Doxyfile.in Doxyfile)
 endif()
 
 
 # clean cmake cache
 add_custom_target(cclean
-		COMMAND make clean
-		COMMAND find . -iname '*cmake*' -not -name CMakeLists.txt -not -path './CMakeModules*' -exec rm -rf {} +
-		COMMAND rm -rf Makefile Doxyfile
-		WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+        COMMAND make clean
+        COMMAND find . -iname '*cmake*' -not -name CMakeLists.txt -not -path './CMakeModules*' -exec rm -rf {} +
+        COMMAND rm -rf Makefile Doxyfile
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
 
 

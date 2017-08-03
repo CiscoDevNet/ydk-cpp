@@ -41,12 +41,12 @@ Bits::~Bits()
 
 bool & Bits::operator [] (std::string key)
 {
-	return bitmap[key];
+    return bitmap[key];
 }
 
 const std::map<std::string, bool> & Bits::get_bitmap() const
 {
-	return bitmap;
+    return bitmap;
 }
 }
 

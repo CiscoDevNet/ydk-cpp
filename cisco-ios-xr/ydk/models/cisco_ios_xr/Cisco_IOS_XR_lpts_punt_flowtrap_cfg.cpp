@@ -6,21 +6,23 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_lpts_punt_flowtrap_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lpts_punt_flowtrap_cfg {
 
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::arp {1, "arp"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::icmp {2, "icmp"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::dhcp {3, "dhcp"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::pppoe {4, "pppoe"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::ppp {5, "ppp"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::igmp {6, "igmp"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::ipv4 {7, "ipv4"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::l2tp {8, "l2tp"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::unclassified {9, "unclassified"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::ospf {10, "ospf"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::bgp {11, "bgp"};
-const Enum::YLeaf LptsPuntFlowtrapProtoIdEnum::default_ {12, "default"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::arp {1, "arp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::icmp {2, "icmp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::dhcp {3, "dhcp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::pppoe {4, "pppoe"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::ppp {5, "ppp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::igmp {6, "igmp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::ipv4 {7, "ipv4"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::l2tp {8, "l2tp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::unclassified {9, "unclassified"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::ospf {10, "ospf"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::bgp {11, "bgp"};
+const Enum::YLeaf LptsPuntFlowtrapProtoId::default_ {12, "default"};
 
 
 }

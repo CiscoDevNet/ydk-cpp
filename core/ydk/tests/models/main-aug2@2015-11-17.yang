@@ -40,11 +40,11 @@ module main-aug2 {
   }
 
   augment /main:A {
-  	container C {
+    container C {
 
       leaf three {
-      	description "blah";
-      	type int16;
+        description "blah";
+        type int16;
       }
     }
 

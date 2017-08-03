@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_statsd_oper {
 
-class InfraStatistics : public Entity
+class InfraStatistics : public ydk::Entity
 {
     public:
         InfraStatistics();
@@ -18,15 +18,18 @@ class InfraStatistics : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Interfaces; //type: InfraStatistics::Interfaces
 
@@ -35,7 +38,7 @@ class InfraStatistics : public Entity
 }; // InfraStatistics
 
 
-class InfraStatistics::Interfaces : public Entity
+class InfraStatistics::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -43,11 +46,13 @@ class InfraStatistics::Interfaces : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: InfraStatistics::Interfaces::Interface
 
@@ -56,7 +61,7 @@ class InfraStatistics::Interfaces : public Entity
 }; // InfraStatistics::Interfaces
 
 
-class InfraStatistics::Interfaces::Interface : public Entity
+class InfraStatistics::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -64,13 +69,15 @@ class InfraStatistics::Interfaces::Interface : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
+        ydk::YLeaf interface_name; //type: string
         class Cache; //type: InfraStatistics::Interfaces::Interface::Cache
         class Latest; //type: InfraStatistics::Interfaces::Interface::Latest
         class Total; //type: InfraStatistics::Interfaces::Interface::Total
@@ -90,7 +97,7 @@ class InfraStatistics::Interfaces::Interface : public Entity
 }; // InfraStatistics::Interfaces::Interface
 
 
-class InfraStatistics::Interfaces::Interface::Cache : public Entity
+class InfraStatistics::Interfaces::Interface::Cache : public ydk::Entity
 {
     public:
         Cache();
@@ -98,11 +105,13 @@ class InfraStatistics::Interfaces::Interface::Cache : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Protocols; //type: InfraStatistics::Interfaces::Interface::Cache::Protocols
         class InterfacesMibCounters; //type: InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters
@@ -117,7 +126,7 @@ class InfraStatistics::Interfaces::Interface::Cache : public Entity
 }; // InfraStatistics::Interfaces::Interface::Cache
 
 
-class InfraStatistics::Interfaces::Interface::Cache::Protocols : public Entity
+class InfraStatistics::Interfaces::Interface::Cache::Protocols : public ydk::Entity
 {
     public:
         Protocols();
@@ -125,11 +134,13 @@ class InfraStatistics::Interfaces::Interface::Cache::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol
 
@@ -138,7 +149,7 @@ class InfraStatistics::Interfaces::Interface::Cache::Protocols : public Entity
 }; // InfraStatistics::Interfaces::Interface::Cache::Protocols
 
 
-class InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol : public Entity
+class InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -146,28 +157,30 @@ class InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: string
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf protocol; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf input_data_rate; //type: uint64
-        YLeaf input_packet_rate; //type: uint64
-        YLeaf output_data_rate; //type: uint64
-        YLeaf output_packet_rate; //type: uint64
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf protocol; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf input_data_rate; //type: uint64
+        ydk::YLeaf input_packet_rate; //type: uint64
+        ydk::YLeaf output_data_rate; //type: uint64
+        ydk::YLeaf output_packet_rate; //type: uint64
 
 }; // InfraStatistics::Interfaces::Interface::Cache::Protocols::Protocol
 
 
-class InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters : public Entity
+class InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters : public ydk::Entity
 {
     public:
         InterfacesMibCounters();
@@ -175,53 +188,55 @@ class InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf multicast_packets_received; //type: uint64
-        YLeaf broadcast_packets_received; //type: uint64
-        YLeaf multicast_packets_sent; //type: uint64
-        YLeaf broadcast_packets_sent; //type: uint64
-        YLeaf output_drops; //type: uint32
-        YLeaf output_queue_drops; //type: uint32
-        YLeaf input_drops; //type: uint32
-        YLeaf input_queue_drops; //type: uint32
-        YLeaf runt_packets_received; //type: uint32
-        YLeaf giant_packets_received; //type: uint32
-        YLeaf throttled_packets_received; //type: uint32
-        YLeaf parity_packets_received; //type: uint32
-        YLeaf unknown_protocol_packets_received; //type: uint32
-        YLeaf input_errors; //type: uint32
-        YLeaf crc_errors; //type: uint32
-        YLeaf input_overruns; //type: uint32
-        YLeaf framing_errors_received; //type: uint32
-        YLeaf input_ignored_packets; //type: uint32
-        YLeaf input_aborts; //type: uint32
-        YLeaf output_errors; //type: uint32
-        YLeaf output_underruns; //type: uint32
-        YLeaf output_buffer_failures; //type: uint32
-        YLeaf output_buffers_swapped_out; //type: uint32
-        YLeaf applique; //type: uint32
-        YLeaf resets; //type: uint32
-        YLeaf carrier_transitions; //type: uint32
-        YLeaf availability_flag; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf seconds_since_last_clear_counters; //type: uint32
-        YLeaf last_discontinuity_time; //type: uint32
-        YLeaf seconds_since_packet_received; //type: uint32
-        YLeaf seconds_since_packet_sent; //type: uint32
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf multicast_packets_received; //type: uint64
+        ydk::YLeaf broadcast_packets_received; //type: uint64
+        ydk::YLeaf multicast_packets_sent; //type: uint64
+        ydk::YLeaf broadcast_packets_sent; //type: uint64
+        ydk::YLeaf output_drops; //type: uint32
+        ydk::YLeaf output_queue_drops; //type: uint32
+        ydk::YLeaf input_drops; //type: uint32
+        ydk::YLeaf input_queue_drops; //type: uint32
+        ydk::YLeaf runt_packets_received; //type: uint32
+        ydk::YLeaf giant_packets_received; //type: uint32
+        ydk::YLeaf throttled_packets_received; //type: uint32
+        ydk::YLeaf parity_packets_received; //type: uint32
+        ydk::YLeaf unknown_protocol_packets_received; //type: uint32
+        ydk::YLeaf input_errors; //type: uint32
+        ydk::YLeaf crc_errors; //type: uint32
+        ydk::YLeaf input_overruns; //type: uint32
+        ydk::YLeaf framing_errors_received; //type: uint32
+        ydk::YLeaf input_ignored_packets; //type: uint32
+        ydk::YLeaf input_aborts; //type: uint32
+        ydk::YLeaf output_errors; //type: uint32
+        ydk::YLeaf output_underruns; //type: uint32
+        ydk::YLeaf output_buffer_failures; //type: uint32
+        ydk::YLeaf output_buffers_swapped_out; //type: uint32
+        ydk::YLeaf applique; //type: uint32
+        ydk::YLeaf resets; //type: uint32
+        ydk::YLeaf carrier_transitions; //type: uint32
+        ydk::YLeaf availability_flag; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf seconds_since_last_clear_counters; //type: uint32
+        ydk::YLeaf last_discontinuity_time; //type: uint32
+        ydk::YLeaf seconds_since_packet_received; //type: uint32
+        ydk::YLeaf seconds_since_packet_sent; //type: uint32
 
 }; // InfraStatistics::Interfaces::Interface::Cache::InterfacesMibCounters
 
 
-class InfraStatistics::Interfaces::Interface::Cache::DataRate : public Entity
+class InfraStatistics::Interfaces::Interface::Cache::DataRate : public ydk::Entity
 {
     public:
         DataRate();
@@ -229,30 +244,32 @@ class InfraStatistics::Interfaces::Interface::Cache::DataRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf input_data_rate; //type: uint64
-        YLeaf input_packet_rate; //type: uint64
-        YLeaf output_data_rate; //type: uint64
-        YLeaf output_packet_rate; //type: uint64
-        YLeaf peak_input_data_rate; //type: uint64
-        YLeaf peak_input_packet_rate; //type: uint64
-        YLeaf peak_output_data_rate; //type: uint64
-        YLeaf peak_output_packet_rate; //type: uint64
-        YLeaf bandwidth; //type: uint32
-        YLeaf load_interval; //type: uint32
-        YLeaf output_load; //type: uint8
-        YLeaf input_load; //type: uint8
-        YLeaf reliability; //type: uint8
+        ydk::YLeaf input_data_rate; //type: uint64
+        ydk::YLeaf input_packet_rate; //type: uint64
+        ydk::YLeaf output_data_rate; //type: uint64
+        ydk::YLeaf output_packet_rate; //type: uint64
+        ydk::YLeaf peak_input_data_rate; //type: uint64
+        ydk::YLeaf peak_input_packet_rate; //type: uint64
+        ydk::YLeaf peak_output_data_rate; //type: uint64
+        ydk::YLeaf peak_output_packet_rate; //type: uint64
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf load_interval; //type: uint32
+        ydk::YLeaf output_load; //type: uint8
+        ydk::YLeaf input_load; //type: uint8
+        ydk::YLeaf reliability; //type: uint8
 
 }; // InfraStatistics::Interfaces::Interface::Cache::DataRate
 
 
-class InfraStatistics::Interfaces::Interface::Cache::GenericCounters : public Entity
+class InfraStatistics::Interfaces::Interface::Cache::GenericCounters : public ydk::Entity
 {
     public:
         GenericCounters();
@@ -260,53 +277,55 @@ class InfraStatistics::Interfaces::Interface::Cache::GenericCounters : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf multicast_packets_received; //type: uint64
-        YLeaf broadcast_packets_received; //type: uint64
-        YLeaf multicast_packets_sent; //type: uint64
-        YLeaf broadcast_packets_sent; //type: uint64
-        YLeaf output_drops; //type: uint32
-        YLeaf output_queue_drops; //type: uint32
-        YLeaf input_drops; //type: uint32
-        YLeaf input_queue_drops; //type: uint32
-        YLeaf runt_packets_received; //type: uint32
-        YLeaf giant_packets_received; //type: uint32
-        YLeaf throttled_packets_received; //type: uint32
-        YLeaf parity_packets_received; //type: uint32
-        YLeaf unknown_protocol_packets_received; //type: uint32
-        YLeaf input_errors; //type: uint32
-        YLeaf crc_errors; //type: uint32
-        YLeaf input_overruns; //type: uint32
-        YLeaf framing_errors_received; //type: uint32
-        YLeaf input_ignored_packets; //type: uint32
-        YLeaf input_aborts; //type: uint32
-        YLeaf output_errors; //type: uint32
-        YLeaf output_underruns; //type: uint32
-        YLeaf output_buffer_failures; //type: uint32
-        YLeaf output_buffers_swapped_out; //type: uint32
-        YLeaf applique; //type: uint32
-        YLeaf resets; //type: uint32
-        YLeaf carrier_transitions; //type: uint32
-        YLeaf availability_flag; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf seconds_since_last_clear_counters; //type: uint32
-        YLeaf last_discontinuity_time; //type: uint32
-        YLeaf seconds_since_packet_received; //type: uint32
-        YLeaf seconds_since_packet_sent; //type: uint32
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf multicast_packets_received; //type: uint64
+        ydk::YLeaf broadcast_packets_received; //type: uint64
+        ydk::YLeaf multicast_packets_sent; //type: uint64
+        ydk::YLeaf broadcast_packets_sent; //type: uint64
+        ydk::YLeaf output_drops; //type: uint32
+        ydk::YLeaf output_queue_drops; //type: uint32
+        ydk::YLeaf input_drops; //type: uint32
+        ydk::YLeaf input_queue_drops; //type: uint32
+        ydk::YLeaf runt_packets_received; //type: uint32
+        ydk::YLeaf giant_packets_received; //type: uint32
+        ydk::YLeaf throttled_packets_received; //type: uint32
+        ydk::YLeaf parity_packets_received; //type: uint32
+        ydk::YLeaf unknown_protocol_packets_received; //type: uint32
+        ydk::YLeaf input_errors; //type: uint32
+        ydk::YLeaf crc_errors; //type: uint32
+        ydk::YLeaf input_overruns; //type: uint32
+        ydk::YLeaf framing_errors_received; //type: uint32
+        ydk::YLeaf input_ignored_packets; //type: uint32
+        ydk::YLeaf input_aborts; //type: uint32
+        ydk::YLeaf output_errors; //type: uint32
+        ydk::YLeaf output_underruns; //type: uint32
+        ydk::YLeaf output_buffer_failures; //type: uint32
+        ydk::YLeaf output_buffers_swapped_out; //type: uint32
+        ydk::YLeaf applique; //type: uint32
+        ydk::YLeaf resets; //type: uint32
+        ydk::YLeaf carrier_transitions; //type: uint32
+        ydk::YLeaf availability_flag; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf seconds_since_last_clear_counters; //type: uint32
+        ydk::YLeaf last_discontinuity_time; //type: uint32
+        ydk::YLeaf seconds_since_packet_received; //type: uint32
+        ydk::YLeaf seconds_since_packet_sent; //type: uint32
 
 }; // InfraStatistics::Interfaces::Interface::Cache::GenericCounters
 
 
-class InfraStatistics::Interfaces::Interface::Latest : public Entity
+class InfraStatistics::Interfaces::Interface::Latest : public ydk::Entity
 {
     public:
         Latest();
@@ -314,11 +333,13 @@ class InfraStatistics::Interfaces::Interface::Latest : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Protocols; //type: InfraStatistics::Interfaces::Interface::Latest::Protocols
         class InterfacesMibCounters; //type: InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters
@@ -333,7 +354,7 @@ class InfraStatistics::Interfaces::Interface::Latest : public Entity
 }; // InfraStatistics::Interfaces::Interface::Latest
 
 
-class InfraStatistics::Interfaces::Interface::Latest::Protocols : public Entity
+class InfraStatistics::Interfaces::Interface::Latest::Protocols : public ydk::Entity
 {
     public:
         Protocols();
@@ -341,11 +362,13 @@ class InfraStatistics::Interfaces::Interface::Latest::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol
 
@@ -354,7 +377,7 @@ class InfraStatistics::Interfaces::Interface::Latest::Protocols : public Entity
 }; // InfraStatistics::Interfaces::Interface::Latest::Protocols
 
 
-class InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol : public Entity
+class InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -362,28 +385,30 @@ class InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: string
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf protocol; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf input_data_rate; //type: uint64
-        YLeaf input_packet_rate; //type: uint64
-        YLeaf output_data_rate; //type: uint64
-        YLeaf output_packet_rate; //type: uint64
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf protocol; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf input_data_rate; //type: uint64
+        ydk::YLeaf input_packet_rate; //type: uint64
+        ydk::YLeaf output_data_rate; //type: uint64
+        ydk::YLeaf output_packet_rate; //type: uint64
 
 }; // InfraStatistics::Interfaces::Interface::Latest::Protocols::Protocol
 
 
-class InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters : public Entity
+class InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters : public ydk::Entity
 {
     public:
         InterfacesMibCounters();
@@ -391,53 +416,55 @@ class InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf multicast_packets_received; //type: uint64
-        YLeaf broadcast_packets_received; //type: uint64
-        YLeaf multicast_packets_sent; //type: uint64
-        YLeaf broadcast_packets_sent; //type: uint64
-        YLeaf output_drops; //type: uint32
-        YLeaf output_queue_drops; //type: uint32
-        YLeaf input_drops; //type: uint32
-        YLeaf input_queue_drops; //type: uint32
-        YLeaf runt_packets_received; //type: uint32
-        YLeaf giant_packets_received; //type: uint32
-        YLeaf throttled_packets_received; //type: uint32
-        YLeaf parity_packets_received; //type: uint32
-        YLeaf unknown_protocol_packets_received; //type: uint32
-        YLeaf input_errors; //type: uint32
-        YLeaf crc_errors; //type: uint32
-        YLeaf input_overruns; //type: uint32
-        YLeaf framing_errors_received; //type: uint32
-        YLeaf input_ignored_packets; //type: uint32
-        YLeaf input_aborts; //type: uint32
-        YLeaf output_errors; //type: uint32
-        YLeaf output_underruns; //type: uint32
-        YLeaf output_buffer_failures; //type: uint32
-        YLeaf output_buffers_swapped_out; //type: uint32
-        YLeaf applique; //type: uint32
-        YLeaf resets; //type: uint32
-        YLeaf carrier_transitions; //type: uint32
-        YLeaf availability_flag; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf seconds_since_last_clear_counters; //type: uint32
-        YLeaf last_discontinuity_time; //type: uint32
-        YLeaf seconds_since_packet_received; //type: uint32
-        YLeaf seconds_since_packet_sent; //type: uint32
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf multicast_packets_received; //type: uint64
+        ydk::YLeaf broadcast_packets_received; //type: uint64
+        ydk::YLeaf multicast_packets_sent; //type: uint64
+        ydk::YLeaf broadcast_packets_sent; //type: uint64
+        ydk::YLeaf output_drops; //type: uint32
+        ydk::YLeaf output_queue_drops; //type: uint32
+        ydk::YLeaf input_drops; //type: uint32
+        ydk::YLeaf input_queue_drops; //type: uint32
+        ydk::YLeaf runt_packets_received; //type: uint32
+        ydk::YLeaf giant_packets_received; //type: uint32
+        ydk::YLeaf throttled_packets_received; //type: uint32
+        ydk::YLeaf parity_packets_received; //type: uint32
+        ydk::YLeaf unknown_protocol_packets_received; //type: uint32
+        ydk::YLeaf input_errors; //type: uint32
+        ydk::YLeaf crc_errors; //type: uint32
+        ydk::YLeaf input_overruns; //type: uint32
+        ydk::YLeaf framing_errors_received; //type: uint32
+        ydk::YLeaf input_ignored_packets; //type: uint32
+        ydk::YLeaf input_aborts; //type: uint32
+        ydk::YLeaf output_errors; //type: uint32
+        ydk::YLeaf output_underruns; //type: uint32
+        ydk::YLeaf output_buffer_failures; //type: uint32
+        ydk::YLeaf output_buffers_swapped_out; //type: uint32
+        ydk::YLeaf applique; //type: uint32
+        ydk::YLeaf resets; //type: uint32
+        ydk::YLeaf carrier_transitions; //type: uint32
+        ydk::YLeaf availability_flag; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf seconds_since_last_clear_counters; //type: uint32
+        ydk::YLeaf last_discontinuity_time; //type: uint32
+        ydk::YLeaf seconds_since_packet_received; //type: uint32
+        ydk::YLeaf seconds_since_packet_sent; //type: uint32
 
 }; // InfraStatistics::Interfaces::Interface::Latest::InterfacesMibCounters
 
 
-class InfraStatistics::Interfaces::Interface::Latest::DataRate : public Entity
+class InfraStatistics::Interfaces::Interface::Latest::DataRate : public ydk::Entity
 {
     public:
         DataRate();
@@ -445,30 +472,32 @@ class InfraStatistics::Interfaces::Interface::Latest::DataRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf input_data_rate; //type: uint64
-        YLeaf input_packet_rate; //type: uint64
-        YLeaf output_data_rate; //type: uint64
-        YLeaf output_packet_rate; //type: uint64
-        YLeaf peak_input_data_rate; //type: uint64
-        YLeaf peak_input_packet_rate; //type: uint64
-        YLeaf peak_output_data_rate; //type: uint64
-        YLeaf peak_output_packet_rate; //type: uint64
-        YLeaf bandwidth; //type: uint32
-        YLeaf load_interval; //type: uint32
-        YLeaf output_load; //type: uint8
-        YLeaf input_load; //type: uint8
-        YLeaf reliability; //type: uint8
+        ydk::YLeaf input_data_rate; //type: uint64
+        ydk::YLeaf input_packet_rate; //type: uint64
+        ydk::YLeaf output_data_rate; //type: uint64
+        ydk::YLeaf output_packet_rate; //type: uint64
+        ydk::YLeaf peak_input_data_rate; //type: uint64
+        ydk::YLeaf peak_input_packet_rate; //type: uint64
+        ydk::YLeaf peak_output_data_rate; //type: uint64
+        ydk::YLeaf peak_output_packet_rate; //type: uint64
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf load_interval; //type: uint32
+        ydk::YLeaf output_load; //type: uint8
+        ydk::YLeaf input_load; //type: uint8
+        ydk::YLeaf reliability; //type: uint8
 
 }; // InfraStatistics::Interfaces::Interface::Latest::DataRate
 
 
-class InfraStatistics::Interfaces::Interface::Latest::GenericCounters : public Entity
+class InfraStatistics::Interfaces::Interface::Latest::GenericCounters : public ydk::Entity
 {
     public:
         GenericCounters();
@@ -476,53 +505,55 @@ class InfraStatistics::Interfaces::Interface::Latest::GenericCounters : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf multicast_packets_received; //type: uint64
-        YLeaf broadcast_packets_received; //type: uint64
-        YLeaf multicast_packets_sent; //type: uint64
-        YLeaf broadcast_packets_sent; //type: uint64
-        YLeaf output_drops; //type: uint32
-        YLeaf output_queue_drops; //type: uint32
-        YLeaf input_drops; //type: uint32
-        YLeaf input_queue_drops; //type: uint32
-        YLeaf runt_packets_received; //type: uint32
-        YLeaf giant_packets_received; //type: uint32
-        YLeaf throttled_packets_received; //type: uint32
-        YLeaf parity_packets_received; //type: uint32
-        YLeaf unknown_protocol_packets_received; //type: uint32
-        YLeaf input_errors; //type: uint32
-        YLeaf crc_errors; //type: uint32
-        YLeaf input_overruns; //type: uint32
-        YLeaf framing_errors_received; //type: uint32
-        YLeaf input_ignored_packets; //type: uint32
-        YLeaf input_aborts; //type: uint32
-        YLeaf output_errors; //type: uint32
-        YLeaf output_underruns; //type: uint32
-        YLeaf output_buffer_failures; //type: uint32
-        YLeaf output_buffers_swapped_out; //type: uint32
-        YLeaf applique; //type: uint32
-        YLeaf resets; //type: uint32
-        YLeaf carrier_transitions; //type: uint32
-        YLeaf availability_flag; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf seconds_since_last_clear_counters; //type: uint32
-        YLeaf last_discontinuity_time; //type: uint32
-        YLeaf seconds_since_packet_received; //type: uint32
-        YLeaf seconds_since_packet_sent; //type: uint32
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf multicast_packets_received; //type: uint64
+        ydk::YLeaf broadcast_packets_received; //type: uint64
+        ydk::YLeaf multicast_packets_sent; //type: uint64
+        ydk::YLeaf broadcast_packets_sent; //type: uint64
+        ydk::YLeaf output_drops; //type: uint32
+        ydk::YLeaf output_queue_drops; //type: uint32
+        ydk::YLeaf input_drops; //type: uint32
+        ydk::YLeaf input_queue_drops; //type: uint32
+        ydk::YLeaf runt_packets_received; //type: uint32
+        ydk::YLeaf giant_packets_received; //type: uint32
+        ydk::YLeaf throttled_packets_received; //type: uint32
+        ydk::YLeaf parity_packets_received; //type: uint32
+        ydk::YLeaf unknown_protocol_packets_received; //type: uint32
+        ydk::YLeaf input_errors; //type: uint32
+        ydk::YLeaf crc_errors; //type: uint32
+        ydk::YLeaf input_overruns; //type: uint32
+        ydk::YLeaf framing_errors_received; //type: uint32
+        ydk::YLeaf input_ignored_packets; //type: uint32
+        ydk::YLeaf input_aborts; //type: uint32
+        ydk::YLeaf output_errors; //type: uint32
+        ydk::YLeaf output_underruns; //type: uint32
+        ydk::YLeaf output_buffer_failures; //type: uint32
+        ydk::YLeaf output_buffers_swapped_out; //type: uint32
+        ydk::YLeaf applique; //type: uint32
+        ydk::YLeaf resets; //type: uint32
+        ydk::YLeaf carrier_transitions; //type: uint32
+        ydk::YLeaf availability_flag; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf seconds_since_last_clear_counters; //type: uint32
+        ydk::YLeaf last_discontinuity_time; //type: uint32
+        ydk::YLeaf seconds_since_packet_received; //type: uint32
+        ydk::YLeaf seconds_since_packet_sent; //type: uint32
 
 }; // InfraStatistics::Interfaces::Interface::Latest::GenericCounters
 
 
-class InfraStatistics::Interfaces::Interface::Total : public Entity
+class InfraStatistics::Interfaces::Interface::Total : public ydk::Entity
 {
     public:
         Total();
@@ -530,11 +561,13 @@ class InfraStatistics::Interfaces::Interface::Total : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Protocols; //type: InfraStatistics::Interfaces::Interface::Total::Protocols
         class InterfacesMibCounters; //type: InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters
@@ -549,7 +582,7 @@ class InfraStatistics::Interfaces::Interface::Total : public Entity
 }; // InfraStatistics::Interfaces::Interface::Total
 
 
-class InfraStatistics::Interfaces::Interface::Total::Protocols : public Entity
+class InfraStatistics::Interfaces::Interface::Total::Protocols : public ydk::Entity
 {
     public:
         Protocols();
@@ -557,11 +590,13 @@ class InfraStatistics::Interfaces::Interface::Total::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol
 
@@ -570,7 +605,7 @@ class InfraStatistics::Interfaces::Interface::Total::Protocols : public Entity
 }; // InfraStatistics::Interfaces::Interface::Total::Protocols
 
 
-class InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol : public Entity
+class InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -578,28 +613,30 @@ class InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: string
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf protocol; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf input_data_rate; //type: uint64
-        YLeaf input_packet_rate; //type: uint64
-        YLeaf output_data_rate; //type: uint64
-        YLeaf output_packet_rate; //type: uint64
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf protocol; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf input_data_rate; //type: uint64
+        ydk::YLeaf input_packet_rate; //type: uint64
+        ydk::YLeaf output_data_rate; //type: uint64
+        ydk::YLeaf output_packet_rate; //type: uint64
 
 }; // InfraStatistics::Interfaces::Interface::Total::Protocols::Protocol
 
 
-class InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters : public Entity
+class InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters : public ydk::Entity
 {
     public:
         InterfacesMibCounters();
@@ -607,53 +644,55 @@ class InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf multicast_packets_received; //type: uint64
-        YLeaf broadcast_packets_received; //type: uint64
-        YLeaf multicast_packets_sent; //type: uint64
-        YLeaf broadcast_packets_sent; //type: uint64
-        YLeaf output_drops; //type: uint32
-        YLeaf output_queue_drops; //type: uint32
-        YLeaf input_drops; //type: uint32
-        YLeaf input_queue_drops; //type: uint32
-        YLeaf runt_packets_received; //type: uint32
-        YLeaf giant_packets_received; //type: uint32
-        YLeaf throttled_packets_received; //type: uint32
-        YLeaf parity_packets_received; //type: uint32
-        YLeaf unknown_protocol_packets_received; //type: uint32
-        YLeaf input_errors; //type: uint32
-        YLeaf crc_errors; //type: uint32
-        YLeaf input_overruns; //type: uint32
-        YLeaf framing_errors_received; //type: uint32
-        YLeaf input_ignored_packets; //type: uint32
-        YLeaf input_aborts; //type: uint32
-        YLeaf output_errors; //type: uint32
-        YLeaf output_underruns; //type: uint32
-        YLeaf output_buffer_failures; //type: uint32
-        YLeaf output_buffers_swapped_out; //type: uint32
-        YLeaf applique; //type: uint32
-        YLeaf resets; //type: uint32
-        YLeaf carrier_transitions; //type: uint32
-        YLeaf availability_flag; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf seconds_since_last_clear_counters; //type: uint32
-        YLeaf last_discontinuity_time; //type: uint32
-        YLeaf seconds_since_packet_received; //type: uint32
-        YLeaf seconds_since_packet_sent; //type: uint32
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf multicast_packets_received; //type: uint64
+        ydk::YLeaf broadcast_packets_received; //type: uint64
+        ydk::YLeaf multicast_packets_sent; //type: uint64
+        ydk::YLeaf broadcast_packets_sent; //type: uint64
+        ydk::YLeaf output_drops; //type: uint32
+        ydk::YLeaf output_queue_drops; //type: uint32
+        ydk::YLeaf input_drops; //type: uint32
+        ydk::YLeaf input_queue_drops; //type: uint32
+        ydk::YLeaf runt_packets_received; //type: uint32
+        ydk::YLeaf giant_packets_received; //type: uint32
+        ydk::YLeaf throttled_packets_received; //type: uint32
+        ydk::YLeaf parity_packets_received; //type: uint32
+        ydk::YLeaf unknown_protocol_packets_received; //type: uint32
+        ydk::YLeaf input_errors; //type: uint32
+        ydk::YLeaf crc_errors; //type: uint32
+        ydk::YLeaf input_overruns; //type: uint32
+        ydk::YLeaf framing_errors_received; //type: uint32
+        ydk::YLeaf input_ignored_packets; //type: uint32
+        ydk::YLeaf input_aborts; //type: uint32
+        ydk::YLeaf output_errors; //type: uint32
+        ydk::YLeaf output_underruns; //type: uint32
+        ydk::YLeaf output_buffer_failures; //type: uint32
+        ydk::YLeaf output_buffers_swapped_out; //type: uint32
+        ydk::YLeaf applique; //type: uint32
+        ydk::YLeaf resets; //type: uint32
+        ydk::YLeaf carrier_transitions; //type: uint32
+        ydk::YLeaf availability_flag; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf seconds_since_last_clear_counters; //type: uint32
+        ydk::YLeaf last_discontinuity_time; //type: uint32
+        ydk::YLeaf seconds_since_packet_received; //type: uint32
+        ydk::YLeaf seconds_since_packet_sent; //type: uint32
 
 }; // InfraStatistics::Interfaces::Interface::Total::InterfacesMibCounters
 
 
-class InfraStatistics::Interfaces::Interface::Total::DataRate : public Entity
+class InfraStatistics::Interfaces::Interface::Total::DataRate : public ydk::Entity
 {
     public:
         DataRate();
@@ -661,30 +700,32 @@ class InfraStatistics::Interfaces::Interface::Total::DataRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf input_data_rate; //type: uint64
-        YLeaf input_packet_rate; //type: uint64
-        YLeaf output_data_rate; //type: uint64
-        YLeaf output_packet_rate; //type: uint64
-        YLeaf peak_input_data_rate; //type: uint64
-        YLeaf peak_input_packet_rate; //type: uint64
-        YLeaf peak_output_data_rate; //type: uint64
-        YLeaf peak_output_packet_rate; //type: uint64
-        YLeaf bandwidth; //type: uint32
-        YLeaf load_interval; //type: uint32
-        YLeaf output_load; //type: uint8
-        YLeaf input_load; //type: uint8
-        YLeaf reliability; //type: uint8
+        ydk::YLeaf input_data_rate; //type: uint64
+        ydk::YLeaf input_packet_rate; //type: uint64
+        ydk::YLeaf output_data_rate; //type: uint64
+        ydk::YLeaf output_packet_rate; //type: uint64
+        ydk::YLeaf peak_input_data_rate; //type: uint64
+        ydk::YLeaf peak_input_packet_rate; //type: uint64
+        ydk::YLeaf peak_output_data_rate; //type: uint64
+        ydk::YLeaf peak_output_packet_rate; //type: uint64
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf load_interval; //type: uint32
+        ydk::YLeaf output_load; //type: uint8
+        ydk::YLeaf input_load; //type: uint8
+        ydk::YLeaf reliability; //type: uint8
 
 }; // InfraStatistics::Interfaces::Interface::Total::DataRate
 
 
-class InfraStatistics::Interfaces::Interface::Total::GenericCounters : public Entity
+class InfraStatistics::Interfaces::Interface::Total::GenericCounters : public ydk::Entity
 {
     public:
         GenericCounters();
@@ -692,53 +733,55 @@ class InfraStatistics::Interfaces::Interface::Total::GenericCounters : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf multicast_packets_received; //type: uint64
-        YLeaf broadcast_packets_received; //type: uint64
-        YLeaf multicast_packets_sent; //type: uint64
-        YLeaf broadcast_packets_sent; //type: uint64
-        YLeaf output_drops; //type: uint32
-        YLeaf output_queue_drops; //type: uint32
-        YLeaf input_drops; //type: uint32
-        YLeaf input_queue_drops; //type: uint32
-        YLeaf runt_packets_received; //type: uint32
-        YLeaf giant_packets_received; //type: uint32
-        YLeaf throttled_packets_received; //type: uint32
-        YLeaf parity_packets_received; //type: uint32
-        YLeaf unknown_protocol_packets_received; //type: uint32
-        YLeaf input_errors; //type: uint32
-        YLeaf crc_errors; //type: uint32
-        YLeaf input_overruns; //type: uint32
-        YLeaf framing_errors_received; //type: uint32
-        YLeaf input_ignored_packets; //type: uint32
-        YLeaf input_aborts; //type: uint32
-        YLeaf output_errors; //type: uint32
-        YLeaf output_underruns; //type: uint32
-        YLeaf output_buffer_failures; //type: uint32
-        YLeaf output_buffers_swapped_out; //type: uint32
-        YLeaf applique; //type: uint32
-        YLeaf resets; //type: uint32
-        YLeaf carrier_transitions; //type: uint32
-        YLeaf availability_flag; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf seconds_since_last_clear_counters; //type: uint32
-        YLeaf last_discontinuity_time; //type: uint32
-        YLeaf seconds_since_packet_received; //type: uint32
-        YLeaf seconds_since_packet_sent; //type: uint32
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf multicast_packets_received; //type: uint64
+        ydk::YLeaf broadcast_packets_received; //type: uint64
+        ydk::YLeaf multicast_packets_sent; //type: uint64
+        ydk::YLeaf broadcast_packets_sent; //type: uint64
+        ydk::YLeaf output_drops; //type: uint32
+        ydk::YLeaf output_queue_drops; //type: uint32
+        ydk::YLeaf input_drops; //type: uint32
+        ydk::YLeaf input_queue_drops; //type: uint32
+        ydk::YLeaf runt_packets_received; //type: uint32
+        ydk::YLeaf giant_packets_received; //type: uint32
+        ydk::YLeaf throttled_packets_received; //type: uint32
+        ydk::YLeaf parity_packets_received; //type: uint32
+        ydk::YLeaf unknown_protocol_packets_received; //type: uint32
+        ydk::YLeaf input_errors; //type: uint32
+        ydk::YLeaf crc_errors; //type: uint32
+        ydk::YLeaf input_overruns; //type: uint32
+        ydk::YLeaf framing_errors_received; //type: uint32
+        ydk::YLeaf input_ignored_packets; //type: uint32
+        ydk::YLeaf input_aborts; //type: uint32
+        ydk::YLeaf output_errors; //type: uint32
+        ydk::YLeaf output_underruns; //type: uint32
+        ydk::YLeaf output_buffer_failures; //type: uint32
+        ydk::YLeaf output_buffers_swapped_out; //type: uint32
+        ydk::YLeaf applique; //type: uint32
+        ydk::YLeaf resets; //type: uint32
+        ydk::YLeaf carrier_transitions; //type: uint32
+        ydk::YLeaf availability_flag; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf seconds_since_last_clear_counters; //type: uint32
+        ydk::YLeaf last_discontinuity_time; //type: uint32
+        ydk::YLeaf seconds_since_packet_received; //type: uint32
+        ydk::YLeaf seconds_since_packet_sent; //type: uint32
 
 }; // InfraStatistics::Interfaces::Interface::Total::GenericCounters
 
 
-class InfraStatistics::Interfaces::Interface::Protocols : public Entity
+class InfraStatistics::Interfaces::Interface::Protocols : public ydk::Entity
 {
     public:
         Protocols();
@@ -746,11 +789,13 @@ class InfraStatistics::Interfaces::Interface::Protocols : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Protocol; //type: InfraStatistics::Interfaces::Interface::Protocols::Protocol
 
@@ -759,7 +804,7 @@ class InfraStatistics::Interfaces::Interface::Protocols : public Entity
 }; // InfraStatistics::Interfaces::Interface::Protocols
 
 
-class InfraStatistics::Interfaces::Interface::Protocols::Protocol : public Entity
+class InfraStatistics::Interfaces::Interface::Protocols::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -767,28 +812,30 @@ class InfraStatistics::Interfaces::Interface::Protocols::Protocol : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: string
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf protocol; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf input_data_rate; //type: uint64
-        YLeaf input_packet_rate; //type: uint64
-        YLeaf output_data_rate; //type: uint64
-        YLeaf output_packet_rate; //type: uint64
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf protocol; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf input_data_rate; //type: uint64
+        ydk::YLeaf input_packet_rate; //type: uint64
+        ydk::YLeaf output_data_rate; //type: uint64
+        ydk::YLeaf output_packet_rate; //type: uint64
 
 }; // InfraStatistics::Interfaces::Interface::Protocols::Protocol
 
 
-class InfraStatistics::Interfaces::Interface::InterfacesMibCounters : public Entity
+class InfraStatistics::Interfaces::Interface::InterfacesMibCounters : public ydk::Entity
 {
     public:
         InterfacesMibCounters();
@@ -796,53 +843,55 @@ class InfraStatistics::Interfaces::Interface::InterfacesMibCounters : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf multicast_packets_received; //type: uint64
-        YLeaf broadcast_packets_received; //type: uint64
-        YLeaf multicast_packets_sent; //type: uint64
-        YLeaf broadcast_packets_sent; //type: uint64
-        YLeaf output_drops; //type: uint32
-        YLeaf output_queue_drops; //type: uint32
-        YLeaf input_drops; //type: uint32
-        YLeaf input_queue_drops; //type: uint32
-        YLeaf runt_packets_received; //type: uint32
-        YLeaf giant_packets_received; //type: uint32
-        YLeaf throttled_packets_received; //type: uint32
-        YLeaf parity_packets_received; //type: uint32
-        YLeaf unknown_protocol_packets_received; //type: uint32
-        YLeaf input_errors; //type: uint32
-        YLeaf crc_errors; //type: uint32
-        YLeaf input_overruns; //type: uint32
-        YLeaf framing_errors_received; //type: uint32
-        YLeaf input_ignored_packets; //type: uint32
-        YLeaf input_aborts; //type: uint32
-        YLeaf output_errors; //type: uint32
-        YLeaf output_underruns; //type: uint32
-        YLeaf output_buffer_failures; //type: uint32
-        YLeaf output_buffers_swapped_out; //type: uint32
-        YLeaf applique; //type: uint32
-        YLeaf resets; //type: uint32
-        YLeaf carrier_transitions; //type: uint32
-        YLeaf availability_flag; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf seconds_since_last_clear_counters; //type: uint32
-        YLeaf last_discontinuity_time; //type: uint32
-        YLeaf seconds_since_packet_received; //type: uint32
-        YLeaf seconds_since_packet_sent; //type: uint32
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf multicast_packets_received; //type: uint64
+        ydk::YLeaf broadcast_packets_received; //type: uint64
+        ydk::YLeaf multicast_packets_sent; //type: uint64
+        ydk::YLeaf broadcast_packets_sent; //type: uint64
+        ydk::YLeaf output_drops; //type: uint32
+        ydk::YLeaf output_queue_drops; //type: uint32
+        ydk::YLeaf input_drops; //type: uint32
+        ydk::YLeaf input_queue_drops; //type: uint32
+        ydk::YLeaf runt_packets_received; //type: uint32
+        ydk::YLeaf giant_packets_received; //type: uint32
+        ydk::YLeaf throttled_packets_received; //type: uint32
+        ydk::YLeaf parity_packets_received; //type: uint32
+        ydk::YLeaf unknown_protocol_packets_received; //type: uint32
+        ydk::YLeaf input_errors; //type: uint32
+        ydk::YLeaf crc_errors; //type: uint32
+        ydk::YLeaf input_overruns; //type: uint32
+        ydk::YLeaf framing_errors_received; //type: uint32
+        ydk::YLeaf input_ignored_packets; //type: uint32
+        ydk::YLeaf input_aborts; //type: uint32
+        ydk::YLeaf output_errors; //type: uint32
+        ydk::YLeaf output_underruns; //type: uint32
+        ydk::YLeaf output_buffer_failures; //type: uint32
+        ydk::YLeaf output_buffers_swapped_out; //type: uint32
+        ydk::YLeaf applique; //type: uint32
+        ydk::YLeaf resets; //type: uint32
+        ydk::YLeaf carrier_transitions; //type: uint32
+        ydk::YLeaf availability_flag; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf seconds_since_last_clear_counters; //type: uint32
+        ydk::YLeaf last_discontinuity_time; //type: uint32
+        ydk::YLeaf seconds_since_packet_received; //type: uint32
+        ydk::YLeaf seconds_since_packet_sent; //type: uint32
 
 }; // InfraStatistics::Interfaces::Interface::InterfacesMibCounters
 
 
-class InfraStatistics::Interfaces::Interface::DataRate : public Entity
+class InfraStatistics::Interfaces::Interface::DataRate : public ydk::Entity
 {
     public:
         DataRate();
@@ -850,30 +899,32 @@ class InfraStatistics::Interfaces::Interface::DataRate : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf input_data_rate; //type: uint64
-        YLeaf input_packet_rate; //type: uint64
-        YLeaf output_data_rate; //type: uint64
-        YLeaf output_packet_rate; //type: uint64
-        YLeaf peak_input_data_rate; //type: uint64
-        YLeaf peak_input_packet_rate; //type: uint64
-        YLeaf peak_output_data_rate; //type: uint64
-        YLeaf peak_output_packet_rate; //type: uint64
-        YLeaf bandwidth; //type: uint32
-        YLeaf load_interval; //type: uint32
-        YLeaf output_load; //type: uint8
-        YLeaf input_load; //type: uint8
-        YLeaf reliability; //type: uint8
+        ydk::YLeaf input_data_rate; //type: uint64
+        ydk::YLeaf input_packet_rate; //type: uint64
+        ydk::YLeaf output_data_rate; //type: uint64
+        ydk::YLeaf output_packet_rate; //type: uint64
+        ydk::YLeaf peak_input_data_rate; //type: uint64
+        ydk::YLeaf peak_input_packet_rate; //type: uint64
+        ydk::YLeaf peak_output_data_rate; //type: uint64
+        ydk::YLeaf peak_output_packet_rate; //type: uint64
+        ydk::YLeaf bandwidth; //type: uint32
+        ydk::YLeaf load_interval; //type: uint32
+        ydk::YLeaf output_load; //type: uint8
+        ydk::YLeaf input_load; //type: uint8
+        ydk::YLeaf reliability; //type: uint8
 
 }; // InfraStatistics::Interfaces::Interface::DataRate
 
 
-class InfraStatistics::Interfaces::Interface::GenericCounters : public Entity
+class InfraStatistics::Interfaces::Interface::GenericCounters : public ydk::Entity
 {
     public:
         GenericCounters();
@@ -881,48 +932,50 @@ class InfraStatistics::Interfaces::Interface::GenericCounters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf packets_received; //type: uint64
-        YLeaf bytes_received; //type: uint64
-        YLeaf packets_sent; //type: uint64
-        YLeaf bytes_sent; //type: uint64
-        YLeaf multicast_packets_received; //type: uint64
-        YLeaf broadcast_packets_received; //type: uint64
-        YLeaf multicast_packets_sent; //type: uint64
-        YLeaf broadcast_packets_sent; //type: uint64
-        YLeaf output_drops; //type: uint32
-        YLeaf output_queue_drops; //type: uint32
-        YLeaf input_drops; //type: uint32
-        YLeaf input_queue_drops; //type: uint32
-        YLeaf runt_packets_received; //type: uint32
-        YLeaf giant_packets_received; //type: uint32
-        YLeaf throttled_packets_received; //type: uint32
-        YLeaf parity_packets_received; //type: uint32
-        YLeaf unknown_protocol_packets_received; //type: uint32
-        YLeaf input_errors; //type: uint32
-        YLeaf crc_errors; //type: uint32
-        YLeaf input_overruns; //type: uint32
-        YLeaf framing_errors_received; //type: uint32
-        YLeaf input_ignored_packets; //type: uint32
-        YLeaf input_aborts; //type: uint32
-        YLeaf output_errors; //type: uint32
-        YLeaf output_underruns; //type: uint32
-        YLeaf output_buffer_failures; //type: uint32
-        YLeaf output_buffers_swapped_out; //type: uint32
-        YLeaf applique; //type: uint32
-        YLeaf resets; //type: uint32
-        YLeaf carrier_transitions; //type: uint32
-        YLeaf availability_flag; //type: uint32
-        YLeaf last_data_time; //type: uint32
-        YLeaf seconds_since_last_clear_counters; //type: uint32
-        YLeaf last_discontinuity_time; //type: uint32
-        YLeaf seconds_since_packet_received; //type: uint32
-        YLeaf seconds_since_packet_sent; //type: uint32
+        ydk::YLeaf packets_received; //type: uint64
+        ydk::YLeaf bytes_received; //type: uint64
+        ydk::YLeaf packets_sent; //type: uint64
+        ydk::YLeaf bytes_sent; //type: uint64
+        ydk::YLeaf multicast_packets_received; //type: uint64
+        ydk::YLeaf broadcast_packets_received; //type: uint64
+        ydk::YLeaf multicast_packets_sent; //type: uint64
+        ydk::YLeaf broadcast_packets_sent; //type: uint64
+        ydk::YLeaf output_drops; //type: uint32
+        ydk::YLeaf output_queue_drops; //type: uint32
+        ydk::YLeaf input_drops; //type: uint32
+        ydk::YLeaf input_queue_drops; //type: uint32
+        ydk::YLeaf runt_packets_received; //type: uint32
+        ydk::YLeaf giant_packets_received; //type: uint32
+        ydk::YLeaf throttled_packets_received; //type: uint32
+        ydk::YLeaf parity_packets_received; //type: uint32
+        ydk::YLeaf unknown_protocol_packets_received; //type: uint32
+        ydk::YLeaf input_errors; //type: uint32
+        ydk::YLeaf crc_errors; //type: uint32
+        ydk::YLeaf input_overruns; //type: uint32
+        ydk::YLeaf framing_errors_received; //type: uint32
+        ydk::YLeaf input_ignored_packets; //type: uint32
+        ydk::YLeaf input_aborts; //type: uint32
+        ydk::YLeaf output_errors; //type: uint32
+        ydk::YLeaf output_underruns; //type: uint32
+        ydk::YLeaf output_buffer_failures; //type: uint32
+        ydk::YLeaf output_buffers_swapped_out; //type: uint32
+        ydk::YLeaf applique; //type: uint32
+        ydk::YLeaf resets; //type: uint32
+        ydk::YLeaf carrier_transitions; //type: uint32
+        ydk::YLeaf availability_flag; //type: uint32
+        ydk::YLeaf last_data_time; //type: uint32
+        ydk::YLeaf seconds_since_last_clear_counters; //type: uint32
+        ydk::YLeaf last_discontinuity_time; //type: uint32
+        ydk::YLeaf seconds_since_packet_received; //type: uint32
+        ydk::YLeaf seconds_since_packet_sent; //type: uint32
 
 }; // InfraStatistics::Interfaces::Interface::GenericCounters
 

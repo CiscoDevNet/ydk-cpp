@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ospfv3_oper {
 
-class Ospfv3 : public Entity
+class Ospfv3 : public ydk::Entity
 {
     public:
         Ospfv3();
@@ -18,15 +18,18 @@ class Ospfv3 : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Processes; //type: Ospfv3::Processes
 
@@ -35,7 +38,7 @@ class Ospfv3 : public Entity
 }; // Ospfv3
 
 
-class Ospfv3::Processes : public Entity
+class Ospfv3::Processes : public ydk::Entity
 {
     public:
         Processes();
@@ -43,11 +46,13 @@ class Ospfv3::Processes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Process; //type: Ospfv3::Processes::Process
 
@@ -56,7 +61,7 @@ class Ospfv3::Processes : public Entity
 }; // Ospfv3::Processes
 
 
-class Ospfv3::Processes::Process : public Entity
+class Ospfv3::Processes::Process : public ydk::Entity
 {
     public:
         Process();
@@ -64,13 +69,15 @@ class Ospfv3::Processes::Process : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf process_name; //type: string
+        ydk::YLeaf process_name; //type: string
         class Vrfs; //type: Ospfv3::Processes::Process::Vrfs
         class Statistics; //type: Ospfv3::Processes::Process::Statistics
         class DefaultVrf; //type: Ospfv3::Processes::Process::DefaultVrf
@@ -82,7 +89,7 @@ class Ospfv3::Processes::Process : public Entity
 }; // Ospfv3::Processes::Process
 
 
-class Ospfv3::Processes::Process::Vrfs : public Entity
+class Ospfv3::Processes::Process::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -90,11 +97,13 @@ class Ospfv3::Processes::Process::Vrfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Vrf; //type: Ospfv3::Processes::Process::Vrfs::Vrf
 
@@ -103,7 +112,7 @@ class Ospfv3::Processes::Process::Vrfs : public Entity
 }; // Ospfv3::Processes::Process::Vrfs
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -111,13 +120,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf vrf_name; //type: string
+        ydk::YLeaf vrf_name; //type: string
         class SummaryPrefixes; //type: Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes
         class BorderRouters; //type: Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters
         class ShamLinkTable; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable
@@ -173,7 +184,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes : public ydk::Entity
 {
     public:
         SummaryPrefixes();
@@ -181,11 +192,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SummaryPrefix; //type: Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix
 
@@ -194,7 +207,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix : public ydk::Entity
 {
     public:
         SummaryPrefix();
@@ -202,22 +215,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf prefix_metric; //type: uint32
-        YLeaf prefix_metric_type; //type: Ospfv3DefaultMetricEnum
-        YLeaf tag; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix_metric; //type: uint32
+        ydk::YLeaf prefix_metric_type; //type: Ospfv3DefaultMetric
+        ydk::YLeaf tag; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefix
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters : public ydk::Entity
 {
     public:
         BorderRouters();
@@ -225,11 +240,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BorderRouter; //type: Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter
 
@@ -238,7 +255,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter : public ydk::Entity
 {
     public:
         BorderRouter();
@@ -246,13 +263,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf border_router_id; //type: string
+        ydk::YLeaf border_router_id; //type: string
         class BorderRouterPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath> > border_router_path;
@@ -260,7 +279,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter : publi
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath : public ydk::Entity
 {
     public:
         BorderRouterPath();
@@ -268,24 +287,26 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::Border
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_intra_area_router; //type: boolean
-        YLeaf border_router_route_metric; //type: uint32
-        YLeaf border_router_next_hop; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf border_router_type; //type: Ospfv3BorderRouteEnum
-        YLeaf border_router_area_id; //type: string
-        YLeaf spf_version; //type: uint32
+        ydk::YLeaf is_intra_area_router; //type: boolean
+        ydk::YLeaf border_router_route_metric; //type: uint32
+        ydk::YLeaf border_router_next_hop; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf border_router_type; //type: Ospfv3BorderRoute
+        ydk::YLeaf border_router_area_id; //type: string
+        ydk::YLeaf spf_version; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::BorderRouterPath
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable : public ydk::Entity
 {
     public:
         ShamLinkTable();
@@ -293,40 +314,42 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sham_link_neighbor_id; //type: string
-        YLeaf sham_link_source_address; //type: string
-        YLeaf sham_link_dest_address; //type: string
-        YLeaf sham_link_state; //type: Ospfv3InterfaceStateEnum
-        YLeaf sham_link_demand_circuit; //type: boolean
-        YLeaf sham_link_dc_bitless_lsa; //type: uint32
-        YLeaf sham_link_ifindex; //type: uint32
-        YLeaf sham_link_area; //type: string
-        YLeaf sham_link_cost; //type: uint16
-        YLeaf sham_link_transmission_delay; //type: uint16
-        YLeaf sham_link_hello_interval; //type: uint32
-        YLeaf sham_link_dead_interval; //type: uint32
-        YLeaf sham_link_wait_interval; //type: uint32
-        YLeaf sham_link_retransmission_interval; //type: uint32
-        YLeaf sham_link_next_hello; //type: uint32
-        YLeaf sham_link_passive; //type: boolean
-        YLeaf is_sham_link_ip_security_required; //type: boolean
-        YLeaf is_sham_link_ip_security_active; //type: boolean
-        YLeaf is_sham_link_authentication_enabled; //type: boolean
-        YLeaf virtual_link_authentication_spi; //type: uint32
-        YLeaf sham_link_authentication_transmit; //type: uint32
-        YLeaf is_sham_link_encryption_enabled; //type: boolean
-        YLeaf sham_link_encryption_spi; //type: uint32
-        YLeaf sham_link_encryption_transmitted; //type: uint32
-        YLeaf sham_link_encrypted_authentication_transmitted; //type: uint32
-        YLeaf sham_link_gr_enabled; //type: boolean
-        YLeaf sham_link_gr; //type: boolean
-        YLeaf sham_link_last_gr; //type: uint32
+        ydk::YLeaf sham_link_neighbor_id; //type: string
+        ydk::YLeaf sham_link_source_address; //type: string
+        ydk::YLeaf sham_link_dest_address; //type: string
+        ydk::YLeaf sham_link_state; //type: Ospfv3InterfaceState
+        ydk::YLeaf sham_link_demand_circuit; //type: boolean
+        ydk::YLeaf sham_link_dc_bitless_lsa; //type: uint32
+        ydk::YLeaf sham_link_ifindex; //type: uint32
+        ydk::YLeaf sham_link_area; //type: string
+        ydk::YLeaf sham_link_cost; //type: uint16
+        ydk::YLeaf sham_link_transmission_delay; //type: uint16
+        ydk::YLeaf sham_link_hello_interval; //type: uint32
+        ydk::YLeaf sham_link_dead_interval; //type: uint32
+        ydk::YLeaf sham_link_wait_interval; //type: uint32
+        ydk::YLeaf sham_link_retransmission_interval; //type: uint32
+        ydk::YLeaf sham_link_next_hello; //type: uint32
+        ydk::YLeaf sham_link_passive; //type: boolean
+        ydk::YLeaf is_sham_link_ip_security_required; //type: boolean
+        ydk::YLeaf is_sham_link_ip_security_active; //type: boolean
+        ydk::YLeaf is_sham_link_authentication_enabled; //type: boolean
+        ydk::YLeaf virtual_link_authentication_spi; //type: uint32
+        ydk::YLeaf sham_link_authentication_transmit; //type: uint32
+        ydk::YLeaf is_sham_link_encryption_enabled; //type: boolean
+        ydk::YLeaf sham_link_encryption_spi; //type: uint32
+        ydk::YLeaf sham_link_encryption_transmitted; //type: uint32
+        ydk::YLeaf sham_link_encrypted_authentication_transmitted; //type: uint32
+        ydk::YLeaf sham_link_gr_enabled; //type: boolean
+        ydk::YLeaf sham_link_gr; //type: boolean
+        ydk::YLeaf sham_link_last_gr; //type: uint32
         class ShamLinkNeighbor; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor> sham_link_neighbor;
@@ -334,7 +357,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor : public ydk::Entity
 {
     public:
         ShamLinkNeighbor();
@@ -342,14 +365,16 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sham_link_suppress_hello; //type: boolean
-        YLeaf sham_link_state; //type: Ospfv3NeighborStateEnum
+        ydk::YLeaf sham_link_suppress_hello; //type: boolean
+        ydk::YLeaf sham_link_state; //type: Ospfv3NeighborState
         class ShamLinkRetransmission; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission> sham_link_retransmission;
@@ -357,7 +382,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor : p
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission : public ydk::Entity
 {
     public:
         ShamLinkRetransmission();
@@ -365,40 +390,42 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::Sh
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf database_descriptor_retransmissions; //type: uint32
-        YLeaf area_flood_index; //type: uint32
-        YLeaf as_flood_index; //type: uint32
-        YLeaf link_flood_index; //type: uint32
-        YLeaf neighbor_retransmissions; //type: uint32
-        YLeaf retransmissions; //type: uint32
-        YLeaf area_first_flood; //type: uint32
-        YLeaf area_first_flood_index; //type: uint32
-        YLeaf as_first_flood; //type: uint32
-        YLeaf as_first_flood_index; //type: uint32
-        YLeaf link_first_flood; //type: uint32
-        YLeaf link_first_flood_index; //type: uint32
-        YLeaf area_next_flood; //type: uint32
-        YLeaf area_next_flood_index; //type: uint32
-        YLeaf as_next_flood; //type: uint32
-        YLeaf as_next_flood_index; //type: uint32
-        YLeaf link_next_flood; //type: uint32
-        YLeaf link_next_flood_index; //type: uint32
-        YLeaf last_retransmission_length; //type: uint32
-        YLeaf maximum_retransmission_length; //type: uint32
-        YLeaf last_retransmission_time; //type: uint32
-        YLeaf maximum_retransmission_time; //type: uint32
-        YLeaf lsa_retransmission_timer; //type: uint32
+        ydk::YLeaf database_descriptor_retransmissions; //type: uint32
+        ydk::YLeaf area_flood_index; //type: uint32
+        ydk::YLeaf as_flood_index; //type: uint32
+        ydk::YLeaf link_flood_index; //type: uint32
+        ydk::YLeaf neighbor_retransmissions; //type: uint32
+        ydk::YLeaf retransmissions; //type: uint32
+        ydk::YLeaf area_first_flood; //type: uint32
+        ydk::YLeaf area_first_flood_index; //type: uint32
+        ydk::YLeaf as_first_flood; //type: uint32
+        ydk::YLeaf as_first_flood_index; //type: uint32
+        ydk::YLeaf link_first_flood; //type: uint32
+        ydk::YLeaf link_first_flood_index; //type: uint32
+        ydk::YLeaf area_next_flood; //type: uint32
+        ydk::YLeaf area_next_flood_index; //type: uint32
+        ydk::YLeaf as_next_flood; //type: uint32
+        ydk::YLeaf as_next_flood_index; //type: uint32
+        ydk::YLeaf link_next_flood; //type: uint32
+        ydk::YLeaf link_next_flood_index; //type: uint32
+        ydk::YLeaf last_retransmission_length; //type: uint32
+        ydk::YLeaf maximum_retransmission_length; //type: uint32
+        ydk::YLeaf last_retransmission_time; //type: uint32
+        ydk::YLeaf maximum_retransmission_time; //type: uint32
+        ydk::YLeaf lsa_retransmission_timer; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ShamLinkTable::ShamLinkNeighbor::ShamLinkRetransmission
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations : public ydk::Entity
 {
     public:
         AreaInformations();
@@ -406,11 +433,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class AreaInformation; //type: Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation
 
@@ -419,7 +448,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation : public ydk::Entity
 {
     public:
         AreaInformation();
@@ -427,33 +456,35 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf area_id; //type: int32
-        YLeaf is_backbone_area_active; //type: boolean
-        YLeaf area_interfaces; //type: uint16
-        YLeaf is_area_stubbed; //type: boolean
-        YLeaf is_area_total_stubbed; //type: boolean
-        YLeaf stub_default_cost; //type: uint16
-        YLeaf is_area_nssa; //type: boolean
-        YLeaf nssa_no_redistribution; //type: boolean
-        YLeaf is_nssa_translated; //type: boolean
-        YLeaf is_nssa_default; //type: boolean
-        YLeaf is_rrr_enabled; //type: boolean
-        YLeaf sp_fs; //type: uint32
-        YLeaf area_opaque_lsas; //type: uint32
-        YLeaf area_opaque_lsa_checksum; //type: uint32
-        YLeaf area_dc_bitless_ls_as; //type: uint32
-        YLeaf indication_ls_as; //type: uint32
-        YLeaf do_not_age_ls_as; //type: uint32
-        YLeaf flood_list_length; //type: uint32
-        YLeaf area_lfa_interface_count; //type: uint32
-        YLeaf area_per_prefix_lfa_interface_count; //type: uint32
-        YLeaf area_lfa_revision; //type: uint32
+        ydk::YLeaf area_id; //type: int32
+        ydk::YLeaf is_backbone_area_active; //type: boolean
+        ydk::YLeaf area_interfaces; //type: uint16
+        ydk::YLeaf is_area_stubbed; //type: boolean
+        ydk::YLeaf is_area_total_stubbed; //type: boolean
+        ydk::YLeaf stub_default_cost; //type: uint16
+        ydk::YLeaf is_area_nssa; //type: boolean
+        ydk::YLeaf nssa_no_redistribution; //type: boolean
+        ydk::YLeaf is_nssa_translated; //type: boolean
+        ydk::YLeaf is_nssa_default; //type: boolean
+        ydk::YLeaf is_rrr_enabled; //type: boolean
+        ydk::YLeaf sp_fs; //type: uint32
+        ydk::YLeaf area_opaque_lsas; //type: uint32
+        ydk::YLeaf area_opaque_lsa_checksum; //type: uint32
+        ydk::YLeaf area_dc_bitless_ls_as; //type: uint32
+        ydk::YLeaf indication_ls_as; //type: uint32
+        ydk::YLeaf do_not_age_ls_as; //type: uint32
+        ydk::YLeaf flood_list_length; //type: uint32
+        ydk::YLeaf area_lfa_interface_count; //type: uint32
+        ydk::YLeaf area_per_prefix_lfa_interface_count; //type: uint32
+        ydk::YLeaf area_lfa_revision; //type: uint32
         class AreaRange; //type: Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange> > area_range;
@@ -461,7 +492,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation :
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange : public ydk::Entity
 {
     public:
         AreaRange();
@@ -469,22 +500,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf range_prefix; //type: string
-        YLeaf range_prefix_length; //type: uint32
-        YLeaf net_cost; //type: uint32
-        YLeaf status; //type: Ospfv3AreaRangeStatusEnum
-        YLeaf is_cost_configured; //type: boolean
+        ydk::YLeaf range_prefix; //type: string
+        ydk::YLeaf range_prefix_length; //type: uint32
+        ydk::YLeaf net_cost; //type: uint32
+        ydk::YLeaf status; //type: Ospfv3AreaRangeStatus
+        ydk::YLeaf is_cost_configured; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInformation::AreaRange
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable : public ydk::Entity
 {
     public:
         DatabaseTable();
@@ -492,11 +525,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class LsaTable; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable
         class LsaInternalTable; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable
@@ -507,7 +542,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable : public ydk::Entity
 {
     public:
         LsaTable();
@@ -515,11 +550,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Lsa; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa
 
@@ -528,7 +565,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable : public En
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa : public ydk::Entity
 {
     public:
         Lsa();
@@ -536,17 +573,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf area_id; //type: int32
-        YLeaf ls_type; //type: Ospfv3LsaEnum
-        YLeaf advertising_router; //type: string
-        YLeaf ls_id; //type: int32
-        YLeaf interface_name; //type: string
+        ydk::YLeaf area_id; //type: int32
+        ydk::YLeaf ls_type; //type: Ospfv3Lsa
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf ls_id; //type: int32
+        ydk::YLeaf interface_name; //type: string
         class LsaInfo; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo> lsa_info;
@@ -554,7 +593,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa : publ
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo : public ydk::Entity
 {
     public:
         LsaInfo();
@@ -562,13 +601,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_info_type; //type: Ospfv3LsaInfoTypesEnum
+        ydk::YLeaf lsa_info_type; //type: Ospfv3LsaInfoTypes
         class LsaSummaryInfo; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo
         class RouterLsaType; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType
         class NetworkLsaType; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType
@@ -602,7 +643,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo : public ydk::Entity
 {
     public:
         LsaSummaryInfo();
@@ -610,24 +651,26 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf links; //type: uint16
-        YLeaf router_la_bits; //type: uint8
-        YLeaf reference_type; //type: uint16
-        YLeaf reference_lsa_id; //type: uint32
-        YLeaf lsa_router_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf links; //type: uint16
+        ydk::YLeaf router_la_bits; //type: uint8
+        ydk::YLeaf reference_type; //type: uint16
+        ydk::YLeaf reference_lsa_id; //type: uint32
+        ydk::YLeaf lsa_router_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail
 
@@ -637,7 +680,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -645,26 +688,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -672,36 +717,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType : public ydk::Entity
 {
     public:
         RouterLsaType();
@@ -709,13 +756,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_la_bits; //type: uint8
+        ydk::YLeaf router_la_bits; //type: uint8
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail
         class RpfPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath
@@ -729,7 +778,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -737,26 +786,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -764,36 +815,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath : public ydk::Entity
 {
     public:
         RpfPath();
@@ -801,19 +854,21 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rpf_multicast_next_hop; //type: uint32
-        YLeaf interface_name; //type: string
+        ydk::YLeaf rpf_multicast_next_hop; //type: uint32
+        ydk::YLeaf interface_name; //type: string
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link : public ydk::Entity
 {
     public:
         Link();
@@ -821,22 +876,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_type; //type: Ospfv3LinkEnum
-        YLeaf link_metric; //type: uint16
-        YLeaf link_interface_id; //type: uint32
-        YLeaf link_neighbor_interface_id; //type: uint32
-        YLeaf link_neighbor_router_id; //type: uint32
+        ydk::YLeaf link_type; //type: Ospfv3Link
+        ydk::YLeaf link_metric; //type: uint16
+        ydk::YLeaf link_interface_id; //type: uint32
+        ydk::YLeaf link_neighbor_interface_id; //type: uint32
+        ydk::YLeaf link_neighbor_router_id; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType : public ydk::Entity
 {
     public:
         NetworkLsaType();
@@ -844,13 +901,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList neighbor_router; //type: list of  string
+        ydk::YLeafList neighbor_router; //type: list of  string
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail
 
@@ -860,7 +919,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -868,26 +927,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -895,36 +956,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType : public ydk::Entity
 {
     public:
         InterAreaPrefixLsaType();
@@ -932,15 +995,17 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf priority; //type: PrefixPriority
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail
 
@@ -950,7 +1015,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -958,26 +1023,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -985,36 +1052,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType : public ydk::Entity
 {
     public:
         InterAreaRouterLsaType();
@@ -1022,13 +1091,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_router_id; //type: uint32
+        ydk::YLeaf lsa_router_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail
 
@@ -1038,7 +1109,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1046,26 +1117,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1073,36 +1146,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType : public ydk::Entity
 {
     public:
         ExternalLsaType();
@@ -1110,20 +1185,22 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf metric_type; //type: Ospfv3DefaultMetricEnum
-        YLeaf tos_cost; //type: uint32
-        YLeaf is_forwarding_address_set; //type: boolean
-        YLeaf forwarding_address; //type: string
-        YLeaf external_tag; //type: uint32
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf metric_type; //type: Ospfv3DefaultMetric
+        ydk::YLeaf tos_cost; //type: uint32
+        ydk::YLeaf is_forwarding_address_set; //type: boolean
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_tag; //type: uint32
+        ydk::YLeaf priority; //type: PrefixPriority
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail
 
@@ -1133,7 +1210,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1141,26 +1218,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1168,36 +1247,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType : public ydk::Entity
 {
     public:
         NssalsaType();
@@ -1205,20 +1286,22 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf metric_type; //type: Ospfv3DefaultMetricEnum
-        YLeaf tos_cost; //type: uint32
-        YLeaf is_forwarding_address_set; //type: boolean
-        YLeaf forwarding_address; //type: string
-        YLeaf external_tag; //type: uint32
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf metric_type; //type: Ospfv3DefaultMetric
+        ydk::YLeaf tos_cost; //type: uint32
+        ydk::YLeaf is_forwarding_address_set; //type: boolean
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_tag; //type: uint32
+        ydk::YLeaf priority; //type: PrefixPriority
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail
 
@@ -1228,7 +1311,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1236,26 +1319,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1263,36 +1348,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::NssalsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType : public ydk::Entity
 {
     public:
         LinkLsaType();
@@ -1300,19 +1387,21 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
-        YLeaf lsa_link_local; //type: string
-        YLeaf router_priority; //type: uint8
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf lsa_link_local; //type: string
+        ydk::YLeaf router_priority; //type: uint8
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail
         class Prefix; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix
@@ -1324,7 +1413,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1332,26 +1421,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1359,36 +1450,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -1396,22 +1489,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf ospfv3_prefix_length; //type: uint8
-        YLeaf ospfv3_prefix_options; //type: uint8
-        YLeaf ospfv3_prefix_metric; //type: uint16
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf ospfv3_prefix_length; //type: uint8
+        ydk::YLeaf ospfv3_prefix_options; //type: uint8
+        ydk::YLeaf ospfv3_prefix_metric; //type: uint16
+        ydk::YLeaf priority; //type: PrefixPriority
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType : public ydk::Entity
 {
     public:
         IntraAreaPrefixLsaType();
@@ -1419,15 +1514,17 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reference_type; //type: Ospfv3Lsa1Enum
-        YLeaf reference_lsa_id; //type: uint32
-        YLeaf reference_advertised_router; //type: string
+        ydk::YLeaf reference_type; //type: Ospfv3Lsa1
+        ydk::YLeaf reference_lsa_id; //type: uint32
+        ydk::YLeaf reference_advertised_router; //type: string
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail
         class Prefix; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix
@@ -1439,7 +1536,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1447,26 +1544,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1474,36 +1573,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -1511,22 +1612,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf ospfv3_prefix_length; //type: uint8
-        YLeaf ospfv3_prefix_options; //type: uint8
-        YLeaf ospfv3_prefix_metric; //type: uint16
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf ospfv3_prefix_length; //type: uint8
+        ydk::YLeaf ospfv3_prefix_options; //type: uint8
+        ydk::YLeaf ospfv3_prefix_metric; //type: uint16
+        ydk::YLeaf priority; //type: PrefixPriority
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa : public ydk::Entity
 {
     public:
         GraceLsa();
@@ -1534,14 +1637,16 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf grace_period; //type: uint32
-        YLeaf grace_reason; //type: Ospfv3GracefulRestartReasonEnum
+        ydk::YLeaf grace_period; //type: uint32
+        ydk::YLeaf grace_reason; //type: Ospfv3GracefulRestartReason
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail
 
@@ -1551,7 +1656,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1559,26 +1664,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1586,36 +1693,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::GraceLsa::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType : public ydk::Entity
 {
     public:
         UnknownLinkLsaType();
@@ -1623,17 +1732,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail
 
@@ -1643,7 +1754,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1651,26 +1762,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1678,36 +1791,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType : public ydk::Entity
 {
     public:
         UnknownAreaLsaType();
@@ -1715,17 +1830,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail
 
@@ -1735,7 +1852,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1743,26 +1860,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1770,36 +1889,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType : public ydk::Entity
 {
     public:
         UnknownAslsaType();
@@ -1807,17 +1928,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail
 
@@ -1827,7 +1950,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1835,26 +1958,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1862,36 +1987,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType : public ydk::Entity
 {
     public:
         UnknownLsaType();
@@ -1899,17 +2026,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail
 
@@ -1919,7 +2048,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -1927,26 +2056,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -1954,36 +2085,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable : public ydk::Entity
 {
     public:
         LsaInternalTable();
@@ -1991,11 +2124,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Lsa; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 
@@ -2004,7 +2139,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable : p
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa : public ydk::Entity
 {
     public:
         Lsa();
@@ -2012,17 +2147,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf area_id; //type: int32
-        YLeaf ls_type; //type: Ospfv3LsaEnum
-        YLeaf advertising_router; //type: string
-        YLeaf ls_id; //type: int32
-        YLeaf interface_name; //type: string
+        ydk::YLeaf area_id; //type: int32
+        ydk::YLeaf ls_type; //type: Ospfv3Lsa
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf ls_id; //type: int32
+        ydk::YLeaf interface_name; //type: string
         class LsaInfo; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo> lsa_info;
@@ -2030,7 +2167,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo : public ydk::Entity
 {
     public:
         LsaInfo();
@@ -2038,13 +2175,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_info_type; //type: Ospfv3LsaInfoTypesEnum
+        ydk::YLeaf lsa_info_type; //type: Ospfv3LsaInfoTypes
         class LsaSummaryInfo; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo
         class RouterLsaType; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType
         class NetworkLsaType; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType
@@ -2078,7 +2217,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo : public ydk::Entity
 {
     public:
         LsaSummaryInfo();
@@ -2086,24 +2225,26 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf links; //type: uint16
-        YLeaf router_la_bits; //type: uint8
-        YLeaf reference_type; //type: uint16
-        YLeaf reference_lsa_id; //type: uint32
-        YLeaf lsa_router_id; //type: uint32
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf links; //type: uint16
+        ydk::YLeaf router_la_bits; //type: uint8
+        ydk::YLeaf reference_type; //type: uint16
+        ydk::YLeaf reference_lsa_id; //type: uint32
+        ydk::YLeaf lsa_router_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail
 
@@ -2113,7 +2254,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2121,26 +2262,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2148,36 +2291,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LsaSummaryInfo::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType : public ydk::Entity
 {
     public:
         RouterLsaType();
@@ -2185,13 +2330,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf router_la_bits; //type: uint8
+        ydk::YLeaf router_la_bits; //type: uint8
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail
         class RpfPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath
@@ -2205,7 +2352,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2213,26 +2360,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2240,36 +2389,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath : public ydk::Entity
 {
     public:
         RpfPath();
@@ -2277,19 +2428,21 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rpf_multicast_next_hop; //type: uint32
-        YLeaf interface_name; //type: string
+        ydk::YLeaf rpf_multicast_next_hop; //type: uint32
+        ydk::YLeaf interface_name; //type: string
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link : public ydk::Entity
 {
     public:
         Link();
@@ -2297,22 +2450,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf link_type; //type: Ospfv3LinkEnum
-        YLeaf link_metric; //type: uint16
-        YLeaf link_interface_id; //type: uint32
-        YLeaf link_neighbor_interface_id; //type: uint32
-        YLeaf link_neighbor_router_id; //type: uint32
+        ydk::YLeaf link_type; //type: Ospfv3Link
+        ydk::YLeaf link_metric; //type: uint16
+        ydk::YLeaf link_interface_id; //type: uint32
+        ydk::YLeaf link_neighbor_interface_id; //type: uint32
+        ydk::YLeaf link_neighbor_router_id; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType : public ydk::Entity
 {
     public:
         NetworkLsaType();
@@ -2320,13 +2475,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeafList neighbor_router; //type: list of  string
+        ydk::YLeafList neighbor_router; //type: list of  string
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail
 
@@ -2336,7 +2493,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2344,26 +2501,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2371,36 +2530,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NetworkLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType : public ydk::Entity
 {
     public:
         InterAreaPrefixLsaType();
@@ -2408,15 +2569,17 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf priority; //type: PrefixPriority
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail
 
@@ -2426,7 +2589,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2434,26 +2597,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2461,36 +2626,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaPrefixLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType : public ydk::Entity
 {
     public:
         InterAreaRouterLsaType();
@@ -2498,13 +2665,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_router_id; //type: uint32
+        ydk::YLeaf lsa_router_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail
 
@@ -2514,7 +2683,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2522,26 +2691,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2549,36 +2720,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::InterAreaRouterLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType : public ydk::Entity
 {
     public:
         ExternalLsaType();
@@ -2586,20 +2759,22 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf metric_type; //type: Ospfv3DefaultMetricEnum
-        YLeaf tos_cost; //type: uint32
-        YLeaf is_forwarding_address_set; //type: boolean
-        YLeaf forwarding_address; //type: string
-        YLeaf external_tag; //type: uint32
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf metric_type; //type: Ospfv3DefaultMetric
+        ydk::YLeaf tos_cost; //type: uint32
+        ydk::YLeaf is_forwarding_address_set; //type: boolean
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_tag; //type: uint32
+        ydk::YLeaf priority; //type: PrefixPriority
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail
 
@@ -2609,7 +2784,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2617,26 +2792,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2644,36 +2821,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::ExternalLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType : public ydk::Entity
 {
     public:
         NssalsaType();
@@ -2681,20 +2860,22 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
-        YLeaf metric_type; //type: Ospfv3DefaultMetricEnum
-        YLeaf tos_cost; //type: uint32
-        YLeaf is_forwarding_address_set; //type: boolean
-        YLeaf forwarding_address; //type: string
-        YLeaf external_tag; //type: uint32
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf metric_type; //type: Ospfv3DefaultMetric
+        ydk::YLeaf tos_cost; //type: uint32
+        ydk::YLeaf is_forwarding_address_set; //type: boolean
+        ydk::YLeaf forwarding_address; //type: string
+        ydk::YLeaf external_tag; //type: uint32
+        ydk::YLeaf priority; //type: PrefixPriority
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail
 
@@ -2704,7 +2885,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2712,26 +2893,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2739,36 +2922,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::NssalsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType : public ydk::Entity
 {
     public:
         LinkLsaType();
@@ -2776,19 +2961,21 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
-        YLeaf lsa_link_local; //type: string
-        YLeaf router_priority; //type: uint8
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf lsa_link_local; //type: string
+        ydk::YLeaf router_priority; //type: uint8
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail
         class Prefix; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix
@@ -2800,7 +2987,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2808,26 +2995,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2835,36 +3024,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -2872,22 +3063,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf ospfv3_prefix_length; //type: uint8
-        YLeaf ospfv3_prefix_options; //type: uint8
-        YLeaf ospfv3_prefix_metric; //type: uint16
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf ospfv3_prefix_length; //type: uint8
+        ydk::YLeaf ospfv3_prefix_options; //type: uint8
+        ydk::YLeaf ospfv3_prefix_metric; //type: uint16
+        ydk::YLeaf priority; //type: PrefixPriority
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType : public ydk::Entity
 {
     public:
         IntraAreaPrefixLsaType();
@@ -2895,15 +3088,17 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf reference_type; //type: Ospfv3Lsa1Enum
-        YLeaf reference_lsa_id; //type: uint32
-        YLeaf reference_advertised_router; //type: string
+        ydk::YLeaf reference_type; //type: Ospfv3Lsa1
+        ydk::YLeaf reference_lsa_id; //type: uint32
+        ydk::YLeaf reference_advertised_router; //type: string
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail
         class Prefix; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix
@@ -2915,7 +3110,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -2923,26 +3118,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -2950,36 +3147,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -2987,22 +3186,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf ospfv3_prefix_length; //type: uint8
-        YLeaf ospfv3_prefix_options; //type: uint8
-        YLeaf ospfv3_prefix_metric; //type: uint16
-        YLeaf priority; //type: PrefixPriorityEnum
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf ospfv3_prefix_length; //type: uint8
+        ydk::YLeaf ospfv3_prefix_options; //type: uint8
+        ydk::YLeaf ospfv3_prefix_metric; //type: uint16
+        ydk::YLeaf priority; //type: PrefixPriority
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa : public ydk::Entity
 {
     public:
         GraceLsa();
@@ -3010,14 +3211,16 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf grace_period; //type: uint32
-        YLeaf grace_reason; //type: Ospfv3GracefulRestartReasonEnum
+        ydk::YLeaf grace_period; //type: uint32
+        ydk::YLeaf grace_reason; //type: Ospfv3GracefulRestartReason
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail
 
@@ -3027,7 +3230,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -3035,26 +3238,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -3062,36 +3267,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::GraceLsa::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType : public ydk::Entity
 {
     public:
         UnknownLinkLsaType();
@@ -3099,17 +3306,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail
 
@@ -3119,7 +3328,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -3127,26 +3336,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -3154,36 +3365,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType : public ydk::Entity
 {
     public:
         UnknownAreaLsaType();
@@ -3191,17 +3404,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail
 
@@ -3211,7 +3426,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -3219,26 +3434,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -3246,36 +3463,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAreaLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType : public ydk::Entity
 {
     public:
         UnknownAslsaType();
@@ -3283,17 +3502,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail
 
@@ -3303,7 +3524,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -3311,26 +3532,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -3338,36 +3561,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownAslsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType : public ydk::Entity
 {
     public:
         UnknownLsaType();
@@ -3375,17 +3600,19 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf is_virtual_link; //type: boolean
-        YLeaf virtual_link_id; //type: uint32
-        YLeaf is_sham_link; //type: boolean
-        YLeaf sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
         class LsaHeader; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader
         class LsaDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail
 
@@ -3395,7 +3622,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader : public ydk::Entity
 {
     public:
         LsaHeader();
@@ -3403,26 +3630,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lsa_type; //type: uint16
-        YLeaf lsa_area_id; //type: string
-        YLeaf lsa_age; //type: uint16
-        YLeaf is_do_not_age_lsa; //type: boolean
-        YLeaf ls_id; //type: uint32
-        YLeaf advertising_router; //type: string
-        YLeaf sequence_number; //type: uint32
-        YLeaf checksum; //type: uint16
-        YLeaf is_graceful_restart_active; //type: boolean
+        ydk::YLeaf lsa_type; //type: uint16
+        ydk::YLeaf lsa_area_id; //type: string
+        ydk::YLeaf lsa_age; //type: uint16
+        ydk::YLeaf is_do_not_age_lsa; //type: boolean
+        ydk::YLeaf ls_id; //type: uint32
+        ydk::YLeaf advertising_router; //type: string
+        ydk::YLeaf sequence_number; //type: uint32
+        ydk::YLeaf checksum; //type: uint16
+        ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail : public ydk::Entity
 {
     public:
         LsaDetail();
@@ -3430,36 +3659,38 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Ls
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf second_table_index; //type: uint8
-        YLeaf minute_table_index; //type: uint8
-        YLeaf free_time; //type: uint32
-        YLeaf is_deleted; //type: boolean
-        YLeaf is_routing_bit; //type: boolean
-        YLeaf is_advertising_router_reachable; //type: boolean
-        YLeaf is_no_delete; //type: boolean
-        YLeaf is_neighbor_exchange; //type: boolean
-        YLeaf is_routing_table; //type: boolean
-        YLeaf is_acknowledged; //type: boolean
-        YLeaf is_maximum_aged; //type: boolean
-        YLeaf is_partial_spf; //type: boolean
-        YLeaf is_flood_pending; //type: boolean
-        YLeaf rate_limit; //type: boolean
-        YLeaf is_nsr_ack_pending; //type: boolean
-        YLeaf nsr_flood_required; //type: boolean
-        YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        YLeaf lsa_length; //type: uint16
-        YLeaf lsa_sync_state; //type: OspfLsaSyncStateEnum
+        ydk::YLeaf second_table_index; //type: uint8
+        ydk::YLeaf minute_table_index; //type: uint8
+        ydk::YLeaf free_time; //type: uint32
+        ydk::YLeaf is_deleted; //type: boolean
+        ydk::YLeaf is_routing_bit; //type: boolean
+        ydk::YLeaf is_advertising_router_reachable; //type: boolean
+        ydk::YLeaf is_no_delete; //type: boolean
+        ydk::YLeaf is_neighbor_exchange; //type: boolean
+        ydk::YLeaf is_routing_table; //type: boolean
+        ydk::YLeaf is_acknowledged; //type: boolean
+        ydk::YLeaf is_maximum_aged; //type: boolean
+        ydk::YLeaf is_partial_spf; //type: boolean
+        ydk::YLeaf is_flood_pending; //type: boolean
+        ydk::YLeaf rate_limit; //type: boolean
+        ydk::YLeaf is_nsr_ack_pending; //type: boolean
+        ydk::YLeaf nsr_flood_required; //type: boolean
+        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
+        ydk::YLeaf lsa_length; //type: uint16
+        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable : public ydk::Entity
 {
     public:
         InterfaceProcessTable();
@@ -3467,11 +3698,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Interface; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface
 
@@ -3480,7 +3713,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable : public Enti
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3488,52 +3721,54 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_state; //type: ImStateEnumEnum
-        YLeaf is_interface_line_up; //type: boolean
-        YLeaf is_interface_ip_security_required; //type: boolean
-        YLeaf is_interface_ip_security_active; //type: boolean
-        YLeaf interface_address; //type: string
-        YLeaf interface_number; //type: uint32
-        YLeaf interface_router_id; //type: string
-        YLeaf network_type; //type: Ospfv3InterfaceEnum
-        YLeaf interface_link_cost; //type: uint16
-        YLeaf is_interface_flood_reduction; //type: boolean
-        YLeaf is_demand_circuit_configured; //type: boolean
-        YLeaf is_interface_demand_circuit; //type: boolean
-        YLeaf interface_dc_bitless_ls_as; //type: uint32
-        YLeaf transmission_delay; //type: uint16
-        YLeaf ospf_interface_state; //type: Ospfv3InterfaceStateEnum
-        YLeaf interface_priority; //type: uint8
-        YLeaf is_designated_router; //type: boolean
-        YLeaf designated_router_id; //type: string
-        YLeaf designated_router_address; //type: string
-        YLeaf backup_designated_router_id; //type: string
-        YLeaf backup_designated_router_address; //type: string
-        YLeaf network_lsa_flush_timer; //type: uint32
-        YLeaf is_interface_lsa_filtered; //type: boolean
-        YLeaf hello_interval; //type: uint32
-        YLeaf dead_interval; //type: uint32
-        YLeaf wait_interval; //type: uint32
-        YLeaf interface_retransmission_interval; //type: uint32
-        YLeaf next_hello_time; //type: uint32
-        YLeaf interface_authentication_spi; //type: uint32
-        YLeaf interface_authentication_transmit; //type: uint32
-        YLeaf is_interface_encryption_enabled; //type: boolean
-        YLeaf is_prefix_suppress; //type: boolean
-        YLeaf interface_encryption_spi; //type: uint32
-        YLeaf interface_encryption_transmitted; //type: uint32
-        YLeaf interface_encrypted_authentication_transmitted; //type: uint32
-        YLeaf adjacent_neighbor; //type: uint32
-        YLeaf interface_references; //type: uint32
-        YLeaf configured_ldp_sync; //type: boolean
-        YLeaf interface_ldp_sync; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_state; //type: ImStateEnum
+        ydk::YLeaf is_interface_line_up; //type: boolean
+        ydk::YLeaf is_interface_ip_security_required; //type: boolean
+        ydk::YLeaf is_interface_ip_security_active; //type: boolean
+        ydk::YLeaf interface_address; //type: string
+        ydk::YLeaf interface_number; //type: uint32
+        ydk::YLeaf interface_router_id; //type: string
+        ydk::YLeaf network_type; //type: Ospfv3Interface
+        ydk::YLeaf interface_link_cost; //type: uint16
+        ydk::YLeaf is_interface_flood_reduction; //type: boolean
+        ydk::YLeaf is_demand_circuit_configured; //type: boolean
+        ydk::YLeaf is_interface_demand_circuit; //type: boolean
+        ydk::YLeaf interface_dc_bitless_ls_as; //type: uint32
+        ydk::YLeaf transmission_delay; //type: uint16
+        ydk::YLeaf ospf_interface_state; //type: Ospfv3InterfaceState
+        ydk::YLeaf interface_priority; //type: uint8
+        ydk::YLeaf is_designated_router; //type: boolean
+        ydk::YLeaf designated_router_id; //type: string
+        ydk::YLeaf designated_router_address; //type: string
+        ydk::YLeaf backup_designated_router_id; //type: string
+        ydk::YLeaf backup_designated_router_address; //type: string
+        ydk::YLeaf network_lsa_flush_timer; //type: uint32
+        ydk::YLeaf is_interface_lsa_filtered; //type: boolean
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf dead_interval; //type: uint32
+        ydk::YLeaf wait_interval; //type: uint32
+        ydk::YLeaf interface_retransmission_interval; //type: uint32
+        ydk::YLeaf next_hello_time; //type: uint32
+        ydk::YLeaf interface_authentication_spi; //type: uint32
+        ydk::YLeaf interface_authentication_transmit; //type: uint32
+        ydk::YLeaf is_interface_encryption_enabled; //type: boolean
+        ydk::YLeaf is_prefix_suppress; //type: boolean
+        ydk::YLeaf interface_encryption_spi; //type: uint32
+        ydk::YLeaf interface_encryption_transmitted; //type: uint32
+        ydk::YLeaf interface_encrypted_authentication_transmitted; //type: uint32
+        ydk::YLeaf adjacent_neighbor; //type: uint32
+        ydk::YLeaf interface_references; //type: uint32
+        ydk::YLeaf configured_ldp_sync; //type: boolean
+        ydk::YLeaf interface_ldp_sync; //type: boolean
         class ActiveInterface; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface
         class InterfaceBfd; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd
         class InterfaceNeighbor; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor
@@ -3545,7 +3780,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface : 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface : public ydk::Entity
 {
     public:
         ActiveInterface();
@@ -3553,35 +3788,37 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::A
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf wait_time; //type: uint32
-        YLeaf interface_area_flood_index; //type: uint32
-        YLeaf interface_as_flood_index; //type: uint32
-        YLeaf interface_link_flood_index; //type: uint32
-        YLeaf flood_queue_length; //type: uint32
-        YLeaf interface_area_next_flood; //type: uint32
-        YLeaf interface_area_next_flood_index; //type: uint32
-        YLeaf interface_as_next_flood; //type: uint32
-        YLeaf interface_as_next_flood_index; //type: uint32
-        YLeaf interface_link_next_flood; //type: uint32
-        YLeaf interface_link_next_index; //type: uint32
-        YLeaf flood_scan_length; //type: uint32
-        YLeaf maximum_flood_length; //type: uint32
-        YLeaf last_flood_time; //type: uint32
-        YLeaf maximum_flood_time; //type: uint32
-        YLeaf interface_flood_pacing_timer; //type: uint32
-        YLeaf interface_neighbors; //type: uint16
-        YLeaf suppressed_hellos; //type: uint16
+        ydk::YLeaf wait_time; //type: uint32
+        ydk::YLeaf interface_area_flood_index; //type: uint32
+        ydk::YLeaf interface_as_flood_index; //type: uint32
+        ydk::YLeaf interface_link_flood_index; //type: uint32
+        ydk::YLeaf flood_queue_length; //type: uint32
+        ydk::YLeaf interface_area_next_flood; //type: uint32
+        ydk::YLeaf interface_area_next_flood_index; //type: uint32
+        ydk::YLeaf interface_as_next_flood; //type: uint32
+        ydk::YLeaf interface_as_next_flood_index; //type: uint32
+        ydk::YLeaf interface_link_next_flood; //type: uint32
+        ydk::YLeaf interface_link_next_index; //type: uint32
+        ydk::YLeaf flood_scan_length; //type: uint32
+        ydk::YLeaf maximum_flood_length; //type: uint32
+        ydk::YLeaf last_flood_time; //type: uint32
+        ydk::YLeaf maximum_flood_time; //type: uint32
+        ydk::YLeaf interface_flood_pacing_timer; //type: uint32
+        ydk::YLeaf interface_neighbors; //type: uint16
+        ydk::YLeaf suppressed_hellos; //type: uint16
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::ActiveInterface
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd : public ydk::Entity
 {
     public:
         InterfaceBfd();
@@ -3589,20 +3826,22 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bfd_intf_enable_mode; //type: uint32
-        YLeaf bfd_interval; //type: uint32
-        YLeaf bfd_detection_multiplier; //type: uint32
+        ydk::YLeaf bfd_intf_enable_mode; //type: uint32
+        ydk::YLeaf bfd_interval; //type: uint32
+        ydk::YLeaf bfd_detection_multiplier; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceBfd
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor : public ydk::Entity
 {
     public:
         InterfaceNeighbor();
@@ -3610,22 +3849,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_neighbor_id; //type: string
-        YLeaf interface_neighbor_cost; //type: uint32
-        YLeaf is_neighbor_dr; //type: boolean
-        YLeaf is_neighbor_bdr; //type: boolean
-        YLeaf is_hello_suppressed; //type: boolean
+        ydk::YLeaf interface_neighbor_id; //type: string
+        ydk::YLeaf interface_neighbor_cost; //type: uint32
+        ydk::YLeaf is_neighbor_dr; //type: boolean
+        ydk::YLeaf is_neighbor_bdr; //type: boolean
+        ydk::YLeaf is_hello_suppressed; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interface::InterfaceNeighbor
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions : public ydk::Entity
 {
     public:
         Redistributions();
@@ -3633,11 +3874,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Redistribution; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution
 
@@ -3646,7 +3889,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution : public ydk::Entity
 {
     public:
         Redistribution();
@@ -3654,27 +3897,29 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_name; //type: string
-        YLeaf process_name; //type: string
-        YLeaf protocol_name_xr; //type: string
-        YLeaf process_id; //type: string
-        YLeaf red_metric_flag; //type: boolean
-        YLeaf red_metric; //type: uint32
-        YLeaf red_mtype_flag; //type: boolean
-        YLeaf red_metric_type; //type: uint8
-        YLeaf red_tag; //type: uint32
-        YLeaf policy_name; //type: string
+        ydk::YLeaf protocol_name; //type: string
+        ydk::YLeaf process_name; //type: string
+        ydk::YLeaf protocol_name_xr; //type: string
+        ydk::YLeaf process_id; //type: string
+        ydk::YLeaf red_metric_flag; //type: boolean
+        ydk::YLeaf red_metric; //type: uint32
+        ydk::YLeaf red_mtype_flag; //type: boolean
+        ydk::YLeaf red_metric_type; //type: uint8
+        ydk::YLeaf red_tag; //type: uint32
+        ydk::YLeaf policy_name; //type: string
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistribution
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes : public ydk::Entity
 {
     public:
         ExternalRoutes();
@@ -3682,11 +3927,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class ExternalRoute; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 
@@ -3695,7 +3942,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute : public ydk::Entity
 {
     public:
         ExternalRoute();
@@ -3703,14 +3950,16 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf prefix; //type: string
-        YLeaf prefix_length; //type: uint8
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
         class RouteTopology; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology
         class RouteExtendedCommunity; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity
         class RoutePath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath
@@ -3722,7 +3971,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute : pub
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology : public ydk::Entity
 {
     public:
         RouteTopology();
@@ -3730,21 +3979,23 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_id; //type: string
-        YLeaf route_distance; //type: uint32
-        YLeaf route_cost; //type: uint32
-        YLeaf route_type; //type: uint32
+        ydk::YLeaf route_id; //type: string
+        ydk::YLeaf route_distance; //type: uint32
+        ydk::YLeaf route_cost; //type: uint32
+        ydk::YLeaf route_type; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteTopology
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity : public ydk::Entity
 {
     public:
         RouteExtendedCommunity();
@@ -3752,23 +4003,25 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf extended_community_domain_id_value; //type: string
-        YLeaf extended_communityl_domain_id_type; //type: uint16
-        YLeaf extended_community_area_id; //type: uint32
-        YLeaf extended_community_router_id; //type: string
-        YLeaf extended_community_route_type; //type: uint8
-        YLeaf extended_community_options; //type: uint8
+        ydk::YLeaf extended_community_domain_id_value; //type: string
+        ydk::YLeaf extended_communityl_domain_id_type; //type: uint16
+        ydk::YLeaf extended_community_area_id; //type: uint32
+        ydk::YLeaf extended_community_router_id; //type: string
+        ydk::YLeaf extended_community_route_type; //type: uint8
+        ydk::YLeaf extended_community_options; //type: uint8
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RouteExtendedCommunity
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath : public ydk::Entity
 {
     public:
         RoutePath();
@@ -3776,15 +4029,17 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf route_path_next_hop; //type: string
-        YLeaf route_path_id; //type: uint16
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf route_path_next_hop; //type: string
+        ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath> route_backup_path;
@@ -3792,7 +4047,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Rout
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath : public ydk::Entity
 {
     public:
         RouteBackupPath();
@@ -3800,26 +4055,28 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::Rout
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf backup_route_interface_name; //type: string
-        YLeaf backup_route_next_hop_address; //type: string
-        YLeaf backup_route_source; //type: string
-        YLeaf backup_metric; //type: uint32
-        YLeaf primary_path; //type: boolean
-        YLeaf line_card_disjoint; //type: boolean
-        YLeaf downstream; //type: boolean
-        YLeaf node_protect; //type: boolean
-        YLeaf srlg_disjoint; //type: boolean
+        ydk::YLeaf backup_route_interface_name; //type: string
+        ydk::YLeaf backup_route_next_hop_address; //type: string
+        ydk::YLeaf backup_route_source; //type: string
+        ydk::YLeaf backup_metric; //type: uint32
+        ydk::YLeaf primary_path; //type: boolean
+        ydk::YLeaf line_card_disjoint; //type: boolean
+        ydk::YLeaf downstream; //type: boolean
+        ydk::YLeaf node_protect; //type: boolean
+        ydk::YLeaf srlg_disjoint; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute::RoutePath::RouteBackupPath
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable : public ydk::Entity
 {
     public:
         RequestListProcessTable();
@@ -3827,11 +4084,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Request; //type: Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request
 
@@ -3840,7 +4099,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable : public En
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request : public ydk::Entity
 {
     public:
         Request();
@@ -3848,19 +4107,21 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf neighbor_address; //type: string
-        YLeaf request_neighbor_address; //type: string
-        YLeaf is_request_virtual_link; //type: boolean
-        YLeaf request_virtual_link_id; //type: uint32
-        YLeaf is_request_sham_link; //type: boolean
-        YLeaf request_sham_link_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf request_neighbor_address; //type: string
+        ydk::YLeaf is_request_virtual_link; //type: boolean
+        ydk::YLeaf request_virtual_link_id; //type: uint32
+        ydk::YLeaf is_request_sham_link; //type: boolean
+        ydk::YLeaf request_sham_link_id; //type: uint32
         class Request_; //type: Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_> > request;
@@ -3868,7 +4129,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request : 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_ : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_ : public ydk::Entity
 {
     public:
         Request_();
@@ -3876,22 +4137,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::R
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf header_lsa_type; //type: Ospfv3Lsa1Enum
-        YLeaf header_lsa_age; //type: uint16
-        YLeaf header_lsa_id; //type: string
-        YLeaf header_advertising_router; //type: string
-        YLeaf header_sequence_number; //type: int32
+        ydk::YLeaf header_lsa_type; //type: Ospfv3Lsa1
+        ydk::YLeaf header_lsa_age; //type: uint16
+        ydk::YLeaf header_lsa_id; //type: string
+        ydk::YLeaf header_advertising_router; //type: string
+        ydk::YLeaf header_sequence_number; //type: int32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Request::Request_
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink : public ydk::Entity
 {
     public:
         VirtualLink();
@@ -3899,37 +4162,39 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf virtual_link_neighbor_id; //type: string
-        YLeaf virtual_link_interface_number; //type: uint32
-        YLeaf virtual_link_state; //type: Ospfv3InterfaceStateEnum
-        YLeaf is_virtual_link_ip_security_required; //type: boolean
-        YLeaf is_virtual_link_ip_security_active; //type: boolean
-        YLeaf virtual_link_neighbor_address; //type: string
-        YLeaf is_virtual_link_demand_circuit; //type: boolean
-        YLeaf virtual_link_dc_bitless_lsa; //type: uint32
-        YLeaf transit_area_id; //type: string
-        YLeaf interface_name; //type: string
-        YLeaf virtual_link_cost; //type: uint16
-        YLeaf virual_link_transmission_delay; //type: uint16
-        YLeaf virtual_link_hello_interval; //type: uint32
-        YLeaf virtual_link_dead_interval; //type: uint32
-        YLeaf virtual_link_wait_interval; //type: uint32
-        YLeaf virtual_link_retransmission_interval; //type: uint32
-        YLeaf virtual_link_next_hello; //type: uint32
-        YLeaf is_virtual_link_passive; //type: boolean
-        YLeaf is_virtual_link_authentication_enabled; //type: boolean
-        YLeaf virtual_link_authentication_spi; //type: uint32
-        YLeaf virtual_link_authentication_transmit; //type: uint32
-        YLeaf is_virtual_link_encryption_enabled; //type: boolean
-        YLeaf virtual_link_encryption_spi; //type: uint32
-        YLeaf virtual_link_encryption_transmitted; //type: uint32
-        YLeaf virtual_link_encrypted_authentication_transmitted; //type: uint32
+        ydk::YLeaf virtual_link_neighbor_id; //type: string
+        ydk::YLeaf virtual_link_interface_number; //type: uint32
+        ydk::YLeaf virtual_link_state; //type: Ospfv3InterfaceState
+        ydk::YLeaf is_virtual_link_ip_security_required; //type: boolean
+        ydk::YLeaf is_virtual_link_ip_security_active; //type: boolean
+        ydk::YLeaf virtual_link_neighbor_address; //type: string
+        ydk::YLeaf is_virtual_link_demand_circuit; //type: boolean
+        ydk::YLeaf virtual_link_dc_bitless_lsa; //type: uint32
+        ydk::YLeaf transit_area_id; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf virtual_link_cost; //type: uint16
+        ydk::YLeaf virual_link_transmission_delay; //type: uint16
+        ydk::YLeaf virtual_link_hello_interval; //type: uint32
+        ydk::YLeaf virtual_link_dead_interval; //type: uint32
+        ydk::YLeaf virtual_link_wait_interval; //type: uint32
+        ydk::YLeaf virtual_link_retransmission_interval; //type: uint32
+        ydk::YLeaf virtual_link_next_hello; //type: uint32
+        ydk::YLeaf is_virtual_link_passive; //type: boolean
+        ydk::YLeaf is_virtual_link_authentication_enabled; //type: boolean
+        ydk::YLeaf virtual_link_authentication_spi; //type: uint32
+        ydk::YLeaf virtual_link_authentication_transmit; //type: uint32
+        ydk::YLeaf is_virtual_link_encryption_enabled; //type: boolean
+        ydk::YLeaf virtual_link_encryption_spi; //type: uint32
+        ydk::YLeaf virtual_link_encryption_transmitted; //type: uint32
+        ydk::YLeaf virtual_link_encrypted_authentication_transmitted; //type: uint32
         class VirtualLinkNeighbor; //type: Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor> virtual_link_neighbor;
@@ -3937,7 +4202,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor : public ydk::Entity
 {
     public:
         VirtualLinkNeighbor();
@@ -3945,14 +4210,16 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf is_virtual_link_hello_suppressed; //type: boolean
-        YLeaf virtual_link_state; //type: Ospfv3InterfaceStateEnum
+        ydk::YLeaf is_virtual_link_hello_suppressed; //type: boolean
+        ydk::YLeaf virtual_link_state; //type: Ospfv3InterfaceState
         class VirtualLinkRetransmission; //type: Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission> virtual_link_retransmission;
@@ -3960,7 +4227,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor : 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission : public ydk::Entity
 {
     public:
         VirtualLinkRetransmission();
@@ -3968,40 +4235,42 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::V
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf database_descriptor_retransmissions; //type: uint32
-        YLeaf area_flood_index; //type: uint32
-        YLeaf as_flood_index; //type: uint32
-        YLeaf link_flood_index; //type: uint32
-        YLeaf neighbor_retransmissions; //type: uint32
-        YLeaf retransmissions; //type: uint32
-        YLeaf area_first_flood; //type: uint32
-        YLeaf area_first_flood_index; //type: uint32
-        YLeaf as_first_flood; //type: uint32
-        YLeaf as_first_flood_index; //type: uint32
-        YLeaf link_first_flood; //type: uint32
-        YLeaf link_first_flood_index; //type: uint32
-        YLeaf area_next_flood; //type: uint32
-        YLeaf area_next_flood_index; //type: uint32
-        YLeaf as_next_flood; //type: uint32
-        YLeaf as_next_flood_index; //type: uint32
-        YLeaf link_next_flood; //type: uint32
-        YLeaf link_next_flood_index; //type: uint32
-        YLeaf last_retransmission_length; //type: uint32
-        YLeaf maximum_retransmission_length; //type: uint32
-        YLeaf last_retransmission_time; //type: uint32
-        YLeaf maximum_retransmission_time; //type: uint32
-        YLeaf lsa_retransmission_timer; //type: uint32
+        ydk::YLeaf database_descriptor_retransmissions; //type: uint32
+        ydk::YLeaf area_flood_index; //type: uint32
+        ydk::YLeaf as_flood_index; //type: uint32
+        ydk::YLeaf link_flood_index; //type: uint32
+        ydk::YLeaf neighbor_retransmissions; //type: uint32
+        ydk::YLeaf retransmissions; //type: uint32
+        ydk::YLeaf area_first_flood; //type: uint32
+        ydk::YLeaf area_first_flood_index; //type: uint32
+        ydk::YLeaf as_first_flood; //type: uint32
+        ydk::YLeaf as_first_flood_index; //type: uint32
+        ydk::YLeaf link_first_flood; //type: uint32
+        ydk::YLeaf link_first_flood_index; //type: uint32
+        ydk::YLeaf area_next_flood; //type: uint32
+        ydk::YLeaf area_next_flood_index; //type: uint32
+        ydk::YLeaf as_next_flood; //type: uint32
+        ydk::YLeaf as_next_flood_index; //type: uint32
+        ydk::YLeaf link_next_flood; //type: uint32
+        ydk::YLeaf link_next_flood_index; //type: uint32
+        ydk::YLeaf last_retransmission_length; //type: uint32
+        ydk::YLeaf maximum_retransmission_length; //type: uint32
+        ydk::YLeaf last_retransmission_time; //type: uint32
+        ydk::YLeaf maximum_retransmission_time; //type: uint32
+        ydk::YLeaf lsa_retransmission_timer; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::VirtualLink::VirtualLinkNeighbor::VirtualLinkRetransmission
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable : public ydk::Entity
 {
     public:
         FloodListProcessTable();
@@ -4009,11 +4278,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Flood; //type: Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood
 
@@ -4022,7 +4293,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable : public Enti
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood : public ydk::Entity
 {
     public:
         Flood();
@@ -4030,15 +4301,17 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf ls_transmission_timer; //type: uint32
-        YLeaf queue_length; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf ls_transmission_timer; //type: uint32
+        ydk::YLeaf queue_length; //type: uint32
         class LinkFlood; //type: Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood
         class AreaFlood; //type: Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood
         class AsFlood; //type: Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood
@@ -4050,7 +4323,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood : publ
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood : public ydk::Entity
 {
     public:
         LinkFlood();
@@ -4058,22 +4331,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkF
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf header_lsa_type; //type: Ospfv3Lsa1Enum
-        YLeaf header_lsa_age; //type: uint16
-        YLeaf header_lsa_id; //type: string
-        YLeaf header_advertising_router; //type: string
-        YLeaf header_sequence_number; //type: int32
+        ydk::YLeaf header_lsa_type; //type: Ospfv3Lsa1
+        ydk::YLeaf header_lsa_age; //type: uint16
+        ydk::YLeaf header_lsa_id; //type: string
+        ydk::YLeaf header_advertising_router; //type: string
+        ydk::YLeaf header_sequence_number; //type: int32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::LinkFlood
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood : public ydk::Entity
 {
     public:
         AreaFlood();
@@ -4081,22 +4356,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaF
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf header_lsa_type; //type: Ospfv3Lsa1Enum
-        YLeaf header_lsa_age; //type: uint16
-        YLeaf header_lsa_id; //type: string
-        YLeaf header_advertising_router; //type: string
-        YLeaf header_sequence_number; //type: int32
+        ydk::YLeaf header_lsa_type; //type: Ospfv3Lsa1
+        ydk::YLeaf header_lsa_age; //type: uint16
+        ydk::YLeaf header_lsa_id; //type: string
+        ydk::YLeaf header_advertising_router; //type: string
+        ydk::YLeaf header_sequence_number; //type: int32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AreaFlood
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood : public ydk::Entity
 {
     public:
         AsFlood();
@@ -4104,22 +4381,24 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf header_lsa_type; //type: Ospfv3Lsa1Enum
-        YLeaf header_lsa_age; //type: uint16
-        YLeaf header_lsa_id; //type: string
-        YLeaf header_advertising_router; //type: string
-        YLeaf header_sequence_number; //type: int32
+        ydk::YLeaf header_lsa_type; //type: Ospfv3Lsa1
+        ydk::YLeaf header_lsa_age; //type: uint16
+        ydk::YLeaf header_lsa_id; //type: string
+        ydk::YLeaf header_advertising_router; //type: string
+        ydk::YLeaf header_sequence_number; //type: int32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood::AsFlood
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary : public ydk::Entity
 {
     public:
         RouteSummary();
@@ -4127,28 +4406,30 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf route_id; //type: string
-        YLeaf intra_area_route; //type: uint32
-        YLeaf inter_area_route; //type: uint32
-        YLeaf extern_one_route; //type: uint32
-        YLeaf extern_two_route; //type: uint32
-        YLeaf nssa_one_route; //type: uint32
-        YLeaf nssa_two_route; //type: uint32
-        YLeaf total_sent_route; //type: uint32
-        YLeaf route_connected; //type: uint32
-        YLeaf redistribution_route; //type: uint32
-        YLeaf total_received_route; //type: uint32
+        ydk::YLeaf route_id; //type: string
+        ydk::YLeaf intra_area_route; //type: uint32
+        ydk::YLeaf inter_area_route; //type: uint32
+        ydk::YLeaf extern_one_route; //type: uint32
+        ydk::YLeaf extern_two_route; //type: uint32
+        ydk::YLeaf nssa_one_route; //type: uint32
+        ydk::YLeaf nssa_two_route; //type: uint32
+        ydk::YLeaf total_sent_route; //type: uint32
+        ydk::YLeaf route_connected; //type: uint32
+        ydk::YLeaf redistribution_route; //type: uint32
+        ydk::YLeaf total_received_route; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::RouteSummary
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas : public ydk::Entity
 {
     public:
         Areas();
@@ -4156,11 +4437,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Area; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area
 
@@ -4169,7 +4452,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area : public ydk::Entity
 {
     public:
         Area();
@@ -4177,13 +4460,15 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf area_id; //type: int32
+        ydk::YLeaf area_id; //type: int32
         class NeighborDetailTable; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable
         class InterfaceBriefTable; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable
         class RequestListTable; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable
@@ -4207,7 +4492,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area : public Entity
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable : public ydk::Entity
 {
     public:
         NeighborDetailTable();
@@ -4215,11 +4500,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class NeighborDetail; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail
 
@@ -4228,7 +4515,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable : 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail : public ydk::Entity
 {
     public:
         NeighborDetail();
@@ -4236,25 +4523,27 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::N
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf neighbor_address; //type: string
-        YLeaf neighbor_address_xr; //type: string
-        YLeaf neighbor_interface_id; //type: uint32
-        YLeaf neighbor_dr_priority; //type: uint8
-        YLeaf neighbor_state; //type: Ospfv3NeighborStateEnum
-        YLeaf neighbor_designated_router; //type: string
-        YLeaf neighbor_dead_timer; //type: uint32
-        YLeaf neighbor_up_time; //type: uint32
-        YLeaf neighbor_virtual_link_id; //type: uint32
-        YLeaf is_neighbor_virtual_link; //type: boolean
-        YLeaf neighbor_sham_link_id; //type: uint32
-        YLeaf is_neighbor_sham_link; //type: boolean
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf neighbor_address; //type: string
+        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_interface_id; //type: uint32
+        ydk::YLeaf neighbor_dr_priority; //type: uint8
+        ydk::YLeaf neighbor_state; //type: Ospfv3NeighborState
+        ydk::YLeaf neighbor_designated_router; //type: string
+        ydk::YLeaf neighbor_dead_timer; //type: uint32
+        ydk::YLeaf neighbor_up_time; //type: uint32
+        ydk::YLeaf neighbor_virtual_link_id; //type: uint32
+        ydk::YLeaf is_neighbor_virtual_link; //type: boolean
+        ydk::YLeaf neighbor_sham_link_id; //type: uint32
+        ydk::YLeaf is_neighbor_sham_link; //type: boolean
         class NeighborDetail_; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_
         class NeighborBfdInfo; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo
 
@@ -4264,7 +4553,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::N
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_ : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_ : public ydk::Entity
 {
     public:
         NeighborDetail_();
@@ -4272,23 +4561,25 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::N
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf state_changes; //type: uint16
-        YLeaf neighbor_cost; //type: uint16
-        YLeaf is_neighbor_filtered; //type: boolean
-        YLeaf neighbor_designated_router_address; //type: string
-        YLeaf neighbor_backup_designated_router_address; //type: string
-        YLeaf interface_type; //type: Ospfv3InterfaceEnum
-        YLeaf poll_interval; //type: uint32
-        YLeaf next_poll_interval; //type: uint32
-        YLeaf neighbor_ignore_timer; //type: uint32
-        YLeaf neighbor_option; //type: uint32
-        YLeaf pending_events; //type: uint16
+        ydk::YLeaf state_changes; //type: uint16
+        ydk::YLeaf neighbor_cost; //type: uint16
+        ydk::YLeaf is_neighbor_filtered; //type: boolean
+        ydk::YLeaf neighbor_designated_router_address; //type: string
+        ydk::YLeaf neighbor_backup_designated_router_address; //type: string
+        ydk::YLeaf interface_type; //type: Ospfv3Interface
+        ydk::YLeaf poll_interval; //type: uint32
+        ydk::YLeaf next_poll_interval; //type: uint32
+        ydk::YLeaf neighbor_ignore_timer; //type: uint32
+        ydk::YLeaf neighbor_option; //type: uint32
+        ydk::YLeaf pending_events; //type: uint16
         class NeighborRetransmission; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission
 
         std::shared_ptr<Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission> neighbor_retransmission;
@@ -4296,7 +4587,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::N
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission : public ydk::Entity
 {
     public:
         NeighborRetransmission();
@@ -4304,40 +4595,42 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::N
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf database_descriptor_retransmissions; //type: uint32
-        YLeaf area_flood_index; //type: uint32
-        YLeaf as_flood_index; //type: uint32
-        YLeaf link_flood_index; //type: uint32
-        YLeaf neighbor_retransmissions; //type: uint32
-        YLeaf retransmissions; //type: uint32
-        YLeaf area_first_flood; //type: uint32
-        YLeaf area_first_flood_index; //type: uint32
-        YLeaf as_first_flood; //type: uint32
-        YLeaf as_first_flood_index; //type: uint32
-        YLeaf link_first_flood; //type: uint32
-        YLeaf link_first_flood_index; //type: uint32
-        YLeaf area_next_flood; //type: uint32
-        YLeaf area_next_flood_index; //type: uint32
-        YLeaf as_next_flood; //type: uint32
-        YLeaf as_next_flood_index; //type: uint32
-        YLeaf link_next_flood; //type: uint32
-        YLeaf link_next_flood_index; //type: uint32
-        YLeaf last_retransmission_length; //type: uint32
-        YLeaf maximum_retransmission_length; //type: uint32
-        YLeaf last_retransmission_time; //type: uint32
-        YLeaf maximum_retransmission_time; //type: uint32
-        YLeaf lsa_retransmission_timer; //type: uint32
+        ydk::YLeaf database_descriptor_retransmissions; //type: uint32
+        ydk::YLeaf area_flood_index; //type: uint32
+        ydk::YLeaf as_flood_index; //type: uint32
+        ydk::YLeaf link_flood_index; //type: uint32
+        ydk::YLeaf neighbor_retransmissions; //type: uint32
+        ydk::YLeaf retransmissions; //type: uint32
+        ydk::YLeaf area_first_flood; //type: uint32
+        ydk::YLeaf area_first_flood_index; //type: uint32
+        ydk::YLeaf as_first_flood; //type: uint32
+        ydk::YLeaf as_first_flood_index; //type: uint32
+        ydk::YLeaf link_first_flood; //type: uint32
+        ydk::YLeaf link_first_flood_index; //type: uint32
+        ydk::YLeaf area_next_flood; //type: uint32
+        ydk::YLeaf area_next_flood_index; //type: uint32
+        ydk::YLeaf as_next_flood; //type: uint32
+        ydk::YLeaf as_next_flood_index; //type: uint32
+        ydk::YLeaf link_next_flood; //type: uint32
+        ydk::YLeaf link_next_flood_index; //type: uint32
+        ydk::YLeaf last_retransmission_length; //type: uint32
+        ydk::YLeaf maximum_retransmission_length; //type: uint32
+        ydk::YLeaf last_retransmission_time; //type: uint32
+        ydk::YLeaf maximum_retransmission_time; //type: uint32
+        ydk::YLeaf lsa_retransmission_timer; //type: uint32
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborDetail_::NeighborRetransmission
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo : public ydk::Entity
 {
     public:
         NeighborBfdInfo();
@@ -4345,19 +4638,21 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::N
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bfd_intf_enable_mode; //type: uint32
-        YLeaf bfd_status_flag; //type: uint8
+        ydk::YLeaf bfd_intf_enable_mode; //type: uint32
+        ydk::YLeaf bfd_status_flag; //type: uint8
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTable::NeighborDetail::NeighborBfdInfo
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable : public ydk::Entity
 {
     public:
         InterfaceBriefTable();
@@ -4365,11 +4660,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InterfaceBrief; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief
 
@@ -4378,7 +4675,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable : 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief : public ydk::Entity
 {
     public:
         InterfaceBrief();
@@ -4386,24 +4683,26 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::I
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf interface_name; //type: string
-        YLeaf interface_address; //type: string
-        YLeaf interface_link_cost; //type: uint16
-        YLeaf ospf_interface_state; //type: Ospfv3InterfaceStateEnum
-        YLeaf interface_neighbors; //type: uint16
-        YLeaf interface_adjacent_neighbors; //type: uint16
-        YLeaf network_type; //type: Ospfv3InterfaceEnum
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf interface_address; //type: string
+        ydk::YLeaf interface_link_cost; //type: uint16
+        ydk::YLeaf ospf_interface_state; //type: Ospfv3InterfaceState
+        ydk::YLeaf interface_neighbors; //type: uint16
+        ydk::YLeaf interface_adjacent_neighbors; //type: uint16
+        ydk::YLeaf network_type; //type: Ospfv3Interface
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief
 
 
-class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable : public Entity
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable : public ydk::Entity
 {
     public:
         RequestListTable();
@@ -4411,11 +4710,13 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable : pub
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Request; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::Request
 
@@ -4423,277 +4724,277 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable : pub
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable
 
-class Ospfv3LsaEnum : public Enum
+class Ospfv3GracefulRestartReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf link_lsa;
-        static const Enum::YLeaf grace_lsa;
-        static const Enum::YLeaf router;
-        static const Enum::YLeaf network;
-        static const Enum::YLeaf inter_area_prefix;
-        static const Enum::YLeaf inter_area_router;
-        static const Enum::YLeaf nssa_external;
-        static const Enum::YLeaf intra_area_prefix;
-        static const Enum::YLeaf external;
-        static const Enum::YLeaf opaque_link;
-        static const Enum::YLeaf opaque_area;
-        static const Enum::YLeaf opaque_as;
-        static const Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf grace_reason_unknown;
+        static const ydk::Enum::YLeaf grace_reason_software_restart;
+        static const ydk::Enum::YLeaf grace_reason_software_upgrade;
+        static const ydk::Enum::YLeaf grace_reason_switchover;
 
 };
 
-class ImStateEnumEnum : public Enum
+class Ospfv3NeighborState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf im_state_not_ready;
-        static const Enum::YLeaf im_state_admin_down;
-        static const Enum::YLeaf im_state_down;
-        static const Enum::YLeaf im_state_up;
-        static const Enum::YLeaf im_state_shutdown;
-        static const Enum::YLeaf im_state_err_disable;
-        static const Enum::YLeaf im_state_down_immediate;
-        static const Enum::YLeaf im_state_down_immediate_admin;
-        static const Enum::YLeaf im_state_down_graceful;
-        static const Enum::YLeaf im_state_begin_shutdown;
-        static const Enum::YLeaf im_state_end_shutdown;
-        static const Enum::YLeaf im_state_begin_error_disable;
-        static const Enum::YLeaf im_state_end_error_disable;
-        static const Enum::YLeaf im_state_begin_down_graceful;
-        static const Enum::YLeaf im_state_reset;
-        static const Enum::YLeaf im_state_operational;
-        static const Enum::YLeaf im_state_not_operational;
-        static const Enum::YLeaf im_state_unknown;
-        static const Enum::YLeaf im_state_last;
+        static const ydk::Enum::YLeaf neigbhor_down;
+        static const ydk::Enum::YLeaf attempt;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf two_way;
+        static const ydk::Enum::YLeaf exstart;
+        static const ydk::Enum::YLeaf exchange;
+        static const ydk::Enum::YLeaf loading;
+        static const ydk::Enum::YLeaf full;
+        static const ydk::Enum::YLeaf sc_virtual;
 
 };
 
-class Ospfv3GracefulShutdownStateEnum : public Enum
+class ImStateEnum : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf init;
-        static const Enum::YLeaf normal;
-        static const Enum::YLeaf flushing;
-        static const Enum::YLeaf empty_hellos;
-        static const Enum::YLeaf quiet;
+        static const ydk::Enum::YLeaf im_state_not_ready;
+        static const ydk::Enum::YLeaf im_state_admin_down;
+        static const ydk::Enum::YLeaf im_state_down;
+        static const ydk::Enum::YLeaf im_state_up;
+        static const ydk::Enum::YLeaf im_state_shutdown;
+        static const ydk::Enum::YLeaf im_state_err_disable;
+        static const ydk::Enum::YLeaf im_state_down_immediate;
+        static const ydk::Enum::YLeaf im_state_down_immediate_admin;
+        static const ydk::Enum::YLeaf im_state_down_graceful;
+        static const ydk::Enum::YLeaf im_state_begin_shutdown;
+        static const ydk::Enum::YLeaf im_state_end_shutdown;
+        static const ydk::Enum::YLeaf im_state_begin_error_disable;
+        static const ydk::Enum::YLeaf im_state_end_error_disable;
+        static const ydk::Enum::YLeaf im_state_begin_down_graceful;
+        static const ydk::Enum::YLeaf im_state_reset;
+        static const ydk::Enum::YLeaf im_state_operational;
+        static const ydk::Enum::YLeaf im_state_not_operational;
+        static const ydk::Enum::YLeaf im_state_unknown;
+        static const ydk::Enum::YLeaf im_state_last;
 
 };
 
-class Ospfv3GracefulRestartReasonEnum : public Enum
+class StubRouterExitReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf grace_reason_unknown;
-        static const Enum::YLeaf grace_reason_software_restart;
-        static const Enum::YLeaf grace_reason_software_upgrade;
-        static const Enum::YLeaf grace_reason_switchover;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf timer;
+        static const ydk::Enum::YLeaf configuration;
+        static const ydk::Enum::YLeaf cleared;
+        static const ydk::Enum::YLeaf override;
 
 };
 
-class IpfrrTbrkrEnum : public Enum
+class IpfrrTbrkr : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf downstream;
-        static const Enum::YLeaf line_card_disjoint;
-        static const Enum::YLeaf backup_metric;
-        static const Enum::YLeaf node_protect;
-        static const Enum::YLeaf primary_path;
-        static const Enum::YLeaf secondary_path;
-        static const Enum::YLeaf srlg_disjoint;
-        static const Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf line_card_disjoint;
+        static const ydk::Enum::YLeaf backup_metric;
+        static const ydk::Enum::YLeaf node_protect;
+        static const ydk::Enum::YLeaf primary_path;
+        static const ydk::Enum::YLeaf secondary_path;
+        static const ydk::Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf tunnel;
 
 };
 
-class OspfNsrSchedPriEnum : public Enum
+class Ospfv3DefaultMetric : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ospf_nsr_stats_sched_pri_hi;
-        static const Enum::YLeaf ospf_nsr_stats_sched_pri_med;
-        static const Enum::YLeaf ospf_nsr_stats_sched_pri_low;
-        static const Enum::YLeaf ospf_nsr_stats_sched_pri_max;
+        static const ydk::Enum::YLeaf type_none;
+        static const ydk::Enum::YLeaf type1;
+        static const ydk::Enum::YLeaf type2;
 
 };
 
-class StubRouterModeEnum : public Enum
+class Ospfv3BorderRoute : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf rbit;
-        static const Enum::YLeaf v6bit;
-        static const Enum::YLeaf max_metric;
-        static const Enum::YLeaf none;
+        static const ydk::Enum::YLeaf abr;
+        static const ydk::Enum::YLeaf asbr;
+        static const ydk::Enum::YLeaf abr_asbr;
 
 };
 
-class Ospfv3InterfaceEnum : public Enum
+class PrefixPriority : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf broadcast;
-        static const Enum::YLeaf non_broadcast;
-        static const Enum::YLeaf point_to_point;
-        static const Enum::YLeaf point_to_multipoint;
-        static const Enum::YLeaf point_to_multipoint_non_broadcast;
-        static const Enum::YLeaf virtual_link;
-        static const Enum::YLeaf loopback_interface;
-        static const Enum::YLeaf mpls_traffic_engineering;
-        static const Enum::YLeaf sham_link;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 
-class StubRouterTriggerEnum : public Enum
+class Ospfv3LsaInfoTypes : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf on_proc_migration;
-        static const Enum::YLeaf on_proc_restart;
-        static const Enum::YLeaf on_switchover;
-        static const Enum::YLeaf on_startup;
-        static const Enum::YLeaf always;
-        static const Enum::YLeaf none;
+        static const ydk::Enum::YLeaf mgmt_lsa_lsasum_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_link_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_gr_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_rtr_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_net_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_iapfx_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_iartr_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_nssaext_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_prefix_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_ext_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_unk_link_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_unk_area_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_unk_as_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_unk_type;
 
 };
 
-class OspfLsaSyncStateEnum : public Enum
+class Ospfv3Interface : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf out_of_sync;
-        static const Enum::YLeaf in_sync;
-        static const Enum::YLeaf nsr_ack_pending;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf non_broadcast;
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf point_to_multipoint_non_broadcast;
+        static const ydk::Enum::YLeaf virtual_link;
+        static const ydk::Enum::YLeaf loopback_interface;
+        static const ydk::Enum::YLeaf mpls_traffic_engineering;
+        static const ydk::Enum::YLeaf sham_link;
 
 };
 
-class Ospfv3DefaultMetricEnum : public Enum
+class OspfLsaSyncState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf type_none;
-        static const Enum::YLeaf type1;
-        static const Enum::YLeaf type2;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf out_of_sync;
+        static const ydk::Enum::YLeaf in_sync;
+        static const ydk::Enum::YLeaf nsr_ack_pending;
 
 };
 
-class Ospfv3NeighborStateEnum : public Enum
+class StubRouterMode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf neigbhor_down;
-        static const Enum::YLeaf attempt;
-        static const Enum::YLeaf init;
-        static const Enum::YLeaf two_way;
-        static const Enum::YLeaf exstart;
-        static const Enum::YLeaf exchange;
-        static const Enum::YLeaf loading;
-        static const Enum::YLeaf full;
-        static const Enum::YLeaf sc_virtual;
+        static const ydk::Enum::YLeaf rbit;
+        static const ydk::Enum::YLeaf v6bit;
+        static const ydk::Enum::YLeaf max_metric;
+        static const ydk::Enum::YLeaf none;
 
 };
 
-class PrefixPriorityEnum : public Enum
+class OspfNsrSchedPri : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf critical;
-        static const Enum::YLeaf high;
-        static const Enum::YLeaf medium;
-        static const Enum::YLeaf low;
+        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_hi;
+        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_med;
+        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_low;
+        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_max;
 
 };
 
-class StubRouterExitReasonEnum : public Enum
+class Ospfv3Lsa1 : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf bgp;
-        static const Enum::YLeaf timer;
-        static const Enum::YLeaf configuration;
-        static const Enum::YLeaf cleared;
-        static const Enum::YLeaf override;
+        static const ydk::Enum::YLeaf link;
+        static const ydk::Enum::YLeaf grace;
+        static const ydk::Enum::YLeaf router;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf inter_area_prefix;
+        static const ydk::Enum::YLeaf inter_area_router;
+        static const ydk::Enum::YLeaf mospf;
+        static const ydk::Enum::YLeaf type7_external;
+        static const ydk::Enum::YLeaf lsa_prefix;
+        static const ydk::Enum::YLeaf as_external;
+        static const ydk::Enum::YLeaf unknown_link;
+        static const ydk::Enum::YLeaf unknown_area;
+        static const ydk::Enum::YLeaf unknown_as;
+        static const ydk::Enum::YLeaf unknown_type;
 
 };
 
-class Ospfv3Lsa1Enum : public Enum
+class StubRouterTrigger : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf link;
-        static const Enum::YLeaf grace;
-        static const Enum::YLeaf router;
-        static const Enum::YLeaf network;
-        static const Enum::YLeaf inter_area_prefix;
-        static const Enum::YLeaf inter_area_router;
-        static const Enum::YLeaf mospf;
-        static const Enum::YLeaf type7_external;
-        static const Enum::YLeaf lsa_prefix;
-        static const Enum::YLeaf as_external;
-        static const Enum::YLeaf unknown_link;
-        static const Enum::YLeaf unknown_area;
-        static const Enum::YLeaf unknown_as;
-        static const Enum::YLeaf unknown_type;
+        static const ydk::Enum::YLeaf on_proc_migration;
+        static const ydk::Enum::YLeaf on_proc_restart;
+        static const ydk::Enum::YLeaf on_switchover;
+        static const ydk::Enum::YLeaf on_startup;
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf none;
 
 };
 
-class Ospfv3LsaInfoTypesEnum : public Enum
+class Ospfv3GracefulShutdownState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf mgmt_lsa_lsasum_type;
-        static const Enum::YLeaf mgmt_lsa_link_type;
-        static const Enum::YLeaf mgmt_lsa_gr_type;
-        static const Enum::YLeaf mgmt_lsa_rtr_type;
-        static const Enum::YLeaf mgmt_lsa_net_type;
-        static const Enum::YLeaf mgmt_lsa_iapfx_type;
-        static const Enum::YLeaf mgmt_lsa_iartr_type;
-        static const Enum::YLeaf mgmt_lsa_nssaext_type;
-        static const Enum::YLeaf mgmt_lsa_prefix_type;
-        static const Enum::YLeaf mgmt_lsa_ext_type;
-        static const Enum::YLeaf mgmt_lsa_unk_link_type;
-        static const Enum::YLeaf mgmt_lsa_unk_area_type;
-        static const Enum::YLeaf mgmt_lsa_unk_as_type;
-        static const Enum::YLeaf mgmt_lsa_unk_type;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf flushing;
+        static const ydk::Enum::YLeaf empty_hellos;
+        static const ydk::Enum::YLeaf quiet;
 
 };
 
-class StubRouterAbrOffReasonEnum : public Enum
+class Ospfv3Link : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf init_delay;
-        static const Enum::YLeaf no_neighbor;
-        static const Enum::YLeaf no_full_neighbor;
-        static const Enum::YLeaf new_neighbor;
-        static const Enum::YLeaf full_neighbor;
+        static const ydk::Enum::YLeaf link_router;
+        static const ydk::Enum::YLeaf link_trans_net;
+        static const ydk::Enum::YLeaf link_virtual_link;
 
 };
 
-class Ospfv3AreaRangeStatusEnum : public Enum
+class StubRouterAbrOffReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf advertise;
-        static const Enum::YLeaf do_not_advertise;
+        static const ydk::Enum::YLeaf init_delay;
+        static const ydk::Enum::YLeaf no_neighbor;
+        static const ydk::Enum::YLeaf no_full_neighbor;
+        static const ydk::Enum::YLeaf new_neighbor;
+        static const ydk::Enum::YLeaf full_neighbor;
 
 };
 
-class Ospfv3InterfaceStateEnum : public Enum
+class Ospfv3InterfaceState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf down;
-        static const Enum::YLeaf loopback;
-        static const Enum::YLeaf waiting;
-        static const Enum::YLeaf point_to_multipoint;
-        static const Enum::YLeaf point_to_point;
-        static const Enum::YLeaf designated_router;
-        static const Enum::YLeaf backup_designated_router;
-        static const Enum::YLeaf other_designated_router;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf loopback;
+        static const ydk::Enum::YLeaf waiting;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf designated_router;
+        static const ydk::Enum::YLeaf backup_designated_router;
+        static const ydk::Enum::YLeaf other_designated_router;
 
 };
 
-class Ospfv3LinkEnum : public Enum
+class Ospfv3Lsa : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf link_router;
-        static const Enum::YLeaf link_trans_net;
-        static const Enum::YLeaf link_virtual_link;
+        static const ydk::Enum::YLeaf link_lsa;
+        static const ydk::Enum::YLeaf grace_lsa;
+        static const ydk::Enum::YLeaf router;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf inter_area_prefix;
+        static const ydk::Enum::YLeaf inter_area_router;
+        static const ydk::Enum::YLeaf nssa_external;
+        static const ydk::Enum::YLeaf intra_area_prefix;
+        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf opaque_link;
+        static const ydk::Enum::YLeaf opaque_area;
+        static const ydk::Enum::YLeaf opaque_as;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
-class Ospfv3BorderRouteEnum : public Enum
+class Ospfv3AreaRangeStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf abr;
-        static const Enum::YLeaf asbr;
-        static const Enum::YLeaf abr_asbr;
+        static const ydk::Enum::YLeaf advertise;
+        static const ydk::Enum::YLeaf do_not_advertise;
 
 };
 

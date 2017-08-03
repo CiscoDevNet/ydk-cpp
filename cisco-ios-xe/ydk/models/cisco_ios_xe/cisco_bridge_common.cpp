@@ -6,69 +6,71 @@
 #include "generated_entity_lookup.hpp"
 #include "cisco_bridge_common.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace cisco_bridge_common {
 
-MacLimitNotificationTypeIdentity::MacLimitNotificationTypeIdentity()
-     : Identity("cisco-bridge-common:mac-limit-notification-type")
+MacLimitNotificationType::MacLimitNotificationType()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:mac-limit-notification-type")
 {
 }
 
-MacLimitNotificationTypeIdentity::~MacLimitNotificationTypeIdentity()
+MacLimitNotificationType::~MacLimitNotificationType()
 {
 }
 
-NotifSyslogIdentity::NotifSyslogIdentity()
-     : Identity("cisco-bridge-common:notif-syslog")
+NotifNone::NotifNone()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:notif-none")
 {
 }
 
-NotifSyslogIdentity::~NotifSyslogIdentity()
+NotifNone::~NotifNone()
 {
 }
 
-NotifSnmpTrapIdentity::NotifSnmpTrapIdentity()
-     : Identity("cisco-bridge-common:notif-snmp-trap")
+NotifSnmpTrap::NotifSnmpTrap()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:notif-snmp-trap")
 {
 }
 
-NotifSnmpTrapIdentity::~NotifSnmpTrapIdentity()
+NotifSnmpTrap::~NotifSnmpTrap()
 {
 }
 
-NotifNoneIdentity::NotifNoneIdentity()
-     : Identity("cisco-bridge-common:notif-none")
+NotifSyslog::NotifSyslog()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:notif-syslog")
 {
 }
 
-NotifNoneIdentity::~NotifNoneIdentity()
+NotifSyslog::~NotifSyslog()
 {
 }
 
-NotifSyslogAndSnmpTrapIdentity::NotifSyslogAndSnmpTrapIdentity()
-     : Identity("cisco-bridge-common:notif-syslog-and-snmp-trap")
+NotifSyslogAndSnmpTrap::NotifSyslogAndSnmpTrap()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-bridge-common", "cisco-bridge-common", "cisco-bridge-common:notif-syslog-and-snmp-trap")
 {
 }
 
-NotifSyslogAndSnmpTrapIdentity::~NotifSyslogAndSnmpTrapIdentity()
+NotifSyslogAndSnmpTrap::~NotifSyslogAndSnmpTrap()
 {
 }
 
-const Enum::YLeaf MacLimitActionEnum::none {0, "none"};
-const Enum::YLeaf MacLimitActionEnum::flood {1, "flood"};
-const Enum::YLeaf MacLimitActionEnum::drop {2, "drop"};
-const Enum::YLeaf MacLimitActionEnum::shutdown {3, "shutdown"};
+const Enum::YLeaf MacAgingType::inactivity {0, "inactivity"};
+const Enum::YLeaf MacAgingType::absolute {1, "absolute"};
 
-const Enum::YLeaf EthTrafficClassEnum::broadcast {0, "broadcast"};
-const Enum::YLeaf EthTrafficClassEnum::multicast {1, "multicast"};
-const Enum::YLeaf EthTrafficClassEnum::unknown_unicast {2, "unknown-unicast"};
+const Enum::YLeaf MacLimitAction::none {0, "none"};
+const Enum::YLeaf MacLimitAction::flood {1, "flood"};
+const Enum::YLeaf MacLimitAction::drop {2, "drop"};
+const Enum::YLeaf MacLimitAction::shutdown {3, "shutdown"};
 
-const Enum::YLeaf MacAgingTypeEnum::inactivity {0, "inactivity"};
-const Enum::YLeaf MacAgingTypeEnum::absolute {1, "absolute"};
+const Enum::YLeaf EthTrafficClass::broadcast {0, "broadcast"};
+const Enum::YLeaf EthTrafficClass::multicast {1, "multicast"};
+const Enum::YLeaf EthTrafficClass::unknown_unicast {2, "unknown-unicast"};
 
-const Enum::YLeaf MacSecureActionEnum::none {0, "none"};
-const Enum::YLeaf MacSecureActionEnum::restrict {1, "restrict"};
-const Enum::YLeaf MacSecureActionEnum::shutdown {2, "shutdown"};
+const Enum::YLeaf MacSecureAction::none {0, "none"};
+const Enum::YLeaf MacSecureAction::restrict {1, "restrict"};
+const Enum::YLeaf MacSecureAction::shutdown {2, "shutdown"};
 
 
 }

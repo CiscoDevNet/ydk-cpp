@@ -7,32 +7,32 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_isis {
 
-class AuthenticationLevelTypeEnum : public Enum
+class AuthenticationLevelType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf level_1;
-        static const Enum::YLeaf level_2;
+        static const ydk::Enum::YLeaf level_1;
+        static const ydk::Enum::YLeaf level_2;
 
 };
 
-class IsisLevelTypeEnum : public Enum
+class IsisRoutesLevelType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf level_1;
-        static const Enum::YLeaf level_1_2;
-        static const Enum::YLeaf level_2;
+        static const ydk::Enum::YLeaf level_1;
+        static const ydk::Enum::YLeaf level_1_2;
+        static const ydk::Enum::YLeaf level_2;
 
 };
 
-class IsisRoutesLevelTypeEnum : public Enum
+class IsisLevelType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf level_1;
-        static const Enum::YLeaf level_1_2;
-        static const Enum::YLeaf level_2;
+        static const ydk::Enum::YLeaf level_1;
+        static const ydk::Enum::YLeaf level_1_2;
+        static const ydk::Enum::YLeaf level_2;
 
 };
 

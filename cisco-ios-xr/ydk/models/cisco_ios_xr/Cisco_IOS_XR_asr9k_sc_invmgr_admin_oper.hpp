@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper {
 
-class Inventory : public Entity
+class Inventory : public ydk::Entity
 {
     public:
         Inventory();
@@ -18,15 +18,18 @@ class Inventory : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Racks; //type: Inventory::Racks
 
@@ -35,7 +38,7 @@ class Inventory : public Entity
 }; // Inventory
 
 
-class Inventory::Racks : public Entity
+class Inventory::Racks : public ydk::Entity
 {
     public:
         Racks();
@@ -43,11 +46,13 @@ class Inventory::Racks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rack; //type: Inventory::Racks::Rack
 
@@ -56,7 +61,7 @@ class Inventory::Racks : public Entity
 }; // Inventory::Racks
 
 
-class Inventory::Racks::Rack : public Entity
+class Inventory::Racks::Rack : public ydk::Entity
 {
     public:
         Rack();
@@ -64,13 +69,15 @@ class Inventory::Racks::Rack : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class PowerSupplyShelfs; //type: Inventory::Racks::Rack::PowerSupplyShelfs
         class Slots; //type: Inventory::Racks::Rack::Slots
         class FanTraies; //type: Inventory::Racks::Rack::FanTraies
@@ -86,7 +93,7 @@ class Inventory::Racks::Rack : public Entity
 }; // Inventory::Racks::Rack
 
 
-class Inventory::Racks::Rack::PowerSupplyShelfs : public Entity
+class Inventory::Racks::Rack::PowerSupplyShelfs : public ydk::Entity
 {
     public:
         PowerSupplyShelfs();
@@ -94,11 +101,13 @@ class Inventory::Racks::Rack::PowerSupplyShelfs : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PowerSupplyShelf; //type: Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf
 
@@ -107,7 +116,7 @@ class Inventory::Racks::Rack::PowerSupplyShelfs : public Entity
 }; // Inventory::Racks::Rack::PowerSupplyShelfs
 
 
-class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf : public Entity
+class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf : public ydk::Entity
 {
     public:
         PowerSupplyShelf();
@@ -115,13 +124,15 @@ class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class BasicAttributes; //type: Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes> basic_attributes;
@@ -129,7 +140,7 @@ class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf : public Entit
 }; // Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf
 
 
-class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes : public Entity
+class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -137,11 +148,13 @@ class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::BasicInfo
 
@@ -150,7 +163,7 @@ class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttribut
 }; // Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes
 
 
-class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -158,43 +171,45 @@ class Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttribut
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::PowerSupplyShelfs::PowerSupplyShelf::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots : public Entity
+class Inventory::Racks::Rack::Slots : public ydk::Entity
 {
     public:
         Slots();
@@ -202,11 +217,13 @@ class Inventory::Racks::Rack::Slots : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Slot; //type: Inventory::Racks::Rack::Slots::Slot
 
@@ -215,7 +232,7 @@ class Inventory::Racks::Rack::Slots : public Entity
 }; // Inventory::Racks::Rack::Slots
 
 
-class Inventory::Racks::Rack::Slots::Slot : public Entity
+class Inventory::Racks::Rack::Slots::Slot : public ydk::Entity
 {
     public:
         Slot();
@@ -223,13 +240,15 @@ class Inventory::Racks::Rack::Slots::Slot : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class Cards; //type: Inventory::Racks::Rack::Slots::Slot::Cards
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes
 
@@ -239,7 +258,7 @@ class Inventory::Racks::Rack::Slots::Slot : public Entity
 }; // Inventory::Racks::Rack::Slots::Slot
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards : public ydk::Entity
 {
     public:
         Cards();
@@ -247,11 +266,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Card; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card
 
@@ -260,7 +281,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards : public Entity
 }; // Inventory::Racks::Rack::Slots::Slot::Cards
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card : public ydk::Entity
 {
     public:
         Card();
@@ -268,13 +289,15 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class SubSlots; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots
         class HwComponents; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents
         class PortSlots; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots
@@ -290,7 +313,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card : public Entity
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots : public ydk::Entity
 {
     public:
         SubSlots();
@@ -298,11 +321,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SubSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
@@ -311,7 +336,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots : public Entity
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot : public ydk::Entity
 {
     public:
         SubSlot();
@@ -319,13 +344,15 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class Module; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes
 
@@ -335,7 +362,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot : publ
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module : public ydk::Entity
 {
     public:
         Module();
@@ -343,11 +370,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PortSlots; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots
         class Sensors; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors
@@ -360,7 +389,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots : public ydk::Entity
 {
     public:
         PortSlots();
@@ -368,11 +397,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PortSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot
 
@@ -381,7 +412,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot : public ydk::Entity
 {
     public:
         PortSlot();
@@ -389,13 +420,15 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class Port; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes
 
@@ -405,7 +438,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port : public ydk::Entity
 {
     public:
         Port();
@@ -413,11 +446,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes
 
@@ -426,7 +461,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -434,11 +469,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
@@ -449,7 +486,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -457,19 +494,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime
 
@@ -479,7 +518,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -487,19 +526,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -507,19 +548,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -527,43 +570,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -571,11 +616,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo
@@ -586,7 +633,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -594,19 +641,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime
 
@@ -616,7 +665,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -624,19 +673,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -644,19 +695,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -664,43 +717,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors : public ydk::Entity
 {
     public:
         Sensors();
@@ -708,11 +763,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor
 
@@ -721,7 +778,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor : public ydk::Entity
 {
     public:
         Sensor();
@@ -729,13 +786,15 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes> basic_attributes;
@@ -743,7 +802,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -751,11 +810,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo
@@ -766,7 +827,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -774,19 +835,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
@@ -796,7 +859,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -804,19 +867,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -824,19 +889,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -844,43 +911,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -888,11 +957,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo
@@ -903,7 +974,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -911,19 +982,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime
 
@@ -933,7 +1006,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -941,19 +1014,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -961,19 +1036,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -981,43 +1058,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -1025,11 +1104,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo
@@ -1040,7 +1121,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -1048,19 +1129,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime
 
@@ -1070,7 +1153,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -1078,19 +1161,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -1098,19 +1183,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -1118,43 +1205,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents : public ydk::Entity
 {
     public:
         HwComponents();
@@ -1162,11 +1251,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class HwComponent; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 
@@ -1175,7 +1266,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents : public En
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent : public ydk::Entity
 {
     public:
         HwComponent();
@@ -1183,13 +1274,15 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class Sensors; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes
 
@@ -1199,7 +1292,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors : public ydk::Entity
 {
     public:
         Sensors();
@@ -1207,11 +1300,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor
 
@@ -1220,7 +1315,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor : public ydk::Entity
 {
     public:
         Sensor();
@@ -1228,13 +1323,15 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes> basic_attributes;
@@ -1242,7 +1339,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -1250,11 +1347,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo
@@ -1265,7 +1364,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -1273,19 +1372,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
@@ -1295,7 +1396,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -1303,19 +1404,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -1323,19 +1426,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -1343,43 +1448,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -1387,11 +1494,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo
@@ -1402,7 +1511,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -1410,19 +1519,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime
 
@@ -1432,7 +1543,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -1440,19 +1551,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -1460,19 +1573,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -1480,43 +1595,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots : public ydk::Entity
 {
     public:
         PortSlots();
@@ -1524,11 +1641,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PortSlot; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot
 
@@ -1537,7 +1656,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots : public Entit
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot : public ydk::Entity
 {
     public:
         PortSlot();
@@ -1545,13 +1664,15 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class Port; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes
 
@@ -1561,7 +1682,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot : pu
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port : public ydk::Entity
 {
     public:
         Port();
@@ -1569,11 +1690,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes
 
@@ -1582,7 +1705,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -1590,11 +1713,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
@@ -1605,7 +1730,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -1613,19 +1738,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime
 
@@ -1635,7 +1762,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -1643,19 +1770,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -1663,19 +1792,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -1683,43 +1814,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -1727,11 +1860,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo
@@ -1742,7 +1877,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -1750,19 +1885,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime
 
@@ -1772,7 +1909,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -1780,19 +1917,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -1800,19 +1939,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -1820,43 +1961,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors : public ydk::Entity
 {
     public:
         Sensors();
@@ -1864,11 +2007,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Sensor; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor
 
@@ -1877,7 +2022,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors : public Entity
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor : public ydk::Entity
 {
     public:
         Sensor();
@@ -1885,13 +2030,15 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class BasicAttributes; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes> basic_attributes;
@@ -1899,7 +2046,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor : public
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -1907,11 +2054,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo
@@ -1922,7 +2071,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -1930,19 +2079,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
@@ -1952,7 +2103,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -1960,19 +2111,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -1980,19 +2133,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -2000,43 +2155,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -2044,11 +2201,13 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo
@@ -2059,7 +2218,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes : public
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -2067,19 +2226,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime
 
@@ -2089,7 +2250,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -2097,19 +2258,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -2117,19 +2280,21 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -2137,43 +2302,45 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicIn
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::BasicAttributes : public Entity
+class Inventory::Racks::Rack::Slots::Slot::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -2181,11 +2348,13 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FruInfo; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo
         class BasicInfo; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo
@@ -2196,7 +2365,7 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes : public Entity
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes
 
 
-class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo : public ydk::Entity
 {
     public:
         FruInfo();
@@ -2204,19 +2373,21 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf card_administrative_state; //type: int32
-        YLeaf power_administrative_state; //type: int32
-        YLeaf card_operational_state; //type: int32
-        YLeaf card_monitor_state; //type: int32
-        YLeaf card_reset_reason; //type: CardResetReasonEnum
-        YLeaf power_current_measurement; //type: int32
-        YLeaf power_operational_state; //type: int32
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
         class LastOperationalStateChange; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange
         class CardUpTime; //type: Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime
 
@@ -2226,7 +2397,7 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo : public Ent
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo
 
 
-class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange : public Entity
+class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange : public ydk::Entity
 {
     public:
         LastOperationalStateChange();
@@ -2234,19 +2405,21 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperati
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::LastOperationalStateChange
 
 
-class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime : public Entity
+class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime : public ydk::Entity
 {
     public:
         CardUpTime();
@@ -2254,19 +2427,21 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf time_in_seconds; //type: int32
-        YLeaf time_in_nano_seconds; //type: int32
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::FruInfo::CardUpTime
 
 
-class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -2274,43 +2449,45 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::FanTraies : public Entity
+class Inventory::Racks::Rack::FanTraies : public ydk::Entity
 {
     public:
         FanTraies();
@@ -2318,11 +2495,13 @@ class Inventory::Racks::Rack::FanTraies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class FanTray; //type: Inventory::Racks::Rack::FanTraies::FanTray
 
@@ -2331,7 +2510,7 @@ class Inventory::Racks::Rack::FanTraies : public Entity
 }; // Inventory::Racks::Rack::FanTraies
 
 
-class Inventory::Racks::Rack::FanTraies::FanTray : public Entity
+class Inventory::Racks::Rack::FanTraies::FanTray : public ydk::Entity
 {
     public:
         FanTray();
@@ -2339,13 +2518,15 @@ class Inventory::Racks::Rack::FanTraies::FanTray : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class BasicAttributes; //type: Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes> basic_attributes;
@@ -2353,7 +2534,7 @@ class Inventory::Racks::Rack::FanTraies::FanTray : public Entity
 }; // Inventory::Racks::Rack::FanTraies::FanTray
 
 
-class Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes : public Entity
+class Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -2361,11 +2542,13 @@ class Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo
 
@@ -2374,7 +2557,7 @@ class Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes : public Entit
 }; // Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes
 
 
-class Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -2382,43 +2565,45 @@ class Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::FanTraies::FanTray::BasicAttributes::BasicInfo
 
 
-class Inventory::Racks::Rack::PowerSupplyZones : public Entity
+class Inventory::Racks::Rack::PowerSupplyZones : public ydk::Entity
 {
     public:
         PowerSupplyZones();
@@ -2426,11 +2611,13 @@ class Inventory::Racks::Rack::PowerSupplyZones : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PowerSupplyZone; //type: Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone
 
@@ -2439,7 +2626,7 @@ class Inventory::Racks::Rack::PowerSupplyZones : public Entity
 }; // Inventory::Racks::Rack::PowerSupplyZones
 
 
-class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone : public Entity
+class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone : public ydk::Entity
 {
     public:
         PowerSupplyZone();
@@ -2447,13 +2634,15 @@ class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class PowerSupplyZoneAttributes; //type: Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_sc_invmgr_admin_oper::Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes> power_supply_zone_attributes;
@@ -2461,7 +2650,7 @@ class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone : public Entity
 }; // Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone
 
 
-class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes : public Entity
+class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes : public ydk::Entity
 {
     public:
         PowerSupplyZoneAttributes();
@@ -2469,11 +2658,13 @@ class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZone
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class PowerSupplyGroupInfo; //type: Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes::PowerSupplyGroupInfo
 
@@ -2482,7 +2673,7 @@ class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZone
 }; // Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes
 
 
-class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes::PowerSupplyGroupInfo : public Entity
+class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes::PowerSupplyGroupInfo : public ydk::Entity
 {
     public:
         PowerSupplyGroupInfo();
@@ -2490,21 +2681,23 @@ class Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZone
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf power_group_redundancy_mode; //type: int32
-        YLeaf power_group_power_units; //type: string
-        YLeaf power_group_available_current; //type: int32
-        YLeaf power_group_drawn_current; //type: int32
+        ydk::YLeaf power_group_redundancy_mode; //type: int32
+        ydk::YLeaf power_group_power_units; //type: string
+        ydk::YLeaf power_group_available_current; //type: int32
+        ydk::YLeaf power_group_drawn_current; //type: int32
 
 }; // Inventory::Racks::Rack::PowerSupplyZones::PowerSupplyZone::PowerSupplyZoneAttributes::PowerSupplyGroupInfo
 
 
-class Inventory::Racks::Rack::BasicAttributes : public Entity
+class Inventory::Racks::Rack::BasicAttributes : public ydk::Entity
 {
     public:
         BasicAttributes();
@@ -2512,11 +2705,13 @@ class Inventory::Racks::Rack::BasicAttributes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class BasicInfo; //type: Inventory::Racks::Rack::BasicAttributes::BasicInfo
 
@@ -2525,7 +2720,7 @@ class Inventory::Racks::Rack::BasicAttributes : public Entity
 }; // Inventory::Racks::Rack::BasicAttributes
 
 
-class Inventory::Racks::Rack::BasicAttributes::BasicInfo : public Entity
+class Inventory::Racks::Rack::BasicAttributes::BasicInfo : public ydk::Entity
 {
     public:
         BasicInfo();
@@ -2533,68 +2728,70 @@ class Inventory::Racks::Rack::BasicAttributes::BasicInfo : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf description; //type: string
-        YLeaf vendor_type; //type: string
-        YLeaf name; //type: string
-        YLeaf hardware_revision; //type: string
-        YLeaf firmware_revision; //type: string
-        YLeaf software_revision; //type: string
-        YLeaf chip_hardware_revision; //type: string
-        YLeaf serial_number; //type: string
-        YLeaf manufacturer_name; //type: string
-        YLeaf model_name; //type: string
-        YLeaf asset_id_str; //type: string
-        YLeaf asset_identification; //type: int32
-        YLeaf is_field_replaceable_unit; //type: boolean
-        YLeaf manufacturer_asset_tags; //type: int32
-        YLeaf composite_class_code; //type: int32
-        YLeaf memory_size; //type: int32
-        YLeaf environmental_monitor_path; //type: string
-        YLeaf alias; //type: string
-        YLeaf group_flag; //type: boolean
-        YLeaf new_deviation_number; //type: int32
-        YLeaf physical_layer_interface_module_type; //type: int32
-        YLeaf unrecognized_fru; //type: boolean
-        YLeaf redundancystate; //type: int32
-        YLeaf ceport; //type: boolean
-        YLeaf xr_scoped; //type: boolean
-        YLeaf unique_id; //type: int32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf vendor_type; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_revision; //type: string
+        ydk::YLeaf firmware_revision; //type: string
+        ydk::YLeaf software_revision; //type: string
+        ydk::YLeaf chip_hardware_revision; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf manufacturer_name; //type: string
+        ydk::YLeaf model_name; //type: string
+        ydk::YLeaf asset_id_str; //type: string
+        ydk::YLeaf asset_identification; //type: int32
+        ydk::YLeaf is_field_replaceable_unit; //type: boolean
+        ydk::YLeaf manufacturer_asset_tags; //type: int32
+        ydk::YLeaf composite_class_code; //type: int32
+        ydk::YLeaf memory_size; //type: int32
+        ydk::YLeaf environmental_monitor_path; //type: string
+        ydk::YLeaf alias; //type: string
+        ydk::YLeaf group_flag; //type: boolean
+        ydk::YLeaf new_deviation_number; //type: int32
+        ydk::YLeaf physical_layer_interface_module_type; //type: int32
+        ydk::YLeaf unrecognized_fru; //type: boolean
+        ydk::YLeaf redundancystate; //type: int32
+        ydk::YLeaf ceport; //type: boolean
+        ydk::YLeaf xr_scoped; //type: boolean
+        ydk::YLeaf unique_id; //type: int32
 
 }; // Inventory::Racks::Rack::BasicAttributes::BasicInfo
 
-class CardResetReasonEnum : public Enum
+class CardResetReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf reset_unknown;
-        static const Enum::YLeaf power_up;
-        static const Enum::YLeaf parity_error;
-        static const Enum::YLeaf clear_config_reset;
-        static const Enum::YLeaf manual_reset;
-        static const Enum::YLeaf watch_dog_timeout_reset;
-        static const Enum::YLeaf resource_overflow_reset;
-        static const Enum::YLeaf missing_task_reset;
-        static const Enum::YLeaf low_voltage_reset;
-        static const Enum::YLeaf controller_reset;
-        static const Enum::YLeaf system_reset;
-        static const Enum::YLeaf switchover_reset;
-        static const Enum::YLeaf upgrade_reset;
-        static const Enum::YLeaf downgrade_reset;
-        static const Enum::YLeaf cache_error_reset;
-        static const Enum::YLeaf device_driver_reset;
-        static const Enum::YLeaf software_exception_reset;
-        static const Enum::YLeaf restore_config_reset;
-        static const Enum::YLeaf abort_rev_reset;
-        static const Enum::YLeaf burn_boot_reset;
-        static const Enum::YLeaf standby_cd_healthier_reset;
-        static const Enum::YLeaf non_native_config_clear_reset;
-        static const Enum::YLeaf memory_protection_error_reset;
-        static const Enum::YLeaf card_reset_reason_max;
+        static const ydk::Enum::YLeaf reset_unknown;
+        static const ydk::Enum::YLeaf power_up;
+        static const ydk::Enum::YLeaf parity_error;
+        static const ydk::Enum::YLeaf clear_config_reset;
+        static const ydk::Enum::YLeaf manual_reset;
+        static const ydk::Enum::YLeaf watch_dog_timeout_reset;
+        static const ydk::Enum::YLeaf resource_overflow_reset;
+        static const ydk::Enum::YLeaf missing_task_reset;
+        static const ydk::Enum::YLeaf low_voltage_reset;
+        static const ydk::Enum::YLeaf controller_reset;
+        static const ydk::Enum::YLeaf system_reset;
+        static const ydk::Enum::YLeaf switchover_reset;
+        static const ydk::Enum::YLeaf upgrade_reset;
+        static const ydk::Enum::YLeaf downgrade_reset;
+        static const ydk::Enum::YLeaf cache_error_reset;
+        static const ydk::Enum::YLeaf device_driver_reset;
+        static const ydk::Enum::YLeaf software_exception_reset;
+        static const ydk::Enum::YLeaf restore_config_reset;
+        static const ydk::Enum::YLeaf abort_rev_reset;
+        static const ydk::Enum::YLeaf burn_boot_reset;
+        static const ydk::Enum::YLeaf standby_cd_healthier_reset;
+        static const ydk::Enum::YLeaf non_native_config_clear_reset;
+        static const ydk::Enum::YLeaf memory_protection_error_reset;
+        static const ydk::Enum::YLeaf card_reset_reason_max;
 
 };
 

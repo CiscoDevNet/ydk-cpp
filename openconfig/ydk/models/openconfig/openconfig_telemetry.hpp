@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace openconfig {
 namespace openconfig_telemetry {
 
-class TelemetrySystem : public Entity
+class TelemetrySystem : public ydk::Entity
 {
     public:
         TelemetrySystem();
@@ -18,15 +18,18 @@ class TelemetrySystem : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class SensorGroups; //type: TelemetrySystem::SensorGroups
         class DestinationGroups; //type: TelemetrySystem::DestinationGroups
@@ -39,7 +42,7 @@ class TelemetrySystem : public Entity
 }; // TelemetrySystem
 
 
-class TelemetrySystem::SensorGroups : public Entity
+class TelemetrySystem::SensorGroups : public ydk::Entity
 {
     public:
         SensorGroups();
@@ -47,11 +50,13 @@ class TelemetrySystem::SensorGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SensorGroup; //type: TelemetrySystem::SensorGroups::SensorGroup
 
@@ -60,7 +65,7 @@ class TelemetrySystem::SensorGroups : public Entity
 }; // TelemetrySystem::SensorGroups
 
 
-class TelemetrySystem::SensorGroups::SensorGroup : public Entity
+class TelemetrySystem::SensorGroups::SensorGroup : public ydk::Entity
 {
     public:
         SensorGroup();
@@ -68,14 +73,16 @@ class TelemetrySystem::SensorGroups::SensorGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
-        YLeaf sensor_group_id;
+        ydk::YLeaf sensor_group_id;
         class Config; //type: TelemetrySystem::SensorGroups::SensorGroup::Config
         class State; //type: TelemetrySystem::SensorGroups::SensorGroup::State
         class SensorPaths; //type: TelemetrySystem::SensorGroups::SensorGroup::SensorPaths
@@ -87,7 +94,7 @@ class TelemetrySystem::SensorGroups::SensorGroup : public Entity
 }; // TelemetrySystem::SensorGroups::SensorGroup
 
 
-class TelemetrySystem::SensorGroups::SensorGroup::Config : public Entity
+class TelemetrySystem::SensorGroups::SensorGroup::Config : public ydk::Entity
 {
     public:
         Config();
@@ -95,18 +102,20 @@ class TelemetrySystem::SensorGroups::SensorGroup::Config : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sensor_group_id; //type: string
+        ydk::YLeaf sensor_group_id; //type: string
 
 }; // TelemetrySystem::SensorGroups::SensorGroup::Config
 
 
-class TelemetrySystem::SensorGroups::SensorGroup::State : public Entity
+class TelemetrySystem::SensorGroups::SensorGroup::State : public ydk::Entity
 {
     public:
         State();
@@ -114,18 +123,20 @@ class TelemetrySystem::SensorGroups::SensorGroup::State : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf sensor_group_id; //type: string
+        ydk::YLeaf sensor_group_id; //type: string
 
 }; // TelemetrySystem::SensorGroups::SensorGroup::State
 
 
-class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths : public Entity
+class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths : public ydk::Entity
 {
     public:
         SensorPaths();
@@ -133,11 +144,13 @@ class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SensorPath; //type: TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath
 
@@ -146,7 +159,7 @@ class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths : public Entity
 }; // TelemetrySystem::SensorGroups::SensorGroup::SensorPaths
 
 
-class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath : public Entity
+class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath : public ydk::Entity
 {
     public:
         SensorPath();
@@ -154,14 +167,16 @@ class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::path)
-        YLeaf path;
+        ydk::YLeaf path;
         class Config; //type: TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config
         class State; //type: TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State
 
@@ -171,7 +186,7 @@ class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath : publ
 }; // TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath
 
 
-class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config : public Entity
+class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config : public ydk::Entity
 {
     public:
         Config();
@@ -179,19 +194,21 @@ class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Confi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: string
-        YLeaf exclude_filter; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf exclude_filter; //type: string
 
 }; // TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config
 
 
-class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State : public Entity
+class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State : public ydk::Entity
 {
     public:
         State();
@@ -199,19 +216,21 @@ class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: string
-        YLeaf exclude_filter; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf exclude_filter; //type: string
 
 }; // TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State
 
 
-class TelemetrySystem::DestinationGroups : public Entity
+class TelemetrySystem::DestinationGroups : public ydk::Entity
 {
     public:
         DestinationGroups();
@@ -219,11 +238,13 @@ class TelemetrySystem::DestinationGroups : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DestinationGroup; //type: TelemetrySystem::DestinationGroups::DestinationGroup
 
@@ -232,7 +253,7 @@ class TelemetrySystem::DestinationGroups : public Entity
 }; // TelemetrySystem::DestinationGroups
 
 
-class TelemetrySystem::DestinationGroups::DestinationGroup : public Entity
+class TelemetrySystem::DestinationGroups::DestinationGroup : public ydk::Entity
 {
     public:
         DestinationGroup();
@@ -240,14 +261,16 @@ class TelemetrySystem::DestinationGroups::DestinationGroup : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Config::group_id)
-        YLeaf group_id;
+        ydk::YLeaf group_id;
         class Config; //type: TelemetrySystem::DestinationGroups::DestinationGroup::Config
         class State; //type: TelemetrySystem::DestinationGroups::DestinationGroup::State
         class Destinations; //type: TelemetrySystem::DestinationGroups::DestinationGroup::Destinations
@@ -259,7 +282,7 @@ class TelemetrySystem::DestinationGroups::DestinationGroup : public Entity
 }; // TelemetrySystem::DestinationGroups::DestinationGroup
 
 
-class TelemetrySystem::DestinationGroups::DestinationGroup::Config : public Entity
+class TelemetrySystem::DestinationGroups::DestinationGroup::Config : public ydk::Entity
 {
     public:
         Config();
@@ -267,18 +290,20 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::Config : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf group_id; //type: string
+        ydk::YLeaf group_id; //type: string
 
 }; // TelemetrySystem::DestinationGroups::DestinationGroup::Config
 
 
-class TelemetrySystem::DestinationGroups::DestinationGroup::State : public Entity
+class TelemetrySystem::DestinationGroups::DestinationGroup::State : public ydk::Entity
 {
     public:
         State();
@@ -286,18 +311,20 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::State : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf group_id; //type: string
+        ydk::YLeaf group_id; //type: string
 
 }; // TelemetrySystem::DestinationGroups::DestinationGroup::State
 
 
-class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations : public Entity
+class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations : public ydk::Entity
 {
     public:
         Destinations();
@@ -305,11 +332,13 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Destination; //type: TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination
 
@@ -318,7 +347,7 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations : publi
 }; // TelemetrySystem::DestinationGroups::DestinationGroup::Destinations
 
 
-class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination : public Entity
+class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination : public ydk::Entity
 {
     public:
         Destination();
@@ -326,16 +355,18 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: union (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::destination_address)
-        YLeaf destination_address;
+        ydk::YLeaf destination_address;
         //type: uint16 (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::destination_port)
-        YLeaf destination_port;
+        ydk::YLeaf destination_port;
         class Config; //type: TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config
         class State; //type: TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State
 
@@ -345,7 +376,7 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destin
 }; // TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination
 
 
-class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config : public Entity
+class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config : public ydk::Entity
 {
     public:
         Config();
@@ -353,20 +384,22 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf destination_port; //type: uint16
-        YLeaf destination_protocol; //type: TelemetryStreamProtocolEnum
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_port; //type: uint16
+        ydk::YLeaf destination_protocol; //type: TelemetryStreamProtocol
 
 }; // TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config
 
 
-class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State : public Entity
+class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State : public ydk::Entity
 {
     public:
         State();
@@ -374,20 +407,22 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destin
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf destination_address; //type: string
-        YLeaf destination_port; //type: uint16
-        YLeaf destination_protocol; //type: TelemetryStreamProtocolEnum
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_port; //type: uint16
+        ydk::YLeaf destination_protocol; //type: TelemetryStreamProtocol
 
 }; // TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State
 
 
-class TelemetrySystem::Subscriptions : public Entity
+class TelemetrySystem::Subscriptions : public ydk::Entity
 {
     public:
         Subscriptions();
@@ -395,11 +430,13 @@ class TelemetrySystem::Subscriptions : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Persistent; //type: TelemetrySystem::Subscriptions::Persistent
         class Dynamic; //type: TelemetrySystem::Subscriptions::Dynamic
@@ -410,7 +447,7 @@ class TelemetrySystem::Subscriptions : public Entity
 }; // TelemetrySystem::Subscriptions
 
 
-class TelemetrySystem::Subscriptions::Persistent : public Entity
+class TelemetrySystem::Subscriptions::Persistent : public ydk::Entity
 {
     public:
         Persistent();
@@ -418,11 +455,13 @@ class TelemetrySystem::Subscriptions::Persistent : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Subscription; //type: TelemetrySystem::Subscriptions::Persistent::Subscription
 
@@ -431,7 +470,7 @@ class TelemetrySystem::Subscriptions::Persistent : public Entity
 }; // TelemetrySystem::Subscriptions::Persistent
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription : public ydk::Entity
 {
     public:
         Subscription();
@@ -439,14 +478,16 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: uint64 (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::Config::subscription_id)
-        YLeaf subscription_id;
+        ydk::YLeaf subscription_id;
         class Config; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::Config
         class State; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::State
         class SensorProfiles; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles
@@ -460,7 +501,7 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription : public Entity
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::Config : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::Config : public ydk::Entity
 {
     public:
         Config();
@@ -468,20 +509,22 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::Config : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf subscription_id; //type: uint64
-        YLeaf local_source_address; //type: string
-        YLeaf originated_qos_marking; //type: uint8
+        ydk::YLeaf subscription_id; //type: uint64
+        ydk::YLeaf local_source_address; //type: string
+        ydk::YLeaf originated_qos_marking; //type: uint8
 
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::Config
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::State : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::State : public ydk::Entity
 {
     public:
         State();
@@ -489,20 +532,22 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::State : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf subscription_id; //type: uint64
-        YLeaf local_source_address; //type: string
-        YLeaf originated_qos_marking; //type: uint8
+        ydk::YLeaf subscription_id; //type: uint64
+        ydk::YLeaf local_source_address; //type: string
+        ydk::YLeaf originated_qos_marking; //type: uint8
 
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::State
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles : public ydk::Entity
 {
     public:
         SensorProfiles();
@@ -510,11 +555,13 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SensorProfile; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile
 
@@ -523,7 +570,7 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles :
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile : public ydk::Entity
 {
     public:
         SensorProfile();
@@ -531,14 +578,16 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: leafref (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::sensor_group)
-        YLeaf sensor_group;
+        ydk::YLeaf sensor_group;
         class Config; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config
         class State; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State
 
@@ -548,7 +597,7 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config : public ydk::Entity
 {
     public:
         Config();
@@ -556,22 +605,24 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
-        YLeaf sensor_group;
-        YLeaf sample_interval; //type: uint64
-        YLeaf heartbeat_interval; //type: uint64
-        YLeaf suppress_redundant; //type: boolean
+        ydk::YLeaf sensor_group;
+        ydk::YLeaf sample_interval; //type: uint64
+        ydk::YLeaf heartbeat_interval; //type: uint64
+        ydk::YLeaf suppress_redundant; //type: boolean
 
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State : public ydk::Entity
 {
     public:
         State();
@@ -579,22 +630,24 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::Config::sensor_group_id)
-        YLeaf sensor_group;
-        YLeaf sample_interval; //type: uint64
-        YLeaf heartbeat_interval; //type: uint64
-        YLeaf suppress_redundant; //type: boolean
+        ydk::YLeaf sensor_group;
+        ydk::YLeaf sample_interval; //type: uint64
+        ydk::YLeaf heartbeat_interval; //type: uint64
+        ydk::YLeaf suppress_redundant; //type: boolean
 
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups : public ydk::Entity
 {
     public:
         DestinationGroups();
@@ -602,11 +655,13 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroup
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DestinationGroup; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup
 
@@ -615,7 +670,7 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroup
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup : public ydk::Entity
 {
     public:
         DestinationGroup();
@@ -623,14 +678,16 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroup
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: leafref (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::group_id)
-        YLeaf group_id;
+        ydk::YLeaf group_id;
         class Config; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config
         class State; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State
 
@@ -640,7 +697,7 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroup
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config : public ydk::Entity
 {
     public:
         Config();
@@ -648,19 +705,21 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroup
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: leafref (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::group_id)
-        YLeaf group_id;
+        ydk::YLeaf group_id;
 
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config
 
 
-class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State : public Entity
+class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State : public ydk::Entity
 {
     public:
         State();
@@ -668,19 +727,21 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroup
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: leafref (refers to openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::group_id)
-        YLeaf group_id;
+        ydk::YLeaf group_id;
 
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State
 
 
-class TelemetrySystem::Subscriptions::Dynamic : public Entity
+class TelemetrySystem::Subscriptions::Dynamic : public ydk::Entity
 {
     public:
         Dynamic();
@@ -688,11 +749,13 @@ class TelemetrySystem::Subscriptions::Dynamic : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Subscription; //type: TelemetrySystem::Subscriptions::Dynamic::Subscription
 
@@ -701,7 +764,7 @@ class TelemetrySystem::Subscriptions::Dynamic : public Entity
 }; // TelemetrySystem::Subscriptions::Dynamic
 
 
-class TelemetrySystem::Subscriptions::Dynamic::Subscription : public Entity
+class TelemetrySystem::Subscriptions::Dynamic::Subscription : public ydk::Entity
 {
     public:
         Subscription();
@@ -709,14 +772,16 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: uint64 (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription::State::subscription_id)
-        YLeaf subscription_id;
+        ydk::YLeaf subscription_id;
         class State; //type: TelemetrySystem::Subscriptions::Dynamic::Subscription::State
         class SensorPaths; //type: TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths
 
@@ -726,7 +791,7 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription : public Entity
 }; // TelemetrySystem::Subscriptions::Dynamic::Subscription
 
 
-class TelemetrySystem::Subscriptions::Dynamic::Subscription::State : public Entity
+class TelemetrySystem::Subscriptions::Dynamic::Subscription::State : public ydk::Entity
 {
     public:
         State();
@@ -734,25 +799,27 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription::State : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf subscription_id; //type: uint64
-        YLeaf destination_address; //type: string
-        YLeaf destination_port; //type: uint16
-        YLeaf destination_protocol; //type: TelemetryStreamProtocolEnum
-        YLeaf sample_interval; //type: uint64
-        YLeaf heartbeat_interval; //type: uint64
-        YLeaf suppress_redundant; //type: boolean
-        YLeaf originated_qos_marking; //type: uint8
+        ydk::YLeaf subscription_id; //type: uint64
+        ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf destination_port; //type: uint16
+        ydk::YLeaf destination_protocol; //type: TelemetryStreamProtocol
+        ydk::YLeaf sample_interval; //type: uint64
+        ydk::YLeaf heartbeat_interval; //type: uint64
+        ydk::YLeaf suppress_redundant; //type: boolean
+        ydk::YLeaf originated_qos_marking; //type: uint8
 
 }; // TelemetrySystem::Subscriptions::Dynamic::Subscription::State
 
 
-class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths : public Entity
+class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths : public ydk::Entity
 {
     public:
         SensorPaths();
@@ -760,11 +827,13 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class SensorPath; //type: TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath
 
@@ -773,7 +842,7 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths : publi
 }; // TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths
 
 
-class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath : public Entity
+class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath : public ydk::Entity
 {
     public:
         SensorPath();
@@ -781,14 +850,16 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::path)
-        YLeaf path;
+        ydk::YLeaf path;
         class State; //type: TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State
 
         std::shared_ptr<openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State> state;
@@ -796,7 +867,7 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::Sensor
 }; // TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath
 
 
-class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State : public Entity
+class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State : public ydk::Entity
 {
     public:
         State();
@@ -804,22 +875,24 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::Sensor
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf path; //type: string
-        YLeaf exclude_filter; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf exclude_filter; //type: string
 
 }; // TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State
 
-class TelemetryStreamProtocolEnum : public Enum
+class TelemetryStreamProtocol : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf TCP;
-        static const Enum::YLeaf UDP;
+        static const ydk::Enum::YLeaf TCP;
+        static const ydk::Enum::YLeaf UDP;
 
 };
 

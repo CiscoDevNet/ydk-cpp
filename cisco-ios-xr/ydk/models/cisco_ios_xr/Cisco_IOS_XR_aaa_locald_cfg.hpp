@@ -7,16 +7,16 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_aaa_locald_cfg {
 
-class AaaLocaldTaskClassEnum : public Enum
+class AaaLocaldTaskClass : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf read;
-        static const Enum::YLeaf write;
-        static const Enum::YLeaf execute;
-        static const Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf read;
+        static const ydk::Enum::YLeaf write;
+        static const ydk::Enum::YLeaf execute;
+        static const ydk::Enum::YLeaf debug;
 
 };
 

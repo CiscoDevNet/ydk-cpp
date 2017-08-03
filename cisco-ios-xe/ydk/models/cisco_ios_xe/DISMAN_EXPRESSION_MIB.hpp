@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace DISMAN_EXPRESSION_MIB {
 
-class DismanExpressionMib : public Entity
+class DismanExpressionMib : public ydk::Entity
 {
     public:
         DismanExpressionMib();
@@ -19,15 +19,18 @@ class DismanExpressionMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Expresource; //type: DismanExpressionMib::Expresource
         class Expexpressiontable; //type: DismanExpressionMib::Expexpressiontable
@@ -35,16 +38,16 @@ class DismanExpressionMib : public Entity
         class Expobjecttable; //type: DismanExpressionMib::Expobjecttable
         class Expvaluetable; //type: DismanExpressionMib::Expvaluetable
 
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Experrortable> experrortable_;
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable> expexpressiontable_;
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expobjecttable> expobjecttable_;
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expresource> expresource_;
-        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expvaluetable> expvaluetable_;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Experrortable> experrortable;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable> expexpressiontable;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expobjecttable> expobjecttable;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expresource> expresource;
+        std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expvaluetable> expvaluetable;
         
 }; // DismanExpressionMib
 
 
-class DismanExpressionMib::Expresource : public Entity
+class DismanExpressionMib::Expresource : public ydk::Entity
 {
     public:
         Expresource();
@@ -52,22 +55,24 @@ class DismanExpressionMib::Expresource : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf expresourcedeltaminimum; //type: int32
-        YLeaf expresourcedeltawildcardinstancemaximum; //type: uint32
-        YLeaf expresourcedeltawildcardinstances; //type: uint32
-        YLeaf expresourcedeltawildcardinstanceshigh; //type: uint32
-        YLeaf expresourcedeltawildcardinstanceresourcelacks; //type: uint32
+        ydk::YLeaf expresourcedeltaminimum; //type: int32
+        ydk::YLeaf expresourcedeltawildcardinstancemaximum; //type: uint32
+        ydk::YLeaf expresourcedeltawildcardinstances; //type: uint32
+        ydk::YLeaf expresourcedeltawildcardinstanceshigh; //type: uint32
+        ydk::YLeaf expresourcedeltawildcardinstanceresourcelacks; //type: uint32
 
 }; // DismanExpressionMib::Expresource
 
 
-class DismanExpressionMib::Expexpressiontable : public Entity
+class DismanExpressionMib::Expexpressiontable : public ydk::Entity
 {
     public:
         Expexpressiontable();
@@ -75,20 +80,22 @@ class DismanExpressionMib::Expexpressiontable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Expexpressionentry; //type: DismanExpressionMib::Expexpressiontable::Expexpressionentry
 
-        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry> > expexpressionentry_;
+        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry> > expexpressionentry;
         
 }; // DismanExpressionMib::Expexpressiontable
 
 
-class DismanExpressionMib::Expexpressiontable::Expexpressionentry : public Entity
+class DismanExpressionMib::Expexpressiontable::Expexpressionentry : public ydk::Entity
 {
     public:
         Expexpressionentry();
@@ -96,27 +103,29 @@ class DismanExpressionMib::Expexpressiontable::Expexpressionentry : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf expexpressionowner; //type: string
-        YLeaf expexpressionname; //type: string
-        YLeaf expexpression; //type: binary
-        YLeaf expexpressionvaluetype; //type: ExpexpressionvaluetypeEnum
-        YLeaf expexpressioncomment; //type: string
-        YLeaf expexpressiondeltainterval; //type: int32
-        YLeaf expexpressionprefix; //type: string
-        YLeaf expexpressionerrors; //type: uint32
-        YLeaf expexpressionentrystatus; //type: RowstatusEnum
-        class ExpexpressionvaluetypeEnum;
+        ydk::YLeaf expexpressionowner; //type: string
+        ydk::YLeaf expexpressionname; //type: string
+        ydk::YLeaf expexpression; //type: binary
+        ydk::YLeaf expexpressionvaluetype; //type: Expexpressionvaluetype
+        ydk::YLeaf expexpressioncomment; //type: string
+        ydk::YLeaf expexpressiondeltainterval; //type: int32
+        ydk::YLeaf expexpressionprefix; //type: string
+        ydk::YLeaf expexpressionerrors; //type: uint32
+        ydk::YLeaf expexpressionentrystatus; //type: Rowstatus
+        class Expexpressionvaluetype;
 
 }; // DismanExpressionMib::Expexpressiontable::Expexpressionentry
 
 
-class DismanExpressionMib::Experrortable : public Entity
+class DismanExpressionMib::Experrortable : public ydk::Entity
 {
     public:
         Experrortable();
@@ -124,20 +133,22 @@ class DismanExpressionMib::Experrortable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Experrorentry; //type: DismanExpressionMib::Experrortable::Experrorentry
 
-        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Experrortable::Experrorentry> > experrorentry_;
+        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Experrortable::Experrorentry> > experrorentry;
         
 }; // DismanExpressionMib::Experrortable
 
 
-class DismanExpressionMib::Experrortable::Experrorentry : public Entity
+class DismanExpressionMib::Experrortable::Experrorentry : public ydk::Entity
 {
     public:
         Experrorentry();
@@ -145,26 +156,28 @@ class DismanExpressionMib::Experrortable::Experrorentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry::expexpressionowner)
-        YLeaf expexpressionowner;
+        ydk::YLeaf expexpressionowner;
         //type: string (refers to DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry::expexpressionname)
-        YLeaf expexpressionname;
-        YLeaf experrortime; //type: uint32
-        YLeaf experrorindex; //type: int32
-        YLeaf experrorcode; //type: ExperrorcodeEnum
-        YLeaf experrorinstance; //type: string
-        class ExperrorcodeEnum;
+        ydk::YLeaf expexpressionname;
+        ydk::YLeaf experrortime; //type: uint32
+        ydk::YLeaf experrorindex; //type: int32
+        ydk::YLeaf experrorcode; //type: Experrorcode
+        ydk::YLeaf experrorinstance; //type: string
+        class Experrorcode;
 
 }; // DismanExpressionMib::Experrortable::Experrorentry
 
 
-class DismanExpressionMib::Expobjecttable : public Entity
+class DismanExpressionMib::Expobjecttable : public ydk::Entity
 {
     public:
         Expobjecttable();
@@ -172,20 +185,22 @@ class DismanExpressionMib::Expobjecttable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Expobjectentry; //type: DismanExpressionMib::Expobjecttable::Expobjectentry
 
-        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expobjecttable::Expobjectentry> > expobjectentry_;
+        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expobjecttable::Expobjectentry> > expobjectentry;
         
 }; // DismanExpressionMib::Expobjecttable
 
 
-class DismanExpressionMib::Expobjecttable::Expobjectentry : public Entity
+class DismanExpressionMib::Expobjecttable::Expobjectentry : public ydk::Entity
 {
     public:
         Expobjectentry();
@@ -193,33 +208,35 @@ class DismanExpressionMib::Expobjecttable::Expobjectentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry::expexpressionowner)
-        YLeaf expexpressionowner;
+        ydk::YLeaf expexpressionowner;
         //type: string (refers to DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry::expexpressionname)
-        YLeaf expexpressionname;
-        YLeaf expobjectindex; //type: uint32
-        YLeaf expobjectid; //type: string
-        YLeaf expobjectidwildcard; //type: boolean
-        YLeaf expobjectsampletype; //type: ExpobjectsampletypeEnum
-        YLeaf expobjectdeltadiscontinuityid; //type: string
-        YLeaf expobjectdiscontinuityidwildcard; //type: boolean
-        YLeaf expobjectdiscontinuityidtype; //type: ExpobjectdiscontinuityidtypeEnum
-        YLeaf expobjectconditional; //type: string
-        YLeaf expobjectconditionalwildcard; //type: boolean
-        YLeaf expobjectentrystatus; //type: RowstatusEnum
-        class ExpobjectsampletypeEnum;
-        class ExpobjectdiscontinuityidtypeEnum;
+        ydk::YLeaf expexpressionname;
+        ydk::YLeaf expobjectindex; //type: uint32
+        ydk::YLeaf expobjectid; //type: string
+        ydk::YLeaf expobjectidwildcard; //type: boolean
+        ydk::YLeaf expobjectsampletype; //type: Expobjectsampletype
+        ydk::YLeaf expobjectdeltadiscontinuityid; //type: string
+        ydk::YLeaf expobjectdiscontinuityidwildcard; //type: boolean
+        ydk::YLeaf expobjectdiscontinuityidtype; //type: Expobjectdiscontinuityidtype
+        ydk::YLeaf expobjectconditional; //type: string
+        ydk::YLeaf expobjectconditionalwildcard; //type: boolean
+        ydk::YLeaf expobjectentrystatus; //type: Rowstatus
+        class Expobjectsampletype;
+        class Expobjectdiscontinuityidtype;
 
 }; // DismanExpressionMib::Expobjecttable::Expobjectentry
 
 
-class DismanExpressionMib::Expvaluetable : public Entity
+class DismanExpressionMib::Expvaluetable : public ydk::Entity
 {
     public:
         Expvaluetable();
@@ -227,20 +244,22 @@ class DismanExpressionMib::Expvaluetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Expvalueentry; //type: DismanExpressionMib::Expvaluetable::Expvalueentry
 
-        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expvaluetable::Expvalueentry> > expvalueentry_;
+        std::vector<std::shared_ptr<DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expvaluetable::Expvalueentry> > expvalueentry;
         
 }; // DismanExpressionMib::Expvaluetable
 
 
-class DismanExpressionMib::Expvaluetable::Expvalueentry : public Entity
+class DismanExpressionMib::Expvaluetable::Expvalueentry : public ydk::Entity
 {
     public:
         Expvalueentry();
@@ -248,74 +267,76 @@ class DismanExpressionMib::Expvaluetable::Expvalueentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry::expexpressionowner)
-        YLeaf expexpressionowner;
+        ydk::YLeaf expexpressionowner;
         //type: string (refers to DISMAN_EXPRESSION_MIB::DismanExpressionMib::Expexpressiontable::Expexpressionentry::expexpressionname)
-        YLeaf expexpressionname;
-        YLeaf expvalueinstance; //type: string
-        YLeaf expvaluecounter32val; //type: uint32
-        YLeaf expvalueunsigned32val; //type: uint32
-        YLeaf expvaluetimeticksval; //type: uint32
-        YLeaf expvalueinteger32val; //type: int32
-        YLeaf expvalueipaddressval; //type: string
-        YLeaf expvalueoctetstringval; //type: binary
-        YLeaf expvalueoidval; //type: string
-        YLeaf expvaluecounter64val; //type: uint64
+        ydk::YLeaf expexpressionname;
+        ydk::YLeaf expvalueinstance; //type: string
+        ydk::YLeaf expvaluecounter32val; //type: uint32
+        ydk::YLeaf expvalueunsigned32val; //type: uint32
+        ydk::YLeaf expvaluetimeticksval; //type: uint32
+        ydk::YLeaf expvalueinteger32val; //type: int32
+        ydk::YLeaf expvalueipaddressval; //type: string
+        ydk::YLeaf expvalueoctetstringval; //type: binary
+        ydk::YLeaf expvalueoidval; //type: string
+        ydk::YLeaf expvaluecounter64val; //type: uint64
 
 }; // DismanExpressionMib::Expvaluetable::Expvalueentry
 
-class DismanExpressionMib::Expexpressiontable::Expexpressionentry::ExpexpressionvaluetypeEnum : public Enum
+class DismanExpressionMib::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf counter32;
-        static const Enum::YLeaf unsigned32;
-        static const Enum::YLeaf timeTicks;
-        static const Enum::YLeaf integer32;
-        static const Enum::YLeaf ipAddress;
-        static const Enum::YLeaf octetString;
-        static const Enum::YLeaf objectId;
-        static const Enum::YLeaf counter64;
+        static const ydk::Enum::YLeaf counter32;
+        static const ydk::Enum::YLeaf unsigned32;
+        static const ydk::Enum::YLeaf timeTicks;
+        static const ydk::Enum::YLeaf integer32;
+        static const ydk::Enum::YLeaf ipAddress;
+        static const ydk::Enum::YLeaf octetString;
+        static const ydk::Enum::YLeaf objectId;
+        static const ydk::Enum::YLeaf counter64;
 
 };
 
-class DismanExpressionMib::Experrortable::Experrorentry::ExperrorcodeEnum : public Enum
+class DismanExpressionMib::Experrortable::Experrorentry::Experrorcode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf invalidSyntax;
-        static const Enum::YLeaf undefinedObjectIndex;
-        static const Enum::YLeaf unrecognizedOperator;
-        static const Enum::YLeaf unrecognizedFunction;
-        static const Enum::YLeaf invalidOperandType;
-        static const Enum::YLeaf unmatchedParenthesis;
-        static const Enum::YLeaf tooManyWildcardValues;
-        static const Enum::YLeaf recursion;
-        static const Enum::YLeaf deltaTooShort;
-        static const Enum::YLeaf resourceUnavailable;
-        static const Enum::YLeaf divideByZero;
+        static const ydk::Enum::YLeaf invalidSyntax;
+        static const ydk::Enum::YLeaf undefinedObjectIndex;
+        static const ydk::Enum::YLeaf unrecognizedOperator;
+        static const ydk::Enum::YLeaf unrecognizedFunction;
+        static const ydk::Enum::YLeaf invalidOperandType;
+        static const ydk::Enum::YLeaf unmatchedParenthesis;
+        static const ydk::Enum::YLeaf tooManyWildcardValues;
+        static const ydk::Enum::YLeaf recursion;
+        static const ydk::Enum::YLeaf deltaTooShort;
+        static const ydk::Enum::YLeaf resourceUnavailable;
+        static const ydk::Enum::YLeaf divideByZero;
 
 };
 
-class DismanExpressionMib::Expobjecttable::Expobjectentry::ExpobjectsampletypeEnum : public Enum
+class DismanExpressionMib::Expobjecttable::Expobjectentry::Expobjectsampletype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf absoluteValue;
-        static const Enum::YLeaf deltaValue;
-        static const Enum::YLeaf changedValue;
+        static const ydk::Enum::YLeaf absoluteValue;
+        static const ydk::Enum::YLeaf deltaValue;
+        static const ydk::Enum::YLeaf changedValue;
 
 };
 
-class DismanExpressionMib::Expobjecttable::Expobjectentry::ExpobjectdiscontinuityidtypeEnum : public Enum
+class DismanExpressionMib::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf timeTicks;
-        static const Enum::YLeaf timeStamp;
-        static const Enum::YLeaf dateAndTime;
+        static const ydk::Enum::YLeaf timeTicks;
+        static const ydk::Enum::YLeaf timeStamp;
+        static const ydk::Enum::YLeaf dateAndTime;
 
 };
 

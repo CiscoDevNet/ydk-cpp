@@ -6,150 +6,152 @@
 #include "generated_entity_lookup.hpp"
 #include "openconfig_rib_bgp_types.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace openconfig {
 namespace openconfig_rib_bgp_types {
 
-Bgp_Not_Selected_BestpathIdentity::Bgp_Not_Selected_BestpathIdentity()
-     : Identity("openconfig-rib-bgp-types:BGP_NOT_SELECTED_BESTPATH")
+Bgp_Not_Selected_Policy::Bgp_Not_Selected_Policy()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:BGP_NOT_SELECTED_POLICY")
 {
 }
 
-Bgp_Not_Selected_BestpathIdentity::~Bgp_Not_Selected_BestpathIdentity()
+Bgp_Not_Selected_Policy::~Bgp_Not_Selected_Policy()
 {
 }
 
-Bgp_Not_Selected_PolicyIdentity::Bgp_Not_Selected_PolicyIdentity()
-     : Identity("openconfig-rib-bgp-types:BGP_NOT_SELECTED_POLICY")
+Bgp_Not_Selected_Bestpath::Bgp_Not_Selected_Bestpath()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:BGP_NOT_SELECTED_BESTPATH")
 {
 }
 
-Bgp_Not_Selected_PolicyIdentity::~Bgp_Not_Selected_PolicyIdentity()
+Bgp_Not_Selected_Bestpath::~Bgp_Not_Selected_Bestpath()
 {
 }
 
-Invalid_Route_ReasonIdentity::Invalid_Route_ReasonIdentity()
-     : Identity("openconfig-rib-bgp-types:INVALID_ROUTE_REASON")
+Invalid_Route_Reason::Invalid_Route_Reason()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_ROUTE_REASON")
 {
 }
 
-Invalid_Route_ReasonIdentity::~Invalid_Route_ReasonIdentity()
+Invalid_Route_Reason::~Invalid_Route_Reason()
 {
 }
 
-Invalid_OriginatorIdentity::Invalid_OriginatorIdentity()
-     : Identity("openconfig-rib-bgp-types:INVALID_ORIGINATOR")
+Invalid_Cluster_Loop::Invalid_Cluster_Loop()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_CLUSTER_LOOP")
 {
 }
 
-Invalid_OriginatorIdentity::~Invalid_OriginatorIdentity()
+Invalid_Cluster_Loop::~Invalid_Cluster_Loop()
 {
 }
 
-Higher_Router_IdIdentity::Higher_Router_IdIdentity()
-     : Identity("openconfig-rib-bgp-types:HIGHER_ROUTER_ID")
+Higher_Router_Id::Higher_Router_Id()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:HIGHER_ROUTER_ID")
 {
 }
 
-Higher_Router_IdIdentity::~Higher_Router_IdIdentity()
+Higher_Router_Id::~Higher_Router_Id()
 {
 }
 
-Invalid_Cluster_LoopIdentity::Invalid_Cluster_LoopIdentity()
-     : Identity("openconfig-rib-bgp-types:INVALID_CLUSTER_LOOP")
+Invalid_As_Loop::Invalid_As_Loop()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_AS_LOOP")
 {
 }
 
-Invalid_Cluster_LoopIdentity::~Invalid_Cluster_LoopIdentity()
+Invalid_As_Loop::~Invalid_As_Loop()
 {
 }
 
-Rejected_Import_PolicyIdentity::Rejected_Import_PolicyIdentity()
-     : Identity("openconfig-rib-bgp-types:REJECTED_IMPORT_POLICY")
+Invalid_Originator::Invalid_Originator()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_ORIGINATOR")
 {
 }
 
-Rejected_Import_PolicyIdentity::~Rejected_Import_PolicyIdentity()
+Invalid_Originator::~Invalid_Originator()
 {
 }
 
-Origin_Type_HigherIdentity::Origin_Type_HigherIdentity()
-     : Identity("openconfig-rib-bgp-types:ORIGIN_TYPE_HIGHER")
+Invalid_Confed::Invalid_Confed()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:INVALID_CONFED")
 {
 }
 
-Origin_Type_HigherIdentity::~Origin_Type_HigherIdentity()
+Invalid_Confed::~Invalid_Confed()
 {
 }
 
-Med_HigherIdentity::Med_HigherIdentity()
-     : Identity("openconfig-rib-bgp-types:MED_HIGHER")
+Origin_Type_Higher::Origin_Type_Higher()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:ORIGIN_TYPE_HIGHER")
 {
 }
 
-Med_HigherIdentity::~Med_HigherIdentity()
+Origin_Type_Higher::~Origin_Type_Higher()
 {
 }
 
-Invalid_As_LoopIdentity::Invalid_As_LoopIdentity()
-     : Identity("openconfig-rib-bgp-types:INVALID_AS_LOOP")
+Local_Pref_Lower::Local_Pref_Lower()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:LOCAL_PREF_LOWER")
 {
 }
 
-Invalid_As_LoopIdentity::~Invalid_As_LoopIdentity()
+Local_Pref_Lower::~Local_Pref_Lower()
 {
 }
 
-Local_Pref_LowerIdentity::Local_Pref_LowerIdentity()
-     : Identity("openconfig-rib-bgp-types:LOCAL_PREF_LOWER")
+Prefer_External::Prefer_External()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:PREFER_EXTERNAL")
 {
 }
 
-Local_Pref_LowerIdentity::~Local_Pref_LowerIdentity()
+Prefer_External::~Prefer_External()
 {
 }
 
-Invalid_ConfedIdentity::Invalid_ConfedIdentity()
-     : Identity("openconfig-rib-bgp-types:INVALID_CONFED")
+Rejected_Import_Policy::Rejected_Import_Policy()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:REJECTED_IMPORT_POLICY")
 {
 }
 
-Invalid_ConfedIdentity::~Invalid_ConfedIdentity()
+Rejected_Import_Policy::~Rejected_Import_Policy()
 {
 }
 
-As_Path_LongerIdentity::As_Path_LongerIdentity()
-     : Identity("openconfig-rib-bgp-types:AS_PATH_LONGER")
+As_Path_Longer::As_Path_Longer()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:AS_PATH_LONGER")
 {
 }
 
-As_Path_LongerIdentity::~As_Path_LongerIdentity()
+As_Path_Longer::~As_Path_Longer()
 {
 }
 
-Higher_Peer_AddressIdentity::Higher_Peer_AddressIdentity()
-     : Identity("openconfig-rib-bgp-types:HIGHER_PEER_ADDRESS")
+Higher_Peer_Address::Higher_Peer_Address()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:HIGHER_PEER_ADDRESS")
 {
 }
 
-Higher_Peer_AddressIdentity::~Higher_Peer_AddressIdentity()
+Higher_Peer_Address::~Higher_Peer_Address()
 {
 }
 
-Nexthop_Cost_HigherIdentity::Nexthop_Cost_HigherIdentity()
-     : Identity("openconfig-rib-bgp-types:NEXTHOP_COST_HIGHER")
+Nexthop_Cost_Higher::Nexthop_Cost_Higher()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:NEXTHOP_COST_HIGHER")
 {
 }
 
-Nexthop_Cost_HigherIdentity::~Nexthop_Cost_HigherIdentity()
+Nexthop_Cost_Higher::~Nexthop_Cost_Higher()
 {
 }
 
-Prefer_ExternalIdentity::Prefer_ExternalIdentity()
-     : Identity("openconfig-rib-bgp-types:PREFER_EXTERNAL")
+Med_Higher::Med_Higher()
+     : Identity("http://openconfig.net/yang/rib/bgp-types", "openconfig-rib-bgp-types", "openconfig-rib-bgp-types:MED_HIGHER")
 {
 }
 
-Prefer_ExternalIdentity::~Prefer_ExternalIdentity()
+Med_Higher::~Med_Higher()
 {
 }
 

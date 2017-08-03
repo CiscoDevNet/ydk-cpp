@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_man_ems_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_man_ems_oper {
 
 Grpc::Grpc()
@@ -33,7 +35,7 @@ bool Grpc::has_data() const
 
 bool Grpc::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (statistics !=  nullptr && statistics->has_operation())
 	|| (status !=  nullptr && status->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> Grpc::get_children() const
     return children;
 }
 
-void Grpc::set_value(const std::string & value_path, std::string value)
+void Grpc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Grpc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string Grpc::get_bundle_name() const
 augment_capabilities_function Grpc::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Grpc::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Grpc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics" || name == "status")
+        return true;
+    return false;
 }
 
 Grpc::Statistics::Statistics()
@@ -192,31 +210,31 @@ bool Grpc::Statistics::has_data() const
 
 bool Grpc::Statistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(ct_cli_config_req_recv.operation)
-	|| is_set(ct_cli_config_res_sent.operation)
-	|| is_set(ct_commit_replace_req_recv.operation)
-	|| is_set(ct_commit_replace_res_sent.operation)
-	|| is_set(ct_delete_config_req_recv.operation)
-	|| is_set(ct_delete_config_res_sent.operation)
-	|| is_set(ct_get_config_req_recv.operation)
-	|| is_set(ct_get_config_res_sent.operation)
-	|| is_set(ct_get_current_session.operation)
-	|| is_set(ct_get_oper_req_recv.operation)
-	|| is_set(ct_get_oper_res_sent.operation)
-	|| is_set(ct_merge_config_req_recv.operation)
-	|| is_set(ct_merge_config_res_sent.operation)
-	|| is_set(ct_replace_config_req_recv.operation)
-	|| is_set(ct_replace_config_res_sent.operation)
-	|| is_set(ct_show_cmd_txt_req_recv.operation)
-	|| is_set(ct_show_cmd_txt_res_sent.operation)
-	|| is_set(listening_port.operation)
-	|| is_set(max_req_per_user.operation)
-	|| is_set(max_req_total.operation)
-	|| is_set(tls.operation)
-	|| is_set(transport.operation)
-	|| is_set(trustpoint.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ct_cli_config_req_recv.yfilter)
+	|| ydk::is_set(ct_cli_config_res_sent.yfilter)
+	|| ydk::is_set(ct_commit_replace_req_recv.yfilter)
+	|| ydk::is_set(ct_commit_replace_res_sent.yfilter)
+	|| ydk::is_set(ct_delete_config_req_recv.yfilter)
+	|| ydk::is_set(ct_delete_config_res_sent.yfilter)
+	|| ydk::is_set(ct_get_config_req_recv.yfilter)
+	|| ydk::is_set(ct_get_config_res_sent.yfilter)
+	|| ydk::is_set(ct_get_current_session.yfilter)
+	|| ydk::is_set(ct_get_oper_req_recv.yfilter)
+	|| ydk::is_set(ct_get_oper_res_sent.yfilter)
+	|| ydk::is_set(ct_merge_config_req_recv.yfilter)
+	|| ydk::is_set(ct_merge_config_res_sent.yfilter)
+	|| ydk::is_set(ct_replace_config_req_recv.yfilter)
+	|| ydk::is_set(ct_replace_config_res_sent.yfilter)
+	|| ydk::is_set(ct_show_cmd_txt_req_recv.yfilter)
+	|| ydk::is_set(ct_show_cmd_txt_res_sent.yfilter)
+	|| ydk::is_set(listening_port.yfilter)
+	|| ydk::is_set(max_req_per_user.yfilter)
+	|| ydk::is_set(max_req_total.yfilter)
+	|| ydk::is_set(tls.yfilter)
+	|| ydk::is_set(transport.yfilter)
+	|| ydk::is_set(trustpoint.yfilter);
 }
 
 std::string Grpc::Statistics::get_segment_path() const
@@ -242,30 +260,30 @@ const EntityPath Grpc::Statistics::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ct_cli_config_req_recv.is_set || is_set(ct_cli_config_req_recv.operation)) leaf_name_data.push_back(ct_cli_config_req_recv.get_name_leafdata());
-    if (ct_cli_config_res_sent.is_set || is_set(ct_cli_config_res_sent.operation)) leaf_name_data.push_back(ct_cli_config_res_sent.get_name_leafdata());
-    if (ct_commit_replace_req_recv.is_set || is_set(ct_commit_replace_req_recv.operation)) leaf_name_data.push_back(ct_commit_replace_req_recv.get_name_leafdata());
-    if (ct_commit_replace_res_sent.is_set || is_set(ct_commit_replace_res_sent.operation)) leaf_name_data.push_back(ct_commit_replace_res_sent.get_name_leafdata());
-    if (ct_delete_config_req_recv.is_set || is_set(ct_delete_config_req_recv.operation)) leaf_name_data.push_back(ct_delete_config_req_recv.get_name_leafdata());
-    if (ct_delete_config_res_sent.is_set || is_set(ct_delete_config_res_sent.operation)) leaf_name_data.push_back(ct_delete_config_res_sent.get_name_leafdata());
-    if (ct_get_config_req_recv.is_set || is_set(ct_get_config_req_recv.operation)) leaf_name_data.push_back(ct_get_config_req_recv.get_name_leafdata());
-    if (ct_get_config_res_sent.is_set || is_set(ct_get_config_res_sent.operation)) leaf_name_data.push_back(ct_get_config_res_sent.get_name_leafdata());
-    if (ct_get_current_session.is_set || is_set(ct_get_current_session.operation)) leaf_name_data.push_back(ct_get_current_session.get_name_leafdata());
-    if (ct_get_oper_req_recv.is_set || is_set(ct_get_oper_req_recv.operation)) leaf_name_data.push_back(ct_get_oper_req_recv.get_name_leafdata());
-    if (ct_get_oper_res_sent.is_set || is_set(ct_get_oper_res_sent.operation)) leaf_name_data.push_back(ct_get_oper_res_sent.get_name_leafdata());
-    if (ct_merge_config_req_recv.is_set || is_set(ct_merge_config_req_recv.operation)) leaf_name_data.push_back(ct_merge_config_req_recv.get_name_leafdata());
-    if (ct_merge_config_res_sent.is_set || is_set(ct_merge_config_res_sent.operation)) leaf_name_data.push_back(ct_merge_config_res_sent.get_name_leafdata());
-    if (ct_replace_config_req_recv.is_set || is_set(ct_replace_config_req_recv.operation)) leaf_name_data.push_back(ct_replace_config_req_recv.get_name_leafdata());
-    if (ct_replace_config_res_sent.is_set || is_set(ct_replace_config_res_sent.operation)) leaf_name_data.push_back(ct_replace_config_res_sent.get_name_leafdata());
-    if (ct_show_cmd_txt_req_recv.is_set || is_set(ct_show_cmd_txt_req_recv.operation)) leaf_name_data.push_back(ct_show_cmd_txt_req_recv.get_name_leafdata());
-    if (ct_show_cmd_txt_res_sent.is_set || is_set(ct_show_cmd_txt_res_sent.operation)) leaf_name_data.push_back(ct_show_cmd_txt_res_sent.get_name_leafdata());
-    if (listening_port.is_set || is_set(listening_port.operation)) leaf_name_data.push_back(listening_port.get_name_leafdata());
-    if (max_req_per_user.is_set || is_set(max_req_per_user.operation)) leaf_name_data.push_back(max_req_per_user.get_name_leafdata());
-    if (max_req_total.is_set || is_set(max_req_total.operation)) leaf_name_data.push_back(max_req_total.get_name_leafdata());
-    if (tls.is_set || is_set(tls.operation)) leaf_name_data.push_back(tls.get_name_leafdata());
-    if (transport.is_set || is_set(transport.operation)) leaf_name_data.push_back(transport.get_name_leafdata());
-    if (trustpoint.is_set || is_set(trustpoint.operation)) leaf_name_data.push_back(trustpoint.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ct_cli_config_req_recv.is_set || is_set(ct_cli_config_req_recv.yfilter)) leaf_name_data.push_back(ct_cli_config_req_recv.get_name_leafdata());
+    if (ct_cli_config_res_sent.is_set || is_set(ct_cli_config_res_sent.yfilter)) leaf_name_data.push_back(ct_cli_config_res_sent.get_name_leafdata());
+    if (ct_commit_replace_req_recv.is_set || is_set(ct_commit_replace_req_recv.yfilter)) leaf_name_data.push_back(ct_commit_replace_req_recv.get_name_leafdata());
+    if (ct_commit_replace_res_sent.is_set || is_set(ct_commit_replace_res_sent.yfilter)) leaf_name_data.push_back(ct_commit_replace_res_sent.get_name_leafdata());
+    if (ct_delete_config_req_recv.is_set || is_set(ct_delete_config_req_recv.yfilter)) leaf_name_data.push_back(ct_delete_config_req_recv.get_name_leafdata());
+    if (ct_delete_config_res_sent.is_set || is_set(ct_delete_config_res_sent.yfilter)) leaf_name_data.push_back(ct_delete_config_res_sent.get_name_leafdata());
+    if (ct_get_config_req_recv.is_set || is_set(ct_get_config_req_recv.yfilter)) leaf_name_data.push_back(ct_get_config_req_recv.get_name_leafdata());
+    if (ct_get_config_res_sent.is_set || is_set(ct_get_config_res_sent.yfilter)) leaf_name_data.push_back(ct_get_config_res_sent.get_name_leafdata());
+    if (ct_get_current_session.is_set || is_set(ct_get_current_session.yfilter)) leaf_name_data.push_back(ct_get_current_session.get_name_leafdata());
+    if (ct_get_oper_req_recv.is_set || is_set(ct_get_oper_req_recv.yfilter)) leaf_name_data.push_back(ct_get_oper_req_recv.get_name_leafdata());
+    if (ct_get_oper_res_sent.is_set || is_set(ct_get_oper_res_sent.yfilter)) leaf_name_data.push_back(ct_get_oper_res_sent.get_name_leafdata());
+    if (ct_merge_config_req_recv.is_set || is_set(ct_merge_config_req_recv.yfilter)) leaf_name_data.push_back(ct_merge_config_req_recv.get_name_leafdata());
+    if (ct_merge_config_res_sent.is_set || is_set(ct_merge_config_res_sent.yfilter)) leaf_name_data.push_back(ct_merge_config_res_sent.get_name_leafdata());
+    if (ct_replace_config_req_recv.is_set || is_set(ct_replace_config_req_recv.yfilter)) leaf_name_data.push_back(ct_replace_config_req_recv.get_name_leafdata());
+    if (ct_replace_config_res_sent.is_set || is_set(ct_replace_config_res_sent.yfilter)) leaf_name_data.push_back(ct_replace_config_res_sent.get_name_leafdata());
+    if (ct_show_cmd_txt_req_recv.is_set || is_set(ct_show_cmd_txt_req_recv.yfilter)) leaf_name_data.push_back(ct_show_cmd_txt_req_recv.get_name_leafdata());
+    if (ct_show_cmd_txt_res_sent.is_set || is_set(ct_show_cmd_txt_res_sent.yfilter)) leaf_name_data.push_back(ct_show_cmd_txt_res_sent.get_name_leafdata());
+    if (listening_port.is_set || is_set(listening_port.yfilter)) leaf_name_data.push_back(listening_port.get_name_leafdata());
+    if (max_req_per_user.is_set || is_set(max_req_per_user.yfilter)) leaf_name_data.push_back(max_req_per_user.get_name_leafdata());
+    if (max_req_total.is_set || is_set(max_req_total.yfilter)) leaf_name_data.push_back(max_req_total.get_name_leafdata());
+    if (tls.is_set || is_set(tls.yfilter)) leaf_name_data.push_back(tls.get_name_leafdata());
+    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (trustpoint.is_set || is_set(trustpoint.yfilter)) leaf_name_data.push_back(trustpoint.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -284,104 +302,259 @@ std::map<std::string, std::shared_ptr<Entity>> Grpc::Statistics::get_children() 
     return children;
 }
 
-void Grpc::Statistics::set_value(const std::string & value_path, std::string value)
+void Grpc::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-cli-config-req-recv")
     {
         ct_cli_config_req_recv = value;
+        ct_cli_config_req_recv.value_namespace = name_space;
+        ct_cli_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-cli-config-res-sent")
     {
         ct_cli_config_res_sent = value;
+        ct_cli_config_res_sent.value_namespace = name_space;
+        ct_cli_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-commit-replace-req-recv")
     {
         ct_commit_replace_req_recv = value;
+        ct_commit_replace_req_recv.value_namespace = name_space;
+        ct_commit_replace_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-commit-replace-res-sent")
     {
         ct_commit_replace_res_sent = value;
+        ct_commit_replace_res_sent.value_namespace = name_space;
+        ct_commit_replace_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-delete-config-req-recv")
     {
         ct_delete_config_req_recv = value;
+        ct_delete_config_req_recv.value_namespace = name_space;
+        ct_delete_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-delete-config-res-sent")
     {
         ct_delete_config_res_sent = value;
+        ct_delete_config_res_sent.value_namespace = name_space;
+        ct_delete_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-config-req-recv")
     {
         ct_get_config_req_recv = value;
+        ct_get_config_req_recv.value_namespace = name_space;
+        ct_get_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-config-res-sent")
     {
         ct_get_config_res_sent = value;
+        ct_get_config_res_sent.value_namespace = name_space;
+        ct_get_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-current-session")
     {
         ct_get_current_session = value;
+        ct_get_current_session.value_namespace = name_space;
+        ct_get_current_session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-oper-req-recv")
     {
         ct_get_oper_req_recv = value;
+        ct_get_oper_req_recv.value_namespace = name_space;
+        ct_get_oper_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-oper-res-sent")
     {
         ct_get_oper_res_sent = value;
+        ct_get_oper_res_sent.value_namespace = name_space;
+        ct_get_oper_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-merge-config-req-recv")
     {
         ct_merge_config_req_recv = value;
+        ct_merge_config_req_recv.value_namespace = name_space;
+        ct_merge_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-merge-config-res-sent")
     {
         ct_merge_config_res_sent = value;
+        ct_merge_config_res_sent.value_namespace = name_space;
+        ct_merge_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-replace-config-req-recv")
     {
         ct_replace_config_req_recv = value;
+        ct_replace_config_req_recv.value_namespace = name_space;
+        ct_replace_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-replace-config-res-sent")
     {
         ct_replace_config_res_sent = value;
+        ct_replace_config_res_sent.value_namespace = name_space;
+        ct_replace_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-show-cmd-txt-req-recv")
     {
         ct_show_cmd_txt_req_recv = value;
+        ct_show_cmd_txt_req_recv.value_namespace = name_space;
+        ct_show_cmd_txt_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-show-cmd-txt-res-sent")
     {
         ct_show_cmd_txt_res_sent = value;
+        ct_show_cmd_txt_res_sent.value_namespace = name_space;
+        ct_show_cmd_txt_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "listening-port")
     {
         listening_port = value;
+        listening_port.value_namespace = name_space;
+        listening_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-req-per-user")
     {
         max_req_per_user = value;
+        max_req_per_user.value_namespace = name_space;
+        max_req_per_user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-req-total")
     {
         max_req_total = value;
+        max_req_total.value_namespace = name_space;
+        max_req_total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tls")
     {
         tls = value;
+        tls.value_namespace = name_space;
+        tls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport")
     {
         transport = value;
+        transport.value_namespace = name_space;
+        transport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trustpoint")
     {
         trustpoint = value;
+        trustpoint.value_namespace = name_space;
+        trustpoint.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Grpc::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ct-cli-config-req-recv")
+    {
+        ct_cli_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-cli-config-res-sent")
+    {
+        ct_cli_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-commit-replace-req-recv")
+    {
+        ct_commit_replace_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-commit-replace-res-sent")
+    {
+        ct_commit_replace_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-delete-config-req-recv")
+    {
+        ct_delete_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-delete-config-res-sent")
+    {
+        ct_delete_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-config-req-recv")
+    {
+        ct_get_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-config-res-sent")
+    {
+        ct_get_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-current-session")
+    {
+        ct_get_current_session.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-oper-req-recv")
+    {
+        ct_get_oper_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-oper-res-sent")
+    {
+        ct_get_oper_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-merge-config-req-recv")
+    {
+        ct_merge_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-merge-config-res-sent")
+    {
+        ct_merge_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-replace-config-req-recv")
+    {
+        ct_replace_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-replace-config-res-sent")
+    {
+        ct_replace_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-show-cmd-txt-req-recv")
+    {
+        ct_show_cmd_txt_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-show-cmd-txt-res-sent")
+    {
+        ct_show_cmd_txt_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "listening-port")
+    {
+        listening_port.yfilter = yfilter;
+    }
+    if(value_path == "max-req-per-user")
+    {
+        max_req_per_user.yfilter = yfilter;
+    }
+    if(value_path == "max-req-total")
+    {
+        max_req_total.yfilter = yfilter;
+    }
+    if(value_path == "tls")
+    {
+        tls.yfilter = yfilter;
+    }
+    if(value_path == "transport")
+    {
+        transport.yfilter = yfilter;
+    }
+    if(value_path == "trustpoint")
+    {
+        trustpoint.yfilter = yfilter;
+    }
+}
+
+bool Grpc::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ct-cli-config-req-recv" || name == "ct-cli-config-res-sent" || name == "ct-commit-replace-req-recv" || name == "ct-commit-replace-res-sent" || name == "ct-delete-config-req-recv" || name == "ct-delete-config-res-sent" || name == "ct-get-config-req-recv" || name == "ct-get-config-res-sent" || name == "ct-get-current-session" || name == "ct-get-oper-req-recv" || name == "ct-get-oper-res-sent" || name == "ct-merge-config-req-recv" || name == "ct-merge-config-res-sent" || name == "ct-replace-config-req-recv" || name == "ct-replace-config-res-sent" || name == "ct-show-cmd-txt-req-recv" || name == "ct-show-cmd-txt-res-sent" || name == "listening-port" || name == "max-req-per-user" || name == "max-req-total" || name == "tls" || name == "transport" || name == "trustpoint")
+        return true;
+    return false;
 }
 
 Grpc::Status::Status()
@@ -448,31 +621,31 @@ bool Grpc::Status::has_data() const
 
 bool Grpc::Status::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_family.operation)
-	|| is_set(ct_cli_config_req_recv.operation)
-	|| is_set(ct_cli_config_res_sent.operation)
-	|| is_set(ct_commit_replace_req_recv.operation)
-	|| is_set(ct_commit_replace_res_sent.operation)
-	|| is_set(ct_delete_config_req_recv.operation)
-	|| is_set(ct_delete_config_res_sent.operation)
-	|| is_set(ct_get_config_req_recv.operation)
-	|| is_set(ct_get_config_res_sent.operation)
-	|| is_set(ct_get_current_session.operation)
-	|| is_set(ct_get_oper_req_recv.operation)
-	|| is_set(ct_get_oper_res_sent.operation)
-	|| is_set(ct_merge_config_req_recv.operation)
-	|| is_set(ct_merge_config_res_sent.operation)
-	|| is_set(ct_replace_config_req_recv.operation)
-	|| is_set(ct_replace_config_res_sent.operation)
-	|| is_set(ct_show_cmd_txt_req_recv.operation)
-	|| is_set(ct_show_cmd_txt_res_sent.operation)
-	|| is_set(listening_port.operation)
-	|| is_set(max_req_per_user.operation)
-	|| is_set(max_req_total.operation)
-	|| is_set(tls.operation)
-	|| is_set(transport.operation)
-	|| is_set(trustpoint.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_family.yfilter)
+	|| ydk::is_set(ct_cli_config_req_recv.yfilter)
+	|| ydk::is_set(ct_cli_config_res_sent.yfilter)
+	|| ydk::is_set(ct_commit_replace_req_recv.yfilter)
+	|| ydk::is_set(ct_commit_replace_res_sent.yfilter)
+	|| ydk::is_set(ct_delete_config_req_recv.yfilter)
+	|| ydk::is_set(ct_delete_config_res_sent.yfilter)
+	|| ydk::is_set(ct_get_config_req_recv.yfilter)
+	|| ydk::is_set(ct_get_config_res_sent.yfilter)
+	|| ydk::is_set(ct_get_current_session.yfilter)
+	|| ydk::is_set(ct_get_oper_req_recv.yfilter)
+	|| ydk::is_set(ct_get_oper_res_sent.yfilter)
+	|| ydk::is_set(ct_merge_config_req_recv.yfilter)
+	|| ydk::is_set(ct_merge_config_res_sent.yfilter)
+	|| ydk::is_set(ct_replace_config_req_recv.yfilter)
+	|| ydk::is_set(ct_replace_config_res_sent.yfilter)
+	|| ydk::is_set(ct_show_cmd_txt_req_recv.yfilter)
+	|| ydk::is_set(ct_show_cmd_txt_res_sent.yfilter)
+	|| ydk::is_set(listening_port.yfilter)
+	|| ydk::is_set(max_req_per_user.yfilter)
+	|| ydk::is_set(max_req_total.yfilter)
+	|| ydk::is_set(tls.yfilter)
+	|| ydk::is_set(transport.yfilter)
+	|| ydk::is_set(trustpoint.yfilter);
 }
 
 std::string Grpc::Status::get_segment_path() const
@@ -498,30 +671,30 @@ const EntityPath Grpc::Status::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_family.is_set || is_set(address_family.operation)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ct_cli_config_req_recv.is_set || is_set(ct_cli_config_req_recv.operation)) leaf_name_data.push_back(ct_cli_config_req_recv.get_name_leafdata());
-    if (ct_cli_config_res_sent.is_set || is_set(ct_cli_config_res_sent.operation)) leaf_name_data.push_back(ct_cli_config_res_sent.get_name_leafdata());
-    if (ct_commit_replace_req_recv.is_set || is_set(ct_commit_replace_req_recv.operation)) leaf_name_data.push_back(ct_commit_replace_req_recv.get_name_leafdata());
-    if (ct_commit_replace_res_sent.is_set || is_set(ct_commit_replace_res_sent.operation)) leaf_name_data.push_back(ct_commit_replace_res_sent.get_name_leafdata());
-    if (ct_delete_config_req_recv.is_set || is_set(ct_delete_config_req_recv.operation)) leaf_name_data.push_back(ct_delete_config_req_recv.get_name_leafdata());
-    if (ct_delete_config_res_sent.is_set || is_set(ct_delete_config_res_sent.operation)) leaf_name_data.push_back(ct_delete_config_res_sent.get_name_leafdata());
-    if (ct_get_config_req_recv.is_set || is_set(ct_get_config_req_recv.operation)) leaf_name_data.push_back(ct_get_config_req_recv.get_name_leafdata());
-    if (ct_get_config_res_sent.is_set || is_set(ct_get_config_res_sent.operation)) leaf_name_data.push_back(ct_get_config_res_sent.get_name_leafdata());
-    if (ct_get_current_session.is_set || is_set(ct_get_current_session.operation)) leaf_name_data.push_back(ct_get_current_session.get_name_leafdata());
-    if (ct_get_oper_req_recv.is_set || is_set(ct_get_oper_req_recv.operation)) leaf_name_data.push_back(ct_get_oper_req_recv.get_name_leafdata());
-    if (ct_get_oper_res_sent.is_set || is_set(ct_get_oper_res_sent.operation)) leaf_name_data.push_back(ct_get_oper_res_sent.get_name_leafdata());
-    if (ct_merge_config_req_recv.is_set || is_set(ct_merge_config_req_recv.operation)) leaf_name_data.push_back(ct_merge_config_req_recv.get_name_leafdata());
-    if (ct_merge_config_res_sent.is_set || is_set(ct_merge_config_res_sent.operation)) leaf_name_data.push_back(ct_merge_config_res_sent.get_name_leafdata());
-    if (ct_replace_config_req_recv.is_set || is_set(ct_replace_config_req_recv.operation)) leaf_name_data.push_back(ct_replace_config_req_recv.get_name_leafdata());
-    if (ct_replace_config_res_sent.is_set || is_set(ct_replace_config_res_sent.operation)) leaf_name_data.push_back(ct_replace_config_res_sent.get_name_leafdata());
-    if (ct_show_cmd_txt_req_recv.is_set || is_set(ct_show_cmd_txt_req_recv.operation)) leaf_name_data.push_back(ct_show_cmd_txt_req_recv.get_name_leafdata());
-    if (ct_show_cmd_txt_res_sent.is_set || is_set(ct_show_cmd_txt_res_sent.operation)) leaf_name_data.push_back(ct_show_cmd_txt_res_sent.get_name_leafdata());
-    if (listening_port.is_set || is_set(listening_port.operation)) leaf_name_data.push_back(listening_port.get_name_leafdata());
-    if (max_req_per_user.is_set || is_set(max_req_per_user.operation)) leaf_name_data.push_back(max_req_per_user.get_name_leafdata());
-    if (max_req_total.is_set || is_set(max_req_total.operation)) leaf_name_data.push_back(max_req_total.get_name_leafdata());
-    if (tls.is_set || is_set(tls.operation)) leaf_name_data.push_back(tls.get_name_leafdata());
-    if (transport.is_set || is_set(transport.operation)) leaf_name_data.push_back(transport.get_name_leafdata());
-    if (trustpoint.is_set || is_set(trustpoint.operation)) leaf_name_data.push_back(trustpoint.get_name_leafdata());
+    if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
+    if (ct_cli_config_req_recv.is_set || is_set(ct_cli_config_req_recv.yfilter)) leaf_name_data.push_back(ct_cli_config_req_recv.get_name_leafdata());
+    if (ct_cli_config_res_sent.is_set || is_set(ct_cli_config_res_sent.yfilter)) leaf_name_data.push_back(ct_cli_config_res_sent.get_name_leafdata());
+    if (ct_commit_replace_req_recv.is_set || is_set(ct_commit_replace_req_recv.yfilter)) leaf_name_data.push_back(ct_commit_replace_req_recv.get_name_leafdata());
+    if (ct_commit_replace_res_sent.is_set || is_set(ct_commit_replace_res_sent.yfilter)) leaf_name_data.push_back(ct_commit_replace_res_sent.get_name_leafdata());
+    if (ct_delete_config_req_recv.is_set || is_set(ct_delete_config_req_recv.yfilter)) leaf_name_data.push_back(ct_delete_config_req_recv.get_name_leafdata());
+    if (ct_delete_config_res_sent.is_set || is_set(ct_delete_config_res_sent.yfilter)) leaf_name_data.push_back(ct_delete_config_res_sent.get_name_leafdata());
+    if (ct_get_config_req_recv.is_set || is_set(ct_get_config_req_recv.yfilter)) leaf_name_data.push_back(ct_get_config_req_recv.get_name_leafdata());
+    if (ct_get_config_res_sent.is_set || is_set(ct_get_config_res_sent.yfilter)) leaf_name_data.push_back(ct_get_config_res_sent.get_name_leafdata());
+    if (ct_get_current_session.is_set || is_set(ct_get_current_session.yfilter)) leaf_name_data.push_back(ct_get_current_session.get_name_leafdata());
+    if (ct_get_oper_req_recv.is_set || is_set(ct_get_oper_req_recv.yfilter)) leaf_name_data.push_back(ct_get_oper_req_recv.get_name_leafdata());
+    if (ct_get_oper_res_sent.is_set || is_set(ct_get_oper_res_sent.yfilter)) leaf_name_data.push_back(ct_get_oper_res_sent.get_name_leafdata());
+    if (ct_merge_config_req_recv.is_set || is_set(ct_merge_config_req_recv.yfilter)) leaf_name_data.push_back(ct_merge_config_req_recv.get_name_leafdata());
+    if (ct_merge_config_res_sent.is_set || is_set(ct_merge_config_res_sent.yfilter)) leaf_name_data.push_back(ct_merge_config_res_sent.get_name_leafdata());
+    if (ct_replace_config_req_recv.is_set || is_set(ct_replace_config_req_recv.yfilter)) leaf_name_data.push_back(ct_replace_config_req_recv.get_name_leafdata());
+    if (ct_replace_config_res_sent.is_set || is_set(ct_replace_config_res_sent.yfilter)) leaf_name_data.push_back(ct_replace_config_res_sent.get_name_leafdata());
+    if (ct_show_cmd_txt_req_recv.is_set || is_set(ct_show_cmd_txt_req_recv.yfilter)) leaf_name_data.push_back(ct_show_cmd_txt_req_recv.get_name_leafdata());
+    if (ct_show_cmd_txt_res_sent.is_set || is_set(ct_show_cmd_txt_res_sent.yfilter)) leaf_name_data.push_back(ct_show_cmd_txt_res_sent.get_name_leafdata());
+    if (listening_port.is_set || is_set(listening_port.yfilter)) leaf_name_data.push_back(listening_port.get_name_leafdata());
+    if (max_req_per_user.is_set || is_set(max_req_per_user.yfilter)) leaf_name_data.push_back(max_req_per_user.get_name_leafdata());
+    if (max_req_total.is_set || is_set(max_req_total.yfilter)) leaf_name_data.push_back(max_req_total.get_name_leafdata());
+    if (tls.is_set || is_set(tls.yfilter)) leaf_name_data.push_back(tls.get_name_leafdata());
+    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (trustpoint.is_set || is_set(trustpoint.yfilter)) leaf_name_data.push_back(trustpoint.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -540,104 +713,259 @@ std::map<std::string, std::shared_ptr<Entity>> Grpc::Status::get_children() cons
     return children;
 }
 
-void Grpc::Status::set_value(const std::string & value_path, std::string value)
+void Grpc::Status::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-family")
     {
         address_family = value;
+        address_family.value_namespace = name_space;
+        address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-cli-config-req-recv")
     {
         ct_cli_config_req_recv = value;
+        ct_cli_config_req_recv.value_namespace = name_space;
+        ct_cli_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-cli-config-res-sent")
     {
         ct_cli_config_res_sent = value;
+        ct_cli_config_res_sent.value_namespace = name_space;
+        ct_cli_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-commit-replace-req-recv")
     {
         ct_commit_replace_req_recv = value;
+        ct_commit_replace_req_recv.value_namespace = name_space;
+        ct_commit_replace_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-commit-replace-res-sent")
     {
         ct_commit_replace_res_sent = value;
+        ct_commit_replace_res_sent.value_namespace = name_space;
+        ct_commit_replace_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-delete-config-req-recv")
     {
         ct_delete_config_req_recv = value;
+        ct_delete_config_req_recv.value_namespace = name_space;
+        ct_delete_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-delete-config-res-sent")
     {
         ct_delete_config_res_sent = value;
+        ct_delete_config_res_sent.value_namespace = name_space;
+        ct_delete_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-config-req-recv")
     {
         ct_get_config_req_recv = value;
+        ct_get_config_req_recv.value_namespace = name_space;
+        ct_get_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-config-res-sent")
     {
         ct_get_config_res_sent = value;
+        ct_get_config_res_sent.value_namespace = name_space;
+        ct_get_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-current-session")
     {
         ct_get_current_session = value;
+        ct_get_current_session.value_namespace = name_space;
+        ct_get_current_session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-oper-req-recv")
     {
         ct_get_oper_req_recv = value;
+        ct_get_oper_req_recv.value_namespace = name_space;
+        ct_get_oper_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-get-oper-res-sent")
     {
         ct_get_oper_res_sent = value;
+        ct_get_oper_res_sent.value_namespace = name_space;
+        ct_get_oper_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-merge-config-req-recv")
     {
         ct_merge_config_req_recv = value;
+        ct_merge_config_req_recv.value_namespace = name_space;
+        ct_merge_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-merge-config-res-sent")
     {
         ct_merge_config_res_sent = value;
+        ct_merge_config_res_sent.value_namespace = name_space;
+        ct_merge_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-replace-config-req-recv")
     {
         ct_replace_config_req_recv = value;
+        ct_replace_config_req_recv.value_namespace = name_space;
+        ct_replace_config_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-replace-config-res-sent")
     {
         ct_replace_config_res_sent = value;
+        ct_replace_config_res_sent.value_namespace = name_space;
+        ct_replace_config_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-show-cmd-txt-req-recv")
     {
         ct_show_cmd_txt_req_recv = value;
+        ct_show_cmd_txt_req_recv.value_namespace = name_space;
+        ct_show_cmd_txt_req_recv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ct-show-cmd-txt-res-sent")
     {
         ct_show_cmd_txt_res_sent = value;
+        ct_show_cmd_txt_res_sent.value_namespace = name_space;
+        ct_show_cmd_txt_res_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "listening-port")
     {
         listening_port = value;
+        listening_port.value_namespace = name_space;
+        listening_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-req-per-user")
     {
         max_req_per_user = value;
+        max_req_per_user.value_namespace = name_space;
+        max_req_per_user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-req-total")
     {
         max_req_total = value;
+        max_req_total.value_namespace = name_space;
+        max_req_total.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tls")
     {
         tls = value;
+        tls.value_namespace = name_space;
+        tls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport")
     {
         transport = value;
+        transport.value_namespace = name_space;
+        transport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trustpoint")
     {
         trustpoint = value;
+        trustpoint.value_namespace = name_space;
+        trustpoint.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Grpc::Status::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-family")
+    {
+        address_family.yfilter = yfilter;
+    }
+    if(value_path == "ct-cli-config-req-recv")
+    {
+        ct_cli_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-cli-config-res-sent")
+    {
+        ct_cli_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-commit-replace-req-recv")
+    {
+        ct_commit_replace_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-commit-replace-res-sent")
+    {
+        ct_commit_replace_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-delete-config-req-recv")
+    {
+        ct_delete_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-delete-config-res-sent")
+    {
+        ct_delete_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-config-req-recv")
+    {
+        ct_get_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-config-res-sent")
+    {
+        ct_get_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-current-session")
+    {
+        ct_get_current_session.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-oper-req-recv")
+    {
+        ct_get_oper_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-get-oper-res-sent")
+    {
+        ct_get_oper_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-merge-config-req-recv")
+    {
+        ct_merge_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-merge-config-res-sent")
+    {
+        ct_merge_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-replace-config-req-recv")
+    {
+        ct_replace_config_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-replace-config-res-sent")
+    {
+        ct_replace_config_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "ct-show-cmd-txt-req-recv")
+    {
+        ct_show_cmd_txt_req_recv.yfilter = yfilter;
+    }
+    if(value_path == "ct-show-cmd-txt-res-sent")
+    {
+        ct_show_cmd_txt_res_sent.yfilter = yfilter;
+    }
+    if(value_path == "listening-port")
+    {
+        listening_port.yfilter = yfilter;
+    }
+    if(value_path == "max-req-per-user")
+    {
+        max_req_per_user.yfilter = yfilter;
+    }
+    if(value_path == "max-req-total")
+    {
+        max_req_total.yfilter = yfilter;
+    }
+    if(value_path == "tls")
+    {
+        tls.yfilter = yfilter;
+    }
+    if(value_path == "transport")
+    {
+        transport.yfilter = yfilter;
+    }
+    if(value_path == "trustpoint")
+    {
+        trustpoint.yfilter = yfilter;
+    }
+}
+
+bool Grpc::Status::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-family" || name == "ct-cli-config-req-recv" || name == "ct-cli-config-res-sent" || name == "ct-commit-replace-req-recv" || name == "ct-commit-replace-res-sent" || name == "ct-delete-config-req-recv" || name == "ct-delete-config-res-sent" || name == "ct-get-config-req-recv" || name == "ct-get-config-res-sent" || name == "ct-get-current-session" || name == "ct-get-oper-req-recv" || name == "ct-get-oper-res-sent" || name == "ct-merge-config-req-recv" || name == "ct-merge-config-res-sent" || name == "ct-replace-config-req-recv" || name == "ct-replace-config-res-sent" || name == "ct-show-cmd-txt-req-recv" || name == "ct-show-cmd-txt-res-sent" || name == "listening-port" || name == "max-req-per-user" || name == "max-req-total" || name == "tls" || name == "transport" || name == "trustpoint")
+        return true;
+    return false;
 }
 
 

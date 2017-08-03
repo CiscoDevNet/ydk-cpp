@@ -9,480 +9,480 @@
 
 #include "ydk_ietf/ietf_diffserv_classifier.hpp"
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace policy_types {
 
-class InputInterfaceIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class MplsExpImp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        InputInterfaceIdentity();
-        ~InputInterfaceIdentity();
+        MplsExpImp();
+        ~MplsExpImp();
 
 
-}; // InputInterfaceIdentity
+}; // MplsExpImp
 
-class SrcMacIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class FlowDlci : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        SrcMacIdentity();
-        ~SrcMacIdentity();
+        FlowDlci();
+        ~FlowDlci();
 
 
-}; // SrcMacIdentity
+}; // FlowDlci
 
-class ApplicationIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Cos : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        ApplicationIdentity();
-        ~ApplicationIdentity();
+        Cos();
+        ~Cos();
 
 
-}; // ApplicationIdentity
+}; // Cos
 
-class SecurityGroupNameIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class SecurityGroupName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        SecurityGroupNameIdentity();
-        ~SecurityGroupNameIdentity();
+        SecurityGroupName();
+        ~SecurityGroupName();
 
 
-}; // SecurityGroupNameIdentity
+}; // SecurityGroupName
 
-class Ipv4AclNameIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Ipv4AclName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        Ipv4AclNameIdentity();
-        ~Ipv4AclNameIdentity();
+        Ipv4AclName();
+        ~Ipv4AclName();
 
 
-}; // Ipv4AclNameIdentity
+}; // Ipv4AclName
 
-class FlowDlciIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Dei : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        FlowDlciIdentity();
-        ~FlowDlciIdentity();
+        Dei();
+        ~Dei();
 
 
-}; // FlowDlciIdentity
+}; // Dei
 
-class DeiIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Ipv6AclName : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        DeiIdentity();
-        ~DeiIdentity();
+        Ipv6AclName();
+        ~Ipv6AclName();
 
 
-}; // DeiIdentity
+}; // Ipv6AclName
 
-class PrecIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class SrcMac : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        PrecIdentity();
-        ~PrecIdentity();
+        SrcMac();
+        ~SrcMac();
 
 
-}; // PrecIdentity
+}; // SrcMac
 
-class PacketLengthIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class FlowDe : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        PacketLengthIdentity();
-        ~PacketLengthIdentity();
+        FlowDe();
+        ~FlowDe();
 
 
-}; // PacketLengthIdentity
+}; // FlowDe
 
-class Ipv4AclIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Vlan : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        Ipv4AclIdentity();
-        ~Ipv4AclIdentity();
+        Vlan();
+        ~Vlan();
 
 
-}; // Ipv4AclIdentity
+}; // Vlan
 
-class FlowDeIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class PacketLength : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        FlowDeIdentity();
-        ~FlowDeIdentity();
+        PacketLength();
+        ~PacketLength();
 
 
-}; // FlowDeIdentity
+}; // PacketLength
 
-class FlowIpIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class InputInterface : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        FlowIpIdentity();
-        ~FlowIpIdentity();
+        InputInterface();
+        ~InputInterface();
 
 
-}; // FlowIpIdentity
+}; // InputInterface
 
-class FlowRecordIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class QosGroup : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        FlowRecordIdentity();
-        ~FlowRecordIdentity();
+        QosGroup();
+        ~QosGroup();
 
 
-}; // FlowRecordIdentity
+}; // QosGroup
 
-class VlanInnerIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Ipv4Acl : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        VlanInnerIdentity();
-        ~VlanInnerIdentity();
+        Ipv4Acl();
+        ~Ipv4Acl();
 
 
-}; // VlanInnerIdentity
+}; // Ipv4Acl
 
-class MetadataIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Ipv6Acl : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        MetadataIdentity();
-        ~MetadataIdentity();
+        Ipv6Acl();
+        ~Ipv6Acl();
 
 
-}; // MetadataIdentity
+}; // Ipv6Acl
 
-class VlanIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class FlowRecord : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        VlanIdentity();
-        ~VlanIdentity();
+        FlowRecord();
+        ~FlowRecord();
 
 
-}; // VlanIdentity
+}; // FlowRecord
 
-class AtmVciIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class AtmClp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        AtmVciIdentity();
-        ~AtmVciIdentity();
+        AtmClp();
+        ~AtmClp();
 
 
-}; // AtmVciIdentity
+}; // AtmClp
 
-class ClassMapIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class DeiInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        ClassMapIdentity();
-        ~ClassMapIdentity();
+        DeiInner();
+        ~DeiInner();
 
 
-}; // ClassMapIdentity
+}; // DeiInner
 
-class QosGroupIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Vpls : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        QosGroupIdentity();
-        ~QosGroupIdentity();
+        Vpls();
+        ~Vpls();
 
 
-}; // QosGroupIdentity
+}; // Vpls
 
-class WlanUserPriorityIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class DstMac : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        WlanUserPriorityIdentity();
-        ~WlanUserPriorityIdentity();
+        DstMac();
+        ~DstMac();
 
 
-}; // WlanUserPriorityIdentity
+}; // DstMac
 
-class IpRtpIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Prec : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        IpRtpIdentity();
-        ~IpRtpIdentity();
+        Prec();
+        ~Prec();
 
 
-}; // IpRtpIdentity
+}; // Prec
 
-class Ipv6AclIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class ClassType : public virtual ydk::Identity
 {
     public:
-        Ipv6AclIdentity();
-        ~Ipv6AclIdentity();
+        ClassType();
+        ~ClassType();
 
 
-}; // Ipv6AclIdentity
+}; // ClassType
 
-class AtmClpIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class MplsExpTop : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        AtmClpIdentity();
-        ~AtmClpIdentity();
+        MplsExpTop();
+        ~MplsExpTop();
 
 
-}; // AtmClpIdentity
+}; // MplsExpTop
 
-class DstMacIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class DiscardClass : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        DstMacIdentity();
-        ~DstMacIdentity();
+        DiscardClass();
+        ~DiscardClass();
 
 
-}; // DstMacIdentity
+}; // DiscardClass
 
-class CosIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class FlowIp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        CosIdentity();
-        ~CosIdentity();
+        FlowIp();
+        ~FlowIp();
 
 
-}; // CosIdentity
+}; // FlowIp
 
-class DeiInnerIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class WlanUserPriority : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        DeiInnerIdentity();
-        ~DeiInnerIdentity();
+        WlanUserPriority();
+        ~WlanUserPriority();
 
 
-}; // DeiInnerIdentity
+}; // WlanUserPriority
 
-class MplsExpTopIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class ClassMap : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        MplsExpTopIdentity();
-        ~MplsExpTopIdentity();
+        ClassMap();
+        ~ClassMap();
 
 
-}; // MplsExpTopIdentity
+}; // ClassMap
 
-class CosInnerIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Application : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        CosInnerIdentity();
-        ~CosInnerIdentity();
+        Application();
+        ~Application();
 
 
-}; // CosInnerIdentity
+}; // Application
 
-class Ipv6AclNameIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class CosInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        Ipv6AclNameIdentity();
-        ~Ipv6AclNameIdentity();
+        CosInner();
+        ~CosInner();
 
 
-}; // Ipv6AclNameIdentity
+}; // CosInner
 
-class MplsExpImpIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class SecurityGroupTag : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        MplsExpImpIdentity();
-        ~MplsExpImpIdentity();
+        SecurityGroupTag();
+        ~SecurityGroupTag();
 
 
-}; // MplsExpImpIdentity
+}; // SecurityGroupTag
 
-class SecurityGroupTagIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class PolicyType : public virtual ydk::Identity
 {
     public:
-        SecurityGroupTagIdentity();
-        ~SecurityGroupTagIdentity();
+        PolicyType();
+        ~PolicyType();
 
 
-}; // SecurityGroupTagIdentity
+}; // PolicyType
 
-class ClassTypeIdentity : public virtual Identity
+class IpRtp : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        ClassTypeIdentity();
-        ~ClassTypeIdentity();
+        IpRtp();
+        ~IpRtp();
 
 
-}; // ClassTypeIdentity
+}; // IpRtp
 
-class DiscardClassIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class AtmVci : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        DiscardClassIdentity();
-        ~DiscardClassIdentity();
+        AtmVci();
+        ~AtmVci();
 
 
-}; // DiscardClassIdentity
+}; // AtmVci
 
-class VplsIdentity : public ietf_diffserv_classifier::FilterTypeIdentity, virtual Identity
+class Metadata : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        VplsIdentity();
-        ~VplsIdentity();
+        Metadata();
+        ~Metadata();
 
 
-}; // VplsIdentity
+}; // Metadata
 
-class PolicyTypeIdentity : public virtual Identity
+class VlanInner : public ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
-        PolicyTypeIdentity();
-        ~PolicyTypeIdentity();
+        VlanInner();
+        ~VlanInner();
 
 
-}; // PolicyTypeIdentity
+}; // VlanInner
 
-class ControlIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class Pbr : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        ControlIdentity();
-        ~ControlIdentity();
+        Pbr();
+        ~Pbr();
 
 
-}; // ControlIdentity
+}; // Pbr
 
-class QosIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class AccessControlClass : public policy_types::ClassType, virtual ydk::Identity
 {
     public:
-        QosIdentity();
-        ~QosIdentity();
+        AccessControlClass();
+        ~AccessControlClass();
 
 
-}; // QosIdentity
+}; // AccessControlClass
 
-class PerfMonIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class PacketService : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        PerfMonIdentity();
-        ~PerfMonIdentity();
+        PacketService();
+        ~PacketService();
 
 
-}; // PerfMonIdentity
+}; // PacketService
 
-class PacketServiceIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class Inspect : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        PacketServiceIdentity();
-        ~PacketServiceIdentity();
+        Inspect();
+        ~Inspect();
 
 
-}; // PacketServiceIdentity
+}; // Inspect
 
-class QosClassIdentity : public policy_types::ClassTypeIdentity, virtual Identity
+class PerfMon : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        QosClassIdentity();
-        ~QosClassIdentity();
+        PerfMon();
+        ~PerfMon();
 
 
-}; // QosClassIdentity
+}; // PerfMon
 
-class ControlClassIdentity : public policy_types::ClassTypeIdentity, virtual Identity
+class Qos : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        ControlClassIdentity();
-        ~ControlClassIdentity();
+        Qos();
+        ~Qos();
 
 
-}; // ControlClassIdentity
+}; // Qos
 
-class InspectClassIdentity : public policy_types::ClassTypeIdentity, virtual Identity
+class AppnavClass : public policy_types::ClassType, virtual ydk::Identity
 {
     public:
-        InspectClassIdentity();
-        ~InspectClassIdentity();
+        AppnavClass();
+        ~AppnavClass();
 
 
-}; // InspectClassIdentity
+}; // AppnavClass
 
-class AppnavClassIdentity : public policy_types::ClassTypeIdentity, virtual Identity
+class QosClass : public policy_types::ClassType, virtual ydk::Identity
 {
     public:
-        AppnavClassIdentity();
-        ~AppnavClassIdentity();
+        QosClass();
+        ~QosClass();
 
 
-}; // AppnavClassIdentity
+}; // QosClass
 
-class ServiceIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class ControlClass : public policy_types::ClassType, virtual ydk::Identity
 {
     public:
-        ServiceIdentity();
-        ~ServiceIdentity();
+        ControlClass();
+        ~ControlClass();
 
 
-}; // ServiceIdentity
+}; // ControlClass
 
-class AccessControlClassIdentity : public policy_types::ClassTypeIdentity, virtual Identity
+class Control : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        AccessControlClassIdentity();
-        ~AccessControlClassIdentity();
+        Control();
+        ~Control();
 
 
-}; // AccessControlClassIdentity
+}; // Control
 
-class AccessControlIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class AccessControl : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        AccessControlIdentity();
-        ~AccessControlIdentity();
+        AccessControl();
+        ~AccessControl();
 
 
-}; // AccessControlIdentity
+}; // AccessControl
 
-class AppnavIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class InspectClass : public policy_types::ClassType, virtual ydk::Identity
 {
     public:
-        AppnavIdentity();
-        ~AppnavIdentity();
+        InspectClass();
+        ~InspectClass();
 
 
-}; // AppnavIdentity
+}; // InspectClass
 
-class InspectIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class Service : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        InspectIdentity();
-        ~InspectIdentity();
+        Service();
+        ~Service();
 
 
-}; // InspectIdentity
+}; // Service
 
-class PbrIdentity : public policy_types::PolicyTypeIdentity, virtual Identity
+class Appnav : public policy_types::PolicyType, virtual ydk::Identity
 {
     public:
-        PbrIdentity();
-        ~PbrIdentity();
+        Appnav();
+        ~Appnav();
 
 
-}; // PbrIdentity
+}; // Appnav
 
-class MetricEnum : public Enum
+class Direction : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf peta;
-        static const Enum::YLeaf tera;
-        static const Enum::YLeaf giga;
-        static const Enum::YLeaf mega;
-        static const Enum::YLeaf kilo;
-        static const Enum::YLeaf milli;
-        static const Enum::YLeaf nano;
+        static const ydk::Enum::YLeaf inbound;
+        static const ydk::Enum::YLeaf outbound;
 
 };
 
-class DirectionEnum : public Enum
+class Metric : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inbound;
-        static const Enum::YLeaf outbound;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf peta;
+        static const ydk::Enum::YLeaf tera;
+        static const ydk::Enum::YLeaf giga;
+        static const ydk::Enum::YLeaf mega;
+        static const ydk::Enum::YLeaf kilo;
+        static const ydk::Enum::YLeaf milli;
+        static const ydk::Enum::YLeaf nano;
 
 };
 
-class RateUnitEnum : public Enum
+class RateUnit : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf pps;
-        static const Enum::YLeaf cps;
-        static const Enum::YLeaf bps;
-        static const Enum::YLeaf perc;
-        static const Enum::YLeaf ratio;
+        static const ydk::Enum::YLeaf pps;
+        static const ydk::Enum::YLeaf cps;
+        static const ydk::Enum::YLeaf bps;
+        static const ydk::Enum::YLeaf perc;
+        static const ydk::Enum::YLeaf ratio;
 
 };
 

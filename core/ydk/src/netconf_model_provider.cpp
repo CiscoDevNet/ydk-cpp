@@ -71,7 +71,7 @@ string NetconfModelProvider::get_model(const string& name, const string& version
         file_format = "yin";
     }
 
-    path::CodecService codec_service{};
+    path::Codec codec_service{};
 
     string payload{"<rpc xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">"};
     payload+= R"(<get-schema xmlns="urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring">)";

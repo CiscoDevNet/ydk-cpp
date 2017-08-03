@@ -47,10 +47,11 @@ class Entity;
 
 class ExecutorService : public Service
 {
-	public:
-		ExecutorService();
-		std::shared_ptr<Entity> execute_rpc(NetconfServiceProvider & provider,
-			Entity & rpc_entity, std::shared_ptr<Entity> top_entity = nullptr);
+    public:
+        ExecutorService();
+        ~ExecutorService();
+        std::shared_ptr<Entity> execute_rpc(NetconfServiceProvider & provider,
+            Entity & rpc_entity, std::shared_ptr<Entity> top_entity = nullptr);
 };
 
 }

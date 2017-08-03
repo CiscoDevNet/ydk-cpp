@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_IPSLA_JITTER_MIB {
 
-class CiscoIpslaJitterMib : public Entity
+class CiscoIpslaJitterMib : public ydk::Entity
 {
     public:
         CiscoIpslaJitterMib();
@@ -19,26 +19,29 @@ class CiscoIpslaJitterMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Cipslaudpjittertmpltable; //type: CiscoIpslaJitterMib::Cipslaudpjittertmpltable
         class Cipslaicmpjittertmpltable; //type: CiscoIpslaJitterMib::Cipslaicmpjittertmpltable
 
-        std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaicmpjittertmpltable> cipslaicmpjittertmpltable_;
-        std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaudpjittertmpltable> cipslaudpjittertmpltable_;
+        std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaicmpjittertmpltable> cipslaicmpjittertmpltable;
+        std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaudpjittertmpltable> cipslaudpjittertmpltable;
         
 }; // CiscoIpslaJitterMib
 
 
-class CiscoIpslaJitterMib::Cipslaudpjittertmpltable : public Entity
+class CiscoIpslaJitterMib::Cipslaudpjittertmpltable : public ydk::Entity
 {
     public:
         Cipslaudpjittertmpltable();
@@ -46,20 +49,22 @@ class CiscoIpslaJitterMib::Cipslaudpjittertmpltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cipslaudpjittertmplentry; //type: CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry> > cipslaudpjittertmplentry_;
+        std::vector<std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry> > cipslaudpjittertmplentry;
         
 }; // CiscoIpslaJitterMib::Cipslaudpjittertmpltable
 
 
-class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry : public Entity
+class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry : public ydk::Entity
 {
     public:
         Cipslaudpjittertmplentry();
@@ -67,49 +72,51 @@ class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cipslaudpjittertmplname; //type: string
-        YLeaf cipslaudpjittertmpldescription; //type: string
-        YLeaf cipslaudpjittertmplcontrolenable; //type: boolean
-        YLeaf cipslaudpjittertmpltimeout; //type: uint32
-        YLeaf cipslaudpjittertmplverifydata; //type: boolean
-        YLeaf cipslaudpjittertmplcodectype; //type: IpslacodectypeEnum
-        YLeaf cipslaudpjittertmplcodecinterval; //type: uint32
-        YLeaf cipslaudpjittertmplcodecpayload; //type: uint32
-        YLeaf cipslaudpjittertmplcodecnumpkts; //type: uint32
-        YLeaf cipslaudpjittertmplinterval; //type: uint32
-        YLeaf cipslaudpjittertmplnumpkts; //type: uint32
-        YLeaf cipslaudpjittertmplsrcaddrtype; //type: InetaddresstypeEnum
-        YLeaf cipslaudpjittertmplsrcaddr; //type: binary
-        YLeaf cipslaudpjittertmplsrcport; //type: uint16
-        YLeaf cipslaudpjittertmplprecision; //type: CipslaudpjittertmplprecisionEnum
-        YLeaf cipslaudpjittertmplreqdatasize; //type: uint32
-        YLeaf cipslaudpjittertmplpktpriority; //type: CipslaudpjittertmplpktpriorityEnum
-        YLeaf cipslaudpjittertmpltos; //type: uint32
-        YLeaf cipslaudpjittertmplvrfname; //type: string
-        YLeaf cipslaudpjittertmplthreshold; //type: uint32
-        YLeaf cipslaudpjittertmplntptolabs; //type: uint32
-        YLeaf cipslaudpjittertmplntptolpct; //type: uint32
-        YLeaf cipslaudpjittertmplntptoltype; //type: CipslaudpjittertmplntptoltypeEnum
-        YLeaf cipslaudpjittertmplicpiffactor; //type: uint32
-        YLeaf cipslaudpjittertmplstatshours; //type: uint32
-        YLeaf cipslaudpjittertmpldistbuckets; //type: uint32
-        YLeaf cipslaudpjittertmpldistinterval; //type: uint32
-        YLeaf cipslaudpjittertmplstoragetype; //type: StoragetypeEnum
-        YLeaf cipslaudpjittertmplrowstatus; //type: RowstatusEnum
-        class CipslaudpjittertmplprecisionEnum;
-        class CipslaudpjittertmplpktpriorityEnum;
-        class CipslaudpjittertmplntptoltypeEnum;
+        ydk::YLeaf cipslaudpjittertmplname; //type: string
+        ydk::YLeaf cipslaudpjittertmpldescription; //type: string
+        ydk::YLeaf cipslaudpjittertmplcontrolenable; //type: boolean
+        ydk::YLeaf cipslaudpjittertmpltimeout; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplverifydata; //type: boolean
+        ydk::YLeaf cipslaudpjittertmplcodectype; //type: Ipslacodectype
+        ydk::YLeaf cipslaudpjittertmplcodecinterval; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplcodecpayload; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplcodecnumpkts; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplinterval; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplnumpkts; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplsrcaddrtype; //type: Inetaddresstype
+        ydk::YLeaf cipslaudpjittertmplsrcaddr; //type: binary
+        ydk::YLeaf cipslaudpjittertmplsrcport; //type: uint16
+        ydk::YLeaf cipslaudpjittertmplprecision; //type: Cipslaudpjittertmplprecision
+        ydk::YLeaf cipslaudpjittertmplreqdatasize; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplpktpriority; //type: Cipslaudpjittertmplpktpriority
+        ydk::YLeaf cipslaudpjittertmpltos; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplvrfname; //type: string
+        ydk::YLeaf cipslaudpjittertmplthreshold; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplntptolabs; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplntptolpct; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplntptoltype; //type: Cipslaudpjittertmplntptoltype
+        ydk::YLeaf cipslaudpjittertmplicpiffactor; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplstatshours; //type: uint32
+        ydk::YLeaf cipslaudpjittertmpldistbuckets; //type: uint32
+        ydk::YLeaf cipslaudpjittertmpldistinterval; //type: uint32
+        ydk::YLeaf cipslaudpjittertmplstoragetype; //type: Storagetype
+        ydk::YLeaf cipslaudpjittertmplrowstatus; //type: Rowstatus
+        class Cipslaudpjittertmplprecision;
+        class Cipslaudpjittertmplpktpriority;
+        class Cipslaudpjittertmplntptoltype;
 
 }; // CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry
 
 
-class CiscoIpslaJitterMib::Cipslaicmpjittertmpltable : public Entity
+class CiscoIpslaJitterMib::Cipslaicmpjittertmpltable : public ydk::Entity
 {
     public:
         Cipslaicmpjittertmpltable();
@@ -117,20 +124,22 @@ class CiscoIpslaJitterMib::Cipslaicmpjittertmpltable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Cipslaicmpjittertmplentry; //type: CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
 
-        std::vector<std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry> > cipslaicmpjittertmplentry_;
+        std::vector<std::shared_ptr<CISCO_IPSLA_JITTER_MIB::CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry> > cipslaicmpjittertmplentry;
         
 }; // CiscoIpslaJitterMib::Cipslaicmpjittertmpltable
 
 
-class CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry : public Entity
+class CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry : public ydk::Entity
 {
     public:
         Cipslaicmpjittertmplentry();
@@ -138,52 +147,54 @@ class CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf cipslaicmpjittertmplname; //type: string
-        YLeaf cipslaicmpjittertmpldescription; //type: string
-        YLeaf cipslaicmpjittertmpltimeout; //type: uint32
-        YLeaf cipslaicmpjittertmplverifydata; //type: boolean
-        YLeaf cipslaicmpjittertmplnumpkts; //type: uint32
-        YLeaf cipslaicmpjittertmplinterval; //type: uint32
-        YLeaf cipslaicmpjittertmplsrcaddrtype; //type: InetaddresstypeEnum
-        YLeaf cipslaicmpjittertmplsrcaddr; //type: binary
-        YLeaf cipslaicmpjittertmpltos; //type: uint32
-        YLeaf cipslaicmpjittertmplvrfname; //type: string
-        YLeaf cipslaicmpjittertmplthreshold; //type: uint32
-        YLeaf cipslaicmpjittertmplstatshours; //type: uint32
-        YLeaf cipslaicmpjittertmpldistbuckets; //type: uint32
-        YLeaf cipslaicmpjittertmpldistinterval; //type: uint32
-        YLeaf cipslaicmpjittertmplstoragetype; //type: StoragetypeEnum
-        YLeaf cipslaicmpjittertmplrowstatus; //type: RowstatusEnum
+        ydk::YLeaf cipslaicmpjittertmplname; //type: string
+        ydk::YLeaf cipslaicmpjittertmpldescription; //type: string
+        ydk::YLeaf cipslaicmpjittertmpltimeout; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplverifydata; //type: boolean
+        ydk::YLeaf cipslaicmpjittertmplnumpkts; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplinterval; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplsrcaddrtype; //type: Inetaddresstype
+        ydk::YLeaf cipslaicmpjittertmplsrcaddr; //type: binary
+        ydk::YLeaf cipslaicmpjittertmpltos; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplvrfname; //type: string
+        ydk::YLeaf cipslaicmpjittertmplthreshold; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplstatshours; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmpldistbuckets; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmpldistinterval; //type: uint32
+        ydk::YLeaf cipslaicmpjittertmplstoragetype; //type: Storagetype
+        ydk::YLeaf cipslaicmpjittertmplrowstatus; //type: Rowstatus
 
 }; // CiscoIpslaJitterMib::Cipslaicmpjittertmpltable::Cipslaicmpjittertmplentry
 
-class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::CipslaudpjittertmplprecisionEnum : public Enum
+class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplprecision : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf milliseconds;
-        static const Enum::YLeaf microseconds;
+        static const ydk::Enum::YLeaf milliseconds;
+        static const ydk::Enum::YLeaf microseconds;
 
 };
 
-class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::CipslaudpjittertmplpktpriorityEnum : public Enum
+class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplpktpriority : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf normal;
-        static const Enum::YLeaf high;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf high;
 
 };
 
-class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::CipslaudpjittertmplntptoltypeEnum : public Enum
+class CiscoIpslaJitterMib::Cipslaudpjittertmpltable::Cipslaudpjittertmplentry::Cipslaudpjittertmplntptoltype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf percent;
-        static const Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf percent;
+        static const ydk::Enum::YLeaf absolute;
 
 };
 

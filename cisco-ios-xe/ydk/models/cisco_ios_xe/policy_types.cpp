@@ -6,467 +6,469 @@
 #include "generated_entity_lookup.hpp"
 #include "policy_types.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace policy_types {
 
-InputInterfaceIdentity::InputInterfaceIdentity()
-     : Identity("policy-types:input-interface")
+MplsExpImp::MplsExpImp()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:mpls-exp-imp")
 {
 }
 
-InputInterfaceIdentity::~InputInterfaceIdentity()
+MplsExpImp::~MplsExpImp()
 {
 }
 
-SrcMacIdentity::SrcMacIdentity()
-     : Identity("policy-types:src-mac")
+FlowDlci::FlowDlci()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:flow-dlci")
 {
 }
 
-SrcMacIdentity::~SrcMacIdentity()
+FlowDlci::~FlowDlci()
 {
 }
 
-ApplicationIdentity::ApplicationIdentity()
-     : Identity("policy-types:application")
+Cos::Cos()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:cos")
 {
 }
 
-ApplicationIdentity::~ApplicationIdentity()
+Cos::~Cos()
 {
 }
 
-SecurityGroupNameIdentity::SecurityGroupNameIdentity()
-     : Identity("policy-types:security-group-name")
+SecurityGroupName::SecurityGroupName()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:security-group-name")
 {
 }
 
-SecurityGroupNameIdentity::~SecurityGroupNameIdentity()
+SecurityGroupName::~SecurityGroupName()
 {
 }
 
-Ipv4AclNameIdentity::Ipv4AclNameIdentity()
-     : Identity("policy-types:ipv4-acl-name")
+Ipv4AclName::Ipv4AclName()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:ipv4-acl-name")
 {
 }
 
-Ipv4AclNameIdentity::~Ipv4AclNameIdentity()
+Ipv4AclName::~Ipv4AclName()
 {
 }
 
-FlowDlciIdentity::FlowDlciIdentity()
-     : Identity("policy-types:flow-dlci")
+Dei::Dei()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:dei")
 {
 }
 
-FlowDlciIdentity::~FlowDlciIdentity()
+Dei::~Dei()
 {
 }
 
-DeiIdentity::DeiIdentity()
-     : Identity("policy-types:dei")
+Ipv6AclName::Ipv6AclName()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:ipv6-acl-name")
 {
 }
 
-DeiIdentity::~DeiIdentity()
+Ipv6AclName::~Ipv6AclName()
 {
 }
 
-PrecIdentity::PrecIdentity()
-     : Identity("policy-types:prec")
+SrcMac::SrcMac()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:src-mac")
 {
 }
 
-PrecIdentity::~PrecIdentity()
+SrcMac::~SrcMac()
 {
 }
 
-PacketLengthIdentity::PacketLengthIdentity()
-     : Identity("policy-types:packet-length")
+FlowDe::FlowDe()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:flow-de")
 {
 }
 
-PacketLengthIdentity::~PacketLengthIdentity()
+FlowDe::~FlowDe()
 {
 }
 
-Ipv4AclIdentity::Ipv4AclIdentity()
-     : Identity("policy-types:ipv4-acl")
+Vlan::Vlan()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:vlan")
 {
 }
 
-Ipv4AclIdentity::~Ipv4AclIdentity()
+Vlan::~Vlan()
 {
 }
 
-FlowDeIdentity::FlowDeIdentity()
-     : Identity("policy-types:flow-de")
+PacketLength::PacketLength()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:packet-length")
 {
 }
 
-FlowDeIdentity::~FlowDeIdentity()
+PacketLength::~PacketLength()
 {
 }
 
-FlowIpIdentity::FlowIpIdentity()
-     : Identity("policy-types:flow-ip")
+InputInterface::InputInterface()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:input-interface")
 {
 }
 
-FlowIpIdentity::~FlowIpIdentity()
+InputInterface::~InputInterface()
 {
 }
 
-FlowRecordIdentity::FlowRecordIdentity()
-     : Identity("policy-types:flow-record")
+QosGroup::QosGroup()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:qos-group")
 {
 }
 
-FlowRecordIdentity::~FlowRecordIdentity()
+QosGroup::~QosGroup()
 {
 }
 
-VlanInnerIdentity::VlanInnerIdentity()
-     : Identity("policy-types:vlan-inner")
+Ipv4Acl::Ipv4Acl()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:ipv4-acl")
 {
 }
 
-VlanInnerIdentity::~VlanInnerIdentity()
+Ipv4Acl::~Ipv4Acl()
 {
 }
 
-MetadataIdentity::MetadataIdentity()
-     : Identity("policy-types:metadata")
+Ipv6Acl::Ipv6Acl()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:ipv6-acl")
 {
 }
 
-MetadataIdentity::~MetadataIdentity()
+Ipv6Acl::~Ipv6Acl()
 {
 }
 
-VlanIdentity::VlanIdentity()
-     : Identity("policy-types:vlan")
+FlowRecord::FlowRecord()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:flow-record")
 {
 }
 
-VlanIdentity::~VlanIdentity()
+FlowRecord::~FlowRecord()
 {
 }
 
-AtmVciIdentity::AtmVciIdentity()
-     : Identity("policy-types:atm-vci")
+AtmClp::AtmClp()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:atm-clp")
 {
 }
 
-AtmVciIdentity::~AtmVciIdentity()
+AtmClp::~AtmClp()
 {
 }
 
-ClassMapIdentity::ClassMapIdentity()
-     : Identity("policy-types:class-map")
+DeiInner::DeiInner()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:dei-inner")
 {
 }
 
-ClassMapIdentity::~ClassMapIdentity()
+DeiInner::~DeiInner()
 {
 }
 
-QosGroupIdentity::QosGroupIdentity()
-     : Identity("policy-types:qos-group")
+Vpls::Vpls()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:vpls")
 {
 }
 
-QosGroupIdentity::~QosGroupIdentity()
+Vpls::~Vpls()
 {
 }
 
-WlanUserPriorityIdentity::WlanUserPriorityIdentity()
-     : Identity("policy-types:wlan-user-priority")
+DstMac::DstMac()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:dst-mac")
 {
 }
 
-WlanUserPriorityIdentity::~WlanUserPriorityIdentity()
+DstMac::~DstMac()
 {
 }
 
-IpRtpIdentity::IpRtpIdentity()
-     : Identity("policy-types:ip-rtp")
+Prec::Prec()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:prec")
 {
 }
 
-IpRtpIdentity::~IpRtpIdentity()
+Prec::~Prec()
 {
 }
 
-Ipv6AclIdentity::Ipv6AclIdentity()
-     : Identity("policy-types:ipv6-acl")
+ClassType::ClassType()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:class-type")
 {
 }
 
-Ipv6AclIdentity::~Ipv6AclIdentity()
+ClassType::~ClassType()
 {
 }
 
-AtmClpIdentity::AtmClpIdentity()
-     : Identity("policy-types:atm-clp")
+MplsExpTop::MplsExpTop()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:mpls-exp-top")
 {
 }
 
-AtmClpIdentity::~AtmClpIdentity()
+MplsExpTop::~MplsExpTop()
 {
 }
 
-DstMacIdentity::DstMacIdentity()
-     : Identity("policy-types:dst-mac")
+DiscardClass::DiscardClass()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:discard-class")
 {
 }
 
-DstMacIdentity::~DstMacIdentity()
+DiscardClass::~DiscardClass()
 {
 }
 
-CosIdentity::CosIdentity()
-     : Identity("policy-types:cos")
+FlowIp::FlowIp()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:flow-ip")
 {
 }
 
-CosIdentity::~CosIdentity()
+FlowIp::~FlowIp()
 {
 }
 
-DeiInnerIdentity::DeiInnerIdentity()
-     : Identity("policy-types:dei-inner")
+WlanUserPriority::WlanUserPriority()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:wlan-user-priority")
 {
 }
 
-DeiInnerIdentity::~DeiInnerIdentity()
+WlanUserPriority::~WlanUserPriority()
 {
 }
 
-MplsExpTopIdentity::MplsExpTopIdentity()
-     : Identity("policy-types:mpls-exp-top")
+ClassMap::ClassMap()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:class-map")
 {
 }
 
-MplsExpTopIdentity::~MplsExpTopIdentity()
+ClassMap::~ClassMap()
 {
 }
 
-CosInnerIdentity::CosInnerIdentity()
-     : Identity("policy-types:cos-inner")
+Application::Application()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:application")
 {
 }
 
-CosInnerIdentity::~CosInnerIdentity()
+Application::~Application()
 {
 }
 
-Ipv6AclNameIdentity::Ipv6AclNameIdentity()
-     : Identity("policy-types:ipv6-acl-name")
+CosInner::CosInner()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:cos-inner")
 {
 }
 
-Ipv6AclNameIdentity::~Ipv6AclNameIdentity()
+CosInner::~CosInner()
 {
 }
 
-MplsExpImpIdentity::MplsExpImpIdentity()
-     : Identity("policy-types:mpls-exp-imp")
+SecurityGroupTag::SecurityGroupTag()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:security-group-tag")
 {
 }
 
-MplsExpImpIdentity::~MplsExpImpIdentity()
+SecurityGroupTag::~SecurityGroupTag()
 {
 }
 
-SecurityGroupTagIdentity::SecurityGroupTagIdentity()
-     : Identity("policy-types:security-group-tag")
+PolicyType::PolicyType()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:policy-type")
 {
 }
 
-SecurityGroupTagIdentity::~SecurityGroupTagIdentity()
+PolicyType::~PolicyType()
 {
 }
 
-ClassTypeIdentity::ClassTypeIdentity()
-     : Identity("policy-types:class-type")
+IpRtp::IpRtp()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:ip-rtp")
 {
 }
 
-ClassTypeIdentity::~ClassTypeIdentity()
+IpRtp::~IpRtp()
 {
 }
 
-DiscardClassIdentity::DiscardClassIdentity()
-     : Identity("policy-types:discard-class")
+AtmVci::AtmVci()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:atm-vci")
 {
 }
 
-DiscardClassIdentity::~DiscardClassIdentity()
+AtmVci::~AtmVci()
 {
 }
 
-VplsIdentity::VplsIdentity()
-     : Identity("policy-types:vpls")
+Metadata::Metadata()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:metadata")
 {
 }
 
-VplsIdentity::~VplsIdentity()
+Metadata::~Metadata()
 {
 }
 
-PolicyTypeIdentity::PolicyTypeIdentity()
-     : Identity("policy-types:policy-type")
+VlanInner::VlanInner()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:vlan-inner")
 {
 }
 
-PolicyTypeIdentity::~PolicyTypeIdentity()
+VlanInner::~VlanInner()
 {
 }
 
-ControlIdentity::ControlIdentity()
-     : Identity("policy-types:control")
+Pbr::Pbr()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:pbr")
 {
 }
 
-ControlIdentity::~ControlIdentity()
+Pbr::~Pbr()
 {
 }
 
-QosIdentity::QosIdentity()
-     : Identity("policy-types:qos")
+AccessControlClass::AccessControlClass()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:access-control-class")
 {
 }
 
-QosIdentity::~QosIdentity()
+AccessControlClass::~AccessControlClass()
 {
 }
 
-PerfMonIdentity::PerfMonIdentity()
-     : Identity("policy-types:perf-mon")
+PacketService::PacketService()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:packet-service")
 {
 }
 
-PerfMonIdentity::~PerfMonIdentity()
+PacketService::~PacketService()
 {
 }
 
-PacketServiceIdentity::PacketServiceIdentity()
-     : Identity("policy-types:packet-service")
+Inspect::Inspect()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:inspect")
 {
 }
 
-PacketServiceIdentity::~PacketServiceIdentity()
+Inspect::~Inspect()
 {
 }
 
-QosClassIdentity::QosClassIdentity()
-     : Identity("policy-types:qos-class")
+PerfMon::PerfMon()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:perf-mon")
 {
 }
 
-QosClassIdentity::~QosClassIdentity()
+PerfMon::~PerfMon()
 {
 }
 
-ControlClassIdentity::ControlClassIdentity()
-     : Identity("policy-types:control-class")
+Qos::Qos()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:qos")
 {
 }
 
-ControlClassIdentity::~ControlClassIdentity()
+Qos::~Qos()
 {
 }
 
-InspectClassIdentity::InspectClassIdentity()
-     : Identity("policy-types:inspect-class")
+AppnavClass::AppnavClass()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:appnav-class")
 {
 }
 
-InspectClassIdentity::~InspectClassIdentity()
+AppnavClass::~AppnavClass()
 {
 }
 
-AppnavClassIdentity::AppnavClassIdentity()
-     : Identity("policy-types:appnav-class")
+QosClass::QosClass()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:qos-class")
 {
 }
 
-AppnavClassIdentity::~AppnavClassIdentity()
+QosClass::~QosClass()
 {
 }
 
-ServiceIdentity::ServiceIdentity()
-     : Identity("policy-types:service")
+ControlClass::ControlClass()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:control-class")
 {
 }
 
-ServiceIdentity::~ServiceIdentity()
+ControlClass::~ControlClass()
 {
 }
 
-AccessControlClassIdentity::AccessControlClassIdentity()
-     : Identity("policy-types:access-control-class")
+Control::Control()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:control")
 {
 }
 
-AccessControlClassIdentity::~AccessControlClassIdentity()
+Control::~Control()
 {
 }
 
-AccessControlIdentity::AccessControlIdentity()
-     : Identity("policy-types:access-control")
+AccessControl::AccessControl()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:access-control")
 {
 }
 
-AccessControlIdentity::~AccessControlIdentity()
+AccessControl::~AccessControl()
 {
 }
 
-AppnavIdentity::AppnavIdentity()
-     : Identity("policy-types:appnav")
+InspectClass::InspectClass()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:inspect-class")
 {
 }
 
-AppnavIdentity::~AppnavIdentity()
+InspectClass::~InspectClass()
 {
 }
 
-InspectIdentity::InspectIdentity()
-     : Identity("policy-types:inspect")
+Service::Service()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:service")
 {
 }
 
-InspectIdentity::~InspectIdentity()
+Service::~Service()
 {
 }
 
-PbrIdentity::PbrIdentity()
-     : Identity("policy-types:pbr")
+Appnav::Appnav()
+     : Identity("urn:ietf:params:xml:ns:yang:c3pl-types", "policy-types", "policy-types:appnav")
 {
 }
 
-PbrIdentity::~PbrIdentity()
+Appnav::~Appnav()
 {
 }
 
-const Enum::YLeaf MetricEnum::none {0, "none"};
-const Enum::YLeaf MetricEnum::peta {1, "peta"};
-const Enum::YLeaf MetricEnum::tera {2, "tera"};
-const Enum::YLeaf MetricEnum::giga {3, "giga"};
-const Enum::YLeaf MetricEnum::mega {4, "mega"};
-const Enum::YLeaf MetricEnum::kilo {5, "kilo"};
-const Enum::YLeaf MetricEnum::milli {6, "milli"};
-const Enum::YLeaf MetricEnum::nano {7, "nano"};
+const Enum::YLeaf Direction::inbound {0, "inbound"};
+const Enum::YLeaf Direction::outbound {1, "outbound"};
 
-const Enum::YLeaf DirectionEnum::inbound {0, "inbound"};
-const Enum::YLeaf DirectionEnum::outbound {1, "outbound"};
+const Enum::YLeaf Metric::none {0, "none"};
+const Enum::YLeaf Metric::peta {1, "peta"};
+const Enum::YLeaf Metric::tera {2, "tera"};
+const Enum::YLeaf Metric::giga {3, "giga"};
+const Enum::YLeaf Metric::mega {4, "mega"};
+const Enum::YLeaf Metric::kilo {5, "kilo"};
+const Enum::YLeaf Metric::milli {6, "milli"};
+const Enum::YLeaf Metric::nano {7, "nano"};
 
-const Enum::YLeaf RateUnitEnum::pps {0, "pps"};
-const Enum::YLeaf RateUnitEnum::cps {1, "cps"};
-const Enum::YLeaf RateUnitEnum::bps {2, "bps"};
-const Enum::YLeaf RateUnitEnum::perc {3, "perc"};
-const Enum::YLeaf RateUnitEnum::ratio {4, "ratio"};
+const Enum::YLeaf RateUnit::pps {0, "pps"};
+const Enum::YLeaf RateUnit::cps {1, "cps"};
+const Enum::YLeaf RateUnit::bps {2, "bps"};
+const Enum::YLeaf RateUnit::perc {3, "perc"};
+const Enum::YLeaf RateUnit::ratio {4, "ratio"};
 
 
 }

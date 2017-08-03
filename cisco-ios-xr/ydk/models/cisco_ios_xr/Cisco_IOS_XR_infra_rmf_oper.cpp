@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_rmf_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_rmf_oper {
 
 Redundancy::Redundancy()
@@ -33,7 +35,7 @@ bool Redundancy::has_data() const
 
 bool Redundancy::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation())
 	|| (summary !=  nullptr && summary->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::get_children() const
     return children;
 }
 
-void Redundancy::set_value(const std::string & value_path, std::string value)
+void Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string Redundancy::get_bundle_name() const
 augment_capabilities_function Redundancy::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Redundancy::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Redundancy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes" || name == "summary")
+        return true;
+    return false;
 }
 
 Redundancy::Nodes::Nodes()
@@ -154,7 +172,7 @@ bool Redundancy::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Redundancy::Nodes::get_segment_path() const
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::get_children()
     return children;
 }
 
-void Redundancy::Nodes::set_value(const std::string & value_path, std::string value)
+void Redundancy::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Redundancy::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Redundancy::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Redundancy::Nodes::Node::Node()
@@ -254,12 +283,12 @@ bool Redundancy::Nodes::Node::has_data() const
 
 bool Redundancy::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
-	|| is_set(active_reboot_reason.operation)
-	|| is_set(err_log.operation)
-	|| is_set(log.operation)
-	|| is_set(standby_reboot_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
+	|| ydk::is_set(active_reboot_reason.yfilter)
+	|| ydk::is_set(err_log.yfilter)
+	|| ydk::is_set(log.yfilter)
+	|| ydk::is_set(standby_reboot_reason.yfilter)
 	|| (redundancy !=  nullptr && redundancy->has_operation());
 }
 
@@ -286,11 +315,11 @@ const EntityPath Redundancy::Nodes::Node::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (active_reboot_reason.is_set || is_set(active_reboot_reason.operation)) leaf_name_data.push_back(active_reboot_reason.get_name_leafdata());
-    if (err_log.is_set || is_set(err_log.operation)) leaf_name_data.push_back(err_log.get_name_leafdata());
-    if (log.is_set || is_set(log.operation)) leaf_name_data.push_back(log.get_name_leafdata());
-    if (standby_reboot_reason.is_set || is_set(standby_reboot_reason.operation)) leaf_name_data.push_back(standby_reboot_reason.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (active_reboot_reason.is_set || is_set(active_reboot_reason.yfilter)) leaf_name_data.push_back(active_reboot_reason.get_name_leafdata());
+    if (err_log.is_set || is_set(err_log.yfilter)) leaf_name_data.push_back(err_log.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
+    if (standby_reboot_reason.is_set || is_set(standby_reboot_reason.yfilter)) leaf_name_data.push_back(standby_reboot_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -323,28 +352,69 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::get_chil
     return children;
 }
 
-void Redundancy::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Redundancy::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-reboot-reason")
     {
         active_reboot_reason = value;
+        active_reboot_reason.value_namespace = name_space;
+        active_reboot_reason.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "err-log")
     {
         err_log = value;
+        err_log.value_namespace = name_space;
+        err_log.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "log")
     {
         log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby-reboot-reason")
     {
         standby_reboot_reason = value;
+        standby_reboot_reason.value_namespace = name_space;
+        standby_reboot_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Redundancy::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+    if(value_path == "active-reboot-reason")
+    {
+        active_reboot_reason.yfilter = yfilter;
+    }
+    if(value_path == "err-log")
+    {
+        err_log.yfilter = yfilter;
+    }
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+    if(value_path == "standby-reboot-reason")
+    {
+        standby_reboot_reason.yfilter = yfilter;
+    }
+}
+
+bool Redundancy::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "redundancy" || name == "node-id" || name == "active-reboot-reason" || name == "err-log" || name == "log" || name == "standby-reboot-reason")
+        return true;
+    return false;
 }
 
 Redundancy::Nodes::Node::Redundancy_::Redundancy_()
@@ -381,11 +451,11 @@ bool Redundancy::Nodes::Node::Redundancy_::has_operation() const
         if(groupinfo[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active.operation)
-	|| is_set(ha_state.operation)
-	|| is_set(nsr_state.operation)
-	|| is_set(standby.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(ha_state.yfilter)
+	|| ydk::is_set(nsr_state.yfilter)
+	|| ydk::is_set(standby.yfilter);
 }
 
 std::string Redundancy::Nodes::Node::Redundancy_::get_segment_path() const
@@ -411,10 +481,10 @@ const EntityPath Redundancy::Nodes::Node::Redundancy_::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (ha_state.is_set || is_set(ha_state.operation)) leaf_name_data.push_back(ha_state.get_name_leafdata());
-    if (nsr_state.is_set || is_set(nsr_state.operation)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
-    if (standby.is_set || is_set(standby.operation)) leaf_name_data.push_back(standby.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (ha_state.is_set || is_set(ha_state.yfilter)) leaf_name_data.push_back(ha_state.get_name_leafdata());
+    if (nsr_state.is_set || is_set(nsr_state.yfilter)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
+    if (standby.is_set || is_set(standby.yfilter)) leaf_name_data.push_back(standby.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -454,24 +524,59 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::Redundan
     return children;
 }
 
-void Redundancy::Nodes::Node::Redundancy_::set_value(const std::string & value_path, std::string value)
+void Redundancy::Nodes::Node::Redundancy_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ha-state")
     {
         ha_state = value;
+        ha_state.value_namespace = name_space;
+        ha_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-state")
     {
         nsr_state = value;
+        nsr_state.value_namespace = name_space;
+        nsr_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby")
     {
         standby = value;
+        standby.value_namespace = name_space;
+        standby.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Redundancy::Nodes::Node::Redundancy_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "ha-state")
+    {
+        ha_state.yfilter = yfilter;
+    }
+    if(value_path == "nsr-state")
+    {
+        nsr_state.yfilter = yfilter;
+    }
+    if(value_path == "standby")
+    {
+        standby.yfilter = yfilter;
+    }
+}
+
+bool Redundancy::Nodes::Node::Redundancy_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groupinfo" || name == "active" || name == "ha-state" || name == "nsr-state" || name == "standby")
+        return true;
+    return false;
 }
 
 Redundancy::Nodes::Node::Redundancy_::Groupinfo::Groupinfo()
@@ -498,11 +603,11 @@ bool Redundancy::Nodes::Node::Redundancy_::Groupinfo::has_data() const
 
 bool Redundancy::Nodes::Node::Redundancy_::Groupinfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active.operation)
-	|| is_set(ha_state.operation)
-	|| is_set(nsr_state.operation)
-	|| is_set(standby.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(ha_state.yfilter)
+	|| ydk::is_set(nsr_state.yfilter)
+	|| ydk::is_set(standby.yfilter);
 }
 
 std::string Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_segment_path() const
@@ -528,10 +633,10 @@ const EntityPath Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (ha_state.is_set || is_set(ha_state.operation)) leaf_name_data.push_back(ha_state.get_name_leafdata());
-    if (nsr_state.is_set || is_set(nsr_state.operation)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
-    if (standby.is_set || is_set(standby.operation)) leaf_name_data.push_back(standby.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (ha_state.is_set || is_set(ha_state.yfilter)) leaf_name_data.push_back(ha_state.get_name_leafdata());
+    if (nsr_state.is_set || is_set(nsr_state.yfilter)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
+    if (standby.is_set || is_set(standby.yfilter)) leaf_name_data.push_back(standby.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -550,24 +655,59 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::Redundan
     return children;
 }
 
-void Redundancy::Nodes::Node::Redundancy_::Groupinfo::set_value(const std::string & value_path, std::string value)
+void Redundancy::Nodes::Node::Redundancy_::Groupinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ha-state")
     {
         ha_state = value;
+        ha_state.value_namespace = name_space;
+        ha_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-state")
     {
         nsr_state = value;
+        nsr_state.value_namespace = name_space;
+        nsr_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby")
     {
         standby = value;
+        standby.value_namespace = name_space;
+        standby.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Redundancy::Nodes::Node::Redundancy_::Groupinfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "ha-state")
+    {
+        ha_state.yfilter = yfilter;
+    }
+    if(value_path == "nsr-state")
+    {
+        nsr_state.yfilter = yfilter;
+    }
+    if(value_path == "standby")
+    {
+        standby.yfilter = yfilter;
+    }
+}
+
+bool Redundancy::Nodes::Node::Redundancy_::Groupinfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "ha-state" || name == "nsr-state" || name == "standby")
+        return true;
+    return false;
 }
 
 Redundancy::Summary::Summary()
@@ -598,8 +738,8 @@ bool Redundancy::Summary::has_operation() const
         if(red_pair[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(err_log.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(err_log.yfilter);
 }
 
 std::string Redundancy::Summary::get_segment_path() const
@@ -625,7 +765,7 @@ const EntityPath Redundancy::Summary::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (err_log.is_set || is_set(err_log.operation)) leaf_name_data.push_back(err_log.get_name_leafdata());
+    if (err_log.is_set || is_set(err_log.yfilter)) leaf_name_data.push_back(err_log.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -665,12 +805,29 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::get_children
     return children;
 }
 
-void Redundancy::Summary::set_value(const std::string & value_path, std::string value)
+void Redundancy::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "err-log")
     {
         err_log = value;
+        err_log.value_namespace = name_space;
+        err_log.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Redundancy::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "err-log")
+    {
+        err_log.yfilter = yfilter;
+    }
+}
+
+bool Redundancy::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "red-pair" || name == "err-log")
+        return true;
+    return false;
 }
 
 Redundancy::Summary::RedPair::RedPair()
@@ -707,11 +864,11 @@ bool Redundancy::Summary::RedPair::has_operation() const
         if(groupinfo[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active.operation)
-	|| is_set(ha_state.operation)
-	|| is_set(nsr_state.operation)
-	|| is_set(standby.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(ha_state.yfilter)
+	|| ydk::is_set(nsr_state.yfilter)
+	|| ydk::is_set(standby.yfilter);
 }
 
 std::string Redundancy::Summary::RedPair::get_segment_path() const
@@ -737,10 +894,10 @@ const EntityPath Redundancy::Summary::RedPair::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (ha_state.is_set || is_set(ha_state.operation)) leaf_name_data.push_back(ha_state.get_name_leafdata());
-    if (nsr_state.is_set || is_set(nsr_state.operation)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
-    if (standby.is_set || is_set(standby.operation)) leaf_name_data.push_back(standby.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (ha_state.is_set || is_set(ha_state.yfilter)) leaf_name_data.push_back(ha_state.get_name_leafdata());
+    if (nsr_state.is_set || is_set(nsr_state.yfilter)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
+    if (standby.is_set || is_set(standby.yfilter)) leaf_name_data.push_back(standby.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -780,24 +937,59 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::RedPair::get
     return children;
 }
 
-void Redundancy::Summary::RedPair::set_value(const std::string & value_path, std::string value)
+void Redundancy::Summary::RedPair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ha-state")
     {
         ha_state = value;
+        ha_state.value_namespace = name_space;
+        ha_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-state")
     {
         nsr_state = value;
+        nsr_state.value_namespace = name_space;
+        nsr_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby")
     {
         standby = value;
+        standby.value_namespace = name_space;
+        standby.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Redundancy::Summary::RedPair::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "ha-state")
+    {
+        ha_state.yfilter = yfilter;
+    }
+    if(value_path == "nsr-state")
+    {
+        nsr_state.yfilter = yfilter;
+    }
+    if(value_path == "standby")
+    {
+        standby.yfilter = yfilter;
+    }
+}
+
+bool Redundancy::Summary::RedPair::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groupinfo" || name == "active" || name == "ha-state" || name == "nsr-state" || name == "standby")
+        return true;
+    return false;
 }
 
 Redundancy::Summary::RedPair::Groupinfo::Groupinfo()
@@ -824,11 +1016,11 @@ bool Redundancy::Summary::RedPair::Groupinfo::has_data() const
 
 bool Redundancy::Summary::RedPair::Groupinfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active.operation)
-	|| is_set(ha_state.operation)
-	|| is_set(nsr_state.operation)
-	|| is_set(standby.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(ha_state.yfilter)
+	|| ydk::is_set(nsr_state.yfilter)
+	|| ydk::is_set(standby.yfilter);
 }
 
 std::string Redundancy::Summary::RedPair::Groupinfo::get_segment_path() const
@@ -854,10 +1046,10 @@ const EntityPath Redundancy::Summary::RedPair::Groupinfo::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (ha_state.is_set || is_set(ha_state.operation)) leaf_name_data.push_back(ha_state.get_name_leafdata());
-    if (nsr_state.is_set || is_set(nsr_state.operation)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
-    if (standby.is_set || is_set(standby.operation)) leaf_name_data.push_back(standby.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (ha_state.is_set || is_set(ha_state.yfilter)) leaf_name_data.push_back(ha_state.get_name_leafdata());
+    if (nsr_state.is_set || is_set(nsr_state.yfilter)) leaf_name_data.push_back(nsr_state.get_name_leafdata());
+    if (standby.is_set || is_set(standby.yfilter)) leaf_name_data.push_back(standby.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -876,24 +1068,59 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::RedPair::Gro
     return children;
 }
 
-void Redundancy::Summary::RedPair::Groupinfo::set_value(const std::string & value_path, std::string value)
+void Redundancy::Summary::RedPair::Groupinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ha-state")
     {
         ha_state = value;
+        ha_state.value_namespace = name_space;
+        ha_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nsr-state")
     {
         nsr_state = value;
+        nsr_state.value_namespace = name_space;
+        nsr_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "standby")
     {
         standby = value;
+        standby.value_namespace = name_space;
+        standby.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Redundancy::Summary::RedPair::Groupinfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "ha-state")
+    {
+        ha_state.yfilter = yfilter;
+    }
+    if(value_path == "nsr-state")
+    {
+        nsr_state.yfilter = yfilter;
+    }
+    if(value_path == "standby")
+    {
+        standby.yfilter = yfilter;
+    }
+}
+
+bool Redundancy::Summary::RedPair::Groupinfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "ha-state" || name == "nsr-state" || name == "standby")
+        return true;
+    return false;
 }
 
 

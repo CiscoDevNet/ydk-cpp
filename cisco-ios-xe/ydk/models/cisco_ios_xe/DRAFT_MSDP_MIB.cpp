@@ -6,23 +6,25 @@
 #include "generated_entity_lookup.hpp"
 #include "DRAFT_MSDP_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace DRAFT_MSDP_MIB {
 
 DraftMsdpMib::DraftMsdpMib()
     :
-    msdp_(std::make_shared<DraftMsdpMib::Msdp>())
-	,msdppeertable_(std::make_shared<DraftMsdpMib::Msdppeertable>())
-	,msdprequeststable_(std::make_shared<DraftMsdpMib::Msdprequeststable>())
-	,msdpsacachetable_(std::make_shared<DraftMsdpMib::Msdpsacachetable>())
+    msdp(std::make_shared<DraftMsdpMib::Msdp>())
+	,msdppeertable(std::make_shared<DraftMsdpMib::Msdppeertable>())
+	,msdprequeststable(std::make_shared<DraftMsdpMib::Msdprequeststable>())
+	,msdpsacachetable(std::make_shared<DraftMsdpMib::Msdpsacachetable>())
 {
-    msdp_->parent = this;
+    msdp->parent = this;
 
-    msdppeertable_->parent = this;
+    msdppeertable->parent = this;
 
-    msdprequeststable_->parent = this;
+    msdprequeststable->parent = this;
 
-    msdpsacachetable_->parent = this;
+    msdpsacachetable->parent = this;
 
     yang_name = "DRAFT-MSDP-MIB"; yang_parent_name = "DRAFT-MSDP-MIB";
 }
@@ -33,19 +35,19 @@ DraftMsdpMib::~DraftMsdpMib()
 
 bool DraftMsdpMib::has_data() const
 {
-    return (msdp_ !=  nullptr && msdp_->has_data())
-	|| (msdppeertable_ !=  nullptr && msdppeertable_->has_data())
-	|| (msdprequeststable_ !=  nullptr && msdprequeststable_->has_data())
-	|| (msdpsacachetable_ !=  nullptr && msdpsacachetable_->has_data());
+    return (msdp !=  nullptr && msdp->has_data())
+	|| (msdppeertable !=  nullptr && msdppeertable->has_data())
+	|| (msdprequeststable !=  nullptr && msdprequeststable->has_data())
+	|| (msdpsacachetable !=  nullptr && msdpsacachetable->has_data());
 }
 
 bool DraftMsdpMib::has_operation() const
 {
-    return is_set(operation)
-	|| (msdp_ !=  nullptr && msdp_->has_operation())
-	|| (msdppeertable_ !=  nullptr && msdppeertable_->has_operation())
-	|| (msdprequeststable_ !=  nullptr && msdprequeststable_->has_operation())
-	|| (msdpsacachetable_ !=  nullptr && msdpsacachetable_->has_operation());
+    return is_set(yfilter)
+	|| (msdp !=  nullptr && msdp->has_operation())
+	|| (msdppeertable !=  nullptr && msdppeertable->has_operation())
+	|| (msdprequeststable !=  nullptr && msdprequeststable->has_operation())
+	|| (msdpsacachetable !=  nullptr && msdpsacachetable->has_operation());
 }
 
 std::string DraftMsdpMib::get_segment_path() const
@@ -79,38 +81,38 @@ std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & chil
 {
     if(child_yang_name == "msdp")
     {
-        if(msdp_ == nullptr)
+        if(msdp == nullptr)
         {
-            msdp_ = std::make_shared<DraftMsdpMib::Msdp>();
+            msdp = std::make_shared<DraftMsdpMib::Msdp>();
         }
-        return msdp_;
+        return msdp;
     }
 
     if(child_yang_name == "msdpPeerTable")
     {
-        if(msdppeertable_ == nullptr)
+        if(msdppeertable == nullptr)
         {
-            msdppeertable_ = std::make_shared<DraftMsdpMib::Msdppeertable>();
+            msdppeertable = std::make_shared<DraftMsdpMib::Msdppeertable>();
         }
-        return msdppeertable_;
+        return msdppeertable;
     }
 
     if(child_yang_name == "msdpRequestsTable")
     {
-        if(msdprequeststable_ == nullptr)
+        if(msdprequeststable == nullptr)
         {
-            msdprequeststable_ = std::make_shared<DraftMsdpMib::Msdprequeststable>();
+            msdprequeststable = std::make_shared<DraftMsdpMib::Msdprequeststable>();
         }
-        return msdprequeststable_;
+        return msdprequeststable;
     }
 
     if(child_yang_name == "msdpSACacheTable")
     {
-        if(msdpsacachetable_ == nullptr)
+        if(msdpsacachetable == nullptr)
         {
-            msdpsacachetable_ = std::make_shared<DraftMsdpMib::Msdpsacachetable>();
+            msdpsacachetable = std::make_shared<DraftMsdpMib::Msdpsacachetable>();
         }
-        return msdpsacachetable_;
+        return msdpsacachetable;
     }
 
     return nullptr;
@@ -119,30 +121,34 @@ std::shared_ptr<Entity> DraftMsdpMib::get_child_by_name(const std::string & chil
 std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(msdp_ != nullptr)
+    if(msdp != nullptr)
     {
-        children["msdp"] = msdp_;
+        children["msdp"] = msdp;
     }
 
-    if(msdppeertable_ != nullptr)
+    if(msdppeertable != nullptr)
     {
-        children["msdpPeerTable"] = msdppeertable_;
+        children["msdpPeerTable"] = msdppeertable;
     }
 
-    if(msdprequeststable_ != nullptr)
+    if(msdprequeststable != nullptr)
     {
-        children["msdpRequestsTable"] = msdprequeststable_;
+        children["msdpRequestsTable"] = msdprequeststable;
     }
 
-    if(msdpsacachetable_ != nullptr)
+    if(msdpsacachetable != nullptr)
     {
-        children["msdpSACacheTable"] = msdpsacachetable_;
+        children["msdpSACacheTable"] = msdpsacachetable;
     }
 
     return children;
 }
 
-void DraftMsdpMib::set_value(const std::string & value_path, std::string value)
+void DraftMsdpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void DraftMsdpMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -164,6 +170,18 @@ std::string DraftMsdpMib::get_bundle_name() const
 augment_capabilities_function DraftMsdpMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> DraftMsdpMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool DraftMsdpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdp" || name == "msdpPeerTable" || name == "msdpRequestsTable" || name == "msdpSACacheTable")
+        return true;
+    return false;
 }
 
 DraftMsdpMib::Msdp::Msdp()
@@ -190,11 +208,11 @@ bool DraftMsdpMib::Msdp::has_data() const
 
 bool DraftMsdpMib::Msdp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(msdpcachelifetime.operation)
-	|| is_set(msdpenabled.operation)
-	|| is_set(msdpnumsacacheentries.operation)
-	|| is_set(msdpsaholddownperiod.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(msdpcachelifetime.yfilter)
+	|| ydk::is_set(msdpenabled.yfilter)
+	|| ydk::is_set(msdpnumsacacheentries.yfilter)
+	|| ydk::is_set(msdpsaholddownperiod.yfilter);
 }
 
 std::string DraftMsdpMib::Msdp::get_segment_path() const
@@ -220,10 +238,10 @@ const EntityPath DraftMsdpMib::Msdp::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (msdpcachelifetime.is_set || is_set(msdpcachelifetime.operation)) leaf_name_data.push_back(msdpcachelifetime.get_name_leafdata());
-    if (msdpenabled.is_set || is_set(msdpenabled.operation)) leaf_name_data.push_back(msdpenabled.get_name_leafdata());
-    if (msdpnumsacacheentries.is_set || is_set(msdpnumsacacheentries.operation)) leaf_name_data.push_back(msdpnumsacacheentries.get_name_leafdata());
-    if (msdpsaholddownperiod.is_set || is_set(msdpsaholddownperiod.operation)) leaf_name_data.push_back(msdpsaholddownperiod.get_name_leafdata());
+    if (msdpcachelifetime.is_set || is_set(msdpcachelifetime.yfilter)) leaf_name_data.push_back(msdpcachelifetime.get_name_leafdata());
+    if (msdpenabled.is_set || is_set(msdpenabled.yfilter)) leaf_name_data.push_back(msdpenabled.get_name_leafdata());
+    if (msdpnumsacacheentries.is_set || is_set(msdpnumsacacheentries.yfilter)) leaf_name_data.push_back(msdpnumsacacheentries.get_name_leafdata());
+    if (msdpsaholddownperiod.is_set || is_set(msdpsaholddownperiod.yfilter)) leaf_name_data.push_back(msdpsaholddownperiod.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -242,24 +260,59 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdp::get_children(
     return children;
 }
 
-void DraftMsdpMib::Msdp::set_value(const std::string & value_path, std::string value)
+void DraftMsdpMib::Msdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpCacheLifetime")
     {
         msdpcachelifetime = value;
+        msdpcachelifetime.value_namespace = name_space;
+        msdpcachelifetime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpEnabled")
     {
         msdpenabled = value;
+        msdpenabled.value_namespace = name_space;
+        msdpenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpNumSACacheEntries")
     {
         msdpnumsacacheentries = value;
+        msdpnumsacacheentries.value_namespace = name_space;
+        msdpnumsacacheentries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSAHoldDownPeriod")
     {
         msdpsaholddownperiod = value;
+        msdpsaholddownperiod.value_namespace = name_space;
+        msdpsaholddownperiod.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DraftMsdpMib::Msdp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "msdpCacheLifetime")
+    {
+        msdpcachelifetime.yfilter = yfilter;
+    }
+    if(value_path == "msdpEnabled")
+    {
+        msdpenabled.yfilter = yfilter;
+    }
+    if(value_path == "msdpNumSACacheEntries")
+    {
+        msdpnumsacacheentries.yfilter = yfilter;
+    }
+    if(value_path == "msdpSAHoldDownPeriod")
+    {
+        msdpsaholddownperiod.yfilter = yfilter;
+    }
+}
+
+bool DraftMsdpMib::Msdp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpCacheLifetime" || name == "msdpEnabled" || name == "msdpNumSACacheEntries" || name == "msdpSAHoldDownPeriod")
+        return true;
+    return false;
 }
 
 DraftMsdpMib::Msdprequeststable::Msdprequeststable()
@@ -273,9 +326,9 @@ DraftMsdpMib::Msdprequeststable::~Msdprequeststable()
 
 bool DraftMsdpMib::Msdprequeststable::has_data() const
 {
-    for (std::size_t index=0; index<msdprequestsentry_.size(); index++)
+    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
     {
-        if(msdprequestsentry_[index]->has_data())
+        if(msdprequestsentry[index]->has_data())
             return true;
     }
     return false;
@@ -283,12 +336,12 @@ bool DraftMsdpMib::Msdprequeststable::has_data() const
 
 bool DraftMsdpMib::Msdprequeststable::has_operation() const
 {
-    for (std::size_t index=0; index<msdprequestsentry_.size(); index++)
+    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
     {
-        if(msdprequestsentry_[index]->has_operation())
+        if(msdprequestsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DraftMsdpMib::Msdprequeststable::get_segment_path() const
@@ -325,7 +378,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdprequeststable::get_child_by_name(const
 {
     if(child_yang_name == "msdpRequestsEntry")
     {
-        for(auto const & c : msdprequestsentry_)
+        for(auto const & c : msdprequestsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -335,7 +388,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdprequeststable::get_child_by_name(const
         }
         auto c = std::make_shared<DraftMsdpMib::Msdprequeststable::Msdprequestsentry>();
         c->parent = this;
-        msdprequestsentry_.push_back(c);
+        msdprequestsentry.push_back(c);
         return c;
     }
 
@@ -345,7 +398,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdprequeststable::get_child_by_name(const
 std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdprequeststable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : msdprequestsentry_)
+    for (auto const & c : msdprequestsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -353,8 +406,19 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdprequeststable::
     return children;
 }
 
-void DraftMsdpMib::Msdprequeststable::set_value(const std::string & value_path, std::string value)
+void DraftMsdpMib::Msdprequeststable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DraftMsdpMib::Msdprequeststable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DraftMsdpMib::Msdprequeststable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpRequestsEntry")
+        return true;
+    return false;
 }
 
 DraftMsdpMib::Msdprequeststable::Msdprequestsentry::Msdprequestsentry()
@@ -381,11 +445,11 @@ bool DraftMsdpMib::Msdprequeststable::Msdprequestsentry::has_data() const
 
 bool DraftMsdpMib::Msdprequeststable::Msdprequestsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(msdprequestsgroupaddress.operation)
-	|| is_set(msdprequestsgroupmask.operation)
-	|| is_set(msdprequestspeer.operation)
-	|| is_set(msdprequestsstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(msdprequestsgroupaddress.yfilter)
+	|| ydk::is_set(msdprequestsgroupmask.yfilter)
+	|| ydk::is_set(msdprequestspeer.yfilter)
+	|| ydk::is_set(msdprequestsstatus.yfilter);
 }
 
 std::string DraftMsdpMib::Msdprequeststable::Msdprequestsentry::get_segment_path() const
@@ -411,10 +475,10 @@ const EntityPath DraftMsdpMib::Msdprequeststable::Msdprequestsentry::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (msdprequestsgroupaddress.is_set || is_set(msdprequestsgroupaddress.operation)) leaf_name_data.push_back(msdprequestsgroupaddress.get_name_leafdata());
-    if (msdprequestsgroupmask.is_set || is_set(msdprequestsgroupmask.operation)) leaf_name_data.push_back(msdprequestsgroupmask.get_name_leafdata());
-    if (msdprequestspeer.is_set || is_set(msdprequestspeer.operation)) leaf_name_data.push_back(msdprequestspeer.get_name_leafdata());
-    if (msdprequestsstatus.is_set || is_set(msdprequestsstatus.operation)) leaf_name_data.push_back(msdprequestsstatus.get_name_leafdata());
+    if (msdprequestsgroupaddress.is_set || is_set(msdprequestsgroupaddress.yfilter)) leaf_name_data.push_back(msdprequestsgroupaddress.get_name_leafdata());
+    if (msdprequestsgroupmask.is_set || is_set(msdprequestsgroupmask.yfilter)) leaf_name_data.push_back(msdprequestsgroupmask.get_name_leafdata());
+    if (msdprequestspeer.is_set || is_set(msdprequestspeer.yfilter)) leaf_name_data.push_back(msdprequestspeer.get_name_leafdata());
+    if (msdprequestsstatus.is_set || is_set(msdprequestsstatus.yfilter)) leaf_name_data.push_back(msdprequestsstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -433,24 +497,59 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdprequeststable::
     return children;
 }
 
-void DraftMsdpMib::Msdprequeststable::Msdprequestsentry::set_value(const std::string & value_path, std::string value)
+void DraftMsdpMib::Msdprequeststable::Msdprequestsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpRequestsGroupAddress")
     {
         msdprequestsgroupaddress = value;
+        msdprequestsgroupaddress.value_namespace = name_space;
+        msdprequestsgroupaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpRequestsGroupMask")
     {
         msdprequestsgroupmask = value;
+        msdprequestsgroupmask.value_namespace = name_space;
+        msdprequestsgroupmask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpRequestsPeer")
     {
         msdprequestspeer = value;
+        msdprequestspeer.value_namespace = name_space;
+        msdprequestspeer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpRequestsStatus")
     {
         msdprequestsstatus = value;
+        msdprequestsstatus.value_namespace = name_space;
+        msdprequestsstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DraftMsdpMib::Msdprequeststable::Msdprequestsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "msdpRequestsGroupAddress")
+    {
+        msdprequestsgroupaddress.yfilter = yfilter;
+    }
+    if(value_path == "msdpRequestsGroupMask")
+    {
+        msdprequestsgroupmask.yfilter = yfilter;
+    }
+    if(value_path == "msdpRequestsPeer")
+    {
+        msdprequestspeer.yfilter = yfilter;
+    }
+    if(value_path == "msdpRequestsStatus")
+    {
+        msdprequestsstatus.yfilter = yfilter;
+    }
+}
+
+bool DraftMsdpMib::Msdprequeststable::Msdprequestsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpRequestsGroupAddress" || name == "msdpRequestsGroupMask" || name == "msdpRequestsPeer" || name == "msdpRequestsStatus")
+        return true;
+    return false;
 }
 
 DraftMsdpMib::Msdppeertable::Msdppeertable()
@@ -464,9 +563,9 @@ DraftMsdpMib::Msdppeertable::~Msdppeertable()
 
 bool DraftMsdpMib::Msdppeertable::has_data() const
 {
-    for (std::size_t index=0; index<msdppeerentry_.size(); index++)
+    for (std::size_t index=0; index<msdppeerentry.size(); index++)
     {
-        if(msdppeerentry_[index]->has_data())
+        if(msdppeerentry[index]->has_data())
             return true;
     }
     return false;
@@ -474,12 +573,12 @@ bool DraftMsdpMib::Msdppeertable::has_data() const
 
 bool DraftMsdpMib::Msdppeertable::has_operation() const
 {
-    for (std::size_t index=0; index<msdppeerentry_.size(); index++)
+    for (std::size_t index=0; index<msdppeerentry.size(); index++)
     {
-        if(msdppeerentry_[index]->has_operation())
+        if(msdppeerentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DraftMsdpMib::Msdppeertable::get_segment_path() const
@@ -516,7 +615,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std
 {
     if(child_yang_name == "msdpPeerEntry")
     {
-        for(auto const & c : msdppeerentry_)
+        for(auto const & c : msdppeerentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -526,7 +625,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std
         }
         auto c = std::make_shared<DraftMsdpMib::Msdppeertable::Msdppeerentry>();
         c->parent = this;
-        msdppeerentry_.push_back(c);
+        msdppeerentry.push_back(c);
         return c;
     }
 
@@ -536,7 +635,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdppeertable::get_child_by_name(const std
 std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : msdppeerentry_)
+    for (auto const & c : msdppeerentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -544,8 +643,19 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdppeertable::get_
     return children;
 }
 
-void DraftMsdpMib::Msdppeertable::set_value(const std::string & value_path, std::string value)
+void DraftMsdpMib::Msdppeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DraftMsdpMib::Msdppeertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DraftMsdpMib::Msdppeertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpPeerEntry")
+        return true;
+    return false;
 }
 
 DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerentry()
@@ -628,39 +738,39 @@ bool DraftMsdpMib::Msdppeertable::Msdppeerentry::has_data() const
 
 bool DraftMsdpMib::Msdppeertable::Msdppeerentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(msdppeerremoteaddress.operation)
-	|| is_set(msdppeerconnectionattempts.operation)
-	|| is_set(msdppeerconnectretryinterval.operation)
-	|| is_set(msdppeerdatattl.operation)
-	|| is_set(msdppeerencapsulationstate.operation)
-	|| is_set(msdppeerencapsulationtype.operation)
-	|| is_set(msdppeerfsmestablishedtime.operation)
-	|| is_set(msdppeerfsmestablishedtransitions.operation)
-	|| is_set(msdppeerholdtimeconfigured.operation)
-	|| is_set(msdppeerincontrolmessages.operation)
-	|| is_set(msdppeerindatapackets.operation)
-	|| is_set(msdppeerinmessageelapsedtime.operation)
-	|| is_set(msdppeerinnotifications.operation)
-	|| is_set(msdppeerinsarequests.operation)
-	|| is_set(msdppeerinsaresponses.operation)
-	|| is_set(msdppeerinsas.operation)
-	|| is_set(msdppeerkeepaliveconfigured.operation)
-	|| is_set(msdppeerlasterror.operation)
-	|| is_set(msdppeerlocaladdress.operation)
-	|| is_set(msdppeerlocalport.operation)
-	|| is_set(msdppeeroutcontrolmessages.operation)
-	|| is_set(msdppeeroutdatapackets.operation)
-	|| is_set(msdppeeroutnotifications.operation)
-	|| is_set(msdppeeroutsarequests.operation)
-	|| is_set(msdppeeroutsaresponses.operation)
-	|| is_set(msdppeeroutsas.operation)
-	|| is_set(msdppeerprocessrequestsfrom.operation)
-	|| is_set(msdppeerremoteport.operation)
-	|| is_set(msdppeerrpffailures.operation)
-	|| is_set(msdppeersaadvperiod.operation)
-	|| is_set(msdppeerstate.operation)
-	|| is_set(msdppeerstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(msdppeerremoteaddress.yfilter)
+	|| ydk::is_set(msdppeerconnectionattempts.yfilter)
+	|| ydk::is_set(msdppeerconnectretryinterval.yfilter)
+	|| ydk::is_set(msdppeerdatattl.yfilter)
+	|| ydk::is_set(msdppeerencapsulationstate.yfilter)
+	|| ydk::is_set(msdppeerencapsulationtype.yfilter)
+	|| ydk::is_set(msdppeerfsmestablishedtime.yfilter)
+	|| ydk::is_set(msdppeerfsmestablishedtransitions.yfilter)
+	|| ydk::is_set(msdppeerholdtimeconfigured.yfilter)
+	|| ydk::is_set(msdppeerincontrolmessages.yfilter)
+	|| ydk::is_set(msdppeerindatapackets.yfilter)
+	|| ydk::is_set(msdppeerinmessageelapsedtime.yfilter)
+	|| ydk::is_set(msdppeerinnotifications.yfilter)
+	|| ydk::is_set(msdppeerinsarequests.yfilter)
+	|| ydk::is_set(msdppeerinsaresponses.yfilter)
+	|| ydk::is_set(msdppeerinsas.yfilter)
+	|| ydk::is_set(msdppeerkeepaliveconfigured.yfilter)
+	|| ydk::is_set(msdppeerlasterror.yfilter)
+	|| ydk::is_set(msdppeerlocaladdress.yfilter)
+	|| ydk::is_set(msdppeerlocalport.yfilter)
+	|| ydk::is_set(msdppeeroutcontrolmessages.yfilter)
+	|| ydk::is_set(msdppeeroutdatapackets.yfilter)
+	|| ydk::is_set(msdppeeroutnotifications.yfilter)
+	|| ydk::is_set(msdppeeroutsarequests.yfilter)
+	|| ydk::is_set(msdppeeroutsaresponses.yfilter)
+	|| ydk::is_set(msdppeeroutsas.yfilter)
+	|| ydk::is_set(msdppeerprocessrequestsfrom.yfilter)
+	|| ydk::is_set(msdppeerremoteport.yfilter)
+	|| ydk::is_set(msdppeerrpffailures.yfilter)
+	|| ydk::is_set(msdppeersaadvperiod.yfilter)
+	|| ydk::is_set(msdppeerstate.yfilter)
+	|| ydk::is_set(msdppeerstatus.yfilter);
 }
 
 std::string DraftMsdpMib::Msdppeertable::Msdppeerentry::get_segment_path() const
@@ -686,38 +796,38 @@ const EntityPath DraftMsdpMib::Msdppeertable::Msdppeerentry::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (msdppeerremoteaddress.is_set || is_set(msdppeerremoteaddress.operation)) leaf_name_data.push_back(msdppeerremoteaddress.get_name_leafdata());
-    if (msdppeerconnectionattempts.is_set || is_set(msdppeerconnectionattempts.operation)) leaf_name_data.push_back(msdppeerconnectionattempts.get_name_leafdata());
-    if (msdppeerconnectretryinterval.is_set || is_set(msdppeerconnectretryinterval.operation)) leaf_name_data.push_back(msdppeerconnectretryinterval.get_name_leafdata());
-    if (msdppeerdatattl.is_set || is_set(msdppeerdatattl.operation)) leaf_name_data.push_back(msdppeerdatattl.get_name_leafdata());
-    if (msdppeerencapsulationstate.is_set || is_set(msdppeerencapsulationstate.operation)) leaf_name_data.push_back(msdppeerencapsulationstate.get_name_leafdata());
-    if (msdppeerencapsulationtype.is_set || is_set(msdppeerencapsulationtype.operation)) leaf_name_data.push_back(msdppeerencapsulationtype.get_name_leafdata());
-    if (msdppeerfsmestablishedtime.is_set || is_set(msdppeerfsmestablishedtime.operation)) leaf_name_data.push_back(msdppeerfsmestablishedtime.get_name_leafdata());
-    if (msdppeerfsmestablishedtransitions.is_set || is_set(msdppeerfsmestablishedtransitions.operation)) leaf_name_data.push_back(msdppeerfsmestablishedtransitions.get_name_leafdata());
-    if (msdppeerholdtimeconfigured.is_set || is_set(msdppeerholdtimeconfigured.operation)) leaf_name_data.push_back(msdppeerholdtimeconfigured.get_name_leafdata());
-    if (msdppeerincontrolmessages.is_set || is_set(msdppeerincontrolmessages.operation)) leaf_name_data.push_back(msdppeerincontrolmessages.get_name_leafdata());
-    if (msdppeerindatapackets.is_set || is_set(msdppeerindatapackets.operation)) leaf_name_data.push_back(msdppeerindatapackets.get_name_leafdata());
-    if (msdppeerinmessageelapsedtime.is_set || is_set(msdppeerinmessageelapsedtime.operation)) leaf_name_data.push_back(msdppeerinmessageelapsedtime.get_name_leafdata());
-    if (msdppeerinnotifications.is_set || is_set(msdppeerinnotifications.operation)) leaf_name_data.push_back(msdppeerinnotifications.get_name_leafdata());
-    if (msdppeerinsarequests.is_set || is_set(msdppeerinsarequests.operation)) leaf_name_data.push_back(msdppeerinsarequests.get_name_leafdata());
-    if (msdppeerinsaresponses.is_set || is_set(msdppeerinsaresponses.operation)) leaf_name_data.push_back(msdppeerinsaresponses.get_name_leafdata());
-    if (msdppeerinsas.is_set || is_set(msdppeerinsas.operation)) leaf_name_data.push_back(msdppeerinsas.get_name_leafdata());
-    if (msdppeerkeepaliveconfigured.is_set || is_set(msdppeerkeepaliveconfigured.operation)) leaf_name_data.push_back(msdppeerkeepaliveconfigured.get_name_leafdata());
-    if (msdppeerlasterror.is_set || is_set(msdppeerlasterror.operation)) leaf_name_data.push_back(msdppeerlasterror.get_name_leafdata());
-    if (msdppeerlocaladdress.is_set || is_set(msdppeerlocaladdress.operation)) leaf_name_data.push_back(msdppeerlocaladdress.get_name_leafdata());
-    if (msdppeerlocalport.is_set || is_set(msdppeerlocalport.operation)) leaf_name_data.push_back(msdppeerlocalport.get_name_leafdata());
-    if (msdppeeroutcontrolmessages.is_set || is_set(msdppeeroutcontrolmessages.operation)) leaf_name_data.push_back(msdppeeroutcontrolmessages.get_name_leafdata());
-    if (msdppeeroutdatapackets.is_set || is_set(msdppeeroutdatapackets.operation)) leaf_name_data.push_back(msdppeeroutdatapackets.get_name_leafdata());
-    if (msdppeeroutnotifications.is_set || is_set(msdppeeroutnotifications.operation)) leaf_name_data.push_back(msdppeeroutnotifications.get_name_leafdata());
-    if (msdppeeroutsarequests.is_set || is_set(msdppeeroutsarequests.operation)) leaf_name_data.push_back(msdppeeroutsarequests.get_name_leafdata());
-    if (msdppeeroutsaresponses.is_set || is_set(msdppeeroutsaresponses.operation)) leaf_name_data.push_back(msdppeeroutsaresponses.get_name_leafdata());
-    if (msdppeeroutsas.is_set || is_set(msdppeeroutsas.operation)) leaf_name_data.push_back(msdppeeroutsas.get_name_leafdata());
-    if (msdppeerprocessrequestsfrom.is_set || is_set(msdppeerprocessrequestsfrom.operation)) leaf_name_data.push_back(msdppeerprocessrequestsfrom.get_name_leafdata());
-    if (msdppeerremoteport.is_set || is_set(msdppeerremoteport.operation)) leaf_name_data.push_back(msdppeerremoteport.get_name_leafdata());
-    if (msdppeerrpffailures.is_set || is_set(msdppeerrpffailures.operation)) leaf_name_data.push_back(msdppeerrpffailures.get_name_leafdata());
-    if (msdppeersaadvperiod.is_set || is_set(msdppeersaadvperiod.operation)) leaf_name_data.push_back(msdppeersaadvperiod.get_name_leafdata());
-    if (msdppeerstate.is_set || is_set(msdppeerstate.operation)) leaf_name_data.push_back(msdppeerstate.get_name_leafdata());
-    if (msdppeerstatus.is_set || is_set(msdppeerstatus.operation)) leaf_name_data.push_back(msdppeerstatus.get_name_leafdata());
+    if (msdppeerremoteaddress.is_set || is_set(msdppeerremoteaddress.yfilter)) leaf_name_data.push_back(msdppeerremoteaddress.get_name_leafdata());
+    if (msdppeerconnectionattempts.is_set || is_set(msdppeerconnectionattempts.yfilter)) leaf_name_data.push_back(msdppeerconnectionattempts.get_name_leafdata());
+    if (msdppeerconnectretryinterval.is_set || is_set(msdppeerconnectretryinterval.yfilter)) leaf_name_data.push_back(msdppeerconnectretryinterval.get_name_leafdata());
+    if (msdppeerdatattl.is_set || is_set(msdppeerdatattl.yfilter)) leaf_name_data.push_back(msdppeerdatattl.get_name_leafdata());
+    if (msdppeerencapsulationstate.is_set || is_set(msdppeerencapsulationstate.yfilter)) leaf_name_data.push_back(msdppeerencapsulationstate.get_name_leafdata());
+    if (msdppeerencapsulationtype.is_set || is_set(msdppeerencapsulationtype.yfilter)) leaf_name_data.push_back(msdppeerencapsulationtype.get_name_leafdata());
+    if (msdppeerfsmestablishedtime.is_set || is_set(msdppeerfsmestablishedtime.yfilter)) leaf_name_data.push_back(msdppeerfsmestablishedtime.get_name_leafdata());
+    if (msdppeerfsmestablishedtransitions.is_set || is_set(msdppeerfsmestablishedtransitions.yfilter)) leaf_name_data.push_back(msdppeerfsmestablishedtransitions.get_name_leafdata());
+    if (msdppeerholdtimeconfigured.is_set || is_set(msdppeerholdtimeconfigured.yfilter)) leaf_name_data.push_back(msdppeerholdtimeconfigured.get_name_leafdata());
+    if (msdppeerincontrolmessages.is_set || is_set(msdppeerincontrolmessages.yfilter)) leaf_name_data.push_back(msdppeerincontrolmessages.get_name_leafdata());
+    if (msdppeerindatapackets.is_set || is_set(msdppeerindatapackets.yfilter)) leaf_name_data.push_back(msdppeerindatapackets.get_name_leafdata());
+    if (msdppeerinmessageelapsedtime.is_set || is_set(msdppeerinmessageelapsedtime.yfilter)) leaf_name_data.push_back(msdppeerinmessageelapsedtime.get_name_leafdata());
+    if (msdppeerinnotifications.is_set || is_set(msdppeerinnotifications.yfilter)) leaf_name_data.push_back(msdppeerinnotifications.get_name_leafdata());
+    if (msdppeerinsarequests.is_set || is_set(msdppeerinsarequests.yfilter)) leaf_name_data.push_back(msdppeerinsarequests.get_name_leafdata());
+    if (msdppeerinsaresponses.is_set || is_set(msdppeerinsaresponses.yfilter)) leaf_name_data.push_back(msdppeerinsaresponses.get_name_leafdata());
+    if (msdppeerinsas.is_set || is_set(msdppeerinsas.yfilter)) leaf_name_data.push_back(msdppeerinsas.get_name_leafdata());
+    if (msdppeerkeepaliveconfigured.is_set || is_set(msdppeerkeepaliveconfigured.yfilter)) leaf_name_data.push_back(msdppeerkeepaliveconfigured.get_name_leafdata());
+    if (msdppeerlasterror.is_set || is_set(msdppeerlasterror.yfilter)) leaf_name_data.push_back(msdppeerlasterror.get_name_leafdata());
+    if (msdppeerlocaladdress.is_set || is_set(msdppeerlocaladdress.yfilter)) leaf_name_data.push_back(msdppeerlocaladdress.get_name_leafdata());
+    if (msdppeerlocalport.is_set || is_set(msdppeerlocalport.yfilter)) leaf_name_data.push_back(msdppeerlocalport.get_name_leafdata());
+    if (msdppeeroutcontrolmessages.is_set || is_set(msdppeeroutcontrolmessages.yfilter)) leaf_name_data.push_back(msdppeeroutcontrolmessages.get_name_leafdata());
+    if (msdppeeroutdatapackets.is_set || is_set(msdppeeroutdatapackets.yfilter)) leaf_name_data.push_back(msdppeeroutdatapackets.get_name_leafdata());
+    if (msdppeeroutnotifications.is_set || is_set(msdppeeroutnotifications.yfilter)) leaf_name_data.push_back(msdppeeroutnotifications.get_name_leafdata());
+    if (msdppeeroutsarequests.is_set || is_set(msdppeeroutsarequests.yfilter)) leaf_name_data.push_back(msdppeeroutsarequests.get_name_leafdata());
+    if (msdppeeroutsaresponses.is_set || is_set(msdppeeroutsaresponses.yfilter)) leaf_name_data.push_back(msdppeeroutsaresponses.get_name_leafdata());
+    if (msdppeeroutsas.is_set || is_set(msdppeeroutsas.yfilter)) leaf_name_data.push_back(msdppeeroutsas.get_name_leafdata());
+    if (msdppeerprocessrequestsfrom.is_set || is_set(msdppeerprocessrequestsfrom.yfilter)) leaf_name_data.push_back(msdppeerprocessrequestsfrom.get_name_leafdata());
+    if (msdppeerremoteport.is_set || is_set(msdppeerremoteport.yfilter)) leaf_name_data.push_back(msdppeerremoteport.get_name_leafdata());
+    if (msdppeerrpffailures.is_set || is_set(msdppeerrpffailures.yfilter)) leaf_name_data.push_back(msdppeerrpffailures.get_name_leafdata());
+    if (msdppeersaadvperiod.is_set || is_set(msdppeersaadvperiod.yfilter)) leaf_name_data.push_back(msdppeersaadvperiod.get_name_leafdata());
+    if (msdppeerstate.is_set || is_set(msdppeerstate.yfilter)) leaf_name_data.push_back(msdppeerstate.get_name_leafdata());
+    if (msdppeerstatus.is_set || is_set(msdppeerstatus.yfilter)) leaf_name_data.push_back(msdppeerstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -736,136 +846,339 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdppeertable::Msdp
     return children;
 }
 
-void DraftMsdpMib::Msdppeertable::Msdppeerentry::set_value(const std::string & value_path, std::string value)
+void DraftMsdpMib::Msdppeertable::Msdppeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpPeerRemoteAddress")
     {
         msdppeerremoteaddress = value;
+        msdppeerremoteaddress.value_namespace = name_space;
+        msdppeerremoteaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerConnectionAttempts")
     {
         msdppeerconnectionattempts = value;
+        msdppeerconnectionattempts.value_namespace = name_space;
+        msdppeerconnectionattempts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerConnectRetryInterval")
     {
         msdppeerconnectretryinterval = value;
+        msdppeerconnectretryinterval.value_namespace = name_space;
+        msdppeerconnectretryinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerDataTtl")
     {
         msdppeerdatattl = value;
+        msdppeerdatattl.value_namespace = name_space;
+        msdppeerdatattl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerEncapsulationState")
     {
         msdppeerencapsulationstate = value;
+        msdppeerencapsulationstate.value_namespace = name_space;
+        msdppeerencapsulationstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerEncapsulationType")
     {
         msdppeerencapsulationtype = value;
+        msdppeerencapsulationtype.value_namespace = name_space;
+        msdppeerencapsulationtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerFsmEstablishedTime")
     {
         msdppeerfsmestablishedtime = value;
+        msdppeerfsmestablishedtime.value_namespace = name_space;
+        msdppeerfsmestablishedtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerFsmEstablishedTransitions")
     {
         msdppeerfsmestablishedtransitions = value;
+        msdppeerfsmestablishedtransitions.value_namespace = name_space;
+        msdppeerfsmestablishedtransitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerHoldTimeConfigured")
     {
         msdppeerholdtimeconfigured = value;
+        msdppeerholdtimeconfigured.value_namespace = name_space;
+        msdppeerholdtimeconfigured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerInControlMessages")
     {
         msdppeerincontrolmessages = value;
+        msdppeerincontrolmessages.value_namespace = name_space;
+        msdppeerincontrolmessages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerInDataPackets")
     {
         msdppeerindatapackets = value;
+        msdppeerindatapackets.value_namespace = name_space;
+        msdppeerindatapackets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerInMessageElapsedTime")
     {
         msdppeerinmessageelapsedtime = value;
+        msdppeerinmessageelapsedtime.value_namespace = name_space;
+        msdppeerinmessageelapsedtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerInNotifications")
     {
         msdppeerinnotifications = value;
+        msdppeerinnotifications.value_namespace = name_space;
+        msdppeerinnotifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerInSARequests")
     {
         msdppeerinsarequests = value;
+        msdppeerinsarequests.value_namespace = name_space;
+        msdppeerinsarequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerInSAResponses")
     {
         msdppeerinsaresponses = value;
+        msdppeerinsaresponses.value_namespace = name_space;
+        msdppeerinsaresponses.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerInSAs")
     {
         msdppeerinsas = value;
+        msdppeerinsas.value_namespace = name_space;
+        msdppeerinsas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerKeepAliveConfigured")
     {
         msdppeerkeepaliveconfigured = value;
+        msdppeerkeepaliveconfigured.value_namespace = name_space;
+        msdppeerkeepaliveconfigured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerLastError")
     {
         msdppeerlasterror = value;
+        msdppeerlasterror.value_namespace = name_space;
+        msdppeerlasterror.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerLocalAddress")
     {
         msdppeerlocaladdress = value;
+        msdppeerlocaladdress.value_namespace = name_space;
+        msdppeerlocaladdress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerLocalPort")
     {
         msdppeerlocalport = value;
+        msdppeerlocalport.value_namespace = name_space;
+        msdppeerlocalport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerOutControlMessages")
     {
         msdppeeroutcontrolmessages = value;
+        msdppeeroutcontrolmessages.value_namespace = name_space;
+        msdppeeroutcontrolmessages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerOutDataPackets")
     {
         msdppeeroutdatapackets = value;
+        msdppeeroutdatapackets.value_namespace = name_space;
+        msdppeeroutdatapackets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerOutNotifications")
     {
         msdppeeroutnotifications = value;
+        msdppeeroutnotifications.value_namespace = name_space;
+        msdppeeroutnotifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerOutSARequests")
     {
         msdppeeroutsarequests = value;
+        msdppeeroutsarequests.value_namespace = name_space;
+        msdppeeroutsarequests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerOutSAResponses")
     {
         msdppeeroutsaresponses = value;
+        msdppeeroutsaresponses.value_namespace = name_space;
+        msdppeeroutsaresponses.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerOutSAs")
     {
         msdppeeroutsas = value;
+        msdppeeroutsas.value_namespace = name_space;
+        msdppeeroutsas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerProcessRequestsFrom")
     {
         msdppeerprocessrequestsfrom = value;
+        msdppeerprocessrequestsfrom.value_namespace = name_space;
+        msdppeerprocessrequestsfrom.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerRemotePort")
     {
         msdppeerremoteport = value;
+        msdppeerremoteport.value_namespace = name_space;
+        msdppeerremoteport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerRPFFailures")
     {
         msdppeerrpffailures = value;
+        msdppeerrpffailures.value_namespace = name_space;
+        msdppeerrpffailures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerSAAdvPeriod")
     {
         msdppeersaadvperiod = value;
+        msdppeersaadvperiod.value_namespace = name_space;
+        msdppeersaadvperiod.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerState")
     {
         msdppeerstate = value;
+        msdppeerstate.value_namespace = name_space;
+        msdppeerstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpPeerStatus")
     {
         msdppeerstatus = value;
+        msdppeerstatus.value_namespace = name_space;
+        msdppeerstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void DraftMsdpMib::Msdppeertable::Msdppeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "msdpPeerRemoteAddress")
+    {
+        msdppeerremoteaddress.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerConnectionAttempts")
+    {
+        msdppeerconnectionattempts.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerConnectRetryInterval")
+    {
+        msdppeerconnectretryinterval.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerDataTtl")
+    {
+        msdppeerdatattl.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerEncapsulationState")
+    {
+        msdppeerencapsulationstate.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerEncapsulationType")
+    {
+        msdppeerencapsulationtype.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerFsmEstablishedTime")
+    {
+        msdppeerfsmestablishedtime.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerFsmEstablishedTransitions")
+    {
+        msdppeerfsmestablishedtransitions.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerHoldTimeConfigured")
+    {
+        msdppeerholdtimeconfigured.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerInControlMessages")
+    {
+        msdppeerincontrolmessages.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerInDataPackets")
+    {
+        msdppeerindatapackets.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerInMessageElapsedTime")
+    {
+        msdppeerinmessageelapsedtime.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerInNotifications")
+    {
+        msdppeerinnotifications.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerInSARequests")
+    {
+        msdppeerinsarequests.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerInSAResponses")
+    {
+        msdppeerinsaresponses.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerInSAs")
+    {
+        msdppeerinsas.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerKeepAliveConfigured")
+    {
+        msdppeerkeepaliveconfigured.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerLastError")
+    {
+        msdppeerlasterror.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerLocalAddress")
+    {
+        msdppeerlocaladdress.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerLocalPort")
+    {
+        msdppeerlocalport.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerOutControlMessages")
+    {
+        msdppeeroutcontrolmessages.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerOutDataPackets")
+    {
+        msdppeeroutdatapackets.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerOutNotifications")
+    {
+        msdppeeroutnotifications.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerOutSARequests")
+    {
+        msdppeeroutsarequests.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerOutSAResponses")
+    {
+        msdppeeroutsaresponses.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerOutSAs")
+    {
+        msdppeeroutsas.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerProcessRequestsFrom")
+    {
+        msdppeerprocessrequestsfrom.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerRemotePort")
+    {
+        msdppeerremoteport.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerRPFFailures")
+    {
+        msdppeerrpffailures.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerSAAdvPeriod")
+    {
+        msdppeersaadvperiod.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerState")
+    {
+        msdppeerstate.yfilter = yfilter;
+    }
+    if(value_path == "msdpPeerStatus")
+    {
+        msdppeerstatus.yfilter = yfilter;
+    }
+}
+
+bool DraftMsdpMib::Msdppeertable::Msdppeerentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpPeerRemoteAddress" || name == "msdpPeerConnectionAttempts" || name == "msdpPeerConnectRetryInterval" || name == "msdpPeerDataTtl" || name == "msdpPeerEncapsulationState" || name == "msdpPeerEncapsulationType" || name == "msdpPeerFsmEstablishedTime" || name == "msdpPeerFsmEstablishedTransitions" || name == "msdpPeerHoldTimeConfigured" || name == "msdpPeerInControlMessages" || name == "msdpPeerInDataPackets" || name == "msdpPeerInMessageElapsedTime" || name == "msdpPeerInNotifications" || name == "msdpPeerInSARequests" || name == "msdpPeerInSAResponses" || name == "msdpPeerInSAs" || name == "msdpPeerKeepAliveConfigured" || name == "msdpPeerLastError" || name == "msdpPeerLocalAddress" || name == "msdpPeerLocalPort" || name == "msdpPeerOutControlMessages" || name == "msdpPeerOutDataPackets" || name == "msdpPeerOutNotifications" || name == "msdpPeerOutSARequests" || name == "msdpPeerOutSAResponses" || name == "msdpPeerOutSAs" || name == "msdpPeerProcessRequestsFrom" || name == "msdpPeerRemotePort" || name == "msdpPeerRPFFailures" || name == "msdpPeerSAAdvPeriod" || name == "msdpPeerState" || name == "msdpPeerStatus")
+        return true;
+    return false;
 }
 
 DraftMsdpMib::Msdpsacachetable::Msdpsacachetable()
@@ -879,9 +1192,9 @@ DraftMsdpMib::Msdpsacachetable::~Msdpsacachetable()
 
 bool DraftMsdpMib::Msdpsacachetable::has_data() const
 {
-    for (std::size_t index=0; index<msdpsacacheentry_.size(); index++)
+    for (std::size_t index=0; index<msdpsacacheentry.size(); index++)
     {
-        if(msdpsacacheentry_[index]->has_data())
+        if(msdpsacacheentry[index]->has_data())
             return true;
     }
     return false;
@@ -889,12 +1202,12 @@ bool DraftMsdpMib::Msdpsacachetable::has_data() const
 
 bool DraftMsdpMib::Msdpsacachetable::has_operation() const
 {
-    for (std::size_t index=0; index<msdpsacacheentry_.size(); index++)
+    for (std::size_t index=0; index<msdpsacacheentry.size(); index++)
     {
-        if(msdpsacacheentry_[index]->has_operation())
+        if(msdpsacacheentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string DraftMsdpMib::Msdpsacachetable::get_segment_path() const
@@ -931,7 +1244,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const 
 {
     if(child_yang_name == "msdpSACacheEntry")
     {
-        for(auto const & c : msdpsacacheentry_)
+        for(auto const & c : msdpsacacheentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -941,7 +1254,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const 
         }
         auto c = std::make_shared<DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry>();
         c->parent = this;
-        msdpsacacheentry_.push_back(c);
+        msdpsacacheentry.push_back(c);
         return c;
     }
 
@@ -951,7 +1264,7 @@ std::shared_ptr<Entity> DraftMsdpMib::Msdpsacachetable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdpsacachetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : msdpsacacheentry_)
+    for (auto const & c : msdpsacacheentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -959,8 +1272,19 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdpsacachetable::g
     return children;
 }
 
-void DraftMsdpMib::Msdpsacachetable::set_value(const std::string & value_path, std::string value)
+void DraftMsdpMib::Msdpsacachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void DraftMsdpMib::Msdpsacachetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DraftMsdpMib::Msdpsacachetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpSACacheEntry")
+        return true;
+    return false;
 }
 
 DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::Msdpsacacheentry()
@@ -999,17 +1323,17 @@ bool DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::has_data() const
 
 bool DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(msdpsacachegroupaddr.operation)
-	|| is_set(msdpsacachesourceaddr.operation)
-	|| is_set(msdpsacacheoriginrp.operation)
-	|| is_set(msdpsacacheexpirytime.operation)
-	|| is_set(msdpsacacheindatapackets.operation)
-	|| is_set(msdpsacacheinsas.operation)
-	|| is_set(msdpsacachepeerlearnedfrom.operation)
-	|| is_set(msdpsacacherpfpeer.operation)
-	|| is_set(msdpsacachestatus.operation)
-	|| is_set(msdpsacacheuptime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(msdpsacachegroupaddr.yfilter)
+	|| ydk::is_set(msdpsacachesourceaddr.yfilter)
+	|| ydk::is_set(msdpsacacheoriginrp.yfilter)
+	|| ydk::is_set(msdpsacacheexpirytime.yfilter)
+	|| ydk::is_set(msdpsacacheindatapackets.yfilter)
+	|| ydk::is_set(msdpsacacheinsas.yfilter)
+	|| ydk::is_set(msdpsacachepeerlearnedfrom.yfilter)
+	|| ydk::is_set(msdpsacacherpfpeer.yfilter)
+	|| ydk::is_set(msdpsacachestatus.yfilter)
+	|| ydk::is_set(msdpsacacheuptime.yfilter);
 }
 
 std::string DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::get_segment_path() const
@@ -1035,16 +1359,16 @@ const EntityPath DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (msdpsacachegroupaddr.is_set || is_set(msdpsacachegroupaddr.operation)) leaf_name_data.push_back(msdpsacachegroupaddr.get_name_leafdata());
-    if (msdpsacachesourceaddr.is_set || is_set(msdpsacachesourceaddr.operation)) leaf_name_data.push_back(msdpsacachesourceaddr.get_name_leafdata());
-    if (msdpsacacheoriginrp.is_set || is_set(msdpsacacheoriginrp.operation)) leaf_name_data.push_back(msdpsacacheoriginrp.get_name_leafdata());
-    if (msdpsacacheexpirytime.is_set || is_set(msdpsacacheexpirytime.operation)) leaf_name_data.push_back(msdpsacacheexpirytime.get_name_leafdata());
-    if (msdpsacacheindatapackets.is_set || is_set(msdpsacacheindatapackets.operation)) leaf_name_data.push_back(msdpsacacheindatapackets.get_name_leafdata());
-    if (msdpsacacheinsas.is_set || is_set(msdpsacacheinsas.operation)) leaf_name_data.push_back(msdpsacacheinsas.get_name_leafdata());
-    if (msdpsacachepeerlearnedfrom.is_set || is_set(msdpsacachepeerlearnedfrom.operation)) leaf_name_data.push_back(msdpsacachepeerlearnedfrom.get_name_leafdata());
-    if (msdpsacacherpfpeer.is_set || is_set(msdpsacacherpfpeer.operation)) leaf_name_data.push_back(msdpsacacherpfpeer.get_name_leafdata());
-    if (msdpsacachestatus.is_set || is_set(msdpsacachestatus.operation)) leaf_name_data.push_back(msdpsacachestatus.get_name_leafdata());
-    if (msdpsacacheuptime.is_set || is_set(msdpsacacheuptime.operation)) leaf_name_data.push_back(msdpsacacheuptime.get_name_leafdata());
+    if (msdpsacachegroupaddr.is_set || is_set(msdpsacachegroupaddr.yfilter)) leaf_name_data.push_back(msdpsacachegroupaddr.get_name_leafdata());
+    if (msdpsacachesourceaddr.is_set || is_set(msdpsacachesourceaddr.yfilter)) leaf_name_data.push_back(msdpsacachesourceaddr.get_name_leafdata());
+    if (msdpsacacheoriginrp.is_set || is_set(msdpsacacheoriginrp.yfilter)) leaf_name_data.push_back(msdpsacacheoriginrp.get_name_leafdata());
+    if (msdpsacacheexpirytime.is_set || is_set(msdpsacacheexpirytime.yfilter)) leaf_name_data.push_back(msdpsacacheexpirytime.get_name_leafdata());
+    if (msdpsacacheindatapackets.is_set || is_set(msdpsacacheindatapackets.yfilter)) leaf_name_data.push_back(msdpsacacheindatapackets.get_name_leafdata());
+    if (msdpsacacheinsas.is_set || is_set(msdpsacacheinsas.yfilter)) leaf_name_data.push_back(msdpsacacheinsas.get_name_leafdata());
+    if (msdpsacachepeerlearnedfrom.is_set || is_set(msdpsacachepeerlearnedfrom.yfilter)) leaf_name_data.push_back(msdpsacachepeerlearnedfrom.get_name_leafdata());
+    if (msdpsacacherpfpeer.is_set || is_set(msdpsacacherpfpeer.yfilter)) leaf_name_data.push_back(msdpsacacherpfpeer.get_name_leafdata());
+    if (msdpsacachestatus.is_set || is_set(msdpsacachestatus.yfilter)) leaf_name_data.push_back(msdpsacachestatus.get_name_leafdata());
+    if (msdpsacacheuptime.is_set || is_set(msdpsacacheuptime.yfilter)) leaf_name_data.push_back(msdpsacacheuptime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1063,66 +1387,137 @@ std::map<std::string, std::shared_ptr<Entity>> DraftMsdpMib::Msdpsacachetable::M
     return children;
 }
 
-void DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::set_value(const std::string & value_path, std::string value)
+void DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpSACacheGroupAddr")
     {
         msdpsacachegroupaddr = value;
+        msdpsacachegroupaddr.value_namespace = name_space;
+        msdpsacachegroupaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACacheSourceAddr")
     {
         msdpsacachesourceaddr = value;
+        msdpsacachesourceaddr.value_namespace = name_space;
+        msdpsacachesourceaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACacheOriginRP")
     {
         msdpsacacheoriginrp = value;
+        msdpsacacheoriginrp.value_namespace = name_space;
+        msdpsacacheoriginrp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACacheExpiryTime")
     {
         msdpsacacheexpirytime = value;
+        msdpsacacheexpirytime.value_namespace = name_space;
+        msdpsacacheexpirytime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACacheInDataPackets")
     {
         msdpsacacheindatapackets = value;
+        msdpsacacheindatapackets.value_namespace = name_space;
+        msdpsacacheindatapackets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACacheInSAs")
     {
         msdpsacacheinsas = value;
+        msdpsacacheinsas.value_namespace = name_space;
+        msdpsacacheinsas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACachePeerLearnedFrom")
     {
         msdpsacachepeerlearnedfrom = value;
+        msdpsacachepeerlearnedfrom.value_namespace = name_space;
+        msdpsacachepeerlearnedfrom.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACacheRPFPeer")
     {
         msdpsacacherpfpeer = value;
+        msdpsacacherpfpeer.value_namespace = name_space;
+        msdpsacacherpfpeer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACacheStatus")
     {
         msdpsacachestatus = value;
+        msdpsacachestatus.value_namespace = name_space;
+        msdpsacachestatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "msdpSACacheUpTime")
     {
         msdpsacacheuptime = value;
+        msdpsacacheuptime.value_namespace = name_space;
+        msdpsacacheuptime.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerstateEnum::inactive {1, "inactive"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerstateEnum::listen {2, "listen"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerstateEnum::connecting {3, "connecting"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerstateEnum::established {4, "established"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerstateEnum::disabled {5, "disabled"};
+void DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "msdpSACacheGroupAddr")
+    {
+        msdpsacachegroupaddr.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACacheSourceAddr")
+    {
+        msdpsacachesourceaddr.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACacheOriginRP")
+    {
+        msdpsacacheoriginrp.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACacheExpiryTime")
+    {
+        msdpsacacheexpirytime.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACacheInDataPackets")
+    {
+        msdpsacacheindatapackets.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACacheInSAs")
+    {
+        msdpsacacheinsas.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACachePeerLearnedFrom")
+    {
+        msdpsacachepeerlearnedfrom.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACacheRPFPeer")
+    {
+        msdpsacacherpfpeer.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACacheStatus")
+    {
+        msdpsacachestatus.yfilter = yfilter;
+    }
+    if(value_path == "msdpSACacheUpTime")
+    {
+        msdpsacacheuptime.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationstateEnum::default_ {1, "default"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationstateEnum::received {2, "received"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationstateEnum::advertising {3, "advertising"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationstateEnum::sent {4, "sent"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationstateEnum::agreed {5, "agreed"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationstateEnum::failed {6, "failed"};
+bool DraftMsdpMib::Msdpsacachetable::Msdpsacacheentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msdpSACacheGroupAddr" || name == "msdpSACacheSourceAddr" || name == "msdpSACacheOriginRP" || name == "msdpSACacheExpiryTime" || name == "msdpSACacheInDataPackets" || name == "msdpSACacheInSAs" || name == "msdpSACachePeerLearnedFrom" || name == "msdpSACacheRPFPeer" || name == "msdpSACacheStatus" || name == "msdpSACacheUpTime")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationtypeEnum::tcp {1, "tcp"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationtypeEnum::udp {2, "udp"};
-const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::MsdppeerencapsulationtypeEnum::gre {3, "gre"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::inactive {1, "inactive"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::listen {2, "listen"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::connecting {3, "connecting"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::established {4, "established"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerstate::disabled {5, "disabled"};
+
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::default_ {1, "default"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::received {2, "received"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::advertising {3, "advertising"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::sent {4, "sent"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::agreed {5, "agreed"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::failed {6, "failed"};
+
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::tcp {1, "tcp"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::udp {2, "udp"};
+const Enum::YLeaf DraftMsdpMib::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::gre {3, "gre"};
 
 
 }

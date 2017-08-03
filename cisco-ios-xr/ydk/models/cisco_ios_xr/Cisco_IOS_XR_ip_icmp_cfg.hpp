@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_icmp_cfg {
 
-class Icmp : public Entity
+class Icmp : public ydk::Entity
 {
     public:
         Icmp();
@@ -18,15 +18,18 @@ class Icmp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class IpProtocol; //type: Icmp::IpProtocol
 
@@ -35,7 +38,7 @@ class Icmp : public Entity
 }; // Icmp
 
 
-class Icmp::IpProtocol : public Entity
+class Icmp::IpProtocol : public ydk::Entity
 {
     public:
         IpProtocol();
@@ -43,13 +46,15 @@ class Icmp::IpProtocol : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf protocol_type; //type: string
+        ydk::YLeaf protocol_type; //type: string
         class RateLimit; //type: Icmp::IpProtocol::RateLimit
         class Source; //type: Icmp::IpProtocol::Source
 
@@ -59,7 +64,7 @@ class Icmp::IpProtocol : public Entity
 }; // Icmp::IpProtocol
 
 
-class Icmp::IpProtocol::RateLimit : public Entity
+class Icmp::IpProtocol::RateLimit : public ydk::Entity
 {
     public:
         RateLimit();
@@ -67,11 +72,13 @@ class Icmp::IpProtocol::RateLimit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Unreachable; //type: Icmp::IpProtocol::RateLimit::Unreachable
 
@@ -80,7 +87,7 @@ class Icmp::IpProtocol::RateLimit : public Entity
 }; // Icmp::IpProtocol::RateLimit
 
 
-class Icmp::IpProtocol::RateLimit::Unreachable : public Entity
+class Icmp::IpProtocol::RateLimit::Unreachable : public ydk::Entity
 {
     public:
         Unreachable();
@@ -88,19 +95,21 @@ class Icmp::IpProtocol::RateLimit::Unreachable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf rate; //type: uint32
-        YLeaf fragmentation; //type: uint32
+        ydk::YLeaf rate; //type: uint32
+        ydk::YLeaf fragmentation; //type: uint32
 
 }; // Icmp::IpProtocol::RateLimit::Unreachable
 
 
-class Icmp::IpProtocol::Source : public Entity
+class Icmp::IpProtocol::Source : public ydk::Entity
 {
     public:
         Source();
@@ -108,21 +117,23 @@ class Icmp::IpProtocol::Source : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf source_address_policy; //type: SourcePolicyEnum
+        ydk::YLeaf source_address_policy; //type: SourcePolicy
 
 }; // Icmp::IpProtocol::Source
 
-class SourcePolicyEnum : public Enum
+class SourcePolicy : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf vrf;
-        static const Enum::YLeaf rfc;
+        static const ydk::Enum::YLeaf vrf;
+        static const ydk::Enum::YLeaf rfc;
 
 };
 

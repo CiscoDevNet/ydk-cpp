@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_asr9k_prm_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_prm_cfg {
 
 HardwareModuleQosMode::HardwareModuleQosMode()
@@ -29,7 +31,7 @@ bool HardwareModuleQosMode::has_data() const
 
 bool HardwareModuleQosMode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleQosMode::get_childr
     return children;
 }
 
-void HardwareModuleQosMode::set_value(const std::string & value_path, std::string value)
+void HardwareModuleQosMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleQosMode::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string HardwareModuleQosMode::get_bundle_name() const
 augment_capabilities_function HardwareModuleQosMode::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleQosMode::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleQosMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 HardwareModuleQosMode::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool HardwareModuleQosMode::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleQosMode::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleQosMode::Nodes::get
     return children;
 }
 
-void HardwareModuleQosMode::Nodes::set_value(const std::string & value_path, std::string value)
+void HardwareModuleQosMode::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleQosMode::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleQosMode::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 HardwareModuleQosMode::Nodes::Node::Node()
@@ -226,10 +255,10 @@ bool HardwareModuleQosMode::Nodes::Node::has_data() const
 
 bool HardwareModuleQosMode::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
-	|| is_set(child_shaping_disable.operation)
-	|| is_set(lowburst_enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(child_shaping_disable.yfilter)
+	|| ydk::is_set(lowburst_enable.yfilter);
 }
 
 std::string HardwareModuleQosMode::Nodes::Node::get_segment_path() const
@@ -255,9 +284,9 @@ const EntityPath HardwareModuleQosMode::Nodes::Node::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (child_shaping_disable.is_set || is_set(child_shaping_disable.operation)) leaf_name_data.push_back(child_shaping_disable.get_name_leafdata());
-    if (lowburst_enable.is_set || is_set(lowburst_enable.operation)) leaf_name_data.push_back(lowburst_enable.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (child_shaping_disable.is_set || is_set(child_shaping_disable.yfilter)) leaf_name_data.push_back(child_shaping_disable.get_name_leafdata());
+    if (lowburst_enable.is_set || is_set(lowburst_enable.yfilter)) leaf_name_data.push_back(lowburst_enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -276,20 +305,49 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleQosMode::Nodes::Nod
     return children;
 }
 
-void HardwareModuleQosMode::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void HardwareModuleQosMode::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "child-shaping-disable")
     {
         child_shaping_disable = value;
+        child_shaping_disable.value_namespace = name_space;
+        child_shaping_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lowburst-enable")
     {
         lowburst_enable = value;
+        lowburst_enable.value_namespace = name_space;
+        lowburst_enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleQosMode::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "child-shaping-disable")
+    {
+        child_shaping_disable.yfilter = yfilter;
+    }
+    if(value_path == "lowburst-enable")
+    {
+        lowburst_enable.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleQosMode::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-name" || name == "child-shaping-disable" || name == "lowburst-enable")
+        return true;
+    return false;
 }
 
 HardwareModuleTcpMssAdjust::HardwareModuleTcpMssAdjust()
@@ -312,7 +370,7 @@ bool HardwareModuleTcpMssAdjust::has_data() const
 
 bool HardwareModuleTcpMssAdjust::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -368,7 +426,11 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::get_c
     return children;
 }
 
-void HardwareModuleTcpMssAdjust::set_value(const std::string & value_path, std::string value)
+void HardwareModuleTcpMssAdjust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleTcpMssAdjust::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -390,6 +452,18 @@ std::string HardwareModuleTcpMssAdjust::get_bundle_name() const
 augment_capabilities_function HardwareModuleTcpMssAdjust::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleTcpMssAdjust::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleTcpMssAdjust::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Nodes()
@@ -418,7 +492,7 @@ bool HardwareModuleTcpMssAdjust::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleTcpMssAdjust::Nodes::get_segment_path() const
@@ -483,8 +557,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes
     return children;
 }
 
-void HardwareModuleTcpMssAdjust::Nodes::set_value(const std::string & value_path, std::string value)
+void HardwareModuleTcpMssAdjust::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleTcpMssAdjust::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleTcpMssAdjust::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Node::Node()
@@ -510,8 +595,8 @@ bool HardwareModuleTcpMssAdjust::Nodes::Node::has_data() const
 
 bool HardwareModuleTcpMssAdjust::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (nps !=  nullptr && nps->has_operation());
 }
 
@@ -538,7 +623,7 @@ const EntityPath HardwareModuleTcpMssAdjust::Nodes::Node::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -571,12 +656,29 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes
     return children;
 }
 
-void HardwareModuleTcpMssAdjust::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void HardwareModuleTcpMssAdjust::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleTcpMssAdjust::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleTcpMssAdjust::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nps" || name == "node-name")
+        return true;
+    return false;
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Nps()
@@ -605,7 +707,7 @@ bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::has_operation() const
         if(np[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleTcpMssAdjust::Nodes::Node::Nps::get_segment_path() const
@@ -670,8 +772,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes
     return children;
 }
 
-void HardwareModuleTcpMssAdjust::Nodes::Node::Nps::set_value(const std::string & value_path, std::string value)
+void HardwareModuleTcpMssAdjust::Nodes::Node::Nps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleTcpMssAdjust::Nodes::Node::Nps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np")
+        return true;
+    return false;
 }
 
 HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::Np()
@@ -694,9 +807,9 @@ bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::has_data() const
 
 bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(np_id.operation)
-	|| is_set(adjust_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(np_id.yfilter)
+	|| ydk::is_set(adjust_value.yfilter);
 }
 
 std::string HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::get_segment_path() const
@@ -722,8 +835,8 @@ const EntityPath HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (np_id.is_set || is_set(np_id.operation)) leaf_name_data.push_back(np_id.get_name_leafdata());
-    if (adjust_value.is_set || is_set(adjust_value.operation)) leaf_name_data.push_back(adjust_value.get_name_leafdata());
+    if (np_id.is_set || is_set(np_id.yfilter)) leaf_name_data.push_back(np_id.get_name_leafdata());
+    if (adjust_value.is_set || is_set(adjust_value.yfilter)) leaf_name_data.push_back(adjust_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -742,16 +855,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcpMssAdjust::Nodes
     return children;
 }
 
-void HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::set_value(const std::string & value_path, std::string value)
+void HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "np-id")
     {
         np_id = value;
+        np_id.value_namespace = name_space;
+        np_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjust-value")
     {
         adjust_value = value;
+        adjust_value.value_namespace = name_space;
+        adjust_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "np-id")
+    {
+        np_id.yfilter = yfilter;
+    }
+    if(value_path == "adjust-value")
+    {
+        adjust_value.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleTcpMssAdjust::Nodes::Node::Nps::Np::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "np-id" || name == "adjust-value")
+        return true;
+    return false;
 }
 
 HardwareModuleLoadBalance::HardwareModuleLoadBalance()
@@ -774,7 +910,7 @@ bool HardwareModuleLoadBalance::has_data() const
 
 bool HardwareModuleLoadBalance::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bundle !=  nullptr && bundle->has_operation());
 }
 
@@ -830,7 +966,11 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::get_ch
     return children;
 }
 
-void HardwareModuleLoadBalance::set_value(const std::string & value_path, std::string value)
+void HardwareModuleLoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleLoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -854,6 +994,18 @@ augment_capabilities_function HardwareModuleLoadBalance::get_augment_capabilitie
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleLoadBalance::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleLoadBalance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle")
+        return true;
+    return false;
+}
+
 HardwareModuleLoadBalance::Bundle::Bundle()
     :
     l2_service(std::make_shared<HardwareModuleLoadBalance::Bundle::L2Service>())
@@ -874,7 +1026,7 @@ bool HardwareModuleLoadBalance::Bundle::has_data() const
 
 bool HardwareModuleLoadBalance::Bundle::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (l2_service !=  nullptr && l2_service->has_operation());
 }
 
@@ -933,8 +1085,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::Bundle
     return children;
 }
 
-void HardwareModuleLoadBalance::Bundle::set_value(const std::string & value_path, std::string value)
+void HardwareModuleLoadBalance::Bundle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleLoadBalance::Bundle::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleLoadBalance::Bundle::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2-service")
+        return true;
+    return false;
 }
 
 HardwareModuleLoadBalance::Bundle::L2Service::L2Service()
@@ -955,8 +1118,8 @@ bool HardwareModuleLoadBalance::Bundle::L2Service::has_data() const
 
 bool HardwareModuleLoadBalance::Bundle::L2Service::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(l3_parameters.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(l3_parameters.yfilter);
 }
 
 std::string HardwareModuleLoadBalance::Bundle::L2Service::get_segment_path() const
@@ -982,7 +1145,7 @@ const EntityPath HardwareModuleLoadBalance::Bundle::L2Service::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (l3_parameters.is_set || is_set(l3_parameters.operation)) leaf_name_data.push_back(l3_parameters.get_name_leafdata());
+    if (l3_parameters.is_set || is_set(l3_parameters.yfilter)) leaf_name_data.push_back(l3_parameters.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1001,12 +1164,29 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleLoadBalance::Bundle
     return children;
 }
 
-void HardwareModuleLoadBalance::Bundle::L2Service::set_value(const std::string & value_path, std::string value)
+void HardwareModuleLoadBalance::Bundle::L2Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "l3-parameters")
     {
         l3_parameters = value;
+        l3_parameters.value_namespace = name_space;
+        l3_parameters.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleLoadBalance::Bundle::L2Service::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l3-parameters")
+    {
+        l3_parameters.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleLoadBalance::Bundle::L2Service::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l3-parameters")
+        return true;
+    return false;
 }
 
 HardwareModuleTcam::HardwareModuleTcam()
@@ -1032,8 +1212,8 @@ bool HardwareModuleTcam::has_data() const
 
 bool HardwareModuleTcam::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(global_profile.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(global_profile.yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -1057,7 +1237,7 @@ const EntityPath HardwareModuleTcam::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (global_profile.is_set || is_set(global_profile.operation)) leaf_name_data.push_back(global_profile.get_name_leafdata());
+    if (global_profile.is_set || is_set(global_profile.yfilter)) leaf_name_data.push_back(global_profile.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1090,11 +1270,21 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcam::get_children(
     return children;
 }
 
-void HardwareModuleTcam::set_value(const std::string & value_path, std::string value)
+void HardwareModuleTcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "global-profile")
     {
         global_profile = value;
+        global_profile.value_namespace = name_space;
+        global_profile.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleTcam::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "global-profile")
+    {
+        global_profile.yfilter = yfilter;
     }
 }
 
@@ -1116,6 +1306,18 @@ std::string HardwareModuleTcam::get_bundle_name() const
 augment_capabilities_function HardwareModuleTcam::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleTcam::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleTcam::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes" || name == "global-profile")
+        return true;
+    return false;
 }
 
 HardwareModuleTcam::Nodes::Nodes()
@@ -1144,7 +1346,7 @@ bool HardwareModuleTcam::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleTcam::Nodes::get_segment_path() const
@@ -1209,8 +1411,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcam::Nodes::get_ch
     return children;
 }
 
-void HardwareModuleTcam::Nodes::set_value(const std::string & value_path, std::string value)
+void HardwareModuleTcam::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleTcam::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleTcam::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 HardwareModuleTcam::Nodes::Node::Node()
@@ -1233,9 +1446,9 @@ bool HardwareModuleTcam::Nodes::Node::has_data() const
 
 bool HardwareModuleTcam::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
-	|| is_set(profile.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(profile.yfilter);
 }
 
 std::string HardwareModuleTcam::Nodes::Node::get_segment_path() const
@@ -1261,8 +1474,8 @@ const EntityPath HardwareModuleTcam::Nodes::Node::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1281,16 +1494,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleTcam::Nodes::Node::
     return children;
 }
 
-void HardwareModuleTcam::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void HardwareModuleTcam::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "profile")
     {
         profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleTcam::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleTcam::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-name" || name == "profile")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::HardwareModuleEfd()
@@ -1317,7 +1553,7 @@ bool HardwareModuleEfd::has_data() const
 
 bool HardwareModuleEfd::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (node_all !=  nullptr && node_all->has_operation())
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
@@ -1388,7 +1624,11 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::get_children()
     return children;
 }
 
-void HardwareModuleEfd::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleEfd::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -1412,14 +1652,29 @@ augment_capabilities_function HardwareModuleEfd::get_augment_capabilities_functi
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleEfd::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleEfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-all" || name == "nodes")
+        return true;
+    return false;
+}
+
 HardwareModuleEfd::NodeAll::NodeAll()
     :
     enable{YType::empty, "enable"},
     mode{YType::enumeration, "mode"}
     	,
     ip_precedence(nullptr) // presence node
+	,ip_priority_mask(nullptr) // presence node
 	,mpls_exp(nullptr) // presence node
+	,mpls_priority_mask(nullptr) // presence node
 	,vlan_cos(nullptr) // presence node
+	,vlan_priority_mask(nullptr) // presence node
 {
     yang_name = "node-all"; yang_parent_name = "hardware-module-efd";
 }
@@ -1433,18 +1688,24 @@ bool HardwareModuleEfd::NodeAll::has_data() const
     return enable.is_set
 	|| mode.is_set
 	|| (ip_precedence !=  nullptr && ip_precedence->has_data())
+	|| (ip_priority_mask !=  nullptr && ip_priority_mask->has_data())
 	|| (mpls_exp !=  nullptr && mpls_exp->has_data())
-	|| (vlan_cos !=  nullptr && vlan_cos->has_data());
+	|| (mpls_priority_mask !=  nullptr && mpls_priority_mask->has_data())
+	|| (vlan_cos !=  nullptr && vlan_cos->has_data())
+	|| (vlan_priority_mask !=  nullptr && vlan_priority_mask->has_data());
 }
 
 bool HardwareModuleEfd::NodeAll::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(mode.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(mode.yfilter)
 	|| (ip_precedence !=  nullptr && ip_precedence->has_operation())
+	|| (ip_priority_mask !=  nullptr && ip_priority_mask->has_operation())
 	|| (mpls_exp !=  nullptr && mpls_exp->has_operation())
-	|| (vlan_cos !=  nullptr && vlan_cos->has_operation());
+	|| (mpls_priority_mask !=  nullptr && mpls_priority_mask->has_operation())
+	|| (vlan_cos !=  nullptr && vlan_cos->has_operation())
+	|| (vlan_priority_mask !=  nullptr && vlan_priority_mask->has_operation());
 }
 
 std::string HardwareModuleEfd::NodeAll::get_segment_path() const
@@ -1470,8 +1731,8 @@ const EntityPath HardwareModuleEfd::NodeAll::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1490,6 +1751,15 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::get_child_by_name(const std:
         return ip_precedence;
     }
 
+    if(child_yang_name == "ip-priority-mask")
+    {
+        if(ip_priority_mask == nullptr)
+        {
+            ip_priority_mask = std::make_shared<HardwareModuleEfd::NodeAll::IpPriorityMask>();
+        }
+        return ip_priority_mask;
+    }
+
     if(child_yang_name == "mpls-exp")
     {
         if(mpls_exp == nullptr)
@@ -1499,6 +1769,15 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::get_child_by_name(const std:
         return mpls_exp;
     }
 
+    if(child_yang_name == "mpls-priority-mask")
+    {
+        if(mpls_priority_mask == nullptr)
+        {
+            mpls_priority_mask = std::make_shared<HardwareModuleEfd::NodeAll::MplsPriorityMask>();
+        }
+        return mpls_priority_mask;
+    }
+
     if(child_yang_name == "vlan-cos")
     {
         if(vlan_cos == nullptr)
@@ -1506,6 +1785,15 @@ std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::get_child_by_name(const std:
             vlan_cos = std::make_shared<HardwareModuleEfd::NodeAll::VlanCos>();
         }
         return vlan_cos;
+    }
+
+    if(child_yang_name == "vlan-priority-mask")
+    {
+        if(vlan_priority_mask == nullptr)
+        {
+            vlan_priority_mask = std::make_shared<HardwareModuleEfd::NodeAll::VlanPriorityMask>();
+        }
+        return vlan_priority_mask;
     }
 
     return nullptr;
@@ -1519,9 +1807,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::get_c
         children["ip-precedence"] = ip_precedence;
     }
 
+    if(ip_priority_mask != nullptr)
+    {
+        children["ip-priority-mask"] = ip_priority_mask;
+    }
+
     if(mpls_exp != nullptr)
     {
         children["mpls-exp"] = mpls_exp;
+    }
+
+    if(mpls_priority_mask != nullptr)
+    {
+        children["mpls-priority-mask"] = mpls_priority_mask;
     }
 
     if(vlan_cos != nullptr)
@@ -1529,19 +1827,234 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::get_c
         children["vlan-cos"] = vlan_cos;
     }
 
+    if(vlan_priority_mask != nullptr)
+    {
+        children["vlan-priority-mask"] = vlan_priority_mask;
+    }
+
     return children;
 }
 
-void HardwareModuleEfd::NodeAll::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::NodeAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleEfd::NodeAll::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::NodeAll::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-precedence" || name == "ip-priority-mask" || name == "mpls-exp" || name == "mpls-priority-mask" || name == "vlan-cos" || name == "vlan-priority-mask" || name == "enable" || name == "mode")
+        return true;
+    return false;
+}
+
+HardwareModuleEfd::NodeAll::VlanPriorityMask::VlanPriorityMask()
+    :
+    prec0{YType::uint32, "prec0"},
+    prec1{YType::uint32, "prec1"},
+    prec2{YType::uint32, "prec2"},
+    prec3{YType::uint32, "prec3"},
+    prec4{YType::uint32, "prec4"},
+    prec5{YType::uint32, "prec5"},
+    prec6{YType::uint32, "prec6"},
+    prec7{YType::uint32, "prec7"}
+{
+    yang_name = "vlan-priority-mask"; yang_parent_name = "node-all";
+}
+
+HardwareModuleEfd::NodeAll::VlanPriorityMask::~VlanPriorityMask()
+{
+}
+
+bool HardwareModuleEfd::NodeAll::VlanPriorityMask::has_data() const
+{
+    return prec0.is_set
+	|| prec1.is_set
+	|| prec2.is_set
+	|| prec3.is_set
+	|| prec4.is_set
+	|| prec5.is_set
+	|| prec6.is_set
+	|| prec7.is_set;
+}
+
+bool HardwareModuleEfd::NodeAll::VlanPriorityMask::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prec0.yfilter)
+	|| ydk::is_set(prec1.yfilter)
+	|| ydk::is_set(prec2.yfilter)
+	|| ydk::is_set(prec3.yfilter)
+	|| ydk::is_set(prec4.yfilter)
+	|| ydk::is_set(prec5.yfilter)
+	|| ydk::is_set(prec6.yfilter)
+	|| ydk::is_set(prec7.yfilter);
+}
+
+std::string HardwareModuleEfd::NodeAll::VlanPriorityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-priority-mask";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath HardwareModuleEfd::NodeAll::VlanPriorityMask::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-efd/node-all/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prec0.is_set || is_set(prec0.yfilter)) leaf_name_data.push_back(prec0.get_name_leafdata());
+    if (prec1.is_set || is_set(prec1.yfilter)) leaf_name_data.push_back(prec1.get_name_leafdata());
+    if (prec2.is_set || is_set(prec2.yfilter)) leaf_name_data.push_back(prec2.get_name_leafdata());
+    if (prec3.is_set || is_set(prec3.yfilter)) leaf_name_data.push_back(prec3.get_name_leafdata());
+    if (prec4.is_set || is_set(prec4.yfilter)) leaf_name_data.push_back(prec4.get_name_leafdata());
+    if (prec5.is_set || is_set(prec5.yfilter)) leaf_name_data.push_back(prec5.get_name_leafdata());
+    if (prec6.is_set || is_set(prec6.yfilter)) leaf_name_data.push_back(prec6.get_name_leafdata());
+    if (prec7.is_set || is_set(prec7.yfilter)) leaf_name_data.push_back(prec7.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::VlanPriorityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::VlanPriorityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleEfd::NodeAll::VlanPriorityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prec0")
+    {
+        prec0 = value;
+        prec0.value_namespace = name_space;
+        prec0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec1")
+    {
+        prec1 = value;
+        prec1.value_namespace = name_space;
+        prec1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec2")
+    {
+        prec2 = value;
+        prec2.value_namespace = name_space;
+        prec2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec3")
+    {
+        prec3 = value;
+        prec3.value_namespace = name_space;
+        prec3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec4")
+    {
+        prec4 = value;
+        prec4.value_namespace = name_space;
+        prec4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec5")
+    {
+        prec5 = value;
+        prec5.value_namespace = name_space;
+        prec5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec6")
+    {
+        prec6 = value;
+        prec6.value_namespace = name_space;
+        prec6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec7")
+    {
+        prec7 = value;
+        prec7.value_namespace = name_space;
+        prec7.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleEfd::NodeAll::VlanPriorityMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prec0")
+    {
+        prec0.yfilter = yfilter;
+    }
+    if(value_path == "prec1")
+    {
+        prec1.yfilter = yfilter;
+    }
+    if(value_path == "prec2")
+    {
+        prec2.yfilter = yfilter;
+    }
+    if(value_path == "prec3")
+    {
+        prec3.yfilter = yfilter;
+    }
+    if(value_path == "prec4")
+    {
+        prec4.yfilter = yfilter;
+    }
+    if(value_path == "prec5")
+    {
+        prec5.yfilter = yfilter;
+    }
+    if(value_path == "prec6")
+    {
+        prec6.yfilter = yfilter;
+    }
+    if(value_path == "prec7")
+    {
+        prec7.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::NodeAll::VlanPriorityMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prec0" || name == "prec1" || name == "prec2" || name == "prec3" || name == "prec4" || name == "prec5" || name == "prec6" || name == "prec7")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::NodeAll::IpPrecedence::IpPrecedence()
@@ -1564,9 +2077,9 @@ bool HardwareModuleEfd::NodeAll::IpPrecedence::has_data() const
 
 bool HardwareModuleEfd::NodeAll::IpPrecedence::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(operation_.operation)
-	|| is_set(precedence.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(operation_.yfilter)
+	|| ydk::is_set(precedence.yfilter);
 }
 
 std::string HardwareModuleEfd::NodeAll::IpPrecedence::get_segment_path() const
@@ -1592,8 +2105,8 @@ const EntityPath HardwareModuleEfd::NodeAll::IpPrecedence::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
-    if (precedence.is_set || is_set(precedence.operation)) leaf_name_data.push_back(precedence.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1612,16 +2125,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::IpPre
     return children;
 }
 
-void HardwareModuleEfd::NodeAll::IpPrecedence::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::NodeAll::IpPrecedence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence")
     {
         precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleEfd::NodeAll::IpPrecedence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::NodeAll::IpPrecedence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation" || name == "precedence")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::NodeAll::VlanCos::VlanCos()
@@ -1644,9 +2180,9 @@ bool HardwareModuleEfd::NodeAll::VlanCos::has_data() const
 
 bool HardwareModuleEfd::NodeAll::VlanCos::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cos.operation)
-	|| is_set(operation_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(operation_.yfilter);
 }
 
 std::string HardwareModuleEfd::NodeAll::VlanCos::get_segment_path() const
@@ -1672,8 +2208,8 @@ const EntityPath HardwareModuleEfd::NodeAll::VlanCos::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1692,16 +2228,413 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::VlanC
     return children;
 }
 
-void HardwareModuleEfd::NodeAll::VlanCos::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::NodeAll::VlanCos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleEfd::NodeAll::VlanCos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::NodeAll::VlanCos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cos" || name == "operation")
+        return true;
+    return false;
+}
+
+HardwareModuleEfd::NodeAll::IpPriorityMask::IpPriorityMask()
+    :
+    prec0{YType::uint32, "prec0"},
+    prec1{YType::uint32, "prec1"},
+    prec2{YType::uint32, "prec2"},
+    prec3{YType::uint32, "prec3"},
+    prec4{YType::uint32, "prec4"},
+    prec5{YType::uint32, "prec5"},
+    prec6{YType::uint32, "prec6"},
+    prec7{YType::uint32, "prec7"}
+{
+    yang_name = "ip-priority-mask"; yang_parent_name = "node-all";
+}
+
+HardwareModuleEfd::NodeAll::IpPriorityMask::~IpPriorityMask()
+{
+}
+
+bool HardwareModuleEfd::NodeAll::IpPriorityMask::has_data() const
+{
+    return prec0.is_set
+	|| prec1.is_set
+	|| prec2.is_set
+	|| prec3.is_set
+	|| prec4.is_set
+	|| prec5.is_set
+	|| prec6.is_set
+	|| prec7.is_set;
+}
+
+bool HardwareModuleEfd::NodeAll::IpPriorityMask::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prec0.yfilter)
+	|| ydk::is_set(prec1.yfilter)
+	|| ydk::is_set(prec2.yfilter)
+	|| ydk::is_set(prec3.yfilter)
+	|| ydk::is_set(prec4.yfilter)
+	|| ydk::is_set(prec5.yfilter)
+	|| ydk::is_set(prec6.yfilter)
+	|| ydk::is_set(prec7.yfilter);
+}
+
+std::string HardwareModuleEfd::NodeAll::IpPriorityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-priority-mask";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath HardwareModuleEfd::NodeAll::IpPriorityMask::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-efd/node-all/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prec0.is_set || is_set(prec0.yfilter)) leaf_name_data.push_back(prec0.get_name_leafdata());
+    if (prec1.is_set || is_set(prec1.yfilter)) leaf_name_data.push_back(prec1.get_name_leafdata());
+    if (prec2.is_set || is_set(prec2.yfilter)) leaf_name_data.push_back(prec2.get_name_leafdata());
+    if (prec3.is_set || is_set(prec3.yfilter)) leaf_name_data.push_back(prec3.get_name_leafdata());
+    if (prec4.is_set || is_set(prec4.yfilter)) leaf_name_data.push_back(prec4.get_name_leafdata());
+    if (prec5.is_set || is_set(prec5.yfilter)) leaf_name_data.push_back(prec5.get_name_leafdata());
+    if (prec6.is_set || is_set(prec6.yfilter)) leaf_name_data.push_back(prec6.get_name_leafdata());
+    if (prec7.is_set || is_set(prec7.yfilter)) leaf_name_data.push_back(prec7.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::IpPriorityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::IpPriorityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleEfd::NodeAll::IpPriorityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prec0")
+    {
+        prec0 = value;
+        prec0.value_namespace = name_space;
+        prec0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec1")
+    {
+        prec1 = value;
+        prec1.value_namespace = name_space;
+        prec1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec2")
+    {
+        prec2 = value;
+        prec2.value_namespace = name_space;
+        prec2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec3")
+    {
+        prec3 = value;
+        prec3.value_namespace = name_space;
+        prec3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec4")
+    {
+        prec4 = value;
+        prec4.value_namespace = name_space;
+        prec4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec5")
+    {
+        prec5 = value;
+        prec5.value_namespace = name_space;
+        prec5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec6")
+    {
+        prec6 = value;
+        prec6.value_namespace = name_space;
+        prec6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec7")
+    {
+        prec7 = value;
+        prec7.value_namespace = name_space;
+        prec7.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleEfd::NodeAll::IpPriorityMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prec0")
+    {
+        prec0.yfilter = yfilter;
+    }
+    if(value_path == "prec1")
+    {
+        prec1.yfilter = yfilter;
+    }
+    if(value_path == "prec2")
+    {
+        prec2.yfilter = yfilter;
+    }
+    if(value_path == "prec3")
+    {
+        prec3.yfilter = yfilter;
+    }
+    if(value_path == "prec4")
+    {
+        prec4.yfilter = yfilter;
+    }
+    if(value_path == "prec5")
+    {
+        prec5.yfilter = yfilter;
+    }
+    if(value_path == "prec6")
+    {
+        prec6.yfilter = yfilter;
+    }
+    if(value_path == "prec7")
+    {
+        prec7.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::NodeAll::IpPriorityMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prec0" || name == "prec1" || name == "prec2" || name == "prec3" || name == "prec4" || name == "prec5" || name == "prec6" || name == "prec7")
+        return true;
+    return false;
+}
+
+HardwareModuleEfd::NodeAll::MplsPriorityMask::MplsPriorityMask()
+    :
+    prec0{YType::uint32, "prec0"},
+    prec1{YType::uint32, "prec1"},
+    prec2{YType::uint32, "prec2"},
+    prec3{YType::uint32, "prec3"},
+    prec4{YType::uint32, "prec4"},
+    prec5{YType::uint32, "prec5"},
+    prec6{YType::uint32, "prec6"},
+    prec7{YType::uint32, "prec7"}
+{
+    yang_name = "mpls-priority-mask"; yang_parent_name = "node-all";
+}
+
+HardwareModuleEfd::NodeAll::MplsPriorityMask::~MplsPriorityMask()
+{
+}
+
+bool HardwareModuleEfd::NodeAll::MplsPriorityMask::has_data() const
+{
+    return prec0.is_set
+	|| prec1.is_set
+	|| prec2.is_set
+	|| prec3.is_set
+	|| prec4.is_set
+	|| prec5.is_set
+	|| prec6.is_set
+	|| prec7.is_set;
+}
+
+bool HardwareModuleEfd::NodeAll::MplsPriorityMask::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prec0.yfilter)
+	|| ydk::is_set(prec1.yfilter)
+	|| ydk::is_set(prec2.yfilter)
+	|| ydk::is_set(prec3.yfilter)
+	|| ydk::is_set(prec4.yfilter)
+	|| ydk::is_set(prec5.yfilter)
+	|| ydk::is_set(prec6.yfilter)
+	|| ydk::is_set(prec7.yfilter);
+}
+
+std::string HardwareModuleEfd::NodeAll::MplsPriorityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mpls-priority-mask";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath HardwareModuleEfd::NodeAll::MplsPriorityMask::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-efd/node-all/" << get_segment_path();
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prec0.is_set || is_set(prec0.yfilter)) leaf_name_data.push_back(prec0.get_name_leafdata());
+    if (prec1.is_set || is_set(prec1.yfilter)) leaf_name_data.push_back(prec1.get_name_leafdata());
+    if (prec2.is_set || is_set(prec2.yfilter)) leaf_name_data.push_back(prec2.get_name_leafdata());
+    if (prec3.is_set || is_set(prec3.yfilter)) leaf_name_data.push_back(prec3.get_name_leafdata());
+    if (prec4.is_set || is_set(prec4.yfilter)) leaf_name_data.push_back(prec4.get_name_leafdata());
+    if (prec5.is_set || is_set(prec5.yfilter)) leaf_name_data.push_back(prec5.get_name_leafdata());
+    if (prec6.is_set || is_set(prec6.yfilter)) leaf_name_data.push_back(prec6.get_name_leafdata());
+    if (prec7.is_set || is_set(prec7.yfilter)) leaf_name_data.push_back(prec7.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleEfd::NodeAll::MplsPriorityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::MplsPriorityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleEfd::NodeAll::MplsPriorityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prec0")
+    {
+        prec0 = value;
+        prec0.value_namespace = name_space;
+        prec0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec1")
+    {
+        prec1 = value;
+        prec1.value_namespace = name_space;
+        prec1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec2")
+    {
+        prec2 = value;
+        prec2.value_namespace = name_space;
+        prec2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec3")
+    {
+        prec3 = value;
+        prec3.value_namespace = name_space;
+        prec3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec4")
+    {
+        prec4 = value;
+        prec4.value_namespace = name_space;
+        prec4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec5")
+    {
+        prec5 = value;
+        prec5.value_namespace = name_space;
+        prec5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec6")
+    {
+        prec6 = value;
+        prec6.value_namespace = name_space;
+        prec6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec7")
+    {
+        prec7 = value;
+        prec7.value_namespace = name_space;
+        prec7.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleEfd::NodeAll::MplsPriorityMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prec0")
+    {
+        prec0.yfilter = yfilter;
+    }
+    if(value_path == "prec1")
+    {
+        prec1.yfilter = yfilter;
+    }
+    if(value_path == "prec2")
+    {
+        prec2.yfilter = yfilter;
+    }
+    if(value_path == "prec3")
+    {
+        prec3.yfilter = yfilter;
+    }
+    if(value_path == "prec4")
+    {
+        prec4.yfilter = yfilter;
+    }
+    if(value_path == "prec5")
+    {
+        prec5.yfilter = yfilter;
+    }
+    if(value_path == "prec6")
+    {
+        prec6.yfilter = yfilter;
+    }
+    if(value_path == "prec7")
+    {
+        prec7.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::NodeAll::MplsPriorityMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prec0" || name == "prec1" || name == "prec2" || name == "prec3" || name == "prec4" || name == "prec5" || name == "prec6" || name == "prec7")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::NodeAll::MplsExp::MplsExp()
@@ -1724,9 +2657,9 @@ bool HardwareModuleEfd::NodeAll::MplsExp::has_data() const
 
 bool HardwareModuleEfd::NodeAll::MplsExp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(exp.operation)
-	|| is_set(operation_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(exp.yfilter)
+	|| ydk::is_set(operation_.yfilter);
 }
 
 std::string HardwareModuleEfd::NodeAll::MplsExp::get_segment_path() const
@@ -1752,8 +2685,8 @@ const EntityPath HardwareModuleEfd::NodeAll::MplsExp::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (exp.is_set || is_set(exp.operation)) leaf_name_data.push_back(exp.get_name_leafdata());
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (exp.is_set || is_set(exp.yfilter)) leaf_name_data.push_back(exp.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1772,16 +2705,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::NodeAll::MplsE
     return children;
 }
 
-void HardwareModuleEfd::NodeAll::MplsExp::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::NodeAll::MplsExp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exp")
     {
         exp = value;
+        exp.value_namespace = name_space;
+        exp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleEfd::NodeAll::MplsExp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exp")
+    {
+        exp.yfilter = yfilter;
+    }
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::NodeAll::MplsExp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exp" || name == "operation")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::Nodes::Nodes()
@@ -1810,7 +2766,7 @@ bool HardwareModuleEfd::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string HardwareModuleEfd::Nodes::get_segment_path() const
@@ -1875,8 +2831,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::get_chi
     return children;
 }
 
-void HardwareModuleEfd::Nodes::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void HardwareModuleEfd::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleEfd::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::Nodes::Node::Node()
@@ -1886,8 +2853,11 @@ HardwareModuleEfd::Nodes::Node::Node()
     mode{YType::enumeration, "mode"}
     	,
     ip_precedence(nullptr) // presence node
+	,ip_priority_mask(nullptr) // presence node
 	,mpls_exp(nullptr) // presence node
+	,mpls_priority_mask(nullptr) // presence node
 	,vlan_cos(nullptr) // presence node
+	,vlan_priority_mask(nullptr) // presence node
 {
     yang_name = "node"; yang_parent_name = "nodes";
 }
@@ -1902,19 +2872,25 @@ bool HardwareModuleEfd::Nodes::Node::has_data() const
 	|| enable.is_set
 	|| mode.is_set
 	|| (ip_precedence !=  nullptr && ip_precedence->has_data())
+	|| (ip_priority_mask !=  nullptr && ip_priority_mask->has_data())
 	|| (mpls_exp !=  nullptr && mpls_exp->has_data())
-	|| (vlan_cos !=  nullptr && vlan_cos->has_data());
+	|| (mpls_priority_mask !=  nullptr && mpls_priority_mask->has_data())
+	|| (vlan_cos !=  nullptr && vlan_cos->has_data())
+	|| (vlan_priority_mask !=  nullptr && vlan_priority_mask->has_data());
 }
 
 bool HardwareModuleEfd::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
-	|| is_set(enable.operation)
-	|| is_set(mode.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(mode.yfilter)
 	|| (ip_precedence !=  nullptr && ip_precedence->has_operation())
+	|| (ip_priority_mask !=  nullptr && ip_priority_mask->has_operation())
 	|| (mpls_exp !=  nullptr && mpls_exp->has_operation())
-	|| (vlan_cos !=  nullptr && vlan_cos->has_operation());
+	|| (mpls_priority_mask !=  nullptr && mpls_priority_mask->has_operation())
+	|| (vlan_cos !=  nullptr && vlan_cos->has_operation())
+	|| (vlan_priority_mask !=  nullptr && vlan_priority_mask->has_operation());
 }
 
 std::string HardwareModuleEfd::Nodes::Node::get_segment_path() const
@@ -1940,9 +2916,9 @@ const EntityPath HardwareModuleEfd::Nodes::Node::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1961,6 +2937,15 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::get_child_by_name(const 
         return ip_precedence;
     }
 
+    if(child_yang_name == "ip-priority-mask")
+    {
+        if(ip_priority_mask == nullptr)
+        {
+            ip_priority_mask = std::make_shared<HardwareModuleEfd::Nodes::Node::IpPriorityMask>();
+        }
+        return ip_priority_mask;
+    }
+
     if(child_yang_name == "mpls-exp")
     {
         if(mpls_exp == nullptr)
@@ -1970,6 +2955,15 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::get_child_by_name(const 
         return mpls_exp;
     }
 
+    if(child_yang_name == "mpls-priority-mask")
+    {
+        if(mpls_priority_mask == nullptr)
+        {
+            mpls_priority_mask = std::make_shared<HardwareModuleEfd::Nodes::Node::MplsPriorityMask>();
+        }
+        return mpls_priority_mask;
+    }
+
     if(child_yang_name == "vlan-cos")
     {
         if(vlan_cos == nullptr)
@@ -1977,6 +2971,15 @@ std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::get_child_by_name(const 
             vlan_cos = std::make_shared<HardwareModuleEfd::Nodes::Node::VlanCos>();
         }
         return vlan_cos;
+    }
+
+    if(child_yang_name == "vlan-priority-mask")
+    {
+        if(vlan_priority_mask == nullptr)
+        {
+            vlan_priority_mask = std::make_shared<HardwareModuleEfd::Nodes::Node::VlanPriorityMask>();
+        }
+        return vlan_priority_mask;
     }
 
     return nullptr;
@@ -1990,9 +2993,19 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::g
         children["ip-precedence"] = ip_precedence;
     }
 
+    if(ip_priority_mask != nullptr)
+    {
+        children["ip-priority-mask"] = ip_priority_mask;
+    }
+
     if(mpls_exp != nullptr)
     {
         children["mpls-exp"] = mpls_exp;
+    }
+
+    if(mpls_priority_mask != nullptr)
+    {
+        children["mpls-priority-mask"] = mpls_priority_mask;
     }
 
     if(vlan_cos != nullptr)
@@ -2000,23 +3013,244 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::g
         children["vlan-cos"] = vlan_cos;
     }
 
+    if(vlan_priority_mask != nullptr)
+    {
+        children["vlan-priority-mask"] = vlan_priority_mask;
+    }
+
     return children;
 }
 
-void HardwareModuleEfd::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleEfd::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-precedence" || name == "ip-priority-mask" || name == "mpls-exp" || name == "mpls-priority-mask" || name == "vlan-cos" || name == "vlan-priority-mask" || name == "node-name" || name == "enable" || name == "mode")
+        return true;
+    return false;
+}
+
+HardwareModuleEfd::Nodes::Node::VlanPriorityMask::VlanPriorityMask()
+    :
+    prec0{YType::uint32, "prec0"},
+    prec1{YType::uint32, "prec1"},
+    prec2{YType::uint32, "prec2"},
+    prec3{YType::uint32, "prec3"},
+    prec4{YType::uint32, "prec4"},
+    prec5{YType::uint32, "prec5"},
+    prec6{YType::uint32, "prec6"},
+    prec7{YType::uint32, "prec7"}
+{
+    yang_name = "vlan-priority-mask"; yang_parent_name = "node";
+}
+
+HardwareModuleEfd::Nodes::Node::VlanPriorityMask::~VlanPriorityMask()
+{
+}
+
+bool HardwareModuleEfd::Nodes::Node::VlanPriorityMask::has_data() const
+{
+    return prec0.is_set
+	|| prec1.is_set
+	|| prec2.is_set
+	|| prec3.is_set
+	|| prec4.is_set
+	|| prec5.is_set
+	|| prec6.is_set
+	|| prec7.is_set;
+}
+
+bool HardwareModuleEfd::Nodes::Node::VlanPriorityMask::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prec0.yfilter)
+	|| ydk::is_set(prec1.yfilter)
+	|| ydk::is_set(prec2.yfilter)
+	|| ydk::is_set(prec3.yfilter)
+	|| ydk::is_set(prec4.yfilter)
+	|| ydk::is_set(prec5.yfilter)
+	|| ydk::is_set(prec6.yfilter)
+	|| ydk::is_set(prec7.yfilter);
+}
+
+std::string HardwareModuleEfd::Nodes::Node::VlanPriorityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-priority-mask";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath HardwareModuleEfd::Nodes::Node::VlanPriorityMask::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'VlanPriorityMask' in Cisco_IOS_XR_asr9k_prm_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prec0.is_set || is_set(prec0.yfilter)) leaf_name_data.push_back(prec0.get_name_leafdata());
+    if (prec1.is_set || is_set(prec1.yfilter)) leaf_name_data.push_back(prec1.get_name_leafdata());
+    if (prec2.is_set || is_set(prec2.yfilter)) leaf_name_data.push_back(prec2.get_name_leafdata());
+    if (prec3.is_set || is_set(prec3.yfilter)) leaf_name_data.push_back(prec3.get_name_leafdata());
+    if (prec4.is_set || is_set(prec4.yfilter)) leaf_name_data.push_back(prec4.get_name_leafdata());
+    if (prec5.is_set || is_set(prec5.yfilter)) leaf_name_data.push_back(prec5.get_name_leafdata());
+    if (prec6.is_set || is_set(prec6.yfilter)) leaf_name_data.push_back(prec6.get_name_leafdata());
+    if (prec7.is_set || is_set(prec7.yfilter)) leaf_name_data.push_back(prec7.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::VlanPriorityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::VlanPriorityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleEfd::Nodes::Node::VlanPriorityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prec0")
+    {
+        prec0 = value;
+        prec0.value_namespace = name_space;
+        prec0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec1")
+    {
+        prec1 = value;
+        prec1.value_namespace = name_space;
+        prec1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec2")
+    {
+        prec2 = value;
+        prec2.value_namespace = name_space;
+        prec2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec3")
+    {
+        prec3 = value;
+        prec3.value_namespace = name_space;
+        prec3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec4")
+    {
+        prec4 = value;
+        prec4.value_namespace = name_space;
+        prec4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec5")
+    {
+        prec5 = value;
+        prec5.value_namespace = name_space;
+        prec5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec6")
+    {
+        prec6 = value;
+        prec6.value_namespace = name_space;
+        prec6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec7")
+    {
+        prec7 = value;
+        prec7.value_namespace = name_space;
+        prec7.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleEfd::Nodes::Node::VlanPriorityMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prec0")
+    {
+        prec0.yfilter = yfilter;
+    }
+    if(value_path == "prec1")
+    {
+        prec1.yfilter = yfilter;
+    }
+    if(value_path == "prec2")
+    {
+        prec2.yfilter = yfilter;
+    }
+    if(value_path == "prec3")
+    {
+        prec3.yfilter = yfilter;
+    }
+    if(value_path == "prec4")
+    {
+        prec4.yfilter = yfilter;
+    }
+    if(value_path == "prec5")
+    {
+        prec5.yfilter = yfilter;
+    }
+    if(value_path == "prec6")
+    {
+        prec6.yfilter = yfilter;
+    }
+    if(value_path == "prec7")
+    {
+        prec7.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::Nodes::Node::VlanPriorityMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prec0" || name == "prec1" || name == "prec2" || name == "prec3" || name == "prec4" || name == "prec5" || name == "prec6" || name == "prec7")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::Nodes::Node::IpPrecedence::IpPrecedence()
@@ -2039,9 +3273,9 @@ bool HardwareModuleEfd::Nodes::Node::IpPrecedence::has_data() const
 
 bool HardwareModuleEfd::Nodes::Node::IpPrecedence::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(operation_.operation)
-	|| is_set(precedence.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(operation_.yfilter)
+	|| ydk::is_set(precedence.yfilter);
 }
 
 std::string HardwareModuleEfd::Nodes::Node::IpPrecedence::get_segment_path() const
@@ -2067,8 +3301,8 @@ const EntityPath HardwareModuleEfd::Nodes::Node::IpPrecedence::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
-    if (precedence.is_set || is_set(precedence.operation)) leaf_name_data.push_back(precedence.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2087,16 +3321,39 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::I
     return children;
 }
 
-void HardwareModuleEfd::Nodes::Node::IpPrecedence::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::Nodes::Node::IpPrecedence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence")
     {
         precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleEfd::Nodes::Node::IpPrecedence::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::Nodes::Node::IpPrecedence::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operation" || name == "precedence")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::Nodes::Node::VlanCos::VlanCos()
@@ -2119,9 +3376,9 @@ bool HardwareModuleEfd::Nodes::Node::VlanCos::has_data() const
 
 bool HardwareModuleEfd::Nodes::Node::VlanCos::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cos.operation)
-	|| is_set(operation_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(operation_.yfilter);
 }
 
 std::string HardwareModuleEfd::Nodes::Node::VlanCos::get_segment_path() const
@@ -2147,8 +3404,8 @@ const EntityPath HardwareModuleEfd::Nodes::Node::VlanCos::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2167,16 +3424,413 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::V
     return children;
 }
 
-void HardwareModuleEfd::Nodes::Node::VlanCos::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::Nodes::Node::VlanCos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void HardwareModuleEfd::Nodes::Node::VlanCos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::Nodes::Node::VlanCos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cos" || name == "operation")
+        return true;
+    return false;
+}
+
+HardwareModuleEfd::Nodes::Node::IpPriorityMask::IpPriorityMask()
+    :
+    prec0{YType::uint32, "prec0"},
+    prec1{YType::uint32, "prec1"},
+    prec2{YType::uint32, "prec2"},
+    prec3{YType::uint32, "prec3"},
+    prec4{YType::uint32, "prec4"},
+    prec5{YType::uint32, "prec5"},
+    prec6{YType::uint32, "prec6"},
+    prec7{YType::uint32, "prec7"}
+{
+    yang_name = "ip-priority-mask"; yang_parent_name = "node";
+}
+
+HardwareModuleEfd::Nodes::Node::IpPriorityMask::~IpPriorityMask()
+{
+}
+
+bool HardwareModuleEfd::Nodes::Node::IpPriorityMask::has_data() const
+{
+    return prec0.is_set
+	|| prec1.is_set
+	|| prec2.is_set
+	|| prec3.is_set
+	|| prec4.is_set
+	|| prec5.is_set
+	|| prec6.is_set
+	|| prec7.is_set;
+}
+
+bool HardwareModuleEfd::Nodes::Node::IpPriorityMask::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prec0.yfilter)
+	|| ydk::is_set(prec1.yfilter)
+	|| ydk::is_set(prec2.yfilter)
+	|| ydk::is_set(prec3.yfilter)
+	|| ydk::is_set(prec4.yfilter)
+	|| ydk::is_set(prec5.yfilter)
+	|| ydk::is_set(prec6.yfilter)
+	|| ydk::is_set(prec7.yfilter);
+}
+
+std::string HardwareModuleEfd::Nodes::Node::IpPriorityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip-priority-mask";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath HardwareModuleEfd::Nodes::Node::IpPriorityMask::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'IpPriorityMask' in Cisco_IOS_XR_asr9k_prm_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prec0.is_set || is_set(prec0.yfilter)) leaf_name_data.push_back(prec0.get_name_leafdata());
+    if (prec1.is_set || is_set(prec1.yfilter)) leaf_name_data.push_back(prec1.get_name_leafdata());
+    if (prec2.is_set || is_set(prec2.yfilter)) leaf_name_data.push_back(prec2.get_name_leafdata());
+    if (prec3.is_set || is_set(prec3.yfilter)) leaf_name_data.push_back(prec3.get_name_leafdata());
+    if (prec4.is_set || is_set(prec4.yfilter)) leaf_name_data.push_back(prec4.get_name_leafdata());
+    if (prec5.is_set || is_set(prec5.yfilter)) leaf_name_data.push_back(prec5.get_name_leafdata());
+    if (prec6.is_set || is_set(prec6.yfilter)) leaf_name_data.push_back(prec6.get_name_leafdata());
+    if (prec7.is_set || is_set(prec7.yfilter)) leaf_name_data.push_back(prec7.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::IpPriorityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::IpPriorityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleEfd::Nodes::Node::IpPriorityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prec0")
+    {
+        prec0 = value;
+        prec0.value_namespace = name_space;
+        prec0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec1")
+    {
+        prec1 = value;
+        prec1.value_namespace = name_space;
+        prec1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec2")
+    {
+        prec2 = value;
+        prec2.value_namespace = name_space;
+        prec2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec3")
+    {
+        prec3 = value;
+        prec3.value_namespace = name_space;
+        prec3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec4")
+    {
+        prec4 = value;
+        prec4.value_namespace = name_space;
+        prec4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec5")
+    {
+        prec5 = value;
+        prec5.value_namespace = name_space;
+        prec5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec6")
+    {
+        prec6 = value;
+        prec6.value_namespace = name_space;
+        prec6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec7")
+    {
+        prec7 = value;
+        prec7.value_namespace = name_space;
+        prec7.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleEfd::Nodes::Node::IpPriorityMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prec0")
+    {
+        prec0.yfilter = yfilter;
+    }
+    if(value_path == "prec1")
+    {
+        prec1.yfilter = yfilter;
+    }
+    if(value_path == "prec2")
+    {
+        prec2.yfilter = yfilter;
+    }
+    if(value_path == "prec3")
+    {
+        prec3.yfilter = yfilter;
+    }
+    if(value_path == "prec4")
+    {
+        prec4.yfilter = yfilter;
+    }
+    if(value_path == "prec5")
+    {
+        prec5.yfilter = yfilter;
+    }
+    if(value_path == "prec6")
+    {
+        prec6.yfilter = yfilter;
+    }
+    if(value_path == "prec7")
+    {
+        prec7.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::Nodes::Node::IpPriorityMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prec0" || name == "prec1" || name == "prec2" || name == "prec3" || name == "prec4" || name == "prec5" || name == "prec6" || name == "prec7")
+        return true;
+    return false;
+}
+
+HardwareModuleEfd::Nodes::Node::MplsPriorityMask::MplsPriorityMask()
+    :
+    prec0{YType::uint32, "prec0"},
+    prec1{YType::uint32, "prec1"},
+    prec2{YType::uint32, "prec2"},
+    prec3{YType::uint32, "prec3"},
+    prec4{YType::uint32, "prec4"},
+    prec5{YType::uint32, "prec5"},
+    prec6{YType::uint32, "prec6"},
+    prec7{YType::uint32, "prec7"}
+{
+    yang_name = "mpls-priority-mask"; yang_parent_name = "node";
+}
+
+HardwareModuleEfd::Nodes::Node::MplsPriorityMask::~MplsPriorityMask()
+{
+}
+
+bool HardwareModuleEfd::Nodes::Node::MplsPriorityMask::has_data() const
+{
+    return prec0.is_set
+	|| prec1.is_set
+	|| prec2.is_set
+	|| prec3.is_set
+	|| prec4.is_set
+	|| prec5.is_set
+	|| prec6.is_set
+	|| prec7.is_set;
+}
+
+bool HardwareModuleEfd::Nodes::Node::MplsPriorityMask::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prec0.yfilter)
+	|| ydk::is_set(prec1.yfilter)
+	|| ydk::is_set(prec2.yfilter)
+	|| ydk::is_set(prec3.yfilter)
+	|| ydk::is_set(prec4.yfilter)
+	|| ydk::is_set(prec5.yfilter)
+	|| ydk::is_set(prec6.yfilter)
+	|| ydk::is_set(prec7.yfilter);
+}
+
+std::string HardwareModuleEfd::Nodes::Node::MplsPriorityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mpls-priority-mask";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath HardwareModuleEfd::Nodes::Node::MplsPriorityMask::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'MplsPriorityMask' in Cisco_IOS_XR_asr9k_prm_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prec0.is_set || is_set(prec0.yfilter)) leaf_name_data.push_back(prec0.get_name_leafdata());
+    if (prec1.is_set || is_set(prec1.yfilter)) leaf_name_data.push_back(prec1.get_name_leafdata());
+    if (prec2.is_set || is_set(prec2.yfilter)) leaf_name_data.push_back(prec2.get_name_leafdata());
+    if (prec3.is_set || is_set(prec3.yfilter)) leaf_name_data.push_back(prec3.get_name_leafdata());
+    if (prec4.is_set || is_set(prec4.yfilter)) leaf_name_data.push_back(prec4.get_name_leafdata());
+    if (prec5.is_set || is_set(prec5.yfilter)) leaf_name_data.push_back(prec5.get_name_leafdata());
+    if (prec6.is_set || is_set(prec6.yfilter)) leaf_name_data.push_back(prec6.get_name_leafdata());
+    if (prec7.is_set || is_set(prec7.yfilter)) leaf_name_data.push_back(prec7.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> HardwareModuleEfd::Nodes::Node::MplsPriorityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::MplsPriorityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void HardwareModuleEfd::Nodes::Node::MplsPriorityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prec0")
+    {
+        prec0 = value;
+        prec0.value_namespace = name_space;
+        prec0.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec1")
+    {
+        prec1 = value;
+        prec1.value_namespace = name_space;
+        prec1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec2")
+    {
+        prec2 = value;
+        prec2.value_namespace = name_space;
+        prec2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec3")
+    {
+        prec3 = value;
+        prec3.value_namespace = name_space;
+        prec3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec4")
+    {
+        prec4 = value;
+        prec4.value_namespace = name_space;
+        prec4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec5")
+    {
+        prec5 = value;
+        prec5.value_namespace = name_space;
+        prec5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec6")
+    {
+        prec6 = value;
+        prec6.value_namespace = name_space;
+        prec6.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prec7")
+    {
+        prec7 = value;
+        prec7.value_namespace = name_space;
+        prec7.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleEfd::Nodes::Node::MplsPriorityMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prec0")
+    {
+        prec0.yfilter = yfilter;
+    }
+    if(value_path == "prec1")
+    {
+        prec1.yfilter = yfilter;
+    }
+    if(value_path == "prec2")
+    {
+        prec2.yfilter = yfilter;
+    }
+    if(value_path == "prec3")
+    {
+        prec3.yfilter = yfilter;
+    }
+    if(value_path == "prec4")
+    {
+        prec4.yfilter = yfilter;
+    }
+    if(value_path == "prec5")
+    {
+        prec5.yfilter = yfilter;
+    }
+    if(value_path == "prec6")
+    {
+        prec6.yfilter = yfilter;
+    }
+    if(value_path == "prec7")
+    {
+        prec7.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleEfd::Nodes::Node::MplsPriorityMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prec0" || name == "prec1" || name == "prec2" || name == "prec3" || name == "prec4" || name == "prec5" || name == "prec6" || name == "prec7")
+        return true;
+    return false;
 }
 
 HardwareModuleEfd::Nodes::Node::MplsExp::MplsExp()
@@ -2199,9 +3853,9 @@ bool HardwareModuleEfd::Nodes::Node::MplsExp::has_data() const
 
 bool HardwareModuleEfd::Nodes::Node::MplsExp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(exp.operation)
-	|| is_set(operation_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(exp.yfilter)
+	|| ydk::is_set(operation_.yfilter);
 }
 
 std::string HardwareModuleEfd::Nodes::Node::MplsExp::get_segment_path() const
@@ -2227,8 +3881,8 @@ const EntityPath HardwareModuleEfd::Nodes::Node::MplsExp::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (exp.is_set || is_set(exp.operation)) leaf_name_data.push_back(exp.get_name_leafdata());
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (exp.is_set || is_set(exp.yfilter)) leaf_name_data.push_back(exp.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2247,27 +3901,50 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleEfd::Nodes::Node::M
     return children;
 }
 
-void HardwareModuleEfd::Nodes::Node::MplsExp::set_value(const std::string & value_path, std::string value)
+void HardwareModuleEfd::Nodes::Node::MplsExp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exp")
     {
         exp = value;
+        exp.value_namespace = name_space;
+        exp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf Asr9KEfdModeEnum::only_outer_encap {0, "only-outer-encap"};
-const Enum::YLeaf Asr9KEfdModeEnum::include_inner_encap {1, "include-inner-encap"};
+void HardwareModuleEfd::Nodes::Node::MplsExp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exp")
+    {
+        exp.yfilter = yfilter;
+    }
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf Asr9KEfdOperationEnum::less_than {2, "less-than"};
-const Enum::YLeaf Asr9KEfdOperationEnum::greater_than_or_equal {3, "greater-than-or-equal"};
+bool HardwareModuleEfd::Nodes::Node::MplsExp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exp" || name == "operation")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf PrmTcamProfileEnum::profile0 {0, "profile0"};
-const Enum::YLeaf PrmTcamProfileEnum::profile1 {1, "profile1"};
-const Enum::YLeaf PrmTcamProfileEnum::profile2 {2, "profile2"};
+const Enum::YLeaf Asr9KEfdMode::only_outer_encap {0, "only-outer-encap"};
+const Enum::YLeaf Asr9KEfdMode::include_inner_encap {1, "include-inner-encap"};
+
+const Enum::YLeaf Asr9KEfdOperation::less_than {2, "less-than"};
+const Enum::YLeaf Asr9KEfdOperation::greater_than_or_equal {3, "greater-than-or-equal"};
+
+const Enum::YLeaf PrmTcamProfile::profile0 {0, "profile0"};
+const Enum::YLeaf PrmTcamProfile::profile1 {1, "profile1"};
+const Enum::YLeaf PrmTcamProfile::profile2 {2, "profile2"};
 
 
 }

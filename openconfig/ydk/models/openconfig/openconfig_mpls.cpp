@@ -6,15 +6,17 @@
 #include "generated_entity_lookup.hpp"
 #include "openconfig_mpls.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace openconfig {
 namespace openconfig_mpls {
 
-PathComputationMethodIdentity::PathComputationMethodIdentity()
-     : Identity("openconfig-mpls-te:path-computation-method")
+PathComputationMethod::PathComputationMethod()
+     : Identity("http://openconfig.net/yang/mpls", "openconfig-mpls", "openconfig-mpls:path-computation-method")
 {
 }
 
-PathComputationMethodIdentity::~PathComputationMethodIdentity()
+PathComputationMethod::~PathComputationMethod()
 {
 }
 
@@ -54,7 +56,7 @@ bool Mpls::has_data() const
 
 bool Mpls::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global !=  nullptr && global->has_operation())
 	|| (lsps !=  nullptr && lsps->has_operation())
 	|| (signaling_protocols !=  nullptr && signaling_protocols->has_operation())
@@ -170,7 +172,11 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::get_children() const
     return children;
 }
 
-void Mpls::set_value(const std::string & value_path, std::string value)
+void Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mpls::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -192,6 +198,18 @@ std::string Mpls::get_bundle_name() const
 augment_capabilities_function Mpls::get_augment_capabilities_function() const
 {
     return openconfig_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Mpls::get_namespace_identity_lookup() const
+{
+    return openconfig_namespace_identity_lookup;
+}
+
+bool Mpls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "lsps" || name == "signaling-protocols" || name == "te-global-attributes" || name == "te-interface-attributes")
+        return true;
+    return false;
 }
 
 Mpls::Global::Global()
@@ -222,7 +240,7 @@ bool Mpls::Global::has_data() const
 
 bool Mpls::Global::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (mpls_interface_attributes !=  nullptr && mpls_interface_attributes->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -311,8 +329,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::get_children() cons
     return children;
 }
 
-void Mpls::Global::set_value(const std::string & value_path, std::string value)
+void Mpls::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "mpls-interface-attributes" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::Global::Config::Config()
@@ -333,8 +362,8 @@ bool Mpls::Global::Config::has_data() const
 
 bool Mpls::Global::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(null_label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(null_label.yfilter);
 }
 
 std::string Mpls::Global::Config::get_segment_path() const
@@ -360,7 +389,7 @@ const EntityPath Mpls::Global::Config::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (null_label.is_set || is_set(null_label.operation)) leaf_name_data.push_back(null_label.get_name_leafdata());
+    if (null_label.is_set || is_set(null_label.yfilter)) leaf_name_data.push_back(null_label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -379,12 +408,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::Config::get_childre
     return children;
 }
 
-void Mpls::Global::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Global::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "null-label")
     {
         null_label = value;
+        null_label.value_namespace = name_space;
+        null_label.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Global::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "null-label")
+    {
+        null_label.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Global::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "null-label")
+        return true;
+    return false;
 }
 
 Mpls::Global::State::State()
@@ -405,8 +451,8 @@ bool Mpls::Global::State::has_data() const
 
 bool Mpls::Global::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(null_label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(null_label.yfilter);
 }
 
 std::string Mpls::Global::State::get_segment_path() const
@@ -432,7 +478,7 @@ const EntityPath Mpls::Global::State::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (null_label.is_set || is_set(null_label.operation)) leaf_name_data.push_back(null_label.get_name_leafdata());
+    if (null_label.is_set || is_set(null_label.yfilter)) leaf_name_data.push_back(null_label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -451,12 +497,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::State::get_children
     return children;
 }
 
-void Mpls::Global::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Global::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "null-label")
     {
         null_label = value;
+        null_label.value_namespace = name_space;
+        null_label.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Global::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "null-label")
+    {
+        null_label.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Global::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "null-label")
+        return true;
+    return false;
 }
 
 Mpls::Global::MplsInterfaceAttributes::MplsInterfaceAttributes()
@@ -485,7 +548,7 @@ bool Mpls::Global::MplsInterfaceAttributes::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::Global::MplsInterfaceAttributes::get_segment_path() const
@@ -550,8 +613,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::MplsInterfaceAttrib
     return children;
 }
 
-void Mpls::Global::MplsInterfaceAttributes::set_value(const std::string & value_path, std::string value)
+void Mpls::Global::MplsInterfaceAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Global::MplsInterfaceAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Global::MplsInterfaceAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mpls::Global::MplsInterfaceAttributes::Interface::Interface()
@@ -581,8 +655,8 @@ bool Mpls::Global::MplsInterfaceAttributes::Interface::has_data() const
 
 bool Mpls::Global::MplsInterfaceAttributes::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -610,7 +684,7 @@ const EntityPath Mpls::Global::MplsInterfaceAttributes::Interface::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -657,12 +731,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::MplsInterfaceAttrib
     return children;
 }
 
-void Mpls::Global::MplsInterfaceAttributes::Interface::set_value(const std::string & value_path, std::string value)
+void Mpls::Global::MplsInterfaceAttributes::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Global::MplsInterfaceAttributes::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Global::MplsInterfaceAttributes::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::Global::MplsInterfaceAttributes::Interface::Config::Config()
@@ -685,9 +776,9 @@ bool Mpls::Global::MplsInterfaceAttributes::Interface::Config::has_data() const
 
 bool Mpls::Global::MplsInterfaceAttributes::Interface::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mpls_enabled.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mpls_enabled.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Mpls::Global::MplsInterfaceAttributes::Interface::Config::get_segment_path() const
@@ -713,8 +804,8 @@ const EntityPath Mpls::Global::MplsInterfaceAttributes::Interface::Config::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mpls_enabled.is_set || is_set(mpls_enabled.operation)) leaf_name_data.push_back(mpls_enabled.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (mpls_enabled.is_set || is_set(mpls_enabled.yfilter)) leaf_name_data.push_back(mpls_enabled.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -733,16 +824,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::MplsInterfaceAttrib
     return children;
 }
 
-void Mpls::Global::MplsInterfaceAttributes::Interface::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Global::MplsInterfaceAttributes::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mpls-enabled")
     {
         mpls_enabled = value;
+        mpls_enabled.value_namespace = name_space;
+        mpls_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Global::MplsInterfaceAttributes::Interface::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mpls-enabled")
+    {
+        mpls_enabled.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Global::MplsInterfaceAttributes::Interface::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mpls-enabled" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::Global::MplsInterfaceAttributes::Interface::State::State()
@@ -765,9 +879,9 @@ bool Mpls::Global::MplsInterfaceAttributes::Interface::State::has_data() const
 
 bool Mpls::Global::MplsInterfaceAttributes::Interface::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mpls_enabled.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mpls_enabled.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Mpls::Global::MplsInterfaceAttributes::Interface::State::get_segment_path() const
@@ -793,8 +907,8 @@ const EntityPath Mpls::Global::MplsInterfaceAttributes::Interface::State::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mpls_enabled.is_set || is_set(mpls_enabled.operation)) leaf_name_data.push_back(mpls_enabled.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (mpls_enabled.is_set || is_set(mpls_enabled.yfilter)) leaf_name_data.push_back(mpls_enabled.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -813,16 +927,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Global::MplsInterfaceAttrib
     return children;
 }
 
-void Mpls::Global::MplsInterfaceAttributes::Interface::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Global::MplsInterfaceAttributes::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mpls-enabled")
     {
         mpls_enabled = value;
+        mpls_enabled.value_namespace = name_space;
+        mpls_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Global::MplsInterfaceAttributes::Interface::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mpls-enabled")
+    {
+        mpls_enabled.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Global::MplsInterfaceAttributes::Interface::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mpls-enabled" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::TeGlobalAttributes()
@@ -857,7 +994,7 @@ bool Mpls::TeGlobalAttributes::has_data() const
 
 bool Mpls::TeGlobalAttributes::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (igp_flooding_bandwidth !=  nullptr && igp_flooding_bandwidth->has_operation())
 	|| (mpls_admin_groups !=  nullptr && mpls_admin_groups->has_operation())
 	|| (srlg !=  nullptr && srlg->has_operation())
@@ -961,8 +1098,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::get_chi
     return children;
 }
 
-void Mpls::TeGlobalAttributes::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::TeGlobalAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::TeGlobalAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "igp-flooding-bandwidth" || name == "mpls-admin-groups" || name == "srlg" || name == "te-lsp-timers")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::Srlg::Srlg()
@@ -991,7 +1139,7 @@ bool Mpls::TeGlobalAttributes::Srlg::has_operation() const
         if(srlg[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::Srlg::get_segment_path() const
@@ -1056,8 +1204,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlg::g
     return children;
 }
 
-void Mpls::TeGlobalAttributes::Srlg::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::Srlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::TeGlobalAttributes::Srlg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::TeGlobalAttributes::Srlg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::Srlg::Srlg_::Srlg_()
@@ -1091,8 +1250,8 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::has_data() const
 
 bool Mpls::TeGlobalAttributes::Srlg::Srlg_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation())
 	|| (static_srlg_members !=  nullptr && static_srlg_members->has_operation());
@@ -1121,7 +1280,7 @@ const EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1182,12 +1341,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlg::S
     return children;
 }
 
-void Mpls::TeGlobalAttributes::Srlg::Srlg_::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::Srlg::Srlg_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state" || name == "static-srlg-members" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::Config()
@@ -1214,11 +1390,11 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::has_data() const
 
 bool Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cost.operation)
-	|| is_set(flooding_type.operation)
-	|| is_set(name.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(flooding_type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::get_segment_path() const
@@ -1244,10 +1420,10 @@ const EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cost.is_set || is_set(cost.operation)) leaf_name_data.push_back(cost.get_name_leafdata());
-    if (flooding_type.is_set || is_set(flooding_type.operation)) leaf_name_data.push_back(flooding_type.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (flooding_type.is_set || is_set(flooding_type.yfilter)) leaf_name_data.push_back(flooding_type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1266,24 +1442,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlg::S
     return children;
 }
 
-void Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cost")
     {
         cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flooding-type")
     {
         flooding_type = value;
+        flooding_type.value_namespace = name_space;
+        flooding_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cost")
+    {
+        cost.yfilter = yfilter;
+    }
+    if(value_path == "flooding-type")
+    {
+        flooding_type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::Srlg::Srlg_::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cost" || name == "flooding-type" || name == "name" || name == "value")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::Srlg::Srlg_::State::State()
@@ -1310,11 +1521,11 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::State::has_data() const
 
 bool Mpls::TeGlobalAttributes::Srlg::Srlg_::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cost.operation)
-	|| is_set(flooding_type.operation)
-	|| is_set(name.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(flooding_type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::Srlg::Srlg_::State::get_segment_path() const
@@ -1340,10 +1551,10 @@ const EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::State::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cost.is_set || is_set(cost.operation)) leaf_name_data.push_back(cost.get_name_leafdata());
-    if (flooding_type.is_set || is_set(flooding_type.operation)) leaf_name_data.push_back(flooding_type.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (flooding_type.is_set || is_set(flooding_type.yfilter)) leaf_name_data.push_back(flooding_type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1362,24 +1573,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlg::S
     return children;
 }
 
-void Mpls::TeGlobalAttributes::Srlg::Srlg_::State::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cost")
     {
         cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flooding-type")
     {
         flooding_type = value;
+        flooding_type.value_namespace = name_space;
+        flooding_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cost")
+    {
+        cost.yfilter = yfilter;
+    }
+    if(value_path == "flooding-type")
+    {
+        flooding_type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::Srlg::Srlg_::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cost" || name == "flooding-type" || name == "name" || name == "value")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::StaticSrlgMembers()
@@ -1408,7 +1654,7 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::has_operation() c
         if(members_list[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::get_segment_path() const
@@ -1473,8 +1719,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlg::S
     return children;
 }
 
-void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "members-list")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::MembersList()
@@ -1504,8 +1761,8 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::has_
 
 bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(from_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(from_address.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -1533,7 +1790,7 @@ const EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::Membe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (from_address.is_set || is_set(from_address.operation)) leaf_name_data.push_back(from_address.get_name_leafdata());
+    if (from_address.is_set || is_set(from_address.yfilter)) leaf_name_data.push_back(from_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1580,12 +1837,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlg::S
     return children;
 }
 
-void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "from-address")
     {
         from_address = value;
+        from_address.value_namespace = name_space;
+        from_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-address")
+    {
+        from_address.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state" || name == "from-address")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::Config()
@@ -1608,9 +1882,9 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Conf
 
 bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(from_address.operation)
-	|| is_set(to_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(from_address.yfilter)
+	|| ydk::is_set(to_address.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::get_segment_path() const
@@ -1636,8 +1910,8 @@ const EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::Membe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (from_address.is_set || is_set(from_address.operation)) leaf_name_data.push_back(from_address.get_name_leafdata());
-    if (to_address.is_set || is_set(to_address.operation)) leaf_name_data.push_back(to_address.get_name_leafdata());
+    if (from_address.is_set || is_set(from_address.yfilter)) leaf_name_data.push_back(from_address.get_name_leafdata());
+    if (to_address.is_set || is_set(to_address.yfilter)) leaf_name_data.push_back(to_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1656,16 +1930,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlg::S
     return children;
 }
 
-void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "from-address")
     {
         from_address = value;
+        from_address.value_namespace = name_space;
+        from_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "to-address")
     {
         to_address = value;
+        to_address.value_namespace = name_space;
+        to_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-address")
+    {
+        from_address.yfilter = yfilter;
+    }
+    if(value_path == "to-address")
+    {
+        to_address.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "from-address" || name == "to-address")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::State::State()
@@ -1688,9 +1985,9 @@ bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::Stat
 
 bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(from_address.operation)
-	|| is_set(to_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(from_address.yfilter)
+	|| ydk::is_set(to_address.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::State::get_segment_path() const
@@ -1716,8 +2013,8 @@ const EntityPath Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::Membe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (from_address.is_set || is_set(from_address.operation)) leaf_name_data.push_back(from_address.get_name_leafdata());
-    if (to_address.is_set || is_set(to_address.operation)) leaf_name_data.push_back(to_address.get_name_leafdata());
+    if (from_address.is_set || is_set(from_address.yfilter)) leaf_name_data.push_back(from_address.get_name_leafdata());
+    if (to_address.is_set || is_set(to_address.yfilter)) leaf_name_data.push_back(to_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1736,16 +2033,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::Srlg::S
     return children;
 }
 
-void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::State::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "from-address")
     {
         from_address = value;
+        from_address.value_namespace = name_space;
+        from_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "to-address")
     {
         to_address = value;
+        to_address.value_namespace = name_space;
+        to_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "from-address")
+    {
+        from_address.yfilter = yfilter;
+    }
+    if(value_path == "to-address")
+    {
+        to_address.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::Srlg::Srlg_::StaticSrlgMembers::MembersList::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "from-address" || name == "to-address")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::IgpFloodingBandwidth::IgpFloodingBandwidth()
@@ -1772,7 +2092,7 @@ bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::has_data() const
 
 bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -1846,8 +2166,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::IgpFloo
     return children;
 }
 
-void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::Config()
@@ -1892,26 +2223,26 @@ bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::has_operation() con
 {
     for (auto const & leaf : down_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : up_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(delta_percentage.operation)
-	|| is_set(down_thresholds.operation)
-	|| is_set(threshold_specification.operation)
-	|| is_set(threshold_type.operation)
-	|| is_set(up_down_thresholds.operation)
-	|| is_set(up_thresholds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(delta_percentage.yfilter)
+	|| ydk::is_set(down_thresholds.yfilter)
+	|| ydk::is_set(threshold_specification.yfilter)
+	|| ydk::is_set(threshold_type.yfilter)
+	|| ydk::is_set(up_down_thresholds.yfilter)
+	|| ydk::is_set(up_thresholds.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::get_segment_path() const
@@ -1937,9 +2268,9 @@ const EntityPath Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (delta_percentage.is_set || is_set(delta_percentage.operation)) leaf_name_data.push_back(delta_percentage.get_name_leafdata());
-    if (threshold_specification.is_set || is_set(threshold_specification.operation)) leaf_name_data.push_back(threshold_specification.get_name_leafdata());
-    if (threshold_type.is_set || is_set(threshold_type.operation)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
+    if (delta_percentage.is_set || is_set(delta_percentage.yfilter)) leaf_name_data.push_back(delta_percentage.get_name_leafdata());
+    if (threshold_specification.is_set || is_set(threshold_specification.yfilter)) leaf_name_data.push_back(threshold_specification.get_name_leafdata());
+    if (threshold_type.is_set || is_set(threshold_type.yfilter)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
 
     auto down_thresholds_name_datas = down_thresholds.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), down_thresholds_name_datas.begin(), down_thresholds_name_datas.end());
@@ -1964,11 +2295,13 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::IgpFloo
     return children;
 }
 
-void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delta-percentage")
     {
         delta_percentage = value;
+        delta_percentage.value_namespace = name_space;
+        delta_percentage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down-thresholds")
     {
@@ -1977,10 +2310,14 @@ void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::set_value(const std
     if(value_path == "threshold-specification")
     {
         threshold_specification = value;
+        threshold_specification.value_namespace = name_space;
+        threshold_specification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-type")
     {
         threshold_type = value;
+        threshold_type.value_namespace = name_space;
+        threshold_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-down-thresholds")
     {
@@ -1990,6 +2327,41 @@ void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::set_value(const std
     {
         up_thresholds.append(value);
     }
+}
+
+void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "delta-percentage")
+    {
+        delta_percentage.yfilter = yfilter;
+    }
+    if(value_path == "down-thresholds")
+    {
+        down_thresholds.yfilter = yfilter;
+    }
+    if(value_path == "threshold-specification")
+    {
+        threshold_specification.yfilter = yfilter;
+    }
+    if(value_path == "threshold-type")
+    {
+        threshold_type.yfilter = yfilter;
+    }
+    if(value_path == "up-down-thresholds")
+    {
+        up_down_thresholds.yfilter = yfilter;
+    }
+    if(value_path == "up-thresholds")
+    {
+        up_thresholds.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delta-percentage" || name == "down-thresholds" || name == "threshold-specification" || name == "threshold-type" || name == "up-down-thresholds" || name == "up-thresholds")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::State()
@@ -2034,26 +2406,26 @@ bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::has_operation() cons
 {
     for (auto const & leaf : down_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : up_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(delta_percentage.operation)
-	|| is_set(down_thresholds.operation)
-	|| is_set(threshold_specification.operation)
-	|| is_set(threshold_type.operation)
-	|| is_set(up_down_thresholds.operation)
-	|| is_set(up_thresholds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(delta_percentage.yfilter)
+	|| ydk::is_set(down_thresholds.yfilter)
+	|| ydk::is_set(threshold_specification.yfilter)
+	|| ydk::is_set(threshold_type.yfilter)
+	|| ydk::is_set(up_down_thresholds.yfilter)
+	|| ydk::is_set(up_thresholds.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::get_segment_path() const
@@ -2079,9 +2451,9 @@ const EntityPath Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (delta_percentage.is_set || is_set(delta_percentage.operation)) leaf_name_data.push_back(delta_percentage.get_name_leafdata());
-    if (threshold_specification.is_set || is_set(threshold_specification.operation)) leaf_name_data.push_back(threshold_specification.get_name_leafdata());
-    if (threshold_type.is_set || is_set(threshold_type.operation)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
+    if (delta_percentage.is_set || is_set(delta_percentage.yfilter)) leaf_name_data.push_back(delta_percentage.get_name_leafdata());
+    if (threshold_specification.is_set || is_set(threshold_specification.yfilter)) leaf_name_data.push_back(threshold_specification.get_name_leafdata());
+    if (threshold_type.is_set || is_set(threshold_type.yfilter)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
 
     auto down_thresholds_name_datas = down_thresholds.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), down_thresholds_name_datas.begin(), down_thresholds_name_datas.end());
@@ -2106,11 +2478,13 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::IgpFloo
     return children;
 }
 
-void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delta-percentage")
     {
         delta_percentage = value;
+        delta_percentage.value_namespace = name_space;
+        delta_percentage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down-thresholds")
     {
@@ -2119,10 +2493,14 @@ void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::set_value(const std:
     if(value_path == "threshold-specification")
     {
         threshold_specification = value;
+        threshold_specification.value_namespace = name_space;
+        threshold_specification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-type")
     {
         threshold_type = value;
+        threshold_type.value_namespace = name_space;
+        threshold_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-down-thresholds")
     {
@@ -2132,6 +2510,41 @@ void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::set_value(const std:
     {
         up_thresholds.append(value);
     }
+}
+
+void Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "delta-percentage")
+    {
+        delta_percentage.yfilter = yfilter;
+    }
+    if(value_path == "down-thresholds")
+    {
+        down_thresholds.yfilter = yfilter;
+    }
+    if(value_path == "threshold-specification")
+    {
+        threshold_specification.yfilter = yfilter;
+    }
+    if(value_path == "threshold-type")
+    {
+        threshold_type.yfilter = yfilter;
+    }
+    if(value_path == "up-down-thresholds")
+    {
+        up_down_thresholds.yfilter = yfilter;
+    }
+    if(value_path == "up-thresholds")
+    {
+        up_thresholds.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delta-percentage" || name == "down-thresholds" || name == "threshold-specification" || name == "threshold-type" || name == "up-down-thresholds" || name == "up-thresholds")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::MplsAdminGroups::MplsAdminGroups()
@@ -2160,7 +2573,7 @@ bool Mpls::TeGlobalAttributes::MplsAdminGroups::has_operation() const
         if(admin_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::MplsAdminGroups::get_segment_path() const
@@ -2225,8 +2638,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::MplsAdm
     return children;
 }
 
-void Mpls::TeGlobalAttributes::MplsAdminGroups::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::MplsAdminGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::TeGlobalAttributes::MplsAdminGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::TeGlobalAttributes::MplsAdminGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-group")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::AdminGroup()
@@ -2256,8 +2680,8 @@ bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::has_data() const
 
 bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_group_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(admin_group_name.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -2285,7 +2709,7 @@ const EntityPath Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_group_name.is_set || is_set(admin_group_name.operation)) leaf_name_data.push_back(admin_group_name.get_name_leafdata());
+    if (admin_group_name.is_set || is_set(admin_group_name.yfilter)) leaf_name_data.push_back(admin_group_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2332,12 +2756,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::MplsAdm
     return children;
 }
 
-void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-group-name")
     {
         admin_group_name = value;
+        admin_group_name.value_namespace = name_space;
+        admin_group_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-group-name")
+    {
+        admin_group_name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state" || name == "admin-group-name")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::Config()
@@ -2360,9 +2801,9 @@ bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::has_data() c
 
 bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_group_name.operation)
-	|| is_set(bit_position.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_group_name.yfilter)
+	|| ydk::is_set(bit_position.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::get_segment_path() const
@@ -2388,8 +2829,8 @@ const EntityPath Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_group_name.is_set || is_set(admin_group_name.operation)) leaf_name_data.push_back(admin_group_name.get_name_leafdata());
-    if (bit_position.is_set || is_set(bit_position.operation)) leaf_name_data.push_back(bit_position.get_name_leafdata());
+    if (admin_group_name.is_set || is_set(admin_group_name.yfilter)) leaf_name_data.push_back(admin_group_name.get_name_leafdata());
+    if (bit_position.is_set || is_set(bit_position.yfilter)) leaf_name_data.push_back(bit_position.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2408,16 +2849,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::MplsAdm
     return children;
 }
 
-void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-group-name")
     {
         admin_group_name = value;
+        admin_group_name.value_namespace = name_space;
+        admin_group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bit-position")
     {
         bit_position = value;
+        bit_position.value_namespace = name_space;
+        bit_position.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-group-name")
+    {
+        admin_group_name.yfilter = yfilter;
+    }
+    if(value_path == "bit-position")
+    {
+        bit_position.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-group-name" || name == "bit-position")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::State()
@@ -2440,9 +2904,9 @@ bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::has_data() co
 
 bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_group_name.operation)
-	|| is_set(bit_position.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_group_name.yfilter)
+	|| ydk::is_set(bit_position.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::get_segment_path() const
@@ -2468,8 +2932,8 @@ const EntityPath Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_group_name.is_set || is_set(admin_group_name.operation)) leaf_name_data.push_back(admin_group_name.get_name_leafdata());
-    if (bit_position.is_set || is_set(bit_position.operation)) leaf_name_data.push_back(bit_position.get_name_leafdata());
+    if (admin_group_name.is_set || is_set(admin_group_name.yfilter)) leaf_name_data.push_back(admin_group_name.get_name_leafdata());
+    if (bit_position.is_set || is_set(bit_position.yfilter)) leaf_name_data.push_back(bit_position.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2488,16 +2952,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::MplsAdm
     return children;
 }
 
-void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-group-name")
     {
         admin_group_name = value;
+        admin_group_name.value_namespace = name_space;
+        admin_group_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bit-position")
     {
         bit_position = value;
+        bit_position.value_namespace = name_space;
+        bit_position.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-group-name")
+    {
+        admin_group_name.yfilter = yfilter;
+    }
+    if(value_path == "bit-position")
+    {
+        bit_position.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::MplsAdminGroups::AdminGroup::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-group-name" || name == "bit-position")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::TeLspTimers::TeLspTimers()
@@ -2524,7 +3011,7 @@ bool Mpls::TeGlobalAttributes::TeLspTimers::has_data() const
 
 bool Mpls::TeGlobalAttributes::TeLspTimers::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -2598,8 +3085,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::TeLspTi
     return children;
 }
 
-void Mpls::TeGlobalAttributes::TeLspTimers::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::TeLspTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::TeGlobalAttributes::TeLspTimers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::TeGlobalAttributes::TeLspTimers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::TeLspTimers::Config::Config()
@@ -2624,10 +3122,10 @@ bool Mpls::TeGlobalAttributes::TeLspTimers::Config::has_data() const
 
 bool Mpls::TeGlobalAttributes::TeLspTimers::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cleanup_delay.operation)
-	|| is_set(install_delay.operation)
-	|| is_set(reoptimize_timer.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cleanup_delay.yfilter)
+	|| ydk::is_set(install_delay.yfilter)
+	|| ydk::is_set(reoptimize_timer.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::TeLspTimers::Config::get_segment_path() const
@@ -2653,9 +3151,9 @@ const EntityPath Mpls::TeGlobalAttributes::TeLspTimers::Config::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cleanup_delay.is_set || is_set(cleanup_delay.operation)) leaf_name_data.push_back(cleanup_delay.get_name_leafdata());
-    if (install_delay.is_set || is_set(install_delay.operation)) leaf_name_data.push_back(install_delay.get_name_leafdata());
-    if (reoptimize_timer.is_set || is_set(reoptimize_timer.operation)) leaf_name_data.push_back(reoptimize_timer.get_name_leafdata());
+    if (cleanup_delay.is_set || is_set(cleanup_delay.yfilter)) leaf_name_data.push_back(cleanup_delay.get_name_leafdata());
+    if (install_delay.is_set || is_set(install_delay.yfilter)) leaf_name_data.push_back(install_delay.get_name_leafdata());
+    if (reoptimize_timer.is_set || is_set(reoptimize_timer.yfilter)) leaf_name_data.push_back(reoptimize_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2674,20 +3172,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::TeLspTi
     return children;
 }
 
-void Mpls::TeGlobalAttributes::TeLspTimers::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::TeLspTimers::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cleanup-delay")
     {
         cleanup_delay = value;
+        cleanup_delay.value_namespace = name_space;
+        cleanup_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "install-delay")
     {
         install_delay = value;
+        install_delay.value_namespace = name_space;
+        install_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reoptimize-timer")
     {
         reoptimize_timer = value;
+        reoptimize_timer.value_namespace = name_space;
+        reoptimize_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::TeLspTimers::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cleanup-delay")
+    {
+        cleanup_delay.yfilter = yfilter;
+    }
+    if(value_path == "install-delay")
+    {
+        install_delay.yfilter = yfilter;
+    }
+    if(value_path == "reoptimize-timer")
+    {
+        reoptimize_timer.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::TeLspTimers::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cleanup-delay" || name == "install-delay" || name == "reoptimize-timer")
+        return true;
+    return false;
 }
 
 Mpls::TeGlobalAttributes::TeLspTimers::State::State()
@@ -2712,10 +3239,10 @@ bool Mpls::TeGlobalAttributes::TeLspTimers::State::has_data() const
 
 bool Mpls::TeGlobalAttributes::TeLspTimers::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cleanup_delay.operation)
-	|| is_set(install_delay.operation)
-	|| is_set(reoptimize_timer.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cleanup_delay.yfilter)
+	|| ydk::is_set(install_delay.yfilter)
+	|| ydk::is_set(reoptimize_timer.yfilter);
 }
 
 std::string Mpls::TeGlobalAttributes::TeLspTimers::State::get_segment_path() const
@@ -2741,9 +3268,9 @@ const EntityPath Mpls::TeGlobalAttributes::TeLspTimers::State::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cleanup_delay.is_set || is_set(cleanup_delay.operation)) leaf_name_data.push_back(cleanup_delay.get_name_leafdata());
-    if (install_delay.is_set || is_set(install_delay.operation)) leaf_name_data.push_back(install_delay.get_name_leafdata());
-    if (reoptimize_timer.is_set || is_set(reoptimize_timer.operation)) leaf_name_data.push_back(reoptimize_timer.get_name_leafdata());
+    if (cleanup_delay.is_set || is_set(cleanup_delay.yfilter)) leaf_name_data.push_back(cleanup_delay.get_name_leafdata());
+    if (install_delay.is_set || is_set(install_delay.yfilter)) leaf_name_data.push_back(install_delay.get_name_leafdata());
+    if (reoptimize_timer.is_set || is_set(reoptimize_timer.yfilter)) leaf_name_data.push_back(reoptimize_timer.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2762,20 +3289,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeGlobalAttributes::TeLspTi
     return children;
 }
 
-void Mpls::TeGlobalAttributes::TeLspTimers::State::set_value(const std::string & value_path, std::string value)
+void Mpls::TeGlobalAttributes::TeLspTimers::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cleanup-delay")
     {
         cleanup_delay = value;
+        cleanup_delay.value_namespace = name_space;
+        cleanup_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "install-delay")
     {
         install_delay = value;
+        install_delay.value_namespace = name_space;
+        install_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reoptimize-timer")
     {
         reoptimize_timer = value;
+        reoptimize_timer.value_namespace = name_space;
+        reoptimize_timer.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeGlobalAttributes::TeLspTimers::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cleanup-delay")
+    {
+        cleanup_delay.yfilter = yfilter;
+    }
+    if(value_path == "install-delay")
+    {
+        install_delay.yfilter = yfilter;
+    }
+    if(value_path == "reoptimize-timer")
+    {
+        reoptimize_timer.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeGlobalAttributes::TeLspTimers::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cleanup-delay" || name == "install-delay" || name == "reoptimize-timer")
+        return true;
+    return false;
 }
 
 Mpls::TeInterfaceAttributes::TeInterfaceAttributes()
@@ -2804,7 +3360,7 @@ bool Mpls::TeInterfaceAttributes::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::TeInterfaceAttributes::get_segment_path() const
@@ -2869,8 +3425,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::get_
     return children;
 }
 
-void Mpls::TeInterfaceAttributes::set_value(const std::string & value_path, std::string value)
+void Mpls::TeInterfaceAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::TeInterfaceAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::TeInterfaceAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mpls::TeInterfaceAttributes::Interface::Interface()
@@ -2904,8 +3471,8 @@ bool Mpls::TeInterfaceAttributes::Interface::has_data() const
 
 bool Mpls::TeInterfaceAttributes::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (igp_flooding_bandwidth !=  nullptr && igp_flooding_bandwidth->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -2934,7 +3501,7 @@ const EntityPath Mpls::TeInterfaceAttributes::Interface::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2995,12 +3562,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Inte
     return children;
 }
 
-void Mpls::TeInterfaceAttributes::Interface::set_value(const std::string & value_path, std::string value)
+void Mpls::TeInterfaceAttributes::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeInterfaceAttributes::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeInterfaceAttributes::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "igp-flooding-bandwidth" || name == "state" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::TeInterfaceAttributes::Interface::Config::Config()
@@ -3037,19 +3621,19 @@ bool Mpls::TeInterfaceAttributes::Interface::Config::has_operation() const
 {
     for (auto const & leaf : admin_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : srlg_membership.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(admin_group.operation)
-	|| is_set(name.operation)
-	|| is_set(srlg_membership.operation)
-	|| is_set(te_metric.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_group.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(srlg_membership.yfilter)
+	|| ydk::is_set(te_metric.yfilter);
 }
 
 std::string Mpls::TeInterfaceAttributes::Interface::Config::get_segment_path() const
@@ -3075,8 +3659,8 @@ const EntityPath Mpls::TeInterfaceAttributes::Interface::Config::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (te_metric.is_set || is_set(te_metric.operation)) leaf_name_data.push_back(te_metric.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (te_metric.is_set || is_set(te_metric.yfilter)) leaf_name_data.push_back(te_metric.get_name_leafdata());
 
     auto admin_group_name_datas = admin_group.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), admin_group_name_datas.begin(), admin_group_name_datas.end());
@@ -3099,7 +3683,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Inte
     return children;
 }
 
-void Mpls::TeInterfaceAttributes::Interface::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::TeInterfaceAttributes::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-group")
     {
@@ -3108,6 +3692,8 @@ void Mpls::TeInterfaceAttributes::Interface::Config::set_value(const std::string
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-membership")
     {
@@ -3116,7 +3702,36 @@ void Mpls::TeInterfaceAttributes::Interface::Config::set_value(const std::string
     if(value_path == "te-metric")
     {
         te_metric = value;
+        te_metric.value_namespace = name_space;
+        te_metric.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeInterfaceAttributes::Interface::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-group")
+    {
+        admin_group.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "srlg-membership")
+    {
+        srlg_membership.yfilter = yfilter;
+    }
+    if(value_path == "te-metric")
+    {
+        te_metric.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeInterfaceAttributes::Interface::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-group" || name == "name" || name == "srlg-membership" || name == "te-metric")
+        return true;
+    return false;
 }
 
 Mpls::TeInterfaceAttributes::Interface::State::State()
@@ -3153,19 +3768,19 @@ bool Mpls::TeInterfaceAttributes::Interface::State::has_operation() const
 {
     for (auto const & leaf : admin_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : srlg_membership.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(admin_group.operation)
-	|| is_set(name.operation)
-	|| is_set(srlg_membership.operation)
-	|| is_set(te_metric.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_group.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(srlg_membership.yfilter)
+	|| ydk::is_set(te_metric.yfilter);
 }
 
 std::string Mpls::TeInterfaceAttributes::Interface::State::get_segment_path() const
@@ -3191,8 +3806,8 @@ const EntityPath Mpls::TeInterfaceAttributes::Interface::State::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (te_metric.is_set || is_set(te_metric.operation)) leaf_name_data.push_back(te_metric.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (te_metric.is_set || is_set(te_metric.yfilter)) leaf_name_data.push_back(te_metric.get_name_leafdata());
 
     auto admin_group_name_datas = admin_group.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), admin_group_name_datas.begin(), admin_group_name_datas.end());
@@ -3215,7 +3830,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Inte
     return children;
 }
 
-void Mpls::TeInterfaceAttributes::Interface::State::set_value(const std::string & value_path, std::string value)
+void Mpls::TeInterfaceAttributes::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-group")
     {
@@ -3224,6 +3839,8 @@ void Mpls::TeInterfaceAttributes::Interface::State::set_value(const std::string 
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg-membership")
     {
@@ -3232,7 +3849,36 @@ void Mpls::TeInterfaceAttributes::Interface::State::set_value(const std::string 
     if(value_path == "te-metric")
     {
         te_metric = value;
+        te_metric.value_namespace = name_space;
+        te_metric.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::TeInterfaceAttributes::Interface::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-group")
+    {
+        admin_group.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "srlg-membership")
+    {
+        srlg_membership.yfilter = yfilter;
+    }
+    if(value_path == "te-metric")
+    {
+        te_metric.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeInterfaceAttributes::Interface::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-group" || name == "name" || name == "srlg-membership" || name == "te-metric")
+        return true;
+    return false;
 }
 
 Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::IgpFloodingBandwidth()
@@ -3259,7 +3905,7 @@ bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::has_data() co
 
 bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -3333,8 +3979,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Inte
     return children;
 }
 
-void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::set_value(const std::string & value_path, std::string value)
+void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::Config()
@@ -3379,26 +4036,26 @@ bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::has_o
 {
     for (auto const & leaf : down_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : up_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(delta_percentage.operation)
-	|| is_set(down_thresholds.operation)
-	|| is_set(threshold_specification.operation)
-	|| is_set(threshold_type.operation)
-	|| is_set(up_down_thresholds.operation)
-	|| is_set(up_thresholds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(delta_percentage.yfilter)
+	|| ydk::is_set(down_thresholds.yfilter)
+	|| ydk::is_set(threshold_specification.yfilter)
+	|| ydk::is_set(threshold_type.yfilter)
+	|| ydk::is_set(up_down_thresholds.yfilter)
+	|| ydk::is_set(up_thresholds.yfilter);
 }
 
 std::string Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::get_segment_path() const
@@ -3424,9 +4081,9 @@ const EntityPath Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::C
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (delta_percentage.is_set || is_set(delta_percentage.operation)) leaf_name_data.push_back(delta_percentage.get_name_leafdata());
-    if (threshold_specification.is_set || is_set(threshold_specification.operation)) leaf_name_data.push_back(threshold_specification.get_name_leafdata());
-    if (threshold_type.is_set || is_set(threshold_type.operation)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
+    if (delta_percentage.is_set || is_set(delta_percentage.yfilter)) leaf_name_data.push_back(delta_percentage.get_name_leafdata());
+    if (threshold_specification.is_set || is_set(threshold_specification.yfilter)) leaf_name_data.push_back(threshold_specification.get_name_leafdata());
+    if (threshold_type.is_set || is_set(threshold_type.yfilter)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
 
     auto down_thresholds_name_datas = down_thresholds.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), down_thresholds_name_datas.begin(), down_thresholds_name_datas.end());
@@ -3451,11 +4108,13 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Inte
     return children;
 }
 
-void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delta-percentage")
     {
         delta_percentage = value;
+        delta_percentage.value_namespace = name_space;
+        delta_percentage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down-thresholds")
     {
@@ -3464,10 +4123,14 @@ void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::set_v
     if(value_path == "threshold-specification")
     {
         threshold_specification = value;
+        threshold_specification.value_namespace = name_space;
+        threshold_specification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-type")
     {
         threshold_type = value;
+        threshold_type.value_namespace = name_space;
+        threshold_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-down-thresholds")
     {
@@ -3477,6 +4140,41 @@ void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::set_v
     {
         up_thresholds.append(value);
     }
+}
+
+void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "delta-percentage")
+    {
+        delta_percentage.yfilter = yfilter;
+    }
+    if(value_path == "down-thresholds")
+    {
+        down_thresholds.yfilter = yfilter;
+    }
+    if(value_path == "threshold-specification")
+    {
+        threshold_specification.yfilter = yfilter;
+    }
+    if(value_path == "threshold-type")
+    {
+        threshold_type.yfilter = yfilter;
+    }
+    if(value_path == "up-down-thresholds")
+    {
+        up_down_thresholds.yfilter = yfilter;
+    }
+    if(value_path == "up-thresholds")
+    {
+        up_thresholds.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delta-percentage" || name == "down-thresholds" || name == "threshold-specification" || name == "threshold-type" || name == "up-down-thresholds" || name == "up-thresholds")
+        return true;
+    return false;
 }
 
 Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::State()
@@ -3521,26 +4219,26 @@ bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::has_op
 {
     for (auto const & leaf : down_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : up_down_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : up_thresholds.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(delta_percentage.operation)
-	|| is_set(down_thresholds.operation)
-	|| is_set(threshold_specification.operation)
-	|| is_set(threshold_type.operation)
-	|| is_set(up_down_thresholds.operation)
-	|| is_set(up_thresholds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(delta_percentage.yfilter)
+	|| ydk::is_set(down_thresholds.yfilter)
+	|| ydk::is_set(threshold_specification.yfilter)
+	|| ydk::is_set(threshold_type.yfilter)
+	|| ydk::is_set(up_down_thresholds.yfilter)
+	|| ydk::is_set(up_thresholds.yfilter);
 }
 
 std::string Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::get_segment_path() const
@@ -3566,9 +4264,9 @@ const EntityPath Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::S
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (delta_percentage.is_set || is_set(delta_percentage.operation)) leaf_name_data.push_back(delta_percentage.get_name_leafdata());
-    if (threshold_specification.is_set || is_set(threshold_specification.operation)) leaf_name_data.push_back(threshold_specification.get_name_leafdata());
-    if (threshold_type.is_set || is_set(threshold_type.operation)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
+    if (delta_percentage.is_set || is_set(delta_percentage.yfilter)) leaf_name_data.push_back(delta_percentage.get_name_leafdata());
+    if (threshold_specification.is_set || is_set(threshold_specification.yfilter)) leaf_name_data.push_back(threshold_specification.get_name_leafdata());
+    if (threshold_type.is_set || is_set(threshold_type.yfilter)) leaf_name_data.push_back(threshold_type.get_name_leafdata());
 
     auto down_thresholds_name_datas = down_thresholds.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), down_thresholds_name_datas.begin(), down_thresholds_name_datas.end());
@@ -3593,11 +4291,13 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::TeInterfaceAttributes::Inte
     return children;
 }
 
-void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::set_value(const std::string & value_path, std::string value)
+void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delta-percentage")
     {
         delta_percentage = value;
+        delta_percentage.value_namespace = name_space;
+        delta_percentage.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down-thresholds")
     {
@@ -3606,10 +4306,14 @@ void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::set_va
     if(value_path == "threshold-specification")
     {
         threshold_specification = value;
+        threshold_specification.value_namespace = name_space;
+        threshold_specification.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-type")
     {
         threshold_type = value;
+        threshold_type.value_namespace = name_space;
+        threshold_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up-down-thresholds")
     {
@@ -3619,6 +4323,41 @@ void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::set_va
     {
         up_thresholds.append(value);
     }
+}
+
+void Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "delta-percentage")
+    {
+        delta_percentage.yfilter = yfilter;
+    }
+    if(value_path == "down-thresholds")
+    {
+        down_thresholds.yfilter = yfilter;
+    }
+    if(value_path == "threshold-specification")
+    {
+        threshold_specification.yfilter = yfilter;
+    }
+    if(value_path == "threshold-type")
+    {
+        threshold_type.yfilter = yfilter;
+    }
+    if(value_path == "up-down-thresholds")
+    {
+        up_down_thresholds.yfilter = yfilter;
+    }
+    if(value_path == "up-thresholds")
+    {
+        up_thresholds.yfilter = yfilter;
+    }
+}
+
+bool Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delta-percentage" || name == "down-thresholds" || name == "threshold-specification" || name == "threshold-type" || name == "up-down-thresholds" || name == "up-thresholds")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SignalingProtocols()
@@ -3649,7 +4388,7 @@ bool Mpls::SignalingProtocols::has_data() const
 
 bool Mpls::SignalingProtocols::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ldp !=  nullptr && ldp->has_operation())
 	|| (rsvp_te !=  nullptr && rsvp_te->has_operation())
 	|| (segment_routing !=  nullptr && segment_routing->has_operation());
@@ -3738,8 +4477,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::get_chi
     return children;
 }
 
-void Mpls::SignalingProtocols::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ldp" || name == "rsvp-te" || name == "segment-routing")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::RsvpTe()
@@ -3774,7 +4524,7 @@ bool Mpls::SignalingProtocols::RsvpTe::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (global !=  nullptr && global->has_operation())
 	|| (interface_attributes !=  nullptr && interface_attributes->has_operation())
 	|| (neighbors !=  nullptr && neighbors->has_operation())
@@ -3878,8 +4628,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global" || name == "interface-attributes" || name == "neighbors" || name == "sessions")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Sessions::Sessions()
@@ -3906,7 +4667,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Sessions::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Sessions::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -3980,8 +4741,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Sessions::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Sessions::Config::Config()
@@ -4000,7 +4772,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Sessions::Config::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Sessions::Config::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Sessions::Config::get_segment_path() const
@@ -4044,8 +4816,17 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Sessions::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Sessions::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Sessions::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Sessions::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Sessions::State::State()
@@ -4074,7 +4855,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Sessions::State::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Sessions::State::get_segment_path() const
@@ -4139,8 +4920,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Sessions::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Sessions::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Sessions::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Sessions::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::Session()
@@ -4185,20 +4977,20 @@ bool Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::has_operation()
 {
     for (auto const & leaf : associated_lsps.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(source_port.operation)
-	|| is_set(destination_port.operation)
-	|| is_set(source_address.operation)
-	|| is_set(destination_address.operation)
-	|| is_set(associated_lsps.operation)
-	|| is_set(label_in.operation)
-	|| is_set(label_out.operation)
-	|| is_set(status.operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_port.yfilter)
+	|| ydk::is_set(destination_port.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(associated_lsps.yfilter)
+	|| ydk::is_set(label_in.yfilter)
+	|| ydk::is_set(label_out.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::get_segment_path() const
@@ -4224,15 +5016,15 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_port.is_set || is_set(source_port.operation)) leaf_name_data.push_back(source_port.get_name_leafdata());
-    if (destination_port.is_set || is_set(destination_port.operation)) leaf_name_data.push_back(destination_port.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (label_in.is_set || is_set(label_in.operation)) leaf_name_data.push_back(label_in.get_name_leafdata());
-    if (label_out.is_set || is_set(label_out.operation)) leaf_name_data.push_back(label_out.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
+    if (destination_port.is_set || is_set(destination_port.yfilter)) leaf_name_data.push_back(destination_port.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (label_in.is_set || is_set(label_in.yfilter)) leaf_name_data.push_back(label_in.get_name_leafdata());
+    if (label_out.is_set || is_set(label_out.yfilter)) leaf_name_data.push_back(label_out.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
     auto associated_lsps_name_datas = associated_lsps.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), associated_lsps_name_datas.begin(), associated_lsps_name_datas.end());
@@ -4253,23 +5045,31 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-port")
     {
         source_port = value;
+        source_port.value_namespace = name_space;
+        source_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-port")
     {
         destination_port = value;
+        destination_port.value_namespace = name_space;
+        destination_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "associated-lsps")
     {
@@ -4278,23 +5078,84 @@ void Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::set_value(const
     if(value_path == "label-in")
     {
         label_in = value;
+        label_in.value_namespace = name_space;
+        label_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label-out")
     {
         label_out = value;
+        label_out.value_namespace = name_space;
+        label_out.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-port")
+    {
+        source_port.yfilter = yfilter;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "associated-lsps")
+    {
+        associated_lsps.yfilter = yfilter;
+    }
+    if(value_path == "label-in")
+    {
+        label_in.yfilter = yfilter;
+    }
+    if(value_path == "label-out")
+    {
+        label_out.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-port" || name == "destination-port" || name == "source-address" || name == "destination-address" || name == "associated-lsps" || name == "label-in" || name == "label-out" || name == "status" || name == "tunnel-id" || name == "type")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Neighbors::Neighbors()
@@ -4321,7 +5182,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Neighbors::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Neighbors::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -4395,8 +5256,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Neighbors::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Neighbors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Neighbors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Neighbors::Config::Config()
@@ -4415,7 +5287,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Neighbors::Config::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Neighbors::Config::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Neighbors::Config::get_segment_path() const
@@ -4459,8 +5331,17 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Neighbors::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Neighbors::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Neighbors::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Neighbors::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Neighbors::State::State()
@@ -4489,7 +5370,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Neighbors::State::has_operation() const
         if(neighbor[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Neighbors::State::get_segment_path() const
@@ -4554,8 +5435,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Neighbors::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Neighbors::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Neighbors::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Neighbors::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "neighbor")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::Neighbor()
@@ -4582,11 +5474,11 @@ bool Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::has_data() co
 
 bool Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(detected_interface.operation)
-	|| is_set(neighbor_status.operation)
-	|| is_set(refresh_reduction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(detected_interface.yfilter)
+	|| ydk::is_set(neighbor_status.yfilter)
+	|| ydk::is_set(refresh_reduction.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::get_segment_path() const
@@ -4612,10 +5504,10 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (detected_interface.is_set || is_set(detected_interface.operation)) leaf_name_data.push_back(detected_interface.get_name_leafdata());
-    if (neighbor_status.is_set || is_set(neighbor_status.operation)) leaf_name_data.push_back(neighbor_status.get_name_leafdata());
-    if (refresh_reduction.is_set || is_set(refresh_reduction.operation)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (detected_interface.is_set || is_set(detected_interface.yfilter)) leaf_name_data.push_back(detected_interface.get_name_leafdata());
+    if (neighbor_status.is_set || is_set(neighbor_status.yfilter)) leaf_name_data.push_back(neighbor_status.get_name_leafdata());
+    if (refresh_reduction.is_set || is_set(refresh_reduction.yfilter)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4634,24 +5526,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "detected-interface")
     {
         detected_interface = value;
+        detected_interface.value_namespace = name_space;
+        detected_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "neighbor-status")
     {
         neighbor_status = value;
+        neighbor_status.value_namespace = name_space;
+        neighbor_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "refresh-reduction")
     {
         refresh_reduction = value;
+        refresh_reduction.value_namespace = name_space;
+        refresh_reduction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "detected-interface")
+    {
+        detected_interface.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-status")
+    {
+        neighbor_status.yfilter = yfilter;
+    }
+    if(value_path == "refresh-reduction")
+    {
+        refresh_reduction.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "detected-interface" || name == "neighbor-status" || name == "refresh-reduction")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::Global()
@@ -4686,7 +5613,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (graceful_restart !=  nullptr && graceful_restart->has_operation())
 	|| (hellos !=  nullptr && hellos->has_operation())
 	|| (soft_preemption !=  nullptr && soft_preemption->has_operation())
@@ -4790,8 +5717,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "graceful-restart" || name == "hellos" || name == "soft-preemption" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::GracefulRestart()
@@ -4818,7 +5756,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -4892,8 +5830,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::Config()
@@ -4918,10 +5867,10 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::has_data
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(recovery_time.operation)
-	|| is_set(restart_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(recovery_time.yfilter)
+	|| ydk::is_set(restart_time.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::get_segment_path() const
@@ -4947,9 +5896,9 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Conf
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (recovery_time.is_set || is_set(recovery_time.operation)) leaf_name_data.push_back(recovery_time.get_name_leafdata());
-    if (restart_time.is_set || is_set(restart_time.operation)) leaf_name_data.push_back(restart_time.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (recovery_time.is_set || is_set(recovery_time.yfilter)) leaf_name_data.push_back(recovery_time.get_name_leafdata());
+    if (restart_time.is_set || is_set(restart_time.yfilter)) leaf_name_data.push_back(restart_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4968,20 +5917,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recovery-time")
     {
         recovery_time = value;
+        recovery_time.value_namespace = name_space;
+        recovery_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "restart-time")
     {
         restart_time = value;
+        restart_time.value_namespace = name_space;
+        restart_time.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "recovery-time")
+    {
+        recovery_time.yfilter = yfilter;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "recovery-time" || name == "restart-time")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::State()
@@ -5006,10 +5984,10 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::has_data(
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(recovery_time.operation)
-	|| is_set(restart_time.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(recovery_time.yfilter)
+	|| ydk::is_set(restart_time.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::get_segment_path() const
@@ -5035,9 +6013,9 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::Stat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (recovery_time.is_set || is_set(recovery_time.operation)) leaf_name_data.push_back(recovery_time.get_name_leafdata());
-    if (restart_time.is_set || is_set(restart_time.operation)) leaf_name_data.push_back(restart_time.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (recovery_time.is_set || is_set(recovery_time.yfilter)) leaf_name_data.push_back(recovery_time.get_name_leafdata());
+    if (restart_time.is_set || is_set(restart_time.yfilter)) leaf_name_data.push_back(restart_time.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5056,20 +6034,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "recovery-time")
     {
         recovery_time = value;
+        recovery_time.value_namespace = name_space;
+        recovery_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "restart-time")
     {
         restart_time = value;
+        restart_time.value_namespace = name_space;
+        restart_time.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "recovery-time")
+    {
+        recovery_time.yfilter = yfilter;
+    }
+    if(value_path == "restart-time")
+    {
+        restart_time.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::GracefulRestart::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "recovery-time" || name == "restart-time")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::SoftPreemption()
@@ -5096,7 +6103,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -5170,8 +6177,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::Config()
@@ -5194,9 +6212,9 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::has_data(
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(soft_preemption_timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(soft_preemption_timeout.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::get_segment_path() const
@@ -5222,8 +6240,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Confi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (soft_preemption_timeout.is_set || is_set(soft_preemption_timeout.operation)) leaf_name_data.push_back(soft_preemption_timeout.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (soft_preemption_timeout.is_set || is_set(soft_preemption_timeout.yfilter)) leaf_name_data.push_back(soft_preemption_timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5242,16 +6260,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "soft-preemption-timeout")
     {
         soft_preemption_timeout = value;
+        soft_preemption_timeout.value_namespace = name_space;
+        soft_preemption_timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "soft-preemption-timeout")
+    {
+        soft_preemption_timeout.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "soft-preemption-timeout")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::State()
@@ -5274,9 +6315,9 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::has_data()
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation)
-	|| is_set(soft_preemption_timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(soft_preemption_timeout.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::get_segment_path() const
@@ -5302,8 +6343,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (soft_preemption_timeout.is_set || is_set(soft_preemption_timeout.operation)) leaf_name_data.push_back(soft_preemption_timeout.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (soft_preemption_timeout.is_set || is_set(soft_preemption_timeout.yfilter)) leaf_name_data.push_back(soft_preemption_timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5322,16 +6363,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "soft-preemption-timeout")
     {
         soft_preemption_timeout = value;
+        soft_preemption_timeout.value_namespace = name_space;
+        soft_preemption_timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "soft-preemption-timeout")
+    {
+        soft_preemption_timeout.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::SoftPreemption::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "soft-preemption-timeout")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Hellos()
@@ -5358,7 +6422,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -5432,8 +6496,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::Config()
@@ -5456,9 +6531,9 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(refresh_reduction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(refresh_reduction.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::get_segment_path() const
@@ -5484,8 +6559,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (refresh_reduction.is_set || is_set(refresh_reduction.operation)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (refresh_reduction.is_set || is_set(refresh_reduction.yfilter)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5504,16 +6579,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "refresh-reduction")
     {
         refresh_reduction = value;
+        refresh_reduction.value_namespace = name_space;
+        refresh_reduction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "refresh-reduction")
+    {
+        refresh_reduction.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-interval" || name == "refresh-reduction")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::State()
@@ -5536,9 +6634,9 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(refresh_reduction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(refresh_reduction.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::get_segment_path() const
@@ -5564,8 +6662,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (refresh_reduction.is_set || is_set(refresh_reduction.operation)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (refresh_reduction.is_set || is_set(refresh_reduction.yfilter)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5584,16 +6682,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "refresh-reduction")
     {
         refresh_reduction = value;
+        refresh_reduction.value_namespace = name_space;
+        refresh_reduction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "refresh-reduction")
+    {
+        refresh_reduction.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::Hellos::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-interval" || name == "refresh-reduction")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::State::State()
@@ -5616,7 +6737,7 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::State::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::State::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (counters !=  nullptr && counters->has_operation());
 }
 
@@ -5675,8 +6796,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::Counters()
@@ -5737,28 +6869,28 @@ bool Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::has_data() const
 
 bool Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_ack_messages.operation)
-	|| is_set(in_hello_messages.operation)
-	|| is_set(in_path_error_messages.operation)
-	|| is_set(in_path_messages.operation)
-	|| is_set(in_path_tear_messages.operation)
-	|| is_set(in_reservation_error_messages.operation)
-	|| is_set(in_reservation_messages.operation)
-	|| is_set(in_reservation_tear_messages.operation)
-	|| is_set(in_srefresh_messages.operation)
-	|| is_set(out_ack_messages.operation)
-	|| is_set(out_hello_messages.operation)
-	|| is_set(out_path_error_messages.operation)
-	|| is_set(out_path_messages.operation)
-	|| is_set(out_path_tear_messages.operation)
-	|| is_set(out_reservation_error_messages.operation)
-	|| is_set(out_reservation_messages.operation)
-	|| is_set(out_reservation_tear_messages.operation)
-	|| is_set(out_srefresh_messages.operation)
-	|| is_set(path_timeouts.operation)
-	|| is_set(rate_limited_messages.operation)
-	|| is_set(reservation_timeouts.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(in_ack_messages.yfilter)
+	|| ydk::is_set(in_hello_messages.yfilter)
+	|| ydk::is_set(in_path_error_messages.yfilter)
+	|| ydk::is_set(in_path_messages.yfilter)
+	|| ydk::is_set(in_path_tear_messages.yfilter)
+	|| ydk::is_set(in_reservation_error_messages.yfilter)
+	|| ydk::is_set(in_reservation_messages.yfilter)
+	|| ydk::is_set(in_reservation_tear_messages.yfilter)
+	|| ydk::is_set(in_srefresh_messages.yfilter)
+	|| ydk::is_set(out_ack_messages.yfilter)
+	|| ydk::is_set(out_hello_messages.yfilter)
+	|| ydk::is_set(out_path_error_messages.yfilter)
+	|| ydk::is_set(out_path_messages.yfilter)
+	|| ydk::is_set(out_path_tear_messages.yfilter)
+	|| ydk::is_set(out_reservation_error_messages.yfilter)
+	|| ydk::is_set(out_reservation_messages.yfilter)
+	|| ydk::is_set(out_reservation_tear_messages.yfilter)
+	|| ydk::is_set(out_srefresh_messages.yfilter)
+	|| ydk::is_set(path_timeouts.yfilter)
+	|| ydk::is_set(rate_limited_messages.yfilter)
+	|| ydk::is_set(reservation_timeouts.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::get_segment_path() const
@@ -5784,27 +6916,27 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_ack_messages.is_set || is_set(in_ack_messages.operation)) leaf_name_data.push_back(in_ack_messages.get_name_leafdata());
-    if (in_hello_messages.is_set || is_set(in_hello_messages.operation)) leaf_name_data.push_back(in_hello_messages.get_name_leafdata());
-    if (in_path_error_messages.is_set || is_set(in_path_error_messages.operation)) leaf_name_data.push_back(in_path_error_messages.get_name_leafdata());
-    if (in_path_messages.is_set || is_set(in_path_messages.operation)) leaf_name_data.push_back(in_path_messages.get_name_leafdata());
-    if (in_path_tear_messages.is_set || is_set(in_path_tear_messages.operation)) leaf_name_data.push_back(in_path_tear_messages.get_name_leafdata());
-    if (in_reservation_error_messages.is_set || is_set(in_reservation_error_messages.operation)) leaf_name_data.push_back(in_reservation_error_messages.get_name_leafdata());
-    if (in_reservation_messages.is_set || is_set(in_reservation_messages.operation)) leaf_name_data.push_back(in_reservation_messages.get_name_leafdata());
-    if (in_reservation_tear_messages.is_set || is_set(in_reservation_tear_messages.operation)) leaf_name_data.push_back(in_reservation_tear_messages.get_name_leafdata());
-    if (in_srefresh_messages.is_set || is_set(in_srefresh_messages.operation)) leaf_name_data.push_back(in_srefresh_messages.get_name_leafdata());
-    if (out_ack_messages.is_set || is_set(out_ack_messages.operation)) leaf_name_data.push_back(out_ack_messages.get_name_leafdata());
-    if (out_hello_messages.is_set || is_set(out_hello_messages.operation)) leaf_name_data.push_back(out_hello_messages.get_name_leafdata());
-    if (out_path_error_messages.is_set || is_set(out_path_error_messages.operation)) leaf_name_data.push_back(out_path_error_messages.get_name_leafdata());
-    if (out_path_messages.is_set || is_set(out_path_messages.operation)) leaf_name_data.push_back(out_path_messages.get_name_leafdata());
-    if (out_path_tear_messages.is_set || is_set(out_path_tear_messages.operation)) leaf_name_data.push_back(out_path_tear_messages.get_name_leafdata());
-    if (out_reservation_error_messages.is_set || is_set(out_reservation_error_messages.operation)) leaf_name_data.push_back(out_reservation_error_messages.get_name_leafdata());
-    if (out_reservation_messages.is_set || is_set(out_reservation_messages.operation)) leaf_name_data.push_back(out_reservation_messages.get_name_leafdata());
-    if (out_reservation_tear_messages.is_set || is_set(out_reservation_tear_messages.operation)) leaf_name_data.push_back(out_reservation_tear_messages.get_name_leafdata());
-    if (out_srefresh_messages.is_set || is_set(out_srefresh_messages.operation)) leaf_name_data.push_back(out_srefresh_messages.get_name_leafdata());
-    if (path_timeouts.is_set || is_set(path_timeouts.operation)) leaf_name_data.push_back(path_timeouts.get_name_leafdata());
-    if (rate_limited_messages.is_set || is_set(rate_limited_messages.operation)) leaf_name_data.push_back(rate_limited_messages.get_name_leafdata());
-    if (reservation_timeouts.is_set || is_set(reservation_timeouts.operation)) leaf_name_data.push_back(reservation_timeouts.get_name_leafdata());
+    if (in_ack_messages.is_set || is_set(in_ack_messages.yfilter)) leaf_name_data.push_back(in_ack_messages.get_name_leafdata());
+    if (in_hello_messages.is_set || is_set(in_hello_messages.yfilter)) leaf_name_data.push_back(in_hello_messages.get_name_leafdata());
+    if (in_path_error_messages.is_set || is_set(in_path_error_messages.yfilter)) leaf_name_data.push_back(in_path_error_messages.get_name_leafdata());
+    if (in_path_messages.is_set || is_set(in_path_messages.yfilter)) leaf_name_data.push_back(in_path_messages.get_name_leafdata());
+    if (in_path_tear_messages.is_set || is_set(in_path_tear_messages.yfilter)) leaf_name_data.push_back(in_path_tear_messages.get_name_leafdata());
+    if (in_reservation_error_messages.is_set || is_set(in_reservation_error_messages.yfilter)) leaf_name_data.push_back(in_reservation_error_messages.get_name_leafdata());
+    if (in_reservation_messages.is_set || is_set(in_reservation_messages.yfilter)) leaf_name_data.push_back(in_reservation_messages.get_name_leafdata());
+    if (in_reservation_tear_messages.is_set || is_set(in_reservation_tear_messages.yfilter)) leaf_name_data.push_back(in_reservation_tear_messages.get_name_leafdata());
+    if (in_srefresh_messages.is_set || is_set(in_srefresh_messages.yfilter)) leaf_name_data.push_back(in_srefresh_messages.get_name_leafdata());
+    if (out_ack_messages.is_set || is_set(out_ack_messages.yfilter)) leaf_name_data.push_back(out_ack_messages.get_name_leafdata());
+    if (out_hello_messages.is_set || is_set(out_hello_messages.yfilter)) leaf_name_data.push_back(out_hello_messages.get_name_leafdata());
+    if (out_path_error_messages.is_set || is_set(out_path_error_messages.yfilter)) leaf_name_data.push_back(out_path_error_messages.get_name_leafdata());
+    if (out_path_messages.is_set || is_set(out_path_messages.yfilter)) leaf_name_data.push_back(out_path_messages.get_name_leafdata());
+    if (out_path_tear_messages.is_set || is_set(out_path_tear_messages.yfilter)) leaf_name_data.push_back(out_path_tear_messages.get_name_leafdata());
+    if (out_reservation_error_messages.is_set || is_set(out_reservation_error_messages.yfilter)) leaf_name_data.push_back(out_reservation_error_messages.get_name_leafdata());
+    if (out_reservation_messages.is_set || is_set(out_reservation_messages.yfilter)) leaf_name_data.push_back(out_reservation_messages.get_name_leafdata());
+    if (out_reservation_tear_messages.is_set || is_set(out_reservation_tear_messages.yfilter)) leaf_name_data.push_back(out_reservation_tear_messages.get_name_leafdata());
+    if (out_srefresh_messages.is_set || is_set(out_srefresh_messages.yfilter)) leaf_name_data.push_back(out_srefresh_messages.get_name_leafdata());
+    if (path_timeouts.is_set || is_set(path_timeouts.yfilter)) leaf_name_data.push_back(path_timeouts.get_name_leafdata());
+    if (rate_limited_messages.is_set || is_set(rate_limited_messages.yfilter)) leaf_name_data.push_back(rate_limited_messages.get_name_leafdata());
+    if (reservation_timeouts.is_set || is_set(reservation_timeouts.yfilter)) leaf_name_data.push_back(reservation_timeouts.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5823,92 +6955,229 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-ack-messages")
     {
         in_ack_messages = value;
+        in_ack_messages.value_namespace = name_space;
+        in_ack_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-hello-messages")
     {
         in_hello_messages = value;
+        in_hello_messages.value_namespace = name_space;
+        in_hello_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-path-error-messages")
     {
         in_path_error_messages = value;
+        in_path_error_messages.value_namespace = name_space;
+        in_path_error_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-path-messages")
     {
         in_path_messages = value;
+        in_path_messages.value_namespace = name_space;
+        in_path_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-path-tear-messages")
     {
         in_path_tear_messages = value;
+        in_path_tear_messages.value_namespace = name_space;
+        in_path_tear_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-reservation-error-messages")
     {
         in_reservation_error_messages = value;
+        in_reservation_error_messages.value_namespace = name_space;
+        in_reservation_error_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-reservation-messages")
     {
         in_reservation_messages = value;
+        in_reservation_messages.value_namespace = name_space;
+        in_reservation_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-reservation-tear-messages")
     {
         in_reservation_tear_messages = value;
+        in_reservation_tear_messages.value_namespace = name_space;
+        in_reservation_tear_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-srefresh-messages")
     {
         in_srefresh_messages = value;
+        in_srefresh_messages.value_namespace = name_space;
+        in_srefresh_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-ack-messages")
     {
         out_ack_messages = value;
+        out_ack_messages.value_namespace = name_space;
+        out_ack_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-hello-messages")
     {
         out_hello_messages = value;
+        out_hello_messages.value_namespace = name_space;
+        out_hello_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-path-error-messages")
     {
         out_path_error_messages = value;
+        out_path_error_messages.value_namespace = name_space;
+        out_path_error_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-path-messages")
     {
         out_path_messages = value;
+        out_path_messages.value_namespace = name_space;
+        out_path_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-path-tear-messages")
     {
         out_path_tear_messages = value;
+        out_path_tear_messages.value_namespace = name_space;
+        out_path_tear_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-reservation-error-messages")
     {
         out_reservation_error_messages = value;
+        out_reservation_error_messages.value_namespace = name_space;
+        out_reservation_error_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-reservation-messages")
     {
         out_reservation_messages = value;
+        out_reservation_messages.value_namespace = name_space;
+        out_reservation_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-reservation-tear-messages")
     {
         out_reservation_tear_messages = value;
+        out_reservation_tear_messages.value_namespace = name_space;
+        out_reservation_tear_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-srefresh-messages")
     {
         out_srefresh_messages = value;
+        out_srefresh_messages.value_namespace = name_space;
+        out_srefresh_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-timeouts")
     {
         path_timeouts = value;
+        path_timeouts.value_namespace = name_space;
+        path_timeouts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rate-limited-messages")
     {
         rate_limited_messages = value;
+        rate_limited_messages.value_namespace = name_space;
+        rate_limited_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reservation-timeouts")
     {
         reservation_timeouts = value;
+        reservation_timeouts.value_namespace = name_space;
+        reservation_timeouts.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-ack-messages")
+    {
+        in_ack_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-hello-messages")
+    {
+        in_hello_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-path-error-messages")
+    {
+        in_path_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-path-messages")
+    {
+        in_path_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-path-tear-messages")
+    {
+        in_path_tear_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-reservation-error-messages")
+    {
+        in_reservation_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-reservation-messages")
+    {
+        in_reservation_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-reservation-tear-messages")
+    {
+        in_reservation_tear_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-srefresh-messages")
+    {
+        in_srefresh_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-ack-messages")
+    {
+        out_ack_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-hello-messages")
+    {
+        out_hello_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-path-error-messages")
+    {
+        out_path_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-path-messages")
+    {
+        out_path_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-path-tear-messages")
+    {
+        out_path_tear_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-reservation-error-messages")
+    {
+        out_reservation_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-reservation-messages")
+    {
+        out_reservation_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-reservation-tear-messages")
+    {
+        out_reservation_tear_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-srefresh-messages")
+    {
+        out_srefresh_messages.yfilter = yfilter;
+    }
+    if(value_path == "path-timeouts")
+    {
+        path_timeouts.yfilter = yfilter;
+    }
+    if(value_path == "rate-limited-messages")
+    {
+        rate_limited_messages.yfilter = yfilter;
+    }
+    if(value_path == "reservation-timeouts")
+    {
+        reservation_timeouts.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::Global::State::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-ack-messages" || name == "in-hello-messages" || name == "in-path-error-messages" || name == "in-path-messages" || name == "in-path-tear-messages" || name == "in-reservation-error-messages" || name == "in-reservation-messages" || name == "in-reservation-tear-messages" || name == "in-srefresh-messages" || name == "out-ack-messages" || name == "out-hello-messages" || name == "out-path-error-messages" || name == "out-path-messages" || name == "out-path-tear-messages" || name == "out-reservation-error-messages" || name == "out-reservation-messages" || name == "out-reservation-tear-messages" || name == "out-srefresh-messages" || name == "path-timeouts" || name == "rate-limited-messages" || name == "reservation-timeouts")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::InterfaceAttributes()
@@ -5937,7 +7206,7 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::has_operation() cons
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::get_segment_path() const
@@ -6002,8 +7271,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Interface()
@@ -6049,8 +7329,8 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::has_data(
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (config !=  nullptr && config->has_operation())
 	|| (hellos !=  nullptr && hellos->has_operation())
@@ -6082,7 +7362,7 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6185,12 +7465,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication" || name == "config" || name == "hellos" || name == "protection" || name == "state" || name == "subscription" || name == "interface-name")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::Config()
@@ -6211,8 +7508,8 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::h
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::get_segment_path() const
@@ -6238,7 +7535,7 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6257,12 +7554,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::State()
@@ -6300,9 +7614,9 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::ha
         if(bandwidth[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(active_reservation_count.operation)
-	|| is_set(highwater_mark.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(active_reservation_count.yfilter)
+	|| ydk::is_set(highwater_mark.yfilter)
 	|| (counters !=  nullptr && counters->has_operation());
 }
 
@@ -6329,8 +7643,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active_reservation_count.is_set || is_set(active_reservation_count.operation)) leaf_name_data.push_back(active_reservation_count.get_name_leafdata());
-    if (highwater_mark.is_set || is_set(highwater_mark.operation)) leaf_name_data.push_back(highwater_mark.get_name_leafdata());
+    if (active_reservation_count.is_set || is_set(active_reservation_count.yfilter)) leaf_name_data.push_back(active_reservation_count.get_name_leafdata());
+    if (highwater_mark.is_set || is_set(highwater_mark.yfilter)) leaf_name_data.push_back(highwater_mark.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6384,16 +7698,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active-reservation-count")
     {
         active_reservation_count = value;
+        active_reservation_count.value_namespace = name_space;
+        active_reservation_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "highwater-mark")
     {
         highwater_mark = value;
+        highwater_mark.value_namespace = name_space;
+        highwater_mark.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active-reservation-count")
+    {
+        active_reservation_count.yfilter = yfilter;
+    }
+    if(value_path == "highwater-mark")
+    {
+        highwater_mark.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "counters" || name == "active-reservation-count" || name == "highwater-mark")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Bandwidth::Bandwidth()
@@ -6418,10 +7755,10 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Ba
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Bandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(priority.operation)
-	|| is_set(available_bandwidth.operation)
-	|| is_set(reserved_bandwidth.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(available_bandwidth.yfilter)
+	|| ydk::is_set(reserved_bandwidth.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Bandwidth::get_segment_path() const
@@ -6447,9 +7784,9 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (available_bandwidth.is_set || is_set(available_bandwidth.operation)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
-    if (reserved_bandwidth.is_set || is_set(reserved_bandwidth.operation)) leaf_name_data.push_back(reserved_bandwidth.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (available_bandwidth.is_set || is_set(available_bandwidth.yfilter)) leaf_name_data.push_back(available_bandwidth.get_name_leafdata());
+    if (reserved_bandwidth.is_set || is_set(reserved_bandwidth.yfilter)) leaf_name_data.push_back(reserved_bandwidth.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6468,20 +7805,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Bandwidth::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "available-bandwidth")
     {
         available_bandwidth = value;
+        available_bandwidth.value_namespace = name_space;
+        available_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reserved-bandwidth")
     {
         reserved_bandwidth = value;
+        reserved_bandwidth.value_namespace = name_space;
+        reserved_bandwidth.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "available-bandwidth")
+    {
+        available_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "reserved-bandwidth")
+    {
+        reserved_bandwidth.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority" || name == "available-bandwidth" || name == "reserved-bandwidth")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::Counters()
@@ -6536,25 +7902,25 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Co
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(in_ack_messages.operation)
-	|| is_set(in_hello_messages.operation)
-	|| is_set(in_path_error_messages.operation)
-	|| is_set(in_path_messages.operation)
-	|| is_set(in_path_tear_messages.operation)
-	|| is_set(in_reservation_error_messages.operation)
-	|| is_set(in_reservation_messages.operation)
-	|| is_set(in_reservation_tear_messages.operation)
-	|| is_set(in_srefresh_messages.operation)
-	|| is_set(out_ack_messages.operation)
-	|| is_set(out_hello_messages.operation)
-	|| is_set(out_path_error_messages.operation)
-	|| is_set(out_path_messages.operation)
-	|| is_set(out_path_tear_messages.operation)
-	|| is_set(out_reservation_error_messages.operation)
-	|| is_set(out_reservation_messages.operation)
-	|| is_set(out_reservation_tear_messages.operation)
-	|| is_set(out_srefresh_messages.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(in_ack_messages.yfilter)
+	|| ydk::is_set(in_hello_messages.yfilter)
+	|| ydk::is_set(in_path_error_messages.yfilter)
+	|| ydk::is_set(in_path_messages.yfilter)
+	|| ydk::is_set(in_path_tear_messages.yfilter)
+	|| ydk::is_set(in_reservation_error_messages.yfilter)
+	|| ydk::is_set(in_reservation_messages.yfilter)
+	|| ydk::is_set(in_reservation_tear_messages.yfilter)
+	|| ydk::is_set(in_srefresh_messages.yfilter)
+	|| ydk::is_set(out_ack_messages.yfilter)
+	|| ydk::is_set(out_hello_messages.yfilter)
+	|| ydk::is_set(out_path_error_messages.yfilter)
+	|| ydk::is_set(out_path_messages.yfilter)
+	|| ydk::is_set(out_path_tear_messages.yfilter)
+	|| ydk::is_set(out_reservation_error_messages.yfilter)
+	|| ydk::is_set(out_reservation_messages.yfilter)
+	|| ydk::is_set(out_reservation_tear_messages.yfilter)
+	|| ydk::is_set(out_srefresh_messages.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::get_segment_path() const
@@ -6580,24 +7946,24 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (in_ack_messages.is_set || is_set(in_ack_messages.operation)) leaf_name_data.push_back(in_ack_messages.get_name_leafdata());
-    if (in_hello_messages.is_set || is_set(in_hello_messages.operation)) leaf_name_data.push_back(in_hello_messages.get_name_leafdata());
-    if (in_path_error_messages.is_set || is_set(in_path_error_messages.operation)) leaf_name_data.push_back(in_path_error_messages.get_name_leafdata());
-    if (in_path_messages.is_set || is_set(in_path_messages.operation)) leaf_name_data.push_back(in_path_messages.get_name_leafdata());
-    if (in_path_tear_messages.is_set || is_set(in_path_tear_messages.operation)) leaf_name_data.push_back(in_path_tear_messages.get_name_leafdata());
-    if (in_reservation_error_messages.is_set || is_set(in_reservation_error_messages.operation)) leaf_name_data.push_back(in_reservation_error_messages.get_name_leafdata());
-    if (in_reservation_messages.is_set || is_set(in_reservation_messages.operation)) leaf_name_data.push_back(in_reservation_messages.get_name_leafdata());
-    if (in_reservation_tear_messages.is_set || is_set(in_reservation_tear_messages.operation)) leaf_name_data.push_back(in_reservation_tear_messages.get_name_leafdata());
-    if (in_srefresh_messages.is_set || is_set(in_srefresh_messages.operation)) leaf_name_data.push_back(in_srefresh_messages.get_name_leafdata());
-    if (out_ack_messages.is_set || is_set(out_ack_messages.operation)) leaf_name_data.push_back(out_ack_messages.get_name_leafdata());
-    if (out_hello_messages.is_set || is_set(out_hello_messages.operation)) leaf_name_data.push_back(out_hello_messages.get_name_leafdata());
-    if (out_path_error_messages.is_set || is_set(out_path_error_messages.operation)) leaf_name_data.push_back(out_path_error_messages.get_name_leafdata());
-    if (out_path_messages.is_set || is_set(out_path_messages.operation)) leaf_name_data.push_back(out_path_messages.get_name_leafdata());
-    if (out_path_tear_messages.is_set || is_set(out_path_tear_messages.operation)) leaf_name_data.push_back(out_path_tear_messages.get_name_leafdata());
-    if (out_reservation_error_messages.is_set || is_set(out_reservation_error_messages.operation)) leaf_name_data.push_back(out_reservation_error_messages.get_name_leafdata());
-    if (out_reservation_messages.is_set || is_set(out_reservation_messages.operation)) leaf_name_data.push_back(out_reservation_messages.get_name_leafdata());
-    if (out_reservation_tear_messages.is_set || is_set(out_reservation_tear_messages.operation)) leaf_name_data.push_back(out_reservation_tear_messages.get_name_leafdata());
-    if (out_srefresh_messages.is_set || is_set(out_srefresh_messages.operation)) leaf_name_data.push_back(out_srefresh_messages.get_name_leafdata());
+    if (in_ack_messages.is_set || is_set(in_ack_messages.yfilter)) leaf_name_data.push_back(in_ack_messages.get_name_leafdata());
+    if (in_hello_messages.is_set || is_set(in_hello_messages.yfilter)) leaf_name_data.push_back(in_hello_messages.get_name_leafdata());
+    if (in_path_error_messages.is_set || is_set(in_path_error_messages.yfilter)) leaf_name_data.push_back(in_path_error_messages.get_name_leafdata());
+    if (in_path_messages.is_set || is_set(in_path_messages.yfilter)) leaf_name_data.push_back(in_path_messages.get_name_leafdata());
+    if (in_path_tear_messages.is_set || is_set(in_path_tear_messages.yfilter)) leaf_name_data.push_back(in_path_tear_messages.get_name_leafdata());
+    if (in_reservation_error_messages.is_set || is_set(in_reservation_error_messages.yfilter)) leaf_name_data.push_back(in_reservation_error_messages.get_name_leafdata());
+    if (in_reservation_messages.is_set || is_set(in_reservation_messages.yfilter)) leaf_name_data.push_back(in_reservation_messages.get_name_leafdata());
+    if (in_reservation_tear_messages.is_set || is_set(in_reservation_tear_messages.yfilter)) leaf_name_data.push_back(in_reservation_tear_messages.get_name_leafdata());
+    if (in_srefresh_messages.is_set || is_set(in_srefresh_messages.yfilter)) leaf_name_data.push_back(in_srefresh_messages.get_name_leafdata());
+    if (out_ack_messages.is_set || is_set(out_ack_messages.yfilter)) leaf_name_data.push_back(out_ack_messages.get_name_leafdata());
+    if (out_hello_messages.is_set || is_set(out_hello_messages.yfilter)) leaf_name_data.push_back(out_hello_messages.get_name_leafdata());
+    if (out_path_error_messages.is_set || is_set(out_path_error_messages.yfilter)) leaf_name_data.push_back(out_path_error_messages.get_name_leafdata());
+    if (out_path_messages.is_set || is_set(out_path_messages.yfilter)) leaf_name_data.push_back(out_path_messages.get_name_leafdata());
+    if (out_path_tear_messages.is_set || is_set(out_path_tear_messages.yfilter)) leaf_name_data.push_back(out_path_tear_messages.get_name_leafdata());
+    if (out_reservation_error_messages.is_set || is_set(out_reservation_error_messages.yfilter)) leaf_name_data.push_back(out_reservation_error_messages.get_name_leafdata());
+    if (out_reservation_messages.is_set || is_set(out_reservation_messages.yfilter)) leaf_name_data.push_back(out_reservation_messages.get_name_leafdata());
+    if (out_reservation_tear_messages.is_set || is_set(out_reservation_tear_messages.yfilter)) leaf_name_data.push_back(out_reservation_tear_messages.get_name_leafdata());
+    if (out_srefresh_messages.is_set || is_set(out_srefresh_messages.yfilter)) leaf_name_data.push_back(out_srefresh_messages.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6616,80 +7982,199 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "in-ack-messages")
     {
         in_ack_messages = value;
+        in_ack_messages.value_namespace = name_space;
+        in_ack_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-hello-messages")
     {
         in_hello_messages = value;
+        in_hello_messages.value_namespace = name_space;
+        in_hello_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-path-error-messages")
     {
         in_path_error_messages = value;
+        in_path_error_messages.value_namespace = name_space;
+        in_path_error_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-path-messages")
     {
         in_path_messages = value;
+        in_path_messages.value_namespace = name_space;
+        in_path_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-path-tear-messages")
     {
         in_path_tear_messages = value;
+        in_path_tear_messages.value_namespace = name_space;
+        in_path_tear_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-reservation-error-messages")
     {
         in_reservation_error_messages = value;
+        in_reservation_error_messages.value_namespace = name_space;
+        in_reservation_error_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-reservation-messages")
     {
         in_reservation_messages = value;
+        in_reservation_messages.value_namespace = name_space;
+        in_reservation_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-reservation-tear-messages")
     {
         in_reservation_tear_messages = value;
+        in_reservation_tear_messages.value_namespace = name_space;
+        in_reservation_tear_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-srefresh-messages")
     {
         in_srefresh_messages = value;
+        in_srefresh_messages.value_namespace = name_space;
+        in_srefresh_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-ack-messages")
     {
         out_ack_messages = value;
+        out_ack_messages.value_namespace = name_space;
+        out_ack_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-hello-messages")
     {
         out_hello_messages = value;
+        out_hello_messages.value_namespace = name_space;
+        out_hello_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-path-error-messages")
     {
         out_path_error_messages = value;
+        out_path_error_messages.value_namespace = name_space;
+        out_path_error_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-path-messages")
     {
         out_path_messages = value;
+        out_path_messages.value_namespace = name_space;
+        out_path_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-path-tear-messages")
     {
         out_path_tear_messages = value;
+        out_path_tear_messages.value_namespace = name_space;
+        out_path_tear_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-reservation-error-messages")
     {
         out_reservation_error_messages = value;
+        out_reservation_error_messages.value_namespace = name_space;
+        out_reservation_error_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-reservation-messages")
     {
         out_reservation_messages = value;
+        out_reservation_messages.value_namespace = name_space;
+        out_reservation_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-reservation-tear-messages")
     {
         out_reservation_tear_messages = value;
+        out_reservation_tear_messages.value_namespace = name_space;
+        out_reservation_tear_messages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-srefresh-messages")
     {
         out_srefresh_messages = value;
+        out_srefresh_messages.value_namespace = name_space;
+        out_srefresh_messages.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "in-ack-messages")
+    {
+        in_ack_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-hello-messages")
+    {
+        in_hello_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-path-error-messages")
+    {
+        in_path_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-path-messages")
+    {
+        in_path_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-path-tear-messages")
+    {
+        in_path_tear_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-reservation-error-messages")
+    {
+        in_reservation_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-reservation-messages")
+    {
+        in_reservation_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-reservation-tear-messages")
+    {
+        in_reservation_tear_messages.yfilter = yfilter;
+    }
+    if(value_path == "in-srefresh-messages")
+    {
+        in_srefresh_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-ack-messages")
+    {
+        out_ack_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-hello-messages")
+    {
+        out_hello_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-path-error-messages")
+    {
+        out_path_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-path-messages")
+    {
+        out_path_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-path-tear-messages")
+    {
+        out_path_tear_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-reservation-error-messages")
+    {
+        out_reservation_error_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-reservation-messages")
+    {
+        out_reservation_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-reservation-tear-messages")
+    {
+        out_reservation_tear_messages.yfilter = yfilter;
+    }
+    if(value_path == "out-srefresh-messages")
+    {
+        out_srefresh_messages.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::State::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-ack-messages" || name == "in-hello-messages" || name == "in-path-error-messages" || name == "in-path-messages" || name == "in-path-tear-messages" || name == "in-reservation-error-messages" || name == "in-reservation-messages" || name == "in-reservation-tear-messages" || name == "in-srefresh-messages" || name == "out-ack-messages" || name == "out-hello-messages" || name == "out-path-error-messages" || name == "out-path-messages" || name == "out-path-tear-messages" || name == "out-reservation-error-messages" || name == "out-reservation-messages" || name == "out-reservation-tear-messages" || name == "out-srefresh-messages")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Hellos()
@@ -6716,7 +8201,7 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::h
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -6790,8 +8275,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::Config()
@@ -6814,9 +8310,9 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::C
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(refresh_reduction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(refresh_reduction.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::get_segment_path() const
@@ -6842,8 +8338,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (refresh_reduction.is_set || is_set(refresh_reduction.operation)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (refresh_reduction.is_set || is_set(refresh_reduction.yfilter)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6862,16 +8358,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "refresh-reduction")
     {
         refresh_reduction = value;
+        refresh_reduction.value_namespace = name_space;
+        refresh_reduction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "refresh-reduction")
+    {
+        refresh_reduction.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-interval" || name == "refresh-reduction")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::State()
@@ -6894,9 +8413,9 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::S
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(refresh_reduction.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(refresh_reduction.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::get_segment_path() const
@@ -6922,8 +8441,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (refresh_reduction.is_set || is_set(refresh_reduction.operation)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (refresh_reduction.is_set || is_set(refresh_reduction.yfilter)) leaf_name_data.push_back(refresh_reduction.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6942,16 +8461,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "refresh-reduction")
     {
         refresh_reduction = value;
+        refresh_reduction.value_namespace = name_space;
+        refresh_reduction.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "refresh-reduction")
+    {
+        refresh_reduction.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Hellos::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hello-interval" || name == "refresh-reduction")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Authentication()
@@ -6978,7 +8520,7 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentic
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -7052,8 +8594,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::Config()
@@ -7076,9 +8629,9 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentic
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_key.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_key.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::get_segment_path() const
@@ -7104,8 +8657,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_key.is_set || is_set(authentication_key.operation)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7124,16 +8677,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-key")
     {
         authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-key" || name == "enable")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::State()
@@ -7156,9 +8732,9 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentic
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(authentication_key.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(authentication_key.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::get_segment_path() const
@@ -7184,8 +8760,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authentication_key.is_set || is_set(authentication_key.operation)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (authentication_key.is_set || is_set(authentication_key.yfilter)) leaf_name_data.push_back(authentication_key.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7204,16 +8780,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authentication-key")
     {
         authentication_key = value;
+        authentication_key.value_namespace = name_space;
+        authentication_key.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authentication-key")
+    {
+        authentication_key.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Authentication::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication-key" || name == "enable")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Subscription()
@@ -7240,7 +8839,7 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscript
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -7314,8 +8913,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::Config()
@@ -7336,8 +8946,8 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscript
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(subscription.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(subscription.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::get_segment_path() const
@@ -7363,7 +8973,7 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (subscription.is_set || is_set(subscription.operation)) leaf_name_data.push_back(subscription.get_name_leafdata());
+    if (subscription.is_set || is_set(subscription.yfilter)) leaf_name_data.push_back(subscription.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7382,12 +8992,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "subscription")
     {
         subscription = value;
+        subscription.value_namespace = name_space;
+        subscription.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "subscription")
+    {
+        subscription.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subscription")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::State()
@@ -7408,8 +9035,8 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscript
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(subscription.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(subscription.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::get_segment_path() const
@@ -7435,7 +9062,7 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (subscription.is_set || is_set(subscription.operation)) leaf_name_data.push_back(subscription.get_name_leafdata());
+    if (subscription.is_set || is_set(subscription.yfilter)) leaf_name_data.push_back(subscription.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7454,12 +9081,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "subscription")
     {
         subscription = value;
+        subscription.value_namespace = name_space;
+        subscription.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "subscription")
+    {
+        subscription.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Subscription::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subscription")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Protection()
@@ -7486,7 +9130,7 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protectio
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -7560,8 +9204,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::Config()
@@ -7584,9 +9239,9 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protectio
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bypass_optimize_interval.operation)
-	|| is_set(link_protection_style_requested.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bypass_optimize_interval.yfilter)
+	|| ydk::is_set(link_protection_style_requested.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::get_segment_path() const
@@ -7612,8 +9267,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bypass_optimize_interval.is_set || is_set(bypass_optimize_interval.operation)) leaf_name_data.push_back(bypass_optimize_interval.get_name_leafdata());
-    if (link_protection_style_requested.is_set || is_set(link_protection_style_requested.operation)) leaf_name_data.push_back(link_protection_style_requested.get_name_leafdata());
+    if (bypass_optimize_interval.is_set || is_set(bypass_optimize_interval.yfilter)) leaf_name_data.push_back(bypass_optimize_interval.get_name_leafdata());
+    if (link_protection_style_requested.is_set || is_set(link_protection_style_requested.yfilter)) leaf_name_data.push_back(link_protection_style_requested.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7632,16 +9287,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bypass-optimize-interval")
     {
         bypass_optimize_interval = value;
+        bypass_optimize_interval.value_namespace = name_space;
+        bypass_optimize_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-protection-style-requested")
     {
         link_protection_style_requested = value;
+        link_protection_style_requested.value_namespace = name_space;
+        link_protection_style_requested.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bypass-optimize-interval")
+    {
+        bypass_optimize_interval.yfilter = yfilter;
+    }
+    if(value_path == "link-protection-style-requested")
+    {
+        link_protection_style_requested.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bypass-optimize-interval" || name == "link-protection-style-requested")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::State()
@@ -7664,9 +9342,9 @@ bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protectio
 
 bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bypass_optimize_interval.operation)
-	|| is_set(link_protection_style_requested.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bypass_optimize_interval.yfilter)
+	|| ydk::is_set(link_protection_style_requested.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::get_segment_path() const
@@ -7692,8 +9370,8 @@ const EntityPath Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bypass_optimize_interval.is_set || is_set(bypass_optimize_interval.operation)) leaf_name_data.push_back(bypass_optimize_interval.get_name_leafdata());
-    if (link_protection_style_requested.is_set || is_set(link_protection_style_requested.operation)) leaf_name_data.push_back(link_protection_style_requested.get_name_leafdata());
+    if (bypass_optimize_interval.is_set || is_set(bypass_optimize_interval.yfilter)) leaf_name_data.push_back(bypass_optimize_interval.get_name_leafdata());
+    if (link_protection_style_requested.is_set || is_set(link_protection_style_requested.yfilter)) leaf_name_data.push_back(link_protection_style_requested.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7712,16 +9390,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::RsvpTe:
     return children;
 }
 
-void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bypass-optimize-interval")
     {
         bypass_optimize_interval = value;
+        bypass_optimize_interval.value_namespace = name_space;
+        bypass_optimize_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "link-protection-style-requested")
     {
         link_protection_style_requested = value;
+        link_protection_style_requested.value_namespace = name_space;
+        link_protection_style_requested.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bypass-optimize-interval")
+    {
+        bypass_optimize_interval.yfilter = yfilter;
+    }
+    if(value_path == "link-protection-style-requested")
+    {
+        link_protection_style_requested.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::RsvpTe::InterfaceAttributes::Interface::Protection::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bypass-optimize-interval" || name == "link-protection-style-requested")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::SegmentRouting()
@@ -7760,7 +9461,7 @@ bool Mpls::SignalingProtocols::SegmentRouting::has_operation() const
         if(srgb[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::get_segment_path() const
@@ -7846,8 +9547,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "srgb")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Srgb::Srgb()
@@ -7879,9 +9591,9 @@ bool Mpls::SignalingProtocols::SegmentRouting::Srgb::has_data() const
 
 bool Mpls::SignalingProtocols::SegmentRouting::Srgb::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lower_bound.operation)
-	|| is_set(upper_bound.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(upper_bound.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -7909,8 +9621,8 @@ const EntityPath Mpls::SignalingProtocols::SegmentRouting::Srgb::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lower_bound.is_set || is_set(lower_bound.operation)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.operation)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7957,16 +9669,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Srgb::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Srgb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lower-bound")
     {
         lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound")
     {
         upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Srgb::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Srgb::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state" || name == "lower-bound" || name == "upper-bound")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::Config()
@@ -7989,9 +9724,9 @@ bool Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::has_data() const
 
 bool Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lower_bound.operation)
-	|| is_set(upper_bound.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(upper_bound.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::get_segment_path() const
@@ -8017,8 +9752,8 @@ const EntityPath Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lower_bound.is_set || is_set(lower_bound.operation)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.operation)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8037,16 +9772,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lower-bound")
     {
         lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound")
     {
         upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Srgb::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lower-bound" || name == "upper-bound")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Srgb::State::State()
@@ -8075,12 +9833,12 @@ bool Mpls::SignalingProtocols::SegmentRouting::Srgb::State::has_data() const
 
 bool Mpls::SignalingProtocols::SegmentRouting::Srgb::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(free.operation)
-	|| is_set(lower_bound.operation)
-	|| is_set(size.operation)
-	|| is_set(upper_bound.operation)
-	|| is_set(used.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(free.yfilter)
+	|| ydk::is_set(lower_bound.yfilter)
+	|| ydk::is_set(size.yfilter)
+	|| ydk::is_set(upper_bound.yfilter)
+	|| ydk::is_set(used.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Srgb::State::get_segment_path() const
@@ -8106,11 +9864,11 @@ const EntityPath Mpls::SignalingProtocols::SegmentRouting::Srgb::State::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (free.is_set || is_set(free.operation)) leaf_name_data.push_back(free.get_name_leafdata());
-    if (lower_bound.is_set || is_set(lower_bound.operation)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
-    if (size.is_set || is_set(size.operation)) leaf_name_data.push_back(size.get_name_leafdata());
-    if (upper_bound.is_set || is_set(upper_bound.operation)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
-    if (used.is_set || is_set(used.operation)) leaf_name_data.push_back(used.get_name_leafdata());
+    if (free.is_set || is_set(free.yfilter)) leaf_name_data.push_back(free.get_name_leafdata());
+    if (lower_bound.is_set || is_set(lower_bound.yfilter)) leaf_name_data.push_back(lower_bound.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (upper_bound.is_set || is_set(upper_bound.yfilter)) leaf_name_data.push_back(upper_bound.get_name_leafdata());
+    if (used.is_set || is_set(used.yfilter)) leaf_name_data.push_back(used.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8129,28 +9887,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Srgb::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Srgb::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "free")
     {
         free = value;
+        free.value_namespace = name_space;
+        free.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "lower-bound")
     {
         lower_bound = value;
+        lower_bound.value_namespace = name_space;
+        lower_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "size")
     {
         size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "upper-bound")
     {
         upper_bound = value;
+        upper_bound.value_namespace = name_space;
+        upper_bound.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "used")
     {
         used = value;
+        used.value_namespace = name_space;
+        used.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Srgb::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "free")
+    {
+        free.yfilter = yfilter;
+    }
+    if(value_path == "lower-bound")
+    {
+        lower_bound.yfilter = yfilter;
+    }
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+    if(value_path == "upper-bound")
+    {
+        upper_bound.yfilter = yfilter;
+    }
+    if(value_path == "used")
+    {
+        used.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Srgb::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "free" || name == "lower-bound" || name == "size" || name == "upper-bound" || name == "used")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Interfaces::Interfaces()
@@ -8184,8 +9983,8 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::has_data() const
 
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
 	|| (adjacency_sid !=  nullptr && adjacency_sid->has_operation())
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -8214,7 +10013,7 @@ const EntityPath Mpls::SignalingProtocols::SegmentRouting::Interfaces::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8275,12 +10074,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Interfaces::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjacency-sid" || name == "config" || name == "state" || name == "interface")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::Config()
@@ -8301,8 +10117,8 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::has_data() co
 
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::get_segment_path() const
@@ -8328,7 +10144,7 @@ const EntityPath Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8347,12 +10163,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::State()
@@ -8373,8 +10206,8 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::has_data() con
 
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::get_segment_path() const
@@ -8400,7 +10233,7 @@ const EntityPath Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8419,12 +10252,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::AdjacencySid()
@@ -8451,7 +10301,7 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::has_dat
 
 bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -8525,8 +10375,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::Config()
@@ -8560,17 +10421,17 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config:
 {
     for (auto const & leaf : advertise.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : groups.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(advertise.operation)
-	|| is_set(groups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertise.yfilter)
+	|| ydk::is_set(groups.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::get_segment_path() const
@@ -8618,7 +10479,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertise")
     {
@@ -8628,6 +10489,25 @@ void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config:
     {
         groups.append(value);
     }
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertise")
+    {
+        advertise.yfilter = yfilter;
+    }
+    if(value_path == "groups")
+    {
+        groups.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise" || name == "groups")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::State()
@@ -8661,17 +10541,17 @@ bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::
 {
     for (auto const & leaf : advertise.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : groups.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(advertise.operation)
-	|| is_set(groups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(advertise.yfilter)
+	|| ydk::is_set(groups.yfilter);
 }
 
 std::string Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::get_segment_path() const
@@ -8719,7 +10599,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Segment
     return children;
 }
 
-void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "advertise")
     {
@@ -8729,6 +10609,25 @@ void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::
     {
         groups.append(value);
     }
+}
+
+void Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "advertise")
+    {
+        advertise.yfilter = yfilter;
+    }
+    if(value_path == "groups")
+    {
+        groups.yfilter = yfilter;
+    }
+}
+
+bool Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "advertise" || name == "groups")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::Ldp::Ldp()
@@ -8751,7 +10650,7 @@ bool Mpls::SignalingProtocols::Ldp::has_data() const
 
 bool Mpls::SignalingProtocols::Ldp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (timers !=  nullptr && timers->has_operation());
 }
 
@@ -8810,8 +10709,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Ldp::ge
     return children;
 }
 
-void Mpls::SignalingProtocols::Ldp::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::Ldp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::Ldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timers")
+        return true;
+    return false;
 }
 
 Mpls::SignalingProtocols::Ldp::Timers::Timers()
@@ -8830,7 +10740,7 @@ bool Mpls::SignalingProtocols::Ldp::Timers::has_data() const
 
 bool Mpls::SignalingProtocols::Ldp::Timers::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::SignalingProtocols::Ldp::Timers::get_segment_path() const
@@ -8874,8 +10784,17 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::SignalingProtocols::Ldp::Ti
     return children;
 }
 
-void Mpls::SignalingProtocols::Ldp::Timers::set_value(const std::string & value_path, std::string value)
+void Mpls::SignalingProtocols::Ldp::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::SignalingProtocols::Ldp::Timers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::SignalingProtocols::Ldp::Timers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Mpls::Lsps::Lsps()
@@ -8906,7 +10825,7 @@ bool Mpls::Lsps::has_data() const
 
 bool Mpls::Lsps::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (constrained_path !=  nullptr && constrained_path->has_operation())
 	|| (static_lsps !=  nullptr && static_lsps->has_operation())
 	|| (unconstrained_path !=  nullptr && unconstrained_path->has_operation());
@@ -8995,8 +10914,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::get_children() const
     return children;
 }
 
-void Mpls::Lsps::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "constrained-path" || name == "static-lsps" || name == "unconstrained-path")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::ConstrainedPath()
@@ -9035,7 +10965,7 @@ bool Mpls::Lsps::ConstrainedPath::has_operation() const
         if(tunnel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::get_segment_path() const
@@ -9121,8 +11051,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::get_
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "named-explicit-paths" || name == "tunnel")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::NamedExplicitPaths()
@@ -9162,8 +11103,8 @@ bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::has_operation() const
         if(explicit_route_objects[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -9191,7 +11132,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9259,12 +11200,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Name
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "explicit-route-objects" || name == "state" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::Config()
@@ -9285,8 +11243,8 @@ bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::get_segment_path() const
@@ -9312,7 +11270,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9331,12 +11289,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Name
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::State()
@@ -9357,8 +11332,8 @@ bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::get_segment_path() const
@@ -9384,7 +11359,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9403,12 +11378,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Name
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::ExplicitRouteObjects()
@@ -9438,8 +11430,8 @@ bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::has_
 
 bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -9467,7 +11459,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteO
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9514,12 +11506,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Name
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state" || name == "index")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::Config()
@@ -9544,10 +11553,10 @@ bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Conf
 
 bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(hop_type.operation)
-	|| is_set(index_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(hop_type.yfilter)
+	|| ydk::is_set(index_.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::get_segment_path() const
@@ -9573,9 +11582,9 @@ const EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteO
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (hop_type.is_set || is_set(hop_type.operation)) leaf_name_data.push_back(hop_type.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9594,20 +11603,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Name
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hop-type")
     {
         hop_type = value;
+        hop_type.value_namespace = name_space;
+        hop_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "hop-type" || name == "index")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::State::State()
@@ -9632,10 +11670,10 @@ bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::Stat
 
 bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(hop_type.operation)
-	|| is_set(index_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(hop_type.yfilter)
+	|| ydk::is_set(index_.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::State::get_segment_path() const
@@ -9661,9 +11699,9 @@ const EntityPath Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteO
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (hop_type.is_set || is_set(hop_type.operation)) leaf_name_data.push_back(hop_type.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9682,20 +11720,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Name
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hop-type")
     {
         hop_type = value;
+        hop_type.value_namespace = name_space;
+        hop_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::NamedExplicitPaths::ExplicitRouteObjects::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "hop-type" || name == "index")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Tunnel()
@@ -9735,9 +11802,9 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (bandwidth !=  nullptr && bandwidth->has_operation())
 	|| (config !=  nullptr && config->has_operation())
 	|| (p2p_tunnel_attributes !=  nullptr && p2p_tunnel_attributes->has_operation())
@@ -9767,8 +11834,8 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9843,16 +11910,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "config" || name == "p2p-tunnel-attributes" || name == "state" || name == "name" || name == "type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Config::Config()
@@ -9899,21 +11989,21 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Config::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_status.operation)
-	|| is_set(description.operation)
-	|| is_set(hold_priority.operation)
-	|| is_set(local_id.operation)
-	|| is_set(metric.operation)
-	|| is_set(name.operation)
-	|| is_set(preference.operation)
-	|| is_set(protection_style_requested.operation)
-	|| is_set(reoptimize_timer.operation)
-	|| is_set(setup_priority.operation)
-	|| is_set(signaling_protocol.operation)
-	|| is_set(soft_preemption.operation)
-	|| is_set(source.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_status.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(local_id.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(preference.yfilter)
+	|| ydk::is_set(protection_style_requested.yfilter)
+	|| ydk::is_set(reoptimize_timer.yfilter)
+	|| ydk::is_set(setup_priority.yfilter)
+	|| ydk::is_set(signaling_protocol.yfilter)
+	|| ydk::is_set(soft_preemption.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Config::get_segment_path() const
@@ -9939,20 +12029,20 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Config::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_status.is_set || is_set(admin_status.operation)) leaf_name_data.push_back(admin_status.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
-    if (local_id.is_set || is_set(local_id.operation)) leaf_name_data.push_back(local_id.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (preference.is_set || is_set(preference.operation)) leaf_name_data.push_back(preference.get_name_leafdata());
-    if (protection_style_requested.is_set || is_set(protection_style_requested.operation)) leaf_name_data.push_back(protection_style_requested.get_name_leafdata());
-    if (reoptimize_timer.is_set || is_set(reoptimize_timer.operation)) leaf_name_data.push_back(reoptimize_timer.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
-    if (signaling_protocol.is_set || is_set(signaling_protocol.operation)) leaf_name_data.push_back(signaling_protocol.get_name_leafdata());
-    if (soft_preemption.is_set || is_set(soft_preemption.operation)) leaf_name_data.push_back(soft_preemption.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (admin_status.is_set || is_set(admin_status.yfilter)) leaf_name_data.push_back(admin_status.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (local_id.is_set || is_set(local_id.yfilter)) leaf_name_data.push_back(local_id.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
+    if (protection_style_requested.is_set || is_set(protection_style_requested.yfilter)) leaf_name_data.push_back(protection_style_requested.get_name_leafdata());
+    if (reoptimize_timer.is_set || is_set(reoptimize_timer.yfilter)) leaf_name_data.push_back(reoptimize_timer.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (signaling_protocol.is_set || is_set(signaling_protocol.yfilter)) leaf_name_data.push_back(signaling_protocol.get_name_leafdata());
+    if (soft_preemption.is_set || is_set(soft_preemption.yfilter)) leaf_name_data.push_back(soft_preemption.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9971,64 +12061,159 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-status")
     {
         admin_status = value;
+        admin_status.value_namespace = name_space;
+        admin_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-priority")
     {
         hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-id")
     {
         local_id = value;
+        local_id.value_namespace = name_space;
+        local_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preference")
     {
         preference = value;
+        preference.value_namespace = name_space;
+        preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protection-style-requested")
     {
         protection_style_requested = value;
+        protection_style_requested.value_namespace = name_space;
+        protection_style_requested.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reoptimize-timer")
     {
         reoptimize_timer = value;
+        reoptimize_timer.value_namespace = name_space;
+        reoptimize_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-priority")
     {
         setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signaling-protocol")
     {
         signaling_protocol = value;
+        signaling_protocol.value_namespace = name_space;
+        signaling_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "soft-preemption")
     {
         soft_preemption = value;
+        soft_preemption.value_namespace = name_space;
+        soft_preemption.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-status")
+    {
+        admin_status.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "local-id")
+    {
+        local_id.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "preference")
+    {
+        preference.yfilter = yfilter;
+    }
+    if(value_path == "protection-style-requested")
+    {
+        protection_style_requested.yfilter = yfilter;
+    }
+    if(value_path == "reoptimize-timer")
+    {
+        reoptimize_timer.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+    if(value_path == "signaling-protocol")
+    {
+        signaling_protocol.yfilter = yfilter;
+    }
+    if(value_path == "soft-preemption")
+    {
+        soft_preemption.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-status" || name == "description" || name == "hold-priority" || name == "local-id" || name == "metric" || name == "name" || name == "preference" || name == "protection-style-requested" || name == "reoptimize-timer" || name == "setup-priority" || name == "signaling-protocol" || name == "soft-preemption" || name == "source" || name == "type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::State::State()
@@ -10084,23 +12269,23 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::State::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_status.operation)
-	|| is_set(description.operation)
-	|| is_set(hold_priority.operation)
-	|| is_set(local_id.operation)
-	|| is_set(metric.operation)
-	|| is_set(name.operation)
-	|| is_set(oper_status.operation)
-	|| is_set(preference.operation)
-	|| is_set(protection_style_requested.operation)
-	|| is_set(reoptimize_timer.operation)
-	|| is_set(role.operation)
-	|| is_set(setup_priority.operation)
-	|| is_set(signaling_protocol.operation)
-	|| is_set(soft_preemption.operation)
-	|| is_set(source.operation)
-	|| is_set(type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(admin_status.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(local_id.yfilter)
+	|| ydk::is_set(metric.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(oper_status.yfilter)
+	|| ydk::is_set(preference.yfilter)
+	|| ydk::is_set(protection_style_requested.yfilter)
+	|| ydk::is_set(reoptimize_timer.yfilter)
+	|| ydk::is_set(role.yfilter)
+	|| ydk::is_set(setup_priority.yfilter)
+	|| ydk::is_set(signaling_protocol.yfilter)
+	|| ydk::is_set(soft_preemption.yfilter)
+	|| ydk::is_set(source.yfilter)
+	|| ydk::is_set(type.yfilter)
 	|| (counters !=  nullptr && counters->has_operation());
 }
 
@@ -10127,22 +12312,22 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::State::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_status.is_set || is_set(admin_status.operation)) leaf_name_data.push_back(admin_status.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
-    if (local_id.is_set || is_set(local_id.operation)) leaf_name_data.push_back(local_id.get_name_leafdata());
-    if (metric.is_set || is_set(metric.operation)) leaf_name_data.push_back(metric.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (oper_status.is_set || is_set(oper_status.operation)) leaf_name_data.push_back(oper_status.get_name_leafdata());
-    if (preference.is_set || is_set(preference.operation)) leaf_name_data.push_back(preference.get_name_leafdata());
-    if (protection_style_requested.is_set || is_set(protection_style_requested.operation)) leaf_name_data.push_back(protection_style_requested.get_name_leafdata());
-    if (reoptimize_timer.is_set || is_set(reoptimize_timer.operation)) leaf_name_data.push_back(reoptimize_timer.get_name_leafdata());
-    if (role.is_set || is_set(role.operation)) leaf_name_data.push_back(role.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
-    if (signaling_protocol.is_set || is_set(signaling_protocol.operation)) leaf_name_data.push_back(signaling_protocol.get_name_leafdata());
-    if (soft_preemption.is_set || is_set(soft_preemption.operation)) leaf_name_data.push_back(soft_preemption.get_name_leafdata());
-    if (source.is_set || is_set(source.operation)) leaf_name_data.push_back(source.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (admin_status.is_set || is_set(admin_status.yfilter)) leaf_name_data.push_back(admin_status.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (local_id.is_set || is_set(local_id.yfilter)) leaf_name_data.push_back(local_id.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (oper_status.is_set || is_set(oper_status.yfilter)) leaf_name_data.push_back(oper_status.get_name_leafdata());
+    if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
+    if (protection_style_requested.is_set || is_set(protection_style_requested.yfilter)) leaf_name_data.push_back(protection_style_requested.get_name_leafdata());
+    if (reoptimize_timer.is_set || is_set(reoptimize_timer.yfilter)) leaf_name_data.push_back(reoptimize_timer.get_name_leafdata());
+    if (role.is_set || is_set(role.yfilter)) leaf_name_data.push_back(role.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (signaling_protocol.is_set || is_set(signaling_protocol.yfilter)) leaf_name_data.push_back(signaling_protocol.get_name_leafdata());
+    if (soft_preemption.is_set || is_set(soft_preemption.yfilter)) leaf_name_data.push_back(soft_preemption.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10175,72 +12360,179 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-status")
     {
         admin_status = value;
+        admin_status.value_namespace = name_space;
+        admin_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-priority")
     {
         hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-id")
     {
         local_id = value;
+        local_id.value_namespace = name_space;
+        local_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metric")
     {
         metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "oper-status")
     {
         oper_status = value;
+        oper_status.value_namespace = name_space;
+        oper_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preference")
     {
         preference = value;
+        preference.value_namespace = name_space;
+        preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protection-style-requested")
     {
         protection_style_requested = value;
+        protection_style_requested.value_namespace = name_space;
+        protection_style_requested.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reoptimize-timer")
     {
         reoptimize_timer = value;
+        reoptimize_timer.value_namespace = name_space;
+        reoptimize_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "role")
     {
         role = value;
+        role.value_namespace = name_space;
+        role.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-priority")
     {
         setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "signaling-protocol")
     {
         signaling_protocol = value;
+        signaling_protocol.value_namespace = name_space;
+        signaling_protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "soft-preemption")
     {
         soft_preemption = value;
+        soft_preemption.value_namespace = name_space;
+        soft_preemption.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source")
     {
         source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-status")
+    {
+        admin_status.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "local-id")
+    {
+        local_id.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "oper-status")
+    {
+        oper_status.yfilter = yfilter;
+    }
+    if(value_path == "preference")
+    {
+        preference.yfilter = yfilter;
+    }
+    if(value_path == "protection-style-requested")
+    {
+        protection_style_requested.yfilter = yfilter;
+    }
+    if(value_path == "reoptimize-timer")
+    {
+        reoptimize_timer.yfilter = yfilter;
+    }
+    if(value_path == "role")
+    {
+        role.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+    if(value_path == "signaling-protocol")
+    {
+        signaling_protocol.yfilter = yfilter;
+    }
+    if(value_path == "soft-preemption")
+    {
+        soft_preemption.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counters" || name == "admin-status" || name == "description" || name == "hold-priority" || name == "local-id" || name == "metric" || name == "name" || name == "oper-status" || name == "preference" || name == "protection-style-requested" || name == "reoptimize-timer" || name == "role" || name == "setup-priority" || name == "signaling-protocol" || name == "soft-preemption" || name == "source" || name == "type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::Counters()
@@ -10273,14 +12565,14 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(current_path_time.operation)
-	|| is_set(next_reoptimization_time.operation)
-	|| is_set(online_time.operation)
-	|| is_set(packets.operation)
-	|| is_set(path_changes.operation)
-	|| is_set(state_changes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(current_path_time.yfilter)
+	|| ydk::is_set(next_reoptimization_time.yfilter)
+	|| ydk::is_set(online_time.yfilter)
+	|| ydk::is_set(packets.yfilter)
+	|| ydk::is_set(path_changes.yfilter)
+	|| ydk::is_set(state_changes.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::get_segment_path() const
@@ -10306,13 +12598,13 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (current_path_time.is_set || is_set(current_path_time.operation)) leaf_name_data.push_back(current_path_time.get_name_leafdata());
-    if (next_reoptimization_time.is_set || is_set(next_reoptimization_time.operation)) leaf_name_data.push_back(next_reoptimization_time.get_name_leafdata());
-    if (online_time.is_set || is_set(online_time.operation)) leaf_name_data.push_back(online_time.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
-    if (path_changes.is_set || is_set(path_changes.operation)) leaf_name_data.push_back(path_changes.get_name_leafdata());
-    if (state_changes.is_set || is_set(state_changes.operation)) leaf_name_data.push_back(state_changes.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (current_path_time.is_set || is_set(current_path_time.yfilter)) leaf_name_data.push_back(current_path_time.get_name_leafdata());
+    if (next_reoptimization_time.is_set || is_set(next_reoptimization_time.yfilter)) leaf_name_data.push_back(next_reoptimization_time.get_name_leafdata());
+    if (online_time.is_set || is_set(online_time.yfilter)) leaf_name_data.push_back(online_time.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (path_changes.is_set || is_set(path_changes.yfilter)) leaf_name_data.push_back(path_changes.get_name_leafdata());
+    if (state_changes.is_set || is_set(state_changes.yfilter)) leaf_name_data.push_back(state_changes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10331,36 +12623,89 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "current-path-time")
     {
         current_path_time = value;
+        current_path_time.value_namespace = name_space;
+        current_path_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-reoptimization-time")
     {
         next_reoptimization_time = value;
+        next_reoptimization_time.value_namespace = name_space;
+        next_reoptimization_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "online-time")
     {
         online_time = value;
+        online_time.value_namespace = name_space;
+        online_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-changes")
     {
         path_changes = value;
+        path_changes.value_namespace = name_space;
+        path_changes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state-changes")
     {
         state_changes = value;
+        state_changes.value_namespace = name_space;
+        state_changes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "current-path-time")
+    {
+        current_path_time.yfilter = yfilter;
+    }
+    if(value_path == "next-reoptimization-time")
+    {
+        next_reoptimization_time.yfilter = yfilter;
+    }
+    if(value_path == "online-time")
+    {
+        online_time.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+    if(value_path == "path-changes")
+    {
+        path_changes.yfilter = yfilter;
+    }
+    if(value_path == "state-changes")
+    {
+        state_changes.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::State::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "current-path-time" || name == "next-reoptimization-time" || name == "online-time" || name == "packets" || name == "path-changes" || name == "state-changes")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Bandwidth()
@@ -10391,7 +12736,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (auto_bandwidth !=  nullptr && auto_bandwidth->has_operation())
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -10480,8 +12825,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto-bandwidth" || name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::Config()
@@ -10504,9 +12860,9 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_bandwidth.operation)
-	|| is_set(specification_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_bandwidth.yfilter)
+	|| ydk::is_set(specification_type.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::get_segment_path() const
@@ -10532,8 +12888,8 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_bandwidth.is_set || is_set(set_bandwidth.operation)) leaf_name_data.push_back(set_bandwidth.get_name_leafdata());
-    if (specification_type.is_set || is_set(specification_type.operation)) leaf_name_data.push_back(specification_type.get_name_leafdata());
+    if (set_bandwidth.is_set || is_set(set_bandwidth.yfilter)) leaf_name_data.push_back(set_bandwidth.get_name_leafdata());
+    if (specification_type.is_set || is_set(specification_type.yfilter)) leaf_name_data.push_back(specification_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10552,16 +12908,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-bandwidth")
     {
         set_bandwidth = value;
+        set_bandwidth.value_namespace = name_space;
+        set_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "specification-type")
     {
         specification_type = value;
+        specification_type.value_namespace = name_space;
+        specification_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-bandwidth")
+    {
+        set_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "specification-type")
+    {
+        specification_type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-bandwidth" || name == "specification-type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::State()
@@ -10584,9 +12963,9 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::has_data() const
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(set_bandwidth.operation)
-	|| is_set(specification_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_bandwidth.yfilter)
+	|| ydk::is_set(specification_type.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::get_segment_path() const
@@ -10612,8 +12991,8 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_bandwidth.is_set || is_set(set_bandwidth.operation)) leaf_name_data.push_back(set_bandwidth.get_name_leafdata());
-    if (specification_type.is_set || is_set(specification_type.operation)) leaf_name_data.push_back(specification_type.get_name_leafdata());
+    if (set_bandwidth.is_set || is_set(set_bandwidth.yfilter)) leaf_name_data.push_back(set_bandwidth.get_name_leafdata());
+    if (specification_type.is_set || is_set(specification_type.yfilter)) leaf_name_data.push_back(specification_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10632,16 +13011,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-bandwidth")
     {
         set_bandwidth = value;
+        set_bandwidth.value_namespace = name_space;
+        set_bandwidth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "specification-type")
     {
         specification_type = value;
+        specification_type.value_namespace = name_space;
+        specification_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-bandwidth")
+    {
+        set_bandwidth.yfilter = yfilter;
+    }
+    if(value_path == "specification-type")
+    {
+        specification_type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-bandwidth" || name == "specification-type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::AutoBandwidth()
@@ -10676,7 +13078,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::has_data() c
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (overflow !=  nullptr && overflow->has_operation())
 	|| (state !=  nullptr && state->has_operation())
@@ -10780,8 +13182,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "overflow" || name == "state" || name == "underflow")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config::Config()
@@ -10810,12 +13223,12 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config::has_
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjust_interval.operation)
-	|| is_set(adjust_threshold.operation)
-	|| is_set(enabled.operation)
-	|| is_set(max_bw.operation)
-	|| is_set(min_bw.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjust_interval.yfilter)
+	|| ydk::is_set(adjust_threshold.yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(max_bw.yfilter)
+	|| ydk::is_set(min_bw.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config::get_segment_path() const
@@ -10841,11 +13254,11 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjust_interval.is_set || is_set(adjust_interval.operation)) leaf_name_data.push_back(adjust_interval.get_name_leafdata());
-    if (adjust_threshold.is_set || is_set(adjust_threshold.operation)) leaf_name_data.push_back(adjust_threshold.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (max_bw.is_set || is_set(max_bw.operation)) leaf_name_data.push_back(max_bw.get_name_leafdata());
-    if (min_bw.is_set || is_set(min_bw.operation)) leaf_name_data.push_back(min_bw.get_name_leafdata());
+    if (adjust_interval.is_set || is_set(adjust_interval.yfilter)) leaf_name_data.push_back(adjust_interval.get_name_leafdata());
+    if (adjust_threshold.is_set || is_set(adjust_threshold.yfilter)) leaf_name_data.push_back(adjust_threshold.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (max_bw.is_set || is_set(max_bw.yfilter)) leaf_name_data.push_back(max_bw.get_name_leafdata());
+    if (min_bw.is_set || is_set(min_bw.yfilter)) leaf_name_data.push_back(min_bw.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10864,28 +13277,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjust-interval")
     {
         adjust_interval = value;
+        adjust_interval.value_namespace = name_space;
+        adjust_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjust-threshold")
     {
         adjust_threshold = value;
+        adjust_threshold.value_namespace = name_space;
+        adjust_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-bw")
     {
         max_bw = value;
+        max_bw.value_namespace = name_space;
+        max_bw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-bw")
     {
         min_bw = value;
+        min_bw.value_namespace = name_space;
+        min_bw.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjust-interval")
+    {
+        adjust_interval.yfilter = yfilter;
+    }
+    if(value_path == "adjust-threshold")
+    {
+        adjust_threshold.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "max-bw")
+    {
+        max_bw.yfilter = yfilter;
+    }
+    if(value_path == "min-bw")
+    {
+        min_bw.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjust-interval" || name == "adjust-threshold" || name == "enabled" || name == "max-bw" || name == "min-bw")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State::State()
@@ -10914,12 +13368,12 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State::has_d
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjust_interval.operation)
-	|| is_set(adjust_threshold.operation)
-	|| is_set(enabled.operation)
-	|| is_set(max_bw.operation)
-	|| is_set(min_bw.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjust_interval.yfilter)
+	|| ydk::is_set(adjust_threshold.yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(max_bw.yfilter)
+	|| ydk::is_set(min_bw.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State::get_segment_path() const
@@ -10945,11 +13399,11 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjust_interval.is_set || is_set(adjust_interval.operation)) leaf_name_data.push_back(adjust_interval.get_name_leafdata());
-    if (adjust_threshold.is_set || is_set(adjust_threshold.operation)) leaf_name_data.push_back(adjust_threshold.get_name_leafdata());
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (max_bw.is_set || is_set(max_bw.operation)) leaf_name_data.push_back(max_bw.get_name_leafdata());
-    if (min_bw.is_set || is_set(min_bw.operation)) leaf_name_data.push_back(min_bw.get_name_leafdata());
+    if (adjust_interval.is_set || is_set(adjust_interval.yfilter)) leaf_name_data.push_back(adjust_interval.get_name_leafdata());
+    if (adjust_threshold.is_set || is_set(adjust_threshold.yfilter)) leaf_name_data.push_back(adjust_threshold.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (max_bw.is_set || is_set(max_bw.yfilter)) leaf_name_data.push_back(max_bw.get_name_leafdata());
+    if (min_bw.is_set || is_set(min_bw.yfilter)) leaf_name_data.push_back(min_bw.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10968,28 +13422,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjust-interval")
     {
         adjust_interval = value;
+        adjust_interval.value_namespace = name_space;
+        adjust_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "adjust-threshold")
     {
         adjust_threshold = value;
+        adjust_threshold.value_namespace = name_space;
+        adjust_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-bw")
     {
         max_bw = value;
+        max_bw.value_namespace = name_space;
+        max_bw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-bw")
     {
         min_bw = value;
+        min_bw.value_namespace = name_space;
+        min_bw.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjust-interval")
+    {
+        adjust_interval.yfilter = yfilter;
+    }
+    if(value_path == "adjust-threshold")
+    {
+        adjust_threshold.yfilter = yfilter;
+    }
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "max-bw")
+    {
+        max_bw.yfilter = yfilter;
+    }
+    if(value_path == "min-bw")
+    {
+        min_bw.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjust-interval" || name == "adjust-threshold" || name == "enabled" || name == "max-bw" || name == "min-bw")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Overflow()
@@ -11016,7 +13511,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::ha
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -11090,8 +13585,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::Config()
@@ -11116,10 +13622,10 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Co
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(overflow_threshold.operation)
-	|| is_set(trigger_event_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(overflow_threshold.yfilter)
+	|| ydk::is_set(trigger_event_count.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::get_segment_path() const
@@ -11145,9 +13651,9 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (overflow_threshold.is_set || is_set(overflow_threshold.operation)) leaf_name_data.push_back(overflow_threshold.get_name_leafdata());
-    if (trigger_event_count.is_set || is_set(trigger_event_count.operation)) leaf_name_data.push_back(trigger_event_count.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (overflow_threshold.is_set || is_set(overflow_threshold.yfilter)) leaf_name_data.push_back(overflow_threshold.get_name_leafdata());
+    if (trigger_event_count.is_set || is_set(trigger_event_count.yfilter)) leaf_name_data.push_back(trigger_event_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11166,20 +13672,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overflow-threshold")
     {
         overflow_threshold = value;
+        overflow_threshold.value_namespace = name_space;
+        overflow_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trigger-event-count")
     {
         trigger_event_count = value;
+        trigger_event_count.value_namespace = name_space;
+        trigger_event_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "overflow-threshold")
+    {
+        overflow_threshold.yfilter = yfilter;
+    }
+    if(value_path == "trigger-event-count")
+    {
+        trigger_event_count.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "overflow-threshold" || name == "trigger-event-count")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::State()
@@ -11204,10 +13739,10 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::St
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(overflow_threshold.operation)
-	|| is_set(trigger_event_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(overflow_threshold.yfilter)
+	|| ydk::is_set(trigger_event_count.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::get_segment_path() const
@@ -11233,9 +13768,9 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (overflow_threshold.is_set || is_set(overflow_threshold.operation)) leaf_name_data.push_back(overflow_threshold.get_name_leafdata());
-    if (trigger_event_count.is_set || is_set(trigger_event_count.operation)) leaf_name_data.push_back(trigger_event_count.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (overflow_threshold.is_set || is_set(overflow_threshold.yfilter)) leaf_name_data.push_back(overflow_threshold.get_name_leafdata());
+    if (trigger_event_count.is_set || is_set(trigger_event_count.yfilter)) leaf_name_data.push_back(trigger_event_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11254,20 +13789,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overflow-threshold")
     {
         overflow_threshold = value;
+        overflow_threshold.value_namespace = name_space;
+        overflow_threshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trigger-event-count")
     {
         trigger_event_count = value;
+        trigger_event_count.value_namespace = name_space;
+        trigger_event_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "overflow-threshold")
+    {
+        overflow_threshold.yfilter = yfilter;
+    }
+    if(value_path == "trigger-event-count")
+    {
+        trigger_event_count.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Overflow::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "overflow-threshold" || name == "trigger-event-count")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::Underflow()
@@ -11294,7 +13858,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::h
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -11368,8 +13932,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::Config()
@@ -11394,10 +13969,10 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::C
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(trigger_event_count.operation)
-	|| is_set(underflow_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(trigger_event_count.yfilter)
+	|| ydk::is_set(underflow_threshold.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::get_segment_path() const
@@ -11423,9 +13998,9 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (trigger_event_count.is_set || is_set(trigger_event_count.operation)) leaf_name_data.push_back(trigger_event_count.get_name_leafdata());
-    if (underflow_threshold.is_set || is_set(underflow_threshold.operation)) leaf_name_data.push_back(underflow_threshold.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (trigger_event_count.is_set || is_set(trigger_event_count.yfilter)) leaf_name_data.push_back(trigger_event_count.get_name_leafdata());
+    if (underflow_threshold.is_set || is_set(underflow_threshold.yfilter)) leaf_name_data.push_back(underflow_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11444,20 +14019,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trigger-event-count")
     {
         trigger_event_count = value;
+        trigger_event_count.value_namespace = name_space;
+        trigger_event_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "underflow-threshold")
     {
         underflow_threshold = value;
+        underflow_threshold.value_namespace = name_space;
+        underflow_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "trigger-event-count")
+    {
+        trigger_event_count.yfilter = yfilter;
+    }
+    if(value_path == "underflow-threshold")
+    {
+        underflow_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "trigger-event-count" || name == "underflow-threshold")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::State()
@@ -11482,10 +14086,10 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::S
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enabled.operation)
-	|| is_set(trigger_event_count.operation)
-	|| is_set(underflow_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enabled.yfilter)
+	|| ydk::is_set(trigger_event_count.yfilter)
+	|| ydk::is_set(underflow_threshold.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::get_segment_path() const
@@ -11511,9 +14115,9 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enabled.is_set || is_set(enabled.operation)) leaf_name_data.push_back(enabled.get_name_leafdata());
-    if (trigger_event_count.is_set || is_set(trigger_event_count.operation)) leaf_name_data.push_back(trigger_event_count.get_name_leafdata());
-    if (underflow_threshold.is_set || is_set(underflow_threshold.operation)) leaf_name_data.push_back(underflow_threshold.get_name_leafdata());
+    if (enabled.is_set || is_set(enabled.yfilter)) leaf_name_data.push_back(enabled.get_name_leafdata());
+    if (trigger_event_count.is_set || is_set(trigger_event_count.yfilter)) leaf_name_data.push_back(trigger_event_count.get_name_leafdata());
+    if (underflow_threshold.is_set || is_set(underflow_threshold.yfilter)) leaf_name_data.push_back(underflow_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11532,20 +14136,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enabled")
     {
         enabled = value;
+        enabled.value_namespace = name_space;
+        enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trigger-event-count")
     {
         trigger_event_count = value;
+        trigger_event_count.value_namespace = name_space;
+        trigger_event_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "underflow-threshold")
     {
         underflow_threshold = value;
+        underflow_threshold.value_namespace = name_space;
+        underflow_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enabled")
+    {
+        enabled.yfilter = yfilter;
+    }
+    if(value_path == "trigger-event-count")
+    {
+        trigger_event_count.yfilter = yfilter;
+    }
+    if(value_path == "underflow-threshold")
+    {
+        underflow_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::Bandwidth::AutoBandwidth::Underflow::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enabled" || name == "trigger-event-count" || name == "underflow-threshold")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PTunnelAttributes()
@@ -11592,7 +14225,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::has_operation() c
         if(p2p_secondary_paths[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -11708,8 +14341,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "p2p-primary-paths" || name == "p2p-secondary-paths" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::Config()
@@ -11730,8 +14374,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::has_data(
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::get_segment_path() const
@@ -11757,7 +14401,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Confi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11776,12 +14420,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::State()
@@ -11802,8 +14463,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::has_data()
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(destination.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::get_segment_path() const
@@ -11829,7 +14490,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination.is_set || is_set(destination.operation)) leaf_name_data.push_back(destination.get_name_leafdata());
+    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11848,12 +14509,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination")
     {
         destination = value;
+        destination.value_namespace = name_space;
+        destination.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination")
+    {
+        destination.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::P2PPrimaryPaths()
@@ -11891,8 +14569,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (admin_groups !=  nullptr && admin_groups->has_operation())
 	|| (candidate_secondary_paths !=  nullptr && candidate_secondary_paths->has_operation())
 	|| (config !=  nullptr && config->has_operation())
@@ -11922,7 +14600,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11997,12 +14675,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-groups" || name == "candidate-secondary-paths" || name == "config" || name == "state" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::Config()
@@ -12041,17 +14736,17 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cspf_tiebreaker.operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(hold_priority.operation)
-	|| is_set(name.operation)
-	|| is_set(path_computation_method.operation)
-	|| is_set(path_computation_server.operation)
-	|| is_set(preference.operation)
-	|| is_set(retry_timer.operation)
-	|| is_set(setup_priority.operation)
-	|| is_set(use_cspf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cspf_tiebreaker.yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(path_computation_method.yfilter)
+	|| ydk::is_set(path_computation_server.yfilter)
+	|| ydk::is_set(preference.yfilter)
+	|| ydk::is_set(retry_timer.yfilter)
+	|| ydk::is_set(setup_priority.yfilter)
+	|| ydk::is_set(use_cspf.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::get_segment_path() const
@@ -12077,16 +14772,16 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cspf_tiebreaker.is_set || is_set(cspf_tiebreaker.operation)) leaf_name_data.push_back(cspf_tiebreaker.get_name_leafdata());
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (path_computation_method.is_set || is_set(path_computation_method.operation)) leaf_name_data.push_back(path_computation_method.get_name_leafdata());
-    if (path_computation_server.is_set || is_set(path_computation_server.operation)) leaf_name_data.push_back(path_computation_server.get_name_leafdata());
-    if (preference.is_set || is_set(preference.operation)) leaf_name_data.push_back(preference.get_name_leafdata());
-    if (retry_timer.is_set || is_set(retry_timer.operation)) leaf_name_data.push_back(retry_timer.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
-    if (use_cspf.is_set || is_set(use_cspf.operation)) leaf_name_data.push_back(use_cspf.get_name_leafdata());
+    if (cspf_tiebreaker.is_set || is_set(cspf_tiebreaker.yfilter)) leaf_name_data.push_back(cspf_tiebreaker.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (path_computation_method.is_set || is_set(path_computation_method.yfilter)) leaf_name_data.push_back(path_computation_method.get_name_leafdata());
+    if (path_computation_server.is_set || is_set(path_computation_server.yfilter)) leaf_name_data.push_back(path_computation_server.get_name_leafdata());
+    if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
+    if (retry_timer.is_set || is_set(retry_timer.yfilter)) leaf_name_data.push_back(retry_timer.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (use_cspf.is_set || is_set(use_cspf.yfilter)) leaf_name_data.push_back(use_cspf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12105,48 +14800,119 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cspf-tiebreaker")
     {
         cspf_tiebreaker = value;
+        cspf_tiebreaker.value_namespace = name_space;
+        cspf_tiebreaker.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-priority")
     {
         hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-computation-method")
     {
         path_computation_method = value;
+        path_computation_method.value_namespace = name_space;
+        path_computation_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-computation-server")
     {
         path_computation_server = value;
+        path_computation_server.value_namespace = name_space;
+        path_computation_server.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preference")
     {
         preference = value;
+        preference.value_namespace = name_space;
+        preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-timer")
     {
         retry_timer = value;
+        retry_timer.value_namespace = name_space;
+        retry_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-priority")
     {
         setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "use-cspf")
     {
         use_cspf = value;
+        use_cspf.value_namespace = name_space;
+        use_cspf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cspf-tiebreaker")
+    {
+        cspf_tiebreaker.yfilter = yfilter;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "path-computation-method")
+    {
+        path_computation_method.yfilter = yfilter;
+    }
+    if(value_path == "path-computation-server")
+    {
+        path_computation_server.yfilter = yfilter;
+    }
+    if(value_path == "preference")
+    {
+        preference.yfilter = yfilter;
+    }
+    if(value_path == "retry-timer")
+    {
+        retry_timer.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+    if(value_path == "use-cspf")
+    {
+        use_cspf.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cspf-tiebreaker" || name == "explicit-path-name" || name == "hold-priority" || name == "name" || name == "path-computation-method" || name == "path-computation-server" || name == "preference" || name == "retry-timer" || name == "setup-priority" || name == "use-cspf")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::State::State()
@@ -12185,17 +14951,17 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cspf_tiebreaker.operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(hold_priority.operation)
-	|| is_set(name.operation)
-	|| is_set(path_computation_method.operation)
-	|| is_set(path_computation_server.operation)
-	|| is_set(preference.operation)
-	|| is_set(retry_timer.operation)
-	|| is_set(setup_priority.operation)
-	|| is_set(use_cspf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cspf_tiebreaker.yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(path_computation_method.yfilter)
+	|| ydk::is_set(path_computation_server.yfilter)
+	|| ydk::is_set(preference.yfilter)
+	|| ydk::is_set(retry_timer.yfilter)
+	|| ydk::is_set(setup_priority.yfilter)
+	|| ydk::is_set(use_cspf.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::State::get_segment_path() const
@@ -12221,16 +14987,16 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cspf_tiebreaker.is_set || is_set(cspf_tiebreaker.operation)) leaf_name_data.push_back(cspf_tiebreaker.get_name_leafdata());
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (path_computation_method.is_set || is_set(path_computation_method.operation)) leaf_name_data.push_back(path_computation_method.get_name_leafdata());
-    if (path_computation_server.is_set || is_set(path_computation_server.operation)) leaf_name_data.push_back(path_computation_server.get_name_leafdata());
-    if (preference.is_set || is_set(preference.operation)) leaf_name_data.push_back(preference.get_name_leafdata());
-    if (retry_timer.is_set || is_set(retry_timer.operation)) leaf_name_data.push_back(retry_timer.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
-    if (use_cspf.is_set || is_set(use_cspf.operation)) leaf_name_data.push_back(use_cspf.get_name_leafdata());
+    if (cspf_tiebreaker.is_set || is_set(cspf_tiebreaker.yfilter)) leaf_name_data.push_back(cspf_tiebreaker.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (path_computation_method.is_set || is_set(path_computation_method.yfilter)) leaf_name_data.push_back(path_computation_method.get_name_leafdata());
+    if (path_computation_server.is_set || is_set(path_computation_server.yfilter)) leaf_name_data.push_back(path_computation_server.get_name_leafdata());
+    if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
+    if (retry_timer.is_set || is_set(retry_timer.yfilter)) leaf_name_data.push_back(retry_timer.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (use_cspf.is_set || is_set(use_cspf.yfilter)) leaf_name_data.push_back(use_cspf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12249,48 +15015,119 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cspf-tiebreaker")
     {
         cspf_tiebreaker = value;
+        cspf_tiebreaker.value_namespace = name_space;
+        cspf_tiebreaker.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-priority")
     {
         hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-computation-method")
     {
         path_computation_method = value;
+        path_computation_method.value_namespace = name_space;
+        path_computation_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-computation-server")
     {
         path_computation_server = value;
+        path_computation_server.value_namespace = name_space;
+        path_computation_server.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preference")
     {
         preference = value;
+        preference.value_namespace = name_space;
+        preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-timer")
     {
         retry_timer = value;
+        retry_timer.value_namespace = name_space;
+        retry_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-priority")
     {
         setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "use-cspf")
     {
         use_cspf = value;
+        use_cspf.value_namespace = name_space;
+        use_cspf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cspf-tiebreaker")
+    {
+        cspf_tiebreaker.yfilter = yfilter;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "path-computation-method")
+    {
+        path_computation_method.yfilter = yfilter;
+    }
+    if(value_path == "path-computation-server")
+    {
+        path_computation_server.yfilter = yfilter;
+    }
+    if(value_path == "preference")
+    {
+        preference.yfilter = yfilter;
+    }
+    if(value_path == "retry-timer")
+    {
+        retry_timer.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+    if(value_path == "use-cspf")
+    {
+        use_cspf.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cspf-tiebreaker" || name == "explicit-path-name" || name == "hold-priority" || name == "name" || name == "path-computation-method" || name == "path-computation-server" || name == "preference" || name == "retry-timer" || name == "setup-priority" || name == "use-cspf")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPaths()
@@ -12319,7 +15156,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
         if(candidate_secondary_path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::get_segment_path() const
@@ -12384,8 +15221,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "candidate-secondary-path")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::CandidateSecondaryPath()
@@ -12415,8 +15263,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(secondary_path.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(secondary_path.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -12444,7 +15292,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (secondary_path.is_set || is_set(secondary_path.operation)) leaf_name_data.push_back(secondary_path.get_name_leafdata());
+    if (secondary_path.is_set || is_set(secondary_path.yfilter)) leaf_name_data.push_back(secondary_path.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12491,12 +15339,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "secondary-path")
     {
         secondary_path = value;
+        secondary_path.value_namespace = name_space;
+        secondary_path.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "secondary-path")
+    {
+        secondary_path.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state" || name == "secondary-path")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::Config()
@@ -12519,9 +15384,9 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(priority.operation)
-	|| is_set(secondary_path.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(secondary_path.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::get_segment_path() const
@@ -12547,8 +15412,8 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (secondary_path.is_set || is_set(secondary_path.operation)) leaf_name_data.push_back(secondary_path.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (secondary_path.is_set || is_set(secondary_path.yfilter)) leaf_name_data.push_back(secondary_path.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12567,16 +15432,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-path")
     {
         secondary_path = value;
+        secondary_path.value_namespace = name_space;
+        secondary_path.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "secondary-path")
+    {
+        secondary_path.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority" || name == "secondary-path")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::State::State()
@@ -12601,10 +15489,10 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(active.operation)
-	|| is_set(priority.operation)
-	|| is_set(secondary_path.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(secondary_path.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::State::get_segment_path() const
@@ -12630,9 +15518,9 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (active.is_set || is_set(active.operation)) leaf_name_data.push_back(active.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (secondary_path.is_set || is_set(secondary_path.operation)) leaf_name_data.push_back(secondary_path.get_name_leafdata());
+    if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (secondary_path.is_set || is_set(secondary_path.yfilter)) leaf_name_data.push_back(secondary_path.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12651,20 +15539,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "active")
     {
         active = value;
+        active.value_namespace = name_space;
+        active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "secondary-path")
     {
         secondary_path = value;
+        secondary_path.value_namespace = name_space;
+        secondary_path.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "active")
+    {
+        active.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "secondary-path")
+    {
+        secondary_path.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::CandidateSecondaryPaths::CandidateSecondaryPath::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "active" || name == "priority" || name == "secondary-path")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::AdminGroups()
@@ -12691,7 +15608,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -12765,8 +15682,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::Config()
@@ -12806,23 +15734,23 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 {
     for (auto const & leaf : exclude_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : include_all_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : include_any_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(exclude_group.operation)
-	|| is_set(include_all_group.operation)
-	|| is_set(include_any_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(exclude_group.yfilter)
+	|| ydk::is_set(include_all_group.yfilter)
+	|| ydk::is_set(include_any_group.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::get_segment_path() const
@@ -12872,7 +15800,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exclude-group")
     {
@@ -12886,6 +15814,29 @@ void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
     {
         include_any_group.append(value);
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exclude-group")
+    {
+        exclude_group.yfilter = yfilter;
+    }
+    if(value_path == "include-all-group")
+    {
+        include_all_group.yfilter = yfilter;
+    }
+    if(value_path == "include-any-group")
+    {
+        include_any_group.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exclude-group" || name == "include-all-group" || name == "include-any-group")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::State()
@@ -12925,23 +15876,23 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
 {
     for (auto const & leaf : exclude_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : include_all_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : include_any_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(exclude_group.operation)
-	|| is_set(include_all_group.operation)
-	|| is_set(include_any_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(exclude_group.yfilter)
+	|| ydk::is_set(include_all_group.yfilter)
+	|| ydk::is_set(include_any_group.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::get_segment_path() const
@@ -12991,7 +15942,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exclude-group")
     {
@@ -13005,6 +15956,29 @@ void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::
     {
         include_any_group.append(value);
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exclude-group")
+    {
+        exclude_group.yfilter = yfilter;
+    }
+    if(value_path == "include-all-group")
+    {
+        include_all_group.yfilter = yfilter;
+    }
+    if(value_path == "include-any-group")
+    {
+        include_any_group.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PPrimaryPaths::AdminGroups::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exclude-group" || name == "include-all-group" || name == "include-any-group")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::P2PSecondaryPaths()
@@ -13038,8 +16012,8 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (admin_groups !=  nullptr && admin_groups->has_operation())
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -13068,7 +16042,7 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13129,12 +16103,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-groups" || name == "config" || name == "state" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::Config()
@@ -13173,17 +16164,17 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cspf_tiebreaker.operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(hold_priority.operation)
-	|| is_set(name.operation)
-	|| is_set(path_computation_method.operation)
-	|| is_set(path_computation_server.operation)
-	|| is_set(preference.operation)
-	|| is_set(retry_timer.operation)
-	|| is_set(setup_priority.operation)
-	|| is_set(use_cspf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cspf_tiebreaker.yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(path_computation_method.yfilter)
+	|| ydk::is_set(path_computation_server.yfilter)
+	|| ydk::is_set(preference.yfilter)
+	|| ydk::is_set(retry_timer.yfilter)
+	|| ydk::is_set(setup_priority.yfilter)
+	|| ydk::is_set(use_cspf.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::get_segment_path() const
@@ -13209,16 +16200,16 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cspf_tiebreaker.is_set || is_set(cspf_tiebreaker.operation)) leaf_name_data.push_back(cspf_tiebreaker.get_name_leafdata());
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (path_computation_method.is_set || is_set(path_computation_method.operation)) leaf_name_data.push_back(path_computation_method.get_name_leafdata());
-    if (path_computation_server.is_set || is_set(path_computation_server.operation)) leaf_name_data.push_back(path_computation_server.get_name_leafdata());
-    if (preference.is_set || is_set(preference.operation)) leaf_name_data.push_back(preference.get_name_leafdata());
-    if (retry_timer.is_set || is_set(retry_timer.operation)) leaf_name_data.push_back(retry_timer.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
-    if (use_cspf.is_set || is_set(use_cspf.operation)) leaf_name_data.push_back(use_cspf.get_name_leafdata());
+    if (cspf_tiebreaker.is_set || is_set(cspf_tiebreaker.yfilter)) leaf_name_data.push_back(cspf_tiebreaker.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (path_computation_method.is_set || is_set(path_computation_method.yfilter)) leaf_name_data.push_back(path_computation_method.get_name_leafdata());
+    if (path_computation_server.is_set || is_set(path_computation_server.yfilter)) leaf_name_data.push_back(path_computation_server.get_name_leafdata());
+    if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
+    if (retry_timer.is_set || is_set(retry_timer.yfilter)) leaf_name_data.push_back(retry_timer.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (use_cspf.is_set || is_set(use_cspf.yfilter)) leaf_name_data.push_back(use_cspf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13237,48 +16228,119 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cspf-tiebreaker")
     {
         cspf_tiebreaker = value;
+        cspf_tiebreaker.value_namespace = name_space;
+        cspf_tiebreaker.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-priority")
     {
         hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-computation-method")
     {
         path_computation_method = value;
+        path_computation_method.value_namespace = name_space;
+        path_computation_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-computation-server")
     {
         path_computation_server = value;
+        path_computation_server.value_namespace = name_space;
+        path_computation_server.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preference")
     {
         preference = value;
+        preference.value_namespace = name_space;
+        preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-timer")
     {
         retry_timer = value;
+        retry_timer.value_namespace = name_space;
+        retry_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-priority")
     {
         setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "use-cspf")
     {
         use_cspf = value;
+        use_cspf.value_namespace = name_space;
+        use_cspf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cspf-tiebreaker")
+    {
+        cspf_tiebreaker.yfilter = yfilter;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "path-computation-method")
+    {
+        path_computation_method.yfilter = yfilter;
+    }
+    if(value_path == "path-computation-server")
+    {
+        path_computation_server.yfilter = yfilter;
+    }
+    if(value_path == "preference")
+    {
+        preference.yfilter = yfilter;
+    }
+    if(value_path == "retry-timer")
+    {
+        retry_timer.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+    if(value_path == "use-cspf")
+    {
+        use_cspf.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cspf-tiebreaker" || name == "explicit-path-name" || name == "hold-priority" || name == "name" || name == "path-computation-method" || name == "path-computation-server" || name == "preference" || name == "retry-timer" || name == "setup-priority" || name == "use-cspf")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::State::State()
@@ -13317,17 +16379,17 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cspf_tiebreaker.operation)
-	|| is_set(explicit_path_name.operation)
-	|| is_set(hold_priority.operation)
-	|| is_set(name.operation)
-	|| is_set(path_computation_method.operation)
-	|| is_set(path_computation_server.operation)
-	|| is_set(preference.operation)
-	|| is_set(retry_timer.operation)
-	|| is_set(setup_priority.operation)
-	|| is_set(use_cspf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cspf_tiebreaker.yfilter)
+	|| ydk::is_set(explicit_path_name.yfilter)
+	|| ydk::is_set(hold_priority.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(path_computation_method.yfilter)
+	|| ydk::is_set(path_computation_server.yfilter)
+	|| ydk::is_set(preference.yfilter)
+	|| ydk::is_set(retry_timer.yfilter)
+	|| ydk::is_set(setup_priority.yfilter)
+	|| ydk::is_set(use_cspf.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::State::get_segment_path() const
@@ -13353,16 +16415,16 @@ const EntityPath Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cspf_tiebreaker.is_set || is_set(cspf_tiebreaker.operation)) leaf_name_data.push_back(cspf_tiebreaker.get_name_leafdata());
-    if (explicit_path_name.is_set || is_set(explicit_path_name.operation)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
-    if (hold_priority.is_set || is_set(hold_priority.operation)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (path_computation_method.is_set || is_set(path_computation_method.operation)) leaf_name_data.push_back(path_computation_method.get_name_leafdata());
-    if (path_computation_server.is_set || is_set(path_computation_server.operation)) leaf_name_data.push_back(path_computation_server.get_name_leafdata());
-    if (preference.is_set || is_set(preference.operation)) leaf_name_data.push_back(preference.get_name_leafdata());
-    if (retry_timer.is_set || is_set(retry_timer.operation)) leaf_name_data.push_back(retry_timer.get_name_leafdata());
-    if (setup_priority.is_set || is_set(setup_priority.operation)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
-    if (use_cspf.is_set || is_set(use_cspf.operation)) leaf_name_data.push_back(use_cspf.get_name_leafdata());
+    if (cspf_tiebreaker.is_set || is_set(cspf_tiebreaker.yfilter)) leaf_name_data.push_back(cspf_tiebreaker.get_name_leafdata());
+    if (explicit_path_name.is_set || is_set(explicit_path_name.yfilter)) leaf_name_data.push_back(explicit_path_name.get_name_leafdata());
+    if (hold_priority.is_set || is_set(hold_priority.yfilter)) leaf_name_data.push_back(hold_priority.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (path_computation_method.is_set || is_set(path_computation_method.yfilter)) leaf_name_data.push_back(path_computation_method.get_name_leafdata());
+    if (path_computation_server.is_set || is_set(path_computation_server.yfilter)) leaf_name_data.push_back(path_computation_server.get_name_leafdata());
+    if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
+    if (retry_timer.is_set || is_set(retry_timer.yfilter)) leaf_name_data.push_back(retry_timer.get_name_leafdata());
+    if (setup_priority.is_set || is_set(setup_priority.yfilter)) leaf_name_data.push_back(setup_priority.get_name_leafdata());
+    if (use_cspf.is_set || is_set(use_cspf.yfilter)) leaf_name_data.push_back(use_cspf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13381,48 +16443,119 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cspf-tiebreaker")
     {
         cspf_tiebreaker = value;
+        cspf_tiebreaker.value_namespace = name_space;
+        cspf_tiebreaker.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "explicit-path-name")
     {
         explicit_path_name = value;
+        explicit_path_name.value_namespace = name_space;
+        explicit_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-priority")
     {
         hold_priority = value;
+        hold_priority.value_namespace = name_space;
+        hold_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-computation-method")
     {
         path_computation_method = value;
+        path_computation_method.value_namespace = name_space;
+        path_computation_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-computation-server")
     {
         path_computation_server = value;
+        path_computation_server.value_namespace = name_space;
+        path_computation_server.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "preference")
     {
         preference = value;
+        preference.value_namespace = name_space;
+        preference.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retry-timer")
     {
         retry_timer = value;
+        retry_timer.value_namespace = name_space;
+        retry_timer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-priority")
     {
         setup_priority = value;
+        setup_priority.value_namespace = name_space;
+        setup_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "use-cspf")
     {
         use_cspf = value;
+        use_cspf.value_namespace = name_space;
+        use_cspf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cspf-tiebreaker")
+    {
+        cspf_tiebreaker.yfilter = yfilter;
+    }
+    if(value_path == "explicit-path-name")
+    {
+        explicit_path_name.yfilter = yfilter;
+    }
+    if(value_path == "hold-priority")
+    {
+        hold_priority.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "path-computation-method")
+    {
+        path_computation_method.yfilter = yfilter;
+    }
+    if(value_path == "path-computation-server")
+    {
+        path_computation_server.yfilter = yfilter;
+    }
+    if(value_path == "preference")
+    {
+        preference.yfilter = yfilter;
+    }
+    if(value_path == "retry-timer")
+    {
+        retry_timer.yfilter = yfilter;
+    }
+    if(value_path == "setup-priority")
+    {
+        setup_priority.yfilter = yfilter;
+    }
+    if(value_path == "use-cspf")
+    {
+        use_cspf.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cspf-tiebreaker" || name == "explicit-path-name" || name == "hold-priority" || name == "name" || name == "path-computation-method" || name == "path-computation-server" || name == "preference" || name == "retry-timer" || name == "setup-priority" || name == "use-cspf")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::AdminGroups()
@@ -13449,7 +16582,7 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 
 bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -13523,8 +16656,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::Config()
@@ -13564,23 +16708,23 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 {
     for (auto const & leaf : exclude_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : include_all_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : include_any_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(exclude_group.operation)
-	|| is_set(include_all_group.operation)
-	|| is_set(include_any_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(exclude_group.yfilter)
+	|| ydk::is_set(include_all_group.yfilter)
+	|| ydk::is_set(include_any_group.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::get_segment_path() const
@@ -13630,7 +16774,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exclude-group")
     {
@@ -13644,6 +16788,29 @@ void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
     {
         include_any_group.append(value);
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exclude-group")
+    {
+        exclude_group.yfilter = yfilter;
+    }
+    if(value_path == "include-all-group")
+    {
+        include_all_group.yfilter = yfilter;
+    }
+    if(value_path == "include-any-group")
+    {
+        include_any_group.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exclude-group" || name == "include-all-group" || name == "include-any-group")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::State()
@@ -13683,23 +16850,23 @@ bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
 {
     for (auto const & leaf : exclude_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : include_all_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : include_any_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(exclude_group.operation)
-	|| is_set(include_all_group.operation)
-	|| is_set(include_any_group.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(exclude_group.yfilter)
+	|| ydk::is_set(include_all_group.yfilter)
+	|| ydk::is_set(include_any_group.yfilter);
 }
 
 std::string Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::get_segment_path() const
@@ -13749,7 +16916,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::ConstrainedPath::Tunn
     return children;
 }
 
-void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "exclude-group")
     {
@@ -13763,6 +16930,29 @@ void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths
     {
         include_any_group.append(value);
     }
+}
+
+void Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "exclude-group")
+    {
+        exclude_group.yfilter = yfilter;
+    }
+    if(value_path == "include-all-group")
+    {
+        include_all_group.yfilter = yfilter;
+    }
+    if(value_path == "include-any-group")
+    {
+        include_any_group.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::ConstrainedPath::Tunnel::P2PTunnelAttributes::P2PSecondaryPaths::AdminGroups::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exclude-group" || name == "include-all-group" || name == "include-any-group")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::UnconstrainedPath()
@@ -13785,7 +16975,7 @@ bool Mpls::Lsps::UnconstrainedPath::has_data() const
 
 bool Mpls::Lsps::UnconstrainedPath::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (path_setup_protocol !=  nullptr && path_setup_protocol->has_operation());
 }
 
@@ -13844,8 +17034,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::ge
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::UnconstrainedPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::UnconstrainedPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-setup-protocol")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::PathSetupProtocol()
@@ -13868,7 +17069,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::has_data() const
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ldp !=  nullptr && ldp->has_operation())
 	|| (segment_routing !=  nullptr && segment_routing->has_operation());
 }
@@ -13942,8 +17143,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ldp" || name == "segment-routing")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Ldp()
@@ -13966,7 +17178,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::has_data() const
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tunnel !=  nullptr && tunnel->has_operation());
 }
 
@@ -14025,8 +17237,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Tunnel()
@@ -14062,9 +17285,9 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::has_data() c
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ldp_type.operation)
-	|| is_set(tunnel_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(ldp_type.yfilter)
+	|| ydk::is_set(tunnel_type.yfilter)
 	|| (mp2mp_lsp !=  nullptr && mp2mp_lsp->has_operation())
 	|| (p2mp_lsp !=  nullptr && p2mp_lsp->has_operation())
 	|| (p2p_lsp !=  nullptr && p2p_lsp->has_operation());
@@ -14093,8 +17316,8 @@ const EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ldp_type.is_set || is_set(ldp_type.operation)) leaf_name_data.push_back(ldp_type.get_name_leafdata());
-    if (tunnel_type.is_set || is_set(tunnel_type.operation)) leaf_name_data.push_back(tunnel_type.get_name_leafdata());
+    if (ldp_type.is_set || is_set(ldp_type.yfilter)) leaf_name_data.push_back(ldp_type.get_name_leafdata());
+    if (tunnel_type.is_set || is_set(tunnel_type.yfilter)) leaf_name_data.push_back(tunnel_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14155,16 +17378,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ldp-type")
     {
         ldp_type = value;
+        ldp_type.value_namespace = name_space;
+        ldp_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnel-type")
     {
         tunnel_type = value;
+        tunnel_type.value_namespace = name_space;
+        tunnel_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ldp-type")
+    {
+        ldp_type.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-type")
+    {
+        tunnel_type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mp2mp-lsp" || name == "p2mp-lsp" || name == "p2p-lsp" || name == "ldp-type" || name == "tunnel-type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::P2PLsp()
@@ -14192,11 +17438,11 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::has_
 {
     for (auto const & leaf : fec_address.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(fec_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fec_address.yfilter);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::get_segment_path() const
@@ -14242,12 +17488,27 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fec-address")
     {
         fec_address.append(value);
     }
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fec-address")
+    {
+        fec_address.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2PLsp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fec-address")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp::P2MpLsp()
@@ -14266,7 +17527,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp::has
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp::get_segment_path() const
@@ -14310,8 +17571,17 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::P2MpLsp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp::Mp2MpLsp()
@@ -14330,7 +17600,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp::ha
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp::has_operation() const
 {
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp::get_segment_path() const
@@ -14374,8 +17644,17 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::Mp2MpLsp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::SegmentRouting()
@@ -14398,7 +17677,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::has_data(
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tunnel !=  nullptr && tunnel->has_operation());
 }
 
@@ -14457,8 +17736,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::Tunnel()
@@ -14484,8 +17774,8 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::h
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tunnel_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tunnel_type.yfilter)
 	|| (p2p_lsp !=  nullptr && p2p_lsp->has_operation());
 }
 
@@ -14512,7 +17802,7 @@ const EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRoutin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tunnel_type.is_set || is_set(tunnel_type.operation)) leaf_name_data.push_back(tunnel_type.get_name_leafdata());
+    if (tunnel_type.is_set || is_set(tunnel_type.yfilter)) leaf_name_data.push_back(tunnel_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14545,12 +17835,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnel-type")
     {
         tunnel_type = value;
+        tunnel_type.value_namespace = name_space;
+        tunnel_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunnel-type")
+    {
+        tunnel_type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "p2p-lsp" || name == "tunnel-type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::P2PLsp()
@@ -14579,7 +17886,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
         if(fec[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::get_segment_path() const
@@ -14644,8 +17951,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fec")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::Fec()
@@ -14679,8 +17997,8 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fec_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(fec_address.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (prefix_sid !=  nullptr && prefix_sid->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -14709,7 +18027,7 @@ const EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRoutin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fec_address.is_set || is_set(fec_address.operation)) leaf_name_data.push_back(fec_address.get_name_leafdata());
+    if (fec_address.is_set || is_set(fec_address.yfilter)) leaf_name_data.push_back(fec_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14770,12 +18088,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fec-address")
     {
         fec_address = value;
+        fec_address.value_namespace = name_space;
+        fec_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fec-address")
+    {
+        fec_address.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "prefix-sid" || name == "state" || name == "fec-address")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::Config::Config()
@@ -14796,8 +18131,8 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fec_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fec_address.yfilter);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::Config::get_segment_path() const
@@ -14823,7 +18158,7 @@ const EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRoutin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fec_address.is_set || is_set(fec_address.operation)) leaf_name_data.push_back(fec_address.get_name_leafdata());
+    if (fec_address.is_set || is_set(fec_address.yfilter)) leaf_name_data.push_back(fec_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14842,12 +18177,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fec-address")
     {
         fec_address = value;
+        fec_address.value_namespace = name_space;
+        fec_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fec-address")
+    {
+        fec_address.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fec-address")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::State::State()
@@ -14868,8 +18220,8 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(fec_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(fec_address.yfilter);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::State::get_segment_path() const
@@ -14895,7 +18247,7 @@ const EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRoutin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fec_address.is_set || is_set(fec_address.operation)) leaf_name_data.push_back(fec_address.get_name_leafdata());
+    if (fec_address.is_set || is_set(fec_address.yfilter)) leaf_name_data.push_back(fec_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14914,12 +18266,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fec-address")
     {
         fec_address = value;
+        fec_address.value_namespace = name_space;
+        fec_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fec-address")
+    {
+        fec_address.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fec-address")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::PrefixSid()
@@ -14946,7 +18315,7 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (state !=  nullptr && state->has_operation());
 }
@@ -15020,8 +18389,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "state")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::Config()
@@ -15046,10 +18426,10 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(last_hop_behavior.operation)
-	|| is_set(node_flag.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(last_hop_behavior.yfilter)
+	|| ydk::is_set(node_flag.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::get_segment_path() const
@@ -15075,9 +18455,9 @@ const EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRoutin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (last_hop_behavior.is_set || is_set(last_hop_behavior.operation)) leaf_name_data.push_back(last_hop_behavior.get_name_leafdata());
-    if (node_flag.is_set || is_set(node_flag.operation)) leaf_name_data.push_back(node_flag.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (last_hop_behavior.is_set || is_set(last_hop_behavior.yfilter)) leaf_name_data.push_back(last_hop_behavior.get_name_leafdata());
+    if (node_flag.is_set || is_set(node_flag.yfilter)) leaf_name_data.push_back(node_flag.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15096,20 +18476,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "last-hop-behavior")
     {
         last_hop_behavior = value;
+        last_hop_behavior.value_namespace = name_space;
+        last_hop_behavior.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-flag")
     {
         node_flag = value;
+        node_flag.value_namespace = name_space;
+        node_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "last-hop-behavior")
+    {
+        last_hop_behavior.yfilter = yfilter;
+    }
+    if(value_path == "node-flag")
+    {
+        node_flag.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-hop-behavior" || name == "node-flag" || name == "type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::State()
@@ -15134,10 +18543,10 @@ bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P
 
 bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(last_hop_behavior.operation)
-	|| is_set(node_flag.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(last_hop_behavior.yfilter)
+	|| ydk::is_set(node_flag.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::get_segment_path() const
@@ -15163,9 +18572,9 @@ const EntityPath Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRoutin
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (last_hop_behavior.is_set || is_set(last_hop_behavior.operation)) leaf_name_data.push_back(last_hop_behavior.get_name_leafdata());
-    if (node_flag.is_set || is_set(node_flag.operation)) leaf_name_data.push_back(node_flag.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (last_hop_behavior.is_set || is_set(last_hop_behavior.yfilter)) leaf_name_data.push_back(last_hop_behavior.get_name_leafdata());
+    if (node_flag.is_set || is_set(node_flag.yfilter)) leaf_name_data.push_back(node_flag.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15184,20 +18593,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::UnconstrainedPath::Pa
     return children;
 }
 
-void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "last-hop-behavior")
     {
         last_hop_behavior = value;
+        last_hop_behavior.value_namespace = name_space;
+        last_hop_behavior.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-flag")
     {
         node_flag = value;
+        node_flag.value_namespace = name_space;
+        node_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "last-hop-behavior")
+    {
+        last_hop_behavior.yfilter = yfilter;
+    }
+    if(value_path == "node-flag")
+    {
+        node_flag.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-hop-behavior" || name == "node-flag" || name == "type")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::StaticLsps::StaticLsps()
@@ -15226,7 +18664,7 @@ bool Mpls::Lsps::StaticLsps::has_operation() const
         if(label_switched_path[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mpls::Lsps::StaticLsps::get_segment_path() const
@@ -15291,8 +18729,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::StaticLsps::get_child
     return children;
 }
 
-void Mpls::Lsps::StaticLsps::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::StaticLsps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mpls::Lsps::StaticLsps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mpls::Lsps::StaticLsps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-switched-path")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::StaticLsps::LabelSwitchedPath::LabelSwitchedPath()
@@ -15326,8 +18775,8 @@ bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::has_data() const
 
 bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
 	|| (egress !=  nullptr && egress->has_operation())
 	|| (ingress !=  nullptr && ingress->has_operation())
 	|| (transit !=  nullptr && transit->has_operation());
@@ -15356,7 +18805,7 @@ const EntityPath Mpls::Lsps::StaticLsps::LabelSwitchedPath::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15417,12 +18866,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::StaticLsps::LabelSwit
     return children;
 }
 
-void Mpls::Lsps::StaticLsps::LabelSwitchedPath::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::StaticLsps::LabelSwitchedPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::StaticLsps::LabelSwitchedPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress" || name == "ingress" || name == "transit" || name == "name")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::Ingress()
@@ -15447,10 +18913,10 @@ bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::has_data() const
 
 bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(incoming_label.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(push_label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(incoming_label.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(push_label.yfilter);
 }
 
 std::string Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::get_segment_path() const
@@ -15476,9 +18942,9 @@ const EntityPath Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (incoming_label.is_set || is_set(incoming_label.operation)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (push_label.is_set || is_set(push_label.operation)) leaf_name_data.push_back(push_label.get_name_leafdata());
+    if (incoming_label.is_set || is_set(incoming_label.yfilter)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (push_label.is_set || is_set(push_label.yfilter)) leaf_name_data.push_back(push_label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15497,20 +18963,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::StaticLsps::LabelSwit
     return children;
 }
 
-void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "incoming-label")
     {
         incoming_label = value;
+        incoming_label.value_namespace = name_space;
+        incoming_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "push-label")
     {
         push_label = value;
+        push_label.value_namespace = name_space;
+        push_label.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incoming-label")
+    {
+        incoming_label.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "push-label")
+    {
+        push_label.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Ingress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "incoming-label" || name == "next-hop" || name == "push-label")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::Transit()
@@ -15535,10 +19030,10 @@ bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::has_data() const
 
 bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(incoming_label.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(push_label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(incoming_label.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(push_label.yfilter);
 }
 
 std::string Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::get_segment_path() const
@@ -15564,9 +19059,9 @@ const EntityPath Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (incoming_label.is_set || is_set(incoming_label.operation)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (push_label.is_set || is_set(push_label.operation)) leaf_name_data.push_back(push_label.get_name_leafdata());
+    if (incoming_label.is_set || is_set(incoming_label.yfilter)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (push_label.is_set || is_set(push_label.yfilter)) leaf_name_data.push_back(push_label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15585,20 +19080,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::StaticLsps::LabelSwit
     return children;
 }
 
-void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "incoming-label")
     {
         incoming_label = value;
+        incoming_label.value_namespace = name_space;
+        incoming_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "push-label")
     {
         push_label = value;
+        push_label.value_namespace = name_space;
+        push_label.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incoming-label")
+    {
+        incoming_label.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "push-label")
+    {
+        push_label.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Transit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "incoming-label" || name == "next-hop" || name == "push-label")
+        return true;
+    return false;
 }
 
 Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::Egress()
@@ -15623,10 +19147,10 @@ bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::has_data() const
 
 bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(incoming_label.operation)
-	|| is_set(next_hop.operation)
-	|| is_set(push_label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(incoming_label.yfilter)
+	|| ydk::is_set(next_hop.yfilter)
+	|| ydk::is_set(push_label.yfilter);
 }
 
 std::string Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::get_segment_path() const
@@ -15652,9 +19176,9 @@ const EntityPath Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (incoming_label.is_set || is_set(incoming_label.operation)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
-    if (next_hop.is_set || is_set(next_hop.operation)) leaf_name_data.push_back(next_hop.get_name_leafdata());
-    if (push_label.is_set || is_set(push_label.operation)) leaf_name_data.push_back(push_label.get_name_leafdata());
+    if (incoming_label.is_set || is_set(incoming_label.yfilter)) leaf_name_data.push_back(incoming_label.get_name_leafdata());
+    if (next_hop.is_set || is_set(next_hop.yfilter)) leaf_name_data.push_back(next_hop.get_name_leafdata());
+    if (push_label.is_set || is_set(push_label.yfilter)) leaf_name_data.push_back(push_label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -15673,120 +19197,149 @@ std::map<std::string, std::shared_ptr<Entity>> Mpls::Lsps::StaticLsps::LabelSwit
     return children;
 }
 
-void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::set_value(const std::string & value_path, std::string value)
+void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "incoming-label")
     {
         incoming_label = value;
+        incoming_label.value_namespace = name_space;
+        incoming_label.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "next-hop")
     {
         next_hop = value;
+        next_hop.value_namespace = name_space;
+        next_hop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "push-label")
     {
         push_label = value;
+        push_label.value_namespace = name_space;
+        push_label.value_namespace_prefix = name_space_prefix;
     }
 }
 
-LocallyComputedIdentity::LocallyComputedIdentity()
-     : Identity("openconfig-mpls-te:locally-computed")
+void Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incoming-label")
+    {
+        incoming_label.yfilter = yfilter;
+    }
+    if(value_path == "next-hop")
+    {
+        next_hop.yfilter = yfilter;
+    }
+    if(value_path == "push-label")
+    {
+        push_label.yfilter = yfilter;
+    }
+}
+
+bool Mpls::Lsps::StaticLsps::LabelSwitchedPath::Egress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "incoming-label" || name == "next-hop" || name == "push-label")
+        return true;
+    return false;
+}
+
+LocallyComputed::LocallyComputed()
+     : Identity("http://openconfig.net/yang/mpls", "openconfig-mpls", "openconfig-mpls:locally-computed")
 {
 }
 
-LocallyComputedIdentity::~LocallyComputedIdentity()
+LocallyComputed::~LocallyComputed()
 {
 }
 
-ExplicitlyDefinedIdentity::ExplicitlyDefinedIdentity()
-     : Identity("openconfig-mpls-te:explicitly-defined")
+ExplicitlyDefined::ExplicitlyDefined()
+     : Identity("http://openconfig.net/yang/mpls", "openconfig-mpls", "openconfig-mpls:explicitly-defined")
 {
 }
 
-ExplicitlyDefinedIdentity::~ExplicitlyDefinedIdentity()
+ExplicitlyDefined::~ExplicitlyDefined()
 {
 }
 
-ExternallyQueriedIdentity::ExternallyQueriedIdentity()
-     : Identity("openconfig-mpls-te:externally-queried")
+ExternallyQueried::ExternallyQueried()
+     : Identity("http://openconfig.net/yang/mpls", "openconfig-mpls", "openconfig-mpls:externally-queried")
 {
 }
 
-ExternallyQueriedIdentity::~ExternallyQueriedIdentity()
+ExternallyQueried::~ExternallyQueried()
 {
 }
 
-const Enum::YLeaf MplsSrlgFloodingTypeEnum::FLOODED_SRLG {0, "FLOODED-SRLG"};
-const Enum::YLeaf MplsSrlgFloodingTypeEnum::STATIC_SRLG {1, "STATIC-SRLG"};
+const Enum::YLeaf CspfTieBreaking::RANDOM {0, "RANDOM"};
+const Enum::YLeaf CspfTieBreaking::LEAST_FILL {1, "LEAST_FILL"};
+const Enum::YLeaf CspfTieBreaking::MOST_FILL {2, "MOST_FILL"};
 
-const Enum::YLeaf MplsHopTypeEnum::LOOSE {0, "LOOSE"};
-const Enum::YLeaf MplsHopTypeEnum::STRICT {1, "STRICT"};
+const Enum::YLeaf TeBandwidthType::SPECIFIED {0, "SPECIFIED"};
+const Enum::YLeaf TeBandwidthType::AUTO {1, "AUTO"};
 
-const Enum::YLeaf CspfTieBreakingEnum::RANDOM {0, "RANDOM"};
-const Enum::YLeaf CspfTieBreakingEnum::LEAST_FILL {1, "LEAST_FILL"};
-const Enum::YLeaf CspfTieBreakingEnum::MOST_FILL {2, "MOST_FILL"};
+const Enum::YLeaf MplsSrlgFloodingType::FLOODED_SRLG {0, "FLOODED-SRLG"};
+const Enum::YLeaf MplsSrlgFloodingType::STATIC_SRLG {1, "STATIC-SRLG"};
 
-const Enum::YLeaf TeMetricTypeEnum::IGP {0, "IGP"};
+const Enum::YLeaf TeMetricType::IGP {0, "IGP"};
 
-const Enum::YLeaf TeBandwidthTypeEnum::SPECIFIED {0, "SPECIFIED"};
-const Enum::YLeaf TeBandwidthTypeEnum::AUTO {1, "AUTO"};
+const Enum::YLeaf MplsHopType::LOOSE {0, "LOOSE"};
+const Enum::YLeaf MplsHopType::STRICT {1, "STRICT"};
 
-const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdTypeEnum::DELTA {0, "DELTA"};
-const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdType::DELTA {0, "DELTA"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdType::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
 
-const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
-const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecification::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::Config::ThresholdSpecification::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
 
-const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdTypeEnum::DELTA {0, "DELTA"};
-const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdType::DELTA {0, "DELTA"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdType::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
 
-const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
-const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecification::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
+const Enum::YLeaf Mpls::TeGlobalAttributes::IgpFloodingBandwidth::State::ThresholdSpecification::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
 
-const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdTypeEnum::DELTA {0, "DELTA"};
-const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdType::DELTA {0, "DELTA"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdType::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
 
-const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
-const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecification::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::Config::ThresholdSpecification::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
 
-const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdTypeEnum::DELTA {0, "DELTA"};
-const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdTypeEnum::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdType::DELTA {0, "DELTA"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdType::THRESHOLD_CROSSED {1, "THRESHOLD-CROSSED"};
 
-const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
-const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecificationEnum::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecification::MIRRORED_UP_DOWN {0, "MIRRORED-UP-DOWN"};
+const Enum::YLeaf Mpls::TeInterfaceAttributes::Interface::IgpFloodingBandwidth::State::ThresholdSpecification::SEPARATE_UP_DOWN {1, "SEPARATE-UP-DOWN"};
 
-const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::StatusEnum::UP {0, "UP"};
-const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::StatusEnum::DOWN {1, "DOWN"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::Status::UP {0, "UP"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::Status::DOWN {1, "DOWN"};
 
-const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::SOURCE {0, "SOURCE"};
-const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::TRANSIT {1, "TRANSIT"};
-const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::TypeEnum::DESTINATION {2, "DESTINATION"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::Type::SOURCE {0, "SOURCE"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::Type::TRANSIT {1, "TRANSIT"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Sessions::State::Session::Type::DESTINATION {2, "DESTINATION"};
 
-const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatusEnum::UP {0, "UP"};
-const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatusEnum::DOWN {1, "DOWN"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatus::UP {0, "UP"};
+const Enum::YLeaf Mpls::SignalingProtocols::RsvpTe::Neighbors::State::Neighbor::NeighborStatus::DOWN {1, "DOWN"};
 
-const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::AdvertiseEnum::PROTECTED {0, "PROTECTED"};
-const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::AdvertiseEnum::UNPROTECTED {1, "UNPROTECTED"};
+const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::Advertise::PROTECTED {0, "PROTECTED"};
+const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::Config::Advertise::UNPROTECTED {1, "UNPROTECTED"};
 
-const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::AdvertiseEnum::PROTECTED {0, "PROTECTED"};
-const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::AdvertiseEnum::UNPROTECTED {1, "UNPROTECTED"};
+const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::Advertise::PROTECTED {0, "PROTECTED"};
+const Enum::YLeaf Mpls::SignalingProtocols::SegmentRouting::Interfaces::AdjacencySid::State::Advertise::UNPROTECTED {1, "UNPROTECTED"};
 
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpTypeEnum::BASIC {0, "BASIC"};
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpTypeEnum::TARGETED {1, "TARGETED"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpType::BASIC {0, "BASIC"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::Ldp::Tunnel::LdpType::TARGETED {1, "TARGETED"};
 
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::TypeEnum::INDEX {0, "INDEX"};
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::TypeEnum::ABSOLUTE {1, "ABSOLUTE"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::Type::INDEX {0, "INDEX"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::Type::ABSOLUTE {1, "ABSOLUTE"};
 
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::EXPLICIT_NULL {0, "EXPLICIT-NULL"};
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::UNCHANGED {1, "UNCHANGED"};
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehaviorEnum::PHP {2, "PHP"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehavior::EXPLICIT_NULL {0, "EXPLICIT-NULL"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehavior::UNCHANGED {1, "UNCHANGED"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::Config::LastHopBehavior::PHP {2, "PHP"};
 
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::TypeEnum::INDEX {0, "INDEX"};
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::TypeEnum::ABSOLUTE {1, "ABSOLUTE"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::Type::INDEX {0, "INDEX"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::Type::ABSOLUTE {1, "ABSOLUTE"};
 
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::EXPLICIT_NULL {0, "EXPLICIT-NULL"};
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::UNCHANGED {1, "UNCHANGED"};
-const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehaviorEnum::PHP {2, "PHP"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehavior::EXPLICIT_NULL {0, "EXPLICIT-NULL"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehavior::UNCHANGED {1, "UNCHANGED"};
+const Enum::YLeaf Mpls::Lsps::UnconstrainedPath::PathSetupProtocol::SegmentRouting::Tunnel::P2PLsp::Fec::PrefixSid::State::LastHopBehavior::PHP {2, "PHP"};
 
 
 }

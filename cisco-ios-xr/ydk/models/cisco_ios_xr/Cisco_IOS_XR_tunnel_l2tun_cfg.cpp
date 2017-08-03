@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_tunnel_l2tun_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tunnel_l2tun_cfg {
 
 L2Tp::L2Tp()
@@ -29,7 +31,7 @@ bool L2Tp::has_data() const
 
 bool L2Tp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (classes !=  nullptr && classes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::get_children() const
     return children;
 }
 
-void L2Tp::set_value(const std::string & value_path, std::string value)
+void L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string L2Tp::get_bundle_name() const
 augment_capabilities_function L2Tp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> L2Tp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classes")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Classes()
@@ -135,7 +153,7 @@ bool L2Tp::Classes::has_operation() const
         if(class_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tp::Classes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::get_children() con
     return children;
 }
 
-void L2Tp::Classes::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Classes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Classes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Class_()
@@ -263,18 +292,18 @@ bool L2Tp::Classes::Class_::has_data() const
 
 bool L2Tp::Classes::Class_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(class_name.operation)
-	|| is_set(authentication.operation)
-	|| is_set(congestion_control.operation)
-	|| is_set(enable.operation)
-	|| is_set(hello_interval.operation)
-	|| is_set(hidden.operation)
-	|| is_set(host_name.operation)
-	|| is_set(password.operation)
-	|| is_set(receive_window.operation)
-	|| is_set(timeout_no_user.operation)
-	|| is_set(timeout_setup.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(authentication.yfilter)
+	|| ydk::is_set(congestion_control.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(hidden.yfilter)
+	|| ydk::is_set(host_name.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(receive_window.yfilter)
+	|| ydk::is_set(timeout_no_user.yfilter)
+	|| ydk::is_set(timeout_setup.yfilter)
 	|| (digest !=  nullptr && digest->has_operation())
 	|| (ip !=  nullptr && ip->has_operation())
 	|| (retransmit !=  nullptr && retransmit->has_operation())
@@ -305,17 +334,17 @@ const EntityPath L2Tp::Classes::Class_::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (authentication.is_set || is_set(authentication.operation)) leaf_name_data.push_back(authentication.get_name_leafdata());
-    if (congestion_control.is_set || is_set(congestion_control.operation)) leaf_name_data.push_back(congestion_control.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (hello_interval.is_set || is_set(hello_interval.operation)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
-    if (hidden.is_set || is_set(hidden.operation)) leaf_name_data.push_back(hidden.get_name_leafdata());
-    if (host_name.is_set || is_set(host_name.operation)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (receive_window.is_set || is_set(receive_window.operation)) leaf_name_data.push_back(receive_window.get_name_leafdata());
-    if (timeout_no_user.is_set || is_set(timeout_no_user.operation)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
-    if (timeout_setup.is_set || is_set(timeout_setup.operation)) leaf_name_data.push_back(timeout_setup.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (authentication.is_set || is_set(authentication.yfilter)) leaf_name_data.push_back(authentication.get_name_leafdata());
+    if (congestion_control.is_set || is_set(congestion_control.yfilter)) leaf_name_data.push_back(congestion_control.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (hidden.is_set || is_set(hidden.yfilter)) leaf_name_data.push_back(hidden.get_name_leafdata());
+    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (receive_window.is_set || is_set(receive_window.yfilter)) leaf_name_data.push_back(receive_window.get_name_leafdata());
+    if (timeout_no_user.is_set || is_set(timeout_no_user.yfilter)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
+    if (timeout_setup.is_set || is_set(timeout_setup.yfilter)) leaf_name_data.push_back(timeout_setup.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -404,52 +433,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::get_childr
     return children;
 }
 
-void L2Tp::Classes::Class_::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authentication")
     {
         authentication = value;
+        authentication.value_namespace = name_space;
+        authentication.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "congestion-control")
     {
         congestion_control = value;
+        congestion_control.value_namespace = name_space;
+        congestion_control.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-interval")
     {
         hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hidden")
     {
         hidden = value;
+        hidden.value_namespace = name_space;
+        hidden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-name")
     {
         host_name = value;
+        host_name.value_namespace = name_space;
+        host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receive-window")
     {
         receive_window = value;
+        receive_window.value_namespace = name_space;
+        receive_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-no-user")
     {
         timeout_no_user = value;
+        timeout_no_user.value_namespace = name_space;
+        timeout_no_user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-setup")
     {
         timeout_setup = value;
+        timeout_setup.value_namespace = name_space;
+        timeout_setup.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "authentication")
+    {
+        authentication.yfilter = yfilter;
+    }
+    if(value_path == "congestion-control")
+    {
+        congestion_control.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "hidden")
+    {
+        hidden.yfilter = yfilter;
+    }
+    if(value_path == "host-name")
+    {
+        host_name.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "receive-window")
+    {
+        receive_window.yfilter = yfilter;
+    }
+    if(value_path == "timeout-no-user")
+    {
+        timeout_no_user.yfilter = yfilter;
+    }
+    if(value_path == "timeout-setup")
+    {
+        timeout_setup.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "digest" || name == "ip" || name == "retransmit" || name == "security" || name == "tunnel" || name == "class-name" || name == "authentication" || name == "congestion-control" || name == "enable" || name == "hello-interval" || name == "hidden" || name == "host-name" || name == "password" || name == "receive-window" || name == "timeout-no-user" || name == "timeout-setup")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Security::Security()
@@ -472,7 +578,7 @@ bool L2Tp::Classes::Class_::Security::has_data() const
 
 bool L2Tp::Classes::Class_::Security::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ip !=  nullptr && ip->has_operation());
 }
 
@@ -531,8 +637,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Security::
     return children;
 }
 
-void L2Tp::Classes::Class_::Security::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Security::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Classes::Class_::Security::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Classes::Class_::Security::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Security::Ip::Ip()
@@ -553,8 +670,8 @@ bool L2Tp::Classes::Class_::Security::Ip::has_data() const
 
 bool L2Tp::Classes::Class_::Security::Ip::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address_check.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address_check.yfilter);
 }
 
 std::string L2Tp::Classes::Class_::Security::Ip::get_segment_path() const
@@ -580,7 +697,7 @@ const EntityPath L2Tp::Classes::Class_::Security::Ip::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address_check.is_set || is_set(address_check.operation)) leaf_name_data.push_back(address_check.get_name_leafdata());
+    if (address_check.is_set || is_set(address_check.yfilter)) leaf_name_data.push_back(address_check.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -599,12 +716,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Security::
     return children;
 }
 
-void L2Tp::Classes::Class_::Security::Ip::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Security::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address-check")
     {
         address_check = value;
+        address_check.value_namespace = name_space;
+        address_check.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::Security::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-check")
+    {
+        address_check.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::Security::Ip::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-check")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Retransmit::Retransmit()
@@ -634,8 +768,8 @@ bool L2Tp::Classes::Class_::Retransmit::has_data() const
 
 bool L2Tp::Classes::Class_::Retransmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(retry.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(retry.yfilter)
 	|| (initial !=  nullptr && initial->has_operation())
 	|| (timeout !=  nullptr && timeout->has_operation());
 }
@@ -663,7 +797,7 @@ const EntityPath L2Tp::Classes::Class_::Retransmit::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (retry.is_set || is_set(retry.operation)) leaf_name_data.push_back(retry.get_name_leafdata());
+    if (retry.is_set || is_set(retry.yfilter)) leaf_name_data.push_back(retry.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -710,12 +844,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Retransmit
     return children;
 }
 
-void L2Tp::Classes::Class_::Retransmit::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "retry")
     {
         retry = value;
+        retry.value_namespace = name_space;
+        retry.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "retry")
+    {
+        retry.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "initial" || name == "timeout" || name == "retry")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Retransmit::Initial::Initial()
@@ -741,8 +892,8 @@ bool L2Tp::Classes::Class_::Retransmit::Initial::has_data() const
 
 bool L2Tp::Classes::Class_::Retransmit::Initial::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(retry.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(retry.yfilter)
 	|| (timeout !=  nullptr && timeout->has_operation());
 }
 
@@ -769,7 +920,7 @@ const EntityPath L2Tp::Classes::Class_::Retransmit::Initial::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (retry.is_set || is_set(retry.operation)) leaf_name_data.push_back(retry.get_name_leafdata());
+    if (retry.is_set || is_set(retry.yfilter)) leaf_name_data.push_back(retry.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -802,12 +953,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Retransmit
     return children;
 }
 
-void L2Tp::Classes::Class_::Retransmit::Initial::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Retransmit::Initial::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "retry")
     {
         retry = value;
+        retry.value_namespace = name_space;
+        retry.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::Retransmit::Initial::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "retry")
+    {
+        retry.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::Retransmit::Initial::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout" || name == "retry")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Retransmit::Initial::Timeout::Timeout()
@@ -830,9 +998,9 @@ bool L2Tp::Classes::Class_::Retransmit::Initial::Timeout::has_data() const
 
 bool L2Tp::Classes::Class_::Retransmit::Initial::Timeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter);
 }
 
 std::string L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_segment_path() const
@@ -858,8 +1026,8 @@ const EntityPath L2Tp::Classes::Class_::Retransmit::Initial::Timeout::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -878,16 +1046,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Retransmit
     return children;
 }
 
-void L2Tp::Classes::Class_::Retransmit::Initial::Timeout::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Retransmit::Initial::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::Retransmit::Initial::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::Retransmit::Initial::Timeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum" || name == "minimum")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Retransmit::Timeout::Timeout()
@@ -910,9 +1101,9 @@ bool L2Tp::Classes::Class_::Retransmit::Timeout::has_data() const
 
 bool L2Tp::Classes::Class_::Retransmit::Timeout::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum.operation)
-	|| is_set(minimum.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum.yfilter)
+	|| ydk::is_set(minimum.yfilter);
 }
 
 std::string L2Tp::Classes::Class_::Retransmit::Timeout::get_segment_path() const
@@ -938,8 +1129,8 @@ const EntityPath L2Tp::Classes::Class_::Retransmit::Timeout::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum.is_set || is_set(maximum.operation)) leaf_name_data.push_back(maximum.get_name_leafdata());
-    if (minimum.is_set || is_set(minimum.operation)) leaf_name_data.push_back(minimum.get_name_leafdata());
+    if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
+    if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -958,16 +1149,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Retransmit
     return children;
 }
 
-void L2Tp::Classes::Class_::Retransmit::Timeout::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Retransmit::Timeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum")
     {
         maximum = value;
+        maximum.value_namespace = name_space;
+        maximum.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
         minimum = value;
+        minimum.value_namespace = name_space;
+        minimum.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::Retransmit::Timeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum")
+    {
+        maximum.yfilter = yfilter;
+    }
+    if(value_path == "minimum")
+    {
+        minimum.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::Retransmit::Timeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum" || name == "minimum")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Tunnel::Tunnel()
@@ -988,8 +1202,8 @@ bool L2Tp::Classes::Class_::Tunnel::has_data() const
 
 bool L2Tp::Classes::Class_::Tunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(accounting.yfilter);
 }
 
 std::string L2Tp::Classes::Class_::Tunnel::get_segment_path() const
@@ -1015,7 +1229,7 @@ const EntityPath L2Tp::Classes::Class_::Tunnel::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting.is_set || is_set(accounting.operation)) leaf_name_data.push_back(accounting.get_name_leafdata());
+    if (accounting.is_set || is_set(accounting.yfilter)) leaf_name_data.push_back(accounting.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1034,12 +1248,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Tunnel::ge
     return children;
 }
 
-void L2Tp::Classes::Class_::Tunnel::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting")
     {
         accounting = value;
+        accounting.value_namespace = name_space;
+        accounting.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting")
+    {
+        accounting.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Digest::Digest()
@@ -1067,9 +1298,9 @@ bool L2Tp::Classes::Class_::Digest::has_data() const
 
 bool L2Tp::Classes::Class_::Digest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(check_disable.operation)
-	|| is_set(hash.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(check_disable.yfilter)
+	|| ydk::is_set(hash.yfilter)
 	|| (secrets !=  nullptr && secrets->has_operation());
 }
 
@@ -1096,8 +1327,8 @@ const EntityPath L2Tp::Classes::Class_::Digest::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (check_disable.is_set || is_set(check_disable.operation)) leaf_name_data.push_back(check_disable.get_name_leafdata());
-    if (hash.is_set || is_set(hash.operation)) leaf_name_data.push_back(hash.get_name_leafdata());
+    if (check_disable.is_set || is_set(check_disable.yfilter)) leaf_name_data.push_back(check_disable.get_name_leafdata());
+    if (hash.is_set || is_set(hash.yfilter)) leaf_name_data.push_back(hash.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1130,16 +1361,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Digest::ge
     return children;
 }
 
-void L2Tp::Classes::Class_::Digest::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Digest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "check-disable")
     {
         check_disable = value;
+        check_disable.value_namespace = name_space;
+        check_disable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hash")
     {
         hash = value;
+        hash.value_namespace = name_space;
+        hash.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::Digest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "check-disable")
+    {
+        check_disable.yfilter = yfilter;
+    }
+    if(value_path == "hash")
+    {
+        hash.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::Digest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secrets" || name == "check-disable" || name == "hash")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Digest::Secrets::Secrets()
@@ -1168,7 +1422,7 @@ bool L2Tp::Classes::Class_::Digest::Secrets::has_operation() const
         if(secret[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tp::Classes::Class_::Digest::Secrets::get_segment_path() const
@@ -1233,8 +1487,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Digest::Se
     return children;
 }
 
-void L2Tp::Classes::Class_::Digest::Secrets::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Digest::Secrets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Classes::Class_::Digest::Secrets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Classes::Class_::Digest::Secrets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secret")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Digest::Secrets::Secret::Secret()
@@ -1257,9 +1522,9 @@ bool L2Tp::Classes::Class_::Digest::Secrets::Secret::has_data() const
 
 bool L2Tp::Classes::Class_::Digest::Secrets::Secret::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(secret_name.operation)
-	|| is_set(hash.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(secret_name.yfilter)
+	|| ydk::is_set(hash.yfilter);
 }
 
 std::string L2Tp::Classes::Class_::Digest::Secrets::Secret::get_segment_path() const
@@ -1285,8 +1550,8 @@ const EntityPath L2Tp::Classes::Class_::Digest::Secrets::Secret::get_entity_path
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (secret_name.is_set || is_set(secret_name.operation)) leaf_name_data.push_back(secret_name.get_name_leafdata());
-    if (hash.is_set || is_set(hash.operation)) leaf_name_data.push_back(hash.get_name_leafdata());
+    if (secret_name.is_set || is_set(secret_name.yfilter)) leaf_name_data.push_back(secret_name.get_name_leafdata());
+    if (hash.is_set || is_set(hash.yfilter)) leaf_name_data.push_back(hash.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1305,16 +1570,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Digest::Se
     return children;
 }
 
-void L2Tp::Classes::Class_::Digest::Secrets::Secret::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Digest::Secrets::Secret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "secret-name")
     {
         secret_name = value;
+        secret_name.value_namespace = name_space;
+        secret_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hash")
     {
         hash = value;
+        hash.value_namespace = name_space;
+        hash.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::Digest::Secrets::Secret::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "secret-name")
+    {
+        secret_name.yfilter = yfilter;
+    }
+    if(value_path == "hash")
+    {
+        hash.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::Digest::Secrets::Secret::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secret-name" || name == "hash")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Ip::Ip()
@@ -1335,8 +1623,8 @@ bool L2Tp::Classes::Class_::Ip::has_data() const
 
 bool L2Tp::Classes::Class_::Ip::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tos.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tos.yfilter);
 }
 
 std::string L2Tp::Classes::Class_::Ip::get_segment_path() const
@@ -1362,7 +1650,7 @@ const EntityPath L2Tp::Classes::Class_::Ip::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tos.is_set || is_set(tos.operation)) leaf_name_data.push_back(tos.get_name_leafdata());
+    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1381,20 +1669,37 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::Ip::get_ch
     return children;
 }
 
-void L2Tp::Classes::Class_::Ip::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos")
     {
         tos = value;
+        tos.value_namespace = name_space;
+        tos.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf L2TpDigestHashMethodEnum::md5 {1, "md5"};
-const Enum::YLeaf L2TpDigestHashMethodEnum::sha1 {2, "sha1"};
+void L2Tp::Classes::Class_::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tos")
+    {
+        tos.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf L2TpHashMethodEnum::md5 {1, "md5"};
-const Enum::YLeaf L2TpHashMethodEnum::sha1 {2, "sha1"};
-const Enum::YLeaf L2TpHashMethodEnum::none {3, "none"};
+bool L2Tp::Classes::Class_::Ip::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tos")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf L2TpHashMethod::md5 {1, "md5"};
+const Enum::YLeaf L2TpHashMethod::sha1 {2, "sha1"};
+const Enum::YLeaf L2TpHashMethod::none {3, "none"};
+
+const Enum::YLeaf L2TpDigestHashMethod::md5 {1, "md5"};
+const Enum::YLeaf L2TpDigestHashMethod::sha1 {2, "sha1"};
 
 
 }

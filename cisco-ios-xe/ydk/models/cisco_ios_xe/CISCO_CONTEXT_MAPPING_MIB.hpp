@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_CONTEXT_MAPPING_MIB {
 
-class CiscoContextMappingMib : public Entity
+class CiscoContextMappingMib : public ydk::Entity
 {
     public:
         CiscoContextMappingMib();
@@ -19,30 +19,33 @@ class CiscoContextMappingMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Ccontextmappingtable; //type: CiscoContextMappingMib::Ccontextmappingtable
         class Ccontextmappingbridgedomaintable; //type: CiscoContextMappingMib::Ccontextmappingbridgedomaintable
         class Ccontextmappingbridgeinstancetable; //type: CiscoContextMappingMib::Ccontextmappingbridgeinstancetable
         class Ccontextmappinglicensegrouptable; //type: CiscoContextMappingMib::Ccontextmappinglicensegrouptable
 
-        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgedomaintable> ccontextmappingbridgedomaintable_;
-        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgeinstancetable> ccontextmappingbridgeinstancetable_;
-        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappinglicensegrouptable> ccontextmappinglicensegrouptable_;
-        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable> ccontextmappingtable_;
+        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgedomaintable> ccontextmappingbridgedomaintable;
+        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgeinstancetable> ccontextmappingbridgeinstancetable;
+        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappinglicensegrouptable> ccontextmappinglicensegrouptable;
+        std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable> ccontextmappingtable;
         
 }; // CiscoContextMappingMib
 
 
-class CiscoContextMappingMib::Ccontextmappingtable : public Entity
+class CiscoContextMappingMib::Ccontextmappingtable : public ydk::Entity
 {
     public:
         Ccontextmappingtable();
@@ -50,20 +53,22 @@ class CiscoContextMappingMib::Ccontextmappingtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ccontextmappingentry; //type: CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry
 
-        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry> > ccontextmappingentry_;
+        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry> > ccontextmappingentry;
         
 }; // CiscoContextMappingMib::Ccontextmappingtable
 
 
-class CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry : public Entity
+class CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry : public ydk::Entity
 {
     public:
         Ccontextmappingentry();
@@ -71,23 +76,25 @@ class CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ccontextmappingvacmcontextname; //type: string
-        YLeaf ccontextmappingvrfname; //type: string
-        YLeaf ccontextmappingtopologyname; //type: string
-        YLeaf ccontextmappingprotoinstname; //type: string
-        YLeaf ccontextmappingstoragetype; //type: StoragetypeEnum
-        YLeaf ccontextmappingrowstatus; //type: RowstatusEnum
+        ydk::YLeaf ccontextmappingvacmcontextname; //type: string
+        ydk::YLeaf ccontextmappingvrfname; //type: string
+        ydk::YLeaf ccontextmappingtopologyname; //type: string
+        ydk::YLeaf ccontextmappingprotoinstname; //type: string
+        ydk::YLeaf ccontextmappingstoragetype; //type: Storagetype
+        ydk::YLeaf ccontextmappingrowstatus; //type: Rowstatus
 
 }; // CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry
 
 
-class CiscoContextMappingMib::Ccontextmappingbridgedomaintable : public Entity
+class CiscoContextMappingMib::Ccontextmappingbridgedomaintable : public ydk::Entity
 {
     public:
         Ccontextmappingbridgedomaintable();
@@ -95,20 +102,22 @@ class CiscoContextMappingMib::Ccontextmappingbridgedomaintable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ccontextmappingbridgedomainentry; //type: CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry
 
-        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry> > ccontextmappingbridgedomainentry_;
+        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry> > ccontextmappingbridgedomainentry;
         
 }; // CiscoContextMappingMib::Ccontextmappingbridgedomaintable
 
 
-class CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry : public Entity
+class CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry : public ydk::Entity
 {
     public:
         Ccontextmappingbridgedomainentry();
@@ -116,22 +125,24 @@ class CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingb
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry::ccontextmappingvacmcontextname)
-        YLeaf ccontextmappingvacmcontextname;
-        YLeaf ccontextmappingbridgedomainidentifier; //type: uint32
-        YLeaf ccontextmappingbridgedomainstoragetype; //type: StoragetypeEnum
-        YLeaf ccontextmappingbridgedomainrowstatus; //type: RowstatusEnum
+        ydk::YLeaf ccontextmappingvacmcontextname;
+        ydk::YLeaf ccontextmappingbridgedomainidentifier; //type: uint32
+        ydk::YLeaf ccontextmappingbridgedomainstoragetype; //type: Storagetype
+        ydk::YLeaf ccontextmappingbridgedomainrowstatus; //type: Rowstatus
 
 }; // CiscoContextMappingMib::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry
 
 
-class CiscoContextMappingMib::Ccontextmappingbridgeinstancetable : public Entity
+class CiscoContextMappingMib::Ccontextmappingbridgeinstancetable : public ydk::Entity
 {
     public:
         Ccontextmappingbridgeinstancetable();
@@ -139,20 +150,22 @@ class CiscoContextMappingMib::Ccontextmappingbridgeinstancetable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ccontextmappingbridgeinstanceentry; //type: CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry
 
-        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry> > ccontextmappingbridgeinstanceentry_;
+        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry> > ccontextmappingbridgeinstanceentry;
         
 }; // CiscoContextMappingMib::Ccontextmappingbridgeinstancetable
 
 
-class CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry : public Entity
+class CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry : public ydk::Entity
 {
     public:
         Ccontextmappingbridgeinstanceentry();
@@ -160,22 +173,24 @@ class CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappin
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry::ccontextmappingvacmcontextname)
-        YLeaf ccontextmappingvacmcontextname;
-        YLeaf ccontextmappingbridgeinstname; //type: string
-        YLeaf ccontextmappingbridgeinststoragetype; //type: StoragetypeEnum
-        YLeaf ccontextmappingbridgeinstrowstatus; //type: RowstatusEnum
+        ydk::YLeaf ccontextmappingvacmcontextname;
+        ydk::YLeaf ccontextmappingbridgeinstname; //type: string
+        ydk::YLeaf ccontextmappingbridgeinststoragetype; //type: Storagetype
+        ydk::YLeaf ccontextmappingbridgeinstrowstatus; //type: Rowstatus
 
 }; // CiscoContextMappingMib::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry
 
 
-class CiscoContextMappingMib::Ccontextmappinglicensegrouptable : public Entity
+class CiscoContextMappingMib::Ccontextmappinglicensegrouptable : public ydk::Entity
 {
     public:
         Ccontextmappinglicensegrouptable();
@@ -183,20 +198,22 @@ class CiscoContextMappingMib::Ccontextmappinglicensegrouptable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ccontextmappinglicensegroupentry; //type: CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry
 
-        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry> > ccontextmappinglicensegroupentry_;
+        std::vector<std::shared_ptr<CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry> > ccontextmappinglicensegroupentry;
         
 }; // CiscoContextMappingMib::Ccontextmappinglicensegrouptable
 
 
-class CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry : public Entity
+class CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry : public ydk::Entity
 {
     public:
         Ccontextmappinglicensegroupentry();
@@ -204,17 +221,19 @@ class CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappingl
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: string (refers to CISCO_CONTEXT_MAPPING_MIB::CiscoContextMappingMib::Ccontextmappingtable::Ccontextmappingentry::ccontextmappingvacmcontextname)
-        YLeaf ccontextmappingvacmcontextname;
-        YLeaf ccontextmappinglicensegroupname; //type: string
-        YLeaf ccontextmappinglicensegroupstoragetype; //type: StoragetypeEnum
-        YLeaf ccontextmappinglicensegrouprowstatus; //type: RowstatusEnum
+        ydk::YLeaf ccontextmappingvacmcontextname;
+        ydk::YLeaf ccontextmappinglicensegroupname; //type: string
+        ydk::YLeaf ccontextmappinglicensegroupstoragetype; //type: Storagetype
+        ydk::YLeaf ccontextmappinglicensegrouprowstatus; //type: Rowstatus
 
 }; // CiscoContextMappingMib::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry
 

@@ -49,7 +49,7 @@ struct YCPPError : public std::exception
 
 struct YCPPClientError : public YCPPError
 {
-	YCPPClientError(const std::string& msg);
+    YCPPClientError(const std::string& msg);
 };
 
 struct YCPPServiceProviderError : public YCPPError
@@ -87,7 +87,7 @@ struct YCPPInvalidArgumentError : public YCPPError
 ///
 /// @brief Operation Not Supported Error
 ///
-/// Thrown when an operation is not supported.
+/// Thrown when an yfilter is not supported.
 ///
 struct YCPPOperationNotSupportedError : public YCPPError
 {

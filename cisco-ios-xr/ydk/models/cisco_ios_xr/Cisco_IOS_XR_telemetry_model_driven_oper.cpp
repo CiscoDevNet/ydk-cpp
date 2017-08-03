@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_telemetry_model_driven_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_telemetry_model_driven_oper {
 
 TelemetryModelDriven::TelemetryModelDriven()
@@ -37,7 +39,7 @@ bool TelemetryModelDriven::has_data() const
 
 bool TelemetryModelDriven::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (destinations !=  nullptr && destinations->has_operation())
 	|| (sensor_groups !=  nullptr && sensor_groups->has_operation())
 	|| (subscriptions !=  nullptr && subscriptions->has_operation());
@@ -123,7 +125,11 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::get_childre
     return children;
 }
 
-void TelemetryModelDriven::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void TelemetryModelDriven::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -145,6 +151,18 @@ std::string TelemetryModelDriven::get_bundle_name() const
 augment_capabilities_function TelemetryModelDriven::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> TelemetryModelDriven::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool TelemetryModelDriven::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destinations" || name == "sensor-groups" || name == "subscriptions")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Destinations::Destinations()
@@ -173,7 +191,7 @@ bool TelemetryModelDriven::Destinations::has_operation() const
         if(destination[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TelemetryModelDriven::Destinations::get_segment_path() const
@@ -238,8 +256,19 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     return children;
 }
 
-void TelemetryModelDriven::Destinations::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Destinations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TelemetryModelDriven::Destinations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TelemetryModelDriven::Destinations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination()
@@ -274,10 +303,10 @@ bool TelemetryModelDriven::Destinations::Destination::has_operation() const
         if(destination[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(destination_id.operation)
-	|| is_set(configured.operation)
-	|| is_set(id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(destination_id.yfilter)
+	|| ydk::is_set(configured.yfilter)
+	|| ydk::is_set(id.yfilter);
 }
 
 std::string TelemetryModelDriven::Destinations::Destination::get_segment_path() const
@@ -303,9 +332,9 @@ const EntityPath TelemetryModelDriven::Destinations::Destination::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_id.is_set || is_set(destination_id.operation)) leaf_name_data.push_back(destination_id.get_name_leafdata());
-    if (configured.is_set || is_set(configured.operation)) leaf_name_data.push_back(configured.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (destination_id.is_set || is_set(destination_id.yfilter)) leaf_name_data.push_back(destination_id.get_name_leafdata());
+    if (configured.is_set || is_set(configured.yfilter)) leaf_name_data.push_back(configured.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -345,20 +374,49 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     return children;
 }
 
-void TelemetryModelDriven::Destinations::Destination::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Destinations::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-id")
     {
         destination_id = value;
+        destination_id.value_namespace = name_space;
+        destination_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured")
     {
         configured = value;
+        configured.value_namespace = name_space;
+        configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Destinations::Destination::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-id")
+    {
+        destination_id.yfilter = yfilter;
+    }
+    if(value_path == "configured")
+    {
+        configured.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Destinations::Destination::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "destination-id" || name == "configured" || name == "id")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::Destination_()
@@ -391,7 +449,7 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::has_operatio
         if(collection_group[index]->has_operation())
             return true;
     }
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (destination !=  nullptr && destination->has_operation());
 }
 
@@ -471,24 +529,39 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     return children;
 }
 
-void TelemetryModelDriven::Destinations::Destination::Destination_::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Destinations::Destination::Destination_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TelemetryModelDriven::Destinations::Destination::Destination_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TelemetryModelDriven::Destinations::Destination::Destination_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collection-group" || name == "destination")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::Destination__()
     :
     dest_port{YType::uint16, "dest-port"},
+    dscp{YType::uint32, "dscp"},
     encoding{YType::enumeration, "encoding"},
     id{YType::str, "id"},
     last_collection_time{YType::uint64, "last-collection-time"},
-    state{YType::uint32, "state"},
+    state{YType::enumeration, "state"},
     sub_id{YType::uint64, "sub-id"},
     sub_id_str{YType::str, "sub-id-str"},
     tls{YType::uint32, "tls"},
     tls_host{YType::str, "tls-host"},
     total_num_of_bytes_sent{YType::uint64, "total-num-of-bytes-sent"},
     total_num_of_packets_sent{YType::uint64, "total-num-of-packets-sent"},
-    transport{YType::enumeration, "transport"}
+    transport{YType::enumeration, "transport"},
+    udp_mtu{YType::uint32, "udp-mtu"},
+    vrf{YType::str, "vrf"},
+    vrf_id{YType::uint32, "vrf-id"}
     	,
     dest_ip_address(std::make_shared<TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress>())
 {
@@ -509,6 +582,7 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination_
             return true;
     }
     return dest_port.is_set
+	|| dscp.is_set
 	|| encoding.is_set
 	|| id.is_set
 	|| last_collection_time.is_set
@@ -519,6 +593,9 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination_
 	|| total_num_of_bytes_sent.is_set
 	|| total_num_of_packets_sent.is_set
 	|| transport.is_set
+	|| udp_mtu.is_set
+	|| vrf.is_set
+	|| vrf_id.is_set
 	|| (dest_ip_address !=  nullptr && dest_ip_address->has_data());
 }
 
@@ -526,22 +603,26 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination_
 {
     for (auto const & leaf : sub_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(dest_port.operation)
-	|| is_set(encoding.operation)
-	|| is_set(id.operation)
-	|| is_set(last_collection_time.operation)
-	|| is_set(state.operation)
-	|| is_set(sub_id.operation)
-	|| is_set(sub_id_str.operation)
-	|| is_set(tls.operation)
-	|| is_set(tls_host.operation)
-	|| is_set(total_num_of_bytes_sent.operation)
-	|| is_set(total_num_of_packets_sent.operation)
-	|| is_set(transport.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(dest_port.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(encoding.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(last_collection_time.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(sub_id.yfilter)
+	|| ydk::is_set(sub_id_str.yfilter)
+	|| ydk::is_set(tls.yfilter)
+	|| ydk::is_set(tls_host.yfilter)
+	|| ydk::is_set(total_num_of_bytes_sent.yfilter)
+	|| ydk::is_set(total_num_of_packets_sent.yfilter)
+	|| ydk::is_set(transport.yfilter)
+	|| ydk::is_set(udp_mtu.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(vrf_id.yfilter)
 	|| (dest_ip_address !=  nullptr && dest_ip_address->has_operation());
 }
 
@@ -568,17 +649,21 @@ const EntityPath TelemetryModelDriven::Destinations::Destination::Destination_::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dest_port.is_set || is_set(dest_port.operation)) leaf_name_data.push_back(dest_port.get_name_leafdata());
-    if (encoding.is_set || is_set(encoding.operation)) leaf_name_data.push_back(encoding.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (last_collection_time.is_set || is_set(last_collection_time.operation)) leaf_name_data.push_back(last_collection_time.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (sub_id_str.is_set || is_set(sub_id_str.operation)) leaf_name_data.push_back(sub_id_str.get_name_leafdata());
-    if (tls.is_set || is_set(tls.operation)) leaf_name_data.push_back(tls.get_name_leafdata());
-    if (tls_host.is_set || is_set(tls_host.operation)) leaf_name_data.push_back(tls_host.get_name_leafdata());
-    if (total_num_of_bytes_sent.is_set || is_set(total_num_of_bytes_sent.operation)) leaf_name_data.push_back(total_num_of_bytes_sent.get_name_leafdata());
-    if (total_num_of_packets_sent.is_set || is_set(total_num_of_packets_sent.operation)) leaf_name_data.push_back(total_num_of_packets_sent.get_name_leafdata());
-    if (transport.is_set || is_set(transport.operation)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (dest_port.is_set || is_set(dest_port.yfilter)) leaf_name_data.push_back(dest_port.get_name_leafdata());
+    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (last_collection_time.is_set || is_set(last_collection_time.yfilter)) leaf_name_data.push_back(last_collection_time.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (sub_id_str.is_set || is_set(sub_id_str.yfilter)) leaf_name_data.push_back(sub_id_str.get_name_leafdata());
+    if (tls.is_set || is_set(tls.yfilter)) leaf_name_data.push_back(tls.get_name_leafdata());
+    if (tls_host.is_set || is_set(tls_host.yfilter)) leaf_name_data.push_back(tls_host.get_name_leafdata());
+    if (total_num_of_bytes_sent.is_set || is_set(total_num_of_bytes_sent.yfilter)) leaf_name_data.push_back(total_num_of_bytes_sent.get_name_leafdata());
+    if (total_num_of_packets_sent.is_set || is_set(total_num_of_packets_sent.yfilter)) leaf_name_data.push_back(total_num_of_packets_sent.get_name_leafdata());
+    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (udp_mtu.is_set || is_set(udp_mtu.yfilter)) leaf_name_data.push_back(udp_mtu.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
 
     auto sub_id_name_datas = sub_id.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sub_id_name_datas.begin(), sub_id_name_datas.end());
@@ -613,27 +698,43 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     return children;
 }
 
-void TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dest-port")
     {
         dest_port = value;
+        dest_port.value_namespace = name_space;
+        dest_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dscp")
+    {
+        dscp = value;
+        dscp.value_namespace = name_space;
+        dscp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encoding")
     {
         encoding = value;
+        encoding.value_namespace = name_space;
+        encoding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-collection-time")
     {
         last_collection_time = value;
+        last_collection_time.value_namespace = name_space;
+        last_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-id")
     {
@@ -642,27 +743,132 @@ void TelemetryModelDriven::Destinations::Destination::Destination_::Destination_
     if(value_path == "sub-id-str")
     {
         sub_id_str = value;
+        sub_id_str.value_namespace = name_space;
+        sub_id_str.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tls")
     {
         tls = value;
+        tls.value_namespace = name_space;
+        tls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tls-host")
     {
         tls_host = value;
+        tls_host.value_namespace = name_space;
+        tls_host.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-num-of-bytes-sent")
     {
         total_num_of_bytes_sent = value;
+        total_num_of_bytes_sent.value_namespace = name_space;
+        total_num_of_bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-num-of-packets-sent")
     {
         total_num_of_packets_sent = value;
+        total_num_of_packets_sent.value_namespace = name_space;
+        total_num_of_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport")
     {
         transport = value;
+        transport.value_namespace = name_space;
+        transport.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "udp-mtu")
+    {
+        udp_mtu = value;
+        udp_mtu.value_namespace = name_space;
+        udp_mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id = value;
+        vrf_id.value_namespace = name_space;
+        vrf_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dest-port")
+    {
+        dest_port.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "encoding")
+    {
+        encoding.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "last-collection-time")
+    {
+        last_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "sub-id")
+    {
+        sub_id.yfilter = yfilter;
+    }
+    if(value_path == "sub-id-str")
+    {
+        sub_id_str.yfilter = yfilter;
+    }
+    if(value_path == "tls")
+    {
+        tls.yfilter = yfilter;
+    }
+    if(value_path == "tls-host")
+    {
+        tls_host.yfilter = yfilter;
+    }
+    if(value_path == "total-num-of-bytes-sent")
+    {
+        total_num_of_bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "total-num-of-packets-sent")
+    {
+        total_num_of_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "transport")
+    {
+        transport.yfilter = yfilter;
+    }
+    if(value_path == "udp-mtu")
+    {
+        udp_mtu.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dest-ip-address" || name == "dest-port" || name == "dscp" || name == "encoding" || name == "id" || name == "last-collection-time" || name == "state" || name == "sub-id" || name == "sub-id-str" || name == "tls" || name == "tls-host" || name == "total-num-of-bytes-sent" || name == "total-num-of-packets-sent" || name == "transport" || name == "udp-mtu" || name == "vrf" || name == "vrf-id")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::DestIpAddress()
@@ -687,10 +893,10 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination_
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_type.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_type.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::get_segment_path() const
@@ -716,9 +922,9 @@ const EntityPath TelemetryModelDriven::Destinations::Destination::Destination_::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_type.is_set || is_set(ip_type.operation)) leaf_name_data.push_back(ip_type.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ip_type.is_set || is_set(ip_type.yfilter)) leaf_name_data.push_back(ip_type.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -737,20 +943,49 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     return children;
 }
 
-void TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-type")
     {
         ip_type = value;
+        ip_type.value_namespace = name_space;
+        ip_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-type")
+    {
+        ip_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Destinations::Destination::Destination_::Destination__::DestIpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-type" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionGroup()
@@ -767,6 +1002,7 @@ TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::
     min_total_time{YType::uint32, "min-total-time"},
     total_collections{YType::uint32, "total-collections"},
     total_not_ready{YType::uint32, "total-not-ready"},
+    total_on_data_instances{YType::uint32, "total-on-data-instances"},
     total_other_errors{YType::uint32, "total-other-errors"},
     total_send_drops{YType::uint32, "total-send-drops"},
     total_send_errors{YType::uint32, "total-send-errors"}
@@ -802,6 +1038,7 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
 	|| min_total_time.is_set
 	|| total_collections.is_set
 	|| total_not_ready.is_set
+	|| total_on_data_instances.is_set
 	|| total_other_errors.is_set
 	|| total_send_drops.is_set
 	|| total_send_errors.is_set;
@@ -819,22 +1056,23 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
         if(internal_collection_group[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(avg_total_time.operation)
-	|| is_set(cadence.operation)
-	|| is_set(encoding.operation)
-	|| is_set(id.operation)
-	|| is_set(last_collection_end_time.operation)
-	|| is_set(last_collection_start_time.operation)
-	|| is_set(max_collection_time.operation)
-	|| is_set(max_total_time.operation)
-	|| is_set(min_collection_time.operation)
-	|| is_set(min_total_time.operation)
-	|| is_set(total_collections.operation)
-	|| is_set(total_not_ready.operation)
-	|| is_set(total_other_errors.operation)
-	|| is_set(total_send_drops.operation)
-	|| is_set(total_send_errors.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(avg_total_time.yfilter)
+	|| ydk::is_set(cadence.yfilter)
+	|| ydk::is_set(encoding.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(last_collection_end_time.yfilter)
+	|| ydk::is_set(last_collection_start_time.yfilter)
+	|| ydk::is_set(max_collection_time.yfilter)
+	|| ydk::is_set(max_total_time.yfilter)
+	|| ydk::is_set(min_collection_time.yfilter)
+	|| ydk::is_set(min_total_time.yfilter)
+	|| ydk::is_set(total_collections.yfilter)
+	|| ydk::is_set(total_not_ready.yfilter)
+	|| ydk::is_set(total_on_data_instances.yfilter)
+	|| ydk::is_set(total_other_errors.yfilter)
+	|| ydk::is_set(total_send_drops.yfilter)
+	|| ydk::is_set(total_send_errors.yfilter);
 }
 
 std::string TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::get_segment_path() const
@@ -860,21 +1098,22 @@ const EntityPath TelemetryModelDriven::Destinations::Destination::Destination_::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (avg_total_time.is_set || is_set(avg_total_time.operation)) leaf_name_data.push_back(avg_total_time.get_name_leafdata());
-    if (cadence.is_set || is_set(cadence.operation)) leaf_name_data.push_back(cadence.get_name_leafdata());
-    if (encoding.is_set || is_set(encoding.operation)) leaf_name_data.push_back(encoding.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (last_collection_end_time.is_set || is_set(last_collection_end_time.operation)) leaf_name_data.push_back(last_collection_end_time.get_name_leafdata());
-    if (last_collection_start_time.is_set || is_set(last_collection_start_time.operation)) leaf_name_data.push_back(last_collection_start_time.get_name_leafdata());
-    if (max_collection_time.is_set || is_set(max_collection_time.operation)) leaf_name_data.push_back(max_collection_time.get_name_leafdata());
-    if (max_total_time.is_set || is_set(max_total_time.operation)) leaf_name_data.push_back(max_total_time.get_name_leafdata());
-    if (min_collection_time.is_set || is_set(min_collection_time.operation)) leaf_name_data.push_back(min_collection_time.get_name_leafdata());
-    if (min_total_time.is_set || is_set(min_total_time.operation)) leaf_name_data.push_back(min_total_time.get_name_leafdata());
-    if (total_collections.is_set || is_set(total_collections.operation)) leaf_name_data.push_back(total_collections.get_name_leafdata());
-    if (total_not_ready.is_set || is_set(total_not_ready.operation)) leaf_name_data.push_back(total_not_ready.get_name_leafdata());
-    if (total_other_errors.is_set || is_set(total_other_errors.operation)) leaf_name_data.push_back(total_other_errors.get_name_leafdata());
-    if (total_send_drops.is_set || is_set(total_send_drops.operation)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
-    if (total_send_errors.is_set || is_set(total_send_errors.operation)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
+    if (avg_total_time.is_set || is_set(avg_total_time.yfilter)) leaf_name_data.push_back(avg_total_time.get_name_leafdata());
+    if (cadence.is_set || is_set(cadence.yfilter)) leaf_name_data.push_back(cadence.get_name_leafdata());
+    if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (last_collection_end_time.is_set || is_set(last_collection_end_time.yfilter)) leaf_name_data.push_back(last_collection_end_time.get_name_leafdata());
+    if (last_collection_start_time.is_set || is_set(last_collection_start_time.yfilter)) leaf_name_data.push_back(last_collection_start_time.get_name_leafdata());
+    if (max_collection_time.is_set || is_set(max_collection_time.yfilter)) leaf_name_data.push_back(max_collection_time.get_name_leafdata());
+    if (max_total_time.is_set || is_set(max_total_time.yfilter)) leaf_name_data.push_back(max_total_time.get_name_leafdata());
+    if (min_collection_time.is_set || is_set(min_collection_time.yfilter)) leaf_name_data.push_back(min_collection_time.get_name_leafdata());
+    if (min_total_time.is_set || is_set(min_total_time.yfilter)) leaf_name_data.push_back(min_total_time.get_name_leafdata());
+    if (total_collections.is_set || is_set(total_collections.yfilter)) leaf_name_data.push_back(total_collections.get_name_leafdata());
+    if (total_not_ready.is_set || is_set(total_not_ready.yfilter)) leaf_name_data.push_back(total_not_ready.get_name_leafdata());
+    if (total_on_data_instances.is_set || is_set(total_on_data_instances.yfilter)) leaf_name_data.push_back(total_on_data_instances.get_name_leafdata());
+    if (total_other_errors.is_set || is_set(total_other_errors.yfilter)) leaf_name_data.push_back(total_other_errors.get_name_leafdata());
+    if (total_send_drops.is_set || is_set(total_send_drops.yfilter)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
+    if (total_send_errors.is_set || is_set(total_send_errors.yfilter)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -935,74 +1174,185 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     return children;
 }
 
-void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "avg-total-time")
     {
         avg_total_time = value;
+        avg_total_time.value_namespace = name_space;
+        avg_total_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cadence")
     {
         cadence = value;
+        cadence.value_namespace = name_space;
+        cadence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encoding")
     {
         encoding = value;
+        encoding.value_namespace = name_space;
+        encoding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-collection-end-time")
     {
         last_collection_end_time = value;
+        last_collection_end_time.value_namespace = name_space;
+        last_collection_end_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-collection-start-time")
     {
         last_collection_start_time = value;
+        last_collection_start_time.value_namespace = name_space;
+        last_collection_start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-collection-time")
     {
         max_collection_time = value;
+        max_collection_time.value_namespace = name_space;
+        max_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-total-time")
     {
         max_total_time = value;
+        max_total_time.value_namespace = name_space;
+        max_total_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-collection-time")
     {
         min_collection_time = value;
+        min_collection_time.value_namespace = name_space;
+        min_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-total-time")
     {
         min_total_time = value;
+        min_total_time.value_namespace = name_space;
+        min_total_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-collections")
     {
         total_collections = value;
+        total_collections.value_namespace = name_space;
+        total_collections.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-not-ready")
     {
         total_not_ready = value;
+        total_not_ready.value_namespace = name_space;
+        total_not_ready.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-on-data-instances")
+    {
+        total_on_data_instances = value;
+        total_on_data_instances.value_namespace = name_space;
+        total_on_data_instances.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-other-errors")
     {
         total_other_errors = value;
+        total_other_errors.value_namespace = name_space;
+        total_other_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-drops")
     {
         total_send_drops = value;
+        total_send_drops.value_namespace = name_space;
+        total_send_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-errors")
     {
         total_send_errors = value;
+        total_send_errors.value_namespace = name_space;
+        total_send_errors.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "avg-total-time")
+    {
+        avg_total_time.yfilter = yfilter;
+    }
+    if(value_path == "cadence")
+    {
+        cadence.yfilter = yfilter;
+    }
+    if(value_path == "encoding")
+    {
+        encoding.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "last-collection-end-time")
+    {
+        last_collection_end_time.yfilter = yfilter;
+    }
+    if(value_path == "last-collection-start-time")
+    {
+        last_collection_start_time.yfilter = yfilter;
+    }
+    if(value_path == "max-collection-time")
+    {
+        max_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "max-total-time")
+    {
+        max_total_time.yfilter = yfilter;
+    }
+    if(value_path == "min-collection-time")
+    {
+        min_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "min-total-time")
+    {
+        min_total_time.yfilter = yfilter;
+    }
+    if(value_path == "total-collections")
+    {
+        total_collections.yfilter = yfilter;
+    }
+    if(value_path == "total-not-ready")
+    {
+        total_not_ready.yfilter = yfilter;
+    }
+    if(value_path == "total-on-data-instances")
+    {
+        total_on_data_instances.yfilter = yfilter;
+    }
+    if(value_path == "total-other-errors")
+    {
+        total_other_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-send-drops")
+    {
+        total_send_drops.yfilter = yfilter;
+    }
+    if(value_path == "total-send-errors")
+    {
+        total_send_errors.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collection-path" || name == "internal-collection-group" || name == "avg-total-time" || name == "cadence" || name == "encoding" || name == "id" || name == "last-collection-end-time" || name == "last-collection-start-time" || name == "max-collection-time" || name == "max-total-time" || name == "min-collection-time" || name == "min-total-time" || name == "total-collections" || name == "total-not-ready" || name == "total-on-data-instances" || name == "total-other-errors" || name == "total-send-drops" || name == "total-send-errors")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::CollectionPath()
     :
     path{YType::str, "path"},
-    state{YType::uint32, "state"},
+    state{YType::boolean, "state"},
     status_str{YType::str, "status-str"}
 {
     yang_name = "collection-path"; yang_parent_name = "collection-group";
@@ -1021,10 +1371,10 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path.operation)
-	|| is_set(state.operation)
-	|| is_set(status_str.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(status_str.yfilter);
 }
 
 std::string TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::get_segment_path() const
@@ -1050,9 +1400,9 @@ const EntityPath TelemetryModelDriven::Destinations::Destination::Destination_::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path.is_set || is_set(path.operation)) leaf_name_data.push_back(path.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (status_str.is_set || is_set(status_str.operation)) leaf_name_data.push_back(status_str.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (status_str.is_set || is_set(status_str.yfilter)) leaf_name_data.push_back(status_str.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1071,20 +1421,49 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     return children;
 }
 
-void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path")
     {
         path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status-str")
     {
         status_str = value;
+        status_str.value_namespace = name_space;
+        status_str.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "status-str")
+    {
+        status_str.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::CollectionPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path" || name == "state" || name == "status-str")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::InternalCollectionGroup()
@@ -1157,34 +1536,34 @@ bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGr
 
 bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(avg_collection_time.operation)
-	|| is_set(cadence.operation)
-	|| is_set(collection_method.operation)
-	|| is_set(max_collection_time.operation)
-	|| is_set(min_collection_time.operation)
-	|| is_set(path.operation)
-	|| is_set(status.operation)
-	|| is_set(total_collections.operation)
-	|| is_set(total_collections_missed.operation)
-	|| is_set(total_datalist_count.operation)
-	|| is_set(total_datalist_errors.operation)
-	|| is_set(total_encode_errors.operation)
-	|| is_set(total_encode_notready.operation)
-	|| is_set(total_finddata_count.operation)
-	|| is_set(total_finddata_errors.operation)
-	|| is_set(total_get_bulk_count.operation)
-	|| is_set(total_get_bulk_errors.operation)
-	|| is_set(total_get_count.operation)
-	|| is_set(total_get_errors.operation)
-	|| is_set(total_item_count.operation)
-	|| is_set(total_list_count.operation)
-	|| is_set(total_list_errors.operation)
-	|| is_set(total_send_bytes_dropped.operation)
-	|| is_set(total_send_drops.operation)
-	|| is_set(total_send_errors.operation)
-	|| is_set(total_send_packets.operation)
-	|| is_set(total_sent_bytes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(avg_collection_time.yfilter)
+	|| ydk::is_set(cadence.yfilter)
+	|| ydk::is_set(collection_method.yfilter)
+	|| ydk::is_set(max_collection_time.yfilter)
+	|| ydk::is_set(min_collection_time.yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(total_collections.yfilter)
+	|| ydk::is_set(total_collections_missed.yfilter)
+	|| ydk::is_set(total_datalist_count.yfilter)
+	|| ydk::is_set(total_datalist_errors.yfilter)
+	|| ydk::is_set(total_encode_errors.yfilter)
+	|| ydk::is_set(total_encode_notready.yfilter)
+	|| ydk::is_set(total_finddata_count.yfilter)
+	|| ydk::is_set(total_finddata_errors.yfilter)
+	|| ydk::is_set(total_get_bulk_count.yfilter)
+	|| ydk::is_set(total_get_bulk_errors.yfilter)
+	|| ydk::is_set(total_get_count.yfilter)
+	|| ydk::is_set(total_get_errors.yfilter)
+	|| ydk::is_set(total_item_count.yfilter)
+	|| ydk::is_set(total_list_count.yfilter)
+	|| ydk::is_set(total_list_errors.yfilter)
+	|| ydk::is_set(total_send_bytes_dropped.yfilter)
+	|| ydk::is_set(total_send_drops.yfilter)
+	|| ydk::is_set(total_send_errors.yfilter)
+	|| ydk::is_set(total_send_packets.yfilter)
+	|| ydk::is_set(total_sent_bytes.yfilter);
 }
 
 std::string TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::get_segment_path() const
@@ -1210,33 +1589,33 @@ const EntityPath TelemetryModelDriven::Destinations::Destination::Destination_::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (avg_collection_time.is_set || is_set(avg_collection_time.operation)) leaf_name_data.push_back(avg_collection_time.get_name_leafdata());
-    if (cadence.is_set || is_set(cadence.operation)) leaf_name_data.push_back(cadence.get_name_leafdata());
-    if (collection_method.is_set || is_set(collection_method.operation)) leaf_name_data.push_back(collection_method.get_name_leafdata());
-    if (max_collection_time.is_set || is_set(max_collection_time.operation)) leaf_name_data.push_back(max_collection_time.get_name_leafdata());
-    if (min_collection_time.is_set || is_set(min_collection_time.operation)) leaf_name_data.push_back(min_collection_time.get_name_leafdata());
-    if (path.is_set || is_set(path.operation)) leaf_name_data.push_back(path.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (total_collections.is_set || is_set(total_collections.operation)) leaf_name_data.push_back(total_collections.get_name_leafdata());
-    if (total_collections_missed.is_set || is_set(total_collections_missed.operation)) leaf_name_data.push_back(total_collections_missed.get_name_leafdata());
-    if (total_datalist_count.is_set || is_set(total_datalist_count.operation)) leaf_name_data.push_back(total_datalist_count.get_name_leafdata());
-    if (total_datalist_errors.is_set || is_set(total_datalist_errors.operation)) leaf_name_data.push_back(total_datalist_errors.get_name_leafdata());
-    if (total_encode_errors.is_set || is_set(total_encode_errors.operation)) leaf_name_data.push_back(total_encode_errors.get_name_leafdata());
-    if (total_encode_notready.is_set || is_set(total_encode_notready.operation)) leaf_name_data.push_back(total_encode_notready.get_name_leafdata());
-    if (total_finddata_count.is_set || is_set(total_finddata_count.operation)) leaf_name_data.push_back(total_finddata_count.get_name_leafdata());
-    if (total_finddata_errors.is_set || is_set(total_finddata_errors.operation)) leaf_name_data.push_back(total_finddata_errors.get_name_leafdata());
-    if (total_get_bulk_count.is_set || is_set(total_get_bulk_count.operation)) leaf_name_data.push_back(total_get_bulk_count.get_name_leafdata());
-    if (total_get_bulk_errors.is_set || is_set(total_get_bulk_errors.operation)) leaf_name_data.push_back(total_get_bulk_errors.get_name_leafdata());
-    if (total_get_count.is_set || is_set(total_get_count.operation)) leaf_name_data.push_back(total_get_count.get_name_leafdata());
-    if (total_get_errors.is_set || is_set(total_get_errors.operation)) leaf_name_data.push_back(total_get_errors.get_name_leafdata());
-    if (total_item_count.is_set || is_set(total_item_count.operation)) leaf_name_data.push_back(total_item_count.get_name_leafdata());
-    if (total_list_count.is_set || is_set(total_list_count.operation)) leaf_name_data.push_back(total_list_count.get_name_leafdata());
-    if (total_list_errors.is_set || is_set(total_list_errors.operation)) leaf_name_data.push_back(total_list_errors.get_name_leafdata());
-    if (total_send_bytes_dropped.is_set || is_set(total_send_bytes_dropped.operation)) leaf_name_data.push_back(total_send_bytes_dropped.get_name_leafdata());
-    if (total_send_drops.is_set || is_set(total_send_drops.operation)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
-    if (total_send_errors.is_set || is_set(total_send_errors.operation)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
-    if (total_send_packets.is_set || is_set(total_send_packets.operation)) leaf_name_data.push_back(total_send_packets.get_name_leafdata());
-    if (total_sent_bytes.is_set || is_set(total_sent_bytes.operation)) leaf_name_data.push_back(total_sent_bytes.get_name_leafdata());
+    if (avg_collection_time.is_set || is_set(avg_collection_time.yfilter)) leaf_name_data.push_back(avg_collection_time.get_name_leafdata());
+    if (cadence.is_set || is_set(cadence.yfilter)) leaf_name_data.push_back(cadence.get_name_leafdata());
+    if (collection_method.is_set || is_set(collection_method.yfilter)) leaf_name_data.push_back(collection_method.get_name_leafdata());
+    if (max_collection_time.is_set || is_set(max_collection_time.yfilter)) leaf_name_data.push_back(max_collection_time.get_name_leafdata());
+    if (min_collection_time.is_set || is_set(min_collection_time.yfilter)) leaf_name_data.push_back(min_collection_time.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (total_collections.is_set || is_set(total_collections.yfilter)) leaf_name_data.push_back(total_collections.get_name_leafdata());
+    if (total_collections_missed.is_set || is_set(total_collections_missed.yfilter)) leaf_name_data.push_back(total_collections_missed.get_name_leafdata());
+    if (total_datalist_count.is_set || is_set(total_datalist_count.yfilter)) leaf_name_data.push_back(total_datalist_count.get_name_leafdata());
+    if (total_datalist_errors.is_set || is_set(total_datalist_errors.yfilter)) leaf_name_data.push_back(total_datalist_errors.get_name_leafdata());
+    if (total_encode_errors.is_set || is_set(total_encode_errors.yfilter)) leaf_name_data.push_back(total_encode_errors.get_name_leafdata());
+    if (total_encode_notready.is_set || is_set(total_encode_notready.yfilter)) leaf_name_data.push_back(total_encode_notready.get_name_leafdata());
+    if (total_finddata_count.is_set || is_set(total_finddata_count.yfilter)) leaf_name_data.push_back(total_finddata_count.get_name_leafdata());
+    if (total_finddata_errors.is_set || is_set(total_finddata_errors.yfilter)) leaf_name_data.push_back(total_finddata_errors.get_name_leafdata());
+    if (total_get_bulk_count.is_set || is_set(total_get_bulk_count.yfilter)) leaf_name_data.push_back(total_get_bulk_count.get_name_leafdata());
+    if (total_get_bulk_errors.is_set || is_set(total_get_bulk_errors.yfilter)) leaf_name_data.push_back(total_get_bulk_errors.get_name_leafdata());
+    if (total_get_count.is_set || is_set(total_get_count.yfilter)) leaf_name_data.push_back(total_get_count.get_name_leafdata());
+    if (total_get_errors.is_set || is_set(total_get_errors.yfilter)) leaf_name_data.push_back(total_get_errors.get_name_leafdata());
+    if (total_item_count.is_set || is_set(total_item_count.yfilter)) leaf_name_data.push_back(total_item_count.get_name_leafdata());
+    if (total_list_count.is_set || is_set(total_list_count.yfilter)) leaf_name_data.push_back(total_list_count.get_name_leafdata());
+    if (total_list_errors.is_set || is_set(total_list_errors.yfilter)) leaf_name_data.push_back(total_list_errors.get_name_leafdata());
+    if (total_send_bytes_dropped.is_set || is_set(total_send_bytes_dropped.yfilter)) leaf_name_data.push_back(total_send_bytes_dropped.get_name_leafdata());
+    if (total_send_drops.is_set || is_set(total_send_drops.yfilter)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
+    if (total_send_errors.is_set || is_set(total_send_errors.yfilter)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
+    if (total_send_packets.is_set || is_set(total_send_packets.yfilter)) leaf_name_data.push_back(total_send_packets.get_name_leafdata());
+    if (total_sent_bytes.is_set || is_set(total_sent_bytes.yfilter)) leaf_name_data.push_back(total_sent_bytes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1255,116 +1634,289 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Destination
     return children;
 }
 
-void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "avg-collection-time")
     {
         avg_collection_time = value;
+        avg_collection_time.value_namespace = name_space;
+        avg_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cadence")
     {
         cadence = value;
+        cadence.value_namespace = name_space;
+        cadence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collection-method")
     {
         collection_method = value;
+        collection_method.value_namespace = name_space;
+        collection_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-collection-time")
     {
         max_collection_time = value;
+        max_collection_time.value_namespace = name_space;
+        max_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-collection-time")
     {
         min_collection_time = value;
+        min_collection_time.value_namespace = name_space;
+        min_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path")
     {
         path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-collections")
     {
         total_collections = value;
+        total_collections.value_namespace = name_space;
+        total_collections.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-collections-missed")
     {
         total_collections_missed = value;
+        total_collections_missed.value_namespace = name_space;
+        total_collections_missed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-datalist-count")
     {
         total_datalist_count = value;
+        total_datalist_count.value_namespace = name_space;
+        total_datalist_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-datalist-errors")
     {
         total_datalist_errors = value;
+        total_datalist_errors.value_namespace = name_space;
+        total_datalist_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-encode-errors")
     {
         total_encode_errors = value;
+        total_encode_errors.value_namespace = name_space;
+        total_encode_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-encode-notready")
     {
         total_encode_notready = value;
+        total_encode_notready.value_namespace = name_space;
+        total_encode_notready.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-finddata-count")
     {
         total_finddata_count = value;
+        total_finddata_count.value_namespace = name_space;
+        total_finddata_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-finddata-errors")
     {
         total_finddata_errors = value;
+        total_finddata_errors.value_namespace = name_space;
+        total_finddata_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-get-bulk-count")
     {
         total_get_bulk_count = value;
+        total_get_bulk_count.value_namespace = name_space;
+        total_get_bulk_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-get-bulk-errors")
     {
         total_get_bulk_errors = value;
+        total_get_bulk_errors.value_namespace = name_space;
+        total_get_bulk_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-get-count")
     {
         total_get_count = value;
+        total_get_count.value_namespace = name_space;
+        total_get_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-get-errors")
     {
         total_get_errors = value;
+        total_get_errors.value_namespace = name_space;
+        total_get_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-item-count")
     {
         total_item_count = value;
+        total_item_count.value_namespace = name_space;
+        total_item_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-list-count")
     {
         total_list_count = value;
+        total_list_count.value_namespace = name_space;
+        total_list_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-list-errors")
     {
         total_list_errors = value;
+        total_list_errors.value_namespace = name_space;
+        total_list_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-bytes-dropped")
     {
         total_send_bytes_dropped = value;
+        total_send_bytes_dropped.value_namespace = name_space;
+        total_send_bytes_dropped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-drops")
     {
         total_send_drops = value;
+        total_send_drops.value_namespace = name_space;
+        total_send_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-errors")
     {
         total_send_errors = value;
+        total_send_errors.value_namespace = name_space;
+        total_send_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-packets")
     {
         total_send_packets = value;
+        total_send_packets.value_namespace = name_space;
+        total_send_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-sent-bytes")
     {
         total_sent_bytes = value;
+        total_sent_bytes.value_namespace = name_space;
+        total_sent_bytes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "avg-collection-time")
+    {
+        avg_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "cadence")
+    {
+        cadence.yfilter = yfilter;
+    }
+    if(value_path == "collection-method")
+    {
+        collection_method.yfilter = yfilter;
+    }
+    if(value_path == "max-collection-time")
+    {
+        max_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "min-collection-time")
+    {
+        min_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "total-collections")
+    {
+        total_collections.yfilter = yfilter;
+    }
+    if(value_path == "total-collections-missed")
+    {
+        total_collections_missed.yfilter = yfilter;
+    }
+    if(value_path == "total-datalist-count")
+    {
+        total_datalist_count.yfilter = yfilter;
+    }
+    if(value_path == "total-datalist-errors")
+    {
+        total_datalist_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-encode-errors")
+    {
+        total_encode_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-encode-notready")
+    {
+        total_encode_notready.yfilter = yfilter;
+    }
+    if(value_path == "total-finddata-count")
+    {
+        total_finddata_count.yfilter = yfilter;
+    }
+    if(value_path == "total-finddata-errors")
+    {
+        total_finddata_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-get-bulk-count")
+    {
+        total_get_bulk_count.yfilter = yfilter;
+    }
+    if(value_path == "total-get-bulk-errors")
+    {
+        total_get_bulk_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-get-count")
+    {
+        total_get_count.yfilter = yfilter;
+    }
+    if(value_path == "total-get-errors")
+    {
+        total_get_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-item-count")
+    {
+        total_item_count.yfilter = yfilter;
+    }
+    if(value_path == "total-list-count")
+    {
+        total_list_count.yfilter = yfilter;
+    }
+    if(value_path == "total-list-errors")
+    {
+        total_list_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-send-bytes-dropped")
+    {
+        total_send_bytes_dropped.yfilter = yfilter;
+    }
+    if(value_path == "total-send-drops")
+    {
+        total_send_drops.yfilter = yfilter;
+    }
+    if(value_path == "total-send-errors")
+    {
+        total_send_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-send-packets")
+    {
+        total_send_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-sent-bytes")
+    {
+        total_sent_bytes.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Destinations::Destination::Destination_::CollectionGroup::InternalCollectionGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "avg-collection-time" || name == "cadence" || name == "collection-method" || name == "max-collection-time" || name == "min-collection-time" || name == "path" || name == "status" || name == "total-collections" || name == "total-collections-missed" || name == "total-datalist-count" || name == "total-datalist-errors" || name == "total-encode-errors" || name == "total-encode-notready" || name == "total-finddata-count" || name == "total-finddata-errors" || name == "total-get-bulk-count" || name == "total-get-bulk-errors" || name == "total-get-count" || name == "total-get-errors" || name == "total-item-count" || name == "total-list-count" || name == "total-list-errors" || name == "total-send-bytes-dropped" || name == "total-send-drops" || name == "total-send-errors" || name == "total-send-packets" || name == "total-sent-bytes")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscriptions()
@@ -1393,7 +1945,7 @@ bool TelemetryModelDriven::Subscriptions::has_operation() const
         if(subscription[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::get_segment_path() const
@@ -1458,15 +2010,24 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TelemetryModelDriven::Subscriptions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TelemetryModelDriven::Subscriptions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subscription")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription()
     :
-    subscription_id{YType::str, "subscription-id"},
-    total_num_of_bytes_sent{YType::uint64, "total-num-of-bytes-sent"},
-    total_num_of_packets_sent{YType::uint64, "total-num-of-packets-sent"}
+    subscription_id{YType::str, "subscription-id"}
     	,
     subscription(std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_>())
 {
@@ -1487,8 +2048,6 @@ bool TelemetryModelDriven::Subscriptions::Subscription::has_data() const
             return true;
     }
     return subscription_id.is_set
-	|| total_num_of_bytes_sent.is_set
-	|| total_num_of_packets_sent.is_set
 	|| (subscription !=  nullptr && subscription->has_data());
 }
 
@@ -1499,10 +2058,8 @@ bool TelemetryModelDriven::Subscriptions::Subscription::has_operation() const
         if(collection_group[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(subscription_id.operation)
-	|| is_set(total_num_of_bytes_sent.operation)
-	|| is_set(total_num_of_packets_sent.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(subscription_id.yfilter)
 	|| (subscription !=  nullptr && subscription->has_operation());
 }
 
@@ -1529,9 +2086,7 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (subscription_id.is_set || is_set(subscription_id.operation)) leaf_name_data.push_back(subscription_id.get_name_leafdata());
-    if (total_num_of_bytes_sent.is_set || is_set(total_num_of_bytes_sent.operation)) leaf_name_data.push_back(total_num_of_bytes_sent.get_name_leafdata());
-    if (total_num_of_packets_sent.is_set || is_set(total_num_of_packets_sent.operation)) leaf_name_data.push_back(total_num_of_packets_sent.get_name_leafdata());
+    if (subscription_id.is_set || is_set(subscription_id.yfilter)) leaf_name_data.push_back(subscription_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1585,27 +2140,40 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "subscription-id")
     {
         subscription_id = value;
+        subscription_id.value_namespace = name_space;
+        subscription_id.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "total-num-of-bytes-sent")
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "subscription-id")
     {
-        total_num_of_bytes_sent = value;
+        subscription_id.yfilter = yfilter;
     }
-    if(value_path == "total-num-of-packets-sent")
-    {
-        total_num_of_packets_sent = value;
-    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collection-group" || name == "subscription" || name == "subscription-id")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Subscription_()
     :
     id{YType::str, "id"},
-    state{YType::uint32, "state"}
+    state{YType::enumeration, "state"}
+    	,
+    source_interface(std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface>())
 {
+    source_interface->parent = this;
+
     yang_name = "subscription"; yang_parent_name = "subscription";
 }
 
@@ -1626,7 +2194,8 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::has_data(
             return true;
     }
     return id.is_set
-	|| state.is_set;
+	|| state.is_set
+	|| (source_interface !=  nullptr && source_interface->has_data());
 }
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::has_operation() const
@@ -1641,9 +2210,10 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::has_opera
         if(sensor_profile[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(id.operation)
-	|| is_set(state.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| (source_interface !=  nullptr && source_interface->has_operation());
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::get_segment_path() const
@@ -1669,8 +2239,8 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::Subscription
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1712,6 +2282,15 @@ std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::Subsc
         return c;
     }
 
+    if(child_yang_name == "source-interface")
+    {
+        if(source_interface == nullptr)
+        {
+            source_interface = std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface>();
+        }
+        return source_interface;
+    }
+
     return nullptr;
 }
 
@@ -1728,19 +2307,192 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
         children[c->get_segment_path()] = c;
     }
 
+    if(source_interface != nullptr)
+    {
+        children["source-interface"] = source_interface;
+    }
+
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-grp" || name == "sensor-profile" || name == "source-interface" || name == "id" || name == "state")
+        return true;
+    return false;
+}
+
+TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::SourceInterface()
+    :
+    interface_name{YType::str, "interface-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"},
+    state{YType::boolean, "state"},
+    vrf_id{YType::uint32, "vrf-id"}
+{
+    yang_name = "source-interface"; yang_parent_name = "subscription";
+}
+
+TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::~SourceInterface()
+{
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::has_data() const
+{
+    return interface_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set
+	|| state.is_set
+	|| vrf_id.is_set;
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(vrf_id.yfilter);
+}
+
+std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source-interface";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'SourceInterface' in Cisco_IOS_XR_telemetry_model_driven_oper cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id = value;
+        vrf_id.value_namespace = name_space;
+        vrf_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SourceInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "ipv4-address" || name == "ipv6-address" || name == "state" || name == "vrf-id")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorProfile()
@@ -1770,10 +2522,10 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorPro
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(heartbeat_interval.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(suppress_redundant.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(heartbeat_interval.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(suppress_redundant.yfilter)
 	|| (sensor_group !=  nullptr && sensor_group->has_operation());
 }
 
@@ -1800,9 +2552,9 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::Subscription
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (heartbeat_interval.is_set || is_set(heartbeat_interval.operation)) leaf_name_data.push_back(heartbeat_interval.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (suppress_redundant.is_set || is_set(suppress_redundant.operation)) leaf_name_data.push_back(suppress_redundant.get_name_leafdata());
+    if (heartbeat_interval.is_set || is_set(heartbeat_interval.yfilter)) leaf_name_data.push_back(heartbeat_interval.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (suppress_redundant.is_set || is_set(suppress_redundant.yfilter)) leaf_name_data.push_back(suppress_redundant.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1835,20 +2587,49 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "heartbeat-interval")
     {
         heartbeat_interval = value;
+        heartbeat_interval.value_namespace = name_space;
+        heartbeat_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-redundant")
     {
         suppress_redundant = value;
+        suppress_redundant.value_namespace = name_space;
+        suppress_redundant.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "heartbeat-interval")
+    {
+        heartbeat_interval.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "suppress-redundant")
+    {
+        suppress_redundant.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor-group" || name == "heartbeat-interval" || name == "sample-interval" || name == "suppress-redundant")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorGroup()
@@ -1881,9 +2662,9 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorPro
         if(sensor_path[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(configured.operation)
-	|| is_set(id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(configured.yfilter)
+	|| ydk::is_set(id.yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::get_segment_path() const
@@ -1909,8 +2690,8 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::Subscription
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (configured.is_set || is_set(configured.operation)) leaf_name_data.push_back(configured.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (configured.is_set || is_set(configured.yfilter)) leaf_name_data.push_back(configured.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1950,22 +2731,45 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "configured")
     {
         configured = value;
+        configured.value_namespace = name_space;
+        configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "configured")
+    {
+        configured.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor-path" || name == "configured" || name == "id")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::SensorPath()
     :
     path{YType::str, "path"},
-    state{YType::uint32, "state"},
+    state{YType::boolean, "state"},
     status_str{YType::str, "status-str"}
 {
     yang_name = "sensor-path"; yang_parent_name = "sensor-group";
@@ -1984,10 +2788,10 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorPro
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path.operation)
-	|| is_set(state.operation)
-	|| is_set(status_str.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(status_str.yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::get_segment_path() const
@@ -2013,9 +2817,9 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::Subscription
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path.is_set || is_set(path.operation)) leaf_name_data.push_back(path.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (status_str.is_set || is_set(status_str.operation)) leaf_name_data.push_back(status_str.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (status_str.is_set || is_set(status_str.yfilter)) leaf_name_data.push_back(status_str.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2034,20 +2838,49 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path")
     {
         path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status-str")
     {
         status_str = value;
+        status_str.value_namespace = name_space;
+        status_str.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "status-str")
+    {
+        status_str.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::SensorProfile::SensorGroup::SensorPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path" || name == "state" || name == "status-str")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::DestinationGrp()
@@ -2080,9 +2913,9 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Destinati
         if(destination[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(configured.operation)
-	|| is_set(id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(configured.yfilter)
+	|| ydk::is_set(id.yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::get_segment_path() const
@@ -2108,8 +2941,8 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::Subscription
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (configured.is_set || is_set(configured.operation)) leaf_name_data.push_back(configured.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (configured.is_set || is_set(configured.yfilter)) leaf_name_data.push_back(configured.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2149,32 +2982,59 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "configured")
     {
         configured = value;
+        configured.value_namespace = name_space;
+        configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "configured")
+    {
+        configured.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "configured" || name == "id")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::Destination()
     :
     dest_port{YType::uint16, "dest-port"},
+    dscp{YType::uint32, "dscp"},
     encoding{YType::enumeration, "encoding"},
     id{YType::str, "id"},
     last_collection_time{YType::uint64, "last-collection-time"},
-    state{YType::uint32, "state"},
+    state{YType::enumeration, "state"},
     sub_id{YType::uint64, "sub-id"},
     sub_id_str{YType::str, "sub-id-str"},
     tls{YType::uint32, "tls"},
     tls_host{YType::str, "tls-host"},
     total_num_of_bytes_sent{YType::uint64, "total-num-of-bytes-sent"},
     total_num_of_packets_sent{YType::uint64, "total-num-of-packets-sent"},
-    transport{YType::enumeration, "transport"}
+    transport{YType::enumeration, "transport"},
+    udp_mtu{YType::uint32, "udp-mtu"},
+    vrf{YType::str, "vrf"},
+    vrf_id{YType::uint32, "vrf-id"}
     	,
     dest_ip_address(std::make_shared<TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress>())
 {
@@ -2195,6 +3055,7 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Destinati
             return true;
     }
     return dest_port.is_set
+	|| dscp.is_set
 	|| encoding.is_set
 	|| id.is_set
 	|| last_collection_time.is_set
@@ -2205,6 +3066,9 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Destinati
 	|| total_num_of_bytes_sent.is_set
 	|| total_num_of_packets_sent.is_set
 	|| transport.is_set
+	|| udp_mtu.is_set
+	|| vrf.is_set
+	|| vrf_id.is_set
 	|| (dest_ip_address !=  nullptr && dest_ip_address->has_data());
 }
 
@@ -2212,22 +3076,26 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Destinati
 {
     for (auto const & leaf : sub_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(dest_port.operation)
-	|| is_set(encoding.operation)
-	|| is_set(id.operation)
-	|| is_set(last_collection_time.operation)
-	|| is_set(state.operation)
-	|| is_set(sub_id.operation)
-	|| is_set(sub_id_str.operation)
-	|| is_set(tls.operation)
-	|| is_set(tls_host.operation)
-	|| is_set(total_num_of_bytes_sent.operation)
-	|| is_set(total_num_of_packets_sent.operation)
-	|| is_set(transport.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(dest_port.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(encoding.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(last_collection_time.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(sub_id.yfilter)
+	|| ydk::is_set(sub_id_str.yfilter)
+	|| ydk::is_set(tls.yfilter)
+	|| ydk::is_set(tls_host.yfilter)
+	|| ydk::is_set(total_num_of_bytes_sent.yfilter)
+	|| ydk::is_set(total_num_of_packets_sent.yfilter)
+	|| ydk::is_set(transport.yfilter)
+	|| ydk::is_set(udp_mtu.yfilter)
+	|| ydk::is_set(vrf.yfilter)
+	|| ydk::is_set(vrf_id.yfilter)
 	|| (dest_ip_address !=  nullptr && dest_ip_address->has_operation());
 }
 
@@ -2254,17 +3122,21 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::Subscription
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dest_port.is_set || is_set(dest_port.operation)) leaf_name_data.push_back(dest_port.get_name_leafdata());
-    if (encoding.is_set || is_set(encoding.operation)) leaf_name_data.push_back(encoding.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (last_collection_time.is_set || is_set(last_collection_time.operation)) leaf_name_data.push_back(last_collection_time.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (sub_id_str.is_set || is_set(sub_id_str.operation)) leaf_name_data.push_back(sub_id_str.get_name_leafdata());
-    if (tls.is_set || is_set(tls.operation)) leaf_name_data.push_back(tls.get_name_leafdata());
-    if (tls_host.is_set || is_set(tls_host.operation)) leaf_name_data.push_back(tls_host.get_name_leafdata());
-    if (total_num_of_bytes_sent.is_set || is_set(total_num_of_bytes_sent.operation)) leaf_name_data.push_back(total_num_of_bytes_sent.get_name_leafdata());
-    if (total_num_of_packets_sent.is_set || is_set(total_num_of_packets_sent.operation)) leaf_name_data.push_back(total_num_of_packets_sent.get_name_leafdata());
-    if (transport.is_set || is_set(transport.operation)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (dest_port.is_set || is_set(dest_port.yfilter)) leaf_name_data.push_back(dest_port.get_name_leafdata());
+    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (last_collection_time.is_set || is_set(last_collection_time.yfilter)) leaf_name_data.push_back(last_collection_time.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (sub_id_str.is_set || is_set(sub_id_str.yfilter)) leaf_name_data.push_back(sub_id_str.get_name_leafdata());
+    if (tls.is_set || is_set(tls.yfilter)) leaf_name_data.push_back(tls.get_name_leafdata());
+    if (tls_host.is_set || is_set(tls_host.yfilter)) leaf_name_data.push_back(tls_host.get_name_leafdata());
+    if (total_num_of_bytes_sent.is_set || is_set(total_num_of_bytes_sent.yfilter)) leaf_name_data.push_back(total_num_of_bytes_sent.get_name_leafdata());
+    if (total_num_of_packets_sent.is_set || is_set(total_num_of_packets_sent.yfilter)) leaf_name_data.push_back(total_num_of_packets_sent.get_name_leafdata());
+    if (transport.is_set || is_set(transport.yfilter)) leaf_name_data.push_back(transport.get_name_leafdata());
+    if (udp_mtu.is_set || is_set(udp_mtu.yfilter)) leaf_name_data.push_back(udp_mtu.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (vrf_id.is_set || is_set(vrf_id.yfilter)) leaf_name_data.push_back(vrf_id.get_name_leafdata());
 
     auto sub_id_name_datas = sub_id.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sub_id_name_datas.begin(), sub_id_name_datas.end());
@@ -2299,27 +3171,43 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dest-port")
     {
         dest_port = value;
+        dest_port.value_namespace = name_space;
+        dest_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dscp")
+    {
+        dscp = value;
+        dscp.value_namespace = name_space;
+        dscp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encoding")
     {
         encoding = value;
+        encoding.value_namespace = name_space;
+        encoding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-collection-time")
     {
         last_collection_time = value;
+        last_collection_time.value_namespace = name_space;
+        last_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sub-id")
     {
@@ -2328,27 +3216,132 @@ void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Destinati
     if(value_path == "sub-id-str")
     {
         sub_id_str = value;
+        sub_id_str.value_namespace = name_space;
+        sub_id_str.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tls")
     {
         tls = value;
+        tls.value_namespace = name_space;
+        tls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tls-host")
     {
         tls_host = value;
+        tls_host.value_namespace = name_space;
+        tls_host.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-num-of-bytes-sent")
     {
         total_num_of_bytes_sent = value;
+        total_num_of_bytes_sent.value_namespace = name_space;
+        total_num_of_bytes_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-num-of-packets-sent")
     {
         total_num_of_packets_sent = value;
+        total_num_of_packets_sent.value_namespace = name_space;
+        total_num_of_packets_sent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport")
     {
         transport = value;
+        transport.value_namespace = name_space;
+        transport.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "udp-mtu")
+    {
+        udp_mtu = value;
+        udp_mtu.value_namespace = name_space;
+        udp_mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id = value;
+        vrf_id.value_namespace = name_space;
+        vrf_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dest-port")
+    {
+        dest_port.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "encoding")
+    {
+        encoding.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "last-collection-time")
+    {
+        last_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "sub-id")
+    {
+        sub_id.yfilter = yfilter;
+    }
+    if(value_path == "sub-id-str")
+    {
+        sub_id_str.yfilter = yfilter;
+    }
+    if(value_path == "tls")
+    {
+        tls.yfilter = yfilter;
+    }
+    if(value_path == "tls-host")
+    {
+        tls_host.yfilter = yfilter;
+    }
+    if(value_path == "total-num-of-bytes-sent")
+    {
+        total_num_of_bytes_sent.yfilter = yfilter;
+    }
+    if(value_path == "total-num-of-packets-sent")
+    {
+        total_num_of_packets_sent.yfilter = yfilter;
+    }
+    if(value_path == "transport")
+    {
+        transport.yfilter = yfilter;
+    }
+    if(value_path == "udp-mtu")
+    {
+        udp_mtu.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+    if(value_path == "vrf-id")
+    {
+        vrf_id.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dest-ip-address" || name == "dest-port" || name == "dscp" || name == "encoding" || name == "id" || name == "last-collection-time" || name == "state" || name == "sub-id" || name == "sub-id-str" || name == "tls" || name == "tls-host" || name == "total-num-of-bytes-sent" || name == "total-num-of-packets-sent" || name == "transport" || name == "udp-mtu" || name == "vrf" || name == "vrf-id")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::DestIpAddress()
@@ -2373,10 +3366,10 @@ bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Destinati
 
 bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ip_type.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ip_type.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::get_segment_path() const
@@ -2402,9 +3395,9 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::Subscription
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ip_type.is_set || is_set(ip_type.operation)) leaf_name_data.push_back(ip_type.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ip_type.is_set || is_set(ip_type.yfilter)) leaf_name_data.push_back(ip_type.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2423,20 +3416,49 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ip-type")
     {
         ip_type = value;
+        ip_type.value_namespace = name_space;
+        ip_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-type")
+    {
+        ip_type.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::Subscription_::DestinationGrp::Destination::DestIpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-type" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionGroup()
@@ -2453,6 +3475,7 @@ TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionGr
     min_total_time{YType::uint32, "min-total-time"},
     total_collections{YType::uint32, "total-collections"},
     total_not_ready{YType::uint32, "total-not-ready"},
+    total_on_data_instances{YType::uint32, "total-on-data-instances"},
     total_other_errors{YType::uint32, "total-other-errors"},
     total_send_drops{YType::uint32, "total-send-drops"},
     total_send_errors{YType::uint32, "total-send-errors"}
@@ -2488,6 +3511,7 @@ bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_dat
 	|| min_total_time.is_set
 	|| total_collections.is_set
 	|| total_not_ready.is_set
+	|| total_on_data_instances.is_set
 	|| total_other_errors.is_set
 	|| total_send_drops.is_set
 	|| total_send_errors.is_set;
@@ -2505,22 +3529,23 @@ bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_ope
         if(internal_collection_group[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(avg_total_time.operation)
-	|| is_set(cadence.operation)
-	|| is_set(encoding.operation)
-	|| is_set(id.operation)
-	|| is_set(last_collection_end_time.operation)
-	|| is_set(last_collection_start_time.operation)
-	|| is_set(max_collection_time.operation)
-	|| is_set(max_total_time.operation)
-	|| is_set(min_collection_time.operation)
-	|| is_set(min_total_time.operation)
-	|| is_set(total_collections.operation)
-	|| is_set(total_not_ready.operation)
-	|| is_set(total_other_errors.operation)
-	|| is_set(total_send_drops.operation)
-	|| is_set(total_send_errors.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(avg_total_time.yfilter)
+	|| ydk::is_set(cadence.yfilter)
+	|| ydk::is_set(encoding.yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(last_collection_end_time.yfilter)
+	|| ydk::is_set(last_collection_start_time.yfilter)
+	|| ydk::is_set(max_collection_time.yfilter)
+	|| ydk::is_set(max_total_time.yfilter)
+	|| ydk::is_set(min_collection_time.yfilter)
+	|| ydk::is_set(min_total_time.yfilter)
+	|| ydk::is_set(total_collections.yfilter)
+	|| ydk::is_set(total_not_ready.yfilter)
+	|| ydk::is_set(total_on_data_instances.yfilter)
+	|| ydk::is_set(total_other_errors.yfilter)
+	|| ydk::is_set(total_send_drops.yfilter)
+	|| ydk::is_set(total_send_errors.yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::get_segment_path() const
@@ -2546,21 +3571,22 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::CollectionGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (avg_total_time.is_set || is_set(avg_total_time.operation)) leaf_name_data.push_back(avg_total_time.get_name_leafdata());
-    if (cadence.is_set || is_set(cadence.operation)) leaf_name_data.push_back(cadence.get_name_leafdata());
-    if (encoding.is_set || is_set(encoding.operation)) leaf_name_data.push_back(encoding.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (last_collection_end_time.is_set || is_set(last_collection_end_time.operation)) leaf_name_data.push_back(last_collection_end_time.get_name_leafdata());
-    if (last_collection_start_time.is_set || is_set(last_collection_start_time.operation)) leaf_name_data.push_back(last_collection_start_time.get_name_leafdata());
-    if (max_collection_time.is_set || is_set(max_collection_time.operation)) leaf_name_data.push_back(max_collection_time.get_name_leafdata());
-    if (max_total_time.is_set || is_set(max_total_time.operation)) leaf_name_data.push_back(max_total_time.get_name_leafdata());
-    if (min_collection_time.is_set || is_set(min_collection_time.operation)) leaf_name_data.push_back(min_collection_time.get_name_leafdata());
-    if (min_total_time.is_set || is_set(min_total_time.operation)) leaf_name_data.push_back(min_total_time.get_name_leafdata());
-    if (total_collections.is_set || is_set(total_collections.operation)) leaf_name_data.push_back(total_collections.get_name_leafdata());
-    if (total_not_ready.is_set || is_set(total_not_ready.operation)) leaf_name_data.push_back(total_not_ready.get_name_leafdata());
-    if (total_other_errors.is_set || is_set(total_other_errors.operation)) leaf_name_data.push_back(total_other_errors.get_name_leafdata());
-    if (total_send_drops.is_set || is_set(total_send_drops.operation)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
-    if (total_send_errors.is_set || is_set(total_send_errors.operation)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
+    if (avg_total_time.is_set || is_set(avg_total_time.yfilter)) leaf_name_data.push_back(avg_total_time.get_name_leafdata());
+    if (cadence.is_set || is_set(cadence.yfilter)) leaf_name_data.push_back(cadence.get_name_leafdata());
+    if (encoding.is_set || is_set(encoding.yfilter)) leaf_name_data.push_back(encoding.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (last_collection_end_time.is_set || is_set(last_collection_end_time.yfilter)) leaf_name_data.push_back(last_collection_end_time.get_name_leafdata());
+    if (last_collection_start_time.is_set || is_set(last_collection_start_time.yfilter)) leaf_name_data.push_back(last_collection_start_time.get_name_leafdata());
+    if (max_collection_time.is_set || is_set(max_collection_time.yfilter)) leaf_name_data.push_back(max_collection_time.get_name_leafdata());
+    if (max_total_time.is_set || is_set(max_total_time.yfilter)) leaf_name_data.push_back(max_total_time.get_name_leafdata());
+    if (min_collection_time.is_set || is_set(min_collection_time.yfilter)) leaf_name_data.push_back(min_collection_time.get_name_leafdata());
+    if (min_total_time.is_set || is_set(min_total_time.yfilter)) leaf_name_data.push_back(min_total_time.get_name_leafdata());
+    if (total_collections.is_set || is_set(total_collections.yfilter)) leaf_name_data.push_back(total_collections.get_name_leafdata());
+    if (total_not_ready.is_set || is_set(total_not_ready.yfilter)) leaf_name_data.push_back(total_not_ready.get_name_leafdata());
+    if (total_on_data_instances.is_set || is_set(total_on_data_instances.yfilter)) leaf_name_data.push_back(total_on_data_instances.get_name_leafdata());
+    if (total_other_errors.is_set || is_set(total_other_errors.yfilter)) leaf_name_data.push_back(total_other_errors.get_name_leafdata());
+    if (total_send_drops.is_set || is_set(total_send_drops.yfilter)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
+    if (total_send_errors.is_set || is_set(total_send_errors.yfilter)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2621,74 +3647,185 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "avg-total-time")
     {
         avg_total_time = value;
+        avg_total_time.value_namespace = name_space;
+        avg_total_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cadence")
     {
         cadence = value;
+        cadence.value_namespace = name_space;
+        cadence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encoding")
     {
         encoding = value;
+        encoding.value_namespace = name_space;
+        encoding.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-collection-end-time")
     {
         last_collection_end_time = value;
+        last_collection_end_time.value_namespace = name_space;
+        last_collection_end_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "last-collection-start-time")
     {
         last_collection_start_time = value;
+        last_collection_start_time.value_namespace = name_space;
+        last_collection_start_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-collection-time")
     {
         max_collection_time = value;
+        max_collection_time.value_namespace = name_space;
+        max_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-total-time")
     {
         max_total_time = value;
+        max_total_time.value_namespace = name_space;
+        max_total_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-collection-time")
     {
         min_collection_time = value;
+        min_collection_time.value_namespace = name_space;
+        min_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-total-time")
     {
         min_total_time = value;
+        min_total_time.value_namespace = name_space;
+        min_total_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-collections")
     {
         total_collections = value;
+        total_collections.value_namespace = name_space;
+        total_collections.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-not-ready")
     {
         total_not_ready = value;
+        total_not_ready.value_namespace = name_space;
+        total_not_ready.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-on-data-instances")
+    {
+        total_on_data_instances = value;
+        total_on_data_instances.value_namespace = name_space;
+        total_on_data_instances.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-other-errors")
     {
         total_other_errors = value;
+        total_other_errors.value_namespace = name_space;
+        total_other_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-drops")
     {
         total_send_drops = value;
+        total_send_drops.value_namespace = name_space;
+        total_send_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-errors")
     {
         total_send_errors = value;
+        total_send_errors.value_namespace = name_space;
+        total_send_errors.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "avg-total-time")
+    {
+        avg_total_time.yfilter = yfilter;
+    }
+    if(value_path == "cadence")
+    {
+        cadence.yfilter = yfilter;
+    }
+    if(value_path == "encoding")
+    {
+        encoding.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "last-collection-end-time")
+    {
+        last_collection_end_time.yfilter = yfilter;
+    }
+    if(value_path == "last-collection-start-time")
+    {
+        last_collection_start_time.yfilter = yfilter;
+    }
+    if(value_path == "max-collection-time")
+    {
+        max_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "max-total-time")
+    {
+        max_total_time.yfilter = yfilter;
+    }
+    if(value_path == "min-collection-time")
+    {
+        min_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "min-total-time")
+    {
+        min_total_time.yfilter = yfilter;
+    }
+    if(value_path == "total-collections")
+    {
+        total_collections.yfilter = yfilter;
+    }
+    if(value_path == "total-not-ready")
+    {
+        total_not_ready.yfilter = yfilter;
+    }
+    if(value_path == "total-on-data-instances")
+    {
+        total_on_data_instances.yfilter = yfilter;
+    }
+    if(value_path == "total-other-errors")
+    {
+        total_other_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-send-drops")
+    {
+        total_send_drops.yfilter = yfilter;
+    }
+    if(value_path == "total-send-errors")
+    {
+        total_send_errors.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "collection-path" || name == "internal-collection-group" || name == "avg-total-time" || name == "cadence" || name == "encoding" || name == "id" || name == "last-collection-end-time" || name == "last-collection-start-time" || name == "max-collection-time" || name == "max-total-time" || name == "min-collection-time" || name == "min-total-time" || name == "total-collections" || name == "total-not-ready" || name == "total-on-data-instances" || name == "total-other-errors" || name == "total-send-drops" || name == "total-send-errors")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::CollectionPath()
     :
     path{YType::str, "path"},
-    state{YType::uint32, "state"},
+    state{YType::boolean, "state"},
     status_str{YType::str, "status-str"}
 {
     yang_name = "collection-path"; yang_parent_name = "collection-group";
@@ -2707,10 +3844,10 @@ bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::Collect
 
 bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path.operation)
-	|| is_set(state.operation)
-	|| is_set(status_str.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(status_str.yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::get_segment_path() const
@@ -2736,9 +3873,9 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::CollectionGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path.is_set || is_set(path.operation)) leaf_name_data.push_back(path.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (status_str.is_set || is_set(status_str.operation)) leaf_name_data.push_back(status_str.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (status_str.is_set || is_set(status_str.yfilter)) leaf_name_data.push_back(status_str.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2757,20 +3894,49 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path")
     {
         path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status-str")
     {
         status_str = value;
+        status_str.value_namespace = name_space;
+        status_str.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "status-str")
+    {
+        status_str.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::CollectionPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path" || name == "state" || name == "status-str")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::InternalCollectionGroup()
@@ -2843,34 +4009,34 @@ bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::Interna
 
 bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(avg_collection_time.operation)
-	|| is_set(cadence.operation)
-	|| is_set(collection_method.operation)
-	|| is_set(max_collection_time.operation)
-	|| is_set(min_collection_time.operation)
-	|| is_set(path.operation)
-	|| is_set(status.operation)
-	|| is_set(total_collections.operation)
-	|| is_set(total_collections_missed.operation)
-	|| is_set(total_datalist_count.operation)
-	|| is_set(total_datalist_errors.operation)
-	|| is_set(total_encode_errors.operation)
-	|| is_set(total_encode_notready.operation)
-	|| is_set(total_finddata_count.operation)
-	|| is_set(total_finddata_errors.operation)
-	|| is_set(total_get_bulk_count.operation)
-	|| is_set(total_get_bulk_errors.operation)
-	|| is_set(total_get_count.operation)
-	|| is_set(total_get_errors.operation)
-	|| is_set(total_item_count.operation)
-	|| is_set(total_list_count.operation)
-	|| is_set(total_list_errors.operation)
-	|| is_set(total_send_bytes_dropped.operation)
-	|| is_set(total_send_drops.operation)
-	|| is_set(total_send_errors.operation)
-	|| is_set(total_send_packets.operation)
-	|| is_set(total_sent_bytes.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(avg_collection_time.yfilter)
+	|| ydk::is_set(cadence.yfilter)
+	|| ydk::is_set(collection_method.yfilter)
+	|| ydk::is_set(max_collection_time.yfilter)
+	|| ydk::is_set(min_collection_time.yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| ydk::is_set(status.yfilter)
+	|| ydk::is_set(total_collections.yfilter)
+	|| ydk::is_set(total_collections_missed.yfilter)
+	|| ydk::is_set(total_datalist_count.yfilter)
+	|| ydk::is_set(total_datalist_errors.yfilter)
+	|| ydk::is_set(total_encode_errors.yfilter)
+	|| ydk::is_set(total_encode_notready.yfilter)
+	|| ydk::is_set(total_finddata_count.yfilter)
+	|| ydk::is_set(total_finddata_errors.yfilter)
+	|| ydk::is_set(total_get_bulk_count.yfilter)
+	|| ydk::is_set(total_get_bulk_errors.yfilter)
+	|| ydk::is_set(total_get_count.yfilter)
+	|| ydk::is_set(total_get_errors.yfilter)
+	|| ydk::is_set(total_item_count.yfilter)
+	|| ydk::is_set(total_list_count.yfilter)
+	|| ydk::is_set(total_list_errors.yfilter)
+	|| ydk::is_set(total_send_bytes_dropped.yfilter)
+	|| ydk::is_set(total_send_drops.yfilter)
+	|| ydk::is_set(total_send_errors.yfilter)
+	|| ydk::is_set(total_send_packets.yfilter)
+	|| ydk::is_set(total_sent_bytes.yfilter);
 }
 
 std::string TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::get_segment_path() const
@@ -2896,33 +4062,33 @@ const EntityPath TelemetryModelDriven::Subscriptions::Subscription::CollectionGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (avg_collection_time.is_set || is_set(avg_collection_time.operation)) leaf_name_data.push_back(avg_collection_time.get_name_leafdata());
-    if (cadence.is_set || is_set(cadence.operation)) leaf_name_data.push_back(cadence.get_name_leafdata());
-    if (collection_method.is_set || is_set(collection_method.operation)) leaf_name_data.push_back(collection_method.get_name_leafdata());
-    if (max_collection_time.is_set || is_set(max_collection_time.operation)) leaf_name_data.push_back(max_collection_time.get_name_leafdata());
-    if (min_collection_time.is_set || is_set(min_collection_time.operation)) leaf_name_data.push_back(min_collection_time.get_name_leafdata());
-    if (path.is_set || is_set(path.operation)) leaf_name_data.push_back(path.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
-    if (total_collections.is_set || is_set(total_collections.operation)) leaf_name_data.push_back(total_collections.get_name_leafdata());
-    if (total_collections_missed.is_set || is_set(total_collections_missed.operation)) leaf_name_data.push_back(total_collections_missed.get_name_leafdata());
-    if (total_datalist_count.is_set || is_set(total_datalist_count.operation)) leaf_name_data.push_back(total_datalist_count.get_name_leafdata());
-    if (total_datalist_errors.is_set || is_set(total_datalist_errors.operation)) leaf_name_data.push_back(total_datalist_errors.get_name_leafdata());
-    if (total_encode_errors.is_set || is_set(total_encode_errors.operation)) leaf_name_data.push_back(total_encode_errors.get_name_leafdata());
-    if (total_encode_notready.is_set || is_set(total_encode_notready.operation)) leaf_name_data.push_back(total_encode_notready.get_name_leafdata());
-    if (total_finddata_count.is_set || is_set(total_finddata_count.operation)) leaf_name_data.push_back(total_finddata_count.get_name_leafdata());
-    if (total_finddata_errors.is_set || is_set(total_finddata_errors.operation)) leaf_name_data.push_back(total_finddata_errors.get_name_leafdata());
-    if (total_get_bulk_count.is_set || is_set(total_get_bulk_count.operation)) leaf_name_data.push_back(total_get_bulk_count.get_name_leafdata());
-    if (total_get_bulk_errors.is_set || is_set(total_get_bulk_errors.operation)) leaf_name_data.push_back(total_get_bulk_errors.get_name_leafdata());
-    if (total_get_count.is_set || is_set(total_get_count.operation)) leaf_name_data.push_back(total_get_count.get_name_leafdata());
-    if (total_get_errors.is_set || is_set(total_get_errors.operation)) leaf_name_data.push_back(total_get_errors.get_name_leafdata());
-    if (total_item_count.is_set || is_set(total_item_count.operation)) leaf_name_data.push_back(total_item_count.get_name_leafdata());
-    if (total_list_count.is_set || is_set(total_list_count.operation)) leaf_name_data.push_back(total_list_count.get_name_leafdata());
-    if (total_list_errors.is_set || is_set(total_list_errors.operation)) leaf_name_data.push_back(total_list_errors.get_name_leafdata());
-    if (total_send_bytes_dropped.is_set || is_set(total_send_bytes_dropped.operation)) leaf_name_data.push_back(total_send_bytes_dropped.get_name_leafdata());
-    if (total_send_drops.is_set || is_set(total_send_drops.operation)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
-    if (total_send_errors.is_set || is_set(total_send_errors.operation)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
-    if (total_send_packets.is_set || is_set(total_send_packets.operation)) leaf_name_data.push_back(total_send_packets.get_name_leafdata());
-    if (total_sent_bytes.is_set || is_set(total_sent_bytes.operation)) leaf_name_data.push_back(total_sent_bytes.get_name_leafdata());
+    if (avg_collection_time.is_set || is_set(avg_collection_time.yfilter)) leaf_name_data.push_back(avg_collection_time.get_name_leafdata());
+    if (cadence.is_set || is_set(cadence.yfilter)) leaf_name_data.push_back(cadence.get_name_leafdata());
+    if (collection_method.is_set || is_set(collection_method.yfilter)) leaf_name_data.push_back(collection_method.get_name_leafdata());
+    if (max_collection_time.is_set || is_set(max_collection_time.yfilter)) leaf_name_data.push_back(max_collection_time.get_name_leafdata());
+    if (min_collection_time.is_set || is_set(min_collection_time.yfilter)) leaf_name_data.push_back(min_collection_time.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (total_collections.is_set || is_set(total_collections.yfilter)) leaf_name_data.push_back(total_collections.get_name_leafdata());
+    if (total_collections_missed.is_set || is_set(total_collections_missed.yfilter)) leaf_name_data.push_back(total_collections_missed.get_name_leafdata());
+    if (total_datalist_count.is_set || is_set(total_datalist_count.yfilter)) leaf_name_data.push_back(total_datalist_count.get_name_leafdata());
+    if (total_datalist_errors.is_set || is_set(total_datalist_errors.yfilter)) leaf_name_data.push_back(total_datalist_errors.get_name_leafdata());
+    if (total_encode_errors.is_set || is_set(total_encode_errors.yfilter)) leaf_name_data.push_back(total_encode_errors.get_name_leafdata());
+    if (total_encode_notready.is_set || is_set(total_encode_notready.yfilter)) leaf_name_data.push_back(total_encode_notready.get_name_leafdata());
+    if (total_finddata_count.is_set || is_set(total_finddata_count.yfilter)) leaf_name_data.push_back(total_finddata_count.get_name_leafdata());
+    if (total_finddata_errors.is_set || is_set(total_finddata_errors.yfilter)) leaf_name_data.push_back(total_finddata_errors.get_name_leafdata());
+    if (total_get_bulk_count.is_set || is_set(total_get_bulk_count.yfilter)) leaf_name_data.push_back(total_get_bulk_count.get_name_leafdata());
+    if (total_get_bulk_errors.is_set || is_set(total_get_bulk_errors.yfilter)) leaf_name_data.push_back(total_get_bulk_errors.get_name_leafdata());
+    if (total_get_count.is_set || is_set(total_get_count.yfilter)) leaf_name_data.push_back(total_get_count.get_name_leafdata());
+    if (total_get_errors.is_set || is_set(total_get_errors.yfilter)) leaf_name_data.push_back(total_get_errors.get_name_leafdata());
+    if (total_item_count.is_set || is_set(total_item_count.yfilter)) leaf_name_data.push_back(total_item_count.get_name_leafdata());
+    if (total_list_count.is_set || is_set(total_list_count.yfilter)) leaf_name_data.push_back(total_list_count.get_name_leafdata());
+    if (total_list_errors.is_set || is_set(total_list_errors.yfilter)) leaf_name_data.push_back(total_list_errors.get_name_leafdata());
+    if (total_send_bytes_dropped.is_set || is_set(total_send_bytes_dropped.yfilter)) leaf_name_data.push_back(total_send_bytes_dropped.get_name_leafdata());
+    if (total_send_drops.is_set || is_set(total_send_drops.yfilter)) leaf_name_data.push_back(total_send_drops.get_name_leafdata());
+    if (total_send_errors.is_set || is_set(total_send_errors.yfilter)) leaf_name_data.push_back(total_send_errors.get_name_leafdata());
+    if (total_send_packets.is_set || is_set(total_send_packets.yfilter)) leaf_name_data.push_back(total_send_packets.get_name_leafdata());
+    if (total_sent_bytes.is_set || is_set(total_sent_bytes.yfilter)) leaf_name_data.push_back(total_sent_bytes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2941,116 +4107,289 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::Subscriptio
     return children;
 }
 
-void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "avg-collection-time")
     {
         avg_collection_time = value;
+        avg_collection_time.value_namespace = name_space;
+        avg_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cadence")
     {
         cadence = value;
+        cadence.value_namespace = name_space;
+        cadence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "collection-method")
     {
         collection_method = value;
+        collection_method.value_namespace = name_space;
+        collection_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-collection-time")
     {
         max_collection_time = value;
+        max_collection_time.value_namespace = name_space;
+        max_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-collection-time")
     {
         min_collection_time = value;
+        min_collection_time.value_namespace = name_space;
+        min_collection_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path")
     {
         path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-collections")
     {
         total_collections = value;
+        total_collections.value_namespace = name_space;
+        total_collections.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-collections-missed")
     {
         total_collections_missed = value;
+        total_collections_missed.value_namespace = name_space;
+        total_collections_missed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-datalist-count")
     {
         total_datalist_count = value;
+        total_datalist_count.value_namespace = name_space;
+        total_datalist_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-datalist-errors")
     {
         total_datalist_errors = value;
+        total_datalist_errors.value_namespace = name_space;
+        total_datalist_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-encode-errors")
     {
         total_encode_errors = value;
+        total_encode_errors.value_namespace = name_space;
+        total_encode_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-encode-notready")
     {
         total_encode_notready = value;
+        total_encode_notready.value_namespace = name_space;
+        total_encode_notready.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-finddata-count")
     {
         total_finddata_count = value;
+        total_finddata_count.value_namespace = name_space;
+        total_finddata_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-finddata-errors")
     {
         total_finddata_errors = value;
+        total_finddata_errors.value_namespace = name_space;
+        total_finddata_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-get-bulk-count")
     {
         total_get_bulk_count = value;
+        total_get_bulk_count.value_namespace = name_space;
+        total_get_bulk_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-get-bulk-errors")
     {
         total_get_bulk_errors = value;
+        total_get_bulk_errors.value_namespace = name_space;
+        total_get_bulk_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-get-count")
     {
         total_get_count = value;
+        total_get_count.value_namespace = name_space;
+        total_get_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-get-errors")
     {
         total_get_errors = value;
+        total_get_errors.value_namespace = name_space;
+        total_get_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-item-count")
     {
         total_item_count = value;
+        total_item_count.value_namespace = name_space;
+        total_item_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-list-count")
     {
         total_list_count = value;
+        total_list_count.value_namespace = name_space;
+        total_list_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-list-errors")
     {
         total_list_errors = value;
+        total_list_errors.value_namespace = name_space;
+        total_list_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-bytes-dropped")
     {
         total_send_bytes_dropped = value;
+        total_send_bytes_dropped.value_namespace = name_space;
+        total_send_bytes_dropped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-drops")
     {
         total_send_drops = value;
+        total_send_drops.value_namespace = name_space;
+        total_send_drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-errors")
     {
         total_send_errors = value;
+        total_send_errors.value_namespace = name_space;
+        total_send_errors.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-send-packets")
     {
         total_send_packets = value;
+        total_send_packets.value_namespace = name_space;
+        total_send_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-sent-bytes")
     {
         total_sent_bytes = value;
+        total_sent_bytes.value_namespace = name_space;
+        total_sent_bytes.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "avg-collection-time")
+    {
+        avg_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "cadence")
+    {
+        cadence.yfilter = yfilter;
+    }
+    if(value_path == "collection-method")
+    {
+        collection_method.yfilter = yfilter;
+    }
+    if(value_path == "max-collection-time")
+    {
+        max_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "min-collection-time")
+    {
+        min_collection_time.yfilter = yfilter;
+    }
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+    if(value_path == "total-collections")
+    {
+        total_collections.yfilter = yfilter;
+    }
+    if(value_path == "total-collections-missed")
+    {
+        total_collections_missed.yfilter = yfilter;
+    }
+    if(value_path == "total-datalist-count")
+    {
+        total_datalist_count.yfilter = yfilter;
+    }
+    if(value_path == "total-datalist-errors")
+    {
+        total_datalist_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-encode-errors")
+    {
+        total_encode_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-encode-notready")
+    {
+        total_encode_notready.yfilter = yfilter;
+    }
+    if(value_path == "total-finddata-count")
+    {
+        total_finddata_count.yfilter = yfilter;
+    }
+    if(value_path == "total-finddata-errors")
+    {
+        total_finddata_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-get-bulk-count")
+    {
+        total_get_bulk_count.yfilter = yfilter;
+    }
+    if(value_path == "total-get-bulk-errors")
+    {
+        total_get_bulk_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-get-count")
+    {
+        total_get_count.yfilter = yfilter;
+    }
+    if(value_path == "total-get-errors")
+    {
+        total_get_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-item-count")
+    {
+        total_item_count.yfilter = yfilter;
+    }
+    if(value_path == "total-list-count")
+    {
+        total_list_count.yfilter = yfilter;
+    }
+    if(value_path == "total-list-errors")
+    {
+        total_list_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-send-bytes-dropped")
+    {
+        total_send_bytes_dropped.yfilter = yfilter;
+    }
+    if(value_path == "total-send-drops")
+    {
+        total_send_drops.yfilter = yfilter;
+    }
+    if(value_path == "total-send-errors")
+    {
+        total_send_errors.yfilter = yfilter;
+    }
+    if(value_path == "total-send-packets")
+    {
+        total_send_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-sent-bytes")
+    {
+        total_sent_bytes.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::InternalCollectionGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "avg-collection-time" || name == "cadence" || name == "collection-method" || name == "max-collection-time" || name == "min-collection-time" || name == "path" || name == "status" || name == "total-collections" || name == "total-collections-missed" || name == "total-datalist-count" || name == "total-datalist-errors" || name == "total-encode-errors" || name == "total-encode-notready" || name == "total-finddata-count" || name == "total-finddata-errors" || name == "total-get-bulk-count" || name == "total-get-bulk-errors" || name == "total-get-count" || name == "total-get-errors" || name == "total-item-count" || name == "total-list-count" || name == "total-list-errors" || name == "total-send-bytes-dropped" || name == "total-send-drops" || name == "total-send-errors" || name == "total-send-packets" || name == "total-sent-bytes")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::SensorGroups::SensorGroups()
@@ -3079,7 +4418,7 @@ bool TelemetryModelDriven::SensorGroups::has_operation() const
         if(sensor_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string TelemetryModelDriven::SensorGroups::get_segment_path() const
@@ -3144,8 +4483,19 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::SensorGroup
     return children;
 }
 
-void TelemetryModelDriven::SensorGroups::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::SensorGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void TelemetryModelDriven::SensorGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool TelemetryModelDriven::SensorGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor-group")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::SensorGroups::SensorGroup::SensorGroup()
@@ -3180,10 +4530,10 @@ bool TelemetryModelDriven::SensorGroups::SensorGroup::has_operation() const
         if(sensor_path[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(sensor_group_id.operation)
-	|| is_set(configured.operation)
-	|| is_set(id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(sensor_group_id.yfilter)
+	|| ydk::is_set(configured.yfilter)
+	|| ydk::is_set(id.yfilter);
 }
 
 std::string TelemetryModelDriven::SensorGroups::SensorGroup::get_segment_path() const
@@ -3209,9 +4559,9 @@ const EntityPath TelemetryModelDriven::SensorGroups::SensorGroup::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sensor_group_id.is_set || is_set(sensor_group_id.operation)) leaf_name_data.push_back(sensor_group_id.get_name_leafdata());
-    if (configured.is_set || is_set(configured.operation)) leaf_name_data.push_back(configured.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (sensor_group_id.is_set || is_set(sensor_group_id.yfilter)) leaf_name_data.push_back(sensor_group_id.get_name_leafdata());
+    if (configured.is_set || is_set(configured.yfilter)) leaf_name_data.push_back(configured.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3251,26 +4601,55 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::SensorGroup
     return children;
 }
 
-void TelemetryModelDriven::SensorGroups::SensorGroup::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::SensorGroups::SensorGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sensor-group-id")
     {
         sensor_group_id = value;
+        sensor_group_id.value_namespace = name_space;
+        sensor_group_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "configured")
     {
         configured = value;
+        configured.value_namespace = name_space;
+        configured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void TelemetryModelDriven::SensorGroups::SensorGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sensor-group-id")
+    {
+        sensor_group_id.yfilter = yfilter;
+    }
+    if(value_path == "configured")
+    {
+        configured.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool TelemetryModelDriven::SensorGroups::SensorGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor-path" || name == "sensor-group-id" || name == "configured" || name == "id")
+        return true;
+    return false;
 }
 
 TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::SensorPath()
     :
     path{YType::str, "path"},
-    state{YType::uint32, "state"},
+    state{YType::boolean, "state"},
     status_str{YType::str, "status-str"}
 {
     yang_name = "sensor-path"; yang_parent_name = "sensor-group";
@@ -3289,10 +4668,10 @@ bool TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::has_data() con
 
 bool TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(path.operation)
-	|| is_set(state.operation)
-	|| is_set(status_str.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(status_str.yfilter);
 }
 
 std::string TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::get_segment_path() const
@@ -3318,9 +4697,9 @@ const EntityPath TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path.is_set || is_set(path.operation)) leaf_name_data.push_back(path.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (status_str.is_set || is_set(status_str.operation)) leaf_name_data.push_back(status_str.get_name_leafdata());
+    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (status_str.is_set || is_set(status_str.yfilter)) leaf_name_data.push_back(status_str.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3339,43 +4718,83 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetryModelDriven::SensorGroup
     return children;
 }
 
-void TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::set_value(const std::string & value_path, std::string value)
+void TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path")
     {
         path = value;
+        path.value_namespace = name_space;
+        path.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status-str")
     {
         status_str = value;
+        status_str.value_namespace = name_space;
+        status_str.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf MdtInternalPathStatusEnum::active {0, "active"};
-const Enum::YLeaf MdtInternalPathStatusEnum::internal_err {1, "internal-err"};
-const Enum::YLeaf MdtInternalPathStatusEnum::plugin_active {2, "plugin-active"};
-const Enum::YLeaf MdtInternalPathStatusEnum::plugin_not_initialized {3, "plugin-not-initialized"};
-const Enum::YLeaf MdtInternalPathStatusEnum::plugin_invalid_cadence {4, "plugin-invalid-cadence"};
-const Enum::YLeaf MdtInternalPathStatusEnum::plugin_err {5, "plugin-err"};
-const Enum::YLeaf MdtInternalPathStatusEnum::filter_err {6, "filter-err"};
+void TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path")
+    {
+        path.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "status-str")
+    {
+        status_str.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf MdtTransportEnumEnum::not_set {0, "not-set"};
-const Enum::YLeaf MdtTransportEnumEnum::grpc {1, "grpc"};
-const Enum::YLeaf MdtTransportEnumEnum::tcp {2, "tcp"};
-const Enum::YLeaf MdtTransportEnumEnum::udp {3, "udp"};
-const Enum::YLeaf MdtTransportEnumEnum::dialin {6, "dialin"};
+bool TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path" || name == "state" || name == "status-str")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf MdtEncodingEnumEnum::not_set {0, "not-set"};
-const Enum::YLeaf MdtEncodingEnumEnum::gpb {2, "gpb"};
-const Enum::YLeaf MdtEncodingEnumEnum::self_describing_gpb {3, "self-describing-gpb"};
-const Enum::YLeaf MdtEncodingEnumEnum::json {4, "json"};
+const Enum::YLeaf MdtSubsStateEnum::not_active {0, "not-active"};
+const Enum::YLeaf MdtSubsStateEnum::active {1, "active"};
+const Enum::YLeaf MdtSubsStateEnum::paused {2, "paused"};
 
-const Enum::YLeaf MdtIpEnum::ipv4 {1, "ipv4"};
-const Enum::YLeaf MdtIpEnum::ipv6 {2, "ipv6"};
+const Enum::YLeaf MdtEncodingEnum::not_set {0, "not-set"};
+const Enum::YLeaf MdtEncodingEnum::gpb {2, "gpb"};
+const Enum::YLeaf MdtEncodingEnum::self_describing_gpb {3, "self-describing-gpb"};
+const Enum::YLeaf MdtEncodingEnum::json {4, "json"};
+
+const Enum::YLeaf MdtIp::ipv4 {1, "ipv4"};
+const Enum::YLeaf MdtIp::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf MdtDestStateEnum::dest_not_active {0, "dest-not-active"};
+const Enum::YLeaf MdtDestStateEnum::dest_active {1, "dest-active"};
+const Enum::YLeaf MdtDestStateEnum::dest_asking_pause {2, "dest-asking-pause"};
+const Enum::YLeaf MdtDestStateEnum::dest_paused {3, "dest-paused"};
+const Enum::YLeaf MdtDestStateEnum::dest_resuming {4, "dest-resuming"};
+const Enum::YLeaf MdtDestStateEnum::dest_channel_not_found {5, "dest-channel-not-found"};
+
+const Enum::YLeaf MdtInternalPathStatus::active {0, "active"};
+const Enum::YLeaf MdtInternalPathStatus::internal_err {1, "internal-err"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_active {2, "plugin-active"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_not_initialized {3, "plugin-not-initialized"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_invalid_cadence {4, "plugin-invalid-cadence"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_err {5, "plugin-err"};
+const Enum::YLeaf MdtInternalPathStatus::filter_err {6, "filter-err"};
+
+const Enum::YLeaf MdtTransportEnum::not_set {0, "not-set"};
+const Enum::YLeaf MdtTransportEnum::grpc {1, "grpc"};
+const Enum::YLeaf MdtTransportEnum::tcp {2, "tcp"};
+const Enum::YLeaf MdtTransportEnum::udp {3, "udp"};
+const Enum::YLeaf MdtTransportEnum::dialin {6, "dialin"};
 
 
 }

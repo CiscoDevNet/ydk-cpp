@@ -6,39 +6,41 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_rpc.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_rpc {
 
-SwitchRpc::SwitchRpc()
+Switch_::Switch_()
     :
-    input_(std::make_shared<SwitchRpc::Input>())
-	,output_(std::make_shared<SwitchRpc::Output>())
+    input(std::make_shared<Switch_::Input>())
+	,output(std::make_shared<Switch_::Output>())
 {
-    input_->parent = this;
+    input->parent = this;
 
-    output_->parent = this;
+    output->parent = this;
 
     yang_name = "switch"; yang_parent_name = "Cisco-IOS-XE-rpc";
 }
 
-SwitchRpc::~SwitchRpc()
+Switch_::~Switch_()
 {
 }
 
-bool SwitchRpc::has_data() const
+bool Switch_::has_data() const
 {
-    return (input_ !=  nullptr && input_->has_data())
-	|| (output_ !=  nullptr && output_->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
-bool SwitchRpc::has_operation() const
+bool Switch_::has_operation() const
 {
-    return is_set(operation)
-	|| (input_ !=  nullptr && input_->has_operation())
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string SwitchRpc::get_segment_path() const
+std::string Switch_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-rpc:switch";
@@ -47,7 +49,7 @@ std::string SwitchRpc::get_segment_path() const
 
 }
 
-const EntityPath SwitchRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Switch_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -65,104 +67,120 @@ const EntityPath SwitchRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SwitchRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Switch_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
-        if(input_ == nullptr)
+        if(input == nullptr)
         {
-            input_ = std::make_shared<SwitchRpc::Input>();
+            input = std::make_shared<Switch_::Input>();
         }
-        return input_;
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<SwitchRpc::Output>();
+            output = std::make_shared<Switch_::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SwitchRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Switch_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input_ != nullptr)
+    if(input != nullptr)
     {
-        children["input"] = input_;
+        children["input"] = input;
     }
 
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void SwitchRpc::set_value(const std::string & value_path, std::string value)
+void Switch_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> SwitchRpc::clone_ptr() const
+void Switch_::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<SwitchRpc>();
 }
 
-std::string SwitchRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Switch_::clone_ptr() const
+{
+    return std::make_shared<Switch_>();
+}
+
+std::string Switch_::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string SwitchRpc::get_bundle_name() const
+std::string Switch_::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function SwitchRpc::get_augment_capabilities_function() const
+augment_capabilities_function Switch_::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-SwitchRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Switch_::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Switch_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Switch_::Input::Input()
     :
     priority{YType::uint8, "priority"},
     renumber{YType::uint8, "renumber"},
     switch_number{YType::uint8, "switch-number"}
     	,
-    statck_(std::make_shared<SwitchRpc::Input::Statck>())
+    statck(std::make_shared<Switch_::Input::Statck>())
 {
-    statck_->parent = this;
+    statck->parent = this;
 
     yang_name = "input"; yang_parent_name = "switch";
 }
 
-SwitchRpc::Input::~Input()
+Switch_::Input::~Input()
 {
 }
 
-bool SwitchRpc::Input::has_data() const
+bool Switch_::Input::has_data() const
 {
     return priority.is_set
 	|| renumber.is_set
 	|| switch_number.is_set
-	|| (statck_ !=  nullptr && statck_->has_data());
+	|| (statck !=  nullptr && statck->has_data());
 }
 
-bool SwitchRpc::Input::has_operation() const
+bool Switch_::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(priority.operation)
-	|| is_set(renumber.operation)
-	|| is_set(switch_number.operation)
-	|| (statck_ !=  nullptr && statck_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(renumber.yfilter)
+	|| ydk::is_set(switch_number.yfilter)
+	|| (statck !=  nullptr && statck->has_operation());
 }
 
-std::string SwitchRpc::Input::get_segment_path() const
+std::string Switch_::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -171,7 +189,7 @@ std::string SwitchRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath SwitchRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Switch_::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -185,9 +203,9 @@ const EntityPath SwitchRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (renumber.is_set || is_set(renumber.operation)) leaf_name_data.push_back(renumber.get_name_leafdata());
-    if (switch_number.is_set || is_set(switch_number.operation)) leaf_name_data.push_back(switch_number.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (renumber.is_set || is_set(renumber.yfilter)) leaf_name_data.push_back(renumber.get_name_leafdata());
+    if (switch_number.is_set || is_set(switch_number.yfilter)) leaf_name_data.push_back(switch_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -195,70 +213,99 @@ const EntityPath SwitchRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SwitchRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Switch_::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "statck")
     {
-        if(statck_ == nullptr)
+        if(statck == nullptr)
         {
-            statck_ = std::make_shared<SwitchRpc::Input::Statck>();
+            statck = std::make_shared<Switch_::Input::Statck>();
         }
-        return statck_;
+        return statck;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SwitchRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Switch_::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(statck_ != nullptr)
+    if(statck != nullptr)
     {
-        children["statck"] = statck_;
+        children["statck"] = statck;
     }
 
     return children;
 }
 
-void SwitchRpc::Input::set_value(const std::string & value_path, std::string value)
+void Switch_::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "renumber")
     {
         renumber = value;
+        renumber.value_namespace = name_space;
+        renumber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switch-number")
     {
         switch_number = value;
+        switch_number.value_namespace = name_space;
+        switch_number.value_namespace_prefix = name_space_prefix;
     }
 }
 
-SwitchRpc::Input::Statck::Statck()
+void Switch_::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "renumber")
+    {
+        renumber.yfilter = yfilter;
+    }
+    if(value_path == "switch-number")
+    {
+        switch_number.yfilter = yfilter;
+    }
+}
+
+bool Switch_::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statck" || name == "priority" || name == "renumber" || name == "switch-number")
+        return true;
+    return false;
+}
+
+Switch_::Input::Statck::Statck()
     :
     port{YType::uint8, "port"}
 {
     yang_name = "statck"; yang_parent_name = "input";
 }
 
-SwitchRpc::Input::Statck::~Statck()
+Switch_::Input::Statck::~Statck()
 {
 }
 
-bool SwitchRpc::Input::Statck::has_data() const
+bool Switch_::Input::Statck::has_data() const
 {
     return port.is_set;
 }
 
-bool SwitchRpc::Input::Statck::has_operation() const
+bool Switch_::Input::Statck::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(port.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(port.yfilter);
 }
 
-std::string SwitchRpc::Input::Statck::get_segment_path() const
+std::string Switch_::Input::Statck::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statck";
@@ -267,7 +314,7 @@ std::string SwitchRpc::Input::Statck::get_segment_path() const
 
 }
 
-const EntityPath SwitchRpc::Input::Statck::get_entity_path(Entity* ancestor) const
+const EntityPath Switch_::Input::Statck::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -281,7 +328,7 @@ const EntityPath SwitchRpc::Input::Statck::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -289,48 +336,65 @@ const EntityPath SwitchRpc::Input::Statck::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> SwitchRpc::Input::Statck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Switch_::Input::Statck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SwitchRpc::Input::Statck::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Switch_::Input::Statck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SwitchRpc::Input::Statck::set_value(const std::string & value_path, std::string value)
+void Switch_::Input::Statck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "port")
     {
         port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
 }
 
-SwitchRpc::Output::Output()
+void Switch_::Input::Statck::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool Switch_::Input::Statck::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port")
+        return true;
+    return false;
+}
+
+Switch_::Output::Output()
     :
     result{YType::str, "result"}
 {
     yang_name = "output"; yang_parent_name = "switch";
 }
 
-SwitchRpc::Output::~Output()
+Switch_::Output::~Output()
 {
 }
 
-bool SwitchRpc::Output::has_data() const
+bool Switch_::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool SwitchRpc::Output::has_operation() const
+bool Switch_::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string SwitchRpc::Output::get_segment_path() const
+std::string Switch_::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -339,7 +403,7 @@ std::string SwitchRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath SwitchRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Switch_::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -353,7 +417,7 @@ const EntityPath SwitchRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -361,55 +425,72 @@ const EntityPath SwitchRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> SwitchRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Switch_::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SwitchRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Switch_::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void SwitchRpc::Output::set_value(const std::string & value_path, std::string value)
+void Switch_::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
 }
 
-DefaultRpc::DefaultRpc()
-    :
-    input_(std::make_shared<DefaultRpc::Input>())
-	,output_(std::make_shared<DefaultRpc::Output>())
+void Switch_::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    input_->parent = this;
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
 
-    output_->parent = this;
+bool Switch_::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+Default_::Default_()
+    :
+    input(std::make_shared<Default_::Input>())
+	,output(std::make_shared<Default_::Output>())
+{
+    input->parent = this;
+
+    output->parent = this;
 
     yang_name = "default"; yang_parent_name = "Cisco-IOS-XE-rpc";
 }
 
-DefaultRpc::~DefaultRpc()
+Default_::~Default_()
 {
 }
 
-bool DefaultRpc::has_data() const
+bool Default_::has_data() const
 {
-    return (input_ !=  nullptr && input_->has_data())
-	|| (output_ !=  nullptr && output_->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
-bool DefaultRpc::has_operation() const
+bool Default_::has_operation() const
 {
-    return is_set(operation)
-	|| (input_ !=  nullptr && input_->has_operation())
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string DefaultRpc::get_segment_path() const
+std::string Default_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-rpc:default";
@@ -418,7 +499,7 @@ std::string DefaultRpc::get_segment_path() const
 
 }
 
-const EntityPath DefaultRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Default_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -436,92 +517,108 @@ const EntityPath DefaultRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> DefaultRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Default_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
-        if(input_ == nullptr)
+        if(input == nullptr)
         {
-            input_ = std::make_shared<DefaultRpc::Input>();
+            input = std::make_shared<Default_::Input>();
         }
-        return input_;
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<DefaultRpc::Output>();
+            output = std::make_shared<Default_::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DefaultRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Default_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input_ != nullptr)
+    if(input != nullptr)
     {
-        children["input"] = input_;
+        children["input"] = input;
     }
 
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void DefaultRpc::set_value(const std::string & value_path, std::string value)
+void Default_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> DefaultRpc::clone_ptr() const
+void Default_::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<DefaultRpc>();
 }
 
-std::string DefaultRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Default_::clone_ptr() const
+{
+    return std::make_shared<Default_>();
+}
+
+std::string Default_::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string DefaultRpc::get_bundle_name() const
+std::string Default_::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function DefaultRpc::get_augment_capabilities_function() const
+augment_capabilities_function Default_::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-DefaultRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Default_::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Default_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+Default_::Input::Input()
     :
     interface{YType::str, "interface"}
 {
     yang_name = "input"; yang_parent_name = "default";
 }
 
-DefaultRpc::Input::~Input()
+Default_::Input::~Input()
 {
 }
 
-bool DefaultRpc::Input::has_data() const
+bool Default_::Input::has_data() const
 {
     return interface.is_set;
 }
 
-bool DefaultRpc::Input::has_operation() const
+bool Default_::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter);
 }
 
-std::string DefaultRpc::Input::get_segment_path() const
+std::string Default_::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -530,7 +627,7 @@ std::string DefaultRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath DefaultRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Default_::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -544,7 +641,7 @@ const EntityPath DefaultRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -552,48 +649,65 @@ const EntityPath DefaultRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> DefaultRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Default_::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DefaultRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Default_::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void DefaultRpc::Input::set_value(const std::string & value_path, std::string value)
+void Default_::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
 }
 
-DefaultRpc::Output::Output()
+void Default_::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool Default_::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
+}
+
+Default_::Output::Output()
     :
     result{YType::str, "result"}
 {
     yang_name = "output"; yang_parent_name = "default";
 }
 
-DefaultRpc::Output::~Output()
+Default_::Output::~Output()
 {
 }
 
-bool DefaultRpc::Output::has_data() const
+bool Default_::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool DefaultRpc::Output::has_operation() const
+bool Default_::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string DefaultRpc::Output::get_segment_path() const
+std::string Default_::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -602,7 +716,7 @@ std::string DefaultRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath DefaultRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Default_::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -616,7 +730,7 @@ const EntityPath DefaultRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -624,50 +738,67 @@ const EntityPath DefaultRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> DefaultRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Default_::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DefaultRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Default_::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void DefaultRpc::Output::set_value(const std::string & value_path, std::string value)
+void Default_::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
 }
 
-ReloadRpc::ReloadRpc()
-    :
-    output_(std::make_shared<ReloadRpc::Output>())
+void Default_::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    output_->parent = this;
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
+
+bool Default_::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+Reload::Reload()
+    :
+    output(std::make_shared<Reload::Output>())
+{
+    output->parent = this;
 
     yang_name = "reload"; yang_parent_name = "Cisco-IOS-XE-rpc";
 }
 
-ReloadRpc::~ReloadRpc()
+Reload::~Reload()
 {
 }
 
-bool ReloadRpc::has_data() const
+bool Reload::has_data() const
 {
-    return (output_ !=  nullptr && output_->has_data());
+    return (output !=  nullptr && output->has_data());
 }
 
-bool ReloadRpc::has_operation() const
+bool Reload::has_operation() const
 {
-    return is_set(operation)
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string ReloadRpc::get_segment_path() const
+std::string Reload::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-rpc:reload";
@@ -676,7 +807,7 @@ std::string ReloadRpc::get_segment_path() const
 
 }
 
-const EntityPath ReloadRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Reload::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -694,78 +825,94 @@ const EntityPath ReloadRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ReloadRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Reload::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<ReloadRpc::Output>();
+            output = std::make_shared<Reload::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ReloadRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Reload::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void ReloadRpc::set_value(const std::string & value_path, std::string value)
+void Reload::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> ReloadRpc::clone_ptr() const
+void Reload::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<ReloadRpc>();
 }
 
-std::string ReloadRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Reload::clone_ptr() const
+{
+    return std::make_shared<Reload>();
+}
+
+std::string Reload::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string ReloadRpc::get_bundle_name() const
+std::string Reload::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function ReloadRpc::get_augment_capabilities_function() const
+augment_capabilities_function Reload::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-ReloadRpc::Output::Output()
+std::map<std::pair<std::string, std::string>, std::string> Reload::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Reload::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "output")
+        return true;
+    return false;
+}
+
+Reload::Output::Output()
     :
     result{YType::str, "result"}
 {
     yang_name = "output"; yang_parent_name = "reload";
 }
 
-ReloadRpc::Output::~Output()
+Reload::Output::~Output()
 {
 }
 
-bool ReloadRpc::Output::has_data() const
+bool Reload::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool ReloadRpc::Output::has_operation() const
+bool Reload::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string ReloadRpc::Output::get_segment_path() const
+std::string Reload::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -774,7 +921,7 @@ std::string ReloadRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath ReloadRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath Reload::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -788,7 +935,7 @@ const EntityPath ReloadRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -796,55 +943,72 @@ const EntityPath ReloadRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> ReloadRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Reload::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ReloadRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Reload::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void ReloadRpc::Output::set_value(const std::string & value_path, std::string value)
+void Reload::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
 }
 
-LicenseRpc::LicenseRpc()
-    :
-    input_(std::make_shared<LicenseRpc::Input>())
-	,output_(std::make_shared<LicenseRpc::Output>())
+void Reload::Output::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    input_->parent = this;
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
 
-    output_->parent = this;
+bool Reload::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
+}
+
+License::License()
+    :
+    input(std::make_shared<License::Input>())
+	,output(std::make_shared<License::Output>())
+{
+    input->parent = this;
+
+    output->parent = this;
 
     yang_name = "license"; yang_parent_name = "Cisco-IOS-XE-rpc";
 }
 
-LicenseRpc::~LicenseRpc()
+License::~License()
 {
 }
 
-bool LicenseRpc::has_data() const
+bool License::has_data() const
 {
-    return (input_ !=  nullptr && input_->has_data())
-	|| (output_ !=  nullptr && output_->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
-bool LicenseRpc::has_operation() const
+bool License::has_operation() const
 {
-    return is_set(operation)
-	|| (input_ !=  nullptr && input_->has_operation())
-	|| (output_ !=  nullptr && output_->has_operation());
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
-std::string LicenseRpc::get_segment_path() const
+std::string License::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-rpc:license";
@@ -853,7 +1017,7 @@ std::string LicenseRpc::get_segment_path() const
 
 }
 
-const EntityPath LicenseRpc::get_entity_path(Entity* ancestor) const
+const EntityPath License::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -871,94 +1035,110 @@ const EntityPath LicenseRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LicenseRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> License::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
-        if(input_ == nullptr)
+        if(input == nullptr)
         {
-            input_ = std::make_shared<LicenseRpc::Input>();
+            input = std::make_shared<License::Input>();
         }
-        return input_;
+        return input;
     }
 
     if(child_yang_name == "output")
     {
-        if(output_ == nullptr)
+        if(output == nullptr)
         {
-            output_ = std::make_shared<LicenseRpc::Output>();
+            output = std::make_shared<License::Output>();
         }
-        return output_;
+        return output;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LicenseRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> License::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(input_ != nullptr)
+    if(input != nullptr)
     {
-        children["input"] = input_;
+        children["input"] = input;
     }
 
-    if(output_ != nullptr)
+    if(output != nullptr)
     {
-        children["output"] = output_;
+        children["output"] = output;
     }
 
     return children;
 }
 
-void LicenseRpc::set_value(const std::string & value_path, std::string value)
+void License::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> LicenseRpc::clone_ptr() const
+void License::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<LicenseRpc>();
 }
 
-std::string LicenseRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> License::clone_ptr() const
+{
+    return std::make_shared<License>();
+}
+
+std::string License::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xe_models_path;
 }
 
-std::string LicenseRpc::get_bundle_name() const
+std::string License::get_bundle_name() const
 {
     return "cisco_ios_xe";
 }
 
-augment_capabilities_function LicenseRpc::get_augment_capabilities_function() const
+augment_capabilities_function License::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
 }
 
-LicenseRpc::Input::Input()
-    :
-    smart_(std::make_shared<LicenseRpc::Input::Smart>())
+std::map<std::pair<std::string, std::string>, std::string> License::get_namespace_identity_lookup() const
 {
-    smart_->parent = this;
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool License::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
+License::Input::Input()
+    :
+    smart(std::make_shared<License::Input::Smart>())
+{
+    smart->parent = this;
 
     yang_name = "input"; yang_parent_name = "license";
 }
 
-LicenseRpc::Input::~Input()
+License::Input::~Input()
 {
 }
 
-bool LicenseRpc::Input::has_data() const
+bool License::Input::has_data() const
 {
-    return (smart_ !=  nullptr && smart_->has_data());
+    return (smart !=  nullptr && smart->has_data());
 }
 
-bool LicenseRpc::Input::has_operation() const
+bool License::Input::has_operation() const
 {
-    return is_set(operation)
-	|| (smart_ !=  nullptr && smart_->has_operation());
+    return is_set(yfilter)
+	|| (smart !=  nullptr && smart->has_operation());
 }
 
-std::string LicenseRpc::Input::get_segment_path() const
+std::string License::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -967,7 +1147,7 @@ std::string LicenseRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath LicenseRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath License::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -988,69 +1168,80 @@ const EntityPath LicenseRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LicenseRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> License::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "smart")
     {
-        if(smart_ == nullptr)
+        if(smart == nullptr)
         {
-            smart_ = std::make_shared<LicenseRpc::Input::Smart>();
+            smart = std::make_shared<License::Input::Smart>();
         }
-        return smart_;
+        return smart;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LicenseRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> License::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(smart_ != nullptr)
+    if(smart != nullptr)
     {
-        children["smart"] = smart_;
+        children["smart"] = smart;
     }
 
     return children;
 }
 
-void LicenseRpc::Input::set_value(const std::string & value_path, std::string value)
+void License::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-LicenseRpc::Input::Smart::Smart()
+void License::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool License::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "smart")
+        return true;
+    return false;
+}
+
+License::Input::Smart::Smart()
     :
     deregister{YType::empty, "deregister"}
     	,
-    register__(std::make_shared<LicenseRpc::Input::Smart::Register_>())
-	,renew_(std::make_shared<LicenseRpc::Input::Smart::Renew>())
+    register_(std::make_shared<License::Input::Smart::Register_>())
+	,renew(std::make_shared<License::Input::Smart::Renew>())
 {
-    register__->parent = this;
+    register_->parent = this;
 
-    renew_->parent = this;
+    renew->parent = this;
 
     yang_name = "smart"; yang_parent_name = "input";
 }
 
-LicenseRpc::Input::Smart::~Smart()
+License::Input::Smart::~Smart()
 {
 }
 
-bool LicenseRpc::Input::Smart::has_data() const
+bool License::Input::Smart::has_data() const
 {
     return deregister.is_set
-	|| (register__ !=  nullptr && register__->has_data())
-	|| (renew_ !=  nullptr && renew_->has_data());
+	|| (register_ !=  nullptr && register_->has_data())
+	|| (renew !=  nullptr && renew->has_data());
 }
 
-bool LicenseRpc::Input::Smart::has_operation() const
+bool License::Input::Smart::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(deregister.operation)
-	|| (register__ !=  nullptr && register__->has_operation())
-	|| (renew_ !=  nullptr && renew_->has_operation());
+    return is_set(yfilter)
+	|| ydk::is_set(deregister.yfilter)
+	|| (register_ !=  nullptr && register_->has_operation())
+	|| (renew !=  nullptr && renew->has_operation());
 }
 
-std::string LicenseRpc::Input::Smart::get_segment_path() const
+std::string License::Input::Smart::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "smart";
@@ -1059,7 +1250,7 @@ std::string LicenseRpc::Input::Smart::get_segment_path() const
 
 }
 
-const EntityPath LicenseRpc::Input::Smart::get_entity_path(Entity* ancestor) const
+const EntityPath License::Input::Smart::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1073,7 +1264,7 @@ const EntityPath LicenseRpc::Input::Smart::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (deregister.is_set || is_set(deregister.operation)) leaf_name_data.push_back(deregister.get_name_leafdata());
+    if (deregister.is_set || is_set(deregister.yfilter)) leaf_name_data.push_back(deregister.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1081,76 +1272,93 @@ const EntityPath LicenseRpc::Input::Smart::get_entity_path(Entity* ancestor) con
 
 }
 
-std::shared_ptr<Entity> LicenseRpc::Input::Smart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> License::Input::Smart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "register")
     {
-        if(register__ == nullptr)
+        if(register_ == nullptr)
         {
-            register__ = std::make_shared<LicenseRpc::Input::Smart::Register_>();
+            register_ = std::make_shared<License::Input::Smart::Register_>();
         }
-        return register__;
+        return register_;
     }
 
     if(child_yang_name == "renew")
     {
-        if(renew_ == nullptr)
+        if(renew == nullptr)
         {
-            renew_ = std::make_shared<LicenseRpc::Input::Smart::Renew>();
+            renew = std::make_shared<License::Input::Smart::Renew>();
         }
-        return renew_;
+        return renew;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LicenseRpc::Input::Smart::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> License::Input::Smart::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(register__ != nullptr)
+    if(register_ != nullptr)
     {
-        children["register"] = register__;
+        children["register"] = register_;
     }
 
-    if(renew_ != nullptr)
+    if(renew != nullptr)
     {
-        children["renew"] = renew_;
+        children["renew"] = renew;
     }
 
     return children;
 }
 
-void LicenseRpc::Input::Smart::set_value(const std::string & value_path, std::string value)
+void License::Input::Smart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "deregister")
     {
         deregister = value;
+        deregister.value_namespace = name_space;
+        deregister.value_namespace_prefix = name_space_prefix;
     }
 }
 
-LicenseRpc::Input::Smart::Register_::Register_()
+void License::Input::Smart::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "deregister")
+    {
+        deregister.yfilter = yfilter;
+    }
+}
+
+bool License::Input::Smart::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "register" || name == "renew" || name == "deregister")
+        return true;
+    return false;
+}
+
+License::Input::Smart::Register_::Register_()
     :
     idtoken{YType::empty, "idtoken"}
 {
     yang_name = "register"; yang_parent_name = "smart";
 }
 
-LicenseRpc::Input::Smart::Register_::~Register_()
+License::Input::Smart::Register_::~Register_()
 {
 }
 
-bool LicenseRpc::Input::Smart::Register_::has_data() const
+bool License::Input::Smart::Register_::has_data() const
 {
     return idtoken.is_set;
 }
 
-bool LicenseRpc::Input::Smart::Register_::has_operation() const
+bool License::Input::Smart::Register_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(idtoken.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(idtoken.yfilter);
 }
 
-std::string LicenseRpc::Input::Smart::Register_::get_segment_path() const
+std::string License::Input::Smart::Register_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "register";
@@ -1159,7 +1367,7 @@ std::string LicenseRpc::Input::Smart::Register_::get_segment_path() const
 
 }
 
-const EntityPath LicenseRpc::Input::Smart::Register_::get_entity_path(Entity* ancestor) const
+const EntityPath License::Input::Smart::Register_::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1173,7 +1381,7 @@ const EntityPath LicenseRpc::Input::Smart::Register_::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (idtoken.is_set || is_set(idtoken.operation)) leaf_name_data.push_back(idtoken.get_name_leafdata());
+    if (idtoken.is_set || is_set(idtoken.yfilter)) leaf_name_data.push_back(idtoken.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1181,26 +1389,43 @@ const EntityPath LicenseRpc::Input::Smart::Register_::get_entity_path(Entity* an
 
 }
 
-std::shared_ptr<Entity> LicenseRpc::Input::Smart::Register_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> License::Input::Smart::Register_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LicenseRpc::Input::Smart::Register_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> License::Input::Smart::Register_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void LicenseRpc::Input::Smart::Register_::set_value(const std::string & value_path, std::string value)
+void License::Input::Smart::Register_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "idtoken")
     {
         idtoken = value;
+        idtoken.value_namespace = name_space;
+        idtoken.value_namespace_prefix = name_space_prefix;
     }
 }
 
-LicenseRpc::Input::Smart::Renew::Renew()
+void License::Input::Smart::Register_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "idtoken")
+    {
+        idtoken.yfilter = yfilter;
+    }
+}
+
+bool License::Input::Smart::Register_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idtoken")
+        return true;
+    return false;
+}
+
+License::Input::Smart::Renew::Renew()
     :
     auth{YType::empty, "auth"},
     id{YType::empty, "id"}
@@ -1208,24 +1433,24 @@ LicenseRpc::Input::Smart::Renew::Renew()
     yang_name = "renew"; yang_parent_name = "smart";
 }
 
-LicenseRpc::Input::Smart::Renew::~Renew()
+License::Input::Smart::Renew::~Renew()
 {
 }
 
-bool LicenseRpc::Input::Smart::Renew::has_data() const
+bool License::Input::Smart::Renew::has_data() const
 {
     return auth.is_set
 	|| id.is_set;
 }
 
-bool LicenseRpc::Input::Smart::Renew::has_operation() const
+bool License::Input::Smart::Renew::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auth.operation)
-	|| is_set(id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(auth.yfilter)
+	|| ydk::is_set(id.yfilter);
 }
 
-std::string LicenseRpc::Input::Smart::Renew::get_segment_path() const
+std::string License::Input::Smart::Renew::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "renew";
@@ -1234,7 +1459,7 @@ std::string LicenseRpc::Input::Smart::Renew::get_segment_path() const
 
 }
 
-const EntityPath LicenseRpc::Input::Smart::Renew::get_entity_path(Entity* ancestor) const
+const EntityPath License::Input::Smart::Renew::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1248,8 +1473,8 @@ const EntityPath LicenseRpc::Input::Smart::Renew::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auth.is_set || is_set(auth.operation)) leaf_name_data.push_back(auth.get_name_leafdata());
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (auth.is_set || is_set(auth.yfilter)) leaf_name_data.push_back(auth.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1257,52 +1482,75 @@ const EntityPath LicenseRpc::Input::Smart::Renew::get_entity_path(Entity* ancest
 
 }
 
-std::shared_ptr<Entity> LicenseRpc::Input::Smart::Renew::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> License::Input::Smart::Renew::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LicenseRpc::Input::Smart::Renew::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> License::Input::Smart::Renew::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void LicenseRpc::Input::Smart::Renew::set_value(const std::string & value_path, std::string value)
+void License::Input::Smart::Renew::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auth")
     {
         auth = value;
+        auth.value_namespace = name_space;
+        auth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-LicenseRpc::Output::Output()
+void License::Input::Smart::Renew::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auth")
+    {
+        auth.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool License::Input::Smart::Renew::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auth" || name == "id")
+        return true;
+    return false;
+}
+
+License::Output::Output()
     :
     result{YType::str, "result"}
 {
     yang_name = "output"; yang_parent_name = "license";
 }
 
-LicenseRpc::Output::~Output()
+License::Output::~Output()
 {
 }
 
-bool LicenseRpc::Output::has_data() const
+bool License::Output::has_data() const
 {
     return result.is_set;
 }
 
-bool LicenseRpc::Output::has_operation() const
+bool License::Output::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(result.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(result.yfilter);
 }
 
-std::string LicenseRpc::Output::get_segment_path() const
+std::string License::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "output";
@@ -1311,7 +1559,7 @@ std::string LicenseRpc::Output::get_segment_path() const
 
 }
 
-const EntityPath LicenseRpc::Output::get_entity_path(Entity* ancestor) const
+const EntityPath License::Output::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -1325,7 +1573,7 @@ const EntityPath LicenseRpc::Output::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (result.is_set || is_set(result.operation)) leaf_name_data.push_back(result.get_name_leafdata());
+    if (result.is_set || is_set(result.yfilter)) leaf_name_data.push_back(result.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1333,23 +1581,40 @@ const EntityPath LicenseRpc::Output::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LicenseRpc::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> License::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LicenseRpc::Output::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> License::Output::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void LicenseRpc::Output::set_value(const std::string & value_path, std::string value)
+void License::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "result")
     {
         result = value;
+        result.value_namespace = name_space;
+        result.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void License::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "result")
+    {
+        result.yfilter = yfilter;
+    }
+}
+
+bool License::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "result")
+        return true;
+    return false;
 }
 
 

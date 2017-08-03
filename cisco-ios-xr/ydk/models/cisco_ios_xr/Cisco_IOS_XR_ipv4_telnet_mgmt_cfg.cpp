@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_telnet_mgmt_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_telnet_mgmt_cfg {
 
 Telnet::Telnet()
@@ -29,7 +31,7 @@ bool Telnet::has_data() const
 
 bool Telnet::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Telnet::get_children() const
     return children;
 }
 
-void Telnet::set_value(const std::string & value_path, std::string value)
+void Telnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Telnet::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Telnet::get_bundle_name() const
 augment_capabilities_function Telnet::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Telnet::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Telnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrfs")
+        return true;
+    return false;
 }
 
 Telnet::Vrfs::Vrfs()
@@ -135,7 +153,7 @@ bool Telnet::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Telnet::Vrfs::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::get_children() cons
     return children;
 }
 
-void Telnet::Vrfs::set_value(const std::string & value_path, std::string value)
+void Telnet::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Telnet::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Telnet::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Telnet::Vrfs::Vrf::Vrf()
@@ -227,8 +256,8 @@ bool Telnet::Vrfs::Vrf::has_data() const
 
 bool Telnet::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (ipv4 !=  nullptr && ipv4->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath Telnet::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::Vrf::get_children()
     return children;
 }
 
-void Telnet::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Telnet::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Telnet::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Telnet::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Telnet::Vrfs::Vrf::Ipv4::Ipv4()
@@ -314,8 +360,8 @@ bool Telnet::Vrfs::Vrf::Ipv4::has_data() const
 
 bool Telnet::Vrfs::Vrf::Ipv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dscp.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dscp.yfilter);
 }
 
 std::string Telnet::Vrfs::Vrf::Ipv4::get_segment_path() const
@@ -341,7 +387,7 @@ const EntityPath Telnet::Vrfs::Vrf::Ipv4::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dscp.is_set || is_set(dscp.operation)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -360,12 +406,29 @@ std::map<std::string, std::shared_ptr<Entity>> Telnet::Vrfs::Vrf::Ipv4::get_chil
     return children;
 }
 
-void Telnet::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, std::string value)
+void Telnet::Vrfs::Vrf::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dscp")
     {
         dscp = value;
+        dscp.value_namespace = name_space;
+        dscp.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Telnet::Vrfs::Vrf::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+}
+
+bool Telnet::Vrfs::Vrf::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dscp")
+        return true;
+    return false;
 }
 
 

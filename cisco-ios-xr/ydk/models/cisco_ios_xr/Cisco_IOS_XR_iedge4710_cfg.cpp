@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_iedge4710_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_iedge4710_cfg {
 
 SubscriberManager::SubscriberManager()
@@ -33,7 +35,7 @@ bool SubscriberManager::has_data() const
 
 bool SubscriberManager::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (srg !=  nullptr && srg->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::get_children()
     return children;
 }
 
-void SubscriberManager::set_value(const std::string & value_path, std::string value)
+void SubscriberManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberManager::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string SubscriberManager::get_bundle_name() const
 augment_capabilities_function SubscriberManager::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SubscriberManager::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SubscriberManager::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting" || name == "srg")
+        return true;
+    return false;
 }
 
 SubscriberManager::Accounting::Accounting()
@@ -152,7 +170,7 @@ bool SubscriberManager::Accounting::has_data() const
 
 bool SubscriberManager::Accounting::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interim !=  nullptr && interim->has_operation())
 	|| (send_stop !=  nullptr && send_stop->has_operation());
 }
@@ -226,8 +244,19 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::ge
     return children;
 }
 
-void SubscriberManager::Accounting::set_value(const std::string & value_path, std::string value)
+void SubscriberManager::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SubscriberManager::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberManager::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interim" || name == "send-stop")
+        return true;
+    return false;
 }
 
 SubscriberManager::Accounting::SendStop::SendStop()
@@ -248,8 +277,8 @@ bool SubscriberManager::Accounting::SendStop::has_data() const
 
 bool SubscriberManager::Accounting::SendStop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(setup_failure.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(setup_failure.yfilter);
 }
 
 std::string SubscriberManager::Accounting::SendStop::get_segment_path() const
@@ -275,7 +304,7 @@ const EntityPath SubscriberManager::Accounting::SendStop::get_entity_path(Entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (setup_failure.is_set || is_set(setup_failure.operation)) leaf_name_data.push_back(setup_failure.get_name_leafdata());
+    if (setup_failure.is_set || is_set(setup_failure.yfilter)) leaf_name_data.push_back(setup_failure.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -294,12 +323,29 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::Se
     return children;
 }
 
-void SubscriberManager::Accounting::SendStop::set_value(const std::string & value_path, std::string value)
+void SubscriberManager::Accounting::SendStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "setup-failure")
     {
         setup_failure = value;
+        setup_failure.value_namespace = name_space;
+        setup_failure.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SubscriberManager::Accounting::SendStop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "setup-failure")
+    {
+        setup_failure.yfilter = yfilter;
+    }
+}
+
+bool SubscriberManager::Accounting::SendStop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "setup-failure")
+        return true;
+    return false;
 }
 
 SubscriberManager::Accounting::Interim::Interim()
@@ -322,7 +368,7 @@ bool SubscriberManager::Accounting::Interim::has_data() const
 
 bool SubscriberManager::Accounting::Interim::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (variation !=  nullptr && variation->has_operation());
 }
 
@@ -381,8 +427,19 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::In
     return children;
 }
 
-void SubscriberManager::Accounting::Interim::set_value(const std::string & value_path, std::string value)
+void SubscriberManager::Accounting::Interim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void SubscriberManager::Accounting::Interim::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberManager::Accounting::Interim::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "variation")
+        return true;
+    return false;
 }
 
 SubscriberManager::Accounting::Interim::Variation::Variation()
@@ -403,8 +460,8 @@ bool SubscriberManager::Accounting::Interim::Variation::has_data() const
 
 bool SubscriberManager::Accounting::Interim::Variation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_percentage_variation.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_percentage_variation.yfilter);
 }
 
 std::string SubscriberManager::Accounting::Interim::Variation::get_segment_path() const
@@ -430,7 +487,7 @@ const EntityPath SubscriberManager::Accounting::Interim::Variation::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_percentage_variation.is_set || is_set(maximum_percentage_variation.operation)) leaf_name_data.push_back(maximum_percentage_variation.get_name_leafdata());
+    if (maximum_percentage_variation.is_set || is_set(maximum_percentage_variation.yfilter)) leaf_name_data.push_back(maximum_percentage_variation.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -449,12 +506,29 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Accounting::In
     return children;
 }
 
-void SubscriberManager::Accounting::Interim::Variation::set_value(const std::string & value_path, std::string value)
+void SubscriberManager::Accounting::Interim::Variation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-percentage-variation")
     {
         maximum_percentage_variation = value;
+        maximum_percentage_variation.value_namespace = name_space;
+        maximum_percentage_variation.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SubscriberManager::Accounting::Interim::Variation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-percentage-variation")
+    {
+        maximum_percentage_variation.yfilter = yfilter;
+    }
+}
+
+bool SubscriberManager::Accounting::Interim::Variation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-percentage-variation")
+        return true;
+    return false;
 }
 
 SubscriberManager::Srg::Srg()
@@ -475,8 +549,8 @@ bool SubscriberManager::Srg::has_data() const
 
 bool SubscriberManager::Srg::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(sync_account_session_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(sync_account_session_id.yfilter);
 }
 
 std::string SubscriberManager::Srg::get_segment_path() const
@@ -502,7 +576,7 @@ const EntityPath SubscriberManager::Srg::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sync_account_session_id.is_set || is_set(sync_account_session_id.operation)) leaf_name_data.push_back(sync_account_session_id.get_name_leafdata());
+    if (sync_account_session_id.is_set || is_set(sync_account_session_id.yfilter)) leaf_name_data.push_back(sync_account_session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -521,12 +595,29 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberManager::Srg::get_child
     return children;
 }
 
-void SubscriberManager::Srg::set_value(const std::string & value_path, std::string value)
+void SubscriberManager::Srg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sync-account-session-id")
     {
         sync_account_session_id = value;
+        sync_account_session_id.value_namespace = name_space;
+        sync_account_session_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SubscriberManager::Srg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sync-account-session-id")
+    {
+        sync_account_session_id.yfilter = yfilter;
+    }
+}
+
+bool SubscriberManager::Srg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sync-account-session-id")
+        return true;
+    return false;
 }
 
 SubscriberFeaturette::SubscriberFeaturette()
@@ -555,7 +646,7 @@ bool SubscriberFeaturette::has_operation() const
         if(identity_change[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SubscriberFeaturette::get_segment_path() const
@@ -617,7 +708,11 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::get_childre
     return children;
 }
 
-void SubscriberFeaturette::set_value(const std::string & value_path, std::string value)
+void SubscriberFeaturette::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberFeaturette::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -641,6 +736,18 @@ augment_capabilities_function SubscriberFeaturette::get_augment_capabilities_fun
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> SubscriberFeaturette::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SubscriberFeaturette::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identity-change")
+        return true;
+    return false;
+}
+
 SubscriberFeaturette::IdentityChange::IdentityChange()
     :
     identity_change{YType::str, "identity-change"},
@@ -661,9 +768,9 @@ bool SubscriberFeaturette::IdentityChange::has_data() const
 
 bool SubscriberFeaturette::IdentityChange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(identity_change.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(identity_change.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string SubscriberFeaturette::IdentityChange::get_segment_path() const
@@ -689,8 +796,8 @@ const EntityPath SubscriberFeaturette::IdentityChange::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (identity_change.is_set || is_set(identity_change.operation)) leaf_name_data.push_back(identity_change.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (identity_change.is_set || is_set(identity_change.yfilter)) leaf_name_data.push_back(identity_change.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -709,16 +816,39 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberFeaturette::IdentityCha
     return children;
 }
 
-void SubscriberFeaturette::IdentityChange::set_value(const std::string & value_path, std::string value)
+void SubscriberFeaturette::IdentityChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "identity-change")
     {
         identity_change = value;
+        identity_change.value_namespace = name_space;
+        identity_change.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SubscriberFeaturette::IdentityChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "identity-change")
+    {
+        identity_change.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool SubscriberFeaturette::IdentityChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identity-change" || name == "enable")
+        return true;
+    return false;
 }
 
 IedgeLicenseManager::IedgeLicenseManager()
@@ -747,7 +877,7 @@ bool IedgeLicenseManager::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string IedgeLicenseManager::get_segment_path() const
@@ -809,7 +939,11 @@ std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::get_children
     return children;
 }
 
-void IedgeLicenseManager::set_value(const std::string & value_path, std::string value)
+void IedgeLicenseManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void IedgeLicenseManager::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -831,6 +965,18 @@ std::string IedgeLicenseManager::get_bundle_name() const
 augment_capabilities_function IedgeLicenseManager::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> IedgeLicenseManager::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool IedgeLicenseManager::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 IedgeLicenseManager::Node::Node()
@@ -855,10 +1001,10 @@ bool IedgeLicenseManager::Node::has_data() const
 
 bool IedgeLicenseManager::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
-	|| is_set(session_limit.operation)
-	|| is_set(session_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(session_limit.yfilter)
+	|| ydk::is_set(session_threshold.yfilter);
 }
 
 std::string IedgeLicenseManager::Node::get_segment_path() const
@@ -884,9 +1030,9 @@ const EntityPath IedgeLicenseManager::Node::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
-    if (session_limit.is_set || is_set(session_limit.operation)) leaf_name_data.push_back(session_limit.get_name_leafdata());
-    if (session_threshold.is_set || is_set(session_threshold.operation)) leaf_name_data.push_back(session_threshold.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (session_limit.is_set || is_set(session_limit.yfilter)) leaf_name_data.push_back(session_limit.get_name_leafdata());
+    if (session_threshold.is_set || is_set(session_threshold.yfilter)) leaf_name_data.push_back(session_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -905,20 +1051,49 @@ std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Node::get_ch
     return children;
 }
 
-void IedgeLicenseManager::Node::set_value(const std::string & value_path, std::string value)
+void IedgeLicenseManager::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-limit")
     {
         session_limit = value;
+        session_limit.value_namespace = name_space;
+        session_limit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-threshold")
     {
         session_threshold = value;
+        session_threshold.value_namespace = name_space;
+        session_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void IedgeLicenseManager::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "session-limit")
+    {
+        session_limit.yfilter = yfilter;
+    }
+    if(value_path == "session-threshold")
+    {
+        session_threshold.yfilter = yfilter;
+    }
+}
+
+bool IedgeLicenseManager::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-name" || name == "session-limit" || name == "session-threshold")
+        return true;
+    return false;
 }
 
 SubManager::SubManager()
@@ -947,7 +1122,7 @@ bool SubManager::has_operation() const
         if(location[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string SubManager::get_segment_path() const
@@ -1009,7 +1184,11 @@ std::map<std::string, std::shared_ptr<Entity>> SubManager::get_children() const
     return children;
 }
 
-void SubManager::set_value(const std::string & value_path, std::string value)
+void SubManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubManager::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -1031,6 +1210,18 @@ std::string SubManager::get_bundle_name() const
 augment_capabilities_function SubManager::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> SubManager::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool SubManager::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "location")
+        return true;
+    return false;
 }
 
 SubManager::Location::Location()
@@ -1058,9 +1249,9 @@ bool SubManager::Location::has_data() const
 
 bool SubManager::Location::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(location1.operation)
-	|| is_set(history.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(location1.yfilter)
+	|| ydk::is_set(history.yfilter)
 	|| (trace !=  nullptr && trace->has_operation());
 }
 
@@ -1087,8 +1278,8 @@ const EntityPath SubManager::Location::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (location1.is_set || is_set(location1.operation)) leaf_name_data.push_back(location1.get_name_leafdata());
-    if (history.is_set || is_set(history.operation)) leaf_name_data.push_back(history.get_name_leafdata());
+    if (location1.is_set || is_set(location1.yfilter)) leaf_name_data.push_back(location1.get_name_leafdata());
+    if (history.is_set || is_set(history.yfilter)) leaf_name_data.push_back(history.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1121,16 +1312,39 @@ std::map<std::string, std::shared_ptr<Entity>> SubManager::Location::get_childre
     return children;
 }
 
-void SubManager::Location::set_value(const std::string & value_path, std::string value)
+void SubManager::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "location1")
     {
         location1 = value;
+        location1.value_namespace = name_space;
+        location1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "history")
     {
         history = value;
+        history.value_namespace = name_space;
+        history.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SubManager::Location::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "location1")
+    {
+        location1.yfilter = yfilter;
+    }
+    if(value_path == "history")
+    {
+        history.yfilter = yfilter;
+    }
+}
+
+bool SubManager::Location::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trace" || name == "location1" || name == "history")
+        return true;
+    return false;
 }
 
 SubManager::Location::Trace::Trace()
@@ -1151,8 +1365,8 @@ bool SubManager::Location::Trace::has_data() const
 
 bool SubManager::Location::Trace::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(trace_level.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(trace_level.yfilter);
 }
 
 std::string SubManager::Location::Trace::get_segment_path() const
@@ -1178,7 +1392,7 @@ const EntityPath SubManager::Location::Trace::get_entity_path(Entity* ancestor) 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (trace_level.is_set || is_set(trace_level.operation)) leaf_name_data.push_back(trace_level.get_name_leafdata());
+    if (trace_level.is_set || is_set(trace_level.yfilter)) leaf_name_data.push_back(trace_level.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1197,12 +1411,29 @@ std::map<std::string, std::shared_ptr<Entity>> SubManager::Location::Trace::get_
     return children;
 }
 
-void SubManager::Location::Trace::set_value(const std::string & value_path, std::string value)
+void SubManager::Location::Trace::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "trace-level")
     {
         trace_level = value;
+        trace_level.value_namespace = name_space;
+        trace_level.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void SubManager::Location::Trace::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "trace-level")
+    {
+        trace_level.yfilter = yfilter;
+    }
+}
+
+bool SubManager::Location::Trace::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trace-level")
+        return true;
+    return false;
 }
 
 

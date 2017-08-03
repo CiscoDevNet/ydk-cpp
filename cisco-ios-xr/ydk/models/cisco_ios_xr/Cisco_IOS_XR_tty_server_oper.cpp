@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_tty_server_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_server_oper {
 
 Tty::Tty()
@@ -37,7 +39,7 @@ bool Tty::has_data() const
 
 bool Tty::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (auxiliary_nodes !=  nullptr && auxiliary_nodes->has_operation())
 	|| (console_nodes !=  nullptr && console_nodes->has_operation())
 	|| (vty_lines !=  nullptr && vty_lines->has_operation());
@@ -123,7 +125,11 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::get_children() const
     return children;
 }
 
-void Tty::set_value(const std::string & value_path, std::string value)
+void Tty::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Tty::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -145,6 +151,18 @@ std::string Tty::get_bundle_name() const
 augment_capabilities_function Tty::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Tty::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Tty::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auxiliary-nodes" || name == "console-nodes" || name == "vty-lines")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNodes()
@@ -173,7 +191,7 @@ bool Tty::ConsoleNodes::has_operation() const
         if(console_node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Tty::ConsoleNodes::get_segment_path() const
@@ -238,8 +256,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::get_children()
     return children;
 }
 
-void Tty::ConsoleNodes::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::ConsoleNodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::ConsoleNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "console-node")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleNode()
@@ -265,8 +294,8 @@ bool Tty::ConsoleNodes::ConsoleNode::has_data() const
 
 bool Tty::ConsoleNodes::ConsoleNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
 	|| (console_line !=  nullptr && console_line->has_operation());
 }
 
@@ -293,7 +322,7 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -326,12 +355,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::g
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "console-line" || name == "id")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleLine()
@@ -362,7 +408,7 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::has_data() const
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (configuration !=  nullptr && configuration->has_operation())
 	|| (console_statistics !=  nullptr && console_statistics->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -451,8 +497,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configuration" || name == "console-statistics" || name == "state")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::ConsoleStatistics()
@@ -487,7 +544,7 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::has_data() 
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (aaa !=  nullptr && aaa->has_operation())
 	|| (exec !=  nullptr && exec->has_operation())
 	|| (general_statistics !=  nullptr && general_statistics->has_operation())
@@ -591,8 +648,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa" || name == "exec" || name == "general-statistics" || name == "rs232")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::Rs232()
@@ -629,16 +697,16 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::has_
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(baud_rate.operation)
-	|| is_set(data_bits.operation)
-	|| is_set(exec_disabled.operation)
-	|| is_set(framing_error_count.operation)
-	|| is_set(hardware_flow_control_status.operation)
-	|| is_set(overrun_error_count.operation)
-	|| is_set(parity_error_count.operation)
-	|| is_set(parity_status.operation)
-	|| is_set(stop_bits.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(baud_rate.yfilter)
+	|| ydk::is_set(data_bits.yfilter)
+	|| ydk::is_set(exec_disabled.yfilter)
+	|| ydk::is_set(framing_error_count.yfilter)
+	|| ydk::is_set(hardware_flow_control_status.yfilter)
+	|| ydk::is_set(overrun_error_count.yfilter)
+	|| ydk::is_set(parity_error_count.yfilter)
+	|| ydk::is_set(parity_status.yfilter)
+	|| ydk::is_set(stop_bits.yfilter);
 }
 
 std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::get_segment_path() const
@@ -664,15 +732,15 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (baud_rate.is_set || is_set(baud_rate.operation)) leaf_name_data.push_back(baud_rate.get_name_leafdata());
-    if (data_bits.is_set || is_set(data_bits.operation)) leaf_name_data.push_back(data_bits.get_name_leafdata());
-    if (exec_disabled.is_set || is_set(exec_disabled.operation)) leaf_name_data.push_back(exec_disabled.get_name_leafdata());
-    if (framing_error_count.is_set || is_set(framing_error_count.operation)) leaf_name_data.push_back(framing_error_count.get_name_leafdata());
-    if (hardware_flow_control_status.is_set || is_set(hardware_flow_control_status.operation)) leaf_name_data.push_back(hardware_flow_control_status.get_name_leafdata());
-    if (overrun_error_count.is_set || is_set(overrun_error_count.operation)) leaf_name_data.push_back(overrun_error_count.get_name_leafdata());
-    if (parity_error_count.is_set || is_set(parity_error_count.operation)) leaf_name_data.push_back(parity_error_count.get_name_leafdata());
-    if (parity_status.is_set || is_set(parity_status.operation)) leaf_name_data.push_back(parity_status.get_name_leafdata());
-    if (stop_bits.is_set || is_set(stop_bits.operation)) leaf_name_data.push_back(stop_bits.get_name_leafdata());
+    if (baud_rate.is_set || is_set(baud_rate.yfilter)) leaf_name_data.push_back(baud_rate.get_name_leafdata());
+    if (data_bits.is_set || is_set(data_bits.yfilter)) leaf_name_data.push_back(data_bits.get_name_leafdata());
+    if (exec_disabled.is_set || is_set(exec_disabled.yfilter)) leaf_name_data.push_back(exec_disabled.get_name_leafdata());
+    if (framing_error_count.is_set || is_set(framing_error_count.yfilter)) leaf_name_data.push_back(framing_error_count.get_name_leafdata());
+    if (hardware_flow_control_status.is_set || is_set(hardware_flow_control_status.yfilter)) leaf_name_data.push_back(hardware_flow_control_status.get_name_leafdata());
+    if (overrun_error_count.is_set || is_set(overrun_error_count.yfilter)) leaf_name_data.push_back(overrun_error_count.get_name_leafdata());
+    if (parity_error_count.is_set || is_set(parity_error_count.yfilter)) leaf_name_data.push_back(parity_error_count.get_name_leafdata());
+    if (parity_status.is_set || is_set(parity_status.yfilter)) leaf_name_data.push_back(parity_status.get_name_leafdata());
+    if (stop_bits.is_set || is_set(stop_bits.yfilter)) leaf_name_data.push_back(stop_bits.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -691,44 +759,109 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "baud-rate")
     {
         baud_rate = value;
+        baud_rate.value_namespace = name_space;
+        baud_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-bits")
     {
         data_bits = value;
+        data_bits.value_namespace = name_space;
+        data_bits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "exec-disabled")
     {
         exec_disabled = value;
+        exec_disabled.value_namespace = name_space;
+        exec_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-error-count")
     {
         framing_error_count = value;
+        framing_error_count.value_namespace = name_space;
+        framing_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-flow-control-status")
     {
         hardware_flow_control_status = value;
+        hardware_flow_control_status.value_namespace = name_space;
+        hardware_flow_control_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overrun-error-count")
     {
         overrun_error_count = value;
+        overrun_error_count.value_namespace = name_space;
+        overrun_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-error-count")
     {
         parity_error_count = value;
+        parity_error_count.value_namespace = name_space;
+        parity_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-status")
     {
         parity_status = value;
+        parity_status.value_namespace = name_space;
+        parity_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-bits")
     {
         stop_bits = value;
+        stop_bits.value_namespace = name_space;
+        stop_bits.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "baud-rate")
+    {
+        baud_rate.yfilter = yfilter;
+    }
+    if(value_path == "data-bits")
+    {
+        data_bits.yfilter = yfilter;
+    }
+    if(value_path == "exec-disabled")
+    {
+        exec_disabled.yfilter = yfilter;
+    }
+    if(value_path == "framing-error-count")
+    {
+        framing_error_count.yfilter = yfilter;
+    }
+    if(value_path == "hardware-flow-control-status")
+    {
+        hardware_flow_control_status.yfilter = yfilter;
+    }
+    if(value_path == "overrun-error-count")
+    {
+        overrun_error_count.yfilter = yfilter;
+    }
+    if(value_path == "parity-error-count")
+    {
+        parity_error_count.yfilter = yfilter;
+    }
+    if(value_path == "parity-status")
+    {
+        parity_status.yfilter = yfilter;
+    }
+    if(value_path == "stop-bits")
+    {
+        stop_bits.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Rs232::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "baud-rate" || name == "data-bits" || name == "exec-disabled" || name == "framing-error-count" || name == "hardware-flow-control-status" || name == "overrun-error-count" || name == "parity-error-count" || name == "parity-status" || name == "stop-bits")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::GeneralStatistics()
@@ -769,18 +902,18 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStat
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(absolute_timeout.operation)
-	|| is_set(async_interface.operation)
-	|| is_set(domain_lookup_enabled.operation)
-	|| is_set(flow_control_start_character.operation)
-	|| is_set(flow_control_stop_character.operation)
-	|| is_set(idle_time.operation)
-	|| is_set(motd_banner_enabled.operation)
-	|| is_set(private_flag.operation)
-	|| is_set(terminal_length.operation)
-	|| is_set(terminal_type.operation)
-	|| is_set(terminal_width.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(absolute_timeout.yfilter)
+	|| ydk::is_set(async_interface.yfilter)
+	|| ydk::is_set(domain_lookup_enabled.yfilter)
+	|| ydk::is_set(flow_control_start_character.yfilter)
+	|| ydk::is_set(flow_control_stop_character.yfilter)
+	|| ydk::is_set(idle_time.yfilter)
+	|| ydk::is_set(motd_banner_enabled.yfilter)
+	|| ydk::is_set(private_flag.yfilter)
+	|| ydk::is_set(terminal_length.yfilter)
+	|| ydk::is_set(terminal_type.yfilter)
+	|| ydk::is_set(terminal_width.yfilter);
 }
 
 std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::get_segment_path() const
@@ -806,17 +939,17 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (absolute_timeout.is_set || is_set(absolute_timeout.operation)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
-    if (async_interface.is_set || is_set(async_interface.operation)) leaf_name_data.push_back(async_interface.get_name_leafdata());
-    if (domain_lookup_enabled.is_set || is_set(domain_lookup_enabled.operation)) leaf_name_data.push_back(domain_lookup_enabled.get_name_leafdata());
-    if (flow_control_start_character.is_set || is_set(flow_control_start_character.operation)) leaf_name_data.push_back(flow_control_start_character.get_name_leafdata());
-    if (flow_control_stop_character.is_set || is_set(flow_control_stop_character.operation)) leaf_name_data.push_back(flow_control_stop_character.get_name_leafdata());
-    if (idle_time.is_set || is_set(idle_time.operation)) leaf_name_data.push_back(idle_time.get_name_leafdata());
-    if (motd_banner_enabled.is_set || is_set(motd_banner_enabled.operation)) leaf_name_data.push_back(motd_banner_enabled.get_name_leafdata());
-    if (private_flag.is_set || is_set(private_flag.operation)) leaf_name_data.push_back(private_flag.get_name_leafdata());
-    if (terminal_length.is_set || is_set(terminal_length.operation)) leaf_name_data.push_back(terminal_length.get_name_leafdata());
-    if (terminal_type.is_set || is_set(terminal_type.operation)) leaf_name_data.push_back(terminal_type.get_name_leafdata());
-    if (terminal_width.is_set || is_set(terminal_width.operation)) leaf_name_data.push_back(terminal_width.get_name_leafdata());
+    if (absolute_timeout.is_set || is_set(absolute_timeout.yfilter)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
+    if (async_interface.is_set || is_set(async_interface.yfilter)) leaf_name_data.push_back(async_interface.get_name_leafdata());
+    if (domain_lookup_enabled.is_set || is_set(domain_lookup_enabled.yfilter)) leaf_name_data.push_back(domain_lookup_enabled.get_name_leafdata());
+    if (flow_control_start_character.is_set || is_set(flow_control_start_character.yfilter)) leaf_name_data.push_back(flow_control_start_character.get_name_leafdata());
+    if (flow_control_stop_character.is_set || is_set(flow_control_stop_character.yfilter)) leaf_name_data.push_back(flow_control_stop_character.get_name_leafdata());
+    if (idle_time.is_set || is_set(idle_time.yfilter)) leaf_name_data.push_back(idle_time.get_name_leafdata());
+    if (motd_banner_enabled.is_set || is_set(motd_banner_enabled.yfilter)) leaf_name_data.push_back(motd_banner_enabled.get_name_leafdata());
+    if (private_flag.is_set || is_set(private_flag.yfilter)) leaf_name_data.push_back(private_flag.get_name_leafdata());
+    if (terminal_length.is_set || is_set(terminal_length.yfilter)) leaf_name_data.push_back(terminal_length.get_name_leafdata());
+    if (terminal_type.is_set || is_set(terminal_type.yfilter)) leaf_name_data.push_back(terminal_type.get_name_leafdata());
+    if (terminal_width.is_set || is_set(terminal_width.yfilter)) leaf_name_data.push_back(terminal_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -835,52 +968,129 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "absolute-timeout")
     {
         absolute_timeout = value;
+        absolute_timeout.value_namespace = name_space;
+        absolute_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "async-interface")
     {
         async_interface = value;
+        async_interface.value_namespace = name_space;
+        async_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-lookup-enabled")
     {
         domain_lookup_enabled = value;
+        domain_lookup_enabled.value_namespace = name_space;
+        domain_lookup_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-control-start-character")
     {
         flow_control_start_character = value;
+        flow_control_start_character.value_namespace = name_space;
+        flow_control_start_character.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-control-stop-character")
     {
         flow_control_stop_character = value;
+        flow_control_stop_character.value_namespace = name_space;
+        flow_control_stop_character.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idle-time")
     {
         idle_time = value;
+        idle_time.value_namespace = name_space;
+        idle_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "motd-banner-enabled")
     {
         motd_banner_enabled = value;
+        motd_banner_enabled.value_namespace = name_space;
+        motd_banner_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "private-flag")
     {
         private_flag = value;
+        private_flag.value_namespace = name_space;
+        private_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-length")
     {
         terminal_length = value;
+        terminal_length.value_namespace = name_space;
+        terminal_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-type")
     {
         terminal_type = value;
+        terminal_type.value_namespace = name_space;
+        terminal_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-width")
     {
         terminal_width = value;
+        terminal_width.value_namespace = name_space;
+        terminal_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "absolute-timeout")
+    {
+        absolute_timeout.yfilter = yfilter;
+    }
+    if(value_path == "async-interface")
+    {
+        async_interface.yfilter = yfilter;
+    }
+    if(value_path == "domain-lookup-enabled")
+    {
+        domain_lookup_enabled.yfilter = yfilter;
+    }
+    if(value_path == "flow-control-start-character")
+    {
+        flow_control_start_character.yfilter = yfilter;
+    }
+    if(value_path == "flow-control-stop-character")
+    {
+        flow_control_stop_character.yfilter = yfilter;
+    }
+    if(value_path == "idle-time")
+    {
+        idle_time.yfilter = yfilter;
+    }
+    if(value_path == "motd-banner-enabled")
+    {
+        motd_banner_enabled.yfilter = yfilter;
+    }
+    if(value_path == "private-flag")
+    {
+        private_flag.yfilter = yfilter;
+    }
+    if(value_path == "terminal-length")
+    {
+        terminal_length.yfilter = yfilter;
+    }
+    if(value_path == "terminal-type")
+    {
+        terminal_type.yfilter = yfilter;
+    }
+    if(value_path == "terminal-width")
+    {
+        terminal_width.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::GeneralStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "absolute-timeout" || name == "async-interface" || name == "domain-lookup-enabled" || name == "flow-control-start-character" || name == "flow-control-stop-character" || name == "idle-time" || name == "motd-banner-enabled" || name == "private-flag" || name == "terminal-length" || name == "terminal-type" || name == "terminal-width")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::Exec()
@@ -901,8 +1111,8 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::has_d
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_stamp_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_stamp_enabled.yfilter);
 }
 
 std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::get_segment_path() const
@@ -928,7 +1138,7 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_stamp_enabled.is_set || is_set(time_stamp_enabled.operation)) leaf_name_data.push_back(time_stamp_enabled.get_name_leafdata());
+    if (time_stamp_enabled.is_set || is_set(time_stamp_enabled.yfilter)) leaf_name_data.push_back(time_stamp_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -947,12 +1157,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-stamp-enabled")
     {
         time_stamp_enabled = value;
+        time_stamp_enabled.value_namespace = name_space;
+        time_stamp_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-stamp-enabled")
+    {
+        time_stamp_enabled.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Exec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-stamp-enabled")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::Aaa()
@@ -973,8 +1200,8 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::has_da
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(user_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(user_name.yfilter);
 }
 
 std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::get_segment_path() const
@@ -1000,7 +1227,7 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (user_name.is_set || is_set(user_name.operation)) leaf_name_data.push_back(user_name.get_name_leafdata());
+    if (user_name.is_set || is_set(user_name.yfilter)) leaf_name_data.push_back(user_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1019,12 +1246,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "user-name")
     {
         user_name = value;
+        user_name.value_namespace = name_space;
+        user_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "user-name")
+    {
+        user_name.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::ConsoleStatistics::Aaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user-name")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::State()
@@ -1051,7 +1295,7 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::has_data() const
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (general !=  nullptr && general->has_operation())
 	|| (template_ !=  nullptr && template_->has_operation());
 }
@@ -1125,8 +1369,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "general" || name == "template")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::Template_()
@@ -1147,8 +1402,8 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::has_data() c
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::get_segment_path() const
@@ -1174,7 +1429,7 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1193,12 +1448,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::General()
@@ -1221,9 +1493,9 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::has_data() con
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(general_state.operation)
-	|| is_set(operation_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(general_state.yfilter)
+	|| ydk::is_set(operation_.yfilter);
 }
 
 std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::get_segment_path() const
@@ -1249,8 +1521,8 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (general_state.is_set || is_set(general_state.operation)) leaf_name_data.push_back(general_state.get_name_leafdata());
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (general_state.is_set || is_set(general_state.yfilter)) leaf_name_data.push_back(general_state.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1269,16 +1541,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "general-state")
     {
         general_state = value;
+        general_state.value_namespace = name_space;
+        general_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "general-state")
+    {
+        general_state.yfilter = yfilter;
+    }
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::State::General::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "general-state" || name == "operation")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::Configuration()
@@ -1301,7 +1596,7 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::has_data() cons
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (connection_configuration !=  nullptr && connection_configuration->has_operation());
 }
 
@@ -1360,8 +1655,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connection-configuration")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::ConnectionConfiguration()
@@ -1389,9 +1695,9 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfi
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acl_in.operation)
-	|| is_set(acl_out.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(acl_in.yfilter)
+	|| ydk::is_set(acl_out.yfilter)
 	|| (transport_input !=  nullptr && transport_input->has_operation());
 }
 
@@ -1418,8 +1724,8 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::Con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acl_in.is_set || is_set(acl_in.operation)) leaf_name_data.push_back(acl_in.get_name_leafdata());
-    if (acl_out.is_set || is_set(acl_out.operation)) leaf_name_data.push_back(acl_out.get_name_leafdata());
+    if (acl_in.is_set || is_set(acl_in.yfilter)) leaf_name_data.push_back(acl_in.get_name_leafdata());
+    if (acl_out.is_set || is_set(acl_out.yfilter)) leaf_name_data.push_back(acl_out.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1452,16 +1758,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-in")
     {
         acl_in = value;
+        acl_in.value_namespace = name_space;
+        acl_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl-out")
     {
         acl_out = value;
+        acl_out.value_namespace = name_space;
+        acl_out.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acl-in")
+    {
+        acl_in.yfilter = yfilter;
+    }
+    if(value_path == "acl-out")
+    {
+        acl_out.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-input" || name == "acl-in" || name == "acl-out")
+        return true;
+    return false;
 }
 
 Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::TransportInput()
@@ -1488,11 +1817,11 @@ bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfi
 
 bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(none.operation)
-	|| is_set(protocol1.operation)
-	|| is_set(protocol2.operation)
-	|| is_set(select.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(none.yfilter)
+	|| ydk::is_set(protocol1.yfilter)
+	|| ydk::is_set(protocol2.yfilter)
+	|| ydk::is_set(select.yfilter);
 }
 
 std::string Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::get_segment_path() const
@@ -1518,10 +1847,10 @@ const EntityPath Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::Con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (none.is_set || is_set(none.operation)) leaf_name_data.push_back(none.get_name_leafdata());
-    if (protocol1.is_set || is_set(protocol1.operation)) leaf_name_data.push_back(protocol1.get_name_leafdata());
-    if (protocol2.is_set || is_set(protocol2.operation)) leaf_name_data.push_back(protocol2.get_name_leafdata());
-    if (select.is_set || is_set(select.operation)) leaf_name_data.push_back(select.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+    if (protocol1.is_set || is_set(protocol1.yfilter)) leaf_name_data.push_back(protocol1.get_name_leafdata());
+    if (protocol2.is_set || is_set(protocol2.yfilter)) leaf_name_data.push_back(protocol2.get_name_leafdata());
+    if (select.is_set || is_set(select.yfilter)) leaf_name_data.push_back(select.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1540,24 +1869,59 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::ConsoleNodes::ConsoleNode::C
     return children;
 }
 
-void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, std::string value)
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "none")
     {
         none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol1")
     {
         protocol1 = value;
+        protocol1.value_namespace = name_space;
+        protocol1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol2")
     {
         protocol2 = value;
+        protocol2.value_namespace = name_space;
+        protocol2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "select")
     {
         select = value;
+        select.value_namespace = name_space;
+        select.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+    if(value_path == "protocol1")
+    {
+        protocol1.yfilter = yfilter;
+    }
+    if(value_path == "protocol2")
+    {
+        protocol2.yfilter = yfilter;
+    }
+    if(value_path == "select")
+    {
+        select.yfilter = yfilter;
+    }
+}
+
+bool Tty::ConsoleNodes::ConsoleNode::ConsoleLine::Configuration::ConnectionConfiguration::TransportInput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "none" || name == "protocol1" || name == "protocol2" || name == "select")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLines()
@@ -1586,7 +1950,7 @@ bool Tty::VtyLines::has_operation() const
         if(vty_line[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Tty::VtyLines::get_segment_path() const
@@ -1651,8 +2015,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::get_children() con
     return children;
 }
 
-void Tty::VtyLines::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::VtyLines::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::VtyLines::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vty-line")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::VtyLine()
@@ -1690,8 +2065,8 @@ bool Tty::VtyLines::VtyLine::has_data() const
 
 bool Tty::VtyLines::VtyLine::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(line_number.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(line_number.yfilter)
 	|| (configuration !=  nullptr && configuration->has_operation())
 	|| (sessions !=  nullptr && sessions->has_operation())
 	|| (state !=  nullptr && state->has_operation())
@@ -1721,7 +2096,7 @@ const EntityPath Tty::VtyLines::VtyLine::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (line_number.is_set || is_set(line_number.operation)) leaf_name_data.push_back(line_number.get_name_leafdata());
+    if (line_number.is_set || is_set(line_number.yfilter)) leaf_name_data.push_back(line_number.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1796,12 +2171,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::get_child
     return children;
 }
 
-void Tty::VtyLines::VtyLine::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "line-number")
     {
         line_number = value;
+        line_number.value_namespace = name_space;
+        line_number.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "line-number")
+    {
+        line_number.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configuration" || name == "sessions" || name == "state" || name == "vty-statistics" || name == "line-number")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::VtyStatistics()
@@ -1836,7 +2228,7 @@ bool Tty::VtyLines::VtyLine::VtyStatistics::has_data() const
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (aaa !=  nullptr && aaa->has_operation())
 	|| (connection !=  nullptr && connection->has_operation())
 	|| (exec !=  nullptr && exec->has_operation())
@@ -1940,8 +2332,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatis
     return children;
 }
 
-void Tty::VtyLines::VtyLine::VtyStatistics::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::VtyStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::VtyLines::VtyLine::VtyStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::VtyLines::VtyLine::VtyStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa" || name == "connection" || name == "exec" || name == "general-statistics")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::Connection::Connection()
@@ -1966,10 +2369,10 @@ bool Tty::VtyLines::VtyLine::VtyStatistics::Connection::has_data() const
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::Connection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(host_address_family.operation)
-	|| is_set(incoming_host_address.operation)
-	|| is_set(service.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(host_address_family.yfilter)
+	|| ydk::is_set(incoming_host_address.yfilter)
+	|| ydk::is_set(service.yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::VtyStatistics::Connection::get_segment_path() const
@@ -1995,9 +2398,9 @@ const EntityPath Tty::VtyLines::VtyLine::VtyStatistics::Connection::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (host_address_family.is_set || is_set(host_address_family.operation)) leaf_name_data.push_back(host_address_family.get_name_leafdata());
-    if (incoming_host_address.is_set || is_set(incoming_host_address.operation)) leaf_name_data.push_back(incoming_host_address.get_name_leafdata());
-    if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (host_address_family.is_set || is_set(host_address_family.yfilter)) leaf_name_data.push_back(host_address_family.get_name_leafdata());
+    if (incoming_host_address.is_set || is_set(incoming_host_address.yfilter)) leaf_name_data.push_back(incoming_host_address.get_name_leafdata());
+    if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2016,20 +2419,49 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatis
     return children;
 }
 
-void Tty::VtyLines::VtyLine::VtyStatistics::Connection::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::VtyStatistics::Connection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "host-address-family")
     {
         host_address_family = value;
+        host_address_family.value_namespace = name_space;
+        host_address_family.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-host-address")
     {
         incoming_host_address = value;
+        incoming_host_address.value_namespace = name_space;
+        incoming_host_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service")
     {
         service = value;
+        service.value_namespace = name_space;
+        service.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::VtyStatistics::Connection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "host-address-family")
+    {
+        host_address_family.yfilter = yfilter;
+    }
+    if(value_path == "incoming-host-address")
+    {
+        incoming_host_address.yfilter = yfilter;
+    }
+    if(value_path == "service")
+    {
+        service.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::VtyStatistics::Connection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host-address-family" || name == "incoming-host-address" || name == "service")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::GeneralStatistics()
@@ -2070,18 +2502,18 @@ bool Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::has_data() const
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(absolute_timeout.operation)
-	|| is_set(async_interface.operation)
-	|| is_set(domain_lookup_enabled.operation)
-	|| is_set(flow_control_start_character.operation)
-	|| is_set(flow_control_stop_character.operation)
-	|| is_set(idle_time.operation)
-	|| is_set(motd_banner_enabled.operation)
-	|| is_set(private_flag.operation)
-	|| is_set(terminal_length.operation)
-	|| is_set(terminal_type.operation)
-	|| is_set(terminal_width.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(absolute_timeout.yfilter)
+	|| ydk::is_set(async_interface.yfilter)
+	|| ydk::is_set(domain_lookup_enabled.yfilter)
+	|| ydk::is_set(flow_control_start_character.yfilter)
+	|| ydk::is_set(flow_control_stop_character.yfilter)
+	|| ydk::is_set(idle_time.yfilter)
+	|| ydk::is_set(motd_banner_enabled.yfilter)
+	|| ydk::is_set(private_flag.yfilter)
+	|| ydk::is_set(terminal_length.yfilter)
+	|| ydk::is_set(terminal_type.yfilter)
+	|| ydk::is_set(terminal_width.yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::get_segment_path() const
@@ -2107,17 +2539,17 @@ const EntityPath Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (absolute_timeout.is_set || is_set(absolute_timeout.operation)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
-    if (async_interface.is_set || is_set(async_interface.operation)) leaf_name_data.push_back(async_interface.get_name_leafdata());
-    if (domain_lookup_enabled.is_set || is_set(domain_lookup_enabled.operation)) leaf_name_data.push_back(domain_lookup_enabled.get_name_leafdata());
-    if (flow_control_start_character.is_set || is_set(flow_control_start_character.operation)) leaf_name_data.push_back(flow_control_start_character.get_name_leafdata());
-    if (flow_control_stop_character.is_set || is_set(flow_control_stop_character.operation)) leaf_name_data.push_back(flow_control_stop_character.get_name_leafdata());
-    if (idle_time.is_set || is_set(idle_time.operation)) leaf_name_data.push_back(idle_time.get_name_leafdata());
-    if (motd_banner_enabled.is_set || is_set(motd_banner_enabled.operation)) leaf_name_data.push_back(motd_banner_enabled.get_name_leafdata());
-    if (private_flag.is_set || is_set(private_flag.operation)) leaf_name_data.push_back(private_flag.get_name_leafdata());
-    if (terminal_length.is_set || is_set(terminal_length.operation)) leaf_name_data.push_back(terminal_length.get_name_leafdata());
-    if (terminal_type.is_set || is_set(terminal_type.operation)) leaf_name_data.push_back(terminal_type.get_name_leafdata());
-    if (terminal_width.is_set || is_set(terminal_width.operation)) leaf_name_data.push_back(terminal_width.get_name_leafdata());
+    if (absolute_timeout.is_set || is_set(absolute_timeout.yfilter)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
+    if (async_interface.is_set || is_set(async_interface.yfilter)) leaf_name_data.push_back(async_interface.get_name_leafdata());
+    if (domain_lookup_enabled.is_set || is_set(domain_lookup_enabled.yfilter)) leaf_name_data.push_back(domain_lookup_enabled.get_name_leafdata());
+    if (flow_control_start_character.is_set || is_set(flow_control_start_character.yfilter)) leaf_name_data.push_back(flow_control_start_character.get_name_leafdata());
+    if (flow_control_stop_character.is_set || is_set(flow_control_stop_character.yfilter)) leaf_name_data.push_back(flow_control_stop_character.get_name_leafdata());
+    if (idle_time.is_set || is_set(idle_time.yfilter)) leaf_name_data.push_back(idle_time.get_name_leafdata());
+    if (motd_banner_enabled.is_set || is_set(motd_banner_enabled.yfilter)) leaf_name_data.push_back(motd_banner_enabled.get_name_leafdata());
+    if (private_flag.is_set || is_set(private_flag.yfilter)) leaf_name_data.push_back(private_flag.get_name_leafdata());
+    if (terminal_length.is_set || is_set(terminal_length.yfilter)) leaf_name_data.push_back(terminal_length.get_name_leafdata());
+    if (terminal_type.is_set || is_set(terminal_type.yfilter)) leaf_name_data.push_back(terminal_type.get_name_leafdata());
+    if (terminal_width.is_set || is_set(terminal_width.yfilter)) leaf_name_data.push_back(terminal_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2136,52 +2568,129 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatis
     return children;
 }
 
-void Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "absolute-timeout")
     {
         absolute_timeout = value;
+        absolute_timeout.value_namespace = name_space;
+        absolute_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "async-interface")
     {
         async_interface = value;
+        async_interface.value_namespace = name_space;
+        async_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-lookup-enabled")
     {
         domain_lookup_enabled = value;
+        domain_lookup_enabled.value_namespace = name_space;
+        domain_lookup_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-control-start-character")
     {
         flow_control_start_character = value;
+        flow_control_start_character.value_namespace = name_space;
+        flow_control_start_character.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-control-stop-character")
     {
         flow_control_stop_character = value;
+        flow_control_stop_character.value_namespace = name_space;
+        flow_control_stop_character.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idle-time")
     {
         idle_time = value;
+        idle_time.value_namespace = name_space;
+        idle_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "motd-banner-enabled")
     {
         motd_banner_enabled = value;
+        motd_banner_enabled.value_namespace = name_space;
+        motd_banner_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "private-flag")
     {
         private_flag = value;
+        private_flag.value_namespace = name_space;
+        private_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-length")
     {
         terminal_length = value;
+        terminal_length.value_namespace = name_space;
+        terminal_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-type")
     {
         terminal_type = value;
+        terminal_type.value_namespace = name_space;
+        terminal_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-width")
     {
         terminal_width = value;
+        terminal_width.value_namespace = name_space;
+        terminal_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "absolute-timeout")
+    {
+        absolute_timeout.yfilter = yfilter;
+    }
+    if(value_path == "async-interface")
+    {
+        async_interface.yfilter = yfilter;
+    }
+    if(value_path == "domain-lookup-enabled")
+    {
+        domain_lookup_enabled.yfilter = yfilter;
+    }
+    if(value_path == "flow-control-start-character")
+    {
+        flow_control_start_character.yfilter = yfilter;
+    }
+    if(value_path == "flow-control-stop-character")
+    {
+        flow_control_stop_character.yfilter = yfilter;
+    }
+    if(value_path == "idle-time")
+    {
+        idle_time.yfilter = yfilter;
+    }
+    if(value_path == "motd-banner-enabled")
+    {
+        motd_banner_enabled.yfilter = yfilter;
+    }
+    if(value_path == "private-flag")
+    {
+        private_flag.yfilter = yfilter;
+    }
+    if(value_path == "terminal-length")
+    {
+        terminal_length.yfilter = yfilter;
+    }
+    if(value_path == "terminal-type")
+    {
+        terminal_type.yfilter = yfilter;
+    }
+    if(value_path == "terminal-width")
+    {
+        terminal_width.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::VtyStatistics::GeneralStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "absolute-timeout" || name == "async-interface" || name == "domain-lookup-enabled" || name == "flow-control-start-character" || name == "flow-control-stop-character" || name == "idle-time" || name == "motd-banner-enabled" || name == "private-flag" || name == "terminal-length" || name == "terminal-type" || name == "terminal-width")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::Exec::Exec()
@@ -2202,8 +2711,8 @@ bool Tty::VtyLines::VtyLine::VtyStatistics::Exec::has_data() const
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::Exec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_stamp_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_stamp_enabled.yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::VtyStatistics::Exec::get_segment_path() const
@@ -2229,7 +2738,7 @@ const EntityPath Tty::VtyLines::VtyLine::VtyStatistics::Exec::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_stamp_enabled.is_set || is_set(time_stamp_enabled.operation)) leaf_name_data.push_back(time_stamp_enabled.get_name_leafdata());
+    if (time_stamp_enabled.is_set || is_set(time_stamp_enabled.yfilter)) leaf_name_data.push_back(time_stamp_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2248,12 +2757,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatis
     return children;
 }
 
-void Tty::VtyLines::VtyLine::VtyStatistics::Exec::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::VtyStatistics::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-stamp-enabled")
     {
         time_stamp_enabled = value;
+        time_stamp_enabled.value_namespace = name_space;
+        time_stamp_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::VtyStatistics::Exec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-stamp-enabled")
+    {
+        time_stamp_enabled.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::VtyStatistics::Exec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-stamp-enabled")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::VtyStatistics::Aaa::Aaa()
@@ -2274,8 +2800,8 @@ bool Tty::VtyLines::VtyLine::VtyStatistics::Aaa::has_data() const
 
 bool Tty::VtyLines::VtyLine::VtyStatistics::Aaa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(user_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(user_name.yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::VtyStatistics::Aaa::get_segment_path() const
@@ -2301,7 +2827,7 @@ const EntityPath Tty::VtyLines::VtyLine::VtyStatistics::Aaa::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (user_name.is_set || is_set(user_name.operation)) leaf_name_data.push_back(user_name.get_name_leafdata());
+    if (user_name.is_set || is_set(user_name.yfilter)) leaf_name_data.push_back(user_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2320,12 +2846,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::VtyStatis
     return children;
 }
 
-void Tty::VtyLines::VtyLine::VtyStatistics::Aaa::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::VtyStatistics::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "user-name")
     {
         user_name = value;
+        user_name.value_namespace = name_space;
+        user_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::VtyStatistics::Aaa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "user-name")
+    {
+        user_name.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::VtyStatistics::Aaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user-name")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::State::State()
@@ -2352,7 +2895,7 @@ bool Tty::VtyLines::VtyLine::State::has_data() const
 
 bool Tty::VtyLines::VtyLine::State::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (general !=  nullptr && general->has_operation())
 	|| (template_ !=  nullptr && template_->has_operation());
 }
@@ -2426,8 +2969,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::ge
     return children;
 }
 
-void Tty::VtyLines::VtyLine::State::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::VtyLines::VtyLine::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::VtyLines::VtyLine::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "general" || name == "template")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::State::Template_::Template_()
@@ -2448,8 +3002,8 @@ bool Tty::VtyLines::VtyLine::State::Template_::has_data() const
 
 bool Tty::VtyLines::VtyLine::State::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::State::Template_::get_segment_path() const
@@ -2475,7 +3029,7 @@ const EntityPath Tty::VtyLines::VtyLine::State::Template_::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2494,12 +3048,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::Te
     return children;
 }
 
-void Tty::VtyLines::VtyLine::State::Template_::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::State::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::State::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::State::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::State::General::General()
@@ -2522,9 +3093,9 @@ bool Tty::VtyLines::VtyLine::State::General::has_data() const
 
 bool Tty::VtyLines::VtyLine::State::General::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(general_state.operation)
-	|| is_set(operation_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(general_state.yfilter)
+	|| ydk::is_set(operation_.yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::State::General::get_segment_path() const
@@ -2550,8 +3121,8 @@ const EntityPath Tty::VtyLines::VtyLine::State::General::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (general_state.is_set || is_set(general_state.operation)) leaf_name_data.push_back(general_state.get_name_leafdata());
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (general_state.is_set || is_set(general_state.yfilter)) leaf_name_data.push_back(general_state.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2570,16 +3141,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::State::Ge
     return children;
 }
 
-void Tty::VtyLines::VtyLine::State::General::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::State::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "general-state")
     {
         general_state = value;
+        general_state.value_namespace = name_space;
+        general_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::State::General::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "general-state")
+    {
+        general_state.yfilter = yfilter;
+    }
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::State::General::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "general-state" || name == "operation")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::Configuration::Configuration()
@@ -2602,7 +3196,7 @@ bool Tty::VtyLines::VtyLine::Configuration::has_data() const
 
 bool Tty::VtyLines::VtyLine::Configuration::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (connection_configuration !=  nullptr && connection_configuration->has_operation());
 }
 
@@ -2661,8 +3255,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configura
     return children;
 }
 
-void Tty::VtyLines::VtyLine::Configuration::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::VtyLines::VtyLine::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::VtyLines::VtyLine::Configuration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connection-configuration")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::ConnectionConfiguration()
@@ -2690,9 +3295,9 @@ bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::has_data() 
 
 bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acl_in.operation)
-	|| is_set(acl_out.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(acl_in.yfilter)
+	|| ydk::is_set(acl_out.yfilter)
 	|| (transport_input !=  nullptr && transport_input->has_operation());
 }
 
@@ -2719,8 +3324,8 @@ const EntityPath Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acl_in.is_set || is_set(acl_in.operation)) leaf_name_data.push_back(acl_in.get_name_leafdata());
-    if (acl_out.is_set || is_set(acl_out.operation)) leaf_name_data.push_back(acl_out.get_name_leafdata());
+    if (acl_in.is_set || is_set(acl_in.yfilter)) leaf_name_data.push_back(acl_in.get_name_leafdata());
+    if (acl_out.is_set || is_set(acl_out.yfilter)) leaf_name_data.push_back(acl_out.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2753,16 +3358,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configura
     return children;
 }
 
-void Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-in")
     {
         acl_in = value;
+        acl_in.value_namespace = name_space;
+        acl_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl-out")
     {
         acl_out = value;
+        acl_out.value_namespace = name_space;
+        acl_out.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acl-in")
+    {
+        acl_in.yfilter = yfilter;
+    }
+    if(value_path == "acl-out")
+    {
+        acl_out.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-input" || name == "acl-in" || name == "acl-out")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::TransportInput()
@@ -2789,11 +3417,11 @@ bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportIn
 
 bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(none.operation)
-	|| is_set(protocol1.operation)
-	|| is_set(protocol2.operation)
-	|| is_set(select.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(none.yfilter)
+	|| ydk::is_set(protocol1.yfilter)
+	|| ydk::is_set(protocol2.yfilter)
+	|| ydk::is_set(select.yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::get_segment_path() const
@@ -2819,10 +3447,10 @@ const EntityPath Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (none.is_set || is_set(none.operation)) leaf_name_data.push_back(none.get_name_leafdata());
-    if (protocol1.is_set || is_set(protocol1.operation)) leaf_name_data.push_back(protocol1.get_name_leafdata());
-    if (protocol2.is_set || is_set(protocol2.operation)) leaf_name_data.push_back(protocol2.get_name_leafdata());
-    if (select.is_set || is_set(select.operation)) leaf_name_data.push_back(select.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+    if (protocol1.is_set || is_set(protocol1.yfilter)) leaf_name_data.push_back(protocol1.get_name_leafdata());
+    if (protocol2.is_set || is_set(protocol2.yfilter)) leaf_name_data.push_back(protocol2.get_name_leafdata());
+    if (select.is_set || is_set(select.yfilter)) leaf_name_data.push_back(select.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2841,24 +3469,59 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Configura
     return children;
 }
 
-void Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "none")
     {
         none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol1")
     {
         protocol1 = value;
+        protocol1.value_namespace = name_space;
+        protocol1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol2")
     {
         protocol2 = value;
+        protocol2.value_namespace = name_space;
+        protocol2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "select")
     {
         select = value;
+        select.value_namespace = name_space;
+        select.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+    if(value_path == "protocol1")
+    {
+        protocol1.yfilter = yfilter;
+    }
+    if(value_path == "protocol2")
+    {
+        protocol2.yfilter = yfilter;
+    }
+    if(value_path == "select")
+    {
+        select.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::Configuration::ConnectionConfiguration::TransportInput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "none" || name == "protocol1" || name == "protocol2" || name == "select")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::Sessions::Sessions()
@@ -2887,7 +3550,7 @@ bool Tty::VtyLines::VtyLine::Sessions::has_operation() const
         if(outgoing_connection[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::Sessions::get_segment_path() const
@@ -2952,8 +3615,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions:
     return children;
 }
 
-void Tty::VtyLines::VtyLine::Sessions::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::VtyLines::VtyLine::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::VtyLines::VtyLine::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outgoing-connection")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::OutgoingConnection()
@@ -2987,12 +3661,12 @@ bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::has_data() const
 
 bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(connection_id.operation)
-	|| is_set(host_name.operation)
-	|| is_set(idle_time.operation)
-	|| is_set(is_last_active_session.operation)
-	|| is_set(transport_protocol.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(connection_id.yfilter)
+	|| ydk::is_set(host_name.yfilter)
+	|| ydk::is_set(idle_time.yfilter)
+	|| ydk::is_set(is_last_active_session.yfilter)
+	|| ydk::is_set(transport_protocol.yfilter)
 	|| (host_address !=  nullptr && host_address->has_operation());
 }
 
@@ -3019,11 +3693,11 @@ const EntityPath Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (connection_id.is_set || is_set(connection_id.operation)) leaf_name_data.push_back(connection_id.get_name_leafdata());
-    if (host_name.is_set || is_set(host_name.operation)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (idle_time.is_set || is_set(idle_time.operation)) leaf_name_data.push_back(idle_time.get_name_leafdata());
-    if (is_last_active_session.is_set || is_set(is_last_active_session.operation)) leaf_name_data.push_back(is_last_active_session.get_name_leafdata());
-    if (transport_protocol.is_set || is_set(transport_protocol.operation)) leaf_name_data.push_back(transport_protocol.get_name_leafdata());
+    if (connection_id.is_set || is_set(connection_id.yfilter)) leaf_name_data.push_back(connection_id.get_name_leafdata());
+    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
+    if (idle_time.is_set || is_set(idle_time.yfilter)) leaf_name_data.push_back(idle_time.get_name_leafdata());
+    if (is_last_active_session.is_set || is_set(is_last_active_session.yfilter)) leaf_name_data.push_back(is_last_active_session.get_name_leafdata());
+    if (transport_protocol.is_set || is_set(transport_protocol.yfilter)) leaf_name_data.push_back(transport_protocol.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3056,28 +3730,69 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions:
     return children;
 }
 
-void Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "connection-id")
     {
         connection_id = value;
+        connection_id.value_namespace = name_space;
+        connection_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-name")
     {
         host_name = value;
+        host_name.value_namespace = name_space;
+        host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idle-time")
     {
         idle_time = value;
+        idle_time.value_namespace = name_space;
+        idle_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-last-active-session")
     {
         is_last_active_session = value;
+        is_last_active_session.value_namespace = name_space;
+        is_last_active_session.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport-protocol")
     {
         transport_protocol = value;
+        transport_protocol.value_namespace = name_space;
+        transport_protocol.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "connection-id")
+    {
+        connection_id.yfilter = yfilter;
+    }
+    if(value_path == "host-name")
+    {
+        host_name.yfilter = yfilter;
+    }
+    if(value_path == "idle-time")
+    {
+        idle_time.yfilter = yfilter;
+    }
+    if(value_path == "is-last-active-session")
+    {
+        is_last_active_session.yfilter = yfilter;
+    }
+    if(value_path == "transport-protocol")
+    {
+        transport_protocol.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "host-address" || name == "connection-id" || name == "host-name" || name == "idle-time" || name == "is-last-active-session" || name == "transport-protocol")
+        return true;
+    return false;
 }
 
 Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::HostAddress()
@@ -3102,10 +3817,10 @@ bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::has_data
 
 bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(af_name.operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
 }
 
 std::string Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::get_segment_path() const
@@ -3131,9 +3846,9 @@ const EntityPath Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (af_name.is_set || is_set(af_name.operation)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3152,20 +3867,49 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::VtyLines::VtyLine::Sessions:
     return children;
 }
 
-void Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::set_value(const std::string & value_path, std::string value)
+void Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "af-name")
     {
         af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::HostAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNodes()
@@ -3194,7 +3938,7 @@ bool Tty::AuxiliaryNodes::has_operation() const
         if(auxiliary_node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Tty::AuxiliaryNodes::get_segment_path() const
@@ -3259,8 +4003,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::get_children
     return children;
 }
 
-void Tty::AuxiliaryNodes::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::AuxiliaryNodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::AuxiliaryNodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auxiliary-node")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryNode()
@@ -3286,8 +4041,8 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::has_data() const
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
 	|| (auxiliary_line !=  nullptr && auxiliary_line->has_operation());
 }
 
@@ -3314,7 +4069,7 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id.is_set || is_set(id.operation)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3347,12 +4102,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
         id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auxiliary-line" || name == "id")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryLine()
@@ -3383,7 +4155,7 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::has_data() const
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (auxiliary_statistics !=  nullptr && auxiliary_statistics->has_operation())
 	|| (configuration !=  nullptr && configuration->has_operation())
 	|| (state !=  nullptr && state->has_operation());
@@ -3472,8 +4244,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auxiliary-statistics" || name == "configuration" || name == "state")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::AuxiliaryStatistics()
@@ -3508,7 +4291,7 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::has
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (aaa !=  nullptr && aaa->has_operation())
 	|| (exec !=  nullptr && exec->has_operation())
 	|| (general_statistics !=  nullptr && general_statistics->has_operation())
@@ -3612,8 +4395,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa" || name == "exec" || name == "general-statistics" || name == "rs232")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::Rs232()
@@ -3650,16 +4444,16 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs2
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(baud_rate.operation)
-	|| is_set(data_bits.operation)
-	|| is_set(exec_disabled.operation)
-	|| is_set(framing_error_count.operation)
-	|| is_set(hardware_flow_control_status.operation)
-	|| is_set(overrun_error_count.operation)
-	|| is_set(parity_error_count.operation)
-	|| is_set(parity_status.operation)
-	|| is_set(stop_bits.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(baud_rate.yfilter)
+	|| ydk::is_set(data_bits.yfilter)
+	|| ydk::is_set(exec_disabled.yfilter)
+	|| ydk::is_set(framing_error_count.yfilter)
+	|| ydk::is_set(hardware_flow_control_status.yfilter)
+	|| ydk::is_set(overrun_error_count.yfilter)
+	|| ydk::is_set(parity_error_count.yfilter)
+	|| ydk::is_set(parity_status.yfilter)
+	|| ydk::is_set(stop_bits.yfilter);
 }
 
 std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::get_segment_path() const
@@ -3685,15 +4479,15 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliarySta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (baud_rate.is_set || is_set(baud_rate.operation)) leaf_name_data.push_back(baud_rate.get_name_leafdata());
-    if (data_bits.is_set || is_set(data_bits.operation)) leaf_name_data.push_back(data_bits.get_name_leafdata());
-    if (exec_disabled.is_set || is_set(exec_disabled.operation)) leaf_name_data.push_back(exec_disabled.get_name_leafdata());
-    if (framing_error_count.is_set || is_set(framing_error_count.operation)) leaf_name_data.push_back(framing_error_count.get_name_leafdata());
-    if (hardware_flow_control_status.is_set || is_set(hardware_flow_control_status.operation)) leaf_name_data.push_back(hardware_flow_control_status.get_name_leafdata());
-    if (overrun_error_count.is_set || is_set(overrun_error_count.operation)) leaf_name_data.push_back(overrun_error_count.get_name_leafdata());
-    if (parity_error_count.is_set || is_set(parity_error_count.operation)) leaf_name_data.push_back(parity_error_count.get_name_leafdata());
-    if (parity_status.is_set || is_set(parity_status.operation)) leaf_name_data.push_back(parity_status.get_name_leafdata());
-    if (stop_bits.is_set || is_set(stop_bits.operation)) leaf_name_data.push_back(stop_bits.get_name_leafdata());
+    if (baud_rate.is_set || is_set(baud_rate.yfilter)) leaf_name_data.push_back(baud_rate.get_name_leafdata());
+    if (data_bits.is_set || is_set(data_bits.yfilter)) leaf_name_data.push_back(data_bits.get_name_leafdata());
+    if (exec_disabled.is_set || is_set(exec_disabled.yfilter)) leaf_name_data.push_back(exec_disabled.get_name_leafdata());
+    if (framing_error_count.is_set || is_set(framing_error_count.yfilter)) leaf_name_data.push_back(framing_error_count.get_name_leafdata());
+    if (hardware_flow_control_status.is_set || is_set(hardware_flow_control_status.yfilter)) leaf_name_data.push_back(hardware_flow_control_status.get_name_leafdata());
+    if (overrun_error_count.is_set || is_set(overrun_error_count.yfilter)) leaf_name_data.push_back(overrun_error_count.get_name_leafdata());
+    if (parity_error_count.is_set || is_set(parity_error_count.yfilter)) leaf_name_data.push_back(parity_error_count.get_name_leafdata());
+    if (parity_status.is_set || is_set(parity_status.yfilter)) leaf_name_data.push_back(parity_status.get_name_leafdata());
+    if (stop_bits.is_set || is_set(stop_bits.yfilter)) leaf_name_data.push_back(stop_bits.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3712,44 +4506,109 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "baud-rate")
     {
         baud_rate = value;
+        baud_rate.value_namespace = name_space;
+        baud_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "data-bits")
     {
         data_bits = value;
+        data_bits.value_namespace = name_space;
+        data_bits.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "exec-disabled")
     {
         exec_disabled = value;
+        exec_disabled.value_namespace = name_space;
+        exec_disabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "framing-error-count")
     {
         framing_error_count = value;
+        framing_error_count.value_namespace = name_space;
+        framing_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-flow-control-status")
     {
         hardware_flow_control_status = value;
+        hardware_flow_control_status.value_namespace = name_space;
+        hardware_flow_control_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "overrun-error-count")
     {
         overrun_error_count = value;
+        overrun_error_count.value_namespace = name_space;
+        overrun_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-error-count")
     {
         parity_error_count = value;
+        parity_error_count.value_namespace = name_space;
+        parity_error_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parity-status")
     {
         parity_status = value;
+        parity_status.value_namespace = name_space;
+        parity_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-bits")
     {
         stop_bits = value;
+        stop_bits.value_namespace = name_space;
+        stop_bits.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "baud-rate")
+    {
+        baud_rate.yfilter = yfilter;
+    }
+    if(value_path == "data-bits")
+    {
+        data_bits.yfilter = yfilter;
+    }
+    if(value_path == "exec-disabled")
+    {
+        exec_disabled.yfilter = yfilter;
+    }
+    if(value_path == "framing-error-count")
+    {
+        framing_error_count.yfilter = yfilter;
+    }
+    if(value_path == "hardware-flow-control-status")
+    {
+        hardware_flow_control_status.yfilter = yfilter;
+    }
+    if(value_path == "overrun-error-count")
+    {
+        overrun_error_count.yfilter = yfilter;
+    }
+    if(value_path == "parity-error-count")
+    {
+        parity_error_count.yfilter = yfilter;
+    }
+    if(value_path == "parity-status")
+    {
+        parity_status.yfilter = yfilter;
+    }
+    if(value_path == "stop-bits")
+    {
+        stop_bits.yfilter = yfilter;
+    }
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Rs232::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "baud-rate" || name == "data-bits" || name == "exec-disabled" || name == "framing-error-count" || name == "hardware-flow-control-status" || name == "overrun-error-count" || name == "parity-error-count" || name == "parity-status" || name == "stop-bits")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::GeneralStatistics()
@@ -3790,18 +4649,18 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Gen
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(absolute_timeout.operation)
-	|| is_set(async_interface.operation)
-	|| is_set(domain_lookup_enabled.operation)
-	|| is_set(flow_control_start_character.operation)
-	|| is_set(flow_control_stop_character.operation)
-	|| is_set(idle_time.operation)
-	|| is_set(motd_banner_enabled.operation)
-	|| is_set(private_flag.operation)
-	|| is_set(terminal_length.operation)
-	|| is_set(terminal_type.operation)
-	|| is_set(terminal_width.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(absolute_timeout.yfilter)
+	|| ydk::is_set(async_interface.yfilter)
+	|| ydk::is_set(domain_lookup_enabled.yfilter)
+	|| ydk::is_set(flow_control_start_character.yfilter)
+	|| ydk::is_set(flow_control_stop_character.yfilter)
+	|| ydk::is_set(idle_time.yfilter)
+	|| ydk::is_set(motd_banner_enabled.yfilter)
+	|| ydk::is_set(private_flag.yfilter)
+	|| ydk::is_set(terminal_length.yfilter)
+	|| ydk::is_set(terminal_type.yfilter)
+	|| ydk::is_set(terminal_width.yfilter);
 }
 
 std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::get_segment_path() const
@@ -3827,17 +4686,17 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliarySta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (absolute_timeout.is_set || is_set(absolute_timeout.operation)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
-    if (async_interface.is_set || is_set(async_interface.operation)) leaf_name_data.push_back(async_interface.get_name_leafdata());
-    if (domain_lookup_enabled.is_set || is_set(domain_lookup_enabled.operation)) leaf_name_data.push_back(domain_lookup_enabled.get_name_leafdata());
-    if (flow_control_start_character.is_set || is_set(flow_control_start_character.operation)) leaf_name_data.push_back(flow_control_start_character.get_name_leafdata());
-    if (flow_control_stop_character.is_set || is_set(flow_control_stop_character.operation)) leaf_name_data.push_back(flow_control_stop_character.get_name_leafdata());
-    if (idle_time.is_set || is_set(idle_time.operation)) leaf_name_data.push_back(idle_time.get_name_leafdata());
-    if (motd_banner_enabled.is_set || is_set(motd_banner_enabled.operation)) leaf_name_data.push_back(motd_banner_enabled.get_name_leafdata());
-    if (private_flag.is_set || is_set(private_flag.operation)) leaf_name_data.push_back(private_flag.get_name_leafdata());
-    if (terminal_length.is_set || is_set(terminal_length.operation)) leaf_name_data.push_back(terminal_length.get_name_leafdata());
-    if (terminal_type.is_set || is_set(terminal_type.operation)) leaf_name_data.push_back(terminal_type.get_name_leafdata());
-    if (terminal_width.is_set || is_set(terminal_width.operation)) leaf_name_data.push_back(terminal_width.get_name_leafdata());
+    if (absolute_timeout.is_set || is_set(absolute_timeout.yfilter)) leaf_name_data.push_back(absolute_timeout.get_name_leafdata());
+    if (async_interface.is_set || is_set(async_interface.yfilter)) leaf_name_data.push_back(async_interface.get_name_leafdata());
+    if (domain_lookup_enabled.is_set || is_set(domain_lookup_enabled.yfilter)) leaf_name_data.push_back(domain_lookup_enabled.get_name_leafdata());
+    if (flow_control_start_character.is_set || is_set(flow_control_start_character.yfilter)) leaf_name_data.push_back(flow_control_start_character.get_name_leafdata());
+    if (flow_control_stop_character.is_set || is_set(flow_control_stop_character.yfilter)) leaf_name_data.push_back(flow_control_stop_character.get_name_leafdata());
+    if (idle_time.is_set || is_set(idle_time.yfilter)) leaf_name_data.push_back(idle_time.get_name_leafdata());
+    if (motd_banner_enabled.is_set || is_set(motd_banner_enabled.yfilter)) leaf_name_data.push_back(motd_banner_enabled.get_name_leafdata());
+    if (private_flag.is_set || is_set(private_flag.yfilter)) leaf_name_data.push_back(private_flag.get_name_leafdata());
+    if (terminal_length.is_set || is_set(terminal_length.yfilter)) leaf_name_data.push_back(terminal_length.get_name_leafdata());
+    if (terminal_type.is_set || is_set(terminal_type.yfilter)) leaf_name_data.push_back(terminal_type.get_name_leafdata());
+    if (terminal_width.is_set || is_set(terminal_width.yfilter)) leaf_name_data.push_back(terminal_width.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3856,52 +4715,129 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "absolute-timeout")
     {
         absolute_timeout = value;
+        absolute_timeout.value_namespace = name_space;
+        absolute_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "async-interface")
     {
         async_interface = value;
+        async_interface.value_namespace = name_space;
+        async_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "domain-lookup-enabled")
     {
         domain_lookup_enabled = value;
+        domain_lookup_enabled.value_namespace = name_space;
+        domain_lookup_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-control-start-character")
     {
         flow_control_start_character = value;
+        flow_control_start_character.value_namespace = name_space;
+        flow_control_start_character.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-control-stop-character")
     {
         flow_control_stop_character = value;
+        flow_control_stop_character.value_namespace = name_space;
+        flow_control_stop_character.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "idle-time")
     {
         idle_time = value;
+        idle_time.value_namespace = name_space;
+        idle_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "motd-banner-enabled")
     {
         motd_banner_enabled = value;
+        motd_banner_enabled.value_namespace = name_space;
+        motd_banner_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "private-flag")
     {
         private_flag = value;
+        private_flag.value_namespace = name_space;
+        private_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-length")
     {
         terminal_length = value;
+        terminal_length.value_namespace = name_space;
+        terminal_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-type")
     {
         terminal_type = value;
+        terminal_type.value_namespace = name_space;
+        terminal_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "terminal-width")
     {
         terminal_width = value;
+        terminal_width.value_namespace = name_space;
+        terminal_width.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "absolute-timeout")
+    {
+        absolute_timeout.yfilter = yfilter;
+    }
+    if(value_path == "async-interface")
+    {
+        async_interface.yfilter = yfilter;
+    }
+    if(value_path == "domain-lookup-enabled")
+    {
+        domain_lookup_enabled.yfilter = yfilter;
+    }
+    if(value_path == "flow-control-start-character")
+    {
+        flow_control_start_character.yfilter = yfilter;
+    }
+    if(value_path == "flow-control-stop-character")
+    {
+        flow_control_stop_character.yfilter = yfilter;
+    }
+    if(value_path == "idle-time")
+    {
+        idle_time.yfilter = yfilter;
+    }
+    if(value_path == "motd-banner-enabled")
+    {
+        motd_banner_enabled.yfilter = yfilter;
+    }
+    if(value_path == "private-flag")
+    {
+        private_flag.yfilter = yfilter;
+    }
+    if(value_path == "terminal-length")
+    {
+        terminal_length.yfilter = yfilter;
+    }
+    if(value_path == "terminal-type")
+    {
+        terminal_type.yfilter = yfilter;
+    }
+    if(value_path == "terminal-width")
+    {
+        terminal_width.yfilter = yfilter;
+    }
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::GeneralStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "absolute-timeout" || name == "async-interface" || name == "domain-lookup-enabled" || name == "flow-control-start-character" || name == "flow-control-stop-character" || name == "idle-time" || name == "motd-banner-enabled" || name == "private-flag" || name == "terminal-length" || name == "terminal-type" || name == "terminal-width")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::Exec()
@@ -3922,8 +4858,8 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exe
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_stamp_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_stamp_enabled.yfilter);
 }
 
 std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::get_segment_path() const
@@ -3949,7 +4885,7 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliarySta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_stamp_enabled.is_set || is_set(time_stamp_enabled.operation)) leaf_name_data.push_back(time_stamp_enabled.get_name_leafdata());
+    if (time_stamp_enabled.is_set || is_set(time_stamp_enabled.yfilter)) leaf_name_data.push_back(time_stamp_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3968,12 +4904,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-stamp-enabled")
     {
         time_stamp_enabled = value;
+        time_stamp_enabled.value_namespace = name_space;
+        time_stamp_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-stamp-enabled")
+    {
+        time_stamp_enabled.yfilter = yfilter;
+    }
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Exec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-stamp-enabled")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::Aaa()
@@ -3994,8 +4947,8 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(user_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(user_name.yfilter);
 }
 
 std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::get_segment_path() const
@@ -4021,7 +4974,7 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliarySta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (user_name.is_set || is_set(user_name.operation)) leaf_name_data.push_back(user_name.get_name_leafdata());
+    if (user_name.is_set || is_set(user_name.yfilter)) leaf_name_data.push_back(user_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4040,12 +4993,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "user-name")
     {
         user_name = value;
+        user_name.value_namespace = name_space;
+        user_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "user-name")
+    {
+        user_name.yfilter = yfilter;
+    }
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::AuxiliaryStatistics::Aaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "user-name")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::State()
@@ -4072,7 +5042,7 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::has_data() const
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (general !=  nullptr && general->has_operation())
 	|| (template_ !=  nullptr && template_->has_operation());
 }
@@ -4146,8 +5116,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "general" || name == "template")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::Template_()
@@ -4168,8 +5149,8 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::has_da
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::get_segment_path() const
@@ -4195,7 +5176,7 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Templ
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4214,12 +5195,29 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Template_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::General()
@@ -4242,9 +5240,9 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::has_data
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(general_state.operation)
-	|| is_set(operation_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(general_state.yfilter)
+	|| ydk::is_set(operation_.yfilter);
 }
 
 std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::get_segment_path() const
@@ -4270,8 +5268,8 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::Gener
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (general_state.is_set || is_set(general_state.operation)) leaf_name_data.push_back(general_state.get_name_leafdata());
-    if (operation_.is_set || is_set(operation_.operation)) leaf_name_data.push_back(operation_.get_name_leafdata());
+    if (general_state.is_set || is_set(general_state.yfilter)) leaf_name_data.push_back(general_state.get_name_leafdata());
+    if (operation_.is_set || is_set(operation_.yfilter)) leaf_name_data.push_back(operation_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4290,16 +5288,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "general-state")
     {
         general_state = value;
+        general_state.value_namespace = name_space;
+        general_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operation")
     {
         operation_ = value;
+        operation_.value_namespace = name_space;
+        operation_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "general-state")
+    {
+        general_state.yfilter = yfilter;
+    }
+    if(value_path == "operation")
+    {
+        operation_.yfilter = yfilter;
+    }
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::State::General::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "general-state" || name == "operation")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::Configuration()
@@ -4322,7 +5343,7 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::has_data(
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (connection_configuration !=  nullptr && connection_configuration->has_operation());
 }
 
@@ -4381,8 +5402,19 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connection-configuration")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::ConnectionConfiguration()
@@ -4410,9 +5442,9 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::Connectio
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acl_in.operation)
-	|| is_set(acl_out.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(acl_in.yfilter)
+	|| ydk::is_set(acl_out.yfilter)
 	|| (transport_input !=  nullptr && transport_input->has_operation());
 }
 
@@ -4439,8 +5471,8 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuratio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acl_in.is_set || is_set(acl_in.operation)) leaf_name_data.push_back(acl_in.get_name_leafdata());
-    if (acl_out.is_set || is_set(acl_out.operation)) leaf_name_data.push_back(acl_out.get_name_leafdata());
+    if (acl_in.is_set || is_set(acl_in.yfilter)) leaf_name_data.push_back(acl_in.get_name_leafdata());
+    if (acl_out.is_set || is_set(acl_out.yfilter)) leaf_name_data.push_back(acl_out.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4473,16 +5505,39 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-in")
     {
         acl_in = value;
+        acl_in.value_namespace = name_space;
+        acl_in.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "acl-out")
     {
         acl_out = value;
+        acl_out.value_namespace = name_space;
+        acl_out.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acl-in")
+    {
+        acl_in.yfilter = yfilter;
+    }
+    if(value_path == "acl-out")
+    {
+        acl_out.yfilter = yfilter;
+    }
+}
+
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transport-input" || name == "acl-in" || name == "acl-out")
+        return true;
+    return false;
 }
 
 Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::TransportInput()
@@ -4509,11 +5564,11 @@ bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::Connectio
 
 bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(none.operation)
-	|| is_set(protocol1.operation)
-	|| is_set(protocol2.operation)
-	|| is_set(select.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(none.yfilter)
+	|| ydk::is_set(protocol1.yfilter)
+	|| ydk::is_set(protocol2.yfilter)
+	|| ydk::is_set(select.yfilter);
 }
 
 std::string Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::get_segment_path() const
@@ -4539,10 +5594,10 @@ const EntityPath Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuratio
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (none.is_set || is_set(none.operation)) leaf_name_data.push_back(none.get_name_leafdata());
-    if (protocol1.is_set || is_set(protocol1.operation)) leaf_name_data.push_back(protocol1.get_name_leafdata());
-    if (protocol2.is_set || is_set(protocol2.operation)) leaf_name_data.push_back(protocol2.get_name_leafdata());
-    if (select.is_set || is_set(select.operation)) leaf_name_data.push_back(select.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+    if (protocol1.is_set || is_set(protocol1.yfilter)) leaf_name_data.push_back(protocol1.get_name_leafdata());
+    if (protocol2.is_set || is_set(protocol2.yfilter)) leaf_name_data.push_back(protocol2.get_name_leafdata());
+    if (select.is_set || is_set(select.yfilter)) leaf_name_data.push_back(select.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4561,35 +5616,70 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::AuxiliaryNodes::AuxiliaryNod
     return children;
 }
 
-void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, std::string value)
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "none")
     {
         none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol1")
     {
         protocol1 = value;
+        protocol1.value_namespace = name_space;
+        protocol1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol2")
     {
         protocol2 = value;
+        protocol2.value_namespace = name_space;
+        protocol2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "select")
     {
         select = value;
+        select.value_namespace = name_space;
+        select.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf LineStateEnum::none {0, "none"};
-const Enum::YLeaf LineStateEnum::registered {1, "registered"};
-const Enum::YLeaf LineStateEnum::in_use {2, "in-use"};
+void Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+    if(value_path == "protocol1")
+    {
+        protocol1.yfilter = yfilter;
+    }
+    if(value_path == "protocol2")
+    {
+        protocol2.yfilter = yfilter;
+    }
+    if(value_path == "select")
+    {
+        select.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf SessionOperationEnum::none {0, "none"};
-const Enum::YLeaf SessionOperationEnum::setup {1, "setup"};
-const Enum::YLeaf SessionOperationEnum::shell {2, "shell"};
-const Enum::YLeaf SessionOperationEnum::transitioning {3, "transitioning"};
-const Enum::YLeaf SessionOperationEnum::packet {4, "packet"};
+bool Tty::AuxiliaryNodes::AuxiliaryNode::AuxiliaryLine::Configuration::ConnectionConfiguration::TransportInput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "none" || name == "protocol1" || name == "protocol2" || name == "select")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf SessionOperation::none {0, "none"};
+const Enum::YLeaf SessionOperation::setup {1, "setup"};
+const Enum::YLeaf SessionOperation::shell {2, "shell"};
+const Enum::YLeaf SessionOperation::transitioning {3, "transitioning"};
+const Enum::YLeaf SessionOperation::packet {4, "packet"};
+
+const Enum::YLeaf LineState::none {0, "none"};
+const Enum::YLeaf LineState::registered {1, "registered"};
+const Enum::YLeaf LineState::in_use {2, "in-use"};
 
 
 }

@@ -7,46 +7,46 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace ENTITY_STATE_TC_MIB {
 
-class EntitystandbystatusEnum : public Enum
+class Entityusagestate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf hotStandby;
-        static const Enum::YLeaf coldStandby;
-        static const Enum::YLeaf providingService;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf busy;
 
 };
 
-class EntityoperstateEnum : public Enum
+class Entityoperstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf disabled;
-        static const Enum::YLeaf enabled;
-        static const Enum::YLeaf testing;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf testing;
 
 };
 
-class EntityadminstateEnum : public Enum
+class Entitystandbystatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf locked;
-        static const Enum::YLeaf shuttingDown;
-        static const Enum::YLeaf unlocked;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf hotStandby;
+        static const ydk::Enum::YLeaf coldStandby;
+        static const ydk::Enum::YLeaf providingService;
 
 };
 
-class EntityusagestateEnum : public Enum
+class Entityadminstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unknown;
-        static const Enum::YLeaf idle;
-        static const Enum::YLeaf active;
-        static const Enum::YLeaf busy;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf locked;
+        static const ydk::Enum::YLeaf shuttingDown;
+        static const ydk::Enum::YLeaf unlocked;
 
 };
 

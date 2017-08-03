@@ -6,29 +6,31 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_DOT3_OAM_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_DOT3_OAM_MIB {
 
 CiscoDot3OamMib::CiscoDot3OamMib()
     :
-    cdot3oameventconfigtable_(std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable>())
-	,cdot3oameventlogtable_(std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable>())
-	,cdot3oamloopbacktable_(std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable>())
-	,cdot3oampeertable_(std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable>())
-	,cdot3oamstatstable_(std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable>())
-	,cdot3oamtable_(std::make_shared<CiscoDot3OamMib::Cdot3Oamtable>())
+    cdot3oameventconfigtable(std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable>())
+	,cdot3oameventlogtable(std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable>())
+	,cdot3oamloopbacktable(std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable>())
+	,cdot3oampeertable(std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable>())
+	,cdot3oamstatstable(std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable>())
+	,cdot3oamtable(std::make_shared<CiscoDot3OamMib::Cdot3Oamtable>())
 {
-    cdot3oameventconfigtable_->parent = this;
+    cdot3oameventconfigtable->parent = this;
 
-    cdot3oameventlogtable_->parent = this;
+    cdot3oameventlogtable->parent = this;
 
-    cdot3oamloopbacktable_->parent = this;
+    cdot3oamloopbacktable->parent = this;
 
-    cdot3oampeertable_->parent = this;
+    cdot3oampeertable->parent = this;
 
-    cdot3oamstatstable_->parent = this;
+    cdot3oamstatstable->parent = this;
 
-    cdot3oamtable_->parent = this;
+    cdot3oamtable->parent = this;
 
     yang_name = "CISCO-DOT3-OAM-MIB"; yang_parent_name = "CISCO-DOT3-OAM-MIB";
 }
@@ -39,23 +41,23 @@ CiscoDot3OamMib::~CiscoDot3OamMib()
 
 bool CiscoDot3OamMib::has_data() const
 {
-    return (cdot3oameventconfigtable_ !=  nullptr && cdot3oameventconfigtable_->has_data())
-	|| (cdot3oameventlogtable_ !=  nullptr && cdot3oameventlogtable_->has_data())
-	|| (cdot3oamloopbacktable_ !=  nullptr && cdot3oamloopbacktable_->has_data())
-	|| (cdot3oampeertable_ !=  nullptr && cdot3oampeertable_->has_data())
-	|| (cdot3oamstatstable_ !=  nullptr && cdot3oamstatstable_->has_data())
-	|| (cdot3oamtable_ !=  nullptr && cdot3oamtable_->has_data());
+    return (cdot3oameventconfigtable !=  nullptr && cdot3oameventconfigtable->has_data())
+	|| (cdot3oameventlogtable !=  nullptr && cdot3oameventlogtable->has_data())
+	|| (cdot3oamloopbacktable !=  nullptr && cdot3oamloopbacktable->has_data())
+	|| (cdot3oampeertable !=  nullptr && cdot3oampeertable->has_data())
+	|| (cdot3oamstatstable !=  nullptr && cdot3oamstatstable->has_data())
+	|| (cdot3oamtable !=  nullptr && cdot3oamtable->has_data());
 }
 
 bool CiscoDot3OamMib::has_operation() const
 {
-    return is_set(operation)
-	|| (cdot3oameventconfigtable_ !=  nullptr && cdot3oameventconfigtable_->has_operation())
-	|| (cdot3oameventlogtable_ !=  nullptr && cdot3oameventlogtable_->has_operation())
-	|| (cdot3oamloopbacktable_ !=  nullptr && cdot3oamloopbacktable_->has_operation())
-	|| (cdot3oampeertable_ !=  nullptr && cdot3oampeertable_->has_operation())
-	|| (cdot3oamstatstable_ !=  nullptr && cdot3oamstatstable_->has_operation())
-	|| (cdot3oamtable_ !=  nullptr && cdot3oamtable_->has_operation());
+    return is_set(yfilter)
+	|| (cdot3oameventconfigtable !=  nullptr && cdot3oameventconfigtable->has_operation())
+	|| (cdot3oameventlogtable !=  nullptr && cdot3oameventlogtable->has_operation())
+	|| (cdot3oamloopbacktable !=  nullptr && cdot3oamloopbacktable->has_operation())
+	|| (cdot3oampeertable !=  nullptr && cdot3oampeertable->has_operation())
+	|| (cdot3oamstatstable !=  nullptr && cdot3oamstatstable->has_operation())
+	|| (cdot3oamtable !=  nullptr && cdot3oamtable->has_operation());
 }
 
 std::string CiscoDot3OamMib::get_segment_path() const
@@ -89,56 +91,56 @@ std::shared_ptr<Entity> CiscoDot3OamMib::get_child_by_name(const std::string & c
 {
     if(child_yang_name == "cdot3OamEventConfigTable")
     {
-        if(cdot3oameventconfigtable_ == nullptr)
+        if(cdot3oameventconfigtable == nullptr)
         {
-            cdot3oameventconfigtable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable>();
+            cdot3oameventconfigtable = std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable>();
         }
-        return cdot3oameventconfigtable_;
+        return cdot3oameventconfigtable;
     }
 
     if(child_yang_name == "cdot3OamEventLogTable")
     {
-        if(cdot3oameventlogtable_ == nullptr)
+        if(cdot3oameventlogtable == nullptr)
         {
-            cdot3oameventlogtable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable>();
+            cdot3oameventlogtable = std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable>();
         }
-        return cdot3oameventlogtable_;
+        return cdot3oameventlogtable;
     }
 
     if(child_yang_name == "cdot3OamLoopbackTable")
     {
-        if(cdot3oamloopbacktable_ == nullptr)
+        if(cdot3oamloopbacktable == nullptr)
         {
-            cdot3oamloopbacktable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable>();
+            cdot3oamloopbacktable = std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable>();
         }
-        return cdot3oamloopbacktable_;
+        return cdot3oamloopbacktable;
     }
 
     if(child_yang_name == "cdot3OamPeerTable")
     {
-        if(cdot3oampeertable_ == nullptr)
+        if(cdot3oampeertable == nullptr)
         {
-            cdot3oampeertable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable>();
+            cdot3oampeertable = std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable>();
         }
-        return cdot3oampeertable_;
+        return cdot3oampeertable;
     }
 
     if(child_yang_name == "cdot3OamStatsTable")
     {
-        if(cdot3oamstatstable_ == nullptr)
+        if(cdot3oamstatstable == nullptr)
         {
-            cdot3oamstatstable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable>();
+            cdot3oamstatstable = std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable>();
         }
-        return cdot3oamstatstable_;
+        return cdot3oamstatstable;
     }
 
     if(child_yang_name == "cdot3OamTable")
     {
-        if(cdot3oamtable_ == nullptr)
+        if(cdot3oamtable == nullptr)
         {
-            cdot3oamtable_ = std::make_shared<CiscoDot3OamMib::Cdot3Oamtable>();
+            cdot3oamtable = std::make_shared<CiscoDot3OamMib::Cdot3Oamtable>();
         }
-        return cdot3oamtable_;
+        return cdot3oamtable;
     }
 
     return nullptr;
@@ -147,40 +149,44 @@ std::shared_ptr<Entity> CiscoDot3OamMib::get_child_by_name(const std::string & c
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(cdot3oameventconfigtable_ != nullptr)
+    if(cdot3oameventconfigtable != nullptr)
     {
-        children["cdot3OamEventConfigTable"] = cdot3oameventconfigtable_;
+        children["cdot3OamEventConfigTable"] = cdot3oameventconfigtable;
     }
 
-    if(cdot3oameventlogtable_ != nullptr)
+    if(cdot3oameventlogtable != nullptr)
     {
-        children["cdot3OamEventLogTable"] = cdot3oameventlogtable_;
+        children["cdot3OamEventLogTable"] = cdot3oameventlogtable;
     }
 
-    if(cdot3oamloopbacktable_ != nullptr)
+    if(cdot3oamloopbacktable != nullptr)
     {
-        children["cdot3OamLoopbackTable"] = cdot3oamloopbacktable_;
+        children["cdot3OamLoopbackTable"] = cdot3oamloopbacktable;
     }
 
-    if(cdot3oampeertable_ != nullptr)
+    if(cdot3oampeertable != nullptr)
     {
-        children["cdot3OamPeerTable"] = cdot3oampeertable_;
+        children["cdot3OamPeerTable"] = cdot3oampeertable;
     }
 
-    if(cdot3oamstatstable_ != nullptr)
+    if(cdot3oamstatstable != nullptr)
     {
-        children["cdot3OamStatsTable"] = cdot3oamstatstable_;
+        children["cdot3OamStatsTable"] = cdot3oamstatstable;
     }
 
-    if(cdot3oamtable_ != nullptr)
+    if(cdot3oamtable != nullptr)
     {
-        children["cdot3OamTable"] = cdot3oamtable_;
+        children["cdot3OamTable"] = cdot3oamtable;
     }
 
     return children;
 }
 
-void CiscoDot3OamMib::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoDot3OamMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -204,6 +210,18 @@ augment_capabilities_function CiscoDot3OamMib::get_augment_capabilities_function
     return cisco_ios_xe_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> CiscoDot3OamMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoDot3OamMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdot3OamEventConfigTable" || name == "cdot3OamEventLogTable" || name == "cdot3OamLoopbackTable" || name == "cdot3OamPeerTable" || name == "cdot3OamStatsTable" || name == "cdot3OamTable")
+        return true;
+    return false;
+}
+
 CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamtable()
 {
     yang_name = "cdot3OamTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB";
@@ -215,9 +233,9 @@ CiscoDot3OamMib::Cdot3Oamtable::~Cdot3Oamtable()
 
 bool CiscoDot3OamMib::Cdot3Oamtable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oamentry.size(); index++)
     {
-        if(cdot3oamentry_[index]->has_data())
+        if(cdot3oamentry[index]->has_data())
             return true;
     }
     return false;
@@ -225,12 +243,12 @@ bool CiscoDot3OamMib::Cdot3Oamtable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oamtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oamentry.size(); index++)
     {
-        if(cdot3oamentry_[index]->has_operation())
+        if(cdot3oamentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oamtable::get_segment_path() const
@@ -267,7 +285,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamtable::get_child_by_name(const 
 {
     if(child_yang_name == "cdot3OamEntry")
     {
-        for(auto const & c : cdot3oamentry_)
+        for(auto const & c : cdot3oamentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -277,7 +295,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamtable::get_child_by_name(const 
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry>();
         c->parent = this;
-        cdot3oamentry_.push_back(c);
+        cdot3oamentry.push_back(c);
         return c;
     }
 
@@ -287,7 +305,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamtable::get_child_by_name(const 
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oamentry_)
+    for (auto const & c : cdot3oamentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -295,8 +313,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamtable::g
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oamtable::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oamtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDot3OamMib::Cdot3Oamtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDot3OamMib::Cdot3Oamtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdot3OamEntry")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamentry()
@@ -329,14 +358,14 @@ bool CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(cdot3oamadminstate.operation)
-	|| is_set(cdot3oamconfigrevision.operation)
-	|| is_set(cdot3oamfunctionssupported.operation)
-	|| is_set(cdot3oammaxoampdusize.operation)
-	|| is_set(cdot3oammode.operation)
-	|| is_set(cdot3oamoperstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cdot3oamadminstate.yfilter)
+	|| ydk::is_set(cdot3oamconfigrevision.yfilter)
+	|| ydk::is_set(cdot3oamfunctionssupported.yfilter)
+	|| ydk::is_set(cdot3oammaxoampdusize.yfilter)
+	|| ydk::is_set(cdot3oammode.yfilter)
+	|| ydk::is_set(cdot3oamoperstatus.yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::get_segment_path() const
@@ -362,13 +391,13 @@ const EntityPath CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cdot3oamadminstate.is_set || is_set(cdot3oamadminstate.operation)) leaf_name_data.push_back(cdot3oamadminstate.get_name_leafdata());
-    if (cdot3oamconfigrevision.is_set || is_set(cdot3oamconfigrevision.operation)) leaf_name_data.push_back(cdot3oamconfigrevision.get_name_leafdata());
-    if (cdot3oamfunctionssupported.is_set || is_set(cdot3oamfunctionssupported.operation)) leaf_name_data.push_back(cdot3oamfunctionssupported.get_name_leafdata());
-    if (cdot3oammaxoampdusize.is_set || is_set(cdot3oammaxoampdusize.operation)) leaf_name_data.push_back(cdot3oammaxoampdusize.get_name_leafdata());
-    if (cdot3oammode.is_set || is_set(cdot3oammode.operation)) leaf_name_data.push_back(cdot3oammode.get_name_leafdata());
-    if (cdot3oamoperstatus.is_set || is_set(cdot3oamoperstatus.operation)) leaf_name_data.push_back(cdot3oamoperstatus.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cdot3oamadminstate.is_set || is_set(cdot3oamadminstate.yfilter)) leaf_name_data.push_back(cdot3oamadminstate.get_name_leafdata());
+    if (cdot3oamconfigrevision.is_set || is_set(cdot3oamconfigrevision.yfilter)) leaf_name_data.push_back(cdot3oamconfigrevision.get_name_leafdata());
+    if (cdot3oamfunctionssupported.is_set || is_set(cdot3oamfunctionssupported.yfilter)) leaf_name_data.push_back(cdot3oamfunctionssupported.get_name_leafdata());
+    if (cdot3oammaxoampdusize.is_set || is_set(cdot3oammaxoampdusize.yfilter)) leaf_name_data.push_back(cdot3oammaxoampdusize.get_name_leafdata());
+    if (cdot3oammode.is_set || is_set(cdot3oammode.yfilter)) leaf_name_data.push_back(cdot3oammode.get_name_leafdata());
+    if (cdot3oamoperstatus.is_set || is_set(cdot3oamoperstatus.yfilter)) leaf_name_data.push_back(cdot3oamoperstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -387,19 +416,25 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamtable::C
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamAdminState")
     {
         cdot3oamadminstate = value;
+        cdot3oamadminstate.value_namespace = name_space;
+        cdot3oamadminstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamConfigRevision")
     {
         cdot3oamconfigrevision = value;
+        cdot3oamconfigrevision.value_namespace = name_space;
+        cdot3oamconfigrevision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamFunctionsSupported")
     {
@@ -408,15 +443,60 @@ void CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::set_value(const std::string 
     if(value_path == "cdot3OamMaxOamPduSize")
     {
         cdot3oammaxoampdusize = value;
+        cdot3oammaxoampdusize.value_namespace = name_space;
+        cdot3oammaxoampdusize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamMode")
     {
         cdot3oammode = value;
+        cdot3oammode.value_namespace = name_space;
+        cdot3oammode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamOperStatus")
     {
         cdot3oamoperstatus = value;
+        cdot3oamoperstatus.value_namespace = name_space;
+        cdot3oamoperstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamAdminState")
+    {
+        cdot3oamadminstate.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamConfigRevision")
+    {
+        cdot3oamconfigrevision.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamFunctionsSupported")
+    {
+        cdot3oamfunctionssupported.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamMaxOamPduSize")
+    {
+        cdot3oammaxoampdusize.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamMode")
+    {
+        cdot3oammode.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamOperStatus")
+    {
+        cdot3oamoperstatus.yfilter = yfilter;
+    }
+}
+
+bool CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "cdot3OamAdminState" || name == "cdot3OamConfigRevision" || name == "cdot3OamFunctionsSupported" || name == "cdot3OamMaxOamPduSize" || name == "cdot3OamMode" || name == "cdot3OamOperStatus")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeertable()
@@ -430,9 +510,9 @@ CiscoDot3OamMib::Cdot3Oampeertable::~Cdot3Oampeertable()
 
 bool CiscoDot3OamMib::Cdot3Oampeertable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oampeerentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oampeerentry.size(); index++)
     {
-        if(cdot3oampeerentry_[index]->has_data())
+        if(cdot3oampeerentry[index]->has_data())
             return true;
     }
     return false;
@@ -440,12 +520,12 @@ bool CiscoDot3OamMib::Cdot3Oampeertable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oampeertable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oampeerentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oampeerentry.size(); index++)
     {
-        if(cdot3oampeerentry_[index]->has_operation())
+        if(cdot3oampeerentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oampeertable::get_segment_path() const
@@ -482,7 +562,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oampeertable::get_child_by_name(co
 {
     if(child_yang_name == "cdot3OamPeerEntry")
     {
-        for(auto const & c : cdot3oampeerentry_)
+        for(auto const & c : cdot3oampeerentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -492,7 +572,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oampeertable::get_child_by_name(co
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry>();
         c->parent = this;
-        cdot3oampeerentry_.push_back(c);
+        cdot3oampeerentry.push_back(c);
         return c;
     }
 
@@ -502,7 +582,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oampeertable::get_child_by_name(co
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oampeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oampeerentry_)
+    for (auto const & c : cdot3oampeerentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -510,8 +590,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oampeertabl
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oampeertable::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oampeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDot3OamMib::Cdot3Oampeertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDot3OamMib::Cdot3Oampeertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdot3OamPeerEntry")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeerentry()
@@ -546,15 +637,15 @@ bool CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(cdot3oampeerconfigrevision.operation)
-	|| is_set(cdot3oampeerfunctionssupported.operation)
-	|| is_set(cdot3oampeermacaddress.operation)
-	|| is_set(cdot3oampeermaxoampdusize.operation)
-	|| is_set(cdot3oampeermode.operation)
-	|| is_set(cdot3oampeervendorinfo.operation)
-	|| is_set(cdot3oampeervendoroui.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cdot3oampeerconfigrevision.yfilter)
+	|| ydk::is_set(cdot3oampeerfunctionssupported.yfilter)
+	|| ydk::is_set(cdot3oampeermacaddress.yfilter)
+	|| ydk::is_set(cdot3oampeermaxoampdusize.yfilter)
+	|| ydk::is_set(cdot3oampeermode.yfilter)
+	|| ydk::is_set(cdot3oampeervendorinfo.yfilter)
+	|| ydk::is_set(cdot3oampeervendoroui.yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::get_segment_path() const
@@ -580,14 +671,14 @@ const EntityPath CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cdot3oampeerconfigrevision.is_set || is_set(cdot3oampeerconfigrevision.operation)) leaf_name_data.push_back(cdot3oampeerconfigrevision.get_name_leafdata());
-    if (cdot3oampeerfunctionssupported.is_set || is_set(cdot3oampeerfunctionssupported.operation)) leaf_name_data.push_back(cdot3oampeerfunctionssupported.get_name_leafdata());
-    if (cdot3oampeermacaddress.is_set || is_set(cdot3oampeermacaddress.operation)) leaf_name_data.push_back(cdot3oampeermacaddress.get_name_leafdata());
-    if (cdot3oampeermaxoampdusize.is_set || is_set(cdot3oampeermaxoampdusize.operation)) leaf_name_data.push_back(cdot3oampeermaxoampdusize.get_name_leafdata());
-    if (cdot3oampeermode.is_set || is_set(cdot3oampeermode.operation)) leaf_name_data.push_back(cdot3oampeermode.get_name_leafdata());
-    if (cdot3oampeervendorinfo.is_set || is_set(cdot3oampeervendorinfo.operation)) leaf_name_data.push_back(cdot3oampeervendorinfo.get_name_leafdata());
-    if (cdot3oampeervendoroui.is_set || is_set(cdot3oampeervendoroui.operation)) leaf_name_data.push_back(cdot3oampeervendoroui.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cdot3oampeerconfigrevision.is_set || is_set(cdot3oampeerconfigrevision.yfilter)) leaf_name_data.push_back(cdot3oampeerconfigrevision.get_name_leafdata());
+    if (cdot3oampeerfunctionssupported.is_set || is_set(cdot3oampeerfunctionssupported.yfilter)) leaf_name_data.push_back(cdot3oampeerfunctionssupported.get_name_leafdata());
+    if (cdot3oampeermacaddress.is_set || is_set(cdot3oampeermacaddress.yfilter)) leaf_name_data.push_back(cdot3oampeermacaddress.get_name_leafdata());
+    if (cdot3oampeermaxoampdusize.is_set || is_set(cdot3oampeermaxoampdusize.yfilter)) leaf_name_data.push_back(cdot3oampeermaxoampdusize.get_name_leafdata());
+    if (cdot3oampeermode.is_set || is_set(cdot3oampeermode.yfilter)) leaf_name_data.push_back(cdot3oampeermode.get_name_leafdata());
+    if (cdot3oampeervendorinfo.is_set || is_set(cdot3oampeervendorinfo.yfilter)) leaf_name_data.push_back(cdot3oampeervendorinfo.get_name_leafdata());
+    if (cdot3oampeervendoroui.is_set || is_set(cdot3oampeervendoroui.yfilter)) leaf_name_data.push_back(cdot3oampeervendoroui.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -606,15 +697,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oampeertabl
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamPeerConfigRevision")
     {
         cdot3oampeerconfigrevision = value;
+        cdot3oampeerconfigrevision.value_namespace = name_space;
+        cdot3oampeerconfigrevision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamPeerFunctionsSupported")
     {
@@ -623,23 +718,76 @@ void CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::set_value(const std:
     if(value_path == "cdot3OamPeerMacAddress")
     {
         cdot3oampeermacaddress = value;
+        cdot3oampeermacaddress.value_namespace = name_space;
+        cdot3oampeermacaddress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamPeerMaxOamPduSize")
     {
         cdot3oampeermaxoampdusize = value;
+        cdot3oampeermaxoampdusize.value_namespace = name_space;
+        cdot3oampeermaxoampdusize.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamPeerMode")
     {
         cdot3oampeermode = value;
+        cdot3oampeermode.value_namespace = name_space;
+        cdot3oampeermode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamPeerVendorInfo")
     {
         cdot3oampeervendorinfo = value;
+        cdot3oampeervendorinfo.value_namespace = name_space;
+        cdot3oampeervendorinfo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamPeerVendorOui")
     {
         cdot3oampeervendoroui = value;
+        cdot3oampeervendoroui.value_namespace = name_space;
+        cdot3oampeervendoroui.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamPeerConfigRevision")
+    {
+        cdot3oampeerconfigrevision.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamPeerFunctionsSupported")
+    {
+        cdot3oampeerfunctionssupported.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamPeerMacAddress")
+    {
+        cdot3oampeermacaddress.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamPeerMaxOamPduSize")
+    {
+        cdot3oampeermaxoampdusize.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamPeerMode")
+    {
+        cdot3oampeermode.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamPeerVendorInfo")
+    {
+        cdot3oampeervendorinfo.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamPeerVendorOui")
+    {
+        cdot3oampeervendoroui.yfilter = yfilter;
+    }
+}
+
+bool CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "cdot3OamPeerConfigRevision" || name == "cdot3OamPeerFunctionsSupported" || name == "cdot3OamPeerMacAddress" || name == "cdot3OamPeerMaxOamPduSize" || name == "cdot3OamPeerMode" || name == "cdot3OamPeerVendorInfo" || name == "cdot3OamPeerVendorOui")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbacktable()
@@ -653,9 +801,9 @@ CiscoDot3OamMib::Cdot3Oamloopbacktable::~Cdot3Oamloopbacktable()
 
 bool CiscoDot3OamMib::Cdot3Oamloopbacktable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamloopbackentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oamloopbackentry.size(); index++)
     {
-        if(cdot3oamloopbackentry_[index]->has_data())
+        if(cdot3oamloopbackentry[index]->has_data())
             return true;
     }
     return false;
@@ -663,12 +811,12 @@ bool CiscoDot3OamMib::Cdot3Oamloopbacktable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oamloopbacktable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamloopbackentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oamloopbackentry.size(); index++)
     {
-        if(cdot3oamloopbackentry_[index]->has_operation())
+        if(cdot3oamloopbackentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oamloopbacktable::get_segment_path() const
@@ -705,7 +853,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamloopbacktable::get_child_by_nam
 {
     if(child_yang_name == "cdot3OamLoopbackEntry")
     {
-        for(auto const & c : cdot3oamloopbackentry_)
+        for(auto const & c : cdot3oamloopbackentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -715,7 +863,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamloopbacktable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry>();
         c->parent = this;
-        cdot3oamloopbackentry_.push_back(c);
+        cdot3oamloopbackentry.push_back(c);
         return c;
     }
 
@@ -725,7 +873,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamloopbacktable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamloopbacktable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oamloopbackentry_)
+    for (auto const & c : cdot3oamloopbackentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -733,8 +881,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamloopback
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oamloopbacktable::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oamloopbacktable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDot3OamMib::Cdot3Oamloopbacktable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDot3OamMib::Cdot3Oamloopbacktable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdot3OamLoopbackEntry")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackentry()
@@ -759,10 +918,10 @@ bool CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::has_data() c
 
 bool CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(cdot3oamloopbackignorerx.operation)
-	|| is_set(cdot3oamloopbackstatus.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cdot3oamloopbackignorerx.yfilter)
+	|| ydk::is_set(cdot3oamloopbackstatus.yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::get_segment_path() const
@@ -788,9 +947,9 @@ const EntityPath CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cdot3oamloopbackignorerx.is_set || is_set(cdot3oamloopbackignorerx.operation)) leaf_name_data.push_back(cdot3oamloopbackignorerx.get_name_leafdata());
-    if (cdot3oamloopbackstatus.is_set || is_set(cdot3oamloopbackstatus.operation)) leaf_name_data.push_back(cdot3oamloopbackstatus.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cdot3oamloopbackignorerx.is_set || is_set(cdot3oamloopbackignorerx.yfilter)) leaf_name_data.push_back(cdot3oamloopbackignorerx.get_name_leafdata());
+    if (cdot3oamloopbackstatus.is_set || is_set(cdot3oamloopbackstatus.yfilter)) leaf_name_data.push_back(cdot3oamloopbackstatus.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -809,20 +968,49 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamloopback
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamLoopbackIgnoreRx")
     {
         cdot3oamloopbackignorerx = value;
+        cdot3oamloopbackignorerx.value_namespace = name_space;
+        cdot3oamloopbackignorerx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamLoopbackStatus")
     {
         cdot3oamloopbackstatus = value;
+        cdot3oamloopbackstatus.value_namespace = name_space;
+        cdot3oamloopbackstatus.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamLoopbackIgnoreRx")
+    {
+        cdot3oamloopbackignorerx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamLoopbackStatus")
+    {
+        cdot3oamloopbackstatus.yfilter = yfilter;
+    }
+}
+
+bool CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "cdot3OamLoopbackIgnoreRx" || name == "cdot3OamLoopbackStatus")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatstable()
@@ -836,9 +1024,9 @@ CiscoDot3OamMib::Cdot3Oamstatstable::~Cdot3Oamstatstable()
 
 bool CiscoDot3OamMib::Cdot3Oamstatstable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamstatsentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oamstatsentry.size(); index++)
     {
-        if(cdot3oamstatsentry_[index]->has_data())
+        if(cdot3oamstatsentry[index]->has_data())
             return true;
     }
     return false;
@@ -846,12 +1034,12 @@ bool CiscoDot3OamMib::Cdot3Oamstatstable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oamstatstable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamstatsentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oamstatsentry.size(); index++)
     {
-        if(cdot3oamstatsentry_[index]->has_operation())
+        if(cdot3oamstatsentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oamstatstable::get_segment_path() const
@@ -888,7 +1076,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamstatstable::get_child_by_name(c
 {
     if(child_yang_name == "cdot3OamStatsEntry")
     {
-        for(auto const & c : cdot3oamstatsentry_)
+        for(auto const & c : cdot3oamstatsentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -898,7 +1086,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamstatstable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry>();
         c->parent = this;
-        cdot3oamstatsentry_.push_back(c);
+        cdot3oamstatsentry.push_back(c);
         return c;
     }
 
@@ -908,7 +1096,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oamstatstable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamstatstable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oamstatsentry_)
+    for (auto const & c : cdot3oamstatsentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -916,8 +1104,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamstatstab
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oamstatstable::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oamstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDot3OamMib::Cdot3Oamstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDot3OamMib::Cdot3Oamstatstable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdot3OamStatsEntry")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::Cdot3Oamstatsentry()
@@ -972,25 +1171,25 @@ bool CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(cdot3oamduplicateeventnotificationrx.operation)
-	|| is_set(cdot3oamduplicateeventnotificationtx.operation)
-	|| is_set(cdot3oamframeslostduetooam.operation)
-	|| is_set(cdot3oaminformationrx.operation)
-	|| is_set(cdot3oaminformationtx.operation)
-	|| is_set(cdot3oamloopbackcontrolrx.operation)
-	|| is_set(cdot3oamloopbackcontroltx.operation)
-	|| is_set(cdot3oamorgspecificrx.operation)
-	|| is_set(cdot3oamorgspecifictx.operation)
-	|| is_set(cdot3oamuniqueeventnotificationrx.operation)
-	|| is_set(cdot3oamuniqueeventnotificationtx.operation)
-	|| is_set(cdot3oamunsupportedcodesrx.operation)
-	|| is_set(cdot3oamunsupportedcodestx.operation)
-	|| is_set(cdot3oamvariablerequestrx.operation)
-	|| is_set(cdot3oamvariablerequesttx.operation)
-	|| is_set(cdot3oamvariableresponserx.operation)
-	|| is_set(cdot3oamvariableresponsetx.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cdot3oamduplicateeventnotificationrx.yfilter)
+	|| ydk::is_set(cdot3oamduplicateeventnotificationtx.yfilter)
+	|| ydk::is_set(cdot3oamframeslostduetooam.yfilter)
+	|| ydk::is_set(cdot3oaminformationrx.yfilter)
+	|| ydk::is_set(cdot3oaminformationtx.yfilter)
+	|| ydk::is_set(cdot3oamloopbackcontrolrx.yfilter)
+	|| ydk::is_set(cdot3oamloopbackcontroltx.yfilter)
+	|| ydk::is_set(cdot3oamorgspecificrx.yfilter)
+	|| ydk::is_set(cdot3oamorgspecifictx.yfilter)
+	|| ydk::is_set(cdot3oamuniqueeventnotificationrx.yfilter)
+	|| ydk::is_set(cdot3oamuniqueeventnotificationtx.yfilter)
+	|| ydk::is_set(cdot3oamunsupportedcodesrx.yfilter)
+	|| ydk::is_set(cdot3oamunsupportedcodestx.yfilter)
+	|| ydk::is_set(cdot3oamvariablerequestrx.yfilter)
+	|| ydk::is_set(cdot3oamvariablerequesttx.yfilter)
+	|| ydk::is_set(cdot3oamvariableresponserx.yfilter)
+	|| ydk::is_set(cdot3oamvariableresponsetx.yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::get_segment_path() const
@@ -1016,24 +1215,24 @@ const EntityPath CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cdot3oamduplicateeventnotificationrx.is_set || is_set(cdot3oamduplicateeventnotificationrx.operation)) leaf_name_data.push_back(cdot3oamduplicateeventnotificationrx.get_name_leafdata());
-    if (cdot3oamduplicateeventnotificationtx.is_set || is_set(cdot3oamduplicateeventnotificationtx.operation)) leaf_name_data.push_back(cdot3oamduplicateeventnotificationtx.get_name_leafdata());
-    if (cdot3oamframeslostduetooam.is_set || is_set(cdot3oamframeslostduetooam.operation)) leaf_name_data.push_back(cdot3oamframeslostduetooam.get_name_leafdata());
-    if (cdot3oaminformationrx.is_set || is_set(cdot3oaminformationrx.operation)) leaf_name_data.push_back(cdot3oaminformationrx.get_name_leafdata());
-    if (cdot3oaminformationtx.is_set || is_set(cdot3oaminformationtx.operation)) leaf_name_data.push_back(cdot3oaminformationtx.get_name_leafdata());
-    if (cdot3oamloopbackcontrolrx.is_set || is_set(cdot3oamloopbackcontrolrx.operation)) leaf_name_data.push_back(cdot3oamloopbackcontrolrx.get_name_leafdata());
-    if (cdot3oamloopbackcontroltx.is_set || is_set(cdot3oamloopbackcontroltx.operation)) leaf_name_data.push_back(cdot3oamloopbackcontroltx.get_name_leafdata());
-    if (cdot3oamorgspecificrx.is_set || is_set(cdot3oamorgspecificrx.operation)) leaf_name_data.push_back(cdot3oamorgspecificrx.get_name_leafdata());
-    if (cdot3oamorgspecifictx.is_set || is_set(cdot3oamorgspecifictx.operation)) leaf_name_data.push_back(cdot3oamorgspecifictx.get_name_leafdata());
-    if (cdot3oamuniqueeventnotificationrx.is_set || is_set(cdot3oamuniqueeventnotificationrx.operation)) leaf_name_data.push_back(cdot3oamuniqueeventnotificationrx.get_name_leafdata());
-    if (cdot3oamuniqueeventnotificationtx.is_set || is_set(cdot3oamuniqueeventnotificationtx.operation)) leaf_name_data.push_back(cdot3oamuniqueeventnotificationtx.get_name_leafdata());
-    if (cdot3oamunsupportedcodesrx.is_set || is_set(cdot3oamunsupportedcodesrx.operation)) leaf_name_data.push_back(cdot3oamunsupportedcodesrx.get_name_leafdata());
-    if (cdot3oamunsupportedcodestx.is_set || is_set(cdot3oamunsupportedcodestx.operation)) leaf_name_data.push_back(cdot3oamunsupportedcodestx.get_name_leafdata());
-    if (cdot3oamvariablerequestrx.is_set || is_set(cdot3oamvariablerequestrx.operation)) leaf_name_data.push_back(cdot3oamvariablerequestrx.get_name_leafdata());
-    if (cdot3oamvariablerequesttx.is_set || is_set(cdot3oamvariablerequesttx.operation)) leaf_name_data.push_back(cdot3oamvariablerequesttx.get_name_leafdata());
-    if (cdot3oamvariableresponserx.is_set || is_set(cdot3oamvariableresponserx.operation)) leaf_name_data.push_back(cdot3oamvariableresponserx.get_name_leafdata());
-    if (cdot3oamvariableresponsetx.is_set || is_set(cdot3oamvariableresponsetx.operation)) leaf_name_data.push_back(cdot3oamvariableresponsetx.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cdot3oamduplicateeventnotificationrx.is_set || is_set(cdot3oamduplicateeventnotificationrx.yfilter)) leaf_name_data.push_back(cdot3oamduplicateeventnotificationrx.get_name_leafdata());
+    if (cdot3oamduplicateeventnotificationtx.is_set || is_set(cdot3oamduplicateeventnotificationtx.yfilter)) leaf_name_data.push_back(cdot3oamduplicateeventnotificationtx.get_name_leafdata());
+    if (cdot3oamframeslostduetooam.is_set || is_set(cdot3oamframeslostduetooam.yfilter)) leaf_name_data.push_back(cdot3oamframeslostduetooam.get_name_leafdata());
+    if (cdot3oaminformationrx.is_set || is_set(cdot3oaminformationrx.yfilter)) leaf_name_data.push_back(cdot3oaminformationrx.get_name_leafdata());
+    if (cdot3oaminformationtx.is_set || is_set(cdot3oaminformationtx.yfilter)) leaf_name_data.push_back(cdot3oaminformationtx.get_name_leafdata());
+    if (cdot3oamloopbackcontrolrx.is_set || is_set(cdot3oamloopbackcontrolrx.yfilter)) leaf_name_data.push_back(cdot3oamloopbackcontrolrx.get_name_leafdata());
+    if (cdot3oamloopbackcontroltx.is_set || is_set(cdot3oamloopbackcontroltx.yfilter)) leaf_name_data.push_back(cdot3oamloopbackcontroltx.get_name_leafdata());
+    if (cdot3oamorgspecificrx.is_set || is_set(cdot3oamorgspecificrx.yfilter)) leaf_name_data.push_back(cdot3oamorgspecificrx.get_name_leafdata());
+    if (cdot3oamorgspecifictx.is_set || is_set(cdot3oamorgspecifictx.yfilter)) leaf_name_data.push_back(cdot3oamorgspecifictx.get_name_leafdata());
+    if (cdot3oamuniqueeventnotificationrx.is_set || is_set(cdot3oamuniqueeventnotificationrx.yfilter)) leaf_name_data.push_back(cdot3oamuniqueeventnotificationrx.get_name_leafdata());
+    if (cdot3oamuniqueeventnotificationtx.is_set || is_set(cdot3oamuniqueeventnotificationtx.yfilter)) leaf_name_data.push_back(cdot3oamuniqueeventnotificationtx.get_name_leafdata());
+    if (cdot3oamunsupportedcodesrx.is_set || is_set(cdot3oamunsupportedcodesrx.yfilter)) leaf_name_data.push_back(cdot3oamunsupportedcodesrx.get_name_leafdata());
+    if (cdot3oamunsupportedcodestx.is_set || is_set(cdot3oamunsupportedcodestx.yfilter)) leaf_name_data.push_back(cdot3oamunsupportedcodestx.get_name_leafdata());
+    if (cdot3oamvariablerequestrx.is_set || is_set(cdot3oamvariablerequestrx.yfilter)) leaf_name_data.push_back(cdot3oamvariablerequestrx.get_name_leafdata());
+    if (cdot3oamvariablerequesttx.is_set || is_set(cdot3oamvariablerequesttx.yfilter)) leaf_name_data.push_back(cdot3oamvariablerequesttx.get_name_leafdata());
+    if (cdot3oamvariableresponserx.is_set || is_set(cdot3oamvariableresponserx.yfilter)) leaf_name_data.push_back(cdot3oamvariableresponserx.get_name_leafdata());
+    if (cdot3oamvariableresponsetx.is_set || is_set(cdot3oamvariableresponsetx.yfilter)) leaf_name_data.push_back(cdot3oamvariableresponsetx.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1052,80 +1251,199 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oamstatstab
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamDuplicateEventNotificationRx")
     {
         cdot3oamduplicateeventnotificationrx = value;
+        cdot3oamduplicateeventnotificationrx.value_namespace = name_space;
+        cdot3oamduplicateeventnotificationrx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamDuplicateEventNotificationTx")
     {
         cdot3oamduplicateeventnotificationtx = value;
+        cdot3oamduplicateeventnotificationtx.value_namespace = name_space;
+        cdot3oamduplicateeventnotificationtx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamFramesLostDueToOam")
     {
         cdot3oamframeslostduetooam = value;
+        cdot3oamframeslostduetooam.value_namespace = name_space;
+        cdot3oamframeslostduetooam.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamInformationRx")
     {
         cdot3oaminformationrx = value;
+        cdot3oaminformationrx.value_namespace = name_space;
+        cdot3oaminformationrx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamInformationTx")
     {
         cdot3oaminformationtx = value;
+        cdot3oaminformationtx.value_namespace = name_space;
+        cdot3oaminformationtx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamLoopbackControlRx")
     {
         cdot3oamloopbackcontrolrx = value;
+        cdot3oamloopbackcontrolrx.value_namespace = name_space;
+        cdot3oamloopbackcontrolrx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamLoopbackControlTx")
     {
         cdot3oamloopbackcontroltx = value;
+        cdot3oamloopbackcontroltx.value_namespace = name_space;
+        cdot3oamloopbackcontroltx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamOrgSpecificRx")
     {
         cdot3oamorgspecificrx = value;
+        cdot3oamorgspecificrx.value_namespace = name_space;
+        cdot3oamorgspecificrx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamOrgSpecificTx")
     {
         cdot3oamorgspecifictx = value;
+        cdot3oamorgspecifictx.value_namespace = name_space;
+        cdot3oamorgspecifictx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamUniqueEventNotificationRx")
     {
         cdot3oamuniqueeventnotificationrx = value;
+        cdot3oamuniqueeventnotificationrx.value_namespace = name_space;
+        cdot3oamuniqueeventnotificationrx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamUniqueEventNotificationTx")
     {
         cdot3oamuniqueeventnotificationtx = value;
+        cdot3oamuniqueeventnotificationtx.value_namespace = name_space;
+        cdot3oamuniqueeventnotificationtx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamUnsupportedCodesRx")
     {
         cdot3oamunsupportedcodesrx = value;
+        cdot3oamunsupportedcodesrx.value_namespace = name_space;
+        cdot3oamunsupportedcodesrx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamUnsupportedCodesTx")
     {
         cdot3oamunsupportedcodestx = value;
+        cdot3oamunsupportedcodestx.value_namespace = name_space;
+        cdot3oamunsupportedcodestx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamVariableRequestRx")
     {
         cdot3oamvariablerequestrx = value;
+        cdot3oamvariablerequestrx.value_namespace = name_space;
+        cdot3oamvariablerequestrx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamVariableRequestTx")
     {
         cdot3oamvariablerequesttx = value;
+        cdot3oamvariablerequesttx.value_namespace = name_space;
+        cdot3oamvariablerequesttx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamVariableResponseRx")
     {
         cdot3oamvariableresponserx = value;
+        cdot3oamvariableresponserx.value_namespace = name_space;
+        cdot3oamvariableresponserx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamVariableResponseTx")
     {
         cdot3oamvariableresponsetx = value;
+        cdot3oamvariableresponsetx.value_namespace = name_space;
+        cdot3oamvariableresponsetx.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamDuplicateEventNotificationRx")
+    {
+        cdot3oamduplicateeventnotificationrx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamDuplicateEventNotificationTx")
+    {
+        cdot3oamduplicateeventnotificationtx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamFramesLostDueToOam")
+    {
+        cdot3oamframeslostduetooam.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamInformationRx")
+    {
+        cdot3oaminformationrx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamInformationTx")
+    {
+        cdot3oaminformationtx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamLoopbackControlRx")
+    {
+        cdot3oamloopbackcontrolrx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamLoopbackControlTx")
+    {
+        cdot3oamloopbackcontroltx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamOrgSpecificRx")
+    {
+        cdot3oamorgspecificrx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamOrgSpecificTx")
+    {
+        cdot3oamorgspecifictx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamUniqueEventNotificationRx")
+    {
+        cdot3oamuniqueeventnotificationrx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamUniqueEventNotificationTx")
+    {
+        cdot3oamuniqueeventnotificationtx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamUnsupportedCodesRx")
+    {
+        cdot3oamunsupportedcodesrx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamUnsupportedCodesTx")
+    {
+        cdot3oamunsupportedcodestx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamVariableRequestRx")
+    {
+        cdot3oamvariablerequestrx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamVariableRequestTx")
+    {
+        cdot3oamvariablerequesttx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamVariableResponseRx")
+    {
+        cdot3oamvariableresponserx.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamVariableResponseTx")
+    {
+        cdot3oamvariableresponsetx.yfilter = yfilter;
+    }
+}
+
+bool CiscoDot3OamMib::Cdot3Oamstatstable::Cdot3Oamstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "cdot3OamDuplicateEventNotificationRx" || name == "cdot3OamDuplicateEventNotificationTx" || name == "cdot3OamFramesLostDueToOam" || name == "cdot3OamInformationRx" || name == "cdot3OamInformationTx" || name == "cdot3OamLoopbackControlRx" || name == "cdot3OamLoopbackControlTx" || name == "cdot3OamOrgSpecificRx" || name == "cdot3OamOrgSpecificTx" || name == "cdot3OamUniqueEventNotificationRx" || name == "cdot3OamUniqueEventNotificationTx" || name == "cdot3OamUnsupportedCodesRx" || name == "cdot3OamUnsupportedCodesTx" || name == "cdot3OamVariableRequestRx" || name == "cdot3OamVariableRequestTx" || name == "cdot3OamVariableResponseRx" || name == "cdot3OamVariableResponseTx")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigtable()
@@ -1139,9 +1457,9 @@ CiscoDot3OamMib::Cdot3Oameventconfigtable::~Cdot3Oameventconfigtable()
 
 bool CiscoDot3OamMib::Cdot3Oameventconfigtable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oameventconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventconfigentry.size(); index++)
     {
-        if(cdot3oameventconfigentry_[index]->has_data())
+        if(cdot3oameventconfigentry[index]->has_data())
             return true;
     }
     return false;
@@ -1149,12 +1467,12 @@ bool CiscoDot3OamMib::Cdot3Oameventconfigtable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oameventconfigtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oameventconfigentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventconfigentry.size(); index++)
     {
-        if(cdot3oameventconfigentry_[index]->has_operation())
+        if(cdot3oameventconfigentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oameventconfigtable::get_segment_path() const
@@ -1191,7 +1509,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventconfigtable::get_child_by_
 {
     if(child_yang_name == "cdot3OamEventConfigEntry")
     {
-        for(auto const & c : cdot3oameventconfigentry_)
+        for(auto const & c : cdot3oameventconfigentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1201,7 +1519,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventconfigtable::get_child_by_
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry>();
         c->parent = this;
-        cdot3oameventconfigentry_.push_back(c);
+        cdot3oameventconfigentry.push_back(c);
         return c;
     }
 
@@ -1211,7 +1529,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventconfigtable::get_child_by_
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oameventconfigtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oameventconfigentry_)
+    for (auto const & c : cdot3oameventconfigentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1219,8 +1537,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oameventcon
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oameventconfigtable::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oameventconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDot3OamMib::Cdot3Oameventconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDot3OamMib::Cdot3Oameventconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdot3OamEventConfigEntry")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::Cdot3Oameventconfigentry()
@@ -1273,24 +1602,24 @@ bool CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::has_da
 
 bool CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(cdot3oamcriticaleventenable.operation)
-	|| is_set(cdot3oamdyinggaspenable.operation)
-	|| is_set(cdot3oamerrframeevnotifenable.operation)
-	|| is_set(cdot3oamerrframeperiodevnotifenable.operation)
-	|| is_set(cdot3oamerrframeperiodthreshold.operation)
-	|| is_set(cdot3oamerrframeperiodwindow.operation)
-	|| is_set(cdot3oamerrframesecsevnotifenable.operation)
-	|| is_set(cdot3oamerrframesecssummarythreshold.operation)
-	|| is_set(cdot3oamerrframesecssummarywindow.operation)
-	|| is_set(cdot3oamerrframethreshold.operation)
-	|| is_set(cdot3oamerrframewindow.operation)
-	|| is_set(cdot3oamerrsymperiodevnotifenable.operation)
-	|| is_set(cdot3oamerrsymperiodthresholdhi.operation)
-	|| is_set(cdot3oamerrsymperiodthresholdlo.operation)
-	|| is_set(cdot3oamerrsymperiodwindowhi.operation)
-	|| is_set(cdot3oamerrsymperiodwindowlo.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cdot3oamcriticaleventenable.yfilter)
+	|| ydk::is_set(cdot3oamdyinggaspenable.yfilter)
+	|| ydk::is_set(cdot3oamerrframeevnotifenable.yfilter)
+	|| ydk::is_set(cdot3oamerrframeperiodevnotifenable.yfilter)
+	|| ydk::is_set(cdot3oamerrframeperiodthreshold.yfilter)
+	|| ydk::is_set(cdot3oamerrframeperiodwindow.yfilter)
+	|| ydk::is_set(cdot3oamerrframesecsevnotifenable.yfilter)
+	|| ydk::is_set(cdot3oamerrframesecssummarythreshold.yfilter)
+	|| ydk::is_set(cdot3oamerrframesecssummarywindow.yfilter)
+	|| ydk::is_set(cdot3oamerrframethreshold.yfilter)
+	|| ydk::is_set(cdot3oamerrframewindow.yfilter)
+	|| ydk::is_set(cdot3oamerrsymperiodevnotifenable.yfilter)
+	|| ydk::is_set(cdot3oamerrsymperiodthresholdhi.yfilter)
+	|| ydk::is_set(cdot3oamerrsymperiodthresholdlo.yfilter)
+	|| ydk::is_set(cdot3oamerrsymperiodwindowhi.yfilter)
+	|| ydk::is_set(cdot3oamerrsymperiodwindowlo.yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::get_segment_path() const
@@ -1316,23 +1645,23 @@ const EntityPath CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfige
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cdot3oamcriticaleventenable.is_set || is_set(cdot3oamcriticaleventenable.operation)) leaf_name_data.push_back(cdot3oamcriticaleventenable.get_name_leafdata());
-    if (cdot3oamdyinggaspenable.is_set || is_set(cdot3oamdyinggaspenable.operation)) leaf_name_data.push_back(cdot3oamdyinggaspenable.get_name_leafdata());
-    if (cdot3oamerrframeevnotifenable.is_set || is_set(cdot3oamerrframeevnotifenable.operation)) leaf_name_data.push_back(cdot3oamerrframeevnotifenable.get_name_leafdata());
-    if (cdot3oamerrframeperiodevnotifenable.is_set || is_set(cdot3oamerrframeperiodevnotifenable.operation)) leaf_name_data.push_back(cdot3oamerrframeperiodevnotifenable.get_name_leafdata());
-    if (cdot3oamerrframeperiodthreshold.is_set || is_set(cdot3oamerrframeperiodthreshold.operation)) leaf_name_data.push_back(cdot3oamerrframeperiodthreshold.get_name_leafdata());
-    if (cdot3oamerrframeperiodwindow.is_set || is_set(cdot3oamerrframeperiodwindow.operation)) leaf_name_data.push_back(cdot3oamerrframeperiodwindow.get_name_leafdata());
-    if (cdot3oamerrframesecsevnotifenable.is_set || is_set(cdot3oamerrframesecsevnotifenable.operation)) leaf_name_data.push_back(cdot3oamerrframesecsevnotifenable.get_name_leafdata());
-    if (cdot3oamerrframesecssummarythreshold.is_set || is_set(cdot3oamerrframesecssummarythreshold.operation)) leaf_name_data.push_back(cdot3oamerrframesecssummarythreshold.get_name_leafdata());
-    if (cdot3oamerrframesecssummarywindow.is_set || is_set(cdot3oamerrframesecssummarywindow.operation)) leaf_name_data.push_back(cdot3oamerrframesecssummarywindow.get_name_leafdata());
-    if (cdot3oamerrframethreshold.is_set || is_set(cdot3oamerrframethreshold.operation)) leaf_name_data.push_back(cdot3oamerrframethreshold.get_name_leafdata());
-    if (cdot3oamerrframewindow.is_set || is_set(cdot3oamerrframewindow.operation)) leaf_name_data.push_back(cdot3oamerrframewindow.get_name_leafdata());
-    if (cdot3oamerrsymperiodevnotifenable.is_set || is_set(cdot3oamerrsymperiodevnotifenable.operation)) leaf_name_data.push_back(cdot3oamerrsymperiodevnotifenable.get_name_leafdata());
-    if (cdot3oamerrsymperiodthresholdhi.is_set || is_set(cdot3oamerrsymperiodthresholdhi.operation)) leaf_name_data.push_back(cdot3oamerrsymperiodthresholdhi.get_name_leafdata());
-    if (cdot3oamerrsymperiodthresholdlo.is_set || is_set(cdot3oamerrsymperiodthresholdlo.operation)) leaf_name_data.push_back(cdot3oamerrsymperiodthresholdlo.get_name_leafdata());
-    if (cdot3oamerrsymperiodwindowhi.is_set || is_set(cdot3oamerrsymperiodwindowhi.operation)) leaf_name_data.push_back(cdot3oamerrsymperiodwindowhi.get_name_leafdata());
-    if (cdot3oamerrsymperiodwindowlo.is_set || is_set(cdot3oamerrsymperiodwindowlo.operation)) leaf_name_data.push_back(cdot3oamerrsymperiodwindowlo.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cdot3oamcriticaleventenable.is_set || is_set(cdot3oamcriticaleventenable.yfilter)) leaf_name_data.push_back(cdot3oamcriticaleventenable.get_name_leafdata());
+    if (cdot3oamdyinggaspenable.is_set || is_set(cdot3oamdyinggaspenable.yfilter)) leaf_name_data.push_back(cdot3oamdyinggaspenable.get_name_leafdata());
+    if (cdot3oamerrframeevnotifenable.is_set || is_set(cdot3oamerrframeevnotifenable.yfilter)) leaf_name_data.push_back(cdot3oamerrframeevnotifenable.get_name_leafdata());
+    if (cdot3oamerrframeperiodevnotifenable.is_set || is_set(cdot3oamerrframeperiodevnotifenable.yfilter)) leaf_name_data.push_back(cdot3oamerrframeperiodevnotifenable.get_name_leafdata());
+    if (cdot3oamerrframeperiodthreshold.is_set || is_set(cdot3oamerrframeperiodthreshold.yfilter)) leaf_name_data.push_back(cdot3oamerrframeperiodthreshold.get_name_leafdata());
+    if (cdot3oamerrframeperiodwindow.is_set || is_set(cdot3oamerrframeperiodwindow.yfilter)) leaf_name_data.push_back(cdot3oamerrframeperiodwindow.get_name_leafdata());
+    if (cdot3oamerrframesecsevnotifenable.is_set || is_set(cdot3oamerrframesecsevnotifenable.yfilter)) leaf_name_data.push_back(cdot3oamerrframesecsevnotifenable.get_name_leafdata());
+    if (cdot3oamerrframesecssummarythreshold.is_set || is_set(cdot3oamerrframesecssummarythreshold.yfilter)) leaf_name_data.push_back(cdot3oamerrframesecssummarythreshold.get_name_leafdata());
+    if (cdot3oamerrframesecssummarywindow.is_set || is_set(cdot3oamerrframesecssummarywindow.yfilter)) leaf_name_data.push_back(cdot3oamerrframesecssummarywindow.get_name_leafdata());
+    if (cdot3oamerrframethreshold.is_set || is_set(cdot3oamerrframethreshold.yfilter)) leaf_name_data.push_back(cdot3oamerrframethreshold.get_name_leafdata());
+    if (cdot3oamerrframewindow.is_set || is_set(cdot3oamerrframewindow.yfilter)) leaf_name_data.push_back(cdot3oamerrframewindow.get_name_leafdata());
+    if (cdot3oamerrsymperiodevnotifenable.is_set || is_set(cdot3oamerrsymperiodevnotifenable.yfilter)) leaf_name_data.push_back(cdot3oamerrsymperiodevnotifenable.get_name_leafdata());
+    if (cdot3oamerrsymperiodthresholdhi.is_set || is_set(cdot3oamerrsymperiodthresholdhi.yfilter)) leaf_name_data.push_back(cdot3oamerrsymperiodthresholdhi.get_name_leafdata());
+    if (cdot3oamerrsymperiodthresholdlo.is_set || is_set(cdot3oamerrsymperiodthresholdlo.yfilter)) leaf_name_data.push_back(cdot3oamerrsymperiodthresholdlo.get_name_leafdata());
+    if (cdot3oamerrsymperiodwindowhi.is_set || is_set(cdot3oamerrsymperiodwindowhi.yfilter)) leaf_name_data.push_back(cdot3oamerrsymperiodwindowhi.get_name_leafdata());
+    if (cdot3oamerrsymperiodwindowlo.is_set || is_set(cdot3oamerrsymperiodwindowlo.yfilter)) leaf_name_data.push_back(cdot3oamerrsymperiodwindowlo.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1351,76 +1680,189 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oameventcon
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamCriticalEventEnable")
     {
         cdot3oamcriticaleventenable = value;
+        cdot3oamcriticaleventenable.value_namespace = name_space;
+        cdot3oamcriticaleventenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamDyingGaspEnable")
     {
         cdot3oamdyinggaspenable = value;
+        cdot3oamdyinggaspenable.value_namespace = name_space;
+        cdot3oamdyinggaspenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFrameEvNotifEnable")
     {
         cdot3oamerrframeevnotifenable = value;
+        cdot3oamerrframeevnotifenable.value_namespace = name_space;
+        cdot3oamerrframeevnotifenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFramePeriodEvNotifEnable")
     {
         cdot3oamerrframeperiodevnotifenable = value;
+        cdot3oamerrframeperiodevnotifenable.value_namespace = name_space;
+        cdot3oamerrframeperiodevnotifenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFramePeriodThreshold")
     {
         cdot3oamerrframeperiodthreshold = value;
+        cdot3oamerrframeperiodthreshold.value_namespace = name_space;
+        cdot3oamerrframeperiodthreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFramePeriodWindow")
     {
         cdot3oamerrframeperiodwindow = value;
+        cdot3oamerrframeperiodwindow.value_namespace = name_space;
+        cdot3oamerrframeperiodwindow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFrameSecsEvNotifEnable")
     {
         cdot3oamerrframesecsevnotifenable = value;
+        cdot3oamerrframesecsevnotifenable.value_namespace = name_space;
+        cdot3oamerrframesecsevnotifenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFrameSecsSummaryThreshold")
     {
         cdot3oamerrframesecssummarythreshold = value;
+        cdot3oamerrframesecssummarythreshold.value_namespace = name_space;
+        cdot3oamerrframesecssummarythreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFrameSecsSummaryWindow")
     {
         cdot3oamerrframesecssummarywindow = value;
+        cdot3oamerrframesecssummarywindow.value_namespace = name_space;
+        cdot3oamerrframesecssummarywindow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFrameThreshold")
     {
         cdot3oamerrframethreshold = value;
+        cdot3oamerrframethreshold.value_namespace = name_space;
+        cdot3oamerrframethreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrFrameWindow")
     {
         cdot3oamerrframewindow = value;
+        cdot3oamerrframewindow.value_namespace = name_space;
+        cdot3oamerrframewindow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrSymPeriodEvNotifEnable")
     {
         cdot3oamerrsymperiodevnotifenable = value;
+        cdot3oamerrsymperiodevnotifenable.value_namespace = name_space;
+        cdot3oamerrsymperiodevnotifenable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrSymPeriodThresholdHi")
     {
         cdot3oamerrsymperiodthresholdhi = value;
+        cdot3oamerrsymperiodthresholdhi.value_namespace = name_space;
+        cdot3oamerrsymperiodthresholdhi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrSymPeriodThresholdLo")
     {
         cdot3oamerrsymperiodthresholdlo = value;
+        cdot3oamerrsymperiodthresholdlo.value_namespace = name_space;
+        cdot3oamerrsymperiodthresholdlo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrSymPeriodWindowHi")
     {
         cdot3oamerrsymperiodwindowhi = value;
+        cdot3oamerrsymperiodwindowhi.value_namespace = name_space;
+        cdot3oamerrsymperiodwindowhi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamErrSymPeriodWindowLo")
     {
         cdot3oamerrsymperiodwindowlo = value;
+        cdot3oamerrsymperiodwindowlo.value_namespace = name_space;
+        cdot3oamerrsymperiodwindowlo.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamCriticalEventEnable")
+    {
+        cdot3oamcriticaleventenable.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamDyingGaspEnable")
+    {
+        cdot3oamdyinggaspenable.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFrameEvNotifEnable")
+    {
+        cdot3oamerrframeevnotifenable.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFramePeriodEvNotifEnable")
+    {
+        cdot3oamerrframeperiodevnotifenable.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFramePeriodThreshold")
+    {
+        cdot3oamerrframeperiodthreshold.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFramePeriodWindow")
+    {
+        cdot3oamerrframeperiodwindow.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFrameSecsEvNotifEnable")
+    {
+        cdot3oamerrframesecsevnotifenable.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFrameSecsSummaryThreshold")
+    {
+        cdot3oamerrframesecssummarythreshold.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFrameSecsSummaryWindow")
+    {
+        cdot3oamerrframesecssummarywindow.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFrameThreshold")
+    {
+        cdot3oamerrframethreshold.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrFrameWindow")
+    {
+        cdot3oamerrframewindow.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrSymPeriodEvNotifEnable")
+    {
+        cdot3oamerrsymperiodevnotifenable.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrSymPeriodThresholdHi")
+    {
+        cdot3oamerrsymperiodthresholdhi.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrSymPeriodThresholdLo")
+    {
+        cdot3oamerrsymperiodthresholdlo.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrSymPeriodWindowHi")
+    {
+        cdot3oamerrsymperiodwindowhi.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamErrSymPeriodWindowLo")
+    {
+        cdot3oamerrsymperiodwindowlo.yfilter = yfilter;
+    }
+}
+
+bool CiscoDot3OamMib::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "cdot3OamCriticalEventEnable" || name == "cdot3OamDyingGaspEnable" || name == "cdot3OamErrFrameEvNotifEnable" || name == "cdot3OamErrFramePeriodEvNotifEnable" || name == "cdot3OamErrFramePeriodThreshold" || name == "cdot3OamErrFramePeriodWindow" || name == "cdot3OamErrFrameSecsEvNotifEnable" || name == "cdot3OamErrFrameSecsSummaryThreshold" || name == "cdot3OamErrFrameSecsSummaryWindow" || name == "cdot3OamErrFrameThreshold" || name == "cdot3OamErrFrameWindow" || name == "cdot3OamErrSymPeriodEvNotifEnable" || name == "cdot3OamErrSymPeriodThresholdHi" || name == "cdot3OamErrSymPeriodThresholdLo" || name == "cdot3OamErrSymPeriodWindowHi" || name == "cdot3OamErrSymPeriodWindowLo")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogtable()
@@ -1434,9 +1876,9 @@ CiscoDot3OamMib::Cdot3Oameventlogtable::~Cdot3Oameventlogtable()
 
 bool CiscoDot3OamMib::Cdot3Oameventlogtable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oameventlogentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventlogentry.size(); index++)
     {
-        if(cdot3oameventlogentry_[index]->has_data())
+        if(cdot3oameventlogentry[index]->has_data())
             return true;
     }
     return false;
@@ -1444,12 +1886,12 @@ bool CiscoDot3OamMib::Cdot3Oameventlogtable::has_data() const
 
 bool CiscoDot3OamMib::Cdot3Oameventlogtable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oameventlogentry_.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventlogentry.size(); index++)
     {
-        if(cdot3oameventlogentry_[index]->has_operation())
+        if(cdot3oameventlogentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oameventlogtable::get_segment_path() const
@@ -1486,7 +1928,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventlogtable::get_child_by_nam
 {
     if(child_yang_name == "cdot3OamEventLogEntry")
     {
-        for(auto const & c : cdot3oameventlogentry_)
+        for(auto const & c : cdot3oameventlogentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1496,7 +1938,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventlogtable::get_child_by_nam
         }
         auto c = std::make_shared<CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry>();
         c->parent = this;
-        cdot3oameventlogentry_.push_back(c);
+        cdot3oameventlogentry.push_back(c);
         return c;
     }
 
@@ -1506,7 +1948,7 @@ std::shared_ptr<Entity> CiscoDot3OamMib::Cdot3Oameventlogtable::get_child_by_nam
 std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oameventlogtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : cdot3oameventlogentry_)
+    for (auto const & c : cdot3oameventlogentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1514,8 +1956,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oameventlog
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oameventlogtable::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oameventlogtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoDot3OamMib::Cdot3Oameventlogtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoDot3OamMib::Cdot3Oameventlogtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cdot3OamEventLogEntry")
+        return true;
+    return false;
 }
 
 CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3Oameventlogentry()
@@ -1560,20 +2013,20 @@ bool CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::has_data() c
 
 bool CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ifindex.operation)
-	|| is_set(cdot3oameventlogindex.operation)
-	|| is_set(cdot3oameventlogeventtotal.operation)
-	|| is_set(cdot3oameventloglocation.operation)
-	|| is_set(cdot3oameventlogoui.operation)
-	|| is_set(cdot3oameventlogrunningtotal.operation)
-	|| is_set(cdot3oameventlogthresholdhi.operation)
-	|| is_set(cdot3oameventlogthresholdlo.operation)
-	|| is_set(cdot3oameventlogtimestamp.operation)
-	|| is_set(cdot3oameventlogtype.operation)
-	|| is_set(cdot3oameventlogvalue.operation)
-	|| is_set(cdot3oameventlogwindowhi.operation)
-	|| is_set(cdot3oameventlogwindowlo.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ifindex.yfilter)
+	|| ydk::is_set(cdot3oameventlogindex.yfilter)
+	|| ydk::is_set(cdot3oameventlogeventtotal.yfilter)
+	|| ydk::is_set(cdot3oameventloglocation.yfilter)
+	|| ydk::is_set(cdot3oameventlogoui.yfilter)
+	|| ydk::is_set(cdot3oameventlogrunningtotal.yfilter)
+	|| ydk::is_set(cdot3oameventlogthresholdhi.yfilter)
+	|| ydk::is_set(cdot3oameventlogthresholdlo.yfilter)
+	|| ydk::is_set(cdot3oameventlogtimestamp.yfilter)
+	|| ydk::is_set(cdot3oameventlogtype.yfilter)
+	|| ydk::is_set(cdot3oameventlogvalue.yfilter)
+	|| ydk::is_set(cdot3oameventlogwindowhi.yfilter)
+	|| ydk::is_set(cdot3oameventlogwindowlo.yfilter);
 }
 
 std::string CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::get_segment_path() const
@@ -1599,19 +2052,19 @@ const EntityPath CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ifindex.is_set || is_set(ifindex.operation)) leaf_name_data.push_back(ifindex.get_name_leafdata());
-    if (cdot3oameventlogindex.is_set || is_set(cdot3oameventlogindex.operation)) leaf_name_data.push_back(cdot3oameventlogindex.get_name_leafdata());
-    if (cdot3oameventlogeventtotal.is_set || is_set(cdot3oameventlogeventtotal.operation)) leaf_name_data.push_back(cdot3oameventlogeventtotal.get_name_leafdata());
-    if (cdot3oameventloglocation.is_set || is_set(cdot3oameventloglocation.operation)) leaf_name_data.push_back(cdot3oameventloglocation.get_name_leafdata());
-    if (cdot3oameventlogoui.is_set || is_set(cdot3oameventlogoui.operation)) leaf_name_data.push_back(cdot3oameventlogoui.get_name_leafdata());
-    if (cdot3oameventlogrunningtotal.is_set || is_set(cdot3oameventlogrunningtotal.operation)) leaf_name_data.push_back(cdot3oameventlogrunningtotal.get_name_leafdata());
-    if (cdot3oameventlogthresholdhi.is_set || is_set(cdot3oameventlogthresholdhi.operation)) leaf_name_data.push_back(cdot3oameventlogthresholdhi.get_name_leafdata());
-    if (cdot3oameventlogthresholdlo.is_set || is_set(cdot3oameventlogthresholdlo.operation)) leaf_name_data.push_back(cdot3oameventlogthresholdlo.get_name_leafdata());
-    if (cdot3oameventlogtimestamp.is_set || is_set(cdot3oameventlogtimestamp.operation)) leaf_name_data.push_back(cdot3oameventlogtimestamp.get_name_leafdata());
-    if (cdot3oameventlogtype.is_set || is_set(cdot3oameventlogtype.operation)) leaf_name_data.push_back(cdot3oameventlogtype.get_name_leafdata());
-    if (cdot3oameventlogvalue.is_set || is_set(cdot3oameventlogvalue.operation)) leaf_name_data.push_back(cdot3oameventlogvalue.get_name_leafdata());
-    if (cdot3oameventlogwindowhi.is_set || is_set(cdot3oameventlogwindowhi.operation)) leaf_name_data.push_back(cdot3oameventlogwindowhi.get_name_leafdata());
-    if (cdot3oameventlogwindowlo.is_set || is_set(cdot3oameventlogwindowlo.operation)) leaf_name_data.push_back(cdot3oameventlogwindowlo.get_name_leafdata());
+    if (ifindex.is_set || is_set(ifindex.yfilter)) leaf_name_data.push_back(ifindex.get_name_leafdata());
+    if (cdot3oameventlogindex.is_set || is_set(cdot3oameventlogindex.yfilter)) leaf_name_data.push_back(cdot3oameventlogindex.get_name_leafdata());
+    if (cdot3oameventlogeventtotal.is_set || is_set(cdot3oameventlogeventtotal.yfilter)) leaf_name_data.push_back(cdot3oameventlogeventtotal.get_name_leafdata());
+    if (cdot3oameventloglocation.is_set || is_set(cdot3oameventloglocation.yfilter)) leaf_name_data.push_back(cdot3oameventloglocation.get_name_leafdata());
+    if (cdot3oameventlogoui.is_set || is_set(cdot3oameventlogoui.yfilter)) leaf_name_data.push_back(cdot3oameventlogoui.get_name_leafdata());
+    if (cdot3oameventlogrunningtotal.is_set || is_set(cdot3oameventlogrunningtotal.yfilter)) leaf_name_data.push_back(cdot3oameventlogrunningtotal.get_name_leafdata());
+    if (cdot3oameventlogthresholdhi.is_set || is_set(cdot3oameventlogthresholdhi.yfilter)) leaf_name_data.push_back(cdot3oameventlogthresholdhi.get_name_leafdata());
+    if (cdot3oameventlogthresholdlo.is_set || is_set(cdot3oameventlogthresholdlo.yfilter)) leaf_name_data.push_back(cdot3oameventlogthresholdlo.get_name_leafdata());
+    if (cdot3oameventlogtimestamp.is_set || is_set(cdot3oameventlogtimestamp.yfilter)) leaf_name_data.push_back(cdot3oameventlogtimestamp.get_name_leafdata());
+    if (cdot3oameventlogtype.is_set || is_set(cdot3oameventlogtype.yfilter)) leaf_name_data.push_back(cdot3oameventlogtype.get_name_leafdata());
+    if (cdot3oameventlogvalue.is_set || is_set(cdot3oameventlogvalue.yfilter)) leaf_name_data.push_back(cdot3oameventlogvalue.get_name_leafdata());
+    if (cdot3oameventlogwindowhi.is_set || is_set(cdot3oameventlogwindowhi.yfilter)) leaf_name_data.push_back(cdot3oameventlogwindowhi.get_name_leafdata());
+    if (cdot3oameventlogwindowlo.is_set || is_set(cdot3oameventlogwindowlo.yfilter)) leaf_name_data.push_back(cdot3oameventlogwindowlo.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1630,95 +2083,184 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoDot3OamMib::Cdot3Oameventlog
     return children;
 }
 
-void CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::set_value(const std::string & value_path, std::string value)
+void CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
         ifindex = value;
+        ifindex.value_namespace = name_space;
+        ifindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogIndex")
     {
         cdot3oameventlogindex = value;
+        cdot3oameventlogindex.value_namespace = name_space;
+        cdot3oameventlogindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogEventTotal")
     {
         cdot3oameventlogeventtotal = value;
+        cdot3oameventlogeventtotal.value_namespace = name_space;
+        cdot3oameventlogeventtotal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogLocation")
     {
         cdot3oameventloglocation = value;
+        cdot3oameventloglocation.value_namespace = name_space;
+        cdot3oameventloglocation.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogOui")
     {
         cdot3oameventlogoui = value;
+        cdot3oameventlogoui.value_namespace = name_space;
+        cdot3oameventlogoui.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogRunningTotal")
     {
         cdot3oameventlogrunningtotal = value;
+        cdot3oameventlogrunningtotal.value_namespace = name_space;
+        cdot3oameventlogrunningtotal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogThresholdHi")
     {
         cdot3oameventlogthresholdhi = value;
+        cdot3oameventlogthresholdhi.value_namespace = name_space;
+        cdot3oameventlogthresholdhi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogThresholdLo")
     {
         cdot3oameventlogthresholdlo = value;
+        cdot3oameventlogthresholdlo.value_namespace = name_space;
+        cdot3oameventlogthresholdlo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogTimestamp")
     {
         cdot3oameventlogtimestamp = value;
+        cdot3oameventlogtimestamp.value_namespace = name_space;
+        cdot3oameventlogtimestamp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogType")
     {
         cdot3oameventlogtype = value;
+        cdot3oameventlogtype.value_namespace = name_space;
+        cdot3oameventlogtype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogValue")
     {
         cdot3oameventlogvalue = value;
+        cdot3oameventlogvalue.value_namespace = name_space;
+        cdot3oameventlogvalue.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogWindowHi")
     {
         cdot3oameventlogwindowhi = value;
+        cdot3oameventlogwindowhi.value_namespace = name_space;
+        cdot3oameventlogwindowhi.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cdot3OamEventLogWindowLo")
     {
         cdot3oameventlogwindowlo = value;
+        cdot3oameventlogwindowlo.value_namespace = name_space;
+        cdot3oameventlogwindowlo.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamadminstateEnum::disabled {1, "disabled"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamadminstateEnum::enabled {2, "enabled"};
+void CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ifIndex")
+    {
+        ifindex.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogIndex")
+    {
+        cdot3oameventlogindex.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogEventTotal")
+    {
+        cdot3oameventlogeventtotal.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogLocation")
+    {
+        cdot3oameventloglocation.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogOui")
+    {
+        cdot3oameventlogoui.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogRunningTotal")
+    {
+        cdot3oameventlogrunningtotal.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogThresholdHi")
+    {
+        cdot3oameventlogthresholdhi.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogThresholdLo")
+    {
+        cdot3oameventlogthresholdlo.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogTimestamp")
+    {
+        cdot3oameventlogtimestamp.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogType")
+    {
+        cdot3oameventlogtype.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogValue")
+    {
+        cdot3oameventlogvalue.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogWindowHi")
+    {
+        cdot3oameventlogwindowhi.yfilter = yfilter;
+    }
+    if(value_path == "cdot3OamEventLogWindowLo")
+    {
+        cdot3oameventlogwindowlo.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::disabled {1, "disabled"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::linkFault {2, "linkFault"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::passiveWait {3, "passiveWait"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::activeSendLocal {4, "activeSendLocal"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::sendLocalAndRemote {5, "sendLocalAndRemote"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::sendLocalAndRemoteOk {6, "sendLocalAndRemoteOk"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::oamPeeringLocallyRejected {7, "oamPeeringLocallyRejected"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::oamPeeringRemotelyRejected {8, "oamPeeringRemotelyRejected"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::operational {9, "operational"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OamoperstatusEnum::nonOperHalfDuplex {10, "nonOperHalfDuplex"};
+bool CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifIndex" || name == "cdot3OamEventLogIndex" || name == "cdot3OamEventLogEventTotal" || name == "cdot3OamEventLogLocation" || name == "cdot3OamEventLogOui" || name == "cdot3OamEventLogRunningTotal" || name == "cdot3OamEventLogThresholdHi" || name == "cdot3OamEventLogThresholdLo" || name == "cdot3OamEventLogTimestamp" || name == "cdot3OamEventLogType" || name == "cdot3OamEventLogValue" || name == "cdot3OamEventLogWindowHi" || name == "cdot3OamEventLogWindowLo")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OammodeEnum::active {1, "active"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3OammodeEnum::passive {2, "passive"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamadminstate::disabled {1, "disabled"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamadminstate::enabled {2, "enabled"};
 
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3OampeermodeEnum::active {1, "active"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3OampeermodeEnum::passive {2, "passive"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3OampeermodeEnum::unknown {3, "unknown"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::disabled {1, "disabled"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::linkFault {2, "linkFault"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::passiveWait {3, "passiveWait"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::activeSendLocal {4, "activeSendLocal"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::sendLocalAndRemote {5, "sendLocalAndRemote"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::sendLocalAndRemoteOk {6, "sendLocalAndRemoteOk"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::oamPeeringLocallyRejected {7, "oamPeeringLocallyRejected"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::oamPeeringRemotelyRejected {8, "oamPeeringRemotelyRejected"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::operational {9, "operational"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::nonOperHalfDuplex {10, "nonOperHalfDuplex"};
 
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3OamloopbackstatusEnum::noLoopback {1, "noLoopback"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3OamloopbackstatusEnum::initiatingLoopback {2, "initiatingLoopback"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3OamloopbackstatusEnum::remoteLoopback {3, "remoteLoopback"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3OamloopbackstatusEnum::terminatingLoopback {4, "terminatingLoopback"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3OamloopbackstatusEnum::localLoopback {5, "localLoopback"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3OamloopbackstatusEnum::unknown {6, "unknown"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oammode::active {1, "active"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oammode::passive {2, "passive"};
 
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3OamloopbackignorerxEnum::ignore {1, "ignore"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3OamloopbackignorerxEnum::process {2, "process"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeermode::active {1, "active"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeermode::passive {2, "passive"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeermode::unknown {3, "unknown"};
 
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3OameventloglocationEnum::local {1, "local"};
-const Enum::YLeaf CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3OameventloglocationEnum::remote {2, "remote"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::noLoopback {1, "noLoopback"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::initiatingLoopback {2, "initiatingLoopback"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::remoteLoopback {3, "remoteLoopback"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::terminatingLoopback {4, "terminatingLoopback"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::localLoopback {5, "localLoopback"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::unknown {6, "unknown"};
+
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackignorerx::ignore {1, "ignore"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackignorerx::process {2, "process"};
+
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3Oameventloglocation::local {1, "local"};
+const Enum::YLeaf CiscoDot3OamMib::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3Oameventloglocation::remote {2, "remote"};
 
 
 }

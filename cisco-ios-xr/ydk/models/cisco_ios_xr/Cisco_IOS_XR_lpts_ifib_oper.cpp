@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_lpts_ifib_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lpts_ifib_oper {
 
 LptsIfib::LptsIfib()
@@ -29,7 +31,7 @@ bool LptsIfib::has_data() const
 
 bool LptsIfib::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::get_children() const
     return children;
 }
 
-void LptsIfib::set_value(const std::string & value_path, std::string value)
+void LptsIfib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void LptsIfib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string LptsIfib::get_bundle_name() const
 augment_capabilities_function LptsIfib::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> LptsIfib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool LptsIfib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 LptsIfib::Nodes::Nodes()
@@ -135,7 +153,7 @@ bool LptsIfib::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LptsIfib::Nodes::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::get_children() c
     return children;
 }
 
-void LptsIfib::Nodes::set_value(const std::string & value_path, std::string value)
+void LptsIfib::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void LptsIfib::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool LptsIfib::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 LptsIfib::Nodes::Node::Node()
@@ -227,8 +256,8 @@ bool LptsIfib::Nodes::Node::has_data() const
 
 bool LptsIfib::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (slice_ids !=  nullptr && slice_ids->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath LptsIfib::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::get_childr
     return children;
 }
 
-void LptsIfib::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void LptsIfib::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LptsIfib::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool LptsIfib::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slice-ids" || name == "node-name")
+        return true;
+    return false;
 }
 
 LptsIfib::Nodes::Node::SliceIds::SliceIds()
@@ -322,7 +368,7 @@ bool LptsIfib::Nodes::Node::SliceIds::has_operation() const
         if(slice_id[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string LptsIfib::Nodes::Node::SliceIds::get_segment_path() const
@@ -387,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::SliceIds::
     return children;
 }
 
-void LptsIfib::Nodes::Node::SliceIds::set_value(const std::string & value_path, std::string value)
+void LptsIfib::Nodes::Node::SliceIds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void LptsIfib::Nodes::Node::SliceIds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool LptsIfib::Nodes::Node::SliceIds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slice-id")
+        return true;
+    return false;
 }
 
 LptsIfib::Nodes::Node::SliceIds::SliceId::SliceId()
@@ -419,8 +476,8 @@ bool LptsIfib::Nodes::Node::SliceIds::SliceId::has_operation() const
         if(entry[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(slice_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(slice_name.yfilter);
 }
 
 std::string LptsIfib::Nodes::Node::SliceIds::SliceId::get_segment_path() const
@@ -446,7 +503,7 @@ const EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slice_name.is_set || is_set(slice_name.operation)) leaf_name_data.push_back(slice_name.get_name_leafdata());
+    if (slice_name.is_set || is_set(slice_name.yfilter)) leaf_name_data.push_back(slice_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -486,12 +543,29 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::SliceIds::
     return children;
 }
 
-void LptsIfib::Nodes::Node::SliceIds::SliceId::set_value(const std::string & value_path, std::string value)
+void LptsIfib::Nodes::Node::SliceIds::SliceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slice-name")
     {
         slice_name = value;
+        slice_name.value_namespace = name_space;
+        slice_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LptsIfib::Nodes::Node::SliceIds::SliceId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slice-name")
+    {
+        slice_name.yfilter = yfilter;
+    }
+}
+
+bool LptsIfib::Nodes::Node::SliceIds::SliceId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry" || name == "slice-name")
+        return true;
+    return false;
 }
 
 LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::Entry()
@@ -562,33 +636,33 @@ bool LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::has_data() const
 
 bool LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entry.operation)
-	|| is_set(accepts.operation)
-	|| is_set(deliver_list_long.operation)
-	|| is_set(deliver_list_short.operation)
-	|| is_set(destination_addr.operation)
-	|| is_set(destination_type.operation)
-	|| is_set(destination_value.operation)
-	|| is_set(drops.operation)
-	|| is_set(flow_type.operation)
-	|| is_set(ifib_program_time.operation)
-	|| is_set(intf_handle.operation)
-	|| is_set(intf_name.operation)
-	|| is_set(is_fgid.operation)
-	|| is_set(is_syn.operation)
-	|| is_set(l3protocol.operation)
-	|| is_set(l4protocol.operation)
-	|| is_set(listener_tag.operation)
-	|| is_set(local_flag.operation)
-	|| is_set(min_ttl.operation)
-	|| is_set(opcode.operation)
-	|| is_set(pending_ifibq_delay.operation)
-	|| is_set(sl_ifibq_delay.operation)
-	|| is_set(source_addr.operation)
-	|| is_set(source_port.operation)
-	|| is_set(vid.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter)
+	|| ydk::is_set(accepts.yfilter)
+	|| ydk::is_set(deliver_list_long.yfilter)
+	|| ydk::is_set(deliver_list_short.yfilter)
+	|| ydk::is_set(destination_addr.yfilter)
+	|| ydk::is_set(destination_type.yfilter)
+	|| ydk::is_set(destination_value.yfilter)
+	|| ydk::is_set(drops.yfilter)
+	|| ydk::is_set(flow_type.yfilter)
+	|| ydk::is_set(ifib_program_time.yfilter)
+	|| ydk::is_set(intf_handle.yfilter)
+	|| ydk::is_set(intf_name.yfilter)
+	|| ydk::is_set(is_fgid.yfilter)
+	|| ydk::is_set(is_syn.yfilter)
+	|| ydk::is_set(l3protocol.yfilter)
+	|| ydk::is_set(l4protocol.yfilter)
+	|| ydk::is_set(listener_tag.yfilter)
+	|| ydk::is_set(local_flag.yfilter)
+	|| ydk::is_set(min_ttl.yfilter)
+	|| ydk::is_set(opcode.yfilter)
+	|| ydk::is_set(pending_ifibq_delay.yfilter)
+	|| ydk::is_set(sl_ifibq_delay.yfilter)
+	|| ydk::is_set(source_addr.yfilter)
+	|| ydk::is_set(source_port.yfilter)
+	|| ydk::is_set(vid.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_segment_path() const
@@ -614,32 +688,32 @@ const EntityPath LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entry.is_set || is_set(entry.operation)) leaf_name_data.push_back(entry.get_name_leafdata());
-    if (accepts.is_set || is_set(accepts.operation)) leaf_name_data.push_back(accepts.get_name_leafdata());
-    if (deliver_list_long.is_set || is_set(deliver_list_long.operation)) leaf_name_data.push_back(deliver_list_long.get_name_leafdata());
-    if (deliver_list_short.is_set || is_set(deliver_list_short.operation)) leaf_name_data.push_back(deliver_list_short.get_name_leafdata());
-    if (destination_addr.is_set || is_set(destination_addr.operation)) leaf_name_data.push_back(destination_addr.get_name_leafdata());
-    if (destination_type.is_set || is_set(destination_type.operation)) leaf_name_data.push_back(destination_type.get_name_leafdata());
-    if (destination_value.is_set || is_set(destination_value.operation)) leaf_name_data.push_back(destination_value.get_name_leafdata());
-    if (drops.is_set || is_set(drops.operation)) leaf_name_data.push_back(drops.get_name_leafdata());
-    if (flow_type.is_set || is_set(flow_type.operation)) leaf_name_data.push_back(flow_type.get_name_leafdata());
-    if (ifib_program_time.is_set || is_set(ifib_program_time.operation)) leaf_name_data.push_back(ifib_program_time.get_name_leafdata());
-    if (intf_handle.is_set || is_set(intf_handle.operation)) leaf_name_data.push_back(intf_handle.get_name_leafdata());
-    if (intf_name.is_set || is_set(intf_name.operation)) leaf_name_data.push_back(intf_name.get_name_leafdata());
-    if (is_fgid.is_set || is_set(is_fgid.operation)) leaf_name_data.push_back(is_fgid.get_name_leafdata());
-    if (is_syn.is_set || is_set(is_syn.operation)) leaf_name_data.push_back(is_syn.get_name_leafdata());
-    if (l3protocol.is_set || is_set(l3protocol.operation)) leaf_name_data.push_back(l3protocol.get_name_leafdata());
-    if (l4protocol.is_set || is_set(l4protocol.operation)) leaf_name_data.push_back(l4protocol.get_name_leafdata());
-    if (listener_tag.is_set || is_set(listener_tag.operation)) leaf_name_data.push_back(listener_tag.get_name_leafdata());
-    if (local_flag.is_set || is_set(local_flag.operation)) leaf_name_data.push_back(local_flag.get_name_leafdata());
-    if (min_ttl.is_set || is_set(min_ttl.operation)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
-    if (opcode.is_set || is_set(opcode.operation)) leaf_name_data.push_back(opcode.get_name_leafdata());
-    if (pending_ifibq_delay.is_set || is_set(pending_ifibq_delay.operation)) leaf_name_data.push_back(pending_ifibq_delay.get_name_leafdata());
-    if (sl_ifibq_delay.is_set || is_set(sl_ifibq_delay.operation)) leaf_name_data.push_back(sl_ifibq_delay.get_name_leafdata());
-    if (source_addr.is_set || is_set(source_addr.operation)) leaf_name_data.push_back(source_addr.get_name_leafdata());
-    if (source_port.is_set || is_set(source_port.operation)) leaf_name_data.push_back(source_port.get_name_leafdata());
-    if (vid.is_set || is_set(vid.operation)) leaf_name_data.push_back(vid.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+    if (accepts.is_set || is_set(accepts.yfilter)) leaf_name_data.push_back(accepts.get_name_leafdata());
+    if (deliver_list_long.is_set || is_set(deliver_list_long.yfilter)) leaf_name_data.push_back(deliver_list_long.get_name_leafdata());
+    if (deliver_list_short.is_set || is_set(deliver_list_short.yfilter)) leaf_name_data.push_back(deliver_list_short.get_name_leafdata());
+    if (destination_addr.is_set || is_set(destination_addr.yfilter)) leaf_name_data.push_back(destination_addr.get_name_leafdata());
+    if (destination_type.is_set || is_set(destination_type.yfilter)) leaf_name_data.push_back(destination_type.get_name_leafdata());
+    if (destination_value.is_set || is_set(destination_value.yfilter)) leaf_name_data.push_back(destination_value.get_name_leafdata());
+    if (drops.is_set || is_set(drops.yfilter)) leaf_name_data.push_back(drops.get_name_leafdata());
+    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
+    if (ifib_program_time.is_set || is_set(ifib_program_time.yfilter)) leaf_name_data.push_back(ifib_program_time.get_name_leafdata());
+    if (intf_handle.is_set || is_set(intf_handle.yfilter)) leaf_name_data.push_back(intf_handle.get_name_leafdata());
+    if (intf_name.is_set || is_set(intf_name.yfilter)) leaf_name_data.push_back(intf_name.get_name_leafdata());
+    if (is_fgid.is_set || is_set(is_fgid.yfilter)) leaf_name_data.push_back(is_fgid.get_name_leafdata());
+    if (is_syn.is_set || is_set(is_syn.yfilter)) leaf_name_data.push_back(is_syn.get_name_leafdata());
+    if (l3protocol.is_set || is_set(l3protocol.yfilter)) leaf_name_data.push_back(l3protocol.get_name_leafdata());
+    if (l4protocol.is_set || is_set(l4protocol.yfilter)) leaf_name_data.push_back(l4protocol.get_name_leafdata());
+    if (listener_tag.is_set || is_set(listener_tag.yfilter)) leaf_name_data.push_back(listener_tag.get_name_leafdata());
+    if (local_flag.is_set || is_set(local_flag.yfilter)) leaf_name_data.push_back(local_flag.get_name_leafdata());
+    if (min_ttl.is_set || is_set(min_ttl.yfilter)) leaf_name_data.push_back(min_ttl.get_name_leafdata());
+    if (opcode.is_set || is_set(opcode.yfilter)) leaf_name_data.push_back(opcode.get_name_leafdata());
+    if (pending_ifibq_delay.is_set || is_set(pending_ifibq_delay.yfilter)) leaf_name_data.push_back(pending_ifibq_delay.get_name_leafdata());
+    if (sl_ifibq_delay.is_set || is_set(sl_ifibq_delay.yfilter)) leaf_name_data.push_back(sl_ifibq_delay.get_name_leafdata());
+    if (source_addr.is_set || is_set(source_addr.yfilter)) leaf_name_data.push_back(source_addr.get_name_leafdata());
+    if (source_port.is_set || is_set(source_port.yfilter)) leaf_name_data.push_back(source_port.get_name_leafdata());
+    if (vid.is_set || is_set(vid.yfilter)) leaf_name_data.push_back(vid.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -658,112 +732,279 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::SliceIds::
     return children;
 }
 
-void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_value(const std::string & value_path, std::string value)
+void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
         entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accepts")
     {
         accepts = value;
+        accepts.value_namespace = name_space;
+        accepts.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "deliver-list-long")
     {
         deliver_list_long = value;
+        deliver_list_long.value_namespace = name_space;
+        deliver_list_long.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "deliver-list-short")
     {
         deliver_list_short = value;
+        deliver_list_short.value_namespace = name_space;
+        deliver_list_short.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-addr")
     {
         destination_addr = value;
+        destination_addr.value_namespace = name_space;
+        destination_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-type")
     {
         destination_type = value;
+        destination_type.value_namespace = name_space;
+        destination_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-value")
     {
         destination_value = value;
+        destination_value.value_namespace = name_space;
+        destination_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drops")
     {
         drops = value;
+        drops.value_namespace = name_space;
+        drops.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "flow-type")
     {
         flow_type = value;
+        flow_type.value_namespace = name_space;
+        flow_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ifib-program-time")
     {
         ifib_program_time = value;
+        ifib_program_time.value_namespace = name_space;
+        ifib_program_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intf-handle")
     {
         intf_handle = value;
+        intf_handle.value_namespace = name_space;
+        intf_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "intf-name")
     {
         intf_name = value;
+        intf_name.value_namespace = name_space;
+        intf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-fgid")
     {
         is_fgid = value;
+        is_fgid.value_namespace = name_space;
+        is_fgid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-syn")
     {
         is_syn = value;
+        is_syn.value_namespace = name_space;
+        is_syn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l3protocol")
     {
         l3protocol = value;
+        l3protocol.value_namespace = name_space;
+        l3protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l4protocol")
     {
         l4protocol = value;
+        l4protocol.value_namespace = name_space;
+        l4protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "listener-tag")
     {
         listener_tag = value;
+        listener_tag.value_namespace = name_space;
+        listener_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-flag")
     {
         local_flag = value;
+        local_flag.value_namespace = name_space;
+        local_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "min-ttl")
     {
         min_ttl = value;
+        min_ttl.value_namespace = name_space;
+        min_ttl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "opcode")
     {
         opcode = value;
+        opcode.value_namespace = name_space;
+        opcode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pending-ifibq-delay")
     {
         pending_ifibq_delay = value;
+        pending_ifibq_delay.value_namespace = name_space;
+        pending_ifibq_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sl-ifibq-delay")
     {
         sl_ifibq_delay = value;
+        sl_ifibq_delay.value_namespace = name_space;
+        sl_ifibq_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-addr")
     {
         source_addr = value;
+        source_addr.value_namespace = name_space;
+        source_addr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-port")
     {
         source_port = value;
+        source_port.value_namespace = name_space;
+        source_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vid")
     {
         vid = value;
+        vid.value_namespace = name_space;
+        vid.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+    if(value_path == "accepts")
+    {
+        accepts.yfilter = yfilter;
+    }
+    if(value_path == "deliver-list-long")
+    {
+        deliver_list_long.yfilter = yfilter;
+    }
+    if(value_path == "deliver-list-short")
+    {
+        deliver_list_short.yfilter = yfilter;
+    }
+    if(value_path == "destination-addr")
+    {
+        destination_addr.yfilter = yfilter;
+    }
+    if(value_path == "destination-type")
+    {
+        destination_type.yfilter = yfilter;
+    }
+    if(value_path == "destination-value")
+    {
+        destination_value.yfilter = yfilter;
+    }
+    if(value_path == "drops")
+    {
+        drops.yfilter = yfilter;
+    }
+    if(value_path == "flow-type")
+    {
+        flow_type.yfilter = yfilter;
+    }
+    if(value_path == "ifib-program-time")
+    {
+        ifib_program_time.yfilter = yfilter;
+    }
+    if(value_path == "intf-handle")
+    {
+        intf_handle.yfilter = yfilter;
+    }
+    if(value_path == "intf-name")
+    {
+        intf_name.yfilter = yfilter;
+    }
+    if(value_path == "is-fgid")
+    {
+        is_fgid.yfilter = yfilter;
+    }
+    if(value_path == "is-syn")
+    {
+        is_syn.yfilter = yfilter;
+    }
+    if(value_path == "l3protocol")
+    {
+        l3protocol.yfilter = yfilter;
+    }
+    if(value_path == "l4protocol")
+    {
+        l4protocol.yfilter = yfilter;
+    }
+    if(value_path == "listener-tag")
+    {
+        listener_tag.yfilter = yfilter;
+    }
+    if(value_path == "local-flag")
+    {
+        local_flag.yfilter = yfilter;
+    }
+    if(value_path == "min-ttl")
+    {
+        min_ttl.yfilter = yfilter;
+    }
+    if(value_path == "opcode")
+    {
+        opcode.yfilter = yfilter;
+    }
+    if(value_path == "pending-ifibq-delay")
+    {
+        pending_ifibq_delay.yfilter = yfilter;
+    }
+    if(value_path == "sl-ifibq-delay")
+    {
+        sl_ifibq_delay.yfilter = yfilter;
+    }
+    if(value_path == "source-addr")
+    {
+        source_addr.yfilter = yfilter;
+    }
+    if(value_path == "source-port")
+    {
+        source_port.yfilter = yfilter;
+    }
+    if(value_path == "vid")
+    {
+        vid.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry" || name == "accepts" || name == "deliver-list-long" || name == "deliver-list-short" || name == "destination-addr" || name == "destination-type" || name == "destination-value" || name == "drops" || name == "flow-type" || name == "ifib-program-time" || name == "intf-handle" || name == "intf-name" || name == "is-fgid" || name == "is-syn" || name == "l3protocol" || name == "l4protocol" || name == "listener-tag" || name == "local-flag" || name == "min-ttl" || name == "opcode" || name == "pending-ifibq-delay" || name == "sl-ifibq-delay" || name == "source-addr" || name == "source-port" || name == "vid" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 

@@ -7,15 +7,15 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace common_mpls_types {
 
-class IetfMplsLabelEnum : public Enum
+class IetfMplsLabel : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf v4_explicit_null;
-        static const Enum::YLeaf v6_explicit_null;
-        static const Enum::YLeaf implicit_null;
+        static const ydk::Enum::YLeaf v4_explicit_null;
+        static const ydk::Enum::YLeaf v6_explicit_null;
+        static const ydk::Enum::YLeaf implicit_null;
 
 };
 

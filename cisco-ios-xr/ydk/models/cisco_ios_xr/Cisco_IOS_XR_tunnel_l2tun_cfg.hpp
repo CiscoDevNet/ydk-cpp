@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tunnel_l2tun_cfg {
 
-class L2Tp : public Entity
+class L2Tp : public ydk::Entity
 {
     public:
         L2Tp();
@@ -18,15 +18,18 @@ class L2Tp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Classes; //type: L2Tp::Classes
 
@@ -35,7 +38,7 @@ class L2Tp : public Entity
 }; // L2Tp
 
 
-class L2Tp::Classes : public Entity
+class L2Tp::Classes : public ydk::Entity
 {
     public:
         Classes();
@@ -43,11 +46,13 @@ class L2Tp::Classes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Class_; //type: L2Tp::Classes::Class_
 
@@ -56,7 +61,7 @@ class L2Tp::Classes : public Entity
 }; // L2Tp::Classes
 
 
-class L2Tp::Classes::Class_ : public Entity
+class L2Tp::Classes::Class_ : public ydk::Entity
 {
     public:
         Class_();
@@ -64,23 +69,25 @@ class L2Tp::Classes::Class_ : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf class_name; //type: string
-        YLeaf host_name; //type: string
-        YLeaf hidden; //type: empty
-        YLeaf hello_interval; //type: uint32
-        YLeaf timeout_setup; //type: uint32
-        YLeaf receive_window; //type: uint32
-        YLeaf congestion_control; //type: empty
-        YLeaf timeout_no_user; //type: uint32
-        YLeaf authentication; //type: int32
-        YLeaf enable; //type: empty
-        YLeaf password; //type: string
+        ydk::YLeaf class_name; //type: string
+        ydk::YLeaf host_name; //type: string
+        ydk::YLeaf hidden; //type: empty
+        ydk::YLeaf hello_interval; //type: uint32
+        ydk::YLeaf timeout_setup; //type: uint32
+        ydk::YLeaf receive_window; //type: uint32
+        ydk::YLeaf congestion_control; //type: empty
+        ydk::YLeaf timeout_no_user; //type: uint32
+        ydk::YLeaf authentication; //type: int32
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf password; //type: string
         class Security; //type: L2Tp::Classes::Class_::Security
         class Retransmit; //type: L2Tp::Classes::Class_::Retransmit
         class Tunnel; //type: L2Tp::Classes::Class_::Tunnel
@@ -96,7 +103,7 @@ class L2Tp::Classes::Class_ : public Entity
 }; // L2Tp::Classes::Class_
 
 
-class L2Tp::Classes::Class_::Security : public Entity
+class L2Tp::Classes::Class_::Security : public ydk::Entity
 {
     public:
         Security();
@@ -104,11 +111,13 @@ class L2Tp::Classes::Class_::Security : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ip; //type: L2Tp::Classes::Class_::Security::Ip
 
@@ -117,7 +126,7 @@ class L2Tp::Classes::Class_::Security : public Entity
 }; // L2Tp::Classes::Class_::Security
 
 
-class L2Tp::Classes::Class_::Security::Ip : public Entity
+class L2Tp::Classes::Class_::Security::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -125,18 +134,20 @@ class L2Tp::Classes::Class_::Security::Ip : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf address_check; //type: empty
+        ydk::YLeaf address_check; //type: empty
 
 }; // L2Tp::Classes::Class_::Security::Ip
 
 
-class L2Tp::Classes::Class_::Retransmit : public Entity
+class L2Tp::Classes::Class_::Retransmit : public ydk::Entity
 {
     public:
         Retransmit();
@@ -144,13 +155,15 @@ class L2Tp::Classes::Class_::Retransmit : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf retry; //type: uint32
+        ydk::YLeaf retry; //type: uint32
         class Initial; //type: L2Tp::Classes::Class_::Retransmit::Initial
         class Timeout; //type: L2Tp::Classes::Class_::Retransmit::Timeout
 
@@ -160,7 +173,7 @@ class L2Tp::Classes::Class_::Retransmit : public Entity
 }; // L2Tp::Classes::Class_::Retransmit
 
 
-class L2Tp::Classes::Class_::Retransmit::Initial : public Entity
+class L2Tp::Classes::Class_::Retransmit::Initial : public ydk::Entity
 {
     public:
         Initial();
@@ -168,13 +181,15 @@ class L2Tp::Classes::Class_::Retransmit::Initial : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf retry; //type: uint32
+        ydk::YLeaf retry; //type: uint32
         class Timeout; //type: L2Tp::Classes::Class_::Retransmit::Initial::Timeout
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Retransmit::Initial::Timeout> timeout;
@@ -182,7 +197,7 @@ class L2Tp::Classes::Class_::Retransmit::Initial : public Entity
 }; // L2Tp::Classes::Class_::Retransmit::Initial
 
 
-class L2Tp::Classes::Class_::Retransmit::Initial::Timeout : public Entity
+class L2Tp::Classes::Class_::Retransmit::Initial::Timeout : public ydk::Entity
 {
     public:
         Timeout();
@@ -190,19 +205,21 @@ class L2Tp::Classes::Class_::Retransmit::Initial::Timeout : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
 
 }; // L2Tp::Classes::Class_::Retransmit::Initial::Timeout
 
 
-class L2Tp::Classes::Class_::Retransmit::Timeout : public Entity
+class L2Tp::Classes::Class_::Retransmit::Timeout : public ydk::Entity
 {
     public:
         Timeout();
@@ -210,19 +227,21 @@ class L2Tp::Classes::Class_::Retransmit::Timeout : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf minimum; //type: uint32
-        YLeaf maximum; //type: uint32
+        ydk::YLeaf minimum; //type: uint32
+        ydk::YLeaf maximum; //type: uint32
 
 }; // L2Tp::Classes::Class_::Retransmit::Timeout
 
 
-class L2Tp::Classes::Class_::Tunnel : public Entity
+class L2Tp::Classes::Class_::Tunnel : public ydk::Entity
 {
     public:
         Tunnel();
@@ -230,18 +249,20 @@ class L2Tp::Classes::Class_::Tunnel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf accounting; //type: string
+        ydk::YLeaf accounting; //type: string
 
 }; // L2Tp::Classes::Class_::Tunnel
 
 
-class L2Tp::Classes::Class_::Digest : public Entity
+class L2Tp::Classes::Class_::Digest : public ydk::Entity
 {
     public:
         Digest();
@@ -249,14 +270,16 @@ class L2Tp::Classes::Class_::Digest : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf hash; //type: L2TpDigestHashMethodEnum
-        YLeaf check_disable; //type: empty
+        ydk::YLeaf hash; //type: L2TpDigestHashMethod
+        ydk::YLeaf check_disable; //type: empty
         class Secrets; //type: L2Tp::Classes::Class_::Digest::Secrets
 
         std::shared_ptr<Cisco_IOS_XR_tunnel_l2tun_cfg::L2Tp::Classes::Class_::Digest::Secrets> secrets;
@@ -264,7 +287,7 @@ class L2Tp::Classes::Class_::Digest : public Entity
 }; // L2Tp::Classes::Class_::Digest
 
 
-class L2Tp::Classes::Class_::Digest::Secrets : public Entity
+class L2Tp::Classes::Class_::Digest::Secrets : public ydk::Entity
 {
     public:
         Secrets();
@@ -272,11 +295,13 @@ class L2Tp::Classes::Class_::Digest::Secrets : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Secret; //type: L2Tp::Classes::Class_::Digest::Secrets::Secret
 
@@ -285,7 +310,7 @@ class L2Tp::Classes::Class_::Digest::Secrets : public Entity
 }; // L2Tp::Classes::Class_::Digest::Secrets
 
 
-class L2Tp::Classes::Class_::Digest::Secrets::Secret : public Entity
+class L2Tp::Classes::Class_::Digest::Secrets::Secret : public ydk::Entity
 {
     public:
         Secret();
@@ -293,19 +318,21 @@ class L2Tp::Classes::Class_::Digest::Secrets::Secret : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf secret_name; //type: string
-        YLeaf hash; //type: L2TpHashMethodEnum
+        ydk::YLeaf secret_name; //type: string
+        ydk::YLeaf hash; //type: L2TpHashMethod
 
 }; // L2Tp::Classes::Class_::Digest::Secrets::Secret
 
 
-class L2Tp::Classes::Class_::Ip : public Entity
+class L2Tp::Classes::Class_::Ip : public ydk::Entity
 {
     public:
         Ip();
@@ -313,30 +340,32 @@ class L2Tp::Classes::Class_::Ip : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf tos; //type: uint32
+        ydk::YLeaf tos; //type: uint32
 
 }; // L2Tp::Classes::Class_::Ip
 
-class L2TpDigestHashMethodEnum : public Enum
+class L2TpHashMethod : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf md5;
-        static const Enum::YLeaf sha1;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha1;
+        static const ydk::Enum::YLeaf none;
 
 };
 
-class L2TpHashMethodEnum : public Enum
+class L2TpDigestHashMethod : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf md5;
-        static const Enum::YLeaf sha1;
-        static const Enum::YLeaf none;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha1;
 
 };
 

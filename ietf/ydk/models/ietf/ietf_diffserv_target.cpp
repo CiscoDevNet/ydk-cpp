@@ -6,33 +6,35 @@
 #include "generated_entity_lookup.hpp"
 #include "ietf_diffserv_target.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace ietf {
 namespace ietf_diffserv_target {
 
-DirectionIdentity::DirectionIdentity()
-     : Identity("ietf-diffserv-target:direction")
+Direction::Direction()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-target", "ietf-diffserv-target", "ietf-diffserv-target:direction")
 {
 }
 
-DirectionIdentity::~DirectionIdentity()
+Direction::~Direction()
 {
 }
 
-InboundIdentity::InboundIdentity()
-     : Identity("ietf-diffserv-target:inbound")
+Outbound::Outbound()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-target", "ietf-diffserv-target", "ietf-diffserv-target:outbound")
 {
 }
 
-InboundIdentity::~InboundIdentity()
+Outbound::~Outbound()
 {
 }
 
-OutboundIdentity::OutboundIdentity()
-     : Identity("ietf-diffserv-target:outbound")
+Inbound::Inbound()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-target", "ietf-diffserv-target", "ietf-diffserv-target:inbound")
 {
 }
 
-OutboundIdentity::~OutboundIdentity()
+Inbound::~Inbound()
 {
 }
 

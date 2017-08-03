@@ -9,89 +9,89 @@
 
 #include "ydk_ietf/ietf_netconf_monitoring.hpp"
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace tailf_netconf_monitoring {
 
-class RestHttpsIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class RestHttp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        RestHttpsIdentity();
-        ~RestHttpsIdentity();
+        RestHttp();
+        ~RestHttp();
 
 
-}; // RestHttpsIdentity
+}; // RestHttp
 
-class CliSshIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class NetconfTcp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        CliSshIdentity();
-        ~CliSshIdentity();
+        NetconfTcp();
+        ~NetconfTcp();
 
 
-}; // CliSshIdentity
+}; // NetconfTcp
 
-class CliConsoleIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class CliConsole : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        CliConsoleIdentity();
-        ~CliConsoleIdentity();
+        CliConsole();
+        ~CliConsole();
 
 
-}; // CliConsoleIdentity
+}; // CliConsole
 
-class WebuiHttpsIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class CliSsh : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        WebuiHttpsIdentity();
-        ~WebuiHttpsIdentity();
+        CliSsh();
+        ~CliSsh();
 
 
-}; // WebuiHttpsIdentity
+}; // CliSsh
 
-class SnmpUdpIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class WebuiHttp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        SnmpUdpIdentity();
-        ~SnmpUdpIdentity();
+        WebuiHttp();
+        ~WebuiHttp();
 
 
-}; // SnmpUdpIdentity
+}; // WebuiHttp
 
-class WebuiHttpIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class SnmpUdp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        WebuiHttpIdentity();
-        ~WebuiHttpIdentity();
+        SnmpUdp();
+        ~SnmpUdp();
 
 
-}; // WebuiHttpIdentity
+}; // SnmpUdp
 
-class RestHttpIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class WebuiHttps : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        RestHttpIdentity();
-        ~RestHttpIdentity();
+        WebuiHttps();
+        ~WebuiHttps();
 
 
-}; // RestHttpIdentity
+}; // WebuiHttps
 
-class NetconfTcpIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class RestHttps : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        NetconfTcpIdentity();
-        ~NetconfTcpIdentity();
+        RestHttps();
+        ~RestHttps();
 
 
-}; // NetconfTcpIdentity
+}; // RestHttps
 
-class CliTcpIdentity : public ietf_netconf_monitoring::TransportIdentity, virtual Identity
+class CliTcp : public ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        CliTcpIdentity();
-        ~CliTcpIdentity();
+        CliTcp();
+        ~CliTcp();
 
 
-}; // CliTcpIdentity
+}; // CliTcp
 
 
 }

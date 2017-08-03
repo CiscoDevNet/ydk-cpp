@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_tunnel_l2tun_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tunnel_l2tun_oper {
 
 L2Tp::L2Tp()
@@ -53,7 +55,7 @@ bool L2Tp::has_data() const
 
 bool L2Tp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (classes !=  nullptr && classes->has_operation())
 	|| (counter_hist_fail !=  nullptr && counter_hist_fail->has_operation())
 	|| (counters !=  nullptr && counters->has_operation())
@@ -199,7 +201,11 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::get_children() const
     return children;
 }
 
-void L2Tp::set_value(const std::string & value_path, std::string value)
+void L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -223,6 +229,18 @@ augment_capabilities_function L2Tp::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> L2Tp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classes" || name == "counter-hist-fail" || name == "counters" || name == "session" || name == "sessions" || name == "tunnel-configurations" || name == "tunnels")
+        return true;
+    return false;
+}
+
 L2Tp::Counters::Counters()
     :
     control(std::make_shared<L2Tp::Counters::Control>())
@@ -243,7 +261,7 @@ bool L2Tp::Counters::has_data() const
 
 bool L2Tp::Counters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (control !=  nullptr && control->has_operation());
 }
 
@@ -302,8 +320,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::get_children() co
     return children;
 }
 
-void L2Tp::Counters::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "control")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Control()
@@ -330,7 +359,7 @@ bool L2Tp::Counters::Control::has_data() const
 
 bool L2Tp::Counters::Control::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tunnel_xr !=  nullptr && tunnel_xr->has_operation())
 	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
@@ -404,8 +433,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::get_chil
     return children;
 }
 
-void L2Tp::Counters::Control::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Counters::Control::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Counters::Control::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-xr" || name == "tunnels")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::TunnelXr()
@@ -432,7 +472,7 @@ bool L2Tp::Counters::Control::TunnelXr::has_data() const
 
 bool L2Tp::Counters::Control::TunnelXr::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (global !=  nullptr && global->has_operation());
 }
@@ -506,8 +546,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Counters::Control::TunnelXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Counters::Control::TunnelXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication" || name == "global")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::Authentication()
@@ -562,7 +613,7 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::has_data() const
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (challenge_avp !=  nullptr && challenge_avp->has_operation())
 	|| (challenge_reponse !=  nullptr && challenge_reponse->has_operation())
 	|| (common_digest !=  nullptr && common_digest->has_operation())
@@ -741,8 +792,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "challenge-avp" || name == "challenge-reponse" || name == "common-digest" || name == "integrity-check" || name == "local-secret" || name == "nonce-avp" || name == "overall-statistics" || name == "primary-digest" || name == "secondary-digest")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::NonceAvp()
@@ -783,18 +845,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_data() con
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::get_segment_path() const
@@ -820,17 +882,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -849,52 +911,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::NonceAvp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::CommonDigest()
@@ -935,18 +1074,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_data()
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::get_segment_path() const
@@ -972,17 +1111,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1001,52 +1140,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::CommonDigest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::PrimaryDigest()
@@ -1087,18 +1303,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_data(
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_segment_path() const
@@ -1124,17 +1340,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDiges
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1153,52 +1369,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::SecondaryDigest()
@@ -1239,18 +1532,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_dat
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_segment_path() const
@@ -1276,17 +1569,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDig
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1305,52 +1598,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::IntegrityCheck()
@@ -1391,18 +1761,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_data
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_segment_path() const
@@ -1428,17 +1798,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityChe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1457,52 +1827,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::LocalSecret()
@@ -1543,18 +1990,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_data() 
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::get_segment_path() const
@@ -1580,17 +2027,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1609,52 +2056,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::LocalSecret::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ChallengeAvp()
@@ -1695,18 +2219,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_data()
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_segment_path() const
@@ -1732,17 +2256,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1761,52 +2285,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::ChallengeReponse()
@@ -1847,18 +2448,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_da
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_segment_path() const
@@ -1884,17 +2485,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeRep
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1913,52 +2514,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::OverallStatistics()
@@ -1999,18 +2677,18 @@ bool L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_d
 
 bool L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_segment_path() const
@@ -2036,17 +2714,17 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Authentication::OverallStati
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2065,52 +2743,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Global::Global()
@@ -2154,11 +2909,11 @@ bool L2Tp::Counters::Control::TunnelXr::Global::has_data() const
 
 bool L2Tp::Counters::Control::TunnelXr::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(total_drop.operation)
-	|| is_set(total_received.operation)
-	|| is_set(total_retransmit.operation)
-	|| is_set(total_transmit.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(total_drop.yfilter)
+	|| ydk::is_set(total_received.yfilter)
+	|| ydk::is_set(total_retransmit.yfilter)
+	|| ydk::is_set(total_transmit.yfilter)
 	|| (drop !=  nullptr && drop->has_operation())
 	|| (received !=  nullptr && received->has_operation())
 	|| (retransmit !=  nullptr && retransmit->has_operation())
@@ -2188,10 +2943,10 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Global::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total_drop.is_set || is_set(total_drop.operation)) leaf_name_data.push_back(total_drop.get_name_leafdata());
-    if (total_received.is_set || is_set(total_received.operation)) leaf_name_data.push_back(total_received.get_name_leafdata());
-    if (total_retransmit.is_set || is_set(total_retransmit.operation)) leaf_name_data.push_back(total_retransmit.get_name_leafdata());
-    if (total_transmit.is_set || is_set(total_transmit.operation)) leaf_name_data.push_back(total_transmit.get_name_leafdata());
+    if (total_drop.is_set || is_set(total_drop.yfilter)) leaf_name_data.push_back(total_drop.get_name_leafdata());
+    if (total_received.is_set || is_set(total_received.yfilter)) leaf_name_data.push_back(total_received.get_name_leafdata());
+    if (total_retransmit.is_set || is_set(total_retransmit.yfilter)) leaf_name_data.push_back(total_retransmit.get_name_leafdata());
+    if (total_transmit.is_set || is_set(total_transmit.yfilter)) leaf_name_data.push_back(total_transmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2266,24 +3021,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-drop")
     {
         total_drop = value;
+        total_drop.value_namespace = name_space;
+        total_drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-received")
     {
         total_received = value;
+        total_received.value_namespace = name_space;
+        total_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-retransmit")
     {
         total_retransmit = value;
+        total_retransmit.value_namespace = name_space;
+        total_retransmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-transmit")
     {
         total_transmit = value;
+        total_transmit.value_namespace = name_space;
+        total_transmit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-drop")
+    {
+        total_drop.yfilter = yfilter;
+    }
+    if(value_path == "total-received")
+    {
+        total_received.yfilter = yfilter;
+    }
+    if(value_path == "total-retransmit")
+    {
+        total_retransmit.yfilter = yfilter;
+    }
+    if(value_path == "total-transmit")
+    {
+        total_transmit.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop" || name == "received" || name == "retransmit" || name == "transmit" || name == "total-drop" || name == "total-received" || name == "total-retransmit" || name == "total-transmit")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Global::Transmit::Transmit()
@@ -2340,26 +3130,26 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Transmit::has_data() const
 
 bool L2Tp::Counters::Control::TunnelXr::Global::Transmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_segment_path() const
@@ -2385,25 +3175,25 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Global::Transmit::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2422,84 +3212,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Global::Retransmit::Retransmit()
@@ -2556,26 +3471,26 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Retransmit::has_data() const
 
 bool L2Tp::Counters::Control::TunnelXr::Global::Retransmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_segment_path() const
@@ -2601,25 +3516,25 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Global::Retransmit::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2638,84 +3553,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Global::Received::Received()
@@ -2772,26 +3812,26 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Received::has_data() const
 
 bool L2Tp::Counters::Control::TunnelXr::Global::Received::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Global::Received::get_segment_path() const
@@ -2817,25 +3857,25 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Global::Received::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2854,84 +3894,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Received::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::TunnelXr::Global::Drop::Drop()
@@ -2988,26 +4153,26 @@ bool L2Tp::Counters::Control::TunnelXr::Global::Drop::has_data() const
 
 bool L2Tp::Counters::Control::TunnelXr::Global::Drop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tp::Counters::Control::TunnelXr::Global::Drop::get_segment_path() const
@@ -3033,25 +4198,25 @@ const EntityPath L2Tp::Counters::Control::TunnelXr::Global::Drop::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3070,84 +4235,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::TunnelXr
     return children;
 }
 
-void L2Tp::Counters::Control::TunnelXr::Global::Drop::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::TunnelXr::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::TunnelXr::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::TunnelXr::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Tunnels::Tunnels()
@@ -3176,7 +4466,7 @@ bool L2Tp::Counters::Control::Tunnels::has_operation() const
         if(tunnel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tp::Counters::Control::Tunnels::get_segment_path() const
@@ -3241,8 +4531,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Counters::Control::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Counters::Control::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Tunnels::Tunnel::Tunnel()
@@ -3272,8 +4573,8 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::has_data() const
 
 bool L2Tp::Counters::Control::Tunnels::Tunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tunnel_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
 	|| (brief !=  nullptr && brief->has_operation())
 	|| (global !=  nullptr && global->has_operation());
 }
@@ -3301,7 +4602,7 @@ const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3348,12 +4649,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief" || name == "global" || name == "tunnel-id")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Tunnels::Tunnel::Brief::Brief()
@@ -3378,10 +4696,10 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Brief::has_data() const
 
 bool L2Tp::Counters::Control::Tunnels::Tunnel::Brief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_address.operation)
-	|| is_set(remote_address.operation)
-	|| is_set(remote_tunnel_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter);
 }
 
 std::string L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_segment_path() const
@@ -3407,9 +4725,9 @@ const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Brief::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3428,20 +4746,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::Tunnels::Tunnel::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::Tunnels::Tunnel::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "remote-address" || name == "remote-tunnel-id")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Tunnels::Tunnel::Global::Global()
@@ -3485,11 +4832,11 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::has_data() const
 
 bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(total_drop.operation)
-	|| is_set(total_received.operation)
-	|| is_set(total_retransmit.operation)
-	|| is_set(total_transmit.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(total_drop.yfilter)
+	|| ydk::is_set(total_received.yfilter)
+	|| ydk::is_set(total_retransmit.yfilter)
+	|| ydk::is_set(total_transmit.yfilter)
 	|| (drop !=  nullptr && drop->has_operation())
 	|| (received !=  nullptr && received->has_operation())
 	|| (retransmit !=  nullptr && retransmit->has_operation())
@@ -3519,10 +4866,10 @@ const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total_drop.is_set || is_set(total_drop.operation)) leaf_name_data.push_back(total_drop.get_name_leafdata());
-    if (total_received.is_set || is_set(total_received.operation)) leaf_name_data.push_back(total_received.get_name_leafdata());
-    if (total_retransmit.is_set || is_set(total_retransmit.operation)) leaf_name_data.push_back(total_retransmit.get_name_leafdata());
-    if (total_transmit.is_set || is_set(total_transmit.operation)) leaf_name_data.push_back(total_transmit.get_name_leafdata());
+    if (total_drop.is_set || is_set(total_drop.yfilter)) leaf_name_data.push_back(total_drop.get_name_leafdata());
+    if (total_received.is_set || is_set(total_received.yfilter)) leaf_name_data.push_back(total_received.get_name_leafdata());
+    if (total_retransmit.is_set || is_set(total_retransmit.yfilter)) leaf_name_data.push_back(total_retransmit.get_name_leafdata());
+    if (total_transmit.is_set || is_set(total_transmit.yfilter)) leaf_name_data.push_back(total_transmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3597,24 +4944,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-drop")
     {
         total_drop = value;
+        total_drop.value_namespace = name_space;
+        total_drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-received")
     {
         total_received = value;
+        total_received.value_namespace = name_space;
+        total_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-retransmit")
     {
         total_retransmit = value;
+        total_retransmit.value_namespace = name_space;
+        total_retransmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-transmit")
     {
         total_transmit = value;
+        total_transmit.value_namespace = name_space;
+        total_transmit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-drop")
+    {
+        total_drop.yfilter = yfilter;
+    }
+    if(value_path == "total-received")
+    {
+        total_received.yfilter = yfilter;
+    }
+    if(value_path == "total-retransmit")
+    {
+        total_retransmit.yfilter = yfilter;
+    }
+    if(value_path == "total-transmit")
+    {
+        total_transmit.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop" || name == "received" || name == "retransmit" || name == "transmit" || name == "total-drop" || name == "total-received" || name == "total-retransmit" || name == "total-transmit")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::Transmit()
@@ -3671,26 +5053,26 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_data() cons
 
 bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_segment_path() const
@@ -3716,25 +5098,25 @@ const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3753,84 +5135,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::Retransmit()
@@ -3887,26 +5394,26 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_data() co
 
 bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_segment_path() const
@@ -3932,25 +5439,25 @@ const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3969,84 +5476,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::Received()
@@ -4103,26 +5735,26 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_data() cons
 
 bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get_segment_path() const
@@ -4148,25 +5780,25 @@ const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4185,84 +5817,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::Drop()
@@ -4319,26 +6076,26 @@ bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_data() const
 
 bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_segment_path() const
@@ -4364,25 +6121,25 @@ const EntityPath L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4401,84 +6158,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Counters::Control::Tunnels:
     return children;
 }
 
-void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std::string & value_path, std::string value)
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Counters::Control::Tunnels::Tunnel::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tp::TunnelConfigurations::TunnelConfigurations()
@@ -4507,7 +6389,7 @@ bool L2Tp::TunnelConfigurations::has_operation() const
         if(tunnel_configuration[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tp::TunnelConfigurations::get_segment_path() const
@@ -4572,8 +6454,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::get_c
     return children;
 }
 
-void L2Tp::TunnelConfigurations::set_value(const std::string & value_path, std::string value)
+void L2Tp::TunnelConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::TunnelConfigurations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::TunnelConfigurations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-configuration")
+        return true;
+    return false;
 }
 
 L2Tp::TunnelConfigurations::TunnelConfiguration::TunnelConfiguration()
@@ -4601,9 +6494,9 @@ bool L2Tp::TunnelConfigurations::TunnelConfiguration::has_data() const
 
 bool L2Tp::TunnelConfigurations::TunnelConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_tunnel_id.operation)
-	|| is_set(remote_tunnel_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_tunnel_id.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter)
 	|| (l2tp_class !=  nullptr && l2tp_class->has_operation());
 }
 
@@ -4630,8 +6523,8 @@ const EntityPath L2Tp::TunnelConfigurations::TunnelConfiguration::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4664,16 +6557,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::Tunne
     return children;
 }
 
-void L2Tp::TunnelConfigurations::TunnelConfiguration::set_value(const std::string & value_path, std::string value)
+void L2Tp::TunnelConfigurations::TunnelConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+        local_tunnel_id.value_namespace = name_space;
+        local_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::TunnelConfigurations::TunnelConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::TunnelConfigurations::TunnelConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2tp-class" || name == "local-tunnel-id" || name == "remote-tunnel-id")
+        return true;
+    return false;
 }
 
 L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::L2TpClass()
@@ -4740,31 +6656,31 @@ bool L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_data() cons
 
 bool L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting_method_list.operation)
-	|| is_set(class_name_xr.operation)
-	|| is_set(digest_hash.operation)
-	|| is_set(encoded_password.operation)
-	|| is_set(hello_timeout.operation)
-	|| is_set(host_name.operation)
-	|| is_set(initial_retransmit_maximum_timeout.operation)
-	|| is_set(initial_retransmit_minimum_timeout.operation)
-	|| is_set(initial_retransmit_retries.operation)
-	|| is_set(ip_tos.operation)
-	|| is_set(is_authentication_enabled.operation)
-	|| is_set(is_congestion_control_enabled.operation)
-	|| is_set(is_digest_check_enabled.operation)
-	|| is_set(is_digest_enabled.operation)
-	|| is_set(is_hidden.operation)
-	|| is_set(is_peer_address_checked.operation)
-	|| is_set(password.operation)
-	|| is_set(receive_window_size.operation)
-	|| is_set(retransmit_maximum_timeout.operation)
-	|| is_set(retransmit_minimum_timeout.operation)
-	|| is_set(retransmit_retries.operation)
-	|| is_set(setup_timeout.operation)
-	|| is_set(timeout_no_user.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(accounting_method_list.yfilter)
+	|| ydk::is_set(class_name_xr.yfilter)
+	|| ydk::is_set(digest_hash.yfilter)
+	|| ydk::is_set(encoded_password.yfilter)
+	|| ydk::is_set(hello_timeout.yfilter)
+	|| ydk::is_set(host_name.yfilter)
+	|| ydk::is_set(initial_retransmit_maximum_timeout.yfilter)
+	|| ydk::is_set(initial_retransmit_minimum_timeout.yfilter)
+	|| ydk::is_set(initial_retransmit_retries.yfilter)
+	|| ydk::is_set(ip_tos.yfilter)
+	|| ydk::is_set(is_authentication_enabled.yfilter)
+	|| ydk::is_set(is_congestion_control_enabled.yfilter)
+	|| ydk::is_set(is_digest_check_enabled.yfilter)
+	|| ydk::is_set(is_digest_enabled.yfilter)
+	|| ydk::is_set(is_hidden.yfilter)
+	|| ydk::is_set(is_peer_address_checked.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(receive_window_size.yfilter)
+	|| ydk::is_set(retransmit_maximum_timeout.yfilter)
+	|| ydk::is_set(retransmit_minimum_timeout.yfilter)
+	|| ydk::is_set(retransmit_retries.yfilter)
+	|| ydk::is_set(setup_timeout.yfilter)
+	|| ydk::is_set(timeout_no_user.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_segment_path() const
@@ -4790,30 +6706,30 @@ const EntityPath L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting_method_list.is_set || is_set(accounting_method_list.operation)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
-    if (class_name_xr.is_set || is_set(class_name_xr.operation)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
-    if (digest_hash.is_set || is_set(digest_hash.operation)) leaf_name_data.push_back(digest_hash.get_name_leafdata());
-    if (encoded_password.is_set || is_set(encoded_password.operation)) leaf_name_data.push_back(encoded_password.get_name_leafdata());
-    if (hello_timeout.is_set || is_set(hello_timeout.operation)) leaf_name_data.push_back(hello_timeout.get_name_leafdata());
-    if (host_name.is_set || is_set(host_name.operation)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (initial_retransmit_maximum_timeout.is_set || is_set(initial_retransmit_maximum_timeout.operation)) leaf_name_data.push_back(initial_retransmit_maximum_timeout.get_name_leafdata());
-    if (initial_retransmit_minimum_timeout.is_set || is_set(initial_retransmit_minimum_timeout.operation)) leaf_name_data.push_back(initial_retransmit_minimum_timeout.get_name_leafdata());
-    if (initial_retransmit_retries.is_set || is_set(initial_retransmit_retries.operation)) leaf_name_data.push_back(initial_retransmit_retries.get_name_leafdata());
-    if (ip_tos.is_set || is_set(ip_tos.operation)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
-    if (is_authentication_enabled.is_set || is_set(is_authentication_enabled.operation)) leaf_name_data.push_back(is_authentication_enabled.get_name_leafdata());
-    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.operation)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
-    if (is_digest_check_enabled.is_set || is_set(is_digest_check_enabled.operation)) leaf_name_data.push_back(is_digest_check_enabled.get_name_leafdata());
-    if (is_digest_enabled.is_set || is_set(is_digest_enabled.operation)) leaf_name_data.push_back(is_digest_enabled.get_name_leafdata());
-    if (is_hidden.is_set || is_set(is_hidden.operation)) leaf_name_data.push_back(is_hidden.get_name_leafdata());
-    if (is_peer_address_checked.is_set || is_set(is_peer_address_checked.operation)) leaf_name_data.push_back(is_peer_address_checked.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (receive_window_size.is_set || is_set(receive_window_size.operation)) leaf_name_data.push_back(receive_window_size.get_name_leafdata());
-    if (retransmit_maximum_timeout.is_set || is_set(retransmit_maximum_timeout.operation)) leaf_name_data.push_back(retransmit_maximum_timeout.get_name_leafdata());
-    if (retransmit_minimum_timeout.is_set || is_set(retransmit_minimum_timeout.operation)) leaf_name_data.push_back(retransmit_minimum_timeout.get_name_leafdata());
-    if (retransmit_retries.is_set || is_set(retransmit_retries.operation)) leaf_name_data.push_back(retransmit_retries.get_name_leafdata());
-    if (setup_timeout.is_set || is_set(setup_timeout.operation)) leaf_name_data.push_back(setup_timeout.get_name_leafdata());
-    if (timeout_no_user.is_set || is_set(timeout_no_user.operation)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (accounting_method_list.is_set || is_set(accounting_method_list.yfilter)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
+    if (class_name_xr.is_set || is_set(class_name_xr.yfilter)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
+    if (digest_hash.is_set || is_set(digest_hash.yfilter)) leaf_name_data.push_back(digest_hash.get_name_leafdata());
+    if (encoded_password.is_set || is_set(encoded_password.yfilter)) leaf_name_data.push_back(encoded_password.get_name_leafdata());
+    if (hello_timeout.is_set || is_set(hello_timeout.yfilter)) leaf_name_data.push_back(hello_timeout.get_name_leafdata());
+    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
+    if (initial_retransmit_maximum_timeout.is_set || is_set(initial_retransmit_maximum_timeout.yfilter)) leaf_name_data.push_back(initial_retransmit_maximum_timeout.get_name_leafdata());
+    if (initial_retransmit_minimum_timeout.is_set || is_set(initial_retransmit_minimum_timeout.yfilter)) leaf_name_data.push_back(initial_retransmit_minimum_timeout.get_name_leafdata());
+    if (initial_retransmit_retries.is_set || is_set(initial_retransmit_retries.yfilter)) leaf_name_data.push_back(initial_retransmit_retries.get_name_leafdata());
+    if (ip_tos.is_set || is_set(ip_tos.yfilter)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
+    if (is_authentication_enabled.is_set || is_set(is_authentication_enabled.yfilter)) leaf_name_data.push_back(is_authentication_enabled.get_name_leafdata());
+    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.yfilter)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
+    if (is_digest_check_enabled.is_set || is_set(is_digest_check_enabled.yfilter)) leaf_name_data.push_back(is_digest_check_enabled.get_name_leafdata());
+    if (is_digest_enabled.is_set || is_set(is_digest_enabled.yfilter)) leaf_name_data.push_back(is_digest_enabled.get_name_leafdata());
+    if (is_hidden.is_set || is_set(is_hidden.yfilter)) leaf_name_data.push_back(is_hidden.get_name_leafdata());
+    if (is_peer_address_checked.is_set || is_set(is_peer_address_checked.yfilter)) leaf_name_data.push_back(is_peer_address_checked.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (receive_window_size.is_set || is_set(receive_window_size.yfilter)) leaf_name_data.push_back(receive_window_size.get_name_leafdata());
+    if (retransmit_maximum_timeout.is_set || is_set(retransmit_maximum_timeout.yfilter)) leaf_name_data.push_back(retransmit_maximum_timeout.get_name_leafdata());
+    if (retransmit_minimum_timeout.is_set || is_set(retransmit_minimum_timeout.yfilter)) leaf_name_data.push_back(retransmit_minimum_timeout.get_name_leafdata());
+    if (retransmit_retries.is_set || is_set(retransmit_retries.yfilter)) leaf_name_data.push_back(retransmit_retries.get_name_leafdata());
+    if (setup_timeout.is_set || is_set(setup_timeout.yfilter)) leaf_name_data.push_back(setup_timeout.get_name_leafdata());
+    if (timeout_no_user.is_set || is_set(timeout_no_user.yfilter)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4832,104 +6748,259 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::TunnelConfigurations::Tunne
     return children;
 }
 
-void L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_value(const std::string & value_path, std::string value)
+void L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting-method-list")
     {
         accounting_method_list = value;
+        accounting_method_list.value_namespace = name_space;
+        accounting_method_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name-xr")
     {
         class_name_xr = value;
+        class_name_xr.value_namespace = name_space;
+        class_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "digest-hash")
     {
         digest_hash = value;
+        digest_hash.value_namespace = name_space;
+        digest_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encoded-password")
     {
         encoded_password = value;
+        encoded_password.value_namespace = name_space;
+        encoded_password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-timeout")
     {
         hello_timeout = value;
+        hello_timeout.value_namespace = name_space;
+        hello_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-name")
     {
         host_name = value;
+        host_name.value_namespace = name_space;
+        host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-maximum-timeout")
     {
         initial_retransmit_maximum_timeout = value;
+        initial_retransmit_maximum_timeout.value_namespace = name_space;
+        initial_retransmit_maximum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-minimum-timeout")
     {
         initial_retransmit_minimum_timeout = value;
+        initial_retransmit_minimum_timeout.value_namespace = name_space;
+        initial_retransmit_minimum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-retries")
     {
         initial_retransmit_retries = value;
+        initial_retransmit_retries.value_namespace = name_space;
+        initial_retransmit_retries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-tos")
     {
         ip_tos = value;
+        ip_tos.value_namespace = name_space;
+        ip_tos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-authentication-enabled")
     {
         is_authentication_enabled = value;
+        is_authentication_enabled.value_namespace = name_space;
+        is_authentication_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-congestion-control-enabled")
     {
         is_congestion_control_enabled = value;
+        is_congestion_control_enabled.value_namespace = name_space;
+        is_congestion_control_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-digest-check-enabled")
     {
         is_digest_check_enabled = value;
+        is_digest_check_enabled.value_namespace = name_space;
+        is_digest_check_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-digest-enabled")
     {
         is_digest_enabled = value;
+        is_digest_enabled.value_namespace = name_space;
+        is_digest_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-hidden")
     {
         is_hidden = value;
+        is_hidden.value_namespace = name_space;
+        is_hidden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-peer-address-checked")
     {
         is_peer_address_checked = value;
+        is_peer_address_checked.value_namespace = name_space;
+        is_peer_address_checked.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receive-window-size")
     {
         receive_window_size = value;
+        receive_window_size.value_namespace = name_space;
+        receive_window_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-maximum-timeout")
     {
         retransmit_maximum_timeout = value;
+        retransmit_maximum_timeout.value_namespace = name_space;
+        retransmit_maximum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-minimum-timeout")
     {
         retransmit_minimum_timeout = value;
+        retransmit_minimum_timeout.value_namespace = name_space;
+        retransmit_minimum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-retries")
     {
         retransmit_retries = value;
+        retransmit_retries.value_namespace = name_space;
+        retransmit_retries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-timeout")
     {
         setup_timeout = value;
+        setup_timeout.value_namespace = name_space;
+        setup_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-no-user")
     {
         timeout_no_user = value;
+        timeout_no_user.value_namespace = name_space;
+        timeout_no_user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting-method-list")
+    {
+        accounting_method_list.yfilter = yfilter;
+    }
+    if(value_path == "class-name-xr")
+    {
+        class_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "digest-hash")
+    {
+        digest_hash.yfilter = yfilter;
+    }
+    if(value_path == "encoded-password")
+    {
+        encoded_password.yfilter = yfilter;
+    }
+    if(value_path == "hello-timeout")
+    {
+        hello_timeout.yfilter = yfilter;
+    }
+    if(value_path == "host-name")
+    {
+        host_name.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-maximum-timeout")
+    {
+        initial_retransmit_maximum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-minimum-timeout")
+    {
+        initial_retransmit_minimum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-retries")
+    {
+        initial_retransmit_retries.yfilter = yfilter;
+    }
+    if(value_path == "ip-tos")
+    {
+        ip_tos.yfilter = yfilter;
+    }
+    if(value_path == "is-authentication-enabled")
+    {
+        is_authentication_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-congestion-control-enabled")
+    {
+        is_congestion_control_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-digest-check-enabled")
+    {
+        is_digest_check_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-digest-enabled")
+    {
+        is_digest_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-hidden")
+    {
+        is_hidden.yfilter = yfilter;
+    }
+    if(value_path == "is-peer-address-checked")
+    {
+        is_peer_address_checked.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "receive-window-size")
+    {
+        receive_window_size.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-maximum-timeout")
+    {
+        retransmit_maximum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-minimum-timeout")
+    {
+        retransmit_minimum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-retries")
+    {
+        retransmit_retries.yfilter = yfilter;
+    }
+    if(value_path == "setup-timeout")
+    {
+        setup_timeout.yfilter = yfilter;
+    }
+    if(value_path == "timeout-no-user")
+    {
+        timeout_no_user.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting-method-list" || name == "class-name-xr" || name == "digest-hash" || name == "encoded-password" || name == "hello-timeout" || name == "host-name" || name == "initial-retransmit-maximum-timeout" || name == "initial-retransmit-minimum-timeout" || name == "initial-retransmit-retries" || name == "ip-tos" || name == "is-authentication-enabled" || name == "is-congestion-control-enabled" || name == "is-digest-check-enabled" || name == "is-digest-enabled" || name == "is-hidden" || name == "is-peer-address-checked" || name == "password" || name == "receive-window-size" || name == "retransmit-maximum-timeout" || name == "retransmit-minimum-timeout" || name == "retransmit-retries" || name == "setup-timeout" || name == "timeout-no-user" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 L2Tp::CounterHistFail::CounterHistFail()
@@ -4962,14 +7033,14 @@ bool L2Tp::CounterHistFail::has_operation() const
 {
     for (auto const & leaf : pkt_timeout.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(pkt_timeout.operation)
-	|| is_set(rx_counters.operation)
-	|| is_set(sess_down_tmout.operation)
-	|| is_set(tx_counters.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pkt_timeout.yfilter)
+	|| ydk::is_set(rx_counters.yfilter)
+	|| ydk::is_set(sess_down_tmout.yfilter)
+	|| ydk::is_set(tx_counters.yfilter);
 }
 
 std::string L2Tp::CounterHistFail::get_segment_path() const
@@ -4995,9 +7066,9 @@ const EntityPath L2Tp::CounterHistFail::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rx_counters.is_set || is_set(rx_counters.operation)) leaf_name_data.push_back(rx_counters.get_name_leafdata());
-    if (sess_down_tmout.is_set || is_set(sess_down_tmout.operation)) leaf_name_data.push_back(sess_down_tmout.get_name_leafdata());
-    if (tx_counters.is_set || is_set(tx_counters.operation)) leaf_name_data.push_back(tx_counters.get_name_leafdata());
+    if (rx_counters.is_set || is_set(rx_counters.yfilter)) leaf_name_data.push_back(rx_counters.get_name_leafdata());
+    if (sess_down_tmout.is_set || is_set(sess_down_tmout.yfilter)) leaf_name_data.push_back(sess_down_tmout.get_name_leafdata());
+    if (tx_counters.is_set || is_set(tx_counters.yfilter)) leaf_name_data.push_back(tx_counters.get_name_leafdata());
 
     auto pkt_timeout_name_datas = pkt_timeout.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), pkt_timeout_name_datas.begin(), pkt_timeout_name_datas.end());
@@ -5018,7 +7089,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::CounterHistFail::get_childr
     return children;
 }
 
-void L2Tp::CounterHistFail::set_value(const std::string & value_path, std::string value)
+void L2Tp::CounterHistFail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pkt-timeout")
     {
@@ -5027,15 +7098,48 @@ void L2Tp::CounterHistFail::set_value(const std::string & value_path, std::strin
     if(value_path == "rx-counters")
     {
         rx_counters = value;
+        rx_counters.value_namespace = name_space;
+        rx_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sess-down-tmout")
     {
         sess_down_tmout = value;
+        sess_down_tmout.value_namespace = name_space;
+        sess_down_tmout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-counters")
     {
         tx_counters = value;
+        tx_counters.value_namespace = name_space;
+        tx_counters.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::CounterHistFail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pkt-timeout")
+    {
+        pkt_timeout.yfilter = yfilter;
+    }
+    if(value_path == "rx-counters")
+    {
+        rx_counters.yfilter = yfilter;
+    }
+    if(value_path == "sess-down-tmout")
+    {
+        sess_down_tmout.yfilter = yfilter;
+    }
+    if(value_path == "tx-counters")
+    {
+        tx_counters.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::CounterHistFail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pkt-timeout" || name == "rx-counters" || name == "sess-down-tmout" || name == "tx-counters")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Classes()
@@ -5064,7 +7168,7 @@ bool L2Tp::Classes::has_operation() const
         if(class_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tp::Classes::get_segment_path() const
@@ -5129,8 +7233,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::get_children() con
     return children;
 }
 
-void L2Tp::Classes::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Classes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Classes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class")
+        return true;
+    return false;
 }
 
 L2Tp::Classes::Class_::Class_()
@@ -5199,32 +7314,32 @@ bool L2Tp::Classes::Class_::has_data() const
 
 bool L2Tp::Classes::Class_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(class_name.operation)
-	|| is_set(accounting_method_list.operation)
-	|| is_set(class_name_xr.operation)
-	|| is_set(digest_hash.operation)
-	|| is_set(encoded_password.operation)
-	|| is_set(hello_timeout.operation)
-	|| is_set(host_name.operation)
-	|| is_set(initial_retransmit_maximum_timeout.operation)
-	|| is_set(initial_retransmit_minimum_timeout.operation)
-	|| is_set(initial_retransmit_retries.operation)
-	|| is_set(ip_tos.operation)
-	|| is_set(is_authentication_enabled.operation)
-	|| is_set(is_congestion_control_enabled.operation)
-	|| is_set(is_digest_check_enabled.operation)
-	|| is_set(is_digest_enabled.operation)
-	|| is_set(is_hidden.operation)
-	|| is_set(is_peer_address_checked.operation)
-	|| is_set(password.operation)
-	|| is_set(receive_window_size.operation)
-	|| is_set(retransmit_maximum_timeout.operation)
-	|| is_set(retransmit_minimum_timeout.operation)
-	|| is_set(retransmit_retries.operation)
-	|| is_set(setup_timeout.operation)
-	|| is_set(timeout_no_user.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(accounting_method_list.yfilter)
+	|| ydk::is_set(class_name_xr.yfilter)
+	|| ydk::is_set(digest_hash.yfilter)
+	|| ydk::is_set(encoded_password.yfilter)
+	|| ydk::is_set(hello_timeout.yfilter)
+	|| ydk::is_set(host_name.yfilter)
+	|| ydk::is_set(initial_retransmit_maximum_timeout.yfilter)
+	|| ydk::is_set(initial_retransmit_minimum_timeout.yfilter)
+	|| ydk::is_set(initial_retransmit_retries.yfilter)
+	|| ydk::is_set(ip_tos.yfilter)
+	|| ydk::is_set(is_authentication_enabled.yfilter)
+	|| ydk::is_set(is_congestion_control_enabled.yfilter)
+	|| ydk::is_set(is_digest_check_enabled.yfilter)
+	|| ydk::is_set(is_digest_enabled.yfilter)
+	|| ydk::is_set(is_hidden.yfilter)
+	|| ydk::is_set(is_peer_address_checked.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(receive_window_size.yfilter)
+	|| ydk::is_set(retransmit_maximum_timeout.yfilter)
+	|| ydk::is_set(retransmit_minimum_timeout.yfilter)
+	|| ydk::is_set(retransmit_retries.yfilter)
+	|| ydk::is_set(setup_timeout.yfilter)
+	|| ydk::is_set(timeout_no_user.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string L2Tp::Classes::Class_::get_segment_path() const
@@ -5250,31 +7365,31 @@ const EntityPath L2Tp::Classes::Class_::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (accounting_method_list.is_set || is_set(accounting_method_list.operation)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
-    if (class_name_xr.is_set || is_set(class_name_xr.operation)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
-    if (digest_hash.is_set || is_set(digest_hash.operation)) leaf_name_data.push_back(digest_hash.get_name_leafdata());
-    if (encoded_password.is_set || is_set(encoded_password.operation)) leaf_name_data.push_back(encoded_password.get_name_leafdata());
-    if (hello_timeout.is_set || is_set(hello_timeout.operation)) leaf_name_data.push_back(hello_timeout.get_name_leafdata());
-    if (host_name.is_set || is_set(host_name.operation)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (initial_retransmit_maximum_timeout.is_set || is_set(initial_retransmit_maximum_timeout.operation)) leaf_name_data.push_back(initial_retransmit_maximum_timeout.get_name_leafdata());
-    if (initial_retransmit_minimum_timeout.is_set || is_set(initial_retransmit_minimum_timeout.operation)) leaf_name_data.push_back(initial_retransmit_minimum_timeout.get_name_leafdata());
-    if (initial_retransmit_retries.is_set || is_set(initial_retransmit_retries.operation)) leaf_name_data.push_back(initial_retransmit_retries.get_name_leafdata());
-    if (ip_tos.is_set || is_set(ip_tos.operation)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
-    if (is_authentication_enabled.is_set || is_set(is_authentication_enabled.operation)) leaf_name_data.push_back(is_authentication_enabled.get_name_leafdata());
-    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.operation)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
-    if (is_digest_check_enabled.is_set || is_set(is_digest_check_enabled.operation)) leaf_name_data.push_back(is_digest_check_enabled.get_name_leafdata());
-    if (is_digest_enabled.is_set || is_set(is_digest_enabled.operation)) leaf_name_data.push_back(is_digest_enabled.get_name_leafdata());
-    if (is_hidden.is_set || is_set(is_hidden.operation)) leaf_name_data.push_back(is_hidden.get_name_leafdata());
-    if (is_peer_address_checked.is_set || is_set(is_peer_address_checked.operation)) leaf_name_data.push_back(is_peer_address_checked.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (receive_window_size.is_set || is_set(receive_window_size.operation)) leaf_name_data.push_back(receive_window_size.get_name_leafdata());
-    if (retransmit_maximum_timeout.is_set || is_set(retransmit_maximum_timeout.operation)) leaf_name_data.push_back(retransmit_maximum_timeout.get_name_leafdata());
-    if (retransmit_minimum_timeout.is_set || is_set(retransmit_minimum_timeout.operation)) leaf_name_data.push_back(retransmit_minimum_timeout.get_name_leafdata());
-    if (retransmit_retries.is_set || is_set(retransmit_retries.operation)) leaf_name_data.push_back(retransmit_retries.get_name_leafdata());
-    if (setup_timeout.is_set || is_set(setup_timeout.operation)) leaf_name_data.push_back(setup_timeout.get_name_leafdata());
-    if (timeout_no_user.is_set || is_set(timeout_no_user.operation)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (accounting_method_list.is_set || is_set(accounting_method_list.yfilter)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
+    if (class_name_xr.is_set || is_set(class_name_xr.yfilter)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
+    if (digest_hash.is_set || is_set(digest_hash.yfilter)) leaf_name_data.push_back(digest_hash.get_name_leafdata());
+    if (encoded_password.is_set || is_set(encoded_password.yfilter)) leaf_name_data.push_back(encoded_password.get_name_leafdata());
+    if (hello_timeout.is_set || is_set(hello_timeout.yfilter)) leaf_name_data.push_back(hello_timeout.get_name_leafdata());
+    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
+    if (initial_retransmit_maximum_timeout.is_set || is_set(initial_retransmit_maximum_timeout.yfilter)) leaf_name_data.push_back(initial_retransmit_maximum_timeout.get_name_leafdata());
+    if (initial_retransmit_minimum_timeout.is_set || is_set(initial_retransmit_minimum_timeout.yfilter)) leaf_name_data.push_back(initial_retransmit_minimum_timeout.get_name_leafdata());
+    if (initial_retransmit_retries.is_set || is_set(initial_retransmit_retries.yfilter)) leaf_name_data.push_back(initial_retransmit_retries.get_name_leafdata());
+    if (ip_tos.is_set || is_set(ip_tos.yfilter)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
+    if (is_authentication_enabled.is_set || is_set(is_authentication_enabled.yfilter)) leaf_name_data.push_back(is_authentication_enabled.get_name_leafdata());
+    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.yfilter)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
+    if (is_digest_check_enabled.is_set || is_set(is_digest_check_enabled.yfilter)) leaf_name_data.push_back(is_digest_check_enabled.get_name_leafdata());
+    if (is_digest_enabled.is_set || is_set(is_digest_enabled.yfilter)) leaf_name_data.push_back(is_digest_enabled.get_name_leafdata());
+    if (is_hidden.is_set || is_set(is_hidden.yfilter)) leaf_name_data.push_back(is_hidden.get_name_leafdata());
+    if (is_peer_address_checked.is_set || is_set(is_peer_address_checked.yfilter)) leaf_name_data.push_back(is_peer_address_checked.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (receive_window_size.is_set || is_set(receive_window_size.yfilter)) leaf_name_data.push_back(receive_window_size.get_name_leafdata());
+    if (retransmit_maximum_timeout.is_set || is_set(retransmit_maximum_timeout.yfilter)) leaf_name_data.push_back(retransmit_maximum_timeout.get_name_leafdata());
+    if (retransmit_minimum_timeout.is_set || is_set(retransmit_minimum_timeout.yfilter)) leaf_name_data.push_back(retransmit_minimum_timeout.get_name_leafdata());
+    if (retransmit_retries.is_set || is_set(retransmit_retries.yfilter)) leaf_name_data.push_back(retransmit_retries.get_name_leafdata());
+    if (setup_timeout.is_set || is_set(setup_timeout.yfilter)) leaf_name_data.push_back(setup_timeout.get_name_leafdata());
+    if (timeout_no_user.is_set || is_set(timeout_no_user.yfilter)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5293,108 +7408,269 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Classes::Class_::get_childr
     return children;
 }
 
-void L2Tp::Classes::Class_::set_value(const std::string & value_path, std::string value)
+void L2Tp::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accounting-method-list")
     {
         accounting_method_list = value;
+        accounting_method_list.value_namespace = name_space;
+        accounting_method_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name-xr")
     {
         class_name_xr = value;
+        class_name_xr.value_namespace = name_space;
+        class_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "digest-hash")
     {
         digest_hash = value;
+        digest_hash.value_namespace = name_space;
+        digest_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encoded-password")
     {
         encoded_password = value;
+        encoded_password.value_namespace = name_space;
+        encoded_password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-timeout")
     {
         hello_timeout = value;
+        hello_timeout.value_namespace = name_space;
+        hello_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-name")
     {
         host_name = value;
+        host_name.value_namespace = name_space;
+        host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-maximum-timeout")
     {
         initial_retransmit_maximum_timeout = value;
+        initial_retransmit_maximum_timeout.value_namespace = name_space;
+        initial_retransmit_maximum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-minimum-timeout")
     {
         initial_retransmit_minimum_timeout = value;
+        initial_retransmit_minimum_timeout.value_namespace = name_space;
+        initial_retransmit_minimum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-retries")
     {
         initial_retransmit_retries = value;
+        initial_retransmit_retries.value_namespace = name_space;
+        initial_retransmit_retries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-tos")
     {
         ip_tos = value;
+        ip_tos.value_namespace = name_space;
+        ip_tos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-authentication-enabled")
     {
         is_authentication_enabled = value;
+        is_authentication_enabled.value_namespace = name_space;
+        is_authentication_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-congestion-control-enabled")
     {
         is_congestion_control_enabled = value;
+        is_congestion_control_enabled.value_namespace = name_space;
+        is_congestion_control_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-digest-check-enabled")
     {
         is_digest_check_enabled = value;
+        is_digest_check_enabled.value_namespace = name_space;
+        is_digest_check_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-digest-enabled")
     {
         is_digest_enabled = value;
+        is_digest_enabled.value_namespace = name_space;
+        is_digest_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-hidden")
     {
         is_hidden = value;
+        is_hidden.value_namespace = name_space;
+        is_hidden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-peer-address-checked")
     {
         is_peer_address_checked = value;
+        is_peer_address_checked.value_namespace = name_space;
+        is_peer_address_checked.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receive-window-size")
     {
         receive_window_size = value;
+        receive_window_size.value_namespace = name_space;
+        receive_window_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-maximum-timeout")
     {
         retransmit_maximum_timeout = value;
+        retransmit_maximum_timeout.value_namespace = name_space;
+        retransmit_maximum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-minimum-timeout")
     {
         retransmit_minimum_timeout = value;
+        retransmit_minimum_timeout.value_namespace = name_space;
+        retransmit_minimum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-retries")
     {
         retransmit_retries = value;
+        retransmit_retries.value_namespace = name_space;
+        retransmit_retries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-timeout")
     {
         setup_timeout = value;
+        setup_timeout.value_namespace = name_space;
+        setup_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-no-user")
     {
         timeout_no_user = value;
+        timeout_no_user.value_namespace = name_space;
+        timeout_no_user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "accounting-method-list")
+    {
+        accounting_method_list.yfilter = yfilter;
+    }
+    if(value_path == "class-name-xr")
+    {
+        class_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "digest-hash")
+    {
+        digest_hash.yfilter = yfilter;
+    }
+    if(value_path == "encoded-password")
+    {
+        encoded_password.yfilter = yfilter;
+    }
+    if(value_path == "hello-timeout")
+    {
+        hello_timeout.yfilter = yfilter;
+    }
+    if(value_path == "host-name")
+    {
+        host_name.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-maximum-timeout")
+    {
+        initial_retransmit_maximum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-minimum-timeout")
+    {
+        initial_retransmit_minimum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-retries")
+    {
+        initial_retransmit_retries.yfilter = yfilter;
+    }
+    if(value_path == "ip-tos")
+    {
+        ip_tos.yfilter = yfilter;
+    }
+    if(value_path == "is-authentication-enabled")
+    {
+        is_authentication_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-congestion-control-enabled")
+    {
+        is_congestion_control_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-digest-check-enabled")
+    {
+        is_digest_check_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-digest-enabled")
+    {
+        is_digest_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-hidden")
+    {
+        is_hidden.yfilter = yfilter;
+    }
+    if(value_path == "is-peer-address-checked")
+    {
+        is_peer_address_checked.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "receive-window-size")
+    {
+        receive_window_size.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-maximum-timeout")
+    {
+        retransmit_maximum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-minimum-timeout")
+    {
+        retransmit_minimum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-retries")
+    {
+        retransmit_retries.yfilter = yfilter;
+    }
+    if(value_path == "setup-timeout")
+    {
+        setup_timeout.yfilter = yfilter;
+    }
+    if(value_path == "timeout-no-user")
+    {
+        timeout_no_user.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-name" || name == "accounting-method-list" || name == "class-name-xr" || name == "digest-hash" || name == "encoded-password" || name == "hello-timeout" || name == "host-name" || name == "initial-retransmit-maximum-timeout" || name == "initial-retransmit-minimum-timeout" || name == "initial-retransmit-retries" || name == "ip-tos" || name == "is-authentication-enabled" || name == "is-congestion-control-enabled" || name == "is-digest-check-enabled" || name == "is-digest-enabled" || name == "is-hidden" || name == "is-peer-address-checked" || name == "password" || name == "receive-window-size" || name == "retransmit-maximum-timeout" || name == "retransmit-minimum-timeout" || name == "retransmit-retries" || name == "setup-timeout" || name == "timeout-no-user" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 L2Tp::Tunnels::Tunnels()
@@ -5423,7 +7699,7 @@ bool L2Tp::Tunnels::has_operation() const
         if(tunnel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tp::Tunnels::get_segment_path() const
@@ -5488,8 +7764,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Tunnels::get_children() con
     return children;
 }
 
-void L2Tp::Tunnels::set_value(const std::string & value_path, std::string value)
+void L2Tp::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
 }
 
 L2Tp::Tunnels::Tunnel::Tunnel()
@@ -5580,43 +7867,43 @@ bool L2Tp::Tunnels::Tunnel::has_operation() const
 {
     for (auto const & leaf : retransmit_time.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(local_tunnel_id.operation)
-	|| is_set(active_sessions.operation)
-	|| is_set(class_name.operation)
-	|| is_set(digest_secrets.operation)
-	|| is_set(is_congestion_control_enabled.operation)
-	|| is_set(is_pmtu_enabled.operation)
-	|| is_set(is_tunnel_up.operation)
-	|| is_set(local_address.operation)
-	|| is_set(local_port.operation)
-	|| is_set(local_tunnel_name.operation)
-	|| is_set(local_window_size.operation)
-	|| is_set(maximum_retransmission_time.operation)
-	|| is_set(order_queue_size.operation)
-	|| is_set(packet_queue_check.operation)
-	|| is_set(protocol.operation)
-	|| is_set(remote_address.operation)
-	|| is_set(remote_port.operation)
-	|| is_set(remote_tunnel_id.operation)
-	|| is_set(remote_tunnel_name.operation)
-	|| is_set(remote_window_size.operation)
-	|| is_set(resend_maximum_queue_size.operation)
-	|| is_set(resend_queue_size.operation)
-	|| is_set(resends.operation)
-	|| is_set(retransmission_time.operation)
-	|| is_set(retransmit_time.operation)
-	|| is_set(sequence_nr.operation)
-	|| is_set(sequence_ns.operation)
-	|| is_set(total_out_of_order_drop_packets.operation)
-	|| is_set(total_out_of_order_reorder_packets.operation)
-	|| is_set(total_peer_authentication_failures.operation)
-	|| is_set(unsent_maximum_queue_size.operation)
-	|| is_set(unsent_queue_size.operation)
-	|| is_set(zero_length_body_acknowledgement_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_tunnel_id.yfilter)
+	|| ydk::is_set(active_sessions.yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(digest_secrets.yfilter)
+	|| ydk::is_set(is_congestion_control_enabled.yfilter)
+	|| ydk::is_set(is_pmtu_enabled.yfilter)
+	|| ydk::is_set(is_tunnel_up.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(local_port.yfilter)
+	|| ydk::is_set(local_tunnel_name.yfilter)
+	|| ydk::is_set(local_window_size.yfilter)
+	|| ydk::is_set(maximum_retransmission_time.yfilter)
+	|| ydk::is_set(order_queue_size.yfilter)
+	|| ydk::is_set(packet_queue_check.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(remote_port.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter)
+	|| ydk::is_set(remote_tunnel_name.yfilter)
+	|| ydk::is_set(remote_window_size.yfilter)
+	|| ydk::is_set(resend_maximum_queue_size.yfilter)
+	|| ydk::is_set(resend_queue_size.yfilter)
+	|| ydk::is_set(resends.yfilter)
+	|| ydk::is_set(retransmission_time.yfilter)
+	|| ydk::is_set(retransmit_time.yfilter)
+	|| ydk::is_set(sequence_nr.yfilter)
+	|| ydk::is_set(sequence_ns.yfilter)
+	|| ydk::is_set(total_out_of_order_drop_packets.yfilter)
+	|| ydk::is_set(total_out_of_order_reorder_packets.yfilter)
+	|| ydk::is_set(total_peer_authentication_failures.yfilter)
+	|| ydk::is_set(unsent_maximum_queue_size.yfilter)
+	|| ydk::is_set(unsent_queue_size.yfilter)
+	|| ydk::is_set(zero_length_body_acknowledgement_sent.yfilter);
 }
 
 std::string L2Tp::Tunnels::Tunnel::get_segment_path() const
@@ -5642,38 +7929,38 @@ const EntityPath L2Tp::Tunnels::Tunnel::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
-    if (active_sessions.is_set || is_set(active_sessions.operation)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (digest_secrets.is_set || is_set(digest_secrets.operation)) leaf_name_data.push_back(digest_secrets.get_name_leafdata());
-    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.operation)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
-    if (is_pmtu_enabled.is_set || is_set(is_pmtu_enabled.operation)) leaf_name_data.push_back(is_pmtu_enabled.get_name_leafdata());
-    if (is_tunnel_up.is_set || is_set(is_tunnel_up.operation)) leaf_name_data.push_back(is_tunnel_up.get_name_leafdata());
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (local_port.is_set || is_set(local_port.operation)) leaf_name_data.push_back(local_port.get_name_leafdata());
-    if (local_tunnel_name.is_set || is_set(local_tunnel_name.operation)) leaf_name_data.push_back(local_tunnel_name.get_name_leafdata());
-    if (local_window_size.is_set || is_set(local_window_size.operation)) leaf_name_data.push_back(local_window_size.get_name_leafdata());
-    if (maximum_retransmission_time.is_set || is_set(maximum_retransmission_time.operation)) leaf_name_data.push_back(maximum_retransmission_time.get_name_leafdata());
-    if (order_queue_size.is_set || is_set(order_queue_size.operation)) leaf_name_data.push_back(order_queue_size.get_name_leafdata());
-    if (packet_queue_check.is_set || is_set(packet_queue_check.operation)) leaf_name_data.push_back(packet_queue_check.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
-    if (remote_port.is_set || is_set(remote_port.operation)) leaf_name_data.push_back(remote_port.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
-    if (remote_tunnel_name.is_set || is_set(remote_tunnel_name.operation)) leaf_name_data.push_back(remote_tunnel_name.get_name_leafdata());
-    if (remote_window_size.is_set || is_set(remote_window_size.operation)) leaf_name_data.push_back(remote_window_size.get_name_leafdata());
-    if (resend_maximum_queue_size.is_set || is_set(resend_maximum_queue_size.operation)) leaf_name_data.push_back(resend_maximum_queue_size.get_name_leafdata());
-    if (resend_queue_size.is_set || is_set(resend_queue_size.operation)) leaf_name_data.push_back(resend_queue_size.get_name_leafdata());
-    if (resends.is_set || is_set(resends.operation)) leaf_name_data.push_back(resends.get_name_leafdata());
-    if (retransmission_time.is_set || is_set(retransmission_time.operation)) leaf_name_data.push_back(retransmission_time.get_name_leafdata());
-    if (sequence_nr.is_set || is_set(sequence_nr.operation)) leaf_name_data.push_back(sequence_nr.get_name_leafdata());
-    if (sequence_ns.is_set || is_set(sequence_ns.operation)) leaf_name_data.push_back(sequence_ns.get_name_leafdata());
-    if (total_out_of_order_drop_packets.is_set || is_set(total_out_of_order_drop_packets.operation)) leaf_name_data.push_back(total_out_of_order_drop_packets.get_name_leafdata());
-    if (total_out_of_order_reorder_packets.is_set || is_set(total_out_of_order_reorder_packets.operation)) leaf_name_data.push_back(total_out_of_order_reorder_packets.get_name_leafdata());
-    if (total_peer_authentication_failures.is_set || is_set(total_peer_authentication_failures.operation)) leaf_name_data.push_back(total_peer_authentication_failures.get_name_leafdata());
-    if (unsent_maximum_queue_size.is_set || is_set(unsent_maximum_queue_size.operation)) leaf_name_data.push_back(unsent_maximum_queue_size.get_name_leafdata());
-    if (unsent_queue_size.is_set || is_set(unsent_queue_size.operation)) leaf_name_data.push_back(unsent_queue_size.get_name_leafdata());
-    if (zero_length_body_acknowledgement_sent.is_set || is_set(zero_length_body_acknowledgement_sent.operation)) leaf_name_data.push_back(zero_length_body_acknowledgement_sent.get_name_leafdata());
+    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (digest_secrets.is_set || is_set(digest_secrets.yfilter)) leaf_name_data.push_back(digest_secrets.get_name_leafdata());
+    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.yfilter)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
+    if (is_pmtu_enabled.is_set || is_set(is_pmtu_enabled.yfilter)) leaf_name_data.push_back(is_pmtu_enabled.get_name_leafdata());
+    if (is_tunnel_up.is_set || is_set(is_tunnel_up.yfilter)) leaf_name_data.push_back(is_tunnel_up.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (local_port.is_set || is_set(local_port.yfilter)) leaf_name_data.push_back(local_port.get_name_leafdata());
+    if (local_tunnel_name.is_set || is_set(local_tunnel_name.yfilter)) leaf_name_data.push_back(local_tunnel_name.get_name_leafdata());
+    if (local_window_size.is_set || is_set(local_window_size.yfilter)) leaf_name_data.push_back(local_window_size.get_name_leafdata());
+    if (maximum_retransmission_time.is_set || is_set(maximum_retransmission_time.yfilter)) leaf_name_data.push_back(maximum_retransmission_time.get_name_leafdata());
+    if (order_queue_size.is_set || is_set(order_queue_size.yfilter)) leaf_name_data.push_back(order_queue_size.get_name_leafdata());
+    if (packet_queue_check.is_set || is_set(packet_queue_check.yfilter)) leaf_name_data.push_back(packet_queue_check.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (remote_port.is_set || is_set(remote_port.yfilter)) leaf_name_data.push_back(remote_port.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (remote_tunnel_name.is_set || is_set(remote_tunnel_name.yfilter)) leaf_name_data.push_back(remote_tunnel_name.get_name_leafdata());
+    if (remote_window_size.is_set || is_set(remote_window_size.yfilter)) leaf_name_data.push_back(remote_window_size.get_name_leafdata());
+    if (resend_maximum_queue_size.is_set || is_set(resend_maximum_queue_size.yfilter)) leaf_name_data.push_back(resend_maximum_queue_size.get_name_leafdata());
+    if (resend_queue_size.is_set || is_set(resend_queue_size.yfilter)) leaf_name_data.push_back(resend_queue_size.get_name_leafdata());
+    if (resends.is_set || is_set(resends.yfilter)) leaf_name_data.push_back(resends.get_name_leafdata());
+    if (retransmission_time.is_set || is_set(retransmission_time.yfilter)) leaf_name_data.push_back(retransmission_time.get_name_leafdata());
+    if (sequence_nr.is_set || is_set(sequence_nr.yfilter)) leaf_name_data.push_back(sequence_nr.get_name_leafdata());
+    if (sequence_ns.is_set || is_set(sequence_ns.yfilter)) leaf_name_data.push_back(sequence_ns.get_name_leafdata());
+    if (total_out_of_order_drop_packets.is_set || is_set(total_out_of_order_drop_packets.yfilter)) leaf_name_data.push_back(total_out_of_order_drop_packets.get_name_leafdata());
+    if (total_out_of_order_reorder_packets.is_set || is_set(total_out_of_order_reorder_packets.yfilter)) leaf_name_data.push_back(total_out_of_order_reorder_packets.get_name_leafdata());
+    if (total_peer_authentication_failures.is_set || is_set(total_peer_authentication_failures.yfilter)) leaf_name_data.push_back(total_peer_authentication_failures.get_name_leafdata());
+    if (unsent_maximum_queue_size.is_set || is_set(unsent_maximum_queue_size.yfilter)) leaf_name_data.push_back(unsent_maximum_queue_size.get_name_leafdata());
+    if (unsent_queue_size.is_set || is_set(unsent_queue_size.yfilter)) leaf_name_data.push_back(unsent_queue_size.get_name_leafdata());
+    if (zero_length_body_acknowledgement_sent.is_set || is_set(zero_length_body_acknowledgement_sent.yfilter)) leaf_name_data.push_back(zero_length_body_acknowledgement_sent.get_name_leafdata());
 
     auto retransmit_time_name_datas = retransmit_time.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), retransmit_time_name_datas.begin(), retransmit_time_name_datas.end());
@@ -5694,103 +7981,151 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Tunnels::Tunnel::get_childr
     return children;
 }
 
-void L2Tp::Tunnels::Tunnel::set_value(const std::string & value_path, std::string value)
+void L2Tp::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+        local_tunnel_id.value_namespace = name_space;
+        local_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-sessions")
     {
         active_sessions = value;
+        active_sessions.value_namespace = name_space;
+        active_sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "digest-secrets")
     {
         digest_secrets = value;
+        digest_secrets.value_namespace = name_space;
+        digest_secrets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-congestion-control-enabled")
     {
         is_congestion_control_enabled = value;
+        is_congestion_control_enabled.value_namespace = name_space;
+        is_congestion_control_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-pmtu-enabled")
     {
         is_pmtu_enabled = value;
+        is_pmtu_enabled.value_namespace = name_space;
+        is_pmtu_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-tunnel-up")
     {
         is_tunnel_up = value;
+        is_tunnel_up.value_namespace = name_space;
+        is_tunnel_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-port")
     {
         local_port = value;
+        local_port.value_namespace = name_space;
+        local_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-tunnel-name")
     {
         local_tunnel_name = value;
+        local_tunnel_name.value_namespace = name_space;
+        local_tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-window-size")
     {
         local_window_size = value;
+        local_window_size.value_namespace = name_space;
+        local_window_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-retransmission-time")
     {
         maximum_retransmission_time = value;
+        maximum_retransmission_time.value_namespace = name_space;
+        maximum_retransmission_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "order-queue-size")
     {
         order_queue_size = value;
+        order_queue_size.value_namespace = name_space;
+        order_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-queue-check")
     {
         packet_queue_check = value;
+        packet_queue_check.value_namespace = name_space;
+        packet_queue_check.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-port")
     {
         remote_port = value;
+        remote_port.value_namespace = name_space;
+        remote_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-name")
     {
         remote_tunnel_name = value;
+        remote_tunnel_name.value_namespace = name_space;
+        remote_tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-window-size")
     {
         remote_window_size = value;
+        remote_window_size.value_namespace = name_space;
+        remote_window_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resend-maximum-queue-size")
     {
         resend_maximum_queue_size = value;
+        resend_maximum_queue_size.value_namespace = name_space;
+        resend_maximum_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resend-queue-size")
     {
         resend_queue_size = value;
+        resend_queue_size.value_namespace = name_space;
+        resend_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resends")
     {
         resends = value;
+        resends.value_namespace = name_space;
+        resends.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmission-time")
     {
         retransmission_time = value;
+        retransmission_time.value_namespace = name_space;
+        retransmission_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-time")
     {
@@ -5799,35 +8134,194 @@ void L2Tp::Tunnels::Tunnel::set_value(const std::string & value_path, std::strin
     if(value_path == "sequence-nr")
     {
         sequence_nr = value;
+        sequence_nr.value_namespace = name_space;
+        sequence_nr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-ns")
     {
         sequence_ns = value;
+        sequence_ns.value_namespace = name_space;
+        sequence_ns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-out-of-order-drop-packets")
     {
         total_out_of_order_drop_packets = value;
+        total_out_of_order_drop_packets.value_namespace = name_space;
+        total_out_of_order_drop_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-out-of-order-reorder-packets")
     {
         total_out_of_order_reorder_packets = value;
+        total_out_of_order_reorder_packets.value_namespace = name_space;
+        total_out_of_order_reorder_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-peer-authentication-failures")
     {
         total_peer_authentication_failures = value;
+        total_peer_authentication_failures.value_namespace = name_space;
+        total_peer_authentication_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unsent-maximum-queue-size")
     {
         unsent_maximum_queue_size = value;
+        unsent_maximum_queue_size.value_namespace = name_space;
+        unsent_maximum_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unsent-queue-size")
     {
         unsent_queue_size = value;
+        unsent_queue_size.value_namespace = name_space;
+        unsent_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-acknowledgement-sent")
     {
         zero_length_body_acknowledgement_sent = value;
+        zero_length_body_acknowledgement_sent.value_namespace = name_space;
+        zero_length_body_acknowledgement_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "active-sessions")
+    {
+        active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "digest-secrets")
+    {
+        digest_secrets.yfilter = yfilter;
+    }
+    if(value_path == "is-congestion-control-enabled")
+    {
+        is_congestion_control_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-pmtu-enabled")
+    {
+        is_pmtu_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-tunnel-up")
+    {
+        is_tunnel_up.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "local-port")
+    {
+        local_port.yfilter = yfilter;
+    }
+    if(value_path == "local-tunnel-name")
+    {
+        local_tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "local-window-size")
+    {
+        local_window_size.yfilter = yfilter;
+    }
+    if(value_path == "maximum-retransmission-time")
+    {
+        maximum_retransmission_time.yfilter = yfilter;
+    }
+    if(value_path == "order-queue-size")
+    {
+        order_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "packet-queue-check")
+    {
+        packet_queue_check.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-port")
+    {
+        remote_port.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-name")
+    {
+        remote_tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "remote-window-size")
+    {
+        remote_window_size.yfilter = yfilter;
+    }
+    if(value_path == "resend-maximum-queue-size")
+    {
+        resend_maximum_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "resend-queue-size")
+    {
+        resend_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "resends")
+    {
+        resends.yfilter = yfilter;
+    }
+    if(value_path == "retransmission-time")
+    {
+        retransmission_time.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-time")
+    {
+        retransmit_time.yfilter = yfilter;
+    }
+    if(value_path == "sequence-nr")
+    {
+        sequence_nr.yfilter = yfilter;
+    }
+    if(value_path == "sequence-ns")
+    {
+        sequence_ns.yfilter = yfilter;
+    }
+    if(value_path == "total-out-of-order-drop-packets")
+    {
+        total_out_of_order_drop_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-out-of-order-reorder-packets")
+    {
+        total_out_of_order_reorder_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-peer-authentication-failures")
+    {
+        total_peer_authentication_failures.yfilter = yfilter;
+    }
+    if(value_path == "unsent-maximum-queue-size")
+    {
+        unsent_maximum_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "unsent-queue-size")
+    {
+        unsent_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-acknowledgement-sent")
+    {
+        zero_length_body_acknowledgement_sent.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-tunnel-id" || name == "active-sessions" || name == "class-name" || name == "digest-secrets" || name == "is-congestion-control-enabled" || name == "is-pmtu-enabled" || name == "is-tunnel-up" || name == "local-address" || name == "local-port" || name == "local-tunnel-name" || name == "local-window-size" || name == "maximum-retransmission-time" || name == "order-queue-size" || name == "packet-queue-check" || name == "protocol" || name == "remote-address" || name == "remote-port" || name == "remote-tunnel-id" || name == "remote-tunnel-name" || name == "remote-window-size" || name == "resend-maximum-queue-size" || name == "resend-queue-size" || name == "resends" || name == "retransmission-time" || name == "retransmit-time" || name == "sequence-nr" || name == "sequence-ns" || name == "total-out-of-order-drop-packets" || name == "total-out-of-order-reorder-packets" || name == "total-peer-authentication-failures" || name == "unsent-maximum-queue-size" || name == "unsent-queue-size" || name == "zero-length-body-acknowledgement-sent")
+        return true;
+    return false;
 }
 
 L2Tp::Sessions::Sessions()
@@ -5856,7 +8350,7 @@ bool L2Tp::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tp::Sessions::get_segment_path() const
@@ -5921,8 +8415,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::get_children() co
     return children;
 }
 
-void L2Tp::Sessions::set_value(const std::string & value_path, std::string value)
+void L2Tp::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 L2Tp::Sessions::Session::Session()
@@ -5992,30 +8497,30 @@ bool L2Tp::Sessions::Session::has_data() const
 
 bool L2Tp::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_tunnel_id.operation)
-	|| is_set(local_session_id.operation)
-	|| is_set(call_serial_number.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_conditional_debug_enabled.operation)
-	|| is_set(is_sequencing_on.operation)
-	|| is_set(is_session_locally_initiated.operation)
-	|| is_set(is_session_manual.operation)
-	|| is_set(is_session_state_established.operation)
-	|| is_set(is_session_up.operation)
-	|| is_set(is_udp_checksum_enabled.operation)
-	|| is_set(l2tp_sh_sess_tie_breaker.operation)
-	|| is_set(l2tp_sh_sess_tie_breaker_enabled.operation)
-	|| is_set(l2tp_sh_sess_udp_lport.operation)
-	|| is_set(l2tp_sh_sess_udp_rport.operation)
-	|| is_set(local_ip_address.operation)
-	|| is_set(local_tunnel_name.operation)
-	|| is_set(protocol.operation)
-	|| is_set(remote_ip_address.operation)
-	|| is_set(remote_session_id.operation)
-	|| is_set(remote_tunnel_id.operation)
-	|| is_set(remote_tunnel_name.operation)
-	|| is_set(unique_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_tunnel_id.yfilter)
+	|| ydk::is_set(local_session_id.yfilter)
+	|| ydk::is_set(call_serial_number.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_conditional_debug_enabled.yfilter)
+	|| ydk::is_set(is_sequencing_on.yfilter)
+	|| ydk::is_set(is_session_locally_initiated.yfilter)
+	|| ydk::is_set(is_session_manual.yfilter)
+	|| ydk::is_set(is_session_state_established.yfilter)
+	|| ydk::is_set(is_session_up.yfilter)
+	|| ydk::is_set(is_udp_checksum_enabled.yfilter)
+	|| ydk::is_set(l2tp_sh_sess_tie_breaker.yfilter)
+	|| ydk::is_set(l2tp_sh_sess_tie_breaker_enabled.yfilter)
+	|| ydk::is_set(l2tp_sh_sess_udp_lport.yfilter)
+	|| ydk::is_set(l2tp_sh_sess_udp_rport.yfilter)
+	|| ydk::is_set(local_ip_address.yfilter)
+	|| ydk::is_set(local_tunnel_name.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(remote_ip_address.yfilter)
+	|| ydk::is_set(remote_session_id.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter)
+	|| ydk::is_set(remote_tunnel_name.yfilter)
+	|| ydk::is_set(unique_id.yfilter)
 	|| (session_application_data !=  nullptr && session_application_data->has_operation());
 }
 
@@ -6042,29 +8547,29 @@ const EntityPath L2Tp::Sessions::Session::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
-    if (local_session_id.is_set || is_set(local_session_id.operation)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
-    if (call_serial_number.is_set || is_set(call_serial_number.operation)) leaf_name_data.push_back(call_serial_number.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_conditional_debug_enabled.is_set || is_set(is_conditional_debug_enabled.operation)) leaf_name_data.push_back(is_conditional_debug_enabled.get_name_leafdata());
-    if (is_sequencing_on.is_set || is_set(is_sequencing_on.operation)) leaf_name_data.push_back(is_sequencing_on.get_name_leafdata());
-    if (is_session_locally_initiated.is_set || is_set(is_session_locally_initiated.operation)) leaf_name_data.push_back(is_session_locally_initiated.get_name_leafdata());
-    if (is_session_manual.is_set || is_set(is_session_manual.operation)) leaf_name_data.push_back(is_session_manual.get_name_leafdata());
-    if (is_session_state_established.is_set || is_set(is_session_state_established.operation)) leaf_name_data.push_back(is_session_state_established.get_name_leafdata());
-    if (is_session_up.is_set || is_set(is_session_up.operation)) leaf_name_data.push_back(is_session_up.get_name_leafdata());
-    if (is_udp_checksum_enabled.is_set || is_set(is_udp_checksum_enabled.operation)) leaf_name_data.push_back(is_udp_checksum_enabled.get_name_leafdata());
-    if (l2tp_sh_sess_tie_breaker.is_set || is_set(l2tp_sh_sess_tie_breaker.operation)) leaf_name_data.push_back(l2tp_sh_sess_tie_breaker.get_name_leafdata());
-    if (l2tp_sh_sess_tie_breaker_enabled.is_set || is_set(l2tp_sh_sess_tie_breaker_enabled.operation)) leaf_name_data.push_back(l2tp_sh_sess_tie_breaker_enabled.get_name_leafdata());
-    if (l2tp_sh_sess_udp_lport.is_set || is_set(l2tp_sh_sess_udp_lport.operation)) leaf_name_data.push_back(l2tp_sh_sess_udp_lport.get_name_leafdata());
-    if (l2tp_sh_sess_udp_rport.is_set || is_set(l2tp_sh_sess_udp_rport.operation)) leaf_name_data.push_back(l2tp_sh_sess_udp_rport.get_name_leafdata());
-    if (local_ip_address.is_set || is_set(local_ip_address.operation)) leaf_name_data.push_back(local_ip_address.get_name_leafdata());
-    if (local_tunnel_name.is_set || is_set(local_tunnel_name.operation)) leaf_name_data.push_back(local_tunnel_name.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (remote_ip_address.is_set || is_set(remote_ip_address.operation)) leaf_name_data.push_back(remote_ip_address.get_name_leafdata());
-    if (remote_session_id.is_set || is_set(remote_session_id.operation)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
-    if (remote_tunnel_name.is_set || is_set(remote_tunnel_name.operation)) leaf_name_data.push_back(remote_tunnel_name.get_name_leafdata());
-    if (unique_id.is_set || is_set(unique_id.operation)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (local_session_id.is_set || is_set(local_session_id.yfilter)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
+    if (call_serial_number.is_set || is_set(call_serial_number.yfilter)) leaf_name_data.push_back(call_serial_number.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_conditional_debug_enabled.is_set || is_set(is_conditional_debug_enabled.yfilter)) leaf_name_data.push_back(is_conditional_debug_enabled.get_name_leafdata());
+    if (is_sequencing_on.is_set || is_set(is_sequencing_on.yfilter)) leaf_name_data.push_back(is_sequencing_on.get_name_leafdata());
+    if (is_session_locally_initiated.is_set || is_set(is_session_locally_initiated.yfilter)) leaf_name_data.push_back(is_session_locally_initiated.get_name_leafdata());
+    if (is_session_manual.is_set || is_set(is_session_manual.yfilter)) leaf_name_data.push_back(is_session_manual.get_name_leafdata());
+    if (is_session_state_established.is_set || is_set(is_session_state_established.yfilter)) leaf_name_data.push_back(is_session_state_established.get_name_leafdata());
+    if (is_session_up.is_set || is_set(is_session_up.yfilter)) leaf_name_data.push_back(is_session_up.get_name_leafdata());
+    if (is_udp_checksum_enabled.is_set || is_set(is_udp_checksum_enabled.yfilter)) leaf_name_data.push_back(is_udp_checksum_enabled.get_name_leafdata());
+    if (l2tp_sh_sess_tie_breaker.is_set || is_set(l2tp_sh_sess_tie_breaker.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_tie_breaker.get_name_leafdata());
+    if (l2tp_sh_sess_tie_breaker_enabled.is_set || is_set(l2tp_sh_sess_tie_breaker_enabled.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_tie_breaker_enabled.get_name_leafdata());
+    if (l2tp_sh_sess_udp_lport.is_set || is_set(l2tp_sh_sess_udp_lport.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_udp_lport.get_name_leafdata());
+    if (l2tp_sh_sess_udp_rport.is_set || is_set(l2tp_sh_sess_udp_rport.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_udp_rport.get_name_leafdata());
+    if (local_ip_address.is_set || is_set(local_ip_address.yfilter)) leaf_name_data.push_back(local_ip_address.get_name_leafdata());
+    if (local_tunnel_name.is_set || is_set(local_tunnel_name.yfilter)) leaf_name_data.push_back(local_tunnel_name.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (remote_ip_address.is_set || is_set(remote_ip_address.yfilter)) leaf_name_data.push_back(remote_ip_address.get_name_leafdata());
+    if (remote_session_id.is_set || is_set(remote_session_id.yfilter)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (remote_tunnel_name.is_set || is_set(remote_tunnel_name.yfilter)) leaf_name_data.push_back(remote_tunnel_name.get_name_leafdata());
+    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6097,100 +8602,249 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::get_chil
     return children;
 }
 
-void L2Tp::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void L2Tp::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+        local_tunnel_id.value_namespace = name_space;
+        local_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-session-id")
     {
         local_session_id = value;
+        local_session_id.value_namespace = name_space;
+        local_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-serial-number")
     {
         call_serial_number = value;
+        call_serial_number.value_namespace = name_space;
+        call_serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-conditional-debug-enabled")
     {
         is_conditional_debug_enabled = value;
+        is_conditional_debug_enabled.value_namespace = name_space;
+        is_conditional_debug_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sequencing-on")
     {
         is_sequencing_on = value;
+        is_sequencing_on.value_namespace = name_space;
+        is_sequencing_on.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-session-locally-initiated")
     {
         is_session_locally_initiated = value;
+        is_session_locally_initiated.value_namespace = name_space;
+        is_session_locally_initiated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-session-manual")
     {
         is_session_manual = value;
+        is_session_manual.value_namespace = name_space;
+        is_session_manual.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-session-state-established")
     {
         is_session_state_established = value;
+        is_session_state_established.value_namespace = name_space;
+        is_session_state_established.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-session-up")
     {
         is_session_up = value;
+        is_session_up.value_namespace = name_space;
+        is_session_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-udp-checksum-enabled")
     {
         is_udp_checksum_enabled = value;
+        is_udp_checksum_enabled.value_namespace = name_space;
+        is_udp_checksum_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-sh-sess-tie-breaker")
     {
         l2tp_sh_sess_tie_breaker = value;
+        l2tp_sh_sess_tie_breaker.value_namespace = name_space;
+        l2tp_sh_sess_tie_breaker.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-sh-sess-tie-breaker-enabled")
     {
         l2tp_sh_sess_tie_breaker_enabled = value;
+        l2tp_sh_sess_tie_breaker_enabled.value_namespace = name_space;
+        l2tp_sh_sess_tie_breaker_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-sh-sess-udp-lport")
     {
         l2tp_sh_sess_udp_lport = value;
+        l2tp_sh_sess_udp_lport.value_namespace = name_space;
+        l2tp_sh_sess_udp_lport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-sh-sess-udp-rport")
     {
         l2tp_sh_sess_udp_rport = value;
+        l2tp_sh_sess_udp_rport.value_namespace = name_space;
+        l2tp_sh_sess_udp_rport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-ip-address")
     {
         local_ip_address = value;
+        local_ip_address.value_namespace = name_space;
+        local_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-tunnel-name")
     {
         local_tunnel_name = value;
+        local_tunnel_name.value_namespace = name_space;
+        local_tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-ip-address")
     {
         remote_ip_address = value;
+        remote_ip_address.value_namespace = name_space;
+        remote_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-session-id")
     {
         remote_session_id = value;
+        remote_session_id.value_namespace = name_space;
+        remote_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-name")
     {
         remote_tunnel_name = value;
+        remote_tunnel_name.value_namespace = name_space;
+        remote_tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unique-id")
     {
         unique_id = value;
+        unique_id.value_namespace = name_space;
+        unique_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "local-session-id")
+    {
+        local_session_id.yfilter = yfilter;
+    }
+    if(value_path == "call-serial-number")
+    {
+        call_serial_number.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-conditional-debug-enabled")
+    {
+        is_conditional_debug_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-sequencing-on")
+    {
+        is_sequencing_on.yfilter = yfilter;
+    }
+    if(value_path == "is-session-locally-initiated")
+    {
+        is_session_locally_initiated.yfilter = yfilter;
+    }
+    if(value_path == "is-session-manual")
+    {
+        is_session_manual.yfilter = yfilter;
+    }
+    if(value_path == "is-session-state-established")
+    {
+        is_session_state_established.yfilter = yfilter;
+    }
+    if(value_path == "is-session-up")
+    {
+        is_session_up.yfilter = yfilter;
+    }
+    if(value_path == "is-udp-checksum-enabled")
+    {
+        is_udp_checksum_enabled.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-sh-sess-tie-breaker")
+    {
+        l2tp_sh_sess_tie_breaker.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-sh-sess-tie-breaker-enabled")
+    {
+        l2tp_sh_sess_tie_breaker_enabled.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-sh-sess-udp-lport")
+    {
+        l2tp_sh_sess_udp_lport.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-sh-sess-udp-rport")
+    {
+        l2tp_sh_sess_udp_rport.yfilter = yfilter;
+    }
+    if(value_path == "local-ip-address")
+    {
+        local_ip_address.yfilter = yfilter;
+    }
+    if(value_path == "local-tunnel-name")
+    {
+        local_tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "remote-ip-address")
+    {
+        remote_ip_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-session-id")
+    {
+        remote_session_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-name")
+    {
+        remote_tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-application-data" || name == "local-tunnel-id" || name == "local-session-id" || name == "call-serial-number" || name == "interface-name" || name == "is-conditional-debug-enabled" || name == "is-sequencing-on" || name == "is-session-locally-initiated" || name == "is-session-manual" || name == "is-session-state-established" || name == "is-session-up" || name == "is-udp-checksum-enabled" || name == "l2tp-sh-sess-tie-breaker" || name == "l2tp-sh-sess-tie-breaker-enabled" || name == "l2tp-sh-sess-udp-lport" || name == "l2tp-sh-sess-udp-rport" || name == "local-ip-address" || name == "local-tunnel-name" || name == "protocol" || name == "remote-ip-address" || name == "remote-session-id" || name == "remote-tunnel-id" || name == "remote-tunnel-name" || name == "unique-id")
+        return true;
+    return false;
 }
 
 L2Tp::Sessions::Session::SessionApplicationData::SessionApplicationData()
@@ -6220,8 +8874,8 @@ bool L2Tp::Sessions::Session::SessionApplicationData::has_data() const
 
 bool L2Tp::Sessions::Session::SessionApplicationData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(l2tp_sh_sess_app_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(l2tp_sh_sess_app_type.yfilter)
 	|| (vpdn !=  nullptr && vpdn->has_operation())
 	|| (xconnect !=  nullptr && xconnect->has_operation());
 }
@@ -6249,7 +8903,7 @@ const EntityPath L2Tp::Sessions::Session::SessionApplicationData::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (l2tp_sh_sess_app_type.is_set || is_set(l2tp_sh_sess_app_type.operation)) leaf_name_data.push_back(l2tp_sh_sess_app_type.get_name_leafdata());
+    if (l2tp_sh_sess_app_type.is_set || is_set(l2tp_sh_sess_app_type.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_app_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6296,12 +8950,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionA
     return children;
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::set_value(const std::string & value_path, std::string value)
+void L2Tp::Sessions::Session::SessionApplicationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "l2tp-sh-sess-app-type")
     {
         l2tp_sh_sess_app_type = value;
+        l2tp_sh_sess_app_type.value_namespace = name_space;
+        l2tp_sh_sess_app_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Sessions::Session::SessionApplicationData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2tp-sh-sess-app-type")
+    {
+        l2tp_sh_sess_app_type.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Sessions::Session::SessionApplicationData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vpdn" || name == "xconnect" || name == "l2tp-sh-sess-app-type")
+        return true;
+    return false;
 }
 
 L2Tp::Sessions::Session::SessionApplicationData::Xconnect::Xconnect()
@@ -6332,13 +9003,13 @@ bool L2Tp::Sessions::Session::SessionApplicationData::Xconnect::has_data() const
 
 bool L2Tp::Sessions::Session::SessionApplicationData::Xconnect::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(circuit_name.operation)
-	|| is_set(ipv6_protocol_tunneling.operation)
-	|| is_set(is_circuit_state_up.operation)
-	|| is_set(is_local_circuit_state_up.operation)
-	|| is_set(is_remote_circuit_state_up.operation)
-	|| is_set(sessionvc_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(circuit_name.yfilter)
+	|| ydk::is_set(ipv6_protocol_tunneling.yfilter)
+	|| ydk::is_set(is_circuit_state_up.yfilter)
+	|| ydk::is_set(is_local_circuit_state_up.yfilter)
+	|| ydk::is_set(is_remote_circuit_state_up.yfilter)
+	|| ydk::is_set(sessionvc_id.yfilter);
 }
 
 std::string L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_segment_path() const
@@ -6364,12 +9035,12 @@ const EntityPath L2Tp::Sessions::Session::SessionApplicationData::Xconnect::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (circuit_name.is_set || is_set(circuit_name.operation)) leaf_name_data.push_back(circuit_name.get_name_leafdata());
-    if (ipv6_protocol_tunneling.is_set || is_set(ipv6_protocol_tunneling.operation)) leaf_name_data.push_back(ipv6_protocol_tunneling.get_name_leafdata());
-    if (is_circuit_state_up.is_set || is_set(is_circuit_state_up.operation)) leaf_name_data.push_back(is_circuit_state_up.get_name_leafdata());
-    if (is_local_circuit_state_up.is_set || is_set(is_local_circuit_state_up.operation)) leaf_name_data.push_back(is_local_circuit_state_up.get_name_leafdata());
-    if (is_remote_circuit_state_up.is_set || is_set(is_remote_circuit_state_up.operation)) leaf_name_data.push_back(is_remote_circuit_state_up.get_name_leafdata());
-    if (sessionvc_id.is_set || is_set(sessionvc_id.operation)) leaf_name_data.push_back(sessionvc_id.get_name_leafdata());
+    if (circuit_name.is_set || is_set(circuit_name.yfilter)) leaf_name_data.push_back(circuit_name.get_name_leafdata());
+    if (ipv6_protocol_tunneling.is_set || is_set(ipv6_protocol_tunneling.yfilter)) leaf_name_data.push_back(ipv6_protocol_tunneling.get_name_leafdata());
+    if (is_circuit_state_up.is_set || is_set(is_circuit_state_up.yfilter)) leaf_name_data.push_back(is_circuit_state_up.get_name_leafdata());
+    if (is_local_circuit_state_up.is_set || is_set(is_local_circuit_state_up.yfilter)) leaf_name_data.push_back(is_local_circuit_state_up.get_name_leafdata());
+    if (is_remote_circuit_state_up.is_set || is_set(is_remote_circuit_state_up.yfilter)) leaf_name_data.push_back(is_remote_circuit_state_up.get_name_leafdata());
+    if (sessionvc_id.is_set || is_set(sessionvc_id.yfilter)) leaf_name_data.push_back(sessionvc_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6388,32 +9059,79 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionA
     return children;
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::Xconnect::set_value(const std::string & value_path, std::string value)
+void L2Tp::Sessions::Session::SessionApplicationData::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "circuit-name")
     {
         circuit_name = value;
+        circuit_name.value_namespace = name_space;
+        circuit_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-protocol-tunneling")
     {
         ipv6_protocol_tunneling = value;
+        ipv6_protocol_tunneling.value_namespace = name_space;
+        ipv6_protocol_tunneling.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-circuit-state-up")
     {
         is_circuit_state_up = value;
+        is_circuit_state_up.value_namespace = name_space;
+        is_circuit_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-local-circuit-state-up")
     {
         is_local_circuit_state_up = value;
+        is_local_circuit_state_up.value_namespace = name_space;
+        is_local_circuit_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-remote-circuit-state-up")
     {
         is_remote_circuit_state_up = value;
+        is_remote_circuit_state_up.value_namespace = name_space;
+        is_remote_circuit_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessionvc-id")
     {
         sessionvc_id = value;
+        sessionvc_id.value_namespace = name_space;
+        sessionvc_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Sessions::Session::SessionApplicationData::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "circuit-name")
+    {
+        circuit_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-protocol-tunneling")
+    {
+        ipv6_protocol_tunneling.yfilter = yfilter;
+    }
+    if(value_path == "is-circuit-state-up")
+    {
+        is_circuit_state_up.yfilter = yfilter;
+    }
+    if(value_path == "is-local-circuit-state-up")
+    {
+        is_local_circuit_state_up.yfilter = yfilter;
+    }
+    if(value_path == "is-remote-circuit-state-up")
+    {
+        is_remote_circuit_state_up.yfilter = yfilter;
+    }
+    if(value_path == "sessionvc-id")
+    {
+        sessionvc_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Sessions::Session::SessionApplicationData::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "circuit-name" || name == "ipv6-protocol-tunneling" || name == "is-circuit-state-up" || name == "is-local-circuit-state-up" || name == "is-remote-circuit-state-up" || name == "sessionvc-id")
+        return true;
+    return false;
 }
 
 L2Tp::Sessions::Session::SessionApplicationData::Vpdn::Vpdn()
@@ -6436,9 +9154,9 @@ bool L2Tp::Sessions::Session::SessionApplicationData::Vpdn::has_data() const
 
 bool L2Tp::Sessions::Session::SessionApplicationData::Vpdn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(username.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(username.yfilter);
 }
 
 std::string L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_segment_path() const
@@ -6464,8 +9182,8 @@ const EntityPath L2Tp::Sessions::Session::SessionApplicationData::Vpdn::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (username.is_set || is_set(username.operation)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6484,16 +9202,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Sessions::Session::SessionA
     return children;
 }
 
-void L2Tp::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std::string & value_path, std::string value)
+void L2Tp::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "username")
     {
         username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Sessions::Session::SessionApplicationData::Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Sessions::Session::SessionApplicationData::Vpdn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "username")
+        return true;
+    return false;
 }
 
 L2Tp::Session::Session()
@@ -6516,7 +9257,7 @@ bool L2Tp::Session::has_data() const
 
 bool L2Tp::Session::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (unavailable !=  nullptr && unavailable->has_operation());
 }
 
@@ -6575,8 +9316,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Session::get_children() con
     return children;
 }
 
-void L2Tp::Session::set_value(const std::string & value_path, std::string value)
+void L2Tp::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tp::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tp::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unavailable")
+        return true;
+    return false;
 }
 
 L2Tp::Session::Unavailable::Unavailable()
@@ -6597,8 +9349,8 @@ bool L2Tp::Session::Unavailable::has_data() const
 
 bool L2Tp::Session::Unavailable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(sessions_on_hold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(sessions_on_hold.yfilter);
 }
 
 std::string L2Tp::Session::Unavailable::get_segment_path() const
@@ -6624,7 +9376,7 @@ const EntityPath L2Tp::Session::Unavailable::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sessions_on_hold.is_set || is_set(sessions_on_hold.operation)) leaf_name_data.push_back(sessions_on_hold.get_name_leafdata());
+    if (sessions_on_hold.is_set || is_set(sessions_on_hold.yfilter)) leaf_name_data.push_back(sessions_on_hold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6643,12 +9395,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tp::Session::Unavailable::get_c
     return children;
 }
 
-void L2Tp::Session::Unavailable::set_value(const std::string & value_path, std::string value)
+void L2Tp::Session::Unavailable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sessions-on-hold")
     {
         sessions_on_hold = value;
+        sessions_on_hold.value_namespace = name_space;
+        sessions_on_hold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tp::Session::Unavailable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sessions-on-hold")
+    {
+        sessions_on_hold.yfilter = yfilter;
+    }
+}
+
+bool L2Tp::Session::Unavailable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions-on-hold")
+        return true;
+    return false;
 }
 
 L2Tpv2::L2Tpv2()
@@ -6703,7 +9472,7 @@ bool L2Tpv2::has_data() const
 
 bool L2Tpv2::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (classes !=  nullptr && classes->has_operation())
 	|| (counter_hist_fail !=  nullptr && counter_hist_fail->has_operation())
 	|| (counters !=  nullptr && counters->has_operation())
@@ -6879,7 +9648,11 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::get_children() const
     return children;
 }
 
-void L2Tpv2::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void L2Tpv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -6901,6 +9674,18 @@ std::string L2Tpv2::get_bundle_name() const
 augment_capabilities_function L2Tpv2::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> L2Tpv2::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool L2Tpv2::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classes" || name == "counter-hist-fail" || name == "counters" || name == "session" || name == "sessions" || name == "statistics" || name == "tunnel" || name == "tunnel-configurations" || name == "tunnels")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Counters()
@@ -6927,7 +9712,7 @@ bool L2Tpv2::Counters::has_data() const
 
 bool L2Tpv2::Counters::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (control !=  nullptr && control->has_operation())
 	|| (forwarding !=  nullptr && forwarding->has_operation());
 }
@@ -7001,8 +9786,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::get_children() 
     return children;
 }
 
-void L2Tpv2::Counters::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Counters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Counters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "control" || name == "forwarding")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Forwarding::Forwarding()
@@ -7025,7 +9821,7 @@ bool L2Tpv2::Counters::Forwarding::has_data() const
 
 bool L2Tpv2::Counters::Forwarding::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (sessions !=  nullptr && sessions->has_operation());
 }
 
@@ -7084,8 +9880,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::get
     return children;
 }
 
-void L2Tpv2::Counters::Forwarding::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Forwarding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Counters::Forwarding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Counters::Forwarding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Forwarding::Sessions::Sessions()
@@ -7114,7 +9921,7 @@ bool L2Tpv2::Counters::Forwarding::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tpv2::Counters::Forwarding::Sessions::get_segment_path() const
@@ -7179,8 +9986,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::Ses
     return children;
 }
 
-void L2Tpv2::Counters::Forwarding::Sessions::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Forwarding::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Counters::Forwarding::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Counters::Forwarding::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Forwarding::Sessions::Session::Session()
@@ -7213,14 +10031,14 @@ bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_data() const
 
 bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tunnel_id.operation)
-	|| is_set(session_id.operation)
-	|| is_set(in_bytes.operation)
-	|| is_set(in_packets.operation)
-	|| is_set(out_bytes.operation)
-	|| is_set(out_packets.operation)
-	|| is_set(remote_session_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(in_bytes.yfilter)
+	|| ydk::is_set(in_packets.yfilter)
+	|| ydk::is_set(out_bytes.yfilter)
+	|| ydk::is_set(out_packets.yfilter)
+	|| ydk::is_set(remote_session_id.yfilter);
 }
 
 std::string L2Tpv2::Counters::Forwarding::Sessions::Session::get_segment_path() const
@@ -7246,13 +10064,13 @@ const EntityPath L2Tpv2::Counters::Forwarding::Sessions::Session::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-    if (session_id.is_set || is_set(session_id.operation)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (in_bytes.is_set || is_set(in_bytes.operation)) leaf_name_data.push_back(in_bytes.get_name_leafdata());
-    if (in_packets.is_set || is_set(in_packets.operation)) leaf_name_data.push_back(in_packets.get_name_leafdata());
-    if (out_bytes.is_set || is_set(out_bytes.operation)) leaf_name_data.push_back(out_bytes.get_name_leafdata());
-    if (out_packets.is_set || is_set(out_packets.operation)) leaf_name_data.push_back(out_packets.get_name_leafdata());
-    if (remote_session_id.is_set || is_set(remote_session_id.operation)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (in_bytes.is_set || is_set(in_bytes.yfilter)) leaf_name_data.push_back(in_bytes.get_name_leafdata());
+    if (in_packets.is_set || is_set(in_packets.yfilter)) leaf_name_data.push_back(in_packets.get_name_leafdata());
+    if (out_bytes.is_set || is_set(out_bytes.yfilter)) leaf_name_data.push_back(out_bytes.get_name_leafdata());
+    if (out_packets.is_set || is_set(out_packets.yfilter)) leaf_name_data.push_back(out_packets.get_name_leafdata());
+    if (remote_session_id.is_set || is_set(remote_session_id.yfilter)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7271,36 +10089,89 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Forwarding::Ses
     return children;
 }
 
-void L2Tpv2::Counters::Forwarding::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Forwarding::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "session-id")
     {
         session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-bytes")
     {
         in_bytes = value;
+        in_bytes.value_namespace = name_space;
+        in_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "in-packets")
     {
         in_packets = value;
+        in_packets.value_namespace = name_space;
+        in_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-bytes")
     {
         out_bytes = value;
+        out_bytes.value_namespace = name_space;
+        out_bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "out-packets")
     {
         out_packets = value;
+        out_packets.value_namespace = name_space;
+        out_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-session-id")
     {
         remote_session_id = value;
+        remote_session_id.value_namespace = name_space;
+        remote_session_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Forwarding::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "in-bytes")
+    {
+        in_bytes.yfilter = yfilter;
+    }
+    if(value_path == "in-packets")
+    {
+        in_packets.yfilter = yfilter;
+    }
+    if(value_path == "out-bytes")
+    {
+        out_bytes.yfilter = yfilter;
+    }
+    if(value_path == "out-packets")
+    {
+        out_packets.yfilter = yfilter;
+    }
+    if(value_path == "remote-session-id")
+    {
+        remote_session_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Forwarding::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-id" || name == "session-id" || name == "in-bytes" || name == "in-packets" || name == "out-bytes" || name == "out-packets" || name == "remote-session-id")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Control()
@@ -7327,7 +10198,7 @@ bool L2Tpv2::Counters::Control::has_data() const
 
 bool L2Tpv2::Counters::Control::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (tunnel_xr !=  nullptr && tunnel_xr->has_operation())
 	|| (tunnels !=  nullptr && tunnels->has_operation());
 }
@@ -7401,8 +10272,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::get_ch
     return children;
 }
 
-void L2Tpv2::Counters::Control::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Counters::Control::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Counters::Control::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-xr" || name == "tunnels")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::TunnelXr()
@@ -7429,7 +10311,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::has_data() const
 
 bool L2Tpv2::Counters::Control::TunnelXr::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (global !=  nullptr && global->has_operation());
 }
@@ -7503,8 +10385,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authentication" || name == "global")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::Authentication()
@@ -7559,7 +10452,7 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::has_data() const
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (challenge_avp !=  nullptr && challenge_avp->has_operation())
 	|| (challenge_reponse !=  nullptr && challenge_reponse->has_operation())
 	|| (common_digest !=  nullptr && common_digest->has_operation())
@@ -7738,8 +10631,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "challenge-avp" || name == "challenge-reponse" || name == "common-digest" || name == "integrity-check" || name == "local-secret" || name == "nonce-avp" || name == "overall-statistics" || name == "primary-digest" || name == "secondary-digest")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::NonceAvp()
@@ -7780,18 +10684,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_data() c
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::get_segment_path() const
@@ -7817,17 +10721,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7846,52 +10750,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::NonceAvp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::CommonDigest()
@@ -7932,18 +10913,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_data
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::get_segment_path() const
@@ -7969,17 +10950,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDige
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7998,52 +10979,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::CommonDigest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::PrimaryDigest()
@@ -8084,18 +11142,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_dat
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::get_segment_path() const
@@ -8121,17 +11179,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDig
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8150,52 +11208,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::PrimaryDigest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::SecondaryDigest()
@@ -8236,18 +11371,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_d
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::get_segment_path() const
@@ -8273,17 +11408,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryD
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8302,52 +11437,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::SecondaryDigest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::IntegrityCheck()
@@ -8388,18 +11600,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_da
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::get_segment_path() const
@@ -8425,17 +11637,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityC
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8454,52 +11666,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::IntegrityCheck::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::LocalSecret()
@@ -8540,18 +11829,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_data(
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::get_segment_path() const
@@ -8577,17 +11866,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecre
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8606,52 +11895,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::LocalSecret::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::ChallengeAvp()
@@ -8692,18 +12058,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_data
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::get_segment_path() const
@@ -8729,17 +12095,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeA
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8758,52 +12124,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeAvp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::ChallengeReponse()
@@ -8844,18 +12287,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::get_segment_path() const
@@ -8881,17 +12324,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8910,52 +12353,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::ChallengeReponse::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::OverallStatistics()
@@ -8996,18 +12516,18 @@ bool L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has
 
 bool L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bad_hash.operation)
-	|| is_set(bad_length.operation)
-	|| is_set(failed.operation)
-	|| is_set(generate_response_failures.operation)
-	|| is_set(ignored.operation)
-	|| is_set(missing.operation)
-	|| is_set(passed.operation)
-	|| is_set(skipped.operation)
-	|| is_set(unexpected.operation)
-	|| is_set(unexpected_zlb.operation)
-	|| is_set(validate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bad_hash.yfilter)
+	|| ydk::is_set(bad_length.yfilter)
+	|| ydk::is_set(failed.yfilter)
+	|| ydk::is_set(generate_response_failures.yfilter)
+	|| ydk::is_set(ignored.yfilter)
+	|| ydk::is_set(missing.yfilter)
+	|| ydk::is_set(passed.yfilter)
+	|| ydk::is_set(skipped.yfilter)
+	|| ydk::is_set(unexpected.yfilter)
+	|| ydk::is_set(unexpected_zlb.yfilter)
+	|| ydk::is_set(validate.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::get_segment_path() const
@@ -9033,17 +12553,17 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallSta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bad_hash.is_set || is_set(bad_hash.operation)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
-    if (bad_length.is_set || is_set(bad_length.operation)) leaf_name_data.push_back(bad_length.get_name_leafdata());
-    if (failed.is_set || is_set(failed.operation)) leaf_name_data.push_back(failed.get_name_leafdata());
-    if (generate_response_failures.is_set || is_set(generate_response_failures.operation)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
-    if (ignored.is_set || is_set(ignored.operation)) leaf_name_data.push_back(ignored.get_name_leafdata());
-    if (missing.is_set || is_set(missing.operation)) leaf_name_data.push_back(missing.get_name_leafdata());
-    if (passed.is_set || is_set(passed.operation)) leaf_name_data.push_back(passed.get_name_leafdata());
-    if (skipped.is_set || is_set(skipped.operation)) leaf_name_data.push_back(skipped.get_name_leafdata());
-    if (unexpected.is_set || is_set(unexpected.operation)) leaf_name_data.push_back(unexpected.get_name_leafdata());
-    if (unexpected_zlb.is_set || is_set(unexpected_zlb.operation)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
-    if (validate.is_set || is_set(validate.operation)) leaf_name_data.push_back(validate.get_name_leafdata());
+    if (bad_hash.is_set || is_set(bad_hash.yfilter)) leaf_name_data.push_back(bad_hash.get_name_leafdata());
+    if (bad_length.is_set || is_set(bad_length.yfilter)) leaf_name_data.push_back(bad_length.get_name_leafdata());
+    if (failed.is_set || is_set(failed.yfilter)) leaf_name_data.push_back(failed.get_name_leafdata());
+    if (generate_response_failures.is_set || is_set(generate_response_failures.yfilter)) leaf_name_data.push_back(generate_response_failures.get_name_leafdata());
+    if (ignored.is_set || is_set(ignored.yfilter)) leaf_name_data.push_back(ignored.get_name_leafdata());
+    if (missing.is_set || is_set(missing.yfilter)) leaf_name_data.push_back(missing.get_name_leafdata());
+    if (passed.is_set || is_set(passed.yfilter)) leaf_name_data.push_back(passed.get_name_leafdata());
+    if (skipped.is_set || is_set(skipped.yfilter)) leaf_name_data.push_back(skipped.get_name_leafdata());
+    if (unexpected.is_set || is_set(unexpected.yfilter)) leaf_name_data.push_back(unexpected.get_name_leafdata());
+    if (unexpected_zlb.is_set || is_set(unexpected_zlb.yfilter)) leaf_name_data.push_back(unexpected_zlb.get_name_leafdata());
+    if (validate.is_set || is_set(validate.yfilter)) leaf_name_data.push_back(validate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9062,52 +12582,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bad-hash")
     {
         bad_hash = value;
+        bad_hash.value_namespace = name_space;
+        bad_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bad-length")
     {
         bad_length = value;
+        bad_length.value_namespace = name_space;
+        bad_length.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "failed")
     {
         failed = value;
+        failed.value_namespace = name_space;
+        failed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "generate-response-failures")
     {
         generate_response_failures = value;
+        generate_response_failures.value_namespace = name_space;
+        generate_response_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ignored")
     {
         ignored = value;
+        ignored.value_namespace = name_space;
+        ignored.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "missing")
     {
         missing = value;
+        missing.value_namespace = name_space;
+        missing.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "passed")
     {
         passed = value;
+        passed.value_namespace = name_space;
+        passed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "skipped")
     {
         skipped = value;
+        skipped.value_namespace = name_space;
+        skipped.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected")
     {
         unexpected = value;
+        unexpected.value_namespace = name_space;
+        unexpected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unexpected-zlb")
     {
         unexpected_zlb = value;
+        unexpected_zlb.value_namespace = name_space;
+        unexpected_zlb.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "validate")
     {
         validate = value;
+        validate.value_namespace = name_space;
+        validate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bad-hash")
+    {
+        bad_hash.yfilter = yfilter;
+    }
+    if(value_path == "bad-length")
+    {
+        bad_length.yfilter = yfilter;
+    }
+    if(value_path == "failed")
+    {
+        failed.yfilter = yfilter;
+    }
+    if(value_path == "generate-response-failures")
+    {
+        generate_response_failures.yfilter = yfilter;
+    }
+    if(value_path == "ignored")
+    {
+        ignored.yfilter = yfilter;
+    }
+    if(value_path == "missing")
+    {
+        missing.yfilter = yfilter;
+    }
+    if(value_path == "passed")
+    {
+        passed.yfilter = yfilter;
+    }
+    if(value_path == "skipped")
+    {
+        skipped.yfilter = yfilter;
+    }
+    if(value_path == "unexpected")
+    {
+        unexpected.yfilter = yfilter;
+    }
+    if(value_path == "unexpected-zlb")
+    {
+        unexpected_zlb.yfilter = yfilter;
+    }
+    if(value_path == "validate")
+    {
+        validate.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Authentication::OverallStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bad-hash" || name == "bad-length" || name == "failed" || name == "generate-response-failures" || name == "ignored" || name == "missing" || name == "passed" || name == "skipped" || name == "unexpected" || name == "unexpected-zlb" || name == "validate")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Global::Global()
@@ -9151,11 +12748,11 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::has_data() const
 
 bool L2Tpv2::Counters::Control::TunnelXr::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(total_drop.operation)
-	|| is_set(total_received.operation)
-	|| is_set(total_retransmit.operation)
-	|| is_set(total_transmit.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(total_drop.yfilter)
+	|| ydk::is_set(total_received.yfilter)
+	|| ydk::is_set(total_retransmit.yfilter)
+	|| ydk::is_set(total_transmit.yfilter)
 	|| (drop !=  nullptr && drop->has_operation())
 	|| (received !=  nullptr && received->has_operation())
 	|| (retransmit !=  nullptr && retransmit->has_operation())
@@ -9185,10 +12782,10 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total_drop.is_set || is_set(total_drop.operation)) leaf_name_data.push_back(total_drop.get_name_leafdata());
-    if (total_received.is_set || is_set(total_received.operation)) leaf_name_data.push_back(total_received.get_name_leafdata());
-    if (total_retransmit.is_set || is_set(total_retransmit.operation)) leaf_name_data.push_back(total_retransmit.get_name_leafdata());
-    if (total_transmit.is_set || is_set(total_transmit.operation)) leaf_name_data.push_back(total_transmit.get_name_leafdata());
+    if (total_drop.is_set || is_set(total_drop.yfilter)) leaf_name_data.push_back(total_drop.get_name_leafdata());
+    if (total_received.is_set || is_set(total_received.yfilter)) leaf_name_data.push_back(total_received.get_name_leafdata());
+    if (total_retransmit.is_set || is_set(total_retransmit.yfilter)) leaf_name_data.push_back(total_retransmit.get_name_leafdata());
+    if (total_transmit.is_set || is_set(total_transmit.yfilter)) leaf_name_data.push_back(total_transmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9263,24 +12860,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-drop")
     {
         total_drop = value;
+        total_drop.value_namespace = name_space;
+        total_drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-received")
     {
         total_received = value;
+        total_received.value_namespace = name_space;
+        total_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-retransmit")
     {
         total_retransmit = value;
+        total_retransmit.value_namespace = name_space;
+        total_retransmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-transmit")
     {
         total_transmit = value;
+        total_transmit.value_namespace = name_space;
+        total_transmit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-drop")
+    {
+        total_drop.yfilter = yfilter;
+    }
+    if(value_path == "total-received")
+    {
+        total_received.yfilter = yfilter;
+    }
+    if(value_path == "total-retransmit")
+    {
+        total_retransmit.yfilter = yfilter;
+    }
+    if(value_path == "total-transmit")
+    {
+        total_transmit.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop" || name == "received" || name == "retransmit" || name == "transmit" || name == "total-drop" || name == "total-received" || name == "total-retransmit" || name == "total-transmit")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::Transmit()
@@ -9337,26 +12969,26 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::has_data() const
 
 bool L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_segment_path() const
@@ -9382,25 +13014,25 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9419,84 +13051,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::Retransmit()
@@ -9553,26 +13310,26 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_data() const
 
 bool L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_segment_path() const
@@ -9598,25 +13355,25 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9635,84 +13392,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Global::Received::Received()
@@ -9769,26 +13651,26 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Received::has_data() const
 
 bool L2Tpv2::Counters::Control::TunnelXr::Global::Received::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_segment_path() const
@@ -9814,25 +13696,25 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Received::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9851,84 +13733,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Received::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::TunnelXr::Global::Drop::Drop()
@@ -9985,26 +13992,26 @@ bool L2Tpv2::Counters::Control::TunnelXr::Global::Drop::has_data() const
 
 bool L2Tpv2::Counters::Control::TunnelXr::Global::Drop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_segment_path() const
@@ -10030,25 +14037,25 @@ const EntityPath L2Tpv2::Counters::Control::TunnelXr::Global::Drop::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10067,84 +14074,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::TunnelXr::Global::Drop::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::TunnelXr::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::TunnelXr::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::TunnelXr::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Tunnels::Tunnels()
@@ -10173,7 +14305,7 @@ bool L2Tpv2::Counters::Control::Tunnels::has_operation() const
         if(tunnel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::Tunnels::get_segment_path() const
@@ -10238,8 +14370,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Counters::Control::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Counters::Control::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Tunnels::Tunnel::Tunnel()
@@ -10269,8 +14412,8 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::has_data() const
 
 bool L2Tpv2::Counters::Control::Tunnels::Tunnel::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(tunnel_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
 	|| (brief !=  nullptr && brief->has_operation())
 	|| (global !=  nullptr && global->has_operation());
 }
@@ -10298,7 +14441,7 @@ const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tunnel_id.is_set || is_set(tunnel_id.operation)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10345,12 +14488,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tunnel-id")
     {
         tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "brief" || name == "global" || name == "tunnel-id")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::Brief()
@@ -10375,10 +14535,10 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_data() const
 
 bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_address.operation)
-	|| is_set(remote_address.operation)
-	|| is_set(remote_tunnel_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_segment_path() const
@@ -10404,9 +14564,9 @@ const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10425,20 +14585,49 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Brief::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-address" || name == "remote-address" || name == "remote-tunnel-id")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Global()
@@ -10482,11 +14671,11 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::has_data() const
 
 bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(total_drop.operation)
-	|| is_set(total_received.operation)
-	|| is_set(total_retransmit.operation)
-	|| is_set(total_transmit.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(total_drop.yfilter)
+	|| ydk::is_set(total_received.yfilter)
+	|| ydk::is_set(total_retransmit.yfilter)
+	|| ydk::is_set(total_transmit.yfilter)
 	|| (drop !=  nullptr && drop->has_operation())
 	|| (received !=  nullptr && received->has_operation())
 	|| (retransmit !=  nullptr && retransmit->has_operation())
@@ -10516,10 +14705,10 @@ const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::get_entity_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (total_drop.is_set || is_set(total_drop.operation)) leaf_name_data.push_back(total_drop.get_name_leafdata());
-    if (total_received.is_set || is_set(total_received.operation)) leaf_name_data.push_back(total_received.get_name_leafdata());
-    if (total_retransmit.is_set || is_set(total_retransmit.operation)) leaf_name_data.push_back(total_retransmit.get_name_leafdata());
-    if (total_transmit.is_set || is_set(total_transmit.operation)) leaf_name_data.push_back(total_transmit.get_name_leafdata());
+    if (total_drop.is_set || is_set(total_drop.yfilter)) leaf_name_data.push_back(total_drop.get_name_leafdata());
+    if (total_received.is_set || is_set(total_received.yfilter)) leaf_name_data.push_back(total_received.get_name_leafdata());
+    if (total_retransmit.is_set || is_set(total_retransmit.yfilter)) leaf_name_data.push_back(total_retransmit.get_name_leafdata());
+    if (total_transmit.is_set || is_set(total_transmit.yfilter)) leaf_name_data.push_back(total_transmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10594,24 +14783,59 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-drop")
     {
         total_drop = value;
+        total_drop.value_namespace = name_space;
+        total_drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-received")
     {
         total_received = value;
+        total_received.value_namespace = name_space;
+        total_received.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-retransmit")
     {
         total_retransmit = value;
+        total_retransmit.value_namespace = name_space;
+        total_retransmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-transmit")
     {
         total_transmit = value;
+        total_transmit.value_namespace = name_space;
+        total_transmit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "total-drop")
+    {
+        total_drop.yfilter = yfilter;
+    }
+    if(value_path == "total-received")
+    {
+        total_received.yfilter = yfilter;
+    }
+    if(value_path == "total-retransmit")
+    {
+        total_retransmit.yfilter = yfilter;
+    }
+    if(value_path == "total-transmit")
+    {
+        total_transmit.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "drop" || name == "received" || name == "retransmit" || name == "transmit" || name == "total-drop" || name == "total-received" || name == "total-retransmit" || name == "total-transmit")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::Transmit()
@@ -10668,26 +14892,26 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_data() co
 
 bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::get_segment_path() const
@@ -10713,25 +14937,25 @@ const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10750,84 +14974,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Transmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::Retransmit()
@@ -10884,26 +15233,26 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_data() 
 
 bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::get_segment_path() const
@@ -10929,25 +15278,25 @@ const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10966,84 +15315,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Retransmit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::Received()
@@ -11100,26 +15574,26 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_data() co
 
 bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::get_segment_path() const
@@ -11145,25 +15619,25 @@ const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11182,84 +15656,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Received::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::Drop()
@@ -11316,26 +15915,26 @@ bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_data() const
 
 bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(acknowledgement_packets.operation)
-	|| is_set(call_disconnect_notify_packets.operation)
-	|| is_set(hello_packets.operation)
-	|| is_set(incoming_call_connected_packets.operation)
-	|| is_set(incoming_call_replies.operation)
-	|| is_set(incoming_call_requests.operation)
-	|| is_set(outgoing_call_connected_packets.operation)
-	|| is_set(outgoing_call_replies.operation)
-	|| is_set(outgoing_call_requests.operation)
-	|| is_set(service_relay_replies.operation)
-	|| is_set(service_relay_requests.operation)
-	|| is_set(set_link_info_packets.operation)
-	|| is_set(start_control_connection_notifications.operation)
-	|| is_set(start_control_connection_replies.operation)
-	|| is_set(start_control_connection_requests.operation)
-	|| is_set(stop_control_connection_notifications.operation)
-	|| is_set(unknown_packets.operation)
-	|| is_set(wan_error_notify_packets.operation)
-	|| is_set(zero_length_body_packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(acknowledgement_packets.yfilter)
+	|| ydk::is_set(call_disconnect_notify_packets.yfilter)
+	|| ydk::is_set(hello_packets.yfilter)
+	|| ydk::is_set(incoming_call_connected_packets.yfilter)
+	|| ydk::is_set(incoming_call_replies.yfilter)
+	|| ydk::is_set(incoming_call_requests.yfilter)
+	|| ydk::is_set(outgoing_call_connected_packets.yfilter)
+	|| ydk::is_set(outgoing_call_replies.yfilter)
+	|| ydk::is_set(outgoing_call_requests.yfilter)
+	|| ydk::is_set(service_relay_replies.yfilter)
+	|| ydk::is_set(service_relay_requests.yfilter)
+	|| ydk::is_set(set_link_info_packets.yfilter)
+	|| ydk::is_set(start_control_connection_notifications.yfilter)
+	|| ydk::is_set(start_control_connection_replies.yfilter)
+	|| ydk::is_set(start_control_connection_requests.yfilter)
+	|| ydk::is_set(stop_control_connection_notifications.yfilter)
+	|| ydk::is_set(unknown_packets.yfilter)
+	|| ydk::is_set(wan_error_notify_packets.yfilter)
+	|| ydk::is_set(zero_length_body_packets.yfilter);
 }
 
 std::string L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_segment_path() const
@@ -11361,25 +15960,25 @@ const EntityPath L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.operation)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
-    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.operation)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
-    if (hello_packets.is_set || is_set(hello_packets.operation)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
-    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.operation)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
-    if (incoming_call_replies.is_set || is_set(incoming_call_replies.operation)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
-    if (incoming_call_requests.is_set || is_set(incoming_call_requests.operation)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
-    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.operation)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
-    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.operation)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
-    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.operation)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
-    if (service_relay_replies.is_set || is_set(service_relay_replies.operation)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
-    if (service_relay_requests.is_set || is_set(service_relay_requests.operation)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
-    if (set_link_info_packets.is_set || is_set(set_link_info_packets.operation)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
-    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.operation)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
-    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.operation)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
-    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.operation)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
-    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.operation)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
-    if (unknown_packets.is_set || is_set(unknown_packets.operation)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
-    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.operation)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
-    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.operation)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
+    if (acknowledgement_packets.is_set || is_set(acknowledgement_packets.yfilter)) leaf_name_data.push_back(acknowledgement_packets.get_name_leafdata());
+    if (call_disconnect_notify_packets.is_set || is_set(call_disconnect_notify_packets.yfilter)) leaf_name_data.push_back(call_disconnect_notify_packets.get_name_leafdata());
+    if (hello_packets.is_set || is_set(hello_packets.yfilter)) leaf_name_data.push_back(hello_packets.get_name_leafdata());
+    if (incoming_call_connected_packets.is_set || is_set(incoming_call_connected_packets.yfilter)) leaf_name_data.push_back(incoming_call_connected_packets.get_name_leafdata());
+    if (incoming_call_replies.is_set || is_set(incoming_call_replies.yfilter)) leaf_name_data.push_back(incoming_call_replies.get_name_leafdata());
+    if (incoming_call_requests.is_set || is_set(incoming_call_requests.yfilter)) leaf_name_data.push_back(incoming_call_requests.get_name_leafdata());
+    if (outgoing_call_connected_packets.is_set || is_set(outgoing_call_connected_packets.yfilter)) leaf_name_data.push_back(outgoing_call_connected_packets.get_name_leafdata());
+    if (outgoing_call_replies.is_set || is_set(outgoing_call_replies.yfilter)) leaf_name_data.push_back(outgoing_call_replies.get_name_leafdata());
+    if (outgoing_call_requests.is_set || is_set(outgoing_call_requests.yfilter)) leaf_name_data.push_back(outgoing_call_requests.get_name_leafdata());
+    if (service_relay_replies.is_set || is_set(service_relay_replies.yfilter)) leaf_name_data.push_back(service_relay_replies.get_name_leafdata());
+    if (service_relay_requests.is_set || is_set(service_relay_requests.yfilter)) leaf_name_data.push_back(service_relay_requests.get_name_leafdata());
+    if (set_link_info_packets.is_set || is_set(set_link_info_packets.yfilter)) leaf_name_data.push_back(set_link_info_packets.get_name_leafdata());
+    if (start_control_connection_notifications.is_set || is_set(start_control_connection_notifications.yfilter)) leaf_name_data.push_back(start_control_connection_notifications.get_name_leafdata());
+    if (start_control_connection_replies.is_set || is_set(start_control_connection_replies.yfilter)) leaf_name_data.push_back(start_control_connection_replies.get_name_leafdata());
+    if (start_control_connection_requests.is_set || is_set(start_control_connection_requests.yfilter)) leaf_name_data.push_back(start_control_connection_requests.get_name_leafdata());
+    if (stop_control_connection_notifications.is_set || is_set(stop_control_connection_notifications.yfilter)) leaf_name_data.push_back(stop_control_connection_notifications.get_name_leafdata());
+    if (unknown_packets.is_set || is_set(unknown_packets.yfilter)) leaf_name_data.push_back(unknown_packets.get_name_leafdata());
+    if (wan_error_notify_packets.is_set || is_set(wan_error_notify_packets.yfilter)) leaf_name_data.push_back(wan_error_notify_packets.get_name_leafdata());
+    if (zero_length_body_packets.is_set || is_set(zero_length_body_packets.yfilter)) leaf_name_data.push_back(zero_length_body_packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11398,84 +15997,209 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Counters::Control::Tunnel
     return children;
 }
 
-void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acknowledgement-packets")
     {
         acknowledgement_packets = value;
+        acknowledgement_packets.value_namespace = name_space;
+        acknowledgement_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-disconnect-notify-packets")
     {
         call_disconnect_notify_packets = value;
+        call_disconnect_notify_packets.value_namespace = name_space;
+        call_disconnect_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-packets")
     {
         hello_packets = value;
+        hello_packets.value_namespace = name_space;
+        hello_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-connected-packets")
     {
         incoming_call_connected_packets = value;
+        incoming_call_connected_packets.value_namespace = name_space;
+        incoming_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-replies")
     {
         incoming_call_replies = value;
+        incoming_call_replies.value_namespace = name_space;
+        incoming_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-call-requests")
     {
         incoming_call_requests = value;
+        incoming_call_requests.value_namespace = name_space;
+        incoming_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-connected-packets")
     {
         outgoing_call_connected_packets = value;
+        outgoing_call_connected_packets.value_namespace = name_space;
+        outgoing_call_connected_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-replies")
     {
         outgoing_call_replies = value;
+        outgoing_call_replies.value_namespace = name_space;
+        outgoing_call_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outgoing-call-requests")
     {
         outgoing_call_requests = value;
+        outgoing_call_requests.value_namespace = name_space;
+        outgoing_call_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-replies")
     {
         service_relay_replies = value;
+        service_relay_replies.value_namespace = name_space;
+        service_relay_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-relay-requests")
     {
         service_relay_requests = value;
+        service_relay_requests.value_namespace = name_space;
+        service_relay_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "set-link-info-packets")
     {
         set_link_info_packets = value;
+        set_link_info_packets.value_namespace = name_space;
+        set_link_info_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-notifications")
     {
         start_control_connection_notifications = value;
+        start_control_connection_notifications.value_namespace = name_space;
+        start_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-replies")
     {
         start_control_connection_replies = value;
+        start_control_connection_replies.value_namespace = name_space;
+        start_control_connection_replies.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start-control-connection-requests")
     {
         start_control_connection_requests = value;
+        start_control_connection_requests.value_namespace = name_space;
+        start_control_connection_requests.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop-control-connection-notifications")
     {
         stop_control_connection_notifications = value;
+        stop_control_connection_notifications.value_namespace = name_space;
+        stop_control_connection_notifications.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unknown-packets")
     {
         unknown_packets = value;
+        unknown_packets.value_namespace = name_space;
+        unknown_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "wan-error-notify-packets")
     {
         wan_error_notify_packets = value;
+        wan_error_notify_packets.value_namespace = name_space;
+        wan_error_notify_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-packets")
     {
         zero_length_body_packets = value;
+        zero_length_body_packets.value_namespace = name_space;
+        zero_length_body_packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acknowledgement-packets")
+    {
+        acknowledgement_packets.yfilter = yfilter;
+    }
+    if(value_path == "call-disconnect-notify-packets")
+    {
+        call_disconnect_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "hello-packets")
+    {
+        hello_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-connected-packets")
+    {
+        incoming_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-replies")
+    {
+        incoming_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "incoming-call-requests")
+    {
+        incoming_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-connected-packets")
+    {
+        outgoing_call_connected_packets.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-replies")
+    {
+        outgoing_call_replies.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-call-requests")
+    {
+        outgoing_call_requests.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-replies")
+    {
+        service_relay_replies.yfilter = yfilter;
+    }
+    if(value_path == "service-relay-requests")
+    {
+        service_relay_requests.yfilter = yfilter;
+    }
+    if(value_path == "set-link-info-packets")
+    {
+        set_link_info_packets.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-notifications")
+    {
+        start_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-replies")
+    {
+        start_control_connection_replies.yfilter = yfilter;
+    }
+    if(value_path == "start-control-connection-requests")
+    {
+        start_control_connection_requests.yfilter = yfilter;
+    }
+    if(value_path == "stop-control-connection-notifications")
+    {
+        stop_control_connection_notifications.yfilter = yfilter;
+    }
+    if(value_path == "unknown-packets")
+    {
+        unknown_packets.yfilter = yfilter;
+    }
+    if(value_path == "wan-error-notify-packets")
+    {
+        wan_error_notify_packets.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-packets")
+    {
+        zero_length_body_packets.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Counters::Control::Tunnels::Tunnel::Global::Drop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acknowledgement-packets" || name == "call-disconnect-notify-packets" || name == "hello-packets" || name == "incoming-call-connected-packets" || name == "incoming-call-replies" || name == "incoming-call-requests" || name == "outgoing-call-connected-packets" || name == "outgoing-call-replies" || name == "outgoing-call-requests" || name == "service-relay-replies" || name == "service-relay-requests" || name == "set-link-info-packets" || name == "start-control-connection-notifications" || name == "start-control-connection-replies" || name == "start-control-connection-requests" || name == "stop-control-connection-notifications" || name == "unknown-packets" || name == "wan-error-notify-packets" || name == "zero-length-body-packets")
+        return true;
+    return false;
 }
 
 L2Tpv2::Statistics::Statistics()
@@ -11516,18 +16240,18 @@ bool L2Tpv2::Statistics::has_data() const
 
 bool L2Tpv2::Statistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average_packet_processing_time.operation)
-	|| is_set(buffered_packets.operation)
-	|| is_set(incoming_dropped_packets.operation)
-	|| is_set(netio_packets.operation)
-	|| is_set(received_out_of_order_packets.operation)
-	|| is_set(received_packets.operation)
-	|| is_set(reorder_deviation_packets.operation)
-	|| is_set(reorder_packets.operation)
-	|| is_set(sent_packets.operation)
-	|| is_set(sessions.operation)
-	|| is_set(tunnels.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average_packet_processing_time.yfilter)
+	|| ydk::is_set(buffered_packets.yfilter)
+	|| ydk::is_set(incoming_dropped_packets.yfilter)
+	|| ydk::is_set(netio_packets.yfilter)
+	|| ydk::is_set(received_out_of_order_packets.yfilter)
+	|| ydk::is_set(received_packets.yfilter)
+	|| ydk::is_set(reorder_deviation_packets.yfilter)
+	|| ydk::is_set(reorder_packets.yfilter)
+	|| ydk::is_set(sent_packets.yfilter)
+	|| ydk::is_set(sessions.yfilter)
+	|| ydk::is_set(tunnels.yfilter);
 }
 
 std::string L2Tpv2::Statistics::get_segment_path() const
@@ -11553,17 +16277,17 @@ const EntityPath L2Tpv2::Statistics::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average_packet_processing_time.is_set || is_set(average_packet_processing_time.operation)) leaf_name_data.push_back(average_packet_processing_time.get_name_leafdata());
-    if (buffered_packets.is_set || is_set(buffered_packets.operation)) leaf_name_data.push_back(buffered_packets.get_name_leafdata());
-    if (incoming_dropped_packets.is_set || is_set(incoming_dropped_packets.operation)) leaf_name_data.push_back(incoming_dropped_packets.get_name_leafdata());
-    if (netio_packets.is_set || is_set(netio_packets.operation)) leaf_name_data.push_back(netio_packets.get_name_leafdata());
-    if (received_out_of_order_packets.is_set || is_set(received_out_of_order_packets.operation)) leaf_name_data.push_back(received_out_of_order_packets.get_name_leafdata());
-    if (received_packets.is_set || is_set(received_packets.operation)) leaf_name_data.push_back(received_packets.get_name_leafdata());
-    if (reorder_deviation_packets.is_set || is_set(reorder_deviation_packets.operation)) leaf_name_data.push_back(reorder_deviation_packets.get_name_leafdata());
-    if (reorder_packets.is_set || is_set(reorder_packets.operation)) leaf_name_data.push_back(reorder_packets.get_name_leafdata());
-    if (sent_packets.is_set || is_set(sent_packets.operation)) leaf_name_data.push_back(sent_packets.get_name_leafdata());
-    if (sessions.is_set || is_set(sessions.operation)) leaf_name_data.push_back(sessions.get_name_leafdata());
-    if (tunnels.is_set || is_set(tunnels.operation)) leaf_name_data.push_back(tunnels.get_name_leafdata());
+    if (average_packet_processing_time.is_set || is_set(average_packet_processing_time.yfilter)) leaf_name_data.push_back(average_packet_processing_time.get_name_leafdata());
+    if (buffered_packets.is_set || is_set(buffered_packets.yfilter)) leaf_name_data.push_back(buffered_packets.get_name_leafdata());
+    if (incoming_dropped_packets.is_set || is_set(incoming_dropped_packets.yfilter)) leaf_name_data.push_back(incoming_dropped_packets.get_name_leafdata());
+    if (netio_packets.is_set || is_set(netio_packets.yfilter)) leaf_name_data.push_back(netio_packets.get_name_leafdata());
+    if (received_out_of_order_packets.is_set || is_set(received_out_of_order_packets.yfilter)) leaf_name_data.push_back(received_out_of_order_packets.get_name_leafdata());
+    if (received_packets.is_set || is_set(received_packets.yfilter)) leaf_name_data.push_back(received_packets.get_name_leafdata());
+    if (reorder_deviation_packets.is_set || is_set(reorder_deviation_packets.yfilter)) leaf_name_data.push_back(reorder_deviation_packets.get_name_leafdata());
+    if (reorder_packets.is_set || is_set(reorder_packets.yfilter)) leaf_name_data.push_back(reorder_packets.get_name_leafdata());
+    if (sent_packets.is_set || is_set(sent_packets.yfilter)) leaf_name_data.push_back(sent_packets.get_name_leafdata());
+    if (sessions.is_set || is_set(sessions.yfilter)) leaf_name_data.push_back(sessions.get_name_leafdata());
+    if (tunnels.is_set || is_set(tunnels.yfilter)) leaf_name_data.push_back(tunnels.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11582,52 +16306,129 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Statistics::get_children(
     return children;
 }
 
-void L2Tpv2::Statistics::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average-packet-processing-time")
     {
         average_packet_processing_time = value;
+        average_packet_processing_time.value_namespace = name_space;
+        average_packet_processing_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "buffered-packets")
     {
         buffered_packets = value;
+        buffered_packets.value_namespace = name_space;
+        buffered_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "incoming-dropped-packets")
     {
         incoming_dropped_packets = value;
+        incoming_dropped_packets.value_namespace = name_space;
+        incoming_dropped_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netio-packets")
     {
         netio_packets = value;
+        netio_packets.value_namespace = name_space;
+        netio_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-out-of-order-packets")
     {
         received_out_of_order_packets = value;
+        received_out_of_order_packets.value_namespace = name_space;
+        received_out_of_order_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "received-packets")
     {
         received_packets = value;
+        received_packets.value_namespace = name_space;
+        received_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reorder-deviation-packets")
     {
         reorder_deviation_packets = value;
+        reorder_deviation_packets.value_namespace = name_space;
+        reorder_deviation_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reorder-packets")
     {
         reorder_packets = value;
+        reorder_packets.value_namespace = name_space;
+        reorder_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sent-packets")
     {
         sent_packets = value;
+        sent_packets.value_namespace = name_space;
+        sent_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessions")
     {
         sessions = value;
+        sessions.value_namespace = name_space;
+        sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tunnels")
     {
         tunnels = value;
+        tunnels.value_namespace = name_space;
+        tunnels.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average-packet-processing-time")
+    {
+        average_packet_processing_time.yfilter = yfilter;
+    }
+    if(value_path == "buffered-packets")
+    {
+        buffered_packets.yfilter = yfilter;
+    }
+    if(value_path == "incoming-dropped-packets")
+    {
+        incoming_dropped_packets.yfilter = yfilter;
+    }
+    if(value_path == "netio-packets")
+    {
+        netio_packets.yfilter = yfilter;
+    }
+    if(value_path == "received-out-of-order-packets")
+    {
+        received_out_of_order_packets.yfilter = yfilter;
+    }
+    if(value_path == "received-packets")
+    {
+        received_packets.yfilter = yfilter;
+    }
+    if(value_path == "reorder-deviation-packets")
+    {
+        reorder_deviation_packets.yfilter = yfilter;
+    }
+    if(value_path == "reorder-packets")
+    {
+        reorder_packets.yfilter = yfilter;
+    }
+    if(value_path == "sent-packets")
+    {
+        sent_packets.yfilter = yfilter;
+    }
+    if(value_path == "sessions")
+    {
+        sessions.yfilter = yfilter;
+    }
+    if(value_path == "tunnels")
+    {
+        tunnels.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average-packet-processing-time" || name == "buffered-packets" || name == "incoming-dropped-packets" || name == "netio-packets" || name == "received-out-of-order-packets" || name == "received-packets" || name == "reorder-deviation-packets" || name == "reorder-packets" || name == "sent-packets" || name == "sessions" || name == "tunnels")
+        return true;
+    return false;
 }
 
 L2Tpv2::Tunnel::Tunnel()
@@ -11650,7 +16451,7 @@ bool L2Tpv2::Tunnel::has_data() const
 
 bool L2Tpv2::Tunnel::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation());
 }
 
@@ -11709,8 +16510,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::get_children() co
     return children;
 }
 
-void L2Tpv2::Tunnel::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting")
+        return true;
+    return false;
 }
 
 L2Tpv2::Tunnel::Accounting::Accounting()
@@ -11733,7 +16545,7 @@ bool L2Tpv2::Tunnel::Accounting::has_data() const
 
 bool L2Tpv2::Tunnel::Accounting::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
@@ -11792,8 +16604,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::Accounting::get_c
     return children;
 }
 
-void L2Tpv2::Tunnel::Accounting::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Tunnel::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Tunnel::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Tunnel::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "statistics")
+        return true;
+    return false;
 }
 
 L2Tpv2::Tunnel::Accounting::Statistics::Statistics()
@@ -11842,22 +16665,22 @@ bool L2Tpv2::Tunnel::Accounting::Statistics::has_data() const
 
 bool L2Tpv2::Tunnel::Accounting::Statistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(current_size.operation)
-	|| is_set(memory_failures.operation)
-	|| is_set(negative_acknowledgement.operation)
-	|| is_set(positive_acknowledgement.operation)
-	|| is_set(queue_statistics_size.operation)
-	|| is_set(records_checkpointed.operation)
-	|| is_set(records_fail_to_recover.operation)
-	|| is_set(records_failed_to_checkpoint.operation)
-	|| is_set(records_recovered_from_checkpoint.operation)
-	|| is_set(records_sent_from_queue.operation)
-	|| is_set(records_sent_successfully.operation)
-	|| is_set(reject.operation)
-	|| is_set(start.operation)
-	|| is_set(stop.operation)
-	|| is_set(transport_failures.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(current_size.yfilter)
+	|| ydk::is_set(memory_failures.yfilter)
+	|| ydk::is_set(negative_acknowledgement.yfilter)
+	|| ydk::is_set(positive_acknowledgement.yfilter)
+	|| ydk::is_set(queue_statistics_size.yfilter)
+	|| ydk::is_set(records_checkpointed.yfilter)
+	|| ydk::is_set(records_fail_to_recover.yfilter)
+	|| ydk::is_set(records_failed_to_checkpoint.yfilter)
+	|| ydk::is_set(records_recovered_from_checkpoint.yfilter)
+	|| ydk::is_set(records_sent_from_queue.yfilter)
+	|| ydk::is_set(records_sent_successfully.yfilter)
+	|| ydk::is_set(reject.yfilter)
+	|| ydk::is_set(start.yfilter)
+	|| ydk::is_set(stop.yfilter)
+	|| ydk::is_set(transport_failures.yfilter);
 }
 
 std::string L2Tpv2::Tunnel::Accounting::Statistics::get_segment_path() const
@@ -11883,21 +16706,21 @@ const EntityPath L2Tpv2::Tunnel::Accounting::Statistics::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (current_size.is_set || is_set(current_size.operation)) leaf_name_data.push_back(current_size.get_name_leafdata());
-    if (memory_failures.is_set || is_set(memory_failures.operation)) leaf_name_data.push_back(memory_failures.get_name_leafdata());
-    if (negative_acknowledgement.is_set || is_set(negative_acknowledgement.operation)) leaf_name_data.push_back(negative_acknowledgement.get_name_leafdata());
-    if (positive_acknowledgement.is_set || is_set(positive_acknowledgement.operation)) leaf_name_data.push_back(positive_acknowledgement.get_name_leafdata());
-    if (queue_statistics_size.is_set || is_set(queue_statistics_size.operation)) leaf_name_data.push_back(queue_statistics_size.get_name_leafdata());
-    if (records_checkpointed.is_set || is_set(records_checkpointed.operation)) leaf_name_data.push_back(records_checkpointed.get_name_leafdata());
-    if (records_fail_to_recover.is_set || is_set(records_fail_to_recover.operation)) leaf_name_data.push_back(records_fail_to_recover.get_name_leafdata());
-    if (records_failed_to_checkpoint.is_set || is_set(records_failed_to_checkpoint.operation)) leaf_name_data.push_back(records_failed_to_checkpoint.get_name_leafdata());
-    if (records_recovered_from_checkpoint.is_set || is_set(records_recovered_from_checkpoint.operation)) leaf_name_data.push_back(records_recovered_from_checkpoint.get_name_leafdata());
-    if (records_sent_from_queue.is_set || is_set(records_sent_from_queue.operation)) leaf_name_data.push_back(records_sent_from_queue.get_name_leafdata());
-    if (records_sent_successfully.is_set || is_set(records_sent_successfully.operation)) leaf_name_data.push_back(records_sent_successfully.get_name_leafdata());
-    if (reject.is_set || is_set(reject.operation)) leaf_name_data.push_back(reject.get_name_leafdata());
-    if (start.is_set || is_set(start.operation)) leaf_name_data.push_back(start.get_name_leafdata());
-    if (stop.is_set || is_set(stop.operation)) leaf_name_data.push_back(stop.get_name_leafdata());
-    if (transport_failures.is_set || is_set(transport_failures.operation)) leaf_name_data.push_back(transport_failures.get_name_leafdata());
+    if (current_size.is_set || is_set(current_size.yfilter)) leaf_name_data.push_back(current_size.get_name_leafdata());
+    if (memory_failures.is_set || is_set(memory_failures.yfilter)) leaf_name_data.push_back(memory_failures.get_name_leafdata());
+    if (negative_acknowledgement.is_set || is_set(negative_acknowledgement.yfilter)) leaf_name_data.push_back(negative_acknowledgement.get_name_leafdata());
+    if (positive_acknowledgement.is_set || is_set(positive_acknowledgement.yfilter)) leaf_name_data.push_back(positive_acknowledgement.get_name_leafdata());
+    if (queue_statistics_size.is_set || is_set(queue_statistics_size.yfilter)) leaf_name_data.push_back(queue_statistics_size.get_name_leafdata());
+    if (records_checkpointed.is_set || is_set(records_checkpointed.yfilter)) leaf_name_data.push_back(records_checkpointed.get_name_leafdata());
+    if (records_fail_to_recover.is_set || is_set(records_fail_to_recover.yfilter)) leaf_name_data.push_back(records_fail_to_recover.get_name_leafdata());
+    if (records_failed_to_checkpoint.is_set || is_set(records_failed_to_checkpoint.yfilter)) leaf_name_data.push_back(records_failed_to_checkpoint.get_name_leafdata());
+    if (records_recovered_from_checkpoint.is_set || is_set(records_recovered_from_checkpoint.yfilter)) leaf_name_data.push_back(records_recovered_from_checkpoint.get_name_leafdata());
+    if (records_sent_from_queue.is_set || is_set(records_sent_from_queue.yfilter)) leaf_name_data.push_back(records_sent_from_queue.get_name_leafdata());
+    if (records_sent_successfully.is_set || is_set(records_sent_successfully.yfilter)) leaf_name_data.push_back(records_sent_successfully.get_name_leafdata());
+    if (reject.is_set || is_set(reject.yfilter)) leaf_name_data.push_back(reject.get_name_leafdata());
+    if (start.is_set || is_set(start.yfilter)) leaf_name_data.push_back(start.get_name_leafdata());
+    if (stop.is_set || is_set(stop.yfilter)) leaf_name_data.push_back(stop.get_name_leafdata());
+    if (transport_failures.is_set || is_set(transport_failures.yfilter)) leaf_name_data.push_back(transport_failures.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11916,68 +16739,169 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnel::Accounting::Stati
     return children;
 }
 
-void L2Tpv2::Tunnel::Accounting::Statistics::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Tunnel::Accounting::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "current-size")
     {
         current_size = value;
+        current_size.value_namespace = name_space;
+        current_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "memory-failures")
     {
         memory_failures = value;
+        memory_failures.value_namespace = name_space;
+        memory_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "negative-acknowledgement")
     {
         negative_acknowledgement = value;
+        negative_acknowledgement.value_namespace = name_space;
+        negative_acknowledgement.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "positive-acknowledgement")
     {
         positive_acknowledgement = value;
+        positive_acknowledgement.value_namespace = name_space;
+        positive_acknowledgement.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "queue-statistics-size")
     {
         queue_statistics_size = value;
+        queue_statistics_size.value_namespace = name_space;
+        queue_statistics_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "records-checkpointed")
     {
         records_checkpointed = value;
+        records_checkpointed.value_namespace = name_space;
+        records_checkpointed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "records-fail-to-recover")
     {
         records_fail_to_recover = value;
+        records_fail_to_recover.value_namespace = name_space;
+        records_fail_to_recover.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "records-failed-to-checkpoint")
     {
         records_failed_to_checkpoint = value;
+        records_failed_to_checkpoint.value_namespace = name_space;
+        records_failed_to_checkpoint.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "records-recovered-from-checkpoint")
     {
         records_recovered_from_checkpoint = value;
+        records_recovered_from_checkpoint.value_namespace = name_space;
+        records_recovered_from_checkpoint.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "records-sent-from-queue")
     {
         records_sent_from_queue = value;
+        records_sent_from_queue.value_namespace = name_space;
+        records_sent_from_queue.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "records-sent-successfully")
     {
         records_sent_successfully = value;
+        records_sent_successfully.value_namespace = name_space;
+        records_sent_successfully.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reject")
     {
         reject = value;
+        reject.value_namespace = name_space;
+        reject.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "start")
     {
         start = value;
+        start.value_namespace = name_space;
+        start.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stop")
     {
         stop = value;
+        stop.value_namespace = name_space;
+        stop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "transport-failures")
     {
         transport_failures = value;
+        transport_failures.value_namespace = name_space;
+        transport_failures.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Tunnel::Accounting::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "current-size")
+    {
+        current_size.yfilter = yfilter;
+    }
+    if(value_path == "memory-failures")
+    {
+        memory_failures.yfilter = yfilter;
+    }
+    if(value_path == "negative-acknowledgement")
+    {
+        negative_acknowledgement.yfilter = yfilter;
+    }
+    if(value_path == "positive-acknowledgement")
+    {
+        positive_acknowledgement.yfilter = yfilter;
+    }
+    if(value_path == "queue-statistics-size")
+    {
+        queue_statistics_size.yfilter = yfilter;
+    }
+    if(value_path == "records-checkpointed")
+    {
+        records_checkpointed.yfilter = yfilter;
+    }
+    if(value_path == "records-fail-to-recover")
+    {
+        records_fail_to_recover.yfilter = yfilter;
+    }
+    if(value_path == "records-failed-to-checkpoint")
+    {
+        records_failed_to_checkpoint.yfilter = yfilter;
+    }
+    if(value_path == "records-recovered-from-checkpoint")
+    {
+        records_recovered_from_checkpoint.yfilter = yfilter;
+    }
+    if(value_path == "records-sent-from-queue")
+    {
+        records_sent_from_queue.yfilter = yfilter;
+    }
+    if(value_path == "records-sent-successfully")
+    {
+        records_sent_successfully.yfilter = yfilter;
+    }
+    if(value_path == "reject")
+    {
+        reject.yfilter = yfilter;
+    }
+    if(value_path == "start")
+    {
+        start.yfilter = yfilter;
+    }
+    if(value_path == "stop")
+    {
+        stop.yfilter = yfilter;
+    }
+    if(value_path == "transport-failures")
+    {
+        transport_failures.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Tunnel::Accounting::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "current-size" || name == "memory-failures" || name == "negative-acknowledgement" || name == "positive-acknowledgement" || name == "queue-statistics-size" || name == "records-checkpointed" || name == "records-fail-to-recover" || name == "records-failed-to-checkpoint" || name == "records-recovered-from-checkpoint" || name == "records-sent-from-queue" || name == "records-sent-successfully" || name == "reject" || name == "start" || name == "stop" || name == "transport-failures")
+        return true;
+    return false;
 }
 
 L2Tpv2::TunnelConfigurations::TunnelConfigurations()
@@ -12006,7 +16930,7 @@ bool L2Tpv2::TunnelConfigurations::has_operation() const
         if(tunnel_configuration[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tpv2::TunnelConfigurations::get_segment_path() const
@@ -12071,8 +16995,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::get
     return children;
 }
 
-void L2Tpv2::TunnelConfigurations::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::TunnelConfigurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::TunnelConfigurations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::TunnelConfigurations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel-configuration")
+        return true;
+    return false;
 }
 
 L2Tpv2::TunnelConfigurations::TunnelConfiguration::TunnelConfiguration()
@@ -12100,9 +17035,9 @@ bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::has_data() const
 
 bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_tunnel_id.operation)
-	|| is_set(remote_tunnel_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_tunnel_id.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter)
 	|| (l2tp_class !=  nullptr && l2tp_class->has_operation());
 }
 
@@ -12129,8 +17064,8 @@ const EntityPath L2Tpv2::TunnelConfigurations::TunnelConfiguration::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12163,16 +17098,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::Tun
     return children;
 }
 
-void L2Tpv2::TunnelConfigurations::TunnelConfiguration::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::TunnelConfigurations::TunnelConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+        local_tunnel_id.value_namespace = name_space;
+        local_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::TunnelConfigurations::TunnelConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2tp-class" || name == "local-tunnel-id" || name == "remote-tunnel-id")
+        return true;
+    return false;
 }
 
 L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::L2TpClass()
@@ -12239,31 +17197,31 @@ bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_data() co
 
 bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(accounting_method_list.operation)
-	|| is_set(class_name_xr.operation)
-	|| is_set(digest_hash.operation)
-	|| is_set(encoded_password.operation)
-	|| is_set(hello_timeout.operation)
-	|| is_set(host_name.operation)
-	|| is_set(initial_retransmit_maximum_timeout.operation)
-	|| is_set(initial_retransmit_minimum_timeout.operation)
-	|| is_set(initial_retransmit_retries.operation)
-	|| is_set(ip_tos.operation)
-	|| is_set(is_authentication_enabled.operation)
-	|| is_set(is_congestion_control_enabled.operation)
-	|| is_set(is_digest_check_enabled.operation)
-	|| is_set(is_digest_enabled.operation)
-	|| is_set(is_hidden.operation)
-	|| is_set(is_peer_address_checked.operation)
-	|| is_set(password.operation)
-	|| is_set(receive_window_size.operation)
-	|| is_set(retransmit_maximum_timeout.operation)
-	|| is_set(retransmit_minimum_timeout.operation)
-	|| is_set(retransmit_retries.operation)
-	|| is_set(setup_timeout.operation)
-	|| is_set(timeout_no_user.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(accounting_method_list.yfilter)
+	|| ydk::is_set(class_name_xr.yfilter)
+	|| ydk::is_set(digest_hash.yfilter)
+	|| ydk::is_set(encoded_password.yfilter)
+	|| ydk::is_set(hello_timeout.yfilter)
+	|| ydk::is_set(host_name.yfilter)
+	|| ydk::is_set(initial_retransmit_maximum_timeout.yfilter)
+	|| ydk::is_set(initial_retransmit_minimum_timeout.yfilter)
+	|| ydk::is_set(initial_retransmit_retries.yfilter)
+	|| ydk::is_set(ip_tos.yfilter)
+	|| ydk::is_set(is_authentication_enabled.yfilter)
+	|| ydk::is_set(is_congestion_control_enabled.yfilter)
+	|| ydk::is_set(is_digest_check_enabled.yfilter)
+	|| ydk::is_set(is_digest_enabled.yfilter)
+	|| ydk::is_set(is_hidden.yfilter)
+	|| ydk::is_set(is_peer_address_checked.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(receive_window_size.yfilter)
+	|| ydk::is_set(retransmit_maximum_timeout.yfilter)
+	|| ydk::is_set(retransmit_minimum_timeout.yfilter)
+	|| ydk::is_set(retransmit_retries.yfilter)
+	|| ydk::is_set(setup_timeout.yfilter)
+	|| ydk::is_set(timeout_no_user.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::get_segment_path() const
@@ -12289,30 +17247,30 @@ const EntityPath L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (accounting_method_list.is_set || is_set(accounting_method_list.operation)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
-    if (class_name_xr.is_set || is_set(class_name_xr.operation)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
-    if (digest_hash.is_set || is_set(digest_hash.operation)) leaf_name_data.push_back(digest_hash.get_name_leafdata());
-    if (encoded_password.is_set || is_set(encoded_password.operation)) leaf_name_data.push_back(encoded_password.get_name_leafdata());
-    if (hello_timeout.is_set || is_set(hello_timeout.operation)) leaf_name_data.push_back(hello_timeout.get_name_leafdata());
-    if (host_name.is_set || is_set(host_name.operation)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (initial_retransmit_maximum_timeout.is_set || is_set(initial_retransmit_maximum_timeout.operation)) leaf_name_data.push_back(initial_retransmit_maximum_timeout.get_name_leafdata());
-    if (initial_retransmit_minimum_timeout.is_set || is_set(initial_retransmit_minimum_timeout.operation)) leaf_name_data.push_back(initial_retransmit_minimum_timeout.get_name_leafdata());
-    if (initial_retransmit_retries.is_set || is_set(initial_retransmit_retries.operation)) leaf_name_data.push_back(initial_retransmit_retries.get_name_leafdata());
-    if (ip_tos.is_set || is_set(ip_tos.operation)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
-    if (is_authentication_enabled.is_set || is_set(is_authentication_enabled.operation)) leaf_name_data.push_back(is_authentication_enabled.get_name_leafdata());
-    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.operation)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
-    if (is_digest_check_enabled.is_set || is_set(is_digest_check_enabled.operation)) leaf_name_data.push_back(is_digest_check_enabled.get_name_leafdata());
-    if (is_digest_enabled.is_set || is_set(is_digest_enabled.operation)) leaf_name_data.push_back(is_digest_enabled.get_name_leafdata());
-    if (is_hidden.is_set || is_set(is_hidden.operation)) leaf_name_data.push_back(is_hidden.get_name_leafdata());
-    if (is_peer_address_checked.is_set || is_set(is_peer_address_checked.operation)) leaf_name_data.push_back(is_peer_address_checked.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (receive_window_size.is_set || is_set(receive_window_size.operation)) leaf_name_data.push_back(receive_window_size.get_name_leafdata());
-    if (retransmit_maximum_timeout.is_set || is_set(retransmit_maximum_timeout.operation)) leaf_name_data.push_back(retransmit_maximum_timeout.get_name_leafdata());
-    if (retransmit_minimum_timeout.is_set || is_set(retransmit_minimum_timeout.operation)) leaf_name_data.push_back(retransmit_minimum_timeout.get_name_leafdata());
-    if (retransmit_retries.is_set || is_set(retransmit_retries.operation)) leaf_name_data.push_back(retransmit_retries.get_name_leafdata());
-    if (setup_timeout.is_set || is_set(setup_timeout.operation)) leaf_name_data.push_back(setup_timeout.get_name_leafdata());
-    if (timeout_no_user.is_set || is_set(timeout_no_user.operation)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (accounting_method_list.is_set || is_set(accounting_method_list.yfilter)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
+    if (class_name_xr.is_set || is_set(class_name_xr.yfilter)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
+    if (digest_hash.is_set || is_set(digest_hash.yfilter)) leaf_name_data.push_back(digest_hash.get_name_leafdata());
+    if (encoded_password.is_set || is_set(encoded_password.yfilter)) leaf_name_data.push_back(encoded_password.get_name_leafdata());
+    if (hello_timeout.is_set || is_set(hello_timeout.yfilter)) leaf_name_data.push_back(hello_timeout.get_name_leafdata());
+    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
+    if (initial_retransmit_maximum_timeout.is_set || is_set(initial_retransmit_maximum_timeout.yfilter)) leaf_name_data.push_back(initial_retransmit_maximum_timeout.get_name_leafdata());
+    if (initial_retransmit_minimum_timeout.is_set || is_set(initial_retransmit_minimum_timeout.yfilter)) leaf_name_data.push_back(initial_retransmit_minimum_timeout.get_name_leafdata());
+    if (initial_retransmit_retries.is_set || is_set(initial_retransmit_retries.yfilter)) leaf_name_data.push_back(initial_retransmit_retries.get_name_leafdata());
+    if (ip_tos.is_set || is_set(ip_tos.yfilter)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
+    if (is_authentication_enabled.is_set || is_set(is_authentication_enabled.yfilter)) leaf_name_data.push_back(is_authentication_enabled.get_name_leafdata());
+    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.yfilter)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
+    if (is_digest_check_enabled.is_set || is_set(is_digest_check_enabled.yfilter)) leaf_name_data.push_back(is_digest_check_enabled.get_name_leafdata());
+    if (is_digest_enabled.is_set || is_set(is_digest_enabled.yfilter)) leaf_name_data.push_back(is_digest_enabled.get_name_leafdata());
+    if (is_hidden.is_set || is_set(is_hidden.yfilter)) leaf_name_data.push_back(is_hidden.get_name_leafdata());
+    if (is_peer_address_checked.is_set || is_set(is_peer_address_checked.yfilter)) leaf_name_data.push_back(is_peer_address_checked.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (receive_window_size.is_set || is_set(receive_window_size.yfilter)) leaf_name_data.push_back(receive_window_size.get_name_leafdata());
+    if (retransmit_maximum_timeout.is_set || is_set(retransmit_maximum_timeout.yfilter)) leaf_name_data.push_back(retransmit_maximum_timeout.get_name_leafdata());
+    if (retransmit_minimum_timeout.is_set || is_set(retransmit_minimum_timeout.yfilter)) leaf_name_data.push_back(retransmit_minimum_timeout.get_name_leafdata());
+    if (retransmit_retries.is_set || is_set(retransmit_retries.yfilter)) leaf_name_data.push_back(retransmit_retries.get_name_leafdata());
+    if (setup_timeout.is_set || is_set(setup_timeout.yfilter)) leaf_name_data.push_back(setup_timeout.get_name_leafdata());
+    if (timeout_no_user.is_set || is_set(timeout_no_user.yfilter)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12331,104 +17289,259 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::TunnelConfigurations::Tun
     return children;
 }
 
-void L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "accounting-method-list")
     {
         accounting_method_list = value;
+        accounting_method_list.value_namespace = name_space;
+        accounting_method_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name-xr")
     {
         class_name_xr = value;
+        class_name_xr.value_namespace = name_space;
+        class_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "digest-hash")
     {
         digest_hash = value;
+        digest_hash.value_namespace = name_space;
+        digest_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encoded-password")
     {
         encoded_password = value;
+        encoded_password.value_namespace = name_space;
+        encoded_password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-timeout")
     {
         hello_timeout = value;
+        hello_timeout.value_namespace = name_space;
+        hello_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-name")
     {
         host_name = value;
+        host_name.value_namespace = name_space;
+        host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-maximum-timeout")
     {
         initial_retransmit_maximum_timeout = value;
+        initial_retransmit_maximum_timeout.value_namespace = name_space;
+        initial_retransmit_maximum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-minimum-timeout")
     {
         initial_retransmit_minimum_timeout = value;
+        initial_retransmit_minimum_timeout.value_namespace = name_space;
+        initial_retransmit_minimum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-retries")
     {
         initial_retransmit_retries = value;
+        initial_retransmit_retries.value_namespace = name_space;
+        initial_retransmit_retries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-tos")
     {
         ip_tos = value;
+        ip_tos.value_namespace = name_space;
+        ip_tos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-authentication-enabled")
     {
         is_authentication_enabled = value;
+        is_authentication_enabled.value_namespace = name_space;
+        is_authentication_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-congestion-control-enabled")
     {
         is_congestion_control_enabled = value;
+        is_congestion_control_enabled.value_namespace = name_space;
+        is_congestion_control_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-digest-check-enabled")
     {
         is_digest_check_enabled = value;
+        is_digest_check_enabled.value_namespace = name_space;
+        is_digest_check_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-digest-enabled")
     {
         is_digest_enabled = value;
+        is_digest_enabled.value_namespace = name_space;
+        is_digest_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-hidden")
     {
         is_hidden = value;
+        is_hidden.value_namespace = name_space;
+        is_hidden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-peer-address-checked")
     {
         is_peer_address_checked = value;
+        is_peer_address_checked.value_namespace = name_space;
+        is_peer_address_checked.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receive-window-size")
     {
         receive_window_size = value;
+        receive_window_size.value_namespace = name_space;
+        receive_window_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-maximum-timeout")
     {
         retransmit_maximum_timeout = value;
+        retransmit_maximum_timeout.value_namespace = name_space;
+        retransmit_maximum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-minimum-timeout")
     {
         retransmit_minimum_timeout = value;
+        retransmit_minimum_timeout.value_namespace = name_space;
+        retransmit_minimum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-retries")
     {
         retransmit_retries = value;
+        retransmit_retries.value_namespace = name_space;
+        retransmit_retries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-timeout")
     {
         setup_timeout = value;
+        setup_timeout.value_namespace = name_space;
+        setup_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-no-user")
     {
         timeout_no_user = value;
+        timeout_no_user.value_namespace = name_space;
+        timeout_no_user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "accounting-method-list")
+    {
+        accounting_method_list.yfilter = yfilter;
+    }
+    if(value_path == "class-name-xr")
+    {
+        class_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "digest-hash")
+    {
+        digest_hash.yfilter = yfilter;
+    }
+    if(value_path == "encoded-password")
+    {
+        encoded_password.yfilter = yfilter;
+    }
+    if(value_path == "hello-timeout")
+    {
+        hello_timeout.yfilter = yfilter;
+    }
+    if(value_path == "host-name")
+    {
+        host_name.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-maximum-timeout")
+    {
+        initial_retransmit_maximum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-minimum-timeout")
+    {
+        initial_retransmit_minimum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-retries")
+    {
+        initial_retransmit_retries.yfilter = yfilter;
+    }
+    if(value_path == "ip-tos")
+    {
+        ip_tos.yfilter = yfilter;
+    }
+    if(value_path == "is-authentication-enabled")
+    {
+        is_authentication_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-congestion-control-enabled")
+    {
+        is_congestion_control_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-digest-check-enabled")
+    {
+        is_digest_check_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-digest-enabled")
+    {
+        is_digest_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-hidden")
+    {
+        is_hidden.yfilter = yfilter;
+    }
+    if(value_path == "is-peer-address-checked")
+    {
+        is_peer_address_checked.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "receive-window-size")
+    {
+        receive_window_size.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-maximum-timeout")
+    {
+        retransmit_maximum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-minimum-timeout")
+    {
+        retransmit_minimum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-retries")
+    {
+        retransmit_retries.yfilter = yfilter;
+    }
+    if(value_path == "setup-timeout")
+    {
+        setup_timeout.yfilter = yfilter;
+    }
+    if(value_path == "timeout-no-user")
+    {
+        timeout_no_user.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::TunnelConfigurations::TunnelConfiguration::L2TpClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting-method-list" || name == "class-name-xr" || name == "digest-hash" || name == "encoded-password" || name == "hello-timeout" || name == "host-name" || name == "initial-retransmit-maximum-timeout" || name == "initial-retransmit-minimum-timeout" || name == "initial-retransmit-retries" || name == "ip-tos" || name == "is-authentication-enabled" || name == "is-congestion-control-enabled" || name == "is-digest-check-enabled" || name == "is-digest-enabled" || name == "is-hidden" || name == "is-peer-address-checked" || name == "password" || name == "receive-window-size" || name == "retransmit-maximum-timeout" || name == "retransmit-minimum-timeout" || name == "retransmit-retries" || name == "setup-timeout" || name == "timeout-no-user" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 L2Tpv2::CounterHistFail::CounterHistFail()
@@ -12461,14 +17574,14 @@ bool L2Tpv2::CounterHistFail::has_operation() const
 {
     for (auto const & leaf : pkt_timeout.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(pkt_timeout.operation)
-	|| is_set(rx_counters.operation)
-	|| is_set(sess_down_tmout.operation)
-	|| is_set(tx_counters.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(pkt_timeout.yfilter)
+	|| ydk::is_set(rx_counters.yfilter)
+	|| ydk::is_set(sess_down_tmout.yfilter)
+	|| ydk::is_set(tx_counters.yfilter);
 }
 
 std::string L2Tpv2::CounterHistFail::get_segment_path() const
@@ -12494,9 +17607,9 @@ const EntityPath L2Tpv2::CounterHistFail::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rx_counters.is_set || is_set(rx_counters.operation)) leaf_name_data.push_back(rx_counters.get_name_leafdata());
-    if (sess_down_tmout.is_set || is_set(sess_down_tmout.operation)) leaf_name_data.push_back(sess_down_tmout.get_name_leafdata());
-    if (tx_counters.is_set || is_set(tx_counters.operation)) leaf_name_data.push_back(tx_counters.get_name_leafdata());
+    if (rx_counters.is_set || is_set(rx_counters.yfilter)) leaf_name_data.push_back(rx_counters.get_name_leafdata());
+    if (sess_down_tmout.is_set || is_set(sess_down_tmout.yfilter)) leaf_name_data.push_back(sess_down_tmout.get_name_leafdata());
+    if (tx_counters.is_set || is_set(tx_counters.yfilter)) leaf_name_data.push_back(tx_counters.get_name_leafdata());
 
     auto pkt_timeout_name_datas = pkt_timeout.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), pkt_timeout_name_datas.begin(), pkt_timeout_name_datas.end());
@@ -12517,7 +17630,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::CounterHistFail::get_chil
     return children;
 }
 
-void L2Tpv2::CounterHistFail::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::CounterHistFail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pkt-timeout")
     {
@@ -12526,15 +17639,48 @@ void L2Tpv2::CounterHistFail::set_value(const std::string & value_path, std::str
     if(value_path == "rx-counters")
     {
         rx_counters = value;
+        rx_counters.value_namespace = name_space;
+        rx_counters.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sess-down-tmout")
     {
         sess_down_tmout = value;
+        sess_down_tmout.value_namespace = name_space;
+        sess_down_tmout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-counters")
     {
         tx_counters = value;
+        tx_counters.value_namespace = name_space;
+        tx_counters.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::CounterHistFail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pkt-timeout")
+    {
+        pkt_timeout.yfilter = yfilter;
+    }
+    if(value_path == "rx-counters")
+    {
+        rx_counters.yfilter = yfilter;
+    }
+    if(value_path == "sess-down-tmout")
+    {
+        sess_down_tmout.yfilter = yfilter;
+    }
+    if(value_path == "tx-counters")
+    {
+        tx_counters.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::CounterHistFail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pkt-timeout" || name == "rx-counters" || name == "sess-down-tmout" || name == "tx-counters")
+        return true;
+    return false;
 }
 
 L2Tpv2::Classes::Classes()
@@ -12563,7 +17709,7 @@ bool L2Tpv2::Classes::has_operation() const
         if(class_[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tpv2::Classes::get_segment_path() const
@@ -12628,8 +17774,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Classes::get_children() c
     return children;
 }
 
-void L2Tpv2::Classes::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Classes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Classes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Classes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class")
+        return true;
+    return false;
 }
 
 L2Tpv2::Classes::Class_::Class_()
@@ -12698,32 +17855,32 @@ bool L2Tpv2::Classes::Class_::has_data() const
 
 bool L2Tpv2::Classes::Class_::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(class_name.operation)
-	|| is_set(accounting_method_list.operation)
-	|| is_set(class_name_xr.operation)
-	|| is_set(digest_hash.operation)
-	|| is_set(encoded_password.operation)
-	|| is_set(hello_timeout.operation)
-	|| is_set(host_name.operation)
-	|| is_set(initial_retransmit_maximum_timeout.operation)
-	|| is_set(initial_retransmit_minimum_timeout.operation)
-	|| is_set(initial_retransmit_retries.operation)
-	|| is_set(ip_tos.operation)
-	|| is_set(is_authentication_enabled.operation)
-	|| is_set(is_congestion_control_enabled.operation)
-	|| is_set(is_digest_check_enabled.operation)
-	|| is_set(is_digest_enabled.operation)
-	|| is_set(is_hidden.operation)
-	|| is_set(is_peer_address_checked.operation)
-	|| is_set(password.operation)
-	|| is_set(receive_window_size.operation)
-	|| is_set(retransmit_maximum_timeout.operation)
-	|| is_set(retransmit_minimum_timeout.operation)
-	|| is_set(retransmit_retries.operation)
-	|| is_set(setup_timeout.operation)
-	|| is_set(timeout_no_user.operation)
-	|| is_set(vrf_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(accounting_method_list.yfilter)
+	|| ydk::is_set(class_name_xr.yfilter)
+	|| ydk::is_set(digest_hash.yfilter)
+	|| ydk::is_set(encoded_password.yfilter)
+	|| ydk::is_set(hello_timeout.yfilter)
+	|| ydk::is_set(host_name.yfilter)
+	|| ydk::is_set(initial_retransmit_maximum_timeout.yfilter)
+	|| ydk::is_set(initial_retransmit_minimum_timeout.yfilter)
+	|| ydk::is_set(initial_retransmit_retries.yfilter)
+	|| ydk::is_set(ip_tos.yfilter)
+	|| ydk::is_set(is_authentication_enabled.yfilter)
+	|| ydk::is_set(is_congestion_control_enabled.yfilter)
+	|| ydk::is_set(is_digest_check_enabled.yfilter)
+	|| ydk::is_set(is_digest_enabled.yfilter)
+	|| ydk::is_set(is_hidden.yfilter)
+	|| ydk::is_set(is_peer_address_checked.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(receive_window_size.yfilter)
+	|| ydk::is_set(retransmit_maximum_timeout.yfilter)
+	|| ydk::is_set(retransmit_minimum_timeout.yfilter)
+	|| ydk::is_set(retransmit_retries.yfilter)
+	|| ydk::is_set(setup_timeout.yfilter)
+	|| ydk::is_set(timeout_no_user.yfilter)
+	|| ydk::is_set(vrf_name.yfilter);
 }
 
 std::string L2Tpv2::Classes::Class_::get_segment_path() const
@@ -12749,31 +17906,31 @@ const EntityPath L2Tpv2::Classes::Class_::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (accounting_method_list.is_set || is_set(accounting_method_list.operation)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
-    if (class_name_xr.is_set || is_set(class_name_xr.operation)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
-    if (digest_hash.is_set || is_set(digest_hash.operation)) leaf_name_data.push_back(digest_hash.get_name_leafdata());
-    if (encoded_password.is_set || is_set(encoded_password.operation)) leaf_name_data.push_back(encoded_password.get_name_leafdata());
-    if (hello_timeout.is_set || is_set(hello_timeout.operation)) leaf_name_data.push_back(hello_timeout.get_name_leafdata());
-    if (host_name.is_set || is_set(host_name.operation)) leaf_name_data.push_back(host_name.get_name_leafdata());
-    if (initial_retransmit_maximum_timeout.is_set || is_set(initial_retransmit_maximum_timeout.operation)) leaf_name_data.push_back(initial_retransmit_maximum_timeout.get_name_leafdata());
-    if (initial_retransmit_minimum_timeout.is_set || is_set(initial_retransmit_minimum_timeout.operation)) leaf_name_data.push_back(initial_retransmit_minimum_timeout.get_name_leafdata());
-    if (initial_retransmit_retries.is_set || is_set(initial_retransmit_retries.operation)) leaf_name_data.push_back(initial_retransmit_retries.get_name_leafdata());
-    if (ip_tos.is_set || is_set(ip_tos.operation)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
-    if (is_authentication_enabled.is_set || is_set(is_authentication_enabled.operation)) leaf_name_data.push_back(is_authentication_enabled.get_name_leafdata());
-    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.operation)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
-    if (is_digest_check_enabled.is_set || is_set(is_digest_check_enabled.operation)) leaf_name_data.push_back(is_digest_check_enabled.get_name_leafdata());
-    if (is_digest_enabled.is_set || is_set(is_digest_enabled.operation)) leaf_name_data.push_back(is_digest_enabled.get_name_leafdata());
-    if (is_hidden.is_set || is_set(is_hidden.operation)) leaf_name_data.push_back(is_hidden.get_name_leafdata());
-    if (is_peer_address_checked.is_set || is_set(is_peer_address_checked.operation)) leaf_name_data.push_back(is_peer_address_checked.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
-    if (receive_window_size.is_set || is_set(receive_window_size.operation)) leaf_name_data.push_back(receive_window_size.get_name_leafdata());
-    if (retransmit_maximum_timeout.is_set || is_set(retransmit_maximum_timeout.operation)) leaf_name_data.push_back(retransmit_maximum_timeout.get_name_leafdata());
-    if (retransmit_minimum_timeout.is_set || is_set(retransmit_minimum_timeout.operation)) leaf_name_data.push_back(retransmit_minimum_timeout.get_name_leafdata());
-    if (retransmit_retries.is_set || is_set(retransmit_retries.operation)) leaf_name_data.push_back(retransmit_retries.get_name_leafdata());
-    if (setup_timeout.is_set || is_set(setup_timeout.operation)) leaf_name_data.push_back(setup_timeout.get_name_leafdata());
-    if (timeout_no_user.is_set || is_set(timeout_no_user.operation)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (accounting_method_list.is_set || is_set(accounting_method_list.yfilter)) leaf_name_data.push_back(accounting_method_list.get_name_leafdata());
+    if (class_name_xr.is_set || is_set(class_name_xr.yfilter)) leaf_name_data.push_back(class_name_xr.get_name_leafdata());
+    if (digest_hash.is_set || is_set(digest_hash.yfilter)) leaf_name_data.push_back(digest_hash.get_name_leafdata());
+    if (encoded_password.is_set || is_set(encoded_password.yfilter)) leaf_name_data.push_back(encoded_password.get_name_leafdata());
+    if (hello_timeout.is_set || is_set(hello_timeout.yfilter)) leaf_name_data.push_back(hello_timeout.get_name_leafdata());
+    if (host_name.is_set || is_set(host_name.yfilter)) leaf_name_data.push_back(host_name.get_name_leafdata());
+    if (initial_retransmit_maximum_timeout.is_set || is_set(initial_retransmit_maximum_timeout.yfilter)) leaf_name_data.push_back(initial_retransmit_maximum_timeout.get_name_leafdata());
+    if (initial_retransmit_minimum_timeout.is_set || is_set(initial_retransmit_minimum_timeout.yfilter)) leaf_name_data.push_back(initial_retransmit_minimum_timeout.get_name_leafdata());
+    if (initial_retransmit_retries.is_set || is_set(initial_retransmit_retries.yfilter)) leaf_name_data.push_back(initial_retransmit_retries.get_name_leafdata());
+    if (ip_tos.is_set || is_set(ip_tos.yfilter)) leaf_name_data.push_back(ip_tos.get_name_leafdata());
+    if (is_authentication_enabled.is_set || is_set(is_authentication_enabled.yfilter)) leaf_name_data.push_back(is_authentication_enabled.get_name_leafdata());
+    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.yfilter)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
+    if (is_digest_check_enabled.is_set || is_set(is_digest_check_enabled.yfilter)) leaf_name_data.push_back(is_digest_check_enabled.get_name_leafdata());
+    if (is_digest_enabled.is_set || is_set(is_digest_enabled.yfilter)) leaf_name_data.push_back(is_digest_enabled.get_name_leafdata());
+    if (is_hidden.is_set || is_set(is_hidden.yfilter)) leaf_name_data.push_back(is_hidden.get_name_leafdata());
+    if (is_peer_address_checked.is_set || is_set(is_peer_address_checked.yfilter)) leaf_name_data.push_back(is_peer_address_checked.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (receive_window_size.is_set || is_set(receive_window_size.yfilter)) leaf_name_data.push_back(receive_window_size.get_name_leafdata());
+    if (retransmit_maximum_timeout.is_set || is_set(retransmit_maximum_timeout.yfilter)) leaf_name_data.push_back(retransmit_maximum_timeout.get_name_leafdata());
+    if (retransmit_minimum_timeout.is_set || is_set(retransmit_minimum_timeout.yfilter)) leaf_name_data.push_back(retransmit_minimum_timeout.get_name_leafdata());
+    if (retransmit_retries.is_set || is_set(retransmit_retries.yfilter)) leaf_name_data.push_back(retransmit_retries.get_name_leafdata());
+    if (setup_timeout.is_set || is_set(setup_timeout.yfilter)) leaf_name_data.push_back(setup_timeout.get_name_leafdata());
+    if (timeout_no_user.is_set || is_set(timeout_no_user.yfilter)) leaf_name_data.push_back(timeout_no_user.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12792,108 +17949,269 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Classes::Class_::get_chil
     return children;
 }
 
-void L2Tpv2::Classes::Class_::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Classes::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "accounting-method-list")
     {
         accounting_method_list = value;
+        accounting_method_list.value_namespace = name_space;
+        accounting_method_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name-xr")
     {
         class_name_xr = value;
+        class_name_xr.value_namespace = name_space;
+        class_name_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "digest-hash")
     {
         digest_hash = value;
+        digest_hash.value_namespace = name_space;
+        digest_hash.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "encoded-password")
     {
         encoded_password = value;
+        encoded_password.value_namespace = name_space;
+        encoded_password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hello-timeout")
     {
         hello_timeout = value;
+        hello_timeout.value_namespace = name_space;
+        hello_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "host-name")
     {
         host_name = value;
+        host_name.value_namespace = name_space;
+        host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-maximum-timeout")
     {
         initial_retransmit_maximum_timeout = value;
+        initial_retransmit_maximum_timeout.value_namespace = name_space;
+        initial_retransmit_maximum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-minimum-timeout")
     {
         initial_retransmit_minimum_timeout = value;
+        initial_retransmit_minimum_timeout.value_namespace = name_space;
+        initial_retransmit_minimum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "initial-retransmit-retries")
     {
         initial_retransmit_retries = value;
+        initial_retransmit_retries.value_namespace = name_space;
+        initial_retransmit_retries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ip-tos")
     {
         ip_tos = value;
+        ip_tos.value_namespace = name_space;
+        ip_tos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-authentication-enabled")
     {
         is_authentication_enabled = value;
+        is_authentication_enabled.value_namespace = name_space;
+        is_authentication_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-congestion-control-enabled")
     {
         is_congestion_control_enabled = value;
+        is_congestion_control_enabled.value_namespace = name_space;
+        is_congestion_control_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-digest-check-enabled")
     {
         is_digest_check_enabled = value;
+        is_digest_check_enabled.value_namespace = name_space;
+        is_digest_check_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-digest-enabled")
     {
         is_digest_enabled = value;
+        is_digest_enabled.value_namespace = name_space;
+        is_digest_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-hidden")
     {
         is_hidden = value;
+        is_hidden.value_namespace = name_space;
+        is_hidden.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-peer-address-checked")
     {
         is_peer_address_checked = value;
+        is_peer_address_checked.value_namespace = name_space;
+        is_peer_address_checked.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "receive-window-size")
     {
         receive_window_size = value;
+        receive_window_size.value_namespace = name_space;
+        receive_window_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-maximum-timeout")
     {
         retransmit_maximum_timeout = value;
+        retransmit_maximum_timeout.value_namespace = name_space;
+        retransmit_maximum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-minimum-timeout")
     {
         retransmit_minimum_timeout = value;
+        retransmit_minimum_timeout.value_namespace = name_space;
+        retransmit_minimum_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-retries")
     {
         retransmit_retries = value;
+        retransmit_retries.value_namespace = name_space;
+        retransmit_retries.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "setup-timeout")
     {
         setup_timeout = value;
+        setup_timeout.value_namespace = name_space;
+        setup_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout-no-user")
     {
         timeout_no_user = value;
+        timeout_no_user.value_namespace = name_space;
+        timeout_no_user.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Classes::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "accounting-method-list")
+    {
+        accounting_method_list.yfilter = yfilter;
+    }
+    if(value_path == "class-name-xr")
+    {
+        class_name_xr.yfilter = yfilter;
+    }
+    if(value_path == "digest-hash")
+    {
+        digest_hash.yfilter = yfilter;
+    }
+    if(value_path == "encoded-password")
+    {
+        encoded_password.yfilter = yfilter;
+    }
+    if(value_path == "hello-timeout")
+    {
+        hello_timeout.yfilter = yfilter;
+    }
+    if(value_path == "host-name")
+    {
+        host_name.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-maximum-timeout")
+    {
+        initial_retransmit_maximum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-minimum-timeout")
+    {
+        initial_retransmit_minimum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "initial-retransmit-retries")
+    {
+        initial_retransmit_retries.yfilter = yfilter;
+    }
+    if(value_path == "ip-tos")
+    {
+        ip_tos.yfilter = yfilter;
+    }
+    if(value_path == "is-authentication-enabled")
+    {
+        is_authentication_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-congestion-control-enabled")
+    {
+        is_congestion_control_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-digest-check-enabled")
+    {
+        is_digest_check_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-digest-enabled")
+    {
+        is_digest_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-hidden")
+    {
+        is_hidden.yfilter = yfilter;
+    }
+    if(value_path == "is-peer-address-checked")
+    {
+        is_peer_address_checked.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "receive-window-size")
+    {
+        receive_window_size.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-maximum-timeout")
+    {
+        retransmit_maximum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-minimum-timeout")
+    {
+        retransmit_minimum_timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-retries")
+    {
+        retransmit_retries.yfilter = yfilter;
+    }
+    if(value_path == "setup-timeout")
+    {
+        setup_timeout.yfilter = yfilter;
+    }
+    if(value_path == "timeout-no-user")
+    {
+        timeout_no_user.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Classes::Class_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-name" || name == "accounting-method-list" || name == "class-name-xr" || name == "digest-hash" || name == "encoded-password" || name == "hello-timeout" || name == "host-name" || name == "initial-retransmit-maximum-timeout" || name == "initial-retransmit-minimum-timeout" || name == "initial-retransmit-retries" || name == "ip-tos" || name == "is-authentication-enabled" || name == "is-congestion-control-enabled" || name == "is-digest-check-enabled" || name == "is-digest-enabled" || name == "is-hidden" || name == "is-peer-address-checked" || name == "password" || name == "receive-window-size" || name == "retransmit-maximum-timeout" || name == "retransmit-minimum-timeout" || name == "retransmit-retries" || name == "setup-timeout" || name == "timeout-no-user" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 L2Tpv2::Tunnels::Tunnels()
@@ -12922,7 +18240,7 @@ bool L2Tpv2::Tunnels::has_operation() const
         if(tunnel[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tpv2::Tunnels::get_segment_path() const
@@ -12987,8 +18305,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnels::get_children() c
     return children;
 }
 
-void L2Tpv2::Tunnels::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Tunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Tunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Tunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tunnel")
+        return true;
+    return false;
 }
 
 L2Tpv2::Tunnels::Tunnel::Tunnel()
@@ -13079,43 +18408,43 @@ bool L2Tpv2::Tunnels::Tunnel::has_operation() const
 {
     for (auto const & leaf : retransmit_time.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(local_tunnel_id.operation)
-	|| is_set(active_sessions.operation)
-	|| is_set(class_name.operation)
-	|| is_set(digest_secrets.operation)
-	|| is_set(is_congestion_control_enabled.operation)
-	|| is_set(is_pmtu_enabled.operation)
-	|| is_set(is_tunnel_up.operation)
-	|| is_set(local_address.operation)
-	|| is_set(local_port.operation)
-	|| is_set(local_tunnel_name.operation)
-	|| is_set(local_window_size.operation)
-	|| is_set(maximum_retransmission_time.operation)
-	|| is_set(order_queue_size.operation)
-	|| is_set(packet_queue_check.operation)
-	|| is_set(protocol.operation)
-	|| is_set(remote_address.operation)
-	|| is_set(remote_port.operation)
-	|| is_set(remote_tunnel_id.operation)
-	|| is_set(remote_tunnel_name.operation)
-	|| is_set(remote_window_size.operation)
-	|| is_set(resend_maximum_queue_size.operation)
-	|| is_set(resend_queue_size.operation)
-	|| is_set(resends.operation)
-	|| is_set(retransmission_time.operation)
-	|| is_set(retransmit_time.operation)
-	|| is_set(sequence_nr.operation)
-	|| is_set(sequence_ns.operation)
-	|| is_set(total_out_of_order_drop_packets.operation)
-	|| is_set(total_out_of_order_reorder_packets.operation)
-	|| is_set(total_peer_authentication_failures.operation)
-	|| is_set(unsent_maximum_queue_size.operation)
-	|| is_set(unsent_queue_size.operation)
-	|| is_set(zero_length_body_acknowledgement_sent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(local_tunnel_id.yfilter)
+	|| ydk::is_set(active_sessions.yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(digest_secrets.yfilter)
+	|| ydk::is_set(is_congestion_control_enabled.yfilter)
+	|| ydk::is_set(is_pmtu_enabled.yfilter)
+	|| ydk::is_set(is_tunnel_up.yfilter)
+	|| ydk::is_set(local_address.yfilter)
+	|| ydk::is_set(local_port.yfilter)
+	|| ydk::is_set(local_tunnel_name.yfilter)
+	|| ydk::is_set(local_window_size.yfilter)
+	|| ydk::is_set(maximum_retransmission_time.yfilter)
+	|| ydk::is_set(order_queue_size.yfilter)
+	|| ydk::is_set(packet_queue_check.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(remote_address.yfilter)
+	|| ydk::is_set(remote_port.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter)
+	|| ydk::is_set(remote_tunnel_name.yfilter)
+	|| ydk::is_set(remote_window_size.yfilter)
+	|| ydk::is_set(resend_maximum_queue_size.yfilter)
+	|| ydk::is_set(resend_queue_size.yfilter)
+	|| ydk::is_set(resends.yfilter)
+	|| ydk::is_set(retransmission_time.yfilter)
+	|| ydk::is_set(retransmit_time.yfilter)
+	|| ydk::is_set(sequence_nr.yfilter)
+	|| ydk::is_set(sequence_ns.yfilter)
+	|| ydk::is_set(total_out_of_order_drop_packets.yfilter)
+	|| ydk::is_set(total_out_of_order_reorder_packets.yfilter)
+	|| ydk::is_set(total_peer_authentication_failures.yfilter)
+	|| ydk::is_set(unsent_maximum_queue_size.yfilter)
+	|| ydk::is_set(unsent_queue_size.yfilter)
+	|| ydk::is_set(zero_length_body_acknowledgement_sent.yfilter);
 }
 
 std::string L2Tpv2::Tunnels::Tunnel::get_segment_path() const
@@ -13141,38 +18470,38 @@ const EntityPath L2Tpv2::Tunnels::Tunnel::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
-    if (active_sessions.is_set || is_set(active_sessions.operation)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (digest_secrets.is_set || is_set(digest_secrets.operation)) leaf_name_data.push_back(digest_secrets.get_name_leafdata());
-    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.operation)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
-    if (is_pmtu_enabled.is_set || is_set(is_pmtu_enabled.operation)) leaf_name_data.push_back(is_pmtu_enabled.get_name_leafdata());
-    if (is_tunnel_up.is_set || is_set(is_tunnel_up.operation)) leaf_name_data.push_back(is_tunnel_up.get_name_leafdata());
-    if (local_address.is_set || is_set(local_address.operation)) leaf_name_data.push_back(local_address.get_name_leafdata());
-    if (local_port.is_set || is_set(local_port.operation)) leaf_name_data.push_back(local_port.get_name_leafdata());
-    if (local_tunnel_name.is_set || is_set(local_tunnel_name.operation)) leaf_name_data.push_back(local_tunnel_name.get_name_leafdata());
-    if (local_window_size.is_set || is_set(local_window_size.operation)) leaf_name_data.push_back(local_window_size.get_name_leafdata());
-    if (maximum_retransmission_time.is_set || is_set(maximum_retransmission_time.operation)) leaf_name_data.push_back(maximum_retransmission_time.get_name_leafdata());
-    if (order_queue_size.is_set || is_set(order_queue_size.operation)) leaf_name_data.push_back(order_queue_size.get_name_leafdata());
-    if (packet_queue_check.is_set || is_set(packet_queue_check.operation)) leaf_name_data.push_back(packet_queue_check.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (remote_address.is_set || is_set(remote_address.operation)) leaf_name_data.push_back(remote_address.get_name_leafdata());
-    if (remote_port.is_set || is_set(remote_port.operation)) leaf_name_data.push_back(remote_port.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
-    if (remote_tunnel_name.is_set || is_set(remote_tunnel_name.operation)) leaf_name_data.push_back(remote_tunnel_name.get_name_leafdata());
-    if (remote_window_size.is_set || is_set(remote_window_size.operation)) leaf_name_data.push_back(remote_window_size.get_name_leafdata());
-    if (resend_maximum_queue_size.is_set || is_set(resend_maximum_queue_size.operation)) leaf_name_data.push_back(resend_maximum_queue_size.get_name_leafdata());
-    if (resend_queue_size.is_set || is_set(resend_queue_size.operation)) leaf_name_data.push_back(resend_queue_size.get_name_leafdata());
-    if (resends.is_set || is_set(resends.operation)) leaf_name_data.push_back(resends.get_name_leafdata());
-    if (retransmission_time.is_set || is_set(retransmission_time.operation)) leaf_name_data.push_back(retransmission_time.get_name_leafdata());
-    if (sequence_nr.is_set || is_set(sequence_nr.operation)) leaf_name_data.push_back(sequence_nr.get_name_leafdata());
-    if (sequence_ns.is_set || is_set(sequence_ns.operation)) leaf_name_data.push_back(sequence_ns.get_name_leafdata());
-    if (total_out_of_order_drop_packets.is_set || is_set(total_out_of_order_drop_packets.operation)) leaf_name_data.push_back(total_out_of_order_drop_packets.get_name_leafdata());
-    if (total_out_of_order_reorder_packets.is_set || is_set(total_out_of_order_reorder_packets.operation)) leaf_name_data.push_back(total_out_of_order_reorder_packets.get_name_leafdata());
-    if (total_peer_authentication_failures.is_set || is_set(total_peer_authentication_failures.operation)) leaf_name_data.push_back(total_peer_authentication_failures.get_name_leafdata());
-    if (unsent_maximum_queue_size.is_set || is_set(unsent_maximum_queue_size.operation)) leaf_name_data.push_back(unsent_maximum_queue_size.get_name_leafdata());
-    if (unsent_queue_size.is_set || is_set(unsent_queue_size.operation)) leaf_name_data.push_back(unsent_queue_size.get_name_leafdata());
-    if (zero_length_body_acknowledgement_sent.is_set || is_set(zero_length_body_acknowledgement_sent.operation)) leaf_name_data.push_back(zero_length_body_acknowledgement_sent.get_name_leafdata());
+    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (active_sessions.is_set || is_set(active_sessions.yfilter)) leaf_name_data.push_back(active_sessions.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (digest_secrets.is_set || is_set(digest_secrets.yfilter)) leaf_name_data.push_back(digest_secrets.get_name_leafdata());
+    if (is_congestion_control_enabled.is_set || is_set(is_congestion_control_enabled.yfilter)) leaf_name_data.push_back(is_congestion_control_enabled.get_name_leafdata());
+    if (is_pmtu_enabled.is_set || is_set(is_pmtu_enabled.yfilter)) leaf_name_data.push_back(is_pmtu_enabled.get_name_leafdata());
+    if (is_tunnel_up.is_set || is_set(is_tunnel_up.yfilter)) leaf_name_data.push_back(is_tunnel_up.get_name_leafdata());
+    if (local_address.is_set || is_set(local_address.yfilter)) leaf_name_data.push_back(local_address.get_name_leafdata());
+    if (local_port.is_set || is_set(local_port.yfilter)) leaf_name_data.push_back(local_port.get_name_leafdata());
+    if (local_tunnel_name.is_set || is_set(local_tunnel_name.yfilter)) leaf_name_data.push_back(local_tunnel_name.get_name_leafdata());
+    if (local_window_size.is_set || is_set(local_window_size.yfilter)) leaf_name_data.push_back(local_window_size.get_name_leafdata());
+    if (maximum_retransmission_time.is_set || is_set(maximum_retransmission_time.yfilter)) leaf_name_data.push_back(maximum_retransmission_time.get_name_leafdata());
+    if (order_queue_size.is_set || is_set(order_queue_size.yfilter)) leaf_name_data.push_back(order_queue_size.get_name_leafdata());
+    if (packet_queue_check.is_set || is_set(packet_queue_check.yfilter)) leaf_name_data.push_back(packet_queue_check.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (remote_address.is_set || is_set(remote_address.yfilter)) leaf_name_data.push_back(remote_address.get_name_leafdata());
+    if (remote_port.is_set || is_set(remote_port.yfilter)) leaf_name_data.push_back(remote_port.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (remote_tunnel_name.is_set || is_set(remote_tunnel_name.yfilter)) leaf_name_data.push_back(remote_tunnel_name.get_name_leafdata());
+    if (remote_window_size.is_set || is_set(remote_window_size.yfilter)) leaf_name_data.push_back(remote_window_size.get_name_leafdata());
+    if (resend_maximum_queue_size.is_set || is_set(resend_maximum_queue_size.yfilter)) leaf_name_data.push_back(resend_maximum_queue_size.get_name_leafdata());
+    if (resend_queue_size.is_set || is_set(resend_queue_size.yfilter)) leaf_name_data.push_back(resend_queue_size.get_name_leafdata());
+    if (resends.is_set || is_set(resends.yfilter)) leaf_name_data.push_back(resends.get_name_leafdata());
+    if (retransmission_time.is_set || is_set(retransmission_time.yfilter)) leaf_name_data.push_back(retransmission_time.get_name_leafdata());
+    if (sequence_nr.is_set || is_set(sequence_nr.yfilter)) leaf_name_data.push_back(sequence_nr.get_name_leafdata());
+    if (sequence_ns.is_set || is_set(sequence_ns.yfilter)) leaf_name_data.push_back(sequence_ns.get_name_leafdata());
+    if (total_out_of_order_drop_packets.is_set || is_set(total_out_of_order_drop_packets.yfilter)) leaf_name_data.push_back(total_out_of_order_drop_packets.get_name_leafdata());
+    if (total_out_of_order_reorder_packets.is_set || is_set(total_out_of_order_reorder_packets.yfilter)) leaf_name_data.push_back(total_out_of_order_reorder_packets.get_name_leafdata());
+    if (total_peer_authentication_failures.is_set || is_set(total_peer_authentication_failures.yfilter)) leaf_name_data.push_back(total_peer_authentication_failures.get_name_leafdata());
+    if (unsent_maximum_queue_size.is_set || is_set(unsent_maximum_queue_size.yfilter)) leaf_name_data.push_back(unsent_maximum_queue_size.get_name_leafdata());
+    if (unsent_queue_size.is_set || is_set(unsent_queue_size.yfilter)) leaf_name_data.push_back(unsent_queue_size.get_name_leafdata());
+    if (zero_length_body_acknowledgement_sent.is_set || is_set(zero_length_body_acknowledgement_sent.yfilter)) leaf_name_data.push_back(zero_length_body_acknowledgement_sent.get_name_leafdata());
 
     auto retransmit_time_name_datas = retransmit_time.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), retransmit_time_name_datas.begin(), retransmit_time_name_datas.end());
@@ -13193,103 +18522,151 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Tunnels::Tunnel::get_chil
     return children;
 }
 
-void L2Tpv2::Tunnels::Tunnel::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Tunnels::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+        local_tunnel_id.value_namespace = name_space;
+        local_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "active-sessions")
     {
         active_sessions = value;
+        active_sessions.value_namespace = name_space;
+        active_sessions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "digest-secrets")
     {
         digest_secrets = value;
+        digest_secrets.value_namespace = name_space;
+        digest_secrets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-congestion-control-enabled")
     {
         is_congestion_control_enabled = value;
+        is_congestion_control_enabled.value_namespace = name_space;
+        is_congestion_control_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-pmtu-enabled")
     {
         is_pmtu_enabled = value;
+        is_pmtu_enabled.value_namespace = name_space;
+        is_pmtu_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-tunnel-up")
     {
         is_tunnel_up = value;
+        is_tunnel_up.value_namespace = name_space;
+        is_tunnel_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-address")
     {
         local_address = value;
+        local_address.value_namespace = name_space;
+        local_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-port")
     {
         local_port = value;
+        local_port.value_namespace = name_space;
+        local_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-tunnel-name")
     {
         local_tunnel_name = value;
+        local_tunnel_name.value_namespace = name_space;
+        local_tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-window-size")
     {
         local_window_size = value;
+        local_window_size.value_namespace = name_space;
+        local_window_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-retransmission-time")
     {
         maximum_retransmission_time = value;
+        maximum_retransmission_time.value_namespace = name_space;
+        maximum_retransmission_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "order-queue-size")
     {
         order_queue_size = value;
+        order_queue_size.value_namespace = name_space;
+        order_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet-queue-check")
     {
         packet_queue_check = value;
+        packet_queue_check.value_namespace = name_space;
+        packet_queue_check.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-address")
     {
         remote_address = value;
+        remote_address.value_namespace = name_space;
+        remote_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-port")
     {
         remote_port = value;
+        remote_port.value_namespace = name_space;
+        remote_port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-name")
     {
         remote_tunnel_name = value;
+        remote_tunnel_name.value_namespace = name_space;
+        remote_tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-window-size")
     {
         remote_window_size = value;
+        remote_window_size.value_namespace = name_space;
+        remote_window_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resend-maximum-queue-size")
     {
         resend_maximum_queue_size = value;
+        resend_maximum_queue_size.value_namespace = name_space;
+        resend_maximum_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resend-queue-size")
     {
         resend_queue_size = value;
+        resend_queue_size.value_namespace = name_space;
+        resend_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "resends")
     {
         resends = value;
+        resends.value_namespace = name_space;
+        resends.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmission-time")
     {
         retransmission_time = value;
+        retransmission_time.value_namespace = name_space;
+        retransmission_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "retransmit-time")
     {
@@ -13298,35 +18675,194 @@ void L2Tpv2::Tunnels::Tunnel::set_value(const std::string & value_path, std::str
     if(value_path == "sequence-nr")
     {
         sequence_nr = value;
+        sequence_nr.value_namespace = name_space;
+        sequence_nr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sequence-ns")
     {
         sequence_ns = value;
+        sequence_ns.value_namespace = name_space;
+        sequence_ns.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-out-of-order-drop-packets")
     {
         total_out_of_order_drop_packets = value;
+        total_out_of_order_drop_packets.value_namespace = name_space;
+        total_out_of_order_drop_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-out-of-order-reorder-packets")
     {
         total_out_of_order_reorder_packets = value;
+        total_out_of_order_reorder_packets.value_namespace = name_space;
+        total_out_of_order_reorder_packets.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-peer-authentication-failures")
     {
         total_peer_authentication_failures = value;
+        total_peer_authentication_failures.value_namespace = name_space;
+        total_peer_authentication_failures.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unsent-maximum-queue-size")
     {
         unsent_maximum_queue_size = value;
+        unsent_maximum_queue_size.value_namespace = name_space;
+        unsent_maximum_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unsent-queue-size")
     {
         unsent_queue_size = value;
+        unsent_queue_size.value_namespace = name_space;
+        unsent_queue_size.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "zero-length-body-acknowledgement-sent")
     {
         zero_length_body_acknowledgement_sent = value;
+        zero_length_body_acknowledgement_sent.value_namespace = name_space;
+        zero_length_body_acknowledgement_sent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "active-sessions")
+    {
+        active_sessions.yfilter = yfilter;
+    }
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "digest-secrets")
+    {
+        digest_secrets.yfilter = yfilter;
+    }
+    if(value_path == "is-congestion-control-enabled")
+    {
+        is_congestion_control_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-pmtu-enabled")
+    {
+        is_pmtu_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-tunnel-up")
+    {
+        is_tunnel_up.yfilter = yfilter;
+    }
+    if(value_path == "local-address")
+    {
+        local_address.yfilter = yfilter;
+    }
+    if(value_path == "local-port")
+    {
+        local_port.yfilter = yfilter;
+    }
+    if(value_path == "local-tunnel-name")
+    {
+        local_tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "local-window-size")
+    {
+        local_window_size.yfilter = yfilter;
+    }
+    if(value_path == "maximum-retransmission-time")
+    {
+        maximum_retransmission_time.yfilter = yfilter;
+    }
+    if(value_path == "order-queue-size")
+    {
+        order_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "packet-queue-check")
+    {
+        packet_queue_check.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "remote-address")
+    {
+        remote_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-port")
+    {
+        remote_port.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-name")
+    {
+        remote_tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "remote-window-size")
+    {
+        remote_window_size.yfilter = yfilter;
+    }
+    if(value_path == "resend-maximum-queue-size")
+    {
+        resend_maximum_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "resend-queue-size")
+    {
+        resend_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "resends")
+    {
+        resends.yfilter = yfilter;
+    }
+    if(value_path == "retransmission-time")
+    {
+        retransmission_time.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-time")
+    {
+        retransmit_time.yfilter = yfilter;
+    }
+    if(value_path == "sequence-nr")
+    {
+        sequence_nr.yfilter = yfilter;
+    }
+    if(value_path == "sequence-ns")
+    {
+        sequence_ns.yfilter = yfilter;
+    }
+    if(value_path == "total-out-of-order-drop-packets")
+    {
+        total_out_of_order_drop_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-out-of-order-reorder-packets")
+    {
+        total_out_of_order_reorder_packets.yfilter = yfilter;
+    }
+    if(value_path == "total-peer-authentication-failures")
+    {
+        total_peer_authentication_failures.yfilter = yfilter;
+    }
+    if(value_path == "unsent-maximum-queue-size")
+    {
+        unsent_maximum_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "unsent-queue-size")
+    {
+        unsent_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "zero-length-body-acknowledgement-sent")
+    {
+        zero_length_body_acknowledgement_sent.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-tunnel-id" || name == "active-sessions" || name == "class-name" || name == "digest-secrets" || name == "is-congestion-control-enabled" || name == "is-pmtu-enabled" || name == "is-tunnel-up" || name == "local-address" || name == "local-port" || name == "local-tunnel-name" || name == "local-window-size" || name == "maximum-retransmission-time" || name == "order-queue-size" || name == "packet-queue-check" || name == "protocol" || name == "remote-address" || name == "remote-port" || name == "remote-tunnel-id" || name == "remote-tunnel-name" || name == "remote-window-size" || name == "resend-maximum-queue-size" || name == "resend-queue-size" || name == "resends" || name == "retransmission-time" || name == "retransmit-time" || name == "sequence-nr" || name == "sequence-ns" || name == "total-out-of-order-drop-packets" || name == "total-out-of-order-reorder-packets" || name == "total-peer-authentication-failures" || name == "unsent-maximum-queue-size" || name == "unsent-queue-size" || name == "zero-length-body-acknowledgement-sent")
+        return true;
+    return false;
 }
 
 L2Tpv2::Sessions::Sessions()
@@ -13355,7 +18891,7 @@ bool L2Tpv2::Sessions::has_operation() const
         if(session[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string L2Tpv2::Sessions::get_segment_path() const
@@ -13420,8 +18956,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::get_children() 
     return children;
 }
 
-void L2Tpv2::Sessions::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Sessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Sessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Sessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session")
+        return true;
+    return false;
 }
 
 L2Tpv2::Sessions::Session::Session()
@@ -13491,30 +19038,30 @@ bool L2Tpv2::Sessions::Session::has_data() const
 
 bool L2Tpv2::Sessions::Session::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(local_tunnel_id.operation)
-	|| is_set(local_session_id.operation)
-	|| is_set(call_serial_number.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(is_conditional_debug_enabled.operation)
-	|| is_set(is_sequencing_on.operation)
-	|| is_set(is_session_locally_initiated.operation)
-	|| is_set(is_session_manual.operation)
-	|| is_set(is_session_state_established.operation)
-	|| is_set(is_session_up.operation)
-	|| is_set(is_udp_checksum_enabled.operation)
-	|| is_set(l2tp_sh_sess_tie_breaker.operation)
-	|| is_set(l2tp_sh_sess_tie_breaker_enabled.operation)
-	|| is_set(l2tp_sh_sess_udp_lport.operation)
-	|| is_set(l2tp_sh_sess_udp_rport.operation)
-	|| is_set(local_ip_address.operation)
-	|| is_set(local_tunnel_name.operation)
-	|| is_set(protocol.operation)
-	|| is_set(remote_ip_address.operation)
-	|| is_set(remote_session_id.operation)
-	|| is_set(remote_tunnel_id.operation)
-	|| is_set(remote_tunnel_name.operation)
-	|| is_set(unique_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(local_tunnel_id.yfilter)
+	|| ydk::is_set(local_session_id.yfilter)
+	|| ydk::is_set(call_serial_number.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(is_conditional_debug_enabled.yfilter)
+	|| ydk::is_set(is_sequencing_on.yfilter)
+	|| ydk::is_set(is_session_locally_initiated.yfilter)
+	|| ydk::is_set(is_session_manual.yfilter)
+	|| ydk::is_set(is_session_state_established.yfilter)
+	|| ydk::is_set(is_session_up.yfilter)
+	|| ydk::is_set(is_udp_checksum_enabled.yfilter)
+	|| ydk::is_set(l2tp_sh_sess_tie_breaker.yfilter)
+	|| ydk::is_set(l2tp_sh_sess_tie_breaker_enabled.yfilter)
+	|| ydk::is_set(l2tp_sh_sess_udp_lport.yfilter)
+	|| ydk::is_set(l2tp_sh_sess_udp_rport.yfilter)
+	|| ydk::is_set(local_ip_address.yfilter)
+	|| ydk::is_set(local_tunnel_name.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(remote_ip_address.yfilter)
+	|| ydk::is_set(remote_session_id.yfilter)
+	|| ydk::is_set(remote_tunnel_id.yfilter)
+	|| ydk::is_set(remote_tunnel_name.yfilter)
+	|| ydk::is_set(unique_id.yfilter)
 	|| (session_application_data !=  nullptr && session_application_data->has_operation());
 }
 
@@ -13541,29 +19088,29 @@ const EntityPath L2Tpv2::Sessions::Session::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (local_tunnel_id.is_set || is_set(local_tunnel_id.operation)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
-    if (local_session_id.is_set || is_set(local_session_id.operation)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
-    if (call_serial_number.is_set || is_set(call_serial_number.operation)) leaf_name_data.push_back(call_serial_number.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (is_conditional_debug_enabled.is_set || is_set(is_conditional_debug_enabled.operation)) leaf_name_data.push_back(is_conditional_debug_enabled.get_name_leafdata());
-    if (is_sequencing_on.is_set || is_set(is_sequencing_on.operation)) leaf_name_data.push_back(is_sequencing_on.get_name_leafdata());
-    if (is_session_locally_initiated.is_set || is_set(is_session_locally_initiated.operation)) leaf_name_data.push_back(is_session_locally_initiated.get_name_leafdata());
-    if (is_session_manual.is_set || is_set(is_session_manual.operation)) leaf_name_data.push_back(is_session_manual.get_name_leafdata());
-    if (is_session_state_established.is_set || is_set(is_session_state_established.operation)) leaf_name_data.push_back(is_session_state_established.get_name_leafdata());
-    if (is_session_up.is_set || is_set(is_session_up.operation)) leaf_name_data.push_back(is_session_up.get_name_leafdata());
-    if (is_udp_checksum_enabled.is_set || is_set(is_udp_checksum_enabled.operation)) leaf_name_data.push_back(is_udp_checksum_enabled.get_name_leafdata());
-    if (l2tp_sh_sess_tie_breaker.is_set || is_set(l2tp_sh_sess_tie_breaker.operation)) leaf_name_data.push_back(l2tp_sh_sess_tie_breaker.get_name_leafdata());
-    if (l2tp_sh_sess_tie_breaker_enabled.is_set || is_set(l2tp_sh_sess_tie_breaker_enabled.operation)) leaf_name_data.push_back(l2tp_sh_sess_tie_breaker_enabled.get_name_leafdata());
-    if (l2tp_sh_sess_udp_lport.is_set || is_set(l2tp_sh_sess_udp_lport.operation)) leaf_name_data.push_back(l2tp_sh_sess_udp_lport.get_name_leafdata());
-    if (l2tp_sh_sess_udp_rport.is_set || is_set(l2tp_sh_sess_udp_rport.operation)) leaf_name_data.push_back(l2tp_sh_sess_udp_rport.get_name_leafdata());
-    if (local_ip_address.is_set || is_set(local_ip_address.operation)) leaf_name_data.push_back(local_ip_address.get_name_leafdata());
-    if (local_tunnel_name.is_set || is_set(local_tunnel_name.operation)) leaf_name_data.push_back(local_tunnel_name.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.operation)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (remote_ip_address.is_set || is_set(remote_ip_address.operation)) leaf_name_data.push_back(remote_ip_address.get_name_leafdata());
-    if (remote_session_id.is_set || is_set(remote_session_id.operation)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
-    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.operation)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
-    if (remote_tunnel_name.is_set || is_set(remote_tunnel_name.operation)) leaf_name_data.push_back(remote_tunnel_name.get_name_leafdata());
-    if (unique_id.is_set || is_set(unique_id.operation)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (local_tunnel_id.is_set || is_set(local_tunnel_id.yfilter)) leaf_name_data.push_back(local_tunnel_id.get_name_leafdata());
+    if (local_session_id.is_set || is_set(local_session_id.yfilter)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
+    if (call_serial_number.is_set || is_set(call_serial_number.yfilter)) leaf_name_data.push_back(call_serial_number.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (is_conditional_debug_enabled.is_set || is_set(is_conditional_debug_enabled.yfilter)) leaf_name_data.push_back(is_conditional_debug_enabled.get_name_leafdata());
+    if (is_sequencing_on.is_set || is_set(is_sequencing_on.yfilter)) leaf_name_data.push_back(is_sequencing_on.get_name_leafdata());
+    if (is_session_locally_initiated.is_set || is_set(is_session_locally_initiated.yfilter)) leaf_name_data.push_back(is_session_locally_initiated.get_name_leafdata());
+    if (is_session_manual.is_set || is_set(is_session_manual.yfilter)) leaf_name_data.push_back(is_session_manual.get_name_leafdata());
+    if (is_session_state_established.is_set || is_set(is_session_state_established.yfilter)) leaf_name_data.push_back(is_session_state_established.get_name_leafdata());
+    if (is_session_up.is_set || is_set(is_session_up.yfilter)) leaf_name_data.push_back(is_session_up.get_name_leafdata());
+    if (is_udp_checksum_enabled.is_set || is_set(is_udp_checksum_enabled.yfilter)) leaf_name_data.push_back(is_udp_checksum_enabled.get_name_leafdata());
+    if (l2tp_sh_sess_tie_breaker.is_set || is_set(l2tp_sh_sess_tie_breaker.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_tie_breaker.get_name_leafdata());
+    if (l2tp_sh_sess_tie_breaker_enabled.is_set || is_set(l2tp_sh_sess_tie_breaker_enabled.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_tie_breaker_enabled.get_name_leafdata());
+    if (l2tp_sh_sess_udp_lport.is_set || is_set(l2tp_sh_sess_udp_lport.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_udp_lport.get_name_leafdata());
+    if (l2tp_sh_sess_udp_rport.is_set || is_set(l2tp_sh_sess_udp_rport.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_udp_rport.get_name_leafdata());
+    if (local_ip_address.is_set || is_set(local_ip_address.yfilter)) leaf_name_data.push_back(local_ip_address.get_name_leafdata());
+    if (local_tunnel_name.is_set || is_set(local_tunnel_name.yfilter)) leaf_name_data.push_back(local_tunnel_name.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (remote_ip_address.is_set || is_set(remote_ip_address.yfilter)) leaf_name_data.push_back(remote_ip_address.get_name_leafdata());
+    if (remote_session_id.is_set || is_set(remote_session_id.yfilter)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
+    if (remote_tunnel_id.is_set || is_set(remote_tunnel_id.yfilter)) leaf_name_data.push_back(remote_tunnel_id.get_name_leafdata());
+    if (remote_tunnel_name.is_set || is_set(remote_tunnel_name.yfilter)) leaf_name_data.push_back(remote_tunnel_name.get_name_leafdata());
+    if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13596,100 +19143,249 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::get_ch
     return children;
 }
 
-void L2Tpv2::Sessions::Session::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Sessions::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-tunnel-id")
     {
         local_tunnel_id = value;
+        local_tunnel_id.value_namespace = name_space;
+        local_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-session-id")
     {
         local_session_id = value;
+        local_session_id.value_namespace = name_space;
+        local_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "call-serial-number")
     {
         call_serial_number = value;
+        call_serial_number.value_namespace = name_space;
+        call_serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-conditional-debug-enabled")
     {
         is_conditional_debug_enabled = value;
+        is_conditional_debug_enabled.value_namespace = name_space;
+        is_conditional_debug_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-sequencing-on")
     {
         is_sequencing_on = value;
+        is_sequencing_on.value_namespace = name_space;
+        is_sequencing_on.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-session-locally-initiated")
     {
         is_session_locally_initiated = value;
+        is_session_locally_initiated.value_namespace = name_space;
+        is_session_locally_initiated.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-session-manual")
     {
         is_session_manual = value;
+        is_session_manual.value_namespace = name_space;
+        is_session_manual.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-session-state-established")
     {
         is_session_state_established = value;
+        is_session_state_established.value_namespace = name_space;
+        is_session_state_established.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-session-up")
     {
         is_session_up = value;
+        is_session_up.value_namespace = name_space;
+        is_session_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-udp-checksum-enabled")
     {
         is_udp_checksum_enabled = value;
+        is_udp_checksum_enabled.value_namespace = name_space;
+        is_udp_checksum_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-sh-sess-tie-breaker")
     {
         l2tp_sh_sess_tie_breaker = value;
+        l2tp_sh_sess_tie_breaker.value_namespace = name_space;
+        l2tp_sh_sess_tie_breaker.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-sh-sess-tie-breaker-enabled")
     {
         l2tp_sh_sess_tie_breaker_enabled = value;
+        l2tp_sh_sess_tie_breaker_enabled.value_namespace = name_space;
+        l2tp_sh_sess_tie_breaker_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-sh-sess-udp-lport")
     {
         l2tp_sh_sess_udp_lport = value;
+        l2tp_sh_sess_udp_lport.value_namespace = name_space;
+        l2tp_sh_sess_udp_lport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "l2tp-sh-sess-udp-rport")
     {
         l2tp_sh_sess_udp_rport = value;
+        l2tp_sh_sess_udp_rport.value_namespace = name_space;
+        l2tp_sh_sess_udp_rport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-ip-address")
     {
         local_ip_address = value;
+        local_ip_address.value_namespace = name_space;
+        local_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-tunnel-name")
     {
         local_tunnel_name = value;
+        local_tunnel_name.value_namespace = name_space;
+        local_tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "protocol")
     {
         protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-ip-address")
     {
         remote_ip_address = value;
+        remote_ip_address.value_namespace = name_space;
+        remote_ip_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-session-id")
     {
         remote_session_id = value;
+        remote_session_id.value_namespace = name_space;
+        remote_session_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-id")
     {
         remote_tunnel_id = value;
+        remote_tunnel_id.value_namespace = name_space;
+        remote_tunnel_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-tunnel-name")
     {
         remote_tunnel_name = value;
+        remote_tunnel_name.value_namespace = name_space;
+        remote_tunnel_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "unique-id")
     {
         unique_id = value;
+        unique_id.value_namespace = name_space;
+        unique_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "local-tunnel-id")
+    {
+        local_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "local-session-id")
+    {
+        local_session_id.yfilter = yfilter;
+    }
+    if(value_path == "call-serial-number")
+    {
+        call_serial_number.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "is-conditional-debug-enabled")
+    {
+        is_conditional_debug_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-sequencing-on")
+    {
+        is_sequencing_on.yfilter = yfilter;
+    }
+    if(value_path == "is-session-locally-initiated")
+    {
+        is_session_locally_initiated.yfilter = yfilter;
+    }
+    if(value_path == "is-session-manual")
+    {
+        is_session_manual.yfilter = yfilter;
+    }
+    if(value_path == "is-session-state-established")
+    {
+        is_session_state_established.yfilter = yfilter;
+    }
+    if(value_path == "is-session-up")
+    {
+        is_session_up.yfilter = yfilter;
+    }
+    if(value_path == "is-udp-checksum-enabled")
+    {
+        is_udp_checksum_enabled.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-sh-sess-tie-breaker")
+    {
+        l2tp_sh_sess_tie_breaker.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-sh-sess-tie-breaker-enabled")
+    {
+        l2tp_sh_sess_tie_breaker_enabled.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-sh-sess-udp-lport")
+    {
+        l2tp_sh_sess_udp_lport.yfilter = yfilter;
+    }
+    if(value_path == "l2tp-sh-sess-udp-rport")
+    {
+        l2tp_sh_sess_udp_rport.yfilter = yfilter;
+    }
+    if(value_path == "local-ip-address")
+    {
+        local_ip_address.yfilter = yfilter;
+    }
+    if(value_path == "local-tunnel-name")
+    {
+        local_tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "remote-ip-address")
+    {
+        remote_ip_address.yfilter = yfilter;
+    }
+    if(value_path == "remote-session-id")
+    {
+        remote_session_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-id")
+    {
+        remote_tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-tunnel-name")
+    {
+        remote_tunnel_name.yfilter = yfilter;
+    }
+    if(value_path == "unique-id")
+    {
+        unique_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-application-data" || name == "local-tunnel-id" || name == "local-session-id" || name == "call-serial-number" || name == "interface-name" || name == "is-conditional-debug-enabled" || name == "is-sequencing-on" || name == "is-session-locally-initiated" || name == "is-session-manual" || name == "is-session-state-established" || name == "is-session-up" || name == "is-udp-checksum-enabled" || name == "l2tp-sh-sess-tie-breaker" || name == "l2tp-sh-sess-tie-breaker-enabled" || name == "l2tp-sh-sess-udp-lport" || name == "l2tp-sh-sess-udp-rport" || name == "local-ip-address" || name == "local-tunnel-name" || name == "protocol" || name == "remote-ip-address" || name == "remote-session-id" || name == "remote-tunnel-id" || name == "remote-tunnel-name" || name == "unique-id")
+        return true;
+    return false;
 }
 
 L2Tpv2::Sessions::Session::SessionApplicationData::SessionApplicationData()
@@ -13719,8 +19415,8 @@ bool L2Tpv2::Sessions::Session::SessionApplicationData::has_data() const
 
 bool L2Tpv2::Sessions::Session::SessionApplicationData::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(l2tp_sh_sess_app_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(l2tp_sh_sess_app_type.yfilter)
 	|| (vpdn !=  nullptr && vpdn->has_operation())
 	|| (xconnect !=  nullptr && xconnect->has_operation());
 }
@@ -13748,7 +19444,7 @@ const EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (l2tp_sh_sess_app_type.is_set || is_set(l2tp_sh_sess_app_type.operation)) leaf_name_data.push_back(l2tp_sh_sess_app_type.get_name_leafdata());
+    if (l2tp_sh_sess_app_type.is_set || is_set(l2tp_sh_sess_app_type.yfilter)) leaf_name_data.push_back(l2tp_sh_sess_app_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13795,12 +19491,29 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::Sessio
     return children;
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Sessions::Session::SessionApplicationData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "l2tp-sh-sess-app-type")
     {
         l2tp_sh_sess_app_type = value;
+        l2tp_sh_sess_app_type.value_namespace = name_space;
+        l2tp_sh_sess_app_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Sessions::Session::SessionApplicationData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2tp-sh-sess-app-type")
+    {
+        l2tp_sh_sess_app_type.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Sessions::Session::SessionApplicationData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vpdn" || name == "xconnect" || name == "l2tp-sh-sess-app-type")
+        return true;
+    return false;
 }
 
 L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::Xconnect()
@@ -13831,13 +19544,13 @@ bool L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_data() con
 
 bool L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(circuit_name.operation)
-	|| is_set(ipv6_protocol_tunneling.operation)
-	|| is_set(is_circuit_state_up.operation)
-	|| is_set(is_local_circuit_state_up.operation)
-	|| is_set(is_remote_circuit_state_up.operation)
-	|| is_set(sessionvc_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(circuit_name.yfilter)
+	|| ydk::is_set(ipv6_protocol_tunneling.yfilter)
+	|| ydk::is_set(is_circuit_state_up.yfilter)
+	|| ydk::is_set(is_local_circuit_state_up.yfilter)
+	|| ydk::is_set(is_remote_circuit_state_up.yfilter)
+	|| ydk::is_set(sessionvc_id.yfilter);
 }
 
 std::string L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::get_segment_path() const
@@ -13863,12 +19576,12 @@ const EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (circuit_name.is_set || is_set(circuit_name.operation)) leaf_name_data.push_back(circuit_name.get_name_leafdata());
-    if (ipv6_protocol_tunneling.is_set || is_set(ipv6_protocol_tunneling.operation)) leaf_name_data.push_back(ipv6_protocol_tunneling.get_name_leafdata());
-    if (is_circuit_state_up.is_set || is_set(is_circuit_state_up.operation)) leaf_name_data.push_back(is_circuit_state_up.get_name_leafdata());
-    if (is_local_circuit_state_up.is_set || is_set(is_local_circuit_state_up.operation)) leaf_name_data.push_back(is_local_circuit_state_up.get_name_leafdata());
-    if (is_remote_circuit_state_up.is_set || is_set(is_remote_circuit_state_up.operation)) leaf_name_data.push_back(is_remote_circuit_state_up.get_name_leafdata());
-    if (sessionvc_id.is_set || is_set(sessionvc_id.operation)) leaf_name_data.push_back(sessionvc_id.get_name_leafdata());
+    if (circuit_name.is_set || is_set(circuit_name.yfilter)) leaf_name_data.push_back(circuit_name.get_name_leafdata());
+    if (ipv6_protocol_tunneling.is_set || is_set(ipv6_protocol_tunneling.yfilter)) leaf_name_data.push_back(ipv6_protocol_tunneling.get_name_leafdata());
+    if (is_circuit_state_up.is_set || is_set(is_circuit_state_up.yfilter)) leaf_name_data.push_back(is_circuit_state_up.get_name_leafdata());
+    if (is_local_circuit_state_up.is_set || is_set(is_local_circuit_state_up.yfilter)) leaf_name_data.push_back(is_local_circuit_state_up.get_name_leafdata());
+    if (is_remote_circuit_state_up.is_set || is_set(is_remote_circuit_state_up.yfilter)) leaf_name_data.push_back(is_remote_circuit_state_up.get_name_leafdata());
+    if (sessionvc_id.is_set || is_set(sessionvc_id.yfilter)) leaf_name_data.push_back(sessionvc_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13887,32 +19600,79 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::Sessio
     return children;
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "circuit-name")
     {
         circuit_name = value;
+        circuit_name.value_namespace = name_space;
+        circuit_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-protocol-tunneling")
     {
         ipv6_protocol_tunneling = value;
+        ipv6_protocol_tunneling.value_namespace = name_space;
+        ipv6_protocol_tunneling.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-circuit-state-up")
     {
         is_circuit_state_up = value;
+        is_circuit_state_up.value_namespace = name_space;
+        is_circuit_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-local-circuit-state-up")
     {
         is_local_circuit_state_up = value;
+        is_local_circuit_state_up.value_namespace = name_space;
+        is_local_circuit_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-remote-circuit-state-up")
     {
         is_remote_circuit_state_up = value;
+        is_remote_circuit_state_up.value_namespace = name_space;
+        is_remote_circuit_state_up.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sessionvc-id")
     {
         sessionvc_id = value;
+        sessionvc_id.value_namespace = name_space;
+        sessionvc_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "circuit-name")
+    {
+        circuit_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-protocol-tunneling")
+    {
+        ipv6_protocol_tunneling.yfilter = yfilter;
+    }
+    if(value_path == "is-circuit-state-up")
+    {
+        is_circuit_state_up.yfilter = yfilter;
+    }
+    if(value_path == "is-local-circuit-state-up")
+    {
+        is_local_circuit_state_up.yfilter = yfilter;
+    }
+    if(value_path == "is-remote-circuit-state-up")
+    {
+        is_remote_circuit_state_up.yfilter = yfilter;
+    }
+    if(value_path == "sessionvc-id")
+    {
+        sessionvc_id.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Sessions::Session::SessionApplicationData::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "circuit-name" || name == "ipv6-protocol-tunneling" || name == "is-circuit-state-up" || name == "is-local-circuit-state-up" || name == "is-remote-circuit-state-up" || name == "sessionvc-id")
+        return true;
+    return false;
 }
 
 L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::Vpdn()
@@ -13935,9 +19695,9 @@ bool L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_data() const
 
 bool L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(username.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(username.yfilter);
 }
 
 std::string L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_segment_path() const
@@ -13963,8 +19723,8 @@ const EntityPath L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (username.is_set || is_set(username.operation)) leaf_name_data.push_back(username.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -13983,16 +19743,39 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Sessions::Session::Sessio
     return children;
 }
 
-void L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "username")
     {
         username = value;
+        username.value_namespace = name_space;
+        username.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "username")
+    {
+        username.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Sessions::Session::SessionApplicationData::Vpdn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "username")
+        return true;
+    return false;
 }
 
 L2Tpv2::Session::Session()
@@ -14015,7 +19798,7 @@ bool L2Tpv2::Session::has_data() const
 
 bool L2Tpv2::Session::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (unavailable !=  nullptr && unavailable->has_operation());
 }
 
@@ -14074,8 +19857,19 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Session::get_children() c
     return children;
 }
 
-void L2Tpv2::Session::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void L2Tpv2::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool L2Tpv2::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unavailable")
+        return true;
+    return false;
 }
 
 L2Tpv2::Session::Unavailable::Unavailable()
@@ -14096,8 +19890,8 @@ bool L2Tpv2::Session::Unavailable::has_data() const
 
 bool L2Tpv2::Session::Unavailable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(sessions_on_hold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(sessions_on_hold.yfilter);
 }
 
 std::string L2Tpv2::Session::Unavailable::get_segment_path() const
@@ -14123,7 +19917,7 @@ const EntityPath L2Tpv2::Session::Unavailable::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sessions_on_hold.is_set || is_set(sessions_on_hold.operation)) leaf_name_data.push_back(sessions_on_hold.get_name_leafdata());
+    if (sessions_on_hold.is_set || is_set(sessions_on_hold.yfilter)) leaf_name_data.push_back(sessions_on_hold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -14142,16 +19936,33 @@ std::map<std::string, std::shared_ptr<Entity>> L2Tpv2::Session::Unavailable::get
     return children;
 }
 
-void L2Tpv2::Session::Unavailable::set_value(const std::string & value_path, std::string value)
+void L2Tpv2::Session::Unavailable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sessions-on-hold")
     {
         sessions_on_hold = value;
+        sessions_on_hold.value_namespace = name_space;
+        sessions_on_hold.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf DigestHashEnum::md5 {0, "md5"};
-const Enum::YLeaf DigestHashEnum::sha1 {1, "sha1"};
+void L2Tpv2::Session::Unavailable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sessions-on-hold")
+    {
+        sessions_on_hold.yfilter = yfilter;
+    }
+}
+
+bool L2Tpv2::Session::Unavailable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sessions-on-hold")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf DigestHash::md5 {0, "md5"};
+const Enum::YLeaf DigestHash::sha1 {1, "sha1"};
 
 
 }

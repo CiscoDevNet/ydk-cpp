@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_policymgr_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_policymgr_cfg {
 
 PolicyManager::PolicyManager()
@@ -33,7 +35,7 @@ bool PolicyManager::has_data() const
 
 bool PolicyManager::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (class_maps !=  nullptr && class_maps->has_operation())
 	|| (policy_maps !=  nullptr && policy_maps->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::get_children() con
     return children;
 }
 
-void PolicyManager::set_value(const std::string & value_path, std::string value)
+void PolicyManager::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PolicyManager::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string PolicyManager::get_bundle_name() const
 augment_capabilities_function PolicyManager::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> PolicyManager::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool PolicyManager::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-maps" || name == "policy-maps")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMaps()
@@ -154,7 +172,7 @@ bool PolicyManager::ClassMaps::has_operation() const
         if(class_map[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PolicyManager::ClassMaps::get_segment_path() const
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::get_chi
     return children;
 }
 
-void PolicyManager::ClassMaps::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PolicyManager::ClassMaps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PolicyManager::ClassMaps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class-map")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::ClassMap()
@@ -258,12 +287,12 @@ bool PolicyManager::ClassMaps::ClassMap::has_data() const
 
 bool PolicyManager::ClassMaps::ClassMap::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(type.operation)
-	|| is_set(name.operation)
-	|| is_set(class_map_mode_match_all.operation)
-	|| is_set(class_map_mode_match_any.operation)
-	|| is_set(description.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(class_map_mode_match_all.yfilter)
+	|| ydk::is_set(class_map_mode_match_any.yfilter)
+	|| ydk::is_set(description.yfilter)
 	|| (match !=  nullptr && match->has_operation())
 	|| (match_not !=  nullptr && match_not->has_operation());
 }
@@ -291,11 +320,11 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (class_map_mode_match_all.is_set || is_set(class_map_mode_match_all.operation)) leaf_name_data.push_back(class_map_mode_match_all.get_name_leafdata());
-    if (class_map_mode_match_any.is_set || is_set(class_map_mode_match_any.operation)) leaf_name_data.push_back(class_map_mode_match_any.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (class_map_mode_match_all.is_set || is_set(class_map_mode_match_all.yfilter)) leaf_name_data.push_back(class_map_mode_match_all.get_name_leafdata());
+    if (class_map_mode_match_any.is_set || is_set(class_map_mode_match_any.yfilter)) leaf_name_data.push_back(class_map_mode_match_any.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -342,28 +371,69 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-map-mode-match-all")
     {
         class_map_mode_match_all = value;
+        class_map_mode_match_all.value_namespace = name_space;
+        class_map_mode_match_all.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-map-mode-match-any")
     {
         class_map_mode_match_any = value;
+        class_map_mode_match_any.value_namespace = name_space;
+        class_map_mode_match_any.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "class-map-mode-match-all")
+    {
+        class_map_mode_match_all.yfilter = yfilter;
+    }
+    if(value_path == "class-map-mode-match-any")
+    {
+        class_map_mode_match_any.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "match" || name == "match-not" || name == "type" || name == "name" || name == "class-map-mode-match-all" || name == "class-map-mode-match-any" || name == "description")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::Match()
@@ -745,282 +815,282 @@ bool PolicyManager::ClassMaps::ClassMap::Match::has_operation() const
     }
     for (auto const & leaf : circuit_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : circuit_id_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : cos.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : destination_mac.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : destination_port.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : dhcp_client_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : dhcp_client_id_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : discard_class.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : dscp.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ethertype.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : flow_tag.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : fragment_type.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : frame_relay_dlci.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : icmpv4_code.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : icmpv4_type.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : icmpv6_code.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : icmpv6_type.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : inner_cos.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : inner_vlan.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv4_dscp.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv4_packet_length.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv4_precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv6_dscp.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv6_packet_length.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv6_precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : mpls_experimental_imposition.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : mpls_experimental_topmost.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : packet_length.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : protocol.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : qos_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : remote_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : remote_id_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : service_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : service_name_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : source_mac.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : source_port.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : timer.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : timer_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : traffic_class.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : user_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : user_name_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : vlan.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(atm_clp.operation)
-	|| is_set(atm_oam.operation)
-	|| is_set(authen_status.operation)
-	|| is_set(cac_admit.operation)
-	|| is_set(cac_unadmit.operation)
-	|| is_set(circuit_id.operation)
-	|| is_set(circuit_id_regex.operation)
-	|| is_set(cos.operation)
-	|| is_set(dei.operation)
-	|| is_set(dei_inner.operation)
-	|| is_set(destination_mac.operation)
-	|| is_set(destination_port.operation)
-	|| is_set(dhcp_client_id.operation)
-	|| is_set(dhcp_client_id_regex.operation)
-	|| is_set(discard_class.operation)
-	|| is_set(dscp.operation)
-	|| is_set(ethernet_services_acl.operation)
-	|| is_set(ethertype.operation)
-	|| is_set(flow_tag.operation)
-	|| is_set(fr_de.operation)
-	|| is_set(fragment_type.operation)
-	|| is_set(frame_relay_dlci.operation)
-	|| is_set(icmpv4_code.operation)
-	|| is_set(icmpv4_type.operation)
-	|| is_set(icmpv6_code.operation)
-	|| is_set(icmpv6_type.operation)
-	|| is_set(inner_cos.operation)
-	|| is_set(inner_vlan.operation)
-	|| is_set(ipv4_acl.operation)
-	|| is_set(ipv4_dscp.operation)
-	|| is_set(ipv4_packet_length.operation)
-	|| is_set(ipv4_precedence.operation)
-	|| is_set(ipv6_acl.operation)
-	|| is_set(ipv6_dscp.operation)
-	|| is_set(ipv6_packet_length.operation)
-	|| is_set(ipv6_precedence.operation)
-	|| is_set(mpls_disposition_ipv4_access_list.operation)
-	|| is_set(mpls_disposition_ipv6_access_list.operation)
-	|| is_set(mpls_experimental_imposition.operation)
-	|| is_set(mpls_experimental_topmost.operation)
-	|| is_set(packet_length.operation)
-	|| is_set(precedence.operation)
-	|| is_set(protocol.operation)
-	|| is_set(qos_group.operation)
-	|| is_set(remote_id.operation)
-	|| is_set(remote_id_regex.operation)
-	|| is_set(service_name.operation)
-	|| is_set(service_name_regex.operation)
-	|| is_set(source_mac.operation)
-	|| is_set(source_port.operation)
-	|| is_set(tcp_flag.operation)
-	|| is_set(timer.operation)
-	|| is_set(timer_regex.operation)
-	|| is_set(traffic_class.operation)
-	|| is_set(user_name.operation)
-	|| is_set(user_name_regex.operation)
-	|| is_set(vlan.operation)
-	|| is_set(vpls_broadcast.operation)
-	|| is_set(vpls_control.operation)
-	|| is_set(vpls_known.operation)
-	|| is_set(vpls_multicast.operation)
-	|| is_set(vpls_unknown.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(atm_clp.yfilter)
+	|| ydk::is_set(atm_oam.yfilter)
+	|| ydk::is_set(authen_status.yfilter)
+	|| ydk::is_set(cac_admit.yfilter)
+	|| ydk::is_set(cac_unadmit.yfilter)
+	|| ydk::is_set(circuit_id.yfilter)
+	|| ydk::is_set(circuit_id_regex.yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(dei_inner.yfilter)
+	|| ydk::is_set(destination_mac.yfilter)
+	|| ydk::is_set(destination_port.yfilter)
+	|| ydk::is_set(dhcp_client_id.yfilter)
+	|| ydk::is_set(dhcp_client_id_regex.yfilter)
+	|| ydk::is_set(discard_class.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(ethernet_services_acl.yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(flow_tag.yfilter)
+	|| ydk::is_set(fr_de.yfilter)
+	|| ydk::is_set(fragment_type.yfilter)
+	|| ydk::is_set(frame_relay_dlci.yfilter)
+	|| ydk::is_set(icmpv4_code.yfilter)
+	|| ydk::is_set(icmpv4_type.yfilter)
+	|| ydk::is_set(icmpv6_code.yfilter)
+	|| ydk::is_set(icmpv6_type.yfilter)
+	|| ydk::is_set(inner_cos.yfilter)
+	|| ydk::is_set(inner_vlan.yfilter)
+	|| ydk::is_set(ipv4_acl.yfilter)
+	|| ydk::is_set(ipv4_dscp.yfilter)
+	|| ydk::is_set(ipv4_packet_length.yfilter)
+	|| ydk::is_set(ipv4_precedence.yfilter)
+	|| ydk::is_set(ipv6_acl.yfilter)
+	|| ydk::is_set(ipv6_dscp.yfilter)
+	|| ydk::is_set(ipv6_packet_length.yfilter)
+	|| ydk::is_set(ipv6_precedence.yfilter)
+	|| ydk::is_set(mpls_disposition_ipv4_access_list.yfilter)
+	|| ydk::is_set(mpls_disposition_ipv6_access_list.yfilter)
+	|| ydk::is_set(mpls_experimental_imposition.yfilter)
+	|| ydk::is_set(mpls_experimental_topmost.yfilter)
+	|| ydk::is_set(packet_length.yfilter)
+	|| ydk::is_set(precedence.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(qos_group.yfilter)
+	|| ydk::is_set(remote_id.yfilter)
+	|| ydk::is_set(remote_id_regex.yfilter)
+	|| ydk::is_set(service_name.yfilter)
+	|| ydk::is_set(service_name_regex.yfilter)
+	|| ydk::is_set(source_mac.yfilter)
+	|| ydk::is_set(source_port.yfilter)
+	|| ydk::is_set(tcp_flag.yfilter)
+	|| ydk::is_set(timer.yfilter)
+	|| ydk::is_set(timer_regex.yfilter)
+	|| ydk::is_set(traffic_class.yfilter)
+	|| ydk::is_set(user_name.yfilter)
+	|| ydk::is_set(user_name_regex.yfilter)
+	|| ydk::is_set(vlan.yfilter)
+	|| ydk::is_set(vpls_broadcast.yfilter)
+	|| ydk::is_set(vpls_control.yfilter)
+	|| ydk::is_set(vpls_known.yfilter)
+	|| ydk::is_set(vpls_multicast.yfilter)
+	|| ydk::is_set(vpls_unknown.yfilter)
 	|| (flow !=  nullptr && flow->has_operation());
 }
 
@@ -1047,25 +1117,25 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::Match::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (atm_clp.is_set || is_set(atm_clp.operation)) leaf_name_data.push_back(atm_clp.get_name_leafdata());
-    if (atm_oam.is_set || is_set(atm_oam.operation)) leaf_name_data.push_back(atm_oam.get_name_leafdata());
-    if (authen_status.is_set || is_set(authen_status.operation)) leaf_name_data.push_back(authen_status.get_name_leafdata());
-    if (cac_admit.is_set || is_set(cac_admit.operation)) leaf_name_data.push_back(cac_admit.get_name_leafdata());
-    if (cac_unadmit.is_set || is_set(cac_unadmit.operation)) leaf_name_data.push_back(cac_unadmit.get_name_leafdata());
-    if (dei.is_set || is_set(dei.operation)) leaf_name_data.push_back(dei.get_name_leafdata());
-    if (dei_inner.is_set || is_set(dei_inner.operation)) leaf_name_data.push_back(dei_inner.get_name_leafdata());
-    if (ethernet_services_acl.is_set || is_set(ethernet_services_acl.operation)) leaf_name_data.push_back(ethernet_services_acl.get_name_leafdata());
-    if (fr_de.is_set || is_set(fr_de.operation)) leaf_name_data.push_back(fr_de.get_name_leafdata());
-    if (ipv4_acl.is_set || is_set(ipv4_acl.operation)) leaf_name_data.push_back(ipv4_acl.get_name_leafdata());
-    if (ipv6_acl.is_set || is_set(ipv6_acl.operation)) leaf_name_data.push_back(ipv6_acl.get_name_leafdata());
-    if (mpls_disposition_ipv4_access_list.is_set || is_set(mpls_disposition_ipv4_access_list.operation)) leaf_name_data.push_back(mpls_disposition_ipv4_access_list.get_name_leafdata());
-    if (mpls_disposition_ipv6_access_list.is_set || is_set(mpls_disposition_ipv6_access_list.operation)) leaf_name_data.push_back(mpls_disposition_ipv6_access_list.get_name_leafdata());
-    if (tcp_flag.is_set || is_set(tcp_flag.operation)) leaf_name_data.push_back(tcp_flag.get_name_leafdata());
-    if (vpls_broadcast.is_set || is_set(vpls_broadcast.operation)) leaf_name_data.push_back(vpls_broadcast.get_name_leafdata());
-    if (vpls_control.is_set || is_set(vpls_control.operation)) leaf_name_data.push_back(vpls_control.get_name_leafdata());
-    if (vpls_known.is_set || is_set(vpls_known.operation)) leaf_name_data.push_back(vpls_known.get_name_leafdata());
-    if (vpls_multicast.is_set || is_set(vpls_multicast.operation)) leaf_name_data.push_back(vpls_multicast.get_name_leafdata());
-    if (vpls_unknown.is_set || is_set(vpls_unknown.operation)) leaf_name_data.push_back(vpls_unknown.get_name_leafdata());
+    if (atm_clp.is_set || is_set(atm_clp.yfilter)) leaf_name_data.push_back(atm_clp.get_name_leafdata());
+    if (atm_oam.is_set || is_set(atm_oam.yfilter)) leaf_name_data.push_back(atm_oam.get_name_leafdata());
+    if (authen_status.is_set || is_set(authen_status.yfilter)) leaf_name_data.push_back(authen_status.get_name_leafdata());
+    if (cac_admit.is_set || is_set(cac_admit.yfilter)) leaf_name_data.push_back(cac_admit.get_name_leafdata());
+    if (cac_unadmit.is_set || is_set(cac_unadmit.yfilter)) leaf_name_data.push_back(cac_unadmit.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (dei_inner.is_set || is_set(dei_inner.yfilter)) leaf_name_data.push_back(dei_inner.get_name_leafdata());
+    if (ethernet_services_acl.is_set || is_set(ethernet_services_acl.yfilter)) leaf_name_data.push_back(ethernet_services_acl.get_name_leafdata());
+    if (fr_de.is_set || is_set(fr_de.yfilter)) leaf_name_data.push_back(fr_de.get_name_leafdata());
+    if (ipv4_acl.is_set || is_set(ipv4_acl.yfilter)) leaf_name_data.push_back(ipv4_acl.get_name_leafdata());
+    if (ipv6_acl.is_set || is_set(ipv6_acl.yfilter)) leaf_name_data.push_back(ipv6_acl.get_name_leafdata());
+    if (mpls_disposition_ipv4_access_list.is_set || is_set(mpls_disposition_ipv4_access_list.yfilter)) leaf_name_data.push_back(mpls_disposition_ipv4_access_list.get_name_leafdata());
+    if (mpls_disposition_ipv6_access_list.is_set || is_set(mpls_disposition_ipv6_access_list.yfilter)) leaf_name_data.push_back(mpls_disposition_ipv6_access_list.get_name_leafdata());
+    if (tcp_flag.is_set || is_set(tcp_flag.yfilter)) leaf_name_data.push_back(tcp_flag.get_name_leafdata());
+    if (vpls_broadcast.is_set || is_set(vpls_broadcast.yfilter)) leaf_name_data.push_back(vpls_broadcast.get_name_leafdata());
+    if (vpls_control.is_set || is_set(vpls_control.yfilter)) leaf_name_data.push_back(vpls_control.get_name_leafdata());
+    if (vpls_known.is_set || is_set(vpls_known.yfilter)) leaf_name_data.push_back(vpls_known.get_name_leafdata());
+    if (vpls_multicast.is_set || is_set(vpls_multicast.yfilter)) leaf_name_data.push_back(vpls_multicast.get_name_leafdata());
+    if (vpls_unknown.is_set || is_set(vpls_unknown.yfilter)) leaf_name_data.push_back(vpls_unknown.get_name_leafdata());
 
     auto circuit_id_name_datas = circuit_id.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), circuit_id_name_datas.begin(), circuit_id_name_datas.end());
@@ -1310,27 +1380,37 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "atm-clp")
     {
         atm_clp = value;
+        atm_clp.value_namespace = name_space;
+        atm_clp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "atm-oam")
     {
         atm_oam = value;
+        atm_oam.value_namespace = name_space;
+        atm_oam.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "authen-status")
     {
         authen_status = value;
+        authen_status.value_namespace = name_space;
+        authen_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cac-admit")
     {
         cac_admit = value;
+        cac_admit.value_namespace = name_space;
+        cac_admit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cac-unadmit")
     {
         cac_unadmit = value;
+        cac_unadmit.value_namespace = name_space;
+        cac_unadmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "circuit-id")
     {
@@ -1347,10 +1427,14 @@ void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & va
     if(value_path == "dei")
     {
         dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei-inner")
     {
         dei_inner = value;
+        dei_inner.value_namespace = name_space;
+        dei_inner.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-mac")
     {
@@ -1379,6 +1463,8 @@ void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & va
     if(value_path == "ethernet-services-acl")
     {
         ethernet_services_acl = value;
+        ethernet_services_acl.value_namespace = name_space;
+        ethernet_services_acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ethertype")
     {
@@ -1391,6 +1477,8 @@ void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & va
     if(value_path == "fr-de")
     {
         fr_de = value;
+        fr_de.value_namespace = name_space;
+        fr_de.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fragment-type")
     {
@@ -1427,6 +1515,8 @@ void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & va
     if(value_path == "ipv4-acl")
     {
         ipv4_acl = value;
+        ipv4_acl.value_namespace = name_space;
+        ipv4_acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-dscp")
     {
@@ -1443,6 +1533,8 @@ void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & va
     if(value_path == "ipv6-acl")
     {
         ipv6_acl = value;
+        ipv6_acl.value_namespace = name_space;
+        ipv6_acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-dscp")
     {
@@ -1459,10 +1551,14 @@ void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & va
     if(value_path == "mpls-disposition-ipv4-access-list")
     {
         mpls_disposition_ipv4_access_list = value;
+        mpls_disposition_ipv4_access_list.value_namespace = name_space;
+        mpls_disposition_ipv4_access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-disposition-ipv6-access-list")
     {
         mpls_disposition_ipv6_access_list = value;
+        mpls_disposition_ipv6_access_list.value_namespace = name_space;
+        mpls_disposition_ipv6_access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-imposition")
     {
@@ -1515,6 +1611,8 @@ void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & va
     if(value_path == "tcp-flag")
     {
         tcp_flag = value;
+        tcp_flag.value_namespace = name_space;
+        tcp_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timer")
     {
@@ -1543,23 +1641,292 @@ void PolicyManager::ClassMaps::ClassMap::Match::set_value(const std::string & va
     if(value_path == "vpls-broadcast")
     {
         vpls_broadcast = value;
+        vpls_broadcast.value_namespace = name_space;
+        vpls_broadcast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-control")
     {
         vpls_control = value;
+        vpls_control.value_namespace = name_space;
+        vpls_control.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-known")
     {
         vpls_known = value;
+        vpls_known.value_namespace = name_space;
+        vpls_known.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-multicast")
     {
         vpls_multicast = value;
+        vpls_multicast.value_namespace = name_space;
+        vpls_multicast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-unknown")
     {
         vpls_unknown = value;
+        vpls_unknown.value_namespace = name_space;
+        vpls_unknown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "atm-clp")
+    {
+        atm_clp.yfilter = yfilter;
+    }
+    if(value_path == "atm-oam")
+    {
+        atm_oam.yfilter = yfilter;
+    }
+    if(value_path == "authen-status")
+    {
+        authen_status.yfilter = yfilter;
+    }
+    if(value_path == "cac-admit")
+    {
+        cac_admit.yfilter = yfilter;
+    }
+    if(value_path == "cac-unadmit")
+    {
+        cac_unadmit.yfilter = yfilter;
+    }
+    if(value_path == "circuit-id")
+    {
+        circuit_id.yfilter = yfilter;
+    }
+    if(value_path == "circuit-id-regex")
+    {
+        circuit_id_regex.yfilter = yfilter;
+    }
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "dei")
+    {
+        dei.yfilter = yfilter;
+    }
+    if(value_path == "dei-inner")
+    {
+        dei_inner.yfilter = yfilter;
+    }
+    if(value_path == "destination-mac")
+    {
+        destination_mac.yfilter = yfilter;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-client-id")
+    {
+        dhcp_client_id.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-client-id-regex")
+    {
+        dhcp_client_id_regex.yfilter = yfilter;
+    }
+    if(value_path == "discard-class")
+    {
+        discard_class.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-services-acl")
+    {
+        ethernet_services_acl.yfilter = yfilter;
+    }
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag")
+    {
+        flow_tag.yfilter = yfilter;
+    }
+    if(value_path == "fr-de")
+    {
+        fr_de.yfilter = yfilter;
+    }
+    if(value_path == "fragment-type")
+    {
+        fragment_type.yfilter = yfilter;
+    }
+    if(value_path == "frame-relay-dlci")
+    {
+        frame_relay_dlci.yfilter = yfilter;
+    }
+    if(value_path == "icmpv4-code")
+    {
+        icmpv4_code.yfilter = yfilter;
+    }
+    if(value_path == "icmpv4-type")
+    {
+        icmpv4_type.yfilter = yfilter;
+    }
+    if(value_path == "icmpv6-code")
+    {
+        icmpv6_code.yfilter = yfilter;
+    }
+    if(value_path == "icmpv6-type")
+    {
+        icmpv6_type.yfilter = yfilter;
+    }
+    if(value_path == "inner-cos")
+    {
+        inner_cos.yfilter = yfilter;
+    }
+    if(value_path == "inner-vlan")
+    {
+        inner_vlan.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-acl")
+    {
+        ipv4_acl.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-dscp")
+    {
+        ipv4_dscp.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-packet-length")
+    {
+        ipv4_packet_length.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-precedence")
+    {
+        ipv4_precedence.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-acl")
+    {
+        ipv6_acl.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-dscp")
+    {
+        ipv6_dscp.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-packet-length")
+    {
+        ipv6_packet_length.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-precedence")
+    {
+        ipv6_precedence.yfilter = yfilter;
+    }
+    if(value_path == "mpls-disposition-ipv4-access-list")
+    {
+        mpls_disposition_ipv4_access_list.yfilter = yfilter;
+    }
+    if(value_path == "mpls-disposition-ipv6-access-list")
+    {
+        mpls_disposition_ipv6_access_list.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-imposition")
+    {
+        mpls_experimental_imposition.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-topmost")
+    {
+        mpls_experimental_topmost.yfilter = yfilter;
+    }
+    if(value_path == "packet-length")
+    {
+        packet_length.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "qos-group")
+    {
+        qos_group.yfilter = yfilter;
+    }
+    if(value_path == "remote-id")
+    {
+        remote_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-id-regex")
+    {
+        remote_id_regex.yfilter = yfilter;
+    }
+    if(value_path == "service-name")
+    {
+        service_name.yfilter = yfilter;
+    }
+    if(value_path == "service-name-regex")
+    {
+        service_name_regex.yfilter = yfilter;
+    }
+    if(value_path == "source-mac")
+    {
+        source_mac.yfilter = yfilter;
+    }
+    if(value_path == "source-port")
+    {
+        source_port.yfilter = yfilter;
+    }
+    if(value_path == "tcp-flag")
+    {
+        tcp_flag.yfilter = yfilter;
+    }
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
+    }
+    if(value_path == "timer-regex")
+    {
+        timer_regex.yfilter = yfilter;
+    }
+    if(value_path == "traffic-class")
+    {
+        traffic_class.yfilter = yfilter;
+    }
+    if(value_path == "user-name")
+    {
+        user_name.yfilter = yfilter;
+    }
+    if(value_path == "user-name-regex")
+    {
+        user_name_regex.yfilter = yfilter;
+    }
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+    if(value_path == "vpls-broadcast")
+    {
+        vpls_broadcast.yfilter = yfilter;
+    }
+    if(value_path == "vpls-control")
+    {
+        vpls_control.yfilter = yfilter;
+    }
+    if(value_path == "vpls-known")
+    {
+        vpls_known.yfilter = yfilter;
+    }
+    if(value_path == "vpls-multicast")
+    {
+        vpls_multicast.yfilter = yfilter;
+    }
+    if(value_path == "vpls-unknown")
+    {
+        vpls_unknown.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address-ipv4" || name == "destination-address-ipv6" || name == "domain-name" || name == "domain-name-regex" || name == "flow" || name == "source-address-ipv4" || name == "source-address-ipv6" || name == "atm-clp" || name == "atm-oam" || name == "authen-status" || name == "cac-admit" || name == "cac-unadmit" || name == "circuit-id" || name == "circuit-id-regex" || name == "cos" || name == "dei" || name == "dei-inner" || name == "destination-mac" || name == "destination-port" || name == "dhcp-client-id" || name == "dhcp-client-id-regex" || name == "discard-class" || name == "dscp" || name == "ethernet-services-acl" || name == "ethertype" || name == "flow-tag" || name == "fr-de" || name == "fragment-type" || name == "frame-relay-dlci" || name == "icmpv4-code" || name == "icmpv4-type" || name == "icmpv6-code" || name == "icmpv6-type" || name == "inner-cos" || name == "inner-vlan" || name == "ipv4-acl" || name == "ipv4-dscp" || name == "ipv4-packet-length" || name == "ipv4-precedence" || name == "ipv6-acl" || name == "ipv6-dscp" || name == "ipv6-packet-length" || name == "ipv6-precedence" || name == "mpls-disposition-ipv4-access-list" || name == "mpls-disposition-ipv6-access-list" || name == "mpls-experimental-imposition" || name == "mpls-experimental-topmost" || name == "packet-length" || name == "precedence" || name == "protocol" || name == "qos-group" || name == "remote-id" || name == "remote-id-regex" || name == "service-name" || name == "service-name-regex" || name == "source-mac" || name == "source-port" || name == "tcp-flag" || name == "timer" || name == "timer-regex" || name == "traffic-class" || name == "user-name" || name == "user-name-regex" || name == "vlan" || name == "vpls-broadcast" || name == "vpls-control" || name == "vpls-known" || name == "vpls-multicast" || name == "vpls-unknown")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::DestinationAddressIpv4()
@@ -1582,9 +1949,9 @@ bool PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::has_data
 
 bool PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(netmask.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(netmask.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::get_segment_path() const
@@ -1610,8 +1977,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIp
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.operation)) leaf_name_data.push_back(netmask.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1630,16 +1997,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netmask")
     {
         netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "netmask")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::DestinationAddressIpv6()
@@ -1662,9 +2052,9 @@ bool PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::has_data
 
 bool PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::get_segment_path() const
@@ -1690,8 +2080,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIp
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1710,16 +2100,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::SourceAddressIpv4()
@@ -1742,9 +2155,9 @@ bool PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::has_data() co
 
 bool PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(netmask.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(netmask.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::get_segment_path() const
@@ -1770,8 +2183,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.operation)) leaf_name_data.push_back(netmask.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1790,16 +2203,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netmask")
     {
         netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "netmask")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::SourceAddressIpv6()
@@ -1822,9 +2258,9 @@ bool PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::has_data() co
 
 bool PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::get_segment_path() const
@@ -1850,8 +2286,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1870,16 +2306,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::DomainName::DomainName()
@@ -1902,9 +2361,9 @@ bool PolicyManager::ClassMaps::ClassMap::Match::DomainName::has_data() const
 
 bool PolicyManager::ClassMaps::ClassMap::Match::DomainName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(format.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(format.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_segment_path() const
@@ -1930,8 +2389,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainName::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1950,16 +2409,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::DomainName::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::DomainName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::DomainName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::DomainName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "format")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::DomainNameRegex()
@@ -1982,9 +2464,9 @@ bool PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::has_data() cons
 
 bool PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(regex.operation)
-	|| is_set(format.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(regex.yfilter)
+	|| ydk::is_set(format.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get_segment_path() const
@@ -2010,8 +2492,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (regex.is_set || is_set(regex.operation)) leaf_name_data.push_back(regex.get_name_leafdata());
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (regex.is_set || is_set(regex.yfilter)) leaf_name_data.push_back(regex.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2030,16 +2512,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "regex")
     {
         regex = value;
+        regex.value_namespace = name_space;
+        regex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "regex")
+    {
+        regex.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::DomainNameRegex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "regex" || name == "format")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::Flow::Flow()
@@ -2071,11 +2576,11 @@ bool PolicyManager::ClassMaps::ClassMap::Match::Flow::has_operation() const
 {
     for (auto const & leaf : flow_key.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(flow_key.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(flow_key.yfilter)
 	|| (flow_cache !=  nullptr && flow_cache->has_operation());
 }
 
@@ -2136,12 +2641,27 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::Flow::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-key")
     {
         flow_key.append(value);
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::Flow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-key")
+    {
+        flow_key.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::Flow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-cache" || name == "flow-key")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::FlowCache()
@@ -2162,8 +2682,8 @@ bool PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::has_data() cons
 
 bool PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(idle_timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(idle_timeout.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get_segment_path() const
@@ -2189,7 +2709,7 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (idle_timeout.is_set || is_set(idle_timeout.operation)) leaf_name_data.push_back(idle_timeout.get_name_leafdata());
+    if (idle_timeout.is_set || is_set(idle_timeout.yfilter)) leaf_name_data.push_back(idle_timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2208,12 +2728,29 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "idle-timeout")
     {
         idle_timeout = value;
+        idle_timeout.value_namespace = name_space;
+        idle_timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "idle-timeout")
+    {
+        idle_timeout.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idle-timeout")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::MatchNot()
@@ -2587,278 +3124,278 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::has_operation() const
     }
     for (auto const & leaf : circuit_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : circuit_id_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : cos.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : destination_mac.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : destination_port.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : dhcp_client_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : dhcp_client_id_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : discard_class.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : dscp.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ethertype.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : flow_tag.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : fragment_type.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : frame_relay_dlci.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : icmpv4_code.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : icmpv4_type.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : icmpv6_code.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : icmpv6_type.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : inner_cos.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : inner_vlan.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv4_dscp.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv4_packet_length.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv4_precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv6_dscp.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv6_packet_length.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : ipv6_precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : mpls_experimental_imposition.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : mpls_experimental_topmost.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : packet_length.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : protocol.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : qos_group.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : remote_id.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : remote_id_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : service_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : service_name_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : source_mac.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : source_port.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : timer.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : timer_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : traffic_class.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : user_name.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : user_name_regex.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : vlan.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(authen_status.operation)
-	|| is_set(circuit_id.operation)
-	|| is_set(circuit_id_regex.operation)
-	|| is_set(cos.operation)
-	|| is_set(dei.operation)
-	|| is_set(dei_inner.operation)
-	|| is_set(destination_mac.operation)
-	|| is_set(destination_port.operation)
-	|| is_set(dhcp_client_id.operation)
-	|| is_set(dhcp_client_id_regex.operation)
-	|| is_set(discard_class.operation)
-	|| is_set(dscp.operation)
-	|| is_set(ethernet_services_acl.operation)
-	|| is_set(ethertype.operation)
-	|| is_set(flow_tag.operation)
-	|| is_set(fr_de.operation)
-	|| is_set(fragment_type.operation)
-	|| is_set(frame_relay_dlci.operation)
-	|| is_set(icmpv4_code.operation)
-	|| is_set(icmpv4_type.operation)
-	|| is_set(icmpv6_code.operation)
-	|| is_set(icmpv6_type.operation)
-	|| is_set(inner_cos.operation)
-	|| is_set(inner_vlan.operation)
-	|| is_set(ipv4_acl.operation)
-	|| is_set(ipv4_dscp.operation)
-	|| is_set(ipv4_packet_length.operation)
-	|| is_set(ipv4_precedence.operation)
-	|| is_set(ipv6_acl.operation)
-	|| is_set(ipv6_dscp.operation)
-	|| is_set(ipv6_packet_length.operation)
-	|| is_set(ipv6_precedence.operation)
-	|| is_set(mpls_disposition_ipv4_access_list.operation)
-	|| is_set(mpls_disposition_ipv6_access_list.operation)
-	|| is_set(mpls_experimental_imposition.operation)
-	|| is_set(mpls_experimental_topmost.operation)
-	|| is_set(packet_length.operation)
-	|| is_set(precedence.operation)
-	|| is_set(protocol.operation)
-	|| is_set(qos_group.operation)
-	|| is_set(remote_id.operation)
-	|| is_set(remote_id_regex.operation)
-	|| is_set(service_name.operation)
-	|| is_set(service_name_regex.operation)
-	|| is_set(source_mac.operation)
-	|| is_set(source_port.operation)
-	|| is_set(tcp_flag.operation)
-	|| is_set(timer.operation)
-	|| is_set(timer_regex.operation)
-	|| is_set(traffic_class.operation)
-	|| is_set(user_name.operation)
-	|| is_set(user_name_regex.operation)
-	|| is_set(vlan.operation)
-	|| is_set(vpls_broadcast.operation)
-	|| is_set(vpls_control.operation)
-	|| is_set(vpls_known.operation)
-	|| is_set(vpls_multicast.operation)
-	|| is_set(vpls_unknown.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(authen_status.yfilter)
+	|| ydk::is_set(circuit_id.yfilter)
+	|| ydk::is_set(circuit_id_regex.yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(dei_inner.yfilter)
+	|| ydk::is_set(destination_mac.yfilter)
+	|| ydk::is_set(destination_port.yfilter)
+	|| ydk::is_set(dhcp_client_id.yfilter)
+	|| ydk::is_set(dhcp_client_id_regex.yfilter)
+	|| ydk::is_set(discard_class.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(ethernet_services_acl.yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(flow_tag.yfilter)
+	|| ydk::is_set(fr_de.yfilter)
+	|| ydk::is_set(fragment_type.yfilter)
+	|| ydk::is_set(frame_relay_dlci.yfilter)
+	|| ydk::is_set(icmpv4_code.yfilter)
+	|| ydk::is_set(icmpv4_type.yfilter)
+	|| ydk::is_set(icmpv6_code.yfilter)
+	|| ydk::is_set(icmpv6_type.yfilter)
+	|| ydk::is_set(inner_cos.yfilter)
+	|| ydk::is_set(inner_vlan.yfilter)
+	|| ydk::is_set(ipv4_acl.yfilter)
+	|| ydk::is_set(ipv4_dscp.yfilter)
+	|| ydk::is_set(ipv4_packet_length.yfilter)
+	|| ydk::is_set(ipv4_precedence.yfilter)
+	|| ydk::is_set(ipv6_acl.yfilter)
+	|| ydk::is_set(ipv6_dscp.yfilter)
+	|| ydk::is_set(ipv6_packet_length.yfilter)
+	|| ydk::is_set(ipv6_precedence.yfilter)
+	|| ydk::is_set(mpls_disposition_ipv4_access_list.yfilter)
+	|| ydk::is_set(mpls_disposition_ipv6_access_list.yfilter)
+	|| ydk::is_set(mpls_experimental_imposition.yfilter)
+	|| ydk::is_set(mpls_experimental_topmost.yfilter)
+	|| ydk::is_set(packet_length.yfilter)
+	|| ydk::is_set(precedence.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(qos_group.yfilter)
+	|| ydk::is_set(remote_id.yfilter)
+	|| ydk::is_set(remote_id_regex.yfilter)
+	|| ydk::is_set(service_name.yfilter)
+	|| ydk::is_set(service_name_regex.yfilter)
+	|| ydk::is_set(source_mac.yfilter)
+	|| ydk::is_set(source_port.yfilter)
+	|| ydk::is_set(tcp_flag.yfilter)
+	|| ydk::is_set(timer.yfilter)
+	|| ydk::is_set(timer_regex.yfilter)
+	|| ydk::is_set(traffic_class.yfilter)
+	|| ydk::is_set(user_name.yfilter)
+	|| ydk::is_set(user_name_regex.yfilter)
+	|| ydk::is_set(vlan.yfilter)
+	|| ydk::is_set(vpls_broadcast.yfilter)
+	|| ydk::is_set(vpls_control.yfilter)
+	|| ydk::is_set(vpls_known.yfilter)
+	|| ydk::is_set(vpls_multicast.yfilter)
+	|| ydk::is_set(vpls_unknown.yfilter)
 	|| (flow !=  nullptr && flow->has_operation());
 }
 
@@ -2885,21 +3422,21 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authen_status.is_set || is_set(authen_status.operation)) leaf_name_data.push_back(authen_status.get_name_leafdata());
-    if (dei.is_set || is_set(dei.operation)) leaf_name_data.push_back(dei.get_name_leafdata());
-    if (dei_inner.is_set || is_set(dei_inner.operation)) leaf_name_data.push_back(dei_inner.get_name_leafdata());
-    if (ethernet_services_acl.is_set || is_set(ethernet_services_acl.operation)) leaf_name_data.push_back(ethernet_services_acl.get_name_leafdata());
-    if (fr_de.is_set || is_set(fr_de.operation)) leaf_name_data.push_back(fr_de.get_name_leafdata());
-    if (ipv4_acl.is_set || is_set(ipv4_acl.operation)) leaf_name_data.push_back(ipv4_acl.get_name_leafdata());
-    if (ipv6_acl.is_set || is_set(ipv6_acl.operation)) leaf_name_data.push_back(ipv6_acl.get_name_leafdata());
-    if (mpls_disposition_ipv4_access_list.is_set || is_set(mpls_disposition_ipv4_access_list.operation)) leaf_name_data.push_back(mpls_disposition_ipv4_access_list.get_name_leafdata());
-    if (mpls_disposition_ipv6_access_list.is_set || is_set(mpls_disposition_ipv6_access_list.operation)) leaf_name_data.push_back(mpls_disposition_ipv6_access_list.get_name_leafdata());
-    if (tcp_flag.is_set || is_set(tcp_flag.operation)) leaf_name_data.push_back(tcp_flag.get_name_leafdata());
-    if (vpls_broadcast.is_set || is_set(vpls_broadcast.operation)) leaf_name_data.push_back(vpls_broadcast.get_name_leafdata());
-    if (vpls_control.is_set || is_set(vpls_control.operation)) leaf_name_data.push_back(vpls_control.get_name_leafdata());
-    if (vpls_known.is_set || is_set(vpls_known.operation)) leaf_name_data.push_back(vpls_known.get_name_leafdata());
-    if (vpls_multicast.is_set || is_set(vpls_multicast.operation)) leaf_name_data.push_back(vpls_multicast.get_name_leafdata());
-    if (vpls_unknown.is_set || is_set(vpls_unknown.operation)) leaf_name_data.push_back(vpls_unknown.get_name_leafdata());
+    if (authen_status.is_set || is_set(authen_status.yfilter)) leaf_name_data.push_back(authen_status.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (dei_inner.is_set || is_set(dei_inner.yfilter)) leaf_name_data.push_back(dei_inner.get_name_leafdata());
+    if (ethernet_services_acl.is_set || is_set(ethernet_services_acl.yfilter)) leaf_name_data.push_back(ethernet_services_acl.get_name_leafdata());
+    if (fr_de.is_set || is_set(fr_de.yfilter)) leaf_name_data.push_back(fr_de.get_name_leafdata());
+    if (ipv4_acl.is_set || is_set(ipv4_acl.yfilter)) leaf_name_data.push_back(ipv4_acl.get_name_leafdata());
+    if (ipv6_acl.is_set || is_set(ipv6_acl.yfilter)) leaf_name_data.push_back(ipv6_acl.get_name_leafdata());
+    if (mpls_disposition_ipv4_access_list.is_set || is_set(mpls_disposition_ipv4_access_list.yfilter)) leaf_name_data.push_back(mpls_disposition_ipv4_access_list.get_name_leafdata());
+    if (mpls_disposition_ipv6_access_list.is_set || is_set(mpls_disposition_ipv6_access_list.yfilter)) leaf_name_data.push_back(mpls_disposition_ipv6_access_list.get_name_leafdata());
+    if (tcp_flag.is_set || is_set(tcp_flag.yfilter)) leaf_name_data.push_back(tcp_flag.get_name_leafdata());
+    if (vpls_broadcast.is_set || is_set(vpls_broadcast.yfilter)) leaf_name_data.push_back(vpls_broadcast.get_name_leafdata());
+    if (vpls_control.is_set || is_set(vpls_control.yfilter)) leaf_name_data.push_back(vpls_control.get_name_leafdata());
+    if (vpls_known.is_set || is_set(vpls_known.yfilter)) leaf_name_data.push_back(vpls_known.get_name_leafdata());
+    if (vpls_multicast.is_set || is_set(vpls_multicast.yfilter)) leaf_name_data.push_back(vpls_multicast.get_name_leafdata());
+    if (vpls_unknown.is_set || is_set(vpls_unknown.yfilter)) leaf_name_data.push_back(vpls_unknown.get_name_leafdata());
 
     auto circuit_id_name_datas = circuit_id.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), circuit_id_name_datas.begin(), circuit_id_name_datas.end());
@@ -3144,11 +3681,13 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "authen-status")
     {
         authen_status = value;
+        authen_status.value_namespace = name_space;
+        authen_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "circuit-id")
     {
@@ -3165,10 +3704,14 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string &
     if(value_path == "dei")
     {
         dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei-inner")
     {
         dei_inner = value;
+        dei_inner.value_namespace = name_space;
+        dei_inner.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-mac")
     {
@@ -3197,6 +3740,8 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string &
     if(value_path == "ethernet-services-acl")
     {
         ethernet_services_acl = value;
+        ethernet_services_acl.value_namespace = name_space;
+        ethernet_services_acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ethertype")
     {
@@ -3209,6 +3754,8 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string &
     if(value_path == "fr-de")
     {
         fr_de = value;
+        fr_de.value_namespace = name_space;
+        fr_de.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fragment-type")
     {
@@ -3245,6 +3792,8 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string &
     if(value_path == "ipv4-acl")
     {
         ipv4_acl = value;
+        ipv4_acl.value_namespace = name_space;
+        ipv4_acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv4-dscp")
     {
@@ -3261,6 +3810,8 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string &
     if(value_path == "ipv6-acl")
     {
         ipv6_acl = value;
+        ipv6_acl.value_namespace = name_space;
+        ipv6_acl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-dscp")
     {
@@ -3277,10 +3828,14 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string &
     if(value_path == "mpls-disposition-ipv4-access-list")
     {
         mpls_disposition_ipv4_access_list = value;
+        mpls_disposition_ipv4_access_list.value_namespace = name_space;
+        mpls_disposition_ipv4_access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-disposition-ipv6-access-list")
     {
         mpls_disposition_ipv6_access_list = value;
+        mpls_disposition_ipv6_access_list.value_namespace = name_space;
+        mpls_disposition_ipv6_access_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-imposition")
     {
@@ -3333,6 +3888,8 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string &
     if(value_path == "tcp-flag")
     {
         tcp_flag = value;
+        tcp_flag.value_namespace = name_space;
+        tcp_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timer")
     {
@@ -3361,23 +3918,276 @@ void PolicyManager::ClassMaps::ClassMap::MatchNot::set_value(const std::string &
     if(value_path == "vpls-broadcast")
     {
         vpls_broadcast = value;
+        vpls_broadcast.value_namespace = name_space;
+        vpls_broadcast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-control")
     {
         vpls_control = value;
+        vpls_control.value_namespace = name_space;
+        vpls_control.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-known")
     {
         vpls_known = value;
+        vpls_known.value_namespace = name_space;
+        vpls_known.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-multicast")
     {
         vpls_multicast = value;
+        vpls_multicast.value_namespace = name_space;
+        vpls_multicast.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vpls-unknown")
     {
         vpls_unknown = value;
+        vpls_unknown.value_namespace = name_space;
+        vpls_unknown.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::MatchNot::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authen-status")
+    {
+        authen_status.yfilter = yfilter;
+    }
+    if(value_path == "circuit-id")
+    {
+        circuit_id.yfilter = yfilter;
+    }
+    if(value_path == "circuit-id-regex")
+    {
+        circuit_id_regex.yfilter = yfilter;
+    }
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "dei")
+    {
+        dei.yfilter = yfilter;
+    }
+    if(value_path == "dei-inner")
+    {
+        dei_inner.yfilter = yfilter;
+    }
+    if(value_path == "destination-mac")
+    {
+        destination_mac.yfilter = yfilter;
+    }
+    if(value_path == "destination-port")
+    {
+        destination_port.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-client-id")
+    {
+        dhcp_client_id.yfilter = yfilter;
+    }
+    if(value_path == "dhcp-client-id-regex")
+    {
+        dhcp_client_id_regex.yfilter = yfilter;
+    }
+    if(value_path == "discard-class")
+    {
+        discard_class.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "ethernet-services-acl")
+    {
+        ethernet_services_acl.yfilter = yfilter;
+    }
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "flow-tag")
+    {
+        flow_tag.yfilter = yfilter;
+    }
+    if(value_path == "fr-de")
+    {
+        fr_de.yfilter = yfilter;
+    }
+    if(value_path == "fragment-type")
+    {
+        fragment_type.yfilter = yfilter;
+    }
+    if(value_path == "frame-relay-dlci")
+    {
+        frame_relay_dlci.yfilter = yfilter;
+    }
+    if(value_path == "icmpv4-code")
+    {
+        icmpv4_code.yfilter = yfilter;
+    }
+    if(value_path == "icmpv4-type")
+    {
+        icmpv4_type.yfilter = yfilter;
+    }
+    if(value_path == "icmpv6-code")
+    {
+        icmpv6_code.yfilter = yfilter;
+    }
+    if(value_path == "icmpv6-type")
+    {
+        icmpv6_type.yfilter = yfilter;
+    }
+    if(value_path == "inner-cos")
+    {
+        inner_cos.yfilter = yfilter;
+    }
+    if(value_path == "inner-vlan")
+    {
+        inner_vlan.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-acl")
+    {
+        ipv4_acl.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-dscp")
+    {
+        ipv4_dscp.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-packet-length")
+    {
+        ipv4_packet_length.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-precedence")
+    {
+        ipv4_precedence.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-acl")
+    {
+        ipv6_acl.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-dscp")
+    {
+        ipv6_dscp.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-packet-length")
+    {
+        ipv6_packet_length.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-precedence")
+    {
+        ipv6_precedence.yfilter = yfilter;
+    }
+    if(value_path == "mpls-disposition-ipv4-access-list")
+    {
+        mpls_disposition_ipv4_access_list.yfilter = yfilter;
+    }
+    if(value_path == "mpls-disposition-ipv6-access-list")
+    {
+        mpls_disposition_ipv6_access_list.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-imposition")
+    {
+        mpls_experimental_imposition.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-topmost")
+    {
+        mpls_experimental_topmost.yfilter = yfilter;
+    }
+    if(value_path == "packet-length")
+    {
+        packet_length.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "qos-group")
+    {
+        qos_group.yfilter = yfilter;
+    }
+    if(value_path == "remote-id")
+    {
+        remote_id.yfilter = yfilter;
+    }
+    if(value_path == "remote-id-regex")
+    {
+        remote_id_regex.yfilter = yfilter;
+    }
+    if(value_path == "service-name")
+    {
+        service_name.yfilter = yfilter;
+    }
+    if(value_path == "service-name-regex")
+    {
+        service_name_regex.yfilter = yfilter;
+    }
+    if(value_path == "source-mac")
+    {
+        source_mac.yfilter = yfilter;
+    }
+    if(value_path == "source-port")
+    {
+        source_port.yfilter = yfilter;
+    }
+    if(value_path == "tcp-flag")
+    {
+        tcp_flag.yfilter = yfilter;
+    }
+    if(value_path == "timer")
+    {
+        timer.yfilter = yfilter;
+    }
+    if(value_path == "timer-regex")
+    {
+        timer_regex.yfilter = yfilter;
+    }
+    if(value_path == "traffic-class")
+    {
+        traffic_class.yfilter = yfilter;
+    }
+    if(value_path == "user-name")
+    {
+        user_name.yfilter = yfilter;
+    }
+    if(value_path == "user-name-regex")
+    {
+        user_name_regex.yfilter = yfilter;
+    }
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+    if(value_path == "vpls-broadcast")
+    {
+        vpls_broadcast.yfilter = yfilter;
+    }
+    if(value_path == "vpls-control")
+    {
+        vpls_control.yfilter = yfilter;
+    }
+    if(value_path == "vpls-known")
+    {
+        vpls_known.yfilter = yfilter;
+    }
+    if(value_path == "vpls-multicast")
+    {
+        vpls_multicast.yfilter = yfilter;
+    }
+    if(value_path == "vpls-unknown")
+    {
+        vpls_unknown.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::MatchNot::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address-ipv4" || name == "destination-address-ipv6" || name == "domain-name" || name == "domain-name-regex" || name == "flow" || name == "source-address-ipv4" || name == "source-address-ipv6" || name == "authen-status" || name == "circuit-id" || name == "circuit-id-regex" || name == "cos" || name == "dei" || name == "dei-inner" || name == "destination-mac" || name == "destination-port" || name == "dhcp-client-id" || name == "dhcp-client-id-regex" || name == "discard-class" || name == "dscp" || name == "ethernet-services-acl" || name == "ethertype" || name == "flow-tag" || name == "fr-de" || name == "fragment-type" || name == "frame-relay-dlci" || name == "icmpv4-code" || name == "icmpv4-type" || name == "icmpv6-code" || name == "icmpv6-type" || name == "inner-cos" || name == "inner-vlan" || name == "ipv4-acl" || name == "ipv4-dscp" || name == "ipv4-packet-length" || name == "ipv4-precedence" || name == "ipv6-acl" || name == "ipv6-dscp" || name == "ipv6-packet-length" || name == "ipv6-precedence" || name == "mpls-disposition-ipv4-access-list" || name == "mpls-disposition-ipv6-access-list" || name == "mpls-experimental-imposition" || name == "mpls-experimental-topmost" || name == "packet-length" || name == "precedence" || name == "protocol" || name == "qos-group" || name == "remote-id" || name == "remote-id-regex" || name == "service-name" || name == "service-name-regex" || name == "source-mac" || name == "source-port" || name == "tcp-flag" || name == "timer" || name == "timer-regex" || name == "traffic-class" || name == "user-name" || name == "user-name-regex" || name == "vlan" || name == "vpls-broadcast" || name == "vpls-control" || name == "vpls-known" || name == "vpls-multicast" || name == "vpls-unknown")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::DestinationAddressIpv4()
@@ -3400,9 +4210,9 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::has_d
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(netmask.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(netmask.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::get_segment_path() const
@@ -3428,8 +4238,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddres
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.operation)) leaf_name_data.push_back(netmask.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3448,16 +4258,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netmask")
     {
         netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "netmask")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::DestinationAddressIpv6()
@@ -3480,9 +4313,9 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::has_d
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::get_segment_path() const
@@ -3508,8 +4341,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddres
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3528,16 +4361,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::MatchNot::DestinationAddressIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::SourceAddressIpv4()
@@ -3560,9 +4416,9 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::has_data()
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(netmask.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(netmask.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::get_segment_path() const
@@ -3588,8 +4444,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (netmask.is_set || is_set(netmask.operation)) leaf_name_data.push_back(netmask.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3608,16 +4464,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "netmask")
     {
         netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "netmask")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::SourceAddressIpv6()
@@ -3640,9 +4519,9 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::has_data()
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::get_segment_path() const
@@ -3668,8 +4547,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3688,16 +4567,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::MatchNot::SourceAddressIpv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::DomainName()
@@ -3720,9 +4622,9 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::has_data() const
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(name.operation)
-	|| is_set(format.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(format.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_segment_path() const
@@ -3748,8 +4650,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3768,16 +4670,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "format")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::DomainNameRegex()
@@ -3800,9 +4725,9 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::has_data() c
 
 bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(regex.operation)
-	|| is_set(format.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(regex.yfilter)
+	|| ydk::is_set(format.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::get_segment_path() const
@@ -3828,8 +4753,8 @@ const EntityPath PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (regex.is_set || is_set(regex.operation)) leaf_name_data.push_back(regex.get_name_leafdata());
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (regex.is_set || is_set(regex.yfilter)) leaf_name_data.push_back(regex.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3848,16 +4773,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "regex")
     {
         regex = value;
+        regex.value_namespace = name_space;
+        regex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "regex")
+    {
+        regex.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::MatchNot::DomainNameRegex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "regex" || name == "format")
+        return true;
+    return false;
 }
 
 PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::Flow()
@@ -3885,11 +4833,11 @@ bool PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::has_operation() const
 {
     for (auto const & leaf : flow_tag.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(flow_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(flow_tag.yfilter);
 }
 
 std::string PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::get_segment_path() const
@@ -3935,12 +4883,27 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::ClassMaps::ClassMa
     return children;
 }
 
-void PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::set_value(const std::string & value_path, std::string value)
+void PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-tag")
     {
         flow_tag.append(value);
     }
+}
+
+void PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-tag")
+    {
+        flow_tag.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::ClassMaps::ClassMap::MatchNot::Flow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-tag")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMaps()
@@ -3969,7 +4932,7 @@ bool PolicyManager::PolicyMaps::has_operation() const
         if(policy_map[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::get_segment_path() const
@@ -4034,8 +4997,19 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::get_ch
     return children;
 }
 
-void PolicyManager::PolicyMaps::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PolicyManager::PolicyMaps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PolicyManager::PolicyMaps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-map")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMap()
@@ -4080,10 +5054,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::has_operation() const
         if(policy_map_rule[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(type.operation)
-	|| is_set(name.operation)
-	|| is_set(description.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(description.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::get_segment_path() const
@@ -4109,9 +5083,9 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4172,20 +5146,49 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event" || name == "policy-map-rule" || name == "type" || name == "name" || name == "description")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Event()
@@ -4220,10 +5223,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::has_operation() const
         if(class_[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(event_type.operation)
-	|| is_set(event_mode_match_all.operation)
-	|| is_set(event_mode_match_first.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(event_type.yfilter)
+	|| ydk::is_set(event_mode_match_all.yfilter)
+	|| ydk::is_set(event_mode_match_first.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::get_segment_path() const
@@ -4249,9 +5252,9 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (event_type.is_set || is_set(event_type.operation)) leaf_name_data.push_back(event_type.get_name_leafdata());
-    if (event_mode_match_all.is_set || is_set(event_mode_match_all.operation)) leaf_name_data.push_back(event_mode_match_all.get_name_leafdata());
-    if (event_mode_match_first.is_set || is_set(event_mode_match_first.operation)) leaf_name_data.push_back(event_mode_match_first.get_name_leafdata());
+    if (event_type.is_set || is_set(event_type.yfilter)) leaf_name_data.push_back(event_type.get_name_leafdata());
+    if (event_mode_match_all.is_set || is_set(event_mode_match_all.yfilter)) leaf_name_data.push_back(event_mode_match_all.get_name_leafdata());
+    if (event_mode_match_first.is_set || is_set(event_mode_match_first.yfilter)) leaf_name_data.push_back(event_mode_match_first.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4291,20 +5294,49 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "event-type")
     {
         event_type = value;
+        event_type.value_namespace = name_space;
+        event_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-mode-match-all")
     {
         event_mode_match_all = value;
+        event_mode_match_all.value_namespace = name_space;
+        event_mode_match_all.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "event-mode-match-first")
     {
         event_mode_match_first = value;
+        event_mode_match_first.value_namespace = name_space;
+        event_mode_match_first.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "event-type")
+    {
+        event_type.yfilter = yfilter;
+    }
+    if(value_path == "event-mode-match-all")
+    {
+        event_mode_match_all.yfilter = yfilter;
+    }
+    if(value_path == "event-mode-match-first")
+    {
+        event_mode_match_first.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "class" || name == "event-type" || name == "event-mode-match-all" || name == "event-mode-match-first")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Class_::Class_()
@@ -4339,10 +5371,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::has_operation() const
         if(action_rule[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(class_name.operation)
-	|| is_set(class_type.operation)
-	|| is_set(class_execution_strategy.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(class_type.yfilter)
+	|| ydk::is_set(class_execution_strategy.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_segment_path() const
@@ -4368,9 +5400,9 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (class_type.is_set || is_set(class_type.operation)) leaf_name_data.push_back(class_type.get_name_leafdata());
-    if (class_execution_strategy.is_set || is_set(class_execution_strategy.operation)) leaf_name_data.push_back(class_execution_strategy.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (class_type.is_set || is_set(class_type.yfilter)) leaf_name_data.push_back(class_type.get_name_leafdata());
+    if (class_execution_strategy.is_set || is_set(class_execution_strategy.yfilter)) leaf_name_data.push_back(class_execution_strategy.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4410,20 +5442,49 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-type")
     {
         class_type = value;
+        class_type.value_namespace = name_space;
+        class_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-execution-strategy")
     {
         class_execution_strategy = value;
+        class_execution_strategy.value_namespace = name_space;
+        class_execution_strategy.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "class-type")
+    {
+        class_type.yfilter = yfilter;
+    }
+    if(value_path == "class-execution-strategy")
+    {
+        class_execution_strategy.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action-rule" || name == "class-name" || name == "class-type" || name == "class-execution-strategy")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActionRule()
@@ -4465,10 +5526,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_data()
 
 bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(action_sequence_number.operation)
-	|| is_set(disconnect.operation)
-	|| is_set(monitor.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(action_sequence_number.yfilter)
+	|| ydk::is_set(disconnect.yfilter)
+	|| ydk::is_set(monitor.yfilter)
 	|| (activate_dynamic_template !=  nullptr && activate_dynamic_template->has_operation())
 	|| (authenticate !=  nullptr && authenticate->has_operation())
 	|| (authorize !=  nullptr && authorize->has_operation())
@@ -4500,9 +5561,9 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (action_sequence_number.is_set || is_set(action_sequence_number.operation)) leaf_name_data.push_back(action_sequence_number.get_name_leafdata());
-    if (disconnect.is_set || is_set(disconnect.operation)) leaf_name_data.push_back(disconnect.get_name_leafdata());
-    if (monitor.is_set || is_set(monitor.operation)) leaf_name_data.push_back(monitor.get_name_leafdata());
+    if (action_sequence_number.is_set || is_set(action_sequence_number.yfilter)) leaf_name_data.push_back(action_sequence_number.get_name_leafdata());
+    if (disconnect.is_set || is_set(disconnect.yfilter)) leaf_name_data.push_back(disconnect.get_name_leafdata());
+    if (monitor.is_set || is_set(monitor.yfilter)) leaf_name_data.push_back(monitor.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4605,20 +5666,49 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-sequence-number")
     {
         action_sequence_number = value;
+        action_sequence_number.value_namespace = name_space;
+        action_sequence_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "disconnect")
     {
         disconnect = value;
+        disconnect.value_namespace = name_space;
+        disconnect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "monitor")
     {
         monitor = value;
+        monitor.value_namespace = name_space;
+        monitor.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "action-sequence-number")
+    {
+        action_sequence_number.yfilter = yfilter;
+    }
+    if(value_path == "disconnect")
+    {
+        disconnect.yfilter = yfilter;
+    }
+    if(value_path == "monitor")
+    {
+        monitor.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "activate-dynamic-template" || name == "authenticate" || name == "authorize" || name == "deactivate-dynamic-template" || name == "set-timer" || name == "stop-timer" || name == "action-sequence-number" || name == "disconnect" || name == "monitor")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::ActivateDynamicTemplate()
@@ -4641,9 +5731,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDy
 
 bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aaa_list.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aaa_list.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::get_segment_path() const
@@ -4669,8 +5759,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aaa_list.is_set || is_set(aaa_list.operation)) leaf_name_data.push_back(aaa_list.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (aaa_list.is_set || is_set(aaa_list.yfilter)) leaf_name_data.push_back(aaa_list.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4689,16 +5779,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aaa-list")
     {
         aaa_list = value;
+        aaa_list.value_namespace = name_space;
+        aaa_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aaa-list")
+    {
+        aaa_list.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::ActivateDynamicTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa-list" || name == "name")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::Authenticate()
@@ -4719,8 +5832,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authentica
 
 bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aaa_list.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aaa_list.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::get_segment_path() const
@@ -4746,7 +5859,7 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aaa_list.is_set || is_set(aaa_list.operation)) leaf_name_data.push_back(aaa_list.get_name_leafdata());
+    if (aaa_list.is_set || is_set(aaa_list.yfilter)) leaf_name_data.push_back(aaa_list.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4765,12 +5878,29 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aaa-list")
     {
         aaa_list = value;
+        aaa_list.value_namespace = name_space;
+        aaa_list.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aaa-list")
+    {
+        aaa_list.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authenticate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa-list")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::Authorize()
@@ -4797,11 +5927,11 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize:
 
 bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aaa_list.operation)
-	|| is_set(format.operation)
-	|| is_set(identifier.operation)
-	|| is_set(password.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aaa_list.yfilter)
+	|| ydk::is_set(format.yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(password.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::get_segment_path() const
@@ -4827,10 +5957,10 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aaa_list.is_set || is_set(aaa_list.operation)) leaf_name_data.push_back(aaa_list.get_name_leafdata());
-    if (format.is_set || is_set(format.operation)) leaf_name_data.push_back(format.get_name_leafdata());
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (password.is_set || is_set(password.operation)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (aaa_list.is_set || is_set(aaa_list.yfilter)) leaf_name_data.push_back(aaa_list.get_name_leafdata());
+    if (format.is_set || is_set(format.yfilter)) leaf_name_data.push_back(format.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4849,24 +5979,59 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aaa-list")
     {
         aaa_list = value;
+        aaa_list.value_namespace = name_space;
+        aaa_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "format")
     {
         format = value;
+        format.value_namespace = name_space;
+        format.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "identifier")
     {
         identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "password")
     {
         password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aaa-list")
+    {
+        aaa_list.yfilter = yfilter;
+    }
+    if(value_path == "format")
+    {
+        format.yfilter = yfilter;
+    }
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Authorize::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa-list" || name == "format" || name == "identifier" || name == "password")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::DeactivateDynamicTemplate()
@@ -4889,9 +6054,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::Deactivate
 
 bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(aaa_list.operation)
-	|| is_set(name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(aaa_list.yfilter)
+	|| ydk::is_set(name.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::get_segment_path() const
@@ -4917,8 +6082,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (aaa_list.is_set || is_set(aaa_list.operation)) leaf_name_data.push_back(aaa_list.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (aaa_list.is_set || is_set(aaa_list.yfilter)) leaf_name_data.push_back(aaa_list.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4937,16 +6102,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "aaa-list")
     {
         aaa_list = value;
+        aaa_list.value_namespace = name_space;
+        aaa_list.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "aaa-list")
+    {
+        aaa_list.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::DeactivateDynamicTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "aaa-list" || name == "name")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::SetTimer()
@@ -4969,9 +6157,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::
 
 bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(timer_name.operation)
-	|| is_set(timer_value.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(timer_name.yfilter)
+	|| ydk::is_set(timer_value.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::get_segment_path() const
@@ -4997,8 +6185,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (timer_name.is_set || is_set(timer_name.operation)) leaf_name_data.push_back(timer_name.get_name_leafdata());
-    if (timer_value.is_set || is_set(timer_value.operation)) leaf_name_data.push_back(timer_value.get_name_leafdata());
+    if (timer_name.is_set || is_set(timer_name.yfilter)) leaf_name_data.push_back(timer_name.get_name_leafdata());
+    if (timer_value.is_set || is_set(timer_value.yfilter)) leaf_name_data.push_back(timer_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5017,16 +6205,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timer-name")
     {
         timer_name = value;
+        timer_name.value_namespace = name_space;
+        timer_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timer-value")
     {
         timer_value = value;
+        timer_value.value_namespace = name_space;
+        timer_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timer-name")
+    {
+        timer_name.yfilter = yfilter;
+    }
+    if(value_path == "timer-value")
+    {
+        timer_value.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::SetTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timer-name" || name == "timer-value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::StopTimer()
@@ -5047,8 +6258,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer:
 
 bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(timer_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(timer_name.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::get_segment_path() const
@@ -5074,7 +6285,7 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (timer_name.is_set || is_set(timer_name.operation)) leaf_name_data.push_back(timer_name.get_name_leafdata());
+    if (timer_name.is_set || is_set(timer_name.yfilter)) leaf_name_data.push_back(timer_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5093,12 +6304,29 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "timer-name")
     {
         timer_name = value;
+        timer_name.value_namespace = name_space;
+        timer_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timer-name")
+    {
+        timer_name.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::Event::Class_::ActionRule::StopTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timer-name")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PolicyMapRule()
@@ -5121,6 +6349,7 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PolicyMapRule()
 	,metrics_ipcbr(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr>())
 	,min_bandwidth(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth>())
 	,pbr_forward(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward>())
+	,pbr_redirect(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect>())
 	,pfc(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc>())
 	,police(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police>())
 	,queue_limit(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit>())
@@ -5141,6 +6370,8 @@ PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PolicyMapRule()
     min_bandwidth->parent = this;
 
     pbr_forward->parent = this;
+
+    pbr_redirect->parent = this;
 
     pfc->parent = this;
 
@@ -5189,6 +6420,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::has_data() const
 	|| (metrics_ipcbr !=  nullptr && metrics_ipcbr->has_data())
 	|| (min_bandwidth !=  nullptr && min_bandwidth->has_data())
 	|| (pbr_forward !=  nullptr && pbr_forward->has_data())
+	|| (pbr_redirect !=  nullptr && pbr_redirect->has_data())
 	|| (pfc !=  nullptr && pfc->has_data())
 	|| (police !=  nullptr && police->has_data())
 	|| (queue_limit !=  nullptr && queue_limit->has_data())
@@ -5206,24 +6438,25 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::has_operation() const
         if(random_detect[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(class_name.operation)
-	|| is_set(class_type.operation)
-	|| is_set(decap_gre.operation)
-	|| is_set(default_red.operation)
-	|| is_set(ecn_red.operation)
-	|| is_set(fragment.operation)
-	|| is_set(http_redirect.operation)
-	|| is_set(pbr_drop.operation)
-	|| is_set(pbr_transmit.operation)
-	|| is_set(priority_level.operation)
-	|| is_set(service_fragment.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(class_type.yfilter)
+	|| ydk::is_set(decap_gre.yfilter)
+	|| ydk::is_set(default_red.yfilter)
+	|| ydk::is_set(ecn_red.yfilter)
+	|| ydk::is_set(fragment.yfilter)
+	|| ydk::is_set(http_redirect.yfilter)
+	|| ydk::is_set(pbr_drop.yfilter)
+	|| ydk::is_set(pbr_transmit.yfilter)
+	|| ydk::is_set(priority_level.yfilter)
+	|| ydk::is_set(service_fragment.yfilter)
 	|| (bandwidth_remaining !=  nullptr && bandwidth_remaining->has_operation())
 	|| (cac_local !=  nullptr && cac_local->has_operation())
 	|| (flow_params !=  nullptr && flow_params->has_operation())
 	|| (metrics_ipcbr !=  nullptr && metrics_ipcbr->has_operation())
 	|| (min_bandwidth !=  nullptr && min_bandwidth->has_operation())
 	|| (pbr_forward !=  nullptr && pbr_forward->has_operation())
+	|| (pbr_redirect !=  nullptr && pbr_redirect->has_operation())
 	|| (pfc !=  nullptr && pfc->has_operation())
 	|| (police !=  nullptr && police->has_operation())
 	|| (queue_limit !=  nullptr && queue_limit->has_operation())
@@ -5257,17 +6490,17 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (class_type.is_set || is_set(class_type.operation)) leaf_name_data.push_back(class_type.get_name_leafdata());
-    if (decap_gre.is_set || is_set(decap_gre.operation)) leaf_name_data.push_back(decap_gre.get_name_leafdata());
-    if (default_red.is_set || is_set(default_red.operation)) leaf_name_data.push_back(default_red.get_name_leafdata());
-    if (ecn_red.is_set || is_set(ecn_red.operation)) leaf_name_data.push_back(ecn_red.get_name_leafdata());
-    if (fragment.is_set || is_set(fragment.operation)) leaf_name_data.push_back(fragment.get_name_leafdata());
-    if (http_redirect.is_set || is_set(http_redirect.operation)) leaf_name_data.push_back(http_redirect.get_name_leafdata());
-    if (pbr_drop.is_set || is_set(pbr_drop.operation)) leaf_name_data.push_back(pbr_drop.get_name_leafdata());
-    if (pbr_transmit.is_set || is_set(pbr_transmit.operation)) leaf_name_data.push_back(pbr_transmit.get_name_leafdata());
-    if (priority_level.is_set || is_set(priority_level.operation)) leaf_name_data.push_back(priority_level.get_name_leafdata());
-    if (service_fragment.is_set || is_set(service_fragment.operation)) leaf_name_data.push_back(service_fragment.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (class_type.is_set || is_set(class_type.yfilter)) leaf_name_data.push_back(class_type.get_name_leafdata());
+    if (decap_gre.is_set || is_set(decap_gre.yfilter)) leaf_name_data.push_back(decap_gre.get_name_leafdata());
+    if (default_red.is_set || is_set(default_red.yfilter)) leaf_name_data.push_back(default_red.get_name_leafdata());
+    if (ecn_red.is_set || is_set(ecn_red.yfilter)) leaf_name_data.push_back(ecn_red.get_name_leafdata());
+    if (fragment.is_set || is_set(fragment.yfilter)) leaf_name_data.push_back(fragment.get_name_leafdata());
+    if (http_redirect.is_set || is_set(http_redirect.yfilter)) leaf_name_data.push_back(http_redirect.get_name_leafdata());
+    if (pbr_drop.is_set || is_set(pbr_drop.yfilter)) leaf_name_data.push_back(pbr_drop.get_name_leafdata());
+    if (pbr_transmit.is_set || is_set(pbr_transmit.yfilter)) leaf_name_data.push_back(pbr_transmit.get_name_leafdata());
+    if (priority_level.is_set || is_set(priority_level.yfilter)) leaf_name_data.push_back(priority_level.get_name_leafdata());
+    if (service_fragment.is_set || is_set(service_fragment.yfilter)) leaf_name_data.push_back(service_fragment.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5329,6 +6562,15 @@ std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::get
             pbr_forward = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward>();
         }
         return pbr_forward;
+    }
+
+    if(child_yang_name == "pbr-redirect")
+    {
+        if(pbr_redirect == nullptr)
+        {
+            pbr_redirect = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect>();
+        }
+        return pbr_redirect;
     }
 
     if(child_yang_name == "pfc")
@@ -5455,6 +6697,11 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
         children["pbr-forward"] = pbr_forward;
     }
 
+    if(pbr_redirect != nullptr)
+    {
+        children["pbr-redirect"] = pbr_redirect;
+    }
+
     if(pfc != nullptr)
     {
         children["pfc"] = pfc;
@@ -5503,52 +6750,129 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-type")
     {
         class_type = value;
+        class_type.value_namespace = name_space;
+        class_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "decap-gre")
     {
         decap_gre = value;
+        decap_gre.value_namespace = name_space;
+        decap_gre.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "default-red")
     {
         default_red = value;
+        default_red.value_namespace = name_space;
+        default_red.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ecn-red")
     {
         ecn_red = value;
+        ecn_red.value_namespace = name_space;
+        ecn_red.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fragment")
     {
         fragment = value;
+        fragment.value_namespace = name_space;
+        fragment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "http-redirect")
     {
         http_redirect = value;
+        http_redirect.value_namespace = name_space;
+        http_redirect.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pbr-drop")
     {
         pbr_drop = value;
+        pbr_drop.value_namespace = name_space;
+        pbr_drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pbr-transmit")
     {
         pbr_transmit = value;
+        pbr_transmit.value_namespace = name_space;
+        pbr_transmit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority-level")
     {
         priority_level = value;
+        priority_level.value_namespace = name_space;
+        priority_level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service-fragment")
     {
         service_fragment = value;
+        service_fragment.value_namespace = name_space;
+        service_fragment.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "class-type")
+    {
+        class_type.yfilter = yfilter;
+    }
+    if(value_path == "decap-gre")
+    {
+        decap_gre.yfilter = yfilter;
+    }
+    if(value_path == "default-red")
+    {
+        default_red.yfilter = yfilter;
+    }
+    if(value_path == "ecn-red")
+    {
+        ecn_red.yfilter = yfilter;
+    }
+    if(value_path == "fragment")
+    {
+        fragment.yfilter = yfilter;
+    }
+    if(value_path == "http-redirect")
+    {
+        http_redirect.yfilter = yfilter;
+    }
+    if(value_path == "pbr-drop")
+    {
+        pbr_drop.yfilter = yfilter;
+    }
+    if(value_path == "pbr-transmit")
+    {
+        pbr_transmit.yfilter = yfilter;
+    }
+    if(value_path == "priority-level")
+    {
+        priority_level.yfilter = yfilter;
+    }
+    if(value_path == "service-fragment")
+    {
+        service_fragment.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth-remaining" || name == "cac-local" || name == "flow-params" || name == "metrics-ipcbr" || name == "min-bandwidth" || name == "pbr-forward" || name == "pbr-redirect" || name == "pfc" || name == "police" || name == "queue-limit" || name == "random-detect" || name == "react" || name == "service-function-path" || name == "service-policy" || name == "set" || name == "shape" || name == "class-name" || name == "class-type" || name == "decap-gre" || name == "default-red" || name == "ecn-red" || name == "fragment" || name == "http-redirect" || name == "pbr-drop" || name == "pbr-transmit" || name == "priority-level" || name == "service-fragment")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Shape()
@@ -5575,7 +6899,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::has_data() cons
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (burst !=  nullptr && burst->has_operation())
 	|| (rate !=  nullptr && rate->has_operation());
 }
@@ -5649,8 +6973,19 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "burst" || name == "rate")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::Rate()
@@ -5673,9 +7008,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::has_data(
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::get_segment_path() const
@@ -5701,8 +7036,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5721,16 +7056,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Rate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::Burst()
@@ -5753,9 +7111,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::has_data
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(units.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::get_segment_path() const
@@ -5781,8 +7139,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Bur
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5801,16 +7159,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Shape::Burst::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "units" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::MinBandwidth()
@@ -5833,9 +7214,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::has_data
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::get_segment_path() const
@@ -5861,8 +7242,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwid
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5881,16 +7262,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MinBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::BandwidthRemaining()
@@ -5913,9 +7317,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::ha
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::get_segment_path() const
@@ -5941,8 +7345,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthR
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5961,16 +7365,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::BandwidthRemaining::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::QueueLimit()
@@ -5993,9 +7420,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::has_data()
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::get_segment_path() const
@@ -6021,8 +7448,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6041,16 +7468,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::QueueLimit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::Pfc()
@@ -6084,8 +7534,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::has_data() const
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(pfc_pause_set.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(pfc_pause_set.yfilter)
 	|| (pfc_buffer_size !=  nullptr && pfc_buffer_size->has_operation())
 	|| (pfc_pause_threshold !=  nullptr && pfc_pause_threshold->has_operation())
 	|| (pfc_resume_threshold !=  nullptr && pfc_resume_threshold->has_operation());
@@ -6114,7 +7564,7 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (pfc_pause_set.is_set || is_set(pfc_pause_set.operation)) leaf_name_data.push_back(pfc_pause_set.get_name_leafdata());
+    if (pfc_pause_set.is_set || is_set(pfc_pause_set.yfilter)) leaf_name_data.push_back(pfc_pause_set.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6175,12 +7625,29 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pfc-pause-set")
     {
         pfc_pause_set = value;
+        pfc_pause_set.value_namespace = name_space;
+        pfc_pause_set.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pfc-pause-set")
+    {
+        pfc_pause_set.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pfc-buffer-size" || name == "pfc-pause-threshold" || name == "pfc-resume-threshold" || name == "pfc-pause-set")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::PfcBufferSize()
@@ -6203,9 +7670,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::ha
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::get_segment_path() const
@@ -6231,8 +7698,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6251,16 +7718,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcBufferSize::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::PfcPauseThreshold()
@@ -6283,9 +7773,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::get_segment_path() const
@@ -6311,8 +7801,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6331,16 +7821,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcPauseThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::PfcResumeThreshold()
@@ -6363,9 +7876,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshol
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::get_segment_path() const
@@ -6391,8 +7904,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcRe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6411,16 +7924,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Pfc::PfcResumeThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::RandomDetect()
@@ -6483,41 +8019,41 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_oper
 {
     for (auto const & leaf : cos.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : discard_class.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : dscp.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : mpls_exp.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : precedence.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(threshold_min_value.operation)
-	|| is_set(threshold_min_units.operation)
-	|| is_set(threshold_max_value.operation)
-	|| is_set(threshold_max_units.operation)
-	|| is_set(cos.operation)
-	|| is_set(dei.operation)
-	|| is_set(discard_class.operation)
-	|| is_set(dscp.operation)
-	|| is_set(ecn.operation)
-	|| is_set(mpls_exp.operation)
-	|| is_set(precedence.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(threshold_min_value.yfilter)
+	|| ydk::is_set(threshold_min_units.yfilter)
+	|| ydk::is_set(threshold_max_value.yfilter)
+	|| ydk::is_set(threshold_max_units.yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(discard_class.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(ecn.yfilter)
+	|| ydk::is_set(mpls_exp.yfilter)
+	|| ydk::is_set(precedence.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::get_segment_path() const
@@ -6543,12 +8079,12 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDete
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (threshold_min_value.is_set || is_set(threshold_min_value.operation)) leaf_name_data.push_back(threshold_min_value.get_name_leafdata());
-    if (threshold_min_units.is_set || is_set(threshold_min_units.operation)) leaf_name_data.push_back(threshold_min_units.get_name_leafdata());
-    if (threshold_max_value.is_set || is_set(threshold_max_value.operation)) leaf_name_data.push_back(threshold_max_value.get_name_leafdata());
-    if (threshold_max_units.is_set || is_set(threshold_max_units.operation)) leaf_name_data.push_back(threshold_max_units.get_name_leafdata());
-    if (dei.is_set || is_set(dei.operation)) leaf_name_data.push_back(dei.get_name_leafdata());
-    if (ecn.is_set || is_set(ecn.operation)) leaf_name_data.push_back(ecn.get_name_leafdata());
+    if (threshold_min_value.is_set || is_set(threshold_min_value.yfilter)) leaf_name_data.push_back(threshold_min_value.get_name_leafdata());
+    if (threshold_min_units.is_set || is_set(threshold_min_units.yfilter)) leaf_name_data.push_back(threshold_min_units.get_name_leafdata());
+    if (threshold_max_value.is_set || is_set(threshold_max_value.yfilter)) leaf_name_data.push_back(threshold_max_value.get_name_leafdata());
+    if (threshold_max_units.is_set || is_set(threshold_max_units.yfilter)) leaf_name_data.push_back(threshold_max_units.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (ecn.is_set || is_set(ecn.yfilter)) leaf_name_data.push_back(ecn.get_name_leafdata());
 
     auto cos_name_datas = cos.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), cos_name_datas.begin(), cos_name_datas.end());
@@ -6577,23 +8113,31 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "threshold-min-value")
     {
         threshold_min_value = value;
+        threshold_min_value.value_namespace = name_space;
+        threshold_min_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-min-units")
     {
         threshold_min_units = value;
+        threshold_min_units.value_namespace = name_space;
+        threshold_min_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-max-value")
     {
         threshold_max_value = value;
+        threshold_max_value.value_namespace = name_space;
+        threshold_max_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "threshold-max-units")
     {
         threshold_max_units = value;
+        threshold_max_units.value_namespace = name_space;
+        threshold_max_units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cos")
     {
@@ -6602,6 +8146,8 @@ void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::set_valu
     if(value_path == "dei")
     {
         dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discard-class")
     {
@@ -6614,6 +8160,8 @@ void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::set_valu
     if(value_path == "ecn")
     {
         ecn = value;
+        ecn.value_namespace = name_space;
+        ecn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-exp")
     {
@@ -6623,6 +8171,61 @@ void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::set_valu
     {
         precedence.append(value);
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold-min-value")
+    {
+        threshold_min_value.yfilter = yfilter;
+    }
+    if(value_path == "threshold-min-units")
+    {
+        threshold_min_units.yfilter = yfilter;
+    }
+    if(value_path == "threshold-max-value")
+    {
+        threshold_max_value.yfilter = yfilter;
+    }
+    if(value_path == "threshold-max-units")
+    {
+        threshold_max_units.yfilter = yfilter;
+    }
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "dei")
+    {
+        dei.yfilter = yfilter;
+    }
+    if(value_path == "discard-class")
+    {
+        discard_class.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "ecn")
+    {
+        ecn.yfilter = yfilter;
+    }
+    if(value_path == "mpls-exp")
+    {
+        mpls_exp.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-min-value" || name == "threshold-min-units" || name == "threshold-max-value" || name == "threshold-max-units" || name == "cos" || name == "dei" || name == "discard-class" || name == "dscp" || name == "ecn" || name == "mpls-exp" || name == "precedence")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::Set()
@@ -6677,25 +8280,25 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::has_data() const
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cos.operation)
-	|| is_set(dei.operation)
-	|| is_set(dei_imposition.operation)
-	|| is_set(destination_address.operation)
-	|| is_set(df.operation)
-	|| is_set(discard_class.operation)
-	|| is_set(dscp.operation)
-	|| is_set(forward_class.operation)
-	|| is_set(fr_de.operation)
-	|| is_set(inner_cos.operation)
-	|| is_set(mpls_experimental_imposition.operation)
-	|| is_set(mpls_experimental_top_most.operation)
-	|| is_set(precedence.operation)
-	|| is_set(precedence_tunnel.operation)
-	|| is_set(qos_group.operation)
-	|| is_set(source_address.operation)
-	|| is_set(srp_priority.operation)
-	|| is_set(traffic_class.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(dei_imposition.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(df.yfilter)
+	|| ydk::is_set(discard_class.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(forward_class.yfilter)
+	|| ydk::is_set(fr_de.yfilter)
+	|| ydk::is_set(inner_cos.yfilter)
+	|| ydk::is_set(mpls_experimental_imposition.yfilter)
+	|| ydk::is_set(mpls_experimental_top_most.yfilter)
+	|| ydk::is_set(precedence.yfilter)
+	|| ydk::is_set(precedence_tunnel.yfilter)
+	|| ydk::is_set(qos_group.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(srp_priority.yfilter)
+	|| ydk::is_set(traffic_class.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_segment_path() const
@@ -6721,24 +8324,24 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dei.is_set || is_set(dei.operation)) leaf_name_data.push_back(dei.get_name_leafdata());
-    if (dei_imposition.is_set || is_set(dei_imposition.operation)) leaf_name_data.push_back(dei_imposition.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (df.is_set || is_set(df.operation)) leaf_name_data.push_back(df.get_name_leafdata());
-    if (discard_class.is_set || is_set(discard_class.operation)) leaf_name_data.push_back(discard_class.get_name_leafdata());
-    if (dscp.is_set || is_set(dscp.operation)) leaf_name_data.push_back(dscp.get_name_leafdata());
-    if (forward_class.is_set || is_set(forward_class.operation)) leaf_name_data.push_back(forward_class.get_name_leafdata());
-    if (fr_de.is_set || is_set(fr_de.operation)) leaf_name_data.push_back(fr_de.get_name_leafdata());
-    if (inner_cos.is_set || is_set(inner_cos.operation)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
-    if (mpls_experimental_imposition.is_set || is_set(mpls_experimental_imposition.operation)) leaf_name_data.push_back(mpls_experimental_imposition.get_name_leafdata());
-    if (mpls_experimental_top_most.is_set || is_set(mpls_experimental_top_most.operation)) leaf_name_data.push_back(mpls_experimental_top_most.get_name_leafdata());
-    if (precedence.is_set || is_set(precedence.operation)) leaf_name_data.push_back(precedence.get_name_leafdata());
-    if (precedence_tunnel.is_set || is_set(precedence_tunnel.operation)) leaf_name_data.push_back(precedence_tunnel.get_name_leafdata());
-    if (qos_group.is_set || is_set(qos_group.operation)) leaf_name_data.push_back(qos_group.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (srp_priority.is_set || is_set(srp_priority.operation)) leaf_name_data.push_back(srp_priority.get_name_leafdata());
-    if (traffic_class.is_set || is_set(traffic_class.operation)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (dei_imposition.is_set || is_set(dei_imposition.yfilter)) leaf_name_data.push_back(dei_imposition.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (df.is_set || is_set(df.yfilter)) leaf_name_data.push_back(df.get_name_leafdata());
+    if (discard_class.is_set || is_set(discard_class.yfilter)) leaf_name_data.push_back(discard_class.get_name_leafdata());
+    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
+    if (fr_de.is_set || is_set(fr_de.yfilter)) leaf_name_data.push_back(fr_de.get_name_leafdata());
+    if (inner_cos.is_set || is_set(inner_cos.yfilter)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
+    if (mpls_experimental_imposition.is_set || is_set(mpls_experimental_imposition.yfilter)) leaf_name_data.push_back(mpls_experimental_imposition.get_name_leafdata());
+    if (mpls_experimental_top_most.is_set || is_set(mpls_experimental_top_most.yfilter)) leaf_name_data.push_back(mpls_experimental_top_most.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
+    if (precedence_tunnel.is_set || is_set(precedence_tunnel.yfilter)) leaf_name_data.push_back(precedence_tunnel.get_name_leafdata());
+    if (qos_group.is_set || is_set(qos_group.yfilter)) leaf_name_data.push_back(qos_group.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (srp_priority.is_set || is_set(srp_priority.yfilter)) leaf_name_data.push_back(srp_priority.get_name_leafdata());
+    if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6757,80 +8360,199 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei")
     {
         dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei-imposition")
     {
         dei_imposition = value;
+        dei_imposition.value_namespace = name_space;
+        dei_imposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "df")
     {
         df = value;
+        df.value_namespace = name_space;
+        df.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discard-class")
     {
         discard_class = value;
+        discard_class.value_namespace = name_space;
+        discard_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dscp")
     {
         dscp = value;
+        dscp.value_namespace = name_space;
+        dscp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-class")
     {
         forward_class = value;
+        forward_class.value_namespace = name_space;
+        forward_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fr-de")
     {
         fr_de = value;
+        fr_de.value_namespace = name_space;
+        fr_de.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inner-cos")
     {
         inner_cos = value;
+        inner_cos.value_namespace = name_space;
+        inner_cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-imposition")
     {
         mpls_experimental_imposition = value;
+        mpls_experimental_imposition.value_namespace = name_space;
+        mpls_experimental_imposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-top-most")
     {
         mpls_experimental_top_most = value;
+        mpls_experimental_top_most.value_namespace = name_space;
+        mpls_experimental_top_most.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence")
     {
         precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence-tunnel")
     {
         precedence_tunnel = value;
+        precedence_tunnel.value_namespace = name_space;
+        precedence_tunnel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qos-group")
     {
         qos_group = value;
+        qos_group.value_namespace = name_space;
+        qos_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srp-priority")
     {
         srp_priority = value;
+        srp_priority.value_namespace = name_space;
+        srp_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-class")
     {
         traffic_class = value;
+        traffic_class.value_namespace = name_space;
+        traffic_class.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "dei")
+    {
+        dei.yfilter = yfilter;
+    }
+    if(value_path == "dei-imposition")
+    {
+        dei_imposition.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "df")
+    {
+        df.yfilter = yfilter;
+    }
+    if(value_path == "discard-class")
+    {
+        discard_class.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "forward-class")
+    {
+        forward_class.yfilter = yfilter;
+    }
+    if(value_path == "fr-de")
+    {
+        fr_de.yfilter = yfilter;
+    }
+    if(value_path == "inner-cos")
+    {
+        inner_cos.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-imposition")
+    {
+        mpls_experimental_imposition.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-top-most")
+    {
+        mpls_experimental_top_most.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+    if(value_path == "precedence-tunnel")
+    {
+        precedence_tunnel.yfilter = yfilter;
+    }
+    if(value_path == "qos-group")
+    {
+        qos_group.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "srp-priority")
+    {
+        srp_priority.yfilter = yfilter;
+    }
+    if(value_path == "traffic-class")
+    {
+        traffic_class.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cos" || name == "dei" || name == "dei-imposition" || name == "destination-address" || name == "df" || name == "discard-class" || name == "dscp" || name == "forward-class" || name == "fr-de" || name == "inner-cos" || name == "mpls-experimental-imposition" || name == "mpls-experimental-top-most" || name == "precedence" || name == "precedence-tunnel" || name == "qos-group" || name == "source-address" || name == "srp-priority" || name == "traffic-class")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Police()
@@ -6877,7 +8599,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::has_data() con
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (burst !=  nullptr && burst->has_operation())
 	|| (conform_action !=  nullptr && conform_action->has_operation())
 	|| (exceed_action !=  nullptr && exceed_action->has_operation())
@@ -7026,8 +8748,19 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "burst" || name == "conform-action" || name == "exceed-action" || name == "peak-burst" || name == "peak-rate" || name == "rate" || name == "violate-action")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::Rate()
@@ -7050,9 +8783,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::has_data
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(units.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::get_segment_path() const
@@ -7078,8 +8811,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Ra
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7098,16 +8831,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Rate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "units" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::PeakRate()
@@ -7130,9 +8886,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::has_
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(units.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::get_segment_path() const
@@ -7158,8 +8914,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Pe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7178,16 +8934,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "units" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::Burst()
@@ -7210,9 +8989,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::has_dat
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(units.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::get_segment_path() const
@@ -7238,8 +9017,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Bu
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7258,16 +9037,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Burst::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "units" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::PeakBurst()
@@ -7290,9 +9092,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::has
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(units.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::get_segment_path() const
@@ -7318,8 +9120,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Pe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7338,16 +9140,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::PeakBurst::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "units" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::ConformAction()
@@ -7375,9 +9200,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction:
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(drop.operation)
-	|| is_set(transmit.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(drop.yfilter)
+	|| ydk::is_set(transmit.yfilter)
 	|| (set !=  nullptr && set->has_operation());
 }
 
@@ -7404,8 +9229,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (drop.is_set || is_set(drop.operation)) leaf_name_data.push_back(drop.get_name_leafdata());
-    if (transmit.is_set || is_set(transmit.operation)) leaf_name_data.push_back(transmit.get_name_leafdata());
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+    if (transmit.is_set || is_set(transmit.yfilter)) leaf_name_data.push_back(transmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7438,16 +9263,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "drop")
     {
         drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "Transmit")
     {
         transmit = value;
+        transmit.value_namespace = name_space;
+        transmit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+    if(value_path == "Transmit")
+    {
+        transmit.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set" || name == "drop" || name == "Transmit")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::Set()
@@ -7502,25 +9350,25 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction:
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cos.operation)
-	|| is_set(dei.operation)
-	|| is_set(dei_imposition.operation)
-	|| is_set(destination_address.operation)
-	|| is_set(df.operation)
-	|| is_set(discard_class.operation)
-	|| is_set(dscp.operation)
-	|| is_set(forward_class.operation)
-	|| is_set(fr_de.operation)
-	|| is_set(inner_cos.operation)
-	|| is_set(mpls_experimental_imposition.operation)
-	|| is_set(mpls_experimental_top_most.operation)
-	|| is_set(precedence.operation)
-	|| is_set(precedence_tunnel.operation)
-	|| is_set(qos_group.operation)
-	|| is_set(source_address.operation)
-	|| is_set(srp_priority.operation)
-	|| is_set(traffic_class.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(dei_imposition.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(df.yfilter)
+	|| ydk::is_set(discard_class.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(forward_class.yfilter)
+	|| ydk::is_set(fr_de.yfilter)
+	|| ydk::is_set(inner_cos.yfilter)
+	|| ydk::is_set(mpls_experimental_imposition.yfilter)
+	|| ydk::is_set(mpls_experimental_top_most.yfilter)
+	|| ydk::is_set(precedence.yfilter)
+	|| ydk::is_set(precedence_tunnel.yfilter)
+	|| ydk::is_set(qos_group.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(srp_priority.yfilter)
+	|| ydk::is_set(traffic_class.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::get_segment_path() const
@@ -7546,24 +9394,24 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dei.is_set || is_set(dei.operation)) leaf_name_data.push_back(dei.get_name_leafdata());
-    if (dei_imposition.is_set || is_set(dei_imposition.operation)) leaf_name_data.push_back(dei_imposition.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (df.is_set || is_set(df.operation)) leaf_name_data.push_back(df.get_name_leafdata());
-    if (discard_class.is_set || is_set(discard_class.operation)) leaf_name_data.push_back(discard_class.get_name_leafdata());
-    if (dscp.is_set || is_set(dscp.operation)) leaf_name_data.push_back(dscp.get_name_leafdata());
-    if (forward_class.is_set || is_set(forward_class.operation)) leaf_name_data.push_back(forward_class.get_name_leafdata());
-    if (fr_de.is_set || is_set(fr_de.operation)) leaf_name_data.push_back(fr_de.get_name_leafdata());
-    if (inner_cos.is_set || is_set(inner_cos.operation)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
-    if (mpls_experimental_imposition.is_set || is_set(mpls_experimental_imposition.operation)) leaf_name_data.push_back(mpls_experimental_imposition.get_name_leafdata());
-    if (mpls_experimental_top_most.is_set || is_set(mpls_experimental_top_most.operation)) leaf_name_data.push_back(mpls_experimental_top_most.get_name_leafdata());
-    if (precedence.is_set || is_set(precedence.operation)) leaf_name_data.push_back(precedence.get_name_leafdata());
-    if (precedence_tunnel.is_set || is_set(precedence_tunnel.operation)) leaf_name_data.push_back(precedence_tunnel.get_name_leafdata());
-    if (qos_group.is_set || is_set(qos_group.operation)) leaf_name_data.push_back(qos_group.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (srp_priority.is_set || is_set(srp_priority.operation)) leaf_name_data.push_back(srp_priority.get_name_leafdata());
-    if (traffic_class.is_set || is_set(traffic_class.operation)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (dei_imposition.is_set || is_set(dei_imposition.yfilter)) leaf_name_data.push_back(dei_imposition.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (df.is_set || is_set(df.yfilter)) leaf_name_data.push_back(df.get_name_leafdata());
+    if (discard_class.is_set || is_set(discard_class.yfilter)) leaf_name_data.push_back(discard_class.get_name_leafdata());
+    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
+    if (fr_de.is_set || is_set(fr_de.yfilter)) leaf_name_data.push_back(fr_de.get_name_leafdata());
+    if (inner_cos.is_set || is_set(inner_cos.yfilter)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
+    if (mpls_experimental_imposition.is_set || is_set(mpls_experimental_imposition.yfilter)) leaf_name_data.push_back(mpls_experimental_imposition.get_name_leafdata());
+    if (mpls_experimental_top_most.is_set || is_set(mpls_experimental_top_most.yfilter)) leaf_name_data.push_back(mpls_experimental_top_most.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
+    if (precedence_tunnel.is_set || is_set(precedence_tunnel.yfilter)) leaf_name_data.push_back(precedence_tunnel.get_name_leafdata());
+    if (qos_group.is_set || is_set(qos_group.yfilter)) leaf_name_data.push_back(qos_group.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (srp_priority.is_set || is_set(srp_priority.yfilter)) leaf_name_data.push_back(srp_priority.get_name_leafdata());
+    if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7582,80 +9430,199 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei")
     {
         dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei-imposition")
     {
         dei_imposition = value;
+        dei_imposition.value_namespace = name_space;
+        dei_imposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "df")
     {
         df = value;
+        df.value_namespace = name_space;
+        df.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discard-class")
     {
         discard_class = value;
+        discard_class.value_namespace = name_space;
+        discard_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dscp")
     {
         dscp = value;
+        dscp.value_namespace = name_space;
+        dscp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-class")
     {
         forward_class = value;
+        forward_class.value_namespace = name_space;
+        forward_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fr-de")
     {
         fr_de = value;
+        fr_de.value_namespace = name_space;
+        fr_de.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inner-cos")
     {
         inner_cos = value;
+        inner_cos.value_namespace = name_space;
+        inner_cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-imposition")
     {
         mpls_experimental_imposition = value;
+        mpls_experimental_imposition.value_namespace = name_space;
+        mpls_experimental_imposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-top-most")
     {
         mpls_experimental_top_most = value;
+        mpls_experimental_top_most.value_namespace = name_space;
+        mpls_experimental_top_most.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence")
     {
         precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence-tunnel")
     {
         precedence_tunnel = value;
+        precedence_tunnel.value_namespace = name_space;
+        precedence_tunnel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qos-group")
     {
         qos_group = value;
+        qos_group.value_namespace = name_space;
+        qos_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srp-priority")
     {
         srp_priority = value;
+        srp_priority.value_namespace = name_space;
+        srp_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-class")
     {
         traffic_class = value;
+        traffic_class.value_namespace = name_space;
+        traffic_class.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "dei")
+    {
+        dei.yfilter = yfilter;
+    }
+    if(value_path == "dei-imposition")
+    {
+        dei_imposition.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "df")
+    {
+        df.yfilter = yfilter;
+    }
+    if(value_path == "discard-class")
+    {
+        discard_class.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "forward-class")
+    {
+        forward_class.yfilter = yfilter;
+    }
+    if(value_path == "fr-de")
+    {
+        fr_de.yfilter = yfilter;
+    }
+    if(value_path == "inner-cos")
+    {
+        inner_cos.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-imposition")
+    {
+        mpls_experimental_imposition.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-top-most")
+    {
+        mpls_experimental_top_most.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+    if(value_path == "precedence-tunnel")
+    {
+        precedence_tunnel.yfilter = yfilter;
+    }
+    if(value_path == "qos-group")
+    {
+        qos_group.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "srp-priority")
+    {
+        srp_priority.yfilter = yfilter;
+    }
+    if(value_path == "traffic-class")
+    {
+        traffic_class.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cos" || name == "dei" || name == "dei-imposition" || name == "destination-address" || name == "df" || name == "discard-class" || name == "dscp" || name == "forward-class" || name == "fr-de" || name == "inner-cos" || name == "mpls-experimental-imposition" || name == "mpls-experimental-top-most" || name == "precedence" || name == "precedence-tunnel" || name == "qos-group" || name == "source-address" || name == "srp-priority" || name == "traffic-class")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::ExceedAction()
@@ -7683,9 +9650,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(drop.operation)
-	|| is_set(transmit.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(drop.yfilter)
+	|| ydk::is_set(transmit.yfilter)
 	|| (set !=  nullptr && set->has_operation());
 }
 
@@ -7712,8 +9679,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Ex
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (drop.is_set || is_set(drop.operation)) leaf_name_data.push_back(drop.get_name_leafdata());
-    if (transmit.is_set || is_set(transmit.operation)) leaf_name_data.push_back(transmit.get_name_leafdata());
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+    if (transmit.is_set || is_set(transmit.yfilter)) leaf_name_data.push_back(transmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7746,16 +9713,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "drop")
     {
         drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "Transmit")
     {
         transmit = value;
+        transmit.value_namespace = name_space;
+        transmit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+    if(value_path == "Transmit")
+    {
+        transmit.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set" || name == "drop" || name == "Transmit")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::Set()
@@ -7810,25 +9800,25 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cos.operation)
-	|| is_set(dei.operation)
-	|| is_set(dei_imposition.operation)
-	|| is_set(destination_address.operation)
-	|| is_set(df.operation)
-	|| is_set(discard_class.operation)
-	|| is_set(dscp.operation)
-	|| is_set(forward_class.operation)
-	|| is_set(fr_de.operation)
-	|| is_set(inner_cos.operation)
-	|| is_set(mpls_experimental_imposition.operation)
-	|| is_set(mpls_experimental_top_most.operation)
-	|| is_set(precedence.operation)
-	|| is_set(precedence_tunnel.operation)
-	|| is_set(qos_group.operation)
-	|| is_set(source_address.operation)
-	|| is_set(srp_priority.operation)
-	|| is_set(traffic_class.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(dei_imposition.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(df.yfilter)
+	|| ydk::is_set(discard_class.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(forward_class.yfilter)
+	|| ydk::is_set(fr_de.yfilter)
+	|| ydk::is_set(inner_cos.yfilter)
+	|| ydk::is_set(mpls_experimental_imposition.yfilter)
+	|| ydk::is_set(mpls_experimental_top_most.yfilter)
+	|| ydk::is_set(precedence.yfilter)
+	|| ydk::is_set(precedence_tunnel.yfilter)
+	|| ydk::is_set(qos_group.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(srp_priority.yfilter)
+	|| ydk::is_set(traffic_class.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::get_segment_path() const
@@ -7854,24 +9844,24 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Ex
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dei.is_set || is_set(dei.operation)) leaf_name_data.push_back(dei.get_name_leafdata());
-    if (dei_imposition.is_set || is_set(dei_imposition.operation)) leaf_name_data.push_back(dei_imposition.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (df.is_set || is_set(df.operation)) leaf_name_data.push_back(df.get_name_leafdata());
-    if (discard_class.is_set || is_set(discard_class.operation)) leaf_name_data.push_back(discard_class.get_name_leafdata());
-    if (dscp.is_set || is_set(dscp.operation)) leaf_name_data.push_back(dscp.get_name_leafdata());
-    if (forward_class.is_set || is_set(forward_class.operation)) leaf_name_data.push_back(forward_class.get_name_leafdata());
-    if (fr_de.is_set || is_set(fr_de.operation)) leaf_name_data.push_back(fr_de.get_name_leafdata());
-    if (inner_cos.is_set || is_set(inner_cos.operation)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
-    if (mpls_experimental_imposition.is_set || is_set(mpls_experimental_imposition.operation)) leaf_name_data.push_back(mpls_experimental_imposition.get_name_leafdata());
-    if (mpls_experimental_top_most.is_set || is_set(mpls_experimental_top_most.operation)) leaf_name_data.push_back(mpls_experimental_top_most.get_name_leafdata());
-    if (precedence.is_set || is_set(precedence.operation)) leaf_name_data.push_back(precedence.get_name_leafdata());
-    if (precedence_tunnel.is_set || is_set(precedence_tunnel.operation)) leaf_name_data.push_back(precedence_tunnel.get_name_leafdata());
-    if (qos_group.is_set || is_set(qos_group.operation)) leaf_name_data.push_back(qos_group.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (srp_priority.is_set || is_set(srp_priority.operation)) leaf_name_data.push_back(srp_priority.get_name_leafdata());
-    if (traffic_class.is_set || is_set(traffic_class.operation)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (dei_imposition.is_set || is_set(dei_imposition.yfilter)) leaf_name_data.push_back(dei_imposition.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (df.is_set || is_set(df.yfilter)) leaf_name_data.push_back(df.get_name_leafdata());
+    if (discard_class.is_set || is_set(discard_class.yfilter)) leaf_name_data.push_back(discard_class.get_name_leafdata());
+    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
+    if (fr_de.is_set || is_set(fr_de.yfilter)) leaf_name_data.push_back(fr_de.get_name_leafdata());
+    if (inner_cos.is_set || is_set(inner_cos.yfilter)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
+    if (mpls_experimental_imposition.is_set || is_set(mpls_experimental_imposition.yfilter)) leaf_name_data.push_back(mpls_experimental_imposition.get_name_leafdata());
+    if (mpls_experimental_top_most.is_set || is_set(mpls_experimental_top_most.yfilter)) leaf_name_data.push_back(mpls_experimental_top_most.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
+    if (precedence_tunnel.is_set || is_set(precedence_tunnel.yfilter)) leaf_name_data.push_back(precedence_tunnel.get_name_leafdata());
+    if (qos_group.is_set || is_set(qos_group.yfilter)) leaf_name_data.push_back(qos_group.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (srp_priority.is_set || is_set(srp_priority.yfilter)) leaf_name_data.push_back(srp_priority.get_name_leafdata());
+    if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7890,80 +9880,199 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei")
     {
         dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei-imposition")
     {
         dei_imposition = value;
+        dei_imposition.value_namespace = name_space;
+        dei_imposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "df")
     {
         df = value;
+        df.value_namespace = name_space;
+        df.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discard-class")
     {
         discard_class = value;
+        discard_class.value_namespace = name_space;
+        discard_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dscp")
     {
         dscp = value;
+        dscp.value_namespace = name_space;
+        dscp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-class")
     {
         forward_class = value;
+        forward_class.value_namespace = name_space;
+        forward_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fr-de")
     {
         fr_de = value;
+        fr_de.value_namespace = name_space;
+        fr_de.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inner-cos")
     {
         inner_cos = value;
+        inner_cos.value_namespace = name_space;
+        inner_cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-imposition")
     {
         mpls_experimental_imposition = value;
+        mpls_experimental_imposition.value_namespace = name_space;
+        mpls_experimental_imposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-top-most")
     {
         mpls_experimental_top_most = value;
+        mpls_experimental_top_most.value_namespace = name_space;
+        mpls_experimental_top_most.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence")
     {
         precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence-tunnel")
     {
         precedence_tunnel = value;
+        precedence_tunnel.value_namespace = name_space;
+        precedence_tunnel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qos-group")
     {
         qos_group = value;
+        qos_group.value_namespace = name_space;
+        qos_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srp-priority")
     {
         srp_priority = value;
+        srp_priority.value_namespace = name_space;
+        srp_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-class")
     {
         traffic_class = value;
+        traffic_class.value_namespace = name_space;
+        traffic_class.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "dei")
+    {
+        dei.yfilter = yfilter;
+    }
+    if(value_path == "dei-imposition")
+    {
+        dei_imposition.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "df")
+    {
+        df.yfilter = yfilter;
+    }
+    if(value_path == "discard-class")
+    {
+        discard_class.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "forward-class")
+    {
+        forward_class.yfilter = yfilter;
+    }
+    if(value_path == "fr-de")
+    {
+        fr_de.yfilter = yfilter;
+    }
+    if(value_path == "inner-cos")
+    {
+        inner_cos.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-imposition")
+    {
+        mpls_experimental_imposition.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-top-most")
+    {
+        mpls_experimental_top_most.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+    if(value_path == "precedence-tunnel")
+    {
+        precedence_tunnel.yfilter = yfilter;
+    }
+    if(value_path == "qos-group")
+    {
+        qos_group.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "srp-priority")
+    {
+        srp_priority.yfilter = yfilter;
+    }
+    if(value_path == "traffic-class")
+    {
+        traffic_class.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cos" || name == "dei" || name == "dei-imposition" || name == "destination-address" || name == "df" || name == "discard-class" || name == "dscp" || name == "forward-class" || name == "fr-de" || name == "inner-cos" || name == "mpls-experimental-imposition" || name == "mpls-experimental-top-most" || name == "precedence" || name == "precedence-tunnel" || name == "qos-group" || name == "source-address" || name == "srp-priority" || name == "traffic-class")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::ViolateAction()
@@ -7991,9 +10100,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction:
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(drop.operation)
-	|| is_set(transmit.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(drop.yfilter)
+	|| ydk::is_set(transmit.yfilter)
 	|| (set !=  nullptr && set->has_operation());
 }
 
@@ -8020,8 +10129,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (drop.is_set || is_set(drop.operation)) leaf_name_data.push_back(drop.get_name_leafdata());
-    if (transmit.is_set || is_set(transmit.operation)) leaf_name_data.push_back(transmit.get_name_leafdata());
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+    if (transmit.is_set || is_set(transmit.yfilter)) leaf_name_data.push_back(transmit.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8054,16 +10163,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "drop")
     {
         drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "Transmit")
     {
         transmit = value;
+        transmit.value_namespace = name_space;
+        transmit.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+    if(value_path == "Transmit")
+    {
+        transmit.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set" || name == "drop" || name == "Transmit")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::Set()
@@ -8118,25 +10250,25 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction:
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(cos.operation)
-	|| is_set(dei.operation)
-	|| is_set(dei_imposition.operation)
-	|| is_set(destination_address.operation)
-	|| is_set(df.operation)
-	|| is_set(discard_class.operation)
-	|| is_set(dscp.operation)
-	|| is_set(forward_class.operation)
-	|| is_set(fr_de.operation)
-	|| is_set(inner_cos.operation)
-	|| is_set(mpls_experimental_imposition.operation)
-	|| is_set(mpls_experimental_top_most.operation)
-	|| is_set(precedence.operation)
-	|| is_set(precedence_tunnel.operation)
-	|| is_set(qos_group.operation)
-	|| is_set(source_address.operation)
-	|| is_set(srp_priority.operation)
-	|| is_set(traffic_class.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(cos.yfilter)
+	|| ydk::is_set(dei.yfilter)
+	|| ydk::is_set(dei_imposition.yfilter)
+	|| ydk::is_set(destination_address.yfilter)
+	|| ydk::is_set(df.yfilter)
+	|| ydk::is_set(discard_class.yfilter)
+	|| ydk::is_set(dscp.yfilter)
+	|| ydk::is_set(forward_class.yfilter)
+	|| ydk::is_set(fr_de.yfilter)
+	|| ydk::is_set(inner_cos.yfilter)
+	|| ydk::is_set(mpls_experimental_imposition.yfilter)
+	|| ydk::is_set(mpls_experimental_top_most.yfilter)
+	|| ydk::is_set(precedence.yfilter)
+	|| ydk::is_set(precedence_tunnel.yfilter)
+	|| ydk::is_set(qos_group.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(srp_priority.yfilter)
+	|| ydk::is_set(traffic_class.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::get_segment_path() const
@@ -8162,24 +10294,24 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::Vi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (cos.is_set || is_set(cos.operation)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dei.is_set || is_set(dei.operation)) leaf_name_data.push_back(dei.get_name_leafdata());
-    if (dei_imposition.is_set || is_set(dei_imposition.operation)) leaf_name_data.push_back(dei_imposition.get_name_leafdata());
-    if (destination_address.is_set || is_set(destination_address.operation)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-    if (df.is_set || is_set(df.operation)) leaf_name_data.push_back(df.get_name_leafdata());
-    if (discard_class.is_set || is_set(discard_class.operation)) leaf_name_data.push_back(discard_class.get_name_leafdata());
-    if (dscp.is_set || is_set(dscp.operation)) leaf_name_data.push_back(dscp.get_name_leafdata());
-    if (forward_class.is_set || is_set(forward_class.operation)) leaf_name_data.push_back(forward_class.get_name_leafdata());
-    if (fr_de.is_set || is_set(fr_de.operation)) leaf_name_data.push_back(fr_de.get_name_leafdata());
-    if (inner_cos.is_set || is_set(inner_cos.operation)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
-    if (mpls_experimental_imposition.is_set || is_set(mpls_experimental_imposition.operation)) leaf_name_data.push_back(mpls_experimental_imposition.get_name_leafdata());
-    if (mpls_experimental_top_most.is_set || is_set(mpls_experimental_top_most.operation)) leaf_name_data.push_back(mpls_experimental_top_most.get_name_leafdata());
-    if (precedence.is_set || is_set(precedence.operation)) leaf_name_data.push_back(precedence.get_name_leafdata());
-    if (precedence_tunnel.is_set || is_set(precedence_tunnel.operation)) leaf_name_data.push_back(precedence_tunnel.get_name_leafdata());
-    if (qos_group.is_set || is_set(qos_group.operation)) leaf_name_data.push_back(qos_group.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (srp_priority.is_set || is_set(srp_priority.operation)) leaf_name_data.push_back(srp_priority.get_name_leafdata());
-    if (traffic_class.is_set || is_set(traffic_class.operation)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
+    if (dei.is_set || is_set(dei.yfilter)) leaf_name_data.push_back(dei.get_name_leafdata());
+    if (dei_imposition.is_set || is_set(dei_imposition.yfilter)) leaf_name_data.push_back(dei_imposition.get_name_leafdata());
+    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
+    if (df.is_set || is_set(df.yfilter)) leaf_name_data.push_back(df.get_name_leafdata());
+    if (discard_class.is_set || is_set(discard_class.yfilter)) leaf_name_data.push_back(discard_class.get_name_leafdata());
+    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
+    if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
+    if (fr_de.is_set || is_set(fr_de.yfilter)) leaf_name_data.push_back(fr_de.get_name_leafdata());
+    if (inner_cos.is_set || is_set(inner_cos.yfilter)) leaf_name_data.push_back(inner_cos.get_name_leafdata());
+    if (mpls_experimental_imposition.is_set || is_set(mpls_experimental_imposition.yfilter)) leaf_name_data.push_back(mpls_experimental_imposition.get_name_leafdata());
+    if (mpls_experimental_top_most.is_set || is_set(mpls_experimental_top_most.yfilter)) leaf_name_data.push_back(mpls_experimental_top_most.get_name_leafdata());
+    if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
+    if (precedence_tunnel.is_set || is_set(precedence_tunnel.yfilter)) leaf_name_data.push_back(precedence_tunnel.get_name_leafdata());
+    if (qos_group.is_set || is_set(qos_group.yfilter)) leaf_name_data.push_back(qos_group.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (srp_priority.is_set || is_set(srp_priority.yfilter)) leaf_name_data.push_back(srp_priority.get_name_leafdata());
+    if (traffic_class.is_set || is_set(traffic_class.yfilter)) leaf_name_data.push_back(traffic_class.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8198,80 +10330,199 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
         cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei")
     {
         dei = value;
+        dei.value_namespace = name_space;
+        dei.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dei-imposition")
     {
         dei_imposition = value;
+        dei_imposition.value_namespace = name_space;
+        dei_imposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "destination-address")
     {
         destination_address = value;
+        destination_address.value_namespace = name_space;
+        destination_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "df")
     {
         df = value;
+        df.value_namespace = name_space;
+        df.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "discard-class")
     {
         discard_class = value;
+        discard_class.value_namespace = name_space;
+        discard_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dscp")
     {
         dscp = value;
+        dscp.value_namespace = name_space;
+        dscp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "forward-class")
     {
         forward_class = value;
+        forward_class.value_namespace = name_space;
+        forward_class.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fr-de")
     {
         fr_de = value;
+        fr_de.value_namespace = name_space;
+        fr_de.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inner-cos")
     {
         inner_cos = value;
+        inner_cos.value_namespace = name_space;
+        inner_cos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-imposition")
     {
         mpls_experimental_imposition = value;
+        mpls_experimental_imposition.value_namespace = name_space;
+        mpls_experimental_imposition.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-experimental-top-most")
     {
         mpls_experimental_top_most = value;
+        mpls_experimental_top_most.value_namespace = name_space;
+        mpls_experimental_top_most.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence")
     {
         precedence = value;
+        precedence.value_namespace = name_space;
+        precedence.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "precedence-tunnel")
     {
         precedence_tunnel = value;
+        precedence_tunnel.value_namespace = name_space;
+        precedence_tunnel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qos-group")
     {
         qos_group = value;
+        qos_group.value_namespace = name_space;
+        qos_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srp-priority")
     {
         srp_priority = value;
+        srp_priority.value_namespace = name_space;
+        srp_priority.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "traffic-class")
     {
         traffic_class = value;
+        traffic_class.value_namespace = name_space;
+        traffic_class.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
+    }
+    if(value_path == "dei")
+    {
+        dei.yfilter = yfilter;
+    }
+    if(value_path == "dei-imposition")
+    {
+        dei_imposition.yfilter = yfilter;
+    }
+    if(value_path == "destination-address")
+    {
+        destination_address.yfilter = yfilter;
+    }
+    if(value_path == "df")
+    {
+        df.yfilter = yfilter;
+    }
+    if(value_path == "discard-class")
+    {
+        discard_class.yfilter = yfilter;
+    }
+    if(value_path == "dscp")
+    {
+        dscp.yfilter = yfilter;
+    }
+    if(value_path == "forward-class")
+    {
+        forward_class.yfilter = yfilter;
+    }
+    if(value_path == "fr-de")
+    {
+        fr_de.yfilter = yfilter;
+    }
+    if(value_path == "inner-cos")
+    {
+        inner_cos.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-imposition")
+    {
+        mpls_experimental_imposition.yfilter = yfilter;
+    }
+    if(value_path == "mpls-experimental-top-most")
+    {
+        mpls_experimental_top_most.yfilter = yfilter;
+    }
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+    if(value_path == "precedence-tunnel")
+    {
+        precedence_tunnel.yfilter = yfilter;
+    }
+    if(value_path == "qos-group")
+    {
+        qos_group.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "srp-priority")
+    {
+        srp_priority.yfilter = yfilter;
+    }
+    if(value_path == "traffic-class")
+    {
+        traffic_class.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cos" || name == "dei" || name == "dei-imposition" || name == "destination-address" || name == "df" || name == "discard-class" || name == "dscp" || name == "forward-class" || name == "fr-de" || name == "inner-cos" || name == "mpls-experimental-imposition" || name == "mpls-experimental-top-most" || name == "precedence" || name == "precedence-tunnel" || name == "qos-group" || name == "source-address" || name == "srp-priority" || name == "traffic-class")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::ServicePolicy()
@@ -8294,9 +10545,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::has_dat
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(policy_name.operation)
-	|| is_set(type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(type.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::get_segment_path() const
@@ -8322,8 +10573,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePol
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (type.is_set || is_set(type.operation)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8342,16 +10593,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "type")
     {
         type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-name" || name == "type")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::CacLocal()
@@ -8381,8 +10655,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::has_data() c
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(flow_idle_timeout.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(flow_idle_timeout.yfilter)
 	|| (flow_rate !=  nullptr && flow_rate->has_operation())
 	|| (rate !=  nullptr && rate->has_operation());
 }
@@ -8410,7 +10684,7 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flow_idle_timeout.is_set || is_set(flow_idle_timeout.operation)) leaf_name_data.push_back(flow_idle_timeout.get_name_leafdata());
+    if (flow_idle_timeout.is_set || is_set(flow_idle_timeout.yfilter)) leaf_name_data.push_back(flow_idle_timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8457,12 +10731,29 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "flow-idle-timeout")
     {
         flow_idle_timeout = value;
+        flow_idle_timeout.value_namespace = name_space;
+        flow_idle_timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-idle-timeout")
+    {
+        flow_idle_timeout.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow-rate" || name == "rate" || name == "flow-idle-timeout")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::Rate()
@@ -8485,9 +10776,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::has_da
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(units.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::get_segment_path() const
@@ -8513,8 +10804,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8533,16 +10824,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "units" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::FlowRate()
@@ -8565,9 +10879,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::ha
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(units.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(units.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::get_segment_path() const
@@ -8593,8 +10907,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (units.is_set || is_set(units.operation)) leaf_name_data.push_back(units.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (units.is_set || is_set(units.yfilter)) leaf_name_data.push_back(units.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8613,16 +10927,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "units")
     {
         units = value;
+        units.value_namespace = name_space;
+        units.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "units")
+    {
+        units.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "units" || name == "value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::FlowParams()
@@ -8649,11 +10986,11 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::has_data()
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(history.operation)
-	|| is_set(interval_duration.operation)
-	|| is_set(max_flow.operation)
-	|| is_set(timeout.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(history.yfilter)
+	|| ydk::is_set(interval_duration.yfilter)
+	|| ydk::is_set(max_flow.yfilter)
+	|| ydk::is_set(timeout.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::get_segment_path() const
@@ -8679,10 +11016,10 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (history.is_set || is_set(history.operation)) leaf_name_data.push_back(history.get_name_leafdata());
-    if (interval_duration.is_set || is_set(interval_duration.operation)) leaf_name_data.push_back(interval_duration.get_name_leafdata());
-    if (max_flow.is_set || is_set(max_flow.operation)) leaf_name_data.push_back(max_flow.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.operation)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (history.is_set || is_set(history.yfilter)) leaf_name_data.push_back(history.get_name_leafdata());
+    if (interval_duration.is_set || is_set(interval_duration.yfilter)) leaf_name_data.push_back(interval_duration.get_name_leafdata());
+    if (max_flow.is_set || is_set(max_flow.yfilter)) leaf_name_data.push_back(max_flow.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8701,24 +11038,59 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "history")
     {
         history = value;
+        history.value_namespace = name_space;
+        history.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interval-duration")
     {
         interval_duration = value;
+        interval_duration.value_namespace = name_space;
+        interval_duration.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-flow")
     {
         max_flow = value;
+        max_flow.value_namespace = name_space;
+        max_flow.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "timeout")
     {
         timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "history")
+    {
+        history.yfilter = yfilter;
+    }
+    if(value_path == "interval-duration")
+    {
+        interval_duration.yfilter = yfilter;
+    }
+    if(value_path == "max-flow")
+    {
+        max_flow.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::FlowParams::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "history" || name == "interval-duration" || name == "max-flow" || name == "timeout")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MetricsIpcbr()
@@ -8745,7 +11117,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::has_data
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (media_packet !=  nullptr && media_packet->has_operation())
 	|| (rate !=  nullptr && rate->has_operation());
 }
@@ -8819,8 +11191,19 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "media-packet" || name == "rate")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::Rate()
@@ -8845,10 +11228,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::ha
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(layer3.operation)
-	|| is_set(media.operation)
-	|| is_set(packet.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(layer3.yfilter)
+	|| ydk::is_set(media.yfilter)
+	|| ydk::is_set(packet.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::get_segment_path() const
@@ -8874,9 +11257,9 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (layer3.is_set || is_set(layer3.operation)) leaf_name_data.push_back(layer3.get_name_leafdata());
-    if (media.is_set || is_set(media.operation)) leaf_name_data.push_back(media.get_name_leafdata());
-    if (packet.is_set || is_set(packet.operation)) leaf_name_data.push_back(packet.get_name_leafdata());
+    if (layer3.is_set || is_set(layer3.yfilter)) leaf_name_data.push_back(layer3.get_name_leafdata());
+    if (media.is_set || is_set(media.yfilter)) leaf_name_data.push_back(media.get_name_leafdata());
+    if (packet.is_set || is_set(packet.yfilter)) leaf_name_data.push_back(packet.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8895,20 +11278,49 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "layer3")
     {
         layer3 = value;
+        layer3.value_namespace = name_space;
+        layer3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "media")
     {
         media = value;
+        media.value_namespace = name_space;
+        media.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packet")
     {
         packet = value;
+        packet.value_namespace = name_space;
+        packet.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "layer3")
+    {
+        layer3.yfilter = yfilter;
+    }
+    if(value_path == "media")
+    {
+        media.yfilter = yfilter;
+    }
+    if(value_path == "packet")
+    {
+        packet.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::Rate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "layer3" || name == "media" || name == "packet")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::MediaPacket()
@@ -8931,9 +11343,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPac
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(count_in_layer3.operation)
-	|| is_set(size.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(count_in_layer3.yfilter)
+	|| ydk::is_set(size.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::get_segment_path() const
@@ -8959,8 +11371,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (count_in_layer3.is_set || is_set(count_in_layer3.operation)) leaf_name_data.push_back(count_in_layer3.get_name_leafdata());
-    if (size.is_set || is_set(size.operation)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (count_in_layer3.is_set || is_set(count_in_layer3.yfilter)) leaf_name_data.push_back(count_in_layer3.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8979,16 +11391,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "count-in-layer3")
     {
         count_in_layer3 = value;
+        count_in_layer3.value_namespace = name_space;
+        count_in_layer3.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "size")
     {
         size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "count-in-layer3")
+    {
+        count_in_layer3.yfilter = yfilter;
+    }
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::MetricsIpcbr::MediaPacket::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "count-in-layer3" || name == "size")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::React()
@@ -9032,13 +11467,13 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::has_data() cons
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(criterion_delay_factor.operation)
-	|| is_set(criterion_flow_count.operation)
-	|| is_set(criterion_media_stop.operation)
-	|| is_set(criterion_mrv.operation)
-	|| is_set(criterion_packet_rate.operation)
-	|| is_set(descrition.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(criterion_delay_factor.yfilter)
+	|| ydk::is_set(criterion_flow_count.yfilter)
+	|| ydk::is_set(criterion_media_stop.yfilter)
+	|| ydk::is_set(criterion_mrv.yfilter)
+	|| ydk::is_set(criterion_packet_rate.yfilter)
+	|| ydk::is_set(descrition.yfilter)
 	|| (action !=  nullptr && action->has_operation())
 	|| (alarm !=  nullptr && alarm->has_operation())
 	|| (threshold !=  nullptr && threshold->has_operation());
@@ -9067,12 +11502,12 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (criterion_delay_factor.is_set || is_set(criterion_delay_factor.operation)) leaf_name_data.push_back(criterion_delay_factor.get_name_leafdata());
-    if (criterion_flow_count.is_set || is_set(criterion_flow_count.operation)) leaf_name_data.push_back(criterion_flow_count.get_name_leafdata());
-    if (criterion_media_stop.is_set || is_set(criterion_media_stop.operation)) leaf_name_data.push_back(criterion_media_stop.get_name_leafdata());
-    if (criterion_mrv.is_set || is_set(criterion_mrv.operation)) leaf_name_data.push_back(criterion_mrv.get_name_leafdata());
-    if (criterion_packet_rate.is_set || is_set(criterion_packet_rate.operation)) leaf_name_data.push_back(criterion_packet_rate.get_name_leafdata());
-    if (descrition.is_set || is_set(descrition.operation)) leaf_name_data.push_back(descrition.get_name_leafdata());
+    if (criterion_delay_factor.is_set || is_set(criterion_delay_factor.yfilter)) leaf_name_data.push_back(criterion_delay_factor.get_name_leafdata());
+    if (criterion_flow_count.is_set || is_set(criterion_flow_count.yfilter)) leaf_name_data.push_back(criterion_flow_count.get_name_leafdata());
+    if (criterion_media_stop.is_set || is_set(criterion_media_stop.yfilter)) leaf_name_data.push_back(criterion_media_stop.get_name_leafdata());
+    if (criterion_mrv.is_set || is_set(criterion_mrv.yfilter)) leaf_name_data.push_back(criterion_mrv.get_name_leafdata());
+    if (criterion_packet_rate.is_set || is_set(criterion_packet_rate.yfilter)) leaf_name_data.push_back(criterion_packet_rate.get_name_leafdata());
+    if (descrition.is_set || is_set(descrition.yfilter)) leaf_name_data.push_back(descrition.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9133,32 +11568,79 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "criterion-delay-factor")
     {
         criterion_delay_factor = value;
+        criterion_delay_factor.value_namespace = name_space;
+        criterion_delay_factor.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "criterion-flow-count")
     {
         criterion_flow_count = value;
+        criterion_flow_count.value_namespace = name_space;
+        criterion_flow_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "criterion-media-stop")
     {
         criterion_media_stop = value;
+        criterion_media_stop.value_namespace = name_space;
+        criterion_media_stop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "criterion-mrv")
     {
         criterion_mrv = value;
+        criterion_mrv.value_namespace = name_space;
+        criterion_mrv.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "criterion-packet-rate")
     {
         criterion_packet_rate = value;
+        criterion_packet_rate.value_namespace = name_space;
+        criterion_packet_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "descrition")
     {
         descrition = value;
+        descrition.value_namespace = name_space;
+        descrition.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "criterion-delay-factor")
+    {
+        criterion_delay_factor.yfilter = yfilter;
+    }
+    if(value_path == "criterion-flow-count")
+    {
+        criterion_flow_count.yfilter = yfilter;
+    }
+    if(value_path == "criterion-media-stop")
+    {
+        criterion_media_stop.yfilter = yfilter;
+    }
+    if(value_path == "criterion-mrv")
+    {
+        criterion_mrv.yfilter = yfilter;
+    }
+    if(value_path == "criterion-packet-rate")
+    {
+        criterion_packet_rate.yfilter = yfilter;
+    }
+    if(value_path == "descrition")
+    {
+        descrition.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action" || name == "alarm" || name == "threshold" || name == "criterion-delay-factor" || name == "criterion-flow-count" || name == "criterion-media-stop" || name == "criterion-mrv" || name == "criterion-packet-rate" || name == "descrition")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::Action()
@@ -9181,9 +11663,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::has_dat
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(snmp.operation)
-	|| is_set(syslog.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(snmp.yfilter)
+	|| ydk::is_set(syslog.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::get_segment_path() const
@@ -9209,8 +11691,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Act
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (snmp.is_set || is_set(snmp.operation)) leaf_name_data.push_back(snmp.get_name_leafdata());
-    if (syslog.is_set || is_set(syslog.operation)) leaf_name_data.push_back(syslog.get_name_leafdata());
+    if (snmp.is_set || is_set(snmp.yfilter)) leaf_name_data.push_back(snmp.get_name_leafdata());
+    if (syslog.is_set || is_set(syslog.yfilter)) leaf_name_data.push_back(syslog.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9229,16 +11711,39 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmp")
     {
         snmp = value;
+        snmp.value_namespace = name_space;
+        snmp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "syslog")
     {
         syslog = value;
+        syslog.value_namespace = name_space;
+        syslog.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "snmp")
+    {
+        snmp.yfilter = yfilter;
+    }
+    if(value_path == "syslog")
+    {
+        syslog.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "snmp" || name == "syslog")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Alarm()
@@ -9264,8 +11769,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::has_data
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(severity.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(severity.yfilter)
 	|| (type !=  nullptr && type->has_operation());
 }
 
@@ -9292,7 +11797,7 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Ala
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (severity.is_set || is_set(severity.operation)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9325,12 +11830,29 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "severity")
     {
         severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "severity")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::Type()
@@ -9355,10 +11877,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::ha
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(discrete.operation)
-	|| is_set(group_count.operation)
-	|| is_set(group_percent.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(discrete.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(group_percent.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::get_segment_path() const
@@ -9384,9 +11906,9 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Ala
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (discrete.is_set || is_set(discrete.operation)) leaf_name_data.push_back(discrete.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (group_percent.is_set || is_set(group_percent.operation)) leaf_name_data.push_back(group_percent.get_name_leafdata());
+    if (discrete.is_set || is_set(discrete.yfilter)) leaf_name_data.push_back(discrete.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (group_percent.is_set || is_set(group_percent.yfilter)) leaf_name_data.push_back(group_percent.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9405,20 +11927,49 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "discrete")
     {
         discrete = value;
+        discrete.value_namespace = name_space;
+        discrete.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-percent")
     {
         group_percent = value;
+        group_percent.value_namespace = name_space;
+        group_percent.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "discrete")
+    {
+        discrete.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "group-percent")
+    {
+        group_percent.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Alarm::Type::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "discrete" || name == "group-count" || name == "group-percent")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::Threshold()
@@ -9445,7 +11996,7 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::has_
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (trigger_type !=  nullptr && trigger_type->has_operation())
 	|| (trigger_value !=  nullptr && trigger_value->has_operation());
 }
@@ -9519,8 +12070,19 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trigger-type" || name == "trigger-value")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::TriggerValue()
@@ -9549,12 +12111,12 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::Trig
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(greater_than.operation)
-	|| is_set(greater_than_equal.operation)
-	|| is_set(less_than.operation)
-	|| is_set(less_than_equal.operation)
-	|| is_set(range.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(greater_than.yfilter)
+	|| ydk::is_set(greater_than_equal.yfilter)
+	|| ydk::is_set(less_than.yfilter)
+	|| ydk::is_set(less_than_equal.yfilter)
+	|| ydk::is_set(range.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::get_segment_path() const
@@ -9580,11 +12142,11 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Thr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (greater_than.is_set || is_set(greater_than.operation)) leaf_name_data.push_back(greater_than.get_name_leafdata());
-    if (greater_than_equal.is_set || is_set(greater_than_equal.operation)) leaf_name_data.push_back(greater_than_equal.get_name_leafdata());
-    if (less_than.is_set || is_set(less_than.operation)) leaf_name_data.push_back(less_than.get_name_leafdata());
-    if (less_than_equal.is_set || is_set(less_than_equal.operation)) leaf_name_data.push_back(less_than_equal.get_name_leafdata());
-    if (range.is_set || is_set(range.operation)) leaf_name_data.push_back(range.get_name_leafdata());
+    if (greater_than.is_set || is_set(greater_than.yfilter)) leaf_name_data.push_back(greater_than.get_name_leafdata());
+    if (greater_than_equal.is_set || is_set(greater_than_equal.yfilter)) leaf_name_data.push_back(greater_than_equal.get_name_leafdata());
+    if (less_than.is_set || is_set(less_than.yfilter)) leaf_name_data.push_back(less_than.get_name_leafdata());
+    if (less_than_equal.is_set || is_set(less_than_equal.yfilter)) leaf_name_data.push_back(less_than_equal.get_name_leafdata());
+    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9603,28 +12165,69 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "greater-than")
     {
         greater_than = value;
+        greater_than.value_namespace = name_space;
+        greater_than.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "greater-than-equal")
     {
         greater_than_equal = value;
+        greater_than_equal.value_namespace = name_space;
+        greater_than_equal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "less-than")
     {
         less_than = value;
+        less_than.value_namespace = name_space;
+        less_than.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "less-than-equal")
     {
         less_than_equal = value;
+        less_than_equal.value_namespace = name_space;
+        less_than_equal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "range")
     {
         range = value;
+        range.value_namespace = name_space;
+        range.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "greater-than")
+    {
+        greater_than.yfilter = yfilter;
+    }
+    if(value_path == "greater-than-equal")
+    {
+        greater_than_equal.yfilter = yfilter;
+    }
+    if(value_path == "less-than")
+    {
+        less_than.yfilter = yfilter;
+    }
+    if(value_path == "less-than-equal")
+    {
+        less_than_equal.yfilter = yfilter;
+    }
+    if(value_path == "range")
+    {
+        range.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerValue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "greater-than" || name == "greater-than-equal" || name == "less-than" || name == "less-than-equal" || name == "range")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::TriggerType()
@@ -9647,9 +12250,9 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::Trig
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(average.operation)
-	|| is_set(immediate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(average.yfilter)
+	|| ydk::is_set(immediate.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::get_segment_path() const
@@ -9675,8 +12278,8 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Thr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (average.is_set || is_set(average.operation)) leaf_name_data.push_back(average.get_name_leafdata());
-    if (immediate.is_set || is_set(immediate.operation)) leaf_name_data.push_back(immediate.get_name_leafdata());
+    if (average.is_set || is_set(average.yfilter)) leaf_name_data.push_back(average.get_name_leafdata());
+    if (immediate.is_set || is_set(immediate.yfilter)) leaf_name_data.push_back(immediate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9695,16 +12298,453 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "average")
     {
         average = value;
+        average.value_namespace = name_space;
+        average.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "immediate")
     {
         immediate = value;
+        immediate.value_namespace = name_space;
+        immediate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "average")
+    {
+        average.yfilter = yfilter;
+    }
+    if(value_path == "immediate")
+    {
+        immediate.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::React::Threshold::TriggerType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average" || name == "immediate")
+        return true;
+    return false;
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::PbrRedirect()
+    :
+    next_hop(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop>())
+{
+    next_hop->parent = this;
+
+    yang_name = "pbr-redirect"; yang_parent_name = "policy-map-rule";
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::~PbrRedirect()
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::has_data() const
+{
+    return (next_hop !=  nullptr && next_hop->has_data());
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::has_operation() const
+{
+    return is_set(yfilter)
+	|| (next_hop !=  nullptr && next_hop->has_operation());
+}
+
+std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pbr-redirect";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'PbrRedirect' in Cisco_IOS_XR_infra_policymgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hop")
+    {
+        if(next_hop == nullptr)
+        {
+            next_hop = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop>();
+        }
+        return next_hop;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(next_hop != nullptr)
+    {
+        children["next-hop"] = next_hop;
+    }
+
+    return children;
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop")
+        return true;
+    return false;
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::NextHop()
+    :
+    route_target(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget>())
+{
+    route_target->parent = this;
+
+    yang_name = "next-hop"; yang_parent_name = "pbr-redirect";
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::~NextHop()
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::has_data() const
+{
+    return (route_target !=  nullptr && route_target->has_data());
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::has_operation() const
+{
+    return is_set(yfilter)
+	|| (route_target !=  nullptr && route_target->has_operation());
+}
+
+std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-hop";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'NextHop' in Cisco_IOS_XR_infra_policymgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-target")
+    {
+        if(route_target == nullptr)
+        {
+            route_target = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget>();
+        }
+        return route_target;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(route_target != nullptr)
+    {
+        children["route-target"] = route_target;
+    }
+
+    return children;
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-target")
+        return true;
+    return false;
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::RouteTarget()
+    :
+    as_number{YType::uint32, "as-number"},
+    index_{YType::uint32, "index"}
+    	,
+    ipv4_address(std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address>())
+{
+    ipv4_address->parent = this;
+
+    yang_name = "route-target"; yang_parent_name = "next-hop";
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::~RouteTarget()
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::has_data() const
+{
+    return as_number.is_set
+	|| index_.is_set
+	|| (ipv4_address !=  nullptr && ipv4_address->has_data());
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(as_number.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| (ipv4_address !=  nullptr && ipv4_address->has_operation());
+}
+
+std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-target";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'RouteTarget' in Cisco_IOS_XR_infra_policymgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (as_number.is_set || is_set(as_number.yfilter)) leaf_name_data.push_back(as_number.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv4-address")
+    {
+        if(ipv4_address == nullptr)
+        {
+            ipv4_address = std::make_shared<PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address>();
+        }
+        return ipv4_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    if(ipv4_address != nullptr)
+    {
+        children["ipv4-address"] = ipv4_address;
+    }
+
+    return children;
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "as-number")
+    {
+        as_number = value;
+        as_number.value_namespace = name_space;
+        as_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "as-number")
+    {
+        as_number.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "as-number" || name == "index")
+        return true;
+    return false;
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::Ipv4Address()
+    :
+    address{YType::str, "address"},
+    netmask{YType::str, "netmask"}
+{
+    yang_name = "ipv4-address"; yang_parent_name = "route-target";
+}
+
+PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::~Ipv4Address()
+{
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::has_data() const
+{
+    return address.is_set
+	|| netmask.is_set;
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(netmask.yfilter);
+}
+
+std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-address";
+
+    return path_buffer.str();
+
+}
+
+const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::get_entity_path(Entity* ancestor) const
+{
+    std::ostringstream path_buffer;
+    if (ancestor == nullptr)
+    {
+        throw(YCPPInvalidArgumentError{"ancestor for 'Ipv4Address' in Cisco_IOS_XR_infra_policymgr_cfg cannot be nullptr as one of the ancestors is a list"});
+    }
+    else
+    {
+        path_buffer << get_relative_entity_path(this, ancestor, path_buffer.str());
+    }
+
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (netmask.is_set || is_set(netmask.yfilter)) leaf_name_data.push_back(netmask.get_name_leafdata());
+
+
+    EntityPath entity_path {path_buffer.str(), leaf_name_data};
+    return entity_path;
+
+}
+
+std::shared_ptr<Entity> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    return children;
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "netmask")
+    {
+        netmask = value;
+        netmask.value_namespace = name_space;
+        netmask.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "netmask")
+    {
+        netmask.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrRedirect::NextHop::RouteTarget::Ipv4Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "netmask")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::PbrForward()
@@ -9730,8 +12770,8 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::has_data()
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(default_.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(default_.yfilter)
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
@@ -9758,7 +12798,7 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (default_.is_set || is_set(default_.operation)) leaf_name_data.push_back(default_.get_name_leafdata());
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9791,12 +12831,29 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "default")
     {
         default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "default")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::NextHop()
@@ -9821,10 +12878,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::h
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ipv4_address.operation)
-	|| is_set(ipv6_address.operation)
-	|| is_set(vrf.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(vrf.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::get_segment_path() const
@@ -9850,9 +12907,9 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ipv4_address.is_set || is_set(ipv4_address.operation)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.operation)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (vrf.is_set || is_set(vrf.operation)) leaf_name_data.push_back(vrf.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9871,20 +12928,49 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4-address")
     {
         ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ipv6-address")
     {
         ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf")
     {
         vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::PbrForward::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-address" || name == "ipv6-address" || name == "vrf")
+        return true;
+    return false;
 }
 
 PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::ServiceFunctionPath()
@@ -9909,10 +12995,10 @@ bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::h
 
 bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(index_.operation)
-	|| is_set(metadata.operation)
-	|| is_set(path_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(metadata.yfilter)
+	|| ydk::is_set(path_id.yfilter);
 }
 
 std::string PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::get_segment_path() const
@@ -9938,9 +13024,9 @@ const EntityPath PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFun
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (metadata.is_set || is_set(metadata.operation)) leaf_name_data.push_back(metadata.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.operation)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (metadata.is_set || is_set(metadata.yfilter)) leaf_name_data.push_back(metadata.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9959,65 +13045,94 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::PolicyMaps::Policy
     return children;
 }
 
-void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::set_value(const std::string & value_path, std::string value)
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "metadata")
     {
         metadata = value;
+        metadata.value_namespace = name_space;
+        metadata.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "path-id")
     {
         path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf EventTypeEnum::account_logoff {0, "account-logoff"};
-const Enum::YLeaf EventTypeEnum::account_logon {1, "account-logon"};
-const Enum::YLeaf EventTypeEnum::authentication_failure {2, "authentication-failure"};
-const Enum::YLeaf EventTypeEnum::authentication_no_response {3, "authentication-no-response"};
-const Enum::YLeaf EventTypeEnum::authorization_failure {4, "authorization-failure"};
-const Enum::YLeaf EventTypeEnum::authorization_no_response {5, "authorization-no-response"};
-const Enum::YLeaf EventTypeEnum::credit_exhausted {6, "credit-exhausted"};
-const Enum::YLeaf EventTypeEnum::exception {7, "exception"};
-const Enum::YLeaf EventTypeEnum::idle_timeout {8, "idle-timeout"};
-const Enum::YLeaf EventTypeEnum::quota_depleted {9, "quota-depleted"};
-const Enum::YLeaf EventTypeEnum::service_start {10, "service-start"};
-const Enum::YLeaf EventTypeEnum::service_stop {11, "service-stop"};
-const Enum::YLeaf EventTypeEnum::session_activate {12, "session-activate"};
-const Enum::YLeaf EventTypeEnum::session_start {13, "session-start"};
-const Enum::YLeaf EventTypeEnum::session_stop {14, "session-stop"};
-const Enum::YLeaf EventTypeEnum::timer_expiry {15, "timer-expiry"};
+void PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "metadata")
+    {
+        metadata.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf ClassMapTypeEnum::qos {1, "qos"};
-const Enum::YLeaf ClassMapTypeEnum::traffic {3, "traffic"};
-const Enum::YLeaf ClassMapTypeEnum::control {4, "control"};
+bool PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::ServiceFunctionPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index" || name == "metadata" || name == "path-id")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf ExecutionStrategyEnum::do_all {0, "do-all"};
-const Enum::YLeaf ExecutionStrategyEnum::do_until_failure {1, "do-until-failure"};
-const Enum::YLeaf ExecutionStrategyEnum::do_until_success {2, "do-until-success"};
+const Enum::YLeaf ExecutionStrategy::do_all {0, "do-all"};
+const Enum::YLeaf ExecutionStrategy::do_until_failure {1, "do-until-failure"};
+const Enum::YLeaf ExecutionStrategy::do_until_success {2, "do-until-success"};
 
-const Enum::YLeaf AuthorizeIdentifierEnum::circuit_id {0, "circuit-id"};
-const Enum::YLeaf AuthorizeIdentifierEnum::dhcp_client_id {1, "dhcp-client-id"};
-const Enum::YLeaf AuthorizeIdentifierEnum::remote_id {2, "remote-id"};
-const Enum::YLeaf AuthorizeIdentifierEnum::source_address_ipv4 {3, "source-address-ipv4"};
-const Enum::YLeaf AuthorizeIdentifierEnum::source_address_ipv6 {4, "source-address-ipv6"};
-const Enum::YLeaf AuthorizeIdentifierEnum::source_address_mac {5, "source-address-mac"};
-const Enum::YLeaf AuthorizeIdentifierEnum::username {6, "username"};
+const Enum::YLeaf ClassMapType::qos {1, "qos"};
+const Enum::YLeaf ClassMapType::traffic {3, "traffic"};
+const Enum::YLeaf ClassMapType::control {4, "control"};
 
-const Enum::YLeaf PmapClassMapTypeEnum::qos {1, "qos"};
-const Enum::YLeaf PmapClassMapTypeEnum::traffic {2, "traffic"};
-const Enum::YLeaf PmapClassMapTypeEnum::subscriber_control {3, "subscriber-control"};
+const Enum::YLeaf AuthorizeIdentifier::circuit_id {0, "circuit-id"};
+const Enum::YLeaf AuthorizeIdentifier::dhcp_client_id {1, "dhcp-client-id"};
+const Enum::YLeaf AuthorizeIdentifier::remote_id {2, "remote-id"};
+const Enum::YLeaf AuthorizeIdentifier::source_address_ipv4 {3, "source-address-ipv4"};
+const Enum::YLeaf AuthorizeIdentifier::source_address_ipv6 {4, "source-address-ipv6"};
+const Enum::YLeaf AuthorizeIdentifier::source_address_mac {5, "source-address-mac"};
+const Enum::YLeaf AuthorizeIdentifier::username {6, "username"};
 
-const Enum::YLeaf PolicyMapTypeEnum::qos {1, "qos"};
-const Enum::YLeaf PolicyMapTypeEnum::pbr {2, "pbr"};
-const Enum::YLeaf PolicyMapTypeEnum::traffic {3, "traffic"};
-const Enum::YLeaf PolicyMapTypeEnum::subscriber_control {4, "subscriber-control"};
-const Enum::YLeaf PolicyMapTypeEnum::redirect {6, "redirect"};
-const Enum::YLeaf PolicyMapTypeEnum::flow_monitor {7, "flow-monitor"};
+const Enum::YLeaf PolicyMapType::qos {1, "qos"};
+const Enum::YLeaf PolicyMapType::pbr {2, "pbr"};
+const Enum::YLeaf PolicyMapType::traffic {3, "traffic"};
+const Enum::YLeaf PolicyMapType::subscriber_control {4, "subscriber-control"};
+const Enum::YLeaf PolicyMapType::redirect {6, "redirect"};
+const Enum::YLeaf PolicyMapType::flow_monitor {7, "flow-monitor"};
+
+const Enum::YLeaf EventType::account_logoff {0, "account-logoff"};
+const Enum::YLeaf EventType::account_logon {1, "account-logon"};
+const Enum::YLeaf EventType::authentication_failure {2, "authentication-failure"};
+const Enum::YLeaf EventType::authentication_no_response {3, "authentication-no-response"};
+const Enum::YLeaf EventType::authorization_failure {4, "authorization-failure"};
+const Enum::YLeaf EventType::authorization_no_response {5, "authorization-no-response"};
+const Enum::YLeaf EventType::credit_exhausted {6, "credit-exhausted"};
+const Enum::YLeaf EventType::exception {7, "exception"};
+const Enum::YLeaf EventType::idle_timeout {8, "idle-timeout"};
+const Enum::YLeaf EventType::quota_depleted {9, "quota-depleted"};
+const Enum::YLeaf EventType::service_start {10, "service-start"};
+const Enum::YLeaf EventType::service_stop {11, "service-stop"};
+const Enum::YLeaf EventType::session_activate {12, "session-activate"};
+const Enum::YLeaf EventType::session_start {13, "session-start"};
+const Enum::YLeaf EventType::session_stop {14, "session-stop"};
+const Enum::YLeaf EventType::timer_expiry {15, "timer-expiry"};
+
+const Enum::YLeaf PmapClassMapType::qos {1, "qos"};
+const Enum::YLeaf PmapClassMapType::traffic {2, "traffic"};
+const Enum::YLeaf PmapClassMapType::subscriber_control {3, "subscriber-control"};
 
 
 }

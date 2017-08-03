@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_controller_otu_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_controller_otu_oper {
 
 Otu::Otu()
@@ -29,7 +31,7 @@ bool Otu::has_data() const
 
 bool Otu::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (controllers !=  nullptr && controllers->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::get_children() const
     return children;
 }
 
-void Otu::set_value(const std::string & value_path, std::string value)
+void Otu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Otu::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string Otu::get_bundle_name() const
 augment_capabilities_function Otu::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Otu::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Otu::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "controllers")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controllers()
@@ -135,7 +153,7 @@ bool Otu::Controllers::has_operation() const
         if(controller[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Otu::Controllers::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::get_children() 
     return children;
 }
 
-void Otu::Controllers::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Otu::Controllers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Otu::Controllers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "controller")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Controller()
@@ -227,8 +256,8 @@ bool Otu::Controllers::Controller::has_data() const
 
 bool Otu::Controllers::Controller::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(controller_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(controller_name.yfilter)
 	|| (info !=  nullptr && info->has_operation());
 }
 
@@ -255,7 +284,7 @@ const EntityPath Otu::Controllers::Controller::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (controller_name.is_set || is_set(controller_name.operation)) leaf_name_data.push_back(controller_name.get_name_leafdata());
+    if (controller_name.is_set || is_set(controller_name.yfilter)) leaf_name_data.push_back(controller_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -288,12 +317,29 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::get
     return children;
 }
 
-void Otu::Controllers::Controller::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "controller-name")
     {
         controller_name = value;
+        controller_name.value_namespace = name_space;
+        controller_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "controller-name")
+    {
+        controller_name.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "info" || name == "controller-name")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::Info()
@@ -391,32 +437,32 @@ bool Otu::Controllers::Controller::Info::has_data() const
 
 bool Otu::Controllers::Controller::Info::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(auto_tti_flag.operation)
-	|| is_set(config_sec_state.operation)
-	|| is_set(derivedstate_mode.operation)
-	|| is_set(ec.operation)
-	|| is_set(ec_value.operation)
-	|| is_set(fec_mode.operation)
-	|| is_set(gcc_mode.operation)
-	|| is_set(gmpls_tti_mode.operation)
-	|| is_set(gmpls_tvm_id.operation)
-	|| is_set(inherit_sec_state.operation)
-	|| is_set(loopback_mode.operation)
-	|| is_set(name.operation)
-	|| is_set(nv_optical_support.operation)
-	|| is_set(performance_monitoring.operation)
-	|| is_set(pre_fec_ber_mantissa.operation)
-	|| is_set(pre_fec_ber_value.operation)
-	|| is_set(pre_fec_mantissa.operation)
-	|| is_set(pre_fec_val.operation)
-	|| is_set(q.operation)
-	|| is_set(q_margin.operation)
-	|| is_set(sd.operation)
-	|| is_set(sf.operation)
-	|| is_set(state.operation)
-	|| is_set(uc.operation)
-	|| is_set(uc_value.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(auto_tti_flag.yfilter)
+	|| ydk::is_set(config_sec_state.yfilter)
+	|| ydk::is_set(derivedstate_mode.yfilter)
+	|| ydk::is_set(ec.yfilter)
+	|| ydk::is_set(ec_value.yfilter)
+	|| ydk::is_set(fec_mode.yfilter)
+	|| ydk::is_set(gcc_mode.yfilter)
+	|| ydk::is_set(gmpls_tti_mode.yfilter)
+	|| ydk::is_set(gmpls_tvm_id.yfilter)
+	|| ydk::is_set(inherit_sec_state.yfilter)
+	|| ydk::is_set(loopback_mode.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(nv_optical_support.yfilter)
+	|| ydk::is_set(performance_monitoring.yfilter)
+	|| ydk::is_set(pre_fec_ber_mantissa.yfilter)
+	|| ydk::is_set(pre_fec_ber_value.yfilter)
+	|| ydk::is_set(pre_fec_mantissa.yfilter)
+	|| ydk::is_set(pre_fec_val.yfilter)
+	|| ydk::is_set(q.yfilter)
+	|| ydk::is_set(q_margin.yfilter)
+	|| ydk::is_set(sd.yfilter)
+	|| ydk::is_set(sf.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(uc.yfilter)
+	|| ydk::is_set(uc_value.yfilter)
 	|| (local !=  nullptr && local->has_operation())
 	|| (network_srlg !=  nullptr && network_srlg->has_operation())
 	|| (otu_alarm_info !=  nullptr && otu_alarm_info->has_operation())
@@ -449,31 +495,31 @@ const EntityPath Otu::Controllers::Controller::Info::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (auto_tti_flag.is_set || is_set(auto_tti_flag.operation)) leaf_name_data.push_back(auto_tti_flag.get_name_leafdata());
-    if (config_sec_state.is_set || is_set(config_sec_state.operation)) leaf_name_data.push_back(config_sec_state.get_name_leafdata());
-    if (derivedstate_mode.is_set || is_set(derivedstate_mode.operation)) leaf_name_data.push_back(derivedstate_mode.get_name_leafdata());
-    if (ec.is_set || is_set(ec.operation)) leaf_name_data.push_back(ec.get_name_leafdata());
-    if (ec_value.is_set || is_set(ec_value.operation)) leaf_name_data.push_back(ec_value.get_name_leafdata());
-    if (fec_mode.is_set || is_set(fec_mode.operation)) leaf_name_data.push_back(fec_mode.get_name_leafdata());
-    if (gcc_mode.is_set || is_set(gcc_mode.operation)) leaf_name_data.push_back(gcc_mode.get_name_leafdata());
-    if (gmpls_tti_mode.is_set || is_set(gmpls_tti_mode.operation)) leaf_name_data.push_back(gmpls_tti_mode.get_name_leafdata());
-    if (gmpls_tvm_id.is_set || is_set(gmpls_tvm_id.operation)) leaf_name_data.push_back(gmpls_tvm_id.get_name_leafdata());
-    if (inherit_sec_state.is_set || is_set(inherit_sec_state.operation)) leaf_name_data.push_back(inherit_sec_state.get_name_leafdata());
-    if (loopback_mode.is_set || is_set(loopback_mode.operation)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (nv_optical_support.is_set || is_set(nv_optical_support.operation)) leaf_name_data.push_back(nv_optical_support.get_name_leafdata());
-    if (performance_monitoring.is_set || is_set(performance_monitoring.operation)) leaf_name_data.push_back(performance_monitoring.get_name_leafdata());
-    if (pre_fec_ber_mantissa.is_set || is_set(pre_fec_ber_mantissa.operation)) leaf_name_data.push_back(pre_fec_ber_mantissa.get_name_leafdata());
-    if (pre_fec_ber_value.is_set || is_set(pre_fec_ber_value.operation)) leaf_name_data.push_back(pre_fec_ber_value.get_name_leafdata());
-    if (pre_fec_mantissa.is_set || is_set(pre_fec_mantissa.operation)) leaf_name_data.push_back(pre_fec_mantissa.get_name_leafdata());
-    if (pre_fec_val.is_set || is_set(pre_fec_val.operation)) leaf_name_data.push_back(pre_fec_val.get_name_leafdata());
-    if (q.is_set || is_set(q.operation)) leaf_name_data.push_back(q.get_name_leafdata());
-    if (q_margin.is_set || is_set(q_margin.operation)) leaf_name_data.push_back(q_margin.get_name_leafdata());
-    if (sd.is_set || is_set(sd.operation)) leaf_name_data.push_back(sd.get_name_leafdata());
-    if (sf.is_set || is_set(sf.operation)) leaf_name_data.push_back(sf.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (uc.is_set || is_set(uc.operation)) leaf_name_data.push_back(uc.get_name_leafdata());
-    if (uc_value.is_set || is_set(uc_value.operation)) leaf_name_data.push_back(uc_value.get_name_leafdata());
+    if (auto_tti_flag.is_set || is_set(auto_tti_flag.yfilter)) leaf_name_data.push_back(auto_tti_flag.get_name_leafdata());
+    if (config_sec_state.is_set || is_set(config_sec_state.yfilter)) leaf_name_data.push_back(config_sec_state.get_name_leafdata());
+    if (derivedstate_mode.is_set || is_set(derivedstate_mode.yfilter)) leaf_name_data.push_back(derivedstate_mode.get_name_leafdata());
+    if (ec.is_set || is_set(ec.yfilter)) leaf_name_data.push_back(ec.get_name_leafdata());
+    if (ec_value.is_set || is_set(ec_value.yfilter)) leaf_name_data.push_back(ec_value.get_name_leafdata());
+    if (fec_mode.is_set || is_set(fec_mode.yfilter)) leaf_name_data.push_back(fec_mode.get_name_leafdata());
+    if (gcc_mode.is_set || is_set(gcc_mode.yfilter)) leaf_name_data.push_back(gcc_mode.get_name_leafdata());
+    if (gmpls_tti_mode.is_set || is_set(gmpls_tti_mode.yfilter)) leaf_name_data.push_back(gmpls_tti_mode.get_name_leafdata());
+    if (gmpls_tvm_id.is_set || is_set(gmpls_tvm_id.yfilter)) leaf_name_data.push_back(gmpls_tvm_id.get_name_leafdata());
+    if (inherit_sec_state.is_set || is_set(inherit_sec_state.yfilter)) leaf_name_data.push_back(inherit_sec_state.get_name_leafdata());
+    if (loopback_mode.is_set || is_set(loopback_mode.yfilter)) leaf_name_data.push_back(loopback_mode.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (nv_optical_support.is_set || is_set(nv_optical_support.yfilter)) leaf_name_data.push_back(nv_optical_support.get_name_leafdata());
+    if (performance_monitoring.is_set || is_set(performance_monitoring.yfilter)) leaf_name_data.push_back(performance_monitoring.get_name_leafdata());
+    if (pre_fec_ber_mantissa.is_set || is_set(pre_fec_ber_mantissa.yfilter)) leaf_name_data.push_back(pre_fec_ber_mantissa.get_name_leafdata());
+    if (pre_fec_ber_value.is_set || is_set(pre_fec_ber_value.yfilter)) leaf_name_data.push_back(pre_fec_ber_value.get_name_leafdata());
+    if (pre_fec_mantissa.is_set || is_set(pre_fec_mantissa.yfilter)) leaf_name_data.push_back(pre_fec_mantissa.get_name_leafdata());
+    if (pre_fec_val.is_set || is_set(pre_fec_val.yfilter)) leaf_name_data.push_back(pre_fec_val.get_name_leafdata());
+    if (q.is_set || is_set(q.yfilter)) leaf_name_data.push_back(q.get_name_leafdata());
+    if (q_margin.is_set || is_set(q_margin.yfilter)) leaf_name_data.push_back(q_margin.get_name_leafdata());
+    if (sd.is_set || is_set(sd.yfilter)) leaf_name_data.push_back(sd.get_name_leafdata());
+    if (sf.is_set || is_set(sf.yfilter)) leaf_name_data.push_back(sf.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (uc.is_set || is_set(uc.yfilter)) leaf_name_data.push_back(uc.get_name_leafdata());
+    if (uc_value.is_set || is_set(uc_value.yfilter)) leaf_name_data.push_back(uc_value.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -590,108 +636,269 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auto-tti-flag")
     {
         auto_tti_flag = value;
+        auto_tti_flag.value_namespace = name_space;
+        auto_tti_flag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "config-sec-state")
     {
         config_sec_state = value;
+        config_sec_state.value_namespace = name_space;
+        config_sec_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "derivedstate-mode")
     {
         derivedstate_mode = value;
+        derivedstate_mode.value_namespace = name_space;
+        derivedstate_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ec")
     {
         ec = value;
+        ec.value_namespace = name_space;
+        ec.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ec-value")
     {
         ec_value = value;
+        ec_value.value_namespace = name_space;
+        ec_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fec-mode")
     {
         fec_mode = value;
+        fec_mode.value_namespace = name_space;
+        fec_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gcc-mode")
     {
         gcc_mode = value;
+        gcc_mode.value_namespace = name_space;
+        gcc_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gmpls-tti-mode")
     {
         gmpls_tti_mode = value;
+        gmpls_tti_mode.value_namespace = name_space;
+        gmpls_tti_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gmpls-tvm-id")
     {
         gmpls_tvm_id = value;
+        gmpls_tvm_id.value_namespace = name_space;
+        gmpls_tvm_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inherit-sec-state")
     {
         inherit_sec_state = value;
+        inherit_sec_state.value_namespace = name_space;
+        inherit_sec_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "loopback-mode")
     {
         loopback_mode = value;
+        loopback_mode.value_namespace = name_space;
+        loopback_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "nv-optical-support")
     {
         nv_optical_support = value;
+        nv_optical_support.value_namespace = name_space;
+        nv_optical_support.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "performance-monitoring")
     {
         performance_monitoring = value;
+        performance_monitoring.value_namespace = name_space;
+        performance_monitoring.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pre-fec-ber-mantissa")
     {
         pre_fec_ber_mantissa = value;
+        pre_fec_ber_mantissa.value_namespace = name_space;
+        pre_fec_ber_mantissa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pre-fec-ber-value")
     {
         pre_fec_ber_value = value;
+        pre_fec_ber_value.value_namespace = name_space;
+        pre_fec_ber_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pre-fec-mantissa")
     {
         pre_fec_mantissa = value;
+        pre_fec_mantissa.value_namespace = name_space;
+        pre_fec_mantissa.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pre-fec-val")
     {
         pre_fec_val = value;
+        pre_fec_val.value_namespace = name_space;
+        pre_fec_val.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "q")
     {
         q = value;
+        q.value_namespace = name_space;
+        q.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "q-margin")
     {
         q_margin = value;
+        q_margin.value_namespace = name_space;
+        q_margin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sd")
     {
         sd = value;
+        sd.value_namespace = name_space;
+        sd.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sf")
     {
         sf = value;
+        sf.value_namespace = name_space;
+        sf.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "uc")
     {
         uc = value;
+        uc.value_namespace = name_space;
+        uc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "uc-value")
     {
         uc_value = value;
+        uc_value.value_namespace = name_space;
+        uc_value.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto-tti-flag")
+    {
+        auto_tti_flag.yfilter = yfilter;
+    }
+    if(value_path == "config-sec-state")
+    {
+        config_sec_state.yfilter = yfilter;
+    }
+    if(value_path == "derivedstate-mode")
+    {
+        derivedstate_mode.yfilter = yfilter;
+    }
+    if(value_path == "ec")
+    {
+        ec.yfilter = yfilter;
+    }
+    if(value_path == "ec-value")
+    {
+        ec_value.yfilter = yfilter;
+    }
+    if(value_path == "fec-mode")
+    {
+        fec_mode.yfilter = yfilter;
+    }
+    if(value_path == "gcc-mode")
+    {
+        gcc_mode.yfilter = yfilter;
+    }
+    if(value_path == "gmpls-tti-mode")
+    {
+        gmpls_tti_mode.yfilter = yfilter;
+    }
+    if(value_path == "gmpls-tvm-id")
+    {
+        gmpls_tvm_id.yfilter = yfilter;
+    }
+    if(value_path == "inherit-sec-state")
+    {
+        inherit_sec_state.yfilter = yfilter;
+    }
+    if(value_path == "loopback-mode")
+    {
+        loopback_mode.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "nv-optical-support")
+    {
+        nv_optical_support.yfilter = yfilter;
+    }
+    if(value_path == "performance-monitoring")
+    {
+        performance_monitoring.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-ber-mantissa")
+    {
+        pre_fec_ber_mantissa.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-ber-value")
+    {
+        pre_fec_ber_value.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-mantissa")
+    {
+        pre_fec_mantissa.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-val")
+    {
+        pre_fec_val.yfilter = yfilter;
+    }
+    if(value_path == "q")
+    {
+        q.yfilter = yfilter;
+    }
+    if(value_path == "q-margin")
+    {
+        q_margin.yfilter = yfilter;
+    }
+    if(value_path == "sd")
+    {
+        sd.yfilter = yfilter;
+    }
+    if(value_path == "sf")
+    {
+        sf.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "uc")
+    {
+        uc.yfilter = yfilter;
+    }
+    if(value_path == "uc-value")
+    {
+        uc_value.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local" || name == "network-srlg" || name == "otu-alarm-info" || name == "otu-fec-satistics" || name == "proactive" || name == "remote" || name == "tti-mode" || name == "auto-tti-flag" || name == "config-sec-state" || name == "derivedstate-mode" || name == "ec" || name == "ec-value" || name == "fec-mode" || name == "gcc-mode" || name == "gmpls-tti-mode" || name == "gmpls-tvm-id" || name == "inherit-sec-state" || name == "loopback-mode" || name == "name" || name == "nv-optical-support" || name == "performance-monitoring" || name == "pre-fec-ber-mantissa" || name == "pre-fec-ber-value" || name == "pre-fec-mantissa" || name == "pre-fec-val" || name == "q" || name == "q-margin" || name == "sd" || name == "sf" || name == "state" || name == "uc" || name == "uc-value")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::Local::Local()
@@ -714,9 +921,9 @@ bool Otu::Controllers::Controller::Info::Local::has_data() const
 
 bool Otu::Controllers::Controller::Info::Local::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_index.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(if_index.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::Local::get_segment_path() const
@@ -742,8 +949,8 @@ const EntityPath Otu::Controllers::Controller::Info::Local::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_index.is_set || is_set(if_index.operation)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -762,16 +969,39 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::Local::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-index")
     {
         if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::Local::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::Local::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "if-index" || name == "router-id")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::Remote::Remote()
@@ -794,9 +1024,9 @@ bool Otu::Controllers::Controller::Info::Remote::has_data() const
 
 bool Otu::Controllers::Controller::Info::Remote::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(if_index.operation)
-	|| is_set(router_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(if_index.yfilter)
+	|| ydk::is_set(router_id.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::Remote::get_segment_path() const
@@ -822,8 +1052,8 @@ const EntityPath Otu::Controllers::Controller::Info::Remote::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (if_index.is_set || is_set(if_index.operation)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (router_id.is_set || is_set(router_id.operation)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -842,16 +1072,39 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::Remote::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "if-index")
     {
         if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-id")
     {
         router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::Remote::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "if-index" || name == "router-id")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::TtiMode::TtiMode()
@@ -895,13 +1148,13 @@ bool Otu::Controllers::Controller::Info::TtiMode::has_data() const
 
 bool Otu::Controllers::Controller::Info::TtiMode::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(g709tti_exp_mode.operation)
-	|| is_set(g709tti_rec_mode.operation)
-	|| is_set(g709tti_sent_mode.operation)
-	|| is_set(remote_host_name.operation)
-	|| is_set(remote_interface.operation)
-	|| is_set(remote_ip_addr.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(g709tti_exp_mode.yfilter)
+	|| ydk::is_set(g709tti_rec_mode.yfilter)
+	|| ydk::is_set(g709tti_sent_mode.yfilter)
+	|| ydk::is_set(remote_host_name.yfilter)
+	|| ydk::is_set(remote_interface.yfilter)
+	|| ydk::is_set(remote_ip_addr.yfilter)
 	|| (exp !=  nullptr && exp->has_operation())
 	|| (rec !=  nullptr && rec->has_operation())
 	|| (tx !=  nullptr && tx->has_operation());
@@ -930,12 +1183,12 @@ const EntityPath Otu::Controllers::Controller::Info::TtiMode::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (g709tti_exp_mode.is_set || is_set(g709tti_exp_mode.operation)) leaf_name_data.push_back(g709tti_exp_mode.get_name_leafdata());
-    if (g709tti_rec_mode.is_set || is_set(g709tti_rec_mode.operation)) leaf_name_data.push_back(g709tti_rec_mode.get_name_leafdata());
-    if (g709tti_sent_mode.is_set || is_set(g709tti_sent_mode.operation)) leaf_name_data.push_back(g709tti_sent_mode.get_name_leafdata());
-    if (remote_host_name.is_set || is_set(remote_host_name.operation)) leaf_name_data.push_back(remote_host_name.get_name_leafdata());
-    if (remote_interface.is_set || is_set(remote_interface.operation)) leaf_name_data.push_back(remote_interface.get_name_leafdata());
-    if (remote_ip_addr.is_set || is_set(remote_ip_addr.operation)) leaf_name_data.push_back(remote_ip_addr.get_name_leafdata());
+    if (g709tti_exp_mode.is_set || is_set(g709tti_exp_mode.yfilter)) leaf_name_data.push_back(g709tti_exp_mode.get_name_leafdata());
+    if (g709tti_rec_mode.is_set || is_set(g709tti_rec_mode.yfilter)) leaf_name_data.push_back(g709tti_rec_mode.get_name_leafdata());
+    if (g709tti_sent_mode.is_set || is_set(g709tti_sent_mode.yfilter)) leaf_name_data.push_back(g709tti_sent_mode.get_name_leafdata());
+    if (remote_host_name.is_set || is_set(remote_host_name.yfilter)) leaf_name_data.push_back(remote_host_name.get_name_leafdata());
+    if (remote_interface.is_set || is_set(remote_interface.yfilter)) leaf_name_data.push_back(remote_interface.get_name_leafdata());
+    if (remote_ip_addr.is_set || is_set(remote_ip_addr.yfilter)) leaf_name_data.push_back(remote_ip_addr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -996,32 +1249,79 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::TtiMode::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::TtiMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "g709tti-exp-mode")
     {
         g709tti_exp_mode = value;
+        g709tti_exp_mode.value_namespace = name_space;
+        g709tti_exp_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "g709tti-rec-mode")
     {
         g709tti_rec_mode = value;
+        g709tti_rec_mode.value_namespace = name_space;
+        g709tti_rec_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "g709tti-sent-mode")
     {
         g709tti_sent_mode = value;
+        g709tti_sent_mode.value_namespace = name_space;
+        g709tti_sent_mode.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-host-name")
     {
         remote_host_name = value;
+        remote_host_name.value_namespace = name_space;
+        remote_host_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-interface")
     {
         remote_interface = value;
+        remote_interface.value_namespace = name_space;
+        remote_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "remote-ip-addr")
     {
         remote_ip_addr = value;
+        remote_ip_addr.value_namespace = name_space;
+        remote_ip_addr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "g709tti-exp-mode")
+    {
+        g709tti_exp_mode.yfilter = yfilter;
+    }
+    if(value_path == "g709tti-rec-mode")
+    {
+        g709tti_rec_mode.yfilter = yfilter;
+    }
+    if(value_path == "g709tti-sent-mode")
+    {
+        g709tti_sent_mode.yfilter = yfilter;
+    }
+    if(value_path == "remote-host-name")
+    {
+        remote_host_name.yfilter = yfilter;
+    }
+    if(value_path == "remote-interface")
+    {
+        remote_interface.yfilter = yfilter;
+    }
+    if(value_path == "remote-ip-addr")
+    {
+        remote_ip_addr.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exp" || name == "rec" || name == "tx" || name == "g709tti-exp-mode" || name == "g709tti-rec-mode" || name == "g709tti-sent-mode" || name == "remote-host-name" || name == "remote-interface" || name == "remote-ip-addr")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::TtiMode::Tx::Tx()
@@ -1062,24 +1362,24 @@ bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_operation() const
 {
     for (auto const & leaf : dapi.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : operator_specific.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : sapi.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(dapi.operation)
-	|| is_set(full_tti_ascii_string.operation)
-	|| is_set(operator_specific.operation)
-	|| is_set(sapi.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dapi.yfilter)
+	|| ydk::is_set(full_tti_ascii_string.yfilter)
+	|| ydk::is_set(operator_specific.yfilter)
+	|| ydk::is_set(sapi.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Tx::get_segment_path() const
@@ -1105,7 +1405,7 @@ const EntityPath Otu::Controllers::Controller::Info::TtiMode::Tx::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.operation)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
+    if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.yfilter)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
 
     auto dapi_name_datas = dapi.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), dapi_name_datas.begin(), dapi_name_datas.end());
@@ -1130,7 +1430,7 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::TtiMode::Tx::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::TtiMode::Tx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dapi")
     {
@@ -1139,6 +1439,8 @@ void Otu::Controllers::Controller::Info::TtiMode::Tx::set_value(const std::strin
     if(value_path == "full-tti-ascii-string")
     {
         full_tti_ascii_string = value;
+        full_tti_ascii_string.value_namespace = name_space;
+        full_tti_ascii_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator-specific")
     {
@@ -1148,6 +1450,33 @@ void Otu::Controllers::Controller::Info::TtiMode::Tx::set_value(const std::strin
     {
         sapi.append(value);
     }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Tx::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dapi")
+    {
+        dapi.yfilter = yfilter;
+    }
+    if(value_path == "full-tti-ascii-string")
+    {
+        full_tti_ascii_string.yfilter = yfilter;
+    }
+    if(value_path == "operator-specific")
+    {
+        operator_specific.yfilter = yfilter;
+    }
+    if(value_path == "sapi")
+    {
+        sapi.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Tx::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dapi" || name == "full-tti-ascii-string" || name == "operator-specific" || name == "sapi")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::TtiMode::Exp::Exp()
@@ -1188,24 +1517,24 @@ bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_operation() const
 {
     for (auto const & leaf : dapi.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : operator_specific.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : sapi.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(dapi.operation)
-	|| is_set(full_tti_ascii_string.operation)
-	|| is_set(operator_specific.operation)
-	|| is_set(sapi.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dapi.yfilter)
+	|| ydk::is_set(full_tti_ascii_string.yfilter)
+	|| ydk::is_set(operator_specific.yfilter)
+	|| ydk::is_set(sapi.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Exp::get_segment_path() const
@@ -1231,7 +1560,7 @@ const EntityPath Otu::Controllers::Controller::Info::TtiMode::Exp::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.operation)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
+    if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.yfilter)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
 
     auto dapi_name_datas = dapi.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), dapi_name_datas.begin(), dapi_name_datas.end());
@@ -1256,7 +1585,7 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::TtiMode::Exp::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::TtiMode::Exp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dapi")
     {
@@ -1265,6 +1594,8 @@ void Otu::Controllers::Controller::Info::TtiMode::Exp::set_value(const std::stri
     if(value_path == "full-tti-ascii-string")
     {
         full_tti_ascii_string = value;
+        full_tti_ascii_string.value_namespace = name_space;
+        full_tti_ascii_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator-specific")
     {
@@ -1274,6 +1605,33 @@ void Otu::Controllers::Controller::Info::TtiMode::Exp::set_value(const std::stri
     {
         sapi.append(value);
     }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Exp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dapi")
+    {
+        dapi.yfilter = yfilter;
+    }
+    if(value_path == "full-tti-ascii-string")
+    {
+        full_tti_ascii_string.yfilter = yfilter;
+    }
+    if(value_path == "operator-specific")
+    {
+        operator_specific.yfilter = yfilter;
+    }
+    if(value_path == "sapi")
+    {
+        sapi.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Exp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dapi" || name == "full-tti-ascii-string" || name == "operator-specific" || name == "sapi")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::TtiMode::Rec::Rec()
@@ -1314,24 +1672,24 @@ bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_operation() const
 {
     for (auto const & leaf : dapi.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : operator_specific.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : sapi.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(dapi.operation)
-	|| is_set(full_tti_ascii_string.operation)
-	|| is_set(operator_specific.operation)
-	|| is_set(sapi.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(dapi.yfilter)
+	|| ydk::is_set(full_tti_ascii_string.yfilter)
+	|| ydk::is_set(operator_specific.yfilter)
+	|| ydk::is_set(sapi.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::TtiMode::Rec::get_segment_path() const
@@ -1357,7 +1715,7 @@ const EntityPath Otu::Controllers::Controller::Info::TtiMode::Rec::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.operation)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
+    if (full_tti_ascii_string.is_set || is_set(full_tti_ascii_string.yfilter)) leaf_name_data.push_back(full_tti_ascii_string.get_name_leafdata());
 
     auto dapi_name_datas = dapi.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), dapi_name_datas.begin(), dapi_name_datas.end());
@@ -1382,7 +1740,7 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::TtiMode::Rec::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::TtiMode::Rec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dapi")
     {
@@ -1391,6 +1749,8 @@ void Otu::Controllers::Controller::Info::TtiMode::Rec::set_value(const std::stri
     if(value_path == "full-tti-ascii-string")
     {
         full_tti_ascii_string = value;
+        full_tti_ascii_string.value_namespace = name_space;
+        full_tti_ascii_string.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator-specific")
     {
@@ -1400,6 +1760,33 @@ void Otu::Controllers::Controller::Info::TtiMode::Rec::set_value(const std::stri
     {
         sapi.append(value);
     }
+}
+
+void Otu::Controllers::Controller::Info::TtiMode::Rec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dapi")
+    {
+        dapi.yfilter = yfilter;
+    }
+    if(value_path == "full-tti-ascii-string")
+    {
+        full_tti_ascii_string.yfilter = yfilter;
+    }
+    if(value_path == "operator-specific")
+    {
+        operator_specific.yfilter = yfilter;
+    }
+    if(value_path == "sapi")
+    {
+        sapi.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::TtiMode::Rec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dapi" || name == "full-tti-ascii-string" || name == "operator-specific" || name == "sapi")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::NetworkSrlg::NetworkSrlg()
@@ -1428,7 +1815,7 @@ bool Otu::Controllers::Controller::Info::NetworkSrlg::has_operation() const
         if(srlg_info[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::NetworkSrlg::get_segment_path() const
@@ -1493,8 +1880,19 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::NetworkSrlg::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::NetworkSrlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Otu::Controllers::Controller::Info::NetworkSrlg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Otu::Controllers::Controller::Info::NetworkSrlg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srlg-info")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::SrlgInfo()
@@ -1523,12 +1921,12 @@ bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::has_operation() 
 {
     for (auto const & leaf : srlg.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(set_id.operation)
-	|| is_set(srlg.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(set_id.yfilter)
+	|| ydk::is_set(srlg.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_segment_path() const
@@ -1554,7 +1952,7 @@ const EntityPath Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (set_id.is_set || is_set(set_id.operation)) leaf_name_data.push_back(set_id.get_name_leafdata());
+    if (set_id.is_set || is_set(set_id.yfilter)) leaf_name_data.push_back(set_id.get_name_leafdata());
 
     auto srlg_name_datas = srlg.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), srlg_name_datas.begin(), srlg_name_datas.end());
@@ -1575,16 +1973,37 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "set-id")
     {
         set_id = value;
+        set_id.value_namespace = name_space;
+        set_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srlg")
     {
         srlg.append(value);
     }
+}
+
+void Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-id")
+    {
+        set_id.yfilter = yfilter;
+    }
+    if(value_path == "srlg")
+    {
+        srlg.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-id" || name == "srlg")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::OtuAlarmInfo()
@@ -1671,7 +2090,7 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ais !=  nullptr && ais->has_operation())
 	|| (bdi !=  nullptr && bdi->has_operation())
 	|| (biae !=  nullptr && biae->has_operation())
@@ -1970,8 +2389,19 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ais" || name == "bdi" || name == "biae" || name == "ec" || name == "eoc" || name == "fec-mismatch" || name == "fecunc" || name == "iae" || name == "lof" || name == "lom" || name == "los" || name == "oof" || name == "oom" || name == "sd-ber" || name == "sf-ber" || name == "tim" || name == "uc")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::Los()
@@ -1998,11 +2428,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_segment_path() const
@@ -2028,10 +2458,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2050,24 +2480,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Los::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::Lof()
@@ -2094,11 +2559,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_segment_path() const
@@ -2124,10 +2589,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2146,24 +2611,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Lof::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::Lom()
@@ -2190,11 +2690,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_segment_path() const
@@ -2220,10 +2720,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2242,24 +2742,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Lom::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::Oof()
@@ -2286,11 +2821,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_segment_path() const
@@ -2316,10 +2851,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2338,24 +2873,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Oof::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::Oom()
@@ -2382,11 +2952,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_segment_path() const
@@ -2412,10 +2982,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2434,24 +3004,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Oom::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::Ais()
@@ -2478,11 +3083,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_segment_path() const
@@ -2508,10 +3113,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2530,24 +3135,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Ais::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::Iae()
@@ -2574,11 +3214,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_segment_path() const
@@ -2604,10 +3244,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2626,24 +3266,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Iae::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::Biae()
@@ -2670,11 +3345,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_segment_path() const
@@ -2700,10 +3375,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2722,24 +3397,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Biae::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::Bdi()
@@ -2766,11 +3476,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_segment_path() const
@@ -2796,10 +3506,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2818,24 +3528,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Bdi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::Tim()
@@ -2862,11 +3607,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_segment_path() const
@@ -2892,10 +3637,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2914,24 +3659,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Tim::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::Eoc()
@@ -2958,11 +3738,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_segment_path() const
@@ -2988,10 +3768,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3010,24 +3790,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Eoc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::FecMismatch()
@@ -3054,11 +3869,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::has_data() c
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::get_segment_path() const
@@ -3084,10 +3899,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3106,24 +3921,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::FecMismatch::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::SfBer()
@@ -3150,11 +4000,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_segment_path() const
@@ -3180,10 +4030,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3202,24 +4052,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::SfBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::SdBer()
@@ -3246,11 +4131,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_segment_path() const
@@ -3276,10 +4161,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3298,24 +4183,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::SdBer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::Ec()
@@ -3342,11 +4262,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_segment_path() const
@@ -3372,10 +4292,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3394,24 +4314,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Ec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::Uc()
@@ -3438,11 +4393,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_segment_path() const
@@ -3468,10 +4423,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3490,24 +4445,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Uc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::Fecunc()
@@ -3534,11 +4524,11 @@ bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(counter.operation)
-	|| is_set(is_asserted.operation)
-	|| is_set(is_detected.operation)
-	|| is_set(reporting_enabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(counter.yfilter)
+	|| ydk::is_set(is_asserted.yfilter)
+	|| ydk::is_set(is_detected.yfilter)
+	|| ydk::is_set(reporting_enabled.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_segment_path() const
@@ -3564,10 +4554,10 @@ const EntityPath Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (counter.is_set || is_set(counter.operation)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (is_asserted.is_set || is_set(is_asserted.operation)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
-    if (is_detected.is_set || is_set(is_detected.operation)) leaf_name_data.push_back(is_detected.get_name_leafdata());
-    if (reporting_enabled.is_set || is_set(reporting_enabled.operation)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
+    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
+    if (is_asserted.is_set || is_set(is_asserted.yfilter)) leaf_name_data.push_back(is_asserted.get_name_leafdata());
+    if (is_detected.is_set || is_set(is_detected.yfilter)) leaf_name_data.push_back(is_detected.get_name_leafdata());
+    if (reporting_enabled.is_set || is_set(reporting_enabled.yfilter)) leaf_name_data.push_back(reporting_enabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3586,24 +4576,59 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "counter")
     {
         counter = value;
+        counter.value_namespace = name_space;
+        counter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-asserted")
     {
         is_asserted = value;
+        is_asserted.value_namespace = name_space;
+        is_asserted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-detected")
     {
         is_detected = value;
+        is_detected.value_namespace = name_space;
+        is_detected.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reporting-enabled")
     {
         reporting_enabled = value;
+        reporting_enabled.value_namespace = name_space;
+        reporting_enabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "counter")
+    {
+        counter.yfilter = yfilter;
+    }
+    if(value_path == "is-asserted")
+    {
+        is_asserted.yfilter = yfilter;
+    }
+    if(value_path == "is-detected")
+    {
+        is_detected.yfilter = yfilter;
+    }
+    if(value_path == "reporting-enabled")
+    {
+        reporting_enabled.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::OtuAlarmInfo::Fecunc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "counter" || name == "is-asserted" || name == "is-detected" || name == "reporting-enabled")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::Proactive::Proactive()
@@ -3644,18 +4669,18 @@ bool Otu::Controllers::Controller::Info::Proactive::has_data() const
 
 bool Otu::Controllers::Controller::Info::Proactive::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(config_sec_state.operation)
-	|| is_set(inherit_sec_state.operation)
-	|| is_set(proactive_fsm_if_state.operation)
-	|| is_set(proactive_fsm_state.operation)
-	|| is_set(proactive_status.operation)
-	|| is_set(revert_window.operation)
-	|| is_set(rvrt_thresh_coeff.operation)
-	|| is_set(rvrt_thresh_power.operation)
-	|| is_set(trig_thresh_coeff.operation)
-	|| is_set(trig_thresh_power.operation)
-	|| is_set(trigger_window.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(config_sec_state.yfilter)
+	|| ydk::is_set(inherit_sec_state.yfilter)
+	|| ydk::is_set(proactive_fsm_if_state.yfilter)
+	|| ydk::is_set(proactive_fsm_state.yfilter)
+	|| ydk::is_set(proactive_status.yfilter)
+	|| ydk::is_set(revert_window.yfilter)
+	|| ydk::is_set(rvrt_thresh_coeff.yfilter)
+	|| ydk::is_set(rvrt_thresh_power.yfilter)
+	|| ydk::is_set(trig_thresh_coeff.yfilter)
+	|| ydk::is_set(trig_thresh_power.yfilter)
+	|| ydk::is_set(trigger_window.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::Proactive::get_segment_path() const
@@ -3681,17 +4706,17 @@ const EntityPath Otu::Controllers::Controller::Info::Proactive::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (config_sec_state.is_set || is_set(config_sec_state.operation)) leaf_name_data.push_back(config_sec_state.get_name_leafdata());
-    if (inherit_sec_state.is_set || is_set(inherit_sec_state.operation)) leaf_name_data.push_back(inherit_sec_state.get_name_leafdata());
-    if (proactive_fsm_if_state.is_set || is_set(proactive_fsm_if_state.operation)) leaf_name_data.push_back(proactive_fsm_if_state.get_name_leafdata());
-    if (proactive_fsm_state.is_set || is_set(proactive_fsm_state.operation)) leaf_name_data.push_back(proactive_fsm_state.get_name_leafdata());
-    if (proactive_status.is_set || is_set(proactive_status.operation)) leaf_name_data.push_back(proactive_status.get_name_leafdata());
-    if (revert_window.is_set || is_set(revert_window.operation)) leaf_name_data.push_back(revert_window.get_name_leafdata());
-    if (rvrt_thresh_coeff.is_set || is_set(rvrt_thresh_coeff.operation)) leaf_name_data.push_back(rvrt_thresh_coeff.get_name_leafdata());
-    if (rvrt_thresh_power.is_set || is_set(rvrt_thresh_power.operation)) leaf_name_data.push_back(rvrt_thresh_power.get_name_leafdata());
-    if (trig_thresh_coeff.is_set || is_set(trig_thresh_coeff.operation)) leaf_name_data.push_back(trig_thresh_coeff.get_name_leafdata());
-    if (trig_thresh_power.is_set || is_set(trig_thresh_power.operation)) leaf_name_data.push_back(trig_thresh_power.get_name_leafdata());
-    if (trigger_window.is_set || is_set(trigger_window.operation)) leaf_name_data.push_back(trigger_window.get_name_leafdata());
+    if (config_sec_state.is_set || is_set(config_sec_state.yfilter)) leaf_name_data.push_back(config_sec_state.get_name_leafdata());
+    if (inherit_sec_state.is_set || is_set(inherit_sec_state.yfilter)) leaf_name_data.push_back(inherit_sec_state.get_name_leafdata());
+    if (proactive_fsm_if_state.is_set || is_set(proactive_fsm_if_state.yfilter)) leaf_name_data.push_back(proactive_fsm_if_state.get_name_leafdata());
+    if (proactive_fsm_state.is_set || is_set(proactive_fsm_state.yfilter)) leaf_name_data.push_back(proactive_fsm_state.get_name_leafdata());
+    if (proactive_status.is_set || is_set(proactive_status.yfilter)) leaf_name_data.push_back(proactive_status.get_name_leafdata());
+    if (revert_window.is_set || is_set(revert_window.yfilter)) leaf_name_data.push_back(revert_window.get_name_leafdata());
+    if (rvrt_thresh_coeff.is_set || is_set(rvrt_thresh_coeff.yfilter)) leaf_name_data.push_back(rvrt_thresh_coeff.get_name_leafdata());
+    if (rvrt_thresh_power.is_set || is_set(rvrt_thresh_power.yfilter)) leaf_name_data.push_back(rvrt_thresh_power.get_name_leafdata());
+    if (trig_thresh_coeff.is_set || is_set(trig_thresh_coeff.yfilter)) leaf_name_data.push_back(trig_thresh_coeff.get_name_leafdata());
+    if (trig_thresh_power.is_set || is_set(trig_thresh_power.yfilter)) leaf_name_data.push_back(trig_thresh_power.get_name_leafdata());
+    if (trigger_window.is_set || is_set(trigger_window.yfilter)) leaf_name_data.push_back(trigger_window.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3710,52 +4735,129 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::Proactive::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::Proactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "config-sec-state")
     {
         config_sec_state = value;
+        config_sec_state.value_namespace = name_space;
+        config_sec_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "inherit-sec-state")
     {
         inherit_sec_state = value;
+        inherit_sec_state.value_namespace = name_space;
+        inherit_sec_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proactive-fsm-if-state")
     {
         proactive_fsm_if_state = value;
+        proactive_fsm_if_state.value_namespace = name_space;
+        proactive_fsm_if_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proactive-fsm-state")
     {
         proactive_fsm_state = value;
+        proactive_fsm_state.value_namespace = name_space;
+        proactive_fsm_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "proactive-status")
     {
         proactive_status = value;
+        proactive_status.value_namespace = name_space;
+        proactive_status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "revert-window")
     {
         revert_window = value;
+        revert_window.value_namespace = name_space;
+        revert_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rvrt-thresh-coeff")
     {
         rvrt_thresh_coeff = value;
+        rvrt_thresh_coeff.value_namespace = name_space;
+        rvrt_thresh_coeff.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rvrt-thresh-power")
     {
         rvrt_thresh_power = value;
+        rvrt_thresh_power.value_namespace = name_space;
+        rvrt_thresh_power.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trig-thresh-coeff")
     {
         trig_thresh_coeff = value;
+        trig_thresh_coeff.value_namespace = name_space;
+        trig_thresh_coeff.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trig-thresh-power")
     {
         trig_thresh_power = value;
+        trig_thresh_power.value_namespace = name_space;
+        trig_thresh_power.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "trigger-window")
     {
         trigger_window = value;
+        trigger_window.value_namespace = name_space;
+        trigger_window.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Otu::Controllers::Controller::Info::Proactive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "config-sec-state")
+    {
+        config_sec_state.yfilter = yfilter;
+    }
+    if(value_path == "inherit-sec-state")
+    {
+        inherit_sec_state.yfilter = yfilter;
+    }
+    if(value_path == "proactive-fsm-if-state")
+    {
+        proactive_fsm_if_state.yfilter = yfilter;
+    }
+    if(value_path == "proactive-fsm-state")
+    {
+        proactive_fsm_state.yfilter = yfilter;
+    }
+    if(value_path == "proactive-status")
+    {
+        proactive_status.yfilter = yfilter;
+    }
+    if(value_path == "revert-window")
+    {
+        revert_window.yfilter = yfilter;
+    }
+    if(value_path == "rvrt-thresh-coeff")
+    {
+        rvrt_thresh_coeff.yfilter = yfilter;
+    }
+    if(value_path == "rvrt-thresh-power")
+    {
+        rvrt_thresh_power.yfilter = yfilter;
+    }
+    if(value_path == "trig-thresh-coeff")
+    {
+        trig_thresh_coeff.yfilter = yfilter;
+    }
+    if(value_path == "trig-thresh-power")
+    {
+        trig_thresh_power.yfilter = yfilter;
+    }
+    if(value_path == "trigger-window")
+    {
+        trigger_window.yfilter = yfilter;
+    }
+}
+
+bool Otu::Controllers::Controller::Info::Proactive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config-sec-state" || name == "inherit-sec-state" || name == "proactive-fsm-if-state" || name == "proactive-fsm-state" || name == "proactive-status" || name == "revert-window" || name == "rvrt-thresh-coeff" || name == "rvrt-thresh-power" || name == "trig-thresh-coeff" || name == "trig-thresh-power" || name == "trigger-window")
+        return true;
+    return false;
 }
 
 Otu::Controllers::Controller::Info::OtuFecSatistics::OtuFecSatistics()
@@ -3778,9 +4880,9 @@ bool Otu::Controllers::Controller::Info::OtuFecSatistics::has_data() const
 
 bool Otu::Controllers::Controller::Info::OtuFecSatistics::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(post_fec_ber.operation)
-	|| is_set(pre_fec_ber.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(post_fec_ber.yfilter)
+	|| ydk::is_set(pre_fec_ber.yfilter);
 }
 
 std::string Otu::Controllers::Controller::Info::OtuFecSatistics::get_segment_path() const
@@ -3806,8 +4908,8 @@ const EntityPath Otu::Controllers::Controller::Info::OtuFecSatistics::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (post_fec_ber.is_set || is_set(post_fec_ber.operation)) leaf_name_data.push_back(post_fec_ber.get_name_leafdata());
-    if (pre_fec_ber.is_set || is_set(pre_fec_ber.operation)) leaf_name_data.push_back(pre_fec_ber.get_name_leafdata());
+    if (post_fec_ber.is_set || is_set(post_fec_ber.yfilter)) leaf_name_data.push_back(post_fec_ber.get_name_leafdata());
+    if (pre_fec_ber.is_set || is_set(pre_fec_ber.yfilter)) leaf_name_data.push_back(pre_fec_ber.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3826,90 +4928,113 @@ std::map<std::string, std::shared_ptr<Entity>> Otu::Controllers::Controller::Inf
     return children;
 }
 
-void Otu::Controllers::Controller::Info::OtuFecSatistics::set_value(const std::string & value_path, std::string value)
+void Otu::Controllers::Controller::Info::OtuFecSatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "post-fec-ber")
     {
         post_fec_ber = value;
+        post_fec_ber.value_namespace = name_space;
+        post_fec_ber.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pre-fec-ber")
     {
         pre_fec_ber = value;
+        pre_fec_ber.value_namespace = name_space;
+        pre_fec_ber.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf OtuStateEtEnum::not_ready {0, "not-ready"};
-const Enum::YLeaf OtuStateEtEnum::admin_down {1, "admin-down"};
-const Enum::YLeaf OtuStateEtEnum::down {2, "down"};
-const Enum::YLeaf OtuStateEtEnum::up {3, "up"};
-const Enum::YLeaf OtuStateEtEnum::shutdown {4, "shutdown"};
-const Enum::YLeaf OtuStateEtEnum::error_disable {5, "error-disable"};
-const Enum::YLeaf OtuStateEtEnum::down_immediate {6, "down-immediate"};
-const Enum::YLeaf OtuStateEtEnum::down_immediate_admin {7, "down-immediate-admin"};
-const Enum::YLeaf OtuStateEtEnum::down_graceful {8, "down-graceful"};
-const Enum::YLeaf OtuStateEtEnum::begin_shutdown {9, "begin-shutdown"};
-const Enum::YLeaf OtuStateEtEnum::end_shutdown {10, "end-shutdown"};
-const Enum::YLeaf OtuStateEtEnum::begin_error_disable {11, "begin-error-disable"};
-const Enum::YLeaf OtuStateEtEnum::end_error_disable {12, "end-error-disable"};
-const Enum::YLeaf OtuStateEtEnum::begin_down_graceful {13, "begin-down-graceful"};
-const Enum::YLeaf OtuStateEtEnum::reset {14, "reset"};
-const Enum::YLeaf OtuStateEtEnum::operational {15, "operational"};
-const Enum::YLeaf OtuStateEtEnum::not_operational {16, "not-operational"};
-const Enum::YLeaf OtuStateEtEnum::unknown {17, "unknown"};
-const Enum::YLeaf OtuStateEtEnum::last {18, "last"};
+void Otu::Controllers::Controller::Info::OtuFecSatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "post-fec-ber")
+    {
+        post_fec_ber.yfilter = yfilter;
+    }
+    if(value_path == "pre-fec-ber")
+    {
+        pre_fec_ber.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf OtuPerMonEnum::disable {0, "disable"};
-const Enum::YLeaf OtuPerMonEnum::enable {1, "enable"};
+bool Otu::Controllers::Controller::Info::OtuFecSatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "post-fec-ber" || name == "pre-fec-ber")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf OtuPpIntfStateEnum::otu_pp_intf_up {0, "otu-pp-intf-up"};
-const Enum::YLeaf OtuPpIntfStateEnum::otu_pp_intf_failing {1, "otu-pp-intf-failing"};
-const Enum::YLeaf OtuPpIntfStateEnum::otu_pp_intf_down {2, "otu-pp-intf-down"};
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_up {0, "otu-pp-intf-up"};
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_failing {1, "otu-pp-intf-failing"};
+const Enum::YLeaf OtuPpIntfState::otu_pp_intf_down {2, "otu-pp-intf-down"};
 
-const Enum::YLeaf OtuPpFsmStateEnum::otu_in_active {0, "otu-in-active"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_disabled {1, "otu-disabled"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_normal_state {2, "otu-normal-state"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_local_failing {3, "otu-local-failing"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_remote_failing {4, "otu-remote-failing"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_main_t_failing {5, "otu-main-t-failing"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_regen_failing {6, "otu-regen-failing"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_local_failed {7, "otu-local-failed"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_remote_failed {8, "otu-remote-failed"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_main_t_failed {9, "otu-main-t-failed"};
-const Enum::YLeaf OtuPpFsmStateEnum::otu_regen_failed {10, "otu-regen-failed"};
+const Enum::YLeaf OtuSecState::normal {0, "normal"};
+const Enum::YLeaf OtuSecState::maintenance {1, "maintenance"};
+const Enum::YLeaf OtuSecState::ais {2, "ais"};
 
-const Enum::YLeaf OtuTtiEtEnum::ascii {0, "ascii"};
-const Enum::YLeaf OtuTtiEtEnum::hex {1, "hex"};
-const Enum::YLeaf OtuTtiEtEnum::full_ascii {2, "full-ascii"};
-const Enum::YLeaf OtuTtiEtEnum::full_hex {3, "full-hex"};
+const Enum::YLeaf OtuPpFsmState::otu_in_active {0, "otu-in-active"};
+const Enum::YLeaf OtuPpFsmState::otu_disabled {1, "otu-disabled"};
+const Enum::YLeaf OtuPpFsmState::otu_normal_state {2, "otu-normal-state"};
+const Enum::YLeaf OtuPpFsmState::otu_local_failing {3, "otu-local-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_remote_failing {4, "otu-remote-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_main_t_failing {5, "otu-main-t-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_regen_failing {6, "otu-regen-failing"};
+const Enum::YLeaf OtuPpFsmState::otu_local_failed {7, "otu-local-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_remote_failed {8, "otu-remote-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_main_t_failed {9, "otu-main-t-failed"};
+const Enum::YLeaf OtuPpFsmState::otu_regen_failed {10, "otu-regen-failed"};
 
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_none_fec {1, "otu-bag-none-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_standard_fec {2, "otu-bag-standard-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_1_i_7_fec {4, "otu-bag-1-i-7-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_1_i_4_fec {8, "otu-bag-1-i-4-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_swizzle_fec {16, "otu-bag-swizzle-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
-const Enum::YLeaf OtuG709FecModeEnum::otu_bag_all_fec {512, "otu-bag-all-fec"};
+const Enum::YLeaf OtuPerMon::disable {0, "disable"};
+const Enum::YLeaf OtuPerMon::enable {1, "enable"};
 
-const Enum::YLeaf OtuSecStateEnum::normal {0, "normal"};
-const Enum::YLeaf OtuSecStateEnum::maintenance {1, "maintenance"};
-const Enum::YLeaf OtuSecStateEnum::ais {2, "ais"};
+const Enum::YLeaf OtuDerState::out_of_service {0, "out-of-service"};
+const Enum::YLeaf OtuDerState::in_service {1, "in-service"};
+const Enum::YLeaf OtuDerState::maintenance {2, "maintenance"};
+const Enum::YLeaf OtuDerState::ais {3, "ais"};
 
-const Enum::YLeaf OtuLoopBackModeEnum::none {1, "none"};
-const Enum::YLeaf OtuLoopBackModeEnum::line {2, "line"};
-const Enum::YLeaf OtuLoopBackModeEnum::internal {4, "internal"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_none {0, "gmpls-otu-tti-mode-none"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_sm {1, "gmpls-otu-tti-mode-sm"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_pm {2, "gmpls-otu-tti-mode-pm"};
+const Enum::YLeaf GmplsOtuTtiMode::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mode-tcm"};
 
-const Enum::YLeaf GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_none {0, "gmpls-otu-tti-mode-none"};
-const Enum::YLeaf GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_sm {1, "gmpls-otu-tti-mode-sm"};
-const Enum::YLeaf GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_pm {2, "gmpls-otu-tti-mode-pm"};
-const Enum::YLeaf GmplsOtuTtiModeEnum::gmpls_otu_tti_mode_tcm {3, "gmpls-otu-tti-mode-tcm"};
+const Enum::YLeaf OtuStateEt::not_ready {0, "not-ready"};
+const Enum::YLeaf OtuStateEt::admin_down {1, "admin-down"};
+const Enum::YLeaf OtuStateEt::down {2, "down"};
+const Enum::YLeaf OtuStateEt::up {3, "up"};
+const Enum::YLeaf OtuStateEt::shutdown {4, "shutdown"};
+const Enum::YLeaf OtuStateEt::error_disable {5, "error-disable"};
+const Enum::YLeaf OtuStateEt::down_immediate {6, "down-immediate"};
+const Enum::YLeaf OtuStateEt::down_immediate_admin {7, "down-immediate-admin"};
+const Enum::YLeaf OtuStateEt::down_graceful {8, "down-graceful"};
+const Enum::YLeaf OtuStateEt::begin_shutdown {9, "begin-shutdown"};
+const Enum::YLeaf OtuStateEt::end_shutdown {10, "end-shutdown"};
+const Enum::YLeaf OtuStateEt::begin_error_disable {11, "begin-error-disable"};
+const Enum::YLeaf OtuStateEt::end_error_disable {12, "end-error-disable"};
+const Enum::YLeaf OtuStateEt::begin_down_graceful {13, "begin-down-graceful"};
+const Enum::YLeaf OtuStateEt::reset {14, "reset"};
+const Enum::YLeaf OtuStateEt::operational {15, "operational"};
+const Enum::YLeaf OtuStateEt::not_operational {16, "not-operational"};
+const Enum::YLeaf OtuStateEt::unknown {17, "unknown"};
+const Enum::YLeaf OtuStateEt::last {18, "last"};
 
-const Enum::YLeaf OtuDerStateEnum::out_of_service {0, "out-of-service"};
-const Enum::YLeaf OtuDerStateEnum::in_service {1, "in-service"};
-const Enum::YLeaf OtuDerStateEnum::maintenance {2, "maintenance"};
-const Enum::YLeaf OtuDerStateEnum::ais {3, "ais"};
+const Enum::YLeaf OtuTtiEt::ascii {0, "ascii"};
+const Enum::YLeaf OtuTtiEt::hex {1, "hex"};
+const Enum::YLeaf OtuTtiEt::full_ascii {2, "full-ascii"};
+const Enum::YLeaf OtuTtiEt::full_hex {3, "full-hex"};
+
+const Enum::YLeaf OtuG709FecMode::otu_bag_none_fec {1, "otu-bag-none-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_standard_fec {2, "otu-bag-standard-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_1_i_7_fec {4, "otu-bag-1-i-7-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_1_i_4_fec {8, "otu-bag-1-i-4-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_swizzle_fec {16, "otu-bag-swizzle-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_hg20_fec {32, "otu-bag-hg20-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_enhanced_hg7_fec {64, "otu-bag-enhanced-hg7-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_sd20_fec {128, "otu-bag-sd20-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_sd7_fec {256, "otu-bag-sd7-fec"};
+const Enum::YLeaf OtuG709FecMode::otu_bag_all_fec {512, "otu-bag-all-fec"};
+
+const Enum::YLeaf OtuLoopBackMode::none {1, "none"};
+const Enum::YLeaf OtuLoopBackMode::line {2, "line"};
+const Enum::YLeaf OtuLoopBackMode::internal {4, "internal"};
 
 
 }

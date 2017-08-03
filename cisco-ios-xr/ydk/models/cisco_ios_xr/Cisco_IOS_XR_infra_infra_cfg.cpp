@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_infra_infra_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_infra_infra_cfg {
 
 Banners::Banners()
@@ -35,7 +37,7 @@ bool Banners::has_operation() const
         if(banner[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Banners::get_segment_path() const
@@ -97,7 +99,11 @@ std::map<std::string, std::shared_ptr<Entity>> Banners::get_children() const
     return children;
 }
 
-void Banners::set_value(const std::string & value_path, std::string value)
+void Banners::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Banners::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -121,6 +127,18 @@ augment_capabilities_function Banners::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Banners::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Banners::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "banner")
+        return true;
+    return false;
+}
+
 Banners::Banner::Banner()
     :
     banner_name{YType::enumeration, "banner-name"},
@@ -141,9 +159,9 @@ bool Banners::Banner::has_data() const
 
 bool Banners::Banner::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(banner_name.operation)
-	|| is_set(banner_text.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(banner_name.yfilter)
+	|| ydk::is_set(banner_text.yfilter);
 }
 
 std::string Banners::Banner::get_segment_path() const
@@ -169,8 +187,8 @@ const EntityPath Banners::Banner::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (banner_name.is_set || is_set(banner_name.operation)) leaf_name_data.push_back(banner_name.get_name_leafdata());
-    if (banner_text.is_set || is_set(banner_text.operation)) leaf_name_data.push_back(banner_text.get_name_leafdata());
+    if (banner_name.is_set || is_set(banner_name.yfilter)) leaf_name_data.push_back(banner_name.get_name_leafdata());
+    if (banner_text.is_set || is_set(banner_text.yfilter)) leaf_name_data.push_back(banner_text.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -189,24 +207,47 @@ std::map<std::string, std::shared_ptr<Entity>> Banners::Banner::get_children() c
     return children;
 }
 
-void Banners::Banner::set_value(const std::string & value_path, std::string value)
+void Banners::Banner::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "banner-name")
     {
         banner_name = value;
+        banner_name.value_namespace = name_space;
+        banner_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "banner-text")
     {
         banner_text = value;
+        banner_text.value_namespace = name_space;
+        banner_text.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf BannerEnum::exec {0, "exec"};
-const Enum::YLeaf BannerEnum::incoming {1, "incoming"};
-const Enum::YLeaf BannerEnum::motd {2, "motd"};
-const Enum::YLeaf BannerEnum::login {3, "login"};
-const Enum::YLeaf BannerEnum::slip_ppp {4, "slip-ppp"};
-const Enum::YLeaf BannerEnum::prompt_timeout {5, "prompt-timeout"};
+void Banners::Banner::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "banner-name")
+    {
+        banner_name.yfilter = yfilter;
+    }
+    if(value_path == "banner-text")
+    {
+        banner_text.yfilter = yfilter;
+    }
+}
+
+bool Banners::Banner::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "banner-name" || name == "banner-text")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf Banner::exec {0, "exec"};
+const Enum::YLeaf Banner::incoming {1, "incoming"};
+const Enum::YLeaf Banner::motd {2, "motd"};
+const Enum::YLeaf Banner::login {3, "login"};
+const Enum::YLeaf Banner::slip_ppp {4, "slip-ppp"};
+const Enum::YLeaf Banner::prompt_timeout {5, "prompt-timeout"};
 
 
 }

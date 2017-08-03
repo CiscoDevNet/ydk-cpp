@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv6_smiap_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_smiap_cfg {
 
 Ipv6Virtual::Ipv6Virtual()
@@ -32,8 +34,8 @@ bool Ipv6Virtual::has_data() const
 
 bool Ipv6Virtual::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(use_as_source_address.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(use_as_source_address.yfilter)
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
@@ -57,7 +59,7 @@ const EntityPath Ipv6Virtual::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (use_as_source_address.is_set || is_set(use_as_source_address.operation)) leaf_name_data.push_back(use_as_source_address.get_name_leafdata());
+    if (use_as_source_address.is_set || is_set(use_as_source_address.yfilter)) leaf_name_data.push_back(use_as_source_address.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -90,11 +92,21 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Virtual::get_children() const
     return children;
 }
 
-void Ipv6Virtual::set_value(const std::string & value_path, std::string value)
+void Ipv6Virtual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "use-as-source-address")
     {
         use_as_source_address = value;
+        use_as_source_address.value_namespace = name_space;
+        use_as_source_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Virtual::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "use-as-source-address")
+    {
+        use_as_source_address.yfilter = yfilter;
     }
 }
 
@@ -116,6 +128,18 @@ std::string Ipv6Virtual::get_bundle_name() const
 augment_capabilities_function Ipv6Virtual::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Ipv6Virtual::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Ipv6Virtual::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrfs" || name == "use-as-source-address")
+        return true;
+    return false;
 }
 
 Ipv6Virtual::Vrfs::Vrfs()
@@ -144,7 +168,7 @@ bool Ipv6Virtual::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Ipv6Virtual::Vrfs::get_segment_path() const
@@ -209,8 +233,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Virtual::Vrfs::get_children()
     return children;
 }
 
-void Ipv6Virtual::Vrfs::set_value(const std::string & value_path, std::string value)
+void Ipv6Virtual::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Ipv6Virtual::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv6Virtual::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Ipv6Virtual::Vrfs::Vrf::Vrf()
@@ -234,8 +269,8 @@ bool Ipv6Virtual::Vrfs::Vrf::has_data() const
 
 bool Ipv6Virtual::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
@@ -262,7 +297,7 @@ const EntityPath Ipv6Virtual::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -295,12 +330,29 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Virtual::Vrfs::Vrf::get_child
     return children;
 }
 
-void Ipv6Virtual::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Ipv6Virtual::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Virtual::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Virtual::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "vrf-name")
+        return true;
+    return false;
 }
 
 Ipv6Virtual::Vrfs::Vrf::Address::Address()
@@ -323,9 +375,9 @@ bool Ipv6Virtual::Vrfs::Vrf::Address::has_data() const
 
 bool Ipv6Virtual::Vrfs::Vrf::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string Ipv6Virtual::Vrfs::Vrf::Address::get_segment_path() const
@@ -351,8 +403,8 @@ const EntityPath Ipv6Virtual::Vrfs::Vrf::Address::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -371,16 +423,39 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Virtual::Vrfs::Vrf::Address::
     return children;
 }
 
-void Ipv6Virtual::Vrfs::Vrf::Address::set_value(const std::string & value_path, std::string value)
+void Ipv6Virtual::Vrfs::Vrf::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Ipv6Virtual::Vrfs::Vrf::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Virtual::Vrfs::Vrf::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 

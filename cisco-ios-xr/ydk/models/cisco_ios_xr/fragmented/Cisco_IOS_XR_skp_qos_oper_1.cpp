@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_skp_qos_oper_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_skp_qos_oper {
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Config()
@@ -40,8 +42,8 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_config.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_config.yfilter)
 	|| (police !=  nullptr && police->has_operation())
 	|| (shape !=  nullptr && shape->has_operation())
 	|| (wfq !=  nullptr && wfq->has_operation());
@@ -70,7 +72,7 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_config.is_set || is_set(node_config.operation)) leaf_name_data.push_back(node_config.get_name_leafdata());
+    if (node_config.is_set || is_set(node_config.yfilter)) leaf_name_data.push_back(node_config.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -131,12 +133,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-config")
     {
         node_config = value;
+        node_config.value_namespace = name_space;
+        node_config.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-config")
+    {
+        node_config.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "police" || name == "shape" || name == "wfq" || name == "node-config")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Police()
@@ -168,9 +187,9 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(color_aware.operation)
-	|| is_set(policer_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(color_aware.yfilter)
+	|| ydk::is_set(policer_type.yfilter)
 	|| (cbs !=  nullptr && cbs->has_operation())
 	|| (cir !=  nullptr && cir->has_operation());
 }
@@ -198,8 +217,8 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (color_aware.is_set || is_set(color_aware.operation)) leaf_name_data.push_back(color_aware.get_name_leafdata());
-    if (policer_type.is_set || is_set(policer_type.operation)) leaf_name_data.push_back(policer_type.get_name_leafdata());
+    if (color_aware.is_set || is_set(color_aware.yfilter)) leaf_name_data.push_back(color_aware.get_name_leafdata());
+    if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -246,16 +265,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "color-aware")
     {
         color_aware = value;
+        color_aware.value_namespace = name_space;
+        color_aware.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policer-type")
     {
         policer_type = value;
+        policer_type.value_namespace = name_space;
+        policer_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color-aware")
+    {
+        color_aware.yfilter = yfilter;
+    }
+    if(value_path == "policer-type")
+    {
+        policer_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cbs" || name == "cir" || name == "color-aware" || name == "policer-type")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::Cir()
@@ -278,9 +320,9 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_segment_path() const
@@ -306,8 +348,8 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -326,16 +368,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::Cbs()
@@ -358,9 +423,9 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_segment_path() const
@@ -386,8 +451,8 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -406,16 +471,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Shape()
@@ -442,7 +530,7 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (pbs !=  nullptr && pbs->has_operation())
 	|| (pir !=  nullptr && pir->has_operation());
 }
@@ -516,8 +604,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbs" || name == "pir")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::Pir()
@@ -540,9 +639,9 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_segment_path() const
@@ -568,8 +667,8 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -588,16 +687,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::Pbs()
@@ -620,9 +742,9 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_segment_path() const
@@ -648,8 +770,8 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -668,16 +790,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Wfq()
@@ -707,8 +852,8 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excess_ratio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(excess_ratio.yfilter)
 	|| (bandwidth !=  nullptr && bandwidth->has_operation())
 	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
 }
@@ -736,7 +881,7 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excess_ratio.is_set || is_set(excess_ratio.operation)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -783,12 +928,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excess-ratio")
     {
         excess_ratio = value;
+        excess_ratio.value_namespace = name_space;
+        excess_ratio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::Bandwidth()
@@ -811,9 +973,9 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_segment_path() const
@@ -839,8 +1001,8 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -859,16 +1021,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::SumOfBandwidth()
@@ -891,9 +1076,9 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_segment_path() const
@@ -919,8 +1104,8 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -939,16 +1124,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Result()
@@ -978,8 +1186,8 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(stats_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(stats_id.yfilter)
 	|| (police !=  nullptr && police->has_operation())
 	|| (queue !=  nullptr && queue->has_operation());
 }
@@ -1007,7 +1215,7 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (stats_id.is_set || is_set(stats_id.operation)) leaf_name_data.push_back(stats_id.get_name_leafdata());
+    if (stats_id.is_set || is_set(stats_id.yfilter)) leaf_name_data.push_back(stats_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1054,12 +1262,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stats-id")
     {
         stats_id = value;
+        stats_id.value_namespace = name_space;
+        stats_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "stats-id")
+    {
+        stats_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "police" || name == "queue" || name == "stats-id")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::Queue()
@@ -1086,11 +1311,11 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(commit_tx.operation)
-	|| is_set(drop.operation)
-	|| is_set(excess_tx.operation)
-	|| is_set(queue_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(commit_tx.yfilter)
+	|| ydk::is_set(drop.yfilter)
+	|| ydk::is_set(excess_tx.yfilter)
+	|| ydk::is_set(queue_id.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_segment_path() const
@@ -1116,10 +1341,10 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (commit_tx.is_set || is_set(commit_tx.operation)) leaf_name_data.push_back(commit_tx.get_name_leafdata());
-    if (drop.is_set || is_set(drop.operation)) leaf_name_data.push_back(drop.get_name_leafdata());
-    if (excess_tx.is_set || is_set(excess_tx.operation)) leaf_name_data.push_back(excess_tx.get_name_leafdata());
-    if (queue_id.is_set || is_set(queue_id.operation)) leaf_name_data.push_back(queue_id.get_name_leafdata());
+    if (commit_tx.is_set || is_set(commit_tx.yfilter)) leaf_name_data.push_back(commit_tx.get_name_leafdata());
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+    if (excess_tx.is_set || is_set(excess_tx.yfilter)) leaf_name_data.push_back(excess_tx.get_name_leafdata());
+    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1138,24 +1363,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "commit-tx")
     {
         commit_tx = value;
+        commit_tx.value_namespace = name_space;
+        commit_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drop")
     {
         drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-tx")
     {
         excess_tx = value;
+        excess_tx.value_namespace = name_space;
+        excess_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "queue-id")
     {
         queue_id = value;
+        queue_id.value_namespace = name_space;
+        queue_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "commit-tx")
+    {
+        commit_tx.yfilter = yfilter;
+    }
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+    if(value_path == "excess-tx")
+    {
+        excess_tx.yfilter = yfilter;
+    }
+    if(value_path == "queue-id")
+    {
+        queue_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commit-tx" || name == "drop" || name == "excess-tx" || name == "queue-id")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::Police()
@@ -1182,11 +1442,11 @@ bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterf
 
 bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(conform.operation)
-	|| is_set(exceed.operation)
-	|| is_set(token_bucket_id.operation)
-	|| is_set(violate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(conform.yfilter)
+	|| ydk::is_set(exceed.yfilter)
+	|| ydk::is_set(token_bucket_id.yfilter)
+	|| ydk::is_set(violate.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_segment_path() const
@@ -1212,10 +1472,10 @@ const EntityPath PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (conform.is_set || is_set(conform.operation)) leaf_name_data.push_back(conform.get_name_leafdata());
-    if (exceed.is_set || is_set(exceed.operation)) leaf_name_data.push_back(exceed.get_name_leafdata());
-    if (token_bucket_id.is_set || is_set(token_bucket_id.operation)) leaf_name_data.push_back(token_bucket_id.get_name_leafdata());
-    if (violate.is_set || is_set(violate.operation)) leaf_name_data.push_back(violate.get_name_leafdata());
+    if (conform.is_set || is_set(conform.yfilter)) leaf_name_data.push_back(conform.get_name_leafdata());
+    if (exceed.is_set || is_set(exceed.yfilter)) leaf_name_data.push_back(exceed.get_name_leafdata());
+    if (token_bucket_id.is_set || is_set(token_bucket_id.yfilter)) leaf_name_data.push_back(token_bucket_id.get_name_leafdata());
+    if (violate.is_set || is_set(violate.yfilter)) leaf_name_data.push_back(violate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1234,24 +1494,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Bundl
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "conform")
     {
         conform = value;
+        conform.value_namespace = name_space;
+        conform.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "exceed")
     {
         exceed = value;
+        exceed.value_namespace = name_space;
+        exceed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "token-bucket-id")
     {
         token_bucket_id = value;
+        token_bucket_id.value_namespace = name_space;
+        token_bucket_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "violate")
     {
         violate = value;
+        violate.value_namespace = name_space;
+        violate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "conform")
+    {
+        conform.yfilter = yfilter;
+    }
+    if(value_path == "exceed")
+    {
+        exceed.yfilter = yfilter;
+    }
+    if(value_path == "token-bucket-id")
+    {
+        token_bucket_id.yfilter = yfilter;
+    }
+    if(value_path == "violate")
+    {
+        violate.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conform" || name == "exceed" || name == "token-bucket-id" || name == "violate")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interfaces()
@@ -1280,7 +1575,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::get_segment_path() const
@@ -1345,8 +1640,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Interface()
@@ -1376,8 +1682,8 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::has_data() const
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (input !=  nullptr && input->has_operation())
 	|| (output !=  nullptr && output->has_operation());
 }
@@ -1405,7 +1711,7 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::get_entity_p
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1452,12 +1758,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output" || name == "interface-name")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Output()
@@ -1480,7 +1803,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::has_data() const
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (details !=  nullptr && details->has_operation());
 }
 
@@ -1539,8 +1862,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "details")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Details()
@@ -1571,7 +1905,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::has_dat
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (header !=  nullptr && header->has_operation())
 	|| (interface_parameters !=  nullptr && interface_parameters->has_operation())
 	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_operation());
@@ -1660,8 +1994,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "header" || name == "interface-parameters" || name == "skywarp-qos-policy-class")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::Header()
@@ -1688,11 +2033,11 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header:
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(classes.operation)
-	|| is_set(direction.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(policy_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(classes.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(policy_name.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::get_segment_path() const
@@ -1718,10 +2063,10 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (classes.is_set || is_set(classes.operation)) leaf_name_data.push_back(classes.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1740,24 +2085,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "classes")
     {
         classes = value;
+        classes.value_namespace = name_space;
+        classes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "classes")
+    {
+        classes.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Header::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classes" || name == "direction" || name == "interface-name" || name == "policy-name")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::InterfaceParameters()
@@ -1800,19 +2180,19 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Interfa
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_id.operation)
-	|| is_set(hierarchical_depth.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(interface_rate.operation)
-	|| is_set(interface_type.operation)
-	|| is_set(policy_map_id.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(port.operation)
-	|| is_set(port_shaper_rate.operation)
-	|| is_set(qos_interface_handle.operation)
-	|| is_set(uidb_index.operation)
-	|| is_set(under_line_interface_handle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_id.yfilter)
+	|| ydk::is_set(hierarchical_depth.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(interface_rate.yfilter)
+	|| ydk::is_set(interface_type.yfilter)
+	|| ydk::is_set(policy_map_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(port_shaper_rate.yfilter)
+	|| ydk::is_set(qos_interface_handle.yfilter)
+	|| ydk::is_set(uidb_index.yfilter)
+	|| ydk::is_set(under_line_interface_handle.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::get_segment_path() const
@@ -1838,18 +2218,18 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_id.is_set || is_set(bundle_id.operation)) leaf_name_data.push_back(bundle_id.get_name_leafdata());
-    if (hierarchical_depth.is_set || is_set(hierarchical_depth.operation)) leaf_name_data.push_back(hierarchical_depth.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (interface_rate.is_set || is_set(interface_rate.operation)) leaf_name_data.push_back(interface_rate.get_name_leafdata());
-    if (interface_type.is_set || is_set(interface_type.operation)) leaf_name_data.push_back(interface_type.get_name_leafdata());
-    if (policy_map_id.is_set || is_set(policy_map_id.operation)) leaf_name_data.push_back(policy_map_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (port_shaper_rate.is_set || is_set(port_shaper_rate.operation)) leaf_name_data.push_back(port_shaper_rate.get_name_leafdata());
-    if (qos_interface_handle.is_set || is_set(qos_interface_handle.operation)) leaf_name_data.push_back(qos_interface_handle.get_name_leafdata());
-    if (uidb_index.is_set || is_set(uidb_index.operation)) leaf_name_data.push_back(uidb_index.get_name_leafdata());
-    if (under_line_interface_handle.is_set || is_set(under_line_interface_handle.operation)) leaf_name_data.push_back(under_line_interface_handle.get_name_leafdata());
+    if (bundle_id.is_set || is_set(bundle_id.yfilter)) leaf_name_data.push_back(bundle_id.get_name_leafdata());
+    if (hierarchical_depth.is_set || is_set(hierarchical_depth.yfilter)) leaf_name_data.push_back(hierarchical_depth.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_rate.is_set || is_set(interface_rate.yfilter)) leaf_name_data.push_back(interface_rate.get_name_leafdata());
+    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
+    if (policy_map_id.is_set || is_set(policy_map_id.yfilter)) leaf_name_data.push_back(policy_map_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (port_shaper_rate.is_set || is_set(port_shaper_rate.yfilter)) leaf_name_data.push_back(port_shaper_rate.get_name_leafdata());
+    if (qos_interface_handle.is_set || is_set(qos_interface_handle.yfilter)) leaf_name_data.push_back(qos_interface_handle.get_name_leafdata());
+    if (uidb_index.is_set || is_set(uidb_index.yfilter)) leaf_name_data.push_back(uidb_index.get_name_leafdata());
+    if (under_line_interface_handle.is_set || is_set(under_line_interface_handle.yfilter)) leaf_name_data.push_back(under_line_interface_handle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1868,56 +2248,139 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-id")
     {
         bundle_id = value;
+        bundle_id.value_namespace = name_space;
+        bundle_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hierarchical-depth")
     {
         hierarchical_depth = value;
+        hierarchical_depth.value_namespace = name_space;
+        hierarchical_depth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-rate")
     {
         interface_rate = value;
+        interface_rate.value_namespace = name_space;
+        interface_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-type")
     {
         interface_type = value;
+        interface_type.value_namespace = name_space;
+        interface_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-map-id")
     {
         policy_map_id = value;
+        policy_map_id.value_namespace = name_space;
+        policy_map_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port")
     {
         port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-shaper-rate")
     {
         port_shaper_rate = value;
+        port_shaper_rate.value_namespace = name_space;
+        port_shaper_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qos-interface-handle")
     {
         qos_interface_handle = value;
+        qos_interface_handle.value_namespace = name_space;
+        qos_interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "uidb-index")
     {
         uidb_index = value;
+        uidb_index.value_namespace = name_space;
+        uidb_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "under-line-interface-handle")
     {
         under_line_interface_handle = value;
+        under_line_interface_handle.value_namespace = name_space;
+        under_line_interface_handle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-id")
+    {
+        bundle_id.yfilter = yfilter;
+    }
+    if(value_path == "hierarchical-depth")
+    {
+        hierarchical_depth.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "interface-rate")
+    {
+        interface_rate.yfilter = yfilter;
+    }
+    if(value_path == "interface-type")
+    {
+        interface_type.yfilter = yfilter;
+    }
+    if(value_path == "policy-map-id")
+    {
+        policy_map_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "port-shaper-rate")
+    {
+        port_shaper_rate.yfilter = yfilter;
+    }
+    if(value_path == "qos-interface-handle")
+    {
+        qos_interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "uidb-index")
+    {
+        uidb_index.yfilter = yfilter;
+    }
+    if(value_path == "under-line-interface-handle")
+    {
+        under_line_interface_handle.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::InterfaceParameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-id" || name == "hierarchical-depth" || name == "interface-handle" || name == "interface-rate" || name == "interface-type" || name == "policy-map-id" || name == "policy-name" || name == "port" || name == "port-shaper-rate" || name == "qos-interface-handle" || name == "uidb-index" || name == "under-line-interface-handle")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
@@ -1946,7 +2409,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
         if(qos_show_ea_pclass_st[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::get_segment_path() const
@@ -2011,8 +2474,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "qos-show-ea-pclass-st")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::QosShowEaPclassSt()
@@ -2052,13 +2526,13 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(class_level.operation)
-	|| is_set(class_name.operation)
-	|| is_set(index_.operation)
-	|| is_set(node_flags.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(stats_flags.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(class_level.yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(node_flags.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(stats_flags.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (result !=  nullptr && result->has_operation());
 }
@@ -2086,12 +2560,12 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_level.is_set || is_set(class_level.operation)) leaf_name_data.push_back(class_level.get_name_leafdata());
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (node_flags.is_set || is_set(node_flags.operation)) leaf_name_data.push_back(node_flags.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (stats_flags.is_set || is_set(stats_flags.operation)) leaf_name_data.push_back(stats_flags.get_name_leafdata());
+    if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (node_flags.is_set || is_set(node_flags.yfilter)) leaf_name_data.push_back(node_flags.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (stats_flags.is_set || is_set(stats_flags.yfilter)) leaf_name_data.push_back(stats_flags.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2138,32 +2612,79 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-level")
     {
         class_level = value;
+        class_level.value_namespace = name_space;
+        class_level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-flags")
     {
         node_flags = value;
+        node_flags.value_namespace = name_space;
+        node_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stats-flags")
     {
         stats_flags = value;
+        stats_flags.value_namespace = name_space;
+        stats_flags.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-level")
+    {
+        class_level.yfilter = yfilter;
+    }
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "node-flags")
+    {
+        node_flags.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "stats-flags")
+    {
+        stats_flags.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "result" || name == "class-level" || name == "class-name" || name == "index" || name == "node-flags" || name == "policy-name" || name == "stats-flags")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Config()
@@ -2197,8 +2718,8 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_config.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_config.yfilter)
 	|| (police !=  nullptr && police->has_operation())
 	|| (shape !=  nullptr && shape->has_operation())
 	|| (wfq !=  nullptr && wfq->has_operation());
@@ -2227,7 +2748,7 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_config.is_set || is_set(node_config.operation)) leaf_name_data.push_back(node_config.get_name_leafdata());
+    if (node_config.is_set || is_set(node_config.yfilter)) leaf_name_data.push_back(node_config.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2288,12 +2809,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-config")
     {
         node_config = value;
+        node_config.value_namespace = name_space;
+        node_config.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-config")
+    {
+        node_config.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "police" || name == "shape" || name == "wfq" || name == "node-config")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Police()
@@ -2325,9 +2863,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(color_aware.operation)
-	|| is_set(policer_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(color_aware.yfilter)
+	|| ydk::is_set(policer_type.yfilter)
 	|| (cbs !=  nullptr && cbs->has_operation())
 	|| (cir !=  nullptr && cir->has_operation());
 }
@@ -2355,8 +2893,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (color_aware.is_set || is_set(color_aware.operation)) leaf_name_data.push_back(color_aware.get_name_leafdata());
-    if (policer_type.is_set || is_set(policer_type.operation)) leaf_name_data.push_back(policer_type.get_name_leafdata());
+    if (color_aware.is_set || is_set(color_aware.yfilter)) leaf_name_data.push_back(color_aware.get_name_leafdata());
+    if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2403,16 +2941,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "color-aware")
     {
         color_aware = value;
+        color_aware.value_namespace = name_space;
+        color_aware.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policer-type")
     {
         policer_type = value;
+        policer_type.value_namespace = name_space;
+        policer_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color-aware")
+    {
+        color_aware.yfilter = yfilter;
+    }
+    if(value_path == "policer-type")
+    {
+        policer_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cbs" || name == "cir" || name == "color-aware" || name == "policer-type")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::Cir()
@@ -2435,9 +2996,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_segment_path() const
@@ -2463,8 +3024,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2483,16 +3044,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::Cbs()
@@ -2515,9 +3099,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_segment_path() const
@@ -2543,8 +3127,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2563,16 +3147,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Shape()
@@ -2599,7 +3206,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (pbs !=  nullptr && pbs->has_operation())
 	|| (pir !=  nullptr && pir->has_operation());
 }
@@ -2673,8 +3280,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbs" || name == "pir")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::Pir()
@@ -2697,9 +3315,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_segment_path() const
@@ -2725,8 +3343,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2745,16 +3363,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::Pbs()
@@ -2777,9 +3418,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_segment_path() const
@@ -2805,8 +3446,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2825,16 +3466,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Wfq()
@@ -2864,8 +3528,8 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excess_ratio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(excess_ratio.yfilter)
 	|| (bandwidth !=  nullptr && bandwidth->has_operation())
 	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
 }
@@ -2893,7 +3557,7 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excess_ratio.is_set || is_set(excess_ratio.operation)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2940,12 +3604,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excess-ratio")
     {
         excess_ratio = value;
+        excess_ratio.value_namespace = name_space;
+        excess_ratio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::Bandwidth()
@@ -2968,9 +3649,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_segment_path() const
@@ -2996,8 +3677,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3016,16 +3697,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::SumOfBandwidth()
@@ -3048,9 +3752,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_segment_path() const
@@ -3076,8 +3780,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3096,16 +3800,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Result()
@@ -3135,8 +3862,8 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(stats_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(stats_id.yfilter)
 	|| (police !=  nullptr && police->has_operation())
 	|| (queue !=  nullptr && queue->has_operation());
 }
@@ -3164,7 +3891,7 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (stats_id.is_set || is_set(stats_id.operation)) leaf_name_data.push_back(stats_id.get_name_leafdata());
+    if (stats_id.is_set || is_set(stats_id.yfilter)) leaf_name_data.push_back(stats_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3211,12 +3938,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stats-id")
     {
         stats_id = value;
+        stats_id.value_namespace = name_space;
+        stats_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "stats-id")
+    {
+        stats_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "police" || name == "queue" || name == "stats-id")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::Queue()
@@ -3243,11 +3987,11 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(commit_tx.operation)
-	|| is_set(drop.operation)
-	|| is_set(excess_tx.operation)
-	|| is_set(queue_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(commit_tx.yfilter)
+	|| ydk::is_set(drop.yfilter)
+	|| ydk::is_set(excess_tx.yfilter)
+	|| ydk::is_set(queue_id.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_segment_path() const
@@ -3273,10 +4017,10 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (commit_tx.is_set || is_set(commit_tx.operation)) leaf_name_data.push_back(commit_tx.get_name_leafdata());
-    if (drop.is_set || is_set(drop.operation)) leaf_name_data.push_back(drop.get_name_leafdata());
-    if (excess_tx.is_set || is_set(excess_tx.operation)) leaf_name_data.push_back(excess_tx.get_name_leafdata());
-    if (queue_id.is_set || is_set(queue_id.operation)) leaf_name_data.push_back(queue_id.get_name_leafdata());
+    if (commit_tx.is_set || is_set(commit_tx.yfilter)) leaf_name_data.push_back(commit_tx.get_name_leafdata());
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+    if (excess_tx.is_set || is_set(excess_tx.yfilter)) leaf_name_data.push_back(excess_tx.get_name_leafdata());
+    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3295,24 +4039,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "commit-tx")
     {
         commit_tx = value;
+        commit_tx.value_namespace = name_space;
+        commit_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drop")
     {
         drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-tx")
     {
         excess_tx = value;
+        excess_tx.value_namespace = name_space;
+        excess_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "queue-id")
     {
         queue_id = value;
+        queue_id.value_namespace = name_space;
+        queue_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "commit-tx")
+    {
+        commit_tx.yfilter = yfilter;
+    }
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+    if(value_path == "excess-tx")
+    {
+        excess_tx.yfilter = yfilter;
+    }
+    if(value_path == "queue-id")
+    {
+        queue_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commit-tx" || name == "drop" || name == "excess-tx" || name == "queue-id")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::Police()
@@ -3339,11 +4118,11 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywarp
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(conform.operation)
-	|| is_set(exceed.operation)
-	|| is_set(token_bucket_id.operation)
-	|| is_set(violate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(conform.yfilter)
+	|| ydk::is_set(exceed.yfilter)
+	|| ydk::is_set(token_bucket_id.yfilter)
+	|| ydk::is_set(violate.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_segment_path() const
@@ -3369,10 +4148,10 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Deta
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (conform.is_set || is_set(conform.operation)) leaf_name_data.push_back(conform.get_name_leafdata());
-    if (exceed.is_set || is_set(exceed.operation)) leaf_name_data.push_back(exceed.get_name_leafdata());
-    if (token_bucket_id.is_set || is_set(token_bucket_id.operation)) leaf_name_data.push_back(token_bucket_id.get_name_leafdata());
-    if (violate.is_set || is_set(violate.operation)) leaf_name_data.push_back(violate.get_name_leafdata());
+    if (conform.is_set || is_set(conform.yfilter)) leaf_name_data.push_back(conform.get_name_leafdata());
+    if (exceed.is_set || is_set(exceed.yfilter)) leaf_name_data.push_back(exceed.get_name_leafdata());
+    if (token_bucket_id.is_set || is_set(token_bucket_id.yfilter)) leaf_name_data.push_back(token_bucket_id.get_name_leafdata());
+    if (violate.is_set || is_set(violate.yfilter)) leaf_name_data.push_back(violate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3391,24 +4170,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "conform")
     {
         conform = value;
+        conform.value_namespace = name_space;
+        conform.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "exceed")
     {
         exceed = value;
+        exceed.value_namespace = name_space;
+        exceed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "token-bucket-id")
     {
         token_bucket_id = value;
+        token_bucket_id.value_namespace = name_space;
+        token_bucket_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "violate")
     {
         violate = value;
+        violate.value_namespace = name_space;
+        violate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "conform")
+    {
+        conform.yfilter = yfilter;
+    }
+    if(value_path == "exceed")
+    {
+        exceed.yfilter = yfilter;
+    }
+    if(value_path == "token-bucket-id")
+    {
+        token_bucket_id.yfilter = yfilter;
+    }
+    if(value_path == "violate")
+    {
+        violate.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conform" || name == "exceed" || name == "token-bucket-id" || name == "violate")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Input()
@@ -3431,7 +4245,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::has_data() const
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (details !=  nullptr && details->has_operation());
 }
 
@@ -3490,8 +4304,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "details")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Details()
@@ -3522,7 +4347,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::has_data
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (header !=  nullptr && header->has_operation())
 	|| (interface_parameters !=  nullptr && interface_parameters->has_operation())
 	|| (skywarp_qos_policy_class !=  nullptr && skywarp_qos_policy_class->has_operation());
@@ -3611,8 +4436,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "header" || name == "interface-parameters" || name == "skywarp-qos-policy-class")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::Header()
@@ -3639,11 +4475,11 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(classes.operation)
-	|| is_set(direction.operation)
-	|| is_set(interface_name.operation)
-	|| is_set(policy_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(classes.yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(policy_name.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::get_segment_path() const
@@ -3669,10 +4505,10 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (classes.is_set || is_set(classes.operation)) leaf_name_data.push_back(classes.get_name_leafdata());
-    if (direction.is_set || is_set(direction.operation)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (classes.is_set || is_set(classes.yfilter)) leaf_name_data.push_back(classes.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3691,24 +4527,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "classes")
     {
         classes = value;
+        classes.value_namespace = name_space;
+        classes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "direction")
     {
         direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "classes")
+    {
+        classes.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Header::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "classes" || name == "direction" || name == "interface-name" || name == "policy-name")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::InterfaceParameters()
@@ -3751,19 +4622,19 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Interfac
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bundle_id.operation)
-	|| is_set(hierarchical_depth.operation)
-	|| is_set(interface_handle.operation)
-	|| is_set(interface_rate.operation)
-	|| is_set(interface_type.operation)
-	|| is_set(policy_map_id.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(port.operation)
-	|| is_set(port_shaper_rate.operation)
-	|| is_set(qos_interface_handle.operation)
-	|| is_set(uidb_index.operation)
-	|| is_set(under_line_interface_handle.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bundle_id.yfilter)
+	|| ydk::is_set(hierarchical_depth.yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(interface_rate.yfilter)
+	|| ydk::is_set(interface_type.yfilter)
+	|| ydk::is_set(policy_map_id.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(port_shaper_rate.yfilter)
+	|| ydk::is_set(qos_interface_handle.yfilter)
+	|| ydk::is_set(uidb_index.yfilter)
+	|| ydk::is_set(under_line_interface_handle.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::get_segment_path() const
@@ -3789,18 +4660,18 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bundle_id.is_set || is_set(bundle_id.operation)) leaf_name_data.push_back(bundle_id.get_name_leafdata());
-    if (hierarchical_depth.is_set || is_set(hierarchical_depth.operation)) leaf_name_data.push_back(hierarchical_depth.get_name_leafdata());
-    if (interface_handle.is_set || is_set(interface_handle.operation)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
-    if (interface_rate.is_set || is_set(interface_rate.operation)) leaf_name_data.push_back(interface_rate.get_name_leafdata());
-    if (interface_type.is_set || is_set(interface_type.operation)) leaf_name_data.push_back(interface_type.get_name_leafdata());
-    if (policy_map_id.is_set || is_set(policy_map_id.operation)) leaf_name_data.push_back(policy_map_id.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (port.is_set || is_set(port.operation)) leaf_name_data.push_back(port.get_name_leafdata());
-    if (port_shaper_rate.is_set || is_set(port_shaper_rate.operation)) leaf_name_data.push_back(port_shaper_rate.get_name_leafdata());
-    if (qos_interface_handle.is_set || is_set(qos_interface_handle.operation)) leaf_name_data.push_back(qos_interface_handle.get_name_leafdata());
-    if (uidb_index.is_set || is_set(uidb_index.operation)) leaf_name_data.push_back(uidb_index.get_name_leafdata());
-    if (under_line_interface_handle.is_set || is_set(under_line_interface_handle.operation)) leaf_name_data.push_back(under_line_interface_handle.get_name_leafdata());
+    if (bundle_id.is_set || is_set(bundle_id.yfilter)) leaf_name_data.push_back(bundle_id.get_name_leafdata());
+    if (hierarchical_depth.is_set || is_set(hierarchical_depth.yfilter)) leaf_name_data.push_back(hierarchical_depth.get_name_leafdata());
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (interface_rate.is_set || is_set(interface_rate.yfilter)) leaf_name_data.push_back(interface_rate.get_name_leafdata());
+    if (interface_type.is_set || is_set(interface_type.yfilter)) leaf_name_data.push_back(interface_type.get_name_leafdata());
+    if (policy_map_id.is_set || is_set(policy_map_id.yfilter)) leaf_name_data.push_back(policy_map_id.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (port_shaper_rate.is_set || is_set(port_shaper_rate.yfilter)) leaf_name_data.push_back(port_shaper_rate.get_name_leafdata());
+    if (qos_interface_handle.is_set || is_set(qos_interface_handle.yfilter)) leaf_name_data.push_back(qos_interface_handle.get_name_leafdata());
+    if (uidb_index.is_set || is_set(uidb_index.yfilter)) leaf_name_data.push_back(uidb_index.get_name_leafdata());
+    if (under_line_interface_handle.is_set || is_set(under_line_interface_handle.yfilter)) leaf_name_data.push_back(under_line_interface_handle.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3819,56 +4690,139 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bundle-id")
     {
         bundle_id = value;
+        bundle_id.value_namespace = name_space;
+        bundle_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hierarchical-depth")
     {
         hierarchical_depth = value;
+        hierarchical_depth.value_namespace = name_space;
+        hierarchical_depth.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-handle")
     {
         interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-rate")
     {
         interface_rate = value;
+        interface_rate.value_namespace = name_space;
+        interface_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-type")
     {
         interface_type = value;
+        interface_type.value_namespace = name_space;
+        interface_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-map-id")
     {
         policy_map_id = value;
+        policy_map_id.value_namespace = name_space;
+        policy_map_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port")
     {
         port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "port-shaper-rate")
     {
         port_shaper_rate = value;
+        port_shaper_rate.value_namespace = name_space;
+        port_shaper_rate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qos-interface-handle")
     {
         qos_interface_handle = value;
+        qos_interface_handle.value_namespace = name_space;
+        qos_interface_handle.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "uidb-index")
     {
         uidb_index = value;
+        uidb_index.value_namespace = name_space;
+        uidb_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "under-line-interface-handle")
     {
         under_line_interface_handle = value;
+        under_line_interface_handle.value_namespace = name_space;
+        under_line_interface_handle.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bundle-id")
+    {
+        bundle_id.yfilter = yfilter;
+    }
+    if(value_path == "hierarchical-depth")
+    {
+        hierarchical_depth.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "interface-rate")
+    {
+        interface_rate.yfilter = yfilter;
+    }
+    if(value_path == "interface-type")
+    {
+        interface_type.yfilter = yfilter;
+    }
+    if(value_path == "policy-map-id")
+    {
+        policy_map_id.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "port-shaper-rate")
+    {
+        port_shaper_rate.yfilter = yfilter;
+    }
+    if(value_path == "qos-interface-handle")
+    {
+        qos_interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "uidb-index")
+    {
+        uidb_index.yfilter = yfilter;
+    }
+    if(value_path == "under-line-interface-handle")
+    {
+        under_line_interface_handle.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::InterfaceParameters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bundle-id" || name == "hierarchical-depth" || name == "interface-handle" || name == "interface-rate" || name == "interface-type" || name == "policy-map-id" || name == "policy-name" || name == "port" || name == "port-shaper-rate" || name == "qos-interface-handle" || name == "uidb-index" || name == "under-line-interface-handle")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::SkywarpQosPolicyClass()
@@ -3897,7 +4851,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
         if(qos_show_ea_pclass_st[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::get_segment_path() const
@@ -3962,8 +4916,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "qos-show-ea-pclass-st")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::QosShowEaPclassSt()
@@ -4003,13 +4968,13 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(class_level.operation)
-	|| is_set(class_name.operation)
-	|| is_set(index_.operation)
-	|| is_set(node_flags.operation)
-	|| is_set(policy_name.operation)
-	|| is_set(stats_flags.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(class_level.yfilter)
+	|| ydk::is_set(class_name.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(node_flags.yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(stats_flags.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (result !=  nullptr && result->has_operation());
 }
@@ -4037,12 +5002,12 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (class_level.is_set || is_set(class_level.operation)) leaf_name_data.push_back(class_level.get_name_leafdata());
-    if (class_name.is_set || is_set(class_name.operation)) leaf_name_data.push_back(class_name.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (node_flags.is_set || is_set(node_flags.operation)) leaf_name_data.push_back(node_flags.get_name_leafdata());
-    if (policy_name.is_set || is_set(policy_name.operation)) leaf_name_data.push_back(policy_name.get_name_leafdata());
-    if (stats_flags.is_set || is_set(stats_flags.operation)) leaf_name_data.push_back(stats_flags.get_name_leafdata());
+    if (class_level.is_set || is_set(class_level.yfilter)) leaf_name_data.push_back(class_level.get_name_leafdata());
+    if (class_name.is_set || is_set(class_name.yfilter)) leaf_name_data.push_back(class_name.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (node_flags.is_set || is_set(node_flags.yfilter)) leaf_name_data.push_back(node_flags.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (stats_flags.is_set || is_set(stats_flags.yfilter)) leaf_name_data.push_back(stats_flags.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4089,32 +5054,79 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "class-level")
     {
         class_level = value;
+        class_level.value_namespace = name_space;
+        class_level.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "class-name")
     {
         class_name = value;
+        class_name.value_namespace = name_space;
+        class_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-flags")
     {
         node_flags = value;
+        node_flags.value_namespace = name_space;
+        node_flags.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policy-name")
     {
         policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "stats-flags")
     {
         stats_flags = value;
+        stats_flags.value_namespace = name_space;
+        stats_flags.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "class-level")
+    {
+        class_level.yfilter = yfilter;
+    }
+    if(value_path == "class-name")
+    {
+        class_name.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "node-flags")
+    {
+        node_flags.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "stats-flags")
+    {
+        stats_flags.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "config" || name == "result" || name == "class-level" || name == "class-name" || name == "index" || name == "node-flags" || name == "policy-name" || name == "stats-flags")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Config()
@@ -4148,8 +5160,8 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_config.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_config.yfilter)
 	|| (police !=  nullptr && police->has_operation())
 	|| (shape !=  nullptr && shape->has_operation())
 	|| (wfq !=  nullptr && wfq->has_operation());
@@ -4178,7 +5190,7 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_config.is_set || is_set(node_config.operation)) leaf_name_data.push_back(node_config.get_name_leafdata());
+    if (node_config.is_set || is_set(node_config.yfilter)) leaf_name_data.push_back(node_config.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4239,12 +5251,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-config")
     {
         node_config = value;
+        node_config.value_namespace = name_space;
+        node_config.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-config")
+    {
+        node_config.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "police" || name == "shape" || name == "wfq" || name == "node-config")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Police()
@@ -4276,9 +5305,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(color_aware.operation)
-	|| is_set(policer_type.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(color_aware.yfilter)
+	|| ydk::is_set(policer_type.yfilter)
 	|| (cbs !=  nullptr && cbs->has_operation())
 	|| (cir !=  nullptr && cir->has_operation());
 }
@@ -4306,8 +5335,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (color_aware.is_set || is_set(color_aware.operation)) leaf_name_data.push_back(color_aware.get_name_leafdata());
-    if (policer_type.is_set || is_set(policer_type.operation)) leaf_name_data.push_back(policer_type.get_name_leafdata());
+    if (color_aware.is_set || is_set(color_aware.yfilter)) leaf_name_data.push_back(color_aware.get_name_leafdata());
+    if (policer_type.is_set || is_set(policer_type.yfilter)) leaf_name_data.push_back(policer_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4354,16 +5383,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "color-aware")
     {
         color_aware = value;
+        color_aware.value_namespace = name_space;
+        color_aware.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "policer-type")
     {
         policer_type = value;
+        policer_type.value_namespace = name_space;
+        policer_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "color-aware")
+    {
+        color_aware.yfilter = yfilter;
+    }
+    if(value_path == "policer-type")
+    {
+        policer_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cbs" || name == "cir" || name == "color-aware" || name == "policer-type")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::Cir()
@@ -4386,9 +5438,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::get_segment_path() const
@@ -4414,8 +5466,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4434,16 +5486,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::Cbs()
@@ -4466,9 +5541,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::get_segment_path() const
@@ -4494,8 +5569,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4514,16 +5589,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Police::Cbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Shape()
@@ -4550,7 +5648,7 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (pbs !=  nullptr && pbs->has_operation())
 	|| (pir !=  nullptr && pir->has_operation());
 }
@@ -4624,8 +5722,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbs" || name == "pir")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::Pir()
@@ -4648,9 +5757,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::get_segment_path() const
@@ -4676,8 +5785,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4696,16 +5805,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pir::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::Pbs()
@@ -4728,9 +5860,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::get_segment_path() const
@@ -4756,8 +5888,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4776,16 +5908,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Shape::Pbs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Wfq()
@@ -4815,8 +5970,8 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(excess_ratio.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(excess_ratio.yfilter)
 	|| (bandwidth !=  nullptr && bandwidth->has_operation())
 	|| (sum_of_bandwidth !=  nullptr && sum_of_bandwidth->has_operation());
 }
@@ -4844,7 +5999,7 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (excess_ratio.is_set || is_set(excess_ratio.operation)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
+    if (excess_ratio.is_set || is_set(excess_ratio.yfilter)) leaf_name_data.push_back(excess_ratio.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4891,12 +6046,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "excess-ratio")
     {
         excess_ratio = value;
+        excess_ratio.value_namespace = name_space;
+        excess_ratio.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "excess-ratio")
+    {
+        excess_ratio.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "sum-of-bandwidth" || name == "excess-ratio")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::Bandwidth()
@@ -4919,9 +6091,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::get_segment_path() const
@@ -4947,8 +6119,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4967,16 +6139,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::SumOfBandwidth()
@@ -4999,9 +6194,9 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(unit.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(unit.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::get_segment_path() const
@@ -5027,8 +6222,8 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unit.is_set || is_set(unit.operation)) leaf_name_data.push_back(unit.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (unit.is_set || is_set(unit.yfilter)) leaf_name_data.push_back(unit.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5047,16 +6242,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unit")
     {
         unit = value;
+        unit.value_namespace = name_space;
+        unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unit")
+    {
+        unit.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Config::Wfq::SumOfBandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unit" || name == "value")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Result()
@@ -5086,8 +6304,8 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(stats_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(stats_id.yfilter)
 	|| (police !=  nullptr && police->has_operation())
 	|| (queue !=  nullptr && queue->has_operation());
 }
@@ -5115,7 +6333,7 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (stats_id.is_set || is_set(stats_id.operation)) leaf_name_data.push_back(stats_id.get_name_leafdata());
+    if (stats_id.is_set || is_set(stats_id.yfilter)) leaf_name_data.push_back(stats_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5162,12 +6380,29 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "stats-id")
     {
         stats_id = value;
+        stats_id.value_namespace = name_space;
+        stats_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "stats-id")
+    {
+        stats_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "police" || name == "queue" || name == "stats-id")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::Queue()
@@ -5194,11 +6429,11 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(commit_tx.operation)
-	|| is_set(drop.operation)
-	|| is_set(excess_tx.operation)
-	|| is_set(queue_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(commit_tx.yfilter)
+	|| ydk::is_set(drop.yfilter)
+	|| ydk::is_set(excess_tx.yfilter)
+	|| ydk::is_set(queue_id.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::get_segment_path() const
@@ -5224,10 +6459,10 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (commit_tx.is_set || is_set(commit_tx.operation)) leaf_name_data.push_back(commit_tx.get_name_leafdata());
-    if (drop.is_set || is_set(drop.operation)) leaf_name_data.push_back(drop.get_name_leafdata());
-    if (excess_tx.is_set || is_set(excess_tx.operation)) leaf_name_data.push_back(excess_tx.get_name_leafdata());
-    if (queue_id.is_set || is_set(queue_id.operation)) leaf_name_data.push_back(queue_id.get_name_leafdata());
+    if (commit_tx.is_set || is_set(commit_tx.yfilter)) leaf_name_data.push_back(commit_tx.get_name_leafdata());
+    if (drop.is_set || is_set(drop.yfilter)) leaf_name_data.push_back(drop.get_name_leafdata());
+    if (excess_tx.is_set || is_set(excess_tx.yfilter)) leaf_name_data.push_back(excess_tx.get_name_leafdata());
+    if (queue_id.is_set || is_set(queue_id.yfilter)) leaf_name_data.push_back(queue_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5246,24 +6481,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "commit-tx")
     {
         commit_tx = value;
+        commit_tx.value_namespace = name_space;
+        commit_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "drop")
     {
         drop = value;
+        drop.value_namespace = name_space;
+        drop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "excess-tx")
     {
         excess_tx = value;
+        excess_tx.value_namespace = name_space;
+        excess_tx.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "queue-id")
     {
         queue_id = value;
+        queue_id.value_namespace = name_space;
+        queue_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "commit-tx")
+    {
+        commit_tx.yfilter = yfilter;
+    }
+    if(value_path == "drop")
+    {
+        drop.yfilter = yfilter;
+    }
+    if(value_path == "excess-tx")
+    {
+        excess_tx.yfilter = yfilter;
+    }
+    if(value_path == "queue-id")
+    {
+        queue_id.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Queue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commit-tx" || name == "drop" || name == "excess-tx" || name == "queue-id")
+        return true;
+    return false;
 }
 
 PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::Police()
@@ -5290,11 +6560,11 @@ bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQ
 
 bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(conform.operation)
-	|| is_set(exceed.operation)
-	|| is_set(token_bucket_id.operation)
-	|| is_set(violate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(conform.yfilter)
+	|| ydk::is_set(exceed.yfilter)
+	|| ydk::is_set(token_bucket_id.yfilter)
+	|| ydk::is_set(violate.yfilter);
 }
 
 std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::get_segment_path() const
@@ -5320,10 +6590,10 @@ const EntityPath PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Detai
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (conform.is_set || is_set(conform.operation)) leaf_name_data.push_back(conform.get_name_leafdata());
-    if (exceed.is_set || is_set(exceed.operation)) leaf_name_data.push_back(exceed.get_name_leafdata());
-    if (token_bucket_id.is_set || is_set(token_bucket_id.operation)) leaf_name_data.push_back(token_bucket_id.get_name_leafdata());
-    if (violate.is_set || is_set(violate.operation)) leaf_name_data.push_back(violate.get_name_leafdata());
+    if (conform.is_set || is_set(conform.yfilter)) leaf_name_data.push_back(conform.get_name_leafdata());
+    if (exceed.is_set || is_set(exceed.yfilter)) leaf_name_data.push_back(exceed.get_name_leafdata());
+    if (token_bucket_id.is_set || is_set(token_bucket_id.yfilter)) leaf_name_data.push_back(token_bucket_id.get_name_leafdata());
+    if (violate.is_set || is_set(violate.yfilter)) leaf_name_data.push_back(violate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5342,24 +6612,59 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQosEa::Nodes::Node::Inter
     return children;
 }
 
-void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_value(const std::string & value_path, std::string value)
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "conform")
     {
         conform = value;
+        conform.value_namespace = name_space;
+        conform.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "exceed")
     {
         exceed = value;
+        exceed.value_namespace = name_space;
+        exceed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "token-bucket-id")
     {
         token_bucket_id = value;
+        token_bucket_id.value_namespace = name_space;
+        token_bucket_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "violate")
     {
         violate = value;
+        violate.value_namespace = name_space;
+        violate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "conform")
+    {
+        conform.yfilter = yfilter;
+    }
+    if(value_path == "exceed")
+    {
+        exceed.yfilter = yfilter;
+    }
+    if(value_path == "token-bucket-id")
+    {
+        token_bucket_id.yfilter = yfilter;
+    }
+    if(value_path == "violate")
+    {
+        violate.yfilter = yfilter;
+    }
+}
+
+bool PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt::Result::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conform" || name == "exceed" || name == "token-bucket-id" || name == "violate")
+        return true;
+    return false;
 }
 
 

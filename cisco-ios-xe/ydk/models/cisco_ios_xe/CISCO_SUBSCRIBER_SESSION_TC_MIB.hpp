@@ -7,44 +7,44 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_SUBSCRIBER_SESSION_TC_MIB {
 
-class SubsessiontypeEnum : public Enum
+class Subsessionredundancymode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf all;
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf pppSubscriber;
-        static const Enum::YLeaf pppoeSubscriber;
-        static const Enum::YLeaf l2tpSubscriber;
-        static const Enum::YLeaf l2fSubscriber;
-        static const Enum::YLeaf ipInterfaceSubscriber;
-        static const Enum::YLeaf ipPktSubscriber;
-        static const Enum::YLeaf ipDhcpv4Subscriber;
-        static const Enum::YLeaf ipRadiusSubscriber;
-        static const Enum::YLeaf l2MacSubscriber;
-        static const Enum::YLeaf l2Dhcpv4Subscriber;
-        static const Enum::YLeaf l2RadiusSubscriber;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf standby;
 
 };
 
-class SubsessionredundancymodeEnum : public Enum
+class Subsessiontype : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf active;
-        static const Enum::YLeaf standby;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf pppSubscriber;
+        static const ydk::Enum::YLeaf pppoeSubscriber;
+        static const ydk::Enum::YLeaf l2tpSubscriber;
+        static const ydk::Enum::YLeaf l2fSubscriber;
+        static const ydk::Enum::YLeaf ipInterfaceSubscriber;
+        static const ydk::Enum::YLeaf ipPktSubscriber;
+        static const ydk::Enum::YLeaf ipDhcpv4Subscriber;
+        static const ydk::Enum::YLeaf ipRadiusSubscriber;
+        static const ydk::Enum::YLeaf l2MacSubscriber;
+        static const ydk::Enum::YLeaf l2Dhcpv4Subscriber;
+        static const ydk::Enum::YLeaf l2RadiusSubscriber;
 
 };
 
-class SubsessionstateEnum : public Enum
+class Subsessionstate : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf pending;
-        static const Enum::YLeaf up;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf pending;
+        static const ydk::Enum::YLeaf up;
 
 };
 

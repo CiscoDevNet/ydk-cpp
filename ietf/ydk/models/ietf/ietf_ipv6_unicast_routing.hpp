@@ -9,17 +9,17 @@
 
 #include "ietf_routing.hpp"
 
-namespace ydk {
+namespace ietf {
 namespace ietf_ipv6_unicast_routing {
 
-class Ipv6UnicastIdentity : public ietf_routing::Ipv6Identity, virtual Identity
+class Ipv6Unicast : public ietf_routing::Ipv6, virtual ydk::Identity
 {
     public:
-        Ipv6UnicastIdentity();
-        ~Ipv6UnicastIdentity();
+        Ipv6Unicast();
+        ~Ipv6Unicast();
 
 
-}; // Ipv6UnicastIdentity
+}; // Ipv6Unicast
 
 
 }

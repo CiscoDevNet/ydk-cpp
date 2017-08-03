@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_plat_chas_invmgr_oper_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_plat_chas_invmgr_oper {
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
@@ -29,9 +31,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_in_nano_seconds.operation)
-	|| is_set(time_in_seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
@@ -57,8 +59,8 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Senso
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.operation)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-    if (time_in_seconds.is_set || is_set(time_in_seconds.operation)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -77,16 +79,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-nano-seconds")
     {
         time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-seconds")
     {
         time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-nano-seconds" || name == "time-in-seconds")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::Attributes()
@@ -113,7 +138,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::has_d
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_info !=  nullptr && basic_info->has_operation())
 	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
@@ -187,8 +212,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-info" || name == "fru-info")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::BasicInfo()
@@ -225,16 +261,16 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::Basic
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(firmware_revision.operation)
-	|| is_set(hardware_revision.operation)
-	|| is_set(is_field_replaceable_unit.operation)
-	|| is_set(model_name.operation)
-	|| is_set(name.operation)
-	|| is_set(serial_number.operation)
-	|| is_set(software_revision.operation)
-	|| is_set(vendor_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(vendor_type.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::get_segment_path() const
@@ -260,15 +296,15 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.operation)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.operation)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.operation)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.operation)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.operation)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.operation)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.operation)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -287,44 +323,109 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "firmware-revision")
     {
         firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-revision")
     {
         hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-field-replaceable-unit")
     {
         is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "model-name")
     {
         model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
         serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "software-revision")
     {
         software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vendor-type")
     {
         vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "firmware-revision" || name == "hardware-revision" || name == "is-field-replaceable-unit" || name == "model-name" || name == "name" || name == "serial-number" || name == "software-revision" || name == "vendor-type")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::FruInfo()
@@ -362,12 +463,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruIn
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(module_administrative_state.operation)
-	|| is_set(module_monitor_state.operation)
-	|| is_set(module_operational_state.operation)
-	|| is_set(module_power_administrative_state.operation)
-	|| is_set(module_reset_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(module_administrative_state.yfilter)
+	|| ydk::is_set(module_monitor_state.yfilter)
+	|| ydk::is_set(module_operational_state.yfilter)
+	|| ydk::is_set(module_power_administrative_state.yfilter)
+	|| ydk::is_set(module_reset_reason.yfilter)
 	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
 	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
@@ -395,11 +496,11 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_administrative_state.is_set || is_set(module_administrative_state.operation)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
-    if (module_monitor_state.is_set || is_set(module_monitor_state.operation)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
-    if (module_operational_state.is_set || is_set(module_operational_state.operation)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
-    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.operation)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
-    if (module_reset_reason.is_set || is_set(module_reset_reason.operation)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
+    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
+    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
+    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
+    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
+    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -446,28 +547,69 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "module-administrative-state")
     {
         module_administrative_state = value;
+        module_administrative_state.value_namespace = name_space;
+        module_administrative_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-monitor-state")
     {
         module_monitor_state = value;
+        module_monitor_state.value_namespace = name_space;
+        module_monitor_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-operational-state")
     {
         module_operational_state = value;
+        module_operational_state.value_namespace = name_space;
+        module_operational_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-power-administrative-state")
     {
         module_power_administrative_state = value;
+        module_power_administrative_state.value_namespace = name_space;
+        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-reset-reason")
     {
         module_reset_reason = value;
+        module_reset_reason.value_namespace = name_space;
+        module_reset_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state.yfilter = yfilter;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state.yfilter = yfilter;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-monitor-state" || name == "module-operational-state" || name == "module-power-administrative-state" || name == "module-reset-reason")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
@@ -490,9 +632,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruIn
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_in_nano_seconds.operation)
-	|| is_set(time_in_seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
@@ -518,8 +660,8 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.operation)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-    if (time_in_seconds.is_set || is_set(time_in_seconds.operation)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -538,16 +680,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-nano-seconds")
     {
         time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-seconds")
     {
         time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-nano-seconds" || name == "time-in-seconds")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
@@ -570,9 +735,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruIn
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_in_nano_seconds.operation)
-	|| is_set(time_in_seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
@@ -598,8 +763,8 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attri
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.operation)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-    if (time_in_seconds.is_set || is_set(time_in_seconds.operation)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -618,16 +783,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-nano-seconds")
     {
         time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-seconds")
     {
         time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-nano-seconds" || name == "time-in-seconds")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Attributes::Attributes()
@@ -654,7 +842,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::has_data() const
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_info !=  nullptr && basic_info->has_operation())
 	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
@@ -728,8 +916,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-info" || name == "fru-info")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::BasicInfo()
@@ -766,16 +965,16 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::has_dat
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(firmware_revision.operation)
-	|| is_set(hardware_revision.operation)
-	|| is_set(is_field_replaceable_unit.operation)
-	|| is_set(model_name.operation)
-	|| is_set(name.operation)
-	|| is_set(serial_number.operation)
-	|| is_set(software_revision.operation)
-	|| is_set(vendor_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(vendor_type.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::get_segment_path() const
@@ -801,15 +1000,15 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicI
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.operation)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.operation)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.operation)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.operation)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.operation)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.operation)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.operation)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -828,44 +1027,109 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "firmware-revision")
     {
         firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-revision")
     {
         hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-field-replaceable-unit")
     {
         is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "model-name")
     {
         model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
         serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "software-revision")
     {
         software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vendor-type")
     {
         vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "firmware-revision" || name == "hardware-revision" || name == "is-field-replaceable-unit" || name == "model-name" || name == "name" || name == "serial-number" || name == "software-revision" || name == "vendor-type")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::FruInfo()
@@ -903,12 +1167,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::has_data(
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(module_administrative_state.operation)
-	|| is_set(module_monitor_state.operation)
-	|| is_set(module_operational_state.operation)
-	|| is_set(module_power_administrative_state.operation)
-	|| is_set(module_reset_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(module_administrative_state.yfilter)
+	|| ydk::is_set(module_monitor_state.yfilter)
+	|| ydk::is_set(module_operational_state.yfilter)
+	|| ydk::is_set(module_power_administrative_state.yfilter)
+	|| ydk::is_set(module_reset_reason.yfilter)
 	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
 	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
@@ -936,11 +1200,11 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInf
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_administrative_state.is_set || is_set(module_administrative_state.operation)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
-    if (module_monitor_state.is_set || is_set(module_monitor_state.operation)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
-    if (module_operational_state.is_set || is_set(module_operational_state.operation)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
-    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.operation)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
-    if (module_reset_reason.is_set || is_set(module_reset_reason.operation)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
+    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
+    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
+    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
+    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
+    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -987,28 +1251,69 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "module-administrative-state")
     {
         module_administrative_state = value;
+        module_administrative_state.value_namespace = name_space;
+        module_administrative_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-monitor-state")
     {
         module_monitor_state = value;
+        module_monitor_state.value_namespace = name_space;
+        module_monitor_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-operational-state")
     {
         module_operational_state = value;
+        module_operational_state.value_namespace = name_space;
+        module_operational_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-power-administrative-state")
     {
         module_power_administrative_state = value;
+        module_power_administrative_state.value_namespace = name_space;
+        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-reset-reason")
     {
         module_reset_reason = value;
+        module_reset_reason.value_namespace = name_space;
+        module_reset_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state.yfilter = yfilter;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state.yfilter = yfilter;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-monitor-state" || name == "module-operational-state" || name == "module-power-administrative-state" || name == "module-reset-reason")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
@@ -1031,9 +1336,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOpera
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_in_nano_seconds.operation)
-	|| is_set(time_in_seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
@@ -1059,8 +1364,8 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInf
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.operation)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-    if (time_in_seconds.is_set || is_set(time_in_seconds.operation)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1079,16 +1384,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-nano-seconds")
     {
         time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-seconds")
     {
         time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-nano-seconds" || name == "time-in-seconds")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
@@ -1111,9 +1439,9 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpT
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_in_nano_seconds.operation)
-	|| is_set(time_in_seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
@@ -1139,8 +1467,8 @@ const EntityPath PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInf
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.operation)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-    if (time_in_seconds.is_set || is_set(time_in_seconds.operation)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1159,16 +1487,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-nano-seconds")
     {
         time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-seconds")
     {
         time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-nano-seconds" || name == "time-in-seconds")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Attributes::Attributes()
@@ -1195,7 +1546,7 @@ bool PlatformInventory::Racks::Rack::Attributes::has_data() const
 
 bool PlatformInventory::Racks::Rack::Attributes::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_info !=  nullptr && basic_info->has_operation())
 	|| (fru_info !=  nullptr && fru_info->has_operation());
 }
@@ -1269,8 +1620,19 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::A
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Attributes::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PlatformInventory::Racks::Rack::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-info" || name == "fru-info")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Attributes::BasicInfo::BasicInfo()
@@ -1307,16 +1669,16 @@ bool PlatformInventory::Racks::Rack::Attributes::BasicInfo::has_data() const
 
 bool PlatformInventory::Racks::Rack::Attributes::BasicInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(description.operation)
-	|| is_set(firmware_revision.operation)
-	|| is_set(hardware_revision.operation)
-	|| is_set(is_field_replaceable_unit.operation)
-	|| is_set(model_name.operation)
-	|| is_set(name.operation)
-	|| is_set(serial_number.operation)
-	|| is_set(software_revision.operation)
-	|| is_set(vendor_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(vendor_type.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_segment_path() const
@@ -1342,15 +1704,15 @@ const EntityPath PlatformInventory::Racks::Rack::Attributes::BasicInfo::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (description.is_set || is_set(description.operation)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.operation)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.operation)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.operation)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.operation)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (name.is_set || is_set(name.operation)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.operation)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.operation)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.operation)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1369,44 +1731,109 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::A
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Attributes::BasicInfo::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "description")
     {
         description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "firmware-revision")
     {
         firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hardware-revision")
     {
         hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-field-replaceable-unit")
     {
         is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "model-name")
     {
         model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "name")
     {
         name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "serial-number")
     {
         serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "software-revision")
     {
         software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vendor-type")
     {
         vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "description" || name == "firmware-revision" || name == "hardware-revision" || name == "is-field-replaceable-unit" || name == "model-name" || name == "name" || name == "serial-number" || name == "software-revision" || name == "vendor-type")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Attributes::FruInfo::FruInfo()
@@ -1444,12 +1871,12 @@ bool PlatformInventory::Racks::Rack::Attributes::FruInfo::has_data() const
 
 bool PlatformInventory::Racks::Rack::Attributes::FruInfo::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(module_administrative_state.operation)
-	|| is_set(module_monitor_state.operation)
-	|| is_set(module_operational_state.operation)
-	|| is_set(module_power_administrative_state.operation)
-	|| is_set(module_reset_reason.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(module_administrative_state.yfilter)
+	|| ydk::is_set(module_monitor_state.yfilter)
+	|| ydk::is_set(module_operational_state.yfilter)
+	|| ydk::is_set(module_power_administrative_state.yfilter)
+	|| ydk::is_set(module_reset_reason.yfilter)
 	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
 	|| (module_up_time !=  nullptr && module_up_time->has_operation());
 }
@@ -1477,11 +1904,11 @@ const EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (module_administrative_state.is_set || is_set(module_administrative_state.operation)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
-    if (module_monitor_state.is_set || is_set(module_monitor_state.operation)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
-    if (module_operational_state.is_set || is_set(module_operational_state.operation)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
-    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.operation)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
-    if (module_reset_reason.is_set || is_set(module_reset_reason.operation)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
+    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
+    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
+    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
+    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
+    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1528,28 +1955,69 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::A
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Attributes::FruInfo::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "module-administrative-state")
     {
         module_administrative_state = value;
+        module_administrative_state.value_namespace = name_space;
+        module_administrative_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-monitor-state")
     {
         module_monitor_state = value;
+        module_monitor_state.value_namespace = name_space;
+        module_monitor_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-operational-state")
     {
         module_operational_state = value;
+        module_operational_state.value_namespace = name_space;
+        module_operational_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-power-administrative-state")
     {
         module_power_administrative_state = value;
+        module_power_administrative_state.value_namespace = name_space;
+        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "module-reset-reason")
     {
         module_reset_reason = value;
+        module_reset_reason.value_namespace = name_space;
+        module_reset_reason.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state.yfilter = yfilter;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state.yfilter = yfilter;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-monitor-state" || name == "module-operational-state" || name == "module-power-administrative-state" || name == "module-reset-reason")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
@@ -1572,9 +2040,9 @@ bool PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateCh
 
 bool PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_in_nano_seconds.operation)
-	|| is_set(time_in_seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
@@ -1600,8 +2068,8 @@ const EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.operation)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-    if (time_in_seconds.is_set || is_set(time_in_seconds.operation)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1620,16 +2088,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::A
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-nano-seconds")
     {
         time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-seconds")
     {
         time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-nano-seconds" || name == "time-in-seconds")
+        return true;
+    return false;
 }
 
 PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
@@ -1652,9 +2143,9 @@ bool PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::has_data
 
 bool PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(time_in_nano_seconds.operation)
-	|| is_set(time_in_seconds.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter);
 }
 
 std::string PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
@@ -1680,8 +2171,8 @@ const EntityPath PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTi
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.operation)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-    if (time_in_seconds.is_set || is_set(time_in_seconds.operation)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1700,16 +2191,39 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::A
     return children;
 }
 
-void PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, std::string value)
+void PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "time-in-nano-seconds")
     {
         time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "time-in-seconds")
     {
         time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-nano-seconds" || name == "time-in-seconds")
+        return true;
+    return false;
 }
 
 

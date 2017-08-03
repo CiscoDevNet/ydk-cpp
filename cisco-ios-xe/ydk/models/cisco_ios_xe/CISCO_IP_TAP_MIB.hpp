@@ -8,10 +8,10 @@
 #include <ydk/errors.hpp>
 
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace CISCO_IP_TAP_MIB {
 
-class CiscoIpTapMib : public Entity
+class CiscoIpTapMib : public ydk::Entity
 {
     public:
         CiscoIpTapMib();
@@ -19,26 +19,29 @@ class CiscoIpTapMib : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Citapstreamencodepacket; //type: CiscoIpTapMib::Citapstreamencodepacket
         class Citapstreamtable; //type: CiscoIpTapMib::Citapstreamtable
 
-        std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamencodepacket> citapstreamencodepacket_;
-        std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamtable> citapstreamtable_;
+        std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamencodepacket> citapstreamencodepacket;
+        std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamtable> citapstreamtable;
         
 }; // CiscoIpTapMib
 
 
-class CiscoIpTapMib::Citapstreamencodepacket : public Entity
+class CiscoIpTapMib::Citapstreamencodepacket : public ydk::Entity
 {
     public:
         Citapstreamencodepacket();
@@ -46,18 +49,20 @@ class CiscoIpTapMib::Citapstreamencodepacket : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf citapstreamcapabilities; //type: Citapstreamcapabilities
+        ydk::YLeaf citapstreamcapabilities; //type: Citapstreamcapabilities
 
 }; // CiscoIpTapMib::Citapstreamencodepacket
 
 
-class CiscoIpTapMib::Citapstreamtable : public Entity
+class CiscoIpTapMib::Citapstreamtable : public ydk::Entity
 {
     public:
         Citapstreamtable();
@@ -65,20 +70,22 @@ class CiscoIpTapMib::Citapstreamtable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Citapstreamentry; //type: CiscoIpTapMib::Citapstreamtable::Citapstreamentry
 
-        std::vector<std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamtable::Citapstreamentry> > citapstreamentry_;
+        std::vector<std::shared_ptr<CISCO_IP_TAP_MIB::CiscoIpTapMib::Citapstreamtable::Citapstreamentry> > citapstreamentry;
         
 }; // CiscoIpTapMib::Citapstreamtable
 
 
-class CiscoIpTapMib::Citapstreamtable::Citapstreamentry : public Entity
+class CiscoIpTapMib::Citapstreamtable::Citapstreamentry : public ydk::Entity
 {
     public:
         Citapstreamentry();
@@ -86,32 +93,34 @@ class CiscoIpTapMib::Citapstreamtable::Citapstreamentry : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         //type: int32 (refers to CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Mediationtable::Ctap2Mediationentry::ctap2mediationcontentid)
-        YLeaf ctap2mediationcontentid;
+        ydk::YLeaf ctap2mediationcontentid;
         //type: int32 (refers to CISCO_TAP2_MIB::CiscoTap2Mib::Ctap2Streamtable::Ctap2Streamentry::ctap2streamindex)
-        YLeaf ctap2streamindex;
-        YLeaf citapstreaminterface; //type: int32
-        YLeaf citapstreamaddrtype; //type: InetaddresstypeEnum
-        YLeaf citapstreamdestinationaddress; //type: binary
-        YLeaf citapstreamdestinationlength; //type: uint32
-        YLeaf citapstreamsourceaddress; //type: binary
-        YLeaf citapstreamsourcelength; //type: uint32
-        YLeaf citapstreamtosbyte; //type: int32
-        YLeaf citapstreamtosbytemask; //type: int32
-        YLeaf citapstreamflowid; //type: int32
-        YLeaf citapstreamprotocol; //type: int32
-        YLeaf citapstreamdestl4portmin; //type: uint16
-        YLeaf citapstreamdestl4portmax; //type: uint16
-        YLeaf citapstreamsourcel4portmin; //type: uint16
-        YLeaf citapstreamsourcel4portmax; //type: uint16
-        YLeaf citapstreamvrf; //type: string
-        YLeaf citapstreamstatus; //type: RowstatusEnum
+        ydk::YLeaf ctap2streamindex;
+        ydk::YLeaf citapstreaminterface; //type: int32
+        ydk::YLeaf citapstreamaddrtype; //type: Inetaddresstype
+        ydk::YLeaf citapstreamdestinationaddress; //type: binary
+        ydk::YLeaf citapstreamdestinationlength; //type: uint32
+        ydk::YLeaf citapstreamsourceaddress; //type: binary
+        ydk::YLeaf citapstreamsourcelength; //type: uint32
+        ydk::YLeaf citapstreamtosbyte; //type: int32
+        ydk::YLeaf citapstreamtosbytemask; //type: int32
+        ydk::YLeaf citapstreamflowid; //type: int32
+        ydk::YLeaf citapstreamprotocol; //type: int32
+        ydk::YLeaf citapstreamdestl4portmin; //type: uint16
+        ydk::YLeaf citapstreamdestl4portmax; //type: uint16
+        ydk::YLeaf citapstreamsourcel4portmin; //type: uint16
+        ydk::YLeaf citapstreamsourcel4portmax; //type: uint16
+        ydk::YLeaf citapstreamvrf; //type: string
+        ydk::YLeaf citapstreamstatus; //type: Rowstatus
 
 }; // CiscoIpTapMib::Citapstreamtable::Citapstreamentry
 

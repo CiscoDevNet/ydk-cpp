@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lib_keychain_macsec_cfg {
 
-class MacSecKeychains : public Entity
+class MacSecKeychains : public ydk::Entity
 {
     public:
         MacSecKeychains();
@@ -18,15 +18,18 @@ class MacSecKeychains : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class MacSecKeychain; //type: MacSecKeychains::MacSecKeychain
 
@@ -35,7 +38,7 @@ class MacSecKeychains : public Entity
 }; // MacSecKeychains
 
 
-class MacSecKeychains::MacSecKeychain : public Entity
+class MacSecKeychains::MacSecKeychain : public ydk::Entity
 {
     public:
         MacSecKeychain();
@@ -43,13 +46,15 @@ class MacSecKeychains::MacSecKeychain : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf chain_name; //type: string
+        ydk::YLeaf chain_name; //type: string
         class Keies; //type: MacSecKeychains::MacSecKeychain::Keies
 
         std::shared_ptr<Cisco_IOS_XR_lib_keychain_macsec_cfg::MacSecKeychains::MacSecKeychain::Keies> keies;
@@ -57,7 +62,7 @@ class MacSecKeychains::MacSecKeychain : public Entity
 }; // MacSecKeychains::MacSecKeychain
 
 
-class MacSecKeychains::MacSecKeychain::Keies : public Entity
+class MacSecKeychains::MacSecKeychain::Keies : public ydk::Entity
 {
     public:
         Keies();
@@ -65,11 +70,13 @@ class MacSecKeychains::MacSecKeychain::Keies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Key; //type: MacSecKeychains::MacSecKeychain::Keies::Key
 
@@ -78,7 +85,7 @@ class MacSecKeychains::MacSecKeychain::Keies : public Entity
 }; // MacSecKeychains::MacSecKeychain::Keies
 
 
-class MacSecKeychains::MacSecKeychain::Keies::Key : public Entity
+class MacSecKeychains::MacSecKeychain::Keies::Key : public ydk::Entity
 {
     public:
         Key();
@@ -86,13 +93,15 @@ class MacSecKeychains::MacSecKeychain::Keies::Key : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf key_id; //type: string
+        ydk::YLeaf key_id; //type: string
         class Lifetime; //type: MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime
         class KeyString; //type: MacSecKeychains::MacSecKeychain::Keies::Key::KeyString
 
@@ -102,7 +111,7 @@ class MacSecKeychains::MacSecKeychain::Keies::Key : public Entity
 }; // MacSecKeychains::MacSecKeychain::Keies::Key
 
 
-class MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime : public Entity
+class MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime : public ydk::Entity
 {
     public:
         Lifetime();
@@ -110,31 +119,33 @@ class MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf start_hour; //type: uint32
-        YLeaf start_minutes; //type: uint32
-        YLeaf start_seconds; //type: uint32
-        YLeaf start_date; //type: uint32
-        YLeaf start_month; //type: MacSecKeyChainMonthEnum
-        YLeaf start_year; //type: uint32
-        YLeaf life_time; //type: uint32
-        YLeaf infinite_flag; //type: boolean
-        YLeaf end_hour; //type: uint32
-        YLeaf end_minutes; //type: uint32
-        YLeaf end_seconds; //type: uint32
-        YLeaf end_date; //type: uint32
-        YLeaf end_month; //type: MacSecKeyChainMonthEnum
-        YLeaf end_year; //type: uint32
+        ydk::YLeaf start_hour; //type: uint32
+        ydk::YLeaf start_minutes; //type: uint32
+        ydk::YLeaf start_seconds; //type: uint32
+        ydk::YLeaf start_date; //type: uint32
+        ydk::YLeaf start_month; //type: MacSecKeyChainMonth
+        ydk::YLeaf start_year; //type: uint32
+        ydk::YLeaf life_time; //type: uint32
+        ydk::YLeaf infinite_flag; //type: boolean
+        ydk::YLeaf end_hour; //type: uint32
+        ydk::YLeaf end_minutes; //type: uint32
+        ydk::YLeaf end_seconds; //type: uint32
+        ydk::YLeaf end_date; //type: uint32
+        ydk::YLeaf end_month; //type: MacSecKeyChainMonth
+        ydk::YLeaf end_year; //type: uint32
 
 }; // MacSecKeychains::MacSecKeychain::Keies::Key::Lifetime
 
 
-class MacSecKeychains::MacSecKeychain::Keies::Key::KeyString : public Entity
+class MacSecKeychains::MacSecKeychain::Keies::Key::KeyString : public ydk::Entity
 {
     public:
         KeyString();
@@ -142,40 +153,43 @@ class MacSecKeychains::MacSecKeychain::Keies::Key::KeyString : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf string; //type: string
-        YLeaf cryptographic_algorithm; //type: MacSecCryptoAlgEnum
+        ydk::YLeaf string; //type: string
+        ydk::YLeaf cryptographic_algorithm; //type: MacSecCryptoAlg
+        ydk::YLeaf encryption_type; //type: int32
 
 }; // MacSecKeychains::MacSecKeychain::Keies::Key::KeyString
 
-class MacSecKeyChainMonthEnum : public Enum
+class MacSecKeyChainMonth : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf jan;
-        static const Enum::YLeaf feb;
-        static const Enum::YLeaf mar;
-        static const Enum::YLeaf apr;
-        static const Enum::YLeaf may;
-        static const Enum::YLeaf jun;
-        static const Enum::YLeaf jul;
-        static const Enum::YLeaf aug;
-        static const Enum::YLeaf sep;
-        static const Enum::YLeaf oct;
-        static const Enum::YLeaf nov;
-        static const Enum::YLeaf dec;
+        static const ydk::Enum::YLeaf jan;
+        static const ydk::Enum::YLeaf feb;
+        static const ydk::Enum::YLeaf mar;
+        static const ydk::Enum::YLeaf apr;
+        static const ydk::Enum::YLeaf may;
+        static const ydk::Enum::YLeaf jun;
+        static const ydk::Enum::YLeaf jul;
+        static const ydk::Enum::YLeaf aug;
+        static const ydk::Enum::YLeaf sep;
+        static const ydk::Enum::YLeaf oct;
+        static const ydk::Enum::YLeaf nov;
+        static const ydk::Enum::YLeaf dec;
 
 };
 
-class MacSecCryptoAlgEnum : public Enum
+class MacSecCryptoAlg : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf aes_128_cmac;
-        static const Enum::YLeaf aes_256_cmac;
+        static const ydk::Enum::YLeaf aes_128_cmac;
+        static const ydk::Enum::YLeaf aes_256_cmac;
 
 };
 

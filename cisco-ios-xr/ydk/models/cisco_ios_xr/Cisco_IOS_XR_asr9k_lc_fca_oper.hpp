@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_lc_fca_oper {
 
-class MpaInternal : public Entity
+class MpaInternal : public ydk::Entity
 {
     public:
         MpaInternal();
@@ -18,15 +18,18 @@ class MpaInternal : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: MpaInternal::Nodes
 
@@ -35,7 +38,7 @@ class MpaInternal : public Entity
 }; // MpaInternal
 
 
-class MpaInternal::Nodes : public Entity
+class MpaInternal::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -43,11 +46,13 @@ class MpaInternal::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: MpaInternal::Nodes::Node
 
@@ -56,7 +61,7 @@ class MpaInternal::Nodes : public Entity
 }; // MpaInternal::Nodes
 
 
-class MpaInternal::Nodes::Node : public Entity
+class MpaInternal::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -64,13 +69,15 @@ class MpaInternal::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node; //type: string
+        ydk::YLeaf node; //type: string
         class Bay; //type: MpaInternal::Nodes::Node::Bay
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_lc_fca_oper::MpaInternal::Nodes::Node::Bay> > bay;
@@ -78,7 +85,7 @@ class MpaInternal::Nodes::Node : public Entity
 }; // MpaInternal::Nodes::Node
 
 
-class MpaInternal::Nodes::Node::Bay : public Entity
+class MpaInternal::Nodes::Node::Bay : public ydk::Entity
 {
     public:
         Bay();
@@ -86,13 +93,15 @@ class MpaInternal::Nodes::Node::Bay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class Ifsubsies; //type: MpaInternal::Nodes::Node::Bay::Ifsubsies
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_lc_fca_oper::MpaInternal::Nodes::Node::Bay::Ifsubsies> ifsubsies;
@@ -100,7 +109,7 @@ class MpaInternal::Nodes::Node::Bay : public Entity
 }; // MpaInternal::Nodes::Node::Bay
 
 
-class MpaInternal::Nodes::Node::Bay::Ifsubsies : public Entity
+class MpaInternal::Nodes::Node::Bay::Ifsubsies : public ydk::Entity
 {
     public:
         Ifsubsies();
@@ -108,11 +117,13 @@ class MpaInternal::Nodes::Node::Bay::Ifsubsies : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ifsubsy; //type: MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy
 
@@ -121,7 +132,7 @@ class MpaInternal::Nodes::Node::Bay::Ifsubsies : public Entity
 }; // MpaInternal::Nodes::Node::Bay::Ifsubsies
 
 
-class MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy : public Entity
+class MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy : public ydk::Entity
 {
     public:
         Ifsubsy();
@@ -129,13 +140,15 @@ class MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: string
+        ydk::YLeaf number; //type: string
         class MpaInternalInfo; //type: MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_lc_fca_oper::MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo> mpa_internal_info;
@@ -143,7 +156,7 @@ class MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy : public Entity
 }; // MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy
 
 
-class MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo : public Entity
+class MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo : public ydk::Entity
 {
     public:
         MpaInternalInfo();
@@ -151,26 +164,28 @@ class MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bay; //type: uint32
-        YLeaf ifsubsys; //type: uint32
-        YLeaf if_state; //type: uint8
-        YLeaf if_event; //type: uint8
-        YLeaf ep_type; //type: uint32
-        YLeaf ep_state; //type: uint8
-        YLeaf ep_presence; //type: uint8
-        YLeaf ep_idprom_major; //type: uint8
-        YLeaf ep_idprom_minor; //type: uint8
-        YLeaf ep_idprom_data; //type: string
+        ydk::YLeaf bay; //type: uint32
+        ydk::YLeaf ifsubsys; //type: uint32
+        ydk::YLeaf if_state; //type: uint8
+        ydk::YLeaf if_event; //type: uint8
+        ydk::YLeaf ep_type; //type: uint32
+        ydk::YLeaf ep_state; //type: uint8
+        ydk::YLeaf ep_presence; //type: uint8
+        ydk::YLeaf ep_idprom_major; //type: uint8
+        ydk::YLeaf ep_idprom_minor; //type: uint8
+        ydk::YLeaf ep_idprom_data; //type: string
 
 }; // MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo
 
-class Mpa : public Entity
+class Mpa : public ydk::Entity
 {
     public:
         Mpa();
@@ -178,15 +193,18 @@ class Mpa : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Nodes; //type: Mpa::Nodes
 
@@ -195,7 +213,7 @@ class Mpa : public Entity
 }; // Mpa
 
 
-class Mpa::Nodes : public Entity
+class Mpa::Nodes : public ydk::Entity
 {
     public:
         Nodes();
@@ -203,11 +221,13 @@ class Mpa::Nodes : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Node; //type: Mpa::Nodes::Node
 
@@ -216,7 +236,7 @@ class Mpa::Nodes : public Entity
 }; // Mpa::Nodes
 
 
-class Mpa::Nodes::Node : public Entity
+class Mpa::Nodes::Node : public ydk::Entity
 {
     public:
         Node();
@@ -224,13 +244,15 @@ class Mpa::Nodes::Node : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf node; //type: string
+        ydk::YLeaf node; //type: string
         class Bay; //type: Mpa::Nodes::Node::Bay
 
         std::vector<std::shared_ptr<Cisco_IOS_XR_asr9k_lc_fca_oper::Mpa::Nodes::Node::Bay> > bay;
@@ -238,7 +260,7 @@ class Mpa::Nodes::Node : public Entity
 }; // Mpa::Nodes::Node
 
 
-class Mpa::Nodes::Node::Bay : public Entity
+class Mpa::Nodes::Node::Bay : public ydk::Entity
 {
     public:
         Bay();
@@ -246,13 +268,15 @@ class Mpa::Nodes::Node::Bay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number; //type: int32
+        ydk::YLeaf number; //type: int32
         class MpaDetailTable; //type: Mpa::Nodes::Node::Bay::MpaDetailTable
 
         std::shared_ptr<Cisco_IOS_XR_asr9k_lc_fca_oper::Mpa::Nodes::Node::Bay::MpaDetailTable> mpa_detail_table;
@@ -260,7 +284,7 @@ class Mpa::Nodes::Node::Bay : public Entity
 }; // Mpa::Nodes::Node::Bay
 
 
-class Mpa::Nodes::Node::Bay::MpaDetailTable : public Entity
+class Mpa::Nodes::Node::Bay::MpaDetailTable : public ydk::Entity
 {
     public:
         MpaDetailTable();
@@ -268,11 +292,13 @@ class Mpa::Nodes::Node::Bay::MpaDetailTable : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class MpaDetail; //type: Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail
 
@@ -281,7 +307,7 @@ class Mpa::Nodes::Node::Bay::MpaDetailTable : public Entity
 }; // Mpa::Nodes::Node::Bay::MpaDetailTable
 
 
-class Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail : public Entity
+class Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail : public ydk::Entity
 {
     public:
         MpaDetail();
@@ -289,60 +315,62 @@ class Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf bay_number; //type: uint16
-        YLeaf is_spa_inserted; //type: boolean
-        YLeaf spa_type; //type: uint16
-        YLeaf is_spa_admin_up; //type: boolean
-        YLeaf spa_oper_state; //type: SpaOperStateEnum
-        YLeaf is_spa_power_admin_up; //type: boolean
-        YLeaf is_spa_powered; //type: boolean
-        YLeaf is_spa_in_reset; //type: boolean
-        YLeaf last_reset_reason; //type: SpaResetReasonEnum
-        YLeaf last_failure_reason; //type: SpaFailureReasonEnum
-        YLeaf insertion_time; //type: uint32
-        YLeaf last_ready_time; //type: uint32
-        YLeaf up_time; //type: uint32
+        ydk::YLeaf bay_number; //type: uint16
+        ydk::YLeaf is_spa_inserted; //type: boolean
+        ydk::YLeaf spa_type; //type: uint16
+        ydk::YLeaf is_spa_admin_up; //type: boolean
+        ydk::YLeaf spa_oper_state; //type: SpaOperState
+        ydk::YLeaf is_spa_power_admin_up; //type: boolean
+        ydk::YLeaf is_spa_powered; //type: boolean
+        ydk::YLeaf is_spa_in_reset; //type: boolean
+        ydk::YLeaf last_reset_reason; //type: SpaResetReason
+        ydk::YLeaf last_failure_reason; //type: SpaFailureReason
+        ydk::YLeaf insertion_time; //type: uint32
+        ydk::YLeaf last_ready_time; //type: uint32
+        ydk::YLeaf up_time; //type: uint32
 
 }; // Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail
 
-class SpaResetReasonEnum : public Enum
+class SpaOperState : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf spa_reset_reason_unknown;
-        static const Enum::YLeaf spa_reset_reason_manual;
-        static const Enum::YLeaf spa_reset_reason_fpd_upgrade;
-        static const Enum::YLeaf spa_reset_reason_audit_fail;
-        static const Enum::YLeaf spa_reset_reason_failure;
+        static const ydk::Enum::YLeaf spa_state_reset;
+        static const ydk::Enum::YLeaf spa_state_failed;
+        static const ydk::Enum::YLeaf spa_state_booting;
+        static const ydk::Enum::YLeaf spa_state_ready;
 
 };
 
-class SpaFailureReasonEnum : public Enum
+class SpaResetReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf spa_failure_reason_unknown;
-        static const Enum::YLeaf spa_failure_reason_spi_failure;
-        static const Enum::YLeaf spa_failure_reason_boot;
-        static const Enum::YLeaf spa_failure_reason_hw_failed;
-        static const Enum::YLeaf spa_failure_reason_sw_failed;
-        static const Enum::YLeaf spa_failure_reason_sw_restart;
-        static const Enum::YLeaf spa_failure_reason_check_fpd;
-        static const Enum::YLeaf spa_failure_reason_read_type;
+        static const ydk::Enum::YLeaf spa_reset_reason_unknown;
+        static const ydk::Enum::YLeaf spa_reset_reason_manual;
+        static const ydk::Enum::YLeaf spa_reset_reason_fpd_upgrade;
+        static const ydk::Enum::YLeaf spa_reset_reason_audit_fail;
+        static const ydk::Enum::YLeaf spa_reset_reason_failure;
 
 };
 
-class SpaOperStateEnum : public Enum
+class SpaFailureReason : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf spa_state_reset;
-        static const Enum::YLeaf spa_state_failed;
-        static const Enum::YLeaf spa_state_booting;
-        static const Enum::YLeaf spa_state_ready;
+        static const ydk::Enum::YLeaf spa_failure_reason_unknown;
+        static const ydk::Enum::YLeaf spa_failure_reason_spi_failure;
+        static const ydk::Enum::YLeaf spa_failure_reason_boot;
+        static const ydk::Enum::YLeaf spa_failure_reason_hw_failed;
+        static const ydk::Enum::YLeaf spa_failure_reason_sw_failed;
+        static const ydk::Enum::YLeaf spa_failure_reason_sw_restart;
+        static const ydk::Enum::YLeaf spa_failure_reason_check_fpd;
+        static const ydk::Enum::YLeaf spa_failure_reason_read_type;
 
 };
 

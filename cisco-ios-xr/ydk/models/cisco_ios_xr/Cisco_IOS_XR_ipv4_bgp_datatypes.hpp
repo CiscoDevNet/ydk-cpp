@@ -7,147 +7,147 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_datatypes {
 
-class BgpSubsequentAddressFamilyEnum : public Enum
+class BgpPrecedenceDscp : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf unicast;
-        static const Enum::YLeaf multicast;
-        static const Enum::YLeaf labeled_unicast;
-        static const Enum::YLeaf mvpn;
-        static const Enum::YLeaf mspw;
-        static const Enum::YLeaf tunnel;
-        static const Enum::YLeaf vpls;
-        static const Enum::YLeaf mdt;
-        static const Enum::YLeaf vpws;
-        static const Enum::YLeaf evpn;
-        static const Enum::YLeaf ls;
-        static const Enum::YLeaf sr_policy;
-        static const Enum::YLeaf vpn;
-        static const Enum::YLeaf vpn_mcast;
-        static const Enum::YLeaf rt_filter;
-        static const Enum::YLeaf flowspec;
-        static const Enum::YLeaf vpn_flowspec;
-        static const Enum::YLeaf all;
+        static const ydk::Enum::YLeaf af11;
+        static const ydk::Enum::YLeaf af12;
+        static const ydk::Enum::YLeaf af13;
+        static const ydk::Enum::YLeaf af21;
+        static const ydk::Enum::YLeaf af22;
+        static const ydk::Enum::YLeaf af23;
+        static const ydk::Enum::YLeaf af31;
+        static const ydk::Enum::YLeaf af32;
+        static const ydk::Enum::YLeaf af33;
+        static const ydk::Enum::YLeaf af41;
+        static const ydk::Enum::YLeaf af42;
+        static const ydk::Enum::YLeaf af43;
+        static const ydk::Enum::YLeaf cs1;
+        static const ydk::Enum::YLeaf cs2;
+        static const ydk::Enum::YLeaf cs3;
+        static const ydk::Enum::YLeaf cs4;
+        static const ydk::Enum::YLeaf cs5;
+        static const ydk::Enum::YLeaf cs6;
+        static const ydk::Enum::YLeaf cs7;
+        static const ydk::Enum::YLeaf ef;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf flash;
+        static const ydk::Enum::YLeaf flash_override;
+        static const ydk::Enum::YLeaf immediate;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf priority;
+        static const ydk::Enum::YLeaf default_or_routine;
 
 };
 
-class BgpNbrCapAdditionalPathsCfgEnum : public Enum
+class BgpSubsequentAddressFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enable;
-        static const Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf labeled_unicast;
+        static const ydk::Enum::YLeaf mvpn;
+        static const ydk::Enum::YLeaf mspw;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf vpls;
+        static const ydk::Enum::YLeaf mdt;
+        static const ydk::Enum::YLeaf vpws;
+        static const ydk::Enum::YLeaf evpn;
+        static const ydk::Enum::YLeaf ls;
+        static const ydk::Enum::YLeaf sr_policy;
+        static const ydk::Enum::YLeaf vpn;
+        static const ydk::Enum::YLeaf vpn_mcast;
+        static const ydk::Enum::YLeaf rt_filter;
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf vpn_flowspec;
+        static const ydk::Enum::YLeaf all;
 
 };
 
-class BgpOfficialAddressFamilyEnum : public Enum
+class BgpAdvertiseLocalLabeledRouteCfg : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4;
-        static const Enum::YLeaf ipv6;
-        static const Enum::YLeaf l2vpn;
-        static const Enum::YLeaf ls;
-        static const Enum::YLeaf all;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
-class BgpafAdditionalPathsCfgEnum : public Enum
+class BgpAddressFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enable;
-        static const Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf ipv4_unicast;
+        static const ydk::Enum::YLeaf ipv4_multicast;
+        static const ydk::Enum::YLeaf ipv4_labeled_unicast;
+        static const ydk::Enum::YLeaf ipv4_tunnel;
+        static const ydk::Enum::YLeaf vp_nv4_unicast;
+        static const ydk::Enum::YLeaf ipv6_unicast;
+        static const ydk::Enum::YLeaf ipv6_multicast;
+        static const ydk::Enum::YLeaf ipv6_labeled_unicast;
+        static const ydk::Enum::YLeaf vp_nv6_unicast;
+        static const ydk::Enum::YLeaf ipv4mdt;
+        static const ydk::Enum::YLeaf l2vpnvpls;
+        static const ydk::Enum::YLeaf ipv4rt_constraint;
+        static const ydk::Enum::YLeaf ipv4mvpn;
+        static const ydk::Enum::YLeaf ipv6mvpn;
+        static const ydk::Enum::YLeaf l2vpnevpn;
+        static const ydk::Enum::YLeaf lsls;
+        static const ydk::Enum::YLeaf vp_nv4_multicast;
+        static const ydk::Enum::YLeaf vp_nv6_multicast;
+        static const ydk::Enum::YLeaf ipv4_flowspec;
+        static const ydk::Enum::YLeaf ipv6_flowspec;
+        static const ydk::Enum::YLeaf vp_nv4_flowspec;
+        static const ydk::Enum::YLeaf vp_nv6_flowspec;
+        static const ydk::Enum::YLeaf l2vpnmspw;
+        static const ydk::Enum::YLeaf ipv4sr_policy;
+        static const ydk::Enum::YLeaf ipv6sr_policy;
+        static const ydk::Enum::YLeaf all_address_family;
 
 };
 
-class BgpTosEnum : public Enum
+class BgpNbrCapAdditionalPathsCfg : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf precedence;
-        static const Enum::YLeaf dscp;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
-class BgpAddressFamilyEnum : public Enum
+class BgpTos : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf ipv4_unicast;
-        static const Enum::YLeaf ipv4_multicast;
-        static const Enum::YLeaf ipv4_labeled_unicast;
-        static const Enum::YLeaf ipv4_tunnel;
-        static const Enum::YLeaf vp_nv4_unicast;
-        static const Enum::YLeaf ipv6_unicast;
-        static const Enum::YLeaf ipv6_multicast;
-        static const Enum::YLeaf ipv6_labeled_unicast;
-        static const Enum::YLeaf vp_nv6_unicast;
-        static const Enum::YLeaf ipv4mdt;
-        static const Enum::YLeaf l2vpnvpls;
-        static const Enum::YLeaf ipv4rt_constraint;
-        static const Enum::YLeaf ipv4mvpn;
-        static const Enum::YLeaf ipv6mvpn;
-        static const Enum::YLeaf l2vpnevpn;
-        static const Enum::YLeaf lsls;
-        static const Enum::YLeaf vp_nv4_multicast;
-        static const Enum::YLeaf vp_nv6_multicast;
-        static const Enum::YLeaf ipv4_flowspec;
-        static const Enum::YLeaf ipv6_flowspec;
-        static const Enum::YLeaf vp_nv4_flowspec;
-        static const Enum::YLeaf vp_nv6_flowspec;
-        static const Enum::YLeaf l2vpnmspw;
-        static const Enum::YLeaf ipv4sr_policy;
-        static const Enum::YLeaf ipv6sr_policy;
-        static const Enum::YLeaf all_address_family;
+        static const ydk::Enum::YLeaf precedence;
+        static const ydk::Enum::YLeaf dscp;
 
 };
 
-class BgpPrecedenceDscpEnum : public Enum
+class BgpafAdditionalPathsCfg : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf af11;
-        static const Enum::YLeaf af12;
-        static const Enum::YLeaf af13;
-        static const Enum::YLeaf af21;
-        static const Enum::YLeaf af22;
-        static const Enum::YLeaf af23;
-        static const Enum::YLeaf af31;
-        static const Enum::YLeaf af32;
-        static const Enum::YLeaf af33;
-        static const Enum::YLeaf af41;
-        static const Enum::YLeaf af42;
-        static const Enum::YLeaf af43;
-        static const Enum::YLeaf cs1;
-        static const Enum::YLeaf cs2;
-        static const Enum::YLeaf cs3;
-        static const Enum::YLeaf cs4;
-        static const Enum::YLeaf cs5;
-        static const Enum::YLeaf cs6;
-        static const Enum::YLeaf cs7;
-        static const Enum::YLeaf ef;
-        static const Enum::YLeaf critical;
-        static const Enum::YLeaf flash;
-        static const Enum::YLeaf flash_override;
-        static const Enum::YLeaf immediate;
-        static const Enum::YLeaf internet;
-        static const Enum::YLeaf network;
-        static const Enum::YLeaf priority;
-        static const Enum::YLeaf default_or_routine;
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
-class BgpAdvertiseLocalLabeledRouteCfgEnum : public Enum
+class BgpOfficialAddressFamily : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf enable;
-        static const Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf l2vpn;
+        static const ydk::Enum::YLeaf ls;
+        static const ydk::Enum::YLeaf all;
 
 };
 
-class BgpUpdateFilterActionEnum : public Enum
+class BgpUpdateFilterAction : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf treat_as_withdraw;
-        static const Enum::YLeaf discard_attibute;
+        static const ydk::Enum::YLeaf treat_as_withdraw;
+        static const ydk::Enum::YLeaf discard_attibute;
 
 };
 

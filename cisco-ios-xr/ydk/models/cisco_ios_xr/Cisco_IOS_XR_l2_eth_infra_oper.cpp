@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_l2_eth_infra_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2_eth_infra_oper {
 
 MacAccounting::MacAccounting()
@@ -29,7 +31,7 @@ bool MacAccounting::has_data() const
 
 bool MacAccounting::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::get_children() con
     return children;
 }
 
-void MacAccounting::set_value(const std::string & value_path, std::string value)
+void MacAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MacAccounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string MacAccounting::get_bundle_name() const
 augment_capabilities_function MacAccounting::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> MacAccounting::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool MacAccounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces")
+        return true;
+    return false;
 }
 
 MacAccounting::Interfaces::Interfaces()
@@ -135,7 +153,7 @@ bool MacAccounting::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string MacAccounting::Interfaces::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::get_ch
     return children;
 }
 
-void MacAccounting::Interfaces::set_value(const std::string & value_path, std::string value)
+void MacAccounting::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void MacAccounting::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MacAccounting::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 MacAccounting::Interfaces::Interface::Interface()
@@ -247,8 +276,8 @@ bool MacAccounting::Interfaces::Interface::has_operation() const
         if(ingress_statistic[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
 	|| (state !=  nullptr && state->has_operation());
 }
 
@@ -275,7 +304,7 @@ const EntityPath MacAccounting::Interfaces::Interface::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -350,12 +379,29 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interf
     return children;
 }
 
-void MacAccounting::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void MacAccounting::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MacAccounting::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool MacAccounting::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "egress-statistic" || name == "ingress-statistic" || name == "state" || name == "interface-name")
+        return true;
+    return false;
 }
 
 MacAccounting::Interfaces::Interface::State::State()
@@ -384,12 +430,12 @@ bool MacAccounting::Interfaces::Interface::State::has_data() const
 
 bool MacAccounting::Interfaces::Interface::State::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(is_egress_enabled.operation)
-	|| is_set(is_ingress_enabled.operation)
-	|| is_set(number_available_egress.operation)
-	|| is_set(number_available_ingress.operation)
-	|| is_set(number_available_on_node.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(is_egress_enabled.yfilter)
+	|| ydk::is_set(is_ingress_enabled.yfilter)
+	|| ydk::is_set(number_available_egress.yfilter)
+	|| ydk::is_set(number_available_ingress.yfilter)
+	|| ydk::is_set(number_available_on_node.yfilter);
 }
 
 std::string MacAccounting::Interfaces::Interface::State::get_segment_path() const
@@ -415,11 +461,11 @@ const EntityPath MacAccounting::Interfaces::Interface::State::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (is_egress_enabled.is_set || is_set(is_egress_enabled.operation)) leaf_name_data.push_back(is_egress_enabled.get_name_leafdata());
-    if (is_ingress_enabled.is_set || is_set(is_ingress_enabled.operation)) leaf_name_data.push_back(is_ingress_enabled.get_name_leafdata());
-    if (number_available_egress.is_set || is_set(number_available_egress.operation)) leaf_name_data.push_back(number_available_egress.get_name_leafdata());
-    if (number_available_ingress.is_set || is_set(number_available_ingress.operation)) leaf_name_data.push_back(number_available_ingress.get_name_leafdata());
-    if (number_available_on_node.is_set || is_set(number_available_on_node.operation)) leaf_name_data.push_back(number_available_on_node.get_name_leafdata());
+    if (is_egress_enabled.is_set || is_set(is_egress_enabled.yfilter)) leaf_name_data.push_back(is_egress_enabled.get_name_leafdata());
+    if (is_ingress_enabled.is_set || is_set(is_ingress_enabled.yfilter)) leaf_name_data.push_back(is_ingress_enabled.get_name_leafdata());
+    if (number_available_egress.is_set || is_set(number_available_egress.yfilter)) leaf_name_data.push_back(number_available_egress.get_name_leafdata());
+    if (number_available_ingress.is_set || is_set(number_available_ingress.yfilter)) leaf_name_data.push_back(number_available_ingress.get_name_leafdata());
+    if (number_available_on_node.is_set || is_set(number_available_on_node.yfilter)) leaf_name_data.push_back(number_available_on_node.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -438,28 +484,69 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interf
     return children;
 }
 
-void MacAccounting::Interfaces::Interface::State::set_value(const std::string & value_path, std::string value)
+void MacAccounting::Interfaces::Interface::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-egress-enabled")
     {
         is_egress_enabled = value;
+        is_egress_enabled.value_namespace = name_space;
+        is_egress_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-ingress-enabled")
     {
         is_ingress_enabled = value;
+        is_ingress_enabled.value_namespace = name_space;
+        is_ingress_enabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-available-egress")
     {
         number_available_egress = value;
+        number_available_egress.value_namespace = name_space;
+        number_available_egress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-available-ingress")
     {
         number_available_ingress = value;
+        number_available_ingress.value_namespace = name_space;
+        number_available_ingress.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "number-available-on-node")
     {
         number_available_on_node = value;
+        number_available_on_node.value_namespace = name_space;
+        number_available_on_node.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MacAccounting::Interfaces::Interface::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-egress-enabled")
+    {
+        is_egress_enabled.yfilter = yfilter;
+    }
+    if(value_path == "is-ingress-enabled")
+    {
+        is_ingress_enabled.yfilter = yfilter;
+    }
+    if(value_path == "number-available-egress")
+    {
+        number_available_egress.yfilter = yfilter;
+    }
+    if(value_path == "number-available-ingress")
+    {
+        number_available_ingress.yfilter = yfilter;
+    }
+    if(value_path == "number-available-on-node")
+    {
+        number_available_on_node.yfilter = yfilter;
+    }
+}
+
+bool MacAccounting::Interfaces::Interface::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "is-egress-enabled" || name == "is-ingress-enabled" || name == "number-available-egress" || name == "number-available-ingress" || name == "number-available-on-node")
+        return true;
+    return false;
 }
 
 MacAccounting::Interfaces::Interface::IngressStatistic::IngressStatistic()
@@ -484,10 +571,10 @@ bool MacAccounting::Interfaces::Interface::IngressStatistic::has_data() const
 
 bool MacAccounting::Interfaces::Interface::IngressStatistic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MacAccounting::Interfaces::Interface::IngressStatistic::get_segment_path() const
@@ -513,9 +600,9 @@ const EntityPath MacAccounting::Interfaces::Interface::IngressStatistic::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -534,20 +621,49 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interf
     return children;
 }
 
-void MacAccounting::Interfaces::Interface::IngressStatistic::set_value(const std::string & value_path, std::string value)
+void MacAccounting::Interfaces::Interface::IngressStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MacAccounting::Interfaces::Interface::IngressStatistic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MacAccounting::Interfaces::Interface::IngressStatistic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "mac-address" || name == "packets")
+        return true;
+    return false;
 }
 
 MacAccounting::Interfaces::Interface::EgressStatistic::EgressStatistic()
@@ -572,10 +688,10 @@ bool MacAccounting::Interfaces::Interface::EgressStatistic::has_data() const
 
 bool MacAccounting::Interfaces::Interface::EgressStatistic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bytes.operation)
-	|| is_set(mac_address.operation)
-	|| is_set(packets.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bytes.yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(packets.yfilter);
 }
 
 std::string MacAccounting::Interfaces::Interface::EgressStatistic::get_segment_path() const
@@ -601,9 +717,9 @@ const EntityPath MacAccounting::Interfaces::Interface::EgressStatistic::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bytes.is_set || is_set(bytes.operation)) leaf_name_data.push_back(bytes.get_name_leafdata());
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (packets.is_set || is_set(packets.operation)) leaf_name_data.push_back(packets.get_name_leafdata());
+    if (bytes.is_set || is_set(bytes.yfilter)) leaf_name_data.push_back(bytes.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (packets.is_set || is_set(packets.yfilter)) leaf_name_data.push_back(packets.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -622,20 +738,49 @@ std::map<std::string, std::shared_ptr<Entity>> MacAccounting::Interfaces::Interf
     return children;
 }
 
-void MacAccounting::Interfaces::Interface::EgressStatistic::set_value(const std::string & value_path, std::string value)
+void MacAccounting::Interfaces::Interface::EgressStatistic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bytes")
     {
         bytes = value;
+        bytes.value_namespace = name_space;
+        bytes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "packets")
     {
         packets = value;
+        packets.value_namespace = name_space;
+        packets.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void MacAccounting::Interfaces::Interface::EgressStatistic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bytes")
+    {
+        bytes.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "packets")
+    {
+        packets.yfilter = yfilter;
+    }
+}
+
+bool MacAccounting::Interfaces::Interface::EgressStatistic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bytes" || name == "mac-address" || name == "packets")
+        return true;
+    return false;
 }
 
 Vlan::Vlan()
@@ -658,7 +803,7 @@ bool Vlan::has_data() const
 
 bool Vlan::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -714,7 +859,11 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::get_children() const
     return children;
 }
 
-void Vlan::set_value(const std::string & value_path, std::string value)
+void Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vlan::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -736,6 +885,18 @@ std::string Vlan::get_bundle_name() const
 augment_capabilities_function Vlan::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Vlan::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Vlan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Nodes()
@@ -764,7 +925,7 @@ bool Vlan::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vlan::Nodes::get_segment_path() const
@@ -829,8 +990,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::get_children() const
     return children;
 }
 
-void Vlan::Nodes::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vlan::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlan::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Node()
@@ -864,8 +1036,8 @@ bool Vlan::Nodes::Node::has_data() const
 
 bool Vlan::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_id.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_id.yfilter)
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (tag_allocations !=  nullptr && tag_allocations->has_operation())
 	|| (trunks !=  nullptr && trunks->has_operation());
@@ -894,7 +1066,7 @@ const EntityPath Vlan::Nodes::Node::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_id.is_set || is_set(node_id.operation)) leaf_name_data.push_back(node_id.get_name_leafdata());
+    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -955,12 +1127,29 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::get_children()
     return children;
 }
 
-void Vlan::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-id")
     {
         node_id = value;
+        node_id.value_namespace = name_space;
+        node_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-id")
+    {
+        node_id.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interfaces" || name == "tag-allocations" || name == "trunks" || name == "node-id")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Trunks::Trunks()
@@ -989,7 +1178,7 @@ bool Vlan::Nodes::Node::Trunks::has_operation() const
         if(trunk[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vlan::Nodes::Node::Trunks::get_segment_path() const
@@ -1054,8 +1243,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::get_ch
     return children;
 }
 
-void Vlan::Nodes::Node::Trunks::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Trunks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vlan::Nodes::Node::Trunks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlan::Nodes::Node::Trunks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "trunk")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Trunk()
@@ -1099,15 +1299,15 @@ bool Vlan::Nodes::Node::Trunks::Trunk::has_data() const
 
 bool Vlan::Nodes::Node::Trunks::Trunk::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(dot1ad_count.operation)
-	|| is_set(interface_xr.operation)
-	|| is_set(mac_filtering.operation)
-	|| is_set(mtu.operation)
-	|| is_set(qinq_outer_ether_type.operation)
-	|| is_set(state.operation)
-	|| is_set(untagged_interface.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(dot1ad_count.yfilter)
+	|| ydk::is_set(interface_xr.yfilter)
+	|| ydk::is_set(mac_filtering.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(qinq_outer_ether_type.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(untagged_interface.yfilter)
 	|| (layer2_sub_interfaces !=  nullptr && layer2_sub_interfaces->has_operation())
 	|| (layer3_sub_interfaces !=  nullptr && layer3_sub_interfaces->has_operation());
 }
@@ -1135,14 +1335,14 @@ const EntityPath Vlan::Nodes::Node::Trunks::Trunk::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (dot1ad_count.is_set || is_set(dot1ad_count.operation)) leaf_name_data.push_back(dot1ad_count.get_name_leafdata());
-    if (interface_xr.is_set || is_set(interface_xr.operation)) leaf_name_data.push_back(interface_xr.get_name_leafdata());
-    if (mac_filtering.is_set || is_set(mac_filtering.operation)) leaf_name_data.push_back(mac_filtering.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (qinq_outer_ether_type.is_set || is_set(qinq_outer_ether_type.operation)) leaf_name_data.push_back(qinq_outer_ether_type.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (untagged_interface.is_set || is_set(untagged_interface.operation)) leaf_name_data.push_back(untagged_interface.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (dot1ad_count.is_set || is_set(dot1ad_count.yfilter)) leaf_name_data.push_back(dot1ad_count.get_name_leafdata());
+    if (interface_xr.is_set || is_set(interface_xr.yfilter)) leaf_name_data.push_back(interface_xr.get_name_leafdata());
+    if (mac_filtering.is_set || is_set(mac_filtering.yfilter)) leaf_name_data.push_back(mac_filtering.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (qinq_outer_ether_type.is_set || is_set(qinq_outer_ether_type.yfilter)) leaf_name_data.push_back(qinq_outer_ether_type.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (untagged_interface.is_set || is_set(untagged_interface.yfilter)) leaf_name_data.push_back(untagged_interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1189,40 +1389,99 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk:
     return children;
 }
 
-void Vlan::Nodes::Node::Trunks::Trunk::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Trunks::Trunk::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot1ad-count")
     {
         dot1ad_count = value;
+        dot1ad_count.value_namespace = name_space;
+        dot1ad_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-xr")
     {
         interface_xr = value;
+        interface_xr.value_namespace = name_space;
+        interface_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-filtering")
     {
         mac_filtering = value;
+        mac_filtering.value_namespace = name_space;
+        mac_filtering.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qinq-outer-ether-type")
     {
         qinq_outer_ether_type = value;
+        qinq_outer_ether_type.value_namespace = name_space;
+        qinq_outer_ether_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "untagged-interface")
     {
         untagged_interface = value;
+        untagged_interface.value_namespace = name_space;
+        untagged_interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "dot1ad-count")
+    {
+        dot1ad_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-xr")
+    {
+        interface_xr.yfilter = yfilter;
+    }
+    if(value_path == "mac-filtering")
+    {
+        mac_filtering.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "qinq-outer-ether-type")
+    {
+        qinq_outer_ether_type.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "untagged-interface")
+    {
+        untagged_interface.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "layer2-sub-interfaces" || name == "layer3-sub-interfaces" || name == "interface" || name == "dot1ad-count" || name == "interface-xr" || name == "mac-filtering" || name == "mtu" || name == "qinq-outer-ether-type" || name == "state" || name == "untagged-interface")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::Layer2SubInterfaces()
@@ -1256,12 +1515,12 @@ bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::has_data() const
 
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot1q_count.operation)
-	|| is_set(qin_any_count.operation)
-	|| is_set(qin_q_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(untagged_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(dot1q_count.yfilter)
+	|| ydk::is_set(qin_any_count.yfilter)
+	|| ydk::is_set(qin_q_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(untagged_count.yfilter)
 	|| (state_counters !=  nullptr && state_counters->has_operation());
 }
 
@@ -1288,11 +1547,11 @@ const EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot1q_count.is_set || is_set(dot1q_count.operation)) leaf_name_data.push_back(dot1q_count.get_name_leafdata());
-    if (qin_any_count.is_set || is_set(qin_any_count.operation)) leaf_name_data.push_back(qin_any_count.get_name_leafdata());
-    if (qin_q_count.is_set || is_set(qin_q_count.operation)) leaf_name_data.push_back(qin_q_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (untagged_count.is_set || is_set(untagged_count.operation)) leaf_name_data.push_back(untagged_count.get_name_leafdata());
+    if (dot1q_count.is_set || is_set(dot1q_count.yfilter)) leaf_name_data.push_back(dot1q_count.get_name_leafdata());
+    if (qin_any_count.is_set || is_set(qin_any_count.yfilter)) leaf_name_data.push_back(qin_any_count.get_name_leafdata());
+    if (qin_q_count.is_set || is_set(qin_q_count.yfilter)) leaf_name_data.push_back(qin_q_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (untagged_count.is_set || is_set(untagged_count.yfilter)) leaf_name_data.push_back(untagged_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1325,28 +1584,69 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk:
     return children;
 }
 
-void Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1q-count")
     {
         dot1q_count = value;
+        dot1q_count.value_namespace = name_space;
+        dot1q_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qin-any-count")
     {
         qin_any_count = value;
+        qin_any_count.value_namespace = name_space;
+        qin_any_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qin-q-count")
     {
         qin_q_count = value;
+        qin_q_count.value_namespace = name_space;
+        qin_q_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "untagged-count")
     {
         untagged_count = value;
+        untagged_count.value_namespace = name_space;
+        untagged_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot1q-count")
+    {
+        dot1q_count.yfilter = yfilter;
+    }
+    if(value_path == "qin-any-count")
+    {
+        qin_any_count.yfilter = yfilter;
+    }
+    if(value_path == "qin-q-count")
+    {
+        qin_q_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "untagged-count")
+    {
+        untagged_count.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state-counters" || name == "dot1q-count" || name == "qin-any-count" || name == "qin-q-count" || name == "total-count" || name == "untagged-count")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::StateCounters()
@@ -1371,10 +1671,10 @@ bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::has_d
 
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_down.operation)
-	|| is_set(down.operation)
-	|| is_set(up.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_down.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(up.yfilter);
 }
 
 std::string Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::get_segment_path() const
@@ -1400,9 +1700,9 @@ const EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCou
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_down.is_set || is_set(admin_down.operation)) leaf_name_data.push_back(admin_down.get_name_leafdata());
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (admin_down.is_set || is_set(admin_down.yfilter)) leaf_name_data.push_back(admin_down.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1421,20 +1721,49 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk:
     return children;
 }
 
-void Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-down")
     {
         admin_down = value;
+        admin_down.value_namespace = name_space;
+        admin_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-down")
+    {
+        admin_down.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::Layer2SubInterfaces::StateCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-down" || name == "down" || name == "up")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::Layer3SubInterfaces()
@@ -1468,12 +1797,12 @@ bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::has_data() const
 
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot1q_count.operation)
-	|| is_set(native_vlan.operation)
-	|| is_set(qin_q_count.operation)
-	|| is_set(total_count.operation)
-	|| is_set(untagged_count.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(dot1q_count.yfilter)
+	|| ydk::is_set(native_vlan.yfilter)
+	|| ydk::is_set(qin_q_count.yfilter)
+	|| ydk::is_set(total_count.yfilter)
+	|| ydk::is_set(untagged_count.yfilter)
 	|| (state_counters !=  nullptr && state_counters->has_operation());
 }
 
@@ -1500,11 +1829,11 @@ const EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot1q_count.is_set || is_set(dot1q_count.operation)) leaf_name_data.push_back(dot1q_count.get_name_leafdata());
-    if (native_vlan.is_set || is_set(native_vlan.operation)) leaf_name_data.push_back(native_vlan.get_name_leafdata());
-    if (qin_q_count.is_set || is_set(qin_q_count.operation)) leaf_name_data.push_back(qin_q_count.get_name_leafdata());
-    if (total_count.is_set || is_set(total_count.operation)) leaf_name_data.push_back(total_count.get_name_leafdata());
-    if (untagged_count.is_set || is_set(untagged_count.operation)) leaf_name_data.push_back(untagged_count.get_name_leafdata());
+    if (dot1q_count.is_set || is_set(dot1q_count.yfilter)) leaf_name_data.push_back(dot1q_count.get_name_leafdata());
+    if (native_vlan.is_set || is_set(native_vlan.yfilter)) leaf_name_data.push_back(native_vlan.get_name_leafdata());
+    if (qin_q_count.is_set || is_set(qin_q_count.yfilter)) leaf_name_data.push_back(qin_q_count.get_name_leafdata());
+    if (total_count.is_set || is_set(total_count.yfilter)) leaf_name_data.push_back(total_count.get_name_leafdata());
+    if (untagged_count.is_set || is_set(untagged_count.yfilter)) leaf_name_data.push_back(untagged_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1537,28 +1866,69 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk:
     return children;
 }
 
-void Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1q-count")
     {
         dot1q_count = value;
+        dot1q_count.value_namespace = name_space;
+        dot1q_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "native-vlan")
     {
         native_vlan = value;
+        native_vlan.value_namespace = name_space;
+        native_vlan.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "qin-q-count")
     {
         qin_q_count = value;
+        qin_q_count.value_namespace = name_space;
+        qin_q_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "total-count")
     {
         total_count = value;
+        total_count.value_namespace = name_space;
+        total_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "untagged-count")
     {
         untagged_count = value;
+        untagged_count.value_namespace = name_space;
+        untagged_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot1q-count")
+    {
+        dot1q_count.yfilter = yfilter;
+    }
+    if(value_path == "native-vlan")
+    {
+        native_vlan.yfilter = yfilter;
+    }
+    if(value_path == "qin-q-count")
+    {
+        qin_q_count.yfilter = yfilter;
+    }
+    if(value_path == "total-count")
+    {
+        total_count.yfilter = yfilter;
+    }
+    if(value_path == "untagged-count")
+    {
+        untagged_count.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "state-counters" || name == "dot1q-count" || name == "native-vlan" || name == "qin-q-count" || name == "total-count" || name == "untagged-count")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::StateCounters()
@@ -1583,10 +1953,10 @@ bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::has_d
 
 bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(admin_down.operation)
-	|| is_set(down.operation)
-	|| is_set(up.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(admin_down.yfilter)
+	|| ydk::is_set(down.yfilter)
+	|| ydk::is_set(up.yfilter);
 }
 
 std::string Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::get_segment_path() const
@@ -1612,9 +1982,9 @@ const EntityPath Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCou
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (admin_down.is_set || is_set(admin_down.operation)) leaf_name_data.push_back(admin_down.get_name_leafdata());
-    if (down.is_set || is_set(down.operation)) leaf_name_data.push_back(down.get_name_leafdata());
-    if (up.is_set || is_set(up.operation)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (admin_down.is_set || is_set(admin_down.yfilter)) leaf_name_data.push_back(admin_down.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1633,20 +2003,49 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Trunks::Trunk:
     return children;
 }
 
-void Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "admin-down")
     {
         admin_down = value;
+        admin_down.value_namespace = name_space;
+        admin_down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "down")
     {
         down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "up")
     {
         up = value;
+        up.value_namespace = name_space;
+        up.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "admin-down")
+    {
+        admin_down.yfilter = yfilter;
+    }
+    if(value_path == "down")
+    {
+        down.yfilter = yfilter;
+    }
+    if(value_path == "up")
+    {
+        up.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Trunks::Trunk::Layer3SubInterfaces::StateCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "admin-down" || name == "down" || name == "up")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interfaces()
@@ -1675,7 +2074,7 @@ bool Vlan::Nodes::Node::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vlan::Nodes::Node::Interfaces::get_segment_path() const
@@ -1740,8 +2139,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::ge
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vlan::Nodes::Node::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlan::Nodes::Node::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::Interface()
@@ -1779,14 +2189,14 @@ bool Vlan::Nodes::Node::Interfaces::Interface::has_data() const
 
 bool Vlan::Nodes::Node::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface.operation)
-	|| is_set(interface_xr.operation)
-	|| is_set(mtu.operation)
-	|| is_set(parent_interface.operation)
-	|| is_set(service.operation)
-	|| is_set(state.operation)
-	|| is_set(switched_mtu.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(interface_xr.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(parent_interface.yfilter)
+	|| ydk::is_set(service.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(switched_mtu.yfilter)
 	|| (encapsulation_details !=  nullptr && encapsulation_details->has_operation());
 }
 
@@ -1813,13 +2223,13 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (interface_xr.is_set || is_set(interface_xr.operation)) leaf_name_data.push_back(interface_xr.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (parent_interface.is_set || is_set(parent_interface.operation)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
-    if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (switched_mtu.is_set || is_set(switched_mtu.operation)) leaf_name_data.push_back(switched_mtu.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface_xr.is_set || is_set(interface_xr.yfilter)) leaf_name_data.push_back(interface_xr.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
+    if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (switched_mtu.is_set || is_set(switched_mtu.yfilter)) leaf_name_data.push_back(switched_mtu.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1852,36 +2262,89 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-xr")
     {
         interface_xr = value;
+        interface_xr.value_namespace = name_space;
+        interface_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parent-interface")
     {
         parent_interface = value;
+        parent_interface.value_namespace = name_space;
+        parent_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service")
     {
         service = value;
+        service.value_namespace = name_space;
+        service.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switched-mtu")
     {
         switched_mtu = value;
+        switched_mtu.value_namespace = name_space;
+        switched_mtu.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "interface-xr")
+    {
+        interface_xr.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "service")
+    {
+        service.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "switched-mtu")
+    {
+        switched_mtu.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "encapsulation-details" || name == "interface" || name == "interface-xr" || name == "mtu" || name == "parent-interface" || name == "service" || name == "state" || name == "switched-mtu")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::EncapsulationDetails()
@@ -1927,14 +2390,14 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::has_data() 
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot1ad_native_tag.operation)
-	|| is_set(dot1ad_outer_tag.operation)
-	|| is_set(dot1ad_tag.operation)
-	|| is_set(native_tag.operation)
-	|| is_set(outer_tag.operation)
-	|| is_set(tag.operation)
-	|| is_set(vlan_encapsulation.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(dot1ad_native_tag.yfilter)
+	|| ydk::is_set(dot1ad_outer_tag.yfilter)
+	|| ydk::is_set(dot1ad_tag.yfilter)
+	|| ydk::is_set(native_tag.yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(vlan_encapsulation.yfilter)
 	|| (dot1ad_dot1q_stack !=  nullptr && dot1ad_dot1q_stack->has_operation())
 	|| (service_instance_details !=  nullptr && service_instance_details->has_operation())
 	|| (stack !=  nullptr && stack->has_operation());
@@ -1963,13 +2426,13 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot1ad_native_tag.is_set || is_set(dot1ad_native_tag.operation)) leaf_name_data.push_back(dot1ad_native_tag.get_name_leafdata());
-    if (dot1ad_outer_tag.is_set || is_set(dot1ad_outer_tag.operation)) leaf_name_data.push_back(dot1ad_outer_tag.get_name_leafdata());
-    if (dot1ad_tag.is_set || is_set(dot1ad_tag.operation)) leaf_name_data.push_back(dot1ad_tag.get_name_leafdata());
-    if (native_tag.is_set || is_set(native_tag.operation)) leaf_name_data.push_back(native_tag.get_name_leafdata());
-    if (outer_tag.is_set || is_set(outer_tag.operation)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (vlan_encapsulation.is_set || is_set(vlan_encapsulation.operation)) leaf_name_data.push_back(vlan_encapsulation.get_name_leafdata());
+    if (dot1ad_native_tag.is_set || is_set(dot1ad_native_tag.yfilter)) leaf_name_data.push_back(dot1ad_native_tag.get_name_leafdata());
+    if (dot1ad_outer_tag.is_set || is_set(dot1ad_outer_tag.yfilter)) leaf_name_data.push_back(dot1ad_outer_tag.get_name_leafdata());
+    if (dot1ad_tag.is_set || is_set(dot1ad_tag.yfilter)) leaf_name_data.push_back(dot1ad_tag.get_name_leafdata());
+    if (native_tag.is_set || is_set(native_tag.yfilter)) leaf_name_data.push_back(native_tag.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (vlan_encapsulation.is_set || is_set(vlan_encapsulation.yfilter)) leaf_name_data.push_back(vlan_encapsulation.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2030,36 +2493,89 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1ad-native-tag")
     {
         dot1ad_native_tag = value;
+        dot1ad_native_tag.value_namespace = name_space;
+        dot1ad_native_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot1ad-outer-tag")
     {
         dot1ad_outer_tag = value;
+        dot1ad_outer_tag.value_namespace = name_space;
+        dot1ad_outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot1ad-tag")
     {
         dot1ad_tag = value;
+        dot1ad_tag.value_namespace = name_space;
+        dot1ad_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "native-tag")
     {
         native_tag = value;
+        native_tag.value_namespace = name_space;
+        native_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outer-tag")
     {
         outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-encapsulation")
     {
         vlan_encapsulation = value;
+        vlan_encapsulation.value_namespace = name_space;
+        vlan_encapsulation.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot1ad-native-tag")
+    {
+        dot1ad_native_tag.yfilter = yfilter;
+    }
+    if(value_path == "dot1ad-outer-tag")
+    {
+        dot1ad_outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "dot1ad-tag")
+    {
+        dot1ad_tag.yfilter = yfilter;
+    }
+    if(value_path == "native-tag")
+    {
+        native_tag.yfilter = yfilter;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "vlan-encapsulation")
+    {
+        vlan_encapsulation.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot1ad-dot1q-stack" || name == "service-instance-details" || name == "stack" || name == "dot1ad-native-tag" || name == "dot1ad-outer-tag" || name == "dot1ad-tag" || name == "native-tag" || name == "outer-tag" || name == "tag" || name == "vlan-encapsulation")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::Stack()
@@ -2082,9 +2598,9 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::has_
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(outer_tag.operation)
-	|| is_set(second_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(second_tag.yfilter);
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::get_segment_path() const
@@ -2110,8 +2626,8 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (outer_tag.is_set || is_set(outer_tag.operation)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
-    if (second_tag.is_set || is_set(second_tag.operation)) leaf_name_data.push_back(second_tag.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (second_tag.is_set || is_set(second_tag.yfilter)) leaf_name_data.push_back(second_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2130,16 +2646,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outer-tag")
     {
         outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-tag")
     {
         second_tag = value;
+        second_tag.value_namespace = name_space;
+        second_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "second-tag")
+    {
+        second_tag.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outer-tag" || name == "second-tag")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::ServiceInstanceDetails()
@@ -2197,14 +2736,14 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
         if(tags_to_match[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(destination_mac_match.operation)
-	|| is_set(is_exact_match.operation)
-	|| is_set(is_native_preserving.operation)
-	|| is_set(is_native_vlan.operation)
-	|| is_set(payload_ethertype.operation)
-	|| is_set(source_mac_match.operation)
-	|| is_set(tags_popped.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_mac_match.yfilter)
+	|| ydk::is_set(is_exact_match.yfilter)
+	|| ydk::is_set(is_native_preserving.yfilter)
+	|| ydk::is_set(is_native_vlan.yfilter)
+	|| ydk::is_set(payload_ethertype.yfilter)
+	|| ydk::is_set(source_mac_match.yfilter)
+	|| ydk::is_set(tags_popped.yfilter)
 	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_operation());
 }
 
@@ -2231,13 +2770,13 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_mac_match.is_set || is_set(destination_mac_match.operation)) leaf_name_data.push_back(destination_mac_match.get_name_leafdata());
-    if (is_exact_match.is_set || is_set(is_exact_match.operation)) leaf_name_data.push_back(is_exact_match.get_name_leafdata());
-    if (is_native_preserving.is_set || is_set(is_native_preserving.operation)) leaf_name_data.push_back(is_native_preserving.get_name_leafdata());
-    if (is_native_vlan.is_set || is_set(is_native_vlan.operation)) leaf_name_data.push_back(is_native_vlan.get_name_leafdata());
-    if (payload_ethertype.is_set || is_set(payload_ethertype.operation)) leaf_name_data.push_back(payload_ethertype.get_name_leafdata());
-    if (source_mac_match.is_set || is_set(source_mac_match.operation)) leaf_name_data.push_back(source_mac_match.get_name_leafdata());
-    if (tags_popped.is_set || is_set(tags_popped.operation)) leaf_name_data.push_back(tags_popped.get_name_leafdata());
+    if (destination_mac_match.is_set || is_set(destination_mac_match.yfilter)) leaf_name_data.push_back(destination_mac_match.get_name_leafdata());
+    if (is_exact_match.is_set || is_set(is_exact_match.yfilter)) leaf_name_data.push_back(is_exact_match.get_name_leafdata());
+    if (is_native_preserving.is_set || is_set(is_native_preserving.yfilter)) leaf_name_data.push_back(is_native_preserving.get_name_leafdata());
+    if (is_native_vlan.is_set || is_set(is_native_vlan.yfilter)) leaf_name_data.push_back(is_native_vlan.get_name_leafdata());
+    if (payload_ethertype.is_set || is_set(payload_ethertype.yfilter)) leaf_name_data.push_back(payload_ethertype.get_name_leafdata());
+    if (source_mac_match.is_set || is_set(source_mac_match.yfilter)) leaf_name_data.push_back(source_mac_match.get_name_leafdata());
+    if (tags_popped.is_set || is_set(tags_popped.yfilter)) leaf_name_data.push_back(tags_popped.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2312,36 +2851,89 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-mac-match")
     {
         destination_mac_match = value;
+        destination_mac_match.value_namespace = name_space;
+        destination_mac_match.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-exact-match")
     {
         is_exact_match = value;
+        is_exact_match.value_namespace = name_space;
+        is_exact_match.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-native-preserving")
     {
         is_native_preserving = value;
+        is_native_preserving.value_namespace = name_space;
+        is_native_preserving.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-native-vlan")
     {
         is_native_vlan = value;
+        is_native_vlan.value_namespace = name_space;
+        is_native_vlan.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-ethertype")
     {
         payload_ethertype = value;
+        payload_ethertype.value_namespace = name_space;
+        payload_ethertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-mac-match")
     {
         source_mac_match = value;
+        source_mac_match.value_namespace = name_space;
+        source_mac_match.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tags-popped")
     {
         tags_popped = value;
+        tags_popped.value_namespace = name_space;
+        tags_popped.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-mac-match")
+    {
+        destination_mac_match.yfilter = yfilter;
+    }
+    if(value_path == "is-exact-match")
+    {
+        is_exact_match.yfilter = yfilter;
+    }
+    if(value_path == "is-native-preserving")
+    {
+        is_native_preserving.yfilter = yfilter;
+    }
+    if(value_path == "is-native-vlan")
+    {
+        is_native_vlan.yfilter = yfilter;
+    }
+    if(value_path == "payload-ethertype")
+    {
+        payload_ethertype.yfilter = yfilter;
+    }
+    if(value_path == "source-mac-match")
+    {
+        source_mac_match.yfilter = yfilter;
+    }
+    if(value_path == "tags-popped")
+    {
+        tags_popped.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-traffic-stack" || name == "pushe" || name == "tags-to-match" || name == "destination-mac-match" || name == "is-exact-match" || name == "is-native-preserving" || name == "is-native-vlan" || name == "payload-ethertype" || name == "source-mac-match" || name == "tags-popped")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficStack()
@@ -2370,7 +2962,7 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
         if(local_traffic_tag[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_segment_path() const
@@ -2435,8 +3027,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-traffic-tag")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::LocalTrafficTag()
@@ -2459,9 +3062,9 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ethertype.operation)
-	|| is_set(vlan_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_segment_path() const
@@ -2487,8 +3090,8 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ethertype.is_set || is_set(ethertype.operation)) leaf_name_data.push_back(ethertype.get_name_leafdata());
-    if (vlan_id.is_set || is_set(vlan_id.operation)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2507,16 +3110,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
         ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-id")
     {
         vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethertype" || name == "vlan-id")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::TagsToMatch()
@@ -2549,9 +3175,9 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
         if(vlan_range[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(ethertype.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_segment_path() const
@@ -2577,8 +3203,8 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ethertype.is_set || is_set(ethertype.operation)) leaf_name_data.push_back(ethertype.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2618,16 +3244,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
         ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-range" || name == "ethertype" || name == "priority")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::VlanRange()
@@ -2650,9 +3299,9 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vlan_id_high.operation)
-	|| is_set(vlan_id_low.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vlan_id_high.yfilter)
+	|| ydk::is_set(vlan_id_low.yfilter);
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_segment_path() const
@@ -2678,8 +3327,8 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vlan_id_high.is_set || is_set(vlan_id_high.operation)) leaf_name_data.push_back(vlan_id_high.get_name_leafdata());
-    if (vlan_id_low.is_set || is_set(vlan_id_low.operation)) leaf_name_data.push_back(vlan_id_low.get_name_leafdata());
+    if (vlan_id_high.is_set || is_set(vlan_id_high.yfilter)) leaf_name_data.push_back(vlan_id_high.get_name_leafdata());
+    if (vlan_id_low.is_set || is_set(vlan_id_low.yfilter)) leaf_name_data.push_back(vlan_id_low.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2698,16 +3347,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id-high")
     {
         vlan_id_high = value;
+        vlan_id_high.value_namespace = name_space;
+        vlan_id_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-id-low")
     {
         vlan_id_low = value;
+        vlan_id_low.value_namespace = name_space;
+        vlan_id_low.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan-id-high")
+    {
+        vlan_id_high.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id-low")
+    {
+        vlan_id_low.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-id-high" || name == "vlan-id-low")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::Pushe()
@@ -2730,9 +3402,9 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInst
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ethertype.operation)
-	|| is_set(vlan_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_segment_path() const
@@ -2758,8 +3430,8 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ethertype.is_set || is_set(ethertype.operation)) leaf_name_data.push_back(ethertype.get_name_leafdata());
-    if (vlan_id.is_set || is_set(vlan_id.operation)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2778,16 +3450,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
         ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-id")
     {
         vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethertype" || name == "vlan-id")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::Dot1AdDot1QStack()
@@ -2810,9 +3505,9 @@ bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1Q
 
 bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(outer_tag.operation)
-	|| is_set(second_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(second_tag.yfilter);
 }
 
 std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::get_segment_path() const
@@ -2838,8 +3533,8 @@ const EntityPath Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails:
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (outer_tag.is_set || is_set(outer_tag.operation)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
-    if (second_tag.is_set || is_set(second_tag.operation)) leaf_name_data.push_back(second_tag.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (second_tag.is_set || is_set(second_tag.yfilter)) leaf_name_data.push_back(second_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2858,16 +3553,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::Interfaces::In
     return children;
 }
 
-void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outer-tag")
     {
         outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-tag")
     {
         second_tag = value;
+        second_tag.value_namespace = name_space;
+        second_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "second-tag")
+    {
+        second_tag.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outer-tag" || name == "second-tag")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocations()
@@ -2896,7 +3614,7 @@ bool Vlan::Nodes::Node::TagAllocations::has_operation() const
         if(tag_allocation[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::get_segment_path() const
@@ -2961,8 +3679,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vlan::Nodes::Node::TagAllocations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlan::Nodes::Node::TagAllocations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag-allocation")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::TagAllocation()
@@ -3004,16 +3733,16 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::has_data() const
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(first_tag.operation)
-	|| is_set(interface.operation)
-	|| is_set(interface_xr.operation)
-	|| is_set(mtu.operation)
-	|| is_set(parent_interface.operation)
-	|| is_set(second_tag.operation)
-	|| is_set(service.operation)
-	|| is_set(state.operation)
-	|| is_set(switched_mtu.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(first_tag.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(interface_xr.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(parent_interface.yfilter)
+	|| ydk::is_set(second_tag.yfilter)
+	|| ydk::is_set(service.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(switched_mtu.yfilter)
 	|| (encapsulation_details !=  nullptr && encapsulation_details->has_operation());
 }
 
@@ -3040,15 +3769,15 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (first_tag.is_set || is_set(first_tag.operation)) leaf_name_data.push_back(first_tag.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
-    if (interface_xr.is_set || is_set(interface_xr.operation)) leaf_name_data.push_back(interface_xr.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.operation)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (parent_interface.is_set || is_set(parent_interface.operation)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
-    if (second_tag.is_set || is_set(second_tag.operation)) leaf_name_data.push_back(second_tag.get_name_leafdata());
-    if (service.is_set || is_set(service.operation)) leaf_name_data.push_back(service.get_name_leafdata());
-    if (state.is_set || is_set(state.operation)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (switched_mtu.is_set || is_set(switched_mtu.operation)) leaf_name_data.push_back(switched_mtu.get_name_leafdata());
+    if (first_tag.is_set || is_set(first_tag.yfilter)) leaf_name_data.push_back(first_tag.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (interface_xr.is_set || is_set(interface_xr.yfilter)) leaf_name_data.push_back(interface_xr.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (parent_interface.is_set || is_set(parent_interface.yfilter)) leaf_name_data.push_back(parent_interface.get_name_leafdata());
+    if (second_tag.is_set || is_set(second_tag.yfilter)) leaf_name_data.push_back(second_tag.get_name_leafdata());
+    if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (switched_mtu.is_set || is_set(switched_mtu.yfilter)) leaf_name_data.push_back(switched_mtu.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3081,44 +3810,109 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "first-tag")
     {
         first_tag = value;
+        first_tag.value_namespace = name_space;
+        first_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-xr")
     {
         interface_xr = value;
+        interface_xr.value_namespace = name_space;
+        interface_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mtu")
     {
         mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "parent-interface")
     {
         parent_interface = value;
+        parent_interface.value_namespace = name_space;
+        parent_interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-tag")
     {
         second_tag = value;
+        second_tag.value_namespace = name_space;
+        second_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "service")
     {
         service = value;
+        service.value_namespace = name_space;
+        service.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "state")
     {
         state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "switched-mtu")
     {
         switched_mtu = value;
+        switched_mtu.value_namespace = name_space;
+        switched_mtu.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "first-tag")
+    {
+        first_tag.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "interface-xr")
+    {
+        interface_xr.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "parent-interface")
+    {
+        parent_interface.yfilter = yfilter;
+    }
+    if(value_path == "second-tag")
+    {
+        second_tag.yfilter = yfilter;
+    }
+    if(value_path == "service")
+    {
+        service.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "switched-mtu")
+    {
+        switched_mtu.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "encapsulation-details" || name == "first-tag" || name == "interface" || name == "interface-xr" || name == "mtu" || name == "parent-interface" || name == "second-tag" || name == "service" || name == "state" || name == "switched-mtu")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::EncapsulationDetails()
@@ -3164,14 +3958,14 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::has
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(dot1ad_native_tag.operation)
-	|| is_set(dot1ad_outer_tag.operation)
-	|| is_set(dot1ad_tag.operation)
-	|| is_set(native_tag.operation)
-	|| is_set(outer_tag.operation)
-	|| is_set(tag.operation)
-	|| is_set(vlan_encapsulation.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(dot1ad_native_tag.yfilter)
+	|| ydk::is_set(dot1ad_outer_tag.yfilter)
+	|| ydk::is_set(dot1ad_tag.yfilter)
+	|| ydk::is_set(native_tag.yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(tag.yfilter)
+	|| ydk::is_set(vlan_encapsulation.yfilter)
 	|| (dot1ad_dot1q_stack !=  nullptr && dot1ad_dot1q_stack->has_operation())
 	|| (service_instance_details !=  nullptr && service_instance_details->has_operation())
 	|| (stack !=  nullptr && stack->has_operation());
@@ -3200,13 +3994,13 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::Encapsulation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (dot1ad_native_tag.is_set || is_set(dot1ad_native_tag.operation)) leaf_name_data.push_back(dot1ad_native_tag.get_name_leafdata());
-    if (dot1ad_outer_tag.is_set || is_set(dot1ad_outer_tag.operation)) leaf_name_data.push_back(dot1ad_outer_tag.get_name_leafdata());
-    if (dot1ad_tag.is_set || is_set(dot1ad_tag.operation)) leaf_name_data.push_back(dot1ad_tag.get_name_leafdata());
-    if (native_tag.is_set || is_set(native_tag.operation)) leaf_name_data.push_back(native_tag.get_name_leafdata());
-    if (outer_tag.is_set || is_set(outer_tag.operation)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
-    if (tag.is_set || is_set(tag.operation)) leaf_name_data.push_back(tag.get_name_leafdata());
-    if (vlan_encapsulation.is_set || is_set(vlan_encapsulation.operation)) leaf_name_data.push_back(vlan_encapsulation.get_name_leafdata());
+    if (dot1ad_native_tag.is_set || is_set(dot1ad_native_tag.yfilter)) leaf_name_data.push_back(dot1ad_native_tag.get_name_leafdata());
+    if (dot1ad_outer_tag.is_set || is_set(dot1ad_outer_tag.yfilter)) leaf_name_data.push_back(dot1ad_outer_tag.get_name_leafdata());
+    if (dot1ad_tag.is_set || is_set(dot1ad_tag.yfilter)) leaf_name_data.push_back(dot1ad_tag.get_name_leafdata());
+    if (native_tag.is_set || is_set(native_tag.yfilter)) leaf_name_data.push_back(native_tag.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+    if (vlan_encapsulation.is_set || is_set(vlan_encapsulation.yfilter)) leaf_name_data.push_back(vlan_encapsulation.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3267,36 +4061,89 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1ad-native-tag")
     {
         dot1ad_native_tag = value;
+        dot1ad_native_tag.value_namespace = name_space;
+        dot1ad_native_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot1ad-outer-tag")
     {
         dot1ad_outer_tag = value;
+        dot1ad_outer_tag.value_namespace = name_space;
+        dot1ad_outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dot1ad-tag")
     {
         dot1ad_tag = value;
+        dot1ad_tag.value_namespace = name_space;
+        dot1ad_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "native-tag")
     {
         native_tag = value;
+        native_tag.value_namespace = name_space;
+        native_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "outer-tag")
     {
         outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tag")
     {
         tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-encapsulation")
     {
         vlan_encapsulation = value;
+        vlan_encapsulation.value_namespace = name_space;
+        vlan_encapsulation.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dot1ad-native-tag")
+    {
+        dot1ad_native_tag.yfilter = yfilter;
+    }
+    if(value_path == "dot1ad-outer-tag")
+    {
+        dot1ad_outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "dot1ad-tag")
+    {
+        dot1ad_tag.yfilter = yfilter;
+    }
+    if(value_path == "native-tag")
+    {
+        native_tag.yfilter = yfilter;
+    }
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+    if(value_path == "vlan-encapsulation")
+    {
+        vlan_encapsulation.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dot1ad-dot1q-stack" || name == "service-instance-details" || name == "stack" || name == "dot1ad-native-tag" || name == "dot1ad-outer-tag" || name == "dot1ad-tag" || name == "native-tag" || name == "outer-tag" || name == "tag" || name == "vlan-encapsulation")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::Stack()
@@ -3319,9 +4166,9 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Sta
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(outer_tag.operation)
-	|| is_set(second_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(second_tag.yfilter);
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::get_segment_path() const
@@ -3347,8 +4194,8 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::Encapsulation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (outer_tag.is_set || is_set(outer_tag.operation)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
-    if (second_tag.is_set || is_set(second_tag.operation)) leaf_name_data.push_back(second_tag.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (second_tag.is_set || is_set(second_tag.yfilter)) leaf_name_data.push_back(second_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3367,16 +4214,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outer-tag")
     {
         outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-tag")
     {
         second_tag = value;
+        second_tag.value_namespace = name_space;
+        second_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "second-tag")
+    {
+        second_tag.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outer-tag" || name == "second-tag")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::ServiceInstanceDetails()
@@ -3434,14 +4304,14 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
         if(tags_to_match[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(destination_mac_match.operation)
-	|| is_set(is_exact_match.operation)
-	|| is_set(is_native_preserving.operation)
-	|| is_set(is_native_vlan.operation)
-	|| is_set(payload_ethertype.operation)
-	|| is_set(source_mac_match.operation)
-	|| is_set(tags_popped.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(destination_mac_match.yfilter)
+	|| ydk::is_set(is_exact_match.yfilter)
+	|| ydk::is_set(is_native_preserving.yfilter)
+	|| ydk::is_set(is_native_vlan.yfilter)
+	|| ydk::is_set(payload_ethertype.yfilter)
+	|| ydk::is_set(source_mac_match.yfilter)
+	|| ydk::is_set(tags_popped.yfilter)
 	|| (local_traffic_stack !=  nullptr && local_traffic_stack->has_operation());
 }
 
@@ -3468,13 +4338,13 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::Encapsulation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (destination_mac_match.is_set || is_set(destination_mac_match.operation)) leaf_name_data.push_back(destination_mac_match.get_name_leafdata());
-    if (is_exact_match.is_set || is_set(is_exact_match.operation)) leaf_name_data.push_back(is_exact_match.get_name_leafdata());
-    if (is_native_preserving.is_set || is_set(is_native_preserving.operation)) leaf_name_data.push_back(is_native_preserving.get_name_leafdata());
-    if (is_native_vlan.is_set || is_set(is_native_vlan.operation)) leaf_name_data.push_back(is_native_vlan.get_name_leafdata());
-    if (payload_ethertype.is_set || is_set(payload_ethertype.operation)) leaf_name_data.push_back(payload_ethertype.get_name_leafdata());
-    if (source_mac_match.is_set || is_set(source_mac_match.operation)) leaf_name_data.push_back(source_mac_match.get_name_leafdata());
-    if (tags_popped.is_set || is_set(tags_popped.operation)) leaf_name_data.push_back(tags_popped.get_name_leafdata());
+    if (destination_mac_match.is_set || is_set(destination_mac_match.yfilter)) leaf_name_data.push_back(destination_mac_match.get_name_leafdata());
+    if (is_exact_match.is_set || is_set(is_exact_match.yfilter)) leaf_name_data.push_back(is_exact_match.get_name_leafdata());
+    if (is_native_preserving.is_set || is_set(is_native_preserving.yfilter)) leaf_name_data.push_back(is_native_preserving.get_name_leafdata());
+    if (is_native_vlan.is_set || is_set(is_native_vlan.yfilter)) leaf_name_data.push_back(is_native_vlan.get_name_leafdata());
+    if (payload_ethertype.is_set || is_set(payload_ethertype.yfilter)) leaf_name_data.push_back(payload_ethertype.get_name_leafdata());
+    if (source_mac_match.is_set || is_set(source_mac_match.yfilter)) leaf_name_data.push_back(source_mac_match.get_name_leafdata());
+    if (tags_popped.is_set || is_set(tags_popped.yfilter)) leaf_name_data.push_back(tags_popped.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3549,36 +4419,89 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "destination-mac-match")
     {
         destination_mac_match = value;
+        destination_mac_match.value_namespace = name_space;
+        destination_mac_match.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-exact-match")
     {
         is_exact_match = value;
+        is_exact_match.value_namespace = name_space;
+        is_exact_match.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-native-preserving")
     {
         is_native_preserving = value;
+        is_native_preserving.value_namespace = name_space;
+        is_native_preserving.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-native-vlan")
     {
         is_native_vlan = value;
+        is_native_vlan.value_namespace = name_space;
+        is_native_vlan.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "payload-ethertype")
     {
         payload_ethertype = value;
+        payload_ethertype.value_namespace = name_space;
+        payload_ethertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-mac-match")
     {
         source_mac_match = value;
+        source_mac_match.value_namespace = name_space;
+        source_mac_match.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tags-popped")
     {
         tags_popped = value;
+        tags_popped.value_namespace = name_space;
+        tags_popped.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-mac-match")
+    {
+        destination_mac_match.yfilter = yfilter;
+    }
+    if(value_path == "is-exact-match")
+    {
+        is_exact_match.yfilter = yfilter;
+    }
+    if(value_path == "is-native-preserving")
+    {
+        is_native_preserving.yfilter = yfilter;
+    }
+    if(value_path == "is-native-vlan")
+    {
+        is_native_vlan.yfilter = yfilter;
+    }
+    if(value_path == "payload-ethertype")
+    {
+        payload_ethertype.yfilter = yfilter;
+    }
+    if(value_path == "source-mac-match")
+    {
+        source_mac_match.yfilter = yfilter;
+    }
+    if(value_path == "tags-popped")
+    {
+        tags_popped.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-traffic-stack" || name == "pushe" || name == "tags-to-match" || name == "destination-mac-match" || name == "is-exact-match" || name == "is-native-preserving" || name == "is-native-vlan" || name == "payload-ethertype" || name == "source-mac-match" || name == "tags-popped")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficStack()
@@ -3607,7 +4530,7 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
         if(local_traffic_tag[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::get_segment_path() const
@@ -3672,8 +4595,19 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "local-traffic-tag")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::LocalTrafficTag()
@@ -3696,9 +4630,9 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ethertype.operation)
-	|| is_set(vlan_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::get_segment_path() const
@@ -3724,8 +4658,8 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::Encapsulation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ethertype.is_set || is_set(ethertype.operation)) leaf_name_data.push_back(ethertype.get_name_leafdata());
-    if (vlan_id.is_set || is_set(vlan_id.operation)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3744,16 +4678,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
         ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-id")
     {
         vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethertype" || name == "vlan-id")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::TagsToMatch()
@@ -3786,9 +4743,9 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
         if(vlan_range[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(ethertype.operation)
-	|| is_set(priority.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::get_segment_path() const
@@ -3814,8 +4771,8 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::Encapsulation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ethertype.is_set || is_set(ethertype.operation)) leaf_name_data.push_back(ethertype.get_name_leafdata());
-    if (priority.is_set || is_set(priority.operation)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3855,16 +4812,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
         ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "priority")
     {
         priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-range" || name == "ethertype" || name == "priority")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::VlanRange()
@@ -3887,9 +4867,9 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vlan_id_high.operation)
-	|| is_set(vlan_id_low.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(vlan_id_high.yfilter)
+	|| ydk::is_set(vlan_id_low.yfilter);
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::get_segment_path() const
@@ -3915,8 +4895,8 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::Encapsulation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vlan_id_high.is_set || is_set(vlan_id_high.operation)) leaf_name_data.push_back(vlan_id_high.get_name_leafdata());
-    if (vlan_id_low.is_set || is_set(vlan_id_low.operation)) leaf_name_data.push_back(vlan_id_low.get_name_leafdata());
+    if (vlan_id_high.is_set || is_set(vlan_id_high.yfilter)) leaf_name_data.push_back(vlan_id_high.get_name_leafdata());
+    if (vlan_id_low.is_set || is_set(vlan_id_low.yfilter)) leaf_name_data.push_back(vlan_id_low.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3935,16 +4915,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id-high")
     {
         vlan_id_high = value;
+        vlan_id_high.value_namespace = name_space;
+        vlan_id_high.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-id-low")
     {
         vlan_id_low = value;
+        vlan_id_low.value_namespace = name_space;
+        vlan_id_low.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan-id-high")
+    {
+        vlan_id_high.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id-low")
+    {
+        vlan_id_low.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-id-high" || name == "vlan-id-low")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::Pushe()
@@ -3967,9 +4970,9 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Ser
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ethertype.operation)
-	|| is_set(vlan_id.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(vlan_id.yfilter);
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::get_segment_path() const
@@ -3995,8 +4998,8 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::Encapsulation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ethertype.is_set || is_set(ethertype.operation)) leaf_name_data.push_back(ethertype.get_name_leafdata());
-    if (vlan_id.is_set || is_set(vlan_id.operation)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
+    if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4015,16 +5018,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ethertype")
     {
         ethertype = value;
+        ethertype.value_namespace = name_space;
+        ethertype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vlan-id")
     {
         vlan_id = value;
+        vlan_id.value_namespace = name_space;
+        vlan_id.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ethertype")
+    {
+        ethertype.yfilter = yfilter;
+    }
+    if(value_path == "vlan-id")
+    {
+        vlan_id.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethertype" || name == "vlan-id")
+        return true;
+    return false;
 }
 
 Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::Dot1AdDot1QStack()
@@ -4047,9 +5073,9 @@ bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot
 
 bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(outer_tag.operation)
-	|| is_set(second_tag.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(outer_tag.yfilter)
+	|| ydk::is_set(second_tag.yfilter);
 }
 
 std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::get_segment_path() const
@@ -4075,8 +5101,8 @@ const EntityPath Vlan::Nodes::Node::TagAllocations::TagAllocation::Encapsulation
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (outer_tag.is_set || is_set(outer_tag.operation)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
-    if (second_tag.is_set || is_set(second_tag.operation)) leaf_name_data.push_back(second_tag.get_name_leafdata());
+    if (outer_tag.is_set || is_set(outer_tag.yfilter)) leaf_name_data.push_back(outer_tag.get_name_leafdata());
+    if (second_tag.is_set || is_set(second_tag.yfilter)) leaf_name_data.push_back(second_tag.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4095,16 +5121,39 @@ std::map<std::string, std::shared_ptr<Entity>> Vlan::Nodes::Node::TagAllocations
     return children;
 }
 
-void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::set_value(const std::string & value_path, std::string value)
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "outer-tag")
     {
         outer_tag = value;
+        outer_tag.value_namespace = name_space;
+        outer_tag.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "second-tag")
     {
         second_tag = value;
+        second_tag.value_namespace = name_space;
+        second_tag.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outer-tag")
+    {
+        outer_tag.yfilter = yfilter;
+    }
+    if(value_path == "second-tag")
+    {
+        second_tag.yfilter = yfilter;
+    }
+}
+
+bool Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outer-tag" || name == "second-tag")
+        return true;
+    return false;
 }
 
 EthernetEncapsulation::EthernetEncapsulation()
@@ -4127,7 +5176,7 @@ bool EthernetEncapsulation::has_data() const
 
 bool EthernetEncapsulation::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (nodes !=  nullptr && nodes->has_operation());
 }
 
@@ -4183,7 +5232,11 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::get_childr
     return children;
 }
 
-void EthernetEncapsulation::set_value(const std::string & value_path, std::string value)
+void EthernetEncapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void EthernetEncapsulation::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -4205,6 +5258,18 @@ std::string EthernetEncapsulation::get_bundle_name() const
 augment_capabilities_function EthernetEncapsulation::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> EthernetEncapsulation::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool EthernetEncapsulation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
 }
 
 EthernetEncapsulation::Nodes::Nodes()
@@ -4233,7 +5298,7 @@ bool EthernetEncapsulation::Nodes::has_operation() const
         if(node[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EthernetEncapsulation::Nodes::get_segment_path() const
@@ -4298,8 +5363,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::get
     return children;
 }
 
-void EthernetEncapsulation::Nodes::set_value(const std::string & value_path, std::string value)
+void EthernetEncapsulation::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetEncapsulation::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetEncapsulation::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
 }
 
 EthernetEncapsulation::Nodes::Node::Node()
@@ -4325,8 +5401,8 @@ bool EthernetEncapsulation::Nodes::Node::has_data() const
 
 bool EthernetEncapsulation::Nodes::Node::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(node_name.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
 	|| (unicast_mac_filters !=  nullptr && unicast_mac_filters->has_operation());
 }
 
@@ -4353,7 +5429,7 @@ const EntityPath EthernetEncapsulation::Nodes::Node::get_entity_path(Entity* anc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (node_name.is_set || is_set(node_name.operation)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4386,12 +5462,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Nod
     return children;
 }
 
-void EthernetEncapsulation::Nodes::Node::set_value(const std::string & value_path, std::string value)
+void EthernetEncapsulation::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "node-name")
     {
         node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetEncapsulation::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+}
+
+bool EthernetEncapsulation::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unicast-mac-filters" || name == "node-name")
+        return true;
+    return false;
 }
 
 EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilters()
@@ -4420,7 +5513,7 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::has_operation() cons
         if(unicast_mac_filter[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string EthernetEncapsulation::Nodes::Node::UnicastMacFilters::get_segment_path() const
@@ -4485,8 +5578,19 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Nod
     return children;
 }
 
-void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::set_value(const std::string & value_path, std::string value)
+void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unicast-mac-filter")
+        return true;
+    return false;
 }
 
 EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastMacFilter()
@@ -4517,8 +5621,8 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::ha
         if(unicast_filter[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(interface_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
 }
 
 std::string EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::get_segment_path() const
@@ -4544,7 +5648,7 @@ const EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4584,12 +5688,29 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Nod
     return children;
 }
 
-void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::set_value(const std::string & value_path, std::string value)
+void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unicast-filter" || name == "interface-name")
+        return true;
+    return false;
 }
 
 EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::UnicastFilter()
@@ -4612,9 +5733,9 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::Un
 
 bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(mac_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(mac_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::get_segment_path() const
@@ -4640,8 +5761,8 @@ const EntityPath EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastM
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (mac_address.is_set || is_set(mac_address.operation)) leaf_name_data.push_back(mac_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4660,81 +5781,104 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetEncapsulation::Nodes::Nod
     return children;
 }
 
-void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::set_value(const std::string & value_path, std::string value)
+void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
         mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf VlanEncapsEnum::no_encapsulation {0, "no-encapsulation"};
-const Enum::YLeaf VlanEncapsEnum::dot1q {1, "dot1q"};
-const Enum::YLeaf VlanEncapsEnum::qinq {2, "qinq"};
-const Enum::YLeaf VlanEncapsEnum::qin_any {3, "qin-any"};
-const Enum::YLeaf VlanEncapsEnum::dot1q_native {4, "dot1q-native"};
-const Enum::YLeaf VlanEncapsEnum::dot1ad {5, "dot1ad"};
-const Enum::YLeaf VlanEncapsEnum::dot1ad_native {6, "dot1ad-native"};
-const Enum::YLeaf VlanEncapsEnum::service_instance {7, "service-instance"};
-const Enum::YLeaf VlanEncapsEnum::dot1ad_dot1q {8, "dot1ad-dot1q"};
-const Enum::YLeaf VlanEncapsEnum::dot1ad_any {9, "dot1ad-any"};
+void EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf EthCapsUcastMacModeEnum::reserved {0, "reserved"};
-const Enum::YLeaf EthCapsUcastMacModeEnum::permit {1, "permit"};
+bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-address" || name == "mode")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf ImStateEnumEnum::im_state_not_ready {0, "im-state-not-ready"};
-const Enum::YLeaf ImStateEnumEnum::im_state_admin_down {1, "im-state-admin-down"};
-const Enum::YLeaf ImStateEnumEnum::im_state_down {2, "im-state-down"};
-const Enum::YLeaf ImStateEnumEnum::im_state_up {3, "im-state-up"};
-const Enum::YLeaf ImStateEnumEnum::im_state_shutdown {4, "im-state-shutdown"};
-const Enum::YLeaf ImStateEnumEnum::im_state_err_disable {5, "im-state-err-disable"};
-const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate {6, "im-state-down-immediate"};
-const Enum::YLeaf ImStateEnumEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
-const Enum::YLeaf ImStateEnumEnum::im_state_down_graceful {8, "im-state-down-graceful"};
-const Enum::YLeaf ImStateEnumEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
-const Enum::YLeaf ImStateEnumEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
-const Enum::YLeaf ImStateEnumEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
-const Enum::YLeaf ImStateEnumEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
-const Enum::YLeaf ImStateEnumEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
-const Enum::YLeaf ImStateEnumEnum::im_state_reset {14, "im-state-reset"};
-const Enum::YLeaf ImStateEnumEnum::im_state_operational {15, "im-state-operational"};
-const Enum::YLeaf ImStateEnumEnum::im_state_not_operational {16, "im-state-not-operational"};
-const Enum::YLeaf ImStateEnumEnum::im_state_unknown {17, "im-state-unknown"};
-const Enum::YLeaf ImStateEnumEnum::im_state_last {18, "im-state-last"};
+const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
+const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
+const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
+const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
+const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
+const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
+const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
+const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
+const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
 
-const Enum::YLeaf EfpTagPriorityEnum::priority0 {0, "priority0"};
-const Enum::YLeaf EfpTagPriorityEnum::priority1 {1, "priority1"};
-const Enum::YLeaf EfpTagPriorityEnum::priority2 {2, "priority2"};
-const Enum::YLeaf EfpTagPriorityEnum::priority3 {3, "priority3"};
-const Enum::YLeaf EfpTagPriorityEnum::priority4 {4, "priority4"};
-const Enum::YLeaf EfpTagPriorityEnum::priority5 {5, "priority5"};
-const Enum::YLeaf EfpTagPriorityEnum::priority6 {6, "priority6"};
-const Enum::YLeaf EfpTagPriorityEnum::priority7 {7, "priority7"};
-const Enum::YLeaf EfpTagPriorityEnum::priority_any {8, "priority-any"};
+const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
+const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
+const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
 
-const Enum::YLeaf EfpTagEtypeEnum::untagged {0, "untagged"};
-const Enum::YLeaf EfpTagEtypeEnum::dot1q {33024, "dot1q"};
-const Enum::YLeaf EfpTagEtypeEnum::dot1ad {34984, "dot1ad"};
+const Enum::YLeaf EthFiltering::no_filtering {0, "no-filtering"};
+const Enum::YLeaf EthFiltering::dot1q_filtering {1, "dot1q-filtering"};
+const Enum::YLeaf EthFiltering::dot1ad_filtering {2, "dot1ad-filtering"};
+const Enum::YLeaf EthFiltering::two_port_mac_relay_filtering {3, "two-port-mac-relay-filtering"};
 
-const Enum::YLeaf VlanServiceEnum::vlan_service_l2 {1, "vlan-service-l2"};
-const Enum::YLeaf VlanServiceEnum::vlan_service_l3 {2, "vlan-service-l3"};
+const Enum::YLeaf EthCapsUcastMacMode::reserved {0, "reserved"};
+const Enum::YLeaf EthCapsUcastMacMode::permit {1, "permit"};
 
-const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_any {0, "payload-ethertype-any"};
-const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_ip {1, "payload-ethertype-ip"};
-const Enum::YLeaf EfpPayloadEtypeEnum::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
+const Enum::YLeaf VlanQinqOuterEtype::ether_type8100 {33024, "ether-type8100"};
+const Enum::YLeaf VlanQinqOuterEtype::ether_type9100 {37120, "ether-type9100"};
+const Enum::YLeaf VlanQinqOuterEtype::ether_type9200 {37376, "ether-type9200"};
 
-const Enum::YLeaf VlanQinqOuterEtypeEnum::ether_type8100 {33024, "ether-type8100"};
-const Enum::YLeaf VlanQinqOuterEtypeEnum::ether_type9100 {37120, "ether-type9100"};
-const Enum::YLeaf VlanQinqOuterEtypeEnum::ether_type9200 {37376, "ether-type9200"};
+const Enum::YLeaf VlanEncaps::no_encapsulation {0, "no-encapsulation"};
+const Enum::YLeaf VlanEncaps::dot1q {1, "dot1q"};
+const Enum::YLeaf VlanEncaps::qinq {2, "qinq"};
+const Enum::YLeaf VlanEncaps::qin_any {3, "qin-any"};
+const Enum::YLeaf VlanEncaps::dot1q_native {4, "dot1q-native"};
+const Enum::YLeaf VlanEncaps::dot1ad {5, "dot1ad"};
+const Enum::YLeaf VlanEncaps::dot1ad_native {6, "dot1ad-native"};
+const Enum::YLeaf VlanEncaps::service_instance {7, "service-instance"};
+const Enum::YLeaf VlanEncaps::dot1ad_dot1q {8, "dot1ad-dot1q"};
+const Enum::YLeaf VlanEncaps::dot1ad_any {9, "dot1ad-any"};
 
-const Enum::YLeaf EthFilteringEnum::no_filtering {0, "no-filtering"};
-const Enum::YLeaf EthFilteringEnum::dot1q_filtering {1, "dot1q-filtering"};
-const Enum::YLeaf EthFilteringEnum::dot1ad_filtering {2, "dot1ad-filtering"};
-const Enum::YLeaf EthFilteringEnum::two_port_mac_relay_filtering {3, "two-port-mac-relay-filtering"};
+const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
+
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
+
+const Enum::YLeaf VlanService::vlan_service_l2 {1, "vlan-service-l2"};
+const Enum::YLeaf VlanService::vlan_service_l3 {2, "vlan-service-l3"};
 
 
 }

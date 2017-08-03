@@ -6,29 +6,31 @@
 #include "generated_entity_lookup.hpp"
 #include "CISCO_ENTITY_QFP_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace CISCO_ENTITY_QFP_MIB {
 
 CiscoEntityQfpMib::CiscoEntityQfpMib()
     :
-    ceqfpmemoryresourcetable_(std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable>())
-	,ceqfpsystemtable_(std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable>())
-	,ceqfpthroughputtable_(std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable>())
-	,ceqfputilizationtable_(std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable>())
-	,ciscoentityqfp_(std::make_shared<CiscoEntityQfpMib::Ciscoentityqfp>())
-	,ciscoentityqfpnotif_(std::make_shared<CiscoEntityQfpMib::Ciscoentityqfpnotif>())
+    ceqfpmemoryresourcetable(std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable>())
+	,ceqfpsystemtable(std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable>())
+	,ceqfpthroughputtable(std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable>())
+	,ceqfputilizationtable(std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable>())
+	,ciscoentityqfp(std::make_shared<CiscoEntityQfpMib::Ciscoentityqfp>())
+	,ciscoentityqfpnotif(std::make_shared<CiscoEntityQfpMib::Ciscoentityqfpnotif>())
 {
-    ceqfpmemoryresourcetable_->parent = this;
+    ceqfpmemoryresourcetable->parent = this;
 
-    ceqfpsystemtable_->parent = this;
+    ceqfpsystemtable->parent = this;
 
-    ceqfpthroughputtable_->parent = this;
+    ceqfpthroughputtable->parent = this;
 
-    ceqfputilizationtable_->parent = this;
+    ceqfputilizationtable->parent = this;
 
-    ciscoentityqfp_->parent = this;
+    ciscoentityqfp->parent = this;
 
-    ciscoentityqfpnotif_->parent = this;
+    ciscoentityqfpnotif->parent = this;
 
     yang_name = "CISCO-ENTITY-QFP-MIB"; yang_parent_name = "CISCO-ENTITY-QFP-MIB";
 }
@@ -39,23 +41,23 @@ CiscoEntityQfpMib::~CiscoEntityQfpMib()
 
 bool CiscoEntityQfpMib::has_data() const
 {
-    return (ceqfpmemoryresourcetable_ !=  nullptr && ceqfpmemoryresourcetable_->has_data())
-	|| (ceqfpsystemtable_ !=  nullptr && ceqfpsystemtable_->has_data())
-	|| (ceqfpthroughputtable_ !=  nullptr && ceqfpthroughputtable_->has_data())
-	|| (ceqfputilizationtable_ !=  nullptr && ceqfputilizationtable_->has_data())
-	|| (ciscoentityqfp_ !=  nullptr && ciscoentityqfp_->has_data())
-	|| (ciscoentityqfpnotif_ !=  nullptr && ciscoentityqfpnotif_->has_data());
+    return (ceqfpmemoryresourcetable !=  nullptr && ceqfpmemoryresourcetable->has_data())
+	|| (ceqfpsystemtable !=  nullptr && ceqfpsystemtable->has_data())
+	|| (ceqfpthroughputtable !=  nullptr && ceqfpthroughputtable->has_data())
+	|| (ceqfputilizationtable !=  nullptr && ceqfputilizationtable->has_data())
+	|| (ciscoentityqfp !=  nullptr && ciscoentityqfp->has_data())
+	|| (ciscoentityqfpnotif !=  nullptr && ciscoentityqfpnotif->has_data());
 }
 
 bool CiscoEntityQfpMib::has_operation() const
 {
-    return is_set(operation)
-	|| (ceqfpmemoryresourcetable_ !=  nullptr && ceqfpmemoryresourcetable_->has_operation())
-	|| (ceqfpsystemtable_ !=  nullptr && ceqfpsystemtable_->has_operation())
-	|| (ceqfpthroughputtable_ !=  nullptr && ceqfpthroughputtable_->has_operation())
-	|| (ceqfputilizationtable_ !=  nullptr && ceqfputilizationtable_->has_operation())
-	|| (ciscoentityqfp_ !=  nullptr && ciscoentityqfp_->has_operation())
-	|| (ciscoentityqfpnotif_ !=  nullptr && ciscoentityqfpnotif_->has_operation());
+    return is_set(yfilter)
+	|| (ceqfpmemoryresourcetable !=  nullptr && ceqfpmemoryresourcetable->has_operation())
+	|| (ceqfpsystemtable !=  nullptr && ceqfpsystemtable->has_operation())
+	|| (ceqfpthroughputtable !=  nullptr && ceqfpthroughputtable->has_operation())
+	|| (ceqfputilizationtable !=  nullptr && ceqfputilizationtable->has_operation())
+	|| (ciscoentityqfp !=  nullptr && ciscoentityqfp->has_operation())
+	|| (ciscoentityqfpnotif !=  nullptr && ciscoentityqfpnotif->has_operation());
 }
 
 std::string CiscoEntityQfpMib::get_segment_path() const
@@ -89,56 +91,56 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::get_child_by_name(const std::string &
 {
     if(child_yang_name == "ceqfpMemoryResourceTable")
     {
-        if(ceqfpmemoryresourcetable_ == nullptr)
+        if(ceqfpmemoryresourcetable == nullptr)
         {
-            ceqfpmemoryresourcetable_ = std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable>();
+            ceqfpmemoryresourcetable = std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable>();
         }
-        return ceqfpmemoryresourcetable_;
+        return ceqfpmemoryresourcetable;
     }
 
     if(child_yang_name == "ceqfpSystemTable")
     {
-        if(ceqfpsystemtable_ == nullptr)
+        if(ceqfpsystemtable == nullptr)
         {
-            ceqfpsystemtable_ = std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable>();
+            ceqfpsystemtable = std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable>();
         }
-        return ceqfpsystemtable_;
+        return ceqfpsystemtable;
     }
 
     if(child_yang_name == "ceqfpThroughputTable")
     {
-        if(ceqfpthroughputtable_ == nullptr)
+        if(ceqfpthroughputtable == nullptr)
         {
-            ceqfpthroughputtable_ = std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable>();
+            ceqfpthroughputtable = std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable>();
         }
-        return ceqfpthroughputtable_;
+        return ceqfpthroughputtable;
     }
 
     if(child_yang_name == "ceqfpUtilizationTable")
     {
-        if(ceqfputilizationtable_ == nullptr)
+        if(ceqfputilizationtable == nullptr)
         {
-            ceqfputilizationtable_ = std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable>();
+            ceqfputilizationtable = std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable>();
         }
-        return ceqfputilizationtable_;
+        return ceqfputilizationtable;
     }
 
     if(child_yang_name == "ciscoEntityQfp")
     {
-        if(ciscoentityqfp_ == nullptr)
+        if(ciscoentityqfp == nullptr)
         {
-            ciscoentityqfp_ = std::make_shared<CiscoEntityQfpMib::Ciscoentityqfp>();
+            ciscoentityqfp = std::make_shared<CiscoEntityQfpMib::Ciscoentityqfp>();
         }
-        return ciscoentityqfp_;
+        return ciscoentityqfp;
     }
 
     if(child_yang_name == "ciscoEntityQfpNotif")
     {
-        if(ciscoentityqfpnotif_ == nullptr)
+        if(ciscoentityqfpnotif == nullptr)
         {
-            ciscoentityqfpnotif_ = std::make_shared<CiscoEntityQfpMib::Ciscoentityqfpnotif>();
+            ciscoentityqfpnotif = std::make_shared<CiscoEntityQfpMib::Ciscoentityqfpnotif>();
         }
-        return ciscoentityqfpnotif_;
+        return ciscoentityqfpnotif;
     }
 
     return nullptr;
@@ -147,40 +149,44 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::get_child_by_name(const std::string &
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(ceqfpmemoryresourcetable_ != nullptr)
+    if(ceqfpmemoryresourcetable != nullptr)
     {
-        children["ceqfpMemoryResourceTable"] = ceqfpmemoryresourcetable_;
+        children["ceqfpMemoryResourceTable"] = ceqfpmemoryresourcetable;
     }
 
-    if(ceqfpsystemtable_ != nullptr)
+    if(ceqfpsystemtable != nullptr)
     {
-        children["ceqfpSystemTable"] = ceqfpsystemtable_;
+        children["ceqfpSystemTable"] = ceqfpsystemtable;
     }
 
-    if(ceqfpthroughputtable_ != nullptr)
+    if(ceqfpthroughputtable != nullptr)
     {
-        children["ceqfpThroughputTable"] = ceqfpthroughputtable_;
+        children["ceqfpThroughputTable"] = ceqfpthroughputtable;
     }
 
-    if(ceqfputilizationtable_ != nullptr)
+    if(ceqfputilizationtable != nullptr)
     {
-        children["ceqfpUtilizationTable"] = ceqfputilizationtable_;
+        children["ceqfpUtilizationTable"] = ceqfputilizationtable;
     }
 
-    if(ciscoentityqfp_ != nullptr)
+    if(ciscoentityqfp != nullptr)
     {
-        children["ciscoEntityQfp"] = ciscoentityqfp_;
+        children["ciscoEntityQfp"] = ciscoentityqfp;
     }
 
-    if(ciscoentityqfpnotif_ != nullptr)
+    if(ciscoentityqfpnotif != nullptr)
     {
-        children["ciscoEntityQfpNotif"] = ciscoentityqfpnotif_;
+        children["ciscoEntityQfpNotif"] = ciscoentityqfpnotif;
     }
 
     return children;
 }
 
-void CiscoEntityQfpMib::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void CiscoEntityQfpMib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -202,6 +208,18 @@ std::string CiscoEntityQfpMib::get_bundle_name() const
 augment_capabilities_function CiscoEntityQfpMib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> CiscoEntityQfpMib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool CiscoEntityQfpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceqfpMemoryResourceTable" || name == "ceqfpSystemTable" || name == "ceqfpThroughputTable" || name == "ceqfpUtilizationTable" || name == "ciscoEntityQfp" || name == "ciscoEntityQfpNotif")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ciscoentityqfp::Ciscoentityqfp()
@@ -228,11 +246,11 @@ bool CiscoEntityQfpMib::Ciscoentityqfp::has_data() const
 
 bool CiscoEntityQfpMib::Ciscoentityqfp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ceqfpfiveminutesutilalgo.operation)
-	|| is_set(ceqfpfivesecondutilalgo.operation)
-	|| is_set(ceqfponeminuteutilalgo.operation)
-	|| is_set(ceqfpsixtyminutesutilalgo.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ceqfpfiveminutesutilalgo.yfilter)
+	|| ydk::is_set(ceqfpfivesecondutilalgo.yfilter)
+	|| ydk::is_set(ceqfponeminuteutilalgo.yfilter)
+	|| ydk::is_set(ceqfpsixtyminutesutilalgo.yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ciscoentityqfp::get_segment_path() const
@@ -258,10 +276,10 @@ const EntityPath CiscoEntityQfpMib::Ciscoentityqfp::get_entity_path(Entity* ance
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ceqfpfiveminutesutilalgo.is_set || is_set(ceqfpfiveminutesutilalgo.operation)) leaf_name_data.push_back(ceqfpfiveminutesutilalgo.get_name_leafdata());
-    if (ceqfpfivesecondutilalgo.is_set || is_set(ceqfpfivesecondutilalgo.operation)) leaf_name_data.push_back(ceqfpfivesecondutilalgo.get_name_leafdata());
-    if (ceqfponeminuteutilalgo.is_set || is_set(ceqfponeminuteutilalgo.operation)) leaf_name_data.push_back(ceqfponeminuteutilalgo.get_name_leafdata());
-    if (ceqfpsixtyminutesutilalgo.is_set || is_set(ceqfpsixtyminutesutilalgo.operation)) leaf_name_data.push_back(ceqfpsixtyminutesutilalgo.get_name_leafdata());
+    if (ceqfpfiveminutesutilalgo.is_set || is_set(ceqfpfiveminutesutilalgo.yfilter)) leaf_name_data.push_back(ceqfpfiveminutesutilalgo.get_name_leafdata());
+    if (ceqfpfivesecondutilalgo.is_set || is_set(ceqfpfivesecondutilalgo.yfilter)) leaf_name_data.push_back(ceqfpfivesecondutilalgo.get_name_leafdata());
+    if (ceqfponeminuteutilalgo.is_set || is_set(ceqfponeminuteutilalgo.yfilter)) leaf_name_data.push_back(ceqfponeminuteutilalgo.get_name_leafdata());
+    if (ceqfpsixtyminutesutilalgo.is_set || is_set(ceqfpsixtyminutesutilalgo.yfilter)) leaf_name_data.push_back(ceqfpsixtyminutesutilalgo.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -280,24 +298,59 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ciscoentityqfp
     return children;
 }
 
-void CiscoEntityQfpMib::Ciscoentityqfp::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ciscoentityqfp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ceqfpFiveMinutesUtilAlgo")
     {
         ceqfpfiveminutesutilalgo = value;
+        ceqfpfiveminutesutilalgo.value_namespace = name_space;
+        ceqfpfiveminutesutilalgo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpFiveSecondUtilAlgo")
     {
         ceqfpfivesecondutilalgo = value;
+        ceqfpfivesecondutilalgo.value_namespace = name_space;
+        ceqfpfivesecondutilalgo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpOneMinuteUtilAlgo")
     {
         ceqfponeminuteutilalgo = value;
+        ceqfponeminuteutilalgo.value_namespace = name_space;
+        ceqfponeminuteutilalgo.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpSixtyMinutesUtilAlgo")
     {
         ceqfpsixtyminutesutilalgo = value;
+        ceqfpsixtyminutesutilalgo.value_namespace = name_space;
+        ceqfpsixtyminutesutilalgo.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityQfpMib::Ciscoentityqfp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ceqfpFiveMinutesUtilAlgo")
+    {
+        ceqfpfiveminutesutilalgo.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpFiveSecondUtilAlgo")
+    {
+        ceqfpfivesecondutilalgo.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpOneMinuteUtilAlgo")
+    {
+        ceqfponeminuteutilalgo.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpSixtyMinutesUtilAlgo")
+    {
+        ceqfpsixtyminutesutilalgo.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityQfpMib::Ciscoentityqfp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceqfpFiveMinutesUtilAlgo" || name == "ceqfpFiveSecondUtilAlgo" || name == "ceqfpOneMinuteUtilAlgo" || name == "ceqfpSixtyMinutesUtilAlgo")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ciscoentityqfpnotif::Ciscoentityqfpnotif()
@@ -320,9 +373,9 @@ bool CiscoEntityQfpMib::Ciscoentityqfpnotif::has_data() const
 
 bool CiscoEntityQfpMib::Ciscoentityqfpnotif::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(ceqfpmemoryresthreshnotifenabled.operation)
-	|| is_set(ceqfpthroughputnotifenabled.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(ceqfpmemoryresthreshnotifenabled.yfilter)
+	|| ydk::is_set(ceqfpthroughputnotifenabled.yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ciscoentityqfpnotif::get_segment_path() const
@@ -348,8 +401,8 @@ const EntityPath CiscoEntityQfpMib::Ciscoentityqfpnotif::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (ceqfpmemoryresthreshnotifenabled.is_set || is_set(ceqfpmemoryresthreshnotifenabled.operation)) leaf_name_data.push_back(ceqfpmemoryresthreshnotifenabled.get_name_leafdata());
-    if (ceqfpthroughputnotifenabled.is_set || is_set(ceqfpthroughputnotifenabled.operation)) leaf_name_data.push_back(ceqfpthroughputnotifenabled.get_name_leafdata());
+    if (ceqfpmemoryresthreshnotifenabled.is_set || is_set(ceqfpmemoryresthreshnotifenabled.yfilter)) leaf_name_data.push_back(ceqfpmemoryresthreshnotifenabled.get_name_leafdata());
+    if (ceqfpthroughputnotifenabled.is_set || is_set(ceqfpthroughputnotifenabled.yfilter)) leaf_name_data.push_back(ceqfpthroughputnotifenabled.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -368,16 +421,39 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ciscoentityqfp
     return children;
 }
 
-void CiscoEntityQfpMib::Ciscoentityqfpnotif::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ciscoentityqfpnotif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ceqfpMemoryResThreshNotifEnabled")
     {
         ceqfpmemoryresthreshnotifenabled = value;
+        ceqfpmemoryresthreshnotifenabled.value_namespace = name_space;
+        ceqfpmemoryresthreshnotifenabled.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpThroughputNotifEnabled")
     {
         ceqfpthroughputnotifenabled = value;
+        ceqfpthroughputnotifenabled.value_namespace = name_space;
+        ceqfpthroughputnotifenabled.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityQfpMib::Ciscoentityqfpnotif::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ceqfpMemoryResThreshNotifEnabled")
+    {
+        ceqfpmemoryresthreshnotifenabled.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpThroughputNotifEnabled")
+    {
+        ceqfpthroughputnotifenabled.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityQfpMib::Ciscoentityqfpnotif::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceqfpMemoryResThreshNotifEnabled" || name == "ceqfpThroughputNotifEnabled")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystemtable()
@@ -391,9 +467,9 @@ CiscoEntityQfpMib::Ceqfpsystemtable::~Ceqfpsystemtable()
 
 bool CiscoEntityQfpMib::Ceqfpsystemtable::has_data() const
 {
-    for (std::size_t index=0; index<ceqfpsystementry_.size(); index++)
+    for (std::size_t index=0; index<ceqfpsystementry.size(); index++)
     {
-        if(ceqfpsystementry_[index]->has_data())
+        if(ceqfpsystementry[index]->has_data())
             return true;
     }
     return false;
@@ -401,12 +477,12 @@ bool CiscoEntityQfpMib::Ceqfpsystemtable::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfpsystemtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceqfpsystementry_.size(); index++)
+    for (std::size_t index=0; index<ceqfpsystementry.size(); index++)
     {
-        if(ceqfpsystementry_[index]->has_operation())
+        if(ceqfpsystementry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ceqfpsystemtable::get_segment_path() const
@@ -443,7 +519,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpsystemtable::get_child_by_name(c
 {
     if(child_yang_name == "ceqfpSystemEntry")
     {
-        for(auto const & c : ceqfpsystementry_)
+        for(auto const & c : ceqfpsystementry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -453,7 +529,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpsystemtable::get_child_by_name(c
         }
         auto c = std::make_shared<CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry>();
         c->parent = this;
-        ceqfpsystementry_.push_back(c);
+        ceqfpsystementry.push_back(c);
         return c;
     }
 
@@ -463,7 +539,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpsystemtable::get_child_by_name(c
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpsystemtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceqfpsystementry_)
+    for (auto const & c : ceqfpsystementry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -471,8 +547,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpsystemtab
     return children;
 }
 
-void CiscoEntityQfpMib::Ceqfpsystemtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ceqfpsystemtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityQfpMib::Ceqfpsystemtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityQfpMib::Ceqfpsystemtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceqfpSystemEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystementry()
@@ -501,12 +588,12 @@ bool CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(ceqfpnumbersystemloads.operation)
-	|| is_set(ceqfpsystemlastloadtime.operation)
-	|| is_set(ceqfpsystemstate.operation)
-	|| is_set(ceqfpsystemtrafficdirection.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(ceqfpnumbersystemloads.yfilter)
+	|| ydk::is_set(ceqfpsystemlastloadtime.yfilter)
+	|| ydk::is_set(ceqfpsystemstate.yfilter)
+	|| ydk::is_set(ceqfpsystemtrafficdirection.yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::get_segment_path() const
@@ -532,11 +619,11 @@ const EntityPath CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (ceqfpnumbersystemloads.is_set || is_set(ceqfpnumbersystemloads.operation)) leaf_name_data.push_back(ceqfpnumbersystemloads.get_name_leafdata());
-    if (ceqfpsystemlastloadtime.is_set || is_set(ceqfpsystemlastloadtime.operation)) leaf_name_data.push_back(ceqfpsystemlastloadtime.get_name_leafdata());
-    if (ceqfpsystemstate.is_set || is_set(ceqfpsystemstate.operation)) leaf_name_data.push_back(ceqfpsystemstate.get_name_leafdata());
-    if (ceqfpsystemtrafficdirection.is_set || is_set(ceqfpsystemtrafficdirection.operation)) leaf_name_data.push_back(ceqfpsystemtrafficdirection.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (ceqfpnumbersystemloads.is_set || is_set(ceqfpnumbersystemloads.yfilter)) leaf_name_data.push_back(ceqfpnumbersystemloads.get_name_leafdata());
+    if (ceqfpsystemlastloadtime.is_set || is_set(ceqfpsystemlastloadtime.yfilter)) leaf_name_data.push_back(ceqfpsystemlastloadtime.get_name_leafdata());
+    if (ceqfpsystemstate.is_set || is_set(ceqfpsystemstate.yfilter)) leaf_name_data.push_back(ceqfpsystemstate.get_name_leafdata());
+    if (ceqfpsystemtrafficdirection.is_set || is_set(ceqfpsystemtrafficdirection.yfilter)) leaf_name_data.push_back(ceqfpsystemtrafficdirection.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -555,28 +642,69 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpsystemtab
     return children;
 }
 
-void CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpNumberSystemLoads")
     {
         ceqfpnumbersystemloads = value;
+        ceqfpnumbersystemloads.value_namespace = name_space;
+        ceqfpnumbersystemloads.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpSystemLastLoadTime")
     {
         ceqfpsystemlastloadtime = value;
+        ceqfpsystemlastloadtime.value_namespace = name_space;
+        ceqfpsystemlastloadtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpSystemState")
     {
         ceqfpsystemstate = value;
+        ceqfpsystemstate.value_namespace = name_space;
+        ceqfpsystemstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpSystemTrafficDirection")
     {
         ceqfpsystemtrafficdirection = value;
+        ceqfpsystemtrafficdirection.value_namespace = name_space;
+        ceqfpsystemtrafficdirection.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpNumberSystemLoads")
+    {
+        ceqfpnumbersystemloads.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpSystemLastLoadTime")
+    {
+        ceqfpsystemlastloadtime.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpSystemState")
+    {
+        ceqfpsystemstate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpSystemTrafficDirection")
+    {
+        ceqfpsystemtrafficdirection.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "ceqfpNumberSystemLoads" || name == "ceqfpSystemLastLoadTime" || name == "ceqfpSystemState" || name == "ceqfpSystemTrafficDirection")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationtable()
@@ -590,9 +718,9 @@ CiscoEntityQfpMib::Ceqfputilizationtable::~Ceqfputilizationtable()
 
 bool CiscoEntityQfpMib::Ceqfputilizationtable::has_data() const
 {
-    for (std::size_t index=0; index<ceqfputilizationentry_.size(); index++)
+    for (std::size_t index=0; index<ceqfputilizationentry.size(); index++)
     {
-        if(ceqfputilizationentry_[index]->has_data())
+        if(ceqfputilizationentry[index]->has_data())
             return true;
     }
     return false;
@@ -600,12 +728,12 @@ bool CiscoEntityQfpMib::Ceqfputilizationtable::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfputilizationtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceqfputilizationentry_.size(); index++)
+    for (std::size_t index=0; index<ceqfputilizationentry.size(); index++)
     {
-        if(ceqfputilizationentry_[index]->has_operation())
+        if(ceqfputilizationentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ceqfputilizationtable::get_segment_path() const
@@ -642,7 +770,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfputilizationtable::get_child_by_n
 {
     if(child_yang_name == "ceqfpUtilizationEntry")
     {
-        for(auto const & c : ceqfputilizationentry_)
+        for(auto const & c : ceqfputilizationentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -652,7 +780,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfputilizationtable::get_child_by_n
         }
         auto c = std::make_shared<CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry>();
         c->parent = this;
-        ceqfputilizationentry_.push_back(c);
+        ceqfputilizationentry.push_back(c);
         return c;
     }
 
@@ -662,7 +790,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfputilizationtable::get_child_by_n
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfputilizationtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceqfputilizationentry_)
+    for (auto const & c : ceqfputilizationentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -670,8 +798,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfputilizati
     return children;
 }
 
-void CiscoEntityQfpMib::Ceqfputilizationtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ceqfputilizationtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityQfpMib::Ceqfputilizationtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityQfpMib::Ceqfputilizationtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceqfpUtilizationEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry::Ceqfputilizationentry()
@@ -720,22 +859,22 @@ bool CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry::has_data()
 
 bool CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(ceqfputiltimeinterval.operation)
-	|| is_set(ceqfputilinputnonprioritybitrate.operation)
-	|| is_set(ceqfputilinputnonprioritypktrate.operation)
-	|| is_set(ceqfputilinputprioritybitrate.operation)
-	|| is_set(ceqfputilinputprioritypktrate.operation)
-	|| is_set(ceqfputilinputtotalbitrate.operation)
-	|| is_set(ceqfputilinputtotalpktrate.operation)
-	|| is_set(ceqfputiloutputnonprioritybitrate.operation)
-	|| is_set(ceqfputiloutputnonprioritypktrate.operation)
-	|| is_set(ceqfputiloutputprioritybitrate.operation)
-	|| is_set(ceqfputiloutputprioritypktrate.operation)
-	|| is_set(ceqfputiloutputtotalbitrate.operation)
-	|| is_set(ceqfputiloutputtotalpktrate.operation)
-	|| is_set(ceqfputilprocessingload.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(ceqfputiltimeinterval.yfilter)
+	|| ydk::is_set(ceqfputilinputnonprioritybitrate.yfilter)
+	|| ydk::is_set(ceqfputilinputnonprioritypktrate.yfilter)
+	|| ydk::is_set(ceqfputilinputprioritybitrate.yfilter)
+	|| ydk::is_set(ceqfputilinputprioritypktrate.yfilter)
+	|| ydk::is_set(ceqfputilinputtotalbitrate.yfilter)
+	|| ydk::is_set(ceqfputilinputtotalpktrate.yfilter)
+	|| ydk::is_set(ceqfputiloutputnonprioritybitrate.yfilter)
+	|| ydk::is_set(ceqfputiloutputnonprioritypktrate.yfilter)
+	|| ydk::is_set(ceqfputiloutputprioritybitrate.yfilter)
+	|| ydk::is_set(ceqfputiloutputprioritypktrate.yfilter)
+	|| ydk::is_set(ceqfputiloutputtotalbitrate.yfilter)
+	|| ydk::is_set(ceqfputiloutputtotalpktrate.yfilter)
+	|| ydk::is_set(ceqfputilprocessingload.yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry::get_segment_path() const
@@ -761,21 +900,21 @@ const EntityPath CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (ceqfputiltimeinterval.is_set || is_set(ceqfputiltimeinterval.operation)) leaf_name_data.push_back(ceqfputiltimeinterval.get_name_leafdata());
-    if (ceqfputilinputnonprioritybitrate.is_set || is_set(ceqfputilinputnonprioritybitrate.operation)) leaf_name_data.push_back(ceqfputilinputnonprioritybitrate.get_name_leafdata());
-    if (ceqfputilinputnonprioritypktrate.is_set || is_set(ceqfputilinputnonprioritypktrate.operation)) leaf_name_data.push_back(ceqfputilinputnonprioritypktrate.get_name_leafdata());
-    if (ceqfputilinputprioritybitrate.is_set || is_set(ceqfputilinputprioritybitrate.operation)) leaf_name_data.push_back(ceqfputilinputprioritybitrate.get_name_leafdata());
-    if (ceqfputilinputprioritypktrate.is_set || is_set(ceqfputilinputprioritypktrate.operation)) leaf_name_data.push_back(ceqfputilinputprioritypktrate.get_name_leafdata());
-    if (ceqfputilinputtotalbitrate.is_set || is_set(ceqfputilinputtotalbitrate.operation)) leaf_name_data.push_back(ceqfputilinputtotalbitrate.get_name_leafdata());
-    if (ceqfputilinputtotalpktrate.is_set || is_set(ceqfputilinputtotalpktrate.operation)) leaf_name_data.push_back(ceqfputilinputtotalpktrate.get_name_leafdata());
-    if (ceqfputiloutputnonprioritybitrate.is_set || is_set(ceqfputiloutputnonprioritybitrate.operation)) leaf_name_data.push_back(ceqfputiloutputnonprioritybitrate.get_name_leafdata());
-    if (ceqfputiloutputnonprioritypktrate.is_set || is_set(ceqfputiloutputnonprioritypktrate.operation)) leaf_name_data.push_back(ceqfputiloutputnonprioritypktrate.get_name_leafdata());
-    if (ceqfputiloutputprioritybitrate.is_set || is_set(ceqfputiloutputprioritybitrate.operation)) leaf_name_data.push_back(ceqfputiloutputprioritybitrate.get_name_leafdata());
-    if (ceqfputiloutputprioritypktrate.is_set || is_set(ceqfputiloutputprioritypktrate.operation)) leaf_name_data.push_back(ceqfputiloutputprioritypktrate.get_name_leafdata());
-    if (ceqfputiloutputtotalbitrate.is_set || is_set(ceqfputiloutputtotalbitrate.operation)) leaf_name_data.push_back(ceqfputiloutputtotalbitrate.get_name_leafdata());
-    if (ceqfputiloutputtotalpktrate.is_set || is_set(ceqfputiloutputtotalpktrate.operation)) leaf_name_data.push_back(ceqfputiloutputtotalpktrate.get_name_leafdata());
-    if (ceqfputilprocessingload.is_set || is_set(ceqfputilprocessingload.operation)) leaf_name_data.push_back(ceqfputilprocessingload.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (ceqfputiltimeinterval.is_set || is_set(ceqfputiltimeinterval.yfilter)) leaf_name_data.push_back(ceqfputiltimeinterval.get_name_leafdata());
+    if (ceqfputilinputnonprioritybitrate.is_set || is_set(ceqfputilinputnonprioritybitrate.yfilter)) leaf_name_data.push_back(ceqfputilinputnonprioritybitrate.get_name_leafdata());
+    if (ceqfputilinputnonprioritypktrate.is_set || is_set(ceqfputilinputnonprioritypktrate.yfilter)) leaf_name_data.push_back(ceqfputilinputnonprioritypktrate.get_name_leafdata());
+    if (ceqfputilinputprioritybitrate.is_set || is_set(ceqfputilinputprioritybitrate.yfilter)) leaf_name_data.push_back(ceqfputilinputprioritybitrate.get_name_leafdata());
+    if (ceqfputilinputprioritypktrate.is_set || is_set(ceqfputilinputprioritypktrate.yfilter)) leaf_name_data.push_back(ceqfputilinputprioritypktrate.get_name_leafdata());
+    if (ceqfputilinputtotalbitrate.is_set || is_set(ceqfputilinputtotalbitrate.yfilter)) leaf_name_data.push_back(ceqfputilinputtotalbitrate.get_name_leafdata());
+    if (ceqfputilinputtotalpktrate.is_set || is_set(ceqfputilinputtotalpktrate.yfilter)) leaf_name_data.push_back(ceqfputilinputtotalpktrate.get_name_leafdata());
+    if (ceqfputiloutputnonprioritybitrate.is_set || is_set(ceqfputiloutputnonprioritybitrate.yfilter)) leaf_name_data.push_back(ceqfputiloutputnonprioritybitrate.get_name_leafdata());
+    if (ceqfputiloutputnonprioritypktrate.is_set || is_set(ceqfputiloutputnonprioritypktrate.yfilter)) leaf_name_data.push_back(ceqfputiloutputnonprioritypktrate.get_name_leafdata());
+    if (ceqfputiloutputprioritybitrate.is_set || is_set(ceqfputiloutputprioritybitrate.yfilter)) leaf_name_data.push_back(ceqfputiloutputprioritybitrate.get_name_leafdata());
+    if (ceqfputiloutputprioritypktrate.is_set || is_set(ceqfputiloutputprioritypktrate.yfilter)) leaf_name_data.push_back(ceqfputiloutputprioritypktrate.get_name_leafdata());
+    if (ceqfputiloutputtotalbitrate.is_set || is_set(ceqfputiloutputtotalbitrate.yfilter)) leaf_name_data.push_back(ceqfputiloutputtotalbitrate.get_name_leafdata());
+    if (ceqfputiloutputtotalpktrate.is_set || is_set(ceqfputiloutputtotalpktrate.yfilter)) leaf_name_data.push_back(ceqfputiloutputtotalpktrate.get_name_leafdata());
+    if (ceqfputilprocessingload.is_set || is_set(ceqfputilprocessingload.yfilter)) leaf_name_data.push_back(ceqfputilprocessingload.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -794,68 +933,169 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfputilizati
     return children;
 }
 
-void CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilTimeInterval")
     {
         ceqfputiltimeinterval = value;
+        ceqfputiltimeinterval.value_namespace = name_space;
+        ceqfputiltimeinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilInputNonPriorityBitRate")
     {
         ceqfputilinputnonprioritybitrate = value;
+        ceqfputilinputnonprioritybitrate.value_namespace = name_space;
+        ceqfputilinputnonprioritybitrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilInputNonPriorityPktRate")
     {
         ceqfputilinputnonprioritypktrate = value;
+        ceqfputilinputnonprioritypktrate.value_namespace = name_space;
+        ceqfputilinputnonprioritypktrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilInputPriorityBitRate")
     {
         ceqfputilinputprioritybitrate = value;
+        ceqfputilinputprioritybitrate.value_namespace = name_space;
+        ceqfputilinputprioritybitrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilInputPriorityPktRate")
     {
         ceqfputilinputprioritypktrate = value;
+        ceqfputilinputprioritypktrate.value_namespace = name_space;
+        ceqfputilinputprioritypktrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilInputTotalBitRate")
     {
         ceqfputilinputtotalbitrate = value;
+        ceqfputilinputtotalbitrate.value_namespace = name_space;
+        ceqfputilinputtotalbitrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilInputTotalPktRate")
     {
         ceqfputilinputtotalpktrate = value;
+        ceqfputilinputtotalpktrate.value_namespace = name_space;
+        ceqfputilinputtotalpktrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilOutputNonPriorityBitRate")
     {
         ceqfputiloutputnonprioritybitrate = value;
+        ceqfputiloutputnonprioritybitrate.value_namespace = name_space;
+        ceqfputiloutputnonprioritybitrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilOutputNonPriorityPktRate")
     {
         ceqfputiloutputnonprioritypktrate = value;
+        ceqfputiloutputnonprioritypktrate.value_namespace = name_space;
+        ceqfputiloutputnonprioritypktrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilOutputPriorityBitRate")
     {
         ceqfputiloutputprioritybitrate = value;
+        ceqfputiloutputprioritybitrate.value_namespace = name_space;
+        ceqfputiloutputprioritybitrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilOutputPriorityPktRate")
     {
         ceqfputiloutputprioritypktrate = value;
+        ceqfputiloutputprioritypktrate.value_namespace = name_space;
+        ceqfputiloutputprioritypktrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilOutputTotalBitRate")
     {
         ceqfputiloutputtotalbitrate = value;
+        ceqfputiloutputtotalbitrate.value_namespace = name_space;
+        ceqfputiloutputtotalbitrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilOutputTotalPktRate")
     {
         ceqfputiloutputtotalpktrate = value;
+        ceqfputiloutputtotalpktrate.value_namespace = name_space;
+        ceqfputiloutputtotalpktrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpUtilProcessingLoad")
     {
         ceqfputilprocessingload = value;
+        ceqfputilprocessingload.value_namespace = name_space;
+        ceqfputilprocessingload.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilTimeInterval")
+    {
+        ceqfputiltimeinterval.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilInputNonPriorityBitRate")
+    {
+        ceqfputilinputnonprioritybitrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilInputNonPriorityPktRate")
+    {
+        ceqfputilinputnonprioritypktrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilInputPriorityBitRate")
+    {
+        ceqfputilinputprioritybitrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilInputPriorityPktRate")
+    {
+        ceqfputilinputprioritypktrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilInputTotalBitRate")
+    {
+        ceqfputilinputtotalbitrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilInputTotalPktRate")
+    {
+        ceqfputilinputtotalpktrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilOutputNonPriorityBitRate")
+    {
+        ceqfputiloutputnonprioritybitrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilOutputNonPriorityPktRate")
+    {
+        ceqfputiloutputnonprioritypktrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilOutputPriorityBitRate")
+    {
+        ceqfputiloutputprioritybitrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilOutputPriorityPktRate")
+    {
+        ceqfputiloutputprioritypktrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilOutputTotalBitRate")
+    {
+        ceqfputiloutputtotalbitrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilOutputTotalPktRate")
+    {
+        ceqfputiloutputtotalpktrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpUtilProcessingLoad")
+    {
+        ceqfputilprocessingload.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityQfpMib::Ceqfputilizationtable::Ceqfputilizationentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "ceqfpUtilTimeInterval" || name == "ceqfpUtilInputNonPriorityBitRate" || name == "ceqfpUtilInputNonPriorityPktRate" || name == "ceqfpUtilInputPriorityBitRate" || name == "ceqfpUtilInputPriorityPktRate" || name == "ceqfpUtilInputTotalBitRate" || name == "ceqfpUtilInputTotalPktRate" || name == "ceqfpUtilOutputNonPriorityBitRate" || name == "ceqfpUtilOutputNonPriorityPktRate" || name == "ceqfpUtilOutputPriorityBitRate" || name == "ceqfpUtilOutputPriorityPktRate" || name == "ceqfpUtilOutputTotalBitRate" || name == "ceqfpUtilOutputTotalPktRate" || name == "ceqfpUtilProcessingLoad")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourcetable()
@@ -869,9 +1109,9 @@ CiscoEntityQfpMib::Ceqfpmemoryresourcetable::~Ceqfpmemoryresourcetable()
 
 bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::has_data() const
 {
-    for (std::size_t index=0; index<ceqfpmemoryresourceentry_.size(); index++)
+    for (std::size_t index=0; index<ceqfpmemoryresourceentry.size(); index++)
     {
-        if(ceqfpmemoryresourceentry_[index]->has_data())
+        if(ceqfpmemoryresourceentry[index]->has_data())
             return true;
     }
     return false;
@@ -879,12 +1119,12 @@ bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::has_operation() const
 {
-    for (std::size_t index=0; index<ceqfpmemoryresourceentry_.size(); index++)
+    for (std::size_t index=0; index<ceqfpmemoryresourceentry.size(); index++)
     {
-        if(ceqfpmemoryresourceentry_[index]->has_operation())
+        if(ceqfpmemoryresourceentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_segment_path() const
@@ -921,7 +1161,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_child_b
 {
     if(child_yang_name == "ceqfpMemoryResourceEntry")
     {
-        for(auto const & c : ceqfpmemoryresourceentry_)
+        for(auto const & c : ceqfpmemoryresourceentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -931,7 +1171,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_child_b
         }
         auto c = std::make_shared<CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry>();
         c->parent = this;
-        ceqfpmemoryresourceentry_.push_back(c);
+        ceqfpmemoryresourceentry.push_back(c);
         return c;
     }
 
@@ -941,7 +1181,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_child_b
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpmemoryresourcetable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceqfpmemoryresourceentry_)
+    for (auto const & c : ceqfpmemoryresourceentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -949,8 +1189,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpmemoryres
     return children;
 }
 
-void CiscoEntityQfpMib::Ceqfpmemoryresourcetable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ceqfpmemoryresourcetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityQfpMib::Ceqfpmemoryresourcetable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceqfpMemoryResourceEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::Ceqfpmemoryresourceentry()
@@ -1001,23 +1252,23 @@ bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::has_
 
 bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(ceqfpmemoryrestype.operation)
-	|| is_set(ceqfpmemoryhcresfree.operation)
-	|| is_set(ceqfpmemoryhcresinuse.operation)
-	|| is_set(ceqfpmemoryhcreslowfreewatermark.operation)
-	|| is_set(ceqfpmemoryhcrestotal.operation)
-	|| is_set(ceqfpmemoryresfallingthreshold.operation)
-	|| is_set(ceqfpmemoryresfree.operation)
-	|| is_set(ceqfpmemoryresfreeovrflw.operation)
-	|| is_set(ceqfpmemoryresinuse.operation)
-	|| is_set(ceqfpmemoryresinuseovrflw.operation)
-	|| is_set(ceqfpmemoryreslowfreewatermark.operation)
-	|| is_set(ceqfpmemoryreslowfreewatermarkovrflw.operation)
-	|| is_set(ceqfpmemoryresrisingthreshold.operation)
-	|| is_set(ceqfpmemoryrestotal.operation)
-	|| is_set(ceqfpmemoryrestotalovrflw.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(ceqfpmemoryrestype.yfilter)
+	|| ydk::is_set(ceqfpmemoryhcresfree.yfilter)
+	|| ydk::is_set(ceqfpmemoryhcresinuse.yfilter)
+	|| ydk::is_set(ceqfpmemoryhcreslowfreewatermark.yfilter)
+	|| ydk::is_set(ceqfpmemoryhcrestotal.yfilter)
+	|| ydk::is_set(ceqfpmemoryresfallingthreshold.yfilter)
+	|| ydk::is_set(ceqfpmemoryresfree.yfilter)
+	|| ydk::is_set(ceqfpmemoryresfreeovrflw.yfilter)
+	|| ydk::is_set(ceqfpmemoryresinuse.yfilter)
+	|| ydk::is_set(ceqfpmemoryresinuseovrflw.yfilter)
+	|| ydk::is_set(ceqfpmemoryreslowfreewatermark.yfilter)
+	|| ydk::is_set(ceqfpmemoryreslowfreewatermarkovrflw.yfilter)
+	|| ydk::is_set(ceqfpmemoryresrisingthreshold.yfilter)
+	|| ydk::is_set(ceqfpmemoryrestotal.yfilter)
+	|| ydk::is_set(ceqfpmemoryrestotalovrflw.yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::get_segment_path() const
@@ -1043,22 +1294,22 @@ const EntityPath CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourc
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (ceqfpmemoryrestype.is_set || is_set(ceqfpmemoryrestype.operation)) leaf_name_data.push_back(ceqfpmemoryrestype.get_name_leafdata());
-    if (ceqfpmemoryhcresfree.is_set || is_set(ceqfpmemoryhcresfree.operation)) leaf_name_data.push_back(ceqfpmemoryhcresfree.get_name_leafdata());
-    if (ceqfpmemoryhcresinuse.is_set || is_set(ceqfpmemoryhcresinuse.operation)) leaf_name_data.push_back(ceqfpmemoryhcresinuse.get_name_leafdata());
-    if (ceqfpmemoryhcreslowfreewatermark.is_set || is_set(ceqfpmemoryhcreslowfreewatermark.operation)) leaf_name_data.push_back(ceqfpmemoryhcreslowfreewatermark.get_name_leafdata());
-    if (ceqfpmemoryhcrestotal.is_set || is_set(ceqfpmemoryhcrestotal.operation)) leaf_name_data.push_back(ceqfpmemoryhcrestotal.get_name_leafdata());
-    if (ceqfpmemoryresfallingthreshold.is_set || is_set(ceqfpmemoryresfallingthreshold.operation)) leaf_name_data.push_back(ceqfpmemoryresfallingthreshold.get_name_leafdata());
-    if (ceqfpmemoryresfree.is_set || is_set(ceqfpmemoryresfree.operation)) leaf_name_data.push_back(ceqfpmemoryresfree.get_name_leafdata());
-    if (ceqfpmemoryresfreeovrflw.is_set || is_set(ceqfpmemoryresfreeovrflw.operation)) leaf_name_data.push_back(ceqfpmemoryresfreeovrflw.get_name_leafdata());
-    if (ceqfpmemoryresinuse.is_set || is_set(ceqfpmemoryresinuse.operation)) leaf_name_data.push_back(ceqfpmemoryresinuse.get_name_leafdata());
-    if (ceqfpmemoryresinuseovrflw.is_set || is_set(ceqfpmemoryresinuseovrflw.operation)) leaf_name_data.push_back(ceqfpmemoryresinuseovrflw.get_name_leafdata());
-    if (ceqfpmemoryreslowfreewatermark.is_set || is_set(ceqfpmemoryreslowfreewatermark.operation)) leaf_name_data.push_back(ceqfpmemoryreslowfreewatermark.get_name_leafdata());
-    if (ceqfpmemoryreslowfreewatermarkovrflw.is_set || is_set(ceqfpmemoryreslowfreewatermarkovrflw.operation)) leaf_name_data.push_back(ceqfpmemoryreslowfreewatermarkovrflw.get_name_leafdata());
-    if (ceqfpmemoryresrisingthreshold.is_set || is_set(ceqfpmemoryresrisingthreshold.operation)) leaf_name_data.push_back(ceqfpmemoryresrisingthreshold.get_name_leafdata());
-    if (ceqfpmemoryrestotal.is_set || is_set(ceqfpmemoryrestotal.operation)) leaf_name_data.push_back(ceqfpmemoryrestotal.get_name_leafdata());
-    if (ceqfpmemoryrestotalovrflw.is_set || is_set(ceqfpmemoryrestotalovrflw.operation)) leaf_name_data.push_back(ceqfpmemoryrestotalovrflw.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (ceqfpmemoryrestype.is_set || is_set(ceqfpmemoryrestype.yfilter)) leaf_name_data.push_back(ceqfpmemoryrestype.get_name_leafdata());
+    if (ceqfpmemoryhcresfree.is_set || is_set(ceqfpmemoryhcresfree.yfilter)) leaf_name_data.push_back(ceqfpmemoryhcresfree.get_name_leafdata());
+    if (ceqfpmemoryhcresinuse.is_set || is_set(ceqfpmemoryhcresinuse.yfilter)) leaf_name_data.push_back(ceqfpmemoryhcresinuse.get_name_leafdata());
+    if (ceqfpmemoryhcreslowfreewatermark.is_set || is_set(ceqfpmemoryhcreslowfreewatermark.yfilter)) leaf_name_data.push_back(ceqfpmemoryhcreslowfreewatermark.get_name_leafdata());
+    if (ceqfpmemoryhcrestotal.is_set || is_set(ceqfpmemoryhcrestotal.yfilter)) leaf_name_data.push_back(ceqfpmemoryhcrestotal.get_name_leafdata());
+    if (ceqfpmemoryresfallingthreshold.is_set || is_set(ceqfpmemoryresfallingthreshold.yfilter)) leaf_name_data.push_back(ceqfpmemoryresfallingthreshold.get_name_leafdata());
+    if (ceqfpmemoryresfree.is_set || is_set(ceqfpmemoryresfree.yfilter)) leaf_name_data.push_back(ceqfpmemoryresfree.get_name_leafdata());
+    if (ceqfpmemoryresfreeovrflw.is_set || is_set(ceqfpmemoryresfreeovrflw.yfilter)) leaf_name_data.push_back(ceqfpmemoryresfreeovrflw.get_name_leafdata());
+    if (ceqfpmemoryresinuse.is_set || is_set(ceqfpmemoryresinuse.yfilter)) leaf_name_data.push_back(ceqfpmemoryresinuse.get_name_leafdata());
+    if (ceqfpmemoryresinuseovrflw.is_set || is_set(ceqfpmemoryresinuseovrflw.yfilter)) leaf_name_data.push_back(ceqfpmemoryresinuseovrflw.get_name_leafdata());
+    if (ceqfpmemoryreslowfreewatermark.is_set || is_set(ceqfpmemoryreslowfreewatermark.yfilter)) leaf_name_data.push_back(ceqfpmemoryreslowfreewatermark.get_name_leafdata());
+    if (ceqfpmemoryreslowfreewatermarkovrflw.is_set || is_set(ceqfpmemoryreslowfreewatermarkovrflw.yfilter)) leaf_name_data.push_back(ceqfpmemoryreslowfreewatermarkovrflw.get_name_leafdata());
+    if (ceqfpmemoryresrisingthreshold.is_set || is_set(ceqfpmemoryresrisingthreshold.yfilter)) leaf_name_data.push_back(ceqfpmemoryresrisingthreshold.get_name_leafdata());
+    if (ceqfpmemoryrestotal.is_set || is_set(ceqfpmemoryrestotal.yfilter)) leaf_name_data.push_back(ceqfpmemoryrestotal.get_name_leafdata());
+    if (ceqfpmemoryrestotalovrflw.is_set || is_set(ceqfpmemoryrestotalovrflw.yfilter)) leaf_name_data.push_back(ceqfpmemoryrestotalovrflw.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1077,72 +1328,179 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpmemoryres
     return children;
 }
 
-void CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResType")
     {
         ceqfpmemoryrestype = value;
+        ceqfpmemoryrestype.value_namespace = name_space;
+        ceqfpmemoryrestype.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryHCResFree")
     {
         ceqfpmemoryhcresfree = value;
+        ceqfpmemoryhcresfree.value_namespace = name_space;
+        ceqfpmemoryhcresfree.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryHCResInUse")
     {
         ceqfpmemoryhcresinuse = value;
+        ceqfpmemoryhcresinuse.value_namespace = name_space;
+        ceqfpmemoryhcresinuse.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryHCResLowFreeWatermark")
     {
         ceqfpmemoryhcreslowfreewatermark = value;
+        ceqfpmemoryhcreslowfreewatermark.value_namespace = name_space;
+        ceqfpmemoryhcreslowfreewatermark.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryHCResTotal")
     {
         ceqfpmemoryhcrestotal = value;
+        ceqfpmemoryhcrestotal.value_namespace = name_space;
+        ceqfpmemoryhcrestotal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResFallingThreshold")
     {
         ceqfpmemoryresfallingthreshold = value;
+        ceqfpmemoryresfallingthreshold.value_namespace = name_space;
+        ceqfpmemoryresfallingthreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResFree")
     {
         ceqfpmemoryresfree = value;
+        ceqfpmemoryresfree.value_namespace = name_space;
+        ceqfpmemoryresfree.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResFreeOvrflw")
     {
         ceqfpmemoryresfreeovrflw = value;
+        ceqfpmemoryresfreeovrflw.value_namespace = name_space;
+        ceqfpmemoryresfreeovrflw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResInUse")
     {
         ceqfpmemoryresinuse = value;
+        ceqfpmemoryresinuse.value_namespace = name_space;
+        ceqfpmemoryresinuse.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResInUseOvrflw")
     {
         ceqfpmemoryresinuseovrflw = value;
+        ceqfpmemoryresinuseovrflw.value_namespace = name_space;
+        ceqfpmemoryresinuseovrflw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResLowFreeWatermark")
     {
         ceqfpmemoryreslowfreewatermark = value;
+        ceqfpmemoryreslowfreewatermark.value_namespace = name_space;
+        ceqfpmemoryreslowfreewatermark.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResLowFreeWatermarkOvrflw")
     {
         ceqfpmemoryreslowfreewatermarkovrflw = value;
+        ceqfpmemoryreslowfreewatermarkovrflw.value_namespace = name_space;
+        ceqfpmemoryreslowfreewatermarkovrflw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResRisingThreshold")
     {
         ceqfpmemoryresrisingthreshold = value;
+        ceqfpmemoryresrisingthreshold.value_namespace = name_space;
+        ceqfpmemoryresrisingthreshold.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResTotal")
     {
         ceqfpmemoryrestotal = value;
+        ceqfpmemoryrestotal.value_namespace = name_space;
+        ceqfpmemoryrestotal.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpMemoryResTotalOvrflw")
     {
         ceqfpmemoryrestotalovrflw = value;
+        ceqfpmemoryrestotalovrflw.value_namespace = name_space;
+        ceqfpmemoryrestotalovrflw.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResType")
+    {
+        ceqfpmemoryrestype.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryHCResFree")
+    {
+        ceqfpmemoryhcresfree.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryHCResInUse")
+    {
+        ceqfpmemoryhcresinuse.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryHCResLowFreeWatermark")
+    {
+        ceqfpmemoryhcreslowfreewatermark.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryHCResTotal")
+    {
+        ceqfpmemoryhcrestotal.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResFallingThreshold")
+    {
+        ceqfpmemoryresfallingthreshold.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResFree")
+    {
+        ceqfpmemoryresfree.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResFreeOvrflw")
+    {
+        ceqfpmemoryresfreeovrflw.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResInUse")
+    {
+        ceqfpmemoryresinuse.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResInUseOvrflw")
+    {
+        ceqfpmemoryresinuseovrflw.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResLowFreeWatermark")
+    {
+        ceqfpmemoryreslowfreewatermark.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResLowFreeWatermarkOvrflw")
+    {
+        ceqfpmemoryreslowfreewatermarkovrflw.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResRisingThreshold")
+    {
+        ceqfpmemoryresrisingthreshold.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResTotal")
+    {
+        ceqfpmemoryrestotal.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpMemoryResTotalOvrflw")
+    {
+        ceqfpmemoryrestotalovrflw.yfilter = yfilter;
+    }
+}
+
+bool CiscoEntityQfpMib::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "ceqfpMemoryResType" || name == "ceqfpMemoryHCResFree" || name == "ceqfpMemoryHCResInUse" || name == "ceqfpMemoryHCResLowFreeWatermark" || name == "ceqfpMemoryHCResTotal" || name == "ceqfpMemoryResFallingThreshold" || name == "ceqfpMemoryResFree" || name == "ceqfpMemoryResFreeOvrflw" || name == "ceqfpMemoryResInUse" || name == "ceqfpMemoryResInUseOvrflw" || name == "ceqfpMemoryResLowFreeWatermark" || name == "ceqfpMemoryResLowFreeWatermarkOvrflw" || name == "ceqfpMemoryResRisingThreshold" || name == "ceqfpMemoryResTotal" || name == "ceqfpMemoryResTotalOvrflw")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputtable()
@@ -1156,9 +1514,9 @@ CiscoEntityQfpMib::Ceqfpthroughputtable::~Ceqfpthroughputtable()
 
 bool CiscoEntityQfpMib::Ceqfpthroughputtable::has_data() const
 {
-    for (std::size_t index=0; index<ceqfpthroughputentry_.size(); index++)
+    for (std::size_t index=0; index<ceqfpthroughputentry.size(); index++)
     {
-        if(ceqfpthroughputentry_[index]->has_data())
+        if(ceqfpthroughputentry[index]->has_data())
             return true;
     }
     return false;
@@ -1166,12 +1524,12 @@ bool CiscoEntityQfpMib::Ceqfpthroughputtable::has_data() const
 
 bool CiscoEntityQfpMib::Ceqfpthroughputtable::has_operation() const
 {
-    for (std::size_t index=0; index<ceqfpthroughputentry_.size(); index++)
+    for (std::size_t index=0; index<ceqfpthroughputentry.size(); index++)
     {
-        if(ceqfpthroughputentry_[index]->has_operation())
+        if(ceqfpthroughputentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ceqfpthroughputtable::get_segment_path() const
@@ -1208,7 +1566,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpthroughputtable::get_child_by_na
 {
     if(child_yang_name == "ceqfpThroughputEntry")
     {
-        for(auto const & c : ceqfpthroughputentry_)
+        for(auto const & c : ceqfpthroughputentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -1218,7 +1576,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpthroughputtable::get_child_by_na
         }
         auto c = std::make_shared<CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry>();
         c->parent = this;
-        ceqfpthroughputentry_.push_back(c);
+        ceqfpthroughputentry.push_back(c);
         return c;
     }
 
@@ -1228,7 +1586,7 @@ std::shared_ptr<Entity> CiscoEntityQfpMib::Ceqfpthroughputtable::get_child_by_na
 std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpthroughputtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : ceqfpthroughputentry_)
+    for (auto const & c : ceqfpthroughputentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -1236,8 +1594,19 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpthroughpu
     return children;
 }
 
-void CiscoEntityQfpMib::Ceqfpthroughputtable::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ceqfpthroughputtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void CiscoEntityQfpMib::Ceqfpthroughputtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool CiscoEntityQfpMib::Ceqfpthroughputtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ceqfpThroughputEntry")
+        return true;
+    return false;
 }
 
 CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::Ceqfpthroughputentry()
@@ -1268,13 +1637,13 @@ bool CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::has_data() c
 
 bool CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(entphysicalindex.operation)
-	|| is_set(ceqfpthroughputavgrate.operation)
-	|| is_set(ceqfpthroughputinterval.operation)
-	|| is_set(ceqfpthroughputlevel.operation)
-	|| is_set(ceqfpthroughputlicensedbw.operation)
-	|| is_set(ceqfpthroughputthreshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(entphysicalindex.yfilter)
+	|| ydk::is_set(ceqfpthroughputavgrate.yfilter)
+	|| ydk::is_set(ceqfpthroughputinterval.yfilter)
+	|| ydk::is_set(ceqfpthroughputlevel.yfilter)
+	|| ydk::is_set(ceqfpthroughputlicensedbw.yfilter)
+	|| ydk::is_set(ceqfpthroughputthreshold.yfilter);
 }
 
 std::string CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::get_segment_path() const
@@ -1300,12 +1669,12 @@ const EntityPath CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (entphysicalindex.is_set || is_set(entphysicalindex.operation)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
-    if (ceqfpthroughputavgrate.is_set || is_set(ceqfpthroughputavgrate.operation)) leaf_name_data.push_back(ceqfpthroughputavgrate.get_name_leafdata());
-    if (ceqfpthroughputinterval.is_set || is_set(ceqfpthroughputinterval.operation)) leaf_name_data.push_back(ceqfpthroughputinterval.get_name_leafdata());
-    if (ceqfpthroughputlevel.is_set || is_set(ceqfpthroughputlevel.operation)) leaf_name_data.push_back(ceqfpthroughputlevel.get_name_leafdata());
-    if (ceqfpthroughputlicensedbw.is_set || is_set(ceqfpthroughputlicensedbw.operation)) leaf_name_data.push_back(ceqfpthroughputlicensedbw.get_name_leafdata());
-    if (ceqfpthroughputthreshold.is_set || is_set(ceqfpthroughputthreshold.operation)) leaf_name_data.push_back(ceqfpthroughputthreshold.get_name_leafdata());
+    if (entphysicalindex.is_set || is_set(entphysicalindex.yfilter)) leaf_name_data.push_back(entphysicalindex.get_name_leafdata());
+    if (ceqfpthroughputavgrate.is_set || is_set(ceqfpthroughputavgrate.yfilter)) leaf_name_data.push_back(ceqfpthroughputavgrate.get_name_leafdata());
+    if (ceqfpthroughputinterval.is_set || is_set(ceqfpthroughputinterval.yfilter)) leaf_name_data.push_back(ceqfpthroughputinterval.get_name_leafdata());
+    if (ceqfpthroughputlevel.is_set || is_set(ceqfpthroughputlevel.yfilter)) leaf_name_data.push_back(ceqfpthroughputlevel.get_name_leafdata());
+    if (ceqfpthroughputlicensedbw.is_set || is_set(ceqfpthroughputlicensedbw.yfilter)) leaf_name_data.push_back(ceqfpthroughputlicensedbw.get_name_leafdata());
+    if (ceqfpthroughputthreshold.is_set || is_set(ceqfpthroughputthreshold.yfilter)) leaf_name_data.push_back(ceqfpthroughputthreshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1324,69 +1693,116 @@ std::map<std::string, std::shared_ptr<Entity>> CiscoEntityQfpMib::Ceqfpthroughpu
     return children;
 }
 
-void CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::set_value(const std::string & value_path, std::string value)
+void CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
         entphysicalindex = value;
+        entphysicalindex.value_namespace = name_space;
+        entphysicalindex.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpThroughputAvgRate")
     {
         ceqfpthroughputavgrate = value;
+        ceqfpthroughputavgrate.value_namespace = name_space;
+        ceqfpthroughputavgrate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpThroughputInterval")
     {
         ceqfpthroughputinterval = value;
+        ceqfpthroughputinterval.value_namespace = name_space;
+        ceqfpthroughputinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpThroughputLevel")
     {
         ceqfpthroughputlevel = value;
+        ceqfpthroughputlevel.value_namespace = name_space;
+        ceqfpthroughputlevel.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpThroughputLicensedBW")
     {
         ceqfpthroughputlicensedbw = value;
+        ceqfpthroughputlicensedbw.value_namespace = name_space;
+        ceqfpthroughputlicensedbw.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ceqfpThroughputThreshold")
     {
         ceqfpthroughputthreshold = value;
+        ceqfpthroughputthreshold.value_namespace = name_space;
+        ceqfpthroughputthreshold.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf CiscoqfptimeintervalEnum::fiveSeconds {1, "fiveSeconds"};
-const Enum::YLeaf CiscoqfptimeintervalEnum::oneMinute {2, "oneMinute"};
-const Enum::YLeaf CiscoqfptimeintervalEnum::fiveMinutes {3, "fiveMinutes"};
-const Enum::YLeaf CiscoqfptimeintervalEnum::sixtyMinutes {4, "sixtyMinutes"};
+void CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entPhysicalIndex")
+    {
+        entphysicalindex.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpThroughputAvgRate")
+    {
+        ceqfpthroughputavgrate.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpThroughputInterval")
+    {
+        ceqfpthroughputinterval.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpThroughputLevel")
+    {
+        ceqfpthroughputlevel.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpThroughputLicensedBW")
+    {
+        ceqfpthroughputlicensedbw.yfilter = yfilter;
+    }
+    if(value_path == "ceqfpThroughputThreshold")
+    {
+        ceqfpthroughputthreshold.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf CiscoqfpmemoryresourceEnum::dram {1, "dram"};
+bool CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entPhysicalIndex" || name == "ceqfpThroughputAvgRate" || name == "ceqfpThroughputInterval" || name == "ceqfpThroughputLevel" || name == "ceqfpThroughputLicensedBW" || name == "ceqfpThroughputThreshold")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::CeqfpfivesecondutilalgoEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::CeqfpfivesecondutilalgoEnum::fiveSecSample {2, "fiveSecSample"};
+const Enum::YLeaf Ciscoqfpmemoryresource::dram {1, "dram"};
 
-const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::CeqfponeminuteutilalgoEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::CeqfponeminuteutilalgoEnum::fiveSecSMA {2, "fiveSecSMA"};
+const Enum::YLeaf Ciscoqfptimeinterval::fiveSeconds {1, "fiveSeconds"};
+const Enum::YLeaf Ciscoqfptimeinterval::oneMinute {2, "oneMinute"};
+const Enum::YLeaf Ciscoqfptimeinterval::fiveMinutes {3, "fiveMinutes"};
+const Enum::YLeaf Ciscoqfptimeinterval::sixtyMinutes {4, "sixtyMinutes"};
 
-const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::CeqfpfiveminutesutilalgoEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::CeqfpfiveminutesutilalgoEnum::fiveSecSMA {2, "fiveSecSMA"};
+const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::Ceqfpfivesecondutilalgo::unknown {1, "unknown"};
+const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::Ceqfpfivesecondutilalgo::fiveSecSample {2, "fiveSecSample"};
 
-const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::CeqfpsixtyminutesutilalgoEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::CeqfpsixtyminutesutilalgoEnum::fiveSecSMA {2, "fiveSecSMA"};
+const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::Ceqfponeminuteutilalgo::unknown {1, "unknown"};
+const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::Ceqfponeminuteutilalgo::fiveSecSMA {2, "fiveSecSMA"};
 
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemtrafficdirectionEnum::none {1, "none"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemtrafficdirectionEnum::ingress {2, "ingress"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemtrafficdirectionEnum::egress {3, "egress"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemtrafficdirectionEnum::both {4, "both"};
+const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::Ceqfpfiveminutesutilalgo::unknown {1, "unknown"};
+const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::Ceqfpfiveminutesutilalgo::fiveSecSMA {2, "fiveSecSMA"};
 
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemstateEnum::unknown {1, "unknown"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemstateEnum::reset {2, "reset"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemstateEnum::init {3, "init"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemstateEnum::active {4, "active"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemstateEnum::activeSolo {5, "activeSolo"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemstateEnum::standby {6, "standby"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::CeqfpsystemstateEnum::hotStandby {7, "hotStandby"};
+const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::Ceqfpsixtyminutesutilalgo::unknown {1, "unknown"};
+const Enum::YLeaf CiscoEntityQfpMib::Ciscoentityqfp::Ceqfpsixtyminutesutilalgo::fiveSecSMA {2, "fiveSecSMA"};
 
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::CeqfpthroughputlevelEnum::normal {1, "normal"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::CeqfpthroughputlevelEnum::warning {2, "warning"};
-const Enum::YLeaf CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::CeqfpthroughputlevelEnum::exceed {3, "exceed"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemtrafficdirection::none {1, "none"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemtrafficdirection::ingress {2, "ingress"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemtrafficdirection::egress {3, "egress"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemtrafficdirection::both {4, "both"};
+
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate::unknown {1, "unknown"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate::reset {2, "reset"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate::init {3, "init"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate::active {4, "active"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate::activeSolo {5, "activeSolo"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate::standby {6, "standby"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate::hotStandby {7, "hotStandby"};
+
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::Ceqfpthroughputlevel::normal {1, "normal"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::Ceqfpthroughputlevel::warning {2, "warning"};
+const Enum::YLeaf CiscoEntityQfpMib::Ceqfpthroughputtable::Ceqfpthroughputentry::Ceqfpthroughputlevel::exceed {3, "exceed"};
 
 
 }

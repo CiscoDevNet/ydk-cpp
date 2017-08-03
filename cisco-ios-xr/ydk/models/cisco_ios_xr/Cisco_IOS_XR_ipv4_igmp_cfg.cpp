@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_igmp_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_igmp_cfg {
 
 Igmp::Igmp()
@@ -31,7 +33,7 @@ bool Igmp::has_data() const
 
 bool Igmp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_context !=  nullptr && default_context->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -102,7 +104,11 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::get_children() const
     return children;
 }
 
-void Igmp::set_value(const std::string & value_path, std::string value)
+void Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Igmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -124,6 +130,18 @@ std::string Igmp::get_bundle_name() const
 augment_capabilities_function Igmp::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Igmp::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Igmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-context" || name == "vrfs")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrfs()
@@ -152,7 +170,7 @@ bool Igmp::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::Vrfs::get_segment_path() const
@@ -217,8 +235,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::get_children() const
     return children;
 }
 
-void Igmp::Vrfs::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Vrf()
@@ -264,10 +293,10 @@ bool Igmp::Vrfs::Vrf::has_data() const
 
 bool Igmp::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(robustness.operation)
-	|| is_set(ssmdns_query_group.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(robustness.yfilter)
+	|| ydk::is_set(ssmdns_query_group.yfilter)
 	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (maximum !=  nullptr && maximum->has_operation())
@@ -298,9 +327,9 @@ const EntityPath Igmp::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (robustness.is_set || is_set(robustness.operation)) leaf_name_data.push_back(robustness.get_name_leafdata());
-    if (ssmdns_query_group.is_set || is_set(ssmdns_query_group.operation)) leaf_name_data.push_back(ssmdns_query_group.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (robustness.is_set || is_set(robustness.yfilter)) leaf_name_data.push_back(robustness.get_name_leafdata());
+    if (ssmdns_query_group.is_set || is_set(ssmdns_query_group.yfilter)) leaf_name_data.push_back(ssmdns_query_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -389,20 +418,49 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::get_children() c
     return children;
 }
 
-void Igmp::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "robustness")
     {
         robustness = value;
+        robustness.value_namespace = name_space;
+        robustness.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssmdns-query-group")
     {
         ssmdns_query_group = value;
+        ssmdns_query_group.value_namespace = name_space;
+        ssmdns_query_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "robustness")
+    {
+        robustness.yfilter = yfilter;
+    }
+    if(value_path == "ssmdns-query-group")
+    {
+        ssmdns_query_group.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inheritable-defaults" || name == "interfaces" || name == "maximum" || name == "ssm-access-groups" || name == "traffic" || name == "vrf-name" || name == "robustness" || name == "ssmdns-query-group")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Traffic::Traffic()
@@ -423,8 +481,8 @@ bool Igmp::Vrfs::Vrf::Traffic::has_data() const
 
 bool Igmp::Vrfs::Vrf::Traffic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Traffic::get_segment_path() const
@@ -450,7 +508,7 @@ const EntityPath Igmp::Vrfs::Vrf::Traffic::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -469,12 +527,29 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Traffic::get_chi
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Traffic::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile")
     {
         profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::InheritableDefaults::InheritableDefaults()
@@ -510,13 +585,13 @@ bool Igmp::Vrfs::Vrf::InheritableDefaults::has_data() const
 
 bool Igmp::Vrfs::Vrf::InheritableDefaults::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_group.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(query_timeout.operation)
-	|| is_set(router_enable.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(query_timeout.yfilter)
+	|| ydk::is_set(router_enable.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
 	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation());
 }
@@ -544,12 +619,12 @@ const EntityPath Igmp::Vrfs::Vrf::InheritableDefaults::get_entity_path(Entity* a
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (query_timeout.is_set || is_set(query_timeout.operation)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
-    if (router_enable.is_set || is_set(router_enable.operation)) leaf_name_data.push_back(router_enable.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (query_timeout.is_set || is_set(query_timeout.yfilter)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
+    if (router_enable.is_set || is_set(router_enable.yfilter)) leaf_name_data.push_back(router_enable.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -596,32 +671,79 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefau
     return children;
 }
 
-void Igmp::Vrfs::Vrf::InheritableDefaults::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-timeout")
     {
         query_timeout = value;
+        query_timeout.value_namespace = name_space;
+        query_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-enable")
     {
         router_enable = value;
+        router_enable.value_namespace = name_space;
+        router_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::InheritableDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "query-timeout")
+    {
+        query_timeout.yfilter = yfilter;
+    }
+    if(value_path == "router-enable")
+    {
+        router_enable.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::InheritableDefaults::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "maximum-groups-per-interface-oor" || name == "access-group" || name == "query-interval" || name == "query-max-response-time" || name == "query-timeout" || name == "router-enable" || name == "version")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::MaximumGroupsPerInterfaceOor()
@@ -646,10 +768,10 @@ bool Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_dat
 
 bool Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_groups.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_groups.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_segment_path() const
@@ -675,9 +797,9 @@ const EntityPath Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterface
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -696,20 +818,49 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefau
     return children;
 }
 
-void Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-groups" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::ExplicitTracking()
@@ -732,9 +883,9 @@ bool Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_data() const
 
 bool Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_segment_path() const
@@ -760,8 +911,8 @@ const EntityPath Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -780,16 +931,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::InheritableDefau
     return children;
 }
 
-void Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroups()
@@ -818,7 +992,7 @@ bool Igmp::Vrfs::Vrf::SsmAccessGroups::has_operation() const
         if(ssm_access_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::SsmAccessGroups::get_segment_path() const
@@ -883,8 +1057,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups:
     return children;
 }
 
-void Igmp::Vrfs::Vrf::SsmAccessGroups::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::SsmAccessGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::Vrfs::Vrf::SsmAccessGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::Vrfs::Vrf::SsmAccessGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ssm-access-group")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::SsmAccessGroup()
@@ -907,9 +1092,9 @@ bool Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_data() const
 
 bool Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_address.operation)
-	|| is_set(access_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_segment_path() const
@@ -935,8 +1120,8 @@ const EntityPath Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_entity_pa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -955,16 +1140,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::SsmAccessGroups:
     return children;
 }
 
-void Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "access-list-name")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Maximum::Maximum()
@@ -985,8 +1193,8 @@ bool Igmp::Vrfs::Vrf::Maximum::has_data() const
 
 bool Igmp::Vrfs::Vrf::Maximum::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_groups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_groups.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Maximum::get_segment_path() const
@@ -1012,7 +1220,7 @@ const EntityPath Igmp::Vrfs::Vrf::Maximum::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1031,12 +1239,29 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Maximum::get_chi
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Maximum::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Maximum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Maximum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-groups")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interfaces()
@@ -1065,7 +1290,7 @@ bool Igmp::Vrfs::Vrf::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::get_segment_path() const
@@ -1130,8 +1355,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::get_
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::Interface()
@@ -1175,14 +1411,14 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::has_data() const
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(access_group.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(query_timeout.operation)
-	|| is_set(router_enable.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(query_timeout.yfilter)
+	|| ydk::is_set(router_enable.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
 	|| (join_groups !=  nullptr && join_groups->has_operation())
 	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation())
@@ -1212,13 +1448,13 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (query_timeout.is_set || is_set(query_timeout.operation)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
-    if (router_enable.is_set || is_set(router_enable.operation)) leaf_name_data.push_back(router_enable.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (query_timeout.is_set || is_set(query_timeout.yfilter)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
+    if (router_enable.is_set || is_set(router_enable.yfilter)) leaf_name_data.push_back(router_enable.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1293,36 +1529,89 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-timeout")
     {
         query_timeout = value;
+        query_timeout.value_namespace = name_space;
+        query_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-enable")
     {
         router_enable = value;
+        router_enable.value_namespace = name_space;
+        router_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "query-timeout")
+    {
+        query_timeout.yfilter = yfilter;
+    }
+    if(value_path == "router-enable")
+    {
+        router_enable.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "join-groups" || name == "maximum-groups-per-interface-oor" || name == "static-group-group-addresses" || name == "interface-name" || name == "access-group" || name == "query-interval" || name == "query-max-response-time" || name == "query-timeout" || name == "router-enable" || name == "version")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroups()
@@ -1361,7 +1650,7 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_operation() const
         if(join_group_source_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_segment_path() const
@@ -1447,8 +1736,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "join-group" || name == "join-group-source-address")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::JoinGroup()
@@ -1471,9 +1771,9 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_data() c
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_segment_path() const
@@ -1499,8 +1799,8 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1519,16 +1819,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "mode")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::JoinGroupSourceAddress()
@@ -1553,10 +1876,10 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress:
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_segment_path() const
@@ -1582,9 +1905,9 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSo
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1603,20 +1926,49 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "mode")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddresses()
@@ -1695,7 +2047,7 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_oper
         if(static_group_group_address_source_address_source_address_mask[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_segment_path() const
@@ -1865,8 +2217,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-group-group-address" || name == "static-group-group-address-group-address-mask" || name == "static-group-group-address-group-address-mask-source-address" || name == "static-group-group-address-group-address-mask-source-address-source-address-mask" || name == "static-group-group-address-source-address" || name == "static-group-group-address-source-address-source-address-mask")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::StaticGroupGroupAddress()
@@ -1893,11 +2256,11 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_segment_path() const
@@ -1923,10 +2286,10 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddress
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1945,24 +2308,59 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::StaticGroupGroupAddressSourceAddress()
@@ -1991,12 +2389,12 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_segment_path() const
@@ -2022,11 +2420,11 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddress
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2045,28 +2443,69 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::StaticGroupGroupAddressSourceAddressSourceAddressMask()
@@ -2097,13 +2536,13 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(source_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_segment_path() const
@@ -2129,12 +2568,12 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddress
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_address_mask.is_set || is_set(source_address_mask.operation)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_address_mask.is_set || is_set(source_address_mask.yfilter)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2153,32 +2592,79 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address-mask")
     {
         source_address_mask = value;
+        source_address_mask.value_namespace = name_space;
+        source_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address-mask")
+    {
+        source_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "source-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::StaticGroupGroupAddressGroupAddressMask()
@@ -2207,12 +2693,12 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_segment_path() const
@@ -2238,11 +2724,11 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddress
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2261,28 +2747,69 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::StaticGroupGroupAddressGroupAddressMaskSourceAddress()
@@ -2313,13 +2840,13 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(source_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_segment_path() const
@@ -2345,12 +2872,12 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddress
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2369,32 +2896,79 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "source-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask()
@@ -2427,14 +3001,14 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGr
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(source_address.operation)
-	|| is_set(source_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_segment_path() const
@@ -2460,13 +3034,13 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddress
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_address_mask.is_set || is_set(source_address_mask.operation)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_address_mask.is_set || is_set(source_address_mask.yfilter)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2485,36 +3059,89 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address-mask")
     {
         source_address_mask = value;
+        source_address_mask.value_namespace = name_space;
+        source_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address-mask")
+    {
+        source_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "source-address" || name == "source-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::MaximumGroupsPerInterfaceOor()
@@ -2539,10 +3166,10 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_d
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_groups.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_groups.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_segment_path() const
@@ -2568,9 +3195,9 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2589,20 +3216,49 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-groups" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::ExplicitTracking()
@@ -2625,9 +3281,9 @@ bool Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::has_data() const
 
 bool Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_segment_path() const
@@ -2653,8 +3309,8 @@ const EntityPath Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2673,16 +3329,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::Vrfs::Vrf::Interfaces::Inte
     return children;
 }
 
-void Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Igmp::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::DefaultContext()
@@ -2738,9 +3417,9 @@ bool Igmp::DefaultContext::has_data() const
 
 bool Igmp::DefaultContext::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(robustness.operation)
-	|| is_set(ssmdns_query_group.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(robustness.yfilter)
+	|| ydk::is_set(ssmdns_query_group.yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
@@ -2774,8 +3453,8 @@ const EntityPath Igmp::DefaultContext::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (robustness.is_set || is_set(robustness.operation)) leaf_name_data.push_back(robustness.get_name_leafdata());
-    if (ssmdns_query_group.is_set || is_set(ssmdns_query_group.operation)) leaf_name_data.push_back(ssmdns_query_group.get_name_leafdata());
+    if (robustness.is_set || is_set(robustness.yfilter)) leaf_name_data.push_back(robustness.get_name_leafdata());
+    if (ssmdns_query_group.is_set || is_set(ssmdns_query_group.yfilter)) leaf_name_data.push_back(ssmdns_query_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2906,16 +3585,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::get_childre
     return children;
 }
 
-void Igmp::DefaultContext::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "robustness")
     {
         robustness = value;
+        robustness.value_namespace = name_space;
+        robustness.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssmdns-query-group")
     {
         ssmdns_query_group = value;
+        ssmdns_query_group.value_namespace = name_space;
+        ssmdns_query_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "robustness")
+    {
+        robustness.yfilter = yfilter;
+    }
+    if(value_path == "ssmdns-query-group")
+    {
+        ssmdns_query_group.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting" || name == "inheritable-defaults" || name == "interfaces" || name == "maximum" || name == "nsf" || name == "ssm-access-groups" || name == "traffic" || name == "unicast-qos-adjust" || name == "robustness" || name == "ssmdns-query-group")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Nsf::Nsf()
@@ -2936,8 +3638,8 @@ bool Igmp::DefaultContext::Nsf::has_data() const
 
 bool Igmp::DefaultContext::Nsf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lifetime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lifetime.yfilter);
 }
 
 std::string Igmp::DefaultContext::Nsf::get_segment_path() const
@@ -2963,7 +3665,7 @@ const EntityPath Igmp::DefaultContext::Nsf::get_entity_path(Entity* ancestor) co
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lifetime.is_set || is_set(lifetime.operation)) leaf_name_data.push_back(lifetime.get_name_leafdata());
+    if (lifetime.is_set || is_set(lifetime.yfilter)) leaf_name_data.push_back(lifetime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2982,12 +3684,29 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Nsf::get_ch
     return children;
 }
 
-void Igmp::DefaultContext::Nsf::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lifetime")
     {
         lifetime = value;
+        lifetime.value_namespace = name_space;
+        lifetime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Nsf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lifetime")
+    {
+        lifetime.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Nsf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lifetime")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::UnicastQosAdjust::UnicastQosAdjust()
@@ -3012,10 +3731,10 @@ bool Igmp::DefaultContext::UnicastQosAdjust::has_data() const
 
 bool Igmp::DefaultContext::UnicastQosAdjust::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjustment_delay.operation)
-	|| is_set(download_interval.operation)
-	|| is_set(hold_off.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjustment_delay.yfilter)
+	|| ydk::is_set(download_interval.yfilter)
+	|| ydk::is_set(hold_off.yfilter);
 }
 
 std::string Igmp::DefaultContext::UnicastQosAdjust::get_segment_path() const
@@ -3041,9 +3760,9 @@ const EntityPath Igmp::DefaultContext::UnicastQosAdjust::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjustment_delay.is_set || is_set(adjustment_delay.operation)) leaf_name_data.push_back(adjustment_delay.get_name_leafdata());
-    if (download_interval.is_set || is_set(download_interval.operation)) leaf_name_data.push_back(download_interval.get_name_leafdata());
-    if (hold_off.is_set || is_set(hold_off.operation)) leaf_name_data.push_back(hold_off.get_name_leafdata());
+    if (adjustment_delay.is_set || is_set(adjustment_delay.yfilter)) leaf_name_data.push_back(adjustment_delay.get_name_leafdata());
+    if (download_interval.is_set || is_set(download_interval.yfilter)) leaf_name_data.push_back(download_interval.get_name_leafdata());
+    if (hold_off.is_set || is_set(hold_off.yfilter)) leaf_name_data.push_back(hold_off.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3062,20 +3781,49 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::UnicastQosA
     return children;
 }
 
-void Igmp::DefaultContext::UnicastQosAdjust::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::UnicastQosAdjust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjustment-delay")
     {
         adjustment_delay = value;
+        adjustment_delay.value_namespace = name_space;
+        adjustment_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "download-interval")
     {
         download_interval = value;
+        download_interval.value_namespace = name_space;
+        download_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-off")
     {
         hold_off = value;
+        hold_off.value_namespace = name_space;
+        hold_off.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::UnicastQosAdjust::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjustment-delay")
+    {
+        adjustment_delay.yfilter = yfilter;
+    }
+    if(value_path == "download-interval")
+    {
+        download_interval.yfilter = yfilter;
+    }
+    if(value_path == "hold-off")
+    {
+        hold_off.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::UnicastQosAdjust::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjustment-delay" || name == "download-interval" || name == "hold-off")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Accounting::Accounting()
@@ -3096,8 +3844,8 @@ bool Igmp::DefaultContext::Accounting::has_data() const
 
 bool Igmp::DefaultContext::Accounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_history.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_history.yfilter);
 }
 
 std::string Igmp::DefaultContext::Accounting::get_segment_path() const
@@ -3123,7 +3871,7 @@ const EntityPath Igmp::DefaultContext::Accounting::get_entity_path(Entity* ances
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_history.is_set || is_set(max_history.operation)) leaf_name_data.push_back(max_history.get_name_leafdata());
+    if (max_history.is_set || is_set(max_history.yfilter)) leaf_name_data.push_back(max_history.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3142,12 +3890,29 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Accounting:
     return children;
 }
 
-void Igmp::DefaultContext::Accounting::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-history")
     {
         max_history = value;
+        max_history.value_namespace = name_space;
+        max_history.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-history")
+    {
+        max_history.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-history")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Traffic::Traffic()
@@ -3168,8 +3933,8 @@ bool Igmp::DefaultContext::Traffic::has_data() const
 
 bool Igmp::DefaultContext::Traffic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
 }
 
 std::string Igmp::DefaultContext::Traffic::get_segment_path() const
@@ -3195,7 +3960,7 @@ const EntityPath Igmp::DefaultContext::Traffic::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3214,12 +3979,29 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Traffic::ge
     return children;
 }
 
-void Igmp::DefaultContext::Traffic::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile")
     {
         profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::InheritableDefaults::InheritableDefaults()
@@ -3255,13 +4037,13 @@ bool Igmp::DefaultContext::InheritableDefaults::has_data() const
 
 bool Igmp::DefaultContext::InheritableDefaults::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_group.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(query_timeout.operation)
-	|| is_set(router_enable.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(query_timeout.yfilter)
+	|| ydk::is_set(router_enable.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
 	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation());
 }
@@ -3289,12 +4071,12 @@ const EntityPath Igmp::DefaultContext::InheritableDefaults::get_entity_path(Enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (query_timeout.is_set || is_set(query_timeout.operation)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
-    if (router_enable.is_set || is_set(router_enable.operation)) leaf_name_data.push_back(router_enable.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (query_timeout.is_set || is_set(query_timeout.yfilter)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
+    if (router_enable.is_set || is_set(router_enable.yfilter)) leaf_name_data.push_back(router_enable.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3341,32 +4123,79 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Inheritable
     return children;
 }
 
-void Igmp::DefaultContext::InheritableDefaults::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-timeout")
     {
         query_timeout = value;
+        query_timeout.value_namespace = name_space;
+        query_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-enable")
     {
         router_enable = value;
+        router_enable.value_namespace = name_space;
+        router_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::InheritableDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "query-timeout")
+    {
+        query_timeout.yfilter = yfilter;
+    }
+    if(value_path == "router-enable")
+    {
+        router_enable.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::InheritableDefaults::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "maximum-groups-per-interface-oor" || name == "access-group" || name == "query-interval" || name == "query-max-response-time" || name == "query-timeout" || name == "router-enable" || name == "version")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::MaximumGroupsPerInterfaceOor()
@@ -3391,10 +4220,10 @@ bool Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::ha
 
 bool Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_groups.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_groups.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_segment_path() const
@@ -3420,9 +4249,9 @@ const EntityPath Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInte
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3441,20 +4270,49 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Inheritable
     return children;
 }
 
-void Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-groups" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::ExplicitTracking()
@@ -3477,9 +4335,9 @@ bool Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::has_data() con
 
 bool Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::get_segment_path() const
@@ -3505,8 +4363,8 @@ const EntityPath Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::ge
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3525,16 +4383,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Inheritable
     return children;
 }
 
-void Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::InheritableDefaults::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroups()
@@ -3563,7 +4444,7 @@ bool Igmp::DefaultContext::SsmAccessGroups::has_operation() const
         if(ssm_access_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::DefaultContext::SsmAccessGroups::get_segment_path() const
@@ -3628,8 +4509,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::SsmAccessGr
     return children;
 }
 
-void Igmp::DefaultContext::SsmAccessGroups::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::SsmAccessGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::DefaultContext::SsmAccessGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::DefaultContext::SsmAccessGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ssm-access-group")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::SsmAccessGroup()
@@ -3652,9 +4544,9 @@ bool Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::has_data() const
 
 bool Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_address.operation)
-	|| is_set(access_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
 }
 
 std::string Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_segment_path() const
@@ -3680,8 +4572,8 @@ const EntityPath Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3700,16 +4592,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::SsmAccessGr
     return children;
 }
 
-void Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "access-list-name")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Maximum::Maximum()
@@ -3730,8 +4645,8 @@ bool Igmp::DefaultContext::Maximum::has_data() const
 
 bool Igmp::DefaultContext::Maximum::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_groups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_groups.yfilter);
 }
 
 std::string Igmp::DefaultContext::Maximum::get_segment_path() const
@@ -3757,7 +4672,7 @@ const EntityPath Igmp::DefaultContext::Maximum::get_entity_path(Entity* ancestor
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3776,12 +4691,29 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Maximum::ge
     return children;
 }
 
-void Igmp::DefaultContext::Maximum::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Maximum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Maximum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-groups")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interfaces()
@@ -3810,7 +4742,7 @@ bool Igmp::DefaultContext::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::get_segment_path() const
@@ -3875,8 +4807,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::DefaultContext::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::DefaultContext::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::Interface()
@@ -3920,14 +4863,14 @@ bool Igmp::DefaultContext::Interfaces::Interface::has_data() const
 
 bool Igmp::DefaultContext::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(access_group.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(query_timeout.operation)
-	|| is_set(router_enable.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(query_timeout.yfilter)
+	|| ydk::is_set(router_enable.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
 	|| (join_groups !=  nullptr && join_groups->has_operation())
 	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation())
@@ -3957,13 +4900,13 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::get_entity_path(En
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (query_timeout.is_set || is_set(query_timeout.operation)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
-    if (router_enable.is_set || is_set(router_enable.operation)) leaf_name_data.push_back(router_enable.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (query_timeout.is_set || is_set(query_timeout.yfilter)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
+    if (router_enable.is_set || is_set(router_enable.yfilter)) leaf_name_data.push_back(router_enable.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4038,36 +4981,89 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-timeout")
     {
         query_timeout = value;
+        query_timeout.value_namespace = name_space;
+        query_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-enable")
     {
         router_enable = value;
+        router_enable.value_namespace = name_space;
+        router_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "query-timeout")
+    {
+        query_timeout.yfilter = yfilter;
+    }
+    if(value_path == "router-enable")
+    {
+        router_enable.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "join-groups" || name == "maximum-groups-per-interface-oor" || name == "static-group-group-addresses" || name == "interface-name" || name == "access-group" || name == "query-interval" || name == "query-max-response-time" || name == "query-timeout" || name == "router-enable" || name == "version")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroups()
@@ -4106,7 +5102,7 @@ bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::has_operation() co
         if(join_group_source_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::JoinGroups::get_segment_path() const
@@ -4192,8 +5188,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "join-group" || name == "join-group-source-address")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::JoinGroup()
@@ -4216,9 +5223,9 @@ bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_dat
 
 bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_segment_path() const
@@ -4244,8 +5251,8 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4264,16 +5271,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "mode")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::JoinGroupSourceAddress()
@@ -4298,10 +5328,10 @@ bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAdd
 
 bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_segment_path() const
@@ -4327,9 +5357,9 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGr
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4348,20 +5378,49 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "mode")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddresses()
@@ -4440,7 +5499,7 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has
         if(static_group_group_address_source_address_source_address_mask[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_segment_path() const
@@ -4610,8 +5669,19 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-group-group-address" || name == "static-group-group-address-group-address-mask" || name == "static-group-group-address-group-address-mask-source-address" || name == "static-group-group-address-group-address-mask-source-address-source-address-mask" || name == "static-group-group-address-source-address" || name == "static-group-group-address-source-address-source-address-mask")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::StaticGroupGroupAddress()
@@ -4638,11 +5708,11 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_segment_path() const
@@ -4668,10 +5738,10 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4690,24 +5760,59 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::StaticGroupGroupAddressSourceAddress()
@@ -4736,12 +5841,12 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_segment_path() const
@@ -4767,11 +5872,11 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4790,28 +5895,69 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::StaticGroupGroupAddressSourceAddressSourceAddressMask()
@@ -4842,13 +5988,13 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(source_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_segment_path() const
@@ -4874,12 +6020,12 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_address_mask.is_set || is_set(source_address_mask.operation)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_address_mask.is_set || is_set(source_address_mask.yfilter)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4898,32 +6044,79 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address-mask")
     {
         source_address_mask = value;
+        source_address_mask.value_namespace = name_space;
+        source_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address-mask")
+    {
+        source_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "source-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::StaticGroupGroupAddressGroupAddressMask()
@@ -4952,12 +6145,12 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_segment_path() const
@@ -4983,11 +6176,11 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5006,28 +6199,69 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::StaticGroupGroupAddressGroupAddressMaskSourceAddress()
@@ -5058,13 +6292,13 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(source_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_segment_path() const
@@ -5090,12 +6324,12 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5114,32 +6348,79 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "source-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask()
@@ -5172,14 +6453,14 @@ bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Sta
 
 bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(source_address.operation)
-	|| is_set(source_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_segment_path() const
@@ -5205,13 +6486,13 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_address_mask.is_set || is_set(source_address_mask.operation)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_address_mask.is_set || is_set(source_address_mask.yfilter)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5230,36 +6511,89 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address-mask")
     {
         source_address_mask = value;
+        source_address_mask.value_namespace = name_space;
+        source_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address-mask")
+    {
+        source_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "source-address" || name == "source-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::MaximumGroupsPerInterfaceOor()
@@ -5284,10 +6618,10 @@ bool Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::
 
 bool Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_groups.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_groups.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_segment_path() const
@@ -5313,9 +6647,9 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerIn
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5334,20 +6668,49 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-groups" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::ExplicitTracking()
@@ -5370,9 +6733,9 @@ bool Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::has_data() c
 
 bool Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::get_segment_path() const
@@ -5398,8 +6761,8 @@ const EntityPath Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5418,16 +6781,39 @@ std::map<std::string, std::shared_ptr<Entity>> Igmp::DefaultContext::Interfaces:
     return children;
 }
 
-void Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Igmp::DefaultContext::Interfaces::Interface::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 Amt::Amt()
@@ -5471,17 +6857,17 @@ bool Amt::has_data() const
 
 bool Amt::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(amtmtu.operation)
-	|| is_set(amtqqic.operation)
-	|| is_set(amttos.operation)
-	|| is_set(amtttl.operation)
-	|| is_set(gateway_filter.operation)
-	|| is_set(maximum_gateway.operation)
-	|| is_set(maximum_v4_route_gateway.operation)
-	|| is_set(maximum_v4_routes.operation)
-	|| is_set(maximum_v6_route_gateway.operation)
-	|| is_set(maximum_v6_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(amtmtu.yfilter)
+	|| ydk::is_set(amtqqic.yfilter)
+	|| ydk::is_set(amttos.yfilter)
+	|| ydk::is_set(amtttl.yfilter)
+	|| ydk::is_set(gateway_filter.yfilter)
+	|| ydk::is_set(maximum_gateway.yfilter)
+	|| ydk::is_set(maximum_v4_route_gateway.yfilter)
+	|| ydk::is_set(maximum_v4_routes.yfilter)
+	|| ydk::is_set(maximum_v6_route_gateway.yfilter)
+	|| ydk::is_set(maximum_v6_routes.yfilter)
 	|| (relay_adv_add !=  nullptr && relay_adv_add->has_operation())
 	|| (relay_anycast_prefix !=  nullptr && relay_anycast_prefix->has_operation());
 }
@@ -5506,16 +6892,16 @@ const EntityPath Amt::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (amtmtu.is_set || is_set(amtmtu.operation)) leaf_name_data.push_back(amtmtu.get_name_leafdata());
-    if (amtqqic.is_set || is_set(amtqqic.operation)) leaf_name_data.push_back(amtqqic.get_name_leafdata());
-    if (amttos.is_set || is_set(amttos.operation)) leaf_name_data.push_back(amttos.get_name_leafdata());
-    if (amtttl.is_set || is_set(amtttl.operation)) leaf_name_data.push_back(amtttl.get_name_leafdata());
-    if (gateway_filter.is_set || is_set(gateway_filter.operation)) leaf_name_data.push_back(gateway_filter.get_name_leafdata());
-    if (maximum_gateway.is_set || is_set(maximum_gateway.operation)) leaf_name_data.push_back(maximum_gateway.get_name_leafdata());
-    if (maximum_v4_route_gateway.is_set || is_set(maximum_v4_route_gateway.operation)) leaf_name_data.push_back(maximum_v4_route_gateway.get_name_leafdata());
-    if (maximum_v4_routes.is_set || is_set(maximum_v4_routes.operation)) leaf_name_data.push_back(maximum_v4_routes.get_name_leafdata());
-    if (maximum_v6_route_gateway.is_set || is_set(maximum_v6_route_gateway.operation)) leaf_name_data.push_back(maximum_v6_route_gateway.get_name_leafdata());
-    if (maximum_v6_routes.is_set || is_set(maximum_v6_routes.operation)) leaf_name_data.push_back(maximum_v6_routes.get_name_leafdata());
+    if (amtmtu.is_set || is_set(amtmtu.yfilter)) leaf_name_data.push_back(amtmtu.get_name_leafdata());
+    if (amtqqic.is_set || is_set(amtqqic.yfilter)) leaf_name_data.push_back(amtqqic.get_name_leafdata());
+    if (amttos.is_set || is_set(amttos.yfilter)) leaf_name_data.push_back(amttos.get_name_leafdata());
+    if (amtttl.is_set || is_set(amtttl.yfilter)) leaf_name_data.push_back(amtttl.get_name_leafdata());
+    if (gateway_filter.is_set || is_set(gateway_filter.yfilter)) leaf_name_data.push_back(gateway_filter.get_name_leafdata());
+    if (maximum_gateway.is_set || is_set(maximum_gateway.yfilter)) leaf_name_data.push_back(maximum_gateway.get_name_leafdata());
+    if (maximum_v4_route_gateway.is_set || is_set(maximum_v4_route_gateway.yfilter)) leaf_name_data.push_back(maximum_v4_route_gateway.get_name_leafdata());
+    if (maximum_v4_routes.is_set || is_set(maximum_v4_routes.yfilter)) leaf_name_data.push_back(maximum_v4_routes.get_name_leafdata());
+    if (maximum_v6_route_gateway.is_set || is_set(maximum_v6_route_gateway.yfilter)) leaf_name_data.push_back(maximum_v6_route_gateway.get_name_leafdata());
+    if (maximum_v6_routes.is_set || is_set(maximum_v6_routes.yfilter)) leaf_name_data.push_back(maximum_v6_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5562,47 +6948,111 @@ std::map<std::string, std::shared_ptr<Entity>> Amt::get_children() const
     return children;
 }
 
-void Amt::set_value(const std::string & value_path, std::string value)
+void Amt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "amtmtu")
     {
         amtmtu = value;
+        amtmtu.value_namespace = name_space;
+        amtmtu.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "amtqqic")
     {
         amtqqic = value;
+        amtqqic.value_namespace = name_space;
+        amtqqic.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "amttos")
     {
         amttos = value;
+        amttos.value_namespace = name_space;
+        amttos.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "amtttl")
     {
         amtttl = value;
+        amtttl.value_namespace = name_space;
+        amtttl.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "gateway-filter")
     {
         gateway_filter = value;
+        gateway_filter.value_namespace = name_space;
+        gateway_filter.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-gateway")
     {
         maximum_gateway = value;
+        maximum_gateway.value_namespace = name_space;
+        maximum_gateway.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-v4-route-gateway")
     {
         maximum_v4_route_gateway = value;
+        maximum_v4_route_gateway.value_namespace = name_space;
+        maximum_v4_route_gateway.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-v4-routes")
     {
         maximum_v4_routes = value;
+        maximum_v4_routes.value_namespace = name_space;
+        maximum_v4_routes.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-v6-route-gateway")
     {
         maximum_v6_route_gateway = value;
+        maximum_v6_route_gateway.value_namespace = name_space;
+        maximum_v6_route_gateway.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-v6-routes")
     {
         maximum_v6_routes = value;
+        maximum_v6_routes.value_namespace = name_space;
+        maximum_v6_routes.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Amt::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "amtmtu")
+    {
+        amtmtu.yfilter = yfilter;
+    }
+    if(value_path == "amtqqic")
+    {
+        amtqqic.yfilter = yfilter;
+    }
+    if(value_path == "amttos")
+    {
+        amttos.yfilter = yfilter;
+    }
+    if(value_path == "amtttl")
+    {
+        amtttl.yfilter = yfilter;
+    }
+    if(value_path == "gateway-filter")
+    {
+        gateway_filter.yfilter = yfilter;
+    }
+    if(value_path == "maximum-gateway")
+    {
+        maximum_gateway.yfilter = yfilter;
+    }
+    if(value_path == "maximum-v4-route-gateway")
+    {
+        maximum_v4_route_gateway.yfilter = yfilter;
+    }
+    if(value_path == "maximum-v4-routes")
+    {
+        maximum_v4_routes.yfilter = yfilter;
+    }
+    if(value_path == "maximum-v6-route-gateway")
+    {
+        maximum_v6_route_gateway.yfilter = yfilter;
+    }
+    if(value_path == "maximum-v6-routes")
+    {
+        maximum_v6_routes.yfilter = yfilter;
     }
 }
 
@@ -5626,6 +7076,18 @@ augment_capabilities_function Amt::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Amt::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Amt::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "relay-adv-add" || name == "relay-anycast-prefix" || name == "amtmtu" || name == "amtqqic" || name == "amttos" || name == "amtttl" || name == "gateway-filter" || name == "maximum-gateway" || name == "maximum-v4-route-gateway" || name == "maximum-v4-routes" || name == "maximum-v6-route-gateway" || name == "maximum-v6-routes")
+        return true;
+    return false;
+}
+
 Amt::RelayAdvAdd::RelayAdvAdd()
     :
     address{YType::str, "address"},
@@ -5646,9 +7108,9 @@ bool Amt::RelayAdvAdd::has_data() const
 
 bool Amt::RelayAdvAdd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(interface.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface.yfilter);
 }
 
 std::string Amt::RelayAdvAdd::get_segment_path() const
@@ -5674,8 +7136,8 @@ const EntityPath Amt::RelayAdvAdd::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (interface.is_set || is_set(interface.operation)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5694,16 +7156,39 @@ std::map<std::string, std::shared_ptr<Entity>> Amt::RelayAdvAdd::get_children() 
     return children;
 }
 
-void Amt::RelayAdvAdd::set_value(const std::string & value_path, std::string value)
+void Amt::RelayAdvAdd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface")
     {
         interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Amt::RelayAdvAdd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+}
+
+bool Amt::RelayAdvAdd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "interface")
+        return true;
+    return false;
 }
 
 Amt::RelayAnycastPrefix::RelayAnycastPrefix()
@@ -5726,9 +7211,9 @@ bool Amt::RelayAnycastPrefix::has_data() const
 
 bool Amt::RelayAnycastPrefix::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(prefix_length.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(prefix_length.yfilter);
 }
 
 std::string Amt::RelayAnycastPrefix::get_segment_path() const
@@ -5754,8 +7239,8 @@ const EntityPath Amt::RelayAnycastPrefix::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.operation)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5774,16 +7259,39 @@ std::map<std::string, std::shared_ptr<Entity>> Amt::RelayAnycastPrefix::get_chil
     return children;
 }
 
-void Amt::RelayAnycastPrefix::set_value(const std::string & value_path, std::string value)
+void Amt::RelayAnycastPrefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-length")
     {
         prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Amt::RelayAnycastPrefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+}
+
+bool Amt::RelayAnycastPrefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "prefix-length")
+        return true;
+    return false;
 }
 
 Mld::Mld()
@@ -5808,7 +7316,7 @@ bool Mld::has_data() const
 
 bool Mld::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (default_context !=  nullptr && default_context->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -5879,7 +7387,11 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::get_children() const
     return children;
 }
 
-void Mld::set_value(const std::string & value_path, std::string value)
+void Mld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Mld::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -5901,6 +7413,18 @@ std::string Mld::get_bundle_name() const
 augment_capabilities_function Mld::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Mld::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Mld::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-context" || name == "vrfs")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrfs()
@@ -5929,7 +7453,7 @@ bool Mld::Vrfs::has_operation() const
         if(vrf[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::Vrfs::get_segment_path() const
@@ -5994,8 +7518,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::get_children() const
     return children;
 }
 
-void Mld::Vrfs::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Vrf()
@@ -6041,10 +7576,10 @@ bool Mld::Vrfs::Vrf::has_data() const
 
 bool Mld::Vrfs::Vrf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(vrf_name.operation)
-	|| is_set(robustness.operation)
-	|| is_set(ssmdns_query_group.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(robustness.yfilter)
+	|| ydk::is_set(ssmdns_query_group.yfilter)
 	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
 	|| (maximum !=  nullptr && maximum->has_operation())
@@ -6075,9 +7610,9 @@ const EntityPath Mld::Vrfs::Vrf::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (vrf_name.is_set || is_set(vrf_name.operation)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (robustness.is_set || is_set(robustness.operation)) leaf_name_data.push_back(robustness.get_name_leafdata());
-    if (ssmdns_query_group.is_set || is_set(ssmdns_query_group.operation)) leaf_name_data.push_back(ssmdns_query_group.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (robustness.is_set || is_set(robustness.yfilter)) leaf_name_data.push_back(robustness.get_name_leafdata());
+    if (ssmdns_query_group.is_set || is_set(ssmdns_query_group.yfilter)) leaf_name_data.push_back(ssmdns_query_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6166,20 +7701,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::get_children() co
     return children;
 }
 
-void Mld::Vrfs::Vrf::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
         vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "robustness")
     {
         robustness = value;
+        robustness.value_namespace = name_space;
+        robustness.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssmdns-query-group")
     {
         ssmdns_query_group = value;
+        ssmdns_query_group.value_namespace = name_space;
+        ssmdns_query_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "robustness")
+    {
+        robustness.yfilter = yfilter;
+    }
+    if(value_path == "ssmdns-query-group")
+    {
+        ssmdns_query_group.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inheritable-defaults" || name == "interfaces" || name == "maximum" || name == "ssm-access-groups" || name == "traffic" || name == "vrf-name" || name == "robustness" || name == "ssmdns-query-group")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Traffic::Traffic()
@@ -6200,8 +7764,8 @@ bool Mld::Vrfs::Vrf::Traffic::has_data() const
 
 bool Mld::Vrfs::Vrf::Traffic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Traffic::get_segment_path() const
@@ -6227,7 +7791,7 @@ const EntityPath Mld::Vrfs::Vrf::Traffic::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6246,12 +7810,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Traffic::get_chil
     return children;
 }
 
-void Mld::Vrfs::Vrf::Traffic::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile")
     {
         profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::InheritableDefaults::InheritableDefaults()
@@ -6287,13 +7868,13 @@ bool Mld::Vrfs::Vrf::InheritableDefaults::has_data() const
 
 bool Mld::Vrfs::Vrf::InheritableDefaults::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_group.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(query_timeout.operation)
-	|| is_set(router_enable.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(query_timeout.yfilter)
+	|| ydk::is_set(router_enable.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
 	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation());
 }
@@ -6321,12 +7902,12 @@ const EntityPath Mld::Vrfs::Vrf::InheritableDefaults::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (query_timeout.is_set || is_set(query_timeout.operation)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
-    if (router_enable.is_set || is_set(router_enable.operation)) leaf_name_data.push_back(router_enable.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (query_timeout.is_set || is_set(query_timeout.yfilter)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
+    if (router_enable.is_set || is_set(router_enable.yfilter)) leaf_name_data.push_back(router_enable.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6373,32 +7954,79 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaul
     return children;
 }
 
-void Mld::Vrfs::Vrf::InheritableDefaults::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-timeout")
     {
         query_timeout = value;
+        query_timeout.value_namespace = name_space;
+        query_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-enable")
     {
         router_enable = value;
+        router_enable.value_namespace = name_space;
+        router_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::InheritableDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "query-timeout")
+    {
+        query_timeout.yfilter = yfilter;
+    }
+    if(value_path == "router-enable")
+    {
+        router_enable.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::InheritableDefaults::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "maximum-groups-per-interface-oor" || name == "access-group" || name == "query-interval" || name == "query-max-response-time" || name == "query-timeout" || name == "router-enable" || name == "version")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::MaximumGroupsPerInterfaceOor()
@@ -6423,10 +8051,10 @@ bool Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_data
 
 bool Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_groups.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_groups.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_segment_path() const
@@ -6452,9 +8080,9 @@ const EntityPath Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceO
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6473,20 +8101,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaul
     return children;
 }
 
-void Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-groups" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::ExplicitTracking()
@@ -6509,9 +8166,9 @@ bool Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_data() const
 
 bool Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_segment_path() const
@@ -6537,8 +8194,8 @@ const EntityPath Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::get_enti
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6557,16 +8214,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::InheritableDefaul
     return children;
 }
 
-void Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::InheritableDefaults::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroups()
@@ -6595,7 +8275,7 @@ bool Mld::Vrfs::Vrf::SsmAccessGroups::has_operation() const
         if(ssm_access_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::SsmAccessGroups::get_segment_path() const
@@ -6660,8 +8340,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::
     return children;
 }
 
-void Mld::Vrfs::Vrf::SsmAccessGroups::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::SsmAccessGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::Vrfs::Vrf::SsmAccessGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::Vrfs::Vrf::SsmAccessGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ssm-access-group")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::SsmAccessGroup()
@@ -6684,9 +8375,9 @@ bool Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_data() const
 
 bool Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_address.operation)
-	|| is_set(access_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_segment_path() const
@@ -6712,8 +8403,8 @@ const EntityPath Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6732,16 +8423,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::SsmAccessGroups::
     return children;
 }
 
-void Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "access-list-name")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Maximum::Maximum()
@@ -6762,8 +8476,8 @@ bool Mld::Vrfs::Vrf::Maximum::has_data() const
 
 bool Mld::Vrfs::Vrf::Maximum::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_groups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_groups.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Maximum::get_segment_path() const
@@ -6789,7 +8503,7 @@ const EntityPath Mld::Vrfs::Vrf::Maximum::get_entity_path(Entity* ancestor) cons
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6808,12 +8522,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Maximum::get_chil
     return children;
 }
 
-void Mld::Vrfs::Vrf::Maximum::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Maximum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Maximum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-groups")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interfaces()
@@ -6842,7 +8573,7 @@ bool Mld::Vrfs::Vrf::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::get_segment_path() const
@@ -6907,8 +8638,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::get_c
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::Vrfs::Vrf::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::Interface()
@@ -6952,14 +8694,14 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::has_data() const
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(access_group.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(query_timeout.operation)
-	|| is_set(router_enable.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(query_timeout.yfilter)
+	|| ydk::is_set(router_enable.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
 	|| (join_groups !=  nullptr && join_groups->has_operation())
 	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation())
@@ -6989,13 +8731,13 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (query_timeout.is_set || is_set(query_timeout.operation)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
-    if (router_enable.is_set || is_set(router_enable.operation)) leaf_name_data.push_back(router_enable.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (query_timeout.is_set || is_set(query_timeout.yfilter)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
+    if (router_enable.is_set || is_set(router_enable.yfilter)) leaf_name_data.push_back(router_enable.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7070,36 +8812,89 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-timeout")
     {
         query_timeout = value;
+        query_timeout.value_namespace = name_space;
+        query_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-enable")
     {
         router_enable = value;
+        router_enable.value_namespace = name_space;
+        router_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "query-timeout")
+    {
+        query_timeout.yfilter = yfilter;
+    }
+    if(value_path == "router-enable")
+    {
+        router_enable.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "join-groups" || name == "maximum-groups-per-interface-oor" || name == "static-group-group-addresses" || name == "interface-name" || name == "access-group" || name == "query-interval" || name == "query-max-response-time" || name == "query-timeout" || name == "router-enable" || name == "version")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroups()
@@ -7138,7 +8933,7 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_operation() const
         if(join_group_source_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::get_segment_path() const
@@ -7224,8 +9019,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "join-group" || name == "join-group-source-address")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::JoinGroup()
@@ -7248,9 +9054,9 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_data() co
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::get_segment_path() const
@@ -7276,8 +9082,8 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7296,16 +9102,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "mode")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::JoinGroupSourceAddress()
@@ -7330,10 +9159,10 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_segment_path() const
@@ -7359,9 +9188,9 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSou
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7380,20 +9209,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "mode")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddresses()
@@ -7472,7 +9330,7 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_opera
         if(static_group_group_address_source_address_source_address_mask[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::get_segment_path() const
@@ -7642,8 +9500,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-group-group-address" || name == "static-group-group-address-group-address-mask" || name == "static-group-group-address-group-address-mask-source-address" || name == "static-group-group-address-group-address-mask-source-address-source-address-mask" || name == "static-group-group-address-source-address" || name == "static-group-group-address-source-address-source-address-mask")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::StaticGroupGroupAddress()
@@ -7670,11 +9539,11 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_segment_path() const
@@ -7700,10 +9569,10 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7722,24 +9591,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::StaticGroupGroupAddressSourceAddress()
@@ -7768,12 +9672,12 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_segment_path() const
@@ -7799,11 +9703,11 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7822,28 +9726,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::StaticGroupGroupAddressSourceAddressSourceAddressMask()
@@ -7874,13 +9819,13 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(source_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_segment_path() const
@@ -7906,12 +9851,12 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_address_mask.is_set || is_set(source_address_mask.operation)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_address_mask.is_set || is_set(source_address_mask.yfilter)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7930,32 +9875,79 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address-mask")
     {
         source_address_mask = value;
+        source_address_mask.value_namespace = name_space;
+        source_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address-mask")
+    {
+        source_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "source-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::StaticGroupGroupAddressGroupAddressMask()
@@ -7984,12 +9976,12 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_segment_path() const
@@ -8015,11 +10007,11 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8038,28 +10030,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::StaticGroupGroupAddressGroupAddressMaskSourceAddress()
@@ -8090,13 +10123,13 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(source_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_segment_path() const
@@ -8122,12 +10155,12 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8146,32 +10179,79 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "source-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask()
@@ -8204,14 +10284,14 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGro
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(source_address.operation)
-	|| is_set(source_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_segment_path() const
@@ -8237,13 +10317,13 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresse
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_address_mask.is_set || is_set(source_address_mask.operation)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_address_mask.is_set || is_set(source_address_mask.yfilter)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8262,36 +10342,89 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address-mask")
     {
         source_address_mask = value;
+        source_address_mask.value_namespace = name_space;
+        source_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address-mask")
+    {
+        source_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "source-address" || name == "source-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::MaximumGroupsPerInterfaceOor()
@@ -8316,10 +10449,10 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_da
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_groups.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_groups.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_segment_path() const
@@ -8345,9 +10478,9 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfac
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8366,20 +10499,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-groups" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::ExplicitTracking()
@@ -8402,9 +10564,9 @@ bool Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::has_data() const
 
 bool Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_segment_path() const
@@ -8430,8 +10592,8 @@ const EntityPath Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::get_en
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8450,16 +10612,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::Vrfs::Vrf::Interfaces::Inter
     return children;
 }
 
-void Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Mld::Vrfs::Vrf::Interfaces::Interface::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::DefaultContext()
@@ -8515,9 +10700,9 @@ bool Mld::DefaultContext::has_data() const
 
 bool Mld::DefaultContext::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(robustness.operation)
-	|| is_set(ssmdns_query_group.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(robustness.yfilter)
+	|| ydk::is_set(ssmdns_query_group.yfilter)
 	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (inheritable_defaults !=  nullptr && inheritable_defaults->has_operation())
 	|| (interfaces !=  nullptr && interfaces->has_operation())
@@ -8551,8 +10736,8 @@ const EntityPath Mld::DefaultContext::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (robustness.is_set || is_set(robustness.operation)) leaf_name_data.push_back(robustness.get_name_leafdata());
-    if (ssmdns_query_group.is_set || is_set(ssmdns_query_group.operation)) leaf_name_data.push_back(ssmdns_query_group.get_name_leafdata());
+    if (robustness.is_set || is_set(robustness.yfilter)) leaf_name_data.push_back(robustness.get_name_leafdata());
+    if (ssmdns_query_group.is_set || is_set(ssmdns_query_group.yfilter)) leaf_name_data.push_back(ssmdns_query_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8683,16 +10868,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::get_children
     return children;
 }
 
-void Mld::DefaultContext::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "robustness")
     {
         robustness = value;
+        robustness.value_namespace = name_space;
+        robustness.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ssmdns-query-group")
     {
         ssmdns_query_group = value;
+        ssmdns_query_group.value_namespace = name_space;
+        ssmdns_query_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "robustness")
+    {
+        robustness.yfilter = yfilter;
+    }
+    if(value_path == "ssmdns-query-group")
+    {
+        ssmdns_query_group.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "accounting" || name == "inheritable-defaults" || name == "interfaces" || name == "maximum" || name == "nsf" || name == "ssm-access-groups" || name == "traffic" || name == "unicast-qos-adjust" || name == "robustness" || name == "ssmdns-query-group")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Nsf::Nsf()
@@ -8713,8 +10921,8 @@ bool Mld::DefaultContext::Nsf::has_data() const
 
 bool Mld::DefaultContext::Nsf::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(lifetime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(lifetime.yfilter);
 }
 
 std::string Mld::DefaultContext::Nsf::get_segment_path() const
@@ -8740,7 +10948,7 @@ const EntityPath Mld::DefaultContext::Nsf::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (lifetime.is_set || is_set(lifetime.operation)) leaf_name_data.push_back(lifetime.get_name_leafdata());
+    if (lifetime.is_set || is_set(lifetime.yfilter)) leaf_name_data.push_back(lifetime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8759,12 +10967,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Nsf::get_chi
     return children;
 }
 
-void Mld::DefaultContext::Nsf::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Nsf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lifetime")
     {
         lifetime = value;
+        lifetime.value_namespace = name_space;
+        lifetime.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Nsf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "lifetime")
+    {
+        lifetime.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Nsf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lifetime")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::UnicastQosAdjust::UnicastQosAdjust()
@@ -8789,10 +11014,10 @@ bool Mld::DefaultContext::UnicastQosAdjust::has_data() const
 
 bool Mld::DefaultContext::UnicastQosAdjust::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(adjustment_delay.operation)
-	|| is_set(download_interval.operation)
-	|| is_set(hold_off.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(adjustment_delay.yfilter)
+	|| ydk::is_set(download_interval.yfilter)
+	|| ydk::is_set(hold_off.yfilter);
 }
 
 std::string Mld::DefaultContext::UnicastQosAdjust::get_segment_path() const
@@ -8818,9 +11043,9 @@ const EntityPath Mld::DefaultContext::UnicastQosAdjust::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (adjustment_delay.is_set || is_set(adjustment_delay.operation)) leaf_name_data.push_back(adjustment_delay.get_name_leafdata());
-    if (download_interval.is_set || is_set(download_interval.operation)) leaf_name_data.push_back(download_interval.get_name_leafdata());
-    if (hold_off.is_set || is_set(hold_off.operation)) leaf_name_data.push_back(hold_off.get_name_leafdata());
+    if (adjustment_delay.is_set || is_set(adjustment_delay.yfilter)) leaf_name_data.push_back(adjustment_delay.get_name_leafdata());
+    if (download_interval.is_set || is_set(download_interval.yfilter)) leaf_name_data.push_back(download_interval.get_name_leafdata());
+    if (hold_off.is_set || is_set(hold_off.yfilter)) leaf_name_data.push_back(hold_off.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8839,20 +11064,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::UnicastQosAd
     return children;
 }
 
-void Mld::DefaultContext::UnicastQosAdjust::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::UnicastQosAdjust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "adjustment-delay")
     {
         adjustment_delay = value;
+        adjustment_delay.value_namespace = name_space;
+        adjustment_delay.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "download-interval")
     {
         download_interval = value;
+        download_interval.value_namespace = name_space;
+        download_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hold-off")
     {
         hold_off = value;
+        hold_off.value_namespace = name_space;
+        hold_off.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::UnicastQosAdjust::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjustment-delay")
+    {
+        adjustment_delay.yfilter = yfilter;
+    }
+    if(value_path == "download-interval")
+    {
+        download_interval.yfilter = yfilter;
+    }
+    if(value_path == "hold-off")
+    {
+        hold_off.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::UnicastQosAdjust::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjustment-delay" || name == "download-interval" || name == "hold-off")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Accounting::Accounting()
@@ -8873,8 +11127,8 @@ bool Mld::DefaultContext::Accounting::has_data() const
 
 bool Mld::DefaultContext::Accounting::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(max_history.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(max_history.yfilter);
 }
 
 std::string Mld::DefaultContext::Accounting::get_segment_path() const
@@ -8900,7 +11154,7 @@ const EntityPath Mld::DefaultContext::Accounting::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_history.is_set || is_set(max_history.operation)) leaf_name_data.push_back(max_history.get_name_leafdata());
+    if (max_history.is_set || is_set(max_history.yfilter)) leaf_name_data.push_back(max_history.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8919,12 +11173,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Accounting::
     return children;
 }
 
-void Mld::DefaultContext::Accounting::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "max-history")
     {
         max_history = value;
+        max_history.value_namespace = name_space;
+        max_history.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-history")
+    {
+        max_history.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-history")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Traffic::Traffic()
@@ -8945,8 +11216,8 @@ bool Mld::DefaultContext::Traffic::has_data() const
 
 bool Mld::DefaultContext::Traffic::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(profile.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(profile.yfilter);
 }
 
 std::string Mld::DefaultContext::Traffic::get_segment_path() const
@@ -8972,7 +11243,7 @@ const EntityPath Mld::DefaultContext::Traffic::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile.is_set || is_set(profile.operation)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8991,12 +11262,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Traffic::get
     return children;
 }
 
-void Mld::DefaultContext::Traffic::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Traffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile")
     {
         profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Traffic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Traffic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "profile")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::InheritableDefaults::InheritableDefaults()
@@ -9032,13 +11320,13 @@ bool Mld::DefaultContext::InheritableDefaults::has_data() const
 
 bool Mld::DefaultContext::InheritableDefaults::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_group.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(query_timeout.operation)
-	|| is_set(router_enable.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(query_timeout.yfilter)
+	|| ydk::is_set(router_enable.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
 	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation());
 }
@@ -9066,12 +11354,12 @@ const EntityPath Mld::DefaultContext::InheritableDefaults::get_entity_path(Entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (query_timeout.is_set || is_set(query_timeout.operation)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
-    if (router_enable.is_set || is_set(router_enable.operation)) leaf_name_data.push_back(router_enable.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (query_timeout.is_set || is_set(query_timeout.yfilter)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
+    if (router_enable.is_set || is_set(router_enable.yfilter)) leaf_name_data.push_back(router_enable.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9118,32 +11406,79 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableD
     return children;
 }
 
-void Mld::DefaultContext::InheritableDefaults::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::InheritableDefaults::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-timeout")
     {
         query_timeout = value;
+        query_timeout.value_namespace = name_space;
+        query_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-enable")
     {
         router_enable = value;
+        router_enable.value_namespace = name_space;
+        router_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::InheritableDefaults::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "query-timeout")
+    {
+        query_timeout.yfilter = yfilter;
+    }
+    if(value_path == "router-enable")
+    {
+        router_enable.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::InheritableDefaults::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "maximum-groups-per-interface-oor" || name == "access-group" || name == "query-interval" || name == "query-max-response-time" || name == "query-timeout" || name == "router-enable" || name == "version")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::MaximumGroupsPerInterfaceOor()
@@ -9168,10 +11503,10 @@ bool Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::has
 
 bool Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_groups.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_groups.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::get_segment_path() const
@@ -9197,9 +11532,9 @@ const EntityPath Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInter
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9218,20 +11553,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableD
     return children;
 }
 
-void Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::InheritableDefaults::MaximumGroupsPerInterfaceOor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-groups" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::InheritableDefaults::ExplicitTracking::ExplicitTracking()
@@ -9254,9 +11618,9 @@ bool Mld::DefaultContext::InheritableDefaults::ExplicitTracking::has_data() cons
 
 bool Mld::DefaultContext::InheritableDefaults::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Mld::DefaultContext::InheritableDefaults::ExplicitTracking::get_segment_path() const
@@ -9282,8 +11646,8 @@ const EntityPath Mld::DefaultContext::InheritableDefaults::ExplicitTracking::get
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9302,16 +11666,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::InheritableD
     return children;
 }
 
-void Mld::DefaultContext::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::InheritableDefaults::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::InheritableDefaults::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::InheritableDefaults::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::SsmAccessGroups::SsmAccessGroups()
@@ -9340,7 +11727,7 @@ bool Mld::DefaultContext::SsmAccessGroups::has_operation() const
         if(ssm_access_group[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::DefaultContext::SsmAccessGroups::get_segment_path() const
@@ -9405,8 +11792,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::SsmAccessGro
     return children;
 }
 
-void Mld::DefaultContext::SsmAccessGroups::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::SsmAccessGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::DefaultContext::SsmAccessGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::DefaultContext::SsmAccessGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ssm-access-group")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::SsmAccessGroup()
@@ -9429,9 +11827,9 @@ bool Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::has_data() const
 
 bool Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(source_address.operation)
-	|| is_set(access_list_name.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
 }
 
 std::string Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_segment_path() const
@@ -9457,8 +11855,8 @@ const EntityPath Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::get_entit
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9477,16 +11875,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::SsmAccessGro
     return children;
 }
 
-void Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-address" || name == "access-list-name")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Maximum::Maximum()
@@ -9507,8 +11928,8 @@ bool Mld::DefaultContext::Maximum::has_data() const
 
 bool Mld::DefaultContext::Maximum::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(maximum_groups.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_groups.yfilter);
 }
 
 std::string Mld::DefaultContext::Maximum::get_segment_path() const
@@ -9534,7 +11955,7 @@ const EntityPath Mld::DefaultContext::Maximum::get_entity_path(Entity* ancestor)
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9553,12 +11974,29 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Maximum::get
     return children;
 }
 
-void Mld::DefaultContext::Maximum::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Maximum::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Maximum::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Maximum::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-groups")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interfaces()
@@ -9587,7 +12025,7 @@ bool Mld::DefaultContext::Interfaces::has_operation() const
         if(interface[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::get_segment_path() const
@@ -9652,8 +12090,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::DefaultContext::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::DefaultContext::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::Interface()
@@ -9697,14 +12146,14 @@ bool Mld::DefaultContext::Interfaces::Interface::has_data() const
 
 bool Mld::DefaultContext::Interfaces::Interface::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(interface_name.operation)
-	|| is_set(access_group.operation)
-	|| is_set(query_interval.operation)
-	|| is_set(query_max_response_time.operation)
-	|| is_set(query_timeout.operation)
-	|| is_set(router_enable.operation)
-	|| is_set(version.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(query_timeout.yfilter)
+	|| ydk::is_set(router_enable.yfilter)
+	|| ydk::is_set(version.yfilter)
 	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation())
 	|| (join_groups !=  nullptr && join_groups->has_operation())
 	|| (maximum_groups_per_interface_oor !=  nullptr && maximum_groups_per_interface_oor->has_operation())
@@ -9734,13 +12183,13 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::get_entity_path(Ent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.operation)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (access_group.is_set || is_set(access_group.operation)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.operation)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.operation)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (query_timeout.is_set || is_set(query_timeout.operation)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
-    if (router_enable.is_set || is_set(router_enable.operation)) leaf_name_data.push_back(router_enable.get_name_leafdata());
-    if (version.is_set || is_set(version.operation)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (query_timeout.is_set || is_set(query_timeout.yfilter)) leaf_name_data.push_back(query_timeout.get_name_leafdata());
+    if (router_enable.is_set || is_set(router_enable.yfilter)) leaf_name_data.push_back(router_enable.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9815,36 +12264,89 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
         interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "access-group")
     {
         access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-interval")
     {
         query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-max-response-time")
     {
         query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "query-timeout")
     {
         query_timeout = value;
+        query_timeout.value_namespace = name_space;
+        query_timeout.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "router-enable")
     {
         router_enable = value;
+        router_enable.value_namespace = name_space;
+        router_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "version")
     {
         version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "query-timeout")
+    {
+        query_timeout.yfilter = yfilter;
+    }
+    if(value_path == "router-enable")
+    {
+        router_enable.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "join-groups" || name == "maximum-groups-per-interface-oor" || name == "static-group-group-addresses" || name == "interface-name" || name == "access-group" || name == "query-interval" || name == "query-max-response-time" || name == "query-timeout" || name == "router-enable" || name == "version")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroups()
@@ -9883,7 +12385,7 @@ bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::has_operation() con
         if(join_group_source_address[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::JoinGroups::get_segment_path() const
@@ -9969,8 +12471,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::JoinGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::DefaultContext::Interfaces::Interface::JoinGroups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "join-group" || name == "join-group-source-address")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::JoinGroup()
@@ -9993,9 +12506,9 @@ bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_data
 
 bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::get_segment_path() const
@@ -10021,8 +12534,8 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGro
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10041,16 +12554,39 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "mode")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::JoinGroupSourceAddress()
@@ -10075,10 +12611,10 @@ bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddr
 
 bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(mode.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(mode.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::get_segment_path() const
@@ -10104,9 +12640,9 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGro
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (mode.is_set || is_set(mode.operation)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10125,20 +12661,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mode")
     {
         mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "mode")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddresses()
@@ -10217,7 +12782,7 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has_
         if(static_group_group_address_source_address_source_address_mask[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::get_segment_path() const
@@ -10387,8 +12952,19 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-group-group-address" || name == "static-group-group-address-group-address-mask" || name == "static-group-group-address-group-address-mask-source-address" || name == "static-group-group-address-group-address-mask-source-address-source-address-mask" || name == "static-group-group-address-source-address" || name == "static-group-group-address-source-address-source-address-mask")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::StaticGroupGroupAddress()
@@ -10415,11 +12991,11 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::get_segment_path() const
@@ -10445,10 +13021,10 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAdd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10467,24 +13043,59 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::StaticGroupGroupAddressSourceAddress()
@@ -10513,12 +13124,12 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::get_segment_path() const
@@ -10544,11 +13155,11 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAdd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10567,28 +13178,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::StaticGroupGroupAddressSourceAddressSourceAddressMask()
@@ -10619,13 +13271,13 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(source_address.operation)
-	|| is_set(source_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::get_segment_path() const
@@ -10651,12 +13303,12 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAdd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_address_mask.is_set || is_set(source_address_mask.operation)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_address_mask.is_set || is_set(source_address_mask.yfilter)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10675,32 +13327,79 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address-mask")
     {
         source_address_mask = value;
+        source_address_mask.value_namespace = name_space;
+        source_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address-mask")
+    {
+        source_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "source-address" || name == "source-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::StaticGroupGroupAddressGroupAddressMask()
@@ -10729,12 +13428,12 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::get_segment_path() const
@@ -10760,11 +13459,11 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAdd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10783,28 +13482,69 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::StaticGroupGroupAddressGroupAddressMaskSourceAddress()
@@ -10835,13 +13575,13 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(source_address.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::get_segment_path() const
@@ -10867,12 +13607,12 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAdd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10891,32 +13631,79 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "source-address" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask()
@@ -10949,14 +13736,14 @@ bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::Stat
 
 bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(group_address.operation)
-	|| is_set(group_address_mask.operation)
-	|| is_set(source_address.operation)
-	|| is_set(source_address_mask.operation)
-	|| is_set(group_count.operation)
-	|| is_set(source_count.operation)
-	|| is_set(suppress_report.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(group_address.yfilter)
+	|| ydk::is_set(group_address_mask.yfilter)
+	|| ydk::is_set(source_address.yfilter)
+	|| ydk::is_set(source_address_mask.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(source_count.yfilter)
+	|| ydk::is_set(suppress_report.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::get_segment_path() const
@@ -10982,13 +13769,13 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAdd
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.operation)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_address_mask.is_set || is_set(group_address_mask.operation)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
-    if (source_address.is_set || is_set(source_address.operation)) leaf_name_data.push_back(source_address.get_name_leafdata());
-    if (source_address_mask.is_set || is_set(source_address_mask.operation)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
-    if (group_count.is_set || is_set(group_count.operation)) leaf_name_data.push_back(group_count.get_name_leafdata());
-    if (source_count.is_set || is_set(source_count.operation)) leaf_name_data.push_back(source_count.get_name_leafdata());
-    if (suppress_report.is_set || is_set(suppress_report.operation)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
+    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
+    if (group_address_mask.is_set || is_set(group_address_mask.yfilter)) leaf_name_data.push_back(group_address_mask.get_name_leafdata());
+    if (source_address.is_set || is_set(source_address.yfilter)) leaf_name_data.push_back(source_address.get_name_leafdata());
+    if (source_address_mask.is_set || is_set(source_address_mask.yfilter)) leaf_name_data.push_back(source_address_mask.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (source_count.is_set || is_set(source_count.yfilter)) leaf_name_data.push_back(source_count.get_name_leafdata());
+    if (suppress_report.is_set || is_set(suppress_report.yfilter)) leaf_name_data.push_back(suppress_report.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11007,36 +13794,89 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "group-address")
     {
         group_address = value;
+        group_address.value_namespace = name_space;
+        group_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-address-mask")
     {
         group_address_mask = value;
+        group_address_mask.value_namespace = name_space;
+        group_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address")
     {
         source_address = value;
+        source_address.value_namespace = name_space;
+        source_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-address-mask")
     {
         source_address_mask = value;
+        source_address_mask.value_namespace = name_space;
+        source_address_mask.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "group-count")
     {
         group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "source-count")
     {
         source_count = value;
+        source_count.value_namespace = name_space;
+        source_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "suppress-report")
     {
         suppress_report = value;
+        suppress_report.value_namespace = name_space;
+        suppress_report.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group-address")
+    {
+        group_address.yfilter = yfilter;
+    }
+    if(value_path == "group-address-mask")
+    {
+        group_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "source-address")
+    {
+        source_address.yfilter = yfilter;
+    }
+    if(value_path == "source-address-mask")
+    {
+        source_address_mask.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "source-count")
+    {
+        source_count.yfilter = yfilter;
+    }
+    if(value_path == "suppress-report")
+    {
+        suppress_report.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-address" || name == "group-address-mask" || name == "source-address" || name == "source-address-mask" || name == "group-count" || name == "source-count" || name == "suppress-report")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::MaximumGroupsPerInterfaceOor()
@@ -11061,10 +13901,10 @@ bool Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::h
 
 bool Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(maximum_groups.operation)
-	|| is_set(warning_threshold.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(maximum_groups.yfilter)
+	|| ydk::is_set(warning_threshold.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::get_segment_path() const
@@ -11090,9 +13930,9 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInt
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (maximum_groups.is_set || is_set(maximum_groups.operation)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
-    if (warning_threshold.is_set || is_set(warning_threshold.operation)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (maximum_groups.is_set || is_set(maximum_groups.yfilter)) leaf_name_data.push_back(maximum_groups.get_name_leafdata());
+    if (warning_threshold.is_set || is_set(warning_threshold.yfilter)) leaf_name_data.push_back(warning_threshold.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11111,20 +13951,49 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "maximum-groups")
     {
         maximum_groups = value;
+        maximum_groups.value_namespace = name_space;
+        maximum_groups.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "warning-threshold")
     {
         warning_threshold = value;
+        warning_threshold.value_namespace = name_space;
+        warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "maximum-groups")
+    {
+        maximum_groups.yfilter = yfilter;
+    }
+    if(value_path == "warning-threshold")
+    {
+        warning_threshold.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::MaximumGroupsPerInterfaceOor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "maximum-groups" || name == "warning-threshold")
+        return true;
+    return false;
 }
 
 Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::ExplicitTracking()
@@ -11147,9 +14016,9 @@ bool Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::has_data() co
 
 bool Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(access_list_name.operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(access_list_name.yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::get_segment_path() const
@@ -11175,8 +14044,8 @@ const EntityPath Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::g
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (access_list_name.is_set || is_set(access_list_name.operation)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11195,21 +14064,44 @@ std::map<std::string, std::shared_ptr<Entity>> Mld::DefaultContext::Interfaces::
     return children;
 }
 
-void Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, std::string value)
+void Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "access-list-name")
     {
         access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf IgmpFilterEnum::include {0, "include"};
-const Enum::YLeaf IgmpFilterEnum::exclude {1, "exclude"};
-const Enum::YLeaf IgmpFilterEnum::star_g {2, "star-g"};
+void Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Mld::DefaultContext::Interfaces::Interface::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "access-list-name" || name == "enable")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf IgmpFilter::include {0, "include"};
+const Enum::YLeaf IgmpFilter::exclude {1, "exclude"};
+const Enum::YLeaf IgmpFilter::star_g {2, "star-g"};
 
 
 }

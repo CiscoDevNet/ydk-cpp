@@ -7,26 +7,26 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace ietf {
 namespace ietf_ip {
 
-class NeighborOriginEnum : public Enum
+class IpAddressOrigin : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf static_;
-        static const Enum::YLeaf dynamic;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf link_layer;
+        static const ydk::Enum::YLeaf random;
 
 };
 
-class IpAddressOriginEnum : public Enum
+class NeighborOrigin : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf other;
-        static const Enum::YLeaf static_;
-        static const Enum::YLeaf dhcp;
-        static const Enum::YLeaf link_layer;
-        static const Enum::YLeaf random;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dynamic;
 
 };
 

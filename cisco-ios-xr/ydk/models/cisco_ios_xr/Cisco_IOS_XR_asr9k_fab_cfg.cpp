@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_asr9k_fab_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_asr9k_fab_cfg {
 
 FabVqiConfig::FabVqiConfig()
@@ -29,7 +31,7 @@ bool FabVqiConfig::has_data() const
 
 bool FabVqiConfig::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (operates !=  nullptr && operates->has_operation());
 }
 
@@ -85,7 +87,11 @@ std::map<std::string, std::shared_ptr<Entity>> FabVqiConfig::get_children() cons
     return children;
 }
 
-void FabVqiConfig::set_value(const std::string & value_path, std::string value)
+void FabVqiConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void FabVqiConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -107,6 +113,18 @@ std::string FabVqiConfig::get_bundle_name() const
 augment_capabilities_function FabVqiConfig::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> FabVqiConfig::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool FabVqiConfig::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operates")
+        return true;
+    return false;
 }
 
 FabVqiConfig::Operates::Operates()
@@ -135,7 +153,7 @@ bool FabVqiConfig::Operates::has_operation() const
         if(operate[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string FabVqiConfig::Operates::get_segment_path() const
@@ -200,8 +218,19 @@ std::map<std::string, std::shared_ptr<Entity>> FabVqiConfig::Operates::get_child
     return children;
 }
 
-void FabVqiConfig::Operates::set_value(const std::string & value_path, std::string value)
+void FabVqiConfig::Operates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void FabVqiConfig::Operates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool FabVqiConfig::Operates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "operate")
+        return true;
+    return false;
 }
 
 FabVqiConfig::Operates::Operate::Operate()
@@ -226,10 +255,10 @@ bool FabVqiConfig::Operates::Operate::has_data() const
 
 bool FabVqiConfig::Operates::Operate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(id1.operation)
-	|| is_set(id1_xr.operation)
-	|| is_set(id2.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(id1.yfilter)
+	|| ydk::is_set(id1_xr.yfilter)
+	|| ydk::is_set(id2.yfilter);
 }
 
 std::string FabVqiConfig::Operates::Operate::get_segment_path() const
@@ -255,9 +284,9 @@ const EntityPath FabVqiConfig::Operates::Operate::get_entity_path(Entity* ancest
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (id1.is_set || is_set(id1.operation)) leaf_name_data.push_back(id1.get_name_leafdata());
-    if (id1_xr.is_set || is_set(id1_xr.operation)) leaf_name_data.push_back(id1_xr.get_name_leafdata());
-    if (id2.is_set || is_set(id2.operation)) leaf_name_data.push_back(id2.get_name_leafdata());
+    if (id1.is_set || is_set(id1.yfilter)) leaf_name_data.push_back(id1.get_name_leafdata());
+    if (id1_xr.is_set || is_set(id1_xr.yfilter)) leaf_name_data.push_back(id1_xr.get_name_leafdata());
+    if (id2.is_set || is_set(id2.yfilter)) leaf_name_data.push_back(id2.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -276,20 +305,49 @@ std::map<std::string, std::shared_ptr<Entity>> FabVqiConfig::Operates::Operate::
     return children;
 }
 
-void FabVqiConfig::Operates::Operate::set_value(const std::string & value_path, std::string value)
+void FabVqiConfig::Operates::Operate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id1")
     {
         id1 = value;
+        id1.value_namespace = name_space;
+        id1.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id1-xr")
     {
         id1_xr = value;
+        id1_xr.value_namespace = name_space;
+        id1_xr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "id2")
     {
         id2 = value;
+        id2.value_namespace = name_space;
+        id2.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void FabVqiConfig::Operates::Operate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id1")
+    {
+        id1.yfilter = yfilter;
+    }
+    if(value_path == "id1-xr")
+    {
+        id1_xr.yfilter = yfilter;
+    }
+    if(value_path == "id2")
+    {
+        id2.yfilter = yfilter;
+    }
+}
+
+bool FabVqiConfig::Operates::Operate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id1" || name == "id1-xr" || name == "id2")
+        return true;
+    return false;
 }
 
 

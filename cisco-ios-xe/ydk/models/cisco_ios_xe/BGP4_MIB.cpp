@@ -6,23 +6,25 @@
 #include "generated_entity_lookup.hpp"
 #include "BGP4_MIB.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xe {
 namespace BGP4_MIB {
 
 Bgp4Mib::Bgp4Mib()
     :
-    bgp4pathattrtable_(std::make_shared<Bgp4Mib::Bgp4Pathattrtable>())
-	,bgp_(std::make_shared<Bgp4Mib::Bgp>())
-	,bgppeertable_(std::make_shared<Bgp4Mib::Bgppeertable>())
-	,bgprcvdpathattrtable_(std::make_shared<Bgp4Mib::Bgprcvdpathattrtable>())
+    bgp(std::make_shared<Bgp4Mib::Bgp>())
+	,bgp4pathattrtable(std::make_shared<Bgp4Mib::Bgp4Pathattrtable>())
+	,bgppeertable(std::make_shared<Bgp4Mib::Bgppeertable>())
+	,bgprcvdpathattrtable(std::make_shared<Bgp4Mib::Bgprcvdpathattrtable>())
 {
-    bgp4pathattrtable_->parent = this;
+    bgp->parent = this;
 
-    bgp_->parent = this;
+    bgp4pathattrtable->parent = this;
 
-    bgppeertable_->parent = this;
+    bgppeertable->parent = this;
 
-    bgprcvdpathattrtable_->parent = this;
+    bgprcvdpathattrtable->parent = this;
 
     yang_name = "BGP4-MIB"; yang_parent_name = "BGP4-MIB";
 }
@@ -33,19 +35,19 @@ Bgp4Mib::~Bgp4Mib()
 
 bool Bgp4Mib::has_data() const
 {
-    return (bgp4pathattrtable_ !=  nullptr && bgp4pathattrtable_->has_data())
-	|| (bgp_ !=  nullptr && bgp_->has_data())
-	|| (bgppeertable_ !=  nullptr && bgppeertable_->has_data())
-	|| (bgprcvdpathattrtable_ !=  nullptr && bgprcvdpathattrtable_->has_data());
+    return (bgp !=  nullptr && bgp->has_data())
+	|| (bgp4pathattrtable !=  nullptr && bgp4pathattrtable->has_data())
+	|| (bgppeertable !=  nullptr && bgppeertable->has_data())
+	|| (bgprcvdpathattrtable !=  nullptr && bgprcvdpathattrtable->has_data());
 }
 
 bool Bgp4Mib::has_operation() const
 {
-    return is_set(operation)
-	|| (bgp4pathattrtable_ !=  nullptr && bgp4pathattrtable_->has_operation())
-	|| (bgp_ !=  nullptr && bgp_->has_operation())
-	|| (bgppeertable_ !=  nullptr && bgppeertable_->has_operation())
-	|| (bgprcvdpathattrtable_ !=  nullptr && bgprcvdpathattrtable_->has_operation());
+    return is_set(yfilter)
+	|| (bgp !=  nullptr && bgp->has_operation())
+	|| (bgp4pathattrtable !=  nullptr && bgp4pathattrtable->has_operation())
+	|| (bgppeertable !=  nullptr && bgppeertable->has_operation())
+	|| (bgprcvdpathattrtable !=  nullptr && bgprcvdpathattrtable->has_operation());
 }
 
 std::string Bgp4Mib::get_segment_path() const
@@ -77,40 +79,40 @@ const EntityPath Bgp4Mib::get_entity_path(Entity* ancestor) const
 
 std::shared_ptr<Entity> Bgp4Mib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "bgp4PathAttrTable")
-    {
-        if(bgp4pathattrtable_ == nullptr)
-        {
-            bgp4pathattrtable_ = std::make_shared<Bgp4Mib::Bgp4Pathattrtable>();
-        }
-        return bgp4pathattrtable_;
-    }
-
     if(child_yang_name == "bgp")
     {
-        if(bgp_ == nullptr)
+        if(bgp == nullptr)
         {
-            bgp_ = std::make_shared<Bgp4Mib::Bgp>();
+            bgp = std::make_shared<Bgp4Mib::Bgp>();
         }
-        return bgp_;
+        return bgp;
+    }
+
+    if(child_yang_name == "bgp4PathAttrTable")
+    {
+        if(bgp4pathattrtable == nullptr)
+        {
+            bgp4pathattrtable = std::make_shared<Bgp4Mib::Bgp4Pathattrtable>();
+        }
+        return bgp4pathattrtable;
     }
 
     if(child_yang_name == "bgpPeerTable")
     {
-        if(bgppeertable_ == nullptr)
+        if(bgppeertable == nullptr)
         {
-            bgppeertable_ = std::make_shared<Bgp4Mib::Bgppeertable>();
+            bgppeertable = std::make_shared<Bgp4Mib::Bgppeertable>();
         }
-        return bgppeertable_;
+        return bgppeertable;
     }
 
     if(child_yang_name == "bgpRcvdPathAttrTable")
     {
-        if(bgprcvdpathattrtable_ == nullptr)
+        if(bgprcvdpathattrtable == nullptr)
         {
-            bgprcvdpathattrtable_ = std::make_shared<Bgp4Mib::Bgprcvdpathattrtable>();
+            bgprcvdpathattrtable = std::make_shared<Bgp4Mib::Bgprcvdpathattrtable>();
         }
-        return bgprcvdpathattrtable_;
+        return bgprcvdpathattrtable;
     }
 
     return nullptr;
@@ -119,30 +121,34 @@ std::shared_ptr<Entity> Bgp4Mib::get_child_by_name(const std::string & child_yan
 std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    if(bgp4pathattrtable_ != nullptr)
+    if(bgp != nullptr)
     {
-        children["bgp4PathAttrTable"] = bgp4pathattrtable_;
+        children["bgp"] = bgp;
     }
 
-    if(bgp_ != nullptr)
+    if(bgp4pathattrtable != nullptr)
     {
-        children["bgp"] = bgp_;
+        children["bgp4PathAttrTable"] = bgp4pathattrtable;
     }
 
-    if(bgppeertable_ != nullptr)
+    if(bgppeertable != nullptr)
     {
-        children["bgpPeerTable"] = bgppeertable_;
+        children["bgpPeerTable"] = bgppeertable;
     }
 
-    if(bgprcvdpathattrtable_ != nullptr)
+    if(bgprcvdpathattrtable != nullptr)
     {
-        children["bgpRcvdPathAttrTable"] = bgprcvdpathattrtable_;
+        children["bgpRcvdPathAttrTable"] = bgprcvdpathattrtable;
     }
 
     return children;
 }
 
-void Bgp4Mib::set_value(const std::string & value_path, std::string value)
+void Bgp4Mib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Bgp4Mib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -164,6 +170,18 @@ std::string Bgp4Mib::get_bundle_name() const
 augment_capabilities_function Bgp4Mib::get_augment_capabilities_function() const
 {
     return cisco_ios_xe_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Bgp4Mib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xe_namespace_identity_lookup;
+}
+
+bool Bgp4Mib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp" || name == "bgp4PathAttrTable" || name == "bgpPeerTable" || name == "bgpRcvdPathAttrTable")
+        return true;
+    return false;
 }
 
 Bgp4Mib::Bgp::Bgp()
@@ -188,10 +206,10 @@ bool Bgp4Mib::Bgp::has_data() const
 
 bool Bgp4Mib::Bgp::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bgpidentifier.operation)
-	|| is_set(bgplocalas.operation)
-	|| is_set(bgpversion.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bgpidentifier.yfilter)
+	|| ydk::is_set(bgplocalas.yfilter)
+	|| ydk::is_set(bgpversion.yfilter);
 }
 
 std::string Bgp4Mib::Bgp::get_segment_path() const
@@ -217,9 +235,9 @@ const EntityPath Bgp4Mib::Bgp::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bgpidentifier.is_set || is_set(bgpidentifier.operation)) leaf_name_data.push_back(bgpidentifier.get_name_leafdata());
-    if (bgplocalas.is_set || is_set(bgplocalas.operation)) leaf_name_data.push_back(bgplocalas.get_name_leafdata());
-    if (bgpversion.is_set || is_set(bgpversion.operation)) leaf_name_data.push_back(bgpversion.get_name_leafdata());
+    if (bgpidentifier.is_set || is_set(bgpidentifier.yfilter)) leaf_name_data.push_back(bgpidentifier.get_name_leafdata());
+    if (bgplocalas.is_set || is_set(bgplocalas.yfilter)) leaf_name_data.push_back(bgplocalas.get_name_leafdata());
+    if (bgpversion.is_set || is_set(bgpversion.yfilter)) leaf_name_data.push_back(bgpversion.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -238,20 +256,49 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgp::get_children() cons
     return children;
 }
 
-void Bgp4Mib::Bgp::set_value(const std::string & value_path, std::string value)
+void Bgp4Mib::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgpIdentifier")
     {
         bgpidentifier = value;
+        bgpidentifier.value_namespace = name_space;
+        bgpidentifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpLocalAs")
     {
         bgplocalas = value;
+        bgplocalas.value_namespace = name_space;
+        bgplocalas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpVersion")
     {
         bgpversion = value;
+        bgpversion.value_namespace = name_space;
+        bgpversion.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp4Mib::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bgpIdentifier")
+    {
+        bgpidentifier.yfilter = yfilter;
+    }
+    if(value_path == "bgpLocalAs")
+    {
+        bgplocalas.yfilter = yfilter;
+    }
+    if(value_path == "bgpVersion")
+    {
+        bgpversion.yfilter = yfilter;
+    }
+}
+
+bool Bgp4Mib::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgpIdentifier" || name == "bgpLocalAs" || name == "bgpVersion")
+        return true;
+    return false;
 }
 
 Bgp4Mib::Bgppeertable::Bgppeertable()
@@ -265,9 +312,9 @@ Bgp4Mib::Bgppeertable::~Bgppeertable()
 
 bool Bgp4Mib::Bgppeertable::has_data() const
 {
-    for (std::size_t index=0; index<bgppeerentry_.size(); index++)
+    for (std::size_t index=0; index<bgppeerentry.size(); index++)
     {
-        if(bgppeerentry_[index]->has_data())
+        if(bgppeerentry[index]->has_data())
             return true;
     }
     return false;
@@ -275,12 +322,12 @@ bool Bgp4Mib::Bgppeertable::has_data() const
 
 bool Bgp4Mib::Bgppeertable::has_operation() const
 {
-    for (std::size_t index=0; index<bgppeerentry_.size(); index++)
+    for (std::size_t index=0; index<bgppeerentry.size(); index++)
     {
-        if(bgppeerentry_[index]->has_operation())
+        if(bgppeerentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bgp4Mib::Bgppeertable::get_segment_path() const
@@ -317,7 +364,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgppeertable::get_child_by_name(const std::stri
 {
     if(child_yang_name == "bgpPeerEntry")
     {
-        for(auto const & c : bgppeerentry_)
+        for(auto const & c : bgppeerentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -327,7 +374,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgppeertable::get_child_by_name(const std::stri
         }
         auto c = std::make_shared<Bgp4Mib::Bgppeertable::Bgppeerentry>();
         c->parent = this;
-        bgppeerentry_.push_back(c);
+        bgppeerentry.push_back(c);
         return c;
     }
 
@@ -337,7 +384,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgppeertable::get_child_by_name(const std::stri
 std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgppeertable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bgppeerentry_)
+    for (auto const & c : bgppeerentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -345,8 +392,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgppeertable::get_childr
     return children;
 }
 
-void Bgp4Mib::Bgppeertable::set_value(const std::string & value_path, std::string value)
+void Bgp4Mib::Bgppeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp4Mib::Bgppeertable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp4Mib::Bgppeertable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgpPeerEntry")
+        return true;
+    return false;
 }
 
 Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeerentry()
@@ -429,39 +487,39 @@ bool Bgp4Mib::Bgppeertable::Bgppeerentry::has_data() const
 
 bool Bgp4Mib::Bgppeertable::Bgppeerentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bgppeerremoteaddr.operation)
-	|| is_set(bgppeeradminstatus.operation)
-	|| is_set(bgppeerconnectretryinterval.operation)
-	|| is_set(bgppeerfsmestablishedtime.operation)
-	|| is_set(bgppeerfsmestablishedtransitions.operation)
-	|| is_set(bgppeerholdtime.operation)
-	|| is_set(bgppeerholdtimeconfigured.operation)
-	|| is_set(bgppeeridentifier.operation)
-	|| is_set(bgppeerintotalmessages.operation)
-	|| is_set(bgppeerinupdateelapsedtime.operation)
-	|| is_set(bgppeerinupdates.operation)
-	|| is_set(bgppeerkeepalive.operation)
-	|| is_set(bgppeerkeepaliveconfigured.operation)
-	|| is_set(bgppeerlasterror.operation)
-	|| is_set(bgppeerlocaladdr.operation)
-	|| is_set(bgppeerlocalport.operation)
-	|| is_set(bgppeerminasoriginationinterval.operation)
-	|| is_set(bgppeerminrouteadvertisementinterval.operation)
-	|| is_set(bgppeernegotiatedversion.operation)
-	|| is_set(bgppeerouttotalmessages.operation)
-	|| is_set(bgppeeroutupdates.operation)
-	|| is_set(bgppeerremoteas.operation)
-	|| is_set(bgppeerremoteport.operation)
-	|| is_set(bgppeerstate.operation)
-	|| is_set(cbgppeerlasterrortxt.operation)
-	|| is_set(cbgppeerprefixaccepted.operation)
-	|| is_set(cbgppeerprefixadvertised.operation)
-	|| is_set(cbgppeerprefixdenied.operation)
-	|| is_set(cbgppeerprefixlimit.operation)
-	|| is_set(cbgppeerprefixsuppressed.operation)
-	|| is_set(cbgppeerprefixwithdrawn.operation)
-	|| is_set(cbgppeerprevstate.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bgppeerremoteaddr.yfilter)
+	|| ydk::is_set(bgppeeradminstatus.yfilter)
+	|| ydk::is_set(bgppeerconnectretryinterval.yfilter)
+	|| ydk::is_set(bgppeerfsmestablishedtime.yfilter)
+	|| ydk::is_set(bgppeerfsmestablishedtransitions.yfilter)
+	|| ydk::is_set(bgppeerholdtime.yfilter)
+	|| ydk::is_set(bgppeerholdtimeconfigured.yfilter)
+	|| ydk::is_set(bgppeeridentifier.yfilter)
+	|| ydk::is_set(bgppeerintotalmessages.yfilter)
+	|| ydk::is_set(bgppeerinupdateelapsedtime.yfilter)
+	|| ydk::is_set(bgppeerinupdates.yfilter)
+	|| ydk::is_set(bgppeerkeepalive.yfilter)
+	|| ydk::is_set(bgppeerkeepaliveconfigured.yfilter)
+	|| ydk::is_set(bgppeerlasterror.yfilter)
+	|| ydk::is_set(bgppeerlocaladdr.yfilter)
+	|| ydk::is_set(bgppeerlocalport.yfilter)
+	|| ydk::is_set(bgppeerminasoriginationinterval.yfilter)
+	|| ydk::is_set(bgppeerminrouteadvertisementinterval.yfilter)
+	|| ydk::is_set(bgppeernegotiatedversion.yfilter)
+	|| ydk::is_set(bgppeerouttotalmessages.yfilter)
+	|| ydk::is_set(bgppeeroutupdates.yfilter)
+	|| ydk::is_set(bgppeerremoteas.yfilter)
+	|| ydk::is_set(bgppeerremoteport.yfilter)
+	|| ydk::is_set(bgppeerstate.yfilter)
+	|| ydk::is_set(cbgppeerlasterrortxt.yfilter)
+	|| ydk::is_set(cbgppeerprefixaccepted.yfilter)
+	|| ydk::is_set(cbgppeerprefixadvertised.yfilter)
+	|| ydk::is_set(cbgppeerprefixdenied.yfilter)
+	|| ydk::is_set(cbgppeerprefixlimit.yfilter)
+	|| ydk::is_set(cbgppeerprefixsuppressed.yfilter)
+	|| ydk::is_set(cbgppeerprefixwithdrawn.yfilter)
+	|| ydk::is_set(cbgppeerprevstate.yfilter);
 }
 
 std::string Bgp4Mib::Bgppeertable::Bgppeerentry::get_segment_path() const
@@ -487,38 +545,38 @@ const EntityPath Bgp4Mib::Bgppeertable::Bgppeerentry::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bgppeerremoteaddr.is_set || is_set(bgppeerremoteaddr.operation)) leaf_name_data.push_back(bgppeerremoteaddr.get_name_leafdata());
-    if (bgppeeradminstatus.is_set || is_set(bgppeeradminstatus.operation)) leaf_name_data.push_back(bgppeeradminstatus.get_name_leafdata());
-    if (bgppeerconnectretryinterval.is_set || is_set(bgppeerconnectretryinterval.operation)) leaf_name_data.push_back(bgppeerconnectretryinterval.get_name_leafdata());
-    if (bgppeerfsmestablishedtime.is_set || is_set(bgppeerfsmestablishedtime.operation)) leaf_name_data.push_back(bgppeerfsmestablishedtime.get_name_leafdata());
-    if (bgppeerfsmestablishedtransitions.is_set || is_set(bgppeerfsmestablishedtransitions.operation)) leaf_name_data.push_back(bgppeerfsmestablishedtransitions.get_name_leafdata());
-    if (bgppeerholdtime.is_set || is_set(bgppeerholdtime.operation)) leaf_name_data.push_back(bgppeerholdtime.get_name_leafdata());
-    if (bgppeerholdtimeconfigured.is_set || is_set(bgppeerholdtimeconfigured.operation)) leaf_name_data.push_back(bgppeerholdtimeconfigured.get_name_leafdata());
-    if (bgppeeridentifier.is_set || is_set(bgppeeridentifier.operation)) leaf_name_data.push_back(bgppeeridentifier.get_name_leafdata());
-    if (bgppeerintotalmessages.is_set || is_set(bgppeerintotalmessages.operation)) leaf_name_data.push_back(bgppeerintotalmessages.get_name_leafdata());
-    if (bgppeerinupdateelapsedtime.is_set || is_set(bgppeerinupdateelapsedtime.operation)) leaf_name_data.push_back(bgppeerinupdateelapsedtime.get_name_leafdata());
-    if (bgppeerinupdates.is_set || is_set(bgppeerinupdates.operation)) leaf_name_data.push_back(bgppeerinupdates.get_name_leafdata());
-    if (bgppeerkeepalive.is_set || is_set(bgppeerkeepalive.operation)) leaf_name_data.push_back(bgppeerkeepalive.get_name_leafdata());
-    if (bgppeerkeepaliveconfigured.is_set || is_set(bgppeerkeepaliveconfigured.operation)) leaf_name_data.push_back(bgppeerkeepaliveconfigured.get_name_leafdata());
-    if (bgppeerlasterror.is_set || is_set(bgppeerlasterror.operation)) leaf_name_data.push_back(bgppeerlasterror.get_name_leafdata());
-    if (bgppeerlocaladdr.is_set || is_set(bgppeerlocaladdr.operation)) leaf_name_data.push_back(bgppeerlocaladdr.get_name_leafdata());
-    if (bgppeerlocalport.is_set || is_set(bgppeerlocalport.operation)) leaf_name_data.push_back(bgppeerlocalport.get_name_leafdata());
-    if (bgppeerminasoriginationinterval.is_set || is_set(bgppeerminasoriginationinterval.operation)) leaf_name_data.push_back(bgppeerminasoriginationinterval.get_name_leafdata());
-    if (bgppeerminrouteadvertisementinterval.is_set || is_set(bgppeerminrouteadvertisementinterval.operation)) leaf_name_data.push_back(bgppeerminrouteadvertisementinterval.get_name_leafdata());
-    if (bgppeernegotiatedversion.is_set || is_set(bgppeernegotiatedversion.operation)) leaf_name_data.push_back(bgppeernegotiatedversion.get_name_leafdata());
-    if (bgppeerouttotalmessages.is_set || is_set(bgppeerouttotalmessages.operation)) leaf_name_data.push_back(bgppeerouttotalmessages.get_name_leafdata());
-    if (bgppeeroutupdates.is_set || is_set(bgppeeroutupdates.operation)) leaf_name_data.push_back(bgppeeroutupdates.get_name_leafdata());
-    if (bgppeerremoteas.is_set || is_set(bgppeerremoteas.operation)) leaf_name_data.push_back(bgppeerremoteas.get_name_leafdata());
-    if (bgppeerremoteport.is_set || is_set(bgppeerremoteport.operation)) leaf_name_data.push_back(bgppeerremoteport.get_name_leafdata());
-    if (bgppeerstate.is_set || is_set(bgppeerstate.operation)) leaf_name_data.push_back(bgppeerstate.get_name_leafdata());
-    if (cbgppeerlasterrortxt.is_set || is_set(cbgppeerlasterrortxt.operation)) leaf_name_data.push_back(cbgppeerlasterrortxt.get_name_leafdata());
-    if (cbgppeerprefixaccepted.is_set || is_set(cbgppeerprefixaccepted.operation)) leaf_name_data.push_back(cbgppeerprefixaccepted.get_name_leafdata());
-    if (cbgppeerprefixadvertised.is_set || is_set(cbgppeerprefixadvertised.operation)) leaf_name_data.push_back(cbgppeerprefixadvertised.get_name_leafdata());
-    if (cbgppeerprefixdenied.is_set || is_set(cbgppeerprefixdenied.operation)) leaf_name_data.push_back(cbgppeerprefixdenied.get_name_leafdata());
-    if (cbgppeerprefixlimit.is_set || is_set(cbgppeerprefixlimit.operation)) leaf_name_data.push_back(cbgppeerprefixlimit.get_name_leafdata());
-    if (cbgppeerprefixsuppressed.is_set || is_set(cbgppeerprefixsuppressed.operation)) leaf_name_data.push_back(cbgppeerprefixsuppressed.get_name_leafdata());
-    if (cbgppeerprefixwithdrawn.is_set || is_set(cbgppeerprefixwithdrawn.operation)) leaf_name_data.push_back(cbgppeerprefixwithdrawn.get_name_leafdata());
-    if (cbgppeerprevstate.is_set || is_set(cbgppeerprevstate.operation)) leaf_name_data.push_back(cbgppeerprevstate.get_name_leafdata());
+    if (bgppeerremoteaddr.is_set || is_set(bgppeerremoteaddr.yfilter)) leaf_name_data.push_back(bgppeerremoteaddr.get_name_leafdata());
+    if (bgppeeradminstatus.is_set || is_set(bgppeeradminstatus.yfilter)) leaf_name_data.push_back(bgppeeradminstatus.get_name_leafdata());
+    if (bgppeerconnectretryinterval.is_set || is_set(bgppeerconnectretryinterval.yfilter)) leaf_name_data.push_back(bgppeerconnectretryinterval.get_name_leafdata());
+    if (bgppeerfsmestablishedtime.is_set || is_set(bgppeerfsmestablishedtime.yfilter)) leaf_name_data.push_back(bgppeerfsmestablishedtime.get_name_leafdata());
+    if (bgppeerfsmestablishedtransitions.is_set || is_set(bgppeerfsmestablishedtransitions.yfilter)) leaf_name_data.push_back(bgppeerfsmestablishedtransitions.get_name_leafdata());
+    if (bgppeerholdtime.is_set || is_set(bgppeerholdtime.yfilter)) leaf_name_data.push_back(bgppeerholdtime.get_name_leafdata());
+    if (bgppeerholdtimeconfigured.is_set || is_set(bgppeerholdtimeconfigured.yfilter)) leaf_name_data.push_back(bgppeerholdtimeconfigured.get_name_leafdata());
+    if (bgppeeridentifier.is_set || is_set(bgppeeridentifier.yfilter)) leaf_name_data.push_back(bgppeeridentifier.get_name_leafdata());
+    if (bgppeerintotalmessages.is_set || is_set(bgppeerintotalmessages.yfilter)) leaf_name_data.push_back(bgppeerintotalmessages.get_name_leafdata());
+    if (bgppeerinupdateelapsedtime.is_set || is_set(bgppeerinupdateelapsedtime.yfilter)) leaf_name_data.push_back(bgppeerinupdateelapsedtime.get_name_leafdata());
+    if (bgppeerinupdates.is_set || is_set(bgppeerinupdates.yfilter)) leaf_name_data.push_back(bgppeerinupdates.get_name_leafdata());
+    if (bgppeerkeepalive.is_set || is_set(bgppeerkeepalive.yfilter)) leaf_name_data.push_back(bgppeerkeepalive.get_name_leafdata());
+    if (bgppeerkeepaliveconfigured.is_set || is_set(bgppeerkeepaliveconfigured.yfilter)) leaf_name_data.push_back(bgppeerkeepaliveconfigured.get_name_leafdata());
+    if (bgppeerlasterror.is_set || is_set(bgppeerlasterror.yfilter)) leaf_name_data.push_back(bgppeerlasterror.get_name_leafdata());
+    if (bgppeerlocaladdr.is_set || is_set(bgppeerlocaladdr.yfilter)) leaf_name_data.push_back(bgppeerlocaladdr.get_name_leafdata());
+    if (bgppeerlocalport.is_set || is_set(bgppeerlocalport.yfilter)) leaf_name_data.push_back(bgppeerlocalport.get_name_leafdata());
+    if (bgppeerminasoriginationinterval.is_set || is_set(bgppeerminasoriginationinterval.yfilter)) leaf_name_data.push_back(bgppeerminasoriginationinterval.get_name_leafdata());
+    if (bgppeerminrouteadvertisementinterval.is_set || is_set(bgppeerminrouteadvertisementinterval.yfilter)) leaf_name_data.push_back(bgppeerminrouteadvertisementinterval.get_name_leafdata());
+    if (bgppeernegotiatedversion.is_set || is_set(bgppeernegotiatedversion.yfilter)) leaf_name_data.push_back(bgppeernegotiatedversion.get_name_leafdata());
+    if (bgppeerouttotalmessages.is_set || is_set(bgppeerouttotalmessages.yfilter)) leaf_name_data.push_back(bgppeerouttotalmessages.get_name_leafdata());
+    if (bgppeeroutupdates.is_set || is_set(bgppeeroutupdates.yfilter)) leaf_name_data.push_back(bgppeeroutupdates.get_name_leafdata());
+    if (bgppeerremoteas.is_set || is_set(bgppeerremoteas.yfilter)) leaf_name_data.push_back(bgppeerremoteas.get_name_leafdata());
+    if (bgppeerremoteport.is_set || is_set(bgppeerremoteport.yfilter)) leaf_name_data.push_back(bgppeerremoteport.get_name_leafdata());
+    if (bgppeerstate.is_set || is_set(bgppeerstate.yfilter)) leaf_name_data.push_back(bgppeerstate.get_name_leafdata());
+    if (cbgppeerlasterrortxt.is_set || is_set(cbgppeerlasterrortxt.yfilter)) leaf_name_data.push_back(cbgppeerlasterrortxt.get_name_leafdata());
+    if (cbgppeerprefixaccepted.is_set || is_set(cbgppeerprefixaccepted.yfilter)) leaf_name_data.push_back(cbgppeerprefixaccepted.get_name_leafdata());
+    if (cbgppeerprefixadvertised.is_set || is_set(cbgppeerprefixadvertised.yfilter)) leaf_name_data.push_back(cbgppeerprefixadvertised.get_name_leafdata());
+    if (cbgppeerprefixdenied.is_set || is_set(cbgppeerprefixdenied.yfilter)) leaf_name_data.push_back(cbgppeerprefixdenied.get_name_leafdata());
+    if (cbgppeerprefixlimit.is_set || is_set(cbgppeerprefixlimit.yfilter)) leaf_name_data.push_back(cbgppeerprefixlimit.get_name_leafdata());
+    if (cbgppeerprefixsuppressed.is_set || is_set(cbgppeerprefixsuppressed.yfilter)) leaf_name_data.push_back(cbgppeerprefixsuppressed.get_name_leafdata());
+    if (cbgppeerprefixwithdrawn.is_set || is_set(cbgppeerprefixwithdrawn.yfilter)) leaf_name_data.push_back(cbgppeerprefixwithdrawn.get_name_leafdata());
+    if (cbgppeerprevstate.is_set || is_set(cbgppeerprevstate.yfilter)) leaf_name_data.push_back(cbgppeerprevstate.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -537,136 +595,339 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgppeertable::Bgppeerent
     return children;
 }
 
-void Bgp4Mib::Bgppeertable::Bgppeerentry::set_value(const std::string & value_path, std::string value)
+void Bgp4Mib::Bgppeertable::Bgppeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgpPeerRemoteAddr")
     {
         bgppeerremoteaddr = value;
+        bgppeerremoteaddr.value_namespace = name_space;
+        bgppeerremoteaddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerAdminStatus")
     {
         bgppeeradminstatus = value;
+        bgppeeradminstatus.value_namespace = name_space;
+        bgppeeradminstatus.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerConnectRetryInterval")
     {
         bgppeerconnectretryinterval = value;
+        bgppeerconnectretryinterval.value_namespace = name_space;
+        bgppeerconnectretryinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerFsmEstablishedTime")
     {
         bgppeerfsmestablishedtime = value;
+        bgppeerfsmestablishedtime.value_namespace = name_space;
+        bgppeerfsmestablishedtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerFsmEstablishedTransitions")
     {
         bgppeerfsmestablishedtransitions = value;
+        bgppeerfsmestablishedtransitions.value_namespace = name_space;
+        bgppeerfsmestablishedtransitions.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerHoldTime")
     {
         bgppeerholdtime = value;
+        bgppeerholdtime.value_namespace = name_space;
+        bgppeerholdtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerHoldTimeConfigured")
     {
         bgppeerholdtimeconfigured = value;
+        bgppeerholdtimeconfigured.value_namespace = name_space;
+        bgppeerholdtimeconfigured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerIdentifier")
     {
         bgppeeridentifier = value;
+        bgppeeridentifier.value_namespace = name_space;
+        bgppeeridentifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerInTotalMessages")
     {
         bgppeerintotalmessages = value;
+        bgppeerintotalmessages.value_namespace = name_space;
+        bgppeerintotalmessages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerInUpdateElapsedTime")
     {
         bgppeerinupdateelapsedtime = value;
+        bgppeerinupdateelapsedtime.value_namespace = name_space;
+        bgppeerinupdateelapsedtime.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerInUpdates")
     {
         bgppeerinupdates = value;
+        bgppeerinupdates.value_namespace = name_space;
+        bgppeerinupdates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerKeepAlive")
     {
         bgppeerkeepalive = value;
+        bgppeerkeepalive.value_namespace = name_space;
+        bgppeerkeepalive.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerKeepAliveConfigured")
     {
         bgppeerkeepaliveconfigured = value;
+        bgppeerkeepaliveconfigured.value_namespace = name_space;
+        bgppeerkeepaliveconfigured.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerLastError")
     {
         bgppeerlasterror = value;
+        bgppeerlasterror.value_namespace = name_space;
+        bgppeerlasterror.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerLocalAddr")
     {
         bgppeerlocaladdr = value;
+        bgppeerlocaladdr.value_namespace = name_space;
+        bgppeerlocaladdr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerLocalPort")
     {
         bgppeerlocalport = value;
+        bgppeerlocalport.value_namespace = name_space;
+        bgppeerlocalport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerMinASOriginationInterval")
     {
         bgppeerminasoriginationinterval = value;
+        bgppeerminasoriginationinterval.value_namespace = name_space;
+        bgppeerminasoriginationinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerMinRouteAdvertisementInterval")
     {
         bgppeerminrouteadvertisementinterval = value;
+        bgppeerminrouteadvertisementinterval.value_namespace = name_space;
+        bgppeerminrouteadvertisementinterval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerNegotiatedVersion")
     {
         bgppeernegotiatedversion = value;
+        bgppeernegotiatedversion.value_namespace = name_space;
+        bgppeernegotiatedversion.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerOutTotalMessages")
     {
         bgppeerouttotalmessages = value;
+        bgppeerouttotalmessages.value_namespace = name_space;
+        bgppeerouttotalmessages.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerOutUpdates")
     {
         bgppeeroutupdates = value;
+        bgppeeroutupdates.value_namespace = name_space;
+        bgppeeroutupdates.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerRemoteAs")
     {
         bgppeerremoteas = value;
+        bgppeerremoteas.value_namespace = name_space;
+        bgppeerremoteas.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerRemotePort")
     {
         bgppeerremoteport = value;
+        bgppeerremoteport.value_namespace = name_space;
+        bgppeerremoteport.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPeerState")
     {
         bgppeerstate = value;
+        bgppeerstate.value_namespace = name_space;
+        bgppeerstate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbgpPeerLastErrorTxt")
     {
         cbgppeerlasterrortxt = value;
+        cbgppeerlasterrortxt.value_namespace = name_space;
+        cbgppeerlasterrortxt.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbgpPeerPrefixAccepted")
     {
         cbgppeerprefixaccepted = value;
+        cbgppeerprefixaccepted.value_namespace = name_space;
+        cbgppeerprefixaccepted.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbgpPeerPrefixAdvertised")
     {
         cbgppeerprefixadvertised = value;
+        cbgppeerprefixadvertised.value_namespace = name_space;
+        cbgppeerprefixadvertised.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbgpPeerPrefixDenied")
     {
         cbgppeerprefixdenied = value;
+        cbgppeerprefixdenied.value_namespace = name_space;
+        cbgppeerprefixdenied.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbgpPeerPrefixLimit")
     {
         cbgppeerprefixlimit = value;
+        cbgppeerprefixlimit.value_namespace = name_space;
+        cbgppeerprefixlimit.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbgpPeerPrefixSuppressed")
     {
         cbgppeerprefixsuppressed = value;
+        cbgppeerprefixsuppressed.value_namespace = name_space;
+        cbgppeerprefixsuppressed.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbgpPeerPrefixWithdrawn")
     {
         cbgppeerprefixwithdrawn = value;
+        cbgppeerprefixwithdrawn.value_namespace = name_space;
+        cbgppeerprefixwithdrawn.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "cbgpPeerPrevState")
     {
         cbgppeerprevstate = value;
+        cbgppeerprevstate.value_namespace = name_space;
+        cbgppeerprevstate.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp4Mib::Bgppeertable::Bgppeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bgpPeerRemoteAddr")
+    {
+        bgppeerremoteaddr.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerAdminStatus")
+    {
+        bgppeeradminstatus.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerConnectRetryInterval")
+    {
+        bgppeerconnectretryinterval.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerFsmEstablishedTime")
+    {
+        bgppeerfsmestablishedtime.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerFsmEstablishedTransitions")
+    {
+        bgppeerfsmestablishedtransitions.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerHoldTime")
+    {
+        bgppeerholdtime.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerHoldTimeConfigured")
+    {
+        bgppeerholdtimeconfigured.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerIdentifier")
+    {
+        bgppeeridentifier.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerInTotalMessages")
+    {
+        bgppeerintotalmessages.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerInUpdateElapsedTime")
+    {
+        bgppeerinupdateelapsedtime.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerInUpdates")
+    {
+        bgppeerinupdates.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerKeepAlive")
+    {
+        bgppeerkeepalive.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerKeepAliveConfigured")
+    {
+        bgppeerkeepaliveconfigured.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerLastError")
+    {
+        bgppeerlasterror.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerLocalAddr")
+    {
+        bgppeerlocaladdr.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerLocalPort")
+    {
+        bgppeerlocalport.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerMinASOriginationInterval")
+    {
+        bgppeerminasoriginationinterval.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerMinRouteAdvertisementInterval")
+    {
+        bgppeerminrouteadvertisementinterval.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerNegotiatedVersion")
+    {
+        bgppeernegotiatedversion.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerOutTotalMessages")
+    {
+        bgppeerouttotalmessages.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerOutUpdates")
+    {
+        bgppeeroutupdates.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerRemoteAs")
+    {
+        bgppeerremoteas.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerRemotePort")
+    {
+        bgppeerremoteport.yfilter = yfilter;
+    }
+    if(value_path == "bgpPeerState")
+    {
+        bgppeerstate.yfilter = yfilter;
+    }
+    if(value_path == "cbgpPeerLastErrorTxt")
+    {
+        cbgppeerlasterrortxt.yfilter = yfilter;
+    }
+    if(value_path == "cbgpPeerPrefixAccepted")
+    {
+        cbgppeerprefixaccepted.yfilter = yfilter;
+    }
+    if(value_path == "cbgpPeerPrefixAdvertised")
+    {
+        cbgppeerprefixadvertised.yfilter = yfilter;
+    }
+    if(value_path == "cbgpPeerPrefixDenied")
+    {
+        cbgppeerprefixdenied.yfilter = yfilter;
+    }
+    if(value_path == "cbgpPeerPrefixLimit")
+    {
+        cbgppeerprefixlimit.yfilter = yfilter;
+    }
+    if(value_path == "cbgpPeerPrefixSuppressed")
+    {
+        cbgppeerprefixsuppressed.yfilter = yfilter;
+    }
+    if(value_path == "cbgpPeerPrefixWithdrawn")
+    {
+        cbgppeerprefixwithdrawn.yfilter = yfilter;
+    }
+    if(value_path == "cbgpPeerPrevState")
+    {
+        cbgppeerprevstate.yfilter = yfilter;
+    }
+}
+
+bool Bgp4Mib::Bgppeertable::Bgppeerentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgpPeerRemoteAddr" || name == "bgpPeerAdminStatus" || name == "bgpPeerConnectRetryInterval" || name == "bgpPeerFsmEstablishedTime" || name == "bgpPeerFsmEstablishedTransitions" || name == "bgpPeerHoldTime" || name == "bgpPeerHoldTimeConfigured" || name == "bgpPeerIdentifier" || name == "bgpPeerInTotalMessages" || name == "bgpPeerInUpdateElapsedTime" || name == "bgpPeerInUpdates" || name == "bgpPeerKeepAlive" || name == "bgpPeerKeepAliveConfigured" || name == "bgpPeerLastError" || name == "bgpPeerLocalAddr" || name == "bgpPeerLocalPort" || name == "bgpPeerMinASOriginationInterval" || name == "bgpPeerMinRouteAdvertisementInterval" || name == "bgpPeerNegotiatedVersion" || name == "bgpPeerOutTotalMessages" || name == "bgpPeerOutUpdates" || name == "bgpPeerRemoteAs" || name == "bgpPeerRemotePort" || name == "bgpPeerState" || name == "cbgpPeerLastErrorTxt" || name == "cbgpPeerPrefixAccepted" || name == "cbgpPeerPrefixAdvertised" || name == "cbgpPeerPrefixDenied" || name == "cbgpPeerPrefixLimit" || name == "cbgpPeerPrefixSuppressed" || name == "cbgpPeerPrefixWithdrawn" || name == "cbgpPeerPrevState")
+        return true;
+    return false;
 }
 
 Bgp4Mib::Bgprcvdpathattrtable::Bgprcvdpathattrtable()
@@ -680,9 +941,9 @@ Bgp4Mib::Bgprcvdpathattrtable::~Bgprcvdpathattrtable()
 
 bool Bgp4Mib::Bgprcvdpathattrtable::has_data() const
 {
-    for (std::size_t index=0; index<bgppathattrentry_.size(); index++)
+    for (std::size_t index=0; index<bgppathattrentry.size(); index++)
     {
-        if(bgppathattrentry_[index]->has_data())
+        if(bgppathattrentry[index]->has_data())
             return true;
     }
     return false;
@@ -690,12 +951,12 @@ bool Bgp4Mib::Bgprcvdpathattrtable::has_data() const
 
 bool Bgp4Mib::Bgprcvdpathattrtable::has_operation() const
 {
-    for (std::size_t index=0; index<bgppathattrentry_.size(); index++)
+    for (std::size_t index=0; index<bgppathattrentry.size(); index++)
     {
-        if(bgppathattrentry_[index]->has_operation())
+        if(bgppathattrentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bgp4Mib::Bgprcvdpathattrtable::get_segment_path() const
@@ -732,7 +993,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgprcvdpathattrtable::get_child_by_name(const s
 {
     if(child_yang_name == "bgpPathAttrEntry")
     {
-        for(auto const & c : bgppathattrentry_)
+        for(auto const & c : bgppathattrentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -742,7 +1003,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgprcvdpathattrtable::get_child_by_name(const s
         }
         auto c = std::make_shared<Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry>();
         c->parent = this;
-        bgppathattrentry_.push_back(c);
+        bgppathattrentry.push_back(c);
         return c;
     }
 
@@ -752,7 +1013,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgprcvdpathattrtable::get_child_by_name(const s
 std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgprcvdpathattrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bgppathattrentry_)
+    for (auto const & c : bgppathattrentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -760,8 +1021,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgprcvdpathattrtable::ge
     return children;
 }
 
-void Bgp4Mib::Bgprcvdpathattrtable::set_value(const std::string & value_path, std::string value)
+void Bgp4Mib::Bgprcvdpathattrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp4Mib::Bgprcvdpathattrtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp4Mib::Bgprcvdpathattrtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgpPathAttrEntry")
+        return true;
+    return false;
 }
 
 Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrentry()
@@ -792,13 +1064,13 @@ bool Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::has_data() const
 
 bool Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bgppathattrdestnetwork.operation)
-	|| is_set(bgppathattrpeer.operation)
-	|| is_set(bgppathattraspath.operation)
-	|| is_set(bgppathattrinterasmetric.operation)
-	|| is_set(bgppathattrnexthop.operation)
-	|| is_set(bgppathattrorigin.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bgppathattrdestnetwork.yfilter)
+	|| ydk::is_set(bgppathattrpeer.yfilter)
+	|| ydk::is_set(bgppathattraspath.yfilter)
+	|| ydk::is_set(bgppathattrinterasmetric.yfilter)
+	|| ydk::is_set(bgppathattrnexthop.yfilter)
+	|| ydk::is_set(bgppathattrorigin.yfilter);
 }
 
 std::string Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::get_segment_path() const
@@ -824,12 +1096,12 @@ const EntityPath Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bgppathattrdestnetwork.is_set || is_set(bgppathattrdestnetwork.operation)) leaf_name_data.push_back(bgppathattrdestnetwork.get_name_leafdata());
-    if (bgppathattrpeer.is_set || is_set(bgppathattrpeer.operation)) leaf_name_data.push_back(bgppathattrpeer.get_name_leafdata());
-    if (bgppathattraspath.is_set || is_set(bgppathattraspath.operation)) leaf_name_data.push_back(bgppathattraspath.get_name_leafdata());
-    if (bgppathattrinterasmetric.is_set || is_set(bgppathattrinterasmetric.operation)) leaf_name_data.push_back(bgppathattrinterasmetric.get_name_leafdata());
-    if (bgppathattrnexthop.is_set || is_set(bgppathattrnexthop.operation)) leaf_name_data.push_back(bgppathattrnexthop.get_name_leafdata());
-    if (bgppathattrorigin.is_set || is_set(bgppathattrorigin.operation)) leaf_name_data.push_back(bgppathattrorigin.get_name_leafdata());
+    if (bgppathattrdestnetwork.is_set || is_set(bgppathattrdestnetwork.yfilter)) leaf_name_data.push_back(bgppathattrdestnetwork.get_name_leafdata());
+    if (bgppathattrpeer.is_set || is_set(bgppathattrpeer.yfilter)) leaf_name_data.push_back(bgppathattrpeer.get_name_leafdata());
+    if (bgppathattraspath.is_set || is_set(bgppathattraspath.yfilter)) leaf_name_data.push_back(bgppathattraspath.get_name_leafdata());
+    if (bgppathattrinterasmetric.is_set || is_set(bgppathattrinterasmetric.yfilter)) leaf_name_data.push_back(bgppathattrinterasmetric.get_name_leafdata());
+    if (bgppathattrnexthop.is_set || is_set(bgppathattrnexthop.yfilter)) leaf_name_data.push_back(bgppathattrnexthop.get_name_leafdata());
+    if (bgppathattrorigin.is_set || is_set(bgppathattrorigin.yfilter)) leaf_name_data.push_back(bgppathattrorigin.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -848,32 +1120,79 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgprcvdpathattrtable::Bg
     return children;
 }
 
-void Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::set_value(const std::string & value_path, std::string value)
+void Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgpPathAttrDestNetwork")
     {
         bgppathattrdestnetwork = value;
+        bgppathattrdestnetwork.value_namespace = name_space;
+        bgppathattrdestnetwork.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPathAttrPeer")
     {
         bgppathattrpeer = value;
+        bgppathattrpeer.value_namespace = name_space;
+        bgppathattrpeer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPathAttrASPath")
     {
         bgppathattraspath = value;
+        bgppathattraspath.value_namespace = name_space;
+        bgppathattraspath.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPathAttrInterASMetric")
     {
         bgppathattrinterasmetric = value;
+        bgppathattrinterasmetric.value_namespace = name_space;
+        bgppathattrinterasmetric.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPathAttrNextHop")
     {
         bgppathattrnexthop = value;
+        bgppathattrnexthop.value_namespace = name_space;
+        bgppathattrnexthop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgpPathAttrOrigin")
     {
         bgppathattrorigin = value;
+        bgppathattrorigin.value_namespace = name_space;
+        bgppathattrorigin.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bgpPathAttrDestNetwork")
+    {
+        bgppathattrdestnetwork.yfilter = yfilter;
+    }
+    if(value_path == "bgpPathAttrPeer")
+    {
+        bgppathattrpeer.yfilter = yfilter;
+    }
+    if(value_path == "bgpPathAttrASPath")
+    {
+        bgppathattraspath.yfilter = yfilter;
+    }
+    if(value_path == "bgpPathAttrInterASMetric")
+    {
+        bgppathattrinterasmetric.yfilter = yfilter;
+    }
+    if(value_path == "bgpPathAttrNextHop")
+    {
+        bgppathattrnexthop.yfilter = yfilter;
+    }
+    if(value_path == "bgpPathAttrOrigin")
+    {
+        bgppathattrorigin.yfilter = yfilter;
+    }
+}
+
+bool Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgpPathAttrDestNetwork" || name == "bgpPathAttrPeer" || name == "bgpPathAttrASPath" || name == "bgpPathAttrInterASMetric" || name == "bgpPathAttrNextHop" || name == "bgpPathAttrOrigin")
+        return true;
+    return false;
 }
 
 Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrtable()
@@ -887,9 +1206,9 @@ Bgp4Mib::Bgp4Pathattrtable::~Bgp4Pathattrtable()
 
 bool Bgp4Mib::Bgp4Pathattrtable::has_data() const
 {
-    for (std::size_t index=0; index<bgp4pathattrentry_.size(); index++)
+    for (std::size_t index=0; index<bgp4pathattrentry.size(); index++)
     {
-        if(bgp4pathattrentry_[index]->has_data())
+        if(bgp4pathattrentry[index]->has_data())
             return true;
     }
     return false;
@@ -897,12 +1216,12 @@ bool Bgp4Mib::Bgp4Pathattrtable::has_data() const
 
 bool Bgp4Mib::Bgp4Pathattrtable::has_operation() const
 {
-    for (std::size_t index=0; index<bgp4pathattrentry_.size(); index++)
+    for (std::size_t index=0; index<bgp4pathattrentry.size(); index++)
     {
-        if(bgp4pathattrentry_[index]->has_operation())
+        if(bgp4pathattrentry[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Bgp4Mib::Bgp4Pathattrtable::get_segment_path() const
@@ -939,7 +1258,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgp4Pathattrtable::get_child_by_name(const std:
 {
     if(child_yang_name == "bgp4PathAttrEntry")
     {
-        for(auto const & c : bgp4pathattrentry_)
+        for(auto const & c : bgp4pathattrentry)
         {
             std::string segment = c->get_segment_path();
             if(segment_path == segment)
@@ -949,7 +1268,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgp4Pathattrtable::get_child_by_name(const std:
         }
         auto c = std::make_shared<Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry>();
         c->parent = this;
-        bgp4pathattrentry_.push_back(c);
+        bgp4pathattrentry.push_back(c);
         return c;
     }
 
@@ -959,7 +1278,7 @@ std::shared_ptr<Entity> Bgp4Mib::Bgp4Pathattrtable::get_child_by_name(const std:
 std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgp4Pathattrtable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
-    for (auto const & c : bgp4pathattrentry_)
+    for (auto const & c : bgp4pathattrentry)
     {
         children[c->get_segment_path()] = c;
     }
@@ -967,8 +1286,19 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgp4Pathattrtable::get_c
     return children;
 }
 
-void Bgp4Mib::Bgp4Pathattrtable::set_value(const std::string & value_path, std::string value)
+void Bgp4Mib::Bgp4Pathattrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Bgp4Mib::Bgp4Pathattrtable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Bgp4Mib::Bgp4Pathattrtable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp4PathAttrEntry")
+        return true;
+    return false;
 }
 
 Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrentry()
@@ -1015,21 +1345,21 @@ bool Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::has_data() const
 
 bool Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bgp4pathattripaddrprefix.operation)
-	|| is_set(bgp4pathattripaddrprefixlen.operation)
-	|| is_set(bgp4pathattrpeer.operation)
-	|| is_set(bgp4pathattraggregatoraddr.operation)
-	|| is_set(bgp4pathattraggregatoras.operation)
-	|| is_set(bgp4pathattraspathsegment.operation)
-	|| is_set(bgp4pathattratomicaggregate.operation)
-	|| is_set(bgp4pathattrbest.operation)
-	|| is_set(bgp4pathattrcalclocalpref.operation)
-	|| is_set(bgp4pathattrlocalpref.operation)
-	|| is_set(bgp4pathattrmultiexitdisc.operation)
-	|| is_set(bgp4pathattrnexthop.operation)
-	|| is_set(bgp4pathattrorigin.operation)
-	|| is_set(bgp4pathattrunknown.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bgp4pathattripaddrprefix.yfilter)
+	|| ydk::is_set(bgp4pathattripaddrprefixlen.yfilter)
+	|| ydk::is_set(bgp4pathattrpeer.yfilter)
+	|| ydk::is_set(bgp4pathattraggregatoraddr.yfilter)
+	|| ydk::is_set(bgp4pathattraggregatoras.yfilter)
+	|| ydk::is_set(bgp4pathattraspathsegment.yfilter)
+	|| ydk::is_set(bgp4pathattratomicaggregate.yfilter)
+	|| ydk::is_set(bgp4pathattrbest.yfilter)
+	|| ydk::is_set(bgp4pathattrcalclocalpref.yfilter)
+	|| ydk::is_set(bgp4pathattrlocalpref.yfilter)
+	|| ydk::is_set(bgp4pathattrmultiexitdisc.yfilter)
+	|| ydk::is_set(bgp4pathattrnexthop.yfilter)
+	|| ydk::is_set(bgp4pathattrorigin.yfilter)
+	|| ydk::is_set(bgp4pathattrunknown.yfilter);
 }
 
 std::string Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::get_segment_path() const
@@ -1055,20 +1385,20 @@ const EntityPath Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::get_entity_path(
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bgp4pathattripaddrprefix.is_set || is_set(bgp4pathattripaddrprefix.operation)) leaf_name_data.push_back(bgp4pathattripaddrprefix.get_name_leafdata());
-    if (bgp4pathattripaddrprefixlen.is_set || is_set(bgp4pathattripaddrprefixlen.operation)) leaf_name_data.push_back(bgp4pathattripaddrprefixlen.get_name_leafdata());
-    if (bgp4pathattrpeer.is_set || is_set(bgp4pathattrpeer.operation)) leaf_name_data.push_back(bgp4pathattrpeer.get_name_leafdata());
-    if (bgp4pathattraggregatoraddr.is_set || is_set(bgp4pathattraggregatoraddr.operation)) leaf_name_data.push_back(bgp4pathattraggregatoraddr.get_name_leafdata());
-    if (bgp4pathattraggregatoras.is_set || is_set(bgp4pathattraggregatoras.operation)) leaf_name_data.push_back(bgp4pathattraggregatoras.get_name_leafdata());
-    if (bgp4pathattraspathsegment.is_set || is_set(bgp4pathattraspathsegment.operation)) leaf_name_data.push_back(bgp4pathattraspathsegment.get_name_leafdata());
-    if (bgp4pathattratomicaggregate.is_set || is_set(bgp4pathattratomicaggregate.operation)) leaf_name_data.push_back(bgp4pathattratomicaggregate.get_name_leafdata());
-    if (bgp4pathattrbest.is_set || is_set(bgp4pathattrbest.operation)) leaf_name_data.push_back(bgp4pathattrbest.get_name_leafdata());
-    if (bgp4pathattrcalclocalpref.is_set || is_set(bgp4pathattrcalclocalpref.operation)) leaf_name_data.push_back(bgp4pathattrcalclocalpref.get_name_leafdata());
-    if (bgp4pathattrlocalpref.is_set || is_set(bgp4pathattrlocalpref.operation)) leaf_name_data.push_back(bgp4pathattrlocalpref.get_name_leafdata());
-    if (bgp4pathattrmultiexitdisc.is_set || is_set(bgp4pathattrmultiexitdisc.operation)) leaf_name_data.push_back(bgp4pathattrmultiexitdisc.get_name_leafdata());
-    if (bgp4pathattrnexthop.is_set || is_set(bgp4pathattrnexthop.operation)) leaf_name_data.push_back(bgp4pathattrnexthop.get_name_leafdata());
-    if (bgp4pathattrorigin.is_set || is_set(bgp4pathattrorigin.operation)) leaf_name_data.push_back(bgp4pathattrorigin.get_name_leafdata());
-    if (bgp4pathattrunknown.is_set || is_set(bgp4pathattrunknown.operation)) leaf_name_data.push_back(bgp4pathattrunknown.get_name_leafdata());
+    if (bgp4pathattripaddrprefix.is_set || is_set(bgp4pathattripaddrprefix.yfilter)) leaf_name_data.push_back(bgp4pathattripaddrprefix.get_name_leafdata());
+    if (bgp4pathattripaddrprefixlen.is_set || is_set(bgp4pathattripaddrprefixlen.yfilter)) leaf_name_data.push_back(bgp4pathattripaddrprefixlen.get_name_leafdata());
+    if (bgp4pathattrpeer.is_set || is_set(bgp4pathattrpeer.yfilter)) leaf_name_data.push_back(bgp4pathattrpeer.get_name_leafdata());
+    if (bgp4pathattraggregatoraddr.is_set || is_set(bgp4pathattraggregatoraddr.yfilter)) leaf_name_data.push_back(bgp4pathattraggregatoraddr.get_name_leafdata());
+    if (bgp4pathattraggregatoras.is_set || is_set(bgp4pathattraggregatoras.yfilter)) leaf_name_data.push_back(bgp4pathattraggregatoras.get_name_leafdata());
+    if (bgp4pathattraspathsegment.is_set || is_set(bgp4pathattraspathsegment.yfilter)) leaf_name_data.push_back(bgp4pathattraspathsegment.get_name_leafdata());
+    if (bgp4pathattratomicaggregate.is_set || is_set(bgp4pathattratomicaggregate.yfilter)) leaf_name_data.push_back(bgp4pathattratomicaggregate.get_name_leafdata());
+    if (bgp4pathattrbest.is_set || is_set(bgp4pathattrbest.yfilter)) leaf_name_data.push_back(bgp4pathattrbest.get_name_leafdata());
+    if (bgp4pathattrcalclocalpref.is_set || is_set(bgp4pathattrcalclocalpref.yfilter)) leaf_name_data.push_back(bgp4pathattrcalclocalpref.get_name_leafdata());
+    if (bgp4pathattrlocalpref.is_set || is_set(bgp4pathattrlocalpref.yfilter)) leaf_name_data.push_back(bgp4pathattrlocalpref.get_name_leafdata());
+    if (bgp4pathattrmultiexitdisc.is_set || is_set(bgp4pathattrmultiexitdisc.yfilter)) leaf_name_data.push_back(bgp4pathattrmultiexitdisc.get_name_leafdata());
+    if (bgp4pathattrnexthop.is_set || is_set(bgp4pathattrnexthop.yfilter)) leaf_name_data.push_back(bgp4pathattrnexthop.get_name_leafdata());
+    if (bgp4pathattrorigin.is_set || is_set(bgp4pathattrorigin.yfilter)) leaf_name_data.push_back(bgp4pathattrorigin.get_name_leafdata());
+    if (bgp4pathattrunknown.is_set || is_set(bgp4pathattrunknown.yfilter)) leaf_name_data.push_back(bgp4pathattrunknown.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1087,97 +1417,192 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp4Mib::Bgp4Pathattrtable::Bgp4P
     return children;
 }
 
-void Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::set_value(const std::string & value_path, std::string value)
+void Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgp4PathAttrIpAddrPrefix")
     {
         bgp4pathattripaddrprefix = value;
+        bgp4pathattripaddrprefix.value_namespace = name_space;
+        bgp4pathattripaddrprefix.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrIpAddrPrefixLen")
     {
         bgp4pathattripaddrprefixlen = value;
+        bgp4pathattripaddrprefixlen.value_namespace = name_space;
+        bgp4pathattripaddrprefixlen.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrPeer")
     {
         bgp4pathattrpeer = value;
+        bgp4pathattrpeer.value_namespace = name_space;
+        bgp4pathattrpeer.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrAggregatorAddr")
     {
         bgp4pathattraggregatoraddr = value;
+        bgp4pathattraggregatoraddr.value_namespace = name_space;
+        bgp4pathattraggregatoraddr.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrAggregatorAS")
     {
         bgp4pathattraggregatoras = value;
+        bgp4pathattraggregatoras.value_namespace = name_space;
+        bgp4pathattraggregatoras.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrASPathSegment")
     {
         bgp4pathattraspathsegment = value;
+        bgp4pathattraspathsegment.value_namespace = name_space;
+        bgp4pathattraspathsegment.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrAtomicAggregate")
     {
         bgp4pathattratomicaggregate = value;
+        bgp4pathattratomicaggregate.value_namespace = name_space;
+        bgp4pathattratomicaggregate.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrBest")
     {
         bgp4pathattrbest = value;
+        bgp4pathattrbest.value_namespace = name_space;
+        bgp4pathattrbest.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrCalcLocalPref")
     {
         bgp4pathattrcalclocalpref = value;
+        bgp4pathattrcalclocalpref.value_namespace = name_space;
+        bgp4pathattrcalclocalpref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrLocalPref")
     {
         bgp4pathattrlocalpref = value;
+        bgp4pathattrlocalpref.value_namespace = name_space;
+        bgp4pathattrlocalpref.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrMultiExitDisc")
     {
         bgp4pathattrmultiexitdisc = value;
+        bgp4pathattrmultiexitdisc.value_namespace = name_space;
+        bgp4pathattrmultiexitdisc.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrNextHop")
     {
         bgp4pathattrnexthop = value;
+        bgp4pathattrnexthop.value_namespace = name_space;
+        bgp4pathattrnexthop.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrOrigin")
     {
         bgp4pathattrorigin = value;
+        bgp4pathattrorigin.value_namespace = name_space;
+        bgp4pathattrorigin.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "bgp4PathAttrUnknown")
     {
         bgp4pathattrunknown = value;
+        bgp4pathattrunknown.value_namespace = name_space;
+        bgp4pathattrunknown.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::BgppeerstateEnum::idle {1, "idle"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::BgppeerstateEnum::connect {2, "connect"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::BgppeerstateEnum::active {3, "active"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::BgppeerstateEnum::opensent {4, "opensent"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::BgppeerstateEnum::openconfirm {5, "openconfirm"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::BgppeerstateEnum::established {6, "established"};
+void Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bgp4PathAttrIpAddrPrefix")
+    {
+        bgp4pathattripaddrprefix.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrIpAddrPrefixLen")
+    {
+        bgp4pathattripaddrprefixlen.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrPeer")
+    {
+        bgp4pathattrpeer.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrAggregatorAddr")
+    {
+        bgp4pathattraggregatoraddr.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrAggregatorAS")
+    {
+        bgp4pathattraggregatoras.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrASPathSegment")
+    {
+        bgp4pathattraspathsegment.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrAtomicAggregate")
+    {
+        bgp4pathattratomicaggregate.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrBest")
+    {
+        bgp4pathattrbest.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrCalcLocalPref")
+    {
+        bgp4pathattrcalclocalpref.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrLocalPref")
+    {
+        bgp4pathattrlocalpref.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrMultiExitDisc")
+    {
+        bgp4pathattrmultiexitdisc.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrNextHop")
+    {
+        bgp4pathattrnexthop.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrOrigin")
+    {
+        bgp4pathattrorigin.yfilter = yfilter;
+    }
+    if(value_path == "bgp4PathAttrUnknown")
+    {
+        bgp4pathattrunknown.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::BgppeeradminstatusEnum::stop {1, "stop"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::BgppeeradminstatusEnum::start {2, "start"};
+bool Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp4PathAttrIpAddrPrefix" || name == "bgp4PathAttrIpAddrPrefixLen" || name == "bgp4PathAttrPeer" || name == "bgp4PathAttrAggregatorAddr" || name == "bgp4PathAttrAggregatorAS" || name == "bgp4PathAttrASPathSegment" || name == "bgp4PathAttrAtomicAggregate" || name == "bgp4PathAttrBest" || name == "bgp4PathAttrCalcLocalPref" || name == "bgp4PathAttrLocalPref" || name == "bgp4PathAttrMultiExitDisc" || name == "bgp4PathAttrNextHop" || name == "bgp4PathAttrOrigin" || name == "bgp4PathAttrUnknown")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::CbgppeerprevstateEnum::none {0, "none"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::CbgppeerprevstateEnum::idle {1, "idle"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::CbgppeerprevstateEnum::connect {2, "connect"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::CbgppeerprevstateEnum::active {3, "active"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::CbgppeerprevstateEnum::opensent {4, "opensent"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::CbgppeerprevstateEnum::openconfirm {5, "openconfirm"};
-const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::CbgppeerprevstateEnum::established {6, "established"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeerstate::idle {1, "idle"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeerstate::connect {2, "connect"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeerstate::active {3, "active"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeerstate::opensent {4, "opensent"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeerstate::openconfirm {5, "openconfirm"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeerstate::established {6, "established"};
 
-const Enum::YLeaf Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::BgppathattroriginEnum::igp {1, "igp"};
-const Enum::YLeaf Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::BgppathattroriginEnum::egp {2, "egp"};
-const Enum::YLeaf Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::BgppathattroriginEnum::incomplete {3, "incomplete"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeeradminstatus::stop {1, "stop"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Bgppeeradminstatus::start {2, "start"};
 
-const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4PathattroriginEnum::igp {1, "igp"};
-const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4PathattroriginEnum::egp {2, "egp"};
-const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4PathattroriginEnum::incomplete {3, "incomplete"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::none {0, "none"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::idle {1, "idle"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::connect {2, "connect"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::active {3, "active"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::opensent {4, "opensent"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::openconfirm {5, "openconfirm"};
+const Enum::YLeaf Bgp4Mib::Bgppeertable::Bgppeerentry::Cbgppeerprevstate::established {6, "established"};
 
-const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4PathattratomicaggregateEnum::lessSpecificRrouteNotSelected {1, "lessSpecificRrouteNotSelected"};
-const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4PathattratomicaggregateEnum::lessSpecificRouteSelected {2, "lessSpecificRouteSelected"};
+const Enum::YLeaf Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin::igp {1, "igp"};
+const Enum::YLeaf Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin::egp {2, "egp"};
+const Enum::YLeaf Bgp4Mib::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin::incomplete {3, "incomplete"};
 
-const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4PathattrbestEnum::false_ {1, "false"};
-const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4PathattrbestEnum::true_ {2, "true"};
+const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin::igp {1, "igp"};
+const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin::egp {2, "egp"};
+const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin::incomplete {3, "incomplete"};
+
+const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattratomicaggregate::lessSpecificRrouteNotSelected {1, "lessSpecificRrouteNotSelected"};
+const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattratomicaggregate::lessSpecificRouteSelected {2, "lessSpecificRouteSelected"};
+
+const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrbest::false_ {1, "false"};
+const Enum::YLeaf Bgp4Mib::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrbest::true_ {2, "true"};
 
 
 }

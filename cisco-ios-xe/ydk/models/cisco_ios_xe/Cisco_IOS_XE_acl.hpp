@@ -7,67 +7,62 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_acl {
 
-class AclPortTypeEnum : public Enum
+class AclPortType : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf biff;
-        static const Enum::YLeaf bootpc;
-        static const Enum::YLeaf bootps;
-        static const Enum::YLeaf discard;
-        static const Enum::YLeaf dnsix;
-        static const Enum::YLeaf domain;
-        static const Enum::YLeaf echo;
-        static const Enum::YLeaf isakmp;
-        static const Enum::YLeaf mobile_ip;
-        static const Enum::YLeaf nameserver;
-        static const Enum::YLeaf netbios_dgm;
-        static const Enum::YLeaf netbios_ns;
-        static const Enum::YLeaf netbios_ss;
-        static const Enum::YLeaf non500_isakmp;
-        static const Enum::YLeaf ntp;
-        static const Enum::YLeaf pim_auto_rp;
-        static const Enum::YLeaf rip;
-        static const Enum::YLeaf ripv6;
-        static const Enum::YLeaf snmp;
-        static const Enum::YLeaf snmptrap;
-        static const Enum::YLeaf sunrpc;
-        static const Enum::YLeaf syslog;
-        static const Enum::YLeaf tacacs;
-        static const Enum::YLeaf talk;
-        static const Enum::YLeaf tftp;
-        static const Enum::YLeaf time;
-        static const Enum::YLeaf who;
-        static const Enum::YLeaf xdmcp;
-        static const Enum::YLeaf bgp;
-        static const Enum::YLeaf chargen;
-        static const Enum::YLeaf cmd;
-        static const Enum::YLeaf connectedapps_plain;
-        static const Enum::YLeaf connectedapps_tls;
-        static const Enum::YLeaf daytime;
-        static const Enum::YLeaf exec;
-        static const Enum::YLeaf finger;
-        static const Enum::YLeaf ftp;
-        static const Enum::YLeaf ftp_data;
-        static const Enum::YLeaf gopher;
-        static const Enum::YLeaf hostname;
-        static const Enum::YLeaf ident;
-        static const Enum::YLeaf irc;
-        static const Enum::YLeaf klogin;
-        static const Enum::YLeaf kshell;
-        static const Enum::YLeaf login;
-        static const Enum::YLeaf lpd;
-        static const Enum::YLeaf msrpc;
-        static const Enum::YLeaf nntp;
-        static const Enum::YLeaf pop2;
-        static const Enum::YLeaf pop3;
-        static const Enum::YLeaf smtp;
-        static const Enum::YLeaf telnet;
-        static const Enum::YLeaf uucp;
-        static const Enum::YLeaf whois;
-        static const Enum::YLeaf www;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf chargen;
+        static const ydk::Enum::YLeaf daytime;
+        static const ydk::Enum::YLeaf discard;
+        static const ydk::Enum::YLeaf domain;
+        static const ydk::Enum::YLeaf echo;
+        static const ydk::Enum::YLeaf finger;
+        static const ydk::Enum::YLeaf ftp;
+        static const ydk::Enum::YLeaf ftp_data;
+        static const ydk::Enum::YLeaf gopher;
+        static const ydk::Enum::YLeaf hostname;
+        static const ydk::Enum::YLeaf ident;
+        static const ydk::Enum::YLeaf irc;
+        static const ydk::Enum::YLeaf klogin;
+        static const ydk::Enum::YLeaf kshell;
+        static const ydk::Enum::YLeaf lpd;
+        static const ydk::Enum::YLeaf msrpc;
+        static const ydk::Enum::YLeaf nntp;
+        static const ydk::Enum::YLeaf pim_auto_rp;
+        static const ydk::Enum::YLeaf pop2;
+        static const ydk::Enum::YLeaf pop3;
+        static const ydk::Enum::YLeaf smtp;
+        static const ydk::Enum::YLeaf sunrpc;
+        static const ydk::Enum::YLeaf tacacs;
+        static const ydk::Enum::YLeaf talk;
+        static const ydk::Enum::YLeaf telnet;
+        static const ydk::Enum::YLeaf time;
+        static const ydk::Enum::YLeaf uucp;
+        static const ydk::Enum::YLeaf whois;
+        static const ydk::Enum::YLeaf www;
+        static const ydk::Enum::YLeaf biff;
+        static const ydk::Enum::YLeaf bootpc;
+        static const ydk::Enum::YLeaf bootps;
+        static const ydk::Enum::YLeaf dnsix;
+        static const ydk::Enum::YLeaf isakmp;
+        static const ydk::Enum::YLeaf mobile_ip;
+        static const ydk::Enum::YLeaf nameserver;
+        static const ydk::Enum::YLeaf netbios_dgm;
+        static const ydk::Enum::YLeaf netbios_ns;
+        static const ydk::Enum::YLeaf netbios_ss;
+        static const ydk::Enum::YLeaf non500_isakmp;
+        static const ydk::Enum::YLeaf ntp;
+        static const ydk::Enum::YLeaf rip;
+        static const ydk::Enum::YLeaf ripv6;
+        static const ydk::Enum::YLeaf snmp;
+        static const ydk::Enum::YLeaf snmptrap;
+        static const ydk::Enum::YLeaf syslog;
+        static const ydk::Enum::YLeaf tftp;
+        static const ydk::Enum::YLeaf who;
+        static const ydk::Enum::YLeaf xdmcp;
 
 };
 

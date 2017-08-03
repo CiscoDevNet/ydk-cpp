@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_fib_common_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_fib_common_cfg {
 
 Fib::Fib()
@@ -36,8 +38,8 @@ bool Fib::has_data() const
 
 bool Fib::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(prefer_aib_routes.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(prefer_aib_routes.yfilter)
 	|| (pbts_forward_class_fallbacks !=  nullptr && pbts_forward_class_fallbacks->has_operation())
 	|| (platform !=  nullptr && platform->has_operation());
 }
@@ -62,7 +64,7 @@ const EntityPath Fib::get_entity_path(Entity* ancestor) const
     path_buffer << get_segment_path();
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (prefer_aib_routes.is_set || is_set(prefer_aib_routes.operation)) leaf_name_data.push_back(prefer_aib_routes.get_name_leafdata());
+    if (prefer_aib_routes.is_set || is_set(prefer_aib_routes.yfilter)) leaf_name_data.push_back(prefer_aib_routes.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -109,11 +111,21 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::get_children() const
     return children;
 }
 
-void Fib::set_value(const std::string & value_path, std::string value)
+void Fib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefer-aib-routes")
     {
         prefer_aib_routes = value;
+        prefer_aib_routes.value_namespace = name_space;
+        prefer_aib_routes.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefer-aib-routes")
+    {
+        prefer_aib_routes.yfilter = yfilter;
     }
 }
 
@@ -135,6 +147,18 @@ std::string Fib::get_bundle_name() const
 augment_capabilities_function Fib::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> Fib::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Fib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbts-forward-class-fallbacks" || name == "platform" || name == "prefer-aib-routes")
+        return true;
+    return false;
 }
 
 Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallbacks()
@@ -163,7 +187,7 @@ bool Fib::PbtsForwardClassFallbacks::has_operation() const
         if(pbts_forward_class_fallback[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Fib::PbtsForwardClassFallbacks::get_segment_path() const
@@ -228,8 +252,19 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::PbtsForwardClassFallbacks::g
     return children;
 }
 
-void Fib::PbtsForwardClassFallbacks::set_value(const std::string & value_path, std::string value)
+void Fib::PbtsForwardClassFallbacks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Fib::PbtsForwardClassFallbacks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fib::PbtsForwardClassFallbacks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pbts-forward-class-fallback")
+        return true;
+    return false;
 }
 
 Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::PbtsForwardClassFallback()
@@ -260,13 +295,13 @@ bool Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::has_operation() c
 {
     for (auto const & leaf : fallback_class_number_array.getYLeafs())
     {
-        if(is_set(leaf.operation))
+        if(is_set(leaf.yfilter))
             return true;
     }
-    return is_set(operation)
-	|| is_set(forward_class_number.operation)
-	|| is_set(fallback_class_number_array.operation)
-	|| is_set(fallback_type.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(forward_class_number.yfilter)
+	|| ydk::is_set(fallback_class_number_array.yfilter)
+	|| ydk::is_set(fallback_type.yfilter);
 }
 
 std::string Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_segment_path() const
@@ -292,8 +327,8 @@ const EntityPath Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::get_e
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (forward_class_number.is_set || is_set(forward_class_number.operation)) leaf_name_data.push_back(forward_class_number.get_name_leafdata());
-    if (fallback_type.is_set || is_set(fallback_type.operation)) leaf_name_data.push_back(fallback_type.get_name_leafdata());
+    if (forward_class_number.is_set || is_set(forward_class_number.yfilter)) leaf_name_data.push_back(forward_class_number.get_name_leafdata());
+    if (fallback_type.is_set || is_set(fallback_type.yfilter)) leaf_name_data.push_back(fallback_type.get_name_leafdata());
 
     auto fallback_class_number_array_name_datas = fallback_class_number_array.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), fallback_class_number_array_name_datas.begin(), fallback_class_number_array_name_datas.end());
@@ -314,11 +349,13 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::PbtsForwardClassFallbacks::P
     return children;
 }
 
-void Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::set_value(const std::string & value_path, std::string value)
+void Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "forward-class-number")
     {
         forward_class_number = value;
+        forward_class_number.value_namespace = name_space;
+        forward_class_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "fallback-class-number-array")
     {
@@ -327,7 +364,32 @@ void Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::set_value(const s
     if(value_path == "fallback-type")
     {
         fallback_type = value;
+        fallback_type.value_namespace = name_space;
+        fallback_type.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "forward-class-number")
+    {
+        forward_class_number.yfilter = yfilter;
+    }
+    if(value_path == "fallback-class-number-array")
+    {
+        fallback_class_number_array.yfilter = yfilter;
+    }
+    if(value_path == "fallback-type")
+    {
+        fallback_type.yfilter = yfilter;
+    }
+}
+
+bool Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "forward-class-number" || name == "fallback-class-number-array" || name == "fallback-type")
+        return true;
+    return false;
 }
 
 Fib::Platform::Platform()
@@ -350,7 +412,7 @@ bool Fib::Platform::has_data() const
 
 bool Fib::Platform::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (label_switched_multicast !=  nullptr && label_switched_multicast->has_operation());
 }
 
@@ -409,8 +471,19 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Platform::get_children() con
     return children;
 }
 
-void Fib::Platform::set_value(const std::string & value_path, std::string value)
+void Fib::Platform::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Fib::Platform::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fib::Platform::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-switched-multicast")
+        return true;
+    return false;
 }
 
 Fib::Platform::LabelSwitchedMulticast::LabelSwitchedMulticast()
@@ -431,8 +504,8 @@ bool Fib::Platform::LabelSwitchedMulticast::has_data() const
 
 bool Fib::Platform::LabelSwitchedMulticast::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(frr_holdtime.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(frr_holdtime.yfilter);
 }
 
 std::string Fib::Platform::LabelSwitchedMulticast::get_segment_path() const
@@ -458,7 +531,7 @@ const EntityPath Fib::Platform::LabelSwitchedMulticast::get_entity_path(Entity* 
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (frr_holdtime.is_set || is_set(frr_holdtime.operation)) leaf_name_data.push_back(frr_holdtime.get_name_leafdata());
+    if (frr_holdtime.is_set || is_set(frr_holdtime.yfilter)) leaf_name_data.push_back(frr_holdtime.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -477,19 +550,36 @@ std::map<std::string, std::shared_ptr<Entity>> Fib::Platform::LabelSwitchedMulti
     return children;
 }
 
-void Fib::Platform::LabelSwitchedMulticast::set_value(const std::string & value_path, std::string value)
+void Fib::Platform::LabelSwitchedMulticast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "frr-holdtime")
     {
         frr_holdtime = value;
+        frr_holdtime.value_namespace = name_space;
+        frr_holdtime.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf FibPbtsFallbackEnum::list {1, "list"};
-const Enum::YLeaf FibPbtsFallbackEnum::any {2, "any"};
-const Enum::YLeaf FibPbtsFallbackEnum::drop {3, "drop"};
+void Fib::Platform::LabelSwitchedMulticast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "frr-holdtime")
+    {
+        frr_holdtime.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf FibPbtsForwardClassEnum::any {8, "any"};
+bool Fib::Platform::LabelSwitchedMulticast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frr-holdtime")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf FibPbtsFallback::list {1, "list"};
+const Enum::YLeaf FibPbtsFallback::any {2, "any"};
+const Enum::YLeaf FibPbtsFallback::drop {3, "drop"};
+
+const Enum::YLeaf FibPbtsForwardClass::any {8, "any"};
 
 
 }

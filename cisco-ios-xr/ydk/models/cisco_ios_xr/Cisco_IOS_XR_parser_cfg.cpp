@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_parser_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_parser_cfg {
 
 Parser::Parser()
@@ -53,7 +55,7 @@ bool Parser::has_data() const
 
 bool Parser::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (alias !=  nullptr && alias->has_operation())
 	|| (configuration !=  nullptr && configuration->has_operation())
 	|| (history !=  nullptr && history->has_operation())
@@ -199,7 +201,11 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::get_children() const
     return children;
 }
 
-void Parser::set_value(const std::string & value_path, std::string value)
+void Parser::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Parser::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -223,6 +229,18 @@ augment_capabilities_function Parser::get_augment_capabilities_function() const
     return cisco_ios_xr_augment_lookup_tables;
 }
 
+std::map<std::pair<std::string, std::string>, std::string> Parser::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Parser::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alias" || name == "configuration" || name == "history" || name == "indentation" || name == "interface-display" || name == "netmask-format" || name == "submode-exit")
+        return true;
+    return false;
+}
+
 Parser::Indentation::Indentation()
     :
     indentation_disable{YType::boolean, "indentation-disable"}
@@ -241,8 +259,8 @@ bool Parser::Indentation::has_data() const
 
 bool Parser::Indentation::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(indentation_disable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(indentation_disable.yfilter);
 }
 
 std::string Parser::Indentation::get_segment_path() const
@@ -268,7 +286,7 @@ const EntityPath Parser::Indentation::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (indentation_disable.is_set || is_set(indentation_disable.operation)) leaf_name_data.push_back(indentation_disable.get_name_leafdata());
+    if (indentation_disable.is_set || is_set(indentation_disable.yfilter)) leaf_name_data.push_back(indentation_disable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -287,12 +305,29 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Indentation::get_children
     return children;
 }
 
-void Parser::Indentation::set_value(const std::string & value_path, std::string value)
+void Parser::Indentation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "indentation-disable")
     {
         indentation_disable = value;
+        indentation_disable.value_namespace = name_space;
+        indentation_disable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::Indentation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "indentation-disable")
+    {
+        indentation_disable.yfilter = yfilter;
+    }
+}
+
+bool Parser::Indentation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "indentation-disable")
+        return true;
+    return false;
 }
 
 Parser::Alias::Alias()
@@ -323,7 +358,7 @@ bool Parser::Alias::has_data() const
 
 bool Parser::Alias::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (alls !=  nullptr && alls->has_operation())
 	|| (configurations !=  nullptr && configurations->has_operation())
 	|| (execs !=  nullptr && execs->has_operation());
@@ -412,8 +447,19 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::get_children() con
     return children;
 }
 
-void Parser::Alias::set_value(const std::string & value_path, std::string value)
+void Parser::Alias::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Parser::Alias::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Parser::Alias::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alls" || name == "configurations" || name == "execs")
+        return true;
+    return false;
 }
 
 Parser::Alias::Execs::Execs()
@@ -442,7 +488,7 @@ bool Parser::Alias::Execs::has_operation() const
         if(exec[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Parser::Alias::Execs::get_segment_path() const
@@ -507,8 +553,19 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::get_childre
     return children;
 }
 
-void Parser::Alias::Execs::set_value(const std::string & value_path, std::string value)
+void Parser::Alias::Execs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Parser::Alias::Execs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Parser::Alias::Execs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exec")
+        return true;
+    return false;
 }
 
 Parser::Alias::Execs::Exec::Exec()
@@ -531,9 +588,9 @@ bool Parser::Alias::Execs::Exec::has_data() const
 
 bool Parser::Alias::Execs::Exec::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(identifier.operation)
-	|| is_set(identifier_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(identifier_xr.yfilter);
 }
 
 std::string Parser::Alias::Execs::Exec::get_segment_path() const
@@ -559,8 +616,8 @@ const EntityPath Parser::Alias::Execs::Exec::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (identifier_xr.is_set || is_set(identifier_xr.operation)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (identifier_xr.is_set || is_set(identifier_xr.yfilter)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -579,16 +636,39 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Execs::Exec::get_c
     return children;
 }
 
-void Parser::Alias::Execs::Exec::set_value(const std::string & value_path, std::string value)
+void Parser::Alias::Execs::Exec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "identifier")
     {
         identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "identifier-xr")
     {
         identifier_xr = value;
+        identifier_xr.value_namespace = name_space;
+        identifier_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::Alias::Execs::Exec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "identifier-xr")
+    {
+        identifier_xr.yfilter = yfilter;
+    }
+}
+
+bool Parser::Alias::Execs::Exec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identifier" || name == "identifier-xr")
+        return true;
+    return false;
 }
 
 Parser::Alias::Configurations::Configurations()
@@ -617,7 +697,7 @@ bool Parser::Alias::Configurations::has_operation() const
         if(configuration[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Parser::Alias::Configurations::get_segment_path() const
@@ -682,8 +762,19 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::ge
     return children;
 }
 
-void Parser::Alias::Configurations::set_value(const std::string & value_path, std::string value)
+void Parser::Alias::Configurations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Parser::Alias::Configurations::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Parser::Alias::Configurations::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "configuration")
+        return true;
+    return false;
 }
 
 Parser::Alias::Configurations::Configuration::Configuration()
@@ -706,9 +797,9 @@ bool Parser::Alias::Configurations::Configuration::has_data() const
 
 bool Parser::Alias::Configurations::Configuration::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(identifier.operation)
-	|| is_set(identifier_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(identifier_xr.yfilter);
 }
 
 std::string Parser::Alias::Configurations::Configuration::get_segment_path() const
@@ -734,8 +825,8 @@ const EntityPath Parser::Alias::Configurations::Configuration::get_entity_path(E
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (identifier_xr.is_set || is_set(identifier_xr.operation)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (identifier_xr.is_set || is_set(identifier_xr.yfilter)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -754,16 +845,39 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Configurations::Co
     return children;
 }
 
-void Parser::Alias::Configurations::Configuration::set_value(const std::string & value_path, std::string value)
+void Parser::Alias::Configurations::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "identifier")
     {
         identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "identifier-xr")
     {
         identifier_xr = value;
+        identifier_xr.value_namespace = name_space;
+        identifier_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::Alias::Configurations::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "identifier-xr")
+    {
+        identifier_xr.yfilter = yfilter;
+    }
+}
+
+bool Parser::Alias::Configurations::Configuration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identifier" || name == "identifier-xr")
+        return true;
+    return false;
 }
 
 Parser::Alias::Alls::Alls()
@@ -792,7 +906,7 @@ bool Parser::Alias::Alls::has_operation() const
         if(all[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string Parser::Alias::Alls::get_segment_path() const
@@ -857,8 +971,19 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Alls::get_children
     return children;
 }
 
-void Parser::Alias::Alls::set_value(const std::string & value_path, std::string value)
+void Parser::Alias::Alls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Parser::Alias::Alls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Parser::Alias::Alls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all")
+        return true;
+    return false;
 }
 
 Parser::Alias::Alls::All::All()
@@ -881,9 +1006,9 @@ bool Parser::Alias::Alls::All::has_data() const
 
 bool Parser::Alias::Alls::All::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(identifier.operation)
-	|| is_set(identifier_xr.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(identifier.yfilter)
+	|| ydk::is_set(identifier_xr.yfilter);
 }
 
 std::string Parser::Alias::Alls::All::get_segment_path() const
@@ -909,8 +1034,8 @@ const EntityPath Parser::Alias::Alls::All::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (identifier.is_set || is_set(identifier.operation)) leaf_name_data.push_back(identifier.get_name_leafdata());
-    if (identifier_xr.is_set || is_set(identifier_xr.operation)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
+    if (identifier.is_set || is_set(identifier.yfilter)) leaf_name_data.push_back(identifier.get_name_leafdata());
+    if (identifier_xr.is_set || is_set(identifier_xr.yfilter)) leaf_name_data.push_back(identifier_xr.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -929,16 +1054,39 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Alias::Alls::All::get_chi
     return children;
 }
 
-void Parser::Alias::Alls::All::set_value(const std::string & value_path, std::string value)
+void Parser::Alias::Alls::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "identifier")
     {
         identifier = value;
+        identifier.value_namespace = name_space;
+        identifier.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "identifier-xr")
     {
         identifier_xr = value;
+        identifier_xr.value_namespace = name_space;
+        identifier_xr.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::Alias::Alls::All::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "identifier")
+    {
+        identifier.yfilter = yfilter;
+    }
+    if(value_path == "identifier-xr")
+    {
+        identifier_xr.yfilter = yfilter;
+    }
+}
+
+bool Parser::Alias::Alls::All::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identifier" || name == "identifier-xr")
+        return true;
+    return false;
 }
 
 Parser::History::History()
@@ -959,8 +1107,8 @@ bool Parser::History::has_data() const
 
 bool Parser::History::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(size.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(size.yfilter);
 }
 
 std::string Parser::History::get_segment_path() const
@@ -986,7 +1134,7 @@ const EntityPath Parser::History::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (size.is_set || is_set(size.operation)) leaf_name_data.push_back(size.get_name_leafdata());
+    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1005,12 +1153,29 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::History::get_children() c
     return children;
 }
 
-void Parser::History::set_value(const std::string & value_path, std::string value)
+void Parser::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "size")
     {
         size = value;
+        size.value_namespace = name_space;
+        size.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "size")
+    {
+        size.yfilter = yfilter;
+    }
+}
+
+bool Parser::History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "size")
+        return true;
+    return false;
 }
 
 Parser::InterfaceDisplay::InterfaceDisplay()
@@ -1031,8 +1196,8 @@ bool Parser::InterfaceDisplay::has_data() const
 
 bool Parser::InterfaceDisplay::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(slot_order.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(slot_order.yfilter);
 }
 
 std::string Parser::InterfaceDisplay::get_segment_path() const
@@ -1058,7 +1223,7 @@ const EntityPath Parser::InterfaceDisplay::get_entity_path(Entity* ancestor) con
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slot_order.is_set || is_set(slot_order.operation)) leaf_name_data.push_back(slot_order.get_name_leafdata());
+    if (slot_order.is_set || is_set(slot_order.yfilter)) leaf_name_data.push_back(slot_order.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1077,12 +1242,29 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::InterfaceDisplay::get_chi
     return children;
 }
 
-void Parser::InterfaceDisplay::set_value(const std::string & value_path, std::string value)
+void Parser::InterfaceDisplay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "slot-order")
     {
         slot_order = value;
+        slot_order.value_namespace = name_space;
+        slot_order.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::InterfaceDisplay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "slot-order")
+    {
+        slot_order.yfilter = yfilter;
+    }
+}
+
+bool Parser::InterfaceDisplay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "slot-order")
+        return true;
+    return false;
 }
 
 Parser::NetmaskFormat::NetmaskFormat()
@@ -1103,8 +1285,8 @@ bool Parser::NetmaskFormat::has_data() const
 
 bool Parser::NetmaskFormat::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(bit_count.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(bit_count.yfilter);
 }
 
 std::string Parser::NetmaskFormat::get_segment_path() const
@@ -1130,7 +1312,7 @@ const EntityPath Parser::NetmaskFormat::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bit_count.is_set || is_set(bit_count.operation)) leaf_name_data.push_back(bit_count.get_name_leafdata());
+    if (bit_count.is_set || is_set(bit_count.yfilter)) leaf_name_data.push_back(bit_count.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1149,12 +1331,29 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::NetmaskFormat::get_childr
     return children;
 }
 
-void Parser::NetmaskFormat::set_value(const std::string & value_path, std::string value)
+void Parser::NetmaskFormat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bit-count")
     {
         bit_count = value;
+        bit_count.value_namespace = name_space;
+        bit_count.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::NetmaskFormat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "bit-count")
+    {
+        bit_count.yfilter = yfilter;
+    }
+}
+
+bool Parser::NetmaskFormat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bit-count")
+        return true;
+    return false;
 }
 
 Parser::Configuration::Configuration()
@@ -1177,7 +1376,7 @@ bool Parser::Configuration::has_data() const
 
 bool Parser::Configuration::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (disable !=  nullptr && disable->has_operation());
 }
 
@@ -1236,8 +1435,19 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Configuration::get_childr
     return children;
 }
 
-void Parser::Configuration::set_value(const std::string & value_path, std::string value)
+void Parser::Configuration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void Parser::Configuration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Parser::Configuration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
 }
 
 Parser::Configuration::Disable::Disable()
@@ -1258,8 +1468,8 @@ bool Parser::Configuration::Disable::has_data() const
 
 bool Parser::Configuration::Disable::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(usergroup.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(usergroup.yfilter);
 }
 
 std::string Parser::Configuration::Disable::get_segment_path() const
@@ -1285,7 +1495,7 @@ const EntityPath Parser::Configuration::Disable::get_entity_path(Entity* ancesto
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (usergroup.is_set || is_set(usergroup.operation)) leaf_name_data.push_back(usergroup.get_name_leafdata());
+    if (usergroup.is_set || is_set(usergroup.yfilter)) leaf_name_data.push_back(usergroup.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1304,12 +1514,29 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::Configuration::Disable::g
     return children;
 }
 
-void Parser::Configuration::Disable::set_value(const std::string & value_path, std::string value)
+void Parser::Configuration::Disable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "usergroup")
     {
         usergroup = value;
+        usergroup.value_namespace = name_space;
+        usergroup.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::Configuration::Disable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "usergroup")
+    {
+        usergroup.yfilter = yfilter;
+    }
+}
+
+bool Parser::Configuration::Disable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "usergroup")
+        return true;
+    return false;
 }
 
 Parser::SubmodeExit::SubmodeExit()
@@ -1330,8 +1557,8 @@ bool Parser::SubmodeExit::has_data() const
 
 bool Parser::SubmodeExit::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(enable.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
 }
 
 std::string Parser::SubmodeExit::get_segment_path() const
@@ -1357,7 +1584,7 @@ const EntityPath Parser::SubmodeExit::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.operation)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1376,12 +1603,29 @@ std::map<std::string, std::shared_ptr<Entity>> Parser::SubmodeExit::get_children
     return children;
 }
 
-void Parser::SubmodeExit::set_value(const std::string & value_path, std::string value)
+void Parser::SubmodeExit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
         enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Parser::SubmodeExit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Parser::SubmodeExit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
 }
 
 

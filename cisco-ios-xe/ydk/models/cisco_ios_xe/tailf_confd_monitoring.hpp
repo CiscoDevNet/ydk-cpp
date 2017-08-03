@@ -7,10 +7,10 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
-namespace ydk {
+namespace cisco_ios_xe {
 namespace tailf_confd_monitoring {
 
-class ConfdState : public Entity
+class ConfdState : public ydk::Entity
 {
     public:
         ConfdState();
@@ -18,21 +18,24 @@ class ConfdState : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
-        std::shared_ptr<Entity> clone_ptr() const override;
-        augment_capabilities_function get_augment_capabilities_function() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
         std::string get_bundle_yang_models_location() const override;
         std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        YLeaf version; //type: string
-        YLeaf epoll; //type: boolean
-        YLeaf daemon_status; //type: DaemonStatusEnum
-        YLeaf read_only_mode; //type: empty
-        YLeaf upgrade_mode; //type: empty
+        ydk::YLeaf version; //type: string
+        ydk::YLeaf epoll; //type: boolean
+        ydk::YLeaf daemon_status; //type: DaemonStatus
+        ydk::YLeaf read_only_mode; //type: empty
+        ydk::YLeaf upgrade_mode; //type: empty
         class Smp; //type: ConfdState::Smp
         class Ha; //type: ConfdState::Ha
         class LoadedDataModels; //type: ConfdState::LoadedDataModels
@@ -43,21 +46,21 @@ class ConfdState : public Entity
         class Snmp; //type: ConfdState::Snmp
         class Internal; //type: ConfdState::Internal
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli> cli_; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Ha> ha_; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal> internal_;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::LoadedDataModels> loaded_data_models_;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf> netconf_; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest> rest_; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Smp> smp_; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp> snmp_; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui> webui_; // presence node
-                class DaemonStatusEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli> cli; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Ha> ha; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal> internal;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::LoadedDataModels> loaded_data_models;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf> netconf; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest> rest; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Smp> smp; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp> snmp; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui> webui; // presence node
+                class DaemonStatus;
 
 }; // ConfdState
 
 
-class ConfdState::Smp : public Entity
+class ConfdState::Smp : public ydk::Entity
 {
     public:
         Smp();
@@ -65,18 +68,20 @@ class ConfdState::Smp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf number_of_threads; //type: uint16
+        ydk::YLeaf number_of_threads; //type: uint16
 
 }; // ConfdState::Smp
 
 
-class ConfdState::Ha : public Entity
+class ConfdState::Ha : public ydk::Entity
 {
     public:
         Ha();
@@ -84,23 +89,25 @@ class ConfdState::Ha : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf mode; //type: ModeEnum
-        YLeaf node_id; //type: string
-        YLeaf master_node_id; //type: string
-        YLeafList connected_slave; //type: list of  string
-        YLeafList pending_slave; //type: list of  string
-        class ModeEnum;
+        ydk::YLeaf mode; //type: Mode
+        ydk::YLeaf node_id; //type: string
+        ydk::YLeaf master_node_id; //type: string
+        ydk::YLeafList connected_slave; //type: list of  string
+        ydk::YLeafList pending_slave; //type: list of  string
+        class Mode;
 
 }; // ConfdState::Ha
 
 
-class ConfdState::LoadedDataModels : public Entity
+class ConfdState::LoadedDataModels : public ydk::Entity
 {
     public:
         LoadedDataModels();
@@ -108,20 +115,22 @@ class ConfdState::LoadedDataModels : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class DataModel; //type: ConfdState::LoadedDataModels::DataModel
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::LoadedDataModels::DataModel> > data_model_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::LoadedDataModels::DataModel> > data_model;
         
 }; // ConfdState::LoadedDataModels
 
 
-class ConfdState::LoadedDataModels::DataModel : public Entity
+class ConfdState::LoadedDataModels::DataModel : public ydk::Entity
 {
     public:
         DataModel();
@@ -129,24 +138,26 @@ class ConfdState::LoadedDataModels::DataModel : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf revision; //type: string
-        YLeaf namespace_; //type: string
-        YLeaf prefix; //type: string
-        YLeaf exported_to_all; //type: empty
-        YLeafList exported_to; //type: list of  one of string, enumeration
-        class ExportedToEnum;
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf revision; //type: string
+        ydk::YLeaf namespace_; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf exported_to_all; //type: empty
+        ydk::YLeafList exported_to; //type: list of  one of string, enumeration
+        class ExportedTo;
 
 }; // ConfdState::LoadedDataModels::DataModel
 
 
-class ConfdState::Netconf : public Entity
+class ConfdState::Netconf : public ydk::Entity
 {
     public:
         Netconf();
@@ -154,20 +165,22 @@ class ConfdState::Netconf : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Listen; //type: ConfdState::Netconf::Listen
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen> listen_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen> listen;
         
 }; // ConfdState::Netconf
 
 
-class ConfdState::Netconf::Listen : public Entity
+class ConfdState::Netconf::Listen : public ydk::Entity
 {
     public:
         Listen();
@@ -175,22 +188,24 @@ class ConfdState::Netconf::Listen : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tcp; //type: ConfdState::Netconf::Listen::Tcp
         class Ssh; //type: ConfdState::Netconf::Listen::Ssh
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen::Ssh> > ssh_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen::Tcp> > tcp_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen::Ssh> > ssh;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Netconf::Listen::Tcp> > tcp;
         
 }; // ConfdState::Netconf::Listen
 
 
-class ConfdState::Netconf::Listen::Tcp : public Entity
+class ConfdState::Netconf::Listen::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -198,19 +213,21 @@ class ConfdState::Netconf::Listen::Tcp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip; //type: string
-        YLeaf port; //type: uint16
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Netconf::Listen::Tcp
 
 
-class ConfdState::Netconf::Listen::Ssh : public Entity
+class ConfdState::Netconf::Listen::Ssh : public ydk::Entity
 {
     public:
         Ssh();
@@ -218,19 +235,21 @@ class ConfdState::Netconf::Listen::Ssh : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip; //type: string
-        YLeaf port; //type: uint16
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Netconf::Listen::Ssh
 
 
-class ConfdState::Cli : public Entity
+class ConfdState::Cli : public ydk::Entity
 {
     public:
         Cli();
@@ -238,20 +257,22 @@ class ConfdState::Cli : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Listen; //type: ConfdState::Cli::Listen
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli::Listen> listen_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli::Listen> listen;
         
 }; // ConfdState::Cli
 
 
-class ConfdState::Cli::Listen : public Entity
+class ConfdState::Cli::Listen : public ydk::Entity
 {
     public:
         Listen();
@@ -259,20 +280,22 @@ class ConfdState::Cli::Listen : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Ssh; //type: ConfdState::Cli::Listen::Ssh
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli::Listen::Ssh> > ssh_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Cli::Listen::Ssh> > ssh;
         
 }; // ConfdState::Cli::Listen
 
 
-class ConfdState::Cli::Listen::Ssh : public Entity
+class ConfdState::Cli::Listen::Ssh : public ydk::Entity
 {
     public:
         Ssh();
@@ -280,19 +303,21 @@ class ConfdState::Cli::Listen::Ssh : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip; //type: string
-        YLeaf port; //type: uint16
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Cli::Listen::Ssh
 
 
-class ConfdState::Webui : public Entity
+class ConfdState::Webui : public ydk::Entity
 {
     public:
         Webui();
@@ -300,20 +325,22 @@ class ConfdState::Webui : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Listen; //type: ConfdState::Webui::Listen
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen> listen_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen> listen;
         
 }; // ConfdState::Webui
 
 
-class ConfdState::Webui::Listen : public Entity
+class ConfdState::Webui::Listen : public ydk::Entity
 {
     public:
         Listen();
@@ -321,22 +348,24 @@ class ConfdState::Webui::Listen : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tcp; //type: ConfdState::Webui::Listen::Tcp
         class Ssl; //type: ConfdState::Webui::Listen::Ssl
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen::Ssl> > ssl_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen::Tcp> > tcp_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen::Ssl> > ssl;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Webui::Listen::Tcp> > tcp;
         
 }; // ConfdState::Webui::Listen
 
 
-class ConfdState::Webui::Listen::Tcp : public Entity
+class ConfdState::Webui::Listen::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -344,19 +373,21 @@ class ConfdState::Webui::Listen::Tcp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip; //type: string
-        YLeaf port; //type: uint16
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Webui::Listen::Tcp
 
 
-class ConfdState::Webui::Listen::Ssl : public Entity
+class ConfdState::Webui::Listen::Ssl : public ydk::Entity
 {
     public:
         Ssl();
@@ -364,19 +395,21 @@ class ConfdState::Webui::Listen::Ssl : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip; //type: string
-        YLeaf port; //type: uint16
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Webui::Listen::Ssl
 
 
-class ConfdState::Rest : public Entity
+class ConfdState::Rest : public ydk::Entity
 {
     public:
         Rest();
@@ -384,20 +417,22 @@ class ConfdState::Rest : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Listen; //type: ConfdState::Rest::Listen
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen> listen_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen> listen;
         
 }; // ConfdState::Rest
 
 
-class ConfdState::Rest::Listen : public Entity
+class ConfdState::Rest::Listen : public ydk::Entity
 {
     public:
         Listen();
@@ -405,22 +440,24 @@ class ConfdState::Rest::Listen : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Tcp; //type: ConfdState::Rest::Listen::Tcp
         class Ssl; //type: ConfdState::Rest::Listen::Ssl
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen::Ssl> > ssl_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen::Tcp> > tcp_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen::Ssl> > ssl;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Rest::Listen::Tcp> > tcp;
         
 }; // ConfdState::Rest::Listen
 
 
-class ConfdState::Rest::Listen::Tcp : public Entity
+class ConfdState::Rest::Listen::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -428,19 +465,21 @@ class ConfdState::Rest::Listen::Tcp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip; //type: string
-        YLeaf port; //type: uint16
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Rest::Listen::Tcp
 
 
-class ConfdState::Rest::Listen::Ssl : public Entity
+class ConfdState::Rest::Listen::Ssl : public ydk::Entity
 {
     public:
         Ssl();
@@ -448,19 +487,21 @@ class ConfdState::Rest::Listen::Ssl : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip; //type: string
-        YLeaf port; //type: uint16
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Rest::Listen::Ssl
 
 
-class ConfdState::Snmp : public Entity
+class ConfdState::Snmp : public ydk::Entity
 {
     public:
         Snmp();
@@ -468,24 +509,26 @@ class ConfdState::Snmp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf engine_id; //type: string
-        YLeafList mib; //type: list of  string
+        ydk::YLeaf engine_id; //type: string
+        ydk::YLeafList mib; //type: list of  string
         class Listen; //type: ConfdState::Snmp::Listen
         class Version; //type: ConfdState::Snmp::Version
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Listen> listen_;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Version> version_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Listen> listen;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Version> version;
         
 }; // ConfdState::Snmp
 
 
-class ConfdState::Snmp::Listen : public Entity
+class ConfdState::Snmp::Listen : public ydk::Entity
 {
     public:
         Listen();
@@ -493,20 +536,22 @@ class ConfdState::Snmp::Listen : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Udp; //type: ConfdState::Snmp::Listen::Udp
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Listen::Udp> > udp_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Snmp::Listen::Udp> > udp;
         
 }; // ConfdState::Snmp::Listen
 
 
-class ConfdState::Snmp::Listen::Udp : public Entity
+class ConfdState::Snmp::Listen::Udp : public ydk::Entity
 {
     public:
         Udp();
@@ -514,19 +559,21 @@ class ConfdState::Snmp::Listen::Udp : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf ip; //type: string
-        YLeaf port; //type: uint16
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Snmp::Listen::Udp
 
 
-class ConfdState::Snmp::Version : public Entity
+class ConfdState::Snmp::Version : public ydk::Entity
 {
     public:
         Version();
@@ -534,20 +581,22 @@ class ConfdState::Snmp::Version : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf v1; //type: empty
-        YLeaf v2c; //type: empty
-        YLeaf v3; //type: empty
+        ydk::YLeaf v1; //type: empty
+        ydk::YLeaf v2c; //type: empty
+        ydk::YLeaf v3; //type: empty
 
 }; // ConfdState::Snmp::Version
 
 
-class ConfdState::Internal : public Entity
+class ConfdState::Internal : public ydk::Entity
 {
     public:
         Internal();
@@ -555,23 +604,25 @@ class ConfdState::Internal : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Callpoints; //type: ConfdState::Internal::Callpoints
         class Cdb; //type: ConfdState::Internal::Cdb
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints> callpoints_;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb> cdb_;
-                class DatastoreNameEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints> callpoints;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb> cdb;
+                class DatastoreName;
 
 }; // ConfdState::Internal
 
 
-class ConfdState::Internal::Callpoints : public Entity
+class ConfdState::Internal::Callpoints : public ydk::Entity
 {
     public:
         Callpoints();
@@ -579,11 +630,13 @@ class ConfdState::Internal::Callpoints : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Callpoint; //type: ConfdState::Internal::Callpoints::Callpoint
         class Validationpoint; //type: ConfdState::Internal::Callpoints::Validationpoint
@@ -596,21 +649,21 @@ class ConfdState::Internal::Callpoints : public Entity
         class AuthenticationCallback; //type: ConfdState::Internal::Callpoints::AuthenticationCallback
         class AuthorizationCallbacks; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint> > actionpoint_;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback> authentication_callback_; // presence node
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks> authorization_callbacks_; // presence node
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint> > callpoint_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback> > error_formatting_callback_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay> > notification_stream_replay_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback> > snmp_inform_callback_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription> > snmp_notification_subscription_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint> > typepoint_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint> > validationpoint_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint> > actionpoint;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback> authentication_callback; // presence node
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks> authorization_callbacks; // presence node
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint> > callpoint;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback> > error_formatting_callback;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay> > notification_stream_replay;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback> > snmp_inform_callback;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription> > snmp_notification_subscription;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint> > typepoint;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint> > validationpoint;
         
 }; // ConfdState::Internal::Callpoints
 
 
-class ConfdState::Internal::Callpoints::Callpoint : public Entity
+class ConfdState::Internal::Callpoints::Callpoint : public ydk::Entity
 {
     public:
         Callpoint();
@@ -618,27 +671,29 @@ class ConfdState::Internal::Callpoints::Callpoint : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: string
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::Callpoint::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::Callpoint::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::Callpoint
 
 
-class ConfdState::Internal::Callpoints::Callpoint::Daemon : public Entity
+class ConfdState::Internal::Callpoints::Callpoint::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -646,21 +701,23 @@ class ConfdState::Internal::Callpoints::Callpoint::Daemon : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::Callpoint::Daemon
 
 
-class ConfdState::Internal::Callpoints::Callpoint::Range : public Entity
+class ConfdState::Internal::Callpoints::Callpoint::Range : public ydk::Entity
 {
     public:
         Range();
@@ -668,23 +725,25 @@ class ConfdState::Internal::Callpoints::Callpoint::Range : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::Callpoint::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::Callpoint::Range
 
 
-class ConfdState::Internal::Callpoints::Callpoint::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::Callpoint::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -692,21 +751,23 @@ class ConfdState::Internal::Callpoints::Callpoint::Range::Daemon : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::Callpoint::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::Validationpoint : public Entity
+class ConfdState::Internal::Callpoints::Validationpoint : public ydk::Entity
 {
     public:
         Validationpoint();
@@ -714,27 +775,29 @@ class ConfdState::Internal::Callpoints::Validationpoint : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: string
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::Validationpoint::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::Validationpoint::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::Validationpoint
 
 
-class ConfdState::Internal::Callpoints::Validationpoint::Daemon : public Entity
+class ConfdState::Internal::Callpoints::Validationpoint::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -742,21 +805,23 @@ class ConfdState::Internal::Callpoints::Validationpoint::Daemon : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::Validationpoint::Daemon
 
 
-class ConfdState::Internal::Callpoints::Validationpoint::Range : public Entity
+class ConfdState::Internal::Callpoints::Validationpoint::Range : public ydk::Entity
 {
     public:
         Range();
@@ -764,23 +829,25 @@ class ConfdState::Internal::Callpoints::Validationpoint::Range : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::Validationpoint::Range
 
 
-class ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -788,21 +855,23 @@ class ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::Actionpoint : public Entity
+class ConfdState::Internal::Callpoints::Actionpoint : public ydk::Entity
 {
     public:
         Actionpoint();
@@ -810,27 +879,29 @@ class ConfdState::Internal::Callpoints::Actionpoint : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: string
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::Actionpoint::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::Actionpoint::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::Actionpoint
 
 
-class ConfdState::Internal::Callpoints::Actionpoint::Daemon : public Entity
+class ConfdState::Internal::Callpoints::Actionpoint::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -838,21 +909,23 @@ class ConfdState::Internal::Callpoints::Actionpoint::Daemon : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::Actionpoint::Daemon
 
 
-class ConfdState::Internal::Callpoints::Actionpoint::Range : public Entity
+class ConfdState::Internal::Callpoints::Actionpoint::Range : public ydk::Entity
 {
     public:
         Range();
@@ -860,23 +933,25 @@ class ConfdState::Internal::Callpoints::Actionpoint::Range : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::Actionpoint::Range
 
 
-class ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -884,21 +959,23 @@ class ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::SnmpInformCallback : public Entity
+class ConfdState::Internal::Callpoints::SnmpInformCallback : public ydk::Entity
 {
     public:
         SnmpInformCallback();
@@ -906,27 +983,29 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: string
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::SnmpInformCallback::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::SnmpInformCallback
 
 
-class ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon : public Entity
+class ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -934,21 +1013,23 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon : public Enti
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon
 
 
-class ConfdState::Internal::Callpoints::SnmpInformCallback::Range : public Entity
+class ConfdState::Internal::Callpoints::SnmpInformCallback::Range : public ydk::Entity
 {
     public:
         Range();
@@ -956,23 +1037,25 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback::Range : public Entit
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::SnmpInformCallback::Range
 
 
-class ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -980,21 +1063,23 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon : publ
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::SnmpNotificationSubscription : public Entity
+class ConfdState::Internal::Callpoints::SnmpNotificationSubscription : public ydk::Entity
 {
     public:
         SnmpNotificationSubscription();
@@ -1002,27 +1087,29 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: string
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::SnmpNotificationSubscription
 
 
-class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon : public Entity
+class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1030,21 +1117,23 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon : p
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon
 
 
-class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range : public Entity
+class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1052,23 +1141,25 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range : pu
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range
 
 
-class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1076,21 +1167,23 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Dae
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::ErrorFormattingCallback : public Entity
+class ConfdState::Internal::Callpoints::ErrorFormattingCallback : public ydk::Entity
 {
     public:
         ErrorFormattingCallback();
@@ -1098,27 +1191,29 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: string
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::ErrorFormattingCallback
 
 
-class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon : public Entity
+class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1126,21 +1221,23 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon
 
 
-class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range : public Entity
+class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1148,23 +1245,25 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range
 
 
-class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1172,21 +1271,23 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon :
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::Typepoint : public Entity
+class ConfdState::Internal::Callpoints::Typepoint : public ydk::Entity
 {
     public:
         Typepoint();
@@ -1194,27 +1295,29 @@ class ConfdState::Internal::Callpoints::Typepoint : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: string
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf id; //type: string
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::Typepoint::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::Typepoint::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::Typepoint
 
 
-class ConfdState::Internal::Callpoints::Typepoint::Daemon : public Entity
+class ConfdState::Internal::Callpoints::Typepoint::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1222,21 +1325,23 @@ class ConfdState::Internal::Callpoints::Typepoint::Daemon : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::Typepoint::Daemon
 
 
-class ConfdState::Internal::Callpoints::Typepoint::Range : public Entity
+class ConfdState::Internal::Callpoints::Typepoint::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1244,23 +1349,25 @@ class ConfdState::Internal::Callpoints::Typepoint::Range : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::Typepoint::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::Typepoint::Range
 
 
-class ConfdState::Internal::Callpoints::Typepoint::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::Typepoint::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1268,21 +1375,23 @@ class ConfdState::Internal::Callpoints::Typepoint::Range::Daemon : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::Typepoint::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::NotificationStreamReplay : public Entity
+class ConfdState::Internal::Callpoints::NotificationStreamReplay : public ydk::Entity
 {
     public:
         NotificationStreamReplay();
@@ -1290,29 +1399,31 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf replay_support; //type: ReplaySupportEnum
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf replay_support; //type: ReplaySupport
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::NotificationStreamReplay::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range> > range_;
-                class ReplaySupportEnum;
-        class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range> > range;
+                class ReplaySupport;
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::NotificationStreamReplay
 
 
-class ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon : public Entity
+class ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1320,21 +1431,23 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon : publi
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon
 
 
-class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range : public Entity
+class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1342,23 +1455,25 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range : public
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::NotificationStreamReplay::Range
 
 
-class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1366,21 +1481,23 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::AuthenticationCallback : public Entity
+class ConfdState::Internal::Callpoints::AuthenticationCallback : public ydk::Entity
 {
     public:
         AuthenticationCallback();
@@ -1388,27 +1505,29 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::AuthenticationCallback::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::AuthenticationCallback
 
 
-class ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon : public Entity
+class ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1416,21 +1535,23 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon
 
 
-class ConfdState::Internal::Callpoints::AuthenticationCallback::Range : public Entity
+class ConfdState::Internal::Callpoints::AuthenticationCallback::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1438,23 +1559,25 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback::Range : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::AuthenticationCallback::Range
 
 
-class ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1462,21 +1585,23 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon
 
 
-class ConfdState::Internal::Callpoints::AuthorizationCallbacks : public Entity
+class ConfdState::Internal::Callpoints::AuthorizationCallbacks : public ydk::Entity
 {
     public:
         AuthorizationCallbacks();
@@ -1484,27 +1609,29 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf enabled; //type: boolean
-        YLeaf path; //type: string
-        YLeaf file; //type: string
-        YLeaf error; //type: ErrorEnum
+        ydk::YLeaf enabled; //type: boolean
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf file; //type: string
+        ydk::YLeaf error; //type: Error
         class Daemon; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon
         class Range; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon> daemon_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range> > range_;
-                class ErrorEnum;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon> daemon;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range> > range;
+                class Error;
 
 }; // ConfdState::Internal::Callpoints::AuthorizationCallbacks
 
 
-class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon : public Entity
+class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1512,21 +1639,23 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon : public 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon
 
 
-class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range : public Entity
+class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range : public ydk::Entity
 {
     public:
         Range();
@@ -1534,23 +1663,25 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range : public E
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf lower; //type: string
-        YLeaf upper; //type: string
-        YLeaf default_; //type: empty
+        ydk::YLeaf lower; //type: string
+        ydk::YLeaf upper; //type: string
+        ydk::YLeaf default_; //type: empty
         class Daemon; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon
 
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon> daemon_;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon> daemon;
         
 }; // ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range
 
 
-class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon : public Entity
+class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon : public ydk::Entity
 {
     public:
         Daemon();
@@ -1558,21 +1689,23 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon : 
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf id; //type: uint32
-        YLeaf name; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon
 
 
-class ConfdState::Internal::Cdb : public Entity
+class ConfdState::Internal::Cdb : public ydk::Entity
 {
     public:
         Cdb();
@@ -1580,22 +1713,24 @@ class ConfdState::Internal::Cdb : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Datastore; //type: ConfdState::Internal::Cdb::Datastore
         class Client; //type: ConfdState::Internal::Cdb::Client
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Client> > client_;
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore> > datastore_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Client> > client;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore> > datastore;
         
 }; // ConfdState::Internal::Cdb
 
 
-class ConfdState::Internal::Cdb::Datastore : public Entity
+class ConfdState::Internal::Cdb::Datastore : public ydk::Entity
 {
     public:
         Datastore();
@@ -1603,32 +1738,34 @@ class ConfdState::Internal::Cdb::Datastore : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: DatastoreNameEnum
-        YLeaf transaction_id; //type: string
-        YLeaf write_queue; //type: uint32
-        YLeaf filename; //type: string
-        YLeaf disk_size; //type: uint64
-        YLeaf ram_size; //type: uint64
-        YLeaf read_locks; //type: uint32
-        YLeaf write_lock_set; //type: boolean
-        YLeaf subscription_lock_set; //type: boolean
-        YLeaf waiting_for_replication_sync; //type: boolean
+        ydk::YLeaf name; //type: DatastoreName
+        ydk::YLeaf transaction_id; //type: string
+        ydk::YLeaf write_queue; //type: uint32
+        ydk::YLeaf filename; //type: string
+        ydk::YLeaf disk_size; //type: uint64
+        ydk::YLeaf ram_size; //type: uint64
+        ydk::YLeaf read_locks; //type: uint32
+        ydk::YLeaf write_lock_set; //type: boolean
+        ydk::YLeaf subscription_lock_set; //type: boolean
+        ydk::YLeaf waiting_for_replication_sync; //type: boolean
         class PendingSubscriptionSync; //type: ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync
         class PendingNotificationQueue; //type: ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue> > pending_notification_queue_;
-        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync> pending_subscription_sync_; // presence node
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue> > pending_notification_queue;
+        std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync> pending_subscription_sync; // presence node
         
 }; // ConfdState::Internal::Cdb::Datastore
 
 
-class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync : public Entity
+class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync : public ydk::Entity
 {
     public:
         PendingSubscriptionSync();
@@ -1636,23 +1773,25 @@ class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync : public Ent
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf priority; //type: int32
-        YLeaf time_remaining; //type: one of uint64, enumeration
+        ydk::YLeaf priority; //type: int32
+        ydk::YLeaf time_remaining; //type: one of enumeration, uint64
         class Notification; //type: ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification> > notification_;
-                class TimeRemainingEnum;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification> > notification;
+                class TimeRemaining;
 
 }; // ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync
 
 
-class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification : public Entity
+class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification : public ydk::Entity
 {
     public:
         Notification();
@@ -1660,19 +1799,21 @@ class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notificatio
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf client_name; //type: string
-        YLeafList subscription_ids; //type: list of  uint32
+        ydk::YLeaf client_name; //type: string
+        ydk::YLeafList subscription_ids; //type: list of  uint32
 
 }; // ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification
 
 
-class ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue : public Entity
+class ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue : public ydk::Entity
 {
     public:
         PendingNotificationQueue();
@@ -1680,20 +1821,22 @@ class ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue : public En
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Notification; //type: ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification> > notification_;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification> > notification;
         
 }; // ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue
 
 
-class ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification : public Entity
+class ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification : public ydk::Entity
 {
     public:
         Notification();
@@ -1701,20 +1844,22 @@ class ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notificati
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf priority; //type: int32
-        YLeaf client_name; //type: string
-        YLeafList subscription_ids; //type: list of  uint32
+        ydk::YLeaf priority; //type: int32
+        ydk::YLeaf client_name; //type: string
+        ydk::YLeafList subscription_ids; //type: list of  uint32
 
 }; // ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification
 
 
-class ConfdState::Internal::Cdb::Client : public Entity
+class ConfdState::Internal::Cdb::Client : public ydk::Entity
 {
     public:
         Client();
@@ -1722,28 +1867,30 @@ class ConfdState::Internal::Cdb::Client : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf name; //type: string
-        YLeaf info; //type: string
-        YLeaf type; //type: TypeEnum
-        YLeaf datastore; //type: enumeration
-        YLeaf lock; //type: LockEnum
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf info; //type: string
+        ydk::YLeaf type; //type: Type
+        ydk::YLeaf datastore; //type: enumeration
+        ydk::YLeaf lock; //type: Lock
         class Subscription; //type: ConfdState::Internal::Cdb::Client::Subscription
 
-        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Client::Subscription> > subscription_;
-                class TypeEnum;
-        class DatastoreEnum;
-        class LockEnum;
+        std::vector<std::shared_ptr<tailf_confd_monitoring::ConfdState::Internal::Cdb::Client::Subscription> > subscription;
+                class Type;
+        class Datastore;
+        class Lock;
 
 }; // ConfdState::Internal::Cdb::Client
 
 
-class ConfdState::Internal::Cdb::Client::Subscription : public Entity
+class ConfdState::Internal::Cdb::Client::Subscription : public ydk::Entity
 {
     public:
         Subscription();
@@ -1751,330 +1898,332 @@ class ConfdState::Internal::Cdb::Client::Subscription : public Entity
 
         bool has_data() const override;
         bool has_operation() const override;
-        const EntityPath get_entity_path(Entity* parent) const override;
+        const ydk::EntityPath get_entity_path(ydk::Entity* parent) const override;
         std::string get_segment_path() const override;
-        std::shared_ptr<Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, std::string value) override;
-        std::map<std::string, std::shared_ptr<Entity>> get_children() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        YLeaf datastore; //type: DatastoreNameEnum
-        YLeaf twophase; //type: empty
-        YLeaf priority; //type: int32
-        YLeaf id; //type: uint32
-        YLeaf path; //type: string
-        YLeaf error; //type: ErrorEnum
-        class ErrorEnum;
+        ydk::YLeaf datastore; //type: DatastoreName
+        ydk::YLeaf twophase; //type: empty
+        ydk::YLeaf priority; //type: int32
+        ydk::YLeaf id; //type: uint32
+        ydk::YLeaf path; //type: string
+        ydk::YLeaf error; //type: Error
+        class Error;
 
 }; // ConfdState::Internal::Cdb::Client::Subscription
 
-class ConfdState::DaemonStatusEnum : public Enum
+class ConfdState::DaemonStatus : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf starting;
-        static const Enum::YLeaf phase0;
-        static const Enum::YLeaf phase1;
-        static const Enum::YLeaf started;
-        static const Enum::YLeaf stopping;
+        static const ydk::Enum::YLeaf starting;
+        static const ydk::Enum::YLeaf phase0;
+        static const ydk::Enum::YLeaf phase1;
+        static const ydk::Enum::YLeaf started;
+        static const ydk::Enum::YLeaf stopping;
 
 };
 
-class ConfdState::Ha::ModeEnum : public Enum
+class ConfdState::Ha::Mode : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf slave;
-        static const Enum::YLeaf master;
-        static const Enum::YLeaf relay_slave;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf relay_slave;
 
 };
 
-class ConfdState::LoadedDataModels::DataModel::ExportedToEnum : public Enum
+class ConfdState::LoadedDataModels::DataModel::ExportedTo : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf netconf;
-        static const Enum::YLeaf cli;
-        static const Enum::YLeaf webui;
-        static const Enum::YLeaf rest;
-        static const Enum::YLeaf snmp;
+        static const ydk::Enum::YLeaf netconf;
+        static const ydk::Enum::YLeaf cli;
+        static const ydk::Enum::YLeaf webui;
+        static const ydk::Enum::YLeaf rest;
+        static const ydk::Enum::YLeaf snmp;
 
 };
 
-class ConfdState::Internal::DatastoreNameEnum : public Enum
+class ConfdState::Internal::DatastoreName : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf running;
-        static const Enum::YLeaf startup;
-        static const Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf running;
+        static const ydk::Enum::YLeaf startup;
+        static const ydk::Enum::YLeaf operational;
 
 };
 
-class ConfdState::Internal::Callpoints::Callpoint::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Callpoint::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::Callpoint::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Callpoint::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Callpoint::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::Validationpoint::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Validationpoint::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::Validationpoint::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Validationpoint::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Validationpoint::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::Actionpoint::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Actionpoint::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::Actionpoint::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Actionpoint::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Actionpoint::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::SnmpInformCallback::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::SnmpInformCallback::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::SnmpInformCallback::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::ErrorFormattingCallback::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::Typepoint::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Typepoint::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::Typepoint::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Typepoint::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::Typepoint::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupportEnum : public Enum
+class ConfdState::Internal::Callpoints::NotificationStreamReplay::ReplaySupport : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf none;
-        static const Enum::YLeaf builtin;
-        static const Enum::YLeaf external;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf builtin;
+        static const ydk::Enum::YLeaf external;
 
 };
 
-class ConfdState::Internal::Callpoints::NotificationStreamReplay::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::NotificationStreamReplay::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::NotificationStreamReplay::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::AuthenticationCallback::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::AuthenticationCallback::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::AuthenticationCallback::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::AuthorizationCallbacks::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf NOT_REGISTERED;
-        static const Enum::YLeaf UNKNOWN;
+        static const ydk::Enum::YLeaf NOT_REGISTERED;
+        static const ydk::Enum::YLeaf UNKNOWN;
 
 };
 
-class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::ErrorEnum : public Enum
+class ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range::Daemon::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 
-class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::TimeRemainingEnum : public Enum
+class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::TimeRemaining : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf infinity;
+        static const ydk::Enum::YLeaf infinity;
 
 };
 
-class ConfdState::Internal::Cdb::Client::TypeEnum : public Enum
+class ConfdState::Internal::Cdb::Client::Type : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf inactive;
-        static const Enum::YLeaf client;
-        static const Enum::YLeaf subscriber;
-        static const Enum::YLeaf waiting;
+        static const ydk::Enum::YLeaf inactive;
+        static const ydk::Enum::YLeaf client;
+        static const ydk::Enum::YLeaf subscriber;
+        static const ydk::Enum::YLeaf waiting;
 
 };
 
-class ConfdState::Internal::Cdb::Client::DatastoreEnum : public Enum
+class ConfdState::Internal::Cdb::Client::Datastore : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf pre_commit_running;
+        static const ydk::Enum::YLeaf pre_commit_running;
 
 };
 
-class ConfdState::Internal::Cdb::Client::LockEnum : public Enum
+class ConfdState::Internal::Cdb::Client::Lock : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf read;
-        static const Enum::YLeaf subscription;
-        static const Enum::YLeaf pending_read;
-        static const Enum::YLeaf pending_subscription;
+        static const ydk::Enum::YLeaf read;
+        static const ydk::Enum::YLeaf subscription;
+        static const ydk::Enum::YLeaf pending_read;
+        static const ydk::Enum::YLeaf pending_subscription;
 
 };
 
-class ConfdState::Internal::Cdb::Client::Subscription::ErrorEnum : public Enum
+class ConfdState::Internal::Cdb::Client::Subscription::Error : public ydk::Enum
 {
     public:
-        static const Enum::YLeaf PENDING;
+        static const ydk::Enum::YLeaf PENDING;
 
 };
 

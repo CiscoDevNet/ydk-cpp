@@ -6,11 +6,13 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_igmp_dyn_tmpl_cfg.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_igmp_dyn_tmpl_cfg {
 
-const Enum::YLeaf DynTmplMulticastModeEnum::qos_correlation {1, "qos-correlation"};
-const Enum::YLeaf DynTmplMulticastModeEnum::passive {2, "passive"};
+const Enum::YLeaf DynTmplMulticastMode::qos_correlation {1, "qos-correlation"};
+const Enum::YLeaf DynTmplMulticastMode::passive {2, "passive"};
 
 
 }

@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ip_iep_oper.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_iep_oper {
 
 ExplicitPaths::ExplicitPaths()
@@ -33,7 +35,7 @@ bool ExplicitPaths::has_data() const
 
 bool ExplicitPaths::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (identifiers !=  nullptr && identifiers->has_operation())
 	|| (names !=  nullptr && names->has_operation());
 }
@@ -104,7 +106,11 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::get_children() con
     return children;
 }
 
-void ExplicitPaths::set_value(const std::string & value_path, std::string value)
+void ExplicitPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ExplicitPaths::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
@@ -126,6 +132,18 @@ std::string ExplicitPaths::get_bundle_name() const
 augment_capabilities_function ExplicitPaths::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> ExplicitPaths::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool ExplicitPaths::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identifiers" || name == "names")
+        return true;
+    return false;
 }
 
 ExplicitPaths::Identifiers::Identifiers()
@@ -154,7 +172,7 @@ bool ExplicitPaths::Identifiers::has_operation() const
         if(identifier[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ExplicitPaths::Identifiers::get_segment_path() const
@@ -219,8 +237,19 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::get_c
     return children;
 }
 
-void ExplicitPaths::Identifiers::set_value(const std::string & value_path, std::string value)
+void ExplicitPaths::Identifiers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ExplicitPaths::Identifiers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ExplicitPaths::Identifiers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "identifier")
+        return true;
+    return false;
 }
 
 ExplicitPaths::Identifiers::Identifier::Identifier()
@@ -253,9 +282,9 @@ bool ExplicitPaths::Identifiers::Identifier::has_operation() const
         if(address[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(identifier_id.operation)
-	|| is_set(status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(identifier_id.yfilter)
+	|| ydk::is_set(status.yfilter);
 }
 
 std::string ExplicitPaths::Identifiers::Identifier::get_segment_path() const
@@ -281,8 +310,8 @@ const EntityPath ExplicitPaths::Identifiers::Identifier::get_entity_path(Entity*
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (identifier_id.is_set || is_set(identifier_id.operation)) leaf_name_data.push_back(identifier_id.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (identifier_id.is_set || is_set(identifier_id.yfilter)) leaf_name_data.push_back(identifier_id.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -322,16 +351,39 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::Ident
     return children;
 }
 
-void ExplicitPaths::Identifiers::Identifier::set_value(const std::string & value_path, std::string value)
+void ExplicitPaths::Identifiers::Identifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "identifier-id")
     {
         identifier_id = value;
+        identifier_id.value_namespace = name_space;
+        identifier_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ExplicitPaths::Identifiers::Identifier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "identifier-id")
+    {
+        identifier_id.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool ExplicitPaths::Identifiers::Identifier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "identifier-id" || name == "status")
+        return true;
+    return false;
 }
 
 ExplicitPaths::Identifiers::Identifier::Address::Address()
@@ -362,13 +414,13 @@ bool ExplicitPaths::Identifiers::Identifier::Address::has_data() const
 
 bool ExplicitPaths::Identifiers::Identifier::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_type.operation)
-	|| is_set(hop_type.operation)
-	|| is_set(if_index.operation)
-	|| is_set(index_.operation)
-	|| is_set(mpls_label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_type.yfilter)
+	|| ydk::is_set(hop_type.yfilter)
+	|| ydk::is_set(if_index.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(mpls_label.yfilter);
 }
 
 std::string ExplicitPaths::Identifiers::Identifier::Address::get_segment_path() const
@@ -394,12 +446,12 @@ const EntityPath ExplicitPaths::Identifiers::Identifier::Address::get_entity_pat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
-    if (hop_type.is_set || is_set(hop_type.operation)) leaf_name_data.push_back(hop_type.get_name_leafdata());
-    if (if_index.is_set || is_set(if_index.operation)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -418,32 +470,79 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::Ident
     return children;
 }
 
-void ExplicitPaths::Identifiers::Identifier::Address::set_value(const std::string & value_path, std::string value)
+void ExplicitPaths::Identifiers::Identifier::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hop-type")
     {
         hop_type = value;
+        hop_type.value_namespace = name_space;
+        hop_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-index")
     {
         if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ExplicitPaths::Identifiers::Identifier::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+}
+
+bool ExplicitPaths::Identifiers::Identifier::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-type" || name == "hop-type" || name == "if-index" || name == "index" || name == "mpls-label")
+        return true;
+    return false;
 }
 
 ExplicitPaths::Names::Names()
@@ -472,7 +571,7 @@ bool ExplicitPaths::Names::has_operation() const
         if(name[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string ExplicitPaths::Names::get_segment_path() const
@@ -537,8 +636,19 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::get_childre
     return children;
 }
 
-void ExplicitPaths::Names::set_value(const std::string & value_path, std::string value)
+void ExplicitPaths::Names::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void ExplicitPaths::Names::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ExplicitPaths::Names::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
 }
 
 ExplicitPaths::Names::Name::Name()
@@ -571,9 +681,9 @@ bool ExplicitPaths::Names::Name::has_operation() const
         if(address[index]->has_operation())
             return true;
     }
-    return is_set(operation)
-	|| is_set(path_name.operation)
-	|| is_set(status.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(path_name.yfilter)
+	|| ydk::is_set(status.yfilter);
 }
 
 std::string ExplicitPaths::Names::Name::get_segment_path() const
@@ -599,8 +709,8 @@ const EntityPath ExplicitPaths::Names::Name::get_entity_path(Entity* ancestor) c
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (path_name.is_set || is_set(path_name.operation)) leaf_name_data.push_back(path_name.get_name_leafdata());
-    if (status.is_set || is_set(status.operation)) leaf_name_data.push_back(status.get_name_leafdata());
+    if (path_name.is_set || is_set(path_name.yfilter)) leaf_name_data.push_back(path_name.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -640,16 +750,39 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::Name::get_c
     return children;
 }
 
-void ExplicitPaths::Names::Name::set_value(const std::string & value_path, std::string value)
+void ExplicitPaths::Names::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-name")
     {
         path_name = value;
+        path_name.value_namespace = name_space;
+        path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "status")
     {
         status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void ExplicitPaths::Names::Name::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "path-name")
+    {
+        path_name.yfilter = yfilter;
+    }
+    if(value_path == "status")
+    {
+        status.yfilter = yfilter;
+    }
+}
+
+bool ExplicitPaths::Names::Name::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "path-name" || name == "status")
+        return true;
+    return false;
 }
 
 ExplicitPaths::Names::Name::Address::Address()
@@ -680,13 +813,13 @@ bool ExplicitPaths::Names::Name::Address::has_data() const
 
 bool ExplicitPaths::Names::Name::Address::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(address.operation)
-	|| is_set(address_type.operation)
-	|| is_set(hop_type.operation)
-	|| is_set(if_index.operation)
-	|| is_set(index_.operation)
-	|| is_set(mpls_label.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_type.yfilter)
+	|| ydk::is_set(hop_type.yfilter)
+	|| ydk::is_set(if_index.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(mpls_label.yfilter);
 }
 
 std::string ExplicitPaths::Names::Name::Address::get_segment_path() const
@@ -712,12 +845,12 @@ const EntityPath ExplicitPaths::Names::Name::Address::get_entity_path(Entity* an
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.operation)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_type.is_set || is_set(address_type.operation)) leaf_name_data.push_back(address_type.get_name_leafdata());
-    if (hop_type.is_set || is_set(hop_type.operation)) leaf_name_data.push_back(hop_type.get_name_leafdata());
-    if (if_index.is_set || is_set(if_index.operation)) leaf_name_data.push_back(if_index.get_name_leafdata());
-    if (index_.is_set || is_set(index_.operation)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (mpls_label.is_set || is_set(mpls_label.operation)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_type.is_set || is_set(address_type.yfilter)) leaf_name_data.push_back(address_type.get_name_leafdata());
+    if (hop_type.is_set || is_set(hop_type.yfilter)) leaf_name_data.push_back(hop_type.get_name_leafdata());
+    if (if_index.is_set || is_set(if_index.yfilter)) leaf_name_data.push_back(if_index.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (mpls_label.is_set || is_set(mpls_label.yfilter)) leaf_name_data.push_back(mpls_label.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -736,43 +869,90 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::Name::Addre
     return children;
 }
 
-void ExplicitPaths::Names::Name::Address::set_value(const std::string & value_path, std::string value)
+void ExplicitPaths::Names::Name::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
         address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "address-type")
     {
         address_type = value;
+        address_type.value_namespace = name_space;
+        address_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "hop-type")
     {
         hop_type = value;
+        hop_type.value_namespace = name_space;
+        hop_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "if-index")
     {
         if_index = value;
+        if_index.value_namespace = name_space;
+        if_index.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "index")
     {
         index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mpls-label")
     {
         mpls_label = value;
+        mpls_label.value_namespace = name_space;
+        mpls_label.value_namespace_prefix = name_space_prefix;
     }
 }
 
-const Enum::YLeaf IepStatusEnum::enabled {0, "enabled"};
-const Enum::YLeaf IepStatusEnum::disabled {1, "disabled"};
+void ExplicitPaths::Names::Name::Address::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-type")
+    {
+        address_type.yfilter = yfilter;
+    }
+    if(value_path == "hop-type")
+    {
+        hop_type.yfilter = yfilter;
+    }
+    if(value_path == "if-index")
+    {
+        if_index.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "mpls-label")
+    {
+        mpls_label.yfilter = yfilter;
+    }
+}
 
-const Enum::YLeaf IepAddressEnum::next {0, "next"};
-const Enum::YLeaf IepAddressEnum::exclude {1, "exclude"};
-const Enum::YLeaf IepAddressEnum::exclude_srlg {2, "exclude-srlg"};
+bool ExplicitPaths::Names::Name::Address::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address" || name == "address-type" || name == "hop-type" || name == "if-index" || name == "index" || name == "mpls-label")
+        return true;
+    return false;
+}
 
-const Enum::YLeaf IepHopEnum::strict {0, "strict"};
-const Enum::YLeaf IepHopEnum::loose {1, "loose"};
+const Enum::YLeaf IepStatus::enabled {0, "enabled"};
+const Enum::YLeaf IepStatus::disabled {1, "disabled"};
+
+const Enum::YLeaf IepHop::strict {0, "strict"};
+const Enum::YLeaf IepHop::loose {1, "loose"};
+
+const Enum::YLeaf IepAddress::next {0, "next"};
+const Enum::YLeaf IepAddress::exclude {1, "exclude"};
+const Enum::YLeaf IepAddress::exclude_srlg {2, "exclude-srlg"};
 
 
 }

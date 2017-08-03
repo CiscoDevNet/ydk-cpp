@@ -6,34 +6,36 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_syslog_act.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_syslog_act {
 
-LogmsgRpc::LogmsgRpc()
+Logmsg::Logmsg()
     :
-    input(std::make_shared<LogmsgRpc::Input>())
+    input(std::make_shared<Logmsg::Input>())
 {
     input->parent = this;
 
     yang_name = "logmsg"; yang_parent_name = "Cisco-IOS-XR-syslog-act";
 }
 
-LogmsgRpc::~LogmsgRpc()
+Logmsg::~Logmsg()
 {
 }
 
-bool LogmsgRpc::has_data() const
+bool Logmsg::has_data() const
 {
     return (input !=  nullptr && input->has_data());
 }
 
-bool LogmsgRpc::has_operation() const
+bool Logmsg::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string LogmsgRpc::get_segment_path() const
+std::string Logmsg::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-syslog-act:logmsg";
@@ -42,7 +44,7 @@ std::string LogmsgRpc::get_segment_path() const
 
 }
 
-const EntityPath LogmsgRpc::get_entity_path(Entity* ancestor) const
+const EntityPath Logmsg::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor != nullptr)
@@ -60,13 +62,13 @@ const EntityPath LogmsgRpc::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LogmsgRpc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Logmsg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<LogmsgRpc::Input>();
+            input = std::make_shared<Logmsg::Input>();
         }
         return input;
     }
@@ -74,7 +76,7 @@ std::shared_ptr<Entity> LogmsgRpc::get_child_by_name(const std::string & child_y
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LogmsgRpc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Logmsg::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     if(input != nullptr)
@@ -85,31 +87,47 @@ std::map<std::string, std::shared_ptr<Entity>> LogmsgRpc::get_children() const
     return children;
 }
 
-void LogmsgRpc::set_value(const std::string & value_path, std::string value)
+void Logmsg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-std::shared_ptr<Entity> LogmsgRpc::clone_ptr() const
+void Logmsg::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    return std::make_shared<LogmsgRpc>();
 }
 
-std::string LogmsgRpc::get_bundle_yang_models_location() const
+std::shared_ptr<Entity> Logmsg::clone_ptr() const
+{
+    return std::make_shared<Logmsg>();
+}
+
+std::string Logmsg::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string LogmsgRpc::get_bundle_name() const
+std::string Logmsg::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function LogmsgRpc::get_augment_capabilities_function() const
+augment_capabilities_function Logmsg::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-LogmsgRpc::Input::Input()
+std::map<std::pair<std::string, std::string>, std::string> Logmsg::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool Logmsg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+Logmsg::Input::Input()
     :
     message{YType::str, "message"},
     severity{YType::enumeration, "severity"}
@@ -117,24 +135,24 @@ LogmsgRpc::Input::Input()
     yang_name = "input"; yang_parent_name = "logmsg";
 }
 
-LogmsgRpc::Input::~Input()
+Logmsg::Input::~Input()
 {
 }
 
-bool LogmsgRpc::Input::has_data() const
+bool Logmsg::Input::has_data() const
 {
     return message.is_set
 	|| severity.is_set;
 }
 
-bool LogmsgRpc::Input::has_operation() const
+bool Logmsg::Input::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(message.operation)
-	|| is_set(severity.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(message.yfilter)
+	|| ydk::is_set(severity.yfilter);
 }
 
-std::string LogmsgRpc::Input::get_segment_path() const
+std::string Logmsg::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
@@ -143,7 +161,7 @@ std::string LogmsgRpc::Input::get_segment_path() const
 
 }
 
-const EntityPath LogmsgRpc::Input::get_entity_path(Entity* ancestor) const
+const EntityPath Logmsg::Input::get_entity_path(Entity* ancestor) const
 {
     std::ostringstream path_buffer;
     if (ancestor == nullptr)
@@ -157,8 +175,8 @@ const EntityPath LogmsgRpc::Input::get_entity_path(Entity* ancestor) const
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (message.is_set || is_set(message.operation)) leaf_name_data.push_back(message.get_name_leafdata());
-    if (severity.is_set || is_set(severity.operation)) leaf_name_data.push_back(severity.get_name_leafdata());
+    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -166,27 +184,50 @@ const EntityPath LogmsgRpc::Input::get_entity_path(Entity* ancestor) const
 
 }
 
-std::shared_ptr<Entity> LogmsgRpc::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Logmsg::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> LogmsgRpc::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Logmsg::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     return children;
 }
 
-void LogmsgRpc::Input::set_value(const std::string & value_path, std::string value)
+void Logmsg::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "message")
     {
         message = value;
+        message.value_namespace = name_space;
+        message.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "severity")
     {
         severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void Logmsg::Input::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "message")
+    {
+        message.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool Logmsg::Input::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message" || name == "severity")
+        return true;
+    return false;
 }
 
 

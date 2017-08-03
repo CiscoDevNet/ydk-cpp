@@ -6,7 +6,9 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_manageability_perfmgmt_cfg_1.hpp"
 
-namespace ydk {
+using namespace ydk;
+
+namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_manageability_perfmgmt_cfg {
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::InitMsgsRcvd()
@@ -37,13 +39,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRc
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::get_segment_path() const
@@ -69,12 +71,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -93,32 +95,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::LabelReleaseMsgsSent()
@@ -149,13 +198,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRelea
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::get_segment_path() const
@@ -181,12 +230,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -205,32 +254,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::InitMsgsSent()
@@ -261,13 +357,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSe
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::get_segment_path() const
@@ -293,12 +389,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -317,32 +413,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::InitMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::LabelMappingMsgsRcvd()
@@ -373,13 +516,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappi
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::get_segment_path() const
@@ -405,12 +548,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -429,32 +572,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::KeepaliveMsgsRcvd()
@@ -485,13 +675,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveM
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::get_segment_path() const
@@ -517,12 +707,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -541,32 +731,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::LabelMappingMsgsSent()
@@ -597,13 +834,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappi
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::get_segment_path() const
@@ -629,12 +866,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -653,32 +890,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelMappingMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::KeepaliveMsgsSent()
@@ -709,13 +993,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveM
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::get_segment_path() const
@@ -741,12 +1025,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -765,32 +1049,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::KeepaliveMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::AddressMsgsRcvd()
@@ -821,13 +1152,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsg
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::get_segment_path() const
@@ -853,12 +1184,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -877,32 +1208,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsRcvd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::AddressMsgsSent()
@@ -933,13 +1311,13 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsg
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::get_segment_path() const
@@ -965,12 +1343,12 @@ const EntityPath PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -989,32 +1367,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     return children;
 }
 
-void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressMsgsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterface()
@@ -1037,7 +1462,7 @@ bool PerfMgmt::Threshold::BasicCounterInterface::has_data() const
 
 bool PerfMgmt::Threshold::BasicCounterInterface::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (basic_counter_interface_templates !=  nullptr && basic_counter_interface_templates->has_operation());
 }
 
@@ -1096,8 +1521,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-counter-interface-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplates()
@@ -1126,7 +1562,7 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
         if(basic_counter_interface_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::get_segment_path() const
@@ -1191,8 +1627,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-counter-interface-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::BasicCounterInterfaceTemplate()
@@ -1240,11 +1687,11 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(vrf_group.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(vrf_group.yfilter)
 	|| (in_octets !=  nullptr && in_octets->has_operation())
 	|| (in_packets !=  nullptr && in_packets->has_operation())
 	|| (input_queue_drops !=  nullptr && input_queue_drops->has_operation())
@@ -1280,10 +1727,10 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1442,24 +1889,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "in-octets" || name == "in-packets" || name == "input-queue-drops" || name == "input-total-drops" || name == "input-total-errors" || name == "out-octets" || name == "out-packets" || name == "output-queue-drops" || name == "output-total-drops" || name == "output-total-errors" || name == "template-name" || name == "reg-exp-group" || name == "sample-interval" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::InOctets()
@@ -1490,13 +1972,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::get_segment_path() const
@@ -1522,12 +2004,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1546,32 +2028,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InOctets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::OutOctets()
@@ -1602,13 +2131,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::get_segment_path() const
@@ -1634,12 +2163,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1658,32 +2187,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutOctets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::OutputQueueDrops()
@@ -1714,13 +2290,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::get_segment_path() const
@@ -1746,12 +2322,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1770,32 +2346,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputQueueDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::InputTotalErrors()
@@ -1826,13 +2449,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::get_segment_path() const
@@ -1858,12 +2481,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1882,32 +2505,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalErrors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::OutputTotalDrops()
@@ -1938,13 +2608,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::get_segment_path() const
@@ -1970,12 +2640,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -1994,32 +2664,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::OutPackets()
@@ -2050,13 +2767,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::get_segment_path() const
@@ -2082,12 +2799,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2106,32 +2823,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::OutputTotalErrors()
@@ -2162,13 +2926,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::get_segment_path() const
@@ -2194,12 +2958,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2218,32 +2982,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::OutputTotalErrors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::InPackets()
@@ -2274,13 +3085,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::get_segment_path() const
@@ -2306,12 +3117,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2330,32 +3141,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::InputQueueDrops()
@@ -2386,13 +3244,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::get_segment_path() const
@@ -2418,12 +3276,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2442,32 +3300,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputQueueDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::InputTotalDrops()
@@ -2498,13 +3403,13 @@ bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates:
 
 bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::get_segment_path() const
@@ -2530,12 +3435,12 @@ const EntityPath PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2554,32 +3459,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::BasicCounter
     return children;
 }
 
-void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate::InputTotalDrops::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::Bgp()
@@ -2602,7 +3554,7 @@ bool PerfMgmt::Threshold::Bgp::has_data() const
 
 bool PerfMgmt::Threshold::Bgp::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (bgp_templates !=  nullptr && bgp_templates->has_operation());
 }
 
@@ -2661,8 +3613,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::get_chi
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::Bgp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplates()
@@ -2691,7 +3654,7 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::has_operation() const
         if(bgp_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::get_segment_path() const
@@ -2756,8 +3719,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bgp-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::BgpTemplate()
@@ -2797,9 +3771,9 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::has_data() const
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(sample_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
 	|| (conn_dropped !=  nullptr && conn_dropped->has_operation())
 	|| (conn_established !=  nullptr && conn_established->has_operation())
 	|| (errors_received !=  nullptr && errors_received->has_operation())
@@ -2833,8 +3807,8 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::get_entity
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -2965,16 +3939,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "conn-dropped" || name == "conn-established" || name == "errors-received" || name == "errors-sent" || name == "input-messages" || name == "input-update-messages" || name == "output-messages" || name == "output-update-messages" || name == "template-name" || name == "sample-interval")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::OutputUpdateMessages()
@@ -3005,13 +4002,13 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::get_segment_path() const
@@ -3037,12 +4034,12 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpda
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3061,32 +4058,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputUpdateMessages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::ErrorsReceived()
@@ -3117,13 +4161,13 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::has_da
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::get_segment_path() const
@@ -3149,12 +4193,12 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsRece
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3173,32 +4217,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsReceived::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::ConnEstablished()
@@ -3229,13 +4320,13 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::has_d
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::get_segment_path() const
@@ -3261,12 +4352,12 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstabl
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3285,32 +4376,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnEstablished::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::OutputMessages()
@@ -3341,13 +4479,13 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::has_da
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::get_segment_path() const
@@ -3373,12 +4511,12 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMess
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3397,32 +4535,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::OutputMessages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::ConnDropped()
@@ -3453,13 +4638,13 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::has_data(
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::get_segment_path() const
@@ -3485,12 +4670,12 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDroppe
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3509,32 +4694,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ConnDropped::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::InputUpdateMessages()
@@ -3565,13 +4797,13 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::h
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::get_segment_path() const
@@ -3597,12 +4829,12 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdat
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3621,32 +4853,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputUpdateMessages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::ErrorsSent()
@@ -3677,13 +4956,13 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::has_data()
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::get_segment_path() const
@@ -3709,12 +4988,12 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3733,32 +5012,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::ErrorsSent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::InputMessages()
@@ -3789,13 +5115,13 @@ bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::has_dat
 
 bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::get_segment_path() const
@@ -3821,12 +5147,12 @@ const EntityPath PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessa
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -3845,32 +5171,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Bgp::BgpTemp
     return children;
 }
 
-void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate::InputMessages::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2Protocol()
@@ -3893,7 +5266,7 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::has_data() const
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ospfv2_protocol_templates !=  nullptr && ospfv2_protocol_templates->has_operation());
 }
 
@@ -3952,8 +5325,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfv2-protocol-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplates()
@@ -3982,7 +5366,7 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::has_operation
         if(ospfv2_protocol_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::get_segment_path() const
@@ -4047,8 +5431,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfv2-protocol-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::Ospfv2ProtocolTemplate()
@@ -4114,9 +5509,9 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(sample_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
 	|| (checksum_errors !=  nullptr && checksum_errors->has_operation())
 	|| (input_db_ds !=  nullptr && input_db_ds->has_operation())
 	|| (input_db_ds_lsa !=  nullptr && input_db_ds_lsa->has_operation())
@@ -4163,8 +5558,8 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4477,16 +5872,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "checksum-errors" || name == "input-db-ds" || name == "input-db-ds-lsa" || name == "input-hello-packets" || name == "input-ls-requests" || name == "input-ls-requests-lsa" || name == "input-lsa-acks" || name == "input-lsa-acks-lsa" || name == "input-lsa-updates" || name == "input-lsa-updates-lsa" || name == "input-packets" || name == "output-db-ds" || name == "output-db-ds-lsa" || name == "output-hello-packets" || name == "output-ls-requests" || name == "output-ls-requests-lsa" || name == "output-lsa-acks" || name == "output-lsa-acks-lsa" || name == "output-lsa-updates" || name == "output-lsa-updates-lsa" || name == "output-packets" || name == "template-name" || name == "sample-interval")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::ChecksumErrors()
@@ -4517,13 +5935,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::get_segment_path() const
@@ -4549,12 +5967,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4573,32 +5991,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::ChecksumErrors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::InputLsaAcksLsa()
@@ -4629,13 +6094,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::get_segment_path() const
@@ -4661,12 +6126,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4685,32 +6150,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcksLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::OutputDbDsLsa()
@@ -4741,13 +6253,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::get_segment_path() const
@@ -4773,12 +6285,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4797,32 +6309,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDsLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::InputDbDsLsa()
@@ -4853,13 +6412,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::get_segment_path() const
@@ -4885,12 +6444,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -4909,32 +6468,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDsLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::InputLsaUpdates()
@@ -4965,13 +6571,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::get_segment_path() const
@@ -4997,12 +6603,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5021,32 +6627,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::OutputDbDs()
@@ -5077,13 +6730,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::get_segment_path() const
@@ -5109,12 +6762,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5133,32 +6786,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputDbDs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::OutputLsaUpdatesLsa()
@@ -5189,13 +6889,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::get_segment_path() const
@@ -5221,12 +6921,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5245,32 +6945,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdatesLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::InputDbDs()
@@ -5301,13 +7048,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::get_segment_path() const
@@ -5333,12 +7080,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5357,32 +7104,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputDbDs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::InputLsaUpdatesLsa()
@@ -5413,13 +7207,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::get_segment_path() const
@@ -5445,12 +7239,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5469,32 +7263,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaUpdatesLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::OutputPackets()
@@ -5525,13 +7366,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::get_segment_path() const
@@ -5557,12 +7398,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5581,32 +7422,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::InputPackets()
@@ -5637,13 +7525,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::get_segment_path() const
@@ -5669,12 +7557,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5693,32 +7581,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::OutputHelloPackets()
@@ -5749,13 +7684,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::get_segment_path() const
@@ -5781,12 +7716,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5805,32 +7740,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputHelloPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::InputHelloPackets()
@@ -5861,13 +7843,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::get_segment_path() const
@@ -5893,12 +7875,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -5917,32 +7899,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputHelloPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::OutputLsRequests()
@@ -5973,13 +8002,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::get_segment_path() const
@@ -6005,12 +8034,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6029,32 +8058,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequests::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::OutputLsaAcksLsa()
@@ -6085,13 +8161,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::get_segment_path() const
@@ -6117,12 +8193,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6141,32 +8217,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcksLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::OutputLsaAcks()
@@ -6197,13 +8320,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::get_segment_path() const
@@ -6229,12 +8352,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6253,32 +8376,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaAcks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::InputLsaAcks()
@@ -6309,13 +8479,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::get_segment_path() const
@@ -6341,12 +8511,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6365,32 +8535,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsaAcks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::OutputLsaUpdates()
@@ -6421,13 +8638,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::get_segment_path() const
@@ -6453,12 +8670,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6477,32 +8694,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsaUpdates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::OutputLsRequestsLsa()
@@ -6533,13 +8797,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::get_segment_path() const
@@ -6565,12 +8829,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6589,32 +8853,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::OutputLsRequestsLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::InputLsRequestsLsa()
@@ -6645,13 +8956,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::get_segment_path() const
@@ -6677,12 +8988,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6701,32 +9012,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequestsLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::InputLsRequests()
@@ -6757,13 +9115,13 @@ bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2Protoco
 
 bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::get_segment_path() const
@@ -6789,12 +9147,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -6813,32 +9171,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv2Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate::InputLsRequests::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNode()
@@ -6861,7 +9266,7 @@ bool PerfMgmt::Threshold::CpuNode::has_data() const
 
 bool PerfMgmt::Threshold::CpuNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (cpu_node_templates !=  nullptr && cpu_node_templates->has_operation());
 }
 
@@ -6920,8 +9325,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::get
     return children;
 }
 
-void PerfMgmt::Threshold::CpuNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::CpuNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::CpuNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::CpuNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpu-node-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplates()
@@ -6950,7 +9366,7 @@ bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::has_operation() const
         if(cpu_node_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::get_segment_path() const
@@ -7015,8 +9431,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::Cpu
     return children;
 }
 
-void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cpu-node-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::CpuNodeTemplate()
@@ -7044,9 +9471,9 @@ bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::has_data()
 
 bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(sample_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
 	|| (average_cpu_used !=  nullptr && average_cpu_used->has_operation())
 	|| (no_processes !=  nullptr && no_processes->has_operation());
 }
@@ -7074,8 +9501,8 @@ const EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7122,16 +9549,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::Cpu
     return children;
 }
 
-void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average-cpu-used" || name == "no-processes" || name == "template-name" || name == "sample-interval")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::AverageCpuUsed()
@@ -7162,13 +9612,13 @@ bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpu
 
 bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::get_segment_path() const
@@ -7194,12 +9644,12 @@ const EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7218,32 +9668,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::Cpu
     return children;
 }
 
-void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::AverageCpuUsed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::NoProcesses()
@@ -7274,13 +9771,13 @@ bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesse
 
 bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::get_segment_path() const
@@ -7306,12 +9803,12 @@ const EntityPath PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7330,32 +9827,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::CpuNode::Cpu
     return children;
 }
 
-void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate::NoProcesses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterface()
@@ -7378,7 +9922,7 @@ bool PerfMgmt::Threshold::DataRateInterface::has_data() const
 
 bool PerfMgmt::Threshold::DataRateInterface::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (data_rate_interface_templates !=  nullptr && data_rate_interface_templates->has_operation());
 }
 
@@ -7437,8 +9981,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::DataRateInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-rate-interface-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplates()
@@ -7467,7 +10022,7 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::has_ope
         if(data_rate_interface_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::get_segment_path() const
@@ -7532,8 +10087,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-rate-interface-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::DataRateInterfaceTemplate()
@@ -7579,11 +10145,11 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(reg_exp_group.operation)
-	|| is_set(sample_interval.operation)
-	|| is_set(vrf_group.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(reg_exp_group.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
+	|| ydk::is_set(vrf_group.yfilter)
 	|| (bandwidth !=  nullptr && bandwidth->has_operation())
 	|| (input_data_rate !=  nullptr && input_data_rate->has_operation())
 	|| (input_packet_rate !=  nullptr && input_packet_rate->has_operation())
@@ -7618,10 +10184,10 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (reg_exp_group.is_set || is_set(reg_exp_group.operation)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
-    if (vrf_group.is_set || is_set(vrf_group.operation)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (reg_exp_group.is_set || is_set(reg_exp_group.yfilter)) leaf_name_data.push_back(reg_exp_group.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (vrf_group.is_set || is_set(vrf_group.yfilter)) leaf_name_data.push_back(vrf_group.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7766,24 +10332,59 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "reg-exp-group")
     {
         reg_exp_group = value;
+        reg_exp_group.value_namespace = name_space;
+        reg_exp_group.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "vrf-group")
     {
         vrf_group = value;
+        vrf_group.value_namespace = name_space;
+        vrf_group.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "reg-exp-group")
+    {
+        reg_exp_group.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+    if(value_path == "vrf-group")
+    {
+        vrf_group.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bandwidth" || name == "input-data-rate" || name == "input-packet-rate" || name == "input-peak-pkts" || name == "input-peak-rate" || name == "output-data-rate" || name == "output-packet-rate" || name == "output-peak-pkts" || name == "output-peak-rate" || name == "template-name" || name == "reg-exp-group" || name == "sample-interval" || name == "vrf-group")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::InputDataRate()
@@ -7814,13 +10415,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::get_segment_path() const
@@ -7846,12 +10447,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7870,32 +10471,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputDataRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::Bandwidth()
@@ -7926,13 +10574,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::get_segment_path() const
@@ -7958,12 +10606,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -7982,32 +10630,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::OutputPacketRate()
@@ -8038,13 +10733,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::get_segment_path() const
@@ -8070,12 +10765,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8094,32 +10789,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPacketRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::InputPeakPkts()
@@ -8150,13 +10892,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::get_segment_path() const
@@ -8182,12 +10924,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8206,32 +10948,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::OutputPeakRate()
@@ -8262,13 +11051,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::get_segment_path() const
@@ -8294,12 +11083,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8318,32 +11107,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::OutputDataRate()
@@ -8374,13 +11210,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::get_segment_path() const
@@ -8406,12 +11242,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8430,32 +11266,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputDataRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::InputPacketRate()
@@ -8486,13 +11369,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::get_segment_path() const
@@ -8518,12 +11401,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8542,32 +11425,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPacketRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::OutputPeakPkts()
@@ -8598,13 +11528,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::get_segment_path() const
@@ -8630,12 +11560,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8654,32 +11584,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::OutputPeakPkts::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::InputPeakRate()
@@ -8710,13 +11687,13 @@ bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRat
 
 bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::get_segment_path() const
@@ -8742,12 +11719,12 @@ const EntityPath PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTempla
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -8766,32 +11743,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::DataRateInte
     return children;
 }
 
-void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate::InputPeakRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNode()
@@ -8814,7 +11838,7 @@ bool PerfMgmt::Threshold::ProcessNode::has_data() const
 
 bool PerfMgmt::Threshold::ProcessNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (process_node_templates !=  nullptr && process_node_templates->has_operation());
 }
 
@@ -8873,8 +11897,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode:
     return children;
 }
 
-void PerfMgmt::Threshold::ProcessNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::ProcessNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::ProcessNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::ProcessNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-node-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplates()
@@ -8903,7 +11938,7 @@ bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::has_operation() con
         if(process_node_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::get_segment_path() const
@@ -8968,8 +12003,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode:
     return children;
 }
 
-void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-node-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::ProcessNodeTemplate()
@@ -8999,9 +12045,9 @@ bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(sample_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
 	|| (average_cpu_used !=  nullptr && average_cpu_used->has_operation())
 	|| (no_threads !=  nullptr && no_threads->has_operation())
 	|| (peak_memory !=  nullptr && peak_memory->has_operation());
@@ -9030,8 +12076,8 @@ const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::Process
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9092,16 +12138,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode:
     return children;
 }
 
-void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "average-cpu-used" || name == "no-threads" || name == "peak-memory" || name == "template-name" || name == "sample-interval")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::AverageCpuUsed()
@@ -9132,13 +12201,13 @@ bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::get_segment_path() const
@@ -9164,12 +12233,12 @@ const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::Process
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9188,32 +12257,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode:
     return children;
 }
 
-void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::AverageCpuUsed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::PeakMemory()
@@ -9244,13 +12360,13 @@ bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::get_segment_path() const
@@ -9276,12 +12392,12 @@ const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::Process
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9300,32 +12416,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode:
     return children;
 }
 
-void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::PeakMemory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::NoThreads()
@@ -9356,13 +12519,13 @@ bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate
 
 bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::get_segment_path() const
@@ -9388,12 +12551,12 @@ const EntityPath PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::Process
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9412,32 +12575,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::ProcessNode:
     return children;
 }
 
-void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate::NoThreads::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNode()
@@ -9460,7 +12670,7 @@ bool PerfMgmt::Threshold::MemoryNode::has_data() const
 
 bool PerfMgmt::Threshold::MemoryNode::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (memory_node_templates !=  nullptr && memory_node_templates->has_operation());
 }
 
@@ -9519,8 +12729,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::
     return children;
 }
 
-void PerfMgmt::Threshold::MemoryNode::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::MemoryNode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::MemoryNode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::MemoryNode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory-node-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplates()
@@ -9549,7 +12770,7 @@ bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::has_operation() const
         if(memory_node_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::get_segment_path() const
@@ -9614,8 +12835,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::
     return children;
 }
 
-void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "memory-node-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::MemoryNodeTemplate()
@@ -9643,9 +12875,9 @@ bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::h
 
 bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(sample_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
 	|| (curr_memory !=  nullptr && curr_memory->has_operation())
 	|| (peak_memory !=  nullptr && peak_memory->has_operation());
 }
@@ -9673,8 +12905,8 @@ const EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9721,16 +12953,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::
     return children;
 }
 
-void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "curr-memory" || name == "peak-memory" || name == "template-name" || name == "sample-interval")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::PeakMemory()
@@ -9761,13 +13016,13 @@ bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::P
 
 bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::get_segment_path() const
@@ -9793,12 +13048,12 @@ const EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9817,32 +13072,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::
     return children;
 }
 
-void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::PeakMemory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::CurrMemory()
@@ -9873,13 +13175,13 @@ bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::C
 
 bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::get_segment_path() const
@@ -9905,12 +13207,12 @@ const EntityPath PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNod
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -9929,32 +13231,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::MemoryNode::
     return children;
 }
 
-void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate::CurrMemory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3Protocol()
@@ -9977,7 +13326,7 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::has_data() const
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::has_operation() const
 {
-    return is_set(operation)
+    return is_set(yfilter)
 	|| (ospfv3_protocol_templates !=  nullptr && ospfv3_protocol_templates->has_operation());
 }
 
@@ -10036,8 +13385,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfv3-protocol-templates")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplates()
@@ -10066,7 +13426,7 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::has_operation
         if(ospfv3_protocol_template[index]->has_operation())
             return true;
     }
-    return is_set(operation);
+    return is_set(yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::get_segment_path() const
@@ -10131,8 +13491,19 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ospfv3-protocol-template")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::Ospfv3ProtocolTemplate()
@@ -10196,9 +13567,9 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(template_name.operation)
-	|| is_set(sample_interval.operation)
+    return is_set(yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(sample_interval.yfilter)
 	|| (input_db_ds !=  nullptr && input_db_ds->has_operation())
 	|| (input_db_ds_lsa !=  nullptr && input_db_ds_lsa->has_operation())
 	|| (input_hello_packets !=  nullptr && input_hello_packets->has_operation())
@@ -10244,8 +13615,8 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (template_name.is_set || is_set(template_name.operation)) leaf_name_data.push_back(template_name.get_name_leafdata());
-    if (sample_interval.is_set || is_set(sample_interval.operation)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (sample_interval.is_set || is_set(sample_interval.yfilter)) leaf_name_data.push_back(sample_interval.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10544,16 +13915,39 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "template-name")
     {
         template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "sample-interval")
     {
         sample_interval = value;
+        sample_interval.value_namespace = name_space;
+        sample_interval.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "sample-interval")
+    {
+        sample_interval.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input-db-ds" || name == "input-db-ds-lsa" || name == "input-hello-packets" || name == "input-ls-requests" || name == "input-ls-requests-lsa" || name == "input-lsa-acks" || name == "input-lsa-acks-lsa" || name == "input-lsa-updates" || name == "input-lsa-updates-lsa" || name == "input-packets" || name == "output-db-ds" || name == "output-db-ds-lsa" || name == "output-hello-packets" || name == "output-ls-requests" || name == "output-ls-requests-lsa" || name == "output-lsa-acks" || name == "output-lsa-acks-lsa" || name == "output-lsa-updates" || name == "output-lsa-updates-lsa" || name == "output-packets" || name == "template-name" || name == "sample-interval")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::InputLsaAcksLsa()
@@ -10584,13 +13978,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::get_segment_path() const
@@ -10616,12 +14010,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10640,32 +14034,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcksLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::OutputDbDsLsa()
@@ -10696,13 +14137,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::get_segment_path() const
@@ -10728,12 +14169,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10752,32 +14193,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDsLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::InputDbDsLsa()
@@ -10808,13 +14296,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::get_segment_path() const
@@ -10840,12 +14328,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10864,32 +14352,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDsLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::InputLsaUpdates()
@@ -10920,13 +14455,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::get_segment_path() const
@@ -10952,12 +14487,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -10976,32 +14511,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::OutputDbDs()
@@ -11032,13 +14614,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::get_segment_path() const
@@ -11064,12 +14646,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11088,32 +14670,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputDbDs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::OutputLsaUpdatesLsa()
@@ -11144,13 +14773,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::get_segment_path() const
@@ -11176,12 +14805,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11200,32 +14829,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdatesLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::InputDbDs()
@@ -11256,13 +14932,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::get_segment_path() const
@@ -11288,12 +14964,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11312,32 +14988,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputDbDs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::InputLsaUpdatesLsa()
@@ -11368,13 +15091,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::get_segment_path() const
@@ -11400,12 +15123,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11424,32 +15147,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaUpdatesLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::OutputPackets()
@@ -11480,13 +15250,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::get_segment_path() const
@@ -11512,12 +15282,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11536,32 +15306,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::InputPackets()
@@ -11592,13 +15409,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::get_segment_path() const
@@ -11624,12 +15441,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11648,32 +15465,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::OutputHelloPackets()
@@ -11704,13 +15568,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::get_segment_path() const
@@ -11736,12 +15600,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11760,32 +15624,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputHelloPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::InputHelloPackets()
@@ -11816,13 +15727,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::get_segment_path() const
@@ -11848,12 +15759,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11872,32 +15783,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputHelloPackets::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::OutputLsRequests()
@@ -11928,13 +15886,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::get_segment_path() const
@@ -11960,12 +15918,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -11984,32 +15942,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequests::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::OutputLsaAcksLsa()
@@ -12040,13 +16045,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::get_segment_path() const
@@ -12072,12 +16077,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12096,32 +16101,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcksLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::OutputLsaAcks()
@@ -12152,13 +16204,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::get_segment_path() const
@@ -12184,12 +16236,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12208,32 +16260,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaAcks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::InputLsaAcks()
@@ -12264,13 +16363,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::get_segment_path() const
@@ -12296,12 +16395,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12320,32 +16419,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsaAcks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::OutputLsaUpdates()
@@ -12376,13 +16522,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::get_segment_path() const
@@ -12408,12 +16554,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12432,32 +16578,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsaUpdates::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::OutputLsRequestsLsa()
@@ -12488,13 +16681,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::get_segment_path() const
@@ -12520,12 +16713,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12544,32 +16737,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::OutputLsRequestsLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::InputLsRequestsLsa()
@@ -12600,13 +16840,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::get_segment_path() const
@@ -12632,12 +16872,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12656,32 +16896,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequestsLsa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::InputLsRequests()
@@ -12712,13 +16999,13 @@ bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoco
 
 bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::has_operation() const
 {
-    return is_set(operation)
-	|| is_set(end_range_value.operation)
-	|| is_set(operator_.operation)
-	|| is_set(percent.operation)
-	|| is_set(rearm_type.operation)
-	|| is_set(rearm_window.operation)
-	|| is_set(value_.operation);
+    return is_set(yfilter)
+	|| ydk::is_set(end_range_value.yfilter)
+	|| ydk::is_set(operator_.yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(rearm_type.yfilter)
+	|| ydk::is_set(rearm_window.yfilter)
+	|| ydk::is_set(value_.yfilter);
 }
 
 std::string PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::get_segment_path() const
@@ -12744,12 +17031,12 @@ const EntityPath PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::O
 
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (end_range_value.is_set || is_set(end_range_value.operation)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
-    if (operator_.is_set || is_set(operator_.operation)) leaf_name_data.push_back(operator_.get_name_leafdata());
-    if (percent.is_set || is_set(percent.operation)) leaf_name_data.push_back(percent.get_name_leafdata());
-    if (rearm_type.is_set || is_set(rearm_type.operation)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
-    if (rearm_window.is_set || is_set(rearm_window.operation)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
-    if (value_.is_set || is_set(value_.operation)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (end_range_value.is_set || is_set(end_range_value.yfilter)) leaf_name_data.push_back(end_range_value.get_name_leafdata());
+    if (operator_.is_set || is_set(operator_.yfilter)) leaf_name_data.push_back(operator_.get_name_leafdata());
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (rearm_type.is_set || is_set(rearm_type.yfilter)) leaf_name_data.push_back(rearm_type.get_name_leafdata());
+    if (rearm_window.is_set || is_set(rearm_window.yfilter)) leaf_name_data.push_back(rearm_window.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
 
     EntityPath entity_path {path_buffer.str(), leaf_name_data};
@@ -12768,32 +17055,79 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::Ospfv3Protoc
     return children;
 }
 
-void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::set_value(const std::string & value_path, std::string value)
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "end-range-value")
     {
         end_range_value = value;
+        end_range_value.value_namespace = name_space;
+        end_range_value.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "operator")
     {
         operator_ = value;
+        operator_.value_namespace = name_space;
+        operator_.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "percent")
     {
         percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-type")
     {
         rearm_type = value;
+        rearm_type.value_namespace = name_space;
+        rearm_type.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rearm-window")
     {
         rearm_window = value;
+        rearm_window.value_namespace = name_space;
+        rearm_window.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "value")
     {
         value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
     }
+}
+
+void PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "end-range-value")
+    {
+        end_range_value.yfilter = yfilter;
+    }
+    if(value_path == "operator")
+    {
+        operator_.yfilter = yfilter;
+    }
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "rearm-type")
+    {
+        rearm_type.yfilter = yfilter;
+    }
+    if(value_path == "rearm-window")
+    {
+        rearm_window.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "end-range-value" || name == "operator" || name == "percent" || name == "rearm-type" || name == "rearm-window" || name == "value")
+        return true;
+    return false;
 }
 
 
